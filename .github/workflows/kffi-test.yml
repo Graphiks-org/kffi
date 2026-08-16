@@ -1,0 +1,65 @@
+name: kffi-test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ macos-latest, ubuntu-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 25
+          cache: 'gradle'
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: ${{ runner.os }}-gradle
+      - name: Activate MSVC
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+      - name: Run JVM tests
+        run: ./gradlew :kffi:jvmTest
+      - name: Compile Apple Native callback token codecs
+        if: matrix.os == 'macos-latest'
+        run: >-
+          ./gradlew
+          :kffi:compileKotlinIosX64 :kffi:compileKotlinIosArm64 :kffi:compileKotlinIosSimulatorArm64
+          :kffi:compileKotlinMacosArm64 :kffi:compileKotlinMacosX64
+      - name: Compile Linux Native callback token codecs
+        if: matrix.os == 'ubuntu-latest'
+        run: >-
+          ./gradlew
+          :kffi:compileKotlinLinuxX64 :kffi:compileKotlinLinuxArm64
+      - name: Compile MinGW callback token codecs
+        if: matrix.os == 'windows-latest'
+        run: ./gradlew :kffi:compileKotlinMingwX64
+      - name: Run macOS Native tests
+        if: matrix.os == 'macos-latest'
+        run: |
+          if [[ "$(uname -m)" == "arm64" ]]; then
+            ./gradlew :kffi:macosArm64Test
+          else
+            ./gradlew :kffi:macosX64Test
+          fi
+      - name: Run Linux Native tests
+        if: matrix.os == 'ubuntu-latest'
+        run: ./gradlew :kffi:linuxX64Test
+      - name: Run Windows Native tests
+        if: matrix.os == 'windows-latest'
+        run: ./gradlew :kffi:mingwX64Test

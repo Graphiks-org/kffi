@@ -1,45 +1,62 @@
 [versions]
-# Core Tooling
-kotlin = "2.4.10"
+kotlin = "2.3.21"
+wgpu = "v29.0.0.0"
+download = "5.6.0"
 agp = "9.0.0"
-compose-multiplatform = "1.11.1"
+jna = "5.18.1"
 dokka = "2.2.0"
 maven-publish = "0.36.0"
 
-# Libraries
-coroutines = "1.10.1"
-koin = "4.0.0"
-ktor = "3.0.3"
-kotlinx-serialization = "1.8.0"
-androidx-activity-compose = "1.10.1"
+# Tests
+kotest = "6.1.11"
+ksp = "2.2.20-2.0.3"
+androidx-test-ext-junit = "1.2.1"
+androidx-test-runner = "1.6.2"
+
+# Jvm demo
+glfwNative = "0.0.3"
+rococoa = "0.0.1"
+
+# Android demo
+activityCompose = "1.11.0"
+android-native-helper = "0.0.2"
 
 [libraries]
-# Coroutines
-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+android-library = { module = "com.android.library:com.android.library.gradle.plugin", version.ref = "agp" }
+jna = { module = "net.java.dev.jna:jna", version.ref = "jna" }
 
-# Koin (Dependency Injection)
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
-koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+# Jvm demo
+ygdrasil-glfw-native = { module = "io.ygdrasil:glfw-native", version.ref = "glfwNative" }
+rococoa = { module = "io.ygdrasil:rococoa", version.ref = "rococoa" }
+jnaPlatform = { module = "net.java.dev.jna:jna-platform", version.ref = "jna" }
 
-# Ktor (Networking)
-ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
-ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
-ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
-ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
-ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+# Android demo
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+android-native-helper = { module = "io.ygdrasil:android-native-helper", version.ref = "android-native-helper" }
 
-# AndroidX
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
+# Tests
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
+kotest-core = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
+kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-ext-junit" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test-runner" }
+
+# Generator & Release
+gson = { module = "com.google.code.gson:gson", version = "2.13.1" }
+download = { module = "de.undercouch.download:de.undercouch.download.gradle.plugin", version.ref = "download" }
+dokka-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
+dokka-base = { module = "org.jetbrains.dokka:dokka-base", version.ref = "dokka" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlin-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
-android-library = { id = "com.android.library", version.ref = "agp" }
-compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+
+# Tests
+kotest = { id = "io.kotest", version.ref = "kotest" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+[bundles]
+kotest = ["kotest-core", "kotest-assertions"]
+dokka = ["dokka-base", "dokka-plugin"]

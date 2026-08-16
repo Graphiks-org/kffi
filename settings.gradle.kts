@@ -1,25 +1,25 @@
+rootProject.name = "kffi"
+
 pluginManagement {
-    repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
-        mavenCentral()
-        gradlePluginPortal()
-    }
+	repositories {
+		gradlePluginPortal()
+		google()
+		mavenCentral()
+	}
+	plugins {
+		id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+	}
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+	repositories {
+		google()
+		mavenCentral()
+	}
 }
 
-rootProject.name = "kmp-starter-pack"
-include(":shared")
-include(":docs")
+include("kffi")
+include("kffi-benchmark-spi")
+include("kffi-benchmark-jvm")
+include("kffi-benchmark-native")
+include("kffi-benchmark-android")
