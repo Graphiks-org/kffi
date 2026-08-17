@@ -8,8 +8,10 @@ repository branch policy. The PR body is not based on the repository pull
 request template. The root README is written in French and the PR replaced the
 HTML comments from the original README template.
 
-The repository already contains several workflows. This correction must follow
-the existing contribution workflow without replacing or deleting those files.
+The repository already contains several workflows. The later publication
+alignment intentionally changed the canonical publication workflow and removed
+the custom snapshot workflow; unrelated legacy workflows, the PR template, and
+the contribution policy remain untouched.
 
 ## Goals
 
@@ -21,12 +23,15 @@ the existing contribution workflow without replacing or deleting those files.
   technical content.
 - Restore the README template HTML comments verbatim, including the status
   badge comment block.
-- Preserve all existing workflow files.
+- Preserve unrelated legacy workflows, the PR template, and the contribution
+  policy while documenting the later publication alignment.
 - Verify branch, PR, documentation, and project checks after the changes.
 
 ## Non-goals
 
-- Do not replace or remove the legacy workflows in this correction.
+- Do not change unrelated legacy workflows, the PR template, or the contribution
+  policy. Publication alignment may change the canonical publication workflow
+  and remove the custom snapshot workflow.
 - Do not change the repository default branch.
 - Do not change the PR base from `master`.
 - Do not redesign the KFFI build, publishing, or module layout.
@@ -95,13 +100,12 @@ References to obsolete `shared` and `docs` modules will not be carried into
 the root README. Existing KFFI documentation will not claim unsupported
 backend implementations.
 
-## Workflow Preservation
+## Workflow History
 
-No existing file under `.github/workflows/` will be deleted, renamed, or
-replaced. Compliance is handled through the branch prefix, the `master` base,
-the PR template, and verification of the checks already configured by the
-repository. Any unrelated stale workflow behavior remains outside this
-correction's scope.
+Publication alignment intentionally changed the canonical publication workflow
+and removed the custom snapshot workflow. The canonical root publication task
+is the aggregated `./gradlew publishToMavenCentral` task. Unrelated legacy
+workflows, the PR template, and the contribution policy remain untouched.
 
 ## Validation
 

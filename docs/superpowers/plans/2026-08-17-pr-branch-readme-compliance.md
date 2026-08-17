@@ -4,7 +4,7 @@
 
 **Goal:** Rename PR #1's head branch to a policy-compliant feature branch, rewrite its metadata in English using the repository template, and restore an English root README without losing the original template comments.
 
-**Architecture:** This is a repository-process and documentation correction. GitHub branch and PR metadata will be changed through `gh`, while `README.md` will be updated in the repository. Existing workflows remain untouched; validation uses the commands already defined by `.github/workflows/kffi-test.yml` and `.github/workflows/kffi-benchmark-ci.yml`.
+**Architecture:** This is a repository-process and documentation correction. GitHub branch and PR metadata will be changed through `gh`, while `README.md` will be updated in the repository. Publication alignment intentionally changed the canonical publication workflow and removed the custom snapshot workflow; unrelated legacy workflows, the PR template, and the contribution policy remain untouched. Validation uses the commands already defined by `.github/workflows/kffi-test.yml` and `.github/workflows/kffi-benchmark-ci.yml`.
 
 **Tech Stack:** Git, GitHub CLI/API, Markdown, GitHub Actions, Gradle Kotlin DSL, Kotlin Multiplatform.
 
@@ -15,7 +15,7 @@
 - Modify: `README.md` - translate the standalone KFFI documentation to English, add relevant template sections, and restore the original template HTML comments.
 - Create: `docs/superpowers/specs/2026-08-17-pr-branch-readme-compliance-design.md` - already committed as `f701273`; keep it as the approved design record.
 - Create: `docs/superpowers/plans/2026-08-17-pr-branch-readme-compliance.md` - this implementation plan.
-- Do not modify: `.github/workflows/*` - existing workflow files are explicitly preserved.
+- Do not modify unrelated legacy workflows, the PR template, or the contribution policy. Publication alignment intentionally changes the canonical publication workflow and removes the custom snapshot workflow.
 - Do not modify: `.github/PULL_REQUEST_TEMPLATE.md` - the PR body must follow it without changing the repository template.
 - Remote metadata: PR #1 title, body, head branch, and base branch are updated through GitHub; no repository file represents this metadata.
 
@@ -176,7 +176,7 @@ Add English sections for `Contributing`, `Project Architecture`, `CI/CD Workflow
 
 - [ ] **Step 5: Remove contradictory or stale user-facing statements**
 
-Translate the snapshot documentation so it describes the existing snapshot workflow without claiming that every push to a deleted or renamed branch publishes snapshots. Use wording such as “Snapshots are published by the repository snapshot workflow” and retain the documented `1.0.0-SNAPSHOT` coordinate and migration note.
+Translate the publication documentation so releases are consumed from Maven Central, development snapshots default to `1.0.0-SNAPSHOT` and use the Central Portal snapshots repository, and publication selection uses `releaseVersion`/`-PreleaseVersion=...`. Document the aggregated root `./gradlew publishToMavenCentral` task without implying a custom snapshot workflow.
 
 - [ ] **Step 6: Review the documentation diff**
 
@@ -263,8 +263,10 @@ Not applicable.
 ## Additional Notes
 
 The PR continues to target `master` and uses the policy-compliant branch
-`feat/split-kffi-from-wgpu4k-native`. Existing workflow files, including legacy
-workflow definitions, were intentionally preserved.
+`feat/split-kffi-from-wgpu4k-native`. The canonical publication workflow was
+aligned with the process from master and the standalone custom publication
+convention and snapshot workflow were removed. Unrelated legacy workflows, the
+PR template, and the contribution policy file were preserved.
 ```
 
 The two changelog lines are intentionally mutually exclusive: leave the update line unchecked and check the explicit no-update justification.
@@ -359,7 +361,7 @@ git diff master...HEAD -- README.md
 
 Expected: the original project-status comment block appears in the current README with its text unchanged, while user-facing sections are English.
 
-- [ ] **Step 2: Confirm no workflow was deleted or changed**
+- [ ] **Step 2: Confirm publication and unrelated workflow history**
 
 Run:
 
@@ -367,7 +369,10 @@ Run:
 git diff --name-status f701273..HEAD -- .github/workflows
 ```
 
-Expected: no workflow path appears in the diff from the approved design commit to the current head. The original PR's historical workflow additions remain outside this correction's diff and are not removed.
+Expected: the diff contains only the intentional canonical publication workflow
+change and custom snapshot workflow removal; unrelated legacy workflows remain
+untouched. The original PR's historical workflow additions remain outside this
+correction's diff and are not removed.
 
 - [ ] **Step 3: Confirm the PR policy inputs**
 
