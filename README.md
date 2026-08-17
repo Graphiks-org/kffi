@@ -1,44 +1,73 @@
-# kffi — couche FFI multiplateforme (JVM / Android / Native)
+# kffi - Multiplatform FFI layer (JVM / Android / Native)
 
-[![Static Badge](https://img.shields.io/badge/Licence-MIT-blue?style=plastic)](https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMIT_License)
+[![Static Badge](https://img.shields.io/badge/License-MIT-blue?style=plastic)](https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMIT_License)
 
-`kffi` est une couche d'accès bas-niveau à la mémoire native et aux appels FFI
-(foreign function interface), écrite en Kotlin Multiplatform. Elle est partagée
-par les bindings [wgpu4k-native](https://github.com/wgpu4k/wgpu4k-native) et
-utilisable par n'importe quel projet consommant des bibliothèques C.
+`kffi` is a low-level foreign function interface (FFI) layer for native memory
+access and native calls, written in Kotlin Multiplatform. It is a standalone
+runtime library for projects that consume C libraries.
 
-C'est un module **runtime uniquement** : la génération des bindings est assurée
-par un outil séparé, [kextract](https://github.com/klang-toolkit/kextract) (voir
-[Génération de bindings](#génération-de-bindings)).
+The repository was extracted from
+[wgpu4k-native](https://github.com/wgpu4k/wgpu4k-native) and now contains the
+standalone KFFI runtime and its benchmark modules.
 
-Le contrat `expect/actual` vit dans `commonMain` (`org.graphiks.kffi`) :
-`NativeAddress`, `MemoryBuffer`, `MemoryAllocator` (+ `memoryScope`,
-`globalMemory`), `CString`, `Callback`/`CallbackRuntime`. Le contrat de sécurité
-mémoire est **unifié sur les trois backends** (spec P3).
+This is a **runtime-only** module: binding generation is handled by the
+separate [kextract](https://github.com/klang-toolkit/kextract) tool (see
+[Binding generation](#binding-generation)).
 
-- [Démarrage rapide](docs/quickstart.md)
-- [Contrat de sécurité mémoire](#contrat-de-sécurité-mémoire)
-- [Option `unsafe`](#option-unsafe)
+The `expect/actual` contract lives in `commonMain` (`org.graphiks.kffi`):
+`NativeAddress`, `MemoryBuffer`, `MemoryAllocator` (`memoryScope`,
+`globalMemory`), `CString`, and `Callback`/`CallbackRuntime`. The memory safety
+contract is unified across all three backends (spec P3).
+
+<!-- ==========================================
+     BADGES DE STATUT DE PROJET PERSONNALISABLES
+     Décommentez/copiez simplement le badge correspondant au statut actuel de votre projet.
+     ========================================== -->
+
+<!-- STATUT : EN PLANIFICATION (PLANNING) -->
+<!-- [![Projet: Planning](https://img.shields.io/badge/Statut-Planning-blue)](https://github.com) -->
+
+<!-- STATUT : INCUBATION / EN DÉVELOPPEMENT (INCUBATING) -->
+<!-- [![Projet: Incubating](https://img.shields.io/badge/Statut-Incubating-orange)](https://github.com) -->
+
+<!-- STATUT : STABLE / PRÊT PRODUCTION (STABLE) -->
+<!-- [![Projet: Stable](https://img.shields.io/badge/Statut-Stable-green)](https://github.com) -->
+
+<!-- STATUT : DEPRÉCIÉ (DEPRECATED) -->
+<!-- [![Projet: Deprecated](https://img.shields.io/badge/Statut-Deprecated-red)](https://github.com) -->
+
+<!-- STATUT : ARCHIVÉ (ARCHIVED) -->
+<!-- [![Projet: Archived](https://img.shields.io/badge/Statut-Archived-lightgrey)](https://github.com) -->
+
+- [Quickstart](docs/quickstart.md)
+- [Backends](#backends)
+- [Memory safety contract](#memory-safety-contract)
+- [`unsafe` mode](#unsafe-mode)
 - [Callbacks](#callbacks)
-- [Versionnement](#versionnement)
+- [Versioning](#versioning)
+- [Contributing](#contributing)
+- [Project architecture](#project-architecture)
+- [CI/CD workflow](#cicd-workflow)
+- [Useful development commands](#useful-development-commands)
 
 ## Backends
 
-| Backend | Implémentation | Notes |
+| Backend | Implementation | Notes |
 |---------|----------------|-------|
-| **JVM** | Panama FFM (`java.lang.foreign`) | Arènes confinées ; downcalls via `MethodHandle` ; `jvmTarget` 24 |
-| **Android** | Moteur Kotlin + JNI (`NativeEngine`/`UpcallEngine`) | `.so` embarqué dans l'AAR ; chemin de secours libffi |
+| **JVM** | Panama FFM (`java.lang.foreign`) | Confined arenas; downcalls through `MethodHandle`; `jvmTarget` 24 |
+| **Android** | Kotlin engine + JNI (`NativeEngine`/`UpcallEngine`) | `.so` bundled in the AAR; libffi fallback path |
 | **Native** | `kotlinx.cinterop` | iOS, macOS, Linux, Windows (MinGW), Android Native |
 
-## Consommer kffi
+## Consuming kffi
 
-### Dépôts
+### Repositories
 
-Les versions **release** sont publiées sur Maven Central. Les **snapshots**
-(publiés à chaque push sur `main`) sont sur le dépôt snapshots Sonatype :
+Release artifacts are published to Maven Central. Snapshot artifacts are
+published by the repository snapshot workflow to the Sonatype snapshots
+repository:
 
 ```kotlin
-// settings.gradle.kts — resolution repos
+// settings.gradle.kts - resolution repositories
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
@@ -49,105 +78,103 @@ dependencyResolutionManagement {
 
 ### Artifacts
 
-Le groupe est `org.graphiks`. Les publications suivent le nommage Kotlin
-Multiplatform standard :
+The group is `org.graphiks`. Publications follow the standard Kotlin
+Multiplatform naming scheme:
 
-| Contexte | Artifact | Notes |
-|----------|----------|-------|
-| Consommateur KMP | `org.graphiks:kffi` | Artifact racine (métadonnées) : Gradle résout automatiquement la variante plateforme |
-| Projet JVM seul | `org.graphiks:kffi-jvm` | Exige un JDK avec `java.lang.foreign` (24+) |
-| Projet Android | `org.graphiks:kffi-android` | AAR (variantes `release`/`debug`), minSdk 28 |
-| Projet natif | `org.graphiks:kffi-<cible>` | Un artifact **par cible native** (voir la liste ci-dessous) |
+| Context | Artifact | Notes |
+|---------|----------|-------|
+| KMP consumer | `org.graphiks:kffi` | Root artifact (metadata); Gradle resolves the platform variant automatically |
+| JVM-only project | `org.graphiks:kffi-jvm` | Requires a JDK with `java.lang.foreign` (24+) |
+| Android project | `org.graphiks:kffi-android` | AAR with `release`/`debug` variants; minSdk 28 |
+| Native project | `org.graphiks:kffi-<target>` | One artifact per Native target (see the list below) |
 
-Il n'existe **pas** d'artifact agrégé « kffi-native » : chaque cible native est
-publiée séparément. Pour un consommateur KMP, déclarer simplement l'artifact
-racine `org.graphiks:kffi` — Gradle choisit la variante correspondant à la cible
-compilée.
+There is no aggregate `kffi-native` artifact: each Native target is published
+separately. For a KMP consumer, declare the root `org.graphiks:kffi` artifact;
+Gradle selects the variant for the target being compiled.
 
-Targets natives publiées : `kffi-iosx64`, `kffi-iosarm64`,
-`kffi-iossimulatorarm64`, `kffi-macosx64`, `kffi-macosarm64`, `kffi-linuxx64`,
-`kffi-linuxarm64`, `kffi-mingwx64`, `kffi-androidnativearm64`,
-`kffi-androidnativex64`.
+Published Native targets:
+`kffi-iosx64`, `kffi-iosarm64`, `kffi-iossimulatorarm64`,
+`kffi-macosx64`, `kffi-macosarm64`, `kffi-linuxx64`, `kffi-linuxarm64`,
+`kffi-mingwx64`, `kffi-androidnativearm64`, `kffi-androidnativex64`.
 
-### Déclaration de dépendance
+### Dependency declaration
 
-> **Note M2.4** : la coordonnée snapshot finale est `1.0.0-SNAPSHOT` — effective
-> après la migration M2.4 (versionnement indépendant du module kffi). Avant
-> cette migration, le module hérite de la version du dépôt hôte et les
-> snapshots publiés sont `v29.0.0-<timestamp>-SNAPSHOT` (dépôt Sonatype).
+> **M2.4 note:** The final snapshot coordinate is `1.0.0-SNAPSHOT`, effective
+> after the M2.4 migration (independent versioning for the kffi module). Before
+> this migration, the module inherited the host repository version and
+> published snapshots were `v29.0.0-<timestamp>-SNAPSHOT` in the Sonatype
+> repository.
 
 ```kotlin
-// build.gradle.kts — projet KMP
+// build.gradle.kts - KMP project
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("org.graphiks:kffi:1.0.0-SNAPSHOT") // release : "1.0.0"
+            implementation("org.graphiks:kffi:1.0.0-SNAPSHOT") // release: "1.0.0"
         }
     }
 }
 ```
 
 ```kotlin
-// build.gradle.kts — projet JVM seul
+// build.gradle.kts - JVM-only project
 dependencies {
     implementation("org.graphiks:kffi-jvm:1.0.0-SNAPSHOT")
 }
 ```
 
 ```kotlin
-// build.gradle.kts — projet Android
+// build.gradle.kts - Android project
 dependencies {
     implementation("org.graphiks:kffi-android:1.0.0-SNAPSHOT")
 }
 ```
 
-Voir [docs/quickstart.md](docs/quickstart.md) pour un exemple complet de bout en
-bout.
+See [docs/quickstart.md](docs/quickstart.md) for a complete end-to-end
+example.
 
-## Génération de bindings
+## Binding generation
 
-kffi est **runtime-only** : il fournit le moteur d'exécution (mémoire,
-downcall, upcall) mais pas de générateur. Les bindings Kotlin contre vos
-headers C/ObjC sont générés par
-**[kextract](https://github.com/klang-toolkit/kextract)** (générateur Kotlin
-utilisant libclang), qui cible l'API publique `org.graphiks.kffi` :
+kffi is **runtime-only**: it provides the runtime engine for memory access,
+downcalls, and upcalls, but not a binding generator. Kotlin bindings for C/ObjC
+headers are generated by
+[kextract](https://github.com/klang-toolkit/kextract), a Kotlin generator that
+uses libclang and targets the public `org.graphiks.kffi` API:
 
-- structs mémoire-backed (`MemoryBuffer`) et accès scalaires/tableaux ;
-- wrappers de downcall par fonction (résolution de symbole au chargement) ;
-- déclarations de callbacks (`CallbackType` canoniques) et trampolines
-  d'upcall par forme de signature.
+- Memory-backed structs (`MemoryBuffer`) with scalar and array access.
+- Per-function downcall wrappers with symbol resolution at load time.
+- Callback declarations (`CallbackType`) and upcall trampolines by signature shape.
 
-Le workflow de consommation : générer les bindings avec kextract → lier les
-bindings à kffi → charger la bibliothèque native au démarrage (voir
-ci-dessous).
+The consumer workflow is: generate bindings with kextract, link the bindings to
+kffi, and load the native library during startup (see below).
 
-## Charger une bibliothèque native
+## Loading a native library
 
 ### JVM
 
-1. Charger la bibliothèque dans le processus : `System.loadLibrary("monlib")`
-   (ou la placer sur `java.library.path`) — les symboles résolus par
-   `SymbolLookup.loaderLookup()` n'existent que pour les libs chargées par le
+1. Load the library into the process with `System.loadLibrary("monlib")` (or
+   place it on `java.library.path`). Symbols resolved by
+   `SymbolLookup.loaderLookup()` exist only for libraries loaded by the
    classloader.
-2. Résoudre les symboles à l'adresse brute :
+2. Resolve symbols to raw addresses:
 
 ```kotlin
 import org.graphiks.kffi.findOrThrow
 
-val symbol: Long = findOrThrow("mon_symbole") // UnsatisfiedLinkError si absent
+val symbol: Long = findOrThrow("mon_symbole") // UnsatisfiedLinkError if absent
 ```
 
-Le runtime JVM kffi utilise lui-même les API restreintes de
-`java.lang.foreign` (Linker, MethodHandles) : lancez la JVM avec
-`--enable-native-access=ALL-UNNAMED`. Sans ce flag, la JVM émet un warning
-(et bloquera l'appel dans une future version du JDK). C'est aussi requis pour
-les upcalls émis par kextract sur le chemin de secours FFM direct.
+The JVM kffi runtime uses restricted `java.lang.foreign` APIs (`Linker`,
+`MethodHandles`) itself. Start the JVM with
+`--enable-native-access=ALL-UNNAMED`. Without this flag, the JVM emits a
+warning and will block the call in a future JDK version. The flag is also
+required for upcalls emitted by kextract on the direct FFM fallback path.
 
 ### Android
 
-L'AAR embarque le moteur `libkffi.so` (JNI) : il est chargé automatiquement
-(`System.loadLibrary("kffi")` à l'initialisation de `NativeEngine`). La
-bibliothèque consommée est chargée dynamiquement :
+The AAR bundles the `libkffi.so` engine (JNI), which is loaded automatically by
+`System.loadLibrary("kffi")` during `NativeEngine` initialization. The consumed
+library is loaded dynamically:
 
 ```kotlin
 import org.graphiks.kffi.engine.NativeEngine
@@ -156,30 +183,29 @@ val handle = NativeEngine.loadNativeLibrary("/data/app/.../libmonlib.so") // dlo
 val symbol = NativeEngine.resolveSymbolIn(handle, "mon_symbole")
 ```
 
-L'AAR embarque les règles R8 consommateur (appliquées au minification du
-consommateur) et les ABIs `arm64-v8a`, `x86_64`, `armeabi-v7a`.
+The AAR bundles consumer R8 rules and the `arm64-v8a`, `x86_64`, and
+`armeabi-v7a` ABIs.
 
 ### Native
 
-Le lien se fait à la compilation via cinterop (fichiers `.def`) : les bindings
-générés par kextract et le module kffi sont liés à la bibliothèque native au
-link final. Aucun `dlopen` manuel.
+Linking happens at compile time through cinterop (`.def` files): bindings
+generated by kextract and the kffi module are linked to the native library at
+final link time. No manual `dlopen` is needed.
 
-## Modèle mémoire
+## Memory model
 
-- `NativeAddress` — adresse native brute (value class sur `Long`). **Non
-  bornée par nature** : tout accès typé passe par `MemoryBuffer` (borné) ou par
-  l'option `unsafe`.
-- `MemoryBuffer` — buffer borné sur une adresse native : `handler` (adresse) +
-  `size` (taille en octets). Accès scalaires et tableaux pour toutes les
-  familles (Byte/Short/Int/Long/Float/Double, signés et non signés, pointeurs).
-- `CString` — chaîne C (UTF-8, terminée par `\0`) : allocation via
-  `MemoryAllocator.allocateFrom`, lecture via `toKString()`.
-- `MemoryAllocator` — arène confinée : allocation (`allocate`,
+- `NativeAddress` - a raw native address (a value class over `Long`). It is
+  **unbounded by nature**: typed access goes through `MemoryBuffer` (bounded) or
+  the `unsafe` option.
+- `MemoryBuffer` - a bounded buffer over a native address: `handler` (address)
+  and `size` (bytes). It provides scalar and array access for Byte, Short, Int,
+  Long, Float, Double, signed and unsigned types, and pointers.
+- `CString` - a C string (UTF-8, terminated by `\0`): allocate with
+  `MemoryAllocator.allocateFrom` and read with `toKString()`.
+- `MemoryAllocator` - a confined arena with allocation (`allocate`,
   `allocateBuffer`, `allocateFrom`, `bufferOf`, `bufferOfAddress`,
-  `bufferOfAddresses`), fermeture (`close`), et `memoryScope { }` qui garantit
-  la fermeture de l'arène en fin de bloc. `globalMemory` est une arène de
-  durée de vie processus.
+  `bufferOfAddresses`), closing (`close`), and `memoryScope { }`, which closes
+  the arena at the end of the block. `globalMemory` is a process-lifetime arena.
 
 ```kotlin
 import org.graphiks.kffi.*
@@ -191,126 +217,229 @@ memoryScope { allocator ->
     val value = buffer.readInt(offset = 0uL) // 42
 
     buffer.readLong(offset = 12uL)
-    // IndexOutOfBoundsException : MemoryBuffer access out of bounds: offset=12 width=8 size=16
+    // IndexOutOfBoundsException: MemoryBuffer access out of bounds: offset=12 width=8 size=16
 }
 ```
 
-## Contrat de sécurité mémoire
+## Memory safety contract
 
-### Bornes-check
+### Bounds checks
 
-Tout accès typé (scalaire ou tableau) est vérifié : `offset + elementSize ≤ size`.
-Hors bornes → `IndexOutOfBoundsException` avec offset/taille dans le message.
-Défaut : vérifications actives.
+Every typed scalar and array access is checked: `offset + elementSize <= size`.
+Out-of-bounds access throws `IndexOutOfBoundsException` with the offset and
+size in the message. Checks are enabled by default.
 
-### Durée de vie
+### Lifetime
 
-Décision I2-(a) : le scope d'arène/session vit dans le `MemoryBuffer` (pas dans
-`NativeAddress`).
+Decision I2-(a): the arena/session scope lives in `MemoryBuffer`, not in
+`NativeAddress`.
 
-- Buffer créé via `MemoryAllocator` (JVM) : porte le segment scopé de l'arène →
-  accès après `close()` de l'arène → `IllegalStateException`.
-- Buffer créé depuis une adresse brute (`MemoryBuffer(addr, size)`) : sans
-  scope → accès post-close **non détecté** (UB documenté, aligné
-  Android/native).
-- Mode `unsafe` JVM : la garde de close est **conservée** (vérification légère
-  avant l'accès) ; seules les bornes sont sautées. Fermer l'arène pendant
-  qu'un buffer unsafe est encore utilisé reste un **use-after-free** : la garde
-  détecte la fermeture, mais un buffer brut n'a aucune garde.
+- A buffer created through `MemoryAllocator` (JVM) carries the arena's scoped
+  segment. Access after the arena's `close()` throws `IllegalStateException`.
+- A buffer created from a raw address (`MemoryBuffer(addr, size)`) has no scope.
+  Post-close access is **not detected** (documented UB, aligned with
+  Android/Native).
+- JVM `unsafe` mode retains the close guard (a lightweight check before access);
+  only bounds checks are skipped. Closing an arena while an unsafe buffer is in
+  use is still a **use-after-free**: the guard detects closure, but a raw buffer
+  has no guard.
 
 ### Confinement
 
-JVM : l'arène est `Arena.ofConfined()` — les buffers scopés et `close()` sont
-confinés au thread de création (accès depuis un autre thread →
-`WrongThreadException`). `memoryScope` est soumis à la même règle. En mode
-`unsafe`, l'accès passe par l'adresse brute (`sun.misc.Unsafe`) : aucune
-vérification de thread, seule la garde de close s'applique. Un buffer construit
-depuis une adresse brute ne porte **aucun** confinement (garde nulle, UB
-documenté) — c'est le chemin à privilégier pour un partage inter-threads
-assumé, à vos risques.
+On the JVM, the arena is `Arena.ofConfined()`: scoped buffers and `close()` are
+confined to the creating thread. Access from another thread throws
+`WrongThreadException`. `memoryScope` follows the same rule.
+
+In `unsafe` mode, access uses the raw address (`sun.misc.Unsafe`), so there is
+no thread check; only the close guard applies. A buffer built from a raw address
+has no confinement (null guard, documented UB) and is the path for deliberate
+cross-thread sharing at the consumer's own risk.
 
 ### Aliasing
 
-Deux buffers sur la même zone mémoire sont vus mutuellement : les écritures de
-l'un sont visibles par l'autre. **Pas de verrou** : la synchronisation relève
-du consommateur. Le partage inter-threads est en outre limité par le
-[confinement](#confinement) des arènes JVM.
+Two buffers over the same memory area see each other: writes through one are
+visible through the other. **No lock is provided**; synchronization is the
+consumer's responsibility. Cross-thread sharing is also limited by JVM arena
+[confinement](#confinement).
 
-## Option `unsafe`
+## `unsafe` mode
 
-`unsafe = true` élimine les bornes-check, au choix :
+`unsafe = true` disables bounds checks in either of two ways:
 
-- par allocateur — `MemoryAllocator(unsafe = true)` propage l'option à **tous**
-  les buffers créés par cet allocateur ;
-- par buffer — `MemoryBuffer(addr, size, unsafe = true)` opt-in local.
+- Per allocator: `MemoryAllocator(unsafe = true)` propagates the option to all
+  buffers created by that allocator.
+- Per buffer: `MemoryBuffer(addr, size, unsafe = true)` enables it locally.
 
-Défaut : `false` (bornes-check actifs). En mode `unsafe`, tout accès hors
-bornes devient un **comportement indéfini** (UB) : pas d'exception, corruption
-mémoire possible. C'est un choix délibéré, réservé aux chemins à chaud.
+The default is `false` (bounds checks enabled). In `unsafe` mode, every
+out-of-bounds access becomes **undefined behavior** (UB): no exception is
+raised, and memory corruption is possible. This is deliberate and intended for
+hot paths only.
 
-Politique de durée de vie (P2) : le mode unsafe **ne dispense pas** de la
-discipline de durée de vie. Les buffers unsafe suivent la même politique que
-les buffers sûrs (scope porté par le buffer, UB documenté pour les buffers
-bruts) — uniquement les bornes sont sautées.
+Lifetime policy P2: `unsafe` mode does **not** remove lifetime discipline. Unsafe
+buffers follow the same lifetime policy as safe buffers (scope carried by the
+buffer, documented UB for raw buffers); only bounds checks are skipped.
 
-### Différence native
+### Native distinction
 
-Sur les backends native, le mode `unsafe` est **figé à la compilation** : la
-valeur est une constante build-time (`KFFI_NATIVE_UNSAFE` dans
-`MemoryBuffer.native.kt`, actuellement `false`). Les distributions native ne
-peuvent pas basculer au runtime ; le flag d'API est accepté pour la
-compatibilité et sans effet. Basculer à la compilation : éditer la constante
-puis recompiler le module.
+On Native backends, `unsafe` is **compile-time fixed**: the value is a build-time
+constant (`KFFI_NATIVE_UNSAFE` in `MemoryBuffer.native.kt`, currently `false`).
+Native distributions cannot switch it at runtime; the API flag is accepted for
+compatibility and has no effect. To change it at compile time, edit the
+constant and rebuild the module.
 
 ## Callbacks
 
-Les callbacks (upcalls, de la native vers Kotlin) sont gérés par
-`CallbackRuntime` et les moteurs d'upcall par backend (`JvmUpcallEngine`,
-`UpcallEngine` Android). Le code généré par kextract produit les descripteurs
-(`CallbackType`), les trampolines et les dispatchers ; le consommateur
-enregistre une lambda Kotlin par `CallbackRuntime.register`.
+Callbacks (upcalls from Native to Kotlin) are managed by `CallbackRuntime` and
+backend-specific upcall engines (`JvmUpcallEngine`, `UpcallEngine` on Android).
+Code generated by kextract provides `CallbackType` descriptors, trampolines,
+and dispatchers; the consumer registers a Kotlin lambda with
+`CallbackRuntime.register`.
 
-Cycle de vie :
+Lifecycle:
 
-- `CallbackRegistration.close()` — ferme la registration : plus aucune
-  livraison. `isClosed` devient vrai immédiatement ; `isQuiescent` ne devient
-  vrai qu'une fois **toutes les livraisons natives en vol revenues**
-  (comptage d'`inFlight`).
-- `CallbackPolicy.ONCE` — le callback n'est livré qu'une fois : le slot est
-  dé-publié après la première livraison (claim). `REPEATING` — livré tant que
-  la registration n'est pas fermée.
-- `CallbackRuntime.prepare` / `activateForNativeCall` — pattern transactionnel
-  pour les appels natifs ponctuels générés (préparation, activation à l'appel,
-  close en cas d'échec).
-- `CallbackRuntime.rearmAfterNativeQuiescence` — réarmement d'un slot sans
-  userdata (`@UnsafeCallbackRearmApi`) : le consommateur doit avoir établi la
-  quiescence native avant de réarmer.
-- Barrière d'exception : aucune exception ne traverse la frontière native —
-  `dispatchSafely` route les échecs vers le `CallbackExceptionHandler` de la
-  registration (`onError`), ou vers le canal de secours si le routage échoue.
+- `CallbackRegistration.close()` closes the registration and prevents further
+  delivery. `isClosed` becomes true immediately; `isQuiescent` becomes true
+  only after all in-flight Native deliveries have returned (tracked by
+  `inFlight`).
+- `CallbackPolicy.ONCE` delivers a callback once, then unpublishes the slot
+  after the first delivery (claim). `REPEATING` delivers while the registration
+  remains open.
+- `CallbackRuntime.prepare` / `activateForNativeCall` provide a transactional
+  pattern for generated one-shot Native calls: prepare, activate at the call,
+  and close on failure.
+- `CallbackRuntime.rearmAfterNativeQuiescence` rearms a slot without userdata
+  (`@UnsafeCallbackRearmApi`). The consumer must establish Native quiescence
+  before rearming.
+- No exception crosses the Native boundary. `dispatchSafely` routes failures to
+  the registration's `CallbackExceptionHandler` (`onError`), or to the fallback
+  channel if routing fails.
 
-Durée de vie des trampolines : JVM — stubs alloués dans une arène globale
-(durée de vie processus) ; Android — trampolines JNI avec gestion explicite
-(`allocateTrampoline` / `freeTrampoline`). Dans les deux cas, la registration
-(`CallbackRegistration`) contrôle le routage : la fermer retire le slot de la
-table de tokens (token jamais réutilisé).
+Trampoline lifetime: on the JVM, stubs are allocated in a global arena with
+process lifetime. On Android, JNI trampolines use explicit management
+(`allocateTrampoline` / `freeTrampoline`). In both cases,
+`CallbackRegistration` controls routing; closing it removes the slot from the
+token table, and a token is never reused.
 
-## Versionnement
+## Versioning
 
-Semver strict. `1.0.0` est le **premier contrat stable** : le redessin
-P1-P4 (moteurs downcall/upcall, politique de durée de vie I2-a, option unsafe
-I3, optimisation M1) est le dernier avant 1.0. Les API publiques sont
-stabilisées à partir de cette version ; toute rupture passe par un bump
-majeur.
+kffi follows strict SemVer. `1.0.0` is the **first stable contract**: the P1-P4
+redesign (downcall/upcall engines, I2-a lifetime policy, I3 `unsafe` option, and
+M1 optimization) is the final redesign before 1.0. Public APIs are stable from
+this version; breaking changes require a major version bump.
 
-- Les **releases** sont versionnées `x.y.z` (actuellement en préparation de
-  `1.0.0`).
-- Les **snapshots** sont publiés à chaque push sur `main`, en `-SNAPSHOT`
-  (ex. `1.0.0-SNAPSHOT` — coordonnée finale après la migration M2.4 ; avant,
-  snapshots publiés `v29.0.0-<timestamp>-SNAPSHOT`).
-- La version courante du runtime est exposée : `Kffi.VERSION` (`1.0.0` — à
-  partir de la version module M2.4).
+- Releases use `x.y.z` and the current runtime version is being prepared as
+  `1.0.0`.
+- Snapshot artifacts are published by the repository snapshot workflow. The
+  post-M2.4 consumer coordinate is `1.0.0-SNAPSHOT`; before that migration,
+  snapshots inherited the host repository version and used
+  `v29.0.0-<timestamp>-SNAPSHOT`.
+- The snapshot workflow sets `KFFI_VERSION` to a timestamped
+  `YYYYMMDDHHMMSS-SNAPSHOT` value for its publication run.
+- The current runtime version is exposed as `Kffi.VERSION` (`1.0.0`, starting
+  with the M2.4 module version).
 
-## Licence
+## Contributing
 
-MIT — voir [LICENSE](LICENSE).
+Contributions are welcome. Please see:
+
+- [Contributing Guide](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
+- [Support](SUPPORT.md)
+- [Changelog](CHANGELOG.md)
+
+## Project architecture
+
+This repository is a standalone Kotlin Multiplatform build. The root
+`settings.gradle.kts` includes these modules:
+
+| Module | Purpose |
+|--------|---------|
+| `:kffi` | The multiplatform runtime library and its JVM, Android, and Native tests |
+| `:kffi-benchmark-spi` | Shared multiplatform benchmark model and test contracts |
+| `:kffi-benchmark-jvm` | JVM JMH benchmarks for kffi |
+| `:kffi-benchmark-native` | Kotlin/Native benchmark harness |
+| `:kffi-benchmark-android` | Android instrumented benchmark harness |
+
+The `:kffi` module keeps the public `expect` declarations and common contracts
+in `commonMain`, with platform implementations in the JVM, Android, and Native
+source sets. The JVM implementation uses Panama FFM, Android uses the Kotlin
+and JNI engines, and Native uses Kotlin/Native cinterop. Benchmark modules
+depend on the runtime and benchmark SPI rather than introducing another
+runtime module.
+
+## CI/CD workflow
+
+The dedicated KFFI test workflow (`.github/workflows/kffi-test.yml`) runs on
+macOS, Ubuntu, and Windows with JDK 25. It runs `./gradlew :kffi:jvmTest` on
+every matrix entry. It also performs these platform-specific checks:
+
+- macOS compiles the iOS and macOS callback token codecs, then runs either
+  `./gradlew :kffi:macosArm64Test` or `./gradlew :kffi:macosX64Test` according to
+  the host architecture.
+- Ubuntu compiles the Linux callback token codecs and runs
+  `./gradlew :kffi:linuxX64Test`.
+- Windows activates MSVC, compiles the MinGW callback token codec, and runs
+  `./gradlew :kffi:mingwX64Test`.
+
+The benchmark workflow (`.github/workflows/kffi-benchmark-ci.yml`) runs the JVM
+JMH benchmark, compiles the macOS arm64 Native benchmark harness, and assembles
+the Android debug test APK. The snapshot publication workflow publishes
+artifacts through the repository's configured Maven Central publication task.
+
+## Useful development commands
+
+### JVM tests
+
+```bash
+./gradlew :kffi:jvmTest
+```
+
+### macOS Native compile and test checks
+
+```bash
+./gradlew \
+  :kffi:compileKotlinIosX64 \
+  :kffi:compileKotlinIosArm64 \
+  :kffi:compileKotlinIosSimulatorArm64 \
+  :kffi:compileKotlinMacosArm64 \
+  :kffi:compileKotlinMacosX64
+
+if [[ "$(uname -m)" == "arm64" ]]; then
+  ./gradlew :kffi:macosArm64Test
+else
+  ./gradlew :kffi:macosX64Test
+fi
+```
+
+### Linux Native compile and test checks
+
+```bash
+./gradlew :kffi:compileKotlinLinuxX64 :kffi:compileKotlinLinuxArm64
+./gradlew :kffi:linuxX64Test
+```
+
+### Windows Native compile and test checks
+
+```bash
+./gradlew :kffi:compileKotlinMingwX64
+./gradlew :kffi:mingwX64Test
+```
+
+### Benchmarks
+
+```bash
+./gradlew :kffi-benchmark-jvm:jmh
+./gradlew :kffi-benchmark-native:compileKotlinMacosArm64
+./gradlew :kffi-benchmark-android:assembleDebugAndroidTest
+```
+
+### Inspect available Gradle tasks
+
+```bash
+./gradlew tasks
+```
+
+## License
+
+MIT - see [LICENSE](LICENSE).
