@@ -62,16 +62,15 @@ contract is unified across all three backends (spec P3).
 
 ### Repositories
 
-Release artifacts are published to Maven Central. Snapshot artifacts are
-published by the repository snapshot workflow to the Sonatype snapshots
-repository:
+Release and snapshot artifacts are published through Maven Central. The
+repository snapshot workflow uses the same Maven Central publication
+configuration, so consumers only need Maven Central:
 
 ```kotlin
 // settings.gradle.kts - resolution repositories
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
-        maven("https://oss.sonatype.org/content/repositories/snapshots/")
     }
 }
 ```
@@ -101,9 +100,8 @@ Published Native targets:
 
 > **M2.4 note:** The final snapshot coordinate is `1.0.0-SNAPSHOT`, effective
 > after the M2.4 migration (independent versioning for the kffi module). Before
-> this migration, the module inherited the host repository version and
-> published snapshots were `v29.0.0-<timestamp>-SNAPSHOT` in the Sonatype
-> repository.
+> this migration, the module inherited the host repository version and snapshot
+> versions used `v29.0.0-<timestamp>-SNAPSHOT`.
 
 ```kotlin
 // build.gradle.kts - KMP project
