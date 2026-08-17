@@ -134,8 +134,8 @@ arena) or **per buffer**:
 ```kotlin
 // Per allocator: every created buffer is unsafe
 val hotAllocator = MemoryAllocator(unsafe = true)
-val hot = hotAllocator.allocateBuffer(8uL)
-hot.writeLong(1L, 64uL) // out of bounds: NO exception - UB (the real area is larger here)
+val hot = hotAllocator.allocateBuffer(128uL)
+hot.writeLong(1L, 64uL) // within the backing area; unsafe mode skips bounds checks
 
 // Per buffer: local opt-in (actual allocation is 128 bytes, nominal size is 64)
 memoryScope { allocator ->
