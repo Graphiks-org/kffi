@@ -18,8 +18,6 @@ dependencies {
 	implementation(libs.android.library)
 	implementation("com.vanniktech:gradle-maven-publish-plugin:${libs.versions.maven.publish.get()}")
 
-	implementation(libs.gson)
-
 	implementation(libs.plugins.kotlin.multiplatform.asLibrary())
 
 }
