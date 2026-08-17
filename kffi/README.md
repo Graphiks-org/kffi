@@ -1,32 +1,33 @@
-# kffi — couche FFI multiplateforme de wgpu4k-native
+# kffi — cross-platform FFI layer for wgpu4k-native
 
-Module Kotlin Multiplatform `org.graphiks:kffi` : couche d'accès bas-niveau à la
-mémoire native et aux appels FFI, partagée par les bindings wgpu4k-native.
-Le contrat `expect/actual` vit dans `commonMain` (`org.graphiks.kffi`) :
+Kotlin Multiplatform module `org.graphiks:kffi`: a low-level access layer for
+native memory and FFI calls, shared by the wgpu4k-native bindings.
+The `expect/actual` contract lives in `commonMain` (`org.graphiks.kffi`):
 `NativeAddress`, `MemoryBuffer`, `MemoryAllocator` (+ `memoryScope`, `globalMemory`),
 `CString`, `Callback`/`CallbackRuntime`.
 
 ## Backends
 
-| Backend | Implémentation | Notes |
+| Backend | Implementation | Notes |
 |---------|----------------|-------|
-| **JVM** | Panama FFM (`java.lang.foreign`) | Arènes confinées ; downcalls via `MethodHandle` |
-| **Android** | Couche Kotlin maison | Réimplémentation du modèle `MemorySegment`/`ValueLayout` par-dessus JNA |
-| **Native** | `kotlinx.cinterop` | iOS, macOS, Linux, Windows, Android native |
+| **JVM** | Panama FFM (`java.lang.foreign`) | Confined arenas; downcalls through `MethodHandle` |
+| **Android** | Custom Kotlin layer | Reimplementation of the `MemorySegment`/`ValueLayout` model on top of JNA |
+| **Native** | `kotlinx.cinterop` | Native iOS, macOS, Linux, Windows, and Android |
 
-Le contrat mémoire ci-dessous est unifié sur les trois backends.
+The memory contract below is unified across all three backends.
 
-## Modèle mémoire
+## Memory Model
 
-- `NativeAddress` — adresse native brute (value class sur `Long`). **Non bornée par
-  nature** : tout accès typé passe par `MemoryBuffer` (borné) ou par l'option
-  `unsafe`.
-- `MemoryBuffer` — buffer borné sur une adresse native : `handler` (adresse) +
-  `size` (taille en octets). Accès scalaires et tableaux pour toutes les familles
-  (Byte/Short/Int/Long/Float/Double, signés et non signés, pointeurs).
-- `MemoryAllocator` — arène confinée : allocation (`allocate`, `allocateBuffer`,
-  `allocateFrom`, `bufferOf`, `bufferOfAddress`, `bufferOfAddresses`), fermeture
-  (`close`), et `memoryScope { }` qui garantit la fermeture de l'arène en fin de bloc.
+- `NativeAddress` — raw native address (value class over `Long`). **Unbounded by
+  design**: all typed access goes through `MemoryBuffer` (bounded) or the
+  `unsafe` option.
+- `MemoryBuffer` — bounded buffer over a native address: `handler` (address) +
+  `size` (size in bytes). Scalar and array access for all families
+  (Byte/Short/Int/Long/Float/Double, signed and unsigned, pointers).
+- `MemoryAllocator` — confined arena: allocation (`allocate`, `allocateBuffer`,
+  `allocateFrom`, `bufferOf`, `bufferOfAddress`, `bufferOfAddresses`), closing
+  (`close`), and `memoryScope { }`, which guarantees that the arena is closed at
+  the end of the block.
 
 ```kotlin
 import org.graphiks.kffi.*
@@ -38,57 +39,59 @@ memoryScope { allocator ->
     val value = buffer.readInt(offset = 0uL) // 42
 
     buffer.readLong(offset = 12uL)
-    // IndexOutOfBoundsException : offset=12 width=8 size=16
+    // IndexOutOfBoundsException: offset=12 width=8 size=16
 }
 ```
 
-## Contrat de sécurité mémoire
+## Memory Safety Contract
 
-### Bornes-check
+### Bounds Checking
 
-Tout accès typé (scalaire ou tableau) est vérifié : `offset + elementSize ≤ size`.
-Hors bornes → `IndexOutOfBoundsException` avec offset/taille dans le message.
+Every typed access (scalar or array) is checked: `offset + elementSize ≤ size`.
+Out-of-bounds access → `IndexOutOfBoundsException` with the offset and size in
+the message.
 
-### Mode `unsafe` (opt-in)
+### `unsafe` Mode (opt-in)
 
-`unsafe = true` élimine les bornes-check, au choix :
+`unsafe = true` disables bounds checks, optionally:
 
-- par allocateur — `MemoryAllocator(unsafe = true)` propage l'option à **tous** les
-  buffers créés par cet allocateur ;
-- par buffer — `MemoryBuffer(addr, size, unsafe = true)` opt-in local.
+- per allocator — `MemoryAllocator(unsafe = true)` propagates the option to
+  **all** buffers created by that allocator;
+- per buffer — `MemoryBuffer(addr, size, unsafe = true)` enables it locally.
 
-Défaut : `false` (bornes-check actifs). En mode `unsafe`, tout accès hors bornes
-devient un **comportement indéfini** (UB) : pas d'exception, corruption mémoire
-possible. C'est un choix délibéré, réservé aux chemins à chaud.
+Default: `false` (bounds checks enabled). In `unsafe` mode, any out-of-bounds
+access becomes **undefined behavior** (UB): no exception, with possible memory
+corruption. This is a deliberate choice reserved for hot paths.
 
-### Durée de vie
+### Lifetime
 
-Décision I2-(a) : le scope d'arène/session vit dans le `MemoryBuffer` (pas dans
+Decision I2-(a): the arena/session scope lives in `MemoryBuffer` (not in
 `NativeAddress`).
 
-- Buffer créé via `MemoryAllocator` (JVM) : porte le segment scopé de l'arène →
-  accès après `close()` de l'arène → `IllegalStateException`.
-- Buffer créé depuis une adresse brute (`MemoryBuffer(addr, size)`) : sans scope →
-  accès post-close **non détecté** (UB documenté, aligné Android/native).
-- Mode `unsafe` JVM : la garde de close I2-(a) est **conservée** (vérification
-  `isAlive` légère avant l'accès) ; seules les bornes sont sautées.
+- Buffer created through `MemoryAllocator` (JVM): carries the arena's scoped
+  segment → access after the arena's `close()` → `IllegalStateException`.
+- Buffer created from a raw address (`MemoryBuffer(addr, size)`): no scope →
+  post-close access is **not detected** (documented UB, aligned with
+  Android/native).
+- JVM `unsafe` mode: the I2-(a) close guard is **retained** (a lightweight
+  `isAlive` check before access); only bounds checks are skipped.
 
-### Différence native
+### Native Difference
 
-Sur les backends native, le mode `unsafe` est **figé à la compilation** : la valeur
-est une constante build-time (`KFFI_NATIVE_UNSAFE` dans `MemoryBuffer.native.kt`,
-actuellement `false`). Les distributions native ne peuvent pas basculer au runtime ;
-le flag d'API est accepté pour la compatibilité et sans effet. Basculer à la
-compilation : éditer la constante puis recompiler le module.
+On native backends, `unsafe` mode is **fixed at compile time**: the value is a
+build-time constant (`KFFI_NATIVE_UNSAFE` in `MemoryBuffer.native.kt`, currently
+`false`). Native distributions cannot switch it at runtime; the API flag is
+accepted for compatibility but has no effect. To switch it at compile time, edit
+the constant and rebuild the module.
 
 ### Aliasing
 
-Deux buffers sur la même zone mémoire sont vus mutuellement : les écritures de l'un
-sont visibles par l'autre. **Pas de verrou** : la synchronisation relève du
-consommateur.
+Two buffers over the same memory area see each other's changes: writes through
+one are visible through the other. **No locking**: synchronization is the
+consumer's responsibility.
 
 ## Version
 
-`Kffi.VERSION` (`1.0.0`) — groupe `org.graphiks`. Ce README est le contrat
-consommateur du module ; la référence sémantique est le KDoc commun
-(`MemoryBuffer.kt`, `MemoryAllocator.kt` dans `commonMain`).
+`Kffi.VERSION` (`1.0.0`) — group `org.graphiks`. This README is the module's
+consumer contract; the semantic reference is the common KDoc
+(`MemoryBuffer.kt`, `MemoryAllocator.kt` in `commonMain`).

@@ -180,6 +180,8 @@ val archiveCallbackFixture = compileCallbackFixtureObject?.let { compileObject -
 plugins {
     `kotlin-multiplatform`
     id("ygdrasil.conventions.kmp-publish")
+    id("ygdrasil.conventions.kmp-dokka")
+    id("dev.opensavvy.dokka-mkdocs") version "0.6.3"
     com.android.library
     alias(libs.plugins.kotest)
     alias(libs.plugins.ksp)

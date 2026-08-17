@@ -1,4 +1,4 @@
-rootProject.name = "kffi"
+rootProject.name = "kffi-root"
 
 pluginManagement {
 	repositories {
@@ -7,7 +7,7 @@ pluginManagement {
 		mavenCentral()
 	}
 	plugins {
-		id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+		id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 	}
 }
 
@@ -18,6 +18,7 @@ dependencyResolutionManagement {
 	}
 }
 
+include("docs")
 include("kffi")
 include("kffi-benchmark-spi")
 include("kffi-benchmark-jvm")
