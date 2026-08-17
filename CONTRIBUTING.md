@@ -56,7 +56,7 @@ Repository settings automatically delete head branches after successful merges.
 These items are reviewed by maintainers when applicable; they are not automatically enforced by CI or the branch ruleset.
 
 - Keep commits atomic when practical.
-- Run local verification before requesting review: `./gradlew :shared:jvmTest`.
+- Run local verification before requesting review: `./gradlew :kffi:jvmTest`.
 - Reference the related issue in the PR description when relevant.
 - Add screenshots when relevant.
 - Keep the `Screenshots (if applicable)` and `Additional Notes` sections when relevant.
@@ -78,7 +78,7 @@ Before submitting a PR, make sure:
 
 **Maintainer-reviewed expectations**
 
-- [ ] Tests pass locally (`./gradlew :shared:jvmTest`)
+- [ ] Tests pass locally (`./gradlew :kffi:jvmTest`)
 - [ ] Commits are atomic when practical
 - [ ] The PR description references the related issue when relevant
 - [ ] Screenshots are included when relevant
@@ -87,14 +87,31 @@ Before submitting a PR, make sure:
 ### Local Build
 
 ```bash
-# Fast JVM tests
-./gradlew :shared:jvmTest
+# JVM tests
+./gradlew :kffi:jvmTest
 
-# All tests
-./gradlew allTests
+# macOS Native callback token codec compilation
+./gradlew \
+  :kffi:compileKotlinIosX64 \
+  :kffi:compileKotlinIosArm64 \
+  :kffi:compileKotlinIosSimulatorArm64 \
+  :kffi:compileKotlinMacosArm64 \
+  :kffi:compileKotlinMacosX64
 
-# Generate and embed API docs into MkDocs
-./gradlew :docs:embedDokkaIntoMkDocs
+# macOS Native tests
+if [[ "$(uname -m)" == "arm64" ]]; then
+  ./gradlew :kffi:macosArm64Test
+else
+  ./gradlew :kffi:macosX64Test
+fi
+
+# Linux Native callback token codec compilation and tests
+./gradlew :kffi:compileKotlinLinuxX64 :kffi:compileKotlinLinuxArm64
+./gradlew :kffi:linuxX64Test
+
+# Windows MinGW callback token codec compilation and tests
+./gradlew :kffi:compileKotlinMingwX64
+./gradlew :kffi:mingwX64Test
 ```
 
 ### Conventional Commits

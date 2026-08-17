@@ -75,6 +75,12 @@ dependencyResolutionManagement {
 }
 ```
 
+When neither `kffi.version` nor `KFFI_VERSION` is set, the build defaults to
+`1.0.0-SNAPSHOT`. The dependency examples below use this default and final
+standalone snapshot coordinate. The snapshot workflow overrides `KFFI_VERSION`
+with `YYYYMMDDHHMMSS-SNAPSHOT`, so artifacts produced by that workflow use the
+timestamped version for that run rather than a fixed `1.0.0-SNAPSHOT` version.
+
 ### Artifacts
 
 The group is `org.graphiks`. Publications follow the standard Kotlin
@@ -98,7 +104,8 @@ Published Native targets:
 
 ### Dependency declaration
 
-> **M2.4 note:** The final snapshot coordinate is `1.0.0-SNAPSHOT`, effective
+> **M2.4 note:** The default and final standalone snapshot coordinate is
+> `1.0.0-SNAPSHOT`, effective
 > after the M2.4 migration (independent versioning for the kffi module). Before
 > this migration, the module inherited the host repository version and snapshot
 > versions used `v29.0.0-<timestamp>-SNAPSHOT`.
@@ -327,12 +334,13 @@ this version; breaking changes require a major version bump.
 
 - Releases use `x.y.z` and the current runtime version is being prepared as
   `1.0.0`.
-- Snapshot artifacts are published by the repository snapshot workflow. The
-  post-M2.4 consumer coordinate is `1.0.0-SNAPSHOT`; before that migration,
-  snapshots inherited the host repository version and used
+- With no `kffi.version` or `KFFI_VERSION` override, the build uses
+  `1.0.0-SNAPSHOT`, the final standalone snapshot coordinate after M2.4. Before
+  that migration, snapshots inherited the host repository version and used
   `v29.0.0-<timestamp>-SNAPSHOT`.
-- The snapshot workflow sets `KFFI_VERSION` to a timestamped
-  `YYYYMMDDHHMMSS-SNAPSHOT` value for its publication run.
+- The repository snapshot workflow overrides `KFFI_VERSION` with a timestamped
+  `YYYYMMDDHHMMSS-SNAPSHOT` value, so its workflow-produced artifacts use that
+  timestamped version.
 - The current runtime version is exposed as `Kffi.VERSION` (`1.0.0`, starting
   with the M2.4 module version).
 

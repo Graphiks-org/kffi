@@ -1,53 +1,57 @@
-# Quickstart — consommer kffi de bout en bout
+# Quickstart - consuming kffi end to end
 
-Ce guide couvre : dépendance Gradle, `memoryScope`, allocation, write/read,
-`CString`, durée de vie, option `unsafe`, callback simple, chargement d'une
-bibliothèque native. Tous les symboles utilisés correspondent à l'API publique
-`org.graphiks.kffi` (voir le [README](../README.md) pour le contrat complet).
+This guide covers Gradle dependency setup, `memoryScope`, allocation,
+write/read, `CString`, lifetime, the `unsafe` option, a simple callback, and
+loading a native library. All symbols used here belong to the public
+`org.graphiks.kffi` API (see the [README](../README.md) for the complete
+contract).
 
-## 1. Dépendance
+## 1. Dependency
 
-Le groupe est `org.graphiks`. Les snapshots sont sur le dépôt Sonatype, les
-releases sur Maven Central :
+The group is `org.graphiks`. Release and snapshot artifacts are published
+through Maven Central:
 
 ```kotlin
 // settings.gradle.kts
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
-        maven("https://oss.sonatype.org/content/repositories/snapshots/")
     }
 }
 ```
 
-> **Note M2.4** : la coordonnée snapshot finale est `1.0.0-SNAPSHOT` —
-> effective après la migration M2.4 (versionnement indépendant du module kffi).
-> Avant cette migration, les snapshots publiés sont `v29.0.0-<timestamp>-SNAPSHOT`
-> (dépôt Sonatype).
+When neither the `kffi.version` Gradle property nor the `KFFI_VERSION`
+environment variable is set, the build defaults to `1.0.0-SNAPSHOT`. This is
+the final standalone snapshot coordinate after the M2.4 migration. The
+repository snapshot workflow overrides `KFFI_VERSION` with a timestamp in the
+form `YYYYMMDDHHMMSS-SNAPSHOT`, so a snapshot produced by that workflow uses
+that timestamped version rather than a fixed `1.0.0-SNAPSHOT` version.
 
 ```kotlin
-// build.gradle.kts — projet KMP : l'artifact racine résout la variante plateforme
+// build.gradle.kts - KMP project; the root artifact resolves the platform variant
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("org.graphiks:kffi:1.0.0-SNAPSHOT") // release : "1.0.0"
+            implementation("org.graphiks:kffi:1.0.0-SNAPSHOT") // release: "1.0.0"
         }
     }
 }
 ```
 
-Projet JVM seul : `implementation("org.graphiks:kffi-jvm:1.0.0-SNAPSHOT")`
-(JDK 24+ pour `java.lang.foreign`).
-Projet Android : `implementation("org.graphiks:kffi-android:1.0.0-SNAPSHOT")`
+JVM-only project: `implementation("org.graphiks:kffi-jvm:1.0.0-SNAPSHOT")`
+(JDK 24+ for `java.lang.foreign`).
+
+Android project: `implementation("org.graphiks:kffi-android:1.0.0-SNAPSHOT")`
 (minSdk 28).
-Projet natif : l'artifact racine `org.graphiks:kffi` suffit — Gradle résout la
-variante `kffi-<cible>` (ex. `kffi-macosarm64`). Il n'existe pas d'artifact
-agrégé « kffi-native ».
+
+Native project: the root artifact `org.graphiks:kffi` is sufficient; Gradle
+resolves the `kffi-<target>` variant (for example, `kffi-macosarm64`). There is
+no aggregate `kffi-native` artifact.
 
 ## 2. `memoryScope`, allocation, write/read
 
-`memoryScope { }` crée une arène confinée et garantit sa fermeture en fin de
-bloc (équivalent `use { }`) :
+`memoryScope { }` creates a confined arena and guarantees that it is closed at
+the end of the block (equivalent to `use { }`):
 
 ```kotlin
 import org.graphiks.kffi.*
@@ -61,103 +65,102 @@ memoryScope { allocator ->
     buffer.writeLong(value = 0xCAFEL, offset = 8uL)
     check(buffer.readLong(offset = 8uL) == 0xCAFEL)
 
-    // Bornes-check actifs par défaut : tout accès hors `size` lève
-    // IndexOutOfBoundsException (offset/largeur/taille dans le message).
+    // Bounds checks are enabled by default: any access outside `size` throws
+    // IndexOutOfBoundsException (the message includes offset/width/size).
     buffer.readLong(offset = 12uL)
-    // IndexOutOfBoundsException : MemoryBuffer access out of bounds: offset=12 width=8 size=16
+    // IndexOutOfBoundsException: MemoryBuffer access out of bounds: offset=12 width=8 size=16
 }
-// allocator.close() est garanti ici — tout buffer issu de ce scope est invalide.
+// allocator.close() is guaranteed here; every buffer from this scope is invalid.
 ```
 
-## 3. Tableaux et chaînes
+## 3. Arrays and strings
 
 ```kotlin
 memoryScope { allocator ->
     val buffer = allocator.allocateBuffer(size = 32uL)
 
-    // Tableaux : index de départ dans le tableau + offset dans le buffer
+    // Arrays: starting index in the array plus offset in the buffer
     val out = IntArray(4)
     buffer.writeInts(intArrayOf(1, 2, 3, 4), bufferOffset = 0uL)
     buffer.readInts(out, bufferOffset = 0uL)
     check(out.contentEquals(intArrayOf(1, 2, 3, 4)))
 
-    // Chaînes : allocation C (UTF-8, terminée par \0) depuis le scope
-    val cstr = allocator.allocateFrom("bonjour")
-    check(cstr.toKString() == "bonjour")
+    // Strings: allocate a UTF-8 C string terminated by \0 from the scope
+    val cstr = allocator.allocateFrom("hello")
+    check(cstr.toKString() == "hello")
 }
 ```
 
-## 4. Durée de vie
+## 4. Lifetime
 
-Le scope d'arène vit dans le `MemoryBuffer` (décision I2-a) :
+The arena scope lives in `MemoryBuffer` (decision I2-a):
 
-- buffer issu d'un `MemoryAllocator` : accès après `close()` →
-  `IllegalStateException` (JVM) ;
-- buffer construit depuis une adresse brute : **aucune garde** — l'accès après
-  libération de la zone est un **comportement indéfini** (UB documenté, aligné
-  sur les trois backends) ;
+- A buffer from `MemoryAllocator` throws `IllegalStateException` (JVM) after
+  `close()`.
+- A buffer created from a raw address has **no guard**. Access after the memory
+  is released is **undefined behavior** (documented UB, aligned across all
+  three backends).
 
 ```kotlin
 val allocator = MemoryAllocator()
 val scoped = allocator.allocateBuffer(16uL)
 allocator.close()
-scoped.writeLong(1L, 0uL) // JVM : IllegalStateException : "MemoryBuffer has been closed"
+scoped.writeLong(1L, 0uL) // JVM: IllegalStateException: "MemoryBuffer has been closed"
 
-// Buffer depuis une adresse brute : pas de scope, aucune garde — utiliser la
-// zone après sa libération est un UB documenté.
+// A raw-address buffer has no scope or guard; using freed memory is documented UB.
 val backing = MemoryAllocator()
-val raw = MemoryBuffer(backing.allocate(16L), 16uL) // zone vivante tant que backing n'est pas fermé
+val raw = MemoryBuffer(backing.allocate(16L), 16uL) // alive while backing is open
 raw.writeLong(7L, 0uL)
 
-// Arène de durée de vie processus
+// Process-lifetime arena
 val forever = globalMemory.allocateBuffer(16uL)
 ```
 
-Deux buffers sur la même zone se voient mutuellement ; aucune synchronisation
-n'est fournie.
+Two buffers over the same memory area see each other's writes; no
+synchronization is provided.
 
-Confinement (JVM) : l'arène est confinée au thread de création
-(`Arena.ofConfined()`) — accès aux buffers scopés et `close()` depuis un autre
-thread lèvent `WrongThreadException` ; `memoryScope` idem. En mode `unsafe`,
-l'accès passe par l'adresse brute : aucune vérification de thread, seule la
-garde de close s'applique. Les buffers bruts (adresse) ne portent aucun
-confinement (garde nulle, UB documenté).
+On the JVM, the arena is confined to the creating thread
+(`Arena.ofConfined()`): access to scoped buffers and `close()` from another
+thread throws `WrongThreadException`; `memoryScope` follows the same rule. In
+`unsafe` mode, access uses the raw address, so there is no thread check and only
+the close guard applies. Raw-address buffers have no confinement (null guard,
+documented UB).
 
-## 5. Option `unsafe`
+## 5. `unsafe` option
 
-Opt-in **par allocateur** (propage à tous les buffers de l'arène) ou **par
-buffer** :
+The option can be enabled **per allocator** (propagating to every buffer in the
+arena) or **per buffer**:
 
 ```kotlin
-// Par allocateur : tous les buffers créés sont unsafe
+// Per allocator: every created buffer is unsafe
 val hotAllocator = MemoryAllocator(unsafe = true)
 val hot = hotAllocator.allocateBuffer(8uL)
-hot.writeLong(1L, 64uL) // hors bornes : PAS d'exception — UB (zone réelle plus grande, ici)
+hot.writeLong(1L, 64uL) // out of bounds: NO exception - UB (the real area is larger here)
 
-// Par buffer : opt-in local (allocation réelle de 128 octets, taille nominale 64)
+// Per buffer: local opt-in (actual allocation is 128 bytes, nominal size is 64)
 memoryScope { allocator ->
     val localUnsafe = MemoryBuffer(allocator.allocate(128L), 64uL, unsafe = true)
-    localUnsafe.writeLong(1L, 96uL) // hors taille nominale : PAS d'exception — UB
+    localUnsafe.writeLong(1L, 96uL) // outside nominal size: NO exception - UB
 }
 
 hotAllocator.close()
-hot.writeLong(2L, 0uL) // JVM : IllegalStateException — la garde de durée de vie est conservée en unsafe
+hot.writeLong(2L, 0uL) // JVM: IllegalStateException - lifetime guard remains in unsafe mode
 ```
 
-Politique unsafe (P2) : le mode unsafe saute **uniquement** les bornes-check.
-La discipline de durée de vie reste la même que pour les buffers sûrs —
-utiliser un buffer après fermeture de l'arène reste interdit (use-after-free).
+Unsafe policy P2: `unsafe` skips **only** bounds checks. Lifetime discipline is
+unchanged from safe buffers; using a buffer after its arena closes remains
+forbidden (use-after-free).
 
-**Différence native** : sur les backends natifs, le flag runtime est ignoré —
-la valeur est figée à la compilation (`KFFI_NATIVE_UNSAFE` dans
-`MemoryBuffer.native.kt`, `false` par défaut). Basculer : éditer la constante
-puis recompiler le module.
+**Native distinction:** on Native backends, the runtime flag is ignored. The
+value is fixed at compile time (`KFFI_NATIVE_UNSAFE` in
+`MemoryBuffer.native.kt`, `false` by default). To change it, edit the constant
+and rebuild the module.
 
-## 6. Callback simple (upcall natif → Kotlin)
+## 6. Simple callback (Native upcall to Kotlin)
 
-Le code généré par kextract produit les descripteurs, trampolines et
-dispatchers ; voici le même mécanisme à la main. Un callback est d'abord un
-`Callback` (interface marqueur) :
+Code generated by kextract provides the descriptors, trampolines, and
+dispatchers; the following shows the same mechanism by hand. A callback first
+implements the `Callback` marker interface:
 
 ```kotlin
 import org.graphiks.kffi.engine.JvmUpcallEngine
@@ -168,9 +171,9 @@ private fun interface StatusCallback : Callback {
 }
 ```
 
-Le trampoline est un stub natif qui appelle un dispatcher statique ; le
-dispatcher route vers la lambda enregistrée via `CallbackRuntime.dispatchSafely`
-(le userdata = token de routage, dernier paramètre C) :
+The trampoline is a Native stub that calls a static dispatcher. The dispatcher
+routes to the lambda registered through `CallbackRuntime.dispatchSafely`
+(`userdata` is the routing token and the last C parameter):
 
 ```kotlin
 @OptIn(CallbackRuntimeApi::class)
@@ -181,7 +184,7 @@ private object StatusTrampolines {
         JvmUpcallEngine.allocateTrampoline(
             dispatcherClass = StatusTrampolines::class.java,
             dispatchMethod = "dispatch",
-            dispatchSig = "(IJ)V", // (int value, long routingUserdata) → void
+            dispatchSig = "(IJ)V", // (int value, long routingUserdata) -> void
         )
     }
 
@@ -195,8 +198,8 @@ private object StatusTrampolines {
 }
 ```
 
-Enregistrement : la registration expose l'adresse du trampoline
-(`callback`) et le token de routage (`userdata`) à passer à la lib native :
+Registration exposes the trampoline address (`callback`) and routing token
+(`userdata`) for the Native library:
 
 ```kotlin
 @OptIn(CallbackRuntimeApi::class)
@@ -206,50 +209,50 @@ fun installStatusCallback() {
         trampoline = StatusTrampolines.stub,
         policy = CallbackPolicy.REPEATING,
         onError = CallbackExceptionHandler { error -> println("callback failed: $error") },
-        callback = StatusCallback { value -> println("native nous a appelés avec $value") },
+        callback = StatusCallback { value -> println("native called us with $value") },
     )
 
-    // La lib native reçoit l'adresse du trampoline + le userdata (dernier argument)
+    // The Native library receives the trampoline address and userdata.
     // nativeCallExpectsCallback(registration.callback, registration.userdata)
 
-    // Fermeture : plus aucune livraison ; isQuiescent devient vrai quand les
-    // appels natifs en vol sont revenus.
+    // Closing prevents further delivery; isQuiescent becomes true after
+    // in-flight Native calls return.
     registration.close()
     check(registration.isClosed)
 }
 ```
 
-Points de contrat :
+Contract points:
 
-- `close()` retire le slot (token jamais réutilisé) ; `isQuiescent` ne devient
-  vrai qu'une fois les livraisons en vol revenues.
-- `ONCE` : dé-publié après la première livraison ; `REPEATING` : jusqu'au
-  `close()`.
-- Aucune exception ne traverse la frontière native — les échecs sont routés
-  vers `onError` (ou le canal de secours).
-- JVM : les stubs sont alloués dans une arène globale (durée de vie
-  processus). Android : `UpcallEngine.allocateTrampoline` / `freeTrampoline`
-  (gestion JNI explicite, généré par kextract).
+- `close()` removes the slot (the token is never reused); `isQuiescent` becomes
+  true only after in-flight deliveries return.
+- `ONCE` is unpublished after the first delivery; `REPEATING` remains active
+  until `close()`.
+- No exception crosses the Native boundary; failures are routed to `onError`
+  or the fallback channel.
+- On the JVM, stubs are allocated in a global process-lifetime arena. On
+  Android, `UpcallEngine.allocateTrampoline` / `freeTrampoline` provide explicit
+  JNI management (generated by kextract).
 
-## 7. Charger une bibliothèque native
+## 7. Loading a native library
 
-**JVM** — charger la lib dans le processus, puis résoudre les symboles :
+**JVM** - load the library into the process, then resolve its symbols:
 
 ```kotlin
 import org.graphiks.kffi.findOrThrow
 
-System.loadLibrary("monlib") // doit être sur java.library.path / classpath
+System.loadLibrary("monlib") // must be on java.library.path / classpath
 
-val fn = findOrThrow("mon_symbole") // UnsatisfiedLinkError si introuvable
+val fn = findOrThrow("mon_symbole") // UnsatisfiedLinkError if not found
 ```
 
-Lancer la JVM avec `--enable-native-access=ALL-UNNAMED` : le runtime JVM kffi
-utilise lui-même les API restreintes de `java.lang.foreign`, et les bindings
-kextract peuvent émettre des upcalls sur le chemin FFM direct. Sans le flag, la
-JVM émet un warning (appel bloqué dans une future version du JDK).
+Start the JVM with `--enable-native-access=ALL-UNNAMED`: the JVM kffi runtime
+uses restricted `java.lang.foreign` APIs itself, and kextract bindings can emit
+upcalls on the direct FFM path. Without the flag, the JVM emits a warning and
+will block the call in a future JDK version.
 
-**Android** — le moteur `libkffi.so` est chargé automatiquement ; la lib
-consommée est chargée par `dlopen` :
+**Android** - the `libkffi.so` engine loads automatically; the consumed library
+is loaded with `dlopen`:
 
 ```kotlin
 import org.graphiks.kffi.engine.NativeEngine
@@ -258,13 +261,13 @@ val handle = NativeEngine.loadNativeLibrary(pathToLib) // dlopen RTLD_NOW|RTLD_G
 val fn = NativeEngine.resolveSymbolIn(handle, "mon_symbole")
 ```
 
-**Native** — lien à la compilation via cinterop (`.def`) ; pas de chargement
-dynamique.
+**Native** - linking happens at compile time through cinterop (`.def`); no
+dynamic loading is required.
 
-## 8. Générer des bindings
+## 8. Generating bindings
 
-kffi est runtime-only : générez vos bindings avec
-[kextract](https://github.com/klang-toolkit/kextract) (générateur Kotlin,
-cible `org.graphiks.kffi`), puis liez-les à kffi comme décrit ci-dessus. Les
-bindings générés utilisent les mêmes primitives que ce guide (`MemoryBuffer`,
-`MemoryAllocator`, `CallbackRuntime`, moteurs).
+kffi is runtime-only: generate bindings with
+[kextract](https://github.com/klang-toolkit/kextract), targeting
+`org.graphiks.kffi`, then link them to kffi as described above. Generated
+bindings use the same primitives as this guide (`MemoryBuffer`,
+`MemoryAllocator`, `CallbackRuntime`, and the backend engines).
