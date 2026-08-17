@@ -4,45 +4,46 @@ plugins {
     id("com.vanniktech.maven.publish")
 }
 
-group = "io.ygdrasil.shared"
+group = "org.graphiks"
 version = (project.findProperty("releaseVersion") as? String)
+    ?.trim()
     ?.takeIf { it.isNotBlank() }
     ?: "1.0.0-SNAPSHOT"
 
-val isPublishing = project.findProperty("signingInMemoryKey")?.toString()?.isNotBlank() == true
-    || project.findProperty("signing.keyId")?.toString()?.isNotBlank() == true
+val isPublishing = project.findProperty("signingInMemoryKey")?.toString()?.trim()?.isNotBlank() == true
+    || project.findProperty("signing.keyId")?.toString()?.trim()?.isNotBlank() == true
 
 mavenPublishing {
     if (isPublishing) {
         publishToMavenCentral()
         signAllPublications()
     }
-    coordinates(group.toString(), "shared", version.toString())
+    coordinates(group.toString(), project.name, version.toString())
 
     pom {
-        name.set("KMP Starter Pack Shared Library")
-        description.set("Shared library logic for KMP Starter Pack")
-        url.set("https://github.com/ygdrasil-io/project-template")
+        name.set(project.name)
+        description.set("${project.name}: multiplatform FFI support for Kotlin")
+        url.set("https://github.com/Graphiks-org/kffi")
+        inceptionYear.set("2024")
 
         licenses {
             license {
-                name.set("The Apache License, Version 2.0")
-                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                name.set("MIT")
+                url.set("https://opensource.org/license/MIT")
             }
         }
 
         developers {
             developer {
-                id.set("ygdrasil-io")
-                name.set("Ygdrasil team")
-                email.set("contact@ygdrasil.com")
+                id.set("amommers")
+                name.set("Alexandre Mommers")
             }
         }
 
         scm {
-            connection.set("scm:git:git://github.com/ygdrasil-io/project-template.git")
-            developerConnection.set("scm:git:ssh://github.com/ygdrasil-io/project-template.git")
-            url.set("https://github.com/ygdrasil-io/project-template")
+            connection.set("scm:git:https://github.com/Graphiks-org/kffi.git")
+            developerConnection.set("scm:git:ssh://git@github.com/Graphiks-org/kffi.git")
+            url.set("https://github.com/Graphiks-org/kffi")
         }
     }
 }
