@@ -179,7 +179,7 @@ val archiveCallbackFixture = compileCallbackFixtureObject?.let { compileObject -
 
 plugins {
     `kotlin-multiplatform`
-    publish
+    id("ygdrasil.conventions.kmp-publish")
     com.android.library
     alias(libs.plugins.kotest)
     alias(libs.plugins.ksp)
@@ -212,24 +212,6 @@ android {
             testOnly += setOf("libkffi_bench_fixture.so", "**/libkffi_bench_fixture.so")
             // Extract .so to nativeLibraryDir so the test can dlopen the fixture by path.
             useLegacyPackaging = true
-        }
-    }
-}
-
-group = "org.graphiks"
-
-val kffiVersion = providers.gradleProperty("kffi.version")
-    .orElse(providers.environmentVariable("KFFI_VERSION"))
-    .orElse("1.0.0-SNAPSHOT")
-    .map { it.trim().ifEmpty { "1.0.0-SNAPSHOT" } }
-version = kffiVersion.get()
-
-afterEvaluate {
-    // vanniktech freezes groupId/version at plugin-apply time; re-assert them post-evaluation so the kffi version chain wins.
-    publishing {
-        publications.withType<MavenPublication>().all {
-            groupId = "org.graphiks"
-            version = kffiVersion.get()
         }
     }
 }
@@ -352,7 +334,7 @@ tasks.withType<Test>().configureEach {
 
 tasks.named<Test>("jvmTest") {
     jvmArgs("--enable-native-access=ALL-UNNAMED")
-    systemProperty("kffi.version", kffiVersion.get())
+    systemProperty("releaseVersion", project.version.toString())
     when (callbackFixtureHost) {
         "macos", "linux" -> {
             val sharedLibrary = requireNotNull(callbackFixtureSharedLibrary)

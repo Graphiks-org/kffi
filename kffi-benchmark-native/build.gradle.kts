@@ -2,23 +2,6 @@ plugins {
     `kotlin-multiplatform`
 }
 
-group = "org.graphiks"
-
-val kffiVersion = providers.gradleProperty("kffi.version")
-    .orElse(providers.environmentVariable("KFFI_VERSION"))
-    .orElse("1.0.0-SNAPSHOT")
-    .map { it.trim().ifEmpty { "1.0.0-SNAPSHOT" } }
-
-afterEvaluate {
-    // F1: vanniktech freezes groupId/version at plugin-apply time; re-assert
-    // them post-evaluation so the kffi version chain wins (mirror kffi/build.gradle.kts).
-    (extensions.findByName("publishing") as? PublishingExtension)?.publications
-        ?.withType<MavenPublication>()
-        ?.all {
-            groupId = "org.graphiks"
-            version = kffiVersion.get()
-        }
-}
 val isArm64Host = System.getProperty("os.arch") == "aarch64" || System.getProperty("os.arch") == "arm64"
 
 val benchFixtureHeaderDir = layout.projectDirectory.dir("../kffi-benchmark-jvm/src/jmh/resources")
