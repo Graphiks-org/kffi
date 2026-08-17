@@ -42,7 +42,7 @@ mavenPublishing {
 
         scm {
             connection.set("scm:git:https://github.com/Graphiks-org/kffi.git")
-            developerConnection.set("scm:git:ssh://git@github.com/Graphiks-org/kffi.git")
+            developerConnection.set("scm:git:ssh://github.com/Graphiks-org/kffi.git")
             url.set("https://github.com/Graphiks-org/kffi")
         }
     }
