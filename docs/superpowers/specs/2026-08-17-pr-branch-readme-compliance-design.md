@@ -116,7 +116,9 @@ The final validation will confirm:
 - The PR title and body are English and match the repository template.
 - The README contains no French prose in its user-facing sections.
 - The original template HTML comments are present verbatim.
-- No workflow file was removed or unexpectedly modified.
+- The canonical publication workflow was intentionally modified and the custom
+  snapshot workflow was removed during the later publication alignment, while
+  unrelated workflows remain unchanged.
 - The working tree is clean after the intended commit.
 - Relevant Gradle tests and checks pass, or failures are reported with their
   exact command and cause.
