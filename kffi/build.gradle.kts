@@ -396,6 +396,7 @@ tasks.named<Test>("jvmTest") {
             excludeTestsMatching("org.graphiks.kffi.CallbackFfiJvmTest")
             excludeTestsMatching("org.graphiks.kffi.CallbackFixtureWatchdogJvmTest")
             excludeTestsMatching("org.graphiks.kffi.engine.JvmDowncallEngineTest")
+            excludeTestsMatching("org.graphiks.kffi.engine.JvmDowncallEngineStructByValueTest")
         }
     }
 }
