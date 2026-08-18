@@ -17,13 +17,11 @@ import java.lang.invoke.MethodHandle
  *
  * Each wrapper looks up a two-level cache: the outer key is the function
  * address (the exact Long, so two addresses cannot collide) and the inner key
- * is `(layoutVersion shl 8) or shapeId`. An FFM MethodHandle (invokeExact) is
- * built once per (address × shape), and the layout version in the inner key
- * ensures that registerStructLayout rebuilds the descriptor instead of reusing
- * a stale MethodHandle. In practice, the cache is bounded by the number of
- * distinct exported addresses resolved by the bindings. The supported shapes
- * are the ones referenced by generated bindings (the union of wgpu
- * signatures); the table grows by adding wrappers, never combinatorially.
+ * is the call shape, the layout version and, for generic struct calls, a
+ * layout signature. An FFM MethodHandle (invokeExact) is built once per
+ * descriptor and rebuilt when registerStructLayout changes its metadata. In
+ * practice, the cache is bounded by the number of distinct exported addresses
+ * resolved by the bindings.
  *
  * Signatures with structs passed or returned by value are covered by wrappers
  * built from the layout registry: generated code registers metadata (size,
@@ -105,11 +103,23 @@ object JvmDowncallEngine {
         const val S_RET_FUTURE_PP_CREATE_RENDER_PIPELINE_ASYNC = 59
         const val S_RET_FUTURE_PP_CREATE_COMPUTE_PIPELINE_ASYNC = 60
         const val S_RET_FUTURE_PLLL_BUFFER_MAP = 61
+        const val S_ARG_GENERIC = 62
+        const val S_ARG_P_GENERIC = 63
+        const val S_ARG_RET_P_GENERIC = 64
+        const val S_RET_P_GENERIC = 65
+        const val S_RET_P_STRUCT_GENERIC = 66
+        const val S_RET_PLLL_STRUCT_GENERIC = 67
     }
 
-    /** MethodHandle per (function address, shape, layout version). */
+    private data class HandleCacheKey(
+        val shapeId: Int,
+        val layoutVersion: Int,
+        val layoutSignature: String?,
+    )
+
+    /** MethodHandle per function address and native descriptor. */
     private val handleCache =
-        java.util.concurrent.ConcurrentHashMap<Long, java.util.concurrent.ConcurrentHashMap<Int, MethodHandle>>()
+        java.util.concurrent.ConcurrentHashMap<Long, java.util.concurrent.ConcurrentHashMap<HandleCacheKey, MethodHandle>>()
 
     fun resolveSymbol(name: String): Long = findOrThrow(name)
 
@@ -120,14 +130,21 @@ object JvmDowncallEngine {
      * Two-level cache: the outer key is the function address (the exact Long,
      * so two addresses cannot collide, unlike a shift encoding that folds bits
      * 48+ of canonical addresses into the key's low bits); the inner key is
-     * `(layoutVersion shl 8) or shapeId`. The layout version belongs to the
-     * inner key so registerStructLayout creates a new MethodHandle instead of
+     * the shape plus layout identity. The layout version belongs to the inner
+     * key so registerStructLayout creates a new MethodHandle instead of
      * reusing the previous descriptor's handle (which would silently corrupt
-     * the ABI). The inner table is tiny: a few shapes per function address.
+     * the ABI). The optional signature distinguishes generic calls with the
+     * same shape but different registered struct names.
      */
-    private fun handle(fn: Long, shapeId: Int, descriptor: FunctionDescriptor, layoutVersion: Int = 0): MethodHandle {
+    private fun handle(
+        fn: Long,
+        shapeId: Int,
+        descriptor: FunctionDescriptor,
+        layoutVersion: Int = 0,
+        layoutSignature: String? = null,
+    ): MethodHandle {
         require(fn != 0L) { "Cannot downcall through null function address" }
-        val key = (layoutVersion shl 8) or shapeId
+        val key = HandleCacheKey(shapeId, layoutVersion, layoutSignature)
         return handleCache
             .computeIfAbsent(fn) { java.util.concurrent.ConcurrentHashMap() }
             .computeIfAbsent(key) { linker.downcallHandle(segment(fn), descriptor) }
@@ -495,6 +512,7 @@ object JvmDowncallEngine {
         structName: String,
         scalarArgLayouts: List<ValueLayout> = emptyList(),
         returnLayout: MemoryLayout? = null,
+        layoutSignature: String? = null,
     ): MethodHandle {
         val layout = structLayout(structName)
         val descriptor = if (returnLayout == null) {
@@ -502,7 +520,13 @@ object JvmDowncallEngine {
         } else {
             FunctionDescriptor.of(returnLayout, *(scalarArgLayouts + layout).toTypedArray())
         }
-        return handle(fn, shapeId, descriptor, layoutVersion(structName))
+        return handle(
+            fn,
+            shapeId,
+            descriptor,
+            layoutVersion(structName),
+            layoutSignature,
+        )
     }
 
     /**
@@ -518,6 +542,7 @@ object JvmDowncallEngine {
         returnName: String,
         argStructNames: List<String> = emptyList(),
         scalarArgLayouts: List<ValueLayout> = emptyList(),
+        layoutSignature: String? = null,
     ): MethodHandle {
         val argLayouts = argStructNames.map(::structLayout)
         val descriptor = FunctionDescriptor.of(
@@ -527,12 +552,132 @@ object JvmDowncallEngine {
         val version = (listOf(returnName) + argStructNames).fold(0) { acc, name ->
             acc * 31 + layoutVersion(name)
         }
-        return handle(fn, shapeId, descriptor, version)
+        return handle(fn, shapeId, descriptor, version, layoutSignature)
     }
 
     private fun structSegment(structPtr: Long, structName: String): MemorySegment {
         val layout = structLayout(structName)
         return segment(structPtr).reinterpret(layout.byteSize())
+    }
+
+    private fun layoutSignature(vararg structNames: String): String =
+        structNames.joinToString("\u0000") { name -> "$name:${layoutVersion(name)}" }
+
+    /** Calls a function taking a single struct by value and returning void. */
+    fun invokeStructArg(fn: Long, structName: String, structPtr: Long) {
+        val handle = structArgHandle(
+            fn,
+            ShapeId.S_ARG_GENERIC,
+            structName,
+            layoutSignature = layoutSignature(structName),
+        )
+        handle.invokeExact(structSegment(structPtr, structName))
+    }
+
+    /** Calls a function taking a pointer followed by a struct by value and returning void. */
+    fun invokeStructArgAfterPointer(fn: Long, p1: Long, structName: String, structPtr: Long) {
+        val handle = structArgHandle(
+            fn,
+            ShapeId.S_ARG_P_GENERIC,
+            structName,
+            scalarArgLayouts = listOf(C_POINTER),
+            layoutSignature = layoutSignature(structName),
+        )
+        handle.invokeExact(segment(p1), structSegment(structPtr, structName))
+    }
+
+    /** Calls a function taking a struct by value and returning a pointer. */
+    fun invokeStructArgReturningPointer(fn: Long, structName: String, structPtr: Long): Long {
+        val handle = structArgHandle(
+            fn,
+            ShapeId.S_ARG_RET_P_GENERIC,
+            structName,
+            returnLayout = C_POINTER,
+            layoutSignature = layoutSignature(structName),
+        )
+        return (handle.invokeExact(structSegment(structPtr, structName)) as MemorySegment).address()
+    }
+
+    /** Calls a function returning a struct by value from one pointer argument. */
+    fun invokeStructReturnAfterPointer(
+        fn: Long,
+        allocator: MemoryAllocator,
+        returnStructName: String,
+        p1: Long,
+    ): NativeAddress {
+        val handle = structReturnHandle(
+            fn,
+            ShapeId.S_RET_P_GENERIC,
+            returnName = returnStructName,
+            scalarArgLayouts = listOf(C_POINTER),
+            layoutSignature = layoutSignature(returnStructName),
+        )
+        val segmentAllocator: SegmentAllocator = allocator.arena
+        val result = handle.invokeExact(segmentAllocator, segment(p1)) as MemorySegment
+        return NativeAddress(result.address())
+    }
+
+    /** Calls a function returning a struct by value from a pointer and a struct argument. */
+    fun invokeStructReturnAfterPointerAndStruct(
+        fn: Long,
+        allocator: MemoryAllocator,
+        returnStructName: String,
+        p1: Long,
+        argStructName: String,
+        structPtr: Long,
+    ): NativeAddress {
+        val handle = structReturnHandle(
+            fn,
+            ShapeId.S_RET_P_STRUCT_GENERIC,
+            returnName = returnStructName,
+            argStructNames = listOf(argStructName),
+            scalarArgLayouts = listOf(C_POINTER),
+            layoutSignature = layoutSignature(returnStructName, argStructName),
+        )
+        val segmentAllocator: SegmentAllocator = allocator.arena
+        val result = handle.invokeExact(
+            segmentAllocator,
+            segment(p1),
+            structSegment(structPtr, argStructName),
+        ) as MemorySegment
+        return NativeAddress(result.address())
+    }
+
+    /** Calls a function returning a struct by value from pointer, longs and a struct argument. */
+    fun invokeStructReturnAfterPointerAndThreeLongsAndStruct(
+        fn: Long,
+        allocator: MemoryAllocator,
+        returnStructName: String,
+        p1: Long,
+        a2: Long,
+        a3: Long,
+        a4: Long,
+        argStructName: String,
+        structPtr: Long,
+    ): NativeAddress {
+        val handle = structReturnHandle(
+            fn,
+            ShapeId.S_RET_PLLL_STRUCT_GENERIC,
+            returnName = returnStructName,
+            argStructNames = listOf(argStructName),
+            scalarArgLayouts = listOf(
+                C_POINTER,
+                ValueLayout.JAVA_LONG,
+                ValueLayout.JAVA_LONG,
+                ValueLayout.JAVA_LONG,
+            ),
+            layoutSignature = layoutSignature(returnStructName, argStructName),
+        )
+        val segmentAllocator: SegmentAllocator = allocator.arena
+        val result = handle.invokeExact(
+            segmentAllocator,
+            segment(p1),
+            a2,
+            a3,
+            a4,
+            structSegment(structPtr, argStructName),
+        ) as MemorySegment
+        return NativeAddress(result.address())
     }
 
     // --- Struct argument with a Unit return (freeMembers and similar functions) ---

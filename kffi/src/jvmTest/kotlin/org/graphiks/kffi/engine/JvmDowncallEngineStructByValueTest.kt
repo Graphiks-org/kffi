@@ -162,12 +162,11 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
         }
     }
 
-    // wgpu shapes: mirror layouts for wgpu structs registered under their
-    // planned names (with the same fields as the C fixture structs).
+    // Generic shapes: mirror layouts registered by a binding generator.
 
-    "WGPUStringView arg after a pointer passes both (SetLabel shape)" {
+    "text view arg after a pointer passes both values" {
         JvmDowncallEngine.registerStructLayout(
-            "WGPUStringView",
+            "TextView",
             sizeBytes = 16L,
             alignmentBytes = 8L,
             fields = listOf(
@@ -179,36 +178,33 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
             val label = allocator.allocateBuffer(16uL)
             label.writePointer(NativeAddress(0x1234L), 0uL)
             label.writeLong(26, 8uL)
-            JvmDowncallEngine.callStructArgWGPUStringView(
+            JvmDowncallEngine.invokeStructArgAfterPointer(
                 JvmDowncallFixture.symbol("bench_set_label"),
                 p1 = 0x1000L,
+                structName = "TextView",
                 structPtr = label.handler.rawValue,
             )
             JvmDowncallEngine.callI0(JvmDowncallFixture.symbol("bench_label_sink_get")) shouldBe 0x1000L + 26L
         }
     }
 
-    "WGPUStringView arg alone returns the proc address (GetProcAddress shape)" {
+    "text view arg alone returns a pointer" {
         MemoryAllocator().use { allocator ->
             val name = allocator.allocateBuffer(16uL)
             name.writePointer(NativeAddress(0x5000L), 0uL) // non-null data
             name.writeLong(7, 8uL) // length = 7
-            val proc = JvmDowncallEngine.callStructArgWGPUStringViewRetP(
+            val proc = JvmDowncallEngine.invokeStructArgReturningPointer(
                 JvmDowncallFixture.symbol("bench_get_proc_address"),
-                name.handler.rawValue,
+                structName = "TextView",
+                structPtr = name.handler.rawValue,
             )
             proc shouldBe 14L
         }
     }
 
-    "struct arg alone consumes the struct by value (FreeMembers shape)" {
-        // The S|V shape of *FreeMembers functions: the wrapper marshals the
-        // struct by value and the callee consumes it. The C fixture exposes
-        // bench_consume_future(bench_future_t), with the same ABI as a
-        // FreeMembers function (an 8-byte struct {uint64_t} passed by value).
-        // The layout is registered under the exercised wrapper's name.
+    "struct arg alone is consumed by value" {
         JvmDowncallEngine.registerStructLayout(
-            "WGPUAdapterInfo",
+            "OperationToken",
             sizeBytes = 8L,
             alignmentBytes = 8L,
             fields = listOf(
@@ -218,17 +214,18 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
         MemoryAllocator().use { allocator ->
             val info = allocator.allocateBuffer(8uL)
             info.writeLong(0xDEADBEEF, 0uL)
-            JvmDowncallEngine.callStructArgWGPUAdapterInfo(
+            JvmDowncallEngine.invokeStructArg(
                 JvmDowncallFixture.symbol("bench_consume_future"),
-                info.handler.rawValue,
+                structName = "OperationToken",
+                structPtr = info.handler.rawValue,
             )
             JvmDowncallEngine.callI0(JvmDowncallFixture.symbol("bench_consumed_future_id")) shouldBe 0xDEADBEEFL
         }
     }
 
-    "WGPUFuture return with callbackInfo struct arg (OnSubmittedWorkDone shape)" {
+    "operation token return with callback info struct arg" {
         JvmDowncallEngine.registerStructLayout(
-            "WGPUFuture",
+            "OperationToken",
             sizeBytes = 8L,
             alignmentBytes = 8L,
             fields = listOf(
@@ -236,7 +233,7 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
             ),
         )
         JvmDowncallEngine.registerStructLayout(
-            "WGPUQueueWorkDoneCallbackInfo",
+            "CallbackInfo",
             sizeBytes = 16L,
             alignmentBytes = 8L,
             fields = listOf(
@@ -248,30 +245,33 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
             val info = allocator.allocateBuffer(16uL)
             info.writePointer(NativeAddress(0x2000L), 0uL)
             info.writePointer(NativeAddress(0x2008L), 8uL)
-            val future = JvmDowncallEngine.callStructReturnWGPUFutureWGPUQueueWorkDoneCallbackInfo(
+            val future = JvmDowncallEngine.invokeStructReturnAfterPointerAndStruct(
                 JvmDowncallFixture.symbol("bench_on_work_done"),
                 allocator,
+                returnStructName = "OperationToken",
                 p1 = 0x30L,
+                argStructName = "CallbackInfo",
                 structPtr = info.handler.rawValue,
             )
             MemoryBuffer(future, 8uL).readLong(0uL) shouldBe 0x30L + 0x2008L
         }
     }
 
-    "WGPUFuture return with a pointer arg only (GetLostFuture shape)" {
+    "operation token return with a pointer arg only" {
         MemoryAllocator().use { allocator ->
-            val future = JvmDowncallEngine.callStructReturnWGPUFuture(
+            val future = JvmDowncallEngine.invokeStructReturnAfterPointer(
                 JvmDowncallFixture.symbol("bench_get_lost_future"),
                 allocator,
+                returnStructName = "OperationToken",
                 p1 = 0x40L,
             )
             MemoryBuffer(future, 8uL).readLong(0uL) shouldBe 0x40L + 7L
         }
     }
 
-    "WGPUFuture return with pointer + three longs + callbackInfo struct arg (BufferMap shape)" {
+    "operation token return with pointer, longs and callback info struct arg" {
         JvmDowncallEngine.registerStructLayout(
-            "WGPUBufferMapCallbackInfo",
+            "CallbackInfoWithOffset",
             sizeBytes = 16L,
             alignmentBytes = 8L,
             fields = listOf(
@@ -283,13 +283,15 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
             val info = allocator.allocateBuffer(16uL)
             info.writePointer(NativeAddress(0x2000L), 0uL)
             info.writePointer(NativeAddress(0x2008L), 8uL)
-            val future = JvmDowncallEngine.callStructReturnWGPUFutureWGPUBufferMapCallbackInfo(
+            val future = JvmDowncallEngine.invokeStructReturnAfterPointerAndThreeLongsAndStruct(
                 JvmDowncallFixture.symbol("bench_buffer_map_async"),
                 allocator,
+                returnStructName = "OperationToken",
                 p1 = 0x10L,
                 a2 = 0x20L,
                 a3 = 0x30L,
                 a4 = 0x40L,
+                argStructName = "CallbackInfoWithOffset",
                 structPtr = info.handler.rawValue,
             )
             MemoryBuffer(future, 8uL).readLong(0uL) shouldBe 0x10L + 0x20L + 0x30L + 0x40L + 0x2008L

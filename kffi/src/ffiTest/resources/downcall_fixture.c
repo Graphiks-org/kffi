@@ -28,7 +28,7 @@ void bench_consume_box(bench_box_t box) {
 
 int32_t bench_consume_box_get(void) { return bench_consume_box_result; }
 
-/* wgpu signature-union shapes */
+/* Additional generic downcall shapes. */
 
 int64_t bench_add_indirect(int64_t *a, int64_t *b) { return *a + *b; }
 
