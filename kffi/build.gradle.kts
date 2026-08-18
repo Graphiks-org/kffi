@@ -243,6 +243,14 @@ kotlin {
         compileSdk = 36
         minSdk = 28
 
+        // Device tests pass the fixture's extracted nativeLibraryDir to dlopen.
+        // Keep JNI libraries extracted in the androidTest APK so that path exists.
+        packaging {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
+
         optimization {
             consumerKeepRules.apply {
                 publish = true
