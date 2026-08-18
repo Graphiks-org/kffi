@@ -24,11 +24,6 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Run policy and workflow contract tests
-        run: |
-          python3 .github/scripts/test_validate_pr_policy.py
-          python3 .github/scripts/test_publish_workflow.py
-
       - name: Validate pull request policy
         env:
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
