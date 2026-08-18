@@ -178,8 +178,7 @@ val handle = NativeEngine.loadNativeLibrary("/data/app/.../libmonlib.so") // dlo
 val symbol = NativeEngine.resolveSymbolIn(handle, "mon_symbole")
 ```
 
-The AAR bundles consumer R8 rules and the `arm64-v8a`, `x86_64`, and
-`armeabi-v7a` ABIs.
+The AAR bundles consumer R8 rules and the `arm64-v8a` and `x86_64` ABIs.
 
 ### Native
 
@@ -372,8 +371,9 @@ runtime module.
 ## CI/CD workflow
 
 The dedicated KFFI test workflow (`.github/workflows/ci.yml`) runs on
-macOS, Ubuntu, and Windows with JDK 25. It runs `./gradlew :kffi:jvmTest` on
-every matrix entry. It also performs these platform-specific checks:
+macOS, Ubuntu, and Windows with JDK 25. It runs `./gradlew :kffi:jvmTest
+:kffi:testAndroidHostTest` on every matrix entry. It also performs these
+platform-specific checks:
 
 - macOS compiles the iOS and macOS callback token codecs, then runs either
   `./gradlew :kffi:macosArm64Test` or `./gradlew :kffi:macosX64Test` according to
@@ -382,6 +382,9 @@ every matrix entry. It also performs these platform-specific checks:
   `./gradlew :kffi:linuxX64Test`.
 - Windows activates MSVC, compiles the MinGW callback token codec, and runs
   `./gradlew :kffi:mingwX64Test`.
+
+A dedicated Ubuntu job starts an Android API 35 `x86_64` emulator and runs
+`./gradlew :kffi:connectedAndroidDeviceTest`.
 
 The benchmark workflow (`.github/workflows/benchmark.yml`) runs the JVM
 JMH benchmark, compiles the macOS arm64 Native benchmark harness, and assembles

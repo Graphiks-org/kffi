@@ -352,7 +352,7 @@ java {
 tasks.withType<Test>().configureEach {
     when (name) {
         "jvmTest" -> useJUnitPlatform()
-        "testDebugUnitTest" -> {
+        "testAndroidHostTest" -> {
             useJUnitPlatform()
             filter {
                 excludeTestsMatching("org.graphiks.kffi.MemoryBufferArrayTest")

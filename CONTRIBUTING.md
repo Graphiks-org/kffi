@@ -91,6 +91,12 @@ Before submitting a PR, make sure:
 # JVM tests
 ./gradlew :kffi:jvmTest
 
+# Android host tests
+./gradlew :kffi:testAndroidHostTest
+
+# Android instrumented tests (requires a connected device or emulator)
+./gradlew :kffi:connectedAndroidDeviceTest
+
 # macOS Native callback token codec compilation
 ./gradlew \
   :kffi:compileKotlinIosX64 \
