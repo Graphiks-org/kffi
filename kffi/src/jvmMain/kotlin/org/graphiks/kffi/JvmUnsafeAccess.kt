@@ -2,7 +2,7 @@ package org.graphiks.kffi
 
 import sun.misc.Unsafe
 
-/** Accès mémoire non vérifiés (mode unsafe, I3) — sun.misc.Unsafe sur l'adresse brute. */
+/** Unchecked memory access in unsafe mode through sun.misc.Unsafe on the raw address. */
 internal object JvmUnsafeAccess {
     private val unsafe: Unsafe by lazy {
         val field = Unsafe::class.java.getDeclaredField("theUnsafe")
@@ -23,7 +23,7 @@ internal object JvmUnsafeAccess {
     fun getDouble(address: Long, offset: Long): Double = unsafe.getDouble(address + offset)
     fun putDouble(address: Long, offset: Long, value: Double) = unsafe.putDouble(address + offset, value)
 
-    // Accès par objet (tableaux hôtes) — chemin array unsafe, pattern Android.
+    // Object access (host arrays) — unsafe array path, matching Android's pattern.
 
     fun arrayBaseOffset(clazz: Class<*>): Int = unsafe.arrayBaseOffset(clazz)
 

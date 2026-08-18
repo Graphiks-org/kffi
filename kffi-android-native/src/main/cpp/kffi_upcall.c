@@ -10,9 +10,10 @@
  * which routes through CallbackRuntime.dispatchSafely. This is the same
  * mechanism JNA implements in CallbackReference.
  *
- * P1 scope: a fixed callback CIF of (uint32_t value, void *routing_userdata)
- * -> void, i.e. the bench fixture's routed callback shape. The generic
- * per-typedef CIF selection lands with the M5 kextract generator.
+ * The current implementation supports a fixed callback CIF of
+ * (uint32_t value, void *routing_userdata) -> void, the benchmark fixture's
+ * routed callback shape. Supporting other callback signatures requires
+ * selecting a CIF per typedef.
  */
 
 #include <jni.h>
@@ -38,9 +39,8 @@ typedef struct {
 static upcall_slot g_slots[KFFI_UPCALL_SLOTS];
 static JavaVM *g_vm;
 
-/* Guards the g_slots linear scan + state mutation in allocateTrampoline /
- * freeTrampoline (M6.1: the M4.1 review's thread-safety fix for slot
- * allocation). Initialized in kffi_upcall_init, which JNI_OnLoad runs before
+/* Guards the g_slots linear scan and state mutation in allocateTrampoline /
+ * freeTrampoline. Initialized in kffi_upcall_init, which JNI_OnLoad runs before
  * any upcall threads exist. The callback fast path (kffi_upcall_closure) does
  * not take this lock: an in-flight callback reads a slot the allocator already
  * handed out, and freeing below a live callback is the caller's quiescence
@@ -72,7 +72,7 @@ static void release_env(int attached) {
 /*
  * Generic closure entry. user_data is the upcall_slot pointer.
  *
- * P1 CIF: (uint32_t value, void *routing_userdata) -> void. The routing
+ * Callback CIF: (uint32_t value, void *routing_userdata) -> void. The routing
  * userdata carries the encoded CallbackRuntime token; it is marshalled
  * verbatim into the Kotlin static method `dispatch(token: Long, value: Int)`
  * i.e. JNI (JNIEnv*, jclass, jlong, jint).
@@ -89,8 +89,7 @@ static void kffi_upcall_closure(ffi_cif *cif, void *resp, void **args, void *use
     uintptr_t token = (uintptr_t)*(void **)args[1];
     (*env)->CallStaticVoidMethod(env, slot->cls, slot->method, (jlong)token, (jint)value);
     if ((*env)->ExceptionCheck(env)) {
-        /* P1: surface to logcat. M5.4 will route this to CallbackRuntime
-           reporting via the Kotlin dispatcher's onError handler. */
+        /* Surface the failure to logcat. */
         (*env)->ExceptionDescribe(env);
         (*env)->ExceptionClear(env);
     }
@@ -200,14 +199,13 @@ fail_slot:
    Kotlin holds. ffi_closure_free takes the writable allocation; both the data
    and code mappings are unmapped together.
  *
- * QUIESCENCE CONTRACT (M6.1 / M5-M6 seam): this must only be called once the
- * caller has established quiescence — i.e. CallbackRegistration.isQuiescent
+ * QUIESCENCE CONTRACT: this must only be called once the caller has
+ * established quiescence — i.e. CallbackRegistration.isQuiescent
  * guarantees no in-flight callback can still be executing this closure. The
  * mutex here protects the slot table against concurrent allocate/free; it does
  * NOT (and cannot) protect against freeing a closure while its callback is
  * executing, which is a use-after-free and is the caller's responsibility to
- * prevent before invoking this. Deliberately not over-engineered into a
- * refcount for the P1 milestone.
+ * prevent before invoking this. A reference count is intentionally not used.
  *
  * LEAK POLICY: freed slots are reusable; a registration that leaks a
  * trampoline (never freed) retains the global ref — mirroring JNA

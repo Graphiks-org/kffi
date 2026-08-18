@@ -13,29 +13,28 @@ import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandle
 
 /**
- * Moteur de downcall JVM typé par forme — symétrique de NativeEngine (Android).
+ * JVM downcall engine typed by call shape — symmetric with NativeEngine (Android).
  *
- * Chaque wrapper consulte un cache à deux niveaux : clé externe = adresse de
- * fonction (Long exact, aucune collision possible entre deux adresses),
- * clé interne = `(layoutVersion shl 8) or shapeId`. Le MethodHandle FFM
- * (invokeExact) est construit une seule fois par couple (adresse × forme), et la
- * version de layout dans la clé interne garantit qu'une re-registration
- * (registerStructLayout) reconstruit le descripteur au lieu de réutiliser un
- * MethodHandle périmé. Le cache est borné en pratique par le nombre d'adresses
- * exportées distinctes résolues par les bindings. Les formes couvertes sont
- * celles réellement référencées par les bindings générés (union des signatures
- * wgpu) — la table grandit par ajout de wrapper, jamais par combinatoire.
+ * Each wrapper looks up a two-level cache: the outer key is the function
+ * address (the exact Long, so two addresses cannot collide) and the inner key
+ * is `(layoutVersion shl 8) or shapeId`. An FFM MethodHandle (invokeExact) is
+ * built once per (address × shape), and the layout version in the inner key
+ * ensures that registerStructLayout rebuilds the descriptor instead of reusing
+ * a stale MethodHandle. In practice, the cache is bounded by the number of
+ * distinct exported addresses resolved by the bindings. The supported shapes
+ * are the ones referenced by generated bindings (the union of wgpu
+ * signatures); the table grows by adding wrappers, never combinatorially.
  *
- * Les signatures portant des structs par valeur (arg ou retour) sont couvertes
- * par des wrappers construits depuis le registre de layouts (M5.2bis) : le code
- * généré enregistre des métadonnées (taille/alignement/champs) via
- * [registerStructLayout], et le moteur construit les GroupLayout FFM en interne.
+ * Signatures with structs passed or returned by value are covered by wrappers
+ * built from the layout registry: generated code registers metadata (size,
+ * alignment, and fields) through [registerStructLayout], and the engine builds
+ * FFM GroupLayouts internally.
  */
 object JvmDowncallEngine {
 
     private val linker = Linker.nativeLinker()
 
-    /** shapeId stables par wrapper — encodés dans la clé de [handleCache] (bas 8 bits). */
+    /** Stable shapeId values per wrapper, encoded in the low eight bits of [handleCache]'s key. */
     private object ShapeId {
         const val V0 = 1
         const val V1P = 2
@@ -55,13 +54,13 @@ object JvmDowncallEngine {
         const val F1P = 16
         const val D1P = 17
 
-        /** Formes struct-by-value (M5.2bis) : shapeId dédiés par struct × forme —
-         *  le layout du struct fait partie de la forme, la clé de cache reste
-         *  unique par (adresse, forme). */
+        /** Struct-by-value shapes: dedicated shapeId values per struct × shape.
+         *  The struct layout is part of the shape, so each cache key remains
+         *  unique per (address, shape). */
         const val S_ARG_BOX = 18
         const val S_RET_BOX = 19
 
-        // --- Union des signatures wgpu (M5.3) : scalaires ---
+        // --- wgpu signature union: scalar values ---
         const val I2PP = 20
         const val I2PI = 21
         const val L1P = 22
@@ -89,7 +88,7 @@ object JvmDowncallEngine {
         const val V4PIII = 44
         const val V7PFFFFFF = 45
 
-        // --- Union des signatures wgpu (M5.3) : structs par valeur ---
+        // --- wgpu signature union: structs passed by value ---
         const val S_ARG_ADAPTER_INFO = 46
         const val S_ARG_SUPPORTED_FEATURES = 47
         const val S_ARG_SUPPORTED_INSTANCE_FEATURES = 48
@@ -108,7 +107,7 @@ object JvmDowncallEngine {
         const val S_RET_FUTURE_PLLL_BUFFER_MAP = 61
     }
 
-    /** MéthodeHandle par (adresse de fonction, forme, version de layout). */
+    /** MethodHandle per (function address, shape, layout version). */
     private val handleCache =
         java.util.concurrent.ConcurrentHashMap<Long, java.util.concurrent.ConcurrentHashMap<Int, MethodHandle>>()
 
@@ -118,14 +117,13 @@ object JvmDowncallEngine {
         MemorySegment.ofAddress(address)
 
     /**
-     * Cache à deux niveaux : clé externe = adresse de fonction (Long exact,
-     * aucune collision possible entre deux adresses — contrairement à un encodage
-     * par décalage, qui replie les bits 48+ des adresses canoniques dans les bits
-     * bas de la clé), clé interne = `(layoutVersion shl 8) or shapeId`. La version
-     * du layout fait partie de la clé interne : une re-registration
-     * (registerStructLayout) construit un nouveau MethodHandle au lieu de réutiliser
-     * celui du descripteur précédent (corruption ABI silencieuse sinon). La table
-     * interne est minuscule (quelques formes par adresse de fonction).
+     * Two-level cache: the outer key is the function address (the exact Long,
+     * so two addresses cannot collide, unlike a shift encoding that folds bits
+     * 48+ of canonical addresses into the key's low bits); the inner key is
+     * `(layoutVersion shl 8) or shapeId`. The layout version belongs to the
+     * inner key so registerStructLayout creates a new MethodHandle instead of
+     * reusing the previous descriptor's handle (which would silently corrupt
+     * the ABI). The inner table is tiny: a few shapes per function address.
      */
     private fun handle(fn: Long, shapeId: Int, descriptor: FunctionDescriptor, layoutVersion: Int = 0): MethodHandle {
         require(fn != 0L) { "Cannot downcall through null function address" }
@@ -224,10 +222,9 @@ object JvmDowncallEngine {
         return handle.invokeExact(segment(a1)) as Double
     }
 
-    // --- Union des signatures wgpu (M5.3) : scalaires ---
-    // Les formes manquantes du bake-off M2.2 sont ajoutées une à une jusqu'à
-    // couvrir l'union des signatures du moteur wgpu : chaque wrapper suit le
-    // pattern M2.1 (typed, cache (adresse, forme), garde null).
+    // --- wgpu signature union: scalar values ---
+    // Every wrapper covers a wgpu engine signature and follows the same typed
+    // pattern: cache by (address, shape) and guard against null addresses.
 
     fun callI2PP(fn: Long, a1: Long, a2: Long): Long {
         val handle = handle(fn, ShapeId.I2PP, FunctionDescriptor.of(ValueLayout.JAVA_LONG, C_POINTER, C_POINTER))
@@ -359,7 +356,7 @@ object JvmDowncallEngine {
         handle.invokeExact(segment(p1), a2, a3, a4, a5, a6, a7)
     }
 
-    // --- struct-by-value : registre de layouts (M5.2bis) ---
+    // --- Structs passed by value: layout registry ---
 
     data class StructField(val cName: String, val kind: FieldKind, val offsetBytes: Long)
 
@@ -370,19 +367,19 @@ object JvmDowncallEngine {
     private val structAlignments = java.util.concurrent.ConcurrentHashMap<String, Long>()
 
     /**
-     * Version par struct, incrémentée à chaque [registerStructLayout] : elle fait
-     * partie de la clé de [handleCache] (bits 8-15) pour que les wrappers
-     * struct-by-value reconstruisent le MethodHandle quand le descripteur change.
+     * Per-struct version incremented by [registerStructLayout]. It is part of
+     * the [handleCache] key (bits 8–15) so struct-by-value wrappers rebuild the
+     * MethodHandle when the descriptor changes.
      */
     private val layoutVersions = java.util.concurrent.ConcurrentHashMap<String, Int>()
 
     /**
-     * Enregistre les métadonnées de layout d'un struct par valeur, émises par le
-     * code généré (kextract) au chargement du fichier de bindings. Les champs
-     * [StructField] portent le type ([FieldKind]) et, pour PADDING, la TAILLE du
-     * padding (gap entre champs consécutifs, y compris le padding final) ; pour les
-     * autres champs, [StructField.offsetBytes] est informatif — le GroupLayout FFM
-     * est reconstruit depuis les éléments et leurs tailles.
+     * Registers layout metadata for a struct passed by value, emitted by
+     * generated code (kextract) when the bindings file loads. [StructField]
+     * contains the type ([FieldKind]) and, for PADDING, the padding SIZE (the
+     * gap between consecutive fields, including final padding). For every other
+     * field, [StructField.offsetBytes] is informational — the FFM GroupLayout
+     * is rebuilt from elements and their sizes.
      */
     fun registerStructLayout(name: String, sizeBytes: Long, alignmentBytes: Long, fields: List<StructField>) {
         structLayouts[name] = sizeBytes to fields
@@ -396,36 +393,35 @@ object JvmDowncallEngine {
     private val structDescriptors = java.util.concurrent.ConcurrentHashMap<String, MemoryLayout>()
 
     /**
-     * Layout FFM d'un struct enregistré, construit depuis les métadonnées
-     * [registerStructLayout] (taille, alignement, champs, padding explicite).
-     *
-     * API publique : utilisée par le code généré (kextract) — y compris les
-     * trampolines de callbacks FFM de secours — pour construire les descripteurs
-     * de fonctions portant des structs par valeur.
-     *
-     * Contrat :
-     * - [name] doit avoir été enregistré via [registerStructLayout] avant le
-     *   premier appel (le code généré s'en charge à l'initialisation du fichier,
-     *   avant tout downcall/upcall) ;
-     * - nom inconnu → `NoSuchElementException` ;
-     * - métadonnées incohérentes avec la taille calculée → `IllegalStateException`
-     *   (garde `check`) ;
-     * - le layout est mis en cache et reconstruit à chaque ré-enregistrement
-     *   (version bump) — les descripteurs dérivés d'un layout ancien sont
-     *   invalidés avec lui.
+     * FFM layout of a registered struct, built from [registerStructLayout]
+     * metadata (size, alignment, fields, and explicit padding).
+ *
+     * Public API used by generated code (kextract), including fallback FFM
+     * callback trampolines, to build function descriptors with structs passed
+     * by value.
+ *
+     * Contract:
+     * - [name] must be registered through [registerStructLayout] before its
+     *   first use (generated code does this during file initialization, before
+     *   any downcall or upcall);
+     * - an unknown name throws `NoSuchElementException`;
+     * - metadata inconsistent with the computed size throws
+     *   `IllegalStateException` through `check`;
+     * - the layout is cached and rebuilt after each re-registration (a version
+     *   bump), invalidating descriptors derived from the previous layout.
      */
     fun structLayout(name: String): MemoryLayout =
         structDescriptors.computeIfAbsent(name) { structName ->
             val (size, fields) = structLayouts.getValue(structName)
             val elements = fields.map { field ->
                 when (field.kind) {
-                    // L'offsetBytes d'un champ PADDING porte la TAILLE du padding :
-                    // FFM place chaque élément séquentiellement, sans padding implicite,
-                    // et withByteAlignment n'arrondit pas la taille — les gaps explicites
-                    // (y compris final) sont donc obligatoires pour reproduire l'offset
-                    // et la taille Clang.
+                    // A PADDING field's offsetBytes holds the padding SIZE: FFM
+                    // places elements sequentially without implicit padding, and
+                    // withByteAlignment does not round the size. Explicit gaps,
+                    // including final padding, are therefore required to match
+                    // Clang's offsets and size.
                     FieldKind.PADDING -> MemoryLayout.paddingLayout(field.offsetBytes)
-                    // Le cName d'un champ STRUCT porte le nom enregistré du type imbriqué.
+                    // A STRUCT field's cName holds the registered nested type name.
                     FieldKind.STRUCT -> structLayout(field.cName).withName(field.cName)
                     else -> primitiveLayout(field.kind).withName(field.cName)
                 }
@@ -451,14 +447,14 @@ object JvmDowncallEngine {
         FieldKind.PADDING -> error("padding handled separately")
     }
 
-    // --- wrappers struct-by-value par struct (M5.2bis) ---
+    // --- Per-struct wrappers for structs passed by value ---
     //
-    // Formes dédiées par struct : le layout est résolu depuis le registre à chaque
-    // appel (cached dans structDescriptors), le MethodHandle par (adresse, forme)
-    // reste dans handleCache. Le segment d'argument est borné à la taille du layout
-    // (reinterpret) ; le retour struct exige un SegmentAllocator en premier
-    // argument du MethodHandle (convention FFM) — l'arène du MemoryAllocator
-    // appelant, qui porte le scope de la structure retournée.
+    // Dedicated shapes per struct: the layout is resolved from the registry at
+    // every call (cached in structDescriptors), while the MethodHandle per
+    // (address, shape) remains in handleCache. The argument segment is bounded
+    // to the layout size (reinterpret); a struct return requires a
+    // SegmentAllocator as the MethodHandle's first argument (FFM convention),
+    // using the caller's MemoryAllocator arena to carry the returned struct's scope.
 
     fun callStructArgBox(fn: Long, structPtr: Long) {
         val layout = structLayout("Box")
@@ -474,24 +470,24 @@ object JvmDowncallEngine {
         return NativeAddress(result.address())
     }
 
-    // --- Union des signatures wgpu (M5.3) : structs par valeur ---
+    // --- wgpu signature union: structs passed by value ---
     //
-    // Formes M5.2bis étendues : les signatures wgpu portent des structs par valeur
-    // avec des arguments scalaires AUTOUR du struct (StringView en argument derrière
-    // un pointeur, structs callbackInfo en argument d'une fonction à retour WGPUFuture,
-    // etc.). Chaque wrapper est dédié à une (forme, paire de structs) — le layout de
-    // chaque struct est résolu depuis le registre, le descripteur est construit une
-    // fois par (adresse, forme, version de layout) dans handleCache. Le segment
-    // d'argument struct est borné à la taille de son layout ; le retour struct exige
-    // le SegmentAllocator de l'allocateur appelant (convention FFM).
+    // Extended shapes: wgpu signatures pass structs by value together with
+    // scalar arguments (for example, StringView after a pointer or callbackInfo
+    // structs to a function returning WGPUFuture). Each wrapper is dedicated to
+    // one shape and struct pair. Each struct layout is resolved from the
+    // registry, and the descriptor is built once per (address, shape, layout
+    // version) in handleCache. Struct argument segments are bounded to their
+    // layout size; struct returns require the caller allocator's SegmentAllocator
+    // (FFM convention).
 
     /**
-     * MethodHandle d'un wrapper struct-par-valeur en argument : [scalarArgLayouts]
-     * sont les layouts des arguments scalaires/pointeurs qui PRÉCÈDENT le struct
-     * dans l'ordre C (le struct est toujours le dernier argument — vérifié par la
-     * garde kextract à la génération). [returnLayout] est null pour les retours
-     * Unit, sinon le layout du retour (ex. C_POINTER pour wgpuGetProcAddress) —
-     * une forme par nom de wrapper, jamais d'overload.
+     * MethodHandle for a wrapper with a struct-by-value argument:
+     * [scalarArgLayouts] are the layouts of scalar/pointer arguments that
+     * PRECEDE the struct in C order (the struct is always the last argument, as
+     * checked by kextract during generation). [returnLayout] is null for Unit
+     * returns; otherwise it is the return layout (for example, C_POINTER for
+     * wgpuGetProcAddress). There is one shape per wrapper name, never overloads.
      */
     private fun structArgHandle(
         fn: Long,
@@ -510,11 +506,11 @@ object JvmDowncallEngine {
     }
 
     /**
-     * MethodHandle d'un wrapper struct-par-valeur en retour, avec zéro ou un struct
-     * par valeur en argument ([argStructNames], dernier argument). La version de
-     * layout de la clé de cache combine les versions de TOUS les structs du
-     * descripteur (retour + arguments) : une re-registration de l'un d'eux
-     * reconstruit le MethodHandle au lieu de réutiliser le descripteur périmé.
+     * MethodHandle for a wrapper returning a struct by value, with zero or one
+     * struct-by-value argument ([argStructNames], the last argument). The cache
+     * key's layout version combines the versions of ALL structs in the
+     * descriptor (return and arguments), so re-registering any one of them
+     * rebuilds the MethodHandle instead of reusing a stale descriptor.
      */
     private fun structReturnHandle(
         fn: Long,
@@ -539,7 +535,7 @@ object JvmDowncallEngine {
         return segment(structPtr).reinterpret(layout.byteSize())
     }
 
-    // --- struct en argument, retour Unit (freeMembers et consorts) ---
+    // --- Struct argument with a Unit return (freeMembers and similar functions) ---
 
     fun callStructArgWGPUAdapterInfo(fn: Long, structPtr: Long) {
         val handle = structArgHandle(fn, ShapeId.S_ARG_ADAPTER_INFO, "WGPUAdapterInfo")
@@ -566,16 +562,16 @@ object JvmDowncallEngine {
         handle.invokeExact(structSegment(structPtr, "WGPUSurfaceCapabilities"))
     }
 
-    // --- WGPUStringView en argument (SetLabel / PushDebugGroup / InsertDebugMarker) ---
+    // --- WGPUStringView argument (SetLabel / PushDebugGroup / InsertDebugMarker) ---
 
     fun callStructArgWGPUStringView(fn: Long, p1: Long, structPtr: Long) {
         val handle = structArgHandle(fn, ShapeId.S_ARG_STRINGVIEW_P, "WGPUStringView", listOf(C_POINTER))
         handle.invokeExact(segment(p1), structSegment(structPtr, "WGPUStringView"))
     }
 
-    // --- WGPUStringView en argument, retour pointeur (wgpuGetProcAddress) ---
-    // Forme distincte de callStructArgWGPUStringView (retour Unit) : nom dédié,
-    // pas d'overload — une forme = un nom de wrapper.
+    // --- WGPUStringView argument with a pointer return (wgpuGetProcAddress) ---
+    // Distinct from callStructArgWGPUStringView (which returns Unit): it has a
+    // dedicated name, with one shape per wrapper name and no overloads.
 
     fun callStructArgWGPUStringViewRetP(fn: Long, structPtr: Long): Long {
         val handle = structArgHandle(
@@ -587,7 +583,7 @@ object JvmDowncallEngine {
         return (handle.invokeExact(structSegment(structPtr, "WGPUStringView")) as MemorySegment).address()
     }
 
-    // --- WGPUFuture en retour ---
+    // --- WGPUFuture return ---
 
     fun callStructReturnWGPUFuture(fn: Long, allocator: MemoryAllocator, p1: Long): NativeAddress {
         val handle = structReturnHandle(

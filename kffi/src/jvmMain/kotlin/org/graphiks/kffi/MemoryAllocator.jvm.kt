@@ -10,16 +10,17 @@ actual class MemoryAllocator actual constructor(unsafe: Boolean) : AutoCloseable
 
     val arena = Arena.ofConfined()
 
-    /** Drapeau de fermeture : 1 load volatil par accès unsafe au lieu de scope().isAlive (2 appels FFM). */
+    /** Closed flag: one volatile load per unsafe access instead of scope().isAlive (two FFM calls). */
     private val closed = java.util.concurrent.atomic.AtomicBoolean(false)
 
     actual fun allocate(sizeInByte: Long): NativeAddress =
         arena.allocate(sizeInByte).let { NativeAddress(it.address()) }
 
     /**
-     * Le flag est posé avant arena.close() : si la fermeture de l'arène lève
-     * (ex. close depuis un thread non-propriétaire), le flag reste true et les
-     * buffers de cet allocateur continuent de lever (fail-fast délibéré).
+     * The flag is set before arena.close(): if closing the arena throws (for
+     * example, because close is called from a non-owner thread), the flag
+     * remains true and this allocator's buffers keep throwing (intentional
+     * fail-fast behavior).
      */
     actual override fun close() {
         closed.set(true)

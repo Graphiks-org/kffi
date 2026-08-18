@@ -11,7 +11,7 @@ private val SYMBOL_LOOKUP by lazy {
         .or(Linker.nativeLinker().defaultLookup())
 }
 
-/** Résout un symbole et retourne son adresse brute ; lève `UnsatisfiedLinkError` si introuvable. */
+/** Resolves a symbol and returns its raw address; throws `UnsatisfiedLinkError` when it is not found. */
 fun findOrThrow(symbol: String): Long {
     return SYMBOL_LOOKUP.find(symbol)
         .orElseThrow { UnsatisfiedLinkError("unresolved symbol: $symbol") }

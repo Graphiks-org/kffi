@@ -1,20 +1,21 @@
 package org.graphiks.kffi
 
 /**
- * Buffer borné sur une adresse native.
+ * Buffer bounded to a native address.
  *
- * ## Contrat mémoire (P3 — unifié sur les 3 backends)
- * - Tout accès typé (scalaire ou tableau) est vérifié : offset + elementSize ≤ size.
- * - Hors bornes → [IndexOutOfBoundsException] avec offset/taille dans le message.
- * - [unsafe] = true élimine les bornes-check (opt-in par allocateur ou par buffer,
- *   I3) : tout accès hors bornes devient UB. Défaut : false (bornes-check actifs).
- * - `NativeAddress` nu n'est PAS borné par nature ; tout accès typé passe par
- *   `MemoryBuffer` (borné) ou l'option unsafe.
- * - Durée de vie (I2-a, P2) : buffer créé via [MemoryAllocator] → use-after-close
- *   lève IllegalStateException (JVM) ; buffer depuis adresse brute → accès post-close
- *   non détecté (UB documenté, aligné Android/native).
- * - Aliasing : deux buffers sur la même zone mémoire sont vus mutuellement ; pas de
- *   verrou.
+ * ## Memory contract
+ * - Every typed access (scalar or array) is checked: offset + elementSize ≤ size.
+ * - An out-of-bounds access throws [IndexOutOfBoundsException] with offset and size in the message.
+ * - [unsafe] = true skips bounds checks (opt-in per allocator or buffer): every
+ *   out-of-bounds access becomes UB. The default is false (bounds checks enabled).
+ * - A bare `NativeAddress` is not inherently bounded; every typed access goes
+ *   through a bounded `MemoryBuffer` or uses the unsafe option.
+ * - Lifetime: a buffer created through [MemoryAllocator] throws
+ *   IllegalStateException on use after close (JVM); access after close for a
+ *   buffer created from a raw address is not detected (documented UB, matching
+ *   Android/native behavior).
+ * - Aliasing: two buffers over the same memory region observe one another; no
+ *   locking is provided.
  */
 @OptIn(ExperimentalUnsignedTypes::class)
 expect class MemoryBuffer(handler: NativeAddress, size: ULong, unsafe: Boolean = false) {

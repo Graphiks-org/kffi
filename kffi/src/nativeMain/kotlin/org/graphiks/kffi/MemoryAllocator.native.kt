@@ -13,7 +13,7 @@ import kotlinx.cinterop.reinterpret
 import kotlinx.cinterop.value
 
 actual class MemoryAllocator actual constructor(unsafe: Boolean) : AutoCloseable {
-    // flag ignoré au runtime (constante compilée) — documenté dans le KDoc commun
+    // The runtime flag is ignored in favor of a compile-time constant; see the common KDoc.
 
     val allocator = Arena()
 

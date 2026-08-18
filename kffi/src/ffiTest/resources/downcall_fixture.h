@@ -35,7 +35,7 @@ bench_box_t bench_make_box(int32_t x);
 void bench_consume_box(bench_box_t box);
 int32_t bench_consume_box_get(void);
 
-/* M5.3 : formes de l'union des signatures wgpu */
+/* wgpu signature-union shapes */
 int64_t bench_add_indirect(int64_t *a, int64_t *b);
 int64_t bench_has_feature(int64_t *p, int32_t feature);
 uint64_t bench_load_u64(uint64_t *p);

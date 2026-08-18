@@ -16,21 +16,19 @@ import java.lang.invoke.MethodHandle
 import java.util.concurrent.TimeUnit
 
 /**
- * Downcall engine bake-off (JVM signal for the P1 Android engine decision).
+ * Downcall engine benchmark.
  *
  * - [fmmExact] is the steady-state engine floor: a cached MethodHandle.invokeExact
  *   (the current kffi JVM path), fully inlined by the JIT.
  * - [fmmExactDereferencedLookup] is a worst-case ceiling: per-call symbol lookup +
  *   downcallHandle construction + cold-path dispatch. It bounds the headroom gained
  *   by caching, and is NOT a head-to-head competitor.
- * - [jvmEngineAdd4] / [jvmEngineEmpty] measure [JvmDowncallEngine] as-is (M2.1):
- *   symbol resolved once, per-call handle construction inside the wrapper. They
- *   bound the current engine headroom vs [fmmExact]; the wrap-once cache lands
- *   after the bake-off verdict (M5).
+ * - [jvmEngineAdd4] / [jvmEngineEmpty] measure [JvmDowncallEngine] as-is:
+ *   the symbol is resolved once and the wrapper constructs a handle per call.
+ *   They bound the current engine headroom against [fmmExact].
  * - [noOpFloor] measures the Blackhole/loop overhead floor.
  *
- * The definitive Android-device bake-off (wrap-once typed vs JNI pur vs libffi)
- * runs in P1 once the engine exists.
+ * The benchmark provides a JVM baseline for comparisons with Android engines.
  */
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)

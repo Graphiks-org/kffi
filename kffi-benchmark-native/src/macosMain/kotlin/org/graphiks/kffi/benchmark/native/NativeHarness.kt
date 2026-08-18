@@ -21,9 +21,9 @@ private fun measureDowncallEmpty(): Double {
     return elapsed.inWholeNanoseconds / 100_000.0
 }
 
-// P3 NOTE: native bounds-check overhead is measured by the difference between
-// this bounds-checked scenario (KFFI_NATIVE_UNSAFE=false) and the unsafe
-// variant (build the module with the constant set to true).
+// Native bounds-check overhead is measured by the difference between this
+// bounds-checked scenario (KFFI_NATIVE_UNSAFE=false) and the unsafe variant
+// (build the module with the constant set to true).
 private fun measureMarshaling(): Double {
     repeat(100) {
         org.graphiks.kffi.memoryScope { allocator ->
@@ -45,7 +45,7 @@ private fun measureMarshaling(): Double {
 /*
  * Unsafe variant (KFFI_NATIVE_UNSAFE=true) — documented structure, not
  * compiled by default: the build-time constant lives in the kffi module
- * (MemoryBuffer.native.kt) and cannot be changed at runtime (I3/P3).
+ * (MemoryBuffer.native.kt) and cannot be changed at runtime.
  * To measure bounds-check overhead, build kffi with
  * KFFI_NATIVE_UNSAFE=true and then run THIS scenario — the code is identical
  * to measureMarshaling; only the compile-time constant changes. It is not

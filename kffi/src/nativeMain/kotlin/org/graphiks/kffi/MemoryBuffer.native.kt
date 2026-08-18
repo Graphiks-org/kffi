@@ -24,10 +24,10 @@ import kotlinx.cinterop.toCPointer
 import kotlinx.cinterop.value
 
 /**
- * Constante compilée : les distributions native sont figées à la compilation
- * (I3, P3) — la valeur du flag runtime est ignorée au profit de cette constante.
- * Basculer à la compilation : éditer la constante `KFFI_NATIVE_UNSAFE` en tête
- * de ce fichier puis recompiler le module.
+ * Compile-time constant: native distributions are fixed at compilation time,
+ * and the runtime flag value is ignored in favor of this constant. To switch
+ * the mode, edit `KFFI_NATIVE_UNSAFE` at the top of this file and rebuild the
+ * module.
  */
 private const val KFFI_NATIVE_UNSAFE: Boolean = false
 
@@ -36,8 +36,8 @@ actual class MemoryBuffer actual constructor(
     actual val size: ULong,
     unsafe: Boolean,
 ) {
-    // Le flag runtime est ignoré au profit de la constante build-time KFFI_NATIVE_UNSAFE :
-    // les distributions native sont figées à la compilation (divergence documentée, I3/P3).
+    // The runtime flag is ignored in favor of the KFFI_NATIVE_UNSAFE build-time
+    // constant: native distributions are fixed at compilation time.
     private val unsafe: Boolean = KFFI_NATIVE_UNSAFE
 
     private fun <T : CPointed> getPointerAtOffset(offset: ULong): CPointer<T> {

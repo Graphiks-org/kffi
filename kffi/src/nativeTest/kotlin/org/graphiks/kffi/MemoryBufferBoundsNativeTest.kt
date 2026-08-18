@@ -5,9 +5,9 @@ import io.kotest.core.spec.style.FreeSpec
 
 class MemoryBufferBoundsNativeTest : FreeSpec({
 
-    "unsafe flag is a compile-time constant on native (build-time, I3)" {
-        // La distribution native est figée : le flag runtime est ignoré.
-        // Ce test documente le comportement de la distribution par défaut (bornée).
+    "unsafe flag is a compile-time constant on native" {
+        // The native distribution is fixed: the runtime flag is ignored.
+        // This test documents the default bounded-distribution behavior.
         memoryScope { scope ->
             val buffer = scope.allocateBuffer(8u)
             shouldThrow<IndexOutOfBoundsException> {

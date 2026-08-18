@@ -10,10 +10,11 @@ import org.graphiks.kffi.MemoryBuffer
 import org.graphiks.kffi.NativeAddress
 
 /**
- * Exercice les wrappers struct-by-value du moteur (M5.2bis) contre la fixture C :
- * le layout "Box" est enregistré comme le fait le code généré (registerStructLayout),
- * puis les wrappers marshallent l'argument struct (reinterpret à la taille du layout)
- * et le retour struct (SegmentAllocator de l'allocateur appelant, convention FFM).
+ * Exercises the engine's struct-by-value wrappers against the C fixture: the
+ * "Box" layout is registered as generated code does (registerStructLayout),
+ * then the wrappers marshal the struct argument (reinterpret to the layout
+ * size) and the struct return (the caller allocator's SegmentAllocator, per
+ * the FFM convention).
  */
 class JvmDowncallEngineStructByValueTest : FreeSpec({
 
@@ -119,10 +120,10 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
     }
 
     "re-registering a struct layout rebuilds the cached downcall handle descriptor" {
-        // La clé du handleCache porte une version du layout : une re-registration de
-        // "Box" doit invalider le MethodHandle construit avec l'ancien descripteur,
-        // sinon le wrapper continuerait à marshaller l'ancienne taille (ici 8 octets
-        // découpés depuis un segment d'argument de 4 octets → IndexOutOfBoundsException).
+        // The handleCache key carries a layout version. Re-registering "Box"
+        // must invalidate the MethodHandle built from the old descriptor;
+        // otherwise the wrapper would keep marshaling the old size (here, 8
+        // bytes read from a 4-byte argument segment → IndexOutOfBoundsException).
         MemoryAllocator().use { allocator ->
             val box = allocator.allocateBuffer(8uL)
             box.writeInt(20, 0uL)
@@ -148,7 +149,7 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
                 narrow.handler.rawValue,
             )
 
-            // Restaure le layout canonique pour les autres tests de la classe.
+            // Restore the canonical layout for the class's other tests.
             JvmDowncallEngine.registerStructLayout(
                 "Box",
                 sizeBytes = 8L,
@@ -161,8 +162,8 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
         }
     }
 
-    // M5.3 : formes wgpu — layouts miroirs des structs wgpu enregistrés sous leur
-    // nom planifié (mêmes champs que les structs de la fixture C).
+    // wgpu shapes: mirror layouts for wgpu structs registered under their
+    // planned names (with the same fields as the C fixture structs).
 
     "WGPUStringView arg after a pointer passes both (SetLabel shape)" {
         JvmDowncallEngine.registerStructLayout(
@@ -190,7 +191,7 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
     "WGPUStringView arg alone returns the proc address (GetProcAddress shape)" {
         MemoryAllocator().use { allocator ->
             val name = allocator.allocateBuffer(16uL)
-            name.writePointer(NativeAddress(0x5000L), 0uL) // data non nul
+            name.writePointer(NativeAddress(0x5000L), 0uL) // non-null data
             name.writeLong(7, 8uL) // length = 7
             val proc = JvmDowncallEngine.callStructArgWGPUStringViewRetP(
                 JvmDowncallFixture.symbol("bench_get_proc_address"),
@@ -201,11 +202,11 @@ class JvmDowncallEngineStructByValueTest : FreeSpec({
     }
 
     "struct arg alone consumes the struct by value (FreeMembers shape)" {
-        // La forme S|V des fonctions *FreeMembers : le wrapper marshalle le struct
-        // par valeur, le callee le consomme. La fixture C expose
-        // bench_consume_future(bench_future_t) — même ABI qu'un FreeMembers
-        // (struct {uint64_t} de 8 octets par valeur) ; le layout est enregistré
-        // sous le nom du wrapper exercé.
+        // The S|V shape of *FreeMembers functions: the wrapper marshals the
+        // struct by value and the callee consumes it. The C fixture exposes
+        // bench_consume_future(bench_future_t), with the same ABI as a
+        // FreeMembers function (an 8-byte struct {uint64_t} passed by value).
+        // The layout is registered under the exercised wrapper's name.
         JvmDowncallEngine.registerStructLayout(
             "WGPUAdapterInfo",
             sizeBytes = 8L,

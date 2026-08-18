@@ -250,42 +250,41 @@ class PreparedCallbackRegistration<C : Callback> internal constructor(
 }
 
 /**
- * Table d'index token → RegistryEntry. Le token est un compteur monotone
- * (jamais réutilisé) : l'index de slot est token - 1. Croissance par
- * doublement ; les slots libres après close restent null (le token n'est
- * jamais réutilisé, un slot null signifie "plus actif").
+ * Token → RegistryEntry index table. The token is a monotonic counter
+ * (never reused): the slot index is token - 1. Capacity grows by doubling;
+ * free slots remain null after close (the token is never reused, and a null
+ * slot means "no longer active").
  *
- * Concurrence : un slot est écrit UNE fois (publish) et relu en CAS-free
- * (volatile) — l'AtomicArray garantit la visibilité. Le retrait passe le
- * slot à null (pas de copie de map). Le grow est lock-free : la génération
- * courante est publiée par CAS (AtomicReference) ; toute opération de slot
- * relit la référence après son CAS et rejoue sur la génération courante si
- * un grow a remplacé la sienne, reconnaissant par identité une entrée déjà
- * copiée par le grow.
+ * Concurrency: a slot is written ONCE (publish) and read CAS-free
+ * (volatile) — AtomicArray guarantees visibility. Removal sets the slot to
+ * null (without copying a map). Growth is lock-free: the current generation
+ * is published with CAS (AtomicReference); every slot operation reloads the
+ * reference after its CAS and retries against the current generation if a
+ * growth operation replaced its own, recognizing an entry already copied by
+ * the growth operation by identity.
  *
- * Invariant de compteur : count == nombre d'entrées visibles dans la
- * génération courante (slots non null). L'API du runtime publie une entrée
- * au plus une fois et la retire au plus une fois (lifecycle) ; chaque
- * insert qui publie incrémente une seule fois, chaque remove qui retire de
- * la table décrémente une seule fois — les rejouages ci-dessus sont
- * exactement ce qui maintient cet équilibre lors d'un grow concurrent.
+ * Counter invariant: count == the number of visible entries in the current
+ * generation (non-null slots). The runtime API publishes an entry at most
+ * once and removes it at most once (lifecycle); each publishing insert
+ * increments once and each table-removing remove decrements once — the
+ * retries above are precisely what preserves that balance during concurrent
+ * growth.
  *
- * Terminaison : chaque itération de rejeu consomme une nouvelle génération
- * (publiée par un grow) ; la capacité double à chaque grow et plafonne à
- * Int.MAX_VALUE, donc le nombre total de générations est borné par
- * O(log(MAX_INDEXABLE_TOKEN)) et toute boucle termine.
+ * Termination: every retry iteration consumes a new generation published by
+ * a growth operation; capacity doubles at each growth and is capped at
+ * Int.MAX_VALUE, so the total number of generations is bounded by
+ * O(log(MAX_INDEXABLE_TOKEN)) and every loop terminates.
  *
- * Bornes de token : l'index (token - 1) doit tenir dans un Int positif —
- * plafond MAX_INDEXABLE_TOKEN = 2³¹−1, en dessous de la plage validée par
- * le codec (1..Long.MAX_VALUE, requireValidCallbackToken). Un token hors
- * plafond est rejeté par require avec un message dédié (jamais confondu
- * avec une réutilisation) dans insert/remove, et lu comme "inconnu"
- * (null) dans get.
+ * Token bounds: the index (token - 1) must fit in a positive Int —
+ * MAX_INDEXABLE_TOKEN is 2³¹−1, below the codec's validated range
+ * (1..Long.MAX_VALUE, requireValidCallbackToken). A token above the limit is
+ * rejected by require with a dedicated message (never confused with reuse) in
+ * insert/remove, and read as "unknown" (null) in get.
  */
 private class TokenIndexTable {
     private val INITIAL_CAPACITY = 64
 
-    // token = index + 1 ; l'index doit tenir dans un Int positif.
+    // token = index + 1; the index must fit in a positive Int.
     private val MAX_INDEXABLE_TOKEN = Int.MAX_VALUE.toULong()
 
     private val slots = AtomicReference(atomicArrayOfNulls<RegistryEntry<*>>(INITIAL_CAPACITY))
@@ -300,15 +299,15 @@ private class TokenIndexTable {
             val published = current.compareAndSetAt(index, null, entry)
             val latest = slots.load()
             if (latest === current) {
-                // Génération stable pendant le CAS : le résultat est définitif.
+                // The generation was stable during the CAS: the result is final.
                 if (published) break
                 return false
             }
-            // Un grow a publié une génération plus récente pendant le CAS.
-            // Si notre entrée y a été copiée (CAS réussi avant la copie),
-            // elle est déjà publiée : on compte et on termine.
+            // A growth operation published a newer generation during the CAS.
+            // If our entry was copied there (the CAS succeeded before copying),
+            // it is already published: count it and finish.
             if (published && latest.loadAt(index) === entry) break
-            // Sinon, rejouer sur la génération courante.
+            // Otherwise, retry against the current generation.
         }
         count.fetchAndAdd(1)
         return true
@@ -320,10 +319,10 @@ private class TokenIndexTable {
         while (true) {
             val current = slots.load()
             if (index >= current.size) {
-                // Atteint uniquement à la première itération (token jamais
-                // inséré, aucune génération ne le couvre) : removedFromTable y
-                // est nécessairement faux, car un CAS réussi a requis
-                // size > index et les générations ne rétrécissent jamais.
+                // Reached only on the first iteration (the token was never
+                // inserted and no generation covers it): removedFromTable must
+                // be false because a successful CAS requires size > index and
+                // generations never shrink.
                 return removedFromTable
             }
             val nulled = current.compareAndSetAt(index, entry, null)
@@ -333,29 +332,29 @@ private class TokenIndexTable {
                     count.fetchAndAdd(-1)
                     return true
                 }
-                // Le slot de la génération courante ne contient pas cette
-                // entrée (déjà retirée, ou entrée étrangère).
+                // The current generation's slot does not contain this entry
+                // (it was already removed or contains a different entry).
                 if (removedFromTable) count.fetchAndAdd(-1)
                 return removedFromTable
             }
             if (nulled) removedFromTable = true
-            // Null-out visé une ancienne génération : la génération courante
-            // peut encore contenir l'entrée (copiée avant le null-out) — on
-            // rejoue pour l'y retirer aussi.
+            // Nulling targeted an older generation: the current generation may
+            // still contain the entry (copied before it was nulled), so retry
+            // to remove it there too.
             if (latest.loadAt(index) !== entry) {
-                // La génération courante ne contient plus l'entrée : le retrait
-                // est effectif (copiée déjà null, ou nullée ci-dessus).
+                // The current generation no longer contains the entry: removal
+                // is complete (it was copied as null or nulled above).
                 if (removedFromTable) count.fetchAndAdd(-1)
                 return removedFromTable
             }
-            // L'entrée est encore présente dans la génération courante :
-            // retenter le CAS.
+            // The entry is still present in the current generation: retry CAS.
         }
     }
 
     operator fun get(token: ULong): RegistryEntry<*>? {
-        // route() reste null-safe pour tout token (décodage non validé d'un
-        // pointeur étranger) : hors plafond ⇒ inconnu, comme l'ancienne map.
+        // route() remains null-safe for every token (an unvalidated decoded
+        // foreign pointer): values above the limit are unknown, as with the
+        // previous map.
         if (token < 1uL || token > MAX_INDEXABLE_TOKEN) return null
         val index = (token - 1uL).toInt()
         val current = slots.load()
@@ -496,19 +495,19 @@ object CallbackRuntime {
     }
 
     /**
-     * Dispatch sécurisé d'un upcall natif : point d'entrée du moteur
-     * d'upcall. Aucun Throwable ne s'échappe vers la native — tout est
-     * contenu et routé vers l'un des deux canaux de signalement :
+     * Safe native upcall dispatch: the entry point of the upcall engine. No
+     * Throwable escapes to native code — every failure is contained and routed
+     * through one of two reporting channels:
      *
-     * - échecs de routage et d'entrée (route, tryEnter, unpublish ONCE)
+     * - routing and entry failures (route, tryEnter, unpublish ONCE)
      *   → reportUnroutedFailure ;
-     * - échecs du callback et du leave → reportDeliveryFailure(onError).
+     * - callback and leave failures → reportDeliveryFailure(onError).
      *
-     * Le leave est gardé par le try/finally interne : il tourne au plus
-     * une fois, uniquement après un tryEnter réussi, et son propre échec
-     * est contenu (jamais propagé, donc jamais masquant) — signalé via
-     * onError. Un token inconnu ou un tryEnter échoué est un no-op
-     * silencieux : return sans effet de bord (ni leave, ni signalement).
+     * The inner try/finally guards leave: it runs at most once, only after a
+     * successful tryEnter, and its own failure is contained (never propagated
+     * or masking another failure) and reported through onError. An unknown
+     * token or a failed tryEnter is a silent no-op: return without side effects
+     * (neither leave nor reporting).
      */
     fun <C : Callback> dispatchSafely(
         type: CallbackType<C>,
@@ -518,9 +517,9 @@ object CallbackRuntime {
         try {
             val entry = route(type, userdata) ?: return
             if (!entry.lifecycle.tryEnter()) return
-            // ONCE : le retrait ne vient qu'après un claim réussi — un racer
-            // perdant ne dé-publie jamais. Si unpublish lance, l'entrée reste
-            // en CLAIMED sans leave (cas préexistant, comportement inchangé).
+            // ONCE: removal happens only after a successful claim — a losing
+            // racer never unpublishes. If unpublish throws, the entry remains
+            // CLAIMED without leave (pre-existing behavior).
             if (entry.policy == CallbackPolicy.ONCE) unpublish(entry)
             try {
                 invoke(entry.callback)

@@ -52,7 +52,7 @@ class JvmDowncallEngineTest : FreeSpec({
         }
     }
 
-    // M5.3 : formes de l'union des signatures wgpu.
+    // wgpu signature-union shapes.
 
     "callI2PP adds through two pointers" {
         memoryScope { scope ->

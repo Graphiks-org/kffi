@@ -59,7 +59,7 @@ actual class MemoryBuffer actual constructor(
         // Element-wise via Object-relative Unsafe access: ART has no bulk
         // copyMemory(Object,...) or primitive-array copy methods (only
         // copyMemory(long,long,long) on pure addresses), so a memcpy would
-        // NoSuchMethodError on device. P4 re-optimizes this hot path.
+        // NoSuchMethodError on device. Revisit optimization of this hot path when needed.
         checkArrayBounds("write", arrayBytes, elementSize, arrayIndex, bufferOffset, size)
         val arrayOffset = unsafeAccess.arrayBaseOffset(array.javaClass).toLong() +
             (arrayIndex * elementSize.toULong()).toLong()

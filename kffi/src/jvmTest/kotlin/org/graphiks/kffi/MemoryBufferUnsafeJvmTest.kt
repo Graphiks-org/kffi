@@ -11,7 +11,7 @@ class MemoryBufferUnsafeJvmTest : FreeSpec({
     "unsafe allocator removes bounds checks" {
         val allocator = MemoryAllocator(unsafe = true)
         val buffer = allocator.allocateBuffer(8u)
-        // Hors bornes : pas d'exception en mode unsafe (UB assumé)
+        // Out of bounds: no exception in unsafe mode (expected UB).
         buffer.writeLong(1L, 64u)
         allocator.close()
     }
@@ -20,7 +20,7 @@ class MemoryBufferUnsafeJvmTest : FreeSpec({
         memoryScope { scope ->
             val backing = scope.allocateBuffer(64u)
             val unsafeBuffer = MemoryBuffer(backing.handler, 8u, unsafe = true)
-            // L'accès déborde du buffer unsafe mais reste dans le backing — pas d'exception
+            // The access exceeds the unsafe buffer but remains in the backing allocation — no exception.
             unsafeBuffer.writeLong(7L, 8u)
         }
     }
@@ -47,7 +47,7 @@ class MemoryBufferUnsafeJvmTest : FreeSpec({
         val allocator = MemoryAllocator(unsafe = true)
         try {
             val buffer = allocator.allocateBuffer(16u)
-            // 3 longs = 24 octets > 16 : pas de borne-check en mode unsafe (UB assumé)
+            // 3 longs = 24 bytes > 16: no bounds check in unsafe mode (expected UB).
             buffer.writeLongs(longArrayOf(1L, 2L, 3L))
             buffer.readLong(0u) shouldBe 1L
             buffer.readLong(8u) shouldBe 2L

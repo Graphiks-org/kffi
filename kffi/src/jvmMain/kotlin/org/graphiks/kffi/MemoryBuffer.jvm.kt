@@ -6,18 +6,20 @@ import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 
 /**
- * Buffer borné sur une adresse brute.
+ * Buffer bounded to a raw address.
  *
- * Décision I2-(a) : le scope d'arène/session vit ici (pas dans NativeAddress).
- * - Créé via [MemoryAllocator] : porte le segment scopé de l'arène → use-after-close
- *   lève IllegalStateException (garantie JVM préservée).
- * - Créé depuis une adresse brute (MemoryBuffer(addr, size)) : sans scope, accès post-close
- *   non détecté (UB documenté, aligné sur Android/native).
+ * The arena/session scope lives here, not in NativeAddress.
+ * - A buffer created through [MemoryAllocator] carries the arena's scoped
+ *   segment and throws IllegalStateException on use after close (the JVM
+ *   guarantee is preserved).
+ * - A buffer created from a raw address (MemoryBuffer(addr, size)) has no
+ *   scope, so access after close is not detected (documented UB, matching
+ *   Android/native behavior).
  *
- * Mode [unsafe] (I3) : élimine les bornes-check (tout accès hors bornes devient UB) ;
- * l'accès passe par sun.misc.Unsafe sur l'adresse brute. Décision M1.1 : la garde
- * de close I2-(a) est conservée en unsafe via le flag `closed` porté par l'allocateur
- * (1 load volatil au lieu de scope().isAlive, 2 appels FFM) ; seules les bornes sont sautées.
+ * [unsafe] mode skips bounds checks (every out-of-bounds access becomes UB) and
+ * accesses the raw address through sun.misc.Unsafe. The allocator's `closed`
+ * flag preserves the close guard in unsafe mode (one volatile load instead of
+ * scope().isAlive, which requires two FFM calls); only bounds checks are skipped.
  */
 actual class MemoryBuffer actual constructor(
     handler: NativeAddress,
@@ -29,14 +31,14 @@ actual class MemoryBuffer actual constructor(
     private val unsafe: Boolean = unsafe
 
     /**
-     * Segment scopé hérité de l'arène, ou null si créé depuis une adresse brute.
-     * var uniquement car un constructeur secondaire ne peut pas initialiser un val
-     * laissé non initialisé par le constructeur primaire ; écrit une seule fois,
-     * à la construction (effectivement val).
+     * Scoped segment inherited from the arena, or null when created from a raw
+     * address. It is var only because a secondary constructor cannot initialize
+     * a val left uninitialized by the primary constructor; it is written once
+     * during construction (effectively a val).
      */
     private var scopedSegment: MemorySegment? = null
 
-    /** Flag de fermeture porté par l'allocateur (1 load volatil vs scope().isAlive). */
+    /** Closed flag carried by the allocator (one volatile load vs. scope().isAlive). */
     private var allocatorClosed: java.util.concurrent.atomic.AtomicBoolean? = null
 
     internal constructor(
@@ -50,25 +52,25 @@ actual class MemoryBuffer actual constructor(
         this.allocatorClosed = allocatorClosed
     }
 
-    /** Segment dérivé de l'adresse brute pour les buffers non scopés (créé une seule fois). */
+    /** Segment derived from the raw address for unscoped buffers (created once). */
     private val fallbackSegment: MemorySegment by lazy { handler.toJvmSegment(size.toLong()) }
 
     private fun segment(): MemorySegment =
         scopedSegment ?: fallbackSegment
 
-    /** Vérifie la vie du scope (I2-a) même en mode unsafe, puis retourne l'adresse brute. */
+    /** Verifies that the scope is alive even in unsafe mode, then returns the raw address. */
     private fun rawAddress(): Long {
         val closed = allocatorClosed
         if (closed != null) {
             if (closed.get()) throw IllegalStateException("MemoryBuffer has been closed")
             return handler.rawValue
         }
-        // Buffer depuis adresse brute : pas de flag — la garde FFM du segment scopé
-        // ne s'applique pas (pas de scopedSegment) ; ce chemin ne porte pas de garde
-        // de close (UB documenté pour les buffers bruts).
-        // NOTE : avec l'invariant scopedSegment ⟺ allocatorClosed, le fallback
-        // scopedSegment?.scope()?.isAlive ci-dessous est du code défensif mort —
-        // conservé comme garde-fou si l'invariant était violé.
+        // Buffer created from a raw address: no flag — the FFM scoped-segment
+        // guard does not apply (there is no scopedSegment), so this path has no
+        // close guard (documented UB for raw buffers).
+        // With the scopedSegment ⟺ allocatorClosed invariant, the fallback
+        // scopedSegment?.scope()?.isAlive below is unreachable defensive code,
+        // retained as a safeguard should the invariant be violated.
         val scope = scopedSegment?.scope()
         if (scope != null && !scope.isAlive) {
             throw IllegalStateException("MemoryBuffer has been closed")
@@ -86,7 +88,7 @@ actual class MemoryBuffer actual constructor(
     }
 
     // ------------------------------------------------------------------
-    // Accesseurs scalaires — deux chemins (sûr = FFM, unsafe = Unsafe)
+    // Scalar accessors — two paths (safe = FFM, unsafe = Unsafe)
     // ------------------------------------------------------------------
 
     actual fun writeByte(value: Byte, offset: ULong) {
@@ -177,8 +179,8 @@ actual class MemoryBuffer actual constructor(
     }
 
     // ------------------------------------------------------------------
-    // Accesseurs de tableaux — deux chemins (sûr = FFM copyFrom,
-    // unsafe = boucle d'éléments via JvmUnsafeAccess, pattern Android)
+    // Array accessors — two paths (safe = FFM copyFrom,
+    // unsafe = element loop through JvmUnsafeAccess, matching Android's pattern)
     // ------------------------------------------------------------------
 
     private fun writeArray(
@@ -253,7 +255,7 @@ actual class MemoryBuffer actual constructor(
             .copyFrom(segment().asSlice(sourceOffset.toLong(), bytesToCopy.toLong()))
     }
 
-    /** Copie élément par élément (tableau hôte → natif) via Unsafe — aucun bornes-check. */
+    /** Copies element by element (host array → native) through Unsafe — no bounds checks. */
     private fun unsafeCopyToNative(destinationOffset: ULong, array: Any, arrayOffset: ULong, count: Int, elementSize: Int) {
         var arrayPos = JvmUnsafeAccess.arrayBaseOffset(array.javaClass).toLong() + arrayOffset.toLong()
         var nativePos = rawAddress() + destinationOffset.toLong()
@@ -270,7 +272,7 @@ actual class MemoryBuffer actual constructor(
         }
     }
 
-    /** Copie élément par élément (natif → tableau hôte) via Unsafe — aucun bornes-check. */
+    /** Copies element by element (native → host array) through Unsafe — no bounds checks. */
     private fun unsafeCopyFromNative(sourceOffset: ULong, array: Any, arrayOffset: ULong, count: Int, elementSize: Int) {
         var arrayPos = JvmUnsafeAccess.arrayBaseOffset(array.javaClass).toLong() + arrayOffset.toLong()
         var nativePos = rawAddress() + sourceOffset.toLong()

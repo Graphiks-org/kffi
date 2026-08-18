@@ -36,9 +36,9 @@ class JvmUnsafeAccessTest : FreeSpec({
 
     "unsafe access does not bounds-check (by design)" {
         memoryScope { scope ->
-            // Buffer nominal de 64 octets sur une allocation réelle de 128 : l'écriture
-            // [96,104) dépasse la taille nominale du buffer mais reste dans l'allocation
-            // réelle — pas d'exception, pas de corruption de tas.
+            // A nominal 64-byte buffer over a 128-byte allocation: writing
+            // [96,104) exceeds the buffer's nominal size but remains in the
+            // allocation — no exception and no heap corruption.
             val buffer = MemoryBuffer(scope.allocate(128L), 64u)
             JvmUnsafeAccess.putLong(buffer.handler.rawValue + 96L, 8L, 1L)
         }

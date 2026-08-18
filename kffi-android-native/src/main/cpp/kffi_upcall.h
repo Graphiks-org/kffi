@@ -12,7 +12,7 @@
 void kffi_upcall_init(JavaVM *vm);
 
 /*
- * JNI entry points bound explicitly via RegisterNatives in JNI_OnLoad (M6.1).
+ * JNI entry points bound explicitly through RegisterNatives in JNI_OnLoad.
  * Declared here so kffi_engine.c can reference their addresses in the
  * JNINativeMethod table for org/graphiks/kffi/engine/UpcallEngine.
  */

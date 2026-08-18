@@ -6,29 +6,29 @@ import io.kotest.matchers.shouldBe
 import org.graphiks.kffi.MemoryAllocator
 
 /**
- * Vérification mécanique (review M5.3) : la signature Java de chaque wrapper du
- * moteur est épinglée contre la chaîne de lettres que kextract déclare et émet
- * (`jvmEngineWrappers` / `jvmEngineStructWrapperShapes` dans KotlinKmpJvmBuilder).
- * Trois tables vivent en parallèle (moteur, garde kextract, stub de test) — un
- * décalage est surtout fail-loud, mais une entrée existante avec les mêmes types
- * Kotlin et une ABI différente compilerait en silence : ce test réduit la surface
- * de dérive silencieuse au niveau signature Java.
+ * Mechanical verification: every engine wrapper's Java signature is pinned to
+ * the letter string declared and emitted by kextract
+ * (`jvmEngineWrappers` / `jvmEngineStructWrapperShapes` in
+ * KotlinKmpJvmBuilder). Three tables exist in parallel (engine, kextract
+ * guard, and test stub). A mismatch generally fails loudly, but an existing
+ * entry with the same Kotlin types and a different ABI would compile silently;
+ * this test limits that silent drift at the Java-signature level.
  *
- * - Wrappers scalaires : le nom encode la forme (`call` + R + N + lettres,
- *   convention wrapperForm) — le test parse le nom et vérifie arité + classes
- *   porteuses des paramètres et du retour. Un changement de nom ou de signature
- *   hors contrat échoue.
- * - Wrappers struct-by-value : table miroir de `jvmEngineStructWrapperShapes`
- *   (nom émis → lettres, S = struct par valeur en Long à sa position C) — le
- *   test vérifie la signature Java de chaque nom émis, allocator compris.
- * - Invariant « une forme = un nom » : aucune méthode publique `call*` ne doit
- *   être surchargée, et chaque méthode doit être couverte par l'une des deux
- *   mécaniques (pas de wrapper muet, pas d'entrée orpheline).
+ * - Scalar wrappers: their names encode the shape (`call` + R + N + letters,
+ *   the wrapperForm convention). The test parses the name and verifies arity
+ *   and the carrier classes of parameters and return values. A name or
+ *   signature change outside that contract fails.
+ * - Struct-by-value wrappers: a mirror table of
+ *   `jvmEngineStructWrapperShapes` (emitted name → letters, S = a Long carrying
+ *   a struct by value in its C position). The test verifies every emitted name's
+ *   Java signature, including the allocator.
+ * - One shape per name: no public `call*` method may be overloaded, and every
+ *   method must be covered by one of the two mechanisms (no silent wrapper or
+ *   orphan entry).
  *
- * Le niveau ABI profond (FunctionDescriptor / largeurs ValueLayout) est épinglé
- * par les tests runtime de la fixture : un descripteur en désaccord avec la
- * signature Java du wrapper fait échouer invokeExact (WrongMethodTypeException)
- * au premier appel.
+ * Runtime fixture tests pin the deep ABI layer (FunctionDescriptor / ValueLayout
+ * widths): a descriptor that disagrees with a wrapper's Java signature causes
+ * invokeExact to fail with WrongMethodTypeException on first use.
  */
 class JvmDowncallEngineShapeTableTest : FreeSpec({
 
@@ -43,7 +43,7 @@ class JvmDowncallEngineShapeTableTest : FreeSpec({
             val letters = rest.dropWhile { it.isDigit() }
             letters.length shouldBe count
 
-            // fn + N arguments, carriers par lettre.
+            // fn + N arguments, with carriers defined by the letters.
             method.parameterCount shouldBe 1 + count
             method.parameterTypes[0] shouldBe java.lang.Long.TYPE
             method.parameterTypes.drop(1).toList() shouldBe letters.map(::carrier)
@@ -71,9 +71,10 @@ class JvmDowncallEngineShapeTableTest : FreeSpec({
         byName.values.forEach { overloads -> overloads.size shouldBe 1 }
         val allNames = byName.keys
         val scalarNames = allNames - STRUCT_SHAPES.keys
-        // Chaque méthode qui n'est pas une entrée struct connue doit respecter la
-        // convention wrapperForm (call + R + N + lettres) — un wrapper ajouté hors
-        // table (nommé callFoo ou callStructX sans entrée) échoue ici.
+        // Every method that is not a known struct entry must follow the
+        // wrapperForm convention (call + R + N + letters). A wrapper added
+        // outside the table (named callFoo or callStructX without an entry)
+        // fails here.
         scalarNames.forEach { name ->
             val pattern = Regex("call[VILPDF][0-9]+[PILFDSB]*")
             pattern.matches(name) shouldBe true
@@ -81,8 +82,8 @@ class JvmDowncallEngineShapeTableTest : FreeSpec({
     }
 })
 
-// Miroir de jvmEngineStructWrapperShapes (kextract) : nom émis → chaîne
-// « argLetters|returnKind ». S = struct par valeur (paramètre Long).
+// Mirror of kextract's jvmEngineStructWrapperShapes: emitted name →
+// "argLetters|returnKind". S = a struct-by-value argument (Long carrier).
 private val STRUCT_SHAPES: Map<String, String> = mapOf(
     "callStructArgBox" to "S|V",
     "callStructArgWGPUStringView" to "PS|V",
@@ -109,9 +110,9 @@ private fun carrier(letter: Char): Class<*> = when (letter) {
     'I' -> java.lang.Integer.TYPE
     'F' -> java.lang.Float.TYPE
     'D' -> java.lang.Double.TYPE
-    // S = struct par valeur → structPtr (Long). La table struct n'a aucun
-    // short scalaire ; un wrapper scalaire avec un argument I16 étendrait la
-    // table et devrait introduire une disambiguation ici.
+    // S = a struct passed by value → structPtr (Long). The struct table has no
+    // scalar short; a scalar wrapper with an I16 argument would extend the
+    // table and require disambiguation here.
     'S' -> java.lang.Long.TYPE
     'B' -> java.lang.Byte.TYPE
     else -> error("lettre d'argument inconnue : $letter")
@@ -121,19 +122,19 @@ private fun returnCarrier(returnKind: Char): Class<*> = when (returnKind) {
     'V' -> java.lang.Void.TYPE
     'F' -> java.lang.Float.TYPE
     'D' -> java.lang.Double.TYPE
-    // Convention moteur : les retours I/L/P sont portés en Long (JAVA_LONG),
-    // le code généré rétrécit vers Int/Short/… côté émission.
+    // Engine convention: I/L/P returns use Long (JAVA_LONG); generated code
+    // narrows them to Int/Short/… while emitting bindings.
     'P', 'I', 'L' -> java.lang.Long.TYPE
-    // Retour struct : NativeAddress, dé-boîté en long au niveau JVM (value class).
+    // Struct return: NativeAddress, unboxed to long at the JVM level (value class).
     'S' -> java.lang.Long.TYPE
     else -> error("lettre de retour inconnue : $returnKind")
 }
 
 /**
- * Indexe les méthodes publiques `call*` par leur NOM KOTLIN : le compilateur
- * suffixe les fonctions dont un paramètre est une value class non dé-boîtable
- * (MemoryAllocator sur les wrappers à retour struct) d'un hash JVM
- * (`callStructReturnBox-eTG-Znw`), que la réflexion brute par nom ne voit pas.
+ * Indexes public `call*` methods by their KOTLIN NAME. The compiler suffixes
+ * functions with a non-unboxable value-class parameter (MemoryAllocator on
+ * struct-return wrappers) with a JVM hash (`callStructReturnBox-eTG-Znw`),
+ * which raw reflection by name does not see.
  */
 private fun callMethodsByKotlinName(): Map<String, List<java.lang.reflect.Method>> =
     JvmDowncallEngine::class.java.methods

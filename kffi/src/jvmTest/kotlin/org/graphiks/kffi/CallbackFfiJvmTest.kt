@@ -42,10 +42,10 @@ private object JvmFfiTrampolines {
     val rearmedNoUserdataType =
         CallbackType<JvmFfiCallback>("ffi-jvm-no-userdata-rearmed", hasRoutingUserdata = false)
 
-    // Stubs fabriqués par JvmUpcallEngine (resolve de la méthode de dispatch
-    // via privateLookupIn) ; le moteur ne route pas — le dispatchSafely par
-    // token reste ici, le userdata occupant sa position C réelle (dernier
-    // paramètre, carrier long).
+    // Stubs created by JvmUpcallEngine (which resolves the dispatch method
+    // through privateLookupIn). The engine does not route callbacks: token
+    // dispatchSafely remains here, and userdata occupies its actual C position
+    // (the last parameter, carried as a long).
     val routedStub: NativeAddress by lazy {
         JvmUpcallEngine.allocateTrampoline(
             dispatcherClass = JvmFfiTrampolines::class.java,
