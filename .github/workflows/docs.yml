@@ -32,6 +32,9 @@ jobs:
           java-version: '25'
           cache: 'gradle'
 
+      - name: Set up Android SDK and NDK
+        uses: ./.github/actions/setup-android
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

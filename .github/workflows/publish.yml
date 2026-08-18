@@ -21,6 +21,8 @@ jobs:
           distribution: 'zulu'
           java-version: '25'
           cache: 'gradle'
+      - name: Set up Android SDK and NDK
+        uses: ./.github/actions/setup-android
       - name: Grant execute permission
         run: chmod +x gradlew
       - name: Set snapshot version
@@ -45,6 +47,8 @@ jobs:
           distribution: 'zulu'
           java-version: '25'
           cache: 'gradle'
+      - name: Set up Android SDK and NDK
+        uses: ./.github/actions/setup-android
       - name: Grant execute permission
         run: chmod +x gradlew
       - name: Extract version from tag

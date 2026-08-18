@@ -1,0 +1,16 @@
+name: Set up Android SDK
+description: Install the Android SDK platform and the exact NDK used by Gradle
+
+runs:
+  using: composite
+  steps:
+    - name: Install Android command-line tools
+      uses: android-actions/setup-android@v3
+
+    - name: Accept Android SDK licenses
+      shell: bash
+      run: sdkmanager --licenses < <(yes)
+
+    - name: Install Android SDK packages
+      shell: bash
+      run: sdkmanager "platforms;android-36" "ndk;30.0.15729638"

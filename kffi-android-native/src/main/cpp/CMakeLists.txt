@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22.1)
 project(kffi_engine LANGUAGES C)
 
 # Share one FetchContent checkout across all 4 ABI configure runs instead of
-# cloning per-ABI under .cxx. kffi/.gradle is gitignored (`.gradle` matches at
+# cloning per-ABI under .cxx. kffi-android-native/.gradle is gitignored (`.gradle` matches at
 # any depth), so the shared cache is never committed. This MUST be set before
 # include(FetchContent): that module itself defines FETCHCONTENT_BASE_DIR as a
 # cache var (${CMAKE_BINARY_DIR}/_deps, i.e. per-ABI) at include time, which

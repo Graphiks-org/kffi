@@ -13,7 +13,6 @@ fun PluginDependency.asLibrary(): Any = "$pluginId:$pluginId.gradle.plugin:$vers
 fun Provider<PluginDependency>.asLibrary(): Provider<Any> = map { it.asLibrary() }
 
 dependencies {
-	implementation(libs.download)
 	implementation(libs.bundles.dokka)
 	implementation(libs.android.library)
 	implementation("com.vanniktech:gradle-maven-publish-plugin:${libs.versions.maven.publish.get()}")

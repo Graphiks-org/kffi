@@ -1,3 +1,4 @@
+import com.android.build.api.variant.KotlinMultiplatformAndroidComponentsExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val callbackFixtureSource = layout.projectDirectory.file("src/ffiTest/resources/callback_fixture.c")
@@ -182,40 +183,42 @@ plugins {
     id("ygdrasil.conventions.kmp-publish")
     id("ygdrasil.conventions.kmp-dokka")
     id("dev.opensavvy.dokka-mkdocs") version "0.6.3"
-    com.android.library
+    id("com.android.kotlin.multiplatform.library")
     alias(libs.plugins.kotest)
     alias(libs.plugins.ksp)
 }
 
-android {
-    externalNativeBuild {
-        cmake {
-            path = file("src/main/cpp/CMakeLists.txt")
+abstract class StageKffiBenchFixture : DefaultTask() {
+    @get:InputFiles
+    abstract val fixtureSources: ConfigurableFileCollection
+
+    @get:OutputDirectory
+    abstract val outputDir: DirectoryProperty
+
+    @TaskAction
+    fun stage() {
+        val out = outputDir.get().asFile
+        out.deleteRecursively()
+        out.mkdirs()
+        fixtureSources.files.forEach { src ->
+            val abi = src.parentFile.name
+            val dest = File(out, "$abi/${src.name}")
+            dest.parentFile.mkdirs()
+            src.copyTo(dest, overwrite = true)
         }
     }
-    defaultConfig {
-        externalNativeBuild {
-            cmake {
-                cFlags += listOf("-std=c11")
-            }
-        }
-        ndk {
-            // M6.1: ship exactly the 3 supported ABIs; x86 was building too.
-            abiFilters += setOf("arm64-v8a", "x86_64", "armeabi-v7a")
-        }
-        // M6.1: R8 runs on the consumer, so these rules ship in the AAR and are
-        // applied when the consuming app minifies.
-        consumerProguardFiles("src/main/resources/consumer-rules.pro")
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    packaging {
-        jniLibs {
-            // Ship the bench fixture only in the androidTest APK; never in the AAR.
-            testOnly += setOf("libkffi_bench_fixture.so", "**/libkffi_bench_fixture.so")
-            // Extract .so to nativeLibraryDir so the test can dlopen the fixture by path.
-            useLegacyPackaging = true
-        }
-    }
+}
+
+val stageKffiBenchFixture = tasks.register<StageKffiBenchFixture>("stageKffiBenchFixture") {
+    fixtureSources.from(
+        fileTree(
+            project(":kffi-android-native").layout.buildDirectory.dir("intermediates/cxx/RelWithDebInfo"),
+        ) {
+            include("**/obj/**/libkffi_bench_fixture.so")
+        },
+    )
+    outputDir.set(layout.buildDirectory.dir("kffi-fixture-androidDeviceTest"))
+    dependsOn(project(":kffi-android-native").tasks.named("assembleRelease"))
 }
 
 kotlin {
@@ -235,22 +238,28 @@ kotlin {
         androidNativeX64(),
     )
 
-    androidTarget {
+    android {
+        namespace = "org.graphiks.kffi"
+        compileSdk = 36
+        minSdk = 28
+
+        optimization {
+            consumerKeepRules.apply {
+                publish = true
+                file("src/main/resources/consumer-rules.pro")
+            }
+        }
+
         compilerOptions {
             jvmTarget = JvmTarget.JVM_17
         }
 
-        android {
-            namespace = "org.graphiks.kffi"
-            compileSdk = 36
-            ndkVersion = "30.0.15729638"
-
-            defaultConfig {
-                minSdk = 28
-            }
+        withHostTest {
         }
 
-        publishLibraryVariants("release", "debug")
+        withDeviceTest {
+            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
     }
 
     jvm {
@@ -286,6 +295,12 @@ kotlin {
     }
 
     sourceSets {
+        val androidMain by getting {
+            dependencies {
+                implementation(project(":kffi-android-native"))
+            }
+        }
+
         commonTest {
             dependencies {
                 implementation(libs.bundles.kotest)
@@ -301,17 +316,29 @@ kotlin {
             }
         }
 
-        androidUnitTest {
+        val androidHostTest by getting {
             dependencies {
                 implementation(libs.kotest.runner.junit5)
             }
         }
 
-        val androidInstrumentedTest by getting {
+        val androidDeviceTest by getting {
             dependencies {
                 implementation(libs.androidx.test.ext.junit)
                 implementation(libs.androidx.test.runner)
             }
+        }
+    }
+}
+
+extensions.configure<KotlinMultiplatformAndroidComponentsExtension> {
+    onVariants { variant ->
+        variant.nestedComponents
+            .filter { it.name == "androidDeviceTest" }
+            .forEach { component ->
+                component.sources.jniLibs?.addGeneratedSourceDirectory(stageKffiBenchFixture) {
+                    it.outputDir
+                }
         }
     }
 }

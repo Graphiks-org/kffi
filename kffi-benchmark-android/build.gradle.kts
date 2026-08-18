@@ -1,46 +1,15 @@
+import com.android.build.api.variant.KotlinMultiplatformAndroidComponentsExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     `kotlin-multiplatform`
-    com.android.library
+    id("com.android.kotlin.multiplatform.library")
     alias(libs.plugins.kotest)
-}
-
-kotlin {
-    androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
-        }
-        android {
-            namespace = "org.graphiks.kffi.benchmark"
-            compileSdk = 36
-            defaultConfig {
-                minSdk = 28
-            }
-        }
-    }
-
-    sourceSets {
-        val androidMain by getting {
-            dependencies {
-                implementation(project(":kffi"))
-                implementation(project(":kffi-benchmark-spi"))
-            }
-        }
-        val androidInstrumentedTest by getting {
-            dependencies {
-                implementation("io.kotest:kotest-runner-junit5:${libs.versions.kotest.get()}")
-                implementation(libs.androidx.test.ext.junit)
-                implementation(libs.androidx.test.runner)
-            }
-        }
-    }
+    alias(libs.plugins.ksp)
 }
 
 // JUnit5/kotest jars ship duplicate META-INF LICENSE/README files; exclude them from merge.
-// The kffi module ships the bench fixture only in its own androidTest APK (testOnly, excluded
-// from the AAR). Stage just libkffi_bench_fixture.so into this module's androidTest jniLibs so
-// the harness can dlopen it by path from nativeLibraryDir.
+// The fixture is test-only and is staged from the standalone native module into this APK.
 abstract class StageKffiBenchFixture : DefaultTask() {
     @get:InputFiles
     abstract val fixtureSources: ConfigurableFileCollection
@@ -64,32 +33,69 @@ abstract class StageKffiBenchFixture : DefaultTask() {
 
 val stageKffiBenchFixture = tasks.register<StageKffiBenchFixture>("stageKffiBenchFixture") {
     fixtureSources.from(
-        fileTree(project(":kffi").layout.buildDirectory.dir("intermediates/cmake/debug/obj")) {
-            include("**/libkffi_bench_fixture.so")
+        fileTree(
+            project(":kffi-android-native").layout.buildDirectory.dir("intermediates/cxx/RelWithDebInfo"),
+        ) {
+            include("**/obj/**/libkffi_bench_fixture.so")
         },
     )
-    outputDir.set(layout.buildDirectory.dir("kffi-fixture-androidTest"))
+    outputDir.set(layout.buildDirectory.dir("kffi-fixture-androidDeviceTest"))
+    dependsOn(project(":kffi-android-native").tasks.named("assembleRelease"))
 }
 
-android {
-    defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-            excludes += "/META-INF/LICENSE.md"
-            excludes += "/META-INF/LICENSE-notice.md"
-            excludes += "/META-INF/versions/9/previous-compilation-data.bin"
+kotlin {
+    android {
+        namespace = "org.graphiks.kffi.benchmark"
+        compileSdk = 36
+        minSdk = 28
+
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
         }
-        jniLibs {
-            // Extract .so to nativeLibraryDir so the test can dlopen the fixture by path.
-            useLegacyPackaging = true
+
+        withDeviceTest {
+            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
+
+        packaging {
+            resources {
+                excludes += "/META-INF/{AL2.0,LGPL2.1}"
+                excludes += "/META-INF/LICENSE.md"
+                excludes += "/META-INF/LICENSE-notice.md"
+                excludes += "/META-INF/versions/9/previous-compilation-data.bin"
+            }
+            jniLibs {
+                // Extract .so to nativeLibraryDir so the test can dlopen the fixture by path.
+                useLegacyPackaging = true
+            }
         }
     }
+
     sourceSets {
-        getByName("androidTest") {
-            jniLibs.srcDirs(files(layout.buildDirectory.dir("kffi-fixture-androidTest")).builtBy(stageKffiBenchFixture))
+        val androidMain by getting {
+            dependencies {
+                implementation(project(":kffi"))
+                implementation(project(":kffi-benchmark-spi"))
+            }
+        }
+        val androidDeviceTest by getting {
+            dependencies {
+                implementation("io.kotest:kotest-runner-junit5:${libs.versions.kotest.get()}")
+                implementation(libs.androidx.test.ext.junit)
+                implementation(libs.androidx.test.runner)
+            }
+        }
+    }
+}
+
+extensions.configure<KotlinMultiplatformAndroidComponentsExtension> {
+    onVariants { variant ->
+        variant.nestedComponents
+            .filter { it.name == "androidDeviceTest" }
+            .forEach { component ->
+                component.sources.jniLibs?.addGeneratedSourceDirectory(stageKffiBenchFixture) {
+                    it.outputDir
+                }
         }
     }
 }

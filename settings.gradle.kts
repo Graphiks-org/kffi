@@ -20,6 +20,7 @@ dependencyResolutionManagement {
 
 include("docs")
 include("kffi")
+include("kffi-android-native")
 include("kffi-benchmark-spi")
 include("kffi-benchmark-jvm")
 include("kffi-benchmark-native")

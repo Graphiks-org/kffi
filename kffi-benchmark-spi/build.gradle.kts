@@ -1,16 +1,15 @@
 plugins {
     `kotlin-multiplatform`
     id("ygdrasil.conventions.kmp-publish")
-    com.android.library
+    id("com.android.kotlin.multiplatform.library")
 }
 
 kotlin {
     jvm()
-    androidTarget {
-        android {
-            namespace = "org.graphiks.kffi.benchmark"
-            compileSdk = 36
-        }
+    android {
+        namespace = "org.graphiks.kffi.benchmark"
+        compileSdk = 36
+        minSdk = 28
     }
     iosArm64()
     iosSimulatorArm64()

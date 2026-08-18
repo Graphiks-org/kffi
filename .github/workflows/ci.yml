@@ -23,6 +23,9 @@ jobs:
           java-version: '25'
           cache: 'gradle'
 
+      - name: Set up Android SDK and NDK
+        uses: ./.github/actions/setup-android
+
       - name: Grant Execute Permission for Gradlew
         run: chmod +x gradlew
 
