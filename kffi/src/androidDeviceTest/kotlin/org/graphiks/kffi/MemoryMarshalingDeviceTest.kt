@@ -34,8 +34,8 @@ class MemoryMarshalingDeviceTest {
             buffer.writeUBytes(ub)
             val ubOut = UByteArray(3)
             buffer.readUBytes(ubOut)
-            assertEquals(1u, ubOut[0])
-            assertEquals(255u, ubOut[2])
+            assertEquals(1.toUByte(), ubOut[0])
+            assertEquals(255.toUByte(), ubOut[2])
 
             val ui = uintArrayOf(10u, 20u, 30u)
             buffer.writeUInts(ui)
