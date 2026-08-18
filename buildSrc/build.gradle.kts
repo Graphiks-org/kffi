@@ -15,8 +15,6 @@ fun Provider<PluginDependency>.asLibrary(): Provider<Any> = map { it.asLibrary()
 dependencies {
 	implementation(libs.bundles.dokka)
 	implementation(libs.android.library)
-	implementation("com.vanniktech:gradle-maven-publish-plugin:${libs.versions.maven.publish.get()}")
-
+	implementation(libs.plugins.maven.publish.asLibrary())
 	implementation(libs.plugins.kotlin.multiplatform.asLibrary())
-
 }

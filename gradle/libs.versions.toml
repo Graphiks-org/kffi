@@ -1,7 +1,6 @@
 [versions]
 kotlin = "2.4.10"
 agp = "9.0.0"
-jna = "5.18.1"
 dokka = "2.2.0"
 maven-publish = "0.36.0"
 
@@ -11,26 +10,8 @@ ksp = "2.3.11"
 androidx-test-ext-junit = "1.2.1"
 androidx-test-runner = "1.6.2"
 
-# Jvm demo
-glfwNative = "0.0.3"
-rococoa = "0.0.1"
-
-# Android demo
-activityCompose = "1.11.0"
-android-native-helper = "0.0.2"
-
 [libraries]
 android-library = { module = "com.android.library:com.android.library.gradle.plugin", version.ref = "agp" }
-jna = { module = "net.java.dev.jna:jna", version.ref = "jna" }
-
-# Jvm demo
-ygdrasil-glfw-native = { module = "io.ygdrasil:glfw-native", version.ref = "glfwNative" }
-rococoa = { module = "io.ygdrasil:rococoa", version.ref = "rococoa" }
-jnaPlatform = { module = "net.java.dev.jna:jna-platform", version.ref = "jna" }
-
-# Android demo
-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
-android-native-helper = { module = "io.ygdrasil:android-native-helper", version.ref = "android-native-helper" }
 
 # Tests
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
@@ -46,7 +27,6 @@ dokka-base = { module = "org.jetbrains.dokka:dokka-base", version.ref = "dokka" 
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-android-application = { id = "com.android.application", version.ref = "agp" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
 
 # Tests
