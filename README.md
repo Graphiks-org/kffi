@@ -404,7 +404,7 @@ every matrix entry. It also performs these platform-specific checks:
 - Windows activates MSVC, compiles the MinGW callback token codec, and runs
   `./gradlew :kffi:mingwX64Test`.
 
-The benchmark workflow (`.github/workflows/kffi-benchmark-ci.yml`) runs the JVM
+The benchmark workflow (`.github/workflows/benchmark.yml`) runs the JVM
 JMH benchmark, compiles the macOS arm64 Native benchmark harness, and assembles
 the Android debug test APK. The canonical root publication workflow publishes
 artifacts through the single aggregated `./gradlew publishToMavenCentral` task,
