@@ -1,7 +1,7 @@
 name: kffi-benchmark-ci
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
 
 jobs:
