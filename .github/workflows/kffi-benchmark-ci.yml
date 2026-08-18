@@ -53,4 +53,4 @@ jobs:
       - name: Set up Android SDK and NDK
         uses: ./.github/actions/setup-android
       - name: Assemble android benchmark harness
-        run: ./gradlew :kffi-benchmark-android:assembleDebugAndroidTest
+        run: ./gradlew :kffi-benchmark-android:assembleAndroidDeviceTest

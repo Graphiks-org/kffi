@@ -7,6 +7,33 @@ runs:
     - name: Install Android command-line tools
       uses: android-actions/setup-android@v3
 
+    - name: Add sdkmanager to PATH
+      shell: bash
+      run: |
+        if command -v sdkmanager >/dev/null 2>&1; then
+          exit 0
+        fi
+
+        sdk_root="$ANDROID_SDK_ROOT"
+        if [[ "$RUNNER_OS" == "Windows" ]]; then
+          sdk_root="$(cygpath -u "$sdk_root")"
+        fi
+
+        sdkmanager_bin=""
+        for candidate in "$sdk_root"/cmdline-tools/*/bin/sdkmanager "$sdk_root"/cmdline-tools/*/bin/sdkmanager.bat; do
+          if [[ -f "$candidate" ]]; then
+            sdkmanager_bin="$candidate"
+            break
+          fi
+        done
+
+        if [[ -z "$sdkmanager_bin" ]]; then
+          echo "Unable to locate sdkmanager under $sdk_root/cmdline-tools" >&2
+          exit 1
+        fi
+
+        echo "$(dirname "$sdkmanager_bin")" >> "$GITHUB_PATH"
+
     - name: Accept Android SDK licenses
       shell: bash
       run: sdkmanager --licenses < <(yes)
