@@ -1,55 +1,67 @@
-name: KMP Starter Pack CI
+name: KFFI CI
 
 on:
   push:
-    branches:
-      - '**'
+    branches: [master]
   pull_request:
-    branches:
-      - '**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build-and-test:
-    runs-on: macos-26 # Xcode 26 is required by Compose Multiplatform 1.11.1 for the iOS link
-    
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ macos-latest, ubuntu-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 25
+      - uses: actions/checkout@v4
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
-          java-version: '25'
+          distribution: 'temurin'
+          java-version: 25
           cache: 'gradle'
-
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: ${{ runner.os }}-gradle
       - name: Set up Android SDK and NDK
         uses: ./.github/actions/setup-android
-
-      - name: Grant Execute Permission for Gradlew
-        run: chmod +x gradlew
-
-      # Step 1: Determine the test strategy (Deep vs Fast-Track)
-      # Check whether the PR targets 'master' or the current branch is 'master'
-      - name: Determine Test Strategy
-        id: test-strategy
+      - name: Activate MSVC
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+      - name: Run JVM tests
+        run: ./gradlew :kffi:jvmTest
+      - name: Compile Apple Native callback token codecs
+        if: matrix.os == 'macos-latest'
+        run: >-
+          ./gradlew
+          :kffi:compileKotlinIosX64 :kffi:compileKotlinIosArm64 :kffi:compileKotlinIosSimulatorArm64
+          :kffi:compileKotlinMacosArm64 :kffi:compileKotlinMacosX64
+      - name: Compile Linux Native callback token codecs
+        if: matrix.os == 'ubuntu-latest'
+        run: >-
+          ./gradlew
+          :kffi:compileKotlinLinuxX64 :kffi:compileKotlinLinuxArm64
+      - name: Compile MinGW callback token codecs
+        if: matrix.os == 'windows-latest'
+        run: ./gradlew :kffi:compileKotlinMingwX64
+      - name: Run macOS Native tests
+        if: matrix.os == 'macos-latest'
         run: |
-          if [[ "${{ github.base_ref }}" == "master" || "${{ github.ref }}" == "refs/heads/master" ]]; then
-            echo "strategy=deep" >> $GITHUB_OUTPUT
-            echo "Running deep tests (All Targets) for master branch / merge request."
+          if [[ "$(uname -m)" == "arm64" ]]; then
+            ./gradlew :kffi:macosArm64Test
           else
-            echo "strategy=fast-track" >> $GITHUB_OUTPUT
-            echo "Running JVM Fast-Track tests only."
+            ./gradlew :kffi:macosX64Test
           fi
-
-      # Step 2: Run Fast-Track tests (JVM only)
-      # Runs when neither the PR base nor the current branch is 'master'
-      - name: Run JVM Fast-Track Tests
-        if: steps.test-strategy.outputs.strategy == 'fast-track'
-        run: ./gradlew :kffi:jvmTest --no-daemon --stacktrace
-
-      # Step 3: Run Deep tests (JVM, Android, and iOS Simulator/Link)
-      # Runs only for pushes to or pull requests targeting 'master'
-      - name: Run Deep Tests (JVM, Android & iOS Simulator)
-        if: steps.test-strategy.outputs.strategy == 'deep'
-        run: ./gradlew allTests --no-daemon --stacktrace
+      - name: Run Linux Native tests
+        if: matrix.os == 'ubuntu-latest'
+        run: ./gradlew :kffi:linuxX64Test
+      - name: Run Windows Native tests
+        if: matrix.os == 'windows-latest'
+        run: ./gradlew :kffi:mingwX64Test
