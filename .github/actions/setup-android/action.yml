@@ -7,10 +7,12 @@ runs:
     - name: Install Android command-line tools
       uses: android-actions/setup-android@v3
 
-    - name: Add sdkmanager to PATH
+    - name: Locate sdkmanager
+      id: sdkmanager
       shell: bash
       run: |
-        if command -v sdkmanager >/dev/null 2>&1; then
+        if sdkmanager_bin="$(command -v sdkmanager 2>/dev/null)"; then
+          echo "path=$sdkmanager_bin" >> "$GITHUB_OUTPUT"
           exit 0
         fi
 
@@ -32,12 +34,18 @@ runs:
           exit 1
         fi
 
-        echo "$(dirname "$sdkmanager_bin")" >> "$GITHUB_PATH"
+        echo "path=$sdkmanager_bin" >> "$GITHUB_OUTPUT"
 
     - name: Accept Android SDK licenses
       shell: bash
-      run: sdkmanager --licenses < <(yes)
+      env:
+        SDKMANAGER_PATH: ${{ steps.sdkmanager.outputs.path }}
+      run: |
+        "$SDKMANAGER_PATH" --licenses < <(yes)
 
     - name: Install Android SDK packages
       shell: bash
-      run: sdkmanager "platforms;android-36" "ndk;30.0.15729638"
+      env:
+        SDKMANAGER_PATH: ${{ steps.sdkmanager.outputs.path }}
+      run: |
+        "$SDKMANAGER_PATH" "platforms;android-36" "ndk;30.0.15729638"
