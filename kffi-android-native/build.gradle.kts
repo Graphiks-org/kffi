@@ -1,6 +1,16 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
+
 plugins {
     com.android.library
     id("ygdrasil.conventions.kmp-publish")
+}
+
+mavenPublishing {
+    configureBasedOnAppliedPlugins(
+        javadocJar = JavadocJar.Empty(),
+        sourcesJar = SourcesJar.Sources(),
+    )
 }
 
 android {
