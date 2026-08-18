@@ -45,7 +45,8 @@ These are the checks that must pass before merge. They are enforced by the PR po
   - check `CHANGELOG.md has been updated`, or
   - check `No changelog update needed:` and provide a justification.
 - Record the documentation decision explicitly by checking or leaving unchecked `Documentation updated if needed`.
-- The blocking GitHub checks are `PR policy` and `build-and-test`.
+- The blocking GitHub checks are `PR policy` and the required CI jobs shown on
+  the pull request.
 - The `master` branch ruleset requires no direct pushes, one approval, resolved review conversations, branches up to date with `master`, linear history, and squash-only merges.
 - Maintainer-only exceptions must stay limited to the bypass configuration of the GitHub repository ruleset.
 
@@ -56,7 +57,7 @@ Repository settings automatically delete head branches after successful merges.
 These items are reviewed by maintainers when applicable; they are not automatically enforced by CI or the branch ruleset.
 
 - Keep commits atomic when practical.
-- Run local verification before requesting review: `./gradlew :shared:jvmTest`.
+- Run local verification before requesting review: `./gradlew :kffi:jvmTest`.
 - Reference the related issue in the PR description when relevant.
 - Add screenshots when relevant.
 - Keep the `Screenshots (if applicable)` and `Additional Notes` sections when relevant.
@@ -78,7 +79,7 @@ Before submitting a PR, make sure:
 
 **Maintainer-reviewed expectations**
 
-- [ ] Tests pass locally (`./gradlew :shared:jvmTest`)
+- [ ] Tests pass locally (`./gradlew :kffi:jvmTest`)
 - [ ] Commits are atomic when practical
 - [ ] The PR description references the related issue when relevant
 - [ ] Screenshots are included when relevant
@@ -87,14 +88,37 @@ Before submitting a PR, make sure:
 ### Local Build
 
 ```bash
-# Fast JVM tests
-./gradlew :shared:jvmTest
+# JVM tests
+./gradlew :kffi:jvmTest
 
-# All tests
-./gradlew allTests
+# Android host tests
+./gradlew :kffi:testAndroidHostTest
 
-# Generate and embed API docs into MkDocs
-./gradlew :docs:embedDokkaIntoMkDocs
+# Android instrumented tests (requires a connected device or emulator)
+./gradlew :kffi:connectedAndroidDeviceTest
+
+# macOS Native callback token codec compilation
+./gradlew \
+  :kffi:compileKotlinIosX64 \
+  :kffi:compileKotlinIosArm64 \
+  :kffi:compileKotlinIosSimulatorArm64 \
+  :kffi:compileKotlinMacosArm64 \
+  :kffi:compileKotlinMacosX64
+
+# macOS Native tests
+if [[ "$(uname -m)" == "arm64" ]]; then
+  ./gradlew :kffi:macosArm64Test
+else
+  ./gradlew :kffi:macosX64Test
+fi
+
+# Linux Native callback token codec compilation and tests
+./gradlew :kffi:compileKotlinLinuxX64 :kffi:compileKotlinLinuxArm64
+./gradlew :kffi:linuxX64Test
+
+# Windows MinGW callback token codec compilation and tests
+./gradlew :kffi:compileKotlinMingwX64
+./gradlew :kffi:mingwX64Test
 ```
 
 ### Conventional Commits
@@ -122,7 +146,7 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/).
 
 **Examples:**
 ```
-feat(shared): add caching layer to PlatformRepository
+docs(docs): clarify published version examples
 fix(buildSrc): resolve AGP compatibility issue
 docs: update README with new badges
 ```
@@ -153,7 +177,7 @@ docs: update README with new badges
 
 2. **Review**
    - At least 1 approval is required
-   - `PR policy` and `build-and-test` must pass as blocking checks
+   - `PR policy` and the required CI jobs must pass
    - All review conversations must be resolved
    - The branch must be up to date with `master`
 
@@ -170,8 +194,12 @@ This project follows [Semantic Versioning](https://semver.org/).
 - `MINOR` — backward-compatible feature
 - `PATCH` — backward-compatible fix
 
-SNAPSHOT versions (`1.0.0-SNAPSHOT`) are used during active development.
-Release versions are published via the release workflow (`releaseVersion` property).
+Snapshot versions (`1.0.0-SNAPSHOT`) are used during active development. The
+Gradle publication version is selected with the `releaseVersion` property,
+using `-PreleaseVersion=...`; without an explicit value, it defaults to
+`1.0.0-SNAPSHOT`. Publication uses the aggregated root task
+`./gradlew publishToMavenCentral`, with workflow dispatch input or a release tag
+selecting the publication version.
 
 ## License
 

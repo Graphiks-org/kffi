@@ -61,13 +61,6 @@ def heading_present(body: str, heading: str) -> bool:
     return any(line.strip() == f"## {heading}" for line in body.splitlines())
 
 
-def parse_conventional_commit(subject: str) -> tuple[str, str | None, str] | None:
-    match = TITLE_RE.match(subject.strip())
-    if not match:
-        return None
-    return match.group("type"), match.group("scope"), match.group("description")
-
-
 def validate_title(title: str, policy: dict[str, object]) -> list[str]:
     errors: list[str] = []
     match = TITLE_RE.match(title.strip())
@@ -163,23 +156,6 @@ def validate_documentation_selection(body: str, changed_files: Iterable[str]) ->
     return []
 
 
-def validate_commit_subjects(commit_subjects: Iterable[str], policy: dict[str, object]) -> list[str]:
-    errors: list[str] = []
-    allowed_types = set(policy["allowed_types"])
-    allowed_scopes = set(policy["allowed_scopes"])
-    for subject in commit_subjects:
-        parsed = parse_conventional_commit(subject)
-        if parsed is None:
-            errors.append(f"commit subject {subject!r} is not Conventional Commits compliant")
-            continue
-        commit_type, scope, _description = parsed
-        if commit_type not in allowed_types:
-            errors.append(f"commit subject {subject!r} uses an unsupported type")
-        if scope is not None and scope not in allowed_scopes:
-            errors.append(f"commit subject {subject!r} uses an unsupported scope")
-    return errors
-
-
 def validate_policy(
     *,
     policy_path: str | Path,
@@ -187,14 +163,11 @@ def validate_policy(
     body_file: str | Path,
     branch: str,
     changed_files_file: str | Path,
-    commit_subjects_file: str | Path,
     base_ancestor: bool,
-    merge_commits: int,
 ) -> list[str]:
     policy = load_policy(policy_path)
     body = read_text(body_file)
     changed_files = read_lines(changed_files_file)
-    commit_subjects = read_lines(commit_subjects_file)
 
     errors: list[str] = []
     errors.extend(validate_title(title, policy))
@@ -203,12 +176,9 @@ def validate_policy(
     errors.extend(validate_type_selection(body, policy))
     errors.extend(validate_changelog_selection(body, changed_files, policy))
     errors.extend(validate_documentation_selection(body, changed_files))
-    errors.extend(validate_commit_subjects(commit_subjects, policy))
 
     if not base_ancestor:
         errors.append("base commit is not an ancestor of the head commit")
-    if merge_commits:
-        errors.append("merge commits are not allowed")
 
     return errors
 
@@ -229,9 +199,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--body-file", required=True)
     parser.add_argument("--branch", required=True)
     parser.add_argument("--changed-files-file", required=True)
-    parser.add_argument("--commit-subjects-file", required=True)
     parser.add_argument("--base-ancestor", required=True, type=parse_bool)
-    parser.add_argument("--merge-commits", required=True, type=int)
     args = parser.parse_args(argv)
 
     errors = validate_policy(
@@ -240,9 +208,7 @@ def main(argv: list[str] | None = None) -> int:
         body_file=args.body_file,
         branch=args.branch,
         changed_files_file=args.changed_files_file,
-        commit_subjects_file=args.commit_subjects_file,
         base_ancestor=args.base_ancestor,
-        merge_commits=args.merge_commits,
     )
     if errors:
         for error in errors:

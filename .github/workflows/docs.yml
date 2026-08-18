@@ -4,7 +4,7 @@ on:
   push:
     branches: [master, init] # Trigger on master or init for testing
     paths:
-      - 'shared/src/commonMain/**'
+      - 'kffi/src/commonMain/**'
       - 'docs/**'
       - 'docs/mkdocs.yml'
       - '.github/workflows/docs.yml'
@@ -31,6 +31,9 @@ jobs:
           distribution: 'zulu'
           java-version: '25'
           cache: 'gradle'
+
+      - name: Set up Android SDK and NDK
+        uses: ./.github/actions/setup-android
 
       - name: Set up Python
         uses: actions/setup-python@v5

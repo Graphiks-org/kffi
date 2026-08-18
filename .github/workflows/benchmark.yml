@@ -1,0 +1,56 @@
+name: kffi-benchmark-ci
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  jvm-benchmark:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+      - name: Set up Android SDK and NDK
+        uses: ./.github/actions/setup-android
+      - name: Build and run JVM benchmarks
+        run: ./gradlew :kffi-benchmark-jvm:jmh
+      - name: Archive results
+        uses: actions/upload-artifact@v4
+        with:
+          name: jmh-results
+          path: kffi-benchmark-jvm/build/results/jmh/results.json
+
+  native-compile:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+      - name: Set up Android SDK and NDK
+        uses: ./.github/actions/setup-android
+      - name: Compile native harness
+        run: ./gradlew :kffi-benchmark-native:compileKotlinMacosArm64
+
+  android-assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Set up Android SDK and NDK
+        uses: ./.github/actions/setup-android
+      - name: Assemble android benchmark harness
+        run: ./gradlew :kffi-benchmark-android:assembleAndroidDeviceTest
