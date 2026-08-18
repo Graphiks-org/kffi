@@ -9,25 +9,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
-- Kotlin 2.4.0 → 2.4.10
-- Gradle 9.5.0 → 9.6.1
-- Added blocking pull request policy checks aligned with `CONTRIBUTING.md`.
-
 ### Added
-- KMP project template (Android, iOS, Desktop)
-- Clean Architecture / DDD
-- Maven Central publishing via Vanniktech
-- Multilingual docs (EN/FR) MkDocs + Dokka
-- GitHub templates (issues, PR)
-- Code of Conduct, CONTRIBUTING, SECURITY, SUPPORT, CHANGELOG
+- First standalone KFFI iteration, published as Maven Central snapshot artifacts
+  under `org.graphiks`.
+- Multiplatform memory primitives: `MemoryAllocator`, `MemoryBuffer`,
+  `NativeAddress`, C-string helpers, and primitive-array marshaling.
+- JVM Foreign Function & Memory downcall engine, including scalar calls and
+  structs passed by value.
+- Android native downcall engine backed by libffi, with typed call wrappers and
+  generic signatures for scalars, pointers, floating-point values, nested
+  structs, and fixed-size arrays.
+- Callback runtime with token-based routing, lifecycle management, exception
+  reporting, JVM upcalls, and Android libffi closures.
+- Kotlin/Native implementations and tests for Apple, Linux, Windows, and
+  Android Native targets.
+- JVM, Native, and Android benchmark modules.
+- Android host and connected-device test coverage in continuous integration.
+- Snapshot publication and generated API documentation.
 
 ### Changed
-- Replaced the Dokka GFM and Python post-processing pipeline with Dokka for Material for MkDocs.
+- Extracted KFFI from the former `shared` module; the repository now contains
+  the standalone KFFI library and its benchmark modules.
+- Updated the Android native artifact to support `arm64-v8a` and `x86_64`.
+- Consolidated the test workflow and added Android SDK/NDK setup as a reusable
+  GitHub Action.
 
 ### Fixed
-- Default snapshot publication version when no workflow version is provided.
-
-### Built with
-- Kotlin 2.4.10, Gradle 9.6.1, AGP 9.0.0
-- Koin 4.0.0, Ktor 3.0.3, Compose Multiplatform 1.11.1
+- Generic Android downcalls now parse and validate declared signatures instead
+  of treating every argument as a 64-bit carrier.
+- Android test APKs now package the JNI fixture library required by
+  instrumentation tests.
+- Android host tests now run on JUnit Platform.

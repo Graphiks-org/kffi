@@ -3,8 +3,7 @@
 ## Support Channels
 
 ### 📖 Documentation
-Start with our documentation:
-- [Online Documentation](https://ygdrasil-io.github.io/project-template/)
+Start with the [kffi documentation](https://graphiks-org.github.io/kffi/).
 
 ### 🐞 GitHub Issues
 Use GitHub Issues for:
@@ -12,7 +11,7 @@ Use GitHub Issues for:
 - Feature requests
 - Technical questions
 
-https://github.com/ygdrasil-io/project-template/issues
+https://github.com/Graphiks-org/kffi/issues
 
 ### 💬 GitHub Discussions
 Use GitHub Discussions for:
@@ -20,11 +19,7 @@ Use GitHub Discussions for:
 - Ideas and suggestions
 - Community feedback
 
-https://github.com/ygdrasil-io/project-template/discussions
-
-### 📧 Email
-For sensitive inquiries:
-[contact@ygdrasil.com](mailto:contact@ygdrasil.com)
+https://github.com/Graphiks-org/kffi/discussions
 
 ## Before Opening an Issue
 
