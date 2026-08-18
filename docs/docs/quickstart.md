@@ -3,7 +3,8 @@
 This guide covers Gradle dependency setup, `memoryScope`, allocation,
 write/read, `CString`, lifetime, the `unsafe` option, a simple callback, and
 loading a native library. All symbols used here belong to the public
-`org.graphiks.kffi` API (see the [README](../README.md) for the complete
+`org.graphiks.kffi` API (see the
+[README](https://github.com/Graphiks-org/kffi#readme) for the complete
 contract).
 
 ## 1. Dependency
@@ -59,8 +60,9 @@ no aggregate `kffi-native` artifact.
 
 ## 2. `memoryScope`, allocation, write/read
 
-`memoryScope { }` creates a confined arena and guarantees that it is closed at
-the end of the block (equivalent to `use { }`):
+`memoryScope { }` creates an allocator scope and guarantees that it is closed
+at the end of the block (equivalent to `use { }`). On the JVM, that scope is a
+confined arena:
 
 ```kotlin
 import org.graphiks.kffi.*
@@ -158,7 +160,9 @@ hot.writeLong(1L, 64uL) // within the 128-byte allocation
 // nominal MemoryBuffer view is 64 bytes.
 memoryScope { allocator ->
     val localUnsafe = MemoryBuffer(allocator.allocate(128L), 64uL, unsafe = true)
-    localUnsafe.writeLong(1L, 96uL) // JVM/Android: outside the view, but within the backing allocation; UB
+    // JVM/Android: outside the nominal view, but inside the 128-byte backing
+    // allocation. Bounds checks are intentionally skipped for this access.
+    localUnsafe.writeLong(1L, 96uL)
 }
 
 hotAllocator.close()

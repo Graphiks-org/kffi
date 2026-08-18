@@ -45,7 +45,8 @@ These are the checks that must pass before merge. They are enforced by the PR po
   - check `CHANGELOG.md has been updated`, or
   - check `No changelog update needed:` and provide a justification.
 - Record the documentation decision explicitly by checking or leaving unchecked `Documentation updated if needed`.
-- The blocking GitHub checks are `PR policy` and `build-and-test`.
+- The blocking GitHub checks are `PR policy` and the required CI jobs shown on
+  the pull request.
 - The `master` branch ruleset requires no direct pushes, one approval, resolved review conversations, branches up to date with `master`, linear history, and squash-only merges.
 - Maintainer-only exceptions must stay limited to the bypass configuration of the GitHub repository ruleset.
 
@@ -170,7 +171,7 @@ docs: update README with new badges
 
 2. **Review**
    - At least 1 approval is required
-   - `PR policy` and `build-and-test` must pass as blocking checks
+   - `PR policy` and the required CI jobs must pass
    - All review conversations must be resolved
    - The branch must be up to date with `master`
 

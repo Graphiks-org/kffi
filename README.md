@@ -1,6 +1,6 @@
 # kffi - Multiplatform FFI layer (JVM / Android / Native)
 
-[![Static Badge](https://img.shields.io/badge/License-MIT-blue?style=plastic)](https://en.wikipedia.org/wiki/MIT_License)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=plastic)](LICENSE)
 
 `kffi` is a low-level foreign function interface (FFI) layer for native memory
 access and native calls, written in Kotlin Multiplatform. It is a standalone
@@ -19,27 +19,7 @@ The `expect/actual` contract lives in `commonMain` (`org.graphiks.kffi`):
 `globalMemory`), `CString`, and `Callback`/`CallbackRuntime`. The memory safety
 contract is unified across all three backends (spec P3).
 
-<!-- ==========================================
-     BADGES DE STATUT DE PROJET PERSONNALISABLES
-     Décommentez/copiez simplement le badge correspondant au statut actuel de votre projet.
-     ========================================== -->
-
-<!-- STATUT : EN PLANIFICATION (PLANNING) -->
-<!-- [![Projet: Planning](https://img.shields.io/badge/Statut-Planning-blue)](https://github.com) -->
-
-<!-- STATUT : INCUBATION / EN DÉVELOPPEMENT (INCUBATING) -->
-<!-- [![Projet: Incubating](https://img.shields.io/badge/Statut-Incubating-orange)](https://github.com) -->
-
-<!-- STATUT : STABLE / PRÊT PRODUCTION (STABLE) -->
-<!-- [![Projet: Stable](https://img.shields.io/badge/Statut-Stable-green)](https://github.com) -->
-
-<!-- STATUT : DEPRÉCIÉ (DEPRECATED) -->
-<!-- [![Projet: Deprecated](https://img.shields.io/badge/Statut-Deprecated-red)](https://github.com) -->
-
-<!-- STATUT : ARCHIVÉ (ARCHIVED) -->
-<!-- [![Projet: Archived](https://img.shields.io/badge/Statut-Archived-lightgrey)](https://github.com) -->
-
-- [Quickstart](docs/quickstart.md)
+- [Quickstart](docs/docs/quickstart.md)
 - [Backends](#backends)
 - [Memory safety contract](#memory-safety-contract)
 - [`unsafe` mode](#unsafe-mode)
@@ -366,7 +346,6 @@ Contributions are welcome. Please see:
 
 - [Contributing Guide](CONTRIBUTING.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [Security Policy](SECURITY.md)
 - [Support](SUPPORT.md)
 - [Changelog](CHANGELOG.md)
 
@@ -392,7 +371,7 @@ runtime module.
 
 ## CI/CD workflow
 
-The dedicated KFFI test workflow (`.github/workflows/kffi-test.yml`) runs on
+The dedicated KFFI test workflow (`.github/workflows/ci.yml`) runs on
 macOS, Ubuntu, and Windows with JDK 25. It runs `./gradlew :kffi:jvmTest` on
 every matrix entry. It also performs these platform-specific checks:
 
@@ -454,7 +433,7 @@ fi
 ```bash
 ./gradlew :kffi-benchmark-jvm:jmh
 ./gradlew :kffi-benchmark-native:compileKotlinMacosArm64
-./gradlew :kffi-benchmark-android:assembleDebugAndroidTest
+./gradlew :kffi-benchmark-android:assembleAndroidDeviceTest
 ```
 
 ### Inspect available Gradle tasks

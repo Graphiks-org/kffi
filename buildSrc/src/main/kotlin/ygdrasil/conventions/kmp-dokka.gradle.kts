@@ -7,11 +7,11 @@ plugins {
 }
 
 dokka {
-    moduleName.set("shared")
+    moduleName.set("kffi")
     dokkaSourceSets.configureEach {
         sourceLink {
             localDirectory.set(project.file("src/commonMain/kotlin"))
-            remoteUrl.set(URI("https://github.com/ygdrasil-io/project-template/blob/master/shared/src/commonMain/kotlin"))
+            remoteUrl.set(URI("https://github.com/Graphiks-org/kffi/blob/master/kffi/src/commonMain/kotlin"))
             remoteLineSuffix.set("#L")
         }
     }
