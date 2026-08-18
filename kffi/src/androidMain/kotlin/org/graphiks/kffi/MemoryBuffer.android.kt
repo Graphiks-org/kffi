@@ -13,7 +13,7 @@ actual class MemoryBuffer actual constructor(
 
     private fun boundsCheck(offset: ULong, width: Long) {
         if (unsafe) return
-        if (offset >= size || offset + width.toULong() > size) {
+        if (offset > size || width.toULong() > size - offset) {
             throw IndexOutOfBoundsException(
                 "MemoryBuffer access out of bounds: offset=$offset width=$width size=$size",
             )

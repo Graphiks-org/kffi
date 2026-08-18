@@ -2,9 +2,11 @@
 
 package org.graphiks.kffi
 
+import java.lang.reflect.InvocationTargetException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeInstanceOf
 
 class MemoryBufferAndroidTest : FreeSpec({
     "scalar read/write round-trips" {
@@ -55,6 +57,19 @@ class MemoryBufferAndroidTest : FreeSpec({
             shouldThrow<IndexOutOfBoundsException> { buffer.readLong(ULong.MAX_VALUE) }
             shouldThrow<IndexOutOfBoundsException> { buffer.writeInt(1, ULong.MAX_VALUE) }
         }
+    }
+    "bounds check rejects an overflowing offset plus width" {
+        val buffer = MemoryBuffer(NativeAddress(0L), ULong.MAX_VALUE, unsafe = false)
+        val boundsCheck = MemoryBuffer::class.java.declaredMethods.single {
+            it.name.startsWith("boundsCheck")
+        }
+        boundsCheck.isAccessible = true
+
+        val failure = shouldThrow<InvocationTargetException> {
+            boundsCheck.invoke(buffer, (ULong.MAX_VALUE - 3uL).toLong(), 8L)
+        }
+
+        failure.cause.shouldBeInstanceOf<IndexOutOfBoundsException>()
     }
     "huge bufferOffset cannot bypass the array bounds check" {
         memoryScope { allocator ->

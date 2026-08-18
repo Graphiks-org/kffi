@@ -16,6 +16,9 @@ internal class AndroidArena : AutoCloseable {
     private val defaultBlock = 1L shl 16
 
     fun allocate(size: Long): Long {
+        require(size >= 0L && size <= Long.MAX_VALUE - 7L) {
+            "Allocation size is out of range: $size"
+        }
         val aligned = alignUp(size, 8L)
         val freed = freeBySize[aligned]?.takeIf { it.isNotEmpty() }?.removeLast()
         if (freed != null) return freed

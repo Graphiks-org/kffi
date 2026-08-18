@@ -3,6 +3,7 @@
 package org.graphiks.kffi
 
 import io.kotest.core.spec.style.FreeSpec
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 
@@ -27,6 +28,13 @@ class MemoryAllocatorAndroidTest : FreeSpec({
             val buffer = allocator.allocateBuffer(16uL)
             buffer.writeInt(7, 0uL)
             buffer.readInt(0uL) shouldBe 7
+        }
+    }
+    "allocateBuffer rejects a size that cannot fit in a signed allocation" {
+        memoryScope { allocator ->
+            shouldThrow<IllegalArgumentException> {
+                allocator.allocateBuffer(ULong.MAX_VALUE)
+            }
         }
     }
     "repeated same-size allocations come from the bump block" {
