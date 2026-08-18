@@ -21,9 +21,9 @@ private fun measureDowncallEmpty(): Double {
     return elapsed.inWholeNanoseconds / 100_000.0
 }
 
-// NOTE P3 : l'overhead des bornes-check native est mesuré par l'écart entre ce
-// scénario (borné, KFFI_NATIVE_UNSAFE=false) et la variante unsafe (compiler le
-// module avec la constante à true). Le rapport P3 documente les deux mesures.
+// P3 NOTE: native bounds-check overhead is measured by the difference between
+// this bounds-checked scenario (KFFI_NATIVE_UNSAFE=false) and the unsafe
+// variant (build the module with the constant set to true).
 private fun measureMarshaling(): Double {
     repeat(100) {
         org.graphiks.kffi.memoryScope { allocator ->
@@ -43,13 +43,13 @@ private fun measureMarshaling(): Double {
 }
 
 /*
- * Variante unsafe (KFFI_NATIVE_UNSAFE=true) — structure documentée, non
- * compilée par défaut : la constante build-time vit dans le module kffi
- * (MemoryBuffer.native.kt) et ne peut pas être basculée à l'exécution (I3/P3).
- * Pour mesurer l'overhead des bornes-check : compiler kffi avec
- * KFFI_NATIVE_UNSAFE=true puis exécuter CE scénario — le code est identique à
- * measureMarshaling, seule la constante compile-time change. Non branchée dans
- * main() : la build par défaut doit rester bornée.
+ * Unsafe variant (KFFI_NATIVE_UNSAFE=true) — documented structure, not
+ * compiled by default: the build-time constant lives in the kffi module
+ * (MemoryBuffer.native.kt) and cannot be changed at runtime (I3/P3).
+ * To measure bounds-check overhead, build kffi with
+ * KFFI_NATIVE_UNSAFE=true and then run THIS scenario — the code is identical
+ * to measureMarshaling; only the compile-time constant changes. It is not
+ * wired into main(): the default build must remain bounds-checked.
  *
  * private fun measureMarshalingUnsafeVariant(): Double {
  *     repeat(100) {
