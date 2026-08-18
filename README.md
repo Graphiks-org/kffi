@@ -1,6 +1,33 @@
 # kffi - Multiplatform FFI layer (JVM / Android / Native)
 
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.4.10-purple?logo=kotlin)](https://kotlinlang.org)
+[![Gradle](https://img.shields.io/badge/Gradle-9.7.0-blue?logo=gradle)](https://gradle.org)
+[![AGP](https://img.shields.io/badge/AGP-9.0.0-green?logo=android)](https://developer.android.com/build/releases/gradle-plugin)
+[![JDK](https://img.shields.io/badge/JDK-25-red?logo=openjdk)](https://openjdk.org)
+[![CI](https://github.com/Graphiks-org/kffi/actions/workflows/ci.yml/badge.svg)](https://github.com/Graphiks-org/kffi/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=plastic)](LICENSE)
+[![Contributing](https://img.shields.io/badge/Contributing-guide-purple)](CONTRIBUTING.md)
+[![Projet: Incubating](https://img.shields.io/badge/Statut-Incubating-orange)](https://github.com/Graphiks-org/kffi)
+
+<!-- ==========================================
+     BADGES DE STATUT DE PROJET PERSONNALISABLES
+     Décommentez/copiez simplement le badge correspondant au statut actuel de votre projet.
+     ========================================== -->
+
+<!-- STATUT : EN PLANIFICATION (PLANNING) -->
+<!-- [![Projet: Planning](https://img.shields.io/badge/Statut-Planning-blue)](https://github.com/Graphiks-org/kffi) -->
+
+<!-- STATUT : INCUBATION / EN DÉVELOPPEMENT (INCUBATING) -->
+<!-- [![Projet: Incubating](https://img.shields.io/badge/Statut-Incubating-orange)](https://github.com/Graphiks-org/kffi) -->
+
+<!-- STATUT : STABLE / PRÊT PRODUCTION (STABLE) -->
+<!-- [![Projet: Stable](https://img.shields.io/badge/Statut-Stable-green)](https://github.com/Graphiks-org/kffi) -->
+
+<!-- STATUT : DÉPRÉCIÉ (DEPRECATED) -->
+<!-- [![Projet: Deprecated](https://img.shields.io/badge/Statut-Deprecated-red)](https://github.com/Graphiks-org/kffi) -->
+
+<!-- STATUT : ARCHIVÉ (ARCHIVED) -->
+<!-- [![Projet: Archived](https://img.shields.io/badge/Statut-Archived-lightgrey)](https://github.com/Graphiks-org/kffi) -->
 
 `kffi` is a low-level foreign function interface (FFI) layer for native memory
 access and native calls, written in Kotlin Multiplatform. It is a standalone
