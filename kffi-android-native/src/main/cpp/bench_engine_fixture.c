@@ -18,6 +18,22 @@ bench_pair bench_make_pair(uint64_t a, uint64_t b) {
 
 uint64_t bench_pair_sum(bench_pair p) { return p.a + p.b; }
 
+typedef struct bench_point { float x; float y; } bench_point;
+typedef struct bench_packet {
+    uint32_t tag;
+    bench_point point;
+    uint16_t samples[3];
+} bench_packet;
+
+uint32_t bench_packet_checksum(bench_packet packet) {
+    return packet.tag + (uint32_t)packet.point.x + (uint32_t)packet.point.y +
+        packet.samples[0] + packet.samples[1] + packet.samples[2];
+}
+
+uint32_t bench_read_int_plus(const uint32_t *value, uint32_t addend) {
+    return *value + addend;
+}
+
 /*
  * Bench callback fixture for the upcall engine. The callback shape matches
  * the kffi upcall closure CIF: void (uint32_t value, void *routing_userdata).

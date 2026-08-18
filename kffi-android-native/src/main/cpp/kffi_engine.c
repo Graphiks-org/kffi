@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
+#include <pthread.h>
 #include <dlfcn.h>
 #include <ffi.h>
 
@@ -594,22 +596,451 @@ JNIEXPORT void JNICALL Java_org_graphiks_kffi_engine_NativeEngine_callStructRetu
 }
 
 /*
- * GENERIC downcall path (libffi fallback). Handles signatures outside the
- * typed wrapper table by packing every argument into a uint64 carrier and
- * letting libffi marshal them. The buffer-in/buffer-out contract matches the
- * fixture wrappers above.
+ * Generic downcall signatures are emitted by kextract as compact ASCII:
+ *
+ *   signature := type ':' (type (',' type)*)?
+ *   type      := v | p | b8 | i8 | u8 | i16 | u16 | i32 | u32 | i64 | u64
+ *              | f32 | f64 | s<size>@<alignment>(type[,type]*)
+ *              | a<count>(type)
+ *
+ * A struct carries the C size/alignment measured by Clang, plus its recursive
+ * field layout. `a` is an in-struct fixed-size C array. libffi derives a
+ * struct's effective size/alignment from its elements; the engine verifies
+ * the result against the emitted metadata before calling native code. This
+ * rejects packed/unsupported layouts rather than silently making an ABI-wrong
+ * call. Function arguments are packed in declaration order at their ABI
+ * alignment; top-level pointers keep the generator's eight-byte Long carrier
+ * even where the native pointer itself is narrower.
  */
+typedef struct generic_alloc_node {
+    void *ptr;
+    struct generic_alloc_node *next;
+} generic_alloc_node;
+
+typedef struct generic_struct_expectation {
+    ffi_type *type;
+    size_t size;
+    unsigned short alignment;
+    struct generic_struct_expectation *next;
+} generic_struct_expectation;
+
+typedef struct {
+    generic_alloc_node *allocations;
+    generic_struct_expectation *expectations;
+    int out_of_memory;
+} generic_type_arena;
+
+typedef struct {
+    const char *cursor;
+    int invalid;
+} generic_type_parser;
+
+typedef struct {
+    ffi_type **items;
+    size_t count;
+    size_t capacity;
+} generic_type_list;
+
+typedef struct generic_signature {
+    char *spec;
+    jint argc;
+    ffi_cif cif;
+    ffi_type *return_type;
+    ffi_type **arg_types;
+    generic_type_arena arena;
+    struct generic_signature *next;
+} generic_signature;
+
+typedef enum {
+    GENERIC_SIGNATURE_OK,
+    GENERIC_SIGNATURE_INVALID,
+    GENERIC_SIGNATURE_OOM,
+} generic_signature_status;
+
+static pthread_mutex_t generic_signature_cache_mutex = PTHREAD_MUTEX_INITIALIZER;
+static generic_signature *generic_signature_cache;
+
+static void *generic_type_arena_calloc(generic_type_arena *arena, size_t count, size_t size) {
+    if (count == 0 || size == 0 || count > SIZE_MAX / size) {
+        arena->out_of_memory = 1;
+        return NULL;
+    }
+    void *ptr = calloc(count, size);
+    generic_alloc_node *node = ptr == NULL ? NULL : malloc(sizeof(*node));
+    if (ptr == NULL || node == NULL) {
+        free(ptr);
+        arena->out_of_memory = 1;
+        return NULL;
+    }
+    node->ptr = ptr;
+    node->next = arena->allocations;
+    arena->allocations = node;
+    return ptr;
+}
+
+static void generic_type_arena_destroy(generic_type_arena *arena) {
+    generic_alloc_node *allocation = arena->allocations;
+    while (allocation != NULL) {
+        generic_alloc_node *next = allocation->next;
+        free(allocation->ptr);
+        free(allocation);
+        allocation = next;
+    }
+    generic_struct_expectation *expectation = arena->expectations;
+    while (expectation != NULL) {
+        generic_struct_expectation *next = expectation->next;
+        free(expectation);
+        expectation = next;
+    }
+}
+
+static int generic_type_list_append(generic_type_list *list, ffi_type *type) {
+    if (list->count == list->capacity) {
+        size_t next_capacity = list->capacity == 0 ? 4 : list->capacity * 2;
+        if (next_capacity < list->capacity || next_capacity > SIZE_MAX / sizeof(*list->items)) return 0;
+        ffi_type **items = realloc(list->items, next_capacity * sizeof(*items));
+        if (items == NULL) return 0;
+        list->items = items;
+        list->capacity = next_capacity;
+    }
+    list->items[list->count++] = type;
+    return 1;
+}
+
+static int generic_parse_decimal(generic_type_parser *parser, size_t *value) {
+    size_t result = 0;
+    if (*parser->cursor < '0' || *parser->cursor > '9') {
+        parser->invalid = 1;
+        return 0;
+    }
+    do {
+        unsigned digit = (unsigned)(*parser->cursor - '0');
+        if (result > (SIZE_MAX - digit) / 10) {
+            parser->invalid = 1;
+            return 0;
+        }
+        result = result * 10 + digit;
+        parser->cursor++;
+    } while (*parser->cursor >= '0' && *parser->cursor <= '9');
+    *value = result;
+    return 1;
+}
+
+static int generic_consume(generic_type_parser *parser, const char *text) {
+    size_t length = strlen(text);
+    if (strncmp(parser->cursor, text, length) != 0) {
+        parser->invalid = 1;
+        return 0;
+    }
+    parser->cursor += length;
+    return 1;
+}
+
+static ffi_type *generic_parse_type(
+    generic_type_parser *parser,
+    generic_type_arena *arena,
+    int allow_void);
+
+static ffi_type *generic_make_aggregate(
+    generic_type_arena *arena,
+    const generic_type_list *fields) {
+    if (fields->count == 0 || fields->count > SIZE_MAX / sizeof(ffi_type *) - 1) {
+        return NULL;
+    }
+    ffi_type *type = generic_type_arena_calloc(arena, 1, sizeof(*type));
+    ffi_type **elements = generic_type_arena_calloc(arena, fields->count + 1, sizeof(*elements));
+    if (type == NULL || elements == NULL) return NULL;
+    memcpy(elements, fields->items, fields->count * sizeof(*elements));
+    type->type = FFI_TYPE_STRUCT;
+    type->elements = elements;
+    return type;
+}
+
+static ffi_type *generic_parse_struct(
+    generic_type_parser *parser,
+    generic_type_arena *arena) {
+    size_t expected_size;
+    size_t expected_alignment;
+    generic_type_list fields = {0};
+    ffi_type *result = NULL;
+
+    if (!generic_parse_decimal(parser, &expected_size) ||
+        !generic_consume(parser, "@") ||
+        !generic_parse_decimal(parser, &expected_alignment) ||
+        !generic_consume(parser, "(")) {
+        goto done;
+    }
+    if (expected_size == 0 || expected_alignment == 0 || expected_alignment > USHRT_MAX ||
+        *parser->cursor == ')') {
+        parser->invalid = 1;
+        goto done;
+    }
+    while (1) {
+        ffi_type *field = generic_parse_type(parser, arena, 0);
+        if (field == NULL || !generic_type_list_append(&fields, field)) {
+            if (!parser->invalid) arena->out_of_memory = 1;
+            goto done;
+        }
+        if (*parser->cursor == ')') {
+            parser->cursor++;
+            break;
+        }
+        if (*parser->cursor != ',') {
+            parser->invalid = 1;
+            goto done;
+        }
+        parser->cursor++;
+    }
+    result = generic_make_aggregate(arena, &fields);
+    if (result == NULL) goto done;
+    generic_struct_expectation *expectation = malloc(sizeof(*expectation));
+    if (expectation == NULL) {
+        arena->out_of_memory = 1;
+        result = NULL;
+        goto done;
+    }
+    expectation->type = result;
+    expectation->size = expected_size;
+    expectation->alignment = (unsigned short)expected_alignment;
+    expectation->next = arena->expectations;
+    arena->expectations = expectation;
+
+done:
+    free(fields.items);
+    return result;
+}
+
+static ffi_type *generic_parse_array(
+    generic_type_parser *parser,
+    generic_type_arena *arena) {
+    size_t count;
+    generic_type_list elements = {0};
+    ffi_type *element;
+    ffi_type *result = NULL;
+
+    if (!generic_parse_decimal(parser, &count) || !generic_consume(parser, "(") || count == 0) {
+        parser->invalid = 1;
+        goto done;
+    }
+    element = generic_parse_type(parser, arena, 0);
+    if (element == NULL || !generic_consume(parser, ")")) goto done;
+    for (size_t i = 0; i < count; i++) {
+        if (!generic_type_list_append(&elements, element)) {
+            arena->out_of_memory = 1;
+            goto done;
+        }
+    }
+    result = generic_make_aggregate(arena, &elements);
+
+done:
+    free(elements.items);
+    return result;
+}
+
+static ffi_type *generic_parse_type(
+    generic_type_parser *parser,
+    generic_type_arena *arena,
+    int allow_void) {
+    char tag = *parser->cursor++;
+    switch (tag) {
+        case 'v':
+            if (allow_void) return &ffi_type_void;
+            break;
+        case 'p':
+            return &ffi_type_pointer;
+        case 'b':
+            if (generic_consume(parser, "8")) return &ffi_type_uint8;
+            return NULL;
+        case 'i':
+            if (strncmp(parser->cursor, "8", 1) == 0) {
+                parser->cursor++;
+                return &ffi_type_sint8;
+            }
+            if (strncmp(parser->cursor, "16", 2) == 0) {
+                parser->cursor += 2;
+                return &ffi_type_sint16;
+            }
+            if (strncmp(parser->cursor, "32", 2) == 0) {
+                parser->cursor += 2;
+                return &ffi_type_sint32;
+            }
+            if (strncmp(parser->cursor, "64", 2) == 0) {
+                parser->cursor += 2;
+                return &ffi_type_sint64;
+            }
+            break;
+        case 'u':
+            if (strncmp(parser->cursor, "8", 1) == 0) {
+                parser->cursor++;
+                return &ffi_type_uint8;
+            }
+            if (strncmp(parser->cursor, "16", 2) == 0) {
+                parser->cursor += 2;
+                return &ffi_type_uint16;
+            }
+            if (strncmp(parser->cursor, "32", 2) == 0) {
+                parser->cursor += 2;
+                return &ffi_type_uint32;
+            }
+            if (strncmp(parser->cursor, "64", 2) == 0) {
+                parser->cursor += 2;
+                return &ffi_type_uint64;
+            }
+            break;
+        case 'f':
+            if (strncmp(parser->cursor, "32", 2) == 0) {
+                parser->cursor += 2;
+                return &ffi_type_float;
+            }
+            if (strncmp(parser->cursor, "64", 2) == 0) {
+                parser->cursor += 2;
+                return &ffi_type_double;
+            }
+            break;
+        case 's':
+            return generic_parse_struct(parser, arena);
+        case 'a':
+            return generic_parse_array(parser, arena);
+        default:
+            break;
+    }
+
+    /* i/u widths with a shared prefix are handled after the first digit. */
+    parser->invalid = 1;
+    return NULL;
+}
+
+static int generic_validate_struct_layouts(const generic_type_arena *arena) {
+    for (const generic_struct_expectation *expectation = arena->expectations;
+         expectation != NULL;
+         expectation = expectation->next) {
+        if (expectation->type->size != expectation->size ||
+            expectation->type->alignment != expectation->alignment) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+static void generic_signature_destroy(generic_signature *signature) {
+    if (signature == NULL) return;
+    free(signature->spec);
+    free(signature->arg_types);
+    generic_type_arena_destroy(&signature->arena);
+    free(signature);
+}
+
+static generic_signature_status generic_signature_build(
+    const char *spec,
+    jint argc,
+    generic_signature **out_signature) {
+    generic_signature *signature = calloc(1, sizeof(*signature));
+    generic_type_parser parser = { .cursor = spec };
+    if (signature == NULL) return GENERIC_SIGNATURE_OOM;
+
+    if (argc > 0) {
+        signature->arg_types = calloc((size_t)argc, sizeof(*signature->arg_types));
+        if (signature->arg_types == NULL) {
+            generic_signature_destroy(signature);
+            return GENERIC_SIGNATURE_OOM;
+        }
+    }
+
+    signature->return_type = generic_parse_type(&parser, &signature->arena, 1);
+    if (signature->return_type == NULL || !generic_consume(&parser, ":")) goto invalid;
+    for (jint i = 0; i < argc; i++) {
+        signature->arg_types[i] = generic_parse_type(&parser, &signature->arena, 0);
+        if (signature->arg_types[i] == NULL) goto invalid;
+        if (i + 1 < argc) {
+            if (!generic_consume(&parser, ",")) goto invalid;
+        }
+    }
+    if (*parser.cursor != '\0') {
+        parser.invalid = 1;
+        goto invalid;
+    }
+    if (signature->arena.out_of_memory) goto oom;
+    if (ffi_prep_cif(
+            &signature->cif,
+            FFI_DEFAULT_ABI,
+            (unsigned)argc,
+            signature->return_type,
+            signature->arg_types) != FFI_OK ||
+        !generic_validate_struct_layouts(&signature->arena)) {
+        goto invalid;
+    }
+
+    size_t spec_size = strlen(spec) + 1;
+    signature->spec = malloc(spec_size);
+    if (signature->spec == NULL) goto oom;
+    memcpy(signature->spec, spec, spec_size);
+    signature->argc = argc;
+    *out_signature = signature;
+    return GENERIC_SIGNATURE_OK;
+
+invalid:
+    if (signature->arena.out_of_memory) goto oom;
+    generic_signature_destroy(signature);
+    return GENERIC_SIGNATURE_INVALID;
+
+oom:
+    generic_signature_destroy(signature);
+    return GENERIC_SIGNATURE_OOM;
+}
+
+static generic_signature_status generic_signature_get(
+    const char *spec,
+    jint argc,
+    generic_signature **out_signature) {
+    pthread_mutex_lock(&generic_signature_cache_mutex);
+    for (generic_signature *signature = generic_signature_cache;
+         signature != NULL;
+         signature = signature->next) {
+        if (signature->argc == argc && strcmp(signature->spec, spec) == 0) {
+            *out_signature = signature;
+            pthread_mutex_unlock(&generic_signature_cache_mutex);
+            return GENERIC_SIGNATURE_OK;
+        }
+    }
+
+    generic_signature *signature = NULL;
+    generic_signature_status status = generic_signature_build(spec, argc, &signature);
+    if (status == GENERIC_SIGNATURE_OK) {
+        signature->next = generic_signature_cache;
+        generic_signature_cache = signature;
+        *out_signature = signature;
+    }
+    pthread_mutex_unlock(&generic_signature_cache_mutex);
+    return status;
+}
+
+static int generic_align_offset(size_t offset, size_t alignment, size_t *aligned) {
+    if (alignment == 0 || offset > SIZE_MAX - (alignment - 1)) return 0;
+    *aligned = ((offset + alignment - 1) / alignment) * alignment;
+    return 1;
+}
+
+/*
+ * The generated Kotlin buffer uses Long as its universal pointer carrier. Keep
+ * that wire layout at eight-byte slots even on 32-bit Android; libffi still
+ * reads only the native pointer width from the slot when invoking the target.
+ * Record fields are deliberately excluded: their byte layout is native and is
+ * validated against libffi before the call.
+ */
+static size_t generic_argument_buffer_size(const ffi_type *type) {
+    return type == &ffi_type_pointer ? sizeof(uint64_t) : type->size;
+}
+
+static size_t generic_argument_buffer_alignment(const ffi_type *type) {
+    return type == &ffi_type_pointer ? sizeof(uint64_t) : type->alignment;
+}
+
 JNIEXPORT void JNICALL Java_org_graphiks_kffi_engine_NativeEngine_callGeneric(
     JNIEnv *env, jclass cls, jlong fn, jint argc, jstring typeSpec, jlong argsPtr, jlong outPtr) {
     (void)cls;
-    (void)typeSpec;
-    /* The generic reader currently ignores typeSpec: every argument uses an
-       8-byte carrier. Struct-by-value arguments packed by kextract at natural
-       alignment are therefore truncated to 8 bytes at runtime. TODO: select
-       ffi_type values per argument to honor typeSpec exactly. */
-    if (fn == 0 || argsPtr == 0 || outPtr == 0) {
+    if (fn == 0 || typeSpec == NULL) {
         (*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/UnsatisfiedLinkError"),
-                         "kffi: null generic-call argument");
+                         "kffi: null generic-call function or typeSpec");
         return;
     }
     if (argc < 0) {
@@ -617,40 +1048,59 @@ JNIEXPORT void JNICALL Java_org_graphiks_kffi_engine_NativeEngine_callGeneric(
                          "kffi: negative generic-call argc");
         return;
     }
-    ffi_type **types = calloc((size_t)argc, sizeof(ffi_type *));
-    if (types == NULL) {
+
+    const char *spec = (*env)->GetStringUTFChars(env, typeSpec, NULL);
+    if ((*env)->ExceptionCheck(env) || spec == NULL) return;
+    generic_signature *signature = NULL;
+    generic_signature_status status = generic_signature_get(spec, argc, &signature);
+    (*env)->ReleaseStringUTFChars(env, typeSpec, spec);
+    if (status != GENERIC_SIGNATURE_OK) {
+        const char *class_name = status == GENERIC_SIGNATURE_OOM
+            ? "java/lang/OutOfMemoryError"
+            : "java/lang/IllegalArgumentException";
+        const char *message = status == GENERIC_SIGNATURE_OOM
+            ? "kffi: allocating generic call signature failed"
+            : "kffi: malformed or ABI-incompatible generic typeSpec";
+        (*env)->ThrowNew(env, (*env)->FindClass(env, class_name), message);
+        return;
+    }
+    if ((argc > 0 && argsPtr == 0) ||
+        (signature->return_type != &ffi_type_void && outPtr == 0)) {
+        (*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/UnsatisfiedLinkError"),
+                         "kffi: null generic-call argument buffer");
+        return;
+    }
+
+    void **avalue = argc == 0 ? NULL : calloc((size_t)argc, sizeof(*avalue));
+    if (argc > 0 && avalue == NULL) {
         (*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/OutOfMemoryError"),
-                         "kffi: calloc types failed");
+                         "kffi: allocating generic argument pointers failed");
         return;
     }
-    ffi_cif cif;
-    for (int i = 0; i < argc; i++) {
-        types[i] = &ffi_type_uint64; /* generic path: every scalar/pointer arg rides a uint64 carrier */
-    }
-    ffi_status status = ffi_prep_cif(&cif, FFI_DEFAULT_ABI, (unsigned)argc, &ffi_type_uint64, types);
-    if (status != FFI_OK) {
-        free(types);
-        (*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/IllegalArgumentException"),
-                         "kffi: ffi_prep_cif failed");
-        return;
-    }
-    /* ffi_call expects avalue to be an array of pointers to each argument's
-       value. The caller packs the values contiguously (one uint64 carrier per
-       arg), so build the pointer array into that buffer. */
-    void **avalue = calloc((size_t)argc, sizeof(void *));
-    if (avalue == NULL) {
-        free(types);
-        (*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/OutOfMemoryError"),
-                         "kffi: calloc avalue failed");
-        return;
-    }
+
     uintptr_t base = (uintptr_t)argsPtr;
-    for (int i = 0; i < argc; i++) {
-        avalue[i] = (void *)(base + (uintptr_t)i * sizeof(uint64_t));
+    size_t offset = 0;
+    for (jint i = 0; i < argc; i++) {
+        ffi_type *type = signature->arg_types[i];
+        size_t buffer_size = generic_argument_buffer_size(type);
+        if (!generic_align_offset(offset, generic_argument_buffer_alignment(type), &offset) ||
+            offset > UINTPTR_MAX - base ||
+            buffer_size > SIZE_MAX - offset) {
+            free(avalue);
+            (*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/IllegalArgumentException"),
+                             "kffi: generic argument layout overflow");
+            return;
+        }
+        avalue[i] = (void *)(base + offset);
+        offset += buffer_size;
     }
-    ffi_call(&cif, FFI_FN(fn), (void *)(uintptr_t)outPtr, avalue);
+
+    ffi_call(
+        &signature->cif,
+        FFI_FN((void *)(uintptr_t)fn),
+        signature->return_type == &ffi_type_void ? NULL : (void *)(uintptr_t)outPtr,
+        avalue);
     free(avalue);
-    free(types);
 }
 
 /*
