@@ -247,7 +247,8 @@ kotlin {
 
     jvm {
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_24
+            // The Android KMP plugin exposes an older JvmTarget enum; keep the JVM bytecode on 25.
+            jvmTarget = JvmTarget.fromTarget("25")
         }
     }
 
