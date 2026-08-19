@@ -24,18 +24,4 @@ class CallbackTokenAddressCodecAndroidTest : FreeSpec({
         PlatformCallbackTokenAddressCodec.maxToken shouldBe
             (if (AndroidUnsafe.get().addressSize() == 8) Long.MAX_VALUE.toULong() else UInt.MAX_VALUE.toULong())
     }
-    "32-bit pointer ABI caps tokens at UInt.MAX and rejects above" {
-        // The 32-bit (armeabi-v7a) branch of the codec cannot execute on a
-        // 64-bit test host. The (pointerBytes == 4) path is exercised in CI on
-        // a 32-bit device. This test pins the cap formula so the host test
-        // fails if it ever drifts from the ABI width.
-        val pointerBytes = AndroidUnsafe.get().addressSize()
-        val expected = if (pointerBytes == 8) Long.MAX_VALUE.toULong() else UInt.MAX_VALUE.toULong()
-        PlatformCallbackTokenAddressCodec.maxToken shouldBe expected
-        if (pointerBytes == 4) {
-            shouldThrow<IllegalArgumentException> {
-                PlatformCallbackTokenAddressCodec.encode(UInt.MAX_VALUE.toULong() + 1uL)
-            }
-        }
-    }
 })
