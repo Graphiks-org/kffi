@@ -4,9 +4,13 @@
 #include <jni.h>
 
 /*
- * kffi Android upcall engine: libffi closures that let a C library invoke a
- * Kotlin static dispatcher from an arbitrary thread. See kffi_upcall.c.
+ * kffi Android upcall engine: dynamically typed libffi closures that let a C
+ * library invoke a Kotlin static dispatcher from an arbitrary thread. See
+ * kffi_upcall.c.
  */
+
+#define KFFI_UPCALL_ALLOCATE_JNI_SIGNATURE \
+    "(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J"
 
 /* Called once from JNI_OnLoad. */
 void kffi_upcall_init(JavaVM *vm);
