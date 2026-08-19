@@ -6,6 +6,7 @@ import org.graphiks.kffi.CallbackRegistration
 import org.graphiks.kffi.CallbackRuntime
 import org.graphiks.kffi.CallbackRuntimeApi
 import org.graphiks.kffi.CallbackType
+import org.graphiks.kffi.MemoryBuffer
 import org.graphiks.kffi.NativeAddress
 
 @OptIn(CallbackRuntimeApi::class)
@@ -23,6 +24,30 @@ object UpcallDispatcher {
     @Volatile
     var lastValue: Int = -1
 
+    data class AllTypes(
+        val token: Long,
+        val i8: Byte,
+        val u8: Byte,
+        val i16: Short,
+        val u16: Short,
+        val i32: Int,
+        val u32: Int,
+        val i64: Long,
+        val u64: Long,
+        val f32: Float,
+        val f64: Double,
+        val pointer: Long,
+        val messageAddress: Long,
+        val size: Long,
+        val address: Long,
+    )
+
+    @Volatile
+    var lastAllTypes: AllTypes? = null
+
+    @Volatile
+    var lastAllTypesMessage: ByteArray? = null
+
     fun register(): CallbackRegistration<BenchCallback> =
         CallbackRuntime.register(
             type = type,
@@ -36,5 +61,49 @@ object UpcallDispatcher {
         CallbackRuntime.dispatchSafely(type, NativeAddress(token)) { cb ->
             cb.invoke(value.toUInt())
         }
+    }
+
+    @JvmStatic
+    fun dispatchAllTypes(
+        token: Long,
+        i8: Byte,
+        u8: Byte,
+        i16: Short,
+        u16: Short,
+        i32: Int,
+        u32: Int,
+        i64: Long,
+        u64: Long,
+        f32: Float,
+        f64: Double,
+        pointer: Long,
+        messageAddress: Long,
+        size: Long,
+        address: Long,
+    ) {
+        val messageView = MemoryBuffer(NativeAddress(messageAddress), 16uL)
+        val messageDataAddress = messageView.readPointer(0uL)
+        val messageLength = messageView.readLong(8uL).toInt()
+        val messageBytes = ByteArray(messageLength)
+        MemoryBuffer(messageDataAddress, messageLength.toULong()).readBytes(messageBytes)
+
+        lastAllTypesMessage = messageBytes
+        lastAllTypes = AllTypes(
+            token = token,
+            i8 = i8,
+            u8 = u8,
+            i16 = i16,
+            u16 = u16,
+            i32 = i32,
+            u32 = u32,
+            i64 = i64,
+            u64 = u64,
+            f32 = f32,
+            f64 = f64,
+            pointer = pointer,
+            messageAddress = messageAddress,
+            size = size,
+            address = address,
+        )
     }
 }

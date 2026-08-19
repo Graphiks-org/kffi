@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdint.h>
 #include <pthread.h>
 
@@ -72,5 +73,36 @@ void bench_fire_one_from_thread(uint32_t value) {
     if (pthread_create(&thread, NULL, bench_fire_one_from_thread_impl,
                        (void *)(uintptr_t)value) == 0) {
         pthread_join(thread, NULL);
+    }
+}
+
+typedef struct WGPUStringView {
+    const char *data;
+    size_t length;
+} WGPUStringView;
+
+typedef void (*bench_all_types_callback)(
+    int8_t i8, uint8_t u8, int16_t i16, uint16_t u16,
+    int32_t i32, uint32_t u32, int64_t i64, uint64_t u64,
+    float f32, double f64, void *pointer, WGPUStringView message,
+    size_t size, uintptr_t address, void *routing_userdata);
+
+static bench_all_types_callback g_all_types_callback = NULL;
+static void *g_all_types_userdata = NULL;
+
+void bench_set_all_types_callback(bench_all_types_callback callback, void *userdata) {
+    g_all_types_callback = callback;
+    g_all_types_userdata = userdata;
+}
+
+void bench_fire_all_types(void) {
+    static const char message[] = "WebGPU";
+    if (g_all_types_callback != NULL) {
+        WGPUStringView view = {message, sizeof(message) - 1};
+        g_all_types_callback(-8, 248, -16000, 60000, -1234567, 3456789,
+                             INT64_C(-0x102030405060708), UINT64_C(0xfedcba9876543210),
+                             1.25f, -2.5, (void *)(uintptr_t)0x1234,
+                             view, sizeof(message) - 1, (uintptr_t)0x5678,
+                             g_all_types_userdata);
     }
 }
