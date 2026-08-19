@@ -31,6 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snapshot publication and generated API documentation.
 
 ### Changed
+- Android callback ABI support now uses dynamically prepared libffi closures,
+  routed userdata, and `jlong` carriers for pointers and structs-by-value on
+  `arm64-v8a` and `x86_64`.
 - Extracted KFFI from the former `shared` module; the repository now contains
   the standalone KFFI library and its benchmark modules.
 - Updated the Android native artifact to support `arm64-v8a` and `x86_64`.

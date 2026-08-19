@@ -149,7 +149,8 @@ class AndroidHarness {
             val trampoline = UpcallEngine.allocateTrampoline(
                 dispatcherClass = BenchmarkUpcallDispatcher::class.java,
                 dispatchMethod = "dispatch",
-                dispatchSig = "(JI)V",
+                dispatchJvmSignature = "(JI)V",
+                dispatchAbiSignature = "v(u32,ptr)",
             )
             check(trampoline != 0L) { "kffi: allocateTrampoline returned null trampoline" }
             val setFn = resolve("bench_set_callback")

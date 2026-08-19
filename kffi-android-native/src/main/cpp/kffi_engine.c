@@ -1173,7 +1173,7 @@ static JNINativeMethod kffi_native_engine_methods[] = {
 };
 
 static JNINativeMethod kffi_upcall_engine_methods[] = {
-    { "allocateTrampoline", "(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;)J",
+    { "allocateTrampoline", KFFI_UPCALL_ALLOCATE_JNI_SIGNATURE,
       (void *)Java_org_graphiks_kffi_engine_UpcallEngine_allocateTrampoline },
     { "freeTrampoline", "(J)V", (void *)Java_org_graphiks_kffi_engine_UpcallEngine_freeTrampoline },
 };
