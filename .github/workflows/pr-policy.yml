@@ -1,9 +1,14 @@
 name: PR policy
 
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]
     branches:
       - master
+
+concurrency:
+  group: pr-policy-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   pr-policy:
@@ -11,12 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      issues: write
 
     steps:
-      - name: Check out pull request head
+      - name: Check out trusted pull request base
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.base.sha }}
           fetch-depth: 0
 
       - name: Set up Python
@@ -25,17 +31,23 @@ jobs:
           python-version: "3.x"
 
       - name: Validate pull request policy
+        id: validate
+        continue-on-error: true
         env:
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_BRANCH: ${{ github.event.pull_request.head.ref }}
           PR_TITLE: ${{ github.event.pull_request.title }}
+          COMMENT_FILE: ${{ runner.temp }}/pr-policy-failure.md
         run: |
           set -euo pipefail
 
           changed_files_file="$(mktemp)"
           body_file="$(mktemp)"
 
+          git fetch --no-tags origin \
+            "refs/pull/$PR_NUMBER/head:refs/remotes/origin/pr/$PR_NUMBER/head"
           git diff --name-only "$PR_BASE_SHA" "$PR_HEAD_SHA" > "$changed_files_file"
 
           if git merge-base --is-ancestor "$PR_BASE_SHA" "$PR_HEAD_SHA"; then
@@ -54,10 +66,63 @@ jobs:
           Path(os.environ["BODY_FILE"]).write_text(body, encoding="utf-8")
           PY
 
+          set +e
           python3 .github/scripts/validate_pr_policy.py \
             --policy .github/contributing-policy.toml \
             --title "$PR_TITLE" \
             --body-file "$body_file" \
             --branch "$PR_BRANCH" \
             --changed-files-file "$changed_files_file" \
-            --base-ancestor "$base_ancestor"
+            --base-ancestor "$base_ancestor" \
+            --comment-file "$COMMENT_FILE"
+          status=$?
+          set -e
+          exit "$status"
+
+      - name: Comment PR policy failure
+        id: comment
+        if: steps.validate.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/github-script@v7
+        env:
+          COMMENT_FILE: ${{ runner.temp }}/pr-policy-failure.md
+        with:
+          script: |
+            const fs = require('fs')
+            const marker = '<!-- pr-policy-failure -->'
+            const body = fs.readFileSync(process.env.COMMENT_FILE, 'utf8')
+            const issueNumber = context.payload.pull_request.number
+            const { owner, repo } = context.repo
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number: issueNumber,
+              per_page: 100,
+            })
+            const existing = comments.find((comment) =>
+              comment.user?.login === 'github-actions[bot]' && comment.body?.includes(marker)
+            )
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body,
+              })
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: issueNumber,
+                body,
+              })
+            }
+
+      - name: Report comment publication failure
+        if: steps.validate.outcome == 'failure' && steps.comment.outcome == 'failure'
+        run: echo "::error::The diagnostic comment could not be published on the PR."
+
+      - name: Fail PR policy check
+        if: steps.validate.outcome == 'failure'
+        run: exit 1
