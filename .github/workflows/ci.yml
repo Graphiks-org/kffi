@@ -36,10 +36,6 @@ jobs:
         if: matrix.os == 'windows-latest'
         uses: ilammy/msvc-dev-cmd@v1
       - name: Run JVM and Android host tests
-        # Temurin 25 on macOS arm64 intermittently crashes its Gradle test worker in HotSpot.
-        # Keep Java 25 and run this semantic test suite without JIT compilation on that runner.
-        env:
-          JAVA_TOOL_OPTIONS: ${{ matrix.os == 'macos-latest' && '-Xint' || '' }}
         run: ./gradlew :kffi:jvmTest :kffi:testAndroidHostTest
       - name: Compile Apple Native callback token codecs
         if: matrix.os == 'macos-latest'
