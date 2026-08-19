@@ -61,7 +61,7 @@ contract is unified across all three backends (spec P3).
 
 | Backend | Implementation | Notes |
 |---------|----------------|-------|
-| **JVM** | Panama FFM (`java.lang.foreign`) | Confined arenas; downcalls through `MethodHandle`; `jvmTarget` 24 |
+| **JVM** | Panama FFM (`java.lang.foreign`) | Confined arenas; downcalls through `MethodHandle`; `jvmTarget` 25 |
 | **Android** | Kotlin engine + JNI (`NativeEngine`/`UpcallEngine`) | `.so` bundled in the AAR; libffi fallback path |
 | **Native** | `kotlinx.cinterop` | iOS, macOS, Linux, Windows (MinGW), Android Native |
 
@@ -104,7 +104,7 @@ Multiplatform naming scheme:
 | Context | Artifact | Notes |
 |---------|----------|-------|
 | KMP consumer | `org.graphiks:kffi` | Root artifact (metadata); Gradle resolves the platform variant automatically |
-| JVM-only project | `org.graphiks:kffi-jvm` | Requires a JDK with `java.lang.foreign` (24+) |
+| JVM-only project | `org.graphiks:kffi-jvm` | Requires a JDK with `java.lang.foreign` (25+) |
 | Android project | `org.graphiks:kffi-android` | AAR with `release`/`debug` variants; minSdk 28 |
 | Native project | `org.graphiks:kffi-<target>` | One artifact per Native target (see the list below) |
 
