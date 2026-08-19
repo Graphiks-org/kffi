@@ -1,9 +1,13 @@
 name: PR policy
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - master
+
+concurrency:
+  group: pr-policy-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   pr-policy:
@@ -14,10 +18,10 @@ jobs:
       issues: write
 
     steps:
-      - name: Check out pull request head
+      - name: Check out trusted pull request base
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.base.sha }}
           fetch-depth: 0
 
       - name: Set up Python
@@ -31,6 +35,7 @@ jobs:
         env:
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_BRANCH: ${{ github.event.pull_request.head.ref }}
           PR_TITLE: ${{ github.event.pull_request.title }}
           COMMENT_FILE: ${{ runner.temp }}/pr-policy-failure.md
@@ -40,6 +45,8 @@ jobs:
           changed_files_file="$(mktemp)"
           body_file="$(mktemp)"
 
+          git fetch --no-tags origin \
+            "refs/pull/$PR_NUMBER/head:refs/remotes/origin/pr/$PR_NUMBER/head"
           git diff --name-only "$PR_BASE_SHA" "$PR_HEAD_SHA" > "$changed_files_file"
 
           if git merge-base --is-ancestor "$PR_BASE_SHA" "$PR_HEAD_SHA"; then
@@ -72,6 +79,7 @@ jobs:
           exit "$status"
 
       - name: Commenter l’échec de la politique de PR
+        id: comment
         if: steps.validate.outcome == 'failure'
         continue-on-error: true
         uses: actions/github-script@v7
@@ -109,6 +117,10 @@ jobs:
                 body,
               })
             }
+
+      - name: Signaler l’échec de publication du commentaire
+        if: steps.validate.outcome == 'failure' && steps.comment.outcome == 'failure'
+        run: echo "::error::Le commentaire de diagnostic n’a pas pu être publié sur la PR."
 
       - name: Faire échouer le check de politique
         if: steps.validate.outcome == 'failure'

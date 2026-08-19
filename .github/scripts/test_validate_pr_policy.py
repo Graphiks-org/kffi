@@ -11,6 +11,7 @@ import validate_pr_policy
 
 SCRIPT = Path(__file__).with_name("validate_pr_policy.py")
 POLICY = SCRIPT.parents[1] / "contributing-policy.toml"
+WORKFLOW = SCRIPT.parents[1] / "workflows" / "pr-policy.yml"
 
 
 class FailureCommentTest(unittest.TestCase):
@@ -70,7 +71,34 @@ class FailureCommentTest(unittest.TestCase):
             comment = comment_file.read_text(encoding="utf-8")
             self.assertIn("<!-- pr-policy-failure -->", comment)
             self.assertIn("## ❌ Échec de la politique de PR", comment)
-            self.assertIn("Le titre doit respecter", comment)
+            for error in (
+                "Le titre doit respecter",
+                "La branche",
+                "Le corps de la PR",
+                "Le commit de base",
+            ):
+                self.assertIn(error, comment)
+
+
+class WorkflowSafetyTest(unittest.TestCase):
+    def test_commenting_workflow_executes_validator_from_trusted_base(self) -> None:
+        workflow = WORKFLOW.read_text(encoding="utf-8")
+
+        self.assertIn("pull_request_target:", workflow)
+        self.assertIn("ref: ${{ github.event.pull_request.base.sha }}", workflow)
+        fetch_command = (
+            "git fetch --no-tags origin \\\n"
+            '            "refs/pull/$PR_NUMBER/head:refs/remotes/origin/pr/$PR_NUMBER/head"'
+        )
+        self.assertIn(fetch_command, workflow)
+        self.assertNotIn("ref: ${{ github.event.pull_request.head.sha }}", workflow)
+
+    def test_commenting_workflow_serializes_and_reports_comment_failures(self) -> None:
+        workflow = WORKFLOW.read_text(encoding="utf-8")
+
+        self.assertIn("concurrency:", workflow)
+        self.assertIn("group: pr-policy-${{ github.event.pull_request.number }}", workflow)
+        self.assertIn("steps.comment.outcome == 'failure'", workflow)
 
 
 if __name__ == "__main__":
