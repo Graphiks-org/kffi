@@ -59,12 +59,12 @@ plugins {
 kotlin {
     jvmToolchain(25)
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_24)
+        jvmTarget.set(JvmTarget.JVM_25)
     }
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.release.set(24)
+    options.release.set(25)
 }
 
 dependencies {

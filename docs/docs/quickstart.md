@@ -49,7 +49,7 @@ kotlin {
 ```
 
 JVM-only project: `implementation("org.graphiks:kffi-jvm:1.0.0-SNAPSHOT")`
-(JDK 24+ for `java.lang.foreign`).
+(JDK 25+ for `java.lang.foreign`).
 
 Android project: `implementation("org.graphiks:kffi-android:1.0.0-SNAPSHOT")`
 (minSdk 28).
