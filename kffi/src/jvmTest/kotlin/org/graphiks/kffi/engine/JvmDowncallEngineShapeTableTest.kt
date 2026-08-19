@@ -22,9 +22,10 @@ import org.graphiks.kffi.MemoryAllocator
  *   `jvmEngineStructWrapperShapes` (emitted name → letters, S = a Long carrying
  *   a struct by value in its C position). The test verifies every emitted name's
  *   Java signature, including the allocator.
- * - One shape per name: no public `call*` method may be overloaded, and every
- *   method must be covered by one of the two mechanisms (no silent wrapper or
- *   orphan entry).
+ * - One shape per name: no specialized public `call*` wrapper may be
+ *   overloaded, and every such method must be covered by one of the two
+ *   mechanisms (no silent wrapper or orphan entry). `callGeneric` is the
+ *   explicit escape hatch for shapes that are not encoded in wrapper names.
  *
  * Runtime fixture tests pin the deep ABI layer (FunctionDescriptor / ValueLayout
  * widths): a descriptor that disagrees with a wrapper's Java signature causes
@@ -138,5 +139,5 @@ private fun returnCarrier(returnKind: Char): Class<*> = when (returnKind) {
  */
 private fun callMethodsByKotlinName(): Map<String, List<java.lang.reflect.Method>> =
     JvmDowncallEngine::class.java.methods
-        .filter { it.name.startsWith("call") }
+        .filter { it.name.startsWith("call") && it.name != "callGeneric" }
         .groupBy { it.name.substringBefore('-') }

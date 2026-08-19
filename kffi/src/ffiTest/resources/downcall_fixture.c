@@ -87,6 +87,14 @@ void bench_consume_future(bench_future_t future) { bench_consumed_future = futur
 
 uint64_t bench_consumed_future_id(void) { return bench_consumed_future.id; }
 
+double bench_mix_i8_double(int8_t value, double factor) {
+    return (double)value + factor;
+}
+
+int32_t bench_sum_array_box(bench_array_box_t box) {
+    return box.values[0] + box.values[1] + box.values[2];
+}
+
 bench_future_t bench_on_work_done(void *queue, bench_cb_info_t info) {
     bench_future_t future;
     future.id = (uint64_t)(uintptr_t)queue + (uint64_t)(uintptr_t)info.userdata;
