@@ -4,6 +4,7 @@ import org.graphiks.kffi.C_POINTER
 import org.graphiks.kffi.MemoryAllocator
 import org.graphiks.kffi.NativeAddress
 import org.graphiks.kffi.findOrThrow
+import java.lang.foreign.Arena
 import java.lang.foreign.FunctionDescriptor
 import java.lang.foreign.Linker
 import java.lang.foreign.MemoryLayout
@@ -29,6 +30,27 @@ import java.lang.invoke.MethodHandle
  * FFM GroupLayouts internally.
  */
 object JvmDowncallEngine {
+
+    /** Canonical ABI carriers used by generated generic JVM downcalls. */
+    sealed class AbiType private constructor() {
+        object Void : AbiType()
+        object Bool : AbiType()
+        object I8 : AbiType()
+        object I16 : AbiType()
+        object Char16 : AbiType()
+        object I32 : AbiType()
+        object I64 : AbiType()
+        object F32 : AbiType()
+        object F64 : AbiType()
+        object Pointer : AbiType()
+        data class Struct(val name: String) : AbiType()
+    }
+
+    /** A complete C function ABI shape, independent of a Kotlin source type. */
+    data class FunctionShape(
+        val result: AbiType,
+        val arguments: List<AbiType>,
+    )
 
     private val linker = Linker.nativeLinker()
 
@@ -109,6 +131,7 @@ object JvmDowncallEngine {
         const val S_RET_P_GENERIC = 65
         const val S_RET_P_STRUCT_GENERIC = 66
         const val S_RET_PLLL_STRUCT_GENERIC = 67
+        const val GENERIC = 68
     }
 
     private data class HandleCacheKey(
@@ -148,6 +171,118 @@ object JvmDowncallEngine {
         return handleCache
             .computeIfAbsent(fn) { java.util.concurrent.ConcurrentHashMap() }
             .computeIfAbsent(key) { linker.downcallHandle(segment(fn), descriptor) }
+    }
+
+    /**
+     * Invokes a shape not covered by a generated `invokeExact` wrapper.
+     *
+     * The descriptor and handle are cached by native address, canonical shape,
+     * and every registered struct layout version referenced by that shape.
+     * Scalar/pointer arguments use their normal JVM carriers. Pointer and
+     * struct arguments may also be supplied as a raw `Long` or `NativeAddress`;
+     * they are converted to bounded FFM segments here. A struct return uses an
+     * auto arena as the hidden `SegmentAllocator` required by FFM and returns
+     * the raw `MemorySegment` carrier, just like a direct FFM downcall.
+     */
+    fun callGeneric(fn: Long, shape: FunctionShape, vararg args: Any?): Any? {
+        require(args.size == shape.arguments.size) {
+            "Shape expects ${shape.arguments.size} arguments, got ${args.size}"
+        }
+        val descriptor = functionDescriptor(shape)
+        val methodHandle = handle(
+            fn = fn,
+            shapeId = ShapeId.GENERIC,
+            descriptor = descriptor,
+            layoutSignature = genericLayoutSignature(shape),
+        )
+        val invocationArgs = ArrayList<Any?>(args.size + 1)
+        if (shape.result is AbiType.Struct) {
+            invocationArgs += Arena.ofAuto()
+        }
+        shape.arguments.forEachIndexed { index, type ->
+            invocationArgs += genericArgument(type, args[index])
+        }
+        return methodHandle.invokeWithArguments(invocationArgs)
+    }
+
+    private fun functionDescriptor(shape: FunctionShape): FunctionDescriptor {
+        val arguments = shape.arguments.map(::abiLayout).toTypedArray()
+        return if (shape.result === AbiType.Void) {
+            FunctionDescriptor.ofVoid(*arguments)
+        } else {
+            FunctionDescriptor.of(abiLayout(shape.result), *arguments)
+        }
+    }
+
+    private fun abiLayout(type: AbiType): MemoryLayout = when (type) {
+        AbiType.Void -> error("void is only valid as a function result")
+        AbiType.Bool -> ValueLayout.JAVA_BOOLEAN
+        AbiType.I8 -> ValueLayout.JAVA_BYTE
+        AbiType.I16 -> ValueLayout.JAVA_SHORT
+        AbiType.Char16 -> ValueLayout.JAVA_CHAR
+        AbiType.I32 -> ValueLayout.JAVA_INT
+        AbiType.I64 -> ValueLayout.JAVA_LONG
+        AbiType.F32 -> ValueLayout.JAVA_FLOAT
+        AbiType.F64 -> ValueLayout.JAVA_DOUBLE
+        AbiType.Pointer -> C_POINTER
+        is AbiType.Struct -> structLayout(type.name)
+    }
+
+    private fun genericArgument(type: AbiType, value: Any?): Any? = when (type) {
+        AbiType.Pointer -> addressSegment(value)
+        is AbiType.Struct -> structArgumentSegment(type.name, value)
+        else -> value
+    }
+
+    private fun addressSegment(value: Any?): MemorySegment = when (value) {
+        null -> MemorySegment.NULL
+        is MemorySegment -> value
+        is NativeAddress -> segment(value.rawValue)
+        is Long -> segment(value)
+        else -> error("Expected a pointer carrier, got ${value::class}")
+    }
+
+    private fun structArgumentSegment(name: String, value: Any?): MemorySegment =
+        addressSegment(value).reinterpret(structLayout(name).byteSize())
+
+    private fun genericLayoutSignature(shape: FunctionShape): String {
+        val names = linkedSetOf<String>()
+        fun collect(type: AbiType) {
+            if (type !is AbiType.Struct || !names.add(type.name)) return
+            structLayouts[type.name]?.second?.forEach { field ->
+                when (field.kind) {
+                    FieldKind.STRUCT -> collect(AbiType.Struct(field.structName ?: field.cName))
+                    FieldKind.ARRAY -> field.arrayElementName?.let { collect(AbiType.Struct(it)) }
+                    else -> Unit
+                }
+            }
+        }
+        collect(shape.result)
+        shape.arguments.forEach(::collect)
+        return buildString {
+            append(shape.signature())
+            names.forEach { name -> append('|').append(name).append(':').append(layoutVersion(name)) }
+        }
+    }
+
+    private fun FunctionShape.signature(): String = buildString {
+        append(abiSignature(result)).append('(')
+        arguments.joinTo(this, separator = ",") { abiSignature(it) }
+        append(')')
+    }
+
+    private fun abiSignature(type: AbiType): String = when (type) {
+        AbiType.Void -> "V"
+        AbiType.Bool -> "Z"
+        AbiType.I8 -> "B"
+        AbiType.I16 -> "S"
+        AbiType.Char16 -> "C"
+        AbiType.I32 -> "I"
+        AbiType.I64 -> "J"
+        AbiType.F32 -> "F"
+        AbiType.F64 -> "D"
+        AbiType.Pointer -> "P"
+        is AbiType.Struct -> "S:${type.name}"
     }
 
     // --- void returns ---
@@ -375,9 +510,36 @@ object JvmDowncallEngine {
 
     // --- Structs passed by value: layout registry ---
 
-    data class StructField(val cName: String, val kind: FieldKind, val offsetBytes: Long)
+    data class StructField(
+        val cName: String,
+        val kind: FieldKind,
+        val offsetBytes: Long,
+        /** Element kind for [FieldKind.ARRAY]. */
+        val arrayElementKind: FieldKind? = null,
+        /** Number of elements for [FieldKind.ARRAY]. */
+        val arrayLength: Long = 0L,
+        /** Registered struct name when an array contains nested structs. */
+        val arrayElementName: String? = null,
+        /** Registered struct name for a [FieldKind.STRUCT] field. */
+        val structName: String? = null,
+    )
 
-    enum class FieldKind { INT8, UINT8, INT16, UINT16, INT32, UINT32, INT64, UINT64, FLOAT32, FLOAT64, POINTER, STRUCT, PADDING }
+    enum class FieldKind {
+        INT8,
+        UINT8,
+        INT16,
+        UINT16,
+        INT32,
+        UINT32,
+        INT64,
+        UINT64,
+        FLOAT32,
+        FLOAT64,
+        POINTER,
+        STRUCT,
+        ARRAY,
+        PADDING,
+    }
 
     private val structLayouts = java.util.concurrent.ConcurrentHashMap<String, Pair<Long, List<StructField>>>()
 
@@ -402,7 +564,10 @@ object JvmDowncallEngine {
         structLayouts[name] = sizeBytes to fields
         structAlignments[name] = alignmentBytes
         layoutVersions[name] = (layoutVersions[name] ?: 0) + 1
-        structDescriptors.remove(name)
+        // A parent layout may inline this struct (or an array of it), so a
+        // child re-registration invalidates every cached GroupLayout that may
+        // contain it. Handle keys still keep the rebuild bounded by versions.
+        structDescriptors.clear()
     }
 
     private fun layoutVersion(name: String): Int = layoutVersions[name] ?: 0
@@ -439,7 +604,23 @@ object JvmDowncallEngine {
                     // Clang's offsets and size.
                     FieldKind.PADDING -> MemoryLayout.paddingLayout(field.offsetBytes)
                     // A STRUCT field's cName holds the registered nested type name.
-                    FieldKind.STRUCT -> structLayout(field.cName).withName(field.cName)
+                    FieldKind.STRUCT -> structLayout(field.structName ?: field.cName).withName(field.cName)
+                    FieldKind.ARRAY -> {
+                        require(field.arrayLength > 0L) {
+                            "Array field ${field.cName} must have a positive length"
+                        }
+                        val elementKind = requireNotNull(field.arrayElementKind) {
+                            "Array field ${field.cName} is missing its element kind"
+                        }
+                        val elementLayout = if (elementKind == FieldKind.STRUCT) {
+                            structLayout(requireNotNull(field.arrayElementName) {
+                                "Struct array field ${field.cName} is missing its element name"
+                            })
+                        } else {
+                            primitiveLayout(elementKind)
+                        }
+                        MemoryLayout.sequenceLayout(field.arrayLength, elementLayout).withName(field.cName)
+                    }
                     else -> primitiveLayout(field.kind).withName(field.cName)
                 }
             }
@@ -461,6 +642,7 @@ object JvmDowncallEngine {
         FieldKind.FLOAT64 -> ValueLayout.JAVA_DOUBLE
         FieldKind.POINTER -> ValueLayout.ADDRESS
         FieldKind.STRUCT -> error("nested struct layouts resolve through structLayout")
+        FieldKind.ARRAY -> error("array layouts resolve through sequenceLayout")
         FieldKind.PADDING -> error("padding handled separately")
     }
 
