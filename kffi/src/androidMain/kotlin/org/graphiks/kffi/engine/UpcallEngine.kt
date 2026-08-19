@@ -24,18 +24,6 @@ object UpcallEngine {
         dispatchAbiSignature: String,
     ): Long
 
-    @Deprecated("Pass the JVM and C ABI signatures separately")
-    fun allocateTrampoline(
-        dispatcherClass: Class<*>,
-        dispatchMethod: String,
-        dispatchSig: String,
-    ): Long = allocateTrampoline(
-        dispatcherClass,
-        dispatchMethod,
-        dispatchSig,
-        "v(u32,ptr)",
-    )
-
     /**
      * Frees a trampoline previously returned by [allocateTrampoline].
      *

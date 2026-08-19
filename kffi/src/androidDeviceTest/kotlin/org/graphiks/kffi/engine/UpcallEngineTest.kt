@@ -42,23 +42,11 @@ class UpcallEngineTest {
         return trampoline
     }
 
-    private fun allocateLegacyDispatchTrampoline(
-        dispatchMethod: String,
-        dispatchSig: String,
-    ): Long {
-        val trampoline = UpcallEngine.allocateTrampoline(
-            dispatcherClass = UpcallDispatcher::class.java,
-            dispatchMethod = dispatchMethod,
-            dispatchSig = dispatchSig,
-        )
-        check(trampoline != 0L) { "kffi: allocateTrampoline returned null trampoline" }
-        return trampoline
-    }
-
     private fun verifyValidAllocationStillWorks() {
-        val trampoline = allocateLegacyDispatchTrampoline(
+        val trampoline = allocateDispatchTrampoline(
             dispatchMethod = "dispatch",
-            dispatchSig = "(JI)V",
+            dispatchJvmSignature = "(JI)V",
+            dispatchAbiSignature = "v(u32,ptr)",
         )
         UpcallEngine.freeTrampoline(trampoline)
     }
