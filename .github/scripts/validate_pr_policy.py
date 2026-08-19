@@ -26,6 +26,21 @@ TYPE_LABELS = {
     "style": "Code style",
 }
 
+COMMENT_MARKER = "<!-- pr-policy-failure -->"
+
+
+def format_failure_comment(errors: Iterable[str]) -> str:
+    details = "\n".join(f"- {error}" for error in errors)
+    return (
+        f"{COMMENT_MARKER}\n"
+        "## ❌ Échec de la politique de PR\n\n"
+        "Cette PR ne respecte pas encore les règles de contribution du dépôt. "
+        "Corrigez les points suivants, puis relancez le check.\n\n"
+        "### Points à corriger\n\n"
+        f"{details}\n\n"
+        "Consultez `CONTRIBUTING.md` pour le détail des règles.\n"
+    )
+
 
 def read_lines(path: str | Path) -> list[str]:
     return [line.strip() for line in Path(path).read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -65,7 +80,7 @@ def validate_title(title: str, policy: dict[str, object]) -> list[str]:
     errors: list[str] = []
     match = TITLE_RE.match(title.strip())
     if not match:
-        return ["title must follow Conventional Commits format: <type>(<scope>): <description>"]
+        return ["Le titre doit respecter le format Conventional Commits : `<type>(<scope>): <description>`."]
 
     allowed_types = set(policy["allowed_types"])
     allowed_scopes = set(policy["allowed_scopes"])
@@ -73,23 +88,25 @@ def validate_title(title: str, policy: dict[str, object]) -> list[str]:
     scope = match.group("scope")
 
     if commit_type not in allowed_types:
-        errors.append(f"title type {commit_type!r} is not allowed")
+        errors.append(f"Le type de titre {commit_type!r} n’est pas autorisé")
     if scope is not None and scope not in allowed_scopes:
-        errors.append(f"title scope {scope!r} is not allowed")
+        errors.append(f"Le scope du titre {scope!r} n’est pas autorisé")
     return errors
 
 
 def validate_branch(branch: str, policy: dict[str, object]) -> list[str]:
     prefixes = tuple(policy["branch_prefixes"])
     if not branch.startswith(prefixes):
-        return [f"branch {branch!r} must start with one of: {', '.join(prefixes)}"]
+        return [
+            f"La branche {branch!r} doit commencer par l’un des préfixes suivants : {', '.join(prefixes)}"
+        ]
     return []
 
 
 def validate_required_sections(body: str, policy: dict[str, object]) -> list[str]:
     missing = [heading for heading in policy["required_sections"] if not heading_present(body, heading)]
     if missing:
-        return [f"PR body is missing required section(s): {', '.join(missing)}"]
+        return [f"Le corps de la PR ne contient pas les sections obligatoires suivantes : {', '.join(missing)}"]
     return []
 
 
@@ -104,7 +121,10 @@ def validate_type_selection(body: str, policy: dict[str, object]) -> list[str]:
         if match and match.group(1) in policy["allowed_types"]:
             selected.append(match.group(1))
     if len(selected) != 1:
-        return [f"PR body must select exactly one change type, found {len(selected)}"]
+        return [
+            "Le corps de la PR doit sélectionner exactement un type de changement ; "
+            f"{len(selected)} sélectionné(s)"
+        ]
     return []
 
 
@@ -126,21 +146,27 @@ def validate_changelog_selection(body: str, changed_files: Iterable[str], policy
         errors = []
         missing_files = [name for name in checked_updates if name not in changed]
         if missing_files:
-            errors.append(f"changed files are missing required changelog file(s): {', '.join(missing_files)}")
+            errors.append(
+                f"Les fichiers modifiés ne contiennent pas le ou les changelog(s) requis : {', '.join(missing_files)}"
+            )
         if len(checked_updates) != len(changelog_files):
-            errors.append("PR body must select all configured changelog files when declaring a changelog update")
+            errors.append(
+                "Le corps de la PR doit sélectionner tous les changelogs configurés lorsqu’une mise à jour est déclarée"
+            )
         if no_update_checked:
-            errors.append("PR body must not select no-changelog together with changelog updates")
+            errors.append(
+                "Le corps de la PR ne doit pas sélectionner l’absence de changelog en même temps qu’une mise à jour"
+            )
         return errors
 
     if no_update_checked:
         reason_line = next((line for line in lines if line.startswith(no_update_marker)), "")
         reason_text = reason_line.removeprefix(no_update_marker).strip()
         if not reason_text:
-            return ["PR body must provide a justification for the no-changelog decision"]
+            return ["Le corps de la PR doit justifier la décision de ne pas mettre à jour le changelog"]
         return []
 
-    return ["PR body must select the configured changelog files or a no-changelog decision"]
+    return ["Le corps de la PR doit sélectionner les changelogs configurés ou justifier l’absence de mise à jour"]
 
 
 def validate_documentation_selection(body: str, changed_files: Iterable[str]) -> list[str]:
@@ -152,7 +178,7 @@ def validate_documentation_selection(body: str, changed_files: Iterable[str]) ->
     lines = [line.strip() for line in checklist.splitlines()]
     docs_selected = "- [x] Documentation updated if needed" in lines
     if not docs_selected:
-        return ["PR changes docs/ paths and must select the documentation update decision"]
+        return ["La PR modifie des chemins docs/ et doit indiquer la décision concernant la documentation"]
     return []
 
 
@@ -178,7 +204,7 @@ def validate_policy(
     errors.extend(validate_documentation_selection(body, changed_files))
 
     if not base_ancestor:
-        errors.append("base commit is not an ancestor of the head commit")
+        errors.append("Le commit de base n’est pas un ancêtre du commit de tête ; la branche doit être rebasée")
 
     return errors
 
@@ -200,6 +226,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--branch", required=True)
     parser.add_argument("--changed-files-file", required=True)
     parser.add_argument("--base-ancestor", required=True, type=parse_bool)
+    parser.add_argument("--comment-file")
     args = parser.parse_args(argv)
 
     errors = validate_policy(
@@ -213,6 +240,8 @@ def main(argv: list[str] | None = None) -> int:
     if errors:
         for error in errors:
             print(error, file=sys.stderr)
+        if args.comment_file:
+            Path(args.comment_file).write_text(format_failure_comment(errors), encoding="utf-8")
         return 1
     return 0
 

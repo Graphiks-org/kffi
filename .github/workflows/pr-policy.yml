@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      issues: write
 
     steps:
       - name: Check out pull request head
@@ -25,11 +26,14 @@ jobs:
           python-version: "3.x"
 
       - name: Validate pull request policy
+        id: validate
+        continue-on-error: true
         env:
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_BRANCH: ${{ github.event.pull_request.head.ref }}
           PR_TITLE: ${{ github.event.pull_request.title }}
+          COMMENT_FILE: ${{ runner.temp }}/pr-policy-failure.md
         run: |
           set -euo pipefail
 
@@ -54,10 +58,58 @@ jobs:
           Path(os.environ["BODY_FILE"]).write_text(body, encoding="utf-8")
           PY
 
+          set +e
           python3 .github/scripts/validate_pr_policy.py \
             --policy .github/contributing-policy.toml \
             --title "$PR_TITLE" \
             --body-file "$body_file" \
             --branch "$PR_BRANCH" \
             --changed-files-file "$changed_files_file" \
-            --base-ancestor "$base_ancestor"
+            --base-ancestor "$base_ancestor" \
+            --comment-file "$COMMENT_FILE"
+          status=$?
+          set -e
+          exit "$status"
+
+      - name: Commenter l’échec de la politique de PR
+        if: steps.validate.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/github-script@v7
+        env:
+          COMMENT_FILE: ${{ runner.temp }}/pr-policy-failure.md
+        with:
+          script: |
+            const fs = require('fs')
+            const marker = '<!-- pr-policy-failure -->'
+            const body = fs.readFileSync(process.env.COMMENT_FILE, 'utf8')
+            const issueNumber = context.payload.pull_request.number
+            const { owner, repo } = context.repo
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number: issueNumber,
+              per_page: 100,
+            })
+            const existing = comments.find((comment) =>
+              comment.user?.login === 'github-actions[bot]' && comment.body?.includes(marker)
+            )
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body,
+              })
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: issueNumber,
+                body,
+              })
+            }
+
+      - name: Faire échouer le check de politique
+        if: steps.validate.outcome == 'failure'
+        run: exit 1
