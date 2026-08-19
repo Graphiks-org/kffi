@@ -15,22 +15,22 @@ WORKFLOW = SCRIPT.parents[1] / "workflows" / "pr-policy.yml"
 
 
 class FailureCommentTest(unittest.TestCase):
-    def test_failure_comment_is_a_french_actionable_markdown_report(self) -> None:
+    def test_failure_comment_is_an_actionable_english_markdown_report(self) -> None:
         formatter = getattr(validate_pr_policy, "format_failure_comment", None)
         self.assertTrue(callable(formatter), "the validator must expose a failure comment formatter")
         if not callable(formatter):
             return
 
         errors = [
-            "Le titre doit respecter le format Conventional Commits.",
-            "La branche doit commencer par `feat/`, `fix/` ou `chore/`.",
+            "The title must follow Conventional Commits format.",
+            "The branch must start with `feat/`, `fix/`, or `chore/`.",
         ]
         comment = formatter(errors)
 
         self.assertTrue(comment.startswith("<!-- pr-policy-failure -->"))
-        self.assertIn("## ❌ Échec de la politique de PR", comment)
-        self.assertIn("Cette PR ne respecte pas encore", comment)
-        self.assertIn("Consultez `CONTRIBUTING.md`", comment)
+        self.assertIn("## ❌ PR policy check failed", comment)
+        self.assertIn("This PR does not yet meet", comment)
+        self.assertIn("See `CONTRIBUTING.md`", comment)
         for error in errors:
             self.assertIn(f"- {error}", comment)
 
@@ -70,12 +70,12 @@ class FailureCommentTest(unittest.TestCase):
             self.assertEqual(result.returncode, 1)
             comment = comment_file.read_text(encoding="utf-8")
             self.assertIn("<!-- pr-policy-failure -->", comment)
-            self.assertIn("## ❌ Échec de la politique de PR", comment)
+            self.assertIn("## ❌ PR policy check failed", comment)
             for error in (
-                "Le titre doit respecter",
-                "La branche",
-                "Le corps de la PR",
-                "Le commit de base",
+                "Title must follow",
+                "Branch",
+                "PR body",
+                "Base commit",
             ):
                 self.assertIn(error, comment)
 

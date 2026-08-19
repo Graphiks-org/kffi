@@ -79,7 +79,7 @@ jobs:
           set -e
           exit "$status"
 
-      - name: Commenter l’échec de la politique de PR
+      - name: Comment PR policy failure
         id: comment
         if: steps.validate.outcome == 'failure'
         continue-on-error: true
@@ -119,10 +119,10 @@ jobs:
               })
             }
 
-      - name: Signaler l’échec de publication du commentaire
+      - name: Report comment publication failure
         if: steps.validate.outcome == 'failure' && steps.comment.outcome == 'failure'
-        run: echo "::error::Le commentaire de diagnostic n’a pas pu être publié sur la PR."
+        run: echo "::error::The diagnostic comment could not be published on the PR."
 
-      - name: Faire échouer le check de politique
+      - name: Fail PR policy check
         if: steps.validate.outcome == 'failure'
         run: exit 1
