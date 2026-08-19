@@ -371,6 +371,7 @@ tasks.named<Test>("jvmTest") {
             // callback_fixture.c requires pthreads; keep every other JVM test in Windows CI.
             excludeTestsMatching("org.graphiks.kffi.CallbackFfiJvmTest")
             excludeTestsMatching("org.graphiks.kffi.engine.JvmDowncallEngineTest")
+            excludeTestsMatching("org.graphiks.kffi.engine.JvmDowncallEngineGenericShapeTest")
             excludeTestsMatching("org.graphiks.kffi.engine.JvmDowncallEngineStructByValueTest")
         }
     }
