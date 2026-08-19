@@ -10,7 +10,7 @@ kotlin {
 
     jvm {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_24)
+            jvmTarget.set(JvmTarget.JVM_25)
         }
     }
 

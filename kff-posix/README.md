@@ -12,5 +12,7 @@ This first integration keeps the upstream direct `java.lang.foreign` API and
 does not depend on the multiplatform `kffi` runtime. The package namespace is
 `org.graphiks.kffi.posix`.
 
+The module uses JDK 25 bytecode and requires a JDK 25 runtime.
+
 The source is distributed under the MIT License. The upstream copyright notice
 is preserved here: `Copyright (c) 2026 Alexandre Mommers`.
