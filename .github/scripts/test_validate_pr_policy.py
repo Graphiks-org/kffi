@@ -81,6 +81,11 @@ class FailureCommentTest(unittest.TestCase):
 
 
 class WorkflowSafetyTest(unittest.TestCase):
+    def test_commenting_workflow_grants_pull_request_write_permission(self) -> None:
+        workflow = WORKFLOW.read_text(encoding="utf-8")
+
+        self.assertIn("pull-requests: write", workflow)
+
     def test_commenting_workflow_executes_validator_from_trusted_base(self) -> None:
         workflow = WORKFLOW.read_text(encoding="utf-8")
 
