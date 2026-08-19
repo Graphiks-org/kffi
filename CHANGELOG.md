@@ -29,6 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - JVM, Native, and Android benchmark modules.
 - Android host and connected-device test coverage in continuous integration.
 - Snapshot publication and generated API documentation.
+- JVM-only `kff-posix` module with POSIX symbol lookup, `pollfd` layout
+  helpers, and a non-blocking wakeup primitive imported from `poc-koreos`.
 
 ### Changed
 - Android callback ABI support now uses dynamically prepared libffi closures,
