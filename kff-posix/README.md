@@ -13,4 +13,4 @@ does not depend on the multiplatform `kffi` runtime. The package namespace is
 `org.graphiks.kffi.posix`.
 
 The source is distributed under the MIT License. The upstream copyright notice
-is preserved by the repository-level license and this provenance record.
+is preserved here: `Copyright (c) 2026 Alexandre Mommers`.
