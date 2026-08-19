@@ -200,6 +200,7 @@ import org.graphiks.kffi.CallbackRuntime
 import org.graphiks.kffi.CallbackRuntimeApi
 import org.graphiks.kffi.CallbackType
 import org.graphiks.kffi.NativeAddress
+import org.graphiks.kffi.engine.UpcallEngine
 import org.graphiks.kffi.engine.JvmUpcallEngine
 
 @OptIn(CallbackRuntimeApi::class)
@@ -258,6 +259,43 @@ fun installStatusCallback() {
     check(registration.isClosed)
 }
 ```
+
+On Android, generated callback code uses the four-argument trampoline API:
+
+```kotlin
+@OptIn(CallbackRuntimeApi::class)
+private object StringStatusTrampolines {
+    val type = CallbackType<StatusCallback>("quickstart-string-status", hasRoutingUserdata = true)
+
+    val stub: NativeAddress by lazy {
+        UpcallEngine.allocateTrampoline(
+            dispatcherClass = StringStatusTrampolines::class.java,
+            dispatchMethod = "dispatch",
+            dispatchJvmSignature = "(JJI)V",
+            dispatchAbiSignature = "v(struct(ptr,size_t),u32,ptr)",
+        )
+    }
+
+    @JvmStatic
+    fun dispatch(routingToken: Long, messageAddress: Long, status: Int) {
+        // messageAddress is valid only while this dispatcher is running.
+        // Copy the WGPUStringView fields immediately if you need to retain them.
+        CallbackRuntime.dispatchSafely(
+            type,
+            routingToken.takeIf { it != 0L }?.let(::NativeAddress),
+        ) { callback ->
+            callback.onStatus(status)
+        }
+    }
+}
+```
+
+`dispatchJvmSignature = "(JJI)V"` describes the JNI dispatcher shape:
+`routingToken` (`J`), `messageAddress` (`J`), and `status` (`I`). The ABI
+signature `dispatchAbiSignature = "v(struct(ptr,size_t),u32,ptr)"` describes
+the C callback shape `void (WGPUStringView, uint32_t, void*)`. The final `ptr`
+is routing userdata; the `WGPUStringView` argument arrives as a temporary
+address that must be copied immediately during dispatch.
 
 Contract points:
 
