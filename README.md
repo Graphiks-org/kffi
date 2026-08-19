@@ -343,10 +343,18 @@ Lifecycle:
   channel if routing fails.
 
 Trampoline lifetime: on the JVM, stubs are allocated in a global arena with
-process lifetime. On Android, JNI trampolines use explicit management
-(`allocateTrampoline` / `freeTrampoline`). In both cases,
-`CallbackRegistration` controls routing; closing it removes the slot from the
-token table, and a token is never reused.
+process lifetime. On Android, JNI trampolines use explicit management through
+the four-argument `allocateTrampoline(dispatcherClass, dispatchMethod,
+dispatchJvmSignature, dispatchAbiSignature)` API, which prepares a dynamic
+libffi closure for the callback shape. The final `ptr` in the ABI signature is
+the routing userdata; pointer and struct addresses are carried to Kotlin as
+`jlong` values, so native code does not create Java wrapper objects. In both
+cases, `CallbackRegistration` controls routing; closing it removes the slot
+from the token table, and a token is never reused. Before Android
+`freeTrampoline`, generated or native code must unregister the callback from
+the C library, stop and join every native callback producer, and only then
+free the closure. `CallbackRegistration.isQuiescent` alone cannot account for
+a native callback that has not entered the Kotlin dispatcher yet.
 
 ## Versioning
 
