@@ -59,6 +59,21 @@ void bench_fire_one(uint32_t value) {
     if (g_callback) g_callback(value, g_callback_userdata);
 }
 
+typedef uint32_t (*bench_return_callback)(uint32_t value, void *userdata);
+
+static bench_return_callback g_return_callback = NULL;
+static void *g_return_userdata = NULL;
+
+void bench_set_return_callback(bench_return_callback callback, void *userdata) {
+    g_return_callback = callback;
+    g_return_userdata = userdata;
+}
+
+uint32_t bench_fire_return(uint32_t value) {
+    return g_return_callback == NULL ? 0u :
+        g_return_callback(value, g_return_userdata);
+}
+
 static void *bench_fire_one_from_thread_impl(void *arg) {
     uint32_t value = (uint32_t)(uintptr_t)arg;
     if (g_callback) g_callback(value, g_callback_userdata);

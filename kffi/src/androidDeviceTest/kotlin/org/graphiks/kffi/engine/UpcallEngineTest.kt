@@ -1,9 +1,9 @@
 package org.graphiks.kffi.engine
 
 import androidx.test.platform.app.InstrumentationRegistry
-import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
 
@@ -40,6 +40,15 @@ class UpcallEngineTest {
         )
         check(trampoline != 0L) { "kffi: allocateTrampoline returned null trampoline" }
         return trampoline
+    }
+
+    private fun verifyValidAllocationStillWorks() {
+        val trampoline = allocateDispatchTrampoline(
+            dispatchMethod = "dispatch",
+            dispatchJvmSignature = "(JI)V",
+            dispatchAbiSignature = "v(u32,ptr)",
+        )
+        UpcallEngine.freeTrampoline(trampoline)
     }
 
     @Test
@@ -120,17 +129,116 @@ class UpcallEngineTest {
             assertEquals(1.25f, captured.f32, 0f)
             assertEquals(-2.5, captured.f64, 0.0)
             assertEquals(0x1234L, captured.pointer)
-            assertTrue(captured.messageAddress != 0L)
+            assertEquals("WebGPU", captured.message)
+            assertEquals(6, captured.messageLength)
+            assertTrue(captured.messageAddressWasNonZero)
             assertEquals(6L, captured.size)
             assertEquals(0x5678L, captured.address)
-            assertArrayEquals("WebGPU".toByteArray(), requireNotNull(UpcallDispatcher.lastAllTypesMessage))
         } finally {
             UpcallDispatcher.lastAllTypes = null
-            UpcallDispatcher.lastAllTypesMessage = null
             registration.close()
             if (trampoline != 0L) {
                 UpcallEngine.freeTrampoline(trampoline)
             }
+        }
+    }
+
+    @Test
+    fun callbackReturnsScalarValueThroughRoutedDispatcher() {
+        val registration = UpcallDispatcher.register()
+        var trampoline = 0L
+        try {
+            trampoline = allocateDispatchTrampoline(
+                dispatchMethod = "dispatchReturn",
+                dispatchJvmSignature = "(JI)I",
+                dispatchAbiSignature = "u32(u32,ptr)",
+            )
+            val setFn = resolve("bench_set_return_callback")
+            val fireFn = resolve("bench_fire_return")
+            NativeEngine.callV2PP(setFn, trampoline, registration.userdata!!.rawValue)
+
+            assertEquals(42L, NativeEngine.callI1I(fireFn, 41))
+        } finally {
+            registration.close()
+            if (trampoline != 0L) {
+                UpcallEngine.freeTrampoline(trampoline)
+            }
+        }
+    }
+
+    @Test
+    fun allocateTrampolineRejectsMalformedAbiSignatureAndReusesSlot() {
+        try {
+            try {
+                UpcallEngine.allocateTrampoline(
+                    dispatcherClass = UpcallDispatcher::class.java,
+                    dispatchMethod = "dispatchReturn",
+                    dispatchJvmSignature = "(JI)I",
+                    dispatchAbiSignature = "u32(u32,ptr",
+                )
+                fail("allocateTrampoline must reject a malformed ABI signature")
+            } catch (_: IllegalArgumentException) {
+                // Expected.
+            }
+        } finally {
+            verifyValidAllocationStillWorks()
+        }
+    }
+
+    @Test
+    fun allocateTrampolineRejectsAbiJvmParameterCountMismatchAndReusesSlot() {
+        try {
+            try {
+                UpcallEngine.allocateTrampoline(
+                    dispatcherClass = UpcallDispatcher::class.java,
+                    dispatchMethod = "dispatchReturnCountMismatch",
+                    dispatchJvmSignature = "(JII)I",
+                    dispatchAbiSignature = "u32(u32,ptr)",
+                )
+                fail("allocateTrampoline must reject an ABI/JVM parameter count mismatch")
+            } catch (_: IllegalArgumentException) {
+                // Expected.
+            }
+        } finally {
+            verifyValidAllocationStillWorks()
+        }
+    }
+
+    @Test
+    fun allocateTrampolineRejectsRoutedDispatcherWithoutLeadingJAndReusesSlot() {
+        try {
+            try {
+                UpcallEngine.allocateTrampoline(
+                    dispatcherClass = UpcallDispatcher::class.java,
+                    dispatchMethod = "dispatchReturnMissingLeadingJ",
+                    dispatchJvmSignature = "(IJ)I",
+                    dispatchAbiSignature = "u32(u32,ptr)",
+                )
+                fail("allocateTrampoline must reject a routed dispatcher without a leading J")
+            } catch (_: IllegalArgumentException) {
+                // Expected.
+            }
+        } finally {
+            verifyValidAllocationStillWorks()
+        }
+    }
+
+    @Test
+    fun allocateTrampolineRejectsStructReturnSignatureAndReusesSlot() {
+        try {
+            try {
+                UpcallEngine.allocateTrampoline(
+                    dispatcherClass = UpcallDispatcher::class.java,
+                    dispatchMethod = "dispatchStructReturn",
+                    dispatchJvmSignature = "(JI)J",
+                    dispatchAbiSignature = "struct(u32)(u32,ptr)",
+                )
+                fail("allocateTrampoline must reject a struct return signature")
+            } catch (_: IllegalArgumentException) {
+                // Expected.
+            }
+        } finally {
+            verifyValidAllocationStillWorks()
         }
     }
 }

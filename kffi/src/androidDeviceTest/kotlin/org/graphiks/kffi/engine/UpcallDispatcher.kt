@@ -37,16 +37,15 @@ object UpcallDispatcher {
         val f32: Float,
         val f64: Double,
         val pointer: Long,
-        val messageAddress: Long,
+        val message: String,
+        val messageLength: Int,
+        val messageAddressWasNonZero: Boolean,
         val size: Long,
         val address: Long,
     )
 
     @Volatile
     var lastAllTypes: AllTypes? = null
-
-    @Volatile
-    var lastAllTypesMessage: ByteArray? = null
 
     fun register(): CallbackRegistration<BenchCallback> =
         CallbackRuntime.register(
@@ -61,6 +60,30 @@ object UpcallDispatcher {
         CallbackRuntime.dispatchSafely(type, NativeAddress(token)) { cb ->
             cb.invoke(value.toUInt())
         }
+    }
+
+    @JvmStatic
+    fun dispatchReturn(token: Long, value: Int): Int {
+        check(token != 0L) { "kffi: routing token must be nonzero" }
+        return value + 1
+    }
+
+    @JvmStatic
+    fun dispatchReturnCountMismatch(token: Long, value: Int, extra: Int): Int {
+        check(token != 0L) { "kffi: routing token must be nonzero" }
+        return value + extra
+    }
+
+    @JvmStatic
+    fun dispatchReturnMissingLeadingJ(value: Int, token: Long): Int {
+        check(token != 0L) { "kffi: routing token must be nonzero" }
+        return value + 1
+    }
+
+    @JvmStatic
+    fun dispatchStructReturn(token: Long, value: Int): Long {
+        check(token != 0L) { "kffi: routing token must be nonzero" }
+        return value.toLong()
     }
 
     @JvmStatic
@@ -87,7 +110,6 @@ object UpcallDispatcher {
         val messageBytes = ByteArray(messageLength)
         MemoryBuffer(messageDataAddress, messageLength.toULong()).readBytes(messageBytes)
 
-        lastAllTypesMessage = messageBytes
         lastAllTypes = AllTypes(
             token = token,
             i8 = i8,
@@ -101,7 +123,9 @@ object UpcallDispatcher {
             f32 = f32,
             f64 = f64,
             pointer = pointer,
-            messageAddress = messageAddress,
+            message = messageBytes.decodeToString(),
+            messageLength = messageLength,
+            messageAddressWasNonZero = messageAddress != 0L,
             size = size,
             address = address,
         )
