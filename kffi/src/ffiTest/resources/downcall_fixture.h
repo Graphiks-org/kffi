@@ -26,6 +26,10 @@ typedef struct bench_cb_info_t {
     void *userdata;
 } bench_cb_info_t;
 
+typedef struct bench_array_box_t {
+    int32_t values[3];
+} bench_array_box_t;
+
 uint64_t bench_empty(void);
 int64_t bench_add4(int32_t a, int32_t b, int32_t c, int32_t d);
 uint64_t bench_add8(uint64_t a, uint64_t b, uint64_t c, uint64_t d,
@@ -55,6 +59,8 @@ bench_future_t bench_buffer_map_async(void *buffer, uint64_t mode, uint64_t offs
 bench_future_t bench_get_lost_future(void *device);
 void bench_consume_future(bench_future_t future);
 uint64_t bench_consumed_future_id(void);
+double bench_mix_i8_double(int8_t value, double factor);
+int32_t bench_sum_array_box(bench_array_box_t box);
 
 #ifdef __cplusplus
 }

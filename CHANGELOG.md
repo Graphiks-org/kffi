@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `NativeAddress`, C-string helpers, and primitive-array marshaling.
 - JVM Foreign Function & Memory downcall engine, including scalar calls and
   structs passed by value.
+- Canonical JVM downcall shapes with cached generic fallback invocation and
+  fixed-array struct layout support, while retaining specialized hot-path
+  wrappers.
 - Android native downcall engine backed by libffi, with typed call wrappers and
   generic signatures for scalars, pointers, floating-point values, nested
   structs, and fixed-size arrays.
