@@ -17,7 +17,8 @@ void kffi_upcall_init(JavaVM *vm);
  * JNINativeMethod table for org/graphiks/kffi/engine/UpcallEngine.
  */
 JNIEXPORT jlong JNICALL Java_org_graphiks_kffi_engine_UpcallEngine_allocateTrampoline(
-    JNIEnv *env, jclass cls, jclass dispatcherClass, jstring dispatchMethod, jstring dispatchSig);
+    JNIEnv *env, jclass cls, jclass dispatcherClass, jstring dispatchMethod,
+    jstring dispatchJvmSignature, jstring dispatchAbiSignature);
 JNIEXPORT void JNICALL Java_org_graphiks_kffi_engine_UpcallEngine_freeTrampoline(
     JNIEnv *env, jclass cls, jlong address);
 

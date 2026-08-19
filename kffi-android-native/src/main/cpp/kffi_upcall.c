@@ -102,15 +102,17 @@ static void kffi_upcall_closure(ffi_cif *cif, void *resp, void **args, void *use
    the caller's classloader (Kotlin hands over UpcallDispatcher::class.java),
    which sidesteps the split-APK FindClass problem for instrumented tests. */
 JNIEXPORT jlong JNICALL Java_org_graphiks_kffi_engine_UpcallEngine_allocateTrampoline(
-    JNIEnv *env, jclass cls, jclass dispatcherClass, jstring dispatchMethod, jstring dispatchSig) {
+    JNIEnv *env, jclass cls, jclass dispatcherClass, jstring dispatchMethod,
+    jstring dispatchJvmSignature, jstring dispatchAbiSignature) {
     (void)cls;
     const char *mname = (*env)->GetStringUTFChars(env, dispatchMethod, NULL);
     if (mname == NULL) return 0L;
-    const char *msig = (*env)->GetStringUTFChars(env, dispatchSig, NULL);
+    const char *msig = (*env)->GetStringUTFChars(env, dispatchJvmSignature, NULL);
     if (msig == NULL) {
         (*env)->ReleaseStringUTFChars(env, dispatchMethod, mname);
         return 0L;
     }
+    (void)dispatchAbiSignature;
 
     upcall_slot *slot = NULL;
     pthread_mutex_lock(&g_slots_mutex);
@@ -128,7 +130,7 @@ JNIEXPORT jlong JNICALL Java_org_graphiks_kffi_engine_UpcallEngine_allocateTramp
     pthread_mutex_unlock(&g_slots_mutex);
     if (slot == NULL) {
         (*env)->ReleaseStringUTFChars(env, dispatchMethod, mname);
-        (*env)->ReleaseStringUTFChars(env, dispatchSig, msig);
+        (*env)->ReleaseStringUTFChars(env, dispatchJvmSignature, msig);
         (*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/IllegalStateException"),
                          "kffi: upcall slot exhausted");
         return 0L;
@@ -179,7 +181,7 @@ JNIEXPORT jlong JNICALL Java_org_graphiks_kffi_engine_UpcallEngine_allocateTramp
 
     result = (jlong)(uintptr_t)fnptr;
     (*env)->ReleaseStringUTFChars(env, dispatchMethod, mname);
-    (*env)->ReleaseStringUTFChars(env, dispatchSig, msig);
+    (*env)->ReleaseStringUTFChars(env, dispatchJvmSignature, msig);
     return result;
 
 fail_slot:
@@ -191,7 +193,7 @@ fail_slot:
     slot->in_use = 0;
     pthread_mutex_unlock(&g_slots_mutex);
     (*env)->ReleaseStringUTFChars(env, dispatchMethod, mname);
-    (*env)->ReleaseStringUTFChars(env, dispatchSig, msig);
+    (*env)->ReleaseStringUTFChars(env, dispatchJvmSignature, msig);
     return result;
 }
 
