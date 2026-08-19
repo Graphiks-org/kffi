@@ -85,6 +85,7 @@ class WorkflowSafetyTest(unittest.TestCase):
         workflow = WORKFLOW.read_text(encoding="utf-8")
 
         self.assertIn("pull_request_target:", workflow)
+        self.assertIn("types: [opened, synchronize, reopened, edited]", workflow)
         self.assertIn("ref: ${{ github.event.pull_request.base.sha }}", workflow)
         fetch_command = (
             "git fetch --no-tags origin \\\n"
