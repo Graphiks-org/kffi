@@ -8,12 +8,15 @@ import io.kotest.matchers.shouldBe
 
 class MemoryBufferUnsafeJvmTest : FreeSpec({
 
-    "unsafe allocator removes bounds checks" {
-        val allocator = MemoryAllocator(unsafe = true)
-        val buffer = allocator.allocateBuffer(8u)
-        // Out of bounds: no exception in unsafe mode (expected UB).
-        buffer.writeLong(1L, 64u)
-        allocator.close()
+    "unsafe buffer skips logical bounds checks within its backing allocation" {
+        memoryScope { scope ->
+            val backing = scope.allocateBuffer(80u)
+            val buffer = MemoryBuffer(backing.handler, 8u, unsafe = true)
+            // The access is outside the logical 8-byte buffer but inside the
+            // 80-byte backing allocation, so it exercises unsafe mode without UB.
+            buffer.writeLong(1L, 64u)
+            buffer.readLong(64u) shouldBe 1L
+        }
     }
 
     "unsafe buffer from raw address has no bounds checks" {
@@ -44,16 +47,15 @@ class MemoryBufferUnsafeJvmTest : FreeSpec({
     }
 
     "unsafe array path round-trips and skips array bounds checks" {
-        val allocator = MemoryAllocator(unsafe = true)
-        try {
-            val buffer = allocator.allocateBuffer(16u)
-            // 3 longs = 24 bytes > 16: no bounds check in unsafe mode (expected UB).
+        memoryScope { scope ->
+            val backing = scope.allocateBuffer(24u)
+            val buffer = MemoryBuffer(backing.handler, 16u, unsafe = true)
+            // 3 longs exceed the logical 16-byte buffer but fit in the backing
+            // allocation, so the unsafe array path is tested without UB.
             buffer.writeLongs(longArrayOf(1L, 2L, 3L))
             buffer.readLong(0u) shouldBe 1L
             buffer.readLong(8u) shouldBe 2L
             buffer.readLong(16u) shouldBe 3L
-        } finally {
-            allocator.close()
         }
     }
 })
