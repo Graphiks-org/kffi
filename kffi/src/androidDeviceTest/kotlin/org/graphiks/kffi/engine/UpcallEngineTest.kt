@@ -42,11 +42,23 @@ class UpcallEngineTest {
         return trampoline
     }
 
+    private fun allocateLegacyDispatchTrampoline(
+        dispatchMethod: String,
+        dispatchSig: String,
+    ): Long {
+        val trampoline = UpcallEngine.allocateTrampoline(
+            dispatcherClass = UpcallDispatcher::class.java,
+            dispatchMethod = dispatchMethod,
+            dispatchSig = dispatchSig,
+        )
+        check(trampoline != 0L) { "kffi: allocateTrampoline returned null trampoline" }
+        return trampoline
+    }
+
     private fun verifyValidAllocationStillWorks() {
-        val trampoline = allocateDispatchTrampoline(
+        val trampoline = allocateLegacyDispatchTrampoline(
             dispatchMethod = "dispatch",
-            dispatchJvmSignature = "(JI)V",
-            dispatchAbiSignature = "v(u32,ptr)",
+            dispatchSig = "(JI)V",
         )
         UpcallEngine.freeTrampoline(trampoline)
     }
@@ -123,7 +135,8 @@ class UpcallEngineTest {
             assertEquals((-16000).toShort(), captured.i16)
             assertEquals(60000, captured.u16.toUShort().toInt())
             assertEquals(-1234567, captured.i32)
-            assertEquals(3456789, captured.u32)
+            assertEquals(0xfedcba98u.toInt(), captured.u32)
+            assertEquals(0xfedcba98u, captured.u32.toUInt())
             assertEquals(-0x102030405060708L, captured.i64)
             assertEquals(java.lang.Long.parseUnsignedLong("fedcba9876543210", 16), captured.u64)
             assertEquals(1.25f, captured.f32, 0f)
@@ -169,16 +182,18 @@ class UpcallEngineTest {
     @Test
     fun allocateTrampolineRejectsMalformedAbiSignatureAndReusesSlot() {
         try {
-            try {
-                UpcallEngine.allocateTrampoline(
-                    dispatcherClass = UpcallDispatcher::class.java,
-                    dispatchMethod = "dispatchReturn",
-                    dispatchJvmSignature = "(JI)I",
-                    dispatchAbiSignature = "u32(u32,ptr",
-                )
-                fail("allocateTrampoline must reject a malformed ABI signature")
-            } catch (_: IllegalArgumentException) {
-                // Expected.
+            repeat(257) {
+                try {
+                    UpcallEngine.allocateTrampoline(
+                        dispatcherClass = UpcallDispatcher::class.java,
+                        dispatchMethod = "dispatchReturn",
+                        dispatchJvmSignature = "(JI)I",
+                        dispatchAbiSignature = "u32(u32,ptr",
+                    )
+                    fail("allocateTrampoline must reject a malformed ABI signature")
+                } catch (_: IllegalArgumentException) {
+                    // Expected.
+                }
             }
         } finally {
             verifyValidAllocationStillWorks()

@@ -114,7 +114,7 @@ void bench_fire_all_types(void) {
     static const char message[] = "WebGPU";
     if (g_all_types_callback != NULL) {
         WGPUStringView view = {message, sizeof(message) - 1};
-        g_all_types_callback(-8, 248, -16000, 60000, -1234567, 3456789,
+        g_all_types_callback(-8, 248, -16000, 60000, -1234567, UINT32_C(0xfedcba98),
                              INT64_C(-0x102030405060708), UINT64_C(0xfedcba9876543210),
                              1.25f, -2.5, (void *)(uintptr_t)0x1234,
                              view, sizeof(message) - 1, (uintptr_t)0x5678,
