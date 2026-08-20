@@ -19,4 +19,12 @@ class WaylandBindingTest {
             xdg_wm_base_error.fromValue(-1L)
         }
     }
+
+    @Test
+    fun exposesGeneratedProtocolOpcodesAndFlags() {
+        assertEquals(2, XDG_SURFACE_GET_POPUP)
+        assertEquals(0, SCREENCOPY_MANAGER_CAPTURE_OUTPUT)
+        assertEquals(7, TEXT_INPUT_COMMIT)
+        assertEquals(1, SCREENCOPY_FRAME_FLAGS_Y_INVERT)
+    }
 }

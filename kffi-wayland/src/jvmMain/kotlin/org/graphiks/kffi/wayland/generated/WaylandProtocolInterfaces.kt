@@ -17,7 +17,15 @@ val xdg_toplevel_interface: MemorySegment by lazy { build_xdg_toplevel() }
 val xdg_popup_interface: MemorySegment by lazy { build_xdg_popup() }
 val zxdg_decoration_manager_v1_interface: MemorySegment by lazy { build_zxdg_decoration_manager_v1() }
 val zxdg_toplevel_decoration_v1_interface: MemorySegment by lazy { build_zxdg_toplevel_decoration_v1() }
+val zwp_text_input_v3_interface: MemorySegment by lazy { build_zwp_text_input_v3() }
+val zwp_text_input_manager_v3_interface: MemorySegment by lazy { build_zwp_text_input_manager_v3() }
+val zwlr_screencopy_manager_v1_interface: MemorySegment by lazy { build_zwlr_screencopy_manager_v1() }
+val zwlr_screencopy_frame_v1_interface: MemorySegment by lazy { build_zwlr_screencopy_frame_v1() }
 
+private val wl_buffer_interface: MemorySegment by lazy {
+    val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
+    lib.find("wl_buffer_interface").orElseThrow()
+}
 private val wl_output_interface: MemorySegment by lazy {
     val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
     lib.find("wl_output_interface").orElseThrow()
@@ -44,7 +52,7 @@ private val IFACE_LAYOUT = MemoryLayout.structLayout(
     ADDRESS.withName("events").withByteAlignment(8))
     .withByteAlignment(8)
 
-private fun build_xdg_wm_base(): MemorySegment = iface("xdg_wm_base", 7, arrayOf(
+private fun build_xdg_wm_base(): MemorySegment = iface("xdg_wm_base", 6, arrayOf(
     msg("destroy", ""),
     msg("create_positioner", "n", xdg_positioner_interface),
     msg("get_xdg_surface", "no", xdg_surface_interface, wl_surface_interface),
@@ -53,7 +61,7 @@ private fun build_xdg_wm_base(): MemorySegment = iface("xdg_wm_base", 7, arrayOf
     msg("ping", "u", MemorySegment.NULL)
 ))
 
-private fun build_xdg_positioner(): MemorySegment = iface("xdg_positioner", 7, arrayOf(
+private fun build_xdg_positioner(): MemorySegment = iface("xdg_positioner", 6, arrayOf(
     msg("destroy", ""),
     msg("set_size", "ii", MemorySegment.NULL, MemorySegment.NULL),
     msg("set_anchor_rect", "iiii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
@@ -67,7 +75,7 @@ private fun build_xdg_positioner(): MemorySegment = iface("xdg_positioner", 7, a
 ), arrayOf(
 ))
 
-private fun build_xdg_surface(): MemorySegment = iface("xdg_surface", 7, arrayOf(
+private fun build_xdg_surface(): MemorySegment = iface("xdg_surface", 6, arrayOf(
     msg("destroy", ""),
     msg("get_toplevel", "n", xdg_toplevel_interface),
     msg("get_popup", "n?oo", xdg_popup_interface, MemorySegment.NULL, xdg_positioner_interface),
@@ -77,7 +85,7 @@ private fun build_xdg_surface(): MemorySegment = iface("xdg_surface", 7, arrayOf
     msg("configure", "u", MemorySegment.NULL)
 ))
 
-private fun build_xdg_toplevel(): MemorySegment = iface("xdg_toplevel", 7, arrayOf(
+private fun build_xdg_toplevel(): MemorySegment = iface("xdg_toplevel", 6, arrayOf(
     msg("destroy", ""),
     msg("set_parent", "?o", MemorySegment.NULL),
     msg("set_title", "s", MemorySegment.NULL),
@@ -99,7 +107,7 @@ private fun build_xdg_toplevel(): MemorySegment = iface("xdg_toplevel", 7, array
     msg("wm_capabilities", "a", MemorySegment.NULL)
 ))
 
-private fun build_xdg_popup(): MemorySegment = iface("xdg_popup", 7, arrayOf(
+private fun build_xdg_popup(): MemorySegment = iface("xdg_popup", 6, arrayOf(
     msg("destroy", ""),
     msg("grab", "ou", wl_seat_interface, MemorySegment.NULL),
     msg("reposition", "ou", xdg_positioner_interface, MemorySegment.NULL)
@@ -121,6 +129,51 @@ private fun build_zxdg_toplevel_decoration_v1(): MemorySegment = iface("zxdg_top
     msg("unset_mode", "")
 ), arrayOf(
     msg("configure", "u", MemorySegment.NULL)
+))
+
+private fun build_zwp_text_input_v3(): MemorySegment = iface("zwp_text_input_v3", 1, arrayOf(
+    msg("destroy", ""),
+    msg("enable", ""),
+    msg("disable", ""),
+    msg("set_surrounding_text", "sii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("set_text_change_cause", "u", MemorySegment.NULL),
+    msg("set_content_type", "uu", MemorySegment.NULL, MemorySegment.NULL),
+    msg("set_cursor_rectangle", "iiii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("commit", "")
+), arrayOf(
+    msg("enter", "o", wl_surface_interface),
+    msg("leave", "o", wl_surface_interface),
+    msg("preedit_string", "?sii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("commit_string", "?s", MemorySegment.NULL),
+    msg("delete_surrounding_text", "uu", MemorySegment.NULL, MemorySegment.NULL),
+    msg("done", "u", MemorySegment.NULL)
+))
+
+private fun build_zwp_text_input_manager_v3(): MemorySegment = iface("zwp_text_input_manager_v3", 1, arrayOf(
+    msg("destroy", ""),
+    msg("get_text_input", "no", zwp_text_input_v3_interface, wl_seat_interface)
+), arrayOf(
+))
+
+private fun build_zwlr_screencopy_manager_v1(): MemorySegment = iface("zwlr_screencopy_manager_v1", 3, arrayOf(
+    msg("capture_output", "nio", zwlr_screencopy_frame_v1_interface, MemorySegment.NULL, wl_output_interface),
+    msg("capture_output_region", "nioiiii", zwlr_screencopy_frame_v1_interface, MemorySegment.NULL, wl_output_interface, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("destroy", "")
+), arrayOf(
+))
+
+private fun build_zwlr_screencopy_frame_v1(): MemorySegment = iface("zwlr_screencopy_frame_v1", 3, arrayOf(
+    msg("copy", "o", wl_buffer_interface),
+    msg("destroy", ""),
+    msg("copy_with_damage", "o", wl_buffer_interface)
+), arrayOf(
+    msg("buffer", "uuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("flags", "u", MemorySegment.NULL),
+    msg("ready", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("failed", ""),
+    msg("damage", "uuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("linux_dmabuf", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("buffer_done", "")
 ))
 
 private fun msg(name: String, signature: String, vararg types: MemorySegment): MemorySegment {

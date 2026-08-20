@@ -6,13 +6,17 @@ JDK_HOME="${JDK_HOME:-/opt/java/openjdk}"
 LLVM_HOME="${LLVM_HOME:-/usr/lib/llvm-18}"
 REPO=/work
 KEXTRACT_DIR="${KEXTRACT_DIR:-$REPO/third_party/kextract}"
-PROTO=/usr/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml
-PROTO_DECO=/usr/share/wayland-protocols/unstable/xdg-decoration/xdg-decoration-unstable-v1.xml
-GEN="$REPO/kffi-wayland/build/wayland-xdg"
+PROTOCOLS="$REPO/docker/kffi-wayland-codegen/protocols"
+PROTO="$PROTOCOLS/xdg-shell.xml"
+PROTO_DECO="$PROTOCOLS/xdg-decoration.xml"
+PROTO_TEXT="$PROTOCOLS/text-input-unstable-v3.xml"
+PROTO_SCREENCOPY="$PROTOCOLS/wlr-screencopy-unstable-v1.xml"
+GEN="$REPO/kffi-wayland/build/wayland-protocols"
 OUT_KT="$REPO/kffi-wayland/src/jvmMain/kotlin"
 STAGING_KT="$REPO/kffi-wayland/build/wayland-generated"
 GENERATED_KT="$OUT_KT/org/graphiks/kffi/wayland/generated"
-INTERFACE_OUT="$STAGING_KT/org/graphiks/kffi/wayland/generated/XdgShellProtocolInterfaces.kt"
+CONSTANTS_OUT="$STAGING_KT/org/graphiks/kffi/wayland/WaylandProtocolConstants.kt"
+INTERFACE_OUT="$STAGING_KT/org/graphiks/kffi/wayland/generated/WaylandProtocolInterfaces.kt"
 
 echo "[gen] llvm=$LLVM_HOME jdk=$JDK_HOME"
 
@@ -21,6 +25,12 @@ if [[ ! -x "$KEXTRACT_DIR/gradlew" ]]; then
     echo "[gen] initialize it with: git submodule update --init --recursive" >&2
     exit 1
 fi
+for protocol in "$PROTO" "$PROTO_DECO" "$PROTO_TEXT" "$PROTO_SCREENCOPY"; do
+    if [[ ! -f "$protocol" ]]; then
+        echo "[gen] protocol XML is missing: $protocol" >&2
+        exit 1
+    fi
+done
 
 rm -rf "$STAGING_KT"
 mkdir -p "$GEN" "$STAGING_KT"
@@ -40,6 +50,8 @@ KEXTRACT="$KEXTRACT_DIR/build/kextract/bin/kextract"
 echo "[gen] generating Wayland client headers"
 wayland-scanner client-header "$PROTO" "$GEN/xdg-shell-client-protocol.h"
 wayland-scanner client-header "$PROTO_DECO" "$GEN/xdg-decoration-client-protocol.h"
+wayland-scanner client-header "$PROTO_TEXT" "$GEN/text-input-client-protocol.h"
+wayland-scanner client-header "$PROTO_SCREENCOPY" "$GEN/wlr-screencopy-client-protocol.h"
 
 echo "[gen] generating Kotlin FFM bindings with kextract"
 # -ffreestanding prevents bundled libclang from following glibc's
@@ -53,16 +65,21 @@ echo "[gen] generating Kotlin FFM bindings with kextract"
     -A -ffreestanding \
     -I "$GEN" \
     "$GEN/xdg-shell-client-protocol.h" \
-    "$GEN/xdg-decoration-client-protocol.h"
+    "$GEN/xdg-decoration-client-protocol.h" \
+    "$GEN/text-input-client-protocol.h" \
+    "$GEN/wlr-screencopy-client-protocol.h"
 
 echo "[gen] generating wl_interface descriptors from protocol XML"
 java -cp /build ProtocolInterfaceGenerator \
-    "$PROTO" "$PROTO_DECO" \
-    "$INTERFACE_OUT"
+    "$PROTO" "$PROTO_DECO" "$PROTO_TEXT" "$PROTO_SCREENCOPY" \
+    "$INTERFACE_OUT" "$CONSTANTS_OUT"
 
 rm -rf "$GENERATED_KT"
+rm -f "$OUT_KT/org/graphiks/kffi/wayland/WaylandProtocolConstants.kt"
 mkdir -p "$(dirname "$GENERATED_KT")"
 mv "$STAGING_KT/org/graphiks/kffi/wayland/generated" "$GENERATED_KT"
+mv "$CONSTANTS_OUT" "$OUT_KT/org/graphiks/kffi/wayland/WaylandProtocolConstants.kt"
 
 echo "[gen] generated sources:"
 find "$GENERATED_KT" -name '*.kt' -print
+echo "$OUT_KT/org/graphiks/kffi/wayland/WaylandProtocolConstants.kt"
