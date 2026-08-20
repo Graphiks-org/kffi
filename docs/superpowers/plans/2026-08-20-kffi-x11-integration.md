@@ -28,8 +28,8 @@
 - Test: `kffi-x11/src/jvmTest/kotlin/org/graphiks/kffi/x11/X11IntegrationTest.kt`
 
 **Interfaces:**
-- Consumes: generated `XOpenDisplay`, `XDefaultScreen`, `XDefaultRootWindow`, `XCreateSimpleWindow`, `XSelectInput`, `XMapWindow`, `XFlush`, `XSync`, `XPending`, `XNextEvent`, `XGetImage`, `XDestroyImage`, `XDestroyWindow`, `XCloseDisplay`, `KffiXEventStorage`, `Expose`, `MapNotify`, `ExposureMask`, and `StructureNotifyMask`.
-- Produces: one integration test named `createsMapsProcessesAndCapturesWindow` that requires `KFFI_X11_INTEGRATION=1`, waits for both `MapNotify` and `Expose`, and writes `window.png` plus diagnostic logs below the configured artifact directory.
+- Consumes: generated `XOpenDisplay`, `XDefaultScreen`, `XDefaultRootWindow`, `XCreateSimpleWindow`, `XSelectInput`, `XMapWindow`, `XResizeWindow`, `XFlush`, `XSync`, `XPending`, `XNextEvent`, `XGetImage`, `XDestroyImage`, `XDestroyWindow`, `XCloseDisplay`, `KffiXEventStorage`, `Expose`, `ConfigureNotify`, `ExposureMask`, and `StructureNotifyMask`.
+- Produces: one integration test named `createsMapsProcessesAndCapturesWindow` that requires `KFFI_X11_INTEGRATION=1`, waits for generated `Expose` and `ConfigureNotify` events, and writes `window.png` plus diagnostic logs below the configured artifact directory.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -40,7 +40,7 @@
   3. Allocate `KffiXEventStorage` in an `Arena`, create a `96x64` child window with `XCreateSimpleWindow`, select `ExposureMask() or StructureNotifyMask()`, map it, flush it, and call `XSync`.
   4. Poll with a ten-second deadline using `XPending` and `XNextEvent`; read `KffiXEventStorage.type(event)` and assert that `Expose()` and `ConfigureNotify()` are observed after mapping and resizing the window.
   5. Call `XGetImage(display, window, 0, 0, 96, 64, -1L, 2)` and assert a non-null image, then call `XDestroyImage(image)`.
-  6. Capture the window with `xwd -id <window> -silent` piped to `convert xwd:- png:<artifact>/window.png`; assert the command exit statuses and decode the PNG with `ImageIO`.
+  6. Capture the window with `xwd -id <window> -nobdrs -silent` piped to `convert xwd:- png:<artifact>/window.png`; assert the command exit statuses and decode the PNG with `ImageIO`.
   7. Assert the PNG dimensions are `96x64` and retain `client.log` and `capture.log` under the artifact directory.
   8. Use a `finally` block to destroy the image if still owned, destroy the window, and close the display; attach cleanup failures to the primary failure.
 
