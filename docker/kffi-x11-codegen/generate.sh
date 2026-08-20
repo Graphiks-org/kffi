@@ -51,9 +51,22 @@ functions=(
     XChangeProperty XDeleteProperty XGetWindowProperty XFree XGetGeometry
     XTranslateCoordinates XUnmapWindow XResourceManagerString XCreateFontCursor
     XDefineCursor XUndefineCursor XFreeCursor XCreateBitmapFromData XCreatePixmapCursor
-    XFreePixmap XGrabPointer XUngrabPointer XQueryPointer XWarpPointer XGetWMHints
+    XCreatePixmap XFreePixmap XCreatePixmapFromBitmapData XCopyArea XCopyPlane
+    XClearArea XClearWindow XSetWindowBackground XSetWindowBackgroundPixmap
+    XSetWindowBorder XSetWindowBorderPixmap XGrabPointer XUngrabPointer XQueryPointer XWarpPointer XGetWMHints
     XAllocWMHints XSetWMHints XChangeWindowAttributes XDestroyIC XFilterEvent
     XConvertSelection XDefaultScreen XDefaultRootWindow XDefaultVisual XDefaultDepth
+    XCreateColormap XFreeColormap
+    XCreateGC XCopyGC XChangeGC XGetGCValues XFlushGC XFreeGC XGContextFromGC
+    XSetArcMode XSetBackground XSetClipMask XSetClipOrigin XSetClipRectangles
+    XSetDashes XSetFillRule XSetFillStyle XSetForeground XSetFunction
+    XSetGraphicsExposures XSetLineAttributes XSetPlaneMask XSetState
+    XSetStipple XSetSubwindowMode XSetTSOrigin XSetTile XSetFont
+    XParseColor XLookupColor XAllocColor XAllocNamedColor XQueryColor XQueryColors
+    XStoreColor XStoreColors XStoreNamedColor XAllocColorCells XAllocColorPlanes XFreeColors
+    XDrawPoint XDrawPoints XDrawLine XDrawLines XDrawSegments
+    XDrawRectangle XDrawRectangles XFillRectangle XFillRectangles
+    XDrawArc XDrawArcs XFillArc XFillArcs XFillPolygon
     XGetImage XDestroyImage XQueryTree XGetWindowAttributes XSync XRootWindow
     XShapeCombineRectangles XShmQueryExtension XShmCreateImage XShmAttach XShmDetach
     XShmGetImage XCompositeNameWindowPixmap XkbSetDetectableAutoRepeat XKeysymToKeycode
@@ -73,7 +86,7 @@ typedefs=(
     Display XID Atom Window Cursor Pixmap Drawable Time Bool Status XRectangle XPoint
 )
 structs=(
-    XRectangle XPoint XColor
+    XRectangle XPoint XSegment XArc XColor
 )
 
 args=(

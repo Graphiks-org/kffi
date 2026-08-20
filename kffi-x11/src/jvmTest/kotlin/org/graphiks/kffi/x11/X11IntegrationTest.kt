@@ -7,12 +7,20 @@ import org.graphiks.kffi.x11.generated.KffiXEventStorage
 import org.graphiks.kffi.x11.generated.StructureNotifyMask
 import org.graphiks.kffi.x11.generated.XCloseDisplay
 import org.graphiks.kffi.x11.generated.XConnectionNumber
+import org.graphiks.kffi.x11.generated.XAllocNamedColor
+import org.graphiks.kffi.x11.generated.XColor
+import org.graphiks.kffi.x11.generated.XCreateColormap
+import org.graphiks.kffi.x11.generated.XCreateGC
 import org.graphiks.kffi.x11.generated.XCreateSimpleWindow
 import org.graphiks.kffi.x11.generated.XDefaultRootWindow
 import org.graphiks.kffi.x11.generated.XDefaultScreen
+import org.graphiks.kffi.x11.generated.XDefaultVisual
 import org.graphiks.kffi.x11.generated.XDestroyImage
 import org.graphiks.kffi.x11.generated.XDestroyWindow
+import org.graphiks.kffi.x11.generated.XFillRectangle
 import org.graphiks.kffi.x11.generated.XFlush
+import org.graphiks.kffi.x11.generated.XFreeColormap
+import org.graphiks.kffi.x11.generated.XFreeGC
 import org.graphiks.kffi.x11.generated.XGetImage
 import org.graphiks.kffi.x11.generated.XMapWindow
 import org.graphiks.kffi.x11.generated.XNextEvent
@@ -20,8 +28,10 @@ import org.graphiks.kffi.x11.generated.XOpenDisplay
 import org.graphiks.kffi.x11.generated.XPending
 import org.graphiks.kffi.x11.generated.XResizeWindow
 import org.graphiks.kffi.x11.generated.XSelectInput
+import org.graphiks.kffi.x11.generated.XSetForeground
 import org.graphiks.kffi.x11.generated.XSync
 import org.junit.jupiter.api.Assumptions.assumeTrue
+import java.awt.image.BufferedImage
 import java.io.File
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
@@ -40,6 +50,22 @@ private const val WINDOW_HEIGHT = 64
 private const val EVENT_TIMEOUT_MILLIS = 10_000L
 private const val CAPTURE_TIMEOUT_SECONDS = 15L
 private const val Z_PIXMAP = 2
+
+private data class ColoredRectangle(
+    val name: String,
+    val x: Int,
+    val y: Int,
+    val width: Int,
+    val height: Int,
+    val expectedRgb: Int,
+)
+
+private val COLORED_RECTANGLES = listOf(
+    ColoredRectangle("red", 0, 0, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 0xFF0000),
+    ColoredRectangle("green", WINDOW_WIDTH / 2, 0, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 0x00FF00),
+    ColoredRectangle("blue", 0, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 0x0000FF),
+    ColoredRectangle("yellow", WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 0xFFFF00),
+)
 
 private data class X11IntegrationEnvironment(
     val displayName: String,
@@ -88,6 +114,8 @@ class X11IntegrationTest {
             val displayName = arena.allocateFrom(environment.displayName)
             var display = MemorySegment.NULL
             var window = 0L
+            var colormap = 0L
+            var gc = MemorySegment.NULL
             var image: MemorySegment? = null
             var primaryFailure: Throwable? = null
 
@@ -144,6 +172,39 @@ class X11IntegrationTest {
                     "Expected ConfigureNotify after resizing the child window",
                 )
 
+                val visual = XDefaultVisual(display, defaultScreen)
+                assertNativePointer(visual, "XDefaultVisual")
+                colormap = XCreateColormap(display, rootWindow, visual, 0)
+                assertTrue(colormap != 0L, "XCreateColormap should return a non-zero colormap id")
+                gc = XCreateGC(display, window, 0L, MemorySegment.NULL)
+                assertNativePointer(gc, "XCreateGC")
+
+                val colorStorage = XColor()
+                COLORED_RECTANGLES.forEach { rectangle ->
+                    val colorName = arena.allocateFrom(rectangle.name)
+                    val screenColor = XColor.allocate(arena)
+                    val exactColor = XColor.allocate(arena)
+                    assertEquals(
+                        1,
+                        XAllocNamedColor(display, colormap, colorName, screenColor, exactColor),
+                        "XAllocNamedColor should resolve ${rectangle.name}",
+                    )
+                    val pixel = colorStorage.pixel(screenColor)
+                    assertEquals(
+                        1,
+                        XSetForeground(display, gc, pixel),
+                        "XSetForeground should accept ${rectangle.name}",
+                    )
+                    assertEquals(
+                        1,
+                        XFillRectangle(display, window, gc, rectangle.x, rectangle.y, rectangle.width, rectangle.height),
+                        "XFillRectangle should draw ${rectangle.name}",
+                    )
+                }
+                assertEquals(1, XFlush(display), "XFlush after drawing should succeed")
+                XSync(display, 0)
+                appendLog(clientLog, "drew four colored rectangles\n")
+
                 image = XGetImage(display, window, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, -1L, Z_PIXMAP)
                 assertNativePointer(image, "XGetImage")
                 appendLog(clientLog, "XGetImage succeeded\n")
@@ -159,6 +220,15 @@ class X11IntegrationTest {
                     ?: fail("ImageIO could not decode the captured PNG at $windowPng")
                 assertEquals(WINDOW_WIDTH, bufferedImage.width, "captured PNG width mismatch")
                 assertEquals(WINDOW_HEIGHT, bufferedImage.height, "captured PNG height mismatch")
+                COLORED_RECTANGLES.forEach { rectangle ->
+                    assertPixelColor(
+                        bufferedImage,
+                        rectangle.x + rectangle.width / 2,
+                        rectangle.y + rectangle.height / 2,
+                        rectangle.expectedRgb,
+                        rectangle.name,
+                    )
+                }
                 assertTrue(Files.exists(clientLog), "client.log should be retained under ${environment.artifactDirectory}")
                 assertTrue(Files.exists(captureLog), "capture.log should be retained under ${environment.artifactDirectory}")
             } catch (throwable: Throwable) {
@@ -178,6 +248,16 @@ class X11IntegrationTest {
                 image?.let { ownedImage ->
                     cleanup("XImage") {
                         assertEquals(1, XDestroyImage(ownedImage), "XDestroyImage during cleanup should succeed")
+                    }
+                }
+                if (gc != MemorySegment.NULL) {
+                    cleanup("X11 graphics context") {
+                        assertEquals(1, XFreeGC(display, gc), "XFreeGC should succeed")
+                    }
+                }
+                if (colormap != 0L) {
+                    cleanup("X11 colormap") {
+                        assertEquals(1, XFreeColormap(display, colormap), "XFreeColormap should succeed")
                     }
                 }
                 if (window != 0L) {
@@ -316,6 +396,11 @@ private fun assertNativePointer(segment: MemorySegment?, label: String) {
     if (segment == null || segment == MemorySegment.NULL || segment.address() == 0L) {
         fail("$label returned a null native pointer")
     }
+}
+
+private fun assertPixelColor(image: BufferedImage, x: Int, y: Int, expectedRgb: Int, label: String) {
+    val actualRgb = image.getRGB(x, y) and 0x00FFFFFF
+    assertEquals(expectedRgb, actualRgb, "$label pixel mismatch at ($x, $y)")
 }
 
 private fun appendLog(path: Path, line: String) {

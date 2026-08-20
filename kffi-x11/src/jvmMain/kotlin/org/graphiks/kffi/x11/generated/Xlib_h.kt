@@ -1199,6 +1199,75 @@ class XColor {
 } // End class
 
 /**
+ * {@snippet lang=c : STRUCT XSegment
+ */
+class XSegment {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withName("x1"),
+            ValueLayout.JAVA_SHORT.withName("y1"),
+            ValueLayout.JAVA_SHORT.withName("x2"),
+            ValueLayout.JAVA_SHORT.withName("y2")
+        ).withName("XSegment")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val x1_VH: VarHandle = layout.varHandle(groupElement("x1"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun x1(segment: MemorySegment): Short =
+        x1_VH.get(segment, 0L) as Short
+
+    fun x1(segment: MemorySegment, value: Short) =
+        x1_VH.set(segment, 0L, value)
+
+    val y1_VH: VarHandle = layout.varHandle(groupElement("y1"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun y1(segment: MemorySegment): Short =
+        y1_VH.get(segment, 0L) as Short
+
+    fun y1(segment: MemorySegment, value: Short) =
+        y1_VH.set(segment, 0L, value)
+
+    val x2_VH: VarHandle = layout.varHandle(groupElement("x2"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun x2(segment: MemorySegment): Short =
+        x2_VH.get(segment, 0L) as Short
+
+    fun x2(segment: MemorySegment, value: Short) =
+        x2_VH.set(segment, 0L, value)
+
+    val y2_VH: VarHandle = layout.varHandle(groupElement("y2"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun y2(segment: MemorySegment): Short =
+        y2_VH.get(segment, 0L) as Short
+
+    fun y2(segment: MemorySegment, value: Short) =
+        y2_VH.set(segment, 0L, value)
+} // End class
+
+/**
  * {@snippet lang=c : STRUCT XPoint
  */
 class XPoint {
@@ -1314,6 +1383,95 @@ class XRectangle {
 
     fun height(segment: MemorySegment, value: Short) =
         height_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT XArc
+ */
+class XArc {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withName("x"),
+            ValueLayout.JAVA_SHORT.withName("y"),
+            ValueLayout.JAVA_SHORT.withName("width"),
+            ValueLayout.JAVA_SHORT.withName("height"),
+            ValueLayout.JAVA_SHORT.withName("angle1"),
+            ValueLayout.JAVA_SHORT.withName("angle2")
+        ).withName("XArc")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val x_VH: VarHandle = layout.varHandle(groupElement("x"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun x(segment: MemorySegment): Short =
+        x_VH.get(segment, 0L) as Short
+
+    fun x(segment: MemorySegment, value: Short) =
+        x_VH.set(segment, 0L, value)
+
+    val y_VH: VarHandle = layout.varHandle(groupElement("y"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun y(segment: MemorySegment): Short =
+        y_VH.get(segment, 0L) as Short
+
+    fun y(segment: MemorySegment, value: Short) =
+        y_VH.set(segment, 0L, value)
+
+    val width_VH: VarHandle = layout.varHandle(groupElement("width"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun width(segment: MemorySegment): Short =
+        width_VH.get(segment, 0L) as Short
+
+    fun width(segment: MemorySegment, value: Short) =
+        width_VH.set(segment, 0L, value)
+
+    val height_VH: VarHandle = layout.varHandle(groupElement("height"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun height(segment: MemorySegment): Short =
+        height_VH.get(segment, 0L) as Short
+
+    fun height(segment: MemorySegment, value: Short) =
+        height_VH.set(segment, 0L, value)
+
+    val angle1_VH: VarHandle = layout.varHandle(groupElement("angle1"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun angle1(segment: MemorySegment): Short =
+        angle1_VH.get(segment, 0L) as Short
+
+    fun angle1(segment: MemorySegment, value: Short) =
+        angle1_VH.set(segment, 0L, value)
+
+    val angle2_VH: VarHandle = layout.varHandle(groupElement("angle2"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun angle2(segment: MemorySegment): Short =
+        angle2_VH.get(segment, 0L) as Short
+
+    fun angle2(segment: MemorySegment, value: Short) =
+        angle2_VH.set(segment, 0L, value)
 } // End class
 
 /**
@@ -1467,6 +1625,25 @@ fun XInternAtom(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Long {
 }
 
 /**
+ * {@snippet lang=c : XCreateColormap UNSIGNED = Long((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(typedef Visual = Declared(Visual))*,Int)
+ */
+private val XCreateColormap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XCreateColormap_ADDR: MemorySegment = LOOKUP.find("XCreateColormap").orElseThrow()
+private val XCreateColormap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XCreateColormap_ADDR, XCreateColormap_DESC)
+
+fun XCreateColormap(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int): Long {
+    try {
+        return XCreateColormap_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XCreatePixmapCursor UNSIGNED = Long((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Long,(typedef XColor = Declared(XColor))*,(typedef XColor = Declared(XColor))*,UNSIGNED = Int,UNSIGNED = Int)
  */
 private val XCreatePixmapCursor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
@@ -1505,6 +1682,82 @@ fun XCreateFontCursor(arg0: MemorySegment, arg1: Int): Long {
 }
 
 /**
+ * {@snippet lang=c : XCreateGC (Declared(_XGC))*((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Long,(typedef XGCValues = Declared(XGCValues))*)
+ */
+private val XCreateGC_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val XCreateGC_ADDR: MemorySegment = LOOKUP.find("XCreateGC").orElseThrow()
+private val XCreateGC_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XCreateGC_ADDR, XCreateGC_DESC)
+
+fun XCreateGC(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: MemorySegment): MemorySegment {
+    try {
+        return XCreateGC_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XGContextFromGC UNSIGNED = Long((Declared(_XGC))*)
+ */
+private val XGContextFromGC_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val XGContextFromGC_ADDR: MemorySegment = LOOKUP.find("XGContextFromGC").orElseThrow()
+private val XGContextFromGC_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XGContextFromGC_ADDR, XGContextFromGC_DESC)
+
+fun XGContextFromGC(arg0: MemorySegment): Long {
+    try {
+        return XGContextFromGC_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XFlushGC Void((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*)
+ */
+private val XFlushGC_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XFlushGC_ADDR: MemorySegment = LOOKUP.find("XFlushGC").orElseThrow()
+private val XFlushGC_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XFlushGC_ADDR, XFlushGC_DESC)
+
+fun XFlushGC(arg0: MemorySegment, arg1: MemorySegment): Unit {
+    try {
+        XFlushGC_HANDLE.invokeExact(arg0, arg1)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XCreatePixmap UNSIGNED = Long((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Int,UNSIGNED = Int,UNSIGNED = Int)
+ */
+private val XCreatePixmap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XCreatePixmap_ADDR: MemorySegment = LOOKUP.find("XCreatePixmap").orElseThrow()
+private val XCreatePixmap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XCreatePixmap_ADDR, XCreatePixmap_DESC)
+
+fun XCreatePixmap(arg0: MemorySegment, arg1: Long, arg2: Int, arg3: Int, arg4: Int): Long {
+    try {
+        return XCreatePixmap_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XCreateBitmapFromData UNSIGNED = Long((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Char)*,UNSIGNED = Int,UNSIGNED = Int)
  */
 private val XCreateBitmapFromData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
@@ -1514,6 +1767,25 @@ private val XCreateBitmapFromData_HANDLE: MethodHandle = Linker.nativeLinker().d
 fun XCreateBitmapFromData(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int, arg4: Int): Long {
     try {
         return XCreateBitmapFromData_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XCreatePixmapFromBitmapData UNSIGNED = Long((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Char)*,UNSIGNED = Int,UNSIGNED = Int,UNSIGNED = Long,UNSIGNED = Long,UNSIGNED = Int)
+ */
+private val XCreatePixmapFromBitmapData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
+private val XCreatePixmapFromBitmapData_ADDR: MemorySegment = LOOKUP.find("XCreatePixmapFromBitmapData").orElseThrow()
+private val XCreatePixmapFromBitmapData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XCreatePixmapFromBitmapData_ADDR, XCreatePixmapFromBitmapData_DESC)
+
+fun XCreatePixmapFromBitmapData(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int, arg4: Int, arg5: Long, arg6: Long, arg7: Int): Long {
+    try {
+        return XCreatePixmapFromBitmapData_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7) as Long
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -1714,6 +1986,101 @@ fun XFreeStringList(arg0: MemorySegment): Unit {
 }
 
 /**
+ * {@snippet lang=c : XAllocColor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(typedef XColor = Declared(XColor))*)
+ */
+private val XAllocColor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val XAllocColor_ADDR: MemorySegment = LOOKUP.find("XAllocColor").orElseThrow()
+private val XAllocColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XAllocColor_ADDR, XAllocColor_DESC)
+
+fun XAllocColor(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Int {
+    try {
+        return XAllocColor_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XAllocColorCells Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,Int,(UNSIGNED = Long)*,UNSIGNED = Int,(UNSIGNED = Long)*,UNSIGNED = Int)
+ */
+private val XAllocColorCells_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XAllocColorCells_ADDR: MemorySegment = LOOKUP.find("XAllocColorCells").orElseThrow()
+private val XAllocColorCells_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XAllocColorCells_ADDR, XAllocColorCells_DESC)
+
+fun XAllocColorCells(arg0: MemorySegment, arg1: Long, arg2: Int, arg3: MemorySegment, arg4: Int, arg5: MemorySegment, arg6: Int): Int {
+    try {
+        return XAllocColorCells_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XAllocColorPlanes Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,Int,(UNSIGNED = Long)*,Int,Int,Int,Int,(UNSIGNED = Long)*,(UNSIGNED = Long)*,(UNSIGNED = Long)*)
+ */
+private val XAllocColorPlanes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XAllocColorPlanes_ADDR: MemorySegment = LOOKUP.find("XAllocColorPlanes").orElseThrow()
+private val XAllocColorPlanes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XAllocColorPlanes_ADDR, XAllocColorPlanes_DESC)
+
+fun XAllocColorPlanes(arg0: MemorySegment, arg1: Long, arg2: Int, arg3: MemorySegment, arg4: Int, arg5: Int, arg6: Int, arg7: Int, arg8: MemorySegment, arg9: MemorySegment, arg10: MemorySegment): Int {
+    try {
+        return XAllocColorPlanes_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XAllocNamedColor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Char)*,(typedef XColor = Declared(XColor))*,(typedef XColor = Declared(XColor))*)
+ */
+private val XAllocNamedColor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XAllocNamedColor_ADDR: MemorySegment = LOOKUP.find("XAllocNamedColor").orElseThrow()
+private val XAllocNamedColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XAllocNamedColor_ADDR, XAllocNamedColor_DESC)
+
+fun XAllocNamedColor(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): Int {
+    try {
+        return XAllocNamedColor_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XChangeGC Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long,(typedef XGCValues = Declared(XGCValues))*)
+ */
+private val XChangeGC_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val XChangeGC_ADDR: MemorySegment = LOOKUP.find("XChangeGC").orElseThrow()
+private val XChangeGC_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XChangeGC_ADDR, XChangeGC_DESC)
+
+fun XChangeGC(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): Int {
+    try {
+        return XChangeGC_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XChangeProperty Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Long,UNSIGNED = Long,Int,Int,(UNSIGNED = Char)*,Int)
  */
 private val XChangeProperty_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
@@ -1742,6 +2109,44 @@ private val XChangeWindowAttributes_HANDLE: MethodHandle = Linker.nativeLinker()
 fun XChangeWindowAttributes(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: MemorySegment): Int {
     try {
         return XChangeWindowAttributes_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XClearArea Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,Int,Int,UNSIGNED = Int,UNSIGNED = Int,Int)
+ */
+private val XClearArea_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XClearArea_ADDR: MemorySegment = LOOKUP.find("XClearArea").orElseThrow()
+private val XClearArea_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XClearArea_ADDR, XClearArea_DESC)
+
+fun XClearArea(arg0: MemorySegment, arg1: Long, arg2: Int, arg3: Int, arg4: Int, arg5: Int, arg6: Int): Int {
+    try {
+        return XClearArea_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XClearWindow Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long)
+ */
+private val XClearWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XClearWindow_ADDR: MemorySegment = LOOKUP.find("XClearWindow").orElseThrow()
+private val XClearWindow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XClearWindow_ADDR, XClearWindow_DESC)
+
+fun XClearWindow(arg0: MemorySegment, arg1: Long): Int {
+    try {
+        return XClearWindow_HANDLE.invokeExact(arg0, arg1) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -1799,6 +2204,63 @@ private val XConvertSelection_HANDLE: MethodHandle = Linker.nativeLinker().downc
 fun XConvertSelection(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: Long): Int {
     try {
         return XConvertSelection_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XCopyArea Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Long,(Declared(_XGC))*,Int,Int,UNSIGNED = Int,UNSIGNED = Int,Int,Int)
+ */
+private val XCopyArea_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XCopyArea_ADDR: MemorySegment = LOOKUP.find("XCopyArea").orElseThrow()
+private val XCopyArea_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XCopyArea_ADDR, XCopyArea_DESC)
+
+fun XCopyArea(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: MemorySegment, arg4: Int, arg5: Int, arg6: Int, arg7: Int, arg8: Int, arg9: Int): Int {
+    try {
+        return XCopyArea_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XCopyGC Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long,(Declared(_XGC))*)
+ */
+private val XCopyGC_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val XCopyGC_ADDR: MemorySegment = LOOKUP.find("XCopyGC").orElseThrow()
+private val XCopyGC_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XCopyGC_ADDR, XCopyGC_DESC)
+
+fun XCopyGC(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): Int {
+    try {
+        return XCopyGC_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XCopyPlane Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Long,(Declared(_XGC))*,Int,Int,UNSIGNED = Int,UNSIGNED = Int,Int,Int,UNSIGNED = Long)
+ */
+private val XCopyPlane_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)
+private val XCopyPlane_ADDR: MemorySegment = LOOKUP.find("XCopyPlane").orElseThrow()
+private val XCopyPlane_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XCopyPlane_ADDR, XCopyPlane_DESC)
+
+fun XCopyPlane(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: MemorySegment, arg4: Int, arg5: Int, arg6: Int, arg7: Int, arg8: Int, arg9: Int, arg10: Long): Int {
+    try {
+        return XCopyPlane_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -1904,6 +2366,272 @@ fun XDestroyWindow(arg0: MemorySegment, arg1: Long): Int {
 }
 
 /**
+ * {@snippet lang=c : XDrawArc Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,Int,Int,UNSIGNED = Int,UNSIGNED = Int,Int,Int)
+ */
+private val XDrawArc_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XDrawArc_ADDR: MemorySegment = LOOKUP.find("XDrawArc").orElseThrow()
+private val XDrawArc_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDrawArc_ADDR, XDrawArc_DESC)
+
+fun XDrawArc(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int, arg4: Int, arg5: Int, arg6: Int, arg7: Int, arg8: Int): Int {
+    try {
+        return XDrawArc_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XDrawArcs Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,(typedef XArc = Declared(XArc))*,Int)
+ */
+private val XDrawArcs_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XDrawArcs_ADDR: MemorySegment = LOOKUP.find("XDrawArcs").orElseThrow()
+private val XDrawArcs_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDrawArcs_ADDR, XDrawArcs_DESC)
+
+fun XDrawArcs(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: Int): Int {
+    try {
+        return XDrawArcs_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XDrawLine Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,Int,Int,Int,Int)
+ */
+private val XDrawLine_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XDrawLine_ADDR: MemorySegment = LOOKUP.find("XDrawLine").orElseThrow()
+private val XDrawLine_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDrawLine_ADDR, XDrawLine_DESC)
+
+fun XDrawLine(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int, arg4: Int, arg5: Int, arg6: Int): Int {
+    try {
+        return XDrawLine_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XDrawLines Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,(typedef XPoint = Declared(XPoint))*,Int,Int)
+ */
+private val XDrawLines_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XDrawLines_ADDR: MemorySegment = LOOKUP.find("XDrawLines").orElseThrow()
+private val XDrawLines_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDrawLines_ADDR, XDrawLines_DESC)
+
+fun XDrawLines(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: Int, arg5: Int): Int {
+    try {
+        return XDrawLines_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XDrawPoint Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,Int,Int)
+ */
+private val XDrawPoint_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XDrawPoint_ADDR: MemorySegment = LOOKUP.find("XDrawPoint").orElseThrow()
+private val XDrawPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDrawPoint_ADDR, XDrawPoint_DESC)
+
+fun XDrawPoint(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int, arg4: Int): Int {
+    try {
+        return XDrawPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XDrawPoints Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,(typedef XPoint = Declared(XPoint))*,Int,Int)
+ */
+private val XDrawPoints_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XDrawPoints_ADDR: MemorySegment = LOOKUP.find("XDrawPoints").orElseThrow()
+private val XDrawPoints_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDrawPoints_ADDR, XDrawPoints_DESC)
+
+fun XDrawPoints(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: Int, arg5: Int): Int {
+    try {
+        return XDrawPoints_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XDrawRectangle Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,Int,Int,UNSIGNED = Int,UNSIGNED = Int)
+ */
+private val XDrawRectangle_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XDrawRectangle_ADDR: MemorySegment = LOOKUP.find("XDrawRectangle").orElseThrow()
+private val XDrawRectangle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDrawRectangle_ADDR, XDrawRectangle_DESC)
+
+fun XDrawRectangle(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int, arg4: Int, arg5: Int, arg6: Int): Int {
+    try {
+        return XDrawRectangle_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XDrawRectangles Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,(typedef XRectangle = Declared(XRectangle))*,Int)
+ */
+private val XDrawRectangles_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XDrawRectangles_ADDR: MemorySegment = LOOKUP.find("XDrawRectangles").orElseThrow()
+private val XDrawRectangles_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDrawRectangles_ADDR, XDrawRectangles_DESC)
+
+fun XDrawRectangles(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: Int): Int {
+    try {
+        return XDrawRectangles_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XDrawSegments Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,(typedef XSegment = Declared(XSegment))*,Int)
+ */
+private val XDrawSegments_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XDrawSegments_ADDR: MemorySegment = LOOKUP.find("XDrawSegments").orElseThrow()
+private val XDrawSegments_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDrawSegments_ADDR, XDrawSegments_DESC)
+
+fun XDrawSegments(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: Int): Int {
+    try {
+        return XDrawSegments_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XFillArc Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,Int,Int,UNSIGNED = Int,UNSIGNED = Int,Int,Int)
+ */
+private val XFillArc_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XFillArc_ADDR: MemorySegment = LOOKUP.find("XFillArc").orElseThrow()
+private val XFillArc_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XFillArc_ADDR, XFillArc_DESC)
+
+fun XFillArc(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int, arg4: Int, arg5: Int, arg6: Int, arg7: Int, arg8: Int): Int {
+    try {
+        return XFillArc_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XFillArcs Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,(typedef XArc = Declared(XArc))*,Int)
+ */
+private val XFillArcs_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XFillArcs_ADDR: MemorySegment = LOOKUP.find("XFillArcs").orElseThrow()
+private val XFillArcs_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XFillArcs_ADDR, XFillArcs_DESC)
+
+fun XFillArcs(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: Int): Int {
+    try {
+        return XFillArcs_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XFillPolygon Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,(typedef XPoint = Declared(XPoint))*,Int,Int,Int)
+ */
+private val XFillPolygon_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XFillPolygon_ADDR: MemorySegment = LOOKUP.find("XFillPolygon").orElseThrow()
+private val XFillPolygon_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XFillPolygon_ADDR, XFillPolygon_DESC)
+
+fun XFillPolygon(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: Int, arg5: Int, arg6: Int): Int {
+    try {
+        return XFillPolygon_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XFillRectangle Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,Int,Int,UNSIGNED = Int,UNSIGNED = Int)
+ */
+private val XFillRectangle_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XFillRectangle_ADDR: MemorySegment = LOOKUP.find("XFillRectangle").orElseThrow()
+private val XFillRectangle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XFillRectangle_ADDR, XFillRectangle_DESC)
+
+fun XFillRectangle(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int, arg4: Int, arg5: Int, arg6: Int): Int {
+    try {
+        return XFillRectangle_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XFillRectangles Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Declared(_XGC))*,(typedef XRectangle = Declared(XRectangle))*,Int)
+ */
+private val XFillRectangles_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XFillRectangles_ADDR: MemorySegment = LOOKUP.find("XFillRectangles").orElseThrow()
+private val XFillRectangles_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XFillRectangles_ADDR, XFillRectangles_DESC)
+
+fun XFillRectangles(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: Int): Int {
+    try {
+        return XFillRectangles_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XFlush Int((typedef Display = Declared(_XDisplay))*)
  */
 private val XFlush_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
@@ -1942,6 +2670,44 @@ fun XFree(arg0: MemorySegment): Int {
 }
 
 /**
+ * {@snippet lang=c : XFreeColormap Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long)
+ */
+private val XFreeColormap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XFreeColormap_ADDR: MemorySegment = LOOKUP.find("XFreeColormap").orElseThrow()
+private val XFreeColormap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XFreeColormap_ADDR, XFreeColormap_DESC)
+
+fun XFreeColormap(arg0: MemorySegment, arg1: Long): Int {
+    try {
+        return XFreeColormap_HANDLE.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XFreeColors Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(UNSIGNED = Long)*,Int,UNSIGNED = Long)
+ */
+private val XFreeColors_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)
+private val XFreeColors_ADDR: MemorySegment = LOOKUP.find("XFreeColors").orElseThrow()
+private val XFreeColors_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XFreeColors_ADDR, XFreeColors_DESC)
+
+fun XFreeColors(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int, arg4: Long): Int {
+    try {
+        return XFreeColors_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XFreeCursor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long)
  */
 private val XFreeCursor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
@@ -1961,6 +2727,25 @@ fun XFreeCursor(arg0: MemorySegment, arg1: Long): Int {
 }
 
 /**
+ * {@snippet lang=c : XFreeGC Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*)
+ */
+private val XFreeGC_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XFreeGC_ADDR: MemorySegment = LOOKUP.find("XFreeGC").orElseThrow()
+private val XFreeGC_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XFreeGC_ADDR, XFreeGC_DESC)
+
+fun XFreeGC(arg0: MemorySegment, arg1: MemorySegment): Int {
+    try {
+        return XFreeGC_HANDLE.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XFreePixmap Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long)
  */
 private val XFreePixmap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
@@ -1970,6 +2755,25 @@ private val XFreePixmap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHan
 fun XFreePixmap(arg0: MemorySegment, arg1: Long): Int {
     try {
         return XFreePixmap_HANDLE.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XGetGCValues Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long,(typedef XGCValues = Declared(XGCValues))*)
+ */
+private val XGetGCValues_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val XGetGCValues_ADDR: MemorySegment = LOOKUP.find("XGetGCValues").orElseThrow()
+private val XGetGCValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XGetGCValues_ADDR, XGetGCValues_DESC)
+
+fun XGetGCValues(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): Int {
+    try {
+        return XGetGCValues_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -2075,6 +2879,25 @@ fun XKeysymToKeycode(arg0: MemorySegment, arg1: Long): Byte {
 }
 
 /**
+ * {@snippet lang=c : XLookupColor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Char)*,(typedef XColor = Declared(XColor))*,(typedef XColor = Declared(XColor))*)
+ */
+private val XLookupColor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XLookupColor_ADDR: MemorySegment = LOOKUP.find("XLookupColor").orElseThrow()
+private val XLookupColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XLookupColor_ADDR, XLookupColor_DESC)
+
+fun XLookupColor(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): Int {
+    try {
+        return XLookupColor_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XMapWindow Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long)
  */
 private val XMapWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
@@ -2132,6 +2955,25 @@ fun XNextEvent(arg0: MemorySegment, arg1: MemorySegment): Int {
 }
 
 /**
+ * {@snippet lang=c : XParseColor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Char)*,(typedef XColor = Declared(XColor))*)
+ */
+private val XParseColor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XParseColor_ADDR: MemorySegment = LOOKUP.find("XParseColor").orElseThrow()
+private val XParseColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XParseColor_ADDR, XParseColor_DESC)
+
+fun XParseColor(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment): Int {
+    try {
+        return XParseColor_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XPending Int((typedef Display = Declared(_XDisplay))*)
  */
 private val XPending_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
@@ -2141,6 +2983,44 @@ private val XPending_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle
 fun XPending(arg0: MemorySegment): Int {
     try {
         return XPending_HANDLE.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XQueryColor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(typedef XColor = Declared(XColor))*)
+ */
+private val XQueryColor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val XQueryColor_ADDR: MemorySegment = LOOKUP.find("XQueryColor").orElseThrow()
+private val XQueryColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XQueryColor_ADDR, XQueryColor_DESC)
+
+fun XQueryColor(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Int {
+    try {
+        return XQueryColor_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XQueryColors Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(typedef XColor = Declared(XColor))*,Int)
+ */
+private val XQueryColors_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XQueryColors_ADDR: MemorySegment = LOOKUP.find("XQueryColors").orElseThrow()
+private val XQueryColors_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XQueryColors_ADDR, XQueryColors_DESC)
+
+fun XQueryColors(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int): Int {
+    try {
+        return XQueryColors_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -2284,6 +3164,481 @@ fun XSendEvent(arg0: MemorySegment, arg1: Long, arg2: Int, arg3: Long, arg4: Mem
 }
 
 /**
+ * {@snippet lang=c : XSetArcMode Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int)
+ */
+private val XSetArcMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XSetArcMode_ADDR: MemorySegment = LOOKUP.find("XSetArcMode").orElseThrow()
+private val XSetArcMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetArcMode_ADDR, XSetArcMode_DESC)
+
+fun XSetArcMode(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
+    try {
+        return XSetArcMode_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetBackground Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long)
+ */
+private val XSetBackground_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XSetBackground_ADDR: MemorySegment = LOOKUP.find("XSetBackground").orElseThrow()
+private val XSetBackground_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetBackground_ADDR, XSetBackground_DESC)
+
+fun XSetBackground(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Int {
+    try {
+        return XSetBackground_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetClipMask Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long)
+ */
+private val XSetClipMask_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XSetClipMask_ADDR: MemorySegment = LOOKUP.find("XSetClipMask").orElseThrow()
+private val XSetClipMask_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetClipMask_ADDR, XSetClipMask_DESC)
+
+fun XSetClipMask(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Int {
+    try {
+        return XSetClipMask_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetClipOrigin Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int,Int)
+ */
+private val XSetClipOrigin_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XSetClipOrigin_ADDR: MemorySegment = LOOKUP.find("XSetClipOrigin").orElseThrow()
+private val XSetClipOrigin_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetClipOrigin_ADDR, XSetClipOrigin_DESC)
+
+fun XSetClipOrigin(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: Int): Int {
+    try {
+        return XSetClipOrigin_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetClipRectangles Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int,Int,(typedef XRectangle = Declared(XRectangle))*,Int,Int)
+ */
+private val XSetClipRectangles_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XSetClipRectangles_ADDR: MemorySegment = LOOKUP.find("XSetClipRectangles").orElseThrow()
+private val XSetClipRectangles_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetClipRectangles_ADDR, XSetClipRectangles_DESC)
+
+fun XSetClipRectangles(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: Int, arg4: MemorySegment, arg5: Int, arg6: Int): Int {
+    try {
+        return XSetClipRectangles_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetDashes Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int,(Char)*,Int)
+ */
+private val XSetDashes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XSetDashes_ADDR: MemorySegment = LOOKUP.find("XSetDashes").orElseThrow()
+private val XSetDashes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetDashes_ADDR, XSetDashes_DESC)
+
+fun XSetDashes(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: MemorySegment, arg4: Int): Int {
+    try {
+        return XSetDashes_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetFillRule Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int)
+ */
+private val XSetFillRule_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XSetFillRule_ADDR: MemorySegment = LOOKUP.find("XSetFillRule").orElseThrow()
+private val XSetFillRule_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetFillRule_ADDR, XSetFillRule_DESC)
+
+fun XSetFillRule(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
+    try {
+        return XSetFillRule_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetFillStyle Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int)
+ */
+private val XSetFillStyle_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XSetFillStyle_ADDR: MemorySegment = LOOKUP.find("XSetFillStyle").orElseThrow()
+private val XSetFillStyle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetFillStyle_ADDR, XSetFillStyle_DESC)
+
+fun XSetFillStyle(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
+    try {
+        return XSetFillStyle_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetFont Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long)
+ */
+private val XSetFont_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XSetFont_ADDR: MemorySegment = LOOKUP.find("XSetFont").orElseThrow()
+private val XSetFont_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetFont_ADDR, XSetFont_DESC)
+
+fun XSetFont(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Int {
+    try {
+        return XSetFont_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetForeground Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long)
+ */
+private val XSetForeground_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XSetForeground_ADDR: MemorySegment = LOOKUP.find("XSetForeground").orElseThrow()
+private val XSetForeground_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetForeground_ADDR, XSetForeground_DESC)
+
+fun XSetForeground(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Int {
+    try {
+        return XSetForeground_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetFunction Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int)
+ */
+private val XSetFunction_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XSetFunction_ADDR: MemorySegment = LOOKUP.find("XSetFunction").orElseThrow()
+private val XSetFunction_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetFunction_ADDR, XSetFunction_DESC)
+
+fun XSetFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
+    try {
+        return XSetFunction_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetGraphicsExposures Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int)
+ */
+private val XSetGraphicsExposures_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XSetGraphicsExposures_ADDR: MemorySegment = LOOKUP.find("XSetGraphicsExposures").orElseThrow()
+private val XSetGraphicsExposures_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetGraphicsExposures_ADDR, XSetGraphicsExposures_DESC)
+
+fun XSetGraphicsExposures(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
+    try {
+        return XSetGraphicsExposures_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetLineAttributes Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Int,Int,Int,Int)
+ */
+private val XSetLineAttributes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XSetLineAttributes_ADDR: MemorySegment = LOOKUP.find("XSetLineAttributes").orElseThrow()
+private val XSetLineAttributes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetLineAttributes_ADDR, XSetLineAttributes_DESC)
+
+fun XSetLineAttributes(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: Int, arg4: Int, arg5: Int): Int {
+    try {
+        return XSetLineAttributes_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetPlaneMask Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long)
+ */
+private val XSetPlaneMask_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XSetPlaneMask_ADDR: MemorySegment = LOOKUP.find("XSetPlaneMask").orElseThrow()
+private val XSetPlaneMask_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetPlaneMask_ADDR, XSetPlaneMask_DESC)
+
+fun XSetPlaneMask(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Int {
+    try {
+        return XSetPlaneMask_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetState Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long,UNSIGNED = Long,Int,UNSIGNED = Long)
+ */
+private val XSetState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)
+private val XSetState_ADDR: MemorySegment = LOOKUP.find("XSetState").orElseThrow()
+private val XSetState_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetState_ADDR, XSetState_DESC)
+
+fun XSetState(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Long, arg4: Int, arg5: Long): Int {
+    try {
+        return XSetState_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetStipple Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long)
+ */
+private val XSetStipple_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XSetStipple_ADDR: MemorySegment = LOOKUP.find("XSetStipple").orElseThrow()
+private val XSetStipple_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetStipple_ADDR, XSetStipple_DESC)
+
+fun XSetStipple(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Int {
+    try {
+        return XSetStipple_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetSubwindowMode Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int)
+ */
+private val XSetSubwindowMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XSetSubwindowMode_ADDR: MemorySegment = LOOKUP.find("XSetSubwindowMode").orElseThrow()
+private val XSetSubwindowMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetSubwindowMode_ADDR, XSetSubwindowMode_DESC)
+
+fun XSetSubwindowMode(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
+    try {
+        return XSetSubwindowMode_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetTSOrigin Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,Int,Int)
+ */
+private val XSetTSOrigin_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XSetTSOrigin_ADDR: MemorySegment = LOOKUP.find("XSetTSOrigin").orElseThrow()
+private val XSetTSOrigin_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetTSOrigin_ADDR, XSetTSOrigin_DESC)
+
+fun XSetTSOrigin(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: Int): Int {
+    try {
+        return XSetTSOrigin_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetTile Int((typedef Display = Declared(_XDisplay))*,(Declared(_XGC))*,UNSIGNED = Long)
+ */
+private val XSetTile_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XSetTile_ADDR: MemorySegment = LOOKUP.find("XSetTile").orElseThrow()
+private val XSetTile_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetTile_ADDR, XSetTile_DESC)
+
+fun XSetTile(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Int {
+    try {
+        return XSetTile_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetWindowBackground Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Long)
+ */
+private val XSetWindowBackground_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val XSetWindowBackground_ADDR: MemorySegment = LOOKUP.find("XSetWindowBackground").orElseThrow()
+private val XSetWindowBackground_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetWindowBackground_ADDR, XSetWindowBackground_DESC)
+
+fun XSetWindowBackground(arg0: MemorySegment, arg1: Long, arg2: Long): Int {
+    try {
+        return XSetWindowBackground_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetWindowBackgroundPixmap Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Long)
+ */
+private val XSetWindowBackgroundPixmap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val XSetWindowBackgroundPixmap_ADDR: MemorySegment = LOOKUP.find("XSetWindowBackgroundPixmap").orElseThrow()
+private val XSetWindowBackgroundPixmap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetWindowBackgroundPixmap_ADDR, XSetWindowBackgroundPixmap_DESC)
+
+fun XSetWindowBackgroundPixmap(arg0: MemorySegment, arg1: Long, arg2: Long): Int {
+    try {
+        return XSetWindowBackgroundPixmap_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetWindowBorder Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Long)
+ */
+private val XSetWindowBorder_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val XSetWindowBorder_ADDR: MemorySegment = LOOKUP.find("XSetWindowBorder").orElseThrow()
+private val XSetWindowBorder_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetWindowBorder_ADDR, XSetWindowBorder_DESC)
+
+fun XSetWindowBorder(arg0: MemorySegment, arg1: Long, arg2: Long): Int {
+    try {
+        return XSetWindowBorder_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetWindowBorderPixmap Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Long)
+ */
+private val XSetWindowBorderPixmap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val XSetWindowBorderPixmap_ADDR: MemorySegment = LOOKUP.find("XSetWindowBorderPixmap").orElseThrow()
+private val XSetWindowBorderPixmap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetWindowBorderPixmap_ADDR, XSetWindowBorderPixmap_DESC)
+
+fun XSetWindowBorderPixmap(arg0: MemorySegment, arg1: Long, arg2: Long): Int {
+    try {
+        return XSetWindowBorderPixmap_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XStoreColor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(typedef XColor = Declared(XColor))*)
+ */
+private val XStoreColor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val XStoreColor_ADDR: MemorySegment = LOOKUP.find("XStoreColor").orElseThrow()
+private val XStoreColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XStoreColor_ADDR, XStoreColor_DESC)
+
+fun XStoreColor(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Int {
+    try {
+        return XStoreColor_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XStoreColors Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(typedef XColor = Declared(XColor))*,Int)
+ */
+private val XStoreColors_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val XStoreColors_ADDR: MemorySegment = LOOKUP.find("XStoreColors").orElseThrow()
+private val XStoreColors_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XStoreColors_ADDR, XStoreColors_DESC)
+
+fun XStoreColors(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Int): Int {
+    try {
+        return XStoreColors_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XStoreName Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Char)*)
  */
 private val XStoreName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
@@ -2293,6 +3648,25 @@ private val XStoreName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHand
 fun XStoreName(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Int {
     try {
         return XStoreName_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XStoreNamedColor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(Char)*,UNSIGNED = Long,Int)
+ */
+private val XStoreNamedColor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
+private val XStoreNamedColor_ADDR: MemorySegment = LOOKUP.find("XStoreNamedColor").orElseThrow()
+private val XStoreNamedColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XStoreNamedColor_ADDR, XStoreNamedColor_DESC)
+
+fun XStoreNamedColor(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Long, arg4: Int): Int {
+    try {
+        return XStoreNamedColor_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
