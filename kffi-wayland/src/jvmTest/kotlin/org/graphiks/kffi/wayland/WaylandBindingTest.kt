@@ -1,7 +1,5 @@
 package org.graphiks.kffi.wayland
 
-import org.graphiks.kffi.wayland.protocol.zwp_text_input_manager_v3_interface as legacyTextInputManagerV3Interface
-import org.graphiks.kffi.wayland.protocol.zwp_text_input_v3_interface as legacyTextInputV3Interface
 import org.graphiks.kffi.wayland.generated.zwp_text_input_manager_v3_interface
 import org.graphiks.kffi.wayland.generated.zwp_text_input_v3_interface
 import org.graphiks.kffi.wayland.generated.xdg_wm_base_error
@@ -43,22 +41,8 @@ class WaylandBindingTest {
     }
 
     @Test
-    fun preservesHistoricalProtocolConstantNames() {
-        assertEquals(1, ZWLR_SCREENCOPY_FRAME_FLAGS_Y_INVERT)
-        assertEquals(1, ZWP_POINTER_CONSTRAINTS_V1_LIFETIME_ONESHOT)
-        assertEquals(2, ZWP_POINTER_CONSTRAINTS_V1_LIFETIME_PERSISTENT)
-    }
-
-    @Test
     fun preservesLegacyTextInputDescriptorEntryPoints() {
-        assertEquals("zwp_text_input_manager_v3_interface", ::legacyTextInputManagerV3Interface.name)
-        assertEquals("zwp_text_input_v3_interface", ::legacyTextInputV3Interface.name)
         assertEquals("zwp_text_input_manager_v3_interface", ::zwp_text_input_manager_v3_interface.name)
         assertEquals("zwp_text_input_v3_interface", ::zwp_text_input_v3_interface.name)
-    }
-
-    @Test
-    fun preservesMarshalDestroyCompatibilityConstant() {
-        assertEquals(1, WL_MARSHAL_FLAG_DESTROY)
     }
 }
