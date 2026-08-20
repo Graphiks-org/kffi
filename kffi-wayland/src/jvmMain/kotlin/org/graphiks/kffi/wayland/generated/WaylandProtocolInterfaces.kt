@@ -21,6 +21,34 @@ val zwp_text_input_v3_interface: MemorySegment by lazy { build_zwp_text_input_v3
 val zwp_text_input_manager_v3_interface: MemorySegment by lazy { build_zwp_text_input_manager_v3() }
 val zwlr_screencopy_manager_v1_interface: MemorySegment by lazy { build_zwlr_screencopy_manager_v1() }
 val zwlr_screencopy_frame_v1_interface: MemorySegment by lazy { build_zwlr_screencopy_frame_v1() }
+val xdg_activation_v1_interface: MemorySegment by lazy { build_xdg_activation_v1() }
+val xdg_activation_token_v1_interface: MemorySegment by lazy { build_xdg_activation_token_v1() }
+val zwp_pointer_constraints_v1_interface: MemorySegment by lazy { build_zwp_pointer_constraints_v1() }
+val zwp_locked_pointer_v1_interface: MemorySegment by lazy { build_zwp_locked_pointer_v1() }
+val zwp_confined_pointer_v1_interface: MemorySegment by lazy { build_zwp_confined_pointer_v1() }
+val zwp_relative_pointer_manager_v1_interface: MemorySegment by lazy { build_zwp_relative_pointer_manager_v1() }
+val zwp_relative_pointer_v1_interface: MemorySegment by lazy { build_zwp_relative_pointer_v1() }
+val xdg_toplevel_icon_manager_v1_interface: MemorySegment by lazy { build_xdg_toplevel_icon_manager_v1() }
+val xdg_toplevel_icon_v1_interface: MemorySegment by lazy { build_xdg_toplevel_icon_v1() }
+val wp_fractional_scale_manager_v1_interface: MemorySegment by lazy { build_wp_fractional_scale_manager_v1() }
+val wp_fractional_scale_v1_interface: MemorySegment by lazy { build_wp_fractional_scale_v1() }
+val wp_viewporter_interface: MemorySegment by lazy { build_wp_viewporter() }
+val wp_viewport_interface: MemorySegment by lazy { build_wp_viewport() }
+val wp_presentation_interface: MemorySegment by lazy { build_wp_presentation() }
+val wp_presentation_feedback_interface: MemorySegment by lazy { build_wp_presentation_feedback() }
+val zwp_linux_dmabuf_v1_interface: MemorySegment by lazy { build_zwp_linux_dmabuf_v1() }
+val zwp_linux_buffer_params_v1_interface: MemorySegment by lazy { build_zwp_linux_buffer_params_v1() }
+val zwp_linux_dmabuf_feedback_v1_interface: MemorySegment by lazy { build_zwp_linux_dmabuf_feedback_v1() }
+val wp_cursor_shape_manager_v1_interface: MemorySegment by lazy { build_wp_cursor_shape_manager_v1() }
+val wp_cursor_shape_device_v1_interface: MemorySegment by lazy { build_wp_cursor_shape_device_v1() }
+val zwp_tablet_manager_v2_interface: MemorySegment by lazy { build_zwp_tablet_manager_v2() }
+val zwp_tablet_seat_v2_interface: MemorySegment by lazy { build_zwp_tablet_seat_v2() }
+val zwp_tablet_tool_v2_interface: MemorySegment by lazy { build_zwp_tablet_tool_v2() }
+val zwp_tablet_v2_interface: MemorySegment by lazy { build_zwp_tablet_v2() }
+val zwp_tablet_pad_ring_v2_interface: MemorySegment by lazy { build_zwp_tablet_pad_ring_v2() }
+val zwp_tablet_pad_strip_v2_interface: MemorySegment by lazy { build_zwp_tablet_pad_strip_v2() }
+val zwp_tablet_pad_group_v2_interface: MemorySegment by lazy { build_zwp_tablet_pad_group_v2() }
+val zwp_tablet_pad_v2_interface: MemorySegment by lazy { build_zwp_tablet_pad_v2() }
 
 private val wl_buffer_interface: MemorySegment by lazy {
     val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
@@ -29,6 +57,14 @@ private val wl_buffer_interface: MemorySegment by lazy {
 private val wl_output_interface: MemorySegment by lazy {
     val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
     lib.find("wl_output_interface").orElseThrow()
+}
+private val wl_pointer_interface: MemorySegment by lazy {
+    val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
+    lib.find("wl_pointer_interface").orElseThrow()
+}
+private val wl_region_interface: MemorySegment by lazy {
+    val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
+    lib.find("wl_region_interface").orElseThrow()
 }
 private val wl_seat_interface: MemorySegment by lazy {
     val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
@@ -174,6 +210,253 @@ private fun build_zwlr_screencopy_frame_v1(): MemorySegment = iface("zwlr_screen
     msg("damage", "uuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
     msg("linux_dmabuf", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
     msg("buffer_done", "")
+))
+
+private fun build_xdg_activation_v1(): MemorySegment = iface("xdg_activation_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("get_activation_token", "n", xdg_activation_token_v1_interface),
+    msg("activate", "so", MemorySegment.NULL, wl_surface_interface)
+), arrayOf(
+))
+
+private fun build_xdg_activation_token_v1(): MemorySegment = iface("xdg_activation_token_v1", 1, arrayOf(
+    msg("set_serial", "uo", MemorySegment.NULL, wl_seat_interface),
+    msg("set_app_id", "s", MemorySegment.NULL),
+    msg("set_surface", "o", wl_surface_interface),
+    msg("commit", ""),
+    msg("destroy", "")
+), arrayOf(
+    msg("done", "s", MemorySegment.NULL)
+))
+
+private fun build_zwp_pointer_constraints_v1(): MemorySegment = iface("zwp_pointer_constraints_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("lock_pointer", "noo?ou", zwp_locked_pointer_v1_interface, wl_surface_interface, wl_pointer_interface, wl_region_interface, MemorySegment.NULL),
+    msg("confine_pointer", "noo?ou", zwp_confined_pointer_v1_interface, wl_surface_interface, wl_pointer_interface, wl_region_interface, MemorySegment.NULL)
+), arrayOf(
+))
+
+private fun build_zwp_locked_pointer_v1(): MemorySegment = iface("zwp_locked_pointer_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("set_cursor_position_hint", "ff", MemorySegment.NULL, MemorySegment.NULL),
+    msg("set_region", "?o", wl_region_interface)
+), arrayOf(
+    msg("locked", ""),
+    msg("unlocked", "")
+))
+
+private fun build_zwp_confined_pointer_v1(): MemorySegment = iface("zwp_confined_pointer_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("set_region", "?o", wl_region_interface)
+), arrayOf(
+    msg("confined", ""),
+    msg("unconfined", "")
+))
+
+private fun build_zwp_relative_pointer_manager_v1(): MemorySegment = iface("zwp_relative_pointer_manager_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("get_relative_pointer", "no", zwp_relative_pointer_v1_interface, wl_pointer_interface)
+), arrayOf(
+))
+
+private fun build_zwp_relative_pointer_v1(): MemorySegment = iface("zwp_relative_pointer_v1", 1, arrayOf(
+    msg("destroy", "")
+), arrayOf(
+    msg("relative_motion", "uuffff", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
+))
+
+private fun build_xdg_toplevel_icon_manager_v1(): MemorySegment = iface("xdg_toplevel_icon_manager_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("create_icon", "n", xdg_toplevel_icon_v1_interface),
+    msg("set_icon", "o?o", xdg_toplevel_interface, xdg_toplevel_icon_v1_interface)
+), arrayOf(
+    msg("icon_size", "i", MemorySegment.NULL),
+    msg("done", "")
+))
+
+private fun build_xdg_toplevel_icon_v1(): MemorySegment = iface("xdg_toplevel_icon_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("set_name", "s", MemorySegment.NULL),
+    msg("add_buffer", "oi", wl_buffer_interface, MemorySegment.NULL)
+), arrayOf(
+))
+
+private fun build_wp_fractional_scale_manager_v1(): MemorySegment = iface("wp_fractional_scale_manager_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("get_fractional_scale", "no", wp_fractional_scale_v1_interface, wl_surface_interface)
+), arrayOf(
+))
+
+private fun build_wp_fractional_scale_v1(): MemorySegment = iface("wp_fractional_scale_v1", 1, arrayOf(
+    msg("destroy", "")
+), arrayOf(
+    msg("preferred_scale", "u", MemorySegment.NULL)
+))
+
+private fun build_wp_viewporter(): MemorySegment = iface("wp_viewporter", 1, arrayOf(
+    msg("destroy", ""),
+    msg("get_viewport", "no", wp_viewport_interface, wl_surface_interface)
+), arrayOf(
+))
+
+private fun build_wp_viewport(): MemorySegment = iface("wp_viewport", 1, arrayOf(
+    msg("destroy", ""),
+    msg("set_source", "ffff", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("set_destination", "ii", MemorySegment.NULL, MemorySegment.NULL)
+), arrayOf(
+))
+
+private fun build_wp_presentation(): MemorySegment = iface("wp_presentation", 2, arrayOf(
+    msg("destroy", ""),
+    msg("feedback", "on", wl_surface_interface, wp_presentation_feedback_interface)
+), arrayOf(
+    msg("clock_id", "u", MemorySegment.NULL)
+))
+
+private fun build_wp_presentation_feedback(): MemorySegment = iface("wp_presentation_feedback", 2, arrayOf(
+), arrayOf(
+    msg("sync_output", "o", wl_output_interface),
+    msg("presented", "uuuuuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("discarded", "")
+))
+
+private fun build_zwp_linux_dmabuf_v1(): MemorySegment = iface("zwp_linux_dmabuf_v1", 5, arrayOf(
+    msg("destroy", ""),
+    msg("create_params", "n", zwp_linux_buffer_params_v1_interface),
+    msg("get_default_feedback", "n", zwp_linux_dmabuf_feedback_v1_interface),
+    msg("get_surface_feedback", "no", zwp_linux_dmabuf_feedback_v1_interface, wl_surface_interface)
+), arrayOf(
+    msg("format", "u", MemorySegment.NULL),
+    msg("modifier", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
+))
+
+private fun build_zwp_linux_buffer_params_v1(): MemorySegment = iface("zwp_linux_buffer_params_v1", 5, arrayOf(
+    msg("destroy", ""),
+    msg("add", "huuuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("create", "iiuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("create_immed", "niiuu", wl_buffer_interface, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
+), arrayOf(
+    msg("created", "n", wl_buffer_interface),
+    msg("failed", "")
+))
+
+private fun build_zwp_linux_dmabuf_feedback_v1(): MemorySegment = iface("zwp_linux_dmabuf_feedback_v1", 5, arrayOf(
+    msg("destroy", "")
+), arrayOf(
+    msg("done", ""),
+    msg("format_table", "hu", MemorySegment.NULL, MemorySegment.NULL),
+    msg("main_device", "a", MemorySegment.NULL),
+    msg("tranche_done", ""),
+    msg("tranche_target_device", "a", MemorySegment.NULL),
+    msg("tranche_formats", "a", MemorySegment.NULL),
+    msg("tranche_flags", "u", MemorySegment.NULL)
+))
+
+private fun build_wp_cursor_shape_manager_v1(): MemorySegment = iface("wp_cursor_shape_manager_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("get_pointer", "no", wp_cursor_shape_device_v1_interface, wl_pointer_interface),
+    msg("get_tablet_tool_v2", "no", wp_cursor_shape_device_v1_interface, zwp_tablet_tool_v2_interface)
+), arrayOf(
+))
+
+private fun build_wp_cursor_shape_device_v1(): MemorySegment = iface("wp_cursor_shape_device_v1", 1, arrayOf(
+    msg("destroy", ""),
+    msg("set_shape", "uu", MemorySegment.NULL, MemorySegment.NULL)
+), arrayOf(
+))
+
+private fun build_zwp_tablet_manager_v2(): MemorySegment = iface("zwp_tablet_manager_v2", 1, arrayOf(
+    msg("get_tablet_seat", "no", zwp_tablet_seat_v2_interface, wl_seat_interface),
+    msg("destroy", "")
+), arrayOf(
+))
+
+private fun build_zwp_tablet_seat_v2(): MemorySegment = iface("zwp_tablet_seat_v2", 1, arrayOf(
+    msg("destroy", "")
+), arrayOf(
+    msg("tablet_added", "n", zwp_tablet_v2_interface),
+    msg("tool_added", "n", zwp_tablet_tool_v2_interface),
+    msg("pad_added", "n", zwp_tablet_pad_v2_interface)
+))
+
+private fun build_zwp_tablet_tool_v2(): MemorySegment = iface("zwp_tablet_tool_v2", 1, arrayOf(
+    msg("set_cursor", "u?oii", MemorySegment.NULL, wl_surface_interface, MemorySegment.NULL, MemorySegment.NULL),
+    msg("destroy", "")
+), arrayOf(
+    msg("type", "u", MemorySegment.NULL),
+    msg("hardware_serial", "uu", MemorySegment.NULL, MemorySegment.NULL),
+    msg("hardware_id_wacom", "uu", MemorySegment.NULL, MemorySegment.NULL),
+    msg("capability", "u", MemorySegment.NULL),
+    msg("done", ""),
+    msg("removed", ""),
+    msg("proximity_in", "uoo", MemorySegment.NULL, zwp_tablet_v2_interface, wl_surface_interface),
+    msg("proximity_out", ""),
+    msg("down", "u", MemorySegment.NULL),
+    msg("up", ""),
+    msg("motion", "ff", MemorySegment.NULL, MemorySegment.NULL),
+    msg("pressure", "u", MemorySegment.NULL),
+    msg("distance", "u", MemorySegment.NULL),
+    msg("tilt", "ff", MemorySegment.NULL, MemorySegment.NULL),
+    msg("rotation", "f", MemorySegment.NULL),
+    msg("slider", "i", MemorySegment.NULL),
+    msg("wheel", "fi", MemorySegment.NULL, MemorySegment.NULL),
+    msg("button", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("frame", "u", MemorySegment.NULL)
+))
+
+private fun build_zwp_tablet_v2(): MemorySegment = iface("zwp_tablet_v2", 1, arrayOf(
+    msg("destroy", "")
+), arrayOf(
+    msg("name", "s", MemorySegment.NULL),
+    msg("id", "uu", MemorySegment.NULL, MemorySegment.NULL),
+    msg("path", "s", MemorySegment.NULL),
+    msg("done", ""),
+    msg("removed", "")
+))
+
+private fun build_zwp_tablet_pad_ring_v2(): MemorySegment = iface("zwp_tablet_pad_ring_v2", 1, arrayOf(
+    msg("set_feedback", "su", MemorySegment.NULL, MemorySegment.NULL),
+    msg("destroy", "")
+), arrayOf(
+    msg("source", "u", MemorySegment.NULL),
+    msg("angle", "f", MemorySegment.NULL),
+    msg("stop", ""),
+    msg("frame", "u", MemorySegment.NULL)
+))
+
+private fun build_zwp_tablet_pad_strip_v2(): MemorySegment = iface("zwp_tablet_pad_strip_v2", 1, arrayOf(
+    msg("set_feedback", "su", MemorySegment.NULL, MemorySegment.NULL),
+    msg("destroy", "")
+), arrayOf(
+    msg("source", "u", MemorySegment.NULL),
+    msg("position", "u", MemorySegment.NULL),
+    msg("stop", ""),
+    msg("frame", "u", MemorySegment.NULL)
+))
+
+private fun build_zwp_tablet_pad_group_v2(): MemorySegment = iface("zwp_tablet_pad_group_v2", 1, arrayOf(
+    msg("destroy", "")
+), arrayOf(
+    msg("buttons", "a", MemorySegment.NULL),
+    msg("ring", "n", zwp_tablet_pad_ring_v2_interface),
+    msg("strip", "n", zwp_tablet_pad_strip_v2_interface),
+    msg("modes", "u", MemorySegment.NULL),
+    msg("done", ""),
+    msg("mode_switch", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
+))
+
+private fun build_zwp_tablet_pad_v2(): MemorySegment = iface("zwp_tablet_pad_v2", 1, arrayOf(
+    msg("set_feedback", "usu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("destroy", "")
+), arrayOf(
+    msg("group", "n", zwp_tablet_pad_group_v2_interface),
+    msg("path", "s", MemorySegment.NULL),
+    msg("buttons", "u", MemorySegment.NULL),
+    msg("done", ""),
+    msg("button", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("enter", "uoo", MemorySegment.NULL, zwp_tablet_v2_interface, wl_surface_interface),
+    msg("leave", "uo", MemorySegment.NULL, wl_surface_interface),
+    msg("removed", "")
 ))
 
 private fun msg(name: String, signature: String, vararg types: MemorySegment): MemorySegment {
