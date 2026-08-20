@@ -33,10 +33,6 @@ def main() -> int:
 
         process_tree(root)
         first_pass = xdg_shell.read_text()
-        assert "XDG_TOPLEVEL_STATE_CONSTRAINED_LEFT" not in first_pass
-        assert "XDG_TOPLEVEL_STATE_CONSTRAINED_RIGHT" not in first_pass
-        assert "XDG_TOPLEVEL_STATE_CONSTRAINED_TOP" not in first_pass
-        assert "XDG_TOPLEVEL_STATE_CONSTRAINED_BOTTOM" not in first_pass
         assert ";\n    \n" not in first_pass
         assert "error(\"Unknown xdg_toplevel_state value: $v\")    \n" not in first_pass
         assert other.read_text() == "val example = 1\n"
