@@ -10,11 +10,14 @@ at commit `411bd9f6795f8aae5330fddca96dd4e77629a4b4`.
 The imported sources include kextract-generated low-level bindings and the
 handwritten FFM runtime glue. Protocol XML is used to generate the
 `wl_interface` descriptors, request/event opcodes, and enum constants for
-fourteen protocol XML inputs. Generated sources are kept under `generated/`
-(with protocol constants in the module package). The generation pipeline is
-available explicitly through `scripts/gen-kffi-wayland.sh`; it runs
-`wayland-scanner`, the pinned `kextract` submodule, and the XML
-protocol-interface generator in Docker.
+fourteen extension protocol XML inputs plus the core Wayland protocol XML
+provided by `libwayland-dev` at `/usr/share/wayland/wayland.xml`. The core
+XML path inside the codegen container can be overridden with
+`WAYLAND_CORE_XML`. Generated sources are kept under `generated/` (with
+protocol constants in the module package). The
+generation pipeline is available explicitly through
+`scripts/gen-kffi-wayland.sh`; it runs `wayland-scanner`, the pinned `kextract`
+submodule, and the XML protocol-interface generator in Docker.
 
 The fourteen XML inputs are:
 

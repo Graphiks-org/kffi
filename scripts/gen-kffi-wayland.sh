@@ -8,6 +8,7 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 IMAGE=kffi-wayland-codegen
+WAYLAND_CORE_XML="${WAYLAND_CORE_XML:-/usr/share/wayland/wayland.xml}"
 
 docker build -t "$IMAGE" "$REPO_ROOT/docker/kffi-wayland-codegen"
 
@@ -16,11 +17,13 @@ if [[ -t 1 ]]; then
     docker run --rm -t \
         -v "$REPO_ROOT:/work" \
         -v kffi-gradle-cache:/root/.gradle \
+        -e "WAYLAND_CORE_XML=$WAYLAND_CORE_XML" \
         "$IMAGE" bash /work/docker/kffi-wayland-codegen/generate.sh
 else
     # Persist kextract's Gradle dependencies between runs.
     docker run --rm \
         -v "$REPO_ROOT:/work" \
         -v kffi-gradle-cache:/root/.gradle \
+        -e "WAYLAND_CORE_XML=$WAYLAND_CORE_XML" \
         "$IMAGE" bash /work/docker/kffi-wayland-codegen/generate.sh
 fi

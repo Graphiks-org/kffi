@@ -7,6 +7,7 @@ LLVM_HOME="${LLVM_HOME:-/usr/lib/llvm-18}"
 REPO=/work
 KEXTRACT_DIR="${KEXTRACT_DIR:-$REPO/third_party/kextract}"
 WAYLAND_PROTOCOLS_DIR="${WAYLAND_PROTOCOLS_DIR:-$REPO/third_party/wayland-protocols}"
+WAYLAND_CORE_XML="${WAYLAND_CORE_XML:-/usr/share/wayland/wayland.xml}"
 PROTOCOLS="$REPO/docker/kffi-wayland-codegen/protocols"
 GEN="$REPO/kffi-wayland/build/wayland-protocols"
 OUT_KT="$REPO/kffi-wayland/src/jvmMain/kotlin"
@@ -49,6 +50,14 @@ for spec in "${PROTOCOL_SPECS[@]}"; do
     XML_INPUTS+=("$xml")
     HEADER_INPUTS+=("$GEN/$header")
 done
+# The core XML is consumed by ProtocolInterfaceGenerator only. Core client
+# headers remain outside HEADER_INPUTS because the extension headers already
+# provide the shared C declarations used by kextract.
+if [[ ! -f "$WAYLAND_CORE_XML" ]]; then
+    echo "[gen] core Wayland protocol XML is missing: $WAYLAND_CORE_XML" >&2
+    exit 1
+fi
+XML_INPUTS+=("$WAYLAND_CORE_XML")
 
 rm -rf "$STAGING_KT"
 mkdir -p "$GEN" "$STAGING_KT"

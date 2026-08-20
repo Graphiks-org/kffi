@@ -37,14 +37,6 @@ private const val TOP_RIGHT_COLOR = 0x0000ff00
 private const val BOTTOM_LEFT_COLOR = 0x000000ff
 private const val BOTTOM_RIGHT_COLOR = 0x00ffff00
 
-private const val WL_COMPOSITOR_CREATE_SURFACE = 0
-private const val WL_SURFACE_DESTROY = 0
-private const val WL_SURFACE_FRAME = 3
-private const val WL_SURFACE_COMMIT = 6
-private const val WL_SHM_POOL_DESTROY = 1
-private const val WL_BUFFER_DESTROY = 0
-private const val WL_MARSHAL_FLAG_DESTROY = 1
-
 private const val POLLIN = 0x0001
 private const val POLLERR = 0x0008
 private const val POLLHUP = 0x0010

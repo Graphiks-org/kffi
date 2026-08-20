@@ -49,31 +49,28 @@ val zwp_tablet_pad_ring_v2_interface: MemorySegment by lazy { build_zwp_tablet_p
 val zwp_tablet_pad_strip_v2_interface: MemorySegment by lazy { build_zwp_tablet_pad_strip_v2() }
 val zwp_tablet_pad_group_v2_interface: MemorySegment by lazy { build_zwp_tablet_pad_group_v2() }
 val zwp_tablet_pad_v2_interface: MemorySegment by lazy { build_zwp_tablet_pad_v2() }
-
-private val wl_buffer_interface: MemorySegment by lazy {
-    val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
-    lib.find("wl_buffer_interface").orElseThrow()
-}
-private val wl_output_interface: MemorySegment by lazy {
-    val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
-    lib.find("wl_output_interface").orElseThrow()
-}
-private val wl_pointer_interface: MemorySegment by lazy {
-    val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
-    lib.find("wl_pointer_interface").orElseThrow()
-}
-private val wl_region_interface: MemorySegment by lazy {
-    val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
-    lib.find("wl_region_interface").orElseThrow()
-}
-private val wl_seat_interface: MemorySegment by lazy {
-    val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
-    lib.find("wl_seat_interface").orElseThrow()
-}
-private val wl_surface_interface: MemorySegment by lazy {
-    val lib = libWaylandClient ?: error("libwayland-client.so.0 not available")
-    lib.find("wl_surface_interface").orElseThrow()
-}
+val wl_display_interface: MemorySegment by lazy { build_wl_display() }
+val wl_registry_interface: MemorySegment by lazy { build_wl_registry() }
+val wl_callback_interface: MemorySegment by lazy { build_wl_callback() }
+val wl_compositor_interface: MemorySegment by lazy { build_wl_compositor() }
+val wl_shm_pool_interface: MemorySegment by lazy { build_wl_shm_pool() }
+val wl_shm_interface: MemorySegment by lazy { build_wl_shm() }
+val wl_buffer_interface: MemorySegment by lazy { build_wl_buffer() }
+val wl_data_offer_interface: MemorySegment by lazy { build_wl_data_offer() }
+val wl_data_source_interface: MemorySegment by lazy { build_wl_data_source() }
+val wl_data_device_interface: MemorySegment by lazy { build_wl_data_device() }
+val wl_data_device_manager_interface: MemorySegment by lazy { build_wl_data_device_manager() }
+val wl_shell_interface: MemorySegment by lazy { build_wl_shell() }
+val wl_shell_surface_interface: MemorySegment by lazy { build_wl_shell_surface() }
+val wl_surface_interface: MemorySegment by lazy { build_wl_surface() }
+val wl_seat_interface: MemorySegment by lazy { build_wl_seat() }
+val wl_pointer_interface: MemorySegment by lazy { build_wl_pointer() }
+val wl_keyboard_interface: MemorySegment by lazy { build_wl_keyboard() }
+val wl_touch_interface: MemorySegment by lazy { build_wl_touch() }
+val wl_output_interface: MemorySegment by lazy { build_wl_output() }
+val wl_region_interface: MemorySegment by lazy { build_wl_region() }
+val wl_subcompositor_interface: MemorySegment by lazy { build_wl_subcompositor() }
+val wl_subsurface_interface: MemorySegment by lazy { build_wl_subsurface() }
 
 private val MSG_LAYOUT = MemoryLayout.structLayout(
     ADDRESS.withName("name"), ADDRESS.withName("signature"), ADDRESS.withName("types"))
@@ -457,6 +454,220 @@ private fun build_zwp_tablet_pad_v2(): MemorySegment = iface("zwp_tablet_pad_v2"
     msg("enter", "uoo", MemorySegment.NULL, zwp_tablet_v2_interface, wl_surface_interface),
     msg("leave", "uo", MemorySegment.NULL, wl_surface_interface),
     msg("removed", "")
+))
+
+private fun build_wl_display(): MemorySegment = iface("wl_display", 1, arrayOf(
+    msg("sync", "n", wl_callback_interface),
+    msg("get_registry", "n", wl_registry_interface)
+), arrayOf(
+    msg("error", "ous", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("delete_id", "u", MemorySegment.NULL)
+))
+
+private fun build_wl_registry(): MemorySegment = iface("wl_registry", 1, arrayOf(
+    msg("bind", "un", MemorySegment.NULL, MemorySegment.NULL)
+), arrayOf(
+    msg("global", "usu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("global_remove", "u", MemorySegment.NULL)
+))
+
+private fun build_wl_callback(): MemorySegment = iface("wl_callback", 1, arrayOf(
+), arrayOf(
+    msg("done", "u", MemorySegment.NULL)
+))
+
+private fun build_wl_compositor(): MemorySegment = iface("wl_compositor", 6, arrayOf(
+    msg("create_surface", "n", wl_surface_interface),
+    msg("create_region", "n", wl_region_interface)
+), arrayOf(
+))
+
+private fun build_wl_shm_pool(): MemorySegment = iface("wl_shm_pool", 1, arrayOf(
+    msg("create_buffer", "niiiiu", wl_buffer_interface, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("destroy", ""),
+    msg("resize", "i", MemorySegment.NULL)
+), arrayOf(
+))
+
+private fun build_wl_shm(): MemorySegment = iface("wl_shm", 1, arrayOf(
+    msg("create_pool", "nhi", wl_shm_pool_interface, MemorySegment.NULL, MemorySegment.NULL)
+), arrayOf(
+    msg("format", "u", MemorySegment.NULL)
+))
+
+private fun build_wl_buffer(): MemorySegment = iface("wl_buffer", 1, arrayOf(
+    msg("destroy", "")
+), arrayOf(
+    msg("release", "")
+))
+
+private fun build_wl_data_offer(): MemorySegment = iface("wl_data_offer", 3, arrayOf(
+    msg("accept", "u?s", MemorySegment.NULL, MemorySegment.NULL),
+    msg("receive", "sh", MemorySegment.NULL, MemorySegment.NULL),
+    msg("destroy", ""),
+    msg("finish", "3"),
+    msg("set_actions", "3uu", MemorySegment.NULL, MemorySegment.NULL)
+), arrayOf(
+    msg("offer", "s", MemorySegment.NULL),
+    msg("source_actions", "3u", MemorySegment.NULL),
+    msg("action", "3u", MemorySegment.NULL)
+))
+
+private fun build_wl_data_source(): MemorySegment = iface("wl_data_source", 3, arrayOf(
+    msg("offer", "s", MemorySegment.NULL),
+    msg("destroy", ""),
+    msg("set_actions", "3u", MemorySegment.NULL)
+), arrayOf(
+    msg("target", "?s", MemorySegment.NULL),
+    msg("send", "sh", MemorySegment.NULL, MemorySegment.NULL),
+    msg("cancelled", ""),
+    msg("dnd_drop_performed", "3"),
+    msg("dnd_finished", "3"),
+    msg("action", "3u", MemorySegment.NULL)
+))
+
+private fun build_wl_data_device(): MemorySegment = iface("wl_data_device", 3, arrayOf(
+    msg("start_drag", "?oo?ou", wl_data_source_interface, wl_surface_interface, wl_surface_interface, MemorySegment.NULL),
+    msg("set_selection", "?ou", wl_data_source_interface, MemorySegment.NULL),
+    msg("release", "2")
+), arrayOf(
+    msg("data_offer", "n", wl_data_offer_interface),
+    msg("enter", "uoff?o", MemorySegment.NULL, wl_surface_interface, MemorySegment.NULL, MemorySegment.NULL, wl_data_offer_interface),
+    msg("leave", ""),
+    msg("motion", "uff", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("drop", ""),
+    msg("selection", "?o", wl_data_offer_interface)
+))
+
+private fun build_wl_data_device_manager(): MemorySegment = iface("wl_data_device_manager", 3, arrayOf(
+    msg("create_data_source", "n", wl_data_source_interface),
+    msg("get_data_device", "no", wl_data_device_interface, wl_seat_interface)
+), arrayOf(
+))
+
+private fun build_wl_shell(): MemorySegment = iface("wl_shell", 1, arrayOf(
+    msg("get_shell_surface", "no", wl_shell_surface_interface, wl_surface_interface)
+), arrayOf(
+))
+
+private fun build_wl_shell_surface(): MemorySegment = iface("wl_shell_surface", 1, arrayOf(
+    msg("pong", "u", MemorySegment.NULL),
+    msg("move", "ou", wl_seat_interface, MemorySegment.NULL),
+    msg("resize", "ouu", wl_seat_interface, MemorySegment.NULL, MemorySegment.NULL),
+    msg("set_toplevel", ""),
+    msg("set_transient", "oiiu", wl_surface_interface, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("set_fullscreen", "uu?o", MemorySegment.NULL, MemorySegment.NULL, wl_output_interface),
+    msg("set_popup", "ouoiiu", wl_seat_interface, MemorySegment.NULL, wl_surface_interface, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("set_maximized", "?o", wl_output_interface),
+    msg("set_title", "s", MemorySegment.NULL),
+    msg("set_class", "s", MemorySegment.NULL)
+), arrayOf(
+    msg("ping", "u", MemorySegment.NULL),
+    msg("configure", "uii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("popup_done", "")
+))
+
+private fun build_wl_surface(): MemorySegment = iface("wl_surface", 6, arrayOf(
+    msg("destroy", ""),
+    msg("attach", "?oii", wl_buffer_interface, MemorySegment.NULL, MemorySegment.NULL),
+    msg("damage", "iiii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("frame", "n", wl_callback_interface),
+    msg("set_opaque_region", "?o", wl_region_interface),
+    msg("set_input_region", "?o", wl_region_interface),
+    msg("commit", ""),
+    msg("set_buffer_transform", "2i", MemorySegment.NULL),
+    msg("set_buffer_scale", "3i", MemorySegment.NULL),
+    msg("damage_buffer", "4iiii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("offset", "5ii", MemorySegment.NULL, MemorySegment.NULL)
+), arrayOf(
+    msg("enter", "o", wl_output_interface),
+    msg("leave", "o", wl_output_interface),
+    msg("preferred_buffer_scale", "6i", MemorySegment.NULL),
+    msg("preferred_buffer_transform", "6u", MemorySegment.NULL)
+))
+
+private fun build_wl_seat(): MemorySegment = iface("wl_seat", 9, arrayOf(
+    msg("get_pointer", "n", wl_pointer_interface),
+    msg("get_keyboard", "n", wl_keyboard_interface),
+    msg("get_touch", "n", wl_touch_interface),
+    msg("release", "5")
+), arrayOf(
+    msg("capabilities", "u", MemorySegment.NULL),
+    msg("name", "2s", MemorySegment.NULL)
+))
+
+private fun build_wl_pointer(): MemorySegment = iface("wl_pointer", 9, arrayOf(
+    msg("set_cursor", "u?oii", MemorySegment.NULL, wl_surface_interface, MemorySegment.NULL, MemorySegment.NULL),
+    msg("release", "3")
+), arrayOf(
+    msg("enter", "uoff", MemorySegment.NULL, wl_surface_interface, MemorySegment.NULL, MemorySegment.NULL),
+    msg("leave", "uo", MemorySegment.NULL, wl_surface_interface),
+    msg("motion", "uff", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("button", "uuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("axis", "uuf", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("frame", "5"),
+    msg("axis_source", "5u", MemorySegment.NULL),
+    msg("axis_stop", "5uu", MemorySegment.NULL, MemorySegment.NULL),
+    msg("axis_discrete", "5ui", MemorySegment.NULL, MemorySegment.NULL),
+    msg("axis_value120", "8ui", MemorySegment.NULL, MemorySegment.NULL),
+    msg("axis_relative_direction", "9uu", MemorySegment.NULL, MemorySegment.NULL)
+))
+
+private fun build_wl_keyboard(): MemorySegment = iface("wl_keyboard", 9, arrayOf(
+    msg("release", "3")
+), arrayOf(
+    msg("keymap", "uhu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("enter", "uoa", MemorySegment.NULL, wl_surface_interface, MemorySegment.NULL),
+    msg("leave", "uo", MemorySegment.NULL, wl_surface_interface),
+    msg("key", "uuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("modifiers", "uuuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("repeat_info", "4ii", MemorySegment.NULL, MemorySegment.NULL)
+))
+
+private fun build_wl_touch(): MemorySegment = iface("wl_touch", 9, arrayOf(
+    msg("release", "3")
+), arrayOf(
+    msg("down", "uuoiff", MemorySegment.NULL, MemorySegment.NULL, wl_surface_interface, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("up", "uui", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("motion", "uiff", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("frame", ""),
+    msg("cancel", ""),
+    msg("shape", "6iff", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("orientation", "6if", MemorySegment.NULL, MemorySegment.NULL)
+))
+
+private fun build_wl_output(): MemorySegment = iface("wl_output", 4, arrayOf(
+    msg("release", "3")
+), arrayOf(
+    msg("geometry", "iiiiissi", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("mode", "uiii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("done", "2"),
+    msg("scale", "2i", MemorySegment.NULL),
+    msg("name", "4s", MemorySegment.NULL),
+    msg("description", "4s", MemorySegment.NULL)
+))
+
+private fun build_wl_region(): MemorySegment = iface("wl_region", 1, arrayOf(
+    msg("destroy", ""),
+    msg("add", "iiii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("subtract", "iiii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
+), arrayOf(
+))
+
+private fun build_wl_subcompositor(): MemorySegment = iface("wl_subcompositor", 1, arrayOf(
+    msg("destroy", ""),
+    msg("get_subsurface", "noo", wl_subsurface_interface, wl_surface_interface, wl_surface_interface)
+), arrayOf(
+))
+
+private fun build_wl_subsurface(): MemorySegment = iface("wl_subsurface", 1, arrayOf(
+    msg("destroy", ""),
+    msg("set_position", "ii", MemorySegment.NULL, MemorySegment.NULL),
+    msg("place_above", "o", wl_surface_interface),
+    msg("place_below", "o", wl_surface_interface),
+    msg("set_sync", ""),
+    msg("set_desync", "")
+), arrayOf(
 ))
 
 private fun msg(name: String, signature: String, vararg types: MemorySegment): MemorySegment {

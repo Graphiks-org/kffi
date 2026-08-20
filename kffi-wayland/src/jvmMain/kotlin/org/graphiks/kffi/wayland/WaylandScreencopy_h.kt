@@ -8,12 +8,6 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 
-// Core wl_shm formats are not declared by the screencopy protocol XML.
-const val WL_SHM_FORMAT_XRGB8888: Int = 1
-const val WL_SHM_FORMAT_ARGB8888: Int = 2
-const val WL_SHM_FORMAT_XBGR8888: Int = 5
-const val WL_SHM_FORMAT_ABGR8888: Int = 6
-
 val zwlrScreencopyManagerCaptureOutput: MethodHandle? by lazy {
     libWaylandDowncall("wl_proxy_marshal_flags",
         FunctionDescriptor.of(ValueLayout.ADDRESS,
