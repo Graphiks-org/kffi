@@ -101,7 +101,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         uses: ilammy/msvc-dev-cmd@v1
       - name: Run JVM and Android host tests
-        run: ./gradlew :kffi:jvmTest :kffi:testAndroidHostTest
+        run: ./gradlew :kffi:jvmTest :kffi-objc:jvmTest :kffi:testAndroidHostTest
       - name: Compile Apple Native callback token codecs
         if: matrix.os == 'macos-latest'
         run: >-
