@@ -174,8 +174,8 @@ class WaylandIntegrationTest {
     @Test
     fun rendersShmQuadrantsThroughXdgShell() {
         assumeTrue(
-            System.getenv("KFF_WAYLAND_INTEGRATION") == "1",
-            "Set KFF_WAYLAND_INTEGRATION=1 to run the compositor-backed test",
+            System.getenv("KFFI_WAYLAND_INTEGRATION") == "1",
+            "Set KFFI_WAYLAND_INTEGRATION=1 to run the compositor-backed test",
         )
         val environment = requireIntegrationEnvironment()
         requireIntegrationNativeSymbols()
@@ -484,9 +484,9 @@ private fun requireIntegrationEnvironment(): IntegrationEnvironment {
         )
     }
 
-    val configuredArtifactDirectory = System.getenv("KFF_WAYLAND_ARTIFACT_DIR")
+    val configuredArtifactDirectory = System.getenv("KFFI_WAYLAND_ARTIFACT_DIR")
         ?.takeIf(String::isNotBlank)
-        ?: System.getProperty("kff.wayland.defaultArtifactDir")
+        ?: System.getProperty("kffi.wayland.defaultArtifactDir")
             ?.takeIf(String::isNotBlank)
         ?: "kffi-wayland/build/wayland-integration"
     return IntegrationEnvironment(

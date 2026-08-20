@@ -38,7 +38,7 @@ tasks.withType<Test>().configureEach {
 }
 
 val jvmTestTask = tasks.named<Test>("jvmTest")
-val waylandIntegrationEnabled = providers.environmentVariable("KFF_WAYLAND_INTEGRATION")
+val waylandIntegrationEnabled = providers.environmentVariable("KFFI_WAYLAND_INTEGRATION")
     .map { it == "1" }
     .orElse(false)
 
@@ -55,10 +55,10 @@ tasks.register<Test>("waylandIntegrationTest") {
     }
 
     systemProperty(
-        "kff.wayland.defaultArtifactDir",
+        "kffi.wayland.defaultArtifactDir",
         layout.buildDirectory.dir("wayland-integration").get().asFile.absolutePath,
     )
-    onlyIf("KFF_WAYLAND_INTEGRATION must equal 1") {
+    onlyIf("KFFI_WAYLAND_INTEGRATION must equal 1") {
         waylandIntegrationEnabled.get()
     }
 }

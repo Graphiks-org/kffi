@@ -11,8 +11,8 @@ import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandle
 
 fun waylandNativeDisabled(): Boolean =
-    System.getenv("KFF_WAYLAND_DISABLE_NATIVE") == "1" ||
-        System.getProperty("kff.wayland.disableNative") == "true"
+    System.getenv("KFFI_WAYLAND_DISABLE_NATIVE") == "1" ||
+        System.getProperty("kffi.wayland.disableNative") == "true"
 
 val libWaylandClient: SymbolLookup? by lazy {
     if (waylandNativeDisabled()) return@lazy null

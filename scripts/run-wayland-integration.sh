@@ -15,7 +15,7 @@ done
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DEFAULT_REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-REPO_ROOT="${KFF_WAYLAND_INTEGRATION_REPO_ROOT:-$DEFAULT_REPO_ROOT}"
+REPO_ROOT="${KFFI_WAYLAND_INTEGRATION_REPO_ROOT:-$DEFAULT_REPO_ROOT}"
 
 if [[ ! -d "$REPO_ROOT" ]]; then
     echo "error: repository root '$REPO_ROOT' does not exist" >&2
@@ -23,8 +23,8 @@ if [[ ! -d "$REPO_ROOT" ]]; then
 fi
 
 REPO_ROOT="$(cd "$REPO_ROOT" && pwd -P)"
-GRADLE="${KFF_WAYLAND_INTEGRATION_GRADLE:-$REPO_ROOT/gradlew}"
-ARTIFACT_DIR="${KFF_WAYLAND_INTEGRATION_ARTIFACT_DIR:-${KFF_WAYLAND_ARTIFACT_DIR:-$REPO_ROOT/kffi-wayland/build/wayland-integration}}"
+GRADLE="${KFFI_WAYLAND_INTEGRATION_GRADLE:-$REPO_ROOT/gradlew}"
+ARTIFACT_DIR="${KFFI_WAYLAND_INTEGRATION_ARTIFACT_DIR:-${KFFI_WAYLAND_ARTIFACT_DIR:-$REPO_ROOT/kffi-wayland/build/wayland-integration}}"
 
 if [[ "$GRADLE" == */* ]]; then
     if [[ ! -x "$GRADLE" ]]; then
@@ -73,10 +73,10 @@ workspace 1 output HEADLESS-1
 seat seat0 fallback true
 EOF
 
-export KFF_WAYLAND_INTEGRATION=1
+export KFFI_WAYLAND_INTEGRATION=1
 export WAYLAND_DISPLAY=wayland-1
 export XDG_RUNTIME_DIR="$RUNTIME_DIR"
-export KFF_WAYLAND_ARTIFACT_DIR="$ARTIFACT_DIR"
+export KFFI_WAYLAND_ARTIFACT_DIR="$ARTIFACT_DIR"
 export WLR_BACKENDS=headless
 export WLR_RENDERER=pixman
 export WLR_HEADLESS_OUTPUTS=1
