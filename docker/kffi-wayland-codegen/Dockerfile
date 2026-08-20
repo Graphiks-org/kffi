@@ -1,4 +1,4 @@
-# Wayland binding code-generation environment for kff-wayland.
+# Wayland binding code-generation environment for kffi-wayland.
 #
 # The image keeps the Linux-only toolchain out of the Gradle build while making
 # regeneration reproducible from macOS, Linux, or CI:

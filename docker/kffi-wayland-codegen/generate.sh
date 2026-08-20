@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run the kff-wayland generation pipeline inside the codegen container.
+# Run the kffi-wayland generation pipeline inside the codegen container.
 set -euo pipefail
 
 JDK_HOME="${JDK_HOME:-/opt/java/openjdk}"
@@ -8,9 +8,9 @@ REPO=/work
 KEXTRACT_DIR="${KEXTRACT_DIR:-$REPO/third_party/kextract}"
 PROTO=/usr/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml
 PROTO_DECO=/usr/share/wayland-protocols/unstable/xdg-decoration/xdg-decoration-unstable-v1.xml
-GEN="$REPO/kff-wayland/build/wayland-xdg"
-OUT_KT="$REPO/kff-wayland/src/jvmMain/kotlin"
-STAGING_KT="$REPO/kff-wayland/build/wayland-generated"
+GEN="$REPO/kffi-wayland/build/wayland-xdg"
+OUT_KT="$REPO/kffi-wayland/src/jvmMain/kotlin"
+STAGING_KT="$REPO/kffi-wayland/build/wayland-generated"
 GENERATED_KT="$OUT_KT/org/graphiks/kffi/wayland/generated"
 INTERFACE_OUT="$STAGING_KT/org/graphiks/kffi/wayland/generated/XdgShellProtocolInterfaces.kt"
 

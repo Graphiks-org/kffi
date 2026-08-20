@@ -31,9 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snapshot publication and generated API documentation.
 - JVM-only `kff-posix` module with POSIX symbol lookup, `pollfd` layout
   helpers, and a non-blocking wakeup primitive imported from `poc-koreos`.
-- JVM-only `kff-wayland` module with low-level Wayland, XDG Shell, screencopy,
+- JVM-only `kffi-wayland` module with low-level Wayland, XDG Shell, screencopy,
   and text-input FFM bindings imported from `poc-koreos`.
-- Reproducible Docker/kextract generation pipeline for the kff-wayland XDG
+- Reproducible Docker/kextract generation pipeline for the kffi-wayland XDG
   Shell bindings.
 
 ### Changed

@@ -4,7 +4,7 @@ import java.nio.file.Path;
 /** Minimal regression test for the XML-to-Kotlin generator. */
 public final class ProtocolInterfaceGeneratorTest {
     public static void main(String[] args) throws Exception {
-        Path directory = Files.createTempDirectory("kff-wayland-codegen-test");
+        Path directory = Files.createTempDirectory("kffi-wayland-codegen-test");
         Path protocol = directory.resolve("protocol.xml");
         Path output = directory.resolve("Generated.kt");
         Files.writeString(protocol, """

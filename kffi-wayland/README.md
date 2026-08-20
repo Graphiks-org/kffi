@@ -1,4 +1,4 @@
-# kff-wayland
+# kffi-wayland
 
 JVM-only low-level Wayland bindings for `kffi`, built on the Java Foreign
 Function & Memory API (Panama FFM).
@@ -13,7 +13,7 @@ handwritten FFM glue required by the Wayland protocol descriptors. Generated
 sources are kept under `generated/`; handwritten protocol descriptors such as
 text-input-v3 are kept under `protocol/`. The
 generation pipeline is available explicitly through
-`scripts/gen-kff-wayland.sh`; it runs `wayland-scanner`, the pinned `kextract`
+`scripts/gen-kffi-wayland.sh`; it runs `wayland-scanner`, the pinned `kextract`
 submodule, and the XML protocol-interface generator in Docker. It is not run as
 part of the Gradle build. It depends on
 `org.graphiks:kff-posix` for POSIX symbol downcalls and does not include the
@@ -23,7 +23,7 @@ To regenerate the bindings, initialize the submodule and run:
 
 ```bash
 git submodule update --init --recursive
-scripts/gen-kff-wayland.sh
+scripts/gen-kffi-wayland.sh
 ```
 
 The package namespace is `org.graphiks.kffi.wayland`. The module uses JDK 25
