@@ -1,15 +1,6 @@
 package org.graphiks.kffi.wayland
 
 import org.graphiks.kffi.posix.PosixSymbols
-import org.graphiks.kffi.wayland.generated.xdg_activation_token_v1_interface
-import org.graphiks.kffi.wayland.generated.xdg_activation_v1_interface
-import org.graphiks.kffi.wayland.generated.xdg_toplevel_icon_manager_v1_interface
-import org.graphiks.kffi.wayland.generated.xdg_toplevel_icon_v1_interface
-import org.graphiks.kffi.wayland.generated.zwp_confined_pointer_v1_interface
-import org.graphiks.kffi.wayland.generated.zwp_locked_pointer_v1_interface
-import org.graphiks.kffi.wayland.generated.zwp_pointer_constraints_v1_interface
-import org.graphiks.kffi.wayland.generated.zwp_text_input_manager_v3_interface
-import org.graphiks.kffi.wayland.generated.zwp_text_input_v3_interface
 import java.lang.foreign.Arena
 import java.lang.foreign.FunctionDescriptor
 import java.lang.foreign.Linker
@@ -545,34 +536,6 @@ fun buildWaylandInterface(
     return iface
 }
 
-val xdgActivationV1Interface: MemorySegment by lazy {
-    xdg_activation_v1_interface
-}
-
-val xdgActivationTokenV1Interface: MemorySegment by lazy {
-    xdg_activation_token_v1_interface
-}
-
-val zwpTextInputManagerV3Interface: MemorySegment by lazy {
-    zwp_text_input_manager_v3_interface
-}
-
-val zwpTextInputV3Interface: MemorySegment by lazy {
-    zwp_text_input_v3_interface
-}
-
-val zwpPointerConstraintsV1Interface: MemorySegment by lazy {
-    zwp_pointer_constraints_v1_interface
-}
-
-val zwpLockedPointerV1Interface: MemorySegment by lazy {
-    zwp_locked_pointer_v1_interface
-}
-
-val zwpConfinedPointerV1Interface: MemorySegment by lazy {
-    zwp_confined_pointer_v1_interface
-}
-
 val wlPointerConstraintsLockPointer: MethodHandle? by lazy {
     libWaylandClient.downcall("wl_proxy_marshal_flags",
         FunctionDescriptor.of(ValueLayout.ADDRESS,
@@ -603,14 +566,6 @@ val wlPointerConstraintsConfinePointer: MethodHandle? by lazy {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
         ))
-}
-
-val xdgToplevelIconManagerV1Interface: MemorySegment by lazy {
-    xdg_toplevel_icon_manager_v1_interface
-}
-
-val xdgToplevelIconV1Interface: MemorySegment by lazy {
-    xdg_toplevel_icon_v1_interface
 }
 
 val zwpInputManagerV3CreateTextInput: MethodHandle? by lazy {

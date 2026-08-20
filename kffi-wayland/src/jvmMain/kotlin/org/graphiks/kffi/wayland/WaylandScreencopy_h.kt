@@ -1,7 +1,5 @@
 package org.graphiks.kffi.wayland
 
-import org.graphiks.kffi.wayland.generated.zwlr_screencopy_frame_v1_interface
-import org.graphiks.kffi.wayland.generated.zwlr_screencopy_manager_v1_interface
 import java.lang.foreign.Arena
 import java.lang.foreign.FunctionDescriptor
 import java.lang.foreign.MemorySegment
@@ -9,12 +7,6 @@ import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
-
-val zwlrScreencopyManagerV1Interface: MemorySegment
-    get() = zwlr_screencopy_manager_v1_interface
-
-val zwlrScreencopyFrameV1Interface: MemorySegment
-    get() = zwlr_screencopy_frame_v1_interface
 
 // Core wl_shm formats are not declared by the screencopy protocol XML.
 const val WL_SHM_FORMAT_XRGB8888: Int = 1
