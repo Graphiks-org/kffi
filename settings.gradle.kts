@@ -21,6 +21,7 @@ dependencyResolutionManagement {
 include("docs")
 include("kffi")
 include("kff-posix")
+include("kffi-wayland")
 include("kffi-android-native")
 include("kffi-benchmark-spi")
 include("kffi-benchmark-jvm")
