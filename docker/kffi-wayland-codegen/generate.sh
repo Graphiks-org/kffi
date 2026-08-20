@@ -89,6 +89,9 @@ java -cp /build ProtocolInterfaceGenerator \
     "${XML_INPUTS[@]}" \
     "$INTERFACE_OUT" "$CONSTANTS_OUT"
 
+echo "[gen] normalizing generated Kotlin output"
+python3 /build/postprocess_generated_kotlin.py "$STAGING_KT"
+
 rm -rf "$GENERATED_KT"
 rm -f "$OUT_KT/org/graphiks/kffi/wayland/WaylandProtocolConstants.kt"
 mkdir -p "$(dirname "$GENERATED_KT")"

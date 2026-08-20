@@ -21,9 +21,11 @@ RUN apt-get -o APT::Sandbox::User=root update \
 
 # The XML-to-Kotlin generator has no external dependencies.
 WORKDIR /build
-COPY ProtocolInterfaceGenerator.java ProtocolInterfaceGeneratorTest.java .
+COPY ProtocolInterfaceGenerator.java ProtocolInterfaceGeneratorTest.java \
+    postprocess_generated_kotlin.py postprocess_generated_kotlin_test.py .
 RUN javac ProtocolInterfaceGenerator.java ProtocolInterfaceGeneratorTest.java \
-    && java ProtocolInterfaceGeneratorTest
+    && java ProtocolInterfaceGeneratorTest \
+    && python3 postprocess_generated_kotlin_test.py
 
 ENV JDK_HOME=/opt/java/openjdk \
     LLVM_HOME=/usr/lib/llvm-18

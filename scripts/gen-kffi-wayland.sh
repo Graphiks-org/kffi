@@ -11,13 +11,16 @@ IMAGE=kffi-wayland-codegen
 
 docker build -t "$IMAGE" "$REPO_ROOT/docker/kffi-wayland-codegen"
 
-TTY_ARGS=()
 if [[ -t 1 ]]; then
-    TTY_ARGS=(-t)
+    # Persist kextract's Gradle dependencies between runs.
+    docker run --rm -t \
+        -v "$REPO_ROOT:/work" \
+        -v kff-gradle-cache:/root/.gradle \
+        "$IMAGE" bash /work/docker/kffi-wayland-codegen/generate.sh
+else
+    # Persist kextract's Gradle dependencies between runs.
+    docker run --rm \
+        -v "$REPO_ROOT:/work" \
+        -v kff-gradle-cache:/root/.gradle \
+        "$IMAGE" bash /work/docker/kffi-wayland-codegen/generate.sh
 fi
-
-# Persist kextract's Gradle dependencies between runs.
-docker run --rm "${TTY_ARGS[@]}" \
-    -v "$REPO_ROOT:/work" \
-    -v kff-gradle-cache:/root/.gradle \
-    "$IMAGE" bash /work/docker/kffi-wayland-codegen/generate.sh
