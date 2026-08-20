@@ -16,16 +16,14 @@ RUN apt-get -o APT::Sandbox::User=root update \
     && apt-get -o APT::Sandbox::User=root install -y --no-install-recommends \
         clang-18 llvm-18-dev libclang-18-dev \
         libwayland-bin libwayland-dev \
-        gcc libc6-dev patch ca-certificates python3 \
+        gcc libc6-dev patch ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # The XML-to-Kotlin generator has no external dependencies.
 WORKDIR /build
-COPY ProtocolInterfaceGenerator.java ProtocolInterfaceGeneratorTest.java \
-    postprocess_generated_kotlin.py postprocess_generated_kotlin_test.py .
+COPY ProtocolInterfaceGenerator.java ProtocolInterfaceGeneratorTest.java .
 RUN javac ProtocolInterfaceGenerator.java ProtocolInterfaceGeneratorTest.java \
-    && java ProtocolInterfaceGeneratorTest \
-    && python3 postprocess_generated_kotlin_test.py
+    && java ProtocolInterfaceGeneratorTest
 
 ENV JDK_HOME=/opt/java/openjdk \
     LLVM_HOME=/usr/lib/llvm-18
