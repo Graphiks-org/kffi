@@ -54,7 +54,7 @@ functions=(
     XFreePixmap XGrabPointer XUngrabPointer XQueryPointer XWarpPointer XGetWMHints
     XAllocWMHints XSetWMHints XChangeWindowAttributes XDestroyIC XFilterEvent
     XConvertSelection XDefaultScreen XDefaultRootWindow XDefaultVisual XDefaultDepth
-    XGetImage XQueryTree XGetWindowAttributes XSync XRootWindow
+    XGetImage XDestroyImage XQueryTree XGetWindowAttributes XSync XRootWindow
     XShapeCombineRectangles XShmQueryExtension XShmCreateImage XShmAttach XShmDetach
     XShmGetImage XCompositeNameWindowPixmap XkbSetDetectableAutoRepeat XKeysymToKeycode
     XLookupKeysym XLookupString XGetKeyboardMapping XFreeStringList XQueryKeymap
@@ -115,9 +115,9 @@ while read -r constant; do args+=(--include-constant "$constant"); done < <(
 # that use them are still emitted with MemorySegment pointer parameters.
 # It also does not insert C ABI padding between struct members, so the larger
 # Xlib records with eight-byte members cannot instantiate valid layouts.
-# XDestroyImage is masked by its Xutil.h macro, while Xlib_ZPixmap,
-# Xlib_AllPlanes, XGetPropertyDelete, and XGetPropertyKeep are absent from the
-# selected Ubuntu Noble headers; none can be emitted by this invocation.
+# Xlib_ZPixmap, Xlib_AllPlanes, XGetPropertyDelete, and XGetPropertyKeep are
+# absent from the selected Ubuntu Noble headers; none can be emitted by this
+# invocation.
 
 echo "[gen] generating Kotlin FFM bindings with kextract"
 "$KEXTRACT" "${args[@]}" \
@@ -149,6 +149,20 @@ mv "$STAGING_KT/org/graphiks/kffi/x11/generated" "$GENERATED_KT"
 # kextract emits indentation-only blank lines. Normalize generated whitespace
 # so regenerated sources pass Git's whitespace checks without altering bindings.
 perl -0pi -e 's/[ \t]+$//mg; s/\n{2,}\z/\n/' "$GENERATED_KT"/*.kt
+
+if ! git -C "$REPO" ls-files --error-unmatch "$GENERATED_KT/Xlib_h.kt" >/dev/null; then
+    echo "[gen] generated package must remain tracked: $GENERATED_KT" >&2
+    exit 1
+fi
+if [[ -n "$(git -C "$REPO" ls-files --others --exclude-standard -- "$GENERATED_KT")" ]]; then
+    echo "[gen] generated package contains untracked output: $GENERATED_KT" >&2
+    exit 1
+fi
+if ! git -C "$REPO" diff --quiet -- "$GENERATED_KT"; then
+    echo "[gen] generated X11 sources differ from the tracked working tree" >&2
+    git -C "$REPO" diff -- "$GENERATED_KT" >&2
+    exit 1
+fi
 
 echo "[gen] generated sources:"
 find "$GENERATED_KT" -name '*.kt' -print

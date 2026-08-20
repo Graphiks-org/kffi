@@ -2879,6 +2879,25 @@ fun XCompositeNameWindowPixmap(arg0: MemorySegment, arg1: Long): Long {
 }
 
 /**
+ * {@snippet lang=c : XDestroyImage Int((typedef XImage = Declared(_XImage))*)
+ */
+private val XDestroyImage_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val XDestroyImage_ADDR: MemorySegment = LOOKUP.find("XDestroyImage").orElseThrow()
+private val XDestroyImage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XDestroyImage_ADDR, XDestroyImage_DESC)
+
+fun XDestroyImage(arg0: MemorySegment): Int {
+    try {
+        return XDestroyImage_HANDLE.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * WARNING: This was originally a C union. Fields overlap in memory!
  * {@snippet lang=c : UNION KffiXEventStorage
  */

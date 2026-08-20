@@ -16,19 +16,26 @@ monitor, mapper, or capture classes from `kadre-x11`.
 The generator includes only named declarations needed by that surface. C
 functions, constants, typedefs, structs, and unions come from `kextract`; no
 handwritten FFM function descriptors or native layout offsets are part of the
-module. In particular, `XEvent` and other C unions must be represented by
-`MemoryLayout.unionLayout(...)` in the generated JVM bindings.
+module. Complex native Xlib records (`XEvent`, `XImage`, `XWindowAttributes`,
+`XWMHints`, `XGC`, and `XShmSegmentInfo`) remain generated `MemorySegment`
+pointer APIs because the pinned generator cannot emit their raw layouts safely.
+The generator-only C input instead supplies generated `KffiXEventStorage`
+union and `XShmSegmentInfoCompat` struct layouts, whose ABI correspondence is
+validated by C compile-time assertions against the native headers.
 
 ## Architecture
 
 `kffi-x11` follows `kffi-wayland`: it is included as a JVM-only Kotlin
 Multiplatform module, depends on `kffi-posix`, and keeps generated Kotlin under
 `src/jvmMain/kotlin/org/graphiks/kffi/x11/generated`. A Docker-based generation
-script supplies a reproducible Linux X11 header/toolchain environment, builds
+script supplies a Linux X11 header/toolchain environment, builds
 the checked-out `third_party/kextract`, and writes generated sources into the
 module. The parent repository pins the kextract submodule to commit
 `9252fb417ea91dae882a6a9e9d06ab672c50adc3`, the head of
-`codex/fix-union-layout`.
+`codex/fix-union-layout`. The codegen base is pinned to
+`eclipse-temurin:25-jdk-noble@sha256:e94f1dc880339ab3884b69176b79c8dc4124b722e059c7ff7f0bf53b603a46f8`;
+the Docker image supplies the declared Ubuntu packages at build time and does
+not claim an APT snapshot pin.
 
 The generated bindings use kextract's direct JVM FFM backend and load the
 declared X11 libraries through its generated symbol bootstrap. Optional X11
@@ -37,7 +44,10 @@ non-native contract tests must work on hosts without X11 libraries.
 
 ## Verification
 
-The module test suite verifies that the generated source contains the expected
-X11 functions and union layouts, that ordinary structs still use struct
-layouts, and that the generated source compiles. The root Gradle test task and
-the X11 generation pipeline are both run before completion.
+The module test suite verifies reflected function signatures (including
+`XDestroyImage`), generated union/struct layout alignments and field offsets,
+and a Linux-only native `XOpenDisplay(NULL)` smoke path that closes a non-null
+display without requiring an X server. The generation pipeline checks the
+pinned, clean kextract submodule and fails if its tracked generated package
+changes. The root Gradle test task and the X11 generation pipeline are both
+run before completion.

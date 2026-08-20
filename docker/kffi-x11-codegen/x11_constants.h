@@ -3,7 +3,7 @@
 
 /* Xlib.h defines KeyPress as 2. Keep this pure macro isolated from Xlib's
  * typedef graph so kextract can generate a callable test constant without
- * initializing the native-library lookup used by function bindings. */
+ * expanding every transitive Xlib declaration into this isolated output. */
 #define KeyPress 2
 
 #endif

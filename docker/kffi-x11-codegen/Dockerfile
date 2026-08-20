@@ -1,5 +1,5 @@
 # Reproducible X11 binding code-generation environment for kffi-x11.
-FROM eclipse-temurin:25-jdk-noble
+FROM eclipse-temurin:25-jdk-noble@sha256:e94f1dc880339ab3884b69176b79c8dc4124b722e059c7ff7f0bf53b603a46f8
 
 # On arm64 Docker Desktop, Ubuntu's `_apt` sandbox can report a misleading
 # invalid-signature error while invoking gpgv. Signature verification remains

@@ -13,9 +13,12 @@ The module depends on `org.graphiks:kffi-posix`, uses JDK 25 bytecode, and
 requires a JDK 25 runtime. The contract tests do not require an X server.
 
 The generator is pinned to kextract revision
-`9252fb417ea91dae882a6a9e9d06ab672c50adc3`. Regeneration is Linux-only: its
-Docker pipeline uses Ubuntu X11 development headers and is not part of the
-Gradle build. Initialize the submodule, then run:
+`9252fb417ea91dae882a6a9e9d06ab672c50adc3`. Its Docker base is pinned to
+`eclipse-temurin:25-jdk-noble@sha256:e94f1dc880339ab3884b69176b79c8dc4124b722e059c7ff7f0bf53b603a46f8`;
+the image supplies the declared Ubuntu X11 development packages at build time
+(they are not APT-snapshot pinned). Regeneration selects `linux/amd64` or
+`linux/arm64` from the host architecture, is Linux-targeted, and is not part
+of the Gradle build. Initialize the submodule, then run:
 
 ```bash
 git submodule update --init --recursive
@@ -36,6 +39,15 @@ LP64 storage declarations that kextract can generate safely:
 `KffiXEventStorage` (192-byte union-compatible XEvent buffer) and
 `XShmSegmentInfoCompat` (32-byte LP64-padded storage layout). They are
 compatibility shims, not replacements for the native records passed to Xlib;
-the XShm APIs remain pointer-based.
+the XShm APIs remain pointer-based. `x11_compat.h` uses C `_Static_assert`
+checks against Xlib/XShm headers to validate their sizes, alignments, and
+native field offsets before kextract sees them.
+
+`XDestroyImage` is generated as `MemorySegment -> Int`: the compatibility
+header undefines Xutil's function-like macro and redeclares the underlying C
+function for kextract. `KeyPress` remains an isolated numeric compatibility
+constant because including `Xlib.h` in its constant-only generation unit makes
+the pinned generator emit hundreds of transitive declarations; `KeyRelease` is
+also selected and tested directly from the real Xlib header.
 
 The source is distributed under the MIT License.

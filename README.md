@@ -179,9 +179,11 @@ sources are in `org.graphiks.kffi.x11.generated` and load `libX11.so.6`,
 
 The bindings are generated with the pinned
 [`kextract`](https://github.com/klang-toolkit/kextract) revision
-`9252fb417ea91dae882a6a9e9d06ab672c50adc3`. Regenerate them on Linux (the
-Docker pipeline uses the Ubuntu X11 development headers) after initializing
-the submodule:
+`9252fb417ea91dae882a6a9e9d06ab672c50adc3`. The Docker base image is pinned
+to `eclipse-temurin:25-jdk-noble@sha256:e94f1dc880339ab3884b69176b79c8dc4124b722e059c7ff7f0bf53b603a46f8`;
+it supplies the declared Ubuntu X11 development packages at image-build time
+rather than claiming an APT snapshot pin. Regenerate for Linux after
+initializing the submodule:
 
 ```bash
 git submodule update --init --recursive
@@ -197,7 +199,8 @@ declarations or LP64 padding. `XEvent`, `XImage`, `XWindowAttributes`,
 `MemorySegment` pointer APIs without raw record accessors. The generator's
 `KffiXEventStorage` (192-byte event storage) and `XShmSegmentInfoCompat`
 (32-byte LP64-padded storage) declarations are compatibility shims only; they
-do not replace the native records passed to Xlib.
+do not replace the native records passed to Xlib. The generator validates those
+shim sizes, alignments, and native offsets with C `_Static_assert` checks.
 
 ## Loading a native library
 
