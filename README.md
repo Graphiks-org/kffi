@@ -196,14 +196,26 @@ start or require an X server.
 For the Linux-only screenshot integration, no physical X server or window
 manager is required: `scripts/run-x11-integration.sh` starts `Xvfb` and runs
 `:kffi-x11:x11IntegrationTest`. CI installs the Ubuntu packages actually used
-there: `xvfb`, `x11-apps`, `libx11-6`, `libxext6`, `libxcomposite1`, and
-`imagemagick`.
+there: `xvfb`, `x11-apps`, `libx11-6`, `libxext6`, `libxcomposite1`, `libxtst6`,
+and `imagemagick`.
 
 Use the runner for the full local flow:
 
 ```bash
 scripts/run-x11-integration.sh
 ```
+
+To run the same flow in the Wayland-style Docker wrapper, with X11 tools and
+the JDK supplied by the image:
+
+```bash
+scripts/docker-x11-integration.sh
+```
+
+The Docker wrapper requires a working Docker daemon and persists Gradle
+dependencies in the `kffi-x11-integration-gradle-cache` volume by default.
+Override the image or cache volume with `KFFI_X11_INTEGRATION_IMAGE` or
+`KFFI_X11_INTEGRATION_GRADLE_CACHE_VOLUME`.
 
 The runner requires Linux, exports `KFFI_X11_INTEGRATION=1`, and writes
 artifacts to `kffi-x11/build/x11-integration/` by default. Supported overrides

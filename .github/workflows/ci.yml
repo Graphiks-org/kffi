@@ -60,6 +60,7 @@ jobs:
             libx11-6 \
             libxcomposite1 \
             libxext6 \
+            libxtst6 \
             x11-apps \
             xvfb
       - name: Run X11 binding tests

@@ -17,13 +17,25 @@ requires a JDK 25 runtime. The contract tests do not require an X server.
 The Linux-only screenshot integration runs against `Xvfb`, so it does not
 require a physical X server or a window manager. CI installs the Ubuntu
 packages actually used by the runner and bindings: `xvfb`, `x11-apps`,
-`libx11-6`, `libxext6`, `libxcomposite1`, and `imagemagick`.
+`libx11-6`, `libxext6`, `libxcomposite1`, `libxtst6`, and `imagemagick`.
 
 Use the runner for the full local flow:
 
 ```bash
 scripts/run-x11-integration.sh
 ```
+
+The Wayland-style Docker wrapper provides the same flow with the JDK and X11
+dependencies inside the container:
+
+```bash
+scripts/docker-x11-integration.sh
+```
+
+It requires a working Docker daemon and persists Gradle dependencies in the
+`kffi-x11-integration-gradle-cache` volume by default. Override the image or
+cache volume with `KFFI_X11_INTEGRATION_IMAGE` or
+`KFFI_X11_INTEGRATION_GRADLE_CACHE_VOLUME`.
 
 The script requires Linux, exports `KFFI_X11_INTEGRATION=1`, starts `Xvfb`,
 and runs `:kffi-x11:x11IntegrationTest`. It writes artifacts to
