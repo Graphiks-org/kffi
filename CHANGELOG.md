@@ -33,6 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   helpers, and a non-blocking wakeup primitive imported from `poc-koreos`.
 - JVM-only `kffi-wayland` module with low-level Wayland, XDG Shell, screencopy,
   and text-input FFM bindings imported from `poc-koreos`.
+- JVM-only `kffi-x11` module with generated low-level X11 FFM bindings and a
+  reproducible Docker/kextract generation pipeline.
 - Reproducible Docker/kextract generation pipeline for the kffi-wayland XDG
   Shell bindings.
 
