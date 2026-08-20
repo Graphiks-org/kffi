@@ -12,6 +12,13 @@ build. The generated bindings load `libX11.so.6`, `libXext.so.6`, and
 The module depends on `org.graphiks:kffi-posix`, uses JDK 25 bytecode, and
 requires a JDK 25 runtime. The contract tests do not require an X server.
 
+The generated core X11 API covers graphics contexts and their state setters,
+color parsing/allocation/query operations, drawing points, lines, segments,
+rectangles, arcs and polygons, plus pixmap creation/copy/clear and window
+background/border helpers. kextract also emits the layouts for `XColor`,
+`XPoint`, `XSegment`, `XRectangle` and `XArc`; opaque records remain
+`MemorySegment` pointers when their nested ABI cannot be laid out safely.
+
 ## Linux X11 screenshot integration
 
 The Linux-only screenshot integration runs against `Xvfb`, so it does not
@@ -55,6 +62,11 @@ reference an existing X server. Prefer `scripts/run-x11-integration.sh` for the
 self-contained headless flow. When run directly, the task defaults its
 artifacts to `kffi-x11/build/x11-integration/` unless
 `KFFI_X11_ARTIFACT_DIR` is set.
+
+The integration test draws four named-color rectangles in the window's four
+quadrants, captures `window.png`, and validates a center pixel from each
+quadrant. `X11BindingTest` checks the generated core GC, color, geometry and
+pixmap declarations and record sizes.
 
 The generator is pinned to kextract revision
 `9252fb417ea91dae882a6a9e9d06ab672c50adc3`. Its Docker base is pinned to

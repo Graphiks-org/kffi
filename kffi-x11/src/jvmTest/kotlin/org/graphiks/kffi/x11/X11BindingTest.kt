@@ -12,11 +12,14 @@ import kotlin.test.assertTrue
 import org.graphiks.kffi.x11.generated.KffiXEventStorage
 import org.graphiks.kffi.x11.generated.KeyPress
 import org.graphiks.kffi.x11.generated.XCloseDisplay
+import org.graphiks.kffi.x11.generated.XArc
 import org.graphiks.kffi.x11.generated.XColor
 import org.graphiks.kffi.x11.generated.XOpenDisplay
 import org.graphiks.kffi.x11.generated.XPoint
 import org.graphiks.kffi.x11.generated.XRectangle
+import org.graphiks.kffi.x11.generated.XSegment
 import org.graphiks.kffi.x11.generated.XShmSegmentInfoCompat
+import org.graphiks.kffi.x11.generated.XSetForeground
 
 class X11BindingTest {
     @Test
@@ -33,6 +36,16 @@ class X11BindingTest {
                 "XCloseDisplay",
                 "XNextEvent",
                 "XGetImage",
+                "XCreateGC",
+                "XFreeGC",
+                "XSetForeground",
+                "XAllocNamedColor",
+                "XDrawLine",
+                "XDrawArc",
+                "XFillPolygon",
+                "XFillRectangle",
+                "XCreatePixmap",
+                "XFreePixmap",
                 "XShmCreateImage",
                 "XCompositeNameWindowPixmap",
                 "XDestroyImage",
@@ -78,6 +91,11 @@ class X11BindingTest {
         assertIs<StructLayout>(XRectangle.layout)
         assertIs<StructLayout>(XPoint.layout)
         assertIs<StructLayout>(XColor.layout)
+        assertIs<StructLayout>(XSegment.layout)
+        assertIs<StructLayout>(XArc.layout)
+        assertEquals(16L, XColor.layout.byteSize())
+        assertEquals(8L, XSegment.layout.byteSize())
+        assertEquals(12L, XArc.layout.byteSize())
     }
 
     @Test
