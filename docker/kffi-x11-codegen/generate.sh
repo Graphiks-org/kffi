@@ -24,6 +24,10 @@ if [[ "$actual_kextract_revision" != "$REQUIRED_KEXTRACT_REVISION" ]]; then
     echo "[gen] expected kextract $REQUIRED_KEXTRACT_REVISION, found $actual_kextract_revision" >&2
     exit 1
 fi
+if [[ -n "$(git -C "$KEXTRACT_DIR" status --porcelain --untracked-files=all)" ]]; then
+    echo "[gen] kextract worktree must be clean at $REQUIRED_KEXTRACT_REVISION" >&2
+    exit 1
+fi
 
 rm -rf "$STAGING_KT"
 mkdir -p "$STAGING_KT"
@@ -57,16 +61,16 @@ functions=(
     XSetICValues XCreateIC XSetICFocus XUnsetICFocus XOpenIM XCloseIM
 )
 constants=(
-    KeyPress KeyRelease ButtonPress ButtonRelease MotionNotify EnterNotify LeaveNotify
+    KeyRelease ButtonPress ButtonRelease MotionNotify EnterNotify LeaveNotify
     FocusIn FocusOut Expose VisibilityNotify ConfigureNotify ClientMessage DestroyNotify
     SelectionNotify KeyPressMask KeyReleaseMask ButtonPressMask ButtonReleaseMask
     PointerMotionMask VisibilityChangeMask FocusChangeMask EnterWindowMask LeaveWindowMask
     ExposureMask StructureNotifyMask SubstructureNotifyMask SubstructureRedirectMask
     CWOverrideRedirect CompositeRedirectAutomatic AnyPropertyType
 )
+pure_constants=(KeyPress)
 typedefs=(
     Display XID Atom Window Cursor Pixmap Drawable Time Bool Status XRectangle XPoint
-    XShmSegmentInfo
 )
 structs=(
     XRectangle XPoint XColor
@@ -85,7 +89,16 @@ for function in "${functions[@]}"; do args+=(--include-function "$function"); do
 for constant in "${constants[@]}"; do args+=(--include-constant "$constant"); done
 for typedef in "${typedefs[@]}"; do args+=(--include-typedef "$typedef"); done
 for struct in "${structs[@]}"; do args+=(--include-struct "$struct"); done
-args+=(--include-union KffiXEventStorage --include-typedef KffiXEventStorage)
+args+=(
+    --include-union KffiXEventStorage --include-typedef KffiXEventStorage
+    --include-struct XShmSegmentInfoCompat --include-typedef XShmSegmentInfoCompat
+)
+
+constant_args=(
+    -t org.graphiks.kffi.x11.generated
+    -o "$STAGING_KT"
+)
+for constant in "${pure_constants[@]}"; do constant_args+=(--include-constant "$constant"); done
 
 # These macro families are part of the X11 public API. Extract their concrete
 # names from the installed headers so the inclusion list follows the headers.
@@ -118,6 +131,16 @@ echo "[gen] generating Kotlin FFM bindings with kextract"
     /usr/include/X11/extensions/Xcomposite.h \
     /usr/include/X11/Xatom.h \
     "$REPO/docker/kffi-x11-codegen/x11_compat.h"
+
+echo "[gen] generating pure X11 constants with kextract"
+"$KEXTRACT" "${constant_args[@]}" \
+    "$REPO/docker/kffi-x11-codegen/x11_constants.h"
+
+# A constant-only kextract invocation does not use its runtime helper. Remove
+# that duplicate private helper so the generated constant and native-binding
+# files share one Kotlin package without redeclarations.
+perl -0pi -e 's/private object kextract_runtime \{.*?\}\n\n//s' \
+    "$STAGING_KT/org/graphiks/kffi/x11/generated/x11_constants_h.kt"
 
 rm -rf "$GENERATED_KT"
 mkdir -p "$(dirname "$GENERATED_KT")"

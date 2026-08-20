@@ -12,4 +12,18 @@ typedef union KffiXEventStorage {
     long pad[24];
 } KffiXEventStorage;
 
+/*
+ * XShmSegmentInfo is LP64-aligned by the C compiler. Give kextract named
+ * padding fields so it can emit a valid layout without handwritten Kotlin
+ * offsets. Native XShm calls continue to accept the original opaque pointer.
+ */
+typedef struct XShmSegmentInfoCompat {
+    long shmseg;
+    int shmid;
+    int padding_after_shmid;
+    void *shmaddr;
+    int readOnly;
+    int padding_after_read_only;
+} XShmSegmentInfoCompat;
+
 #endif

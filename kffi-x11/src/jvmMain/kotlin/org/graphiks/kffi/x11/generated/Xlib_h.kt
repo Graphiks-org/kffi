@@ -25,11 +25,6 @@ private val LOOKUP: SymbolLookup = run {
 }
 
 /**
- * {@snippet lang=c : #define KeyPress 2
- */
-fun KeyPress(): Int = (2).toInt()
-
-/**
  * {@snippet lang=c : #define KeyRelease 3
  */
 fun KeyRelease(): Int = (3).toInt()
@@ -2741,75 +2736,6 @@ fun XkbSetDetectableAutoRepeat(arg0: MemorySegment, arg1: Int, arg2: MemorySegme
 typealias ShmSeg = Long
 
 /**
- * {@snippet lang=c : STRUCT XShmSegmentInfo
- */
-class XShmSegmentInfo {
-    companion object {
-        val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("shmseg"),
-            ValueLayout.JAVA_INT.withName("shmid"),
-            ValueLayout.ADDRESS.withName("shmaddr"),
-            ValueLayout.JAVA_INT.withName("readOnly")
-        ).withName("XShmSegmentInfo")
-
-        val byteSize: Long
-            get() = layout.byteSize()
-
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
-
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
-
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
-
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
-
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
-
-    } // End companion object
-
-    val shmseg_VH: VarHandle = layout.varHandle(groupElement("shmseg"))
-
-    @Suppress("UNCHECKED_CAST")
-    fun shmseg(segment: MemorySegment): Long =
-        shmseg_VH.get(segment, 0L) as Long
-
-    fun shmseg(segment: MemorySegment, value: Long) =
-        shmseg_VH.set(segment, 0L, value)
-
-    val shmid_VH: VarHandle = layout.varHandle(groupElement("shmid"))
-
-    @Suppress("UNCHECKED_CAST")
-    fun shmid(segment: MemorySegment): Int =
-        shmid_VH.get(segment, 0L) as Int
-
-    fun shmid(segment: MemorySegment, value: Int) =
-        shmid_VH.set(segment, 0L, value)
-
-    val shmaddr_VH: VarHandle = layout.varHandle(groupElement("shmaddr"))
-
-    @Suppress("UNCHECKED_CAST")
-    fun shmaddr(segment: MemorySegment): MemorySegment =
-        shmaddr_VH.get(segment, 0L) as MemorySegment
-
-    fun shmaddr(segment: MemorySegment, value: MemorySegment) =
-        shmaddr_VH.set(segment, 0L, value)
-
-    val readOnly_VH: VarHandle = layout.varHandle(groupElement("readOnly"))
-
-    @Suppress("UNCHECKED_CAST")
-    fun readOnly(segment: MemorySegment): Int =
-        readOnly_VH.get(segment, 0L) as Int
-
-    fun readOnly(segment: MemorySegment, value: Int) =
-        readOnly_VH.set(segment, 0L, value)
-} // End class
-
-/**
  * {@snippet lang=c : XShmQueryExtension Int((typedef Display = Declared(_XDisplay))*)
  */
 private val XShmQueryExtension_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
@@ -2997,6 +2923,95 @@ class KffiXEventStorage {
 
     fun pad(segment: MemorySegment): MemorySegment =
         segment.asSlice(layout.byteOffset(groupElement("pad")), layout.select(groupElement("pad")).byteSize())
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT XShmSegmentInfoCompat
+ */
+class XShmSegmentInfoCompat {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_LONG.withName("shmseg"),
+            ValueLayout.JAVA_INT.withName("shmid"),
+            ValueLayout.JAVA_INT.withName("padding_after_shmid"),
+            ValueLayout.ADDRESS.withName("shmaddr"),
+            ValueLayout.JAVA_INT.withName("readOnly"),
+            ValueLayout.JAVA_INT.withName("padding_after_read_only")
+        ).withName("XShmSegmentInfoCompat")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val shmseg_VH: VarHandle = layout.varHandle(groupElement("shmseg"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun shmseg(segment: MemorySegment): Long =
+        shmseg_VH.get(segment, 0L) as Long
+
+    fun shmseg(segment: MemorySegment, value: Long) =
+        shmseg_VH.set(segment, 0L, value)
+
+    val shmid_VH: VarHandle = layout.varHandle(groupElement("shmid"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun shmid(segment: MemorySegment): Int =
+        shmid_VH.get(segment, 0L) as Int
+
+    fun shmid(segment: MemorySegment, value: Int) =
+        shmid_VH.set(segment, 0L, value)
+
+    val padding_after_shmid_VH: VarHandle = layout.varHandle(groupElement("padding_after_shmid"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_shmid(segment: MemorySegment): Int =
+        padding_after_shmid_VH.get(segment, 0L) as Int
+
+    fun padding_after_shmid(segment: MemorySegment, value: Int) =
+        padding_after_shmid_VH.set(segment, 0L, value)
+
+    val shmaddr_VH: VarHandle = layout.varHandle(groupElement("shmaddr"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun shmaddr(segment: MemorySegment): MemorySegment =
+        shmaddr_VH.get(segment, 0L) as MemorySegment
+
+    fun shmaddr(segment: MemorySegment, value: MemorySegment) =
+        shmaddr_VH.set(segment, 0L, value)
+
+    val readOnly_VH: VarHandle = layout.varHandle(groupElement("readOnly"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun readOnly(segment: MemorySegment): Int =
+        readOnly_VH.get(segment, 0L) as Int
+
+    fun readOnly(segment: MemorySegment, value: Int) =
+        readOnly_VH.set(segment, 0L, value)
+
+    val padding_after_read_only_VH: VarHandle = layout.varHandle(groupElement("padding_after_read_only"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_read_only(segment: MemorySegment): Int =
+        padding_after_read_only_VH.get(segment, 0L) as Int
+
+    fun padding_after_read_only(segment: MemorySegment, value: Int) =
+        padding_after_read_only_VH.set(segment, 0L, value)
 } // End class
 
 /**
