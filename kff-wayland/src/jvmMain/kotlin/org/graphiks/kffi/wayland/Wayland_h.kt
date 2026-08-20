@@ -1,8 +1,8 @@
 package org.graphiks.kffi.wayland
 
 import org.graphiks.kffi.posix.PosixSymbols
-import org.graphiks.kffi.wayland.generated.zwp_text_input_manager_v3_interface
-import org.graphiks.kffi.wayland.generated.zwp_text_input_v3_interface
+import org.graphiks.kffi.wayland.protocol.zwp_text_input_manager_v3_interface
+import org.graphiks.kffi.wayland.protocol.zwp_text_input_v3_interface
 import java.lang.foreign.Arena
 import java.lang.foreign.FunctionDescriptor
 import java.lang.foreign.Linker

@@ -10,7 +10,9 @@ PROTO=/usr/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml
 PROTO_DECO=/usr/share/wayland-protocols/unstable/xdg-decoration/xdg-decoration-unstable-v1.xml
 GEN="$REPO/kff-wayland/build/wayland-xdg"
 OUT_KT="$REPO/kff-wayland/src/jvmMain/kotlin"
-INTERFACE_OUT="$OUT_KT/org/graphiks/kffi/wayland/generated/XdgShellProtocolInterfaces.kt"
+STAGING_KT="$REPO/kff-wayland/build/wayland-generated"
+GENERATED_KT="$OUT_KT/org/graphiks/kffi/wayland/generated"
+INTERFACE_OUT="$STAGING_KT/org/graphiks/kffi/wayland/generated/XdgShellProtocolInterfaces.kt"
 
 echo "[gen] llvm=$LLVM_HOME jdk=$JDK_HOME"
 
@@ -20,7 +22,8 @@ if [[ ! -x "$KEXTRACT_DIR/gradlew" ]]; then
     exit 1
 fi
 
-mkdir -p "$GEN" "$(dirname "$INTERFACE_OUT")"
+rm -rf "$STAGING_KT"
+mkdir -p "$GEN" "$STAGING_KT"
 
 echo "[gen] building kextract"
 (
@@ -44,7 +47,7 @@ echo "[gen] generating Kotlin FFM bindings with kextract"
 # compiler-provided sized integer, size_t, and va_list definitions here.
 "$KEXTRACT" \
     -t org.graphiks.kffi.wayland.generated \
-    -o "$OUT_KT" \
+    -o "$STAGING_KT" \
     --include-struct wl_interface \
     --include-struct wl_message \
     -A -ffreestanding \
@@ -57,5 +60,9 @@ java -cp /build ProtocolInterfaceGenerator \
     "$PROTO" "$PROTO_DECO" \
     "$INTERFACE_OUT"
 
+rm -rf "$GENERATED_KT"
+mkdir -p "$(dirname "$GENERATED_KT")"
+mv "$STAGING_KT/org/graphiks/kffi/wayland/generated" "$GENERATED_KT"
+
 echo "[gen] generated sources:"
-find "$OUT_KT/org/graphiks/kffi/wayland/generated" -name '*.kt' -print
+find "$GENERATED_KT" -name '*.kt' -print

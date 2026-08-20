@@ -16,6 +16,7 @@ public class ProtocolInterfaceGenerator {
         String name;
         String type;
         String iface;
+        boolean allowNull;
     }
 
     static class Message {
@@ -101,6 +102,7 @@ public class ProtocolInterfaceGenerator {
             arg.type = e.getAttribute("type");
             String iface = e.getAttribute("interface");
             arg.iface = iface.isEmpty() ? null : iface;
+            arg.allowNull = "true".equalsIgnoreCase(e.getAttribute("allow-null"));
             msg.args.add(arg);
         }
         return msg;
@@ -124,7 +126,13 @@ public class ProtocolInterfaceGenerator {
 
     static String buildSignature(List<Arg> args) {
         StringBuilder sig = new StringBuilder();
-        for (Arg arg : args) sig.append(typeToEncoding(arg.type));
+        for (Arg arg : args) {
+            String encoding = typeToEncoding(arg.type);
+            if (arg.allowNull && ("string".equals(arg.type) || "object".equals(arg.type))) {
+                encoding = "?" + encoding;
+            }
+            sig.append(encoding);
+        }
         return sig.toString();
     }
 

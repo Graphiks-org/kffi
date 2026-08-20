@@ -21,8 +21,9 @@ RUN apt-get -o APT::Sandbox::User=root update \
 
 # The XML-to-Kotlin generator has no external dependencies.
 WORKDIR /build
-COPY ProtocolInterfaceGenerator.java .
-RUN javac ProtocolInterfaceGenerator.java
+COPY ProtocolInterfaceGenerator.java ProtocolInterfaceGeneratorTest.java .
+RUN javac ProtocolInterfaceGenerator.java ProtocolInterfaceGeneratorTest.java \
+    && java ProtocolInterfaceGeneratorTest
 
 ENV JDK_HOME=/opt/java/openjdk \
     LLVM_HOME=/usr/lib/llvm-18

@@ -1,4 +1,4 @@
-package org.graphiks.kffi.wayland.generated
+package org.graphiks.kffi.wayland.protocol
 
 import org.graphiks.kffi.wayland.libWaylandClient
 import java.lang.foreign.Arena

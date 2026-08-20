@@ -9,7 +9,9 @@ protocol bindings imported from
 at commit `411bd9f6795f8aae5330fddca96dd4e77629a4b4`.
 
 The imported sources include kextract-generated low-level bindings and the
-handwritten FFM glue required by the Wayland protocol descriptors. The
+handwritten FFM glue required by the Wayland protocol descriptors. Generated
+sources are kept under `generated/`; handwritten protocol descriptors such as
+text-input-v3 are kept under `protocol/`. The
 generation pipeline is available explicitly through
 `scripts/gen-kff-wayland.sh`; it runs `wayland-scanner`, the pinned `kextract`
 submodule, and the XML protocol-interface generator in Docker. It is not run as

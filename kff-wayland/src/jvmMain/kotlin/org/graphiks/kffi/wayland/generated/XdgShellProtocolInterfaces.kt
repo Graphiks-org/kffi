@@ -70,7 +70,7 @@ private fun build_xdg_positioner(): MemorySegment = iface("xdg_positioner", 7, a
 private fun build_xdg_surface(): MemorySegment = iface("xdg_surface", 7, arrayOf(
     msg("destroy", ""),
     msg("get_toplevel", "n", xdg_toplevel_interface),
-    msg("get_popup", "noo", xdg_popup_interface, MemorySegment.NULL, xdg_positioner_interface),
+    msg("get_popup", "n?oo", xdg_popup_interface, MemorySegment.NULL, xdg_positioner_interface),
     msg("set_window_geometry", "iiii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
     msg("ack_configure", "u", MemorySegment.NULL)
 ), arrayOf(
@@ -79,7 +79,7 @@ private fun build_xdg_surface(): MemorySegment = iface("xdg_surface", 7, arrayOf
 
 private fun build_xdg_toplevel(): MemorySegment = iface("xdg_toplevel", 7, arrayOf(
     msg("destroy", ""),
-    msg("set_parent", "o", MemorySegment.NULL),
+    msg("set_parent", "?o", MemorySegment.NULL),
     msg("set_title", "s", MemorySegment.NULL),
     msg("set_app_id", "s", MemorySegment.NULL),
     msg("show_window_menu", "ouii", wl_seat_interface, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
@@ -89,7 +89,7 @@ private fun build_xdg_toplevel(): MemorySegment = iface("xdg_toplevel", 7, array
     msg("set_min_size", "ii", MemorySegment.NULL, MemorySegment.NULL),
     msg("set_maximized", ""),
     msg("unset_maximized", ""),
-    msg("set_fullscreen", "o", wl_output_interface),
+    msg("set_fullscreen", "?o", wl_output_interface),
     msg("unset_fullscreen", ""),
     msg("set_minimized", "")
 ), arrayOf(
