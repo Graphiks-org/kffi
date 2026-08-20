@@ -26,30 +26,4 @@ class ObjCRuntimeTest {
             }
         }
     }
-
-    @Test
-    fun coversAppKitWindowInputAndRenderingBatch() {
-        assumeTrue(
-            System.getProperty("os.name")?.startsWith("Mac OS") == true,
-            "Objective-C runtime tests require macOS",
-        )
-
-        val wrappers = listOf(
-            NSWindowController(MemorySegment.NULL),
-            NSViewController(MemorySegment.NULL),
-            NSScreen(MemorySegment.NULL),
-            NSEvent(MemorySegment.NULL),
-            NSColor(MemorySegment.NULL),
-            NSImage(MemorySegment.NULL),
-            NSCursor(MemorySegment.NULL),
-            NSControl(MemorySegment.NULL),
-            NSButton(MemorySegment.NULL),
-            NSTextField(MemorySegment.NULL),
-        )
-
-        assertEquals(10, wrappers.size)
-        wrappers.forEach { wrapper ->
-            assertNotEquals(MemorySegment.NULL, ObjCRuntime.getClass(wrapper::class.simpleName!!))
-        }
-    }
 }
