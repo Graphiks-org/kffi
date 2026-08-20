@@ -13,7 +13,7 @@ handwritten FFM runtime glue. Protocol XML is used to generate the
 fourteen protocol XML inputs. Generated sources are kept under `generated/`
 (with protocol constants in the module package). The generation pipeline is
 available explicitly through `scripts/gen-kffi-wayland.sh`; it runs
-`wayland-scanner`, the pinned `kextract` submodules, and the XML
+`wayland-scanner`, the pinned `kextract` submodule, and the XML
 protocol-interface generator in Docker.
 
 The fourteen XML inputs are:
@@ -42,10 +42,11 @@ input is a technical dependency of `staging/cursor-shape/cursor-shape-v1.xml`:
 it is included so `zwp_tablet_tool_v2` references resolve during generation,
 not to add a tablet-specific runtime API in this change. The local wlroots
 snapshot comes from commit
-`0855cdacb2eeeff35849e2e9c4db0aa996d78d10`. It is not run as part of the Gradle
-build. It depends on
-`org.graphiks:kffi-posix` for POSIX symbol downcalls and does not include the
-higher-level `kadre-wayland` event-loop layer.
+`0855cdacb2eeeff35849e2e9c4db0aa996d78d10`. It is consumed only by the Docker
+generation pipeline and is not processed by the Gradle build. The generated
+`kffi-wayland` module depends on `org.graphiks:kffi-posix` for POSIX symbol
+downcalls and does not include the higher-level `kadre-wayland` event-loop
+layer.
 
 To regenerate the bindings, initialize the submodule and run:
 

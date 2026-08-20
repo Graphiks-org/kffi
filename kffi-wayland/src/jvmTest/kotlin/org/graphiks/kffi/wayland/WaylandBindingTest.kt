@@ -44,6 +44,13 @@ class WaylandBindingTest {
     }
 
     @Test
+    fun preservesHistoricalProtocolConstantNames() {
+        assertEquals(1, ZWLR_SCREENCOPY_FRAME_FLAGS_Y_INVERT)
+        assertEquals(1, ZWP_POINTER_CONSTRAINTS_V1_LIFETIME_ONESHOT)
+        assertEquals(2, ZWP_POINTER_CONSTRAINTS_V1_LIFETIME_PERSISTENT)
+    }
+
+    @Test
     fun preservesLegacyTextInputDescriptorEntryPoints() {
         assertEquals("zwp_text_input_manager_v3_interface", ::legacyTextInputManagerV3Interface.name)
         assertEquals("zwp_text_input_v3_interface", ::legacyTextInputV3Interface.name)

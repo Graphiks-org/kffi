@@ -5,10 +5,10 @@ import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
 /**
- * Parses Wayland protocol XML files and generates a Kotlin source file
- * with wl_interface MemorySegments.
+ * Parses Wayland protocol XML files and generates Kotlin source files with
+ * wl_interface MemorySegments plus request/event opcode and enum constants.
  *
- * Usage: java ProtocolInterfaceGenerator <xml-files...> <output.kt>
+ * Usage: java ProtocolInterfaceGenerator <xml-files...> <interfaces.kt> [<constants.kt>]
  */
 public class ProtocolInterfaceGenerator {
 
