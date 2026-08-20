@@ -42,6 +42,36 @@ jobs:
           path: kffi-wayland/build/wayland-integration/**
           if-no-files-found: warn
 
+  x11-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 25
+          cache: 'gradle'
+      - name: Install X11 integration dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            imagemagick \
+            libx11-6 \
+            libxcomposite1 \
+            libxext6 \
+            x11-apps \
+            xvfb
+      - name: Run X11 integration test
+        run: scripts/run-x11-integration.sh
+      - name: Upload X11 integration artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: x11-integration
+          path: kffi-x11/build/x11-integration/**
+          if-no-files-found: warn
+
   tests:
     strategy:
       fail-fast: false
