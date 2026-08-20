@@ -12,6 +12,35 @@ build. The generated bindings load `libX11.so.6`, `libXext.so.6`, and
 The module depends on `org.graphiks:kffi-posix`, uses JDK 25 bytecode, and
 requires a JDK 25 runtime. The contract tests do not require an X server.
 
+## Linux X11 screenshot integration
+
+The Linux-only screenshot integration runs against `Xvfb`, so it does not
+require a physical X server or a window manager. CI installs the Ubuntu
+packages actually used by the runner and bindings: `xvfb`, `x11-apps`,
+`libx11-6`, `libxext6`, `libxcomposite1`, and `imagemagick`.
+
+Use the runner for the full local flow:
+
+```bash
+scripts/run-x11-integration.sh
+```
+
+The script requires Linux, exports `KFFI_X11_INTEGRATION=1`, starts `Xvfb`,
+and runs `:kffi-x11:x11IntegrationTest`. It writes artifacts to
+`kffi-x11/build/x11-integration/` by default and accepts the overrides
+`KFFI_X11_INTEGRATION_REPO_ROOT`, `KFFI_X11_INTEGRATION_GRADLE`, and
+`KFFI_X11_INTEGRATION_ARTIFACT_DIR`. `KFFI_X11_ARTIFACT_DIR` also overrides the
+artifact output directory.
+
+To invoke the Gradle task directly, opt in explicitly:
+
+```bash
+KFFI_X11_INTEGRATION=1 ./gradlew :kffi-x11:x11IntegrationTest
+```
+
+When run directly, the task defaults its artifacts to
+`kffi-x11/build/x11-integration/` unless `KFFI_X11_ARTIFACT_DIR` is set.
+
 The generator is pinned to kextract revision
 `9252fb417ea91dae882a6a9e9d06ab672c50adc3`. Its Docker base is pinned to
 `eclipse-temurin:25-jdk-noble@sha256:e94f1dc880339ab3884b69176b79c8dc4124b722e059c7ff7f0bf53b603a46f8`;

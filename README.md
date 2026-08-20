@@ -193,6 +193,29 @@ scripts/gen-kffi-x11.sh
 Generation is not part of the Gradle build. The module's contract tests do not
 start or require an X server.
 
+For the Linux-only screenshot integration, no physical X server or window
+manager is required: `scripts/run-x11-integration.sh` starts `Xvfb` and runs
+`:kffi-x11:x11IntegrationTest`. CI installs the Ubuntu packages actually used
+there: `xvfb`, `x11-apps`, `libx11-6`, `libxext6`, `libxcomposite1`, and
+`imagemagick`.
+
+Use the runner for the full local flow:
+
+```bash
+scripts/run-x11-integration.sh
+```
+
+The runner requires Linux, exports `KFFI_X11_INTEGRATION=1`, and writes
+artifacts to `kffi-x11/build/x11-integration/` by default. Supported overrides
+are `KFFI_X11_INTEGRATION_REPO_ROOT`, `KFFI_X11_INTEGRATION_GRADLE`,
+`KFFI_X11_INTEGRATION_ARTIFACT_DIR`, and `KFFI_X11_ARTIFACT_DIR`.
+
+To run the Gradle task directly, opt in explicitly:
+
+```bash
+KFFI_X11_INTEGRATION=1 ./gradlew :kffi-x11:x11IntegrationTest
+```
+
 The pinned generator cannot safely emit layouts for Xlib records with nested
 declarations or LP64 padding. `XEvent`, `XImage`, `XWindowAttributes`,
 `XWMHints`, `XGC`, and `XShmSegmentInfo` therefore remain generated
