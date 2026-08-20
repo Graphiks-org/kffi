@@ -170,6 +170,35 @@ uses libclang and targets the public `org.graphiks.kffi` API:
 The consumer workflow is: generate bindings with kextract, link the bindings to
 kffi, and load the native library during startup (see below).
 
+### X11 bindings
+
+`:kffi-x11` provides JVM-only, low-level X11 bindings for JDK 25. Its generated
+sources are in `org.graphiks.kffi.x11.generated` and load `libX11.so.6`,
+`libXext.so.6`, and `libXcomposite.so.1`. The module depends on
+`:kffi-posix`; it does not provide a higher-level X11 event-loop layer.
+
+The bindings are generated with the pinned
+[`kextract`](https://github.com/klang-toolkit/kextract) revision
+`9252fb417ea91dae882a6a9e9d06ab672c50adc3`. Regenerate them on Linux (the
+Docker pipeline uses the Ubuntu X11 development headers) after initializing
+the submodule:
+
+```bash
+git submodule update --init --recursive
+scripts/gen-kffi-x11.sh
+```
+
+Generation is not part of the Gradle build. The module's contract tests do not
+start or require an X server.
+
+The pinned generator cannot safely emit layouts for Xlib records with nested
+declarations or LP64 padding. `XEvent`, `XImage`, `XWindowAttributes`,
+`XWMHints`, `XGC`, and `XShmSegmentInfo` therefore remain generated
+`MemorySegment` pointer APIs without raw record accessors. The generator's
+`KffiXEventStorage` (192-byte event storage) and `XShmSegmentInfoCompat`
+(32-byte LP64-padded storage) declarations are compatibility shims only; they
+do not replace the native records passed to Xlib.
+
 ## Loading a native library
 
 ### JVM
@@ -391,6 +420,8 @@ This repository is a standalone Kotlin Multiplatform build. The root
 | Module | Purpose |
 |--------|---------|
 | `:kffi` | The multiplatform runtime library and its JVM, Android, and Native tests |
+| `:kffi-wayland` | JVM-only low-level Wayland bindings |
+| `:kffi-x11` | JVM-only generated X11 bindings; see [X11 bindings](#x11-bindings) |
 | `:kffi-benchmark-spi` | Shared multiplatform benchmark model and test contracts |
 | `:kffi-benchmark-jvm` | JVM JMH benchmarks for kffi |
 | `:kffi-benchmark-native` | Kotlin/Native benchmark harness |
