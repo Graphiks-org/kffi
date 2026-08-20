@@ -1,4 +1,4 @@
-# kff-posix
+# kffi-posix
 
 JVM-only POSIX support for `kffi`, built on the Java Foreign Function & Memory
 API (Panama FFM).
