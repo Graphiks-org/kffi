@@ -3,8 +3,8 @@
 ## Goal
 
 Extend the `kffi-wayland` generation pipeline from the current four protocol
-XML files to the nine additional protocols requested for activation, pointer
-input, scaling, presentation, DMA-BUF, and cursor handling. Replace the
+XML files to the nine requested protocols plus the tablet-v2 dependency needed
+by cursor-shape. Replace the
 corresponding manually constructed `wl_interface` descriptors while preserving
 the handwritten runtime marshalling and event-handling code.
 
@@ -30,8 +30,15 @@ The following nine inputs are added from the pinned
 - `stable/linux-dmabuf/linux-dmabuf-v1.xml`
 - `staging/cursor-shape/cursor-shape-v1.xml`
 
-The pipeline therefore processes thirteen protocol XML inputs in total. The
-submodule remains pinned to commit
+The cursor-shape XML references `zwp_tablet_tool_v2`, so the following
+dependency is also added from the pinned submodule:
+
+- `stable/tablet/tablet-v2.xml`
+
+The pipeline therefore processes fourteen protocol XML inputs in total. The
+tablet-v2 input exists to resolve cursor-shape interface references; it does
+not add a tablet-specific runtime API in this change. The submodule remains
+pinned to commit
 `d5aed4e4903a77aefaef03359d1ffdc0d5093456`.
 
 ## Architecture
@@ -72,8 +79,10 @@ descriptors that are outside this scope.
 
 The Java generator regression test is extended before implementation to cover
 cross-interface references, nullable arguments, opcodes, and enum constants.
-The generated sources are regenerated from all thirteen XML inputs and checked
-for deterministic output. The following local checks must pass:
+The generated sources are regenerated from all fourteen XML inputs and checked
+for deterministic output. The generated output must include the
+`zwp_tablet_tool_v2_interface` descriptor required by cursor-shape. The
+following local checks must pass:
 
 ```bash
 javac -d /tmp/kffi-wayland-codegen-test \
