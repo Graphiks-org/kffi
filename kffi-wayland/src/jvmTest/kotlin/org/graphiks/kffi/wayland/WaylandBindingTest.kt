@@ -27,4 +27,14 @@ class WaylandBindingTest {
         assertEquals(7, TEXT_INPUT_COMMIT)
         assertEquals(1, SCREENCOPY_FRAME_FLAGS_Y_INVERT)
     }
+
+    @Test
+    fun exposesGeneratedExtendedProtocolConstants() {
+        assertEquals(1, XDG_ACTIVATION_GET_ACTIVATION_TOKEN)
+        assertEquals(1, POINTER_CONSTRAINTS_LIFETIME_ONESHOT)
+        assertEquals(2, POINTER_CONSTRAINTS_LIFETIME_PERSISTENT)
+        assertEquals(0, RELATIVE_POINTER_EVENT_RELATIVE_MOTION)
+        assertEquals(1, WP_CURSOR_SHAPE_DEVICE_SHAPE_DEFAULT)
+        assertEquals(3, LINUX_DMABUF_GET_SURFACE_FEEDBACK)
+    }
 }
