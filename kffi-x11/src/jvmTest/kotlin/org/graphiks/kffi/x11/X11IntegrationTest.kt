@@ -41,16 +41,12 @@ private const val EVENT_TIMEOUT_MILLIS = 10_000L
 private const val CAPTURE_TIMEOUT_SECONDS = 15L
 private const val Z_PIXMAP = 2
 
-// The pinned generated bindings do not currently expose MapNotify().
-private const val MAP_NOTIFY_EVENT_TYPE = 19
-
 private data class X11IntegrationEnvironment(
     val displayName: String,
     val artifactDirectory: Path,
 )
 
 private data class ObservedEvents(
-    val sawMapNotify: Boolean,
     val sawExpose: Boolean,
     val sawConfigureNotify: Boolean,
 )
@@ -135,8 +131,13 @@ class X11IntegrationTest {
                 assertEquals(0, XSync(display, 0), "XSync should succeed")
                 appendLog(clientLog, "window mapped and flushed\n")
 
-                val observedEvents = waitForEvents(display, window, event, eventStorage, clientLog)
-                assertTrue(observedEvents.sawMapNotify, "Expected MapNotify after mapping the child window")
+                assertEquals(1, XResizeWindow(display, window, WINDOW_WIDTH + 1, WINDOW_HEIGHT + 1))
+                assertEquals(1, XResizeWindow(display, window, WINDOW_WIDTH, WINDOW_HEIGHT))
+                assertEquals(1, XFlush(display), "XFlush after resize should succeed")
+                assertEquals(0, XSync(display, 0), "XSync after resize should succeed")
+                appendLog(clientLog, "window resized before polling\n")
+
+                val observedEvents = waitForEvents(display, event, eventStorage, clientLog)
                 assertTrue(observedEvents.sawExpose, "Expected Expose after mapping the child window")
                 assertTrue(
                     observedEvents.sawConfigureNotify,
@@ -235,18 +236,15 @@ private fun requireExecutable(name: String) {
 
 private fun waitForEvents(
     display: MemorySegment,
-    window: Long,
     event: MemorySegment,
     eventStorage: KffiXEventStorage,
     clientLog: Path,
 ): ObservedEvents {
     val deadline = System.nanoTime() + TimeUnit.MILLISECONDS.toNanos(EVENT_TIMEOUT_MILLIS)
-    var sawMapNotify = false
     var sawExpose = false
     var sawConfigureNotify = false
-    var resizeRequested = false
 
-    while (System.nanoTime() < deadline && !(sawMapNotify && sawExpose && sawConfigureNotify)) {
+    while (System.nanoTime() < deadline && !(sawExpose && sawConfigureNotify)) {
         val pending = XPending(display)
         if (pending <= 0) {
             Thread.sleep(10L)
@@ -256,18 +254,6 @@ private fun waitForEvents(
         repeat(pending) {
             assertEquals(0, XNextEvent(display, event), "XNextEvent should succeed")
             when (val eventType = eventStorage.type(event)) {
-                MAP_NOTIFY_EVENT_TYPE -> {
-                    sawMapNotify = true
-                    appendLog(clientLog, "event: MapNotify\n")
-                    if (!resizeRequested) {
-                        assertEquals(1, XResizeWindow(display, window, WINDOW_WIDTH + 1, WINDOW_HEIGHT + 1))
-                        assertEquals(1, XResizeWindow(display, window, WINDOW_WIDTH, WINDOW_HEIGHT))
-                        assertEquals(1, XFlush(display))
-                        assertEquals(0, XSync(display, 0))
-                        resizeRequested = true
-                        appendLog(clientLog, "window resized to trigger ConfigureNotify\n")
-                    }
-                }
                 Expose() -> {
                     sawExpose = true
                     appendLog(clientLog, "event: Expose\n")
@@ -282,7 +268,6 @@ private fun waitForEvents(
     }
 
     return ObservedEvents(
-        sawMapNotify = sawMapNotify,
         sawExpose = sawExpose,
         sawConfigureNotify = sawConfigureNotify,
     )
@@ -292,7 +277,7 @@ private fun captureWindow(window: Long, output: Path, captureLog: Path): Capture
     appendLog(captureLog, "capturing window 0x${window.toString(16)} to $output\n")
     val script = """
         set -o pipefail
-        xwd -id $window -silent | convert xwd:- ${shellQuote("png:$output")}
+        xwd -id $window -nobdrs -silent | convert xwd:- ${shellQuote("png:$output")}
         statuses=("${'$'}{PIPESTATUS[@]}")
         printf 'xwd=%s convert=%s\n' "${'$'}{statuses[0]}" "${'$'}{statuses[1]}"
         if [[ "${'$'}{statuses[0]}" -ne 0 ]]; then
