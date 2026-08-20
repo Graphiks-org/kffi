@@ -33,6 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   helpers, and a non-blocking wakeup primitive imported from `poc-koreos`.
 - JVM-only `kff-wayland` module with low-level Wayland, XDG Shell, screencopy,
   and text-input FFM bindings imported from `poc-koreos`.
+- Reproducible Docker/kextract generation pipeline for the kff-wayland XDG
+  Shell bindings.
 
 ### Changed
 - JVM bytecode targets and Java compilation release are now aligned to JDK 25
