@@ -44,6 +44,14 @@
 - Implementer commit: `93b5da8f670770aa8d5488bdb4b5602035addd22`.
 - Task review: approved; documentation covers module scope, regeneration, pinned kextract revision, opaque records, and compatibility shims.
 - Test evidence: root `test`, Docker generation, `:kffi-x11:jvmTest`, and `git diff --check` pass.
+
+## Final review fix wave
+
+- Initial whole-branch review found six actionable points: missing `XDestroyImage`, weak Docker/output reproducibility, circular shim ABI proof, stale spec/plan boundary, missing native lookup smoke coverage, and the documented `KeyPress` limitation.
+- Ruling: keep `KeyPress` as a documented isolated numeric compatibility macro because feeding the full Xlib header into the pinned constant-only kextract unit expands into unsupported transitive declarations; `KeyRelease` remains header-derived and tested. Cost if wrong: that one constant would not track a future header change until the kextract constant pipeline can handle the full Xlib dependency graph.
+- Fix commit: `190f223bbf18c5ddb76f0feeced9e451b4860073`.
+- Scoped re-review: all six findings addressed; no new Critical/Important breakage.
+- Fresh verification: Docker generation, root `test`, `:kffi-x11:jvmTest`, generated-output drift check, `git diff --check`, and clean branch status pass. Linux smoke path is present but skipped on the macOS host.
 - Ruling: `XEvent` and `XImage` remain opaque because their stock Xlib definitions contain nested records that the pinned generator references without emitting. `XWindowAttributes`, `XWMHints`, and `XGC` remain omitted as raw layouts because the generator does not insert required LP64 padding. `XShmSegmentInfo` is also omitted after its raw generated layout placed `shmaddr` at offset 12. Handwritten Kotlin layouts would violate the generator-only requirement, so the checked-in C input defines only `KffiXEventStorage` (192-byte XEvent storage union) and `XShmSegmentInfoCompat` (32-byte padded storage struct); Xlib/XShm functions keep generated opaque `MemorySegment` parameters.
 
 ## Final review fix-wave decision
