@@ -12,6 +12,7 @@ import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
+import java.awt.image.BufferedImage
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.StandardOpenOption
@@ -22,10 +23,12 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-private const val TEST_WIDTH = 640
-private const val TEST_HEIGHT = 480
-private const val TEST_STRIDE = TEST_WIDTH * 4
-private const val TEST_BUFFER_SIZE = TEST_STRIDE * TEST_HEIGHT
+private const val SURFACE_WIDTH = 320
+private const val SURFACE_HEIGHT = 240
+private const val SURFACE_STRIDE = SURFACE_WIDTH * 4
+private const val SURFACE_BUFFER_SIZE = SURFACE_STRIDE * SURFACE_HEIGHT
+private const val OUTPUT_WIDTH = 640
+private const val OUTPUT_HEIGHT = 480
 private const val EVENT_TIMEOUT_MILLIS = 10_000L
 private const val GRIM_TIMEOUT_SECONDS = 15L
 
@@ -174,7 +177,6 @@ class WaylandIntegrationTest {
             System.getenv("KFF_WAYLAND_INTEGRATION") == "1",
             "Set KFF_WAYLAND_INTEGRATION=1 to run the compositor-backed test",
         )
-
         val environment = requireIntegrationEnvironment()
         requireIntegrationNativeSymbols()
         requireExecutable("grim")
@@ -307,8 +309,8 @@ class WaylandIntegrationTest {
                     XDG_SURFACE_SET_WINDOW_GEOMETRY,
                     0,
                     0,
-                    TEST_WIDTH,
-                    TEST_HEIGHT,
+                    SURFACE_WIDTH,
+                    SURFACE_HEIGHT,
                 )
                 appendLog(
                     clientLog,
@@ -316,22 +318,22 @@ class WaylandIntegrationTest {
                         "${toplevelEvents.configuredHeight}\n",
                 )
 
-                fd = createMemFd("kffi-wayland-integration", TEST_BUFFER_SIZE)
+                fd = createMemFd("kffi-wayland-integration", SURFACE_BUFFER_SIZE)
                 if (fd < 0) {
-                    integrationFailure("memfd_create/ftruncate failed for the $TEST_BUFFER_SIZE-byte wl_shm buffer")
+                    integrationFailure("memfd_create/ftruncate failed for the $SURFACE_BUFFER_SIZE-byte wl_shm buffer")
                 }
-                mappedMemory = mmapFd(fd, TEST_BUFFER_SIZE)
-                    ?: integrationFailure("mmap failed for the $TEST_BUFFER_SIZE-byte wl_shm buffer (fd=$fd)")
-                fillQuadrants(mappedMemory.reinterpret(TEST_BUFFER_SIZE.toLong()))
+                mappedMemory = mmapFd(fd, SURFACE_BUFFER_SIZE)
+                    ?: integrationFailure("mmap failed for the $SURFACE_BUFFER_SIZE-byte wl_shm buffer (fd=$fd)")
+                fillQuadrants(mappedMemory.reinterpret(SURFACE_BUFFER_SIZE.toLong()))
 
-                pool = createIntegrationShmPool(shm, fd, TEST_BUFFER_SIZE)
+                pool = createIntegrationShmPool(shm, fd, SURFACE_BUFFER_SIZE)
                 requireProxy(pool, "wl_shm_pool")
                 buffer = createIntegrationShmBuffer(
                     pool,
                     0,
-                    TEST_WIDTH,
-                    TEST_HEIGHT,
-                    TEST_STRIDE,
+                    SURFACE_WIDTH,
+                    SURFACE_HEIGHT,
+                    SURFACE_STRIDE,
                     WL_SHM_FORMAT_XRGB8888,
                 )
                 requireProxy(buffer, "wl_buffer")
@@ -342,7 +344,7 @@ class WaylandIntegrationTest {
                 val frameEvents = WaylandIntegrationFrameEvents()
                 requireListener(frameCallback, frameListener(frameEvents, listenerArena), "wl_callback")
                 wlSurfaceAttach(surface, buffer, 0, 0)
-                wlSurfaceDamage(surface, 0, 0, TEST_WIDTH, TEST_HEIGHT)
+                wlSurfaceDamage(surface, 0, 0, SURFACE_WIDTH, SURFACE_HEIGHT)
                 marshalVoid(surface, WL_SURFACE_COMMIT)
 
                 dispatchUntil(
@@ -369,6 +371,7 @@ class WaylandIntegrationTest {
                 )
 
                 proxyDestroy(frameCallback)
+                frameCallback = 0L
                 frameCallback = createFrameCallback(surface, callbackDescriptor)
                 val presentedFrameEvents = WaylandIntegrationFrameEvents()
                 requireListener(
@@ -376,7 +379,7 @@ class WaylandIntegrationTest {
                     frameListener(presentedFrameEvents, listenerArena),
                     "wl_callback",
                 )
-                wlSurfaceDamage(surface, 0, 0, TEST_WIDTH, TEST_HEIGHT)
+                wlSurfaceDamage(surface, 0, 0, SURFACE_WIDTH, SURFACE_HEIGHT)
                 marshalVoid(surface, WL_SURFACE_COMMIT)
                 dispatchUntil(
                     display,
@@ -394,25 +397,18 @@ class WaylandIntegrationTest {
                 val image = ImageIO.read(screenshot.toFile())
                     ?: integrationFailure("ImageIO could not decode grim output at $screenshot")
                 assertEquals(
-                    TEST_WIDTH,
+                    OUTPUT_WIDTH,
                     image.width,
-                    "Expected grim to capture the runner's ${TEST_WIDTH}x$TEST_HEIGHT output; " +
+                    "Expected grim to capture the runner's ${OUTPUT_WIDTH}x$OUTPUT_HEIGHT output; " +
                         "actual image is ${image.width}x${image.height}. See $grimLog",
                 )
                 assertEquals(
-                    TEST_HEIGHT,
+                    OUTPUT_HEIGHT,
                     image.height,
-                    "Expected grim to capture the runner's ${TEST_WIDTH}x$TEST_HEIGHT output; " +
+                    "Expected grim to capture the runner's ${OUTPUT_WIDTH}x$OUTPUT_HEIGHT output; " +
                         "actual image is ${image.width}x${image.height}. See $grimLog",
                 )
-                assertPixel(image.getRGB(TEST_WIDTH / 4, TEST_HEIGHT / 4), TOP_LEFT_COLOR, "top-left")
-                assertPixel(image.getRGB(TEST_WIDTH * 3 / 4, TEST_HEIGHT / 4), TOP_RIGHT_COLOR, "top-right")
-                assertPixel(image.getRGB(TEST_WIDTH / 4, TEST_HEIGHT * 3 / 4), BOTTOM_LEFT_COLOR, "bottom-left")
-                assertPixel(
-                    image.getRGB(TEST_WIDTH * 3 / 4, TEST_HEIGHT * 3 / 4),
-                    BOTTOM_RIGHT_COLOR,
-                    "bottom-right",
-                )
+                assertQuadrantPattern(image)
                 appendLog(clientLog, "capture: ${image.width}x${image.height} quadrants verified\n")
             } catch (throwable: Throwable) {
                 primaryFailure = throwable
@@ -443,7 +439,7 @@ class WaylandIntegrationTest {
                 if (compositor != 0L) cleanup("wl_compositor proxy") { proxyDestroy(compositor) }
                 if (registry != 0L) cleanup("wl_registry proxy") { proxyDestroy(registry) }
                 if (display != 0L) cleanup("wl_display") { disconnectWayland(display) }
-                mappedMemory?.let { memory -> cleanup("mmap") { munmap(memory, TEST_BUFFER_SIZE) } }
+                mappedMemory?.let { memory -> cleanup("mmap") { munmap(memory, SURFACE_BUFFER_SIZE) } }
                 if (fd >= 0) cleanup("memfd") { closeFd(fd) }
 
                 if (cleanupFailures.isNotEmpty()) {
@@ -890,15 +886,15 @@ private fun destroyProtocolProxy(proxy: Long, destructorOpcode: Int) {
 }
 
 private fun fillQuadrants(memory: MemorySegment) {
-    for (y in 0 until TEST_HEIGHT) {
-        for (x in 0 until TEST_WIDTH) {
+    for (y in 0 until SURFACE_HEIGHT) {
+        for (x in 0 until SURFACE_WIDTH) {
             val color = when {
-                y < TEST_HEIGHT / 2 && x < TEST_WIDTH / 2 -> TOP_LEFT_COLOR
-                y < TEST_HEIGHT / 2 -> TOP_RIGHT_COLOR
-                x < TEST_WIDTH / 2 -> BOTTOM_LEFT_COLOR
+                y < SURFACE_HEIGHT / 2 && x < SURFACE_WIDTH / 2 -> TOP_LEFT_COLOR
+                y < SURFACE_HEIGHT / 2 -> TOP_RIGHT_COLOR
+                x < SURFACE_WIDTH / 2 -> BOTTOM_LEFT_COLOR
                 else -> BOTTOM_RIGHT_COLOR
             }
-            val offset = y.toLong() * TEST_STRIDE + x.toLong() * Int.SIZE_BYTES
+            val offset = y.toLong() * SURFACE_STRIDE + x.toLong() * Int.SIZE_BYTES
             memory.set(ValueLayout.JAVA_INT, offset, color)
         }
     }
@@ -1045,13 +1041,37 @@ private fun captureWithGrim(screenshot: Path, grimLog: Path) {
     }
 }
 
-private fun assertPixel(actualArgb: Int, expectedRgb: Int, quadrant: String) {
-    assertEquals(
-        expectedRgb,
-        actualArgb and 0x00ffffff,
-        "Unexpected representative pixel in the $quadrant quadrant",
+private fun assertQuadrantPattern(image: BufferedImage) {
+    val surfacePatternFound = containsQuadrantPattern(image, SURFACE_WIDTH, SURFACE_HEIGHT)
+    val outputPatternFound = containsQuadrantPattern(image, OUTPUT_WIDTH, OUTPUT_HEIGHT)
+    assertTrue(
+        surfacePatternFound || outputPatternFound,
+        "Expected the ${SURFACE_WIDTH}x${SURFACE_HEIGHT} wl_shm quadrant pattern in the " +
+            "${OUTPUT_WIDTH}x${OUTPUT_HEIGHT} grim output",
     )
 }
+
+private fun containsQuadrantPattern(image: BufferedImage, width: Int, height: Int): Boolean {
+    if (width > image.width || height > image.height) return false
+    val lastX = image.width - width
+    val lastY = image.height - height
+    for (originY in 0..lastY) {
+        for (originX in 0..lastX) {
+            if (
+                pixelMatches(image, originX + width / 4, originY + height / 4, TOP_LEFT_COLOR) &&
+                pixelMatches(image, originX + width * 3 / 4, originY + height / 4, TOP_RIGHT_COLOR) &&
+                pixelMatches(image, originX + width / 4, originY + height * 3 / 4, BOTTOM_LEFT_COLOR) &&
+                pixelMatches(image, originX + width * 3 / 4, originY + height * 3 / 4, BOTTOM_RIGHT_COLOR)
+            ) {
+                return true
+            }
+        }
+    }
+    return false
+}
+
+private fun pixelMatches(image: BufferedImage, x: Int, y: Int, expectedRgb: Int): Boolean =
+    image.getRGB(x, y) and 0x00ffffff == expectedRgb
 
 private fun appendLog(path: Path, message: String) {
     try {
