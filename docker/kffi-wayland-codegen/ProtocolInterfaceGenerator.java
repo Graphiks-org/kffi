@@ -21,6 +21,7 @@ public class ProtocolInterfaceGenerator {
 
     static class Message {
         String name;
+        int since = 1;
         List<Arg> args = new ArrayList<>();
     }
 
@@ -133,6 +134,8 @@ public class ProtocolInterfaceGenerator {
     static Message parseMessage(Element elem) {
         Message msg = new Message();
         msg.name = elem.getAttribute("name");
+        String since = elem.getAttribute("since");
+        if (!since.isEmpty()) msg.since = Integer.parseInt(since);
 
         NodeList children = elem.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
@@ -168,8 +171,9 @@ public class ProtocolInterfaceGenerator {
         }
     }
 
-    static String buildSignature(List<Arg> args) {
+    static String buildSignature(int since, List<Arg> args) {
         StringBuilder sig = new StringBuilder();
+        if (since > 1) sig.append(since);
         for (Arg arg : args) {
             String encoding = typeToEncoding(arg.type);
             if (arg.allowNull && ("string".equals(arg.type) || "object".equals(arg.type))) {
@@ -236,21 +240,26 @@ public class ProtocolInterfaceGenerator {
         sb.append("package org.graphiks.kffi.wayland\n\n");
         sb.append("// Generated from Wayland protocol XML; do not edit manually.\n\n");
 
+        boolean firstConstantBlock = true;
         for (WlInterface iface : interfaces.values()) {
             String prefix = protocolPrefix(iface.name);
+            StringBuilder block = new StringBuilder();
             for (int i = 0; i < iface.requests.size(); i++) {
-                appendConstant(sb, prefix + "_" + constantPart(iface.requests.get(i).name), Integer.toString(i));
+                appendConstant(block, prefix + "_" + constantPart(iface.requests.get(i).name), Integer.toString(i));
             }
             for (int i = 0; i < iface.events.size(); i++) {
-                appendConstant(sb, prefix + "_EVENT_" + constantPart(iface.events.get(i).name), Integer.toString(i));
+                appendConstant(block, prefix + "_EVENT_" + constantPart(iface.events.get(i).name), Integer.toString(i));
             }
             for (EnumDef enumDef : iface.enums) {
                 String enumPrefix = prefix + "_" + constantPart(enumDef.name);
                 for (EnumEntry entry : enumDef.entries) {
-                    appendConstant(sb, enumPrefix + "_" + constantPart(entry.name), intLiteral(entry.value));
+                    appendConstant(block, enumPrefix + "_" + constantPart(entry.name), intLiteral(entry.value));
                 }
             }
-            sb.append("\n");
+            if (block.isEmpty()) continue;
+            if (!firstConstantBlock) sb.append("\n");
+            sb.append(block);
+            firstConstantBlock = false;
         }
 
         Path outPath = Paths.get(outputPath);
@@ -331,7 +340,7 @@ public class ProtocolInterfaceGenerator {
             for (int i = 0; i < iface.requests.size(); i++) {
                 Message msg = iface.requests.get(i);
                 sb.append("    msg(\"").append(msg.name).append("\", \"")
-                  .append(buildSignature(msg.args)).append("\"");
+                  .append(buildSignature(msg.since, msg.args)).append("\"");
                 sb.append(buildTypesVarargs(msg.args, iface.name));
                 sb.append(")");
                 if (i < iface.requests.size() - 1) sb.append(",");
@@ -343,7 +352,7 @@ public class ProtocolInterfaceGenerator {
             for (int i = 0; i < iface.events.size(); i++) {
                 Message msg = iface.events.get(i);
                 sb.append("    msg(\"").append(msg.name).append("\", \"")
-                  .append(buildSignature(msg.args)).append("\"");
+                  .append(buildSignature(msg.since, msg.args)).append("\"");
                 sb.append(buildTypesVarargs(msg.args, iface.name));
                 sb.append(")");
                 if (i < iface.events.size() - 1) sb.append(",");

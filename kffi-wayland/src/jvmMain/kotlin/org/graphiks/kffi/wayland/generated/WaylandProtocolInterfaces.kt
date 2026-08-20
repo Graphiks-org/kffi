@@ -105,9 +105,9 @@ private fun build_xdg_positioner(): MemorySegment = iface("xdg_positioner", 6, a
     msg("set_gravity", "u", MemorySegment.NULL),
     msg("set_constraint_adjustment", "u", MemorySegment.NULL),
     msg("set_offset", "ii", MemorySegment.NULL, MemorySegment.NULL),
-    msg("set_reactive", ""),
-    msg("set_parent_size", "ii", MemorySegment.NULL, MemorySegment.NULL),
-    msg("set_parent_configure", "u", MemorySegment.NULL)
+    msg("set_reactive", "3"),
+    msg("set_parent_size", "3ii", MemorySegment.NULL, MemorySegment.NULL),
+    msg("set_parent_configure", "3u", MemorySegment.NULL)
 ), arrayOf(
 ))
 
@@ -139,18 +139,18 @@ private fun build_xdg_toplevel(): MemorySegment = iface("xdg_toplevel", 6, array
 ), arrayOf(
     msg("configure", "iia", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
     msg("close", ""),
-    msg("configure_bounds", "ii", MemorySegment.NULL, MemorySegment.NULL),
-    msg("wm_capabilities", "a", MemorySegment.NULL)
+    msg("configure_bounds", "4ii", MemorySegment.NULL, MemorySegment.NULL),
+    msg("wm_capabilities", "5a", MemorySegment.NULL)
 ))
 
 private fun build_xdg_popup(): MemorySegment = iface("xdg_popup", 6, arrayOf(
     msg("destroy", ""),
     msg("grab", "ou", wl_seat_interface, MemorySegment.NULL),
-    msg("reposition", "ou", xdg_positioner_interface, MemorySegment.NULL)
+    msg("reposition", "3ou", xdg_positioner_interface, MemorySegment.NULL)
 ), arrayOf(
     msg("configure", "iiii", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
     msg("popup_done", ""),
-    msg("repositioned", "u", MemorySegment.NULL)
+    msg("repositioned", "3u", MemorySegment.NULL)
 ))
 
 private fun build_zxdg_decoration_manager_v1(): MemorySegment = iface("zxdg_decoration_manager_v1", 1, arrayOf(
@@ -201,15 +201,15 @@ private fun build_zwlr_screencopy_manager_v1(): MemorySegment = iface("zwlr_scre
 private fun build_zwlr_screencopy_frame_v1(): MemorySegment = iface("zwlr_screencopy_frame_v1", 3, arrayOf(
     msg("copy", "o", wl_buffer_interface),
     msg("destroy", ""),
-    msg("copy_with_damage", "o", wl_buffer_interface)
+    msg("copy_with_damage", "2o", wl_buffer_interface)
 ), arrayOf(
     msg("buffer", "uuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
     msg("flags", "u", MemorySegment.NULL),
     msg("ready", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
     msg("failed", ""),
-    msg("damage", "uuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
-    msg("linux_dmabuf", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
-    msg("buffer_done", "")
+    msg("damage", "2uuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("linux_dmabuf", "3uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
+    msg("buffer_done", "3")
 ))
 
 private fun build_xdg_activation_v1(): MemorySegment = iface("xdg_activation_v1", 1, arrayOf(
@@ -323,18 +323,18 @@ private fun build_wp_presentation_feedback(): MemorySegment = iface("wp_presenta
 private fun build_zwp_linux_dmabuf_v1(): MemorySegment = iface("zwp_linux_dmabuf_v1", 5, arrayOf(
     msg("destroy", ""),
     msg("create_params", "n", zwp_linux_buffer_params_v1_interface),
-    msg("get_default_feedback", "n", zwp_linux_dmabuf_feedback_v1_interface),
-    msg("get_surface_feedback", "no", zwp_linux_dmabuf_feedback_v1_interface, wl_surface_interface)
+    msg("get_default_feedback", "4n", zwp_linux_dmabuf_feedback_v1_interface),
+    msg("get_surface_feedback", "4no", zwp_linux_dmabuf_feedback_v1_interface, wl_surface_interface)
 ), arrayOf(
     msg("format", "u", MemorySegment.NULL),
-    msg("modifier", "uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
+    msg("modifier", "3uuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
 ))
 
 private fun build_zwp_linux_buffer_params_v1(): MemorySegment = iface("zwp_linux_buffer_params_v1", 5, arrayOf(
     msg("destroy", ""),
     msg("add", "huuuuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
     msg("create", "iiuu", MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL),
-    msg("create_immed", "niiuu", wl_buffer_interface, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
+    msg("create_immed", "2niiuu", wl_buffer_interface, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
 ), arrayOf(
     msg("created", "n", wl_buffer_interface),
     msg("failed", "")

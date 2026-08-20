@@ -17,8 +17,8 @@ COMPAT_MARKER = "XDG_TOPLEVEL_STATE_CONSTRAINED_LEFT"
 
 def normalize_generated_kotlin(text: str, file_name: str) -> str:
     lines = text.splitlines()
-    normalized = "\n".join(line.rstrip() for line in lines)
-    if text.endswith("\n"):
+    normalized = "\n".join(line.rstrip() for line in lines).rstrip("\n")
+    if normalized or text.endswith("\n"):
         normalized += "\n"
     if file_name == "xdg_shell_client_protocol_h.kt":
         normalized = restore_xdg_toplevel_state_compat(normalized)

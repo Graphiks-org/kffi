@@ -28,6 +28,8 @@ def main() -> int:
         )
         other = root / "other.kt"
         other.write_text("val example = 1    \n\n")
+        constants = root / "WaylandProtocolConstants.kt"
+        constants.write_text("const val EXAMPLE: Int = 1\n\n")
 
         process_tree(root)
         first_pass = xdg_shell.read_text()
@@ -37,7 +39,8 @@ def main() -> int:
         assert "XDG_TOPLEVEL_STATE_CONSTRAINED_BOTTOM(13L)" in first_pass
         assert ";\n    \n" not in first_pass
         assert "error(\"Unknown xdg_toplevel_state value: $v\")    \n" not in first_pass
-        assert other.read_text() == "val example = 1\n\n"
+        assert other.read_text() == "val example = 1\n"
+        assert constants.read_text() == "const val EXAMPLE: Int = 1\n"
 
         process_tree(root)
         second_pass = xdg_shell.read_text()

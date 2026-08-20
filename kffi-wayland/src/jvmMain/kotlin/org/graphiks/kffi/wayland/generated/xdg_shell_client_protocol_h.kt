@@ -1417,4 +1417,3 @@ enum class zwp_tablet_pad_v2_button_state(val value: Long) {
             ?: error("Unknown zwp_tablet_pad_v2_button_state value: $v")
     }
 }
-

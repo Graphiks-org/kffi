@@ -1,5 +1,9 @@
 package org.graphiks.kffi.wayland
 
+import org.graphiks.kffi.wayland.protocol.zwp_text_input_manager_v3_interface as legacyTextInputManagerV3Interface
+import org.graphiks.kffi.wayland.protocol.zwp_text_input_v3_interface as legacyTextInputV3Interface
+import org.graphiks.kffi.wayland.generated.zwp_text_input_manager_v3_interface
+import org.graphiks.kffi.wayland.generated.zwp_text_input_v3_interface
 import org.graphiks.kffi.wayland.generated.xdg_wm_base_error
 import org.graphiks.kffi.wayland.generated.xdg_toplevel_state
 import kotlin.test.Test
@@ -37,6 +41,19 @@ class WaylandBindingTest {
         assertEquals(0, RELATIVE_POINTER_EVENT_RELATIVE_MOTION)
         assertEquals(1, WP_CURSOR_SHAPE_DEVICE_SHAPE_DEFAULT)
         assertEquals(3, LINUX_DMABUF_GET_SURFACE_FEEDBACK)
+    }
+
+    @Test
+    fun preservesLegacyTextInputDescriptorEntryPoints() {
+        assertEquals("zwp_text_input_manager_v3_interface", ::legacyTextInputManagerV3Interface.name)
+        assertEquals("zwp_text_input_v3_interface", ::legacyTextInputV3Interface.name)
+        assertEquals("zwp_text_input_manager_v3_interface", ::zwp_text_input_manager_v3_interface.name)
+        assertEquals("zwp_text_input_v3_interface", ::zwp_text_input_v3_interface.name)
+    }
+
+    @Test
+    fun preservesMarshalDestroyCompatibilityConstant() {
+        assertEquals(1, WL_MARSHAL_FLAG_DESTROY)
     }
 
     @Test
