@@ -16,13 +16,15 @@ done
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DEFAULT_REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 REPO_ROOT="${KFF_WAYLAND_INTEGRATION_REPO_ROOT:-$DEFAULT_REPO_ROOT}"
-GRADLE="${KFF_WAYLAND_INTEGRATION_GRADLE:-$REPO_ROOT/gradlew}"
-ARTIFACT_DIR="${KFF_WAYLAND_INTEGRATION_ARTIFACT_DIR:-${KFF_WAYLAND_ARTIFACT_DIR:-$REPO_ROOT/kffi-wayland/build/wayland-integration}}"
 
 if [[ ! -d "$REPO_ROOT" ]]; then
     echo "error: repository root '$REPO_ROOT' does not exist" >&2
     exit 1
 fi
+
+REPO_ROOT="$(cd "$REPO_ROOT" && pwd -P)"
+GRADLE="${KFF_WAYLAND_INTEGRATION_GRADLE:-$REPO_ROOT/gradlew}"
+ARTIFACT_DIR="${KFF_WAYLAND_INTEGRATION_ARTIFACT_DIR:-${KFF_WAYLAND_ARTIFACT_DIR:-$REPO_ROOT/kffi-wayland/build/wayland-integration}}"
 
 if [[ "$GRADLE" == */* ]]; then
     if [[ ! -x "$GRADLE" ]]; then
