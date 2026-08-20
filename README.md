@@ -216,6 +216,10 @@ To run the Gradle task directly, opt in explicitly:
 KFFI_X11_INTEGRATION=1 ./gradlew :kffi-x11:x11IntegrationTest
 ```
 
+The direct Gradle command does not start `Xvfb`; `DISPLAY` must reference an
+existing X server. Prefer `scripts/run-x11-integration.sh` for the
+self-contained headless flow.
+
 The pinned generator cannot safely emit layouts for Xlib records with nested
 declarations or LP64 padding. `XEvent`, `XImage`, `XWindowAttributes`,
 `XWMHints`, `XGC`, and `XShmSegmentInfo` therefore remain generated

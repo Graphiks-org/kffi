@@ -38,8 +38,11 @@ To invoke the Gradle task directly, opt in explicitly:
 KFFI_X11_INTEGRATION=1 ./gradlew :kffi-x11:x11IntegrationTest
 ```
 
-When run directly, the task defaults its artifacts to
-`kffi-x11/build/x11-integration/` unless `KFFI_X11_ARTIFACT_DIR` is set.
+This direct Gradle command does not start `Xvfb`; it requires `DISPLAY` to
+reference an existing X server. Prefer `scripts/run-x11-integration.sh` for the
+self-contained headless flow. When run directly, the task defaults its
+artifacts to `kffi-x11/build/x11-integration/` unless
+`KFFI_X11_ARTIFACT_DIR` is set.
 
 The generator is pinned to kextract revision
 `9252fb417ea91dae882a6a9e9d06ab672c50adc3`. Its Docker base is pinned to

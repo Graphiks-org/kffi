@@ -62,6 +62,8 @@ jobs:
             libxext6 \
             x11-apps \
             xvfb
+      - name: Run X11 binding tests
+        run: ./gradlew :kffi-x11:jvmTest --no-daemon --configure-on-demand
       - name: Run X11 integration test
         run: scripts/run-x11-integration.sh
       - name: Upload X11 integration artifacts
