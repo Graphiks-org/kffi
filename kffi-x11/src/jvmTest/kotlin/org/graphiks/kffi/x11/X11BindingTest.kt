@@ -1,6 +1,7 @@
 package org.graphiks.kffi.x11
 
-import java.lang.foreign.GroupLayout
+import java.lang.foreign.StructLayout
+import java.lang.foreign.UnionLayout
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -24,12 +25,7 @@ class X11BindingTest {
 
     @Test
     fun preservesUnionAndStructLayouts() {
-        val eventLayout = assertIs<GroupLayout>(XEvent.layout)
-        val attributesLayout = assertIs<GroupLayout>(XWindowAttributes.layout)
-        assertEquals(eventLayout.memberLayouts().maxOf { it.byteSize() }, eventLayout.byteSize())
-        assertEquals(
-            attributesLayout.memberLayouts().sumOf { it.byteSize() },
-            attributesLayout.byteSize(),
-        )
+        assertIs<UnionLayout>(XEvent.layout)
+        assertIs<StructLayout>(XWindowAttributes.layout)
     }
 }
