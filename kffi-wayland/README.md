@@ -15,12 +15,14 @@ Shell, XDG decoration, text-input-v3, and wlr-screencopy. Generated sources
 are kept under `generated/` (with protocol constants in the module package).
 The generation pipeline is available explicitly through
 `scripts/gen-kffi-wayland.sh`; it runs `wayland-scanner`, the pinned `kextract`
-submodule, and the XML protocol-interface generator in Docker. The
-text-input-v3, wlr-screencopy, XDG Shell, and XDG decoration XML snapshots are
-pinned in `docker/kffi-wayland-codegen/protocols/` (wayland-protocols commit
-`d5aed4e4903a77aefaef03359d1ffdc0d5093456`, wlroots commit
-`0855cdacb2eeeff35849e2e9c4db0aa996d78d10`). It is not run as part of the
-Gradle build. It depends on
+submodules, and the XML protocol-interface generator in Docker. XDG Shell,
+XDG decoration, and text-input-v3 come from the pinned
+`third_party/wayland-protocols` submodule; the wlr-screencopy XML snapshot is
+kept locally because it is maintained by wlroots. The submodule is pinned to
+wayland-protocols commit `d5aed4e4903a77aefaef03359d1ffdc0d5093456`, and the
+local wlroots snapshot comes from commit
+`0855cdacb2eeeff35849e2e9c4db0aa996d78d10`. It is not run as part of the Gradle
+build. It depends on
 `org.graphiks:kffi-posix` for POSIX symbol downcalls and does not include the
 higher-level `kadre-wayland` event-loop layer.
 

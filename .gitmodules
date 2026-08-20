@@ -1,3 +1,6 @@
 [submodule "third_party/kextract"]
 	path = third_party/kextract
 	url = https://github.com/klang-toolkit/kextract.git
+[submodule "third_party/wayland-protocols"]
+	path = third_party/wayland-protocols
+	url = https://gitlab.freedesktop.org/wayland/wayland-protocols.git
