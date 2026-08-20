@@ -36,3 +36,29 @@ tasks.withType<Test>().configureEach {
     }
     jvmArgs("--enable-native-access=ALL-UNNAMED")
 }
+
+val jvmTestTask = tasks.named<Test>("jvmTest")
+val waylandIntegrationEnabled = providers.environmentVariable("KFFI_WAYLAND_INTEGRATION")
+    .map { it == "1" }
+    .orElse(false)
+
+tasks.register<Test>("waylandIntegrationTest") {
+    group = "verification"
+    description = "Runs the compositor-backed Wayland integration test."
+
+    dependsOn(tasks.named("jvmTestClasses"))
+    testClassesDirs = jvmTestTask.get().testClassesDirs
+    classpath = jvmTestTask.get().classpath
+    useJUnitPlatform()
+    filter {
+        includeTestsMatching("org.graphiks.kffi.wayland.WaylandIntegrationTest")
+    }
+
+    systemProperty(
+        "kffi.wayland.defaultArtifactDir",
+        layout.buildDirectory.dir("wayland-integration").get().asFile.absolutePath,
+    )
+    onlyIf("KFFI_WAYLAND_INTEGRATION must equal 1") {
+        waylandIntegrationEnabled.get()
+    }
+}

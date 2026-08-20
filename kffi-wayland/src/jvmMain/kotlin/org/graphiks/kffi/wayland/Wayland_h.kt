@@ -1,8 +1,6 @@
 package org.graphiks.kffi.wayland
 
 import org.graphiks.kffi.posix.PosixSymbols
-import org.graphiks.kffi.wayland.protocol.zwp_text_input_manager_v3_interface
-import org.graphiks.kffi.wayland.protocol.zwp_text_input_v3_interface
 import java.lang.foreign.Arena
 import java.lang.foreign.FunctionDescriptor
 import java.lang.foreign.Linker
@@ -13,8 +11,8 @@ import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandle
 
 fun waylandNativeDisabled(): Boolean =
-    System.getenv("KFF_WAYLAND_DISABLE_NATIVE") == "1" ||
-        System.getProperty("kff.wayland.disableNative") == "true"
+    System.getenv("KFFI_WAYLAND_DISABLE_NATIVE") == "1" ||
+        System.getProperty("kffi.wayland.disableNative") == "true"
 
 val libWaylandClient: SymbolLookup? by lazy {
     if (waylandNativeDisabled()) return@lazy null
@@ -538,37 +536,6 @@ fun buildWaylandInterface(
     return iface
 }
 
-val xdgActivationV1Interface: MemorySegment by lazy {
-    buildWaylandInterface("xdg_activation_v1", methodCount = 3, eventCount = 1)
-}
-
-val xdgActivationTokenV1Interface: MemorySegment by lazy {
-    buildWaylandInterface("xdg_activation_token_v1", methodCount = 5, eventCount = 1)
-}
-
-val zwpTextInputManagerV3Interface: MemorySegment by lazy {
-    zwp_text_input_manager_v3_interface
-}
-
-val zwpTextInputV3Interface: MemorySegment by lazy {
-    zwp_text_input_v3_interface
-}
-
-val zwpPointerConstraintsV1Interface: MemorySegment by lazy {
-    buildWaylandInterface("zwp_pointer_constraints_v1", methodCount = 3, eventCount = 0)
-}
-
-val zwpLockedPointerV1Interface: MemorySegment by lazy {
-    buildWaylandInterface("zwp_locked_pointer_v1", methodCount = 3, eventCount = 2)
-}
-
-val zwpConfinedPointerV1Interface: MemorySegment by lazy {
-    buildWaylandInterface("zwp_confined_pointer_v1", methodCount = 2, eventCount = 2)
-}
-
-const val ZWP_POINTER_CONSTRAINTS_V1_LIFETIME_ONESHOT: Int = 0
-const val ZWP_POINTER_CONSTRAINTS_V1_LIFETIME_PERSISTENT: Int = 1
-
 val wlPointerConstraintsLockPointer: MethodHandle? by lazy {
     libWaylandClient.downcall("wl_proxy_marshal_flags",
         FunctionDescriptor.of(ValueLayout.ADDRESS,
@@ -599,14 +566,6 @@ val wlPointerConstraintsConfinePointer: MethodHandle? by lazy {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
         ))
-}
-
-val xdgToplevelIconManagerV1Interface: MemorySegment by lazy {
-    buildWaylandInterface("xdg_toplevel_icon_manager_v1", methodCount = 3, eventCount = 0)
-}
-
-val xdgToplevelIconV1Interface: MemorySegment by lazy {
-    buildWaylandInterface("xdg_toplevel_icon_v1", methodCount = 4, eventCount = 0)
 }
 
 val zwpInputManagerV3CreateTextInput: MethodHandle? by lazy {

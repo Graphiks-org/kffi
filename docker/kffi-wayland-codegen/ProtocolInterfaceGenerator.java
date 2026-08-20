@@ -5,10 +5,10 @@ import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
 /**
- * Parses Wayland protocol XML files and generates a Kotlin source file
- * with wl_interface MemorySegments.
+ * Parses Wayland protocol XML files and generates Kotlin source files with
+ * wl_interface MemorySegments plus request/event opcode and enum constants.
  *
- * Usage: java ProtocolInterfaceGenerator <xml-files...> <output.kt>
+ * Usage: java ProtocolInterfaceGenerator <xml-files...> <interfaces.kt> [<constants.kt>]
  */
 public class ProtocolInterfaceGenerator {
 
@@ -21,7 +21,18 @@ public class ProtocolInterfaceGenerator {
 
     static class Message {
         String name;
+        int since = 1;
         List<Arg> args = new ArrayList<>();
+    }
+
+    static class EnumEntry {
+        String name;
+        String value;
+    }
+
+    static class EnumDef {
+        String name;
+        List<EnumEntry> entries = new ArrayList<>();
     }
 
     static class WlInterface {
@@ -29,23 +40,35 @@ public class ProtocolInterfaceGenerator {
         int version;
         List<Message> requests = new ArrayList<>();
         List<Message> events = new ArrayList<>();
+        List<EnumDef> enums = new ArrayList<>();
     }
 
     public static void main(String[] args) throws Exception {
         if (args.length < 2) {
-            System.err.println("Usage: java ProtocolInterfaceGenerator <xml-files...> <output.kt>");
+            System.err.println("Usage: java ProtocolInterfaceGenerator <xml-files...> <interfaces.kt> [<constants.kt>]");
             System.err.println("  First N arguments = Wayland protocol XML file paths");
-            System.err.println("  Last argument     = output .kt file path");
+            System.err.println("  Last one or two arguments = generated Kotlin output paths");
             System.exit(1);
         }
 
-        String outputPath = args[args.length - 1];
+        int lastXml = -1;
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].toLowerCase(Locale.ROOT).endsWith(".xml")) lastXml = i;
+        }
+        int outputCount = args.length - lastXml - 1;
+        if (lastXml < 0 || outputCount < 1 || outputCount > 2) {
+            System.err.println("Expected one or two Kotlin output paths after the XML inputs");
+            System.exit(1);
+        }
+
+        String outputPath = args[lastXml + 1];
+        String constantsPath = outputCount == 2 ? args[lastXml + 2] : null;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 
         Map<String, WlInterface> interfaces = new LinkedHashMap<>();
 
-        for (int i = 0; i < args.length - 1; i++) {
+        for (int i = 0; i <= lastXml; i++) {
             File xmlFile = new File(args[i]);
             if (!xmlFile.exists()) {
                 System.err.println("Error: XML file not found: " + args[i]);
@@ -62,6 +85,7 @@ public class ProtocolInterfaceGenerator {
         }
 
         generateKotlin(interfaces, outputPath);
+        if (constantsPath != null) generateConstants(interfaces, constantsPath);
     }
 
     static WlInterface parseInterface(Element elem) {
@@ -81,14 +105,37 @@ public class ProtocolInterfaceGenerator {
                 iface.requests.add(parseMessage((Element) child));
             } else if ("event".equals(tag)) {
                 iface.events.add(parseMessage((Element) child));
+            } else if ("enum".equals(tag)) {
+                iface.enums.add(parseEnum((Element) child));
             }
         }
         return iface;
     }
 
+    static EnumDef parseEnum(Element elem) {
+        EnumDef enumDef = new EnumDef();
+        enumDef.name = elem.getAttribute("name");
+
+        NodeList children = elem.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() != Node.ELEMENT_NODE) continue;
+            Element entry = (Element) child;
+            if (!"entry".equals(entry.getTagName())) continue;
+
+            EnumEntry enumEntry = new EnumEntry();
+            enumEntry.name = entry.getAttribute("name");
+            enumEntry.value = entry.getAttribute("value");
+            enumDef.entries.add(enumEntry);
+        }
+        return enumDef;
+    }
+
     static Message parseMessage(Element elem) {
         Message msg = new Message();
         msg.name = elem.getAttribute("name");
+        String since = elem.getAttribute("since");
+        if (!since.isEmpty()) msg.since = Integer.parseInt(since);
 
         NodeList children = elem.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
@@ -124,8 +171,9 @@ public class ProtocolInterfaceGenerator {
         }
     }
 
-    static String buildSignature(List<Arg> args) {
+    static String buildSignature(int since, List<Arg> args) {
         StringBuilder sig = new StringBuilder();
+        if (since > 1) sig.append(since);
         for (Arg arg : args) {
             String encoding = typeToEncoding(arg.type);
             if (arg.allowNull && ("string".equals(arg.type) || "object".equals(arg.type))) {
@@ -146,6 +194,78 @@ public class ProtocolInterfaceGenerator {
 
     static String safeBuildName(String ifaceName) {
         return "build_" + ifaceName.replace('.', '_');
+    }
+
+    static String constantPart(String value) {
+        String part = value.replaceAll("[^A-Za-z0-9]+", "_").toUpperCase(Locale.ROOT);
+        if (part.isEmpty()) part = "VALUE";
+        if (Character.isDigit(part.charAt(0))) part = "_" + part;
+        return part;
+    }
+
+    static String protocolPrefix(String interfaceName) {
+        String prefix = interfaceName;
+        if (prefix.startsWith("zxdg_")) {
+            prefix = "xdg_" + prefix.substring("zxdg_".length());
+        } else if (prefix.startsWith("zwlr_")) {
+            prefix = prefix.substring("zwlr_".length());
+        } else if (prefix.startsWith("zwp_")) {
+            prefix = prefix.substring("zwp_".length());
+        }
+        return constantPart(prefix.replaceFirst("_v[0-9]+$", ""));
+    }
+
+    static long parseInteger(String value) {
+        String normalized = value.trim().toLowerCase(Locale.ROOT);
+        boolean negative = normalized.startsWith("-");
+        if (negative) normalized = normalized.substring(1);
+        long parsed = normalized.startsWith("0x")
+            ? Long.parseLong(normalized.substring(2), 16)
+            : Long.parseLong(normalized);
+        return negative ? -parsed : parsed;
+    }
+
+    static String intLiteral(String value) {
+        long parsed = parseInteger(value);
+        if (parsed > 0x7fffffffL && parsed <= 0xffffffffL) parsed -= 0x100000000L;
+        return Long.toString(parsed);
+    }
+
+    static void appendConstant(StringBuilder sb, String name, String value) {
+        sb.append("const val ").append(name).append(": Int = ").append(value).append("\n");
+    }
+
+    static void generateConstants(Map<String, WlInterface> interfaces, String outputPath) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        sb.append("package org.graphiks.kffi.wayland\n\n");
+        sb.append("// Generated from Wayland protocol XML; do not edit manually.\n\n");
+
+        boolean firstConstantBlock = true;
+        for (WlInterface iface : interfaces.values()) {
+            String prefix = protocolPrefix(iface.name);
+            StringBuilder block = new StringBuilder();
+            for (int i = 0; i < iface.requests.size(); i++) {
+                appendConstant(block, prefix + "_" + constantPart(iface.requests.get(i).name), Integer.toString(i));
+            }
+            for (int i = 0; i < iface.events.size(); i++) {
+                appendConstant(block, prefix + "_EVENT_" + constantPart(iface.events.get(i).name), Integer.toString(i));
+            }
+            for (EnumDef enumDef : iface.enums) {
+                String enumPrefix = prefix + "_" + constantPart(enumDef.name);
+                for (EnumEntry entry : enumDef.entries) {
+                    appendConstant(block, enumPrefix + "_" + constantPart(entry.name), intLiteral(entry.value));
+                }
+            }
+            if (block.isEmpty()) continue;
+            if (!firstConstantBlock) sb.append("\n");
+            sb.append(block);
+            firstConstantBlock = false;
+        }
+
+        Path outPath = Paths.get(outputPath);
+        Files.createDirectories(outPath.getParent());
+        Files.writeString(outPath, sb.toString());
+        System.out.println("Generated: " + outputPath);
     }
 
     static void generateKotlin(Map<String, WlInterface> interfaces, String outputPath) throws IOException {
@@ -220,7 +340,7 @@ public class ProtocolInterfaceGenerator {
             for (int i = 0; i < iface.requests.size(); i++) {
                 Message msg = iface.requests.get(i);
                 sb.append("    msg(\"").append(msg.name).append("\", \"")
-                  .append(buildSignature(msg.args)).append("\"");
+                  .append(buildSignature(msg.since, msg.args)).append("\"");
                 sb.append(buildTypesVarargs(msg.args, iface.name));
                 sb.append(")");
                 if (i < iface.requests.size() - 1) sb.append(",");
@@ -232,7 +352,7 @@ public class ProtocolInterfaceGenerator {
             for (int i = 0; i < iface.events.size(); i++) {
                 Message msg = iface.events.get(i);
                 sb.append("    msg(\"").append(msg.name).append("\", \"")
-                  .append(buildSignature(msg.args)).append("\"");
+                  .append(buildSignature(msg.since, msg.args)).append("\"");
                 sb.append(buildTypesVarargs(msg.args, iface.name));
                 sb.append(")");
                 if (i < iface.events.size() - 1) sb.append(",");
