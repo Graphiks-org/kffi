@@ -1,9 +1,11 @@
 package org.graphiks.kffi.x11
 
 import java.lang.foreign.StructLayout
+import java.lang.foreign.UnionLayout
 import kotlin.test.Test
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
+import org.graphiks.kffi.x11.generated.KffiXEventStorage
 import org.graphiks.kffi.x11.generated.XColor
 import org.graphiks.kffi.x11.generated.XPoint
 import org.graphiks.kffi.x11.generated.XRectangle
@@ -32,6 +34,7 @@ class X11BindingTest {
 
     @Test
     fun preservesStructLayouts() {
+        assertIs<UnionLayout>(KffiXEventStorage.layout)
         assertIs<StructLayout>(XRectangle.layout)
         assertIs<StructLayout>(XPoint.layout)
         assertIs<StructLayout>(XColor.layout)

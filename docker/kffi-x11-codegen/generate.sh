@@ -85,6 +85,7 @@ for function in "${functions[@]}"; do args+=(--include-function "$function"); do
 for constant in "${constants[@]}"; do args+=(--include-constant "$constant"); done
 for typedef in "${typedefs[@]}"; do args+=(--include-typedef "$typedef"); done
 for struct in "${structs[@]}"; do args+=(--include-struct "$struct"); done
+args+=(--include-union KffiXEventStorage --include-typedef KffiXEventStorage)
 
 # These macro families are part of the X11 public API. Extract their concrete
 # names from the installed headers so the inclusion list follows the headers.
@@ -115,7 +116,8 @@ echo "[gen] generating Kotlin FFM bindings with kextract"
     /usr/include/X11/extensions/XShm.h \
     /usr/include/X11/extensions/shape.h \
     /usr/include/X11/extensions/Xcomposite.h \
-    /usr/include/X11/Xatom.h
+    /usr/include/X11/Xatom.h \
+    "$REPO/docker/kffi-x11-codegen/x11_compat.h"
 
 rm -rf "$GENERATED_KT"
 mkdir -p "$(dirname "$GENERATED_KT")"

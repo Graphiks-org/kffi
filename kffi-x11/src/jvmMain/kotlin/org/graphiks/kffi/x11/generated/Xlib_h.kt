@@ -2953,6 +2953,53 @@ fun XCompositeNameWindowPixmap(arg0: MemorySegment, arg1: Long): Long {
 }
 
 /**
+ * WARNING: This was originally a C union. Fields overlap in memory!
+ * {@snippet lang=c : UNION KffiXEventStorage
+ */
+/**
+ * {@snippet lang=c : UNION KffiXEventStorage
+ */
+class KffiXEventStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.unionLayout(
+            ValueLayout.JAVA_INT.withName("type"),
+            MemoryLayout.sequenceLayout(24, ValueLayout.JAVA_LONG).withName("pad")
+        ).withName("KffiXEventStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val type_VH: VarHandle = layout.varHandle(groupElement("type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun type(segment: MemorySegment): Int =
+        type_VH.get(segment, 0L) as Int
+
+    fun type(segment: MemorySegment, value: Int) =
+        type_VH.set(segment, 0L, value)
+
+    fun pad(segment: MemorySegment): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("pad")), layout.select(groupElement("pad")).byteSize())
+} // End class
+
+/**
  * {@snippet lang=c : #define AnyPropertyType 0
  */
 fun AnyPropertyType(): Long = 0
