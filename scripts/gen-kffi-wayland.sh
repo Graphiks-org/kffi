@@ -15,12 +15,12 @@ if [[ -t 1 ]]; then
     # Persist kextract's Gradle dependencies between runs.
     docker run --rm -t \
         -v "$REPO_ROOT:/work" \
-        -v kff-gradle-cache:/root/.gradle \
+        -v kffi-gradle-cache:/root/.gradle \
         "$IMAGE" bash /work/docker/kffi-wayland-codegen/generate.sh
 else
     # Persist kextract's Gradle dependencies between runs.
     docker run --rm \
         -v "$REPO_ROOT:/work" \
-        -v kff-gradle-cache:/root/.gradle \
+        -v kffi-gradle-cache:/root/.gradle \
         "$IMAGE" bash /work/docker/kffi-wayland-codegen/generate.sh
 fi
