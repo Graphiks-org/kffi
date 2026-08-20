@@ -58,6 +58,9 @@ tasks.register<Test>("x11IntegrationTest") {
         "kffi.x11.defaultArtifactDir",
         layout.buildDirectory.dir("x11-integration").get().asFile.absolutePath,
     )
+    // The test writes a screenshot and diagnostics outside Gradle's test outputs.
+    // Always execute it so a missing or stale artifact cannot produce a false green run.
+    outputs.upToDateWhen { false }
     onlyIf("KFFI_X11_INTEGRATION must equal 1") {
         x11IntegrationEnabled.get()
     }
