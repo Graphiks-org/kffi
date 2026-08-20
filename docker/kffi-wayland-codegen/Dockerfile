@@ -15,7 +15,7 @@ FROM eclipse-temurin:25-jdk-noble
 RUN apt-get -o APT::Sandbox::User=root update \
     && apt-get -o APT::Sandbox::User=root install -y --no-install-recommends \
         clang-18 llvm-18-dev libclang-18-dev \
-        libwayland-bin libwayland-dev wayland-protocols \
+        libwayland-bin libwayland-dev \
         gcc libc6-dev patch ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 

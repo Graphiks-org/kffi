@@ -8,32 +8,11 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 
-val zwlrScreencopyManagerV1Interface: MemorySegment by lazy {
-    buildWaylandInterface("zwlr_screencopy_manager_v1", version = 3, methodCount = 3, eventCount = 0)
-}
-
-val zwlrScreencopyFrameV1Interface: MemorySegment by lazy {
-    buildWaylandInterface("zwlr_screencopy_frame_v1", version = 3, methodCount = 2, eventCount = 4)
-}
-
-const val SCREENCOPY_MANAGER_CAPTURE_OUTPUT: Int = 0
-const val SCREENCOPY_MANAGER_CAPTURE_OUTPUT_REGION: Int = 1
-const val SCREENCOPY_MANAGER_DESTROY: Int = 2
-
-const val SCREENCOPY_FRAME_COPY: Int = 0
-const val SCREENCOPY_FRAME_DESTROY: Int = 1
-
-const val SCREENCOPY_FRAME_EVENT_BUFFER: Int = 0
-const val SCREENCOPY_FRAME_EVENT_FLAGS: Int = 1
-const val SCREENCOPY_FRAME_EVENT_READY: Int = 2
-const val SCREENCOPY_FRAME_EVENT_FAILED: Int = 3
-
+// Core wl_shm formats are not declared by the screencopy protocol XML.
 const val WL_SHM_FORMAT_XRGB8888: Int = 1
 const val WL_SHM_FORMAT_ARGB8888: Int = 2
 const val WL_SHM_FORMAT_XBGR8888: Int = 5
 const val WL_SHM_FORMAT_ABGR8888: Int = 6
-
-const val ZWLR_SCREENCOPY_FRAME_FLAGS_Y_INVERT: Int = 1
 
 val zwlrScreencopyManagerCaptureOutput: MethodHandle? by lazy {
     libWaylandDowncall("wl_proxy_marshal_flags",

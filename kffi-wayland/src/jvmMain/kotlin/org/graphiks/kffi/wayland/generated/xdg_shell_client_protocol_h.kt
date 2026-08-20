@@ -1050,7 +1050,7 @@ enum class xdg_toplevel_resize_edge(val value: Long) {
  * NS_ENUM: {@snippet lang=c : enum xdg_toplevel_state}
  */
 enum class xdg_toplevel_state(val value: Long) {
-    XDG_TOPLEVEL_STATE_MAXIMIZED(1L), XDG_TOPLEVEL_STATE_FULLSCREEN(2L), XDG_TOPLEVEL_STATE_RESIZING(3L), XDG_TOPLEVEL_STATE_ACTIVATED(4L), XDG_TOPLEVEL_STATE_TILED_LEFT(5L), XDG_TOPLEVEL_STATE_TILED_RIGHT(6L), XDG_TOPLEVEL_STATE_TILED_TOP(7L), XDG_TOPLEVEL_STATE_TILED_BOTTOM(8L), XDG_TOPLEVEL_STATE_SUSPENDED(9L), XDG_TOPLEVEL_STATE_CONSTRAINED_LEFT(10L), XDG_TOPLEVEL_STATE_CONSTRAINED_RIGHT(11L), XDG_TOPLEVEL_STATE_CONSTRAINED_TOP(12L), XDG_TOPLEVEL_STATE_CONSTRAINED_BOTTOM(13L);
+    XDG_TOPLEVEL_STATE_MAXIMIZED(1L), XDG_TOPLEVEL_STATE_FULLSCREEN(2L), XDG_TOPLEVEL_STATE_RESIZING(3L), XDG_TOPLEVEL_STATE_ACTIVATED(4L), XDG_TOPLEVEL_STATE_TILED_LEFT(5L), XDG_TOPLEVEL_STATE_TILED_RIGHT(6L), XDG_TOPLEVEL_STATE_TILED_TOP(7L), XDG_TOPLEVEL_STATE_TILED_BOTTOM(8L), XDG_TOPLEVEL_STATE_SUSPENDED(9L);
     
     companion object {
         fun fromValue(v: Long): xdg_toplevel_state = entries.firstOrNull { it.value == v }
@@ -1103,6 +1103,318 @@ enum class zxdg_toplevel_decoration_v1_mode(val value: Long) {
     companion object {
         fun fromValue(v: Long): zxdg_toplevel_decoration_v1_mode = entries.firstOrNull { it.value == v }
             ?: error("Unknown zxdg_toplevel_decoration_v1_mode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_text_input_v3_change_cause}
+ */
+enum class zwp_text_input_v3_change_cause(val value: Long) {
+    ZWP_TEXT_INPUT_V3_CHANGE_CAUSE_INPUT_METHOD(0L), ZWP_TEXT_INPUT_V3_CHANGE_CAUSE_OTHER(1L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_text_input_v3_change_cause = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_text_input_v3_change_cause value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_text_input_v3_content_hint}
+ */
+enum class zwp_text_input_v3_content_hint(val value: Long) {
+    ZWP_TEXT_INPUT_V3_CONTENT_HINT_NONE(0L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_COMPLETION(1L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_SPELLCHECK(2L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_AUTO_CAPITALIZATION(4L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_LOWERCASE(8L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_UPPERCASE(16L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_TITLECASE(32L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_HIDDEN_TEXT(64L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_SENSITIVE_DATA(128L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_LATIN(256L), ZWP_TEXT_INPUT_V3_CONTENT_HINT_MULTILINE(512L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_text_input_v3_content_hint = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_text_input_v3_content_hint value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_text_input_v3_content_purpose}
+ */
+enum class zwp_text_input_v3_content_purpose(val value: Long) {
+    ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_NORMAL(0L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_ALPHA(1L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_DIGITS(2L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_NUMBER(3L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_PHONE(4L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_URL(5L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_EMAIL(6L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_NAME(7L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_PASSWORD(8L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_PIN(9L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_DATE(10L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_TIME(11L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_DATETIME(12L), ZWP_TEXT_INPUT_V3_CONTENT_PURPOSE_TERMINAL(13L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_text_input_v3_content_purpose = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_text_input_v3_content_purpose value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwlr_screencopy_frame_v1_error}
+ */
+enum class zwlr_screencopy_frame_v1_error(val value: Long) {
+    ZWLR_SCREENCOPY_FRAME_V1_ERROR_ALREADY_USED(0L), ZWLR_SCREENCOPY_FRAME_V1_ERROR_INVALID_BUFFER(1L);
+    
+    companion object {
+        fun fromValue(v: Long): zwlr_screencopy_frame_v1_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwlr_screencopy_frame_v1_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwlr_screencopy_frame_v1_flags}
+ */
+enum class zwlr_screencopy_frame_v1_flags(val value: Long) {
+    ZWLR_SCREENCOPY_FRAME_V1_FLAGS_Y_INVERT(1L);
+    
+    companion object {
+        fun fromValue(v: Long): zwlr_screencopy_frame_v1_flags = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwlr_screencopy_frame_v1_flags value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum xdg_activation_token_v1_error}
+ */
+enum class xdg_activation_token_v1_error(val value: Long) {
+    XDG_ACTIVATION_TOKEN_V1_ERROR_ALREADY_USED(0L);
+    
+    companion object {
+        fun fromValue(v: Long): xdg_activation_token_v1_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown xdg_activation_token_v1_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_pointer_constraints_v1_error}
+ */
+enum class zwp_pointer_constraints_v1_error(val value: Long) {
+    ZWP_POINTER_CONSTRAINTS_V1_ERROR_ALREADY_CONSTRAINED(1L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_pointer_constraints_v1_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_pointer_constraints_v1_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_pointer_constraints_v1_lifetime}
+ */
+enum class zwp_pointer_constraints_v1_lifetime(val value: Long) {
+    ZWP_POINTER_CONSTRAINTS_V1_LIFETIME_ONESHOT(1L), ZWP_POINTER_CONSTRAINTS_V1_LIFETIME_PERSISTENT(2L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_pointer_constraints_v1_lifetime = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_pointer_constraints_v1_lifetime value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum xdg_toplevel_icon_v1_error}
+ */
+enum class xdg_toplevel_icon_v1_error(val value: Long) {
+    XDG_TOPLEVEL_ICON_V1_ERROR_INVALID_BUFFER(1L), XDG_TOPLEVEL_ICON_V1_ERROR_IMMUTABLE(2L), XDG_TOPLEVEL_ICON_V1_ERROR_NO_BUFFER(3L);
+    
+    companion object {
+        fun fromValue(v: Long): xdg_toplevel_icon_v1_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown xdg_toplevel_icon_v1_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum wp_fractional_scale_manager_v1_error}
+ */
+enum class wp_fractional_scale_manager_v1_error(val value: Long) {
+    WP_FRACTIONAL_SCALE_MANAGER_V1_ERROR_FRACTIONAL_SCALE_EXISTS(0L);
+    
+    companion object {
+        fun fromValue(v: Long): wp_fractional_scale_manager_v1_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown wp_fractional_scale_manager_v1_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum wp_viewporter_error}
+ */
+enum class wp_viewporter_error(val value: Long) {
+    WP_VIEWPORTER_ERROR_VIEWPORT_EXISTS(0L);
+    
+    companion object {
+        fun fromValue(v: Long): wp_viewporter_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown wp_viewporter_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum wp_viewport_error}
+ */
+enum class wp_viewport_error(val value: Long) {
+    WP_VIEWPORT_ERROR_BAD_VALUE(0L), WP_VIEWPORT_ERROR_BAD_SIZE(1L), WP_VIEWPORT_ERROR_OUT_OF_BUFFER(2L), WP_VIEWPORT_ERROR_NO_SURFACE(3L);
+    
+    companion object {
+        fun fromValue(v: Long): wp_viewport_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown wp_viewport_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum wp_presentation_error}
+ */
+enum class wp_presentation_error(val value: Long) {
+    WP_PRESENTATION_ERROR_INVALID_TIMESTAMP(0L), WP_PRESENTATION_ERROR_INVALID_FLAG(1L);
+    
+    companion object {
+        fun fromValue(v: Long): wp_presentation_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown wp_presentation_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum wp_presentation_feedback_kind}
+ */
+enum class wp_presentation_feedback_kind(val value: Long) {
+    WP_PRESENTATION_FEEDBACK_KIND_VSYNC(1L), WP_PRESENTATION_FEEDBACK_KIND_HW_CLOCK(2L), WP_PRESENTATION_FEEDBACK_KIND_HW_COMPLETION(4L), WP_PRESENTATION_FEEDBACK_KIND_ZERO_COPY(8L);
+    
+    companion object {
+        fun fromValue(v: Long): wp_presentation_feedback_kind = entries.firstOrNull { it.value == v }
+            ?: error("Unknown wp_presentation_feedback_kind value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_linux_buffer_params_v1_error}
+ */
+enum class zwp_linux_buffer_params_v1_error(val value: Long) {
+    ZWP_LINUX_BUFFER_PARAMS_V1_ERROR_ALREADY_USED(0L), ZWP_LINUX_BUFFER_PARAMS_V1_ERROR_PLANE_IDX(1L), ZWP_LINUX_BUFFER_PARAMS_V1_ERROR_PLANE_SET(2L), ZWP_LINUX_BUFFER_PARAMS_V1_ERROR_INCOMPLETE(3L), ZWP_LINUX_BUFFER_PARAMS_V1_ERROR_INVALID_FORMAT(4L), ZWP_LINUX_BUFFER_PARAMS_V1_ERROR_INVALID_DIMENSIONS(5L), ZWP_LINUX_BUFFER_PARAMS_V1_ERROR_OUT_OF_BOUNDS(6L), ZWP_LINUX_BUFFER_PARAMS_V1_ERROR_INVALID_WL_BUFFER(7L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_linux_buffer_params_v1_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_linux_buffer_params_v1_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_linux_buffer_params_v1_flags}
+ */
+enum class zwp_linux_buffer_params_v1_flags(val value: Long) {
+    ZWP_LINUX_BUFFER_PARAMS_V1_FLAGS_Y_INVERT(1L), ZWP_LINUX_BUFFER_PARAMS_V1_FLAGS_INTERLACED(2L), ZWP_LINUX_BUFFER_PARAMS_V1_FLAGS_BOTTOM_FIRST(4L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_linux_buffer_params_v1_flags = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_linux_buffer_params_v1_flags value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_linux_dmabuf_feedback_v1_tranche_flags}
+ */
+enum class zwp_linux_dmabuf_feedback_v1_tranche_flags(val value: Long) {
+    ZWP_LINUX_DMABUF_FEEDBACK_V1_TRANCHE_FLAGS_SCANOUT(1L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_linux_dmabuf_feedback_v1_tranche_flags = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_linux_dmabuf_feedback_v1_tranche_flags value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum wp_cursor_shape_device_v1_shape}
+ */
+enum class wp_cursor_shape_device_v1_shape(val value: Long) {
+    WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_DEFAULT(1L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_CONTEXT_MENU(2L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_HELP(3L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_POINTER(4L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_PROGRESS(5L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_WAIT(6L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_CELL(7L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_CROSSHAIR(8L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_TEXT(9L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_VERTICAL_TEXT(10L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_ALIAS(11L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_COPY(12L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_MOVE(13L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_NO_DROP(14L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_NOT_ALLOWED(15L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_GRAB(16L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_GRABBING(17L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_E_RESIZE(18L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_N_RESIZE(19L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_NE_RESIZE(20L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_NW_RESIZE(21L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_S_RESIZE(22L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_SE_RESIZE(23L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_SW_RESIZE(24L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_W_RESIZE(25L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_EW_RESIZE(26L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_NS_RESIZE(27L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_NESW_RESIZE(28L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_NWSE_RESIZE(29L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_COL_RESIZE(30L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_ROW_RESIZE(31L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_ALL_SCROLL(32L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_ZOOM_IN(33L), WP_CURSOR_SHAPE_DEVICE_V1_SHAPE_ZOOM_OUT(34L);
+    
+    companion object {
+        fun fromValue(v: Long): wp_cursor_shape_device_v1_shape = entries.firstOrNull { it.value == v }
+            ?: error("Unknown wp_cursor_shape_device_v1_shape value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum wp_cursor_shape_device_v1_error}
+ */
+enum class wp_cursor_shape_device_v1_error(val value: Long) {
+    WP_CURSOR_SHAPE_DEVICE_V1_ERROR_INVALID_SHAPE(1L);
+    
+    companion object {
+        fun fromValue(v: Long): wp_cursor_shape_device_v1_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown wp_cursor_shape_device_v1_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_tablet_tool_v2_type}
+ */
+enum class zwp_tablet_tool_v2_type(val value: Long) {
+    ZWP_TABLET_TOOL_V2_TYPE_PEN(320L), ZWP_TABLET_TOOL_V2_TYPE_ERASER(321L), ZWP_TABLET_TOOL_V2_TYPE_BRUSH(322L), ZWP_TABLET_TOOL_V2_TYPE_PENCIL(323L), ZWP_TABLET_TOOL_V2_TYPE_AIRBRUSH(324L), ZWP_TABLET_TOOL_V2_TYPE_FINGER(325L), ZWP_TABLET_TOOL_V2_TYPE_MOUSE(326L), ZWP_TABLET_TOOL_V2_TYPE_LENS(327L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_tablet_tool_v2_type = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_tablet_tool_v2_type value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_tablet_tool_v2_capability}
+ */
+enum class zwp_tablet_tool_v2_capability(val value: Long) {
+    ZWP_TABLET_TOOL_V2_CAPABILITY_TILT(1L), ZWP_TABLET_TOOL_V2_CAPABILITY_PRESSURE(2L), ZWP_TABLET_TOOL_V2_CAPABILITY_DISTANCE(3L), ZWP_TABLET_TOOL_V2_CAPABILITY_ROTATION(4L), ZWP_TABLET_TOOL_V2_CAPABILITY_SLIDER(5L), ZWP_TABLET_TOOL_V2_CAPABILITY_WHEEL(6L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_tablet_tool_v2_capability = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_tablet_tool_v2_capability value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_tablet_tool_v2_button_state}
+ */
+enum class zwp_tablet_tool_v2_button_state(val value: Long) {
+    ZWP_TABLET_TOOL_V2_BUTTON_STATE_RELEASED(0L), ZWP_TABLET_TOOL_V2_BUTTON_STATE_PRESSED(1L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_tablet_tool_v2_button_state = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_tablet_tool_v2_button_state value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_tablet_tool_v2_error}
+ */
+enum class zwp_tablet_tool_v2_error(val value: Long) {
+    ZWP_TABLET_TOOL_V2_ERROR_ROLE(0L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_tablet_tool_v2_error = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_tablet_tool_v2_error value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_tablet_pad_ring_v2_source}
+ */
+enum class zwp_tablet_pad_ring_v2_source(val value: Long) {
+    ZWP_TABLET_PAD_RING_V2_SOURCE_FINGER(1L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_tablet_pad_ring_v2_source = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_tablet_pad_ring_v2_source value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_tablet_pad_strip_v2_source}
+ */
+enum class zwp_tablet_pad_strip_v2_source(val value: Long) {
+    ZWP_TABLET_PAD_STRIP_V2_SOURCE_FINGER(1L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_tablet_pad_strip_v2_source = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_tablet_pad_strip_v2_source value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum zwp_tablet_pad_v2_button_state}
+ */
+enum class zwp_tablet_pad_v2_button_state(val value: Long) {
+    ZWP_TABLET_PAD_V2_BUTTON_STATE_RELEASED(0L), ZWP_TABLET_PAD_V2_BUTTON_STATE_PRESSED(1L);
+    
+    companion object {
+        fun fromValue(v: Long): zwp_tablet_pad_v2_button_state = entries.firstOrNull { it.value == v }
+            ?: error("Unknown zwp_tablet_pad_v2_button_state value: $v")
     }
 }
 

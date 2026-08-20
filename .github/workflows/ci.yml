@@ -10,6 +10,38 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  wayland-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 25
+          cache: 'gradle'
+      - name: Install Wayland integration dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            grim \
+            libwayland-bin \
+            libwayland-client0 \
+            libwayland-cursor0 \
+            libwayland-egl1 \
+            libwayland-server0 \
+            sway \
+            wayland-protocols
+      - name: Run Wayland integration test
+        run: scripts/run-wayland-integration.sh
+      - name: Upload Wayland integration artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wayland-integration
+          path: kffi-wayland/build/wayland-integration/**
+          if-no-files-found: warn
+
   tests:
     strategy:
       fail-fast: false
