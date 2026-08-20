@@ -177,6 +177,15 @@ sources are in `org.graphiks.kffi.x11.generated` and load `libX11.so.6`,
 `libXext.so.6`, and `libXcomposite.so.1`. The module depends on
 `:kffi-posix`; it does not provide a higher-level X11 event-loop layer.
 
+The generated core surface includes graphics-context creation, state setters,
+color parsing/allocation/query operations, and X11 drawing primitives for
+points, lines, segments, rectangles, arcs, and polygons. It also exposes
+pixmap creation, copying, clearing, window background/border pixmap helpers,
+and image transfer entry points. Native records such as `XColor`, `XPoint`,
+`XSegment`, `XRectangle`, and `XArc` are emitted by kextract, while opaque Xlib
+records remain `MemorySegment` pointers where their nested ABI is not safely
+laid out by the pinned generator.
+
 The bindings are generated with the pinned
 [`kextract`](https://github.com/klang-toolkit/kextract) revision
 `9252fb417ea91dae882a6a9e9d06ab672c50adc3`. The Docker base image is pinned
@@ -231,6 +240,11 @@ KFFI_X11_INTEGRATION=1 ./gradlew :kffi-x11:x11IntegrationTest
 The direct Gradle command does not start `Xvfb`; `DISPLAY` must reference an
 existing X server. Prefer `scripts/run-x11-integration.sh` for the
 self-contained headless flow.
+
+The integration test draws four named-color rectangles in the window's
+quadrants, captures the result as `window.png`, and validates the center pixel
+of each quadrant. The generated binding contract test also checks that the
+core GC, color, geometry, and pixmap declarations are present.
 
 The pinned generator cannot safely emit layouts for Xlib records with nested
 declarations or LP64 padding. `XEvent`, `XImage`, `XWindowAttributes`,

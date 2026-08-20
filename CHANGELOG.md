@@ -35,6 +35,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and text-input FFM bindings imported from `poc-koreos`.
 - JVM-only `kffi-x11` module with generated low-level X11 FFM bindings and a
   reproducible Docker/kextract generation pipeline.
+- Core X11 drawing bindings for graphics contexts, colors, geometry primitives,
+  and pixmaps, with a headless four-color screenshot integration test.
 - Reproducible Docker/kextract generation pipeline for the kffi-wayland XDG
   Shell bindings.
 
