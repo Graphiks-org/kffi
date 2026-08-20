@@ -39,6 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and pixmaps, with a headless four-color screenshot integration test.
 - JVM-only `kffi-objc` module with generated macOS Objective-C runtime,
   Foundation, and AppKit FFM bindings.
+- Expanded the `kffi-objc` AppKit subset with window controllers, screen and
+  input bindings, rendering resources, and controls.
 - Reproducible Docker/kextract generation pipeline for the kffi-wayland XDG
   Shell bindings.
 

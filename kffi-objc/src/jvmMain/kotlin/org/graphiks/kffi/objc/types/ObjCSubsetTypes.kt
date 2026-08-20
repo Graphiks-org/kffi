@@ -4548,3 +4548,28 @@ typealias NSModalResponse = Long
  * {@snippet lang=c : typedef Long NSWindowLevel;}
  */
 typealias NSWindowLevel = Long
+
+/**
+ * {@snippet lang=c : typedef Float NSLayoutPriority;}
+ */
+typealias NSLayoutPriority = Float
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int NSFontSymbolicTraits;}
+ */
+typealias NSFontSymbolicTraits = Int
+
+/**
+ * {@snippet lang=c : typedef Double NSFontWeight;}
+ */
+typealias NSFontWeight = Double
+
+/**
+ * {@snippet lang=c : typedef Double NSFontWidth;}
+ */
+typealias NSFontWidth = Double
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int NSFontFamilyClass;}
+ */
+typealias NSFontFamilyClass = Int
