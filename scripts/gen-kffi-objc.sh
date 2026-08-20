@@ -65,6 +65,16 @@ mkdir -p "$STAGING"
     --include-objc-class NSApplication \
     --include-objc-class NSWindow \
     --include-objc-class NSView \
+    --include-objc-class NSWindowController \
+    --include-objc-class NSViewController \
+    --include-objc-class NSScreen \
+    --include-objc-class NSEvent \
+    --include-objc-class NSColor \
+    --include-objc-class NSImage \
+    --include-objc-class NSCursor \
+    --include-objc-class NSControl \
+    --include-objc-class NSButton \
+    --include-objc-class NSTextField \
     --clang-arg -isysroot \
     --clang-arg "$SDK" \
     "$HEADER"

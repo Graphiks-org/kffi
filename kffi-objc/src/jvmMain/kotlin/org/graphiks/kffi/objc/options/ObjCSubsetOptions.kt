@@ -1976,3 +1976,52 @@ value class NSWindowNumberListOptions(val rawValue: Long) {
     operator fun plus(o: NSWindowNumberListOptions) = NSWindowNumberListOptions(rawValue or o.rawValue)
     operator fun contains(o: NSWindowNumberListOptions) = (rawValue and o.rawValue) != 0L
 }
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSViewControllerTransitionOptions}
+ */
+@JvmInline
+value class NSViewControllerTransitionOptions(val rawValue: Long) {
+    companion object {
+        val NSViewControllerTransitionNone = NSViewControllerTransitionOptions(0L)
+        val NSViewControllerTransitionCrossfade = NSViewControllerTransitionOptions(1L)
+        val NSViewControllerTransitionSlideUp = NSViewControllerTransitionOptions(16L)
+        val NSViewControllerTransitionSlideDown = NSViewControllerTransitionOptions(32L)
+        val NSViewControllerTransitionSlideLeft = NSViewControllerTransitionOptions(64L)
+        val NSViewControllerTransitionSlideRight = NSViewControllerTransitionOptions(128L)
+        val NSViewControllerTransitionSlideForward = NSViewControllerTransitionOptions(320L)
+        val NSViewControllerTransitionSlideBackward = NSViewControllerTransitionOptions(384L)
+        val NSViewControllerTransitionAllowUserInteraction = NSViewControllerTransitionOptions(4096L)
+    }
+
+    operator fun plus(o: NSViewControllerTransitionOptions) = NSViewControllerTransitionOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSViewControllerTransitionOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSLayoutFormatOptions}
+ */
+@JvmInline
+value class NSLayoutFormatOptions(val rawValue: Long) {
+    companion object {
+        val NSLayoutFormatAlignAllLeft = NSLayoutFormatOptions(2L)
+        val NSLayoutFormatAlignAllRight = NSLayoutFormatOptions(4L)
+        val NSLayoutFormatAlignAllTop = NSLayoutFormatOptions(8L)
+        val NSLayoutFormatAlignAllBottom = NSLayoutFormatOptions(16L)
+        val NSLayoutFormatAlignAllLeading = NSLayoutFormatOptions(32L)
+        val NSLayoutFormatAlignAllTrailing = NSLayoutFormatOptions(64L)
+        val NSLayoutFormatAlignAllCenterX = NSLayoutFormatOptions(512L)
+        val NSLayoutFormatAlignAllCenterY = NSLayoutFormatOptions(1024L)
+        val NSLayoutFormatAlignAllLastBaseline = NSLayoutFormatOptions(2048L)
+        val NSLayoutFormatAlignAllFirstBaseline = NSLayoutFormatOptions(4096L)
+        val NSLayoutFormatAlignAllBaseline = NSLayoutFormatOptions(2048L)
+        val NSLayoutFormatAlignmentMask = NSLayoutFormatOptions(65535L)
+        val NSLayoutFormatDirectionLeadingToTrailing = NSLayoutFormatOptions(0L)
+        val NSLayoutFormatDirectionLeftToRight = NSLayoutFormatOptions(65536L)
+        val NSLayoutFormatDirectionRightToLeft = NSLayoutFormatOptions(131072L)
+        val NSLayoutFormatDirectionMask = NSLayoutFormatOptions(196608L)
+    }
+
+    operator fun plus(o: NSLayoutFormatOptions) = NSLayoutFormatOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSLayoutFormatOptions) = (rawValue and o.rawValue) != 0L
+}

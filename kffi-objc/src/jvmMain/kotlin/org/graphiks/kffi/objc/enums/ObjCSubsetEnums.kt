@@ -22635,3 +22635,411 @@ enum class NSWindowBackingLocation(val value: Long) {
             ?: error("Unknown NSWindowBackingLocation value: $v")
     }
 }
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPopoverAppearance}
+ */
+enum class NSPopoverAppearance(val value: Long) {
+    NSPopoverAppearanceMinimal(0L), NSPopoverAppearanceHUD(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSPopoverAppearance = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPopoverAppearance value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPopoverBehavior}
+ */
+enum class NSPopoverBehavior(val value: Long) {
+    NSPopoverBehaviorApplicationDefined(0L), NSPopoverBehaviorTransient(1L), NSPopoverBehaviorSemitransient(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSPopoverBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPopoverBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSColorType}
+ */
+enum class NSColorType(val value: Long) {
+    NSColorTypeComponentBased(0L), NSColorTypePattern(1L), NSColorTypeCatalog(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSColorType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSColorType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSColorSystemEffect}
+ */
+enum class NSColorSystemEffect(val value: Long) {
+    NSColorSystemEffectNone(0L), NSColorSystemEffectPressed(1L), NSColorSystemEffectDeepPressed(2L), NSColorSystemEffectDisabled(3L), NSColorSystemEffectRollover(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSColorSystemEffect = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSColorSystemEffect value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSColorSpaceModel}
+ */
+enum class NSColorSpaceModel(val value: Long) {
+    NSColorSpaceModelUnknown(-1L), NSColorSpaceModelGray(0L), NSColorSpaceModelRGB(1L), NSColorSpaceModelCMYK(2L), NSColorSpaceModelLAB(3L), NSColorSpaceModelDeviceN(4L), NSColorSpaceModelIndexed(5L), NSColorSpaceModelPatterned(6L);
+
+    companion object {
+        fun fromValue(v: Long): NSColorSpaceModel = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSColorSpaceModel value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSImageRep.h:29:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSImageRep_h_29_1_(val value: Long) {
+    NSImageRepMatchesDevice(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSImageRep_h_29_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSImageRep_h_29_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSImageLayoutDirection}
+ */
+enum class NSImageLayoutDirection(val value: Long) {
+    NSImageLayoutDirectionUnspecified(-1L), NSImageLayoutDirectionLeftToRight(2L), NSImageLayoutDirectionRightToLeft(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSImageLayoutDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageLayoutDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTIFFCompression}
+ */
+enum class NSTIFFCompression(val value: Long) {
+    NSTIFFCompressionNone(1L), NSTIFFCompressionCCITTFAX3(3L), NSTIFFCompressionCCITTFAX4(4L), NSTIFFCompressionLZW(5L), NSTIFFCompressionJPEG(6L), NSTIFFCompressionNEXT(32766L), NSTIFFCompressionPackBits(32773L), NSTIFFCompressionOldJPEG(32865L);
+
+    companion object {
+        fun fromValue(v: Long): NSTIFFCompression = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTIFFCompression value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSBitmapImageFileType}
+ */
+enum class NSBitmapImageFileType(val value: Long) {
+    NSBitmapImageFileTypeTIFF(0L), NSBitmapImageFileTypeBMP(1L), NSBitmapImageFileTypeGIF(2L), NSBitmapImageFileTypeJPEG(3L), NSBitmapImageFileTypePNG(4L), NSBitmapImageFileTypeJPEG2000(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSBitmapImageFileType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBitmapImageFileType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSImageRepLoadStatus}
+ */
+enum class NSImageRepLoadStatus(val value: Long) {
+    NSImageRepLoadStatusUnknownType(-1L), NSImageRepLoadStatusReadingHeader(-2L), NSImageRepLoadStatusWillNeedAllData(-3L), NSImageRepLoadStatusInvalidData(-4L), NSImageRepLoadStatusUnexpectedEOF(-5L), NSImageRepLoadStatusCompleted(-6L);
+
+    companion object {
+        fun fromValue(v: Long): NSImageRepLoadStatus = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageRepLoadStatus value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSBitmapFormat}
+ */
+enum class NSBitmapFormat(val value: Long) {
+    NSBitmapFormatAlphaFirst(1L), NSBitmapFormatAlphaNonpremultiplied(2L), NSBitmapFormatFloatingPointSamples(4L), NSBitmapFormatSixteenBitLittleEndian(256L), NSBitmapFormatThirtyTwoBitLittleEndian(512L), NSBitmapFormatSixteenBitBigEndian(1024L), NSBitmapFormatThirtyTwoBitBigEndian(2048L);
+
+    companion object {
+        fun fromValue(v: Long): NSBitmapFormat = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBitmapFormat value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSControlBorderShape}
+ */
+enum class NSControlBorderShape(val value: Long) {
+    NSControlBorderShapeAutomatic(0L), NSControlBorderShapeCapsule(1L), NSControlBorderShapeRoundedRectangle(2L), NSControlBorderShapeCircle(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSControlBorderShape = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSControlBorderShape value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLayoutConstraintOrientation}
+ */
+enum class NSLayoutConstraintOrientation(val value: Long) {
+    NSLayoutConstraintOrientationHorizontal(0L), NSLayoutConstraintOrientationVertical(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSLayoutConstraintOrientation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLayoutConstraintOrientation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLayoutRelation}
+ */
+enum class NSLayoutRelation(val value: Long) {
+    NSLayoutRelationLessThanOrEqual(-1L), NSLayoutRelationEqual(0L), NSLayoutRelationGreaterThanOrEqual(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSLayoutRelation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLayoutRelation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLayoutAttribute}
+ */
+enum class NSLayoutAttribute(val value: Long) {
+    NSLayoutAttributeLeft(1L), NSLayoutAttributeRight(2L), NSLayoutAttributeTop(3L), NSLayoutAttributeBottom(4L), NSLayoutAttributeLeading(5L), NSLayoutAttributeTrailing(6L), NSLayoutAttributeWidth(7L), NSLayoutAttributeHeight(8L), NSLayoutAttributeCenterX(9L), NSLayoutAttributeCenterY(10L), NSLayoutAttributeLastBaseline(11L), NSLayoutAttributeBaseline(11L), NSLayoutAttributeFirstBaseline(12L), NSLayoutAttributeNotAnAttribute(0L);
+
+    companion object {
+        fun fromValue(v: Long): NSLayoutAttribute = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLayoutAttribute value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFontDescriptorSymbolicTraits}
+ */
+enum class NSFontDescriptorSymbolicTraits(val value: Long) {
+    NSFontDescriptorTraitItalic(1L), NSFontDescriptorTraitBold(2L), NSFontDescriptorTraitExpanded(32L), NSFontDescriptorTraitCondensed(64L), NSFontDescriptorTraitMonoSpace(1024L), NSFontDescriptorTraitVertical(2048L), NSFontDescriptorTraitUIOptimized(4096L), NSFontDescriptorTraitTightLeading(32768L), NSFontDescriptorTraitLooseLeading(65536L), NSFontDescriptorTraitEmphasized(2L), NSFontDescriptorClassMask(-268435456L), NSFontDescriptorClassUnknown(0L), NSFontDescriptorClassOldStyleSerifs(268435456L), NSFontDescriptorClassTransitionalSerifs(536870912L), NSFontDescriptorClassModernSerifs(805306368L), NSFontDescriptorClassClarendonSerifs(1073741824L), NSFontDescriptorClassSlabSerifs(1342177280L), NSFontDescriptorClassFreeformSerifs(1879048192L), NSFontDescriptorClassSansSerif(-2147483648L), NSFontDescriptorClassOrnamentals(-1879048192L), NSFontDescriptorClassScripts(-1610612736L), NSFontDescriptorClassSymbolic(-1073741824L);
+
+    companion object {
+        fun fromValue(v: Long): NSFontDescriptorSymbolicTraits = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFontDescriptorSymbolicTraits value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontDescriptor.h:206:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_206_1_(val value: Long) {
+    NSFontUnknownClass(0L), NSFontOldStyleSerifsClass(268435456L), NSFontTransitionalSerifsClass(536870912L), NSFontModernSerifsClass(805306368L), NSFontClarendonSerifsClass(1073741824L), NSFontSlabSerifsClass(1342177280L), NSFontFreeformSerifsClass(1879048192L), NSFontSansSerifClass(-2147483648L), NSFontOrnamentalsClass(-1879048192L), NSFontScriptsClass(-1610612736L), NSFontSymbolicClass(-1073741824L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_206_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_206_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontDescriptor.h:220:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_220_1_(val value: Long) {
+    NSFontFamilyClassMask(-268435456L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_220_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_220_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontDescriptor.h:224:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_224_1_(val value: Long) {
+    NSFontItalicTrait(1L), NSFontBoldTrait(2L), NSFontExpandedTrait(32L), NSFontCondensedTrait(64L), NSFontMonoSpaceTrait(1024L), NSFontVerticalTrait(2048L), NSFontUIOptimizedTrait(4096L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_224_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_224_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSImageLoadStatus}
+ */
+enum class NSImageLoadStatus(val value: Long) {
+    NSImageLoadStatusCompleted(0L), NSImageLoadStatusCancelled(1L), NSImageLoadStatusInvalidData(2L), NSImageLoadStatusUnexpectedEOF(3L), NSImageLoadStatusReadError(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSImageLoadStatus = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageLoadStatus value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSImageCacheMode}
+ */
+enum class NSImageCacheMode(val value: Long) {
+    NSImageCacheDefault(0L), NSImageCacheAlways(1L), NSImageCacheBySize(2L), NSImageCacheNever(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSImageCacheMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageCacheMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSImageResizingMode}
+ */
+enum class NSImageResizingMode(val value: Long) {
+    NSImageResizingModeTile(0L), NSImageResizingModeStretch(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSImageResizingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageResizingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSImageSymbolScale}
+ */
+enum class NSImageSymbolScale(val value: Long) {
+    NSImageSymbolScaleSmall(1L), NSImageSymbolScaleMedium(2L), NSImageSymbolScaleLarge(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSImageSymbolScale = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageSymbolScale value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSImageSymbolVariableValueMode}
+ */
+enum class NSImageSymbolVariableValueMode(val value: Long) {
+    NSImageSymbolVariableValueModeAutomatic(0L), NSImageSymbolVariableValueModeColor(1L), NSImageSymbolVariableValueModeDraw(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSImageSymbolVariableValueMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageSymbolVariableValueMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSImageSymbolColorRenderingMode}
+ */
+enum class NSImageSymbolColorRenderingMode(val value: Long) {
+    NSImageSymbolColorRenderingModeAutomatic(0L), NSImageSymbolColorRenderingModeFlat(1L), NSImageSymbolColorRenderingModeGradient(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSImageSymbolColorRenderingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageSymbolColorRenderingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSHorizontalDirections}
+ */
+enum class NSHorizontalDirections(val value: Long) {
+    NSHorizontalDirectionsLeft(1L), NSHorizontalDirectionsRight(2L), NSHorizontalDirectionsAll(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSHorizontalDirections = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSHorizontalDirections value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSVerticalDirections}
+ */
+enum class NSVerticalDirections(val value: Long) {
+    NSVerticalDirectionsUp(1L), NSVerticalDirectionsDown(2L), NSVerticalDirectionsAll(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSVerticalDirections = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSVerticalDirections value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCursorFrameResizePosition}
+ */
+enum class NSCursorFrameResizePosition(val value: Long) {
+    NSCursorFrameResizePositionTop(1L), NSCursorFrameResizePositionLeft(2L), NSCursorFrameResizePositionBottom(4L), NSCursorFrameResizePositionRight(8L), NSCursorFrameResizePositionTopLeft(3L), NSCursorFrameResizePositionTopRight(9L), NSCursorFrameResizePositionBottomLeft(6L), NSCursorFrameResizePositionBottomRight(12L);
+
+    companion object {
+        fun fromValue(v: Long): NSCursorFrameResizePosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCursorFrameResizePosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCursorFrameResizeDirections}
+ */
+enum class NSCursorFrameResizeDirections(val value: Long) {
+    NSCursorFrameResizeDirectionsInward(1L), NSCursorFrameResizeDirectionsOutward(2L), NSCursorFrameResizeDirectionsAll(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSCursorFrameResizeDirections = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCursorFrameResizeDirections value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSButtonType}
+ */
+enum class NSButtonType(val value: Long) {
+    NSButtonTypeMomentaryLight(0L), NSButtonTypePushOnPushOff(1L), NSButtonTypeToggle(2L), NSButtonTypeSwitch(3L), NSButtonTypeRadio(4L), NSButtonTypeMomentaryChange(5L), NSButtonTypeOnOff(6L), NSButtonTypeMomentaryPushIn(7L), NSButtonTypeAccelerator(8L), NSButtonTypeMultiLevelAccelerator(9L);
+
+    companion object {
+        fun fromValue(v: Long): NSButtonType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSButtonType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSBezelStyle}
+ */
+enum class NSBezelStyle(val value: Long) {
+    NSBezelStyleAutomatic(0L), NSBezelStylePush(1L), NSBezelStyleFlexiblePush(2L), NSBezelStyleDisclosure(5L), NSBezelStyleCircular(7L), NSBezelStyleHelpButton(9L), NSBezelStyleSmallSquare(10L), NSBezelStyleToolbar(11L), NSBezelStyleAccessoryBarAction(12L), NSBezelStyleAccessoryBar(13L), NSBezelStylePushDisclosure(14L), NSBezelStyleBadge(15L), NSBezelStyleGlass(16L), NSBezelStyleShadowlessSquare(6L), NSBezelStyleTexturedSquare(8L), NSBezelStyleRounded(1L), NSBezelStyleRegularSquare(2L), NSBezelStyleTexturedRounded(11L), NSBezelStyleRoundRect(12L), NSBezelStyleRecessed(13L), NSBezelStyleRoundedDisclosure(14L), NSBezelStyleInline(15L);
+
+    companion object {
+        fun fromValue(v: Long): NSBezelStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBezelStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGradientType}
+ */
+enum class NSGradientType(val value: Long) {
+    NSGradientNone(0L), NSGradientConcaveWeak(1L), NSGradientConcaveStrong(2L), NSGradientConvexWeak(3L), NSGradientConvexStrong(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSGradientType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGradientType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTintProminence}
+ */
+enum class NSTintProminence(val value: Long) {
+    NSTintProminenceAutomatic(0L), NSTintProminenceNone(1L), NSTintProminencePrimary(2L), NSTintProminenceSecondary(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSTintProminence = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTintProminence value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextFieldBezelStyle}
+ */
+enum class NSTextFieldBezelStyle(val value: Long) {
+    NSTextFieldSquareBezel(0L), NSTextFieldRoundedBezel(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextFieldBezelStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextFieldBezelStyle value: $v")
+    }
+}

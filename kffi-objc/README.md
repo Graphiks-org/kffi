@@ -3,9 +3,11 @@
 JVM-only Objective-C runtime bindings for macOS, built on the Java Foreign
 Function & Memory API (Panama FFM).
 
-The first generated subset contains `NSObject`, `NSString`, `NSResponder`,
-`NSApplication`, `NSWindow`, and `NSView`, together with the declarations
-required by those classes. Generated sources are produced from the macOS SDK by `kextract` and
+The generated subset currently contains `NSObject`, `NSString`, `NSResponder`,
+`NSApplication`, `NSWindow`, `NSView`, `NSWindowController`, `NSViewController`,
+`NSScreen`, `NSEvent`, `NSColor`, `NSImage`, `NSCursor`, `NSControl`, `NSButton`,
+and `NSTextField`, together with the declarations required by those classes.
+Generated sources are produced from the macOS SDK by `kextract` and
 are checked in so the module can compile on non-macOS hosts without running the
 generator.
 
