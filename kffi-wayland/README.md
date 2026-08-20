@@ -16,7 +16,7 @@ generation pipeline is available explicitly through
 `scripts/gen-kffi-wayland.sh`; it runs `wayland-scanner`, the pinned `kextract`
 submodule, and the XML protocol-interface generator in Docker. It is not run as
 part of the Gradle build. It depends on
-`org.graphiks:kff-posix` for POSIX symbol downcalls and does not include the
+`org.graphiks:kffi-posix` for POSIX symbol downcalls and does not include the
 higher-level `kadre-wayland` event-loop layer.
 
 To regenerate the bindings, initialize the submodule and run:

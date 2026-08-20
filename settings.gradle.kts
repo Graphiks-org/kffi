@@ -20,7 +20,7 @@ dependencyResolutionManagement {
 
 include("docs")
 include("kffi")
-include("kff-posix")
+include("kffi-posix")
 include("kffi-wayland")
 include("kffi-android-native")
 include("kffi-benchmark-spi")

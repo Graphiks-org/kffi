@@ -16,7 +16,7 @@ kotlin {
 
     sourceSets {
         jvmMain.dependencies {
-            api(project(":kff-posix"))
+            api(project(":kffi-posix"))
         }
         jvmTest.dependencies {
             implementation(kotlin("test"))
