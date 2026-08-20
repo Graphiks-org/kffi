@@ -16,7 +16,7 @@ RUN apt-get -o APT::Sandbox::User=root update \
     && apt-get -o APT::Sandbox::User=root install -y --no-install-recommends \
         clang-18 llvm-18-dev libclang-18-dev \
         libwayland-bin libwayland-dev \
-        gcc libc6-dev patch ca-certificates \
+        gcc libc6-dev patch ca-certificates python3 \
     && rm -rf /var/lib/apt/lists/*
 
 # The XML-to-Kotlin generator has no external dependencies.
