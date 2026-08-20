@@ -9,13 +9,18 @@ protocol bindings imported from
 at commit `411bd9f6795f8aae5330fddca96dd4e77629a4b4`.
 
 The imported sources include kextract-generated low-level bindings and the
-handwritten FFM glue required by the Wayland protocol descriptors. Generated
-sources are kept under `generated/`; handwritten protocol descriptors such as
-text-input-v3 are kept under `protocol/`. The
-generation pipeline is available explicitly through
+handwritten FFM runtime glue. Protocol XML is used to generate the
+`wl_interface` descriptors, request/event opcodes, and enum constants for XDG
+Shell, XDG decoration, text-input-v3, and wlr-screencopy. Generated sources
+are kept under `generated/` (with protocol constants in the module package).
+The generation pipeline is available explicitly through
 `scripts/gen-kffi-wayland.sh`; it runs `wayland-scanner`, the pinned `kextract`
-submodule, and the XML protocol-interface generator in Docker. It is not run as
-part of the Gradle build. It depends on
+submodule, and the XML protocol-interface generator in Docker. The
+text-input-v3, wlr-screencopy, XDG Shell, and XDG decoration XML snapshots are
+pinned in `docker/kffi-wayland-codegen/protocols/` (wayland-protocols commit
+`d5aed4e4903a77aefaef03359d1ffdc0d5093456`, wlroots commit
+`0855cdacb2eeeff35849e2e9c4db0aa996d78d10`). It is not run as part of the
+Gradle build. It depends on
 `org.graphiks:kffi-posix` for POSIX symbol downcalls and does not include the
 higher-level `kadre-wayland` event-loop layer.
 
