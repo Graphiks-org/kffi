@@ -75,6 +75,26 @@ jobs:
           path: kffi-x11/build/x11-integration/**
           if-no-files-found: warn
 
+  objc-integration:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 25
+          cache: 'gradle'
+      - name: Run Objective-C AppKit integration test
+        run: scripts/run-objc-integration.sh
+      - name: Upload Objective-C integration artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: objc-integration
+          path: kffi-objc/build/objc-integration/**
+          if-no-files-found: warn
+
   tests:
     strategy:
       fail-fast: false
