@@ -275,3 +275,133 @@ open class NSCursor(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+// ── Category: Deprecated on NSCursor ─────────────────────────────────────────
+
+// Class method: +[NSCursor currentSystemCursor]
+fun NSCursor_currentSystemCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("currentSystemCursor")
+    val cls = ObjCRuntime.getClass("NSCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSCursor resizeLeftCursor]
+fun NSCursor_resizeLeftCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeLeftCursor")
+    val cls = ObjCRuntime.getClass("NSCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSCursor resizeRightCursor]
+fun NSCursor_resizeRightCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeRightCursor")
+    val cls = ObjCRuntime.getClass("NSCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSCursor resizeLeftRightCursor]
+fun NSCursor_resizeLeftRightCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeLeftRightCursor")
+    val cls = ObjCRuntime.getClass("NSCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSCursor resizeUpCursor]
+fun NSCursor_resizeUpCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeUpCursor")
+    val cls = ObjCRuntime.getClass("NSCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSCursor resizeDownCursor]
+fun NSCursor_resizeDownCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeDownCursor")
+    val cls = ObjCRuntime.getClass("NSCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSCursor resizeUpDownCursor]
+fun NSCursor_resizeUpDownCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeUpDownCursor")
+    val cls = ObjCRuntime.getClass("NSCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// @property currentSystemCursor
+fun NSCursor.currentSystemCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("currentSystemCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property resizeLeftCursor
+fun NSCursor.resizeLeftCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeLeftCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property resizeRightCursor
+fun NSCursor.resizeRightCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeRightCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property resizeLeftRightCursor
+fun NSCursor.resizeLeftRightCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeLeftRightCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property resizeUpCursor
+fun NSCursor.resizeUpCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeUpCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property resizeDownCursor
+fun NSCursor.resizeDownCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeDownCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property resizeUpDownCursor
+fun NSCursor.resizeUpDownCursor(): MemorySegment {
+    val sel = ObjCRuntime.sel("resizeUpDownCursor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSDeprecated on NSCursor ─────────────────────────────────────────
+
+fun NSCursor.initWithImage_foregroundColorHint_backgroundColorHint_hotSpot(newImage: MemorySegment, fg: MemorySegment, bg: MemorySegment, hotSpot: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithImage:foregroundColorHint:backgroundColorHint:hotSpot:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, newImage, fg, bg, hotSpot) as MemorySegment
+}
+
+fun NSCursor.setOnMouseExited(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setOnMouseExited:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSCursor.setOnMouseEntered(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setOnMouseEntered:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSCursor.mouseEntered(event: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("mouseEntered:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, event)
+}
+
+fun NSCursor.mouseExited(event: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("mouseExited:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, event)
+}
+
+fun NSCursor.isSetOnMouseExited(): Boolean {
+    val sel = ObjCRuntime.sel("isSetOnMouseExited")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSCursor.isSetOnMouseEntered(): Boolean {
+    val sel = ObjCRuntime.sel("isSetOnMouseEntered")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}

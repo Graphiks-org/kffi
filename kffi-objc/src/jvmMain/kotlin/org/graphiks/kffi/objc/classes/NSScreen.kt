@@ -157,3 +157,34 @@ open class NSScreen(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+// ── Category:  on NSScreen ─────────────────────────────────────────
+
+fun NSScreen.maximumExtendedDynamicRangeColorComponentValue(): Double {
+    val sel = ObjCRuntime.sel("maximumExtendedDynamicRangeColorComponentValue")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+
+fun NSScreen.maximumPotentialExtendedDynamicRangeColorComponentValue(): Double {
+    val sel = ObjCRuntime.sel("maximumPotentialExtendedDynamicRangeColorComponentValue")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+
+fun NSScreen.maximumReferenceExtendedDynamicRangeColorComponentValue(): Double {
+    val sel = ObjCRuntime.sel("maximumReferenceExtendedDynamicRangeColorComponentValue")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+
+// ── Category: NSDisplayLink on NSScreen ─────────────────────────────────────────
+
+fun NSScreen.displayLinkWithTarget_selector(target: MemorySegment, selector: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("displayLinkWithTarget:selector:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, target, selector) as MemorySegment
+}
+
+// ── Category: NSDeprecated on NSScreen ─────────────────────────────────────────
+
+fun NSScreen.userSpaceScaleFactor(): Double {
+    val sel = ObjCRuntime.sel("userSpaceScaleFactor")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}

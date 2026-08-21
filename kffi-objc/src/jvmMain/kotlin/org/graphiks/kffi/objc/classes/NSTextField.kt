@@ -261,3 +261,84 @@ open class NSTextField(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
 }
+
+// ── Category: NSTouchBar on NSTextField ─────────────────────────────────────────
+
+fun NSTextField.isAutomaticTextCompletionEnabled(): Boolean {
+    val sel = ObjCRuntime.sel("isAutomaticTextCompletionEnabled")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSTextField.setAutomaticTextCompletionEnabled(automaticTextCompletionEnabled: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setAutomaticTextCompletionEnabled:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, automaticTextCompletionEnabled)
+}
+
+fun NSTextField.allowsCharacterPickerTouchBarItem(): Boolean {
+    val sel = ObjCRuntime.sel("allowsCharacterPickerTouchBarItem")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSTextField.setAllowsCharacterPickerTouchBarItem(allowsCharacterPickerTouchBarItem: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setAllowsCharacterPickerTouchBarItem:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, allowsCharacterPickerTouchBarItem)
+}
+
+// ── Category: NSTextFieldConvenience on NSTextField ─────────────────────────────────────────
+
+// Class method: +[NSTextField labelWithString:]
+fun NSTextField_labelWithString(stringValue: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("labelWithString:")
+    val cls = ObjCRuntime.getClass("NSTextField")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, stringValue) as MemorySegment
+}
+
+// Class method: +[NSTextField wrappingLabelWithString:]
+fun NSTextField_wrappingLabelWithString(stringValue: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("wrappingLabelWithString:")
+    val cls = ObjCRuntime.getClass("NSTextField")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, stringValue) as MemorySegment
+}
+
+// Class method: +[NSTextField labelWithAttributedString:]
+fun NSTextField_labelWithAttributedString(attributedStringValue: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("labelWithAttributedString:")
+    val cls = ObjCRuntime.getClass("NSTextField")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, attributedStringValue) as MemorySegment
+}
+
+// Class method: +[NSTextField textFieldWithString:]
+fun NSTextField_textFieldWithString(stringValue: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("textFieldWithString:")
+    val cls = ObjCRuntime.getClass("NSTextField")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, stringValue) as MemorySegment
+}
+
+// ── Category: NSTextFieldAttributedStringMethods on NSTextField ─────────────────────────────────────────
+
+fun NSTextField.allowsEditingTextAttributes(): Boolean {
+    val sel = ObjCRuntime.sel("allowsEditingTextAttributes")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSTextField.setAllowsEditingTextAttributes(allowsEditingTextAttributes: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setAllowsEditingTextAttributes:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, allowsEditingTextAttributes)
+}
+
+fun NSTextField.importsGraphics(): Boolean {
+    val sel = ObjCRuntime.sel("importsGraphics")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSTextField.setImportsGraphics(importsGraphics: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setImportsGraphics:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, importsGraphics)
+}
+
+// ── Category: NSDeprecated on NSTextField ─────────────────────────────────────────
+
+fun NSTextField.setTitleWithMnemonic(stringWithAmpersand: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setTitleWithMnemonic:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, stringWithAmpersand)
+}

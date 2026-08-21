@@ -5,6 +5,426 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : #define __COREFOUNDATION_COREFOUNDATION__ 1
+ */
+fun _COREFOUNDATION_COREFOUNDATION_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION__ 1
+ */
+fun _COREFOUNDATION_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFBASE__ 1
+ */
+fun _COREFOUNDATION_CFBASE_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFAVAILABILITY__ 1
+ */
+fun _COREFOUNDATION_CFAVAILABILITY_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define CF_HAS_TYPED_ALLOCATOR 0
+ */
+fun CF_HAS_TYPED_ALLOCATOR(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define TRUE 1
+ */
+fun TRUE(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define FALSE 0
+ */
+fun FALSE(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_10_2 1152
+ */
+fun kCFCoreFoundationVersionNumber10_10_2(): Int = (1152).toInt()
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_10_Max 1199
+ */
+fun kCFCoreFoundationVersionNumber10_10_Max(): Int = (1199).toInt()
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_11 1253
+ */
+fun kCFCoreFoundationVersionNumber10_11(): Int = (1253).toInt()
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_11_Max 1299
+ */
+fun kCFCoreFoundationVersionNumber10_11_Max(): Int = (1299).toInt()
+
+/**
+ * {@snippet lang=c : #define ISA_PTRAUTH_DISCRIMINATOR 27361
+ */
+fun ISA_PTRAUTH_DISCRIMINATOR(): Int = (27361).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFARRAY__ 1
+ */
+fun _COREFOUNDATION_CFARRAY_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFBAG__ 1
+ */
+fun _COREFOUNDATION_CFBAG_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFBINARYHEAP__ 1
+ */
+fun _COREFOUNDATION_CFBINARYHEAP_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFBITVECTOR__ 1
+ */
+fun _COREFOUNDATION_CFBITVECTOR_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFBYTEORDER__ 1
+ */
+fun _COREFOUNDATION_CFBYTEORDER_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define CF_USE_OSBYTEORDER_H 1
+ */
+fun CF_USE_OSBYTEORDER_H(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFCALENDAR__ 1
+ */
+fun _COREFOUNDATION_CFCALENDAR_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFLOCALE__ 1
+ */
+fun _COREFOUNDATION_CFLOCALE_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFDICTIONARY__ 1
+ */
+fun _COREFOUNDATION_CFDICTIONARY_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFNOTIFICATIONCENTER__ 1
+ */
+fun _COREFOUNDATION_CFNOTIFICATIONCENTER_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFDATE__ 1
+ */
+fun _COREFOUNDATION_CFDATE_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFTIMEZONE__ 1
+ */
+fun _COREFOUNDATION_CFTIMEZONE_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFDATA__ 1
+ */
+fun _COREFOUNDATION_CFDATA_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFSTRING__ 1
+ */
+fun _COREFOUNDATION_CFSTRING_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFCHARACTERSET__ 1
+ */
+fun _COREFOUNDATION_CFCHARACTERSET_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFERROR__ 1
+ */
+fun _COREFOUNDATION_CFERROR_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __kCFStringInlineBufferLength 64
+ */
+fun _kCFStringInlineBufferLength(): Int = (64).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFCGTYPES__ 1
+ */
+fun _COREFOUNDATION_CFCGTYPES_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define CGFLOAT_IS_DOUBLE 1
+ */
+fun CGFLOAT_IS_DOUBLE(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define CGFLOAT_DEFINED 1
+ */
+fun CGFLOAT_DEFINED(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define CGVECTOR_DEFINED 1
+ */
+fun CGVECTOR_DEFINED(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFDATEFORMATTER__ 1
+ */
+fun _COREFOUNDATION_CFDATEFORMATTER_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFNUMBER__ 1
+ */
+fun _COREFOUNDATION_CFNUMBER_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFNUMBERFORMATTER__ 1
+ */
+fun _COREFOUNDATION_CFNUMBERFORMATTER_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFPREFERENCES__ 1
+ */
+fun _COREFOUNDATION_CFPREFERENCES_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFPROPERTYLIST__ 1
+ */
+fun _COREFOUNDATION_CFPROPERTYLIST_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFSTREAM__ 1
+ */
+fun _COREFOUNDATION_CFSTREAM_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFURL__ 1
+ */
+fun _COREFOUNDATION_CFURL_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFRUNLOOP__ 1
+ */
+fun _COREFOUNDATION_CFRUNLOOP_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFSOCKET__ 1
+ */
+fun _COREFOUNDATION_CFSOCKET_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFSET__ 1
+ */
+fun _COREFOUNDATION_CFSET_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFSTRINGENCODINGEXT__ 1
+ */
+fun _COREFOUNDATION_CFSTRINGENCODINGEXT_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFTREE__ 1
+ */
+fun _COREFOUNDATION_CFTREE_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFURLACCESS__ 1
+ */
+fun _COREFOUNDATION_CFURLACCESS_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFUUID__ 1
+ */
+fun _COREFOUNDATION_CFUUID_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFUTILITIES__ 1
+ */
+fun _COREFOUNDATION_CFUTILITIES_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFBUNDLE__ 1
+ */
+fun _COREFOUNDATION_CFBUNDLE_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFMESSAGEPORT__ 1
+ */
+fun _COREFOUNDATION_CFMESSAGEPORT_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFPLUGIN__ 1
+ */
+fun _COREFOUNDATION_CFPLUGIN_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define COREFOUNDATION_CFPLUGINCOM_SEPARATE 1
+ */
+fun COREFOUNDATION_CFPLUGINCOM_SEPARATE(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFMACHPORT__ 1
+ */
+fun _COREFOUNDATION_CFMACHPORT_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFATTRIBUTEDSTRING__ 1
+ */
+fun _COREFOUNDATION_CFATTRIBUTEDSTRING_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFURLENUMERATOR__ 1
+ */
+fun _COREFOUNDATION_CFURLENUMERATOR_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFFILESECURITY__ 1
+ */
+fun _COREFOUNDATION_CFFILESECURITY_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFSTRINGTOKENIZER__ 1
+ */
+fun _COREFOUNDATION_CFSTRINGTOKENIZER_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFFILEDESCRIPTOR__ 1
+ */
+fun _COREFOUNDATION_CFFILEDESCRIPTOR_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFUSERNOTIFICATION__ 1
+ */
+fun _COREFOUNDATION_CFUSERNOTIFICATION_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFXMLNODE__ 1
+ */
+fun _COREFOUNDATION_CFXMLNODE_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __COREFOUNDATION_CFXMLPARSER__ 1
+ */
+fun _COREFOUNDATION_CFXMLPARSER_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define NS_BLOCKS_AVAILABLE 1
+ */
+fun NS_BLOCKS_AVAILABLE(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_9 1056
+ */
+fun NSFoundationVersionNumber10_9(): Int = (1056).toInt()
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_9_1 1056
+ */
+fun NSFoundationVersionNumber10_9_1(): Int = (1056).toInt()
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_10_5 1154
+ */
+fun NSFoundationVersionNumber10_10_5(): Int = (1154).toInt()
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_10_Max 1199
+ */
+fun NSFoundationVersionNumber10_10_Max(): Int = (1199).toInt()
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_11 1252
+ */
+fun NSFoundationVersionNumber10_11(): Int = (1252).toInt()
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_11_4 1258
+ */
+fun NSFoundationVersionNumber10_11_4(): Int = (1258).toInt()
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_11_Max 1299
+ */
+fun NSFoundationVersionNumber10_11_Max(): Int = (1299).toInt()
+
+/**
+ * {@snippet lang=c : #define NS_UNICHAR_IS_EIGHT_BIT 0
+ */
+fun NS_UNICHAR_IS_EIGHT_BIT(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionWithFileManagerResourceForkSupport 412
+ */
+fun NSFoundationVersionWithFileManagerResourceForkSupport(): Int = (412).toInt()
+
+/**
+ * {@snippet lang=c : #define __FOUNDATION_NSPOINTERFUNCTIONS__ 1
+ */
+fun _FOUNDATION_NSPOINTERFUNCTIONS_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __FOUNDATION_NSHASHTABLE__ 1
+ */
+fun _FOUNDATION_NSHASHTABLE_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define NSGEOMETRY_TYPES_SAME_AS_CGGEOMETRY_TYPES 1
+ */
+fun NSGEOMETRY_TYPES_SAME_AS_CGGEOMETRY_TYPES(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define NSEDGEINSETS_DEFINED 1
+ */
+fun NSEDGEINSETS_DEFINED(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __FOUNDATION_NSMAPTABLE__ 1
+ */
+fun _FOUNDATION_NSMAPTABLE_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define CG_HDR_BT_2100 1
+ */
+fun CG_HDR_BT_2100(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __NSWRITING_DIRECTION_SHARED_SECTION__ 1
+ */
+fun _NSWRITING_DIRECTION_SHARED_SECTION_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __NSTEXT_ALIGNMENT_SHARED_SECTION__ 1
+ */
+fun _NSTEXT_ALIGNMENT_SHARED_SECTION_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define __NSPARAGRAPH_STYLE_SHARED_SECTION__ 1
+ */
+fun _NSPARAGRAPH_STYLE_SHARED_SECTION_(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define NS_USER_ACTIVITY_SUPPORTED 1
+ */
+fun NS_USER_ACTIVITY_SUPPORTED(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define COREIMAGE_SUPPORTS_IOSURFACE 1
+ */
+fun COREIMAGE_SUPPORTS_IOSURFACE(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define UNIFIED_CORE_IMAGE 1
+ */
+fun UNIFIED_CORE_IMAGE(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define CA_WARN_DEPRECATED 1
+ */
+fun CA_WARN_DEPRECATED(): Int = (1).toInt()
+
+/**
  * NS_ENUM: {@snippet lang=c : enum idtype_t}
  */
 enum class idtype_t(val value: Long) {
@@ -17,38 +437,14 @@ enum class idtype_t(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSComparisonResult}
+ * NS_ENUM: {@snippet lang=c : enum clockid_t}
  */
-enum class NSComparisonResult(val value: Long) {
-    NSOrderedAscending(-1L), NSOrderedSame(0L), NSOrderedDescending(1L);
+enum class clockid_t(val value: Long) {
+    _CLOCK_REALTIME(0L), _CLOCK_MONOTONIC(6L), _CLOCK_MONOTONIC_RAW(4L), _CLOCK_MONOTONIC_RAW_APPROX(5L), _CLOCK_UPTIME_RAW(8L), _CLOCK_UPTIME_RAW_APPROX(9L), _CLOCK_PROCESS_CPUTIME_ID(12L), _CLOCK_THREAD_CPUTIME_ID(16L);
 
     companion object {
-        fun fromValue(v: Long): NSComparisonResult = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSComparisonResult value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSQualityOfService}
- */
-enum class NSQualityOfService(val value: Long) {
-    NSQualityOfServiceUserInteractive(33L), NSQualityOfServiceUserInitiated(25L), NSQualityOfServiceUtility(17L), NSQualityOfServiceBackground(9L), NSQualityOfServiceDefault(-1L);
-
-    companion object {
-        fun fromValue(v: Long): NSQualityOfService = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSQualityOfService value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum ptrauth_key}
- */
-enum class ptrauth_key(val value: Long) {
-    ptrauth_key_asia(0L), ptrauth_key_asib(1L), ptrauth_key_asda(2L), ptrauth_key_asdb(3L), ptrauth_key_process_independent_code(0L), ptrauth_key_process_dependent_code(1L), ptrauth_key_process_independent_data(2L), ptrauth_key_process_dependent_data(3L), ptrauth_key_return_address(1L), ptrauth_key_function_pointer(0L), ptrauth_key_cxx_vtable_pointer(2L), ptrauth_key_method_list_pointer(2L), ptrauth_key_objc_isa_pointer(2L), ptrauth_key_objc_super_pointer(2L), ptrauth_key_objc_sel_pointer(3L), ptrauth_key_objc_class_ro_pointer(2L), ptrauth_key_init_fini_pointer(0L);
-
-    companion object {
-        fun fromValue(v: Long): ptrauth_key = entries.firstOrNull { it.value == v }
-            ?: error("Unknown ptrauth_key value: $v")
+        fun fromValue(v: Long): clockid_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown clockid_t value: $v")
     }
 }
 
@@ -137,98 +533,14 @@ enum class CFComparisonResult(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSZone.h:32:1)}
+ * NS_ENUM: {@snippet lang=c : enum ptrauth_key}
  */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSZone_h_32_1_(val value: Long) {
-    NSScannedOption(1L), NSCollectorDisabledOption(2L);
+enum class ptrauth_key(val value: Long) {
+    ptrauth_key_asia(0L), ptrauth_key_asib(1L), ptrauth_key_asda(2L), ptrauth_key_asdb(3L), ptrauth_key_process_independent_code(0L), ptrauth_key_process_dependent_code(1L), ptrauth_key_process_independent_data(2L), ptrauth_key_process_dependent_data(3L), ptrauth_key_return_address(1L), ptrauth_key_function_pointer(0L), ptrauth_key_cxx_vtable_pointer(2L), ptrauth_key_method_list_pointer(2L), ptrauth_key_objc_isa_pointer(2L), ptrauth_key_objc_super_pointer(2L), ptrauth_key_objc_sel_pointer(3L), ptrauth_key_objc_class_ro_pointer(2L), ptrauth_key_init_fini_pointer(0L);
 
     companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSZone_h_32_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSZone_h_32_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSCollectionChangeType}
- */
-enum class NSCollectionChangeType(val value: Long) {
-    NSCollectionChangeInsert(0L), NSCollectionChangeRemove(1L);
-
-    companion object {
-        fun fromValue(v: Long): NSCollectionChangeType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCollectionChangeType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSItemProviderRepresentationVisibility}
- */
-enum class NSItemProviderRepresentationVisibility(val value: Long) {
-    NSItemProviderRepresentationVisibilityAll(0L), NSItemProviderRepresentationVisibilityTeam(1L), NSItemProviderRepresentationVisibilityGroup(2L), NSItemProviderRepresentationVisibilityOwnProcess(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSItemProviderRepresentationVisibility = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSItemProviderRepresentationVisibility value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSItemProviderErrorCode}
- */
-enum class NSItemProviderErrorCode(val value: Long) {
-    NSItemProviderUnknownError(-1L), NSItemProviderItemUnavailableError(-1000L), NSItemProviderUnexpectedValueClassError(-1100L), NSItemProviderUnavailableCoercionError(-1200L);
-
-    companion object {
-        fun fromValue(v: Long): NSItemProviderErrorCode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSItemProviderErrorCode value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSString.h:68:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_68_1_(val value: Long) {
-    NSASCIIStringEncoding(1L), NSNEXTSTEPStringEncoding(2L), NSJapaneseEUCStringEncoding(3L), NSUTF8StringEncoding(4L), NSISOLatin1StringEncoding(5L), NSSymbolStringEncoding(6L), NSNonLossyASCIIStringEncoding(7L), NSShiftJISStringEncoding(8L), NSISOLatin2StringEncoding(9L), NSUnicodeStringEncoding(10L), NSWindowsCP1251StringEncoding(11L), NSWindowsCP1252StringEncoding(12L), NSWindowsCP1253StringEncoding(13L), NSWindowsCP1254StringEncoding(14L), NSWindowsCP1250StringEncoding(15L), NSISO2022JPStringEncoding(21L), NSMacOSRomanStringEncoding(30L), NSUTF16StringEncoding(10L), NSUTF16BigEndianStringEncoding(2415919360L), NSUTF16LittleEndianStringEncoding(2483028224L), NSUTF32StringEncoding(2348810496L), NSUTF32BigEndianStringEncoding(2550137088L), NSUTF32LittleEndianStringEncoding(2617245952L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_68_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_68_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSString.h:548:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_548_1_(val value: Long) {
-    NSProprietaryStringEncoding(65536L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_548_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_548_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDecodingFailurePolicy}
- */
-enum class NSDecodingFailurePolicy(val value: Long) {
-    NSDecodingFailurePolicyRaiseException(0L), NSDecodingFailurePolicySetErrorAndReturn(1L);
-
-    companion object {
-        fun fromValue(v: Long): NSDecodingFailurePolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDecodingFailurePolicy value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum clockid_t}
- */
-enum class clockid_t(val value: Long) {
-    _CLOCK_REALTIME(0L), _CLOCK_MONOTONIC(6L), _CLOCK_MONOTONIC_RAW(4L), _CLOCK_MONOTONIC_RAW_APPROX(5L), _CLOCK_UPTIME_RAW(8L), _CLOCK_UPTIME_RAW_APPROX(9L), _CLOCK_PROCESS_CPUTIME_ID(12L), _CLOCK_THREAD_CPUTIME_ID(16L);
-
-    companion object {
-        fun fromValue(v: Long): clockid_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown clockid_t value: $v")
+        fun fromValue(v: Long): ptrauth_key = entries.firstOrNull { it.value == v }
+            ?: error("Unknown ptrauth_key value: $v")
     }
 }
 
@@ -917,6 +1229,594 @@ enum class CFXMLParserStatusCode(val value: Long) {
 }
 
 /**
+ * NS_ENUM: {@snippet lang=c : enum NSComparisonResult}
+ */
+enum class NSComparisonResult(val value: Long) {
+    NSOrderedAscending(-1L), NSOrderedSame(0L), NSOrderedDescending(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSComparisonResult = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSComparisonResult value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSQualityOfService}
+ */
+enum class NSQualityOfService(val value: Long) {
+    NSQualityOfServiceUserInteractive(33L), NSQualityOfServiceUserInitiated(25L), NSQualityOfServiceUtility(17L), NSQualityOfServiceBackground(9L), NSQualityOfServiceDefault(-1L);
+
+    companion object {
+        fun fromValue(v: Long): NSQualityOfService = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSQualityOfService value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSZone.h:32:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSZone_h_32_1_(val value: Long) {
+    NSScannedOption(1L), NSCollectorDisabledOption(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSZone_h_32_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSZone_h_32_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCollectionChangeType}
+ */
+enum class NSCollectionChangeType(val value: Long) {
+    NSCollectionChangeInsert(0L), NSCollectionChangeRemove(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSCollectionChangeType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCollectionChangeType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSItemProviderRepresentationVisibility}
+ */
+enum class NSItemProviderRepresentationVisibility(val value: Long) {
+    NSItemProviderRepresentationVisibilityAll(0L), NSItemProviderRepresentationVisibilityTeam(1L), NSItemProviderRepresentationVisibilityGroup(2L), NSItemProviderRepresentationVisibilityOwnProcess(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSItemProviderRepresentationVisibility = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSItemProviderRepresentationVisibility value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSItemProviderErrorCode}
+ */
+enum class NSItemProviderErrorCode(val value: Long) {
+    NSItemProviderUnknownError(-1L), NSItemProviderItemUnavailableError(-1000L), NSItemProviderUnexpectedValueClassError(-1100L), NSItemProviderUnavailableCoercionError(-1200L);
+
+    companion object {
+        fun fromValue(v: Long): NSItemProviderErrorCode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSItemProviderErrorCode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSString.h:68:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_68_1_(val value: Long) {
+    NSASCIIStringEncoding(1L), NSNEXTSTEPStringEncoding(2L), NSJapaneseEUCStringEncoding(3L), NSUTF8StringEncoding(4L), NSISOLatin1StringEncoding(5L), NSSymbolStringEncoding(6L), NSNonLossyASCIIStringEncoding(7L), NSShiftJISStringEncoding(8L), NSISOLatin2StringEncoding(9L), NSUnicodeStringEncoding(10L), NSWindowsCP1251StringEncoding(11L), NSWindowsCP1252StringEncoding(12L), NSWindowsCP1253StringEncoding(13L), NSWindowsCP1254StringEncoding(14L), NSWindowsCP1250StringEncoding(15L), NSISO2022JPStringEncoding(21L), NSMacOSRomanStringEncoding(30L), NSUTF16StringEncoding(10L), NSUTF16BigEndianStringEncoding(2415919360L), NSUTF16LittleEndianStringEncoding(2483028224L), NSUTF32StringEncoding(2348810496L), NSUTF32BigEndianStringEncoding(2550137088L), NSUTF32LittleEndianStringEncoding(2617245952L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_68_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_68_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSString.h:548:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_548_1_(val value: Long) {
+    NSProprietaryStringEncoding(65536L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_548_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSString_h_548_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSBundle.h:127:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSBundle_h_127_1_(val value: Long) {
+    NSBundleExecutableArchitectureI386(7L), NSBundleExecutableArchitecturePPC(18L), NSBundleExecutableArchitectureX86_64(16777223L), NSBundleExecutableArchitecturePPC64(16777234L), NSBundleExecutableArchitectureARM64(16777228L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSBundle_h_127_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSBundle_h_127_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSByteOrder.h:10:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSByteOrder_h_10_1_(val value: Long) {
+    NS_UnknownByteOrder(0L), NS_LittleEndian(1L), NS_BigEndian(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSByteOrder_h_10_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSByteOrder_h_10_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCalendarUnit}
+ */
+enum class NSCalendarUnit(val value: Long) {
+    NSCalendarUnitEra(2L), NSCalendarUnitYear(4L), NSCalendarUnitMonth(8L), NSCalendarUnitDay(16L), NSCalendarUnitHour(32L), NSCalendarUnitMinute(64L), NSCalendarUnitSecond(128L), NSCalendarUnitWeekday(512L), NSCalendarUnitWeekdayOrdinal(1024L), NSCalendarUnitQuarter(2048L), NSCalendarUnitWeekOfMonth(4096L), NSCalendarUnitWeekOfYear(8192L), NSCalendarUnitYearForWeekOfYear(16384L), NSCalendarUnitNanosecond(32768L), NSCalendarUnitDayOfYear(65536L), NSCalendarUnitCalendar(1048576L), NSCalendarUnitTimeZone(2097152L), NSCalendarUnitIsLeapMonth(1073741824L), NSCalendarUnitIsRepeatedDay(2147483648L), NSEraCalendarUnit(2L), NSYearCalendarUnit(4L), NSMonthCalendarUnit(8L), NSDayCalendarUnit(16L), NSHourCalendarUnit(32L), NSMinuteCalendarUnit(64L), NSSecondCalendarUnit(128L), NSWeekCalendarUnit(256L), NSWeekdayCalendarUnit(512L), NSWeekdayOrdinalCalendarUnit(1024L), NSQuarterCalendarUnit(2048L), NSWeekOfMonthCalendarUnit(4096L), NSWeekOfYearCalendarUnit(8192L), NSYearForWeekOfYearCalendarUnit(16384L), NSCalendarCalendarUnit(1048576L), NSTimeZoneCalendarUnit(2097152L);
+
+    companion object {
+        fun fromValue(v: Long): NSCalendarUnit = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCalendarUnit value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h:113:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_113_1_(val value: Long) {
+    NSWrapCalendarComponents(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_113_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_113_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h:423:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_423_1_(val value: Long) {
+    NSDateComponentUndefined(9223372036854775807L), NSUndefinedDateComponent(9223372036854775807L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_423_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_423_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCharacterSet.h:14:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCharacterSet_h_14_1_(val value: Long) {
+    NSOpenStepUnicodeReservedBase(62464L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCharacterSet_h_14_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCharacterSet_h_14_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDecodingFailurePolicy}
+ */
+enum class NSDecodingFailurePolicy(val value: Long) {
+    NSDecodingFailurePolicyRaiseException(0L), NSDecodingFailurePolicySetErrorAndReturn(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSDecodingFailurePolicy = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDecodingFailurePolicy value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDataCompressionAlgorithm}
+ */
+enum class NSDataCompressionAlgorithm(val value: Long) {
+    NSDataCompressionAlgorithmLZFSE(0L), NSDataCompressionAlgorithmLZ4(1L), NSDataCompressionAlgorithmLZMA(2L), NSDataCompressionAlgorithmZlib(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSDataCompressionAlgorithm = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDataCompressionAlgorithm value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSInlinePresentationIntent}
+ */
+enum class NSInlinePresentationIntent(val value: Long) {
+    NSInlinePresentationIntentEmphasized(1L), NSInlinePresentationIntentStronglyEmphasized(2L), NSInlinePresentationIntentCode(4L), NSInlinePresentationIntentStrikethrough(32L), NSInlinePresentationIntentSoftBreak(64L), NSInlinePresentationIntentLineBreak(128L), NSInlinePresentationIntentInlineHTML(256L), NSInlinePresentationIntentBlockHTML(512L);
+
+    companion object {
+        fun fromValue(v: Long): NSInlinePresentationIntent = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSInlinePresentationIntent value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAttributedStringMarkdownParsingFailurePolicy}
+ */
+enum class NSAttributedStringMarkdownParsingFailurePolicy(val value: Long) {
+    NSAttributedStringMarkdownParsingFailureReturnError(0L), NSAttributedStringMarkdownParsingFailureReturnPartiallyParsedIfPossible(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSAttributedStringMarkdownParsingFailurePolicy = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAttributedStringMarkdownParsingFailurePolicy value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAttributedStringMarkdownInterpretedSyntax}
+ */
+enum class NSAttributedStringMarkdownInterpretedSyntax(val value: Long) {
+    NSAttributedStringMarkdownInterpretedSyntaxFull(0L), NSAttributedStringMarkdownInterpretedSyntaxInlineOnly(1L), NSAttributedStringMarkdownInterpretedSyntaxInlineOnlyPreservingWhitespace(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSAttributedStringMarkdownInterpretedSyntax = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAttributedStringMarkdownInterpretedSyntax value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPresentationIntentKind}
+ */
+enum class NSPresentationIntentKind(val value: Long) {
+    NSPresentationIntentKindParagraph(0L), NSPresentationIntentKindHeader(1L), NSPresentationIntentKindOrderedList(2L), NSPresentationIntentKindUnorderedList(3L), NSPresentationIntentKindListItem(4L), NSPresentationIntentKindCodeBlock(5L), NSPresentationIntentKindBlockQuote(6L), NSPresentationIntentKindThematicBreak(7L), NSPresentationIntentKindTable(8L), NSPresentationIntentKindTableHeaderRow(9L), NSPresentationIntentKindTableRow(10L), NSPresentationIntentKindTableCell(11L);
+
+    companion object {
+        fun fromValue(v: Long): NSPresentationIntentKind = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPresentationIntentKind value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPresentationIntentTableColumnAlignment}
+ */
+enum class NSPresentationIntentTableColumnAlignment(val value: Long) {
+    NSPresentationIntentTableColumnAlignmentLeft(0L), NSPresentationIntentTableColumnAlignmentCenter(1L), NSPresentationIntentTableColumnAlignmentRight(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSPresentationIntentTableColumnAlignment = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPresentationIntentTableColumnAlignment value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFormattingContext}
+ */
+enum class NSFormattingContext(val value: Long) {
+    NSFormattingContextUnknown(0L), NSFormattingContextDynamic(1L), NSFormattingContextStandalone(2L), NSFormattingContextListItem(3L), NSFormattingContextBeginningOfSentence(4L), NSFormattingContextMiddleOfSentence(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSFormattingContext = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFormattingContext value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFormattingUnitStyle}
+ */
+enum class NSFormattingUnitStyle(val value: Long) {
+    NSFormattingUnitStyleShort(1L), NSFormattingUnitStyleMedium(2L), NSFormattingUnitStyleLong(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSFormattingUnitStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFormattingUnitStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDateFormatterStyle}
+ */
+enum class NSDateFormatterStyle(val value: Long) {
+    NSDateFormatterNoStyle(0L), NSDateFormatterShortStyle(1L), NSDateFormatterMediumStyle(2L), NSDateFormatterLongStyle(3L), NSDateFormatterFullStyle(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSDateFormatterStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDateFormatterStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDateFormatterBehavior}
+ */
+enum class NSDateFormatterBehavior(val value: Long) {
+    NSDateFormatterBehaviorDefault(0L), NSDateFormatterBehavior10_0(1000L), NSDateFormatterBehavior10_4(1040L);
+
+    companion object {
+        fun fromValue(v: Long): NSDateFormatterBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDateFormatterBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDateIntervalFormatterStyle}
+ */
+enum class NSDateIntervalFormatterStyle(val value: Long) {
+    NSDateIntervalFormatterNoStyle(0L), NSDateIntervalFormatterShortStyle(1L), NSDateIntervalFormatterMediumStyle(2L), NSDateIntervalFormatterLongStyle(3L), NSDateIntervalFormatterFullStyle(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSDateIntervalFormatterStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDateIntervalFormatterStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSMassFormatterUnit}
+ */
+enum class NSMassFormatterUnit(val value: Long) {
+    NSMassFormatterUnitGram(11L), NSMassFormatterUnitKilogram(14L), NSMassFormatterUnitOunce(1537L), NSMassFormatterUnitPound(1538L), NSMassFormatterUnitStone(1539L);
+
+    companion object {
+        fun fromValue(v: Long): NSMassFormatterUnit = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSMassFormatterUnit value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLengthFormatterUnit}
+ */
+enum class NSLengthFormatterUnit(val value: Long) {
+    NSLengthFormatterUnitMillimeter(8L), NSLengthFormatterUnitCentimeter(9L), NSLengthFormatterUnitMeter(11L), NSLengthFormatterUnitKilometer(14L), NSLengthFormatterUnitInch(1281L), NSLengthFormatterUnitFoot(1282L), NSLengthFormatterUnitYard(1283L), NSLengthFormatterUnitMile(1284L);
+
+    companion object {
+        fun fromValue(v: Long): NSLengthFormatterUnit = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLengthFormatterUnit value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSEnergyFormatterUnit}
+ */
+enum class NSEnergyFormatterUnit(val value: Long) {
+    NSEnergyFormatterUnitJoule(11L), NSEnergyFormatterUnitKilojoule(14L), NSEnergyFormatterUnitCalorie(1793L), NSEnergyFormatterUnitKilocalorie(1794L);
+
+    companion object {
+        fun fromValue(v: Long): NSEnergyFormatterUnit = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSEnergyFormatterUnit value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterBehavior}
+ */
+enum class NSNumberFormatterBehavior(val value: Long) {
+    NSNumberFormatterBehaviorDefault(0L), NSNumberFormatterBehavior10_0(1000L), NSNumberFormatterBehavior10_4(1040L);
+
+    companion object {
+        fun fromValue(v: Long): NSNumberFormatterBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSNumberFormatterBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterStyle}
+ */
+enum class NSNumberFormatterStyle(val value: Long) {
+    NSNumberFormatterNoStyle(0L), NSNumberFormatterDecimalStyle(1L), NSNumberFormatterCurrencyStyle(2L), NSNumberFormatterPercentStyle(3L), NSNumberFormatterScientificStyle(4L), NSNumberFormatterSpellOutStyle(5L), NSNumberFormatterOrdinalStyle(6L), NSNumberFormatterCurrencyISOCodeStyle(8L), NSNumberFormatterCurrencyPluralStyle(9L), NSNumberFormatterCurrencyAccountingStyle(10L);
+
+    companion object {
+        fun fromValue(v: Long): NSNumberFormatterStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSNumberFormatterStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterPadPosition}
+ */
+enum class NSNumberFormatterPadPosition(val value: Long) {
+    NSNumberFormatterPadBeforePrefix(0L), NSNumberFormatterPadAfterPrefix(1L), NSNumberFormatterPadBeforeSuffix(2L), NSNumberFormatterPadAfterSuffix(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSNumberFormatterPadPosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSNumberFormatterPadPosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterRoundingMode}
+ */
+enum class NSNumberFormatterRoundingMode(val value: Long) {
+    NSNumberFormatterRoundCeiling(0L), NSNumberFormatterRoundFloor(1L), NSNumberFormatterRoundDown(2L), NSNumberFormatterRoundUp(3L), NSNumberFormatterRoundHalfEven(4L), NSNumberFormatterRoundHalfDown(5L), NSNumberFormatterRoundHalfUp(6L);
+
+    companion object {
+        fun fromValue(v: Long): NSNumberFormatterRoundingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSNumberFormatterRoundingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLocaleLanguageDirection}
+ */
+enum class NSLocaleLanguageDirection(val value: Long) {
+    NSLocaleLanguageDirectionUnknown(0L), NSLocaleLanguageDirectionLeftToRight(1L), NSLocaleLanguageDirectionRightToLeft(2L), NSLocaleLanguageDirectionTopToBottom(3L), NSLocaleLanguageDirectionBottomToTop(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSLocaleLanguageDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLocaleLanguageDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPersonNameComponentsFormatterStyle}
+ */
+enum class NSPersonNameComponentsFormatterStyle(val value: Long) {
+    NSPersonNameComponentsFormatterStyleDefault(0L), NSPersonNameComponentsFormatterStyleShort(1L), NSPersonNameComponentsFormatterStyleMedium(2L), NSPersonNameComponentsFormatterStyleLong(3L), NSPersonNameComponentsFormatterStyleAbbreviated(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSPersonNameComponentsFormatterStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPersonNameComponentsFormatterStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSRelativeDateTimeFormatterStyle}
+ */
+enum class NSRelativeDateTimeFormatterStyle(val value: Long) {
+    NSRelativeDateTimeFormatterStyleNumeric(0L), NSRelativeDateTimeFormatterStyleNamed(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSRelativeDateTimeFormatterStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSRelativeDateTimeFormatterStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSRelativeDateTimeFormatterUnitsStyle}
+ */
+enum class NSRelativeDateTimeFormatterUnitsStyle(val value: Long) {
+    NSRelativeDateTimeFormatterUnitsStyleFull(0L), NSRelativeDateTimeFormatterUnitsStyleSpellOut(1L), NSRelativeDateTimeFormatterUnitsStyleShort(2L), NSRelativeDateTimeFormatterUnitsStyleAbbreviated(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSRelativeDateTimeFormatterUnitsStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSRelativeDateTimeFormatterUnitsStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSRoundingMode}
+ */
+enum class NSRoundingMode(val value: Long) {
+    NSRoundPlain(0L), NSRoundDown(1L), NSRoundUp(2L), NSRoundBankers(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSRoundingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSRoundingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCalculationError}
+ */
+enum class NSCalculationError(val value: Long) {
+    NSCalculationNoError(0L), NSCalculationLossOfPrecision(1L), NSCalculationUnderflow(2L), NSCalculationOverflow(3L), NSCalculationDivideByZero(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSCalculationError = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCalculationError value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSearchPathDirectory}
+ */
+enum class NSSearchPathDirectory(val value: Long) {
+    NSApplicationDirectory(1L), NSDemoApplicationDirectory(2L), NSDeveloperApplicationDirectory(3L), NSAdminApplicationDirectory(4L), NSLibraryDirectory(5L), NSDeveloperDirectory(6L), NSUserDirectory(7L), NSDocumentationDirectory(8L), NSDocumentDirectory(9L), NSCoreServiceDirectory(10L), NSAutosavedInformationDirectory(11L), NSDesktopDirectory(12L), NSCachesDirectory(13L), NSApplicationSupportDirectory(14L), NSDownloadsDirectory(15L), NSInputMethodsDirectory(16L), NSMoviesDirectory(17L), NSMusicDirectory(18L), NSPicturesDirectory(19L), NSPrinterDescriptionDirectory(20L), NSSharedPublicDirectory(21L), NSPreferencePanesDirectory(22L), NSApplicationScriptsDirectory(23L), NSItemReplacementDirectory(99L), NSAllApplicationsDirectory(100L), NSAllLibrariesDirectory(101L), NSTrashDirectory(102L);
+
+    companion object {
+        fun fromValue(v: Long): NSSearchPathDirectory = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSearchPathDirectory value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLHandleStatus}
+ */
+enum class NSURLHandleStatus(val value: Long) {
+    NSURLHandleNotLoaded(0L), NSURLHandleLoadSucceeded(1L), NSURLHandleLoadInProgress(2L), NSURLHandleLoadFailed(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLHandleStatus = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLHandleStatus value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLRelationship}
+ */
+enum class NSURLRelationship(val value: Long) {
+    NSURLRelationshipContains(0L), NSURLRelationshipSame(1L), NSURLRelationshipOther(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLRelationship = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLRelationship value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFileManagerSupportedSyncControls}
+ */
+enum class NSFileManagerSupportedSyncControls(val value: Long) {
+    NSFileManagerSupportedSyncControlsPauseSync(1L), NSFileManagerSupportedSyncControlsFailUploadOnConflict(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSFileManagerSupportedSyncControls = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFileManagerSupportedSyncControls value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFileManagerResumeSyncBehavior}
+ */
+enum class NSFileManagerResumeSyncBehavior(val value: Long) {
+    NSFileManagerResumeSyncBehaviorPreserveLocalChanges(0L), NSFileManagerResumeSyncBehaviorAfterUploadWithFailOnConflict(1L), NSFileManagerResumeSyncBehaviorDropLocalChanges(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSFileManagerResumeSyncBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFileManagerResumeSyncBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFileManagerUploadLocalVersionConflictPolicy}
+ */
+enum class NSFileManagerUploadLocalVersionConflictPolicy(val value: Long) {
+    NSFileManagerUploadConflictPolicyDefault(0L), NSFileManagerUploadConflictPolicyFailOnConflict(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSFileManagerUploadLocalVersionConflictPolicy = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFileManagerUploadLocalVersionConflictPolicy value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSHTTPCookieAcceptPolicy}
+ */
+enum class NSHTTPCookieAcceptPolicy(val value: Long) {
+    NSHTTPCookieAcceptPolicyAlways(0L), NSHTTPCookieAcceptPolicyNever(1L), NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSHTTPCookieAcceptPolicy = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSHTTPCookieAcceptPolicy value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSKeyValueChange}
+ */
+enum class NSKeyValueChange(val value: Long) {
+    NSKeyValueChangeSetting(1L), NSKeyValueChangeInsertion(2L), NSKeyValueChangeRemoval(3L), NSKeyValueChangeReplacement(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSKeyValueChange = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSKeyValueChange value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSKeyValueSetMutationKind}
+ */
+enum class NSKeyValueSetMutationKind(val value: Long) {
+    NSKeyValueUnionSetMutation(1L), NSKeyValueMinusSetMutation(2L), NSKeyValueIntersectSetMutation(3L), NSKeyValueSetSetMutation(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSKeyValueSetMutationKind = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSKeyValueSetMutationKind value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPropertyListFormat}
+ */
+enum class NSPropertyListFormat(val value: Long) {
+    NSPropertyListOpenStepFormat(1L), NSPropertyListXMLFormat_v1_0(100L), NSPropertyListBinaryFormat_v1_0(200L);
+
+    companion object {
+        fun fromValue(v: Long): NSPropertyListFormat = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPropertyListFormat value: $v")
+    }
+}
+
+/**
  * NS_ENUM: {@snippet lang=c : enum NSRectEdge}
  */
 enum class NSRectEdge(val value: Long) {
@@ -929,26 +1829,2942 @@ enum class NSRectEdge(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSTouchPhase}
+ * NS_ENUM: {@snippet lang=c : enum NSGrammaticalGender}
  */
-enum class NSTouchPhase(val value: Long) {
-    NSTouchPhaseBegan(1L), NSTouchPhaseMoved(2L), NSTouchPhaseStationary(4L), NSTouchPhaseEnded(8L), NSTouchPhaseCancelled(16L), NSTouchPhaseTouching(7L), NSTouchPhaseAny(-1L);
+enum class NSGrammaticalGender(val value: Long) {
+    NSGrammaticalGenderNotSet(0L), NSGrammaticalGenderFeminine(1L), NSGrammaticalGenderMasculine(2L), NSGrammaticalGenderNeuter(3L);
 
     companion object {
-        fun fromValue(v: Long): NSTouchPhase = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTouchPhase value: $v")
+        fun fromValue(v: Long): NSGrammaticalGender = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGrammaticalGender value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSTouchType}
+ * NS_ENUM: {@snippet lang=c : enum NSGrammaticalPartOfSpeech}
  */
-enum class NSTouchType(val value: Long) {
-    NSTouchTypeDirect(0L), NSTouchTypeIndirect(1L);
+enum class NSGrammaticalPartOfSpeech(val value: Long) {
+    NSGrammaticalPartOfSpeechNotSet(0L), NSGrammaticalPartOfSpeechDeterminer(1L), NSGrammaticalPartOfSpeechPronoun(2L), NSGrammaticalPartOfSpeechLetter(3L), NSGrammaticalPartOfSpeechAdverb(4L), NSGrammaticalPartOfSpeechParticle(5L), NSGrammaticalPartOfSpeechAdjective(6L), NSGrammaticalPartOfSpeechAdposition(7L), NSGrammaticalPartOfSpeechVerb(8L), NSGrammaticalPartOfSpeechNoun(9L), NSGrammaticalPartOfSpeechConjunction(10L), NSGrammaticalPartOfSpeechNumeral(11L), NSGrammaticalPartOfSpeechInterjection(12L), NSGrammaticalPartOfSpeechPreposition(13L), NSGrammaticalPartOfSpeechAbbreviation(14L);
 
     companion object {
-        fun fromValue(v: Long): NSTouchType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTouchType value: $v")
+        fun fromValue(v: Long): NSGrammaticalPartOfSpeech = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGrammaticalPartOfSpeech value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGrammaticalNumber}
+ */
+enum class NSGrammaticalNumber(val value: Long) {
+    NSGrammaticalNumberNotSet(0L), NSGrammaticalNumberSingular(1L), NSGrammaticalNumberZero(2L), NSGrammaticalNumberPlural(3L), NSGrammaticalNumberPluralTwo(4L), NSGrammaticalNumberPluralFew(5L), NSGrammaticalNumberPluralMany(6L);
+
+    companion object {
+        fun fromValue(v: Long): NSGrammaticalNumber = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGrammaticalNumber value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGrammaticalCase}
+ */
+enum class NSGrammaticalCase(val value: Long) {
+    NSGrammaticalCaseNotSet(0L), NSGrammaticalCaseNominative(1L), NSGrammaticalCaseAccusative(2L), NSGrammaticalCaseDative(3L), NSGrammaticalCaseGenitive(4L), NSGrammaticalCasePrepositional(5L), NSGrammaticalCaseAblative(6L), NSGrammaticalCaseAdessive(7L), NSGrammaticalCaseAllative(8L), NSGrammaticalCaseElative(9L), NSGrammaticalCaseIllative(10L), NSGrammaticalCaseEssive(11L), NSGrammaticalCaseInessive(12L), NSGrammaticalCaseLocative(13L), NSGrammaticalCaseTranslative(14L);
+
+    companion object {
+        fun fromValue(v: Long): NSGrammaticalCase = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGrammaticalCase value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGrammaticalPronounType}
+ */
+enum class NSGrammaticalPronounType(val value: Long) {
+    NSGrammaticalPronounTypeNotSet(0L), NSGrammaticalPronounTypePersonal(1L), NSGrammaticalPronounTypeReflexive(2L), NSGrammaticalPronounTypePossessive(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSGrammaticalPronounType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGrammaticalPronounType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGrammaticalPerson}
+ */
+enum class NSGrammaticalPerson(val value: Long) {
+    NSGrammaticalPersonNotSet(0L), NSGrammaticalPersonFirst(1L), NSGrammaticalPersonSecond(2L), NSGrammaticalPersonThird(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSGrammaticalPerson = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGrammaticalPerson value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGrammaticalDetermination}
+ */
+enum class NSGrammaticalDetermination(val value: Long) {
+    NSGrammaticalDeterminationNotSet(0L), NSGrammaticalDeterminationIndependent(1L), NSGrammaticalDeterminationDependent(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSGrammaticalDetermination = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGrammaticalDetermination value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGrammaticalDefiniteness}
+ */
+enum class NSGrammaticalDefiniteness(val value: Long) {
+    NSGrammaticalDefinitenessNotSet(0L), NSGrammaticalDefinitenessIndefinite(1L), NSGrammaticalDefinitenessDefinite(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSGrammaticalDefiniteness = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGrammaticalDefiniteness value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPostingStyle}
+ */
+enum class NSPostingStyle(val value: Long) {
+    NSPostWhenIdle(1L), NSPostASAP(2L), NSPostNow(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSPostingStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPostingStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSNotificationCoalescing}
+ */
+enum class NSNotificationCoalescing(val value: Long) {
+    NSNotificationNoCoalescing(0L), NSNotificationCoalescingOnName(1L), NSNotificationCoalescingOnSender(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSNotificationCoalescing = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSNotificationCoalescing value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSOperationQueuePriority}
+ */
+enum class NSOperationQueuePriority(val value: Long) {
+    NSOperationQueuePriorityVeryLow(-8L), NSOperationQueuePriorityLow(-4L), NSOperationQueuePriorityNormal(0L), NSOperationQueuePriorityHigh(4L), NSOperationQueuePriorityVeryHigh(8L);
+
+    companion object {
+        fun fromValue(v: Long): NSOperationQueuePriority = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSOperationQueuePriority value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSProcessInfo.h:11:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSProcessInfo_h_11_1_(val value: Long) {
+    NSWindowsNTOperatingSystem(1L), NSWindows95OperatingSystem(2L), NSSolarisOperatingSystem(3L), NSHPUXOperatingSystem(4L), NSMACHOperatingSystem(5L), NSSunOSOperatingSystem(6L), NSOSF1OperatingSystem(7L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSProcessInfo_h_11_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSProcessInfo_h_11_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSProcessInfoThermalState}
+ */
+enum class NSProcessInfoThermalState(val value: Long) {
+    NSProcessInfoThermalStateNominal(0L), NSProcessInfoThermalStateFair(1L), NSProcessInfoThermalStateSerious(2L), NSProcessInfoThermalStateCritical(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSProcessInfoThermalState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSProcessInfoThermalState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextCheckingType}
+ */
+enum class NSTextCheckingType(val value: Long) {
+    NSTextCheckingTypeOrthography(1L), NSTextCheckingTypeSpelling(2L), NSTextCheckingTypeGrammar(4L), NSTextCheckingTypeDate(8L), NSTextCheckingTypeAddress(16L), NSTextCheckingTypeLink(32L), NSTextCheckingTypeQuote(64L), NSTextCheckingTypeDash(128L), NSTextCheckingTypeReplacement(256L), NSTextCheckingTypeCorrection(512L), NSTextCheckingTypeRegularExpression(1024L), NSTextCheckingTypePhoneNumber(2048L), NSTextCheckingTypeTransitInformation(4096L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextCheckingType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextCheckingType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSTextCheckingResult.h:32:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSTextCheckingResult_h_32_1_(val value: Long) {
+    NSTextCheckingAllSystemTypes(4294967295L), NSTextCheckingAllCustomTypes(-4294967296L), NSTextCheckingAllTypes(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSTextCheckingResult_h_32_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSTextCheckingResult_h_32_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSStreamStatus}
+ */
+enum class NSStreamStatus(val value: Long) {
+    NSStreamStatusNotOpen(0L), NSStreamStatusOpening(1L), NSStreamStatusOpen(2L), NSStreamStatusReading(3L), NSStreamStatusWriting(4L), NSStreamStatusAtEnd(5L), NSStreamStatusClosed(6L), NSStreamStatusError(7L);
+
+    companion object {
+        fun fromValue(v: Long): NSStreamStatus = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSStreamStatus value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSStreamEvent}
+ */
+enum class NSStreamEvent(val value: Long) {
+    NSStreamEventNone(0L), NSStreamEventOpenCompleted(1L), NSStreamEventHasBytesAvailable(2L), NSStreamEventHasSpaceAvailable(4L), NSStreamEventErrorOccurred(8L), NSStreamEventEndEncountered(16L);
+
+    companion object {
+        fun fromValue(v: Long): NSStreamEvent = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSStreamEvent value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTimeZoneNameStyle}
+ */
+enum class NSTimeZoneNameStyle(val value: Long) {
+    NSTimeZoneNameStyleStandard(0L), NSTimeZoneNameStyleShortStandard(1L), NSTimeZoneNameStyleDaylightSaving(2L), NSTimeZoneNameStyleShortDaylightSaving(3L), NSTimeZoneNameStyleGeneric(4L), NSTimeZoneNameStyleShortGeneric(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSTimeZoneNameStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTimeZoneNameStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLCacheStoragePolicy}
+ */
+enum class NSURLCacheStoragePolicy(val value: Long) {
+    NSURLCacheStorageAllowed(0L), NSURLCacheStorageAllowedInMemoryOnly(1L), NSURLCacheStorageNotAllowed(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLCacheStoragePolicy = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLCacheStoragePolicy value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecBase.h:324:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_324_1_(val value: Long) {
+    errSecSuccess(0L), errSecUnimplemented(-4L), errSecDiskFull(-34L), errSecDskFull(-34L), errSecIO(-36L), errSecOpWr(-49L), errSecParam(-50L), errSecWrPerm(-61L), errSecAllocate(-108L), errSecUserCanceled(-128L), errSecBadReq(-909L), errSecInternalComponent(-2070L), errSecCoreFoundationUnknown(-4960L), errSecMissingEntitlement(-34018L), errSecRestrictedAPI(-34020L), errSecNotAvailable(-25291L), errSecReadOnly(-25292L), errSecAuthFailed(-25293L), errSecNoSuchKeychain(-25294L), errSecInvalidKeychain(-25295L), errSecDuplicateKeychain(-25296L), errSecDuplicateCallback(-25297L), errSecInvalidCallback(-25298L), errSecDuplicateItem(-25299L), errSecItemNotFound(-25300L), errSecBufferTooSmall(-25301L), errSecDataTooLarge(-25302L), errSecNoSuchAttr(-25303L), errSecInvalidItemRef(-25304L), errSecInvalidSearchRef(-25305L), errSecNoSuchClass(-25306L), errSecNoDefaultKeychain(-25307L), errSecInteractionNotAllowed(-25308L), errSecReadOnlyAttr(-25309L), errSecWrongSecVersion(-25310L), errSecKeySizeNotAllowed(-25311L), errSecNoStorageModule(-25312L), errSecNoCertificateModule(-25313L), errSecNoPolicyModule(-25314L), errSecInteractionRequired(-25315L), errSecDataNotAvailable(-25316L), errSecDataNotModifiable(-25317L), errSecCreateChainFailed(-25318L), errSecInvalidPrefsDomain(-25319L), errSecInDarkWake(-25320L), errSecACLNotSimple(-25240L), errSecPolicyNotFound(-25241L), errSecInvalidTrustSetting(-25242L), errSecNoAccessForItem(-25243L), errSecInvalidOwnerEdit(-25244L), errSecTrustNotAvailable(-25245L), errSecUnsupportedFormat(-25256L), errSecUnknownFormat(-25257L), errSecKeyIsSensitive(-25258L), errSecMultiplePrivKeys(-25259L), errSecPassphraseRequired(-25260L), errSecInvalidPasswordRef(-25261L), errSecInvalidTrustSettings(-25262L), errSecNoTrustSettings(-25263L), errSecPkcs12VerifyFailure(-25264L), errSecNotSigner(-26267L), errSecDecode(-26275L), errSecServiceNotAvailable(-67585L), errSecInsufficientClientID(-67586L), errSecDeviceReset(-67587L), errSecDeviceFailed(-67588L), errSecAppleAddAppACLSubject(-67589L), errSecApplePublicKeyIncomplete(-67590L), errSecAppleSignatureMismatch(-67591L), errSecAppleInvalidKeyStartDate(-67592L), errSecAppleInvalidKeyEndDate(-67593L), errSecConversionError(-67594L), errSecAppleSSLv2Rollback(-67595L), errSecQuotaExceeded(-67596L), errSecFileTooBig(-67597L), errSecInvalidDatabaseBlob(-67598L), errSecInvalidKeyBlob(-67599L), errSecIncompatibleDatabaseBlob(-67600L), errSecIncompatibleKeyBlob(-67601L), errSecHostNameMismatch(-67602L), errSecUnknownCriticalExtensionFlag(-67603L), errSecNoBasicConstraints(-67604L), errSecNoBasicConstraintsCA(-67605L), errSecInvalidAuthorityKeyID(-67606L), errSecInvalidSubjectKeyID(-67607L), errSecInvalidKeyUsageForPolicy(-67608L), errSecInvalidExtendedKeyUsage(-67609L), errSecInvalidIDLinkage(-67610L), errSecPathLengthConstraintExceeded(-67611L), errSecInvalidRoot(-67612L), errSecCRLExpired(-67613L), errSecCRLNotValidYet(-67614L), errSecCRLNotFound(-67615L), errSecCRLServerDown(-67616L), errSecCRLBadURI(-67617L), errSecUnknownCertExtension(-67618L), errSecUnknownCRLExtension(-67619L), errSecCRLNotTrusted(-67620L), errSecCRLPolicyFailed(-67621L), errSecIDPFailure(-67622L), errSecSMIMEEmailAddressesNotFound(-67623L), errSecSMIMEBadExtendedKeyUsage(-67624L), errSecSMIMEBadKeyUsage(-67625L), errSecSMIMEKeyUsageNotCritical(-67626L), errSecSMIMENoEmailAddress(-67627L), errSecSMIMESubjAltNameNotCritical(-67628L), errSecSSLBadExtendedKeyUsage(-67629L), errSecOCSPBadResponse(-67630L), errSecOCSPBadRequest(-67631L), errSecOCSPUnavailable(-67632L), errSecOCSPStatusUnrecognized(-67633L), errSecEndOfData(-67634L), errSecIncompleteCertRevocationCheck(-67635L), errSecNetworkFailure(-67636L), errSecOCSPNotTrustedToAnchor(-67637L), errSecRecordModified(-67638L), errSecOCSPSignatureError(-67639L), errSecOCSPNoSigner(-67640L), errSecOCSPResponderMalformedReq(-67641L), errSecOCSPResponderInternalError(-67642L), errSecOCSPResponderTryLater(-67643L), errSecOCSPResponderSignatureRequired(-67644L), errSecOCSPResponderUnauthorized(-67645L), errSecOCSPResponseNonceMismatch(-67646L), errSecCodeSigningBadCertChainLength(-67647L), errSecCodeSigningNoBasicConstraints(-67648L), errSecCodeSigningBadPathLengthConstraint(-67649L), errSecCodeSigningNoExtendedKeyUsage(-67650L), errSecCodeSigningDevelopment(-67651L), errSecResourceSignBadCertChainLength(-67652L), errSecResourceSignBadExtKeyUsage(-67653L), errSecTrustSettingDeny(-67654L), errSecInvalidSubjectName(-67655L), errSecUnknownQualifiedCertStatement(-67656L), errSecMobileMeRequestQueued(-67657L), errSecMobileMeRequestRedirected(-67658L), errSecMobileMeServerError(-67659L), errSecMobileMeServerNotAvailable(-67660L), errSecMobileMeServerAlreadyExists(-67661L), errSecMobileMeServerServiceErr(-67662L), errSecMobileMeRequestAlreadyPending(-67663L), errSecMobileMeNoRequestPending(-67664L), errSecMobileMeCSRVerifyFailure(-67665L), errSecMobileMeFailedConsistencyCheck(-67666L), errSecNotInitialized(-67667L), errSecInvalidHandleUsage(-67668L), errSecPVCReferentNotFound(-67669L), errSecFunctionIntegrityFail(-67670L), errSecInternalError(-67671L), errSecMemoryError(-67672L), errSecInvalidData(-67673L), errSecMDSError(-67674L), errSecInvalidPointer(-67675L), errSecSelfCheckFailed(-67676L), errSecFunctionFailed(-67677L), errSecModuleManifestVerifyFailed(-67678L), errSecInvalidGUID(-67679L), errSecInvalidHandle(-67680L), errSecInvalidDBList(-67681L), errSecInvalidPassthroughID(-67682L), errSecInvalidNetworkAddress(-67683L), errSecCRLAlreadySigned(-67684L), errSecInvalidNumberOfFields(-67685L), errSecVerificationFailure(-67686L), errSecUnknownTag(-67687L), errSecInvalidSignature(-67688L), errSecInvalidName(-67689L), errSecInvalidCertificateRef(-67690L), errSecInvalidCertificateGroup(-67691L), errSecTagNotFound(-67692L), errSecInvalidQuery(-67693L), errSecInvalidValue(-67694L), errSecCallbackFailed(-67695L), errSecACLDeleteFailed(-67696L), errSecACLReplaceFailed(-67697L), errSecACLAddFailed(-67698L), errSecACLChangeFailed(-67699L), errSecInvalidAccessCredentials(-67700L), errSecInvalidRecord(-67701L), errSecInvalidACL(-67702L), errSecInvalidSampleValue(-67703L), errSecIncompatibleVersion(-67704L), errSecPrivilegeNotGranted(-67705L), errSecInvalidScope(-67706L), errSecPVCAlreadyConfigured(-67707L), errSecInvalidPVC(-67708L), errSecEMMLoadFailed(-67709L), errSecEMMUnloadFailed(-67710L), errSecAddinLoadFailed(-67711L), errSecInvalidKeyRef(-67712L), errSecInvalidKeyHierarchy(-67713L), errSecAddinUnloadFailed(-67714L), errSecLibraryReferenceNotFound(-67715L), errSecInvalidAddinFunctionTable(-67716L), errSecInvalidServiceMask(-67717L), errSecModuleNotLoaded(-67718L), errSecInvalidSubServiceID(-67719L), errSecAttributeNotInContext(-67720L), errSecModuleManagerInitializeFailed(-67721L), errSecModuleManagerNotFound(-67722L), errSecEventNotificationCallbackNotFound(-67723L), errSecInputLengthError(-67724L), errSecOutputLengthError(-67725L), errSecPrivilegeNotSupported(-67726L), errSecDeviceError(-67727L), errSecAttachHandleBusy(-67728L), errSecNotLoggedIn(-67729L), errSecAlgorithmMismatch(-67730L), errSecKeyUsageIncorrect(-67731L), errSecKeyBlobTypeIncorrect(-67732L), errSecKeyHeaderInconsistent(-67733L), errSecUnsupportedKeyFormat(-67734L), errSecUnsupportedKeySize(-67735L), errSecInvalidKeyUsageMask(-67736L), errSecUnsupportedKeyUsageMask(-67737L), errSecInvalidKeyAttributeMask(-67738L), errSecUnsupportedKeyAttributeMask(-67739L), errSecInvalidKeyLabel(-67740L), errSecUnsupportedKeyLabel(-67741L), errSecInvalidKeyFormat(-67742L), errSecUnsupportedVectorOfBuffers(-67743L), errSecInvalidInputVector(-67744L), errSecInvalidOutputVector(-67745L), errSecInvalidContext(-67746L), errSecInvalidAlgorithm(-67747L), errSecInvalidAttributeKey(-67748L), errSecMissingAttributeKey(-67749L), errSecInvalidAttributeInitVector(-67750L), errSecMissingAttributeInitVector(-67751L), errSecInvalidAttributeSalt(-67752L), errSecMissingAttributeSalt(-67753L), errSecInvalidAttributePadding(-67754L), errSecMissingAttributePadding(-67755L), errSecInvalidAttributeRandom(-67756L), errSecMissingAttributeRandom(-67757L), errSecInvalidAttributeSeed(-67758L), errSecMissingAttributeSeed(-67759L), errSecInvalidAttributePassphrase(-67760L), errSecMissingAttributePassphrase(-67761L), errSecInvalidAttributeKeyLength(-67762L), errSecMissingAttributeKeyLength(-67763L), errSecInvalidAttributeBlockSize(-67764L), errSecMissingAttributeBlockSize(-67765L), errSecInvalidAttributeOutputSize(-67766L), errSecMissingAttributeOutputSize(-67767L), errSecInvalidAttributeRounds(-67768L), errSecMissingAttributeRounds(-67769L), errSecInvalidAlgorithmParms(-67770L), errSecMissingAlgorithmParms(-67771L), errSecInvalidAttributeLabel(-67772L), errSecMissingAttributeLabel(-67773L), errSecInvalidAttributeKeyType(-67774L), errSecMissingAttributeKeyType(-67775L), errSecInvalidAttributeMode(-67776L), errSecMissingAttributeMode(-67777L), errSecInvalidAttributeEffectiveBits(-67778L), errSecMissingAttributeEffectiveBits(-67779L), errSecInvalidAttributeStartDate(-67780L), errSecMissingAttributeStartDate(-67781L), errSecInvalidAttributeEndDate(-67782L), errSecMissingAttributeEndDate(-67783L), errSecInvalidAttributeVersion(-67784L), errSecMissingAttributeVersion(-67785L), errSecInvalidAttributePrime(-67786L), errSecMissingAttributePrime(-67787L), errSecInvalidAttributeBase(-67788L), errSecMissingAttributeBase(-67789L), errSecInvalidAttributeSubprime(-67790L), errSecMissingAttributeSubprime(-67791L), errSecInvalidAttributeIterationCount(-67792L), errSecMissingAttributeIterationCount(-67793L), errSecInvalidAttributeDLDBHandle(-67794L), errSecMissingAttributeDLDBHandle(-67795L), errSecInvalidAttributeAccessCredentials(-67796L), errSecMissingAttributeAccessCredentials(-67797L), errSecInvalidAttributePublicKeyFormat(-67798L), errSecMissingAttributePublicKeyFormat(-67799L), errSecInvalidAttributePrivateKeyFormat(-67800L), errSecMissingAttributePrivateKeyFormat(-67801L), errSecInvalidAttributeSymmetricKeyFormat(-67802L), errSecMissingAttributeSymmetricKeyFormat(-67803L), errSecInvalidAttributeWrappedKeyFormat(-67804L), errSecMissingAttributeWrappedKeyFormat(-67805L), errSecStagedOperationInProgress(-67806L), errSecStagedOperationNotStarted(-67807L), errSecVerifyFailed(-67808L), errSecQuerySizeUnknown(-67809L), errSecBlockSizeMismatch(-67810L), errSecPublicKeyInconsistent(-67811L), errSecDeviceVerifyFailed(-67812L), errSecInvalidLoginName(-67813L), errSecAlreadyLoggedIn(-67814L), errSecInvalidDigestAlgorithm(-67815L), errSecInvalidCRLGroup(-67816L), errSecCertificateCannotOperate(-67817L), errSecCertificateExpired(-67818L), errSecCertificateNotValidYet(-67819L), errSecCertificateRevoked(-67820L), errSecCertificateSuspended(-67821L), errSecInsufficientCredentials(-67822L), errSecInvalidAction(-67823L), errSecInvalidAuthority(-67824L), errSecVerifyActionFailed(-67825L), errSecInvalidCertAuthority(-67826L), errSecInvalidCRLAuthority(-67827L), errSecInvaldCRLAuthority(-67827L), errSecInvalidCRLEncoding(-67828L), errSecInvalidCRLType(-67829L), errSecInvalidCRL(-67830L), errSecInvalidFormType(-67831L), errSecInvalidID(-67832L), errSecInvalidIdentifier(-67833L), errSecInvalidIndex(-67834L), errSecInvalidPolicyIdentifiers(-67835L), errSecInvalidTimeString(-67836L), errSecInvalidReason(-67837L), errSecInvalidRequestInputs(-67838L), errSecInvalidResponseVector(-67839L), errSecInvalidStopOnPolicy(-67840L), errSecInvalidTuple(-67841L), errSecMultipleValuesUnsupported(-67842L), errSecNotTrusted(-67843L), errSecNoDefaultAuthority(-67844L), errSecRejectedForm(-67845L), errSecRequestLost(-67846L), errSecRequestRejected(-67847L), errSecUnsupportedAddressType(-67848L), errSecUnsupportedService(-67849L), errSecInvalidTupleGroup(-67850L), errSecInvalidBaseACLs(-67851L), errSecInvalidTupleCredentials(-67852L), errSecInvalidTupleCredendtials(-67852L), errSecInvalidEncoding(-67853L), errSecInvalidValidityPeriod(-67854L), errSecInvalidRequestor(-67855L), errSecRequestDescriptor(-67856L), errSecInvalidBundleInfo(-67857L), errSecInvalidCRLIndex(-67858L), errSecNoFieldValues(-67859L), errSecUnsupportedFieldFormat(-67860L), errSecUnsupportedIndexInfo(-67861L), errSecUnsupportedLocality(-67862L), errSecUnsupportedNumAttributes(-67863L), errSecUnsupportedNumIndexes(-67864L), errSecUnsupportedNumRecordTypes(-67865L), errSecFieldSpecifiedMultiple(-67866L), errSecIncompatibleFieldFormat(-67867L), errSecInvalidParsingModule(-67868L), errSecDatabaseLocked(-67869L), errSecDatastoreIsOpen(-67870L), errSecMissingValue(-67871L), errSecUnsupportedQueryLimits(-67872L), errSecUnsupportedNumSelectionPreds(-67873L), errSecUnsupportedOperator(-67874L), errSecInvalidDBLocation(-67875L), errSecInvalidAccessRequest(-67876L), errSecInvalidIndexInfo(-67877L), errSecInvalidNewOwner(-67878L), errSecInvalidModifyMode(-67879L), errSecMissingRequiredExtension(-67880L), errSecExtendedKeyUsageNotCritical(-67881L), errSecTimestampMissing(-67882L), errSecTimestampInvalid(-67883L), errSecTimestampNotTrusted(-67884L), errSecTimestampServiceNotAvailable(-67885L), errSecTimestampBadAlg(-67886L), errSecTimestampBadRequest(-67887L), errSecTimestampBadDataFormat(-67888L), errSecTimestampTimeNotAvailable(-67889L), errSecTimestampUnacceptedPolicy(-67890L), errSecTimestampUnacceptedExtension(-67891L), errSecTimestampAddInfoNotAvailable(-67892L), errSecTimestampSystemFailure(-67893L), errSecSigningTimeMissing(-67894L), errSecTimestampRejection(-67895L), errSecTimestampWaiting(-67896L), errSecTimestampRevocationWarning(-67897L), errSecTimestampRevocationNotification(-67898L), errSecCertificatePolicyNotAllowed(-67899L), errSecCertificateNameNotAllowed(-67900L), errSecCertificateValidityPeriodTooLong(-67901L), errSecCertificateIsCA(-67902L), errSecCertificateDuplicateExtension(-67903L), errSecMissingQualifiedCertStatement(-67904L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_324_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_324_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecBase.h:806:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_806_1_(val value: Long) {
+    errSSLProtocol(-9800L), errSSLNegotiation(-9801L), errSSLFatalAlert(-9802L), errSSLWouldBlock(-9803L), errSSLSessionNotFound(-9804L), errSSLClosedGraceful(-9805L), errSSLClosedAbort(-9806L), errSSLXCertChainInvalid(-9807L), errSSLBadCert(-9808L), errSSLCrypto(-9809L), errSSLInternal(-9810L), errSSLModuleAttach(-9811L), errSSLUnknownRootCert(-9812L), errSSLNoRootCert(-9813L), errSSLCertExpired(-9814L), errSSLCertNotYetValid(-9815L), errSSLClosedNoNotify(-9816L), errSSLBufferOverflow(-9817L), errSSLBadCipherSuite(-9818L), errSSLPeerUnexpectedMsg(-9819L), errSSLPeerBadRecordMac(-9820L), errSSLPeerDecryptionFail(-9821L), errSSLPeerRecordOverflow(-9822L), errSSLPeerDecompressFail(-9823L), errSSLPeerHandshakeFail(-9824L), errSSLPeerBadCert(-9825L), errSSLPeerUnsupportedCert(-9826L), errSSLPeerCertRevoked(-9827L), errSSLPeerCertExpired(-9828L), errSSLPeerCertUnknown(-9829L), errSSLIllegalParam(-9830L), errSSLPeerUnknownCA(-9831L), errSSLPeerAccessDenied(-9832L), errSSLPeerDecodeError(-9833L), errSSLPeerDecryptError(-9834L), errSSLPeerExportRestriction(-9835L), errSSLPeerProtocolVersion(-9836L), errSSLPeerInsufficientSecurity(-9837L), errSSLPeerInternalError(-9838L), errSSLPeerUserCancelled(-9839L), errSSLPeerNoRenegotiation(-9840L), errSSLPeerAuthCompleted(-9841L), errSSLClientCertRequested(-9842L), errSSLHostNameMismatch(-9843L), errSSLConnectionRefused(-9844L), errSSLDecryptionFail(-9845L), errSSLBadRecordMac(-9846L), errSSLRecordOverflow(-9847L), errSSLBadConfiguration(-9848L), errSSLUnexpectedRecord(-9849L), errSSLWeakPeerEphemeralDHKey(-9850L), errSSLClientHelloReceived(-9851L), errSSLTransportReset(-9852L), errSSLNetworkTimeout(-9853L), errSSLConfigurationFailed(-9854L), errSSLUnsupportedExtension(-9855L), errSSLUnexpectedMessage(-9856L), errSSLDecompressFail(-9857L), errSSLHandshakeFail(-9858L), errSSLDecodeError(-9859L), errSSLInappropriateFallback(-9860L), errSSLMissingExtension(-9861L), errSSLBadCertificateStatusResponse(-9862L), errSSLCertificateRequired(-9863L), errSSLUnknownPSKIdentity(-9864L), errSSLUnrecognizedName(-9865L), errSSLATSViolation(-9880L), errSSLATSMinimumVersionViolation(-9881L), errSSLATSCiphersuiteViolation(-9882L), errSSLATSMinimumKeySizeViolation(-9883L), errSSLATSLeafCertificateHashAlgorithmViolation(-9884L), errSSLATSCertificateHashAlgorithmViolation(-9885L), errSSLATSCertificateTrustViolation(-9886L), errSSLEarlyDataRejected(-9890L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_806_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_806_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:70:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_70_1_(val value: Long) {
+    CSSM_INVALID_HANDLE(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_70_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_70_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:78:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_78_1_(val value: Long) {
+    CSSM_FALSE(0L), CSSM_TRUE(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_78_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_78_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:85:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_85_1_(val value: Long) {
+    CSSM_OK(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_85_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_85_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:89:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_89_1_(val value: Long) {
+    CSSM_MODULE_STRING_SIZE(64L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_89_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_89_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:106:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_106_1_(val value: Long) {
+    CSSM_KEY_HIERARCHY_NONE(0L), CSSM_KEY_HIERARCHY_INTEG(1L), CSSM_KEY_HIERARCHY_EXPORT(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_106_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_106_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:113:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_113_1_(val value: Long) {
+    CSSM_PVC_NONE(0L), CSSM_PVC_APP(1L), CSSM_PVC_SP(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_113_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_113_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:120:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_120_1_(val value: Long) {
+    CSSM_PRIVILEGE_SCOPE_NONE(0L), CSSM_PRIVILEGE_SCOPE_PROCESS(1L), CSSM_PRIVILEGE_SCOPE_THREAD(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_120_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_120_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:132:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_132_1_(val value: Long) {
+    CSSM_SERVICE_CSSM(1L), CSSM_SERVICE_CSP(2L), CSSM_SERVICE_DL(4L), CSSM_SERVICE_CL(8L), CSSM_SERVICE_TP(16L), CSSM_SERVICE_AC(32L), CSSM_SERVICE_KR(64L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_132_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_132_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:152:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_152_1_(val value: Long) {
+    CSSM_NOTIFY_INSERT(1L), CSSM_NOTIFY_REMOVE(2L), CSSM_NOTIFY_FAULT(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_152_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_152_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:166:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_166_1_(val value: Long) {
+    CSSM_ATTACH_READ_ONLY(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_166_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_166_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:174:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_174_1_(val value: Long) {
+    CSSM_USEE_LAST(255L), CSSM_USEE_NONE(0L), CSSM_USEE_DOMESTIC(1L), CSSM_USEE_FINANCIAL(2L), CSSM_USEE_KRLE(3L), CSSM_USEE_KRENT(4L), CSSM_USEE_SSL(5L), CSSM_USEE_AUTHENTICATION(6L), CSSM_USEE_KEYEXCH(7L), CSSM_USEE_MEDICAL(8L), CSSM_USEE_INSURANCE(9L), CSSM_USEE_WEAK(10L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_174_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_174_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:190:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_190_1_(val value: Long) {
+    CSSM_ADDR_NONE(0L), CSSM_ADDR_CUSTOM(1L), CSSM_ADDR_URL(2L), CSSM_ADDR_SOCKADDR(3L), CSSM_ADDR_NAME(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_190_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_190_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:204:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_204_1_(val value: Long) {
+    CSSM_NET_PROTO_NONE(0L), CSSM_NET_PROTO_CUSTOM(1L), CSSM_NET_PROTO_UNSPECIFIED(2L), CSSM_NET_PROTO_LDAP(3L), CSSM_NET_PROTO_LDAPS(4L), CSSM_NET_PROTO_LDAPNS(5L), CSSM_NET_PROTO_X500DAP(6L), CSSM_NET_PROTO_FTP(7L), CSSM_NET_PROTO_FTPS(8L), CSSM_NET_PROTO_OCSP(9L), CSSM_NET_PROTO_CMP(10L), CSSM_NET_PROTO_CMPS(11L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_204_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_204_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:229:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_229_1_(val value: Long) {
+    CSSM_WORDID_UNK_(-1L), CSSM_WORDID_NLU_(0L), CSSM_WORDID_STAR_(1L), CSSM_WORDID_A(2L), CSSM_WORDID_ACL(3L), CSSM_WORDID_ALPHA(4L), CSSM_WORDID_B(5L), CSSM_WORDID_BER(6L), CSSM_WORDID_BINARY(7L), CSSM_WORDID_BIOMETRIC(8L), CSSM_WORDID_C(9L), CSSM_WORDID_CANCELED(10L), CSSM_WORDID_CERT(11L), CSSM_WORDID_COMMENT(12L), CSSM_WORDID_CRL(13L), CSSM_WORDID_CUSTOM(14L), CSSM_WORDID_D(15L), CSSM_WORDID_DATE(16L), CSSM_WORDID_DB_DELETE(17L), CSSM_WORDID_DB_EXEC_STORED_QUERY(18L), CSSM_WORDID_DB_INSERT(19L), CSSM_WORDID_DB_MODIFY(20L), CSSM_WORDID_DB_READ(21L), CSSM_WORDID_DBS_CREATE(22L), CSSM_WORDID_DBS_DELETE(23L), CSSM_WORDID_DECRYPT(24L), CSSM_WORDID_DELETE(25L), CSSM_WORDID_DELTA_CRL(26L), CSSM_WORDID_DER(27L), CSSM_WORDID_DERIVE(28L), CSSM_WORDID_DISPLAY(29L), CSSM_WORDID_DO(30L), CSSM_WORDID_DSA(31L), CSSM_WORDID_DSA_SHA1(32L), CSSM_WORDID_E(33L), CSSM_WORDID_ELGAMAL(34L), CSSM_WORDID_ENCRYPT(35L), CSSM_WORDID_ENTRY(36L), CSSM_WORDID_EXPORT_CLEAR(37L), CSSM_WORDID_EXPORT_WRAPPED(38L), CSSM_WORDID_G(39L), CSSM_WORDID_GE(40L), CSSM_WORDID_GENKEY(41L), CSSM_WORDID_HASH(42L), CSSM_WORDID_HASHED_PASSWORD(43L), CSSM_WORDID_HASHED_SUBJECT(44L), CSSM_WORDID_HAVAL(45L), CSSM_WORDID_IBCHASH(46L), CSSM_WORDID_IMPORT_CLEAR(47L), CSSM_WORDID_IMPORT_WRAPPED(48L), CSSM_WORDID_INTEL(49L), CSSM_WORDID_ISSUER(50L), CSSM_WORDID_ISSUER_INFO(51L), CSSM_WORDID_K_OF_N(52L), CSSM_WORDID_KEA(53L), CSSM_WORDID_KEYHOLDER(54L), CSSM_WORDID_L(55L), CSSM_WORDID_LE(56L), CSSM_WORDID_LOGIN(57L), CSSM_WORDID_LOGIN_NAME(58L), CSSM_WORDID_MAC(59L), CSSM_WORDID_MD2(60L), CSSM_WORDID_MD2WITHRSA(61L), CSSM_WORDID_MD4(62L), CSSM_WORDID_MD5(63L), CSSM_WORDID_MD5WITHRSA(64L), CSSM_WORDID_N(65L), CSSM_WORDID_NAME(66L), CSSM_WORDID_NDR(67L), CSSM_WORDID_NHASH(68L), CSSM_WORDID_NOT_AFTER(69L), CSSM_WORDID_NOT_BEFORE(70L), CSSM_WORDID_NULL(71L), CSSM_WORDID_NUMERIC(72L), CSSM_WORDID_OBJECT_HASH(73L), CSSM_WORDID_ONE_TIME(74L), CSSM_WORDID_ONLINE(75L), CSSM_WORDID_OWNER(76L), CSSM_WORDID_P(77L), CSSM_WORDID_PAM_NAME(78L), CSSM_WORDID_PASSWORD(79L), CSSM_WORDID_PGP(80L), CSSM_WORDID_PREFIX(81L), CSSM_WORDID_PRIVATE_KEY(82L), CSSM_WORDID_PROMPTED_BIOMETRIC(83L), CSSM_WORDID_PROMPTED_PASSWORD(84L), CSSM_WORDID_PROPAGATE(85L), CSSM_WORDID_PROTECTED_BIOMETRIC(86L), CSSM_WORDID_PROTECTED_PASSWORD(87L), CSSM_WORDID_PROTECTED_PIN(88L), CSSM_WORDID_PUBLIC_KEY(89L), CSSM_WORDID_PUBLIC_KEY_FROM_CERT(90L), CSSM_WORDID_Q(91L), CSSM_WORDID_RANGE(92L), CSSM_WORDID_REVAL(93L), CSSM_WORDID_RIPEMAC(94L), CSSM_WORDID_RIPEMD(95L), CSSM_WORDID_RIPEMD160(96L), CSSM_WORDID_RSA(97L), CSSM_WORDID_RSA_ISO9796(98L), CSSM_WORDID_RSA_PKCS(99L), CSSM_WORDID_RSA_PKCS_MD5(100L), CSSM_WORDID_RSA_PKCS_SHA1(101L), CSSM_WORDID_RSA_PKCS1(102L), CSSM_WORDID_RSA_PKCS1_MD5(103L), CSSM_WORDID_RSA_PKCS1_SHA1(104L), CSSM_WORDID_RSA_PKCS1_SIG(105L), CSSM_WORDID_RSA_RAW(106L), CSSM_WORDID_SDSIV1(107L), CSSM_WORDID_SEQUENCE(108L), CSSM_WORDID_SET(109L), CSSM_WORDID_SEXPR(110L), CSSM_WORDID_SHA1(111L), CSSM_WORDID_SHA1WITHDSA(112L), CSSM_WORDID_SHA1WITHECDSA(113L), CSSM_WORDID_SHA1WITHRSA(114L), CSSM_WORDID_SIGN(115L), CSSM_WORDID_SIGNATURE(116L), CSSM_WORDID_SIGNED_NONCE(117L), CSSM_WORDID_SIGNED_SECRET(118L), CSSM_WORDID_SPKI(119L), CSSM_WORDID_SUBJECT(120L), CSSM_WORDID_SUBJECT_INFO(121L), CSSM_WORDID_TAG(122L), CSSM_WORDID_THRESHOLD(123L), CSSM_WORDID_TIME(124L), CSSM_WORDID_URI(125L), CSSM_WORDID_VERSION(126L), CSSM_WORDID_X509_ATTRIBUTE(127L), CSSM_WORDID_X509V1(128L), CSSM_WORDID_X509V2(129L), CSSM_WORDID_X509V3(130L), CSSM_WORDID_X9_ATTRIBUTE(131L), CSSM_WORDID_VENDOR_START(65536L), CSSM_WORDID_VENDOR_END(2147418112L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_229_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_229_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:368:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_368_1_(val value: Long) {
+    CSSM_LIST_ELEMENT_DATUM(0L), CSSM_LIST_ELEMENT_SUBLIST(1L), CSSM_LIST_ELEMENT_WORDID(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_368_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_368_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:375:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_375_1_(val value: Long) {
+    CSSM_LIST_TYPE_UNKNOWN(0L), CSSM_LIST_TYPE_CUSTOM(1L), CSSM_LIST_TYPE_SEXPR(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_375_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_375_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:414:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_414_1_(val value: Long) {
+    CSSM_SAMPLE_TYPE_PASSWORD(79L), CSSM_SAMPLE_TYPE_HASHED_PASSWORD(43L), CSSM_SAMPLE_TYPE_PROTECTED_PASSWORD(87L), CSSM_SAMPLE_TYPE_PROMPTED_PASSWORD(84L), CSSM_SAMPLE_TYPE_SIGNED_NONCE(117L), CSSM_SAMPLE_TYPE_SIGNED_SECRET(118L), CSSM_SAMPLE_TYPE_BIOMETRIC(8L), CSSM_SAMPLE_TYPE_PROTECTED_BIOMETRIC(86L), CSSM_SAMPLE_TYPE_PROMPTED_BIOMETRIC(83L), CSSM_SAMPLE_TYPE_THRESHOLD(123L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_414_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_414_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:473:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_473_1_(val value: Long) {
+    CSSM_CERT_UNKNOWN(0L), CSSM_CERT_X_509v1(1L), CSSM_CERT_X_509v2(2L), CSSM_CERT_X_509v3(3L), CSSM_CERT_PGP(4L), CSSM_CERT_SPKI(5L), CSSM_CERT_SDSIv1(6L), CSSM_CERT_Intel(8L), CSSM_CERT_X_509_ATTRIBUTE(9L), CSSM_CERT_X9_ATTRIBUTE(10L), CSSM_CERT_TUPLE(11L), CSSM_CERT_ACL_ENTRY(12L), CSSM_CERT_MULTIPLE(32766L), CSSM_CERT_LAST(32767L), CSSM_CL_CUSTOM_CERT_TYPE(32768L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_473_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_473_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:495:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_495_1_(val value: Long) {
+    CSSM_CERT_ENCODING_UNKNOWN(0L), CSSM_CERT_ENCODING_CUSTOM(1L), CSSM_CERT_ENCODING_BER(2L), CSSM_CERT_ENCODING_DER(3L), CSSM_CERT_ENCODING_NDR(4L), CSSM_CERT_ENCODING_SEXPR(5L), CSSM_CERT_ENCODING_PGP(6L), CSSM_CERT_ENCODING_MULTIPLE(32766L), CSSM_CERT_ENCODING_LAST(32767L), CSSM_CL_CUSTOM_CERT_ENCODING(32768L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_495_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_495_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:518:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_518_1_(val value: Long) {
+    CSSM_CERT_PARSE_FORMAT_NONE(0L), CSSM_CERT_PARSE_FORMAT_CUSTOM(1L), CSSM_CERT_PARSE_FORMAT_SEXPR(2L), CSSM_CERT_PARSE_FORMAT_COMPLEX(3L), CSSM_CERT_PARSE_FORMAT_OID_NAMED(4L), CSSM_CERT_PARSE_FORMAT_TUPLE(5L), CSSM_CERT_PARSE_FORMAT_MULTIPLE(32766L), CSSM_CERT_PARSE_FORMAT_LAST(32767L), CSSM_CL_CUSTOM_CERT_PARSE_FORMAT(32768L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_518_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_518_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:549:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_549_1_(val value: Long) {
+    CSSM_CERTGROUP_DATA(0L), CSSM_CERTGROUP_ENCODED_CERT(1L), CSSM_CERTGROUP_PARSED_CERT(2L), CSSM_CERTGROUP_CERT_PAIR(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_549_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_549_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:589:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_589_1_(val value: Long) {
+    CSSM_ACL_SUBJECT_TYPE_ANY(1L), CSSM_ACL_SUBJECT_TYPE_THRESHOLD(123L), CSSM_ACL_SUBJECT_TYPE_PASSWORD(79L), CSSM_ACL_SUBJECT_TYPE_PROTECTED_PASSWORD(87L), CSSM_ACL_SUBJECT_TYPE_PROMPTED_PASSWORD(84L), CSSM_ACL_SUBJECT_TYPE_PUBLIC_KEY(89L), CSSM_ACL_SUBJECT_TYPE_HASHED_SUBJECT(44L), CSSM_ACL_SUBJECT_TYPE_BIOMETRIC(8L), CSSM_ACL_SUBJECT_TYPE_PROTECTED_BIOMETRIC(86L), CSSM_ACL_SUBJECT_TYPE_PROMPTED_BIOMETRIC(83L), CSSM_ACL_SUBJECT_TYPE_LOGIN_NAME(58L), CSSM_ACL_SUBJECT_TYPE_EXT_PAM_NAME(78L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_589_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_589_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:606:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_606_1_(val value: Long) {
+    CSSM_ACL_AUTHORIZATION_TAG_VENDOR_DEFINED_START(65536L), CSSM_ACL_AUTHORIZATION_ANY(1L), CSSM_ACL_AUTHORIZATION_LOGIN(57L), CSSM_ACL_AUTHORIZATION_GENKEY(41L), CSSM_ACL_AUTHORIZATION_DELETE(25L), CSSM_ACL_AUTHORIZATION_EXPORT_WRAPPED(38L), CSSM_ACL_AUTHORIZATION_EXPORT_CLEAR(37L), CSSM_ACL_AUTHORIZATION_IMPORT_WRAPPED(48L), CSSM_ACL_AUTHORIZATION_IMPORT_CLEAR(47L), CSSM_ACL_AUTHORIZATION_SIGN(115L), CSSM_ACL_AUTHORIZATION_ENCRYPT(35L), CSSM_ACL_AUTHORIZATION_DECRYPT(24L), CSSM_ACL_AUTHORIZATION_MAC(59L), CSSM_ACL_AUTHORIZATION_DERIVE(28L), CSSM_ACL_AUTHORIZATION_DBS_CREATE(22L), CSSM_ACL_AUTHORIZATION_DBS_DELETE(23L), CSSM_ACL_AUTHORIZATION_DB_READ(21L), CSSM_ACL_AUTHORIZATION_DB_INSERT(19L), CSSM_ACL_AUTHORIZATION_DB_MODIFY(20L), CSSM_ACL_AUTHORIZATION_DB_DELETE(17L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_606_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_606_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:683:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_683_1_(val value: Long) {
+    CSSM_ACL_EDIT_MODE_ADD(1L), CSSM_ACL_EDIT_MODE_DELETE(2L), CSSM_ACL_EDIT_MODE_REPLACE(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_683_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_683_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:727:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_727_1_(val value: Long) {
+    CSSM_KEYHEADER_VERSION(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_727_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_727_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:737:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_737_1_(val value: Long) {
+    CSSM_KEYBLOB_RAW(0L), CSSM_KEYBLOB_REFERENCE(2L), CSSM_KEYBLOB_WRAPPED(3L), CSSM_KEYBLOB_OTHER(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_737_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_737_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:745:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_745_1_(val value: Long) {
+    CSSM_KEYBLOB_RAW_FORMAT_NONE(0L), CSSM_KEYBLOB_RAW_FORMAT_PKCS1(1L), CSSM_KEYBLOB_RAW_FORMAT_PKCS3(2L), CSSM_KEYBLOB_RAW_FORMAT_MSCAPI(3L), CSSM_KEYBLOB_RAW_FORMAT_PGP(4L), CSSM_KEYBLOB_RAW_FORMAT_FIPS186(5L), CSSM_KEYBLOB_RAW_FORMAT_BSAFE(6L), CSSM_KEYBLOB_RAW_FORMAT_CCA(9L), CSSM_KEYBLOB_RAW_FORMAT_PKCS8(10L), CSSM_KEYBLOB_RAW_FORMAT_SPKI(11L), CSSM_KEYBLOB_RAW_FORMAT_OCTET_STRING(12L), CSSM_KEYBLOB_RAW_FORMAT_OTHER(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_745_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_745_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:761:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_761_1_(val value: Long) {
+    CSSM_KEYBLOB_WRAPPED_FORMAT_NONE(0L), CSSM_KEYBLOB_WRAPPED_FORMAT_PKCS8(1L), CSSM_KEYBLOB_WRAPPED_FORMAT_PKCS7(2L), CSSM_KEYBLOB_WRAPPED_FORMAT_MSCAPI(3L), CSSM_KEYBLOB_WRAPPED_FORMAT_OTHER(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_761_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_761_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:770:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_770_1_(val value: Long) {
+    CSSM_KEYBLOB_REF_FORMAT_INTEGER(0L), CSSM_KEYBLOB_REF_FORMAT_STRING(1L), CSSM_KEYBLOB_REF_FORMAT_SPKI(2L), CSSM_KEYBLOB_REF_FORMAT_OTHER(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_770_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_770_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:780:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_780_1_(val value: Long) {
+    CSSM_KEYCLASS_PUBLIC_KEY(0L), CSSM_KEYCLASS_PRIVATE_KEY(1L), CSSM_KEYCLASS_SESSION_KEY(2L), CSSM_KEYCLASS_SECRET_PART(3L), CSSM_KEYCLASS_OTHER(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_780_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_780_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:789:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_789_1_(val value: Long) {
+    CSSM_KEYATTR_RETURN_DEFAULT(0L), CSSM_KEYATTR_RETURN_DATA(268435456L), CSSM_KEYATTR_RETURN_REF(536870912L), CSSM_KEYATTR_RETURN_NONE(1073741824L), CSSM_KEYATTR_PERMANENT(1L), CSSM_KEYATTR_PRIVATE(2L), CSSM_KEYATTR_MODIFIABLE(4L), CSSM_KEYATTR_SENSITIVE(8L), CSSM_KEYATTR_EXTRACTABLE(32L), CSSM_KEYATTR_ALWAYS_SENSITIVE(16L), CSSM_KEYATTR_NEVER_EXTRACTABLE(64L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_789_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_789_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:807:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_807_1_(val value: Long) {
+    CSSM_KEYUSE_ANY(-2147483648L), CSSM_KEYUSE_ENCRYPT(1L), CSSM_KEYUSE_DECRYPT(2L), CSSM_KEYUSE_SIGN(4L), CSSM_KEYUSE_VERIFY(8L), CSSM_KEYUSE_SIGN_RECOVER(16L), CSSM_KEYUSE_VERIFY_RECOVER(32L), CSSM_KEYUSE_WRAP(64L), CSSM_KEYUSE_UNWRAP(128L), CSSM_KEYUSE_DERIVE(256L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_807_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_807_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:821:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_821_1_(val value: Long) {
+    CSSM_ALGID_NONE(0L), CSSM_ALGID_CUSTOM(1L), CSSM_ALGID_DH(2L), CSSM_ALGID_PH(3L), CSSM_ALGID_KEA(4L), CSSM_ALGID_MD2(5L), CSSM_ALGID_MD4(6L), CSSM_ALGID_MD5(7L), CSSM_ALGID_SHA1(8L), CSSM_ALGID_NHASH(9L), CSSM_ALGID_HAVAL(10L), CSSM_ALGID_RIPEMD(11L), CSSM_ALGID_IBCHASH(12L), CSSM_ALGID_RIPEMAC(13L), CSSM_ALGID_DES(14L), CSSM_ALGID_DESX(15L), CSSM_ALGID_RDES(16L), CSSM_ALGID_3DES_3KEY_EDE(17L), CSSM_ALGID_3DES_2KEY_EDE(18L), CSSM_ALGID_3DES_1KEY_EEE(19L), CSSM_ALGID_3DES_3KEY(17L), CSSM_ALGID_3DES_3KEY_EEE(20L), CSSM_ALGID_3DES_2KEY(18L), CSSM_ALGID_3DES_2KEY_EEE(21L), CSSM_ALGID_3DES_1KEY(20L), CSSM_ALGID_IDEA(22L), CSSM_ALGID_RC2(23L), CSSM_ALGID_RC5(24L), CSSM_ALGID_RC4(25L), CSSM_ALGID_SEAL(26L), CSSM_ALGID_CAST(27L), CSSM_ALGID_BLOWFISH(28L), CSSM_ALGID_SKIPJACK(29L), CSSM_ALGID_LUCIFER(30L), CSSM_ALGID_MADRYGA(31L), CSSM_ALGID_FEAL(32L), CSSM_ALGID_REDOC(33L), CSSM_ALGID_REDOC3(34L), CSSM_ALGID_LOKI(35L), CSSM_ALGID_KHUFU(36L), CSSM_ALGID_KHAFRE(37L), CSSM_ALGID_MMB(38L), CSSM_ALGID_GOST(39L), CSSM_ALGID_SAFER(40L), CSSM_ALGID_CRAB(41L), CSSM_ALGID_RSA(42L), CSSM_ALGID_DSA(43L), CSSM_ALGID_MD5WithRSA(44L), CSSM_ALGID_MD2WithRSA(45L), CSSM_ALGID_ElGamal(46L), CSSM_ALGID_MD2Random(47L), CSSM_ALGID_MD5Random(48L), CSSM_ALGID_SHARandom(49L), CSSM_ALGID_DESRandom(50L), CSSM_ALGID_SHA1WithRSA(51L), CSSM_ALGID_CDMF(52L), CSSM_ALGID_CAST3(53L), CSSM_ALGID_CAST5(54L), CSSM_ALGID_GenericSecret(55L), CSSM_ALGID_ConcatBaseAndKey(56L), CSSM_ALGID_ConcatKeyAndBase(57L), CSSM_ALGID_ConcatBaseAndData(58L), CSSM_ALGID_ConcatDataAndBase(59L), CSSM_ALGID_XORBaseAndData(60L), CSSM_ALGID_ExtractFromKey(61L), CSSM_ALGID_SSL3PrePrimaryGen(62L), CSSM_ALGID_SSL3PreMasterGen(62L), CSSM_ALGID_SSL3PrimaryDerive(63L), CSSM_ALGID_SSL3MasterDerive(63L), CSSM_ALGID_SSL3KeyAndMacDerive(64L), CSSM_ALGID_SSL3MD5_MAC(65L), CSSM_ALGID_SSL3SHA1_MAC(66L), CSSM_ALGID_PKCS5_PBKDF1_MD5(67L), CSSM_ALGID_PKCS5_PBKDF1_MD2(68L), CSSM_ALGID_PKCS5_PBKDF1_SHA1(69L), CSSM_ALGID_WrapLynks(70L), CSSM_ALGID_WrapSET_OAEP(71L), CSSM_ALGID_BATON(72L), CSSM_ALGID_ECDSA(73L), CSSM_ALGID_MAYFLY(74L), CSSM_ALGID_JUNIPER(75L), CSSM_ALGID_FASTHASH(76L), CSSM_ALGID_3DES(77L), CSSM_ALGID_SSL3MD5(78L), CSSM_ALGID_SSL3SHA1(79L), CSSM_ALGID_FortezzaTimestamp(80L), CSSM_ALGID_SHA1WithDSA(81L), CSSM_ALGID_SHA1WithECDSA(82L), CSSM_ALGID_DSA_BSAFE(83L), CSSM_ALGID_ECDH(84L), CSSM_ALGID_ECMQV(85L), CSSM_ALGID_PKCS12_SHA1_PBE(86L), CSSM_ALGID_ECNRA(87L), CSSM_ALGID_SHA1WithECNRA(88L), CSSM_ALGID_ECES(89L), CSSM_ALGID_ECAES(90L), CSSM_ALGID_SHA1HMAC(91L), CSSM_ALGID_FIPS186Random(92L), CSSM_ALGID_ECC(93L), CSSM_ALGID_MQV(94L), CSSM_ALGID_NRA(95L), CSSM_ALGID_IntelPlatformRandom(96L), CSSM_ALGID_UTC(97L), CSSM_ALGID_HAVAL3(98L), CSSM_ALGID_HAVAL4(99L), CSSM_ALGID_HAVAL5(100L), CSSM_ALGID_TIGER(101L), CSSM_ALGID_MD5HMAC(102L), CSSM_ALGID_PKCS5_PBKDF2(103L), CSSM_ALGID_RUNNING_COUNTER(104L), CSSM_ALGID_LAST(2147483647L), CSSM_ALGID_VENDOR_DEFINED(-2147483648L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_821_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_821_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:940:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_940_1_(val value: Long) {
+    CSSM_ALGMODE_NONE(0L), CSSM_ALGMODE_CUSTOM(1L), CSSM_ALGMODE_ECB(2L), CSSM_ALGMODE_ECBPad(3L), CSSM_ALGMODE_CBC(4L), CSSM_ALGMODE_CBC_IV8(5L), CSSM_ALGMODE_CBCPadIV8(6L), CSSM_ALGMODE_CFB(7L), CSSM_ALGMODE_CFB_IV8(8L), CSSM_ALGMODE_CFBPadIV8(9L), CSSM_ALGMODE_OFB(10L), CSSM_ALGMODE_OFB_IV8(11L), CSSM_ALGMODE_OFBPadIV8(12L), CSSM_ALGMODE_COUNTER(13L), CSSM_ALGMODE_BC(14L), CSSM_ALGMODE_PCBC(15L), CSSM_ALGMODE_CBCC(16L), CSSM_ALGMODE_OFBNLF(17L), CSSM_ALGMODE_PBC(18L), CSSM_ALGMODE_PFB(19L), CSSM_ALGMODE_CBCPD(20L), CSSM_ALGMODE_PUBLIC_KEY(21L), CSSM_ALGMODE_PRIVATE_KEY(22L), CSSM_ALGMODE_SHUFFLE(23L), CSSM_ALGMODE_ECB64(24L), CSSM_ALGMODE_CBC64(25L), CSSM_ALGMODE_OFB64(26L), CSSM_ALGMODE_CFB32(28L), CSSM_ALGMODE_CFB16(29L), CSSM_ALGMODE_CFB8(30L), CSSM_ALGMODE_WRAP(31L), CSSM_ALGMODE_PRIVATE_WRAP(32L), CSSM_ALGMODE_RELAYX(33L), CSSM_ALGMODE_ECB128(34L), CSSM_ALGMODE_ECB96(35L), CSSM_ALGMODE_CBC128(36L), CSSM_ALGMODE_OAEP_HASH(37L), CSSM_ALGMODE_PKCS1_EME_V15(38L), CSSM_ALGMODE_PKCS1_EME_OAEP(39L), CSSM_ALGMODE_PKCS1_EMSA_V15(40L), CSSM_ALGMODE_ISO_9796(41L), CSSM_ALGMODE_X9_31(42L), CSSM_ALGMODE_LAST(2147483647L), CSSM_ALGMODE_VENDOR_DEFINED(-2147483648L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_940_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_940_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1015:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1015_1_(val value: Long) {
+    CSSM_CSP_SOFTWARE(1L), CSSM_CSP_HARDWARE(2L), CSSM_CSP_HYBRID(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1015_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1015_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1028:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1028_1_(val value: Long) {
+    CSSM_ALGCLASS_NONE(0L), CSSM_ALGCLASS_CUSTOM(1L), CSSM_ALGCLASS_SIGNATURE(2L), CSSM_ALGCLASS_SYMMETRIC(3L), CSSM_ALGCLASS_DIGEST(4L), CSSM_ALGCLASS_RANDOMGEN(5L), CSSM_ALGCLASS_UNIQUEGEN(6L), CSSM_ALGCLASS_MAC(7L), CSSM_ALGCLASS_ASYMMETRIC(8L), CSSM_ALGCLASS_KEYGEN(9L), CSSM_ALGCLASS_DERIVEKEY(10L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1028_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1028_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1043:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1043_1_(val value: Long) {
+    CSSM_ATTRIBUTE_DATA_NONE(0L), CSSM_ATTRIBUTE_DATA_UINT32(268435456L), CSSM_ATTRIBUTE_DATA_CSSM_DATA(536870912L), CSSM_ATTRIBUTE_DATA_CRYPTO_DATA(805306368L), CSSM_ATTRIBUTE_DATA_KEY(1073741824L), CSSM_ATTRIBUTE_DATA_STRING(1342177280L), CSSM_ATTRIBUTE_DATA_DATE(1610612736L), CSSM_ATTRIBUTE_DATA_RANGE(1879048192L), CSSM_ATTRIBUTE_DATA_ACCESS_CREDENTIALS(-2147483648L), CSSM_ATTRIBUTE_DATA_VERSION(16777216L), CSSM_ATTRIBUTE_DATA_DL_DB_HANDLE(33554432L), CSSM_ATTRIBUTE_DATA_KR_PROFILE(50331648L), CSSM_ATTRIBUTE_TYPE_MASK(-16777216L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1043_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1043_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1060:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1060_1_(val value: Long) {
+    CSSM_ATTRIBUTE_NONE(0L), CSSM_ATTRIBUTE_CUSTOM(536870913L), CSSM_ATTRIBUTE_DESCRIPTION(1342177282L), CSSM_ATTRIBUTE_KEY(1073741827L), CSSM_ATTRIBUTE_INIT_VECTOR(536870916L), CSSM_ATTRIBUTE_SALT(536870917L), CSSM_ATTRIBUTE_PADDING(268435462L), CSSM_ATTRIBUTE_RANDOM(536870919L), CSSM_ATTRIBUTE_SEED(805306376L), CSSM_ATTRIBUTE_PASSPHRASE(805306377L), CSSM_ATTRIBUTE_KEY_LENGTH(268435466L), CSSM_ATTRIBUTE_KEY_LENGTH_RANGE(1879048203L), CSSM_ATTRIBUTE_BLOCK_SIZE(268435468L), CSSM_ATTRIBUTE_OUTPUT_SIZE(268435469L), CSSM_ATTRIBUTE_ROUNDS(268435470L), CSSM_ATTRIBUTE_IV_SIZE(268435471L), CSSM_ATTRIBUTE_ALG_PARAMS(536870928L), CSSM_ATTRIBUTE_LABEL(536870929L), CSSM_ATTRIBUTE_KEY_TYPE(268435474L), CSSM_ATTRIBUTE_MODE(268435475L), CSSM_ATTRIBUTE_EFFECTIVE_BITS(268435476L), CSSM_ATTRIBUTE_START_DATE(1610612757L), CSSM_ATTRIBUTE_END_DATE(1610612758L), CSSM_ATTRIBUTE_KEYUSAGE(268435479L), CSSM_ATTRIBUTE_KEYATTR(268435480L), CSSM_ATTRIBUTE_VERSION(16777241L), CSSM_ATTRIBUTE_PRIME(536870938L), CSSM_ATTRIBUTE_BASE(536870939L), CSSM_ATTRIBUTE_SUBPRIME(536870940L), CSSM_ATTRIBUTE_ALG_ID(268435485L), CSSM_ATTRIBUTE_ITERATION_COUNT(268435486L), CSSM_ATTRIBUTE_ROUNDS_RANGE(1879048223L), CSSM_ATTRIBUTE_KRPROFILE_LOCAL(50331680L), CSSM_ATTRIBUTE_KRPROFILE_REMOTE(50331681L), CSSM_ATTRIBUTE_CSP_HANDLE(268435490L), CSSM_ATTRIBUTE_DL_DB_HANDLE(33554467L), CSSM_ATTRIBUTE_ACCESS_CREDENTIALS(-2147483612L), CSSM_ATTRIBUTE_PUBLIC_KEY_FORMAT(268435493L), CSSM_ATTRIBUTE_PRIVATE_KEY_FORMAT(268435494L), CSSM_ATTRIBUTE_SYMMETRIC_KEY_FORMAT(268435495L), CSSM_ATTRIBUTE_WRAPPED_KEY_FORMAT(268435496L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1060_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1060_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1105:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1105_1_(val value: Long) {
+    CSSM_PADDING_NONE(0L), CSSM_PADDING_CUSTOM(1L), CSSM_PADDING_ZERO(2L), CSSM_PADDING_ONE(3L), CSSM_PADDING_ALTERNATE(4L), CSSM_PADDING_FF(5L), CSSM_PADDING_PKCS5(6L), CSSM_PADDING_PKCS7(7L), CSSM_PADDING_CIPHERSTEALING(8L), CSSM_PADDING_RANDOM(9L), CSSM_PADDING_PKCS1(10L), CSSM_PADDING_SIGRAW(11L), CSSM_PADDING_VENDOR_DEFINED(-2147483648L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1105_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1105_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1158:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1158_1_(val value: Long) {
+    CSSM_CSP_TOK_RNG(1L), CSSM_CSP_TOK_CLOCK_EXISTS(64L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1158_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1158_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1164:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1164_1_(val value: Long) {
+    CSSM_CSP_RDR_TOKENPRESENT(1L), CSSM_CSP_RDR_EXISTS(2L), CSSM_CSP_RDR_HW(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1164_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1164_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1175:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1175_1_(val value: Long) {
+    CSSM_CSP_TOK_WRITE_PROTECTED(2L), CSSM_CSP_TOK_LOGIN_REQUIRED(4L), CSSM_CSP_TOK_USER_PIN_INITIALIZED(8L), CSSM_CSP_TOK_PROT_AUTHENTICATION(256L), CSSM_CSP_TOK_USER_PIN_EXPIRED(1048576L), CSSM_CSP_TOK_SESSION_KEY_PASSWORD(2097152L), CSSM_CSP_TOK_PRIVATE_KEY_PASSWORD(4194304L), CSSM_CSP_STORES_PRIVATE_KEYS(16777216L), CSSM_CSP_STORES_PUBLIC_KEYS(33554432L), CSSM_CSP_STORES_SESSION_KEYS(67108864L), CSSM_CSP_STORES_CERTIFICATES(134217728L), CSSM_CSP_STORES_GENERIC(268435456L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1175_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1175_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1191:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1191_1_(val value: Long) {
+    CSSM_PKCS_OAEP_MGF_NONE(0L), CSSM_PKCS_OAEP_MGF1_SHA1(1L), CSSM_PKCS_OAEP_MGF1_MD5(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1191_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1191_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1198:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1198_1_(val value: Long) {
+    CSSM_PKCS_OAEP_PSOURCE_NONE(0L), CSSM_PKCS_OAEP_PSOURCE_Pspecified(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1198_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1198_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1228:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1228_1_(val value: Long) {
+    CSSM_VALUE_NOT_AVAILABLE(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1228_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1228_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1238:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1238_1_(val value: Long) {
+    CSSM_PKCS5_PBKDF2_PRF_HMAC_SHA1(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1238_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1238_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1261:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1261_1_(val value: Long) {
+    CSSM_TP_AUTHORITY_REQUEST_CERTISSUE(1L), CSSM_TP_AUTHORITY_REQUEST_CERTREVOKE(2L), CSSM_TP_AUTHORITY_REQUEST_CERTSUSPEND(3L), CSSM_TP_AUTHORITY_REQUEST_CERTRESUME(4L), CSSM_TP_AUTHORITY_REQUEST_CERTVERIFY(5L), CSSM_TP_AUTHORITY_REQUEST_CERTNOTARIZE(6L), CSSM_TP_AUTHORITY_REQUEST_CERTUSERECOVER(7L), CSSM_TP_AUTHORITY_REQUEST_CRLISSUE(256L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1261_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1261_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1294:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1294_1_(val value: Long) {
+    CSSM_TP_KEY_ARCHIVE(1L), CSSM_TP_CERT_PUBLISH(2L), CSSM_TP_CERT_NOTIFY_RENEW(4L), CSSM_TP_CERT_DIR_UPDATE(8L), CSSM_TP_CRL_DISTRIBUTE(16L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1294_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1294_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1304:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1304_1_(val value: Long) {
+    CSSM_TP_ACTION_DEFAULT(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1304_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1304_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1309:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1309_1_(val value: Long) {
+    CSSM_TP_STOP_ON_POLICY(0L), CSSM_TP_STOP_ON_NONE(1L), CSSM_TP_STOP_ON_FIRST_PASS(2L), CSSM_TP_STOP_ON_FIRST_FAIL(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1309_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1309_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1337:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1337_1_(val value: Long) {
+    CSSM_CRL_PARSE_FORMAT_NONE(0L), CSSM_CRL_PARSE_FORMAT_CUSTOM(1L), CSSM_CRL_PARSE_FORMAT_SEXPR(2L), CSSM_CRL_PARSE_FORMAT_COMPLEX(3L), CSSM_CRL_PARSE_FORMAT_OID_NAMED(4L), CSSM_CRL_PARSE_FORMAT_TUPLE(5L), CSSM_CRL_PARSE_FORMAT_MULTIPLE(32766L), CSSM_CRL_PARSE_FORMAT_LAST(32767L), CSSM_CL_CUSTOM_CRL_PARSE_FORMAT(32768L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1337_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1337_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1354:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1354_1_(val value: Long) {
+    CSSM_CRL_TYPE_UNKNOWN(0L), CSSM_CRL_TYPE_X_509v1(1L), CSSM_CRL_TYPE_X_509v2(2L), CSSM_CRL_TYPE_SPKI(3L), CSSM_CRL_TYPE_MULTIPLE(32766L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1354_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1354_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1363:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1363_1_(val value: Long) {
+    CSSM_CRL_ENCODING_UNKNOWN(0L), CSSM_CRL_ENCODING_CUSTOM(1L), CSSM_CRL_ENCODING_BER(2L), CSSM_CRL_ENCODING_DER(3L), CSSM_CRL_ENCODING_BLOOM(4L), CSSM_CRL_ENCODING_SEXPR(5L), CSSM_CRL_ENCODING_MULTIPLE(32766L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1363_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1363_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1393:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1393_1_(val value: Long) {
+    CSSM_CRLGROUP_DATA(0L), CSSM_CRLGROUP_ENCODED_CRL(1L), CSSM_CRLGROUP_PARSED_CRL(2L), CSSM_CRLGROUP_CRL_PAIR(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1393_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1393_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1419:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1419_1_(val value: Long) {
+    CSSM_EVIDENCE_FORM_UNSPECIFIC(0L), CSSM_EVIDENCE_FORM_CERT(1L), CSSM_EVIDENCE_FORM_CRL(2L), CSSM_EVIDENCE_FORM_CERT_ID(3L), CSSM_EVIDENCE_FORM_CRL_ID(4L), CSSM_EVIDENCE_FORM_VERIFIER_TIME(5L), CSSM_EVIDENCE_FORM_CRL_THISTIME(6L), CSSM_EVIDENCE_FORM_CRL_NEXTTIME(7L), CSSM_EVIDENCE_FORM_POLICYINFO(8L), CSSM_EVIDENCE_FORM_TUPLEGROUP(9L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1419_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1419_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1460:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1460_1_(val value: Long) {
+    CSSM_TP_CONFIRM_STATUS_UNKNOWN(0L), CSSM_TP_CONFIRM_ACCEPT(1L), CSSM_TP_CONFIRM_REJECT(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1460_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1460_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1476:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1476_1_(val value: Long) {
+    CSSM_ESTIMATED_TIME_UNKNOWN(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1476_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1476_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1480:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1480_1_(val value: Long) {
+    CSSM_ELAPSED_TIME_UNKNOWN(-1L), CSSM_ELAPSED_TIME_COMPLETE(-2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1480_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1480_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1497:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1497_1_(val value: Long) {
+    CSSM_TP_CERTISSUE_STATUS_UNKNOWN(0L), CSSM_TP_CERTISSUE_OK(1L), CSSM_TP_CERTISSUE_OKWITHCERTMODS(2L), CSSM_TP_CERTISSUE_OKWITHSERVICEMODS(3L), CSSM_TP_CERTISSUE_REJECTED(4L), CSSM_TP_CERTISSUE_NOT_AUTHORIZED(5L), CSSM_TP_CERTISSUE_WILL_BE_REVOKED(6L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1497_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1497_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1527:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1527_1_(val value: Long) {
+    CSSM_TP_CERTCHANGE_NONE(0L), CSSM_TP_CERTCHANGE_REVOKE(1L), CSSM_TP_CERTCHANGE_HOLD(2L), CSSM_TP_CERTCHANGE_RELEASE(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1527_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1527_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1554:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1554_1_(val value: Long) {
+    CSSM_TP_CERTCHANGE_REASON_UNKNOWN(0L), CSSM_TP_CERTCHANGE_REASON_KEYCOMPROMISE(1L), CSSM_TP_CERTCHANGE_REASON_CACOMPROMISE(2L), CSSM_TP_CERTCHANGE_REASON_CEASEOPERATION(3L), CSSM_TP_CERTCHANGE_REASON_AFFILIATIONCHANGE(4L), CSSM_TP_CERTCHANGE_REASON_SUPERCEDED(5L), CSSM_TP_CERTCHANGE_REASON_SUSPECTEDCOMPROMISE(6L), CSSM_TP_CERTCHANGE_REASON_HOLDRELEASE(7L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1554_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1554_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1588:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1588_1_(val value: Long) {
+    CSSM_TP_CERTCHANGE_STATUS_UNKNOWN(0L), CSSM_TP_CERTCHANGE_OK(1L), CSSM_TP_CERTCHANGE_OKWITHNEWTIME(2L), CSSM_TP_CERTCHANGE_WRONGCA(3L), CSSM_TP_CERTCHANGE_REJECTED(4L), CSSM_TP_CERTCHANGE_NOT_AUTHORIZED(5L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1588_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1588_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1622:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1622_1_(val value: Long) {
+    CSSM_TP_CERTVERIFY_UNKNOWN(0L), CSSM_TP_CERTVERIFY_VALID(1L), CSSM_TP_CERTVERIFY_INVALID(2L), CSSM_TP_CERTVERIFY_REVOKED(3L), CSSM_TP_CERTVERIFY_SUSPENDED(4L), CSSM_TP_CERTVERIFY_EXPIRED(5L), CSSM_TP_CERTVERIFY_NOT_VALID_YET(6L), CSSM_TP_CERTVERIFY_INVALID_AUTHORITY(7L), CSSM_TP_CERTVERIFY_INVALID_SIGNATURE(8L), CSSM_TP_CERTVERIFY_INVALID_CERT_VALUE(9L), CSSM_TP_CERTVERIFY_INVALID_CERTGROUP(10L), CSSM_TP_CERTVERIFY_INVALID_POLICY(11L), CSSM_TP_CERTVERIFY_INVALID_POLICY_IDS(12L), CSSM_TP_CERTVERIFY_INVALID_BASIC_CONSTRAINTS(13L), CSSM_TP_CERTVERIFY_INVALID_CRL_DIST_PT(14L), CSSM_TP_CERTVERIFY_INVALID_NAME_TREE(15L), CSSM_TP_CERTVERIFY_UNKNOWN_CRITICAL_EXT(16L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1622_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1622_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1661:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1661_1_(val value: Long) {
+    CSSM_TP_CERTNOTARIZE_STATUS_UNKNOWN(0L), CSSM_TP_CERTNOTARIZE_OK(1L), CSSM_TP_CERTNOTARIZE_OKWITHOUTFIELDS(2L), CSSM_TP_CERTNOTARIZE_OKWITHSERVICEMODS(3L), CSSM_TP_CERTNOTARIZE_REJECTED(4L), CSSM_TP_CERTNOTARIZE_NOT_AUTHORIZED(5L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1661_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1661_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1698:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1698_1_(val value: Long) {
+    CSSM_TP_CERTRECLAIM_STATUS_UNKNOWN(0L), CSSM_TP_CERTRECLAIM_OK(1L), CSSM_TP_CERTRECLAIM_NOMATCH(2L), CSSM_TP_CERTRECLAIM_REJECTED(3L), CSSM_TP_CERTRECLAIM_NOT_AUTHORIZED(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1698_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1698_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1733:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1733_1_(val value: Long) {
+    CSSM_TP_CRLISSUE_STATUS_UNKNOWN(0L), CSSM_TP_CRLISSUE_OK(1L), CSSM_TP_CRLISSUE_NOT_CURRENT(2L), CSSM_TP_CRLISSUE_INVALID_DOMAIN(3L), CSSM_TP_CRLISSUE_UNKNOWN_IDENTIFIER(4L), CSSM_TP_CRLISSUE_REJECTED(5L), CSSM_TP_CRLISSUE_NOT_AUTHORIZED(6L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1733_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1733_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1773:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1773_1_(val value: Long) {
+    CSSM_TP_FORM_TYPE_GENERIC(0L), CSSM_TP_FORM_TYPE_REGISTRATION(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1773_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1773_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1781:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1781_1_(val value: Long) {
+    CSSM_CL_TEMPLATE_INTERMEDIATE_CERT(1L), CSSM_CL_TEMPLATE_PKIX_CERTTEMPLATE(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1781_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1781_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1790:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1790_1_(val value: Long) {
+    CSSM_CERT_BUNDLE_UNKNOWN(0L), CSSM_CERT_BUNDLE_CUSTOM(1L), CSSM_CERT_BUNDLE_PKCS7_SIGNED_DATA(2L), CSSM_CERT_BUNDLE_PKCS7_SIGNED_ENVELOPED_DATA(3L), CSSM_CERT_BUNDLE_PKCS12(4L), CSSM_CERT_BUNDLE_PFX(5L), CSSM_CERT_BUNDLE_SPKI_SEQUENCE(6L), CSSM_CERT_BUNDLE_PGP_KEYRING(7L), CSSM_CERT_BUNDLE_LAST(32767L), CSSM_CL_CUSTOM_CERT_BUNDLE_TYPE(32768L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1790_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1790_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1807:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1807_1_(val value: Long) {
+    CSSM_CERT_BUNDLE_ENCODING_UNKNOWN(0L), CSSM_CERT_BUNDLE_ENCODING_CUSTOM(1L), CSSM_CERT_BUNDLE_ENCODING_BER(2L), CSSM_CERT_BUNDLE_ENCODING_DER(3L), CSSM_CERT_BUNDLE_ENCODING_SEXPR(4L), CSSM_CERT_BUNDLE_ENCODING_PGP(5L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1807_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1807_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1826:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1826_1_(val value: Long) {
+    CSSM_FIELDVALUE_COMPLEX_DATA_TYPE(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1826_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1826_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1833:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1833_1_(val value: Long) {
+    CSSM_DB_ATTRIBUTE_NAME_AS_STRING(0L), CSSM_DB_ATTRIBUTE_NAME_AS_OID(1L), CSSM_DB_ATTRIBUTE_NAME_AS_INTEGER(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1833_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1833_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1840:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1840_1_(val value: Long) {
+    CSSM_DB_ATTRIBUTE_FORMAT_STRING(0L), CSSM_DB_ATTRIBUTE_FORMAT_SINT32(1L), CSSM_DB_ATTRIBUTE_FORMAT_UINT32(2L), CSSM_DB_ATTRIBUTE_FORMAT_BIG_NUM(3L), CSSM_DB_ATTRIBUTE_FORMAT_REAL(4L), CSSM_DB_ATTRIBUTE_FORMAT_TIME_DATE(5L), CSSM_DB_ATTRIBUTE_FORMAT_BLOB(6L), CSSM_DB_ATTRIBUTE_FORMAT_MULTI_UINT32(7L), CSSM_DB_ATTRIBUTE_FORMAT_COMPLEX(8L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1840_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1840_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1869:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1869_1_(val value: Long) {
+    CSSM_DB_RECORDTYPE_SCHEMA_START(0L), CSSM_DB_RECORDTYPE_SCHEMA_END(4L), CSSM_DB_RECORDTYPE_OPEN_GROUP_START(10L), CSSM_DB_RECORDTYPE_OPEN_GROUP_END(18L), CSSM_DB_RECORDTYPE_APP_DEFINED_START(-2147483648L), CSSM_DB_RECORDTYPE_APP_DEFINED_END(-1L), CSSM_DL_DB_SCHEMA_INFO(0L), CSSM_DL_DB_SCHEMA_INDEXES(1L), CSSM_DL_DB_SCHEMA_ATTRIBUTES(2L), CSSM_DL_DB_SCHEMA_PARSING_MODULE(3L), CSSM_DL_DB_RECORD_ANY(10L), CSSM_DL_DB_RECORD_CERT(11L), CSSM_DL_DB_RECORD_CRL(12L), CSSM_DL_DB_RECORD_POLICY(13L), CSSM_DL_DB_RECORD_GENERIC(14L), CSSM_DL_DB_RECORD_PUBLIC_KEY(15L), CSSM_DL_DB_RECORD_PRIVATE_KEY(16L), CSSM_DL_DB_RECORD_SYMMETRIC_KEY(17L), CSSM_DL_DB_RECORD_ALL_KEYS(18L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1869_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1869_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1896:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1896_1_(val value: Long) {
+    CSSM_DB_CERT_USE_TRUSTED(1L), CSSM_DB_CERT_USE_SYSTEM(2L), CSSM_DB_CERT_USE_OWNER(4L), CSSM_DB_CERT_USE_REVOKED(8L), CSSM_DB_CERT_USE_SIGNING(16L), CSSM_DB_CERT_USE_PRIVACY(32L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1896_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1896_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1924:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1924_1_(val value: Long) {
+    CSSM_DB_INDEX_UNIQUE(0L), CSSM_DB_INDEX_NONUNIQUE(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1924_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1924_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1930:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1930_1_(val value: Long) {
+    CSSM_DB_INDEX_ON_UNKNOWN(0L), CSSM_DB_INDEX_ON_ATTRIBUTE(1L), CSSM_DB_INDEX_ON_RECORD(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1930_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1930_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1954:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1954_1_(val value: Long) {
+    CSSM_DB_ACCESS_READ(1L), CSSM_DB_ACCESS_WRITE(2L), CSSM_DB_ACCESS_PRIVILEGED(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1954_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1954_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1961:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1961_1_(val value: Long) {
+    CSSM_DB_MODIFY_ATTRIBUTE_NONE(0L), CSSM_DB_MODIFY_ATTRIBUTE_ADD(1L), CSSM_DB_MODIFY_ATTRIBUTE_DELETE(2L), CSSM_DB_MODIFY_ATTRIBUTE_REPLACE(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1961_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1961_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1983:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1983_1_(val value: Long) {
+    CSSM_DB_EQUAL(0L), CSSM_DB_NOT_EQUAL(1L), CSSM_DB_LESS_THAN(2L), CSSM_DB_GREATER_THAN(3L), CSSM_DB_CONTAINS(4L), CSSM_DB_CONTAINS_INITIAL_SUBSTRING(5L), CSSM_DB_CONTAINS_FINAL_SUBSTRING(6L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1983_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1983_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1994:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1994_1_(val value: Long) {
+    CSSM_DB_NONE(0L), CSSM_DB_AND(1L), CSSM_DB_OR(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1994_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1994_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2005:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2005_1_(val value: Long) {
+    CSSM_QUERY_TIMELIMIT_NONE(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2005_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2005_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2009:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2009_1_(val value: Long) {
+    CSSM_QUERY_SIZELIMIT_NONE(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2009_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2009_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2019:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2019_1_(val value: Long) {
+    CSSM_QUERY_RETURN_DATA(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2019_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2019_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2033:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2033_1_(val value: Long) {
+    CSSM_DL_UNKNOWN(0L), CSSM_DL_CUSTOM(1L), CSSM_DL_LDAP(2L), CSSM_DL_ODBC(3L), CSSM_DL_PKCS11(4L), CSSM_DL_FFS(5L), CSSM_DL_MEMORY(6L), CSSM_DL_REMOTEDIR(7L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2033_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2033_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2053:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2053_1_(val value: Long) {
+    CSSM_DB_DATASTORES_UNKNOWN(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2053_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2053_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2063:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2063_1_(val value: Long) {
+    CSSM_DB_TRANSACTIONAL_MODE(0L), CSSM_DB_FILESYSTEMSCAN_MODE(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2063_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2063_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum extension_data_format}
+ */
+enum class extension_data_format(val value: Long) {
+    CSSM_X509_DATAFORMAT_ENCODED(0L), CSSM_X509_DATAFORMAT_PARSED(1L), CSSM_X509_DATAFORMAT_PAIR(2L);
+
+    companion object {
+        fun fromValue(v: Long): extension_data_format = entries.firstOrNull { it.value == v }
+            ?: error("Unknown extension_data_format value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecCertificate.h:267:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCertificate_h_267_1_(val value: Long) {
+    kSecSubjectItemAttr(1937072746L), kSecIssuerItemAttr(1769173877L), kSecSerialNumberItemAttr(1936614002L), kSecPublicKeyHashItemAttr(1752198009L), kSecSubjectKeyIdentifierItemAttr(1936419172L), kSecCertTypeItemAttr(1668577648L), kSecCertEncodingItemAttr(1667591779L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCertificate_h_267_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCertificate_h_267_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecKeyUsage}
+ */
+enum class SecKeyUsage(val value: Long) {
+    kSecKeyUsageUnspecified(0L), kSecKeyUsageDigitalSignature(1L), kSecKeyUsageNonRepudiation(2L), kSecKeyUsageContentCommitment(2L), kSecKeyUsageKeyEncipherment(4L), kSecKeyUsageDataEncipherment(8L), kSecKeyUsageKeyAgreement(16L), kSecKeyUsageKeyCertSign(32L), kSecKeyUsageCRLSign(64L), kSecKeyUsageEncipherOnly(128L), kSecKeyUsageDecipherOnly(256L), kSecKeyUsageCritical(-2147483648L), kSecKeyUsageAll(2147483647L);
+
+    companion object {
+        fun fromValue(v: Long): SecKeyUsage = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecKeyUsage value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecAccess.h:49:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecAccess_h_49_1_(val value: Long) {
+    kSecUseOnlyUID(1L), kSecUseOnlyGID(2L), kSecHonorRoot(256L), kSecMatchBits(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecAccess_h_49_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecAccess_h_49_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecKey.h:124:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKey_h_124_1_(val value: Long) {
+    kSecKeyKeyClass(0L), kSecKeyPrintName(1L), kSecKeyAlias(2L), kSecKeyPermanent(3L), kSecKeyPrivate(4L), kSecKeyModifiable(5L), kSecKeyLabel(6L), kSecKeyApplicationTag(7L), kSecKeyKeyCreator(8L), kSecKeyKeyType(9L), kSecKeyKeySizeInBits(10L), kSecKeyEffectiveKeySize(11L), kSecKeyStartDate(12L), kSecKeyEndDate(13L), kSecKeySensitive(14L), kSecKeyAlwaysSensitive(15L), kSecKeyExtractable(16L), kSecKeyNeverExtractable(17L), kSecKeyEncrypt(18L), kSecKeyDecrypt(19L), kSecKeyDerive(20L), kSecKeySign(21L), kSecKeyVerify(22L), kSecKeySignRecover(23L), kSecKeyVerifyRecover(24L), kSecKeyWrap(25L), kSecKeyUnwrap(26L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKey_h_124_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKey_h_124_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecCredentialType}
+ */
+enum class SecCredentialType(val value: Long) {
+    kSecCredentialTypeDefault(0L), kSecCredentialTypeWithUI(1L), kSecCredentialTypeNoUI(2L);
+
+    companion object {
+        fun fromValue(v: Long): SecCredentialType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecCredentialType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecPadding}
+ */
+enum class SecPadding(val value: Long) {
+    kSecPaddingNone(0L), kSecPaddingPKCS1(1L), kSecPaddingOAEP(2L), kSecPaddingSigRaw(16384L), kSecPaddingPKCS1MD2(32768L), kSecPaddingPKCS1MD5(32769L), kSecPaddingPKCS1SHA1(32770L), kSecPaddingPKCS1SHA224(32771L), kSecPaddingPKCS1SHA256(32772L), kSecPaddingPKCS1SHA384(32773L), kSecPaddingPKCS1SHA512(32774L);
+
+    companion object {
+        fun fromValue(v: Long): SecPadding = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecPadding value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecKeySizes}
+ */
+enum class SecKeySizes(val value: Long) {
+    kSecDefaultKeySize(0L), kSec3DES192(192L), kSecAES128(128L), kSecAES192(192L), kSecAES256(256L), kSecp192r1(192L), kSecp256r1(256L), kSecp384r1(384L), kSecp521r1(521L), kSecRSAMin(1024L), kSecRSAMax(4096L);
+
+    companion object {
+        fun fromValue(v: Long): SecKeySizes = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecKeySizes value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecKeyOperationType}
+ */
+enum class SecKeyOperationType(val value: Long) {
+    kSecKeyOperationTypeSign(0L), kSecKeyOperationTypeVerify(1L), kSecKeyOperationTypeEncrypt(2L), kSecKeyOperationTypeDecrypt(3L), kSecKeyOperationTypeKeyExchange(4L);
+
+    companion object {
+        fun fromValue(v: Long): SecKeyOperationType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecKeyOperationType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecPolicy.h:222:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecPolicy_h_222_1_(val value: Long) {
+    kSecRevocationOCSPMethod(1L), kSecRevocationCRLMethod(2L), kSecRevocationPreferCRL(4L), kSecRevocationRequirePositiveResponse(8L), kSecRevocationNetworkAccessDisabled(16L), kSecRevocationUseAnyAvailableMethod(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecPolicy_h_222_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecPolicy_h_222_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:55:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_55_1_(val value: Long) {
+    CSSM_BASE_ERROR(-2147418112L), CSSM_ERRORCODE_MODULE_EXTENT(2048L), CSSM_ERRORCODE_CUSTOM_OFFSET(1024L), CSSM_ERRORCODE_COMMON_EXTENT(256L), CSSM_CSSM_BASE_ERROR(-2147418112L), CSSM_CSSM_PRIVATE_ERROR(-2147417088L), CSSM_CSP_BASE_ERROR(-2147416064L), CSSM_CSP_PRIVATE_ERROR(-2147415040L), CSSM_DL_BASE_ERROR(-2147414016L), CSSM_DL_PRIVATE_ERROR(-2147412992L), CSSM_CL_BASE_ERROR(-2147411968L), CSSM_CL_PRIVATE_ERROR(-2147410944L), CSSM_TP_BASE_ERROR(-2147409920L), CSSM_TP_PRIVATE_ERROR(-2147408896L), CSSM_KR_BASE_ERROR(-2147407872L), CSSM_KR_PRIVATE_ERROR(-2147406848L), CSSM_AC_BASE_ERROR(-2147405824L), CSSM_AC_PRIVATE_ERROR(-2147404800L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_55_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_55_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:79:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_79_1_(val value: Long) {
+    CSSM_MDS_BASE_ERROR(-2147414016L), CSSM_MDS_PRIVATE_ERROR(-2147412992L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_79_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_79_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:85:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_85_1_(val value: Long) {
+    CSSMERR_CSSM_INVALID_ADDIN_HANDLE(-2147417855L), CSSMERR_CSSM_NOT_INITIALIZED(-2147417854L), CSSMERR_CSSM_INVALID_HANDLE_USAGE(-2147417853L), CSSMERR_CSSM_PVC_REFERENT_NOT_FOUND(-2147417852L), CSSMERR_CSSM_FUNCTION_INTEGRITY_FAIL(-2147417851L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_85_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_85_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:94:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_94_1_(val value: Long) {
+    CSSM_ERRCODE_INTERNAL_ERROR(1L), CSSM_ERRCODE_MEMORY_ERROR(2L), CSSM_ERRCODE_MDS_ERROR(3L), CSSM_ERRCODE_INVALID_POINTER(4L), CSSM_ERRCODE_INVALID_INPUT_POINTER(5L), CSSM_ERRCODE_INVALID_OUTPUT_POINTER(6L), CSSM_ERRCODE_FUNCTION_NOT_IMPLEMENTED(7L), CSSM_ERRCODE_SELF_CHECK_FAILED(8L), CSSM_ERRCODE_OS_ACCESS_DENIED(9L), CSSM_ERRCODE_FUNCTION_FAILED(10L), CSSM_ERRCODE_MODULE_MANIFEST_VERIFY_FAILED(11L), CSSM_ERRCODE_INVALID_GUID(12L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_94_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_94_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:110:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_110_1_(val value: Long) {
+    CSSM_ERRCODE_OPERATION_AUTH_DENIED(32L), CSSM_ERRCODE_OBJECT_USE_AUTH_DENIED(33L), CSSM_ERRCODE_OBJECT_MANIP_AUTH_DENIED(34L), CSSM_ERRCODE_OBJECT_ACL_NOT_SUPPORTED(35L), CSSM_ERRCODE_OBJECT_ACL_REQUIRED(36L), CSSM_ERRCODE_INVALID_ACCESS_CREDENTIALS(37L), CSSM_ERRCODE_INVALID_ACL_BASE_CERTS(38L), CSSM_ERRCODE_ACL_BASE_CERTS_NOT_SUPPORTED(39L), CSSM_ERRCODE_INVALID_SAMPLE_VALUE(40L), CSSM_ERRCODE_SAMPLE_VALUE_NOT_SUPPORTED(41L), CSSM_ERRCODE_INVALID_ACL_SUBJECT_VALUE(42L), CSSM_ERRCODE_ACL_SUBJECT_TYPE_NOT_SUPPORTED(43L), CSSM_ERRCODE_INVALID_ACL_CHALLENGE_CALLBACK(44L), CSSM_ERRCODE_ACL_CHALLENGE_CALLBACK_FAILED(45L), CSSM_ERRCODE_INVALID_ACL_ENTRY_TAG(46L), CSSM_ERRCODE_ACL_ENTRY_TAG_NOT_FOUND(47L), CSSM_ERRCODE_INVALID_ACL_EDIT_MODE(48L), CSSM_ERRCODE_ACL_CHANGE_FAILED(49L), CSSM_ERRCODE_INVALID_NEW_ACL_ENTRY(50L), CSSM_ERRCODE_INVALID_NEW_ACL_OWNER(51L), CSSM_ERRCODE_ACL_DELETE_FAILED(52L), CSSM_ERRCODE_ACL_REPLACE_FAILED(53L), CSSM_ERRCODE_ACL_ADD_FAILED(54L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_110_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_110_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:137:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_137_1_(val value: Long) {
+    CSSM_ERRCODE_INVALID_CONTEXT_HANDLE(64L), CSSM_ERRCODE_INCOMPATIBLE_VERSION(65L), CSSM_ERRCODE_INVALID_CERTGROUP_POINTER(66L), CSSM_ERRCODE_INVALID_CERT_POINTER(67L), CSSM_ERRCODE_INVALID_CRL_POINTER(68L), CSSM_ERRCODE_INVALID_FIELD_POINTER(69L), CSSM_ERRCODE_INVALID_DATA(70L), CSSM_ERRCODE_CRL_ALREADY_SIGNED(71L), CSSM_ERRCODE_INVALID_NUMBER_OF_FIELDS(72L), CSSM_ERRCODE_VERIFICATION_FAILURE(73L), CSSM_ERRCODE_INVALID_DB_HANDLE(74L), CSSM_ERRCODE_PRIVILEGE_NOT_GRANTED(75L), CSSM_ERRCODE_INVALID_DB_LIST(76L), CSSM_ERRCODE_INVALID_DB_LIST_POINTER(77L), CSSM_ERRCODE_UNKNOWN_FORMAT(78L), CSSM_ERRCODE_UNKNOWN_TAG(79L), CSSM_ERRCODE_INVALID_CSP_HANDLE(80L), CSSM_ERRCODE_INVALID_DL_HANDLE(81L), CSSM_ERRCODE_INVALID_CL_HANDLE(82L), CSSM_ERRCODE_INVALID_TP_HANDLE(83L), CSSM_ERRCODE_INVALID_KR_HANDLE(84L), CSSM_ERRCODE_INVALID_AC_HANDLE(85L), CSSM_ERRCODE_INVALID_PASSTHROUGH_ID(86L), CSSM_ERRCODE_INVALID_NETWORK_ADDR(87L), CSSM_ERRCODE_INVALID_CRYPTO_DATA(88L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_137_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_137_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:166:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_166_1_(val value: Long) {
+    CSSMERR_CSSM_INTERNAL_ERROR(-2147418111L), CSSMERR_CSSM_MEMORY_ERROR(-2147418110L), CSSMERR_CSSM_MDS_ERROR(-2147418109L), CSSMERR_CSSM_INVALID_POINTER(-2147418108L), CSSMERR_CSSM_INVALID_INPUT_POINTER(-2147418107L), CSSMERR_CSSM_INVALID_OUTPUT_POINTER(-2147418106L), CSSMERR_CSSM_FUNCTION_NOT_IMPLEMENTED(-2147418105L), CSSMERR_CSSM_SELF_CHECK_FAILED(-2147418104L), CSSMERR_CSSM_OS_ACCESS_DENIED(-2147418103L), CSSMERR_CSSM_FUNCTION_FAILED(-2147418102L), CSSMERR_CSSM_MODULE_MANIFEST_VERIFY_FAILED(-2147418101L), CSSMERR_CSSM_INVALID_GUID(-2147418100L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_166_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_166_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:182:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_182_1_(val value: Long) {
+    CSSMERR_CSSM_INVALID_CONTEXT_HANDLE(-2147418048L), CSSMERR_CSSM_INCOMPATIBLE_VERSION(-2147418047L), CSSMERR_CSSM_PRIVILEGE_NOT_GRANTED(-2147418037L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_182_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_182_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:189:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_189_1_(val value: Long) {
+    CSSM_CSSM_BASE_CSSM_ERROR(-2147417840L), CSSMERR_CSSM_SCOPE_NOT_SUPPORTED(-2147417839L), CSSMERR_CSSM_PVC_ALREADY_CONFIGURED(-2147417838L), CSSMERR_CSSM_INVALID_PVC(-2147417837L), CSSMERR_CSSM_EMM_LOAD_FAILED(-2147417836L), CSSMERR_CSSM_EMM_UNLOAD_FAILED(-2147417835L), CSSMERR_CSSM_ADDIN_LOAD_FAILED(-2147417834L), CSSMERR_CSSM_INVALID_KEY_HIERARCHY(-2147417833L), CSSMERR_CSSM_ADDIN_UNLOAD_FAILED(-2147417832L), CSSMERR_CSSM_LIB_REF_NOT_FOUND(-2147417831L), CSSMERR_CSSM_INVALID_ADDIN_FUNCTION_TABLE(-2147417830L), CSSMERR_CSSM_EMM_AUTHENTICATE_FAILED(-2147417829L), CSSMERR_CSSM_ADDIN_AUTHENTICATE_FAILED(-2147417828L), CSSMERR_CSSM_INVALID_SERVICE_MASK(-2147417827L), CSSMERR_CSSM_MODULE_NOT_LOADED(-2147417826L), CSSMERR_CSSM_INVALID_SUBSERVICEID(-2147417825L), CSSMERR_CSSM_BUFFER_TOO_SMALL(-2147417824L), CSSMERR_CSSM_INVALID_ATTRIBUTE(-2147417823L), CSSMERR_CSSM_ATTRIBUTE_NOT_IN_CONTEXT(-2147417822L), CSSMERR_CSSM_MODULE_MANAGER_INITIALIZE_FAIL(-2147417821L), CSSMERR_CSSM_MODULE_MANAGER_NOT_FOUND(-2147417820L), CSSMERR_CSSM_EVENT_NOTIFICATION_CALLBACK_NOT_FOUND(-2147417819L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_189_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_189_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:216:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_216_1_(val value: Long) {
+    CSSMERR_CSP_INTERNAL_ERROR(-2147416063L), CSSMERR_CSP_MEMORY_ERROR(-2147416062L), CSSMERR_CSP_MDS_ERROR(-2147416061L), CSSMERR_CSP_INVALID_POINTER(-2147416060L), CSSMERR_CSP_INVALID_INPUT_POINTER(-2147416059L), CSSMERR_CSP_INVALID_OUTPUT_POINTER(-2147416058L), CSSMERR_CSP_FUNCTION_NOT_IMPLEMENTED(-2147416057L), CSSMERR_CSP_SELF_CHECK_FAILED(-2147416056L), CSSMERR_CSP_OS_ACCESS_DENIED(-2147416055L), CSSMERR_CSP_FUNCTION_FAILED(-2147416054L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_216_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_216_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:230:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_230_1_(val value: Long) {
+    CSSMERR_CSP_OPERATION_AUTH_DENIED(-2147416032L), CSSMERR_CSP_OBJECT_USE_AUTH_DENIED(-2147416031L), CSSMERR_CSP_OBJECT_MANIP_AUTH_DENIED(-2147416030L), CSSMERR_CSP_OBJECT_ACL_NOT_SUPPORTED(-2147416029L), CSSMERR_CSP_OBJECT_ACL_REQUIRED(-2147416028L), CSSMERR_CSP_INVALID_ACCESS_CREDENTIALS(-2147416027L), CSSMERR_CSP_INVALID_ACL_BASE_CERTS(-2147416026L), CSSMERR_CSP_ACL_BASE_CERTS_NOT_SUPPORTED(-2147416025L), CSSMERR_CSP_INVALID_SAMPLE_VALUE(-2147416024L), CSSMERR_CSP_SAMPLE_VALUE_NOT_SUPPORTED(-2147416023L), CSSMERR_CSP_INVALID_ACL_SUBJECT_VALUE(-2147416022L), CSSMERR_CSP_ACL_SUBJECT_TYPE_NOT_SUPPORTED(-2147416021L), CSSMERR_CSP_INVALID_ACL_CHALLENGE_CALLBACK(-2147416020L), CSSMERR_CSP_ACL_CHALLENGE_CALLBACK_FAILED(-2147416019L), CSSMERR_CSP_INVALID_ACL_ENTRY_TAG(-2147416018L), CSSMERR_CSP_ACL_ENTRY_TAG_NOT_FOUND(-2147416017L), CSSMERR_CSP_INVALID_ACL_EDIT_MODE(-2147416016L), CSSMERR_CSP_ACL_CHANGE_FAILED(-2147416015L), CSSMERR_CSP_INVALID_NEW_ACL_ENTRY(-2147416014L), CSSMERR_CSP_INVALID_NEW_ACL_OWNER(-2147416013L), CSSMERR_CSP_ACL_DELETE_FAILED(-2147416012L), CSSMERR_CSP_ACL_REPLACE_FAILED(-2147416011L), CSSMERR_CSP_ACL_ADD_FAILED(-2147416010L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_230_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_230_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:257:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_257_1_(val value: Long) {
+    CSSMERR_CSP_INVALID_CONTEXT_HANDLE(-2147416000L), CSSMERR_CSP_PRIVILEGE_NOT_GRANTED(-2147415989L), CSSMERR_CSP_INVALID_DATA(-2147415994L), CSSMERR_CSP_INVALID_PASSTHROUGH_ID(-2147415978L), CSSMERR_CSP_INVALID_CRYPTO_DATA(-2147415976L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_257_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_257_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:266:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_266_1_(val value: Long) {
+    CSSM_CSP_BASE_CSP_ERROR(-2147415808L), CSSMERR_CSP_INPUT_LENGTH_ERROR(-2147415807L), CSSMERR_CSP_OUTPUT_LENGTH_ERROR(-2147415806L), CSSMERR_CSP_PRIVILEGE_NOT_SUPPORTED(-2147415805L), CSSMERR_CSP_DEVICE_ERROR(-2147415804L), CSSMERR_CSP_DEVICE_MEMORY_ERROR(-2147415803L), CSSMERR_CSP_ATTACH_HANDLE_BUSY(-2147415802L), CSSMERR_CSP_NOT_LOGGED_IN(-2147415801L), CSSMERR_CSP_INVALID_KEY(-2147415792L), CSSMERR_CSP_INVALID_KEY_REFERENCE(-2147415791L), CSSMERR_CSP_INVALID_KEY_CLASS(-2147415790L), CSSMERR_CSP_ALGID_MISMATCH(-2147415789L), CSSMERR_CSP_KEY_USAGE_INCORRECT(-2147415788L), CSSMERR_CSP_KEY_BLOB_TYPE_INCORRECT(-2147415787L), CSSMERR_CSP_KEY_HEADER_INCONSISTENT(-2147415786L), CSSMERR_CSP_UNSUPPORTED_KEY_FORMAT(-2147415785L), CSSMERR_CSP_UNSUPPORTED_KEY_SIZE(-2147415784L), CSSMERR_CSP_INVALID_KEY_POINTER(-2147415783L), CSSMERR_CSP_INVALID_KEYUSAGE_MASK(-2147415782L), CSSMERR_CSP_UNSUPPORTED_KEYUSAGE_MASK(-2147415781L), CSSMERR_CSP_INVALID_KEYATTR_MASK(-2147415780L), CSSMERR_CSP_UNSUPPORTED_KEYATTR_MASK(-2147415779L), CSSMERR_CSP_INVALID_KEY_LABEL(-2147415778L), CSSMERR_CSP_UNSUPPORTED_KEY_LABEL(-2147415777L), CSSMERR_CSP_INVALID_KEY_FORMAT(-2147415776L), CSSMERR_CSP_INVALID_DATA_COUNT(-2147415768L), CSSMERR_CSP_VECTOR_OF_BUFS_UNSUPPORTED(-2147415767L), CSSMERR_CSP_INVALID_INPUT_VECTOR(-2147415766L), CSSMERR_CSP_INVALID_OUTPUT_VECTOR(-2147415765L), CSSMERR_CSP_INVALID_CONTEXT(-2147415760L), CSSMERR_CSP_INVALID_ALGORITHM(-2147415759L), CSSMERR_CSP_INVALID_ATTR_KEY(-2147415754L), CSSMERR_CSP_MISSING_ATTR_KEY(-2147415753L), CSSMERR_CSP_INVALID_ATTR_INIT_VECTOR(-2147415752L), CSSMERR_CSP_MISSING_ATTR_INIT_VECTOR(-2147415751L), CSSMERR_CSP_INVALID_ATTR_SALT(-2147415750L), CSSMERR_CSP_MISSING_ATTR_SALT(-2147415749L), CSSMERR_CSP_INVALID_ATTR_PADDING(-2147415748L), CSSMERR_CSP_MISSING_ATTR_PADDING(-2147415747L), CSSMERR_CSP_INVALID_ATTR_RANDOM(-2147415746L), CSSMERR_CSP_MISSING_ATTR_RANDOM(-2147415745L), CSSMERR_CSP_INVALID_ATTR_SEED(-2147415744L), CSSMERR_CSP_MISSING_ATTR_SEED(-2147415743L), CSSMERR_CSP_INVALID_ATTR_PASSPHRASE(-2147415742L), CSSMERR_CSP_MISSING_ATTR_PASSPHRASE(-2147415741L), CSSMERR_CSP_INVALID_ATTR_KEY_LENGTH(-2147415740L), CSSMERR_CSP_MISSING_ATTR_KEY_LENGTH(-2147415739L), CSSMERR_CSP_INVALID_ATTR_BLOCK_SIZE(-2147415738L), CSSMERR_CSP_MISSING_ATTR_BLOCK_SIZE(-2147415737L), CSSMERR_CSP_INVALID_ATTR_OUTPUT_SIZE(-2147415708L), CSSMERR_CSP_MISSING_ATTR_OUTPUT_SIZE(-2147415707L), CSSMERR_CSP_INVALID_ATTR_ROUNDS(-2147415706L), CSSMERR_CSP_MISSING_ATTR_ROUNDS(-2147415705L), CSSMERR_CSP_INVALID_ATTR_ALG_PARAMS(-2147415704L), CSSMERR_CSP_MISSING_ATTR_ALG_PARAMS(-2147415703L), CSSMERR_CSP_INVALID_ATTR_LABEL(-2147415702L), CSSMERR_CSP_MISSING_ATTR_LABEL(-2147415701L), CSSMERR_CSP_INVALID_ATTR_KEY_TYPE(-2147415700L), CSSMERR_CSP_MISSING_ATTR_KEY_TYPE(-2147415699L), CSSMERR_CSP_INVALID_ATTR_MODE(-2147415698L), CSSMERR_CSP_MISSING_ATTR_MODE(-2147415697L), CSSMERR_CSP_INVALID_ATTR_EFFECTIVE_BITS(-2147415696L), CSSMERR_CSP_MISSING_ATTR_EFFECTIVE_BITS(-2147415695L), CSSMERR_CSP_INVALID_ATTR_START_DATE(-2147415694L), CSSMERR_CSP_MISSING_ATTR_START_DATE(-2147415693L), CSSMERR_CSP_INVALID_ATTR_END_DATE(-2147415692L), CSSMERR_CSP_MISSING_ATTR_END_DATE(-2147415691L), CSSMERR_CSP_INVALID_ATTR_VERSION(-2147415690L), CSSMERR_CSP_MISSING_ATTR_VERSION(-2147415689L), CSSMERR_CSP_INVALID_ATTR_PRIME(-2147415688L), CSSMERR_CSP_MISSING_ATTR_PRIME(-2147415687L), CSSMERR_CSP_INVALID_ATTR_BASE(-2147415686L), CSSMERR_CSP_MISSING_ATTR_BASE(-2147415685L), CSSMERR_CSP_INVALID_ATTR_SUBPRIME(-2147415684L), CSSMERR_CSP_MISSING_ATTR_SUBPRIME(-2147415683L), CSSMERR_CSP_INVALID_ATTR_ITERATION_COUNT(-2147415682L), CSSMERR_CSP_MISSING_ATTR_ITERATION_COUNT(-2147415681L), CSSMERR_CSP_INVALID_ATTR_DL_DB_HANDLE(-2147415680L), CSSMERR_CSP_MISSING_ATTR_DL_DB_HANDLE(-2147415679L), CSSMERR_CSP_INVALID_ATTR_ACCESS_CREDENTIALS(-2147415678L), CSSMERR_CSP_MISSING_ATTR_ACCESS_CREDENTIALS(-2147415677L), CSSMERR_CSP_INVALID_ATTR_PUBLIC_KEY_FORMAT(-2147415676L), CSSMERR_CSP_MISSING_ATTR_PUBLIC_KEY_FORMAT(-2147415675L), CSSMERR_CSP_INVALID_ATTR_PRIVATE_KEY_FORMAT(-2147415674L), CSSMERR_CSP_MISSING_ATTR_PRIVATE_KEY_FORMAT(-2147415673L), CSSMERR_CSP_INVALID_ATTR_SYMMETRIC_KEY_FORMAT(-2147415672L), CSSMERR_CSP_MISSING_ATTR_SYMMETRIC_KEY_FORMAT(-2147415671L), CSSMERR_CSP_INVALID_ATTR_WRAPPED_KEY_FORMAT(-2147415670L), CSSMERR_CSP_MISSING_ATTR_WRAPPED_KEY_FORMAT(-2147415669L), CSSMERR_CSP_STAGED_OPERATION_IN_PROGRESS(-2147415736L), CSSMERR_CSP_STAGED_OPERATION_NOT_STARTED(-2147415735L), CSSMERR_CSP_VERIFY_FAILED(-2147415734L), CSSMERR_CSP_INVALID_SIGNATURE(-2147415733L), CSSMERR_CSP_QUERY_SIZE_UNKNOWN(-2147415732L), CSSMERR_CSP_BLOCK_SIZE_MISMATCH(-2147415731L), CSSMERR_CSP_PRIVATE_KEY_NOT_FOUND(-2147415730L), CSSMERR_CSP_PUBLIC_KEY_INCONSISTENT(-2147415729L), CSSMERR_CSP_DEVICE_VERIFY_FAILED(-2147415728L), CSSMERR_CSP_INVALID_LOGIN_NAME(-2147415727L), CSSMERR_CSP_ALREADY_LOGGED_IN(-2147415726L), CSSMERR_CSP_PRIVATE_KEY_ALREADY_EXISTS(-2147415725L), CSSMERR_CSP_KEY_LABEL_ALREADY_EXISTS(-2147415724L), CSSMERR_CSP_INVALID_DIGEST_ALGORITHM(-2147415723L), CSSMERR_CSP_CRYPTO_DATA_CALLBACK_FAILED(-2147415722L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_266_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_266_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:380:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_380_1_(val value: Long) {
+    CSSMERR_TP_INTERNAL_ERROR(-2147409919L), CSSMERR_TP_MEMORY_ERROR(-2147409918L), CSSMERR_TP_MDS_ERROR(-2147409917L), CSSMERR_TP_INVALID_POINTER(-2147409916L), CSSMERR_TP_INVALID_INPUT_POINTER(-2147409915L), CSSMERR_TP_INVALID_OUTPUT_POINTER(-2147409914L), CSSMERR_TP_FUNCTION_NOT_IMPLEMENTED(-2147409913L), CSSMERR_TP_SELF_CHECK_FAILED(-2147409912L), CSSMERR_TP_OS_ACCESS_DENIED(-2147409911L), CSSMERR_TP_FUNCTION_FAILED(-2147409910L), CSSMERR_TP_INVALID_CONTEXT_HANDLE(-2147409856L), CSSMERR_TP_INVALID_DATA(-2147409850L), CSSMERR_TP_INVALID_DB_LIST(-2147409844L), CSSMERR_TP_INVALID_CERTGROUP_POINTER(-2147409854L), CSSMERR_TP_INVALID_CERT_POINTER(-2147409853L), CSSMERR_TP_INVALID_CRL_POINTER(-2147409852L), CSSMERR_TP_INVALID_FIELD_POINTER(-2147409851L), CSSMERR_TP_INVALID_NETWORK_ADDR(-2147409833L), CSSMERR_TP_CRL_ALREADY_SIGNED(-2147409849L), CSSMERR_TP_INVALID_NUMBER_OF_FIELDS(-2147409848L), CSSMERR_TP_VERIFICATION_FAILURE(-2147409847L), CSSMERR_TP_INVALID_DB_HANDLE(-2147409846L), CSSMERR_TP_UNKNOWN_FORMAT(-2147409842L), CSSMERR_TP_UNKNOWN_TAG(-2147409841L), CSSMERR_TP_INVALID_PASSTHROUGH_ID(-2147409834L), CSSMERR_TP_INVALID_CSP_HANDLE(-2147409840L), CSSMERR_TP_INVALID_DL_HANDLE(-2147409839L), CSSMERR_TP_INVALID_CL_HANDLE(-2147409838L), CSSMERR_TP_INVALID_DB_LIST_POINTER(-2147409843L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_380_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_380_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:413:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_413_1_(val value: Long) {
+    CSSM_TP_BASE_TP_ERROR(-2147409664L), CSSMERR_TP_INVALID_CALLERAUTH_CONTEXT_POINTER(-2147409663L), CSSMERR_TP_INVALID_IDENTIFIER_POINTER(-2147409662L), CSSMERR_TP_INVALID_KEYCACHE_HANDLE(-2147409661L), CSSMERR_TP_INVALID_CERTGROUP(-2147409660L), CSSMERR_TP_INVALID_CRLGROUP(-2147409659L), CSSMERR_TP_INVALID_CRLGROUP_POINTER(-2147409658L), CSSMERR_TP_AUTHENTICATION_FAILED(-2147409657L), CSSMERR_TP_CERTGROUP_INCOMPLETE(-2147409656L), CSSMERR_TP_CERTIFICATE_CANT_OPERATE(-2147409655L), CSSMERR_TP_CERT_EXPIRED(-2147409654L), CSSMERR_TP_CERT_NOT_VALID_YET(-2147409653L), CSSMERR_TP_CERT_REVOKED(-2147409652L), CSSMERR_TP_CERT_SUSPENDED(-2147409651L), CSSMERR_TP_INSUFFICIENT_CREDENTIALS(-2147409650L), CSSMERR_TP_INVALID_ACTION(-2147409649L), CSSMERR_TP_INVALID_ACTION_DATA(-2147409648L), CSSMERR_TP_INVALID_ANCHOR_CERT(-2147409646L), CSSMERR_TP_INVALID_AUTHORITY(-2147409645L), CSSMERR_TP_VERIFY_ACTION_FAILED(-2147409644L), CSSMERR_TP_INVALID_CERTIFICATE(-2147409643L), CSSMERR_TP_INVALID_CERT_AUTHORITY(-2147409642L), CSSMERR_TP_INVALID_CRL_AUTHORITY(-2147409641L), CSSMERR_TP_INVALID_CRL_ENCODING(-2147409640L), CSSMERR_TP_INVALID_CRL_TYPE(-2147409639L), CSSMERR_TP_INVALID_CRL(-2147409638L), CSSMERR_TP_INVALID_FORM_TYPE(-2147409637L), CSSMERR_TP_INVALID_ID(-2147409636L), CSSMERR_TP_INVALID_IDENTIFIER(-2147409635L), CSSMERR_TP_INVALID_INDEX(-2147409634L), CSSMERR_TP_INVALID_NAME(-2147409633L), CSSMERR_TP_INVALID_POLICY_IDENTIFIERS(-2147409632L), CSSMERR_TP_INVALID_TIMESTRING(-2147409631L), CSSMERR_TP_INVALID_REASON(-2147409630L), CSSMERR_TP_INVALID_REQUEST_INPUTS(-2147409629L), CSSMERR_TP_INVALID_RESPONSE_VECTOR(-2147409628L), CSSMERR_TP_INVALID_SIGNATURE(-2147409627L), CSSMERR_TP_INVALID_STOP_ON_POLICY(-2147409626L), CSSMERR_TP_INVALID_CALLBACK(-2147409625L), CSSMERR_TP_INVALID_TUPLE(-2147409624L), CSSMERR_TP_NOT_SIGNER(-2147409623L), CSSMERR_TP_NOT_TRUSTED(-2147409622L), CSSMERR_TP_NO_DEFAULT_AUTHORITY(-2147409621L), CSSMERR_TP_REJECTED_FORM(-2147409620L), CSSMERR_TP_REQUEST_LOST(-2147409619L), CSSMERR_TP_REQUEST_REJECTED(-2147409618L), CSSMERR_TP_UNSUPPORTED_ADDR_TYPE(-2147409617L), CSSMERR_TP_UNSUPPORTED_SERVICE(-2147409616L), CSSMERR_TP_INVALID_TUPLEGROUP_POINTER(-2147409615L), CSSMERR_TP_INVALID_TUPLEGROUP(-2147409614L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_413_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_413_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:468:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_468_1_(val value: Long) {
+    CSSMERR_AC_INTERNAL_ERROR(-2147405823L), CSSMERR_AC_MEMORY_ERROR(-2147405822L), CSSMERR_AC_MDS_ERROR(-2147405821L), CSSMERR_AC_INVALID_POINTER(-2147405820L), CSSMERR_AC_INVALID_INPUT_POINTER(-2147405819L), CSSMERR_AC_INVALID_OUTPUT_POINTER(-2147405818L), CSSMERR_AC_FUNCTION_NOT_IMPLEMENTED(-2147405817L), CSSMERR_AC_SELF_CHECK_FAILED(-2147405816L), CSSMERR_AC_OS_ACCESS_DENIED(-2147405815L), CSSMERR_AC_FUNCTION_FAILED(-2147405814L), CSSMERR_AC_INVALID_CONTEXT_HANDLE(-2147405760L), CSSMERR_AC_INVALID_DATA(-2147405754L), CSSMERR_AC_INVALID_DB_LIST(-2147405748L), CSSMERR_AC_INVALID_PASSTHROUGH_ID(-2147405738L), CSSMERR_AC_INVALID_DL_HANDLE(-2147405743L), CSSMERR_AC_INVALID_CL_HANDLE(-2147405742L), CSSMERR_AC_INVALID_TP_HANDLE(-2147405741L), CSSMERR_AC_INVALID_DB_HANDLE(-2147405750L), CSSMERR_AC_INVALID_DB_LIST_POINTER(-2147405747L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_468_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_468_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:491:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_491_1_(val value: Long) {
+    CSSM_AC_BASE_AC_ERROR(-2147405568L), CSSMERR_AC_INVALID_BASE_ACLS(-2147405567L), CSSMERR_AC_INVALID_TUPLE_CREDENTIALS(-2147405566L), CSSMERR_AC_INVALID_ENCODING(-2147405565L), CSSMERR_AC_INVALID_VALIDITY_PERIOD(-2147405564L), CSSMERR_AC_INVALID_REQUESTOR(-2147405563L), CSSMERR_AC_INVALID_REQUEST_DESCRIPTOR(-2147405562L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_491_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_491_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:503:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_503_1_(val value: Long) {
+    CSSMERR_CL_INTERNAL_ERROR(-2147411967L), CSSMERR_CL_MEMORY_ERROR(-2147411966L), CSSMERR_CL_MDS_ERROR(-2147411965L), CSSMERR_CL_INVALID_POINTER(-2147411964L), CSSMERR_CL_INVALID_INPUT_POINTER(-2147411963L), CSSMERR_CL_INVALID_OUTPUT_POINTER(-2147411962L), CSSMERR_CL_FUNCTION_NOT_IMPLEMENTED(-2147411961L), CSSMERR_CL_SELF_CHECK_FAILED(-2147411960L), CSSMERR_CL_OS_ACCESS_DENIED(-2147411959L), CSSMERR_CL_FUNCTION_FAILED(-2147411958L), CSSMERR_CL_INVALID_CONTEXT_HANDLE(-2147411904L), CSSMERR_CL_INVALID_CERTGROUP_POINTER(-2147411902L), CSSMERR_CL_INVALID_CERT_POINTER(-2147411901L), CSSMERR_CL_INVALID_CRL_POINTER(-2147411900L), CSSMERR_CL_INVALID_FIELD_POINTER(-2147411899L), CSSMERR_CL_INVALID_DATA(-2147411898L), CSSMERR_CL_CRL_ALREADY_SIGNED(-2147411897L), CSSMERR_CL_INVALID_NUMBER_OF_FIELDS(-2147411896L), CSSMERR_CL_VERIFICATION_FAILURE(-2147411895L), CSSMERR_CL_UNKNOWN_FORMAT(-2147411890L), CSSMERR_CL_UNKNOWN_TAG(-2147411889L), CSSMERR_CL_INVALID_PASSTHROUGH_ID(-2147411882L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_503_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_503_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:529:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_529_1_(val value: Long) {
+    CSSM_CL_BASE_CL_ERROR(-2147411712L), CSSMERR_CL_INVALID_BUNDLE_POINTER(-2147411711L), CSSMERR_CL_INVALID_CACHE_HANDLE(-2147411710L), CSSMERR_CL_INVALID_RESULTS_HANDLE(-2147411709L), CSSMERR_CL_INVALID_BUNDLE_INFO(-2147411708L), CSSMERR_CL_INVALID_CRL_INDEX(-2147411707L), CSSMERR_CL_INVALID_SCOPE(-2147411706L), CSSMERR_CL_NO_FIELD_VALUES(-2147411705L), CSSMERR_CL_SCOPE_NOT_SUPPORTED(-2147411704L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_529_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_529_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:543:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_543_1_(val value: Long) {
+    CSSMERR_DL_INTERNAL_ERROR(-2147414015L), CSSMERR_DL_MEMORY_ERROR(-2147414014L), CSSMERR_DL_MDS_ERROR(-2147414013L), CSSMERR_DL_INVALID_POINTER(-2147414012L), CSSMERR_DL_INVALID_INPUT_POINTER(-2147414011L), CSSMERR_DL_INVALID_OUTPUT_POINTER(-2147414010L), CSSMERR_DL_FUNCTION_NOT_IMPLEMENTED(-2147414009L), CSSMERR_DL_SELF_CHECK_FAILED(-2147414008L), CSSMERR_DL_OS_ACCESS_DENIED(-2147414007L), CSSMERR_DL_FUNCTION_FAILED(-2147414006L), CSSMERR_DL_INVALID_CSP_HANDLE(-2147413936L), CSSMERR_DL_INVALID_DL_HANDLE(-2147413935L), CSSMERR_DL_INVALID_CL_HANDLE(-2147413934L), CSSMERR_DL_INVALID_DB_LIST_POINTER(-2147413939L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_543_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_543_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:561:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_561_1_(val value: Long) {
+    CSSMERR_DL_OPERATION_AUTH_DENIED(-2147413984L), CSSMERR_DL_OBJECT_USE_AUTH_DENIED(-2147413983L), CSSMERR_DL_OBJECT_MANIP_AUTH_DENIED(-2147413982L), CSSMERR_DL_OBJECT_ACL_NOT_SUPPORTED(-2147413981L), CSSMERR_DL_OBJECT_ACL_REQUIRED(-2147413980L), CSSMERR_DL_INVALID_ACCESS_CREDENTIALS(-2147413979L), CSSMERR_DL_INVALID_ACL_BASE_CERTS(-2147413978L), CSSMERR_DL_ACL_BASE_CERTS_NOT_SUPPORTED(-2147413977L), CSSMERR_DL_INVALID_SAMPLE_VALUE(-2147413976L), CSSMERR_DL_SAMPLE_VALUE_NOT_SUPPORTED(-2147413975L), CSSMERR_DL_INVALID_ACL_SUBJECT_VALUE(-2147413974L), CSSMERR_DL_ACL_SUBJECT_TYPE_NOT_SUPPORTED(-2147413973L), CSSMERR_DL_INVALID_ACL_CHALLENGE_CALLBACK(-2147413972L), CSSMERR_DL_ACL_CHALLENGE_CALLBACK_FAILED(-2147413971L), CSSMERR_DL_INVALID_ACL_ENTRY_TAG(-2147413970L), CSSMERR_DL_ACL_ENTRY_TAG_NOT_FOUND(-2147413969L), CSSMERR_DL_INVALID_ACL_EDIT_MODE(-2147413968L), CSSMERR_DL_ACL_CHANGE_FAILED(-2147413967L), CSSMERR_DL_INVALID_NEW_ACL_ENTRY(-2147413966L), CSSMERR_DL_INVALID_NEW_ACL_OWNER(-2147413965L), CSSMERR_DL_ACL_DELETE_FAILED(-2147413964L), CSSMERR_DL_ACL_REPLACE_FAILED(-2147413963L), CSSMERR_DL_ACL_ADD_FAILED(-2147413962L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_561_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_561_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:588:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_588_1_(val value: Long) {
+    CSSMERR_DL_INVALID_DB_HANDLE(-2147413942L), CSSMERR_DL_INVALID_PASSTHROUGH_ID(-2147413930L), CSSMERR_DL_INVALID_NETWORK_ADDR(-2147413929L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_588_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_588_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:595:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_595_1_(val value: Long) {
+    CSSM_DL_BASE_DL_ERROR(-2147413760L), CSSMERR_DL_DATABASE_CORRUPT(-2147413759L), CSSMERR_DL_INVALID_RECORD_INDEX(-2147413752L), CSSMERR_DL_INVALID_RECORDTYPE(-2147413751L), CSSMERR_DL_INVALID_FIELD_NAME(-2147413750L), CSSMERR_DL_UNSUPPORTED_FIELD_FORMAT(-2147413749L), CSSMERR_DL_UNSUPPORTED_INDEX_INFO(-2147413748L), CSSMERR_DL_UNSUPPORTED_LOCALITY(-2147413747L), CSSMERR_DL_UNSUPPORTED_NUM_ATTRIBUTES(-2147413746L), CSSMERR_DL_UNSUPPORTED_NUM_INDEXES(-2147413745L), CSSMERR_DL_UNSUPPORTED_NUM_RECORDTYPES(-2147413744L), CSSMERR_DL_UNSUPPORTED_RECORDTYPE(-2147413743L), CSSMERR_DL_FIELD_SPECIFIED_MULTIPLE(-2147413742L), CSSMERR_DL_INCOMPATIBLE_FIELD_FORMAT(-2147413741L), CSSMERR_DL_INVALID_PARSING_MODULE(-2147413740L), CSSMERR_DL_INVALID_DB_NAME(-2147413738L), CSSMERR_DL_DATASTORE_DOESNOT_EXIST(-2147413737L), CSSMERR_DL_DATASTORE_ALREADY_EXISTS(-2147413736L), CSSMERR_DL_DB_LOCKED(-2147413735L), CSSMERR_DL_DATASTORE_IS_OPEN(-2147413734L), CSSMERR_DL_RECORD_NOT_FOUND(-2147413733L), CSSMERR_DL_MISSING_VALUE(-2147413732L), CSSMERR_DL_UNSUPPORTED_QUERY(-2147413731L), CSSMERR_DL_UNSUPPORTED_QUERY_LIMITS(-2147413730L), CSSMERR_DL_UNSUPPORTED_NUM_SELECTION_PREDS(-2147413729L), CSSMERR_DL_UNSUPPORTED_OPERATOR(-2147413727L), CSSMERR_DL_INVALID_RESULTS_HANDLE(-2147413726L), CSSMERR_DL_INVALID_DB_LOCATION(-2147413725L), CSSMERR_DL_INVALID_ACCESS_REQUEST(-2147413724L), CSSMERR_DL_INVALID_INDEX_INFO(-2147413723L), CSSMERR_DL_INVALID_SELECTION_TAG(-2147413722L), CSSMERR_DL_INVALID_NEW_OWNER(-2147413721L), CSSMERR_DL_INVALID_RECORD_UID(-2147413720L), CSSMERR_DL_INVALID_UNIQUE_INDEX_DATA(-2147413719L), CSSMERR_DL_INVALID_MODIFY_MODE(-2147413718L), CSSMERR_DL_INVALID_OPEN_PARAMETERS(-2147413717L), CSSMERR_DL_RECORD_MODIFIED(-2147413716L), CSSMERR_DL_ENDOFDATA(-2147413715L), CSSMERR_DL_INVALID_QUERY(-2147413714L), CSSMERR_DL_INVALID_VALUE(-2147413713L), CSSMERR_DL_MULTIPLE_VALUES_UNSUPPORTED(-2147413712L), CSSMERR_DL_STALE_UNIQUE_RECORD(-2147413711L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_595_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_595_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __CE_GeneralNameType}
+ */
+enum class _CE_GeneralNameType(val value: Long) {
+    GNT_OtherName(0L), GNT_RFC822Name(1L), GNT_DNSName(2L), GNT_X400Address(3L), GNT_DirectoryName(4L), GNT_EdiPartyName(5L), GNT_URI(6L), GNT_IPAddress(7L), GNT_RegisteredID(8L);
+
+    companion object {
+        fun fromValue(v: Long): _CE_GeneralNameType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CE_GeneralNameType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __CE_CrlDistributionPointNameType}
+ */
+enum class _CE_CrlDistributionPointNameType(val value: Long) {
+    CE_CDNT_FullName(0L), CE_CDNT_NameRelativeToCrlIssuer(1L);
+
+    companion object {
+        fun fromValue(v: Long): _CE_CrlDistributionPointNameType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CE_CrlDistributionPointNameType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __CE_DataType}
+ */
+enum class _CE_DataType(val value: Long) {
+    DT_AuthorityKeyID(0L), DT_SubjectKeyID(1L), DT_KeyUsage(2L), DT_SubjectAltName(3L), DT_IssuerAltName(4L), DT_ExtendedKeyUsage(5L), DT_BasicConstraints(6L), DT_CertPolicies(7L), DT_NetscapeCertType(8L), DT_CrlNumber(9L), DT_DeltaCrl(10L), DT_CrlReason(11L), DT_CrlDistributionPoints(12L), DT_IssuingDistributionPoint(13L), DT_AuthorityInfoAccess(14L), DT_Other(15L), DT_QC_Statements(16L), DT_NameConstraints(17L), DT_PolicyMappings(18L), DT_PolicyConstraints(19L), DT_InhibitAnyPolicy(20L);
+
+    companion object {
+        fun fromValue(v: Long): _CE_DataType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CE_DataType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:82:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_82_1_(val value: Long) {
+    CSSM_WORDID_KEYCHAIN_PROMPT(65536L), CSSM_WORDID_KEYCHAIN_LOCK(65537L), CSSM_WORDID_KEYCHAIN_CHANGE_LOCK(65538L), CSSM_WORDID_PROCESS(65539L), CSSM_WORDID_RESERVED_1(65540L), CSSM_WORDID_SYMMETRIC_KEY(65541L), CSSM_WORDID_SYSTEM(65542L), CSSM_WORDID_KEY(65543L), CSSM_WORDID_PIN(65544L), CSSM_WORDID_PREAUTH(65545L), CSSM_WORDID_PREAUTH_SOURCE(65546L), CSSM_WORDID_ASYMMETRIC_KEY(65547L), CSSM_WORDID_PARTITION(65548L), CSSM_WORDID_KEYBAG_KEY(65549L), CSSM_WORDID_FIRST_UNUSED(65550L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_82_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_82_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:102:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_102_1_(val value: Long) {
+    CSSM_ACL_SUBJECT_TYPE_KEYCHAIN_PROMPT(65536L), CSSM_ACL_SUBJECT_TYPE_PROCESS(65539L), CSSM_ACL_SUBJECT_TYPE_CODE_SIGNATURE(116L), CSSM_ACL_SUBJECT_TYPE_COMMENT(12L), CSSM_ACL_SUBJECT_TYPE_SYMMETRIC_KEY(65541L), CSSM_ACL_SUBJECT_TYPE_PREAUTH(65545L), CSSM_ACL_SUBJECT_TYPE_PREAUTH_SOURCE(65546L), CSSM_ACL_SUBJECT_TYPE_ASYMMETRIC_KEY(65547L), CSSM_ACL_SUBJECT_TYPE_PARTITION(65548L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_102_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_102_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:115:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_115_1_(val value: Long) {
+    CSSM_SAMPLE_TYPE_KEYCHAIN_PROMPT(65536L), CSSM_SAMPLE_TYPE_KEYCHAIN_LOCK(65537L), CSSM_SAMPLE_TYPE_KEYCHAIN_CHANGE_LOCK(65538L), CSSM_SAMPLE_TYPE_PROCESS(65539L), CSSM_SAMPLE_TYPE_COMMENT(12L), CSSM_SAMPLE_TYPE_RETRY_ID(85L), CSSM_SAMPLE_TYPE_SYMMETRIC_KEY(65541L), CSSM_SAMPLE_TYPE_PREAUTH(65545L), CSSM_SAMPLE_TYPE_ASYMMETRIC_KEY(65547L), CSSM_SAMPLE_TYPE_KEYBAG_KEY(65549L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_115_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_115_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:132:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_132_1_(val value: Long) {
+    CSSM_ACL_AUTHORIZATION_CHANGE_ACL(65536L), CSSM_ACL_AUTHORIZATION_CHANGE_OWNER(65537L), CSSM_ACL_AUTHORIZATION_PARTITION_ID(65538L), CSSM_ACL_AUTHORIZATION_INTEGRITY(65539L), CSSM_ACL_AUTHORIZATION_PREAUTH_BASE(16842752L), CSSM_ACL_AUTHORIZATION_PREAUTH_END(16908288L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_132_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_132_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:156:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_156_1_(val value: Long) {
+    CSSM_ACL_CODE_SIGNATURE_INVALID(0L), CSSM_ACL_CODE_SIGNATURE_OSX(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_156_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_156_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:163:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_163_1_(val value: Long) {
+    CSSM_ACL_MATCH_UID(1L), CSSM_ACL_MATCH_GID(2L), CSSM_ACL_MATCH_HONOR_ROOT(256L), CSSM_ACL_MATCH_BITS(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_163_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_163_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:170:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_170_1_(val value: Long) {
+    CSSM_ACL_PROCESS_SELECTOR_CURRENT_VERSION(257L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_170_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_170_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:183:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_183_1_(val value: Long) {
+    CSSM_ACL_KEYCHAIN_PROMPT_CURRENT_VERSION(257L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_183_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_183_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:187:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_187_1_(val value: Long) {
+    CSSM_ACL_KEYCHAIN_PROMPT_REQUIRE_PASSPHRASE(1L), CSSM_ACL_KEYCHAIN_PROMPT_UNSIGNED(16L), CSSM_ACL_KEYCHAIN_PROMPT_UNSIGNED_ACT(32L), CSSM_ACL_KEYCHAIN_PROMPT_INVALID(64L), CSSM_ACL_KEYCHAIN_PROMPT_INVALID_ACT(128L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_187_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_187_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:203:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_203_1_(val value: Long) {
+    CSSM_ACL_PREAUTH_TRACKING_COUNT_MASK(255L), CSSM_ACL_PREAUTH_TRACKING_BLOCKED(0L), CSSM_ACL_PREAUTH_TRACKING_UNKNOWN(1073741824L), CSSM_ACL_PREAUTH_TRACKING_AUTHORIZED(-2147483648L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_203_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_203_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:215:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_215_1_(val value: Long) {
+    CSSM_DB_ACCESS_RESET(65536L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_215_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_215_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:221:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_221_1_(val value: Long) {
+    CSSM_ALGID_APPLE_YARROW(-2147483648L), CSSM_ALGID_AES(-2147483647L), CSSM_ALGID_FEE(-2147483646L), CSSM_ALGID_FEE_MD5(-2147483645L), CSSM_ALGID_FEE_SHA1(-2147483644L), CSSM_ALGID_FEED(-2147483643L), CSSM_ALGID_FEEDEXP(-2147483642L), CSSM_ALGID_ASC(-2147483641L), CSSM_ALGID_SHA1HMAC_LEGACY(-2147483640L), CSSM_ALGID_KEYCHAIN_KEY(-2147483639L), CSSM_ALGID_PKCS12_PBE_ENCR(-2147483638L), CSSM_ALGID_PKCS12_PBE_MAC(-2147483637L), CSSM_ALGID_SECURE_PASSPHRASE(-2147483636L), CSSM_ALGID_PBE_OPENSSL_MD5(-2147483635L), CSSM_ALGID_SHA256(-2147483634L), CSSM_ALGID_SHA384(-2147483633L), CSSM_ALGID_SHA512(-2147483632L), CSSM_ALGID_ENTROPY_DEFAULT(-2147483631L), CSSM_ALGID_SHA224(-2147483630L), CSSM_ALGID_SHA224WithRSA(-2147483629L), CSSM_ALGID_SHA256WithRSA(-2147483628L), CSSM_ALGID_SHA384WithRSA(-2147483627L), CSSM_ALGID_SHA512WithRSA(-2147483626L), CSSM_ALGID_OPENSSH1(-2147483625L), CSSM_ALGID_SHA224WithECDSA(-2147483624L), CSSM_ALGID_SHA256WithECDSA(-2147483623L), CSSM_ALGID_SHA384WithECDSA(-2147483622L), CSSM_ALGID_SHA512WithECDSA(-2147483621L), CSSM_ALGID_ECDSA_SPECIFIED(-2147483620L), CSSM_ALGID_ECDH_X963_KDF(-2147483619L), CSSM_ALGID_FIRST_UNUSED(-2147483618L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_221_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_221_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:257:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_257_1_(val value: Long) {
+    CSSM_PADDING_APPLE_SSLv2(-2147483648L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_257_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_257_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:265:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_265_1_(val value: Long) {
+    CSSM_KEYBLOB_RAW_FORMAT_VENDOR_DEFINED(-2147483648L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_265_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_265_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:268:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_268_1_(val value: Long) {
+    CSSM_KEYBLOB_RAW_FORMAT_X509(-2147483648L), CSSM_KEYBLOB_RAW_FORMAT_OPENSSH(-2147483647L), CSSM_KEYBLOB_RAW_FORMAT_OPENSSL(-2147483646L), CSSM_KEYBLOB_RAW_FORMAT_OPENSSH2(-2147483645L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_268_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_268_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:280:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_280_1_(val value: Long) {
+    CSSM_CUSTOM_COMMON_ERROR_EXTENT(224L), CSSM_ERRCODE_NO_USER_INTERACTION(224L), CSSM_ERRCODE_USER_CANCELED(225L), CSSM_ERRCODE_SERVICE_NOT_AVAILABLE(226L), CSSM_ERRCODE_INSUFFICIENT_CLIENT_IDENTIFICATION(227L), CSSM_ERRCODE_DEVICE_RESET(228L), CSSM_ERRCODE_DEVICE_FAILED(229L), CSSM_ERRCODE_IN_DARK_WAKE(230L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_280_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_280_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:293:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_293_1_(val value: Long) {
+    CSSMERR_CSSM_NO_USER_INTERACTION(-2147417888L), CSSMERR_AC_NO_USER_INTERACTION(-2147405600L), CSSMERR_CSP_NO_USER_INTERACTION(-2147415840L), CSSMERR_CL_NO_USER_INTERACTION(-2147411744L), CSSMERR_DL_NO_USER_INTERACTION(-2147413792L), CSSMERR_TP_NO_USER_INTERACTION(-2147409696L), CSSMERR_CSSM_USER_CANCELED(-2147417887L), CSSMERR_AC_USER_CANCELED(-2147405599L), CSSMERR_CSP_USER_CANCELED(-2147415839L), CSSMERR_CL_USER_CANCELED(-2147411743L), CSSMERR_DL_USER_CANCELED(-2147413791L), CSSMERR_TP_USER_CANCELED(-2147409695L), CSSMERR_CSSM_SERVICE_NOT_AVAILABLE(-2147417886L), CSSMERR_AC_SERVICE_NOT_AVAILABLE(-2147405598L), CSSMERR_CSP_SERVICE_NOT_AVAILABLE(-2147415838L), CSSMERR_CL_SERVICE_NOT_AVAILABLE(-2147411742L), CSSMERR_DL_SERVICE_NOT_AVAILABLE(-2147413790L), CSSMERR_TP_SERVICE_NOT_AVAILABLE(-2147409694L), CSSMERR_CSSM_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147417885L), CSSMERR_AC_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147405597L), CSSMERR_CSP_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147415837L), CSSMERR_CL_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147411741L), CSSMERR_DL_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147413789L), CSSMERR_TP_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147409693L), CSSMERR_CSSM_DEVICE_RESET(-2147417884L), CSSMERR_AC_DEVICE_RESET(-2147405596L), CSSMERR_CSP_DEVICE_RESET(-2147415836L), CSSMERR_CL_DEVICE_RESET(-2147411740L), CSSMERR_DL_DEVICE_RESET(-2147413788L), CSSMERR_TP_DEVICE_RESET(-2147409692L), CSSMERR_CSSM_DEVICE_FAILED(-2147417883L), CSSMERR_AC_DEVICE_FAILED(-2147405595L), CSSMERR_CSP_DEVICE_FAILED(-2147415835L), CSSMERR_CL_DEVICE_FAILED(-2147411739L), CSSMERR_DL_DEVICE_FAILED(-2147413787L), CSSMERR_TP_DEVICE_FAILED(-2147409691L), CSSMERR_CSSM_IN_DARK_WAKE(-2147417882L), CSSMERR_AC_IN_DARK_WAKE(-2147405594L), CSSMERR_CSP_IN_DARK_WAKE(-2147415834L), CSSMERR_CL_IN_DARK_WAKE(-2147411738L), CSSMERR_DL_IN_DARK_WAKE(-2147413786L), CSSMERR_TP_IN_DARK_WAKE(-2147409690L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_293_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_293_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:345:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_345_1_(val value: Long) {
+    CSSMERR_CSP_APPLE_ADD_APPLICATION_ACL_SUBJECT(-2147415040L), CSSMERR_CSP_APPLE_PUBLIC_KEY_INCOMPLETE(-2147415039L), CSSMERR_CSP_APPLE_SIGNATURE_MISMATCH(-2147415038L), CSSMERR_CSP_APPLE_INVALID_KEY_START_DATE(-2147415037L), CSSMERR_CSP_APPLE_INVALID_KEY_END_DATE(-2147415036L), CSSMERR_CSPDL_APPLE_DL_CONVERSION_ERROR(-2147415035L), CSSMERR_CSP_APPLE_SSLv2_ROLLBACK(-2147415034L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_345_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_345_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:368:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_368_1_(val value: Long) {
+    CSSM_DL_DB_RECORD_GENERIC_PASSWORD(-2147483648L), CSSM_DL_DB_RECORD_INTERNET_PASSWORD(-2147483647L), CSSM_DL_DB_RECORD_APPLESHARE_PASSWORD(-2147483646L), CSSM_DL_DB_RECORD_X509_CERTIFICATE(-2147479552L), CSSM_DL_DB_RECORD_USER_TRUST(-2147479551L), CSSM_DL_DB_RECORD_X509_CRL(-2147479550L), CSSM_DL_DB_RECORD_UNLOCK_REFERRAL(-2147479549L), CSSM_DL_DB_RECORD_EXTENDED_ATTRIBUTE(-2147479548L), CSSM_DL_DB_RECORD_METADATA(-2147450880L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_368_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_368_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:383:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_383_1_(val value: Long) {
+    CSSM_APPLEFILEDL_TOGGLE_AUTOCOMMIT(0L), CSSM_APPLEFILEDL_COMMIT(1L), CSSM_APPLEFILEDL_ROLLBACK(2L), CSSM_APPLEFILEDL_TAKE_FILE_LOCK(3L), CSSM_APPLEFILEDL_MAKE_BACKUP(4L), CSSM_APPLEFILEDL_MAKE_COPY(5L), CSSM_APPLEFILEDL_DELETE_FILE(6L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_383_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_383_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:410:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_410_1_(val value: Long) {
+    CSSM_APPLE_UNLOCK_TYPE_KEY_DIRECT(1L), CSSM_APPLE_UNLOCK_TYPE_WRAPPED_PRIVATE(2L), CSSM_APPLE_UNLOCK_TYPE_KEYBAG(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_410_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_410_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:417:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_417_1_(val value: Long) {
+    CSSMERR_APPLEDL_INVALID_OPEN_PARAMETERS(-2147412992L), CSSMERR_APPLEDL_DISK_FULL(-2147412991L), CSSMERR_APPLEDL_QUOTA_EXCEEDED(-2147412990L), CSSMERR_APPLEDL_FILE_TOO_BIG(-2147412989L), CSSMERR_APPLEDL_INVALID_DATABASE_BLOB(-2147412988L), CSSMERR_APPLEDL_INVALID_KEY_BLOB(-2147412987L), CSSMERR_APPLEDL_INCOMPATIBLE_DATABASE_BLOB(-2147412986L), CSSMERR_APPLEDL_INCOMPATIBLE_KEY_BLOB(-2147412985L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_417_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_417_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:447:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_447_1_(val value: Long) {
+    CSSMERR_APPLETP_HOSTNAME_MISMATCH(-2147408896L), CSSMERR_APPLETP_UNKNOWN_CRITICAL_EXTEN(-2147408895L), CSSMERR_APPLETP_NO_BASIC_CONSTRAINTS(-2147408894L), CSSMERR_APPLETP_INVALID_CA(-2147408893L), CSSMERR_APPLETP_INVALID_AUTHORITY_ID(-2147408892L), CSSMERR_APPLETP_INVALID_SUBJECT_ID(-2147408891L), CSSMERR_APPLETP_INVALID_KEY_USAGE(-2147408890L), CSSMERR_APPLETP_INVALID_EXTENDED_KEY_USAGE(-2147408889L), CSSMERR_APPLETP_INVALID_ID_LINKAGE(-2147408888L), CSSMERR_APPLETP_PATH_LEN_CONSTRAINT(-2147408887L), CSSMERR_APPLETP_INVALID_ROOT(-2147408886L), CSSMERR_APPLETP_CRL_EXPIRED(-2147408885L), CSSMERR_APPLETP_CRL_NOT_VALID_YET(-2147408884L), CSSMERR_APPLETP_CRL_NOT_FOUND(-2147408883L), CSSMERR_APPLETP_CRL_SERVER_DOWN(-2147408882L), CSSMERR_APPLETP_CRL_BAD_URI(-2147408881L), CSSMERR_APPLETP_UNKNOWN_CERT_EXTEN(-2147408880L), CSSMERR_APPLETP_UNKNOWN_CRL_EXTEN(-2147408879L), CSSMERR_APPLETP_CRL_NOT_TRUSTED(-2147408878L), CSSMERR_APPLETP_CRL_INVALID_ANCHOR_CERT(-2147408877L), CSSMERR_APPLETP_CRL_POLICY_FAIL(-2147408876L), CSSMERR_APPLETP_IDP_FAIL(-2147408875L), CSSMERR_APPLETP_CERT_NOT_FOUND_FROM_ISSUER(-2147408874L), CSSMERR_APPLETP_BAD_CERT_FROM_ISSUER(-2147408873L), CSSMERR_APPLETP_SMIME_EMAIL_ADDRS_NOT_FOUND(-2147408872L), CSSMERR_APPLETP_SMIME_BAD_EXT_KEY_USE(-2147408871L), CSSMERR_APPLETP_SMIME_BAD_KEY_USE(-2147408870L), CSSMERR_APPLETP_SMIME_KEYUSAGE_NOT_CRITICAL(-2147408869L), CSSMERR_APPLETP_SMIME_NO_EMAIL_ADDRS(-2147408868L), CSSMERR_APPLETP_SMIME_SUBJ_ALT_NAME_NOT_CRIT(-2147408867L), CSSMERR_APPLETP_SSL_BAD_EXT_KEY_USE(-2147408866L), CSSMERR_APPLETP_OCSP_BAD_RESPONSE(-2147408865L), CSSMERR_APPLETP_OCSP_BAD_REQUEST(-2147408864L), CSSMERR_APPLETP_OCSP_UNAVAILABLE(-2147408863L), CSSMERR_APPLETP_OCSP_STATUS_UNRECOGNIZED(-2147408862L), CSSMERR_APPLETP_INCOMPLETE_REVOCATION_CHECK(-2147408861L), CSSMERR_APPLETP_NETWORK_FAILURE(-2147408860L), CSSMERR_APPLETP_OCSP_NOT_TRUSTED(-2147408859L), CSSMERR_APPLETP_OCSP_INVALID_ANCHOR_CERT(-2147408858L), CSSMERR_APPLETP_OCSP_SIG_ERROR(-2147408857L), CSSMERR_APPLETP_OCSP_NO_SIGNER(-2147408856L), CSSMERR_APPLETP_OCSP_RESP_MALFORMED_REQ(-2147408855L), CSSMERR_APPLETP_OCSP_RESP_INTERNAL_ERR(-2147408854L), CSSMERR_APPLETP_OCSP_RESP_TRY_LATER(-2147408853L), CSSMERR_APPLETP_OCSP_RESP_SIG_REQUIRED(-2147408852L), CSSMERR_APPLETP_OCSP_RESP_UNAUTHORIZED(-2147408851L), CSSMERR_APPLETP_OCSP_NONCE_MISMATCH(-2147408850L), CSSMERR_APPLETP_CS_BAD_CERT_CHAIN_LENGTH(-2147408849L), CSSMERR_APPLETP_CS_NO_BASIC_CONSTRAINTS(-2147408848L), CSSMERR_APPLETP_CS_BAD_PATH_LENGTH(-2147408847L), CSSMERR_APPLETP_CS_NO_EXTENDED_KEY_USAGE(-2147408846L), CSSMERR_APPLETP_CODE_SIGN_DEVELOPMENT(-2147408845L), CSSMERR_APPLETP_RS_BAD_CERT_CHAIN_LENGTH(-2147408844L), CSSMERR_APPLETP_RS_BAD_EXTENDED_KEY_USAGE(-2147408843L), CSSMERR_APPLETP_TRUST_SETTING_DENY(-2147408842L), CSSMERR_APPLETP_INVALID_EMPTY_SUBJECT(-2147408841L), CSSMERR_APPLETP_UNKNOWN_QUAL_CERT_STATEMENT(-2147408840L), CSSMERR_APPLETP_MISSING_REQUIRED_EXTENSION(-2147408839L), CSSMERR_APPLETP_EXT_KEYUSAGE_NOT_CRITICAL(-2147408838L), CSSMERR_APPLETP_IDENTIFIER_MISSING(-2147408837L), CSSMERR_APPLETP_CA_PIN_MISMATCH(-2147408836L), CSSMERR_APPLETP_LEAF_PIN_MISMATCH(-2147408835L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_447_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_447_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:578:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_578_1_(val value: Long) {
+    CSSMERR_APPLE_DOTMAC_REQ_QUEUED(-2147408796L), CSSMERR_APPLE_DOTMAC_REQ_REDIRECT(-2147408795L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_ERR(-2147408794L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_PARAM(-2147408793L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_AUTH(-2147408792L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_UNIMPL(-2147408791L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_NOT_AVAIL(-2147408790L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_ALREADY_EXIST(-2147408789L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_SERVICE_ERROR(-2147408788L), CSSMERR_APPLE_DOTMAC_REQ_IS_PENDING(-2147408787L), CSSMERR_APPLE_DOTMAC_NO_REQ_PENDING(-2147408786L), CSSMERR_APPLE_DOTMAC_CSR_VERIFY_FAIL(-2147408785L), CSSMERR_APPLE_DOTMAC_FAILED_CONSISTENCY_CHECK(-2147408784L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_578_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_578_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:608:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_608_1_(val value: Long) {
+    CSSM_APPLEDL_OPEN_PARAMETERS_VERSION(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_608_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_608_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum cssm_appledl_open_parameters_mask}
+ */
+enum class cssm_appledl_open_parameters_mask(val value: Long) {
+    kCSSM_APPLEDL_MASK_MODE(1L);
+
+    companion object {
+        fun fromValue(v: Long): cssm_appledl_open_parameters_mask = entries.firstOrNull { it.value == v }
+            ?: error("Unknown cssm_appledl_open_parameters_mask value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:645:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_645_1_(val value: Long) {
+    CSSM_APPLECSPDL_DB_LOCK(0L), CSSM_APPLECSPDL_DB_UNLOCK(1L), CSSM_APPLECSPDL_DB_GET_SETTINGS(2L), CSSM_APPLECSPDL_DB_SET_SETTINGS(3L), CSSM_APPLECSPDL_DB_IS_LOCKED(4L), CSSM_APPLECSPDL_DB_CHANGE_PASSWORD(5L), CSSM_APPLECSPDL_DB_GET_HANDLE(6L), CSSM_APPLESCPDL_CSP_GET_KEYHANDLE(7L), CSSM_APPLE_PRIVATE_CSPDL_CODE_8(8L), CSSM_APPLE_PRIVATE_CSPDL_CODE_9(9L), CSSM_APPLE_PRIVATE_CSPDL_CODE_10(10L), CSSM_APPLE_PRIVATE_CSPDL_CODE_11(11L), CSSM_APPLE_PRIVATE_CSPDL_CODE_12(12L), CSSM_APPLE_PRIVATE_CSPDL_CODE_13(13L), CSSM_APPLE_PRIVATE_CSPDL_CODE_14(14L), CSSM_APPLE_PRIVATE_CSPDL_CODE_15(15L), CSSM_APPLE_PRIVATE_CSPDL_CODE_16(16L), CSSM_APPLE_PRIVATE_CSPDL_CODE_17(17L), CSSM_APPLE_PRIVATE_CSPDL_CODE_18(18L), CSSM_APPLE_PRIVATE_CSPDL_CODE_19(19L), CSSM_APPLE_PRIVATE_CSPDL_CODE_20(20L), CSSM_APPLE_PRIVATE_CSPDL_CODE_21(21L), CSSM_APPLE_PRIVATE_CSPDL_CODE_22(22L), CSSM_APPLE_PRIVATE_CSPDL_CODE_23(23L), CSSM_APPLE_PRIVATE_CSPDL_CODE_24(24L), CSSM_APPLE_PRIVATE_CSPDL_CODE_25(25L), CSSM_APPLE_PRIVATE_CSPDL_CODE_26(26L), CSSM_APPLE_PRIVATE_CSPDL_CODE_27(27L), CSSM_APPLE_PRIVATE_CSPDL_CODE_28(28L), CSSM_APPLECSP_KEYDIGEST(256L), CSSM_APPLECSP_PUBKEY(257L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_645_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_645_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:771:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_771_1_(val value: Long) {
+    CSSM_KEYBLOB_WRAPPED_FORMAT_APPLE_CUSTOM(100L), CSSM_KEYBLOB_WRAPPED_FORMAT_OPENSSL(101L), CSSM_KEYBLOB_WRAPPED_FORMAT_OPENSSH1(102L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_771_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_771_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:780:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_780_1_(val value: Long) {
+    CSSM_ATTRIBUTE_VENDOR_DEFINED(8388608L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_780_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_780_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:784:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_784_1_(val value: Long) {
+    CSSM_ATTRIBUTE_PUBLIC_KEY(1082130432L), CSSM_ATTRIBUTE_FEE_PRIME_TYPE(276824065L), CSSM_ATTRIBUTE_FEE_CURVE_TYPE(276824066L), CSSM_ATTRIBUTE_ASC_OPTIMIZATION(276824067L), CSSM_ATTRIBUTE_RSA_BLINDING(276824068L), CSSM_ATTRIBUTE_PARAM_KEY(1082130437L), CSSM_ATTRIBUTE_PROMPT(545259526L), CSSM_ATTRIBUTE_ALERT_TITLE(545259527L), CSSM_ATTRIBUTE_VERIFY_PASSPHRASE(276824072L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_784_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_784_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:847:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_847_1_(val value: Long) {
+    CSSM_FEE_PRIME_TYPE_DEFAULT(0L), CSSM_FEE_PRIME_TYPE_MERSENNE(1L), CSSM_FEE_PRIME_TYPE_FEE(2L), CSSM_FEE_PRIME_TYPE_GENERAL(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_847_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_847_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:859:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_859_1_(val value: Long) {
+    CSSM_FEE_CURVE_TYPE_DEFAULT(0L), CSSM_FEE_CURVE_TYPE_MONTGOMERY(1L), CSSM_FEE_CURVE_TYPE_WEIERSTRASS(2L), CSSM_FEE_CURVE_TYPE_ANSI_X9_62(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_859_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_859_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:869:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_869_1_(val value: Long) {
+    CSSM_ASC_OPTIMIZE_DEFAULT(0L), CSSM_ASC_OPTIMIZE_SIZE(1L), CSSM_ASC_OPTIMIZE_SECURITY(2L), CSSM_ASC_OPTIMIZE_TIME(3L), CSSM_ASC_OPTIMIZE_TIME_SIZE(4L), CSSM_ASC_OPTIMIZE_ASCII(5L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_869_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_869_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:881:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_881_1_(val value: Long) {
+    CSSM_KEYATTR_PARTIAL(65536L), CSSM_KEYATTR_PUBLIC_KEY_ENCRYPT(131072L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_881_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_881_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:983:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_983_1_(val value: Long) {
+    CSSM_TP_ACTION_REQUIRE_CRL_PER_CERT(1L), CSSM_TP_ACTION_FETCH_CRL_FROM_NET(2L), CSSM_TP_ACTION_CRL_SUFFICIENT(4L), CSSM_TP_ACTION_REQUIRE_CRL_IF_PRESENT(8L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_983_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_983_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:1042:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1042_1_(val value: Long) {
+    CSSM_TP_ACTION_ALLOW_EXPIRED(1L), CSSM_TP_ACTION_LEAF_IS_CA(2L), CSSM_TP_ACTION_FETCH_CERT_FROM_NET(4L), CSSM_TP_ACTION_ALLOW_EXPIRED_ROOT(8L), CSSM_TP_ACTION_REQUIRE_REV_PER_CERT(16L), CSSM_TP_ACTION_TRUST_SETTINGS(32L), CSSM_TP_ACTION_IMPLICIT_ANCHORS(64L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1042_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1042_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:1071:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1071_1_(val value: Long) {
+    CSSM_CERT_STATUS_EXPIRED(1L), CSSM_CERT_STATUS_NOT_VALID_YET(2L), CSSM_CERT_STATUS_IS_IN_INPUT_CERTS(4L), CSSM_CERT_STATUS_IS_IN_ANCHORS(8L), CSSM_CERT_STATUS_IS_ROOT(16L), CSSM_CERT_STATUS_IS_FROM_NET(32L), CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_USER(64L), CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_ADMIN(128L), CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_SYSTEM(256L), CSSM_CERT_STATUS_TRUST_SETTINGS_TRUST(512L), CSSM_CERT_STATUS_TRUST_SETTINGS_DENY(1024L), CSSM_CERT_STATUS_TRUST_SETTINGS_IGNORED_ERROR(2048L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1071_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1071_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:1138:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1138_1_(val value: Long) {
+    CSSM_EVIDENCE_FORM_APPLE_HEADER(-2147483648L), CSSM_EVIDENCE_FORM_APPLE_CERTGROUP(-2147483647L), CSSM_EVIDENCE_FORM_APPLE_CERT_INFO(-2147483646L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1138_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1138_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:1146:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1146_1_(val value: Long) {
+    CSSM_APPLEX509CL_OBTAIN_CSR(0L), CSSM_APPLEX509CL_VERIFY_CSR(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1146_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1146_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecKeychain.h:54:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKeychain_h_54_1_(val value: Long) {
+    kSecUnlockStateStatus(1L), kSecReadPermStatus(2L), kSecWritePermStatus(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKeychain_h_54_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKeychain_h_54_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecAuthenticationType}
+ */
+enum class SecAuthenticationType(val value: Long) {
+    kSecAuthenticationTypeNTLM(1835824238L), kSecAuthenticationTypeMSN(1634628461L), kSecAuthenticationTypeDPA(1633775716L), kSecAuthenticationTypeRPA(1633775730L), kSecAuthenticationTypeHTTPBasic(1886680168L), kSecAuthenticationTypeHTTPDigest(1685353576L), kSecAuthenticationTypeHTMLForm(1836216166L), kSecAuthenticationTypeDefault(1953261156L), kSecAuthenticationTypeAny(0L);
+
+    companion object {
+        fun fromValue(v: Long): SecAuthenticationType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecAuthenticationType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecProtocolType}
+ */
+enum class SecProtocolType(val value: Long) {
+    kSecProtocolTypeFTP(1718906912L), kSecProtocolTypeFTPAccount(1718906977L), kSecProtocolTypeHTTP(1752462448L), kSecProtocolTypeIRC(1769104160L), kSecProtocolTypeNNTP(1852732528L), kSecProtocolTypePOP3(1886351411L), kSecProtocolTypeSMTP(1936553072L), kSecProtocolTypeSOCKS(1936685088L), kSecProtocolTypeIMAP(1768776048L), kSecProtocolTypeLDAP(1818517872L), kSecProtocolTypeAppleTalk(1635019883L), kSecProtocolTypeAFP(1634103328L), kSecProtocolTypeTelnet(1952803950L), kSecProtocolTypeSSH(1936943136L), kSecProtocolTypeFTPS(1718906995L), kSecProtocolTypeHTTPS(1752461427L), kSecProtocolTypeHTTPProxy(1752461432L), kSecProtocolTypeHTTPSProxy(1752462200L), kSecProtocolTypeFTPProxy(1718907000L), kSecProtocolTypeCIFS(1667851891L), kSecProtocolTypeSMB(1936548384L), kSecProtocolTypeRTSP(1920234352L), kSecProtocolTypeRTSPProxy(1920234360L), kSecProtocolTypeDAAP(1684103536L), kSecProtocolTypeEPPC(1701867619L), kSecProtocolTypeIPP(1768976416L), kSecProtocolTypeNNTPS(1853124723L), kSecProtocolTypeLDAPS(1818521715L), kSecProtocolTypeTelnetS(1952803955L), kSecProtocolTypeIMAPS(1768779891L), kSecProtocolTypeIRCS(1769104243L), kSecProtocolTypePOP3S(1886351475L), kSecProtocolTypeCVSpserver(1668707184L), kSecProtocolTypeSVN(1937141280L), kSecProtocolTypeAny(0L);
+
+    companion object {
+        fun fromValue(v: Long): SecProtocolType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecProtocolType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecKeychainEvent}
+ */
+enum class SecKeychainEvent(val value: Long) {
+    kSecLockEvent(1L), kSecUnlockEvent(2L), kSecAddEvent(3L), kSecDeleteEvent(4L), kSecUpdateEvent(5L), kSecPasswordChangedEvent(6L), kSecDefaultChangedEvent(9L), kSecDataAccessEvent(10L), kSecKeychainListChangedEvent(11L), kSecTrustSettingsChangedEvent(12L);
+
+    companion object {
+        fun fromValue(v: Long): SecKeychainEvent = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecKeychainEvent value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecPreferencesDomain}
+ */
+enum class SecPreferencesDomain(val value: Long) {
+    kSecPreferencesDomainUser(0L), kSecPreferencesDomainSystem(1L), kSecPreferencesDomainCommon(2L), kSecPreferencesDomainDynamic(3L);
+
+    companion object {
+        fun fromValue(v: Long): SecPreferencesDomain = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecPreferencesDomain value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecExternalFormat}
+ */
+enum class SecExternalFormat(val value: Long) {
+    kSecFormatUnknown(0L), kSecFormatOpenSSL(1L), kSecFormatSSH(2L), kSecFormatBSAFE(3L), kSecFormatRawKey(4L), kSecFormatWrappedPKCS8(5L), kSecFormatWrappedOpenSSL(6L), kSecFormatWrappedSSH(7L), kSecFormatWrappedLSH(8L), kSecFormatX509Cert(9L), kSecFormatPEMSequence(10L), kSecFormatPKCS7(11L), kSecFormatPKCS12(12L), kSecFormatNetscapeCertSequence(13L), kSecFormatSSHv2(14L);
+
+    companion object {
+        fun fromValue(v: Long): SecExternalFormat = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecExternalFormat value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecExternalItemType}
+ */
+enum class SecExternalItemType(val value: Long) {
+    kSecItemTypeUnknown(0L), kSecItemTypePrivateKey(1L), kSecItemTypePublicKey(2L), kSecItemTypeSessionKey(3L), kSecItemTypeCertificate(4L), kSecItemTypeAggregate(5L);
+
+    companion object {
+        fun fromValue(v: Long): SecExternalItemType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecExternalItemType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecTrustResultType}
+ */
+enum class SecTrustResultType(val value: Long) {
+    kSecTrustResultInvalid(0L), kSecTrustResultProceed(1L), kSecTrustResultConfirm(2L), kSecTrustResultDeny(3L), kSecTrustResultUnspecified(4L), kSecTrustResultRecoverableTrustFailure(5L), kSecTrustResultFatalTrustFailure(6L), kSecTrustResultOtherError(7L);
+
+    companion object {
+        fun fromValue(v: Long): SecTrustResultType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecTrustResultType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/CipherSuite.h:47:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CipherSuite_h_47_1_(val value: Long) {
+    SSL_NULL_WITH_NULL_NULL(0L), SSL_RSA_WITH_NULL_MD5(1L), SSL_RSA_WITH_NULL_SHA(2L), SSL_RSA_EXPORT_WITH_RC4_40_MD5(3L), SSL_RSA_WITH_RC4_128_MD5(4L), SSL_RSA_WITH_RC4_128_SHA(5L), SSL_RSA_EXPORT_WITH_RC2_CBC_40_MD5(6L), SSL_RSA_WITH_IDEA_CBC_SHA(7L), SSL_RSA_EXPORT_WITH_DES40_CBC_SHA(8L), SSL_RSA_WITH_DES_CBC_SHA(9L), SSL_RSA_WITH_3DES_EDE_CBC_SHA(10L), SSL_DH_DSS_EXPORT_WITH_DES40_CBC_SHA(11L), SSL_DH_DSS_WITH_DES_CBC_SHA(12L), SSL_DH_DSS_WITH_3DES_EDE_CBC_SHA(13L), SSL_DH_RSA_EXPORT_WITH_DES40_CBC_SHA(14L), SSL_DH_RSA_WITH_DES_CBC_SHA(15L), SSL_DH_RSA_WITH_3DES_EDE_CBC_SHA(16L), SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA(17L), SSL_DHE_DSS_WITH_DES_CBC_SHA(18L), SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA(19L), SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA(20L), SSL_DHE_RSA_WITH_DES_CBC_SHA(21L), SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA(22L), SSL_DH_anon_EXPORT_WITH_RC4_40_MD5(23L), SSL_DH_anon_WITH_RC4_128_MD5(24L), SSL_DH_anon_EXPORT_WITH_DES40_CBC_SHA(25L), SSL_DH_anon_WITH_DES_CBC_SHA(26L), SSL_DH_anon_WITH_3DES_EDE_CBC_SHA(27L), SSL_FORTEZZA_DMS_WITH_NULL_SHA(28L), SSL_FORTEZZA_DMS_WITH_FORTEZZA_CBC_SHA(29L), TLS_RSA_WITH_AES_128_CBC_SHA(47L), TLS_DH_DSS_WITH_AES_128_CBC_SHA(48L), TLS_DH_RSA_WITH_AES_128_CBC_SHA(49L), TLS_DHE_DSS_WITH_AES_128_CBC_SHA(50L), TLS_DHE_RSA_WITH_AES_128_CBC_SHA(51L), TLS_DH_anon_WITH_AES_128_CBC_SHA(52L), TLS_RSA_WITH_AES_256_CBC_SHA(53L), TLS_DH_DSS_WITH_AES_256_CBC_SHA(54L), TLS_DH_RSA_WITH_AES_256_CBC_SHA(55L), TLS_DHE_DSS_WITH_AES_256_CBC_SHA(56L), TLS_DHE_RSA_WITH_AES_256_CBC_SHA(57L), TLS_DH_anon_WITH_AES_256_CBC_SHA(58L), TLS_ECDH_ECDSA_WITH_NULL_SHA(-16383L), TLS_ECDH_ECDSA_WITH_RC4_128_SHA(-16382L), TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA(-16381L), TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA(-16380L), TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA(-16379L), TLS_ECDHE_ECDSA_WITH_NULL_SHA(-16378L), TLS_ECDHE_ECDSA_WITH_RC4_128_SHA(-16377L), TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA(-16376L), TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA(-16375L), TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA(-16374L), TLS_ECDH_RSA_WITH_NULL_SHA(-16373L), TLS_ECDH_RSA_WITH_RC4_128_SHA(-16372L), TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA(-16371L), TLS_ECDH_RSA_WITH_AES_128_CBC_SHA(-16370L), TLS_ECDH_RSA_WITH_AES_256_CBC_SHA(-16369L), TLS_ECDHE_RSA_WITH_NULL_SHA(-16368L), TLS_ECDHE_RSA_WITH_RC4_128_SHA(-16367L), TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA(-16366L), TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA(-16365L), TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA(-16364L), TLS_ECDH_anon_WITH_NULL_SHA(-16363L), TLS_ECDH_anon_WITH_RC4_128_SHA(-16362L), TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA(-16361L), TLS_ECDH_anon_WITH_AES_128_CBC_SHA(-16360L), TLS_ECDH_anon_WITH_AES_256_CBC_SHA(-16359L), TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA(-16331L), TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA(-16330L), TLS_PSK_WITH_CHACHA20_POLY1305_SHA256(-13141L), TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256(-13140L), TLS_NULL_WITH_NULL_NULL(0L), TLS_RSA_WITH_NULL_MD5(1L), TLS_RSA_WITH_NULL_SHA(2L), TLS_RSA_WITH_RC4_128_MD5(4L), TLS_RSA_WITH_RC4_128_SHA(5L), TLS_RSA_WITH_3DES_EDE_CBC_SHA(10L), TLS_RSA_WITH_NULL_SHA256(59L), TLS_RSA_WITH_AES_128_CBC_SHA256(60L), TLS_RSA_WITH_AES_256_CBC_SHA256(61L), TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA(13L), TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA(16L), TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA(19L), TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA(22L), TLS_DH_DSS_WITH_AES_128_CBC_SHA256(62L), TLS_DH_RSA_WITH_AES_128_CBC_SHA256(63L), TLS_DHE_DSS_WITH_AES_128_CBC_SHA256(64L), TLS_DHE_RSA_WITH_AES_128_CBC_SHA256(103L), TLS_DH_DSS_WITH_AES_256_CBC_SHA256(104L), TLS_DH_RSA_WITH_AES_256_CBC_SHA256(105L), TLS_DHE_DSS_WITH_AES_256_CBC_SHA256(106L), TLS_DHE_RSA_WITH_AES_256_CBC_SHA256(107L), TLS_DH_anon_WITH_RC4_128_MD5(24L), TLS_DH_anon_WITH_3DES_EDE_CBC_SHA(27L), TLS_DH_anon_WITH_AES_128_CBC_SHA256(108L), TLS_DH_anon_WITH_AES_256_CBC_SHA256(109L), TLS_PSK_WITH_RC4_128_SHA(138L), TLS_PSK_WITH_3DES_EDE_CBC_SHA(139L), TLS_PSK_WITH_AES_128_CBC_SHA(140L), TLS_PSK_WITH_AES_256_CBC_SHA(141L), TLS_DHE_PSK_WITH_RC4_128_SHA(142L), TLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA(143L), TLS_DHE_PSK_WITH_AES_128_CBC_SHA(144L), TLS_DHE_PSK_WITH_AES_256_CBC_SHA(145L), TLS_RSA_PSK_WITH_RC4_128_SHA(146L), TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA(147L), TLS_RSA_PSK_WITH_AES_128_CBC_SHA(148L), TLS_RSA_PSK_WITH_AES_256_CBC_SHA(149L), TLS_PSK_WITH_NULL_SHA(44L), TLS_DHE_PSK_WITH_NULL_SHA(45L), TLS_RSA_PSK_WITH_NULL_SHA(46L), TLS_RSA_WITH_AES_128_GCM_SHA256(156L), TLS_RSA_WITH_AES_256_GCM_SHA384(157L), TLS_DHE_RSA_WITH_AES_128_GCM_SHA256(158L), TLS_DHE_RSA_WITH_AES_256_GCM_SHA384(159L), TLS_DH_RSA_WITH_AES_128_GCM_SHA256(160L), TLS_DH_RSA_WITH_AES_256_GCM_SHA384(161L), TLS_DHE_DSS_WITH_AES_128_GCM_SHA256(162L), TLS_DHE_DSS_WITH_AES_256_GCM_SHA384(163L), TLS_DH_DSS_WITH_AES_128_GCM_SHA256(164L), TLS_DH_DSS_WITH_AES_256_GCM_SHA384(165L), TLS_DH_anon_WITH_AES_128_GCM_SHA256(166L), TLS_DH_anon_WITH_AES_256_GCM_SHA384(167L), TLS_PSK_WITH_AES_128_GCM_SHA256(168L), TLS_PSK_WITH_AES_256_GCM_SHA384(169L), TLS_DHE_PSK_WITH_AES_128_GCM_SHA256(170L), TLS_DHE_PSK_WITH_AES_256_GCM_SHA384(171L), TLS_RSA_PSK_WITH_AES_128_GCM_SHA256(172L), TLS_RSA_PSK_WITH_AES_256_GCM_SHA384(173L), TLS_PSK_WITH_AES_128_CBC_SHA256(174L), TLS_PSK_WITH_AES_256_CBC_SHA384(175L), TLS_PSK_WITH_NULL_SHA256(176L), TLS_PSK_WITH_NULL_SHA384(177L), TLS_DHE_PSK_WITH_AES_128_CBC_SHA256(178L), TLS_DHE_PSK_WITH_AES_256_CBC_SHA384(179L), TLS_DHE_PSK_WITH_NULL_SHA256(180L), TLS_DHE_PSK_WITH_NULL_SHA384(181L), TLS_RSA_PSK_WITH_AES_128_CBC_SHA256(182L), TLS_RSA_PSK_WITH_AES_256_CBC_SHA384(183L), TLS_RSA_PSK_WITH_NULL_SHA256(184L), TLS_RSA_PSK_WITH_NULL_SHA384(185L), TLS_AES_128_GCM_SHA256(4865L), TLS_AES_256_GCM_SHA384(4866L), TLS_CHACHA20_POLY1305_SHA256(4867L), TLS_AES_128_CCM_SHA256(4868L), TLS_AES_128_CCM_8_SHA256(4869L), TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256(-16349L), TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384(-16348L), TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256(-16347L), TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384(-16346L), TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256(-16345L), TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384(-16344L), TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256(-16343L), TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384(-16342L), TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256(-16341L), TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384(-16340L), TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256(-16339L), TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384(-16338L), TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256(-16337L), TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384(-16336L), TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256(-16335L), TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384(-16334L), TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256(-13144L), TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256(-13143L), TLS_EMPTY_RENEGOTIATION_INFO_SCSV(255L), SSL_RSA_WITH_RC2_CBC_MD5(-128L), SSL_RSA_WITH_IDEA_CBC_MD5(-127L), SSL_RSA_WITH_DES_CBC_MD5(-126L), SSL_RSA_WITH_3DES_EDE_CBC_MD5(-125L), SSL_NO_SUCH_CIPHERSUITE(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CipherSuite_h_47_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CipherSuite_h_47_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SSLCiphersuiteGroup}
+ */
+enum class SSLCiphersuiteGroup(val value: Long) {
+    kSSLCiphersuiteGroupDefault(0L), kSSLCiphersuiteGroupCompatibility(1L), kSSLCiphersuiteGroupLegacy(2L), kSSLCiphersuiteGroupATS(3L), kSSLCiphersuiteGroupATSCompatibility(4L), kSSLCiphersuiteGroupATSFCP_v2_1(5L);
+
+    companion object {
+        fun fromValue(v: Long): SSLCiphersuiteGroup = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SSLCiphersuiteGroup value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tls_protocol_version_t}
+ */
+enum class tls_protocol_version_t(val value: Long) {
+    tls_protocol_version_TLSv10(769L), tls_protocol_version_TLSv11(770L), tls_protocol_version_TLSv12(771L), tls_protocol_version_TLSv13(772L), tls_protocol_version_DTLSv10(-257L), tls_protocol_version_DTLSv12(-259L);
+
+    companion object {
+        fun fromValue(v: Long): tls_protocol_version_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tls_protocol_version_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tls_ciphersuite_t}
+ */
+enum class tls_ciphersuite_t(val value: Long) {
+    tls_ciphersuite_RSA_WITH_3DES_EDE_CBC_SHA(10L), tls_ciphersuite_RSA_WITH_AES_128_CBC_SHA(47L), tls_ciphersuite_RSA_WITH_AES_256_CBC_SHA(53L), tls_ciphersuite_RSA_WITH_AES_128_GCM_SHA256(156L), tls_ciphersuite_RSA_WITH_AES_256_GCM_SHA384(157L), tls_ciphersuite_RSA_WITH_AES_128_CBC_SHA256(60L), tls_ciphersuite_RSA_WITH_AES_256_CBC_SHA256(61L), tls_ciphersuite_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA(-16376L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_128_CBC_SHA(-16375L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_256_CBC_SHA(-16374L), tls_ciphersuite_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA(-16366L), tls_ciphersuite_ECDHE_RSA_WITH_AES_128_CBC_SHA(-16365L), tls_ciphersuite_ECDHE_RSA_WITH_AES_256_CBC_SHA(-16364L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256(-16349L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384(-16348L), tls_ciphersuite_ECDHE_RSA_WITH_AES_128_CBC_SHA256(-16345L), tls_ciphersuite_ECDHE_RSA_WITH_AES_256_CBC_SHA384(-16344L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256(-16341L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384(-16340L), tls_ciphersuite_ECDHE_RSA_WITH_AES_128_GCM_SHA256(-16337L), tls_ciphersuite_ECDHE_RSA_WITH_AES_256_GCM_SHA384(-16336L), tls_ciphersuite_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256(-13144L), tls_ciphersuite_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256(-13143L), tls_ciphersuite_AES_128_GCM_SHA256(4865L), tls_ciphersuite_AES_256_GCM_SHA384(4866L), tls_ciphersuite_CHACHA20_POLY1305_SHA256(4867L);
+
+    companion object {
+        fun fromValue(v: Long): tls_ciphersuite_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tls_ciphersuite_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tls_ciphersuite_group_t}
+ */
+enum class tls_ciphersuite_group_t(val value: Long) {
+    tls_ciphersuite_group_default(0L), tls_ciphersuite_group_compatibility(1L), tls_ciphersuite_group_legacy(2L), tls_ciphersuite_group_ats(3L), tls_ciphersuite_group_ats_compatibility(4L), tls_ciphersuite_group_ats_fcp_v2_1(5L);
+
+    companion object {
+        fun fromValue(v: Long): tls_ciphersuite_group_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tls_ciphersuite_group_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SSLProtocol}
+ */
+enum class SSLProtocol(val value: Long) {
+    kSSLProtocolUnknown(0L), kTLSProtocol1(4L), kTLSProtocol11(7L), kTLSProtocol12(8L), kDTLSProtocol1(9L), kTLSProtocol13(10L), kDTLSProtocol12(11L), kTLSProtocolMaxSupported(999L), kSSLProtocol2(1L), kSSLProtocol3(2L), kSSLProtocol3Only(3L), kTLSProtocol1Only(5L), kSSLProtocolAll(6L);
+
+    companion object {
+        fun fromValue(v: Long): SSLProtocol = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SSLProtocol value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/Authorization.h:87:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_87_1_(val value: Long) {
+    errAuthorizationSuccess(0L), errAuthorizationInvalidSet(-60001L), errAuthorizationInvalidRef(-60002L), errAuthorizationInvalidTag(-60003L), errAuthorizationInvalidPointer(-60004L), errAuthorizationDenied(-60005L), errAuthorizationCanceled(-60006L), errAuthorizationInteractionNotAllowed(-60007L), errAuthorizationInternal(-60008L), errAuthorizationExternalizeNotAllowed(-60009L), errAuthorizationInternalizeNotAllowed(-60010L), errAuthorizationInvalidFlags(-60011L), errAuthorizationToolExecuteFailure(-60031L), errAuthorizationToolEnvironmentError(-60032L), errAuthorizationBadAddress(-60033L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_87_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_87_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/Authorization.h:129:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_129_1_(val value: Long) {
+    kAuthorizationFlagCanNotPreAuthorize(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_129_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_129_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/AuthSession.h:81:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_81_1_(val value: Long) {
+    noSecuritySession(0L), callerSecuritySession(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_81_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_81_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SessionAttributeBits}
+ */
+enum class SessionAttributeBits(val value: Long) {
+    sessionIsRoot(1L), sessionHasGraphicAccess(16L), sessionHasTTY(32L), sessionIsRemote(4096L);
+
+    companion object {
+        fun fromValue(v: Long): SessionAttributeBits = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SessionAttributeBits value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/AuthSession.h:115:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_115_1_(val value: Long) {
+    errSessionSuccess(0L), errSessionInvalidId(-60500L), errSessionInvalidAttributes(-60501L), errSessionAuthorizationDenied(-60502L), errSessionValueNotSet(-60503L), errSessionInternal(-60008L), errSessionInvalidFlags(-60011L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_115_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_115_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmspi.h:47:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmspi_h_47_1_(val value: Long) {
+    CSSM_CONTEXT_EVENT_CREATE(1L), CSSM_CONTEXT_EVENT_DELETE(2L), CSSM_CONTEXT_EVENT_UPDATE(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmspi_h_47_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmspi_h_47_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/emmspi.h:82:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_emmspi_h_82_1_(val value: Long) {
+    CSSM_HINT_NONE(0L), CSSM_HINT_ADDRESS_APP(1L), CSSM_HINT_ADDRESS_SP(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_emmspi_h_82_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_emmspi_h_82_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecKeychainPromptSelector}
+ */
+enum class SecKeychainPromptSelector(val value: Long) {
+    kSecKeychainPromptRequirePassphase(1L), kSecKeychainPromptUnsigned(16L), kSecKeychainPromptUnsignedAct(32L), kSecKeychainPromptInvalid(64L), kSecKeychainPromptInvalidAct(128L);
+
+    companion object {
+        fun fromValue(v: Long): SecKeychainPromptSelector = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecKeychainPromptSelector value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecItemClass}
+ */
+enum class SecItemClass(val value: Long) {
+    kSecInternetPasswordItemClass(1768842612L), kSecGenericPasswordItemClass(1734700656L), kSecAppleSharePasswordItemClass(1634953328L), kSecCertificateItemClass(-2147479552L), kSecPublicKeyItemClass(15L), kSecPrivateKeyItemClass(16L), kSecSymmetricKeyItemClass(17L);
+
+    companion object {
+        fun fromValue(v: Long): SecItemClass = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecItemClass value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecItemAttr}
+ */
+enum class SecItemAttr(val value: Long) {
+    kSecCreationDateItemAttr(1667522932L), kSecModDateItemAttr(1835295092L), kSecDescriptionItemAttr(1684370275L), kSecCommentItemAttr(1768123764L), kSecCreatorItemAttr(1668445298L), kSecTypeItemAttr(1954115685L), kSecScriptCodeItemAttr(1935897200L), kSecLabelItemAttr(1818321516L), kSecInvisibleItemAttr(1768846953L), kSecNegativeItemAttr(1852139361L), kSecCustomIconItemAttr(1668641641L), kSecAccountItemAttr(1633903476L), kSecServiceItemAttr(1937138533L), kSecGenericItemAttr(1734700641L), kSecSecurityDomainItemAttr(1935961454L), kSecServerItemAttr(1936881266L), kSecAuthenticationTypeItemAttr(1635023216L), kSecPortItemAttr(1886351988L), kSecPathItemAttr(1885434984L), kSecVolumeItemAttr(1986817381L), kSecAddressItemAttr(1633969266L), kSecSignatureItemAttr(1936943463L), kSecProtocolItemAttr(1886675820L), kSecCertificateType(1668577648L), kSecCertificateEncoding(1667591779L), kSecCrlType(1668445296L), kSecCrlEncoding(1668443747L), kSecAlias(1634494835L);
+
+    companion object {
+        fun fromValue(v: Long): SecItemAttr = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecItemAttr value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecTrustSettingsKeyUsage}
+ */
+enum class SecTrustSettingsKeyUsage(val value: Long) {
+    kSecTrustSettingsKeyUseSignature(1L), kSecTrustSettingsKeyUseEnDecryptData(2L), kSecTrustSettingsKeyUseEnDecryptKey(4L), kSecTrustSettingsKeyUseSignCert(8L), kSecTrustSettingsKeyUseSignRevocation(16L), kSecTrustSettingsKeyUseKeyExchange(32L), kSecTrustSettingsKeyUseAny(-1L);
+
+    companion object {
+        fun fromValue(v: Long): SecTrustSettingsKeyUsage = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecTrustSettingsKeyUsage value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecTrustSettingsResult}
+ */
+enum class SecTrustSettingsResult(val value: Long) {
+    kSecTrustSettingsResultInvalid(0L), kSecTrustSettingsResultTrustRoot(1L), kSecTrustSettingsResultTrustAsRoot(2L), kSecTrustSettingsResultDeny(3L), kSecTrustSettingsResultUnspecified(4L);
+
+    companion object {
+        fun fromValue(v: Long): SecTrustSettingsResult = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecTrustSettingsResult value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecTrustSettingsDomain}
+ */
+enum class SecTrustSettingsDomain(val value: Long) {
+    kSecTrustSettingsDomainUser(0L), kSecTrustSettingsDomainAdmin(1L), kSecTrustSettingsDomainSystem(2L);
+
+    companion object {
+        fun fromValue(v: Long): SecTrustSettingsDomain = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecTrustSettingsDomain value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/CSCommon.h:63:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_63_1_(val value: Long) {
+    errSecCSUnimplemented(-67072L), errSecCSInvalidObjectRef(-67071L), errSecCSInvalidFlags(-67070L), errSecCSObjectRequired(-67069L), errSecCSStaticCodeNotFound(-67068L), errSecCSUnsupportedGuestAttributes(-67067L), errSecCSInvalidAttributeValues(-67066L), errSecCSNoSuchCode(-67065L), errSecCSMultipleGuests(-67064L), errSecCSGuestInvalid(-67063L), errSecCSUnsigned(-67062L), errSecCSSignatureFailed(-67061L), errSecCSSignatureNotVerifiable(-67060L), errSecCSSignatureUnsupported(-67059L), errSecCSBadDictionaryFormat(-67058L), errSecCSResourcesNotSealed(-67057L), errSecCSResourcesNotFound(-67056L), errSecCSResourcesInvalid(-67055L), errSecCSBadResource(-67054L), errSecCSResourceRulesInvalid(-67053L), errSecCSReqInvalid(-67052L), errSecCSReqUnsupported(-67051L), errSecCSReqFailed(-67050L), errSecCSBadObjectFormat(-67049L), errSecCSInternalError(-67048L), errSecCSHostReject(-67047L), errSecCSNotAHost(-67046L), errSecCSSignatureInvalid(-67045L), errSecCSHostProtocolRelativePath(-67044L), errSecCSHostProtocolContradiction(-67043L), errSecCSHostProtocolDedicationError(-67042L), errSecCSHostProtocolNotProxy(-67041L), errSecCSHostProtocolStateError(-67040L), errSecCSHostProtocolUnrelated(-67039L), errSecCSNotSupported(-67037L), errSecCSCMSTooLarge(-67036L), errSecCSHostProtocolInvalidHash(-67035L), errSecCSStaticCodeChanged(-67034L), errSecCSDBDenied(-67033L), errSecCSDBAccess(-67032L), errSecCSSigDBDenied(-67033L), errSecCSSigDBAccess(-67032L), errSecCSHostProtocolInvalidAttribute(-67031L), errSecCSInfoPlistFailed(-67030L), errSecCSNoMainExecutable(-67029L), errSecCSBadBundleFormat(-67028L), errSecCSNoMatches(-67027L), errSecCSFileHardQuarantined(-67026L), errSecCSOutdated(-67025L), errSecCSDbCorrupt(-67024L), errSecCSResourceDirectoryFailed(-67023L), errSecCSUnsignedNestedCode(-67022L), errSecCSBadNestedCode(-67021L), errSecCSBadCallbackValue(-67020L), errSecCSHelperFailed(-67019L), errSecCSVetoed(-67018L), errSecCSBadLVArch(-67017L), errSecCSResourceNotSupported(-67016L), errSecCSRegularFile(-67015L), errSecCSUnsealedAppRoot(-67014L), errSecCSWeakResourceRules(-67013L), errSecCSDSStoreSymlink(-67012L), errSecCSAmbiguousBundleFormat(-67011L), errSecCSBadMainExecutable(-67010L), errSecCSBadFrameworkVersion(-67009L), errSecCSUnsealedFrameworkRoot(-67008L), errSecCSWeakResourceEnvelope(-67007L), errSecCSCancelled(-67006L), errSecCSInvalidPlatform(-67005L), errSecCSTooBig(-67004L), errSecCSInvalidSymlink(-67003L), errSecCSNotAppLike(-67002L), errSecCSBadDiskImageFormat(-67001L), errSecCSUnsupportedDigestAlgorithm(-67000L), errSecCSInvalidAssociatedFileData(-66999L), errSecCSInvalidTeamIdentifier(-66998L), errSecCSBadTeamIdentifier(-66997L), errSecCSSignatureUntrusted(-66996L), errSecMultipleExecSegments(-66995L), errSecCSInvalidEntitlements(-66994L), errSecCSInvalidRuntimeVersion(-66993L), errSecCSRevokedNotarization(-66992L), errSecCSCMSConstructionFailed(-66991L), errSecCSRemoteSignerFailed(-66990L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_63_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_63_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/CSCommon.h:205:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_205_1_(val value: Long) {
+    kSecNoGuest(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_205_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_205_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecCodeStatus}
+ */
+enum class SecCodeStatus(val value: Long) {
+    kSecCodeStatusValid(1L), kSecCodeStatusHard(256L), kSecCodeStatusKill(512L), kSecCodeStatusDebugged(268435456L), kSecCodeStatusPlatform(67108864L);
+
+    companion object {
+        fun fromValue(v: Long): SecCodeStatus = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecCodeStatus value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecRequirementType}
+ */
+enum class SecRequirementType(val value: Long) {
+    kSecHostRequirementType(1L), kSecGuestRequirementType(2L), kSecDesignatedRequirementType(3L), kSecLibraryRequirementType(4L), kSecPluginRequirementType(5L), kSecInvalidRequirementType(6L), kSecRequirementTypeCount(6L);
+
+    companion object {
+        fun fromValue(v: Long): SecRequirementType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecRequirementType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecCSDigestAlgorithm}
+ */
+enum class SecCSDigestAlgorithm(val value: Long) {
+    kSecCodeSignatureNoHash(0L), kSecCodeSignatureHashSHA1(1L), kSecCodeSignatureHashSHA256(2L), kSecCodeSignatureHashSHA256Truncated(3L), kSecCodeSignatureHashSHA384(4L), kSecCodeSignatureHashSHA512(5L);
+
+    companion object {
+        fun fromValue(v: Long): SecCSDigestAlgorithm = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecCSDigestAlgorithm value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecStaticCode.h:175:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecStaticCode_h_175_1_(val value: Long) {
+    kSecCSCheckAllArchitectures(1L), kSecCSDoNotValidateExecutable(2L), kSecCSDoNotValidateResources(4L), kSecCSBasicValidateOnly(6L), kSecCSCheckNestedCode(8L), kSecCSStrictValidate(16L), kSecCSFullReport(32L), kSecCSCheckGatekeeperArchitectures(65L), kSecCSRestrictSymlinks(128L), kSecCSRestrictToAppLike(256L), kSecCSRestrictSidebandData(512L), kSecCSUseSoftwareSigningCert(1024L), kSecCSValidatePEH(2048L), kSecCSSingleThreaded(4096L), kSecCSAllowNetworkAccess(65536L), kSecCSFastExecutableValidation(131072L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecStaticCode_h_175_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecStaticCode_h_175_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum audit_session_flags}
+ */
+enum class audit_session_flags(val value: Long) {
+    AU_SESSION_FLAG_IS_INITIAL(1L), AU_SESSION_FLAG_HAS_GRAPHIC_ACCESS(16L), AU_SESSION_FLAG_HAS_TTY(32L), AU_SESSION_FLAG_IS_REMOTE(4096L), AU_SESSION_FLAG_HAS_CONSOLE_ACCESS(8192L), AU_SESSION_FLAG_HAS_AUTHENTICATED(16384L);
+
+    companion object {
+        fun fromValue(v: Long): audit_session_flags = entries.firstOrNull { it.value == v }
+            ?: error("Unknown audit_session_flags value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/xpc/activity.h:397:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_usr_include_xpc_activity_h_397_1_(val value: Long) {
+    XPC_ACTIVITY_STATE_CHECK_IN(0L), XPC_ACTIVITY_STATE_WAIT(1L), XPC_ACTIVITY_STATE_RUN(2L), XPC_ACTIVITY_STATE_DEFER(3L), XPC_ACTIVITY_STATE_CONTINUE(4L), XPC_ACTIVITY_STATE_DONE(5L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_usr_include_xpc_activity_h_397_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_usr_include_xpc_activity_h_397_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum xpc_session_create_flags_t}
+ */
+enum class xpc_session_create_flags_t(val value: Long) {
+    XPC_SESSION_CREATE_NONE(0L), XPC_SESSION_CREATE_INACTIVE(1L), XPC_SESSION_CREATE_MACH_PRIVILEGED(2L);
+
+    companion object {
+        fun fromValue(v: Long): xpc_session_create_flags_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown xpc_session_create_flags_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum xpc_listener_create_flags_t}
+ */
+enum class xpc_listener_create_flags_t(val value: Long) {
+    XPC_LISTENER_CREATE_NONE(0L), XPC_LISTENER_CREATE_INACTIVE(1L), XPC_LISTENER_CREATE_FORCE_MACH(2L), XPC_LISTENER_CREATE_FORCE_XPCSERVICE(4L);
+
+    companion object {
+        fun fromValue(v: Long): xpc_listener_create_flags_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown xpc_listener_create_flags_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum mach_vm_range_flavor_t}
+ */
+enum class mach_vm_range_flavor_t(val value: Long) {
+    MACH_VM_RANGE_FLAVOR_INVALID(0L), MACH_VM_RANGE_FLAVOR_V1(1L);
+
+    companion object {
+        fun fromValue(v: Long): mach_vm_range_flavor_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown mach_vm_range_flavor_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum mach_vm_range_flags_t}
+ */
+enum class mach_vm_range_flags_t(val value: Long) {
+    MACH_VM_RANGE_NONE(0L);
+
+    companion object {
+        fun fromValue(v: Long): mach_vm_range_flags_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown mach_vm_range_flags_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum mach_vm_range_tag_t}
+ */
+enum class mach_vm_range_tag_t(val value: Long) {
+    MACH_VM_RANGE_DEFAULT(0L), MACH_VM_RANGE_DATA(1L), MACH_VM_RANGE_FIXED(2L);
+
+    companion object {
+        fun fromValue(v: Long): mach_vm_range_tag_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown mach_vm_range_tag_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum virtual_memory_guard_exception_code_t}
+ */
+enum class virtual_memory_guard_exception_code_t(val value: Long) {
+    kGUARD_EXC_DEALLOC_GAP(1L), kGUARD_EXC_RECLAIM_COPYIO_FAILURE(2L), kGUARD_EXC_RECLAIM_INDEX_FAILURE(4L), kGUARD_EXC_RECLAIM_DEALLOCATE_FAILURE(8L), kGUARD_EXC_RECLAIM_ACCOUNTING_FAILURE(9L), kGUARD_EXC_SEC_IOPL_ON_EXEC_PAGE(10L), kGUARD_EXC_SEC_EXEC_ON_IOPL_PAGE(11L), kGUARD_EXC_SEC_UPL_WRITE_ON_EXEC_REGION(12L), kGUARD_EXC_LARGE_ALLOCATION_TELEMETRY(13L), kGUARD_EXC_SEC_ACCESS_FAULT(98L), kGUARD_EXC_SEC_ASYNC_ACCESS_FAULT(99L), kGUARD_EXC_SEC_COPY_DENIED(100L), kGUARD_EXC_SEC_SHARING_DENIED(101L), kGUARD_EXC_MTE_SYNC_FAULT(200L), kGUARD_EXC_MTE_ASYNC_USER_FAULT(201L), kGUARD_EXC_MTE_ASYNC_KERN_FAULT(202L), kGUARD_EXC_GUARD_OBJECT_ASYNC_USER_FAULT(203L), kGUARD_EXC_GUARD_OBJECT_ASYNC_KERN_FAULT(204L);
+
+    companion object {
+        fun fromValue(v: Long): virtual_memory_guard_exception_code_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown virtual_memory_guard_exception_code_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum ipc_info_object_type_t}
+ */
+enum class ipc_info_object_type_t(val value: Long) {
+    IPC_OTYPE_NONE(0L), IPC_OTYPE_THREAD_CONTROL(1L), IPC_OTYPE_TASK_CONTROL(2L), IPC_OTYPE_HOST(3L), IPC_OTYPE_HOST_PRIV(4L), IPC_OTYPE_PROCESSOR(5L), IPC_OTYPE_PROCESSOR_SET(6L), IPC_OTYPE_PROCESSOR_SET_NAME(7L), IPC_OTYPE_TIMER(8L), IPC_OTYPE_PORT_SUBST_ONCE(9L), IPC_OTYPE_MIG(10L), IPC_OTYPE_MEMORY_OBJECT(11L), IPC_OTYPE_XMM_PAGER(12L), IPC_OTYPE_XMM_KERNEL(13L), IPC_OTYPE_XMM_REPLY(14L), IPC_OTYPE_UND_REPLY(15L), IPC_OTYPE_HOST_NOTIFY(16L), IPC_OTYPE_HOST_SECURITY(17L), IPC_OTYPE_LEDGER(18L), IPC_OTYPE_MAIN_DEVICE(19L), IPC_OTYPE_TASK_NAME(20L), IPC_OTYPE_SUBSYSTEM(21L), IPC_OTYPE_IO_DONE_QUEUE(22L), IPC_OTYPE_SEMAPHORE(23L), IPC_OTYPE_LOCK_SET(24L), IPC_OTYPE_CLOCK(25L), IPC_OTYPE_CLOCK_CTRL(26L), IPC_OTYPE_IOKIT_IDENT(27L), IPC_OTYPE_NAMED_ENTRY(28L), IPC_OTYPE_IOKIT_CONNECT(29L), IPC_OTYPE_IOKIT_OBJECT(30L), IPC_OTYPE_UPL(31L), IPC_OTYPE_MEM_OBJ_CONTROL(32L), IPC_OTYPE_AU_SESSIONPORT(33L), IPC_OTYPE_FILEPORT(34L), IPC_OTYPE_LABELH(35L), IPC_OTYPE_TASK_RESUME(36L), IPC_OTYPE_VOUCHER(37L), IPC_OTYPE_VOUCHER_ATTR_CONTROL(38L), IPC_OTYPE_WORK_INTERVAL(39L), IPC_OTYPE_UX_HANDLER(40L), IPC_OTYPE_UEXT_OBJECT(41L), IPC_OTYPE_ARCADE_REG(42L), IPC_OTYPE_EVENTLINK(43L), IPC_OTYPE_TASK_INSPECT(44L), IPC_OTYPE_TASK_READ(45L), IPC_OTYPE_THREAD_INSPECT(46L), IPC_OTYPE_THREAD_READ(47L), IPC_OTYPE_SUID_CRED(48L), IPC_OTYPE_HYPERVISOR(49L), IPC_OTYPE_TASK_ID_TOKEN(50L), IPC_OTYPE_TASK_FATAL(51L), IPC_OTYPE_KCDATA(52L), IPC_OTYPE_EXCLAVES_RESOURCE(53L), IPC_OTYPE_THREAD_RESUME(54L), IPC_OTYPE_UNKNOWN(-1L);
+
+    companion object {
+        fun fromValue(v: Long): ipc_info_object_type_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown ipc_info_object_type_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum task_inspect_flavor}
+ */
+enum class task_inspect_flavor(val value: Long) {
+    TASK_INSPECT_BASIC_COUNTS(1L);
+
+    companion object {
+        fun fromValue(v: Long): task_inspect_flavor = entries.firstOrNull { it.value == v }
+            ?: error("Unknown task_inspect_flavor value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum task_role}
+ */
+enum class task_role(val value: Long) {
+    TASK_RENICED(-1L), TASK_UNSPECIFIED(0L), TASK_FOREGROUND_APPLICATION(1L), TASK_BACKGROUND_APPLICATION(2L), TASK_CONTROL_APPLICATION(3L), TASK_GRAPHICS_SERVER(4L), TASK_THROTTLE_APPLICATION(5L), TASK_NONUI_APPLICATION(6L), TASK_DEFAULT_APPLICATION(7L), TASK_DARWINBG_APPLICATION(8L), TASK_USER_INIT_APPLICATION(9L);
+
+    companion object {
+        fun fromValue(v: Long): task_role = entries.firstOrNull { it.value == v }
+            ?: error("Unknown task_role value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum task_latency_qos}
+ */
+enum class task_latency_qos(val value: Long) {
+    LATENCY_QOS_TIER_UNSPECIFIED(0L), LATENCY_QOS_TIER_0(16711681L), LATENCY_QOS_TIER_1(16711682L), LATENCY_QOS_TIER_2(16711683L), LATENCY_QOS_TIER_3(16711684L), LATENCY_QOS_TIER_4(16711685L), LATENCY_QOS_TIER_5(16711686L);
+
+    companion object {
+        fun fromValue(v: Long): task_latency_qos = entries.firstOrNull { it.value == v }
+            ?: error("Unknown task_latency_qos value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum task_throughput_qos}
+ */
+enum class task_throughput_qos(val value: Long) {
+    THROUGHPUT_QOS_TIER_UNSPECIFIED(0L), THROUGHPUT_QOS_TIER_0(16646145L), THROUGHPUT_QOS_TIER_1(16646146L), THROUGHPUT_QOS_TIER_2(16646147L), THROUGHPUT_QOS_TIER_3(16646148L), THROUGHPUT_QOS_TIER_4(16646149L), THROUGHPUT_QOS_TIER_5(16646150L);
+
+    companion object {
+        fun fromValue(v: Long): task_throughput_qos = entries.firstOrNull { it.value == v }
+            ?: error("Unknown task_throughput_qos value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum launch_data_type_t}
+ */
+enum class launch_data_type_t(val value: Long) {
+    LAUNCH_DATA_DICTIONARY(1L), LAUNCH_DATA_ARRAY(2L), LAUNCH_DATA_FD(3L), LAUNCH_DATA_INTEGER(4L), LAUNCH_DATA_REAL(5L), LAUNCH_DATA_BOOL(6L), LAUNCH_DATA_STRING(7L), LAUNCH_DATA_OPAQUE(8L), LAUNCH_DATA_ERRNO(9L), LAUNCH_DATA_MACHPORT(10L);
+
+    companion object {
+        fun fromValue(v: Long): launch_data_type_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown launch_data_type_t value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecCode.h:99:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_99_1_(val value: Long) {
+    kSecCSUseAllArchitectures(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_99_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_99_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecCode.h:467:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_467_1_(val value: Long) {
+    kSecCSInternalInformation(1L), kSecCSSigningInformation(2L), kSecCSRequirementInformation(4L), kSecCSDynamicInformation(8L), kSecCSContentInformation(16L), kSecCSSkipResourceDirectory(32L), kSecCSCalculateCMSDigest(64L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_467_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_467_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecCodeHost.h:35:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCodeHost_h_35_1_(val value: Long) {
+    kSecCSDedicatedHost(1L), kSecCSGenerateGuestHash(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCodeHost_h_35_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCodeHost_h_35_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CMSSignerStatus}
+ */
+enum class CMSSignerStatus(val value: Long) {
+    kCMSSignerUnsigned(0L), kCMSSignerValid(1L), kCMSSignerNeedsDetachedContent(2L), kCMSSignerInvalidSignature(3L), kCMSSignerInvalidCert(4L), kCMSSignerInvalidIndex(5L);
+
+    companion object {
+        fun fromValue(v: Long): CMSSignerStatus = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CMSSignerStatus value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CMSSignedAttributes}
+ */
+enum class CMSSignedAttributes(val value: Long) {
+    kCMSAttrNone(0L), kCMSAttrSmimeCapabilities(1L), kCMSAttrSmimeEncryptionKeyPrefs(2L), kCMSAttrSmimeMSEncryptionKeyPrefs(4L), kCMSAttrSigningTime(8L), kCMSAttrAppleCodesigningHashAgility(16L), kCMSAttrAppleCodesigningHashAgilityV2(32L), kCMSAttrAppleExpirationTime(64L);
+
+    companion object {
+        fun fromValue(v: Long): CMSSignedAttributes = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CMSSignedAttributes value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CMSCertificateChainMode}
+ */
+enum class CMSCertificateChainMode(val value: Long) {
+    kCMSCertificateNone(0L), kCMSCertificateSignerOnly(1L), kCMSCertificateChain(2L), kCMSCertificateChainWithRoot(3L), kCMSCertificateChainWithRootOrFail(4L);
+
+    companion object {
+        fun fromValue(v: Long): CMSCertificateChainMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CMSCertificateChainMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SSLSessionOption}
+ */
+enum class SSLSessionOption(val value: Long) {
+    kSSLSessionOptionBreakOnServerAuth(0L), kSSLSessionOptionBreakOnCertRequested(1L), kSSLSessionOptionBreakOnClientAuth(2L), kSSLSessionOptionFalseStart(3L), kSSLSessionOptionSendOneByteRecord(4L), kSSLSessionOptionAllowServerIdentityChange(5L), kSSLSessionOptionFallback(6L), kSSLSessionOptionBreakOnClientHello(7L), kSSLSessionOptionAllowRenegotiation(8L), kSSLSessionOptionEnableSessionTickets(9L);
+
+    companion object {
+        fun fromValue(v: Long): SSLSessionOption = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SSLSessionOption value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SSLSessionState}
+ */
+enum class SSLSessionState(val value: Long) {
+    kSSLIdle(0L), kSSLHandshake(1L), kSSLConnected(2L), kSSLClosed(3L), kSSLAborted(4L);
+
+    companion object {
+        fun fromValue(v: Long): SSLSessionState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SSLSessionState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SSLClientCertificateState}
+ */
+enum class SSLClientCertificateState(val value: Long) {
+    kSSLClientCertNone(0L), kSSLClientCertRequested(1L), kSSLClientCertSent(2L), kSSLClientCertRejected(3L);
+
+    companion object {
+        fun fromValue(v: Long): SSLClientCertificateState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SSLClientCertificateState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SSLProtocolSide}
+ */
+enum class SSLProtocolSide(val value: Long) {
+    kSSLServerSide(0L), kSSLClientSide(1L);
+
+    companion object {
+        fun fromValue(v: Long): SSLProtocolSide = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SSLProtocolSide value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SSLConnectionType}
+ */
+enum class SSLConnectionType(val value: Long) {
+    kSSLStreamType(0L), kSSLDatagramType(1L);
+
+    companion object {
+        fun fromValue(v: Long): SSLConnectionType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SSLConnectionType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SSLAuthenticate}
+ */
+enum class SSLAuthenticate(val value: Long) {
+    kNeverAuthenticate(0L), kAlwaysAuthenticate(1L), kTryAuthenticate(2L);
+
+    companion object {
+        fun fromValue(v: Long): SSLAuthenticate = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SSLAuthenticate value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecTransform.h:179:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecTransform_h_179_1_(val value: Long) {
+    kSecTransformErrorAttributeNotFound(1L), kSecTransformErrorInvalidOperation(2L), kSecTransformErrorNotInitializedCorrectly(3L), kSecTransformErrorMoreThanOneOutput(4L), kSecTransformErrorInvalidInputDictionary(5L), kSecTransformErrorInvalidAlgorithm(6L), kSecTransformErrorInvalidLength(7L), kSecTransformErrorInvalidType(8L), kSecTransformErrorInvalidInput(10L), kSecTransformErrorNameAlreadyRegistered(11L), kSecTransformErrorUnsupportedAttribute(12L), kSecTransformOperationNotSupportedOnGroup(13L), kSecTransformErrorMissingParameter(14L), kSecTransformErrorInvalidConnection(15L), kSecTransformTransformIsExecuting(16L), kSecTransformInvalidOverride(17L), kSecTransformTransformIsNotRegistered(18L), kSecTransformErrorAbortInProgress(19L), kSecTransformErrorAborted(20L), kSecTransformInvalidArgument(21L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecTransform_h_179_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecTransform_h_179_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SecTransformMetaAttributeType}
+ */
+enum class SecTransformMetaAttributeType(val value: Long) {
+    kSecTransformMetaAttributeValue(0L), kSecTransformMetaAttributeName(1L), kSecTransformMetaAttributeRef(2L), kSecTransformMetaAttributeRequired(3L), kSecTransformMetaAttributeRequiresOutboundConnection(4L), kSecTransformMetaAttributeDeferred(5L), kSecTransformMetaAttributeStream(6L), kSecTransformMetaAttributeCanCycle(7L), kSecTransformMetaAttributeExternalize(8L), kSecTransformMetaAttributeHasOutboundConnections(9L), kSecTransformMetaAttributeHasInboundConnection(10L);
+
+    companion object {
+        fun fromValue(v: Long): SecTransformMetaAttributeType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SecTransformMetaAttributeType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLCredentialPersistence}
+ */
+enum class NSURLCredentialPersistence(val value: Long) {
+    NSURLCredentialPersistenceNone(0L), NSURLCredentialPersistenceForSession(1L), NSURLCredentialPersistencePermanent(2L), NSURLCredentialPersistenceSynchronizable(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLCredentialPersistence = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLCredentialPersistence value: $v")
     }
 }
 
@@ -7217,114 +11033,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum virtual_memory_guard_exception_code_t}
- */
-enum class virtual_memory_guard_exception_code_t(val value: Long) {
-    kGUARD_EXC_DEALLOC_GAP(1L), kGUARD_EXC_RECLAIM_COPYIO_FAILURE(2L), kGUARD_EXC_RECLAIM_INDEX_FAILURE(4L), kGUARD_EXC_RECLAIM_DEALLOCATE_FAILURE(8L), kGUARD_EXC_RECLAIM_ACCOUNTING_FAILURE(9L), kGUARD_EXC_SEC_IOPL_ON_EXEC_PAGE(10L), kGUARD_EXC_SEC_EXEC_ON_IOPL_PAGE(11L), kGUARD_EXC_SEC_UPL_WRITE_ON_EXEC_REGION(12L), kGUARD_EXC_LARGE_ALLOCATION_TELEMETRY(13L), kGUARD_EXC_SEC_ACCESS_FAULT(98L), kGUARD_EXC_SEC_ASYNC_ACCESS_FAULT(99L), kGUARD_EXC_SEC_COPY_DENIED(100L), kGUARD_EXC_SEC_SHARING_DENIED(101L), kGUARD_EXC_MTE_SYNC_FAULT(200L), kGUARD_EXC_MTE_ASYNC_USER_FAULT(201L), kGUARD_EXC_MTE_ASYNC_KERN_FAULT(202L), kGUARD_EXC_GUARD_OBJECT_ASYNC_USER_FAULT(203L), kGUARD_EXC_GUARD_OBJECT_ASYNC_KERN_FAULT(204L);
-
-    companion object {
-        fun fromValue(v: Long): virtual_memory_guard_exception_code_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown virtual_memory_guard_exception_code_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum mach_vm_range_flavor_t}
- */
-enum class mach_vm_range_flavor_t(val value: Long) {
-    MACH_VM_RANGE_FLAVOR_INVALID(0L), MACH_VM_RANGE_FLAVOR_V1(1L);
-
-    companion object {
-        fun fromValue(v: Long): mach_vm_range_flavor_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown mach_vm_range_flavor_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum mach_vm_range_flags_t}
- */
-enum class mach_vm_range_flags_t(val value: Long) {
-    MACH_VM_RANGE_NONE(0L);
-
-    companion object {
-        fun fromValue(v: Long): mach_vm_range_flags_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown mach_vm_range_flags_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum mach_vm_range_tag_t}
- */
-enum class mach_vm_range_tag_t(val value: Long) {
-    MACH_VM_RANGE_DEFAULT(0L), MACH_VM_RANGE_DATA(1L), MACH_VM_RANGE_FIXED(2L);
-
-    companion object {
-        fun fromValue(v: Long): mach_vm_range_tag_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown mach_vm_range_tag_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum ipc_info_object_type_t}
- */
-enum class ipc_info_object_type_t(val value: Long) {
-    IPC_OTYPE_NONE(0L), IPC_OTYPE_THREAD_CONTROL(1L), IPC_OTYPE_TASK_CONTROL(2L), IPC_OTYPE_HOST(3L), IPC_OTYPE_HOST_PRIV(4L), IPC_OTYPE_PROCESSOR(5L), IPC_OTYPE_PROCESSOR_SET(6L), IPC_OTYPE_PROCESSOR_SET_NAME(7L), IPC_OTYPE_TIMER(8L), IPC_OTYPE_PORT_SUBST_ONCE(9L), IPC_OTYPE_MIG(10L), IPC_OTYPE_MEMORY_OBJECT(11L), IPC_OTYPE_XMM_PAGER(12L), IPC_OTYPE_XMM_KERNEL(13L), IPC_OTYPE_XMM_REPLY(14L), IPC_OTYPE_UND_REPLY(15L), IPC_OTYPE_HOST_NOTIFY(16L), IPC_OTYPE_HOST_SECURITY(17L), IPC_OTYPE_LEDGER(18L), IPC_OTYPE_MAIN_DEVICE(19L), IPC_OTYPE_TASK_NAME(20L), IPC_OTYPE_SUBSYSTEM(21L), IPC_OTYPE_IO_DONE_QUEUE(22L), IPC_OTYPE_SEMAPHORE(23L), IPC_OTYPE_LOCK_SET(24L), IPC_OTYPE_CLOCK(25L), IPC_OTYPE_CLOCK_CTRL(26L), IPC_OTYPE_IOKIT_IDENT(27L), IPC_OTYPE_NAMED_ENTRY(28L), IPC_OTYPE_IOKIT_CONNECT(29L), IPC_OTYPE_IOKIT_OBJECT(30L), IPC_OTYPE_UPL(31L), IPC_OTYPE_MEM_OBJ_CONTROL(32L), IPC_OTYPE_AU_SESSIONPORT(33L), IPC_OTYPE_FILEPORT(34L), IPC_OTYPE_LABELH(35L), IPC_OTYPE_TASK_RESUME(36L), IPC_OTYPE_VOUCHER(37L), IPC_OTYPE_VOUCHER_ATTR_CONTROL(38L), IPC_OTYPE_WORK_INTERVAL(39L), IPC_OTYPE_UX_HANDLER(40L), IPC_OTYPE_UEXT_OBJECT(41L), IPC_OTYPE_ARCADE_REG(42L), IPC_OTYPE_EVENTLINK(43L), IPC_OTYPE_TASK_INSPECT(44L), IPC_OTYPE_TASK_READ(45L), IPC_OTYPE_THREAD_INSPECT(46L), IPC_OTYPE_THREAD_READ(47L), IPC_OTYPE_SUID_CRED(48L), IPC_OTYPE_HYPERVISOR(49L), IPC_OTYPE_TASK_ID_TOKEN(50L), IPC_OTYPE_TASK_FATAL(51L), IPC_OTYPE_KCDATA(52L), IPC_OTYPE_EXCLAVES_RESOURCE(53L), IPC_OTYPE_THREAD_RESUME(54L), IPC_OTYPE_UNKNOWN(-1L);
-
-    companion object {
-        fun fromValue(v: Long): ipc_info_object_type_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown ipc_info_object_type_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum task_inspect_flavor}
- */
-enum class task_inspect_flavor(val value: Long) {
-    TASK_INSPECT_BASIC_COUNTS(1L);
-
-    companion object {
-        fun fromValue(v: Long): task_inspect_flavor = entries.firstOrNull { it.value == v }
-            ?: error("Unknown task_inspect_flavor value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum task_role}
- */
-enum class task_role(val value: Long) {
-    TASK_RENICED(-1L), TASK_UNSPECIFIED(0L), TASK_FOREGROUND_APPLICATION(1L), TASK_BACKGROUND_APPLICATION(2L), TASK_CONTROL_APPLICATION(3L), TASK_GRAPHICS_SERVER(4L), TASK_THROTTLE_APPLICATION(5L), TASK_NONUI_APPLICATION(6L), TASK_DEFAULT_APPLICATION(7L), TASK_DARWINBG_APPLICATION(8L), TASK_USER_INIT_APPLICATION(9L);
-
-    companion object {
-        fun fromValue(v: Long): task_role = entries.firstOrNull { it.value == v }
-            ?: error("Unknown task_role value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum task_latency_qos}
- */
-enum class task_latency_qos(val value: Long) {
-    LATENCY_QOS_TIER_UNSPECIFIED(0L), LATENCY_QOS_TIER_0(16711681L), LATENCY_QOS_TIER_1(16711682L), LATENCY_QOS_TIER_2(16711683L), LATENCY_QOS_TIER_3(16711684L), LATENCY_QOS_TIER_4(16711685L), LATENCY_QOS_TIER_5(16711686L);
-
-    companion object {
-        fun fromValue(v: Long): task_latency_qos = entries.firstOrNull { it.value == v }
-            ?: error("Unknown task_latency_qos value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum task_throughput_qos}
- */
-enum class task_throughput_qos(val value: Long) {
-    THROUGHPUT_QOS_TIER_UNSPECIFIED(0L), THROUGHPUT_QOS_TIER_0(16646145L), THROUGHPUT_QOS_TIER_1(16646146L), THROUGHPUT_QOS_TIER_2(16646147L), THROUGHPUT_QOS_TIER_3(16646148L), THROUGHPUT_QOS_TIER_4(16646149L), THROUGHPUT_QOS_TIER_5(16646150L);
-
-    companion object {
-        fun fromValue(v: Long): task_throughput_qos = entries.firstOrNull { it.value == v }
-            ?: error("Unknown task_throughput_qos value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/IOMapTypes.h:33:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_IOMapTypes_h_33_1_(val value: Long) {
@@ -11429,30 +15137,6 @@ enum class CFNetDiagnosticStatusValues(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecBase.h:324:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_324_1_(val value: Long) {
-    errSecSuccess(0L), errSecUnimplemented(-4L), errSecDiskFull(-34L), errSecDskFull(-34L), errSecIO(-36L), errSecOpWr(-49L), errSecParam(-50L), errSecWrPerm(-61L), errSecAllocate(-108L), errSecUserCanceled(-128L), errSecBadReq(-909L), errSecInternalComponent(-2070L), errSecCoreFoundationUnknown(-4960L), errSecMissingEntitlement(-34018L), errSecRestrictedAPI(-34020L), errSecNotAvailable(-25291L), errSecReadOnly(-25292L), errSecAuthFailed(-25293L), errSecNoSuchKeychain(-25294L), errSecInvalidKeychain(-25295L), errSecDuplicateKeychain(-25296L), errSecDuplicateCallback(-25297L), errSecInvalidCallback(-25298L), errSecDuplicateItem(-25299L), errSecItemNotFound(-25300L), errSecBufferTooSmall(-25301L), errSecDataTooLarge(-25302L), errSecNoSuchAttr(-25303L), errSecInvalidItemRef(-25304L), errSecInvalidSearchRef(-25305L), errSecNoSuchClass(-25306L), errSecNoDefaultKeychain(-25307L), errSecInteractionNotAllowed(-25308L), errSecReadOnlyAttr(-25309L), errSecWrongSecVersion(-25310L), errSecKeySizeNotAllowed(-25311L), errSecNoStorageModule(-25312L), errSecNoCertificateModule(-25313L), errSecNoPolicyModule(-25314L), errSecInteractionRequired(-25315L), errSecDataNotAvailable(-25316L), errSecDataNotModifiable(-25317L), errSecCreateChainFailed(-25318L), errSecInvalidPrefsDomain(-25319L), errSecInDarkWake(-25320L), errSecACLNotSimple(-25240L), errSecPolicyNotFound(-25241L), errSecInvalidTrustSetting(-25242L), errSecNoAccessForItem(-25243L), errSecInvalidOwnerEdit(-25244L), errSecTrustNotAvailable(-25245L), errSecUnsupportedFormat(-25256L), errSecUnknownFormat(-25257L), errSecKeyIsSensitive(-25258L), errSecMultiplePrivKeys(-25259L), errSecPassphraseRequired(-25260L), errSecInvalidPasswordRef(-25261L), errSecInvalidTrustSettings(-25262L), errSecNoTrustSettings(-25263L), errSecPkcs12VerifyFailure(-25264L), errSecNotSigner(-26267L), errSecDecode(-26275L), errSecServiceNotAvailable(-67585L), errSecInsufficientClientID(-67586L), errSecDeviceReset(-67587L), errSecDeviceFailed(-67588L), errSecAppleAddAppACLSubject(-67589L), errSecApplePublicKeyIncomplete(-67590L), errSecAppleSignatureMismatch(-67591L), errSecAppleInvalidKeyStartDate(-67592L), errSecAppleInvalidKeyEndDate(-67593L), errSecConversionError(-67594L), errSecAppleSSLv2Rollback(-67595L), errSecQuotaExceeded(-67596L), errSecFileTooBig(-67597L), errSecInvalidDatabaseBlob(-67598L), errSecInvalidKeyBlob(-67599L), errSecIncompatibleDatabaseBlob(-67600L), errSecIncompatibleKeyBlob(-67601L), errSecHostNameMismatch(-67602L), errSecUnknownCriticalExtensionFlag(-67603L), errSecNoBasicConstraints(-67604L), errSecNoBasicConstraintsCA(-67605L), errSecInvalidAuthorityKeyID(-67606L), errSecInvalidSubjectKeyID(-67607L), errSecInvalidKeyUsageForPolicy(-67608L), errSecInvalidExtendedKeyUsage(-67609L), errSecInvalidIDLinkage(-67610L), errSecPathLengthConstraintExceeded(-67611L), errSecInvalidRoot(-67612L), errSecCRLExpired(-67613L), errSecCRLNotValidYet(-67614L), errSecCRLNotFound(-67615L), errSecCRLServerDown(-67616L), errSecCRLBadURI(-67617L), errSecUnknownCertExtension(-67618L), errSecUnknownCRLExtension(-67619L), errSecCRLNotTrusted(-67620L), errSecCRLPolicyFailed(-67621L), errSecIDPFailure(-67622L), errSecSMIMEEmailAddressesNotFound(-67623L), errSecSMIMEBadExtendedKeyUsage(-67624L), errSecSMIMEBadKeyUsage(-67625L), errSecSMIMEKeyUsageNotCritical(-67626L), errSecSMIMENoEmailAddress(-67627L), errSecSMIMESubjAltNameNotCritical(-67628L), errSecSSLBadExtendedKeyUsage(-67629L), errSecOCSPBadResponse(-67630L), errSecOCSPBadRequest(-67631L), errSecOCSPUnavailable(-67632L), errSecOCSPStatusUnrecognized(-67633L), errSecEndOfData(-67634L), errSecIncompleteCertRevocationCheck(-67635L), errSecNetworkFailure(-67636L), errSecOCSPNotTrustedToAnchor(-67637L), errSecRecordModified(-67638L), errSecOCSPSignatureError(-67639L), errSecOCSPNoSigner(-67640L), errSecOCSPResponderMalformedReq(-67641L), errSecOCSPResponderInternalError(-67642L), errSecOCSPResponderTryLater(-67643L), errSecOCSPResponderSignatureRequired(-67644L), errSecOCSPResponderUnauthorized(-67645L), errSecOCSPResponseNonceMismatch(-67646L), errSecCodeSigningBadCertChainLength(-67647L), errSecCodeSigningNoBasicConstraints(-67648L), errSecCodeSigningBadPathLengthConstraint(-67649L), errSecCodeSigningNoExtendedKeyUsage(-67650L), errSecCodeSigningDevelopment(-67651L), errSecResourceSignBadCertChainLength(-67652L), errSecResourceSignBadExtKeyUsage(-67653L), errSecTrustSettingDeny(-67654L), errSecInvalidSubjectName(-67655L), errSecUnknownQualifiedCertStatement(-67656L), errSecMobileMeRequestQueued(-67657L), errSecMobileMeRequestRedirected(-67658L), errSecMobileMeServerError(-67659L), errSecMobileMeServerNotAvailable(-67660L), errSecMobileMeServerAlreadyExists(-67661L), errSecMobileMeServerServiceErr(-67662L), errSecMobileMeRequestAlreadyPending(-67663L), errSecMobileMeNoRequestPending(-67664L), errSecMobileMeCSRVerifyFailure(-67665L), errSecMobileMeFailedConsistencyCheck(-67666L), errSecNotInitialized(-67667L), errSecInvalidHandleUsage(-67668L), errSecPVCReferentNotFound(-67669L), errSecFunctionIntegrityFail(-67670L), errSecInternalError(-67671L), errSecMemoryError(-67672L), errSecInvalidData(-67673L), errSecMDSError(-67674L), errSecInvalidPointer(-67675L), errSecSelfCheckFailed(-67676L), errSecFunctionFailed(-67677L), errSecModuleManifestVerifyFailed(-67678L), errSecInvalidGUID(-67679L), errSecInvalidHandle(-67680L), errSecInvalidDBList(-67681L), errSecInvalidPassthroughID(-67682L), errSecInvalidNetworkAddress(-67683L), errSecCRLAlreadySigned(-67684L), errSecInvalidNumberOfFields(-67685L), errSecVerificationFailure(-67686L), errSecUnknownTag(-67687L), errSecInvalidSignature(-67688L), errSecInvalidName(-67689L), errSecInvalidCertificateRef(-67690L), errSecInvalidCertificateGroup(-67691L), errSecTagNotFound(-67692L), errSecInvalidQuery(-67693L), errSecInvalidValue(-67694L), errSecCallbackFailed(-67695L), errSecACLDeleteFailed(-67696L), errSecACLReplaceFailed(-67697L), errSecACLAddFailed(-67698L), errSecACLChangeFailed(-67699L), errSecInvalidAccessCredentials(-67700L), errSecInvalidRecord(-67701L), errSecInvalidACL(-67702L), errSecInvalidSampleValue(-67703L), errSecIncompatibleVersion(-67704L), errSecPrivilegeNotGranted(-67705L), errSecInvalidScope(-67706L), errSecPVCAlreadyConfigured(-67707L), errSecInvalidPVC(-67708L), errSecEMMLoadFailed(-67709L), errSecEMMUnloadFailed(-67710L), errSecAddinLoadFailed(-67711L), errSecInvalidKeyRef(-67712L), errSecInvalidKeyHierarchy(-67713L), errSecAddinUnloadFailed(-67714L), errSecLibraryReferenceNotFound(-67715L), errSecInvalidAddinFunctionTable(-67716L), errSecInvalidServiceMask(-67717L), errSecModuleNotLoaded(-67718L), errSecInvalidSubServiceID(-67719L), errSecAttributeNotInContext(-67720L), errSecModuleManagerInitializeFailed(-67721L), errSecModuleManagerNotFound(-67722L), errSecEventNotificationCallbackNotFound(-67723L), errSecInputLengthError(-67724L), errSecOutputLengthError(-67725L), errSecPrivilegeNotSupported(-67726L), errSecDeviceError(-67727L), errSecAttachHandleBusy(-67728L), errSecNotLoggedIn(-67729L), errSecAlgorithmMismatch(-67730L), errSecKeyUsageIncorrect(-67731L), errSecKeyBlobTypeIncorrect(-67732L), errSecKeyHeaderInconsistent(-67733L), errSecUnsupportedKeyFormat(-67734L), errSecUnsupportedKeySize(-67735L), errSecInvalidKeyUsageMask(-67736L), errSecUnsupportedKeyUsageMask(-67737L), errSecInvalidKeyAttributeMask(-67738L), errSecUnsupportedKeyAttributeMask(-67739L), errSecInvalidKeyLabel(-67740L), errSecUnsupportedKeyLabel(-67741L), errSecInvalidKeyFormat(-67742L), errSecUnsupportedVectorOfBuffers(-67743L), errSecInvalidInputVector(-67744L), errSecInvalidOutputVector(-67745L), errSecInvalidContext(-67746L), errSecInvalidAlgorithm(-67747L), errSecInvalidAttributeKey(-67748L), errSecMissingAttributeKey(-67749L), errSecInvalidAttributeInitVector(-67750L), errSecMissingAttributeInitVector(-67751L), errSecInvalidAttributeSalt(-67752L), errSecMissingAttributeSalt(-67753L), errSecInvalidAttributePadding(-67754L), errSecMissingAttributePadding(-67755L), errSecInvalidAttributeRandom(-67756L), errSecMissingAttributeRandom(-67757L), errSecInvalidAttributeSeed(-67758L), errSecMissingAttributeSeed(-67759L), errSecInvalidAttributePassphrase(-67760L), errSecMissingAttributePassphrase(-67761L), errSecInvalidAttributeKeyLength(-67762L), errSecMissingAttributeKeyLength(-67763L), errSecInvalidAttributeBlockSize(-67764L), errSecMissingAttributeBlockSize(-67765L), errSecInvalidAttributeOutputSize(-67766L), errSecMissingAttributeOutputSize(-67767L), errSecInvalidAttributeRounds(-67768L), errSecMissingAttributeRounds(-67769L), errSecInvalidAlgorithmParms(-67770L), errSecMissingAlgorithmParms(-67771L), errSecInvalidAttributeLabel(-67772L), errSecMissingAttributeLabel(-67773L), errSecInvalidAttributeKeyType(-67774L), errSecMissingAttributeKeyType(-67775L), errSecInvalidAttributeMode(-67776L), errSecMissingAttributeMode(-67777L), errSecInvalidAttributeEffectiveBits(-67778L), errSecMissingAttributeEffectiveBits(-67779L), errSecInvalidAttributeStartDate(-67780L), errSecMissingAttributeStartDate(-67781L), errSecInvalidAttributeEndDate(-67782L), errSecMissingAttributeEndDate(-67783L), errSecInvalidAttributeVersion(-67784L), errSecMissingAttributeVersion(-67785L), errSecInvalidAttributePrime(-67786L), errSecMissingAttributePrime(-67787L), errSecInvalidAttributeBase(-67788L), errSecMissingAttributeBase(-67789L), errSecInvalidAttributeSubprime(-67790L), errSecMissingAttributeSubprime(-67791L), errSecInvalidAttributeIterationCount(-67792L), errSecMissingAttributeIterationCount(-67793L), errSecInvalidAttributeDLDBHandle(-67794L), errSecMissingAttributeDLDBHandle(-67795L), errSecInvalidAttributeAccessCredentials(-67796L), errSecMissingAttributeAccessCredentials(-67797L), errSecInvalidAttributePublicKeyFormat(-67798L), errSecMissingAttributePublicKeyFormat(-67799L), errSecInvalidAttributePrivateKeyFormat(-67800L), errSecMissingAttributePrivateKeyFormat(-67801L), errSecInvalidAttributeSymmetricKeyFormat(-67802L), errSecMissingAttributeSymmetricKeyFormat(-67803L), errSecInvalidAttributeWrappedKeyFormat(-67804L), errSecMissingAttributeWrappedKeyFormat(-67805L), errSecStagedOperationInProgress(-67806L), errSecStagedOperationNotStarted(-67807L), errSecVerifyFailed(-67808L), errSecQuerySizeUnknown(-67809L), errSecBlockSizeMismatch(-67810L), errSecPublicKeyInconsistent(-67811L), errSecDeviceVerifyFailed(-67812L), errSecInvalidLoginName(-67813L), errSecAlreadyLoggedIn(-67814L), errSecInvalidDigestAlgorithm(-67815L), errSecInvalidCRLGroup(-67816L), errSecCertificateCannotOperate(-67817L), errSecCertificateExpired(-67818L), errSecCertificateNotValidYet(-67819L), errSecCertificateRevoked(-67820L), errSecCertificateSuspended(-67821L), errSecInsufficientCredentials(-67822L), errSecInvalidAction(-67823L), errSecInvalidAuthority(-67824L), errSecVerifyActionFailed(-67825L), errSecInvalidCertAuthority(-67826L), errSecInvalidCRLAuthority(-67827L), errSecInvaldCRLAuthority(-67827L), errSecInvalidCRLEncoding(-67828L), errSecInvalidCRLType(-67829L), errSecInvalidCRL(-67830L), errSecInvalidFormType(-67831L), errSecInvalidID(-67832L), errSecInvalidIdentifier(-67833L), errSecInvalidIndex(-67834L), errSecInvalidPolicyIdentifiers(-67835L), errSecInvalidTimeString(-67836L), errSecInvalidReason(-67837L), errSecInvalidRequestInputs(-67838L), errSecInvalidResponseVector(-67839L), errSecInvalidStopOnPolicy(-67840L), errSecInvalidTuple(-67841L), errSecMultipleValuesUnsupported(-67842L), errSecNotTrusted(-67843L), errSecNoDefaultAuthority(-67844L), errSecRejectedForm(-67845L), errSecRequestLost(-67846L), errSecRequestRejected(-67847L), errSecUnsupportedAddressType(-67848L), errSecUnsupportedService(-67849L), errSecInvalidTupleGroup(-67850L), errSecInvalidBaseACLs(-67851L), errSecInvalidTupleCredentials(-67852L), errSecInvalidTupleCredendtials(-67852L), errSecInvalidEncoding(-67853L), errSecInvalidValidityPeriod(-67854L), errSecInvalidRequestor(-67855L), errSecRequestDescriptor(-67856L), errSecInvalidBundleInfo(-67857L), errSecInvalidCRLIndex(-67858L), errSecNoFieldValues(-67859L), errSecUnsupportedFieldFormat(-67860L), errSecUnsupportedIndexInfo(-67861L), errSecUnsupportedLocality(-67862L), errSecUnsupportedNumAttributes(-67863L), errSecUnsupportedNumIndexes(-67864L), errSecUnsupportedNumRecordTypes(-67865L), errSecFieldSpecifiedMultiple(-67866L), errSecIncompatibleFieldFormat(-67867L), errSecInvalidParsingModule(-67868L), errSecDatabaseLocked(-67869L), errSecDatastoreIsOpen(-67870L), errSecMissingValue(-67871L), errSecUnsupportedQueryLimits(-67872L), errSecUnsupportedNumSelectionPreds(-67873L), errSecUnsupportedOperator(-67874L), errSecInvalidDBLocation(-67875L), errSecInvalidAccessRequest(-67876L), errSecInvalidIndexInfo(-67877L), errSecInvalidNewOwner(-67878L), errSecInvalidModifyMode(-67879L), errSecMissingRequiredExtension(-67880L), errSecExtendedKeyUsageNotCritical(-67881L), errSecTimestampMissing(-67882L), errSecTimestampInvalid(-67883L), errSecTimestampNotTrusted(-67884L), errSecTimestampServiceNotAvailable(-67885L), errSecTimestampBadAlg(-67886L), errSecTimestampBadRequest(-67887L), errSecTimestampBadDataFormat(-67888L), errSecTimestampTimeNotAvailable(-67889L), errSecTimestampUnacceptedPolicy(-67890L), errSecTimestampUnacceptedExtension(-67891L), errSecTimestampAddInfoNotAvailable(-67892L), errSecTimestampSystemFailure(-67893L), errSecSigningTimeMissing(-67894L), errSecTimestampRejection(-67895L), errSecTimestampWaiting(-67896L), errSecTimestampRevocationWarning(-67897L), errSecTimestampRevocationNotification(-67898L), errSecCertificatePolicyNotAllowed(-67899L), errSecCertificateNameNotAllowed(-67900L), errSecCertificateValidityPeriodTooLong(-67901L), errSecCertificateIsCA(-67902L), errSecCertificateDuplicateExtension(-67903L), errSecMissingQualifiedCertStatement(-67904L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_324_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_324_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecBase.h:806:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_806_1_(val value: Long) {
-    errSSLProtocol(-9800L), errSSLNegotiation(-9801L), errSSLFatalAlert(-9802L), errSSLWouldBlock(-9803L), errSSLSessionNotFound(-9804L), errSSLClosedGraceful(-9805L), errSSLClosedAbort(-9806L), errSSLXCertChainInvalid(-9807L), errSSLBadCert(-9808L), errSSLCrypto(-9809L), errSSLInternal(-9810L), errSSLModuleAttach(-9811L), errSSLUnknownRootCert(-9812L), errSSLNoRootCert(-9813L), errSSLCertExpired(-9814L), errSSLCertNotYetValid(-9815L), errSSLClosedNoNotify(-9816L), errSSLBufferOverflow(-9817L), errSSLBadCipherSuite(-9818L), errSSLPeerUnexpectedMsg(-9819L), errSSLPeerBadRecordMac(-9820L), errSSLPeerDecryptionFail(-9821L), errSSLPeerRecordOverflow(-9822L), errSSLPeerDecompressFail(-9823L), errSSLPeerHandshakeFail(-9824L), errSSLPeerBadCert(-9825L), errSSLPeerUnsupportedCert(-9826L), errSSLPeerCertRevoked(-9827L), errSSLPeerCertExpired(-9828L), errSSLPeerCertUnknown(-9829L), errSSLIllegalParam(-9830L), errSSLPeerUnknownCA(-9831L), errSSLPeerAccessDenied(-9832L), errSSLPeerDecodeError(-9833L), errSSLPeerDecryptError(-9834L), errSSLPeerExportRestriction(-9835L), errSSLPeerProtocolVersion(-9836L), errSSLPeerInsufficientSecurity(-9837L), errSSLPeerInternalError(-9838L), errSSLPeerUserCancelled(-9839L), errSSLPeerNoRenegotiation(-9840L), errSSLPeerAuthCompleted(-9841L), errSSLClientCertRequested(-9842L), errSSLHostNameMismatch(-9843L), errSSLConnectionRefused(-9844L), errSSLDecryptionFail(-9845L), errSSLBadRecordMac(-9846L), errSSLRecordOverflow(-9847L), errSSLBadConfiguration(-9848L), errSSLUnexpectedRecord(-9849L), errSSLWeakPeerEphemeralDHKey(-9850L), errSSLClientHelloReceived(-9851L), errSSLTransportReset(-9852L), errSSLNetworkTimeout(-9853L), errSSLConfigurationFailed(-9854L), errSSLUnsupportedExtension(-9855L), errSSLUnexpectedMessage(-9856L), errSSLDecompressFail(-9857L), errSSLHandshakeFail(-9858L), errSSLDecodeError(-9859L), errSSLInappropriateFallback(-9860L), errSSLMissingExtension(-9861L), errSSLBadCertificateStatusResponse(-9862L), errSSLCertificateRequired(-9863L), errSSLUnknownPSKIdentity(-9864L), errSSLUnrecognizedName(-9865L), errSSLATSViolation(-9880L), errSSLATSMinimumVersionViolation(-9881L), errSSLATSCiphersuiteViolation(-9882L), errSSLATSMinimumKeySizeViolation(-9883L), errSSLATSLeafCertificateHashAlgorithmViolation(-9884L), errSSLATSCertificateHashAlgorithmViolation(-9885L), errSSLATSCertificateTrustViolation(-9886L), errSSLEarlyDataRejected(-9890L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_806_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecBase_h_806_1_ value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreServices.framework/Frameworks/OSServices.framework/Headers/CSIdentityBase.h:59:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreServices_framework_Frameworks_OSServices_framework_Headers_CSIdentityBase_h_59_1_(val value: Long) {
@@ -11461,2574 +15145,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
     companion object {
         fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreServices_framework_Frameworks_OSServices_framework_Headers_CSIdentityBase_h_59_1_ = entries.firstOrNull { it.value == v }
             ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreServices_framework_Frameworks_OSServices_framework_Headers_CSIdentityBase_h_59_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:70:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_70_1_(val value: Long) {
-    CSSM_INVALID_HANDLE(0L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_70_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_70_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:78:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_78_1_(val value: Long) {
-    CSSM_FALSE(0L), CSSM_TRUE(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_78_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_78_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:85:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_85_1_(val value: Long) {
-    CSSM_OK(0L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_85_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_85_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:89:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_89_1_(val value: Long) {
-    CSSM_MODULE_STRING_SIZE(64L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_89_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_89_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:106:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_106_1_(val value: Long) {
-    CSSM_KEY_HIERARCHY_NONE(0L), CSSM_KEY_HIERARCHY_INTEG(1L), CSSM_KEY_HIERARCHY_EXPORT(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_106_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_106_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:113:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_113_1_(val value: Long) {
-    CSSM_PVC_NONE(0L), CSSM_PVC_APP(1L), CSSM_PVC_SP(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_113_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_113_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:120:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_120_1_(val value: Long) {
-    CSSM_PRIVILEGE_SCOPE_NONE(0L), CSSM_PRIVILEGE_SCOPE_PROCESS(1L), CSSM_PRIVILEGE_SCOPE_THREAD(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_120_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_120_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:132:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_132_1_(val value: Long) {
-    CSSM_SERVICE_CSSM(1L), CSSM_SERVICE_CSP(2L), CSSM_SERVICE_DL(4L), CSSM_SERVICE_CL(8L), CSSM_SERVICE_TP(16L), CSSM_SERVICE_AC(32L), CSSM_SERVICE_KR(64L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_132_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_132_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:152:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_152_1_(val value: Long) {
-    CSSM_NOTIFY_INSERT(1L), CSSM_NOTIFY_REMOVE(2L), CSSM_NOTIFY_FAULT(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_152_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_152_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:166:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_166_1_(val value: Long) {
-    CSSM_ATTACH_READ_ONLY(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_166_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_166_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:174:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_174_1_(val value: Long) {
-    CSSM_USEE_LAST(255L), CSSM_USEE_NONE(0L), CSSM_USEE_DOMESTIC(1L), CSSM_USEE_FINANCIAL(2L), CSSM_USEE_KRLE(3L), CSSM_USEE_KRENT(4L), CSSM_USEE_SSL(5L), CSSM_USEE_AUTHENTICATION(6L), CSSM_USEE_KEYEXCH(7L), CSSM_USEE_MEDICAL(8L), CSSM_USEE_INSURANCE(9L), CSSM_USEE_WEAK(10L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_174_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_174_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:190:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_190_1_(val value: Long) {
-    CSSM_ADDR_NONE(0L), CSSM_ADDR_CUSTOM(1L), CSSM_ADDR_URL(2L), CSSM_ADDR_SOCKADDR(3L), CSSM_ADDR_NAME(4L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_190_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_190_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:204:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_204_1_(val value: Long) {
-    CSSM_NET_PROTO_NONE(0L), CSSM_NET_PROTO_CUSTOM(1L), CSSM_NET_PROTO_UNSPECIFIED(2L), CSSM_NET_PROTO_LDAP(3L), CSSM_NET_PROTO_LDAPS(4L), CSSM_NET_PROTO_LDAPNS(5L), CSSM_NET_PROTO_X500DAP(6L), CSSM_NET_PROTO_FTP(7L), CSSM_NET_PROTO_FTPS(8L), CSSM_NET_PROTO_OCSP(9L), CSSM_NET_PROTO_CMP(10L), CSSM_NET_PROTO_CMPS(11L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_204_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_204_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:229:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_229_1_(val value: Long) {
-    CSSM_WORDID_UNK_(-1L), CSSM_WORDID_NLU_(0L), CSSM_WORDID_STAR_(1L), CSSM_WORDID_A(2L), CSSM_WORDID_ACL(3L), CSSM_WORDID_ALPHA(4L), CSSM_WORDID_B(5L), CSSM_WORDID_BER(6L), CSSM_WORDID_BINARY(7L), CSSM_WORDID_BIOMETRIC(8L), CSSM_WORDID_C(9L), CSSM_WORDID_CANCELED(10L), CSSM_WORDID_CERT(11L), CSSM_WORDID_COMMENT(12L), CSSM_WORDID_CRL(13L), CSSM_WORDID_CUSTOM(14L), CSSM_WORDID_D(15L), CSSM_WORDID_DATE(16L), CSSM_WORDID_DB_DELETE(17L), CSSM_WORDID_DB_EXEC_STORED_QUERY(18L), CSSM_WORDID_DB_INSERT(19L), CSSM_WORDID_DB_MODIFY(20L), CSSM_WORDID_DB_READ(21L), CSSM_WORDID_DBS_CREATE(22L), CSSM_WORDID_DBS_DELETE(23L), CSSM_WORDID_DECRYPT(24L), CSSM_WORDID_DELETE(25L), CSSM_WORDID_DELTA_CRL(26L), CSSM_WORDID_DER(27L), CSSM_WORDID_DERIVE(28L), CSSM_WORDID_DISPLAY(29L), CSSM_WORDID_DO(30L), CSSM_WORDID_DSA(31L), CSSM_WORDID_DSA_SHA1(32L), CSSM_WORDID_E(33L), CSSM_WORDID_ELGAMAL(34L), CSSM_WORDID_ENCRYPT(35L), CSSM_WORDID_ENTRY(36L), CSSM_WORDID_EXPORT_CLEAR(37L), CSSM_WORDID_EXPORT_WRAPPED(38L), CSSM_WORDID_G(39L), CSSM_WORDID_GE(40L), CSSM_WORDID_GENKEY(41L), CSSM_WORDID_HASH(42L), CSSM_WORDID_HASHED_PASSWORD(43L), CSSM_WORDID_HASHED_SUBJECT(44L), CSSM_WORDID_HAVAL(45L), CSSM_WORDID_IBCHASH(46L), CSSM_WORDID_IMPORT_CLEAR(47L), CSSM_WORDID_IMPORT_WRAPPED(48L), CSSM_WORDID_INTEL(49L), CSSM_WORDID_ISSUER(50L), CSSM_WORDID_ISSUER_INFO(51L), CSSM_WORDID_K_OF_N(52L), CSSM_WORDID_KEA(53L), CSSM_WORDID_KEYHOLDER(54L), CSSM_WORDID_L(55L), CSSM_WORDID_LE(56L), CSSM_WORDID_LOGIN(57L), CSSM_WORDID_LOGIN_NAME(58L), CSSM_WORDID_MAC(59L), CSSM_WORDID_MD2(60L), CSSM_WORDID_MD2WITHRSA(61L), CSSM_WORDID_MD4(62L), CSSM_WORDID_MD5(63L), CSSM_WORDID_MD5WITHRSA(64L), CSSM_WORDID_N(65L), CSSM_WORDID_NAME(66L), CSSM_WORDID_NDR(67L), CSSM_WORDID_NHASH(68L), CSSM_WORDID_NOT_AFTER(69L), CSSM_WORDID_NOT_BEFORE(70L), CSSM_WORDID_NULL(71L), CSSM_WORDID_NUMERIC(72L), CSSM_WORDID_OBJECT_HASH(73L), CSSM_WORDID_ONE_TIME(74L), CSSM_WORDID_ONLINE(75L), CSSM_WORDID_OWNER(76L), CSSM_WORDID_P(77L), CSSM_WORDID_PAM_NAME(78L), CSSM_WORDID_PASSWORD(79L), CSSM_WORDID_PGP(80L), CSSM_WORDID_PREFIX(81L), CSSM_WORDID_PRIVATE_KEY(82L), CSSM_WORDID_PROMPTED_BIOMETRIC(83L), CSSM_WORDID_PROMPTED_PASSWORD(84L), CSSM_WORDID_PROPAGATE(85L), CSSM_WORDID_PROTECTED_BIOMETRIC(86L), CSSM_WORDID_PROTECTED_PASSWORD(87L), CSSM_WORDID_PROTECTED_PIN(88L), CSSM_WORDID_PUBLIC_KEY(89L), CSSM_WORDID_PUBLIC_KEY_FROM_CERT(90L), CSSM_WORDID_Q(91L), CSSM_WORDID_RANGE(92L), CSSM_WORDID_REVAL(93L), CSSM_WORDID_RIPEMAC(94L), CSSM_WORDID_RIPEMD(95L), CSSM_WORDID_RIPEMD160(96L), CSSM_WORDID_RSA(97L), CSSM_WORDID_RSA_ISO9796(98L), CSSM_WORDID_RSA_PKCS(99L), CSSM_WORDID_RSA_PKCS_MD5(100L), CSSM_WORDID_RSA_PKCS_SHA1(101L), CSSM_WORDID_RSA_PKCS1(102L), CSSM_WORDID_RSA_PKCS1_MD5(103L), CSSM_WORDID_RSA_PKCS1_SHA1(104L), CSSM_WORDID_RSA_PKCS1_SIG(105L), CSSM_WORDID_RSA_RAW(106L), CSSM_WORDID_SDSIV1(107L), CSSM_WORDID_SEQUENCE(108L), CSSM_WORDID_SET(109L), CSSM_WORDID_SEXPR(110L), CSSM_WORDID_SHA1(111L), CSSM_WORDID_SHA1WITHDSA(112L), CSSM_WORDID_SHA1WITHECDSA(113L), CSSM_WORDID_SHA1WITHRSA(114L), CSSM_WORDID_SIGN(115L), CSSM_WORDID_SIGNATURE(116L), CSSM_WORDID_SIGNED_NONCE(117L), CSSM_WORDID_SIGNED_SECRET(118L), CSSM_WORDID_SPKI(119L), CSSM_WORDID_SUBJECT(120L), CSSM_WORDID_SUBJECT_INFO(121L), CSSM_WORDID_TAG(122L), CSSM_WORDID_THRESHOLD(123L), CSSM_WORDID_TIME(124L), CSSM_WORDID_URI(125L), CSSM_WORDID_VERSION(126L), CSSM_WORDID_X509_ATTRIBUTE(127L), CSSM_WORDID_X509V1(128L), CSSM_WORDID_X509V2(129L), CSSM_WORDID_X509V3(130L), CSSM_WORDID_X9_ATTRIBUTE(131L), CSSM_WORDID_VENDOR_START(65536L), CSSM_WORDID_VENDOR_END(2147418112L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_229_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_229_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:368:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_368_1_(val value: Long) {
-    CSSM_LIST_ELEMENT_DATUM(0L), CSSM_LIST_ELEMENT_SUBLIST(1L), CSSM_LIST_ELEMENT_WORDID(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_368_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_368_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:375:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_375_1_(val value: Long) {
-    CSSM_LIST_TYPE_UNKNOWN(0L), CSSM_LIST_TYPE_CUSTOM(1L), CSSM_LIST_TYPE_SEXPR(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_375_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_375_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:414:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_414_1_(val value: Long) {
-    CSSM_SAMPLE_TYPE_PASSWORD(79L), CSSM_SAMPLE_TYPE_HASHED_PASSWORD(43L), CSSM_SAMPLE_TYPE_PROTECTED_PASSWORD(87L), CSSM_SAMPLE_TYPE_PROMPTED_PASSWORD(84L), CSSM_SAMPLE_TYPE_SIGNED_NONCE(117L), CSSM_SAMPLE_TYPE_SIGNED_SECRET(118L), CSSM_SAMPLE_TYPE_BIOMETRIC(8L), CSSM_SAMPLE_TYPE_PROTECTED_BIOMETRIC(86L), CSSM_SAMPLE_TYPE_PROMPTED_BIOMETRIC(83L), CSSM_SAMPLE_TYPE_THRESHOLD(123L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_414_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_414_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:473:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_473_1_(val value: Long) {
-    CSSM_CERT_UNKNOWN(0L), CSSM_CERT_X_509v1(1L), CSSM_CERT_X_509v2(2L), CSSM_CERT_X_509v3(3L), CSSM_CERT_PGP(4L), CSSM_CERT_SPKI(5L), CSSM_CERT_SDSIv1(6L), CSSM_CERT_Intel(8L), CSSM_CERT_X_509_ATTRIBUTE(9L), CSSM_CERT_X9_ATTRIBUTE(10L), CSSM_CERT_TUPLE(11L), CSSM_CERT_ACL_ENTRY(12L), CSSM_CERT_MULTIPLE(32766L), CSSM_CERT_LAST(32767L), CSSM_CL_CUSTOM_CERT_TYPE(32768L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_473_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_473_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:495:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_495_1_(val value: Long) {
-    CSSM_CERT_ENCODING_UNKNOWN(0L), CSSM_CERT_ENCODING_CUSTOM(1L), CSSM_CERT_ENCODING_BER(2L), CSSM_CERT_ENCODING_DER(3L), CSSM_CERT_ENCODING_NDR(4L), CSSM_CERT_ENCODING_SEXPR(5L), CSSM_CERT_ENCODING_PGP(6L), CSSM_CERT_ENCODING_MULTIPLE(32766L), CSSM_CERT_ENCODING_LAST(32767L), CSSM_CL_CUSTOM_CERT_ENCODING(32768L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_495_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_495_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:518:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_518_1_(val value: Long) {
-    CSSM_CERT_PARSE_FORMAT_NONE(0L), CSSM_CERT_PARSE_FORMAT_CUSTOM(1L), CSSM_CERT_PARSE_FORMAT_SEXPR(2L), CSSM_CERT_PARSE_FORMAT_COMPLEX(3L), CSSM_CERT_PARSE_FORMAT_OID_NAMED(4L), CSSM_CERT_PARSE_FORMAT_TUPLE(5L), CSSM_CERT_PARSE_FORMAT_MULTIPLE(32766L), CSSM_CERT_PARSE_FORMAT_LAST(32767L), CSSM_CL_CUSTOM_CERT_PARSE_FORMAT(32768L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_518_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_518_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:549:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_549_1_(val value: Long) {
-    CSSM_CERTGROUP_DATA(0L), CSSM_CERTGROUP_ENCODED_CERT(1L), CSSM_CERTGROUP_PARSED_CERT(2L), CSSM_CERTGROUP_CERT_PAIR(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_549_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_549_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:589:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_589_1_(val value: Long) {
-    CSSM_ACL_SUBJECT_TYPE_ANY(1L), CSSM_ACL_SUBJECT_TYPE_THRESHOLD(123L), CSSM_ACL_SUBJECT_TYPE_PASSWORD(79L), CSSM_ACL_SUBJECT_TYPE_PROTECTED_PASSWORD(87L), CSSM_ACL_SUBJECT_TYPE_PROMPTED_PASSWORD(84L), CSSM_ACL_SUBJECT_TYPE_PUBLIC_KEY(89L), CSSM_ACL_SUBJECT_TYPE_HASHED_SUBJECT(44L), CSSM_ACL_SUBJECT_TYPE_BIOMETRIC(8L), CSSM_ACL_SUBJECT_TYPE_PROTECTED_BIOMETRIC(86L), CSSM_ACL_SUBJECT_TYPE_PROMPTED_BIOMETRIC(83L), CSSM_ACL_SUBJECT_TYPE_LOGIN_NAME(58L), CSSM_ACL_SUBJECT_TYPE_EXT_PAM_NAME(78L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_589_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_589_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:606:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_606_1_(val value: Long) {
-    CSSM_ACL_AUTHORIZATION_TAG_VENDOR_DEFINED_START(65536L), CSSM_ACL_AUTHORIZATION_ANY(1L), CSSM_ACL_AUTHORIZATION_LOGIN(57L), CSSM_ACL_AUTHORIZATION_GENKEY(41L), CSSM_ACL_AUTHORIZATION_DELETE(25L), CSSM_ACL_AUTHORIZATION_EXPORT_WRAPPED(38L), CSSM_ACL_AUTHORIZATION_EXPORT_CLEAR(37L), CSSM_ACL_AUTHORIZATION_IMPORT_WRAPPED(48L), CSSM_ACL_AUTHORIZATION_IMPORT_CLEAR(47L), CSSM_ACL_AUTHORIZATION_SIGN(115L), CSSM_ACL_AUTHORIZATION_ENCRYPT(35L), CSSM_ACL_AUTHORIZATION_DECRYPT(24L), CSSM_ACL_AUTHORIZATION_MAC(59L), CSSM_ACL_AUTHORIZATION_DERIVE(28L), CSSM_ACL_AUTHORIZATION_DBS_CREATE(22L), CSSM_ACL_AUTHORIZATION_DBS_DELETE(23L), CSSM_ACL_AUTHORIZATION_DB_READ(21L), CSSM_ACL_AUTHORIZATION_DB_INSERT(19L), CSSM_ACL_AUTHORIZATION_DB_MODIFY(20L), CSSM_ACL_AUTHORIZATION_DB_DELETE(17L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_606_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_606_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:683:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_683_1_(val value: Long) {
-    CSSM_ACL_EDIT_MODE_ADD(1L), CSSM_ACL_EDIT_MODE_DELETE(2L), CSSM_ACL_EDIT_MODE_REPLACE(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_683_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_683_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:727:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_727_1_(val value: Long) {
-    CSSM_KEYHEADER_VERSION(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_727_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_727_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:737:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_737_1_(val value: Long) {
-    CSSM_KEYBLOB_RAW(0L), CSSM_KEYBLOB_REFERENCE(2L), CSSM_KEYBLOB_WRAPPED(3L), CSSM_KEYBLOB_OTHER(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_737_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_737_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:745:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_745_1_(val value: Long) {
-    CSSM_KEYBLOB_RAW_FORMAT_NONE(0L), CSSM_KEYBLOB_RAW_FORMAT_PKCS1(1L), CSSM_KEYBLOB_RAW_FORMAT_PKCS3(2L), CSSM_KEYBLOB_RAW_FORMAT_MSCAPI(3L), CSSM_KEYBLOB_RAW_FORMAT_PGP(4L), CSSM_KEYBLOB_RAW_FORMAT_FIPS186(5L), CSSM_KEYBLOB_RAW_FORMAT_BSAFE(6L), CSSM_KEYBLOB_RAW_FORMAT_CCA(9L), CSSM_KEYBLOB_RAW_FORMAT_PKCS8(10L), CSSM_KEYBLOB_RAW_FORMAT_SPKI(11L), CSSM_KEYBLOB_RAW_FORMAT_OCTET_STRING(12L), CSSM_KEYBLOB_RAW_FORMAT_OTHER(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_745_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_745_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:761:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_761_1_(val value: Long) {
-    CSSM_KEYBLOB_WRAPPED_FORMAT_NONE(0L), CSSM_KEYBLOB_WRAPPED_FORMAT_PKCS8(1L), CSSM_KEYBLOB_WRAPPED_FORMAT_PKCS7(2L), CSSM_KEYBLOB_WRAPPED_FORMAT_MSCAPI(3L), CSSM_KEYBLOB_WRAPPED_FORMAT_OTHER(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_761_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_761_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:770:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_770_1_(val value: Long) {
-    CSSM_KEYBLOB_REF_FORMAT_INTEGER(0L), CSSM_KEYBLOB_REF_FORMAT_STRING(1L), CSSM_KEYBLOB_REF_FORMAT_SPKI(2L), CSSM_KEYBLOB_REF_FORMAT_OTHER(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_770_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_770_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:780:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_780_1_(val value: Long) {
-    CSSM_KEYCLASS_PUBLIC_KEY(0L), CSSM_KEYCLASS_PRIVATE_KEY(1L), CSSM_KEYCLASS_SESSION_KEY(2L), CSSM_KEYCLASS_SECRET_PART(3L), CSSM_KEYCLASS_OTHER(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_780_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_780_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:789:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_789_1_(val value: Long) {
-    CSSM_KEYATTR_RETURN_DEFAULT(0L), CSSM_KEYATTR_RETURN_DATA(268435456L), CSSM_KEYATTR_RETURN_REF(536870912L), CSSM_KEYATTR_RETURN_NONE(1073741824L), CSSM_KEYATTR_PERMANENT(1L), CSSM_KEYATTR_PRIVATE(2L), CSSM_KEYATTR_MODIFIABLE(4L), CSSM_KEYATTR_SENSITIVE(8L), CSSM_KEYATTR_EXTRACTABLE(32L), CSSM_KEYATTR_ALWAYS_SENSITIVE(16L), CSSM_KEYATTR_NEVER_EXTRACTABLE(64L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_789_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_789_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:807:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_807_1_(val value: Long) {
-    CSSM_KEYUSE_ANY(-2147483648L), CSSM_KEYUSE_ENCRYPT(1L), CSSM_KEYUSE_DECRYPT(2L), CSSM_KEYUSE_SIGN(4L), CSSM_KEYUSE_VERIFY(8L), CSSM_KEYUSE_SIGN_RECOVER(16L), CSSM_KEYUSE_VERIFY_RECOVER(32L), CSSM_KEYUSE_WRAP(64L), CSSM_KEYUSE_UNWRAP(128L), CSSM_KEYUSE_DERIVE(256L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_807_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_807_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:821:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_821_1_(val value: Long) {
-    CSSM_ALGID_NONE(0L), CSSM_ALGID_CUSTOM(1L), CSSM_ALGID_DH(2L), CSSM_ALGID_PH(3L), CSSM_ALGID_KEA(4L), CSSM_ALGID_MD2(5L), CSSM_ALGID_MD4(6L), CSSM_ALGID_MD5(7L), CSSM_ALGID_SHA1(8L), CSSM_ALGID_NHASH(9L), CSSM_ALGID_HAVAL(10L), CSSM_ALGID_RIPEMD(11L), CSSM_ALGID_IBCHASH(12L), CSSM_ALGID_RIPEMAC(13L), CSSM_ALGID_DES(14L), CSSM_ALGID_DESX(15L), CSSM_ALGID_RDES(16L), CSSM_ALGID_3DES_3KEY_EDE(17L), CSSM_ALGID_3DES_2KEY_EDE(18L), CSSM_ALGID_3DES_1KEY_EEE(19L), CSSM_ALGID_3DES_3KEY(17L), CSSM_ALGID_3DES_3KEY_EEE(20L), CSSM_ALGID_3DES_2KEY(18L), CSSM_ALGID_3DES_2KEY_EEE(21L), CSSM_ALGID_3DES_1KEY(20L), CSSM_ALGID_IDEA(22L), CSSM_ALGID_RC2(23L), CSSM_ALGID_RC5(24L), CSSM_ALGID_RC4(25L), CSSM_ALGID_SEAL(26L), CSSM_ALGID_CAST(27L), CSSM_ALGID_BLOWFISH(28L), CSSM_ALGID_SKIPJACK(29L), CSSM_ALGID_LUCIFER(30L), CSSM_ALGID_MADRYGA(31L), CSSM_ALGID_FEAL(32L), CSSM_ALGID_REDOC(33L), CSSM_ALGID_REDOC3(34L), CSSM_ALGID_LOKI(35L), CSSM_ALGID_KHUFU(36L), CSSM_ALGID_KHAFRE(37L), CSSM_ALGID_MMB(38L), CSSM_ALGID_GOST(39L), CSSM_ALGID_SAFER(40L), CSSM_ALGID_CRAB(41L), CSSM_ALGID_RSA(42L), CSSM_ALGID_DSA(43L), CSSM_ALGID_MD5WithRSA(44L), CSSM_ALGID_MD2WithRSA(45L), CSSM_ALGID_ElGamal(46L), CSSM_ALGID_MD2Random(47L), CSSM_ALGID_MD5Random(48L), CSSM_ALGID_SHARandom(49L), CSSM_ALGID_DESRandom(50L), CSSM_ALGID_SHA1WithRSA(51L), CSSM_ALGID_CDMF(52L), CSSM_ALGID_CAST3(53L), CSSM_ALGID_CAST5(54L), CSSM_ALGID_GenericSecret(55L), CSSM_ALGID_ConcatBaseAndKey(56L), CSSM_ALGID_ConcatKeyAndBase(57L), CSSM_ALGID_ConcatBaseAndData(58L), CSSM_ALGID_ConcatDataAndBase(59L), CSSM_ALGID_XORBaseAndData(60L), CSSM_ALGID_ExtractFromKey(61L), CSSM_ALGID_SSL3PrePrimaryGen(62L), CSSM_ALGID_SSL3PreMasterGen(62L), CSSM_ALGID_SSL3PrimaryDerive(63L), CSSM_ALGID_SSL3MasterDerive(63L), CSSM_ALGID_SSL3KeyAndMacDerive(64L), CSSM_ALGID_SSL3MD5_MAC(65L), CSSM_ALGID_SSL3SHA1_MAC(66L), CSSM_ALGID_PKCS5_PBKDF1_MD5(67L), CSSM_ALGID_PKCS5_PBKDF1_MD2(68L), CSSM_ALGID_PKCS5_PBKDF1_SHA1(69L), CSSM_ALGID_WrapLynks(70L), CSSM_ALGID_WrapSET_OAEP(71L), CSSM_ALGID_BATON(72L), CSSM_ALGID_ECDSA(73L), CSSM_ALGID_MAYFLY(74L), CSSM_ALGID_JUNIPER(75L), CSSM_ALGID_FASTHASH(76L), CSSM_ALGID_3DES(77L), CSSM_ALGID_SSL3MD5(78L), CSSM_ALGID_SSL3SHA1(79L), CSSM_ALGID_FortezzaTimestamp(80L), CSSM_ALGID_SHA1WithDSA(81L), CSSM_ALGID_SHA1WithECDSA(82L), CSSM_ALGID_DSA_BSAFE(83L), CSSM_ALGID_ECDH(84L), CSSM_ALGID_ECMQV(85L), CSSM_ALGID_PKCS12_SHA1_PBE(86L), CSSM_ALGID_ECNRA(87L), CSSM_ALGID_SHA1WithECNRA(88L), CSSM_ALGID_ECES(89L), CSSM_ALGID_ECAES(90L), CSSM_ALGID_SHA1HMAC(91L), CSSM_ALGID_FIPS186Random(92L), CSSM_ALGID_ECC(93L), CSSM_ALGID_MQV(94L), CSSM_ALGID_NRA(95L), CSSM_ALGID_IntelPlatformRandom(96L), CSSM_ALGID_UTC(97L), CSSM_ALGID_HAVAL3(98L), CSSM_ALGID_HAVAL4(99L), CSSM_ALGID_HAVAL5(100L), CSSM_ALGID_TIGER(101L), CSSM_ALGID_MD5HMAC(102L), CSSM_ALGID_PKCS5_PBKDF2(103L), CSSM_ALGID_RUNNING_COUNTER(104L), CSSM_ALGID_LAST(2147483647L), CSSM_ALGID_VENDOR_DEFINED(-2147483648L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_821_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_821_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:940:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_940_1_(val value: Long) {
-    CSSM_ALGMODE_NONE(0L), CSSM_ALGMODE_CUSTOM(1L), CSSM_ALGMODE_ECB(2L), CSSM_ALGMODE_ECBPad(3L), CSSM_ALGMODE_CBC(4L), CSSM_ALGMODE_CBC_IV8(5L), CSSM_ALGMODE_CBCPadIV8(6L), CSSM_ALGMODE_CFB(7L), CSSM_ALGMODE_CFB_IV8(8L), CSSM_ALGMODE_CFBPadIV8(9L), CSSM_ALGMODE_OFB(10L), CSSM_ALGMODE_OFB_IV8(11L), CSSM_ALGMODE_OFBPadIV8(12L), CSSM_ALGMODE_COUNTER(13L), CSSM_ALGMODE_BC(14L), CSSM_ALGMODE_PCBC(15L), CSSM_ALGMODE_CBCC(16L), CSSM_ALGMODE_OFBNLF(17L), CSSM_ALGMODE_PBC(18L), CSSM_ALGMODE_PFB(19L), CSSM_ALGMODE_CBCPD(20L), CSSM_ALGMODE_PUBLIC_KEY(21L), CSSM_ALGMODE_PRIVATE_KEY(22L), CSSM_ALGMODE_SHUFFLE(23L), CSSM_ALGMODE_ECB64(24L), CSSM_ALGMODE_CBC64(25L), CSSM_ALGMODE_OFB64(26L), CSSM_ALGMODE_CFB32(28L), CSSM_ALGMODE_CFB16(29L), CSSM_ALGMODE_CFB8(30L), CSSM_ALGMODE_WRAP(31L), CSSM_ALGMODE_PRIVATE_WRAP(32L), CSSM_ALGMODE_RELAYX(33L), CSSM_ALGMODE_ECB128(34L), CSSM_ALGMODE_ECB96(35L), CSSM_ALGMODE_CBC128(36L), CSSM_ALGMODE_OAEP_HASH(37L), CSSM_ALGMODE_PKCS1_EME_V15(38L), CSSM_ALGMODE_PKCS1_EME_OAEP(39L), CSSM_ALGMODE_PKCS1_EMSA_V15(40L), CSSM_ALGMODE_ISO_9796(41L), CSSM_ALGMODE_X9_31(42L), CSSM_ALGMODE_LAST(2147483647L), CSSM_ALGMODE_VENDOR_DEFINED(-2147483648L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_940_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_940_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1015:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1015_1_(val value: Long) {
-    CSSM_CSP_SOFTWARE(1L), CSSM_CSP_HARDWARE(2L), CSSM_CSP_HYBRID(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1015_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1015_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1028:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1028_1_(val value: Long) {
-    CSSM_ALGCLASS_NONE(0L), CSSM_ALGCLASS_CUSTOM(1L), CSSM_ALGCLASS_SIGNATURE(2L), CSSM_ALGCLASS_SYMMETRIC(3L), CSSM_ALGCLASS_DIGEST(4L), CSSM_ALGCLASS_RANDOMGEN(5L), CSSM_ALGCLASS_UNIQUEGEN(6L), CSSM_ALGCLASS_MAC(7L), CSSM_ALGCLASS_ASYMMETRIC(8L), CSSM_ALGCLASS_KEYGEN(9L), CSSM_ALGCLASS_DERIVEKEY(10L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1028_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1028_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1043:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1043_1_(val value: Long) {
-    CSSM_ATTRIBUTE_DATA_NONE(0L), CSSM_ATTRIBUTE_DATA_UINT32(268435456L), CSSM_ATTRIBUTE_DATA_CSSM_DATA(536870912L), CSSM_ATTRIBUTE_DATA_CRYPTO_DATA(805306368L), CSSM_ATTRIBUTE_DATA_KEY(1073741824L), CSSM_ATTRIBUTE_DATA_STRING(1342177280L), CSSM_ATTRIBUTE_DATA_DATE(1610612736L), CSSM_ATTRIBUTE_DATA_RANGE(1879048192L), CSSM_ATTRIBUTE_DATA_ACCESS_CREDENTIALS(-2147483648L), CSSM_ATTRIBUTE_DATA_VERSION(16777216L), CSSM_ATTRIBUTE_DATA_DL_DB_HANDLE(33554432L), CSSM_ATTRIBUTE_DATA_KR_PROFILE(50331648L), CSSM_ATTRIBUTE_TYPE_MASK(-16777216L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1043_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1043_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1060:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1060_1_(val value: Long) {
-    CSSM_ATTRIBUTE_NONE(0L), CSSM_ATTRIBUTE_CUSTOM(536870913L), CSSM_ATTRIBUTE_DESCRIPTION(1342177282L), CSSM_ATTRIBUTE_KEY(1073741827L), CSSM_ATTRIBUTE_INIT_VECTOR(536870916L), CSSM_ATTRIBUTE_SALT(536870917L), CSSM_ATTRIBUTE_PADDING(268435462L), CSSM_ATTRIBUTE_RANDOM(536870919L), CSSM_ATTRIBUTE_SEED(805306376L), CSSM_ATTRIBUTE_PASSPHRASE(805306377L), CSSM_ATTRIBUTE_KEY_LENGTH(268435466L), CSSM_ATTRIBUTE_KEY_LENGTH_RANGE(1879048203L), CSSM_ATTRIBUTE_BLOCK_SIZE(268435468L), CSSM_ATTRIBUTE_OUTPUT_SIZE(268435469L), CSSM_ATTRIBUTE_ROUNDS(268435470L), CSSM_ATTRIBUTE_IV_SIZE(268435471L), CSSM_ATTRIBUTE_ALG_PARAMS(536870928L), CSSM_ATTRIBUTE_LABEL(536870929L), CSSM_ATTRIBUTE_KEY_TYPE(268435474L), CSSM_ATTRIBUTE_MODE(268435475L), CSSM_ATTRIBUTE_EFFECTIVE_BITS(268435476L), CSSM_ATTRIBUTE_START_DATE(1610612757L), CSSM_ATTRIBUTE_END_DATE(1610612758L), CSSM_ATTRIBUTE_KEYUSAGE(268435479L), CSSM_ATTRIBUTE_KEYATTR(268435480L), CSSM_ATTRIBUTE_VERSION(16777241L), CSSM_ATTRIBUTE_PRIME(536870938L), CSSM_ATTRIBUTE_BASE(536870939L), CSSM_ATTRIBUTE_SUBPRIME(536870940L), CSSM_ATTRIBUTE_ALG_ID(268435485L), CSSM_ATTRIBUTE_ITERATION_COUNT(268435486L), CSSM_ATTRIBUTE_ROUNDS_RANGE(1879048223L), CSSM_ATTRIBUTE_KRPROFILE_LOCAL(50331680L), CSSM_ATTRIBUTE_KRPROFILE_REMOTE(50331681L), CSSM_ATTRIBUTE_CSP_HANDLE(268435490L), CSSM_ATTRIBUTE_DL_DB_HANDLE(33554467L), CSSM_ATTRIBUTE_ACCESS_CREDENTIALS(-2147483612L), CSSM_ATTRIBUTE_PUBLIC_KEY_FORMAT(268435493L), CSSM_ATTRIBUTE_PRIVATE_KEY_FORMAT(268435494L), CSSM_ATTRIBUTE_SYMMETRIC_KEY_FORMAT(268435495L), CSSM_ATTRIBUTE_WRAPPED_KEY_FORMAT(268435496L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1060_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1060_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1105:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1105_1_(val value: Long) {
-    CSSM_PADDING_NONE(0L), CSSM_PADDING_CUSTOM(1L), CSSM_PADDING_ZERO(2L), CSSM_PADDING_ONE(3L), CSSM_PADDING_ALTERNATE(4L), CSSM_PADDING_FF(5L), CSSM_PADDING_PKCS5(6L), CSSM_PADDING_PKCS7(7L), CSSM_PADDING_CIPHERSTEALING(8L), CSSM_PADDING_RANDOM(9L), CSSM_PADDING_PKCS1(10L), CSSM_PADDING_SIGRAW(11L), CSSM_PADDING_VENDOR_DEFINED(-2147483648L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1105_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1105_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1158:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1158_1_(val value: Long) {
-    CSSM_CSP_TOK_RNG(1L), CSSM_CSP_TOK_CLOCK_EXISTS(64L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1158_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1158_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1164:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1164_1_(val value: Long) {
-    CSSM_CSP_RDR_TOKENPRESENT(1L), CSSM_CSP_RDR_EXISTS(2L), CSSM_CSP_RDR_HW(4L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1164_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1164_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1175:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1175_1_(val value: Long) {
-    CSSM_CSP_TOK_WRITE_PROTECTED(2L), CSSM_CSP_TOK_LOGIN_REQUIRED(4L), CSSM_CSP_TOK_USER_PIN_INITIALIZED(8L), CSSM_CSP_TOK_PROT_AUTHENTICATION(256L), CSSM_CSP_TOK_USER_PIN_EXPIRED(1048576L), CSSM_CSP_TOK_SESSION_KEY_PASSWORD(2097152L), CSSM_CSP_TOK_PRIVATE_KEY_PASSWORD(4194304L), CSSM_CSP_STORES_PRIVATE_KEYS(16777216L), CSSM_CSP_STORES_PUBLIC_KEYS(33554432L), CSSM_CSP_STORES_SESSION_KEYS(67108864L), CSSM_CSP_STORES_CERTIFICATES(134217728L), CSSM_CSP_STORES_GENERIC(268435456L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1175_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1175_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1191:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1191_1_(val value: Long) {
-    CSSM_PKCS_OAEP_MGF_NONE(0L), CSSM_PKCS_OAEP_MGF1_SHA1(1L), CSSM_PKCS_OAEP_MGF1_MD5(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1191_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1191_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1198:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1198_1_(val value: Long) {
-    CSSM_PKCS_OAEP_PSOURCE_NONE(0L), CSSM_PKCS_OAEP_PSOURCE_Pspecified(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1198_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1198_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1228:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1228_1_(val value: Long) {
-    CSSM_VALUE_NOT_AVAILABLE(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1228_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1228_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1238:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1238_1_(val value: Long) {
-    CSSM_PKCS5_PBKDF2_PRF_HMAC_SHA1(0L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1238_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1238_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1261:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1261_1_(val value: Long) {
-    CSSM_TP_AUTHORITY_REQUEST_CERTISSUE(1L), CSSM_TP_AUTHORITY_REQUEST_CERTREVOKE(2L), CSSM_TP_AUTHORITY_REQUEST_CERTSUSPEND(3L), CSSM_TP_AUTHORITY_REQUEST_CERTRESUME(4L), CSSM_TP_AUTHORITY_REQUEST_CERTVERIFY(5L), CSSM_TP_AUTHORITY_REQUEST_CERTNOTARIZE(6L), CSSM_TP_AUTHORITY_REQUEST_CERTUSERECOVER(7L), CSSM_TP_AUTHORITY_REQUEST_CRLISSUE(256L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1261_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1261_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1294:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1294_1_(val value: Long) {
-    CSSM_TP_KEY_ARCHIVE(1L), CSSM_TP_CERT_PUBLISH(2L), CSSM_TP_CERT_NOTIFY_RENEW(4L), CSSM_TP_CERT_DIR_UPDATE(8L), CSSM_TP_CRL_DISTRIBUTE(16L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1294_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1294_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1304:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1304_1_(val value: Long) {
-    CSSM_TP_ACTION_DEFAULT(0L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1304_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1304_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1309:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1309_1_(val value: Long) {
-    CSSM_TP_STOP_ON_POLICY(0L), CSSM_TP_STOP_ON_NONE(1L), CSSM_TP_STOP_ON_FIRST_PASS(2L), CSSM_TP_STOP_ON_FIRST_FAIL(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1309_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1309_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1337:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1337_1_(val value: Long) {
-    CSSM_CRL_PARSE_FORMAT_NONE(0L), CSSM_CRL_PARSE_FORMAT_CUSTOM(1L), CSSM_CRL_PARSE_FORMAT_SEXPR(2L), CSSM_CRL_PARSE_FORMAT_COMPLEX(3L), CSSM_CRL_PARSE_FORMAT_OID_NAMED(4L), CSSM_CRL_PARSE_FORMAT_TUPLE(5L), CSSM_CRL_PARSE_FORMAT_MULTIPLE(32766L), CSSM_CRL_PARSE_FORMAT_LAST(32767L), CSSM_CL_CUSTOM_CRL_PARSE_FORMAT(32768L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1337_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1337_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1354:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1354_1_(val value: Long) {
-    CSSM_CRL_TYPE_UNKNOWN(0L), CSSM_CRL_TYPE_X_509v1(1L), CSSM_CRL_TYPE_X_509v2(2L), CSSM_CRL_TYPE_SPKI(3L), CSSM_CRL_TYPE_MULTIPLE(32766L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1354_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1354_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1363:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1363_1_(val value: Long) {
-    CSSM_CRL_ENCODING_UNKNOWN(0L), CSSM_CRL_ENCODING_CUSTOM(1L), CSSM_CRL_ENCODING_BER(2L), CSSM_CRL_ENCODING_DER(3L), CSSM_CRL_ENCODING_BLOOM(4L), CSSM_CRL_ENCODING_SEXPR(5L), CSSM_CRL_ENCODING_MULTIPLE(32766L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1363_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1363_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1393:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1393_1_(val value: Long) {
-    CSSM_CRLGROUP_DATA(0L), CSSM_CRLGROUP_ENCODED_CRL(1L), CSSM_CRLGROUP_PARSED_CRL(2L), CSSM_CRLGROUP_CRL_PAIR(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1393_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1393_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1419:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1419_1_(val value: Long) {
-    CSSM_EVIDENCE_FORM_UNSPECIFIC(0L), CSSM_EVIDENCE_FORM_CERT(1L), CSSM_EVIDENCE_FORM_CRL(2L), CSSM_EVIDENCE_FORM_CERT_ID(3L), CSSM_EVIDENCE_FORM_CRL_ID(4L), CSSM_EVIDENCE_FORM_VERIFIER_TIME(5L), CSSM_EVIDENCE_FORM_CRL_THISTIME(6L), CSSM_EVIDENCE_FORM_CRL_NEXTTIME(7L), CSSM_EVIDENCE_FORM_POLICYINFO(8L), CSSM_EVIDENCE_FORM_TUPLEGROUP(9L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1419_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1419_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1460:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1460_1_(val value: Long) {
-    CSSM_TP_CONFIRM_STATUS_UNKNOWN(0L), CSSM_TP_CONFIRM_ACCEPT(1L), CSSM_TP_CONFIRM_REJECT(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1460_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1460_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1476:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1476_1_(val value: Long) {
-    CSSM_ESTIMATED_TIME_UNKNOWN(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1476_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1476_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1480:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1480_1_(val value: Long) {
-    CSSM_ELAPSED_TIME_UNKNOWN(-1L), CSSM_ELAPSED_TIME_COMPLETE(-2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1480_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1480_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1497:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1497_1_(val value: Long) {
-    CSSM_TP_CERTISSUE_STATUS_UNKNOWN(0L), CSSM_TP_CERTISSUE_OK(1L), CSSM_TP_CERTISSUE_OKWITHCERTMODS(2L), CSSM_TP_CERTISSUE_OKWITHSERVICEMODS(3L), CSSM_TP_CERTISSUE_REJECTED(4L), CSSM_TP_CERTISSUE_NOT_AUTHORIZED(5L), CSSM_TP_CERTISSUE_WILL_BE_REVOKED(6L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1497_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1497_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1527:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1527_1_(val value: Long) {
-    CSSM_TP_CERTCHANGE_NONE(0L), CSSM_TP_CERTCHANGE_REVOKE(1L), CSSM_TP_CERTCHANGE_HOLD(2L), CSSM_TP_CERTCHANGE_RELEASE(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1527_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1527_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1554:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1554_1_(val value: Long) {
-    CSSM_TP_CERTCHANGE_REASON_UNKNOWN(0L), CSSM_TP_CERTCHANGE_REASON_KEYCOMPROMISE(1L), CSSM_TP_CERTCHANGE_REASON_CACOMPROMISE(2L), CSSM_TP_CERTCHANGE_REASON_CEASEOPERATION(3L), CSSM_TP_CERTCHANGE_REASON_AFFILIATIONCHANGE(4L), CSSM_TP_CERTCHANGE_REASON_SUPERCEDED(5L), CSSM_TP_CERTCHANGE_REASON_SUSPECTEDCOMPROMISE(6L), CSSM_TP_CERTCHANGE_REASON_HOLDRELEASE(7L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1554_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1554_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1588:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1588_1_(val value: Long) {
-    CSSM_TP_CERTCHANGE_STATUS_UNKNOWN(0L), CSSM_TP_CERTCHANGE_OK(1L), CSSM_TP_CERTCHANGE_OKWITHNEWTIME(2L), CSSM_TP_CERTCHANGE_WRONGCA(3L), CSSM_TP_CERTCHANGE_REJECTED(4L), CSSM_TP_CERTCHANGE_NOT_AUTHORIZED(5L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1588_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1588_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1622:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1622_1_(val value: Long) {
-    CSSM_TP_CERTVERIFY_UNKNOWN(0L), CSSM_TP_CERTVERIFY_VALID(1L), CSSM_TP_CERTVERIFY_INVALID(2L), CSSM_TP_CERTVERIFY_REVOKED(3L), CSSM_TP_CERTVERIFY_SUSPENDED(4L), CSSM_TP_CERTVERIFY_EXPIRED(5L), CSSM_TP_CERTVERIFY_NOT_VALID_YET(6L), CSSM_TP_CERTVERIFY_INVALID_AUTHORITY(7L), CSSM_TP_CERTVERIFY_INVALID_SIGNATURE(8L), CSSM_TP_CERTVERIFY_INVALID_CERT_VALUE(9L), CSSM_TP_CERTVERIFY_INVALID_CERTGROUP(10L), CSSM_TP_CERTVERIFY_INVALID_POLICY(11L), CSSM_TP_CERTVERIFY_INVALID_POLICY_IDS(12L), CSSM_TP_CERTVERIFY_INVALID_BASIC_CONSTRAINTS(13L), CSSM_TP_CERTVERIFY_INVALID_CRL_DIST_PT(14L), CSSM_TP_CERTVERIFY_INVALID_NAME_TREE(15L), CSSM_TP_CERTVERIFY_UNKNOWN_CRITICAL_EXT(16L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1622_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1622_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1661:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1661_1_(val value: Long) {
-    CSSM_TP_CERTNOTARIZE_STATUS_UNKNOWN(0L), CSSM_TP_CERTNOTARIZE_OK(1L), CSSM_TP_CERTNOTARIZE_OKWITHOUTFIELDS(2L), CSSM_TP_CERTNOTARIZE_OKWITHSERVICEMODS(3L), CSSM_TP_CERTNOTARIZE_REJECTED(4L), CSSM_TP_CERTNOTARIZE_NOT_AUTHORIZED(5L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1661_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1661_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1698:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1698_1_(val value: Long) {
-    CSSM_TP_CERTRECLAIM_STATUS_UNKNOWN(0L), CSSM_TP_CERTRECLAIM_OK(1L), CSSM_TP_CERTRECLAIM_NOMATCH(2L), CSSM_TP_CERTRECLAIM_REJECTED(3L), CSSM_TP_CERTRECLAIM_NOT_AUTHORIZED(4L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1698_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1698_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1733:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1733_1_(val value: Long) {
-    CSSM_TP_CRLISSUE_STATUS_UNKNOWN(0L), CSSM_TP_CRLISSUE_OK(1L), CSSM_TP_CRLISSUE_NOT_CURRENT(2L), CSSM_TP_CRLISSUE_INVALID_DOMAIN(3L), CSSM_TP_CRLISSUE_UNKNOWN_IDENTIFIER(4L), CSSM_TP_CRLISSUE_REJECTED(5L), CSSM_TP_CRLISSUE_NOT_AUTHORIZED(6L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1733_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1733_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1773:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1773_1_(val value: Long) {
-    CSSM_TP_FORM_TYPE_GENERIC(0L), CSSM_TP_FORM_TYPE_REGISTRATION(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1773_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1773_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1781:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1781_1_(val value: Long) {
-    CSSM_CL_TEMPLATE_INTERMEDIATE_CERT(1L), CSSM_CL_TEMPLATE_PKIX_CERTTEMPLATE(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1781_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1781_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1790:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1790_1_(val value: Long) {
-    CSSM_CERT_BUNDLE_UNKNOWN(0L), CSSM_CERT_BUNDLE_CUSTOM(1L), CSSM_CERT_BUNDLE_PKCS7_SIGNED_DATA(2L), CSSM_CERT_BUNDLE_PKCS7_SIGNED_ENVELOPED_DATA(3L), CSSM_CERT_BUNDLE_PKCS12(4L), CSSM_CERT_BUNDLE_PFX(5L), CSSM_CERT_BUNDLE_SPKI_SEQUENCE(6L), CSSM_CERT_BUNDLE_PGP_KEYRING(7L), CSSM_CERT_BUNDLE_LAST(32767L), CSSM_CL_CUSTOM_CERT_BUNDLE_TYPE(32768L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1790_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1790_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1807:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1807_1_(val value: Long) {
-    CSSM_CERT_BUNDLE_ENCODING_UNKNOWN(0L), CSSM_CERT_BUNDLE_ENCODING_CUSTOM(1L), CSSM_CERT_BUNDLE_ENCODING_BER(2L), CSSM_CERT_BUNDLE_ENCODING_DER(3L), CSSM_CERT_BUNDLE_ENCODING_SEXPR(4L), CSSM_CERT_BUNDLE_ENCODING_PGP(5L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1807_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1807_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1826:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1826_1_(val value: Long) {
-    CSSM_FIELDVALUE_COMPLEX_DATA_TYPE(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1826_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1826_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1833:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1833_1_(val value: Long) {
-    CSSM_DB_ATTRIBUTE_NAME_AS_STRING(0L), CSSM_DB_ATTRIBUTE_NAME_AS_OID(1L), CSSM_DB_ATTRIBUTE_NAME_AS_INTEGER(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1833_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1833_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1840:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1840_1_(val value: Long) {
-    CSSM_DB_ATTRIBUTE_FORMAT_STRING(0L), CSSM_DB_ATTRIBUTE_FORMAT_SINT32(1L), CSSM_DB_ATTRIBUTE_FORMAT_UINT32(2L), CSSM_DB_ATTRIBUTE_FORMAT_BIG_NUM(3L), CSSM_DB_ATTRIBUTE_FORMAT_REAL(4L), CSSM_DB_ATTRIBUTE_FORMAT_TIME_DATE(5L), CSSM_DB_ATTRIBUTE_FORMAT_BLOB(6L), CSSM_DB_ATTRIBUTE_FORMAT_MULTI_UINT32(7L), CSSM_DB_ATTRIBUTE_FORMAT_COMPLEX(8L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1840_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1840_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1869:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1869_1_(val value: Long) {
-    CSSM_DB_RECORDTYPE_SCHEMA_START(0L), CSSM_DB_RECORDTYPE_SCHEMA_END(4L), CSSM_DB_RECORDTYPE_OPEN_GROUP_START(10L), CSSM_DB_RECORDTYPE_OPEN_GROUP_END(18L), CSSM_DB_RECORDTYPE_APP_DEFINED_START(-2147483648L), CSSM_DB_RECORDTYPE_APP_DEFINED_END(-1L), CSSM_DL_DB_SCHEMA_INFO(0L), CSSM_DL_DB_SCHEMA_INDEXES(1L), CSSM_DL_DB_SCHEMA_ATTRIBUTES(2L), CSSM_DL_DB_SCHEMA_PARSING_MODULE(3L), CSSM_DL_DB_RECORD_ANY(10L), CSSM_DL_DB_RECORD_CERT(11L), CSSM_DL_DB_RECORD_CRL(12L), CSSM_DL_DB_RECORD_POLICY(13L), CSSM_DL_DB_RECORD_GENERIC(14L), CSSM_DL_DB_RECORD_PUBLIC_KEY(15L), CSSM_DL_DB_RECORD_PRIVATE_KEY(16L), CSSM_DL_DB_RECORD_SYMMETRIC_KEY(17L), CSSM_DL_DB_RECORD_ALL_KEYS(18L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1869_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1869_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1896:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1896_1_(val value: Long) {
-    CSSM_DB_CERT_USE_TRUSTED(1L), CSSM_DB_CERT_USE_SYSTEM(2L), CSSM_DB_CERT_USE_OWNER(4L), CSSM_DB_CERT_USE_REVOKED(8L), CSSM_DB_CERT_USE_SIGNING(16L), CSSM_DB_CERT_USE_PRIVACY(32L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1896_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1896_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1924:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1924_1_(val value: Long) {
-    CSSM_DB_INDEX_UNIQUE(0L), CSSM_DB_INDEX_NONUNIQUE(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1924_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1924_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1930:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1930_1_(val value: Long) {
-    CSSM_DB_INDEX_ON_UNKNOWN(0L), CSSM_DB_INDEX_ON_ATTRIBUTE(1L), CSSM_DB_INDEX_ON_RECORD(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1930_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1930_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1954:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1954_1_(val value: Long) {
-    CSSM_DB_ACCESS_READ(1L), CSSM_DB_ACCESS_WRITE(2L), CSSM_DB_ACCESS_PRIVILEGED(4L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1954_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1954_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1961:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1961_1_(val value: Long) {
-    CSSM_DB_MODIFY_ATTRIBUTE_NONE(0L), CSSM_DB_MODIFY_ATTRIBUTE_ADD(1L), CSSM_DB_MODIFY_ATTRIBUTE_DELETE(2L), CSSM_DB_MODIFY_ATTRIBUTE_REPLACE(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1961_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1961_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1983:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1983_1_(val value: Long) {
-    CSSM_DB_EQUAL(0L), CSSM_DB_NOT_EQUAL(1L), CSSM_DB_LESS_THAN(2L), CSSM_DB_GREATER_THAN(3L), CSSM_DB_CONTAINS(4L), CSSM_DB_CONTAINS_INITIAL_SUBSTRING(5L), CSSM_DB_CONTAINS_FINAL_SUBSTRING(6L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1983_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1983_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:1994:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1994_1_(val value: Long) {
-    CSSM_DB_NONE(0L), CSSM_DB_AND(1L), CSSM_DB_OR(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1994_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_1994_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2005:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2005_1_(val value: Long) {
-    CSSM_QUERY_TIMELIMIT_NONE(0L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2005_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2005_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2009:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2009_1_(val value: Long) {
-    CSSM_QUERY_SIZELIMIT_NONE(0L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2009_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2009_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2019:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2019_1_(val value: Long) {
-    CSSM_QUERY_RETURN_DATA(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2019_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2019_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2033:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2033_1_(val value: Long) {
-    CSSM_DL_UNKNOWN(0L), CSSM_DL_CUSTOM(1L), CSSM_DL_LDAP(2L), CSSM_DL_ODBC(3L), CSSM_DL_PKCS11(4L), CSSM_DL_FFS(5L), CSSM_DL_MEMORY(6L), CSSM_DL_REMOTEDIR(7L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2033_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2033_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2053:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2053_1_(val value: Long) {
-    CSSM_DB_DATASTORES_UNKNOWN(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2053_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2053_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmtype.h:2063:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2063_1_(val value: Long) {
-    CSSM_DB_TRANSACTIONAL_MODE(0L), CSSM_DB_FILESYSTEMSCAN_MODE(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2063_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmtype_h_2063_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum extension_data_format}
- */
-enum class extension_data_format(val value: Long) {
-    CSSM_X509_DATAFORMAT_ENCODED(0L), CSSM_X509_DATAFORMAT_PARSED(1L), CSSM_X509_DATAFORMAT_PAIR(2L);
-
-    companion object {
-        fun fromValue(v: Long): extension_data_format = entries.firstOrNull { it.value == v }
-            ?: error("Unknown extension_data_format value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecCertificate.h:267:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCertificate_h_267_1_(val value: Long) {
-    kSecSubjectItemAttr(1937072746L), kSecIssuerItemAttr(1769173877L), kSecSerialNumberItemAttr(1936614002L), kSecPublicKeyHashItemAttr(1752198009L), kSecSubjectKeyIdentifierItemAttr(1936419172L), kSecCertTypeItemAttr(1668577648L), kSecCertEncodingItemAttr(1667591779L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCertificate_h_267_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCertificate_h_267_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecKeyUsage}
- */
-enum class SecKeyUsage(val value: Long) {
-    kSecKeyUsageUnspecified(0L), kSecKeyUsageDigitalSignature(1L), kSecKeyUsageNonRepudiation(2L), kSecKeyUsageContentCommitment(2L), kSecKeyUsageKeyEncipherment(4L), kSecKeyUsageDataEncipherment(8L), kSecKeyUsageKeyAgreement(16L), kSecKeyUsageKeyCertSign(32L), kSecKeyUsageCRLSign(64L), kSecKeyUsageEncipherOnly(128L), kSecKeyUsageDecipherOnly(256L), kSecKeyUsageCritical(-2147483648L), kSecKeyUsageAll(2147483647L);
-
-    companion object {
-        fun fromValue(v: Long): SecKeyUsage = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecKeyUsage value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecAccess.h:49:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecAccess_h_49_1_(val value: Long) {
-    kSecUseOnlyUID(1L), kSecUseOnlyGID(2L), kSecHonorRoot(256L), kSecMatchBits(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecAccess_h_49_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecAccess_h_49_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecKey.h:124:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKey_h_124_1_(val value: Long) {
-    kSecKeyKeyClass(0L), kSecKeyPrintName(1L), kSecKeyAlias(2L), kSecKeyPermanent(3L), kSecKeyPrivate(4L), kSecKeyModifiable(5L), kSecKeyLabel(6L), kSecKeyApplicationTag(7L), kSecKeyKeyCreator(8L), kSecKeyKeyType(9L), kSecKeyKeySizeInBits(10L), kSecKeyEffectiveKeySize(11L), kSecKeyStartDate(12L), kSecKeyEndDate(13L), kSecKeySensitive(14L), kSecKeyAlwaysSensitive(15L), kSecKeyExtractable(16L), kSecKeyNeverExtractable(17L), kSecKeyEncrypt(18L), kSecKeyDecrypt(19L), kSecKeyDerive(20L), kSecKeySign(21L), kSecKeyVerify(22L), kSecKeySignRecover(23L), kSecKeyVerifyRecover(24L), kSecKeyWrap(25L), kSecKeyUnwrap(26L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKey_h_124_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKey_h_124_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecCredentialType}
- */
-enum class SecCredentialType(val value: Long) {
-    kSecCredentialTypeDefault(0L), kSecCredentialTypeWithUI(1L), kSecCredentialTypeNoUI(2L);
-
-    companion object {
-        fun fromValue(v: Long): SecCredentialType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecCredentialType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecPadding}
- */
-enum class SecPadding(val value: Long) {
-    kSecPaddingNone(0L), kSecPaddingPKCS1(1L), kSecPaddingOAEP(2L), kSecPaddingSigRaw(16384L), kSecPaddingPKCS1MD2(32768L), kSecPaddingPKCS1MD5(32769L), kSecPaddingPKCS1SHA1(32770L), kSecPaddingPKCS1SHA224(32771L), kSecPaddingPKCS1SHA256(32772L), kSecPaddingPKCS1SHA384(32773L), kSecPaddingPKCS1SHA512(32774L);
-
-    companion object {
-        fun fromValue(v: Long): SecPadding = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecPadding value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecKeySizes}
- */
-enum class SecKeySizes(val value: Long) {
-    kSecDefaultKeySize(0L), kSec3DES192(192L), kSecAES128(128L), kSecAES192(192L), kSecAES256(256L), kSecp192r1(192L), kSecp256r1(256L), kSecp384r1(384L), kSecp521r1(521L), kSecRSAMin(1024L), kSecRSAMax(4096L);
-
-    companion object {
-        fun fromValue(v: Long): SecKeySizes = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecKeySizes value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecKeyOperationType}
- */
-enum class SecKeyOperationType(val value: Long) {
-    kSecKeyOperationTypeSign(0L), kSecKeyOperationTypeVerify(1L), kSecKeyOperationTypeEncrypt(2L), kSecKeyOperationTypeDecrypt(3L), kSecKeyOperationTypeKeyExchange(4L);
-
-    companion object {
-        fun fromValue(v: Long): SecKeyOperationType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecKeyOperationType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecPolicy.h:222:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecPolicy_h_222_1_(val value: Long) {
-    kSecRevocationOCSPMethod(1L), kSecRevocationCRLMethod(2L), kSecRevocationPreferCRL(4L), kSecRevocationRequirePositiveResponse(8L), kSecRevocationNetworkAccessDisabled(16L), kSecRevocationUseAnyAvailableMethod(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecPolicy_h_222_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecPolicy_h_222_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:55:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_55_1_(val value: Long) {
-    CSSM_BASE_ERROR(-2147418112L), CSSM_ERRORCODE_MODULE_EXTENT(2048L), CSSM_ERRORCODE_CUSTOM_OFFSET(1024L), CSSM_ERRORCODE_COMMON_EXTENT(256L), CSSM_CSSM_BASE_ERROR(-2147418112L), CSSM_CSSM_PRIVATE_ERROR(-2147417088L), CSSM_CSP_BASE_ERROR(-2147416064L), CSSM_CSP_PRIVATE_ERROR(-2147415040L), CSSM_DL_BASE_ERROR(-2147414016L), CSSM_DL_PRIVATE_ERROR(-2147412992L), CSSM_CL_BASE_ERROR(-2147411968L), CSSM_CL_PRIVATE_ERROR(-2147410944L), CSSM_TP_BASE_ERROR(-2147409920L), CSSM_TP_PRIVATE_ERROR(-2147408896L), CSSM_KR_BASE_ERROR(-2147407872L), CSSM_KR_PRIVATE_ERROR(-2147406848L), CSSM_AC_BASE_ERROR(-2147405824L), CSSM_AC_PRIVATE_ERROR(-2147404800L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_55_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_55_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:79:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_79_1_(val value: Long) {
-    CSSM_MDS_BASE_ERROR(-2147414016L), CSSM_MDS_PRIVATE_ERROR(-2147412992L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_79_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_79_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:85:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_85_1_(val value: Long) {
-    CSSMERR_CSSM_INVALID_ADDIN_HANDLE(-2147417855L), CSSMERR_CSSM_NOT_INITIALIZED(-2147417854L), CSSMERR_CSSM_INVALID_HANDLE_USAGE(-2147417853L), CSSMERR_CSSM_PVC_REFERENT_NOT_FOUND(-2147417852L), CSSMERR_CSSM_FUNCTION_INTEGRITY_FAIL(-2147417851L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_85_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_85_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:94:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_94_1_(val value: Long) {
-    CSSM_ERRCODE_INTERNAL_ERROR(1L), CSSM_ERRCODE_MEMORY_ERROR(2L), CSSM_ERRCODE_MDS_ERROR(3L), CSSM_ERRCODE_INVALID_POINTER(4L), CSSM_ERRCODE_INVALID_INPUT_POINTER(5L), CSSM_ERRCODE_INVALID_OUTPUT_POINTER(6L), CSSM_ERRCODE_FUNCTION_NOT_IMPLEMENTED(7L), CSSM_ERRCODE_SELF_CHECK_FAILED(8L), CSSM_ERRCODE_OS_ACCESS_DENIED(9L), CSSM_ERRCODE_FUNCTION_FAILED(10L), CSSM_ERRCODE_MODULE_MANIFEST_VERIFY_FAILED(11L), CSSM_ERRCODE_INVALID_GUID(12L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_94_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_94_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:110:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_110_1_(val value: Long) {
-    CSSM_ERRCODE_OPERATION_AUTH_DENIED(32L), CSSM_ERRCODE_OBJECT_USE_AUTH_DENIED(33L), CSSM_ERRCODE_OBJECT_MANIP_AUTH_DENIED(34L), CSSM_ERRCODE_OBJECT_ACL_NOT_SUPPORTED(35L), CSSM_ERRCODE_OBJECT_ACL_REQUIRED(36L), CSSM_ERRCODE_INVALID_ACCESS_CREDENTIALS(37L), CSSM_ERRCODE_INVALID_ACL_BASE_CERTS(38L), CSSM_ERRCODE_ACL_BASE_CERTS_NOT_SUPPORTED(39L), CSSM_ERRCODE_INVALID_SAMPLE_VALUE(40L), CSSM_ERRCODE_SAMPLE_VALUE_NOT_SUPPORTED(41L), CSSM_ERRCODE_INVALID_ACL_SUBJECT_VALUE(42L), CSSM_ERRCODE_ACL_SUBJECT_TYPE_NOT_SUPPORTED(43L), CSSM_ERRCODE_INVALID_ACL_CHALLENGE_CALLBACK(44L), CSSM_ERRCODE_ACL_CHALLENGE_CALLBACK_FAILED(45L), CSSM_ERRCODE_INVALID_ACL_ENTRY_TAG(46L), CSSM_ERRCODE_ACL_ENTRY_TAG_NOT_FOUND(47L), CSSM_ERRCODE_INVALID_ACL_EDIT_MODE(48L), CSSM_ERRCODE_ACL_CHANGE_FAILED(49L), CSSM_ERRCODE_INVALID_NEW_ACL_ENTRY(50L), CSSM_ERRCODE_INVALID_NEW_ACL_OWNER(51L), CSSM_ERRCODE_ACL_DELETE_FAILED(52L), CSSM_ERRCODE_ACL_REPLACE_FAILED(53L), CSSM_ERRCODE_ACL_ADD_FAILED(54L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_110_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_110_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:137:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_137_1_(val value: Long) {
-    CSSM_ERRCODE_INVALID_CONTEXT_HANDLE(64L), CSSM_ERRCODE_INCOMPATIBLE_VERSION(65L), CSSM_ERRCODE_INVALID_CERTGROUP_POINTER(66L), CSSM_ERRCODE_INVALID_CERT_POINTER(67L), CSSM_ERRCODE_INVALID_CRL_POINTER(68L), CSSM_ERRCODE_INVALID_FIELD_POINTER(69L), CSSM_ERRCODE_INVALID_DATA(70L), CSSM_ERRCODE_CRL_ALREADY_SIGNED(71L), CSSM_ERRCODE_INVALID_NUMBER_OF_FIELDS(72L), CSSM_ERRCODE_VERIFICATION_FAILURE(73L), CSSM_ERRCODE_INVALID_DB_HANDLE(74L), CSSM_ERRCODE_PRIVILEGE_NOT_GRANTED(75L), CSSM_ERRCODE_INVALID_DB_LIST(76L), CSSM_ERRCODE_INVALID_DB_LIST_POINTER(77L), CSSM_ERRCODE_UNKNOWN_FORMAT(78L), CSSM_ERRCODE_UNKNOWN_TAG(79L), CSSM_ERRCODE_INVALID_CSP_HANDLE(80L), CSSM_ERRCODE_INVALID_DL_HANDLE(81L), CSSM_ERRCODE_INVALID_CL_HANDLE(82L), CSSM_ERRCODE_INVALID_TP_HANDLE(83L), CSSM_ERRCODE_INVALID_KR_HANDLE(84L), CSSM_ERRCODE_INVALID_AC_HANDLE(85L), CSSM_ERRCODE_INVALID_PASSTHROUGH_ID(86L), CSSM_ERRCODE_INVALID_NETWORK_ADDR(87L), CSSM_ERRCODE_INVALID_CRYPTO_DATA(88L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_137_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_137_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:166:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_166_1_(val value: Long) {
-    CSSMERR_CSSM_INTERNAL_ERROR(-2147418111L), CSSMERR_CSSM_MEMORY_ERROR(-2147418110L), CSSMERR_CSSM_MDS_ERROR(-2147418109L), CSSMERR_CSSM_INVALID_POINTER(-2147418108L), CSSMERR_CSSM_INVALID_INPUT_POINTER(-2147418107L), CSSMERR_CSSM_INVALID_OUTPUT_POINTER(-2147418106L), CSSMERR_CSSM_FUNCTION_NOT_IMPLEMENTED(-2147418105L), CSSMERR_CSSM_SELF_CHECK_FAILED(-2147418104L), CSSMERR_CSSM_OS_ACCESS_DENIED(-2147418103L), CSSMERR_CSSM_FUNCTION_FAILED(-2147418102L), CSSMERR_CSSM_MODULE_MANIFEST_VERIFY_FAILED(-2147418101L), CSSMERR_CSSM_INVALID_GUID(-2147418100L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_166_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_166_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:182:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_182_1_(val value: Long) {
-    CSSMERR_CSSM_INVALID_CONTEXT_HANDLE(-2147418048L), CSSMERR_CSSM_INCOMPATIBLE_VERSION(-2147418047L), CSSMERR_CSSM_PRIVILEGE_NOT_GRANTED(-2147418037L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_182_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_182_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:189:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_189_1_(val value: Long) {
-    CSSM_CSSM_BASE_CSSM_ERROR(-2147417840L), CSSMERR_CSSM_SCOPE_NOT_SUPPORTED(-2147417839L), CSSMERR_CSSM_PVC_ALREADY_CONFIGURED(-2147417838L), CSSMERR_CSSM_INVALID_PVC(-2147417837L), CSSMERR_CSSM_EMM_LOAD_FAILED(-2147417836L), CSSMERR_CSSM_EMM_UNLOAD_FAILED(-2147417835L), CSSMERR_CSSM_ADDIN_LOAD_FAILED(-2147417834L), CSSMERR_CSSM_INVALID_KEY_HIERARCHY(-2147417833L), CSSMERR_CSSM_ADDIN_UNLOAD_FAILED(-2147417832L), CSSMERR_CSSM_LIB_REF_NOT_FOUND(-2147417831L), CSSMERR_CSSM_INVALID_ADDIN_FUNCTION_TABLE(-2147417830L), CSSMERR_CSSM_EMM_AUTHENTICATE_FAILED(-2147417829L), CSSMERR_CSSM_ADDIN_AUTHENTICATE_FAILED(-2147417828L), CSSMERR_CSSM_INVALID_SERVICE_MASK(-2147417827L), CSSMERR_CSSM_MODULE_NOT_LOADED(-2147417826L), CSSMERR_CSSM_INVALID_SUBSERVICEID(-2147417825L), CSSMERR_CSSM_BUFFER_TOO_SMALL(-2147417824L), CSSMERR_CSSM_INVALID_ATTRIBUTE(-2147417823L), CSSMERR_CSSM_ATTRIBUTE_NOT_IN_CONTEXT(-2147417822L), CSSMERR_CSSM_MODULE_MANAGER_INITIALIZE_FAIL(-2147417821L), CSSMERR_CSSM_MODULE_MANAGER_NOT_FOUND(-2147417820L), CSSMERR_CSSM_EVENT_NOTIFICATION_CALLBACK_NOT_FOUND(-2147417819L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_189_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_189_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:216:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_216_1_(val value: Long) {
-    CSSMERR_CSP_INTERNAL_ERROR(-2147416063L), CSSMERR_CSP_MEMORY_ERROR(-2147416062L), CSSMERR_CSP_MDS_ERROR(-2147416061L), CSSMERR_CSP_INVALID_POINTER(-2147416060L), CSSMERR_CSP_INVALID_INPUT_POINTER(-2147416059L), CSSMERR_CSP_INVALID_OUTPUT_POINTER(-2147416058L), CSSMERR_CSP_FUNCTION_NOT_IMPLEMENTED(-2147416057L), CSSMERR_CSP_SELF_CHECK_FAILED(-2147416056L), CSSMERR_CSP_OS_ACCESS_DENIED(-2147416055L), CSSMERR_CSP_FUNCTION_FAILED(-2147416054L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_216_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_216_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:230:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_230_1_(val value: Long) {
-    CSSMERR_CSP_OPERATION_AUTH_DENIED(-2147416032L), CSSMERR_CSP_OBJECT_USE_AUTH_DENIED(-2147416031L), CSSMERR_CSP_OBJECT_MANIP_AUTH_DENIED(-2147416030L), CSSMERR_CSP_OBJECT_ACL_NOT_SUPPORTED(-2147416029L), CSSMERR_CSP_OBJECT_ACL_REQUIRED(-2147416028L), CSSMERR_CSP_INVALID_ACCESS_CREDENTIALS(-2147416027L), CSSMERR_CSP_INVALID_ACL_BASE_CERTS(-2147416026L), CSSMERR_CSP_ACL_BASE_CERTS_NOT_SUPPORTED(-2147416025L), CSSMERR_CSP_INVALID_SAMPLE_VALUE(-2147416024L), CSSMERR_CSP_SAMPLE_VALUE_NOT_SUPPORTED(-2147416023L), CSSMERR_CSP_INVALID_ACL_SUBJECT_VALUE(-2147416022L), CSSMERR_CSP_ACL_SUBJECT_TYPE_NOT_SUPPORTED(-2147416021L), CSSMERR_CSP_INVALID_ACL_CHALLENGE_CALLBACK(-2147416020L), CSSMERR_CSP_ACL_CHALLENGE_CALLBACK_FAILED(-2147416019L), CSSMERR_CSP_INVALID_ACL_ENTRY_TAG(-2147416018L), CSSMERR_CSP_ACL_ENTRY_TAG_NOT_FOUND(-2147416017L), CSSMERR_CSP_INVALID_ACL_EDIT_MODE(-2147416016L), CSSMERR_CSP_ACL_CHANGE_FAILED(-2147416015L), CSSMERR_CSP_INVALID_NEW_ACL_ENTRY(-2147416014L), CSSMERR_CSP_INVALID_NEW_ACL_OWNER(-2147416013L), CSSMERR_CSP_ACL_DELETE_FAILED(-2147416012L), CSSMERR_CSP_ACL_REPLACE_FAILED(-2147416011L), CSSMERR_CSP_ACL_ADD_FAILED(-2147416010L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_230_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_230_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:257:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_257_1_(val value: Long) {
-    CSSMERR_CSP_INVALID_CONTEXT_HANDLE(-2147416000L), CSSMERR_CSP_PRIVILEGE_NOT_GRANTED(-2147415989L), CSSMERR_CSP_INVALID_DATA(-2147415994L), CSSMERR_CSP_INVALID_PASSTHROUGH_ID(-2147415978L), CSSMERR_CSP_INVALID_CRYPTO_DATA(-2147415976L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_257_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_257_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:266:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_266_1_(val value: Long) {
-    CSSM_CSP_BASE_CSP_ERROR(-2147415808L), CSSMERR_CSP_INPUT_LENGTH_ERROR(-2147415807L), CSSMERR_CSP_OUTPUT_LENGTH_ERROR(-2147415806L), CSSMERR_CSP_PRIVILEGE_NOT_SUPPORTED(-2147415805L), CSSMERR_CSP_DEVICE_ERROR(-2147415804L), CSSMERR_CSP_DEVICE_MEMORY_ERROR(-2147415803L), CSSMERR_CSP_ATTACH_HANDLE_BUSY(-2147415802L), CSSMERR_CSP_NOT_LOGGED_IN(-2147415801L), CSSMERR_CSP_INVALID_KEY(-2147415792L), CSSMERR_CSP_INVALID_KEY_REFERENCE(-2147415791L), CSSMERR_CSP_INVALID_KEY_CLASS(-2147415790L), CSSMERR_CSP_ALGID_MISMATCH(-2147415789L), CSSMERR_CSP_KEY_USAGE_INCORRECT(-2147415788L), CSSMERR_CSP_KEY_BLOB_TYPE_INCORRECT(-2147415787L), CSSMERR_CSP_KEY_HEADER_INCONSISTENT(-2147415786L), CSSMERR_CSP_UNSUPPORTED_KEY_FORMAT(-2147415785L), CSSMERR_CSP_UNSUPPORTED_KEY_SIZE(-2147415784L), CSSMERR_CSP_INVALID_KEY_POINTER(-2147415783L), CSSMERR_CSP_INVALID_KEYUSAGE_MASK(-2147415782L), CSSMERR_CSP_UNSUPPORTED_KEYUSAGE_MASK(-2147415781L), CSSMERR_CSP_INVALID_KEYATTR_MASK(-2147415780L), CSSMERR_CSP_UNSUPPORTED_KEYATTR_MASK(-2147415779L), CSSMERR_CSP_INVALID_KEY_LABEL(-2147415778L), CSSMERR_CSP_UNSUPPORTED_KEY_LABEL(-2147415777L), CSSMERR_CSP_INVALID_KEY_FORMAT(-2147415776L), CSSMERR_CSP_INVALID_DATA_COUNT(-2147415768L), CSSMERR_CSP_VECTOR_OF_BUFS_UNSUPPORTED(-2147415767L), CSSMERR_CSP_INVALID_INPUT_VECTOR(-2147415766L), CSSMERR_CSP_INVALID_OUTPUT_VECTOR(-2147415765L), CSSMERR_CSP_INVALID_CONTEXT(-2147415760L), CSSMERR_CSP_INVALID_ALGORITHM(-2147415759L), CSSMERR_CSP_INVALID_ATTR_KEY(-2147415754L), CSSMERR_CSP_MISSING_ATTR_KEY(-2147415753L), CSSMERR_CSP_INVALID_ATTR_INIT_VECTOR(-2147415752L), CSSMERR_CSP_MISSING_ATTR_INIT_VECTOR(-2147415751L), CSSMERR_CSP_INVALID_ATTR_SALT(-2147415750L), CSSMERR_CSP_MISSING_ATTR_SALT(-2147415749L), CSSMERR_CSP_INVALID_ATTR_PADDING(-2147415748L), CSSMERR_CSP_MISSING_ATTR_PADDING(-2147415747L), CSSMERR_CSP_INVALID_ATTR_RANDOM(-2147415746L), CSSMERR_CSP_MISSING_ATTR_RANDOM(-2147415745L), CSSMERR_CSP_INVALID_ATTR_SEED(-2147415744L), CSSMERR_CSP_MISSING_ATTR_SEED(-2147415743L), CSSMERR_CSP_INVALID_ATTR_PASSPHRASE(-2147415742L), CSSMERR_CSP_MISSING_ATTR_PASSPHRASE(-2147415741L), CSSMERR_CSP_INVALID_ATTR_KEY_LENGTH(-2147415740L), CSSMERR_CSP_MISSING_ATTR_KEY_LENGTH(-2147415739L), CSSMERR_CSP_INVALID_ATTR_BLOCK_SIZE(-2147415738L), CSSMERR_CSP_MISSING_ATTR_BLOCK_SIZE(-2147415737L), CSSMERR_CSP_INVALID_ATTR_OUTPUT_SIZE(-2147415708L), CSSMERR_CSP_MISSING_ATTR_OUTPUT_SIZE(-2147415707L), CSSMERR_CSP_INVALID_ATTR_ROUNDS(-2147415706L), CSSMERR_CSP_MISSING_ATTR_ROUNDS(-2147415705L), CSSMERR_CSP_INVALID_ATTR_ALG_PARAMS(-2147415704L), CSSMERR_CSP_MISSING_ATTR_ALG_PARAMS(-2147415703L), CSSMERR_CSP_INVALID_ATTR_LABEL(-2147415702L), CSSMERR_CSP_MISSING_ATTR_LABEL(-2147415701L), CSSMERR_CSP_INVALID_ATTR_KEY_TYPE(-2147415700L), CSSMERR_CSP_MISSING_ATTR_KEY_TYPE(-2147415699L), CSSMERR_CSP_INVALID_ATTR_MODE(-2147415698L), CSSMERR_CSP_MISSING_ATTR_MODE(-2147415697L), CSSMERR_CSP_INVALID_ATTR_EFFECTIVE_BITS(-2147415696L), CSSMERR_CSP_MISSING_ATTR_EFFECTIVE_BITS(-2147415695L), CSSMERR_CSP_INVALID_ATTR_START_DATE(-2147415694L), CSSMERR_CSP_MISSING_ATTR_START_DATE(-2147415693L), CSSMERR_CSP_INVALID_ATTR_END_DATE(-2147415692L), CSSMERR_CSP_MISSING_ATTR_END_DATE(-2147415691L), CSSMERR_CSP_INVALID_ATTR_VERSION(-2147415690L), CSSMERR_CSP_MISSING_ATTR_VERSION(-2147415689L), CSSMERR_CSP_INVALID_ATTR_PRIME(-2147415688L), CSSMERR_CSP_MISSING_ATTR_PRIME(-2147415687L), CSSMERR_CSP_INVALID_ATTR_BASE(-2147415686L), CSSMERR_CSP_MISSING_ATTR_BASE(-2147415685L), CSSMERR_CSP_INVALID_ATTR_SUBPRIME(-2147415684L), CSSMERR_CSP_MISSING_ATTR_SUBPRIME(-2147415683L), CSSMERR_CSP_INVALID_ATTR_ITERATION_COUNT(-2147415682L), CSSMERR_CSP_MISSING_ATTR_ITERATION_COUNT(-2147415681L), CSSMERR_CSP_INVALID_ATTR_DL_DB_HANDLE(-2147415680L), CSSMERR_CSP_MISSING_ATTR_DL_DB_HANDLE(-2147415679L), CSSMERR_CSP_INVALID_ATTR_ACCESS_CREDENTIALS(-2147415678L), CSSMERR_CSP_MISSING_ATTR_ACCESS_CREDENTIALS(-2147415677L), CSSMERR_CSP_INVALID_ATTR_PUBLIC_KEY_FORMAT(-2147415676L), CSSMERR_CSP_MISSING_ATTR_PUBLIC_KEY_FORMAT(-2147415675L), CSSMERR_CSP_INVALID_ATTR_PRIVATE_KEY_FORMAT(-2147415674L), CSSMERR_CSP_MISSING_ATTR_PRIVATE_KEY_FORMAT(-2147415673L), CSSMERR_CSP_INVALID_ATTR_SYMMETRIC_KEY_FORMAT(-2147415672L), CSSMERR_CSP_MISSING_ATTR_SYMMETRIC_KEY_FORMAT(-2147415671L), CSSMERR_CSP_INVALID_ATTR_WRAPPED_KEY_FORMAT(-2147415670L), CSSMERR_CSP_MISSING_ATTR_WRAPPED_KEY_FORMAT(-2147415669L), CSSMERR_CSP_STAGED_OPERATION_IN_PROGRESS(-2147415736L), CSSMERR_CSP_STAGED_OPERATION_NOT_STARTED(-2147415735L), CSSMERR_CSP_VERIFY_FAILED(-2147415734L), CSSMERR_CSP_INVALID_SIGNATURE(-2147415733L), CSSMERR_CSP_QUERY_SIZE_UNKNOWN(-2147415732L), CSSMERR_CSP_BLOCK_SIZE_MISMATCH(-2147415731L), CSSMERR_CSP_PRIVATE_KEY_NOT_FOUND(-2147415730L), CSSMERR_CSP_PUBLIC_KEY_INCONSISTENT(-2147415729L), CSSMERR_CSP_DEVICE_VERIFY_FAILED(-2147415728L), CSSMERR_CSP_INVALID_LOGIN_NAME(-2147415727L), CSSMERR_CSP_ALREADY_LOGGED_IN(-2147415726L), CSSMERR_CSP_PRIVATE_KEY_ALREADY_EXISTS(-2147415725L), CSSMERR_CSP_KEY_LABEL_ALREADY_EXISTS(-2147415724L), CSSMERR_CSP_INVALID_DIGEST_ALGORITHM(-2147415723L), CSSMERR_CSP_CRYPTO_DATA_CALLBACK_FAILED(-2147415722L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_266_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_266_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:380:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_380_1_(val value: Long) {
-    CSSMERR_TP_INTERNAL_ERROR(-2147409919L), CSSMERR_TP_MEMORY_ERROR(-2147409918L), CSSMERR_TP_MDS_ERROR(-2147409917L), CSSMERR_TP_INVALID_POINTER(-2147409916L), CSSMERR_TP_INVALID_INPUT_POINTER(-2147409915L), CSSMERR_TP_INVALID_OUTPUT_POINTER(-2147409914L), CSSMERR_TP_FUNCTION_NOT_IMPLEMENTED(-2147409913L), CSSMERR_TP_SELF_CHECK_FAILED(-2147409912L), CSSMERR_TP_OS_ACCESS_DENIED(-2147409911L), CSSMERR_TP_FUNCTION_FAILED(-2147409910L), CSSMERR_TP_INVALID_CONTEXT_HANDLE(-2147409856L), CSSMERR_TP_INVALID_DATA(-2147409850L), CSSMERR_TP_INVALID_DB_LIST(-2147409844L), CSSMERR_TP_INVALID_CERTGROUP_POINTER(-2147409854L), CSSMERR_TP_INVALID_CERT_POINTER(-2147409853L), CSSMERR_TP_INVALID_CRL_POINTER(-2147409852L), CSSMERR_TP_INVALID_FIELD_POINTER(-2147409851L), CSSMERR_TP_INVALID_NETWORK_ADDR(-2147409833L), CSSMERR_TP_CRL_ALREADY_SIGNED(-2147409849L), CSSMERR_TP_INVALID_NUMBER_OF_FIELDS(-2147409848L), CSSMERR_TP_VERIFICATION_FAILURE(-2147409847L), CSSMERR_TP_INVALID_DB_HANDLE(-2147409846L), CSSMERR_TP_UNKNOWN_FORMAT(-2147409842L), CSSMERR_TP_UNKNOWN_TAG(-2147409841L), CSSMERR_TP_INVALID_PASSTHROUGH_ID(-2147409834L), CSSMERR_TP_INVALID_CSP_HANDLE(-2147409840L), CSSMERR_TP_INVALID_DL_HANDLE(-2147409839L), CSSMERR_TP_INVALID_CL_HANDLE(-2147409838L), CSSMERR_TP_INVALID_DB_LIST_POINTER(-2147409843L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_380_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_380_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:413:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_413_1_(val value: Long) {
-    CSSM_TP_BASE_TP_ERROR(-2147409664L), CSSMERR_TP_INVALID_CALLERAUTH_CONTEXT_POINTER(-2147409663L), CSSMERR_TP_INVALID_IDENTIFIER_POINTER(-2147409662L), CSSMERR_TP_INVALID_KEYCACHE_HANDLE(-2147409661L), CSSMERR_TP_INVALID_CERTGROUP(-2147409660L), CSSMERR_TP_INVALID_CRLGROUP(-2147409659L), CSSMERR_TP_INVALID_CRLGROUP_POINTER(-2147409658L), CSSMERR_TP_AUTHENTICATION_FAILED(-2147409657L), CSSMERR_TP_CERTGROUP_INCOMPLETE(-2147409656L), CSSMERR_TP_CERTIFICATE_CANT_OPERATE(-2147409655L), CSSMERR_TP_CERT_EXPIRED(-2147409654L), CSSMERR_TP_CERT_NOT_VALID_YET(-2147409653L), CSSMERR_TP_CERT_REVOKED(-2147409652L), CSSMERR_TP_CERT_SUSPENDED(-2147409651L), CSSMERR_TP_INSUFFICIENT_CREDENTIALS(-2147409650L), CSSMERR_TP_INVALID_ACTION(-2147409649L), CSSMERR_TP_INVALID_ACTION_DATA(-2147409648L), CSSMERR_TP_INVALID_ANCHOR_CERT(-2147409646L), CSSMERR_TP_INVALID_AUTHORITY(-2147409645L), CSSMERR_TP_VERIFY_ACTION_FAILED(-2147409644L), CSSMERR_TP_INVALID_CERTIFICATE(-2147409643L), CSSMERR_TP_INVALID_CERT_AUTHORITY(-2147409642L), CSSMERR_TP_INVALID_CRL_AUTHORITY(-2147409641L), CSSMERR_TP_INVALID_CRL_ENCODING(-2147409640L), CSSMERR_TP_INVALID_CRL_TYPE(-2147409639L), CSSMERR_TP_INVALID_CRL(-2147409638L), CSSMERR_TP_INVALID_FORM_TYPE(-2147409637L), CSSMERR_TP_INVALID_ID(-2147409636L), CSSMERR_TP_INVALID_IDENTIFIER(-2147409635L), CSSMERR_TP_INVALID_INDEX(-2147409634L), CSSMERR_TP_INVALID_NAME(-2147409633L), CSSMERR_TP_INVALID_POLICY_IDENTIFIERS(-2147409632L), CSSMERR_TP_INVALID_TIMESTRING(-2147409631L), CSSMERR_TP_INVALID_REASON(-2147409630L), CSSMERR_TP_INVALID_REQUEST_INPUTS(-2147409629L), CSSMERR_TP_INVALID_RESPONSE_VECTOR(-2147409628L), CSSMERR_TP_INVALID_SIGNATURE(-2147409627L), CSSMERR_TP_INVALID_STOP_ON_POLICY(-2147409626L), CSSMERR_TP_INVALID_CALLBACK(-2147409625L), CSSMERR_TP_INVALID_TUPLE(-2147409624L), CSSMERR_TP_NOT_SIGNER(-2147409623L), CSSMERR_TP_NOT_TRUSTED(-2147409622L), CSSMERR_TP_NO_DEFAULT_AUTHORITY(-2147409621L), CSSMERR_TP_REJECTED_FORM(-2147409620L), CSSMERR_TP_REQUEST_LOST(-2147409619L), CSSMERR_TP_REQUEST_REJECTED(-2147409618L), CSSMERR_TP_UNSUPPORTED_ADDR_TYPE(-2147409617L), CSSMERR_TP_UNSUPPORTED_SERVICE(-2147409616L), CSSMERR_TP_INVALID_TUPLEGROUP_POINTER(-2147409615L), CSSMERR_TP_INVALID_TUPLEGROUP(-2147409614L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_413_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_413_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:468:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_468_1_(val value: Long) {
-    CSSMERR_AC_INTERNAL_ERROR(-2147405823L), CSSMERR_AC_MEMORY_ERROR(-2147405822L), CSSMERR_AC_MDS_ERROR(-2147405821L), CSSMERR_AC_INVALID_POINTER(-2147405820L), CSSMERR_AC_INVALID_INPUT_POINTER(-2147405819L), CSSMERR_AC_INVALID_OUTPUT_POINTER(-2147405818L), CSSMERR_AC_FUNCTION_NOT_IMPLEMENTED(-2147405817L), CSSMERR_AC_SELF_CHECK_FAILED(-2147405816L), CSSMERR_AC_OS_ACCESS_DENIED(-2147405815L), CSSMERR_AC_FUNCTION_FAILED(-2147405814L), CSSMERR_AC_INVALID_CONTEXT_HANDLE(-2147405760L), CSSMERR_AC_INVALID_DATA(-2147405754L), CSSMERR_AC_INVALID_DB_LIST(-2147405748L), CSSMERR_AC_INVALID_PASSTHROUGH_ID(-2147405738L), CSSMERR_AC_INVALID_DL_HANDLE(-2147405743L), CSSMERR_AC_INVALID_CL_HANDLE(-2147405742L), CSSMERR_AC_INVALID_TP_HANDLE(-2147405741L), CSSMERR_AC_INVALID_DB_HANDLE(-2147405750L), CSSMERR_AC_INVALID_DB_LIST_POINTER(-2147405747L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_468_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_468_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:491:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_491_1_(val value: Long) {
-    CSSM_AC_BASE_AC_ERROR(-2147405568L), CSSMERR_AC_INVALID_BASE_ACLS(-2147405567L), CSSMERR_AC_INVALID_TUPLE_CREDENTIALS(-2147405566L), CSSMERR_AC_INVALID_ENCODING(-2147405565L), CSSMERR_AC_INVALID_VALIDITY_PERIOD(-2147405564L), CSSMERR_AC_INVALID_REQUESTOR(-2147405563L), CSSMERR_AC_INVALID_REQUEST_DESCRIPTOR(-2147405562L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_491_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_491_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:503:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_503_1_(val value: Long) {
-    CSSMERR_CL_INTERNAL_ERROR(-2147411967L), CSSMERR_CL_MEMORY_ERROR(-2147411966L), CSSMERR_CL_MDS_ERROR(-2147411965L), CSSMERR_CL_INVALID_POINTER(-2147411964L), CSSMERR_CL_INVALID_INPUT_POINTER(-2147411963L), CSSMERR_CL_INVALID_OUTPUT_POINTER(-2147411962L), CSSMERR_CL_FUNCTION_NOT_IMPLEMENTED(-2147411961L), CSSMERR_CL_SELF_CHECK_FAILED(-2147411960L), CSSMERR_CL_OS_ACCESS_DENIED(-2147411959L), CSSMERR_CL_FUNCTION_FAILED(-2147411958L), CSSMERR_CL_INVALID_CONTEXT_HANDLE(-2147411904L), CSSMERR_CL_INVALID_CERTGROUP_POINTER(-2147411902L), CSSMERR_CL_INVALID_CERT_POINTER(-2147411901L), CSSMERR_CL_INVALID_CRL_POINTER(-2147411900L), CSSMERR_CL_INVALID_FIELD_POINTER(-2147411899L), CSSMERR_CL_INVALID_DATA(-2147411898L), CSSMERR_CL_CRL_ALREADY_SIGNED(-2147411897L), CSSMERR_CL_INVALID_NUMBER_OF_FIELDS(-2147411896L), CSSMERR_CL_VERIFICATION_FAILURE(-2147411895L), CSSMERR_CL_UNKNOWN_FORMAT(-2147411890L), CSSMERR_CL_UNKNOWN_TAG(-2147411889L), CSSMERR_CL_INVALID_PASSTHROUGH_ID(-2147411882L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_503_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_503_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:529:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_529_1_(val value: Long) {
-    CSSM_CL_BASE_CL_ERROR(-2147411712L), CSSMERR_CL_INVALID_BUNDLE_POINTER(-2147411711L), CSSMERR_CL_INVALID_CACHE_HANDLE(-2147411710L), CSSMERR_CL_INVALID_RESULTS_HANDLE(-2147411709L), CSSMERR_CL_INVALID_BUNDLE_INFO(-2147411708L), CSSMERR_CL_INVALID_CRL_INDEX(-2147411707L), CSSMERR_CL_INVALID_SCOPE(-2147411706L), CSSMERR_CL_NO_FIELD_VALUES(-2147411705L), CSSMERR_CL_SCOPE_NOT_SUPPORTED(-2147411704L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_529_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_529_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:543:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_543_1_(val value: Long) {
-    CSSMERR_DL_INTERNAL_ERROR(-2147414015L), CSSMERR_DL_MEMORY_ERROR(-2147414014L), CSSMERR_DL_MDS_ERROR(-2147414013L), CSSMERR_DL_INVALID_POINTER(-2147414012L), CSSMERR_DL_INVALID_INPUT_POINTER(-2147414011L), CSSMERR_DL_INVALID_OUTPUT_POINTER(-2147414010L), CSSMERR_DL_FUNCTION_NOT_IMPLEMENTED(-2147414009L), CSSMERR_DL_SELF_CHECK_FAILED(-2147414008L), CSSMERR_DL_OS_ACCESS_DENIED(-2147414007L), CSSMERR_DL_FUNCTION_FAILED(-2147414006L), CSSMERR_DL_INVALID_CSP_HANDLE(-2147413936L), CSSMERR_DL_INVALID_DL_HANDLE(-2147413935L), CSSMERR_DL_INVALID_CL_HANDLE(-2147413934L), CSSMERR_DL_INVALID_DB_LIST_POINTER(-2147413939L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_543_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_543_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:561:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_561_1_(val value: Long) {
-    CSSMERR_DL_OPERATION_AUTH_DENIED(-2147413984L), CSSMERR_DL_OBJECT_USE_AUTH_DENIED(-2147413983L), CSSMERR_DL_OBJECT_MANIP_AUTH_DENIED(-2147413982L), CSSMERR_DL_OBJECT_ACL_NOT_SUPPORTED(-2147413981L), CSSMERR_DL_OBJECT_ACL_REQUIRED(-2147413980L), CSSMERR_DL_INVALID_ACCESS_CREDENTIALS(-2147413979L), CSSMERR_DL_INVALID_ACL_BASE_CERTS(-2147413978L), CSSMERR_DL_ACL_BASE_CERTS_NOT_SUPPORTED(-2147413977L), CSSMERR_DL_INVALID_SAMPLE_VALUE(-2147413976L), CSSMERR_DL_SAMPLE_VALUE_NOT_SUPPORTED(-2147413975L), CSSMERR_DL_INVALID_ACL_SUBJECT_VALUE(-2147413974L), CSSMERR_DL_ACL_SUBJECT_TYPE_NOT_SUPPORTED(-2147413973L), CSSMERR_DL_INVALID_ACL_CHALLENGE_CALLBACK(-2147413972L), CSSMERR_DL_ACL_CHALLENGE_CALLBACK_FAILED(-2147413971L), CSSMERR_DL_INVALID_ACL_ENTRY_TAG(-2147413970L), CSSMERR_DL_ACL_ENTRY_TAG_NOT_FOUND(-2147413969L), CSSMERR_DL_INVALID_ACL_EDIT_MODE(-2147413968L), CSSMERR_DL_ACL_CHANGE_FAILED(-2147413967L), CSSMERR_DL_INVALID_NEW_ACL_ENTRY(-2147413966L), CSSMERR_DL_INVALID_NEW_ACL_OWNER(-2147413965L), CSSMERR_DL_ACL_DELETE_FAILED(-2147413964L), CSSMERR_DL_ACL_REPLACE_FAILED(-2147413963L), CSSMERR_DL_ACL_ADD_FAILED(-2147413962L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_561_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_561_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:588:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_588_1_(val value: Long) {
-    CSSMERR_DL_INVALID_DB_HANDLE(-2147413942L), CSSMERR_DL_INVALID_PASSTHROUGH_ID(-2147413930L), CSSMERR_DL_INVALID_NETWORK_ADDR(-2147413929L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_588_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_588_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmerr.h:595:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_595_1_(val value: Long) {
-    CSSM_DL_BASE_DL_ERROR(-2147413760L), CSSMERR_DL_DATABASE_CORRUPT(-2147413759L), CSSMERR_DL_INVALID_RECORD_INDEX(-2147413752L), CSSMERR_DL_INVALID_RECORDTYPE(-2147413751L), CSSMERR_DL_INVALID_FIELD_NAME(-2147413750L), CSSMERR_DL_UNSUPPORTED_FIELD_FORMAT(-2147413749L), CSSMERR_DL_UNSUPPORTED_INDEX_INFO(-2147413748L), CSSMERR_DL_UNSUPPORTED_LOCALITY(-2147413747L), CSSMERR_DL_UNSUPPORTED_NUM_ATTRIBUTES(-2147413746L), CSSMERR_DL_UNSUPPORTED_NUM_INDEXES(-2147413745L), CSSMERR_DL_UNSUPPORTED_NUM_RECORDTYPES(-2147413744L), CSSMERR_DL_UNSUPPORTED_RECORDTYPE(-2147413743L), CSSMERR_DL_FIELD_SPECIFIED_MULTIPLE(-2147413742L), CSSMERR_DL_INCOMPATIBLE_FIELD_FORMAT(-2147413741L), CSSMERR_DL_INVALID_PARSING_MODULE(-2147413740L), CSSMERR_DL_INVALID_DB_NAME(-2147413738L), CSSMERR_DL_DATASTORE_DOESNOT_EXIST(-2147413737L), CSSMERR_DL_DATASTORE_ALREADY_EXISTS(-2147413736L), CSSMERR_DL_DB_LOCKED(-2147413735L), CSSMERR_DL_DATASTORE_IS_OPEN(-2147413734L), CSSMERR_DL_RECORD_NOT_FOUND(-2147413733L), CSSMERR_DL_MISSING_VALUE(-2147413732L), CSSMERR_DL_UNSUPPORTED_QUERY(-2147413731L), CSSMERR_DL_UNSUPPORTED_QUERY_LIMITS(-2147413730L), CSSMERR_DL_UNSUPPORTED_NUM_SELECTION_PREDS(-2147413729L), CSSMERR_DL_UNSUPPORTED_OPERATOR(-2147413727L), CSSMERR_DL_INVALID_RESULTS_HANDLE(-2147413726L), CSSMERR_DL_INVALID_DB_LOCATION(-2147413725L), CSSMERR_DL_INVALID_ACCESS_REQUEST(-2147413724L), CSSMERR_DL_INVALID_INDEX_INFO(-2147413723L), CSSMERR_DL_INVALID_SELECTION_TAG(-2147413722L), CSSMERR_DL_INVALID_NEW_OWNER(-2147413721L), CSSMERR_DL_INVALID_RECORD_UID(-2147413720L), CSSMERR_DL_INVALID_UNIQUE_INDEX_DATA(-2147413719L), CSSMERR_DL_INVALID_MODIFY_MODE(-2147413718L), CSSMERR_DL_INVALID_OPEN_PARAMETERS(-2147413717L), CSSMERR_DL_RECORD_MODIFIED(-2147413716L), CSSMERR_DL_ENDOFDATA(-2147413715L), CSSMERR_DL_INVALID_QUERY(-2147413714L), CSSMERR_DL_INVALID_VALUE(-2147413713L), CSSMERR_DL_MULTIPLE_VALUES_UNSUPPORTED(-2147413712L), CSSMERR_DL_STALE_UNIQUE_RECORD(-2147413711L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_595_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmerr_h_595_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum __CE_GeneralNameType}
- */
-enum class _CE_GeneralNameType(val value: Long) {
-    GNT_OtherName(0L), GNT_RFC822Name(1L), GNT_DNSName(2L), GNT_X400Address(3L), GNT_DirectoryName(4L), GNT_EdiPartyName(5L), GNT_URI(6L), GNT_IPAddress(7L), GNT_RegisteredID(8L);
-
-    companion object {
-        fun fromValue(v: Long): _CE_GeneralNameType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown _CE_GeneralNameType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum __CE_CrlDistributionPointNameType}
- */
-enum class _CE_CrlDistributionPointNameType(val value: Long) {
-    CE_CDNT_FullName(0L), CE_CDNT_NameRelativeToCrlIssuer(1L);
-
-    companion object {
-        fun fromValue(v: Long): _CE_CrlDistributionPointNameType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown _CE_CrlDistributionPointNameType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum __CE_DataType}
- */
-enum class _CE_DataType(val value: Long) {
-    DT_AuthorityKeyID(0L), DT_SubjectKeyID(1L), DT_KeyUsage(2L), DT_SubjectAltName(3L), DT_IssuerAltName(4L), DT_ExtendedKeyUsage(5L), DT_BasicConstraints(6L), DT_CertPolicies(7L), DT_NetscapeCertType(8L), DT_CrlNumber(9L), DT_DeltaCrl(10L), DT_CrlReason(11L), DT_CrlDistributionPoints(12L), DT_IssuingDistributionPoint(13L), DT_AuthorityInfoAccess(14L), DT_Other(15L), DT_QC_Statements(16L), DT_NameConstraints(17L), DT_PolicyMappings(18L), DT_PolicyConstraints(19L), DT_InhibitAnyPolicy(20L);
-
-    companion object {
-        fun fromValue(v: Long): _CE_DataType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown _CE_DataType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:82:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_82_1_(val value: Long) {
-    CSSM_WORDID_KEYCHAIN_PROMPT(65536L), CSSM_WORDID_KEYCHAIN_LOCK(65537L), CSSM_WORDID_KEYCHAIN_CHANGE_LOCK(65538L), CSSM_WORDID_PROCESS(65539L), CSSM_WORDID_RESERVED_1(65540L), CSSM_WORDID_SYMMETRIC_KEY(65541L), CSSM_WORDID_SYSTEM(65542L), CSSM_WORDID_KEY(65543L), CSSM_WORDID_PIN(65544L), CSSM_WORDID_PREAUTH(65545L), CSSM_WORDID_PREAUTH_SOURCE(65546L), CSSM_WORDID_ASYMMETRIC_KEY(65547L), CSSM_WORDID_PARTITION(65548L), CSSM_WORDID_KEYBAG_KEY(65549L), CSSM_WORDID_FIRST_UNUSED(65550L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_82_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_82_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:102:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_102_1_(val value: Long) {
-    CSSM_ACL_SUBJECT_TYPE_KEYCHAIN_PROMPT(65536L), CSSM_ACL_SUBJECT_TYPE_PROCESS(65539L), CSSM_ACL_SUBJECT_TYPE_CODE_SIGNATURE(116L), CSSM_ACL_SUBJECT_TYPE_COMMENT(12L), CSSM_ACL_SUBJECT_TYPE_SYMMETRIC_KEY(65541L), CSSM_ACL_SUBJECT_TYPE_PREAUTH(65545L), CSSM_ACL_SUBJECT_TYPE_PREAUTH_SOURCE(65546L), CSSM_ACL_SUBJECT_TYPE_ASYMMETRIC_KEY(65547L), CSSM_ACL_SUBJECT_TYPE_PARTITION(65548L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_102_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_102_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:115:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_115_1_(val value: Long) {
-    CSSM_SAMPLE_TYPE_KEYCHAIN_PROMPT(65536L), CSSM_SAMPLE_TYPE_KEYCHAIN_LOCK(65537L), CSSM_SAMPLE_TYPE_KEYCHAIN_CHANGE_LOCK(65538L), CSSM_SAMPLE_TYPE_PROCESS(65539L), CSSM_SAMPLE_TYPE_COMMENT(12L), CSSM_SAMPLE_TYPE_RETRY_ID(85L), CSSM_SAMPLE_TYPE_SYMMETRIC_KEY(65541L), CSSM_SAMPLE_TYPE_PREAUTH(65545L), CSSM_SAMPLE_TYPE_ASYMMETRIC_KEY(65547L), CSSM_SAMPLE_TYPE_KEYBAG_KEY(65549L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_115_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_115_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:132:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_132_1_(val value: Long) {
-    CSSM_ACL_AUTHORIZATION_CHANGE_ACL(65536L), CSSM_ACL_AUTHORIZATION_CHANGE_OWNER(65537L), CSSM_ACL_AUTHORIZATION_PARTITION_ID(65538L), CSSM_ACL_AUTHORIZATION_INTEGRITY(65539L), CSSM_ACL_AUTHORIZATION_PREAUTH_BASE(16842752L), CSSM_ACL_AUTHORIZATION_PREAUTH_END(16908288L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_132_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_132_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:156:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_156_1_(val value: Long) {
-    CSSM_ACL_CODE_SIGNATURE_INVALID(0L), CSSM_ACL_CODE_SIGNATURE_OSX(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_156_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_156_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:163:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_163_1_(val value: Long) {
-    CSSM_ACL_MATCH_UID(1L), CSSM_ACL_MATCH_GID(2L), CSSM_ACL_MATCH_HONOR_ROOT(256L), CSSM_ACL_MATCH_BITS(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_163_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_163_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:170:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_170_1_(val value: Long) {
-    CSSM_ACL_PROCESS_SELECTOR_CURRENT_VERSION(257L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_170_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_170_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:183:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_183_1_(val value: Long) {
-    CSSM_ACL_KEYCHAIN_PROMPT_CURRENT_VERSION(257L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_183_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_183_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:187:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_187_1_(val value: Long) {
-    CSSM_ACL_KEYCHAIN_PROMPT_REQUIRE_PASSPHRASE(1L), CSSM_ACL_KEYCHAIN_PROMPT_UNSIGNED(16L), CSSM_ACL_KEYCHAIN_PROMPT_UNSIGNED_ACT(32L), CSSM_ACL_KEYCHAIN_PROMPT_INVALID(64L), CSSM_ACL_KEYCHAIN_PROMPT_INVALID_ACT(128L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_187_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_187_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:203:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_203_1_(val value: Long) {
-    CSSM_ACL_PREAUTH_TRACKING_COUNT_MASK(255L), CSSM_ACL_PREAUTH_TRACKING_BLOCKED(0L), CSSM_ACL_PREAUTH_TRACKING_UNKNOWN(1073741824L), CSSM_ACL_PREAUTH_TRACKING_AUTHORIZED(-2147483648L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_203_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_203_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:215:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_215_1_(val value: Long) {
-    CSSM_DB_ACCESS_RESET(65536L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_215_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_215_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:221:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_221_1_(val value: Long) {
-    CSSM_ALGID_APPLE_YARROW(-2147483648L), CSSM_ALGID_AES(-2147483647L), CSSM_ALGID_FEE(-2147483646L), CSSM_ALGID_FEE_MD5(-2147483645L), CSSM_ALGID_FEE_SHA1(-2147483644L), CSSM_ALGID_FEED(-2147483643L), CSSM_ALGID_FEEDEXP(-2147483642L), CSSM_ALGID_ASC(-2147483641L), CSSM_ALGID_SHA1HMAC_LEGACY(-2147483640L), CSSM_ALGID_KEYCHAIN_KEY(-2147483639L), CSSM_ALGID_PKCS12_PBE_ENCR(-2147483638L), CSSM_ALGID_PKCS12_PBE_MAC(-2147483637L), CSSM_ALGID_SECURE_PASSPHRASE(-2147483636L), CSSM_ALGID_PBE_OPENSSL_MD5(-2147483635L), CSSM_ALGID_SHA256(-2147483634L), CSSM_ALGID_SHA384(-2147483633L), CSSM_ALGID_SHA512(-2147483632L), CSSM_ALGID_ENTROPY_DEFAULT(-2147483631L), CSSM_ALGID_SHA224(-2147483630L), CSSM_ALGID_SHA224WithRSA(-2147483629L), CSSM_ALGID_SHA256WithRSA(-2147483628L), CSSM_ALGID_SHA384WithRSA(-2147483627L), CSSM_ALGID_SHA512WithRSA(-2147483626L), CSSM_ALGID_OPENSSH1(-2147483625L), CSSM_ALGID_SHA224WithECDSA(-2147483624L), CSSM_ALGID_SHA256WithECDSA(-2147483623L), CSSM_ALGID_SHA384WithECDSA(-2147483622L), CSSM_ALGID_SHA512WithECDSA(-2147483621L), CSSM_ALGID_ECDSA_SPECIFIED(-2147483620L), CSSM_ALGID_ECDH_X963_KDF(-2147483619L), CSSM_ALGID_FIRST_UNUSED(-2147483618L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_221_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_221_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:257:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_257_1_(val value: Long) {
-    CSSM_PADDING_APPLE_SSLv2(-2147483648L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_257_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_257_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:265:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_265_1_(val value: Long) {
-    CSSM_KEYBLOB_RAW_FORMAT_VENDOR_DEFINED(-2147483648L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_265_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_265_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:268:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_268_1_(val value: Long) {
-    CSSM_KEYBLOB_RAW_FORMAT_X509(-2147483648L), CSSM_KEYBLOB_RAW_FORMAT_OPENSSH(-2147483647L), CSSM_KEYBLOB_RAW_FORMAT_OPENSSL(-2147483646L), CSSM_KEYBLOB_RAW_FORMAT_OPENSSH2(-2147483645L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_268_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_268_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:280:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_280_1_(val value: Long) {
-    CSSM_CUSTOM_COMMON_ERROR_EXTENT(224L), CSSM_ERRCODE_NO_USER_INTERACTION(224L), CSSM_ERRCODE_USER_CANCELED(225L), CSSM_ERRCODE_SERVICE_NOT_AVAILABLE(226L), CSSM_ERRCODE_INSUFFICIENT_CLIENT_IDENTIFICATION(227L), CSSM_ERRCODE_DEVICE_RESET(228L), CSSM_ERRCODE_DEVICE_FAILED(229L), CSSM_ERRCODE_IN_DARK_WAKE(230L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_280_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_280_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:293:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_293_1_(val value: Long) {
-    CSSMERR_CSSM_NO_USER_INTERACTION(-2147417888L), CSSMERR_AC_NO_USER_INTERACTION(-2147405600L), CSSMERR_CSP_NO_USER_INTERACTION(-2147415840L), CSSMERR_CL_NO_USER_INTERACTION(-2147411744L), CSSMERR_DL_NO_USER_INTERACTION(-2147413792L), CSSMERR_TP_NO_USER_INTERACTION(-2147409696L), CSSMERR_CSSM_USER_CANCELED(-2147417887L), CSSMERR_AC_USER_CANCELED(-2147405599L), CSSMERR_CSP_USER_CANCELED(-2147415839L), CSSMERR_CL_USER_CANCELED(-2147411743L), CSSMERR_DL_USER_CANCELED(-2147413791L), CSSMERR_TP_USER_CANCELED(-2147409695L), CSSMERR_CSSM_SERVICE_NOT_AVAILABLE(-2147417886L), CSSMERR_AC_SERVICE_NOT_AVAILABLE(-2147405598L), CSSMERR_CSP_SERVICE_NOT_AVAILABLE(-2147415838L), CSSMERR_CL_SERVICE_NOT_AVAILABLE(-2147411742L), CSSMERR_DL_SERVICE_NOT_AVAILABLE(-2147413790L), CSSMERR_TP_SERVICE_NOT_AVAILABLE(-2147409694L), CSSMERR_CSSM_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147417885L), CSSMERR_AC_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147405597L), CSSMERR_CSP_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147415837L), CSSMERR_CL_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147411741L), CSSMERR_DL_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147413789L), CSSMERR_TP_INSUFFICIENT_CLIENT_IDENTIFICATION(-2147409693L), CSSMERR_CSSM_DEVICE_RESET(-2147417884L), CSSMERR_AC_DEVICE_RESET(-2147405596L), CSSMERR_CSP_DEVICE_RESET(-2147415836L), CSSMERR_CL_DEVICE_RESET(-2147411740L), CSSMERR_DL_DEVICE_RESET(-2147413788L), CSSMERR_TP_DEVICE_RESET(-2147409692L), CSSMERR_CSSM_DEVICE_FAILED(-2147417883L), CSSMERR_AC_DEVICE_FAILED(-2147405595L), CSSMERR_CSP_DEVICE_FAILED(-2147415835L), CSSMERR_CL_DEVICE_FAILED(-2147411739L), CSSMERR_DL_DEVICE_FAILED(-2147413787L), CSSMERR_TP_DEVICE_FAILED(-2147409691L), CSSMERR_CSSM_IN_DARK_WAKE(-2147417882L), CSSMERR_AC_IN_DARK_WAKE(-2147405594L), CSSMERR_CSP_IN_DARK_WAKE(-2147415834L), CSSMERR_CL_IN_DARK_WAKE(-2147411738L), CSSMERR_DL_IN_DARK_WAKE(-2147413786L), CSSMERR_TP_IN_DARK_WAKE(-2147409690L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_293_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_293_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:345:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_345_1_(val value: Long) {
-    CSSMERR_CSP_APPLE_ADD_APPLICATION_ACL_SUBJECT(-2147415040L), CSSMERR_CSP_APPLE_PUBLIC_KEY_INCOMPLETE(-2147415039L), CSSMERR_CSP_APPLE_SIGNATURE_MISMATCH(-2147415038L), CSSMERR_CSP_APPLE_INVALID_KEY_START_DATE(-2147415037L), CSSMERR_CSP_APPLE_INVALID_KEY_END_DATE(-2147415036L), CSSMERR_CSPDL_APPLE_DL_CONVERSION_ERROR(-2147415035L), CSSMERR_CSP_APPLE_SSLv2_ROLLBACK(-2147415034L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_345_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_345_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:368:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_368_1_(val value: Long) {
-    CSSM_DL_DB_RECORD_GENERIC_PASSWORD(-2147483648L), CSSM_DL_DB_RECORD_INTERNET_PASSWORD(-2147483647L), CSSM_DL_DB_RECORD_APPLESHARE_PASSWORD(-2147483646L), CSSM_DL_DB_RECORD_X509_CERTIFICATE(-2147479552L), CSSM_DL_DB_RECORD_USER_TRUST(-2147479551L), CSSM_DL_DB_RECORD_X509_CRL(-2147479550L), CSSM_DL_DB_RECORD_UNLOCK_REFERRAL(-2147479549L), CSSM_DL_DB_RECORD_EXTENDED_ATTRIBUTE(-2147479548L), CSSM_DL_DB_RECORD_METADATA(-2147450880L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_368_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_368_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:383:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_383_1_(val value: Long) {
-    CSSM_APPLEFILEDL_TOGGLE_AUTOCOMMIT(0L), CSSM_APPLEFILEDL_COMMIT(1L), CSSM_APPLEFILEDL_ROLLBACK(2L), CSSM_APPLEFILEDL_TAKE_FILE_LOCK(3L), CSSM_APPLEFILEDL_MAKE_BACKUP(4L), CSSM_APPLEFILEDL_MAKE_COPY(5L), CSSM_APPLEFILEDL_DELETE_FILE(6L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_383_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_383_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:410:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_410_1_(val value: Long) {
-    CSSM_APPLE_UNLOCK_TYPE_KEY_DIRECT(1L), CSSM_APPLE_UNLOCK_TYPE_WRAPPED_PRIVATE(2L), CSSM_APPLE_UNLOCK_TYPE_KEYBAG(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_410_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_410_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:417:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_417_1_(val value: Long) {
-    CSSMERR_APPLEDL_INVALID_OPEN_PARAMETERS(-2147412992L), CSSMERR_APPLEDL_DISK_FULL(-2147412991L), CSSMERR_APPLEDL_QUOTA_EXCEEDED(-2147412990L), CSSMERR_APPLEDL_FILE_TOO_BIG(-2147412989L), CSSMERR_APPLEDL_INVALID_DATABASE_BLOB(-2147412988L), CSSMERR_APPLEDL_INVALID_KEY_BLOB(-2147412987L), CSSMERR_APPLEDL_INCOMPATIBLE_DATABASE_BLOB(-2147412986L), CSSMERR_APPLEDL_INCOMPATIBLE_KEY_BLOB(-2147412985L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_417_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_417_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:447:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_447_1_(val value: Long) {
-    CSSMERR_APPLETP_HOSTNAME_MISMATCH(-2147408896L), CSSMERR_APPLETP_UNKNOWN_CRITICAL_EXTEN(-2147408895L), CSSMERR_APPLETP_NO_BASIC_CONSTRAINTS(-2147408894L), CSSMERR_APPLETP_INVALID_CA(-2147408893L), CSSMERR_APPLETP_INVALID_AUTHORITY_ID(-2147408892L), CSSMERR_APPLETP_INVALID_SUBJECT_ID(-2147408891L), CSSMERR_APPLETP_INVALID_KEY_USAGE(-2147408890L), CSSMERR_APPLETP_INVALID_EXTENDED_KEY_USAGE(-2147408889L), CSSMERR_APPLETP_INVALID_ID_LINKAGE(-2147408888L), CSSMERR_APPLETP_PATH_LEN_CONSTRAINT(-2147408887L), CSSMERR_APPLETP_INVALID_ROOT(-2147408886L), CSSMERR_APPLETP_CRL_EXPIRED(-2147408885L), CSSMERR_APPLETP_CRL_NOT_VALID_YET(-2147408884L), CSSMERR_APPLETP_CRL_NOT_FOUND(-2147408883L), CSSMERR_APPLETP_CRL_SERVER_DOWN(-2147408882L), CSSMERR_APPLETP_CRL_BAD_URI(-2147408881L), CSSMERR_APPLETP_UNKNOWN_CERT_EXTEN(-2147408880L), CSSMERR_APPLETP_UNKNOWN_CRL_EXTEN(-2147408879L), CSSMERR_APPLETP_CRL_NOT_TRUSTED(-2147408878L), CSSMERR_APPLETP_CRL_INVALID_ANCHOR_CERT(-2147408877L), CSSMERR_APPLETP_CRL_POLICY_FAIL(-2147408876L), CSSMERR_APPLETP_IDP_FAIL(-2147408875L), CSSMERR_APPLETP_CERT_NOT_FOUND_FROM_ISSUER(-2147408874L), CSSMERR_APPLETP_BAD_CERT_FROM_ISSUER(-2147408873L), CSSMERR_APPLETP_SMIME_EMAIL_ADDRS_NOT_FOUND(-2147408872L), CSSMERR_APPLETP_SMIME_BAD_EXT_KEY_USE(-2147408871L), CSSMERR_APPLETP_SMIME_BAD_KEY_USE(-2147408870L), CSSMERR_APPLETP_SMIME_KEYUSAGE_NOT_CRITICAL(-2147408869L), CSSMERR_APPLETP_SMIME_NO_EMAIL_ADDRS(-2147408868L), CSSMERR_APPLETP_SMIME_SUBJ_ALT_NAME_NOT_CRIT(-2147408867L), CSSMERR_APPLETP_SSL_BAD_EXT_KEY_USE(-2147408866L), CSSMERR_APPLETP_OCSP_BAD_RESPONSE(-2147408865L), CSSMERR_APPLETP_OCSP_BAD_REQUEST(-2147408864L), CSSMERR_APPLETP_OCSP_UNAVAILABLE(-2147408863L), CSSMERR_APPLETP_OCSP_STATUS_UNRECOGNIZED(-2147408862L), CSSMERR_APPLETP_INCOMPLETE_REVOCATION_CHECK(-2147408861L), CSSMERR_APPLETP_NETWORK_FAILURE(-2147408860L), CSSMERR_APPLETP_OCSP_NOT_TRUSTED(-2147408859L), CSSMERR_APPLETP_OCSP_INVALID_ANCHOR_CERT(-2147408858L), CSSMERR_APPLETP_OCSP_SIG_ERROR(-2147408857L), CSSMERR_APPLETP_OCSP_NO_SIGNER(-2147408856L), CSSMERR_APPLETP_OCSP_RESP_MALFORMED_REQ(-2147408855L), CSSMERR_APPLETP_OCSP_RESP_INTERNAL_ERR(-2147408854L), CSSMERR_APPLETP_OCSP_RESP_TRY_LATER(-2147408853L), CSSMERR_APPLETP_OCSP_RESP_SIG_REQUIRED(-2147408852L), CSSMERR_APPLETP_OCSP_RESP_UNAUTHORIZED(-2147408851L), CSSMERR_APPLETP_OCSP_NONCE_MISMATCH(-2147408850L), CSSMERR_APPLETP_CS_BAD_CERT_CHAIN_LENGTH(-2147408849L), CSSMERR_APPLETP_CS_NO_BASIC_CONSTRAINTS(-2147408848L), CSSMERR_APPLETP_CS_BAD_PATH_LENGTH(-2147408847L), CSSMERR_APPLETP_CS_NO_EXTENDED_KEY_USAGE(-2147408846L), CSSMERR_APPLETP_CODE_SIGN_DEVELOPMENT(-2147408845L), CSSMERR_APPLETP_RS_BAD_CERT_CHAIN_LENGTH(-2147408844L), CSSMERR_APPLETP_RS_BAD_EXTENDED_KEY_USAGE(-2147408843L), CSSMERR_APPLETP_TRUST_SETTING_DENY(-2147408842L), CSSMERR_APPLETP_INVALID_EMPTY_SUBJECT(-2147408841L), CSSMERR_APPLETP_UNKNOWN_QUAL_CERT_STATEMENT(-2147408840L), CSSMERR_APPLETP_MISSING_REQUIRED_EXTENSION(-2147408839L), CSSMERR_APPLETP_EXT_KEYUSAGE_NOT_CRITICAL(-2147408838L), CSSMERR_APPLETP_IDENTIFIER_MISSING(-2147408837L), CSSMERR_APPLETP_CA_PIN_MISMATCH(-2147408836L), CSSMERR_APPLETP_LEAF_PIN_MISMATCH(-2147408835L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_447_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_447_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:578:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_578_1_(val value: Long) {
-    CSSMERR_APPLE_DOTMAC_REQ_QUEUED(-2147408796L), CSSMERR_APPLE_DOTMAC_REQ_REDIRECT(-2147408795L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_ERR(-2147408794L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_PARAM(-2147408793L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_AUTH(-2147408792L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_UNIMPL(-2147408791L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_NOT_AVAIL(-2147408790L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_ALREADY_EXIST(-2147408789L), CSSMERR_APPLE_DOTMAC_REQ_SERVER_SERVICE_ERROR(-2147408788L), CSSMERR_APPLE_DOTMAC_REQ_IS_PENDING(-2147408787L), CSSMERR_APPLE_DOTMAC_NO_REQ_PENDING(-2147408786L), CSSMERR_APPLE_DOTMAC_CSR_VERIFY_FAIL(-2147408785L), CSSMERR_APPLE_DOTMAC_FAILED_CONSISTENCY_CHECK(-2147408784L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_578_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_578_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:608:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_608_1_(val value: Long) {
-    CSSM_APPLEDL_OPEN_PARAMETERS_VERSION(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_608_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_608_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum cssm_appledl_open_parameters_mask}
- */
-enum class cssm_appledl_open_parameters_mask(val value: Long) {
-    kCSSM_APPLEDL_MASK_MODE(1L);
-
-    companion object {
-        fun fromValue(v: Long): cssm_appledl_open_parameters_mask = entries.firstOrNull { it.value == v }
-            ?: error("Unknown cssm_appledl_open_parameters_mask value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:645:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_645_1_(val value: Long) {
-    CSSM_APPLECSPDL_DB_LOCK(0L), CSSM_APPLECSPDL_DB_UNLOCK(1L), CSSM_APPLECSPDL_DB_GET_SETTINGS(2L), CSSM_APPLECSPDL_DB_SET_SETTINGS(3L), CSSM_APPLECSPDL_DB_IS_LOCKED(4L), CSSM_APPLECSPDL_DB_CHANGE_PASSWORD(5L), CSSM_APPLECSPDL_DB_GET_HANDLE(6L), CSSM_APPLESCPDL_CSP_GET_KEYHANDLE(7L), CSSM_APPLE_PRIVATE_CSPDL_CODE_8(8L), CSSM_APPLE_PRIVATE_CSPDL_CODE_9(9L), CSSM_APPLE_PRIVATE_CSPDL_CODE_10(10L), CSSM_APPLE_PRIVATE_CSPDL_CODE_11(11L), CSSM_APPLE_PRIVATE_CSPDL_CODE_12(12L), CSSM_APPLE_PRIVATE_CSPDL_CODE_13(13L), CSSM_APPLE_PRIVATE_CSPDL_CODE_14(14L), CSSM_APPLE_PRIVATE_CSPDL_CODE_15(15L), CSSM_APPLE_PRIVATE_CSPDL_CODE_16(16L), CSSM_APPLE_PRIVATE_CSPDL_CODE_17(17L), CSSM_APPLE_PRIVATE_CSPDL_CODE_18(18L), CSSM_APPLE_PRIVATE_CSPDL_CODE_19(19L), CSSM_APPLE_PRIVATE_CSPDL_CODE_20(20L), CSSM_APPLE_PRIVATE_CSPDL_CODE_21(21L), CSSM_APPLE_PRIVATE_CSPDL_CODE_22(22L), CSSM_APPLE_PRIVATE_CSPDL_CODE_23(23L), CSSM_APPLE_PRIVATE_CSPDL_CODE_24(24L), CSSM_APPLE_PRIVATE_CSPDL_CODE_25(25L), CSSM_APPLE_PRIVATE_CSPDL_CODE_26(26L), CSSM_APPLE_PRIVATE_CSPDL_CODE_27(27L), CSSM_APPLE_PRIVATE_CSPDL_CODE_28(28L), CSSM_APPLECSP_KEYDIGEST(256L), CSSM_APPLECSP_PUBKEY(257L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_645_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_645_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:771:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_771_1_(val value: Long) {
-    CSSM_KEYBLOB_WRAPPED_FORMAT_APPLE_CUSTOM(100L), CSSM_KEYBLOB_WRAPPED_FORMAT_OPENSSL(101L), CSSM_KEYBLOB_WRAPPED_FORMAT_OPENSSH1(102L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_771_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_771_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:780:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_780_1_(val value: Long) {
-    CSSM_ATTRIBUTE_VENDOR_DEFINED(8388608L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_780_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_780_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:784:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_784_1_(val value: Long) {
-    CSSM_ATTRIBUTE_PUBLIC_KEY(1082130432L), CSSM_ATTRIBUTE_FEE_PRIME_TYPE(276824065L), CSSM_ATTRIBUTE_FEE_CURVE_TYPE(276824066L), CSSM_ATTRIBUTE_ASC_OPTIMIZATION(276824067L), CSSM_ATTRIBUTE_RSA_BLINDING(276824068L), CSSM_ATTRIBUTE_PARAM_KEY(1082130437L), CSSM_ATTRIBUTE_PROMPT(545259526L), CSSM_ATTRIBUTE_ALERT_TITLE(545259527L), CSSM_ATTRIBUTE_VERIFY_PASSPHRASE(276824072L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_784_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_784_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:847:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_847_1_(val value: Long) {
-    CSSM_FEE_PRIME_TYPE_DEFAULT(0L), CSSM_FEE_PRIME_TYPE_MERSENNE(1L), CSSM_FEE_PRIME_TYPE_FEE(2L), CSSM_FEE_PRIME_TYPE_GENERAL(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_847_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_847_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:859:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_859_1_(val value: Long) {
-    CSSM_FEE_CURVE_TYPE_DEFAULT(0L), CSSM_FEE_CURVE_TYPE_MONTGOMERY(1L), CSSM_FEE_CURVE_TYPE_WEIERSTRASS(2L), CSSM_FEE_CURVE_TYPE_ANSI_X9_62(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_859_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_859_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:869:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_869_1_(val value: Long) {
-    CSSM_ASC_OPTIMIZE_DEFAULT(0L), CSSM_ASC_OPTIMIZE_SIZE(1L), CSSM_ASC_OPTIMIZE_SECURITY(2L), CSSM_ASC_OPTIMIZE_TIME(3L), CSSM_ASC_OPTIMIZE_TIME_SIZE(4L), CSSM_ASC_OPTIMIZE_ASCII(5L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_869_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_869_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:881:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_881_1_(val value: Long) {
-    CSSM_KEYATTR_PARTIAL(65536L), CSSM_KEYATTR_PUBLIC_KEY_ENCRYPT(131072L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_881_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_881_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:983:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_983_1_(val value: Long) {
-    CSSM_TP_ACTION_REQUIRE_CRL_PER_CERT(1L), CSSM_TP_ACTION_FETCH_CRL_FROM_NET(2L), CSSM_TP_ACTION_CRL_SUFFICIENT(4L), CSSM_TP_ACTION_REQUIRE_CRL_IF_PRESENT(8L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_983_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_983_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:1042:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1042_1_(val value: Long) {
-    CSSM_TP_ACTION_ALLOW_EXPIRED(1L), CSSM_TP_ACTION_LEAF_IS_CA(2L), CSSM_TP_ACTION_FETCH_CERT_FROM_NET(4L), CSSM_TP_ACTION_ALLOW_EXPIRED_ROOT(8L), CSSM_TP_ACTION_REQUIRE_REV_PER_CERT(16L), CSSM_TP_ACTION_TRUST_SETTINGS(32L), CSSM_TP_ACTION_IMPLICIT_ANCHORS(64L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1042_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1042_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:1071:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1071_1_(val value: Long) {
-    CSSM_CERT_STATUS_EXPIRED(1L), CSSM_CERT_STATUS_NOT_VALID_YET(2L), CSSM_CERT_STATUS_IS_IN_INPUT_CERTS(4L), CSSM_CERT_STATUS_IS_IN_ANCHORS(8L), CSSM_CERT_STATUS_IS_ROOT(16L), CSSM_CERT_STATUS_IS_FROM_NET(32L), CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_USER(64L), CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_ADMIN(128L), CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_SYSTEM(256L), CSSM_CERT_STATUS_TRUST_SETTINGS_TRUST(512L), CSSM_CERT_STATUS_TRUST_SETTINGS_DENY(1024L), CSSM_CERT_STATUS_TRUST_SETTINGS_IGNORED_ERROR(2048L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1071_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1071_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:1138:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1138_1_(val value: Long) {
-    CSSM_EVIDENCE_FORM_APPLE_HEADER(-2147483648L), CSSM_EVIDENCE_FORM_APPLE_CERTGROUP(-2147483647L), CSSM_EVIDENCE_FORM_APPLE_CERT_INFO(-2147483646L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1138_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1138_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmapple.h:1146:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1146_1_(val value: Long) {
-    CSSM_APPLEX509CL_OBTAIN_CSR(0L), CSSM_APPLEX509CL_VERIFY_CSR(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1146_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmapple_h_1146_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecKeychain.h:54:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKeychain_h_54_1_(val value: Long) {
-    kSecUnlockStateStatus(1L), kSecReadPermStatus(2L), kSecWritePermStatus(4L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKeychain_h_54_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecKeychain_h_54_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecAuthenticationType}
- */
-enum class SecAuthenticationType(val value: Long) {
-    kSecAuthenticationTypeNTLM(1835824238L), kSecAuthenticationTypeMSN(1634628461L), kSecAuthenticationTypeDPA(1633775716L), kSecAuthenticationTypeRPA(1633775730L), kSecAuthenticationTypeHTTPBasic(1886680168L), kSecAuthenticationTypeHTTPDigest(1685353576L), kSecAuthenticationTypeHTMLForm(1836216166L), kSecAuthenticationTypeDefault(1953261156L), kSecAuthenticationTypeAny(0L);
-
-    companion object {
-        fun fromValue(v: Long): SecAuthenticationType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecAuthenticationType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecProtocolType}
- */
-enum class SecProtocolType(val value: Long) {
-    kSecProtocolTypeFTP(1718906912L), kSecProtocolTypeFTPAccount(1718906977L), kSecProtocolTypeHTTP(1752462448L), kSecProtocolTypeIRC(1769104160L), kSecProtocolTypeNNTP(1852732528L), kSecProtocolTypePOP3(1886351411L), kSecProtocolTypeSMTP(1936553072L), kSecProtocolTypeSOCKS(1936685088L), kSecProtocolTypeIMAP(1768776048L), kSecProtocolTypeLDAP(1818517872L), kSecProtocolTypeAppleTalk(1635019883L), kSecProtocolTypeAFP(1634103328L), kSecProtocolTypeTelnet(1952803950L), kSecProtocolTypeSSH(1936943136L), kSecProtocolTypeFTPS(1718906995L), kSecProtocolTypeHTTPS(1752461427L), kSecProtocolTypeHTTPProxy(1752461432L), kSecProtocolTypeHTTPSProxy(1752462200L), kSecProtocolTypeFTPProxy(1718907000L), kSecProtocolTypeCIFS(1667851891L), kSecProtocolTypeSMB(1936548384L), kSecProtocolTypeRTSP(1920234352L), kSecProtocolTypeRTSPProxy(1920234360L), kSecProtocolTypeDAAP(1684103536L), kSecProtocolTypeEPPC(1701867619L), kSecProtocolTypeIPP(1768976416L), kSecProtocolTypeNNTPS(1853124723L), kSecProtocolTypeLDAPS(1818521715L), kSecProtocolTypeTelnetS(1952803955L), kSecProtocolTypeIMAPS(1768779891L), kSecProtocolTypeIRCS(1769104243L), kSecProtocolTypePOP3S(1886351475L), kSecProtocolTypeCVSpserver(1668707184L), kSecProtocolTypeSVN(1937141280L), kSecProtocolTypeAny(0L);
-
-    companion object {
-        fun fromValue(v: Long): SecProtocolType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecProtocolType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecKeychainEvent}
- */
-enum class SecKeychainEvent(val value: Long) {
-    kSecLockEvent(1L), kSecUnlockEvent(2L), kSecAddEvent(3L), kSecDeleteEvent(4L), kSecUpdateEvent(5L), kSecPasswordChangedEvent(6L), kSecDefaultChangedEvent(9L), kSecDataAccessEvent(10L), kSecKeychainListChangedEvent(11L), kSecTrustSettingsChangedEvent(12L);
-
-    companion object {
-        fun fromValue(v: Long): SecKeychainEvent = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecKeychainEvent value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecPreferencesDomain}
- */
-enum class SecPreferencesDomain(val value: Long) {
-    kSecPreferencesDomainUser(0L), kSecPreferencesDomainSystem(1L), kSecPreferencesDomainCommon(2L), kSecPreferencesDomainDynamic(3L);
-
-    companion object {
-        fun fromValue(v: Long): SecPreferencesDomain = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecPreferencesDomain value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecExternalFormat}
- */
-enum class SecExternalFormat(val value: Long) {
-    kSecFormatUnknown(0L), kSecFormatOpenSSL(1L), kSecFormatSSH(2L), kSecFormatBSAFE(3L), kSecFormatRawKey(4L), kSecFormatWrappedPKCS8(5L), kSecFormatWrappedOpenSSL(6L), kSecFormatWrappedSSH(7L), kSecFormatWrappedLSH(8L), kSecFormatX509Cert(9L), kSecFormatPEMSequence(10L), kSecFormatPKCS7(11L), kSecFormatPKCS12(12L), kSecFormatNetscapeCertSequence(13L), kSecFormatSSHv2(14L);
-
-    companion object {
-        fun fromValue(v: Long): SecExternalFormat = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecExternalFormat value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecExternalItemType}
- */
-enum class SecExternalItemType(val value: Long) {
-    kSecItemTypeUnknown(0L), kSecItemTypePrivateKey(1L), kSecItemTypePublicKey(2L), kSecItemTypeSessionKey(3L), kSecItemTypeCertificate(4L), kSecItemTypeAggregate(5L);
-
-    companion object {
-        fun fromValue(v: Long): SecExternalItemType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecExternalItemType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecTrustResultType}
- */
-enum class SecTrustResultType(val value: Long) {
-    kSecTrustResultInvalid(0L), kSecTrustResultProceed(1L), kSecTrustResultConfirm(2L), kSecTrustResultDeny(3L), kSecTrustResultUnspecified(4L), kSecTrustResultRecoverableTrustFailure(5L), kSecTrustResultFatalTrustFailure(6L), kSecTrustResultOtherError(7L);
-
-    companion object {
-        fun fromValue(v: Long): SecTrustResultType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecTrustResultType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/CipherSuite.h:47:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CipherSuite_h_47_1_(val value: Long) {
-    SSL_NULL_WITH_NULL_NULL(0L), SSL_RSA_WITH_NULL_MD5(1L), SSL_RSA_WITH_NULL_SHA(2L), SSL_RSA_EXPORT_WITH_RC4_40_MD5(3L), SSL_RSA_WITH_RC4_128_MD5(4L), SSL_RSA_WITH_RC4_128_SHA(5L), SSL_RSA_EXPORT_WITH_RC2_CBC_40_MD5(6L), SSL_RSA_WITH_IDEA_CBC_SHA(7L), SSL_RSA_EXPORT_WITH_DES40_CBC_SHA(8L), SSL_RSA_WITH_DES_CBC_SHA(9L), SSL_RSA_WITH_3DES_EDE_CBC_SHA(10L), SSL_DH_DSS_EXPORT_WITH_DES40_CBC_SHA(11L), SSL_DH_DSS_WITH_DES_CBC_SHA(12L), SSL_DH_DSS_WITH_3DES_EDE_CBC_SHA(13L), SSL_DH_RSA_EXPORT_WITH_DES40_CBC_SHA(14L), SSL_DH_RSA_WITH_DES_CBC_SHA(15L), SSL_DH_RSA_WITH_3DES_EDE_CBC_SHA(16L), SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA(17L), SSL_DHE_DSS_WITH_DES_CBC_SHA(18L), SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA(19L), SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA(20L), SSL_DHE_RSA_WITH_DES_CBC_SHA(21L), SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA(22L), SSL_DH_anon_EXPORT_WITH_RC4_40_MD5(23L), SSL_DH_anon_WITH_RC4_128_MD5(24L), SSL_DH_anon_EXPORT_WITH_DES40_CBC_SHA(25L), SSL_DH_anon_WITH_DES_CBC_SHA(26L), SSL_DH_anon_WITH_3DES_EDE_CBC_SHA(27L), SSL_FORTEZZA_DMS_WITH_NULL_SHA(28L), SSL_FORTEZZA_DMS_WITH_FORTEZZA_CBC_SHA(29L), TLS_RSA_WITH_AES_128_CBC_SHA(47L), TLS_DH_DSS_WITH_AES_128_CBC_SHA(48L), TLS_DH_RSA_WITH_AES_128_CBC_SHA(49L), TLS_DHE_DSS_WITH_AES_128_CBC_SHA(50L), TLS_DHE_RSA_WITH_AES_128_CBC_SHA(51L), TLS_DH_anon_WITH_AES_128_CBC_SHA(52L), TLS_RSA_WITH_AES_256_CBC_SHA(53L), TLS_DH_DSS_WITH_AES_256_CBC_SHA(54L), TLS_DH_RSA_WITH_AES_256_CBC_SHA(55L), TLS_DHE_DSS_WITH_AES_256_CBC_SHA(56L), TLS_DHE_RSA_WITH_AES_256_CBC_SHA(57L), TLS_DH_anon_WITH_AES_256_CBC_SHA(58L), TLS_ECDH_ECDSA_WITH_NULL_SHA(-16383L), TLS_ECDH_ECDSA_WITH_RC4_128_SHA(-16382L), TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA(-16381L), TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA(-16380L), TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA(-16379L), TLS_ECDHE_ECDSA_WITH_NULL_SHA(-16378L), TLS_ECDHE_ECDSA_WITH_RC4_128_SHA(-16377L), TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA(-16376L), TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA(-16375L), TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA(-16374L), TLS_ECDH_RSA_WITH_NULL_SHA(-16373L), TLS_ECDH_RSA_WITH_RC4_128_SHA(-16372L), TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA(-16371L), TLS_ECDH_RSA_WITH_AES_128_CBC_SHA(-16370L), TLS_ECDH_RSA_WITH_AES_256_CBC_SHA(-16369L), TLS_ECDHE_RSA_WITH_NULL_SHA(-16368L), TLS_ECDHE_RSA_WITH_RC4_128_SHA(-16367L), TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA(-16366L), TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA(-16365L), TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA(-16364L), TLS_ECDH_anon_WITH_NULL_SHA(-16363L), TLS_ECDH_anon_WITH_RC4_128_SHA(-16362L), TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA(-16361L), TLS_ECDH_anon_WITH_AES_128_CBC_SHA(-16360L), TLS_ECDH_anon_WITH_AES_256_CBC_SHA(-16359L), TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA(-16331L), TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA(-16330L), TLS_PSK_WITH_CHACHA20_POLY1305_SHA256(-13141L), TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256(-13140L), TLS_NULL_WITH_NULL_NULL(0L), TLS_RSA_WITH_NULL_MD5(1L), TLS_RSA_WITH_NULL_SHA(2L), TLS_RSA_WITH_RC4_128_MD5(4L), TLS_RSA_WITH_RC4_128_SHA(5L), TLS_RSA_WITH_3DES_EDE_CBC_SHA(10L), TLS_RSA_WITH_NULL_SHA256(59L), TLS_RSA_WITH_AES_128_CBC_SHA256(60L), TLS_RSA_WITH_AES_256_CBC_SHA256(61L), TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA(13L), TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA(16L), TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA(19L), TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA(22L), TLS_DH_DSS_WITH_AES_128_CBC_SHA256(62L), TLS_DH_RSA_WITH_AES_128_CBC_SHA256(63L), TLS_DHE_DSS_WITH_AES_128_CBC_SHA256(64L), TLS_DHE_RSA_WITH_AES_128_CBC_SHA256(103L), TLS_DH_DSS_WITH_AES_256_CBC_SHA256(104L), TLS_DH_RSA_WITH_AES_256_CBC_SHA256(105L), TLS_DHE_DSS_WITH_AES_256_CBC_SHA256(106L), TLS_DHE_RSA_WITH_AES_256_CBC_SHA256(107L), TLS_DH_anon_WITH_RC4_128_MD5(24L), TLS_DH_anon_WITH_3DES_EDE_CBC_SHA(27L), TLS_DH_anon_WITH_AES_128_CBC_SHA256(108L), TLS_DH_anon_WITH_AES_256_CBC_SHA256(109L), TLS_PSK_WITH_RC4_128_SHA(138L), TLS_PSK_WITH_3DES_EDE_CBC_SHA(139L), TLS_PSK_WITH_AES_128_CBC_SHA(140L), TLS_PSK_WITH_AES_256_CBC_SHA(141L), TLS_DHE_PSK_WITH_RC4_128_SHA(142L), TLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA(143L), TLS_DHE_PSK_WITH_AES_128_CBC_SHA(144L), TLS_DHE_PSK_WITH_AES_256_CBC_SHA(145L), TLS_RSA_PSK_WITH_RC4_128_SHA(146L), TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA(147L), TLS_RSA_PSK_WITH_AES_128_CBC_SHA(148L), TLS_RSA_PSK_WITH_AES_256_CBC_SHA(149L), TLS_PSK_WITH_NULL_SHA(44L), TLS_DHE_PSK_WITH_NULL_SHA(45L), TLS_RSA_PSK_WITH_NULL_SHA(46L), TLS_RSA_WITH_AES_128_GCM_SHA256(156L), TLS_RSA_WITH_AES_256_GCM_SHA384(157L), TLS_DHE_RSA_WITH_AES_128_GCM_SHA256(158L), TLS_DHE_RSA_WITH_AES_256_GCM_SHA384(159L), TLS_DH_RSA_WITH_AES_128_GCM_SHA256(160L), TLS_DH_RSA_WITH_AES_256_GCM_SHA384(161L), TLS_DHE_DSS_WITH_AES_128_GCM_SHA256(162L), TLS_DHE_DSS_WITH_AES_256_GCM_SHA384(163L), TLS_DH_DSS_WITH_AES_128_GCM_SHA256(164L), TLS_DH_DSS_WITH_AES_256_GCM_SHA384(165L), TLS_DH_anon_WITH_AES_128_GCM_SHA256(166L), TLS_DH_anon_WITH_AES_256_GCM_SHA384(167L), TLS_PSK_WITH_AES_128_GCM_SHA256(168L), TLS_PSK_WITH_AES_256_GCM_SHA384(169L), TLS_DHE_PSK_WITH_AES_128_GCM_SHA256(170L), TLS_DHE_PSK_WITH_AES_256_GCM_SHA384(171L), TLS_RSA_PSK_WITH_AES_128_GCM_SHA256(172L), TLS_RSA_PSK_WITH_AES_256_GCM_SHA384(173L), TLS_PSK_WITH_AES_128_CBC_SHA256(174L), TLS_PSK_WITH_AES_256_CBC_SHA384(175L), TLS_PSK_WITH_NULL_SHA256(176L), TLS_PSK_WITH_NULL_SHA384(177L), TLS_DHE_PSK_WITH_AES_128_CBC_SHA256(178L), TLS_DHE_PSK_WITH_AES_256_CBC_SHA384(179L), TLS_DHE_PSK_WITH_NULL_SHA256(180L), TLS_DHE_PSK_WITH_NULL_SHA384(181L), TLS_RSA_PSK_WITH_AES_128_CBC_SHA256(182L), TLS_RSA_PSK_WITH_AES_256_CBC_SHA384(183L), TLS_RSA_PSK_WITH_NULL_SHA256(184L), TLS_RSA_PSK_WITH_NULL_SHA384(185L), TLS_AES_128_GCM_SHA256(4865L), TLS_AES_256_GCM_SHA384(4866L), TLS_CHACHA20_POLY1305_SHA256(4867L), TLS_AES_128_CCM_SHA256(4868L), TLS_AES_128_CCM_8_SHA256(4869L), TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256(-16349L), TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384(-16348L), TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256(-16347L), TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384(-16346L), TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256(-16345L), TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384(-16344L), TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256(-16343L), TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384(-16342L), TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256(-16341L), TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384(-16340L), TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256(-16339L), TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384(-16338L), TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256(-16337L), TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384(-16336L), TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256(-16335L), TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384(-16334L), TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256(-13144L), TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256(-13143L), TLS_EMPTY_RENEGOTIATION_INFO_SCSV(255L), SSL_RSA_WITH_RC2_CBC_MD5(-128L), SSL_RSA_WITH_IDEA_CBC_MD5(-127L), SSL_RSA_WITH_DES_CBC_MD5(-126L), SSL_RSA_WITH_3DES_EDE_CBC_MD5(-125L), SSL_NO_SUCH_CIPHERSUITE(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CipherSuite_h_47_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CipherSuite_h_47_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SSLCiphersuiteGroup}
- */
-enum class SSLCiphersuiteGroup(val value: Long) {
-    kSSLCiphersuiteGroupDefault(0L), kSSLCiphersuiteGroupCompatibility(1L), kSSLCiphersuiteGroupLegacy(2L), kSSLCiphersuiteGroupATS(3L), kSSLCiphersuiteGroupATSCompatibility(4L), kSSLCiphersuiteGroupATSFCP_v2_1(5L);
-
-    companion object {
-        fun fromValue(v: Long): SSLCiphersuiteGroup = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SSLCiphersuiteGroup value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum tls_protocol_version_t}
- */
-enum class tls_protocol_version_t(val value: Long) {
-    tls_protocol_version_TLSv10(769L), tls_protocol_version_TLSv11(770L), tls_protocol_version_TLSv12(771L), tls_protocol_version_TLSv13(772L), tls_protocol_version_DTLSv10(-257L), tls_protocol_version_DTLSv12(-259L);
-
-    companion object {
-        fun fromValue(v: Long): tls_protocol_version_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown tls_protocol_version_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum tls_ciphersuite_t}
- */
-enum class tls_ciphersuite_t(val value: Long) {
-    tls_ciphersuite_RSA_WITH_3DES_EDE_CBC_SHA(10L), tls_ciphersuite_RSA_WITH_AES_128_CBC_SHA(47L), tls_ciphersuite_RSA_WITH_AES_256_CBC_SHA(53L), tls_ciphersuite_RSA_WITH_AES_128_GCM_SHA256(156L), tls_ciphersuite_RSA_WITH_AES_256_GCM_SHA384(157L), tls_ciphersuite_RSA_WITH_AES_128_CBC_SHA256(60L), tls_ciphersuite_RSA_WITH_AES_256_CBC_SHA256(61L), tls_ciphersuite_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA(-16376L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_128_CBC_SHA(-16375L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_256_CBC_SHA(-16374L), tls_ciphersuite_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA(-16366L), tls_ciphersuite_ECDHE_RSA_WITH_AES_128_CBC_SHA(-16365L), tls_ciphersuite_ECDHE_RSA_WITH_AES_256_CBC_SHA(-16364L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256(-16349L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384(-16348L), tls_ciphersuite_ECDHE_RSA_WITH_AES_128_CBC_SHA256(-16345L), tls_ciphersuite_ECDHE_RSA_WITH_AES_256_CBC_SHA384(-16344L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256(-16341L), tls_ciphersuite_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384(-16340L), tls_ciphersuite_ECDHE_RSA_WITH_AES_128_GCM_SHA256(-16337L), tls_ciphersuite_ECDHE_RSA_WITH_AES_256_GCM_SHA384(-16336L), tls_ciphersuite_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256(-13144L), tls_ciphersuite_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256(-13143L), tls_ciphersuite_AES_128_GCM_SHA256(4865L), tls_ciphersuite_AES_256_GCM_SHA384(4866L), tls_ciphersuite_CHACHA20_POLY1305_SHA256(4867L);
-
-    companion object {
-        fun fromValue(v: Long): tls_ciphersuite_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown tls_ciphersuite_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum tls_ciphersuite_group_t}
- */
-enum class tls_ciphersuite_group_t(val value: Long) {
-    tls_ciphersuite_group_default(0L), tls_ciphersuite_group_compatibility(1L), tls_ciphersuite_group_legacy(2L), tls_ciphersuite_group_ats(3L), tls_ciphersuite_group_ats_compatibility(4L), tls_ciphersuite_group_ats_fcp_v2_1(5L);
-
-    companion object {
-        fun fromValue(v: Long): tls_ciphersuite_group_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown tls_ciphersuite_group_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SSLProtocol}
- */
-enum class SSLProtocol(val value: Long) {
-    kSSLProtocolUnknown(0L), kTLSProtocol1(4L), kTLSProtocol11(7L), kTLSProtocol12(8L), kDTLSProtocol1(9L), kTLSProtocol13(10L), kDTLSProtocol12(11L), kTLSProtocolMaxSupported(999L), kSSLProtocol2(1L), kSSLProtocol3(2L), kSSLProtocol3Only(3L), kTLSProtocol1Only(5L), kSSLProtocolAll(6L);
-
-    companion object {
-        fun fromValue(v: Long): SSLProtocol = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SSLProtocol value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/Authorization.h:87:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_87_1_(val value: Long) {
-    errAuthorizationSuccess(0L), errAuthorizationInvalidSet(-60001L), errAuthorizationInvalidRef(-60002L), errAuthorizationInvalidTag(-60003L), errAuthorizationInvalidPointer(-60004L), errAuthorizationDenied(-60005L), errAuthorizationCanceled(-60006L), errAuthorizationInteractionNotAllowed(-60007L), errAuthorizationInternal(-60008L), errAuthorizationExternalizeNotAllowed(-60009L), errAuthorizationInternalizeNotAllowed(-60010L), errAuthorizationInvalidFlags(-60011L), errAuthorizationToolExecuteFailure(-60031L), errAuthorizationToolEnvironmentError(-60032L), errAuthorizationBadAddress(-60033L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_87_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_87_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/Authorization.h:129:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_129_1_(val value: Long) {
-    kAuthorizationFlagCanNotPreAuthorize(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_129_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_Authorization_h_129_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/AuthSession.h:81:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_81_1_(val value: Long) {
-    noSecuritySession(0L), callerSecuritySession(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_81_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_81_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SessionAttributeBits}
- */
-enum class SessionAttributeBits(val value: Long) {
-    sessionIsRoot(1L), sessionHasGraphicAccess(16L), sessionHasTTY(32L), sessionIsRemote(4096L);
-
-    companion object {
-        fun fromValue(v: Long): SessionAttributeBits = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SessionAttributeBits value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/AuthSession.h:115:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_115_1_(val value: Long) {
-    errSessionSuccess(0L), errSessionInvalidId(-60500L), errSessionInvalidAttributes(-60501L), errSessionAuthorizationDenied(-60502L), errSessionValueNotSet(-60503L), errSessionInternal(-60008L), errSessionInvalidFlags(-60011L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_115_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_115_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/cssmspi.h:47:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmspi_h_47_1_(val value: Long) {
-    CSSM_CONTEXT_EVENT_CREATE(1L), CSSM_CONTEXT_EVENT_DELETE(2L), CSSM_CONTEXT_EVENT_UPDATE(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmspi_h_47_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_cssmspi_h_47_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/emmspi.h:82:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_emmspi_h_82_1_(val value: Long) {
-    CSSM_HINT_NONE(0L), CSSM_HINT_ADDRESS_APP(1L), CSSM_HINT_ADDRESS_SP(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_emmspi_h_82_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_emmspi_h_82_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecKeychainPromptSelector}
- */
-enum class SecKeychainPromptSelector(val value: Long) {
-    kSecKeychainPromptRequirePassphase(1L), kSecKeychainPromptUnsigned(16L), kSecKeychainPromptUnsignedAct(32L), kSecKeychainPromptInvalid(64L), kSecKeychainPromptInvalidAct(128L);
-
-    companion object {
-        fun fromValue(v: Long): SecKeychainPromptSelector = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecKeychainPromptSelector value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecItemClass}
- */
-enum class SecItemClass(val value: Long) {
-    kSecInternetPasswordItemClass(1768842612L), kSecGenericPasswordItemClass(1734700656L), kSecAppleSharePasswordItemClass(1634953328L), kSecCertificateItemClass(-2147479552L), kSecPublicKeyItemClass(15L), kSecPrivateKeyItemClass(16L), kSecSymmetricKeyItemClass(17L);
-
-    companion object {
-        fun fromValue(v: Long): SecItemClass = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecItemClass value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecItemAttr}
- */
-enum class SecItemAttr(val value: Long) {
-    kSecCreationDateItemAttr(1667522932L), kSecModDateItemAttr(1835295092L), kSecDescriptionItemAttr(1684370275L), kSecCommentItemAttr(1768123764L), kSecCreatorItemAttr(1668445298L), kSecTypeItemAttr(1954115685L), kSecScriptCodeItemAttr(1935897200L), kSecLabelItemAttr(1818321516L), kSecInvisibleItemAttr(1768846953L), kSecNegativeItemAttr(1852139361L), kSecCustomIconItemAttr(1668641641L), kSecAccountItemAttr(1633903476L), kSecServiceItemAttr(1937138533L), kSecGenericItemAttr(1734700641L), kSecSecurityDomainItemAttr(1935961454L), kSecServerItemAttr(1936881266L), kSecAuthenticationTypeItemAttr(1635023216L), kSecPortItemAttr(1886351988L), kSecPathItemAttr(1885434984L), kSecVolumeItemAttr(1986817381L), kSecAddressItemAttr(1633969266L), kSecSignatureItemAttr(1936943463L), kSecProtocolItemAttr(1886675820L), kSecCertificateType(1668577648L), kSecCertificateEncoding(1667591779L), kSecCrlType(1668445296L), kSecCrlEncoding(1668443747L), kSecAlias(1634494835L);
-
-    companion object {
-        fun fromValue(v: Long): SecItemAttr = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecItemAttr value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecTrustSettingsKeyUsage}
- */
-enum class SecTrustSettingsKeyUsage(val value: Long) {
-    kSecTrustSettingsKeyUseSignature(1L), kSecTrustSettingsKeyUseEnDecryptData(2L), kSecTrustSettingsKeyUseEnDecryptKey(4L), kSecTrustSettingsKeyUseSignCert(8L), kSecTrustSettingsKeyUseSignRevocation(16L), kSecTrustSettingsKeyUseKeyExchange(32L), kSecTrustSettingsKeyUseAny(-1L);
-
-    companion object {
-        fun fromValue(v: Long): SecTrustSettingsKeyUsage = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecTrustSettingsKeyUsage value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecTrustSettingsResult}
- */
-enum class SecTrustSettingsResult(val value: Long) {
-    kSecTrustSettingsResultInvalid(0L), kSecTrustSettingsResultTrustRoot(1L), kSecTrustSettingsResultTrustAsRoot(2L), kSecTrustSettingsResultDeny(3L), kSecTrustSettingsResultUnspecified(4L);
-
-    companion object {
-        fun fromValue(v: Long): SecTrustSettingsResult = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecTrustSettingsResult value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecTrustSettingsDomain}
- */
-enum class SecTrustSettingsDomain(val value: Long) {
-    kSecTrustSettingsDomainUser(0L), kSecTrustSettingsDomainAdmin(1L), kSecTrustSettingsDomainSystem(2L);
-
-    companion object {
-        fun fromValue(v: Long): SecTrustSettingsDomain = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecTrustSettingsDomain value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/CSCommon.h:63:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_63_1_(val value: Long) {
-    errSecCSUnimplemented(-67072L), errSecCSInvalidObjectRef(-67071L), errSecCSInvalidFlags(-67070L), errSecCSObjectRequired(-67069L), errSecCSStaticCodeNotFound(-67068L), errSecCSUnsupportedGuestAttributes(-67067L), errSecCSInvalidAttributeValues(-67066L), errSecCSNoSuchCode(-67065L), errSecCSMultipleGuests(-67064L), errSecCSGuestInvalid(-67063L), errSecCSUnsigned(-67062L), errSecCSSignatureFailed(-67061L), errSecCSSignatureNotVerifiable(-67060L), errSecCSSignatureUnsupported(-67059L), errSecCSBadDictionaryFormat(-67058L), errSecCSResourcesNotSealed(-67057L), errSecCSResourcesNotFound(-67056L), errSecCSResourcesInvalid(-67055L), errSecCSBadResource(-67054L), errSecCSResourceRulesInvalid(-67053L), errSecCSReqInvalid(-67052L), errSecCSReqUnsupported(-67051L), errSecCSReqFailed(-67050L), errSecCSBadObjectFormat(-67049L), errSecCSInternalError(-67048L), errSecCSHostReject(-67047L), errSecCSNotAHost(-67046L), errSecCSSignatureInvalid(-67045L), errSecCSHostProtocolRelativePath(-67044L), errSecCSHostProtocolContradiction(-67043L), errSecCSHostProtocolDedicationError(-67042L), errSecCSHostProtocolNotProxy(-67041L), errSecCSHostProtocolStateError(-67040L), errSecCSHostProtocolUnrelated(-67039L), errSecCSNotSupported(-67037L), errSecCSCMSTooLarge(-67036L), errSecCSHostProtocolInvalidHash(-67035L), errSecCSStaticCodeChanged(-67034L), errSecCSDBDenied(-67033L), errSecCSDBAccess(-67032L), errSecCSSigDBDenied(-67033L), errSecCSSigDBAccess(-67032L), errSecCSHostProtocolInvalidAttribute(-67031L), errSecCSInfoPlistFailed(-67030L), errSecCSNoMainExecutable(-67029L), errSecCSBadBundleFormat(-67028L), errSecCSNoMatches(-67027L), errSecCSFileHardQuarantined(-67026L), errSecCSOutdated(-67025L), errSecCSDbCorrupt(-67024L), errSecCSResourceDirectoryFailed(-67023L), errSecCSUnsignedNestedCode(-67022L), errSecCSBadNestedCode(-67021L), errSecCSBadCallbackValue(-67020L), errSecCSHelperFailed(-67019L), errSecCSVetoed(-67018L), errSecCSBadLVArch(-67017L), errSecCSResourceNotSupported(-67016L), errSecCSRegularFile(-67015L), errSecCSUnsealedAppRoot(-67014L), errSecCSWeakResourceRules(-67013L), errSecCSDSStoreSymlink(-67012L), errSecCSAmbiguousBundleFormat(-67011L), errSecCSBadMainExecutable(-67010L), errSecCSBadFrameworkVersion(-67009L), errSecCSUnsealedFrameworkRoot(-67008L), errSecCSWeakResourceEnvelope(-67007L), errSecCSCancelled(-67006L), errSecCSInvalidPlatform(-67005L), errSecCSTooBig(-67004L), errSecCSInvalidSymlink(-67003L), errSecCSNotAppLike(-67002L), errSecCSBadDiskImageFormat(-67001L), errSecCSUnsupportedDigestAlgorithm(-67000L), errSecCSInvalidAssociatedFileData(-66999L), errSecCSInvalidTeamIdentifier(-66998L), errSecCSBadTeamIdentifier(-66997L), errSecCSSignatureUntrusted(-66996L), errSecMultipleExecSegments(-66995L), errSecCSInvalidEntitlements(-66994L), errSecCSInvalidRuntimeVersion(-66993L), errSecCSRevokedNotarization(-66992L), errSecCSCMSConstructionFailed(-66991L), errSecCSRemoteSignerFailed(-66990L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_63_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_63_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/CSCommon.h:205:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_205_1_(val value: Long) {
-    kSecNoGuest(0L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_205_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_205_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecCodeStatus}
- */
-enum class SecCodeStatus(val value: Long) {
-    kSecCodeStatusValid(1L), kSecCodeStatusHard(256L), kSecCodeStatusKill(512L), kSecCodeStatusDebugged(268435456L), kSecCodeStatusPlatform(67108864L);
-
-    companion object {
-        fun fromValue(v: Long): SecCodeStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecCodeStatus value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecRequirementType}
- */
-enum class SecRequirementType(val value: Long) {
-    kSecHostRequirementType(1L), kSecGuestRequirementType(2L), kSecDesignatedRequirementType(3L), kSecLibraryRequirementType(4L), kSecPluginRequirementType(5L), kSecInvalidRequirementType(6L), kSecRequirementTypeCount(6L);
-
-    companion object {
-        fun fromValue(v: Long): SecRequirementType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecRequirementType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecCSDigestAlgorithm}
- */
-enum class SecCSDigestAlgorithm(val value: Long) {
-    kSecCodeSignatureNoHash(0L), kSecCodeSignatureHashSHA1(1L), kSecCodeSignatureHashSHA256(2L), kSecCodeSignatureHashSHA256Truncated(3L), kSecCodeSignatureHashSHA384(4L), kSecCodeSignatureHashSHA512(5L);
-
-    companion object {
-        fun fromValue(v: Long): SecCSDigestAlgorithm = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecCSDigestAlgorithm value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecStaticCode.h:175:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecStaticCode_h_175_1_(val value: Long) {
-    kSecCSCheckAllArchitectures(1L), kSecCSDoNotValidateExecutable(2L), kSecCSDoNotValidateResources(4L), kSecCSBasicValidateOnly(6L), kSecCSCheckNestedCode(8L), kSecCSStrictValidate(16L), kSecCSFullReport(32L), kSecCSCheckGatekeeperArchitectures(65L), kSecCSRestrictSymlinks(128L), kSecCSRestrictToAppLike(256L), kSecCSRestrictSidebandData(512L), kSecCSUseSoftwareSigningCert(1024L), kSecCSValidatePEH(2048L), kSecCSSingleThreaded(4096L), kSecCSAllowNetworkAccess(65536L), kSecCSFastExecutableValidation(131072L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecStaticCode_h_175_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecStaticCode_h_175_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum audit_session_flags}
- */
-enum class audit_session_flags(val value: Long) {
-    AU_SESSION_FLAG_IS_INITIAL(1L), AU_SESSION_FLAG_HAS_GRAPHIC_ACCESS(16L), AU_SESSION_FLAG_HAS_TTY(32L), AU_SESSION_FLAG_IS_REMOTE(4096L), AU_SESSION_FLAG_HAS_CONSOLE_ACCESS(8192L), AU_SESSION_FLAG_HAS_AUTHENTICATED(16384L);
-
-    companion object {
-        fun fromValue(v: Long): audit_session_flags = entries.firstOrNull { it.value == v }
-            ?: error("Unknown audit_session_flags value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/xpc/activity.h:397:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_usr_include_xpc_activity_h_397_1_(val value: Long) {
-    XPC_ACTIVITY_STATE_CHECK_IN(0L), XPC_ACTIVITY_STATE_WAIT(1L), XPC_ACTIVITY_STATE_RUN(2L), XPC_ACTIVITY_STATE_DEFER(3L), XPC_ACTIVITY_STATE_CONTINUE(4L), XPC_ACTIVITY_STATE_DONE(5L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_usr_include_xpc_activity_h_397_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_usr_include_xpc_activity_h_397_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum xpc_session_create_flags_t}
- */
-enum class xpc_session_create_flags_t(val value: Long) {
-    XPC_SESSION_CREATE_NONE(0L), XPC_SESSION_CREATE_INACTIVE(1L), XPC_SESSION_CREATE_MACH_PRIVILEGED(2L);
-
-    companion object {
-        fun fromValue(v: Long): xpc_session_create_flags_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown xpc_session_create_flags_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum xpc_listener_create_flags_t}
- */
-enum class xpc_listener_create_flags_t(val value: Long) {
-    XPC_LISTENER_CREATE_NONE(0L), XPC_LISTENER_CREATE_INACTIVE(1L), XPC_LISTENER_CREATE_FORCE_MACH(2L), XPC_LISTENER_CREATE_FORCE_XPCSERVICE(4L);
-
-    companion object {
-        fun fromValue(v: Long): xpc_listener_create_flags_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown xpc_listener_create_flags_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum launch_data_type_t}
- */
-enum class launch_data_type_t(val value: Long) {
-    LAUNCH_DATA_DICTIONARY(1L), LAUNCH_DATA_ARRAY(2L), LAUNCH_DATA_FD(3L), LAUNCH_DATA_INTEGER(4L), LAUNCH_DATA_REAL(5L), LAUNCH_DATA_BOOL(6L), LAUNCH_DATA_STRING(7L), LAUNCH_DATA_OPAQUE(8L), LAUNCH_DATA_ERRNO(9L), LAUNCH_DATA_MACHPORT(10L);
-
-    companion object {
-        fun fromValue(v: Long): launch_data_type_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown launch_data_type_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecCode.h:99:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_99_1_(val value: Long) {
-    kSecCSUseAllArchitectures(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_99_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_99_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecCode.h:467:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_467_1_(val value: Long) {
-    kSecCSInternalInformation(1L), kSecCSSigningInformation(2L), kSecCSRequirementInformation(4L), kSecCSDynamicInformation(8L), kSecCSContentInformation(16L), kSecCSSkipResourceDirectory(32L), kSecCSCalculateCMSDigest(64L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_467_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCode_h_467_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecCodeHost.h:35:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCodeHost_h_35_1_(val value: Long) {
-    kSecCSDedicatedHost(1L), kSecCSGenerateGuestHash(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCodeHost_h_35_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecCodeHost_h_35_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CMSSignerStatus}
- */
-enum class CMSSignerStatus(val value: Long) {
-    kCMSSignerUnsigned(0L), kCMSSignerValid(1L), kCMSSignerNeedsDetachedContent(2L), kCMSSignerInvalidSignature(3L), kCMSSignerInvalidCert(4L), kCMSSignerInvalidIndex(5L);
-
-    companion object {
-        fun fromValue(v: Long): CMSSignerStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CMSSignerStatus value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CMSSignedAttributes}
- */
-enum class CMSSignedAttributes(val value: Long) {
-    kCMSAttrNone(0L), kCMSAttrSmimeCapabilities(1L), kCMSAttrSmimeEncryptionKeyPrefs(2L), kCMSAttrSmimeMSEncryptionKeyPrefs(4L), kCMSAttrSigningTime(8L), kCMSAttrAppleCodesigningHashAgility(16L), kCMSAttrAppleCodesigningHashAgilityV2(32L), kCMSAttrAppleExpirationTime(64L);
-
-    companion object {
-        fun fromValue(v: Long): CMSSignedAttributes = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CMSSignedAttributes value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CMSCertificateChainMode}
- */
-enum class CMSCertificateChainMode(val value: Long) {
-    kCMSCertificateNone(0L), kCMSCertificateSignerOnly(1L), kCMSCertificateChain(2L), kCMSCertificateChainWithRoot(3L), kCMSCertificateChainWithRootOrFail(4L);
-
-    companion object {
-        fun fromValue(v: Long): CMSCertificateChainMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CMSCertificateChainMode value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SSLSessionOption}
- */
-enum class SSLSessionOption(val value: Long) {
-    kSSLSessionOptionBreakOnServerAuth(0L), kSSLSessionOptionBreakOnCertRequested(1L), kSSLSessionOptionBreakOnClientAuth(2L), kSSLSessionOptionFalseStart(3L), kSSLSessionOptionSendOneByteRecord(4L), kSSLSessionOptionAllowServerIdentityChange(5L), kSSLSessionOptionFallback(6L), kSSLSessionOptionBreakOnClientHello(7L), kSSLSessionOptionAllowRenegotiation(8L), kSSLSessionOptionEnableSessionTickets(9L);
-
-    companion object {
-        fun fromValue(v: Long): SSLSessionOption = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SSLSessionOption value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SSLSessionState}
- */
-enum class SSLSessionState(val value: Long) {
-    kSSLIdle(0L), kSSLHandshake(1L), kSSLConnected(2L), kSSLClosed(3L), kSSLAborted(4L);
-
-    companion object {
-        fun fromValue(v: Long): SSLSessionState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SSLSessionState value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SSLClientCertificateState}
- */
-enum class SSLClientCertificateState(val value: Long) {
-    kSSLClientCertNone(0L), kSSLClientCertRequested(1L), kSSLClientCertSent(2L), kSSLClientCertRejected(3L);
-
-    companion object {
-        fun fromValue(v: Long): SSLClientCertificateState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SSLClientCertificateState value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SSLProtocolSide}
- */
-enum class SSLProtocolSide(val value: Long) {
-    kSSLServerSide(0L), kSSLClientSide(1L);
-
-    companion object {
-        fun fromValue(v: Long): SSLProtocolSide = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SSLProtocolSide value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SSLConnectionType}
- */
-enum class SSLConnectionType(val value: Long) {
-    kSSLStreamType(0L), kSSLDatagramType(1L);
-
-    companion object {
-        fun fromValue(v: Long): SSLConnectionType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SSLConnectionType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SSLAuthenticate}
- */
-enum class SSLAuthenticate(val value: Long) {
-    kNeverAuthenticate(0L), kAlwaysAuthenticate(1L), kTryAuthenticate(2L);
-
-    companion object {
-        fun fromValue(v: Long): SSLAuthenticate = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SSLAuthenticate value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecTransform.h:179:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecTransform_h_179_1_(val value: Long) {
-    kSecTransformErrorAttributeNotFound(1L), kSecTransformErrorInvalidOperation(2L), kSecTransformErrorNotInitializedCorrectly(3L), kSecTransformErrorMoreThanOneOutput(4L), kSecTransformErrorInvalidInputDictionary(5L), kSecTransformErrorInvalidAlgorithm(6L), kSecTransformErrorInvalidLength(7L), kSecTransformErrorInvalidType(8L), kSecTransformErrorInvalidInput(10L), kSecTransformErrorNameAlreadyRegistered(11L), kSecTransformErrorUnsupportedAttribute(12L), kSecTransformOperationNotSupportedOnGroup(13L), kSecTransformErrorMissingParameter(14L), kSecTransformErrorInvalidConnection(15L), kSecTransformTransformIsExecuting(16L), kSecTransformInvalidOverride(17L), kSecTransformTransformIsNotRegistered(18L), kSecTransformErrorAbortInProgress(19L), kSecTransformErrorAborted(20L), kSecTransformInvalidArgument(21L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecTransform_h_179_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecTransform_h_179_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecTransformMetaAttributeType}
- */
-enum class SecTransformMetaAttributeType(val value: Long) {
-    kSecTransformMetaAttributeValue(0L), kSecTransformMetaAttributeName(1L), kSecTransformMetaAttributeRef(2L), kSecTransformMetaAttributeRequired(3L), kSecTransformMetaAttributeRequiresOutboundConnection(4L), kSecTransformMetaAttributeDeferred(5L), kSecTransformMetaAttributeStream(6L), kSecTransformMetaAttributeCanCycle(7L), kSecTransformMetaAttributeExternalize(8L), kSecTransformMetaAttributeHasOutboundConnections(9L), kSecTransformMetaAttributeHasInboundConnection(10L);
-
-    companion object {
-        fun fromValue(v: Long): SecTransformMetaAttributeType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecTransformMetaAttributeType value: $v")
     }
 }
 
@@ -14785,6 +15901,1062 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
     companion object {
         fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreServices_framework_Frameworks_SharedFileList_framework_Headers_LSSharedFileList_h_271_1_ = entries.firstOrNull { it.value == v }
             ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreServices_framework_Frameworks_SharedFileList_framework_Headers_LSSharedFileList_h_271_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSURLError.h:69:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_69_1_(val value: Long) {
+    NSURLErrorCancelledReasonUserForceQuitApplication(0L), NSURLErrorCancelledReasonBackgroundUpdatesDisabled(1L), NSURLErrorCancelledReasonInsufficientSystemResources(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_69_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_69_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLErrorNetworkUnavailableReason}
+ */
+enum class NSURLErrorNetworkUnavailableReason(val value: Long) {
+    NSURLErrorNetworkUnavailableReasonCellular(0L), NSURLErrorNetworkUnavailableReasonExpensive(1L), NSURLErrorNetworkUnavailableReasonConstrained(2L), NSURLErrorNetworkUnavailableReasonUltraConstrained(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLErrorNetworkUnavailableReason = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLErrorNetworkUnavailableReason value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSURLError.h:101:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_101_1_(val value: Long) {
+    NSURLErrorUnknown(-1L), NSURLErrorCancelled(-999L), NSURLErrorBadURL(-1000L), NSURLErrorTimedOut(-1001L), NSURLErrorUnsupportedURL(-1002L), NSURLErrorCannotFindHost(-1003L), NSURLErrorCannotConnectToHost(-1004L), NSURLErrorNetworkConnectionLost(-1005L), NSURLErrorDNSLookupFailed(-1006L), NSURLErrorHTTPTooManyRedirects(-1007L), NSURLErrorResourceUnavailable(-1008L), NSURLErrorNotConnectedToInternet(-1009L), NSURLErrorRedirectToNonExistentLocation(-1010L), NSURLErrorBadServerResponse(-1011L), NSURLErrorUserCancelledAuthentication(-1012L), NSURLErrorUserAuthenticationRequired(-1013L), NSURLErrorZeroByteResource(-1014L), NSURLErrorCannotDecodeRawData(-1015L), NSURLErrorCannotDecodeContentData(-1016L), NSURLErrorCannotParseResponse(-1017L), NSURLErrorAppTransportSecurityRequiresSecureConnection(-1022L), NSURLErrorFileDoesNotExist(-1100L), NSURLErrorFileIsDirectory(-1101L), NSURLErrorNoPermissionsToReadFile(-1102L), NSURLErrorDataLengthExceedsMaximum(-1103L), NSURLErrorFileOutsideSafeArea(-1104L), NSURLErrorSecureConnectionFailed(-1200L), NSURLErrorServerCertificateHasBadDate(-1201L), NSURLErrorServerCertificateUntrusted(-1202L), NSURLErrorServerCertificateHasUnknownRoot(-1203L), NSURLErrorServerCertificateNotYetValid(-1204L), NSURLErrorClientCertificateRejected(-1205L), NSURLErrorClientCertificateRequired(-1206L), NSURLErrorCannotLoadFromNetwork(-2000L), NSURLErrorCannotCreateFile(-3000L), NSURLErrorCannotOpenFile(-3001L), NSURLErrorCannotCloseFile(-3002L), NSURLErrorCannotWriteToFile(-3003L), NSURLErrorCannotRemoveFile(-3004L), NSURLErrorCannotMoveFile(-3005L), NSURLErrorDownloadDecodingFailedMidStream(-3006L), NSURLErrorDownloadDecodingFailedToComplete(-3007L), NSURLErrorInternationalRoamingOff(-1018L), NSURLErrorCallIsActive(-1019L), NSURLErrorDataNotAllowed(-1020L), NSURLErrorRequestBodyStreamExhausted(-1021L), NSURLErrorBackgroundSessionRequiresSharedContainer(-995L), NSURLErrorBackgroundSessionInUseByAnotherProcess(-996L), NSURLErrorBackgroundSessionWasDisconnected(-997L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_101_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_101_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLRequestCachePolicy}
+ */
+enum class NSURLRequestCachePolicy(val value: Long) {
+    NSURLRequestUseProtocolCachePolicy(0L), NSURLRequestReloadIgnoringLocalCacheData(1L), NSURLRequestReloadIgnoringLocalAndRemoteCacheData(4L), NSURLRequestReloadIgnoringCacheData(1L), NSURLRequestReturnCacheDataElseLoad(2L), NSURLRequestReturnCacheDataDontLoad(3L), NSURLRequestReloadRevalidatingCacheData(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLRequestCachePolicy = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLRequestCachePolicy value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLRequestNetworkServiceType}
+ */
+enum class NSURLRequestNetworkServiceType(val value: Long) {
+    NSURLNetworkServiceTypeDefault(0L), NSURLNetworkServiceTypeVoIP(1L), NSURLNetworkServiceTypeVideo(2L), NSURLNetworkServiceTypeBackground(3L), NSURLNetworkServiceTypeVoice(4L), NSURLNetworkServiceTypeResponsiveData(6L), NSURLNetworkServiceTypeAVStreaming(8L), NSURLNetworkServiceTypeResponsiveAV(9L), NSURLNetworkServiceTypeCallSignaling(11L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLRequestNetworkServiceType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLRequestNetworkServiceType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLRequestAttribution}
+ */
+enum class NSURLRequestAttribution(val value: Long) {
+    NSURLRequestAttributionDeveloper(0L), NSURLRequestAttributionUser(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLRequestAttribution = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLRequestAttribution value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSXMLParserExternalEntityResolvingPolicy}
+ */
+enum class NSXMLParserExternalEntityResolvingPolicy(val value: Long) {
+    NSXMLParserResolveExternalEntitiesNever(0L), NSXMLParserResolveExternalEntitiesNoNetwork(1L), NSXMLParserResolveExternalEntitiesSameOriginOnly(2L), NSXMLParserResolveExternalEntitiesAlways(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSXMLParserExternalEntityResolvingPolicy = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSXMLParserExternalEntityResolvingPolicy value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSXMLParserError}
+ */
+enum class NSXMLParserError(val value: Long) {
+    NSXMLParserInternalError(1L), NSXMLParserOutOfMemoryError(2L), NSXMLParserDocumentStartError(3L), NSXMLParserEmptyDocumentError(4L), NSXMLParserPrematureDocumentEndError(5L), NSXMLParserInvalidHexCharacterRefError(6L), NSXMLParserInvalidDecimalCharacterRefError(7L), NSXMLParserInvalidCharacterRefError(8L), NSXMLParserInvalidCharacterError(9L), NSXMLParserCharacterRefAtEOFError(10L), NSXMLParserCharacterRefInPrologError(11L), NSXMLParserCharacterRefInEpilogError(12L), NSXMLParserCharacterRefInDTDError(13L), NSXMLParserEntityRefAtEOFError(14L), NSXMLParserEntityRefInPrologError(15L), NSXMLParserEntityRefInEpilogError(16L), NSXMLParserEntityRefInDTDError(17L), NSXMLParserParsedEntityRefAtEOFError(18L), NSXMLParserParsedEntityRefInPrologError(19L), NSXMLParserParsedEntityRefInEpilogError(20L), NSXMLParserParsedEntityRefInInternalSubsetError(21L), NSXMLParserEntityReferenceWithoutNameError(22L), NSXMLParserEntityReferenceMissingSemiError(23L), NSXMLParserParsedEntityRefNoNameError(24L), NSXMLParserParsedEntityRefMissingSemiError(25L), NSXMLParserUndeclaredEntityError(26L), NSXMLParserUnparsedEntityError(28L), NSXMLParserEntityIsExternalError(29L), NSXMLParserEntityIsParameterError(30L), NSXMLParserUnknownEncodingError(31L), NSXMLParserEncodingNotSupportedError(32L), NSXMLParserStringNotStartedError(33L), NSXMLParserStringNotClosedError(34L), NSXMLParserNamespaceDeclarationError(35L), NSXMLParserEntityNotStartedError(36L), NSXMLParserEntityNotFinishedError(37L), NSXMLParserLessThanSymbolInAttributeError(38L), NSXMLParserAttributeNotStartedError(39L), NSXMLParserAttributeNotFinishedError(40L), NSXMLParserAttributeHasNoValueError(41L), NSXMLParserAttributeRedefinedError(42L), NSXMLParserLiteralNotStartedError(43L), NSXMLParserLiteralNotFinishedError(44L), NSXMLParserCommentNotFinishedError(45L), NSXMLParserProcessingInstructionNotStartedError(46L), NSXMLParserProcessingInstructionNotFinishedError(47L), NSXMLParserNotationNotStartedError(48L), NSXMLParserNotationNotFinishedError(49L), NSXMLParserAttributeListNotStartedError(50L), NSXMLParserAttributeListNotFinishedError(51L), NSXMLParserMixedContentDeclNotStartedError(52L), NSXMLParserMixedContentDeclNotFinishedError(53L), NSXMLParserElementContentDeclNotStartedError(54L), NSXMLParserElementContentDeclNotFinishedError(55L), NSXMLParserXMLDeclNotStartedError(56L), NSXMLParserXMLDeclNotFinishedError(57L), NSXMLParserConditionalSectionNotStartedError(58L), NSXMLParserConditionalSectionNotFinishedError(59L), NSXMLParserExternalSubsetNotFinishedError(60L), NSXMLParserDOCTYPEDeclNotFinishedError(61L), NSXMLParserMisplacedCDATAEndStringError(62L), NSXMLParserCDATANotFinishedError(63L), NSXMLParserMisplacedXMLDeclarationError(64L), NSXMLParserSpaceRequiredError(65L), NSXMLParserSeparatorRequiredError(66L), NSXMLParserNMTOKENRequiredError(67L), NSXMLParserNAMERequiredError(68L), NSXMLParserPCDATARequiredError(69L), NSXMLParserURIRequiredError(70L), NSXMLParserPublicIdentifierRequiredError(71L), NSXMLParserLTRequiredError(72L), NSXMLParserGTRequiredError(73L), NSXMLParserLTSlashRequiredError(74L), NSXMLParserEqualExpectedError(75L), NSXMLParserTagNameMismatchError(76L), NSXMLParserUnfinishedTagError(77L), NSXMLParserStandaloneValueError(78L), NSXMLParserInvalidEncodingNameError(79L), NSXMLParserCommentContainsDoubleHyphenError(80L), NSXMLParserInvalidEncodingError(81L), NSXMLParserExternalStandaloneEntityError(82L), NSXMLParserInvalidConditionalSectionError(83L), NSXMLParserEntityValueRequiredError(84L), NSXMLParserNotWellBalancedError(85L), NSXMLParserExtraContentError(86L), NSXMLParserInvalidCharacterInEntityError(87L), NSXMLParserParsedEntityRefInInternalError(88L), NSXMLParserEntityRefLoopError(89L), NSXMLParserEntityBoundaryError(90L), NSXMLParserInvalidURIError(91L), NSXMLParserURIFragmentError(92L), NSXMLParserNoDTDError(94L), NSXMLParserDelegateAbortedParseError(512L);
+
+    companion object {
+        fun fromValue(v: Long): NSXMLParserError = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSXMLParserError value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/FoundationErrors.h:11:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_FoundationErrors_h_11_1_(val value: Long) {
+    NSFileNoSuchFileError(4L), NSFileLockingError(255L), NSFileReadUnknownError(256L), NSFileReadNoPermissionError(257L), NSFileReadInvalidFileNameError(258L), NSFileReadCorruptFileError(259L), NSFileReadNoSuchFileError(260L), NSFileReadInapplicableStringEncodingError(261L), NSFileReadUnsupportedSchemeError(262L), NSFileReadTooLargeError(263L), NSFileReadUnknownStringEncodingError(264L), NSFileWriteUnknownError(512L), NSFileWriteNoPermissionError(513L), NSFileWriteInvalidFileNameError(514L), NSFileWriteFileExistsError(516L), NSFileWriteInapplicableStringEncodingError(517L), NSFileWriteUnsupportedSchemeError(518L), NSFileWriteOutOfSpaceError(640L), NSFileWriteVolumeReadOnlyError(642L), NSFileManagerUnmountUnknownError(768L), NSFileManagerUnmountBusyError(769L), NSKeyValueValidationError(1024L), NSFormattingError(2048L), NSUserCancelledError(3072L), NSFeatureUnsupportedError(3328L), NSExecutableNotLoadableError(3584L), NSExecutableArchitectureMismatchError(3585L), NSExecutableRuntimeMismatchError(3586L), NSExecutableLoadError(3587L), NSExecutableLinkError(3588L), NSFileErrorMinimum(0L), NSFileErrorMaximum(1023L), NSValidationErrorMinimum(1024L), NSValidationErrorMaximum(2047L), NSExecutableErrorMinimum(3584L), NSExecutableErrorMaximum(3839L), NSFormattingErrorMinimum(2048L), NSFormattingErrorMaximum(2559L), NSPropertyListReadCorruptError(3840L), NSPropertyListReadUnknownVersionError(3841L), NSPropertyListReadStreamError(3842L), NSPropertyListWriteStreamError(3851L), NSPropertyListWriteInvalidError(3852L), NSPropertyListErrorMinimum(3840L), NSPropertyListErrorMaximum(4095L), NSXPCConnectionInterrupted(4097L), NSXPCConnectionInvalid(4099L), NSXPCConnectionReplyInvalid(4101L), NSXPCConnectionCodeSigningRequirementFailure(4102L), NSXPCConnectionErrorMinimum(4096L), NSXPCConnectionErrorMaximum(4224L), NSUbiquitousFileUnavailableError(4353L), NSUbiquitousFileNotUploadedDueToQuotaError(4354L), NSUbiquitousFileUbiquityServerNotAvailable(4355L), NSUbiquitousFileErrorMinimum(4352L), NSUbiquitousFileErrorMaximum(4607L), NSUserActivityHandoffFailedError(4608L), NSUserActivityConnectionUnavailableError(4609L), NSUserActivityRemoteApplicationTimedOutError(4610L), NSUserActivityHandoffUserInfoTooLargeError(4611L), NSUserActivityErrorMinimum(4608L), NSUserActivityErrorMaximum(4863L), NSCoderReadCorruptError(4864L), NSCoderValueNotFoundError(4865L), NSCoderInvalidValueError(4866L), NSCoderErrorMinimum(4864L), NSCoderErrorMaximum(4991L), NSBundleErrorMinimum(4992L), NSBundleErrorMaximum(5119L), NSBundleOnDemandResourceOutOfSpaceError(4992L), NSBundleOnDemandResourceExceededMaximumSizeError(4993L), NSBundleOnDemandResourceInvalidTagError(4994L), NSCloudSharingNetworkFailureError(5120L), NSCloudSharingQuotaExceededError(5121L), NSCloudSharingTooManyParticipantsError(5122L), NSCloudSharingConflictError(5123L), NSCloudSharingNoPermissionError(5124L), NSCloudSharingOtherError(5375L), NSCloudSharingErrorMinimum(5120L), NSCloudSharingErrorMaximum(5375L), NSCompressionFailedError(5376L), NSDecompressionFailedError(5377L), NSCompressionErrorMinimum(5376L), NSCompressionErrorMaximum(5503L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_FoundationErrors_h_11_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_FoundationErrors_h_11_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSByteCountFormatterUnits}
+ */
+enum class NSByteCountFormatterUnits(val value: Long) {
+    NSByteCountFormatterUseDefault(0L), NSByteCountFormatterUseBytes(1L), NSByteCountFormatterUseKB(2L), NSByteCountFormatterUseMB(4L), NSByteCountFormatterUseGB(8L), NSByteCountFormatterUseTB(16L), NSByteCountFormatterUsePB(32L), NSByteCountFormatterUseEB(64L), NSByteCountFormatterUseZB(128L), NSByteCountFormatterUseYBOrHigher(65280L), NSByteCountFormatterUseAll(65535L);
+
+    companion object {
+        fun fromValue(v: Long): NSByteCountFormatterUnits = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSByteCountFormatterUnits value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSByteCountFormatterCountStyle}
+ */
+enum class NSByteCountFormatterCountStyle(val value: Long) {
+    NSByteCountFormatterCountStyleFile(0L), NSByteCountFormatterCountStyleMemory(1L), NSByteCountFormatterCountStyleDecimal(2L), NSByteCountFormatterCountStyleBinary(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSByteCountFormatterCountStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSByteCountFormatterCountStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSComparisonPredicateModifier}
+ */
+enum class NSComparisonPredicateModifier(val value: Long) {
+    NSDirectPredicateModifier(0L), NSAllPredicateModifier(1L), NSAnyPredicateModifier(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSComparisonPredicateModifier = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSComparisonPredicateModifier value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPredicateOperatorType}
+ */
+enum class NSPredicateOperatorType(val value: Long) {
+    NSLessThanPredicateOperatorType(0L), NSLessThanOrEqualToPredicateOperatorType(1L), NSGreaterThanPredicateOperatorType(2L), NSGreaterThanOrEqualToPredicateOperatorType(3L), NSEqualToPredicateOperatorType(4L), NSNotEqualToPredicateOperatorType(5L), NSMatchesPredicateOperatorType(6L), NSLikePredicateOperatorType(7L), NSBeginsWithPredicateOperatorType(8L), NSEndsWithPredicateOperatorType(9L), NSInPredicateOperatorType(10L), NSCustomSelectorPredicateOperatorType(11L), NSContainsPredicateOperatorType(99L), NSBetweenPredicateOperatorType(100L);
+
+    companion object {
+        fun fromValue(v: Long): NSPredicateOperatorType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPredicateOperatorType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCompoundPredicateType}
+ */
+enum class NSCompoundPredicateType(val value: Long) {
+    NSNotPredicateType(0L), NSAndPredicateType(1L), NSOrPredicateType(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSCompoundPredicateType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCompoundPredicateType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDateComponentsFormatterUnitsStyle}
+ */
+enum class NSDateComponentsFormatterUnitsStyle(val value: Long) {
+    NSDateComponentsFormatterUnitsStylePositional(0L), NSDateComponentsFormatterUnitsStyleAbbreviated(1L), NSDateComponentsFormatterUnitsStyleShort(2L), NSDateComponentsFormatterUnitsStyleFull(3L), NSDateComponentsFormatterUnitsStyleSpellOut(4L), NSDateComponentsFormatterUnitsStyleBrief(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSDateComponentsFormatterUnitsStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDateComponentsFormatterUnitsStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDateComponentsFormatterZeroFormattingBehavior}
+ */
+enum class NSDateComponentsFormatterZeroFormattingBehavior(val value: Long) {
+    NSDateComponentsFormatterZeroFormattingBehaviorNone(0L), NSDateComponentsFormatterZeroFormattingBehaviorDefault(1L), NSDateComponentsFormatterZeroFormattingBehaviorDropLeading(2L), NSDateComponentsFormatterZeroFormattingBehaviorDropMiddle(4L), NSDateComponentsFormatterZeroFormattingBehaviorDropTrailing(8L), NSDateComponentsFormatterZeroFormattingBehaviorDropAll(14L), NSDateComponentsFormatterZeroFormattingBehaviorPad(65536L);
+
+    companion object {
+        fun fromValue(v: Long): NSDateComponentsFormatterZeroFormattingBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDateComponentsFormatterZeroFormattingBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSExpressionType}
+ */
+enum class NSExpressionType(val value: Long) {
+    NSConstantValueExpressionType(0L), NSEvaluatedObjectExpressionType(1L), NSVariableExpressionType(2L), NSKeyPathExpressionType(3L), NSFunctionExpressionType(4L), NSUnionSetExpressionType(5L), NSIntersectSetExpressionType(6L), NSMinusSetExpressionType(7L), NSSubqueryExpressionType(13L), NSAggregateExpressionType(14L), NSAnyKeyExpressionType(15L), NSBlockExpressionType(19L), NSConditionalExpressionType(20L);
+
+    companion object {
+        fun fromValue(v: Long): NSExpressionType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSExpressionType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLinguisticTaggerUnit}
+ */
+enum class NSLinguisticTaggerUnit(val value: Long) {
+    NSLinguisticTaggerUnitWord(0L), NSLinguisticTaggerUnitSentence(1L), NSLinguisticTaggerUnitParagraph(2L), NSLinguisticTaggerUnitDocument(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSLinguisticTaggerUnit = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLinguisticTaggerUnit value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSNetServicesError}
+ */
+enum class NSNetServicesError(val value: Long) {
+    NSNetServicesUnknownError(-72000L), NSNetServicesCollisionError(-72001L), NSNetServicesNotFoundError(-72002L), NSNetServicesActivityInProgress(-72003L), NSNetServicesBadArgumentError(-72004L), NSNetServicesCancelledError(-72005L), NSNetServicesInvalidError(-72006L), NSNetServicesTimeoutError(-72007L), NSNetServicesMissingRequiredConfigurationError(-72008L);
+
+    companion object {
+        fun fromValue(v: Long): NSNetServicesError = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSNetServicesError value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSUbiquitousKeyValueStore.h:47:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSUbiquitousKeyValueStore_h_47_1_(val value: Long) {
+    NSUbiquitousKeyValueStoreServerChange(0L), NSUbiquitousKeyValueStoreInitialSyncChange(1L), NSUbiquitousKeyValueStoreQuotaViolationChange(2L), NSUbiquitousKeyValueStoreAccountChange(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSUbiquitousKeyValueStore_h_47_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSUbiquitousKeyValueStore_h_47_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLSessionTaskState}
+ */
+enum class NSURLSessionTaskState(val value: Long) {
+    NSURLSessionTaskStateRunning(0L), NSURLSessionTaskStateSuspended(1L), NSURLSessionTaskStateCanceling(2L), NSURLSessionTaskStateCompleted(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLSessionTaskState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLSessionTaskState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLSessionWebSocketMessageType}
+ */
+enum class NSURLSessionWebSocketMessageType(val value: Long) {
+    NSURLSessionWebSocketMessageTypeData(0L), NSURLSessionWebSocketMessageTypeString(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLSessionWebSocketMessageType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLSessionWebSocketMessageType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLSessionWebSocketCloseCode}
+ */
+enum class NSURLSessionWebSocketCloseCode(val value: Long) {
+    NSURLSessionWebSocketCloseCodeInvalid(0L), NSURLSessionWebSocketCloseCodeNormalClosure(1000L), NSURLSessionWebSocketCloseCodeGoingAway(1001L), NSURLSessionWebSocketCloseCodeProtocolError(1002L), NSURLSessionWebSocketCloseCodeUnsupportedData(1003L), NSURLSessionWebSocketCloseCodeNoStatusReceived(1005L), NSURLSessionWebSocketCloseCodeAbnormalClosure(1006L), NSURLSessionWebSocketCloseCodeInvalidFramePayloadData(1007L), NSURLSessionWebSocketCloseCodePolicyViolation(1008L), NSURLSessionWebSocketCloseCodeMessageTooBig(1009L), NSURLSessionWebSocketCloseCodeMandatoryExtensionMissing(1010L), NSURLSessionWebSocketCloseCodeInternalServerError(1011L), NSURLSessionWebSocketCloseCodeTLSHandshakeFailure(1015L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLSessionWebSocketCloseCode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLSessionWebSocketCloseCode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLSessionMultipathServiceType}
+ */
+enum class NSURLSessionMultipathServiceType(val value: Long) {
+    NSURLSessionMultipathServiceTypeNone(0L), NSURLSessionMultipathServiceTypeHandover(1L), NSURLSessionMultipathServiceTypeInteractive(2L), NSURLSessionMultipathServiceTypeAggregate(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLSessionMultipathServiceType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLSessionMultipathServiceType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLSessionDelayedRequestDisposition}
+ */
+enum class NSURLSessionDelayedRequestDisposition(val value: Long) {
+    NSURLSessionDelayedRequestContinueLoading(0L), NSURLSessionDelayedRequestUseNewRequest(1L), NSURLSessionDelayedRequestCancel(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLSessionDelayedRequestDisposition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLSessionDelayedRequestDisposition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLSessionAuthChallengeDisposition}
+ */
+enum class NSURLSessionAuthChallengeDisposition(val value: Long) {
+    NSURLSessionAuthChallengeUseCredential(0L), NSURLSessionAuthChallengePerformDefaultHandling(1L), NSURLSessionAuthChallengeCancelAuthenticationChallenge(2L), NSURLSessionAuthChallengeRejectProtectionSpace(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLSessionAuthChallengeDisposition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLSessionAuthChallengeDisposition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLSessionResponseDisposition}
+ */
+enum class NSURLSessionResponseDisposition(val value: Long) {
+    NSURLSessionResponseCancel(0L), NSURLSessionResponseAllow(1L), NSURLSessionResponseBecomeDownload(2L), NSURLSessionResponseBecomeStream(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLSessionResponseDisposition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLSessionResponseDisposition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLSessionTaskMetricsResourceFetchType}
+ */
+enum class NSURLSessionTaskMetricsResourceFetchType(val value: Long) {
+    NSURLSessionTaskMetricsResourceFetchTypeUnknown(0L), NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad(1L), NSURLSessionTaskMetricsResourceFetchTypeServerPush(2L), NSURLSessionTaskMetricsResourceFetchTypeLocalCache(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLSessionTaskMetricsResourceFetchType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLSessionTaskMetricsResourceFetchType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSURLSessionTaskMetricsDomainResolutionProtocol}
+ */
+enum class NSURLSessionTaskMetricsDomainResolutionProtocol(val value: Long) {
+    NSURLSessionTaskMetricsDomainResolutionProtocolUnknown(0L), NSURLSessionTaskMetricsDomainResolutionProtocolUDP(1L), NSURLSessionTaskMetricsDomainResolutionProtocolTCP(2L), NSURLSessionTaskMetricsDomainResolutionProtocolTLS(3L), NSURLSessionTaskMetricsDomainResolutionProtocolHTTPS(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSURLSessionTaskMetricsDomainResolutionProtocol = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSURLSessionTaskMetricsDomainResolutionProtocol value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSBackgroundActivityResult}
+ */
+enum class NSBackgroundActivityResult(val value: Long) {
+    NSBackgroundActivityResultFinished(1L), NSBackgroundActivityResultDeferred(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSBackgroundActivityResult = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBackgroundActivityResult value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSNotificationSuspensionBehavior}
+ */
+enum class NSNotificationSuspensionBehavior(val value: Long) {
+    NSNotificationSuspensionBehaviorDrop(1L), NSNotificationSuspensionBehaviorCoalesce(2L), NSNotificationSuspensionBehaviorHold(3L), NSNotificationSuspensionBehaviorDeliverImmediately(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSNotificationSuspensionBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSNotificationSuspensionBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTaskTerminationReason}
+ */
+enum class NSTaskTerminationReason(val value: Long) {
+    NSTaskTerminationReasonExit(1L), NSTaskTerminationReasonUncaughtSignal(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSTaskTerminationReason = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTaskTerminationReason value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSXMLNodeKind}
+ */
+enum class NSXMLNodeKind(val value: Long) {
+    NSXMLInvalidKind(0L), NSXMLDocumentKind(1L), NSXMLElementKind(2L), NSXMLAttributeKind(3L), NSXMLNamespaceKind(4L), NSXMLProcessingInstructionKind(5L), NSXMLCommentKind(6L), NSXMLTextKind(7L), NSXMLDTDKind(8L), NSXMLEntityDeclarationKind(9L), NSXMLAttributeDeclarationKind(10L), NSXMLElementDeclarationKind(11L), NSXMLNotationDeclarationKind(12L);
+
+    companion object {
+        fun fromValue(v: Long): NSXMLNodeKind = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSXMLNodeKind value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSXMLDTDNodeKind}
+ */
+enum class NSXMLDTDNodeKind(val value: Long) {
+    NSXMLEntityGeneralKind(1L), NSXMLEntityParsedKind(2L), NSXMLEntityUnparsedKind(3L), NSXMLEntityParameterKind(4L), NSXMLEntityPredefined(5L), NSXMLAttributeCDATAKind(6L), NSXMLAttributeIDKind(7L), NSXMLAttributeIDRefKind(8L), NSXMLAttributeIDRefsKind(9L), NSXMLAttributeEntityKind(10L), NSXMLAttributeEntitiesKind(11L), NSXMLAttributeNMTokenKind(12L), NSXMLAttributeNMTokensKind(13L), NSXMLAttributeEnumerationKind(14L), NSXMLAttributeNotationKind(15L), NSXMLElementDeclarationUndefinedKind(16L), NSXMLElementDeclarationEmptyKind(17L), NSXMLElementDeclarationAnyKind(18L), NSXMLElementDeclarationMixedKind(19L), NSXMLElementDeclarationElementKind(20L);
+
+    companion object {
+        fun fromValue(v: Long): NSXMLDTDNodeKind = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSXMLDTDNodeKind value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSXMLDocumentContentKind}
+ */
+enum class NSXMLDocumentContentKind(val value: Long) {
+    NSXMLDocumentXMLKind(0L), NSXMLDocumentXHTMLKind(1L), NSXMLDocumentHTMLKind(2L), NSXMLDocumentTextKind(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSXMLDocumentContentKind = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSXMLDocumentContentKind value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSScriptCommand.h:13:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptCommand_h_13_1_(val value: Long) {
+    NSNoScriptError(0L), NSReceiverEvaluationScriptError(1L), NSKeySpecifierEvaluationScriptError(2L), NSArgumentEvaluationScriptError(3L), NSReceiversCantHandleCommandScriptError(4L), NSRequiredArgumentsMissingScriptError(5L), NSArgumentsWrongScriptError(6L), NSUnknownKeyScriptError(7L), NSInternalScriptError(8L), NSOperationNotSupportedForKeyScriptError(9L), NSCannotCreateScriptCommandError(10L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptCommand_h_13_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptCommand_h_13_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSScriptObjectSpecifiers.h:13:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptObjectSpecifiers_h_13_1_(val value: Long) {
+    NSNoSpecifierError(0L), NSNoTopLevelContainersSpecifierError(1L), NSContainerSpecifierError(2L), NSUnknownKeySpecifierError(3L), NSInvalidIndexSpecifierError(4L), NSInternalSpecifierError(5L), NSOperationNotSupportedForKeySpecifierError(6L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptObjectSpecifiers_h_13_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptObjectSpecifiers_h_13_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSInsertionPosition}
+ */
+enum class NSInsertionPosition(val value: Long) {
+    NSPositionAfter(0L), NSPositionBefore(1L), NSPositionBeginning(2L), NSPositionEnd(3L), NSPositionReplace(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSInsertionPosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSInsertionPosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSRelativePosition}
+ */
+enum class NSRelativePosition(val value: Long) {
+    NSRelativeAfter(0L), NSRelativeBefore(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSRelativePosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSRelativePosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWhoseSubelementIdentifier}
+ */
+enum class NSWhoseSubelementIdentifier(val value: Long) {
+    NSIndexSubelement(0L), NSEverySubelement(1L), NSMiddleSubelement(2L), NSRandomSubelement(3L), NSNoSubelement(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSWhoseSubelementIdentifier = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWhoseSubelementIdentifier value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTestComparisonOperation}
+ */
+enum class NSTestComparisonOperation(val value: Long) {
+    NSEqualToComparison(0L), NSLessThanOrEqualToComparison(1L), NSLessThanComparison(2L), NSGreaterThanOrEqualToComparison(3L), NSGreaterThanComparison(4L), NSBeginsWithComparison(5L), NSEndsWithComparison(6L), NSContainsComparison(7L);
+
+    companion object {
+        fun fromValue(v: Long): NSTestComparisonOperation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTestComparisonOperation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSUserNotificationActivationType}
+ */
+enum class NSUserNotificationActivationType(val value: Long) {
+    NSUserNotificationActivationTypeNone(0L), NSUserNotificationActivationTypeContentsClicked(1L), NSUserNotificationActivationTypeActionButtonClicked(2L), NSUserNotificationActivationTypeReplied(3L), NSUserNotificationActivationTypeAdditionalActionClicked(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSUserNotificationActivationType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSUserNotificationActivationType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKitErrors.h:15:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_AppKitErrors_h_15_1_(val value: Long) {
+    NSTextReadInapplicableDocumentTypeError(65806L), NSTextWriteInapplicableDocumentTypeError(66062L), NSTextReadWriteErrorMinimum(65792L), NSTextReadWriteErrorMaximum(66303L), NSFontAssetDownloadError(66304L), NSFontErrorMinimum(66304L), NSFontErrorMaximum(66335L), NSServiceApplicationNotFoundError(66560L), NSServiceApplicationLaunchFailedError(66561L), NSServiceRequestTimedOutError(66562L), NSServiceInvalidPasteboardDataError(66563L), NSServiceMalformedServiceDictionaryError(66564L), NSServiceMiscellaneousError(66800L), NSServiceErrorMinimum(66560L), NSServiceErrorMaximum(66817L), NSSharingServiceNotConfiguredError(67072L), NSSharingServiceErrorMinimum(67072L), NSSharingServiceErrorMaximum(67327L), NSWorkspaceAuthorizationInvalidError(67328L), NSWorkspaceErrorMinimum(67328L), NSWorkspaceErrorMaximum(67455L), NSWindowSharingRequestAlreadyRequested(67456L), NSWindowSharingRequestNoEligibleSession(67457L), NSWindowSharingRequestUnspecifiedError(67458L), NSWindowSharingErrorMinimum(67456L), NSWindowSharingErrorMaximum(67466L), NSPasteboardMiscellaneousError(67584L), NSPasteboardCommunicationError(67585L), NSPasteboardInvalidArgumentError(67586L), NSPasteboardContentsNotAvailableError(67587L), NSPasteboardErrorMinimum(67584L), NSPasteboardErrorMaximum(67839L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_AppKitErrors_h_15_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_AppKitErrors_h_15_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCompositingOperation}
+ */
+enum class NSCompositingOperation(val value: Long) {
+    NSCompositingOperationClear(0L), NSCompositingOperationCopy(1L), NSCompositingOperationSourceOver(2L), NSCompositingOperationSourceIn(3L), NSCompositingOperationSourceOut(4L), NSCompositingOperationSourceAtop(5L), NSCompositingOperationDestinationOver(6L), NSCompositingOperationDestinationIn(7L), NSCompositingOperationDestinationOut(8L), NSCompositingOperationDestinationAtop(9L), NSCompositingOperationXOR(10L), NSCompositingOperationPlusDarker(11L), NSCompositingOperationHighlight(12L), NSCompositingOperationPlusLighter(13L), NSCompositingOperationMultiply(14L), NSCompositingOperationScreen(15L), NSCompositingOperationOverlay(16L), NSCompositingOperationDarken(17L), NSCompositingOperationLighten(18L), NSCompositingOperationColorDodge(19L), NSCompositingOperationColorBurn(20L), NSCompositingOperationSoftLight(21L), NSCompositingOperationHardLight(22L), NSCompositingOperationDifference(23L), NSCompositingOperationExclusion(24L), NSCompositingOperationHue(25L), NSCompositingOperationSaturation(26L), NSCompositingOperationColor(27L), NSCompositingOperationLuminosity(28L);
+
+    companion object {
+        fun fromValue(v: Long): NSCompositingOperation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCompositingOperation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSBackingStoreType}
+ */
+enum class NSBackingStoreType(val value: Long) {
+    NSBackingStoreRetained(0L), NSBackingStoreNonretained(1L), NSBackingStoreBuffered(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSBackingStoreType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBackingStoreType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWindowOrderingMode}
+ */
+enum class NSWindowOrderingMode(val value: Long) {
+    NSWindowAbove(1L), NSWindowBelow(-1L), NSWindowOut(0L);
+
+    companion object {
+        fun fromValue(v: Long): NSWindowOrderingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWindowOrderingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFocusRingPlacement}
+ */
+enum class NSFocusRingPlacement(val value: Long) {
+    NSFocusRingOnly(0L), NSFocusRingBelow(1L), NSFocusRingAbove(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSFocusRingPlacement = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFocusRingPlacement value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFocusRingType}
+ */
+enum class NSFocusRingType(val value: Long) {
+    NSFocusRingTypeDefault(0L), NSFocusRingTypeNone(1L), NSFocusRingTypeExterior(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSFocusRingType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFocusRingType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSColorRenderingIntent}
+ */
+enum class NSColorRenderingIntent(val value: Long) {
+    NSColorRenderingIntentDefault(0L), NSColorRenderingIntentAbsoluteColorimetric(1L), NSColorRenderingIntentRelativeColorimetric(2L), NSColorRenderingIntentPerceptual(3L), NSColorRenderingIntentSaturation(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSColorRenderingIntent = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSColorRenderingIntent value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWindowDepth}
+ */
+enum class NSWindowDepth(val value: Long) {
+    NSWindowDepthTwentyfourBitRGB(520L), NSWindowDepthSixtyfourBitRGB(528L), NSWindowDepthOnehundredtwentyeightBitRGB(544L);
+
+    companion object {
+        fun fromValue(v: Long): NSWindowDepth = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWindowDepth value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDisplayGamut}
+ */
+enum class NSDisplayGamut(val value: Long) {
+    NSDisplayGamutSRGB(1L), NSDisplayGamutP3(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSDisplayGamut = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDisplayGamut value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAnimationEffect}
+ */
+enum class NSAnimationEffect(val value: Long) {
+    NSAnimationEffectDisappearingItemDefault(0L), NSAnimationEffectPoof(10L);
+
+    companion object {
+        fun fromValue(v: Long): NSAnimationEffect = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAnimationEffect value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGColorRenderingIntent}
+ */
+enum class CGColorRenderingIntent(val value: Long) {
+    kCGRenderingIntentDefault(0L), kCGRenderingIntentAbsoluteColorimetric(1L), kCGRenderingIntentRelativeColorimetric(2L), kCGRenderingIntentPerceptual(3L), kCGRenderingIntentSaturation(4L);
+
+    companion object {
+        fun fromValue(v: Long): CGColorRenderingIntent = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGColorRenderingIntent value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGColorSpaceModel}
+ */
+enum class CGColorSpaceModel(val value: Long) {
+    kCGColorSpaceModelUnknown(-1L), kCGColorSpaceModelMonochrome(0L), kCGColorSpaceModelRGB(1L), kCGColorSpaceModelCMYK(2L), kCGColorSpaceModelLab(3L), kCGColorSpaceModelDeviceN(4L), kCGColorSpaceModelIndexed(5L), kCGColorSpaceModelPattern(6L), kCGColorSpaceModelXYZ(7L);
+
+    companion object {
+        fun fromValue(v: Long): CGColorSpaceModel = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGColorSpaceModel value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGPatternTiling}
+ */
+enum class CGPatternTiling(val value: Long) {
+    kCGPatternTilingNoDistortion(0L), kCGPatternTilingConstantSpacingMinimalDistortion(1L), kCGPatternTilingConstantSpacing(2L);
+
+    companion object {
+        fun fromValue(v: Long): CGPatternTiling = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGPatternTiling value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGFontPostScriptFormat}
+ */
+enum class CGFontPostScriptFormat(val value: Long) {
+    kCGFontPostScriptFormatType1(1L), kCGFontPostScriptFormatType3(3L), kCGFontPostScriptFormatType42(42L);
+
+    companion object {
+        fun fromValue(v: Long): CGFontPostScriptFormat = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGFontPostScriptFormat value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGGlyphDeprecatedEnum}
+ */
+enum class CGGlyphDeprecatedEnum(val value: Long) {
+    CGGlyphMin(0L), CGGlyphMax(1L);
+
+    companion object {
+        fun fromValue(v: Long): CGGlyphDeprecatedEnum = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGGlyphDeprecatedEnum value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGImageAlphaInfo}
+ */
+enum class CGImageAlphaInfo(val value: Long) {
+    kCGImageAlphaNone(0L), kCGImageAlphaPremultipliedLast(1L), kCGImageAlphaPremultipliedFirst(2L), kCGImageAlphaLast(3L), kCGImageAlphaFirst(4L), kCGImageAlphaNoneSkipLast(5L), kCGImageAlphaNoneSkipFirst(6L), kCGImageAlphaOnly(7L);
+
+    companion object {
+        fun fromValue(v: Long): CGImageAlphaInfo = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGImageAlphaInfo value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGImageComponentInfo}
+ */
+enum class CGImageComponentInfo(val value: Long) {
+    kCGImageComponentInteger(0L), kCGImageComponentFloat(256L);
+
+    companion object {
+        fun fromValue(v: Long): CGImageComponentInfo = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGImageComponentInfo value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGImageByteOrderInfo}
+ */
+enum class CGImageByteOrderInfo(val value: Long) {
+    kCGImageByteOrderMask(28672L), kCGImageByteOrderDefault(0L), kCGImageByteOrder16Little(4096L), kCGImageByteOrder32Little(8192L), kCGImageByteOrder16Big(12288L), kCGImageByteOrder32Big(16384L), kCGImageByteOrder16Host(4096L), kCGImageByteOrder32Host(8192L);
+
+    companion object {
+        fun fromValue(v: Long): CGImageByteOrderInfo = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGImageByteOrderInfo value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGImagePixelFormatInfo}
+ */
+enum class CGImagePixelFormatInfo(val value: Long) {
+    kCGImagePixelFormatMask(983040L), kCGImagePixelFormatPacked(0L), kCGImagePixelFormatRGB555(65536L), kCGImagePixelFormatRGB565(131072L), kCGImagePixelFormatRGB101010(196608L), kCGImagePixelFormatRGBCIF10(262144L);
+
+    companion object {
+        fun fromValue(v: Long): CGImagePixelFormatInfo = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGImagePixelFormatInfo value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGBitmapInfo}
+ */
+enum class CGBitmapInfo(val value: Long) {
+    kCGBitmapAlphaInfoMask(31L), kCGBitmapComponentInfoMask(3840L), kCGBitmapByteOrderInfoMask(28672L), kCGBitmapPixelFormatInfoMask(983040L), kCGBitmapFloatInfoMask(3840L), kCGBitmapByteOrderMask(28672L), kCGBitmapFloatComponents(256L), kCGBitmapByteOrderDefault(0L), kCGBitmapByteOrder16Little(4096L), kCGBitmapByteOrder32Little(8192L), kCGBitmapByteOrder16Big(12288L), kCGBitmapByteOrder32Big(16384L);
+
+    companion object {
+        fun fromValue(v: Long): CGBitmapInfo = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGBitmapInfo value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGLineJoin}
+ */
+enum class CGLineJoin(val value: Long) {
+    kCGLineJoinMiter(0L), kCGLineJoinRound(1L), kCGLineJoinBevel(2L);
+
+    companion object {
+        fun fromValue(v: Long): CGLineJoin = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGLineJoin value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGLineCap}
+ */
+enum class CGLineCap(val value: Long) {
+    kCGLineCapButt(0L), kCGLineCapRound(1L), kCGLineCapSquare(2L);
+
+    companion object {
+        fun fromValue(v: Long): CGLineCap = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGLineCap value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGPathElementType}
+ */
+enum class CGPathElementType(val value: Long) {
+    kCGPathElementMoveToPoint(0L), kCGPathElementAddLineToPoint(1L), kCGPathElementAddQuadCurveToPoint(2L), kCGPathElementAddCurveToPoint(3L), kCGPathElementCloseSubpath(4L);
+
+    companion object {
+        fun fromValue(v: Long): CGPathElementType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGPathElementType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGPDFObjectType}
+ */
+enum class CGPDFObjectType(val value: Long) {
+    kCGPDFObjectTypeNull(1L), kCGPDFObjectTypeBoolean(2L), kCGPDFObjectTypeInteger(3L), kCGPDFObjectTypeReal(4L), kCGPDFObjectTypeName(5L), kCGPDFObjectTypeString(6L), kCGPDFObjectTypeArray(7L), kCGPDFObjectTypeDictionary(8L), kCGPDFObjectTypeStream(9L);
+
+    companion object {
+        fun fromValue(v: Long): CGPDFObjectType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGPDFObjectType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGPDFDataFormat}
+ */
+enum class CGPDFDataFormat(val value: Long) {
+    CGPDFDataFormatRaw(0L), CGPDFDataFormatJPEGEncoded(1L), CGPDFDataFormatJPEG2000(2L);
+
+    companion object {
+        fun fromValue(v: Long): CGPDFDataFormat = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGPDFDataFormat value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGPDFBox}
+ */
+enum class CGPDFBox(val value: Long) {
+    kCGPDFMediaBox(0L), kCGPDFCropBox(1L), kCGPDFBleedBox(2L), kCGPDFTrimBox(3L), kCGPDFArtBox(4L);
+
+    companion object {
+        fun fromValue(v: Long): CGPDFBox = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGPDFBox value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGPDFAccessPermissions}
+ */
+enum class CGPDFAccessPermissions(val value: Long) {
+    kCGPDFAllowsLowQualityPrinting(1L), kCGPDFAllowsHighQualityPrinting(2L), kCGPDFAllowsDocumentChanges(4L), kCGPDFAllowsDocumentAssembly(8L), kCGPDFAllowsContentCopying(16L), kCGPDFAllowsContentAccessibility(32L), kCGPDFAllowsCommenting(64L), kCGPDFAllowsFormFieldEntry(128L);
+
+    companion object {
+        fun fromValue(v: Long): CGPDFAccessPermissions = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGPDFAccessPermissions value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGToneMapping}
+ */
+enum class CGToneMapping(val value: Long) {
+    kCGToneMappingDefault(0L), kCGToneMappingImageSpecificLumaScaling(1L), kCGToneMappingReferenceWhiteBased(2L), kCGToneMappingITURecommended(3L), kCGToneMappingEXRGamma(4L), kCGToneMappingNone(5L);
+
+    companion object {
+        fun fromValue(v: Long): CGToneMapping = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGToneMapping value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGPathDrawingMode}
+ */
+enum class CGPathDrawingMode(val value: Long) {
+    kCGPathFill(0L), kCGPathEOFill(1L), kCGPathStroke(2L), kCGPathFillStroke(3L), kCGPathEOFillStroke(4L);
+
+    companion object {
+        fun fromValue(v: Long): CGPathDrawingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGPathDrawingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGTextDrawingMode}
+ */
+enum class CGTextDrawingMode(val value: Long) {
+    kCGTextFill(0L), kCGTextStroke(1L), kCGTextFillStroke(2L), kCGTextInvisible(3L), kCGTextFillClip(4L), kCGTextStrokeClip(5L), kCGTextFillStrokeClip(6L), kCGTextClip(7L);
+
+    companion object {
+        fun fromValue(v: Long): CGTextDrawingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGTextDrawingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGTextEncoding}
+ */
+enum class CGTextEncoding(val value: Long) {
+    kCGEncodingFontSpecific(0L), kCGEncodingMacRoman(1L);
+
+    companion object {
+        fun fromValue(v: Long): CGTextEncoding = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGTextEncoding value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGInterpolationQuality}
+ */
+enum class CGInterpolationQuality(val value: Long) {
+    kCGInterpolationDefault(0L), kCGInterpolationNone(1L), kCGInterpolationLow(2L), kCGInterpolationMedium(4L), kCGInterpolationHigh(3L);
+
+    companion object {
+        fun fromValue(v: Long): CGInterpolationQuality = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGInterpolationQuality value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGBlendMode}
+ */
+enum class CGBlendMode(val value: Long) {
+    kCGBlendModeNormal(0L), kCGBlendModeMultiply(1L), kCGBlendModeScreen(2L), kCGBlendModeOverlay(3L), kCGBlendModeDarken(4L), kCGBlendModeLighten(5L), kCGBlendModeColorDodge(6L), kCGBlendModeColorBurn(7L), kCGBlendModeSoftLight(8L), kCGBlendModeHardLight(9L), kCGBlendModeDifference(10L), kCGBlendModeExclusion(11L), kCGBlendModeHue(12L), kCGBlendModeSaturation(13L), kCGBlendModeColor(14L), kCGBlendModeLuminosity(15L), kCGBlendModeClear(16L), kCGBlendModeCopy(17L), kCGBlendModeSourceIn(18L), kCGBlendModeSourceOut(19L), kCGBlendModeSourceAtop(20L), kCGBlendModeDestinationOver(21L), kCGBlendModeDestinationIn(22L), kCGBlendModeDestinationOut(23L), kCGBlendModeDestinationAtop(24L), kCGBlendModeXOR(25L), kCGBlendModePlusDarker(26L), kCGBlendModePlusLighter(27L);
+
+    companion object {
+        fun fromValue(v: Long): CGBlendMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGBlendMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSImageInterpolation}
+ */
+enum class NSImageInterpolation(val value: Long) {
+    NSImageInterpolationDefault(0L), NSImageInterpolationNone(1L), NSImageInterpolationLow(2L), NSImageInterpolationMedium(4L), NSImageInterpolationHigh(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSImageInterpolation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageInterpolation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAccessibilityAnnotationPosition}
+ */
+enum class NSAccessibilityAnnotationPosition(val value: Long) {
+    NSAccessibilityAnnotationPositionFullRange(0L), NSAccessibilityAnnotationPositionStart(1L), NSAccessibilityAnnotationPositionEnd(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSAccessibilityAnnotationPosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAccessibilityAnnotationPosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAccessibilityOrientation}
+ */
+enum class NSAccessibilityOrientation(val value: Long) {
+    NSAccessibilityOrientationUnknown(0L), NSAccessibilityOrientationVertical(1L), NSAccessibilityOrientationHorizontal(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSAccessibilityOrientation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAccessibilityOrientation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAccessibilitySortDirection}
+ */
+enum class NSAccessibilitySortDirection(val value: Long) {
+    NSAccessibilitySortDirectionUnknown(0L), NSAccessibilitySortDirectionAscending(1L), NSAccessibilitySortDirectionDescending(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSAccessibilitySortDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAccessibilitySortDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAccessibilityRulerMarkerType}
+ */
+enum class NSAccessibilityRulerMarkerType(val value: Long) {
+    NSAccessibilityRulerMarkerTypeUnknown(0L), NSAccessibilityRulerMarkerTypeTabStopLeft(1L), NSAccessibilityRulerMarkerTypeTabStopRight(2L), NSAccessibilityRulerMarkerTypeTabStopCenter(3L), NSAccessibilityRulerMarkerTypeTabStopDecimal(4L), NSAccessibilityRulerMarkerTypeIndentHead(5L), NSAccessibilityRulerMarkerTypeIndentTail(6L), NSAccessibilityRulerMarkerTypeIndentFirstLine(7L);
+
+    companion object {
+        fun fromValue(v: Long): NSAccessibilityRulerMarkerType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAccessibilityRulerMarkerType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAccessibilityUnits}
+ */
+enum class NSAccessibilityUnits(val value: Long) {
+    NSAccessibilityUnitsUnknown(0L), NSAccessibilityUnitsInches(1L), NSAccessibilityUnitsCentimeters(2L), NSAccessibilityUnitsPoints(3L), NSAccessibilityUnitsPicas(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSAccessibilityUnits = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAccessibilityUnits value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAccessibilityPriorityLevel}
+ */
+enum class NSAccessibilityPriorityLevel(val value: Long) {
+    NSAccessibilityPriorityLow(10L), NSAccessibilityPriorityMedium(50L), NSAccessibilityPriorityHigh(90L);
+
+    companion object {
+        fun fromValue(v: Long): NSAccessibilityPriorityLevel = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAccessibilityPriorityLevel value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSAccessibilityConstants.h:731:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSAccessibilityConstants_h_731_1_(val value: Long) {
+    NSAccessibilityHourMinuteDateTimeComponentsFlag(12L), NSAccessibilityHourMinuteSecondDateTimeComponentsFlag(14L), NSAccessibilityYearMonthDateTimeComponentsFlag(192L), NSAccessibilityYearMonthDayDateTimeComponentsFlag(224L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSAccessibilityConstants_h_731_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSAccessibilityConstants_h_731_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAccessibilityCustomRotorSearchDirection}
+ */
+enum class NSAccessibilityCustomRotorSearchDirection(val value: Long) {
+    NSAccessibilityCustomRotorSearchDirectionPrevious(0L), NSAccessibilityCustomRotorSearchDirectionNext(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSAccessibilityCustomRotorSearchDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAccessibilityCustomRotorSearchDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAccessibilityCustomRotorType}
+ */
+enum class NSAccessibilityCustomRotorType(val value: Long) {
+    NSAccessibilityCustomRotorTypeCustom(0L), NSAccessibilityCustomRotorTypeAny(1L), NSAccessibilityCustomRotorTypeAnnotation(2L), NSAccessibilityCustomRotorTypeBoldText(3L), NSAccessibilityCustomRotorTypeHeading(4L), NSAccessibilityCustomRotorTypeHeadingLevel1(5L), NSAccessibilityCustomRotorTypeHeadingLevel2(6L), NSAccessibilityCustomRotorTypeHeadingLevel3(7L), NSAccessibilityCustomRotorTypeHeadingLevel4(8L), NSAccessibilityCustomRotorTypeHeadingLevel5(9L), NSAccessibilityCustomRotorTypeHeadingLevel6(10L), NSAccessibilityCustomRotorTypeImage(11L), NSAccessibilityCustomRotorTypeItalicText(12L), NSAccessibilityCustomRotorTypeLandmark(13L), NSAccessibilityCustomRotorTypeLink(14L), NSAccessibilityCustomRotorTypeList(15L), NSAccessibilityCustomRotorTypeMisspelledWord(16L), NSAccessibilityCustomRotorTypeTable(17L), NSAccessibilityCustomRotorTypeTextField(18L), NSAccessibilityCustomRotorTypeUnderlinedText(19L), NSAccessibilityCustomRotorTypeVisitedLink(20L), NSAccessibilityCustomRotorTypeAudiograph(21L);
+
+    companion object {
+        fun fromValue(v: Long): NSAccessibilityCustomRotorType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAccessibilityCustomRotorType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWorkspaceAuthorizationType}
+ */
+enum class NSWorkspaceAuthorizationType(val value: Long) {
+    NSWorkspaceAuthorizationTypeCreateSymbolicLink(0L), NSWorkspaceAuthorizationTypeSetAttributes(1L), NSWorkspaceAuthorizationTypeReplaceFile(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSWorkspaceAuthorizationType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWorkspaceAuthorizationType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTouchPhase}
+ */
+enum class NSTouchPhase(val value: Long) {
+    NSTouchPhaseBegan(1L), NSTouchPhaseMoved(2L), NSTouchPhaseStationary(4L), NSTouchPhaseEnded(8L), NSTouchPhaseCancelled(16L), NSTouchPhaseTouching(7L), NSTouchPhaseAny(-1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTouchPhase = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTouchPhase value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTouchType}
+ */
+enum class NSTouchType(val value: Long) {
+    NSTouchTypeDirect(0L), NSTouchTypeIndirect(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTouchType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTouchType value: $v")
     }
 }
 
@@ -16265,282 +18437,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CGColorRenderingIntent}
- */
-enum class CGColorRenderingIntent(val value: Long) {
-    kCGRenderingIntentDefault(0L), kCGRenderingIntentAbsoluteColorimetric(1L), kCGRenderingIntentRelativeColorimetric(2L), kCGRenderingIntentPerceptual(3L), kCGRenderingIntentSaturation(4L);
-
-    companion object {
-        fun fromValue(v: Long): CGColorRenderingIntent = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGColorRenderingIntent value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGColorSpaceModel}
- */
-enum class CGColorSpaceModel(val value: Long) {
-    kCGColorSpaceModelUnknown(-1L), kCGColorSpaceModelMonochrome(0L), kCGColorSpaceModelRGB(1L), kCGColorSpaceModelCMYK(2L), kCGColorSpaceModelLab(3L), kCGColorSpaceModelDeviceN(4L), kCGColorSpaceModelIndexed(5L), kCGColorSpaceModelPattern(6L), kCGColorSpaceModelXYZ(7L);
-
-    companion object {
-        fun fromValue(v: Long): CGColorSpaceModel = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGColorSpaceModel value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGPatternTiling}
- */
-enum class CGPatternTiling(val value: Long) {
-    kCGPatternTilingNoDistortion(0L), kCGPatternTilingConstantSpacingMinimalDistortion(1L), kCGPatternTilingConstantSpacing(2L);
-
-    companion object {
-        fun fromValue(v: Long): CGPatternTiling = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGPatternTiling value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGFontPostScriptFormat}
- */
-enum class CGFontPostScriptFormat(val value: Long) {
-    kCGFontPostScriptFormatType1(1L), kCGFontPostScriptFormatType3(3L), kCGFontPostScriptFormatType42(42L);
-
-    companion object {
-        fun fromValue(v: Long): CGFontPostScriptFormat = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGFontPostScriptFormat value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGGlyphDeprecatedEnum}
- */
-enum class CGGlyphDeprecatedEnum(val value: Long) {
-    CGGlyphMin(0L), CGGlyphMax(1L);
-
-    companion object {
-        fun fromValue(v: Long): CGGlyphDeprecatedEnum = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGGlyphDeprecatedEnum value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGImageAlphaInfo}
- */
-enum class CGImageAlphaInfo(val value: Long) {
-    kCGImageAlphaNone(0L), kCGImageAlphaPremultipliedLast(1L), kCGImageAlphaPremultipliedFirst(2L), kCGImageAlphaLast(3L), kCGImageAlphaFirst(4L), kCGImageAlphaNoneSkipLast(5L), kCGImageAlphaNoneSkipFirst(6L), kCGImageAlphaOnly(7L);
-
-    companion object {
-        fun fromValue(v: Long): CGImageAlphaInfo = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGImageAlphaInfo value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGImageComponentInfo}
- */
-enum class CGImageComponentInfo(val value: Long) {
-    kCGImageComponentInteger(0L), kCGImageComponentFloat(256L);
-
-    companion object {
-        fun fromValue(v: Long): CGImageComponentInfo = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGImageComponentInfo value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGImageByteOrderInfo}
- */
-enum class CGImageByteOrderInfo(val value: Long) {
-    kCGImageByteOrderMask(28672L), kCGImageByteOrderDefault(0L), kCGImageByteOrder16Little(4096L), kCGImageByteOrder32Little(8192L), kCGImageByteOrder16Big(12288L), kCGImageByteOrder32Big(16384L), kCGImageByteOrder16Host(4096L), kCGImageByteOrder32Host(8192L);
-
-    companion object {
-        fun fromValue(v: Long): CGImageByteOrderInfo = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGImageByteOrderInfo value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGImagePixelFormatInfo}
- */
-enum class CGImagePixelFormatInfo(val value: Long) {
-    kCGImagePixelFormatMask(983040L), kCGImagePixelFormatPacked(0L), kCGImagePixelFormatRGB555(65536L), kCGImagePixelFormatRGB565(131072L), kCGImagePixelFormatRGB101010(196608L), kCGImagePixelFormatRGBCIF10(262144L);
-
-    companion object {
-        fun fromValue(v: Long): CGImagePixelFormatInfo = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGImagePixelFormatInfo value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGBitmapInfo}
- */
-enum class CGBitmapInfo(val value: Long) {
-    kCGBitmapAlphaInfoMask(31L), kCGBitmapComponentInfoMask(3840L), kCGBitmapByteOrderInfoMask(28672L), kCGBitmapPixelFormatInfoMask(983040L), kCGBitmapFloatInfoMask(3840L), kCGBitmapByteOrderMask(28672L), kCGBitmapFloatComponents(256L), kCGBitmapByteOrderDefault(0L), kCGBitmapByteOrder16Little(4096L), kCGBitmapByteOrder32Little(8192L), kCGBitmapByteOrder16Big(12288L), kCGBitmapByteOrder32Big(16384L);
-
-    companion object {
-        fun fromValue(v: Long): CGBitmapInfo = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGBitmapInfo value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGLineJoin}
- */
-enum class CGLineJoin(val value: Long) {
-    kCGLineJoinMiter(0L), kCGLineJoinRound(1L), kCGLineJoinBevel(2L);
-
-    companion object {
-        fun fromValue(v: Long): CGLineJoin = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGLineJoin value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGLineCap}
- */
-enum class CGLineCap(val value: Long) {
-    kCGLineCapButt(0L), kCGLineCapRound(1L), kCGLineCapSquare(2L);
-
-    companion object {
-        fun fromValue(v: Long): CGLineCap = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGLineCap value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGPathElementType}
- */
-enum class CGPathElementType(val value: Long) {
-    kCGPathElementMoveToPoint(0L), kCGPathElementAddLineToPoint(1L), kCGPathElementAddQuadCurveToPoint(2L), kCGPathElementAddCurveToPoint(3L), kCGPathElementCloseSubpath(4L);
-
-    companion object {
-        fun fromValue(v: Long): CGPathElementType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGPathElementType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGPDFObjectType}
- */
-enum class CGPDFObjectType(val value: Long) {
-    kCGPDFObjectTypeNull(1L), kCGPDFObjectTypeBoolean(2L), kCGPDFObjectTypeInteger(3L), kCGPDFObjectTypeReal(4L), kCGPDFObjectTypeName(5L), kCGPDFObjectTypeString(6L), kCGPDFObjectTypeArray(7L), kCGPDFObjectTypeDictionary(8L), kCGPDFObjectTypeStream(9L);
-
-    companion object {
-        fun fromValue(v: Long): CGPDFObjectType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGPDFObjectType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGPDFDataFormat}
- */
-enum class CGPDFDataFormat(val value: Long) {
-    CGPDFDataFormatRaw(0L), CGPDFDataFormatJPEGEncoded(1L), CGPDFDataFormatJPEG2000(2L);
-
-    companion object {
-        fun fromValue(v: Long): CGPDFDataFormat = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGPDFDataFormat value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGPDFBox}
- */
-enum class CGPDFBox(val value: Long) {
-    kCGPDFMediaBox(0L), kCGPDFCropBox(1L), kCGPDFBleedBox(2L), kCGPDFTrimBox(3L), kCGPDFArtBox(4L);
-
-    companion object {
-        fun fromValue(v: Long): CGPDFBox = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGPDFBox value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGPDFAccessPermissions}
- */
-enum class CGPDFAccessPermissions(val value: Long) {
-    kCGPDFAllowsLowQualityPrinting(1L), kCGPDFAllowsHighQualityPrinting(2L), kCGPDFAllowsDocumentChanges(4L), kCGPDFAllowsDocumentAssembly(8L), kCGPDFAllowsContentCopying(16L), kCGPDFAllowsContentAccessibility(32L), kCGPDFAllowsCommenting(64L), kCGPDFAllowsFormFieldEntry(128L);
-
-    companion object {
-        fun fromValue(v: Long): CGPDFAccessPermissions = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGPDFAccessPermissions value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGToneMapping}
- */
-enum class CGToneMapping(val value: Long) {
-    kCGToneMappingDefault(0L), kCGToneMappingImageSpecificLumaScaling(1L), kCGToneMappingReferenceWhiteBased(2L), kCGToneMappingITURecommended(3L), kCGToneMappingEXRGamma(4L), kCGToneMappingNone(5L);
-
-    companion object {
-        fun fromValue(v: Long): CGToneMapping = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGToneMapping value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGPathDrawingMode}
- */
-enum class CGPathDrawingMode(val value: Long) {
-    kCGPathFill(0L), kCGPathEOFill(1L), kCGPathStroke(2L), kCGPathFillStroke(3L), kCGPathEOFillStroke(4L);
-
-    companion object {
-        fun fromValue(v: Long): CGPathDrawingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGPathDrawingMode value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGTextDrawingMode}
- */
-enum class CGTextDrawingMode(val value: Long) {
-    kCGTextFill(0L), kCGTextStroke(1L), kCGTextFillStroke(2L), kCGTextInvisible(3L), kCGTextFillClip(4L), kCGTextStrokeClip(5L), kCGTextFillStrokeClip(6L), kCGTextClip(7L);
-
-    companion object {
-        fun fromValue(v: Long): CGTextDrawingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGTextDrawingMode value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGTextEncoding}
- */
-enum class CGTextEncoding(val value: Long) {
-    kCGEncodingFontSpecific(0L), kCGEncodingMacRoman(1L);
-
-    companion object {
-        fun fromValue(v: Long): CGTextEncoding = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGTextEncoding value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGInterpolationQuality}
- */
-enum class CGInterpolationQuality(val value: Long) {
-    kCGInterpolationDefault(0L), kCGInterpolationNone(1L), kCGInterpolationLow(2L), kCGInterpolationMedium(4L), kCGInterpolationHigh(3L);
-
-    companion object {
-        fun fromValue(v: Long): CGInterpolationQuality = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGInterpolationQuality value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGBlendMode}
- */
-enum class CGBlendMode(val value: Long) {
-    kCGBlendModeNormal(0L), kCGBlendModeMultiply(1L), kCGBlendModeScreen(2L), kCGBlendModeOverlay(3L), kCGBlendModeDarken(4L), kCGBlendModeLighten(5L), kCGBlendModeColorDodge(6L), kCGBlendModeColorBurn(7L), kCGBlendModeSoftLight(8L), kCGBlendModeHardLight(9L), kCGBlendModeDifference(10L), kCGBlendModeExclusion(11L), kCGBlendModeHue(12L), kCGBlendModeSaturation(13L), kCGBlendModeColor(14L), kCGBlendModeLuminosity(15L), kCGBlendModeClear(16L), kCGBlendModeCopy(17L), kCGBlendModeSourceIn(18L), kCGBlendModeSourceOut(19L), kCGBlendModeSourceAtop(20L), kCGBlendModeDestinationOver(21L), kCGBlendModeDestinationIn(22L), kCGBlendModeDestinationOut(23L), kCGBlendModeDestinationAtop(24L), kCGBlendModeXOR(25L), kCGBlendModePlusDarker(26L), kCGBlendModePlusLighter(27L);
-
-    companion object {
-        fun fromValue(v: Long): CGBlendMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGBlendMode value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum CGColorModel}
  */
 enum class CGColorModel(val value: Long) {
@@ -17540,7 +19436,7 @@ enum class CGGesturePhase(val value: Long) {
  * NS_ENUM: {@snippet lang=c : enum CGEventType}
  */
 enum class CGEventType(val value: Long) {
-    kCGEventNull(0L), kCGEventLeftMouseDown(1L), kCGEventLeftMouseUp(2L), kCGEventRightMouseDown(3L), kCGEventRightMouseUp(4L), kCGEventMouseMoved(5L), kCGEventLeftMouseDragged(6L), kCGEventRightMouseDragged(7L), kCGEventKeyDown(10L), kCGEventKeyUp(11L), kCGEventFlagsChanged(12L), kCGEventScrollWheel(22L), kCGEventTabletPointer(23L), kCGEventTabletProximity(24L), kCGEventOtherMouseDown(25L), kCGEventOtherMouseUp(26L), kCGEventOtherMouseDragged(27L), kCGEventTapDisabledByTimeout(-2L), kCGEventTapDisabledByUserInput(-1L);
+    kCGEventNull(0L), kCGEventLeftMouseDown(1L), kCGEventLeftMouseUp(2L), kCGEventRightMouseDown(3L), kCGEventRightMouseUp(4L), kCGEventMouseMoved(5L), kCGEventLeftMouseDragged(6L), kCGEventRightMouseDragged(7L), kCGEventKeyDown(10L), kCGEventKeyUp(11L), kCGEventFlagsChanged(12L), kCGEventScrollWheel(22L), kCGEventTabletPointer(23L), kCGEventTabletProximity(24L), kCGEventOtherMouseDown(25L), kCGEventOtherMouseUp(26L), kCGEventOtherMouseDragged(27L), kCGEventTapDisabledByTimeout(-2L), kCGEventTapDisabledByUserInput(-1L), kCGAnyInputEventType(4294967295L);
 
     companion object {
         fun fromValue(v: Long): CGEventType = entries.firstOrNull { it.value == v }
@@ -19241,1230 +21137,6 @@ enum class CGImageAnimationStatus(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSBundle.h:127:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSBundle_h_127_1_(val value: Long) {
-    NSBundleExecutableArchitectureI386(7L), NSBundleExecutableArchitecturePPC(18L), NSBundleExecutableArchitectureX86_64(16777223L), NSBundleExecutableArchitecturePPC64(16777234L), NSBundleExecutableArchitectureARM64(16777228L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSBundle_h_127_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSBundle_h_127_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSByteOrder.h:10:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSByteOrder_h_10_1_(val value: Long) {
-    NS_UnknownByteOrder(0L), NS_LittleEndian(1L), NS_BigEndian(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSByteOrder_h_10_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSByteOrder_h_10_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSCalendarUnit}
- */
-enum class NSCalendarUnit(val value: Long) {
-    NSCalendarUnitEra(2L), NSCalendarUnitYear(4L), NSCalendarUnitMonth(8L), NSCalendarUnitDay(16L), NSCalendarUnitHour(32L), NSCalendarUnitMinute(64L), NSCalendarUnitSecond(128L), NSCalendarUnitWeekday(512L), NSCalendarUnitWeekdayOrdinal(1024L), NSCalendarUnitQuarter(2048L), NSCalendarUnitWeekOfMonth(4096L), NSCalendarUnitWeekOfYear(8192L), NSCalendarUnitYearForWeekOfYear(16384L), NSCalendarUnitNanosecond(32768L), NSCalendarUnitDayOfYear(65536L), NSCalendarUnitCalendar(1048576L), NSCalendarUnitTimeZone(2097152L), NSCalendarUnitIsLeapMonth(1073741824L), NSCalendarUnitIsRepeatedDay(2147483648L), NSEraCalendarUnit(2L), NSYearCalendarUnit(4L), NSMonthCalendarUnit(8L), NSDayCalendarUnit(16L), NSHourCalendarUnit(32L), NSMinuteCalendarUnit(64L), NSSecondCalendarUnit(128L), NSWeekCalendarUnit(256L), NSWeekdayCalendarUnit(512L), NSWeekdayOrdinalCalendarUnit(1024L), NSQuarterCalendarUnit(2048L), NSWeekOfMonthCalendarUnit(4096L), NSWeekOfYearCalendarUnit(8192L), NSYearForWeekOfYearCalendarUnit(16384L), NSCalendarCalendarUnit(1048576L), NSTimeZoneCalendarUnit(2097152L);
-
-    companion object {
-        fun fromValue(v: Long): NSCalendarUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCalendarUnit value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h:113:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_113_1_(val value: Long) {
-    NSWrapCalendarComponents(1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_113_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_113_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h:423:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_423_1_(val value: Long) {
-    NSDateComponentUndefined(9223372036854775807L), NSUndefinedDateComponent(9223372036854775807L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_423_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_423_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCharacterSet.h:14:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCharacterSet_h_14_1_(val value: Long) {
-    NSOpenStepUnicodeReservedBase(62464L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCharacterSet_h_14_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCharacterSet_h_14_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDataCompressionAlgorithm}
- */
-enum class NSDataCompressionAlgorithm(val value: Long) {
-    NSDataCompressionAlgorithmLZFSE(0L), NSDataCompressionAlgorithmLZ4(1L), NSDataCompressionAlgorithmLZMA(2L), NSDataCompressionAlgorithmZlib(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSDataCompressionAlgorithm = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDataCompressionAlgorithm value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSInlinePresentationIntent}
- */
-enum class NSInlinePresentationIntent(val value: Long) {
-    NSInlinePresentationIntentEmphasized(1L), NSInlinePresentationIntentStronglyEmphasized(2L), NSInlinePresentationIntentCode(4L), NSInlinePresentationIntentStrikethrough(32L), NSInlinePresentationIntentSoftBreak(64L), NSInlinePresentationIntentLineBreak(128L), NSInlinePresentationIntentInlineHTML(256L), NSInlinePresentationIntentBlockHTML(512L);
-
-    companion object {
-        fun fromValue(v: Long): NSInlinePresentationIntent = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSInlinePresentationIntent value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSAttributedStringMarkdownParsingFailurePolicy}
- */
-enum class NSAttributedStringMarkdownParsingFailurePolicy(val value: Long) {
-    NSAttributedStringMarkdownParsingFailureReturnError(0L), NSAttributedStringMarkdownParsingFailureReturnPartiallyParsedIfPossible(1L);
-
-    companion object {
-        fun fromValue(v: Long): NSAttributedStringMarkdownParsingFailurePolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAttributedStringMarkdownParsingFailurePolicy value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSAttributedStringMarkdownInterpretedSyntax}
- */
-enum class NSAttributedStringMarkdownInterpretedSyntax(val value: Long) {
-    NSAttributedStringMarkdownInterpretedSyntaxFull(0L), NSAttributedStringMarkdownInterpretedSyntaxInlineOnly(1L), NSAttributedStringMarkdownInterpretedSyntaxInlineOnlyPreservingWhitespace(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSAttributedStringMarkdownInterpretedSyntax = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAttributedStringMarkdownInterpretedSyntax value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSPresentationIntentKind}
- */
-enum class NSPresentationIntentKind(val value: Long) {
-    NSPresentationIntentKindParagraph(0L), NSPresentationIntentKindHeader(1L), NSPresentationIntentKindOrderedList(2L), NSPresentationIntentKindUnorderedList(3L), NSPresentationIntentKindListItem(4L), NSPresentationIntentKindCodeBlock(5L), NSPresentationIntentKindBlockQuote(6L), NSPresentationIntentKindThematicBreak(7L), NSPresentationIntentKindTable(8L), NSPresentationIntentKindTableHeaderRow(9L), NSPresentationIntentKindTableRow(10L), NSPresentationIntentKindTableCell(11L);
-
-    companion object {
-        fun fromValue(v: Long): NSPresentationIntentKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPresentationIntentKind value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSPresentationIntentTableColumnAlignment}
- */
-enum class NSPresentationIntentTableColumnAlignment(val value: Long) {
-    NSPresentationIntentTableColumnAlignmentLeft(0L), NSPresentationIntentTableColumnAlignmentCenter(1L), NSPresentationIntentTableColumnAlignmentRight(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSPresentationIntentTableColumnAlignment = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPresentationIntentTableColumnAlignment value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSFormattingContext}
- */
-enum class NSFormattingContext(val value: Long) {
-    NSFormattingContextUnknown(0L), NSFormattingContextDynamic(1L), NSFormattingContextStandalone(2L), NSFormattingContextListItem(3L), NSFormattingContextBeginningOfSentence(4L), NSFormattingContextMiddleOfSentence(5L);
-
-    companion object {
-        fun fromValue(v: Long): NSFormattingContext = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFormattingContext value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSFormattingUnitStyle}
- */
-enum class NSFormattingUnitStyle(val value: Long) {
-    NSFormattingUnitStyleShort(1L), NSFormattingUnitStyleMedium(2L), NSFormattingUnitStyleLong(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSFormattingUnitStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFormattingUnitStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDateFormatterStyle}
- */
-enum class NSDateFormatterStyle(val value: Long) {
-    NSDateFormatterNoStyle(0L), NSDateFormatterShortStyle(1L), NSDateFormatterMediumStyle(2L), NSDateFormatterLongStyle(3L), NSDateFormatterFullStyle(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSDateFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateFormatterStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDateFormatterBehavior}
- */
-enum class NSDateFormatterBehavior(val value: Long) {
-    NSDateFormatterBehaviorDefault(0L), NSDateFormatterBehavior10_0(1000L), NSDateFormatterBehavior10_4(1040L);
-
-    companion object {
-        fun fromValue(v: Long): NSDateFormatterBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateFormatterBehavior value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDateIntervalFormatterStyle}
- */
-enum class NSDateIntervalFormatterStyle(val value: Long) {
-    NSDateIntervalFormatterNoStyle(0L), NSDateIntervalFormatterShortStyle(1L), NSDateIntervalFormatterMediumStyle(2L), NSDateIntervalFormatterLongStyle(3L), NSDateIntervalFormatterFullStyle(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSDateIntervalFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateIntervalFormatterStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSMassFormatterUnit}
- */
-enum class NSMassFormatterUnit(val value: Long) {
-    NSMassFormatterUnitGram(11L), NSMassFormatterUnitKilogram(14L), NSMassFormatterUnitOunce(1537L), NSMassFormatterUnitPound(1538L), NSMassFormatterUnitStone(1539L);
-
-    companion object {
-        fun fromValue(v: Long): NSMassFormatterUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSMassFormatterUnit value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSLengthFormatterUnit}
- */
-enum class NSLengthFormatterUnit(val value: Long) {
-    NSLengthFormatterUnitMillimeter(8L), NSLengthFormatterUnitCentimeter(9L), NSLengthFormatterUnitMeter(11L), NSLengthFormatterUnitKilometer(14L), NSLengthFormatterUnitInch(1281L), NSLengthFormatterUnitFoot(1282L), NSLengthFormatterUnitYard(1283L), NSLengthFormatterUnitMile(1284L);
-
-    companion object {
-        fun fromValue(v: Long): NSLengthFormatterUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLengthFormatterUnit value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSEnergyFormatterUnit}
- */
-enum class NSEnergyFormatterUnit(val value: Long) {
-    NSEnergyFormatterUnitJoule(11L), NSEnergyFormatterUnitKilojoule(14L), NSEnergyFormatterUnitCalorie(1793L), NSEnergyFormatterUnitKilocalorie(1794L);
-
-    companion object {
-        fun fromValue(v: Long): NSEnergyFormatterUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSEnergyFormatterUnit value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterBehavior}
- */
-enum class NSNumberFormatterBehavior(val value: Long) {
-    NSNumberFormatterBehaviorDefault(0L), NSNumberFormatterBehavior10_0(1000L), NSNumberFormatterBehavior10_4(1040L);
-
-    companion object {
-        fun fromValue(v: Long): NSNumberFormatterBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNumberFormatterBehavior value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterStyle}
- */
-enum class NSNumberFormatterStyle(val value: Long) {
-    NSNumberFormatterNoStyle(0L), NSNumberFormatterDecimalStyle(1L), NSNumberFormatterCurrencyStyle(2L), NSNumberFormatterPercentStyle(3L), NSNumberFormatterScientificStyle(4L), NSNumberFormatterSpellOutStyle(5L), NSNumberFormatterOrdinalStyle(6L), NSNumberFormatterCurrencyISOCodeStyle(8L), NSNumberFormatterCurrencyPluralStyle(9L), NSNumberFormatterCurrencyAccountingStyle(10L);
-
-    companion object {
-        fun fromValue(v: Long): NSNumberFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNumberFormatterStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterPadPosition}
- */
-enum class NSNumberFormatterPadPosition(val value: Long) {
-    NSNumberFormatterPadBeforePrefix(0L), NSNumberFormatterPadAfterPrefix(1L), NSNumberFormatterPadBeforeSuffix(2L), NSNumberFormatterPadAfterSuffix(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSNumberFormatterPadPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNumberFormatterPadPosition value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterRoundingMode}
- */
-enum class NSNumberFormatterRoundingMode(val value: Long) {
-    NSNumberFormatterRoundCeiling(0L), NSNumberFormatterRoundFloor(1L), NSNumberFormatterRoundDown(2L), NSNumberFormatterRoundUp(3L), NSNumberFormatterRoundHalfEven(4L), NSNumberFormatterRoundHalfDown(5L), NSNumberFormatterRoundHalfUp(6L);
-
-    companion object {
-        fun fromValue(v: Long): NSNumberFormatterRoundingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNumberFormatterRoundingMode value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSLocaleLanguageDirection}
- */
-enum class NSLocaleLanguageDirection(val value: Long) {
-    NSLocaleLanguageDirectionUnknown(0L), NSLocaleLanguageDirectionLeftToRight(1L), NSLocaleLanguageDirectionRightToLeft(2L), NSLocaleLanguageDirectionTopToBottom(3L), NSLocaleLanguageDirectionBottomToTop(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSLocaleLanguageDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLocaleLanguageDirection value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSPersonNameComponentsFormatterStyle}
- */
-enum class NSPersonNameComponentsFormatterStyle(val value: Long) {
-    NSPersonNameComponentsFormatterStyleDefault(0L), NSPersonNameComponentsFormatterStyleShort(1L), NSPersonNameComponentsFormatterStyleMedium(2L), NSPersonNameComponentsFormatterStyleLong(3L), NSPersonNameComponentsFormatterStyleAbbreviated(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSPersonNameComponentsFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPersonNameComponentsFormatterStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSRelativeDateTimeFormatterStyle}
- */
-enum class NSRelativeDateTimeFormatterStyle(val value: Long) {
-    NSRelativeDateTimeFormatterStyleNumeric(0L), NSRelativeDateTimeFormatterStyleNamed(1L);
-
-    companion object {
-        fun fromValue(v: Long): NSRelativeDateTimeFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRelativeDateTimeFormatterStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSRelativeDateTimeFormatterUnitsStyle}
- */
-enum class NSRelativeDateTimeFormatterUnitsStyle(val value: Long) {
-    NSRelativeDateTimeFormatterUnitsStyleFull(0L), NSRelativeDateTimeFormatterUnitsStyleSpellOut(1L), NSRelativeDateTimeFormatterUnitsStyleShort(2L), NSRelativeDateTimeFormatterUnitsStyleAbbreviated(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSRelativeDateTimeFormatterUnitsStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRelativeDateTimeFormatterUnitsStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSRoundingMode}
- */
-enum class NSRoundingMode(val value: Long) {
-    NSRoundPlain(0L), NSRoundDown(1L), NSRoundUp(2L), NSRoundBankers(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSRoundingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRoundingMode value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSCalculationError}
- */
-enum class NSCalculationError(val value: Long) {
-    NSCalculationNoError(0L), NSCalculationLossOfPrecision(1L), NSCalculationUnderflow(2L), NSCalculationOverflow(3L), NSCalculationDivideByZero(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSCalculationError = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCalculationError value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSSearchPathDirectory}
- */
-enum class NSSearchPathDirectory(val value: Long) {
-    NSApplicationDirectory(1L), NSDemoApplicationDirectory(2L), NSDeveloperApplicationDirectory(3L), NSAdminApplicationDirectory(4L), NSLibraryDirectory(5L), NSDeveloperDirectory(6L), NSUserDirectory(7L), NSDocumentationDirectory(8L), NSDocumentDirectory(9L), NSCoreServiceDirectory(10L), NSAutosavedInformationDirectory(11L), NSDesktopDirectory(12L), NSCachesDirectory(13L), NSApplicationSupportDirectory(14L), NSDownloadsDirectory(15L), NSInputMethodsDirectory(16L), NSMoviesDirectory(17L), NSMusicDirectory(18L), NSPicturesDirectory(19L), NSPrinterDescriptionDirectory(20L), NSSharedPublicDirectory(21L), NSPreferencePanesDirectory(22L), NSApplicationScriptsDirectory(23L), NSItemReplacementDirectory(99L), NSAllApplicationsDirectory(100L), NSAllLibrariesDirectory(101L), NSTrashDirectory(102L);
-
-    companion object {
-        fun fromValue(v: Long): NSSearchPathDirectory = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSearchPathDirectory value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLHandleStatus}
- */
-enum class NSURLHandleStatus(val value: Long) {
-    NSURLHandleNotLoaded(0L), NSURLHandleLoadSucceeded(1L), NSURLHandleLoadInProgress(2L), NSURLHandleLoadFailed(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLHandleStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLHandleStatus value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLRelationship}
- */
-enum class NSURLRelationship(val value: Long) {
-    NSURLRelationshipContains(0L), NSURLRelationshipSame(1L), NSURLRelationshipOther(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLRelationship = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLRelationship value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSFileManagerSupportedSyncControls}
- */
-enum class NSFileManagerSupportedSyncControls(val value: Long) {
-    NSFileManagerSupportedSyncControlsPauseSync(1L), NSFileManagerSupportedSyncControlsFailUploadOnConflict(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSFileManagerSupportedSyncControls = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFileManagerSupportedSyncControls value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSFileManagerResumeSyncBehavior}
- */
-enum class NSFileManagerResumeSyncBehavior(val value: Long) {
-    NSFileManagerResumeSyncBehaviorPreserveLocalChanges(0L), NSFileManagerResumeSyncBehaviorAfterUploadWithFailOnConflict(1L), NSFileManagerResumeSyncBehaviorDropLocalChanges(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSFileManagerResumeSyncBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFileManagerResumeSyncBehavior value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSFileManagerUploadLocalVersionConflictPolicy}
- */
-enum class NSFileManagerUploadLocalVersionConflictPolicy(val value: Long) {
-    NSFileManagerUploadConflictPolicyDefault(0L), NSFileManagerUploadConflictPolicyFailOnConflict(1L);
-
-    companion object {
-        fun fromValue(v: Long): NSFileManagerUploadLocalVersionConflictPolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFileManagerUploadLocalVersionConflictPolicy value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSHTTPCookieAcceptPolicy}
- */
-enum class NSHTTPCookieAcceptPolicy(val value: Long) {
-    NSHTTPCookieAcceptPolicyAlways(0L), NSHTTPCookieAcceptPolicyNever(1L), NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSHTTPCookieAcceptPolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSHTTPCookieAcceptPolicy value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSKeyValueChange}
- */
-enum class NSKeyValueChange(val value: Long) {
-    NSKeyValueChangeSetting(1L), NSKeyValueChangeInsertion(2L), NSKeyValueChangeRemoval(3L), NSKeyValueChangeReplacement(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSKeyValueChange = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSKeyValueChange value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSKeyValueSetMutationKind}
- */
-enum class NSKeyValueSetMutationKind(val value: Long) {
-    NSKeyValueUnionSetMutation(1L), NSKeyValueMinusSetMutation(2L), NSKeyValueIntersectSetMutation(3L), NSKeyValueSetSetMutation(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSKeyValueSetMutationKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSKeyValueSetMutationKind value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSPropertyListFormat}
- */
-enum class NSPropertyListFormat(val value: Long) {
-    NSPropertyListOpenStepFormat(1L), NSPropertyListXMLFormat_v1_0(100L), NSPropertyListBinaryFormat_v1_0(200L);
-
-    companion object {
-        fun fromValue(v: Long): NSPropertyListFormat = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPropertyListFormat value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSGrammaticalGender}
- */
-enum class NSGrammaticalGender(val value: Long) {
-    NSGrammaticalGenderNotSet(0L), NSGrammaticalGenderFeminine(1L), NSGrammaticalGenderMasculine(2L), NSGrammaticalGenderNeuter(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSGrammaticalGender = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalGender value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSGrammaticalPartOfSpeech}
- */
-enum class NSGrammaticalPartOfSpeech(val value: Long) {
-    NSGrammaticalPartOfSpeechNotSet(0L), NSGrammaticalPartOfSpeechDeterminer(1L), NSGrammaticalPartOfSpeechPronoun(2L), NSGrammaticalPartOfSpeechLetter(3L), NSGrammaticalPartOfSpeechAdverb(4L), NSGrammaticalPartOfSpeechParticle(5L), NSGrammaticalPartOfSpeechAdjective(6L), NSGrammaticalPartOfSpeechAdposition(7L), NSGrammaticalPartOfSpeechVerb(8L), NSGrammaticalPartOfSpeechNoun(9L), NSGrammaticalPartOfSpeechConjunction(10L), NSGrammaticalPartOfSpeechNumeral(11L), NSGrammaticalPartOfSpeechInterjection(12L), NSGrammaticalPartOfSpeechPreposition(13L), NSGrammaticalPartOfSpeechAbbreviation(14L);
-
-    companion object {
-        fun fromValue(v: Long): NSGrammaticalPartOfSpeech = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalPartOfSpeech value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSGrammaticalNumber}
- */
-enum class NSGrammaticalNumber(val value: Long) {
-    NSGrammaticalNumberNotSet(0L), NSGrammaticalNumberSingular(1L), NSGrammaticalNumberZero(2L), NSGrammaticalNumberPlural(3L), NSGrammaticalNumberPluralTwo(4L), NSGrammaticalNumberPluralFew(5L), NSGrammaticalNumberPluralMany(6L);
-
-    companion object {
-        fun fromValue(v: Long): NSGrammaticalNumber = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalNumber value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSGrammaticalCase}
- */
-enum class NSGrammaticalCase(val value: Long) {
-    NSGrammaticalCaseNotSet(0L), NSGrammaticalCaseNominative(1L), NSGrammaticalCaseAccusative(2L), NSGrammaticalCaseDative(3L), NSGrammaticalCaseGenitive(4L), NSGrammaticalCasePrepositional(5L), NSGrammaticalCaseAblative(6L), NSGrammaticalCaseAdessive(7L), NSGrammaticalCaseAllative(8L), NSGrammaticalCaseElative(9L), NSGrammaticalCaseIllative(10L), NSGrammaticalCaseEssive(11L), NSGrammaticalCaseInessive(12L), NSGrammaticalCaseLocative(13L), NSGrammaticalCaseTranslative(14L);
-
-    companion object {
-        fun fromValue(v: Long): NSGrammaticalCase = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalCase value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSGrammaticalPronounType}
- */
-enum class NSGrammaticalPronounType(val value: Long) {
-    NSGrammaticalPronounTypeNotSet(0L), NSGrammaticalPronounTypePersonal(1L), NSGrammaticalPronounTypeReflexive(2L), NSGrammaticalPronounTypePossessive(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSGrammaticalPronounType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalPronounType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSGrammaticalPerson}
- */
-enum class NSGrammaticalPerson(val value: Long) {
-    NSGrammaticalPersonNotSet(0L), NSGrammaticalPersonFirst(1L), NSGrammaticalPersonSecond(2L), NSGrammaticalPersonThird(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSGrammaticalPerson = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalPerson value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSGrammaticalDetermination}
- */
-enum class NSGrammaticalDetermination(val value: Long) {
-    NSGrammaticalDeterminationNotSet(0L), NSGrammaticalDeterminationIndependent(1L), NSGrammaticalDeterminationDependent(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSGrammaticalDetermination = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalDetermination value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSGrammaticalDefiniteness}
- */
-enum class NSGrammaticalDefiniteness(val value: Long) {
-    NSGrammaticalDefinitenessNotSet(0L), NSGrammaticalDefinitenessIndefinite(1L), NSGrammaticalDefinitenessDefinite(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSGrammaticalDefiniteness = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalDefiniteness value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSPostingStyle}
- */
-enum class NSPostingStyle(val value: Long) {
-    NSPostWhenIdle(1L), NSPostASAP(2L), NSPostNow(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSPostingStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPostingStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSNotificationCoalescing}
- */
-enum class NSNotificationCoalescing(val value: Long) {
-    NSNotificationNoCoalescing(0L), NSNotificationCoalescingOnName(1L), NSNotificationCoalescingOnSender(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSNotificationCoalescing = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNotificationCoalescing value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSOperationQueuePriority}
- */
-enum class NSOperationQueuePriority(val value: Long) {
-    NSOperationQueuePriorityVeryLow(-8L), NSOperationQueuePriorityLow(-4L), NSOperationQueuePriorityNormal(0L), NSOperationQueuePriorityHigh(4L), NSOperationQueuePriorityVeryHigh(8L);
-
-    companion object {
-        fun fromValue(v: Long): NSOperationQueuePriority = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSOperationQueuePriority value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSProcessInfo.h:11:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSProcessInfo_h_11_1_(val value: Long) {
-    NSWindowsNTOperatingSystem(1L), NSWindows95OperatingSystem(2L), NSSolarisOperatingSystem(3L), NSHPUXOperatingSystem(4L), NSMACHOperatingSystem(5L), NSSunOSOperatingSystem(6L), NSOSF1OperatingSystem(7L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSProcessInfo_h_11_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSProcessInfo_h_11_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSProcessInfoThermalState}
- */
-enum class NSProcessInfoThermalState(val value: Long) {
-    NSProcessInfoThermalStateNominal(0L), NSProcessInfoThermalStateFair(1L), NSProcessInfoThermalStateSerious(2L), NSProcessInfoThermalStateCritical(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSProcessInfoThermalState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSProcessInfoThermalState value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSTextCheckingType}
- */
-enum class NSTextCheckingType(val value: Long) {
-    NSTextCheckingTypeOrthography(1L), NSTextCheckingTypeSpelling(2L), NSTextCheckingTypeGrammar(4L), NSTextCheckingTypeDate(8L), NSTextCheckingTypeAddress(16L), NSTextCheckingTypeLink(32L), NSTextCheckingTypeQuote(64L), NSTextCheckingTypeDash(128L), NSTextCheckingTypeReplacement(256L), NSTextCheckingTypeCorrection(512L), NSTextCheckingTypeRegularExpression(1024L), NSTextCheckingTypePhoneNumber(2048L), NSTextCheckingTypeTransitInformation(4096L);
-
-    companion object {
-        fun fromValue(v: Long): NSTextCheckingType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextCheckingType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSTextCheckingResult.h:32:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSTextCheckingResult_h_32_1_(val value: Long) {
-    NSTextCheckingAllSystemTypes(4294967295L), NSTextCheckingAllCustomTypes(-4294967296L), NSTextCheckingAllTypes(-1L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSTextCheckingResult_h_32_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSTextCheckingResult_h_32_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSStreamStatus}
- */
-enum class NSStreamStatus(val value: Long) {
-    NSStreamStatusNotOpen(0L), NSStreamStatusOpening(1L), NSStreamStatusOpen(2L), NSStreamStatusReading(3L), NSStreamStatusWriting(4L), NSStreamStatusAtEnd(5L), NSStreamStatusClosed(6L), NSStreamStatusError(7L);
-
-    companion object {
-        fun fromValue(v: Long): NSStreamStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSStreamStatus value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSStreamEvent}
- */
-enum class NSStreamEvent(val value: Long) {
-    NSStreamEventNone(0L), NSStreamEventOpenCompleted(1L), NSStreamEventHasBytesAvailable(2L), NSStreamEventHasSpaceAvailable(4L), NSStreamEventErrorOccurred(8L), NSStreamEventEndEncountered(16L);
-
-    companion object {
-        fun fromValue(v: Long): NSStreamEvent = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSStreamEvent value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSTimeZoneNameStyle}
- */
-enum class NSTimeZoneNameStyle(val value: Long) {
-    NSTimeZoneNameStyleStandard(0L), NSTimeZoneNameStyleShortStandard(1L), NSTimeZoneNameStyleDaylightSaving(2L), NSTimeZoneNameStyleShortDaylightSaving(3L), NSTimeZoneNameStyleGeneric(4L), NSTimeZoneNameStyleShortGeneric(5L);
-
-    companion object {
-        fun fromValue(v: Long): NSTimeZoneNameStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTimeZoneNameStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLCacheStoragePolicy}
- */
-enum class NSURLCacheStoragePolicy(val value: Long) {
-    NSURLCacheStorageAllowed(0L), NSURLCacheStorageAllowedInMemoryOnly(1L), NSURLCacheStorageNotAllowed(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLCacheStoragePolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLCacheStoragePolicy value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLCredentialPersistence}
- */
-enum class NSURLCredentialPersistence(val value: Long) {
-    NSURLCredentialPersistenceNone(0L), NSURLCredentialPersistenceForSession(1L), NSURLCredentialPersistencePermanent(2L), NSURLCredentialPersistenceSynchronizable(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLCredentialPersistence = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLCredentialPersistence value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSURLError.h:69:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_69_1_(val value: Long) {
-    NSURLErrorCancelledReasonUserForceQuitApplication(0L), NSURLErrorCancelledReasonBackgroundUpdatesDisabled(1L), NSURLErrorCancelledReasonInsufficientSystemResources(2L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_69_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_69_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLErrorNetworkUnavailableReason}
- */
-enum class NSURLErrorNetworkUnavailableReason(val value: Long) {
-    NSURLErrorNetworkUnavailableReasonCellular(0L), NSURLErrorNetworkUnavailableReasonExpensive(1L), NSURLErrorNetworkUnavailableReasonConstrained(2L), NSURLErrorNetworkUnavailableReasonUltraConstrained(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLErrorNetworkUnavailableReason = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLErrorNetworkUnavailableReason value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSURLError.h:101:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_101_1_(val value: Long) {
-    NSURLErrorUnknown(-1L), NSURLErrorCancelled(-999L), NSURLErrorBadURL(-1000L), NSURLErrorTimedOut(-1001L), NSURLErrorUnsupportedURL(-1002L), NSURLErrorCannotFindHost(-1003L), NSURLErrorCannotConnectToHost(-1004L), NSURLErrorNetworkConnectionLost(-1005L), NSURLErrorDNSLookupFailed(-1006L), NSURLErrorHTTPTooManyRedirects(-1007L), NSURLErrorResourceUnavailable(-1008L), NSURLErrorNotConnectedToInternet(-1009L), NSURLErrorRedirectToNonExistentLocation(-1010L), NSURLErrorBadServerResponse(-1011L), NSURLErrorUserCancelledAuthentication(-1012L), NSURLErrorUserAuthenticationRequired(-1013L), NSURLErrorZeroByteResource(-1014L), NSURLErrorCannotDecodeRawData(-1015L), NSURLErrorCannotDecodeContentData(-1016L), NSURLErrorCannotParseResponse(-1017L), NSURLErrorAppTransportSecurityRequiresSecureConnection(-1022L), NSURLErrorFileDoesNotExist(-1100L), NSURLErrorFileIsDirectory(-1101L), NSURLErrorNoPermissionsToReadFile(-1102L), NSURLErrorDataLengthExceedsMaximum(-1103L), NSURLErrorFileOutsideSafeArea(-1104L), NSURLErrorSecureConnectionFailed(-1200L), NSURLErrorServerCertificateHasBadDate(-1201L), NSURLErrorServerCertificateUntrusted(-1202L), NSURLErrorServerCertificateHasUnknownRoot(-1203L), NSURLErrorServerCertificateNotYetValid(-1204L), NSURLErrorClientCertificateRejected(-1205L), NSURLErrorClientCertificateRequired(-1206L), NSURLErrorCannotLoadFromNetwork(-2000L), NSURLErrorCannotCreateFile(-3000L), NSURLErrorCannotOpenFile(-3001L), NSURLErrorCannotCloseFile(-3002L), NSURLErrorCannotWriteToFile(-3003L), NSURLErrorCannotRemoveFile(-3004L), NSURLErrorCannotMoveFile(-3005L), NSURLErrorDownloadDecodingFailedMidStream(-3006L), NSURLErrorDownloadDecodingFailedToComplete(-3007L), NSURLErrorInternationalRoamingOff(-1018L), NSURLErrorCallIsActive(-1019L), NSURLErrorDataNotAllowed(-1020L), NSURLErrorRequestBodyStreamExhausted(-1021L), NSURLErrorBackgroundSessionRequiresSharedContainer(-995L), NSURLErrorBackgroundSessionInUseByAnotherProcess(-996L), NSURLErrorBackgroundSessionWasDisconnected(-997L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_101_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSURLError_h_101_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLRequestCachePolicy}
- */
-enum class NSURLRequestCachePolicy(val value: Long) {
-    NSURLRequestUseProtocolCachePolicy(0L), NSURLRequestReloadIgnoringLocalCacheData(1L), NSURLRequestReloadIgnoringLocalAndRemoteCacheData(4L), NSURLRequestReloadIgnoringCacheData(1L), NSURLRequestReturnCacheDataElseLoad(2L), NSURLRequestReturnCacheDataDontLoad(3L), NSURLRequestReloadRevalidatingCacheData(5L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLRequestCachePolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLRequestCachePolicy value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLRequestNetworkServiceType}
- */
-enum class NSURLRequestNetworkServiceType(val value: Long) {
-    NSURLNetworkServiceTypeDefault(0L), NSURLNetworkServiceTypeVoIP(1L), NSURLNetworkServiceTypeVideo(2L), NSURLNetworkServiceTypeBackground(3L), NSURLNetworkServiceTypeVoice(4L), NSURLNetworkServiceTypeResponsiveData(6L), NSURLNetworkServiceTypeAVStreaming(8L), NSURLNetworkServiceTypeResponsiveAV(9L), NSURLNetworkServiceTypeCallSignaling(11L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLRequestNetworkServiceType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLRequestNetworkServiceType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLRequestAttribution}
- */
-enum class NSURLRequestAttribution(val value: Long) {
-    NSURLRequestAttributionDeveloper(0L), NSURLRequestAttributionUser(1L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLRequestAttribution = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLRequestAttribution value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSXMLParserExternalEntityResolvingPolicy}
- */
-enum class NSXMLParserExternalEntityResolvingPolicy(val value: Long) {
-    NSXMLParserResolveExternalEntitiesNever(0L), NSXMLParserResolveExternalEntitiesNoNetwork(1L), NSXMLParserResolveExternalEntitiesSameOriginOnly(2L), NSXMLParserResolveExternalEntitiesAlways(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSXMLParserExternalEntityResolvingPolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSXMLParserExternalEntityResolvingPolicy value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSXMLParserError}
- */
-enum class NSXMLParserError(val value: Long) {
-    NSXMLParserInternalError(1L), NSXMLParserOutOfMemoryError(2L), NSXMLParserDocumentStartError(3L), NSXMLParserEmptyDocumentError(4L), NSXMLParserPrematureDocumentEndError(5L), NSXMLParserInvalidHexCharacterRefError(6L), NSXMLParserInvalidDecimalCharacterRefError(7L), NSXMLParserInvalidCharacterRefError(8L), NSXMLParserInvalidCharacterError(9L), NSXMLParserCharacterRefAtEOFError(10L), NSXMLParserCharacterRefInPrologError(11L), NSXMLParserCharacterRefInEpilogError(12L), NSXMLParserCharacterRefInDTDError(13L), NSXMLParserEntityRefAtEOFError(14L), NSXMLParserEntityRefInPrologError(15L), NSXMLParserEntityRefInEpilogError(16L), NSXMLParserEntityRefInDTDError(17L), NSXMLParserParsedEntityRefAtEOFError(18L), NSXMLParserParsedEntityRefInPrologError(19L), NSXMLParserParsedEntityRefInEpilogError(20L), NSXMLParserParsedEntityRefInInternalSubsetError(21L), NSXMLParserEntityReferenceWithoutNameError(22L), NSXMLParserEntityReferenceMissingSemiError(23L), NSXMLParserParsedEntityRefNoNameError(24L), NSXMLParserParsedEntityRefMissingSemiError(25L), NSXMLParserUndeclaredEntityError(26L), NSXMLParserUnparsedEntityError(28L), NSXMLParserEntityIsExternalError(29L), NSXMLParserEntityIsParameterError(30L), NSXMLParserUnknownEncodingError(31L), NSXMLParserEncodingNotSupportedError(32L), NSXMLParserStringNotStartedError(33L), NSXMLParserStringNotClosedError(34L), NSXMLParserNamespaceDeclarationError(35L), NSXMLParserEntityNotStartedError(36L), NSXMLParserEntityNotFinishedError(37L), NSXMLParserLessThanSymbolInAttributeError(38L), NSXMLParserAttributeNotStartedError(39L), NSXMLParserAttributeNotFinishedError(40L), NSXMLParserAttributeHasNoValueError(41L), NSXMLParserAttributeRedefinedError(42L), NSXMLParserLiteralNotStartedError(43L), NSXMLParserLiteralNotFinishedError(44L), NSXMLParserCommentNotFinishedError(45L), NSXMLParserProcessingInstructionNotStartedError(46L), NSXMLParserProcessingInstructionNotFinishedError(47L), NSXMLParserNotationNotStartedError(48L), NSXMLParserNotationNotFinishedError(49L), NSXMLParserAttributeListNotStartedError(50L), NSXMLParserAttributeListNotFinishedError(51L), NSXMLParserMixedContentDeclNotStartedError(52L), NSXMLParserMixedContentDeclNotFinishedError(53L), NSXMLParserElementContentDeclNotStartedError(54L), NSXMLParserElementContentDeclNotFinishedError(55L), NSXMLParserXMLDeclNotStartedError(56L), NSXMLParserXMLDeclNotFinishedError(57L), NSXMLParserConditionalSectionNotStartedError(58L), NSXMLParserConditionalSectionNotFinishedError(59L), NSXMLParserExternalSubsetNotFinishedError(60L), NSXMLParserDOCTYPEDeclNotFinishedError(61L), NSXMLParserMisplacedCDATAEndStringError(62L), NSXMLParserCDATANotFinishedError(63L), NSXMLParserMisplacedXMLDeclarationError(64L), NSXMLParserSpaceRequiredError(65L), NSXMLParserSeparatorRequiredError(66L), NSXMLParserNMTOKENRequiredError(67L), NSXMLParserNAMERequiredError(68L), NSXMLParserPCDATARequiredError(69L), NSXMLParserURIRequiredError(70L), NSXMLParserPublicIdentifierRequiredError(71L), NSXMLParserLTRequiredError(72L), NSXMLParserGTRequiredError(73L), NSXMLParserLTSlashRequiredError(74L), NSXMLParserEqualExpectedError(75L), NSXMLParserTagNameMismatchError(76L), NSXMLParserUnfinishedTagError(77L), NSXMLParserStandaloneValueError(78L), NSXMLParserInvalidEncodingNameError(79L), NSXMLParserCommentContainsDoubleHyphenError(80L), NSXMLParserInvalidEncodingError(81L), NSXMLParserExternalStandaloneEntityError(82L), NSXMLParserInvalidConditionalSectionError(83L), NSXMLParserEntityValueRequiredError(84L), NSXMLParserNotWellBalancedError(85L), NSXMLParserExtraContentError(86L), NSXMLParserInvalidCharacterInEntityError(87L), NSXMLParserParsedEntityRefInInternalError(88L), NSXMLParserEntityRefLoopError(89L), NSXMLParserEntityBoundaryError(90L), NSXMLParserInvalidURIError(91L), NSXMLParserURIFragmentError(92L), NSXMLParserNoDTDError(94L), NSXMLParserDelegateAbortedParseError(512L);
-
-    companion object {
-        fun fromValue(v: Long): NSXMLParserError = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSXMLParserError value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/FoundationErrors.h:11:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_FoundationErrors_h_11_1_(val value: Long) {
-    NSFileNoSuchFileError(4L), NSFileLockingError(255L), NSFileReadUnknownError(256L), NSFileReadNoPermissionError(257L), NSFileReadInvalidFileNameError(258L), NSFileReadCorruptFileError(259L), NSFileReadNoSuchFileError(260L), NSFileReadInapplicableStringEncodingError(261L), NSFileReadUnsupportedSchemeError(262L), NSFileReadTooLargeError(263L), NSFileReadUnknownStringEncodingError(264L), NSFileWriteUnknownError(512L), NSFileWriteNoPermissionError(513L), NSFileWriteInvalidFileNameError(514L), NSFileWriteFileExistsError(516L), NSFileWriteInapplicableStringEncodingError(517L), NSFileWriteUnsupportedSchemeError(518L), NSFileWriteOutOfSpaceError(640L), NSFileWriteVolumeReadOnlyError(642L), NSFileManagerUnmountUnknownError(768L), NSFileManagerUnmountBusyError(769L), NSKeyValueValidationError(1024L), NSFormattingError(2048L), NSUserCancelledError(3072L), NSFeatureUnsupportedError(3328L), NSExecutableNotLoadableError(3584L), NSExecutableArchitectureMismatchError(3585L), NSExecutableRuntimeMismatchError(3586L), NSExecutableLoadError(3587L), NSExecutableLinkError(3588L), NSFileErrorMinimum(0L), NSFileErrorMaximum(1023L), NSValidationErrorMinimum(1024L), NSValidationErrorMaximum(2047L), NSExecutableErrorMinimum(3584L), NSExecutableErrorMaximum(3839L), NSFormattingErrorMinimum(2048L), NSFormattingErrorMaximum(2559L), NSPropertyListReadCorruptError(3840L), NSPropertyListReadUnknownVersionError(3841L), NSPropertyListReadStreamError(3842L), NSPropertyListWriteStreamError(3851L), NSPropertyListWriteInvalidError(3852L), NSPropertyListErrorMinimum(3840L), NSPropertyListErrorMaximum(4095L), NSXPCConnectionInterrupted(4097L), NSXPCConnectionInvalid(4099L), NSXPCConnectionReplyInvalid(4101L), NSXPCConnectionCodeSigningRequirementFailure(4102L), NSXPCConnectionErrorMinimum(4096L), NSXPCConnectionErrorMaximum(4224L), NSUbiquitousFileUnavailableError(4353L), NSUbiquitousFileNotUploadedDueToQuotaError(4354L), NSUbiquitousFileUbiquityServerNotAvailable(4355L), NSUbiquitousFileErrorMinimum(4352L), NSUbiquitousFileErrorMaximum(4607L), NSUserActivityHandoffFailedError(4608L), NSUserActivityConnectionUnavailableError(4609L), NSUserActivityRemoteApplicationTimedOutError(4610L), NSUserActivityHandoffUserInfoTooLargeError(4611L), NSUserActivityErrorMinimum(4608L), NSUserActivityErrorMaximum(4863L), NSCoderReadCorruptError(4864L), NSCoderValueNotFoundError(4865L), NSCoderInvalidValueError(4866L), NSCoderErrorMinimum(4864L), NSCoderErrorMaximum(4991L), NSBundleErrorMinimum(4992L), NSBundleErrorMaximum(5119L), NSBundleOnDemandResourceOutOfSpaceError(4992L), NSBundleOnDemandResourceExceededMaximumSizeError(4993L), NSBundleOnDemandResourceInvalidTagError(4994L), NSCloudSharingNetworkFailureError(5120L), NSCloudSharingQuotaExceededError(5121L), NSCloudSharingTooManyParticipantsError(5122L), NSCloudSharingConflictError(5123L), NSCloudSharingNoPermissionError(5124L), NSCloudSharingOtherError(5375L), NSCloudSharingErrorMinimum(5120L), NSCloudSharingErrorMaximum(5375L), NSCompressionFailedError(5376L), NSDecompressionFailedError(5377L), NSCompressionErrorMinimum(5376L), NSCompressionErrorMaximum(5503L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_FoundationErrors_h_11_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_FoundationErrors_h_11_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSByteCountFormatterUnits}
- */
-enum class NSByteCountFormatterUnits(val value: Long) {
-    NSByteCountFormatterUseDefault(0L), NSByteCountFormatterUseBytes(1L), NSByteCountFormatterUseKB(2L), NSByteCountFormatterUseMB(4L), NSByteCountFormatterUseGB(8L), NSByteCountFormatterUseTB(16L), NSByteCountFormatterUsePB(32L), NSByteCountFormatterUseEB(64L), NSByteCountFormatterUseZB(128L), NSByteCountFormatterUseYBOrHigher(65280L), NSByteCountFormatterUseAll(65535L);
-
-    companion object {
-        fun fromValue(v: Long): NSByteCountFormatterUnits = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSByteCountFormatterUnits value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSByteCountFormatterCountStyle}
- */
-enum class NSByteCountFormatterCountStyle(val value: Long) {
-    NSByteCountFormatterCountStyleFile(0L), NSByteCountFormatterCountStyleMemory(1L), NSByteCountFormatterCountStyleDecimal(2L), NSByteCountFormatterCountStyleBinary(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSByteCountFormatterCountStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSByteCountFormatterCountStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSComparisonPredicateModifier}
- */
-enum class NSComparisonPredicateModifier(val value: Long) {
-    NSDirectPredicateModifier(0L), NSAllPredicateModifier(1L), NSAnyPredicateModifier(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSComparisonPredicateModifier = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSComparisonPredicateModifier value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSPredicateOperatorType}
- */
-enum class NSPredicateOperatorType(val value: Long) {
-    NSLessThanPredicateOperatorType(0L), NSLessThanOrEqualToPredicateOperatorType(1L), NSGreaterThanPredicateOperatorType(2L), NSGreaterThanOrEqualToPredicateOperatorType(3L), NSEqualToPredicateOperatorType(4L), NSNotEqualToPredicateOperatorType(5L), NSMatchesPredicateOperatorType(6L), NSLikePredicateOperatorType(7L), NSBeginsWithPredicateOperatorType(8L), NSEndsWithPredicateOperatorType(9L), NSInPredicateOperatorType(10L), NSCustomSelectorPredicateOperatorType(11L), NSContainsPredicateOperatorType(99L), NSBetweenPredicateOperatorType(100L);
-
-    companion object {
-        fun fromValue(v: Long): NSPredicateOperatorType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPredicateOperatorType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSCompoundPredicateType}
- */
-enum class NSCompoundPredicateType(val value: Long) {
-    NSNotPredicateType(0L), NSAndPredicateType(1L), NSOrPredicateType(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSCompoundPredicateType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCompoundPredicateType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDateComponentsFormatterUnitsStyle}
- */
-enum class NSDateComponentsFormatterUnitsStyle(val value: Long) {
-    NSDateComponentsFormatterUnitsStylePositional(0L), NSDateComponentsFormatterUnitsStyleAbbreviated(1L), NSDateComponentsFormatterUnitsStyleShort(2L), NSDateComponentsFormatterUnitsStyleFull(3L), NSDateComponentsFormatterUnitsStyleSpellOut(4L), NSDateComponentsFormatterUnitsStyleBrief(5L);
-
-    companion object {
-        fun fromValue(v: Long): NSDateComponentsFormatterUnitsStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateComponentsFormatterUnitsStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDateComponentsFormatterZeroFormattingBehavior}
- */
-enum class NSDateComponentsFormatterZeroFormattingBehavior(val value: Long) {
-    NSDateComponentsFormatterZeroFormattingBehaviorNone(0L), NSDateComponentsFormatterZeroFormattingBehaviorDefault(1L), NSDateComponentsFormatterZeroFormattingBehaviorDropLeading(2L), NSDateComponentsFormatterZeroFormattingBehaviorDropMiddle(4L), NSDateComponentsFormatterZeroFormattingBehaviorDropTrailing(8L), NSDateComponentsFormatterZeroFormattingBehaviorDropAll(14L), NSDateComponentsFormatterZeroFormattingBehaviorPad(65536L);
-
-    companion object {
-        fun fromValue(v: Long): NSDateComponentsFormatterZeroFormattingBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateComponentsFormatterZeroFormattingBehavior value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSExpressionType}
- */
-enum class NSExpressionType(val value: Long) {
-    NSConstantValueExpressionType(0L), NSEvaluatedObjectExpressionType(1L), NSVariableExpressionType(2L), NSKeyPathExpressionType(3L), NSFunctionExpressionType(4L), NSUnionSetExpressionType(5L), NSIntersectSetExpressionType(6L), NSMinusSetExpressionType(7L), NSSubqueryExpressionType(13L), NSAggregateExpressionType(14L), NSAnyKeyExpressionType(15L), NSBlockExpressionType(19L), NSConditionalExpressionType(20L);
-
-    companion object {
-        fun fromValue(v: Long): NSExpressionType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSExpressionType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSLinguisticTaggerUnit}
- */
-enum class NSLinguisticTaggerUnit(val value: Long) {
-    NSLinguisticTaggerUnitWord(0L), NSLinguisticTaggerUnitSentence(1L), NSLinguisticTaggerUnitParagraph(2L), NSLinguisticTaggerUnitDocument(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSLinguisticTaggerUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLinguisticTaggerUnit value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSNetServicesError}
- */
-enum class NSNetServicesError(val value: Long) {
-    NSNetServicesUnknownError(-72000L), NSNetServicesCollisionError(-72001L), NSNetServicesNotFoundError(-72002L), NSNetServicesActivityInProgress(-72003L), NSNetServicesBadArgumentError(-72004L), NSNetServicesCancelledError(-72005L), NSNetServicesInvalidError(-72006L), NSNetServicesTimeoutError(-72007L), NSNetServicesMissingRequiredConfigurationError(-72008L);
-
-    companion object {
-        fun fromValue(v: Long): NSNetServicesError = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNetServicesError value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSUbiquitousKeyValueStore.h:47:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSUbiquitousKeyValueStore_h_47_1_(val value: Long) {
-    NSUbiquitousKeyValueStoreServerChange(0L), NSUbiquitousKeyValueStoreInitialSyncChange(1L), NSUbiquitousKeyValueStoreQuotaViolationChange(2L), NSUbiquitousKeyValueStoreAccountChange(3L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSUbiquitousKeyValueStore_h_47_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSUbiquitousKeyValueStore_h_47_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLSessionTaskState}
- */
-enum class NSURLSessionTaskState(val value: Long) {
-    NSURLSessionTaskStateRunning(0L), NSURLSessionTaskStateSuspended(1L), NSURLSessionTaskStateCanceling(2L), NSURLSessionTaskStateCompleted(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLSessionTaskState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionTaskState value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLSessionWebSocketMessageType}
- */
-enum class NSURLSessionWebSocketMessageType(val value: Long) {
-    NSURLSessionWebSocketMessageTypeData(0L), NSURLSessionWebSocketMessageTypeString(1L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLSessionWebSocketMessageType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionWebSocketMessageType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLSessionWebSocketCloseCode}
- */
-enum class NSURLSessionWebSocketCloseCode(val value: Long) {
-    NSURLSessionWebSocketCloseCodeInvalid(0L), NSURLSessionWebSocketCloseCodeNormalClosure(1000L), NSURLSessionWebSocketCloseCodeGoingAway(1001L), NSURLSessionWebSocketCloseCodeProtocolError(1002L), NSURLSessionWebSocketCloseCodeUnsupportedData(1003L), NSURLSessionWebSocketCloseCodeNoStatusReceived(1005L), NSURLSessionWebSocketCloseCodeAbnormalClosure(1006L), NSURLSessionWebSocketCloseCodeInvalidFramePayloadData(1007L), NSURLSessionWebSocketCloseCodePolicyViolation(1008L), NSURLSessionWebSocketCloseCodeMessageTooBig(1009L), NSURLSessionWebSocketCloseCodeMandatoryExtensionMissing(1010L), NSURLSessionWebSocketCloseCodeInternalServerError(1011L), NSURLSessionWebSocketCloseCodeTLSHandshakeFailure(1015L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLSessionWebSocketCloseCode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionWebSocketCloseCode value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLSessionMultipathServiceType}
- */
-enum class NSURLSessionMultipathServiceType(val value: Long) {
-    NSURLSessionMultipathServiceTypeNone(0L), NSURLSessionMultipathServiceTypeHandover(1L), NSURLSessionMultipathServiceTypeInteractive(2L), NSURLSessionMultipathServiceTypeAggregate(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLSessionMultipathServiceType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionMultipathServiceType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLSessionDelayedRequestDisposition}
- */
-enum class NSURLSessionDelayedRequestDisposition(val value: Long) {
-    NSURLSessionDelayedRequestContinueLoading(0L), NSURLSessionDelayedRequestUseNewRequest(1L), NSURLSessionDelayedRequestCancel(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLSessionDelayedRequestDisposition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionDelayedRequestDisposition value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLSessionAuthChallengeDisposition}
- */
-enum class NSURLSessionAuthChallengeDisposition(val value: Long) {
-    NSURLSessionAuthChallengeUseCredential(0L), NSURLSessionAuthChallengePerformDefaultHandling(1L), NSURLSessionAuthChallengeCancelAuthenticationChallenge(2L), NSURLSessionAuthChallengeRejectProtectionSpace(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLSessionAuthChallengeDisposition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionAuthChallengeDisposition value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLSessionResponseDisposition}
- */
-enum class NSURLSessionResponseDisposition(val value: Long) {
-    NSURLSessionResponseCancel(0L), NSURLSessionResponseAllow(1L), NSURLSessionResponseBecomeDownload(2L), NSURLSessionResponseBecomeStream(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLSessionResponseDisposition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionResponseDisposition value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLSessionTaskMetricsResourceFetchType}
- */
-enum class NSURLSessionTaskMetricsResourceFetchType(val value: Long) {
-    NSURLSessionTaskMetricsResourceFetchTypeUnknown(0L), NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad(1L), NSURLSessionTaskMetricsResourceFetchTypeServerPush(2L), NSURLSessionTaskMetricsResourceFetchTypeLocalCache(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLSessionTaskMetricsResourceFetchType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionTaskMetricsResourceFetchType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSURLSessionTaskMetricsDomainResolutionProtocol}
- */
-enum class NSURLSessionTaskMetricsDomainResolutionProtocol(val value: Long) {
-    NSURLSessionTaskMetricsDomainResolutionProtocolUnknown(0L), NSURLSessionTaskMetricsDomainResolutionProtocolUDP(1L), NSURLSessionTaskMetricsDomainResolutionProtocolTCP(2L), NSURLSessionTaskMetricsDomainResolutionProtocolTLS(3L), NSURLSessionTaskMetricsDomainResolutionProtocolHTTPS(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSURLSessionTaskMetricsDomainResolutionProtocol = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionTaskMetricsDomainResolutionProtocol value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSBackgroundActivityResult}
- */
-enum class NSBackgroundActivityResult(val value: Long) {
-    NSBackgroundActivityResultFinished(1L), NSBackgroundActivityResultDeferred(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSBackgroundActivityResult = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBackgroundActivityResult value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSNotificationSuspensionBehavior}
- */
-enum class NSNotificationSuspensionBehavior(val value: Long) {
-    NSNotificationSuspensionBehaviorDrop(1L), NSNotificationSuspensionBehaviorCoalesce(2L), NSNotificationSuspensionBehaviorHold(3L), NSNotificationSuspensionBehaviorDeliverImmediately(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSNotificationSuspensionBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNotificationSuspensionBehavior value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSTaskTerminationReason}
- */
-enum class NSTaskTerminationReason(val value: Long) {
-    NSTaskTerminationReasonExit(1L), NSTaskTerminationReasonUncaughtSignal(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSTaskTerminationReason = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTaskTerminationReason value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSXMLNodeKind}
- */
-enum class NSXMLNodeKind(val value: Long) {
-    NSXMLInvalidKind(0L), NSXMLDocumentKind(1L), NSXMLElementKind(2L), NSXMLAttributeKind(3L), NSXMLNamespaceKind(4L), NSXMLProcessingInstructionKind(5L), NSXMLCommentKind(6L), NSXMLTextKind(7L), NSXMLDTDKind(8L), NSXMLEntityDeclarationKind(9L), NSXMLAttributeDeclarationKind(10L), NSXMLElementDeclarationKind(11L), NSXMLNotationDeclarationKind(12L);
-
-    companion object {
-        fun fromValue(v: Long): NSXMLNodeKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSXMLNodeKind value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSXMLDTDNodeKind}
- */
-enum class NSXMLDTDNodeKind(val value: Long) {
-    NSXMLEntityGeneralKind(1L), NSXMLEntityParsedKind(2L), NSXMLEntityUnparsedKind(3L), NSXMLEntityParameterKind(4L), NSXMLEntityPredefined(5L), NSXMLAttributeCDATAKind(6L), NSXMLAttributeIDKind(7L), NSXMLAttributeIDRefKind(8L), NSXMLAttributeIDRefsKind(9L), NSXMLAttributeEntityKind(10L), NSXMLAttributeEntitiesKind(11L), NSXMLAttributeNMTokenKind(12L), NSXMLAttributeNMTokensKind(13L), NSXMLAttributeEnumerationKind(14L), NSXMLAttributeNotationKind(15L), NSXMLElementDeclarationUndefinedKind(16L), NSXMLElementDeclarationEmptyKind(17L), NSXMLElementDeclarationAnyKind(18L), NSXMLElementDeclarationMixedKind(19L), NSXMLElementDeclarationElementKind(20L);
-
-    companion object {
-        fun fromValue(v: Long): NSXMLDTDNodeKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSXMLDTDNodeKind value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSXMLDocumentContentKind}
- */
-enum class NSXMLDocumentContentKind(val value: Long) {
-    NSXMLDocumentXMLKind(0L), NSXMLDocumentXHTMLKind(1L), NSXMLDocumentHTMLKind(2L), NSXMLDocumentTextKind(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSXMLDocumentContentKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSXMLDocumentContentKind value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSScriptCommand.h:13:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptCommand_h_13_1_(val value: Long) {
-    NSNoScriptError(0L), NSReceiverEvaluationScriptError(1L), NSKeySpecifierEvaluationScriptError(2L), NSArgumentEvaluationScriptError(3L), NSReceiversCantHandleCommandScriptError(4L), NSRequiredArgumentsMissingScriptError(5L), NSArgumentsWrongScriptError(6L), NSUnknownKeyScriptError(7L), NSInternalScriptError(8L), NSOperationNotSupportedForKeyScriptError(9L), NSCannotCreateScriptCommandError(10L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptCommand_h_13_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptCommand_h_13_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSScriptObjectSpecifiers.h:13:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptObjectSpecifiers_h_13_1_(val value: Long) {
-    NSNoSpecifierError(0L), NSNoTopLevelContainersSpecifierError(1L), NSContainerSpecifierError(2L), NSUnknownKeySpecifierError(3L), NSInvalidIndexSpecifierError(4L), NSInternalSpecifierError(5L), NSOperationNotSupportedForKeySpecifierError(6L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptObjectSpecifiers_h_13_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSScriptObjectSpecifiers_h_13_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSInsertionPosition}
- */
-enum class NSInsertionPosition(val value: Long) {
-    NSPositionAfter(0L), NSPositionBefore(1L), NSPositionBeginning(2L), NSPositionEnd(3L), NSPositionReplace(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSInsertionPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSInsertionPosition value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSRelativePosition}
- */
-enum class NSRelativePosition(val value: Long) {
-    NSRelativeAfter(0L), NSRelativeBefore(1L);
-
-    companion object {
-        fun fromValue(v: Long): NSRelativePosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRelativePosition value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSWhoseSubelementIdentifier}
- */
-enum class NSWhoseSubelementIdentifier(val value: Long) {
-    NSIndexSubelement(0L), NSEverySubelement(1L), NSMiddleSubelement(2L), NSRandomSubelement(3L), NSNoSubelement(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSWhoseSubelementIdentifier = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWhoseSubelementIdentifier value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSTestComparisonOperation}
- */
-enum class NSTestComparisonOperation(val value: Long) {
-    NSEqualToComparison(0L), NSLessThanOrEqualToComparison(1L), NSLessThanComparison(2L), NSGreaterThanOrEqualToComparison(3L), NSGreaterThanComparison(4L), NSBeginsWithComparison(5L), NSEndsWithComparison(6L), NSContainsComparison(7L);
-
-    companion object {
-        fun fromValue(v: Long): NSTestComparisonOperation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTestComparisonOperation value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSUserNotificationActivationType}
- */
-enum class NSUserNotificationActivationType(val value: Long) {
-    NSUserNotificationActivationTypeNone(0L), NSUserNotificationActivationTypeContentsClicked(1L), NSUserNotificationActivationTypeActionButtonClicked(2L), NSUserNotificationActivationTypeReplied(3L), NSUserNotificationActivationTypeAdditionalActionClicked(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSUserNotificationActivationType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSUserNotificationActivationType value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMDefinitions.h:37:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_ApplicationServices_framework_Frameworks_PrintCore_framework_Headers_PMDefinitions_h_37_1_(val value: Long) {
@@ -21689,90 +22361,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSAccessibilityAnnotationPosition}
- */
-enum class NSAccessibilityAnnotationPosition(val value: Long) {
-    NSAccessibilityAnnotationPositionFullRange(0L), NSAccessibilityAnnotationPositionStart(1L), NSAccessibilityAnnotationPositionEnd(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSAccessibilityAnnotationPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityAnnotationPosition value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSAccessibilityOrientation}
- */
-enum class NSAccessibilityOrientation(val value: Long) {
-    NSAccessibilityOrientationUnknown(0L), NSAccessibilityOrientationVertical(1L), NSAccessibilityOrientationHorizontal(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSAccessibilityOrientation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityOrientation value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSAccessibilitySortDirection}
- */
-enum class NSAccessibilitySortDirection(val value: Long) {
-    NSAccessibilitySortDirectionUnknown(0L), NSAccessibilitySortDirectionAscending(1L), NSAccessibilitySortDirectionDescending(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSAccessibilitySortDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilitySortDirection value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSAccessibilityRulerMarkerType}
- */
-enum class NSAccessibilityRulerMarkerType(val value: Long) {
-    NSAccessibilityRulerMarkerTypeUnknown(0L), NSAccessibilityRulerMarkerTypeTabStopLeft(1L), NSAccessibilityRulerMarkerTypeTabStopRight(2L), NSAccessibilityRulerMarkerTypeTabStopCenter(3L), NSAccessibilityRulerMarkerTypeTabStopDecimal(4L), NSAccessibilityRulerMarkerTypeIndentHead(5L), NSAccessibilityRulerMarkerTypeIndentTail(6L), NSAccessibilityRulerMarkerTypeIndentFirstLine(7L);
-
-    companion object {
-        fun fromValue(v: Long): NSAccessibilityRulerMarkerType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityRulerMarkerType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSAccessibilityUnits}
- */
-enum class NSAccessibilityUnits(val value: Long) {
-    NSAccessibilityUnitsUnknown(0L), NSAccessibilityUnitsInches(1L), NSAccessibilityUnitsCentimeters(2L), NSAccessibilityUnitsPoints(3L), NSAccessibilityUnitsPicas(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSAccessibilityUnits = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityUnits value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSAccessibilityPriorityLevel}
- */
-enum class NSAccessibilityPriorityLevel(val value: Long) {
-    NSAccessibilityPriorityLow(10L), NSAccessibilityPriorityMedium(50L), NSAccessibilityPriorityHigh(90L);
-
-    companion object {
-        fun fromValue(v: Long): NSAccessibilityPriorityLevel = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityPriorityLevel value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSAccessibilityConstants.h:731:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSAccessibilityConstants_h_731_1_(val value: Long) {
-    NSAccessibilityHourMinuteDateTimeComponentsFlag(12L), NSAccessibilityHourMinuteSecondDateTimeComponentsFlag(14L), NSAccessibilityYearMonthDateTimeComponentsFlag(192L), NSAccessibilityYearMonthDayDateTimeComponentsFlag(224L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSAccessibilityConstants_h_731_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSAccessibilityConstants_h_731_1_ value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum NSPasteboardAccessBehavior}
  */
 enum class NSPasteboardAccessBehavior(val value: Long) {
@@ -21781,18 +22369,6 @@ enum class NSPasteboardAccessBehavior(val value: Long) {
     companion object {
         fun fromValue(v: Long): NSPasteboardAccessBehavior = entries.firstOrNull { it.value == v }
             ?: error("Unknown NSPasteboardAccessBehavior value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSWorkspaceAuthorizationType}
- */
-enum class NSWorkspaceAuthorizationType(val value: Long) {
-    NSWorkspaceAuthorizationTypeCreateSymbolicLink(0L), NSWorkspaceAuthorizationTypeSetAttributes(1L), NSWorkspaceAuthorizationTypeReplaceFile(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSWorkspaceAuthorizationType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWorkspaceAuthorizationType value: $v")
     }
 }
 
@@ -21877,114 +22453,6 @@ enum class NSSpringLoadingHighlight(val value: Long) {
     companion object {
         fun fromValue(v: Long): NSSpringLoadingHighlight = entries.firstOrNull { it.value == v }
             ?: error("Unknown NSSpringLoadingHighlight value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSCompositingOperation}
- */
-enum class NSCompositingOperation(val value: Long) {
-    NSCompositingOperationClear(0L), NSCompositingOperationCopy(1L), NSCompositingOperationSourceOver(2L), NSCompositingOperationSourceIn(3L), NSCompositingOperationSourceOut(4L), NSCompositingOperationSourceAtop(5L), NSCompositingOperationDestinationOver(6L), NSCompositingOperationDestinationIn(7L), NSCompositingOperationDestinationOut(8L), NSCompositingOperationDestinationAtop(9L), NSCompositingOperationXOR(10L), NSCompositingOperationPlusDarker(11L), NSCompositingOperationHighlight(12L), NSCompositingOperationPlusLighter(13L), NSCompositingOperationMultiply(14L), NSCompositingOperationScreen(15L), NSCompositingOperationOverlay(16L), NSCompositingOperationDarken(17L), NSCompositingOperationLighten(18L), NSCompositingOperationColorDodge(19L), NSCompositingOperationColorBurn(20L), NSCompositingOperationSoftLight(21L), NSCompositingOperationHardLight(22L), NSCompositingOperationDifference(23L), NSCompositingOperationExclusion(24L), NSCompositingOperationHue(25L), NSCompositingOperationSaturation(26L), NSCompositingOperationColor(27L), NSCompositingOperationLuminosity(28L);
-
-    companion object {
-        fun fromValue(v: Long): NSCompositingOperation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCompositingOperation value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSBackingStoreType}
- */
-enum class NSBackingStoreType(val value: Long) {
-    NSBackingStoreRetained(0L), NSBackingStoreNonretained(1L), NSBackingStoreBuffered(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSBackingStoreType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBackingStoreType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSWindowOrderingMode}
- */
-enum class NSWindowOrderingMode(val value: Long) {
-    NSWindowAbove(1L), NSWindowBelow(-1L), NSWindowOut(0L);
-
-    companion object {
-        fun fromValue(v: Long): NSWindowOrderingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowOrderingMode value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSFocusRingPlacement}
- */
-enum class NSFocusRingPlacement(val value: Long) {
-    NSFocusRingOnly(0L), NSFocusRingBelow(1L), NSFocusRingAbove(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSFocusRingPlacement = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFocusRingPlacement value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSFocusRingType}
- */
-enum class NSFocusRingType(val value: Long) {
-    NSFocusRingTypeDefault(0L), NSFocusRingTypeNone(1L), NSFocusRingTypeExterior(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSFocusRingType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFocusRingType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSColorRenderingIntent}
- */
-enum class NSColorRenderingIntent(val value: Long) {
-    NSColorRenderingIntentDefault(0L), NSColorRenderingIntentAbsoluteColorimetric(1L), NSColorRenderingIntentRelativeColorimetric(2L), NSColorRenderingIntentPerceptual(3L), NSColorRenderingIntentSaturation(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSColorRenderingIntent = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSColorRenderingIntent value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSWindowDepth}
- */
-enum class NSWindowDepth(val value: Long) {
-    NSWindowDepthTwentyfourBitRGB(520L), NSWindowDepthSixtyfourBitRGB(528L), NSWindowDepthOnehundredtwentyeightBitRGB(544L);
-
-    companion object {
-        fun fromValue(v: Long): NSWindowDepth = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowDepth value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDisplayGamut}
- */
-enum class NSDisplayGamut(val value: Long) {
-    NSDisplayGamutSRGB(1L), NSDisplayGamutP3(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSDisplayGamut = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDisplayGamut value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSAnimationEffect}
- */
-enum class NSAnimationEffect(val value: Long) {
-    NSAnimationEffectDisappearingItemDefault(0L), NSAnimationEffectPoof(10L);
-
-    companion object {
-        fun fromValue(v: Long): NSAnimationEffect = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAnimationEffect value: $v")
     }
 }
 
@@ -22481,6 +22949,390 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
+ * NS_ENUM: {@snippet lang=c : enum NSColorType}
+ */
+enum class NSColorType(val value: Long) {
+    NSColorTypeComponentBased(0L), NSColorTypePattern(1L), NSColorTypeCatalog(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSColorType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSColorType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSColorSystemEffect}
+ */
+enum class NSColorSystemEffect(val value: Long) {
+    NSColorSystemEffectNone(0L), NSColorSystemEffectPressed(1L), NSColorSystemEffectDeepPressed(2L), NSColorSystemEffectDisabled(3L), NSColorSystemEffectRollover(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSColorSystemEffect = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSColorSystemEffect value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAlertStyle}
+ */
+enum class NSAlertStyle(val value: Long) {
+    NSAlertStyleWarning(0L), NSAlertStyleInformational(1L), NSAlertStyleCritical(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSAlertStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAlertStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTitlePosition}
+ */
+enum class NSTitlePosition(val value: Long) {
+    NSNoTitle(0L), NSAboveTop(1L), NSAtTop(2L), NSBelowTop(3L), NSAboveBottom(4L), NSAtBottom(5L), NSBelowBottom(6L);
+
+    companion object {
+        fun fromValue(v: Long): NSTitlePosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTitlePosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSBoxType}
+ */
+enum class NSBoxType(val value: Long) {
+    NSBoxPrimary(0L), NSBoxSeparator(2L), NSBoxCustom(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSBoxType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBoxType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSControlBorderShape}
+ */
+enum class NSControlBorderShape(val value: Long) {
+    NSControlBorderShapeAutomatic(0L), NSControlBorderShapeCapsule(1L), NSControlBorderShapeRoundedRectangle(2L), NSControlBorderShapeCircle(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSControlBorderShape = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSControlBorderShape value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSButtonType}
+ */
+enum class NSButtonType(val value: Long) {
+    NSButtonTypeMomentaryLight(0L), NSButtonTypePushOnPushOff(1L), NSButtonTypeToggle(2L), NSButtonTypeSwitch(3L), NSButtonTypeRadio(4L), NSButtonTypeMomentaryChange(5L), NSButtonTypeOnOff(6L), NSButtonTypeMomentaryPushIn(7L), NSButtonTypeAccelerator(8L), NSButtonTypeMultiLevelAccelerator(9L);
+
+    companion object {
+        fun fromValue(v: Long): NSButtonType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSButtonType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSBezelStyle}
+ */
+enum class NSBezelStyle(val value: Long) {
+    NSBezelStyleAutomatic(0L), NSBezelStylePush(1L), NSBezelStyleFlexiblePush(2L), NSBezelStyleDisclosure(5L), NSBezelStyleCircular(7L), NSBezelStyleHelpButton(9L), NSBezelStyleSmallSquare(10L), NSBezelStyleToolbar(11L), NSBezelStyleAccessoryBarAction(12L), NSBezelStyleAccessoryBar(13L), NSBezelStylePushDisclosure(14L), NSBezelStyleBadge(15L), NSBezelStyleGlass(16L), NSBezelStyleShadowlessSquare(6L), NSBezelStyleTexturedSquare(8L), NSBezelStyleRounded(1L), NSBezelStyleRegularSquare(2L), NSBezelStyleTexturedRounded(11L), NSBezelStyleRoundRect(12L), NSBezelStyleRecessed(13L), NSBezelStyleRoundedDisclosure(14L), NSBezelStyleInline(15L);
+
+    companion object {
+        fun fromValue(v: Long): NSBezelStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBezelStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGradientType}
+ */
+enum class NSGradientType(val value: Long) {
+    NSGradientNone(0L), NSGradientConcaveWeak(1L), NSGradientConcaveStrong(2L), NSGradientConvexWeak(3L), NSGradientConvexStrong(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSGradientType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGradientType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTintProminence}
+ */
+enum class NSTintProminence(val value: Long) {
+    NSTintProminenceAutomatic(0L), NSTintProminenceNone(1L), NSTintProminencePrimary(2L), NSTintProminenceSecondary(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSTintProminence = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTintProminence value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPopoverAppearance}
+ */
+enum class NSPopoverAppearance(val value: Long) {
+    NSPopoverAppearanceMinimal(0L), NSPopoverAppearanceHUD(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSPopoverAppearance = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPopoverAppearance value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPopoverBehavior}
+ */
+enum class NSPopoverBehavior(val value: Long) {
+    NSPopoverBehaviorApplicationDefined(0L), NSPopoverBehaviorTransient(1L), NSPopoverBehaviorSemitransient(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSPopoverBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPopoverBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCollectionViewDropOperation}
+ */
+enum class NSCollectionViewDropOperation(val value: Long) {
+    NSCollectionViewDropOn(0L), NSCollectionViewDropBefore(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSCollectionViewDropOperation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCollectionViewDropOperation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCollectionViewItemHighlightState}
+ */
+enum class NSCollectionViewItemHighlightState(val value: Long) {
+    NSCollectionViewItemHighlightNone(0L), NSCollectionViewItemHighlightForSelection(1L), NSCollectionViewItemHighlightForDeselection(2L), NSCollectionViewItemHighlightAsDropTarget(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSCollectionViewItemHighlightState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCollectionViewItemHighlightState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCollectionViewScrollPosition}
+ */
+enum class NSCollectionViewScrollPosition(val value: Long) {
+    NSCollectionViewScrollPositionNone(0L), NSCollectionViewScrollPositionTop(1L), NSCollectionViewScrollPositionCenteredVertically(2L), NSCollectionViewScrollPositionBottom(4L), NSCollectionViewScrollPositionNearestHorizontalEdge(512L), NSCollectionViewScrollPositionLeft(8L), NSCollectionViewScrollPositionCenteredHorizontally(16L), NSCollectionViewScrollPositionRight(32L), NSCollectionViewScrollPositionLeadingEdge(64L), NSCollectionViewScrollPositionTrailingEdge(128L), NSCollectionViewScrollPositionNearestVerticalEdge(256L);
+
+    companion object {
+        fun fromValue(v: Long): NSCollectionViewScrollPosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCollectionViewScrollPosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCollectionElementCategory}
+ */
+enum class NSCollectionElementCategory(val value: Long) {
+    NSCollectionElementCategoryItem(0L), NSCollectionElementCategorySupplementaryView(1L), NSCollectionElementCategoryDecorationView(2L), NSCollectionElementCategoryInterItemGap(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSCollectionElementCategory = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCollectionElementCategory value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCollectionUpdateAction}
+ */
+enum class NSCollectionUpdateAction(val value: Long) {
+    NSCollectionUpdateActionInsert(0L), NSCollectionUpdateActionDelete(1L), NSCollectionUpdateActionReload(2L), NSCollectionUpdateActionMove(3L), NSCollectionUpdateActionNone(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSCollectionUpdateAction = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCollectionUpdateAction value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCollectionViewScrollDirection}
+ */
+enum class NSCollectionViewScrollDirection(val value: Long) {
+    NSCollectionViewScrollDirectionVertical(0L), NSCollectionViewScrollDirectionHorizontal(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSCollectionViewScrollDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCollectionViewScrollDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDirectionalRectEdge}
+ */
+enum class NSDirectionalRectEdge(val value: Long) {
+    NSDirectionalRectEdgeNone(0L), NSDirectionalRectEdgeTop(1L), NSDirectionalRectEdgeLeading(2L), NSDirectionalRectEdgeBottom(4L), NSDirectionalRectEdgeTrailing(8L), NSDirectionalRectEdgeAll(15L);
+
+    companion object {
+        fun fromValue(v: Long): NSDirectionalRectEdge = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDirectionalRectEdge value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSRectAlignment}
+ */
+enum class NSRectAlignment(val value: Long) {
+    NSRectAlignmentNone(0L), NSRectAlignmentTop(1L), NSRectAlignmentTopLeading(2L), NSRectAlignmentLeading(3L), NSRectAlignmentBottomLeading(4L), NSRectAlignmentBottom(5L), NSRectAlignmentBottomTrailing(6L), NSRectAlignmentTrailing(7L), NSRectAlignmentTopTrailing(8L);
+
+    companion object {
+        fun fromValue(v: Long): NSRectAlignment = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSRectAlignment value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCollectionLayoutSectionOrthogonalScrollingBehavior}
+ */
+enum class NSCollectionLayoutSectionOrthogonalScrollingBehavior(val value: Long) {
+    NSCollectionLayoutSectionOrthogonalScrollingBehaviorNone(0L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorContinuous(1L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorContinuousGroupLeadingBoundary(2L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorPaging(3L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorGroupPaging(4L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorGroupPagingCentered(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSCollectionLayoutSectionOrthogonalScrollingBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCollectionLayoutSectionOrthogonalScrollingBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSHorizontalDirections}
+ */
+enum class NSHorizontalDirections(val value: Long) {
+    NSHorizontalDirectionsLeft(1L), NSHorizontalDirectionsRight(2L), NSHorizontalDirectionsAll(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSHorizontalDirections = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSHorizontalDirections value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSVerticalDirections}
+ */
+enum class NSVerticalDirections(val value: Long) {
+    NSVerticalDirectionsUp(1L), NSVerticalDirectionsDown(2L), NSVerticalDirectionsAll(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSVerticalDirections = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSVerticalDirections value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFontDescriptorSymbolicTraits}
+ */
+enum class NSFontDescriptorSymbolicTraits(val value: Long) {
+    NSFontDescriptorTraitItalic(1L), NSFontDescriptorTraitBold(2L), NSFontDescriptorTraitExpanded(32L), NSFontDescriptorTraitCondensed(64L), NSFontDescriptorTraitMonoSpace(1024L), NSFontDescriptorTraitVertical(2048L), NSFontDescriptorTraitUIOptimized(4096L), NSFontDescriptorTraitTightLeading(32768L), NSFontDescriptorTraitLooseLeading(65536L), NSFontDescriptorTraitEmphasized(2L), NSFontDescriptorClassMask(-268435456L), NSFontDescriptorClassUnknown(0L), NSFontDescriptorClassOldStyleSerifs(268435456L), NSFontDescriptorClassTransitionalSerifs(536870912L), NSFontDescriptorClassModernSerifs(805306368L), NSFontDescriptorClassClarendonSerifs(1073741824L), NSFontDescriptorClassSlabSerifs(1342177280L), NSFontDescriptorClassFreeformSerifs(1879048192L), NSFontDescriptorClassSansSerif(-2147483648L), NSFontDescriptorClassOrnamentals(-1879048192L), NSFontDescriptorClassScripts(-1610612736L), NSFontDescriptorClassSymbolic(-1073741824L);
+
+    companion object {
+        fun fromValue(v: Long): NSFontDescriptorSymbolicTraits = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFontDescriptorSymbolicTraits value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontDescriptor.h:206:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_206_1_(val value: Long) {
+    NSFontUnknownClass(0L), NSFontOldStyleSerifsClass(268435456L), NSFontTransitionalSerifsClass(536870912L), NSFontModernSerifsClass(805306368L), NSFontClarendonSerifsClass(1073741824L), NSFontSlabSerifsClass(1342177280L), NSFontFreeformSerifsClass(1879048192L), NSFontSansSerifClass(-2147483648L), NSFontOrnamentalsClass(-1879048192L), NSFontScriptsClass(-1610612736L), NSFontSymbolicClass(-1073741824L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_206_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_206_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontDescriptor.h:220:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_220_1_(val value: Long) {
+    NSFontFamilyClassMask(-268435456L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_220_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_220_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontDescriptor.h:224:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_224_1_(val value: Long) {
+    NSFontItalicTrait(1L), NSFontBoldTrait(2L), NSFontExpandedTrait(32L), NSFontCondensedTrait(64L), NSFontMonoSpaceTrait(1024L), NSFontVerticalTrait(2048L), NSFontUIOptimizedTrait(4096L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_224_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_224_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFont.h:147:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFont_h_147_1_(val value: Long) {
+    NSControlGlyph(16777215L), NSNullGlyph(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFont_h_147_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFont_h_147_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFontRenderingMode}
+ */
+enum class NSFontRenderingMode(val value: Long) {
+    NSFontDefaultRenderingMode(0L), NSFontAntialiasedRenderingMode(1L), NSFontIntegerAdvancementsRenderingMode(2L), NSFontAntialiasedIntegerAdvancementsRenderingMode(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSFontRenderingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFontRenderingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSMultibyteGlyphPacking}
+ */
+enum class NSMultibyteGlyphPacking(val value: Long) {
+    NSNativeShortGlyphPacking(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSMultibyteGlyphPacking = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSMultibyteGlyphPacking value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFontCollectionVisibility}
+ */
+enum class NSFontCollectionVisibility(val value: Long) {
+    NSFontCollectionVisibilityProcess(1L), NSFontCollectionVisibilityUser(2L), NSFontCollectionVisibilityComputer(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSFontCollectionVisibility = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFontCollectionVisibility value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFontAction}
+ */
+enum class NSFontAction(val value: Long) {
+    NSNoFontChangeAction(0L), NSViaPanelFontAction(1L), NSAddTraitFontAction(2L), NSSizeUpFontAction(3L), NSSizeDownFontAction(4L), NSHeavierFontAction(5L), NSLighterFontAction(6L), NSRemoveTraitFontAction(7L);
+
+    companion object {
+        fun fromValue(v: Long): NSFontAction = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFontAction value: $v")
+    }
+}
+
+/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSWindow.h:75:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSWindow_h_75_1_(val value: Long) {
@@ -22637,50 +23489,86 @@ enum class NSWindowBackingLocation(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSPopoverAppearance}
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSPanel.h:44:1)}
  */
-enum class NSPopoverAppearance(val value: Long) {
-    NSPopoverAppearanceMinimal(0L), NSPopoverAppearanceHUD(1L);
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSPanel_h_44_1_(val value: Long) {
+    NSAlertDefaultReturn(1L), NSAlertAlternateReturn(0L), NSAlertOtherReturn(-1L), NSAlertErrorReturn(-2L);
 
     companion object {
-        fun fromValue(v: Long): NSPopoverAppearance = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPopoverAppearance value: $v")
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSPanel_h_44_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSPanel_h_44_1_ value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSPopoverBehavior}
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSPanel.h:50:1)}
  */
-enum class NSPopoverBehavior(val value: Long) {
-    NSPopoverBehaviorApplicationDefined(0L), NSPopoverBehaviorTransient(1L), NSPopoverBehaviorSemitransient(2L);
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSPanel_h_50_1_(val value: Long) {
+    NSOKButton(1L), NSCancelButton(0L);
 
     companion object {
-        fun fromValue(v: Long): NSPopoverBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPopoverBehavior value: $v")
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSPanel_h_50_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSPanel_h_50_1_ value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSColorType}
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontPanel.h:65:1)}
  */
-enum class NSColorType(val value: Long) {
-    NSColorTypeComponentBased(0L), NSColorTypePattern(1L), NSColorTypeCatalog(2L);
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontPanel_h_65_1_(val value: Long) {
+    NSFontPanelFaceModeMask(1L), NSFontPanelSizeModeMask(2L), NSFontPanelCollectionModeMask(4L), NSFontPanelUnderlineEffectModeMask(256L), NSFontPanelStrikethroughEffectModeMask(512L), NSFontPanelTextColorEffectModeMask(1024L), NSFontPanelDocumentColorEffectModeMask(2048L), NSFontPanelShadowEffectModeMask(4096L), NSFontPanelAllEffectsModeMask(1048320L), NSFontPanelStandardModesMask(65535L), NSFontPanelAllModesMask(-1L);
 
     companion object {
-        fun fromValue(v: Long): NSColorType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSColorType value: $v")
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontPanel_h_65_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontPanel_h_65_1_ value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSColorSystemEffect}
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontPanel.h:82:1)}
  */
-enum class NSColorSystemEffect(val value: Long) {
-    NSColorSystemEffectNone(0L), NSColorSystemEffectPressed(1L), NSColorSystemEffectDeepPressed(2L), NSColorSystemEffectDisabled(3L), NSColorSystemEffectRollover(4L);
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontPanel_h_82_1_(val value: Long) {
+    NSFPPreviewButton(131L), NSFPRevertButton(130L), NSFPSetButton(132L), NSFPPreviewField(128L), NSFPSizeField(129L), NSFPSizeTitle(133L), NSFPCurrentField(134L);
 
     companion object {
-        fun fromValue(v: Long): NSColorSystemEffect = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSColorSystemEffect value: $v")
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontPanel_h_82_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontPanel_h_82_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSMatrixMode}
+ */
+enum class NSMatrixMode(val value: Long) {
+    NSRadioModeMatrix(0L), NSHighlightModeMatrix(1L), NSListModeMatrix(2L), NSTrackModeMatrix(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSMatrixMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSMatrixMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGlassEffectViewStyle}
+ */
+enum class NSGlassEffectViewStyle(val value: Long) {
+    NSGlassEffectViewStyleRegular(0L), NSGlassEffectViewStyleClear(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSGlassEffectViewStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGlassEffectViewStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSMenuItemBadgeType}
+ */
+enum class NSMenuItemBadgeType(val value: Long) {
+    NSMenuItemBadgeTypeNone(0L), NSMenuItemBadgeTypeUpdates(1L), NSMenuItemBadgeTypeNewItems(2L), NSMenuItemBadgeTypeAlerts(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSMenuItemBadgeType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSMenuItemBadgeType value: $v")
     }
 }
 
@@ -22769,14 +23657,398 @@ enum class NSBitmapFormat(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSControlBorderShape}
+ * NS_ENUM: {@snippet lang=c : enum NSBrowserColumnResizingType}
  */
-enum class NSControlBorderShape(val value: Long) {
-    NSControlBorderShapeAutomatic(0L), NSControlBorderShapeCapsule(1L), NSControlBorderShapeRoundedRectangle(2L), NSControlBorderShapeCircle(3L);
+enum class NSBrowserColumnResizingType(val value: Long) {
+    NSBrowserNoColumnResizing(0L), NSBrowserAutoColumnResizing(1L), NSBrowserUserColumnResizing(2L);
 
     companion object {
-        fun fromValue(v: Long): NSControlBorderShape = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSControlBorderShape value: $v")
+        fun fromValue(v: Long): NSBrowserColumnResizingType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBrowserColumnResizingType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSBrowserDropOperation}
+ */
+enum class NSBrowserDropOperation(val value: Long) {
+    NSBrowserDropOn(0L), NSBrowserDropAbove(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSBrowserDropOperation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBrowserDropOperation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CVSMPTETimeType}
+ */
+enum class CVSMPTETimeType(val value: Long) {
+    kCVSMPTETimeType24(0L), kCVSMPTETimeType25(1L), kCVSMPTETimeType30Drop(2L), kCVSMPTETimeType30(3L), kCVSMPTETimeType2997(4L), kCVSMPTETimeType2997Drop(5L), kCVSMPTETimeType60(6L), kCVSMPTETimeType5994(7L);
+
+    companion object {
+        fun fromValue(v: Long): CVSMPTETimeType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CVSMPTETimeType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVReturn.h:56:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVReturn_h_56_1_(val value: Long) {
+    kCVReturnSuccess(0L), kCVReturnFirst(-6660L), kCVReturnError(-6660L), kCVReturnInvalidArgument(-6661L), kCVReturnAllocationFailed(-6662L), kCVReturnUnsupported(-6663L), kCVReturnInvalidDisplay(-6670L), kCVReturnDisplayLinkAlreadyRunning(-6671L), kCVReturnDisplayLinkNotRunning(-6672L), kCVReturnDisplayLinkCallbacksNotSet(-6673L), kCVReturnInvalidPixelFormat(-6680L), kCVReturnInvalidSize(-6681L), kCVReturnInvalidPixelBufferAttributes(-6682L), kCVReturnPixelBufferNotOpenGLCompatible(-6683L), kCVReturnPixelBufferNotMetalCompatible(-6684L), kCVReturnWouldExceedAllocationThreshold(-6689L), kCVReturnPoolAllocationFailed(-6690L), kCVReturnInvalidPoolAttributes(-6691L), kCVReturnRetry(-6692L), kCVReturnLast(-6699L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVReturn_h_56_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVReturn_h_56_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _CGLPixelFormatAttribute}
+ */
+enum class _CGLPixelFormatAttribute(val value: Long) {
+    kCGLPFAAllRenderers(1L), kCGLPFATripleBuffer(3L), kCGLPFADoubleBuffer(5L), kCGLPFAColorSize(8L), kCGLPFAAlphaSize(11L), kCGLPFADepthSize(12L), kCGLPFAStencilSize(13L), kCGLPFAMinimumPolicy(51L), kCGLPFAMaximumPolicy(52L), kCGLPFASampleBuffers(55L), kCGLPFASamples(56L), kCGLPFAColorFloat(58L), kCGLPFAMultisample(59L), kCGLPFASupersample(60L), kCGLPFASampleAlpha(61L), kCGLPFARendererID(70L), kCGLPFANoRecovery(72L), kCGLPFAAccelerated(73L), kCGLPFAClosestPolicy(74L), kCGLPFABackingStore(76L), kCGLPFABackingVolatile(77L), kCGLPFADisplayMask(84L), kCGLPFAAllowOfflineRenderers(96L), kCGLPFAAcceleratedCompute(97L), kCGLPFAOpenGLProfile(99L), kCGLPFASupportsAutomaticGraphicsSwitching(101L), kCGLPFAVirtualScreenCount(128L), kCGLPFAAuxBuffers(7L), kCGLPFAAccumSize(14L), kCGLPFAAuxDepthStencil(57L), kCGLPFAStereo(6L), kCGLPFAOffScreen(53L), kCGLPFAWindow(80L), kCGLPFACompliant(83L), kCGLPFAPBuffer(90L), kCGLPFARemotePBuffer(91L), kCGLPFASingleRenderer(71L), kCGLPFARobust(75L), kCGLPFAMPSafe(78L), kCGLPFAMultiScreen(81L), kCGLPFAFullScreen(54L);
+
+    companion object {
+        fun fromValue(v: Long): _CGLPixelFormatAttribute = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CGLPixelFormatAttribute value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _CGLRendererProperty}
+ */
+enum class _CGLRendererProperty(val value: Long) {
+    kCGLRPOffScreen(53L), kCGLRPRendererID(70L), kCGLRPAccelerated(73L), kCGLRPBackingStore(76L), kCGLRPWindow(80L), kCGLRPCompliant(83L), kCGLRPDisplayMask(84L), kCGLRPBufferModes(100L), kCGLRPColorModes(103L), kCGLRPAccumModes(104L), kCGLRPDepthModes(105L), kCGLRPStencilModes(106L), kCGLRPMaxAuxBuffers(107L), kCGLRPMaxSampleBuffers(108L), kCGLRPMaxSamples(109L), kCGLRPSampleModes(110L), kCGLRPSampleAlpha(111L), kCGLRPGPUVertProcCapable(122L), kCGLRPGPUFragProcCapable(123L), kCGLRPRendererCount(128L), kCGLRPOnline(129L), kCGLRPAcceleratedCompute(130L), kCGLRPVideoMemoryMegabytes(131L), kCGLRPTextureMemoryMegabytes(132L), kCGLRPMajorGLVersion(133L), kCGLRPRegistryIDLow(140L), kCGLRPRegistryIDHigh(141L), kCGLRPRemovable(142L), kCGLRPRobust(75L), kCGLRPMPSafe(78L), kCGLRPMultiScreen(81L), kCGLRPFullScreen(54L), kCGLRPVideoMemory(120L), kCGLRPTextureMemory(121L);
+
+    companion object {
+        fun fromValue(v: Long): _CGLRendererProperty = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CGLRendererProperty value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _CGLContextEnable}
+ */
+enum class _CGLContextEnable(val value: Long) {
+    kCGLCESwapRectangle(201L), kCGLCESwapLimit(203L), kCGLCERasterization(221L), kCGLCEStateValidation(301L), kCGLCESurfaceBackingSize(305L), kCGLCEDisplayListOptimization(307L), kCGLCEMPEngine(313L), kCGLCECrashOnRemovedFunctions(316L);
+
+    companion object {
+        fun fromValue(v: Long): _CGLContextEnable = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CGLContextEnable value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _CGLGPURestartStatus}
+ */
+enum class _CGLGPURestartStatus(val value: Long) {
+    kCGLCPGPURestartStatusNone(0L), kCGLCPGPURestartStatusCaused(1L), kCGLCPGPURestartStatusBlacklisted(2L), kCGLCPGPURestartStatusDenied(2L);
+
+    companion object {
+        fun fromValue(v: Long): _CGLGPURestartStatus = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CGLGPURestartStatus value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _CGLContextParameter}
+ */
+enum class _CGLContextParameter(val value: Long) {
+    kCGLCPSwapRectangle(200L), kCGLCPSwapInterval(222L), kCGLCPDispatchTableSize(224L), kCGLCPClientStorage(226L), kCGLCPSurfaceTexture(228L), kCGLCPSurfaceOrder(235L), kCGLCPSurfaceOpacity(236L), kCGLCPSurfaceBackingSize(304L), kCGLCPSurfaceSurfaceVolatile(306L), kCGLCPReclaimResources(308L), kCGLCPCurrentRendererID(309L), kCGLCPGPUVertexProcessing(310L), kCGLCPGPUFragmentProcessing(311L), kCGLCPHasDrawable(314L), kCGLCPMPSwapsInFlight(315L), kCGLCPGPURestartStatus(317L), kCGLCPAbortOnGPURestartStatusBlacklisted(318L), kCGLCPAbortOnGPURestartStatusDenied(318L), kCGLCPSupportGPURestart(319L), kCGLCPSupportSeparateAddressSpace(320L), kCGLCPContextPriorityRequest(608L);
+
+    companion object {
+        fun fromValue(v: Long): _CGLContextParameter = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CGLContextParameter value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CGLCPContextPriorityRequest}
+ */
+enum class CGLCPContextPriorityRequest(val value: Long) {
+    kCGLCPContextPriorityRequestHigh(0L), kCGLCPContextPriorityRequestNormal(1L), kCGLCPContextPriorityRequestLow(2L);
+
+    companion object {
+        fun fromValue(v: Long): CGLCPContextPriorityRequest = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGLCPContextPriorityRequest value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _CGLGlobalOption}
+ */
+enum class _CGLGlobalOption(val value: Long) {
+    kCGLGOFormatCacheSize(501L), kCGLGOClearFormatCache(502L), kCGLGORetainRenderers(503L), kCGLGOUseBuildCache(506L), kCGLGOResetLibrary(504L), kCGLGOUseErrorHandler(505L);
+
+    companion object {
+        fun fromValue(v: Long): _CGLGlobalOption = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CGLGlobalOption value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _CGLOpenGLProfile}
+ */
+enum class _CGLOpenGLProfile(val value: Long) {
+    kCGLOGLPVersion_Legacy(4096L), kCGLOGLPVersion_3_2_Core(12800L), kCGLOGLPVersion_GL3_Core(12800L), kCGLOGLPVersion_GL4_Core(16640L);
+
+    companion object {
+        fun fromValue(v: Long): _CGLOpenGLProfile = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CGLOpenGLProfile value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _CGLError}
+ */
+enum class _CGLError(val value: Long) {
+    kCGLNoError(0L), kCGLBadAttribute(10000L), kCGLBadProperty(10001L), kCGLBadPixelFormat(10002L), kCGLBadRendererInfo(10003L), kCGLBadContext(10004L), kCGLBadDrawable(10005L), kCGLBadDisplay(10006L), kCGLBadState(10007L), kCGLBadValue(10008L), kCGLBadMatch(10009L), kCGLBadEnumeration(10010L), kCGLBadOffScreen(10011L), kCGLBadFullScreen(10012L), kCGLBadWindow(10013L), kCGLBadAddress(10014L), kCGLBadCodeModule(10015L), kCGLBadAlloc(10016L), kCGLBadConnection(10017L);
+
+    companion object {
+        fun fromValue(v: Long): _CGLError = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _CGLError value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/OpenGL.framework/Headers/CGLRenderers.h:13:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_OpenGL_framework_Headers_CGLRenderers_h_13_1_(val value: Long) {
+    kCGLRendererGenericID(131584L), kCGLRendererGenericFloatID(132096L), kCGLRendererAppleSWID(132608L), kCGLRendererATIRage128ID(135168L), kCGLRendererATIRadeonID(135680L), kCGLRendererATIRageProID(136192L), kCGLRendererATIRadeon8500ID(136704L), kCGLRendererATIRadeon9700ID(137216L), kCGLRendererATIRadeonX1000ID(137472L), kCGLRendererATIRadeonX2000ID(137728L), kCGLRendererATIRadeonX3000ID(137984L), kCGLRendererATIRadeonX4000ID(138240L), kCGLRendererGeForce2MXID(139264L), kCGLRendererGeForce3ID(139776L), kCGLRendererGeForceFXID(140288L), kCGLRendererGeForce8xxxID(140800L), kCGLRendererGeForceID(141056L), kCGLRendererVTBladeXP2ID(143360L), kCGLRendererIntel900ID(147456L), kCGLRendererIntelX3100ID(147968L), kCGLRendererIntelHDID(148224L), kCGLRendererIntelHD4000ID(148480L), kCGLRendererIntelHD5000ID(148736L), kCGLRendererMesa3DFXID(262144L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_OpenGL_framework_Headers_CGLRenderers_h_13_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_OpenGL_framework_Headers_CGLRenderers_h_13_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CVAttachmentMode}
+ */
+enum class CVAttachmentMode(val value: Long) {
+    kCVAttachmentMode_ShouldNotPropagate(0L), kCVAttachmentMode_ShouldPropagate(1L);
+
+    companion object {
+        fun fromValue(v: Long): CVAttachmentMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CVAttachmentMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVPixelBuffer.h:35:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_35_1_(val value: Long) {
+    kCVPixelFormatType_1Monochrome(1L), kCVPixelFormatType_2Indexed(2L), kCVPixelFormatType_4Indexed(4L), kCVPixelFormatType_8Indexed(8L), kCVPixelFormatType_1IndexedGray_WhiteIsZero(33L), kCVPixelFormatType_2IndexedGray_WhiteIsZero(34L), kCVPixelFormatType_4IndexedGray_WhiteIsZero(36L), kCVPixelFormatType_8IndexedGray_WhiteIsZero(40L), kCVPixelFormatType_16BE555(16L), kCVPixelFormatType_16LE555(1278555445L), kCVPixelFormatType_16LE5551(892679473L), kCVPixelFormatType_16BE565(1110783541L), kCVPixelFormatType_16LE565(1278555701L), kCVPixelFormatType_24RGB(24L), kCVPixelFormatType_24BGR(842285639L), kCVPixelFormatType_32ARGB(32L), kCVPixelFormatType_32BGRA(1111970369L), kCVPixelFormatType_32ABGR(1094862674L), kCVPixelFormatType_32RGBA(1380401729L), kCVPixelFormatType_64ARGB(1647719521L), kCVPixelFormatType_64RGBALE(1815491698L), kCVPixelFormatType_48RGB(1647589490L), kCVPixelFormatType_32AlphaGray(1647522401L), kCVPixelFormatType_16Gray(1647392359L), kCVPixelFormatType_30RGB(1378955371L), kCVPixelFormatType_30RGB_r210(1915892016L), kCVPixelFormatType_422YpCbCr8(846624121L), kCVPixelFormatType_4444YpCbCrA8(1983131704L), kCVPixelFormatType_4444YpCbCrA8R(1916022840L), kCVPixelFormatType_4444AYpCbCr8(2033463352L), kCVPixelFormatType_4444AYpCbCr16(2033463606L), kCVPixelFormatType_4444AYpCbCrFloat(1916036716L), kCVPixelFormatType_444YpCbCr8(1983066168L), kCVPixelFormatType_422YpCbCr16(1983000886L), kCVPixelFormatType_422YpCbCr10(1983000880L), kCVPixelFormatType_444YpCbCr10(1983131952L), kCVPixelFormatType_420YpCbCr8Planar(2033463856L), kCVPixelFormatType_420YpCbCr8PlanarFullRange(1714696752L), kCVPixelFormatType_422YpCbCr_4A_8BiPlanar(1630697081L), kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange(875704438L), kCVPixelFormatType_420YpCbCr8BiPlanarFullRange(875704422L), kCVPixelFormatType_422YpCbCr8BiPlanarVideoRange(875704950L), kCVPixelFormatType_422YpCbCr8BiPlanarFullRange(875704934L), kCVPixelFormatType_444YpCbCr8BiPlanarVideoRange(875836534L), kCVPixelFormatType_444YpCbCr8BiPlanarFullRange(875836518L), kCVPixelFormatType_422YpCbCr8_yuvs(2037741171L), kCVPixelFormatType_422YpCbCr8FullRange(2037741158L), kCVPixelFormatType_OneComponent8(1278226488L), kCVPixelFormatType_TwoComponent8(843264056L), kCVPixelFormatType_30RGBLEPackedWideGamut(1999843442L), kCVPixelFormatType_ARGB2101010LEPacked(1815162994L), kCVPixelFormatType_40ARGBLEWideGamut(1999908961L), kCVPixelFormatType_40ARGBLEWideGamutPremultiplied(1999908973L), kCVPixelFormatType_OneComponent10(1278226736L), kCVPixelFormatType_OneComponent12(1278226738L), kCVPixelFormatType_OneComponent16(1278226742L), kCVPixelFormatType_TwoComponent16(843264310L), kCVPixelFormatType_OneComponent16Half(1278226536L), kCVPixelFormatType_OneComponent32Float(1278226534L), kCVPixelFormatType_TwoComponent16Half(843264104L), kCVPixelFormatType_TwoComponent32Float(843264102L), kCVPixelFormatType_64RGBAHalf(1380411457L), kCVPixelFormatType_128RGBAFloat(1380410945L), kCVPixelFormatType_14Bayer_GRBG(1735549492L), kCVPixelFormatType_14Bayer_RGGB(1919379252L), kCVPixelFormatType_14Bayer_BGGR(1650943796L), kCVPixelFormatType_14Bayer_GBRG(1734505012L), kCVPixelFormatType_DisparityFloat16(1751411059L), kCVPixelFormatType_DisparityFloat32(1717856627L), kCVPixelFormatType_DepthFloat16(1751410032L), kCVPixelFormatType_DepthFloat32(1717855600L), kCVPixelFormatType_420YpCbCr10BiPlanarVideoRange(2016686640L), kCVPixelFormatType_422YpCbCr10BiPlanarVideoRange(2016686642L), kCVPixelFormatType_444YpCbCr10BiPlanarVideoRange(2016687156L), kCVPixelFormatType_420YpCbCr10BiPlanarFullRange(2019963440L), kCVPixelFormatType_422YpCbCr10BiPlanarFullRange(2019963442L), kCVPixelFormatType_444YpCbCr10BiPlanarFullRange(2019963956L), kCVPixelFormatType_420YpCbCr8VideoRange_8A_TriPlanar(1982882104L), kCVPixelFormatType_16VersatileBayer(1651519798L), kCVPixelFormatType_96VersatileBayerPacked12(1651798066L), kCVPixelFormatType_64RGBA_DownscaledProResRAW(1651521076L), kCVPixelFormatType_422YpCbCr16BiPlanarVideoRange(1937125938L), kCVPixelFormatType_444YpCbCr16BiPlanarVideoRange(1937126452L), kCVPixelFormatType_444YpCbCr16VideoRange_16A_TriPlanar(1932812659L), kCVPixelFormatType_30RGBLE_8A_BiPlanar(1647534392L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_35_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_35_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVPixelBuffer.h:146:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_146_1_(val value: Long) {
+    kCVPixelFormatType_Lossless_32BGRA(641877825L), kCVPixelFormatType_Lossless_64RGBAHalf(642934849L), kCVPixelFormatType_Lossless_420YpCbCr8BiPlanarVideoRange(641234480L), kCVPixelFormatType_Lossless_420YpCbCr8BiPlanarFullRange(641230384L), kCVPixelFormatType_Lossless_420YpCbCr10PackedBiPlanarVideoRange(645428784L), kCVPixelFormatType_Lossless_422YpCbCr10PackedBiPlanarVideoRange(645428786L), kCVPixelFormatType_Lossless_420YpCbCr10PackedBiPlanarFullRange(645424688L), kCVPixelFormatType_Lossless_30RGBLE_8A_BiPlanar(643969848L), kCVPixelFormatType_Lossless_30RGBLEPackedWideGamut(645346162L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_146_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_146_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVPixelBuffer.h:179:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_179_1_(val value: Long) {
+    kCVPixelFormatType_Lossy_32BGRA(759318337L), kCVPixelFormatType_Lossy_420YpCbCr8BiPlanarVideoRange(758674992L), kCVPixelFormatType_Lossy_420YpCbCr8BiPlanarFullRange(758670896L), kCVPixelFormatType_Lossy_420YpCbCr10PackedBiPlanarVideoRange(762869296L), kCVPixelFormatType_Lossy_422YpCbCr10PackedBiPlanarVideoRange(762869298L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_179_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_179_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVPixelBuffer.h:258:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_258_1_(val value: Long) {
+    kCVVersatileBayer_BayerPattern_RGGB(0L), kCVVersatileBayer_BayerPattern_GRBG(1L), kCVVersatileBayer_BayerPattern_GBRG(2L), kCVVersatileBayer_BayerPattern_BGGR(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_258_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreVideo_framework_Headers_CVPixelBuffer_h_258_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOSurfacePurgeabilityState}
+ */
+enum class IOSurfacePurgeabilityState(val value: Long) {
+    kIOSurfacePurgeableNonVolatile(0L), kIOSurfacePurgeableVolatile(1L), kIOSurfacePurgeableEmpty(2L), kIOSurfacePurgeableKeepCurrent(3L);
+
+    companion object {
+        fun fromValue(v: Long): IOSurfacePurgeabilityState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOSurfacePurgeabilityState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOSurface.framework/Headers/IOSurfaceTypes.h:43:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOSurface_framework_Headers_IOSurfaceTypes_h_43_1_(val value: Long) {
+    kIOSurfaceDefaultCache(0L), kIOSurfaceInhibitCache(1L), kIOSurfaceWriteThruCache(2L), kIOSurfaceCopybackCache(3L), kIOSurfaceWriteCombineCache(4L), kIOSurfaceCopybackInnerCache(5L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOSurface_framework_Headers_IOSurfaceTypes_h_43_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOSurface_framework_Headers_IOSurfaceTypes_h_43_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOSurface.framework/Headers/IOSurfaceTypes.h:53:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOSurface_framework_Headers_IOSurfaceTypes_h_53_1_(val value: Long) {
+    kIOSurfaceMapCacheShift(8L), kIOSurfaceMapDefaultCache(0L), kIOSurfaceMapInhibitCache(256L), kIOSurfaceMapWriteThruCache(512L), kIOSurfaceMapCopybackCache(768L), kIOSurfaceMapWriteCombineCache(1024L), kIOSurfaceMapCopybackInnerCache(1280L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOSurface_framework_Headers_IOSurfaceTypes_h_53_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOSurface_framework_Headers_IOSurfaceTypes_h_53_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOSurfaceComponentName}
+ */
+enum class IOSurfaceComponentName(val value: Long) {
+    kIOSurfaceComponentNameUnknown(0L), kIOSurfaceComponentNameAlpha(1L), kIOSurfaceComponentNameRed(2L), kIOSurfaceComponentNameGreen(3L), kIOSurfaceComponentNameBlue(4L), kIOSurfaceComponentNameLuma(5L), kIOSurfaceComponentNameChromaRed(6L), kIOSurfaceComponentNameChromaBlue(7L);
+
+    companion object {
+        fun fromValue(v: Long): IOSurfaceComponentName = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOSurfaceComponentName value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOSurfaceComponentType}
+ */
+enum class IOSurfaceComponentType(val value: Long) {
+    kIOSurfaceComponentTypeUnknown(0L), kIOSurfaceComponentTypeUnsignedInteger(1L), kIOSurfaceComponentTypeSignedInteger(2L), kIOSurfaceComponentTypeFloat(3L), kIOSurfaceComponentTypeSignedNormalized(4L);
+
+    companion object {
+        fun fromValue(v: Long): IOSurfaceComponentType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOSurfaceComponentType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOSurfaceComponentRange}
+ */
+enum class IOSurfaceComponentRange(val value: Long) {
+    kIOSurfaceComponentRangeUnknown(0L), kIOSurfaceComponentRangeFullRange(1L), kIOSurfaceComponentRangeVideoRange(2L), kIOSurfaceComponentRangeWideRange(3L);
+
+    companion object {
+        fun fromValue(v: Long): IOSurfaceComponentRange = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOSurfaceComponentRange value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOSurfaceSubsampling}
+ */
+enum class IOSurfaceSubsampling(val value: Long) {
+    kIOSurfaceSubsamplingUnknown(0L), kIOSurfaceSubsamplingNone(1L), kIOSurfaceSubsampling422(2L), kIOSurfaceSubsampling420(3L), kIOSurfaceSubsampling411(4L);
+
+    companion object {
+        fun fromValue(v: Long): IOSurfaceSubsampling = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOSurfaceSubsampling value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOSurfaceMemoryLedgerTags}
+ */
+enum class IOSurfaceMemoryLedgerTags(val value: Long) {
+    kIOSurfaceMemoryLedgerTagDefault(1L), kIOSurfaceMemoryLedgerTagNetwork(2L), kIOSurfaceMemoryLedgerTagMedia(3L), kIOSurfaceMemoryLedgerTagGraphics(4L), kIOSurfaceMemoryLedgerTagNeural(5L);
+
+    companion object {
+        fun fromValue(v: Long): IOSurfaceMemoryLedgerTags = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOSurfaceMemoryLedgerTags value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum MTLPixelFormat}
+ */
+enum class MTLPixelFormat(val value: Long) {
+    MTLPixelFormatInvalid(0L), MTLPixelFormatA8Unorm(1L), MTLPixelFormatR8Unorm(10L), MTLPixelFormatR8Unorm_sRGB(11L), MTLPixelFormatR8Snorm(12L), MTLPixelFormatR8Uint(13L), MTLPixelFormatR8Sint(14L), MTLPixelFormatR16Unorm(20L), MTLPixelFormatR16Snorm(22L), MTLPixelFormatR16Uint(23L), MTLPixelFormatR16Sint(24L), MTLPixelFormatR16Float(25L), MTLPixelFormatRG8Unorm(30L), MTLPixelFormatRG8Unorm_sRGB(31L), MTLPixelFormatRG8Snorm(32L), MTLPixelFormatRG8Uint(33L), MTLPixelFormatRG8Sint(34L), MTLPixelFormatB5G6R5Unorm(40L), MTLPixelFormatA1BGR5Unorm(41L), MTLPixelFormatABGR4Unorm(42L), MTLPixelFormatBGR5A1Unorm(43L), MTLPixelFormatR32Uint(53L), MTLPixelFormatR32Sint(54L), MTLPixelFormatR32Float(55L), MTLPixelFormatRG16Unorm(60L), MTLPixelFormatRG16Snorm(62L), MTLPixelFormatRG16Uint(63L), MTLPixelFormatRG16Sint(64L), MTLPixelFormatRG16Float(65L), MTLPixelFormatRGBA8Unorm(70L), MTLPixelFormatRGBA8Unorm_sRGB(71L), MTLPixelFormatRGBA8Snorm(72L), MTLPixelFormatRGBA8Uint(73L), MTLPixelFormatRGBA8Sint(74L), MTLPixelFormatBGRA8Unorm(80L), MTLPixelFormatBGRA8Unorm_sRGB(81L), MTLPixelFormatRGB10A2Unorm(90L), MTLPixelFormatRGB10A2Uint(91L), MTLPixelFormatRG11B10Float(92L), MTLPixelFormatRGB9E5Float(93L), MTLPixelFormatBGR10A2Unorm(94L), MTLPixelFormatBGR10_XR(554L), MTLPixelFormatBGR10_XR_sRGB(555L), MTLPixelFormatRG32Uint(103L), MTLPixelFormatRG32Sint(104L), MTLPixelFormatRG32Float(105L), MTLPixelFormatRGBA16Unorm(110L), MTLPixelFormatRGBA16Snorm(112L), MTLPixelFormatRGBA16Uint(113L), MTLPixelFormatRGBA16Sint(114L), MTLPixelFormatRGBA16Float(115L), MTLPixelFormatBGRA10_XR(552L), MTLPixelFormatBGRA10_XR_sRGB(553L), MTLPixelFormatRGBA32Uint(123L), MTLPixelFormatRGBA32Sint(124L), MTLPixelFormatRGBA32Float(125L), MTLPixelFormatBC1_RGBA(130L), MTLPixelFormatBC1_RGBA_sRGB(131L), MTLPixelFormatBC2_RGBA(132L), MTLPixelFormatBC2_RGBA_sRGB(133L), MTLPixelFormatBC3_RGBA(134L), MTLPixelFormatBC3_RGBA_sRGB(135L), MTLPixelFormatBC4_RUnorm(140L), MTLPixelFormatBC4_RSnorm(141L), MTLPixelFormatBC5_RGUnorm(142L), MTLPixelFormatBC5_RGSnorm(143L), MTLPixelFormatBC6H_RGBFloat(150L), MTLPixelFormatBC6H_RGBUfloat(151L), MTLPixelFormatBC7_RGBAUnorm(152L), MTLPixelFormatBC7_RGBAUnorm_sRGB(153L), MTLPixelFormatPVRTC_RGB_2BPP(160L), MTLPixelFormatPVRTC_RGB_2BPP_sRGB(161L), MTLPixelFormatPVRTC_RGB_4BPP(162L), MTLPixelFormatPVRTC_RGB_4BPP_sRGB(163L), MTLPixelFormatPVRTC_RGBA_2BPP(164L), MTLPixelFormatPVRTC_RGBA_2BPP_sRGB(165L), MTLPixelFormatPVRTC_RGBA_4BPP(166L), MTLPixelFormatPVRTC_RGBA_4BPP_sRGB(167L), MTLPixelFormatEAC_R11Unorm(170L), MTLPixelFormatEAC_R11Snorm(172L), MTLPixelFormatEAC_RG11Unorm(174L), MTLPixelFormatEAC_RG11Snorm(176L), MTLPixelFormatEAC_RGBA8(178L), MTLPixelFormatEAC_RGBA8_sRGB(179L), MTLPixelFormatETC2_RGB8(180L), MTLPixelFormatETC2_RGB8_sRGB(181L), MTLPixelFormatETC2_RGB8A1(182L), MTLPixelFormatETC2_RGB8A1_sRGB(183L), MTLPixelFormatASTC_4x4_sRGB(186L), MTLPixelFormatASTC_5x4_sRGB(187L), MTLPixelFormatASTC_5x5_sRGB(188L), MTLPixelFormatASTC_6x5_sRGB(189L), MTLPixelFormatASTC_6x6_sRGB(190L), MTLPixelFormatASTC_8x5_sRGB(192L), MTLPixelFormatASTC_8x6_sRGB(193L), MTLPixelFormatASTC_8x8_sRGB(194L), MTLPixelFormatASTC_10x5_sRGB(195L), MTLPixelFormatASTC_10x6_sRGB(196L), MTLPixelFormatASTC_10x8_sRGB(197L), MTLPixelFormatASTC_10x10_sRGB(198L), MTLPixelFormatASTC_12x10_sRGB(199L), MTLPixelFormatASTC_12x12_sRGB(200L), MTLPixelFormatASTC_4x4_LDR(204L), MTLPixelFormatASTC_5x4_LDR(205L), MTLPixelFormatASTC_5x5_LDR(206L), MTLPixelFormatASTC_6x5_LDR(207L), MTLPixelFormatASTC_6x6_LDR(208L), MTLPixelFormatASTC_8x5_LDR(210L), MTLPixelFormatASTC_8x6_LDR(211L), MTLPixelFormatASTC_8x8_LDR(212L), MTLPixelFormatASTC_10x5_LDR(213L), MTLPixelFormatASTC_10x6_LDR(214L), MTLPixelFormatASTC_10x8_LDR(215L), MTLPixelFormatASTC_10x10_LDR(216L), MTLPixelFormatASTC_12x10_LDR(217L), MTLPixelFormatASTC_12x12_LDR(218L), MTLPixelFormatASTC_4x4_HDR(222L), MTLPixelFormatASTC_5x4_HDR(223L), MTLPixelFormatASTC_5x5_HDR(224L), MTLPixelFormatASTC_6x5_HDR(225L), MTLPixelFormatASTC_6x6_HDR(226L), MTLPixelFormatASTC_8x5_HDR(228L), MTLPixelFormatASTC_8x6_HDR(229L), MTLPixelFormatASTC_8x8_HDR(230L), MTLPixelFormatASTC_10x5_HDR(231L), MTLPixelFormatASTC_10x6_HDR(232L), MTLPixelFormatASTC_10x8_HDR(233L), MTLPixelFormatASTC_10x10_HDR(234L), MTLPixelFormatASTC_12x10_HDR(235L), MTLPixelFormatASTC_12x12_HDR(236L), MTLPixelFormatGBGR422(240L), MTLPixelFormatBGRG422(241L), MTLPixelFormatDepth16Unorm(250L), MTLPixelFormatDepth32Float(252L), MTLPixelFormatStencil8(253L), MTLPixelFormatDepth24Unorm_Stencil8(255L), MTLPixelFormatDepth32Float_Stencil8(260L), MTLPixelFormatX32_Stencil8(261L), MTLPixelFormatX24_Stencil8(262L), MTLPixelFormatUnspecialized(263L);
+
+    companion object {
+        fun fromValue(v: Long): MTLPixelFormat = entries.firstOrNull { it.value == v }
+            ?: error("Unknown MTLPixelFormat value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSColorPanelMode}
+ */
+enum class NSColorPanelMode(val value: Long) {
+    NSColorPanelModeNone(-1L), NSColorPanelModeGray(0L), NSColorPanelModeRGB(1L), NSColorPanelModeCMYK(2L), NSColorPanelModeHSB(3L), NSColorPanelModeCustomPalette(4L), NSColorPanelModeColorList(5L), NSColorPanelModeWheel(6L), NSColorPanelModeCrayon(7L);
+
+    companion object {
+        fun fromValue(v: Long): NSColorPanelMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSColorPanelMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSColorWellStyle}
+ */
+enum class NSColorWellStyle(val value: Long) {
+    NSColorWellStyleDefault(0L), NSColorWellStyleMinimal(1L), NSColorWellStyleExpanded(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSColorWellStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSColorWellStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCursorFrameResizePosition}
+ */
+enum class NSCursorFrameResizePosition(val value: Long) {
+    NSCursorFrameResizePositionTop(1L), NSCursorFrameResizePositionLeft(2L), NSCursorFrameResizePositionBottom(4L), NSCursorFrameResizePositionRight(8L), NSCursorFrameResizePositionTopLeft(3L), NSCursorFrameResizePositionTopRight(9L), NSCursorFrameResizePositionBottomLeft(6L), NSCursorFrameResizePositionBottomRight(12L);
+
+    companion object {
+        fun fromValue(v: Long): NSCursorFrameResizePosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCursorFrameResizePosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCursorFrameResizeDirections}
+ */
+enum class NSCursorFrameResizeDirections(val value: Long) {
+    NSCursorFrameResizeDirectionsInward(1L), NSCursorFrameResizeDirectionsOutward(2L), NSCursorFrameResizeDirectionsAll(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSCursorFrameResizeDirections = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCursorFrameResizeDirections value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGestureRecognizerState}
+ */
+enum class NSGestureRecognizerState(val value: Long) {
+    NSGestureRecognizerStatePossible(0L), NSGestureRecognizerStateBegan(1L), NSGestureRecognizerStateChanged(2L), NSGestureRecognizerStateEnded(3L), NSGestureRecognizerStateCancelled(4L), NSGestureRecognizerStateFailed(5L), NSGestureRecognizerStateRecognized(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSGestureRecognizerState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGestureRecognizerState value: $v")
     }
 }
 
@@ -22813,54 +24085,6 @@ enum class NSLayoutAttribute(val value: Long) {
     companion object {
         fun fromValue(v: Long): NSLayoutAttribute = entries.firstOrNull { it.value == v }
             ?: error("Unknown NSLayoutAttribute value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSFontDescriptorSymbolicTraits}
- */
-enum class NSFontDescriptorSymbolicTraits(val value: Long) {
-    NSFontDescriptorTraitItalic(1L), NSFontDescriptorTraitBold(2L), NSFontDescriptorTraitExpanded(32L), NSFontDescriptorTraitCondensed(64L), NSFontDescriptorTraitMonoSpace(1024L), NSFontDescriptorTraitVertical(2048L), NSFontDescriptorTraitUIOptimized(4096L), NSFontDescriptorTraitTightLeading(32768L), NSFontDescriptorTraitLooseLeading(65536L), NSFontDescriptorTraitEmphasized(2L), NSFontDescriptorClassMask(-268435456L), NSFontDescriptorClassUnknown(0L), NSFontDescriptorClassOldStyleSerifs(268435456L), NSFontDescriptorClassTransitionalSerifs(536870912L), NSFontDescriptorClassModernSerifs(805306368L), NSFontDescriptorClassClarendonSerifs(1073741824L), NSFontDescriptorClassSlabSerifs(1342177280L), NSFontDescriptorClassFreeformSerifs(1879048192L), NSFontDescriptorClassSansSerif(-2147483648L), NSFontDescriptorClassOrnamentals(-1879048192L), NSFontDescriptorClassScripts(-1610612736L), NSFontDescriptorClassSymbolic(-1073741824L);
-
-    companion object {
-        fun fromValue(v: Long): NSFontDescriptorSymbolicTraits = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFontDescriptorSymbolicTraits value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontDescriptor.h:206:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_206_1_(val value: Long) {
-    NSFontUnknownClass(0L), NSFontOldStyleSerifsClass(268435456L), NSFontTransitionalSerifsClass(536870912L), NSFontModernSerifsClass(805306368L), NSFontClarendonSerifsClass(1073741824L), NSFontSlabSerifsClass(1342177280L), NSFontFreeformSerifsClass(1879048192L), NSFontSansSerifClass(-2147483648L), NSFontOrnamentalsClass(-1879048192L), NSFontScriptsClass(-1610612736L), NSFontSymbolicClass(-1073741824L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_206_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_206_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontDescriptor.h:220:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_220_1_(val value: Long) {
-    NSFontFamilyClassMask(-268435456L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_220_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_220_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSFontDescriptor.h:224:1)}
- */
-enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_224_1_(val value: Long) {
-    NSFontItalicTrait(1L), NSFontBoldTrait(2L), NSFontExpandedTrait(32L), NSFontCondensedTrait(64L), NSFontMonoSpaceTrait(1024L), NSFontVerticalTrait(2048L), NSFontUIOptimizedTrait(4096L);
-
-    companion object {
-        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_224_1_ = entries.firstOrNull { it.value == v }
-            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSFontDescriptor_h_224_1_ value: $v")
     }
 }
 
@@ -22937,98 +24161,518 @@ enum class NSImageSymbolColorRenderingMode(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSHorizontalDirections}
+ * NS_ENUM: {@snippet lang=c : enum NSImageAlignment}
  */
-enum class NSHorizontalDirections(val value: Long) {
-    NSHorizontalDirectionsLeft(1L), NSHorizontalDirectionsRight(2L), NSHorizontalDirectionsAll(3L);
+enum class NSImageAlignment(val value: Long) {
+    NSImageAlignCenter(0L), NSImageAlignTop(1L), NSImageAlignTopLeft(2L), NSImageAlignTopRight(3L), NSImageAlignLeft(4L), NSImageAlignBottom(5L), NSImageAlignBottomLeft(6L), NSImageAlignBottomRight(7L), NSImageAlignRight(8L);
 
     companion object {
-        fun fromValue(v: Long): NSHorizontalDirections = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSHorizontalDirections value: $v")
+        fun fromValue(v: Long): NSImageAlignment = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageAlignment value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSVerticalDirections}
+ * NS_ENUM: {@snippet lang=c : enum NSImageFrameStyle}
  */
-enum class NSVerticalDirections(val value: Long) {
-    NSVerticalDirectionsUp(1L), NSVerticalDirectionsDown(2L), NSVerticalDirectionsAll(3L);
+enum class NSImageFrameStyle(val value: Long) {
+    NSImageFrameNone(0L), NSImageFramePhoto(1L), NSImageFrameGrayBezel(2L), NSImageFrameGroove(3L), NSImageFrameButton(4L);
 
     companion object {
-        fun fromValue(v: Long): NSVerticalDirections = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSVerticalDirections value: $v")
+        fun fromValue(v: Long): NSImageFrameStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageFrameStyle value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSCursorFrameResizePosition}
+ * NS_ENUM: {@snippet lang=c : enum NSImageDynamicRange}
  */
-enum class NSCursorFrameResizePosition(val value: Long) {
-    NSCursorFrameResizePositionTop(1L), NSCursorFrameResizePositionLeft(2L), NSCursorFrameResizePositionBottom(4L), NSCursorFrameResizePositionRight(8L), NSCursorFrameResizePositionTopLeft(3L), NSCursorFrameResizePositionTopRight(9L), NSCursorFrameResizePositionBottomLeft(6L), NSCursorFrameResizePositionBottomRight(12L);
+enum class NSImageDynamicRange(val value: Long) {
+    NSImageDynamicRangeUnspecified(-1L), NSImageDynamicRangeStandard(0L), NSImageDynamicRangeConstrainedHigh(1L), NSImageDynamicRangeHigh(2L);
 
     companion object {
-        fun fromValue(v: Long): NSCursorFrameResizePosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCursorFrameResizePosition value: $v")
+        fun fromValue(v: Long): NSImageDynamicRange = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSImageDynamicRange value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSCursorFrameResizeDirections}
+ * NS_ENUM: {@snippet lang=c : enum NSScrubberMode}
  */
-enum class NSCursorFrameResizeDirections(val value: Long) {
-    NSCursorFrameResizeDirectionsInward(1L), NSCursorFrameResizeDirectionsOutward(2L), NSCursorFrameResizeDirectionsAll(3L);
+enum class NSScrubberMode(val value: Long) {
+    NSScrubberModeFixed(0L), NSScrubberModeFree(1L);
 
     companion object {
-        fun fromValue(v: Long): NSCursorFrameResizeDirections = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCursorFrameResizeDirections value: $v")
+        fun fromValue(v: Long): NSScrubberMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSScrubberMode value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSButtonType}
+ * NS_ENUM: {@snippet lang=c : enum NSScrubberAlignment}
  */
-enum class NSButtonType(val value: Long) {
-    NSButtonTypeMomentaryLight(0L), NSButtonTypePushOnPushOff(1L), NSButtonTypeToggle(2L), NSButtonTypeSwitch(3L), NSButtonTypeRadio(4L), NSButtonTypeMomentaryChange(5L), NSButtonTypeOnOff(6L), NSButtonTypeMomentaryPushIn(7L), NSButtonTypeAccelerator(8L), NSButtonTypeMultiLevelAccelerator(9L);
+enum class NSScrubberAlignment(val value: Long) {
+    NSScrubberAlignmentNone(0L), NSScrubberAlignmentLeading(1L), NSScrubberAlignmentTrailing(2L), NSScrubberAlignmentCenter(3L);
 
     companion object {
-        fun fromValue(v: Long): NSButtonType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSButtonType value: $v")
+        fun fromValue(v: Long): NSScrubberAlignment = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSScrubberAlignment value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSBezelStyle}
+ * NS_ENUM: {@snippet lang=c : enum os_unfair_lock_flags_t}
  */
-enum class NSBezelStyle(val value: Long) {
-    NSBezelStyleAutomatic(0L), NSBezelStylePush(1L), NSBezelStyleFlexiblePush(2L), NSBezelStyleDisclosure(5L), NSBezelStyleCircular(7L), NSBezelStyleHelpButton(9L), NSBezelStyleSmallSquare(10L), NSBezelStyleToolbar(11L), NSBezelStyleAccessoryBarAction(12L), NSBezelStyleAccessoryBar(13L), NSBezelStylePushDisclosure(14L), NSBezelStyleBadge(15L), NSBezelStyleGlass(16L), NSBezelStyleShadowlessSquare(6L), NSBezelStyleTexturedSquare(8L), NSBezelStyleRounded(1L), NSBezelStyleRegularSquare(2L), NSBezelStyleTexturedRounded(11L), NSBezelStyleRoundRect(12L), NSBezelStyleRecessed(13L), NSBezelStyleRoundedDisclosure(14L), NSBezelStyleInline(15L);
+enum class os_unfair_lock_flags_t(val value: Long) {
+    OS_UNFAIR_LOCK_FLAG_NONE(0L), OS_UNFAIR_LOCK_FLAG_ADAPTIVE_SPIN(262144L);
 
     companion object {
-        fun fromValue(v: Long): NSBezelStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBezelStyle value: $v")
+        fun fromValue(v: Long): os_unfair_lock_flags_t = entries.firstOrNull { it.value == v }
+            ?: error("Unknown os_unfair_lock_flags_t value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSGradientType}
+ * NS_ENUM: {@snippet lang=c : enum NSSharingContentScope}
  */
-enum class NSGradientType(val value: Long) {
-    NSGradientNone(0L), NSGradientConcaveWeak(1L), NSGradientConcaveStrong(2L), NSGradientConvexWeak(3L), NSGradientConvexStrong(4L);
+enum class NSSharingContentScope(val value: Long) {
+    NSSharingContentScopeItem(0L), NSSharingContentScopePartial(1L), NSSharingContentScopeFull(2L);
 
     companion object {
-        fun fromValue(v: Long): NSGradientType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGradientType value: $v")
+        fun fromValue(v: Long): NSSharingContentScope = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSharingContentScope value: $v")
     }
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSTintProminence}
+ * NS_ENUM: {@snippet lang=c : enum NSSpeechBoundary}
  */
-enum class NSTintProminence(val value: Long) {
-    NSTintProminenceAutomatic(0L), NSTintProminenceNone(1L), NSTintProminencePrimary(2L), NSTintProminenceSecondary(3L);
+enum class NSSpeechBoundary(val value: Long) {
+    NSSpeechImmediateBoundary(0L), NSSpeechWordBoundary(1L), NSSpeechSentenceBoundary(2L);
 
     companion object {
-        fun fromValue(v: Long): NSTintProminence = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTintProminence value: $v")
+        fun fromValue(v: Long): NSSpeechBoundary = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSpeechBoundary value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCorrectionResponse}
+ */
+enum class NSCorrectionResponse(val value: Long) {
+    NSCorrectionResponseNone(0L), NSCorrectionResponseAccepted(1L), NSCorrectionResponseRejected(2L), NSCorrectionResponseIgnored(3L), NSCorrectionResponseEdited(4L), NSCorrectionResponseReverted(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSCorrectionResponse = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCorrectionResponse value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCorrectionIndicatorType}
+ */
+enum class NSCorrectionIndicatorType(val value: Long) {
+    NSCorrectionIndicatorTypeDefault(0L), NSCorrectionIndicatorTypeReversion(1L), NSCorrectionIndicatorTypeGuesses(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSCorrectionIndicatorType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCorrectionIndicatorType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSplitViewDividerStyle}
+ */
+enum class NSSplitViewDividerStyle(val value: Long) {
+    NSSplitViewDividerStyleThick(1L), NSSplitViewDividerStyleThin(2L), NSSplitViewDividerStylePaneSplitter(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSSplitViewDividerStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSplitViewDividerStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSplitViewItemBehavior}
+ */
+enum class NSSplitViewItemBehavior(val value: Long) {
+    NSSplitViewItemBehaviorDefault(0L), NSSplitViewItemBehaviorSidebar(1L), NSSplitViewItemBehaviorContentList(2L), NSSplitViewItemBehaviorInspector(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSSplitViewItemBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSplitViewItemBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSplitViewItemCollapseBehavior}
+ */
+enum class NSSplitViewItemCollapseBehavior(val value: Long) {
+    NSSplitViewItemCollapseBehaviorDefault(0L), NSSplitViewItemCollapseBehaviorPreferResizingSplitViewWithFixedSiblings(1L), NSSplitViewItemCollapseBehaviorPreferResizingSiblingsWithFixedSplitView(2L), NSSplitViewItemCollapseBehaviorUseConstraints(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSSplitViewItemCollapseBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSplitViewItemCollapseBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSSavePanel.h:292:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSSavePanel_h_292_1_(val value: Long) {
+    NSFileHandlingPanelCancelButton(0L), NSFileHandlingPanelOKButton(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSSavePanel_h_292_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSSavePanel_h_292_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPageLayoutResult}
+ */
+enum class NSPageLayoutResult(val value: Long) {
+    NSPageLayoutResultCancelled(0L), NSPageLayoutResultChanged(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSPageLayoutResult = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPageLayoutResult value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPopUpArrowPosition}
+ */
+enum class NSPopUpArrowPosition(val value: Long) {
+    NSPopUpNoArrow(0L), NSPopUpArrowAtCenter(1L), NSPopUpArrowAtBottom(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSPopUpArrowPosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPopUpArrowPosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPrintingPageOrder}
+ */
+enum class NSPrintingPageOrder(val value: Long) {
+    NSDescendingPageOrder(-1L), NSSpecialPageOrder(0L), NSAscendingPageOrder(1L), NSUnknownPageOrder(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSPrintingPageOrder = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPrintingPageOrder value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPrintRenderingQuality}
+ */
+enum class NSPrintRenderingQuality(val value: Long) {
+    NSPrintRenderingQualityBest(0L), NSPrintRenderingQualityResponsive(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSPrintRenderingQuality = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPrintRenderingQuality value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPrintPanelResult}
+ */
+enum class NSPrintPanelResult(val value: Long) {
+    NSPrintPanelResultCancelled(0L), NSPrintPanelResultPrinted(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSPrintPanelResult = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPrintPanelResult value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSMediaLibrary}
+ */
+enum class NSMediaLibrary(val value: Long) {
+    NSMediaLibraryAudio(1L), NSMediaLibraryImage(2L), NSMediaLibraryMovie(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSMediaLibrary = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSMediaLibrary value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSUsableScrollerParts}
+ */
+enum class NSUsableScrollerParts(val value: Long) {
+    NSNoScrollerParts(0L), NSOnlyScrollerArrows(1L), NSAllScrollerParts(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSUsableScrollerParts = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSUsableScrollerParts value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSScrollerPart}
+ */
+enum class NSScrollerPart(val value: Long) {
+    NSScrollerNoPart(0L), NSScrollerDecrementPage(1L), NSScrollerKnob(2L), NSScrollerIncrementPage(3L), NSScrollerDecrementLine(4L), NSScrollerIncrementLine(5L), NSScrollerKnobSlot(6L);
+
+    companion object {
+        fun fromValue(v: Long): NSScrollerPart = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSScrollerPart value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSScrollerStyle}
+ */
+enum class NSScrollerStyle(val value: Long) {
+    NSScrollerStyleLegacy(0L), NSScrollerStyleOverlay(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSScrollerStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSScrollerStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSScrollerKnobStyle}
+ */
+enum class NSScrollerKnobStyle(val value: Long) {
+    NSScrollerKnobStyleDefault(0L), NSScrollerKnobStyleDark(1L), NSScrollerKnobStyleLight(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSScrollerKnobStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSScrollerKnobStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSScrollArrowPosition}
+ */
+enum class NSScrollArrowPosition(val value: Long) {
+    NSScrollerArrowsMaxEnd(0L), NSScrollerArrowsMinEnd(1L), NSScrollerArrowsDefaultSetting(0L), NSScrollerArrowsNone(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSScrollArrowPosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSScrollArrowPosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSScrollerArrow}
+ */
+enum class NSScrollerArrow(val value: Long) {
+    NSScrollerIncrementArrow(0L), NSScrollerDecrementArrow(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSScrollerArrow = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSScrollerArrow value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextFinderAction}
+ */
+enum class NSTextFinderAction(val value: Long) {
+    NSTextFinderActionShowFindInterface(1L), NSTextFinderActionNextMatch(2L), NSTextFinderActionPreviousMatch(3L), NSTextFinderActionReplaceAll(4L), NSTextFinderActionReplace(5L), NSTextFinderActionReplaceAndFind(6L), NSTextFinderActionSetSearchString(7L), NSTextFinderActionReplaceAllInSelection(8L), NSTextFinderActionSelectAll(9L), NSTextFinderActionSelectAllInSelection(10L), NSTextFinderActionHideFindInterface(11L), NSTextFinderActionShowReplaceInterface(12L), NSTextFinderActionHideReplaceInterface(13L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextFinderAction = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextFinderAction value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextFinderMatchingType}
+ */
+enum class NSTextFinderMatchingType(val value: Long) {
+    NSTextFinderMatchingTypeContains(0L), NSTextFinderMatchingTypeStartsWith(1L), NSTextFinderMatchingTypeFullWord(2L), NSTextFinderMatchingTypeEndsWith(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextFinderMatchingType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextFinderMatchingType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSScrollElasticity}
+ */
+enum class NSScrollElasticity(val value: Long) {
+    NSScrollElasticityAutomatic(0L), NSScrollElasticityNone(1L), NSScrollElasticityAllowed(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSScrollElasticity = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSScrollElasticity value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSScrollViewFindBarPosition}
+ */
+enum class NSScrollViewFindBarPosition(val value: Long) {
+    NSScrollViewFindBarPositionAboveHorizontalRuler(0L), NSScrollViewFindBarPositionAboveContent(1L), NSScrollViewFindBarPositionBelowContent(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSScrollViewFindBarPosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSScrollViewFindBarPosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSegmentSwitchTracking}
+ */
+enum class NSSegmentSwitchTracking(val value: Long) {
+    NSSegmentSwitchTrackingSelectOne(0L), NSSegmentSwitchTrackingSelectAny(1L), NSSegmentSwitchTrackingMomentary(2L), NSSegmentSwitchTrackingMomentaryAccelerator(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSSegmentSwitchTracking = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSegmentSwitchTracking value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSegmentStyle}
+ */
+enum class NSSegmentStyle(val value: Long) {
+    NSSegmentStyleAutomatic(0L), NSSegmentStyleRounded(1L), NSSegmentStyleRoundRect(3L), NSSegmentStyleTexturedSquare(4L), NSSegmentStyleSmallSquare(6L), NSSegmentStyleSeparated(8L), NSSegmentStyleTexturedRounded(2L), NSSegmentStyleCapsule(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSSegmentStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSegmentStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSegmentDistribution}
+ */
+enum class NSSegmentDistribution(val value: Long) {
+    NSSegmentDistributionFit(0L), NSSegmentDistributionFill(1L), NSSegmentDistributionFillEqually(2L), NSSegmentDistributionFillProportionally(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSSegmentDistribution = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSegmentDistribution value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSharingCollaborationMode}
+ */
+enum class NSSharingCollaborationMode(val value: Long) {
+    NSSharingCollaborationModeSendCopy(0L), NSSharingCollaborationModeCollaborate(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSSharingCollaborationMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSharingCollaborationMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTickMarkPosition}
+ */
+enum class NSTickMarkPosition(val value: Long) {
+    NSTickMarkPositionBelow(0L), NSTickMarkPositionAbove(1L), NSTickMarkPositionLeading(1L), NSTickMarkPositionTrailing(0L);
+
+    companion object {
+        fun fromValue(v: Long): NSTickMarkPosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTickMarkPosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSliderType}
+ */
+enum class NSSliderType(val value: Long) {
+    NSSliderTypeLinear(0L), NSSliderTypeCircular(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSSliderType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSliderType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSStackViewGravity}
+ */
+enum class NSStackViewGravity(val value: Long) {
+    NSStackViewGravityTop(1L), NSStackViewGravityLeading(1L), NSStackViewGravityCenter(2L), NSStackViewGravityBottom(3L), NSStackViewGravityTrailing(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSStackViewGravity = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSStackViewGravity value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSStackViewDistribution}
+ */
+enum class NSStackViewDistribution(val value: Long) {
+    NSStackViewDistributionGravityAreas(-1L), NSStackViewDistributionFill(0L), NSStackViewDistributionFillEqually(1L), NSStackViewDistributionFillProportionally(2L), NSStackViewDistributionEqualSpacing(3L), NSStackViewDistributionEqualCentering(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSStackViewDistribution = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSStackViewDistribution value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGridCellPlacement}
+ */
+enum class NSGridCellPlacement(val value: Long) {
+    NSGridCellPlacementInherited(0L), NSGridCellPlacementNone(1L), NSGridCellPlacementLeading(2L), NSGridCellPlacementTop(2L), NSGridCellPlacementTrailing(3L), NSGridCellPlacementBottom(3L), NSGridCellPlacementCenter(4L), NSGridCellPlacementFill(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSGridCellPlacement = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGridCellPlacement value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGridRowAlignment}
+ */
+enum class NSGridRowAlignment(val value: Long) {
+    NSGridRowAlignmentInherited(0L), NSGridRowAlignmentNone(1L), NSGridRowAlignmentFirstBaseline(2L), NSGridRowAlignmentLastBaseline(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSGridRowAlignment = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGridRowAlignment value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextCursorAccessoryPlacement}
+ */
+enum class NSTextCursorAccessoryPlacement(val value: Long) {
+    NSTextCursorAccessoryPlacementUnspecified(0L), NSTextCursorAccessoryPlacementBackward(1L), NSTextCursorAccessoryPlacementForward(2L), NSTextCursorAccessoryPlacementInvisible(3L), NSTextCursorAccessoryPlacementCenter(4L), NSTextCursorAccessoryPlacementOffscreenLeft(5L), NSTextCursorAccessoryPlacementOffscreenTop(6L), NSTextCursorAccessoryPlacementOffscreenRight(7L), NSTextCursorAccessoryPlacementOffscreenBottom(8L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextCursorAccessoryPlacement = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextCursorAccessoryPlacement value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextInputTraitType}
+ */
+enum class NSTextInputTraitType(val value: Long) {
+    NSTextInputTraitTypeDefault(0L), NSTextInputTraitTypeNo(1L), NSTextInputTraitTypeYes(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextInputTraitType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextInputTraitType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWritingToolsBehavior}
+ */
+enum class NSWritingToolsBehavior(val value: Long) {
+    NSWritingToolsBehaviorNone(-1L), NSWritingToolsBehaviorDefault(0L), NSWritingToolsBehaviorComplete(1L), NSWritingToolsBehaviorLimited(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSWritingToolsBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWritingToolsBehavior value: $v")
     }
 }
 
@@ -23043,3 +24687,2264 @@ enum class NSTextFieldBezelStyle(val value: Long) {
             ?: error("Unknown NSTextFieldBezelStyle value: $v")
     }
 }
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextInsertionIndicatorDisplayMode}
+ */
+enum class NSTextInsertionIndicatorDisplayMode(val value: Long) {
+    NSTextInsertionIndicatorDisplayModeAutomatic(0L), NSTextInsertionIndicatorDisplayModeHidden(1L), NSTextInsertionIndicatorDisplayModeVisible(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextInsertionIndicatorDisplayMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextInsertionIndicatorDisplayMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSUnderlineStyle}
+ */
+enum class NSUnderlineStyle(val value: Long) {
+    NSUnderlineStyleNone(0L), NSUnderlineStyleSingle(1L), NSUnderlineStyleThick(2L), NSUnderlineStyleDouble(9L), NSUnderlineStylePatternSolid(0L), NSUnderlineStylePatternDot(256L), NSUnderlineStylePatternDash(512L), NSUnderlineStylePatternDashDot(768L), NSUnderlineStylePatternDashDotDot(1024L), NSUnderlineStyleByWord(32768L);
+
+    companion object {
+        fun fromValue(v: Long): NSUnderlineStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSUnderlineStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWritingDirectionFormatType}
+ */
+enum class NSWritingDirectionFormatType(val value: Long) {
+    NSWritingDirectionEmbedding(0L), NSWritingDirectionOverride(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSWritingDirectionFormatType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWritingDirectionFormatType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextScalingType}
+ */
+enum class NSTextScalingType(val value: Long) {
+    NSTextScalingStandard(0L), NSTextScalingiOS(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextScalingType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextScalingType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSpellingState}
+ */
+enum class NSSpellingState(val value: Long) {
+    NSSpellingStateSpellingFlag(1L), NSSpellingStateGrammarFlag(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSSpellingState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSpellingState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSAttributedString.h:379:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSAttributedString_h_379_1_(val value: Long) {
+    NSNoUnderlineStyle(0L), NSSingleUnderlineStyle(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSAttributedString_h_379_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSAttributedString_h_379_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextStorageEditActions}
+ */
+enum class NSTextStorageEditActions(val value: Long) {
+    NSTextStorageEditedAttributes(1L), NSTextStorageEditedCharacters(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextStorageEditActions = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextStorageEditActions value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSGlyphGenerator.h:18:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSGlyphGenerator_h_18_1_(val value: Long) {
+    NSShowControlGlyphs(1L), NSShowInvisibleGlyphs(2L), NSWantsBidiLevels(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSGlyphGenerator_h_18_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSGlyphGenerator_h_18_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextLayoutOrientation}
+ */
+enum class NSTextLayoutOrientation(val value: Long) {
+    NSTextLayoutOrientationHorizontal(0L), NSTextLayoutOrientationVertical(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextLayoutOrientation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextLayoutOrientation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGlyphProperty}
+ */
+enum class NSGlyphProperty(val value: Long) {
+    NSGlyphPropertyNull(1L), NSGlyphPropertyControlCharacter(2L), NSGlyphPropertyElastic(4L), NSGlyphPropertyNonBaseCharacter(8L);
+
+    companion object {
+        fun fromValue(v: Long): NSGlyphProperty = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGlyphProperty value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSControlCharacterAction}
+ */
+enum class NSControlCharacterAction(val value: Long) {
+    NSControlCharacterActionZeroAdvancement(1L), NSControlCharacterActionWhitespace(2L), NSControlCharacterActionHorizontalTab(4L), NSControlCharacterActionLineBreak(8L), NSControlCharacterActionParagraphBreak(16L), NSControlCharacterActionContainerBreak(32L);
+
+    companion object {
+        fun fromValue(v: Long): NSControlCharacterAction = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSControlCharacterAction value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTypesetterBehavior}
+ */
+enum class NSTypesetterBehavior(val value: Long) {
+    NSTypesetterLatestBehavior(-1L), NSTypesetterOriginalBehavior(0L), NSTypesetterBehavior_10_2_WithCompatibility(1L), NSTypesetterBehavior_10_2(2L), NSTypesetterBehavior_10_3(3L), NSTypesetterBehavior_10_4(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSTypesetterBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTypesetterBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSLayoutManager.h:438:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSLayoutManager_h_438_1_(val value: Long) {
+    NSGlyphAttributeSoft(0L), NSGlyphAttributeElastic(1L), NSGlyphAttributeBidiLevel(2L), NSGlyphAttributeInscribe(5L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSLayoutManager_h_438_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSLayoutManager_h_438_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSGlyphInscription}
+ */
+enum class NSGlyphInscription(val value: Long) {
+    NSGlyphInscribeBase(0L), NSGlyphInscribeBelow(1L), NSGlyphInscribeAbove(2L), NSGlyphInscribeOverstrike(3L), NSGlyphInscribeOverBelow(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSGlyphInscription = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSGlyphInscription value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLineSweepDirection}
+ */
+enum class NSLineSweepDirection(val value: Long) {
+    NSLineSweepLeft(0L), NSLineSweepRight(1L), NSLineSweepDown(2L), NSLineSweepUp(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSLineSweepDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLineSweepDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLineMovementDirection}
+ */
+enum class NSLineMovementDirection(val value: Long) {
+    NSLineDoesntMove(0L), NSLineMovesLeft(1L), NSLineMovesRight(2L), NSLineMovesDown(3L), NSLineMovesUp(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSLineMovementDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLineMovementDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTokenStyle}
+ */
+enum class NSTokenStyle(val value: Long) {
+    NSTokenStyleDefault(0L), NSTokenStyleNone(1L), NSTokenStyleRounded(2L), NSTokenStyleSquared(3L), NSTokenStylePlainSquared(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSTokenStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTokenStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSToolbarDisplayMode}
+ */
+enum class NSToolbarDisplayMode(val value: Long) {
+    NSToolbarDisplayModeDefault(0L), NSToolbarDisplayModeIconAndLabel(1L), NSToolbarDisplayModeIconOnly(2L), NSToolbarDisplayModeLabelOnly(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSToolbarDisplayMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSToolbarDisplayMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSToolbarSizeMode}
+ */
+enum class NSToolbarSizeMode(val value: Long) {
+    NSToolbarSizeModeDefault(0L), NSToolbarSizeModeRegular(1L), NSToolbarSizeModeSmall(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSToolbarSizeMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSToolbarSizeMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSToolbarItemStyle}
+ */
+enum class NSToolbarItemStyle(val value: Long) {
+    NSToolbarItemStylePlain(0L), NSToolbarItemStyleProminent(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSToolbarItemStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSToolbarItemStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSViewLayoutRegionAdaptivityAxis}
+ */
+enum class NSViewLayoutRegionAdaptivityAxis(val value: Long) {
+    NSViewLayoutRegionAdaptivityAxisNone(0L), NSViewLayoutRegionAdaptivityAxisHorizontal(1L), NSViewLayoutRegionAdaptivityAxisVertical(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSViewLayoutRegionAdaptivityAxis = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSViewLayoutRegionAdaptivityAxis value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSComboButtonStyle}
+ */
+enum class NSComboButtonStyle(val value: Long) {
+    NSComboButtonStyleSplit(0L), NSComboButtonStyleUnified(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSComboButtonStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSComboButtonStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSTextAttachment.h:18:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSTextAttachment_h_18_1_(val value: Long) {
+    NSAttachmentCharacter(65532L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSTextAttachment_h_18_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSTextAttachment_h_18_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSelectionGranularity}
+ */
+enum class NSSelectionGranularity(val value: Long) {
+    NSSelectByCharacter(0L), NSSelectByWord(1L), NSSelectByParagraph(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSSelectionGranularity = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSelectionGranularity value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSelectionAffinity}
+ */
+enum class NSSelectionAffinity(val value: Long) {
+    NSSelectionAffinityUpstream(0L), NSSelectionAffinityDownstream(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSSelectionAffinity = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSSelectionAffinity value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFindPanelAction}
+ */
+enum class NSFindPanelAction(val value: Long) {
+    NSFindPanelActionShowFindPanel(1L), NSFindPanelActionNext(2L), NSFindPanelActionPrevious(3L), NSFindPanelActionReplaceAll(4L), NSFindPanelActionReplace(5L), NSFindPanelActionReplaceAndFind(6L), NSFindPanelActionSetFindString(7L), NSFindPanelActionReplaceAllInSelection(8L), NSFindPanelActionSelectAll(9L), NSFindPanelActionSelectAllInSelection(10L);
+
+    companion object {
+        fun fromValue(v: Long): NSFindPanelAction = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFindPanelAction value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSFindPanelSubstringMatchType}
+ */
+enum class NSFindPanelSubstringMatchType(val value: Long) {
+    NSFindPanelSubstringMatchTypeContains(0L), NSFindPanelSubstringMatchTypeStartsWith(1L), NSFindPanelSubstringMatchTypeFullWord(2L), NSFindPanelSubstringMatchTypeEndsWith(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSFindPanelSubstringMatchType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSFindPanelSubstringMatchType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTableViewDropOperation}
+ */
+enum class NSTableViewDropOperation(val value: Long) {
+    NSTableViewDropOn(0L), NSTableViewDropAbove(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTableViewDropOperation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTableViewDropOperation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTableViewColumnAutoresizingStyle}
+ */
+enum class NSTableViewColumnAutoresizingStyle(val value: Long) {
+    NSTableViewNoColumnAutoresizing(0L), NSTableViewUniformColumnAutoresizingStyle(1L), NSTableViewSequentialColumnAutoresizingStyle(2L), NSTableViewReverseSequentialColumnAutoresizingStyle(3L), NSTableViewLastColumnOnlyAutoresizingStyle(4L), NSTableViewFirstColumnOnlyAutoresizingStyle(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSTableViewColumnAutoresizingStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTableViewColumnAutoresizingStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTableViewGridLineStyle}
+ */
+enum class NSTableViewGridLineStyle(val value: Long) {
+    NSTableViewGridNone(0L), NSTableViewSolidVerticalGridLineMask(1L), NSTableViewSolidHorizontalGridLineMask(2L), NSTableViewDashedHorizontalGridLineMask(8L);
+
+    companion object {
+        fun fromValue(v: Long): NSTableViewGridLineStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTableViewGridLineStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTableViewRowSizeStyle}
+ */
+enum class NSTableViewRowSizeStyle(val value: Long) {
+    NSTableViewRowSizeStyleDefault(-1L), NSTableViewRowSizeStyleCustom(0L), NSTableViewRowSizeStyleSmall(1L), NSTableViewRowSizeStyleMedium(2L), NSTableViewRowSizeStyleLarge(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSTableViewRowSizeStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTableViewRowSizeStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTableViewStyle}
+ */
+enum class NSTableViewStyle(val value: Long) {
+    NSTableViewStyleAutomatic(0L), NSTableViewStyleFullWidth(1L), NSTableViewStyleInset(2L), NSTableViewStyleSourceList(3L), NSTableViewStylePlain(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSTableViewStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTableViewStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTableViewSelectionHighlightStyle}
+ */
+enum class NSTableViewSelectionHighlightStyle(val value: Long) {
+    NSTableViewSelectionHighlightStyleNone(-1L), NSTableViewSelectionHighlightStyleRegular(0L), NSTableViewSelectionHighlightStyleSourceList(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTableViewSelectionHighlightStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTableViewSelectionHighlightStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTableViewDraggingDestinationFeedbackStyle}
+ */
+enum class NSTableViewDraggingDestinationFeedbackStyle(val value: Long) {
+    NSTableViewDraggingDestinationFeedbackStyleNone(-1L), NSTableViewDraggingDestinationFeedbackStyleRegular(0L), NSTableViewDraggingDestinationFeedbackStyleSourceList(1L), NSTableViewDraggingDestinationFeedbackStyleGap(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSTableViewDraggingDestinationFeedbackStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTableViewDraggingDestinationFeedbackStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTableRowActionEdge}
+ */
+enum class NSTableRowActionEdge(val value: Long) {
+    NSTableRowActionEdgeLeading(0L), NSTableRowActionEdgeTrailing(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTableRowActionEdge = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTableRowActionEdge value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTableViewRowActionStyle}
+ */
+enum class NSTableViewRowActionStyle(val value: Long) {
+    NSTableViewRowActionStyleRegular(0L), NSTableViewRowActionStyleDestructive(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTableViewRowActionStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTableViewRowActionStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSOutlineView.h:27:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSOutlineView_h_27_1_(val value: Long) {
+    NSOutlineViewDropOnItemIndex(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSOutlineView_h_27_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSOutlineView_h_27_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSRulerOrientation}
+ */
+enum class NSRulerOrientation(val value: Long) {
+    NSHorizontalRuler(0L), NSVerticalRuler(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSRulerOrientation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSRulerOrientation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSInterfaceStyle.h:13:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSInterfaceStyle_h_13_1_(val value: Long) {
+    NSNoInterfaceStyle(0L), NSNextStepInterfaceStyle(1L), NSWindows95InterfaceStyle(2L), NSMacintoshInterfaceStyle(3L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSInterfaceStyle_h_13_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSInterfaceStyle_h_13_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSProgressIndicatorStyle}
+ */
+enum class NSProgressIndicatorStyle(val value: Long) {
+    NSProgressIndicatorStyleBar(0L), NSProgressIndicatorStyleSpinning(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSProgressIndicatorStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSProgressIndicatorStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSProgressIndicatorThickness}
+ */
+enum class NSProgressIndicatorThickness(val value: Long) {
+    NSProgressIndicatorPreferredThickness(14L), NSProgressIndicatorPreferredSmallThickness(10L), NSProgressIndicatorPreferredLargeThickness(18L), NSProgressIndicatorPreferredAquaThickness(12L);
+
+    companion object {
+        fun fromValue(v: Long): NSProgressIndicatorThickness = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSProgressIndicatorThickness value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTabViewType}
+ */
+enum class NSTabViewType(val value: Long) {
+    NSTopTabsBezelBorder(0L), NSLeftTabsBezelBorder(1L), NSBottomTabsBezelBorder(2L), NSRightTabsBezelBorder(3L), NSNoTabsBezelBorder(4L), NSNoTabsLineBorder(5L), NSNoTabsNoBorder(6L);
+
+    companion object {
+        fun fromValue(v: Long): NSTabViewType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTabViewType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTabPosition}
+ */
+enum class NSTabPosition(val value: Long) {
+    NSTabPositionNone(0L), NSTabPositionTop(1L), NSTabPositionLeft(2L), NSTabPositionBottom(3L), NSTabPositionRight(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSTabPosition = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTabPosition value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTabViewBorderType}
+ */
+enum class NSTabViewBorderType(val value: Long) {
+    NSTabViewBorderTypeNone(0L), NSTabViewBorderTypeLine(1L), NSTabViewBorderTypeBezel(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSTabViewBorderType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTabViewBorderType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTabViewControllerTabStyle}
+ */
+enum class NSTabViewControllerTabStyle(val value: Long) {
+    NSTabViewControllerTabStyleSegmentedControlOnTop(0L), NSTabViewControllerTabStyleSegmentedControlOnBottom(1L), NSTabViewControllerTabStyleToolbar(2L), NSTabViewControllerTabStyleUnspecified(-1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTabViewControllerTabStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTabViewControllerTabStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTabState}
+ */
+enum class NSTabState(val value: Long) {
+    NSSelectedTab(0L), NSBackgroundTab(1L), NSPressedTab(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSTabState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTabState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLineCapStyle}
+ */
+enum class NSLineCapStyle(val value: Long) {
+    NSLineCapStyleButt(0L), NSLineCapStyleRound(1L), NSLineCapStyleSquare(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSLineCapStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLineCapStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLineJoinStyle}
+ */
+enum class NSLineJoinStyle(val value: Long) {
+    NSLineJoinStyleMiter(0L), NSLineJoinStyleRound(1L), NSLineJoinStyleBevel(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSLineJoinStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLineJoinStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWindingRule}
+ */
+enum class NSWindingRule(val value: Long) {
+    NSWindingRuleNonZero(0L), NSWindingRuleEvenOdd(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSWindingRule = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWindingRule value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSBezierPathElement}
+ */
+enum class NSBezierPathElement(val value: Long) {
+    NSBezierPathElementMoveTo(0L), NSBezierPathElementLineTo(1L), NSBezierPathElementCubicCurveTo(2L), NSBezierPathElementClosePath(3L), NSBezierPathElementQuadraticCurveTo(4L), NSBezierPathElementCurveTo(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSBezierPathElement = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSBezierPathElement value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSStatusItemBehavior}
+ */
+enum class NSStatusItemBehavior(val value: Long) {
+    NSStatusItemBehaviorRemovalAllowed(2L), NSStatusItemBehaviorTerminationOnRemoval(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSStatusItemBehavior = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSStatusItemBehavior value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDrawerState}
+ */
+enum class NSDrawerState(val value: Long) {
+    NSDrawerClosedState(0L), NSDrawerOpeningState(1L), NSDrawerOpenState(2L), NSDrawerClosingState(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSDrawerState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDrawerState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSOpenGLGlobalOption}
+ */
+enum class NSOpenGLGlobalOption(val value: Long) {
+    NSOpenGLGOFormatCacheSize(501L), NSOpenGLGOClearFormatCache(502L), NSOpenGLGORetainRenderers(503L), NSOpenGLGOUseBuildCache(506L), NSOpenGLGOResetLibrary(504L);
+
+    companion object {
+        fun fromValue(v: Long): NSOpenGLGlobalOption = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSOpenGLGlobalOption value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSOpenGL.h:59:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSOpenGL_h_59_1_(val value: Long) {
+    NSOpenGLPFAAllRenderers(1L), NSOpenGLPFATripleBuffer(3L), NSOpenGLPFADoubleBuffer(5L), NSOpenGLPFAAuxBuffers(7L), NSOpenGLPFAColorSize(8L), NSOpenGLPFAAlphaSize(11L), NSOpenGLPFADepthSize(12L), NSOpenGLPFAStencilSize(13L), NSOpenGLPFAAccumSize(14L), NSOpenGLPFAMinimumPolicy(51L), NSOpenGLPFAMaximumPolicy(52L), NSOpenGLPFASampleBuffers(55L), NSOpenGLPFASamples(56L), NSOpenGLPFAAuxDepthStencil(57L), NSOpenGLPFAColorFloat(58L), NSOpenGLPFAMultisample(59L), NSOpenGLPFASupersample(60L), NSOpenGLPFASampleAlpha(61L), NSOpenGLPFARendererID(70L), NSOpenGLPFANoRecovery(72L), NSOpenGLPFAAccelerated(73L), NSOpenGLPFAClosestPolicy(74L), NSOpenGLPFABackingStore(76L), NSOpenGLPFAScreenMask(84L), NSOpenGLPFAAllowOfflineRenderers(96L), NSOpenGLPFAAcceleratedCompute(97L), NSOpenGLPFAOpenGLProfile(99L), NSOpenGLPFAVirtualScreenCount(128L), NSOpenGLPFAStereo(6L), NSOpenGLPFAOffScreen(53L), NSOpenGLPFAFullScreen(54L), NSOpenGLPFASingleRenderer(71L), NSOpenGLPFARobust(75L), NSOpenGLPFAMPSafe(78L), NSOpenGLPFAWindow(80L), NSOpenGLPFAMultiScreen(81L), NSOpenGLPFACompliant(83L), NSOpenGLPFAPixelBuffer(90L), NSOpenGLPFARemotePixelBuffer(91L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSOpenGL_h_59_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSOpenGL_h_59_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSOpenGL.h:104:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSOpenGL_h_104_1_(val value: Long) {
+    NSOpenGLProfileVersionLegacy(4096L), NSOpenGLProfileVersion3_2Core(12800L), NSOpenGLProfileVersion4_1Core(16640L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSOpenGL_h_104_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSOpenGL_h_104_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSOpenGLContextParameter}
+ */
+enum class NSOpenGLContextParameter(val value: Long) {
+    NSOpenGLContextParameterSwapInterval(222L), NSOpenGLContextParameterSurfaceOrder(235L), NSOpenGLContextParameterSurfaceOpacity(236L), NSOpenGLContextParameterSurfaceBackingSize(304L), NSOpenGLContextParameterReclaimResources(308L), NSOpenGLContextParameterCurrentRendererID(309L), NSOpenGLContextParameterGPUVertexProcessing(310L), NSOpenGLContextParameterGPUFragmentProcessing(311L), NSOpenGLContextParameterHasDrawable(314L), NSOpenGLContextParameterMPSwapsInFlight(315L), NSOpenGLContextParameterSwapRectangle(200L), NSOpenGLContextParameterSwapRectangleEnable(201L), NSOpenGLContextParameterRasterizationEnable(221L), NSOpenGLContextParameterStateValidation(301L), NSOpenGLContextParameterSurfaceSurfaceVolatile(306L);
+
+    companion object {
+        fun fromValue(v: Long): NSOpenGLContextParameter = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSOpenGLContextParameter value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSToolbarItemGroupSelectionMode}
+ */
+enum class NSToolbarItemGroupSelectionMode(val value: Long) {
+    NSToolbarItemGroupSelectionModeSelectOne(0L), NSToolbarItemGroupSelectionModeSelectAny(1L), NSToolbarItemGroupSelectionModeMomentary(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSToolbarItemGroupSelectionMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSToolbarItemGroupSelectionMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSToolbarItemGroupControlRepresentation}
+ */
+enum class NSToolbarItemGroupControlRepresentation(val value: Long) {
+    NSToolbarItemGroupControlRepresentationAutomatic(0L), NSToolbarItemGroupControlRepresentationExpanded(1L), NSToolbarItemGroupControlRepresentationCollapsed(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSToolbarItemGroupControlRepresentation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSToolbarItemGroupControlRepresentation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSCharacterCollection}
+ */
+enum class NSCharacterCollection(val value: Long) {
+    NSIdentityMappingCharacterCollection(0L), NSAdobeCNS1CharacterCollection(1L), NSAdobeGB1CharacterCollection(2L), NSAdobeJapan1CharacterCollection(3L), NSAdobeJapan2CharacterCollection(4L), NSAdobeKorea1CharacterCollection(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSCharacterCollection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSCharacterCollection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTypesetterControlCharacterAction}
+ */
+enum class NSTypesetterControlCharacterAction(val value: Long) {
+    NSTypesetterZeroAdvancementAction(1L), NSTypesetterWhitespaceAction(2L), NSTypesetterHorizontalTabAction(4L), NSTypesetterLineBreakAction(8L), NSTypesetterParagraphBreakAction(16L), NSTypesetterContainerBreakAction(32L);
+
+    companion object {
+        fun fromValue(v: Long): NSTypesetterControlCharacterAction = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTypesetterControlCharacterAction value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextBlockValueType}
+ */
+enum class NSTextBlockValueType(val value: Long) {
+    NSTextBlockAbsoluteValueType(0L), NSTextBlockPercentageValueType(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextBlockValueType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextBlockValueType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextBlockDimension}
+ */
+enum class NSTextBlockDimension(val value: Long) {
+    NSTextBlockWidth(0L), NSTextBlockMinimumWidth(1L), NSTextBlockMaximumWidth(2L), NSTextBlockHeight(4L), NSTextBlockMinimumHeight(5L), NSTextBlockMaximumHeight(6L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextBlockDimension = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextBlockDimension value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextBlockLayer}
+ */
+enum class NSTextBlockLayer(val value: Long) {
+    NSTextBlockPadding(-1L), NSTextBlockBorder(0L), NSTextBlockMargin(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextBlockLayer = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextBlockLayer value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextBlockVerticalAlignment}
+ */
+enum class NSTextBlockVerticalAlignment(val value: Long) {
+    NSTextBlockTopAlignment(0L), NSTextBlockMiddleAlignment(1L), NSTextBlockBottomAlignment(2L), NSTextBlockBaselineAlignment(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextBlockVerticalAlignment = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextBlockVerticalAlignment value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextTableLayoutAlgorithm}
+ */
+enum class NSTextTableLayoutAlgorithm(val value: Long) {
+    NSTextTableAutomaticLayoutAlgorithm(0L), NSTextTableFixedLayoutAlgorithm(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextTableLayoutAlgorithm = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextTableLayoutAlgorithm value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDatePickerStyle}
+ */
+enum class NSDatePickerStyle(val value: Long) {
+    NSDatePickerStyleTextFieldAndStepper(0L), NSDatePickerStyleClockAndCalendar(1L), NSDatePickerStyleTextField(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSDatePickerStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDatePickerStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSDatePickerMode}
+ */
+enum class NSDatePickerMode(val value: Long) {
+    NSDatePickerModeSingle(0L), NSDatePickerModeRange(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSDatePickerMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSDatePickerMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLevelIndicatorStyle}
+ */
+enum class NSLevelIndicatorStyle(val value: Long) {
+    NSLevelIndicatorStyleRelevancy(0L), NSLevelIndicatorStyleContinuousCapacity(1L), NSLevelIndicatorStyleDiscreteCapacity(2L), NSLevelIndicatorStyleRating(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSLevelIndicatorStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLevelIndicatorStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSLevelIndicatorPlaceholderVisibility}
+ */
+enum class NSLevelIndicatorPlaceholderVisibility(val value: Long) {
+    NSLevelIndicatorPlaceholderVisibilityAutomatic(0L), NSLevelIndicatorPlaceholderVisibilityAlways(1L), NSLevelIndicatorPlaceholderVisibilityWhileEditing(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSLevelIndicatorPlaceholderVisibility = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSLevelIndicatorPlaceholderVisibility value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSRuleEditorNestingMode}
+ */
+enum class NSRuleEditorNestingMode(val value: Long) {
+    NSRuleEditorNestingModeSingle(0L), NSRuleEditorNestingModeList(1L), NSRuleEditorNestingModeCompound(2L), NSRuleEditorNestingModeSimple(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSRuleEditorNestingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSRuleEditorNestingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSRuleEditorRowType}
+ */
+enum class NSRuleEditorRowType(val value: Long) {
+    NSRuleEditorRowTypeSimple(0L), NSRuleEditorRowTypeCompound(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSRuleEditorRowType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSRuleEditorRowType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSAttributeType}
+ */
+enum class NSAttributeType(val value: Long) {
+    NSUndefinedAttributeType(0L), NSInteger16AttributeType(100L), NSInteger32AttributeType(200L), NSInteger64AttributeType(300L), NSDecimalAttributeType(400L), NSDoubleAttributeType(500L), NSFloatAttributeType(600L), NSStringAttributeType(700L), NSBooleanAttributeType(800L), NSDateAttributeType(900L), NSBinaryDataAttributeType(1000L), NSUUIDAttributeType(1100L), NSURIAttributeType(1200L), NSTransformableAttributeType(1800L), NSObjectIDAttributeType(2000L), NSCompositeAttributeType(2100L);
+
+    companion object {
+        fun fromValue(v: Long): NSAttributeType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSAttributeType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPathStyle}
+ */
+enum class NSPathStyle(val value: Long) {
+    NSPathStyleStandard(0L), NSPathStylePopUp(2L), NSPathStyleNavigationBar(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSPathStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPathStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPageControllerTransitionStyle}
+ */
+enum class NSPageControllerTransitionStyle(val value: Long) {
+    NSPageControllerTransitionStyleStackHistory(0L), NSPageControllerTransitionStyleStackBook(1L), NSPageControllerTransitionStyleHorizontalStrip(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSPageControllerTransitionStyle = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPageControllerTransitionStyle value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSVisualEffectMaterial}
+ */
+enum class NSVisualEffectMaterial(val value: Long) {
+    NSVisualEffectMaterialTitlebar(3L), NSVisualEffectMaterialSelection(4L), NSVisualEffectMaterialMenu(5L), NSVisualEffectMaterialPopover(6L), NSVisualEffectMaterialSidebar(7L), NSVisualEffectMaterialHeaderView(10L), NSVisualEffectMaterialSheet(11L), NSVisualEffectMaterialWindowBackground(12L), NSVisualEffectMaterialHUDWindow(13L), NSVisualEffectMaterialFullScreenUI(15L), NSVisualEffectMaterialToolTip(17L), NSVisualEffectMaterialContentBackground(18L), NSVisualEffectMaterialUnderWindowBackground(21L), NSVisualEffectMaterialUnderPageBackground(22L), NSVisualEffectMaterialAppearanceBased(0L), NSVisualEffectMaterialLight(1L), NSVisualEffectMaterialDark(2L), NSVisualEffectMaterialMediumLight(8L), NSVisualEffectMaterialUltraDark(9L);
+
+    companion object {
+        fun fromValue(v: Long): NSVisualEffectMaterial = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSVisualEffectMaterial value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSVisualEffectBlendingMode}
+ */
+enum class NSVisualEffectBlendingMode(val value: Long) {
+    NSVisualEffectBlendingModeBehindWindow(0L), NSVisualEffectBlendingModeWithinWindow(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSVisualEffectBlendingMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSVisualEffectBlendingMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSVisualEffectState}
+ */
+enum class NSVisualEffectState(val value: Long) {
+    NSVisualEffectStateFollowsWindowActiveState(0L), NSVisualEffectStateActive(1L), NSVisualEffectStateInactive(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSVisualEffectState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSVisualEffectState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSHapticFeedbackPattern}
+ */
+enum class NSHapticFeedbackPattern(val value: Long) {
+    NSHapticFeedbackPatternGeneric(0L), NSHapticFeedbackPatternAlignment(1L), NSHapticFeedbackPatternLevelChange(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSHapticFeedbackPattern = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSHapticFeedbackPattern value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSHapticFeedbackPerformanceTime}
+ */
+enum class NSHapticFeedbackPerformanceTime(val value: Long) {
+    NSHapticFeedbackPerformanceTimeDefault(0L), NSHapticFeedbackPerformanceTimeNow(1L), NSHapticFeedbackPerformanceTimeDrawCompleted(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSHapticFeedbackPerformanceTime = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSHapticFeedbackPerformanceTime value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPickerTouchBarItemSelectionMode}
+ */
+enum class NSPickerTouchBarItemSelectionMode(val value: Long) {
+    NSPickerTouchBarItemSelectionModeSelectOne(0L), NSPickerTouchBarItemSelectionModeSelectAny(1L), NSPickerTouchBarItemSelectionModeMomentary(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSPickerTouchBarItemSelectionMode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPickerTouchBarItemSelectionMode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSPickerTouchBarItemControlRepresentation}
+ */
+enum class NSPickerTouchBarItemControlRepresentation(val value: Long) {
+    NSPickerTouchBarItemControlRepresentationAutomatic(0L), NSPickerTouchBarItemControlRepresentationExpanded(1L), NSPickerTouchBarItemControlRepresentationCollapsed(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSPickerTouchBarItemControlRepresentation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSPickerTouchBarItemControlRepresentation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextSelectionGranularity}
+ */
+enum class NSTextSelectionGranularity(val value: Long) {
+    NSTextSelectionGranularityCharacter(0L), NSTextSelectionGranularityWord(1L), NSTextSelectionGranularityParagraph(2L), NSTextSelectionGranularityLine(3L), NSTextSelectionGranularitySentence(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextSelectionGranularity = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextSelectionGranularity value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextSelectionAffinity}
+ */
+enum class NSTextSelectionAffinity(val value: Long) {
+    NSTextSelectionAffinityUpstream(0L), NSTextSelectionAffinityDownstream(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextSelectionAffinity = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextSelectionAffinity value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationDirection}
+ */
+enum class NSTextSelectionNavigationDirection(val value: Long) {
+    NSTextSelectionNavigationDirectionForward(0L), NSTextSelectionNavigationDirectionBackward(1L), NSTextSelectionNavigationDirectionRight(2L), NSTextSelectionNavigationDirectionLeft(3L), NSTextSelectionNavigationDirectionUp(4L), NSTextSelectionNavigationDirectionDown(5L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextSelectionNavigationDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextSelectionNavigationDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationDestination}
+ */
+enum class NSTextSelectionNavigationDestination(val value: Long) {
+    NSTextSelectionNavigationDestinationCharacter(0L), NSTextSelectionNavigationDestinationWord(1L), NSTextSelectionNavigationDestinationLine(2L), NSTextSelectionNavigationDestinationSentence(3L), NSTextSelectionNavigationDestinationParagraph(4L), NSTextSelectionNavigationDestinationContainer(5L), NSTextSelectionNavigationDestinationDocument(6L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextSelectionNavigationDestination = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextSelectionNavigationDestination value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationModifier}
+ */
+enum class NSTextSelectionNavigationModifier(val value: Long) {
+    NSTextSelectionNavigationModifierExtend(1L), NSTextSelectionNavigationModifierVisual(2L), NSTextSelectionNavigationModifierMultiple(4L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextSelectionNavigationModifier = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextSelectionNavigationModifier value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationWritingDirection}
+ */
+enum class NSTextSelectionNavigationWritingDirection(val value: Long) {
+    NSTextSelectionNavigationWritingDirectionLeftToRight(0L), NSTextSelectionNavigationWritingDirectionRightToLeft(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextSelectionNavigationWritingDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextSelectionNavigationWritingDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationLayoutOrientation}
+ */
+enum class NSTextSelectionNavigationLayoutOrientation(val value: Long) {
+    NSTextSelectionNavigationLayoutOrientationHorizontal(0L), NSTextSelectionNavigationLayoutOrientationVertical(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextSelectionNavigationLayoutOrientation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextSelectionNavigationLayoutOrientation value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextLayoutFragmentState}
+ */
+enum class NSTextLayoutFragmentState(val value: Long) {
+    NSTextLayoutFragmentStateNone(0L), NSTextLayoutFragmentStateEstimatedUsageBounds(1L), NSTextLayoutFragmentStateCalculatedUsageBounds(2L), NSTextLayoutFragmentStateLayoutAvailable(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextLayoutFragmentState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextLayoutFragmentState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSTextLayoutManagerSegmentType}
+ */
+enum class NSTextLayoutManagerSegmentType(val value: Long) {
+    NSTextLayoutManagerSegmentTypeStandard(0L), NSTextLayoutManagerSegmentTypeSelection(1L), NSTextLayoutManagerSegmentTypeHighlight(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSTextLayoutManagerSegmentType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSTextLayoutManagerSegmentType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorTextUpdateReason}
+ */
+enum class NSWritingToolsCoordinatorTextUpdateReason(val value: Long) {
+    NSWritingToolsCoordinatorTextUpdateReasonTyping(0L), NSWritingToolsCoordinatorTextUpdateReasonUndoRedo(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSWritingToolsCoordinatorTextUpdateReason = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWritingToolsCoordinatorTextUpdateReason value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorState}
+ */
+enum class NSWritingToolsCoordinatorState(val value: Long) {
+    NSWritingToolsCoordinatorStateInactive(0L), NSWritingToolsCoordinatorStateNoninteractive(1L), NSWritingToolsCoordinatorStateInteractiveResting(2L), NSWritingToolsCoordinatorStateInteractiveStreaming(3L);
+
+    companion object {
+        fun fromValue(v: Long): NSWritingToolsCoordinatorState = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWritingToolsCoordinatorState value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorTextReplacementReason}
+ */
+enum class NSWritingToolsCoordinatorTextReplacementReason(val value: Long) {
+    NSWritingToolsCoordinatorTextReplacementReasonInteractive(0L), NSWritingToolsCoordinatorTextReplacementReasonNoninteractive(1L);
+
+    companion object {
+        fun fromValue(v: Long): NSWritingToolsCoordinatorTextReplacementReason = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWritingToolsCoordinatorTextReplacementReason value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorContextScope}
+ */
+enum class NSWritingToolsCoordinatorContextScope(val value: Long) {
+    NSWritingToolsCoordinatorContextScopeUserSelection(0L), NSWritingToolsCoordinatorContextScopeFullDocument(1L), NSWritingToolsCoordinatorContextScopeVisibleArea(2L);
+
+    companion object {
+        fun fromValue(v: Long): NSWritingToolsCoordinatorContextScope = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWritingToolsCoordinatorContextScope value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorTextAnimation}
+ */
+enum class NSWritingToolsCoordinatorTextAnimation(val value: Long) {
+    NSWritingToolsCoordinatorTextAnimationAnticipate(0L), NSWritingToolsCoordinatorTextAnimationRemove(1L), NSWritingToolsCoordinatorTextAnimationInsert(2L), NSWritingToolsCoordinatorTextAnimationAnticipateInactive(8L), NSWritingToolsCoordinatorTextAnimationTranslate(9L);
+
+    companion object {
+        fun fromValue(v: Long): NSWritingToolsCoordinatorTextAnimation = entries.firstOrNull { it.value == v }
+            ?: error("Unknown NSWritingToolsCoordinatorTextAnimation value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_0 196.4
+ */
+fun kCFCoreFoundationVersionNumber10_0(): Double = 196.4
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_0_3 196.5
+ */
+fun kCFCoreFoundationVersionNumber10_0_3(): Double = 196.5
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_1 226.0
+ */
+fun kCFCoreFoundationVersionNumber10_1(): Double = 226.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_1_1 226.0
+ */
+fun kCFCoreFoundationVersionNumber10_1_1(): Double = 226.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_1_2 227.2
+ */
+fun kCFCoreFoundationVersionNumber10_1_2(): Double = 227.2
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_1_3 227.2
+ */
+fun kCFCoreFoundationVersionNumber10_1_3(): Double = 227.2
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_1_4 227.3
+ */
+fun kCFCoreFoundationVersionNumber10_1_4(): Double = 227.3
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_2 263.0
+ */
+fun kCFCoreFoundationVersionNumber10_2(): Double = 263.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_2_1 263.1
+ */
+fun kCFCoreFoundationVersionNumber10_2_1(): Double = 263.1
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_2_2 263.1
+ */
+fun kCFCoreFoundationVersionNumber10_2_2(): Double = 263.1
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_2_3 263.3
+ */
+fun kCFCoreFoundationVersionNumber10_2_3(): Double = 263.3
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_2_4 263.3
+ */
+fun kCFCoreFoundationVersionNumber10_2_4(): Double = 263.3
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_2_5 263.5
+ */
+fun kCFCoreFoundationVersionNumber10_2_5(): Double = 263.5
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_2_6 263.5
+ */
+fun kCFCoreFoundationVersionNumber10_2_6(): Double = 263.5
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_2_7 263.5
+ */
+fun kCFCoreFoundationVersionNumber10_2_7(): Double = 263.5
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_2_8 263.5
+ */
+fun kCFCoreFoundationVersionNumber10_2_8(): Double = 263.5
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3 299.0
+ */
+fun kCFCoreFoundationVersionNumber10_3(): Double = 299.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3_1 299.0
+ */
+fun kCFCoreFoundationVersionNumber10_3_1(): Double = 299.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3_2 299.0
+ */
+fun kCFCoreFoundationVersionNumber10_3_2(): Double = 299.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3_3 299.3
+ */
+fun kCFCoreFoundationVersionNumber10_3_3(): Double = 299.3
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3_4 299.31
+ */
+fun kCFCoreFoundationVersionNumber10_3_4(): Double = 299.31
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3_5 299.31
+ */
+fun kCFCoreFoundationVersionNumber10_3_5(): Double = 299.31
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3_6 299.32
+ */
+fun kCFCoreFoundationVersionNumber10_3_6(): Double = 299.32
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3_7 299.33
+ */
+fun kCFCoreFoundationVersionNumber10_3_7(): Double = 299.33
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3_8 299.33
+ */
+fun kCFCoreFoundationVersionNumber10_3_8(): Double = 299.33
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_3_9 299.35
+ */
+fun kCFCoreFoundationVersionNumber10_3_9(): Double = 299.35
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4 368.0
+ */
+fun kCFCoreFoundationVersionNumber10_4(): Double = 368.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_1 368.1
+ */
+fun kCFCoreFoundationVersionNumber10_4_1(): Double = 368.1
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_2 368.11
+ */
+fun kCFCoreFoundationVersionNumber10_4_2(): Double = 368.11
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_3 368.18
+ */
+fun kCFCoreFoundationVersionNumber10_4_3(): Double = 368.18
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_4_Intel 368.26
+ */
+fun kCFCoreFoundationVersionNumber10_4_4_Intel(): Double = 368.26
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_4_PowerPC 368.25
+ */
+fun kCFCoreFoundationVersionNumber10_4_4_PowerPC(): Double = 368.25
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_5_Intel 368.26
+ */
+fun kCFCoreFoundationVersionNumber10_4_5_Intel(): Double = 368.26
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_5_PowerPC 368.25
+ */
+fun kCFCoreFoundationVersionNumber10_4_5_PowerPC(): Double = 368.25
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_6_Intel 368.26
+ */
+fun kCFCoreFoundationVersionNumber10_4_6_Intel(): Double = 368.26
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_6_PowerPC 368.25
+ */
+fun kCFCoreFoundationVersionNumber10_4_6_PowerPC(): Double = 368.25
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_7 368.27
+ */
+fun kCFCoreFoundationVersionNumber10_4_7(): Double = 368.27
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_8 368.27
+ */
+fun kCFCoreFoundationVersionNumber10_4_8(): Double = 368.27
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_9 368.28
+ */
+fun kCFCoreFoundationVersionNumber10_4_9(): Double = 368.28
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_10 368.28
+ */
+fun kCFCoreFoundationVersionNumber10_4_10(): Double = 368.28
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_4_11 368.31
+ */
+fun kCFCoreFoundationVersionNumber10_4_11(): Double = 368.31
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_5 476.0
+ */
+fun kCFCoreFoundationVersionNumber10_5(): Double = 476.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_5_1 476.0
+ */
+fun kCFCoreFoundationVersionNumber10_5_1(): Double = 476.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_5_2 476.1
+ */
+fun kCFCoreFoundationVersionNumber10_5_2(): Double = 476.1
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_5_3 476.13
+ */
+fun kCFCoreFoundationVersionNumber10_5_3(): Double = 476.13
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_5_4 476.14
+ */
+fun kCFCoreFoundationVersionNumber10_5_4(): Double = 476.14
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_5_5 476.15
+ */
+fun kCFCoreFoundationVersionNumber10_5_5(): Double = 476.15
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_5_6 476.17
+ */
+fun kCFCoreFoundationVersionNumber10_5_6(): Double = 476.17
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_5_7 476.18
+ */
+fun kCFCoreFoundationVersionNumber10_5_7(): Double = 476.18
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_5_8 476.19
+ */
+fun kCFCoreFoundationVersionNumber10_5_8(): Double = 476.19
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_6 550.0
+ */
+fun kCFCoreFoundationVersionNumber10_6(): Double = 550.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_6_1 550.0
+ */
+fun kCFCoreFoundationVersionNumber10_6_1(): Double = 550.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_6_2 550.13
+ */
+fun kCFCoreFoundationVersionNumber10_6_2(): Double = 550.13
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_6_3 550.19
+ */
+fun kCFCoreFoundationVersionNumber10_6_3(): Double = 550.19
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_6_4 550.29
+ */
+fun kCFCoreFoundationVersionNumber10_6_4(): Double = 550.29
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_6_5 550.42
+ */
+fun kCFCoreFoundationVersionNumber10_6_5(): Double = 550.42
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_6_6 550.42
+ */
+fun kCFCoreFoundationVersionNumber10_6_6(): Double = 550.42
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_6_7 550.42
+ */
+fun kCFCoreFoundationVersionNumber10_6_7(): Double = 550.42
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_6_8 550.43
+ */
+fun kCFCoreFoundationVersionNumber10_6_8(): Double = 550.43
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_7 635.0
+ */
+fun kCFCoreFoundationVersionNumber10_7(): Double = 635.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_7_1 635.0
+ */
+fun kCFCoreFoundationVersionNumber10_7_1(): Double = 635.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_7_2 635.15
+ */
+fun kCFCoreFoundationVersionNumber10_7_2(): Double = 635.15
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_7_3 635.19
+ */
+fun kCFCoreFoundationVersionNumber10_7_3(): Double = 635.19
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_7_4 635.21
+ */
+fun kCFCoreFoundationVersionNumber10_7_4(): Double = 635.21
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_7_5 635.21
+ */
+fun kCFCoreFoundationVersionNumber10_7_5(): Double = 635.21
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_8 744.0
+ */
+fun kCFCoreFoundationVersionNumber10_8(): Double = 744.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_8_1 744.0
+ */
+fun kCFCoreFoundationVersionNumber10_8_1(): Double = 744.0
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_8_2 744.12
+ */
+fun kCFCoreFoundationVersionNumber10_8_2(): Double = 744.12
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_8_3 744.18
+ */
+fun kCFCoreFoundationVersionNumber10_8_3(): Double = 744.18
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_8_4 744.19
+ */
+fun kCFCoreFoundationVersionNumber10_8_4(): Double = 744.19
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_9 855.11
+ */
+fun kCFCoreFoundationVersionNumber10_9(): Double = 855.11
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_9_1 855.11
+ */
+fun kCFCoreFoundationVersionNumber10_9_1(): Double = 855.11
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_9_2 855.14
+ */
+fun kCFCoreFoundationVersionNumber10_9_2(): Double = 855.14
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_10 1151.16
+ */
+fun kCFCoreFoundationVersionNumber10_10(): Double = 1151.16
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_10_1 1151.16
+ */
+fun kCFCoreFoundationVersionNumber10_10_1(): Double = 1151.16
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_10_3 1153.18
+ */
+fun kCFCoreFoundationVersionNumber10_10_3(): Double = 1153.18
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_10_4 1153.18
+ */
+fun kCFCoreFoundationVersionNumber10_10_4(): Double = 1153.18
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_10_5 1153.18
+ */
+fun kCFCoreFoundationVersionNumber10_10_5(): Double = 1153.18
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_11_1 1255.1
+ */
+fun kCFCoreFoundationVersionNumber10_11_1(): Double = 1255.1
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_11_2 1256.14
+ */
+fun kCFCoreFoundationVersionNumber10_11_2(): Double = 1256.14
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_11_3 1256.14
+ */
+fun kCFCoreFoundationVersionNumber10_11_3(): Double = 1256.14
+
+/**
+ * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_11_4 1258.1
+ */
+fun kCFCoreFoundationVersionNumber10_11_4(): Double = 1258.1
+
+/**
+ * {@snippet lang=c : #define kCFStringEncodingInvalidId 4294967295
+ */
+fun kCFStringEncodingInvalidId(): Int = (4294967295).toInt()
+
+/**
+ * {@snippet lang=c : #define CGFLOAT_MIN 2.2250738585072014E-308
+ */
+fun CGFLOAT_MIN(): Double = 2.2250738585072014E-308
+
+/**
+ * {@snippet lang=c : #define CGFLOAT_MAX 1.7976931348623157E308
+ */
+fun CGFLOAT_MAX(): Double = 1.7976931348623157E308
+
+/**
+ * {@snippet lang=c : #define CGFLOAT_EPSILON 2.220446049250313E-16
+ */
+fun CGFLOAT_EPSILON(): Double = 2.220446049250313E-16
+
+// Skipped constant kCFFileSecurityRemoveACL: numeric value cannot be represented as MemorySegment
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_0 397.4
+ */
+fun NSFoundationVersionNumber10_0(): Double = 397.4
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_1 425.0
+ */
+fun NSFoundationVersionNumber10_1(): Double = 425.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_1_1 425.0
+ */
+fun NSFoundationVersionNumber10_1_1(): Double = 425.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_1_2 425.0
+ */
+fun NSFoundationVersionNumber10_1_2(): Double = 425.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_1_3 425.0
+ */
+fun NSFoundationVersionNumber10_1_3(): Double = 425.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_1_4 425.0
+ */
+fun NSFoundationVersionNumber10_1_4(): Double = 425.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_2 462.0
+ */
+fun NSFoundationVersionNumber10_2(): Double = 462.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_2_1 462.0
+ */
+fun NSFoundationVersionNumber10_2_1(): Double = 462.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_2_2 462.0
+ */
+fun NSFoundationVersionNumber10_2_2(): Double = 462.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_2_3 462.0
+ */
+fun NSFoundationVersionNumber10_2_3(): Double = 462.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_2_4 462.0
+ */
+fun NSFoundationVersionNumber10_2_4(): Double = 462.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_2_5 462.0
+ */
+fun NSFoundationVersionNumber10_2_5(): Double = 462.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_2_6 462.0
+ */
+fun NSFoundationVersionNumber10_2_6(): Double = 462.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_2_7 462.7
+ */
+fun NSFoundationVersionNumber10_2_7(): Double = 462.7
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_2_8 462.7
+ */
+fun NSFoundationVersionNumber10_2_8(): Double = 462.7
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3 500.0
+ */
+fun NSFoundationVersionNumber10_3(): Double = 500.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3_1 500.0
+ */
+fun NSFoundationVersionNumber10_3_1(): Double = 500.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3_2 500.3
+ */
+fun NSFoundationVersionNumber10_3_2(): Double = 500.3
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3_3 500.54
+ */
+fun NSFoundationVersionNumber10_3_3(): Double = 500.54
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3_4 500.56
+ */
+fun NSFoundationVersionNumber10_3_4(): Double = 500.56
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3_5 500.56
+ */
+fun NSFoundationVersionNumber10_3_5(): Double = 500.56
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3_6 500.56
+ */
+fun NSFoundationVersionNumber10_3_6(): Double = 500.56
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3_7 500.56
+ */
+fun NSFoundationVersionNumber10_3_7(): Double = 500.56
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3_8 500.56
+ */
+fun NSFoundationVersionNumber10_3_8(): Double = 500.56
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_3_9 500.58
+ */
+fun NSFoundationVersionNumber10_3_9(): Double = 500.58
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4 567.0
+ */
+fun NSFoundationVersionNumber10_4(): Double = 567.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_1 567.0
+ */
+fun NSFoundationVersionNumber10_4_1(): Double = 567.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_2 567.12
+ */
+fun NSFoundationVersionNumber10_4_2(): Double = 567.12
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_3 567.21
+ */
+fun NSFoundationVersionNumber10_4_3(): Double = 567.21
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_4_Intel 567.23
+ */
+fun NSFoundationVersionNumber10_4_4_Intel(): Double = 567.23
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_4_PowerPC 567.21
+ */
+fun NSFoundationVersionNumber10_4_4_PowerPC(): Double = 567.21
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_5 567.25
+ */
+fun NSFoundationVersionNumber10_4_5(): Double = 567.25
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_6 567.26
+ */
+fun NSFoundationVersionNumber10_4_6(): Double = 567.26
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_7 567.27
+ */
+fun NSFoundationVersionNumber10_4_7(): Double = 567.27
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_8 567.28
+ */
+fun NSFoundationVersionNumber10_4_8(): Double = 567.28
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_9 567.29
+ */
+fun NSFoundationVersionNumber10_4_9(): Double = 567.29
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_10 567.29
+ */
+fun NSFoundationVersionNumber10_4_10(): Double = 567.29
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_4_11 567.36
+ */
+fun NSFoundationVersionNumber10_4_11(): Double = 567.36
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_5 677.0
+ */
+fun NSFoundationVersionNumber10_5(): Double = 677.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_5_1 677.1
+ */
+fun NSFoundationVersionNumber10_5_1(): Double = 677.1
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_5_2 677.15
+ */
+fun NSFoundationVersionNumber10_5_2(): Double = 677.15
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_5_3 677.19
+ */
+fun NSFoundationVersionNumber10_5_3(): Double = 677.19
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_5_4 677.19
+ */
+fun NSFoundationVersionNumber10_5_4(): Double = 677.19
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_5_5 677.21
+ */
+fun NSFoundationVersionNumber10_5_5(): Double = 677.21
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_5_6 677.22
+ */
+fun NSFoundationVersionNumber10_5_6(): Double = 677.22
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_5_7 677.24
+ */
+fun NSFoundationVersionNumber10_5_7(): Double = 677.24
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_5_8 677.26
+ */
+fun NSFoundationVersionNumber10_5_8(): Double = 677.26
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_6 751.0
+ */
+fun NSFoundationVersionNumber10_6(): Double = 751.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_6_1 751.0
+ */
+fun NSFoundationVersionNumber10_6_1(): Double = 751.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_6_2 751.14
+ */
+fun NSFoundationVersionNumber10_6_2(): Double = 751.14
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_6_3 751.21
+ */
+fun NSFoundationVersionNumber10_6_3(): Double = 751.21
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_6_4 751.29
+ */
+fun NSFoundationVersionNumber10_6_4(): Double = 751.29
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_6_5 751.42
+ */
+fun NSFoundationVersionNumber10_6_5(): Double = 751.42
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_6_6 751.53
+ */
+fun NSFoundationVersionNumber10_6_6(): Double = 751.53
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_6_7 751.53
+ */
+fun NSFoundationVersionNumber10_6_7(): Double = 751.53
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_6_8 751.62
+ */
+fun NSFoundationVersionNumber10_6_8(): Double = 751.62
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_7 833.1
+ */
+fun NSFoundationVersionNumber10_7(): Double = 833.1
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_7_1 833.1
+ */
+fun NSFoundationVersionNumber10_7_1(): Double = 833.1
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_7_2 833.2
+ */
+fun NSFoundationVersionNumber10_7_2(): Double = 833.2
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_7_3 833.24
+ */
+fun NSFoundationVersionNumber10_7_3(): Double = 833.24
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_7_4 833.25
+ */
+fun NSFoundationVersionNumber10_7_4(): Double = 833.25
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_8 945.0
+ */
+fun NSFoundationVersionNumber10_8(): Double = 945.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_8_1 945.0
+ */
+fun NSFoundationVersionNumber10_8_1(): Double = 945.0
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_8_2 945.11
+ */
+fun NSFoundationVersionNumber10_8_2(): Double = 945.11
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_8_3 945.16
+ */
+fun NSFoundationVersionNumber10_8_3(): Double = 945.16
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_8_4 945.18
+ */
+fun NSFoundationVersionNumber10_8_4(): Double = 945.18
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_9_2 1056.13
+ */
+fun NSFoundationVersionNumber10_9_2(): Double = 1056.13
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_10 1151.16
+ */
+fun NSFoundationVersionNumber10_10(): Double = 1151.16
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_10_1 1151.16
+ */
+fun NSFoundationVersionNumber10_10_1(): Double = 1151.16
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_10_2 1152.14
+ */
+fun NSFoundationVersionNumber10_10_2(): Double = 1152.14
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_10_3 1153.2
+ */
+fun NSFoundationVersionNumber10_10_3(): Double = 1153.2
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_10_4 1153.2
+ */
+fun NSFoundationVersionNumber10_10_4(): Double = 1153.2
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_11_1 1255.1
+ */
+fun NSFoundationVersionNumber10_11_1(): Double = 1255.1
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_11_2 1256.1
+ */
+fun NSFoundationVersionNumber10_11_2(): Double = 1256.1
+
+/**
+ * {@snippet lang=c : #define NSFoundationVersionNumber10_11_3 1256.1
+ */
+fun NSFoundationVersionNumber10_11_3(): Double = 1256.1
+
+/**
+ * {@snippet lang=c : #define NSMaximumStringLength 2147483646
+ */
+fun NSMaximumStringLength(): Int = (2147483646).toInt()
+
+/**
+ * {@snippet lang=c : #define NSTimeIntervalSince1970 9.783072E8
+ */
+fun NSTimeIntervalSince1970(): Double = 9.783072E8
+
+/**
+ * {@snippet lang=c : #define NSDecimalMaxSize 8
+ */
+fun NSDecimalMaxSize(): Int = (8).toInt()
+
+/**
+ * {@snippet lang=c : #define NSDecimalNoScale 32767
+ */
+fun NSDecimalNoScale(): Int = (32767).toInt()
+
+/**
+ * {@snippet lang=c : #define CG_OS_VERSION_2020 1
+ */
+fun CG_OS_VERSION_2020(): Int = (1).toInt()
+
+// Skipped constant NSNotAnIntMapKey: numeric value cannot be represented as MemorySegment
+
+// Skipped constant NSNotAnIntegerMapKey: numeric value cannot be represented as MemorySegment
+
+// Skipped constant NSNotAPointerMapKey: numeric value cannot be represented as MemorySegment
+
+/**
+ * {@snippet lang=c : #define NSOperationQualityOfServiceUserInteractive 33
+ */
+fun NSOperationQualityOfServiceUserInteractive(): Long = 33
+
+/**
+ * {@snippet lang=c : #define NSOperationQualityOfServiceUserInitiated 25
+ */
+fun NSOperationQualityOfServiceUserInitiated(): Long = 25
+
+/**
+ * {@snippet lang=c : #define NSOperationQualityOfServiceUtility 17
+ */
+fun NSOperationQualityOfServiceUtility(): Long = 17
+
+/**
+ * {@snippet lang=c : #define NSOperationQualityOfServiceBackground 9
+ */
+fun NSOperationQualityOfServiceBackground(): Long = 9
+
+/**
+ * {@snippet lang=c : #define NSURLResponseUnknownLength -1
+ */
+fun NSURLResponseUnknownLength(): Long = -1
+
+/**
+ * {@snippet lang=c : #define kCGNullWindowID 0
+ */
+fun kCGNullWindowID(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGWindowIDCFNumberType 3
+ */
+fun kCGWindowIDCFNumberType(): Long = 3
+
+/**
+ * {@snippet lang=c : #define kCGWindowSharingCFNumberType 3
+ */
+fun kCGWindowSharingCFNumberType(): Long = 3
+
+/**
+ * {@snippet lang=c : #define kCGWindowBackingCFNumberType 3
+ */
+fun kCGWindowBackingCFNumberType(): Long = 3
+
+/**
+ * {@snippet lang=c : #define kCGNumReservedWindowLevels 16
+ */
+fun kCGNumReservedWindowLevels(): Int = (16).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGNumReservedBaseWindowLevels 5
+ */
+fun kCGNumReservedBaseWindowLevels(): Int = (5).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGBaseWindowLevel -2147483648
+ */
+fun kCGBaseWindowLevel(): Int = (-2147483648).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGMinimumWindowLevel -2147483643
+ */
+fun kCGMinimumWindowLevel(): Int = (-2147483643).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGMaximumWindowLevel 2147483631
+ */
+fun kCGMaximumWindowLevel(): Int = (2147483631).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGDesktopWindowLevel -2147483623
+ */
+fun kCGDesktopWindowLevel(): Int = (-2147483623).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGDesktopIconWindowLevel -2147483603
+ */
+fun kCGDesktopIconWindowLevel(): Int = (-2147483603).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGBackstopMenuLevel -20
+ */
+fun kCGBackstopMenuLevel(): Int = (-20).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGNormalWindowLevel 0
+ */
+fun kCGNormalWindowLevel(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGFloatingWindowLevel 3
+ */
+fun kCGFloatingWindowLevel(): Int = (3).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGTornOffMenuWindowLevel 3
+ */
+fun kCGTornOffMenuWindowLevel(): Int = (3).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGModalPanelWindowLevel 8
+ */
+fun kCGModalPanelWindowLevel(): Int = (8).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGUtilityWindowLevel 19
+ */
+fun kCGUtilityWindowLevel(): Int = (19).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGDockWindowLevel 20
+ */
+fun kCGDockWindowLevel(): Int = (20).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGMainMenuWindowLevel 24
+ */
+fun kCGMainMenuWindowLevel(): Int = (24).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGStatusWindowLevel 25
+ */
+fun kCGStatusWindowLevel(): Int = (25).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGPopUpMenuWindowLevel 101
+ */
+fun kCGPopUpMenuWindowLevel(): Int = (101).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGOverlayWindowLevel 102
+ */
+fun kCGOverlayWindowLevel(): Int = (102).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGHelpWindowLevel 200
+ */
+fun kCGHelpWindowLevel(): Int = (200).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGDraggingWindowLevel 500
+ */
+fun kCGDraggingWindowLevel(): Int = (500).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGScreenSaverWindowLevel 1000
+ */
+fun kCGScreenSaverWindowLevel(): Int = (1000).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGAssistiveTechHighWindowLevel 1500
+ */
+fun kCGAssistiveTechHighWindowLevel(): Int = (1500).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGCursorWindowLevel 2147483630
+ */
+fun kCGCursorWindowLevel(): Int = (2147483630).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGNullDirectDisplay 0
+ */
+fun kCGNullDirectDisplay(): Int = (0).toInt()
+
+// Skipped constant kCGDisplayWidth: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayHeight: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayMode: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayBitsPerPixel: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayBitsPerSample: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplaySamplesPerPixel: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayRefreshRate: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayModeUsableForDesktopGUI: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayIOFlags: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayBytesPerRow: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGIODisplayModeID: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayModeIsSafeForHardware: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayModeIsInterlaced: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayModeIsStretched: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGDisplayModeIsTelevisionOutput: String value cannot be represented as MemorySegment
+
+/**
+ * {@snippet lang=c : #define CGDisplayNoErr 0
+ */
+fun CGDisplayNoErr(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGDisplayFadeReservationInvalidToken 0
+ */
+fun kCGDisplayFadeReservationInvalidToken(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGDisplayBlendNormal 0.0
+ */
+fun kCGDisplayBlendNormal(): Double = 0.0
+
+/**
+ * {@snippet lang=c : #define kCGDisplayBlendSolidColor 1.0
+ */
+fun kCGDisplayBlendSolidColor(): Double = 1.0
+
+/**
+ * {@snippet lang=c : #define kCGMaxDisplayReservationInterval 15.0
+ */
+fun kCGMaxDisplayReservationInterval(): Float = (15.0).toFloat()
+
+/**
+ * {@snippet lang=c : #define CGEventNoErr 0
+ */
+fun CGEventNoErr(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGMouseDownEventMaskingDeadSwitchTimeout 60.0
+ */
+fun kCGMouseDownEventMaskingDeadSwitchTimeout(): Double = 60.0
+
+/**
+ * {@snippet lang=c : #define kCGEventFilterMaskPermitAllEvents 7
+ */
+fun kCGEventFilterMaskPermitAllEvents(): Int = (7).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGEventSupressionStateSupressionInterval 0
+ */
+fun kCGEventSupressionStateSupressionInterval(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGEventSupressionStateRemoteMouseDrag 1
+ */
+fun kCGEventSupressionStateRemoteMouseDrag(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGNumberOfEventSupressionStates 2
+ */
+fun kCGNumberOfEventSupressionStates(): Int = (2).toInt()
+
+/**
+ * {@snippet lang=c : #define kCGEventMaskForAllEvents -1
+ */
+fun kCGEventMaskForAllEvents(): Long = -1
+
+// Skipped constant kCGNotifyEventTapAdded: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGNotifyEventTapRemoved: String value cannot be represented as MemorySegment
+
+/**
+ * {@snippet lang=c : #define kCGAnyInputEventType 4294967295
+ */
+fun kCGAnyInputEventType(): CGEventType = CGEventType.fromValue(4294967295L)
+
+// Skipped constant kCGSessionUserIDKey: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGSessionUserNameKey: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGSessionConsoleSetKey: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGSessionOnConsoleKey: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGSessionLoginDoneKey: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGNotifyGUIConsoleSessionChanged: String value cannot be represented as MemorySegment
+
+// Skipped constant kCGNotifyGUISessionUserChanged: String value cannot be represented as MemorySegment
+
+/**
+ * {@snippet lang=c : #define NSIMAGE_UNAVAILABLE_MACCATALYST 0
+ */
+fun NSIMAGE_UNAVAILABLE_MACCATALYST(): Int = (0).toInt()

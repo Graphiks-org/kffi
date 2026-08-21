@@ -191,3 +191,17 @@ open class NSWindowController(override val ptr: MemorySegment) : NSResponder(ptr
     }
 
 }
+
+// ── Category: NSWindowControllerStoryboardingMethods on NSWindowController ─────────────────────────────────────────
+
+fun NSWindowController.storyboard(): MemorySegment {
+    val sel = ObjCRuntime.sel("storyboard")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSWindowControllerDismissing on NSWindowController ─────────────────────────────────────────
+
+fun NSWindowController.dismissController(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("dismissController:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}

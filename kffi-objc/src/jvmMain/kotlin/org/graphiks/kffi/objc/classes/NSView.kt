@@ -974,3 +974,878 @@ open class NSView(override val ptr: MemorySegment) : NSResponder(ptr) {
     }
 
 }
+
+// ── Category: NSKeyboardUI on NSView ─────────────────────────────────────────
+
+fun NSView.setKeyboardFocusRingNeedsDisplayInRect(rect: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setKeyboardFocusRingNeedsDisplayInRect:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, rect)
+}
+
+fun NSView.drawFocusRingMask(): Unit {
+    val sel = ObjCRuntime.sel("drawFocusRingMask")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.noteFocusRingMaskChanged(): Unit {
+    val sel = ObjCRuntime.sel("noteFocusRingMaskChanged")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.nextKeyView(): MemorySegment {
+    val sel = ObjCRuntime.sel("nextKeyView")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.setNextKeyView(nextKeyView: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setNextKeyView:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, nextKeyView)
+}
+
+fun NSView.previousKeyView(): MemorySegment {
+    val sel = ObjCRuntime.sel("previousKeyView")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.nextValidKeyView(): MemorySegment {
+    val sel = ObjCRuntime.sel("nextValidKeyView")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.previousValidKeyView(): MemorySegment {
+    val sel = ObjCRuntime.sel("previousValidKeyView")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.canBecomeKeyView(): Boolean {
+    val sel = ObjCRuntime.sel("canBecomeKeyView")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSView.focusRingType(): MemorySegment {
+    val sel = ObjCRuntime.sel("focusRingType")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.setFocusRingType(focusRingType: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setFocusRingType:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, focusRingType)
+}
+
+fun NSView.focusRingMaskBounds(): MemorySegment {
+    val sel = ObjCRuntime.sel("focusRingMaskBounds")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel) as MemorySegment
+}
+
+// Class method: +[NSView defaultFocusRingType]
+fun NSView_defaultFocusRingType(): MemorySegment {
+    val sel = ObjCRuntime.sel("defaultFocusRingType")
+    val cls = ObjCRuntime.getClass("NSView")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// @property defaultFocusRingType
+fun NSView.defaultFocusRingType(): MemorySegment {
+    val sel = ObjCRuntime.sel("defaultFocusRingType")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSPrinting on NSView ─────────────────────────────────────────
+
+fun NSView.writeEPSInsideRect_toPasteboard(rect: MemorySegment, pasteboard: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("writeEPSInsideRect:toPasteboard:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, rect, pasteboard)
+}
+
+fun NSView.dataWithEPSInsideRect(rect: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("dataWithEPSInsideRect:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, rect) as MemorySegment
+}
+
+fun NSView.writePDFInsideRect_toPasteboard(rect: MemorySegment, pasteboard: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("writePDFInsideRect:toPasteboard:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, rect, pasteboard)
+}
+
+fun NSView.dataWithPDFInsideRect(rect: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("dataWithPDFInsideRect:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, rect) as MemorySegment
+}
+
+fun NSView.print(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("print:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+fun NSView.knowsPageRange(range: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("knowsPageRange:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, range) as Boolean
+}
+
+fun NSView.adjustPageWidthNew_left_right_limit(newRight: MemorySegment, oldLeft: Double, oldRight: Double, rightLimit: Double): Unit {
+    val sel = ObjCRuntime.sel("adjustPageWidthNew:left:right:limit:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, newRight, oldLeft, oldRight, rightLimit)
+}
+
+fun NSView.adjustPageHeightNew_top_bottom_limit(newBottom: MemorySegment, oldTop: Double, oldBottom: Double, bottomLimit: Double): Unit {
+    val sel = ObjCRuntime.sel("adjustPageHeightNew:top:bottom:limit:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, newBottom, oldTop, oldBottom, bottomLimit)
+}
+
+fun NSView.rectForPage(page: Long): MemorySegment {
+    val sel = ObjCRuntime.sel("rectForPage:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, page) as MemorySegment
+}
+
+fun NSView.locationOfPrintRect(rect: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("locationOfPrintRect:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, rect) as MemorySegment
+}
+
+fun NSView.drawPageBorderWithSize(borderSize: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("drawPageBorderWithSize:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, borderSize)
+}
+
+fun NSView.drawSheetBorderWithSize(borderSize: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("drawSheetBorderWithSize:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, borderSize)
+}
+
+fun NSView.beginDocument(): Unit {
+    val sel = ObjCRuntime.sel("beginDocument")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.endDocument(): Unit {
+    val sel = ObjCRuntime.sel("endDocument")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.beginPageInRect_atPlacement(rect: MemorySegment, location: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("beginPageInRect:atPlacement:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, rect, location)
+}
+
+fun NSView.endPage(): Unit {
+    val sel = ObjCRuntime.sel("endPage")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.heightAdjustLimit(): Double {
+    val sel = ObjCRuntime.sel("heightAdjustLimit")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+
+fun NSView.widthAdjustLimit(): Double {
+    val sel = ObjCRuntime.sel("widthAdjustLimit")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+
+fun NSView.pageHeader(): MemorySegment {
+    val sel = ObjCRuntime.sel("pageHeader")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.pageFooter(): MemorySegment {
+    val sel = ObjCRuntime.sel("pageFooter")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.printJobTitle(): MemorySegment {
+    val sel = ObjCRuntime.sel("printJobTitle")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSDrag on NSView ─────────────────────────────────────────
+
+fun NSView.beginDraggingSessionWithItems_event_source(items: MemorySegment, event: MemorySegment, source: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("beginDraggingSessionWithItems:event:source:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, items, event, source) as MemorySegment
+}
+
+fun NSView.registerForDraggedTypes(newTypes: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("registerForDraggedTypes:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, newTypes)
+}
+
+fun NSView.unregisterDraggedTypes(): Unit {
+    val sel = ObjCRuntime.sel("unregisterDraggedTypes")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+/** @return NSArray<NSPasteboardType> * */
+fun NSView.registeredDraggedTypes(): MemorySegment {
+    val sel = ObjCRuntime.sel("registeredDraggedTypes")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSFullScreenMode on NSView ─────────────────────────────────────────
+
+fun NSView.enterFullScreenMode_withOptions(screen: MemorySegment, options: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("enterFullScreenMode:withOptions:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, screen, options) as Boolean
+}
+
+fun NSView.exitFullScreenModeWithOptions(options: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("exitFullScreenModeWithOptions:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, options)
+}
+
+fun NSView.isInFullScreenMode(): Boolean {
+    val sel = ObjCRuntime.sel("isInFullScreenMode")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+// ── Category: NSDefinition on NSView ─────────────────────────────────────────
+
+fun NSView.showDefinitionForAttributedString_atPoint(attrString: MemorySegment, textBaselineOrigin: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("showDefinitionForAttributedString:atPoint:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, attrString, textBaselineOrigin)
+}
+
+fun NSView.showDefinitionForAttributedString_range_options_baselineOriginProvider(attrString: MemorySegment, targetRange: MemorySegment, options: MemorySegment, originProvider: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("showDefinitionForAttributedString:range:options:baselineOriginProvider:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, attrString, targetRange, options, originProvider)
+}
+
+// ── Category: NSFindIndicator on NSView ─────────────────────────────────────────
+
+fun NSView.isDrawingFindIndicator(): Boolean {
+    val sel = ObjCRuntime.sel("isDrawingFindIndicator")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+// ── Category: NSGestureRecognizer on NSView ─────────────────────────────────────────
+
+fun NSView.addGestureRecognizer(gestureRecognizer: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("addGestureRecognizer:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, gestureRecognizer)
+}
+
+fun NSView.removeGestureRecognizer(gestureRecognizer: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("removeGestureRecognizer:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, gestureRecognizer)
+}
+
+/** @return NSArray<__kindof NSGestureRecognizer *> * */
+fun NSView.gestureRecognizers(): MemorySegment {
+    val sel = ObjCRuntime.sel("gestureRecognizers")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.setGestureRecognizers(gestureRecognizers: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setGestureRecognizers:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, gestureRecognizers)
+}
+
+// ── Category: NSTouchBar on NSView ─────────────────────────────────────────
+
+fun NSView.allowedTouchTypes(): MemorySegment {
+    val sel = ObjCRuntime.sel("allowedTouchTypes")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.setAllowedTouchTypes(allowedTouchTypes: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setAllowedTouchTypes:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, allowedTouchTypes)
+}
+
+// ── Category: NSSafeAreas on NSView ─────────────────────────────────────────
+
+fun NSView.safeAreaInsets(): MemorySegment {
+    val sel = ObjCRuntime.sel("safeAreaInsets")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), this.ptr, sel) as MemorySegment
+}
+
+fun NSView.additionalSafeAreaInsets(): MemorySegment {
+    val sel = ObjCRuntime.sel("additionalSafeAreaInsets")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), this.ptr, sel) as MemorySegment
+}
+
+fun NSView.setAdditionalSafeAreaInsets(additionalSafeAreaInsets: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setAdditionalSafeAreaInsets:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, additionalSafeAreaInsets)
+}
+
+fun NSView.safeAreaLayoutGuide(): MemorySegment {
+    val sel = ObjCRuntime.sel("safeAreaLayoutGuide")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.safeAreaRect(): MemorySegment {
+    val sel = ObjCRuntime.sel("safeAreaRect")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel) as MemorySegment
+}
+
+fun NSView.layoutMarginsGuide(): MemorySegment {
+    val sel = ObjCRuntime.sel("layoutMarginsGuide")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSCompactControlSizeMetrics on NSView ─────────────────────────────────────────
+
+fun NSView.prefersCompactControlSizeMetrics(): Boolean {
+    val sel = ObjCRuntime.sel("prefersCompactControlSizeMetrics")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSView.setPrefersCompactControlSizeMetrics(prefersCompactControlSizeMetrics: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setPrefersCompactControlSizeMetrics:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, prefersCompactControlSizeMetrics)
+}
+
+// ── Category: NSTrackingArea on NSView ─────────────────────────────────────────
+
+fun NSView.addTrackingArea(trackingArea: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("addTrackingArea:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, trackingArea)
+}
+
+fun NSView.removeTrackingArea(trackingArea: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("removeTrackingArea:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, trackingArea)
+}
+
+fun NSView.updateTrackingAreas(): Unit {
+    val sel = ObjCRuntime.sel("updateTrackingAreas")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.addCursorRect_cursor(rect: MemorySegment, `object`: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("addCursorRect:cursor:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, rect, `object`)
+}
+
+fun NSView.removeCursorRect_cursor(rect: MemorySegment, `object`: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("removeCursorRect:cursor:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, rect, `object`)
+}
+
+fun NSView.discardCursorRects(): Unit {
+    val sel = ObjCRuntime.sel("discardCursorRects")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.resetCursorRects(): Unit {
+    val sel = ObjCRuntime.sel("resetCursorRects")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.addTrackingRect_owner_userData_assumeInside(rect: MemorySegment, owner: MemorySegment, `data`: MemorySegment, flag: Boolean): Long {
+    val sel = ObjCRuntime.sel("addTrackingRect:owner:userData:assumeInside:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, rect, owner, `data`, flag) as Long
+}
+
+fun NSView.removeTrackingRect(tag: Long): Unit {
+    val sel = ObjCRuntime.sel("removeTrackingRect:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, tag)
+}
+
+/** @return NSArray<NSTrackingArea *> * */
+fun NSView.trackingAreas(): MemorySegment {
+    val sel = ObjCRuntime.sel("trackingAreas")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSDisplayLink on NSView ─────────────────────────────────────────
+
+fun NSView.displayLinkWithTarget_selector(target: MemorySegment, selector: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("displayLinkWithTarget:selector:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, target, selector) as MemorySegment
+}
+
+// ── Category: NSDeprecated on NSView ─────────────────────────────────────────
+
+fun NSView.dragImage_at_offset_event_pasteboard_source_slideBack(image: MemorySegment, viewLocation: MemorySegment, initialOffset: MemorySegment, event: MemorySegment, pboard: MemorySegment, sourceObj: MemorySegment, slideFlag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("dragImage:at:offset:event:pasteboard:source:slideBack:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, image, viewLocation, initialOffset, event, pboard, sourceObj, slideFlag)
+}
+
+fun NSView.dragFile_fromRect_slideBack_event(filename: MemorySegment, rect: MemorySegment, flag: Boolean, event: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("dragFile:fromRect:slideBack:event:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, filename, rect, flag, event) as Boolean
+}
+
+fun NSView.dragPromisedFilesOfTypes_fromRect_source_slideBack_event(typeArray: MemorySegment, rect: MemorySegment, sourceObject: MemorySegment, flag: Boolean, event: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("dragPromisedFilesOfTypes:fromRect:source:slideBack:event:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, typeArray, rect, sourceObject, flag, event) as Boolean
+}
+
+fun NSView.convertPointToBase(point: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("convertPointToBase:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, point) as MemorySegment
+}
+
+fun NSView.convertPointFromBase(point: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("convertPointFromBase:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, point) as MemorySegment
+}
+
+fun NSView.convertSizeToBase(size: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("convertSizeToBase:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel, size) as MemorySegment
+}
+
+fun NSView.convertSizeFromBase(size: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("convertSizeFromBase:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel, size) as MemorySegment
+}
+
+fun NSView.convertRectToBase(rect: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("convertRectToBase:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, rect) as MemorySegment
+}
+
+fun NSView.convertRectFromBase(rect: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("convertRectFromBase:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, rect) as MemorySegment
+}
+
+fun NSView.performMnemonic(string: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("performMnemonic:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, string) as Boolean
+}
+
+fun NSView.shouldDrawColor(): Boolean {
+    val sel = ObjCRuntime.sel("shouldDrawColor")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSView.gState(): Long {
+    val sel = ObjCRuntime.sel("gState")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
+}
+
+fun NSView.allocateGState(): Unit {
+    val sel = ObjCRuntime.sel("allocateGState")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.releaseGState(): Unit {
+    val sel = ObjCRuntime.sel("releaseGState")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.setUpGState(): Unit {
+    val sel = ObjCRuntime.sel("setUpGState")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.renewGState(): Unit {
+    val sel = ObjCRuntime.sel("renewGState")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+// ── Category: NSWritingToolsCoordinator on NSView ─────────────────────────────────────────
+
+fun NSView.writingToolsCoordinator(): MemorySegment {
+    val sel = ObjCRuntime.sel("writingToolsCoordinator")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.setWritingToolsCoordinator(writingToolsCoordinator: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setWritingToolsCoordinator:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, writingToolsCoordinator)
+}
+
+// ── Category: NSViewEnclosingMenuItem on NSView ─────────────────────────────────────────
+
+fun NSView.enclosingMenuItem(): MemorySegment {
+    val sel = ObjCRuntime.sel("enclosingMenuItem")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSCandidateListTouchBarItem on NSView ─────────────────────────────────────────
+
+fun NSView.candidateListTouchBarItem(): MemorySegment {
+    val sel = ObjCRuntime.sel("candidateListTouchBarItem")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSClipViewSuperview on NSView ─────────────────────────────────────────
+
+fun NSView.reflectScrolledClipView(clipView: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("reflectScrolledClipView:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, clipView)
+}
+
+fun NSView.scrollClipView_toPoint(clipView: MemorySegment, point: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("scrollClipView:toPoint:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, clipView, point)
+}
+
+// ── Category: NSConstraintBasedLayoutInstallingConstraints on NSView ─────────────────────────────────────────
+
+fun NSView.addConstraint(constraint: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("addConstraint:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, constraint)
+}
+
+fun NSView.addConstraints(constraints: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("addConstraints:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, constraints)
+}
+
+fun NSView.removeConstraint(constraint: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("removeConstraint:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, constraint)
+}
+
+fun NSView.removeConstraints(constraints: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("removeConstraints:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, constraints)
+}
+
+fun NSView.leadingAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("leadingAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.trailingAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("trailingAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.leftAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("leftAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.rightAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("rightAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.topAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("topAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.bottomAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("bottomAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.widthAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("widthAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.heightAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("heightAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.centerXAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("centerXAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.centerYAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("centerYAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.firstBaselineAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("firstBaselineAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.lastBaselineAnchor(): MemorySegment {
+    val sel = ObjCRuntime.sel("lastBaselineAnchor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+/** @return NSArray<NSLayoutConstraint *> * */
+fun NSView.constraints(): MemorySegment {
+    val sel = ObjCRuntime.sel("constraints")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSConstraintBasedLayoutCoreMethods on NSView ─────────────────────────────────────────
+
+fun NSView.updateConstraintsForSubtreeIfNeeded(): Unit {
+    val sel = ObjCRuntime.sel("updateConstraintsForSubtreeIfNeeded")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.updateConstraints(): Unit {
+    val sel = ObjCRuntime.sel("updateConstraints")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.needsUpdateConstraints(): Boolean {
+    val sel = ObjCRuntime.sel("needsUpdateConstraints")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSView.setNeedsUpdateConstraints(needsUpdateConstraints: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setNeedsUpdateConstraints:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, needsUpdateConstraints)
+}
+
+// ── Category: NSConstraintBasedCompatibility on NSView ─────────────────────────────────────────
+
+fun NSView.translatesAutoresizingMaskIntoConstraints(): Boolean {
+    val sel = ObjCRuntime.sel("translatesAutoresizingMaskIntoConstraints")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSView.setTranslatesAutoresizingMaskIntoConstraints(translatesAutoresizingMaskIntoConstraints: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setTranslatesAutoresizingMaskIntoConstraints:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, translatesAutoresizingMaskIntoConstraints)
+}
+
+// Class method: +[NSView requiresConstraintBasedLayout]
+fun NSView_requiresConstraintBasedLayout(): Boolean {
+    val sel = ObjCRuntime.sel("requiresConstraintBasedLayout")
+    val cls = ObjCRuntime.getClass("NSView")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+// @property requiresConstraintBasedLayout
+fun NSView.requiresConstraintBasedLayout(): Boolean {
+    val sel = ObjCRuntime.sel("requiresConstraintBasedLayout")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+// ── Category: NSConstraintBasedLayoutLayering on NSView ─────────────────────────────────────────
+
+fun NSView.alignmentRectForFrame(frame: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("alignmentRectForFrame:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, frame) as MemorySegment
+}
+
+fun NSView.frameForAlignmentRect(alignmentRect: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("frameForAlignmentRect:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, alignmentRect) as MemorySegment
+}
+
+fun NSView.invalidateIntrinsicContentSize(): Unit {
+    val sel = ObjCRuntime.sel("invalidateIntrinsicContentSize")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.contentHuggingPriorityForOrientation(orientation: MemorySegment): Float {
+    val sel = ObjCRuntime.sel("contentHuggingPriorityForOrientation:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, this.ptr, sel, orientation) as Float
+}
+
+fun NSView.setContentHuggingPriority_forOrientation(priority: Float, orientation: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setContentHuggingPriority:forOrientation:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, priority, orientation)
+}
+
+fun NSView.contentCompressionResistancePriorityForOrientation(orientation: MemorySegment): Float {
+    val sel = ObjCRuntime.sel("contentCompressionResistancePriorityForOrientation:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, this.ptr, sel, orientation) as Float
+}
+
+fun NSView.setContentCompressionResistancePriority_forOrientation(priority: Float, orientation: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setContentCompressionResistancePriority:forOrientation:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, priority, orientation)
+}
+
+fun NSView.alignmentRectInsets(): MemorySegment {
+    val sel = ObjCRuntime.sel("alignmentRectInsets")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), this.ptr, sel) as MemorySegment
+}
+
+fun NSView.firstBaselineOffsetFromTop(): Double {
+    val sel = ObjCRuntime.sel("firstBaselineOffsetFromTop")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+
+fun NSView.lastBaselineOffsetFromBottom(): Double {
+    val sel = ObjCRuntime.sel("lastBaselineOffsetFromBottom")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+
+fun NSView.baselineOffsetFromBottom(): Double {
+    val sel = ObjCRuntime.sel("baselineOffsetFromBottom")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+
+fun NSView.intrinsicContentSize(): MemorySegment {
+    val sel = ObjCRuntime.sel("intrinsicContentSize")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+}
+
+fun NSView.isHorizontalContentSizeConstraintActive(): Boolean {
+    val sel = ObjCRuntime.sel("isHorizontalContentSizeConstraintActive")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSView.setHorizontalContentSizeConstraintActive(horizontalContentSizeConstraintActive: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setHorizontalContentSizeConstraintActive:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, horizontalContentSizeConstraintActive)
+}
+
+fun NSView.isVerticalContentSizeConstraintActive(): Boolean {
+    val sel = ObjCRuntime.sel("isVerticalContentSizeConstraintActive")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSView.setVerticalContentSizeConstraintActive(verticalContentSizeConstraintActive: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setVerticalContentSizeConstraintActive:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, verticalContentSizeConstraintActive)
+}
+
+// ── Category: NSConstraintBasedLayoutFittingSize on NSView ─────────────────────────────────────────
+
+fun NSView.fittingSize(): MemorySegment {
+    val sel = ObjCRuntime.sel("fittingSize")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSConstraintBasedLayoutDebugging on NSView ─────────────────────────────────────────
+
+/** @return NSArray<NSLayoutConstraint *> * */
+fun NSView.constraintsAffectingLayoutForOrientation(orientation: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("constraintsAffectingLayoutForOrientation:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, orientation) as MemorySegment
+}
+
+fun NSView.exerciseAmbiguityInLayout(): Unit {
+    val sel = ObjCRuntime.sel("exerciseAmbiguityInLayout")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSView.hasAmbiguousLayout(): Boolean {
+    val sel = ObjCRuntime.sel("hasAmbiguousLayout")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+// ── Category: NSLayoutGuideSupport on NSView ─────────────────────────────────────────
+
+fun NSView.addLayoutGuide(guide: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("addLayoutGuide:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, guide)
+}
+
+fun NSView.removeLayoutGuide(guide: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("removeLayoutGuide:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, guide)
+}
+
+/** @return NSArray<NSLayoutGuide *> * */
+fun NSView.layoutGuides(): MemorySegment {
+    val sel = ObjCRuntime.sel("layoutGuides")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: LayoutRegions on NSView ─────────────────────────────────────────
+
+fun NSView.layoutGuideForLayoutRegion(layoutRegion: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("layoutGuideForLayoutRegion:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, layoutRegion) as MemorySegment
+}
+
+fun NSView.edgeInsetsForLayoutRegion(layoutRegion: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("edgeInsetsForLayoutRegion:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), this.ptr, sel, layoutRegion) as MemorySegment
+}
+
+fun NSView.rectForLayoutRegion(layoutRegion: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("rectForLayoutRegion:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, layoutRegion) as MemorySegment
+}
+
+// ── Category: NSRulerMarkerClientViewDelegation on NSView ─────────────────────────────────────────
+
+fun NSView.rulerView_shouldMoveMarker(ruler: MemorySegment, marker: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("rulerView:shouldMoveMarker:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ruler, marker) as Boolean
+}
+
+fun NSView.rulerView_willMoveMarker_toLocation(ruler: MemorySegment, marker: MemorySegment, location: Double): Double {
+    val sel = ObjCRuntime.sel("rulerView:willMoveMarker:toLocation:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel, ruler, marker, location) as Double
+}
+
+fun NSView.rulerView_didMoveMarker(ruler: MemorySegment, marker: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("rulerView:didMoveMarker:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, ruler, marker)
+}
+
+fun NSView.rulerView_shouldRemoveMarker(ruler: MemorySegment, marker: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("rulerView:shouldRemoveMarker:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ruler, marker) as Boolean
+}
+
+fun NSView.rulerView_didRemoveMarker(ruler: MemorySegment, marker: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("rulerView:didRemoveMarker:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, ruler, marker)
+}
+
+fun NSView.rulerView_shouldAddMarker(ruler: MemorySegment, marker: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("rulerView:shouldAddMarker:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ruler, marker) as Boolean
+}
+
+fun NSView.rulerView_willAddMarker_atLocation(ruler: MemorySegment, marker: MemorySegment, location: Double): Double {
+    val sel = ObjCRuntime.sel("rulerView:willAddMarker:atLocation:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel, ruler, marker, location) as Double
+}
+
+fun NSView.rulerView_didAddMarker(ruler: MemorySegment, marker: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("rulerView:didAddMarker:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, ruler, marker)
+}
+
+fun NSView.rulerView_handleMouseDown(ruler: MemorySegment, event: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("rulerView:handleMouseDown:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, ruler, event)
+}
+
+fun NSView.rulerView_willSetClientView(ruler: MemorySegment, newClient: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("rulerView:willSetClientView:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, ruler, newClient)
+}
+
+fun NSView.rulerView_locationForPoint(ruler: MemorySegment, point: MemorySegment): Double {
+    val sel = ObjCRuntime.sel("rulerView:locationForPoint:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel, ruler, point) as Double
+}
+
+fun NSView.rulerView_pointForLocation(ruler: MemorySegment, point: Double): MemorySegment {
+    val sel = ObjCRuntime.sel("rulerView:pointForLocation:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, ruler, point) as MemorySegment
+}
+
+// ── Category: NSOpenGLSurfaceResolution on NSView ─────────────────────────────────────────
+
+fun NSView.wantsBestResolutionOpenGLSurface(): Boolean {
+    val sel = ObjCRuntime.sel("wantsBestResolutionOpenGLSurface")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSView.setWantsBestResolutionOpenGLSurface(wantsBestResolutionOpenGLSurface: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setWantsBestResolutionOpenGLSurface:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, wantsBestResolutionOpenGLSurface)
+}
+
+// ── Category: NSExtendedDynamicRange on NSView ─────────────────────────────────────────
+
+fun NSView.wantsExtendedDynamicRangeOpenGLSurface(): Boolean {
+    val sel = ObjCRuntime.sel("wantsExtendedDynamicRangeOpenGLSurface")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSView.setWantsExtendedDynamicRangeOpenGLSurface(wantsExtendedDynamicRangeOpenGLSurface: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setWantsExtendedDynamicRangeOpenGLSurface:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, wantsExtendedDynamicRangeOpenGLSurface)
+}
+
+// ── Category: NSPressureConfiguration on NSView ─────────────────────────────────────────
+
+fun NSView.pressureConfiguration(): MemorySegment {
+    val sel = ObjCRuntime.sel("pressureConfiguration")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSView.setPressureConfiguration(pressureConfiguration: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setPressureConfiguration:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, pressureConfiguration)
+}

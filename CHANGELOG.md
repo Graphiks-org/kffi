@@ -41,6 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Foundation, and AppKit FFM bindings.
 - Expanded the `kffi-objc` AppKit subset with window controllers, screen and
   input bindings, rendering resources, and controls.
+- Expanded `kffi-objc` generation to the complete class and protocol surface of
+  the selected Apple SDK frameworks.
 - Reproducible Docker/kextract generation pipeline for the kffi-wayland XDG
   Shell bindings.
 

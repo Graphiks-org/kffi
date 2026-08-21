@@ -1,15 +1,1 @@
-#import <Foundation/NSObject.h>
-#import <Foundation/NSString.h>
-#import <AppKit/NSApplication.h>
-#import <AppKit/NSView.h>
-#import <AppKit/NSWindow.h>
-#import <AppKit/NSWindowController.h>
-#import <AppKit/NSViewController.h>
-#import <AppKit/NSScreen.h>
-#import <AppKit/NSEvent.h>
-#import <AppKit/NSColor.h>
-#import <AppKit/NSImage.h>
-#import <AppKit/NSCursor.h>
-#import <AppKit/NSControl.h>
-#import <AppKit/NSButton.h>
-#import <AppKit/NSTextField.h>
+#import <AppKit/AppKit.h>
