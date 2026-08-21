@@ -255,6 +255,23 @@ declarations or LP64 padding. `XEvent`, `XImage`, `XWindowAttributes`,
 do not replace the native records passed to Xlib. The generator validates those
 shim sizes, alignments, and native offsets with C `_Static_assert` checks.
 
+### Objective-C/AppKit integration
+
+`:kffi-objc` includes a macOS-only AppKit screenshot integration. It renders
+four colored quadrants through the generated Objective-C bindings, validates the
+PNG pixels, and writes `screenshot.png` plus diagnostics to
+`kffi-objc/build/objc-integration/`.
+
+Run it locally on macOS with:
+
+```bash
+scripts/run-objc-integration.sh
+```
+
+The `objc-integration` CI job runs the same script and uploads the generated
+image as a workflow artifact. The Gradle task can also be invoked directly with
+`KFFI_OBJC_INTEGRATION=1`.
+
 ## Loading a native library
 
 ### JVM

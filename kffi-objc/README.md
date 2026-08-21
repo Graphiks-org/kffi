@@ -47,3 +47,27 @@ there when extending the supported SDK surface.
 ```
 
 The runtime test executes on macOS and is skipped on other JVM hosts.
+
+### AppKit screenshot integration
+
+The AppKit integration renders four colored quadrants through the generated
+Objective-C bindings, encodes the result as PNG, validates the decoded pixels,
+and writes the screenshot plus diagnostics to
+`kffi-objc/build/objc-integration/`.
+
+Run the self-contained local flow on macOS with:
+
+```bash
+scripts/run-objc-integration.sh
+```
+
+The same test is executed by the `objc-integration` CI job and the generated
+`screenshot.png` is uploaded as a workflow artifact. To run the Gradle task
+directly, opt in explicitly:
+
+```bash
+KFFI_OBJC_INTEGRATION=1 ./gradlew :kffi-objc:objcIntegrationTest
+```
+
+The direct Gradle task assumes a macOS AppKit runtime; the script performs the
+platform check and sets the artifact directory.
