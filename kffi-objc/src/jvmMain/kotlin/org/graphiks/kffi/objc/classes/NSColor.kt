@@ -1188,3 +1188,201 @@ open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+// ── Category: NSDeprecated on NSColor ─────────────────────────────────────────
+
+fun NSColor.colorUsingColorSpaceName_device(name: MemorySegment, deviceDescription: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("colorUsingColorSpaceName:device:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, name, deviceDescription) as MemorySegment
+}
+
+fun NSColor.colorUsingColorSpaceName(name: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("colorUsingColorSpaceName:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, name) as MemorySegment
+}
+
+fun NSColor.colorSpaceName(): MemorySegment {
+    val sel = ObjCRuntime.sel("colorSpaceName")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// Class method: +[NSColor controlHighlightColor]
+fun NSColor_controlHighlightColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlHighlightColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor controlLightHighlightColor]
+fun NSColor_controlLightHighlightColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlLightHighlightColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor controlShadowColor]
+fun NSColor_controlShadowColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlShadowColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor controlDarkShadowColor]
+fun NSColor_controlDarkShadowColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlDarkShadowColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor scrollBarColor]
+fun NSColor_scrollBarColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("scrollBarColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor knobColor]
+fun NSColor_knobColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("knobColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor selectedKnobColor]
+fun NSColor_selectedKnobColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("selectedKnobColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor windowFrameColor]
+fun NSColor_windowFrameColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("windowFrameColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor selectedMenuItemColor]
+fun NSColor_selectedMenuItemColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("selectedMenuItemColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor headerColor]
+fun NSColor_headerColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("headerColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor secondarySelectedControlColor]
+fun NSColor_secondarySelectedControlColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("secondarySelectedControlColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor alternateSelectedControlColor]
+fun NSColor_alternateSelectedControlColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("alternateSelectedControlColor")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSColor controlAlternatingRowBackgroundColors]
+fun NSColor_controlAlternatingRowBackgroundColors(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlAlternatingRowBackgroundColors")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// @property controlHighlightColor
+fun NSColor.controlHighlightColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlHighlightColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property controlLightHighlightColor
+fun NSColor.controlLightHighlightColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlLightHighlightColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property controlShadowColor
+fun NSColor.controlShadowColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlShadowColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property controlDarkShadowColor
+fun NSColor.controlDarkShadowColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlDarkShadowColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property scrollBarColor
+fun NSColor.scrollBarColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("scrollBarColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property knobColor
+fun NSColor.knobColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("knobColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property selectedKnobColor
+fun NSColor.selectedKnobColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("selectedKnobColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property windowFrameColor
+fun NSColor.windowFrameColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("windowFrameColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property selectedMenuItemColor
+fun NSColor.selectedMenuItemColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("selectedMenuItemColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property headerColor
+fun NSColor.headerColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("headerColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property secondarySelectedControlColor
+fun NSColor.secondarySelectedControlColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("secondarySelectedControlColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property alternateSelectedControlColor
+fun NSColor.alternateSelectedControlColor(): MemorySegment {
+    val sel = ObjCRuntime.sel("alternateSelectedControlColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// @property controlAlternatingRowBackgroundColors
+/** @return NSArray<NSColor *> * */
+fun NSColor.controlAlternatingRowBackgroundColors(): MemorySegment {
+    val sel = ObjCRuntime.sel("controlAlternatingRowBackgroundColors")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSQuartzCoreAdditions on NSColor ─────────────────────────────────────────
+
+// Class method: +[NSColor colorWithCIColor:]
+fun NSColor_colorWithCIColor(color: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("colorWithCIColor:")
+    val cls = ObjCRuntime.getClass("NSColor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, color) as MemorySegment
+}
+
+// ── Category: NSAccessibilityColorConformance on NSColor ─────────────────────────────────────────

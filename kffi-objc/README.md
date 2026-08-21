@@ -3,13 +3,15 @@
 JVM-only Objective-C runtime bindings for macOS, built on the Java Foreign
 Function & Memory API (Panama FFM).
 
-The generated subset currently contains `NSObject`, `NSString`, `NSResponder`,
-`NSApplication`, `NSWindow`, `NSView`, `NSWindowController`, `NSViewController`,
-`NSScreen`, `NSEvent`, `NSColor`, `NSImage`, `NSCursor`, `NSControl`, `NSButton`,
-and `NSTextField`, together with the declarations required by those classes.
-Generated sources are produced from the macOS SDK by `kextract` and
-are checked in so the module can compile on non-macOS hosts without running the
-generator.
+The generated sources cover the Apple SDK frameworks selected by the generator:
+Foundation, CoreFoundation, AppKit, CoreGraphics, QuartzCore, CoreImage, Metal,
+AVFoundation, GameController, ModelIO, SceneKit, UniformTypeIdentifiers, PDFKit,
+and QuickLook. This includes the complete class and protocol surface visible
+through the SDK umbrella header, together with the required enums, options,
+types, categories, and runtime helpers.
+
+Sources are produced from the macOS SDK by `kextract` and are checked in so the
+module can compile on non-macOS hosts without running the generator.
 
 ## Regenerate the bindings
 
@@ -34,9 +36,9 @@ overwriting them, run:
 LLVM_HOME="$(brew --prefix llvm)" scripts/gen-kffi-objc.sh --check
 ```
 
-The input header is
-`kffi-objc/generation/ObjCSubset.h`. Extend that header and the generator's
-class allowlist together when adding another Objective-C surface.
+The input header is `kffi-objc/generation/ObjCSubset.h`. The generator's
+framework list is maintained in `scripts/gen-kffi-objc.sh`; add a framework
+there when extending the supported SDK surface.
 
 ## Tests
 

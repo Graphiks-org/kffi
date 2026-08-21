@@ -326,3 +326,128 @@ open class NSControl(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
 }
+
+// ── Category: NSControlEditableTextMethods on NSControl ─────────────────────────────────────────
+
+fun NSControl.currentEditor(): MemorySegment {
+    val sel = ObjCRuntime.sel("currentEditor")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSControl.abortEditing(): Boolean {
+    val sel = ObjCRuntime.sel("abortEditing")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSControl.validateEditing(): Unit {
+    val sel = ObjCRuntime.sel("validateEditing")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSControl.editWithFrame_editor_delegate_event(rect: MemorySegment, textObj: MemorySegment, delegate: MemorySegment, event: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("editWithFrame:editor:delegate:event:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, rect, textObj, delegate, event)
+}
+
+fun NSControl.selectWithFrame_editor_delegate_start_length(rect: MemorySegment, textObj: MemorySegment, delegate: MemorySegment, selStart: Long, selLength: Long): Unit {
+    val sel = ObjCRuntime.sel("selectWithFrame:editor:delegate:start:length:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, rect, textObj, delegate, selStart, selLength)
+}
+
+fun NSControl.endEditing(textObj: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("endEditing:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, textObj)
+}
+
+// ── Category: NSDeprecated on NSControl ─────────────────────────────────────────
+
+fun NSControl.setFloatingPointFormat_left_right(autoRange: Boolean, leftDigits: Long, rightDigits: Long): Unit {
+    val sel = ObjCRuntime.sel("setFloatingPointFormat:left:right:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, autoRange, leftDigits, rightDigits)
+}
+
+fun NSControl.selectedCell(): MemorySegment {
+    val sel = ObjCRuntime.sel("selectedCell")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSControl.selectedTag(): Long {
+    val sel = ObjCRuntime.sel("selectedTag")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
+}
+
+fun NSControl.setNeedsDisplay(): Unit {
+    val sel = ObjCRuntime.sel("setNeedsDisplay")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSControl.calcSize(): Unit {
+    val sel = ObjCRuntime.sel("calcSize")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSControl.updateCell(cell: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("updateCell:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, cell)
+}
+
+fun NSControl.updateCellInside(cell: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("updateCellInside:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, cell)
+}
+
+fun NSControl.drawCellInside(cell: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("drawCellInside:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, cell)
+}
+
+fun NSControl.drawCell(cell: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("drawCell:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, cell)
+}
+
+fun NSControl.selectCell(cell: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("selectCell:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, cell)
+}
+
+fun NSControl.cell(): MemorySegment {
+    val sel = ObjCRuntime.sel("cell")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSControl.setCell(cell: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setCell:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, cell)
+}
+
+// Class method: +[NSControl cellClass]
+fun NSControl_cellClass(): MemorySegment {
+    val sel = ObjCRuntime.sel("cellClass")
+    val cls = ObjCRuntime.getClass("NSControl")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSControl setCellClass:]
+fun NSControl_setCellClass(cellClass: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setCellClass:")
+    val cls = ObjCRuntime.getClass("NSControl")
+    ObjCRuntime.msgSend(null, cls, sel, cellClass)
+}
+
+// @property cellClass
+fun NSControl.cellClass(): MemorySegment {
+    val sel = ObjCRuntime.sel("cellClass")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+fun NSControl.setCellClass(value: MemorySegment) {
+    val sel = ObjCRuntime.sel("setCellClass:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+// ── Category: NSConstraintBasedLayoutLayering on NSControl ─────────────────────────────────────────
+
+fun NSControl.invalidateIntrinsicContentSizeForCell(cell: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("invalidateIntrinsicContentSizeForCell:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, cell)
+}

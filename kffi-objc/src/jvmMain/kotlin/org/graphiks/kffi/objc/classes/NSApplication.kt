@@ -329,3 +329,345 @@ open class NSApplication(override val ptr: MemorySegment) : NSResponder(ptr) {
     }
 
 }
+
+// ── Category: NSAppearanceCustomization on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.appearance(): MemorySegment {
+    val sel = ObjCRuntime.sel("appearance")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSApplication.setAppearance(appearance: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setAppearance:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, appearance)
+}
+
+fun NSApplication.effectiveAppearance(): MemorySegment {
+    val sel = ObjCRuntime.sel("effectiveAppearance")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSEvent on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.sendEvent(event: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("sendEvent:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, event)
+}
+
+fun NSApplication.postEvent_atStart(event: MemorySegment, atStart: Boolean): Unit {
+    val sel = ObjCRuntime.sel("postEvent:atStart:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, event, atStart)
+}
+
+fun NSApplication.nextEventMatchingMask_untilDate_inMode_dequeue(mask: MemorySegment, expiration: MemorySegment, mode: MemorySegment, deqFlag: Boolean): MemorySegment {
+    val sel = ObjCRuntime.sel("nextEventMatchingMask:untilDate:inMode:dequeue:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, mask, expiration, mode, deqFlag) as MemorySegment
+}
+
+fun NSApplication.discardEventsMatchingMask_beforeEvent(mask: MemorySegment, lastEvent: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("discardEventsMatchingMask:beforeEvent:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, mask, lastEvent)
+}
+
+fun NSApplication.currentEvent(): MemorySegment {
+    val sel = ObjCRuntime.sel("currentEvent")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSResponder on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.sendAction_to_from(action: MemorySegment, target: MemorySegment, sender: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("sendAction:to:from:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, action, target, sender) as Boolean
+}
+
+fun NSApplication.targetForAction(action: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("targetForAction:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, action) as MemorySegment
+}
+
+fun NSApplication.targetForAction_to_from(action: MemorySegment, target: MemorySegment, sender: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("targetForAction:to:from:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, action, target, sender) as MemorySegment
+}
+
+fun NSApplication.tryToPerform_with(action: MemorySegment, `object`: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("tryToPerform:with:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, action, `object`) as Boolean
+}
+
+fun NSApplication.validRequestorForSendType_returnType(sendType: MemorySegment, returnType: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("validRequestorForSendType:returnType:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, sendType, returnType) as MemorySegment
+}
+
+// ── Category: NSWindowsMenu on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.arrangeInFront(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("arrangeInFront:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+fun NSApplication.removeWindowsItem(win: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("removeWindowsItem:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, win)
+}
+
+fun NSApplication.addWindowsItem_title_filename(win: MemorySegment, string: MemorySegment, isFilename: Boolean): Unit {
+    val sel = ObjCRuntime.sel("addWindowsItem:title:filename:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, win, string, isFilename)
+}
+
+fun NSApplication.changeWindowsItem_title_filename(win: MemorySegment, string: MemorySegment, isFilename: Boolean): Unit {
+    val sel = ObjCRuntime.sel("changeWindowsItem:title:filename:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, win, string, isFilename)
+}
+
+fun NSApplication.updateWindowsItem(win: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("updateWindowsItem:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, win)
+}
+
+fun NSApplication.miniaturizeAll(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("miniaturizeAll:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+fun NSApplication.windowsMenu(): MemorySegment {
+    val sel = ObjCRuntime.sel("windowsMenu")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSApplication.setWindowsMenu(windowsMenu: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setWindowsMenu:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, windowsMenu)
+}
+
+// ── Category: NSFullKeyboardAccess on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.isFullKeyboardAccessEnabled(): Boolean {
+    val sel = ObjCRuntime.sel("isFullKeyboardAccessEnabled")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+// ── Category: NSServicesMenu on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.registerServicesMenuSendTypes_returnTypes(sendTypes: MemorySegment, returnTypes: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("registerServicesMenuSendTypes:returnTypes:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sendTypes, returnTypes)
+}
+
+fun NSApplication.servicesMenu(): MemorySegment {
+    val sel = ObjCRuntime.sel("servicesMenu")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSApplication.setServicesMenu(servicesMenu: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setServicesMenu:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, servicesMenu)
+}
+
+// ── Category: NSServicesHandling on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.servicesProvider(): MemorySegment {
+    val sel = ObjCRuntime.sel("servicesProvider")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSApplication.setServicesProvider(servicesProvider: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setServicesProvider:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, servicesProvider)
+}
+
+// ── Category: NSStandardAboutPanel on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.orderFrontStandardAboutPanel(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("orderFrontStandardAboutPanel:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+fun NSApplication.orderFrontStandardAboutPanelWithOptions(optionsDictionary: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("orderFrontStandardAboutPanelWithOptions:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, optionsDictionary)
+}
+
+// ── Category: NSApplicationLayoutDirection on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.userInterfaceLayoutDirection(): MemorySegment {
+    val sel = ObjCRuntime.sel("userInterfaceLayoutDirection")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSRestorableUserInterface on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.disableRelaunchOnLogin(): Unit {
+    val sel = ObjCRuntime.sel("disableRelaunchOnLogin")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSApplication.enableRelaunchOnLogin(): Unit {
+    val sel = ObjCRuntime.sel("enableRelaunchOnLogin")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+// ── Category: NSRemoteNotifications on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.registerForRemoteNotifications(): Unit {
+    val sel = ObjCRuntime.sel("registerForRemoteNotifications")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSApplication.unregisterForRemoteNotifications(): Unit {
+    val sel = ObjCRuntime.sel("unregisterForRemoteNotifications")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSApplication.registerForRemoteNotificationTypes(types: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("registerForRemoteNotificationTypes:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, types)
+}
+
+fun NSApplication.isRegisteredForRemoteNotifications(): Boolean {
+    val sel = ObjCRuntime.sel("isRegisteredForRemoteNotifications")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSApplication.enabledRemoteNotificationTypes(): MemorySegment {
+    val sel = ObjCRuntime.sel("enabledRemoteNotificationTypes")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSDeprecated on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.runModalForWindow_relativeToWindow(window: MemorySegment, docWindow: MemorySegment): Long {
+    val sel = ObjCRuntime.sel("runModalForWindow:relativeToWindow:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, window, docWindow) as Long
+}
+
+fun NSApplication.beginModalSessionForWindow_relativeToWindow(window: MemorySegment, docWindow: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("beginModalSessionForWindow:relativeToWindow:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, window, docWindow) as MemorySegment
+}
+
+fun NSApplication.application_printFiles(sender: MemorySegment, filenames: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("application:printFiles:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender, filenames)
+}
+
+fun NSApplication.beginSheet_modalForWindow_modalDelegate_didEndSelector_contextInfo(sheet: MemorySegment, docWindow: MemorySegment, modalDelegate: MemorySegment, didEndSelector: MemorySegment, contextInfo: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sheet, docWindow, modalDelegate, didEndSelector, contextInfo)
+}
+
+fun NSApplication.endSheet(sheet: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("endSheet:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sheet)
+}
+
+fun NSApplication.endSheet_returnCode(sheet: MemorySegment, returnCode: Long): Unit {
+    val sel = ObjCRuntime.sel("endSheet:returnCode:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sheet, returnCode)
+}
+
+fun NSApplication.makeWindowsPerform_inOrder(selector: MemorySegment, inOrder: Boolean): MemorySegment {
+    val sel = ObjCRuntime.sel("makeWindowsPerform:inOrder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, selector, inOrder) as MemorySegment
+}
+
+fun NSApplication.context(): MemorySegment {
+    val sel = ObjCRuntime.sel("context")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSApplicationHelpExtension on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.activateContextHelpMode(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("activateContextHelpMode:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+fun NSApplication.showHelp(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("showHelp:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+// ── Category: NSTouchBarCustomization on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.toggleTouchBarCustomizationPalette(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("toggleTouchBarCustomizationPalette:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+fun NSApplication.isAutomaticCustomizeTouchBarMenuItemEnabled(): Boolean {
+    val sel = ObjCRuntime.sel("isAutomaticCustomizeTouchBarMenuItemEnabled")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSApplication.setAutomaticCustomizeTouchBarMenuItemEnabled(automaticCustomizeTouchBarMenuItemEnabled: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setAutomaticCustomizeTouchBarMenuItemEnabled:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, automaticCustomizeTouchBarMenuItemEnabled)
+}
+
+// ── Category: NSColorPanel on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.orderFrontColorPanel(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("orderFrontColorPanel:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+// ── Category: NSPageLayoutPanel on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.runPageLayout(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("runPageLayout:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+// ── Category: NSScripting on NSApplication ─────────────────────────────────────────
+
+/** @return NSArray<NSDocument *> * */
+fun NSApplication.orderedDocuments(): MemorySegment {
+    val sel = ObjCRuntime.sel("orderedDocuments")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+/** @return NSArray<NSWindow *> * */
+fun NSApplication.orderedWindows(): MemorySegment {
+    val sel = ObjCRuntime.sel("orderedWindows")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSUserInterfaceItemSearching on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.registerUserInterfaceItemSearchHandler(handler: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("registerUserInterfaceItemSearchHandler:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, handler)
+}
+
+fun NSApplication.unregisterUserInterfaceItemSearchHandler(handler: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("unregisterUserInterfaceItemSearchHandler:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, handler)
+}
+
+fun NSApplication.searchString_inUserInterfaceItemString_searchRange_foundRange(searchString: MemorySegment, stringToSearch: MemorySegment, searchRange: MemorySegment, foundRange: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("searchString:inUserInterfaceItemString:searchRange:foundRange:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, searchString, stringToSearch, searchRange, foundRange) as Boolean
+}
+
+// ── Category: NSWindowRestoration on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.restoreWindowWithIdentifier_state_completionHandler(identifier: MemorySegment, state: MemorySegment, completionHandler: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("restoreWindowWithIdentifier:state:completionHandler:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, identifier, state, completionHandler) as Boolean
+}
+
+// ── Category: NSRestorableStateExtension on NSApplication ─────────────────────────────────────────
+
+fun NSApplication.extendStateRestoration(): Unit {
+    val sel = ObjCRuntime.sel("extendStateRestoration")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSApplication.completeStateRestoration(): Unit {
+    val sel = ObjCRuntime.sel("completeStateRestoration")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}

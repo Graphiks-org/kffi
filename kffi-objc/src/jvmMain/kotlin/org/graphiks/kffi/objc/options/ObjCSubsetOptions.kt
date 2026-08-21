@@ -5,134 +5,6 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum NSEnumerationOptions}
- */
-@JvmInline
-value class NSEnumerationOptions(val rawValue: Long) {
-    companion object {
-        val NSEnumerationConcurrent = NSEnumerationOptions(1L)
-        val NSEnumerationReverse = NSEnumerationOptions(2L)
-    }
-
-    operator fun plus(o: NSEnumerationOptions) = NSEnumerationOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSEnumerationOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum NSSortOptions}
- */
-@JvmInline
-value class NSSortOptions(val rawValue: Long) {
-    companion object {
-        val NSSortConcurrent = NSSortOptions(1L)
-        val NSSortStable = NSSortOptions(16L)
-    }
-
-    operator fun plus(o: NSSortOptions) = NSSortOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSSortOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum NSOrderedCollectionDifferenceCalculationOptions}
- */
-@JvmInline
-value class NSOrderedCollectionDifferenceCalculationOptions(val rawValue: Long) {
-    companion object {
-        val NSOrderedCollectionDifferenceCalculationOmitInsertedObjects = NSOrderedCollectionDifferenceCalculationOptions(1L)
-        val NSOrderedCollectionDifferenceCalculationOmitRemovedObjects = NSOrderedCollectionDifferenceCalculationOptions(2L)
-        val NSOrderedCollectionDifferenceCalculationInferMoves = NSOrderedCollectionDifferenceCalculationOptions(4L)
-    }
-
-    operator fun plus(o: NSOrderedCollectionDifferenceCalculationOptions) = NSOrderedCollectionDifferenceCalculationOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSOrderedCollectionDifferenceCalculationOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum NSBinarySearchingOptions}
- */
-@JvmInline
-value class NSBinarySearchingOptions(val rawValue: Long) {
-    companion object {
-        val NSBinarySearchingFirstEqual = NSBinarySearchingOptions(256L)
-        val NSBinarySearchingLastEqual = NSBinarySearchingOptions(512L)
-        val NSBinarySearchingInsertionIndex = NSBinarySearchingOptions(1024L)
-    }
-
-    operator fun plus(o: NSBinarySearchingOptions) = NSBinarySearchingOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSBinarySearchingOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum NSItemProviderFileOptions}
- */
-@JvmInline
-value class NSItemProviderFileOptions(val rawValue: Long) {
-    companion object {
-        val NSItemProviderFileOptionOpenInPlace = NSItemProviderFileOptions(1L)
-    }
-
-    operator fun plus(o: NSItemProviderFileOptions) = NSItemProviderFileOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSItemProviderFileOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum NSStringCompareOptions}
- */
-@JvmInline
-value class NSStringCompareOptions(val rawValue: Long) {
-    companion object {
-        val NSCaseInsensitiveSearch = NSStringCompareOptions(1L)
-        val NSLiteralSearch = NSStringCompareOptions(2L)
-        val NSBackwardsSearch = NSStringCompareOptions(4L)
-        val NSAnchoredSearch = NSStringCompareOptions(8L)
-        val NSNumericSearch = NSStringCompareOptions(64L)
-        val NSDiacriticInsensitiveSearch = NSStringCompareOptions(128L)
-        val NSWidthInsensitiveSearch = NSStringCompareOptions(256L)
-        val NSForcedOrderingSearch = NSStringCompareOptions(512L)
-        val NSRegularExpressionSearch = NSStringCompareOptions(1024L)
-    }
-
-    operator fun plus(o: NSStringCompareOptions) = NSStringCompareOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSStringCompareOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum NSStringEncodingConversionOptions}
- */
-@JvmInline
-value class NSStringEncodingConversionOptions(val rawValue: Long) {
-    companion object {
-        val NSStringEncodingConversionAllowLossy = NSStringEncodingConversionOptions(1L)
-        val NSStringEncodingConversionExternalRepresentation = NSStringEncodingConversionOptions(2L)
-    }
-
-    operator fun plus(o: NSStringEncodingConversionOptions) = NSStringEncodingConversionOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSStringEncodingConversionOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum NSStringEnumerationOptions}
- */
-@JvmInline
-value class NSStringEnumerationOptions(val rawValue: Long) {
-    companion object {
-        val NSStringEnumerationByLines = NSStringEnumerationOptions(0L)
-        val NSStringEnumerationByParagraphs = NSStringEnumerationOptions(1L)
-        val NSStringEnumerationByComposedCharacterSequences = NSStringEnumerationOptions(2L)
-        val NSStringEnumerationByWords = NSStringEnumerationOptions(3L)
-        val NSStringEnumerationBySentences = NSStringEnumerationOptions(4L)
-        val NSStringEnumerationByCaretPositions = NSStringEnumerationOptions(5L)
-        val NSStringEnumerationByDeletionClusters = NSStringEnumerationOptions(6L)
-        val NSStringEnumerationReverse = NSStringEnumerationOptions(256L)
-        val NSStringEnumerationSubstringNotRequired = NSStringEnumerationOptions(512L)
-        val NSStringEnumerationLocalized = NSStringEnumerationOptions(1024L)
-    }
-
-    operator fun plus(o: NSStringEnumerationOptions) = NSStringEnumerationOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSStringEnumerationOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
  * NS_OPTIONS: {@snippet lang=c : enum CFGregorianUnitFlags}
  */
 @JvmInline
@@ -335,598 +207,131 @@ value class CFXMLParserOptions(val rawValue: Long) {
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum NSAlignmentOptions}
+ * NS_OPTIONS: {@snippet lang=c : enum NSEnumerationOptions}
  */
 @JvmInline
-value class NSAlignmentOptions(val rawValue: Long) {
+value class NSEnumerationOptions(val rawValue: Long) {
     companion object {
-        val NSAlignMinXInward = NSAlignmentOptions(1L)
-        val NSAlignMinYInward = NSAlignmentOptions(2L)
-        val NSAlignMaxXInward = NSAlignmentOptions(4L)
-        val NSAlignMaxYInward = NSAlignmentOptions(8L)
-        val NSAlignWidthInward = NSAlignmentOptions(16L)
-        val NSAlignHeightInward = NSAlignmentOptions(32L)
-        val NSAlignMinXOutward = NSAlignmentOptions(256L)
-        val NSAlignMinYOutward = NSAlignmentOptions(512L)
-        val NSAlignMaxXOutward = NSAlignmentOptions(1024L)
-        val NSAlignMaxYOutward = NSAlignmentOptions(2048L)
-        val NSAlignWidthOutward = NSAlignmentOptions(4096L)
-        val NSAlignHeightOutward = NSAlignmentOptions(8192L)
-        val NSAlignMinXNearest = NSAlignmentOptions(65536L)
-        val NSAlignMinYNearest = NSAlignmentOptions(131072L)
-        val NSAlignMaxXNearest = NSAlignmentOptions(262144L)
-        val NSAlignMaxYNearest = NSAlignmentOptions(524288L)
-        val NSAlignWidthNearest = NSAlignmentOptions(1048576L)
-        val NSAlignHeightNearest = NSAlignmentOptions(2097152L)
-        val NSAlignRectFlipped = NSAlignmentOptions(Long.MIN_VALUE)
-        val NSAlignAllEdgesInward = NSAlignmentOptions(15L)
-        val NSAlignAllEdgesOutward = NSAlignmentOptions(3840L)
-        val NSAlignAllEdgesNearest = NSAlignmentOptions(983040L)
+        val NSEnumerationConcurrent = NSEnumerationOptions(1L)
+        val NSEnumerationReverse = NSEnumerationOptions(2L)
     }
 
-    operator fun plus(o: NSAlignmentOptions) = NSAlignmentOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSAlignmentOptions) = (rawValue and o.rawValue) != 0L
+    operator fun plus(o: NSEnumerationOptions) = NSEnumerationOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSEnumerationOptions) = (rawValue and o.rawValue) != 0L
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum NSTouchTypeMask}
+ * NS_OPTIONS: {@snippet lang=c : enum NSSortOptions}
  */
 @JvmInline
-value class NSTouchTypeMask(val rawValue: Long) {
+value class NSSortOptions(val rawValue: Long) {
     companion object {
-        val NSTouchTypeMaskDirect = NSTouchTypeMask(1L)
-        val NSTouchTypeMaskIndirect = NSTouchTypeMask(2L)
+        val NSSortConcurrent = NSSortOptions(1L)
+        val NSSortStable = NSSortOptions(16L)
     }
 
-    operator fun plus(o: NSTouchTypeMask) = NSTouchTypeMask(rawValue or o.rawValue)
-    operator fun contains(o: NSTouchTypeMask) = (rawValue and o.rawValue) != 0L
+    operator fun plus(o: NSSortOptions) = NSSortOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSSortOptions) = (rawValue and o.rawValue) != 0L
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum CFNetServiceRegisterFlags}
+ * NS_OPTIONS: {@snippet lang=c : enum NSOrderedCollectionDifferenceCalculationOptions}
  */
 @JvmInline
-value class CFNetServiceRegisterFlags(val rawValue: Long) {
+value class NSOrderedCollectionDifferenceCalculationOptions(val rawValue: Long) {
     companion object {
-        val kCFNetServiceFlagNoAutoRename = CFNetServiceRegisterFlags(1L)
+        val NSOrderedCollectionDifferenceCalculationOmitInsertedObjects = NSOrderedCollectionDifferenceCalculationOptions(1L)
+        val NSOrderedCollectionDifferenceCalculationOmitRemovedObjects = NSOrderedCollectionDifferenceCalculationOptions(2L)
+        val NSOrderedCollectionDifferenceCalculationInferMoves = NSOrderedCollectionDifferenceCalculationOptions(4L)
     }
 
-    operator fun plus(o: CFNetServiceRegisterFlags) = CFNetServiceRegisterFlags(rawValue or o.rawValue)
-    operator fun contains(o: CFNetServiceRegisterFlags) = (rawValue and o.rawValue) != 0L
+    operator fun plus(o: NSOrderedCollectionDifferenceCalculationOptions) = NSOrderedCollectionDifferenceCalculationOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSOrderedCollectionDifferenceCalculationOptions) = (rawValue and o.rawValue) != 0L
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum CFNetServiceBrowserFlags}
+ * NS_OPTIONS: {@snippet lang=c : enum NSBinarySearchingOptions}
  */
 @JvmInline
-value class CFNetServiceBrowserFlags(val rawValue: Long) {
+value class NSBinarySearchingOptions(val rawValue: Long) {
     companion object {
-        val kCFNetServiceFlagMoreComing = CFNetServiceBrowserFlags(1L)
-        val kCFNetServiceFlagIsDomain = CFNetServiceBrowserFlags(2L)
-        val kCFNetServiceFlagIsDefault = CFNetServiceBrowserFlags(4L)
-        val kCFNetServiceFlagIsRegistrationDomain = CFNetServiceBrowserFlags(4L)
-        val kCFNetServiceFlagRemove = CFNetServiceBrowserFlags(8L)
+        val NSBinarySearchingFirstEqual = NSBinarySearchingOptions(256L)
+        val NSBinarySearchingLastEqual = NSBinarySearchingOptions(512L)
+        val NSBinarySearchingInsertionIndex = NSBinarySearchingOptions(1024L)
     }
 
-    operator fun plus(o: CFNetServiceBrowserFlags) = CFNetServiceBrowserFlags(rawValue or o.rawValue)
-    operator fun contains(o: CFNetServiceBrowserFlags) = (rawValue and o.rawValue) != 0L
+    operator fun plus(o: NSBinarySearchingOptions) = NSBinarySearchingOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSBinarySearchingOptions) = (rawValue and o.rawValue) != 0L
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum SecAccessControlCreateFlags}
+ * NS_OPTIONS: {@snippet lang=c : enum NSItemProviderFileOptions}
  */
 @JvmInline
-value class SecAccessControlCreateFlags(val rawValue: Long) {
+value class NSItemProviderFileOptions(val rawValue: Long) {
     companion object {
-        val kSecAccessControlUserPresence = SecAccessControlCreateFlags(1L)
-        val kSecAccessControlBiometryAny = SecAccessControlCreateFlags(2L)
-        val kSecAccessControlTouchIDAny = SecAccessControlCreateFlags(2L)
-        val kSecAccessControlBiometryCurrentSet = SecAccessControlCreateFlags(8L)
-        val kSecAccessControlTouchIDCurrentSet = SecAccessControlCreateFlags(8L)
-        val kSecAccessControlDevicePasscode = SecAccessControlCreateFlags(16L)
-        val kSecAccessControlWatch = SecAccessControlCreateFlags(32L)
-        val kSecAccessControlCompanion = SecAccessControlCreateFlags(32L)
-        val kSecAccessControlOr = SecAccessControlCreateFlags(16384L)
-        val kSecAccessControlAnd = SecAccessControlCreateFlags(32768L)
-        val kSecAccessControlPrivateKeyUsage = SecAccessControlCreateFlags(1073741824L)
-        val kSecAccessControlApplicationPassword = SecAccessControlCreateFlags(2147483648L)
+        val NSItemProviderFileOptionOpenInPlace = NSItemProviderFileOptions(1L)
     }
 
-    operator fun plus(o: SecAccessControlCreateFlags) = SecAccessControlCreateFlags(rawValue or o.rawValue)
-    operator fun contains(o: SecAccessControlCreateFlags) = (rawValue and o.rawValue) != 0L
+    operator fun plus(o: NSItemProviderFileOptions) = NSItemProviderFileOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSItemProviderFileOptions) = (rawValue and o.rawValue) != 0L
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum SecKeychainEventMask}
+ * NS_OPTIONS: {@snippet lang=c : enum NSStringCompareOptions}
  */
 @JvmInline
-value class SecKeychainEventMask(val rawValue: Long) {
+value class NSStringCompareOptions(val rawValue: Long) {
     companion object {
-        val kSecLockEventMask = SecKeychainEventMask(2L)
-        val kSecUnlockEventMask = SecKeychainEventMask(4L)
-        val kSecAddEventMask = SecKeychainEventMask(8L)
-        val kSecDeleteEventMask = SecKeychainEventMask(16L)
-        val kSecUpdateEventMask = SecKeychainEventMask(32L)
-        val kSecPasswordChangedEventMask = SecKeychainEventMask(64L)
-        val kSecDefaultChangedEventMask = SecKeychainEventMask(512L)
-        val kSecDataAccessEventMask = SecKeychainEventMask(1024L)
-        val kSecKeychainListChangedMask = SecKeychainEventMask(2048L)
-        val kSecTrustSettingsChangedEventMask = SecKeychainEventMask(4096L)
-        val kSecEveryEventMask = SecKeychainEventMask(-1L)
+        val NSCaseInsensitiveSearch = NSStringCompareOptions(1L)
+        val NSLiteralSearch = NSStringCompareOptions(2L)
+        val NSBackwardsSearch = NSStringCompareOptions(4L)
+        val NSAnchoredSearch = NSStringCompareOptions(8L)
+        val NSNumericSearch = NSStringCompareOptions(64L)
+        val NSDiacriticInsensitiveSearch = NSStringCompareOptions(128L)
+        val NSWidthInsensitiveSearch = NSStringCompareOptions(256L)
+        val NSForcedOrderingSearch = NSStringCompareOptions(512L)
+        val NSRegularExpressionSearch = NSStringCompareOptions(1024L)
     }
 
-    operator fun plus(o: SecKeychainEventMask) = SecKeychainEventMask(rawValue or o.rawValue)
-    operator fun contains(o: SecKeychainEventMask) = (rawValue and o.rawValue) != 0L
+    operator fun plus(o: NSStringCompareOptions) = NSStringCompareOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSStringCompareOptions) = (rawValue and o.rawValue) != 0L
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum SecItemImportExportFlags}
+ * NS_OPTIONS: {@snippet lang=c : enum NSStringEncodingConversionOptions}
  */
 @JvmInline
-value class SecItemImportExportFlags(val rawValue: Long) {
+value class NSStringEncodingConversionOptions(val rawValue: Long) {
     companion object {
-        val kSecItemPemArmour = SecItemImportExportFlags(1L)
+        val NSStringEncodingConversionAllowLossy = NSStringEncodingConversionOptions(1L)
+        val NSStringEncodingConversionExternalRepresentation = NSStringEncodingConversionOptions(2L)
     }
 
-    operator fun plus(o: SecItemImportExportFlags) = SecItemImportExportFlags(rawValue or o.rawValue)
-    operator fun contains(o: SecItemImportExportFlags) = (rawValue and o.rawValue) != 0L
+    operator fun plus(o: NSStringEncodingConversionOptions) = NSStringEncodingConversionOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSStringEncodingConversionOptions) = (rawValue and o.rawValue) != 0L
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum SecKeyImportExportFlags}
+ * NS_OPTIONS: {@snippet lang=c : enum NSStringEnumerationOptions}
  */
 @JvmInline
-value class SecKeyImportExportFlags(val rawValue: Long) {
+value class NSStringEnumerationOptions(val rawValue: Long) {
     companion object {
-        val kSecKeyImportOnlyOne = SecKeyImportExportFlags(1L)
-        val kSecKeySecurePassphrase = SecKeyImportExportFlags(2L)
-        val kSecKeyNoAccessControl = SecKeyImportExportFlags(4L)
+        val NSStringEnumerationByLines = NSStringEnumerationOptions(0L)
+        val NSStringEnumerationByParagraphs = NSStringEnumerationOptions(1L)
+        val NSStringEnumerationByComposedCharacterSequences = NSStringEnumerationOptions(2L)
+        val NSStringEnumerationByWords = NSStringEnumerationOptions(3L)
+        val NSStringEnumerationBySentences = NSStringEnumerationOptions(4L)
+        val NSStringEnumerationByCaretPositions = NSStringEnumerationOptions(5L)
+        val NSStringEnumerationByDeletionClusters = NSStringEnumerationOptions(6L)
+        val NSStringEnumerationReverse = NSStringEnumerationOptions(256L)
+        val NSStringEnumerationSubstringNotRequired = NSStringEnumerationOptions(512L)
+        val NSStringEnumerationLocalized = NSStringEnumerationOptions(1024L)
     }
 
-    operator fun plus(o: SecKeyImportExportFlags) = SecKeyImportExportFlags(rawValue or o.rawValue)
-    operator fun contains(o: SecKeyImportExportFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum SecTrustOptionFlags}
- */
-@JvmInline
-value class SecTrustOptionFlags(val rawValue: Long) {
-    companion object {
-        val kSecTrustOptionAllowExpired = SecTrustOptionFlags(1L)
-        val kSecTrustOptionLeafIsCA = SecTrustOptionFlags(2L)
-        val kSecTrustOptionFetchIssuerFromNet = SecTrustOptionFlags(4L)
-        val kSecTrustOptionAllowExpiredRoot = SecTrustOptionFlags(8L)
-        val kSecTrustOptionRequireRevPerCert = SecTrustOptionFlags(16L)
-        val kSecTrustOptionUseTrustSettings = SecTrustOptionFlags(32L)
-        val kSecTrustOptionImplicitAnchors = SecTrustOptionFlags(64L)
-    }
-
-    operator fun plus(o: SecTrustOptionFlags) = SecTrustOptionFlags(rawValue or o.rawValue)
-    operator fun contains(o: SecTrustOptionFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum AuthorizationFlags}
- */
-@JvmInline
-value class AuthorizationFlags(val rawValue: Long) {
-    companion object {
-        val kAuthorizationFlagDefaults = AuthorizationFlags(0L)
-        val kAuthorizationFlagInteractionAllowed = AuthorizationFlags(1L)
-        val kAuthorizationFlagExtendRights = AuthorizationFlags(2L)
-        val kAuthorizationFlagPartialRights = AuthorizationFlags(4L)
-        val kAuthorizationFlagDestroyRights = AuthorizationFlags(8L)
-        val kAuthorizationFlagPreAuthorize = AuthorizationFlags(16L)
-        val kAuthorizationFlagSkipInternalAuth = AuthorizationFlags(512L)
-        val kAuthorizationFlagNoData = AuthorizationFlags(1048576L)
-    }
-
-    operator fun plus(o: AuthorizationFlags) = AuthorizationFlags(rawValue or o.rawValue)
-    operator fun contains(o: AuthorizationFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum SessionCreationFlags}
- */
-@JvmInline
-value class SessionCreationFlags(val rawValue: Long) {
-    companion object {
-        val sessionKeepCurrentBootstrap = SessionCreationFlags(32768L)
-    }
-
-    operator fun plus(o: SessionCreationFlags) = SessionCreationFlags(rawValue or o.rawValue)
-    operator fun contains(o: SessionCreationFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum SecCSFlags}
- */
-@JvmInline
-value class SecCSFlags(val rawValue: Long) {
-    companion object {
-        val kSecCSDefaultFlags = SecCSFlags(0L)
-        val kSecCSConsiderExpiration = SecCSFlags(-2147483648L)
-        val kSecCSEnforceRevocationChecks = SecCSFlags(1073741824L)
-        val kSecCSNoNetworkAccess = SecCSFlags(536870912L)
-        val kSecCSReportProgress = SecCSFlags(268435456L)
-        val kSecCSCheckTrustedAnchors = SecCSFlags(134217728L)
-        val kSecCSQuickCheck = SecCSFlags(67108864L)
-        val kSecCSApplyEmbeddedPolicy = SecCSFlags(33554432L)
-        val kSecCSStripDisallowedXattrs = SecCSFlags(16777216L)
-        val kSecCSMatchGuestRequirementInKernel = SecCSFlags(8388608L)
-    }
-
-    operator fun plus(o: SecCSFlags) = SecCSFlags(rawValue or o.rawValue)
-    operator fun contains(o: SecCSFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum SecCodeSignatureFlags}
- */
-@JvmInline
-value class SecCodeSignatureFlags(val rawValue: Long) {
-    companion object {
-        val kSecCodeSignatureHost = SecCodeSignatureFlags(1L)
-        val kSecCodeSignatureAdhoc = SecCodeSignatureFlags(2L)
-        val kSecCodeSignatureForceHard = SecCodeSignatureFlags(256L)
-        val kSecCodeSignatureForceKill = SecCodeSignatureFlags(512L)
-        val kSecCodeSignatureForceExpiration = SecCodeSignatureFlags(1024L)
-        val kSecCodeSignatureRestrict = SecCodeSignatureFlags(2048L)
-        val kSecCodeSignatureEnforcement = SecCodeSignatureFlags(4096L)
-        val kSecCodeSignatureLibraryValidation = SecCodeSignatureFlags(8192L)
-        val kSecCodeSignatureRuntime = SecCodeSignatureFlags(65536L)
-        val kSecCodeSignatureLinkerSigned = SecCodeSignatureFlags(131072L)
-    }
-
-    operator fun plus(o: SecCodeSignatureFlags) = SecCodeSignatureFlags(rawValue or o.rawValue)
-    operator fun contains(o: SecCodeSignatureFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum LSRolesMask}
- */
-@JvmInline
-value class LSRolesMask(val rawValue: Long) {
-    companion object {
-        val kLSRolesNone = LSRolesMask(1L)
-        val kLSRolesViewer = LSRolesMask(2L)
-        val kLSRolesEditor = LSRolesMask(4L)
-        val kLSRolesShell = LSRolesMask(8L)
-        val kLSRolesAll = LSRolesMask(-1L)
-    }
-
-    operator fun plus(o: LSRolesMask) = LSRolesMask(rawValue or o.rawValue)
-    operator fun contains(o: LSRolesMask) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum LSAcceptanceFlags}
- */
-@JvmInline
-value class LSAcceptanceFlags(val rawValue: Long) {
-    companion object {
-        val kLSAcceptDefault = LSAcceptanceFlags(1L)
-        val kLSAcceptAllowLoginUI = LSAcceptanceFlags(2L)
-    }
-
-    operator fun plus(o: LSAcceptanceFlags) = LSAcceptanceFlags(rawValue or o.rawValue)
-    operator fun contains(o: LSAcceptanceFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum LSItemInfoFlags}
- */
-@JvmInline
-value class LSItemInfoFlags(val rawValue: Long) {
-    companion object {
-        val kLSItemInfoIsPlainFile = LSItemInfoFlags(1L)
-        val kLSItemInfoIsPackage = LSItemInfoFlags(2L)
-        val kLSItemInfoIsApplication = LSItemInfoFlags(4L)
-        val kLSItemInfoIsContainer = LSItemInfoFlags(8L)
-        val kLSItemInfoIsAliasFile = LSItemInfoFlags(16L)
-        val kLSItemInfoIsSymlink = LSItemInfoFlags(32L)
-        val kLSItemInfoIsInvisible = LSItemInfoFlags(64L)
-        val kLSItemInfoIsNativeApp = LSItemInfoFlags(128L)
-        val kLSItemInfoIsClassicApp = LSItemInfoFlags(256L)
-        val kLSItemInfoAppPrefersNative = LSItemInfoFlags(512L)
-        val kLSItemInfoAppPrefersClassic = LSItemInfoFlags(1024L)
-        val kLSItemInfoAppIsScriptable = LSItemInfoFlags(2048L)
-        val kLSItemInfoIsVolume = LSItemInfoFlags(4096L)
-        val kLSItemInfoExtensionIsHidden = LSItemInfoFlags(1048576L)
-    }
-
-    operator fun plus(o: LSItemInfoFlags) = LSItemInfoFlags(rawValue or o.rawValue)
-    operator fun contains(o: LSItemInfoFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum LSHandlerOptions}
- */
-@JvmInline
-value class LSHandlerOptions(val rawValue: Long) {
-    companion object {
-        val kLSHandlerOptionsDefault = LSHandlerOptions(0L)
-        val kLSHandlerOptionsIgnoreCreator = LSHandlerOptions(1L)
-    }
-
-    operator fun plus(o: LSHandlerOptions) = LSHandlerOptions(rawValue or o.rawValue)
-    operator fun contains(o: LSHandlerOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum LSLaunchFlags}
- */
-@JvmInline
-value class LSLaunchFlags(val rawValue: Long) {
-    companion object {
-        val kLSLaunchDefaults = LSLaunchFlags(1L)
-        val kLSLaunchAndPrint = LSLaunchFlags(2L)
-        val kLSLaunchAndDisplayErrors = LSLaunchFlags(64L)
-        val kLSLaunchDontAddToRecents = LSLaunchFlags(256L)
-        val kLSLaunchDontSwitch = LSLaunchFlags(512L)
-        val kLSLaunchAsync = LSLaunchFlags(65536L)
-        val kLSLaunchNewInstance = LSLaunchFlags(524288L)
-        val kLSLaunchAndHide = LSLaunchFlags(1048576L)
-        val kLSLaunchAndHideOthers = LSLaunchFlags(2097152L)
-    }
-
-    operator fun plus(o: LSLaunchFlags) = LSLaunchFlags(rawValue or o.rawValue)
-    operator fun contains(o: LSLaunchFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum MDQueryOptionFlags}
- */
-@JvmInline
-value class MDQueryOptionFlags(val rawValue: Long) {
-    companion object {
-        val kMDQuerySynchronous = MDQueryOptionFlags(1L)
-        val kMDQueryWantsUpdates = MDQueryOptionFlags(4L)
-        val kMDQueryAllowFSTranslation = MDQueryOptionFlags(8L)
-    }
-
-    operator fun plus(o: MDQueryOptionFlags) = MDQueryOptionFlags(rawValue or o.rawValue)
-    operator fun contains(o: MDQueryOptionFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum MDQuerySortOptionFlags}
- */
-@JvmInline
-value class MDQuerySortOptionFlags(val rawValue: Long) {
-    companion object {
-        val kMDQueryReverseSortOrderFlag = MDQuerySortOptionFlags(1L)
-    }
-
-    operator fun plus(o: MDQuerySortOptionFlags) = MDQuerySortOptionFlags(rawValue or o.rawValue)
-    operator fun contains(o: MDQuerySortOptionFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CGGradientDrawingOptions}
- */
-@JvmInline
-value class CGGradientDrawingOptions(val rawValue: Long) {
-    companion object {
-        val kCGGradientDrawsBeforeStartLocation = CGGradientDrawingOptions(1L)
-        val kCGGradientDrawsAfterEndLocation = CGGradientDrawingOptions(2L)
-    }
-
-    operator fun plus(o: CGGradientDrawingOptions) = CGGradientDrawingOptions(rawValue or o.rawValue)
-    operator fun contains(o: CGGradientDrawingOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CGCaptureOptions}
- */
-@JvmInline
-value class CGCaptureOptions(val rawValue: Long) {
-    companion object {
-        val kCGCaptureNoOptions = CGCaptureOptions(0L)
-        val kCGCaptureNoFill = CGCaptureOptions(1L)
-    }
-
-    operator fun plus(o: CGCaptureOptions) = CGCaptureOptions(rawValue or o.rawValue)
-    operator fun contains(o: CGCaptureOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CGDisplayChangeSummaryFlags}
- */
-@JvmInline
-value class CGDisplayChangeSummaryFlags(val rawValue: Long) {
-    companion object {
-        val kCGDisplayBeginConfigurationFlag = CGDisplayChangeSummaryFlags(1L)
-        val kCGDisplayMovedFlag = CGDisplayChangeSummaryFlags(2L)
-        val kCGDisplaySetMainFlag = CGDisplayChangeSummaryFlags(4L)
-        val kCGDisplaySetModeFlag = CGDisplayChangeSummaryFlags(8L)
-        val kCGDisplayAddFlag = CGDisplayChangeSummaryFlags(16L)
-        val kCGDisplayRemoveFlag = CGDisplayChangeSummaryFlags(32L)
-        val kCGDisplayEnabledFlag = CGDisplayChangeSummaryFlags(256L)
-        val kCGDisplayDisabledFlag = CGDisplayChangeSummaryFlags(512L)
-        val kCGDisplayMirrorFlag = CGDisplayChangeSummaryFlags(1024L)
-        val kCGDisplayUnMirrorFlag = CGDisplayChangeSummaryFlags(2048L)
-        val kCGDisplayDesktopShapeChangedFlag = CGDisplayChangeSummaryFlags(4096L)
-    }
-
-    operator fun plus(o: CGDisplayChangeSummaryFlags) = CGDisplayChangeSummaryFlags(rawValue or o.rawValue)
-    operator fun contains(o: CGDisplayChangeSummaryFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CGEventFilterMask}
- */
-@JvmInline
-value class CGEventFilterMask(val rawValue: Long) {
-    companion object {
-        val kCGEventFilterMaskPermitLocalMouseEvents = CGEventFilterMask(1L)
-        val kCGEventFilterMaskPermitLocalKeyboardEvents = CGEventFilterMask(2L)
-        val kCGEventFilterMaskPermitSystemDefinedEvents = CGEventFilterMask(4L)
-    }
-
-    operator fun plus(o: CGEventFilterMask) = CGEventFilterMask(rawValue or o.rawValue)
-    operator fun contains(o: CGEventFilterMask) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CGEventFlags}
- */
-@JvmInline
-value class CGEventFlags(val rawValue: Long) {
-    companion object {
-        val kCGEventFlagMaskAlphaShift = CGEventFlags(65536L)
-        val kCGEventFlagMaskShift = CGEventFlags(131072L)
-        val kCGEventFlagMaskControl = CGEventFlags(262144L)
-        val kCGEventFlagMaskAlternate = CGEventFlags(524288L)
-        val kCGEventFlagMaskCommand = CGEventFlags(1048576L)
-        val kCGEventFlagMaskHelp = CGEventFlags(4194304L)
-        val kCGEventFlagMaskSecondaryFn = CGEventFlags(8388608L)
-        val kCGEventFlagMaskNumericPad = CGEventFlags(2097152L)
-        val kCGEventFlagMaskNonCoalesced = CGEventFlags(256L)
-    }
-
-    operator fun plus(o: CGEventFlags) = CGEventFlags(rawValue or o.rawValue)
-    operator fun contains(o: CGEventFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CGEventTapOptions}
- */
-@JvmInline
-value class CGEventTapOptions(val rawValue: Long) {
-    companion object {
-        val kCGEventTapOptionDefault = CGEventTapOptions(0L)
-        val kCGEventTapOptionListenOnly = CGEventTapOptions(1L)
-    }
-
-    operator fun plus(o: CGEventTapOptions) = CGEventTapOptions(rawValue or o.rawValue)
-    operator fun contains(o: CGEventTapOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CTFontOptions}
- */
-@JvmInline
-value class CTFontOptions(val rawValue: Long) {
-    companion object {
-        val kCTFontOptionsDefault = CTFontOptions(0L)
-        val kCTFontOptionsPreventAutoActivation = CTFontOptions(1L)
-        val kCTFontOptionsPreventAutoDownload = CTFontOptions(2L)
-        val kCTFontOptionsPreferSystemFont = CTFontOptions(4L)
-    }
-
-    operator fun plus(o: CTFontOptions) = CTFontOptions(rawValue or o.rawValue)
-    operator fun contains(o: CTFontOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CTFontTableOptions}
- */
-@JvmInline
-value class CTFontTableOptions(val rawValue: Long) {
-    companion object {
-        val kCTFontTableOptionNoOptions = CTFontTableOptions(0L)
-        val kCTFontTableOptionExcludeSynthetic = CTFontTableOptions(1L)
-    }
-
-    operator fun plus(o: CTFontTableOptions) = CTFontTableOptions(rawValue or o.rawValue)
-    operator fun contains(o: CTFontTableOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CTFontCollectionCopyOptions}
- */
-@JvmInline
-value class CTFontCollectionCopyOptions(val rawValue: Long) {
-    companion object {
-        val kCTFontCollectionCopyDefaultOptions = CTFontCollectionCopyOptions(0L)
-        val kCTFontCollectionCopyUnique = CTFontCollectionCopyOptions(1L)
-        val kCTFontCollectionCopyStandardSort = CTFontCollectionCopyOptions(2L)
-    }
-
-    operator fun plus(o: CTFontCollectionCopyOptions) = CTFontCollectionCopyOptions(rawValue or o.rawValue)
-    operator fun contains(o: CTFontCollectionCopyOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CTLineBoundsOptions}
- */
-@JvmInline
-value class CTLineBoundsOptions(val rawValue: Long) {
-    companion object {
-        val kCTLineBoundsExcludeTypographicLeading = CTLineBoundsOptions(1L)
-        val kCTLineBoundsExcludeTypographicShifts = CTLineBoundsOptions(2L)
-        val kCTLineBoundsUseHangingPunctuation = CTLineBoundsOptions(4L)
-        val kCTLineBoundsUseGlyphPathBounds = CTLineBoundsOptions(8L)
-        val kCTLineBoundsUseOpticalBounds = CTLineBoundsOptions(16L)
-        val kCTLineBoundsIncludeLanguageExtents = CTLineBoundsOptions(32L)
-    }
-
-    operator fun plus(o: CTLineBoundsOptions) = CTLineBoundsOptions(rawValue or o.rawValue)
-    operator fun contains(o: CTLineBoundsOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum CMFloatBitmapFlags}
- */
-@JvmInline
-value class CMFloatBitmapFlags(val rawValue: Long) {
-    companion object {
-        val kCMFloatBitmapFlagsNone = CMFloatBitmapFlags(0L)
-        val kCMFloatBitmapFlagsAlpha = CMFloatBitmapFlags(1L)
-        val kCMFloatBitmapFlagsAlphaPremul = CMFloatBitmapFlags(2L)
-        val kCMFloatBitmapFlagsRangeClipped = CMFloatBitmapFlags(4L)
-    }
-
-    operator fun plus(o: CMFloatBitmapFlags) = CMFloatBitmapFlags(rawValue or o.rawValue)
-    operator fun contains(o: CMFloatBitmapFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum PasteboardSyncFlags}
- */
-@JvmInline
-value class PasteboardSyncFlags(val rawValue: Long) {
-    companion object {
-        val kPasteboardModified = PasteboardSyncFlags(1L)
-        val kPasteboardClientIsOwner = PasteboardSyncFlags(2L)
-    }
-
-    operator fun plus(o: PasteboardSyncFlags) = PasteboardSyncFlags(rawValue or o.rawValue)
-    operator fun contains(o: PasteboardSyncFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum PasteboardFlavorFlags}
- */
-@JvmInline
-value class PasteboardFlavorFlags(val rawValue: Long) {
-    companion object {
-        val kPasteboardFlavorNoFlags = PasteboardFlavorFlags(0L)
-        val kPasteboardFlavorSenderOnly = PasteboardFlavorFlags(1L)
-        val kPasteboardFlavorSenderTranslated = PasteboardFlavorFlags(2L)
-        val kPasteboardFlavorNotSaved = PasteboardFlavorFlags(4L)
-        val kPasteboardFlavorRequestOnly = PasteboardFlavorFlags(8L)
-        val kPasteboardFlavorSystemTranslated = PasteboardFlavorFlags(256L)
-        val kPasteboardFlavorPromised = PasteboardFlavorFlags(512L)
-    }
-
-    operator fun plus(o: PasteboardFlavorFlags) = PasteboardFlavorFlags(rawValue or o.rawValue)
-    operator fun contains(o: PasteboardFlavorFlags) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum AXCopyMultipleAttributeOptions}
- */
-@JvmInline
-value class AXCopyMultipleAttributeOptions(val rawValue: Long) {
-    companion object {
-        val kAXCopyMultipleAttributeOptionStopOnError = AXCopyMultipleAttributeOptions(1L)
-    }
-
-    operator fun plus(o: AXCopyMultipleAttributeOptions) = AXCopyMultipleAttributeOptions(rawValue or o.rawValue)
-    operator fun contains(o: AXCopyMultipleAttributeOptions) = (rawValue and o.rawValue) != 0L
+    operator fun plus(o: NSStringEnumerationOptions) = NSStringEnumerationOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSStringEnumerationOptions) = (rawValue and o.rawValue) != 0L
 }
 
 /**
@@ -1314,6 +719,40 @@ value class NSPropertyListMutabilityOptions(val rawValue: Long) {
 }
 
 /**
+ * NS_OPTIONS: {@snippet lang=c : enum NSAlignmentOptions}
+ */
+@JvmInline
+value class NSAlignmentOptions(val rawValue: Long) {
+    companion object {
+        val NSAlignMinXInward = NSAlignmentOptions(1L)
+        val NSAlignMinYInward = NSAlignmentOptions(2L)
+        val NSAlignMaxXInward = NSAlignmentOptions(4L)
+        val NSAlignMaxYInward = NSAlignmentOptions(8L)
+        val NSAlignWidthInward = NSAlignmentOptions(16L)
+        val NSAlignHeightInward = NSAlignmentOptions(32L)
+        val NSAlignMinXOutward = NSAlignmentOptions(256L)
+        val NSAlignMinYOutward = NSAlignmentOptions(512L)
+        val NSAlignMaxXOutward = NSAlignmentOptions(1024L)
+        val NSAlignMaxYOutward = NSAlignmentOptions(2048L)
+        val NSAlignWidthOutward = NSAlignmentOptions(4096L)
+        val NSAlignHeightOutward = NSAlignmentOptions(8192L)
+        val NSAlignMinXNearest = NSAlignmentOptions(65536L)
+        val NSAlignMinYNearest = NSAlignmentOptions(131072L)
+        val NSAlignMaxXNearest = NSAlignmentOptions(262144L)
+        val NSAlignMaxYNearest = NSAlignmentOptions(524288L)
+        val NSAlignWidthNearest = NSAlignmentOptions(1048576L)
+        val NSAlignHeightNearest = NSAlignmentOptions(2097152L)
+        val NSAlignRectFlipped = NSAlignmentOptions(Long.MIN_VALUE)
+        val NSAlignAllEdgesInward = NSAlignmentOptions(15L)
+        val NSAlignAllEdgesOutward = NSAlignmentOptions(3840L)
+        val NSAlignAllEdgesNearest = NSAlignmentOptions(983040L)
+    }
+
+    operator fun plus(o: NSAlignmentOptions) = NSAlignmentOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSAlignmentOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
  * NS_OPTIONS: {@snippet lang=c : enum NSMachPortOptions}
  */
 @JvmInline
@@ -1402,6 +841,327 @@ value class NSMatchingFlags(val rawValue: Long) {
 
     operator fun plus(o: NSMatchingFlags) = NSMatchingFlags(rawValue or o.rawValue)
     operator fun contains(o: NSMatchingFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SecAccessControlCreateFlags}
+ */
+@JvmInline
+value class SecAccessControlCreateFlags(val rawValue: Long) {
+    companion object {
+        val kSecAccessControlUserPresence = SecAccessControlCreateFlags(1L)
+        val kSecAccessControlBiometryAny = SecAccessControlCreateFlags(2L)
+        val kSecAccessControlTouchIDAny = SecAccessControlCreateFlags(2L)
+        val kSecAccessControlBiometryCurrentSet = SecAccessControlCreateFlags(8L)
+        val kSecAccessControlTouchIDCurrentSet = SecAccessControlCreateFlags(8L)
+        val kSecAccessControlDevicePasscode = SecAccessControlCreateFlags(16L)
+        val kSecAccessControlWatch = SecAccessControlCreateFlags(32L)
+        val kSecAccessControlCompanion = SecAccessControlCreateFlags(32L)
+        val kSecAccessControlOr = SecAccessControlCreateFlags(16384L)
+        val kSecAccessControlAnd = SecAccessControlCreateFlags(32768L)
+        val kSecAccessControlPrivateKeyUsage = SecAccessControlCreateFlags(1073741824L)
+        val kSecAccessControlApplicationPassword = SecAccessControlCreateFlags(2147483648L)
+    }
+
+    operator fun plus(o: SecAccessControlCreateFlags) = SecAccessControlCreateFlags(rawValue or o.rawValue)
+    operator fun contains(o: SecAccessControlCreateFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SecKeychainEventMask}
+ */
+@JvmInline
+value class SecKeychainEventMask(val rawValue: Long) {
+    companion object {
+        val kSecLockEventMask = SecKeychainEventMask(2L)
+        val kSecUnlockEventMask = SecKeychainEventMask(4L)
+        val kSecAddEventMask = SecKeychainEventMask(8L)
+        val kSecDeleteEventMask = SecKeychainEventMask(16L)
+        val kSecUpdateEventMask = SecKeychainEventMask(32L)
+        val kSecPasswordChangedEventMask = SecKeychainEventMask(64L)
+        val kSecDefaultChangedEventMask = SecKeychainEventMask(512L)
+        val kSecDataAccessEventMask = SecKeychainEventMask(1024L)
+        val kSecKeychainListChangedMask = SecKeychainEventMask(2048L)
+        val kSecTrustSettingsChangedEventMask = SecKeychainEventMask(4096L)
+        val kSecEveryEventMask = SecKeychainEventMask(-1L)
+    }
+
+    operator fun plus(o: SecKeychainEventMask) = SecKeychainEventMask(rawValue or o.rawValue)
+    operator fun contains(o: SecKeychainEventMask) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SecItemImportExportFlags}
+ */
+@JvmInline
+value class SecItemImportExportFlags(val rawValue: Long) {
+    companion object {
+        val kSecItemPemArmour = SecItemImportExportFlags(1L)
+    }
+
+    operator fun plus(o: SecItemImportExportFlags) = SecItemImportExportFlags(rawValue or o.rawValue)
+    operator fun contains(o: SecItemImportExportFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SecKeyImportExportFlags}
+ */
+@JvmInline
+value class SecKeyImportExportFlags(val rawValue: Long) {
+    companion object {
+        val kSecKeyImportOnlyOne = SecKeyImportExportFlags(1L)
+        val kSecKeySecurePassphrase = SecKeyImportExportFlags(2L)
+        val kSecKeyNoAccessControl = SecKeyImportExportFlags(4L)
+    }
+
+    operator fun plus(o: SecKeyImportExportFlags) = SecKeyImportExportFlags(rawValue or o.rawValue)
+    operator fun contains(o: SecKeyImportExportFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SecTrustOptionFlags}
+ */
+@JvmInline
+value class SecTrustOptionFlags(val rawValue: Long) {
+    companion object {
+        val kSecTrustOptionAllowExpired = SecTrustOptionFlags(1L)
+        val kSecTrustOptionLeafIsCA = SecTrustOptionFlags(2L)
+        val kSecTrustOptionFetchIssuerFromNet = SecTrustOptionFlags(4L)
+        val kSecTrustOptionAllowExpiredRoot = SecTrustOptionFlags(8L)
+        val kSecTrustOptionRequireRevPerCert = SecTrustOptionFlags(16L)
+        val kSecTrustOptionUseTrustSettings = SecTrustOptionFlags(32L)
+        val kSecTrustOptionImplicitAnchors = SecTrustOptionFlags(64L)
+    }
+
+    operator fun plus(o: SecTrustOptionFlags) = SecTrustOptionFlags(rawValue or o.rawValue)
+    operator fun contains(o: SecTrustOptionFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum AuthorizationFlags}
+ */
+@JvmInline
+value class AuthorizationFlags(val rawValue: Long) {
+    companion object {
+        val kAuthorizationFlagDefaults = AuthorizationFlags(0L)
+        val kAuthorizationFlagInteractionAllowed = AuthorizationFlags(1L)
+        val kAuthorizationFlagExtendRights = AuthorizationFlags(2L)
+        val kAuthorizationFlagPartialRights = AuthorizationFlags(4L)
+        val kAuthorizationFlagDestroyRights = AuthorizationFlags(8L)
+        val kAuthorizationFlagPreAuthorize = AuthorizationFlags(16L)
+        val kAuthorizationFlagSkipInternalAuth = AuthorizationFlags(512L)
+        val kAuthorizationFlagNoData = AuthorizationFlags(1048576L)
+    }
+
+    operator fun plus(o: AuthorizationFlags) = AuthorizationFlags(rawValue or o.rawValue)
+    operator fun contains(o: AuthorizationFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SessionCreationFlags}
+ */
+@JvmInline
+value class SessionCreationFlags(val rawValue: Long) {
+    companion object {
+        val sessionKeepCurrentBootstrap = SessionCreationFlags(32768L)
+    }
+
+    operator fun plus(o: SessionCreationFlags) = SessionCreationFlags(rawValue or o.rawValue)
+    operator fun contains(o: SessionCreationFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SecCSFlags}
+ */
+@JvmInline
+value class SecCSFlags(val rawValue: Long) {
+    companion object {
+        val kSecCSDefaultFlags = SecCSFlags(0L)
+        val kSecCSConsiderExpiration = SecCSFlags(-2147483648L)
+        val kSecCSEnforceRevocationChecks = SecCSFlags(1073741824L)
+        val kSecCSNoNetworkAccess = SecCSFlags(536870912L)
+        val kSecCSReportProgress = SecCSFlags(268435456L)
+        val kSecCSCheckTrustedAnchors = SecCSFlags(134217728L)
+        val kSecCSQuickCheck = SecCSFlags(67108864L)
+        val kSecCSApplyEmbeddedPolicy = SecCSFlags(33554432L)
+        val kSecCSStripDisallowedXattrs = SecCSFlags(16777216L)
+        val kSecCSMatchGuestRequirementInKernel = SecCSFlags(8388608L)
+    }
+
+    operator fun plus(o: SecCSFlags) = SecCSFlags(rawValue or o.rawValue)
+    operator fun contains(o: SecCSFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SecCodeSignatureFlags}
+ */
+@JvmInline
+value class SecCodeSignatureFlags(val rawValue: Long) {
+    companion object {
+        val kSecCodeSignatureHost = SecCodeSignatureFlags(1L)
+        val kSecCodeSignatureAdhoc = SecCodeSignatureFlags(2L)
+        val kSecCodeSignatureForceHard = SecCodeSignatureFlags(256L)
+        val kSecCodeSignatureForceKill = SecCodeSignatureFlags(512L)
+        val kSecCodeSignatureForceExpiration = SecCodeSignatureFlags(1024L)
+        val kSecCodeSignatureRestrict = SecCodeSignatureFlags(2048L)
+        val kSecCodeSignatureEnforcement = SecCodeSignatureFlags(4096L)
+        val kSecCodeSignatureLibraryValidation = SecCodeSignatureFlags(8192L)
+        val kSecCodeSignatureRuntime = SecCodeSignatureFlags(65536L)
+        val kSecCodeSignatureLinkerSigned = SecCodeSignatureFlags(131072L)
+    }
+
+    operator fun plus(o: SecCodeSignatureFlags) = SecCodeSignatureFlags(rawValue or o.rawValue)
+    operator fun contains(o: SecCodeSignatureFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CFNetServiceRegisterFlags}
+ */
+@JvmInline
+value class CFNetServiceRegisterFlags(val rawValue: Long) {
+    companion object {
+        val kCFNetServiceFlagNoAutoRename = CFNetServiceRegisterFlags(1L)
+    }
+
+    operator fun plus(o: CFNetServiceRegisterFlags) = CFNetServiceRegisterFlags(rawValue or o.rawValue)
+    operator fun contains(o: CFNetServiceRegisterFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CFNetServiceBrowserFlags}
+ */
+@JvmInline
+value class CFNetServiceBrowserFlags(val rawValue: Long) {
+    companion object {
+        val kCFNetServiceFlagMoreComing = CFNetServiceBrowserFlags(1L)
+        val kCFNetServiceFlagIsDomain = CFNetServiceBrowserFlags(2L)
+        val kCFNetServiceFlagIsDefault = CFNetServiceBrowserFlags(4L)
+        val kCFNetServiceFlagIsRegistrationDomain = CFNetServiceBrowserFlags(4L)
+        val kCFNetServiceFlagRemove = CFNetServiceBrowserFlags(8L)
+    }
+
+    operator fun plus(o: CFNetServiceBrowserFlags) = CFNetServiceBrowserFlags(rawValue or o.rawValue)
+    operator fun contains(o: CFNetServiceBrowserFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum LSRolesMask}
+ */
+@JvmInline
+value class LSRolesMask(val rawValue: Long) {
+    companion object {
+        val kLSRolesNone = LSRolesMask(1L)
+        val kLSRolesViewer = LSRolesMask(2L)
+        val kLSRolesEditor = LSRolesMask(4L)
+        val kLSRolesShell = LSRolesMask(8L)
+        val kLSRolesAll = LSRolesMask(-1L)
+    }
+
+    operator fun plus(o: LSRolesMask) = LSRolesMask(rawValue or o.rawValue)
+    operator fun contains(o: LSRolesMask) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum LSAcceptanceFlags}
+ */
+@JvmInline
+value class LSAcceptanceFlags(val rawValue: Long) {
+    companion object {
+        val kLSAcceptDefault = LSAcceptanceFlags(1L)
+        val kLSAcceptAllowLoginUI = LSAcceptanceFlags(2L)
+    }
+
+    operator fun plus(o: LSAcceptanceFlags) = LSAcceptanceFlags(rawValue or o.rawValue)
+    operator fun contains(o: LSAcceptanceFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum LSItemInfoFlags}
+ */
+@JvmInline
+value class LSItemInfoFlags(val rawValue: Long) {
+    companion object {
+        val kLSItemInfoIsPlainFile = LSItemInfoFlags(1L)
+        val kLSItemInfoIsPackage = LSItemInfoFlags(2L)
+        val kLSItemInfoIsApplication = LSItemInfoFlags(4L)
+        val kLSItemInfoIsContainer = LSItemInfoFlags(8L)
+        val kLSItemInfoIsAliasFile = LSItemInfoFlags(16L)
+        val kLSItemInfoIsSymlink = LSItemInfoFlags(32L)
+        val kLSItemInfoIsInvisible = LSItemInfoFlags(64L)
+        val kLSItemInfoIsNativeApp = LSItemInfoFlags(128L)
+        val kLSItemInfoIsClassicApp = LSItemInfoFlags(256L)
+        val kLSItemInfoAppPrefersNative = LSItemInfoFlags(512L)
+        val kLSItemInfoAppPrefersClassic = LSItemInfoFlags(1024L)
+        val kLSItemInfoAppIsScriptable = LSItemInfoFlags(2048L)
+        val kLSItemInfoIsVolume = LSItemInfoFlags(4096L)
+        val kLSItemInfoExtensionIsHidden = LSItemInfoFlags(1048576L)
+    }
+
+    operator fun plus(o: LSItemInfoFlags) = LSItemInfoFlags(rawValue or o.rawValue)
+    operator fun contains(o: LSItemInfoFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum LSHandlerOptions}
+ */
+@JvmInline
+value class LSHandlerOptions(val rawValue: Long) {
+    companion object {
+        val kLSHandlerOptionsDefault = LSHandlerOptions(0L)
+        val kLSHandlerOptionsIgnoreCreator = LSHandlerOptions(1L)
+    }
+
+    operator fun plus(o: LSHandlerOptions) = LSHandlerOptions(rawValue or o.rawValue)
+    operator fun contains(o: LSHandlerOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum LSLaunchFlags}
+ */
+@JvmInline
+value class LSLaunchFlags(val rawValue: Long) {
+    companion object {
+        val kLSLaunchDefaults = LSLaunchFlags(1L)
+        val kLSLaunchAndPrint = LSLaunchFlags(2L)
+        val kLSLaunchAndDisplayErrors = LSLaunchFlags(64L)
+        val kLSLaunchDontAddToRecents = LSLaunchFlags(256L)
+        val kLSLaunchDontSwitch = LSLaunchFlags(512L)
+        val kLSLaunchAsync = LSLaunchFlags(65536L)
+        val kLSLaunchNewInstance = LSLaunchFlags(524288L)
+        val kLSLaunchAndHide = LSLaunchFlags(1048576L)
+        val kLSLaunchAndHideOthers = LSLaunchFlags(2097152L)
+    }
+
+    operator fun plus(o: LSLaunchFlags) = LSLaunchFlags(rawValue or o.rawValue)
+    operator fun contains(o: LSLaunchFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum MDQueryOptionFlags}
+ */
+@JvmInline
+value class MDQueryOptionFlags(val rawValue: Long) {
+    companion object {
+        val kMDQuerySynchronous = MDQueryOptionFlags(1L)
+        val kMDQueryWantsUpdates = MDQueryOptionFlags(4L)
+        val kMDQueryAllowFSTranslation = MDQueryOptionFlags(8L)
+    }
+
+    operator fun plus(o: MDQueryOptionFlags) = MDQueryOptionFlags(rawValue or o.rawValue)
+    operator fun contains(o: MDQueryOptionFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum MDQuerySortOptionFlags}
+ */
+@JvmInline
+value class MDQuerySortOptionFlags(val rawValue: Long) {
+    companion object {
+        val kMDQueryReverseSortOrderFlag = MDQuerySortOptionFlags(1L)
+    }
+
+    operator fun plus(o: MDQuerySortOptionFlags) = MDQuerySortOptionFlags(rawValue or o.rawValue)
+    operator fun contains(o: MDQuerySortOptionFlags) = (rawValue and o.rawValue) != 0L
 }
 
 /**
@@ -1643,6 +1403,284 @@ value class NSSaveOptions(val rawValue: Long) {
 }
 
 /**
+ * NS_OPTIONS: {@snippet lang=c : enum CGGradientDrawingOptions}
+ */
+@JvmInline
+value class CGGradientDrawingOptions(val rawValue: Long) {
+    companion object {
+        val kCGGradientDrawsBeforeStartLocation = CGGradientDrawingOptions(1L)
+        val kCGGradientDrawsAfterEndLocation = CGGradientDrawingOptions(2L)
+    }
+
+    operator fun plus(o: CGGradientDrawingOptions) = CGGradientDrawingOptions(rawValue or o.rawValue)
+    operator fun contains(o: CGGradientDrawingOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSWorkspaceIconCreationOptions}
+ */
+@JvmInline
+value class NSWorkspaceIconCreationOptions(val rawValue: Long) {
+    companion object {
+        val NSExcludeQuickDrawElementsIconCreationOption = NSWorkspaceIconCreationOptions(2L)
+        val NSExclude10_4ElementsIconCreationOption = NSWorkspaceIconCreationOptions(4L)
+    }
+
+    operator fun plus(o: NSWorkspaceIconCreationOptions) = NSWorkspaceIconCreationOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSWorkspaceIconCreationOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSWorkspaceLaunchOptions}
+ */
+@JvmInline
+value class NSWorkspaceLaunchOptions(val rawValue: Long) {
+    companion object {
+        val NSWorkspaceLaunchAndPrint = NSWorkspaceLaunchOptions(2L)
+        val NSWorkspaceLaunchWithErrorPresentation = NSWorkspaceLaunchOptions(64L)
+        val NSWorkspaceLaunchInhibitingBackgroundOnly = NSWorkspaceLaunchOptions(128L)
+        val NSWorkspaceLaunchWithoutAddingToRecents = NSWorkspaceLaunchOptions(256L)
+        val NSWorkspaceLaunchWithoutActivation = NSWorkspaceLaunchOptions(512L)
+        val NSWorkspaceLaunchAsync = NSWorkspaceLaunchOptions(65536L)
+        val NSWorkspaceLaunchNewInstance = NSWorkspaceLaunchOptions(524288L)
+        val NSWorkspaceLaunchAndHide = NSWorkspaceLaunchOptions(1048576L)
+        val NSWorkspaceLaunchAndHideOthers = NSWorkspaceLaunchOptions(2097152L)
+        val NSWorkspaceLaunchDefault = NSWorkspaceLaunchOptions(65536L)
+        val NSWorkspaceLaunchAllowingClassicStartup = NSWorkspaceLaunchOptions(131072L)
+        val NSWorkspaceLaunchPreferringClassic = NSWorkspaceLaunchOptions(262144L)
+    }
+
+    operator fun plus(o: NSWorkspaceLaunchOptions) = NSWorkspaceLaunchOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSWorkspaceLaunchOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSTouchTypeMask}
+ */
+@JvmInline
+value class NSTouchTypeMask(val rawValue: Long) {
+    companion object {
+        val NSTouchTypeMaskDirect = NSTouchTypeMask(1L)
+        val NSTouchTypeMaskIndirect = NSTouchTypeMask(2L)
+    }
+
+    operator fun plus(o: NSTouchTypeMask) = NSTouchTypeMask(rawValue or o.rawValue)
+    operator fun contains(o: NSTouchTypeMask) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CGCaptureOptions}
+ */
+@JvmInline
+value class CGCaptureOptions(val rawValue: Long) {
+    companion object {
+        val kCGCaptureNoOptions = CGCaptureOptions(0L)
+        val kCGCaptureNoFill = CGCaptureOptions(1L)
+    }
+
+    operator fun plus(o: CGCaptureOptions) = CGCaptureOptions(rawValue or o.rawValue)
+    operator fun contains(o: CGCaptureOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CGDisplayChangeSummaryFlags}
+ */
+@JvmInline
+value class CGDisplayChangeSummaryFlags(val rawValue: Long) {
+    companion object {
+        val kCGDisplayBeginConfigurationFlag = CGDisplayChangeSummaryFlags(1L)
+        val kCGDisplayMovedFlag = CGDisplayChangeSummaryFlags(2L)
+        val kCGDisplaySetMainFlag = CGDisplayChangeSummaryFlags(4L)
+        val kCGDisplaySetModeFlag = CGDisplayChangeSummaryFlags(8L)
+        val kCGDisplayAddFlag = CGDisplayChangeSummaryFlags(16L)
+        val kCGDisplayRemoveFlag = CGDisplayChangeSummaryFlags(32L)
+        val kCGDisplayEnabledFlag = CGDisplayChangeSummaryFlags(256L)
+        val kCGDisplayDisabledFlag = CGDisplayChangeSummaryFlags(512L)
+        val kCGDisplayMirrorFlag = CGDisplayChangeSummaryFlags(1024L)
+        val kCGDisplayUnMirrorFlag = CGDisplayChangeSummaryFlags(2048L)
+        val kCGDisplayDesktopShapeChangedFlag = CGDisplayChangeSummaryFlags(4096L)
+    }
+
+    operator fun plus(o: CGDisplayChangeSummaryFlags) = CGDisplayChangeSummaryFlags(rawValue or o.rawValue)
+    operator fun contains(o: CGDisplayChangeSummaryFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CGEventFilterMask}
+ */
+@JvmInline
+value class CGEventFilterMask(val rawValue: Long) {
+    companion object {
+        val kCGEventFilterMaskPermitLocalMouseEvents = CGEventFilterMask(1L)
+        val kCGEventFilterMaskPermitLocalKeyboardEvents = CGEventFilterMask(2L)
+        val kCGEventFilterMaskPermitSystemDefinedEvents = CGEventFilterMask(4L)
+    }
+
+    operator fun plus(o: CGEventFilterMask) = CGEventFilterMask(rawValue or o.rawValue)
+    operator fun contains(o: CGEventFilterMask) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CGEventFlags}
+ */
+@JvmInline
+value class CGEventFlags(val rawValue: Long) {
+    companion object {
+        val kCGEventFlagMaskAlphaShift = CGEventFlags(65536L)
+        val kCGEventFlagMaskShift = CGEventFlags(131072L)
+        val kCGEventFlagMaskControl = CGEventFlags(262144L)
+        val kCGEventFlagMaskAlternate = CGEventFlags(524288L)
+        val kCGEventFlagMaskCommand = CGEventFlags(1048576L)
+        val kCGEventFlagMaskHelp = CGEventFlags(4194304L)
+        val kCGEventFlagMaskSecondaryFn = CGEventFlags(8388608L)
+        val kCGEventFlagMaskNumericPad = CGEventFlags(2097152L)
+        val kCGEventFlagMaskNonCoalesced = CGEventFlags(256L)
+    }
+
+    operator fun plus(o: CGEventFlags) = CGEventFlags(rawValue or o.rawValue)
+    operator fun contains(o: CGEventFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CGEventTapOptions}
+ */
+@JvmInline
+value class CGEventTapOptions(val rawValue: Long) {
+    companion object {
+        val kCGEventTapOptionDefault = CGEventTapOptions(0L)
+        val kCGEventTapOptionListenOnly = CGEventTapOptions(1L)
+    }
+
+    operator fun plus(o: CGEventTapOptions) = CGEventTapOptions(rawValue or o.rawValue)
+    operator fun contains(o: CGEventTapOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CTFontOptions}
+ */
+@JvmInline
+value class CTFontOptions(val rawValue: Long) {
+    companion object {
+        val kCTFontOptionsDefault = CTFontOptions(0L)
+        val kCTFontOptionsPreventAutoActivation = CTFontOptions(1L)
+        val kCTFontOptionsPreventAutoDownload = CTFontOptions(2L)
+        val kCTFontOptionsPreferSystemFont = CTFontOptions(4L)
+    }
+
+    operator fun plus(o: CTFontOptions) = CTFontOptions(rawValue or o.rawValue)
+    operator fun contains(o: CTFontOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CTFontTableOptions}
+ */
+@JvmInline
+value class CTFontTableOptions(val rawValue: Long) {
+    companion object {
+        val kCTFontTableOptionNoOptions = CTFontTableOptions(0L)
+        val kCTFontTableOptionExcludeSynthetic = CTFontTableOptions(1L)
+    }
+
+    operator fun plus(o: CTFontTableOptions) = CTFontTableOptions(rawValue or o.rawValue)
+    operator fun contains(o: CTFontTableOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CTFontCollectionCopyOptions}
+ */
+@JvmInline
+value class CTFontCollectionCopyOptions(val rawValue: Long) {
+    companion object {
+        val kCTFontCollectionCopyDefaultOptions = CTFontCollectionCopyOptions(0L)
+        val kCTFontCollectionCopyUnique = CTFontCollectionCopyOptions(1L)
+        val kCTFontCollectionCopyStandardSort = CTFontCollectionCopyOptions(2L)
+    }
+
+    operator fun plus(o: CTFontCollectionCopyOptions) = CTFontCollectionCopyOptions(rawValue or o.rawValue)
+    operator fun contains(o: CTFontCollectionCopyOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CTLineBoundsOptions}
+ */
+@JvmInline
+value class CTLineBoundsOptions(val rawValue: Long) {
+    companion object {
+        val kCTLineBoundsExcludeTypographicLeading = CTLineBoundsOptions(1L)
+        val kCTLineBoundsExcludeTypographicShifts = CTLineBoundsOptions(2L)
+        val kCTLineBoundsUseHangingPunctuation = CTLineBoundsOptions(4L)
+        val kCTLineBoundsUseGlyphPathBounds = CTLineBoundsOptions(8L)
+        val kCTLineBoundsUseOpticalBounds = CTLineBoundsOptions(16L)
+        val kCTLineBoundsIncludeLanguageExtents = CTLineBoundsOptions(32L)
+    }
+
+    operator fun plus(o: CTLineBoundsOptions) = CTLineBoundsOptions(rawValue or o.rawValue)
+    operator fun contains(o: CTLineBoundsOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CMFloatBitmapFlags}
+ */
+@JvmInline
+value class CMFloatBitmapFlags(val rawValue: Long) {
+    companion object {
+        val kCMFloatBitmapFlagsNone = CMFloatBitmapFlags(0L)
+        val kCMFloatBitmapFlagsAlpha = CMFloatBitmapFlags(1L)
+        val kCMFloatBitmapFlagsAlphaPremul = CMFloatBitmapFlags(2L)
+        val kCMFloatBitmapFlagsRangeClipped = CMFloatBitmapFlags(4L)
+    }
+
+    operator fun plus(o: CMFloatBitmapFlags) = CMFloatBitmapFlags(rawValue or o.rawValue)
+    operator fun contains(o: CMFloatBitmapFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum PasteboardSyncFlags}
+ */
+@JvmInline
+value class PasteboardSyncFlags(val rawValue: Long) {
+    companion object {
+        val kPasteboardModified = PasteboardSyncFlags(1L)
+        val kPasteboardClientIsOwner = PasteboardSyncFlags(2L)
+    }
+
+    operator fun plus(o: PasteboardSyncFlags) = PasteboardSyncFlags(rawValue or o.rawValue)
+    operator fun contains(o: PasteboardSyncFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum PasteboardFlavorFlags}
+ */
+@JvmInline
+value class PasteboardFlavorFlags(val rawValue: Long) {
+    companion object {
+        val kPasteboardFlavorNoFlags = PasteboardFlavorFlags(0L)
+        val kPasteboardFlavorSenderOnly = PasteboardFlavorFlags(1L)
+        val kPasteboardFlavorSenderTranslated = PasteboardFlavorFlags(2L)
+        val kPasteboardFlavorNotSaved = PasteboardFlavorFlags(4L)
+        val kPasteboardFlavorRequestOnly = PasteboardFlavorFlags(8L)
+        val kPasteboardFlavorSystemTranslated = PasteboardFlavorFlags(256L)
+        val kPasteboardFlavorPromised = PasteboardFlavorFlags(512L)
+    }
+
+    operator fun plus(o: PasteboardFlavorFlags) = PasteboardFlavorFlags(rawValue or o.rawValue)
+    operator fun contains(o: PasteboardFlavorFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum AXCopyMultipleAttributeOptions}
+ */
+@JvmInline
+value class AXCopyMultipleAttributeOptions(val rawValue: Long) {
+    companion object {
+        val kAXCopyMultipleAttributeOptionStopOnError = AXCopyMultipleAttributeOptions(1L)
+    }
+
+    operator fun plus(o: AXCopyMultipleAttributeOptions) = AXCopyMultipleAttributeOptions(rawValue or o.rawValue)
+    operator fun contains(o: AXCopyMultipleAttributeOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
  * NS_OPTIONS: {@snippet lang=c : enum NSEventMask}
  */
 @JvmInline
@@ -1782,44 +1820,6 @@ value class NSPasteboardReadingOptions(val rawValue: Long) {
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum NSWorkspaceIconCreationOptions}
- */
-@JvmInline
-value class NSWorkspaceIconCreationOptions(val rawValue: Long) {
-    companion object {
-        val NSExcludeQuickDrawElementsIconCreationOption = NSWorkspaceIconCreationOptions(2L)
-        val NSExclude10_4ElementsIconCreationOption = NSWorkspaceIconCreationOptions(4L)
-    }
-
-    operator fun plus(o: NSWorkspaceIconCreationOptions) = NSWorkspaceIconCreationOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSWorkspaceIconCreationOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
- * NS_OPTIONS: {@snippet lang=c : enum NSWorkspaceLaunchOptions}
- */
-@JvmInline
-value class NSWorkspaceLaunchOptions(val rawValue: Long) {
-    companion object {
-        val NSWorkspaceLaunchAndPrint = NSWorkspaceLaunchOptions(2L)
-        val NSWorkspaceLaunchWithErrorPresentation = NSWorkspaceLaunchOptions(64L)
-        val NSWorkspaceLaunchInhibitingBackgroundOnly = NSWorkspaceLaunchOptions(128L)
-        val NSWorkspaceLaunchWithoutAddingToRecents = NSWorkspaceLaunchOptions(256L)
-        val NSWorkspaceLaunchWithoutActivation = NSWorkspaceLaunchOptions(512L)
-        val NSWorkspaceLaunchAsync = NSWorkspaceLaunchOptions(65536L)
-        val NSWorkspaceLaunchNewInstance = NSWorkspaceLaunchOptions(524288L)
-        val NSWorkspaceLaunchAndHide = NSWorkspaceLaunchOptions(1048576L)
-        val NSWorkspaceLaunchAndHideOthers = NSWorkspaceLaunchOptions(2097152L)
-        val NSWorkspaceLaunchDefault = NSWorkspaceLaunchOptions(65536L)
-        val NSWorkspaceLaunchAllowingClassicStartup = NSWorkspaceLaunchOptions(131072L)
-        val NSWorkspaceLaunchPreferringClassic = NSWorkspaceLaunchOptions(262144L)
-    }
-
-    operator fun plus(o: NSWorkspaceLaunchOptions) = NSWorkspaceLaunchOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSWorkspaceLaunchOptions) = (rawValue and o.rawValue) != 0L
-}
-
-/**
  * NS_OPTIONS: {@snippet lang=c : enum NSApplicationActivationOptions}
  */
 @JvmInline
@@ -1939,6 +1939,77 @@ value class NSWindowListOptions(val rawValue: Long) {
 }
 
 /**
+ * NS_OPTIONS: {@snippet lang=c : enum NSViewControllerTransitionOptions}
+ */
+@JvmInline
+value class NSViewControllerTransitionOptions(val rawValue: Long) {
+    companion object {
+        val NSViewControllerTransitionNone = NSViewControllerTransitionOptions(0L)
+        val NSViewControllerTransitionCrossfade = NSViewControllerTransitionOptions(1L)
+        val NSViewControllerTransitionSlideUp = NSViewControllerTransitionOptions(16L)
+        val NSViewControllerTransitionSlideDown = NSViewControllerTransitionOptions(32L)
+        val NSViewControllerTransitionSlideLeft = NSViewControllerTransitionOptions(64L)
+        val NSViewControllerTransitionSlideRight = NSViewControllerTransitionOptions(128L)
+        val NSViewControllerTransitionSlideForward = NSViewControllerTransitionOptions(320L)
+        val NSViewControllerTransitionSlideBackward = NSViewControllerTransitionOptions(384L)
+        val NSViewControllerTransitionAllowUserInteraction = NSViewControllerTransitionOptions(4096L)
+    }
+
+    operator fun plus(o: NSViewControllerTransitionOptions) = NSViewControllerTransitionOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSViewControllerTransitionOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSFontAssetRequestOptions}
+ */
+@JvmInline
+value class NSFontAssetRequestOptions(val rawValue: Long) {
+    companion object {
+        val NSFontAssetRequestOptionUsesStandardUI = NSFontAssetRequestOptions(1L)
+    }
+
+    operator fun plus(o: NSFontAssetRequestOptions) = NSFontAssetRequestOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSFontAssetRequestOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSFontTraitMask}
+ */
+@JvmInline
+value class NSFontTraitMask(val rawValue: Long) {
+    companion object {
+        val NSItalicFontMask = NSFontTraitMask(1L)
+        val NSBoldFontMask = NSFontTraitMask(2L)
+        val NSUnboldFontMask = NSFontTraitMask(4L)
+        val NSNonStandardCharacterSetFontMask = NSFontTraitMask(8L)
+        val NSNarrowFontMask = NSFontTraitMask(16L)
+        val NSExpandedFontMask = NSFontTraitMask(32L)
+        val NSCondensedFontMask = NSFontTraitMask(64L)
+        val NSSmallCapsFontMask = NSFontTraitMask(128L)
+        val NSPosterFontMask = NSFontTraitMask(256L)
+        val NSCompressedFontMask = NSFontTraitMask(512L)
+        val NSFixedPitchFontMask = NSFontTraitMask(1024L)
+        val NSUnitalicFontMask = NSFontTraitMask(16777216L)
+    }
+
+    operator fun plus(o: NSFontTraitMask) = NSFontTraitMask(rawValue or o.rawValue)
+    operator fun contains(o: NSFontTraitMask) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSFontCollectionOptions}
+ */
+@JvmInline
+value class NSFontCollectionOptions(val rawValue: Long) {
+    companion object {
+        val NSFontCollectionApplicationOnlyMask = NSFontCollectionOptions(1L)
+    }
+
+    operator fun plus(o: NSFontCollectionOptions) = NSFontCollectionOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSFontCollectionOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
  * NS_OPTIONS: {@snippet lang=c : enum NSWindowStyleMask}
  */
 @JvmInline
@@ -1978,24 +2049,162 @@ value class NSWindowNumberListOptions(val rawValue: Long) {
 }
 
 /**
- * NS_OPTIONS: {@snippet lang=c : enum NSViewControllerTransitionOptions}
+ * NS_OPTIONS: {@snippet lang=c : enum NSFontPanelModeMask}
  */
 @JvmInline
-value class NSViewControllerTransitionOptions(val rawValue: Long) {
+value class NSFontPanelModeMask(val rawValue: Long) {
     companion object {
-        val NSViewControllerTransitionNone = NSViewControllerTransitionOptions(0L)
-        val NSViewControllerTransitionCrossfade = NSViewControllerTransitionOptions(1L)
-        val NSViewControllerTransitionSlideUp = NSViewControllerTransitionOptions(16L)
-        val NSViewControllerTransitionSlideDown = NSViewControllerTransitionOptions(32L)
-        val NSViewControllerTransitionSlideLeft = NSViewControllerTransitionOptions(64L)
-        val NSViewControllerTransitionSlideRight = NSViewControllerTransitionOptions(128L)
-        val NSViewControllerTransitionSlideForward = NSViewControllerTransitionOptions(320L)
-        val NSViewControllerTransitionSlideBackward = NSViewControllerTransitionOptions(384L)
-        val NSViewControllerTransitionAllowUserInteraction = NSViewControllerTransitionOptions(4096L)
+        val NSFontPanelModeMaskFace = NSFontPanelModeMask(1L)
+        val NSFontPanelModeMaskSize = NSFontPanelModeMask(2L)
+        val NSFontPanelModeMaskCollection = NSFontPanelModeMask(4L)
+        val NSFontPanelModeMaskUnderlineEffect = NSFontPanelModeMask(256L)
+        val NSFontPanelModeMaskStrikethroughEffect = NSFontPanelModeMask(512L)
+        val NSFontPanelModeMaskTextColorEffect = NSFontPanelModeMask(1024L)
+        val NSFontPanelModeMaskDocumentColorEffect = NSFontPanelModeMask(2048L)
+        val NSFontPanelModeMaskShadowEffect = NSFontPanelModeMask(4096L)
+        val NSFontPanelModeMaskAllEffects = NSFontPanelModeMask(1048320L)
+        val NSFontPanelModesMaskStandardModes = NSFontPanelModeMask(65535L)
+        val NSFontPanelModesMaskAllModes = NSFontPanelModeMask(4294967295L)
     }
 
-    operator fun plus(o: NSViewControllerTransitionOptions) = NSViewControllerTransitionOptions(rawValue or o.rawValue)
-    operator fun contains(o: NSViewControllerTransitionOptions) = (rawValue and o.rawValue) != 0L
+    operator fun plus(o: NSFontPanelModeMask) = NSFontPanelModeMask(rawValue or o.rawValue)
+    operator fun contains(o: NSFontPanelModeMask) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CVSMPTETimeFlags}
+ */
+@JvmInline
+value class CVSMPTETimeFlags(val rawValue: Long) {
+    companion object {
+        val kCVSMPTETimeValid = CVSMPTETimeFlags(1L)
+        val kCVSMPTETimeRunning = CVSMPTETimeFlags(2L)
+    }
+
+    operator fun plus(o: CVSMPTETimeFlags) = CVSMPTETimeFlags(rawValue or o.rawValue)
+    operator fun contains(o: CVSMPTETimeFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CVTimeFlags}
+ */
+@JvmInline
+value class CVTimeFlags(val rawValue: Long) {
+    companion object {
+        val kCVTimeIsIndefinite = CVTimeFlags(1L)
+    }
+
+    operator fun plus(o: CVTimeFlags) = CVTimeFlags(rawValue or o.rawValue)
+    operator fun contains(o: CVTimeFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CVTimeStampFlags}
+ */
+@JvmInline
+value class CVTimeStampFlags(val rawValue: Long) {
+    companion object {
+        val kCVTimeStampVideoTimeValid = CVTimeStampFlags(1L)
+        val kCVTimeStampHostTimeValid = CVTimeStampFlags(2L)
+        val kCVTimeStampSMPTETimeValid = CVTimeStampFlags(4L)
+        val kCVTimeStampVideoRefreshPeriodValid = CVTimeStampFlags(8L)
+        val kCVTimeStampRateScalarValid = CVTimeStampFlags(16L)
+        val kCVTimeStampTopField = CVTimeStampFlags(65536L)
+        val kCVTimeStampBottomField = CVTimeStampFlags(131072L)
+        val kCVTimeStampVideoHostTimeValid = CVTimeStampFlags(3L)
+        val kCVTimeStampIsInterlaced = CVTimeStampFlags(196608L)
+    }
+
+    operator fun plus(o: CVTimeStampFlags) = CVTimeStampFlags(rawValue or o.rawValue)
+    operator fun contains(o: CVTimeStampFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CVPixelBufferLockFlags}
+ */
+@JvmInline
+value class CVPixelBufferLockFlags(val rawValue: Long) {
+    companion object {
+        val kCVPixelBufferLock_ReadOnly = CVPixelBufferLockFlags(1L)
+    }
+
+    operator fun plus(o: CVPixelBufferLockFlags) = CVPixelBufferLockFlags(rawValue or o.rawValue)
+    operator fun contains(o: CVPixelBufferLockFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum IOSurfaceLockOptions}
+ */
+@JvmInline
+value class IOSurfaceLockOptions(val rawValue: Long) {
+    companion object {
+        val kIOSurfaceLockReadOnly = IOSurfaceLockOptions(1L)
+        val kIOSurfaceLockAvoidSync = IOSurfaceLockOptions(2L)
+    }
+
+    operator fun plus(o: IOSurfaceLockOptions) = IOSurfaceLockOptions(rawValue or o.rawValue)
+    operator fun contains(o: IOSurfaceLockOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum IOSurfaceMemoryLedgerFlags}
+ */
+@JvmInline
+value class IOSurfaceMemoryLedgerFlags(val rawValue: Long) {
+    companion object {
+        val kIOSurfaceMemoryLedgerFlagNoFootprint = IOSurfaceMemoryLedgerFlags(1L)
+    }
+
+    operator fun plus(o: IOSurfaceMemoryLedgerFlags) = IOSurfaceMemoryLedgerFlags(rawValue or o.rawValue)
+    operator fun contains(o: IOSurfaceMemoryLedgerFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CVPixelBufferPoolFlushFlags}
+ */
+@JvmInline
+value class CVPixelBufferPoolFlushFlags(val rawValue: Long) {
+    companion object {
+        val kCVPixelBufferPoolFlushExcessBuffers = CVPixelBufferPoolFlushFlags(1L)
+    }
+
+    operator fun plus(o: CVPixelBufferPoolFlushFlags) = CVPixelBufferPoolFlushFlags(rawValue or o.rawValue)
+    operator fun contains(o: CVPixelBufferPoolFlushFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSColorPanelOptions}
+ */
+@JvmInline
+value class NSColorPanelOptions(val rawValue: Long) {
+    companion object {
+        val NSColorPanelGrayModeMask = NSColorPanelOptions(1L)
+        val NSColorPanelRGBModeMask = NSColorPanelOptions(2L)
+        val NSColorPanelCMYKModeMask = NSColorPanelOptions(4L)
+        val NSColorPanelHSBModeMask = NSColorPanelOptions(8L)
+        val NSColorPanelCustomPaletteModeMask = NSColorPanelOptions(16L)
+        val NSColorPanelColorListModeMask = NSColorPanelOptions(32L)
+        val NSColorPanelWheelModeMask = NSColorPanelOptions(64L)
+        val NSColorPanelCrayonModeMask = NSColorPanelOptions(128L)
+        val NSColorPanelAllModesMask = NSColorPanelOptions(65535L)
+    }
+
+    operator fun plus(o: NSColorPanelOptions) = NSColorPanelOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSColorPanelOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSGradientDrawingOptions}
+ */
+@JvmInline
+value class NSGradientDrawingOptions(val rawValue: Long) {
+    companion object {
+        val NSGradientDrawsBeforeStartingLocation = NSGradientDrawingOptions(1L)
+        val NSGradientDrawsAfterEndingLocation = NSGradientDrawingOptions(2L)
+    }
+
+    operator fun plus(o: NSGradientDrawingOptions) = NSGradientDrawingOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSGradientDrawingOptions) = (rawValue and o.rawValue) != 0L
 }
 
 /**
@@ -2024,4 +2233,294 @@ value class NSLayoutFormatOptions(val rawValue: Long) {
 
     operator fun plus(o: NSLayoutFormatOptions) = NSLayoutFormatOptions(rawValue or o.rawValue)
     operator fun contains(o: NSLayoutFormatOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSCloudKitSharingServiceOptions}
+ */
+@JvmInline
+value class NSCloudKitSharingServiceOptions(val rawValue: Long) {
+    companion object {
+        val NSCloudKitSharingServiceStandard = NSCloudKitSharingServiceOptions(0L)
+        val NSCloudKitSharingServiceAllowPublic = NSCloudKitSharingServiceOptions(1L)
+        val NSCloudKitSharingServiceAllowPrivate = NSCloudKitSharingServiceOptions(2L)
+        val NSCloudKitSharingServiceAllowReadOnly = NSCloudKitSharingServiceOptions(16L)
+        val NSCloudKitSharingServiceAllowReadWrite = NSCloudKitSharingServiceOptions(32L)
+    }
+
+    operator fun plus(o: NSCloudKitSharingServiceOptions) = NSCloudKitSharingServiceOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSCloudKitSharingServiceOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSPrintPanelOptions}
+ */
+@JvmInline
+value class NSPrintPanelOptions(val rawValue: Long) {
+    companion object {
+        val NSPrintPanelShowsCopies = NSPrintPanelOptions(1L)
+        val NSPrintPanelShowsPageRange = NSPrintPanelOptions(2L)
+        val NSPrintPanelShowsPaperSize = NSPrintPanelOptions(4L)
+        val NSPrintPanelShowsOrientation = NSPrintPanelOptions(8L)
+        val NSPrintPanelShowsScaling = NSPrintPanelOptions(16L)
+        val NSPrintPanelShowsPrintSelection = NSPrintPanelOptions(32L)
+        val NSPrintPanelShowsPageSetupAccessory = NSPrintPanelOptions(256L)
+        val NSPrintPanelShowsPreview = NSPrintPanelOptions(131072L)
+    }
+
+    operator fun plus(o: NSPrintPanelOptions) = NSPrintPanelOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSPrintPanelOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSPDFPanelOptions}
+ */
+@JvmInline
+value class NSPDFPanelOptions(val rawValue: Long) {
+    companion object {
+        val NSPDFPanelShowsPaperSize = NSPDFPanelOptions(4L)
+        val NSPDFPanelShowsOrientation = NSPDFPanelOptions(8L)
+        val NSPDFPanelRequestsParentDirectory = NSPDFPanelOptions(16777216L)
+    }
+
+    operator fun plus(o: NSPDFPanelOptions) = NSPDFPanelOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSPDFPanelOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSWritingToolsResultOptions}
+ */
+@JvmInline
+value class NSWritingToolsResultOptions(val rawValue: Long) {
+    companion object {
+        val NSWritingToolsResultDefault = NSWritingToolsResultOptions(0L)
+        val NSWritingToolsResultPlainText = NSWritingToolsResultOptions(1L)
+        val NSWritingToolsResultRichText = NSWritingToolsResultOptions(2L)
+        val NSWritingToolsResultList = NSWritingToolsResultOptions(4L)
+        val NSWritingToolsResultTable = NSWritingToolsResultOptions(8L)
+        val NSWritingToolsResultPresentationIntent = NSWritingToolsResultOptions(16L)
+    }
+
+    operator fun plus(o: NSWritingToolsResultOptions) = NSWritingToolsResultOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSWritingToolsResultOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSTextInsertionIndicatorAutomaticModeOptions}
+ */
+@JvmInline
+value class NSTextInsertionIndicatorAutomaticModeOptions(val rawValue: Long) {
+    companion object {
+        val NSTextInsertionIndicatorAutomaticModeOptionsShowEffectsView = NSTextInsertionIndicatorAutomaticModeOptions(1L)
+        val NSTextInsertionIndicatorAutomaticModeOptionsShowWhileTracking = NSTextInsertionIndicatorAutomaticModeOptions(2L)
+    }
+
+    operator fun plus(o: NSTextInsertionIndicatorAutomaticModeOptions) = NSTextInsertionIndicatorAutomaticModeOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSTextInsertionIndicatorAutomaticModeOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSTrackingAreaOptions}
+ */
+@JvmInline
+value class NSTrackingAreaOptions(val rawValue: Long) {
+    companion object {
+        val NSTrackingMouseEnteredAndExited = NSTrackingAreaOptions(1L)
+        val NSTrackingMouseMoved = NSTrackingAreaOptions(2L)
+        val NSTrackingCursorUpdate = NSTrackingAreaOptions(4L)
+        val NSTrackingActiveWhenFirstResponder = NSTrackingAreaOptions(16L)
+        val NSTrackingActiveInKeyWindow = NSTrackingAreaOptions(32L)
+        val NSTrackingActiveInActiveApp = NSTrackingAreaOptions(64L)
+        val NSTrackingActiveAlways = NSTrackingAreaOptions(128L)
+        val NSTrackingAssumeInside = NSTrackingAreaOptions(256L)
+        val NSTrackingInVisibleRect = NSTrackingAreaOptions(512L)
+        val NSTrackingEnabledDuringMouseDrag = NSTrackingAreaOptions(1024L)
+    }
+
+    operator fun plus(o: NSTrackingAreaOptions) = NSTrackingAreaOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSTrackingAreaOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSTableViewAnimationOptions}
+ */
+@JvmInline
+value class NSTableViewAnimationOptions(val rawValue: Long) {
+    companion object {
+        val NSTableViewAnimationEffectNone = NSTableViewAnimationOptions(0L)
+        val NSTableViewAnimationEffectFade = NSTableViewAnimationOptions(1L)
+        val NSTableViewAnimationEffectGap = NSTableViewAnimationOptions(2L)
+        val NSTableViewAnimationSlideUp = NSTableViewAnimationOptions(16L)
+        val NSTableViewAnimationSlideDown = NSTableViewAnimationOptions(32L)
+        val NSTableViewAnimationSlideLeft = NSTableViewAnimationOptions(48L)
+        val NSTableViewAnimationSlideRight = NSTableViewAnimationOptions(64L)
+    }
+
+    operator fun plus(o: NSTableViewAnimationOptions) = NSTableViewAnimationOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSTableViewAnimationOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSTableColumnResizingOptions}
+ */
+@JvmInline
+value class NSTableColumnResizingOptions(val rawValue: Long) {
+    companion object {
+        val NSTableColumnNoResizing = NSTableColumnResizingOptions(0L)
+        val NSTableColumnAutoresizingMask = NSTableColumnResizingOptions(1L)
+        val NSTableColumnUserResizingMask = NSTableColumnResizingOptions(2L)
+    }
+
+    operator fun plus(o: NSTableColumnResizingOptions) = NSTableColumnResizingOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSTableColumnResizingOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSStringDrawingOptions}
+ */
+@JvmInline
+value class NSStringDrawingOptions(val rawValue: Long) {
+    companion object {
+        val NSStringDrawingUsesLineFragmentOrigin = NSStringDrawingOptions(1L)
+        val NSStringDrawingUsesFontLeading = NSStringDrawingOptions(2L)
+        val NSStringDrawingUsesDeviceMetrics = NSStringDrawingOptions(8L)
+        val NSStringDrawingTruncatesLastVisibleLine = NSStringDrawingOptions(32L)
+        val NSStringDrawingOptionsResolvesNaturalAlignmentWithBaseWritingDirection = NSStringDrawingOptions(512L)
+        val NSStringDrawingDisableScreenFontSubstitution = NSStringDrawingOptions(4L)
+        val NSStringDrawingOneShot = NSStringDrawingOptions(16L)
+    }
+
+    operator fun plus(o: NSStringDrawingOptions) = NSStringDrawingOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSStringDrawingOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CAAutoresizingMask}
+ */
+@JvmInline
+value class CAAutoresizingMask(val rawValue: Long) {
+    companion object {
+        val kCALayerNotSizable = CAAutoresizingMask(0L)
+        val kCALayerMinXMargin = CAAutoresizingMask(1L)
+        val kCALayerWidthSizable = CAAutoresizingMask(2L)
+        val kCALayerMaxXMargin = CAAutoresizingMask(4L)
+        val kCALayerMinYMargin = CAAutoresizingMask(8L)
+        val kCALayerHeightSizable = CAAutoresizingMask(16L)
+        val kCALayerMaxYMargin = CAAutoresizingMask(32L)
+    }
+
+    operator fun plus(o: CAAutoresizingMask) = CAAutoresizingMask(rawValue or o.rawValue)
+    operator fun contains(o: CAAutoresizingMask) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CAEdgeAntialiasingMask}
+ */
+@JvmInline
+value class CAEdgeAntialiasingMask(val rawValue: Long) {
+    companion object {
+        val kCALayerLeftEdge = CAEdgeAntialiasingMask(1L)
+        val kCALayerRightEdge = CAEdgeAntialiasingMask(2L)
+        val kCALayerBottomEdge = CAEdgeAntialiasingMask(4L)
+        val kCALayerTopEdge = CAEdgeAntialiasingMask(8L)
+    }
+
+    operator fun plus(o: CAEdgeAntialiasingMask) = CAEdgeAntialiasingMask(rawValue or o.rawValue)
+    operator fun contains(o: CAEdgeAntialiasingMask) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CACornerMask}
+ */
+@JvmInline
+value class CACornerMask(val rawValue: Long) {
+    companion object {
+        val kCALayerMinXMinYCorner = CACornerMask(1L)
+        val kCALayerMaxXMinYCorner = CACornerMask(2L)
+        val kCALayerMinXMaxYCorner = CACornerMask(4L)
+        val kCALayerMaxXMaxYCorner = CACornerMask(8L)
+    }
+
+    operator fun plus(o: CACornerMask) = CACornerMask(rawValue or o.rawValue)
+    operator fun contains(o: CACornerMask) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSTextListOptions}
+ */
+@JvmInline
+value class NSTextListOptions(val rawValue: Long) {
+    companion object {
+        val NSTextListPrependEnclosingMarker = NSTextListOptions(1L)
+    }
+
+    operator fun plus(o: NSTextListOptions) = NSTextListOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSTextListOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSDatePickerElementFlags}
+ */
+@JvmInline
+value class NSDatePickerElementFlags(val rawValue: Long) {
+    companion object {
+        val NSDatePickerElementFlagHourMinute = NSDatePickerElementFlags(12L)
+        val NSDatePickerElementFlagHourMinuteSecond = NSDatePickerElementFlags(14L)
+        val NSDatePickerElementFlagTimeZone = NSDatePickerElementFlags(16L)
+        val NSDatePickerElementFlagYearMonth = NSDatePickerElementFlags(192L)
+        val NSDatePickerElementFlagYearMonthDay = NSDatePickerElementFlags(224L)
+        val NSDatePickerElementFlagEra = NSDatePickerElementFlags(256L)
+    }
+
+    operator fun plus(o: NSDatePickerElementFlags) = NSDatePickerElementFlags(rawValue or o.rawValue)
+    operator fun contains(o: NSDatePickerElementFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSTextContentManagerEnumerationOptions}
+ */
+@JvmInline
+value class NSTextContentManagerEnumerationOptions(val rawValue: Long) {
+    companion object {
+        val NSTextContentManagerEnumerationOptionsNone = NSTextContentManagerEnumerationOptions(0L)
+        val NSTextContentManagerEnumerationOptionsReverse = NSTextContentManagerEnumerationOptions(1L)
+    }
+
+    operator fun plus(o: NSTextContentManagerEnumerationOptions) = NSTextContentManagerEnumerationOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSTextContentManagerEnumerationOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSTextLayoutFragmentEnumerationOptions}
+ */
+@JvmInline
+value class NSTextLayoutFragmentEnumerationOptions(val rawValue: Long) {
+    companion object {
+        val NSTextLayoutFragmentEnumerationOptionsNone = NSTextLayoutFragmentEnumerationOptions(0L)
+        val NSTextLayoutFragmentEnumerationOptionsReverse = NSTextLayoutFragmentEnumerationOptions(1L)
+        val NSTextLayoutFragmentEnumerationOptionsEstimatesSize = NSTextLayoutFragmentEnumerationOptions(2L)
+        val NSTextLayoutFragmentEnumerationOptionsEnsuresLayout = NSTextLayoutFragmentEnumerationOptions(4L)
+        val NSTextLayoutFragmentEnumerationOptionsEnsuresExtraLineFragment = NSTextLayoutFragmentEnumerationOptions(8L)
+    }
+
+    operator fun plus(o: NSTextLayoutFragmentEnumerationOptions) = NSTextLayoutFragmentEnumerationOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSTextLayoutFragmentEnumerationOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum NSTextLayoutManagerSegmentOptions}
+ */
+@JvmInline
+value class NSTextLayoutManagerSegmentOptions(val rawValue: Long) {
+    companion object {
+        val NSTextLayoutManagerSegmentOptionsNone = NSTextLayoutManagerSegmentOptions(0L)
+        val NSTextLayoutManagerSegmentOptionsRangeNotRequired = NSTextLayoutManagerSegmentOptions(1L)
+        val NSTextLayoutManagerSegmentOptionsMiddleFragmentsExcluded = NSTextLayoutManagerSegmentOptions(2L)
+        val NSTextLayoutManagerSegmentOptionsHeadSegmentExtended = NSTextLayoutManagerSegmentOptions(4L)
+        val NSTextLayoutManagerSegmentOptionsTailSegmentExtended = NSTextLayoutManagerSegmentOptions(8L)
+        val NSTextLayoutManagerSegmentOptionsUpstreamAffinity = NSTextLayoutManagerSegmentOptions(16L)
+    }
+
+    operator fun plus(o: NSTextLayoutManagerSegmentOptions) = NSTextLayoutManagerSegmentOptions(rawValue or o.rawValue)
+    operator fun contains(o: NSTextLayoutManagerSegmentOptions) = (rawValue and o.rawValue) != 0L
 }

@@ -1446,3 +1446,419 @@ open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
     }
 
 }
+
+// ── Category: NSEvent on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.trackEventsMatchingMask_timeout_mode_handler(mask: MemorySegment, timeout: Double, mode: MemorySegment, trackingHandler: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("trackEventsMatchingMask:timeout:mode:handler:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, mask, timeout, mode, trackingHandler)
+}
+
+fun NSWindow.nextEventMatchingMask(mask: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("nextEventMatchingMask:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, mask) as MemorySegment
+}
+
+fun NSWindow.nextEventMatchingMask_untilDate_inMode_dequeue(mask: MemorySegment, expiration: MemorySegment, mode: MemorySegment, deqFlag: Boolean): MemorySegment {
+    val sel = ObjCRuntime.sel("nextEventMatchingMask:untilDate:inMode:dequeue:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, mask, expiration, mode, deqFlag) as MemorySegment
+}
+
+fun NSWindow.discardEventsMatchingMask_beforeEvent(mask: MemorySegment, lastEvent: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("discardEventsMatchingMask:beforeEvent:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, mask, lastEvent)
+}
+
+fun NSWindow.postEvent_atStart(event: MemorySegment, flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("postEvent:atStart:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, event, flag)
+}
+
+fun NSWindow.sendEvent(event: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("sendEvent:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, event)
+}
+
+fun NSWindow.currentEvent(): MemorySegment {
+    val sel = ObjCRuntime.sel("currentEvent")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSWindow.acceptsMouseMovedEvents(): Boolean {
+    val sel = ObjCRuntime.sel("acceptsMouseMovedEvents")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.setAcceptsMouseMovedEvents(acceptsMouseMovedEvents: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setAcceptsMouseMovedEvents:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, acceptsMouseMovedEvents)
+}
+
+fun NSWindow.ignoresMouseEvents(): Boolean {
+    val sel = ObjCRuntime.sel("ignoresMouseEvents")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.setIgnoresMouseEvents(ignoresMouseEvents: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setIgnoresMouseEvents:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, ignoresMouseEvents)
+}
+
+fun NSWindow.mouseLocationOutsideOfEventStream(): MemorySegment {
+    val sel = ObjCRuntime.sel("mouseLocationOutsideOfEventStream")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSCursorRect on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.disableCursorRects(): Unit {
+    val sel = ObjCRuntime.sel("disableCursorRects")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.enableCursorRects(): Unit {
+    val sel = ObjCRuntime.sel("enableCursorRects")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.discardCursorRects(): Unit {
+    val sel = ObjCRuntime.sel("discardCursorRects")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.invalidateCursorRectsForView(view: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("invalidateCursorRectsForView:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, view)
+}
+
+fun NSWindow.resetCursorRects(): Unit {
+    val sel = ObjCRuntime.sel("resetCursorRects")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.areCursorRectsEnabled(): Boolean {
+    val sel = ObjCRuntime.sel("areCursorRectsEnabled")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+// ── Category: NSDrag on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.beginDraggingSessionWithItems_event_source(items: MemorySegment, event: MemorySegment, source: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("beginDraggingSessionWithItems:event:source:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, items, event, source) as MemorySegment
+}
+
+fun NSWindow.dragImage_at_offset_event_pasteboard_source_slideBack(image: MemorySegment, baseLocation: MemorySegment, initialOffset: MemorySegment, event: MemorySegment, pboard: MemorySegment, sourceObj: MemorySegment, slideFlag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("dragImage:at:offset:event:pasteboard:source:slideBack:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, image, baseLocation, initialOffset, event, pboard, sourceObj, slideFlag)
+}
+
+fun NSWindow.registerForDraggedTypes(newTypes: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("registerForDraggedTypes:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, newTypes)
+}
+
+fun NSWindow.unregisterDraggedTypes(): Unit {
+    val sel = ObjCRuntime.sel("unregisterDraggedTypes")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+// ── Category: NSDisplayLink on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.displayLinkWithTarget_selector(target: MemorySegment, selector: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("displayLinkWithTarget:selector:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, target, selector) as MemorySegment
+}
+
+// ── Category: NSDeprecated on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.cacheImageInRect(rect: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("cacheImageInRect:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, rect)
+}
+
+fun NSWindow.restoreCachedImage(): Unit {
+    val sel = ObjCRuntime.sel("restoreCachedImage")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.discardCachedImage(): Unit {
+    val sel = ObjCRuntime.sel("discardCachedImage")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.gState(): Long {
+    val sel = ObjCRuntime.sel("gState")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
+}
+
+fun NSWindow.convertBaseToScreen(point: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("convertBaseToScreen:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, point) as MemorySegment
+}
+
+fun NSWindow.convertScreenToBase(point: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("convertScreenToBase:")
+    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, point) as MemorySegment
+}
+
+fun NSWindow.userSpaceScaleFactor(): Double {
+    val sel = ObjCRuntime.sel("userSpaceScaleFactor")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+
+fun NSWindow.useOptimizedDrawing(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("useOptimizedDrawing:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSWindow.canStoreColor(): Boolean {
+    val sel = ObjCRuntime.sel("canStoreColor")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.disableFlushWindow(): Unit {
+    val sel = ObjCRuntime.sel("disableFlushWindow")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.enableFlushWindow(): Unit {
+    val sel = ObjCRuntime.sel("enableFlushWindow")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.flushWindow(): Unit {
+    val sel = ObjCRuntime.sel("flushWindow")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.flushWindowIfNeeded(): Unit {
+    val sel = ObjCRuntime.sel("flushWindowIfNeeded")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.initWithWindowRef(windowRef: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithWindowRef:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, windowRef) as MemorySegment
+}
+
+fun NSWindow.disableScreenUpdatesUntilFlush(): Unit {
+    val sel = ObjCRuntime.sel("disableScreenUpdatesUntilFlush")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.isFlushWindowDisabled(): Boolean {
+    val sel = ObjCRuntime.sel("isFlushWindowDisabled")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.isAutodisplay(): Boolean {
+    val sel = ObjCRuntime.sel("isAutodisplay")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.setAutodisplay(autodisplay: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setAutodisplay:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, autodisplay)
+}
+
+fun NSWindow.graphicsContext(): MemorySegment {
+    val sel = ObjCRuntime.sel("graphicsContext")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSWindow.isOneShot(): Boolean {
+    val sel = ObjCRuntime.sel("isOneShot")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.setOneShot(oneShot: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setOneShot:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, oneShot)
+}
+
+fun NSWindow.preferredBackingLocation(): MemorySegment {
+    val sel = ObjCRuntime.sel("preferredBackingLocation")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSWindow.setPreferredBackingLocation(preferredBackingLocation: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setPreferredBackingLocation:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, preferredBackingLocation)
+}
+
+fun NSWindow.backingLocation(): MemorySegment {
+    val sel = ObjCRuntime.sel("backingLocation")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSWindow.showsResizeIndicator(): Boolean {
+    val sel = ObjCRuntime.sel("showsResizeIndicator")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.setShowsResizeIndicator(showsResizeIndicator: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setShowsResizeIndicator:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, showsResizeIndicator)
+}
+
+fun NSWindow.windowRef(): MemorySegment {
+    val sel = ObjCRuntime.sel("windowRef")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// Class method: +[NSWindow menuChanged:]
+fun NSWindow_menuChanged(menu: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("menuChanged:")
+    val cls = ObjCRuntime.getClass("NSWindow")
+    ObjCRuntime.msgSend(null, cls, sel, menu)
+}
+
+// ── Category: NSConstraintBasedLayoutCoreMethods on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.updateConstraintsIfNeeded(): Unit {
+    val sel = ObjCRuntime.sel("updateConstraintsIfNeeded")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.layoutIfNeeded(): Unit {
+    val sel = ObjCRuntime.sel("layoutIfNeeded")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+// ── Category: NSConstraintBasedLayoutAnchoring on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.anchorAttributeForOrientation(orientation: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("anchorAttributeForOrientation:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, orientation) as MemorySegment
+}
+
+fun NSWindow.setAnchorAttribute_forOrientation(attr: MemorySegment, orientation: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setAnchorAttribute:forOrientation:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, attr, orientation)
+}
+
+// ── Category: NSConstraintBasedLayoutDebugging on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.visualizeConstraints(constraints: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("visualizeConstraints:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, constraints)
+}
+
+// ── Category: NSDrawers on NSWindow ─────────────────────────────────────────
+
+/** @return NSArray<NSDrawer *> * */
+fun NSWindow.drawers(): MemorySegment {
+    val sel = ObjCRuntime.sel("drawers")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSScripting on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.setIsMiniaturized(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setIsMiniaturized:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSWindow.setIsVisible(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setIsVisible:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSWindow.setIsZoomed(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setIsZoomed:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSWindow.handleCloseScriptCommand(command: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("handleCloseScriptCommand:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, command) as MemorySegment
+}
+
+fun NSWindow.handlePrintScriptCommand(command: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("handlePrintScriptCommand:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, command) as MemorySegment
+}
+
+fun NSWindow.handleSaveScriptCommand(command: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("handleSaveScriptCommand:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, command) as MemorySegment
+}
+
+fun NSWindow.hasCloseBox(): Boolean {
+    val sel = ObjCRuntime.sel("hasCloseBox")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.hasTitleBar(): Boolean {
+    val sel = ObjCRuntime.sel("hasTitleBar")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.isFloatingPanel(): Boolean {
+    val sel = ObjCRuntime.sel("isFloatingPanel")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.isMiniaturizable(): Boolean {
+    val sel = ObjCRuntime.sel("isMiniaturizable")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.isModalPanel(): Boolean {
+    val sel = ObjCRuntime.sel("isModalPanel")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.isResizable(): Boolean {
+    val sel = ObjCRuntime.sel("isResizable")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.isZoomable(): Boolean {
+    val sel = ObjCRuntime.sel("isZoomable")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.orderedIndex(): Long {
+    val sel = ObjCRuntime.sel("orderedIndex")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
+}
+
+fun NSWindow.setOrderedIndex(orderedIndex: Long): Unit {
+    val sel = ObjCRuntime.sel("setOrderedIndex:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, orderedIndex)
+}
+
+// ── Category: NSUserInterfaceRestoration on NSWindow ─────────────────────────────────────────
+
+fun NSWindow.disableSnapshotRestoration(): Unit {
+    val sel = ObjCRuntime.sel("disableSnapshotRestoration")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.enableSnapshotRestoration(): Unit {
+    val sel = ObjCRuntime.sel("enableSnapshotRestoration")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWindow.isRestorable(): Boolean {
+    val sel = ObjCRuntime.sel("isRestorable")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSWindow.setRestorable(restorable: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setRestorable:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, restorable)
+}
+
+/** @return Class<NSWindowRestoration> */
+fun NSWindow.restorationClass(): MemorySegment {
+    val sel = ObjCRuntime.sel("restorationClass")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSWindow.setRestorationClass(restorationClass: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setRestorationClass:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, restorationClass)
+}
