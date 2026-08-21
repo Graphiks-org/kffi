@@ -43,6 +43,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   input bindings, rendering resources, and controls.
 - Expanded `kffi-objc` generation to the complete class and protocol surface of
   the selected Apple SDK frameworks.
+- Added a macOS AppKit screenshot integration test, runnable locally and in CI,
+  with the rendered PNG uploaded as a workflow artifact.
 - Reproducible Docker/kextract generation pipeline for the kffi-wayland XDG
   Shell bindings.
 
