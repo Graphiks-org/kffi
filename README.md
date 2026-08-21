@@ -478,6 +478,7 @@ This repository is a standalone Kotlin Multiplatform build. The root
 | `:kffi` | The multiplatform runtime library and its JVM, Android, and Native tests |
 | `:kffi-wayland` | JVM-only low-level Wayland bindings |
 | `:kffi-x11` | JVM-only generated X11 bindings; see [X11 bindings](#x11-bindings) |
+| `:kffi-objc` | JVM-only generated macOS Objective-C, Foundation, and AppKit bindings |
 | `:kffi-benchmark-spi` | Shared multiplatform benchmark model and test contracts |
 | `:kffi-benchmark-jvm` | JVM JMH benchmarks for kffi |
 | `:kffi-benchmark-native` | Kotlin/Native benchmark harness |

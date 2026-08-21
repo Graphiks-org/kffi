@@ -407,3 +407,150 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+// ── Category:  on NSImage ─────────────────────────────────────────
+
+// ── Category: Deprecated on NSImage ─────────────────────────────────────────
+
+fun NSImage.initWithIconRef(iconRef: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithIconRef:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, iconRef) as MemorySegment
+}
+
+fun NSImage.bestRepresentationForDevice(deviceDescription: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("bestRepresentationForDevice:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, deviceDescription) as MemorySegment
+}
+
+fun NSImage.lockFocus(): Unit {
+    val sel = ObjCRuntime.sel("lockFocus")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSImage.lockFocusFlipped(flipped: Boolean): Unit {
+    val sel = ObjCRuntime.sel("lockFocusFlipped:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flipped)
+}
+
+fun NSImage.unlockFocus(): Unit {
+    val sel = ObjCRuntime.sel("unlockFocus")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSImage.setFlipped(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setFlipped:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSImage.isFlipped(): Boolean {
+    val sel = ObjCRuntime.sel("isFlipped")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSImage.setScalesWhenResized(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setScalesWhenResized:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSImage.scalesWhenResized(): Boolean {
+    val sel = ObjCRuntime.sel("scalesWhenResized")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSImage.setDataRetained(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setDataRetained:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSImage.isDataRetained(): Boolean {
+    val sel = ObjCRuntime.sel("isDataRetained")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSImage.setCachedSeparately(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setCachedSeparately:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSImage.isCachedSeparately(): Boolean {
+    val sel = ObjCRuntime.sel("isCachedSeparately")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSImage.setCacheDepthMatchesImageDepth(flag: Boolean): Unit {
+    val sel = ObjCRuntime.sel("setCacheDepthMatchesImageDepth:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, flag)
+}
+
+fun NSImage.cacheDepthMatchesImageDepth(): Boolean {
+    val sel = ObjCRuntime.sel("cacheDepthMatchesImageDepth")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+fun NSImage.dissolveToPoint_fraction(point: MemorySegment, fraction: Double): Unit {
+    val sel = ObjCRuntime.sel("dissolveToPoint:fraction:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, point, fraction)
+}
+
+fun NSImage.dissolveToPoint_fromRect_fraction(point: MemorySegment, rect: MemorySegment, fraction: Double): Unit {
+    val sel = ObjCRuntime.sel("dissolveToPoint:fromRect:fraction:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, point, rect, fraction)
+}
+
+fun NSImage.compositeToPoint_operation(point: MemorySegment, operation: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("compositeToPoint:operation:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, point, operation)
+}
+
+fun NSImage.compositeToPoint_fromRect_operation(point: MemorySegment, rect: MemorySegment, operation: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("compositeToPoint:fromRect:operation:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, point, rect, operation)
+}
+
+fun NSImage.compositeToPoint_operation_fraction(point: MemorySegment, operation: MemorySegment, fraction: Double): Unit {
+    val sel = ObjCRuntime.sel("compositeToPoint:operation:fraction:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, point, operation, fraction)
+}
+
+fun NSImage.compositeToPoint_fromRect_operation_fraction(point: MemorySegment, rect: MemorySegment, operation: MemorySegment, fraction: Double): Unit {
+    val sel = ObjCRuntime.sel("compositeToPoint:fromRect:operation:fraction:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, point, rect, operation, fraction)
+}
+
+fun NSImage.lockFocusOnRepresentation(imageRepresentation: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("lockFocusOnRepresentation:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, imageRepresentation)
+}
+
+fun NSImage.cancelIncrementalLoad(): Unit {
+    val sel = ObjCRuntime.sel("cancelIncrementalLoad")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+// Class method: +[NSImage imageUnfilteredFileTypes]
+fun NSImage_imageUnfilteredFileTypes(): MemorySegment {
+    val sel = ObjCRuntime.sel("imageUnfilteredFileTypes")
+    val cls = ObjCRuntime.getClass("NSImage")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSImage imageUnfilteredPasteboardTypes]
+fun NSImage_imageUnfilteredPasteboardTypes(): MemorySegment {
+    val sel = ObjCRuntime.sel("imageUnfilteredPasteboardTypes")
+    val cls = ObjCRuntime.getClass("NSImage")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSImage imageFileTypes]
+fun NSImage_imageFileTypes(): MemorySegment {
+    val sel = ObjCRuntime.sel("imageFileTypes")
+    val cls = ObjCRuntime.getClass("NSImage")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// Class method: +[NSImage imagePasteboardTypes]
+fun NSImage_imagePasteboardTypes(): MemorySegment {
+    val sel = ObjCRuntime.sel("imagePasteboardTypes")
+    val cls = ObjCRuntime.getClass("NSImage")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}

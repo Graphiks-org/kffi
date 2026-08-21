@@ -377,3 +377,10 @@ open class NSButton(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
 }
+
+// ── Category: NSButtonDeprecated on NSButton ─────────────────────────────────────────
+
+fun NSButton.setTitleWithMnemonic(stringWithAmpersand: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setTitleWithMnemonic:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, stringWithAmpersand)
+}

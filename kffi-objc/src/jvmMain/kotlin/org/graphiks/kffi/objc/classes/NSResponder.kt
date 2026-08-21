@@ -292,3 +292,153 @@ open class NSResponder(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+// ── Category: NSStandardKeyBindingMethods on NSResponder ─────────────────────────────────────────
+
+// ── Category: NSUndoSupport on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.undoManager(): MemorySegment {
+    val sel = ObjCRuntime.sel("undoManager")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+// ── Category: NSControlEditingSupport on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.validateProposedFirstResponder_forEvent(responder: MemorySegment, event: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("validateProposedFirstResponder:forEvent:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, responder, event) as Boolean
+}
+
+// ── Category: NSErrorPresentation on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.presentError_modalForWindow_delegate_didPresentSelector_contextInfo(error: MemorySegment, window: MemorySegment, delegate: MemorySegment, didPresentSelector: MemorySegment, contextInfo: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, error, window, delegate, didPresentSelector, contextInfo)
+}
+
+fun NSResponder.presentError(error: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("presentError:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, error) as Boolean
+}
+
+fun NSResponder.willPresentError(error: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("willPresentError:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, error) as MemorySegment
+}
+
+// ── Category: NSTextFinderSupport on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.performTextFinderAction(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("performTextFinderAction:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+// ── Category: NSWindowTabbing on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.newWindowForTab(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("newWindowForTab:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+// ── Category: NSWritingToolsSupport on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.showWritingTools(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("showWritingTools:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+// ── Category: NSDeprecated on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.performMnemonic(string: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("performMnemonic:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, string) as Boolean
+}
+
+// ── Category: NSUserActivity on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.updateUserActivityState(userActivity: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("updateUserActivityState:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, userActivity)
+}
+
+fun NSResponder.userActivity(): MemorySegment {
+    val sel = ObjCRuntime.sel("userActivity")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSResponder.setUserActivity(userActivity: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setUserActivity:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, userActivity)
+}
+
+// ── Category: NSTouchBarProvider on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.makeTouchBar(): MemorySegment {
+    val sel = ObjCRuntime.sel("makeTouchBar")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSResponder.touchBar(): MemorySegment {
+    val sel = ObjCRuntime.sel("touchBar")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+fun NSResponder.setTouchBar(touchBar: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("setTouchBar:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, touchBar)
+}
+
+// ── Category: NSInterfaceStyle on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.interfaceStyle(): Long {
+    val sel = ObjCRuntime.sel("interfaceStyle")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
+}
+
+fun NSResponder.setInterfaceStyle(interfaceStyle: Long): Unit {
+    val sel = ObjCRuntime.sel("setInterfaceStyle:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, interfaceStyle)
+}
+
+// ── Category: NSRestorableState on NSResponder ─────────────────────────────────────────
+
+fun NSResponder.encodeRestorableStateWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeRestorableStateWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+fun NSResponder.encodeRestorableStateWithCoder_backgroundQueue(coder: MemorySegment, queue: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeRestorableStateWithCoder:backgroundQueue:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder, queue)
+}
+
+fun NSResponder.restoreStateWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("restoreStateWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+fun NSResponder.invalidateRestorableState(): Unit {
+    val sel = ObjCRuntime.sel("invalidateRestorableState")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+// Class method: +[NSResponder allowedClassesForRestorableStateKeyPath:]
+fun NSResponder_allowedClassesForRestorableStateKeyPath(keyPath: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("allowedClassesForRestorableStateKeyPath:")
+    val cls = ObjCRuntime.getClass("NSResponder")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, keyPath) as MemorySegment
+}
+
+// Class method: +[NSResponder restorableStateKeyPaths]
+fun NSResponder_restorableStateKeyPaths(): MemorySegment {
+    val sel = ObjCRuntime.sel("restorableStateKeyPaths")
+    val cls = ObjCRuntime.getClass("NSResponder")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+}
+
+// @property restorableStateKeyPaths
+/** @return NSArray<NSString *> * */
+fun NSResponder.restorableStateKeyPaths(): MemorySegment {
+    val sel = ObjCRuntime.sel("restorableStateKeyPaths")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
