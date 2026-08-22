@@ -4577,4 +4577,3 @@ fun init() {
     DwmExtendFrameIntoClientArea_HANDLE = _lookup("DwmExtendFrameIntoClientArea").find("DwmExtendFrameIntoClientArea").map { Linker.nativeLinker().downcallHandle(it, DwmExtendFrameIntoClientArea_DESC) }.orElse(null)
     DwmSetWindowAttribute_HANDLE = _lookup("DwmSetWindowAttribute").find("DwmSetWindowAttribute").map { Linker.nativeLinker().downcallHandle(it, DwmSetWindowAttribute_DESC) }.orElse(null)
 }
-

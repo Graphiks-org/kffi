@@ -236,7 +236,7 @@ fi
 
 normalize_kotlin_blank_lines() {
     find "$1" -type f -name '*.kt' -exec \
-        sed -i -e '/^[[:blank:]]*$/s/[[:blank:]]//g' {} +
+        sed -i -e '/^[[:blank:]]*$/s/[[:blank:]]//g' -e '${/^$/d;}' {} +
 }
 
 normalize_kotlin_blank_lines "$GENERATED_PACKAGE"
