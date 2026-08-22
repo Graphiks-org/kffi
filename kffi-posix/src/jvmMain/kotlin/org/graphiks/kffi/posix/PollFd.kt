@@ -6,11 +6,14 @@ import java.lang.foreign.ValueLayout
 import org.graphiks.kffi.posix.generated.POLLERR as generatedPollerr
 import org.graphiks.kffi.posix.generated.POLLHUP as generatedPollhup
 import org.graphiks.kffi.posix.generated.POLLIN as generatedPollin
+import org.graphiks.kffi.posix.generated.POLLMSG as generatedPollmsg
 import org.graphiks.kffi.posix.generated.POLLNVAL as generatedPollnval
 import org.graphiks.kffi.posix.generated.POLLOUT as generatedPollout
 import org.graphiks.kffi.posix.generated.POLLPRI as generatedPollpri
 import org.graphiks.kffi.posix.generated.POLLRDBAND as generatedPollrdband
+import org.graphiks.kffi.posix.generated.POLLRDHUP as generatedPollrdhup
 import org.graphiks.kffi.posix.generated.POLLRDNORM as generatedPollrdnorm
+import org.graphiks.kffi.posix.generated.POLLREMOVE as generatedPollremove
 import org.graphiks.kffi.posix.generated.POLLWRBAND as generatedPollwrband
 import org.graphiks.kffi.posix.generated.POLLWRNORM as generatedPollwrnorm
 
@@ -26,6 +29,9 @@ object PollFd {
     val POLLRDBAND: Short get() = generatedPollrdband().toShort()
     val POLLWRNORM: Short get() = generatedPollwrnorm().toShort()
     val POLLWRBAND: Short get() = generatedPollwrband().toShort()
+    val POLLMSG: Short get() = generatedPollmsg().toShort()
+    val POLLREMOVE: Short get() = generatedPollremove().toShort()
+    val POLLRDHUP: Short get() = generatedPollrdhup().toShort()
     const val SIZE_BYTES: Long = 8
 
     fun allocate(arena: Arena, count: Int): MemorySegment {

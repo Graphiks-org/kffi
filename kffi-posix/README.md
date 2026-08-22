@@ -6,8 +6,9 @@ surface is `org.graphiks.kffi.posix`.
 
 The generated bindings target the Linux LP64 ABI and load `libc.so.6`. They
 are not a portable POSIX abstraction: do not call them on macOS, Windows, or a
-non-LP64 Linux runtime. The module uses JDK 25 bytecode and requires a JDK 25
-runtime.
+non-LP64 Linux runtime. `LinuxPosix` is the supported API; the generated source
+is an implementation detail and must not be called directly. The module uses
+JDK 25 bytecode and requires a JDK 25 runtime.
 
 Start an application that uses these bindings with native access enabled:
 
@@ -27,8 +28,9 @@ Gradle build. With Docker available, refresh it from the repository root with:
 ./scripts/gen-kffi-posix.sh
 ```
 
-The generator selects a Linux `amd64` or `arm64` container for the host
-architecture and produces the bindings that use `libc.so.6`.
+The generator always uses a Linux `amd64` container as the canonical LP64
+generation platform, including on `arm64` hosts, and produces bindings that use
+`libc.so.6`. This keeps the tracked source identical across host architectures.
 
 ## Public API
 
@@ -42,10 +44,13 @@ architecture and produces the bindings that use `libc.so.6`.
   shared-memory object with `O_RDWR`, `O_CREAT`, and optionally `O_EXCL`, then
   map it with `mmap`.
 - Linux `memfd`: `memfdCreate` creates an anonymous file descriptor that can be
-  resized with `ftruncate` and mapped with `mmap`.
+  resized with `ftruncate` and mapped with `mmap`; pass `MFD_CLOEXEC` when the
+  descriptor must be closed across `exec`.
 - File-descriptor operations: `pipe`, `pipe2`, `eventfd`, `fcntl`, `read`,
   `write`, and `close`, with `O_CLOEXEC`, `O_NONBLOCK`, `F_GETFD`, `F_SETFD`,
-  `F_GETFL`, and `F_SETFL` constants.
+  `F_GETFL`, and `F_SETFL` constants. Use `LinuxPosix.fcntl`, whose typed integer
+  argument and captured `errno` behavior are the supported binding; the
+  generated source does not expose raw `fcntl`.
 - System V shared memory: `shmget`, `shmat`, `shmdt`, and `shmctl`, with
   `IPC_PRIVATE`, `IPC_CREAT`, and `IPC_RMID`.
 
@@ -53,7 +58,8 @@ architecture and produces the bindings that use `libc.so.6`.
 `poll`, and `revents` to poll one or more descriptors and inspect every result;
 `poll` returns the number of descriptors with nonzero `revents`. The complete
 event-constant surface is `POLLIN`, `POLLPRI`, `POLLOUT`, `POLLERR`, `POLLHUP`,
-`POLLNVAL`, `POLLRDNORM`, `POLLRDBAND`, `POLLWRNORM`, and `POLLWRBAND`.
+`POLLNVAL`, `POLLRDNORM`, `POLLRDBAND`, `POLLWRNORM`, `POLLWRBAND`, `POLLMSG`,
+`POLLREMOVE`, and `POLLRDHUP`.
 `timeoutMillis` is zero for an immediate check, positive for a bounded wait, or
 `-1` to wait indefinitely.
 `isReadable` is a convenience operation for a single descriptor and retries an

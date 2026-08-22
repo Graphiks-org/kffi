@@ -4,15 +4,10 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 IMAGE=kffi-posix-codegen
-case "$(uname -m)" in
-    x86_64 | amd64) DEFAULT_DOCKER_PLATFORM=linux/amd64 ;;
-    aarch64 | arm64) DEFAULT_DOCKER_PLATFORM=linux/arm64 ;;
-    *)
-        echo "Unsupported host architecture for Linux POSIX code generation: $(uname -m)" >&2
-        exit 1
-        ;;
-esac
-DOCKER_PLATFORM="${KFFI_POSIX_DOCKER_PLATFORM:-$DEFAULT_DOCKER_PLATFORM}"
+# Generate tracked source on one canonical Linux LP64 architecture so kextract
+# comments and architecture macros remain byte-for-byte identical on every host.
+# Docker emulates amd64 when regeneration runs from an arm64 machine.
+readonly DOCKER_PLATFORM=linux/amd64
 GIT_COMMON_DIR="$(git -C "$REPO_ROOT" rev-parse --git-common-dir)"
 if [[ "$GIT_COMMON_DIR" != /* ]]; then
     GIT_COMMON_DIR="$(cd "$REPO_ROOT/$GIT_COMMON_DIR" && pwd)"

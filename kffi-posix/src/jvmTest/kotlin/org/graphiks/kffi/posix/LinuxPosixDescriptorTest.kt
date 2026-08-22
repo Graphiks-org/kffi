@@ -47,6 +47,34 @@ class LinuxPosixDescriptorTest {
     }
 
     @Test
+    fun fcntlGetsSetsAndRestoresNonblockingStatusFlags() {
+        if (!isLinux()) return
+
+        val pipe = LinuxPosix.pipe()
+        try {
+            val originalFlags = LinuxPosix.fcntl(pipe.readFd, LinuxPosix.F_GETFL)
+            try {
+                LinuxPosix.fcntl(
+                    pipe.readFd,
+                    LinuxPosix.F_SETFL,
+                    originalFlags or LinuxPosix.O_NONBLOCK,
+                )
+                val updatedFlags = LinuxPosix.fcntl(pipe.readFd, LinuxPosix.F_GETFL)
+                assertEquals(LinuxPosix.O_NONBLOCK, updatedFlags and LinuxPosix.O_NONBLOCK)
+            } finally {
+                LinuxPosix.fcntl(pipe.readFd, LinuxPosix.F_SETFL, originalFlags)
+            }
+            assertEquals(originalFlags, LinuxPosix.fcntl(pipe.readFd, LinuxPosix.F_GETFL))
+        } finally {
+            try {
+                LinuxPosix.close(pipe.readFd)
+            } finally {
+                LinuxPosix.close(pipe.writeFd)
+            }
+        }
+    }
+
+    @Test
     fun systemVSharedMemoryCanBeAttachedWrittenDetachedAndRemoved() {
         if (!isLinux()) return
 

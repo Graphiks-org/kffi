@@ -20,6 +20,7 @@ import org.graphiks.kffi.posix.generated.IPC_RMID as generatedIpcRmid
 import org.graphiks.kffi.posix.generated.MAP_ANONYMOUS as generatedMapAnonymous
 import org.graphiks.kffi.posix.generated.MAP_PRIVATE as generatedMapPrivate
 import org.graphiks.kffi.posix.generated.MAP_SHARED as generatedMapShared
+import org.graphiks.kffi.posix.generated.MFD_CLOEXEC as generatedMfdCloexec
 import org.graphiks.kffi.posix.generated.O_CLOEXEC as generatedOCloexec
 import org.graphiks.kffi.posix.generated.O_CREAT as generatedOCreat
 import org.graphiks.kffi.posix.generated.O_EXCL as generatedOExcl
@@ -67,6 +68,7 @@ object LinuxPosix {
     val O_EXCL: Int get() = generatedOExcl()
     val O_CLOEXEC: Int get() = generatedOCloexec()
     val O_NONBLOCK: Int get() = generatedONonblock()
+    val MFD_CLOEXEC: Int get() = generatedMfdCloexec()
 
     val IPC_PRIVATE: Int get() = generatedIpcPrivate()
     val IPC_CREAT: Int get() = generatedIpcCreat()
@@ -149,16 +151,23 @@ object LinuxPosix {
         listOf(initialValue, flags),
     )
 
-    fun poll(descriptors: MemorySegment, count: Long, timeoutMillis: Int): Int = scalar(
-        "poll",
-        FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.JAVA_INT,
-        ),
-        listOf(descriptors, count, timeoutMillis),
-    )
+    fun poll(descriptors: MemorySegment, count: Long, timeoutMillis: Int): Int {
+        require(count >= 0) { "count must be non-negative" }
+        require(timeoutMillis >= -1) { "timeoutMillis must be -1 or non-negative" }
+        require(count <= descriptors.byteSize() / PollFd.SIZE_BYTES) {
+            "count exceeds the descriptor segment capacity"
+        }
+        return scalar(
+            "poll",
+            FunctionDescriptor.of(
+                ValueLayout.JAVA_INT,
+                ValueLayout.ADDRESS,
+                ValueLayout.JAVA_LONG,
+                ValueLayout.JAVA_INT,
+            ),
+            listOf(descriptors, count, timeoutMillis),
+        )
+    }
 
     fun pipe(): FdPair = pipe("pipe", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS), emptyList())
 
@@ -184,19 +193,31 @@ object LinuxPosix {
         fd: Int,
         destination: MemorySegment,
         byteCount: Long = destination.byteSize(),
-    ): Long = count(
-        "read",
-        listOf(fd, destination, byteCount),
-    )
+    ): Long {
+        require(byteCount >= 0) { "byteCount must be non-negative" }
+        require(byteCount <= destination.byteSize()) {
+            "byteCount exceeds the destination segment size"
+        }
+        return count(
+            "read",
+            listOf(fd, destination, byteCount),
+        )
+    }
 
     fun write(
         fd: Int,
         source: MemorySegment,
         byteCount: Long = source.byteSize(),
-    ): Long = count(
-        "write",
-        listOf(fd, source, byteCount),
-    )
+    ): Long {
+        require(byteCount >= 0) { "byteCount must be non-negative" }
+        require(byteCount <= source.byteSize()) {
+            "byteCount exceeds the source segment size"
+        }
+        return count(
+            "write",
+            listOf(fd, source, byteCount),
+        )
+    }
 
     fun close(fd: Int) {
         scalar("close", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT), listOf(fd))

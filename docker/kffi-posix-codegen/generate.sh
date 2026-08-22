@@ -41,9 +41,13 @@ cp "$REPO/docker/kffi-posix-codegen/linux_posix_compat.h" "$HEADER_INPUT"
 echo "[gen] building kextract at $actual_kextract_revision"
 (
     cd "$KEXTRACT_DIR"
+    # The packaged runtime and LLVM libraries are architecture-specific, while
+    # Gradle's up-to-date state does not include the Docker platform. Rebuild
+    # them so an earlier arm64 run cannot leak into canonical amd64 generation.
     ./gradlew --no-daemon \
         -Pjdk_home="$JDK_HOME" \
         -Pllvm_home="$LLVM_HOME" \
+        clean \
         createKextractImage
 )
 KEXTRACT="$KEXTRACT_DIR/build/kextract/bin/kextract"
@@ -53,14 +57,13 @@ KEXTRACT="$KEXTRACT_DIR/build/kextract/bin/kextract"
 functions=(
     mmap munmap shm_open shm_unlink memfd_create ftruncate
     shmget shmat shmdt shmctl
-    eventfd pipe pipe2 fcntl read write close poll
+    eventfd pipe pipe2 read write close poll
 )
 
 args=(
     -t org.graphiks.kffi.posix.generated
     -o "$STAGING_KT"
     -l :libc.so.6
-    --variadic-args fcntl:2
     -A -ffreestanding
 )
 for function in "${functions[@]}"; do args+=(--include-function "$function"); done
