@@ -234,6 +234,13 @@ if [[ ! -d "$GENERATED_PACKAGE" ]]; then
     exit 1
 fi
 
+normalize_kotlin_blank_lines() {
+    find "$1" -type f -name '*.kt' -exec \
+        sed -i -e '/^[[:blank:]]*$/s/[[:blank:]]//g' {} +
+}
+
+normalize_kotlin_blank_lines "$GENERATED_PACKAGE"
+
 for function in "${ALL_FUNCTIONS[@]}"; do
     if ! grep -R -E -q --include='*.kt' \
         "^[[:space:]]*fun[[:space:]]+${function}[[:space:]]*\\(" \
