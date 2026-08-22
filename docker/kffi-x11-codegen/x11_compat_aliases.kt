@@ -1,0 +1,11 @@
+package org.graphiks.kffi.x11.generated
+
+typealias XImage = KffiXImageStorage
+typealias XWindowAttributes = KffiXWindowAttributesStorage
+typealias XClientMessageEvent = KffiXClientMessageEventStorage
+typealias XSelectionEvent = KffiXSelectionEventStorage
+typealias XSetWindowAttributes = KffiXSetWindowAttributesStorage
+typealias XIMCallback = KffiXIMCallbackStorage
+typealias XIMText = KffiXIMTextStorage
+typealias XIMPreeditStateNotifyCallbackStruct = KffiXIMPreeditStateNotifyCallbackStructStorage
+typealias XIMPreeditDrawCallbackStruct = KffiXIMPreeditDrawCallbackStructStorage

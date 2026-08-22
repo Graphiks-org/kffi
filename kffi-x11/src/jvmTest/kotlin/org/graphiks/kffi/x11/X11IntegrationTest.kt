@@ -1,20 +1,31 @@
 package org.graphiks.kffi.x11
 
+import org.graphiks.kffi.x11.generated.AllPlanes
+import org.graphiks.kffi.x11.generated.ClientMessage
 import org.graphiks.kffi.x11.generated.ConfigureNotify
+import org.graphiks.kffi.x11.generated.CWOverrideRedirect
 import org.graphiks.kffi.x11.generated.Expose
 import org.graphiks.kffi.x11.generated.ExposureMask
+import org.graphiks.kffi.x11.generated.IsViewable
 import org.graphiks.kffi.x11.generated.KffiXEventStorage
+import org.graphiks.kffi.x11.generated.SelectionNotify
 import org.graphiks.kffi.x11.generated.StructureNotifyMask
-import org.graphiks.kffi.x11.generated.XCloseDisplay
-import org.graphiks.kffi.x11.generated.XConnectionNumber
 import org.graphiks.kffi.x11.generated.XAllocNamedColor
+import org.graphiks.kffi.x11.generated.XChangeWindowAttributes
+import org.graphiks.kffi.x11.generated.XClientMessageEvent
+import org.graphiks.kffi.x11.generated.XCloseDisplay
+import org.graphiks.kffi.x11.generated.XCloseIM
+import org.graphiks.kffi.x11.generated.XConnectionNumber
 import org.graphiks.kffi.x11.generated.XColor
 import org.graphiks.kffi.x11.generated.XCreateColormap
 import org.graphiks.kffi.x11.generated.XCreateGC
+import org.graphiks.kffi.x11.generated.XCreateIC
 import org.graphiks.kffi.x11.generated.XCreateSimpleWindow
+import org.graphiks.kffi.x11.generated.XDefaultDepth
 import org.graphiks.kffi.x11.generated.XDefaultRootWindow
 import org.graphiks.kffi.x11.generated.XDefaultScreen
 import org.graphiks.kffi.x11.generated.XDefaultVisual
+import org.graphiks.kffi.x11.generated.XDestroyIC
 import org.graphiks.kffi.x11.generated.XDestroyImage
 import org.graphiks.kffi.x11.generated.XDestroyWindow
 import org.graphiks.kffi.x11.generated.XFillRectangle
@@ -22,19 +33,41 @@ import org.graphiks.kffi.x11.generated.XFlush
 import org.graphiks.kffi.x11.generated.XFreeColormap
 import org.graphiks.kffi.x11.generated.XFreeGC
 import org.graphiks.kffi.x11.generated.XGetImage
+import org.graphiks.kffi.x11.generated.XGetWindowAttributes
+import org.graphiks.kffi.x11.generated.XImage
+import org.graphiks.kffi.x11.generated.XIMPreeditNothing
+import org.graphiks.kffi.x11.generated.XIMStatusNothing
+import org.graphiks.kffi.x11.generated.XInternAtom
 import org.graphiks.kffi.x11.generated.XMapWindow
 import org.graphiks.kffi.x11.generated.XNextEvent
 import org.graphiks.kffi.x11.generated.XOpenDisplay
+import org.graphiks.kffi.x11.generated.XOpenIM
 import org.graphiks.kffi.x11.generated.XPending
+import org.graphiks.kffi.x11.generated.XPoint
 import org.graphiks.kffi.x11.generated.XResizeWindow
 import org.graphiks.kffi.x11.generated.XSelectInput
+import org.graphiks.kffi.x11.generated.XSelectionEvent
+import org.graphiks.kffi.x11.generated.XSendEvent
 import org.graphiks.kffi.x11.generated.XSetForeground
+import org.graphiks.kffi.x11.generated.XSetICValues
+import org.graphiks.kffi.x11.generated.XSetWindowAttributes
+import org.graphiks.kffi.x11.generated.XShmCreateImage
+import org.graphiks.kffi.x11.generated.XShmQueryExtension
+import org.graphiks.kffi.x11.generated.XShmSegmentInfoCompat
 import org.graphiks.kffi.x11.generated.XSync
+import org.graphiks.kffi.x11.generated.XWindowAttributes
+import org.graphiks.kffi.x11.generated.XNClientWindow
+import org.graphiks.kffi.x11.generated.XNFocusWindow
+import org.graphiks.kffi.x11.generated.XNInputStyle
+import org.graphiks.kffi.x11.generated.XSHM_ZPIXMAP
+import org.graphiks.kffi.x11.generated.ZPixmap
 import org.junit.jupiter.api.Assumptions.assumeTrue
 import java.awt.image.BufferedImage
 import java.io.File
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
+import java.lang.foreign.ValueLayout
+import java.nio.ByteOrder
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.StandardOpenOption
@@ -49,7 +82,6 @@ private const val WINDOW_WIDTH = 96
 private const val WINDOW_HEIGHT = 64
 private const val EVENT_TIMEOUT_MILLIS = 10_000L
 private const val CAPTURE_TIMEOUT_SECONDS = 15L
-private const val Z_PIXMAP = 2
 
 private data class ColoredRectangle(
     val name: String,
@@ -110,6 +142,11 @@ class X11IntegrationTest {
 
         Arena.ofConfined().use { arena ->
             val eventStorage = KffiXEventStorage()
+            val clientMessageBinding = XClientMessageEvent()
+            val selectionEventBinding = XSelectionEvent()
+            val imageBinding = XImage()
+            val setWindowAttributesBinding = XSetWindowAttributes()
+            val windowAttributesBinding = XWindowAttributes()
             val event = KffiXEventStorage.allocate(arena)
             val displayName = arena.allocateFrom(environment.displayName)
             var display = MemorySegment.NULL
@@ -149,6 +186,14 @@ class X11IntegrationTest {
                 assertTrue(window != 0L, "XCreateSimpleWindow should return a non-zero window id")
                 appendLog(clientLog, "window=0x${window.toString(16)}\n")
 
+                val setWindowAttributes = XSetWindowAttributes.allocate(arena)
+                setWindowAttributesBinding.override_redirect(setWindowAttributes, 1)
+                assertEquals(
+                    1,
+                    XChangeWindowAttributes(display, window, CWOverrideRedirect(), setWindowAttributes),
+                    "XChangeWindowAttributes should accept generated XSetWindowAttributes",
+                )
+
                 assertEquals(
                     1,
                     XSelectInput(display, window, ExposureMask() or StructureNotifyMask()),
@@ -158,6 +203,15 @@ class X11IntegrationTest {
                 assertEquals(1, XFlush(display), "XFlush should succeed")
                 XSync(display, 0)
                 appendLog(clientLog, "window mapped and flushed\n")
+
+                val windowAttributes = XWindowAttributes.allocate(arena)
+                assertEquals(
+                    1,
+                    XGetWindowAttributes(display, window, windowAttributes),
+                    "XGetWindowAttributes should fill generated XWindowAttributes",
+                )
+                assertEquals(1, windowAttributesBinding.override_redirect(windowAttributes))
+                assertEquals(IsViewable(), windowAttributesBinding.map_state(windowAttributes))
 
                 assertEquals(1, XResizeWindow(display, window, WINDOW_WIDTH + 1, WINDOW_HEIGHT + 1))
                 assertEquals(1, XResizeWindow(display, window, WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -174,12 +228,15 @@ class X11IntegrationTest {
 
                 val visual = XDefaultVisual(display, defaultScreen)
                 assertNativePointer(visual, "XDefaultVisual")
+                val defaultDepth = XDefaultDepth(display, defaultScreen)
+                assertTrue(defaultDepth > 0, "XDefaultDepth should be positive")
                 colormap = XCreateColormap(display, rootWindow, visual, 0)
                 assertTrue(colormap != 0L, "XCreateColormap should return a non-zero colormap id")
                 gc = XCreateGC(display, window, 0L, MemorySegment.NULL)
                 assertNativePointer(gc, "XCreateGC")
 
                 val colorStorage = XColor()
+                val expectedPixels = mutableMapOf<String, Long>()
                 COLORED_RECTANGLES.forEach { rectangle ->
                     val colorName = arena.allocateFrom(rectangle.name)
                     val screenColor = XColor.allocate(arena)
@@ -190,6 +247,7 @@ class X11IntegrationTest {
                         "XAllocNamedColor should resolve ${rectangle.name}",
                     )
                     val pixel = colorStorage.pixel(screenColor)
+                    expectedPixels[rectangle.name] = pixel
                     assertEquals(
                         1,
                         XSetForeground(display, gc, pixel),
@@ -205,11 +263,56 @@ class X11IntegrationTest {
                 XSync(display, 0)
                 appendLog(clientLog, "drew four colored rectangles\n")
 
-                image = XGetImage(display, window, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, -1L, Z_PIXMAP)
+                image = XGetImage(display, window, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, AllPlanes(), ZPixmap())
                 assertNativePointer(image, "XGetImage")
+                val capturedImage = XImage.reinterpret(image)
+                assertEquals(ZPixmap(), imageBinding.format(capturedImage))
+                val bytesPerLine = imageBinding.bytes_per_line(capturedImage)
+                val bitsPerPixel = imageBinding.bits_per_pixel(capturedImage)
+                assertTrue(bytesPerLine >= WINDOW_WIDTH * 4, "XImage bytes_per_line should cover 32-bit pixels")
+                assertEquals(32, bitsPerPixel, "Xvfb should expose 32-bit ZPixmap pixels")
+                val imageData = imageBinding.data(capturedImage)
+                assertNativePointer(imageData, "XImage.data")
+                val imageByteOrder = if (imageBinding.byte_order(capturedImage) == 0) {
+                    ByteOrder.LITTLE_ENDIAN
+                } else {
+                    ByteOrder.BIG_ENDIAN
+                }
+                val pixels = imageData.reinterpret(bytesPerLine.toLong() * WINDOW_HEIGHT)
+                val pixelLayout = ValueLayout.JAVA_INT.withOrder(imageByteOrder)
+                COLORED_RECTANGLES.forEach { rectangle ->
+                    val x = rectangle.x + rectangle.width / 2
+                    val y = rectangle.y + rectangle.height / 2
+                    val actualPixel = pixels.get(pixelLayout, y.toLong() * bytesPerLine + x.toLong() * 4)
+                    assertEquals(
+                        expectedPixels.getValue(rectangle.name).toInt(),
+                        actualPixel,
+                        "generated XImage accessor pixel mismatch for ${rectangle.name}",
+                    )
+                }
                 appendLog(clientLog, "XGetImage succeeded\n")
                 assertEquals(1, XDestroyImage(image), "XDestroyImage should succeed")
                 image = null
+
+                verifyXShmImagePath(
+                    display = display,
+                    visual = visual,
+                    depth = defaultDepth,
+                    arena = arena,
+                    imageBinding = imageBinding,
+                    clientLog = clientLog,
+                )
+
+                verifySyntheticEvents(
+                    display = display,
+                    window = window,
+                    event = event,
+                    eventStorage = eventStorage,
+                    clientMessageBinding = clientMessageBinding,
+                    selectionEventBinding = selectionEventBinding,
+                    arena = arena,
+                    clientLog = clientLog,
+                )
 
                 val captureStatuses = captureWindow(window, windowPng, captureLog)
                 assertEquals(0, captureStatuses.shellExit, "capture shell pipeline should exit zero")
@@ -284,6 +387,192 @@ class X11IntegrationTest {
             }
         }
     }
+
+    @Test
+    fun createsAndUpdatesXimWithGeneratedVariadicBindings() {
+        assumeTrue(
+            System.getProperty("os.name").lowercase().contains("linux"),
+            "XIM integration is Linux-only",
+        )
+        assumeTrue(
+            System.getenv("KFFI_X11_INTEGRATION") == "1",
+            "Set KFFI_X11_INTEGRATION=1 to run the XIM integration test",
+        )
+
+        val environment = requireIntegrationEnvironment()
+        Arena.ofConfined().use { arena ->
+            val displayName = arena.allocateFrom(environment.displayName)
+            var display = MemorySegment.NULL
+            var inputMethod = MemorySegment.NULL
+            var inputContext = MemorySegment.NULL
+            var window = 0L
+            try {
+                display = XOpenDisplay(displayName)
+                assertNativePointer(display, "XOpenDisplay(${environment.displayName})")
+                inputMethod = XOpenIM(display, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL)
+                assumeTrue(
+                    inputMethod != MemorySegment.NULL && inputMethod.address() != 0L,
+                    "XOpenIM returned null; no XIM implementation is available in this Xvfb environment",
+                )
+
+                val rootWindow = XDefaultRootWindow(display)
+                window = XCreateSimpleWindow(display, rootWindow, 0, 0, 32, 24, 0, 0L, 0L)
+                assertTrue(window != 0L, "XCreateSimpleWindow should return a non-zero XIM client window")
+
+                val inputStyleName = arena.allocateFrom(XNInputStyle)
+                val clientWindowName = arena.allocateFrom(XNClientWindow)
+                val focusWindowName = arena.allocateFrom(XNFocusWindow)
+                val windowValue = MemorySegment.ofAddress(window)
+                inputContext = XCreateIC(
+                    inputMethod,
+                    inputStyleName,
+                    MemorySegment.ofAddress(XIMPreeditNothing() or XIMStatusNothing()),
+                    clientWindowName,
+                    windowValue,
+                    focusWindowName,
+                    windowValue,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                )
+                assertNativePointer(inputContext, "XCreateIC")
+
+                val pointBinding = XPoint()
+                val spot = XPoint.allocate(arena)
+                pointBinding.x(spot, 6)
+                pointBinding.y(spot, 9)
+                assertEquals(6, pointBinding.x(spot))
+                assertEquals(9, pointBinding.y(spot))
+                val setResult = XSetICValues(
+                    inputContext,
+                    focusWindowName,
+                    windowValue,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL,
+                )
+                assertEquals(MemorySegment.NULL, setResult, "XSetICValues should accept generated variadic values")
+            } finally {
+                if (inputContext != MemorySegment.NULL) {
+                    XDestroyIC(inputContext)
+                }
+                if (inputMethod != MemorySegment.NULL) {
+                    assertEquals(1, XCloseIM(inputMethod), "XCloseIM should succeed")
+                }
+                if (window != 0L && display != MemorySegment.NULL) {
+                    assertEquals(1, XDestroyWindow(display, window), "XDestroyWindow should succeed")
+                }
+                if (display != MemorySegment.NULL) {
+                    assertEquals(0, XCloseDisplay(display), "XCloseDisplay should succeed")
+                }
+            }
+        }
+    }
+}
+
+private fun verifyXShmImagePath(
+    display: MemorySegment,
+    visual: MemorySegment,
+    depth: Int,
+    arena: Arena,
+    imageBinding: XImage,
+    clientLog: Path,
+) {
+    if (XShmQueryExtension(display) == 0) {
+        appendLog(clientLog, "XShmQueryExtension unavailable; skipped XShmCreateImage round-trip\n")
+        return
+    }
+
+    val shmInfoBinding = XShmSegmentInfoCompat()
+    val shmInfo = XShmSegmentInfoCompat.allocate(arena)
+    val backing = arena.allocate(WINDOW_WIDTH.toLong() * WINDOW_HEIGHT * 4L)
+    shmInfoBinding.shmaddr(shmInfo, backing)
+    shmInfoBinding.shmid(shmInfo, -1)
+    shmInfoBinding.readOnly(shmInfo, 0)
+
+    val shmImage = XShmCreateImage(
+        display,
+        visual,
+        depth,
+        XSHM_ZPIXMAP(),
+        backing,
+        shmInfo,
+        WINDOW_WIDTH,
+        WINDOW_HEIGHT,
+    )
+    assertNativePointer(shmImage, "XShmCreateImage")
+    try {
+        val generatedShmImage = XImage.reinterpret(shmImage)
+        assertEquals(backing.address(), imageBinding.data(generatedShmImage).address())
+        assertEquals(ZPixmap(), imageBinding.format(generatedShmImage))
+        assertTrue(imageBinding.bytes_per_line(generatedShmImage) > 0)
+        assertTrue(imageBinding.bits_per_pixel(generatedShmImage) > 0)
+        appendLog(clientLog, "XShmCreateImage returned a generated XImage record\n")
+    } finally {
+        assertEquals(1, XDestroyImage(shmImage), "XDestroyImage should destroy the XShm image")
+    }
+}
+
+private fun verifySyntheticEvents(
+    display: MemorySegment,
+    window: Long,
+    event: MemorySegment,
+    eventStorage: KffiXEventStorage,
+    clientMessageBinding: XClientMessageEvent,
+    selectionEventBinding: XSelectionEvent,
+    arena: Arena,
+    clientLog: Path,
+) {
+    val messageType = XInternAtom(display, arena.allocateFrom("KFFI_CLIENT_MESSAGE"), 0)
+    assertTrue(messageType != 0L, "XInternAtom should create a client-message atom")
+    clientMessageBinding.type(event, ClientMessage())
+    clientMessageBinding.serial(event, 0L)
+    clientMessageBinding.send_event(event, 0)
+    clientMessageBinding.display(event, display)
+    clientMessageBinding.window(event, window)
+    clientMessageBinding.message_type(event, messageType)
+    clientMessageBinding.format(event, 32)
+    clientMessageBinding.data_l0(event, 0x101L)
+    clientMessageBinding.data_l1(event, 0x202L)
+    assertEquals(1, XSendEvent(display, window, 0, 0L, event))
+    XSync(display, 0)
+    assertEquals(0, XNextEvent(display, event))
+    assertEquals(ClientMessage(), eventStorage.type(event))
+    assertEquals(window, clientMessageBinding.window(event))
+    assertEquals(messageType, clientMessageBinding.message_type(event))
+    assertEquals(32, clientMessageBinding.format(event))
+    assertEquals(0x101L, clientMessageBinding.data_l0(event))
+    assertEquals(0x202L, clientMessageBinding.data_l1(event))
+
+    val selection = XInternAtom(display, arena.allocateFrom("KFFI_SELECTION"), 0)
+    val target = XInternAtom(display, arena.allocateFrom("KFFI_TARGET"), 0)
+    val property = XInternAtom(display, arena.allocateFrom("KFFI_PROPERTY"), 0)
+    assertTrue(selection != 0L && target != 0L && property != 0L)
+    selectionEventBinding.type(event, SelectionNotify())
+    selectionEventBinding.serial(event, 0L)
+    selectionEventBinding.send_event(event, 0)
+    selectionEventBinding.display(event, display)
+    selectionEventBinding.requestor(event, window)
+    selectionEventBinding.selection(event, selection)
+    selectionEventBinding.target(event, target)
+    selectionEventBinding.property_(event, property)
+    selectionEventBinding.time(event, 777L)
+    assertEquals(1, XSendEvent(display, window, 0, 0L, event))
+    XSync(display, 0)
+    assertEquals(0, XNextEvent(display, event))
+    assertEquals(SelectionNotify(), eventStorage.type(event))
+    assertEquals(window, selectionEventBinding.requestor(event))
+    assertEquals(selection, selectionEventBinding.selection(event))
+    assertEquals(target, selectionEventBinding.target(event))
+    assertEquals(property, selectionEventBinding.property_(event))
+    assertEquals(777L, selectionEventBinding.time(event))
+    appendLog(clientLog, "ClientMessage and SelectionNotify round-trips verified\n")
 }
 
 private fun requireIntegrationEnvironment(): X11IntegrationEnvironment {
