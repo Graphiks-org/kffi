@@ -31,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snapshot publication and generated API documentation.
 - JVM-only `kffi-posix` module with POSIX symbol lookup, `pollfd` layout
   helpers, and a non-blocking wakeup primitive imported from `poc-koreos`.
+- Generated Linux bindings for mappings, POSIX and System V shared memory,
+  `memfd`, file-descriptor operations, complete `poll`, and errno constants.
 - JVM-only `kffi-wayland` module with low-level Wayland, XDG Shell, screencopy,
   and text-input FFM bindings imported from `poc-koreos`.
 - JVM-only `kffi-x11` module with generated low-level X11 FFM bindings and a
