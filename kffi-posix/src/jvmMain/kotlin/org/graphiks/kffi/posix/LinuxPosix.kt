@@ -10,6 +10,10 @@ import java.lang.invoke.MethodHandle
 import java.util.concurrent.ConcurrentHashMap
 import org.graphiks.kffi.posix.generated.KFFI_MAP_FAILED_ADDRESS as generatedMapFailedAddress
 import org.graphiks.kffi.posix.generated.KFFI_SHMAT_FAILED_ADDRESS as generatedShmatFailedAddress
+import org.graphiks.kffi.posix.generated.F_GETFD as generatedFGetFd
+import org.graphiks.kffi.posix.generated.F_GETFL as generatedFGetFl
+import org.graphiks.kffi.posix.generated.F_SETFD as generatedFSetFd
+import org.graphiks.kffi.posix.generated.F_SETFL as generatedFSetFl
 import org.graphiks.kffi.posix.generated.IPC_CREAT as generatedIpcCreat
 import org.graphiks.kffi.posix.generated.IPC_PRIVATE as generatedIpcPrivate
 import org.graphiks.kffi.posix.generated.IPC_RMID as generatedIpcRmid
@@ -68,10 +72,10 @@ object LinuxPosix {
     val IPC_CREAT: Int get() = generatedIpcCreat()
     val IPC_RMID: Int get() = generatedIpcRmid()
 
-    val F_GETFD: Int get() = 1
-    val F_SETFD: Int get() = 2
-    val F_GETFL: Int get() = 3
-    val F_SETFL: Int get() = 4
+    val F_GETFD: Int get() = generatedFGetFd()
+    val F_SETFD: Int get() = generatedFSetFd()
+    val F_GETFL: Int get() = generatedFGetFl()
+    val F_SETFL: Int get() = generatedFSetFl()
 
     val PROT_READ: Int get() = generatedProtRead()
     val PROT_WRITE: Int get() = generatedProtWrite()

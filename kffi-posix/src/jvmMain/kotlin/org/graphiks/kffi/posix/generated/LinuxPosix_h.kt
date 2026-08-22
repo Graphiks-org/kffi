@@ -108,6 +108,26 @@ fun O_SYNC(): Int = (1052672).toInt()
 fun O_ASYNC(): Int = (8192).toInt()
 
 /**
+ * {@snippet lang=c : #define F_GETFD 1
+ */
+fun F_GETFD(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define F_SETFD 2
+ */
+fun F_SETFD(): Int = (2).toInt()
+
+/**
+ * {@snippet lang=c : #define F_GETFL 3
+ */
+fun F_GETFL(): Int = (3).toInt()
+
+/**
+ * {@snippet lang=c : #define F_SETFL 4
+ */
+fun F_SETFL(): Int = (4).toInt()
+
+/**
  * {@snippet lang=c : #define POLLIN 1
  */
 fun POLLIN(): Int = (1).toInt()

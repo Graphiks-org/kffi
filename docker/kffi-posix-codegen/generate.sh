@@ -71,6 +71,7 @@ while read -r constant; do args+=(--include-constant "$constant"); done < <(
     cpp -dM -include "$HEADER_INPUT" - </dev/null |
         awk '$1 == "#define" && $2 !~ /\(/ &&
             ($2 ~ /^(PROT_|MAP_|O_|IPC_|POLL)/ ||
+             $2 ~ /^F_(GETFD|SETFD|GETFL|SETFL)$/ ||
              $2 == "MFD_CLOEXEC" ||
              $2 == "EINTR" || $2 == "EAGAIN" || $2 == "ENOMEM" ||
              $2 == "EINVAL" || $2 == "ENOSYS" ||
