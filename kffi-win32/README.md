@@ -60,6 +60,20 @@ integration test: it initializes the generated bindings and calls real
 `kernel32.dll` APIs (`GetCurrentThreadId`, `SetLastError`, `GetLastError` and
 `GetModuleHandleW`).
 
+The Windows CI job also runs `:kffi-win32:win32IntegrationTest` with
+`KFFI_WIN32_INTEGRATION=1`. This integration test creates a real Win32 window,
+paints four deterministic color quadrants through User32/GDI, captures the
+client area with `BitBlt`/`GetDIBits`, verifies the pixels, and writes
+`build/win32-integration/screenshot.png`. The screenshot directory is uploaded
+as a CI artifact.
+
+To run the screenshot integration locally from PowerShell:
+
+```powershell
+$env:KFFI_WIN32_INTEGRATION = "1"
+./gradlew.bat :kffi-win32:win32IntegrationTest --no-daemon
+```
+
 To verify that the checked-in bindings match a fresh generation:
 
 ```bash
