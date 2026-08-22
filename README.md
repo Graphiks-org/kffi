@@ -278,6 +278,9 @@ image as a workflow artifact. The Gradle task can also be invoked directly with
 The initial surface covers selected functions from `user32.dll`,
 `kernel32.dll`, `gdi32.dll` and `dwmapi.dll`, under the package
 `org.graphiks.kffi.win32.generated`.
+The generated Kotlin sources are versioned in this repository. Regeneration is
+a maintainer operation on Windows; CI compiles and tests the checked-in sources
+but does not run the generator.
 
 Generation requires Windows, Git Bash, JDK 25, the Windows SDK and the pinned
 `kextract` submodule. It is intentionally separate from the Gradle build:

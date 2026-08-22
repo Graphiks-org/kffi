@@ -48,6 +48,9 @@ The generator combines the allowlists in `generation/*.yaml` and parses a
 temporary header containing `windows.h` with `WIN32_LEAN_AND_MEAN` and
 `NOMINMAX`. It writes into a staging directory first, then replaces the
 checked-in generated package.
+Review and commit the regenerated Kotlin files with the allowlist changes that
+produced them. GitHub Actions compiles and tests the checked-in bindings but
+does not run this generator.
 
 To verify that the checked-in bindings match a fresh generation:
 
