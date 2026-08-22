@@ -11,7 +11,7 @@
 set -euo pipefail
 
 MODE="generate"
-KEXTRACT_REVISION="dd2ad491af3db1b6dc084ef1bf3362379de1d336"
+KEXTRACT_REVISION="b987a237dfa97bbc87b14af8e5752cbfd7fb5441"
 WINDOWS_SDK_VERSION="10.0.28000.0"
 
 usage() {
