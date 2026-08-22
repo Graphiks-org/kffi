@@ -120,6 +120,8 @@ jobs:
       - name: Activate MSVC
         if: matrix.os == 'windows-latest'
         uses: TheMrMilchmann/setup-msvc-dev@v4
+        with:
+          arch: x64
       - name: Run JVM and Android host tests
         run: ./gradlew :kffi:jvmTest :kffi-objc:jvmTest :kffi:testAndroidHostTest
       - name: Run Win32 integration tests
