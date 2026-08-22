@@ -11,7 +11,7 @@
 set -euo pipefail
 
 MODE="generate"
-KEXTRACT_REVISION="b987a237dfa97bbc87b14af8e5752cbfd7fb5441"
+KEXTRACT_REVISION="6c34352bb754e66f82237d0d3b96a1d75b55063a"
 WINDOWS_SDK_VERSION="10.0.28000.0"
 
 usage() {
@@ -132,22 +132,12 @@ if [[ -n "${SYSTEMROOT:-}" ]]; then
     NATIVE_PATH="$NATIVE_PATH;$SYSTEM32"
 fi
 
-# Reproducible committed output uses one exact Windows SDK version. Search only
-# the two standard Windows Kits roots and require the complete include triplet.
-WINDOWS_SDK_INCLUDE=""
-for base in \
-    "C:/Program Files (x86)/Windows Kits/10/Include" \
-    "C:/Program Files/Windows Kits/10/Include"; do
-    candidate="$base/$WINDOWS_SDK_VERSION"
-    if [[ -d "$candidate/um" && -d "$candidate/shared" && -d "$candidate/ucrt" ]]; then
-        WINDOWS_SDK_INCLUDE="$candidate"
-        break
-    fi
-done
-
-if [[ -z "$WINDOWS_SDK_INCLUDE" ]]; then
+# Reproducible committed output uses one exact Windows SDK installation path.
+# Its absolute path is reflected in generated declaration names.
+WINDOWS_SDK_INCLUDE="C:/Program Files (x86)/Windows Kits/10/Include/$WINDOWS_SDK_VERSION"
+if [[ ! -d "$WINDOWS_SDK_INCLUDE/um" || ! -d "$WINDOWS_SDK_INCLUDE/shared" || ! -d "$WINDOWS_SDK_INCLUDE/ucrt" ]]; then
     echo "error: Windows SDK $WINDOWS_SDK_VERSION with um, shared and ucrt headers was not found" >&2
-    echo "hint: install Windows SDK $WINDOWS_SDK_VERSION under a standard Windows Kits root" >&2
+    echo "hint: install it at 'C:/Program Files (x86)/Windows Kits/10/Include/$WINDOWS_SDK_VERSION'" >&2
     exit 1
 fi
 

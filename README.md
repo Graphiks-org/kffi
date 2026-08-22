@@ -284,7 +284,9 @@ but does not run the generator.
 
 Generation requires Windows, Git Bash, JDK 25, the pinned `kextract` submodule
 and Windows SDK `10.0.28000.0` exactly. That SDK version is required for
-reproducible committed output; other installed SDK versions are not used. The
+reproducible committed output, and must be installed under
+`C:/Program Files (x86)/Windows Kits/10/Include/10.0.28000.0`; other SDK
+versions and installation roots are not used. The
 generator is intentionally separate from the Gradle build:
 
 ```bash
