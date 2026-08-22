@@ -54,6 +54,11 @@ Review and commit the regenerated Kotlin files with the allowlist changes that
 produced them. GitHub Actions compiles and tests the checked-in bindings but
 does not run this generator.
 
+The Windows CI job also runs `:kffi-win32:jvmTest`. This is a Windows-only
+integration test: it initializes the generated bindings and calls real
+`kernel32.dll` APIs (`GetCurrentThreadId`, `SetLastError`, `GetLastError` and
+`GetModuleHandleW`).
+
 To verify that the checked-in bindings match a fresh generation:
 
 ```bash

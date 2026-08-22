@@ -538,7 +538,9 @@ runtime module.
 
 The dedicated KFFI test workflow (`.github/workflows/ci.yml`) runs on
 macOS, Ubuntu, and Windows with JDK 25. It runs `./gradlew :kffi:jvmTest
-:kffi:testAndroidHostTest` on every matrix entry. It also performs these
+:kffi-objc:jvmTest :kffi:testAndroidHostTest` on every matrix entry and runs
+the Windows-only `./gradlew :kffi-win32:jvmTest` integration test on
+`windows-latest`. It also performs these
 platform-specific checks:
 
 - macOS compiles the iOS and macOS callback token codecs, then runs either
