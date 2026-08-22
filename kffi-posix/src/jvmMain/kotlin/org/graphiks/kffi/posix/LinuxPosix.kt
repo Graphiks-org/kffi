@@ -149,6 +149,17 @@ object LinuxPosix {
         listOf(initialValue, flags),
     )
 
+    fun poll(descriptors: MemorySegment, count: Long, timeoutMillis: Int): Int = scalar(
+        "poll",
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_INT,
+        ),
+        listOf(descriptors, count, timeoutMillis),
+    )
+
     fun pipe(): FdPair = pipe("pipe", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS), emptyList())
 
     fun pipe2(flags: Int): FdPair = pipe(
