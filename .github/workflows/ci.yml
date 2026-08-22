@@ -13,7 +13,7 @@ jobs:
   wayland-integration:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
@@ -36,7 +36,7 @@ jobs:
         run: scripts/run-wayland-integration.sh
       - name: Upload Wayland integration artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: wayland-integration
           path: kffi-wayland/build/wayland-integration/**
@@ -45,7 +45,7 @@ jobs:
   x11-integration:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
@@ -69,7 +69,7 @@ jobs:
         run: scripts/run-x11-integration.sh
       - name: Upload X11 integration artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: x11-integration
           path: kffi-x11/build/x11-integration/**
@@ -78,7 +78,7 @@ jobs:
   objc-integration:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
@@ -89,7 +89,7 @@ jobs:
         run: scripts/run-objc-integration.sh
       - name: Upload Objective-C integration artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: objc-integration
           path: kffi-objc/build/objc-integration/**
@@ -102,7 +102,7 @@ jobs:
         os: [ macos-latest, ubuntu-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
@@ -132,7 +132,7 @@ jobs:
         run: ./gradlew :kffi-win32:win32IntegrationTest
       - name: Upload Win32 integration artifacts
         if: always() && matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: win32-integration
           path: kffi-win32/build/win32-integration/**
@@ -169,7 +169,7 @@ jobs:
   android-device-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
