@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - JVM-only `kffi-win32` module with generated low-level Win32 FFM bindings for
   selected `user32`, `kernel32`, `gdi32`, and `dwmapi` APIs.
+- Windows integration coverage that creates a real window, verifies a native
+  GDI screenshot, and uploads the captured PNG as a CI artifact.
 - First standalone KFFI iteration, published as Maven Central snapshot artifacts
   under `org.graphiks`.
 - Multiplatform memory primitives: `MemoryAllocator`, `MemoryBuffer`,

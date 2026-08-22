@@ -3,6 +3,9 @@ dllMap:
     functions:
       - RegisterClassExW
       - CreateWindowExW
+      - GetDC
+      - ReleaseDC
+      - FillRect
       - ShowWindow
       - UpdateWindow
       - DestroyWindow

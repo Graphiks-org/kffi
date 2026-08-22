@@ -296,7 +296,8 @@ scripts/gen-kffi-win32.sh
 ```
 
 See [kffi-win32/README.md](kffi-win32/README.md) for the generation inputs,
-the `--check` mode and the Windows-specific setup.
+the `--check` mode, the Windows-specific setup, and the window screenshot
+integration test.
 
 ## Loading a native library
 
@@ -539,8 +540,10 @@ runtime module.
 The dedicated KFFI test workflow (`.github/workflows/ci.yml`) runs on
 macOS, Ubuntu, and Windows with JDK 25. It runs `./gradlew :kffi:jvmTest
 :kffi-objc:jvmTest :kffi:testAndroidHostTest` on every matrix entry and runs
-the Windows-only `./gradlew :kffi-win32:jvmTest` integration test on
-`windows-latest`. It also performs these
+the Windows-only `./gradlew :kffi-win32:jvmTest` plus the
+`./gradlew :kffi-win32:win32IntegrationTest` window screenshot test on
+`windows-latest`. The screenshot output is uploaded as a workflow artifact.
+It also performs these
 platform-specific checks:
 
 - macOS compiles the iOS and macOS callback token codecs, then runs either

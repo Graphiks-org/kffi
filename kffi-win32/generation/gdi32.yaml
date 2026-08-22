@@ -2,6 +2,13 @@ dllMap:
   "Gdi32.dll":
     functions:
       - CreateRectRgn
+      - CreateCompatibleDC
+      - CreateCompatibleBitmap
+      - CreateSolidBrush
+      - SelectObject
+      - BitBlt
+      - GetDIBits
+      - DeleteDC
       - DeleteObject
     structs: []
     constants: []
