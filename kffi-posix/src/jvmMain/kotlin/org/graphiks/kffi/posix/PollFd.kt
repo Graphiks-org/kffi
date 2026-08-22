@@ -3,10 +3,11 @@ package org.graphiks.kffi.posix
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
+import org.graphiks.kffi.posix.generated.POLLIN as generatedPollin
 
 /** Layout helpers for the POSIX `struct pollfd`. */
 object PollFd {
-    const val POLLIN: Short = 1
+    val POLLIN: Short get() = generatedPollin().toShort()
     const val SIZE_BYTES: Long = 8
 
     fun allocate(arena: Arena, count: Int): MemorySegment {
@@ -44,4 +45,3 @@ object PollFd {
         }
     }
 }
-
