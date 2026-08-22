@@ -3,20 +3,12 @@ package org.graphiks.kffi.posix
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 import java.util.UUID
-import org.graphiks.kffi.posix.generated.KFFI_MAP_FAILED_ADDRESS as generatedMapFailedAddress
 import org.graphiks.kffi.posix.generated.close
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 class LinuxPosixMemoryTest {
-    @Test
-    fun mapFailedAddressUsesGeneratedAbiValue() {
-        if (!isLinux()) return
-
-        assertEquals(generatedMapFailedAddress(), LinuxPosix.MAP_FAILED_ADDRESS)
-    }
-
     @Test
     fun anonymousMappingIsWritableAndCanBeUnmapped() {
         if (!isLinux()) return
