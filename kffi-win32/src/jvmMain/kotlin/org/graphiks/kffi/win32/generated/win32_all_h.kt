@@ -9,8 +9,9 @@ private object kextract_runtime {
     val C_CHAR: ValueLayout = ValueLayout.JAVA_BYTE
     val C_SHORT: ValueLayout = ValueLayout.JAVA_SHORT
     val C_INT: ValueLayout = ValueLayout.JAVA_INT
-    val C_LONG: ValueLayout = ValueLayout.JAVA_LONG
+    val C_LONG: ValueLayout = ValueLayout.JAVA_INT
     val C_LONG_LONG: ValueLayout = ValueLayout.JAVA_LONG
+    val C_WCHAR: ValueLayout = ValueLayout.JAVA_CHAR
     val C_FLOAT: ValueLayout = ValueLayout.JAVA_FLOAT
     val C_DOUBLE: ValueLayout = ValueLayout.JAVA_DOUBLE
     val C_POINTER: ValueLayout = ValueLayout.ADDRESS
@@ -21,7 +22,7 @@ private var _DLL_GDI32_DLL: SymbolLookup? = null
 private var _DLL_KERNEL32_DLL: SymbolLookup? = null
 private var _DLL_USER32_DLL: SymbolLookup? = null
 
-private var _initialized: Boolean = false
+@Volatile private var _initialized: Boolean = false
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
@@ -36,7 +37,7 @@ private fun _lookup(symbol: String): SymbolLookup {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long ULONG;}
  */
-typealias ULONG = Long
+typealias ULONG = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Short USHORT;}
@@ -51,7 +52,7 @@ typealias UCHAR = Byte
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long DWORD;}
  */
-typealias DWORD = Long
+typealias DWORD = Int
 
 /**
  * {@snippet lang=c : typedef Int BOOL;}
@@ -106,7 +107,7 @@ typealias wctype_t = Short
 /**
  * {@snippet lang=c : typedef Long __time32_t;}
  */
-typealias _time32_t = Long
+typealias _time32_t = Int
 
 /**
  * {@snippet lang=c : typedef LongLong __time64_t;}
@@ -271,17 +272,17 @@ typealias SHORT = Short
 /**
  * {@snippet lang=c : typedef Long LONG;}
  */
-typealias LONG = Long
+typealias LONG = Int
 
 /**
- * {@snippet lang=c : typedef Int WCHAR;}
+ * {@snippet lang=c : typedef WChar WCHAR;}
  */
-typealias WCHAR = Int
+typealias WCHAR = Char
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long UCSCHAR;}
  */
-typealias UCSCHAR = Long
+typealias UCSCHAR = Int
 
 /**
  * {@snippet lang=c : typedef Char TCHAR;}
@@ -306,12 +307,12 @@ typealias FSHORT = Short
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long FLONG;}
  */
-typealias FLONG = Long
+typealias FLONG = Int
 
 /**
  * {@snippet lang=c : typedef Long HRESULT;}
  */
-typealias HRESULT = Long
+typealias HRESULT = Int
 
 /**
  * {@snippet lang=c : typedef Char CCHAR;}
@@ -321,7 +322,7 @@ typealias CCHAR = Byte
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long LCID;}
  */
-typealias LCID = Long
+typealias LCID = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Short LANGID;}
@@ -363,7 +364,7 @@ typealias RTL_REFERENCE_COUNT = Long
 /**
  * {@snippet lang=c : typedef Long RTL_REFERENCE_COUNT32;}
  */
-typealias RTL_REFERENCE_COUNT32 = Long
+typealias RTL_REFERENCE_COUNT32 = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = LongLong DWORDLONG;}
@@ -388,7 +389,7 @@ typealias KSPIN_LOCK = Long
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long ACCESS_MASK;}
  */
-typealias ACCESS_MASK = Long
+typealias ACCESS_MASK = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum _SID_NAME_USE}
@@ -463,7 +464,7 @@ enum class _ACCESS_REASON_TYPE(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long ACCESS_REASON;}
  */
-typealias ACCESS_REASON = Long
+typealias ACCESS_REASON = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum _SECURITY_IMPERSONATION_LEVEL}
@@ -533,7 +534,7 @@ typealias SECURITY_CONTEXT_TRACKING_MODE = Byte
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long SECURITY_INFORMATION;}
  */
-typealias SECURITY_INFORMATION = Long
+typealias SECURITY_INFORMATION = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Char SE_SIGNING_LEVEL;}
@@ -867,7 +868,7 @@ enum class _ENERGY_SAVER_STATUS(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long EXECUTION_STATE;}
  */
-typealias EXECUTION_STATE = Long
+typealias EXECUTION_STATE = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum LATENCY_TIME}
@@ -1268,12 +1269,12 @@ enum class _TAPE_DRIVE_PROBLEM_TYPE(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long NOTIFICATION_MASK;}
  */
-typealias NOTIFICATION_MASK = Long
+typealias NOTIFICATION_MASK = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long SAVEPOINT_ID;}
  */
-typealias SAVEPOINT_ID = Long
+typealias SAVEPOINT_ID = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum _TRANSACTION_OUTCOME}
@@ -1362,7 +1363,7 @@ enum class _KTMOBJECT_TYPE(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long TP_VERSION;}
  */
-typealias TP_VERSION = Long
+typealias TP_VERSION = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum _TP_CALLBACK_PRIORITY}
@@ -1379,7 +1380,7 @@ enum class _TP_CALLBACK_PRIORITY(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long TP_WAIT_RESULT;}
  */
-typealias TP_WAIT_RESULT = Long
+typealias TP_WAIT_RESULT = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = LongLong WPARAM;}
@@ -1409,7 +1410,7 @@ typealias HFILE = Int
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long COLORREF;}
  */
-typealias COLORREF = Long
+typealias COLORREF = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum DPI_AWARENESS}
@@ -1534,30 +1535,30 @@ enum class DIRECTORY_FLAGS(val value: Long) {
 /**
  * {@snippet lang=c : GetLastError typedef DWORD = UNSIGNED = Long()
  */
-private val GetLastError_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private val GetLastError_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
 private var GetLastError_HANDLE: MethodHandle? = null
 
-fun GetLastError(): Long {
+fun GetLastError(): Int {
     check(_initialized) { "Win32 GetLastError called before init()" }
-    val _handle = GetLastError_HANDLE ?: return 0L
+    val _handle = GetLastError_HANDLE ?: return 0
     try {
-        return _handle.invokeExact() as Long
+        return _handle.invokeExact() as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
         throw ex
     } catch (ex: Throwable) {
-        return 0L
+        return 0
     }
 }
 
 /**
  * {@snippet lang=c : SetLastError Void(typedef DWORD = UNSIGNED = Long)
  */
-private val SetLastError_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG)
+private val SetLastError_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT)
 private var SetLastError_HANDLE: MethodHandle? = null
 
-fun SetLastError(arg0: Long): Unit {
+fun SetLastError(arg0: Int): Unit {
     check(_initialized) { "Win32 SetLastError called before init()" }
     val _handle = SetLastError_HANDLE ?: return
     try {
@@ -1586,20 +1587,20 @@ enum class _QUEUE_USER_APC_FLAGS(val value: Long) {
 /**
  * {@snippet lang=c : GetCurrentThreadId typedef DWORD = UNSIGNED = Long()
  */
-private val GetCurrentThreadId_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private val GetCurrentThreadId_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
 private var GetCurrentThreadId_HANDLE: MethodHandle? = null
 
-fun GetCurrentThreadId(): Long {
+fun GetCurrentThreadId(): Int {
     check(_initialized) { "Win32 GetCurrentThreadId called before init()" }
-    val _handle = GetCurrentThreadId_HANDLE ?: return 0L
+    val _handle = GetCurrentThreadId_HANDLE ?: return 0
     try {
-        return _handle.invokeExact() as Long
+        return _handle.invokeExact() as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
         throw ex
     } catch (ex: Throwable) {
-        return 0L
+        return 0
     }
 }
 
@@ -1830,7 +1831,7 @@ enum class _COPYFILE2_COPY_PHASE(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long OPERATION_ID;}
  */
-typealias OPERATION_ID = Long
+typealias OPERATION_ID = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum _PRIORITY_HINT}
@@ -1859,22 +1860,22 @@ enum class _FILE_ID_TYPE(val value: Long) {
 /**
  * {@snippet lang=c : typedef Long LCSCSTYPE;}
  */
-typealias LCSCSTYPE = Long
+typealias LCSCSTYPE = Int
 
 /**
  * {@snippet lang=c : typedef Long LCSGAMUTMATCH;}
  */
-typealias LCSGAMUTMATCH = Long
+typealias LCSGAMUTMATCH = Int
 
 /**
  * {@snippet lang=c : typedef Long FXPT16DOT16;}
  */
-typealias FXPT16DOT16 = Long
+typealias FXPT16DOT16 = Int
 
 /**
  * {@snippet lang=c : typedef Long FXPT2DOT30;}
  */
-typealias FXPT2DOT30 = Long
+typealias FXPT2DOT30 = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Char BCHAR;}
@@ -2249,10 +2250,10 @@ fun RegisterClassExW(arg0: MemorySegment): Short {
 /**
  * {@snippet lang=c : CreateWindowExW typedef HWND = (Declared(HWND__))*(typedef DWORD = UNSIGNED = Long,typedef LPCWSTR = (Int)*,typedef LPCWSTR = (Int)*,typedef DWORD = UNSIGNED = Long,Int,Int,Int,Int,typedef HWND = (Declared(HWND__))*,typedef HMENU = (Declared(HMENU__))*,typedef HINSTANCE = (Declared(HINSTANCE__))*,typedef LPVOID = (Void)*)
  */
-private val CreateWindowExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CreateWindowExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var CreateWindowExW_HANDLE: MethodHandle? = null
 
-fun CreateWindowExW(arg0: Long, arg1: MemorySegment, arg2: MemorySegment, arg3: Long, arg4: Int, arg5: Int, arg6: Int, arg7: Int, arg8: MemorySegment, arg9: MemorySegment, arg10: MemorySegment, arg11: MemorySegment): MemorySegment {
+fun CreateWindowExW(arg0: Int, arg1: MemorySegment, arg2: MemorySegment, arg3: Int, arg4: Int, arg5: Int, arg6: Int, arg7: Int, arg8: MemorySegment, arg9: MemorySegment, arg10: MemorySegment, arg11: MemorySegment): MemorySegment {
     check(_initialized) { "Win32 CreateWindowExW called before init()" }
     val _handle = CreateWindowExW_HANDLE ?: return MemorySegment.NULL
     try {
@@ -2493,10 +2494,10 @@ fun CloseTouchInputHandle(arg0: MemorySegment): Int {
 /**
  * {@snippet lang=c : RegisterTouchWindow typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef ULONG = UNSIGNED = Long)
  */
-private val RegisterTouchWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val RegisterTouchWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
 private var RegisterTouchWindow_HANDLE: MethodHandle? = null
 
-fun RegisterTouchWindow(arg0: MemorySegment, arg1: Long): Int {
+fun RegisterTouchWindow(arg0: MemorySegment, arg1: Int): Int {
     check(_initialized) { "Win32 RegisterTouchWindow called before init()" }
     val _handle = RegisterTouchWindow_HANDLE ?: return 0
     try {
@@ -2525,7 +2526,7 @@ enum class tagPOINTER_INPUT_TYPE(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long POINTER_INPUT_TYPE;}
  */
-typealias POINTER_INPUT_TYPE = Long
+typealias POINTER_INPUT_TYPE = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int POINTER_FLAGS;}
@@ -2631,20 +2632,20 @@ fun ReleaseCapture(): Int {
 /**
  * {@snippet lang=c : MsgWaitForMultipleObjectsEx typedef DWORD = UNSIGNED = Long(typedef DWORD = UNSIGNED = Long,(typedef HANDLE = (Void)*)*,typedef DWORD = UNSIGNED = Long,typedef DWORD = UNSIGNED = Long,typedef DWORD = UNSIGNED = Long)
  */
-private val MsgWaitForMultipleObjectsEx_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val MsgWaitForMultipleObjectsEx_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
 private var MsgWaitForMultipleObjectsEx_HANDLE: MethodHandle? = null
 
-fun MsgWaitForMultipleObjectsEx(arg0: Long, arg1: MemorySegment, arg2: Long, arg3: Long, arg4: Long): Long {
+fun MsgWaitForMultipleObjectsEx(arg0: Int, arg1: MemorySegment, arg2: Int, arg3: Int, arg4: Int): Int {
     check(_initialized) { "Win32 MsgWaitForMultipleObjectsEx called before init()" }
-    val _handle = MsgWaitForMultipleObjectsEx_HANDLE ?: return 0L
+    val _handle = MsgWaitForMultipleObjectsEx_HANDLE ?: return 0
     try {
-        return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4) as Long
+        return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
         throw ex
     } catch (ex: Throwable) {
-        return 0L
+        return 0
     }
 }
 
@@ -3143,7 +3144,7 @@ enum class EDIT_CONTROL_FEATURE(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long HELPPOLY;}
  */
-typealias HELPPOLY = Long
+typealias HELPPOLY = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum tagHANDEDNESS}
@@ -3396,37 +3397,37 @@ enum class _MOVESIZE_OPERATION(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long LGRPID;}
  */
-typealias LGRPID = Long
+typealias LGRPID = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long LCTYPE;}
  */
-typealias LCTYPE = Long
+typealias LCTYPE = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long CALTYPE;}
  */
-typealias CALTYPE = Long
+typealias CALTYPE = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long CALID;}
  */
-typealias CALID = Long
+typealias CALID = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long GEOTYPE;}
  */
-typealias GEOTYPE = Long
+typealias GEOTYPE = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long GEOCLASS;}
  */
-typealias GEOCLASS = Long
+typealias GEOCLASS = Int
 
 /**
  * {@snippet lang=c : typedef Long GEOID;}
  */
-typealias GEOID = Long
+typealias GEOID = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum SYSNLS_FUNCTION}
@@ -3443,7 +3444,7 @@ enum class SYSNLS_FUNCTION(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long NLS_FUNCTION;}
  */
-typealias NLS_FUNCTION = Long
+typealias NLS_FUNCTION = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum SYSGEOTYPE}
@@ -3508,12 +3509,12 @@ enum class ALLOC_CONSOLE_RESULT(val value: Long) {
 /**
  * {@snippet lang=c : typedef Long LSTATUS;}
  */
-typealias LSTATUS = Long
+typealias LSTATUS = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long REGSAM;}
  */
-typealias REGSAM = Long
+typealias REGSAM = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum _SC_ACTION_TYPE}
@@ -3614,7 +3615,7 @@ enum class SERVICE_SHARED_DIRECTORY_TYPE(val value: Long) {
 /**
  * {@snippet lang=c : typedef Long RPC_STATUS;}
  */
-typealias RPC_STATUS = Long
+typealias RPC_STATUS = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum _RPC_HTTP_REDIRECTOR_STAGE}
@@ -3776,12 +3777,12 @@ typealias size_t = Long
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long error_status_t;}
  */
-typealias error_status_t = Long
+typealias error_status_t = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long RPC_LENGTH;}
  */
-typealias RPC_LENGTH = Long
+typealias RPC_LENGTH = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum _USER_MARSHAL_CB_TYPE}
@@ -3892,7 +3893,7 @@ typealias DOUBLE = Double
 /**
  * {@snippet lang=c : typedef Long SCODE;}
  */
-typealias SCODE = Long
+typealias SCODE = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum tagMEMCTX}
@@ -4025,7 +4026,7 @@ enum class VARENUM(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long PROPID;}
  */
-typealias PROPID = Long
+typealias PROPID = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum tagTYSPEC}
@@ -4054,7 +4055,7 @@ enum class _TVITEMPART(val value: Long) {
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long MONTHDAYSTATE;}
  */
-typealias MONTHDAYSTATE = Long
+typealias MONTHDAYSTATE = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum EC_ENDOFLINE}
@@ -4379,60 +4380,60 @@ enum class DWM_SOURCE_FRAME_SAMPLING(val value: Long) {
 /**
  * {@snippet lang=c : DwmEnableBlurBehindWindow typedef HRESULT = Long(typedef HWND = (Declared(HWND__))*,(typedef DWM_BLURBEHIND = Declared(_DWM_BLURBEHIND))*)
  */
-private val DwmEnableBlurBehindWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val DwmEnableBlurBehindWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var DwmEnableBlurBehindWindow_HANDLE: MethodHandle? = null
 
-fun DwmEnableBlurBehindWindow(arg0: MemorySegment, arg1: MemorySegment): Long {
+fun DwmEnableBlurBehindWindow(arg0: MemorySegment, arg1: MemorySegment): Int {
     check(_initialized) { "Win32 DwmEnableBlurBehindWindow called before init()" }
-    val _handle = DwmEnableBlurBehindWindow_HANDLE ?: return 0L
+    val _handle = DwmEnableBlurBehindWindow_HANDLE ?: return 0
     try {
-        return _handle.invokeExact(arg0, arg1) as Long
+        return _handle.invokeExact(arg0, arg1) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
         throw ex
     } catch (ex: Throwable) {
-        return 0L
+        return 0
     }
 }
 
 /**
  * {@snippet lang=c : DwmExtendFrameIntoClientArea typedef HRESULT = Long(typedef HWND = (Declared(HWND__))*,(typedef MARGINS = Declared(_MARGINS))*)
  */
-private val DwmExtendFrameIntoClientArea_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val DwmExtendFrameIntoClientArea_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var DwmExtendFrameIntoClientArea_HANDLE: MethodHandle? = null
 
-fun DwmExtendFrameIntoClientArea(arg0: MemorySegment, arg1: MemorySegment): Long {
+fun DwmExtendFrameIntoClientArea(arg0: MemorySegment, arg1: MemorySegment): Int {
     check(_initialized) { "Win32 DwmExtendFrameIntoClientArea called before init()" }
-    val _handle = DwmExtendFrameIntoClientArea_HANDLE ?: return 0L
+    val _handle = DwmExtendFrameIntoClientArea_HANDLE ?: return 0
     try {
-        return _handle.invokeExact(arg0, arg1) as Long
+        return _handle.invokeExact(arg0, arg1) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
         throw ex
     } catch (ex: Throwable) {
-        return 0L
+        return 0
     }
 }
 
 /**
  * {@snippet lang=c : DwmSetWindowAttribute typedef HRESULT = Long(typedef HWND = (Declared(HWND__))*,typedef DWORD = UNSIGNED = Long,typedef LPCVOID = (Void)*,typedef DWORD = UNSIGNED = Long)
  */
-private val DwmSetWindowAttribute_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val DwmSetWindowAttribute_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
 private var DwmSetWindowAttribute_HANDLE: MethodHandle? = null
 
-fun DwmSetWindowAttribute(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Long): Long {
+fun DwmSetWindowAttribute(arg0: MemorySegment, arg1: Int, arg2: MemorySegment, arg3: Int): Int {
     check(_initialized) { "Win32 DwmSetWindowAttribute called before init()" }
-    val _handle = DwmSetWindowAttribute_HANDLE ?: return 0L
+    val _handle = DwmSetWindowAttribute_HANDLE ?: return 0
     try {
-        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Long
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
         throw ex
     } catch (ex: Throwable) {
-        return 0L
+        return 0
     }
 }
 
@@ -4490,10 +4491,9 @@ enum class DWM_TAB_WINDOW_REQUIREMENTS(val value: Long) {
  * Must be called before any binding function on Windows.
  * Safe to call on non-Windows (no-op, all symbols stay null).
  */
+@Synchronized
 fun init() {
     if (_initialized) return
-    _initialized = true
-
     _DLL_DWMAPI_DLL = try {
         SymbolLookup.libraryLookup("Dwmapi.dll", Arena.global())
     } catch (ex: Throwable) {
@@ -4576,4 +4576,6 @@ fun init() {
     DwmEnableBlurBehindWindow_HANDLE = _lookup("DwmEnableBlurBehindWindow").find("DwmEnableBlurBehindWindow").map { Linker.nativeLinker().downcallHandle(it, DwmEnableBlurBehindWindow_DESC) }.orElse(null)
     DwmExtendFrameIntoClientArea_HANDLE = _lookup("DwmExtendFrameIntoClientArea").find("DwmExtendFrameIntoClientArea").map { Linker.nativeLinker().downcallHandle(it, DwmExtendFrameIntoClientArea_DESC) }.orElse(null)
     DwmSetWindowAttribute_HANDLE = _lookup("DwmSetWindowAttribute").find("DwmSetWindowAttribute").map { Linker.nativeLinker().downcallHandle(it, DwmSetWindowAttribute_DESC) }.orElse(null)
+
+    _initialized = true
 }

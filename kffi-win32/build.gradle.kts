@@ -13,6 +13,12 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_25)
         }
     }
+
+    sourceSets {
+        jvmTest.dependencies {
+            implementation(kotlin("test"))
+        }
+    }
 }
 
 java {
