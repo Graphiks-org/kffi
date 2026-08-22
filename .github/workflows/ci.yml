@@ -36,7 +36,7 @@ jobs:
         run: scripts/run-wayland-integration.sh
       - name: Upload Wayland integration artifacts
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: wayland-integration
           path: kffi-wayland/build/wayland-integration/**
@@ -69,7 +69,7 @@ jobs:
         run: scripts/run-x11-integration.sh
       - name: Upload X11 integration artifacts
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: x11-integration
           path: kffi-x11/build/x11-integration/**
@@ -89,7 +89,7 @@ jobs:
         run: scripts/run-objc-integration.sh
       - name: Upload Objective-C integration artifacts
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: objc-integration
           path: kffi-objc/build/objc-integration/**
@@ -110,7 +110,7 @@ jobs:
           java-version: 25
           cache: 'gradle'
       - name: Cache Gradle packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
@@ -119,7 +119,7 @@ jobs:
         uses: ./.github/actions/setup-android
       - name: Activate MSVC
         if: matrix.os == 'windows-latest'
-        uses: ilammy/msvc-dev-cmd@v1
+        uses: TheMrMilchmann/setup-msvc-dev@v4
       - name: Run JVM and Android host tests
         run: ./gradlew :kffi:jvmTest :kffi-objc:jvmTest :kffi:testAndroidHostTest
       - name: Run Win32 integration tests
@@ -132,7 +132,7 @@ jobs:
         run: ./gradlew :kffi-win32:win32IntegrationTest
       - name: Upload Win32 integration artifacts
         if: always() && matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: win32-integration
           path: kffi-win32/build/win32-integration/**
