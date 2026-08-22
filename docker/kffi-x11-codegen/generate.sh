@@ -67,7 +67,7 @@ functions=(
     XDrawPoint XDrawPoints XDrawLine XDrawLines XDrawSegments
     XDrawRectangle XDrawRectangles XFillRectangle XFillRectangles
     XDrawArc XDrawArcs XFillArc XFillArcs XFillPolygon
-    XGetImage XDestroyImage XQueryTree XGetWindowAttributes XSync XRootWindow
+    XGetImage XDestroyImage XQueryTree XGetWindowAttributes XQueryBestCursor XSync XRootWindow
     XShapeCombineRectangles XShmQueryExtension XShmCreateImage XShmAttach XShmDetach
     XShmGetImage XCompositeNameWindowPixmap XkbSetDetectableAutoRepeat XKeysymToKeycode
     XLookupKeysym XLookupString XGetKeyboardMapping XFreeStringList XQueryKeymap
@@ -81,12 +81,17 @@ constants=(
     ExposureMask StructureNotifyMask SubstructureNotifyMask SubstructureRedirectMask
     CWOverrideRedirect CompositeRedirectAutomatic AnyPropertyType
 )
-pure_constants=(KeyPress)
+pure_constants=(KeyPress ZPixmap AllPlanes XSHM_ZPIXMAP IsViewable)
 typedefs=(
     Display XID Atom Window Cursor Pixmap Drawable Time Bool Status XRectangle XPoint
 )
 structs=(
     XRectangle XPoint XSegment XArc XColor
+    KffiXImageStorage KffiXWindowAttributesStorage
+    KffiXClientMessageEventStorage KffiXSelectionEventStorage
+    KffiXSetWindowAttributesStorage KffiXIMCallbackStorage KffiXIMTextStorage
+    KffiXIMPreeditStateNotifyCallbackStructStorage
+    KffiXIMPreeditDrawCallbackStructStorage
 )
 
 args=(
@@ -95,8 +100,8 @@ args=(
     -l :libX11.so.6
     -l :libXext.so.6
     -l :libXcomposite.so.1
-    --variadic-args XCreateIC:11
-    --variadic-args XSetICValues:3
+    --variadic-args XCreateIC:15
+    --variadic-args XSetICValues:5
 )
 for function in "${functions[@]}"; do args+=(--include-function "$function"); done
 for constant in "${constants[@]}"; do args+=(--include-constant "$constant"); done
@@ -105,6 +110,15 @@ for struct in "${structs[@]}"; do args+=(--include-struct "$struct"); done
 args+=(
     --include-union KffiXEventStorage --include-typedef KffiXEventStorage
     --include-struct XShmSegmentInfoCompat --include-typedef XShmSegmentInfoCompat
+    --include-typedef KffiXImageStorage
+    --include-typedef KffiXWindowAttributesStorage
+    --include-typedef KffiXClientMessageEventStorage
+    --include-typedef KffiXSelectionEventStorage
+    --include-typedef KffiXSetWindowAttributesStorage
+    --include-typedef KffiXIMCallbackStorage
+    --include-typedef KffiXIMTextStorage
+    --include-typedef KffiXIMPreeditStateNotifyCallbackStructStorage
+    --include-typedef KffiXIMPreeditDrawCallbackStructStorage
 )
 
 constant_args=(
@@ -158,6 +172,14 @@ perl -0pi -e 's/private object kextract_runtime \{.*?\}\n\n//s' \
 rm -rf "$GENERATED_KT"
 mkdir -p "$(dirname "$GENERATED_KT")"
 mv "$STAGING_KT/org/graphiks/kffi/x11/generated" "$GENERATED_KT"
+
+# kextract intentionally skips string-valued pointer macros such as the XIM
+# resource names. Keep those stable public values in a checked-in support
+# template alongside the generated output.
+cp "$REPO/docker/kffi-x11-codegen/x11_xim_constants.kt" \
+    "$GENERATED_KT/x11_xim_constants.kt"
+cp "$REPO/docker/kffi-x11-codegen/x11_compat_aliases.kt" \
+    "$GENERATED_KT/X11CompatAliases.kt"
 
 # kextract emits indentation-only blank lines. Normalize generated whitespace
 # so regenerated sources pass Git's whitespace checks without altering bindings.
