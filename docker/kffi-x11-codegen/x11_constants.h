@@ -1,9 +1,13 @@
 #ifndef KFFI_X11_CONSTANTS_H
 #define KFFI_X11_CONSTANTS_H
 
-/* Xlib.h defines KeyPress as 2. Keep this pure macro isolated from Xlib's
- * typedef graph so kextract can generate a callable test constant without
- * expanding every transitive Xlib declaration into this isolated output. */
+/* Keep these pure macros isolated from Xlib's typedef graph so kextract can
+ * generate callable numeric constants without expanding every transitive
+ * Xlib declaration into this isolated output. */
 #define KeyPress 2
+#define ZPixmap 2
+#define AllPlanes ((unsigned long)~0L)
+#define XSHM_ZPIXMAP 2
+#define IsViewable 2
 
 #endif

@@ -2993,6 +2993,25 @@ fun XPending(arg0: MemorySegment): Int {
 }
 
 /**
+ * {@snippet lang=c : XQueryBestCursor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,UNSIGNED = Int,UNSIGNED = Int,(UNSIGNED = Int)*,(UNSIGNED = Int)*)
+ */
+private val XQueryBestCursor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XQueryBestCursor_ADDR: MemorySegment = LOOKUP.find("XQueryBestCursor").orElseThrow()
+private val XQueryBestCursor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XQueryBestCursor_ADDR, XQueryBestCursor_DESC)
+
+fun XQueryBestCursor(arg0: MemorySegment, arg1: Long, arg2: Int, arg3: Int, arg4: MemorySegment, arg5: MemorySegment): Int {
+    try {
+        return XQueryBestCursor_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XQueryColor Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,(typedef XColor = Declared(XColor))*)
  */
 private val XQueryColor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
@@ -4405,6 +4424,1071 @@ class XShmSegmentInfoCompat {
 
     fun padding_after_read_only(segment: MemorySegment, value: Int) =
         padding_after_read_only_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXImageStorage
+ */
+class KffiXImageStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withName("width"),
+            ValueLayout.JAVA_INT.withName("height"),
+            ValueLayout.JAVA_INT.withName("xoffset"),
+            ValueLayout.JAVA_INT.withName("format"),
+            ValueLayout.ADDRESS.withName("data"),
+            ValueLayout.JAVA_INT.withName("byte_order"),
+            ValueLayout.JAVA_INT.withName("bitmap_unit"),
+            ValueLayout.JAVA_INT.withName("bitmap_bit_order"),
+            ValueLayout.JAVA_INT.withName("bitmap_pad"),
+            ValueLayout.JAVA_INT.withName("depth"),
+            ValueLayout.JAVA_INT.withName("bytes_per_line"),
+            ValueLayout.JAVA_INT.withName("bits_per_pixel"),
+            ValueLayout.JAVA_INT.withName("padding_before_masks"),
+            ValueLayout.JAVA_LONG.withName("red_mask"),
+            ValueLayout.JAVA_LONG.withName("green_mask"),
+            ValueLayout.JAVA_LONG.withName("blue_mask"),
+            ValueLayout.ADDRESS.withName("obdata"),
+            ValueLayout.ADDRESS.withName("create_image"),
+            ValueLayout.ADDRESS.withName("destroy_image"),
+            ValueLayout.ADDRESS.withName("get_pixel"),
+            ValueLayout.ADDRESS.withName("put_pixel"),
+            ValueLayout.ADDRESS.withName("sub_image"),
+            ValueLayout.ADDRESS.withName("add_pixel")
+        ).withName("KffiXImageStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val width_VH: VarHandle = layout.varHandle(groupElement("width"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun width(segment: MemorySegment): Int =
+        width_VH.get(segment, 0L) as Int
+
+    fun width(segment: MemorySegment, value: Int) =
+        width_VH.set(segment, 0L, value)
+
+    val height_VH: VarHandle = layout.varHandle(groupElement("height"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun height(segment: MemorySegment): Int =
+        height_VH.get(segment, 0L) as Int
+
+    fun height(segment: MemorySegment, value: Int) =
+        height_VH.set(segment, 0L, value)
+
+    val xoffset_VH: VarHandle = layout.varHandle(groupElement("xoffset"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun xoffset(segment: MemorySegment): Int =
+        xoffset_VH.get(segment, 0L) as Int
+
+    fun xoffset(segment: MemorySegment, value: Int) =
+        xoffset_VH.set(segment, 0L, value)
+
+    val format_VH: VarHandle = layout.varHandle(groupElement("format"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun format(segment: MemorySegment): Int =
+        format_VH.get(segment, 0L) as Int
+
+    fun format(segment: MemorySegment, value: Int) =
+        format_VH.set(segment, 0L, value)
+
+    val data_VH: VarHandle = layout.varHandle(groupElement("data"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun data(segment: MemorySegment): MemorySegment =
+        data_VH.get(segment, 0L) as MemorySegment
+
+    fun data(segment: MemorySegment, value: MemorySegment) =
+        data_VH.set(segment, 0L, value)
+
+    val byte_order_VH: VarHandle = layout.varHandle(groupElement("byte_order"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun byte_order(segment: MemorySegment): Int =
+        byte_order_VH.get(segment, 0L) as Int
+
+    fun byte_order(segment: MemorySegment, value: Int) =
+        byte_order_VH.set(segment, 0L, value)
+
+    val bitmap_unit_VH: VarHandle = layout.varHandle(groupElement("bitmap_unit"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun bitmap_unit(segment: MemorySegment): Int =
+        bitmap_unit_VH.get(segment, 0L) as Int
+
+    fun bitmap_unit(segment: MemorySegment, value: Int) =
+        bitmap_unit_VH.set(segment, 0L, value)
+
+    val bitmap_bit_order_VH: VarHandle = layout.varHandle(groupElement("bitmap_bit_order"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun bitmap_bit_order(segment: MemorySegment): Int =
+        bitmap_bit_order_VH.get(segment, 0L) as Int
+
+    fun bitmap_bit_order(segment: MemorySegment, value: Int) =
+        bitmap_bit_order_VH.set(segment, 0L, value)
+
+    val bitmap_pad_VH: VarHandle = layout.varHandle(groupElement("bitmap_pad"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun bitmap_pad(segment: MemorySegment): Int =
+        bitmap_pad_VH.get(segment, 0L) as Int
+
+    fun bitmap_pad(segment: MemorySegment, value: Int) =
+        bitmap_pad_VH.set(segment, 0L, value)
+
+    val depth_VH: VarHandle = layout.varHandle(groupElement("depth"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun depth(segment: MemorySegment): Int =
+        depth_VH.get(segment, 0L) as Int
+
+    fun depth(segment: MemorySegment, value: Int) =
+        depth_VH.set(segment, 0L, value)
+
+    val bytes_per_line_VH: VarHandle = layout.varHandle(groupElement("bytes_per_line"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun bytes_per_line(segment: MemorySegment): Int =
+        bytes_per_line_VH.get(segment, 0L) as Int
+
+    fun bytes_per_line(segment: MemorySegment, value: Int) =
+        bytes_per_line_VH.set(segment, 0L, value)
+
+    val bits_per_pixel_VH: VarHandle = layout.varHandle(groupElement("bits_per_pixel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun bits_per_pixel(segment: MemorySegment): Int =
+        bits_per_pixel_VH.get(segment, 0L) as Int
+
+    fun bits_per_pixel(segment: MemorySegment, value: Int) =
+        bits_per_pixel_VH.set(segment, 0L, value)
+
+    val padding_before_masks_VH: VarHandle = layout.varHandle(groupElement("padding_before_masks"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_before_masks(segment: MemorySegment): Int =
+        padding_before_masks_VH.get(segment, 0L) as Int
+
+    fun padding_before_masks(segment: MemorySegment, value: Int) =
+        padding_before_masks_VH.set(segment, 0L, value)
+
+    val red_mask_VH: VarHandle = layout.varHandle(groupElement("red_mask"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun red_mask(segment: MemorySegment): Long =
+        red_mask_VH.get(segment, 0L) as Long
+
+    fun red_mask(segment: MemorySegment, value: Long) =
+        red_mask_VH.set(segment, 0L, value)
+
+    val green_mask_VH: VarHandle = layout.varHandle(groupElement("green_mask"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun green_mask(segment: MemorySegment): Long =
+        green_mask_VH.get(segment, 0L) as Long
+
+    fun green_mask(segment: MemorySegment, value: Long) =
+        green_mask_VH.set(segment, 0L, value)
+
+    val blue_mask_VH: VarHandle = layout.varHandle(groupElement("blue_mask"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun blue_mask(segment: MemorySegment): Long =
+        blue_mask_VH.get(segment, 0L) as Long
+
+    fun blue_mask(segment: MemorySegment, value: Long) =
+        blue_mask_VH.set(segment, 0L, value)
+
+    val obdata_VH: VarHandle = layout.varHandle(groupElement("obdata"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun obdata(segment: MemorySegment): MemorySegment =
+        obdata_VH.get(segment, 0L) as MemorySegment
+
+    fun obdata(segment: MemorySegment, value: MemorySegment) =
+        obdata_VH.set(segment, 0L, value)
+
+    val create_image_VH: VarHandle = layout.varHandle(groupElement("create_image"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun create_image(segment: MemorySegment): MemorySegment =
+        create_image_VH.get(segment, 0L) as MemorySegment
+
+    fun create_image(segment: MemorySegment, value: MemorySegment) =
+        create_image_VH.set(segment, 0L, value)
+
+    val destroy_image_VH: VarHandle = layout.varHandle(groupElement("destroy_image"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun destroy_image(segment: MemorySegment): MemorySegment =
+        destroy_image_VH.get(segment, 0L) as MemorySegment
+
+    fun destroy_image(segment: MemorySegment, value: MemorySegment) =
+        destroy_image_VH.set(segment, 0L, value)
+
+    val get_pixel_VH: VarHandle = layout.varHandle(groupElement("get_pixel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun get_pixel(segment: MemorySegment): MemorySegment =
+        get_pixel_VH.get(segment, 0L) as MemorySegment
+
+    fun get_pixel(segment: MemorySegment, value: MemorySegment) =
+        get_pixel_VH.set(segment, 0L, value)
+
+    val put_pixel_VH: VarHandle = layout.varHandle(groupElement("put_pixel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun put_pixel(segment: MemorySegment): MemorySegment =
+        put_pixel_VH.get(segment, 0L) as MemorySegment
+
+    fun put_pixel(segment: MemorySegment, value: MemorySegment) =
+        put_pixel_VH.set(segment, 0L, value)
+
+    val sub_image_VH: VarHandle = layout.varHandle(groupElement("sub_image"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun sub_image(segment: MemorySegment): MemorySegment =
+        sub_image_VH.get(segment, 0L) as MemorySegment
+
+    fun sub_image(segment: MemorySegment, value: MemorySegment) =
+        sub_image_VH.set(segment, 0L, value)
+
+    val add_pixel_VH: VarHandle = layout.varHandle(groupElement("add_pixel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun add_pixel(segment: MemorySegment): MemorySegment =
+        add_pixel_VH.get(segment, 0L) as MemorySegment
+
+    fun add_pixel(segment: MemorySegment, value: MemorySegment) =
+        add_pixel_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXWindowAttributesStorage
+ */
+class KffiXWindowAttributesStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withName("x"),
+            ValueLayout.JAVA_INT.withName("y"),
+            ValueLayout.JAVA_INT.withName("width"),
+            ValueLayout.JAVA_INT.withName("height"),
+            ValueLayout.JAVA_INT.withName("border_width"),
+            ValueLayout.JAVA_INT.withName("depth"),
+            ValueLayout.ADDRESS.withName("visual"),
+            ValueLayout.JAVA_LONG.withName("root"),
+            ValueLayout.JAVA_INT.withName("c_class"),
+            ValueLayout.JAVA_INT.withName("bit_gravity"),
+            ValueLayout.JAVA_INT.withName("win_gravity"),
+            ValueLayout.JAVA_INT.withName("backing_store"),
+            ValueLayout.JAVA_LONG.withName("backing_planes"),
+            ValueLayout.JAVA_LONG.withName("backing_pixel"),
+            ValueLayout.JAVA_INT.withName("save_under"),
+            ValueLayout.JAVA_INT.withName("padding_after_save_under"),
+            ValueLayout.JAVA_LONG.withName("colormap"),
+            ValueLayout.JAVA_INT.withName("map_installed"),
+            ValueLayout.JAVA_INT.withName("map_state"),
+            ValueLayout.JAVA_LONG.withName("all_event_masks"),
+            ValueLayout.JAVA_LONG.withName("your_event_mask"),
+            ValueLayout.JAVA_LONG.withName("do_not_propagate_mask"),
+            ValueLayout.JAVA_INT.withName("override_redirect"),
+            ValueLayout.JAVA_INT.withName("padding_after_override_redirect"),
+            ValueLayout.ADDRESS.withName("screen")
+        ).withName("KffiXWindowAttributesStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val x_VH: VarHandle = layout.varHandle(groupElement("x"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun x(segment: MemorySegment): Int =
+        x_VH.get(segment, 0L) as Int
+
+    fun x(segment: MemorySegment, value: Int) =
+        x_VH.set(segment, 0L, value)
+
+    val y_VH: VarHandle = layout.varHandle(groupElement("y"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun y(segment: MemorySegment): Int =
+        y_VH.get(segment, 0L) as Int
+
+    fun y(segment: MemorySegment, value: Int) =
+        y_VH.set(segment, 0L, value)
+
+    val width_VH: VarHandle = layout.varHandle(groupElement("width"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun width(segment: MemorySegment): Int =
+        width_VH.get(segment, 0L) as Int
+
+    fun width(segment: MemorySegment, value: Int) =
+        width_VH.set(segment, 0L, value)
+
+    val height_VH: VarHandle = layout.varHandle(groupElement("height"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun height(segment: MemorySegment): Int =
+        height_VH.get(segment, 0L) as Int
+
+    fun height(segment: MemorySegment, value: Int) =
+        height_VH.set(segment, 0L, value)
+
+    val border_width_VH: VarHandle = layout.varHandle(groupElement("border_width"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun border_width(segment: MemorySegment): Int =
+        border_width_VH.get(segment, 0L) as Int
+
+    fun border_width(segment: MemorySegment, value: Int) =
+        border_width_VH.set(segment, 0L, value)
+
+    val depth_VH: VarHandle = layout.varHandle(groupElement("depth"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun depth(segment: MemorySegment): Int =
+        depth_VH.get(segment, 0L) as Int
+
+    fun depth(segment: MemorySegment, value: Int) =
+        depth_VH.set(segment, 0L, value)
+
+    val visual_VH: VarHandle = layout.varHandle(groupElement("visual"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun visual(segment: MemorySegment): MemorySegment =
+        visual_VH.get(segment, 0L) as MemorySegment
+
+    fun visual(segment: MemorySegment, value: MemorySegment) =
+        visual_VH.set(segment, 0L, value)
+
+    val root_VH: VarHandle = layout.varHandle(groupElement("root"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun root(segment: MemorySegment): Long =
+        root_VH.get(segment, 0L) as Long
+
+    fun root(segment: MemorySegment, value: Long) =
+        root_VH.set(segment, 0L, value)
+
+    val c_class_VH: VarHandle = layout.varHandle(groupElement("c_class"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun c_class(segment: MemorySegment): Int =
+        c_class_VH.get(segment, 0L) as Int
+
+    fun c_class(segment: MemorySegment, value: Int) =
+        c_class_VH.set(segment, 0L, value)
+
+    val bit_gravity_VH: VarHandle = layout.varHandle(groupElement("bit_gravity"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun bit_gravity(segment: MemorySegment): Int =
+        bit_gravity_VH.get(segment, 0L) as Int
+
+    fun bit_gravity(segment: MemorySegment, value: Int) =
+        bit_gravity_VH.set(segment, 0L, value)
+
+    val win_gravity_VH: VarHandle = layout.varHandle(groupElement("win_gravity"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun win_gravity(segment: MemorySegment): Int =
+        win_gravity_VH.get(segment, 0L) as Int
+
+    fun win_gravity(segment: MemorySegment, value: Int) =
+        win_gravity_VH.set(segment, 0L, value)
+
+    val backing_store_VH: VarHandle = layout.varHandle(groupElement("backing_store"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun backing_store(segment: MemorySegment): Int =
+        backing_store_VH.get(segment, 0L) as Int
+
+    fun backing_store(segment: MemorySegment, value: Int) =
+        backing_store_VH.set(segment, 0L, value)
+
+    val backing_planes_VH: VarHandle = layout.varHandle(groupElement("backing_planes"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun backing_planes(segment: MemorySegment): Long =
+        backing_planes_VH.get(segment, 0L) as Long
+
+    fun backing_planes(segment: MemorySegment, value: Long) =
+        backing_planes_VH.set(segment, 0L, value)
+
+    val backing_pixel_VH: VarHandle = layout.varHandle(groupElement("backing_pixel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun backing_pixel(segment: MemorySegment): Long =
+        backing_pixel_VH.get(segment, 0L) as Long
+
+    fun backing_pixel(segment: MemorySegment, value: Long) =
+        backing_pixel_VH.set(segment, 0L, value)
+
+    val save_under_VH: VarHandle = layout.varHandle(groupElement("save_under"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun save_under(segment: MemorySegment): Int =
+        save_under_VH.get(segment, 0L) as Int
+
+    fun save_under(segment: MemorySegment, value: Int) =
+        save_under_VH.set(segment, 0L, value)
+
+    val padding_after_save_under_VH: VarHandle = layout.varHandle(groupElement("padding_after_save_under"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_save_under(segment: MemorySegment): Int =
+        padding_after_save_under_VH.get(segment, 0L) as Int
+
+    fun padding_after_save_under(segment: MemorySegment, value: Int) =
+        padding_after_save_under_VH.set(segment, 0L, value)
+
+    val colormap_VH: VarHandle = layout.varHandle(groupElement("colormap"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun colormap(segment: MemorySegment): Long =
+        colormap_VH.get(segment, 0L) as Long
+
+    fun colormap(segment: MemorySegment, value: Long) =
+        colormap_VH.set(segment, 0L, value)
+
+    val map_installed_VH: VarHandle = layout.varHandle(groupElement("map_installed"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun map_installed(segment: MemorySegment): Int =
+        map_installed_VH.get(segment, 0L) as Int
+
+    fun map_installed(segment: MemorySegment, value: Int) =
+        map_installed_VH.set(segment, 0L, value)
+
+    val map_state_VH: VarHandle = layout.varHandle(groupElement("map_state"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun map_state(segment: MemorySegment): Int =
+        map_state_VH.get(segment, 0L) as Int
+
+    fun map_state(segment: MemorySegment, value: Int) =
+        map_state_VH.set(segment, 0L, value)
+
+    val all_event_masks_VH: VarHandle = layout.varHandle(groupElement("all_event_masks"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun all_event_masks(segment: MemorySegment): Long =
+        all_event_masks_VH.get(segment, 0L) as Long
+
+    fun all_event_masks(segment: MemorySegment, value: Long) =
+        all_event_masks_VH.set(segment, 0L, value)
+
+    val your_event_mask_VH: VarHandle = layout.varHandle(groupElement("your_event_mask"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun your_event_mask(segment: MemorySegment): Long =
+        your_event_mask_VH.get(segment, 0L) as Long
+
+    fun your_event_mask(segment: MemorySegment, value: Long) =
+        your_event_mask_VH.set(segment, 0L, value)
+
+    val do_not_propagate_mask_VH: VarHandle = layout.varHandle(groupElement("do_not_propagate_mask"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun do_not_propagate_mask(segment: MemorySegment): Long =
+        do_not_propagate_mask_VH.get(segment, 0L) as Long
+
+    fun do_not_propagate_mask(segment: MemorySegment, value: Long) =
+        do_not_propagate_mask_VH.set(segment, 0L, value)
+
+    val override_redirect_VH: VarHandle = layout.varHandle(groupElement("override_redirect"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun override_redirect(segment: MemorySegment): Int =
+        override_redirect_VH.get(segment, 0L) as Int
+
+    fun override_redirect(segment: MemorySegment, value: Int) =
+        override_redirect_VH.set(segment, 0L, value)
+
+    val padding_after_override_redirect_VH: VarHandle = layout.varHandle(groupElement("padding_after_override_redirect"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_override_redirect(segment: MemorySegment): Int =
+        padding_after_override_redirect_VH.get(segment, 0L) as Int
+
+    fun padding_after_override_redirect(segment: MemorySegment, value: Int) =
+        padding_after_override_redirect_VH.set(segment, 0L, value)
+
+    val screen_VH: VarHandle = layout.varHandle(groupElement("screen"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun screen(segment: MemorySegment): MemorySegment =
+        screen_VH.get(segment, 0L) as MemorySegment
+
+    fun screen(segment: MemorySegment, value: MemorySegment) =
+        screen_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXClientMessageEventStorage
+ */
+class KffiXClientMessageEventStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withName("type"),
+            ValueLayout.JAVA_INT.withName("padding_after_type"),
+            ValueLayout.JAVA_LONG.withName("serial"),
+            ValueLayout.JAVA_INT.withName("send_event"),
+            ValueLayout.JAVA_INT.withName("padding_after_send_event"),
+            ValueLayout.ADDRESS.withName("display"),
+            ValueLayout.JAVA_LONG.withName("window"),
+            ValueLayout.JAVA_LONG.withName("message_type"),
+            ValueLayout.JAVA_INT.withName("format"),
+            ValueLayout.JAVA_INT.withName("padding_before_data"),
+            ValueLayout.JAVA_LONG.withName("data_l0"),
+            ValueLayout.JAVA_LONG.withName("data_l1"),
+            ValueLayout.JAVA_LONG.withName("data_l2"),
+            ValueLayout.JAVA_LONG.withName("data_l3"),
+            ValueLayout.JAVA_LONG.withName("data_l4")
+        ).withName("KffiXClientMessageEventStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val type_VH: VarHandle = layout.varHandle(groupElement("type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun type(segment: MemorySegment): Int =
+        type_VH.get(segment, 0L) as Int
+
+    fun type(segment: MemorySegment, value: Int) =
+        type_VH.set(segment, 0L, value)
+
+    val padding_after_type_VH: VarHandle = layout.varHandle(groupElement("padding_after_type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_type(segment: MemorySegment): Int =
+        padding_after_type_VH.get(segment, 0L) as Int
+
+    fun padding_after_type(segment: MemorySegment, value: Int) =
+        padding_after_type_VH.set(segment, 0L, value)
+
+    val serial_VH: VarHandle = layout.varHandle(groupElement("serial"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun serial(segment: MemorySegment): Long =
+        serial_VH.get(segment, 0L) as Long
+
+    fun serial(segment: MemorySegment, value: Long) =
+        serial_VH.set(segment, 0L, value)
+
+    val send_event_VH: VarHandle = layout.varHandle(groupElement("send_event"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun send_event(segment: MemorySegment): Int =
+        send_event_VH.get(segment, 0L) as Int
+
+    fun send_event(segment: MemorySegment, value: Int) =
+        send_event_VH.set(segment, 0L, value)
+
+    val padding_after_send_event_VH: VarHandle = layout.varHandle(groupElement("padding_after_send_event"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_send_event(segment: MemorySegment): Int =
+        padding_after_send_event_VH.get(segment, 0L) as Int
+
+    fun padding_after_send_event(segment: MemorySegment, value: Int) =
+        padding_after_send_event_VH.set(segment, 0L, value)
+
+    val display_VH: VarHandle = layout.varHandle(groupElement("display"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun display(segment: MemorySegment): MemorySegment =
+        display_VH.get(segment, 0L) as MemorySegment
+
+    fun display(segment: MemorySegment, value: MemorySegment) =
+        display_VH.set(segment, 0L, value)
+
+    val window_VH: VarHandle = layout.varHandle(groupElement("window"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun window(segment: MemorySegment): Long =
+        window_VH.get(segment, 0L) as Long
+
+    fun window(segment: MemorySegment, value: Long) =
+        window_VH.set(segment, 0L, value)
+
+    val message_type_VH: VarHandle = layout.varHandle(groupElement("message_type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun message_type(segment: MemorySegment): Long =
+        message_type_VH.get(segment, 0L) as Long
+
+    fun message_type(segment: MemorySegment, value: Long) =
+        message_type_VH.set(segment, 0L, value)
+
+    val format_VH: VarHandle = layout.varHandle(groupElement("format"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun format(segment: MemorySegment): Int =
+        format_VH.get(segment, 0L) as Int
+
+    fun format(segment: MemorySegment, value: Int) =
+        format_VH.set(segment, 0L, value)
+
+    val padding_before_data_VH: VarHandle = layout.varHandle(groupElement("padding_before_data"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_before_data(segment: MemorySegment): Int =
+        padding_before_data_VH.get(segment, 0L) as Int
+
+    fun padding_before_data(segment: MemorySegment, value: Int) =
+        padding_before_data_VH.set(segment, 0L, value)
+
+    val data_l0_VH: VarHandle = layout.varHandle(groupElement("data_l0"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun data_l0(segment: MemorySegment): Long =
+        data_l0_VH.get(segment, 0L) as Long
+
+    fun data_l0(segment: MemorySegment, value: Long) =
+        data_l0_VH.set(segment, 0L, value)
+
+    val data_l1_VH: VarHandle = layout.varHandle(groupElement("data_l1"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun data_l1(segment: MemorySegment): Long =
+        data_l1_VH.get(segment, 0L) as Long
+
+    fun data_l1(segment: MemorySegment, value: Long) =
+        data_l1_VH.set(segment, 0L, value)
+
+    val data_l2_VH: VarHandle = layout.varHandle(groupElement("data_l2"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun data_l2(segment: MemorySegment): Long =
+        data_l2_VH.get(segment, 0L) as Long
+
+    fun data_l2(segment: MemorySegment, value: Long) =
+        data_l2_VH.set(segment, 0L, value)
+
+    val data_l3_VH: VarHandle = layout.varHandle(groupElement("data_l3"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun data_l3(segment: MemorySegment): Long =
+        data_l3_VH.get(segment, 0L) as Long
+
+    fun data_l3(segment: MemorySegment, value: Long) =
+        data_l3_VH.set(segment, 0L, value)
+
+    val data_l4_VH: VarHandle = layout.varHandle(groupElement("data_l4"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun data_l4(segment: MemorySegment): Long =
+        data_l4_VH.get(segment, 0L) as Long
+
+    fun data_l4(segment: MemorySegment, value: Long) =
+        data_l4_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXSelectionEventStorage
+ */
+class KffiXSelectionEventStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withName("type"),
+            ValueLayout.JAVA_INT.withName("padding_after_type"),
+            ValueLayout.JAVA_LONG.withName("serial"),
+            ValueLayout.JAVA_INT.withName("send_event"),
+            ValueLayout.JAVA_INT.withName("padding_after_send_event"),
+            ValueLayout.ADDRESS.withName("display"),
+            ValueLayout.JAVA_LONG.withName("requestor"),
+            ValueLayout.JAVA_LONG.withName("selection"),
+            ValueLayout.JAVA_LONG.withName("target"),
+            ValueLayout.JAVA_LONG.withName("property"),
+            ValueLayout.JAVA_LONG.withName("time")
+        ).withName("KffiXSelectionEventStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val type_VH: VarHandle = layout.varHandle(groupElement("type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun type(segment: MemorySegment): Int =
+        type_VH.get(segment, 0L) as Int
+
+    fun type(segment: MemorySegment, value: Int) =
+        type_VH.set(segment, 0L, value)
+
+    val padding_after_type_VH: VarHandle = layout.varHandle(groupElement("padding_after_type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_type(segment: MemorySegment): Int =
+        padding_after_type_VH.get(segment, 0L) as Int
+
+    fun padding_after_type(segment: MemorySegment, value: Int) =
+        padding_after_type_VH.set(segment, 0L, value)
+
+    val serial_VH: VarHandle = layout.varHandle(groupElement("serial"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun serial(segment: MemorySegment): Long =
+        serial_VH.get(segment, 0L) as Long
+
+    fun serial(segment: MemorySegment, value: Long) =
+        serial_VH.set(segment, 0L, value)
+
+    val send_event_VH: VarHandle = layout.varHandle(groupElement("send_event"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun send_event(segment: MemorySegment): Int =
+        send_event_VH.get(segment, 0L) as Int
+
+    fun send_event(segment: MemorySegment, value: Int) =
+        send_event_VH.set(segment, 0L, value)
+
+    val padding_after_send_event_VH: VarHandle = layout.varHandle(groupElement("padding_after_send_event"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_send_event(segment: MemorySegment): Int =
+        padding_after_send_event_VH.get(segment, 0L) as Int
+
+    fun padding_after_send_event(segment: MemorySegment, value: Int) =
+        padding_after_send_event_VH.set(segment, 0L, value)
+
+    val display_VH: VarHandle = layout.varHandle(groupElement("display"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun display(segment: MemorySegment): MemorySegment =
+        display_VH.get(segment, 0L) as MemorySegment
+
+    fun display(segment: MemorySegment, value: MemorySegment) =
+        display_VH.set(segment, 0L, value)
+
+    val requestor_VH: VarHandle = layout.varHandle(groupElement("requestor"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun requestor(segment: MemorySegment): Long =
+        requestor_VH.get(segment, 0L) as Long
+
+    fun requestor(segment: MemorySegment, value: Long) =
+        requestor_VH.set(segment, 0L, value)
+
+    val selection_VH: VarHandle = layout.varHandle(groupElement("selection"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun selection(segment: MemorySegment): Long =
+        selection_VH.get(segment, 0L) as Long
+
+    fun selection(segment: MemorySegment, value: Long) =
+        selection_VH.set(segment, 0L, value)
+
+    val target_VH: VarHandle = layout.varHandle(groupElement("target"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun target(segment: MemorySegment): Long =
+        target_VH.get(segment, 0L) as Long
+
+    fun target(segment: MemorySegment, value: Long) =
+        target_VH.set(segment, 0L, value)
+
+    val property__VH: VarHandle = layout.varHandle(groupElement("property"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun property_(segment: MemorySegment): Long =
+        property__VH.get(segment, 0L) as Long
+
+    fun property_(segment: MemorySegment, value: Long) =
+        property__VH.set(segment, 0L, value)
+
+    val time_VH: VarHandle = layout.varHandle(groupElement("time"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun time(segment: MemorySegment): Long =
+        time_VH.get(segment, 0L) as Long
+
+    fun time(segment: MemorySegment, value: Long) =
+        time_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXSetWindowAttributesStorage
+ */
+class KffiXSetWindowAttributesStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_LONG.withName("background_pixmap"),
+            ValueLayout.JAVA_LONG.withName("background_pixel"),
+            ValueLayout.JAVA_LONG.withName("border_pixmap"),
+            ValueLayout.JAVA_LONG.withName("border_pixel"),
+            ValueLayout.JAVA_INT.withName("bit_gravity"),
+            ValueLayout.JAVA_INT.withName("win_gravity"),
+            ValueLayout.JAVA_INT.withName("backing_store"),
+            ValueLayout.JAVA_INT.withName("padding_after_backing_store"),
+            ValueLayout.JAVA_LONG.withName("backing_planes"),
+            ValueLayout.JAVA_LONG.withName("backing_pixel"),
+            ValueLayout.JAVA_INT.withName("save_under"),
+            ValueLayout.JAVA_INT.withName("padding_after_save_under"),
+            ValueLayout.JAVA_LONG.withName("event_mask"),
+            ValueLayout.JAVA_LONG.withName("do_not_propagate_mask"),
+            ValueLayout.JAVA_INT.withName("override_redirect"),
+            ValueLayout.JAVA_INT.withName("padding_after_override_redirect"),
+            ValueLayout.JAVA_LONG.withName("colormap"),
+            ValueLayout.JAVA_LONG.withName("cursor")
+        ).withName("KffiXSetWindowAttributesStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val background_pixmap_VH: VarHandle = layout.varHandle(groupElement("background_pixmap"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun background_pixmap(segment: MemorySegment): Long =
+        background_pixmap_VH.get(segment, 0L) as Long
+
+    fun background_pixmap(segment: MemorySegment, value: Long) =
+        background_pixmap_VH.set(segment, 0L, value)
+
+    val background_pixel_VH: VarHandle = layout.varHandle(groupElement("background_pixel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun background_pixel(segment: MemorySegment): Long =
+        background_pixel_VH.get(segment, 0L) as Long
+
+    fun background_pixel(segment: MemorySegment, value: Long) =
+        background_pixel_VH.set(segment, 0L, value)
+
+    val border_pixmap_VH: VarHandle = layout.varHandle(groupElement("border_pixmap"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun border_pixmap(segment: MemorySegment): Long =
+        border_pixmap_VH.get(segment, 0L) as Long
+
+    fun border_pixmap(segment: MemorySegment, value: Long) =
+        border_pixmap_VH.set(segment, 0L, value)
+
+    val border_pixel_VH: VarHandle = layout.varHandle(groupElement("border_pixel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun border_pixel(segment: MemorySegment): Long =
+        border_pixel_VH.get(segment, 0L) as Long
+
+    fun border_pixel(segment: MemorySegment, value: Long) =
+        border_pixel_VH.set(segment, 0L, value)
+
+    val bit_gravity_VH: VarHandle = layout.varHandle(groupElement("bit_gravity"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun bit_gravity(segment: MemorySegment): Int =
+        bit_gravity_VH.get(segment, 0L) as Int
+
+    fun bit_gravity(segment: MemorySegment, value: Int) =
+        bit_gravity_VH.set(segment, 0L, value)
+
+    val win_gravity_VH: VarHandle = layout.varHandle(groupElement("win_gravity"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun win_gravity(segment: MemorySegment): Int =
+        win_gravity_VH.get(segment, 0L) as Int
+
+    fun win_gravity(segment: MemorySegment, value: Int) =
+        win_gravity_VH.set(segment, 0L, value)
+
+    val backing_store_VH: VarHandle = layout.varHandle(groupElement("backing_store"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun backing_store(segment: MemorySegment): Int =
+        backing_store_VH.get(segment, 0L) as Int
+
+    fun backing_store(segment: MemorySegment, value: Int) =
+        backing_store_VH.set(segment, 0L, value)
+
+    val padding_after_backing_store_VH: VarHandle = layout.varHandle(groupElement("padding_after_backing_store"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_backing_store(segment: MemorySegment): Int =
+        padding_after_backing_store_VH.get(segment, 0L) as Int
+
+    fun padding_after_backing_store(segment: MemorySegment, value: Int) =
+        padding_after_backing_store_VH.set(segment, 0L, value)
+
+    val backing_planes_VH: VarHandle = layout.varHandle(groupElement("backing_planes"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun backing_planes(segment: MemorySegment): Long =
+        backing_planes_VH.get(segment, 0L) as Long
+
+    fun backing_planes(segment: MemorySegment, value: Long) =
+        backing_planes_VH.set(segment, 0L, value)
+
+    val backing_pixel_VH: VarHandle = layout.varHandle(groupElement("backing_pixel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun backing_pixel(segment: MemorySegment): Long =
+        backing_pixel_VH.get(segment, 0L) as Long
+
+    fun backing_pixel(segment: MemorySegment, value: Long) =
+        backing_pixel_VH.set(segment, 0L, value)
+
+    val save_under_VH: VarHandle = layout.varHandle(groupElement("save_under"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun save_under(segment: MemorySegment): Int =
+        save_under_VH.get(segment, 0L) as Int
+
+    fun save_under(segment: MemorySegment, value: Int) =
+        save_under_VH.set(segment, 0L, value)
+
+    val padding_after_save_under_VH: VarHandle = layout.varHandle(groupElement("padding_after_save_under"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_save_under(segment: MemorySegment): Int =
+        padding_after_save_under_VH.get(segment, 0L) as Int
+
+    fun padding_after_save_under(segment: MemorySegment, value: Int) =
+        padding_after_save_under_VH.set(segment, 0L, value)
+
+    val event_mask_VH: VarHandle = layout.varHandle(groupElement("event_mask"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun event_mask(segment: MemorySegment): Long =
+        event_mask_VH.get(segment, 0L) as Long
+
+    fun event_mask(segment: MemorySegment, value: Long) =
+        event_mask_VH.set(segment, 0L, value)
+
+    val do_not_propagate_mask_VH: VarHandle = layout.varHandle(groupElement("do_not_propagate_mask"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun do_not_propagate_mask(segment: MemorySegment): Long =
+        do_not_propagate_mask_VH.get(segment, 0L) as Long
+
+    fun do_not_propagate_mask(segment: MemorySegment, value: Long) =
+        do_not_propagate_mask_VH.set(segment, 0L, value)
+
+    val override_redirect_VH: VarHandle = layout.varHandle(groupElement("override_redirect"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun override_redirect(segment: MemorySegment): Int =
+        override_redirect_VH.get(segment, 0L) as Int
+
+    fun override_redirect(segment: MemorySegment, value: Int) =
+        override_redirect_VH.set(segment, 0L, value)
+
+    val padding_after_override_redirect_VH: VarHandle = layout.varHandle(groupElement("padding_after_override_redirect"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_override_redirect(segment: MemorySegment): Int =
+        padding_after_override_redirect_VH.get(segment, 0L) as Int
+
+    fun padding_after_override_redirect(segment: MemorySegment, value: Int) =
+        padding_after_override_redirect_VH.set(segment, 0L, value)
+
+    val colormap_VH: VarHandle = layout.varHandle(groupElement("colormap"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun colormap(segment: MemorySegment): Long =
+        colormap_VH.get(segment, 0L) as Long
+
+    fun colormap(segment: MemorySegment, value: Long) =
+        colormap_VH.set(segment, 0L, value)
+
+    val cursor_VH: VarHandle = layout.varHandle(groupElement("cursor"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun cursor(segment: MemorySegment): Long =
+        cursor_VH.get(segment, 0L) as Long
+
+    fun cursor(segment: MemorySegment, value: Long) =
+        cursor_VH.set(segment, 0L, value)
 } // End class
 
 /**

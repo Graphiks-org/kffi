@@ -111,7 +111,7 @@ attributesToSetBinding.override_redirect(attributesToSetMemory, 1)
 assertEquals(1, attributesToSetBinding.override_redirect(attributesToSetMemory))
 ```
 
-Assert Linux LP64 sizes and selected offsets through generated layouts: `XImage` 136 bytes with `data=16`, `bytes_per_line=44`, and `bits_per_pixel=48`; `XWindowAttributes` 160 bytes with `map_state=116`; `XClientMessageEvent` 96 bytes with `data_l0=56`; `XSelectionEvent` 72 bytes with `requestor=32`; and `XSetWindowAttributes` 112 bytes with `override_redirect=88`. Use `groupElement` paths, never numeric-offset access in the test body.
+Assert Linux LP64 sizes and selected offsets through generated layouts: `XImage` 136 bytes with `data=16`, `bytes_per_line=44`, and `bits_per_pixel=48`; `XWindowAttributes` 136 bytes with `map_state=92`; `XClientMessageEvent` 96 bytes with `data_l0=56`; `XSelectionEvent` 72 bytes with `requestor=32`; and `XSetWindowAttributes` 112 bytes with `override_redirect=88`. Use `groupElement` paths, never numeric-offset access in the test body.
 
 - [ ] **Step 4: Run the focused test and verify it fails for missing records**
 
