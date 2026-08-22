@@ -8,6 +8,7 @@ import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandle
 import java.util.concurrent.ConcurrentHashMap
+import org.graphiks.kffi.posix.generated.KFFI_MAP_FAILED_ADDRESS as generatedMapFailedAddress
 import org.graphiks.kffi.posix.generated.MAP_ANONYMOUS as generatedMapAnonymous
 import org.graphiks.kffi.posix.generated.MAP_PRIVATE as generatedMapPrivate
 import org.graphiks.kffi.posix.generated.MAP_SHARED as generatedMapShared
@@ -48,6 +49,8 @@ internal data class CapturedCall<T>(val value: T, val errno: Int)
 
 /** Linux mapping, POSIX shared-memory, and memfd calls with captured native errors. */
 object LinuxPosix {
+    val MAP_FAILED_ADDRESS: Long get() = generatedMapFailedAddress()
+
     val O_RDWR: Int get() = generatedORdwr()
     val O_CREAT: Int get() = generatedOCreat()
     val O_EXCL: Int get() = generatedOExcl()
@@ -80,7 +83,7 @@ object LinuxPosix {
             ),
             listOf(address, length, protection, flags, fd, offset),
         )
-        if (result.value.address() == -1L) throw PosixException("mmap", result.errno)
+        if (result.value.address() == MAP_FAILED_ADDRESS) throw PosixException("mmap", result.errno)
         return result.value.reinterpret(length)
     }
 
