@@ -299,7 +299,7 @@ private inline fun <T> retryEintrOrThrow(
 internal fun PosixSymbolLookup.require(name: String): MemorySegment =
     find(name) ?: throw IllegalStateException("required POSIX symbol '$name' is unavailable")
 
-internal data class FdPair(val readFd: Int, val writeFd: Int)
+data class FdPair(val readFd: Int, val writeFd: Int)
 
 internal sealed interface PosixCall<out T> {
     data class Success<T>(val result: T) : PosixCall<T>
@@ -483,4 +483,3 @@ private inline fun <T, R> PosixCall<T>.mapSuccess(transform: (T) -> R): PosixCal
         is PosixCall.Success -> PosixCall.success(transform(result))
         is PosixCall.Failure -> PosixCall.failure(code)
     }
-
