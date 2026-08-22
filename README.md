@@ -272,6 +272,32 @@ The `objc-integration` CI job runs the same script and uploads the generated
 image as a workflow artifact. The Gradle task can also be invoked directly with
 `KFFI_OBJC_INTEGRATION=1`.
 
+### Win32 bindings
+
+`:kffi-win32` provides JVM-only Win32 bindings generated from the Windows SDK.
+The initial surface covers selected functions from `user32.dll`,
+`kernel32.dll`, `gdi32.dll` and `dwmapi.dll`, under the package
+`org.graphiks.kffi.win32.generated`.
+The generated Kotlin sources are versioned in this repository. Regeneration is
+a maintainer operation on Windows; CI compiles and tests the checked-in sources
+but does not run the generator.
+
+Generation requires Windows, Git Bash, JDK 25, the pinned `kextract` submodule
+and Windows SDK `10.0.28000.0` exactly. That SDK version is required for
+reproducible committed output, and must be installed under
+`C:/Program Files (x86)/Windows Kits/10/Include/10.0.28000.0`; other SDK
+versions and installation roots are not used. The
+generator is intentionally separate from the Gradle build:
+
+```bash
+git submodule update --init --recursive
+scripts/gen-kffi-win32.sh
+./gradlew :kffi-win32:compileKotlinJvm --no-daemon
+```
+
+See [kffi-win32/README.md](kffi-win32/README.md) for the generation inputs,
+the `--check` mode and the Windows-specific setup.
+
 ## Loading a native library
 
 ### JVM
@@ -512,7 +538,9 @@ runtime module.
 
 The dedicated KFFI test workflow (`.github/workflows/ci.yml`) runs on
 macOS, Ubuntu, and Windows with JDK 25. It runs `./gradlew :kffi:jvmTest
-:kffi:testAndroidHostTest` on every matrix entry. It also performs these
+:kffi-objc:jvmTest :kffi:testAndroidHostTest` on every matrix entry and runs
+the Windows-only `./gradlew :kffi-win32:jvmTest` integration test on
+`windows-latest`. It also performs these
 platform-specific checks:
 
 - macOS compiles the iOS and macOS callback token codecs, then runs either
