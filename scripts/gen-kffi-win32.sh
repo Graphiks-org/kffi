@@ -8,13 +8,11 @@
 # Usage:
 #   scripts/gen-kffi-win32.sh
 #   scripts/gen-kffi-win32.sh --check
-#
-# Set KFFI_WIN32_KEXTRACT to a kextract distribution bin anchor when using a
-# pre-built distribution. Otherwise the pinned submodule is built on demand.
 set -euo pipefail
 
 MODE="generate"
-KEXTRACT_REVISION="9252fb417ea91dae882a6a9e9d06ab672c50adc3"
+KEXTRACT_REVISION="dd2ad491af3db1b6dc084ef1bf3362379de1d336"
+WINDOWS_SDK_VERSION="10.0.28000.0"
 
 usage() {
     cat <<'EOF'
@@ -25,9 +23,6 @@ Regenerates the checked-in Win32 FFM bindings with kextract.
 Options:
   --check  Generate into a staging directory and compare with checked-in files
   --help   Show this help
-
-Environment:
-  KFFI_WIN32_KEXTRACT  Path anchor for the kextract bin directory
 EOF
 }
 
@@ -59,8 +54,6 @@ esac
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-KEXTRACT_BIN="${KFFI_WIN32_KEXTRACT:-$REPO_ROOT/third_party/kextract/build/kextract/bin/kextract}"
-KEXTRACT_HOME="$(dirname "$KEXTRACT_BIN")/.."
 KEXTRACT_DIR="$REPO_ROOT/third_party/kextract"
 
 if [[ ! -e "$KEXTRACT_DIR/.git" ]]; then
@@ -83,6 +76,19 @@ if [[ -n "$(git -C "$KEXTRACT_DIR" status --porcelain)" ]]; then
     exit 1
 fi
 
+if [[ ! -f "$KEXTRACT_DIR/gradlew" ]]; then
+    echo "error: kextract Gradle wrapper is missing" >&2
+    echo "hint: run 'git submodule update --init --recursive'" >&2
+    exit 1
+fi
+
+echo "→ Preparing pinned kextract distribution"
+(
+    cd "$KEXTRACT_DIR"
+    bash gradlew createKextractImage --no-daemon --console=plain
+)
+
+KEXTRACT_HOME="$KEXTRACT_DIR/build/kextract"
 JAVA="$KEXTRACT_HOME/runtime/bin/java"
 if [[ ! -x "$JAVA" && -x "$JAVA.exe" ]]; then
     JAVA="$JAVA.exe"
@@ -90,25 +96,8 @@ fi
 LIBS_DIR="$KEXTRACT_HOME/lib"
 
 if [[ ! -x "$JAVA" || ! -d "$LIBS_DIR" ]]; then
-    if [[ ! -f "$KEXTRACT_DIR/gradlew" ]]; then
-        echo "error: kextract distribution is missing and its submodule is not initialized" >&2
-        echo "hint: run 'git submodule update --init --recursive'" >&2
-        exit 1
-    fi
-
-    echo "→ Building kextract distribution"
-    (
-        cd "$KEXTRACT_DIR"
-        bash gradlew createKextractImage --no-daemon --console=plain
-    )
-
-    if [[ ! -x "$JAVA" && -x "$JAVA.exe" ]]; then
-        JAVA="$JAVA.exe"
-    fi
-    if [[ ! -x "$JAVA" || ! -d "$LIBS_DIR" ]]; then
-        echo "error: kextract build did not produce '$KEXTRACT_HOME'" >&2
-        exit 1
-    fi
+    echo "error: kextract build did not produce '$KEXTRACT_HOME'" >&2
+    exit 1
 fi
 
 shopt -s nullglob
@@ -143,29 +132,30 @@ if [[ -n "${SYSTEMROOT:-}" ]]; then
     NATIVE_PATH="$NATIVE_PATH;$SYSTEM32"
 fi
 
-# The Windows SDK has no stable versioned path. Include the SDK's UCRT,
-# shared and UM headers from the first installed Windows Kits root.
-SDK_ARGS=()
+# Reproducible committed output uses one exact Windows SDK version. Search only
+# the two standard Windows Kits roots and require the complete include triplet.
+WINDOWS_SDK_INCLUDE=""
 for base in \
     "C:/Program Files (x86)/Windows Kits/10/Include" \
     "C:/Program Files/Windows Kits/10/Include"; do
-    [[ -d "$base" ]] || continue
-    for version in "$base"/*/; do
-        [[ -d "$version" ]] || continue
-        for component in um shared ucrt; do
-            if [[ -d "${version}${component}" ]]; then
-                SDK_ARGS+=(-A "-isystem" -A "${version}${component}")
-            fi
-        done
-    done
-    break
+    candidate="$base/$WINDOWS_SDK_VERSION"
+    if [[ -d "$candidate/um" && -d "$candidate/shared" && -d "$candidate/ucrt" ]]; then
+        WINDOWS_SDK_INCLUDE="$candidate"
+        break
+    fi
 done
 
-if ((${#SDK_ARGS[@]} == 0)); then
-    echo "error: Windows SDK include directories were not found" >&2
-    echo "hint: install the Windows 10/11 SDK or set up a compatible Windows Kits path" >&2
+if [[ -z "$WINDOWS_SDK_INCLUDE" ]]; then
+    echo "error: Windows SDK $WINDOWS_SDK_VERSION with um, shared and ucrt headers was not found" >&2
+    echo "hint: install Windows SDK $WINDOWS_SDK_VERSION under a standard Windows Kits root" >&2
     exit 1
 fi
+
+SDK_ARGS=(
+    -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/um"
+    -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/shared"
+    -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/ucrt"
+)
 
 DLLS=(user32 kernel32 gdi32 dwmapi)
 GENERATION_DIR="$REPO_ROOT/kffi-win32/generation"
@@ -221,7 +211,13 @@ KEXTRACT_ARGS=(
 for function in "${ALL_FUNCTIONS[@]}"; do
     KEXTRACT_ARGS+=(--include-function "$function")
 done
-KEXTRACT_ARGS+=("${SDK_ARGS[@]}" "$TMP_HEADER")
+KEXTRACT_ARGS+=(
+    "${SDK_ARGS[@]}"
+    -A "-target"
+    -A "x86_64-pc-windows-msvc"
+    -A "-fshort-wchar"
+    "$TMP_HEADER"
+)
 
 "$JAVA" --enable-native-access=ALL-UNNAMED \
     "-Djava.library.path=$NATIVE_PATH" \

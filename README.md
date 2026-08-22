@@ -282,8 +282,10 @@ The generated Kotlin sources are versioned in this repository. Regeneration is
 a maintainer operation on Windows; CI compiles and tests the checked-in sources
 but does not run the generator.
 
-Generation requires Windows, Git Bash, JDK 25, the Windows SDK and the pinned
-`kextract` submodule. It is intentionally separate from the Gradle build:
+Generation requires Windows, Git Bash, JDK 25, the pinned `kextract` submodule
+and Windows SDK `10.0.28000.0` exactly. That SDK version is required for
+reproducible committed output; other installed SDK versions are not used. The
+generator is intentionally separate from the Gradle build:
 
 ```bash
 git submodule update --init --recursive
