@@ -125,6 +125,18 @@ jobs:
       - name: Run Win32 integration tests
         if: matrix.os == 'windows-latest'
         run: ./gradlew :kffi-win32:jvmTest
+      - name: Run Win32 window screenshot integration test
+        if: matrix.os == 'windows-latest'
+        env:
+          KFFI_WIN32_INTEGRATION: '1'
+        run: ./gradlew :kffi-win32:win32IntegrationTest
+      - name: Upload Win32 integration artifacts
+        if: always() && matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: win32-integration
+          path: kffi-win32/build/win32-integration/**
+          if-no-files-found: warn
       - name: Compile Apple Native callback token codecs
         if: matrix.os == 'macos-latest'
         run: >-
