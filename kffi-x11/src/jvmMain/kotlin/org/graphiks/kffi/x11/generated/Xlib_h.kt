@@ -3850,16 +3850,16 @@ fun XCloseIM(arg0: MemorySegment): Int {
 /**
  * {@snippet lang=c : XCreateIC (Declared(_XIC))*((Declared(_XIM))*)
  */
-private val XCreateIC_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XCreateIC_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private val XCreateIC_ADDR: MemorySegment = LOOKUP.find("XCreateIC").orElseThrow()
 private val XCreateIC_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(
     XCreateIC_ADDR, XCreateIC_DESC,
     Linker.Option.firstVariadicArg(1),
 )
 
-fun XCreateIC(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment, arg6: MemorySegment, arg7: MemorySegment, arg8: MemorySegment, arg9: MemorySegment, arg10: MemorySegment, arg11: MemorySegment): MemorySegment {
+fun XCreateIC(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment, arg6: MemorySegment, arg7: MemorySegment, arg8: MemorySegment, arg9: MemorySegment, arg10: MemorySegment, arg11: MemorySegment, arg12: MemorySegment, arg13: MemorySegment, arg14: MemorySegment, arg15: MemorySegment): MemorySegment {
     try {
-        return XCreateIC_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11) as MemorySegment
+        return XCreateIC_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15) as MemorySegment
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -3929,16 +3929,16 @@ fun XUnsetICFocus(arg0: MemorySegment): Unit {
 /**
  * {@snippet lang=c : XSetICValues (Char)*((Declared(_XIC))*)
  */
-private val XSetICValues_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XSetICValues_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private val XSetICValues_ADDR: MemorySegment = LOOKUP.find("XSetICValues").orElseThrow()
 private val XSetICValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(
     XSetICValues_ADDR, XSetICValues_DESC,
     Linker.Option.firstVariadicArg(1),
 )
 
-fun XSetICValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): MemorySegment {
+fun XSetICValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment): MemorySegment {
     try {
-        return XSetICValues_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
+        return XSetICValues_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as MemorySegment
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -5489,6 +5489,312 @@ class KffiXSetWindowAttributesStorage {
 
     fun cursor(segment: MemorySegment, value: Long) =
         cursor_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXIMCallbackStorage
+ */
+class KffiXIMCallbackStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.ADDRESS.withName("client_data"),
+            ValueLayout.ADDRESS.withName("callback")
+        ).withName("KffiXIMCallbackStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val client_data_VH: VarHandle = layout.varHandle(groupElement("client_data"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun client_data(segment: MemorySegment): MemorySegment =
+        client_data_VH.get(segment, 0L) as MemorySegment
+
+    fun client_data(segment: MemorySegment, value: MemorySegment) =
+        client_data_VH.set(segment, 0L, value)
+
+    val callback_VH: VarHandle = layout.varHandle(groupElement("callback"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun callback(segment: MemorySegment): MemorySegment =
+        callback_VH.get(segment, 0L) as MemorySegment
+
+    fun callback(segment: MemorySegment, value: MemorySegment) =
+        callback_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXIMTextStorage
+ */
+class KffiXIMTextStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withName("length"),
+            ValueLayout.JAVA_BYTE.withName("padding_after_length_0"),
+            ValueLayout.JAVA_BYTE.withName("padding_after_length_1"),
+            ValueLayout.JAVA_BYTE.withName("padding_after_length_2"),
+            ValueLayout.JAVA_BYTE.withName("padding_after_length_3"),
+            ValueLayout.JAVA_BYTE.withName("padding_after_length_4"),
+            ValueLayout.JAVA_BYTE.withName("padding_after_length_5"),
+            ValueLayout.ADDRESS.withName("feedback"),
+            ValueLayout.JAVA_INT.withName("encoding_is_wchar"),
+            ValueLayout.JAVA_INT.withName("padding_before_string"),
+            ValueLayout.ADDRESS.withName("string_ptr")
+        ).withName("KffiXIMTextStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val length_VH: VarHandle = layout.varHandle(groupElement("length"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun length(segment: MemorySegment): Short =
+        length_VH.get(segment, 0L) as Short
+
+    fun length(segment: MemorySegment, value: Short) =
+        length_VH.set(segment, 0L, value)
+
+    val padding_after_length_0_VH: VarHandle = layout.varHandle(groupElement("padding_after_length_0"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_length_0(segment: MemorySegment): Byte =
+        padding_after_length_0_VH.get(segment, 0L) as Byte
+
+    fun padding_after_length_0(segment: MemorySegment, value: Byte) =
+        padding_after_length_0_VH.set(segment, 0L, value)
+
+    val padding_after_length_1_VH: VarHandle = layout.varHandle(groupElement("padding_after_length_1"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_length_1(segment: MemorySegment): Byte =
+        padding_after_length_1_VH.get(segment, 0L) as Byte
+
+    fun padding_after_length_1(segment: MemorySegment, value: Byte) =
+        padding_after_length_1_VH.set(segment, 0L, value)
+
+    val padding_after_length_2_VH: VarHandle = layout.varHandle(groupElement("padding_after_length_2"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_length_2(segment: MemorySegment): Byte =
+        padding_after_length_2_VH.get(segment, 0L) as Byte
+
+    fun padding_after_length_2(segment: MemorySegment, value: Byte) =
+        padding_after_length_2_VH.set(segment, 0L, value)
+
+    val padding_after_length_3_VH: VarHandle = layout.varHandle(groupElement("padding_after_length_3"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_length_3(segment: MemorySegment): Byte =
+        padding_after_length_3_VH.get(segment, 0L) as Byte
+
+    fun padding_after_length_3(segment: MemorySegment, value: Byte) =
+        padding_after_length_3_VH.set(segment, 0L, value)
+
+    val padding_after_length_4_VH: VarHandle = layout.varHandle(groupElement("padding_after_length_4"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_length_4(segment: MemorySegment): Byte =
+        padding_after_length_4_VH.get(segment, 0L) as Byte
+
+    fun padding_after_length_4(segment: MemorySegment, value: Byte) =
+        padding_after_length_4_VH.set(segment, 0L, value)
+
+    val padding_after_length_5_VH: VarHandle = layout.varHandle(groupElement("padding_after_length_5"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_length_5(segment: MemorySegment): Byte =
+        padding_after_length_5_VH.get(segment, 0L) as Byte
+
+    fun padding_after_length_5(segment: MemorySegment, value: Byte) =
+        padding_after_length_5_VH.set(segment, 0L, value)
+
+    val feedback_VH: VarHandle = layout.varHandle(groupElement("feedback"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun feedback(segment: MemorySegment): MemorySegment =
+        feedback_VH.get(segment, 0L) as MemorySegment
+
+    fun feedback(segment: MemorySegment, value: MemorySegment) =
+        feedback_VH.set(segment, 0L, value)
+
+    val encoding_is_wchar_VH: VarHandle = layout.varHandle(groupElement("encoding_is_wchar"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun encoding_is_wchar(segment: MemorySegment): Int =
+        encoding_is_wchar_VH.get(segment, 0L) as Int
+
+    fun encoding_is_wchar(segment: MemorySegment, value: Int) =
+        encoding_is_wchar_VH.set(segment, 0L, value)
+
+    val padding_before_string_VH: VarHandle = layout.varHandle(groupElement("padding_before_string"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_before_string(segment: MemorySegment): Int =
+        padding_before_string_VH.get(segment, 0L) as Int
+
+    fun padding_before_string(segment: MemorySegment, value: Int) =
+        padding_before_string_VH.set(segment, 0L, value)
+
+    val string_ptr_VH: VarHandle = layout.varHandle(groupElement("string_ptr"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun string_ptr(segment: MemorySegment): MemorySegment =
+        string_ptr_VH.get(segment, 0L) as MemorySegment
+
+    fun string_ptr(segment: MemorySegment, value: MemorySegment) =
+        string_ptr_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXIMPreeditStateNotifyCallbackStructStorage
+ */
+class KffiXIMPreeditStateNotifyCallbackStructStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_LONG.withName("state")
+        ).withName("KffiXIMPreeditStateNotifyCallbackStructStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val state_VH: VarHandle = layout.varHandle(groupElement("state"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun state(segment: MemorySegment): Long =
+        state_VH.get(segment, 0L) as Long
+
+    fun state(segment: MemorySegment, value: Long) =
+        state_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXIMPreeditDrawCallbackStructStorage
+ */
+class KffiXIMPreeditDrawCallbackStructStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withName("caret"),
+            ValueLayout.JAVA_INT.withName("chg_first"),
+            ValueLayout.JAVA_INT.withName("chg_length"),
+            ValueLayout.JAVA_INT.withName("padding_before_text"),
+            ValueLayout.ADDRESS.withName("text")
+        ).withName("KffiXIMPreeditDrawCallbackStructStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val caret_VH: VarHandle = layout.varHandle(groupElement("caret"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun caret(segment: MemorySegment): Int =
+        caret_VH.get(segment, 0L) as Int
+
+    fun caret(segment: MemorySegment, value: Int) =
+        caret_VH.set(segment, 0L, value)
+
+    val chg_first_VH: VarHandle = layout.varHandle(groupElement("chg_first"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun chg_first(segment: MemorySegment): Int =
+        chg_first_VH.get(segment, 0L) as Int
+
+    fun chg_first(segment: MemorySegment, value: Int) =
+        chg_first_VH.set(segment, 0L, value)
+
+    val chg_length_VH: VarHandle = layout.varHandle(groupElement("chg_length"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun chg_length(segment: MemorySegment): Int =
+        chg_length_VH.get(segment, 0L) as Int
+
+    fun chg_length(segment: MemorySegment, value: Int) =
+        chg_length_VH.set(segment, 0L, value)
+
+    val padding_before_text_VH: VarHandle = layout.varHandle(groupElement("padding_before_text"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_before_text(segment: MemorySegment): Int =
+        padding_before_text_VH.get(segment, 0L) as Int
+
+    fun padding_before_text(segment: MemorySegment, value: Int) =
+        padding_before_text_VH.set(segment, 0L, value)
+
+    val text_VH: VarHandle = layout.varHandle(groupElement("text"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun text(segment: MemorySegment): MemorySegment =
+        text_VH.get(segment, 0L) as MemorySegment
+
+    fun text(segment: MemorySegment, value: MemorySegment) =
+        text_VH.set(segment, 0L, value)
 } // End class
 
 /**

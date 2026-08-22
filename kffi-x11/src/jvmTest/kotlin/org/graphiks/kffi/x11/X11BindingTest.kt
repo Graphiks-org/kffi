@@ -40,6 +40,10 @@ import org.graphiks.kffi.x11.generated.XNPreeditStartCallback
 import org.graphiks.kffi.x11.generated.XNArea
 import org.graphiks.kffi.x11.generated.XNAreaNeeded
 import org.graphiks.kffi.x11.generated.XNSpotLocation
+import org.graphiks.kffi.x11.generated.XIMCallback
+import org.graphiks.kffi.x11.generated.XIMPreeditDrawCallbackStruct
+import org.graphiks.kffi.x11.generated.XIMPreeditStateNotifyCallbackStruct
+import org.graphiks.kffi.x11.generated.XIMText
 
 class X11BindingTest {
     @Test
@@ -129,8 +133,17 @@ class X11BindingTest {
                 MemorySegment::class.java,
                 MemorySegment::class.java,
                 MemorySegment::class.java,
+                MemorySegment::class.java,
+                MemorySegment::class.java,
             ),
             xSetICValues.parameterTypes,
+        )
+
+        val xCreateIC = declarations.single { it.name == "XCreateIC" }
+        assertEquals(MemorySegment::class.java, xCreateIC.returnType)
+        assertContentEquals(
+            Array(16) { MemorySegment::class.java },
+            xCreateIC.parameterTypes,
         )
     }
 
@@ -210,6 +223,40 @@ class X11BindingTest {
             val windowAttributes = XSetWindowAttributes.allocate(it)
             attributesToSetBinding.override_redirect(windowAttributes, 1)
             assertEquals(1, attributesToSetBinding.override_redirect(windowAttributes))
+
+            val callbackBinding = XIMCallback()
+            val callback = XIMCallback.allocate(it)
+            callbackBinding.client_data(callback, pixels)
+            callbackBinding.callback(callback, image)
+            assertEquals(pixels, callbackBinding.client_data(callback))
+            assertEquals(image, callbackBinding.callback(callback))
+
+            val textBinding = XIMText()
+            val text = XIMText.allocate(it)
+            textBinding.length(text, 7.toShort())
+            textBinding.feedback(text, pixels)
+            textBinding.encoding_is_wchar(text, 0)
+            textBinding.string_ptr(text, pixels)
+            assertEquals(7.toShort(), textBinding.length(text))
+            assertEquals(pixels, textBinding.feedback(text))
+            assertEquals(0, textBinding.encoding_is_wchar(text))
+            assertEquals(pixels, textBinding.string_ptr(text))
+
+            val drawBinding = XIMPreeditDrawCallbackStruct()
+            val draw = XIMPreeditDrawCallbackStruct.allocate(it)
+            drawBinding.caret(draw, 3)
+            drawBinding.chg_first(draw, 4)
+            drawBinding.chg_length(draw, 5)
+            drawBinding.text(draw, text)
+            assertEquals(3, drawBinding.caret(draw))
+            assertEquals(4, drawBinding.chg_first(draw))
+            assertEquals(5, drawBinding.chg_length(draw))
+            assertEquals(text, drawBinding.text(draw))
+
+            val stateBinding = XIMPreeditStateNotifyCallbackStruct()
+            val state = XIMPreeditStateNotifyCallbackStruct.allocate(it)
+            stateBinding.state(state, 1L)
+            assertEquals(1L, stateBinding.state(state))
         }
     }
 
@@ -232,6 +279,18 @@ class X11BindingTest {
 
         assertEquals(112L, XSetWindowAttributes.layout.byteSize())
         assertEquals(88L, XSetWindowAttributes.layout.byteOffset(groupElement("override_redirect")))
+
+        assertEquals(16L, XIMCallback.layout.byteSize())
+        assertEquals(8L, XIMCallback.layout.byteOffset(groupElement("callback")))
+
+        assertEquals(32L, XIMText.layout.byteSize())
+        assertEquals(8L, XIMText.layout.byteOffset(groupElement("feedback")))
+        assertEquals(16L, XIMText.layout.byteOffset(groupElement("encoding_is_wchar")))
+        assertEquals(24L, XIMText.layout.byteOffset(groupElement("string_ptr")))
+
+        assertEquals(8L, XIMPreeditStateNotifyCallbackStruct.layout.byteSize())
+        assertEquals(24L, XIMPreeditDrawCallbackStruct.layout.byteSize())
+        assertEquals(16L, XIMPreeditDrawCallbackStruct.layout.byteOffset(groupElement("text")))
     }
 
     @Test

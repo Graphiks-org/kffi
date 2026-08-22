@@ -89,7 +89,9 @@ structs=(
     XRectangle XPoint XSegment XArc XColor
     KffiXImageStorage KffiXWindowAttributesStorage
     KffiXClientMessageEventStorage KffiXSelectionEventStorage
-    KffiXSetWindowAttributesStorage
+    KffiXSetWindowAttributesStorage KffiXIMCallbackStorage KffiXIMTextStorage
+    KffiXIMPreeditStateNotifyCallbackStructStorage
+    KffiXIMPreeditDrawCallbackStructStorage
 )
 
 args=(
@@ -98,8 +100,8 @@ args=(
     -l :libX11.so.6
     -l :libXext.so.6
     -l :libXcomposite.so.1
-    --variadic-args XCreateIC:11
-    --variadic-args XSetICValues:3
+    --variadic-args XCreateIC:15
+    --variadic-args XSetICValues:5
 )
 for function in "${functions[@]}"; do args+=(--include-function "$function"); done
 for constant in "${constants[@]}"; do args+=(--include-constant "$constant"); done
@@ -113,6 +115,10 @@ args+=(
     --include-typedef KffiXClientMessageEventStorage
     --include-typedef KffiXSelectionEventStorage
     --include-typedef KffiXSetWindowAttributesStorage
+    --include-typedef KffiXIMCallbackStorage
+    --include-typedef KffiXIMTextStorage
+    --include-typedef KffiXIMPreeditStateNotifyCallbackStructStorage
+    --include-typedef KffiXIMPreeditDrawCallbackStructStorage
 )
 
 constant_args=(

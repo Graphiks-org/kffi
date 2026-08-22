@@ -150,6 +150,37 @@ typedef struct KffiXSetWindowAttributesStorage {
     unsigned long cursor;
 } KffiXSetWindowAttributesStorage;
 
+typedef struct KffiXIMCallbackStorage {
+    void *client_data;
+    void *callback;
+} KffiXIMCallbackStorage;
+
+typedef struct KffiXIMTextStorage {
+    unsigned short length;
+    char padding_after_length_0;
+    char padding_after_length_1;
+    char padding_after_length_2;
+    char padding_after_length_3;
+    char padding_after_length_4;
+    char padding_after_length_5;
+    void *feedback;
+    int encoding_is_wchar;
+    int padding_before_string;
+    void *string_ptr;
+} KffiXIMTextStorage;
+
+typedef struct KffiXIMPreeditStateNotifyCallbackStructStorage {
+    unsigned long state;
+} KffiXIMPreeditStateNotifyCallbackStructStorage;
+
+typedef struct KffiXIMPreeditDrawCallbackStructStorage {
+    int caret;
+    int chg_first;
+    int chg_length;
+    int padding_before_text;
+    void *text;
+} KffiXIMPreeditDrawCallbackStructStorage;
+
 /* Validate the storage-only declarations here, where the native headers are
  * authoritative. These assertions run in the pinned Linux codegen image. */
 _Static_assert(sizeof(long) == 8, "Kffi X11 compatibility shims require LP64 long");
@@ -257,6 +288,57 @@ _Static_assert(
     offsetof(XSetWindowAttributes, override_redirect) ==
         offsetof(KffiXSetWindowAttributesStorage, override_redirect),
     "XSetWindowAttributes override_redirect offset mismatch"
+);
+
+_Static_assert(sizeof(XIMCallback) == sizeof(KffiXIMCallbackStorage), "XIMCallback size mismatch");
+_Static_assert(_Alignof(XIMCallback) == _Alignof(KffiXIMCallbackStorage), "XIMCallback alignment mismatch");
+_Static_assert(
+    offsetof(XIMCallback, client_data) == offsetof(KffiXIMCallbackStorage, client_data),
+    "XIMCallback client_data offset mismatch"
+);
+_Static_assert(
+    offsetof(XIMCallback, callback) == offsetof(KffiXIMCallbackStorage, callback),
+    "XIMCallback callback offset mismatch"
+);
+
+_Static_assert(sizeof(XIMText) == sizeof(KffiXIMTextStorage), "XIMText size mismatch");
+_Static_assert(_Alignof(XIMText) == _Alignof(KffiXIMTextStorage), "XIMText alignment mismatch");
+_Static_assert(
+    offsetof(XIMText, feedback) == offsetof(KffiXIMTextStorage, feedback),
+    "XIMText feedback offset mismatch"
+);
+_Static_assert(
+    offsetof(XIMText, encoding_is_wchar) == offsetof(KffiXIMTextStorage, encoding_is_wchar),
+    "XIMText encoding_is_wchar offset mismatch"
+);
+_Static_assert(
+    offsetof(XIMText, string) == offsetof(KffiXIMTextStorage, string_ptr),
+    "XIMText string offset mismatch"
+);
+
+_Static_assert(
+    sizeof(XIMPreeditStateNotifyCallbackStruct) ==
+        sizeof(KffiXIMPreeditStateNotifyCallbackStructStorage),
+    "XIMPreeditStateNotifyCallbackStruct size mismatch"
+);
+_Static_assert(
+    offsetof(XIMPreeditStateNotifyCallbackStruct, state) ==
+        offsetof(KffiXIMPreeditStateNotifyCallbackStructStorage, state),
+    "XIMPreeditStateNotifyCallbackStruct state offset mismatch"
+);
+
+_Static_assert(
+    sizeof(XIMPreeditDrawCallbackStruct) == sizeof(KffiXIMPreeditDrawCallbackStructStorage),
+    "XIMPreeditDrawCallbackStruct size mismatch"
+);
+_Static_assert(
+    _Alignof(XIMPreeditDrawCallbackStruct) == _Alignof(KffiXIMPreeditDrawCallbackStructStorage),
+    "XIMPreeditDrawCallbackStruct alignment mismatch"
+);
+_Static_assert(
+    offsetof(XIMPreeditDrawCallbackStruct, text) ==
+        offsetof(KffiXIMPreeditDrawCallbackStructStorage, text),
+    "XIMPreeditDrawCallbackStruct text offset mismatch"
 );
 
 #endif

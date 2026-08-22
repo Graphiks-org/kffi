@@ -5,3 +5,7 @@ typealias XWindowAttributes = KffiXWindowAttributesStorage
 typealias XClientMessageEvent = KffiXClientMessageEventStorage
 typealias XSelectionEvent = KffiXSelectionEventStorage
 typealias XSetWindowAttributes = KffiXSetWindowAttributesStorage
+typealias XIMCallback = KffiXIMCallbackStorage
+typealias XIMText = KffiXIMTextStorage
+typealias XIMPreeditStateNotifyCallbackStruct = KffiXIMPreeditStateNotifyCallbackStructStorage
+typealias XIMPreeditDrawCallbackStruct = KffiXIMPreeditDrawCallbackStructStorage

@@ -52,8 +52,12 @@ assertContentEquals(
 
 val setIcValues = declarations.single { it.name == "XSetICValues" }
 assertEquals(MemorySegment::class.java, setIcValues.returnType)
-assertEquals(4, setIcValues.parameterCount)
+assertEquals(6, setIcValues.parameterCount)
 assertTrue(setIcValues.parameterTypes.all { it == MemorySegment::class.java })
+
+val createIc = declarations.single { it.name == "XCreateIC" }
+assertEquals(16, createIc.parameterCount)
+assertTrue(createIc.parameterTypes.all { it == MemorySegment::class.java })
 ```
 
 Also require generated numeric functions `ZPixmap`, `AllPlanes`, `XSHM_ZPIXMAP`, and `IsViewable`, and the string values `XNInputStyle`, `XNClientWindow`, `XNFocusWindow`, `XNArea`, and `XNSpotLocation`.
@@ -135,7 +139,7 @@ git commit -m "test: define complete generated x11 binding contract"
 
 **Interfaces:**
 - Consumes: The native Xlib/Xutil/XShm headers in the pinned Docker image.
-- Produces: kextract declarations named `KffiXImageStorage`, `KffiXWindowAttributesStorage`, `KffiXClientMessageEventStorage`, `KffiXSelectionEventStorage`, and `KffiXSetWindowAttributesStorage`, plus the selected functions and constants.
+- Produces: kextract declarations named `KffiXImageStorage`, `KffiXWindowAttributesStorage`, `KffiXClientMessageEventStorage`, `KffiXSelectionEventStorage`, `KffiXSetWindowAttributesStorage`, `KffiXIMCallbackStorage`, `KffiXIMTextStorage`, `KffiXIMPreeditDrawCallbackStructStorage`, and `KffiXIMPreeditStateNotifyCallbackStructStorage`, plus the selected functions and constants.
 
 - [ ] **Step 1: Define KffiXImageStorage with the complete LP64 shape**
 
@@ -216,8 +220,8 @@ For the ClientMessage union, also assert that the five `long` elements occupy th
 Add `XQueryBestCursor` to `functions`, the five storage names to `structs`, and the five storage names to the `--include-struct`/`--include-typedef` arguments. Add `ZPixmap`, `AllPlanes`, `XSHM_ZPIXMAP`, and `IsViewable` to the selected numeric constants. Retain:
 
 ```bash
---variadic-args XCreateIC:11
---variadic-args XSetICValues:3
+--variadic-args XCreateIC:15
+--variadic-args XSetICValues:5
 ```
 
 The XIM names used by the consumer are retained in a dedicated template in Task 3 because kextract skips string-valued pointer macros.
@@ -357,7 +361,7 @@ The event test must use a real X connection and queue. It must fail if a generat
 
 - [ ] **Step 3: Add conditional real XIM setup**
 
-Call generated `XOpenIM` against the active display. If it returns null, use a JUnit assumption with a diagnostic naming the missing XIM implementation. If it returns a valid IM, call generated `XCreateIC` with generated `XNInputStyle`, `XNClientWindow`, and `XNFocusWindow` names and generated XIM style constants. Then call generated `XSetICValues` with `XNSpotLocation` and a generated `XPoint` record, and assert its native return pointer is null on success. Destroy the IC and close the IM in `finally`.
+Call generated `XOpenIM` against the active display. If it returns null, use a JUnit assumption with a diagnostic naming the missing XIM implementation. If it returns a valid IM, call generated `XCreateIC` with generated `XNInputStyle`, `XNClientWindow`, and `XNFocusWindow` names and generated XIM style constants. Then call generated `XSetICValues` with a supported generated XIM value pair and a null terminator, and assert its native return pointer is null on success. The generated `XIMCallback`, `XIMText`, `XIMPreeditDrawCallbackStruct`, and `XIMPreeditStateNotifyCallbackStruct` records separately cover the callback payload fields used by the consumer. Destroy the IC and close the IM in `finally`.
 
 The test must invoke generated variadic functions directly and must not resolve `libX11` or build a `FunctionDescriptor` inside the test.
 
