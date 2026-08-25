@@ -36,9 +36,9 @@ open class NSPersistentDocument(override val ptr: MemorySegment) : NSDocument(pt
     /** Convenience overload — [String] parameters and [String] return type. */
     fun persistentStoreTypeForFileTypeAsString(fileType: String): String = ObjCRuntime.toJavaString(persistentStoreTypeForFileType(ObjCRuntime.newNSString(Arena.global(), fileType)))
 
-    override fun writeToURL_ofType_forSaveOperation_originalContentsURL_error(absoluteURL: MemorySegment, typeName: MemorySegment, saveOperation: MemorySegment, absoluteOriginalContentsURL: MemorySegment, error: MemorySegment): Boolean {
+    override fun writeToURL_ofType_forSaveOperation_originalContentsURL_error(absoluteURL: MemorySegment, typeName: MemorySegment, saveOperation: NSSaveOperationType, absoluteOriginalContentsURL: MemorySegment, error: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("writeToURL:ofType:forSaveOperation:originalContentsURL:error:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, absoluteURL, typeName, saveOperation, absoluteOriginalContentsURL, error) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, absoluteURL, typeName, saveOperation.rawValue, absoluteOriginalContentsURL, error) as Boolean
     }
 
     override fun readFromURL_ofType_error(absoluteURL: MemorySegment, typeName: MemorySegment, error: MemorySegment): Boolean {

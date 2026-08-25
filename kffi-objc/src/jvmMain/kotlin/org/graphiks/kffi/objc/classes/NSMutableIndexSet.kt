@@ -39,14 +39,14 @@ open class NSMutableIndexSet(override val ptr: MemorySegment) : NSIndexSet(ptr) 
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
-    open fun addIndexesInRange(range: MemorySegment): Unit {
+    open fun addIndexesInRange(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("addIndexesInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
-    open fun removeIndexesInRange(range: MemorySegment): Unit {
+    open fun removeIndexesInRange(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("removeIndexesInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
     open fun shiftIndexesStartingAtIndex_by(index: Long, delta: Long): Unit {

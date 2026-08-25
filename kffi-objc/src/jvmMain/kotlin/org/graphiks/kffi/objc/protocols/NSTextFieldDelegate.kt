@@ -10,12 +10,12 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSTextFieldDelegate : NSControlTextEditingDelegate {
     // @optional
-    fun textField_textView_candidatesForSelectedRange(textField: MemorySegment, textView: MemorySegment, selectedRange: MemorySegment): MemorySegment =
+    fun textField_textView_candidatesForSelectedRange(textField: MemorySegment, textView: MemorySegment, selectedRange: NSRange): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'textField:textView:candidatesForSelectedRange:' not implemented")
 
     /** @return NSArray<NSTextCheckingResult *> * */
     // @optional
-    fun textField_textView_candidates_forSelectedRange(textField: MemorySegment, textView: MemorySegment, candidates: MemorySegment, selectedRange: MemorySegment): MemorySegment =
+    fun textField_textView_candidates_forSelectedRange(textField: MemorySegment, textView: MemorySegment, candidates: MemorySegment, selectedRange: NSRange): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'textField:textView:candidates:forSelectedRange:' not implemented")
 
     // @optional

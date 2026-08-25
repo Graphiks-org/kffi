@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSTextElementProvider {
     /** @return id<NSTextLocation> */
-    fun enumerateTextElementsFromLocation_options_usingBlock(textLocation: MemorySegment, options: MemorySegment, block: MemorySegment): MemorySegment
+    fun enumerateTextElementsFromLocation_options_usingBlock(textLocation: MemorySegment, options: NSTextContentManagerEnumerationOptions, block: MemorySegment): MemorySegment
 
     fun replaceContentsInRange_withTextElements(range: MemorySegment, textElements: MemorySegment): Unit
 

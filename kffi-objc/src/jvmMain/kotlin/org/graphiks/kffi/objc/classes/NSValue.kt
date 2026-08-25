@@ -94,78 +94,78 @@ fun NSValue.getValue(value: MemorySegment): Unit {
 
 // ── Category: NSValueRangeExtensions on NSValue ─────────────────────────────────────────
 
-fun NSValue.rangeValue(): MemorySegment {
+fun NSValue.rangeValue(): NSRange {
     val sel = ObjCRuntime.sel("rangeValue")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel))
 }
 
 // Class method: +[NSValue valueWithRange:]
-fun NSValue_valueWithRange(range: MemorySegment): MemorySegment {
+fun NSValue_valueWithRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("valueWithRange:")
     val cls = ObjCRuntime.getClass("NSValue")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
 // ── Category: NSValueGeometryExtensions on NSValue ─────────────────────────────────────────
 
-fun NSValue.pointValue(): MemorySegment {
+fun NSValue.pointValue(): NSPoint {
     val sel = ObjCRuntime.sel("pointValue")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel))
 }
 
-fun NSValue.sizeValue(): MemorySegment {
+fun NSValue.sizeValue(): NSSize {
     val sel = ObjCRuntime.sel("sizeValue")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel))
 }
 
-fun NSValue.rectValue(): MemorySegment {
+fun NSValue.rectValue(): NSRect {
     val sel = ObjCRuntime.sel("rectValue")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel))
 }
 
-fun NSValue.edgeInsetsValue(): MemorySegment {
+fun NSValue.edgeInsetsValue(): NSEdgeInsets {
     val sel = ObjCRuntime.sel("edgeInsetsValue")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), this.ptr, sel) as MemorySegment
+    return NSEdgeInsets(ObjCRuntime.msgSendStruct(NSEdgeInsets.layout, this.ptr, sel))
 }
 
 // Class method: +[NSValue valueWithPoint:]
-fun NSValue_valueWithPoint(point: MemorySegment): MemorySegment {
+fun NSValue_valueWithPoint(point: NSPoint): MemorySegment {
     val sel = ObjCRuntime.sel("valueWithPoint:")
     val cls = ObjCRuntime.getClass("NSValue")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, point) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as MemorySegment
 }
 
 // Class method: +[NSValue valueWithSize:]
-fun NSValue_valueWithSize(size: MemorySegment): MemorySegment {
+fun NSValue_valueWithSize(size: NSSize): MemorySegment {
     val sel = ObjCRuntime.sel("valueWithSize:")
     val cls = ObjCRuntime.getClass("NSValue")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, size) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout)) as MemorySegment
 }
 
 // Class method: +[NSValue valueWithRect:]
-fun NSValue_valueWithRect(rect: MemorySegment): MemorySegment {
+fun NSValue_valueWithRect(rect: NSRect): MemorySegment {
     val sel = ObjCRuntime.sel("valueWithRect:")
     val cls = ObjCRuntime.getClass("NSValue")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, rect) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as MemorySegment
 }
 
 // Class method: +[NSValue valueWithEdgeInsets:]
-fun NSValue_valueWithEdgeInsets(insets: MemorySegment): MemorySegment {
+fun NSValue_valueWithEdgeInsets(insets: NSEdgeInsets): MemorySegment {
     val sel = ObjCRuntime.sel("valueWithEdgeInsets:")
     val cls = ObjCRuntime.getClass("NSValue")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, insets) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(insets.segment, NSEdgeInsets.layout)) as MemorySegment
 }
 
 // ── Category: CATransform3DAdditions on NSValue ─────────────────────────────────────────
 
-fun NSValue.CATransform3DValue(): MemorySegment {
+fun NSValue.CATransform3DValue(): CATransform3D {
     val sel = ObjCRuntime.sel("CATransform3DValue")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("m11"), ValueLayout.JAVA_DOUBLE.withName("m12"), ValueLayout.JAVA_DOUBLE.withName("m13"), ValueLayout.JAVA_DOUBLE.withName("m14"), ValueLayout.JAVA_DOUBLE.withName("m21"), ValueLayout.JAVA_DOUBLE.withName("m22"), ValueLayout.JAVA_DOUBLE.withName("m23"), ValueLayout.JAVA_DOUBLE.withName("m24"), ValueLayout.JAVA_DOUBLE.withName("m31"), ValueLayout.JAVA_DOUBLE.withName("m32"), ValueLayout.JAVA_DOUBLE.withName("m33"), ValueLayout.JAVA_DOUBLE.withName("m34"), ValueLayout.JAVA_DOUBLE.withName("m41"), ValueLayout.JAVA_DOUBLE.withName("m42"), ValueLayout.JAVA_DOUBLE.withName("m43"), ValueLayout.JAVA_DOUBLE.withName("m44")).withName("CATransform3D"), this.ptr, sel) as MemorySegment
+    return CATransform3D(ObjCRuntime.msgSendStruct(CATransform3D.layout, this.ptr, sel))
 }
 
 // Class method: +[NSValue valueWithCATransform3D:]
-fun NSValue_valueWithCATransform3D(t: MemorySegment): MemorySegment {
+fun NSValue_valueWithCATransform3D(t: CATransform3D): MemorySegment {
     val sel = ObjCRuntime.sel("valueWithCATransform3D:")
     val cls = ObjCRuntime.getClass("NSValue")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, t) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(t.segment, CATransform3D.layout)) as MemorySegment
 }

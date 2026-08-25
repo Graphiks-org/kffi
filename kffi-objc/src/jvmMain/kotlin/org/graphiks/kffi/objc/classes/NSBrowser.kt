@@ -194,34 +194,34 @@ open class NSBrowser(override val ptr: MemorySegment) : NSControl(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
-    open fun titleFrameOfColumn(column: Long): MemorySegment {
+    open fun titleFrameOfColumn(column: Long): NSRect {
         val sel = ObjCRuntime.sel("titleFrameOfColumn:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, column) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, column))
     }
 
-    open fun drawTitleOfColumn_inRect(column: Long, rect: MemorySegment): Unit {
+    open fun drawTitleOfColumn_inRect(column: Long, rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawTitleOfColumn:inRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, column, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, column, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
-    open fun frameOfColumn(column: Long): MemorySegment {
+    open fun frameOfColumn(column: Long): NSRect {
         val sel = ObjCRuntime.sel("frameOfColumn:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, column) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, column))
     }
 
-    open fun frameOfInsideOfColumn(column: Long): MemorySegment {
+    open fun frameOfInsideOfColumn(column: Long): NSRect {
         val sel = ObjCRuntime.sel("frameOfInsideOfColumn:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, column) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, column))
     }
 
-    open fun frameOfRow_inColumn(row: Long, column: Long): MemorySegment {
+    open fun frameOfRow_inColumn(row: Long, column: Long): NSRect {
         val sel = ObjCRuntime.sel("frameOfRow:inColumn:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, row, column) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, row, column))
     }
 
-    open fun getRow_column_forPoint(row: MemorySegment, column: MemorySegment, point: MemorySegment): Boolean {
+    open fun getRow_column_forPoint(row: MemorySegment, column: MemorySegment, point: NSPoint): Boolean {
         val sel = ObjCRuntime.sel("getRow:column:forPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, row, column, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, row, column, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Boolean
     }
 
     open fun columnWidthForColumnContentWidth(columnContentWidth: Double): Double {
@@ -264,14 +264,14 @@ open class NSBrowser(override val ptr: MemorySegment) : NSControl(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, rowIndexes, column, event) as Boolean
     }
 
-    open fun draggingImageForRowsWithIndexes_inColumn_withEvent_offset(rowIndexes: MemorySegment, column: Long, event: MemorySegment, dragImageOffset: MemorySegment): MemorySegment {
+    open fun draggingImageForRowsWithIndexes_inColumn_withEvent_offset(rowIndexes: MemorySegment, column: Long, event: MemorySegment, dragImageOffset: NSPointPointer): MemorySegment {
         val sel = ObjCRuntime.sel("draggingImageForRowsWithIndexes:inColumn:withEvent:offset:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, rowIndexes, column, event, dragImageOffset) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, rowIndexes, column, event, dragImageOffset.segment) as MemorySegment
     }
 
-    open fun setDraggingSourceOperationMask_forLocal(mask: MemorySegment, isLocal: Boolean): Unit {
+    open fun setDraggingSourceOperationMask_forLocal(mask: NSDragOperation, isLocal: Boolean): Unit {
         val sel = ObjCRuntime.sel("setDraggingSourceOperationMask:forLocal:")
-        ObjCRuntime.msgSend(null, ptr, sel, mask, isLocal)
+        ObjCRuntime.msgSend(null, ptr, sel, mask.rawValue, isLocal)
     }
 
     open fun editItemAtIndexPath_withEvent_select(indexPath: MemorySegment, event: MemorySegment, select: Boolean): Unit {
@@ -545,13 +545,13 @@ open class NSBrowser(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property columnResizingType
-    open fun columnResizingType(): MemorySegment {
+    open fun columnResizingType(): NSBrowserColumnResizingType {
         val sel = ObjCRuntime.sel("columnResizingType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSBrowserColumnResizingType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setColumnResizingType(value: MemorySegment) {
+    open fun setColumnResizingType(value: NSBrowserColumnResizingType) {
         val sel = ObjCRuntime.sel("setColumnResizingType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property prefersAllColumnUserResizing

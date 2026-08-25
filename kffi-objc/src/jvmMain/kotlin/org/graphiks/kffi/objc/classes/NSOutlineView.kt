@@ -95,9 +95,9 @@ open class NSOutlineView(override val ptr: MemorySegment) : NSTableView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, item) as Boolean
     }
 
-    open fun frameOfOutlineCellAtRow(row: Long): MemorySegment {
+    open fun frameOfOutlineCellAtRow(row: Long): NSRect {
         val sel = ObjCRuntime.sel("frameOfOutlineCellAtRow:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, row) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, row))
     }
 
     open fun setDropItem_dropChildIndex(item: MemorySegment, index: Long): Unit {
@@ -110,14 +110,14 @@ open class NSOutlineView(override val ptr: MemorySegment) : NSTableView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, deposited) as Boolean
     }
 
-    open fun insertItemsAtIndexes_inParent_withAnimation(indexes: MemorySegment, parent: MemorySegment, animationOptions: MemorySegment): Unit {
+    open fun insertItemsAtIndexes_inParent_withAnimation(indexes: MemorySegment, parent: MemorySegment, animationOptions: NSTableViewAnimationOptions): Unit {
         val sel = ObjCRuntime.sel("insertItemsAtIndexes:inParent:withAnimation:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexes, parent, animationOptions)
+        ObjCRuntime.msgSend(null, ptr, sel, indexes, parent, animationOptions.rawValue)
     }
 
-    open fun removeItemsAtIndexes_inParent_withAnimation(indexes: MemorySegment, parent: MemorySegment, animationOptions: MemorySegment): Unit {
+    open fun removeItemsAtIndexes_inParent_withAnimation(indexes: MemorySegment, parent: MemorySegment, animationOptions: NSTableViewAnimationOptions): Unit {
         val sel = ObjCRuntime.sel("removeItemsAtIndexes:inParent:withAnimation:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexes, parent, animationOptions)
+        ObjCRuntime.msgSend(null, ptr, sel, indexes, parent, animationOptions.rawValue)
     }
 
     open fun moveItemAtIndex_inParent_toIndex_inParent(fromIndex: Long, oldParent: MemorySegment, toIndex: Long, newParent: MemorySegment): Unit {
@@ -125,14 +125,14 @@ open class NSOutlineView(override val ptr: MemorySegment) : NSTableView(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, fromIndex, oldParent, toIndex, newParent)
     }
 
-    override fun insertRowsAtIndexes_withAnimation(indexes: MemorySegment, animationOptions: MemorySegment): Unit {
+    override fun insertRowsAtIndexes_withAnimation(indexes: MemorySegment, animationOptions: NSTableViewAnimationOptions): Unit {
         val sel = ObjCRuntime.sel("insertRowsAtIndexes:withAnimation:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexes, animationOptions)
+        ObjCRuntime.msgSend(null, ptr, sel, indexes, animationOptions.rawValue)
     }
 
-    override fun removeRowsAtIndexes_withAnimation(indexes: MemorySegment, animationOptions: MemorySegment): Unit {
+    override fun removeRowsAtIndexes_withAnimation(indexes: MemorySegment, animationOptions: NSTableViewAnimationOptions): Unit {
         val sel = ObjCRuntime.sel("removeRowsAtIndexes:withAnimation:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexes, animationOptions)
+        ObjCRuntime.msgSend(null, ptr, sel, indexes, animationOptions.rawValue)
     }
 
     override fun moveRowAtIndex_toIndex(oldIndex: Long, newIndex: Long): Unit {
@@ -213,13 +213,13 @@ open class NSOutlineView(override val ptr: MemorySegment) : NSTableView(ptr) {
     }
 
     // @property userInterfaceLayoutDirection
-    override fun userInterfaceLayoutDirection(): MemorySegment {
+    override fun userInterfaceLayoutDirection(): NSUserInterfaceLayoutDirection {
         val sel = ObjCRuntime.sel("userInterfaceLayoutDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSUserInterfaceLayoutDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    override fun setUserInterfaceLayoutDirection(value: MemorySegment) {
+    override fun setUserInterfaceLayoutDirection(value: NSUserInterfaceLayoutDirection) {
         val sel = ObjCRuntime.sel("setUserInterfaceLayoutDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property stronglyReferencesItems

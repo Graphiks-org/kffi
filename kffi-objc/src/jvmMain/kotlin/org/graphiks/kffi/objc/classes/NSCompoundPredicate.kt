@@ -29,9 +29,9 @@ open class NSCompoundPredicate(override val ptr: MemorySegment) : NSPredicate(pt
 
     }
 
-    open fun initWithType_subpredicates(type: MemorySegment, subpredicates: MemorySegment): MemorySegment {
+    open fun initWithType_subpredicates(type: NSCompoundPredicateType, subpredicates: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithType:subpredicates:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, type, subpredicates) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, type.rawValue, subpredicates) as MemorySegment
     }
 
     open fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -40,9 +40,9 @@ open class NSCompoundPredicate(override val ptr: MemorySegment) : NSPredicate(pt
     }
 
     // @property compoundPredicateType
-    open fun compoundPredicateType(): MemorySegment {
+    open fun compoundPredicateType(): NSCompoundPredicateType {
         val sel = ObjCRuntime.sel("compoundPredicateType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCompoundPredicateType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property subpredicates

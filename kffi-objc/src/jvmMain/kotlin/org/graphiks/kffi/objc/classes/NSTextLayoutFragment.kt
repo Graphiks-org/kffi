@@ -45,14 +45,14 @@ open class NSTextLayoutFragment(override val ptr: MemorySegment) : NSObject(ptr)
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun drawAtPoint_inContext(point: MemorySegment, context: MemorySegment): Unit {
+    open fun drawAtPoint_inContext(point: CGPoint, context: CGContextRef): Unit {
         val sel = ObjCRuntime.sel("drawAtPoint:inContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), context)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, CGPoint.layout), context.segment)
     }
 
-    open fun frameForTextAttachmentAtLocation(location: MemorySegment): MemorySegment {
+    open fun frameForTextAttachmentAtLocation(location: MemorySegment): CGRect {
         val sel = ObjCRuntime.sel("frameForTextAttachmentAtLocation:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, location) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel, location))
     }
 
     // @property textLayoutManager
@@ -91,21 +91,21 @@ open class NSTextLayoutFragment(override val ptr: MemorySegment) : NSObject(ptr)
     }
 
     // @property state
-    open fun state(): MemorySegment {
+    open fun state(): NSTextLayoutFragmentState {
         val sel = ObjCRuntime.sel("state")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextLayoutFragmentState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property layoutFragmentFrame
-    open fun layoutFragmentFrame(): MemorySegment {
+    open fun layoutFragmentFrame(): CGRect {
         val sel = ObjCRuntime.sel("layoutFragmentFrame")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
 
     // @property renderingSurfaceBounds
-    open fun renderingSurfaceBounds(): MemorySegment {
+    open fun renderingSurfaceBounds(): CGRect {
         val sel = ObjCRuntime.sel("renderingSurfaceBounds")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
 
     // @property leadingPadding

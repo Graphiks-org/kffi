@@ -30,13 +30,13 @@ open class NSScrubberFlowLayout(override val ptr: MemorySegment) : NSScrubberLay
     }
 
     // @property itemSize
-    open fun itemSize(): MemorySegment {
+    open fun itemSize(): NSSize {
         val sel = ObjCRuntime.sel("itemSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setItemSize(value: MemorySegment) {
+    open fun setItemSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setItemSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
 }

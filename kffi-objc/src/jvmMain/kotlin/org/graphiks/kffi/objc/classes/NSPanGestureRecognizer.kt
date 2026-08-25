@@ -15,19 +15,19 @@ open class NSPanGestureRecognizer(override val ptr: MemorySegment) : NSGestureRe
 
     }
 
-    open fun translationInView(view: MemorySegment): MemorySegment {
+    open fun translationInView(view: MemorySegment): NSPoint {
         val sel = ObjCRuntime.sel("translationInView:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel, view) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel, view))
     }
 
-    open fun setTranslation_inView(translation: MemorySegment, view: MemorySegment): Unit {
+    open fun setTranslation_inView(translation: NSPoint, view: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("setTranslation:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(translation, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), view)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(translation.segment, NSPoint.layout), view)
     }
 
-    open fun velocityInView(view: MemorySegment): MemorySegment {
+    open fun velocityInView(view: MemorySegment): NSPoint {
         val sel = ObjCRuntime.sel("velocityInView:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel, view) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel, view))
     }
 
     // @property buttonMask

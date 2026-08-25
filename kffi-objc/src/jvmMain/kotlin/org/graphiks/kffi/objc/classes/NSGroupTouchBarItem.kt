@@ -50,13 +50,13 @@ open class NSGroupTouchBarItem(override val ptr: MemorySegment) : NSTouchBarItem
     }
 
     // @property groupUserInterfaceLayoutDirection
-    open fun groupUserInterfaceLayoutDirection(): MemorySegment {
+    open fun groupUserInterfaceLayoutDirection(): NSUserInterfaceLayoutDirection {
         val sel = ObjCRuntime.sel("groupUserInterfaceLayoutDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSUserInterfaceLayoutDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setGroupUserInterfaceLayoutDirection(value: MemorySegment) {
+    open fun setGroupUserInterfaceLayoutDirection(value: NSUserInterfaceLayoutDirection) {
         val sel = ObjCRuntime.sel("setGroupUserInterfaceLayoutDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property prefersEqualWidths

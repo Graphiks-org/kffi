@@ -58,13 +58,13 @@ open class NSPageController(override val ptr: MemorySegment) : NSViewController(
     }
 
     // @property transitionStyle
-    open fun transitionStyle(): MemorySegment {
+    open fun transitionStyle(): NSPageControllerTransitionStyle {
         val sel = ObjCRuntime.sel("transitionStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPageControllerTransitionStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTransitionStyle(value: MemorySegment) {
+    open fun setTransitionStyle(value: NSPageControllerTransitionStyle) {
         val sel = ObjCRuntime.sel("setTransitionStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property arrangedObjects

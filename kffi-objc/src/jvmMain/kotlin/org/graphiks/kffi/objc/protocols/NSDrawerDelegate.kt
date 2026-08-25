@@ -18,7 +18,7 @@ interface NSDrawerDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'drawerShouldClose:' not implemented")
 
     // @optional
-    fun drawerWillResizeContents_toSize(sender: MemorySegment, contentSize: MemorySegment): MemorySegment =
+    fun drawerWillResizeContents_toSize(sender: MemorySegment, contentSize: NSSize): NSSize =
         throw UnsupportedOperationException("Optional ObjC method 'drawerWillResizeContents:toSize:' not implemented")
 
     // @optional

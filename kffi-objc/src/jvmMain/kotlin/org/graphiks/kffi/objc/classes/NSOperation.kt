@@ -88,13 +88,13 @@ open class NSOperation(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property queuePriority
-    open fun queuePriority(): MemorySegment {
+    open fun queuePriority(): NSOperationQueuePriority {
         val sel = ObjCRuntime.sel("queuePriority")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSOperationQueuePriority(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setQueuePriority(value: MemorySegment) {
+    open fun setQueuePriority(value: NSOperationQueuePriority) {
         val sel = ObjCRuntime.sel("setQueuePriority:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property completionBlock
@@ -118,13 +118,13 @@ open class NSOperation(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property qualityOfService
-    open fun qualityOfService(): MemorySegment {
+    open fun qualityOfService(): NSQualityOfService {
         val sel = ObjCRuntime.sel("qualityOfService")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSQualityOfService(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setQualityOfService(value: MemorySegment) {
+    open fun setQualityOfService(value: NSQualityOfService) {
         val sel = ObjCRuntime.sel("setQualityOfService:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property name

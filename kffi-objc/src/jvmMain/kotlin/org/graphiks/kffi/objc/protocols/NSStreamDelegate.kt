@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSStreamDelegate {
     // @optional
-    fun stream_handleEvent(aStream: MemorySegment, eventCode: MemorySegment): Unit =
+    fun stream_handleEvent(aStream: MemorySegment, eventCode: NSStreamEvent): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'stream:handleEvent:' not implemented")
 
 }

@@ -19,15 +19,15 @@ open class NSOpenGLPixelBuffer(override val ptr: MemorySegment) : NSObject(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, target, format, maxLevel, pixelsWide, pixelsHigh) as MemorySegment
     }
 
-    open fun initWithCGLPBufferObj(pbuffer: MemorySegment): MemorySegment {
+    open fun initWithCGLPBufferObj(pbuffer: CGLPBufferObj): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGLPBufferObj:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, pbuffer) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, pbuffer.segment) as MemorySegment
     }
 
     // @property CGLPBufferObj
-    open fun CGLPBufferObj(): MemorySegment {
+    open fun CGLPBufferObj(): CGLPBufferObj {
         val sel = ObjCRuntime.sel("CGLPBufferObj")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGLPBufferObj(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     // @property pixelsWide

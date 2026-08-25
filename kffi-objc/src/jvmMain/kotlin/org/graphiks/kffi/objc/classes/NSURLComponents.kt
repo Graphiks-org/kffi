@@ -317,51 +317,51 @@ open class NSURLComponents(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun setEncodedHost(value: String) = setEncodedHost(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property rangeOfScheme
-    open fun rangeOfScheme(): MemorySegment {
+    open fun rangeOfScheme(): NSRange {
         val sel = ObjCRuntime.sel("rangeOfScheme")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property rangeOfUser
-    open fun rangeOfUser(): MemorySegment {
+    open fun rangeOfUser(): NSRange {
         val sel = ObjCRuntime.sel("rangeOfUser")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property rangeOfPassword
-    open fun rangeOfPassword(): MemorySegment {
+    open fun rangeOfPassword(): NSRange {
         val sel = ObjCRuntime.sel("rangeOfPassword")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property rangeOfHost
-    open fun rangeOfHost(): MemorySegment {
+    open fun rangeOfHost(): NSRange {
         val sel = ObjCRuntime.sel("rangeOfHost")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property rangeOfPort
-    open fun rangeOfPort(): MemorySegment {
+    open fun rangeOfPort(): NSRange {
         val sel = ObjCRuntime.sel("rangeOfPort")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property rangeOfPath
-    open fun rangeOfPath(): MemorySegment {
+    open fun rangeOfPath(): NSRange {
         val sel = ObjCRuntime.sel("rangeOfPath")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property rangeOfQuery
-    open fun rangeOfQuery(): MemorySegment {
+    open fun rangeOfQuery(): NSRange {
         val sel = ObjCRuntime.sel("rangeOfQuery")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property rangeOfFragment
-    open fun rangeOfFragment(): MemorySegment {
+    open fun rangeOfFragment(): NSRange {
         val sel = ObjCRuntime.sel("rangeOfFragment")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property queryItems

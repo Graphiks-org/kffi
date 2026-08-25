@@ -49,9 +49,9 @@ open class NSRuleEditor(override val ptr: MemorySegment) : NSControl(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, displayValue) as Long
     }
 
-    open fun rowTypeForRow(rowIndex: Long): MemorySegment {
+    open fun rowTypeForRow(rowIndex: Long): NSRuleEditorRowType {
         val sel = ObjCRuntime.sel("rowTypeForRow:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, rowIndex) as MemorySegment
+        return NSRuleEditorRowType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, rowIndex) as Long)
     }
 
     open fun parentRowForRow(rowIndex: Long): Long {
@@ -64,9 +64,9 @@ open class NSRuleEditor(override val ptr: MemorySegment) : NSControl(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
-    open fun insertRowAtIndex_withType_asSubrowOfRow_animate(rowIndex: Long, rowType: MemorySegment, parentRow: Long, shouldAnimate: Boolean): Unit {
+    open fun insertRowAtIndex_withType_asSubrowOfRow_animate(rowIndex: Long, rowType: NSRuleEditorRowType, parentRow: Long, shouldAnimate: Boolean): Unit {
         val sel = ObjCRuntime.sel("insertRowAtIndex:withType:asSubrowOfRow:animate:")
-        ObjCRuntime.msgSend(null, ptr, sel, rowIndex, rowType, parentRow, shouldAnimate)
+        ObjCRuntime.msgSend(null, ptr, sel, rowIndex, rowType.rawValue, parentRow, shouldAnimate)
     }
 
     open fun setCriteria_andDisplayValues_forRowAtIndex(criteria: MemorySegment, values: MemorySegment, rowIndex: Long): Unit {
@@ -128,13 +128,13 @@ open class NSRuleEditor(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property nestingMode
-    open fun nestingMode(): MemorySegment {
+    open fun nestingMode(): NSRuleEditorNestingMode {
         val sel = ObjCRuntime.sel("nestingMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRuleEditorNestingMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setNestingMode(value: MemorySegment) {
+    open fun setNestingMode(value: NSRuleEditorNestingMode) {
         val sel = ObjCRuntime.sel("setNestingMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property rowHeight

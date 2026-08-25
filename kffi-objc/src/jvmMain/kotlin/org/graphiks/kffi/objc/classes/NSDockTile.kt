@@ -20,9 +20,9 @@ open class NSDockTile(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property size
-    open fun size(): MemorySegment {
+    open fun size(): NSSize {
         val sel = ObjCRuntime.sel("size")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
 
     // @property contentView

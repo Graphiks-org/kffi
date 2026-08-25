@@ -16,83 +16,83 @@ open class NSMorphology(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property grammaticalGender
-    open fun grammaticalGender(): MemorySegment {
+    open fun grammaticalGender(): NSGrammaticalGender {
         val sel = ObjCRuntime.sel("grammaticalGender")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGrammaticalGender(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setGrammaticalGender(value: MemorySegment) {
+    open fun setGrammaticalGender(value: NSGrammaticalGender) {
         val sel = ObjCRuntime.sel("setGrammaticalGender:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property partOfSpeech
-    open fun partOfSpeech(): MemorySegment {
+    open fun partOfSpeech(): NSGrammaticalPartOfSpeech {
         val sel = ObjCRuntime.sel("partOfSpeech")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGrammaticalPartOfSpeech(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPartOfSpeech(value: MemorySegment) {
+    open fun setPartOfSpeech(value: NSGrammaticalPartOfSpeech) {
         val sel = ObjCRuntime.sel("setPartOfSpeech:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property number
-    open fun number(): MemorySegment {
+    open fun number(): NSGrammaticalNumber {
         val sel = ObjCRuntime.sel("number")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGrammaticalNumber(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setNumber(value: MemorySegment) {
+    open fun setNumber(value: NSGrammaticalNumber) {
         val sel = ObjCRuntime.sel("setNumber:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property grammaticalCase
-    open fun grammaticalCase(): MemorySegment {
+    open fun grammaticalCase(): NSGrammaticalCase {
         val sel = ObjCRuntime.sel("grammaticalCase")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGrammaticalCase(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setGrammaticalCase(value: MemorySegment) {
+    open fun setGrammaticalCase(value: NSGrammaticalCase) {
         val sel = ObjCRuntime.sel("setGrammaticalCase:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property determination
-    open fun determination(): MemorySegment {
+    open fun determination(): NSGrammaticalDetermination {
         val sel = ObjCRuntime.sel("determination")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGrammaticalDetermination(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDetermination(value: MemorySegment) {
+    open fun setDetermination(value: NSGrammaticalDetermination) {
         val sel = ObjCRuntime.sel("setDetermination:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property grammaticalPerson
-    open fun grammaticalPerson(): MemorySegment {
+    open fun grammaticalPerson(): NSGrammaticalPerson {
         val sel = ObjCRuntime.sel("grammaticalPerson")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGrammaticalPerson(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setGrammaticalPerson(value: MemorySegment) {
+    open fun setGrammaticalPerson(value: NSGrammaticalPerson) {
         val sel = ObjCRuntime.sel("setGrammaticalPerson:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property pronounType
-    open fun pronounType(): MemorySegment {
+    open fun pronounType(): NSGrammaticalPronounType {
         val sel = ObjCRuntime.sel("pronounType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGrammaticalPronounType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPronounType(value: MemorySegment) {
+    open fun setPronounType(value: NSGrammaticalPronounType) {
         val sel = ObjCRuntime.sel("setPronounType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property definiteness
-    open fun definiteness(): MemorySegment {
+    open fun definiteness(): NSGrammaticalDefiniteness {
         val sel = ObjCRuntime.sel("definiteness")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGrammaticalDefiniteness(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDefiniteness(value: MemorySegment) {
+    open fun setDefiniteness(value: NSGrammaticalDefiniteness) {
         val sel = ObjCRuntime.sel("setDefiniteness:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

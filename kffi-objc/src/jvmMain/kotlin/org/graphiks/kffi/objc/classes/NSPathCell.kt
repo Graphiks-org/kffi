@@ -25,34 +25,34 @@ open class NSPathCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, obj)
     }
 
-    open fun rectOfPathComponentCell_withFrame_inView(cell: MemorySegment, frame: MemorySegment, view: MemorySegment): MemorySegment {
+    open fun rectOfPathComponentCell_withFrame_inView(cell: MemorySegment, frame: NSRect, view: MemorySegment): NSRect {
         val sel = ObjCRuntime.sel("rectOfPathComponentCell:withFrame:inView:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, cell, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), view) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, cell, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), view))
     }
 
-    open fun pathComponentCellAtPoint_withFrame_inView(point: MemorySegment, frame: MemorySegment, view: MemorySegment): MemorySegment {
+    open fun pathComponentCellAtPoint_withFrame_inView(point: NSPoint, frame: NSRect, view: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("pathComponentCellAtPoint:withFrame:inView:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), view) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), view) as MemorySegment
     }
 
-    open fun mouseEntered_withFrame_inView(event: MemorySegment, frame: MemorySegment, view: MemorySegment): Unit {
+    open fun mouseEntered_withFrame_inView(event: MemorySegment, frame: NSRect, view: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("mouseEntered:withFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, event, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), view)
+        ObjCRuntime.msgSend(null, ptr, sel, event, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), view)
     }
 
-    open fun mouseExited_withFrame_inView(event: MemorySegment, frame: MemorySegment, view: MemorySegment): Unit {
+    open fun mouseExited_withFrame_inView(event: MemorySegment, frame: NSRect, view: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("mouseExited:withFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, event, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), view)
+        ObjCRuntime.msgSend(null, ptr, sel, event, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), view)
     }
 
     // @property pathStyle
-    open fun pathStyle(): MemorySegment {
+    open fun pathStyle(): NSPathStyle {
         val sel = ObjCRuntime.sel("pathStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPathStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPathStyle(value: MemorySegment) {
+    open fun setPathStyle(value: NSPathStyle) {
         val sel = ObjCRuntime.sel("setPathStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property URL

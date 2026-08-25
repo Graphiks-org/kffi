@@ -29,49 +29,49 @@ open class NSMenuItemCell(override val ptr: MemorySegment) : NSButtonCell(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun stateImageRectForBounds(cellFrame: MemorySegment): MemorySegment {
+    open fun stateImageRectForBounds(cellFrame: NSRect): NSRect {
         val sel = ObjCRuntime.sel("stateImageRectForBounds:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout)))
     }
 
-    override fun titleRectForBounds(cellFrame: MemorySegment): MemorySegment {
+    override fun titleRectForBounds(cellFrame: NSRect): NSRect {
         val sel = ObjCRuntime.sel("titleRectForBounds:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout)))
     }
 
-    open fun keyEquivalentRectForBounds(cellFrame: MemorySegment): MemorySegment {
+    open fun keyEquivalentRectForBounds(cellFrame: NSRect): NSRect {
         val sel = ObjCRuntime.sel("keyEquivalentRectForBounds:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout)))
     }
 
-    open fun drawSeparatorItemWithFrame_inView(cellFrame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun drawSeparatorItemWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawSeparatorItemWithFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
-    open fun drawStateImageWithFrame_inView(cellFrame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun drawStateImageWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawStateImageWithFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
-    open fun drawImageWithFrame_inView(cellFrame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun drawImageWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawImageWithFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
-    open fun drawTitleWithFrame_inView(cellFrame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun drawTitleWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawTitleWithFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
-    open fun drawKeyEquivalentWithFrame_inView(cellFrame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun drawKeyEquivalentWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawKeyEquivalentWithFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
-    open fun drawBorderAndBackgroundWithFrame_inView(cellFrame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun drawBorderAndBackgroundWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawBorderAndBackgroundWithFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
     // @property menuItem

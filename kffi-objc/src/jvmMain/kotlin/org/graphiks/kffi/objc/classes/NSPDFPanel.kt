@@ -35,13 +35,13 @@ open class NSPDFPanel(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property options
-    open fun options(): MemorySegment {
+    open fun options(): NSPDFPanelOptions {
         val sel = ObjCRuntime.sel("options")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPDFPanelOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setOptions(value: MemorySegment) {
+    open fun setOptions(value: NSPDFPanelOptions) {
         val sel = ObjCRuntime.sel("setOptions:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property defaultFileName

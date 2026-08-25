@@ -70,13 +70,13 @@ open class NSTextFieldCell(override val ptr: MemorySegment) : NSActionCell(ptr) 
     }
 
     // @property bezelStyle
-    open fun bezelStyle(): MemorySegment {
+    open fun bezelStyle(): NSTextFieldBezelStyle {
         val sel = ObjCRuntime.sel("bezelStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextFieldBezelStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBezelStyle(value: MemorySegment) {
+    open fun setBezelStyle(value: NSTextFieldBezelStyle) {
         val sel = ObjCRuntime.sel("setBezelStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property placeholderString

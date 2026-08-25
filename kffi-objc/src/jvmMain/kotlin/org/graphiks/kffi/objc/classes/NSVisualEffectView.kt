@@ -25,39 +25,39 @@ open class NSVisualEffectView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property material
-    open fun material(): MemorySegment {
+    open fun material(): NSVisualEffectMaterial {
         val sel = ObjCRuntime.sel("material")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSVisualEffectMaterial(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setMaterial(value: MemorySegment) {
+    open fun setMaterial(value: NSVisualEffectMaterial) {
         val sel = ObjCRuntime.sel("setMaterial:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property interiorBackgroundStyle
-    open fun interiorBackgroundStyle(): MemorySegment {
+    open fun interiorBackgroundStyle(): NSBackgroundStyle {
         val sel = ObjCRuntime.sel("interiorBackgroundStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSBackgroundStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property blendingMode
-    open fun blendingMode(): MemorySegment {
+    open fun blendingMode(): NSVisualEffectBlendingMode {
         val sel = ObjCRuntime.sel("blendingMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSVisualEffectBlendingMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBlendingMode(value: MemorySegment) {
+    open fun setBlendingMode(value: NSVisualEffectBlendingMode) {
         val sel = ObjCRuntime.sel("setBlendingMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property state
-    open fun state(): MemorySegment {
+    open fun state(): NSVisualEffectState {
         val sel = ObjCRuntime.sel("state")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSVisualEffectState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setState(value: MemorySegment) {
+    open fun setState(value: NSVisualEffectState) {
         val sel = ObjCRuntime.sel("setState:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property maskImage

@@ -18,9 +18,9 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, eventRef) as MemorySegment
         }
 
-        fun eventWithCGEvent(cgEvent: MemorySegment): MemorySegment {
+        fun eventWithCGEvent(cgEvent: CGEventRef): MemorySegment {
             val sel = ObjCRuntime.sel("eventWithCGEvent:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, cgEvent) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, cgEvent.segment) as MemorySegment
         }
 
         fun startPeriodicEventsAfterDelay_withPeriod(delay: Double, period: Double): Unit {
@@ -33,37 +33,37 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
             ObjCRuntime.msgSend(null, _class, sel)
         }
 
-        fun mouseEventWithType_location_modifierFlags_timestamp_windowNumber_context_eventNumber_clickCount_pressure(type: MemorySegment, location: MemorySegment, flags: MemorySegment, time: Double, wNum: Long, unusedPassNil: MemorySegment, eNum: Long, cNum: Long, pressure: Float): MemorySegment {
+        fun mouseEventWithType_location_modifierFlags_timestamp_windowNumber_context_eventNumber_clickCount_pressure(type: NSEventType, location: NSPoint, flags: NSEventModifierFlags, time: Double, wNum: Long, unusedPassNil: MemorySegment, eNum: Long, cNum: Long, pressure: Float): MemorySegment {
             val sel = ObjCRuntime.sel("mouseEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:clickCount:pressure:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, type, ObjCRuntime.ObjCStructArg(location, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), flags, time, wNum, unusedPassNil, eNum, cNum, pressure) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, type.rawValue, ObjCRuntime.ObjCStructArg(location.segment, NSPoint.layout), flags.rawValue, time, wNum, unusedPassNil, eNum, cNum, pressure) as MemorySegment
         }
 
-        fun keyEventWithType_location_modifierFlags_timestamp_windowNumber_context_characters_charactersIgnoringModifiers_isARepeat_keyCode(type: MemorySegment, location: MemorySegment, flags: MemorySegment, time: Double, wNum: Long, unusedPassNil: MemorySegment, keys: MemorySegment, ukeys: MemorySegment, flag: Boolean, code: Short): MemorySegment {
+        fun keyEventWithType_location_modifierFlags_timestamp_windowNumber_context_characters_charactersIgnoringModifiers_isARepeat_keyCode(type: NSEventType, location: NSPoint, flags: NSEventModifierFlags, time: Double, wNum: Long, unusedPassNil: MemorySegment, keys: MemorySegment, ukeys: MemorySegment, flag: Boolean, code: Short): MemorySegment {
             val sel = ObjCRuntime.sel("keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, type, ObjCRuntime.ObjCStructArg(location, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), flags, time, wNum, unusedPassNil, keys, ukeys, flag, code) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, type.rawValue, ObjCRuntime.ObjCStructArg(location.segment, NSPoint.layout), flags.rawValue, time, wNum, unusedPassNil, keys, ukeys, flag, code) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun keyEventWithType_location_modifierFlags_timestamp_windowNumber_context_characters_charactersIgnoringModifiers_isARepeat_keyCode(type: MemorySegment, location: MemorySegment, flags: MemorySegment, time: Double, wNum: Long, unusedPassNil: MemorySegment, keys: String, ukeys: String, flag: Boolean, code: Short): MemorySegment = keyEventWithType_location_modifierFlags_timestamp_windowNumber_context_characters_charactersIgnoringModifiers_isARepeat_keyCode(type, location, flags, time, wNum, unusedPassNil, ObjCRuntime.newNSString(Arena.global(), keys), ObjCRuntime.newNSString(Arena.global(), ukeys), flag, code)
+        fun keyEventWithType_location_modifierFlags_timestamp_windowNumber_context_characters_charactersIgnoringModifiers_isARepeat_keyCode(type: NSEventType, location: NSPoint, flags: NSEventModifierFlags, time: Double, wNum: Long, unusedPassNil: MemorySegment, keys: String, ukeys: String, flag: Boolean, code: Short): MemorySegment = keyEventWithType_location_modifierFlags_timestamp_windowNumber_context_characters_charactersIgnoringModifiers_isARepeat_keyCode(type, location, flags, time, wNum, unusedPassNil, ObjCRuntime.newNSString(Arena.global(), keys), ObjCRuntime.newNSString(Arena.global(), ukeys), flag, code)
 
-        fun enterExitEventWithType_location_modifierFlags_timestamp_windowNumber_context_eventNumber_trackingNumber_userData(type: MemorySegment, location: MemorySegment, flags: MemorySegment, time: Double, wNum: Long, unusedPassNil: MemorySegment, eNum: Long, tNum: Long, `data`: MemorySegment): MemorySegment {
+        fun enterExitEventWithType_location_modifierFlags_timestamp_windowNumber_context_eventNumber_trackingNumber_userData(type: NSEventType, location: NSPoint, flags: NSEventModifierFlags, time: Double, wNum: Long, unusedPassNil: MemorySegment, eNum: Long, tNum: Long, `data`: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, type, ObjCRuntime.ObjCStructArg(location, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), flags, time, wNum, unusedPassNil, eNum, tNum, `data`) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, type.rawValue, ObjCRuntime.ObjCStructArg(location.segment, NSPoint.layout), flags.rawValue, time, wNum, unusedPassNil, eNum, tNum, `data`) as MemorySegment
         }
 
-        fun otherEventWithType_location_modifierFlags_timestamp_windowNumber_context_subtype_data1_data2(type: MemorySegment, location: MemorySegment, flags: MemorySegment, time: Double, wNum: Long, unusedPassNil: MemorySegment, subtype: Short, d1: Long, d2: Long): MemorySegment {
+        fun otherEventWithType_location_modifierFlags_timestamp_windowNumber_context_subtype_data1_data2(type: NSEventType, location: NSPoint, flags: NSEventModifierFlags, time: Double, wNum: Long, unusedPassNil: MemorySegment, subtype: Short, d1: Long, d2: Long): MemorySegment {
             val sel = ObjCRuntime.sel("otherEventWithType:location:modifierFlags:timestamp:windowNumber:context:subtype:data1:data2:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, type, ObjCRuntime.ObjCStructArg(location, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), flags, time, wNum, unusedPassNil, subtype, d1, d2) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, type.rawValue, ObjCRuntime.ObjCStructArg(location.segment, NSPoint.layout), flags.rawValue, time, wNum, unusedPassNil, subtype, d1, d2) as MemorySegment
         }
 
-        fun addGlobalMonitorForEventsMatchingMask_handler(mask: MemorySegment, block: MemorySegment): MemorySegment {
+        fun addGlobalMonitorForEventsMatchingMask_handler(mask: NSEventMask, block: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("addGlobalMonitorForEventsMatchingMask:handler:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, mask, block) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, mask.rawValue, block) as MemorySegment
         }
 
-        fun addLocalMonitorForEventsMatchingMask_handler(mask: MemorySegment, block: MemorySegment): MemorySegment {
+        fun addLocalMonitorForEventsMatchingMask_handler(mask: NSEventMask, block: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("addLocalMonitorForEventsMatchingMask:handler:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, mask, block) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, mask.rawValue, block) as MemorySegment
         }
 
         fun removeMonitor(eventMonitor: MemorySegment): Unit {
@@ -86,14 +86,14 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel) as Boolean
         }
 
-        fun mouseLocation(): MemorySegment {
+        fun mouseLocation(): NSPoint {
             val sel = ObjCRuntime.sel("mouseLocation")
-            return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), _class, sel) as MemorySegment
+            return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, _class, sel))
         }
 
-        fun modifierFlags(): MemorySegment {
+        fun modifierFlags(): NSEventModifierFlags {
             val sel = ObjCRuntime.sel("modifierFlags")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
+            return NSEventModifierFlags(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
         fun pressedMouseButtons(): Long {
@@ -118,18 +118,18 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun charactersByApplyingModifiers(modifiers: MemorySegment): MemorySegment {
+    open fun charactersByApplyingModifiers(modifiers: NSEventModifierFlags): MemorySegment {
         val sel = ObjCRuntime.sel("charactersByApplyingModifiers:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, modifiers) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, modifiers.rawValue) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-    fun charactersByApplyingModifiersAsString(modifiers: MemorySegment): String = ObjCRuntime.toJavaString(charactersByApplyingModifiers(modifiers))
+    fun charactersByApplyingModifiersAsString(modifiers: NSEventModifierFlags): String = ObjCRuntime.toJavaString(charactersByApplyingModifiers(modifiers))
 
     /** @return NSSet<NSTouch *> * */
-    open fun touchesMatchingPhase_inView(phase: MemorySegment, view: MemorySegment): MemorySegment {
+    open fun touchesMatchingPhase_inView(phase: NSTouchPhase, view: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("touchesMatchingPhase:inView:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, phase, view) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, phase.rawValue, view) as MemorySegment
     }
 
     /** @return NSSet<NSTouch *> * */
@@ -150,21 +150,21 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, touch) as MemorySegment
     }
 
-    open fun trackSwipeEventWithOptions_dampenAmountThresholdMin_max_usingHandler(options: MemorySegment, minDampenThreshold: Double, maxDampenThreshold: Double, trackingHandler: MemorySegment): Unit {
+    open fun trackSwipeEventWithOptions_dampenAmountThresholdMin_max_usingHandler(options: NSEventSwipeTrackingOptions, minDampenThreshold: Double, maxDampenThreshold: Double, trackingHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("trackSwipeEventWithOptions:dampenAmountThresholdMin:max:usingHandler:")
-        ObjCRuntime.msgSend(null, ptr, sel, options, minDampenThreshold, maxDampenThreshold, trackingHandler)
+        ObjCRuntime.msgSend(null, ptr, sel, options.rawValue, minDampenThreshold, maxDampenThreshold, trackingHandler)
     }
 
     // @property type
-    open fun type(): MemorySegment {
+    open fun type(): NSEventType {
         val sel = ObjCRuntime.sel("type")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property modifierFlags
-    open fun modifierFlags(): MemorySegment {
+    open fun modifierFlags(): NSEventModifierFlags {
         val sel = ObjCRuntime.sel("modifierFlags")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventModifierFlags(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property timestamp
@@ -216,9 +216,9 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property locationInWindow
-    open fun locationInWindow(): MemorySegment {
+    open fun locationInWindow(): NSPoint {
         val sel = ObjCRuntime.sel("locationInWindow")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
     // @property deltaX
@@ -258,9 +258,9 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property momentumPhase
-    open fun momentumPhase(): MemorySegment {
+    open fun momentumPhase(): NSEventPhase {
         val sel = ObjCRuntime.sel("momentumPhase")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventPhase(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property directionInvertedFromDevice
@@ -318,9 +318,9 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property subtype
-    open fun subtype(): MemorySegment {
+    open fun subtype(): NSEventSubtype {
         val sel = ObjCRuntime.sel("subtype")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventSubtype((ObjCRuntime.msgSend(ValueLayout.JAVA_SHORT, ptr, sel) as Short).toLong())
     }
 
     // @property data1
@@ -342,9 +342,9 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property CGEvent
-    open fun CGEvent(): MemorySegment {
+    open fun CGEvent(): CGEventRef {
         val sel = ObjCRuntime.sel("CGEvent")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGEventRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     // @property mouseCoalescingEnabled
@@ -394,15 +394,15 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property buttonMask
-    open fun buttonMask(): MemorySegment {
+    open fun buttonMask(): NSEventButtonMask {
         val sel = ObjCRuntime.sel("buttonMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventButtonMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property tilt
-    open fun tilt(): MemorySegment {
+    open fun tilt(): NSPoint {
         val sel = ObjCRuntime.sel("tilt")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
     // @property tangentialPressure
@@ -466,9 +466,9 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property pointingDeviceType
-    open fun pointingDeviceType(): MemorySegment {
+    open fun pointingDeviceType(): NSPointingDeviceType {
         val sel = ObjCRuntime.sel("pointingDeviceType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPointingDeviceType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property enteringProximity
@@ -478,9 +478,9 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property phase
-    open fun phase(): MemorySegment {
+    open fun phase(): NSEventPhase {
         val sel = ObjCRuntime.sel("phase")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventPhase(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property stage
@@ -496,15 +496,15 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property associatedEventsMask
-    open fun associatedEventsMask(): MemorySegment {
+    open fun associatedEventsMask(): NSEventMask {
         val sel = ObjCRuntime.sel("associatedEventsMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property pressureBehavior
-    open fun pressureBehavior(): MemorySegment {
+    open fun pressureBehavior(): NSPressureBehavior {
         val sel = ObjCRuntime.sel("pressureBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPressureBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property swipeTrackingFromScrollEventsEnabled
@@ -514,9 +514,9 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property mouseLocation
-    open fun mouseLocation(): MemorySegment {
+    open fun mouseLocation(): NSPoint {
         val sel = ObjCRuntime.sel("mouseLocation")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
     // @property pressedMouseButtons

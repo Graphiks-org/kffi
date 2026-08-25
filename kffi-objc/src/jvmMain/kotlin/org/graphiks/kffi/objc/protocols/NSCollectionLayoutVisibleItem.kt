@@ -21,19 +21,19 @@ interface NSCollectionLayoutVisibleItem {
 
     fun setHidden(hidden: Boolean): Unit
 
-    fun center(): MemorySegment
+    fun center(): NSPoint
 
-    fun setCenter(center: MemorySegment): Unit
+    fun setCenter(center: NSPoint): Unit
 
     fun name(): MemorySegment
 
     fun indexPath(): MemorySegment
 
-    fun frame(): MemorySegment
+    fun frame(): NSRect
 
-    fun bounds(): MemorySegment
+    fun bounds(): NSRect
 
-    fun representedElementCategory(): MemorySegment
+    fun representedElementCategory(): NSCollectionElementCategory
 
     fun representedElementKind(): MemorySegment
 

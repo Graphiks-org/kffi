@@ -110,9 +110,9 @@ fun NSDictionary.enumerateKeysAndObjectsUsingBlock(block: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, block)
 }
 
-fun NSDictionary.enumerateKeysAndObjectsWithOptions_usingBlock(opts: MemorySegment, block: MemorySegment): Unit {
+fun NSDictionary.enumerateKeysAndObjectsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateKeysAndObjectsWithOptions:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, block)
 }
 
 /** @return NSArray<KeyType> * */
@@ -122,9 +122,9 @@ fun NSDictionary.keysSortedByValueUsingComparator(cmptr: MemorySegment): MemoryS
 }
 
 /** @return NSArray<KeyType> * */
-fun NSDictionary.keysSortedByValueWithOptions_usingComparator(opts: MemorySegment, cmptr: MemorySegment): MemorySegment {
+fun NSDictionary.keysSortedByValueWithOptions_usingComparator(opts: NSSortOptions, cmptr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("keysSortedByValueWithOptions:usingComparator:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts, cmptr) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, cmptr) as MemorySegment
 }
 
 /** @return NSSet<KeyType> * */
@@ -134,9 +134,9 @@ fun NSDictionary.keysOfEntriesPassingTest(predicate: MemorySegment): MemorySegme
 }
 
 /** @return NSSet<KeyType> * */
-fun NSDictionary.keysOfEntriesWithOptions_passingTest(opts: MemorySegment, predicate: MemorySegment): MemorySegment {
+fun NSDictionary.keysOfEntriesWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("keysOfEntriesWithOptions:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts, predicate) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, predicate) as MemorySegment
 }
 
 /** @return NSArray<KeyType> * */
@@ -292,9 +292,9 @@ fun NSDictionary_sharedKeySetForKeys(keys: MemorySegment): MemorySegment {
 
 // ── Category: NSGenericFastEnumeration on NSDictionary ─────────────────────────────────────────
 
-fun NSDictionary.countByEnumeratingWithState_objects_count(state: MemorySegment, buffer: MemorySegment, len: Long): Long {
+fun NSDictionary.countByEnumeratingWithState_objects_count(state: NSFastEnumerationStatePointer, buffer: MemorySegment, len: Long): Long {
     val sel = ObjCRuntime.sel("countByEnumeratingWithState:objects:count:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, state, buffer, len) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, state.segment, buffer, len) as Long
 }
 
 // ── Category: NSFileAttributes on NSDictionary ─────────────────────────────────────────

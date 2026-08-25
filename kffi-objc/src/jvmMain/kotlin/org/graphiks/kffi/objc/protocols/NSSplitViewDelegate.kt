@@ -30,7 +30,7 @@ interface NSSplitViewDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'splitView:constrainSplitPosition:ofSubviewAt:' not implemented")
 
     // @optional
-    fun splitView_resizeSubviewsWithOldSize(splitView: MemorySegment, oldSize: MemorySegment): Unit =
+    fun splitView_resizeSubviewsWithOldSize(splitView: MemorySegment, oldSize: NSSize): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'splitView:resizeSubviewsWithOldSize:' not implemented")
 
     // @optional
@@ -42,11 +42,11 @@ interface NSSplitViewDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'splitView:shouldHideDividerAtIndex:' not implemented")
 
     // @optional
-    fun splitView_effectiveRect_forDrawnRect_ofDividerAtIndex(splitView: MemorySegment, proposedEffectiveRect: MemorySegment, drawnRect: MemorySegment, dividerIndex: Long): MemorySegment =
+    fun splitView_effectiveRect_forDrawnRect_ofDividerAtIndex(splitView: MemorySegment, proposedEffectiveRect: NSRect, drawnRect: NSRect, dividerIndex: Long): NSRect =
         throw UnsupportedOperationException("Optional ObjC method 'splitView:effectiveRect:forDrawnRect:ofDividerAtIndex:' not implemented")
 
     // @optional
-    fun splitView_additionalEffectiveRectOfDividerAtIndex(splitView: MemorySegment, dividerIndex: Long): MemorySegment =
+    fun splitView_additionalEffectiveRectOfDividerAtIndex(splitView: MemorySegment, dividerIndex: Long): NSRect =
         throw UnsupportedOperationException("Optional ObjC method 'splitView:additionalEffectiveRectOfDividerAtIndex:' not implemented")
 
     // @optional

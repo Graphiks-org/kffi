@@ -24,9 +24,9 @@ open class NSDraggingItem(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun setDraggingFrame_contents(frame: MemorySegment, contents: MemorySegment): Unit {
+    open fun setDraggingFrame_contents(frame: NSRect, contents: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("setDraggingFrame:contents:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), contents)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), contents)
     }
 
     // @property item
@@ -36,13 +36,13 @@ open class NSDraggingItem(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property draggingFrame
-    open fun draggingFrame(): MemorySegment {
+    open fun draggingFrame(): NSRect {
         val sel = ObjCRuntime.sel("draggingFrame")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
-    open fun setDraggingFrame(value: MemorySegment) {
+    open fun setDraggingFrame(value: NSRect) {
         val sel = ObjCRuntime.sel("setDraggingFrame:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSRect.layout))
     }
 
     // @property imageComponentsProvider

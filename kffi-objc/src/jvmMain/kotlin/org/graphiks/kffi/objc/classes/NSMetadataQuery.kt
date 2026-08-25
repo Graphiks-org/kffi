@@ -44,9 +44,9 @@ open class NSMetadataQuery(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, block)
     }
 
-    open fun enumerateResultsWithOptions_usingBlock(opts: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateResultsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateResultsWithOptions:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, opts, block)
+        ObjCRuntime.msgSend(null, ptr, sel, opts.rawValue, block)
     }
 
     open fun indexOfResult(result: MemorySegment): Long {

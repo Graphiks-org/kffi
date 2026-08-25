@@ -29,9 +29,9 @@ open class NSButtonCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun setButtonType(type: MemorySegment): Unit {
+    open fun setButtonType(type: NSButtonType): Unit {
         val sel = ObjCRuntime.sel("setButtonType:")
-        ObjCRuntime.msgSend(null, ptr, sel, type)
+        ObjCRuntime.msgSend(null, ptr, sel, type.rawValue)
     }
 
     open fun setPeriodicDelay_interval(delay: Float, interval: Float): Unit {
@@ -59,49 +59,49 @@ open class NSButtonCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, event)
     }
 
-    open fun drawBezelWithFrame_inView(frame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun drawBezelWithFrame_inView(frame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawBezelWithFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), controlView)
     }
 
-    open fun drawImage_withFrame_inView(image: MemorySegment, frame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun drawImage_withFrame_inView(image: MemorySegment, frame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawImage:withFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, image, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, image, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), controlView)
     }
 
-    open fun drawTitle_withFrame_inView(title: MemorySegment, frame: MemorySegment, controlView: MemorySegment): MemorySegment {
+    open fun drawTitle_withFrame_inView(title: MemorySegment, frame: NSRect, controlView: MemorySegment): NSRect {
         val sel = ObjCRuntime.sel("drawTitle:withFrame:inView:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, title, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, title, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), controlView))
     }
 
     // @property bezelStyle
-    open fun bezelStyle(): MemorySegment {
+    open fun bezelStyle(): NSBezelStyle {
         val sel = ObjCRuntime.sel("bezelStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSBezelStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBezelStyle(value: MemorySegment) {
+    open fun setBezelStyle(value: NSBezelStyle) {
         val sel = ObjCRuntime.sel("setBezelStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property highlightsBy
-    open fun highlightsBy(): MemorySegment {
+    open fun highlightsBy(): NSCellStyleMask {
         val sel = ObjCRuntime.sel("highlightsBy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCellStyleMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setHighlightsBy(value: MemorySegment) {
+    open fun setHighlightsBy(value: NSCellStyleMask) {
         val sel = ObjCRuntime.sel("setHighlightsBy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property showsStateBy
-    open fun showsStateBy(): MemorySegment {
+    open fun showsStateBy(): NSCellStyleMask {
         val sel = ObjCRuntime.sel("showsStateBy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCellStyleMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setShowsStateBy(value: MemorySegment) {
+    open fun setShowsStateBy(value: NSCellStyleMask) {
         val sel = ObjCRuntime.sel("setShowsStateBy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property title
@@ -161,23 +161,23 @@ open class NSButtonCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
     }
 
     // @property imagePosition
-    open fun imagePosition(): MemorySegment {
+    open fun imagePosition(): NSCellImagePosition {
         val sel = ObjCRuntime.sel("imagePosition")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCellImagePosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImagePosition(value: MemorySegment) {
+    open fun setImagePosition(value: NSCellImagePosition) {
         val sel = ObjCRuntime.sel("setImagePosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property imageScaling
-    open fun imageScaling(): MemorySegment {
+    open fun imageScaling(): NSImageScaling {
         val sel = ObjCRuntime.sel("imageScaling")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageScaling(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageScaling(value: MemorySegment) {
+    open fun setImageScaling(value: NSImageScaling) {
         val sel = ObjCRuntime.sel("setImageScaling:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property keyEquivalent
@@ -191,13 +191,13 @@ open class NSButtonCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
     }
 
     // @property keyEquivalentModifierMask
-    open fun keyEquivalentModifierMask(): MemorySegment {
+    open fun keyEquivalentModifierMask(): NSEventModifierFlags {
         val sel = ObjCRuntime.sel("keyEquivalentModifierMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventModifierFlags(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setKeyEquivalentModifierMask(value: MemorySegment) {
+    open fun setKeyEquivalentModifierMask(value: NSEventModifierFlags) {
         val sel = ObjCRuntime.sel("setKeyEquivalentModifierMask:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property transparent
@@ -290,14 +290,14 @@ fun NSButtonCell.setKeyEquivalentFont_size(fontName: MemorySegment, fontSize: Do
     ObjCRuntime.msgSend(null, this.ptr, sel, fontName, fontSize)
 }
 
-fun NSButtonCell.gradientType(): MemorySegment {
+fun NSButtonCell.gradientType(): NSGradientType {
     val sel = ObjCRuntime.sel("gradientType")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSGradientType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSButtonCell.setGradientType(gradientType: MemorySegment): Unit {
+fun NSButtonCell.setGradientType(gradientType: NSGradientType): Unit {
     val sel = ObjCRuntime.sel("setGradientType:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, gradientType)
+    ObjCRuntime.msgSend(null, this.ptr, sel, gradientType.rawValue)
 }
 
 fun NSButtonCell.keyEquivalentFont(): MemorySegment {

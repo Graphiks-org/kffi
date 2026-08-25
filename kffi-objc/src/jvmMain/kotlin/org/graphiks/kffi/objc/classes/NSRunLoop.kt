@@ -24,9 +24,9 @@ open class NSRunLoop(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun getCFRunLoop(): MemorySegment {
+    open fun getCFRunLoop(): CFRunLoopRef {
         val sel = ObjCRuntime.sel("getCFRunLoop")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CFRunLoopRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     open fun addTimer_forMode(timer: MemorySegment, mode: MemorySegment): Unit {

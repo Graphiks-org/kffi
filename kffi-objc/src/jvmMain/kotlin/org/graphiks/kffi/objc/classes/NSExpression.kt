@@ -124,9 +124,9 @@ open class NSExpression(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithExpressionType(type: MemorySegment): MemorySegment {
+    open fun initWithExpressionType(type: NSExpressionType): MemorySegment {
         val sel = ObjCRuntime.sel("initWithExpressionType:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, type) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, type.rawValue) as MemorySegment
     }
 
     open fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -145,9 +145,9 @@ open class NSExpression(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property expressionType
-    open fun expressionType(): MemorySegment {
+    open fun expressionType(): NSExpressionType {
         val sel = ObjCRuntime.sel("expressionType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSExpressionType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property constantValue

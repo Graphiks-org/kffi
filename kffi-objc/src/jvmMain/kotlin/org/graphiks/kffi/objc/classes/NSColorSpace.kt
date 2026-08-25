@@ -14,9 +14,9 @@ open class NSColorSpace(override val ptr: MemorySegment) : NSObject(ptr) {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSColorSpace") }
 
         /** @return NSArray<NSColorSpace *> * */
-        fun availableColorSpacesWithModel(model: MemorySegment): MemorySegment {
+        fun availableColorSpacesWithModel(model: NSColorSpaceModel): MemorySegment {
             val sel = ObjCRuntime.sel("availableColorSpacesWithModel:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, model) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, model.rawValue) as MemorySegment
         }
 
         fun sRGBColorSpace(): MemorySegment {
@@ -91,9 +91,9 @@ open class NSColorSpace(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, prof) as MemorySegment
     }
 
-    open fun initWithCGColorSpace(cgColorSpace: MemorySegment): MemorySegment {
+    open fun initWithCGColorSpace(cgColorSpace: CGColorSpaceRef): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGColorSpace:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, cgColorSpace) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, cgColorSpace.segment) as MemorySegment
     }
 
     // @property ICCProfileData
@@ -109,9 +109,9 @@ open class NSColorSpace(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property CGColorSpace
-    open fun CGColorSpace(): MemorySegment {
+    open fun CGColorSpace(): CGColorSpaceRef {
         val sel = ObjCRuntime.sel("CGColorSpace")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGColorSpaceRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     // @property numberOfColorComponents
@@ -121,9 +121,9 @@ open class NSColorSpace(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property colorSpaceModel
-    open fun colorSpaceModel(): MemorySegment {
+    open fun colorSpaceModel(): NSColorSpaceModel {
         val sel = ObjCRuntime.sel("colorSpaceModel")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSColorSpaceModel(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property localizedName

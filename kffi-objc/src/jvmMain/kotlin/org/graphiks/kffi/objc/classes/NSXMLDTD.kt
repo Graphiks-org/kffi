@@ -27,19 +27,19 @@ open class NSXMLDTD(override val ptr: MemorySegment) : NSXMLNode(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    override fun initWithKind_options(kind: MemorySegment, options: MemorySegment): MemorySegment {
+    override fun initWithKind_options(kind: NSXMLNodeKind, options: NSXMLNodeOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithKind:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind.rawValue, options.rawValue) as MemorySegment
     }
 
-    open fun initWithContentsOfURL_options_error(url: MemorySegment, mask: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun initWithContentsOfURL_options_error(url: MemorySegment, mask: NSXMLNodeOptions, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithContentsOfURL:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, mask, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, mask.rawValue, error) as MemorySegment
     }
 
-    open fun initWithData_options_error(`data`: MemorySegment, mask: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun initWithData_options_error(`data`: MemorySegment, mask: NSXMLNodeOptions, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithData:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `data`, mask, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `data`, mask.rawValue, error) as MemorySegment
     }
 
     open fun insertChild_atIndex(child: MemorySegment, index: Long): Unit {

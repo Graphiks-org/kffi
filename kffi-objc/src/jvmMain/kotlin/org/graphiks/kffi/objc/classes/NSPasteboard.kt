@@ -34,9 +34,9 @@ open class NSPasteboard(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun prepareForNewContentsWithOptions(options: MemorySegment): Long {
+    open fun prepareForNewContentsWithOptions(options: NSPasteboardContentsOptions): Long {
         val sel = ObjCRuntime.sel("prepareForNewContentsWithOptions:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, options) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, options.rawValue) as Long
     }
 
     open fun clearContents(): Long {
@@ -154,9 +154,9 @@ open class NSPasteboard(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property accessBehavior
-    open fun accessBehavior(): MemorySegment {
+    open fun accessBehavior(): NSPasteboardAccessBehavior {
         val sel = ObjCRuntime.sel("accessBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPasteboardAccessBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property pasteboardItems

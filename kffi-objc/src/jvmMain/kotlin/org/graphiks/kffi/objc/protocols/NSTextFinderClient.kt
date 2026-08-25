@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSTextFinderClient {
     // @optional
-    fun stringAtIndex_effectiveRange_endsWithSearchBoundary(characterIndex: Long, outRange: MemorySegment, outFlag: MemorySegment): MemorySegment =
+    fun stringAtIndex_effectiveRange_endsWithSearchBoundary(characterIndex: Long, outRange: NSRangePointer, outFlag: MemorySegment): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'stringAtIndex:effectiveRange:endsWithSearchBoundary:' not implemented")
 
     // @optional
@@ -18,7 +18,7 @@ interface NSTextFinderClient {
         throw UnsupportedOperationException("Optional ObjC method 'stringLength' not implemented")
 
     // @optional
-    fun scrollRangeToVisible(range: MemorySegment): Unit =
+    fun scrollRangeToVisible(range: NSRange): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'scrollRangeToVisible:' not implemented")
 
     // @optional
@@ -26,7 +26,7 @@ interface NSTextFinderClient {
         throw UnsupportedOperationException("Optional ObjC method 'shouldReplaceCharactersInRanges:withStrings:' not implemented")
 
     // @optional
-    fun replaceCharactersInRange_withString(range: MemorySegment, string: MemorySegment): Unit =
+    fun replaceCharactersInRange_withString(range: NSRange, string: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'replaceCharactersInRange:withString:' not implemented")
 
     // @optional
@@ -34,16 +34,16 @@ interface NSTextFinderClient {
         throw UnsupportedOperationException("Optional ObjC method 'didReplaceCharacters' not implemented")
 
     // @optional
-    fun contentViewAtIndex_effectiveCharacterRange(index: Long, outRange: MemorySegment): MemorySegment =
+    fun contentViewAtIndex_effectiveCharacterRange(index: Long, outRange: NSRangePointer): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'contentViewAtIndex:effectiveCharacterRange:' not implemented")
 
     /** @return NSArray<NSValue *> * */
     // @optional
-    fun rectsForCharacterRange(range: MemorySegment): MemorySegment =
+    fun rectsForCharacterRange(range: NSRange): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'rectsForCharacterRange:' not implemented")
 
     // @optional
-    fun drawCharactersInRange_forContentView(range: MemorySegment, view: MemorySegment): Unit =
+    fun drawCharactersInRange_forContentView(range: NSRange, view: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'drawCharactersInRange:forContentView:' not implemented")
 
     // @optional
@@ -63,7 +63,7 @@ interface NSTextFinderClient {
         throw UnsupportedOperationException("Optional ObjC method 'string' not implemented")
 
     // @optional
-    fun firstSelectedRange(): MemorySegment =
+    fun firstSelectedRange(): NSRange =
         throw UnsupportedOperationException("Optional ObjC method 'firstSelectedRange' not implemented")
 
     /** @return NSArray<NSValue *> * */

@@ -15,9 +15,9 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
 
     }
 
-    override fun initWithFrame(frameRect: MemorySegment): MemorySegment {
+    override fun initWithFrame(frameRect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout)) as MemorySegment
     }
 
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -105,24 +105,24 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, tableColumn) as MemorySegment
     }
 
-    open fun canDragRowsWithIndexes_atPoint(rowIndexes: MemorySegment, mouseDownPoint: MemorySegment): Boolean {
+    open fun canDragRowsWithIndexes_atPoint(rowIndexes: MemorySegment, mouseDownPoint: NSPoint): Boolean {
         val sel = ObjCRuntime.sel("canDragRowsWithIndexes:atPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, rowIndexes, ObjCRuntime.ObjCStructArg(mouseDownPoint, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, rowIndexes, ObjCRuntime.ObjCStructArg(mouseDownPoint.segment, NSPoint.layout)) as Boolean
     }
 
-    open fun dragImageForRowsWithIndexes_tableColumns_event_offset(dragRows: MemorySegment, tableColumns: MemorySegment, dragEvent: MemorySegment, dragImageOffset: MemorySegment): MemorySegment {
+    open fun dragImageForRowsWithIndexes_tableColumns_event_offset(dragRows: MemorySegment, tableColumns: MemorySegment, dragEvent: MemorySegment, dragImageOffset: NSPointPointer): MemorySegment {
         val sel = ObjCRuntime.sel("dragImageForRowsWithIndexes:tableColumns:event:offset:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, dragRows, tableColumns, dragEvent, dragImageOffset) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, dragRows, tableColumns, dragEvent, dragImageOffset.segment) as MemorySegment
     }
 
-    open fun setDraggingSourceOperationMask_forLocal(mask: MemorySegment, isLocal: Boolean): Unit {
+    open fun setDraggingSourceOperationMask_forLocal(mask: NSDragOperation, isLocal: Boolean): Unit {
         val sel = ObjCRuntime.sel("setDraggingSourceOperationMask:forLocal:")
-        ObjCRuntime.msgSend(null, ptr, sel, mask, isLocal)
+        ObjCRuntime.msgSend(null, ptr, sel, mask.rawValue, isLocal)
     }
 
-    open fun setDropRow_dropOperation(row: Long, dropOperation: MemorySegment): Unit {
+    open fun setDropRow_dropOperation(row: Long, dropOperation: NSTableViewDropOperation): Unit {
         val sel = ObjCRuntime.sel("setDropRow:dropOperation:")
-        ObjCRuntime.msgSend(null, ptr, sel, row, dropOperation)
+        ObjCRuntime.msgSend(null, ptr, sel, row, dropOperation.rawValue)
     }
 
     open fun selectAll(sender: MemorySegment): Unit {
@@ -165,39 +165,39 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, row) as Boolean
     }
 
-    open fun rectOfColumn(column: Long): MemorySegment {
+    open fun rectOfColumn(column: Long): NSRect {
         val sel = ObjCRuntime.sel("rectOfColumn:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, column) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, column))
     }
 
-    open fun rectOfRow(row: Long): MemorySegment {
+    open fun rectOfRow(row: Long): NSRect {
         val sel = ObjCRuntime.sel("rectOfRow:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, row) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, row))
     }
 
-    open fun columnIndexesInRect(rect: MemorySegment): MemorySegment {
+    open fun columnIndexesInRect(rect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("columnIndexesInRect:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as MemorySegment
     }
 
-    open fun rowsInRect(rect: MemorySegment): MemorySegment {
+    open fun rowsInRect(rect: NSRect): NSRange {
         val sel = ObjCRuntime.sel("rowsInRect:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
-    open fun columnAtPoint(point: MemorySegment): Long {
+    open fun columnAtPoint(point: NSPoint): Long {
         val sel = ObjCRuntime.sel("columnAtPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Long
     }
 
-    open fun rowAtPoint(point: MemorySegment): Long {
+    open fun rowAtPoint(point: NSPoint): Long {
         val sel = ObjCRuntime.sel("rowAtPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Long
     }
 
-    open fun frameOfCellAtColumn_row(column: Long, row: Long): MemorySegment {
+    open fun frameOfCellAtColumn_row(column: Long, row: Long): NSRect {
         val sel = ObjCRuntime.sel("frameOfCellAtColumn:row:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, column, row) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, column, row))
     }
 
     open fun editColumn_row_withEvent_select(column: Long, row: Long, event: MemorySegment, select: Boolean): Unit {
@@ -205,24 +205,24 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, column, row, event, select)
     }
 
-    open fun drawRow_clipRect(row: Long, clipRect: MemorySegment): Unit {
+    open fun drawRow_clipRect(row: Long, clipRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawRow:clipRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, row, ObjCRuntime.ObjCStructArg(clipRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, row, ObjCRuntime.ObjCStructArg(clipRect.segment, NSRect.layout))
     }
 
-    open fun highlightSelectionInClipRect(clipRect: MemorySegment): Unit {
+    open fun highlightSelectionInClipRect(clipRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("highlightSelectionInClipRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(clipRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(clipRect.segment, NSRect.layout))
     }
 
-    open fun drawGridInClipRect(clipRect: MemorySegment): Unit {
+    open fun drawGridInClipRect(clipRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawGridInClipRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(clipRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(clipRect.segment, NSRect.layout))
     }
 
-    open fun drawBackgroundInClipRect(clipRect: MemorySegment): Unit {
+    open fun drawBackgroundInClipRect(clipRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawBackgroundInClipRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(clipRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(clipRect.segment, NSRect.layout))
     }
 
     open fun viewAtColumn_row_makeIfNecessary(column: Long, row: Long, makeIfNecessary: Boolean): MemorySegment {
@@ -265,14 +265,14 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun insertRowsAtIndexes_withAnimation(indexes: MemorySegment, animationOptions: MemorySegment): Unit {
+    open fun insertRowsAtIndexes_withAnimation(indexes: MemorySegment, animationOptions: NSTableViewAnimationOptions): Unit {
         val sel = ObjCRuntime.sel("insertRowsAtIndexes:withAnimation:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexes, animationOptions)
+        ObjCRuntime.msgSend(null, ptr, sel, indexes, animationOptions.rawValue)
     }
 
-    open fun removeRowsAtIndexes_withAnimation(indexes: MemorySegment, animationOptions: MemorySegment): Unit {
+    open fun removeRowsAtIndexes_withAnimation(indexes: MemorySegment, animationOptions: NSTableViewAnimationOptions): Unit {
         val sel = ObjCRuntime.sel("removeRowsAtIndexes:withAnimation:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexes, animationOptions)
+        ObjCRuntime.msgSend(null, ptr, sel, indexes, animationOptions.rawValue)
     }
 
     open fun moveRowAtIndex_toIndex(oldIndex: Long, newIndex: Long): Unit {
@@ -280,14 +280,14 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, oldIndex, newIndex)
     }
 
-    open fun hideRowsAtIndexes_withAnimation(indexes: MemorySegment, rowAnimation: MemorySegment): Unit {
+    open fun hideRowsAtIndexes_withAnimation(indexes: MemorySegment, rowAnimation: NSTableViewAnimationOptions): Unit {
         val sel = ObjCRuntime.sel("hideRowsAtIndexes:withAnimation:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexes, rowAnimation)
+        ObjCRuntime.msgSend(null, ptr, sel, indexes, rowAnimation.rawValue)
     }
 
-    open fun unhideRowsAtIndexes_withAnimation(indexes: MemorySegment, rowAnimation: MemorySegment): Unit {
+    open fun unhideRowsAtIndexes_withAnimation(indexes: MemorySegment, rowAnimation: NSTableViewAnimationOptions): Unit {
         val sel = ObjCRuntime.sel("unhideRowsAtIndexes:withAnimation:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexes, rowAnimation)
+        ObjCRuntime.msgSend(null, ptr, sel, indexes, rowAnimation.rawValue)
     }
 
     open fun registerNib_forIdentifier(nib: MemorySegment, identifier: MemorySegment): Unit {
@@ -368,33 +368,33 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property columnAutoresizingStyle
-    open fun columnAutoresizingStyle(): MemorySegment {
+    open fun columnAutoresizingStyle(): NSTableViewColumnAutoresizingStyle {
         val sel = ObjCRuntime.sel("columnAutoresizingStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewColumnAutoresizingStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setColumnAutoresizingStyle(value: MemorySegment) {
+    open fun setColumnAutoresizingStyle(value: NSTableViewColumnAutoresizingStyle) {
         val sel = ObjCRuntime.sel("setColumnAutoresizingStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property gridStyleMask
-    open fun gridStyleMask(): MemorySegment {
+    open fun gridStyleMask(): NSTableViewGridLineStyle {
         val sel = ObjCRuntime.sel("gridStyleMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewGridLineStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setGridStyleMask(value: MemorySegment) {
+    open fun setGridStyleMask(value: NSTableViewGridLineStyle) {
         val sel = ObjCRuntime.sel("setGridStyleMask:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property intercellSpacing
-    open fun intercellSpacing(): MemorySegment {
+    open fun intercellSpacing(): NSSize {
         val sel = ObjCRuntime.sel("intercellSpacing")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setIntercellSpacing(value: MemorySegment) {
+    open fun setIntercellSpacing(value: NSSize) {
         val sel = ObjCRuntime.sel("setIntercellSpacing:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property usesAlternatingRowBackgroundColors
@@ -428,19 +428,19 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property rowSizeStyle
-    open fun rowSizeStyle(): MemorySegment {
+    open fun rowSizeStyle(): NSTableViewRowSizeStyle {
         val sel = ObjCRuntime.sel("rowSizeStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewRowSizeStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setRowSizeStyle(value: MemorySegment) {
+    open fun setRowSizeStyle(value: NSTableViewRowSizeStyle) {
         val sel = ObjCRuntime.sel("setRowSizeStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property effectiveRowSizeStyle
-    open fun effectiveRowSizeStyle(): MemorySegment {
+    open fun effectiveRowSizeStyle(): NSTableViewRowSizeStyle {
         val sel = ObjCRuntime.sel("effectiveRowSizeStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewRowSizeStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property rowHeight
@@ -614,39 +614,39 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property style
-    open fun style(): MemorySegment {
+    open fun style(): NSTableViewStyle {
         val sel = ObjCRuntime.sel("style")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setStyle(value: MemorySegment) {
+    open fun setStyle(value: NSTableViewStyle) {
         val sel = ObjCRuntime.sel("setStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property effectiveStyle
-    open fun effectiveStyle(): MemorySegment {
+    open fun effectiveStyle(): NSTableViewStyle {
         val sel = ObjCRuntime.sel("effectiveStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property selectionHighlightStyle
-    open fun selectionHighlightStyle(): MemorySegment {
+    open fun selectionHighlightStyle(): NSTableViewSelectionHighlightStyle {
         val sel = ObjCRuntime.sel("selectionHighlightStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewSelectionHighlightStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setSelectionHighlightStyle(value: MemorySegment) {
+    open fun setSelectionHighlightStyle(value: NSTableViewSelectionHighlightStyle) {
         val sel = ObjCRuntime.sel("setSelectionHighlightStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property draggingDestinationFeedbackStyle
-    open fun draggingDestinationFeedbackStyle(): MemorySegment {
+    open fun draggingDestinationFeedbackStyle(): NSTableViewDraggingDestinationFeedbackStyle {
         val sel = ObjCRuntime.sel("draggingDestinationFeedbackStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewDraggingDestinationFeedbackStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDraggingDestinationFeedbackStyle(value: MemorySegment) {
+    open fun setDraggingDestinationFeedbackStyle(value: NSTableViewDraggingDestinationFeedbackStyle) {
         val sel = ObjCRuntime.sel("setDraggingDestinationFeedbackStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property autosaveName
@@ -713,13 +713,13 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property userInterfaceLayoutDirection
-    override fun userInterfaceLayoutDirection(): MemorySegment {
+    override fun userInterfaceLayoutDirection(): NSUserInterfaceLayoutDirection {
         val sel = ObjCRuntime.sel("userInterfaceLayoutDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSUserInterfaceLayoutDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    override fun setUserInterfaceLayoutDirection(value: MemorySegment) {
+    override fun setUserInterfaceLayoutDirection(value: NSUserInterfaceLayoutDirection) {
         val sel = ObjCRuntime.sel("setUserInterfaceLayoutDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property usesAutomaticRowHeights
@@ -766,9 +766,9 @@ fun NSTableView.selectedRowEnumerator(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
-fun NSTableView.dragImageForRows_event_dragImageOffset(dragRows: MemorySegment, dragEvent: MemorySegment, dragImageOffset: MemorySegment): MemorySegment {
+fun NSTableView.dragImageForRows_event_dragImageOffset(dragRows: MemorySegment, dragEvent: MemorySegment, dragImageOffset: NSPointPointer): MemorySegment {
     val sel = ObjCRuntime.sel("dragImageForRows:event:dragImageOffset:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, dragRows, dragEvent, dragImageOffset) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, dragRows, dragEvent, dragImageOffset.segment) as MemorySegment
 }
 
 fun NSTableView.setAutoresizesAllColumnsToFit(flag: Boolean): Unit {
@@ -781,9 +781,9 @@ fun NSTableView.autoresizesAllColumnsToFit(): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
-fun NSTableView.columnsInRect(rect: MemorySegment): MemorySegment {
+fun NSTableView.columnsInRect(rect: NSRect): NSRange {
     val sel = ObjCRuntime.sel("columnsInRect:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, rect) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
 }
 
 fun NSTableView.preparedCellAtColumn_row(column: Long, row: Long): MemorySegment {

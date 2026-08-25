@@ -114,13 +114,13 @@ open class NSComboBoxCell(override val ptr: MemorySegment) : NSTextFieldCell(ptr
     }
 
     // @property intercellSpacing
-    open fun intercellSpacing(): MemorySegment {
+    open fun intercellSpacing(): NSSize {
         val sel = ObjCRuntime.sel("intercellSpacing")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setIntercellSpacing(value: MemorySegment) {
+    open fun setIntercellSpacing(value: NSSize) {
         val sel = ObjCRuntime.sel("setIntercellSpacing:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property itemHeight

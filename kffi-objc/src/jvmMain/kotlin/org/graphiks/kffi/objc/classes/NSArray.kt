@@ -82,9 +82,9 @@ fun NSArray.firstObjectCommonWithArray(otherArray: MemorySegment): MemorySegment
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, otherArray) as MemorySegment
 }
 
-fun NSArray.getObjects_range(objects: MemorySegment, range: MemorySegment): Unit {
+fun NSArray.getObjects_range(objects: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("getObjects:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, objects, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, objects, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 fun NSArray.indexOfObject(anObject: MemorySegment): Long {
@@ -92,9 +92,9 @@ fun NSArray.indexOfObject(anObject: MemorySegment): Long {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, anObject) as Long
 }
 
-fun NSArray.indexOfObject_inRange(anObject: MemorySegment, range: MemorySegment): Long {
+fun NSArray.indexOfObject_inRange(anObject: MemorySegment, range: NSRange): Long {
     val sel = ObjCRuntime.sel("indexOfObject:inRange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, anObject, range) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, anObject, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Long
 }
 
 fun NSArray.indexOfObjectIdenticalTo(anObject: MemorySegment): Long {
@@ -102,9 +102,9 @@ fun NSArray.indexOfObjectIdenticalTo(anObject: MemorySegment): Long {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, anObject) as Long
 }
 
-fun NSArray.indexOfObjectIdenticalTo_inRange(anObject: MemorySegment, range: MemorySegment): Long {
+fun NSArray.indexOfObjectIdenticalTo_inRange(anObject: MemorySegment, range: NSRange): Long {
     val sel = ObjCRuntime.sel("indexOfObjectIdenticalTo:inRange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, anObject, range) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, anObject, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Long
 }
 
 fun NSArray.isEqualToArray(otherArray: MemorySegment): Boolean {
@@ -143,9 +143,9 @@ fun NSArray.sortedArrayUsingSelector(comparator: MemorySegment): MemorySegment {
 }
 
 /** @return NSArray<ObjectType> * */
-fun NSArray.subarrayWithRange(range: MemorySegment): MemorySegment {
+fun NSArray.subarrayWithRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("subarrayWithRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
 fun NSArray.writeToURL_error(url: MemorySegment, error: MemorySegment): Boolean {
@@ -179,14 +179,14 @@ fun NSArray.enumerateObjectsUsingBlock(block: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, block)
 }
 
-fun NSArray.enumerateObjectsWithOptions_usingBlock(opts: MemorySegment, block: MemorySegment): Unit {
+fun NSArray.enumerateObjectsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsWithOptions:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, block)
 }
 
-fun NSArray.enumerateObjectsAtIndexes_options_usingBlock(s: MemorySegment, opts: MemorySegment, block: MemorySegment): Unit {
+fun NSArray.enumerateObjectsAtIndexes_options_usingBlock(s: MemorySegment, opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsAtIndexes:options:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, s, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, s, opts.rawValue, block)
 }
 
 fun NSArray.indexOfObjectPassingTest(predicate: MemorySegment): Long {
@@ -194,14 +194,14 @@ fun NSArray.indexOfObjectPassingTest(predicate: MemorySegment): Long {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, predicate) as Long
 }
 
-fun NSArray.indexOfObjectWithOptions_passingTest(opts: MemorySegment, predicate: MemorySegment): Long {
+fun NSArray.indexOfObjectWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObjectWithOptions:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, opts, predicate) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, opts.rawValue, predicate) as Long
 }
 
-fun NSArray.indexOfObjectAtIndexes_options_passingTest(s: MemorySegment, opts: MemorySegment, predicate: MemorySegment): Long {
+fun NSArray.indexOfObjectAtIndexes_options_passingTest(s: MemorySegment, opts: NSEnumerationOptions, predicate: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObjectAtIndexes:options:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, s, opts, predicate) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, s, opts.rawValue, predicate) as Long
 }
 
 fun NSArray.indexesOfObjectsPassingTest(predicate: MemorySegment): MemorySegment {
@@ -209,14 +209,14 @@ fun NSArray.indexesOfObjectsPassingTest(predicate: MemorySegment): MemorySegment
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, predicate) as MemorySegment
 }
 
-fun NSArray.indexesOfObjectsWithOptions_passingTest(opts: MemorySegment, predicate: MemorySegment): MemorySegment {
+fun NSArray.indexesOfObjectsWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("indexesOfObjectsWithOptions:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts, predicate) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, predicate) as MemorySegment
 }
 
-fun NSArray.indexesOfObjectsAtIndexes_options_passingTest(s: MemorySegment, opts: MemorySegment, predicate: MemorySegment): MemorySegment {
+fun NSArray.indexesOfObjectsAtIndexes_options_passingTest(s: MemorySegment, opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("indexesOfObjectsAtIndexes:options:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, s, opts, predicate) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, s, opts.rawValue, predicate) as MemorySegment
 }
 
 /** @return NSArray<ObjectType> * */
@@ -226,14 +226,14 @@ fun NSArray.sortedArrayUsingComparator(cmptr: MemorySegment): MemorySegment {
 }
 
 /** @return NSArray<ObjectType> * */
-fun NSArray.sortedArrayWithOptions_usingComparator(opts: MemorySegment, cmptr: MemorySegment): MemorySegment {
+fun NSArray.sortedArrayWithOptions_usingComparator(opts: NSSortOptions, cmptr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("sortedArrayWithOptions:usingComparator:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts, cmptr) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, cmptr) as MemorySegment
 }
 
-fun NSArray.indexOfObject_inSortedRange_options_usingComparator(obj: MemorySegment, r: MemorySegment, opts: MemorySegment, cmp: MemorySegment): Long {
+fun NSArray.indexOfObject_inSortedRange_options_usingComparator(obj: MemorySegment, r: NSRange, opts: NSBinarySearchingOptions, cmp: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObject:inSortedRange:options:usingComparator:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, obj, r, opts, cmp) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, obj, ObjCRuntime.ObjCStructArg(r.segment, NSRange.layout), opts.rawValue, cmp) as Long
 }
 
 fun NSArray.description(): MemorySegment {
@@ -324,15 +324,15 @@ fun NSArray_arrayWithContentsOfURL_error(url: MemorySegment, error: MemorySegmen
 // ── Category: NSArrayDiffing on NSArray ─────────────────────────────────────────
 
 /** @return NSOrderedCollectionDifference<ObjectType> * */
-fun NSArray.differenceFromArray_withOptions_usingEquivalenceTest(other: MemorySegment, options: MemorySegment, block: MemorySegment): MemorySegment {
+fun NSArray.differenceFromArray_withOptions_usingEquivalenceTest(other: MemorySegment, options: NSOrderedCollectionDifferenceCalculationOptions, block: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("differenceFromArray:withOptions:usingEquivalenceTest:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options, block) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options.rawValue, block) as MemorySegment
 }
 
 /** @return NSOrderedCollectionDifference<ObjectType> * */
-fun NSArray.differenceFromArray_withOptions(other: MemorySegment, options: MemorySegment): MemorySegment {
+fun NSArray.differenceFromArray_withOptions(other: MemorySegment, options: NSOrderedCollectionDifferenceCalculationOptions): MemorySegment {
     val sel = ObjCRuntime.sel("differenceFromArray:withOptions:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options.rawValue) as MemorySegment
 }
 
 /** @return NSOrderedCollectionDifference<ObjectType> * */
@@ -412,9 +412,9 @@ fun NSArray.setValue_forKey(value: MemorySegment, key: MemorySegment): Unit {
 
 // ── Category: NSKeyValueObserverRegistration on NSArray ─────────────────────────────────────────
 
-fun NSArray.addObserver_toObjectsAtIndexes_forKeyPath_options_context(observer: MemorySegment, indexes: MemorySegment, keyPath: MemorySegment, options: MemorySegment, context: MemorySegment): Unit {
+fun NSArray.addObserver_toObjectsAtIndexes_forKeyPath_options_context(observer: MemorySegment, indexes: MemorySegment, keyPath: MemorySegment, options: NSKeyValueObservingOptions, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("addObserver:toObjectsAtIndexes:forKeyPath:options:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, indexes, keyPath, options, context)
+    ObjCRuntime.msgSend(null, this.ptr, sel, observer, indexes, keyPath, options.rawValue, context)
 }
 
 fun NSArray.removeObserver_fromObjectsAtIndexes_forKeyPath_context(observer: MemorySegment, indexes: MemorySegment, keyPath: MemorySegment, context: MemorySegment): Unit {
@@ -427,9 +427,9 @@ fun NSArray.removeObserver_fromObjectsAtIndexes_forKeyPath(observer: MemorySegme
     ObjCRuntime.msgSend(null, this.ptr, sel, observer, indexes, keyPath)
 }
 
-fun NSArray.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: MemorySegment, context: MemorySegment): Unit {
+fun NSArray.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: NSKeyValueObservingOptions, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("addObserver:forKeyPath:options:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options, context)
+    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options.rawValue, context)
 }
 
 fun NSArray.removeObserver_forKeyPath_context(observer: MemorySegment, keyPath: MemorySegment, context: MemorySegment): Unit {

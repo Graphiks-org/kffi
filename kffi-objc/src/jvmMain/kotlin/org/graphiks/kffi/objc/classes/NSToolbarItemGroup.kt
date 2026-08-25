@@ -12,14 +12,14 @@ open class NSToolbarItemGroup(override val ptr: MemorySegment) : NSToolbarItem(p
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSToolbarItemGroup") }
 
-        fun groupWithItemIdentifier_titles_selectionMode_labels_target_action(itemIdentifier: MemorySegment, titles: MemorySegment, selectionMode: MemorySegment, labels: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {
+        fun groupWithItemIdentifier_titles_selectionMode_labels_target_action(itemIdentifier: MemorySegment, titles: MemorySegment, selectionMode: NSToolbarItemGroupSelectionMode, labels: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("groupWithItemIdentifier:titles:selectionMode:labels:target:action:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, itemIdentifier, titles, selectionMode, labels, target, action) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, itemIdentifier, titles, selectionMode.rawValue, labels, target, action) as MemorySegment
         }
 
-        fun groupWithItemIdentifier_images_selectionMode_labels_target_action(itemIdentifier: MemorySegment, images: MemorySegment, selectionMode: MemorySegment, labels: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {
+        fun groupWithItemIdentifier_images_selectionMode_labels_target_action(itemIdentifier: MemorySegment, images: MemorySegment, selectionMode: NSToolbarItemGroupSelectionMode, labels: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("groupWithItemIdentifier:images:selectionMode:labels:target:action:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, itemIdentifier, images, selectionMode, labels, target, action) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, itemIdentifier, images, selectionMode.rawValue, labels, target, action) as MemorySegment
         }
 
     }
@@ -46,23 +46,23 @@ open class NSToolbarItemGroup(override val ptr: MemorySegment) : NSToolbarItem(p
     }
 
     // @property controlRepresentation
-    open fun controlRepresentation(): MemorySegment {
+    open fun controlRepresentation(): NSToolbarItemGroupControlRepresentation {
         val sel = ObjCRuntime.sel("controlRepresentation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSToolbarItemGroupControlRepresentation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setControlRepresentation(value: MemorySegment) {
+    open fun setControlRepresentation(value: NSToolbarItemGroupControlRepresentation) {
         val sel = ObjCRuntime.sel("setControlRepresentation:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property selectionMode
-    open fun selectionMode(): MemorySegment {
+    open fun selectionMode(): NSToolbarItemGroupSelectionMode {
         val sel = ObjCRuntime.sel("selectionMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSToolbarItemGroupSelectionMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setSelectionMode(value: MemorySegment) {
+    open fun setSelectionMode(value: NSToolbarItemGroupSelectionMode) {
         val sel = ObjCRuntime.sel("setSelectionMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property selectedIndex

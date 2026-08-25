@@ -15,9 +15,9 @@ open class NSTextContainer(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithSize(size: MemorySegment): MemorySegment {
+    open fun initWithSize(size: CGSize): MemorySegment {
         val sel = ObjCRuntime.sel("initWithSize:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(size, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, CGSize.layout)) as MemorySegment
     }
 
     open fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -25,9 +25,9 @@ open class NSTextContainer(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun lineFragmentRectForProposedRect_atIndex_writingDirection_remainingRect(proposedRect: MemorySegment, characterIndex: Long, baseWritingDirection: MemorySegment, remainingRect: MemorySegment): MemorySegment {
+    open fun lineFragmentRectForProposedRect_atIndex_writingDirection_remainingRect(proposedRect: CGRect, characterIndex: Long, baseWritingDirection: NSWritingDirection, remainingRect: CGRectPointer): CGRect {
         val sel = ObjCRuntime.sel("lineFragmentRectForProposedRect:atIndex:writingDirection:remainingRect:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(proposedRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), characterIndex, baseWritingDirection, remainingRect) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(proposedRect.segment, CGRect.layout), characterIndex, baseWritingDirection.rawValue, remainingRect.segment))
     }
 
     // @property textLayoutManager
@@ -37,23 +37,23 @@ open class NSTextContainer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property size
-    open fun size(): MemorySegment {
+    open fun size(): CGSize {
         val sel = ObjCRuntime.sel("size")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return CGSize(ObjCRuntime.msgSendStruct(CGSize.layout, ptr, sel))
     }
-    open fun setSize(value: MemorySegment) {
+    open fun setSize(value: CGSize) {
         val sel = ObjCRuntime.sel("setSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CGSize.layout))
     }
 
     // @property lineBreakMode
-    open fun lineBreakMode(): MemorySegment {
+    open fun lineBreakMode(): NSLineBreakMode {
         val sel = ObjCRuntime.sel("lineBreakMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLineBreakMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setLineBreakMode(value: MemorySegment) {
+    open fun setLineBreakMode(value: NSLineBreakMode) {
         val sel = ObjCRuntime.sel("setLineBreakMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property lineFragmentPadding
@@ -144,27 +144,27 @@ fun NSTextContainer.setTextView(textView: MemorySegment): Unit {
 
 // ── Category: NSTextContainerDeprecated on NSTextContainer ─────────────────────────────────────────
 
-fun NSTextContainer.initWithContainerSize(aContainerSize: MemorySegment): MemorySegment {
+fun NSTextContainer.initWithContainerSize(aContainerSize: NSSize): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContainerSize:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, aContainerSize) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(aContainerSize.segment, NSSize.layout)) as MemorySegment
 }
 
-fun NSTextContainer.lineFragmentRectForProposedRect_sweepDirection_movementDirection_remainingRect(proposedRect: MemorySegment, sweepDirection: MemorySegment, movementDirection: MemorySegment, remainingRect: MemorySegment): MemorySegment {
+fun NSTextContainer.lineFragmentRectForProposedRect_sweepDirection_movementDirection_remainingRect(proposedRect: NSRect, sweepDirection: NSLineSweepDirection, movementDirection: NSLineMovementDirection, remainingRect: NSRectPointer): NSRect {
     val sel = ObjCRuntime.sel("lineFragmentRectForProposedRect:sweepDirection:movementDirection:remainingRect:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, proposedRect, sweepDirection, movementDirection, remainingRect) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(proposedRect.segment, NSRect.layout), sweepDirection.rawValue, movementDirection.rawValue, remainingRect.segment))
 }
 
-fun NSTextContainer.containsPoint(point: MemorySegment): Boolean {
+fun NSTextContainer.containsPoint(point: NSPoint): Boolean {
     val sel = ObjCRuntime.sel("containsPoint:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, point) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Boolean
 }
 
-fun NSTextContainer.containerSize(): MemorySegment {
+fun NSTextContainer.containerSize(): NSSize {
     val sel = ObjCRuntime.sel("containerSize")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel))
 }
 
-fun NSTextContainer.setContainerSize(containerSize: MemorySegment): Unit {
+fun NSTextContainer.setContainerSize(containerSize: NSSize): Unit {
     val sel = ObjCRuntime.sel("setContainerSize:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, containerSize)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(containerSize.segment, NSSize.layout))
 }

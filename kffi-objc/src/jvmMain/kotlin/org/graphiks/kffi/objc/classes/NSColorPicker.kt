@@ -40,9 +40,9 @@ open class NSColorPicker(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, colorList)
     }
 
-    open fun setMode(mode: MemorySegment): Unit {
+    open fun setMode(mode: NSColorPanelMode): Unit {
         val sel = ObjCRuntime.sel("setMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, mode)
+        ObjCRuntime.msgSend(null, ptr, sel, mode.rawValue)
     }
 
     // @property colorPanel
@@ -67,9 +67,9 @@ open class NSColorPicker(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun buttonToolTipAsString(): String = ObjCRuntime.toJavaString(buttonToolTip())
 
     // @property minContentSize
-    open fun minContentSize(): MemorySegment {
+    open fun minContentSize(): NSSize {
         val sel = ObjCRuntime.sel("minContentSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
 
 }

@@ -20,31 +20,31 @@ open class NSFileManager(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     /** @return NSArray<NSURL *> * */
-    open fun mountedVolumeURLsIncludingResourceValuesForKeys_options(propertyKeys: MemorySegment, options: MemorySegment): MemorySegment {
+    open fun mountedVolumeURLsIncludingResourceValuesForKeys_options(propertyKeys: MemorySegment, options: NSVolumeEnumerationOptions): MemorySegment {
         val sel = ObjCRuntime.sel("mountedVolumeURLsIncludingResourceValuesForKeys:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, propertyKeys, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, propertyKeys, options.rawValue) as MemorySegment
     }
 
-    open fun unmountVolumeAtURL_options_completionHandler(url: MemorySegment, mask: MemorySegment, completionHandler: MemorySegment): Unit {
+    open fun unmountVolumeAtURL_options_completionHandler(url: MemorySegment, mask: NSFileManagerUnmountOptions, completionHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("unmountVolumeAtURL:options:completionHandler:")
-        ObjCRuntime.msgSend(null, ptr, sel, url, mask, completionHandler)
+        ObjCRuntime.msgSend(null, ptr, sel, url, mask.rawValue, completionHandler)
     }
 
     /** @return NSArray<NSURL *> * */
-    open fun contentsOfDirectoryAtURL_includingPropertiesForKeys_options_error(url: MemorySegment, keys: MemorySegment, mask: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun contentsOfDirectoryAtURL_includingPropertiesForKeys_options_error(url: MemorySegment, keys: MemorySegment, mask: NSDirectoryEnumerationOptions, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("contentsOfDirectoryAtURL:includingPropertiesForKeys:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, keys, mask, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, keys, mask.rawValue, error) as MemorySegment
     }
 
     /** @return NSArray<NSURL *> * */
-    open fun URLsForDirectory_inDomains(directory: MemorySegment, domainMask: MemorySegment): MemorySegment {
+    open fun URLsForDirectory_inDomains(directory: NSSearchPathDirectory, domainMask: NSSearchPathDomainMask): MemorySegment {
         val sel = ObjCRuntime.sel("URLsForDirectory:inDomains:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, directory, domainMask) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, directory.rawValue, domainMask.rawValue) as MemorySegment
     }
 
-    open fun URLForDirectory_inDomain_appropriateForURL_create_error(directory: MemorySegment, domain: MemorySegment, url: MemorySegment, shouldCreate: Boolean, error: MemorySegment): MemorySegment {
+    open fun URLForDirectory_inDomain_appropriateForURL_create_error(directory: NSSearchPathDirectory, domain: NSSearchPathDomainMask, url: MemorySegment, shouldCreate: Boolean, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("URLForDirectory:inDomain:appropriateForURL:create:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, directory, domain, url, shouldCreate, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, directory.rawValue, domain.rawValue, url, shouldCreate, error) as MemorySegment
     }
 
     open fun getRelationship_ofDirectoryAtURL_toItemAtURL_error(outRelationship: MemorySegment, directoryURL: MemorySegment, otherURL: MemorySegment, error: MemorySegment): Boolean {
@@ -52,9 +52,9 @@ open class NSFileManager(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, outRelationship, directoryURL, otherURL, error) as Boolean
     }
 
-    open fun getRelationship_ofDirectory_inDomain_toItemAtURL_error(outRelationship: MemorySegment, directory: MemorySegment, domainMask: MemorySegment, url: MemorySegment, error: MemorySegment): Boolean {
+    open fun getRelationship_ofDirectory_inDomain_toItemAtURL_error(outRelationship: MemorySegment, directory: NSSearchPathDirectory, domainMask: NSSearchPathDomainMask, url: MemorySegment, error: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("getRelationship:ofDirectory:inDomain:toItemAtURL:error:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, outRelationship, directory, domainMask, url, error) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, outRelationship, directory.rawValue, domainMask.rawValue, url, error) as Boolean
     }
 
     open fun createDirectoryAtURL_withIntermediateDirectories_attributes_error(url: MemorySegment, createIntermediates: Boolean, attributes: MemorySegment, error: MemorySegment): Boolean {
@@ -389,9 +389,9 @@ open class NSFileManager(override val ptr: MemorySegment) : NSObject(ptr) {
     fun enumeratorAtPath(path: String): MemorySegment = enumeratorAtPath(ObjCRuntime.newNSString(Arena.global(), path))
 
     /** @return NSDirectoryEnumerator<NSURL *> * */
-    open fun enumeratorAtURL_includingPropertiesForKeys_options_errorHandler(url: MemorySegment, keys: MemorySegment, mask: MemorySegment, handler: MemorySegment): MemorySegment {
+    open fun enumeratorAtURL_includingPropertiesForKeys_options_errorHandler(url: MemorySegment, keys: MemorySegment, mask: NSDirectoryEnumerationOptions, handler: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("enumeratorAtURL:includingPropertiesForKeys:options:errorHandler:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, keys, mask, handler) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, keys, mask.rawValue, handler) as MemorySegment
     }
 
     /** @return NSArray<NSString *> * */
@@ -435,13 +435,13 @@ open class NSFileManager(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
     fun stringWithFileSystemRepresentation_lengthAsString(str: MemorySegment, len: Long): String = ObjCRuntime.toJavaString(stringWithFileSystemRepresentation_length(str, len))
 
-    open fun replaceItemAtURL_withItemAtURL_backupItemName_options_resultingItemURL_error(originalItemURL: MemorySegment, newItemURL: MemorySegment, backupItemName: MemorySegment, options: MemorySegment, resultingURL: MemorySegment, error: MemorySegment): Boolean {
+    open fun replaceItemAtURL_withItemAtURL_backupItemName_options_resultingItemURL_error(originalItemURL: MemorySegment, newItemURL: MemorySegment, backupItemName: MemorySegment, options: NSFileManagerItemReplacementOptions, resultingURL: MemorySegment, error: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("replaceItemAtURL:withItemAtURL:backupItemName:options:resultingItemURL:error:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, originalItemURL, newItemURL, backupItemName, options, resultingURL, error) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, originalItemURL, newItemURL, backupItemName, options.rawValue, resultingURL, error) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun replaceItemAtURL_withItemAtURL_backupItemName_options_resultingItemURL_error(originalItemURL: MemorySegment, newItemURL: MemorySegment, backupItemName: String, options: MemorySegment, resultingURL: MemorySegment, error: MemorySegment): Boolean = replaceItemAtURL_withItemAtURL_backupItemName_options_resultingItemURL_error(originalItemURL, newItemURL, ObjCRuntime.newNSString(Arena.global(), backupItemName), options, resultingURL, error)
+    fun replaceItemAtURL_withItemAtURL_backupItemName_options_resultingItemURL_error(originalItemURL: MemorySegment, newItemURL: MemorySegment, backupItemName: String, options: NSFileManagerItemReplacementOptions, resultingURL: MemorySegment, error: MemorySegment): Boolean = replaceItemAtURL_withItemAtURL_backupItemName_options_resultingItemURL_error(originalItemURL, newItemURL, ObjCRuntime.newNSString(Arena.global(), backupItemName), options, resultingURL, error)
 
     open fun setUbiquitous_itemAtURL_destinationURL_error(flag: Boolean, url: MemorySegment, destinationURL: MemorySegment, error: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("setUbiquitous:itemAtURL:destinationURL:error:")
@@ -481,9 +481,9 @@ open class NSFileManager(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, url, completionHandler)
     }
 
-    open fun resumeSyncForUbiquitousItemAtURL_withBehavior_completionHandler(url: MemorySegment, behavior: MemorySegment, completionHandler: MemorySegment): Unit {
+    open fun resumeSyncForUbiquitousItemAtURL_withBehavior_completionHandler(url: MemorySegment, behavior: NSFileManagerResumeSyncBehavior, completionHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("resumeSyncForUbiquitousItemAtURL:withBehavior:completionHandler:")
-        ObjCRuntime.msgSend(null, ptr, sel, url, behavior, completionHandler)
+        ObjCRuntime.msgSend(null, ptr, sel, url, behavior.rawValue, completionHandler)
     }
 
     open fun fetchLatestRemoteVersionOfItemAtURL_completionHandler(url: MemorySegment, completionHandler: MemorySegment): Unit {
@@ -491,9 +491,9 @@ open class NSFileManager(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, url, completionHandler)
     }
 
-    open fun uploadLocalVersionOfUbiquitousItemAtURL_withConflictResolutionPolicy_completionHandler(url: MemorySegment, conflictResolutionPolicy: MemorySegment, completionHandler: MemorySegment): Unit {
+    open fun uploadLocalVersionOfUbiquitousItemAtURL_withConflictResolutionPolicy_completionHandler(url: MemorySegment, conflictResolutionPolicy: NSFileManagerUploadLocalVersionConflictPolicy, completionHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("uploadLocalVersionOfUbiquitousItemAtURL:withConflictResolutionPolicy:completionHandler:")
-        ObjCRuntime.msgSend(null, ptr, sel, url, conflictResolutionPolicy, completionHandler)
+        ObjCRuntime.msgSend(null, ptr, sel, url, conflictResolutionPolicy.rawValue, completionHandler)
     }
 
     open fun getFileProviderServicesForItemAtURL_completionHandler(url: MemorySegment, completionHandler: MemorySegment): Unit {

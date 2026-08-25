@@ -30,14 +30,14 @@ open class NSCollectionView(override val ptr: MemorySegment) : NSView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind, indexPath) as MemorySegment
     }
 
-    open fun frameForItemAtIndex(index: Long): MemorySegment {
+    open fun frameForItemAtIndex(index: Long): NSRect {
         val sel = ObjCRuntime.sel("frameForItemAtIndex:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, index) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, index))
     }
 
-    open fun frameForItemAtIndex_withNumberOfItems(index: Long, numberOfItems: Long): MemorySegment {
+    open fun frameForItemAtIndex_withNumberOfItems(index: Long, numberOfItems: Long): NSRect {
         val sel = ObjCRuntime.sel("frameForItemAtIndex:withNumberOfItems:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, index, numberOfItems) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, index, numberOfItems))
     }
 
     open fun numberOfItemsInSection(section: Long): Long {
@@ -45,9 +45,9 @@ open class NSCollectionView(override val ptr: MemorySegment) : NSView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, section) as Long
     }
 
-    open fun selectItemsAtIndexPaths_scrollPosition(indexPaths: MemorySegment, scrollPosition: MemorySegment): Unit {
+    open fun selectItemsAtIndexPaths_scrollPosition(indexPaths: MemorySegment, scrollPosition: NSCollectionViewScrollPosition): Unit {
         val sel = ObjCRuntime.sel("selectItemsAtIndexPaths:scrollPosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexPaths, scrollPosition)
+        ObjCRuntime.msgSend(null, ptr, sel, indexPaths, scrollPosition.rawValue)
     }
 
     open fun deselectItemsAtIndexPaths(indexPaths: MemorySegment): Unit {
@@ -122,9 +122,9 @@ open class NSCollectionView(override val ptr: MemorySegment) : NSView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, item) as MemorySegment
     }
 
-    open fun indexPathForItemAtPoint(point: MemorySegment): MemorySegment {
+    open fun indexPathForItemAtPoint(point: NSPoint): MemorySegment {
         val sel = ObjCRuntime.sel("indexPathForItemAtPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as MemorySegment
     }
 
     /** @return NSView<NSCollectionViewElement> * */
@@ -195,24 +195,24 @@ open class NSCollectionView(override val ptr: MemorySegment) : NSView(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
-    open fun scrollToItemsAtIndexPaths_scrollPosition(indexPaths: MemorySegment, scrollPosition: MemorySegment): Unit {
+    open fun scrollToItemsAtIndexPaths_scrollPosition(indexPaths: MemorySegment, scrollPosition: NSCollectionViewScrollPosition): Unit {
         val sel = ObjCRuntime.sel("scrollToItemsAtIndexPaths:scrollPosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexPaths, scrollPosition)
+        ObjCRuntime.msgSend(null, ptr, sel, indexPaths, scrollPosition.rawValue)
     }
 
-    open fun setDraggingSourceOperationMask_forLocal(dragOperationMask: MemorySegment, localDestination: Boolean): Unit {
+    open fun setDraggingSourceOperationMask_forLocal(dragOperationMask: NSDragOperation, localDestination: Boolean): Unit {
         val sel = ObjCRuntime.sel("setDraggingSourceOperationMask:forLocal:")
-        ObjCRuntime.msgSend(null, ptr, sel, dragOperationMask, localDestination)
+        ObjCRuntime.msgSend(null, ptr, sel, dragOperationMask.rawValue, localDestination)
     }
 
-    open fun draggingImageForItemsAtIndexPaths_withEvent_offset(indexPaths: MemorySegment, event: MemorySegment, dragImageOffset: MemorySegment): MemorySegment {
+    open fun draggingImageForItemsAtIndexPaths_withEvent_offset(indexPaths: MemorySegment, event: MemorySegment, dragImageOffset: NSPointPointer): MemorySegment {
         val sel = ObjCRuntime.sel("draggingImageForItemsAtIndexPaths:withEvent:offset:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, indexPaths, event, dragImageOffset) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, indexPaths, event, dragImageOffset.segment) as MemorySegment
     }
 
-    open fun draggingImageForItemsAtIndexes_withEvent_offset(indexes: MemorySegment, event: MemorySegment, dragImageOffset: MemorySegment): MemorySegment {
+    open fun draggingImageForItemsAtIndexes_withEvent_offset(indexes: MemorySegment, event: MemorySegment, dragImageOffset: NSPointPointer): MemorySegment {
         val sel = ObjCRuntime.sel("draggingImageForItemsAtIndexes:withEvent:offset:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, indexes, event, dragImageOffset) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, indexes, event, dragImageOffset.segment) as MemorySegment
     }
 
     // @property dataSource
@@ -402,22 +402,22 @@ fun NSCollectionView.setMaxNumberOfColumns(maxNumberOfColumns: Long): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, maxNumberOfColumns)
 }
 
-fun NSCollectionView.minItemSize(): MemorySegment {
+fun NSCollectionView.minItemSize(): NSSize {
     val sel = ObjCRuntime.sel("minItemSize")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel))
 }
 
-fun NSCollectionView.setMinItemSize(minItemSize: MemorySegment): Unit {
+fun NSCollectionView.setMinItemSize(minItemSize: NSSize): Unit {
     val sel = ObjCRuntime.sel("setMinItemSize:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, minItemSize)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(minItemSize.segment, NSSize.layout))
 }
 
-fun NSCollectionView.maxItemSize(): MemorySegment {
+fun NSCollectionView.maxItemSize(): NSSize {
     val sel = ObjCRuntime.sel("maxItemSize")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel))
 }
 
-fun NSCollectionView.setMaxItemSize(maxItemSize: MemorySegment): Unit {
+fun NSCollectionView.setMaxItemSize(maxItemSize: NSSize): Unit {
     val sel = ObjCRuntime.sel("setMaxItemSize:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, maxItemSize)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(maxItemSize.segment, NSSize.layout))
 }

@@ -14,9 +14,9 @@ open class NSPathControl(override val ptr: MemorySegment) : NSControl(ptr) {
 
     }
 
-    open fun setDraggingSourceOperationMask_forLocal(mask: MemorySegment, isLocal: Boolean): Unit {
+    open fun setDraggingSourceOperationMask_forLocal(mask: NSDragOperation, isLocal: Boolean): Unit {
         val sel = ObjCRuntime.sel("setDraggingSourceOperationMask:forLocal:")
-        ObjCRuntime.msgSend(null, ptr, sel, mask, isLocal)
+        ObjCRuntime.msgSend(null, ptr, sel, mask.rawValue, isLocal)
     }
 
     // @property editable
@@ -87,13 +87,13 @@ open class NSPathControl(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property pathStyle
-    open fun pathStyle(): MemorySegment {
+    open fun pathStyle(): NSPathStyle {
         val sel = ObjCRuntime.sel("pathStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPathStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPathStyle(value: MemorySegment) {
+    open fun setPathStyle(value: NSPathStyle) {
         val sel = ObjCRuntime.sel("setPathStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property clickedPathItem

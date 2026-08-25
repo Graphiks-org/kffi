@@ -15,13 +15,13 @@ open class NSTextInsertionIndicator(override val ptr: MemorySegment) : NSView(pt
     }
 
     // @property displayMode
-    open fun displayMode(): MemorySegment {
+    open fun displayMode(): NSTextInsertionIndicatorDisplayMode {
         val sel = ObjCRuntime.sel("displayMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextInsertionIndicatorDisplayMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDisplayMode(value: MemorySegment) {
+    open fun setDisplayMode(value: NSTextInsertionIndicatorDisplayMode) {
         val sel = ObjCRuntime.sel("setDisplayMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property color
@@ -35,13 +35,13 @@ open class NSTextInsertionIndicator(override val ptr: MemorySegment) : NSView(pt
     }
 
     // @property automaticModeOptions
-    open fun automaticModeOptions(): MemorySegment {
+    open fun automaticModeOptions(): NSTextInsertionIndicatorAutomaticModeOptions {
         val sel = ObjCRuntime.sel("automaticModeOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextInsertionIndicatorAutomaticModeOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAutomaticModeOptions(value: MemorySegment) {
+    open fun setAutomaticModeOptions(value: NSTextInsertionIndicatorAutomaticModeOptions) {
         val sel = ObjCRuntime.sel("setAutomaticModeOptions:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property effectsViewInserter

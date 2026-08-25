@@ -69,9 +69,9 @@ open class NSTabView(override val ptr: MemorySegment) : NSView(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, tabViewItem)
     }
 
-    open fun tabViewItemAtPoint(point: MemorySegment): MemorySegment {
+    open fun tabViewItemAtPoint(point: NSPoint): MemorySegment {
         val sel = ObjCRuntime.sel("tabViewItemAtPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as MemorySegment
     }
 
     open fun indexOfTabViewItem(tabViewItem: MemorySegment): Long {
@@ -106,33 +106,33 @@ open class NSTabView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property tabViewType
-    open fun tabViewType(): MemorySegment {
+    open fun tabViewType(): NSTabViewType {
         val sel = ObjCRuntime.sel("tabViewType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTabViewType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTabViewType(value: MemorySegment) {
+    open fun setTabViewType(value: NSTabViewType) {
         val sel = ObjCRuntime.sel("setTabViewType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property tabPosition
-    open fun tabPosition(): MemorySegment {
+    open fun tabPosition(): NSTabPosition {
         val sel = ObjCRuntime.sel("tabPosition")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTabPosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTabPosition(value: MemorySegment) {
+    open fun setTabPosition(value: NSTabPosition) {
         val sel = ObjCRuntime.sel("setTabPosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property tabViewBorderType
-    open fun tabViewBorderType(): MemorySegment {
+    open fun tabViewBorderType(): NSTabViewBorderType {
         val sel = ObjCRuntime.sel("tabViewBorderType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTabViewBorderType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTabViewBorderType(value: MemorySegment) {
+    open fun setTabViewBorderType(value: NSTabViewBorderType) {
         val sel = ObjCRuntime.sel("setTabViewBorderType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property tabViewItems
@@ -157,9 +157,9 @@ open class NSTabView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property minimumSize
-    open fun minimumSize(): MemorySegment {
+    open fun minimumSize(): NSSize {
         val sel = ObjCRuntime.sel("minimumSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
 
     // @property drawsBackground
@@ -173,13 +173,13 @@ open class NSTabView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property controlSize
-    open fun controlSize(): MemorySegment {
+    open fun controlSize(): NSControlSize {
         val sel = ObjCRuntime.sel("controlSize")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSControlSize(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setControlSize(value: MemorySegment) {
+    open fun setControlSize(value: NSControlSize) {
         val sel = ObjCRuntime.sel("setControlSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property delegate
@@ -194,9 +194,9 @@ open class NSTabView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property contentRect
-    open fun contentRect(): MemorySegment {
+    open fun contentRect(): NSRect {
         val sel = ObjCRuntime.sel("contentRect")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property numberOfTabViewItems
@@ -206,13 +206,13 @@ open class NSTabView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property controlTint
-    open fun controlTint(): MemorySegment {
+    open fun controlTint(): NSControlTint {
         val sel = ObjCRuntime.sel("controlTint")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSControlTint(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setControlTint(value: MemorySegment) {
+    open fun setControlTint(value: NSControlTint) {
         val sel = ObjCRuntime.sel("setControlTint:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

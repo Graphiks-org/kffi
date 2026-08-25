@@ -14,19 +14,19 @@ open class NSTextTable(override val ptr: MemorySegment) : NSTextBlock(ptr) {
 
     }
 
-    open fun rectForBlock_layoutAtPoint_inRect_textContainer_characterRange(block: MemorySegment, startingPoint: MemorySegment, rect: MemorySegment, textContainer: MemorySegment, charRange: MemorySegment): MemorySegment {
+    open fun rectForBlock_layoutAtPoint_inRect_textContainer_characterRange(block: MemorySegment, startingPoint: NSPoint, rect: NSRect, textContainer: MemorySegment, charRange: NSRange): NSRect {
         val sel = ObjCRuntime.sel("rectForBlock:layoutAtPoint:inRect:textContainer:characterRange:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, block, ObjCRuntime.ObjCStructArg(startingPoint, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), textContainer, ObjCRuntime.ObjCStructArg(charRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, block, ObjCRuntime.ObjCStructArg(startingPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), textContainer, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout)))
     }
 
-    open fun boundsRectForBlock_contentRect_inRect_textContainer_characterRange(block: MemorySegment, contentRect: MemorySegment, rect: MemorySegment, textContainer: MemorySegment, charRange: MemorySegment): MemorySegment {
+    open fun boundsRectForBlock_contentRect_inRect_textContainer_characterRange(block: MemorySegment, contentRect: NSRect, rect: NSRect, textContainer: MemorySegment, charRange: NSRange): NSRect {
         val sel = ObjCRuntime.sel("boundsRectForBlock:contentRect:inRect:textContainer:characterRange:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, block, ObjCRuntime.ObjCStructArg(contentRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), textContainer, ObjCRuntime.ObjCStructArg(charRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, block, ObjCRuntime.ObjCStructArg(contentRect.segment, NSRect.layout), ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), textContainer, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout)))
     }
 
-    open fun drawBackgroundForBlock_withFrame_inView_characterRange_layoutManager(block: MemorySegment, frameRect: MemorySegment, controlView: MemorySegment, charRange: MemorySegment, layoutManager: MemorySegment): Unit {
+    open fun drawBackgroundForBlock_withFrame_inView_characterRange_layoutManager(block: MemorySegment, frameRect: NSRect, controlView: MemorySegment, charRange: NSRange, layoutManager: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawBackgroundForBlock:withFrame:inView:characterRange:layoutManager:")
-        ObjCRuntime.msgSend(null, ptr, sel, block, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView, ObjCRuntime.ObjCStructArg(charRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), layoutManager)
+        ObjCRuntime.msgSend(null, ptr, sel, block, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout), controlView, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout), layoutManager)
     }
 
     // @property numberOfColumns
@@ -40,13 +40,13 @@ open class NSTextTable(override val ptr: MemorySegment) : NSTextBlock(ptr) {
     }
 
     // @property layoutAlgorithm
-    open fun layoutAlgorithm(): MemorySegment {
+    open fun layoutAlgorithm(): NSTextTableLayoutAlgorithm {
         val sel = ObjCRuntime.sel("layoutAlgorithm")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextTableLayoutAlgorithm(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setLayoutAlgorithm(value: MemorySegment) {
+    open fun setLayoutAlgorithm(value: NSTextTableLayoutAlgorithm) {
         val sel = ObjCRuntime.sel("setLayoutAlgorithm:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property collapsesBorders

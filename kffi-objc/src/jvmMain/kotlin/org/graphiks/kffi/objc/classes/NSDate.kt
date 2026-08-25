@@ -65,9 +65,9 @@ fun NSDate.laterDate(anotherDate: MemorySegment): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, anotherDate) as MemorySegment
 }
 
-fun NSDate.compare(other: MemorySegment): MemorySegment {
+fun NSDate.compare(other: MemorySegment): NSComparisonResult {
     val sel = ObjCRuntime.sel("compare:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, other) as Long)
 }
 
 fun NSDate.isEqualToDate(otherDate: MemorySegment): Boolean {

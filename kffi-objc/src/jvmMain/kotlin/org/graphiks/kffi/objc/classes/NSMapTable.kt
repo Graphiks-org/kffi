@@ -14,9 +14,9 @@ open class NSMapTable(override val ptr: MemorySegment) : NSObject(ptr) {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSMapTable") }
 
         /** @return NSMapTable<KeyType,ObjectType> * */
-        fun mapTableWithKeyOptions_valueOptions(keyOptions: MemorySegment, valueOptions: MemorySegment): MemorySegment {
+        fun mapTableWithKeyOptions_valueOptions(keyOptions: NSPointerFunctionsOptions, valueOptions: NSPointerFunctionsOptions): MemorySegment {
             val sel = ObjCRuntime.sel("mapTableWithKeyOptions:valueOptions:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, keyOptions, valueOptions) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, keyOptions.rawValue, valueOptions.rawValue) as MemorySegment
         }
 
         fun mapTableWithStrongToStrongObjects(): MemorySegment {
@@ -65,9 +65,9 @@ open class NSMapTable(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithKeyOptions_valueOptions_capacity(keyOptions: MemorySegment, valueOptions: MemorySegment, initialCapacity: Long): MemorySegment {
+    open fun initWithKeyOptions_valueOptions_capacity(keyOptions: NSPointerFunctionsOptions, valueOptions: NSPointerFunctionsOptions, initialCapacity: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithKeyOptions:valueOptions:capacity:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, keyOptions, valueOptions, initialCapacity) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, keyOptions.rawValue, valueOptions.rawValue, initialCapacity) as MemorySegment
     }
 
     open fun initWithKeyPointerFunctions_valuePointerFunctions_capacity(keyFunctions: MemorySegment, valueFunctions: MemorySegment, initialCapacity: Long): MemorySegment {

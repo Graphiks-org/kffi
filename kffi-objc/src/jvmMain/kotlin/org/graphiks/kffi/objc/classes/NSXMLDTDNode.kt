@@ -22,9 +22,9 @@ open class NSXMLDTDNode(override val ptr: MemorySegment) : NSXMLNode(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun initWithXMLString(string: String): MemorySegment = initWithXMLString(ObjCRuntime.newNSString(Arena.global(), string))
 
-    override fun initWithKind_options(kind: MemorySegment, options: MemorySegment): MemorySegment {
+    override fun initWithKind_options(kind: NSXMLNodeKind, options: NSXMLNodeOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithKind:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind.rawValue, options.rawValue) as MemorySegment
     }
 
     override fun init(): MemorySegment {
@@ -33,13 +33,13 @@ open class NSXMLDTDNode(override val ptr: MemorySegment) : NSXMLNode(ptr) {
     }
 
     // @property DTDKind
-    open fun DTDKind(): MemorySegment {
+    open fun DTDKind(): NSXMLDTDNodeKind {
         val sel = ObjCRuntime.sel("DTDKind")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSXMLDTDNodeKind(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDTDKind(value: MemorySegment) {
+    open fun setDTDKind(value: NSXMLDTDNodeKind) {
         val sel = ObjCRuntime.sel("setDTDKind:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property external

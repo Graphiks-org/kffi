@@ -50,63 +50,63 @@ open class NSCollectionViewFlowLayout(override val ptr: MemorySegment) : NSColle
     }
 
     // @property itemSize
-    open fun itemSize(): MemorySegment {
+    open fun itemSize(): NSSize {
         val sel = ObjCRuntime.sel("itemSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setItemSize(value: MemorySegment) {
+    open fun setItemSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setItemSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property estimatedItemSize
-    open fun estimatedItemSize(): MemorySegment {
+    open fun estimatedItemSize(): NSSize {
         val sel = ObjCRuntime.sel("estimatedItemSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setEstimatedItemSize(value: MemorySegment) {
+    open fun setEstimatedItemSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setEstimatedItemSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property scrollDirection
-    open fun scrollDirection(): MemorySegment {
+    open fun scrollDirection(): NSCollectionViewScrollDirection {
         val sel = ObjCRuntime.sel("scrollDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCollectionViewScrollDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setScrollDirection(value: MemorySegment) {
+    open fun setScrollDirection(value: NSCollectionViewScrollDirection) {
         val sel = ObjCRuntime.sel("setScrollDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property headerReferenceSize
-    open fun headerReferenceSize(): MemorySegment {
+    open fun headerReferenceSize(): NSSize {
         val sel = ObjCRuntime.sel("headerReferenceSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setHeaderReferenceSize(value: MemorySegment) {
+    open fun setHeaderReferenceSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setHeaderReferenceSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property footerReferenceSize
-    open fun footerReferenceSize(): MemorySegment {
+    open fun footerReferenceSize(): NSSize {
         val sel = ObjCRuntime.sel("footerReferenceSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setFooterReferenceSize(value: MemorySegment) {
+    open fun setFooterReferenceSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setFooterReferenceSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property sectionInset
-    open fun sectionInset(): MemorySegment {
+    open fun sectionInset(): NSEdgeInsets {
         val sel = ObjCRuntime.sel("sectionInset")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), ptr, sel) as MemorySegment
+        return NSEdgeInsets(ObjCRuntime.msgSendStruct(NSEdgeInsets.layout, ptr, sel))
     }
-    open fun setSectionInset(value: MemorySegment) {
+    open fun setSectionInset(value: NSEdgeInsets) {
         val sel = ObjCRuntime.sel("setSectionInset:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSEdgeInsets.layout))
     }
 
     // @property sectionHeadersPinToVisibleBounds

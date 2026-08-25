@@ -20,9 +20,9 @@ open class NSFontAssetRequest(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun initWithFontDescriptors_options(fontDescriptors: MemorySegment, options: MemorySegment): MemorySegment {
+    open fun initWithFontDescriptors_options(fontDescriptors: MemorySegment, options: NSFontAssetRequestOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFontDescriptors:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, fontDescriptors, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, fontDescriptors, options.rawValue) as MemorySegment
     }
 
     open fun downloadFontAssetsWithCompletionHandler(completionHandler: MemorySegment): Unit {

@@ -384,7 +384,7 @@ private object NilInitializerFixture {
     }
 
     fun registerSuperclass(): String {
-        if (ObjCSubclassing.lookupClassOrNull(CLASS_NAME) != MemorySegment.NULL) return CLASS_NAME
+        if (ObjCManagedRuntime.lookupClassOrNull(CLASS_NAME) != MemorySegment.NULL) return CLASS_NAME
         val nativeClass = ObjCSubclassing.allocateClass("NSObject", CLASS_NAME)
         check(nativeClass != MemorySegment.NULL)
         check(

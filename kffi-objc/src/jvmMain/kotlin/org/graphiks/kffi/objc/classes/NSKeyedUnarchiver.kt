@@ -208,13 +208,13 @@ open class NSKeyedUnarchiver(override val ptr: MemorySegment) : NSCoder(ptr) {
     }
 
     // @property decodingFailurePolicy
-    open fun decodingFailurePolicy(): MemorySegment {
+    open fun decodingFailurePolicy(): NSDecodingFailurePolicy {
         val sel = ObjCRuntime.sel("decodingFailurePolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDecodingFailurePolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDecodingFailurePolicy(value: MemorySegment) {
+    open fun setDecodingFailurePolicy(value: NSDecodingFailurePolicy) {
         val sel = ObjCRuntime.sel("setDecodingFailurePolicy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

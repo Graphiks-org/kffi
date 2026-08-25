@@ -14,14 +14,14 @@ open class NSLevelIndicatorCell(override val ptr: MemorySegment) : NSActionCell(
 
     }
 
-    open fun initWithLevelIndicatorStyle(levelIndicatorStyle: MemorySegment): MemorySegment {
+    open fun initWithLevelIndicatorStyle(levelIndicatorStyle: NSLevelIndicatorStyle): MemorySegment {
         val sel = ObjCRuntime.sel("initWithLevelIndicatorStyle:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, levelIndicatorStyle) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, levelIndicatorStyle.rawValue) as MemorySegment
     }
 
-    open fun rectOfTickMarkAtIndex(index: Long): MemorySegment {
+    open fun rectOfTickMarkAtIndex(index: Long): NSRect {
         val sel = ObjCRuntime.sel("rectOfTickMarkAtIndex:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, index) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, index))
     }
 
     open fun tickMarkValueAtIndex(index: Long): Double {
@@ -30,13 +30,13 @@ open class NSLevelIndicatorCell(override val ptr: MemorySegment) : NSActionCell(
     }
 
     // @property levelIndicatorStyle
-    open fun levelIndicatorStyle(): MemorySegment {
+    open fun levelIndicatorStyle(): NSLevelIndicatorStyle {
         val sel = ObjCRuntime.sel("levelIndicatorStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLevelIndicatorStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setLevelIndicatorStyle(value: MemorySegment) {
+    open fun setLevelIndicatorStyle(value: NSLevelIndicatorStyle) {
         val sel = ObjCRuntime.sel("setLevelIndicatorStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property minValue
@@ -80,13 +80,13 @@ open class NSLevelIndicatorCell(override val ptr: MemorySegment) : NSActionCell(
     }
 
     // @property tickMarkPosition
-    open fun tickMarkPosition(): MemorySegment {
+    open fun tickMarkPosition(): NSTickMarkPosition {
         val sel = ObjCRuntime.sel("tickMarkPosition")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTickMarkPosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTickMarkPosition(value: MemorySegment) {
+    open fun setTickMarkPosition(value: NSTickMarkPosition) {
         val sel = ObjCRuntime.sel("setTickMarkPosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property numberOfTickMarks

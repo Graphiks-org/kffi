@@ -27,9 +27,9 @@ open class NSMutableFontCollection(override val ptr: MemorySegment) : NSFontColl
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, name) as MemorySegment
         }
 
-        fun fontCollectionWithName_visibility(name: MemorySegment, visibility: MemorySegment): MemorySegment {
+        fun fontCollectionWithName_visibility(name: MemorySegment, visibility: NSFontCollectionVisibility): MemorySegment {
             val sel = ObjCRuntime.sel("fontCollectionWithName:visibility:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, name, visibility) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, name, visibility.rawValue) as MemorySegment
         }
 
         fun fontCollectionWithAllAvailableDescriptors(): MemorySegment {

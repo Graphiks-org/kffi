@@ -18,7 +18,7 @@ interface NSPredicateValidating {
         throw UnsupportedOperationException("Optional ObjC method 'visitExpression:error:' not implemented")
 
     // @optional
-    fun visitOperatorType_error(operatorType: MemorySegment, error: MemorySegment): Boolean =
+    fun visitOperatorType_error(operatorType: NSPredicateOperatorType, error: MemorySegment): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'visitOperatorType:error:' not implemented")
 
     // @optional

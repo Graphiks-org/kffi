@@ -12,13 +12,13 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDateFormatter") }
 
-        fun localizedStringFromDate_dateStyle_timeStyle(date: MemorySegment, dstyle: MemorySegment, tstyle: MemorySegment): MemorySegment {
+        fun localizedStringFromDate_dateStyle_timeStyle(date: MemorySegment, dstyle: NSDateFormatterStyle, tstyle: NSDateFormatterStyle): MemorySegment {
             val sel = ObjCRuntime.sel("localizedStringFromDate:dateStyle:timeStyle:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, date, dstyle, tstyle) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, date, dstyle.rawValue, tstyle.rawValue) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-        fun localizedStringFromDate_dateStyle_timeStyleAsString(date: MemorySegment, dstyle: MemorySegment, tstyle: MemorySegment): String = ObjCRuntime.toJavaString(localizedStringFromDate_dateStyle_timeStyle(date, dstyle, tstyle))
+        fun localizedStringFromDate_dateStyle_timeStyleAsString(date: MemorySegment, dstyle: NSDateFormatterStyle, tstyle: NSDateFormatterStyle): String = ObjCRuntime.toJavaString(localizedStringFromDate_dateStyle_timeStyle(date, dstyle, tstyle))
 
         fun dateFormatFromTemplate_options_locale(tmplate: MemorySegment, opts: Long, locale: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("dateFormatFromTemplate:options:locale:")
@@ -34,25 +34,25 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
         /** Convenience overload — [String] parameters and [String] return type. */
         fun dateFormatFromTemplate_options_localeAsString(tmplate: String, opts: Long, locale: MemorySegment): String = ObjCRuntime.toJavaString(dateFormatFromTemplate_options_locale(ObjCRuntime.newNSString(Arena.global(), tmplate), opts, locale))
 
-        fun defaultFormatterBehavior(): MemorySegment {
+        fun defaultFormatterBehavior(): NSDateFormatterBehavior {
             val sel = ObjCRuntime.sel("defaultFormatterBehavior")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
+            return NSDateFormatterBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
-        fun setDefaultFormatterBehavior(defaultFormatterBehavior: MemorySegment): Unit {
+        fun setDefaultFormatterBehavior(defaultFormatterBehavior: NSDateFormatterBehavior): Unit {
             val sel = ObjCRuntime.sel("setDefaultFormatterBehavior:")
-            ObjCRuntime.msgSend(null, _class, sel, defaultFormatterBehavior)
+            ObjCRuntime.msgSend(null, _class, sel, defaultFormatterBehavior.rawValue)
         }
 
     }
 
-    open fun getObjectValue_forString_range_error(obj: MemorySegment, string: MemorySegment, rangep: MemorySegment, error: MemorySegment): Boolean {
+    open fun getObjectValue_forString_range_error(obj: MemorySegment, string: MemorySegment, rangep: NSRangePointer, error: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("getObjectValue:forString:range:error:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, obj, string, rangep, error) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, obj, string, rangep.segment, error) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun getObjectValue_forString_range_error(obj: MemorySegment, string: String, rangep: MemorySegment, error: MemorySegment): Boolean = getObjectValue_forString_range_error(obj, ObjCRuntime.newNSString(Arena.global(), string), rangep, error)
+    fun getObjectValue_forString_range_error(obj: MemorySegment, string: String, rangep: NSRangePointer, error: MemorySegment): Boolean = getObjectValue_forString_range_error(obj, ObjCRuntime.newNSString(Arena.global(), string), rangep, error)
 
     open fun stringFromDate(date: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("stringFromDate:")
@@ -79,23 +79,23 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
     fun setLocalizedDateFormatFromTemplate(dateFormatTemplate: String): Unit = setLocalizedDateFormatFromTemplate(ObjCRuntime.newNSString(Arena.global(), dateFormatTemplate))
 
     // @property formattingContext
-    open fun formattingContext(): MemorySegment {
+    open fun formattingContext(): NSFormattingContext {
         val sel = ObjCRuntime.sel("formattingContext")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSFormattingContext(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setFormattingContext(value: MemorySegment) {
+    open fun setFormattingContext(value: NSFormattingContext) {
         val sel = ObjCRuntime.sel("setFormattingContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property defaultFormatterBehavior
-    open fun defaultFormatterBehavior(): MemorySegment {
+    open fun defaultFormatterBehavior(): NSDateFormatterBehavior {
         val sel = ObjCRuntime.sel("defaultFormatterBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDateFormatterBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDefaultFormatterBehavior(value: MemorySegment) {
+    open fun setDefaultFormatterBehavior(value: NSDateFormatterBehavior) {
         val sel = ObjCRuntime.sel("setDefaultFormatterBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property dateFormat
@@ -115,23 +115,23 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
     open fun setDateFormat(value: String) = setDateFormat(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property dateStyle
-    open fun dateStyle(): MemorySegment {
+    open fun dateStyle(): NSDateFormatterStyle {
         val sel = ObjCRuntime.sel("dateStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDateFormatterStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDateStyle(value: MemorySegment) {
+    open fun setDateStyle(value: NSDateFormatterStyle) {
         val sel = ObjCRuntime.sel("setDateStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property timeStyle
-    open fun timeStyle(): MemorySegment {
+    open fun timeStyle(): NSDateFormatterStyle {
         val sel = ObjCRuntime.sel("timeStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDateFormatterStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTimeStyle(value: MemorySegment) {
+    open fun setTimeStyle(value: NSDateFormatterStyle) {
         val sel = ObjCRuntime.sel("setTimeStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property locale
@@ -155,13 +155,13 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
     }
 
     // @property formatterBehavior
-    open fun formatterBehavior(): MemorySegment {
+    open fun formatterBehavior(): NSDateFormatterBehavior {
         val sel = ObjCRuntime.sel("formatterBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDateFormatterBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setFormatterBehavior(value: MemorySegment) {
+    open fun setFormatterBehavior(value: NSDateFormatterBehavior) {
         val sel = ObjCRuntime.sel("setFormatterBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property timeZone

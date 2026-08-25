@@ -39,14 +39,14 @@ open class NSForm(override val ptr: MemorySegment) : NSMatrix(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, flag)
     }
 
-    open fun setTitleAlignment(mode: MemorySegment): Unit {
+    open fun setTitleAlignment(mode: NSTextAlignment): Unit {
         val sel = ObjCRuntime.sel("setTitleAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, mode)
+        ObjCRuntime.msgSend(null, ptr, sel, mode.rawValue)
     }
 
-    open fun setTextAlignment(mode: MemorySegment): Unit {
+    open fun setTextAlignment(mode: NSTextAlignment): Unit {
         val sel = ObjCRuntime.sel("setTextAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, mode)
+        ObjCRuntime.msgSend(null, ptr, sel, mode.rawValue)
     }
 
     open fun setTitleFont(fontObj: MemorySegment): Unit {
@@ -100,19 +100,19 @@ open class NSForm(override val ptr: MemorySegment) : NSMatrix(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, index)
     }
 
-    override fun setFrameSize(newSize: MemorySegment): Unit {
+    override fun setFrameSize(newSize: NSSize): Unit {
         val sel = ObjCRuntime.sel("setFrameSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(newSize, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(newSize.segment, NSSize.layout))
     }
 
-    open fun setTitleBaseWritingDirection(writingDirection: MemorySegment): Unit {
+    open fun setTitleBaseWritingDirection(writingDirection: NSWritingDirection): Unit {
         val sel = ObjCRuntime.sel("setTitleBaseWritingDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, writingDirection)
+        ObjCRuntime.msgSend(null, ptr, sel, writingDirection.rawValue)
     }
 
-    open fun setTextBaseWritingDirection(writingDirection: MemorySegment): Unit {
+    open fun setTextBaseWritingDirection(writingDirection: NSWritingDirection): Unit {
         val sel = ObjCRuntime.sel("setTextBaseWritingDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, writingDirection)
+        ObjCRuntime.msgSend(null, ptr, sel, writingDirection.rawValue)
     }
 
     open fun setPreferredTextFieldWidth(preferredWidth: Double): Unit {

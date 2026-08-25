@@ -13,13 +13,13 @@ open class NSISO8601DateFormatter(override val ptr: MemorySegment) : NSFormatter
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSISO8601DateFormatter") }
 
-        fun stringFromDate_timeZone_formatOptions(date: MemorySegment, timeZone: MemorySegment, formatOptions: MemorySegment): MemorySegment {
+        fun stringFromDate_timeZone_formatOptions(date: MemorySegment, timeZone: MemorySegment, formatOptions: NSISO8601DateFormatOptions): MemorySegment {
             val sel = ObjCRuntime.sel("stringFromDate:timeZone:formatOptions:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, date, timeZone, formatOptions) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, date, timeZone, formatOptions.rawValue) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-        fun stringFromDate_timeZone_formatOptionsAsString(date: MemorySegment, timeZone: MemorySegment, formatOptions: MemorySegment): String = ObjCRuntime.toJavaString(stringFromDate_timeZone_formatOptions(date, timeZone, formatOptions))
+        fun stringFromDate_timeZone_formatOptionsAsString(date: MemorySegment, timeZone: MemorySegment, formatOptions: NSISO8601DateFormatOptions): String = ObjCRuntime.toJavaString(stringFromDate_timeZone_formatOptions(date, timeZone, formatOptions))
 
     }
 
@@ -55,13 +55,13 @@ open class NSISO8601DateFormatter(override val ptr: MemorySegment) : NSFormatter
     }
 
     // @property formatOptions
-    open fun formatOptions(): MemorySegment {
+    open fun formatOptions(): NSISO8601DateFormatOptions {
         val sel = ObjCRuntime.sel("formatOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSISO8601DateFormatOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setFormatOptions(value: MemorySegment) {
+    open fun setFormatOptions(value: NSISO8601DateFormatOptions) {
         val sel = ObjCRuntime.sel("setFormatOptions:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 

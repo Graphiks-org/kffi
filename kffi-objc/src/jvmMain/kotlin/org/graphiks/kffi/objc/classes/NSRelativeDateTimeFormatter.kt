@@ -44,33 +44,33 @@ open class NSRelativeDateTimeFormatter(override val ptr: MemorySegment) : NSForm
     }
 
     // @property dateTimeStyle
-    open fun dateTimeStyle(): MemorySegment {
+    open fun dateTimeStyle(): NSRelativeDateTimeFormatterStyle {
         val sel = ObjCRuntime.sel("dateTimeStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRelativeDateTimeFormatterStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDateTimeStyle(value: MemorySegment) {
+    open fun setDateTimeStyle(value: NSRelativeDateTimeFormatterStyle) {
         val sel = ObjCRuntime.sel("setDateTimeStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property unitsStyle
-    open fun unitsStyle(): MemorySegment {
+    open fun unitsStyle(): NSRelativeDateTimeFormatterUnitsStyle {
         val sel = ObjCRuntime.sel("unitsStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRelativeDateTimeFormatterUnitsStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setUnitsStyle(value: MemorySegment) {
+    open fun setUnitsStyle(value: NSRelativeDateTimeFormatterUnitsStyle) {
         val sel = ObjCRuntime.sel("setUnitsStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property formattingContext
-    open fun formattingContext(): MemorySegment {
+    open fun formattingContext(): NSFormattingContext {
         val sel = ObjCRuntime.sel("formattingContext")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSFormattingContext(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setFormattingContext(value: MemorySegment) {
+    open fun setFormattingContext(value: NSFormattingContext) {
         val sel = ObjCRuntime.sel("setFormattingContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property calendar

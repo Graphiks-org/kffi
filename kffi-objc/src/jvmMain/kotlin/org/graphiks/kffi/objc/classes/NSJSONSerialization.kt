@@ -17,24 +17,24 @@ open class NSJSONSerialization(override val ptr: MemorySegment) : NSObject(ptr) 
             return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, obj) as Boolean
         }
 
-        fun dataWithJSONObject_options_error(obj: MemorySegment, opt: MemorySegment, error: MemorySegment): MemorySegment {
+        fun dataWithJSONObject_options_error(obj: MemorySegment, opt: NSJSONWritingOptions, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("dataWithJSONObject:options:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, obj, opt, error) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, obj, opt.rawValue, error) as MemorySegment
         }
 
-        fun JSONObjectWithData_options_error(`data`: MemorySegment, opt: MemorySegment, error: MemorySegment): MemorySegment {
+        fun JSONObjectWithData_options_error(`data`: MemorySegment, opt: NSJSONReadingOptions, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("JSONObjectWithData:options:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `data`, opt, error) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `data`, opt.rawValue, error) as MemorySegment
         }
 
-        fun writeJSONObject_toStream_options_error(obj: MemorySegment, stream: MemorySegment, opt: MemorySegment, error: MemorySegment): Long {
+        fun writeJSONObject_toStream_options_error(obj: MemorySegment, stream: MemorySegment, opt: NSJSONWritingOptions, error: MemorySegment): Long {
             val sel = ObjCRuntime.sel("writeJSONObject:toStream:options:error:")
-            return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel, obj, stream, opt, error) as Long
+            return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel, obj, stream, opt.rawValue, error) as Long
         }
 
-        fun JSONObjectWithStream_options_error(stream: MemorySegment, opt: MemorySegment, error: MemorySegment): MemorySegment {
+        fun JSONObjectWithStream_options_error(stream: MemorySegment, opt: NSJSONReadingOptions, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("JSONObjectWithStream:options:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, stream, opt, error) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, stream, opt.rawValue, error) as MemorySegment
         }
 
     }

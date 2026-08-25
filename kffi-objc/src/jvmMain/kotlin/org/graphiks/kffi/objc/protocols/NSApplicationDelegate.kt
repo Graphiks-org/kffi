@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSApplicationDelegate {
     // @optional
-    fun applicationShouldTerminate(sender: MemorySegment): MemorySegment =
+    fun applicationShouldTerminate(sender: MemorySegment): NSApplicationTerminateReply =
         throw UnsupportedOperationException("Optional ObjC method 'applicationShouldTerminate:' not implemented")
 
     // @optional
@@ -46,7 +46,7 @@ interface NSApplicationDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'application:printFile:' not implemented")
 
     // @optional
-    fun application_printFiles_withSettings_showPrintPanels(application: MemorySegment, fileNames: MemorySegment, printSettings: MemorySegment, showPrintPanels: Boolean): MemorySegment =
+    fun application_printFiles_withSettings_showPrintPanels(application: MemorySegment, fileNames: MemorySegment, printSettings: MemorySegment, showPrintPanels: Boolean): NSApplicationPrintReply =
         throw UnsupportedOperationException("Optional ObjC method 'application:printFiles:withSettings:showPrintPanels:' not implemented")
 
     // @optional

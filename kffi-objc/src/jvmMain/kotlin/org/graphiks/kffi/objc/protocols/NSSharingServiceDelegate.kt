@@ -22,11 +22,11 @@ interface NSSharingServiceDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'sharingService:didShareItems:' not implemented")
 
     // @optional
-    fun sharingService_sourceFrameOnScreenForShareItem(sharingService: MemorySegment, item: MemorySegment): MemorySegment =
+    fun sharingService_sourceFrameOnScreenForShareItem(sharingService: MemorySegment, item: MemorySegment): NSRect =
         throw UnsupportedOperationException("Optional ObjC method 'sharingService:sourceFrameOnScreenForShareItem:' not implemented")
 
     // @optional
-    fun sharingService_transitionImageForShareItem_contentRect(sharingService: MemorySegment, item: MemorySegment, contentRect: MemorySegment): MemorySegment =
+    fun sharingService_transitionImageForShareItem_contentRect(sharingService: MemorySegment, item: MemorySegment, contentRect: NSRectPointer): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'sharingService:transitionImageForShareItem:contentRect:' not implemented")
 
     // @optional
@@ -34,7 +34,7 @@ interface NSSharingServiceDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'sharingService:sourceWindowForShareItems:sharingContentScope:' not implemented")
 
     // @optional
-    fun anchoringViewForSharingService_showRelativeToRect_preferredEdge(sharingService: MemorySegment, positioningRect: MemorySegment, preferredEdge: MemorySegment): MemorySegment =
+    fun anchoringViewForSharingService_showRelativeToRect_preferredEdge(sharingService: MemorySegment, positioningRect: NSRectPointer, preferredEdge: MemorySegment): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'anchoringViewForSharingService:showRelativeToRect:preferredEdge:' not implemented")
 
 }

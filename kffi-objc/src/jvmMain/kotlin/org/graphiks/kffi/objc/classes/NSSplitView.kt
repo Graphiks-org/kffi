@@ -14,9 +14,9 @@ open class NSSplitView(override val ptr: MemorySegment) : NSView(ptr) {
 
     }
 
-    open fun drawDividerInRect(rect: MemorySegment): Unit {
+    open fun drawDividerInRect(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawDividerInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
     open fun adjustSubviews(): Unit {
@@ -65,13 +65,13 @@ open class NSSplitView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property dividerStyle
-    open fun dividerStyle(): MemorySegment {
+    open fun dividerStyle(): NSSplitViewDividerStyle {
         val sel = ObjCRuntime.sel("dividerStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSplitViewDividerStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDividerStyle(value: MemorySegment) {
+    open fun setDividerStyle(value: NSSplitViewDividerStyle) {
         val sel = ObjCRuntime.sel("setDividerStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property autosaveName

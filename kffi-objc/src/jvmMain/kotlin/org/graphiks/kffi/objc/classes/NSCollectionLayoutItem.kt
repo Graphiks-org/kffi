@@ -36,13 +36,13 @@ open class NSCollectionLayoutItem(override val ptr: MemorySegment) : NSObject(pt
     }
 
     // @property contentInsets
-    open fun contentInsets(): MemorySegment {
+    open fun contentInsets(): NSDirectionalEdgeInsets {
         val sel = ObjCRuntime.sel("contentInsets")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("leading"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("trailing")).withName("NSDirectionalEdgeInsets"), ptr, sel) as MemorySegment
+        return NSDirectionalEdgeInsets(ObjCRuntime.msgSendStruct(NSDirectionalEdgeInsets.layout, ptr, sel))
     }
-    open fun setContentInsets(value: MemorySegment) {
+    open fun setContentInsets(value: NSDirectionalEdgeInsets) {
         val sel = ObjCRuntime.sel("setContentInsets:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("leading"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("trailing")).withName("NSDirectionalEdgeInsets")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSDirectionalEdgeInsets.layout))
     }
 
     // @property edgeSpacing

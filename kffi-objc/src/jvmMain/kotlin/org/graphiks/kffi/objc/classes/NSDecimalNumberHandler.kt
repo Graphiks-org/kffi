@@ -13,9 +13,9 @@ open class NSDecimalNumberHandler(override val ptr: MemorySegment) : NSObject(pt
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDecimalNumberHandler") }
 
-        fun decimalNumberHandlerWithRoundingMode_scale_raiseOnExactness_raiseOnOverflow_raiseOnUnderflow_raiseOnDivideByZero(roundingMode: MemorySegment, scale: Short, exact: Boolean, overflow: Boolean, underflow: Boolean, divideByZero: Boolean): MemorySegment {
+        fun decimalNumberHandlerWithRoundingMode_scale_raiseOnExactness_raiseOnOverflow_raiseOnUnderflow_raiseOnDivideByZero(roundingMode: NSRoundingMode, scale: Short, exact: Boolean, overflow: Boolean, underflow: Boolean, divideByZero: Boolean): MemorySegment {
             val sel = ObjCRuntime.sel("decimalNumberHandlerWithRoundingMode:scale:raiseOnExactness:raiseOnOverflow:raiseOnUnderflow:raiseOnDivideByZero:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, roundingMode, scale, exact, overflow, underflow, divideByZero) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, roundingMode.rawValue, scale, exact, overflow, underflow, divideByZero) as MemorySegment
         }
 
         fun defaultDecimalNumberHandler(): MemorySegment {
@@ -25,9 +25,9 @@ open class NSDecimalNumberHandler(override val ptr: MemorySegment) : NSObject(pt
 
     }
 
-    open fun initWithRoundingMode_scale_raiseOnExactness_raiseOnOverflow_raiseOnUnderflow_raiseOnDivideByZero(roundingMode: MemorySegment, scale: Short, exact: Boolean, overflow: Boolean, underflow: Boolean, divideByZero: Boolean): MemorySegment {
+    open fun initWithRoundingMode_scale_raiseOnExactness_raiseOnOverflow_raiseOnUnderflow_raiseOnDivideByZero(roundingMode: NSRoundingMode, scale: Short, exact: Boolean, overflow: Boolean, underflow: Boolean, divideByZero: Boolean): MemorySegment {
         val sel = ObjCRuntime.sel("initWithRoundingMode:scale:raiseOnExactness:raiseOnOverflow:raiseOnUnderflow:raiseOnDivideByZero:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, roundingMode, scale, exact, overflow, underflow, divideByZero) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, roundingMode.rawValue, scale, exact, overflow, underflow, divideByZero) as MemorySegment
     }
 
     // @property defaultDecimalNumberHandler

@@ -19,22 +19,22 @@ open class NSRelativeSpecifier(override val ptr: MemorySegment) : NSScriptObject
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, inCoder) as MemorySegment
     }
 
-    open fun initWithContainerClassDescription_containerSpecifier_key_relativePosition_baseSpecifier(classDesc: MemorySegment, container: MemorySegment, property: MemorySegment, relPos: MemorySegment, baseSpecifier: MemorySegment): MemorySegment {
+    open fun initWithContainerClassDescription_containerSpecifier_key_relativePosition_baseSpecifier(classDesc: MemorySegment, container: MemorySegment, property: MemorySegment, relPos: NSRelativePosition, baseSpecifier: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithContainerClassDescription:containerSpecifier:key:relativePosition:baseSpecifier:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, classDesc, container, property, relPos, baseSpecifier) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, classDesc, container, property, relPos.rawValue, baseSpecifier) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun initWithContainerClassDescription_containerSpecifier_key_relativePosition_baseSpecifier(classDesc: MemorySegment, container: MemorySegment, property: String, relPos: MemorySegment, baseSpecifier: MemorySegment): MemorySegment = initWithContainerClassDescription_containerSpecifier_key_relativePosition_baseSpecifier(classDesc, container, ObjCRuntime.newNSString(Arena.global(), property), relPos, baseSpecifier)
+    fun initWithContainerClassDescription_containerSpecifier_key_relativePosition_baseSpecifier(classDesc: MemorySegment, container: MemorySegment, property: String, relPos: NSRelativePosition, baseSpecifier: MemorySegment): MemorySegment = initWithContainerClassDescription_containerSpecifier_key_relativePosition_baseSpecifier(classDesc, container, ObjCRuntime.newNSString(Arena.global(), property), relPos, baseSpecifier)
 
     // @property relativePosition
-    open fun relativePosition(): MemorySegment {
+    open fun relativePosition(): NSRelativePosition {
         val sel = ObjCRuntime.sel("relativePosition")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRelativePosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setRelativePosition(value: MemorySegment) {
+    open fun setRelativePosition(value: NSRelativePosition) {
         val sel = ObjCRuntime.sel("setRelativePosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property baseSpecifier

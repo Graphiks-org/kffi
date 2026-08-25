@@ -31,13 +31,13 @@ open class NSCollectionLayoutSection(override val ptr: MemorySegment) : NSObject
     }
 
     // @property contentInsets
-    open fun contentInsets(): MemorySegment {
+    open fun contentInsets(): NSDirectionalEdgeInsets {
         val sel = ObjCRuntime.sel("contentInsets")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("leading"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("trailing")).withName("NSDirectionalEdgeInsets"), ptr, sel) as MemorySegment
+        return NSDirectionalEdgeInsets(ObjCRuntime.msgSendStruct(NSDirectionalEdgeInsets.layout, ptr, sel))
     }
-    open fun setContentInsets(value: MemorySegment) {
+    open fun setContentInsets(value: NSDirectionalEdgeInsets) {
         val sel = ObjCRuntime.sel("setContentInsets:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("leading"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("trailing")).withName("NSDirectionalEdgeInsets")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSDirectionalEdgeInsets.layout))
     }
 
     // @property interGroupSpacing
@@ -51,13 +51,13 @@ open class NSCollectionLayoutSection(override val ptr: MemorySegment) : NSObject
     }
 
     // @property orthogonalScrollingBehavior
-    open fun orthogonalScrollingBehavior(): MemorySegment {
+    open fun orthogonalScrollingBehavior(): NSCollectionLayoutSectionOrthogonalScrollingBehavior {
         val sel = ObjCRuntime.sel("orthogonalScrollingBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCollectionLayoutSectionOrthogonalScrollingBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setOrthogonalScrollingBehavior(value: MemorySegment) {
+    open fun setOrthogonalScrollingBehavior(value: NSCollectionLayoutSectionOrthogonalScrollingBehavior) {
         val sel = ObjCRuntime.sel("setOrthogonalScrollingBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property boundarySupplementaryItems

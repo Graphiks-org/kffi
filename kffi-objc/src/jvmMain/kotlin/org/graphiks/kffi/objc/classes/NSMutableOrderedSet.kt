@@ -88,9 +88,9 @@ fun NSMutableOrderedSet.setObject_atIndexedSubscript(obj: MemorySegment, idx: Lo
     ObjCRuntime.msgSend(null, this.ptr, sel, obj, idx)
 }
 
-fun NSMutableOrderedSet.replaceObjectsInRange_withObjects_count(range: MemorySegment, objects: MemorySegment, count: Long): Unit {
+fun NSMutableOrderedSet.replaceObjectsInRange_withObjects_count(range: NSRange, objects: MemorySegment, count: Long): Unit {
     val sel = ObjCRuntime.sel("replaceObjectsInRange:withObjects:count:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, objects, count)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), objects, count)
 }
 
 fun NSMutableOrderedSet.replaceObjectsAtIndexes_withObjects(indexes: MemorySegment, objects: MemorySegment): Unit {
@@ -98,9 +98,9 @@ fun NSMutableOrderedSet.replaceObjectsAtIndexes_withObjects(indexes: MemorySegme
     ObjCRuntime.msgSend(null, this.ptr, sel, indexes, objects)
 }
 
-fun NSMutableOrderedSet.removeObjectsInRange(range: MemorySegment): Unit {
+fun NSMutableOrderedSet.removeObjectsInRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("removeObjectsInRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 fun NSMutableOrderedSet.removeObjectsAtIndexes(indexes: MemorySegment): Unit {
@@ -158,14 +158,14 @@ fun NSMutableOrderedSet.sortUsingComparator(cmptr: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, cmptr)
 }
 
-fun NSMutableOrderedSet.sortWithOptions_usingComparator(opts: MemorySegment, cmptr: MemorySegment): Unit {
+fun NSMutableOrderedSet.sortWithOptions_usingComparator(opts: NSSortOptions, cmptr: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("sortWithOptions:usingComparator:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, opts, cmptr)
+    ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, cmptr)
 }
 
-fun NSMutableOrderedSet.sortRange_options_usingComparator(range: MemorySegment, opts: MemorySegment, cmptr: MemorySegment): Unit {
+fun NSMutableOrderedSet.sortRange_options_usingComparator(range: NSRange, opts: NSSortOptions, cmptr: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("sortRange:options:usingComparator:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, opts, cmptr)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), opts.rawValue, cmptr)
 }
 
 // ── Category: NSMutableOrderedSetCreation on NSMutableOrderedSet ─────────────────────────────────────────

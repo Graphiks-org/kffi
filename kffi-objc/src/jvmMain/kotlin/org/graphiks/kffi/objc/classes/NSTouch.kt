@@ -23,15 +23,15 @@ open class NSTouch(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property phase
-    open fun phase(): MemorySegment {
+    open fun phase(): NSTouchPhase {
         val sel = ObjCRuntime.sel("phase")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTouchPhase(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property normalizedPosition
-    open fun normalizedPosition(): MemorySegment {
+    open fun normalizedPosition(): NSPoint {
         val sel = ObjCRuntime.sel("normalizedPosition")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
     // @property resting
@@ -47,26 +47,26 @@ open class NSTouch(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property deviceSize
-    open fun deviceSize(): MemorySegment {
+    open fun deviceSize(): NSSize {
         val sel = ObjCRuntime.sel("deviceSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
 
 }
 
 // ── Category: NSTouchBar on NSTouch ─────────────────────────────────────────
 
-fun NSTouch.locationInView(view: MemorySegment): MemorySegment {
+fun NSTouch.locationInView(view: MemorySegment): NSPoint {
     val sel = ObjCRuntime.sel("locationInView:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, view) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel, view))
 }
 
-fun NSTouch.previousLocationInView(view: MemorySegment): MemorySegment {
+fun NSTouch.previousLocationInView(view: MemorySegment): NSPoint {
     val sel = ObjCRuntime.sel("previousLocationInView:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, view) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel, view))
 }
 
-fun NSTouch.type(): MemorySegment {
+fun NSTouch.type(): NSTouchType {
     val sel = ObjCRuntime.sel("type")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSTouchType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }

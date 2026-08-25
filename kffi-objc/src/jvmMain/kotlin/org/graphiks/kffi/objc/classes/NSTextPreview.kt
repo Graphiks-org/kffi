@@ -14,14 +14,14 @@ open class NSTextPreview(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithSnapshotImage_presentationFrame_candidateRects(snapshotImage: MemorySegment, presentationFrame: MemorySegment, candidateRects: MemorySegment): MemorySegment {
+    open fun initWithSnapshotImage_presentationFrame_candidateRects(snapshotImage: CGImageRef, presentationFrame: NSRect, candidateRects: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithSnapshotImage:presentationFrame:candidateRects:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, snapshotImage, ObjCRuntime.ObjCStructArg(presentationFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), candidateRects) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, snapshotImage.segment, ObjCRuntime.ObjCStructArg(presentationFrame.segment, NSRect.layout), candidateRects) as MemorySegment
     }
 
-    open fun initWithSnapshotImage_presentationFrame(snapshotImage: MemorySegment, presentationFrame: MemorySegment): MemorySegment {
+    open fun initWithSnapshotImage_presentationFrame(snapshotImage: CGImageRef, presentationFrame: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithSnapshotImage:presentationFrame:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, snapshotImage, ObjCRuntime.ObjCStructArg(presentationFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, snapshotImage.segment, ObjCRuntime.ObjCStructArg(presentationFrame.segment, NSRect.layout)) as MemorySegment
     }
 
     open fun init(): MemorySegment {
@@ -30,15 +30,15 @@ open class NSTextPreview(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property previewImage
-    open fun previewImage(): MemorySegment {
+    open fun previewImage(): CGImageRef {
         val sel = ObjCRuntime.sel("previewImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGImageRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     // @property presentationFrame
-    open fun presentationFrame(): MemorySegment {
+    open fun presentationFrame(): NSRect {
         val sel = ObjCRuntime.sel("presentationFrame")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property candidateRects

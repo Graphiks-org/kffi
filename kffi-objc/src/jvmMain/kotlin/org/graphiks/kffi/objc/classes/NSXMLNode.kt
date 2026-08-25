@@ -154,14 +154,14 @@ open class NSXMLNode(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun initWithKind(kind: MemorySegment): MemorySegment {
+    open fun initWithKind(kind: NSXMLNodeKind): MemorySegment {
         val sel = ObjCRuntime.sel("initWithKind:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind.rawValue) as MemorySegment
     }
 
-    open fun initWithKind_options(kind: MemorySegment, options: MemorySegment): MemorySegment {
+    open fun initWithKind_options(kind: NSXMLNodeKind, options: NSXMLNodeOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithKind:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind.rawValue, options.rawValue) as MemorySegment
     }
 
     open fun setStringValue_resolvingEntities(string: MemorySegment, resolve: Boolean): Unit {
@@ -182,13 +182,13 @@ open class NSXMLNode(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun XMLStringWithOptions(options: MemorySegment): MemorySegment {
+    open fun XMLStringWithOptions(options: NSXMLNodeOptions): MemorySegment {
         val sel = ObjCRuntime.sel("XMLStringWithOptions:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options.rawValue) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-    fun XMLStringWithOptionsAsString(options: MemorySegment): String = ObjCRuntime.toJavaString(XMLStringWithOptions(options))
+    fun XMLStringWithOptionsAsString(options: NSXMLNodeOptions): String = ObjCRuntime.toJavaString(XMLStringWithOptions(options))
 
     open fun canonicalXMLStringPreservingComments(comments: Boolean): MemorySegment {
         val sel = ObjCRuntime.sel("canonicalXMLStringPreservingComments:")
@@ -224,9 +224,9 @@ open class NSXMLNode(override val ptr: MemorySegment) : NSObject(ptr) {
     fun objectsForXQuery_error(xquery: String, error: MemorySegment): MemorySegment = objectsForXQuery_error(ObjCRuntime.newNSString(Arena.global(), xquery), error)
 
     // @property kind
-    open fun kind(): MemorySegment {
+    open fun kind(): NSXMLNodeKind {
         val sel = ObjCRuntime.sel("kind")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSXMLNodeKind(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property name

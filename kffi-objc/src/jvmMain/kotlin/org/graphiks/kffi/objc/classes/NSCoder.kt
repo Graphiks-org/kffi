@@ -121,14 +121,14 @@ fun NSCoder.decodePropertyList(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
-fun NSCoder.setObjectZone(zone: MemorySegment): Unit {
+fun NSCoder.setObjectZone(zone: NSZonePointer): Unit {
     val sel = ObjCRuntime.sel("setObjectZone:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, zone)
+    ObjCRuntime.msgSend(null, this.ptr, sel, zone.segment)
 }
 
-fun NSCoder.objectZone(): MemorySegment {
+fun NSCoder.objectZone(): NSZonePointer {
     val sel = ObjCRuntime.sel("objectZone")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSZonePointer(ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment)
 }
 
 fun NSCoder.encodeObject_forKey(`object`: MemorySegment, key: MemorySegment): Unit {
@@ -317,9 +317,9 @@ fun NSCoder.allowedClasses(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
-fun NSCoder.decodingFailurePolicy(): MemorySegment {
+fun NSCoder.decodingFailurePolicy(): NSDecodingFailurePolicy {
     val sel = ObjCRuntime.sel("decodingFailurePolicy")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSDecodingFailurePolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
 fun NSCoder.error(): MemorySegment {
@@ -348,66 +348,66 @@ fun NSCoder.decodeValueOfObjCType_at(type: MemorySegment, `data`: MemorySegment)
 
 // ── Category: NSGeometryCoding on NSCoder ─────────────────────────────────────────
 
-fun NSCoder.encodePoint(point: MemorySegment): Unit {
+fun NSCoder.encodePoint(point: NSPoint): Unit {
     val sel = ObjCRuntime.sel("encodePoint:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout))
 }
 
-fun NSCoder.decodePoint(): MemorySegment {
+fun NSCoder.decodePoint(): NSPoint {
     val sel = ObjCRuntime.sel("decodePoint")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel))
 }
 
-fun NSCoder.encodeSize(size: MemorySegment): Unit {
+fun NSCoder.encodeSize(size: NSSize): Unit {
     val sel = ObjCRuntime.sel("encodeSize:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, size)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout))
 }
 
-fun NSCoder.decodeSize(): MemorySegment {
+fun NSCoder.decodeSize(): NSSize {
     val sel = ObjCRuntime.sel("decodeSize")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel))
 }
 
-fun NSCoder.encodeRect(rect: MemorySegment): Unit {
+fun NSCoder.encodeRect(rect: NSRect): Unit {
     val sel = ObjCRuntime.sel("encodeRect:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
 }
 
-fun NSCoder.decodeRect(): MemorySegment {
+fun NSCoder.decodeRect(): NSRect {
     val sel = ObjCRuntime.sel("decodeRect")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel))
 }
 
 // ── Category: NSGeometryKeyedCoding on NSCoder ─────────────────────────────────────────
 
-fun NSCoder.encodePoint_forKey(point: MemorySegment, key: MemorySegment): Unit {
+fun NSCoder.encodePoint_forKey(point: NSPoint, key: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("encodePoint:forKey:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point, key)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), key)
 }
 
-fun NSCoder.encodeSize_forKey(size: MemorySegment, key: MemorySegment): Unit {
+fun NSCoder.encodeSize_forKey(size: NSSize, key: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("encodeSize:forKey:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, size, key)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout), key)
 }
 
-fun NSCoder.encodeRect_forKey(rect: MemorySegment, key: MemorySegment): Unit {
+fun NSCoder.encodeRect_forKey(rect: NSRect, key: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("encodeRect:forKey:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect, key)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), key)
 }
 
-fun NSCoder.decodePointForKey(key: MemorySegment): MemorySegment {
+fun NSCoder.decodePointForKey(key: MemorySegment): NSPoint {
     val sel = ObjCRuntime.sel("decodePointForKey:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, key) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel, key))
 }
 
-fun NSCoder.decodeSizeForKey(key: MemorySegment): MemorySegment {
+fun NSCoder.decodeSizeForKey(key: MemorySegment): NSSize {
     val sel = ObjCRuntime.sel("decodeSizeForKey:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel, key) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel, key))
 }
 
-fun NSCoder.decodeRectForKey(key: MemorySegment): MemorySegment {
+fun NSCoder.decodeRectForKey(key: MemorySegment): NSRect {
     val sel = ObjCRuntime.sel("decodeRectForKey:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, key) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, key))
 }
 
 // ── Category: NSAppKitColorExtensions on NSCoder ─────────────────────────────────────────

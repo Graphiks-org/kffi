@@ -9,22 +9,22 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSDraggingInfo {
-    fun slideDraggedImageTo(screenPoint: MemorySegment): Unit
+    fun slideDraggedImageTo(screenPoint: NSPoint): Unit
 
     /** @return NSArray<NSString *> * */
     fun namesOfPromisedFilesDroppedAtDestination(dropDestination: MemorySegment): MemorySegment
 
-    fun enumerateDraggingItemsWithOptions_forView_classes_searchOptions_usingBlock(enumOpts: MemorySegment, view: MemorySegment, classArray: MemorySegment, searchOptions: MemorySegment, block: MemorySegment): Unit
+    fun enumerateDraggingItemsWithOptions_forView_classes_searchOptions_usingBlock(enumOpts: NSDraggingItemEnumerationOptions, view: MemorySegment, classArray: MemorySegment, searchOptions: MemorySegment, block: MemorySegment): Unit
 
     fun resetSpringLoading(): Unit
 
     fun draggingDestinationWindow(): MemorySegment
 
-    fun draggingSourceOperationMask(): MemorySegment
+    fun draggingSourceOperationMask(): NSDragOperation
 
-    fun draggingLocation(): MemorySegment
+    fun draggingLocation(): NSPoint
 
-    fun draggedImageLocation(): MemorySegment
+    fun draggedImageLocation(): NSPoint
 
     fun draggedImage(): MemorySegment
 
@@ -34,9 +34,9 @@ interface NSDraggingInfo {
 
     fun draggingSequenceNumber(): Long
 
-    fun draggingFormation(): MemorySegment
+    fun draggingFormation(): NSDraggingFormation
 
-    fun setDraggingFormation(draggingFormation: MemorySegment): Unit
+    fun setDraggingFormation(draggingFormation: NSDraggingFormation): Unit
 
     fun animatesToDestination(): Boolean
 
@@ -46,6 +46,6 @@ interface NSDraggingInfo {
 
     fun setNumberOfValidItemsForDrop(numberOfValidItemsForDrop: Long): Unit
 
-    fun springLoadingHighlight(): MemorySegment
+    fun springLoadingHighlight(): NSSpringLoadingHighlight
 
 }

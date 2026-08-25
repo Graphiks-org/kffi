@@ -18,14 +18,14 @@ open class NSImageView(override val ptr: MemorySegment) : NSControl(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, image) as MemorySegment
         }
 
-        fun defaultPreferredImageDynamicRange(): MemorySegment {
+        fun defaultPreferredImageDynamicRange(): NSImageDynamicRange {
             val sel = ObjCRuntime.sel("defaultPreferredImageDynamicRange")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
+            return NSImageDynamicRange(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
-        fun setDefaultPreferredImageDynamicRange(defaultPreferredImageDynamicRange: MemorySegment): Unit {
+        fun setDefaultPreferredImageDynamicRange(defaultPreferredImageDynamicRange: NSImageDynamicRange): Unit {
             val sel = ObjCRuntime.sel("setDefaultPreferredImageDynamicRange:")
-            ObjCRuntime.msgSend(null, _class, sel, defaultPreferredImageDynamicRange)
+            ObjCRuntime.msgSend(null, _class, sel, defaultPreferredImageDynamicRange.rawValue)
         }
 
     }
@@ -51,33 +51,33 @@ open class NSImageView(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property imageAlignment
-    open fun imageAlignment(): MemorySegment {
+    open fun imageAlignment(): NSImageAlignment {
         val sel = ObjCRuntime.sel("imageAlignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageAlignment(value: MemorySegment) {
+    open fun setImageAlignment(value: NSImageAlignment) {
         val sel = ObjCRuntime.sel("setImageAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property imageScaling
-    open fun imageScaling(): MemorySegment {
+    open fun imageScaling(): NSImageScaling {
         val sel = ObjCRuntime.sel("imageScaling")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageScaling(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageScaling(value: MemorySegment) {
+    open fun setImageScaling(value: NSImageScaling) {
         val sel = ObjCRuntime.sel("setImageScaling:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property imageFrameStyle
-    open fun imageFrameStyle(): MemorySegment {
+    open fun imageFrameStyle(): NSImageFrameStyle {
         val sel = ObjCRuntime.sel("imageFrameStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageFrameStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageFrameStyle(value: MemorySegment) {
+    open fun setImageFrameStyle(value: NSImageFrameStyle) {
         val sel = ObjCRuntime.sel("setImageFrameStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property symbolConfiguration
@@ -121,29 +121,29 @@ open class NSImageView(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property defaultPreferredImageDynamicRange
-    open fun defaultPreferredImageDynamicRange(): MemorySegment {
+    open fun defaultPreferredImageDynamicRange(): NSImageDynamicRange {
         val sel = ObjCRuntime.sel("defaultPreferredImageDynamicRange")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageDynamicRange(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDefaultPreferredImageDynamicRange(value: MemorySegment) {
+    open fun setDefaultPreferredImageDynamicRange(value: NSImageDynamicRange) {
         val sel = ObjCRuntime.sel("setDefaultPreferredImageDynamicRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property preferredImageDynamicRange
-    open fun preferredImageDynamicRange(): MemorySegment {
+    open fun preferredImageDynamicRange(): NSImageDynamicRange {
         val sel = ObjCRuntime.sel("preferredImageDynamicRange")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageDynamicRange(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPreferredImageDynamicRange(value: MemorySegment) {
+    open fun setPreferredImageDynamicRange(value: NSImageDynamicRange) {
         val sel = ObjCRuntime.sel("setPreferredImageDynamicRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property imageDynamicRange
-    open fun imageDynamicRange(): MemorySegment {
+    open fun imageDynamicRange(): NSImageDynamicRange {
         val sel = ObjCRuntime.sel("imageDynamicRange")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageDynamicRange(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 }

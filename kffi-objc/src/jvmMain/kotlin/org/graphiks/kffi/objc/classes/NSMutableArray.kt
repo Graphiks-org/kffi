@@ -73,9 +73,9 @@ fun NSMutableArray.removeAllObjects(): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
-fun NSMutableArray.removeObject_inRange(anObject: MemorySegment, range: MemorySegment): Unit {
+fun NSMutableArray.removeObject_inRange(anObject: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("removeObject:inRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, anObject, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, anObject, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 fun NSMutableArray.removeObject(anObject: MemorySegment): Unit {
@@ -83,9 +83,9 @@ fun NSMutableArray.removeObject(anObject: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, anObject)
 }
 
-fun NSMutableArray.removeObjectIdenticalTo_inRange(anObject: MemorySegment, range: MemorySegment): Unit {
+fun NSMutableArray.removeObjectIdenticalTo_inRange(anObject: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("removeObjectIdenticalTo:inRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, anObject, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, anObject, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 fun NSMutableArray.removeObjectIdenticalTo(anObject: MemorySegment): Unit {
@@ -103,19 +103,19 @@ fun NSMutableArray.removeObjectsInArray(otherArray: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, otherArray)
 }
 
-fun NSMutableArray.removeObjectsInRange(range: MemorySegment): Unit {
+fun NSMutableArray.removeObjectsInRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("removeObjectsInRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableArray.replaceObjectsInRange_withObjectsFromArray_range(range: MemorySegment, otherArray: MemorySegment, otherRange: MemorySegment): Unit {
+fun NSMutableArray.replaceObjectsInRange_withObjectsFromArray_range(range: NSRange, otherArray: MemorySegment, otherRange: NSRange): Unit {
     val sel = ObjCRuntime.sel("replaceObjectsInRange:withObjectsFromArray:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, otherArray, otherRange)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), otherArray, ObjCRuntime.ObjCStructArg(otherRange.segment, NSRange.layout))
 }
 
-fun NSMutableArray.replaceObjectsInRange_withObjectsFromArray(range: MemorySegment, otherArray: MemorySegment): Unit {
+fun NSMutableArray.replaceObjectsInRange_withObjectsFromArray(range: NSRange, otherArray: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("replaceObjectsInRange:withObjectsFromArray:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, otherArray)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), otherArray)
 }
 
 fun NSMutableArray.setArray(otherArray: MemorySegment): Unit {
@@ -158,9 +158,9 @@ fun NSMutableArray.sortUsingComparator(cmptr: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, cmptr)
 }
 
-fun NSMutableArray.sortWithOptions_usingComparator(opts: MemorySegment, cmptr: MemorySegment): Unit {
+fun NSMutableArray.sortWithOptions_usingComparator(opts: NSSortOptions, cmptr: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("sortWithOptions:usingComparator:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, opts, cmptr)
+    ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, cmptr)
 }
 
 // ── Category: NSMutableArrayCreation on NSMutableArray ─────────────────────────────────────────

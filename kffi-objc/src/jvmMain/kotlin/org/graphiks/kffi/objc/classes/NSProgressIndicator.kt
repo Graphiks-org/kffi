@@ -46,13 +46,13 @@ open class NSProgressIndicator(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property controlSize
-    open fun controlSize(): MemorySegment {
+    open fun controlSize(): NSControlSize {
         val sel = ObjCRuntime.sel("controlSize")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSControlSize(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setControlSize(value: MemorySegment) {
+    open fun setControlSize(value: NSControlSize) {
         val sel = ObjCRuntime.sel("setControlSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property doubleValue
@@ -106,13 +106,13 @@ open class NSProgressIndicator(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property style
-    open fun style(): MemorySegment {
+    open fun style(): NSProgressIndicatorStyle {
         val sel = ObjCRuntime.sel("style")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSProgressIndicatorStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setStyle(value: MemorySegment) {
+    open fun setStyle(value: NSProgressIndicatorStyle) {
         val sel = ObjCRuntime.sel("setStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property displayedWhenStopped
@@ -154,12 +154,12 @@ fun NSProgressIndicator.setBezeled(bezeled: Boolean): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, bezeled)
 }
 
-fun NSProgressIndicator.controlTint(): MemorySegment {
+fun NSProgressIndicator.controlTint(): NSControlTint {
     val sel = ObjCRuntime.sel("controlTint")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSControlTint(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSProgressIndicator.setControlTint(controlTint: MemorySegment): Unit {
+fun NSProgressIndicator.setControlTint(controlTint: NSControlTint): Unit {
     val sel = ObjCRuntime.sel("setControlTint:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, controlTint)
+    ObjCRuntime.msgSend(null, this.ptr, sel, controlTint.rawValue)
 }

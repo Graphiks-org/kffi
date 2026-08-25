@@ -134,13 +134,13 @@ open class NSThread(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property qualityOfService
-    open fun qualityOfService(): MemorySegment {
+    open fun qualityOfService(): NSQualityOfService {
         val sel = ObjCRuntime.sel("qualityOfService")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSQualityOfService(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setQualityOfService(value: MemorySegment) {
+    open fun setQualityOfService(value: NSQualityOfService) {
         val sel = ObjCRuntime.sel("setQualityOfService:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property callStackReturnAddresses

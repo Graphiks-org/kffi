@@ -13,9 +13,9 @@ open class NSPointerArray(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSPointerArray") }
 
-        fun pointerArrayWithOptions(options: MemorySegment): MemorySegment {
+        fun pointerArrayWithOptions(options: NSPointerFunctionsOptions): MemorySegment {
             val sel = ObjCRuntime.sel("pointerArrayWithOptions:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, options) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, options.rawValue) as MemorySegment
         }
 
         fun pointerArrayWithPointerFunctions(functions: MemorySegment): MemorySegment {
@@ -25,9 +25,9 @@ open class NSPointerArray(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithOptions(options: MemorySegment): MemorySegment {
+    open fun initWithOptions(options: NSPointerFunctionsOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithOptions:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options.rawValue) as MemorySegment
     }
 
     open fun initWithPointerFunctions(functions: MemorySegment): MemorySegment {

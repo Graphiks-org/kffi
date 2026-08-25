@@ -20,26 +20,26 @@ open class NSItemProvider(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun registerDataRepresentationForTypeIdentifier_visibility_loadHandler(typeIdentifier: MemorySegment, visibility: MemorySegment, loadHandler: MemorySegment): Unit {
+    open fun registerDataRepresentationForTypeIdentifier_visibility_loadHandler(typeIdentifier: MemorySegment, visibility: NSItemProviderRepresentationVisibility, loadHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("registerDataRepresentationForTypeIdentifier:visibility:loadHandler:")
-        ObjCRuntime.msgSend(null, ptr, sel, typeIdentifier, visibility, loadHandler)
+        ObjCRuntime.msgSend(null, ptr, sel, typeIdentifier, visibility.rawValue, loadHandler)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun registerDataRepresentationForTypeIdentifier_visibility_loadHandler(typeIdentifier: String, visibility: MemorySegment, loadHandler: MemorySegment): Unit = registerDataRepresentationForTypeIdentifier_visibility_loadHandler(ObjCRuntime.newNSString(Arena.global(), typeIdentifier), visibility, loadHandler)
+    fun registerDataRepresentationForTypeIdentifier_visibility_loadHandler(typeIdentifier: String, visibility: NSItemProviderRepresentationVisibility, loadHandler: MemorySegment): Unit = registerDataRepresentationForTypeIdentifier_visibility_loadHandler(ObjCRuntime.newNSString(Arena.global(), typeIdentifier), visibility, loadHandler)
 
-    open fun registerFileRepresentationForTypeIdentifier_fileOptions_visibility_loadHandler(typeIdentifier: MemorySegment, fileOptions: MemorySegment, visibility: MemorySegment, loadHandler: MemorySegment): Unit {
+    open fun registerFileRepresentationForTypeIdentifier_fileOptions_visibility_loadHandler(typeIdentifier: MemorySegment, fileOptions: NSItemProviderFileOptions, visibility: NSItemProviderRepresentationVisibility, loadHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("registerFileRepresentationForTypeIdentifier:fileOptions:visibility:loadHandler:")
-        ObjCRuntime.msgSend(null, ptr, sel, typeIdentifier, fileOptions, visibility, loadHandler)
+        ObjCRuntime.msgSend(null, ptr, sel, typeIdentifier, fileOptions.rawValue, visibility.rawValue, loadHandler)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun registerFileRepresentationForTypeIdentifier_fileOptions_visibility_loadHandler(typeIdentifier: String, fileOptions: MemorySegment, visibility: MemorySegment, loadHandler: MemorySegment): Unit = registerFileRepresentationForTypeIdentifier_fileOptions_visibility_loadHandler(ObjCRuntime.newNSString(Arena.global(), typeIdentifier), fileOptions, visibility, loadHandler)
+    fun registerFileRepresentationForTypeIdentifier_fileOptions_visibility_loadHandler(typeIdentifier: String, fileOptions: NSItemProviderFileOptions, visibility: NSItemProviderRepresentationVisibility, loadHandler: MemorySegment): Unit = registerFileRepresentationForTypeIdentifier_fileOptions_visibility_loadHandler(ObjCRuntime.newNSString(Arena.global(), typeIdentifier), fileOptions, visibility, loadHandler)
 
     /** @return NSArray<NSString *> * */
-    open fun registeredTypeIdentifiersWithFileOptions(fileOptions: MemorySegment): MemorySegment {
+    open fun registeredTypeIdentifiersWithFileOptions(fileOptions: NSItemProviderFileOptions): MemorySegment {
         val sel = ObjCRuntime.sel("registeredTypeIdentifiersWithFileOptions:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, fileOptions) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, fileOptions.rawValue) as MemorySegment
     }
 
     open fun hasItemConformingToTypeIdentifier(typeIdentifier: MemorySegment): Boolean {
@@ -50,13 +50,13 @@ open class NSItemProvider(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun hasItemConformingToTypeIdentifier(typeIdentifier: String): Boolean = hasItemConformingToTypeIdentifier(ObjCRuntime.newNSString(Arena.global(), typeIdentifier))
 
-    open fun hasRepresentationConformingToTypeIdentifier_fileOptions(typeIdentifier: MemorySegment, fileOptions: MemorySegment): Boolean {
+    open fun hasRepresentationConformingToTypeIdentifier_fileOptions(typeIdentifier: MemorySegment, fileOptions: NSItemProviderFileOptions): Boolean {
         val sel = ObjCRuntime.sel("hasRepresentationConformingToTypeIdentifier:fileOptions:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, typeIdentifier, fileOptions) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, typeIdentifier, fileOptions.rawValue) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun hasRepresentationConformingToTypeIdentifier_fileOptions(typeIdentifier: String, fileOptions: MemorySegment): Boolean = hasRepresentationConformingToTypeIdentifier_fileOptions(ObjCRuntime.newNSString(Arena.global(), typeIdentifier), fileOptions)
+    fun hasRepresentationConformingToTypeIdentifier_fileOptions(typeIdentifier: String, fileOptions: NSItemProviderFileOptions): Boolean = hasRepresentationConformingToTypeIdentifier_fileOptions(ObjCRuntime.newNSString(Arena.global(), typeIdentifier), fileOptions)
 
     open fun loadDataRepresentationForTypeIdentifier_completionHandler(typeIdentifier: MemorySegment, completionHandler: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("loadDataRepresentationForTypeIdentifier:completionHandler:")
@@ -87,14 +87,14 @@ open class NSItemProvider(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `object`) as MemorySegment
     }
 
-    open fun registerObject_visibility(`object`: MemorySegment, visibility: MemorySegment): Unit {
+    open fun registerObject_visibility(`object`: MemorySegment, visibility: NSItemProviderRepresentationVisibility): Unit {
         val sel = ObjCRuntime.sel("registerObject:visibility:")
-        ObjCRuntime.msgSend(null, ptr, sel, `object`, visibility)
+        ObjCRuntime.msgSend(null, ptr, sel, `object`, visibility.rawValue)
     }
 
-    open fun registerObjectOfClass_visibility_loadHandler(aClass: MemorySegment, visibility: MemorySegment, loadHandler: MemorySegment): Unit {
+    open fun registerObjectOfClass_visibility_loadHandler(aClass: MemorySegment, visibility: NSItemProviderRepresentationVisibility, loadHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("registerObjectOfClass:visibility:loadHandler:")
-        ObjCRuntime.msgSend(null, ptr, sel, aClass, visibility, loadHandler)
+        ObjCRuntime.msgSend(null, ptr, sel, aClass, visibility.rawValue, loadHandler)
     }
 
     open fun canLoadObjectOfClass(aClass: MemorySegment): Boolean {
@@ -192,17 +192,17 @@ fun NSItemProvider.registerCloudKitShare_container(share: MemorySegment, contain
 
 // ── Category: NSItemSourceInfo on NSItemProvider ─────────────────────────────────────────
 
-fun NSItemProvider.sourceFrame(): MemorySegment {
+fun NSItemProvider.sourceFrame(): NSRect {
     val sel = ObjCRuntime.sel("sourceFrame")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel))
 }
 
-fun NSItemProvider.containerFrame(): MemorySegment {
+fun NSItemProvider.containerFrame(): NSRect {
     val sel = ObjCRuntime.sel("containerFrame")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel))
 }
 
-fun NSItemProvider.preferredPresentationSize(): MemorySegment {
+fun NSItemProvider.preferredPresentationSize(): NSSize {
     val sel = ObjCRuntime.sel("preferredPresentationSize")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel))
 }

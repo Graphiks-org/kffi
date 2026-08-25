@@ -35,9 +35,9 @@ open class NSDateInterval(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, startDate, endDate) as MemorySegment
     }
 
-    open fun compare(dateInterval: MemorySegment): MemorySegment {
+    open fun compare(dateInterval: MemorySegment): NSComparisonResult {
         val sel = ObjCRuntime.sel("compare:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, dateInterval) as MemorySegment
+        return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, dateInterval) as Long)
     }
 
     open fun isEqualToDateInterval(dateInterval: MemorySegment): Boolean {

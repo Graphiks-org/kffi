@@ -17,9 +17,9 @@ open class NSProxy(open val ptr: MemorySegment) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
         }
 
-        fun allocWithZone(zone: MemorySegment): MemorySegment {
+        fun allocWithZone(zone: NSZonePointer): MemorySegment {
             val sel = ObjCRuntime.sel("allocWithZone:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, zone) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, zone.segment) as MemorySegment
         }
 
         fun `class`(): MemorySegment {

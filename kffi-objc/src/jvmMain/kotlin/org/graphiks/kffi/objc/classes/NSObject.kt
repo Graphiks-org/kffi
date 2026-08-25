@@ -287,9 +287,9 @@ fun NSObject.observeValueForKeyPath_ofObject_change_context(keyPath: MemorySegme
 
 // ── Category: NSKeyValueObserverRegistration on NSObject ─────────────────────────────────────────
 
-fun NSObject.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: MemorySegment, context: MemorySegment): Unit {
+fun NSObject.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: NSKeyValueObservingOptions, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("addObserver:forKeyPath:options:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options, context)
+    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options.rawValue, context)
 }
 
 fun NSObject.removeObserver_forKeyPath_context(observer: MemorySegment, keyPath: MemorySegment, context: MemorySegment): Unit {
@@ -314,24 +314,24 @@ fun NSObject.didChangeValueForKey(key: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, key)
 }
 
-fun NSObject.willChange_valuesAtIndexes_forKey(changeKind: MemorySegment, indexes: MemorySegment, key: MemorySegment): Unit {
+fun NSObject.willChange_valuesAtIndexes_forKey(changeKind: NSKeyValueChange, indexes: MemorySegment, key: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("willChange:valuesAtIndexes:forKey:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, changeKind, indexes, key)
+    ObjCRuntime.msgSend(null, this.ptr, sel, changeKind.rawValue, indexes, key)
 }
 
-fun NSObject.didChange_valuesAtIndexes_forKey(changeKind: MemorySegment, indexes: MemorySegment, key: MemorySegment): Unit {
+fun NSObject.didChange_valuesAtIndexes_forKey(changeKind: NSKeyValueChange, indexes: MemorySegment, key: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("didChange:valuesAtIndexes:forKey:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, changeKind, indexes, key)
+    ObjCRuntime.msgSend(null, this.ptr, sel, changeKind.rawValue, indexes, key)
 }
 
-fun NSObject.willChangeValueForKey_withSetMutation_usingObjects(key: MemorySegment, mutationKind: MemorySegment, objects: MemorySegment): Unit {
+fun NSObject.willChangeValueForKey_withSetMutation_usingObjects(key: MemorySegment, mutationKind: NSKeyValueSetMutationKind, objects: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("willChangeValueForKey:withSetMutation:usingObjects:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, key, mutationKind, objects)
+    ObjCRuntime.msgSend(null, this.ptr, sel, key, mutationKind.rawValue, objects)
 }
 
-fun NSObject.didChangeValueForKey_withSetMutation_usingObjects(key: MemorySegment, mutationKind: MemorySegment, objects: MemorySegment): Unit {
+fun NSObject.didChangeValueForKey_withSetMutation_usingObjects(key: MemorySegment, mutationKind: NSKeyValueSetMutationKind, objects: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("didChangeValueForKey:withSetMutation:usingObjects:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, key, mutationKind, objects)
+    ObjCRuntime.msgSend(null, this.ptr, sel, key, mutationKind.rawValue, objects)
 }
 
 // ── Category: NSKeyValueObservingCustomization on NSObject ─────────────────────────────────────────
@@ -724,9 +724,9 @@ fun NSObject.accessibilityIsIgnored(): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
-fun NSObject.accessibilityHitTest(point: MemorySegment): MemorySegment {
+fun NSObject.accessibilityHitTest(point: NSPoint): MemorySegment {
     val sel = ObjCRuntime.sel("accessibilityHitTest:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, point) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as MemorySegment
 }
 
 fun NSObject.accessibilityIndexOfChild(child: MemorySegment): Long {
@@ -781,24 +781,24 @@ fun NSObject.namesOfPromisedFilesDroppedAtDestination(dropDestination: MemorySeg
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, dropDestination) as MemorySegment
 }
 
-fun NSObject.draggingSourceOperationMaskForLocal(flag: Boolean): MemorySegment {
+fun NSObject.draggingSourceOperationMaskForLocal(flag: Boolean): NSDragOperation {
     val sel = ObjCRuntime.sel("draggingSourceOperationMaskForLocal:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, flag) as MemorySegment
+    return NSDragOperation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, flag) as Long)
 }
 
-fun NSObject.draggedImage_beganAt(image: MemorySegment, screenPoint: MemorySegment): Unit {
+fun NSObject.draggedImage_beganAt(image: MemorySegment, screenPoint: NSPoint): Unit {
     val sel = ObjCRuntime.sel("draggedImage:beganAt:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, image, screenPoint)
+    ObjCRuntime.msgSend(null, this.ptr, sel, image, ObjCRuntime.ObjCStructArg(screenPoint.segment, NSPoint.layout))
 }
 
-fun NSObject.draggedImage_endedAt_operation(image: MemorySegment, screenPoint: MemorySegment, operation: MemorySegment): Unit {
+fun NSObject.draggedImage_endedAt_operation(image: MemorySegment, screenPoint: NSPoint, operation: NSDragOperation): Unit {
     val sel = ObjCRuntime.sel("draggedImage:endedAt:operation:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, image, screenPoint, operation)
+    ObjCRuntime.msgSend(null, this.ptr, sel, image, ObjCRuntime.ObjCStructArg(screenPoint.segment, NSPoint.layout), operation.rawValue)
 }
 
-fun NSObject.draggedImage_movedTo(image: MemorySegment, screenPoint: MemorySegment): Unit {
+fun NSObject.draggedImage_movedTo(image: MemorySegment, screenPoint: NSPoint): Unit {
     val sel = ObjCRuntime.sel("draggedImage:movedTo:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, image, screenPoint)
+    ObjCRuntime.msgSend(null, this.ptr, sel, image, ObjCRuntime.ObjCStructArg(screenPoint.segment, NSPoint.layout))
 }
 
 fun NSObject.ignoreModifierKeysWhileDragging(): Boolean {
@@ -806,9 +806,9 @@ fun NSObject.ignoreModifierKeysWhileDragging(): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
-fun NSObject.draggedImage_endedAt_deposited(image: MemorySegment, screenPoint: MemorySegment, flag: Boolean): Unit {
+fun NSObject.draggedImage_endedAt_deposited(image: MemorySegment, screenPoint: NSPoint, flag: Boolean): Unit {
     val sel = ObjCRuntime.sel("draggedImage:endedAt:deposited:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, image, screenPoint, flag)
+    ObjCRuntime.msgSend(null, this.ptr, sel, image, ObjCRuntime.ObjCStructArg(screenPoint.segment, NSPoint.layout), flag)
 }
 
 // ── Category: NSLayerDelegateContentsScaleUpdating on NSObject ─────────────────────────────────────────
@@ -820,9 +820,9 @@ fun NSObject.layer_shouldInheritContentsScale_fromWindow(layer: MemorySegment, n
 
 // ── Category: NSToolTipOwner on NSObject ─────────────────────────────────────────
 
-fun NSObject.view_stringForToolTip_point_userData(view: MemorySegment, tag: Long, point: MemorySegment, `data`: MemorySegment): MemorySegment {
+fun NSObject.view_stringForToolTip_point_userData(view: MemorySegment, tag: Long, point: NSPoint, `data`: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("view:stringForToolTip:point:userData:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, view, tag, point, `data`) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, view, tag, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), `data`) as MemorySegment
 }
 
 // ── Category: NSMenuValidation on NSObject ─────────────────────────────────────────
@@ -957,9 +957,9 @@ fun NSObject.changeFont(sender: MemorySegment): Unit {
 
 // ── Category: NSFontPanelValidationAdditions on NSObject ─────────────────────────────────────────
 
-fun NSObject.validModesForFontPanel(fontPanel: MemorySegment): MemorySegment {
+fun NSObject.validModesForFontPanel(fontPanel: MemorySegment): NSFontPanelModeMask {
     val sel = ObjCRuntime.sel("validModesForFontPanel:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, fontPanel) as MemorySegment
+    return NSFontPanelModeMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, fontPanel) as Long)
 }
 
 // ── Category: NSColorPanelResponderMethod on NSObject ─────────────────────────────────────────
@@ -993,9 +993,9 @@ fun NSObject.panel_directoryDidChange(sender: MemorySegment, path: MemorySegment
     ObjCRuntime.msgSend(null, this.ptr, sel, sender, path)
 }
 
-fun NSObject.panel_compareFilename_with_caseSensitive(sender: MemorySegment, name1: MemorySegment, name2: MemorySegment, caseSensitive: Boolean): MemorySegment {
+fun NSObject.panel_compareFilename_with_caseSensitive(sender: MemorySegment, name1: MemorySegment, name2: MemorySegment, caseSensitive: Boolean): NSComparisonResult {
     val sel = ObjCRuntime.sel("panel:compareFilename:with:caseSensitive:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, sender, name1, name2, caseSensitive) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, sender, name1, name2, caseSensitive) as Long)
 }
 
 fun NSObject.panel_shouldShowFilename(sender: MemorySegment, filename: MemorySegment): Boolean {

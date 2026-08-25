@@ -73,9 +73,9 @@ open class NSSortDescriptor(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun initWithKey_ascending_comparator(key: String, ascending: Boolean, cmptr: MemorySegment): MemorySegment = initWithKey_ascending_comparator(ObjCRuntime.newNSString(Arena.global(), key), ascending, cmptr)
 
-    open fun compareObject_toObject(object1: MemorySegment, object2: MemorySegment): MemorySegment {
+    open fun compareObject_toObject(object1: MemorySegment, object2: MemorySegment): NSComparisonResult {
         val sel = ObjCRuntime.sel("compareObject:toObject:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, object1, object2) as MemorySegment
+        return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, object1, object2) as Long)
     }
 
     // @property key

@@ -1599,6 +1599,10 @@ fun CGRectGetMinX(arg0: MemorySegment): Double {
     }
 }
 
+fun CGRectGetMinX(arg0: CGRect): Double {
+    return CGRectGetMinX(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CGRectGetMidX typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
@@ -1616,6 +1620,10 @@ fun CGRectGetMidX(arg0: MemorySegment): Double {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectGetMidX(arg0: CGRect): Double {
+    return CGRectGetMidX(arg0.segment)
 }
 
 /**
@@ -1637,6 +1645,10 @@ fun CGRectGetMaxX(arg0: MemorySegment): Double {
     }
 }
 
+fun CGRectGetMaxX(arg0: CGRect): Double {
+    return CGRectGetMaxX(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CGRectGetMinY typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
@@ -1654,6 +1666,10 @@ fun CGRectGetMinY(arg0: MemorySegment): Double {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectGetMinY(arg0: CGRect): Double {
+    return CGRectGetMinY(arg0.segment)
 }
 
 /**
@@ -1675,6 +1691,10 @@ fun CGRectGetMidY(arg0: MemorySegment): Double {
     }
 }
 
+fun CGRectGetMidY(arg0: CGRect): Double {
+    return CGRectGetMidY(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CGRectGetMaxY typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
@@ -1692,6 +1712,10 @@ fun CGRectGetMaxY(arg0: MemorySegment): Double {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectGetMaxY(arg0: CGRect): Double {
+    return CGRectGetMaxY(arg0.segment)
 }
 
 /**
@@ -1713,6 +1737,10 @@ fun CGRectGetWidth(arg0: MemorySegment): Double {
     }
 }
 
+fun CGRectGetWidth(arg0: CGRect): Double {
+    return CGRectGetWidth(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CGRectGetHeight typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
@@ -1730,6 +1758,10 @@ fun CGRectGetHeight(arg0: MemorySegment): Double {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectGetHeight(arg0: CGRect): Double {
+    return CGRectGetHeight(arg0.segment)
 }
 
 /**
@@ -1751,6 +1783,10 @@ fun CGPointEqualToPoint(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+fun CGPointEqualToPoint(arg0: CGPoint, arg1: CGPoint): Boolean {
+    return CGPointEqualToPoint(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGSizeEqualToSize Bool(typedef CGSize = Declared(CGSize),typedef CGSize = Declared(CGSize))
  */
@@ -1768,6 +1804,10 @@ fun CGSizeEqualToSize(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGSizeEqualToSize(arg0: CGSize, arg1: CGSize): Boolean {
+    return CGSizeEqualToSize(arg0.segment, arg1.segment)
 }
 
 /**
@@ -1789,6 +1829,10 @@ fun CGRectEqualToRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+fun CGRectEqualToRect(arg0: CGRect, arg1: CGRect): Boolean {
+    return CGRectEqualToRect(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGRectStandardize typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect))
  */
@@ -1806,6 +1850,10 @@ fun CGRectStandardize(allocator: SegmentAllocator, arg0: MemorySegment): MemoryS
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectStandardize(allocator: SegmentAllocator, arg0: CGRect): CGRect {
+    return CGRect(CGRectStandardize(allocator, arg0.segment))
 }
 
 /**
@@ -1827,6 +1875,10 @@ fun CGRectIsEmpty(arg0: MemorySegment): Boolean {
     }
 }
 
+fun CGRectIsEmpty(arg0: CGRect): Boolean {
+    return CGRectIsEmpty(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CGRectIsNull Bool(typedef CGRect = Declared(CGRect))
  */
@@ -1844,6 +1896,10 @@ fun CGRectIsNull(arg0: MemorySegment): Boolean {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectIsNull(arg0: CGRect): Boolean {
+    return CGRectIsNull(arg0.segment)
 }
 
 /**
@@ -1865,6 +1921,10 @@ fun CGRectIsInfinite(arg0: MemorySegment): Boolean {
     }
 }
 
+fun CGRectIsInfinite(arg0: CGRect): Boolean {
+    return CGRectIsInfinite(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CGRectInset typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -1882,6 +1942,10 @@ fun CGRectInset(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double, 
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectInset(allocator: SegmentAllocator, arg0: CGRect, arg1: Double, arg2: Double): CGRect {
+    return CGRect(CGRectInset(allocator, arg0.segment, arg1, arg2))
 }
 
 /**
@@ -1903,6 +1967,10 @@ fun CGRectIntegral(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegm
     }
 }
 
+fun CGRectIntegral(allocator: SegmentAllocator, arg0: CGRect): CGRect {
+    return CGRect(CGRectIntegral(allocator, arg0.segment))
+}
+
 /**
  * {@snippet lang=c : CGRectUnion typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect),typedef CGRect = Declared(CGRect))
  */
@@ -1920,6 +1988,10 @@ fun CGRectUnion(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySe
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectUnion(allocator: SegmentAllocator, arg0: CGRect, arg1: CGRect): CGRect {
+    return CGRect(CGRectUnion(allocator, arg0.segment, arg1.segment))
 }
 
 /**
@@ -1941,6 +2013,10 @@ fun CGRectIntersection(allocator: SegmentAllocator, arg0: MemorySegment, arg1: M
     }
 }
 
+fun CGRectIntersection(allocator: SegmentAllocator, arg0: CGRect, arg1: CGRect): CGRect {
+    return CGRect(CGRectIntersection(allocator, arg0.segment, arg1.segment))
+}
+
 /**
  * {@snippet lang=c : CGRectOffset typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -1958,6 +2034,10 @@ fun CGRectOffset(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double,
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectOffset(allocator: SegmentAllocator, arg0: CGRect, arg1: Double, arg2: Double): CGRect {
+    return CGRect(CGRectOffset(allocator, arg0.segment, arg1, arg2))
 }
 
 /**
@@ -1979,6 +2059,10 @@ fun CGRectContainsPoint(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+fun CGRectContainsPoint(arg0: CGRect, arg1: CGPoint): Boolean {
+    return CGRectContainsPoint(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGRectContainsRect Bool(typedef CGRect = Declared(CGRect),typedef CGRect = Declared(CGRect))
  */
@@ -1996,6 +2080,10 @@ fun CGRectContainsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectContainsRect(arg0: CGRect, arg1: CGRect): Boolean {
+    return CGRectContainsRect(arg0.segment, arg1.segment)
 }
 
 /**
@@ -2017,6 +2105,10 @@ fun CGRectIntersectsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+fun CGRectIntersectsRect(arg0: CGRect, arg1: CGRect): Boolean {
+    return CGRectIntersectsRect(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGPointCreateDictionaryRepresentation typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGPoint = Declared(CGPoint))
  */
@@ -2034,6 +2126,10 @@ fun CGPointCreateDictionaryRepresentation(arg0: MemorySegment): MemorySegment {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPointCreateDictionaryRepresentation(arg0: CGPoint): MemorySegment {
+    return CGPointCreateDictionaryRepresentation(arg0.segment)
 }
 
 /**
@@ -2074,6 +2170,10 @@ fun CGSizeCreateDictionaryRepresentation(arg0: MemorySegment): MemorySegment {
     }
 }
 
+fun CGSizeCreateDictionaryRepresentation(arg0: CGSize): MemorySegment {
+    return CGSizeCreateDictionaryRepresentation(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CGSizeMakeWithDictionaryRepresentation Bool(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(typedef CGSize = Declared(CGSize))*)
  */
@@ -2110,6 +2210,10 @@ fun CGRectCreateDictionaryRepresentation(arg0: MemorySegment): MemorySegment {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectCreateDictionaryRepresentation(arg0: CGRect): MemorySegment {
+    return CGRectCreateDictionaryRepresentation(arg0.segment)
 }
 
 /**
@@ -2170,6 +2274,10 @@ fun NSEqualPoints(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+fun NSEqualPoints(arg0: NSPoint, arg1: NSPoint): Boolean {
+    return NSEqualPoints(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : NSEqualSizes typedef BOOL = Bool(typedef NSSize = Declared(CGSize),typedef NSSize = Declared(CGSize))
  */
@@ -2187,6 +2295,10 @@ fun NSEqualSizes(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSEqualSizes(arg0: NSSize, arg1: NSSize): Boolean {
+    return NSEqualSizes(arg0.segment, arg1.segment)
 }
 
 /**
@@ -2208,6 +2320,10 @@ fun NSEqualRects(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+fun NSEqualRects(arg0: NSRect, arg1: NSRect): Boolean {
+    return NSEqualRects(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : NSIsEmptyRect typedef BOOL = Bool(typedef NSRect = Declared(CGRect))
  */
@@ -2225,6 +2341,10 @@ fun NSIsEmptyRect(arg0: MemorySegment): Boolean {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSIsEmptyRect(arg0: NSRect): Boolean {
+    return NSIsEmptyRect(arg0.segment)
 }
 
 /**
@@ -2246,6 +2366,10 @@ fun NSEdgeInsetsEqual(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+fun NSEdgeInsetsEqual(arg0: NSEdgeInsets, arg1: NSEdgeInsets): Boolean {
+    return NSEdgeInsetsEqual(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : NSInsetRect typedef NSRect = Declared(CGRect)(typedef NSRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -2263,6 +2387,10 @@ fun NSInsetRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double, 
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSInsetRect(allocator: SegmentAllocator, arg0: NSRect, arg1: Double, arg2: Double): NSRect {
+    return NSRect(NSInsetRect(allocator, arg0.segment, arg1, arg2))
 }
 
 /**
@@ -2284,6 +2412,10 @@ fun NSIntegralRect(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegm
     }
 }
 
+fun NSIntegralRect(allocator: SegmentAllocator, arg0: NSRect): NSRect {
+    return NSRect(NSIntegralRect(allocator, arg0.segment))
+}
+
 /**
  * {@snippet lang=c : NSUnionRect typedef NSRect = Declared(CGRect)(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
@@ -2301,6 +2433,10 @@ fun NSUnionRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySe
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSUnionRect(allocator: SegmentAllocator, arg0: NSRect, arg1: NSRect): NSRect {
+    return NSRect(NSUnionRect(allocator, arg0.segment, arg1.segment))
 }
 
 /**
@@ -2322,6 +2458,10 @@ fun NSIntersectionRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: M
     }
 }
 
+fun NSIntersectionRect(allocator: SegmentAllocator, arg0: NSRect, arg1: NSRect): NSRect {
+    return NSRect(NSIntersectionRect(allocator, arg0.segment, arg1.segment))
+}
+
 /**
  * {@snippet lang=c : NSOffsetRect typedef NSRect = Declared(CGRect)(typedef NSRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -2339,6 +2479,10 @@ fun NSOffsetRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double,
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSOffsetRect(allocator: SegmentAllocator, arg0: NSRect, arg1: Double, arg2: Double): NSRect {
+    return NSRect(NSOffsetRect(allocator, arg0.segment, arg1, arg2))
 }
 
 /**
@@ -2360,6 +2504,10 @@ fun NSPointInRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+fun NSPointInRect(arg0: NSPoint, arg1: NSRect): Boolean {
+    return NSPointInRect(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : NSMouseInRect typedef BOOL = Bool(typedef NSPoint = Declared(CGPoint),typedef NSRect = Declared(CGRect),typedef BOOL = Bool)
  */
@@ -2377,6 +2525,10 @@ fun NSMouseInRect(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean): Bool
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSMouseInRect(arg0: NSPoint, arg1: NSRect, arg2: Boolean): Boolean {
+    return NSMouseInRect(arg0.segment, arg1.segment, arg2)
 }
 
 /**
@@ -2398,6 +2550,10 @@ fun NSContainsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+fun NSContainsRect(arg0: NSRect, arg1: NSRect): Boolean {
+    return NSContainsRect(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : NSIntersectsRect typedef BOOL = Bool(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
@@ -2415,6 +2571,10 @@ fun NSIntersectsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSIntersectsRect(arg0: NSRect, arg1: NSRect): Boolean {
+    return NSIntersectsRect(arg0.segment, arg1.segment)
 }
 
 /**
@@ -2436,6 +2596,10 @@ fun NSStringFromPoint(arg0: MemorySegment): MemorySegment {
     }
 }
 
+fun NSStringFromPoint(arg0: NSPoint): MemorySegment {
+    return NSStringFromPoint(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : NSStringFromSize typedef NSString = (Void)*(typedef NSSize = Declared(CGSize))
  */
@@ -2453,6 +2617,10 @@ fun NSStringFromSize(arg0: MemorySegment): MemorySegment {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSStringFromSize(arg0: NSSize): MemorySegment {
+    return NSStringFromSize(arg0.segment)
 }
 
 /**
@@ -2474,6 +2642,10 @@ fun NSStringFromRect(arg0: MemorySegment): MemorySegment {
     }
 }
 
+fun NSStringFromRect(arg0: NSRect): MemorySegment {
+    return NSStringFromRect(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : NSPointFromString typedef NSPoint = Declared(CGPoint)(typedef NSString = (Void)*)
  */
@@ -2491,6 +2663,10 @@ fun NSPointFromString(allocator: SegmentAllocator, arg0: MemorySegment): MemoryS
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSPointFromStringTyped(allocator: SegmentAllocator, arg0: MemorySegment): NSPoint {
+    return NSPoint(NSPointFromString(allocator, arg0))
 }
 
 /**
@@ -2512,6 +2688,10 @@ fun NSSizeFromString(allocator: SegmentAllocator, arg0: MemorySegment): MemorySe
     }
 }
 
+fun NSSizeFromStringTyped(allocator: SegmentAllocator, arg0: MemorySegment): NSSize {
+    return NSSize(NSSizeFromString(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : NSRectFromString typedef NSRect = Declared(CGRect)(typedef NSString = (Void)*)
  */
@@ -2529,6 +2709,10 @@ fun NSRectFromString(allocator: SegmentAllocator, arg0: MemorySegment): MemorySe
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSRectFromStringTyped(allocator: SegmentAllocator, arg0: MemorySegment): NSRect {
+    return NSRect(NSRectFromString(allocator, arg0))
 }
 
 /**

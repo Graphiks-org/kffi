@@ -47,7 +47,7 @@ interface NSControlTextEditingDelegate {
 
     /** @return NSArray<NSString *> * */
     // @optional
-    fun control_textView_completions_forPartialWordRange_indexOfSelectedItem(control: MemorySegment, textView: MemorySegment, words: MemorySegment, charRange: MemorySegment, index: MemorySegment): MemorySegment =
+    fun control_textView_completions_forPartialWordRange_indexOfSelectedItem(control: MemorySegment, textView: MemorySegment, words: MemorySegment, charRange: NSRange, index: MemorySegment): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'control:textView:completions:forPartialWordRange:indexOfSelectedItem:' not implemented")
 
 }

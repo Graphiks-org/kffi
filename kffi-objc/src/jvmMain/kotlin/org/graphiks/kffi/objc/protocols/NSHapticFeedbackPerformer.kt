@@ -9,6 +9,6 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSHapticFeedbackPerformer {
-    fun performFeedbackPattern_performanceTime(pattern: MemorySegment, performanceTime: MemorySegment): Unit
+    fun performFeedbackPattern_performanceTime(pattern: NSHapticFeedbackPattern, performanceTime: NSHapticFeedbackPerformanceTime): Unit
 
 }

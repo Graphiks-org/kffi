@@ -94,13 +94,13 @@ open class NSWorkspace(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, contentType) as MemorySegment
     }
 
-    open fun setIcon_forFile_options(image: MemorySegment, fullPath: MemorySegment, options: MemorySegment): Boolean {
+    open fun setIcon_forFile_options(image: MemorySegment, fullPath: MemorySegment, options: NSWorkspaceIconCreationOptions): Boolean {
         val sel = ObjCRuntime.sel("setIcon:forFile:options:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, image, fullPath, options) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, image, fullPath, options.rawValue) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun setIcon_forFile_options(image: MemorySegment, fullPath: String, options: MemorySegment): Boolean = setIcon_forFile_options(image, ObjCRuntime.newNSString(Arena.global(), fullPath), options)
+    fun setIcon_forFile_options(image: MemorySegment, fullPath: String, options: NSWorkspaceIconCreationOptions): Boolean = setIcon_forFile_options(image, ObjCRuntime.newNSString(Arena.global(), fullPath), options)
 
     open fun recycleURLs_completionHandler(URLs: MemorySegment, handler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("recycleURLs:completionHandler:")
@@ -265,9 +265,9 @@ fun NSWorkspace.desktopImageOptionsForScreen(screen: MemorySegment): MemorySegme
 
 // ── Category: NSWorkspaceAuthorization on NSWorkspace ─────────────────────────────────────────
 
-fun NSWorkspace.requestAuthorizationOfType_completionHandler(type: MemorySegment, completionHandler: MemorySegment): Unit {
+fun NSWorkspace.requestAuthorizationOfType_completionHandler(type: NSWorkspaceAuthorizationType, completionHandler: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("requestAuthorizationOfType:completionHandler:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, type, completionHandler)
+    ObjCRuntime.msgSend(null, this.ptr, sel, type.rawValue, completionHandler)
 }
 
 // ── Category: NSDeprecated on NSWorkspace ─────────────────────────────────────────
@@ -292,19 +292,19 @@ fun NSWorkspace.launchApplication(appName: MemorySegment): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, appName) as Boolean
 }
 
-fun NSWorkspace.launchApplicationAtURL_options_configuration_error(url: MemorySegment, options: MemorySegment, configuration: MemorySegment, error: MemorySegment): MemorySegment {
+fun NSWorkspace.launchApplicationAtURL_options_configuration_error(url: MemorySegment, options: NSWorkspaceLaunchOptions, configuration: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("launchApplicationAtURL:options:configuration:error:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, options, configuration, error) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, options.rawValue, configuration, error) as MemorySegment
 }
 
-fun NSWorkspace.openURL_options_configuration_error(url: MemorySegment, options: MemorySegment, configuration: MemorySegment, error: MemorySegment): MemorySegment {
+fun NSWorkspace.openURL_options_configuration_error(url: MemorySegment, options: NSWorkspaceLaunchOptions, configuration: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("openURL:options:configuration:error:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, options, configuration, error) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, options.rawValue, configuration, error) as MemorySegment
 }
 
-fun NSWorkspace.openURLs_withApplicationAtURL_options_configuration_error(urls: MemorySegment, applicationURL: MemorySegment, options: MemorySegment, configuration: MemorySegment, error: MemorySegment): MemorySegment {
+fun NSWorkspace.openURLs_withApplicationAtURL_options_configuration_error(urls: MemorySegment, applicationURL: MemorySegment, options: NSWorkspaceLaunchOptions, configuration: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("openURLs:withApplicationAtURL:options:configuration:error:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, urls, applicationURL, options, configuration, error) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, urls, applicationURL, options.rawValue, configuration, error) as MemorySegment
 }
 
 fun NSWorkspace.launchApplication_showIcon_autolaunch(appName: MemorySegment, showIcon: Boolean, autolaunch: Boolean): Boolean {
@@ -322,14 +322,14 @@ fun NSWorkspace.absolutePathForAppBundleWithIdentifier(bundleIdentifier: MemoryS
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, bundleIdentifier) as MemorySegment
 }
 
-fun NSWorkspace.launchAppWithBundleIdentifier_options_additionalEventParamDescriptor_launchIdentifier(bundleIdentifier: MemorySegment, options: MemorySegment, descriptor: MemorySegment, identifier: MemorySegment): Boolean {
+fun NSWorkspace.launchAppWithBundleIdentifier_options_additionalEventParamDescriptor_launchIdentifier(bundleIdentifier: MemorySegment, options: NSWorkspaceLaunchOptions, descriptor: MemorySegment, identifier: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("launchAppWithBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifier:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, bundleIdentifier, options, descriptor, identifier) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, bundleIdentifier, options.rawValue, descriptor, identifier) as Boolean
 }
 
-fun NSWorkspace.openURLs_withAppBundleIdentifier_options_additionalEventParamDescriptor_launchIdentifiers(urls: MemorySegment, bundleIdentifier: MemorySegment, options: MemorySegment, descriptor: MemorySegment, identifiers: MemorySegment): Boolean {
+fun NSWorkspace.openURLs_withAppBundleIdentifier_options_additionalEventParamDescriptor_launchIdentifiers(urls: MemorySegment, bundleIdentifier: MemorySegment, options: NSWorkspaceLaunchOptions, descriptor: MemorySegment, identifiers: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("openURLs:withAppBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifiers:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, urls, bundleIdentifier, options, descriptor, identifiers) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, urls, bundleIdentifier, options.rawValue, descriptor, identifiers) as Boolean
 }
 
 fun NSWorkspace.openTempFile(fullPath: MemorySegment): Boolean {
@@ -347,9 +347,9 @@ fun NSWorkspace.noteUserDefaultsChanged(): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
-fun NSWorkspace.slideImage_from_to(image: MemorySegment, fromPoint: MemorySegment, toPoint: MemorySegment): Unit {
+fun NSWorkspace.slideImage_from_to(image: MemorySegment, fromPoint: NSPoint, toPoint: NSPoint): Unit {
     val sel = ObjCRuntime.sel("slideImage:from:to:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, image, fromPoint, toPoint)
+    ObjCRuntime.msgSend(null, this.ptr, sel, image, ObjCRuntime.ObjCStructArg(fromPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(toPoint.segment, NSPoint.layout))
 }
 
 fun NSWorkspace.checkForRemovableMedia(): Unit {
@@ -392,9 +392,9 @@ fun NSWorkspace.launchedApplications(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
-fun NSWorkspace.openFile_fromImage_at_inView(fullPath: MemorySegment, image: MemorySegment, point: MemorySegment, view: MemorySegment): Boolean {
+fun NSWorkspace.openFile_fromImage_at_inView(fullPath: MemorySegment, image: MemorySegment, point: NSPoint, view: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("openFile:fromImage:at:inView:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fullPath, image, point, view) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fullPath, image, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), view) as Boolean
 }
 
 fun NSWorkspace.performFileOperation_source_destination_files_tag(operation: MemorySegment, source: MemorySegment, destination: MemorySegment, files: MemorySegment, tag: MemorySegment): Boolean {

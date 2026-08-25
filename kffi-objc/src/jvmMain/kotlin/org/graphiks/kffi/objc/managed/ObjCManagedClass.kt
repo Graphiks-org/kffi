@@ -61,11 +61,11 @@ class ObjCManagedClass private constructor(
             key: StructuralKey,
             methods: Map<String, ObjCMethodSignature<*>>,
         ): ObjCManagedClass {
-            require(ObjCSubclassing.lookupClassOrNull(key.superclassName) != MemorySegment.NULL) {
+            require(ObjCManagedRuntime.lookupClassOrNull(key.superclassName) != MemorySegment.NULL) {
                 "Objective-C superclass '${key.superclassName}' was not found"
             }
             val className = key.nativeClassName()
-            val existing = ObjCSubclassing.lookupClassOrNull(className)
+            val existing = ObjCManagedRuntime.lookupClassOrNull(className)
             if (existing != MemorySegment.NULL) return ObjCManagedClass(existing, methods)
 
             val allocated = ObjCSubclassing.allocateClass(key.superclassName, className)
@@ -75,21 +75,21 @@ class ObjCManagedClass private constructor(
             var registered = false
             try {
                 methods.entries.sortedBy { it.key }.forEach { (selector, signature) ->
-                    ObjCSubclassing.requireAddedMethod(
-                        cls = allocated,
+                    ObjCManagedRuntime.requireAddedMethod(
+                        nativeClass = allocated,
                         selectorName = selector,
-                        imp = MemorySegment.ofAddress(signature.trampoline.rawValue),
+                        implementation = MemorySegment.ofAddress(signature.trampoline.rawValue),
                         typeEncoding = signature.typeEncoding,
                     )
                 }
                 key.protocols.forEach { protocol ->
-                    ObjCSubclassing.requireAddedProtocol(allocated, protocol)
+                    ObjCManagedRuntime.requireAddedProtocol(allocated, protocol)
                 }
                 ObjCSubclassing.registerClass(allocated)
                 registered = true
                 return ObjCManagedClass(allocated, methods)
             } catch (failure: Throwable) {
-                if (!registered) ObjCSubclassing.disposeUnregisteredClass(allocated)
+                if (!registered) ObjCManagedRuntime.disposeUnregisteredClass(allocated)
                 throw failure
             }
         }

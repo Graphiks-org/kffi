@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 interface NSUserInterfaceCompression {
     fun compressWithPrioritizedCompressionOptions(prioritizedOptions: MemorySegment): Unit
 
-    fun minimumSizeWithPrioritizedCompressionOptions(prioritizedOptions: MemorySegment): MemorySegment
+    fun minimumSizeWithPrioritizedCompressionOptions(prioritizedOptions: MemorySegment): NSSize
 
     fun activeCompressionOptions(): MemorySegment
 

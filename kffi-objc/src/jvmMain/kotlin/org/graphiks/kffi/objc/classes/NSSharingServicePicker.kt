@@ -24,9 +24,9 @@ open class NSSharingServicePicker(override val ptr: MemorySegment) : NSObject(pt
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun showRelativeToRect_ofView_preferredEdge(rect: MemorySegment, view: MemorySegment, preferredEdge: MemorySegment): Unit {
+    open fun showRelativeToRect_ofView_preferredEdge(rect: NSRect, view: MemorySegment, preferredEdge: NSRectEdge): Unit {
         val sel = ObjCRuntime.sel("showRelativeToRect:ofView:preferredEdge:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), view, preferredEdge)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), view, preferredEdge.rawValue)
     }
 
     open fun close(): Unit {

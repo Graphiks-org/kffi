@@ -250,14 +250,14 @@ open class NSResponder(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, event) as Boolean
     }
 
-    open fun wantsScrollEventsForSwipeTrackingOnAxis(axis: MemorySegment): Boolean {
+    open fun wantsScrollEventsForSwipeTrackingOnAxis(axis: NSEventGestureAxis): Boolean {
         val sel = ObjCRuntime.sel("wantsScrollEventsForSwipeTrackingOnAxis:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, axis) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, axis.rawValue) as Boolean
     }
 
-    open fun wantsForwardedScrollEventsForAxis(axis: MemorySegment): Boolean {
+    open fun wantsForwardedScrollEventsForAxis(axis: NSEventGestureAxis): Boolean {
         val sel = ObjCRuntime.sel("wantsForwardedScrollEventsForAxis:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, axis) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, axis.rawValue) as Boolean
     }
 
     open fun supplementalTargetForAction_sender(action: MemorySegment, sender: MemorySegment): MemorySegment {

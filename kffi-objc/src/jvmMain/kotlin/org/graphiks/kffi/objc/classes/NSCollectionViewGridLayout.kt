@@ -15,13 +15,13 @@ open class NSCollectionViewGridLayout(override val ptr: MemorySegment) : NSColle
     }
 
     // @property margins
-    open fun margins(): MemorySegment {
+    open fun margins(): NSEdgeInsets {
         val sel = ObjCRuntime.sel("margins")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), ptr, sel) as MemorySegment
+        return NSEdgeInsets(ObjCRuntime.msgSendStruct(NSEdgeInsets.layout, ptr, sel))
     }
-    open fun setMargins(value: MemorySegment) {
+    open fun setMargins(value: NSEdgeInsets) {
         val sel = ObjCRuntime.sel("setMargins:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSEdgeInsets.layout))
     }
 
     // @property minimumInteritemSpacing
@@ -65,23 +65,23 @@ open class NSCollectionViewGridLayout(override val ptr: MemorySegment) : NSColle
     }
 
     // @property minimumItemSize
-    open fun minimumItemSize(): MemorySegment {
+    open fun minimumItemSize(): NSSize {
         val sel = ObjCRuntime.sel("minimumItemSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setMinimumItemSize(value: MemorySegment) {
+    open fun setMinimumItemSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMinimumItemSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property maximumItemSize
-    open fun maximumItemSize(): MemorySegment {
+    open fun maximumItemSize(): NSSize {
         val sel = ObjCRuntime.sel("maximumItemSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setMaximumItemSize(value: MemorySegment) {
+    open fun setMaximumItemSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMaximumItemSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property backgroundColors

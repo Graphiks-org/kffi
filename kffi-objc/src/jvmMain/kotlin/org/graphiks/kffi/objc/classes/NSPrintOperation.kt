@@ -17,45 +17,45 @@ open class NSPrintOperation(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, printInfo) as MemorySegment
         }
 
-        fun PDFOperationWithView_insideRect_toData_printInfo(view: MemorySegment, rect: MemorySegment, `data`: MemorySegment, printInfo: MemorySegment): MemorySegment {
+        fun PDFOperationWithView_insideRect_toData_printInfo(view: MemorySegment, rect: NSRect, `data`: MemorySegment, printInfo: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("PDFOperationWithView:insideRect:toData:printInfo:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), `data`, printInfo) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), `data`, printInfo) as MemorySegment
         }
 
-        fun PDFOperationWithView_insideRect_toPath_printInfo(view: MemorySegment, rect: MemorySegment, path: MemorySegment, printInfo: MemorySegment): MemorySegment {
+        fun PDFOperationWithView_insideRect_toPath_printInfo(view: MemorySegment, rect: NSRect, path: MemorySegment, printInfo: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("PDFOperationWithView:insideRect:toPath:printInfo:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), path, printInfo) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), path, printInfo) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun PDFOperationWithView_insideRect_toPath_printInfo(view: MemorySegment, rect: MemorySegment, path: String, printInfo: MemorySegment): MemorySegment = PDFOperationWithView_insideRect_toPath_printInfo(view, rect, ObjCRuntime.newNSString(Arena.global(), path), printInfo)
+        fun PDFOperationWithView_insideRect_toPath_printInfo(view: MemorySegment, rect: NSRect, path: String, printInfo: MemorySegment): MemorySegment = PDFOperationWithView_insideRect_toPath_printInfo(view, rect, ObjCRuntime.newNSString(Arena.global(), path), printInfo)
 
-        fun EPSOperationWithView_insideRect_toData_printInfo(view: MemorySegment, rect: MemorySegment, `data`: MemorySegment, printInfo: MemorySegment): MemorySegment {
+        fun EPSOperationWithView_insideRect_toData_printInfo(view: MemorySegment, rect: NSRect, `data`: MemorySegment, printInfo: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("EPSOperationWithView:insideRect:toData:printInfo:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), `data`, printInfo) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), `data`, printInfo) as MemorySegment
         }
 
-        fun EPSOperationWithView_insideRect_toPath_printInfo(view: MemorySegment, rect: MemorySegment, path: MemorySegment, printInfo: MemorySegment): MemorySegment {
+        fun EPSOperationWithView_insideRect_toPath_printInfo(view: MemorySegment, rect: NSRect, path: MemorySegment, printInfo: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("EPSOperationWithView:insideRect:toPath:printInfo:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), path, printInfo) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), path, printInfo) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun EPSOperationWithView_insideRect_toPath_printInfo(view: MemorySegment, rect: MemorySegment, path: String, printInfo: MemorySegment): MemorySegment = EPSOperationWithView_insideRect_toPath_printInfo(view, rect, ObjCRuntime.newNSString(Arena.global(), path), printInfo)
+        fun EPSOperationWithView_insideRect_toPath_printInfo(view: MemorySegment, rect: NSRect, path: String, printInfo: MemorySegment): MemorySegment = EPSOperationWithView_insideRect_toPath_printInfo(view, rect, ObjCRuntime.newNSString(Arena.global(), path), printInfo)
 
         fun printOperationWithView(view: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("printOperationWithView:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view) as MemorySegment
         }
 
-        fun PDFOperationWithView_insideRect_toData(view: MemorySegment, rect: MemorySegment, `data`: MemorySegment): MemorySegment {
+        fun PDFOperationWithView_insideRect_toData(view: MemorySegment, rect: NSRect, `data`: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("PDFOperationWithView:insideRect:toData:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), `data`) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), `data`) as MemorySegment
         }
 
-        fun EPSOperationWithView_insideRect_toData(view: MemorySegment, rect: MemorySegment, `data`: MemorySegment): MemorySegment {
+        fun EPSOperationWithView_insideRect_toData(view: MemorySegment, rect: NSRect, `data`: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("EPSOperationWithView:insideRect:toData:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), `data`) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), `data`) as MemorySegment
         }
 
         fun currentOperation(): MemorySegment {
@@ -117,9 +117,9 @@ open class NSPrintOperation(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property preferredRenderingQuality
-    open fun preferredRenderingQuality(): MemorySegment {
+    open fun preferredRenderingQuality(): NSPrintRenderingQuality {
         val sel = ObjCRuntime.sel("preferredRenderingQuality")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPrintRenderingQuality(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property jobTitle
@@ -189,13 +189,13 @@ open class NSPrintOperation(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property pageOrder
-    open fun pageOrder(): MemorySegment {
+    open fun pageOrder(): NSPrintingPageOrder {
         val sel = ObjCRuntime.sel("pageOrder")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPrintingPageOrder(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPageOrder(value: MemorySegment) {
+    open fun setPageOrder(value: NSPrintingPageOrder) {
         val sel = ObjCRuntime.sel("setPageOrder:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property view
@@ -221,9 +221,9 @@ open class NSPrintOperation(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property pageRange
-    open fun pageRange(): MemorySegment {
+    open fun pageRange(): NSRange {
         val sel = ObjCRuntime.sel("pageRange")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property currentPage

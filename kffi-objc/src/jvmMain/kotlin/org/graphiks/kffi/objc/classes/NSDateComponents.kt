@@ -25,14 +25,14 @@ open class NSDateComponents(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, v)
     }
 
-    open fun setValue_forComponent(value: Long, unit: MemorySegment): Unit {
+    open fun setValue_forComponent(value: Long, unit: NSCalendarUnit): Unit {
         val sel = ObjCRuntime.sel("setValue:forComponent:")
-        ObjCRuntime.msgSend(null, ptr, sel, value, unit)
+        ObjCRuntime.msgSend(null, ptr, sel, value, unit.rawValue)
     }
 
-    open fun valueForComponent(unit: MemorySegment): Long {
+    open fun valueForComponent(unit: NSCalendarUnit): Long {
         val sel = ObjCRuntime.sel("valueForComponent:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, unit) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, unit.rawValue) as Long
     }
 
     open fun isValidDateInCalendar(calendar: MemorySegment): Boolean {

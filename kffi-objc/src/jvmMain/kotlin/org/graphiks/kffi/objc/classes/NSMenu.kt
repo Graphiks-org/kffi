@@ -48,9 +48,9 @@ open class NSMenu(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun popUpMenuPositioningItem_atLocation_inView(item: MemorySegment, location: MemorySegment, view: MemorySegment): Boolean {
+    open fun popUpMenuPositioningItem_atLocation_inView(item: MemorySegment, location: NSPoint, view: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("popUpMenuPositioningItem:atLocation:inView:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, item, ObjCRuntime.ObjCStructArg(location, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), view) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, item, ObjCRuntime.ObjCStructArg(location.segment, NSPoint.layout), view) as Boolean
     }
 
     open fun insertItem_atIndex(newItem: MemorySegment, index: Long): Unit {
@@ -267,9 +267,9 @@ open class NSMenu(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property size
-    open fun size(): MemorySegment {
+    open fun size(): NSSize {
         val sel = ObjCRuntime.sel("size")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
 
     // @property font
@@ -313,37 +313,37 @@ open class NSMenu(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property userInterfaceLayoutDirection
-    open fun userInterfaceLayoutDirection(): MemorySegment {
+    open fun userInterfaceLayoutDirection(): NSUserInterfaceLayoutDirection {
         val sel = ObjCRuntime.sel("userInterfaceLayoutDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSUserInterfaceLayoutDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setUserInterfaceLayoutDirection(value: MemorySegment) {
+    open fun setUserInterfaceLayoutDirection(value: NSUserInterfaceLayoutDirection) {
         val sel = ObjCRuntime.sel("setUserInterfaceLayoutDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }
 
 // ── Category: NSPaletteMenus on NSMenu ─────────────────────────────────────────
 
-fun NSMenu.presentationStyle(): MemorySegment {
+fun NSMenu.presentationStyle(): NSMenuPresentationStyle {
     val sel = ObjCRuntime.sel("presentationStyle")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSMenuPresentationStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSMenu.setPresentationStyle(presentationStyle: MemorySegment): Unit {
+fun NSMenu.setPresentationStyle(presentationStyle: NSMenuPresentationStyle): Unit {
     val sel = ObjCRuntime.sel("setPresentationStyle:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, presentationStyle)
+    ObjCRuntime.msgSend(null, this.ptr, sel, presentationStyle.rawValue)
 }
 
-fun NSMenu.selectionMode(): MemorySegment {
+fun NSMenu.selectionMode(): NSMenuSelectionMode {
     val sel = ObjCRuntime.sel("selectionMode")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSMenuSelectionMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSMenu.setSelectionMode(selectionMode: MemorySegment): Unit {
+fun NSMenu.setSelectionMode(selectionMode: NSMenuSelectionMode): Unit {
     val sel = ObjCRuntime.sel("setSelectionMode:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, selectionMode)
+    ObjCRuntime.msgSend(null, this.ptr, sel, selectionMode.rawValue)
 }
 
 /** @return NSArray<NSMenuItem *> * */
@@ -380,9 +380,9 @@ fun NSMenu.submenuAction(sender: MemorySegment): Unit {
 
 // ── Category: NSMenuPropertiesToUpdate on NSMenu ─────────────────────────────────────────
 
-fun NSMenu.propertiesToUpdate(): MemorySegment {
+fun NSMenu.propertiesToUpdate(): NSMenuProperties {
     val sel = ObjCRuntime.sel("propertiesToUpdate")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSMenuProperties(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
 // ── Category: NSDeprecated on NSMenu ─────────────────────────────────────────
@@ -432,9 +432,9 @@ fun NSMenu.sizeToFit(): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
-fun NSMenu.locationForSubmenu(submenu: MemorySegment): MemorySegment {
+fun NSMenu.locationForSubmenu(submenu: MemorySegment): NSPoint {
     val sel = ObjCRuntime.sel("locationForSubmenu:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, submenu) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel, submenu))
 }
 
 fun NSMenu.helpRequested(eventPtr: MemorySegment): Unit {
@@ -458,15 +458,15 @@ fun NSMenu.isTornOff(): Boolean {
 }
 
 // Class method: +[NSMenu menuZone]
-fun NSMenu_menuZone(): MemorySegment {
+fun NSMenu_menuZone(): NSZonePointer {
     val sel = ObjCRuntime.sel("menuZone")
     val cls = ObjCRuntime.getClass("NSMenu")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
+    return NSZonePointer(ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment)
 }
 
 // Class method: +[NSMenu setMenuZone:]
-fun NSMenu_setMenuZone(zone: MemorySegment): Unit {
+fun NSMenu_setMenuZone(zone: NSZonePointer): Unit {
     val sel = ObjCRuntime.sel("setMenuZone:")
     val cls = ObjCRuntime.getClass("NSMenu")
-    ObjCRuntime.msgSend(null, cls, sel, zone)
+    ObjCRuntime.msgSend(null, cls, sel, zone.segment)
 }

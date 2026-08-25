@@ -24,22 +24,22 @@ open class NSXMLDocument(override val ptr: MemorySegment) : NSXMLNode(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun initWithXMLString_options_error(string: MemorySegment, mask: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun initWithXMLString_options_error(string: MemorySegment, mask: NSXMLNodeOptions, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithXMLString:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, string, mask, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, string, mask.rawValue, error) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun initWithXMLString_options_error(string: String, mask: MemorySegment, error: MemorySegment): MemorySegment = initWithXMLString_options_error(ObjCRuntime.newNSString(Arena.global(), string), mask, error)
+    fun initWithXMLString_options_error(string: String, mask: NSXMLNodeOptions, error: MemorySegment): MemorySegment = initWithXMLString_options_error(ObjCRuntime.newNSString(Arena.global(), string), mask, error)
 
-    open fun initWithContentsOfURL_options_error(url: MemorySegment, mask: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun initWithContentsOfURL_options_error(url: MemorySegment, mask: NSXMLNodeOptions, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithContentsOfURL:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, mask, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, mask.rawValue, error) as MemorySegment
     }
 
-    open fun initWithData_options_error(`data`: MemorySegment, mask: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun initWithData_options_error(`data`: MemorySegment, mask: NSXMLNodeOptions, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithData:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `data`, mask, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `data`, mask.rawValue, error) as MemorySegment
     }
 
     open fun initWithRootElement(element: MemorySegment): MemorySegment {
@@ -87,9 +87,9 @@ open class NSXMLDocument(override val ptr: MemorySegment) : NSXMLNode(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, index, node)
     }
 
-    open fun XMLDataWithOptions(options: MemorySegment): MemorySegment {
+    open fun XMLDataWithOptions(options: NSXMLNodeOptions): MemorySegment {
         val sel = ObjCRuntime.sel("XMLDataWithOptions:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options.rawValue) as MemorySegment
     }
 
     open fun objectByApplyingXSLT_arguments_error(xslt: MemorySegment, arguments: MemorySegment, error: MemorySegment): MemorySegment {
@@ -158,13 +158,13 @@ open class NSXMLDocument(override val ptr: MemorySegment) : NSXMLNode(ptr) {
     }
 
     // @property documentContentKind
-    open fun documentContentKind(): MemorySegment {
+    open fun documentContentKind(): NSXMLDocumentContentKind {
         val sel = ObjCRuntime.sel("documentContentKind")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSXMLDocumentContentKind(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDocumentContentKind(value: MemorySegment) {
+    open fun setDocumentContentKind(value: NSXMLDocumentContentKind) {
         val sel = ObjCRuntime.sel("setDocumentContentKind:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property MIMEType

@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSItemProviderWriting {
     // @optional
-    fun itemProviderVisibilityForRepresentationWithTypeIdentifier(typeIdentifier: MemorySegment): MemorySegment =
+    fun itemProviderVisibilityForRepresentationWithTypeIdentifier(typeIdentifier: MemorySegment): NSItemProviderRepresentationVisibility =
         throw UnsupportedOperationException("Optional ObjC method 'itemProviderVisibilityForRepresentationWithTypeIdentifier:' not implemented")
 
     fun loadDataWithTypeIdentifier_forItemProviderCompletionHandler(typeIdentifier: MemorySegment, completionHandler: MemorySegment): MemorySegment

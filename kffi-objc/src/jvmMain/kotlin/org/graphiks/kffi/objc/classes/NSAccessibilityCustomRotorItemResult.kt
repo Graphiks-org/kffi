@@ -51,13 +51,13 @@ open class NSAccessibilityCustomRotorItemResult(override val ptr: MemorySegment)
     }
 
     // @property targetRange
-    open fun targetRange(): MemorySegment {
+    open fun targetRange(): NSRange {
         val sel = ObjCRuntime.sel("targetRange")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
-    open fun setTargetRange(value: MemorySegment) {
+    open fun setTargetRange(value: NSRange) {
         val sel = ObjCRuntime.sel("setTargetRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSRange.layout))
     }
 
     // @property customLabel

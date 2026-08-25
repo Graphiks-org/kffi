@@ -16,9 +16,9 @@ open class NSURLCredential(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property persistence
-    open fun persistence(): MemorySegment {
+    open fun persistence(): NSURLCredentialPersistence {
         val sel = ObjCRuntime.sel("persistence")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLCredentialPersistence(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 
@@ -28,9 +28,9 @@ open class NSURLCredential(override val ptr: MemorySegment) : NSObject(ptr) {
 
 // ── Category: NSInternetPassword on NSURLCredential ─────────────────────────────────────────
 
-fun NSURLCredential.initWithUser_password_persistence(user: MemorySegment, password: MemorySegment, persistence: MemorySegment): MemorySegment {
+fun NSURLCredential.initWithUser_password_persistence(user: MemorySegment, password: MemorySegment, persistence: NSURLCredentialPersistence): MemorySegment {
     val sel = ObjCRuntime.sel("initWithUser:password:persistence:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, user, password, persistence) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, user, password, persistence.rawValue) as MemorySegment
 }
 
 fun NSURLCredential.user(): MemorySegment {
@@ -49,22 +49,22 @@ fun NSURLCredential.hasPassword(): Boolean {
 }
 
 // Class method: +[NSURLCredential credentialWithUser:password:persistence:]
-fun NSURLCredential_credentialWithUser_password_persistence(user: MemorySegment, password: MemorySegment, persistence: MemorySegment): MemorySegment {
+fun NSURLCredential_credentialWithUser_password_persistence(user: MemorySegment, password: MemorySegment, persistence: NSURLCredentialPersistence): MemorySegment {
     val sel = ObjCRuntime.sel("credentialWithUser:password:persistence:")
     val cls = ObjCRuntime.getClass("NSURLCredential")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, user, password, persistence) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, user, password, persistence.rawValue) as MemorySegment
 }
 
 // ── Category: NSClientCertificate on NSURLCredential ─────────────────────────────────────────
 
-fun NSURLCredential.initWithIdentity_certificates_persistence(identity: MemorySegment, certArray: MemorySegment, persistence: MemorySegment): MemorySegment {
+fun NSURLCredential.initWithIdentity_certificates_persistence(identity: SecIdentityRef, certArray: MemorySegment, persistence: NSURLCredentialPersistence): MemorySegment {
     val sel = ObjCRuntime.sel("initWithIdentity:certificates:persistence:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, identity, certArray, persistence) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, identity.segment, certArray, persistence.rawValue) as MemorySegment
 }
 
-fun NSURLCredential.identity(): MemorySegment {
+fun NSURLCredential.identity(): SecIdentityRef {
     val sel = ObjCRuntime.sel("identity")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return SecIdentityRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment)
 }
 
 fun NSURLCredential.certificates(): MemorySegment {
@@ -73,22 +73,22 @@ fun NSURLCredential.certificates(): MemorySegment {
 }
 
 // Class method: +[NSURLCredential credentialWithIdentity:certificates:persistence:]
-fun NSURLCredential_credentialWithIdentity_certificates_persistence(identity: MemorySegment, certArray: MemorySegment, persistence: MemorySegment): MemorySegment {
+fun NSURLCredential_credentialWithIdentity_certificates_persistence(identity: SecIdentityRef, certArray: MemorySegment, persistence: NSURLCredentialPersistence): MemorySegment {
     val sel = ObjCRuntime.sel("credentialWithIdentity:certificates:persistence:")
     val cls = ObjCRuntime.getClass("NSURLCredential")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, identity, certArray, persistence) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, identity.segment, certArray, persistence.rawValue) as MemorySegment
 }
 
 // ── Category: NSServerTrust on NSURLCredential ─────────────────────────────────────────
 
-fun NSURLCredential.initWithTrust(trust: MemorySegment): MemorySegment {
+fun NSURLCredential.initWithTrust(trust: SecTrustRef): MemorySegment {
     val sel = ObjCRuntime.sel("initWithTrust:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, trust) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, trust.segment) as MemorySegment
 }
 
 // Class method: +[NSURLCredential credentialForTrust:]
-fun NSURLCredential_credentialForTrust(trust: MemorySegment): MemorySegment {
+fun NSURLCredential_credentialForTrust(trust: SecTrustRef): MemorySegment {
     val sel = ObjCRuntime.sel("credentialForTrust:")
     val cls = ObjCRuntime.getClass("NSURLCredential")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, trust) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, trust.segment) as MemorySegment
 }

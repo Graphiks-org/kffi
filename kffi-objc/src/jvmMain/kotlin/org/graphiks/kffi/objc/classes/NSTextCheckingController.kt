@@ -29,14 +29,14 @@ open class NSTextCheckingController(override val ptr: MemorySegment) : NSObject(
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun didChangeTextInRange(range: MemorySegment): Unit {
+    open fun didChangeTextInRange(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("didChangeTextInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
-    open fun insertedTextInRange(range: MemorySegment): Unit {
+    open fun insertedTextInRange(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("insertedTextInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
     open fun didChangeSelectedRange(): Unit {
@@ -44,14 +44,14 @@ open class NSTextCheckingController(override val ptr: MemorySegment) : NSObject(
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun considerTextCheckingForRange(range: MemorySegment): Unit {
+    open fun considerTextCheckingForRange(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("considerTextCheckingForRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
-    open fun checkTextInRange_types_options(range: MemorySegment, checkingTypes: Long, options: MemorySegment): Unit {
+    open fun checkTextInRange_types_options(range: NSRange, checkingTypes: Long, options: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("checkTextInRange:types:options:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), checkingTypes, options)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), checkingTypes, options)
     }
 
     open fun checkTextInSelection(sender: MemorySegment): Unit {
@@ -100,9 +100,9 @@ open class NSTextCheckingController(override val ptr: MemorySegment) : NSObject(
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun menuAtIndex_clickedOnSelection_effectiveRange(location: Long, clickedOnSelection: Boolean, effectiveRange: MemorySegment): MemorySegment {
+    open fun menuAtIndex_clickedOnSelection_effectiveRange(location: Long, clickedOnSelection: Boolean, effectiveRange: NSRangePointer): MemorySegment {
         val sel = ObjCRuntime.sel("menuAtIndex:clickedOnSelection:effectiveRange:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, location, clickedOnSelection, effectiveRange) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, location, clickedOnSelection, effectiveRange.segment) as MemorySegment
     }
 
     // @property client

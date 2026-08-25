@@ -4961,6 +4961,10 @@ fun NSUnionRange(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemoryS
     }
 }
 
+fun NSUnionRange(allocator: SegmentAllocator, arg0: NSRange, arg1: NSRange): NSRange {
+    return NSRange(NSUnionRange(allocator, arg0.segment, arg1.segment))
+}
+
 /**
  * {@snippet lang=c : NSIntersectionRange typedef NSRange = Declared(_NSRange)(typedef NSRange = Declared(_NSRange),typedef NSRange = Declared(_NSRange))
  */
@@ -4978,6 +4982,10 @@ fun NSIntersectionRange(allocator: SegmentAllocator, arg0: MemorySegment, arg1: 
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSIntersectionRange(allocator: SegmentAllocator, arg0: NSRange, arg1: NSRange): NSRange {
+    return NSRange(NSIntersectionRange(allocator, arg0.segment, arg1.segment))
 }
 
 /**
@@ -4999,6 +5007,10 @@ fun NSStringFromRange(arg0: MemorySegment): MemorySegment {
     }
 }
 
+fun NSStringFromRange(arg0: NSRange): MemorySegment {
+    return NSStringFromRange(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : NSRangeFromString typedef NSRange = Declared(_NSRange)(typedef NSString = (Void)*)
  */
@@ -5016,6 +5028,10 @@ fun NSRangeFromString(allocator: SegmentAllocator, arg0: MemorySegment): MemoryS
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSRangeFromStringTyped(allocator: SegmentAllocator, arg0: MemorySegment): NSRange {
+    return NSRange(NSRangeFromString(allocator, arg0))
 }
 
 /**

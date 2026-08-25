@@ -16,13 +16,13 @@ open class NSCollectionViewCompositionalLayoutConfiguration(override val ptr: Me
     }
 
     // @property scrollDirection
-    open fun scrollDirection(): MemorySegment {
+    open fun scrollDirection(): NSCollectionViewScrollDirection {
         val sel = ObjCRuntime.sel("scrollDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCollectionViewScrollDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setScrollDirection(value: MemorySegment) {
+    open fun setScrollDirection(value: NSCollectionViewScrollDirection) {
         val sel = ObjCRuntime.sel("setScrollDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property interSectionSpacing

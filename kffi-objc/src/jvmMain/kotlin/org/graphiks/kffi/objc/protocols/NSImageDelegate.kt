@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSImageDelegate {
     // @optional
-    fun imageDidNotDraw_inRect(sender: MemorySegment, rect: MemorySegment): MemorySegment =
+    fun imageDidNotDraw_inRect(sender: MemorySegment, rect: NSRect): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'imageDidNotDraw:inRect:' not implemented")
 
     // @optional
@@ -26,7 +26,7 @@ interface NSImageDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'image:didLoadPartOfRepresentation:withValidRows:' not implemented")
 
     // @optional
-    fun image_didLoadRepresentation_withStatus(image: MemorySegment, rep: MemorySegment, status: MemorySegment): Unit =
+    fun image_didLoadRepresentation_withStatus(image: MemorySegment, rep: MemorySegment, status: NSImageLoadStatus): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'image:didLoadRepresentation:withStatus:' not implemented")
 
 }

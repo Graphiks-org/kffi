@@ -13,7 +13,7 @@ interface NSURLProtocolClient {
 
     fun URLProtocol_cachedResponseIsValid(protocol: MemorySegment, cachedResponse: MemorySegment): Unit
 
-    fun URLProtocol_didReceiveResponse_cacheStoragePolicy(protocol: MemorySegment, response: MemorySegment, policy: MemorySegment): Unit
+    fun URLProtocol_didReceiveResponse_cacheStoragePolicy(protocol: MemorySegment, response: MemorySegment, policy: NSURLCacheStoragePolicy): Unit
 
     fun URLProtocol_didLoadData(protocol: MemorySegment, `data`: MemorySegment): Unit
 

@@ -13,21 +13,21 @@ open class NSCollectionLayoutBoundarySupplementaryItem(override val ptr: MemoryS
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionLayoutBoundarySupplementaryItem") }
 
-        fun boundarySupplementaryItemWithLayoutSize_elementKind_alignment(layoutSize: MemorySegment, elementKind: MemorySegment, alignment: MemorySegment): MemorySegment {
+        fun boundarySupplementaryItemWithLayoutSize_elementKind_alignment(layoutSize: MemorySegment, elementKind: MemorySegment, alignment: NSRectAlignment): MemorySegment {
             val sel = ObjCRuntime.sel("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, layoutSize, elementKind, alignment) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, layoutSize, elementKind, alignment.rawValue) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun boundarySupplementaryItemWithLayoutSize_elementKind_alignment(layoutSize: MemorySegment, elementKind: String, alignment: MemorySegment): MemorySegment = boundarySupplementaryItemWithLayoutSize_elementKind_alignment(layoutSize, ObjCRuntime.newNSString(Arena.global(), elementKind), alignment)
+        fun boundarySupplementaryItemWithLayoutSize_elementKind_alignment(layoutSize: MemorySegment, elementKind: String, alignment: NSRectAlignment): MemorySegment = boundarySupplementaryItemWithLayoutSize_elementKind_alignment(layoutSize, ObjCRuntime.newNSString(Arena.global(), elementKind), alignment)
 
-        fun boundarySupplementaryItemWithLayoutSize_elementKind_alignment_absoluteOffset(layoutSize: MemorySegment, elementKind: MemorySegment, alignment: MemorySegment, absoluteOffset: MemorySegment): MemorySegment {
+        fun boundarySupplementaryItemWithLayoutSize_elementKind_alignment_absoluteOffset(layoutSize: MemorySegment, elementKind: MemorySegment, alignment: NSRectAlignment, absoluteOffset: NSPoint): MemorySegment {
             val sel = ObjCRuntime.sel("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:absoluteOffset:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, layoutSize, elementKind, alignment, ObjCRuntime.ObjCStructArg(absoluteOffset, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, layoutSize, elementKind, alignment.rawValue, ObjCRuntime.ObjCStructArg(absoluteOffset.segment, NSPoint.layout)) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun boundarySupplementaryItemWithLayoutSize_elementKind_alignment_absoluteOffset(layoutSize: MemorySegment, elementKind: String, alignment: MemorySegment, absoluteOffset: MemorySegment): MemorySegment = boundarySupplementaryItemWithLayoutSize_elementKind_alignment_absoluteOffset(layoutSize, ObjCRuntime.newNSString(Arena.global(), elementKind), alignment, absoluteOffset)
+        fun boundarySupplementaryItemWithLayoutSize_elementKind_alignment_absoluteOffset(layoutSize: MemorySegment, elementKind: String, alignment: NSRectAlignment, absoluteOffset: NSPoint): MemorySegment = boundarySupplementaryItemWithLayoutSize_elementKind_alignment_absoluteOffset(layoutSize, ObjCRuntime.newNSString(Arena.global(), elementKind), alignment, absoluteOffset)
 
         fun new(): MemorySegment {
             val sel = ObjCRuntime.sel("new")
@@ -62,15 +62,15 @@ open class NSCollectionLayoutBoundarySupplementaryItem(override val ptr: MemoryS
     }
 
     // @property alignment
-    open fun alignment(): MemorySegment {
+    open fun alignment(): NSRectAlignment {
         val sel = ObjCRuntime.sel("alignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRectAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property offset
-    open fun offset(): MemorySegment {
+    open fun offset(): NSPoint {
         val sel = ObjCRuntime.sel("offset")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
 }

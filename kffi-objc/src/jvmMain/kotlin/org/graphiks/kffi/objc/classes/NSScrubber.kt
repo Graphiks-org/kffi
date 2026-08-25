@@ -14,9 +14,9 @@ open class NSScrubber(override val ptr: MemorySegment) : NSView(ptr) {
 
     }
 
-    override fun initWithFrame(frameRect: MemorySegment): MemorySegment {
+    override fun initWithFrame(frameRect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout)) as MemorySegment
     }
 
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -54,9 +54,9 @@ open class NSScrubber(override val ptr: MemorySegment) : NSView(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, oldIndex, newIndex)
     }
 
-    open fun scrollItemAtIndex_toAlignment(index: Long, alignment: MemorySegment): Unit {
+    open fun scrollItemAtIndex_toAlignment(index: Long, alignment: NSScrubberAlignment): Unit {
         val sel = ObjCRuntime.sel("scrollItemAtIndex:toAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, index, alignment)
+        ObjCRuntime.msgSend(null, ptr, sel, index, alignment.rawValue)
     }
 
     open fun itemViewForItemAtIndex(index: Long): MemorySegment {
@@ -134,23 +134,23 @@ open class NSScrubber(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property mode
-    open fun mode(): MemorySegment {
+    open fun mode(): NSScrubberMode {
         val sel = ObjCRuntime.sel("mode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrubberMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setMode(value: MemorySegment) {
+    open fun setMode(value: NSScrubberMode) {
         val sel = ObjCRuntime.sel("setMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property itemAlignment
-    open fun itemAlignment(): MemorySegment {
+    open fun itemAlignment(): NSScrubberAlignment {
         val sel = ObjCRuntime.sel("itemAlignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrubberAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setItemAlignment(value: MemorySegment) {
+    open fun setItemAlignment(value: NSScrubberAlignment) {
         val sel = ObjCRuntime.sel("setItemAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property continuous

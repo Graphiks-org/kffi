@@ -13,9 +13,9 @@ open class NSTextFinder(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSTextFinder") }
 
-        fun drawIncrementalMatchHighlightInRect(rect: MemorySegment): Unit {
+        fun drawIncrementalMatchHighlightInRect(rect: NSRect): Unit {
             val sel = ObjCRuntime.sel("drawIncrementalMatchHighlightInRect:")
-            ObjCRuntime.msgSend(null, _class, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+            ObjCRuntime.msgSend(null, _class, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
         }
 
     }
@@ -30,14 +30,14 @@ open class NSTextFinder(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun performAction(op: MemorySegment): Unit {
+    open fun performAction(op: NSTextFinderAction): Unit {
         val sel = ObjCRuntime.sel("performAction:")
-        ObjCRuntime.msgSend(null, ptr, sel, op)
+        ObjCRuntime.msgSend(null, ptr, sel, op.rawValue)
     }
 
-    open fun validateAction(op: MemorySegment): Boolean {
+    open fun validateAction(op: NSTextFinderAction): Boolean {
         val sel = ObjCRuntime.sel("validateAction:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, op) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, op.rawValue) as Boolean
     }
 
     open fun cancelFindIndicator(): Unit {

@@ -1384,6 +1384,10 @@ fun NSAccessibilityFrameInView(allocator: SegmentAllocator, arg0: MemorySegment,
     }
 }
 
+fun NSAccessibilityFrameInView(allocator: SegmentAllocator, arg0: MemorySegment, arg1: NSRect): NSRect {
+    return NSRect(NSAccessibilityFrameInView(allocator, arg0, arg1.segment))
+}
+
 /**
  * {@snippet lang=c : NSAccessibilityPointInView typedef NSPoint = Declared(CGPoint)(typedef NSView = (Void)*,typedef NSPoint = Declared(CGPoint))
  */
@@ -1401,6 +1405,10 @@ fun NSAccessibilityPointInView(allocator: SegmentAllocator, arg0: MemorySegment,
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSAccessibilityPointInView(allocator: SegmentAllocator, arg0: MemorySegment, arg1: NSPoint): NSPoint {
+    return NSPoint(NSAccessibilityPointInView(allocator, arg0, arg1.segment))
 }
 
 /**
@@ -2158,6 +2166,10 @@ fun CGLayerCreateWithContext(arg0: MemorySegment, arg1: MemorySegment, arg2: Mem
     }
 }
 
+fun CGLayerCreateWithContext(arg0: MemorySegment, arg1: CGSize, arg2: MemorySegment): MemorySegment {
+    return CGLayerCreateWithContext(arg0, arg1.segment, arg2)
+}
+
 /**
  * {@snippet lang=c : CGLayerRetain typedef CGLayerRef = (Declared(CGLayer))*(typedef CGLayerRef = (Declared(CGLayer))*)
  */
@@ -2215,6 +2227,10 @@ fun CGLayerGetSize(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegm
     }
 }
 
+fun CGLayerGetSizeTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGSize {
+    return CGSize(CGLayerGetSize(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGLayerGetContext typedef CGContextRef = (Declared(CGContext))*(typedef CGLayerRef = (Declared(CGLayer))*)
  */
@@ -2253,6 +2269,10 @@ fun CGContextDrawLayerInRect(arg0: MemorySegment, arg1: MemorySegment, arg2: Mem
     }
 }
 
+fun CGContextDrawLayerInRect(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
+    CGContextDrawLayerInRect(arg0, arg1.segment, arg2)
+}
+
 /**
  * {@snippet lang=c : CGContextDrawLayerAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint),typedef CGLayerRef = (Declared(CGLayer))*)
  */
@@ -2270,6 +2290,10 @@ fun CGContextDrawLayerAtPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Me
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextDrawLayerAtPoint(arg0: MemorySegment, arg1: CGPoint, arg2: MemorySegment): Unit {
+    CGContextDrawLayerAtPoint(arg0, arg1.segment, arg2)
 }
 
 /**
@@ -2595,6 +2619,10 @@ fun CGPDFContextSetURLForRect(arg0: MemorySegment, arg1: MemorySegment, arg2: Me
     }
 }
 
+fun CGPDFContextSetURLForRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect): Unit {
+    CGPDFContextSetURLForRect(arg0, arg1, arg2.segment)
+}
+
 /**
  * {@snippet lang=c : CGPDFContextAddDestinationAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFStringRef = (Declared(__CFString))*,typedef CGPoint = Declared(CGPoint))
  */
@@ -2614,6 +2642,10 @@ fun CGPDFContextAddDestinationAtPoint(arg0: MemorySegment, arg1: MemorySegment, 
     }
 }
 
+fun CGPDFContextAddDestinationAtPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: CGPoint): Unit {
+    CGPDFContextAddDestinationAtPoint(arg0, arg1, arg2.segment)
+}
+
 /**
  * {@snippet lang=c : CGPDFContextSetDestinationForRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFStringRef = (Declared(__CFString))*,typedef CGRect = Declared(CGRect))
  */
@@ -2631,6 +2663,10 @@ fun CGPDFContextSetDestinationForRect(arg0: MemorySegment, arg1: MemorySegment, 
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPDFContextSetDestinationForRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect): Unit {
+    CGPDFContextSetDestinationForRect(arg0, arg1, arg2.segment)
 }
 
 /**
@@ -3638,6 +3674,10 @@ fun CGDisplayBounds(allocator: SegmentAllocator, arg0: Int): MemorySegment {
     }
 }
 
+fun CGDisplayBoundsTyped(allocator: SegmentAllocator, arg0: Int): CGRect {
+    return CGRect(CGDisplayBounds(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGDisplayPixelsWide typedef size_t = UNSIGNED = Long(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
@@ -4084,6 +4124,10 @@ fun CGDisplayCreateImageForRect(arg0: Int, arg1: MemorySegment): MemorySegment {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGDisplayCreateImageForRect(arg0: Int, arg1: CGRect): MemorySegment {
+    return CGDisplayCreateImageForRect(arg0, arg1.segment)
 }
 
 /**

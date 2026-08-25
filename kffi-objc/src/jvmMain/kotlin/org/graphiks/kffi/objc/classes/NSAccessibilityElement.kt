@@ -13,13 +13,13 @@ open class NSAccessibilityElement(override val ptr: MemorySegment) : NSObject(pt
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSAccessibilityElement") }
 
-        fun accessibilityElementWithRole_frame_label_parent(role: MemorySegment, frame: MemorySegment, label: MemorySegment, parent: MemorySegment): MemorySegment {
+        fun accessibilityElementWithRole_frame_label_parent(role: MemorySegment, frame: NSRect, label: MemorySegment, parent: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("accessibilityElementWithRole:frame:label:parent:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, role, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), label, parent) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, role, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), label, parent) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun accessibilityElementWithRole_frame_label_parent(role: MemorySegment, frame: MemorySegment, label: String, parent: MemorySegment): MemorySegment = accessibilityElementWithRole_frame_label_parent(role, frame, ObjCRuntime.newNSString(Arena.global(), label), parent)
+        fun accessibilityElementWithRole_frame_label_parent(role: MemorySegment, frame: NSRect, label: String, parent: MemorySegment): MemorySegment = accessibilityElementWithRole_frame_label_parent(role, frame, ObjCRuntime.newNSString(Arena.global(), label), parent)
 
     }
 
@@ -29,13 +29,13 @@ open class NSAccessibilityElement(override val ptr: MemorySegment) : NSObject(pt
     }
 
     // @property accessibilityFrameInParentSpace
-    open fun accessibilityFrameInParentSpace(): MemorySegment {
+    open fun accessibilityFrameInParentSpace(): NSRect {
         val sel = ObjCRuntime.sel("accessibilityFrameInParentSpace")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
-    open fun setAccessibilityFrameInParentSpace(value: MemorySegment) {
+    open fun setAccessibilityFrameInParentSpace(value: NSRect) {
         val sel = ObjCRuntime.sel("setAccessibilityFrameInParentSpace:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSRect.layout))
     }
 
 }

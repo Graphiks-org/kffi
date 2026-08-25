@@ -54,14 +54,14 @@ open class NSUnarchiver(override val ptr: MemorySegment) : NSCoder(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `data`) as MemorySegment
     }
 
-    open fun setObjectZone(zone: MemorySegment): Unit {
+    open fun setObjectZone(zone: NSZonePointer): Unit {
         val sel = ObjCRuntime.sel("setObjectZone:")
-        ObjCRuntime.msgSend(null, ptr, sel, zone)
+        ObjCRuntime.msgSend(null, ptr, sel, zone.segment)
     }
 
-    open fun objectZone(): MemorySegment {
+    open fun objectZone(): NSZonePointer {
         val sel = ObjCRuntime.sel("objectZone")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSZonePointer(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     open fun decodeClassName_asClassName(inArchiveName: MemorySegment, trueName: MemorySegment): Unit {

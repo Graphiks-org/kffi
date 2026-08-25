@@ -29,14 +29,14 @@ open class NSClipView(override val ptr: MemorySegment) : NSView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, event) as Boolean
     }
 
-    open fun scrollToPoint(newOrigin: MemorySegment): Unit {
+    open fun scrollToPoint(newOrigin: NSPoint): Unit {
         val sel = ObjCRuntime.sel("scrollToPoint:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(newOrigin, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(newOrigin.segment, NSPoint.layout))
     }
 
-    open fun constrainBoundsRect(proposedBounds: MemorySegment): MemorySegment {
+    open fun constrainBoundsRect(proposedBounds: NSRect): NSRect {
         val sel = ObjCRuntime.sel("constrainBoundsRect:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(proposedBounds, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(proposedBounds.segment, NSRect.layout)))
     }
 
     // @property backgroundColor
@@ -70,9 +70,9 @@ open class NSClipView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property documentRect
-    open fun documentRect(): MemorySegment {
+    open fun documentRect(): NSRect {
         val sel = ObjCRuntime.sel("documentRect")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property documentCursor
@@ -86,19 +86,19 @@ open class NSClipView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property documentVisibleRect
-    open fun documentVisibleRect(): MemorySegment {
+    open fun documentVisibleRect(): NSRect {
         val sel = ObjCRuntime.sel("documentVisibleRect")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property contentInsets
-    open fun contentInsets(): MemorySegment {
+    open fun contentInsets(): NSEdgeInsets {
         val sel = ObjCRuntime.sel("contentInsets")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), ptr, sel) as MemorySegment
+        return NSEdgeInsets(ObjCRuntime.msgSendStruct(NSEdgeInsets.layout, ptr, sel))
     }
-    open fun setContentInsets(value: MemorySegment) {
+    open fun setContentInsets(value: NSEdgeInsets) {
         val sel = ObjCRuntime.sel("setContentInsets:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSEdgeInsets.layout))
     }
 
     // @property automaticallyAdjustsContentInsets
@@ -115,9 +115,9 @@ open class NSClipView(override val ptr: MemorySegment) : NSView(ptr) {
 
 // ── Category:  on NSClipView ─────────────────────────────────────────
 
-fun NSClipView.constrainScrollPoint(newOrigin: MemorySegment): MemorySegment {
+fun NSClipView.constrainScrollPoint(newOrigin: NSPoint): NSPoint {
     val sel = ObjCRuntime.sel("constrainScrollPoint:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, newOrigin) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(newOrigin.segment, NSPoint.layout)))
 }
 
 fun NSClipView.copiesOnScroll(): Boolean {

@@ -9,8 +9,8 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSTextAttachmentContainer {
-    fun imageForBounds_textContainer_characterIndex(imageBounds: MemorySegment, textContainer: MemorySegment, charIndex: Long): MemorySegment
+    fun imageForBounds_textContainer_characterIndex(imageBounds: CGRect, textContainer: MemorySegment, charIndex: Long): MemorySegment
 
-    fun attachmentBoundsForTextContainer_proposedLineFragment_glyphPosition_characterIndex(textContainer: MemorySegment, lineFrag: MemorySegment, position: MemorySegment, charIndex: Long): MemorySegment
+    fun attachmentBoundsForTextContainer_proposedLineFragment_glyphPosition_characterIndex(textContainer: MemorySegment, lineFrag: CGRect, position: CGPoint, charIndex: Long): CGRect
 
 }

@@ -9,9 +9,9 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSRuleEditorDelegate {
-    fun ruleEditor_numberOfChildrenForCriterion_withRowType(editor: MemorySegment, criterion: MemorySegment, rowType: MemorySegment): Long
+    fun ruleEditor_numberOfChildrenForCriterion_withRowType(editor: MemorySegment, criterion: MemorySegment, rowType: NSRuleEditorRowType): Long
 
-    fun ruleEditor_child_forCriterion_withRowType(editor: MemorySegment, index: Long, criterion: MemorySegment, rowType: MemorySegment): MemorySegment
+    fun ruleEditor_child_forCriterion_withRowType(editor: MemorySegment, index: Long, criterion: MemorySegment, rowType: NSRuleEditorRowType): MemorySegment
 
     fun ruleEditor_displayValueForCriterion_inRow(editor: MemorySegment, criterion: MemorySegment, row: Long): MemorySegment
 

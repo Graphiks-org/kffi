@@ -25,14 +25,14 @@ open class NSTabViewItem(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, identifier) as MemorySegment
     }
 
-    open fun drawLabel_inRect(shouldTruncateLabel: Boolean, labelRect: MemorySegment): Unit {
+    open fun drawLabel_inRect(shouldTruncateLabel: Boolean, labelRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawLabel:inRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, shouldTruncateLabel, ObjCRuntime.ObjCStructArg(labelRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, shouldTruncateLabel, ObjCRuntime.ObjCStructArg(labelRect.segment, NSRect.layout))
     }
 
-    open fun sizeOfLabel(computeMin: Boolean): MemorySegment {
+    open fun sizeOfLabel(computeMin: Boolean): NSSize {
         val sel = ObjCRuntime.sel("sizeOfLabel:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel, computeMin) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel, computeMin))
     }
 
     // @property identifier
@@ -102,9 +102,9 @@ open class NSTabViewItem(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property tabState
-    open fun tabState(): MemorySegment {
+    open fun tabState(): NSTabState {
         val sel = ObjCRuntime.sel("tabState")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTabState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property tabView

@@ -25,9 +25,9 @@ open class NSGestureRecognizer(override val ptr: MemorySegment) : NSObject(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun locationInView(view: MemorySegment): MemorySegment {
+    open fun locationInView(view: MemorySegment): NSPoint {
         val sel = ObjCRuntime.sel("locationInView:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel, view) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel, view))
     }
 
     // @property target
@@ -51,9 +51,9 @@ open class NSGestureRecognizer(override val ptr: MemorySegment) : NSObject(ptr) 
     }
 
     // @property state
-    open fun state(): MemorySegment {
+    open fun state(): NSGestureRecognizerState {
         val sel = ObjCRuntime.sel("state")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGestureRecognizerState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property delegate
@@ -170,23 +170,23 @@ open class NSGestureRecognizer(override val ptr: MemorySegment) : NSObject(ptr) 
     open fun setName(value: String) = setName(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property modifierFlags
-    open fun modifierFlags(): MemorySegment {
+    open fun modifierFlags(): NSEventModifierFlags {
         val sel = ObjCRuntime.sel("modifierFlags")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventModifierFlags(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 }
 
 // ── Category: NSTouchBar on NSGestureRecognizer ─────────────────────────────────────────
 
-fun NSGestureRecognizer.allowedTouchTypes(): MemorySegment {
+fun NSGestureRecognizer.allowedTouchTypes(): NSTouchTypeMask {
     val sel = ObjCRuntime.sel("allowedTouchTypes")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSTouchTypeMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSGestureRecognizer.setAllowedTouchTypes(allowedTouchTypes: MemorySegment): Unit {
+fun NSGestureRecognizer.setAllowedTouchTypes(allowedTouchTypes: NSTouchTypeMask): Unit {
     val sel = ObjCRuntime.sel("setAllowedTouchTypes:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, allowedTouchTypes)
+    ObjCRuntime.msgSend(null, this.ptr, sel, allowedTouchTypes.rawValue)
 }
 
 // ── Category: NSSubclassUse on NSGestureRecognizer ─────────────────────────────────────────
@@ -321,7 +321,7 @@ fun NSGestureRecognizer.touchesCancelledWithEvent(event: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, event)
 }
 
-fun NSGestureRecognizer.setState(state: MemorySegment): Unit {
+fun NSGestureRecognizer.setState(state: NSGestureRecognizerState): Unit {
     val sel = ObjCRuntime.sel("setState:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, state)
+    ObjCRuntime.msgSend(null, this.ptr, sel, state.rawValue)
 }

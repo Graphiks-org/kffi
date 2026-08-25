@@ -13,19 +13,19 @@ open class NSCollectionLayoutAnchor(override val ptr: MemorySegment) : NSObject(
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionLayoutAnchor") }
 
-        fun layoutAnchorWithEdges(edges: MemorySegment): MemorySegment {
+        fun layoutAnchorWithEdges(edges: NSDirectionalRectEdge): MemorySegment {
             val sel = ObjCRuntime.sel("layoutAnchorWithEdges:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, edges) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, edges.rawValue) as MemorySegment
         }
 
-        fun layoutAnchorWithEdges_absoluteOffset(edges: MemorySegment, absoluteOffset: MemorySegment): MemorySegment {
+        fun layoutAnchorWithEdges_absoluteOffset(edges: NSDirectionalRectEdge, absoluteOffset: NSPoint): MemorySegment {
             val sel = ObjCRuntime.sel("layoutAnchorWithEdges:absoluteOffset:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, edges, ObjCRuntime.ObjCStructArg(absoluteOffset, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, edges.rawValue, ObjCRuntime.ObjCStructArg(absoluteOffset.segment, NSPoint.layout)) as MemorySegment
         }
 
-        fun layoutAnchorWithEdges_fractionalOffset(edges: MemorySegment, fractionalOffset: MemorySegment): MemorySegment {
+        fun layoutAnchorWithEdges_fractionalOffset(edges: NSDirectionalRectEdge, fractionalOffset: NSPoint): MemorySegment {
             val sel = ObjCRuntime.sel("layoutAnchorWithEdges:fractionalOffset:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, edges, ObjCRuntime.ObjCStructArg(fractionalOffset, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, edges.rawValue, ObjCRuntime.ObjCStructArg(fractionalOffset.segment, NSPoint.layout)) as MemorySegment
         }
 
         fun new(): MemorySegment {
@@ -41,15 +41,15 @@ open class NSCollectionLayoutAnchor(override val ptr: MemorySegment) : NSObject(
     }
 
     // @property edges
-    open fun edges(): MemorySegment {
+    open fun edges(): NSDirectionalRectEdge {
         val sel = ObjCRuntime.sel("edges")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDirectionalRectEdge(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property offset
-    open fun offset(): MemorySegment {
+    open fun offset(): NSPoint {
         val sel = ObjCRuntime.sel("offset")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
     // @property isAbsoluteOffset

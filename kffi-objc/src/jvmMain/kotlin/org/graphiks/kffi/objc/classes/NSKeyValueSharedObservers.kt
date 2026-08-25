@@ -29,21 +29,21 @@ open class NSKeyValueSharedObservers(override val ptr: MemorySegment) : NSObject
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun addSharedObserver_forKey_options_context(observer: MemorySegment, key: MemorySegment, options: MemorySegment, context: MemorySegment): Unit {
+    open fun addSharedObserver_forKey_options_context(observer: MemorySegment, key: MemorySegment, options: NSKeyValueObservingOptions, context: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("addSharedObserver:forKey:options:context:")
-        ObjCRuntime.msgSend(null, ptr, sel, observer, key, options, context)
+        ObjCRuntime.msgSend(null, ptr, sel, observer, key, options.rawValue, context)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun addSharedObserver_forKey_options_context(observer: MemorySegment, key: String, options: MemorySegment, context: MemorySegment): Unit = addSharedObserver_forKey_options_context(observer, ObjCRuntime.newNSString(Arena.global(), key), options, context)
+    fun addSharedObserver_forKey_options_context(observer: MemorySegment, key: String, options: NSKeyValueObservingOptions, context: MemorySegment): Unit = addSharedObserver_forKey_options_context(observer, ObjCRuntime.newNSString(Arena.global(), key), options, context)
 
-    open fun addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: MemorySegment, context: MemorySegment): Unit {
+    open fun addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: NSKeyValueObservingOptions, context: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("addObserver:forKeyPath:options:context:")
-        ObjCRuntime.msgSend(null, ptr, sel, observer, keyPath, options, context)
+        ObjCRuntime.msgSend(null, ptr, sel, observer, keyPath, options.rawValue, context)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: String, options: MemorySegment, context: MemorySegment): Unit = addObserver_forKeyPath_options_context(observer, ObjCRuntime.newNSString(Arena.global(), keyPath), options, context)
+    fun addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: String, options: NSKeyValueObservingOptions, context: MemorySegment): Unit = addObserver_forKeyPath_options_context(observer, ObjCRuntime.newNSString(Arena.global(), keyPath), options, context)
 
     open fun snapshot(): MemorySegment {
         val sel = ObjCRuntime.sel("snapshot")

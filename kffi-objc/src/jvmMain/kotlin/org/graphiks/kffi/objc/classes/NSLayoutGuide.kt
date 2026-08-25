@@ -16,15 +16,15 @@ open class NSLayoutGuide(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     /** @return NSArray<NSLayoutConstraint *> * */
-    open fun constraintsAffectingLayoutForOrientation(orientation: MemorySegment): MemorySegment {
+    open fun constraintsAffectingLayoutForOrientation(orientation: NSLayoutConstraintOrientation): MemorySegment {
         val sel = ObjCRuntime.sel("constraintsAffectingLayoutForOrientation:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, orientation) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, orientation.rawValue) as MemorySegment
     }
 
     // @property frame
-    open fun frame(): MemorySegment {
+    open fun frame(): NSRect {
         val sel = ObjCRuntime.sel("frame")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property owningView

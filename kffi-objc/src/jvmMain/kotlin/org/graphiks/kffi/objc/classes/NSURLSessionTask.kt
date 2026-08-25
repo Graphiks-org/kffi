@@ -152,9 +152,9 @@ open class NSURLSessionTask(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun setTaskDescription(value: String) = setTaskDescription(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property state
-    open fun state(): MemorySegment {
+    open fun state(): NSURLSessionTaskState {
         val sel = ObjCRuntime.sel("state")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLSessionTaskState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property error

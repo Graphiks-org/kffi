@@ -24,9 +24,9 @@ open class NSGridView(override val ptr: MemorySegment) : NSView(ptr) {
 
     }
 
-    override fun initWithFrame(frameRect: MemorySegment): MemorySegment {
+    override fun initWithFrame(frameRect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout)) as MemorySegment
     }
 
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -104,9 +104,9 @@ open class NSGridView(override val ptr: MemorySegment) : NSView(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, index)
     }
 
-    open fun mergeCellsInHorizontalRange_verticalRange(hRange: MemorySegment, vRange: MemorySegment): Unit {
+    open fun mergeCellsInHorizontalRange_verticalRange(hRange: NSRange, vRange: NSRange): Unit {
         val sel = ObjCRuntime.sel("mergeCellsInHorizontalRange:verticalRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(hRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), ObjCRuntime.ObjCStructArg(vRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(hRange.segment, NSRange.layout), ObjCRuntime.ObjCStructArg(vRange.segment, NSRange.layout))
     }
 
     // @property numberOfRows
@@ -122,33 +122,33 @@ open class NSGridView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property xPlacement
-    open fun xPlacement(): MemorySegment {
+    open fun xPlacement(): NSGridCellPlacement {
         val sel = ObjCRuntime.sel("xPlacement")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGridCellPlacement(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setXPlacement(value: MemorySegment) {
+    open fun setXPlacement(value: NSGridCellPlacement) {
         val sel = ObjCRuntime.sel("setXPlacement:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property yPlacement
-    open fun yPlacement(): MemorySegment {
+    open fun yPlacement(): NSGridCellPlacement {
         val sel = ObjCRuntime.sel("yPlacement")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGridCellPlacement(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setYPlacement(value: MemorySegment) {
+    open fun setYPlacement(value: NSGridCellPlacement) {
         val sel = ObjCRuntime.sel("setYPlacement:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property rowAlignment
-    open fun rowAlignment(): MemorySegment {
+    open fun rowAlignment(): NSGridRowAlignment {
         val sel = ObjCRuntime.sel("rowAlignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGridRowAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setRowAlignment(value: MemorySegment) {
+    open fun setRowAlignment(value: NSGridRowAlignment) {
         val sel = ObjCRuntime.sel("setRowAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property rowSpacing

@@ -12,13 +12,13 @@ open class NSPersonNameComponentsFormatter(override val ptr: MemorySegment) : NS
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSPersonNameComponentsFormatter") }
 
-        fun localizedStringFromPersonNameComponents_style_options(components: MemorySegment, nameFormatStyle: MemorySegment, nameOptions: MemorySegment): MemorySegment {
+        fun localizedStringFromPersonNameComponents_style_options(components: MemorySegment, nameFormatStyle: NSPersonNameComponentsFormatterStyle, nameOptions: NSPersonNameComponentsFormatterOptions): MemorySegment {
             val sel = ObjCRuntime.sel("localizedStringFromPersonNameComponents:style:options:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, components, nameFormatStyle, nameOptions) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, components, nameFormatStyle.rawValue, nameOptions.rawValue) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-        fun localizedStringFromPersonNameComponents_style_optionsAsString(components: MemorySegment, nameFormatStyle: MemorySegment, nameOptions: MemorySegment): String = ObjCRuntime.toJavaString(localizedStringFromPersonNameComponents_style_options(components, nameFormatStyle, nameOptions))
+        fun localizedStringFromPersonNameComponents_style_optionsAsString(components: MemorySegment, nameFormatStyle: NSPersonNameComponentsFormatterStyle, nameOptions: NSPersonNameComponentsFormatterOptions): String = ObjCRuntime.toJavaString(localizedStringFromPersonNameComponents_style_options(components, nameFormatStyle, nameOptions))
 
     }
 
@@ -49,13 +49,13 @@ open class NSPersonNameComponentsFormatter(override val ptr: MemorySegment) : NS
     }
 
     // @property style
-    open fun style(): MemorySegment {
+    open fun style(): NSPersonNameComponentsFormatterStyle {
         val sel = ObjCRuntime.sel("style")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPersonNameComponentsFormatterStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setStyle(value: MemorySegment) {
+    open fun setStyle(value: NSPersonNameComponentsFormatterStyle) {
         val sel = ObjCRuntime.sel("setStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property phonetic

@@ -9,115 +9,115 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSTextInputTraits {
     // @optional
-    fun autocorrectionType(): MemorySegment =
+    fun autocorrectionType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'autocorrectionType' not implemented")
 
     // @optional
-    fun setAutocorrectionType(autocorrectionType: MemorySegment): Unit =
+    fun setAutocorrectionType(autocorrectionType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setAutocorrectionType:' not implemented")
 
     // @optional
-    fun spellCheckingType(): MemorySegment =
+    fun spellCheckingType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'spellCheckingType' not implemented")
 
     // @optional
-    fun setSpellCheckingType(spellCheckingType: MemorySegment): Unit =
+    fun setSpellCheckingType(spellCheckingType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setSpellCheckingType:' not implemented")
 
     // @optional
-    fun grammarCheckingType(): MemorySegment =
+    fun grammarCheckingType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'grammarCheckingType' not implemented")
 
     // @optional
-    fun setGrammarCheckingType(grammarCheckingType: MemorySegment): Unit =
+    fun setGrammarCheckingType(grammarCheckingType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setGrammarCheckingType:' not implemented")
 
     // @optional
-    fun smartQuotesType(): MemorySegment =
+    fun smartQuotesType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'smartQuotesType' not implemented")
 
     // @optional
-    fun setSmartQuotesType(smartQuotesType: MemorySegment): Unit =
+    fun setSmartQuotesType(smartQuotesType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setSmartQuotesType:' not implemented")
 
     // @optional
-    fun smartDashesType(): MemorySegment =
+    fun smartDashesType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'smartDashesType' not implemented")
 
     // @optional
-    fun setSmartDashesType(smartDashesType: MemorySegment): Unit =
+    fun setSmartDashesType(smartDashesType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setSmartDashesType:' not implemented")
 
     // @optional
-    fun smartInsertDeleteType(): MemorySegment =
+    fun smartInsertDeleteType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'smartInsertDeleteType' not implemented")
 
     // @optional
-    fun setSmartInsertDeleteType(smartInsertDeleteType: MemorySegment): Unit =
+    fun setSmartInsertDeleteType(smartInsertDeleteType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setSmartInsertDeleteType:' not implemented")
 
     // @optional
-    fun textReplacementType(): MemorySegment =
+    fun textReplacementType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'textReplacementType' not implemented")
 
     // @optional
-    fun setTextReplacementType(textReplacementType: MemorySegment): Unit =
+    fun setTextReplacementType(textReplacementType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setTextReplacementType:' not implemented")
 
     // @optional
-    fun dataDetectionType(): MemorySegment =
+    fun dataDetectionType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'dataDetectionType' not implemented")
 
     // @optional
-    fun setDataDetectionType(dataDetectionType: MemorySegment): Unit =
+    fun setDataDetectionType(dataDetectionType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setDataDetectionType:' not implemented")
 
     // @optional
-    fun linkDetectionType(): MemorySegment =
+    fun linkDetectionType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'linkDetectionType' not implemented")
 
     // @optional
-    fun setLinkDetectionType(linkDetectionType: MemorySegment): Unit =
+    fun setLinkDetectionType(linkDetectionType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setLinkDetectionType:' not implemented")
 
     // @optional
-    fun textCompletionType(): MemorySegment =
+    fun textCompletionType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'textCompletionType' not implemented")
 
     // @optional
-    fun setTextCompletionType(textCompletionType: MemorySegment): Unit =
+    fun setTextCompletionType(textCompletionType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setTextCompletionType:' not implemented")
 
     // @optional
-    fun inlinePredictionType(): MemorySegment =
+    fun inlinePredictionType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'inlinePredictionType' not implemented")
 
     // @optional
-    fun setInlinePredictionType(inlinePredictionType: MemorySegment): Unit =
+    fun setInlinePredictionType(inlinePredictionType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setInlinePredictionType:' not implemented")
 
     // @optional
-    fun mathExpressionCompletionType(): MemorySegment =
+    fun mathExpressionCompletionType(): NSTextInputTraitType =
         throw UnsupportedOperationException("Optional ObjC method 'mathExpressionCompletionType' not implemented")
 
     // @optional
-    fun setMathExpressionCompletionType(mathExpressionCompletionType: MemorySegment): Unit =
+    fun setMathExpressionCompletionType(mathExpressionCompletionType: NSTextInputTraitType): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setMathExpressionCompletionType:' not implemented")
 
     // @optional
-    fun writingToolsBehavior(): MemorySegment =
+    fun writingToolsBehavior(): NSWritingToolsBehavior =
         throw UnsupportedOperationException("Optional ObjC method 'writingToolsBehavior' not implemented")
 
     // @optional
-    fun setWritingToolsBehavior(writingToolsBehavior: MemorySegment): Unit =
+    fun setWritingToolsBehavior(writingToolsBehavior: NSWritingToolsBehavior): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setWritingToolsBehavior:' not implemented")
 
     // @optional
-    fun allowedWritingToolsResultOptions(): MemorySegment =
+    fun allowedWritingToolsResultOptions(): NSWritingToolsResultOptions =
         throw UnsupportedOperationException("Optional ObjC method 'allowedWritingToolsResultOptions' not implemented")
 
     // @optional
-    fun setAllowedWritingToolsResultOptions(allowedWritingToolsResultOptions: MemorySegment): Unit =
+    fun setAllowedWritingToolsResultOptions(allowedWritingToolsResultOptions: NSWritingToolsResultOptions): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setAllowedWritingToolsResultOptions:' not implemented")
 
 }

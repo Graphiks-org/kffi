@@ -87,13 +87,13 @@ open class NSTableViewDiffableDataSource(override val ptr: MemorySegment) : NSOb
     }
 
     // @property defaultRowAnimation
-    open fun defaultRowAnimation(): MemorySegment {
+    open fun defaultRowAnimation(): NSTableViewAnimationOptions {
         val sel = ObjCRuntime.sel("defaultRowAnimation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewAnimationOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDefaultRowAnimation(value: MemorySegment) {
+    open fun setDefaultRowAnimation(value: NSTableViewAnimationOptions) {
         val sel = ObjCRuntime.sel("setDefaultRowAnimation:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

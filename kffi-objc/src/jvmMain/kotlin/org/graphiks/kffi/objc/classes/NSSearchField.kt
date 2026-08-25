@@ -15,21 +15,21 @@ open class NSSearchField(override val ptr: MemorySegment) : NSTextField(ptr) {
     }
 
     // @property searchTextBounds
-    open fun searchTextBounds(): MemorySegment {
+    open fun searchTextBounds(): NSRect {
         val sel = ObjCRuntime.sel("searchTextBounds")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property searchButtonBounds
-    open fun searchButtonBounds(): MemorySegment {
+    open fun searchButtonBounds(): NSRect {
         val sel = ObjCRuntime.sel("searchButtonBounds")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property cancelButtonBounds
-    open fun cancelButtonBounds(): MemorySegment {
+    open fun cancelButtonBounds(): NSRect {
         val sel = ObjCRuntime.sel("cancelButtonBounds")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property recentSearches
@@ -108,19 +108,19 @@ open class NSSearchField(override val ptr: MemorySegment) : NSTextField(ptr) {
 
 // ── Category: NSSearchField_Deprecated on NSSearchField ─────────────────────────────────────────
 
-fun NSSearchField.rectForSearchTextWhenCentered(isCentered: Boolean): MemorySegment {
+fun NSSearchField.rectForSearchTextWhenCentered(isCentered: Boolean): NSRect {
     val sel = ObjCRuntime.sel("rectForSearchTextWhenCentered:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, isCentered) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, isCentered))
 }
 
-fun NSSearchField.rectForSearchButtonWhenCentered(isCentered: Boolean): MemorySegment {
+fun NSSearchField.rectForSearchButtonWhenCentered(isCentered: Boolean): NSRect {
     val sel = ObjCRuntime.sel("rectForSearchButtonWhenCentered:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, isCentered) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, isCentered))
 }
 
-fun NSSearchField.rectForCancelButtonWhenCentered(isCentered: Boolean): MemorySegment {
+fun NSSearchField.rectForCancelButtonWhenCentered(isCentered: Boolean): NSRect {
     val sel = ObjCRuntime.sel("rectForCancelButtonWhenCentered:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, isCentered) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, isCentered))
 }
 
 fun NSSearchField.centersPlaceholder(): Boolean {

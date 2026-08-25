@@ -12,11 +12,11 @@ interface NSAccessibilityStaticText {
     fun accessibilityValue(): MemorySegment
 
     // @optional
-    fun accessibilityAttributedStringForRange(range: MemorySegment): MemorySegment =
+    fun accessibilityAttributedStringForRange(range: NSRange): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'accessibilityAttributedStringForRange:' not implemented")
 
     // @optional
-    fun accessibilityVisibleCharacterRange(): MemorySegment =
+    fun accessibilityVisibleCharacterRange(): NSRange =
         throw UnsupportedOperationException("Optional ObjC method 'accessibilityVisibleCharacterRange' not implemented")
 
 }

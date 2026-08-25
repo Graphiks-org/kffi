@@ -38,9 +38,9 @@ open class NSURLSessionWebSocketMessage(override val ptr: MemorySegment) : NSObj
     }
 
     // @property type
-    open fun type(): MemorySegment {
+    open fun type(): NSURLSessionWebSocketMessageType {
         val sel = ObjCRuntime.sel("type")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLSessionWebSocketMessageType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property data

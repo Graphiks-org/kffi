@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assumptions.assumeTrue
 import java.awt.image.BufferedImage
 import java.io.ByteArrayInputStream
 import java.lang.foreign.Arena
-import java.lang.foreign.MemoryLayout
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 import java.nio.file.Files
@@ -18,22 +17,6 @@ import kotlin.test.assertTrue
 
 private const val IMAGE_WIDTH = 128
 private const val IMAGE_HEIGHT = 96
-
-private val CG_SIZE_LAYOUT = MemoryLayout.structLayout(
-    ValueLayout.JAVA_DOUBLE.withName("width"),
-    ValueLayout.JAVA_DOUBLE.withName("height"),
-).withName("CGSize")
-
-private val CG_RECT_LAYOUT = MemoryLayout.structLayout(
-    MemoryLayout.structLayout(
-        ValueLayout.JAVA_DOUBLE.withName("x"),
-        ValueLayout.JAVA_DOUBLE.withName("y"),
-    ).withName("origin"),
-    MemoryLayout.structLayout(
-        ValueLayout.JAVA_DOUBLE.withName("width"),
-        ValueLayout.JAVA_DOUBLE.withName("height"),
-    ).withName("size"),
-).withName("CGRect")
 
 class ObjCIntegrationTest {
     @Test
@@ -59,13 +42,13 @@ class ObjCIntegrationTest {
                 val application = NSApplication(NSApplication.sharedApplication())
                 application.finishLaunching()
 
-                val image = createImage(arena)
+                val image = createImage()
                 image.lockFocusFlipped(true)
                 try {
-                    fillRect(arena, 0.0, 0.0, IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, 1.0, 0.0, 0.0)
-                    fillRect(arena, IMAGE_WIDTH / 2.0, 0.0, IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, 0.0, 1.0, 0.0)
-                    fillRect(arena, 0.0, IMAGE_HEIGHT / 2.0, IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, 0.0, 0.0, 1.0)
-                    fillRect(arena, IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, 1.0, 1.0, 0.0)
+                    fillRect(0.0, 0.0, IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, 1.0, 0.0, 0.0)
+                    fillRect(IMAGE_WIDTH / 2.0, 0.0, IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, 0.0, 1.0, 0.0)
+                    fillRect(0.0, IMAGE_HEIGHT / 2.0, IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, 0.0, 0.0, 1.0)
+                    fillRect(IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, IMAGE_WIDTH / 2.0, IMAGE_HEIGHT / 2.0, 1.0, 1.0, 0.0)
                 } finally {
                     image.unlockFocus()
                 }
@@ -77,16 +60,10 @@ class ObjCIntegrationTest {
                 )
                 assertNotEquals(MemorySegment.NULL, bitmapRep.ptr, "NSBitmapImageRep should decode the AppKit image")
 
-                // AppKit declares NSBitmapImageFileType as NSInteger. The generated category
-                // currently exposes that parameter as MemorySegment, so call the same selector
-                // with its native 64-bit scalar representation until kextract maps that typedef.
-                val pngData = ObjCRuntime.msgSend(
-                    ValueLayout.ADDRESS,
-                    bitmapRep.ptr,
-                    ObjCRuntime.sel("representationUsingType:properties:"),
-                    NSBitmapImageFileType.NSBitmapImageFileTypePNG.value,
+                val pngData = bitmapRep.representationUsingType_properties(
+                    NSBitmapImageFileType.NSBitmapImageFileTypePNG,
                     MemorySegment.NULL,
-                ) as MemorySegment
+                )
                 assertNotEquals(MemorySegment.NULL, pngData, "NSBitmapImageRep should encode PNG data")
 
                 val data = NSData(pngData)
@@ -128,7 +105,7 @@ class ObjCIntegrationTest {
         assertTrue(Files.size(screenshot) > 0L, "Screenshot artifact should not be empty")
     }
 
-    private fun createImage(arena: Arena): NSImage {
+    private fun createImage(): NSImage {
         val image = NSImage(
             ObjCRuntime.msgSend(
                 ValueLayout.ADDRESS,
@@ -136,13 +113,12 @@ class ObjCIntegrationTest {
                 ObjCRuntime.sel("alloc"),
             ) as MemorySegment,
         )
-        val initialized = image.initWithSize(size(arena, IMAGE_WIDTH.toDouble(), IMAGE_HEIGHT.toDouble()))
+        val initialized = image.initWithSize(NSSize(IMAGE_WIDTH.toDouble(), IMAGE_HEIGHT.toDouble()))
         assertNotEquals(MemorySegment.NULL, initialized, "NSImage.initWithSize should succeed")
         return NSImage(initialized)
     }
 
     private fun fillRect(
-        arena: Arena,
         x: Double,
         y: Double,
         width: Double,
@@ -154,22 +130,13 @@ class ObjCIntegrationTest {
         NSColor(
             NSColor.colorWithSRGBRed_green_blue_alpha(red, green, blue, 1.0),
         ).set()
-        NSBezierPath.fillRect(rect(arena, x, y, width, height))
+        NSBezierPath.fillRect(
+            NSRect(
+                origin = NSPoint(x, y),
+                size = NSSize(width, height),
+            ),
+        )
     }
-
-    private fun size(arena: Arena, width: Double, height: Double): MemorySegment =
-        arena.allocate(CG_SIZE_LAYOUT).also {
-            it.set(ValueLayout.JAVA_DOUBLE, 0, width)
-            it.set(ValueLayout.JAVA_DOUBLE, 8, height)
-        }
-
-    private fun rect(arena: Arena, x: Double, y: Double, width: Double, height: Double): MemorySegment =
-        arena.allocate(CG_RECT_LAYOUT).also {
-            it.set(ValueLayout.JAVA_DOUBLE, 0, x)
-            it.set(ValueLayout.JAVA_DOUBLE, 8, y)
-            it.set(ValueLayout.JAVA_DOUBLE, 16, width)
-            it.set(ValueLayout.JAVA_DOUBLE, 24, height)
-        }
 
     private fun integrationArtifactDirectory(): Path = Path.of(
         System.getProperty("kffi.objc.defaultArtifactDir")

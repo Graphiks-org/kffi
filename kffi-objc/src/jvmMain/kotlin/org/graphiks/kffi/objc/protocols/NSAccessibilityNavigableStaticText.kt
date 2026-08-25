@@ -9,12 +9,12 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSAccessibilityStaticText
  */
 interface NSAccessibilityNavigableStaticText : NSAccessibilityStaticText {
-    fun accessibilityStringForRange(range: MemorySegment): MemorySegment
+    fun accessibilityStringForRange(range: NSRange): MemorySegment
 
     fun accessibilityLineForIndex(index: Long): Long
 
-    fun accessibilityRangeForLine(lineNumber: Long): MemorySegment
+    fun accessibilityRangeForLine(lineNumber: Long): NSRange
 
-    fun accessibilityFrameForRange(range: MemorySegment): MemorySegment
+    fun accessibilityFrameForRange(range: NSRange): NSRect
 
 }

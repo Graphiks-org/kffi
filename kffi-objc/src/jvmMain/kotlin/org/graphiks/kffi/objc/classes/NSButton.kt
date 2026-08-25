@@ -52,9 +52,9 @@ open class NSButton(override val ptr: MemorySegment) : NSControl(ptr) {
 
     }
 
-    open fun setButtonType(type: MemorySegment): Unit {
+    open fun setButtonType(type: NSButtonType): Unit {
         val sel = ObjCRuntime.sel("setButtonType:")
-        ObjCRuntime.msgSend(null, ptr, sel, type)
+        ObjCRuntime.msgSend(null, ptr, sel, type.rawValue)
     }
 
     open fun setPeriodicDelay_interval(delay: Float, interval: Float): Unit {
@@ -87,9 +87,9 @@ open class NSButton(override val ptr: MemorySegment) : NSControl(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, prioritizedOptions)
     }
 
-    open fun minimumSizeWithPrioritizedCompressionOptions(prioritizedOptions: MemorySegment): MemorySegment {
+    open fun minimumSizeWithPrioritizedCompressionOptions(prioritizedOptions: MemorySegment): NSSize {
         val sel = ObjCRuntime.sel("minimumSizeWithPrioritizedCompressionOptions:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel, prioritizedOptions) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel, prioritizedOptions))
     }
 
     // @property title
@@ -185,13 +185,13 @@ open class NSButton(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property bezelStyle
-    open fun bezelStyle(): MemorySegment {
+    open fun bezelStyle(): NSBezelStyle {
         val sel = ObjCRuntime.sel("bezelStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSBezelStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBezelStyle(value: MemorySegment) {
+    open fun setBezelStyle(value: NSBezelStyle) {
         val sel = ObjCRuntime.sel("setBezelStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property bordered
@@ -245,13 +245,13 @@ open class NSButton(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property tintProminence
-    open fun tintProminence(): MemorySegment {
+    open fun tintProminence(): NSTintProminence {
         val sel = ObjCRuntime.sel("tintProminence")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTintProminence(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTintProminence(value: MemorySegment) {
+    open fun setTintProminence(value: NSTintProminence) {
         val sel = ObjCRuntime.sel("setTintProminence:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property image
@@ -275,23 +275,23 @@ open class NSButton(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property imagePosition
-    open fun imagePosition(): MemorySegment {
+    open fun imagePosition(): NSCellImagePosition {
         val sel = ObjCRuntime.sel("imagePosition")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCellImagePosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImagePosition(value: MemorySegment) {
+    open fun setImagePosition(value: NSCellImagePosition) {
         val sel = ObjCRuntime.sel("setImagePosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property imageScaling
-    open fun imageScaling(): MemorySegment {
+    open fun imageScaling(): NSImageScaling {
         val sel = ObjCRuntime.sel("imageScaling")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageScaling(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageScaling(value: MemorySegment) {
+    open fun setImageScaling(value: NSImageScaling) {
         val sel = ObjCRuntime.sel("setImageScaling:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property imageHugsTitle
@@ -351,13 +351,13 @@ open class NSButton(override val ptr: MemorySegment) : NSControl(ptr) {
     open fun setKeyEquivalent(value: String) = setKeyEquivalent(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property keyEquivalentModifierMask
-    open fun keyEquivalentModifierMask(): MemorySegment {
+    open fun keyEquivalentModifierMask(): NSEventModifierFlags {
         val sel = ObjCRuntime.sel("keyEquivalentModifierMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventModifierFlags(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setKeyEquivalentModifierMask(value: MemorySegment) {
+    open fun setKeyEquivalentModifierMask(value: NSEventModifierFlags) {
         val sel = ObjCRuntime.sel("setKeyEquivalentModifierMask:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property activeCompressionOptions
@@ -367,13 +367,13 @@ open class NSButton(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property borderShape
-    open fun borderShape(): MemorySegment {
+    open fun borderShape(): NSControlBorderShape {
         val sel = ObjCRuntime.sel("borderShape")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSControlBorderShape(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBorderShape(value: MemorySegment) {
+    open fun setBorderShape(value: NSControlBorderShape) {
         val sel = ObjCRuntime.sel("setBorderShape:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

@@ -29,34 +29,34 @@ open class NSAppleEventManager(override val ptr: MemorySegment) : NSObject(ptr) 
         ObjCRuntime.msgSend(null, ptr, sel, eventClass, eventID)
     }
 
-    open fun dispatchRawAppleEvent_withRawReply_handlerRefCon(theAppleEvent: MemorySegment, theReply: MemorySegment, handlerRefCon: MemorySegment): Short {
+    open fun dispatchRawAppleEvent_withRawReply_handlerRefCon(theAppleEvent: AppleEventPointer, theReply: AppleEventPointer, handlerRefCon: MemorySegment): Short {
         val sel = ObjCRuntime.sel("dispatchRawAppleEvent:withRawReply:handlerRefCon:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_SHORT, ptr, sel, theAppleEvent, theReply, handlerRefCon) as Short
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_SHORT, ptr, sel, theAppleEvent.segment, theReply.segment, handlerRefCon) as Short
     }
 
-    open fun suspendCurrentAppleEvent(): MemorySegment {
+    open fun suspendCurrentAppleEvent(): NSAppleEventManagerSuspensionID {
         val sel = ObjCRuntime.sel("suspendCurrentAppleEvent")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSAppleEventManagerSuspensionID(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
-    open fun appleEventForSuspensionID(suspensionID: MemorySegment): MemorySegment {
+    open fun appleEventForSuspensionID(suspensionID: NSAppleEventManagerSuspensionID): MemorySegment {
         val sel = ObjCRuntime.sel("appleEventForSuspensionID:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, suspensionID) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, suspensionID.segment) as MemorySegment
     }
 
-    open fun replyAppleEventForSuspensionID(suspensionID: MemorySegment): MemorySegment {
+    open fun replyAppleEventForSuspensionID(suspensionID: NSAppleEventManagerSuspensionID): MemorySegment {
         val sel = ObjCRuntime.sel("replyAppleEventForSuspensionID:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, suspensionID) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, suspensionID.segment) as MemorySegment
     }
 
-    open fun setCurrentAppleEventAndReplyEventWithSuspensionID(suspensionID: MemorySegment): Unit {
+    open fun setCurrentAppleEventAndReplyEventWithSuspensionID(suspensionID: NSAppleEventManagerSuspensionID): Unit {
         val sel = ObjCRuntime.sel("setCurrentAppleEventAndReplyEventWithSuspensionID:")
-        ObjCRuntime.msgSend(null, ptr, sel, suspensionID)
+        ObjCRuntime.msgSend(null, ptr, sel, suspensionID.segment)
     }
 
-    open fun resumeWithSuspensionID(suspensionID: MemorySegment): Unit {
+    open fun resumeWithSuspensionID(suspensionID: NSAppleEventManagerSuspensionID): Unit {
         val sel = ObjCRuntime.sel("resumeWithSuspensionID:")
-        ObjCRuntime.msgSend(null, ptr, sel, suspensionID)
+        ObjCRuntime.msgSend(null, ptr, sel, suspensionID.segment)
     }
 
     // @property currentAppleEvent

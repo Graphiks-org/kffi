@@ -12,19 +12,19 @@ open class NSPropertyListSerialization(override val ptr: MemorySegment) : NSObje
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSPropertyListSerialization") }
 
-        fun propertyList_isValidForFormat(plist: MemorySegment, format: MemorySegment): Boolean {
+        fun propertyList_isValidForFormat(plist: MemorySegment, format: NSPropertyListFormat): Boolean {
             val sel = ObjCRuntime.sel("propertyList:isValidForFormat:")
-            return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, plist, format) as Boolean
+            return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, plist, format.rawValue) as Boolean
         }
 
-        fun dataWithPropertyList_format_options_error(plist: MemorySegment, format: MemorySegment, opt: Long, error: MemorySegment): MemorySegment {
+        fun dataWithPropertyList_format_options_error(plist: MemorySegment, format: NSPropertyListFormat, opt: Long, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("dataWithPropertyList:format:options:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, plist, format, opt, error) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, plist, format.rawValue, opt, error) as MemorySegment
         }
 
-        fun writePropertyList_toStream_format_options_error(plist: MemorySegment, stream: MemorySegment, format: MemorySegment, opt: Long, error: MemorySegment): Long {
+        fun writePropertyList_toStream_format_options_error(plist: MemorySegment, stream: MemorySegment, format: NSPropertyListFormat, opt: Long, error: MemorySegment): Long {
             val sel = ObjCRuntime.sel("writePropertyList:toStream:format:options:error:")
-            return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel, plist, stream, format, opt, error) as Long
+            return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel, plist, stream, format.rawValue, opt, error) as Long
         }
 
         fun propertyListWithData_options_format_error(`data`: MemorySegment, opt: MemorySegment, format: MemorySegment, error: MemorySegment): MemorySegment {
@@ -37,21 +37,21 @@ open class NSPropertyListSerialization(override val ptr: MemorySegment) : NSObje
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, stream, opt, format, error) as MemorySegment
         }
 
-        fun dataFromPropertyList_format_errorDescription(plist: MemorySegment, format: MemorySegment, errorString: MemorySegment): MemorySegment {
+        fun dataFromPropertyList_format_errorDescription(plist: MemorySegment, format: NSPropertyListFormat, errorString: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("dataFromPropertyList:format:errorDescription:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, plist, format, errorString) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, plist, format.rawValue, errorString) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun dataFromPropertyList_format_errorDescription(plist: MemorySegment, format: MemorySegment, errorString: String): MemorySegment = dataFromPropertyList_format_errorDescription(plist, format, ObjCRuntime.newNSString(Arena.global(), errorString))
+        fun dataFromPropertyList_format_errorDescription(plist: MemorySegment, format: NSPropertyListFormat, errorString: String): MemorySegment = dataFromPropertyList_format_errorDescription(plist, format, ObjCRuntime.newNSString(Arena.global(), errorString))
 
-        fun propertyListFromData_mutabilityOption_format_errorDescription(`data`: MemorySegment, opt: MemorySegment, format: MemorySegment, errorString: MemorySegment): MemorySegment {
+        fun propertyListFromData_mutabilityOption_format_errorDescription(`data`: MemorySegment, opt: NSPropertyListMutabilityOptions, format: MemorySegment, errorString: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("propertyListFromData:mutabilityOption:format:errorDescription:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `data`, opt, format, errorString) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `data`, opt.rawValue, format, errorString) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun propertyListFromData_mutabilityOption_format_errorDescription(`data`: MemorySegment, opt: MemorySegment, format: MemorySegment, errorString: String): MemorySegment = propertyListFromData_mutabilityOption_format_errorDescription(`data`, opt, format, ObjCRuntime.newNSString(Arena.global(), errorString))
+        fun propertyListFromData_mutabilityOption_format_errorDescription(`data`: MemorySegment, opt: NSPropertyListMutabilityOptions, format: MemorySegment, errorString: String): MemorySegment = propertyListFromData_mutabilityOption_format_errorDescription(`data`, opt, format, ObjCRuntime.newNSString(Arena.global(), errorString))
 
     }
 

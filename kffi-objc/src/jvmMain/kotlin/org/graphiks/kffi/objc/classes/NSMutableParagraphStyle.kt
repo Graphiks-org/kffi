@@ -80,13 +80,13 @@ open class NSMutableParagraphStyle(override val ptr: MemorySegment) : NSParagrap
     }
 
     // @property lineBreakMode
-    override fun lineBreakMode(): MemorySegment {
+    override fun lineBreakMode(): NSLineBreakMode {
         val sel = ObjCRuntime.sel("lineBreakMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLineBreakMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setLineBreakMode(value: MemorySegment) {
+    open fun setLineBreakMode(value: NSLineBreakMode) {
         val sel = ObjCRuntime.sel("setLineBreakMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property minimumLineHeight
@@ -110,13 +110,13 @@ open class NSMutableParagraphStyle(override val ptr: MemorySegment) : NSParagrap
     }
 
     // @property baseWritingDirection
-    override fun baseWritingDirection(): MemorySegment {
+    override fun baseWritingDirection(): NSWritingDirection {
         val sel = ObjCRuntime.sel("baseWritingDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBaseWritingDirection(value: MemorySegment) {
+    open fun setBaseWritingDirection(value: NSWritingDirection) {
         val sel = ObjCRuntime.sel("setBaseWritingDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property lineHeightMultiple
@@ -191,13 +191,13 @@ open class NSMutableParagraphStyle(override val ptr: MemorySegment) : NSParagrap
     }
 
     // @property lineBreakStrategy
-    override fun lineBreakStrategy(): MemorySegment {
+    override fun lineBreakStrategy(): NSLineBreakStrategy {
         val sel = ObjCRuntime.sel("lineBreakStrategy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLineBreakStrategy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setLineBreakStrategy(value: MemorySegment) {
+    open fun setLineBreakStrategy(value: NSLineBreakStrategy) {
         val sel = ObjCRuntime.sel("setLineBreakStrategy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property textLists
@@ -215,14 +215,14 @@ open class NSMutableParagraphStyle(override val ptr: MemorySegment) : NSParagrap
 
 // ── Category:  on NSMutableParagraphStyle ─────────────────────────────────────────
 
-fun NSMutableParagraphStyle.alignment(): MemorySegment {
+fun NSMutableParagraphStyle.alignment(): NSTextAlignment {
     val sel = ObjCRuntime.sel("alignment")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSTextAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSMutableParagraphStyle.setAlignment(alignment: MemorySegment): Unit {
+fun NSMutableParagraphStyle.setAlignment(alignment: NSTextAlignment): Unit {
     val sel = ObjCRuntime.sel("setAlignment:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, alignment)
+    ObjCRuntime.msgSend(null, this.ptr, sel, alignment.rawValue)
 }
 
 fun NSMutableParagraphStyle.tighteningFactorForTruncation(): Float {

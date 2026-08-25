@@ -8,6 +8,6 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Kotlin/JVM interface for Objective-C protocol: NSCopying
  */
 interface NSCopying {
-    fun copyWithZone(zone: MemorySegment): MemorySegment
+    fun copyWithZone(zone: NSZonePointer): MemorySegment
 
 }

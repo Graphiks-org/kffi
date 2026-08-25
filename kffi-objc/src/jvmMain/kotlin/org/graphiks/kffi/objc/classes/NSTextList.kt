@@ -20,9 +20,9 @@ open class NSTextList(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithMarkerFormat_options_startingItemNumber(markerFormat: MemorySegment, options: MemorySegment, startingItemNumber: Long): MemorySegment {
+    open fun initWithMarkerFormat_options_startingItemNumber(markerFormat: MemorySegment, options: NSTextListOptions, startingItemNumber: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithMarkerFormat:options:startingItemNumber:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, markerFormat, options, startingItemNumber) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, markerFormat, options.rawValue, startingItemNumber) as MemorySegment
     }
 
     open fun initWithMarkerFormat_options(markerFormat: MemorySegment, options: Long): MemorySegment {
@@ -50,9 +50,9 @@ open class NSTextList(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property listOptions
-    open fun listOptions(): MemorySegment {
+    open fun listOptions(): NSTextListOptions {
         val sel = ObjCRuntime.sel("listOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextListOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property startingItemNumber

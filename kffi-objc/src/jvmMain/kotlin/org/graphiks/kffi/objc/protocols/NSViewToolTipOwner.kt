@@ -9,6 +9,6 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSViewToolTipOwner {
-    fun view_stringForToolTip_point_userData(view: MemorySegment, tag: Long, point: MemorySegment, `data`: MemorySegment): MemorySegment
+    fun view_stringForToolTip_point_userData(view: MemorySegment, tag: Long, point: NSPoint, `data`: MemorySegment): MemorySegment
 
 }

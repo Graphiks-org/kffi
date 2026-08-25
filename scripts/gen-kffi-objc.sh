@@ -52,6 +52,7 @@ OUTPUT="$REPO_ROOT/kffi-objc/src/jvmMain/kotlin"
 HEADER="$REPO_ROOT/kffi-objc/generation/ObjCSubset.h"
 GENERATED_PACKAGE="$STAGING/org/graphiks/kffi/objc"
 OUTPUT_PACKAGE="$OUTPUT/org/graphiks/kffi/objc"
+PRESERVED_PACKAGE_PATHS=(managed)
 
 FRAMEWORKS=(
     Foundation CoreFoundation AppKit CoreGraphics
@@ -93,6 +94,23 @@ fi
 while IFS= read -r -d '' generated_file; do
     perl -0pi -e 's/[ \t]+$//mg; s/\n+\z/\n/' "$generated_file"
 done < <(rg --files -0 "$GENERATED_PACKAGE")
+
+# The public Objective-C package also contains handwritten runtime helpers.
+# Merge those paths into the staging tree before checking or replacing the
+# generated package so regeneration never deletes them.
+for preserved_path in "${PRESERVED_PACKAGE_PATHS[@]}"; do
+    source_path="$OUTPUT_PACKAGE/$preserved_path"
+    target_path="$GENERATED_PACKAGE/$preserved_path"
+    if [[ ! -e "$source_path" ]]; then
+        echo "error: preserved Objective-C source path is missing: $source_path" >&2
+        exit 1
+    fi
+    if [[ -e "$target_path" ]]; then
+        echo "error: generated Objective-C bindings conflict with preserved path: $target_path" >&2
+        exit 1
+    fi
+    cp -R -- "$source_path" "$target_path"
+done
 
 if [[ "$MODE" == "check" ]]; then
     if [[ ! -d "$OUTPUT_PACKAGE" ]]; then

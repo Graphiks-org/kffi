@@ -9,9 +9,9 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSColorPickingDefault
  */
 interface NSColorPickingCustom : NSColorPickingDefault {
-    fun supportsMode(mode: MemorySegment): Boolean
+    fun supportsMode(mode: NSColorPanelMode): Boolean
 
-    fun currentMode(): MemorySegment
+    fun currentMode(): NSColorPanelMode
 
     fun provideNewView(initialRequest: Boolean): MemorySegment
 

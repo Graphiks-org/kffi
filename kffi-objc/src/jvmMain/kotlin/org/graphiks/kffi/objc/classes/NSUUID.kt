@@ -43,9 +43,9 @@ open class NSUUID(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, uuid)
     }
 
-    open fun compare(otherUUID: MemorySegment): MemorySegment {
+    open fun compare(otherUUID: MemorySegment): NSComparisonResult {
         val sel = ObjCRuntime.sel("compare:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, otherUUID) as MemorySegment
+        return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, otherUUID) as Long)
     }
 
     // @property UUIDString

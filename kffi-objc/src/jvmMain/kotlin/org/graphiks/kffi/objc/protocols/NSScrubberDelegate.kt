@@ -18,7 +18,7 @@ interface NSScrubberDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'scrubber:didHighlightItemAtIndex:' not implemented")
 
     // @optional
-    fun scrubber_didChangeVisibleRange(scrubber: MemorySegment, visibleRange: MemorySegment): Unit =
+    fun scrubber_didChangeVisibleRange(scrubber: MemorySegment, visibleRange: NSRange): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'scrubber:didChangeVisibleRange:' not implemented")
 
     // @optional

@@ -124,9 +124,9 @@ open class NSURLSessionTaskTransactionMetrics(override val ptr: MemorySegment) :
     }
 
     // @property resourceFetchType
-    open fun resourceFetchType(): MemorySegment {
+    open fun resourceFetchType(): NSURLSessionTaskMetricsResourceFetchType {
         val sel = ObjCRuntime.sel("resourceFetchType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLSessionTaskMetricsResourceFetchType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property countOfRequestHeaderBytesSent
@@ -232,9 +232,9 @@ open class NSURLSessionTaskTransactionMetrics(override val ptr: MemorySegment) :
     }
 
     // @property domainResolutionProtocol
-    open fun domainResolutionProtocol(): MemorySegment {
+    open fun domainResolutionProtocol(): NSURLSessionTaskMetricsDomainResolutionProtocol {
         val sel = ObjCRuntime.sel("domainResolutionProtocol")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLSessionTaskMetricsDomainResolutionProtocol(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 }

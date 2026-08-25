@@ -17,14 +17,14 @@ open class NSColorPanel(override val ptr: MemorySegment) : NSPanel(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, color, event, sourceView) as Boolean
         }
 
-        fun setPickerMask(mask: MemorySegment): Unit {
+        fun setPickerMask(mask: NSColorPanelOptions): Unit {
             val sel = ObjCRuntime.sel("setPickerMask:")
-            ObjCRuntime.msgSend(null, _class, sel, mask)
+            ObjCRuntime.msgSend(null, _class, sel, mask.rawValue)
         }
 
-        fun setPickerMode(mode: MemorySegment): Unit {
+        fun setPickerMode(mode: NSColorPanelMode): Unit {
             val sel = ObjCRuntime.sel("setPickerMode:")
-            ObjCRuntime.msgSend(null, _class, sel, mode)
+            ObjCRuntime.msgSend(null, _class, sel, mode.rawValue)
         }
 
         fun sharedColorPanel(): MemorySegment {
@@ -102,13 +102,13 @@ open class NSColorPanel(override val ptr: MemorySegment) : NSPanel(ptr) {
     }
 
     // @property mode
-    open fun mode(): MemorySegment {
+    open fun mode(): NSColorPanelMode {
         val sel = ObjCRuntime.sel("mode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSColorPanelMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setMode(value: MemorySegment) {
+    open fun setMode(value: NSColorPanelMode) {
         val sel = ObjCRuntime.sel("setMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property color

@@ -25,13 +25,13 @@ open class NSMutableURLRequest(override val ptr: MemorySegment) : NSURLRequest(p
     }
 
     // @property cachePolicy
-    override fun cachePolicy(): MemorySegment {
+    override fun cachePolicy(): NSURLRequestCachePolicy {
         val sel = ObjCRuntime.sel("cachePolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLRequestCachePolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setCachePolicy(value: MemorySegment) {
+    open fun setCachePolicy(value: NSURLRequestCachePolicy) {
         val sel = ObjCRuntime.sel("setCachePolicy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property timeoutInterval
@@ -55,13 +55,13 @@ open class NSMutableURLRequest(override val ptr: MemorySegment) : NSURLRequest(p
     }
 
     // @property networkServiceType
-    override fun networkServiceType(): MemorySegment {
+    override fun networkServiceType(): NSURLRequestNetworkServiceType {
         val sel = ObjCRuntime.sel("networkServiceType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLRequestNetworkServiceType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setNetworkServiceType(value: MemorySegment) {
+    open fun setNetworkServiceType(value: NSURLRequestNetworkServiceType) {
         val sel = ObjCRuntime.sel("setNetworkServiceType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowsCellularAccess
@@ -115,13 +115,13 @@ open class NSMutableURLRequest(override val ptr: MemorySegment) : NSURLRequest(p
     }
 
     // @property attribution
-    override fun attribution(): MemorySegment {
+    override fun attribution(): NSURLRequestAttribution {
         val sel = ObjCRuntime.sel("attribution")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLRequestAttribution(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAttribution(value: MemorySegment) {
+    open fun setAttribution(value: NSURLRequestAttribution) {
         val sel = ObjCRuntime.sel("setAttribution:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property requiresDNSSECValidation

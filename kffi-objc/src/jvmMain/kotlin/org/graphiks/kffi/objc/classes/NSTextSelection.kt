@@ -15,9 +15,9 @@ open class NSTextSelection(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithRanges_affinity_granularity(textRanges: MemorySegment, affinity: MemorySegment, granularity: MemorySegment): MemorySegment {
+    open fun initWithRanges_affinity_granularity(textRanges: MemorySegment, affinity: NSTextSelectionAffinity, granularity: NSTextSelectionGranularity): MemorySegment {
         val sel = ObjCRuntime.sel("initWithRanges:affinity:granularity:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, textRanges, affinity, granularity) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, textRanges, affinity.rawValue, granularity.rawValue) as MemorySegment
     }
 
     open fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -25,14 +25,14 @@ open class NSTextSelection(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun initWithRange_affinity_granularity(range: MemorySegment, affinity: MemorySegment, granularity: MemorySegment): MemorySegment {
+    open fun initWithRange_affinity_granularity(range: MemorySegment, affinity: NSTextSelectionAffinity, granularity: NSTextSelectionGranularity): MemorySegment {
         val sel = ObjCRuntime.sel("initWithRange:affinity:granularity:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, range, affinity, granularity) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, range, affinity.rawValue, granularity.rawValue) as MemorySegment
     }
 
-    open fun initWithLocation_affinity(location: MemorySegment, affinity: MemorySegment): MemorySegment {
+    open fun initWithLocation_affinity(location: MemorySegment, affinity: NSTextSelectionAffinity): MemorySegment {
         val sel = ObjCRuntime.sel("initWithLocation:affinity:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, location, affinity) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, location, affinity.rawValue) as MemorySegment
     }
 
     open fun init(): MemorySegment {
@@ -53,15 +53,15 @@ open class NSTextSelection(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property granularity
-    open fun granularity(): MemorySegment {
+    open fun granularity(): NSTextSelectionGranularity {
         val sel = ObjCRuntime.sel("granularity")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextSelectionGranularity(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property affinity
-    open fun affinity(): MemorySegment {
+    open fun affinity(): NSTextSelectionAffinity {
         val sel = ObjCRuntime.sel("affinity")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextSelectionAffinity(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property transient

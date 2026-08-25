@@ -38,7 +38,7 @@ interface NSMenuDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'menu:willHighlightItem:' not implemented")
 
     // @optional
-    fun confinementRectForMenu_onScreen(menu: MemorySegment, screen: MemorySegment): MemorySegment =
+    fun confinementRectForMenu_onScreen(menu: MemorySegment, screen: MemorySegment): NSRect =
         throw UnsupportedOperationException("Optional ObjC method 'confinementRectForMenu:onScreen:' not implemented")
 
 }

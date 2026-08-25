@@ -36,27 +36,27 @@ interface NSCollectionViewDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexes:' not implemented")
 
     // @optional
-    fun collectionView_draggingImageForItemsAtIndexPaths_withEvent_offset(collectionView: MemorySegment, indexPaths: MemorySegment, event: MemorySegment, dragImageOffset: MemorySegment): MemorySegment =
+    fun collectionView_draggingImageForItemsAtIndexPaths_withEvent_offset(collectionView: MemorySegment, indexPaths: MemorySegment, event: MemorySegment, dragImageOffset: NSPointPointer): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:draggingImageForItemsAtIndexPaths:withEvent:offset:' not implemented")
 
     // @optional
-    fun collectionView_draggingImageForItemsAtIndexes_withEvent_offset(collectionView: MemorySegment, indexes: MemorySegment, event: MemorySegment, dragImageOffset: MemorySegment): MemorySegment =
+    fun collectionView_draggingImageForItemsAtIndexes_withEvent_offset(collectionView: MemorySegment, indexes: MemorySegment, event: MemorySegment, dragImageOffset: NSPointPointer): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:draggingImageForItemsAtIndexes:withEvent:offset:' not implemented")
 
     // @optional
-    fun collectionView_validateDrop_proposedIndexPath_dropOperation(collectionView: MemorySegment, draggingInfo: MemorySegment, proposedDropIndexPath: MemorySegment, proposedDropOperation: MemorySegment): MemorySegment =
+    fun collectionView_validateDrop_proposedIndexPath_dropOperation(collectionView: MemorySegment, draggingInfo: MemorySegment, proposedDropIndexPath: MemorySegment, proposedDropOperation: MemorySegment): NSDragOperation =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:validateDrop:proposedIndexPath:dropOperation:' not implemented")
 
     // @optional
-    fun collectionView_validateDrop_proposedIndex_dropOperation(collectionView: MemorySegment, draggingInfo: MemorySegment, proposedDropIndex: MemorySegment, proposedDropOperation: MemorySegment): MemorySegment =
+    fun collectionView_validateDrop_proposedIndex_dropOperation(collectionView: MemorySegment, draggingInfo: MemorySegment, proposedDropIndex: MemorySegment, proposedDropOperation: MemorySegment): NSDragOperation =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:validateDrop:proposedIndex:dropOperation:' not implemented")
 
     // @optional
-    fun collectionView_acceptDrop_indexPath_dropOperation(collectionView: MemorySegment, draggingInfo: MemorySegment, indexPath: MemorySegment, dropOperation: MemorySegment): Boolean =
+    fun collectionView_acceptDrop_indexPath_dropOperation(collectionView: MemorySegment, draggingInfo: MemorySegment, indexPath: MemorySegment, dropOperation: NSCollectionViewDropOperation): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:acceptDrop:indexPath:dropOperation:' not implemented")
 
     // @optional
-    fun collectionView_acceptDrop_index_dropOperation(collectionView: MemorySegment, draggingInfo: MemorySegment, index: Long, dropOperation: MemorySegment): Boolean =
+    fun collectionView_acceptDrop_index_dropOperation(collectionView: MemorySegment, draggingInfo: MemorySegment, index: Long, dropOperation: NSCollectionViewDropOperation): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:acceptDrop:index:dropOperation:' not implemented")
 
     /** @return id<NSPasteboardWriting> */
@@ -70,15 +70,15 @@ interface NSCollectionViewDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:pasteboardWriterForItemAtIndex:' not implemented")
 
     // @optional
-    fun collectionView_draggingSession_willBeginAtPoint_forItemsAtIndexPaths(collectionView: MemorySegment, session: MemorySegment, screenPoint: MemorySegment, indexPaths: MemorySegment): Unit =
+    fun collectionView_draggingSession_willBeginAtPoint_forItemsAtIndexPaths(collectionView: MemorySegment, session: MemorySegment, screenPoint: NSPoint, indexPaths: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexPaths:' not implemented")
 
     // @optional
-    fun collectionView_draggingSession_willBeginAtPoint_forItemsAtIndexes(collectionView: MemorySegment, session: MemorySegment, screenPoint: MemorySegment, indexes: MemorySegment): Unit =
+    fun collectionView_draggingSession_willBeginAtPoint_forItemsAtIndexes(collectionView: MemorySegment, session: MemorySegment, screenPoint: NSPoint, indexes: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexes:' not implemented")
 
     // @optional
-    fun collectionView_draggingSession_endedAtPoint_dragOperation(collectionView: MemorySegment, session: MemorySegment, screenPoint: MemorySegment, operation: MemorySegment): Unit =
+    fun collectionView_draggingSession_endedAtPoint_dragOperation(collectionView: MemorySegment, session: MemorySegment, screenPoint: NSPoint, operation: NSDragOperation): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:draggingSession:endedAtPoint:dragOperation:' not implemented")
 
     // @optional
@@ -87,11 +87,11 @@ interface NSCollectionViewDelegate {
 
     /** @return NSSet<NSIndexPath *> * */
     // @optional
-    fun collectionView_shouldChangeItemsAtIndexPaths_toHighlightState(collectionView: MemorySegment, indexPaths: MemorySegment, highlightState: MemorySegment): MemorySegment =
+    fun collectionView_shouldChangeItemsAtIndexPaths_toHighlightState(collectionView: MemorySegment, indexPaths: MemorySegment, highlightState: NSCollectionViewItemHighlightState): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:shouldChangeItemsAtIndexPaths:toHighlightState:' not implemented")
 
     // @optional
-    fun collectionView_didChangeItemsAtIndexPaths_toHighlightState(collectionView: MemorySegment, indexPaths: MemorySegment, highlightState: MemorySegment): Unit =
+    fun collectionView_didChangeItemsAtIndexPaths_toHighlightState(collectionView: MemorySegment, indexPaths: MemorySegment, highlightState: NSCollectionViewItemHighlightState): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'collectionView:didChangeItemsAtIndexPaths:toHighlightState:' not implemented")
 
     /** @return NSSet<NSIndexPath *> * */

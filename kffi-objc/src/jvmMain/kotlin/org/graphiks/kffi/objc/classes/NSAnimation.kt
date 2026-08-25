@@ -15,9 +15,9 @@ open class NSAnimation(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithDuration_animationCurve(duration: Double, animationCurve: MemorySegment): MemorySegment {
+    open fun initWithDuration_animationCurve(duration: Double, animationCurve: NSAnimationCurve): MemorySegment {
         val sel = ObjCRuntime.sel("initWithDuration:animationCurve:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, duration, animationCurve) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, duration, animationCurve.rawValue) as MemorySegment
     }
 
     open fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -92,13 +92,13 @@ open class NSAnimation(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property animationBlockingMode
-    open fun animationBlockingMode(): MemorySegment {
+    open fun animationBlockingMode(): NSAnimationBlockingMode {
         val sel = ObjCRuntime.sel("animationBlockingMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSAnimationBlockingMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAnimationBlockingMode(value: MemorySegment) {
+    open fun setAnimationBlockingMode(value: NSAnimationBlockingMode) {
         val sel = ObjCRuntime.sel("setAnimationBlockingMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property frameRate
@@ -112,13 +112,13 @@ open class NSAnimation(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property animationCurve
-    open fun animationCurve(): MemorySegment {
+    open fun animationCurve(): NSAnimationCurve {
         val sel = ObjCRuntime.sel("animationCurve")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSAnimationCurve(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAnimationCurve(value: MemorySegment) {
+    open fun setAnimationCurve(value: NSAnimationCurve) {
         val sel = ObjCRuntime.sel("setAnimationCurve:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property currentValue

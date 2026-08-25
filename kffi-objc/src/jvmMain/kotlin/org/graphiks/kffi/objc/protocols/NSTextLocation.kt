@@ -9,6 +9,6 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSTextLocation {
-    fun compare(location: MemorySegment): MemorySegment
+    fun compare(location: MemorySegment): NSComparisonResult
 
 }

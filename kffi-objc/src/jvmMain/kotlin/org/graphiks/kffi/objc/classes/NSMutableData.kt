@@ -49,14 +49,14 @@ fun NSMutableData.increaseLengthBy(extraLength: Long): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, extraLength)
 }
 
-fun NSMutableData.replaceBytesInRange_withBytes(range: MemorySegment, bytes: MemorySegment): Unit {
+fun NSMutableData.replaceBytesInRange_withBytes(range: NSRange, bytes: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("replaceBytesInRange:withBytes:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, bytes)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), bytes)
 }
 
-fun NSMutableData.resetBytesInRange(range: MemorySegment): Unit {
+fun NSMutableData.resetBytesInRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("resetBytesInRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 fun NSMutableData.setData(`data`: MemorySegment): Unit {
@@ -64,9 +64,9 @@ fun NSMutableData.setData(`data`: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, `data`)
 }
 
-fun NSMutableData.replaceBytesInRange_withBytes_length(range: MemorySegment, replacementBytes: MemorySegment, replacementLength: Long): Unit {
+fun NSMutableData.replaceBytesInRange_withBytes_length(range: NSRange, replacementBytes: MemorySegment, replacementLength: Long): Unit {
     val sel = ObjCRuntime.sel("replaceBytesInRange:withBytes:length:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, replacementBytes, replacementLength)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), replacementBytes, replacementLength)
 }
 
 // ── Category: NSMutableDataCreation on NSMutableData ─────────────────────────────────────────
@@ -97,12 +97,12 @@ fun NSMutableData_dataWithLength(length: Long): MemorySegment {
 
 // ── Category: NSMutableDataCompression on NSMutableData ─────────────────────────────────────────
 
-fun NSMutableData.decompressUsingAlgorithm_error(algorithm: MemorySegment, error: MemorySegment): Boolean {
+fun NSMutableData.decompressUsingAlgorithm_error(algorithm: NSDataCompressionAlgorithm, error: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("decompressUsingAlgorithm:error:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, algorithm, error) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, algorithm.rawValue, error) as Boolean
 }
 
-fun NSMutableData.compressUsingAlgorithm_error(algorithm: MemorySegment, error: MemorySegment): Boolean {
+fun NSMutableData.compressUsingAlgorithm_error(algorithm: NSDataCompressionAlgorithm, error: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("compressUsingAlgorithm:error:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, algorithm, error) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, algorithm.rawValue, error) as Boolean
 }

@@ -18,9 +18,9 @@ open class NSURLRequest(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, URL) as MemorySegment
         }
 
-        fun requestWithURL_cachePolicy_timeoutInterval(URL: MemorySegment, cachePolicy: MemorySegment, timeoutInterval: Double): MemorySegment {
+        fun requestWithURL_cachePolicy_timeoutInterval(URL: MemorySegment, cachePolicy: NSURLRequestCachePolicy, timeoutInterval: Double): MemorySegment {
             val sel = ObjCRuntime.sel("requestWithURL:cachePolicy:timeoutInterval:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, URL, cachePolicy, timeoutInterval) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, URL, cachePolicy.rawValue, timeoutInterval) as MemorySegment
         }
 
         fun supportsSecureCoding(): Boolean {
@@ -35,9 +35,9 @@ open class NSURLRequest(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, URL) as MemorySegment
     }
 
-    open fun initWithURL_cachePolicy_timeoutInterval(URL: MemorySegment, cachePolicy: MemorySegment, timeoutInterval: Double): MemorySegment {
+    open fun initWithURL_cachePolicy_timeoutInterval(URL: MemorySegment, cachePolicy: NSURLRequestCachePolicy, timeoutInterval: Double): MemorySegment {
         val sel = ObjCRuntime.sel("initWithURL:cachePolicy:timeoutInterval:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, URL, cachePolicy, timeoutInterval) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, URL, cachePolicy.rawValue, timeoutInterval) as MemorySegment
     }
 
     // @property supportsSecureCoding
@@ -53,9 +53,9 @@ open class NSURLRequest(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property cachePolicy
-    open fun cachePolicy(): MemorySegment {
+    open fun cachePolicy(): NSURLRequestCachePolicy {
         val sel = ObjCRuntime.sel("cachePolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLRequestCachePolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property timeoutInterval
@@ -71,9 +71,9 @@ open class NSURLRequest(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property networkServiceType
-    open fun networkServiceType(): MemorySegment {
+    open fun networkServiceType(): NSURLRequestNetworkServiceType {
         val sel = ObjCRuntime.sel("networkServiceType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLRequestNetworkServiceType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property allowsCellularAccess
@@ -107,9 +107,9 @@ open class NSURLRequest(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property attribution
-    open fun attribution(): MemorySegment {
+    open fun attribution(): NSURLRequestAttribution {
         val sel = ObjCRuntime.sel("attribution")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLRequestAttribution(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property requiresDNSSECValidation

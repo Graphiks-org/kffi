@@ -15,9 +15,9 @@ open class NSOpenGLPixelFormat(override val ptr: MemorySegment) : NSObject(ptr) 
 
     }
 
-    open fun initWithCGLPixelFormatObj(format: MemorySegment): MemorySegment {
+    open fun initWithCGLPixelFormatObj(format: CGLPixelFormatObj): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGLPixelFormatObj:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, format) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, format.segment) as MemorySegment
     }
 
     open fun initWithAttributes(attribs: MemorySegment): MemorySegment {
@@ -52,9 +52,9 @@ open class NSOpenGLPixelFormat(override val ptr: MemorySegment) : NSObject(ptr) 
     }
 
     // @property CGLPixelFormatObj
-    open fun CGLPixelFormatObj(): MemorySegment {
+    open fun CGLPixelFormatObj(): CGLPixelFormatObj {
         val sel = ObjCRuntime.sel("CGLPixelFormatObj")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGLPixelFormatObj(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
 }

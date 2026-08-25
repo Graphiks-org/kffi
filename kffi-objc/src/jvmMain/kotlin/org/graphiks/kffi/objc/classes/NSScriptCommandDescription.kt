@@ -68,9 +68,9 @@ open class NSScriptCommandDescription(override val ptr: MemorySegment) : NSObjec
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun createCommandInstanceWithZone(zone: MemorySegment): MemorySegment {
+    open fun createCommandInstanceWithZone(zone: NSZonePointer): MemorySegment {
         val sel = ObjCRuntime.sel("createCommandInstanceWithZone:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, zone) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, zone.segment) as MemorySegment
     }
 
     // @property suiteName

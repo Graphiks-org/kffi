@@ -24,9 +24,9 @@ open class NSSpecifierTest(override val ptr: MemorySegment) : NSScriptWhoseTest(
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, inCoder) as MemorySegment
     }
 
-    open fun initWithObjectSpecifier_comparisonOperator_testObject(obj1: MemorySegment, compOp: MemorySegment, obj2: MemorySegment): MemorySegment {
+    open fun initWithObjectSpecifier_comparisonOperator_testObject(obj1: MemorySegment, compOp: NSTestComparisonOperation, obj2: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithObjectSpecifier:comparisonOperator:testObject:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, obj1, compOp, obj2) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, obj1, compOp.rawValue, obj2) as MemorySegment
     }
 
 

@@ -79,13 +79,13 @@ open class NSTabViewController(override val ptr: MemorySegment) : NSViewControll
     }
 
     // @property tabStyle
-    open fun tabStyle(): MemorySegment {
+    open fun tabStyle(): NSTabViewControllerTabStyle {
         val sel = ObjCRuntime.sel("tabStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTabViewControllerTabStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTabStyle(value: MemorySegment) {
+    open fun setTabStyle(value: NSTabViewControllerTabStyle) {
         val sel = ObjCRuntime.sel("setTabStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property tabView
@@ -99,13 +99,13 @@ open class NSTabViewController(override val ptr: MemorySegment) : NSViewControll
     }
 
     // @property transitionOptions
-    open fun transitionOptions(): MemorySegment {
+    open fun transitionOptions(): NSViewControllerTransitionOptions {
         val sel = ObjCRuntime.sel("transitionOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSViewControllerTransitionOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTransitionOptions(value: MemorySegment) {
+    open fun setTransitionOptions(value: NSViewControllerTransitionOptions) {
         val sel = ObjCRuntime.sel("setTransitionOptions:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property canPropagateSelectedChildViewControllerTitle

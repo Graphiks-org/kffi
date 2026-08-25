@@ -18,7 +18,7 @@ interface NSPathControlDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'pathControl:shouldDragPathComponentCell:withPasteboard:' not implemented")
 
     // @optional
-    fun pathControl_validateDrop(pathControl: MemorySegment, info: MemorySegment): MemorySegment =
+    fun pathControl_validateDrop(pathControl: MemorySegment, info: MemorySegment): NSDragOperation =
         throw UnsupportedOperationException("Optional ObjC method 'pathControl:validateDrop:' not implemented")
 
     // @optional

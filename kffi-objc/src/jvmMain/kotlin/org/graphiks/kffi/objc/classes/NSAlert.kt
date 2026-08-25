@@ -92,13 +92,13 @@ open class NSAlert(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property alertStyle
-    open fun alertStyle(): MemorySegment {
+    open fun alertStyle(): NSAlertStyle {
         val sel = ObjCRuntime.sel("alertStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSAlertStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAlertStyle(value: MemorySegment) {
+    open fun setAlertStyle(value: NSAlertStyle) {
         val sel = ObjCRuntime.sel("setAlertStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property showsHelp

@@ -183,30 +183,30 @@ open class NSDocument(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun writeSafelyToURL_ofType_forSaveOperation_error(url: MemorySegment, typeName: MemorySegment, saveOperation: MemorySegment, outError: MemorySegment): Boolean {
+    open fun writeSafelyToURL_ofType_forSaveOperation_error(url: MemorySegment, typeName: MemorySegment, saveOperation: NSSaveOperationType, outError: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("writeSafelyToURL:ofType:forSaveOperation:error:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, typeName, saveOperation, outError) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, typeName, saveOperation.rawValue, outError) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun writeSafelyToURL_ofType_forSaveOperation_error(url: MemorySegment, typeName: String, saveOperation: MemorySegment, outError: MemorySegment): Boolean = writeSafelyToURL_ofType_forSaveOperation_error(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, outError)
+    fun writeSafelyToURL_ofType_forSaveOperation_error(url: MemorySegment, typeName: String, saveOperation: NSSaveOperationType, outError: MemorySegment): Boolean = writeSafelyToURL_ofType_forSaveOperation_error(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, outError)
 
-    open fun writeToURL_ofType_forSaveOperation_originalContentsURL_error(url: MemorySegment, typeName: MemorySegment, saveOperation: MemorySegment, absoluteOriginalContentsURL: MemorySegment, outError: MemorySegment): Boolean {
+    open fun writeToURL_ofType_forSaveOperation_originalContentsURL_error(url: MemorySegment, typeName: MemorySegment, saveOperation: NSSaveOperationType, absoluteOriginalContentsURL: MemorySegment, outError: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("writeToURL:ofType:forSaveOperation:originalContentsURL:error:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, typeName, saveOperation, absoluteOriginalContentsURL, outError) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, typeName, saveOperation.rawValue, absoluteOriginalContentsURL, outError) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun writeToURL_ofType_forSaveOperation_originalContentsURL_error(url: MemorySegment, typeName: String, saveOperation: MemorySegment, absoluteOriginalContentsURL: MemorySegment, outError: MemorySegment): Boolean = writeToURL_ofType_forSaveOperation_originalContentsURL_error(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, absoluteOriginalContentsURL, outError)
+    fun writeToURL_ofType_forSaveOperation_originalContentsURL_error(url: MemorySegment, typeName: String, saveOperation: NSSaveOperationType, absoluteOriginalContentsURL: MemorySegment, outError: MemorySegment): Boolean = writeToURL_ofType_forSaveOperation_originalContentsURL_error(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, absoluteOriginalContentsURL, outError)
 
     /** @return NSDictionary<NSString *,id> * */
-    open fun fileAttributesToWriteToURL_ofType_forSaveOperation_originalContentsURL_error(url: MemorySegment, typeName: MemorySegment, saveOperation: MemorySegment, absoluteOriginalContentsURL: MemorySegment, outError: MemorySegment): MemorySegment {
+    open fun fileAttributesToWriteToURL_ofType_forSaveOperation_originalContentsURL_error(url: MemorySegment, typeName: MemorySegment, saveOperation: NSSaveOperationType, absoluteOriginalContentsURL: MemorySegment, outError: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, typeName, saveOperation, absoluteOriginalContentsURL, outError) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, typeName, saveOperation.rawValue, absoluteOriginalContentsURL, outError) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun fileAttributesToWriteToURL_ofType_forSaveOperation_originalContentsURL_error(url: MemorySegment, typeName: String, saveOperation: MemorySegment, absoluteOriginalContentsURL: MemorySegment, outError: MemorySegment): MemorySegment = fileAttributesToWriteToURL_ofType_forSaveOperation_originalContentsURL_error(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, absoluteOriginalContentsURL, outError)
+    fun fileAttributesToWriteToURL_ofType_forSaveOperation_originalContentsURL_error(url: MemorySegment, typeName: String, saveOperation: NSSaveOperationType, absoluteOriginalContentsURL: MemorySegment, outError: MemorySegment): MemorySegment = fileAttributesToWriteToURL_ofType_forSaveOperation_originalContentsURL_error(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, absoluteOriginalContentsURL, outError)
 
     open fun saveDocument(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("saveDocument:")
@@ -228,9 +228,9 @@ open class NSDocument(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, delegate, didSaveSelector, contextInfo)
     }
 
-    open fun runModalSavePanelForSaveOperation_delegate_didSaveSelector_contextInfo(saveOperation: MemorySegment, delegate: MemorySegment, didSaveSelector: MemorySegment, contextInfo: MemorySegment): Unit {
+    open fun runModalSavePanelForSaveOperation_delegate_didSaveSelector_contextInfo(saveOperation: NSSaveOperationType, delegate: MemorySegment, didSaveSelector: MemorySegment, contextInfo: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("runModalSavePanelForSaveOperation:delegate:didSaveSelector:contextInfo:")
-        ObjCRuntime.msgSend(null, ptr, sel, saveOperation, delegate, didSaveSelector, contextInfo)
+        ObjCRuntime.msgSend(null, ptr, sel, saveOperation.rawValue, delegate, didSaveSelector, contextInfo)
     }
 
     open fun prepareSavePanel(savePanel: MemorySegment): Boolean {
@@ -238,29 +238,29 @@ open class NSDocument(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, savePanel) as Boolean
     }
 
-    open fun saveToURL_ofType_forSaveOperation_delegate_didSaveSelector_contextInfo(url: MemorySegment, typeName: MemorySegment, saveOperation: MemorySegment, delegate: MemorySegment, didSaveSelector: MemorySegment, contextInfo: MemorySegment): Unit {
+    open fun saveToURL_ofType_forSaveOperation_delegate_didSaveSelector_contextInfo(url: MemorySegment, typeName: MemorySegment, saveOperation: NSSaveOperationType, delegate: MemorySegment, didSaveSelector: MemorySegment, contextInfo: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("saveToURL:ofType:forSaveOperation:delegate:didSaveSelector:contextInfo:")
-        ObjCRuntime.msgSend(null, ptr, sel, url, typeName, saveOperation, delegate, didSaveSelector, contextInfo)
+        ObjCRuntime.msgSend(null, ptr, sel, url, typeName, saveOperation.rawValue, delegate, didSaveSelector, contextInfo)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun saveToURL_ofType_forSaveOperation_delegate_didSaveSelector_contextInfo(url: MemorySegment, typeName: String, saveOperation: MemorySegment, delegate: MemorySegment, didSaveSelector: MemorySegment, contextInfo: MemorySegment): Unit = saveToURL_ofType_forSaveOperation_delegate_didSaveSelector_contextInfo(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, delegate, didSaveSelector, contextInfo)
+    fun saveToURL_ofType_forSaveOperation_delegate_didSaveSelector_contextInfo(url: MemorySegment, typeName: String, saveOperation: NSSaveOperationType, delegate: MemorySegment, didSaveSelector: MemorySegment, contextInfo: MemorySegment): Unit = saveToURL_ofType_forSaveOperation_delegate_didSaveSelector_contextInfo(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, delegate, didSaveSelector, contextInfo)
 
-    open fun saveToURL_ofType_forSaveOperation_completionHandler(url: MemorySegment, typeName: MemorySegment, saveOperation: MemorySegment, completionHandler: MemorySegment): Unit {
+    open fun saveToURL_ofType_forSaveOperation_completionHandler(url: MemorySegment, typeName: MemorySegment, saveOperation: NSSaveOperationType, completionHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("saveToURL:ofType:forSaveOperation:completionHandler:")
-        ObjCRuntime.msgSend(null, ptr, sel, url, typeName, saveOperation, completionHandler)
+        ObjCRuntime.msgSend(null, ptr, sel, url, typeName, saveOperation.rawValue, completionHandler)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun saveToURL_ofType_forSaveOperation_completionHandler(url: MemorySegment, typeName: String, saveOperation: MemorySegment, completionHandler: MemorySegment): Unit = saveToURL_ofType_forSaveOperation_completionHandler(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, completionHandler)
+    fun saveToURL_ofType_forSaveOperation_completionHandler(url: MemorySegment, typeName: String, saveOperation: NSSaveOperationType, completionHandler: MemorySegment): Unit = saveToURL_ofType_forSaveOperation_completionHandler(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation, completionHandler)
 
-    open fun canAsynchronouslyWriteToURL_ofType_forSaveOperation(url: MemorySegment, typeName: MemorySegment, saveOperation: MemorySegment): Boolean {
+    open fun canAsynchronouslyWriteToURL_ofType_forSaveOperation(url: MemorySegment, typeName: MemorySegment, saveOperation: NSSaveOperationType): Boolean {
         val sel = ObjCRuntime.sel("canAsynchronouslyWriteToURL:ofType:forSaveOperation:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, typeName, saveOperation) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, typeName, saveOperation.rawValue) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun canAsynchronouslyWriteToURL_ofType_forSaveOperation(url: MemorySegment, typeName: String, saveOperation: MemorySegment): Boolean = canAsynchronouslyWriteToURL_ofType_forSaveOperation(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation)
+    fun canAsynchronouslyWriteToURL_ofType_forSaveOperation(url: MemorySegment, typeName: String, saveOperation: NSSaveOperationType): Boolean = canAsynchronouslyWriteToURL_ofType_forSaveOperation(url, ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation)
 
     open fun checkAutosavingSafetyAndReturnError(outError: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("checkAutosavingSafetyAndReturnError:")
@@ -427,19 +427,19 @@ open class NSDocument(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, sharingServicePicker)
     }
 
-    open fun updateChangeCount(change: MemorySegment): Unit {
+    open fun updateChangeCount(change: NSDocumentChangeType): Unit {
         val sel = ObjCRuntime.sel("updateChangeCount:")
-        ObjCRuntime.msgSend(null, ptr, sel, change)
+        ObjCRuntime.msgSend(null, ptr, sel, change.rawValue)
     }
 
-    open fun changeCountTokenForSaveOperation(saveOperation: MemorySegment): MemorySegment {
+    open fun changeCountTokenForSaveOperation(saveOperation: NSSaveOperationType): MemorySegment {
         val sel = ObjCRuntime.sel("changeCountTokenForSaveOperation:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, saveOperation) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, saveOperation.rawValue) as MemorySegment
     }
 
-    open fun updateChangeCountWithToken_forSaveOperation(changeCountToken: MemorySegment, saveOperation: MemorySegment): Unit {
+    open fun updateChangeCountWithToken_forSaveOperation(changeCountToken: MemorySegment, saveOperation: NSSaveOperationType): Unit {
         val sel = ObjCRuntime.sel("updateChangeCountWithToken:forSaveOperation:")
-        ObjCRuntime.msgSend(null, ptr, sel, changeCountToken, saveOperation)
+        ObjCRuntime.msgSend(null, ptr, sel, changeCountToken, saveOperation.rawValue)
     }
 
     open fun presentError_modalForWindow_delegate_didPresentSelector_contextInfo(error: MemorySegment, window: MemorySegment, delegate: MemorySegment, didPresentSelector: MemorySegment, contextInfo: MemorySegment): Unit {
@@ -511,24 +511,24 @@ open class NSDocument(override val ptr: MemorySegment) : NSObject(ptr) {
     fun defaultDraftNameAsString(): String = ObjCRuntime.toJavaString(defaultDraftName())
 
     /** @return NSArray<NSString *> * */
-    open fun writableTypesForSaveOperation(saveOperation: MemorySegment): MemorySegment {
+    open fun writableTypesForSaveOperation(saveOperation: NSSaveOperationType): MemorySegment {
         val sel = ObjCRuntime.sel("writableTypesForSaveOperation:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, saveOperation) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, saveOperation.rawValue) as MemorySegment
     }
 
-    open fun fileNameExtensionForType_saveOperation(typeName: MemorySegment, saveOperation: MemorySegment): MemorySegment {
+    open fun fileNameExtensionForType_saveOperation(typeName: MemorySegment, saveOperation: NSSaveOperationType): MemorySegment {
         val sel = ObjCRuntime.sel("fileNameExtensionForType:saveOperation:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, typeName, saveOperation) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, typeName, saveOperation.rawValue) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-    fun fileNameExtensionForType_saveOperationAsString(typeName: MemorySegment, saveOperation: MemorySegment): String = ObjCRuntime.toJavaString(fileNameExtensionForType_saveOperation(typeName, saveOperation))
+    fun fileNameExtensionForType_saveOperationAsString(typeName: MemorySegment, saveOperation: NSSaveOperationType): String = ObjCRuntime.toJavaString(fileNameExtensionForType_saveOperation(typeName, saveOperation))
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun fileNameExtensionForType_saveOperation(typeName: String, saveOperation: MemorySegment): MemorySegment = fileNameExtensionForType_saveOperation(ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation)
+    fun fileNameExtensionForType_saveOperation(typeName: String, saveOperation: NSSaveOperationType): MemorySegment = fileNameExtensionForType_saveOperation(ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation)
 
     /** Convenience overload — [String] parameters and [String] return type. */
-    fun fileNameExtensionForType_saveOperationAsString(typeName: String, saveOperation: MemorySegment): String = ObjCRuntime.toJavaString(fileNameExtensionForType_saveOperation(ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation))
+    fun fileNameExtensionForType_saveOperationAsString(typeName: String, saveOperation: NSSaveOperationType): String = ObjCRuntime.toJavaString(fileNameExtensionForType_saveOperation(ObjCRuntime.newNSString(Arena.global(), typeName), saveOperation))
 
     open fun validateUserInterfaceItem(item: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("validateUserInterfaceItem:")
@@ -868,9 +868,9 @@ open class NSDocument(override val ptr: MemorySegment) : NSObject(ptr) {
 
 // ── Category: NSDeprecated on NSDocument ─────────────────────────────────────────
 
-fun NSDocument.saveToURL_ofType_forSaveOperation_error(url: MemorySegment, typeName: MemorySegment, saveOperation: MemorySegment, outError: MemorySegment): Boolean {
+fun NSDocument.saveToURL_ofType_forSaveOperation_error(url: MemorySegment, typeName: MemorySegment, saveOperation: NSSaveOperationType, outError: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("saveToURL:ofType:forSaveOperation:error:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, typeName, saveOperation, outError) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, typeName, saveOperation.rawValue, outError) as Boolean
 }
 
 fun NSDocument.dataRepresentationOfType(type: MemorySegment): MemorySegment {
@@ -878,9 +878,9 @@ fun NSDocument.dataRepresentationOfType(type: MemorySegment): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, type) as MemorySegment
 }
 
-fun NSDocument.fileAttributesToWriteToFile_ofType_saveOperation(fullDocumentPath: MemorySegment, documentTypeName: MemorySegment, saveOperationType: MemorySegment): MemorySegment {
+fun NSDocument.fileAttributesToWriteToFile_ofType_saveOperation(fullDocumentPath: MemorySegment, documentTypeName: MemorySegment, saveOperationType: NSSaveOperationType): MemorySegment {
     val sel = ObjCRuntime.sel("fileAttributesToWriteToFile:ofType:saveOperation:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, fullDocumentPath, documentTypeName, saveOperationType) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, fullDocumentPath, documentTypeName, saveOperationType.rawValue) as MemorySegment
 }
 
 fun NSDocument.fileName(): MemorySegment {
@@ -943,9 +943,9 @@ fun NSDocument.runModalPageLayoutWithPrintInfo(printInfo: MemorySegment): Long {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, printInfo) as Long
 }
 
-fun NSDocument.saveToFile_saveOperation_delegate_didSaveSelector_contextInfo(fileName: MemorySegment, saveOperation: MemorySegment, delegate: MemorySegment, didSaveSelector: MemorySegment, contextInfo: MemorySegment): Unit {
+fun NSDocument.saveToFile_saveOperation_delegate_didSaveSelector_contextInfo(fileName: MemorySegment, saveOperation: NSSaveOperationType, delegate: MemorySegment, didSaveSelector: MemorySegment, contextInfo: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("saveToFile:saveOperation:delegate:didSaveSelector:contextInfo:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, fileName, saveOperation, delegate, didSaveSelector, contextInfo)
+    ObjCRuntime.msgSend(null, this.ptr, sel, fileName, saveOperation.rawValue, delegate, didSaveSelector, contextInfo)
 }
 
 fun NSDocument.setFileName(fileName: MemorySegment): Unit {
@@ -958,9 +958,9 @@ fun NSDocument.writeToFile_ofType(fileName: MemorySegment, type: MemorySegment):
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fileName, type) as Boolean
 }
 
-fun NSDocument.writeToFile_ofType_originalFile_saveOperation(fullDocumentPath: MemorySegment, documentTypeName: MemorySegment, fullOriginalDocumentPath: MemorySegment, saveOperationType: MemorySegment): Boolean {
+fun NSDocument.writeToFile_ofType_originalFile_saveOperation(fullDocumentPath: MemorySegment, documentTypeName: MemorySegment, fullOriginalDocumentPath: MemorySegment, saveOperationType: NSSaveOperationType): Boolean {
     val sel = ObjCRuntime.sel("writeToFile:ofType:originalFile:saveOperation:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fullDocumentPath, documentTypeName, fullOriginalDocumentPath, saveOperationType) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fullDocumentPath, documentTypeName, fullOriginalDocumentPath, saveOperationType.rawValue) as Boolean
 }
 
 fun NSDocument.writeToURL_ofType(url: MemorySegment, type: MemorySegment): Boolean {
@@ -968,9 +968,9 @@ fun NSDocument.writeToURL_ofType(url: MemorySegment, type: MemorySegment): Boole
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, type) as Boolean
 }
 
-fun NSDocument.writeWithBackupToFile_ofType_saveOperation(fullDocumentPath: MemorySegment, documentTypeName: MemorySegment, saveOperationType: MemorySegment): Boolean {
+fun NSDocument.writeWithBackupToFile_ofType_saveOperation(fullDocumentPath: MemorySegment, documentTypeName: MemorySegment, saveOperationType: NSSaveOperationType): Boolean {
     val sel = ObjCRuntime.sel("writeWithBackupToFile:ofType:saveOperation:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fullDocumentPath, documentTypeName, saveOperationType) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fullDocumentPath, documentTypeName, saveOperationType.rawValue) as Boolean
 }
 
 fun NSDocument.shouldRunSavePanelWithAccessoryView(): Boolean {
