@@ -210,6 +210,66 @@ internal class RegistryEntry<C : Callback>(
     initialState: DeliveryState,
 ) {
     val lifecycle = DeliveryStateMachine(policy, initialState)
+    private val quiescenceActions = QuiescenceActionRegistry()
+    private val routeRevoked = AtomicInt(0)
+
+    val isRouteRevoked: Boolean
+        get() = routeRevoked.load() != 0
+
+    val isQuiescent: Boolean
+        get() = quiescenceActions.isSignaled
+
+    fun markRouteRevoked() {
+        routeRevoked.store(1)
+    }
+
+    fun registerQuiescenceAction(action: () -> Unit): List<() -> Unit> =
+        quiescenceActions.register(action)
+
+    fun signalQuiescenceIfReady(): List<() -> Unit> {
+        if (!isRouteRevoked || !lifecycle.isQuiescent) return emptyList()
+        return quiescenceActions.signal()
+    }
+}
+
+private sealed interface QuiescenceActionState
+
+private class PendingQuiescenceActions(
+    val actions: List<() -> Unit>,
+) : QuiescenceActionState
+
+private data object QuiescenceReached : QuiescenceActionState
+
+private class QuiescenceActionRegistry {
+    private val state = AtomicReference<QuiescenceActionState>(
+        PendingQuiescenceActions(emptyList()),
+    )
+
+    val isSignaled: Boolean
+        get() = state.load() === QuiescenceReached
+
+    fun register(action: () -> Unit): List<() -> Unit> {
+        while (true) {
+            when (val current = state.load()) {
+                QuiescenceReached -> return listOf(action)
+                is PendingQuiescenceActions -> {
+                    val updated = PendingQuiescenceActions(current.actions + action)
+                    if (state.compareAndSet(current, updated)) return emptyList()
+                }
+            }
+        }
+    }
+
+    fun signal(): List<() -> Unit> {
+        while (true) {
+            when (val current = state.load()) {
+                QuiescenceReached -> return emptyList()
+                is PendingQuiescenceActions -> {
+                    if (state.compareAndSet(current, QuiescenceReached)) return current.actions
+                }
+            }
+        }
+    }
 }
 
 private class RuntimeCallbackRegistration<C : Callback>(
@@ -224,7 +284,11 @@ private class RuntimeCallbackRegistration<C : Callback>(
         get() = entry.lifecycle.isClosed
 
     override val isQuiescent: Boolean
-        get() = entry.lifecycle.isQuiescent
+        get() = entry.isQuiescent
+
+    override fun onQuiescent(action: () -> Unit) {
+        CallbackRuntime.onQuiescent(entry, action)
+    }
 
     override fun close() {
         CallbackRuntime.close(entry)
@@ -514,26 +578,48 @@ object CallbackRuntime {
         userdata: NativeAddress?,
         invoke: (C) -> Unit,
     ) {
+        dispatchSafely(type, userdata, Unit, invoke)
+    }
+
+    /**
+     * Safe result-returning native upcall dispatch. [defaultValue] is returned
+     * when routing or admission fails, when [invoke] throws, or when the
+     * acquired delivery cannot leave cleanly.
+     */
+    fun <C : Callback, R> dispatchSafely(
+        type: CallbackType<C>,
+        userdata: NativeAddress?,
+        defaultValue: R,
+        invoke: (C) -> R,
+    ): R {
         try {
-            val entry = route(type, userdata) ?: return
-            if (!entry.lifecycle.tryEnter()) return
-            // ONCE: removal happens only after a successful claim — a losing
-            // racer never unpublishes. If unpublish throws, the entry remains
-            // CLAIMED without leave (pre-existing behavior).
-            if (entry.policy == CallbackPolicy.ONCE) unpublish(entry)
+            val entry = route(type, userdata) ?: return defaultValue
+            if (!entry.lifecycle.tryEnter()) return defaultValue
+            var result = defaultValue
+            var deliverySucceeded = false
             try {
-                invoke(entry.callback)
-            } catch (failure: Throwable) {
-                reportDeliveryFailure(entry.onError, failure)
-            } finally {
+                // ONCE: removal happens only after a successful claim — a
+                // losing racer never unpublishes.
+                if (entry.policy == CallbackPolicy.ONCE) revokeRoute(entry)
                 try {
-                    entry.lifecycle.leave()
+                    result = invoke(entry.callback)
+                    deliverySucceeded = true
                 } catch (failure: Throwable) {
                     reportDeliveryFailure(entry.onError, failure)
                 }
+            } finally {
+                try {
+                    entry.lifecycle.leave()
+                    signalQuiescenceIfReady(entry)
+                } catch (failure: Throwable) {
+                    deliverySucceeded = false
+                    reportDeliveryFailure(entry.onError, failure)
+                }
             }
+            return if (deliverySucceeded) result else defaultValue
         } catch (failure: Throwable) {
             reportUnroutedFailure(failure)
+            return defaultValue
         }
     }
 
@@ -544,9 +630,43 @@ object CallbackRuntime {
     internal fun activeRegistrationCountForTest(): Int =
         tokenIndexTable.size.toInt() + activeNoUserdataRegistrations.load()
 
+    internal fun <C : Callback> onQuiescent(
+        entry: RegistryEntry<C>,
+        action: () -> Unit,
+    ) {
+        runQuiescenceActions(entry, entry.registerQuiescenceAction(action))
+        signalQuiescenceIfReady(entry)
+    }
+
     internal fun <C : Callback> close(entry: RegistryEntry<C>) {
-        if (!entry.lifecycle.close()) return
+        if (!entry.lifecycle.close()) {
+            signalQuiescenceIfReady(entry)
+            return
+        }
+        revokeRoute(entry)
+    }
+
+    private fun revokeRoute(entry: RegistryEntry<*>) {
         unpublish(entry)
+        entry.markRouteRevoked()
+        signalQuiescenceIfReady(entry)
+    }
+
+    private fun signalQuiescenceIfReady(entry: RegistryEntry<*>) {
+        runQuiescenceActions(entry, entry.signalQuiescenceIfReady())
+    }
+
+    private fun runQuiescenceActions(
+        entry: RegistryEntry<*>,
+        actions: List<() -> Unit>,
+    ) {
+        actions.forEach { action ->
+            try {
+                action()
+            } catch (failure: Throwable) {
+                reportDeliveryFailure(entry.onError, failure)
+            }
+        }
     }
 
     private fun allocateToken(): ULong {

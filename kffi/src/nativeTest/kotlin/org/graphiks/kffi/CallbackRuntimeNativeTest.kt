@@ -114,6 +114,101 @@ class CallbackRuntimeNativeTest : FreeSpec({
         }
     }
 
+    "quiescence action waits for the admitted Native delivery" {
+        withNativeRegistryBaseline {
+            val entered = AtomicInt(0)
+            val allowReturn = AtomicInt(0)
+            val finished = AtomicInt(0)
+            val releases = AtomicInt(0)
+            val finishedObservedByRelease = AtomicInt(-1)
+            val type = CallbackType<NativeTestCallback>("native-quiescence", hasRoutingUserdata = true)
+            val registration = nativeRegister(type, CallbackPolicy.REPEATING) {
+                entered.store(1)
+                while (allowReturn.load() == 0) {
+                    // The main test thread releases this bounded delivery.
+                }
+                finished.store(1)
+            }
+            registration.onQuiescent {
+                finishedObservedByRelease.store(finished.load())
+                releases.fetchAndAdd(1)
+            }
+            val worker = Worker.start()
+            try {
+                val future = worker.execute(
+                    TransferMode.SAFE,
+                    { NativeDispatch(type, registration.userdata) },
+                ) { dispatch ->
+                    CallbackRuntime.dispatchSafely(dispatch.type, dispatch.userdata) { it.invoke() }
+                }
+                awaitCondition { entered.load() == 1 }
+
+                registration.close()
+                releases.load() shouldBe 0
+                allowReturn.store(1)
+                future.awaitWithinTimeout()
+
+                releases.load() shouldBe 1
+                finishedObservedByRelease.load() shouldBe 1
+                registration.onQuiescent { releases.fetchAndAdd(1) }
+                releases.load() shouldBe 2
+            } finally {
+                allowReturn.store(1)
+                registration.close()
+                listOf(worker).terminateWithinTimeout()
+            }
+        }
+    }
+
+    "result dispatch returns success and contains callback failure" {
+        withNativeRegistryBaseline {
+            val successType = CallbackType<NativeTestCallback>(
+                "native-result-success",
+                hasRoutingUserdata = true,
+            )
+            val success = nativeRegister(successType, CallbackPolicy.REPEATING) {}
+            try {
+                CallbackRuntime.dispatchSafely(
+                    type = successType,
+                    userdata = success.userdata,
+                    defaultValue = -1,
+                ) {
+                    it.invoke()
+                    42
+                } shouldBe 42
+            } finally {
+                success.close()
+            }
+
+            val failureType = CallbackType<NativeTestCallback>(
+                "native-result-failure",
+                hasRoutingUserdata = true,
+            )
+            val failure = IllegalStateException("native result callback")
+            val observed = AtomicReference<Throwable?>(null)
+            val failed = CallbackRuntime.register(
+                type = failureType,
+                trampoline = nativeTrampoline,
+                policy = CallbackPolicy.REPEATING,
+                onError = CallbackExceptionHandler { observed.store(it) },
+                callback = NativeTestCallback { throw failure },
+            )
+            try {
+                CallbackRuntime.dispatchSafely(
+                    type = failureType,
+                    userdata = failed.userdata,
+                    defaultValue = 17,
+                ) {
+                    it.invoke()
+                    99
+                } shouldBe 17
+                observed.load() shouldBe failure
+            } finally {
+                failed.close()
+            }
+        }
+    }
+
     "no-userdata completion retires until unsafe re-arm" {
         withNativeRegistryBaseline {
             val calls = AtomicInt(0)
