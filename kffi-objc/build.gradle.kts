@@ -15,6 +15,9 @@ kotlin {
     }
 
     sourceSets {
+        jvmMain.dependencies {
+            api(project(":kffi"))
+        }
         jvmTest.dependencies {
             implementation(kotlin("test"))
         }

@@ -38,6 +38,22 @@ object ObjCSubclassing {
         ),
     )
 
+    // Class objc_lookUpClass(const char *name)
+    private val lookUpClass = linker.downcallHandle(
+        objcLib.find("objc_lookUpClass").orElseThrow {
+            UnsatisfiedLinkError("objc_lookUpClass not found")
+        },
+        FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS),
+    )
+
+    // void objc_disposeClassPair(Class cls)
+    private val disposeClassPair = linker.downcallHandle(
+        objcLib.find("objc_disposeClassPair").orElseThrow {
+            UnsatisfiedLinkError("objc_disposeClassPair not found")
+        },
+        FunctionDescriptor.ofVoid(ValueLayout.ADDRESS),
+    )
+
     // BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types)
     private val classAddMethod = linker.downcallHandle(
         objcLib.find("class_addMethod").orElseThrow {
@@ -122,7 +138,33 @@ object ObjCSubclassing {
     fun addProtocol(cls: MemorySegment, protocolName: String): Boolean {
         val nameCStr = arena.allocateFrom(protocolName)
         val proto = objcGetProtocol.invokeExact(nameCStr) as MemorySegment
-        if (proto == MemorySegment.NULL) return false as Boolean
+        if (proto == MemorySegment.NULL) return false
         return classAddProtocol.invokeExact(cls, proto) as Boolean
+    }
+
+    internal fun lookupClassOrNull(className: String): MemorySegment {
+        val nameCStr = arena.allocateFrom(className)
+        return lookUpClass.invokeExact(nameCStr) as MemorySegment
+    }
+
+    internal fun disposeUnregisteredClass(cls: MemorySegment) {
+        disposeClassPair.invokeExact(cls)
+    }
+
+    internal fun requireAddedMethod(
+        cls: MemorySegment,
+        selectorName: String,
+        imp: MemorySegment,
+        typeEncoding: String,
+    ) {
+        require(addMethod(cls, selectorName, imp, typeEncoding)) {
+            "Objective-C runtime rejected selector '$selectorName' with encoding '$typeEncoding'"
+        }
+    }
+
+    internal fun requireAddedProtocol(cls: MemorySegment, protocolName: String) {
+        require(addProtocol(cls, protocolName)) {
+            "Objective-C runtime rejected protocol '$protocolName'"
+        }
     }
 }
