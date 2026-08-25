@@ -159,6 +159,182 @@ class CallbackRuntimeJvmTest : FreeSpec({
         }
     }
 
+    "close before entry runs each quiescence action once and rejects delivery" {
+        withRegistryBaseline {
+            val type = CallbackType<JvmTestCallback>("quiescence-before-entry", hasRoutingUserdata = true)
+            val calls = AtomicInt(0)
+            val released = AtomicInt(0)
+            val registration = register(type, CallbackPolicy.REPEATING) { calls.fetchAndAdd(1) }
+
+            registration.onQuiescent { released.fetchAndAdd(1) }
+            registration.close()
+            registration.close()
+            CallbackRuntime.dispatchSafely(type, registration.userdata) { it.invoke() }
+            registration.onQuiescent { released.fetchAndAdd(1) }
+
+            calls.load() shouldBe 0
+            released.load() shouldBe 2
+            registration.isQuiescent shouldBe true
+        }
+    }
+
+    "quiescence actions observe token and no-userdata routes already removed" {
+        withRegistryBaseline {
+            val baseline = CallbackRuntime.activeRegistrationCountForTest()
+            listOf(true, false).forEach { hasRoutingUserdata ->
+                val type = CallbackType<JvmTestCallback>(
+                    canonicalId = "quiescence-route-$hasRoutingUserdata",
+                    hasRoutingUserdata = hasRoutingUserdata,
+                )
+                val observedRegistrationCount = AtomicInt(-1)
+                val registration = register(type, CallbackPolicy.REPEATING) {}
+                registration.onQuiescent {
+                    observedRegistrationCount.store(
+                        CallbackRuntime.activeRegistrationCountForTest(),
+                    )
+                }
+
+                registration.close()
+
+                observedRegistrationCount.load() shouldBe baseline
+            }
+        }
+    }
+
+    "concurrent quiescence registration and close loses no actions" {
+        withRegistryBaseline {
+            val type = CallbackType<JvmTestCallback>("quiescence-registration-race", true)
+            val registration = register(type, CallbackPolicy.REPEATING) {}
+            val releases = AtomicInt(0)
+            val executor = Executors.newFixedThreadPool(THREAD_COUNT + 1)
+            val barrier = CyclicBarrier(THREAD_COUNT + 2)
+            try {
+                val registrations = List(THREAD_COUNT) {
+                    executor.submit {
+                        barrier.await(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                        registration.onQuiescent { releases.fetchAndAdd(1) }
+                    }
+                }
+                val close = executor.submit {
+                    barrier.await(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                    registration.close()
+                }
+                barrier.await(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                registrations.forEach { it.get(TIMEOUT_SECONDS, TimeUnit.SECONDS) }
+                close.get(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+
+                releases.load() shouldBe THREAD_COUNT
+                registration.close()
+                releases.load() shouldBe THREAD_COUNT
+            } finally {
+                registration.close()
+                shutdown(executor)
+            }
+        }
+    }
+
+    "close after admission defers quiescence actions until the delivery returns" {
+        withRegistryBaseline {
+            val type = CallbackType<JvmTestCallback>("quiescence-after-admission", hasRoutingUserdata = true)
+            val entered = CountDownLatch(1)
+            val allowReturn = CountDownLatch(1)
+            val released = AtomicInt(0)
+            val registration = register(type, CallbackPolicy.REPEATING) {
+                entered.countDown()
+                check(allowReturn.await(TIMEOUT_SECONDS, TimeUnit.SECONDS))
+            }
+            val executor = Executors.newSingleThreadExecutor()
+            try {
+                registration.onQuiescent { released.fetchAndAdd(1) }
+                val inFlight = executor.submit {
+                    CallbackRuntime.dispatchSafely(type, registration.userdata) { it.invoke() }
+                }
+                check(entered.await(TIMEOUT_SECONDS, TimeUnit.SECONDS))
+
+                registration.close()
+                registration.onQuiescent { released.fetchAndAdd(1) }
+                released.load() shouldBe 0
+
+                allowReturn.countDown()
+                inFlight.get(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                released.load() shouldBe 2
+
+                registration.onQuiescent { released.fetchAndAdd(1) }
+                released.load() shouldBe 3
+            } finally {
+                allowReturn.countDown()
+                registration.close()
+                shutdown(executor)
+            }
+        }
+    }
+
+    "close inside a callback runs its quiescence action only after callback return" {
+        withRegistryBaseline {
+            val type = CallbackType<JvmTestCallback>("quiescence-self-close", hasRoutingUserdata = true)
+            val callbackReturned = AtomicInt(0)
+            val observedAtRelease = AtomicInt(-1)
+            lateinit var registration: CallbackRegistration<JvmTestCallback>
+            registration = register(type, CallbackPolicy.REPEATING) {
+                registration.onQuiescent {
+                    observedAtRelease.store(callbackReturned.load())
+                }
+                registration.close()
+                callbackReturned.store(1)
+            }
+
+            CallbackRuntime.dispatchSafely(type, registration.userdata) { it.invoke() }
+
+            callbackReturned.load() shouldBe 1
+            observedAtRelease.load() shouldBe 1
+            registration.isQuiescent shouldBe true
+        }
+    }
+
+    "ONCE claim reaches quiescence without an explicit close" {
+        withRegistryBaseline {
+            val type = CallbackType<JvmTestCallback>("once-quiescence", hasRoutingUserdata = true)
+            val callbackReturned = AtomicInt(0)
+            val observedAtRelease = AtomicInt(-1)
+            val registration = register(type, CallbackPolicy.ONCE) {
+                callbackReturned.store(1)
+            }
+            registration.onQuiescent {
+                observedAtRelease.store(callbackReturned.load())
+            }
+
+            CallbackRuntime.dispatchSafely(type, registration.userdata) { it.invoke() }
+
+            observedAtRelease.load() shouldBe 1
+            registration.isQuiescent shouldBe true
+        }
+    }
+
+    "quiescence action failures are reported and do not skip later actions" {
+        withRegistryBaseline {
+            val type = CallbackType<JvmTestCallback>("quiescence-failure", hasRoutingUserdata = true)
+            val failure = IllegalStateException("quiescence action")
+            val lateFailure = IllegalArgumentException("late quiescence action")
+            val completed = AtomicInt(0)
+            val observed = mutableListOf<Throwable>()
+            val registration = register(
+                type = type,
+                policy = CallbackPolicy.REPEATING,
+                onError = CallbackExceptionHandler { observed += it },
+            ) {}
+
+            registration.onQuiescent { throw failure }
+            registration.onQuiescent { completed.fetchAndAdd(1) }
+            registration.close()
+
+            observed shouldBe listOf(failure)
+            completed.load() shouldBe 1
+
+            registration.onQuiescent { throw lateFailure }
+            observed shouldBe listOf(failure, lateFailure)
+        }
+    }
+
     "a stale REPEATING acquisition cannot make closed quiescence regress" {
         val activeRead = CountDownLatch(1)
         val resumeStaleAttempt = CountDownLatch(1)
@@ -203,6 +379,104 @@ class CallbackRuntimeJvmTest : FreeSpec({
 
             observed shouldBe failure
             registration.isClosed shouldBe true
+        }
+    }
+
+    "result dispatch returns the callback value and defaults for absent routes" {
+        withRegistryBaseline {
+            val type = CallbackType<JvmTestCallback>("result-routing", hasRoutingUserdata = true)
+            val calls = AtomicInt(0)
+            val registration = register(type, CallbackPolicy.REPEATING) { calls.fetchAndAdd(1) }
+
+            val delivered = CallbackRuntime.dispatchSafely(
+                type = type,
+                userdata = registration.userdata,
+                defaultValue = -1,
+            ) {
+                it.invoke()
+                42
+            }
+            val unknown = CallbackRuntime.dispatchSafely(
+                type = type,
+                userdata = PlatformCallbackTokenAddressCodec.encode(Long.MAX_VALUE.toULong()),
+                defaultValue = -2,
+            ) {
+                it.invoke()
+                43
+            }
+            registration.close()
+            val closed = CallbackRuntime.dispatchSafely(
+                type = type,
+                userdata = registration.userdata,
+                defaultValue = -3,
+            ) {
+                it.invoke()
+                44
+            }
+
+            delivered shouldBe 42
+            unknown shouldBe -2
+            closed shouldBe -3
+            calls.load() shouldBe 1
+        }
+    }
+
+    "result dispatch reports callback failure returns fallback and still reaches quiescence" {
+        withRegistryBaseline {
+            val type = CallbackType<JvmTestCallback>("result-failure", hasRoutingUserdata = true)
+            val failure = IllegalStateException("result callback")
+            val released = AtomicInt(0)
+            var observed: Throwable? = null
+            lateinit var registration: CallbackRegistration<JvmTestCallback>
+            registration = register(
+                type = type,
+                policy = CallbackPolicy.REPEATING,
+                onError = CallbackExceptionHandler { observed = it },
+            ) {
+                registration.close()
+                throw failure
+            }
+            registration.onQuiescent { released.fetchAndAdd(1) }
+
+            val result = CallbackRuntime.dispatchSafely(
+                type = type,
+                userdata = registration.userdata,
+                defaultValue = 17,
+            ) {
+                it.invoke()
+                99
+            }
+
+            result shouldBe 17
+            observed shouldBe failure
+            released.load() shouldBe 1
+            registration.isQuiescent shouldBe true
+        }
+    }
+
+    "result dispatch contains routing failures and returns the fallback" {
+        withRegistryBaseline {
+            val canonicalId = "result-routing-failure"
+            val firstType = CallbackType<JvmTestCallback>(canonicalId, hasRoutingUserdata = true)
+            val secondType = CallbackType<OtherJvmTestCallback>(canonicalId, hasRoutingUserdata = true)
+            val registration = register(firstType, CallbackPolicy.REPEATING) {}
+            var reported: Throwable? = null
+            try {
+                CallbackFallbackReporter.installForTest { reported = it }.use {
+                    CallbackRuntime.dispatchSafely(
+                        type = secondType,
+                        userdata = registration.userdata,
+                        defaultValue = "fallback",
+                    ) {
+                        it.invoke()
+                        "delivered"
+                    }
+                } shouldBe "fallback"
+            } finally {
+                registration.close()
+            }
+
+            reported.shouldBeInstanceOf<IllegalArgumentException>()
         }
     }
 

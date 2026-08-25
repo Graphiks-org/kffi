@@ -456,8 +456,12 @@ Lifecycle:
 
 - `CallbackRegistration.close()` closes the registration and prevents further
   delivery. `isClosed` becomes true immediately; `isQuiescent` becomes true
-  only after all in-flight Native deliveries have returned (tracked by
-  `inFlight`).
+  only after the route is removed and all in-flight Native deliveries have
+  returned (tracked by `inFlight`).
+- `CallbackRegistration.onQuiescent` runs each registered action exactly once
+  after closure and the last admitted delivery. An action registered after
+  quiescence runs immediately; action failures use the registration's
+  `CallbackExceptionHandler`.
 - `CallbackPolicy.ONCE` delivers a callback once, then unpublishes the slot
   after the first delivery (claim). `REPEATING` delivers while the registration
   remains open.
@@ -469,7 +473,9 @@ Lifecycle:
   before rearming.
 - No exception crosses the Native boundary. `dispatchSafely` routes failures to
   the registration's `CallbackExceptionHandler` (`onError`), or to the fallback
-  channel if routing fails.
+  channel if routing fails. Its result-returning overload returns the supplied
+  default value when routing, admission, callback execution, or delivery
+  teardown fails.
 
 Trampoline lifetime: on the JVM, stubs are allocated in a global arena with
 process lifetime. On Android, JNI trampolines use explicit management through
