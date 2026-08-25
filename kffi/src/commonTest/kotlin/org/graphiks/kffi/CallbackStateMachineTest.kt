@@ -1,10 +1,17 @@
-@file:OptIn(kotlin.concurrent.atomics.ExperimentalAtomicApi::class)
+@file:OptIn(
+    CallbackRuntimeApi::class,
+    kotlin.concurrent.atomics.ExperimentalAtomicApi::class,
+)
 
 package org.graphiks.kffi
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
+
+private fun interface StateMachineCallback : Callback {
+    fun invoke()
+}
 
 class CallbackStateMachineTest : FreeSpec({
     "ONCE moves ACTIVE to CLAIMED exactly once" {
@@ -187,5 +194,24 @@ class CallbackStateMachineTest : FreeSpec({
 
         tokenBacked.state shouldBe DeliveryState.CLOSED
         noUserdata.phase shouldBe NoUserdataPhase.RETIRED
+    }
+
+    "lifecycle quiescence is not published before route revocation" {
+        val entry = RegistryEntry(
+            type = CallbackType<StateMachineCallback>("quiescence-publication", true),
+            callback = StateMachineCallback {},
+            policy = CallbackPolicy.REPEATING,
+            onError = CallbackExceptionHandler.Default,
+            token = 1uL,
+            initialState = DeliveryState.ACTIVE,
+        )
+
+        entry.lifecycle.close() shouldBe true
+        entry.lifecycle.isQuiescent shouldBe true
+        entry.isQuiescent shouldBe false
+
+        entry.markRouteRevoked()
+        entry.signalQuiescenceIfReady()
+        entry.isQuiescent shouldBe true
     }
 })

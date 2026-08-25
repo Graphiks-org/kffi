@@ -21,8 +21,18 @@ interface CallbackRegistration<C : Callback> : AutoCloseable {
     val policy: CallbackPolicy
     val isClosed: Boolean
 
-    /** True only after closure and after every acquired native delivery has returned. */
+    /** True only after closure, route revocation, and every acquired native delivery has returned. */
     val isQuiescent: Boolean
+
+    /**
+     * Runs [action] exactly once after this registration is closed and every
+     * acquired native delivery has returned. If it is already quiescent,
+     * [action] runs before this method returns. Failures are reported through
+     * this registration's [CallbackExceptionHandler]. The action runs
+     * synchronously on the thread that establishes or observes quiescence;
+     * no thread affinity or concurrent ordering is guaranteed.
+     */
+    fun onQuiescent(action: () -> Unit)
 
     override fun close()
 }
