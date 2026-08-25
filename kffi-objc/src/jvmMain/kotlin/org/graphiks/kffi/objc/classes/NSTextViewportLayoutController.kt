@@ -62,9 +62,9 @@ open class NSTextViewportLayoutController(override val ptr: MemorySegment) : NSO
     }
 
     // @property viewportBounds
-    open fun viewportBounds(): MemorySegment {
+    open fun viewportBounds(): CGRect {
         val sel = ObjCRuntime.sel("viewportBounds")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
 
     // @property viewportRange

@@ -13,7 +13,7 @@ interface NSAccessibilityElementLoading {
     fun accessibilityElementWithToken(token: MemorySegment): MemorySegment
 
     // @optional
-    fun accessibilityRangeInTargetElementWithToken(token: MemorySegment): MemorySegment =
+    fun accessibilityRangeInTargetElementWithToken(token: MemorySegment): NSRange =
         throw UnsupportedOperationException("Optional ObjC method 'accessibilityRangeInTargetElementWithToken:' not implemented")
 
 }

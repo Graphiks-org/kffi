@@ -2076,6 +2076,10 @@ fun CATransform3DIsIdentity(arg0: MemorySegment): Boolean {
     }
 }
 
+fun CATransform3DIsIdentity(arg0: CATransform3D): Boolean {
+    return CATransform3DIsIdentity(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CATransform3DEqualToTransform Bool(typedef CATransform3D = Declared(CATransform3D),typedef CATransform3D = Declared(CATransform3D))
  */
@@ -2093,6 +2097,10 @@ fun CATransform3DEqualToTransform(arg0: MemorySegment, arg1: MemorySegment): Boo
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CATransform3DEqualToTransform(arg0: CATransform3D, arg1: CATransform3D): Boolean {
+    return CATransform3DEqualToTransform(arg0.segment, arg1.segment)
 }
 
 /**
@@ -2114,6 +2122,10 @@ fun CATransform3DMakeTranslation(allocator: SegmentAllocator, arg0: Double, arg1
     }
 }
 
+fun CATransform3DMakeTranslationTyped(allocator: SegmentAllocator, arg0: Double, arg1: Double, arg2: Double): CATransform3D {
+    return CATransform3D(CATransform3DMakeTranslation(allocator, arg0, arg1, arg2))
+}
+
 /**
  * {@snippet lang=c : CATransform3DMakeScale typedef CATransform3D = Declared(CATransform3D)(typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -2131,6 +2143,10 @@ fun CATransform3DMakeScale(allocator: SegmentAllocator, arg0: Double, arg1: Doub
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CATransform3DMakeScaleTyped(allocator: SegmentAllocator, arg0: Double, arg1: Double, arg2: Double): CATransform3D {
+    return CATransform3D(CATransform3DMakeScale(allocator, arg0, arg1, arg2))
 }
 
 /**
@@ -2152,6 +2168,10 @@ fun CATransform3DMakeRotation(allocator: SegmentAllocator, arg0: Double, arg1: D
     }
 }
 
+fun CATransform3DMakeRotationTyped(allocator: SegmentAllocator, arg0: Double, arg1: Double, arg2: Double, arg3: Double): CATransform3D {
+    return CATransform3D(CATransform3DMakeRotation(allocator, arg0, arg1, arg2, arg3))
+}
+
 /**
  * {@snippet lang=c : CATransform3DTranslate typedef CATransform3D = Declared(CATransform3D)(typedef CATransform3D = Declared(CATransform3D),typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -2169,6 +2189,10 @@ fun CATransform3DTranslate(allocator: SegmentAllocator, arg0: MemorySegment, arg
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CATransform3DTranslate(allocator: SegmentAllocator, arg0: CATransform3D, arg1: Double, arg2: Double, arg3: Double): CATransform3D {
+    return CATransform3D(CATransform3DTranslate(allocator, arg0.segment, arg1, arg2, arg3))
 }
 
 /**
@@ -2190,6 +2214,10 @@ fun CATransform3DScale(allocator: SegmentAllocator, arg0: MemorySegment, arg1: D
     }
 }
 
+fun CATransform3DScale(allocator: SegmentAllocator, arg0: CATransform3D, arg1: Double, arg2: Double, arg3: Double): CATransform3D {
+    return CATransform3D(CATransform3DScale(allocator, arg0.segment, arg1, arg2, arg3))
+}
+
 /**
  * {@snippet lang=c : CATransform3DRotate typedef CATransform3D = Declared(CATransform3D)(typedef CATransform3D = Declared(CATransform3D),typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -2207,6 +2235,10 @@ fun CATransform3DRotate(allocator: SegmentAllocator, arg0: MemorySegment, arg1: 
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CATransform3DRotate(allocator: SegmentAllocator, arg0: CATransform3D, arg1: Double, arg2: Double, arg3: Double, arg4: Double): CATransform3D {
+    return CATransform3D(CATransform3DRotate(allocator, arg0.segment, arg1, arg2, arg3, arg4))
 }
 
 /**
@@ -2228,6 +2260,10 @@ fun CATransform3DConcat(allocator: SegmentAllocator, arg0: MemorySegment, arg1: 
     }
 }
 
+fun CATransform3DConcat(allocator: SegmentAllocator, arg0: CATransform3D, arg1: CATransform3D): CATransform3D {
+    return CATransform3D(CATransform3DConcat(allocator, arg0.segment, arg1.segment))
+}
+
 /**
  * {@snippet lang=c : CATransform3DInvert typedef CATransform3D = Declared(CATransform3D)(typedef CATransform3D = Declared(CATransform3D))
  */
@@ -2245,6 +2281,10 @@ fun CATransform3DInvert(allocator: SegmentAllocator, arg0: MemorySegment): Memor
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CATransform3DInvert(allocator: SegmentAllocator, arg0: CATransform3D): CATransform3D {
+    return CATransform3D(CATransform3DInvert(allocator, arg0.segment))
 }
 
 /**
@@ -2266,6 +2306,10 @@ fun CATransform3DMakeAffineTransform(allocator: SegmentAllocator, arg0: MemorySe
     }
 }
 
+fun CATransform3DMakeAffineTransform(allocator: SegmentAllocator, arg0: CGAffineTransform): CATransform3D {
+    return CATransform3D(CATransform3DMakeAffineTransform(allocator, arg0.segment))
+}
+
 /**
  * {@snippet lang=c : CATransform3DIsAffine Bool(typedef CATransform3D = Declared(CATransform3D))
  */
@@ -2285,6 +2329,10 @@ fun CATransform3DIsAffine(arg0: MemorySegment): Boolean {
     }
 }
 
+fun CATransform3DIsAffine(arg0: CATransform3D): Boolean {
+    return CATransform3DIsAffine(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CATransform3DGetAffineTransform typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CATransform3D = Declared(CATransform3D))
  */
@@ -2302,6 +2350,10 @@ fun CATransform3DGetAffineTransform(allocator: SegmentAllocator, arg0: MemorySeg
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CATransform3DGetAffineTransform(allocator: SegmentAllocator, arg0: CATransform3D): CGAffineTransform {
+    return CGAffineTransform(CATransform3DGetAffineTransform(allocator, arg0.segment))
 }
 
 /**

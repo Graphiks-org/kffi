@@ -13,31 +13,31 @@ open class NSScrollView(override val ptr: MemorySegment) : NSView(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSScrollView") }
 
-        fun frameSizeForContentSize_horizontalScrollerClass_verticalScrollerClass_borderType_controlSize_scrollerStyle(cSize: MemorySegment, horizontalScrollerClass: MemorySegment, verticalScrollerClass: MemorySegment, type: MemorySegment, controlSize: MemorySegment, scrollerStyle: MemorySegment): MemorySegment {
+        fun frameSizeForContentSize_horizontalScrollerClass_verticalScrollerClass_borderType_controlSize_scrollerStyle(cSize: NSSize, horizontalScrollerClass: MemorySegment, verticalScrollerClass: MemorySegment, type: NSBorderType, controlSize: NSControlSize, scrollerStyle: NSScrollerStyle): NSSize {
             val sel = ObjCRuntime.sel("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:")
-            return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), _class, sel, ObjCRuntime.ObjCStructArg(cSize, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")), horizontalScrollerClass, verticalScrollerClass, type, controlSize, scrollerStyle) as MemorySegment
+            return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, _class, sel, ObjCRuntime.ObjCStructArg(cSize.segment, NSSize.layout), horizontalScrollerClass, verticalScrollerClass, type.rawValue, controlSize.rawValue, scrollerStyle.rawValue))
         }
 
-        fun contentSizeForFrameSize_horizontalScrollerClass_verticalScrollerClass_borderType_controlSize_scrollerStyle(fSize: MemorySegment, horizontalScrollerClass: MemorySegment, verticalScrollerClass: MemorySegment, type: MemorySegment, controlSize: MemorySegment, scrollerStyle: MemorySegment): MemorySegment {
+        fun contentSizeForFrameSize_horizontalScrollerClass_verticalScrollerClass_borderType_controlSize_scrollerStyle(fSize: NSSize, horizontalScrollerClass: MemorySegment, verticalScrollerClass: MemorySegment, type: NSBorderType, controlSize: NSControlSize, scrollerStyle: NSScrollerStyle): NSSize {
             val sel = ObjCRuntime.sel("contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:")
-            return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), _class, sel, ObjCRuntime.ObjCStructArg(fSize, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")), horizontalScrollerClass, verticalScrollerClass, type, controlSize, scrollerStyle) as MemorySegment
+            return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, _class, sel, ObjCRuntime.ObjCStructArg(fSize.segment, NSSize.layout), horizontalScrollerClass, verticalScrollerClass, type.rawValue, controlSize.rawValue, scrollerStyle.rawValue))
         }
 
-        fun frameSizeForContentSize_hasHorizontalScroller_hasVerticalScroller_borderType(cSize: MemorySegment, hFlag: Boolean, vFlag: Boolean, type: MemorySegment): MemorySegment {
+        fun frameSizeForContentSize_hasHorizontalScroller_hasVerticalScroller_borderType(cSize: NSSize, hFlag: Boolean, vFlag: Boolean, type: NSBorderType): NSSize {
             val sel = ObjCRuntime.sel("frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:")
-            return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), _class, sel, ObjCRuntime.ObjCStructArg(cSize, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")), hFlag, vFlag, type) as MemorySegment
+            return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, _class, sel, ObjCRuntime.ObjCStructArg(cSize.segment, NSSize.layout), hFlag, vFlag, type.rawValue))
         }
 
-        fun contentSizeForFrameSize_hasHorizontalScroller_hasVerticalScroller_borderType(fSize: MemorySegment, hFlag: Boolean, vFlag: Boolean, type: MemorySegment): MemorySegment {
+        fun contentSizeForFrameSize_hasHorizontalScroller_hasVerticalScroller_borderType(fSize: NSSize, hFlag: Boolean, vFlag: Boolean, type: NSBorderType): NSSize {
             val sel = ObjCRuntime.sel("contentSizeForFrameSize:hasHorizontalScroller:hasVerticalScroller:borderType:")
-            return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), _class, sel, ObjCRuntime.ObjCStructArg(fSize, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")), hFlag, vFlag, type) as MemorySegment
+            return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, _class, sel, ObjCRuntime.ObjCStructArg(fSize.segment, NSSize.layout), hFlag, vFlag, type.rawValue))
         }
 
     }
 
-    override fun initWithFrame(frameRect: MemorySegment): MemorySegment {
+    override fun initWithFrame(frameRect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout)) as MemorySegment
     }
 
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -65,31 +65,31 @@ open class NSScrollView(override val ptr: MemorySegment) : NSView(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun magnifyToFitRect(rect: MemorySegment): Unit {
+    open fun magnifyToFitRect(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("magnifyToFitRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
-    open fun setMagnification_centeredAtPoint(magnification: Double, point: MemorySegment): Unit {
+    open fun setMagnification_centeredAtPoint(magnification: Double, point: NSPoint): Unit {
         val sel = ObjCRuntime.sel("setMagnification:centeredAtPoint:")
-        ObjCRuntime.msgSend(null, ptr, sel, magnification, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")))
+        ObjCRuntime.msgSend(null, ptr, sel, magnification, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout))
     }
 
-    open fun addFloatingSubview_forAxis(view: MemorySegment, axis: MemorySegment): Unit {
+    open fun addFloatingSubview_forAxis(view: MemorySegment, axis: NSEventGestureAxis): Unit {
         val sel = ObjCRuntime.sel("addFloatingSubview:forAxis:")
-        ObjCRuntime.msgSend(null, ptr, sel, view, axis)
+        ObjCRuntime.msgSend(null, ptr, sel, view, axis.rawValue)
     }
 
     // @property documentVisibleRect
-    open fun documentVisibleRect(): MemorySegment {
+    open fun documentVisibleRect(): NSRect {
         val sel = ObjCRuntime.sel("documentVisibleRect")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property contentSize
-    open fun contentSize(): MemorySegment {
+    open fun contentSize(): NSSize {
         val sel = ObjCRuntime.sel("contentSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
 
     // @property documentView
@@ -123,13 +123,13 @@ open class NSScrollView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property borderType
-    open fun borderType(): MemorySegment {
+    open fun borderType(): NSBorderType {
         val sel = ObjCRuntime.sel("borderType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSBorderType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBorderType(value: MemorySegment) {
+    open fun setBorderType(value: NSBorderType) {
         val sel = ObjCRuntime.sel("setBorderType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property backgroundColor
@@ -273,43 +273,43 @@ open class NSScrollView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property scrollerStyle
-    open fun scrollerStyle(): MemorySegment {
+    open fun scrollerStyle(): NSScrollerStyle {
         val sel = ObjCRuntime.sel("scrollerStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrollerStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setScrollerStyle(value: MemorySegment) {
+    open fun setScrollerStyle(value: NSScrollerStyle) {
         val sel = ObjCRuntime.sel("setScrollerStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property scrollerKnobStyle
-    open fun scrollerKnobStyle(): MemorySegment {
+    open fun scrollerKnobStyle(): NSScrollerKnobStyle {
         val sel = ObjCRuntime.sel("scrollerKnobStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrollerKnobStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setScrollerKnobStyle(value: MemorySegment) {
+    open fun setScrollerKnobStyle(value: NSScrollerKnobStyle) {
         val sel = ObjCRuntime.sel("setScrollerKnobStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property horizontalScrollElasticity
-    open fun horizontalScrollElasticity(): MemorySegment {
+    open fun horizontalScrollElasticity(): NSScrollElasticity {
         val sel = ObjCRuntime.sel("horizontalScrollElasticity")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrollElasticity(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setHorizontalScrollElasticity(value: MemorySegment) {
+    open fun setHorizontalScrollElasticity(value: NSScrollElasticity) {
         val sel = ObjCRuntime.sel("setHorizontalScrollElasticity:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property verticalScrollElasticity
-    open fun verticalScrollElasticity(): MemorySegment {
+    open fun verticalScrollElasticity(): NSScrollElasticity {
         val sel = ObjCRuntime.sel("verticalScrollElasticity")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrollElasticity(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setVerticalScrollElasticity(value: MemorySegment) {
+    open fun setVerticalScrollElasticity(value: NSScrollElasticity) {
         val sel = ObjCRuntime.sel("setVerticalScrollElasticity:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property usesPredominantAxisScrolling
@@ -373,23 +373,23 @@ open class NSScrollView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property contentInsets
-    open fun contentInsets(): MemorySegment {
+    open fun contentInsets(): NSEdgeInsets {
         val sel = ObjCRuntime.sel("contentInsets")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), ptr, sel) as MemorySegment
+        return NSEdgeInsets(ObjCRuntime.msgSendStruct(NSEdgeInsets.layout, ptr, sel))
     }
-    open fun setContentInsets(value: MemorySegment) {
+    open fun setContentInsets(value: NSEdgeInsets) {
         val sel = ObjCRuntime.sel("setContentInsets:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSEdgeInsets.layout))
     }
 
     // @property scrollerInsets
-    open fun scrollerInsets(): MemorySegment {
+    open fun scrollerInsets(): NSEdgeInsets {
         val sel = ObjCRuntime.sel("scrollerInsets")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), ptr, sel) as MemorySegment
+        return NSEdgeInsets(ObjCRuntime.msgSendStruct(NSEdgeInsets.layout, ptr, sel))
     }
-    open fun setScrollerInsets(value: MemorySegment) {
+    open fun setScrollerInsets(value: NSEdgeInsets) {
         val sel = ObjCRuntime.sel("setScrollerInsets:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSEdgeInsets.layout))
     }
 
 }
@@ -472,12 +472,12 @@ fun NSScrollView.setRulerViewClass(value: MemorySegment) {
 
 // ── Category: NSFindBarSupport on NSScrollView ─────────────────────────────────────────
 
-fun NSScrollView.findBarPosition(): MemorySegment {
+fun NSScrollView.findBarPosition(): NSScrollViewFindBarPosition {
     val sel = ObjCRuntime.sel("findBarPosition")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSScrollViewFindBarPosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSScrollView.setFindBarPosition(findBarPosition: MemorySegment): Unit {
+fun NSScrollView.setFindBarPosition(findBarPosition: NSScrollViewFindBarPosition): Unit {
     val sel = ObjCRuntime.sel("setFindBarPosition:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, findBarPosition)
+    ObjCRuntime.msgSend(null, this.ptr, sel, findBarPosition.rawValue)
 }

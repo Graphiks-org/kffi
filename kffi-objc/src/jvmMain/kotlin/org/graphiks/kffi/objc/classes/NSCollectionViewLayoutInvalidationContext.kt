@@ -63,23 +63,23 @@ open class NSCollectionViewLayoutInvalidationContext(override val ptr: MemorySeg
     }
 
     // @property contentOffsetAdjustment
-    open fun contentOffsetAdjustment(): MemorySegment {
+    open fun contentOffsetAdjustment(): NSPoint {
         val sel = ObjCRuntime.sel("contentOffsetAdjustment")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
-    open fun setContentOffsetAdjustment(value: MemorySegment) {
+    open fun setContentOffsetAdjustment(value: NSPoint) {
         val sel = ObjCRuntime.sel("setContentOffsetAdjustment:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSPoint.layout))
     }
 
     // @property contentSizeAdjustment
-    open fun contentSizeAdjustment(): MemorySegment {
+    open fun contentSizeAdjustment(): NSSize {
         val sel = ObjCRuntime.sel("contentSizeAdjustment")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setContentSizeAdjustment(value: MemorySegment) {
+    open fun setContentSizeAdjustment(value: NSSize) {
         val sel = ObjCRuntime.sel("setContentSizeAdjustment:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
 }

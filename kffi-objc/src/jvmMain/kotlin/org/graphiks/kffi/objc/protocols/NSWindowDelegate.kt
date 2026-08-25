@@ -18,15 +18,15 @@ interface NSWindowDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'windowWillReturnFieldEditor:toObject:' not implemented")
 
     // @optional
-    fun windowWillResize_toSize(sender: MemorySegment, frameSize: MemorySegment): MemorySegment =
+    fun windowWillResize_toSize(sender: MemorySegment, frameSize: NSSize): NSSize =
         throw UnsupportedOperationException("Optional ObjC method 'windowWillResize:toSize:' not implemented")
 
     // @optional
-    fun windowWillUseStandardFrame_defaultFrame(window: MemorySegment, newFrame: MemorySegment): MemorySegment =
+    fun windowWillUseStandardFrame_defaultFrame(window: MemorySegment, newFrame: NSRect): NSRect =
         throw UnsupportedOperationException("Optional ObjC method 'windowWillUseStandardFrame:defaultFrame:' not implemented")
 
     // @optional
-    fun windowShouldZoom_toFrame(window: MemorySegment, newFrame: MemorySegment): Boolean =
+    fun windowShouldZoom_toFrame(window: MemorySegment, newFrame: NSRect): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'windowShouldZoom:toFrame:' not implemented")
 
     // @optional
@@ -34,7 +34,7 @@ interface NSWindowDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'windowWillReturnUndoManager:' not implemented")
 
     // @optional
-    fun window_willPositionSheet_usingRect(window: MemorySegment, sheet: MemorySegment, rect: MemorySegment): MemorySegment =
+    fun window_willPositionSheet_usingRect(window: MemorySegment, sheet: MemorySegment, rect: NSRect): NSRect =
         throw UnsupportedOperationException("Optional ObjC method 'window:willPositionSheet:usingRect:' not implemented")
 
     // @optional
@@ -42,15 +42,15 @@ interface NSWindowDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'window:shouldPopUpDocumentPathMenu:' not implemented")
 
     // @optional
-    fun window_shouldDragDocumentWithEvent_from_withPasteboard(window: MemorySegment, event: MemorySegment, dragImageLocation: MemorySegment, pasteboard: MemorySegment): Boolean =
+    fun window_shouldDragDocumentWithEvent_from_withPasteboard(window: MemorySegment, event: MemorySegment, dragImageLocation: NSPoint, pasteboard: MemorySegment): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'window:shouldDragDocumentWithEvent:from:withPasteboard:' not implemented")
 
     // @optional
-    fun window_willUseFullScreenContentSize(window: MemorySegment, proposedSize: MemorySegment): MemorySegment =
+    fun window_willUseFullScreenContentSize(window: MemorySegment, proposedSize: NSSize): NSSize =
         throw UnsupportedOperationException("Optional ObjC method 'window:willUseFullScreenContentSize:' not implemented")
 
     // @optional
-    fun window_willUseFullScreenPresentationOptions(window: MemorySegment, proposedOptions: MemorySegment): MemorySegment =
+    fun window_willUseFullScreenPresentationOptions(window: MemorySegment, proposedOptions: NSApplicationPresentationOptions): NSApplicationPresentationOptions =
         throw UnsupportedOperationException("Optional ObjC method 'window:willUseFullScreenPresentationOptions:' not implemented")
 
     /** @return NSArray<NSWindow *> * */
@@ -89,7 +89,7 @@ interface NSWindowDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'windowDidFailToExitFullScreen:' not implemented")
 
     // @optional
-    fun window_willResizeForVersionBrowserWithMaxPreferredSize_maxAllowedSize(window: MemorySegment, maxPreferredFrameSize: MemorySegment, maxAllowedFrameSize: MemorySegment): MemorySegment =
+    fun window_willResizeForVersionBrowserWithMaxPreferredSize_maxAllowedSize(window: MemorySegment, maxPreferredFrameSize: NSSize, maxAllowedFrameSize: NSSize): NSSize =
         throw UnsupportedOperationException("Optional ObjC method 'window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:' not implemented")
 
     // @optional

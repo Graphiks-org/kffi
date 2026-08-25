@@ -16,9 +16,9 @@ open class NSAttributedString(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     /** @return NSDictionary<NSAttributedStringKey,id> * */
-    open fun attributesAtIndex_effectiveRange(location: Long, range: MemorySegment): MemorySegment {
+    open fun attributesAtIndex_effectiveRange(location: Long, range: NSRangePointer): MemorySegment {
         val sel = ObjCRuntime.sel("attributesAtIndex:effectiveRange:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, location, range) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, location, range.segment) as MemorySegment
     }
 
     // @property string
@@ -34,25 +34,25 @@ open class NSAttributedString(override val ptr: MemorySegment) : NSObject(ptr) {
 
 // ── Category: NSExtendedAttributedString on NSAttributedString ─────────────────────────────────────────
 
-fun NSAttributedString.attribute_atIndex_effectiveRange(attrName: MemorySegment, location: Long, range: MemorySegment): MemorySegment {
+fun NSAttributedString.attribute_atIndex_effectiveRange(attrName: MemorySegment, location: Long, range: NSRangePointer): MemorySegment {
     val sel = ObjCRuntime.sel("attribute:atIndex:effectiveRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, attrName, location, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, attrName, location, range.segment) as MemorySegment
 }
 
-fun NSAttributedString.attributedSubstringFromRange(range: MemorySegment): MemorySegment {
+fun NSAttributedString.attributedSubstringFromRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("attributedSubstringFromRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
 /** @return NSDictionary<NSAttributedStringKey,id> * */
-fun NSAttributedString.attributesAtIndex_longestEffectiveRange_inRange(location: Long, range: MemorySegment, rangeLimit: MemorySegment): MemorySegment {
+fun NSAttributedString.attributesAtIndex_longestEffectiveRange_inRange(location: Long, range: NSRangePointer, rangeLimit: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("attributesAtIndex:longestEffectiveRange:inRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, location, range, rangeLimit) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, location, range.segment, ObjCRuntime.ObjCStructArg(rangeLimit.segment, NSRange.layout)) as MemorySegment
 }
 
-fun NSAttributedString.attribute_atIndex_longestEffectiveRange_inRange(attrName: MemorySegment, location: Long, range: MemorySegment, rangeLimit: MemorySegment): MemorySegment {
+fun NSAttributedString.attribute_atIndex_longestEffectiveRange_inRange(attrName: MemorySegment, location: Long, range: NSRangePointer, rangeLimit: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("attribute:atIndex:longestEffectiveRange:inRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, attrName, location, range, rangeLimit) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, attrName, location, range.segment, ObjCRuntime.ObjCStructArg(rangeLimit.segment, NSRange.layout)) as MemorySegment
 }
 
 fun NSAttributedString.isEqualToAttributedString(other: MemorySegment): Boolean {
@@ -75,14 +75,14 @@ fun NSAttributedString.initWithAttributedString(attrStr: MemorySegment): MemoryS
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, attrStr) as MemorySegment
 }
 
-fun NSAttributedString.enumerateAttributesInRange_options_usingBlock(enumerationRange: MemorySegment, opts: MemorySegment, block: MemorySegment): Unit {
+fun NSAttributedString.enumerateAttributesInRange_options_usingBlock(enumerationRange: NSRange, opts: NSAttributedStringEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateAttributesInRange:options:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, enumerationRange, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(enumerationRange.segment, NSRange.layout), opts.rawValue, block)
 }
 
-fun NSAttributedString.enumerateAttribute_inRange_options_usingBlock(attrName: MemorySegment, enumerationRange: MemorySegment, opts: MemorySegment, block: MemorySegment): Unit {
+fun NSAttributedString.enumerateAttribute_inRange_options_usingBlock(attrName: MemorySegment, enumerationRange: NSRange, opts: NSAttributedStringEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateAttribute:inRange:options:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, attrName, enumerationRange, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, attrName, ObjCRuntime.ObjCStructArg(enumerationRange.segment, NSRange.layout), opts.rawValue, block)
 }
 
 fun NSAttributedString.length(): Long {
@@ -109,24 +109,24 @@ fun NSAttributedString.initWithMarkdownString_options_baseURL_error(markdownStri
 
 // ── Category: NSAttributedStringFormatting on NSAttributedString ─────────────────────────────────────────
 
-fun NSAttributedString.initWithFormat_options_locale(format: MemorySegment, options: MemorySegment, locale: MemorySegment): MemorySegment {
+fun NSAttributedString.initWithFormat_options_locale(format: MemorySegment, options: NSAttributedStringFormattingOptions, locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithFormat:options:locale:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options, locale) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options.rawValue, locale) as MemorySegment
 }
 
-fun NSAttributedString.initWithFormat_options_locale_arguments(format: MemorySegment, options: MemorySegment, locale: MemorySegment, arguments: MemorySegment): MemorySegment {
+fun NSAttributedString.initWithFormat_options_locale_arguments(format: MemorySegment, options: NSAttributedStringFormattingOptions, locale: MemorySegment, arguments: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithFormat:options:locale:arguments:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options, locale, arguments) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options.rawValue, locale, arguments) as MemorySegment
 }
 
-fun NSAttributedString.initWithFormat_options_locale_context(format: MemorySegment, options: MemorySegment, locale: MemorySegment, context: MemorySegment): MemorySegment {
+fun NSAttributedString.initWithFormat_options_locale_context(format: MemorySegment, options: NSAttributedStringFormattingOptions, locale: MemorySegment, context: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithFormat:options:locale:context:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options, locale, context) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options.rawValue, locale, context) as MemorySegment
 }
 
-fun NSAttributedString.initWithFormat_options_locale_context_arguments(format: MemorySegment, options: MemorySegment, locale: MemorySegment, context: MemorySegment, arguments: MemorySegment): MemorySegment {
+fun NSAttributedString.initWithFormat_options_locale_context_arguments(format: MemorySegment, options: NSAttributedStringFormattingOptions, locale: MemorySegment, context: MemorySegment, arguments: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithFormat:options:locale:context:arguments:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options, locale, context, arguments) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options.rawValue, locale, context, arguments) as MemorySegment
 }
 
 // Class method: +[NSAttributedString localizedAttributedStringWithFormat:]
@@ -137,10 +137,10 @@ fun NSAttributedString_localizedAttributedStringWithFormat(format: MemorySegment
 }
 
 // Class method: +[NSAttributedString localizedAttributedStringWithFormat:options:]
-fun NSAttributedString_localizedAttributedStringWithFormat_options(format: MemorySegment, options: MemorySegment): MemorySegment {
+fun NSAttributedString_localizedAttributedStringWithFormat_options(format: MemorySegment, options: NSAttributedStringFormattingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("localizedAttributedStringWithFormat:options:")
     val cls = ObjCRuntime.getClass("NSAttributedString")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, format, options) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, format, options.rawValue) as MemorySegment
 }
 
 // Class method: +[NSAttributedString localizedAttributedStringWithFormat:context:]
@@ -151,10 +151,10 @@ fun NSAttributedString_localizedAttributedStringWithFormat_context(format: Memor
 }
 
 // Class method: +[NSAttributedString localizedAttributedStringWithFormat:options:context:]
-fun NSAttributedString_localizedAttributedStringWithFormat_options_context(format: MemorySegment, options: MemorySegment, context: MemorySegment): MemorySegment {
+fun NSAttributedString_localizedAttributedStringWithFormat_options_context(format: MemorySegment, options: NSAttributedStringFormattingOptions, context: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("localizedAttributedStringWithFormat:options:context:")
     val cls = ObjCRuntime.getClass("NSAttributedString")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, format, options, context) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, format, options.rawValue, context) as MemorySegment
 }
 
 // ── Category: NSMorphology on NSAttributedString ─────────────────────────────────────────
@@ -176,26 +176,26 @@ fun NSAttributedString.initWithData_options_documentAttributes_error(`data`: Mem
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `data`, options, dict, error) as MemorySegment
 }
 
-fun NSAttributedString.dataFromRange_documentAttributes_error(range: MemorySegment, dict: MemorySegment, error: MemorySegment): MemorySegment {
+fun NSAttributedString.dataFromRange_documentAttributes_error(range: NSRange, dict: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dataFromRange:documentAttributes:error:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range, dict, error) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict, error) as MemorySegment
 }
 
-fun NSAttributedString.fileWrapperFromRange_documentAttributes_error(range: MemorySegment, dict: MemorySegment, error: MemorySegment): MemorySegment {
+fun NSAttributedString.fileWrapperFromRange_documentAttributes_error(range: NSRange, dict: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("fileWrapperFromRange:documentAttributes:error:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range, dict, error) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict, error) as MemorySegment
 }
 
 // ── Category: NSAttributedStringKitAdditions on NSAttributedString ─────────────────────────────────────────
 
-fun NSAttributedString.containsAttachmentsInRange(range: MemorySegment): Boolean {
+fun NSAttributedString.containsAttachmentsInRange(range: NSRange): Boolean {
     val sel = ObjCRuntime.sel("containsAttachmentsInRange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, range) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Boolean
 }
 
-fun NSAttributedString.prefersRTFDInRange(range: MemorySegment): Boolean {
+fun NSAttributedString.prefersRTFDInRange(range: NSRange): Boolean {
     val sel = ObjCRuntime.sel("prefersRTFDInRange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, range) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Boolean
 }
 
 // ── Category: NSAttributedStringAppKitDocumentFormats on NSAttributedString ─────────────────────────────────────────
@@ -235,53 +235,53 @@ fun NSAttributedString.initWithRTFDFileWrapper_documentAttributes(wrapper: Memor
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, wrapper, dict) as MemorySegment
 }
 
-fun NSAttributedString.RTFFromRange_documentAttributes(range: MemorySegment, dict: MemorySegment): MemorySegment {
+fun NSAttributedString.RTFFromRange_documentAttributes(range: NSRange, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("RTFFromRange:documentAttributes:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range, dict) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict) as MemorySegment
 }
 
-fun NSAttributedString.RTFDFromRange_documentAttributes(range: MemorySegment, dict: MemorySegment): MemorySegment {
+fun NSAttributedString.RTFDFromRange_documentAttributes(range: NSRange, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("RTFDFromRange:documentAttributes:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range, dict) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict) as MemorySegment
 }
 
-fun NSAttributedString.RTFDFileWrapperFromRange_documentAttributes(range: MemorySegment, dict: MemorySegment): MemorySegment {
+fun NSAttributedString.RTFDFileWrapperFromRange_documentAttributes(range: NSRange, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("RTFDFileWrapperFromRange:documentAttributes:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range, dict) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict) as MemorySegment
 }
 
-fun NSAttributedString.docFormatFromRange_documentAttributes(range: MemorySegment, dict: MemorySegment): MemorySegment {
+fun NSAttributedString.docFormatFromRange_documentAttributes(range: NSRange, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("docFormatFromRange:documentAttributes:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range, dict) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict) as MemorySegment
 }
 
 // ── Category: NSAttributedStringAppKitAdditions on NSAttributedString ─────────────────────────────────────────
 
 /** @return NSDictionary<NSAttributedStringKey,id> * */
-fun NSAttributedString.fontAttributesInRange(range: MemorySegment): MemorySegment {
+fun NSAttributedString.fontAttributesInRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("fontAttributesInRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
 /** @return NSDictionary<NSAttributedStringKey,id> * */
-fun NSAttributedString.rulerAttributesInRange(range: MemorySegment): MemorySegment {
+fun NSAttributedString.rulerAttributesInRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("rulerAttributesInRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
-fun NSAttributedString.lineBreakBeforeIndex_withinRange(location: Long, aRange: MemorySegment): Long {
+fun NSAttributedString.lineBreakBeforeIndex_withinRange(location: Long, aRange: NSRange): Long {
     val sel = ObjCRuntime.sel("lineBreakBeforeIndex:withinRange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, location, aRange) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, location, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout)) as Long
 }
 
-fun NSAttributedString.lineBreakByHyphenatingBeforeIndex_withinRange(location: Long, aRange: MemorySegment): Long {
+fun NSAttributedString.lineBreakByHyphenatingBeforeIndex_withinRange(location: Long, aRange: NSRange): Long {
     val sel = ObjCRuntime.sel("lineBreakByHyphenatingBeforeIndex:withinRange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, location, aRange) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, location, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout)) as Long
 }
 
-fun NSAttributedString.doubleClickAtIndex(location: Long): MemorySegment {
+fun NSAttributedString.doubleClickAtIndex(location: Long): NSRange {
     val sel = ObjCRuntime.sel("doubleClickAtIndex:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, location) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, location))
 }
 
 fun NSAttributedString.nextWordFromIndex_forward(location: Long, isForward: Boolean): Long {
@@ -289,19 +289,19 @@ fun NSAttributedString.nextWordFromIndex_forward(location: Long, isForward: Bool
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, location, isForward) as Long
 }
 
-fun NSAttributedString.rangeOfTextBlock_atIndex(block: MemorySegment, location: Long): MemorySegment {
+fun NSAttributedString.rangeOfTextBlock_atIndex(block: MemorySegment, location: Long): NSRange {
     val sel = ObjCRuntime.sel("rangeOfTextBlock:atIndex:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, block, location) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, block, location))
 }
 
-fun NSAttributedString.rangeOfTextTable_atIndex(table: MemorySegment, location: Long): MemorySegment {
+fun NSAttributedString.rangeOfTextTable_atIndex(table: MemorySegment, location: Long): NSRange {
     val sel = ObjCRuntime.sel("rangeOfTextTable:atIndex:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, table, location) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, table, location))
 }
 
-fun NSAttributedString.rangeOfTextList_atIndex(list: MemorySegment, location: Long): MemorySegment {
+fun NSAttributedString.rangeOfTextList_atIndex(list: MemorySegment, location: Long): NSRange {
     val sel = ObjCRuntime.sel("rangeOfTextList:atIndex:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, list, location) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, list, location))
 }
 
 fun NSAttributedString.itemNumberInTextList_atIndex(list: MemorySegment, location: Long): Long {
@@ -351,9 +351,9 @@ fun NSAttributedString.initWithPath_documentAttributes(path: MemorySegment, dict
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path, dict) as MemorySegment
 }
 
-fun NSAttributedString.URLAtIndex_effectiveRange(location: Long, effectiveRange: MemorySegment): MemorySegment {
+fun NSAttributedString.URLAtIndex_effectiveRange(location: Long, effectiveRange: NSRangePointer): MemorySegment {
     val sel = ObjCRuntime.sel("URLAtIndex:effectiveRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, location, effectiveRange) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, location, effectiveRange.segment) as MemorySegment
 }
 
 fun NSAttributedString.containsAttachments(): Boolean {
@@ -407,43 +407,43 @@ fun NSAttributedString_attributedStringWithAttachment_attributes(attachment: Mem
 
 // ── Category: NSStringDrawing on NSAttributedString ─────────────────────────────────────────
 
-fun NSAttributedString.size(): MemorySegment {
+fun NSAttributedString.size(): CGSize {
     val sel = ObjCRuntime.sel("size")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return CGSize(ObjCRuntime.msgSendStruct(CGSize.layout, this.ptr, sel))
 }
 
-fun NSAttributedString.drawAtPoint(point: MemorySegment): Unit {
+fun NSAttributedString.drawAtPoint(point: CGPoint): Unit {
     val sel = ObjCRuntime.sel("drawAtPoint:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, CGPoint.layout))
 }
 
-fun NSAttributedString.drawInRect(rect: MemorySegment): Unit {
+fun NSAttributedString.drawInRect(rect: CGRect): Unit {
     val sel = ObjCRuntime.sel("drawInRect:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, CGRect.layout))
 }
 
 // ── Category: NSExtendedStringDrawing on NSAttributedString ─────────────────────────────────────────
 
-fun NSAttributedString.drawWithRect_options_context(rect: MemorySegment, options: MemorySegment, context: MemorySegment): Unit {
+fun NSAttributedString.drawWithRect_options_context(rect: CGRect, options: NSStringDrawingOptions, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawWithRect:options:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect, options, context)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, CGRect.layout), options.rawValue, context)
 }
 
-fun NSAttributedString.boundingRectWithSize_options_context(size: MemorySegment, options: MemorySegment, context: MemorySegment): MemorySegment {
+fun NSAttributedString.boundingRectWithSize_options_context(size: CGSize, options: NSStringDrawingOptions, context: MemorySegment): CGRect {
     val sel = ObjCRuntime.sel("boundingRectWithSize:options:context:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, size, options, context) as MemorySegment
+    return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, CGSize.layout), options.rawValue, context))
 }
 
 // ── Category: NSStringDrawingDeprecated on NSAttributedString ─────────────────────────────────────────
 
-fun NSAttributedString.drawWithRect_options(rect: MemorySegment, options: MemorySegment): Unit {
+fun NSAttributedString.drawWithRect_options(rect: NSRect, options: NSStringDrawingOptions): Unit {
     val sel = ObjCRuntime.sel("drawWithRect:options:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect, options)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), options.rawValue)
 }
 
-fun NSAttributedString.boundingRectWithSize_options(size: MemorySegment, options: MemorySegment): MemorySegment {
+fun NSAttributedString.boundingRectWithSize_options(size: NSSize, options: NSStringDrawingOptions): NSRect {
     val sel = ObjCRuntime.sel("boundingRectWithSize:options:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, size, options) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout), options.rawValue))
 }
 
 // ── Category: NSAttributedStringAdaptiveImageGlyphConveniences on NSAttributedString ─────────────────────────────────────────

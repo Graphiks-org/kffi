@@ -13,15 +13,15 @@ open class NSOrderedCollectionChange(override val ptr: MemorySegment) : NSObject
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSOrderedCollectionChange") }
 
         /** @return NSOrderedCollectionChange<ObjectType> * */
-        fun changeWithObject_type_index(anObject: MemorySegment, type: MemorySegment, index: Long): MemorySegment {
+        fun changeWithObject_type_index(anObject: MemorySegment, type: NSCollectionChangeType, index: Long): MemorySegment {
             val sel = ObjCRuntime.sel("changeWithObject:type:index:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, anObject, type, index) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, anObject, type.rawValue, index) as MemorySegment
         }
 
         /** @return NSOrderedCollectionChange<ObjectType> * */
-        fun changeWithObject_type_index_associatedIndex(anObject: MemorySegment, type: MemorySegment, index: Long, associatedIndex: Long): MemorySegment {
+        fun changeWithObject_type_index_associatedIndex(anObject: MemorySegment, type: NSCollectionChangeType, index: Long, associatedIndex: Long): MemorySegment {
             val sel = ObjCRuntime.sel("changeWithObject:type:index:associatedIndex:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, anObject, type, index, associatedIndex) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, anObject, type.rawValue, index, associatedIndex) as MemorySegment
         }
 
     }
@@ -31,14 +31,14 @@ open class NSOrderedCollectionChange(override val ptr: MemorySegment) : NSObject
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun initWithObject_type_index(anObject: MemorySegment, type: MemorySegment, index: Long): MemorySegment {
+    open fun initWithObject_type_index(anObject: MemorySegment, type: NSCollectionChangeType, index: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithObject:type:index:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, anObject, type, index) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, anObject, type.rawValue, index) as MemorySegment
     }
 
-    open fun initWithObject_type_index_associatedIndex(anObject: MemorySegment, type: MemorySegment, index: Long, associatedIndex: Long): MemorySegment {
+    open fun initWithObject_type_index_associatedIndex(anObject: MemorySegment, type: NSCollectionChangeType, index: Long, associatedIndex: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithObject:type:index:associatedIndex:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, anObject, type, index, associatedIndex) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, anObject, type.rawValue, index, associatedIndex) as MemorySegment
     }
 
     // @property object
@@ -48,9 +48,9 @@ open class NSOrderedCollectionChange(override val ptr: MemorySegment) : NSObject
     }
 
     // @property changeType
-    open fun changeType(): MemorySegment {
+    open fun changeType(): NSCollectionChangeType {
         val sel = ObjCRuntime.sel("changeType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCollectionChangeType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property index

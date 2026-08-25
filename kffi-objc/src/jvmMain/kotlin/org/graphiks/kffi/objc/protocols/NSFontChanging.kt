@@ -14,7 +14,7 @@ interface NSFontChanging {
         throw UnsupportedOperationException("Optional ObjC method 'changeFont:' not implemented")
 
     // @optional
-    fun validModesForFontPanel(fontPanel: MemorySegment): MemorySegment =
+    fun validModesForFontPanel(fontPanel: MemorySegment): NSFontPanelModeMask =
         throw UnsupportedOperationException("Optional ObjC method 'validModesForFontPanel:' not implemented")
 
 }

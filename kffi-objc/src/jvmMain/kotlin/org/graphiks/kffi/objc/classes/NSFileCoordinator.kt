@@ -40,29 +40,29 @@ open class NSFileCoordinator(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, intents, queue, accessor)
     }
 
-    open fun coordinateReadingItemAtURL_options_error_byAccessor(url: MemorySegment, options: MemorySegment, outError: MemorySegment, reader: MemorySegment): Unit {
+    open fun coordinateReadingItemAtURL_options_error_byAccessor(url: MemorySegment, options: NSFileCoordinatorReadingOptions, outError: MemorySegment, reader: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("coordinateReadingItemAtURL:options:error:byAccessor:")
-        ObjCRuntime.msgSend(null, ptr, sel, url, options, outError, reader)
+        ObjCRuntime.msgSend(null, ptr, sel, url, options.rawValue, outError, reader)
     }
 
-    open fun coordinateWritingItemAtURL_options_error_byAccessor(url: MemorySegment, options: MemorySegment, outError: MemorySegment, writer: MemorySegment): Unit {
+    open fun coordinateWritingItemAtURL_options_error_byAccessor(url: MemorySegment, options: NSFileCoordinatorWritingOptions, outError: MemorySegment, writer: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("coordinateWritingItemAtURL:options:error:byAccessor:")
-        ObjCRuntime.msgSend(null, ptr, sel, url, options, outError, writer)
+        ObjCRuntime.msgSend(null, ptr, sel, url, options.rawValue, outError, writer)
     }
 
-    open fun coordinateReadingItemAtURL_options_writingItemAtURL_options_error_byAccessor(readingURL: MemorySegment, readingOptions: MemorySegment, writingURL: MemorySegment, writingOptions: MemorySegment, outError: MemorySegment, readerWriter: MemorySegment): Unit {
+    open fun coordinateReadingItemAtURL_options_writingItemAtURL_options_error_byAccessor(readingURL: MemorySegment, readingOptions: NSFileCoordinatorReadingOptions, writingURL: MemorySegment, writingOptions: NSFileCoordinatorWritingOptions, outError: MemorySegment, readerWriter: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("coordinateReadingItemAtURL:options:writingItemAtURL:options:error:byAccessor:")
-        ObjCRuntime.msgSend(null, ptr, sel, readingURL, readingOptions, writingURL, writingOptions, outError, readerWriter)
+        ObjCRuntime.msgSend(null, ptr, sel, readingURL, readingOptions.rawValue, writingURL, writingOptions.rawValue, outError, readerWriter)
     }
 
-    open fun coordinateWritingItemAtURL_options_writingItemAtURL_options_error_byAccessor(url1: MemorySegment, options1: MemorySegment, url2: MemorySegment, options2: MemorySegment, outError: MemorySegment, writer: MemorySegment): Unit {
+    open fun coordinateWritingItemAtURL_options_writingItemAtURL_options_error_byAccessor(url1: MemorySegment, options1: NSFileCoordinatorWritingOptions, url2: MemorySegment, options2: NSFileCoordinatorWritingOptions, outError: MemorySegment, writer: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("coordinateWritingItemAtURL:options:writingItemAtURL:options:error:byAccessor:")
-        ObjCRuntime.msgSend(null, ptr, sel, url1, options1, url2, options2, outError, writer)
+        ObjCRuntime.msgSend(null, ptr, sel, url1, options1.rawValue, url2, options2.rawValue, outError, writer)
     }
 
-    open fun prepareForReadingItemsAtURLs_options_writingItemsAtURLs_options_error_byAccessor(readingURLs: MemorySegment, readingOptions: MemorySegment, writingURLs: MemorySegment, writingOptions: MemorySegment, outError: MemorySegment, batchAccessor: MemorySegment): Unit {
+    open fun prepareForReadingItemsAtURLs_options_writingItemsAtURLs_options_error_byAccessor(readingURLs: MemorySegment, readingOptions: NSFileCoordinatorReadingOptions, writingURLs: MemorySegment, writingOptions: NSFileCoordinatorWritingOptions, outError: MemorySegment, batchAccessor: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("prepareForReadingItemsAtURLs:options:writingItemsAtURLs:options:error:byAccessor:")
-        ObjCRuntime.msgSend(null, ptr, sel, readingURLs, readingOptions, writingURLs, writingOptions, outError, batchAccessor)
+        ObjCRuntime.msgSend(null, ptr, sel, readingURLs, readingOptions.rawValue, writingURLs, writingOptions.rawValue, outError, batchAccessor)
     }
 
     open fun itemAtURL_willMoveToURL(oldURL: MemorySegment, newURL: MemorySegment): Unit {

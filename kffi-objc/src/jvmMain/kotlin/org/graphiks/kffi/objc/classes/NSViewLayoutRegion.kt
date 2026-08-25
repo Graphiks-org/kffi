@@ -12,14 +12,14 @@ open class NSViewLayoutRegion(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSViewLayoutRegion") }
 
-        fun safeAreaLayoutRegionWithCornerAdaptation(adaptivityAxis: MemorySegment): MemorySegment {
+        fun safeAreaLayoutRegionWithCornerAdaptation(adaptivityAxis: NSViewLayoutRegionAdaptivityAxis): MemorySegment {
             val sel = ObjCRuntime.sel("safeAreaLayoutRegionWithCornerAdaptation:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, adaptivityAxis) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, adaptivityAxis.rawValue) as MemorySegment
         }
 
-        fun marginsLayoutRegionWithCornerAdaptation(adaptivityAxis: MemorySegment): MemorySegment {
+        fun marginsLayoutRegionWithCornerAdaptation(adaptivityAxis: NSViewLayoutRegionAdaptivityAxis): MemorySegment {
             val sel = ObjCRuntime.sel("marginsLayoutRegionWithCornerAdaptation:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, adaptivityAxis) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, adaptivityAxis.rawValue) as MemorySegment
         }
 
         fun new(): MemorySegment {

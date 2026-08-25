@@ -50,14 +50,14 @@ open class NSIndexPath(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, position) as Long
     }
 
-    open fun getIndexes_range(indexes: MemorySegment, positionRange: MemorySegment): Unit {
+    open fun getIndexes_range(indexes: MemorySegment, positionRange: NSRange): Unit {
         val sel = ObjCRuntime.sel("getIndexes:range:")
-        ObjCRuntime.msgSend(null, ptr, sel, indexes, ObjCRuntime.ObjCStructArg(positionRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, indexes, ObjCRuntime.ObjCStructArg(positionRange.segment, NSRange.layout))
     }
 
-    open fun compare(otherObject: MemorySegment): MemorySegment {
+    open fun compare(otherObject: MemorySegment): NSComparisonResult {
         val sel = ObjCRuntime.sel("compare:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, otherObject) as MemorySegment
+        return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, otherObject) as Long)
     }
 
     // @property length

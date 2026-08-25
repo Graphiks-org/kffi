@@ -40,9 +40,9 @@ open class NSPrinter(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun pageSizeForPaper(paperName: MemorySegment): MemorySegment {
+    open fun pageSizeForPaper(paperName: MemorySegment): NSSize {
         val sel = ObjCRuntime.sel("pageSizeForPaper:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel, paperName) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel, paperName))
     }
 
     // @property printerNames
@@ -91,9 +91,9 @@ open class NSPrinter(override val ptr: MemorySegment) : NSObject(ptr) {
 
 // ── Category: NSDeprecated on NSPrinter ─────────────────────────────────────────
 
-fun NSPrinter.statusForTable(tableName: MemorySegment): MemorySegment {
+fun NSPrinter.statusForTable(tableName: MemorySegment): NSPrinterTableStatus {
     val sel = ObjCRuntime.sel("statusForTable:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, tableName) as MemorySegment
+    return NSPrinterTableStatus(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, tableName) as Long)
 }
 
 fun NSPrinter.isKey_inTable(key: MemorySegment, table: MemorySegment): Boolean {
@@ -116,14 +116,14 @@ fun NSPrinter.intForKey_inTable(key: MemorySegment, table: MemorySegment): Int {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_INT, this.ptr, sel, key, table) as Int
 }
 
-fun NSPrinter.rectForKey_inTable(key: MemorySegment, table: MemorySegment): MemorySegment {
+fun NSPrinter.rectForKey_inTable(key: MemorySegment, table: MemorySegment): NSRect {
     val sel = ObjCRuntime.sel("rectForKey:inTable:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, key, table) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, key, table))
 }
 
-fun NSPrinter.sizeForKey_inTable(key: MemorySegment, table: MemorySegment): MemorySegment {
+fun NSPrinter.sizeForKey_inTable(key: MemorySegment, table: MemorySegment): NSSize {
     val sel = ObjCRuntime.sel("sizeForKey:inTable:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel, key, table) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel, key, table))
 }
 
 fun NSPrinter.stringForKey_inTable(key: MemorySegment, table: MemorySegment): MemorySegment {
@@ -136,9 +136,9 @@ fun NSPrinter.stringListForKey_inTable(key: MemorySegment, table: MemorySegment)
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key, table) as MemorySegment
 }
 
-fun NSPrinter.imageRectForPaper(paperName: MemorySegment): MemorySegment {
+fun NSPrinter.imageRectForPaper(paperName: MemorySegment): NSRect {
     val sel = ObjCRuntime.sel("imageRectForPaper:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, paperName) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, paperName))
 }
 
 fun NSPrinter.acceptsBinary(): Boolean {

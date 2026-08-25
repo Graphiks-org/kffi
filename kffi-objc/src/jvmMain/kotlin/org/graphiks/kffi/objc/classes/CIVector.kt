@@ -38,19 +38,19 @@ open class CIVector(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, x, y, z, w) as MemorySegment
         }
 
-        fun vectorWithCGPoint(p: MemorySegment): MemorySegment {
+        fun vectorWithCGPoint(p: CGPoint): MemorySegment {
             val sel = ObjCRuntime.sel("vectorWithCGPoint:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(p, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(p.segment, CGPoint.layout)) as MemorySegment
         }
 
-        fun vectorWithCGRect(r: MemorySegment): MemorySegment {
+        fun vectorWithCGRect(r: CGRect): MemorySegment {
             val sel = ObjCRuntime.sel("vectorWithCGRect:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(r, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(r.segment, CGRect.layout)) as MemorySegment
         }
 
-        fun vectorWithCGAffineTransform(t: MemorySegment): MemorySegment {
+        fun vectorWithCGAffineTransform(t: CGAffineTransform): MemorySegment {
             val sel = ObjCRuntime.sel("vectorWithCGAffineTransform:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(t, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("a"), ValueLayout.JAVA_DOUBLE.withName("b"), ValueLayout.JAVA_DOUBLE.withName("c"), ValueLayout.JAVA_DOUBLE.withName("d"), ValueLayout.JAVA_DOUBLE.withName("tx"), ValueLayout.JAVA_DOUBLE.withName("ty")).withName("CGAffineTransform"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(t.segment, CGAffineTransform.layout)) as MemorySegment
         }
 
         fun vectorWithString(representation: MemorySegment): MemorySegment {
@@ -88,19 +88,19 @@ open class CIVector(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, x, y, z, w) as MemorySegment
     }
 
-    open fun initWithCGPoint(p: MemorySegment): MemorySegment {
+    open fun initWithCGPoint(p: CGPoint): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(p, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(p.segment, CGPoint.layout)) as MemorySegment
     }
 
-    open fun initWithCGRect(r: MemorySegment): MemorySegment {
+    open fun initWithCGRect(r: CGRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGRect:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(r, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(r.segment, CGRect.layout)) as MemorySegment
     }
 
-    open fun initWithCGAffineTransform(t: MemorySegment): MemorySegment {
+    open fun initWithCGAffineTransform(t: CGAffineTransform): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGAffineTransform:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(t, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("a"), ValueLayout.JAVA_DOUBLE.withName("b"), ValueLayout.JAVA_DOUBLE.withName("c"), ValueLayout.JAVA_DOUBLE.withName("d"), ValueLayout.JAVA_DOUBLE.withName("tx"), ValueLayout.JAVA_DOUBLE.withName("ty")).withName("CGAffineTransform"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(t.segment, CGAffineTransform.layout)) as MemorySegment
     }
 
     open fun initWithString(representation: MemorySegment): MemorySegment {
@@ -147,21 +147,21 @@ open class CIVector(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property CGPointValue
-    open fun CGPointValue(): MemorySegment {
+    open fun CGPointValue(): CGPoint {
         val sel = ObjCRuntime.sel("CGPointValue")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return CGPoint(ObjCRuntime.msgSendStruct(CGPoint.layout, ptr, sel))
     }
 
     // @property CGRectValue
-    open fun CGRectValue(): MemorySegment {
+    open fun CGRectValue(): CGRect {
         val sel = ObjCRuntime.sel("CGRectValue")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
 
     // @property CGAffineTransformValue
-    open fun CGAffineTransformValue(): MemorySegment {
+    open fun CGAffineTransformValue(): CGAffineTransform {
         val sel = ObjCRuntime.sel("CGAffineTransformValue")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("a"), ValueLayout.JAVA_DOUBLE.withName("b"), ValueLayout.JAVA_DOUBLE.withName("c"), ValueLayout.JAVA_DOUBLE.withName("d"), ValueLayout.JAVA_DOUBLE.withName("tx"), ValueLayout.JAVA_DOUBLE.withName("ty")).withName("CGAffineTransform"), ptr, sel) as MemorySegment
+        return CGAffineTransform(ObjCRuntime.msgSendStruct(CGAffineTransform.layout, ptr, sel))
     }
 
     // @property stringRepresentation

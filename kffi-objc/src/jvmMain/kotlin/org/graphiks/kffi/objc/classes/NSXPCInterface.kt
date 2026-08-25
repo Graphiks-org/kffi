@@ -40,14 +40,14 @@ open class NSXPCInterface(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, sel, arg, ofReply) as MemorySegment
     }
 
-    open fun setXPCType_forSelector_argumentIndex_ofReply(type: MemorySegment, sel: MemorySegment, arg: Long, ofReply: Boolean): Unit {
+    open fun setXPCType_forSelector_argumentIndex_ofReply(type: xpc_type_t, sel: MemorySegment, arg: Long, ofReply: Boolean): Unit {
         val sel = ObjCRuntime.sel("setXPCType:forSelector:argumentIndex:ofReply:")
-        ObjCRuntime.msgSend(null, ptr, sel, type, sel, arg, ofReply)
+        ObjCRuntime.msgSend(null, ptr, sel, type.segment, sel, arg, ofReply)
     }
 
-    open fun XPCTypeForSelector_argumentIndex_ofReply(sel: MemorySegment, arg: Long, ofReply: Boolean): MemorySegment {
+    open fun XPCTypeForSelector_argumentIndex_ofReply(sel: MemorySegment, arg: Long, ofReply: Boolean): xpc_type_t {
         val sel = ObjCRuntime.sel("XPCTypeForSelector:argumentIndex:ofReply:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, sel, arg, ofReply) as MemorySegment
+        return xpc_type_t(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, sel, arg, ofReply) as MemorySegment)
     }
 
     // @property protocol

@@ -88,9 +88,9 @@ open class NSMutableCharacterSet(override val ptr: MemorySegment) : NSCharacterS
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
         }
 
-        fun characterSetWithRange(aRange: MemorySegment): MemorySegment {
+        fun characterSetWithRange(aRange: NSRange): MemorySegment {
             val sel = ObjCRuntime.sel("characterSetWithRange:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(aRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout)) as MemorySegment
         }
 
         fun characterSetWithCharactersInString(aString: MemorySegment): MemorySegment {
@@ -116,14 +116,14 @@ open class NSMutableCharacterSet(override val ptr: MemorySegment) : NSCharacterS
 
     }
 
-    open fun addCharactersInRange(aRange: MemorySegment): Unit {
+    open fun addCharactersInRange(aRange: NSRange): Unit {
         val sel = ObjCRuntime.sel("addCharactersInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(aRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout))
     }
 
-    open fun removeCharactersInRange(aRange: MemorySegment): Unit {
+    open fun removeCharactersInRange(aRange: NSRange): Unit {
         val sel = ObjCRuntime.sel("removeCharactersInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(aRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout))
     }
 
     open fun addCharactersInString(aString: MemorySegment): Unit {

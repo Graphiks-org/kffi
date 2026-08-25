@@ -39,9 +39,9 @@ open class NSFileVersion(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, url, persistentIdentifier) as MemorySegment
         }
 
-        fun addVersionOfItemAtURL_withContentsOfURL_options_error(url: MemorySegment, contentsURL: MemorySegment, options: MemorySegment, outError: MemorySegment): MemorySegment {
+        fun addVersionOfItemAtURL_withContentsOfURL_options_error(url: MemorySegment, contentsURL: MemorySegment, options: NSFileVersionAddingOptions, outError: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("addVersionOfItemAtURL:withContentsOfURL:options:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, url, contentsURL, options, outError) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, url, contentsURL, options.rawValue, outError) as MemorySegment
         }
 
         fun temporaryDirectoryURLForNewVersionOfItemAtURL(url: MemorySegment): MemorySegment {
@@ -56,9 +56,9 @@ open class NSFileVersion(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun replaceItemAtURL_options_error(url: MemorySegment, options: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun replaceItemAtURL_options_error(url: MemorySegment, options: NSFileVersionReplacingOptions, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("replaceItemAtURL:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, options, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, options.rawValue, error) as MemorySegment
     }
 
     open fun removeAndReturnError(outError: MemorySegment): Boolean {

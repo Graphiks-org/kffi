@@ -70,24 +70,24 @@ open class NSAffineTransform(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, transform)
     }
 
-    open fun transformPoint(aPoint: MemorySegment): MemorySegment {
+    open fun transformPoint(aPoint: NSPoint): NSPoint {
         val sel = ObjCRuntime.sel("transformPoint:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel, ObjCRuntime.ObjCStructArg(aPoint, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel, ObjCRuntime.ObjCStructArg(aPoint.segment, NSPoint.layout)))
     }
 
-    open fun transformSize(aSize: MemorySegment): MemorySegment {
+    open fun transformSize(aSize: NSSize): NSSize {
         val sel = ObjCRuntime.sel("transformSize:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel, ObjCRuntime.ObjCStructArg(aSize, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"))) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel, ObjCRuntime.ObjCStructArg(aSize.segment, NSSize.layout)))
     }
 
     // @property transformStruct
-    open fun transformStruct(): MemorySegment {
+    open fun transformStruct(): NSAffineTransformStruct {
         val sel = ObjCRuntime.sel("transformStruct")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("m11"), ValueLayout.JAVA_DOUBLE.withName("m12"), ValueLayout.JAVA_DOUBLE.withName("m21"), ValueLayout.JAVA_DOUBLE.withName("m22"), ValueLayout.JAVA_DOUBLE.withName("tX"), ValueLayout.JAVA_DOUBLE.withName("tY")).withName("NSAffineTransformStruct"), ptr, sel) as MemorySegment
+        return NSAffineTransformStruct(ObjCRuntime.msgSendStruct(NSAffineTransformStruct.layout, ptr, sel))
     }
-    open fun setTransformStruct(value: MemorySegment) {
+    open fun setTransformStruct(value: NSAffineTransformStruct) {
         val sel = ObjCRuntime.sel("setTransformStruct:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("m11"), ValueLayout.JAVA_DOUBLE.withName("m12"), ValueLayout.JAVA_DOUBLE.withName("m21"), ValueLayout.JAVA_DOUBLE.withName("m22"), ValueLayout.JAVA_DOUBLE.withName("tX"), ValueLayout.JAVA_DOUBLE.withName("tY")).withName("NSAffineTransformStruct")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSAffineTransformStruct.layout))
     }
 
 }

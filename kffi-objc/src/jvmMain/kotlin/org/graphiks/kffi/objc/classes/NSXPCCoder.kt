@@ -22,13 +22,13 @@ open class NSXPCCoder(override val ptr: MemorySegment) : NSCoder(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun encodeXPCObject_forKey(xpcObject: MemorySegment, key: String): Unit = encodeXPCObject_forKey(xpcObject, ObjCRuntime.newNSString(Arena.global(), key))
 
-    open fun decodeXPCObjectOfType_forKey(type: MemorySegment, key: MemorySegment): MemorySegment {
+    open fun decodeXPCObjectOfType_forKey(type: xpc_type_t, key: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("decodeXPCObjectOfType:forKey:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, type, key) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, type.segment, key) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun decodeXPCObjectOfType_forKey(type: MemorySegment, key: String): MemorySegment = decodeXPCObjectOfType_forKey(type, ObjCRuntime.newNSString(Arena.global(), key))
+    fun decodeXPCObjectOfType_forKey(type: xpc_type_t, key: String): MemorySegment = decodeXPCObjectOfType_forKey(type, ObjCRuntime.newNSString(Arena.global(), key))
 
     // @property userInfo
     /** @return id<NSObject> */

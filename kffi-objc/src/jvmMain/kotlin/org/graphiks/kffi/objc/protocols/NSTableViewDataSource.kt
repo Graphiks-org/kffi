@@ -31,11 +31,11 @@ interface NSTableViewDataSource {
         throw UnsupportedOperationException("Optional ObjC method 'tableView:pasteboardWriterForRow:' not implemented")
 
     // @optional
-    fun tableView_draggingSession_willBeginAtPoint_forRowIndexes(tableView: MemorySegment, session: MemorySegment, screenPoint: MemorySegment, rowIndexes: MemorySegment): Unit =
+    fun tableView_draggingSession_willBeginAtPoint_forRowIndexes(tableView: MemorySegment, session: MemorySegment, screenPoint: NSPoint, rowIndexes: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'tableView:draggingSession:willBeginAtPoint:forRowIndexes:' not implemented")
 
     // @optional
-    fun tableView_draggingSession_endedAtPoint_operation(tableView: MemorySegment, session: MemorySegment, screenPoint: MemorySegment, operation: MemorySegment): Unit =
+    fun tableView_draggingSession_endedAtPoint_operation(tableView: MemorySegment, session: MemorySegment, screenPoint: NSPoint, operation: NSDragOperation): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'tableView:draggingSession:endedAtPoint:operation:' not implemented")
 
     // @optional
@@ -47,11 +47,11 @@ interface NSTableViewDataSource {
         throw UnsupportedOperationException("Optional ObjC method 'tableView:writeRowsWithIndexes:toPasteboard:' not implemented")
 
     // @optional
-    fun tableView_validateDrop_proposedRow_proposedDropOperation(tableView: MemorySegment, info: MemorySegment, row: Long, dropOperation: MemorySegment): MemorySegment =
+    fun tableView_validateDrop_proposedRow_proposedDropOperation(tableView: MemorySegment, info: MemorySegment, row: Long, dropOperation: NSTableViewDropOperation): NSDragOperation =
         throw UnsupportedOperationException("Optional ObjC method 'tableView:validateDrop:proposedRow:proposedDropOperation:' not implemented")
 
     // @optional
-    fun tableView_acceptDrop_row_dropOperation(tableView: MemorySegment, info: MemorySegment, row: Long, dropOperation: MemorySegment): Boolean =
+    fun tableView_acceptDrop_row_dropOperation(tableView: MemorySegment, info: MemorySegment, row: Long, dropOperation: NSTableViewDropOperation): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'tableView:acceptDrop:row:dropOperation:' not implemented")
 
     /** @return NSArray<NSString *> * */

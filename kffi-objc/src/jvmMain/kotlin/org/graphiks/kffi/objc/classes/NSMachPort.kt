@@ -17,9 +17,9 @@ open class NSMachPort(override val ptr: MemorySegment) : NSPort(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, machPort) as MemorySegment
         }
 
-        fun portWithMachPort_options(machPort: Int, f: MemorySegment): MemorySegment {
+        fun portWithMachPort_options(machPort: Int, f: NSMachPortOptions): MemorySegment {
             val sel = ObjCRuntime.sel("portWithMachPort:options:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, machPort, f) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, machPort, f.rawValue) as MemorySegment
         }
 
     }
@@ -40,9 +40,9 @@ open class NSMachPort(override val ptr: MemorySegment) : NSPort(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun initWithMachPort_options(machPort: Int, f: MemorySegment): MemorySegment {
+    open fun initWithMachPort_options(machPort: Int, f: NSMachPortOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithMachPort:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, machPort, f) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, machPort, f.rawValue) as MemorySegment
     }
 
     override fun scheduleInRunLoop_forMode(runLoop: MemorySegment, mode: MemorySegment): Unit {

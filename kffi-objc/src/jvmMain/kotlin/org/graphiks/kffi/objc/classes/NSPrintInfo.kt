@@ -107,23 +107,23 @@ open class NSPrintInfo(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property paperSize
-    open fun paperSize(): MemorySegment {
+    open fun paperSize(): NSSize {
         val sel = ObjCRuntime.sel("paperSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setPaperSize(value: MemorySegment) {
+    open fun setPaperSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setPaperSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property orientation
-    open fun orientation(): MemorySegment {
+    open fun orientation(): NSPaperOrientation {
         val sel = ObjCRuntime.sel("orientation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPaperOrientation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setOrientation(value: MemorySegment) {
+    open fun setOrientation(value: NSPaperOrientation) {
         val sel = ObjCRuntime.sel("setOrientation:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property scalingFactor
@@ -197,23 +197,23 @@ open class NSPrintInfo(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property horizontalPagination
-    open fun horizontalPagination(): MemorySegment {
+    open fun horizontalPagination(): NSPrintingPaginationMode {
         val sel = ObjCRuntime.sel("horizontalPagination")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPrintingPaginationMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setHorizontalPagination(value: MemorySegment) {
+    open fun setHorizontalPagination(value: NSPrintingPaginationMode) {
         val sel = ObjCRuntime.sel("setHorizontalPagination:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property verticalPagination
-    open fun verticalPagination(): MemorySegment {
+    open fun verticalPagination(): NSPrintingPaginationMode {
         val sel = ObjCRuntime.sel("verticalPagination")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPrintingPaginationMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setVerticalPagination(value: MemorySegment) {
+    open fun setVerticalPagination(value: NSPrintingPaginationMode) {
         val sel = ObjCRuntime.sel("setVerticalPagination:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property jobDisposition
@@ -237,9 +237,9 @@ open class NSPrintInfo(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property imageablePageBounds
-    open fun imageablePageBounds(): MemorySegment {
+    open fun imageablePageBounds(): NSRect {
         val sel = ObjCRuntime.sel("imageablePageBounds")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property localizedPaperName
@@ -286,8 +286,8 @@ fun NSPrintInfo_setDefaultPrinter(printer: MemorySegment): Unit {
 }
 
 // Class method: +[NSPrintInfo sizeForPaperName:]
-fun NSPrintInfo_sizeForPaperName(name: MemorySegment): MemorySegment {
+fun NSPrintInfo_sizeForPaperName(name: MemorySegment): NSSize {
     val sel = ObjCRuntime.sel("sizeForPaperName:")
     val cls = ObjCRuntime.getClass("NSPrintInfo")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), cls, sel, name) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, cls, sel, name))
 }

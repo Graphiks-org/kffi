@@ -89,9 +89,9 @@ open class NSPresentationIntent(override val ptr: MemorySegment) : NSObject(ptr)
     }
 
     // @property intentKind
-    open fun intentKind(): MemorySegment {
+    open fun intentKind(): NSPresentationIntentKind {
         val sel = ObjCRuntime.sel("intentKind")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPresentationIntentKind(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property parentIntent

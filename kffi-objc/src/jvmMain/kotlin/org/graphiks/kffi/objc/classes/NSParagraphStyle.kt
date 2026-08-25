@@ -13,13 +13,13 @@ open class NSParagraphStyle(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSParagraphStyle") }
 
-        fun defaultWritingDirectionForLanguage(languageName: MemorySegment): MemorySegment {
+        fun defaultWritingDirectionForLanguage(languageName: MemorySegment): NSWritingDirection {
             val sel = ObjCRuntime.sel("defaultWritingDirectionForLanguage:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, languageName) as MemorySegment
+            return NSWritingDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel, languageName) as Long)
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun defaultWritingDirectionForLanguage(languageName: String): MemorySegment = defaultWritingDirectionForLanguage(ObjCRuntime.newNSString(Arena.global(), languageName))
+        fun defaultWritingDirectionForLanguage(languageName: String): NSWritingDirection = defaultWritingDirectionForLanguage(ObjCRuntime.newNSString(Arena.global(), languageName))
 
         fun defaultParagraphStyle(): MemorySegment {
             val sel = ObjCRuntime.sel("defaultParagraphStyle")
@@ -77,15 +77,15 @@ open class NSParagraphStyle(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property lineBreakMode
-    open fun lineBreakMode(): MemorySegment {
+    open fun lineBreakMode(): NSLineBreakMode {
         val sel = ObjCRuntime.sel("lineBreakMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLineBreakMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property baseWritingDirection
-    open fun baseWritingDirection(): MemorySegment {
+    open fun baseWritingDirection(): NSWritingDirection {
         val sel = ObjCRuntime.sel("baseWritingDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property lineHeightMultiple
@@ -139,18 +139,18 @@ open class NSParagraphStyle(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property lineBreakStrategy
-    open fun lineBreakStrategy(): MemorySegment {
+    open fun lineBreakStrategy(): NSLineBreakStrategy {
         val sel = ObjCRuntime.sel("lineBreakStrategy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLineBreakStrategy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 }
 
 // ── Category:  on NSParagraphStyle ─────────────────────────────────────────
 
-fun NSParagraphStyle.alignment(): MemorySegment {
+fun NSParagraphStyle.alignment(): NSTextAlignment {
     val sel = ObjCRuntime.sel("alignment")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSTextAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
 fun NSParagraphStyle.tighteningFactorForTruncation(): Float {

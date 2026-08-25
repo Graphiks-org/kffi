@@ -13,7 +13,7 @@ interface NSPasteboardReading {
     fun readableTypesForPasteboard(pasteboard: MemorySegment): MemorySegment
 
     // @optional
-    fun readingOptionsForType_pasteboard(type: MemorySegment, pasteboard: MemorySegment): MemorySegment =
+    fun readingOptionsForType_pasteboard(type: MemorySegment, pasteboard: MemorySegment): NSPasteboardReadingOptions =
         throw UnsupportedOperationException("Optional ObjC method 'readingOptionsForType:pasteboard:' not implemented")
 
     // @optional

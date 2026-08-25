@@ -14,11 +14,11 @@ interface NSSpringLoadingDestination {
     fun springLoadingHighlightChanged(draggingInfo: MemorySegment): Unit
 
     // @optional
-    fun springLoadingEntered(draggingInfo: MemorySegment): MemorySegment =
+    fun springLoadingEntered(draggingInfo: MemorySegment): NSSpringLoadingOptions =
         throw UnsupportedOperationException("Optional ObjC method 'springLoadingEntered:' not implemented")
 
     // @optional
-    fun springLoadingUpdated(draggingInfo: MemorySegment): MemorySegment =
+    fun springLoadingUpdated(draggingInfo: MemorySegment): NSSpringLoadingOptions =
         throw UnsupportedOperationException("Optional ObjC method 'springLoadingUpdated:' not implemented")
 
     // @optional

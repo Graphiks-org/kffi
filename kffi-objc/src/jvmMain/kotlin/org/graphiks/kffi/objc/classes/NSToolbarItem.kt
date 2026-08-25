@@ -193,13 +193,13 @@ open class NSToolbarItem(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property style
-    open fun style(): MemorySegment {
+    open fun style(): NSToolbarItemStyle {
         val sel = ObjCRuntime.sel("style")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSToolbarItemStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setStyle(value: MemorySegment) {
+    open fun setStyle(value: NSToolbarItemStyle) {
         val sel = ObjCRuntime.sel("setStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property navigational
@@ -239,23 +239,23 @@ open class NSToolbarItem(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property minSize
-    open fun minSize(): MemorySegment {
+    open fun minSize(): NSSize {
         val sel = ObjCRuntime.sel("minSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setMinSize(value: MemorySegment) {
+    open fun setMinSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMinSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property maxSize
-    open fun maxSize(): MemorySegment {
+    open fun maxSize(): NSSize {
         val sel = ObjCRuntime.sel("maxSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setMaxSize(value: MemorySegment) {
+    open fun setMaxSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMaxSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property visibilityPriority

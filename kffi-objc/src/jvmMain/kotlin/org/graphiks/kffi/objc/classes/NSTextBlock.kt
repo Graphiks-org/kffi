@@ -20,49 +20,49 @@ open class NSTextBlock(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun setValue_type_forDimension(`val`: Double, type: MemorySegment, dimension: MemorySegment): Unit {
+    open fun setValue_type_forDimension(`val`: Double, type: NSTextBlockValueType, dimension: NSTextBlockDimension): Unit {
         val sel = ObjCRuntime.sel("setValue:type:forDimension:")
-        ObjCRuntime.msgSend(null, ptr, sel, `val`, type, dimension)
+        ObjCRuntime.msgSend(null, ptr, sel, `val`, type.rawValue, dimension.rawValue)
     }
 
-    open fun valueForDimension(dimension: MemorySegment): Double {
+    open fun valueForDimension(dimension: NSTextBlockDimension): Double {
         val sel = ObjCRuntime.sel("valueForDimension:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, dimension) as Double
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, dimension.rawValue) as Double
     }
 
-    open fun valueTypeForDimension(dimension: MemorySegment): MemorySegment {
+    open fun valueTypeForDimension(dimension: NSTextBlockDimension): NSTextBlockValueType {
         val sel = ObjCRuntime.sel("valueTypeForDimension:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, dimension) as MemorySegment
+        return NSTextBlockValueType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, dimension.rawValue) as Long)
     }
 
-    open fun setContentWidth_type(`val`: Double, type: MemorySegment): Unit {
+    open fun setContentWidth_type(`val`: Double, type: NSTextBlockValueType): Unit {
         val sel = ObjCRuntime.sel("setContentWidth:type:")
-        ObjCRuntime.msgSend(null, ptr, sel, `val`, type)
+        ObjCRuntime.msgSend(null, ptr, sel, `val`, type.rawValue)
     }
 
-    open fun setWidth_type_forLayer_edge(`val`: Double, type: MemorySegment, layer: MemorySegment, edge: MemorySegment): Unit {
+    open fun setWidth_type_forLayer_edge(`val`: Double, type: NSTextBlockValueType, layer: NSTextBlockLayer, edge: NSRectEdge): Unit {
         val sel = ObjCRuntime.sel("setWidth:type:forLayer:edge:")
-        ObjCRuntime.msgSend(null, ptr, sel, `val`, type, layer, edge)
+        ObjCRuntime.msgSend(null, ptr, sel, `val`, type.rawValue, layer.rawValue, edge.rawValue)
     }
 
-    open fun setWidth_type_forLayer(`val`: Double, type: MemorySegment, layer: MemorySegment): Unit {
+    open fun setWidth_type_forLayer(`val`: Double, type: NSTextBlockValueType, layer: NSTextBlockLayer): Unit {
         val sel = ObjCRuntime.sel("setWidth:type:forLayer:")
-        ObjCRuntime.msgSend(null, ptr, sel, `val`, type, layer)
+        ObjCRuntime.msgSend(null, ptr, sel, `val`, type.rawValue, layer.rawValue)
     }
 
-    open fun widthForLayer_edge(layer: MemorySegment, edge: MemorySegment): Double {
+    open fun widthForLayer_edge(layer: NSTextBlockLayer, edge: NSRectEdge): Double {
         val sel = ObjCRuntime.sel("widthForLayer:edge:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, layer, edge) as Double
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, layer.rawValue, edge.rawValue) as Double
     }
 
-    open fun widthValueTypeForLayer_edge(layer: MemorySegment, edge: MemorySegment): MemorySegment {
+    open fun widthValueTypeForLayer_edge(layer: NSTextBlockLayer, edge: NSRectEdge): NSTextBlockValueType {
         val sel = ObjCRuntime.sel("widthValueTypeForLayer:edge:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, layer, edge) as MemorySegment
+        return NSTextBlockValueType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, layer.rawValue, edge.rawValue) as Long)
     }
 
-    open fun setBorderColor_forEdge(color: MemorySegment, edge: MemorySegment): Unit {
+    open fun setBorderColor_forEdge(color: MemorySegment, edge: NSRectEdge): Unit {
         val sel = ObjCRuntime.sel("setBorderColor:forEdge:")
-        ObjCRuntime.msgSend(null, ptr, sel, color, edge)
+        ObjCRuntime.msgSend(null, ptr, sel, color, edge.rawValue)
     }
 
     open fun setBorderColor(color: MemorySegment): Unit {
@@ -70,24 +70,24 @@ open class NSTextBlock(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, color)
     }
 
-    open fun borderColorForEdge(edge: MemorySegment): MemorySegment {
+    open fun borderColorForEdge(edge: NSRectEdge): MemorySegment {
         val sel = ObjCRuntime.sel("borderColorForEdge:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, edge) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, edge.rawValue) as MemorySegment
     }
 
-    open fun rectForLayoutAtPoint_inRect_textContainer_characterRange(startingPoint: MemorySegment, rect: MemorySegment, textContainer: MemorySegment, charRange: MemorySegment): MemorySegment {
+    open fun rectForLayoutAtPoint_inRect_textContainer_characterRange(startingPoint: NSPoint, rect: NSRect, textContainer: MemorySegment, charRange: NSRange): NSRect {
         val sel = ObjCRuntime.sel("rectForLayoutAtPoint:inRect:textContainer:characterRange:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(startingPoint, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), textContainer, ObjCRuntime.ObjCStructArg(charRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(startingPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), textContainer, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout)))
     }
 
-    open fun boundsRectForContentRect_inRect_textContainer_characterRange(contentRect: MemorySegment, rect: MemorySegment, textContainer: MemorySegment, charRange: MemorySegment): MemorySegment {
+    open fun boundsRectForContentRect_inRect_textContainer_characterRange(contentRect: NSRect, rect: NSRect, textContainer: MemorySegment, charRange: NSRange): NSRect {
         val sel = ObjCRuntime.sel("boundsRectForContentRect:inRect:textContainer:characterRange:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(contentRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), textContainer, ObjCRuntime.ObjCStructArg(charRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(contentRect.segment, NSRect.layout), ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), textContainer, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout)))
     }
 
-    open fun drawBackgroundWithFrame_inView_characterRange_layoutManager(frameRect: MemorySegment, controlView: MemorySegment, charRange: MemorySegment, layoutManager: MemorySegment): Unit {
+    open fun drawBackgroundWithFrame_inView_characterRange_layoutManager(frameRect: NSRect, controlView: MemorySegment, charRange: NSRange, layoutManager: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawBackgroundWithFrame:inView:characterRange:layoutManager:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView, ObjCRuntime.ObjCStructArg(charRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), layoutManager)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout), controlView, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout), layoutManager)
     }
 
     // @property contentWidth
@@ -97,19 +97,19 @@ open class NSTextBlock(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property contentWidthValueType
-    open fun contentWidthValueType(): MemorySegment {
+    open fun contentWidthValueType(): NSTextBlockValueType {
         val sel = ObjCRuntime.sel("contentWidthValueType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextBlockValueType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property verticalAlignment
-    open fun verticalAlignment(): MemorySegment {
+    open fun verticalAlignment(): NSTextBlockVerticalAlignment {
         val sel = ObjCRuntime.sel("verticalAlignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextBlockVerticalAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setVerticalAlignment(value: MemorySegment) {
+    open fun setVerticalAlignment(value: NSTextBlockVerticalAlignment) {
         val sel = ObjCRuntime.sel("setVerticalAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property backgroundColor

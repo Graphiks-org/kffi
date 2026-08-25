@@ -46,14 +46,14 @@ open class NSScrubberLayout(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     /** @return NSSet<__kindof NSScrubberLayoutAttributes *> * */
-    open fun layoutAttributesForItemsInRect(rect: MemorySegment): MemorySegment {
+    open fun layoutAttributesForItemsInRect(rect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("layoutAttributesForItemsInRect:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as MemorySegment
     }
 
-    open fun shouldInvalidateLayoutForChangeFromVisibleRect_toVisibleRect(fromVisibleRect: MemorySegment, toVisibleRect: MemorySegment): Boolean {
+    open fun shouldInvalidateLayoutForChangeFromVisibleRect_toVisibleRect(fromVisibleRect: NSRect, toVisibleRect: NSRect): Boolean {
         val sel = ObjCRuntime.sel("shouldInvalidateLayoutForChangeFromVisibleRect:toVisibleRect:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(fromVisibleRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), ObjCRuntime.ObjCStructArg(toVisibleRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(fromVisibleRect.segment, NSRect.layout), ObjCRuntime.ObjCStructArg(toVisibleRect.segment, NSRect.layout)) as Boolean
     }
 
     // @property layoutAttributesClass
@@ -69,15 +69,15 @@ open class NSScrubberLayout(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property visibleRect
-    open fun visibleRect(): MemorySegment {
+    open fun visibleRect(): NSRect {
         val sel = ObjCRuntime.sel("visibleRect")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property scrubberContentSize
-    open fun scrubberContentSize(): MemorySegment {
+    open fun scrubberContentSize(): NSSize {
         val sel = ObjCRuntime.sel("scrubberContentSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
 
     // @property shouldInvalidateLayoutForSelectionChange

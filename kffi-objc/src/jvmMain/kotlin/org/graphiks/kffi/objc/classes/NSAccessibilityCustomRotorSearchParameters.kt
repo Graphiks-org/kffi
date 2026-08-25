@@ -25,13 +25,13 @@ open class NSAccessibilityCustomRotorSearchParameters(override val ptr: MemorySe
     }
 
     // @property searchDirection
-    open fun searchDirection(): MemorySegment {
+    open fun searchDirection(): NSAccessibilityCustomRotorSearchDirection {
         val sel = ObjCRuntime.sel("searchDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSAccessibilityCustomRotorSearchDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setSearchDirection(value: MemorySegment) {
+    open fun setSearchDirection(value: NSAccessibilityCustomRotorSearchDirection) {
         val sel = ObjCRuntime.sel("setSearchDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property filterString

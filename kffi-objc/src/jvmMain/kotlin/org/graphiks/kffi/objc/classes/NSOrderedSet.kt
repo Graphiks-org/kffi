@@ -50,9 +50,9 @@ open class NSOrderedSet(override val ptr: MemorySegment) : NSObject(ptr) {
 
 // ── Category: NSExtendedOrderedSet on NSOrderedSet ─────────────────────────────────────────
 
-fun NSOrderedSet.getObjects_range(objects: MemorySegment, range: MemorySegment): Unit {
+fun NSOrderedSet.getObjects_range(objects: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("getObjects:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, objects, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, objects, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 /** @return NSArray<ObjectType> * */
@@ -113,14 +113,14 @@ fun NSOrderedSet.enumerateObjectsUsingBlock(block: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, block)
 }
 
-fun NSOrderedSet.enumerateObjectsWithOptions_usingBlock(opts: MemorySegment, block: MemorySegment): Unit {
+fun NSOrderedSet.enumerateObjectsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsWithOptions:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, block)
 }
 
-fun NSOrderedSet.enumerateObjectsAtIndexes_options_usingBlock(s: MemorySegment, opts: MemorySegment, block: MemorySegment): Unit {
+fun NSOrderedSet.enumerateObjectsAtIndexes_options_usingBlock(s: MemorySegment, opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsAtIndexes:options:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, s, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, s, opts.rawValue, block)
 }
 
 fun NSOrderedSet.indexOfObjectPassingTest(predicate: MemorySegment): Long {
@@ -128,14 +128,14 @@ fun NSOrderedSet.indexOfObjectPassingTest(predicate: MemorySegment): Long {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, predicate) as Long
 }
 
-fun NSOrderedSet.indexOfObjectWithOptions_passingTest(opts: MemorySegment, predicate: MemorySegment): Long {
+fun NSOrderedSet.indexOfObjectWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObjectWithOptions:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, opts, predicate) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, opts.rawValue, predicate) as Long
 }
 
-fun NSOrderedSet.indexOfObjectAtIndexes_options_passingTest(s: MemorySegment, opts: MemorySegment, predicate: MemorySegment): Long {
+fun NSOrderedSet.indexOfObjectAtIndexes_options_passingTest(s: MemorySegment, opts: NSEnumerationOptions, predicate: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObjectAtIndexes:options:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, s, opts, predicate) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, s, opts.rawValue, predicate) as Long
 }
 
 fun NSOrderedSet.indexesOfObjectsPassingTest(predicate: MemorySegment): MemorySegment {
@@ -143,19 +143,19 @@ fun NSOrderedSet.indexesOfObjectsPassingTest(predicate: MemorySegment): MemorySe
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, predicate) as MemorySegment
 }
 
-fun NSOrderedSet.indexesOfObjectsWithOptions_passingTest(opts: MemorySegment, predicate: MemorySegment): MemorySegment {
+fun NSOrderedSet.indexesOfObjectsWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("indexesOfObjectsWithOptions:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts, predicate) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, predicate) as MemorySegment
 }
 
-fun NSOrderedSet.indexesOfObjectsAtIndexes_options_passingTest(s: MemorySegment, opts: MemorySegment, predicate: MemorySegment): MemorySegment {
+fun NSOrderedSet.indexesOfObjectsAtIndexes_options_passingTest(s: MemorySegment, opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("indexesOfObjectsAtIndexes:options:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, s, opts, predicate) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, s, opts.rawValue, predicate) as MemorySegment
 }
 
-fun NSOrderedSet.indexOfObject_inSortedRange_options_usingComparator(`object`: MemorySegment, range: MemorySegment, opts: MemorySegment, cmp: MemorySegment): Long {
+fun NSOrderedSet.indexOfObject_inSortedRange_options_usingComparator(`object`: MemorySegment, range: NSRange, opts: NSBinarySearchingOptions, cmp: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObject:inSortedRange:options:usingComparator:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, `object`, range, opts, cmp) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, `object`, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), opts.rawValue, cmp) as Long
 }
 
 /** @return NSArray<ObjectType> * */
@@ -165,9 +165,9 @@ fun NSOrderedSet.sortedArrayUsingComparator(cmptr: MemorySegment): MemorySegment
 }
 
 /** @return NSArray<ObjectType> * */
-fun NSOrderedSet.sortedArrayWithOptions_usingComparator(opts: MemorySegment, cmptr: MemorySegment): MemorySegment {
+fun NSOrderedSet.sortedArrayWithOptions_usingComparator(opts: NSSortOptions, cmptr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("sortedArrayWithOptions:usingComparator:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts, cmptr) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, cmptr) as MemorySegment
 }
 
 fun NSOrderedSet.descriptionWithLocale(locale: MemorySegment): MemorySegment {
@@ -235,9 +235,9 @@ fun NSOrderedSet.initWithOrderedSet_copyItems(`set`: MemorySegment, flag: Boolea
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `set`, flag) as MemorySegment
 }
 
-fun NSOrderedSet.initWithOrderedSet_range_copyItems(`set`: MemorySegment, range: MemorySegment, flag: Boolean): MemorySegment {
+fun NSOrderedSet.initWithOrderedSet_range_copyItems(`set`: MemorySegment, range: NSRange, flag: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("initWithOrderedSet:range:copyItems:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `set`, range, flag) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `set`, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), flag) as MemorySegment
 }
 
 fun NSOrderedSet.initWithArray(array: MemorySegment): MemorySegment {
@@ -250,9 +250,9 @@ fun NSOrderedSet.initWithArray_copyItems(`set`: MemorySegment, flag: Boolean): M
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `set`, flag) as MemorySegment
 }
 
-fun NSOrderedSet.initWithArray_range_copyItems(`set`: MemorySegment, range: MemorySegment, flag: Boolean): MemorySegment {
+fun NSOrderedSet.initWithArray_range_copyItems(`set`: MemorySegment, range: NSRange, flag: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("initWithArray:range:copyItems:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `set`, range, flag) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `set`, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), flag) as MemorySegment
 }
 
 fun NSOrderedSet.initWithSet(`set`: MemorySegment): MemorySegment {
@@ -301,10 +301,10 @@ fun NSOrderedSet_orderedSetWithOrderedSet(`set`: MemorySegment): MemorySegment {
 }
 
 // Class method: +[NSOrderedSet orderedSetWithOrderedSet:range:copyItems:]
-fun NSOrderedSet_orderedSetWithOrderedSet_range_copyItems(`set`: MemorySegment, range: MemorySegment, flag: Boolean): MemorySegment {
+fun NSOrderedSet_orderedSetWithOrderedSet_range_copyItems(`set`: MemorySegment, range: NSRange, flag: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("orderedSetWithOrderedSet:range:copyItems:")
     val cls = ObjCRuntime.getClass("NSOrderedSet")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, `set`, range, flag) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, `set`, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), flag) as MemorySegment
 }
 
 // Class method: +[NSOrderedSet orderedSetWithArray:]
@@ -315,10 +315,10 @@ fun NSOrderedSet_orderedSetWithArray(array: MemorySegment): MemorySegment {
 }
 
 // Class method: +[NSOrderedSet orderedSetWithArray:range:copyItems:]
-fun NSOrderedSet_orderedSetWithArray_range_copyItems(array: MemorySegment, range: MemorySegment, flag: Boolean): MemorySegment {
+fun NSOrderedSet_orderedSetWithArray_range_copyItems(array: MemorySegment, range: NSRange, flag: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("orderedSetWithArray:range:copyItems:")
     val cls = ObjCRuntime.getClass("NSOrderedSet")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, array, range, flag) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, array, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), flag) as MemorySegment
 }
 
 // Class method: +[NSOrderedSet orderedSetWithSet:]
@@ -338,15 +338,15 @@ fun NSOrderedSet_orderedSetWithSet_copyItems(`set`: MemorySegment, flag: Boolean
 // ── Category: NSOrderedSetDiffing on NSOrderedSet ─────────────────────────────────────────
 
 /** @return NSOrderedCollectionDifference<ObjectType> * */
-fun NSOrderedSet.differenceFromOrderedSet_withOptions_usingEquivalenceTest(other: MemorySegment, options: MemorySegment, block: MemorySegment): MemorySegment {
+fun NSOrderedSet.differenceFromOrderedSet_withOptions_usingEquivalenceTest(other: MemorySegment, options: NSOrderedCollectionDifferenceCalculationOptions, block: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("differenceFromOrderedSet:withOptions:usingEquivalenceTest:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options, block) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options.rawValue, block) as MemorySegment
 }
 
 /** @return NSOrderedCollectionDifference<ObjectType> * */
-fun NSOrderedSet.differenceFromOrderedSet_withOptions(other: MemorySegment, options: MemorySegment): MemorySegment {
+fun NSOrderedSet.differenceFromOrderedSet_withOptions(other: MemorySegment, options: NSOrderedCollectionDifferenceCalculationOptions): MemorySegment {
     val sel = ObjCRuntime.sel("differenceFromOrderedSet:withOptions:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options.rawValue) as MemorySegment
 }
 
 /** @return NSOrderedCollectionDifference<ObjectType> * */
@@ -375,9 +375,9 @@ fun NSOrderedSet.setValue_forKey(value: MemorySegment, key: MemorySegment): Unit
 
 // ── Category: NSKeyValueObserverRegistration on NSOrderedSet ─────────────────────────────────────────
 
-fun NSOrderedSet.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: MemorySegment, context: MemorySegment): Unit {
+fun NSOrderedSet.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: NSKeyValueObservingOptions, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("addObserver:forKeyPath:options:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options, context)
+    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options.rawValue, context)
 }
 
 fun NSOrderedSet.removeObserver_forKeyPath_context(observer: MemorySegment, keyPath: MemorySegment, context: MemorySegment): Unit {

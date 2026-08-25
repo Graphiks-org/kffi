@@ -21,13 +21,13 @@ open class NSSlider(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property sliderType
-    open fun sliderType(): MemorySegment {
+    open fun sliderType(): NSSliderType {
         val sel = ObjCRuntime.sel("sliderType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSliderType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setSliderType(value: MemorySegment) {
+    open fun setSliderType(value: NSSliderType) {
         val sel = ObjCRuntime.sel("setSliderType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property minValue
@@ -97,13 +97,13 @@ open class NSSlider(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property tintProminence
-    open fun tintProminence(): MemorySegment {
+    open fun tintProminence(): NSTintProminence {
         val sel = ObjCRuntime.sel("tintProminence")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTintProminence(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTintProminence(value: MemorySegment) {
+    open fun setTintProminence(value: NSTintProminence) {
         val sel = ObjCRuntime.sel("setTintProminence:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }
@@ -117,14 +117,14 @@ fun NSSlider.tickMarkValueAtIndex(index: Long): Double {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel, index) as Double
 }
 
-fun NSSlider.rectOfTickMarkAtIndex(index: Long): MemorySegment {
+fun NSSlider.rectOfTickMarkAtIndex(index: Long): NSRect {
     val sel = ObjCRuntime.sel("rectOfTickMarkAtIndex:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, index) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, index))
 }
 
-fun NSSlider.indexOfTickMarkAtPoint(point: MemorySegment): Long {
+fun NSSlider.indexOfTickMarkAtPoint(point: NSPoint): Long {
     val sel = ObjCRuntime.sel("indexOfTickMarkAtPoint:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, point) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Long
 }
 
 fun NSSlider.closestTickMarkValueToValue(value: Double): Double {
@@ -142,14 +142,14 @@ fun NSSlider.setNumberOfTickMarks(numberOfTickMarks: Long): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, numberOfTickMarks)
 }
 
-fun NSSlider.tickMarkPosition(): MemorySegment {
+fun NSSlider.tickMarkPosition(): NSTickMarkPosition {
     val sel = ObjCRuntime.sel("tickMarkPosition")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSTickMarkPosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSSlider.setTickMarkPosition(tickMarkPosition: MemorySegment): Unit {
+fun NSSlider.setTickMarkPosition(tickMarkPosition: NSTickMarkPosition): Unit {
     val sel = ObjCRuntime.sel("setTickMarkPosition:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, tickMarkPosition)
+    ObjCRuntime.msgSend(null, this.ptr, sel, tickMarkPosition.rawValue)
 }
 
 fun NSSlider.allowsTickMarkValuesOnly(): Boolean {

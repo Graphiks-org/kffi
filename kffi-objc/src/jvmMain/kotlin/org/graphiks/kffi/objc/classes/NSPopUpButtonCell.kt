@@ -149,9 +149,9 @@ open class NSPopUpButtonCell(override val ptr: MemorySegment) : NSMenuItemCell(p
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
     fun itemTitleAtIndexAsString(index: Long): String = ObjCRuntime.toJavaString(itemTitleAtIndex(index))
 
-    open fun attachPopUpWithFrame_inView(cellFrame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun attachPopUpWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("attachPopUpWithFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
     open fun dismissPopUp(): Unit {
@@ -159,9 +159,9 @@ open class NSPopUpButtonCell(override val ptr: MemorySegment) : NSMenuItemCell(p
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun performClickWithFrame_inView(frame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun performClickWithFrame_inView(frame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("performClickWithFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), controlView)
     }
 
     // @property menu
@@ -195,13 +195,13 @@ open class NSPopUpButtonCell(override val ptr: MemorySegment) : NSMenuItemCell(p
     }
 
     // @property preferredEdge
-    open fun preferredEdge(): MemorySegment {
+    open fun preferredEdge(): NSRectEdge {
         val sel = ObjCRuntime.sel("preferredEdge")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRectEdge(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPreferredEdge(value: MemorySegment) {
+    open fun setPreferredEdge(value: NSRectEdge) {
         val sel = ObjCRuntime.sel("setPreferredEdge:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property usesItemFromMenu
@@ -272,13 +272,13 @@ open class NSPopUpButtonCell(override val ptr: MemorySegment) : NSMenuItemCell(p
     open fun titleOfSelectedItemAsString(): String = ObjCRuntime.toJavaString(titleOfSelectedItem())
 
     // @property arrowPosition
-    open fun arrowPosition(): MemorySegment {
+    open fun arrowPosition(): NSPopUpArrowPosition {
         val sel = ObjCRuntime.sel("arrowPosition")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPopUpArrowPosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setArrowPosition(value: MemorySegment) {
+    open fun setArrowPosition(value: NSPopUpArrowPosition) {
         val sel = ObjCRuntime.sel("setArrowPosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

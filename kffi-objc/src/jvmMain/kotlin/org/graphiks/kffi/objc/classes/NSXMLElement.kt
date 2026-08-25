@@ -46,9 +46,9 @@ open class NSXMLElement(override val ptr: MemorySegment) : NSXMLNode(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun initWithXMLString_error(string: String, error: MemorySegment): MemorySegment = initWithXMLString_error(ObjCRuntime.newNSString(Arena.global(), string), error)
 
-    override fun initWithKind_options(kind: MemorySegment, options: MemorySegment): MemorySegment {
+    override fun initWithKind_options(kind: NSXMLNodeKind, options: NSXMLNodeOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithKind:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind.rawValue, options.rawValue) as MemorySegment
     }
 
     /** @return NSArray<NSXMLElement *> * */

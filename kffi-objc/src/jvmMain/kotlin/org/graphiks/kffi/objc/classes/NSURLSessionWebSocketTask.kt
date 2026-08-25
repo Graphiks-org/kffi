@@ -34,9 +34,9 @@ open class NSURLSessionWebSocketTask(override val ptr: MemorySegment) : NSURLSes
         ObjCRuntime.msgSend(null, ptr, sel, pongReceiveHandler)
     }
 
-    open fun cancelWithCloseCode_reason(closeCode: MemorySegment, reason: MemorySegment): Unit {
+    open fun cancelWithCloseCode_reason(closeCode: NSURLSessionWebSocketCloseCode, reason: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("cancelWithCloseCode:reason:")
-        ObjCRuntime.msgSend(null, ptr, sel, closeCode, reason)
+        ObjCRuntime.msgSend(null, ptr, sel, closeCode.rawValue, reason)
     }
 
     override fun init(): MemorySegment {
@@ -55,9 +55,9 @@ open class NSURLSessionWebSocketTask(override val ptr: MemorySegment) : NSURLSes
     }
 
     // @property closeCode
-    open fun closeCode(): MemorySegment {
+    open fun closeCode(): NSURLSessionWebSocketCloseCode {
         val sel = ObjCRuntime.sel("closeCode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLSessionWebSocketCloseCode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property closeReason

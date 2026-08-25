@@ -123,9 +123,9 @@ open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, red, green, blue, alpha, linearExposure) as MemorySegment
         }
 
-        fun colorForControlTint(controlTint: MemorySegment): MemorySegment {
+        fun colorForControlTint(controlTint: NSControlTint): MemorySegment {
             val sel = ObjCRuntime.sel("colorForControlTint:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, controlTint) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, controlTint.rawValue) as MemorySegment
         }
 
         fun colorFromPasteboard(pasteBoard: MemorySegment): MemorySegment {
@@ -133,9 +133,9 @@ open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, pasteBoard) as MemorySegment
         }
 
-        fun colorWithCGColor(cgColor: MemorySegment): MemorySegment {
+        fun colorWithCGColor(cgColor: CGColorRef): MemorySegment {
             val sel = ObjCRuntime.sel("colorWithCGColor:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, cgColor) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, cgColor.segment) as MemorySegment
         }
 
         fun blackColor(): MemorySegment {
@@ -479,9 +479,9 @@ open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
         }
 
-        fun currentControlTint(): MemorySegment {
+        fun currentControlTint(): NSControlTint {
             val sel = ObjCRuntime.sel("currentControlTint")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
+            return NSControlTint(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
         fun highlightColor(): MemorySegment {
@@ -516,9 +516,9 @@ open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun colorUsingType(type: MemorySegment): MemorySegment {
+    open fun colorUsingType(type: NSColorType): MemorySegment {
         val sel = ObjCRuntime.sel("colorUsingType:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, type) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, type.rawValue) as MemorySegment
     }
 
     open fun colorUsingColorSpace(space: MemorySegment): MemorySegment {
@@ -541,9 +541,9 @@ open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `val`) as MemorySegment
     }
 
-    open fun colorWithSystemEffect(systemEffect: MemorySegment): MemorySegment {
+    open fun colorWithSystemEffect(systemEffect: NSColorSystemEffect): MemorySegment {
         val sel = ObjCRuntime.sel("colorWithSystemEffect:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, systemEffect) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, systemEffect.rawValue) as MemorySegment
     }
 
     open fun `set`(): Unit {
@@ -601,15 +601,15 @@ open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, pasteBoard)
     }
 
-    open fun drawSwatchInRect(rect: MemorySegment): Unit {
+    open fun drawSwatchInRect(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawSwatchInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
     // @property type
-    open fun type(): MemorySegment {
+    open fun type(): NSColorType {
         val sel = ObjCRuntime.sel("type")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSColorType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property standardDynamicRangeColor
@@ -1028,9 +1028,9 @@ open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property currentControlTint
-    open fun currentControlTint(): MemorySegment {
+    open fun currentControlTint(): NSControlTint {
         val sel = ObjCRuntime.sel("currentControlTint")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSControlTint(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property highlightColor
@@ -1172,9 +1172,9 @@ open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property CGColor
-    open fun CGColor(): MemorySegment {
+    open fun CGColor(): CGColorRef {
         val sel = ObjCRuntime.sel("CGColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGColorRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     // @property ignoresAlpha

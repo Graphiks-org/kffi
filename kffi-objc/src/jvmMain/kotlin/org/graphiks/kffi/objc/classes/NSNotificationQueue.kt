@@ -24,14 +24,14 @@ open class NSNotificationQueue(override val ptr: MemorySegment) : NSObject(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, notificationCenter) as MemorySegment
     }
 
-    open fun enqueueNotification_postingStyle(notification: MemorySegment, postingStyle: MemorySegment): Unit {
+    open fun enqueueNotification_postingStyle(notification: MemorySegment, postingStyle: NSPostingStyle): Unit {
         val sel = ObjCRuntime.sel("enqueueNotification:postingStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, notification, postingStyle)
+        ObjCRuntime.msgSend(null, ptr, sel, notification, postingStyle.rawValue)
     }
 
-    open fun enqueueNotification_postingStyle_coalesceMask_forModes(notification: MemorySegment, postingStyle: MemorySegment, coalesceMask: MemorySegment, modes: MemorySegment): Unit {
+    open fun enqueueNotification_postingStyle_coalesceMask_forModes(notification: MemorySegment, postingStyle: NSPostingStyle, coalesceMask: NSNotificationCoalescing, modes: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enqueueNotification:postingStyle:coalesceMask:forModes:")
-        ObjCRuntime.msgSend(null, ptr, sel, notification, postingStyle, coalesceMask, modes)
+        ObjCRuntime.msgSend(null, ptr, sel, notification, postingStyle.rawValue, coalesceMask.rawValue, modes)
     }
 
     open fun dequeueNotificationsMatching_coalesceMask(notification: MemorySegment, coalesceMask: Long): Unit {

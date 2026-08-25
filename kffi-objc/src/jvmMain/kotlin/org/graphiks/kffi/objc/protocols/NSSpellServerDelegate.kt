@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSSpellServerDelegate {
     // @optional
-    fun spellServer_findMisspelledWordInString_language_wordCount_countOnly(sender: MemorySegment, stringToCheck: MemorySegment, language: MemorySegment, wordCount: MemorySegment, countOnly: Boolean): MemorySegment =
+    fun spellServer_findMisspelledWordInString_language_wordCount_countOnly(sender: MemorySegment, stringToCheck: MemorySegment, language: MemorySegment, wordCount: MemorySegment, countOnly: Boolean): NSRange =
         throw UnsupportedOperationException("Optional ObjC method 'spellServer:findMisspelledWordInString:language:wordCount:countOnly:' not implemented")
 
     /** @return NSArray<NSString *> * */
@@ -28,11 +28,11 @@ interface NSSpellServerDelegate {
 
     /** @return NSArray<NSString *> * */
     // @optional
-    fun spellServer_suggestCompletionsForPartialWordRange_inString_language(sender: MemorySegment, range: MemorySegment, string: MemorySegment, language: MemorySegment): MemorySegment =
+    fun spellServer_suggestCompletionsForPartialWordRange_inString_language(sender: MemorySegment, range: NSRange, string: MemorySegment, language: MemorySegment): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'spellServer:suggestCompletionsForPartialWordRange:inString:language:' not implemented")
 
     // @optional
-    fun spellServer_checkGrammarInString_language_details(sender: MemorySegment, stringToCheck: MemorySegment, language: MemorySegment, details: MemorySegment): MemorySegment =
+    fun spellServer_checkGrammarInString_language_details(sender: MemorySegment, stringToCheck: MemorySegment, language: MemorySegment, details: MemorySegment): NSRange =
         throw UnsupportedOperationException("Optional ObjC method 'spellServer:checkGrammarInString:language:details:' not implemented")
 
     /** @return NSArray<NSTextCheckingResult *> * */

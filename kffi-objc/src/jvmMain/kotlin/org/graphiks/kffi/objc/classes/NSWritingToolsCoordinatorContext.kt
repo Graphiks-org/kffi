@@ -14,9 +14,9 @@ open class NSWritingToolsCoordinatorContext(override val ptr: MemorySegment) : N
 
     }
 
-    open fun initWithAttributedString_range(attributedString: MemorySegment, range: MemorySegment): MemorySegment {
+    open fun initWithAttributedString_range(attributedString: MemorySegment, range: NSRange): MemorySegment {
         val sel = ObjCRuntime.sel("initWithAttributedString:range:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, attributedString, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, attributedString, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
     }
 
     open fun init(): MemorySegment {
@@ -31,9 +31,9 @@ open class NSWritingToolsCoordinatorContext(override val ptr: MemorySegment) : N
     }
 
     // @property range
-    open fun range(): MemorySegment {
+    open fun range(): NSRange {
         val sel = ObjCRuntime.sel("range")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property identifier
@@ -43,9 +43,9 @@ open class NSWritingToolsCoordinatorContext(override val ptr: MemorySegment) : N
     }
 
     // @property resolvedRange
-    open fun resolvedRange(): MemorySegment {
+    open fun resolvedRange(): NSRange {
         val sel = ObjCRuntime.sel("resolvedRange")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
 }

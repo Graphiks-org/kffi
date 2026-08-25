@@ -46,7 +46,7 @@ interface NSTokenFieldDelegate : NSTextFieldDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'tokenField:hasMenuForRepresentedObject:' not implemented")
 
     // @optional
-    fun tokenField_styleForRepresentedObject(tokenField: MemorySegment, representedObject: MemorySegment): MemorySegment =
+    fun tokenField_styleForRepresentedObject(tokenField: MemorySegment, representedObject: MemorySegment): NSTokenStyle =
         throw UnsupportedOperationException("Optional ObjC method 'tokenField:styleForRepresentedObject:' not implemented")
 
 }

@@ -213,6 +213,10 @@ fun CGDisplayScreenSize(allocator: SegmentAllocator, arg0: Int): MemorySegment {
     }
 }
 
+fun CGDisplayScreenSizeTyped(allocator: SegmentAllocator, arg0: Int): CGSize {
+    return CGSize(CGDisplayScreenSize(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGDisplayRotation Double(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
@@ -885,6 +889,10 @@ fun CGEventGetLocation(allocator: SegmentAllocator, arg0: MemorySegment): Memory
     }
 }
 
+fun CGEventGetLocationTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGPoint {
+    return CGPoint(CGEventGetLocation(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGEventGetUnflippedLocation typedef CGPoint = Declared(CGPoint)(typedef CGEventRef = (Declared(__CGEvent))*)
  */
@@ -904,6 +912,10 @@ fun CGEventGetUnflippedLocation(allocator: SegmentAllocator, arg0: MemorySegment
     }
 }
 
+fun CGEventGetUnflippedLocationTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGPoint {
+    return CGPoint(CGEventGetUnflippedLocation(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGEventSetLocation Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGPoint = Declared(CGPoint))
  */
@@ -921,6 +933,10 @@ fun CGEventSetLocation(arg0: MemorySegment, arg1: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGEventSetLocation(arg0: MemorySegment, arg1: CGPoint): Unit {
+    CGEventSetLocation(arg0, arg1.segment)
 }
 
 /**

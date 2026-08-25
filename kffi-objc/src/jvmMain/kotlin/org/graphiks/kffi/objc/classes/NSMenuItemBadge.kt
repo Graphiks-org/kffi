@@ -30,9 +30,9 @@ open class NSMenuItemBadge(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithCount_type(itemCount: Long, type: MemorySegment): MemorySegment {
+    open fun initWithCount_type(itemCount: Long, type: NSMenuItemBadgeType): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCount:type:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, itemCount, type) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, itemCount, type.rawValue) as MemorySegment
     }
 
     open fun initWithCount(itemCount: Long): MemorySegment {
@@ -60,9 +60,9 @@ open class NSMenuItemBadge(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property type
-    open fun type(): MemorySegment {
+    open fun type(): NSMenuItemBadgeType {
         val sel = ObjCRuntime.sel("type")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSMenuItemBadgeType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property stringValue

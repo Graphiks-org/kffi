@@ -15,21 +15,21 @@ open class NSTrackingArea(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithRect_options_owner_userInfo(rect: MemorySegment, options: MemorySegment, owner: MemorySegment, userInfo: MemorySegment): MemorySegment {
+    open fun initWithRect_options_owner_userInfo(rect: NSRect, options: NSTrackingAreaOptions, owner: MemorySegment, userInfo: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithRect:options:owner:userInfo:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), options, owner, userInfo) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), options.rawValue, owner, userInfo) as MemorySegment
     }
 
     // @property rect
-    open fun rect(): MemorySegment {
+    open fun rect(): NSRect {
         val sel = ObjCRuntime.sel("rect")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property options
-    open fun options(): MemorySegment {
+    open fun options(): NSTrackingAreaOptions {
         val sel = ObjCRuntime.sel("options")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTrackingAreaOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property owner

@@ -29,9 +29,9 @@ open class NSFormCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, image) as MemorySegment
     }
 
-    open fun titleWidth(size: MemorySegment): Double {
+    open fun titleWidth(size: NSSize): Double {
         val sel = ObjCRuntime.sel("titleWidth:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, ObjCRuntime.ObjCStructArg(size, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"))) as Double
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout)) as Double
     }
 
     // @property titleWidth
@@ -97,23 +97,23 @@ open class NSFormCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
     }
 
     // @property titleAlignment
-    open fun titleAlignment(): MemorySegment {
+    open fun titleAlignment(): NSTextAlignment {
         val sel = ObjCRuntime.sel("titleAlignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTitleAlignment(value: MemorySegment) {
+    open fun setTitleAlignment(value: NSTextAlignment) {
         val sel = ObjCRuntime.sel("setTitleAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property titleBaseWritingDirection
-    open fun titleBaseWritingDirection(): MemorySegment {
+    open fun titleBaseWritingDirection(): NSWritingDirection {
         val sel = ObjCRuntime.sel("titleBaseWritingDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTitleBaseWritingDirection(value: MemorySegment) {
+    open fun setTitleBaseWritingDirection(value: NSWritingDirection) {
         val sel = ObjCRuntime.sel("setTitleBaseWritingDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property preferredTextFieldWidth

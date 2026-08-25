@@ -20,13 +20,13 @@ open class NSAttributedStringMarkdownSourcePosition(override val ptr: MemorySegm
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, startLine, startColumn, endLine, endColumn) as MemorySegment
     }
 
-    open fun rangeInString(string: MemorySegment): MemorySegment {
+    open fun rangeInString(string: MemorySegment): NSRange {
         val sel = ObjCRuntime.sel("rangeInString:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, string) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, string))
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun rangeInString(string: String): MemorySegment = rangeInString(ObjCRuntime.newNSString(Arena.global(), string))
+    fun rangeInString(string: String): NSRange = rangeInString(ObjCRuntime.newNSString(Arena.global(), string))
 
     // @property startLine
     open fun startLine(): Long {

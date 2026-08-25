@@ -15,9 +15,9 @@ open class NSDrawer(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     }
 
-    open fun initWithContentSize_preferredEdge(contentSize: MemorySegment, edge: MemorySegment): MemorySegment {
+    open fun initWithContentSize_preferredEdge(contentSize: NSSize, edge: NSRectEdge): MemorySegment {
         val sel = ObjCRuntime.sel("initWithContentSize:preferredEdge:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(contentSize, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")), edge) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(contentSize.segment, NSSize.layout), edge.rawValue) as MemorySegment
     }
 
     open fun open(): Unit {
@@ -25,9 +25,9 @@ open class NSDrawer(override val ptr: MemorySegment) : NSResponder(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun openOnEdge(edge: MemorySegment): Unit {
+    open fun openOnEdge(edge: NSRectEdge): Unit {
         val sel = ObjCRuntime.sel("openOnEdge:")
-        ObjCRuntime.msgSend(null, ptr, sel, edge)
+        ObjCRuntime.msgSend(null, ptr, sel, edge.rawValue)
     }
 
     open fun close(): Unit {
@@ -61,13 +61,13 @@ open class NSDrawer(override val ptr: MemorySegment) : NSResponder(ptr) {
     }
 
     // @property preferredEdge
-    open fun preferredEdge(): MemorySegment {
+    open fun preferredEdge(): NSRectEdge {
         val sel = ObjCRuntime.sel("preferredEdge")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRectEdge(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPreferredEdge(value: MemorySegment) {
+    open fun setPreferredEdge(value: NSRectEdge) {
         val sel = ObjCRuntime.sel("setPreferredEdge:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property delegate
@@ -88,39 +88,39 @@ open class NSDrawer(override val ptr: MemorySegment) : NSResponder(ptr) {
     }
 
     // @property edge
-    open fun edge(): MemorySegment {
+    open fun edge(): NSRectEdge {
         val sel = ObjCRuntime.sel("edge")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRectEdge(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property contentSize
-    open fun contentSize(): MemorySegment {
+    open fun contentSize(): NSSize {
         val sel = ObjCRuntime.sel("contentSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setContentSize(value: MemorySegment) {
+    open fun setContentSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setContentSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property minContentSize
-    open fun minContentSize(): MemorySegment {
+    open fun minContentSize(): NSSize {
         val sel = ObjCRuntime.sel("minContentSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setMinContentSize(value: MemorySegment) {
+    open fun setMinContentSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMinContentSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property maxContentSize
-    open fun maxContentSize(): MemorySegment {
+    open fun maxContentSize(): NSSize {
         val sel = ObjCRuntime.sel("maxContentSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setMaxContentSize(value: MemorySegment) {
+    open fun setMaxContentSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMaxContentSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property leadingOffset

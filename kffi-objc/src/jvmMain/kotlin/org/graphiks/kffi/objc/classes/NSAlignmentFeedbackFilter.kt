@@ -12,9 +12,9 @@ open class NSAlignmentFeedbackFilter(override val ptr: MemorySegment) : NSObject
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSAlignmentFeedbackFilter") }
 
-        fun inputEventMask(): MemorySegment {
+        fun inputEventMask(): NSEventMask {
             val sel = ObjCRuntime.sel("inputEventMask")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
+            return NSEventMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
     }
@@ -30,9 +30,9 @@ open class NSAlignmentFeedbackFilter(override val ptr: MemorySegment) : NSObject
     }
 
     /** @return id<NSAlignmentFeedbackToken> */
-    open fun alignmentFeedbackTokenForMovementInView_previousPoint_alignedPoint_defaultPoint(view: MemorySegment, previousPoint: MemorySegment, alignedPoint: MemorySegment, defaultPoint: MemorySegment): MemorySegment {
+    open fun alignmentFeedbackTokenForMovementInView_previousPoint_alignedPoint_defaultPoint(view: MemorySegment, previousPoint: NSPoint, alignedPoint: NSPoint, defaultPoint: NSPoint): MemorySegment {
         val sel = ObjCRuntime.sel("alignmentFeedbackTokenForMovementInView:previousPoint:alignedPoint:defaultPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, view, ObjCRuntime.ObjCStructArg(previousPoint, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), ObjCRuntime.ObjCStructArg(alignedPoint, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), ObjCRuntime.ObjCStructArg(defaultPoint, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, view, ObjCRuntime.ObjCStructArg(previousPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(alignedPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(defaultPoint.segment, NSPoint.layout)) as MemorySegment
     }
 
     /** @return id<NSAlignmentFeedbackToken> */
@@ -47,15 +47,15 @@ open class NSAlignmentFeedbackFilter(override val ptr: MemorySegment) : NSObject
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, view, previousY, alignedY, defaultY) as MemorySegment
     }
 
-    open fun performFeedback_performanceTime(alignmentFeedbackTokens: MemorySegment, performanceTime: MemorySegment): Unit {
+    open fun performFeedback_performanceTime(alignmentFeedbackTokens: MemorySegment, performanceTime: NSHapticFeedbackPerformanceTime): Unit {
         val sel = ObjCRuntime.sel("performFeedback:performanceTime:")
-        ObjCRuntime.msgSend(null, ptr, sel, alignmentFeedbackTokens, performanceTime)
+        ObjCRuntime.msgSend(null, ptr, sel, alignmentFeedbackTokens, performanceTime.rawValue)
     }
 
     // @property inputEventMask
-    open fun inputEventMask(): MemorySegment {
+    open fun inputEventMask(): NSEventMask {
         val sel = ObjCRuntime.sel("inputEventMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 }

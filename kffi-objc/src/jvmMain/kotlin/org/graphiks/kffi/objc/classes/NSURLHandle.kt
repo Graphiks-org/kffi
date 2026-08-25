@@ -34,9 +34,9 @@ open class NSURLHandle(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun status(): MemorySegment {
+    open fun status(): NSURLHandleStatus {
         val sel = ObjCRuntime.sel("status")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLHandleStatus(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     open fun failureReason(): MemorySegment {

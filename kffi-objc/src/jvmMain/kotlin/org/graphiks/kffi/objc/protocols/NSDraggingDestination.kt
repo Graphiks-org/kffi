@@ -10,11 +10,11 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSDraggingDestination {
     // @optional
-    fun draggingEntered(sender: MemorySegment): MemorySegment =
+    fun draggingEntered(sender: MemorySegment): NSDragOperation =
         throw UnsupportedOperationException("Optional ObjC method 'draggingEntered:' not implemented")
 
     // @optional
-    fun draggingUpdated(sender: MemorySegment): MemorySegment =
+    fun draggingUpdated(sender: MemorySegment): NSDragOperation =
         throw UnsupportedOperationException("Optional ObjC method 'draggingUpdated:' not implemented")
 
     // @optional

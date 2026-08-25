@@ -31,13 +31,13 @@ open class NSScrubberImageItemView(override val ptr: MemorySegment) : NSScrubber
     }
 
     // @property imageAlignment
-    open fun imageAlignment(): MemorySegment {
+    open fun imageAlignment(): NSImageAlignment {
         val sel = ObjCRuntime.sel("imageAlignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageAlignment(value: MemorySegment) {
+    open fun setImageAlignment(value: NSImageAlignment) {
         val sel = ObjCRuntime.sel("setImageAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

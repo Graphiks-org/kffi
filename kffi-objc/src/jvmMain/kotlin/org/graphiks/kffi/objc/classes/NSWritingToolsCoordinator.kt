@@ -29,9 +29,9 @@ open class NSWritingToolsCoordinator(override val ptr: MemorySegment) : NSObject
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun updateRange_withText_reason_forContextWithIdentifier(range: MemorySegment, replacementText: MemorySegment, reason: MemorySegment, contextID: MemorySegment): Unit {
+    open fun updateRange_withText_reason_forContextWithIdentifier(range: NSRange, replacementText: MemorySegment, reason: NSWritingToolsCoordinatorTextUpdateReason, contextID: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("updateRange:withText:reason:forContextWithIdentifier:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), replacementText, reason, contextID)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), replacementText, reason.rawValue, contextID)
     }
 
     open fun updateForReflowedTextInContextWithIdentifier(contextID: MemorySegment): Unit {
@@ -79,41 +79,41 @@ open class NSWritingToolsCoordinator(override val ptr: MemorySegment) : NSObject
     }
 
     // @property state
-    open fun state(): MemorySegment {
+    open fun state(): NSWritingToolsCoordinatorState {
         val sel = ObjCRuntime.sel("state")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingToolsCoordinatorState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property preferredBehavior
-    open fun preferredBehavior(): MemorySegment {
+    open fun preferredBehavior(): NSWritingToolsBehavior {
         val sel = ObjCRuntime.sel("preferredBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingToolsBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPreferredBehavior(value: MemorySegment) {
+    open fun setPreferredBehavior(value: NSWritingToolsBehavior) {
         val sel = ObjCRuntime.sel("setPreferredBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property behavior
-    open fun behavior(): MemorySegment {
+    open fun behavior(): NSWritingToolsBehavior {
         val sel = ObjCRuntime.sel("behavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingToolsBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property preferredResultOptions
-    open fun preferredResultOptions(): MemorySegment {
+    open fun preferredResultOptions(): NSWritingToolsResultOptions {
         val sel = ObjCRuntime.sel("preferredResultOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingToolsResultOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPreferredResultOptions(value: MemorySegment) {
+    open fun setPreferredResultOptions(value: NSWritingToolsResultOptions) {
         val sel = ObjCRuntime.sel("setPreferredResultOptions:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property resultOptions
-    open fun resultOptions(): MemorySegment {
+    open fun resultOptions(): NSWritingToolsResultOptions {
         val sel = ObjCRuntime.sel("resultOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingToolsResultOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property includesTextListMarkers

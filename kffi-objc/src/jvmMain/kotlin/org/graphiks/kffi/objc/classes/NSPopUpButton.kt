@@ -40,9 +40,9 @@ open class NSPopUpButton(override val ptr: MemorySegment) : NSButton(ptr) {
 
     }
 
-    open fun initWithFrame_pullsDown(buttonFrame: MemorySegment, flag: Boolean): MemorySegment {
+    open fun initWithFrame_pullsDown(buttonFrame: NSRect, flag: Boolean): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:pullsDown:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(buttonFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), flag) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(buttonFrame.segment, NSRect.layout), flag) as MemorySegment
     }
 
     open fun addItemWithTitle(title: MemorySegment): Unit {
@@ -197,13 +197,13 @@ open class NSPopUpButton(override val ptr: MemorySegment) : NSButton(ptr) {
     }
 
     // @property preferredEdge
-    open fun preferredEdge(): MemorySegment {
+    open fun preferredEdge(): NSRectEdge {
         val sel = ObjCRuntime.sel("preferredEdge")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRectEdge(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPreferredEdge(value: MemorySegment) {
+    open fun setPreferredEdge(value: NSRectEdge) {
         val sel = ObjCRuntime.sel("setPreferredEdge:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property usesItemFromMenu

@@ -24,13 +24,13 @@ open class NSDistributedNotificationCenter(override val ptr: MemorySegment) : NS
 
     }
 
-    open fun addObserver_selector_name_object_suspensionBehavior(observer: MemorySegment, selector: MemorySegment, name: MemorySegment, `object`: MemorySegment, suspensionBehavior: MemorySegment): Unit {
+    open fun addObserver_selector_name_object_suspensionBehavior(observer: MemorySegment, selector: MemorySegment, name: MemorySegment, `object`: MemorySegment, suspensionBehavior: NSNotificationSuspensionBehavior): Unit {
         val sel = ObjCRuntime.sel("addObserver:selector:name:object:suspensionBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, observer, selector, name, `object`, suspensionBehavior)
+        ObjCRuntime.msgSend(null, ptr, sel, observer, selector, name, `object`, suspensionBehavior.rawValue)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun addObserver_selector_name_object_suspensionBehavior(observer: MemorySegment, selector: MemorySegment, name: MemorySegment, `object`: String, suspensionBehavior: MemorySegment): Unit = addObserver_selector_name_object_suspensionBehavior(observer, selector, name, ObjCRuntime.newNSString(Arena.global(), `object`), suspensionBehavior)
+    fun addObserver_selector_name_object_suspensionBehavior(observer: MemorySegment, selector: MemorySegment, name: MemorySegment, `object`: String, suspensionBehavior: NSNotificationSuspensionBehavior): Unit = addObserver_selector_name_object_suspensionBehavior(observer, selector, name, ObjCRuntime.newNSString(Arena.global(), `object`), suspensionBehavior)
 
     open fun postNotificationName_object_userInfo_deliverImmediately(name: MemorySegment, `object`: MemorySegment, userInfo: MemorySegment, deliverImmediately: Boolean): Unit {
         val sel = ObjCRuntime.sel("postNotificationName:object:userInfo:deliverImmediately:")
@@ -40,13 +40,13 @@ open class NSDistributedNotificationCenter(override val ptr: MemorySegment) : NS
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun postNotificationName_object_userInfo_deliverImmediately(name: MemorySegment, `object`: String, userInfo: MemorySegment, deliverImmediately: Boolean): Unit = postNotificationName_object_userInfo_deliverImmediately(name, ObjCRuntime.newNSString(Arena.global(), `object`), userInfo, deliverImmediately)
 
-    open fun postNotificationName_object_userInfo_options(name: MemorySegment, `object`: MemorySegment, userInfo: MemorySegment, options: MemorySegment): Unit {
+    open fun postNotificationName_object_userInfo_options(name: MemorySegment, `object`: MemorySegment, userInfo: MemorySegment, options: NSDistributedNotificationOptions): Unit {
         val sel = ObjCRuntime.sel("postNotificationName:object:userInfo:options:")
-        ObjCRuntime.msgSend(null, ptr, sel, name, `object`, userInfo, options)
+        ObjCRuntime.msgSend(null, ptr, sel, name, `object`, userInfo, options.rawValue)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun postNotificationName_object_userInfo_options(name: MemorySegment, `object`: String, userInfo: MemorySegment, options: MemorySegment): Unit = postNotificationName_object_userInfo_options(name, ObjCRuntime.newNSString(Arena.global(), `object`), userInfo, options)
+    fun postNotificationName_object_userInfo_options(name: MemorySegment, `object`: String, userInfo: MemorySegment, options: NSDistributedNotificationOptions): Unit = postNotificationName_object_userInfo_options(name, ObjCRuntime.newNSString(Arena.global(), `object`), userInfo, options)
 
     override fun addObserver_selector_name_object(observer: MemorySegment, aSelector: MemorySegment, aName: MemorySegment, anObject: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("addObserver:selector:name:object:")

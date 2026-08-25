@@ -12,9 +12,9 @@ open class NSScroller(override val ptr: MemorySegment) : NSControl(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSScroller") }
 
-        fun scrollerWidthForControlSize_scrollerStyle(controlSize: MemorySegment, scrollerStyle: MemorySegment): Double {
+        fun scrollerWidthForControlSize_scrollerStyle(controlSize: NSControlSize, scrollerStyle: NSScrollerStyle): Double {
             val sel = ObjCRuntime.sel("scrollerWidthForControlSize:scrollerStyle:")
-            return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, _class, sel, controlSize, scrollerStyle) as Double
+            return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, _class, sel, controlSize.rawValue, scrollerStyle.rawValue) as Double
         }
 
         fun isCompatibleWithOverlayScrollers(): Boolean {
@@ -22,16 +22,16 @@ open class NSScroller(override val ptr: MemorySegment) : NSControl(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel) as Boolean
         }
 
-        fun preferredScrollerStyle(): MemorySegment {
+        fun preferredScrollerStyle(): NSScrollerStyle {
             val sel = ObjCRuntime.sel("preferredScrollerStyle")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
+            return NSScrollerStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
     }
 
-    open fun rectForPart(partCode: MemorySegment): MemorySegment {
+    open fun rectForPart(partCode: NSScrollerPart): NSRect {
         val sel = ObjCRuntime.sel("rectForPart:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, partCode) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, partCode.rawValue))
     }
 
     open fun checkSpaceForParts(): Unit {
@@ -44,14 +44,14 @@ open class NSScroller(override val ptr: MemorySegment) : NSControl(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun drawKnobSlotInRect_highlight(slotRect: MemorySegment, flag: Boolean): Unit {
+    open fun drawKnobSlotInRect_highlight(slotRect: NSRect, flag: Boolean): Unit {
         val sel = ObjCRuntime.sel("drawKnobSlotInRect:highlight:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(slotRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), flag)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(slotRect.segment, NSRect.layout), flag)
     }
 
-    open fun testPart(point: MemorySegment): MemorySegment {
+    open fun testPart(point: NSPoint): NSScrollerPart {
         val sel = ObjCRuntime.sel("testPart:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return NSScrollerPart(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Long)
     }
 
     open fun trackKnob(event: MemorySegment): Unit {
@@ -66,51 +66,51 @@ open class NSScroller(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property preferredScrollerStyle
-    open fun preferredScrollerStyle(): MemorySegment {
+    open fun preferredScrollerStyle(): NSScrollerStyle {
         val sel = ObjCRuntime.sel("preferredScrollerStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrollerStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property scrollerStyle
-    open fun scrollerStyle(): MemorySegment {
+    open fun scrollerStyle(): NSScrollerStyle {
         val sel = ObjCRuntime.sel("scrollerStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrollerStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setScrollerStyle(value: MemorySegment) {
+    open fun setScrollerStyle(value: NSScrollerStyle) {
         val sel = ObjCRuntime.sel("setScrollerStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property knobStyle
-    open fun knobStyle(): MemorySegment {
+    open fun knobStyle(): NSScrollerKnobStyle {
         val sel = ObjCRuntime.sel("knobStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrollerKnobStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setKnobStyle(value: MemorySegment) {
+    open fun setKnobStyle(value: NSScrollerKnobStyle) {
         val sel = ObjCRuntime.sel("setKnobStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property usableParts
-    open fun usableParts(): MemorySegment {
+    open fun usableParts(): NSUsableScrollerParts {
         val sel = ObjCRuntime.sel("usableParts")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSUsableScrollerParts(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property controlSize
-    override fun controlSize(): MemorySegment {
+    override fun controlSize(): NSControlSize {
         val sel = ObjCRuntime.sel("controlSize")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSControlSize(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    override fun setControlSize(value: MemorySegment) {
+    override fun setControlSize(value: NSControlSize) {
         val sel = ObjCRuntime.sel("setControlSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property hitPart
-    open fun hitPart(): MemorySegment {
+    open fun hitPart(): NSScrollerPart {
         val sel = ObjCRuntime.sel("hitPart")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSScrollerPart(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property knobProportion
@@ -147,36 +147,36 @@ fun NSScroller.drawParts(): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
-fun NSScroller.drawArrow_highlight(whichArrow: MemorySegment, flag: Boolean): Unit {
+fun NSScroller.drawArrow_highlight(whichArrow: NSScrollerArrow, flag: Boolean): Unit {
     val sel = ObjCRuntime.sel("drawArrow:highlight:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, whichArrow, flag)
+    ObjCRuntime.msgSend(null, this.ptr, sel, whichArrow.rawValue, flag)
 }
 
-fun NSScroller.arrowsPosition(): MemorySegment {
+fun NSScroller.arrowsPosition(): NSScrollArrowPosition {
     val sel = ObjCRuntime.sel("arrowsPosition")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSScrollArrowPosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSScroller.setArrowsPosition(arrowsPosition: MemorySegment): Unit {
+fun NSScroller.setArrowsPosition(arrowsPosition: NSScrollArrowPosition): Unit {
     val sel = ObjCRuntime.sel("setArrowsPosition:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, arrowsPosition)
+    ObjCRuntime.msgSend(null, this.ptr, sel, arrowsPosition.rawValue)
 }
 
-fun NSScroller.controlTint(): MemorySegment {
+fun NSScroller.controlTint(): NSControlTint {
     val sel = ObjCRuntime.sel("controlTint")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSControlTint(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSScroller.setControlTint(controlTint: MemorySegment): Unit {
+fun NSScroller.setControlTint(controlTint: NSControlTint): Unit {
     val sel = ObjCRuntime.sel("setControlTint:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, controlTint)
+    ObjCRuntime.msgSend(null, this.ptr, sel, controlTint.rawValue)
 }
 
 // Class method: +[NSScroller scrollerWidthForControlSize:]
-fun NSScroller_scrollerWidthForControlSize(controlSize: MemorySegment): Double {
+fun NSScroller_scrollerWidthForControlSize(controlSize: NSControlSize): Double {
     val sel = ObjCRuntime.sel("scrollerWidthForControlSize:")
     val cls = ObjCRuntime.getClass("NSScroller")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, cls, sel, controlSize) as Double
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, cls, sel, controlSize.rawValue) as Double
 }
 
 // Class method: +[NSScroller scrollerWidth]

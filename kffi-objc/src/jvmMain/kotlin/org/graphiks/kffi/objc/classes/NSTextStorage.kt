@@ -25,9 +25,9 @@ open class NSTextStorage(override val ptr: MemorySegment) : NSMutableAttributedS
         ObjCRuntime.msgSend(null, ptr, sel, aLayoutManager)
     }
 
-    open fun edited_range_changeInLength(editedMask: MemorySegment, editedRange: MemorySegment, delta: Long): Unit {
+    open fun edited_range_changeInLength(editedMask: NSTextStorageEditActions, editedRange: NSRange, delta: Long): Unit {
         val sel = ObjCRuntime.sel("edited:range:changeInLength:")
-        ObjCRuntime.msgSend(null, ptr, sel, editedMask, ObjCRuntime.ObjCStructArg(editedRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), delta)
+        ObjCRuntime.msgSend(null, ptr, sel, editedMask.rawValue, ObjCRuntime.ObjCStructArg(editedRange.segment, NSRange.layout), delta)
     }
 
     open fun processEditing(): Unit {
@@ -35,14 +35,14 @@ open class NSTextStorage(override val ptr: MemorySegment) : NSMutableAttributedS
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun invalidateAttributesInRange(range: MemorySegment): Unit {
+    open fun invalidateAttributesInRange(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("invalidateAttributesInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
-    open fun ensureAttributesAreFixedInRange(range: MemorySegment): Unit {
+    open fun ensureAttributesAreFixedInRange(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("ensureAttributesAreFixedInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
     // @property layoutManagers
@@ -53,15 +53,15 @@ open class NSTextStorage(override val ptr: MemorySegment) : NSMutableAttributedS
     }
 
     // @property editedMask
-    open fun editedMask(): MemorySegment {
+    open fun editedMask(): NSTextStorageEditActions {
         val sel = ObjCRuntime.sel("editedMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextStorageEditActions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property editedRange
-    open fun editedRange(): MemorySegment {
+    open fun editedRange(): NSRange {
         val sel = ObjCRuntime.sel("editedRange")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
     // @property changeInLength

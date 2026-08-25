@@ -13,14 +13,14 @@ class ObjCStrongRef<out T : NSObject> internal constructor(
 
     override fun close() {
         if (closed.compareAndSet(false, true)) {
-            ObjCRuntime.release(value.ptr)
+            ObjCManagedRuntime.release(value.ptr)
         }
     }
 }
 
 /** Retains this Objective-C object and returns an idempotent owner for that retain. */
 fun <T : NSObject> T.retainStrong(): ObjCStrongRef<T> {
-    ObjCRuntime.retain(ptr)
+    ObjCManagedRuntime.retain(ptr)
     return ObjCStrongRef(this)
 }
 

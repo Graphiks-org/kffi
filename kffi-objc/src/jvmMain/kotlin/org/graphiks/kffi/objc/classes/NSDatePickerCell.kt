@@ -30,13 +30,13 @@ open class NSDatePickerCell(override val ptr: MemorySegment) : NSActionCell(ptr)
     }
 
     // @property datePickerStyle
-    open fun datePickerStyle(): MemorySegment {
+    open fun datePickerStyle(): NSDatePickerStyle {
         val sel = ObjCRuntime.sel("datePickerStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDatePickerStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDatePickerStyle(value: MemorySegment) {
+    open fun setDatePickerStyle(value: NSDatePickerStyle) {
         val sel = ObjCRuntime.sel("setDatePickerStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property drawsBackground
@@ -70,23 +70,23 @@ open class NSDatePickerCell(override val ptr: MemorySegment) : NSActionCell(ptr)
     }
 
     // @property datePickerMode
-    open fun datePickerMode(): MemorySegment {
+    open fun datePickerMode(): NSDatePickerMode {
         val sel = ObjCRuntime.sel("datePickerMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDatePickerMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDatePickerMode(value: MemorySegment) {
+    open fun setDatePickerMode(value: NSDatePickerMode) {
         val sel = ObjCRuntime.sel("setDatePickerMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property datePickerElements
-    open fun datePickerElements(): MemorySegment {
+    open fun datePickerElements(): NSDatePickerElementFlags {
         val sel = ObjCRuntime.sel("datePickerElements")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDatePickerElementFlags(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDatePickerElements(value: MemorySegment) {
+    open fun setDatePickerElements(value: NSDatePickerElementFlags) {
         val sel = ObjCRuntime.sel("setDatePickerElements:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property calendar

@@ -20,9 +20,9 @@ open class NSGridRow(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, index) as MemorySegment
     }
 
-    open fun mergeCellsInRange(range: MemorySegment): Unit {
+    open fun mergeCellsInRange(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("mergeCellsInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
     // @property gridView
@@ -38,23 +38,23 @@ open class NSGridRow(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property yPlacement
-    open fun yPlacement(): MemorySegment {
+    open fun yPlacement(): NSGridCellPlacement {
         val sel = ObjCRuntime.sel("yPlacement")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGridCellPlacement(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setYPlacement(value: MemorySegment) {
+    open fun setYPlacement(value: NSGridCellPlacement) {
         val sel = ObjCRuntime.sel("setYPlacement:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property rowAlignment
-    open fun rowAlignment(): MemorySegment {
+    open fun rowAlignment(): NSGridRowAlignment {
         val sel = ObjCRuntime.sel("rowAlignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGridRowAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setRowAlignment(value: MemorySegment) {
+    open fun setRowAlignment(value: NSGridRowAlignment) {
         val sel = ObjCRuntime.sel("setRowAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property height

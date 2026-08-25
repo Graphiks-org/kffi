@@ -47,23 +47,23 @@ open class NSPDFInfo(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property orientation
-    open fun orientation(): MemorySegment {
+    open fun orientation(): NSPaperOrientation {
         val sel = ObjCRuntime.sel("orientation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPaperOrientation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setOrientation(value: MemorySegment) {
+    open fun setOrientation(value: NSPaperOrientation) {
         val sel = ObjCRuntime.sel("setOrientation:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property paperSize
-    open fun paperSize(): MemorySegment {
+    open fun paperSize(): NSSize {
         val sel = ObjCRuntime.sel("paperSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setPaperSize(value: MemorySegment) {
+    open fun setPaperSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setPaperSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property attributes

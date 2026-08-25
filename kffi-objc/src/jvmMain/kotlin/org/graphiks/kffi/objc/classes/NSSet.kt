@@ -114,9 +114,9 @@ fun NSSet.enumerateObjectsUsingBlock(block: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, block)
 }
 
-fun NSSet.enumerateObjectsWithOptions_usingBlock(opts: MemorySegment, block: MemorySegment): Unit {
+fun NSSet.enumerateObjectsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsWithOptions:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, block)
 }
 
 /** @return NSSet<ObjectType> * */
@@ -126,9 +126,9 @@ fun NSSet.objectsPassingTest(predicate: MemorySegment): MemorySegment {
 }
 
 /** @return NSSet<ObjectType> * */
-fun NSSet.objectsWithOptions_passingTest(opts: MemorySegment, predicate: MemorySegment): MemorySegment {
+fun NSSet.objectsWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("objectsWithOptions:passingTest:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts, predicate) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, predicate) as MemorySegment
 }
 
 /** @return NSArray<ObjectType> * */
@@ -220,9 +220,9 @@ fun NSSet.setValue_forKey(value: MemorySegment, key: MemorySegment): Unit {
 
 // ── Category: NSKeyValueObserverRegistration on NSSet ─────────────────────────────────────────
 
-fun NSSet.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: MemorySegment, context: MemorySegment): Unit {
+fun NSSet.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: NSKeyValueObservingOptions, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("addObserver:forKeyPath:options:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options, context)
+    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options.rawValue, context)
 }
 
 fun NSSet.removeObserver_forKeyPath_context(observer: MemorySegment, keyPath: MemorySegment, context: MemorySegment): Unit {
@@ -253,9 +253,9 @@ fun NSSet.filteredSetUsingPredicate(predicate: MemorySegment): MemorySegment {
 
 // ── Category: NSCollectionViewAdditions on NSSet ─────────────────────────────────────────
 
-fun NSSet.enumerateIndexPathsWithOptions_usingBlock(opts: MemorySegment, block: MemorySegment): Unit {
+fun NSSet.enumerateIndexPathsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateIndexPathsWithOptions:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, block)
 }
 
 // Class method: +[NSSet setWithCollectionViewIndexPath:]

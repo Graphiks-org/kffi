@@ -23,16 +23,16 @@ open class NSIndexSet(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, value) as MemorySegment
         }
 
-        fun indexSetWithIndexesInRange(range: MemorySegment): MemorySegment {
+        fun indexSetWithIndexesInRange(range: NSRange): MemorySegment {
             val sel = ObjCRuntime.sel("indexSetWithIndexesInRange:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
         }
 
     }
 
-    open fun initWithIndexesInRange(range: MemorySegment): MemorySegment {
+    open fun initWithIndexesInRange(range: NSRange): MemorySegment {
         val sel = ObjCRuntime.sel("initWithIndexesInRange:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
     }
 
     open fun initWithIndexSet(indexSet: MemorySegment): MemorySegment {
@@ -70,14 +70,14 @@ open class NSIndexSet(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, value) as Long
     }
 
-    open fun getIndexes_maxCount_inIndexRange(indexBuffer: MemorySegment, bufferSize: Long, range: MemorySegment): Long {
+    open fun getIndexes_maxCount_inIndexRange(indexBuffer: MemorySegment, bufferSize: Long, range: NSRangePointer): Long {
         val sel = ObjCRuntime.sel("getIndexes:maxCount:inIndexRange:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, indexBuffer, bufferSize, range) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, indexBuffer, bufferSize, range.segment) as Long
     }
 
-    open fun countOfIndexesInRange(range: MemorySegment): Long {
+    open fun countOfIndexesInRange(range: NSRange): Long {
         val sel = ObjCRuntime.sel("countOfIndexesInRange:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Long
     }
 
     open fun containsIndex(value: Long): Boolean {
@@ -85,9 +85,9 @@ open class NSIndexSet(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, value) as Boolean
     }
 
-    open fun containsIndexesInRange(range: MemorySegment): Boolean {
+    open fun containsIndexesInRange(range: NSRange): Boolean {
         val sel = ObjCRuntime.sel("containsIndexesInRange:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Boolean
     }
 
     open fun containsIndexes(indexSet: MemorySegment): Boolean {
@@ -95,9 +95,9 @@ open class NSIndexSet(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, indexSet) as Boolean
     }
 
-    open fun intersectsIndexesInRange(range: MemorySegment): Boolean {
+    open fun intersectsIndexesInRange(range: NSRange): Boolean {
         val sel = ObjCRuntime.sel("intersectsIndexesInRange:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Boolean
     }
 
     open fun enumerateIndexesUsingBlock(block: MemorySegment): Unit {
@@ -105,14 +105,14 @@ open class NSIndexSet(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, block)
     }
 
-    open fun enumerateIndexesWithOptions_usingBlock(opts: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateIndexesWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateIndexesWithOptions:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, opts, block)
+        ObjCRuntime.msgSend(null, ptr, sel, opts.rawValue, block)
     }
 
-    open fun enumerateIndexesInRange_options_usingBlock(range: MemorySegment, opts: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateIndexesInRange_options_usingBlock(range: NSRange, opts: NSEnumerationOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateIndexesInRange:options:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), opts, block)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), opts.rawValue, block)
     }
 
     open fun indexPassingTest(predicate: MemorySegment): Long {
@@ -120,14 +120,14 @@ open class NSIndexSet(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, predicate) as Long
     }
 
-    open fun indexWithOptions_passingTest(opts: MemorySegment, predicate: MemorySegment): Long {
+    open fun indexWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): Long {
         val sel = ObjCRuntime.sel("indexWithOptions:passingTest:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, opts, predicate) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, opts.rawValue, predicate) as Long
     }
 
-    open fun indexInRange_options_passingTest(range: MemorySegment, opts: MemorySegment, predicate: MemorySegment): Long {
+    open fun indexInRange_options_passingTest(range: NSRange, opts: NSEnumerationOptions, predicate: MemorySegment): Long {
         val sel = ObjCRuntime.sel("indexInRange:options:passingTest:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), opts, predicate) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), opts.rawValue, predicate) as Long
     }
 
     open fun indexesPassingTest(predicate: MemorySegment): MemorySegment {
@@ -135,14 +135,14 @@ open class NSIndexSet(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, predicate) as MemorySegment
     }
 
-    open fun indexesWithOptions_passingTest(opts: MemorySegment, predicate: MemorySegment): MemorySegment {
+    open fun indexesWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("indexesWithOptions:passingTest:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, opts, predicate) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, opts.rawValue, predicate) as MemorySegment
     }
 
-    open fun indexesInRange_options_passingTest(range: MemorySegment, opts: MemorySegment, predicate: MemorySegment): MemorySegment {
+    open fun indexesInRange_options_passingTest(range: NSRange, opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("indexesInRange:options:passingTest:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), opts, predicate) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), opts.rawValue, predicate) as MemorySegment
     }
 
     open fun enumerateRangesUsingBlock(block: MemorySegment): Unit {
@@ -150,14 +150,14 @@ open class NSIndexSet(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, block)
     }
 
-    open fun enumerateRangesWithOptions_usingBlock(opts: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateRangesWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateRangesWithOptions:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, opts, block)
+        ObjCRuntime.msgSend(null, ptr, sel, opts.rawValue, block)
     }
 
-    open fun enumerateRangesInRange_options_usingBlock(range: MemorySegment, opts: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateRangesInRange_options_usingBlock(range: NSRange, opts: NSEnumerationOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateRangesInRange:options:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), opts, block)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), opts.rawValue, block)
     }
 
     // @property count

@@ -56,9 +56,9 @@ open class NSStream(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property streamStatus
-    open fun streamStatus(): MemorySegment {
+    open fun streamStatus(): NSStreamStatus {
         val sel = ObjCRuntime.sel("streamStatus")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSStreamStatus(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property streamError

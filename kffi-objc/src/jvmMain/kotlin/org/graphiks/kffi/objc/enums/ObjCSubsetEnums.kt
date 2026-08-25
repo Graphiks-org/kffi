@@ -653,18 +653,6 @@ enum class CFTimeZoneNameStyle(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CFCalendarUnit}
- */
-enum class CFCalendarUnit(val value: Long) {
-    kCFCalendarUnitEra(2L), kCFCalendarUnitYear(4L), kCFCalendarUnitMonth(8L), kCFCalendarUnitDay(16L), kCFCalendarUnitHour(32L), kCFCalendarUnitMinute(64L), kCFCalendarUnitSecond(128L), kCFCalendarUnitWeek(256L), kCFCalendarUnitWeekday(512L), kCFCalendarUnitWeekdayOrdinal(1024L), kCFCalendarUnitQuarter(2048L), kCFCalendarUnitWeekOfMonth(4096L), kCFCalendarUnitWeekOfYear(8192L), kCFCalendarUnitYearForWeekOfYear(16384L), kCFCalendarUnitDayOfYear(65536L);
-
-    companion object {
-        fun fromValue(v: Long): CFCalendarUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CFCalendarUnit value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFCalendar.h:106:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreFoundation_framework_Headers_CFCalendar_h_106_1_(val value: Long) {
@@ -773,18 +761,6 @@ enum class CFURLComponentType(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum mpo_flags_t}
- */
-enum class mpo_flags_t(val value: Long) {
-    MPO_PORT(0L), MPO_SERVICE_PORT(1024L), MPO_CONNECTION_PORT(2048L), MPO_REPLY_PORT(4096L), MPO_WEAK_REPLY_PORT(16384L), MPO_NOTIFICATION_PORT(17408L), MPO_EXCEPTION_PORT(32768L), MPO_CONNECTION_PORT_WITH_PORT_ARRAY(65536L);
-
-    companion object {
-        fun fromValue(v: Long): mpo_flags_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown mpo_flags_t value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum mach_port_guard_exception_codes}
  */
 enum class mach_port_guard_exception_codes(val value: Long) {
@@ -809,18 +785,6 @@ enum class CFRunLoopRunResult(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CFRunLoopActivity}
- */
-enum class CFRunLoopActivity(val value: Long) {
-    kCFRunLoopEntry(1L), kCFRunLoopBeforeTimers(2L), kCFRunLoopBeforeSources(4L), kCFRunLoopBeforeWaiting(32L), kCFRunLoopAfterWaiting(64L), kCFRunLoopExit(128L), kCFRunLoopAllActivities(268435455L);
-
-    companion object {
-        fun fromValue(v: Long): CFRunLoopActivity = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CFRunLoopActivity value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum CFSocketError}
  */
 enum class CFSocketError(val value: Long) {
@@ -829,18 +793,6 @@ enum class CFSocketError(val value: Long) {
     companion object {
         fun fromValue(v: Long): CFSocketError = entries.firstOrNull { it.value == v }
             ?: error("Unknown CFSocketError value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CFSocketCallBackType}
- */
-enum class CFSocketCallBackType(val value: Long) {
-    kCFSocketNoCallBack(0L), kCFSocketReadCallBack(1L), kCFSocketAcceptCallBack(2L), kCFSocketDataCallBack(3L), kCFSocketConnectCallBack(4L), kCFSocketWriteCallBack(8L);
-
-    companion object {
-        fun fromValue(v: Long): CFSocketCallBackType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CFSocketCallBackType value: $v")
     }
 }
 
@@ -917,18 +869,6 @@ enum class dispatch_autorelease_frequency_t(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum dispatch_block_flags_t}
- */
-enum class dispatch_block_flags_t(val value: Long) {
-    DISPATCH_BLOCK_BARRIER(1L), DISPATCH_BLOCK_DETACHED(2L), DISPATCH_BLOCK_ASSIGN_CURRENT(4L), DISPATCH_BLOCK_NO_QOS_CLASS(8L), DISPATCH_BLOCK_INHERIT_QOS_CLASS(16L), DISPATCH_BLOCK_ENFORCE_QOS_CLASS(32L);
-
-    companion object {
-        fun fromValue(v: Long): dispatch_block_flags_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown dispatch_block_flags_t value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum CFStreamStatus}
  */
 enum class CFStreamStatus(val value: Long) {
@@ -937,18 +877,6 @@ enum class CFStreamStatus(val value: Long) {
     companion object {
         fun fromValue(v: Long): CFStreamStatus = entries.firstOrNull { it.value == v }
             ?: error("Unknown CFStreamStatus value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CFStreamEventType}
- */
-enum class CFStreamEventType(val value: Long) {
-    kCFStreamEventNone(0L), kCFStreamEventOpenCompleted(1L), kCFStreamEventHasBytesAvailable(2L), kCFStreamEventCanAcceptBytes(4L), kCFStreamEventErrorOccurred(8L), kCFStreamEventEndEncountered(16L);
-
-    companion object {
-        fun fromValue(v: Long): CFStreamEventType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CFStreamEventType value: $v")
     }
 }
 
@@ -1121,18 +1049,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CFStringTokenizerTokenType}
- */
-enum class CFStringTokenizerTokenType(val value: Long) {
-    kCFStringTokenizerTokenNone(0L), kCFStringTokenizerTokenNormal(1L), kCFStringTokenizerTokenHasSubTokensMask(2L), kCFStringTokenizerTokenHasDerivedSubTokensMask(4L), kCFStringTokenizerTokenHasHasNumbersMask(8L), kCFStringTokenizerTokenHasNonLettersMask(16L), kCFStringTokenizerTokenIsCJWordMask(32L);
-
-    companion object {
-        fun fromValue(v: Long): CFStringTokenizerTokenType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CFStringTokenizerTokenType value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFFileDescriptor.h:18:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreFoundation_framework_Headers_CFFileDescriptor_h_18_1_(val value: Long) {
@@ -1217,39 +1133,31 @@ enum class CFXMLEntityTypeCode(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CFXMLParserStatusCode}
- */
-enum class CFXMLParserStatusCode(val value: Long) {
-    kCFXMLStatusParseNotBegun(-2L), kCFXMLStatusParseInProgress(-1L), kCFXMLStatusParseSuccessful(0L), kCFXMLErrorUnexpectedEOF(1L), kCFXMLErrorUnknownEncoding(2L), kCFXMLErrorEncodingConversionFailure(3L), kCFXMLErrorMalformedProcessingInstruction(4L), kCFXMLErrorMalformedDTD(5L), kCFXMLErrorMalformedName(6L), kCFXMLErrorMalformedCDSect(7L), kCFXMLErrorMalformedCloseTag(8L), kCFXMLErrorMalformedStartTag(9L), kCFXMLErrorMalformedDocument(10L), kCFXMLErrorElementlessDocument(11L), kCFXMLErrorMalformedComment(12L), kCFXMLErrorMalformedCharacterReference(13L), kCFXMLErrorMalformedParsedCharacterData(14L), kCFXMLErrorNoData(15L);
-
-    companion object {
-        fun fromValue(v: Long): CFXMLParserStatusCode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CFXMLParserStatusCode value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum NSComparisonResult}
  */
-enum class NSComparisonResult(val value: Long) {
-    NSOrderedAscending(-1L), NSOrderedSame(0L), NSOrderedDescending(1L);
-
+@JvmInline
+value class NSComparisonResult(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSComparisonResult = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSComparisonResult value: $v")
+        val NSOrderedAscending = NSComparisonResult(-1L)
+        val NSOrderedSame = NSComparisonResult(0L)
+        val NSOrderedDescending = NSComparisonResult(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSQualityOfService}
  */
-enum class NSQualityOfService(val value: Long) {
-    NSQualityOfServiceUserInteractive(33L), NSQualityOfServiceUserInitiated(25L), NSQualityOfServiceUtility(17L), NSQualityOfServiceBackground(9L), NSQualityOfServiceDefault(-1L);
-
+@JvmInline
+value class NSQualityOfService(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSQualityOfService = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSQualityOfService value: $v")
+        val NSQualityOfServiceUserInteractive = NSQualityOfService(33L)
+        val NSQualityOfServiceUserInitiated = NSQualityOfService(25L)
+        val NSQualityOfServiceUtility = NSQualityOfService(17L)
+        val NSQualityOfServiceBackground = NSQualityOfService(9L)
+        val NSQualityOfServiceDefault = NSQualityOfService(-1L)
     }
+
 }
 
 /**
@@ -1267,25 +1175,27 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCollectionChangeType}
  */
-enum class NSCollectionChangeType(val value: Long) {
-    NSCollectionChangeInsert(0L), NSCollectionChangeRemove(1L);
-
+@JvmInline
+value class NSCollectionChangeType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCollectionChangeType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCollectionChangeType value: $v")
+        val NSCollectionChangeInsert = NSCollectionChangeType(0L)
+        val NSCollectionChangeRemove = NSCollectionChangeType(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSItemProviderRepresentationVisibility}
  */
-enum class NSItemProviderRepresentationVisibility(val value: Long) {
-    NSItemProviderRepresentationVisibilityAll(0L), NSItemProviderRepresentationVisibilityTeam(1L), NSItemProviderRepresentationVisibilityGroup(2L), NSItemProviderRepresentationVisibilityOwnProcess(3L);
-
+@JvmInline
+value class NSItemProviderRepresentationVisibility(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSItemProviderRepresentationVisibility = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSItemProviderRepresentationVisibility value: $v")
+        val NSItemProviderRepresentationVisibilityAll = NSItemProviderRepresentationVisibility(0L)
+        val NSItemProviderRepresentationVisibilityTeam = NSItemProviderRepresentationVisibility(1L)
+        val NSItemProviderRepresentationVisibilityGroup = NSItemProviderRepresentationVisibility(2L)
+        val NSItemProviderRepresentationVisibilityOwnProcess = NSItemProviderRepresentationVisibility(3L)
     }
+
 }
 
 /**
@@ -1349,18 +1259,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSCalendarUnit}
- */
-enum class NSCalendarUnit(val value: Long) {
-    NSCalendarUnitEra(2L), NSCalendarUnitYear(4L), NSCalendarUnitMonth(8L), NSCalendarUnitDay(16L), NSCalendarUnitHour(32L), NSCalendarUnitMinute(64L), NSCalendarUnitSecond(128L), NSCalendarUnitWeekday(512L), NSCalendarUnitWeekdayOrdinal(1024L), NSCalendarUnitQuarter(2048L), NSCalendarUnitWeekOfMonth(4096L), NSCalendarUnitWeekOfYear(8192L), NSCalendarUnitYearForWeekOfYear(16384L), NSCalendarUnitNanosecond(32768L), NSCalendarUnitDayOfYear(65536L), NSCalendarUnitCalendar(1048576L), NSCalendarUnitTimeZone(2097152L), NSCalendarUnitIsLeapMonth(1073741824L), NSCalendarUnitIsRepeatedDay(2147483648L), NSEraCalendarUnit(2L), NSYearCalendarUnit(4L), NSMonthCalendarUnit(8L), NSDayCalendarUnit(16L), NSHourCalendarUnit(32L), NSMinuteCalendarUnit(64L), NSSecondCalendarUnit(128L), NSWeekCalendarUnit(256L), NSWeekdayCalendarUnit(512L), NSWeekdayOrdinalCalendarUnit(1024L), NSQuarterCalendarUnit(2048L), NSWeekOfMonthCalendarUnit(4096L), NSWeekOfYearCalendarUnit(8192L), NSYearForWeekOfYearCalendarUnit(16384L), NSCalendarCalendarUnit(1048576L), NSTimeZoneCalendarUnit(2097152L);
-
-    companion object {
-        fun fromValue(v: Long): NSCalendarUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCalendarUnit value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h:113:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Foundation_framework_Headers_NSCalendar_h_113_1_(val value: Long) {
@@ -1399,73 +1297,74 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDecodingFailurePolicy}
  */
-enum class NSDecodingFailurePolicy(val value: Long) {
-    NSDecodingFailurePolicyRaiseException(0L), NSDecodingFailurePolicySetErrorAndReturn(1L);
-
+@JvmInline
+value class NSDecodingFailurePolicy(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDecodingFailurePolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDecodingFailurePolicy value: $v")
+        val NSDecodingFailurePolicyRaiseException = NSDecodingFailurePolicy(0L)
+        val NSDecodingFailurePolicySetErrorAndReturn = NSDecodingFailurePolicy(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDataCompressionAlgorithm}
  */
-enum class NSDataCompressionAlgorithm(val value: Long) {
-    NSDataCompressionAlgorithmLZFSE(0L), NSDataCompressionAlgorithmLZ4(1L), NSDataCompressionAlgorithmLZMA(2L), NSDataCompressionAlgorithmZlib(3L);
-
+@JvmInline
+value class NSDataCompressionAlgorithm(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDataCompressionAlgorithm = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDataCompressionAlgorithm value: $v")
+        val NSDataCompressionAlgorithmLZFSE = NSDataCompressionAlgorithm(0L)
+        val NSDataCompressionAlgorithmLZ4 = NSDataCompressionAlgorithm(1L)
+        val NSDataCompressionAlgorithmLZMA = NSDataCompressionAlgorithm(2L)
+        val NSDataCompressionAlgorithmZlib = NSDataCompressionAlgorithm(3L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSInlinePresentationIntent}
- */
-enum class NSInlinePresentationIntent(val value: Long) {
-    NSInlinePresentationIntentEmphasized(1L), NSInlinePresentationIntentStronglyEmphasized(2L), NSInlinePresentationIntentCode(4L), NSInlinePresentationIntentStrikethrough(32L), NSInlinePresentationIntentSoftBreak(64L), NSInlinePresentationIntentLineBreak(128L), NSInlinePresentationIntentInlineHTML(256L), NSInlinePresentationIntentBlockHTML(512L);
-
-    companion object {
-        fun fromValue(v: Long): NSInlinePresentationIntent = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSInlinePresentationIntent value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAttributedStringMarkdownParsingFailurePolicy}
  */
-enum class NSAttributedStringMarkdownParsingFailurePolicy(val value: Long) {
-    NSAttributedStringMarkdownParsingFailureReturnError(0L), NSAttributedStringMarkdownParsingFailureReturnPartiallyParsedIfPossible(1L);
-
+@JvmInline
+value class NSAttributedStringMarkdownParsingFailurePolicy(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAttributedStringMarkdownParsingFailurePolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAttributedStringMarkdownParsingFailurePolicy value: $v")
+        val NSAttributedStringMarkdownParsingFailureReturnError = NSAttributedStringMarkdownParsingFailurePolicy(0L)
+        val NSAttributedStringMarkdownParsingFailureReturnPartiallyParsedIfPossible = NSAttributedStringMarkdownParsingFailurePolicy(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAttributedStringMarkdownInterpretedSyntax}
  */
-enum class NSAttributedStringMarkdownInterpretedSyntax(val value: Long) {
-    NSAttributedStringMarkdownInterpretedSyntaxFull(0L), NSAttributedStringMarkdownInterpretedSyntaxInlineOnly(1L), NSAttributedStringMarkdownInterpretedSyntaxInlineOnlyPreservingWhitespace(2L);
-
+@JvmInline
+value class NSAttributedStringMarkdownInterpretedSyntax(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAttributedStringMarkdownInterpretedSyntax = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAttributedStringMarkdownInterpretedSyntax value: $v")
+        val NSAttributedStringMarkdownInterpretedSyntaxFull = NSAttributedStringMarkdownInterpretedSyntax(0L)
+        val NSAttributedStringMarkdownInterpretedSyntaxInlineOnly = NSAttributedStringMarkdownInterpretedSyntax(1L)
+        val NSAttributedStringMarkdownInterpretedSyntaxInlineOnlyPreservingWhitespace = NSAttributedStringMarkdownInterpretedSyntax(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPresentationIntentKind}
  */
-enum class NSPresentationIntentKind(val value: Long) {
-    NSPresentationIntentKindParagraph(0L), NSPresentationIntentKindHeader(1L), NSPresentationIntentKindOrderedList(2L), NSPresentationIntentKindUnorderedList(3L), NSPresentationIntentKindListItem(4L), NSPresentationIntentKindCodeBlock(5L), NSPresentationIntentKindBlockQuote(6L), NSPresentationIntentKindThematicBreak(7L), NSPresentationIntentKindTable(8L), NSPresentationIntentKindTableHeaderRow(9L), NSPresentationIntentKindTableRow(10L), NSPresentationIntentKindTableCell(11L);
-
+@JvmInline
+value class NSPresentationIntentKind(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPresentationIntentKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPresentationIntentKind value: $v")
+        val NSPresentationIntentKindParagraph = NSPresentationIntentKind(0L)
+        val NSPresentationIntentKindHeader = NSPresentationIntentKind(1L)
+        val NSPresentationIntentKindOrderedList = NSPresentationIntentKind(2L)
+        val NSPresentationIntentKindUnorderedList = NSPresentationIntentKind(3L)
+        val NSPresentationIntentKindListItem = NSPresentationIntentKind(4L)
+        val NSPresentationIntentKindCodeBlock = NSPresentationIntentKind(5L)
+        val NSPresentationIntentKindBlockQuote = NSPresentationIntentKind(6L)
+        val NSPresentationIntentKindThematicBreak = NSPresentationIntentKind(7L)
+        val NSPresentationIntentKindTable = NSPresentationIntentKind(8L)
+        val NSPresentationIntentKindTableHeaderRow = NSPresentationIntentKind(9L)
+        val NSPresentationIntentKindTableRow = NSPresentationIntentKind(10L)
+        val NSPresentationIntentKindTableCell = NSPresentationIntentKind(11L)
     }
+
 }
 
 /**
@@ -1483,241 +1382,320 @@ enum class NSPresentationIntentTableColumnAlignment(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSFormattingContext}
  */
-enum class NSFormattingContext(val value: Long) {
-    NSFormattingContextUnknown(0L), NSFormattingContextDynamic(1L), NSFormattingContextStandalone(2L), NSFormattingContextListItem(3L), NSFormattingContextBeginningOfSentence(4L), NSFormattingContextMiddleOfSentence(5L);
-
+@JvmInline
+value class NSFormattingContext(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSFormattingContext = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFormattingContext value: $v")
+        val NSFormattingContextUnknown = NSFormattingContext(0L)
+        val NSFormattingContextDynamic = NSFormattingContext(1L)
+        val NSFormattingContextStandalone = NSFormattingContext(2L)
+        val NSFormattingContextListItem = NSFormattingContext(3L)
+        val NSFormattingContextBeginningOfSentence = NSFormattingContext(4L)
+        val NSFormattingContextMiddleOfSentence = NSFormattingContext(5L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSFormattingUnitStyle}
  */
-enum class NSFormattingUnitStyle(val value: Long) {
-    NSFormattingUnitStyleShort(1L), NSFormattingUnitStyleMedium(2L), NSFormattingUnitStyleLong(3L);
-
+@JvmInline
+value class NSFormattingUnitStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSFormattingUnitStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFormattingUnitStyle value: $v")
+        val NSFormattingUnitStyleShort = NSFormattingUnitStyle(1L)
+        val NSFormattingUnitStyleMedium = NSFormattingUnitStyle(2L)
+        val NSFormattingUnitStyleLong = NSFormattingUnitStyle(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDateFormatterStyle}
  */
-enum class NSDateFormatterStyle(val value: Long) {
-    NSDateFormatterNoStyle(0L), NSDateFormatterShortStyle(1L), NSDateFormatterMediumStyle(2L), NSDateFormatterLongStyle(3L), NSDateFormatterFullStyle(4L);
-
+@JvmInline
+value class NSDateFormatterStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDateFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateFormatterStyle value: $v")
+        val NSDateFormatterNoStyle = NSDateFormatterStyle(0L)
+        val NSDateFormatterShortStyle = NSDateFormatterStyle(1L)
+        val NSDateFormatterMediumStyle = NSDateFormatterStyle(2L)
+        val NSDateFormatterLongStyle = NSDateFormatterStyle(3L)
+        val NSDateFormatterFullStyle = NSDateFormatterStyle(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDateFormatterBehavior}
  */
-enum class NSDateFormatterBehavior(val value: Long) {
-    NSDateFormatterBehaviorDefault(0L), NSDateFormatterBehavior10_0(1000L), NSDateFormatterBehavior10_4(1040L);
-
+@JvmInline
+value class NSDateFormatterBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDateFormatterBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateFormatterBehavior value: $v")
+        val NSDateFormatterBehaviorDefault = NSDateFormatterBehavior(0L)
+        val NSDateFormatterBehavior10_0 = NSDateFormatterBehavior(1000L)
+        val NSDateFormatterBehavior10_4 = NSDateFormatterBehavior(1040L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDateIntervalFormatterStyle}
  */
-enum class NSDateIntervalFormatterStyle(val value: Long) {
-    NSDateIntervalFormatterNoStyle(0L), NSDateIntervalFormatterShortStyle(1L), NSDateIntervalFormatterMediumStyle(2L), NSDateIntervalFormatterLongStyle(3L), NSDateIntervalFormatterFullStyle(4L);
-
+@JvmInline
+value class NSDateIntervalFormatterStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDateIntervalFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateIntervalFormatterStyle value: $v")
+        val NSDateIntervalFormatterNoStyle = NSDateIntervalFormatterStyle(0L)
+        val NSDateIntervalFormatterShortStyle = NSDateIntervalFormatterStyle(1L)
+        val NSDateIntervalFormatterMediumStyle = NSDateIntervalFormatterStyle(2L)
+        val NSDateIntervalFormatterLongStyle = NSDateIntervalFormatterStyle(3L)
+        val NSDateIntervalFormatterFullStyle = NSDateIntervalFormatterStyle(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSMassFormatterUnit}
  */
-enum class NSMassFormatterUnit(val value: Long) {
-    NSMassFormatterUnitGram(11L), NSMassFormatterUnitKilogram(14L), NSMassFormatterUnitOunce(1537L), NSMassFormatterUnitPound(1538L), NSMassFormatterUnitStone(1539L);
-
+@JvmInline
+value class NSMassFormatterUnit(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSMassFormatterUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSMassFormatterUnit value: $v")
+        val NSMassFormatterUnitGram = NSMassFormatterUnit(11L)
+        val NSMassFormatterUnitKilogram = NSMassFormatterUnit(14L)
+        val NSMassFormatterUnitOunce = NSMassFormatterUnit(1537L)
+        val NSMassFormatterUnitPound = NSMassFormatterUnit(1538L)
+        val NSMassFormatterUnitStone = NSMassFormatterUnit(1539L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLengthFormatterUnit}
  */
-enum class NSLengthFormatterUnit(val value: Long) {
-    NSLengthFormatterUnitMillimeter(8L), NSLengthFormatterUnitCentimeter(9L), NSLengthFormatterUnitMeter(11L), NSLengthFormatterUnitKilometer(14L), NSLengthFormatterUnitInch(1281L), NSLengthFormatterUnitFoot(1282L), NSLengthFormatterUnitYard(1283L), NSLengthFormatterUnitMile(1284L);
-
+@JvmInline
+value class NSLengthFormatterUnit(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLengthFormatterUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLengthFormatterUnit value: $v")
+        val NSLengthFormatterUnitMillimeter = NSLengthFormatterUnit(8L)
+        val NSLengthFormatterUnitCentimeter = NSLengthFormatterUnit(9L)
+        val NSLengthFormatterUnitMeter = NSLengthFormatterUnit(11L)
+        val NSLengthFormatterUnitKilometer = NSLengthFormatterUnit(14L)
+        val NSLengthFormatterUnitInch = NSLengthFormatterUnit(1281L)
+        val NSLengthFormatterUnitFoot = NSLengthFormatterUnit(1282L)
+        val NSLengthFormatterUnitYard = NSLengthFormatterUnit(1283L)
+        val NSLengthFormatterUnitMile = NSLengthFormatterUnit(1284L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSEnergyFormatterUnit}
  */
-enum class NSEnergyFormatterUnit(val value: Long) {
-    NSEnergyFormatterUnitJoule(11L), NSEnergyFormatterUnitKilojoule(14L), NSEnergyFormatterUnitCalorie(1793L), NSEnergyFormatterUnitKilocalorie(1794L);
-
+@JvmInline
+value class NSEnergyFormatterUnit(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSEnergyFormatterUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSEnergyFormatterUnit value: $v")
+        val NSEnergyFormatterUnitJoule = NSEnergyFormatterUnit(11L)
+        val NSEnergyFormatterUnitKilojoule = NSEnergyFormatterUnit(14L)
+        val NSEnergyFormatterUnitCalorie = NSEnergyFormatterUnit(1793L)
+        val NSEnergyFormatterUnitKilocalorie = NSEnergyFormatterUnit(1794L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterBehavior}
  */
-enum class NSNumberFormatterBehavior(val value: Long) {
-    NSNumberFormatterBehaviorDefault(0L), NSNumberFormatterBehavior10_0(1000L), NSNumberFormatterBehavior10_4(1040L);
-
+@JvmInline
+value class NSNumberFormatterBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSNumberFormatterBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNumberFormatterBehavior value: $v")
+        val NSNumberFormatterBehaviorDefault = NSNumberFormatterBehavior(0L)
+        val NSNumberFormatterBehavior10_0 = NSNumberFormatterBehavior(1000L)
+        val NSNumberFormatterBehavior10_4 = NSNumberFormatterBehavior(1040L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterStyle}
  */
-enum class NSNumberFormatterStyle(val value: Long) {
-    NSNumberFormatterNoStyle(0L), NSNumberFormatterDecimalStyle(1L), NSNumberFormatterCurrencyStyle(2L), NSNumberFormatterPercentStyle(3L), NSNumberFormatterScientificStyle(4L), NSNumberFormatterSpellOutStyle(5L), NSNumberFormatterOrdinalStyle(6L), NSNumberFormatterCurrencyISOCodeStyle(8L), NSNumberFormatterCurrencyPluralStyle(9L), NSNumberFormatterCurrencyAccountingStyle(10L);
-
+@JvmInline
+value class NSNumberFormatterStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSNumberFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNumberFormatterStyle value: $v")
+        val NSNumberFormatterNoStyle = NSNumberFormatterStyle(0L)
+        val NSNumberFormatterDecimalStyle = NSNumberFormatterStyle(1L)
+        val NSNumberFormatterCurrencyStyle = NSNumberFormatterStyle(2L)
+        val NSNumberFormatterPercentStyle = NSNumberFormatterStyle(3L)
+        val NSNumberFormatterScientificStyle = NSNumberFormatterStyle(4L)
+        val NSNumberFormatterSpellOutStyle = NSNumberFormatterStyle(5L)
+        val NSNumberFormatterOrdinalStyle = NSNumberFormatterStyle(6L)
+        val NSNumberFormatterCurrencyISOCodeStyle = NSNumberFormatterStyle(8L)
+        val NSNumberFormatterCurrencyPluralStyle = NSNumberFormatterStyle(9L)
+        val NSNumberFormatterCurrencyAccountingStyle = NSNumberFormatterStyle(10L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterPadPosition}
  */
-enum class NSNumberFormatterPadPosition(val value: Long) {
-    NSNumberFormatterPadBeforePrefix(0L), NSNumberFormatterPadAfterPrefix(1L), NSNumberFormatterPadBeforeSuffix(2L), NSNumberFormatterPadAfterSuffix(3L);
-
+@JvmInline
+value class NSNumberFormatterPadPosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSNumberFormatterPadPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNumberFormatterPadPosition value: $v")
+        val NSNumberFormatterPadBeforePrefix = NSNumberFormatterPadPosition(0L)
+        val NSNumberFormatterPadAfterPrefix = NSNumberFormatterPadPosition(1L)
+        val NSNumberFormatterPadBeforeSuffix = NSNumberFormatterPadPosition(2L)
+        val NSNumberFormatterPadAfterSuffix = NSNumberFormatterPadPosition(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSNumberFormatterRoundingMode}
  */
-enum class NSNumberFormatterRoundingMode(val value: Long) {
-    NSNumberFormatterRoundCeiling(0L), NSNumberFormatterRoundFloor(1L), NSNumberFormatterRoundDown(2L), NSNumberFormatterRoundUp(3L), NSNumberFormatterRoundHalfEven(4L), NSNumberFormatterRoundHalfDown(5L), NSNumberFormatterRoundHalfUp(6L);
-
+@JvmInline
+value class NSNumberFormatterRoundingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSNumberFormatterRoundingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNumberFormatterRoundingMode value: $v")
+        val NSNumberFormatterRoundCeiling = NSNumberFormatterRoundingMode(0L)
+        val NSNumberFormatterRoundFloor = NSNumberFormatterRoundingMode(1L)
+        val NSNumberFormatterRoundDown = NSNumberFormatterRoundingMode(2L)
+        val NSNumberFormatterRoundUp = NSNumberFormatterRoundingMode(3L)
+        val NSNumberFormatterRoundHalfEven = NSNumberFormatterRoundingMode(4L)
+        val NSNumberFormatterRoundHalfDown = NSNumberFormatterRoundingMode(5L)
+        val NSNumberFormatterRoundHalfUp = NSNumberFormatterRoundingMode(6L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLocaleLanguageDirection}
  */
-enum class NSLocaleLanguageDirection(val value: Long) {
-    NSLocaleLanguageDirectionUnknown(0L), NSLocaleLanguageDirectionLeftToRight(1L), NSLocaleLanguageDirectionRightToLeft(2L), NSLocaleLanguageDirectionTopToBottom(3L), NSLocaleLanguageDirectionBottomToTop(4L);
-
+@JvmInline
+value class NSLocaleLanguageDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLocaleLanguageDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLocaleLanguageDirection value: $v")
+        val NSLocaleLanguageDirectionUnknown = NSLocaleLanguageDirection(0L)
+        val NSLocaleLanguageDirectionLeftToRight = NSLocaleLanguageDirection(1L)
+        val NSLocaleLanguageDirectionRightToLeft = NSLocaleLanguageDirection(2L)
+        val NSLocaleLanguageDirectionTopToBottom = NSLocaleLanguageDirection(3L)
+        val NSLocaleLanguageDirectionBottomToTop = NSLocaleLanguageDirection(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPersonNameComponentsFormatterStyle}
  */
-enum class NSPersonNameComponentsFormatterStyle(val value: Long) {
-    NSPersonNameComponentsFormatterStyleDefault(0L), NSPersonNameComponentsFormatterStyleShort(1L), NSPersonNameComponentsFormatterStyleMedium(2L), NSPersonNameComponentsFormatterStyleLong(3L), NSPersonNameComponentsFormatterStyleAbbreviated(4L);
-
+@JvmInline
+value class NSPersonNameComponentsFormatterStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPersonNameComponentsFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPersonNameComponentsFormatterStyle value: $v")
+        val NSPersonNameComponentsFormatterStyleDefault = NSPersonNameComponentsFormatterStyle(0L)
+        val NSPersonNameComponentsFormatterStyleShort = NSPersonNameComponentsFormatterStyle(1L)
+        val NSPersonNameComponentsFormatterStyleMedium = NSPersonNameComponentsFormatterStyle(2L)
+        val NSPersonNameComponentsFormatterStyleLong = NSPersonNameComponentsFormatterStyle(3L)
+        val NSPersonNameComponentsFormatterStyleAbbreviated = NSPersonNameComponentsFormatterStyle(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSRelativeDateTimeFormatterStyle}
  */
-enum class NSRelativeDateTimeFormatterStyle(val value: Long) {
-    NSRelativeDateTimeFormatterStyleNumeric(0L), NSRelativeDateTimeFormatterStyleNamed(1L);
-
+@JvmInline
+value class NSRelativeDateTimeFormatterStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRelativeDateTimeFormatterStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRelativeDateTimeFormatterStyle value: $v")
+        val NSRelativeDateTimeFormatterStyleNumeric = NSRelativeDateTimeFormatterStyle(0L)
+        val NSRelativeDateTimeFormatterStyleNamed = NSRelativeDateTimeFormatterStyle(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSRelativeDateTimeFormatterUnitsStyle}
  */
-enum class NSRelativeDateTimeFormatterUnitsStyle(val value: Long) {
-    NSRelativeDateTimeFormatterUnitsStyleFull(0L), NSRelativeDateTimeFormatterUnitsStyleSpellOut(1L), NSRelativeDateTimeFormatterUnitsStyleShort(2L), NSRelativeDateTimeFormatterUnitsStyleAbbreviated(3L);
-
+@JvmInline
+value class NSRelativeDateTimeFormatterUnitsStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRelativeDateTimeFormatterUnitsStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRelativeDateTimeFormatterUnitsStyle value: $v")
+        val NSRelativeDateTimeFormatterUnitsStyleFull = NSRelativeDateTimeFormatterUnitsStyle(0L)
+        val NSRelativeDateTimeFormatterUnitsStyleSpellOut = NSRelativeDateTimeFormatterUnitsStyle(1L)
+        val NSRelativeDateTimeFormatterUnitsStyleShort = NSRelativeDateTimeFormatterUnitsStyle(2L)
+        val NSRelativeDateTimeFormatterUnitsStyleAbbreviated = NSRelativeDateTimeFormatterUnitsStyle(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSRoundingMode}
  */
-enum class NSRoundingMode(val value: Long) {
-    NSRoundPlain(0L), NSRoundDown(1L), NSRoundUp(2L), NSRoundBankers(3L);
-
+@JvmInline
+value class NSRoundingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRoundingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRoundingMode value: $v")
+        val NSRoundPlain = NSRoundingMode(0L)
+        val NSRoundDown = NSRoundingMode(1L)
+        val NSRoundUp = NSRoundingMode(2L)
+        val NSRoundBankers = NSRoundingMode(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCalculationError}
  */
-enum class NSCalculationError(val value: Long) {
-    NSCalculationNoError(0L), NSCalculationLossOfPrecision(1L), NSCalculationUnderflow(2L), NSCalculationOverflow(3L), NSCalculationDivideByZero(4L);
-
+@JvmInline
+value class NSCalculationError(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCalculationError = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCalculationError value: $v")
+        val NSCalculationNoError = NSCalculationError(0L)
+        val NSCalculationLossOfPrecision = NSCalculationError(1L)
+        val NSCalculationUnderflow = NSCalculationError(2L)
+        val NSCalculationOverflow = NSCalculationError(3L)
+        val NSCalculationDivideByZero = NSCalculationError(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSearchPathDirectory}
  */
-enum class NSSearchPathDirectory(val value: Long) {
-    NSApplicationDirectory(1L), NSDemoApplicationDirectory(2L), NSDeveloperApplicationDirectory(3L), NSAdminApplicationDirectory(4L), NSLibraryDirectory(5L), NSDeveloperDirectory(6L), NSUserDirectory(7L), NSDocumentationDirectory(8L), NSDocumentDirectory(9L), NSCoreServiceDirectory(10L), NSAutosavedInformationDirectory(11L), NSDesktopDirectory(12L), NSCachesDirectory(13L), NSApplicationSupportDirectory(14L), NSDownloadsDirectory(15L), NSInputMethodsDirectory(16L), NSMoviesDirectory(17L), NSMusicDirectory(18L), NSPicturesDirectory(19L), NSPrinterDescriptionDirectory(20L), NSSharedPublicDirectory(21L), NSPreferencePanesDirectory(22L), NSApplicationScriptsDirectory(23L), NSItemReplacementDirectory(99L), NSAllApplicationsDirectory(100L), NSAllLibrariesDirectory(101L), NSTrashDirectory(102L);
-
+@JvmInline
+value class NSSearchPathDirectory(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSearchPathDirectory = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSearchPathDirectory value: $v")
+        val NSApplicationDirectory = NSSearchPathDirectory(1L)
+        val NSDemoApplicationDirectory = NSSearchPathDirectory(2L)
+        val NSDeveloperApplicationDirectory = NSSearchPathDirectory(3L)
+        val NSAdminApplicationDirectory = NSSearchPathDirectory(4L)
+        val NSLibraryDirectory = NSSearchPathDirectory(5L)
+        val NSDeveloperDirectory = NSSearchPathDirectory(6L)
+        val NSUserDirectory = NSSearchPathDirectory(7L)
+        val NSDocumentationDirectory = NSSearchPathDirectory(8L)
+        val NSDocumentDirectory = NSSearchPathDirectory(9L)
+        val NSCoreServiceDirectory = NSSearchPathDirectory(10L)
+        val NSAutosavedInformationDirectory = NSSearchPathDirectory(11L)
+        val NSDesktopDirectory = NSSearchPathDirectory(12L)
+        val NSCachesDirectory = NSSearchPathDirectory(13L)
+        val NSApplicationSupportDirectory = NSSearchPathDirectory(14L)
+        val NSDownloadsDirectory = NSSearchPathDirectory(15L)
+        val NSInputMethodsDirectory = NSSearchPathDirectory(16L)
+        val NSMoviesDirectory = NSSearchPathDirectory(17L)
+        val NSMusicDirectory = NSSearchPathDirectory(18L)
+        val NSPicturesDirectory = NSSearchPathDirectory(19L)
+        val NSPrinterDescriptionDirectory = NSSearchPathDirectory(20L)
+        val NSSharedPublicDirectory = NSSearchPathDirectory(21L)
+        val NSPreferencePanesDirectory = NSSearchPathDirectory(22L)
+        val NSApplicationScriptsDirectory = NSSearchPathDirectory(23L)
+        val NSItemReplacementDirectory = NSSearchPathDirectory(99L)
+        val NSAllApplicationsDirectory = NSSearchPathDirectory(100L)
+        val NSAllLibrariesDirectory = NSSearchPathDirectory(101L)
+        val NSTrashDirectory = NSSearchPathDirectory(102L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLHandleStatus}
  */
-enum class NSURLHandleStatus(val value: Long) {
-    NSURLHandleNotLoaded(0L), NSURLHandleLoadSucceeded(1L), NSURLHandleLoadInProgress(2L), NSURLHandleLoadFailed(3L);
-
+@JvmInline
+value class NSURLHandleStatus(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLHandleStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLHandleStatus value: $v")
+        val NSURLHandleNotLoaded = NSURLHandleStatus(0L)
+        val NSURLHandleLoadSucceeded = NSURLHandleStatus(1L)
+        val NSURLHandleLoadInProgress = NSURLHandleStatus(2L)
+        val NSURLHandleLoadFailed = NSURLHandleStatus(3L)
     }
+
 }
 
 /**
@@ -1733,231 +1711,263 @@ enum class NSURLRelationship(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSFileManagerSupportedSyncControls}
- */
-enum class NSFileManagerSupportedSyncControls(val value: Long) {
-    NSFileManagerSupportedSyncControlsPauseSync(1L), NSFileManagerSupportedSyncControlsFailUploadOnConflict(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSFileManagerSupportedSyncControls = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFileManagerSupportedSyncControls value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum NSFileManagerResumeSyncBehavior}
  */
-enum class NSFileManagerResumeSyncBehavior(val value: Long) {
-    NSFileManagerResumeSyncBehaviorPreserveLocalChanges(0L), NSFileManagerResumeSyncBehaviorAfterUploadWithFailOnConflict(1L), NSFileManagerResumeSyncBehaviorDropLocalChanges(2L);
-
+@JvmInline
+value class NSFileManagerResumeSyncBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSFileManagerResumeSyncBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFileManagerResumeSyncBehavior value: $v")
+        val NSFileManagerResumeSyncBehaviorPreserveLocalChanges = NSFileManagerResumeSyncBehavior(0L)
+        val NSFileManagerResumeSyncBehaviorAfterUploadWithFailOnConflict = NSFileManagerResumeSyncBehavior(1L)
+        val NSFileManagerResumeSyncBehaviorDropLocalChanges = NSFileManagerResumeSyncBehavior(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSFileManagerUploadLocalVersionConflictPolicy}
  */
-enum class NSFileManagerUploadLocalVersionConflictPolicy(val value: Long) {
-    NSFileManagerUploadConflictPolicyDefault(0L), NSFileManagerUploadConflictPolicyFailOnConflict(1L);
-
+@JvmInline
+value class NSFileManagerUploadLocalVersionConflictPolicy(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSFileManagerUploadLocalVersionConflictPolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFileManagerUploadLocalVersionConflictPolicy value: $v")
+        val NSFileManagerUploadConflictPolicyDefault = NSFileManagerUploadLocalVersionConflictPolicy(0L)
+        val NSFileManagerUploadConflictPolicyFailOnConflict = NSFileManagerUploadLocalVersionConflictPolicy(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSHTTPCookieAcceptPolicy}
  */
-enum class NSHTTPCookieAcceptPolicy(val value: Long) {
-    NSHTTPCookieAcceptPolicyAlways(0L), NSHTTPCookieAcceptPolicyNever(1L), NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain(2L);
-
+@JvmInline
+value class NSHTTPCookieAcceptPolicy(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSHTTPCookieAcceptPolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSHTTPCookieAcceptPolicy value: $v")
+        val NSHTTPCookieAcceptPolicyAlways = NSHTTPCookieAcceptPolicy(0L)
+        val NSHTTPCookieAcceptPolicyNever = NSHTTPCookieAcceptPolicy(1L)
+        val NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain = NSHTTPCookieAcceptPolicy(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSKeyValueChange}
  */
-enum class NSKeyValueChange(val value: Long) {
-    NSKeyValueChangeSetting(1L), NSKeyValueChangeInsertion(2L), NSKeyValueChangeRemoval(3L), NSKeyValueChangeReplacement(4L);
-
+@JvmInline
+value class NSKeyValueChange(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSKeyValueChange = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSKeyValueChange value: $v")
+        val NSKeyValueChangeSetting = NSKeyValueChange(1L)
+        val NSKeyValueChangeInsertion = NSKeyValueChange(2L)
+        val NSKeyValueChangeRemoval = NSKeyValueChange(3L)
+        val NSKeyValueChangeReplacement = NSKeyValueChange(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSKeyValueSetMutationKind}
  */
-enum class NSKeyValueSetMutationKind(val value: Long) {
-    NSKeyValueUnionSetMutation(1L), NSKeyValueMinusSetMutation(2L), NSKeyValueIntersectSetMutation(3L), NSKeyValueSetSetMutation(4L);
-
+@JvmInline
+value class NSKeyValueSetMutationKind(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSKeyValueSetMutationKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSKeyValueSetMutationKind value: $v")
+        val NSKeyValueUnionSetMutation = NSKeyValueSetMutationKind(1L)
+        val NSKeyValueMinusSetMutation = NSKeyValueSetMutationKind(2L)
+        val NSKeyValueIntersectSetMutation = NSKeyValueSetMutationKind(3L)
+        val NSKeyValueSetSetMutation = NSKeyValueSetMutationKind(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPropertyListFormat}
  */
-enum class NSPropertyListFormat(val value: Long) {
-    NSPropertyListOpenStepFormat(1L), NSPropertyListXMLFormat_v1_0(100L), NSPropertyListBinaryFormat_v1_0(200L);
-
+@JvmInline
+value class NSPropertyListFormat(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPropertyListFormat = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPropertyListFormat value: $v")
+        val NSPropertyListOpenStepFormat = NSPropertyListFormat(1L)
+        val NSPropertyListXMLFormat_v1_0 = NSPropertyListFormat(100L)
+        val NSPropertyListBinaryFormat_v1_0 = NSPropertyListFormat(200L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSRectEdge}
  */
-enum class NSRectEdge(val value: Long) {
-    NSRectEdgeMinX(0L), NSRectEdgeMinY(1L), NSRectEdgeMaxX(2L), NSRectEdgeMaxY(3L), NSMinXEdge(0L), NSMinYEdge(1L), NSMaxXEdge(2L), NSMaxYEdge(3L);
-
+@JvmInline
+value class NSRectEdge(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRectEdge = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRectEdge value: $v")
+        val NSRectEdgeMinX = NSRectEdge(0L)
+        val NSRectEdgeMinY = NSRectEdge(1L)
+        val NSRectEdgeMaxX = NSRectEdge(2L)
+        val NSRectEdgeMaxY = NSRectEdge(3L)
+        val NSMinXEdge = NSRectEdge(0L)
+        val NSMinYEdge = NSRectEdge(1L)
+        val NSMaxXEdge = NSRectEdge(2L)
+        val NSMaxYEdge = NSRectEdge(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGrammaticalGender}
  */
-enum class NSGrammaticalGender(val value: Long) {
-    NSGrammaticalGenderNotSet(0L), NSGrammaticalGenderFeminine(1L), NSGrammaticalGenderMasculine(2L), NSGrammaticalGenderNeuter(3L);
-
+@JvmInline
+value class NSGrammaticalGender(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGrammaticalGender = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalGender value: $v")
+        val NSGrammaticalGenderNotSet = NSGrammaticalGender(0L)
+        val NSGrammaticalGenderFeminine = NSGrammaticalGender(1L)
+        val NSGrammaticalGenderMasculine = NSGrammaticalGender(2L)
+        val NSGrammaticalGenderNeuter = NSGrammaticalGender(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGrammaticalPartOfSpeech}
  */
-enum class NSGrammaticalPartOfSpeech(val value: Long) {
-    NSGrammaticalPartOfSpeechNotSet(0L), NSGrammaticalPartOfSpeechDeterminer(1L), NSGrammaticalPartOfSpeechPronoun(2L), NSGrammaticalPartOfSpeechLetter(3L), NSGrammaticalPartOfSpeechAdverb(4L), NSGrammaticalPartOfSpeechParticle(5L), NSGrammaticalPartOfSpeechAdjective(6L), NSGrammaticalPartOfSpeechAdposition(7L), NSGrammaticalPartOfSpeechVerb(8L), NSGrammaticalPartOfSpeechNoun(9L), NSGrammaticalPartOfSpeechConjunction(10L), NSGrammaticalPartOfSpeechNumeral(11L), NSGrammaticalPartOfSpeechInterjection(12L), NSGrammaticalPartOfSpeechPreposition(13L), NSGrammaticalPartOfSpeechAbbreviation(14L);
-
+@JvmInline
+value class NSGrammaticalPartOfSpeech(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGrammaticalPartOfSpeech = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalPartOfSpeech value: $v")
+        val NSGrammaticalPartOfSpeechNotSet = NSGrammaticalPartOfSpeech(0L)
+        val NSGrammaticalPartOfSpeechDeterminer = NSGrammaticalPartOfSpeech(1L)
+        val NSGrammaticalPartOfSpeechPronoun = NSGrammaticalPartOfSpeech(2L)
+        val NSGrammaticalPartOfSpeechLetter = NSGrammaticalPartOfSpeech(3L)
+        val NSGrammaticalPartOfSpeechAdverb = NSGrammaticalPartOfSpeech(4L)
+        val NSGrammaticalPartOfSpeechParticle = NSGrammaticalPartOfSpeech(5L)
+        val NSGrammaticalPartOfSpeechAdjective = NSGrammaticalPartOfSpeech(6L)
+        val NSGrammaticalPartOfSpeechAdposition = NSGrammaticalPartOfSpeech(7L)
+        val NSGrammaticalPartOfSpeechVerb = NSGrammaticalPartOfSpeech(8L)
+        val NSGrammaticalPartOfSpeechNoun = NSGrammaticalPartOfSpeech(9L)
+        val NSGrammaticalPartOfSpeechConjunction = NSGrammaticalPartOfSpeech(10L)
+        val NSGrammaticalPartOfSpeechNumeral = NSGrammaticalPartOfSpeech(11L)
+        val NSGrammaticalPartOfSpeechInterjection = NSGrammaticalPartOfSpeech(12L)
+        val NSGrammaticalPartOfSpeechPreposition = NSGrammaticalPartOfSpeech(13L)
+        val NSGrammaticalPartOfSpeechAbbreviation = NSGrammaticalPartOfSpeech(14L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGrammaticalNumber}
  */
-enum class NSGrammaticalNumber(val value: Long) {
-    NSGrammaticalNumberNotSet(0L), NSGrammaticalNumberSingular(1L), NSGrammaticalNumberZero(2L), NSGrammaticalNumberPlural(3L), NSGrammaticalNumberPluralTwo(4L), NSGrammaticalNumberPluralFew(5L), NSGrammaticalNumberPluralMany(6L);
-
+@JvmInline
+value class NSGrammaticalNumber(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGrammaticalNumber = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalNumber value: $v")
+        val NSGrammaticalNumberNotSet = NSGrammaticalNumber(0L)
+        val NSGrammaticalNumberSingular = NSGrammaticalNumber(1L)
+        val NSGrammaticalNumberZero = NSGrammaticalNumber(2L)
+        val NSGrammaticalNumberPlural = NSGrammaticalNumber(3L)
+        val NSGrammaticalNumberPluralTwo = NSGrammaticalNumber(4L)
+        val NSGrammaticalNumberPluralFew = NSGrammaticalNumber(5L)
+        val NSGrammaticalNumberPluralMany = NSGrammaticalNumber(6L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGrammaticalCase}
  */
-enum class NSGrammaticalCase(val value: Long) {
-    NSGrammaticalCaseNotSet(0L), NSGrammaticalCaseNominative(1L), NSGrammaticalCaseAccusative(2L), NSGrammaticalCaseDative(3L), NSGrammaticalCaseGenitive(4L), NSGrammaticalCasePrepositional(5L), NSGrammaticalCaseAblative(6L), NSGrammaticalCaseAdessive(7L), NSGrammaticalCaseAllative(8L), NSGrammaticalCaseElative(9L), NSGrammaticalCaseIllative(10L), NSGrammaticalCaseEssive(11L), NSGrammaticalCaseInessive(12L), NSGrammaticalCaseLocative(13L), NSGrammaticalCaseTranslative(14L);
-
+@JvmInline
+value class NSGrammaticalCase(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGrammaticalCase = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalCase value: $v")
+        val NSGrammaticalCaseNotSet = NSGrammaticalCase(0L)
+        val NSGrammaticalCaseNominative = NSGrammaticalCase(1L)
+        val NSGrammaticalCaseAccusative = NSGrammaticalCase(2L)
+        val NSGrammaticalCaseDative = NSGrammaticalCase(3L)
+        val NSGrammaticalCaseGenitive = NSGrammaticalCase(4L)
+        val NSGrammaticalCasePrepositional = NSGrammaticalCase(5L)
+        val NSGrammaticalCaseAblative = NSGrammaticalCase(6L)
+        val NSGrammaticalCaseAdessive = NSGrammaticalCase(7L)
+        val NSGrammaticalCaseAllative = NSGrammaticalCase(8L)
+        val NSGrammaticalCaseElative = NSGrammaticalCase(9L)
+        val NSGrammaticalCaseIllative = NSGrammaticalCase(10L)
+        val NSGrammaticalCaseEssive = NSGrammaticalCase(11L)
+        val NSGrammaticalCaseInessive = NSGrammaticalCase(12L)
+        val NSGrammaticalCaseLocative = NSGrammaticalCase(13L)
+        val NSGrammaticalCaseTranslative = NSGrammaticalCase(14L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGrammaticalPronounType}
  */
-enum class NSGrammaticalPronounType(val value: Long) {
-    NSGrammaticalPronounTypeNotSet(0L), NSGrammaticalPronounTypePersonal(1L), NSGrammaticalPronounTypeReflexive(2L), NSGrammaticalPronounTypePossessive(3L);
-
+@JvmInline
+value class NSGrammaticalPronounType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGrammaticalPronounType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalPronounType value: $v")
+        val NSGrammaticalPronounTypeNotSet = NSGrammaticalPronounType(0L)
+        val NSGrammaticalPronounTypePersonal = NSGrammaticalPronounType(1L)
+        val NSGrammaticalPronounTypeReflexive = NSGrammaticalPronounType(2L)
+        val NSGrammaticalPronounTypePossessive = NSGrammaticalPronounType(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGrammaticalPerson}
  */
-enum class NSGrammaticalPerson(val value: Long) {
-    NSGrammaticalPersonNotSet(0L), NSGrammaticalPersonFirst(1L), NSGrammaticalPersonSecond(2L), NSGrammaticalPersonThird(3L);
-
+@JvmInline
+value class NSGrammaticalPerson(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGrammaticalPerson = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalPerson value: $v")
+        val NSGrammaticalPersonNotSet = NSGrammaticalPerson(0L)
+        val NSGrammaticalPersonFirst = NSGrammaticalPerson(1L)
+        val NSGrammaticalPersonSecond = NSGrammaticalPerson(2L)
+        val NSGrammaticalPersonThird = NSGrammaticalPerson(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGrammaticalDetermination}
  */
-enum class NSGrammaticalDetermination(val value: Long) {
-    NSGrammaticalDeterminationNotSet(0L), NSGrammaticalDeterminationIndependent(1L), NSGrammaticalDeterminationDependent(2L);
-
+@JvmInline
+value class NSGrammaticalDetermination(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGrammaticalDetermination = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalDetermination value: $v")
+        val NSGrammaticalDeterminationNotSet = NSGrammaticalDetermination(0L)
+        val NSGrammaticalDeterminationIndependent = NSGrammaticalDetermination(1L)
+        val NSGrammaticalDeterminationDependent = NSGrammaticalDetermination(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGrammaticalDefiniteness}
  */
-enum class NSGrammaticalDefiniteness(val value: Long) {
-    NSGrammaticalDefinitenessNotSet(0L), NSGrammaticalDefinitenessIndefinite(1L), NSGrammaticalDefinitenessDefinite(2L);
-
+@JvmInline
+value class NSGrammaticalDefiniteness(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGrammaticalDefiniteness = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGrammaticalDefiniteness value: $v")
+        val NSGrammaticalDefinitenessNotSet = NSGrammaticalDefiniteness(0L)
+        val NSGrammaticalDefinitenessIndefinite = NSGrammaticalDefiniteness(1L)
+        val NSGrammaticalDefinitenessDefinite = NSGrammaticalDefiniteness(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPostingStyle}
  */
-enum class NSPostingStyle(val value: Long) {
-    NSPostWhenIdle(1L), NSPostASAP(2L), NSPostNow(3L);
-
+@JvmInline
+value class NSPostingStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPostingStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPostingStyle value: $v")
+        val NSPostWhenIdle = NSPostingStyle(1L)
+        val NSPostASAP = NSPostingStyle(2L)
+        val NSPostNow = NSPostingStyle(3L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSNotificationCoalescing}
- */
-enum class NSNotificationCoalescing(val value: Long) {
-    NSNotificationNoCoalescing(0L), NSNotificationCoalescingOnName(1L), NSNotificationCoalescingOnSender(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSNotificationCoalescing = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNotificationCoalescing value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSOperationQueuePriority}
  */
-enum class NSOperationQueuePriority(val value: Long) {
-    NSOperationQueuePriorityVeryLow(-8L), NSOperationQueuePriorityLow(-4L), NSOperationQueuePriorityNormal(0L), NSOperationQueuePriorityHigh(4L), NSOperationQueuePriorityVeryHigh(8L);
-
+@JvmInline
+value class NSOperationQueuePriority(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSOperationQueuePriority = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSOperationQueuePriority value: $v")
+        val NSOperationQueuePriorityVeryLow = NSOperationQueuePriority(-8L)
+        val NSOperationQueuePriorityLow = NSOperationQueuePriority(-4L)
+        val NSOperationQueuePriorityNormal = NSOperationQueuePriority(0L)
+        val NSOperationQueuePriorityHigh = NSOperationQueuePriority(4L)
+        val NSOperationQueuePriorityVeryHigh = NSOperationQueuePriority(8L)
     }
+
 }
 
 /**
@@ -1975,25 +1985,15 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSProcessInfoThermalState}
  */
-enum class NSProcessInfoThermalState(val value: Long) {
-    NSProcessInfoThermalStateNominal(0L), NSProcessInfoThermalStateFair(1L), NSProcessInfoThermalStateSerious(2L), NSProcessInfoThermalStateCritical(3L);
-
+@JvmInline
+value class NSProcessInfoThermalState(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSProcessInfoThermalState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSProcessInfoThermalState value: $v")
+        val NSProcessInfoThermalStateNominal = NSProcessInfoThermalState(0L)
+        val NSProcessInfoThermalStateFair = NSProcessInfoThermalState(1L)
+        val NSProcessInfoThermalStateSerious = NSProcessInfoThermalState(2L)
+        val NSProcessInfoThermalStateCritical = NSProcessInfoThermalState(3L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSTextCheckingType}
- */
-enum class NSTextCheckingType(val value: Long) {
-    NSTextCheckingTypeOrthography(1L), NSTextCheckingTypeSpelling(2L), NSTextCheckingTypeGrammar(4L), NSTextCheckingTypeDate(8L), NSTextCheckingTypeAddress(16L), NSTextCheckingTypeLink(32L), NSTextCheckingTypeQuote(64L), NSTextCheckingTypeDash(128L), NSTextCheckingTypeReplacement(256L), NSTextCheckingTypeCorrection(512L), NSTextCheckingTypeRegularExpression(1024L), NSTextCheckingTypePhoneNumber(2048L), NSTextCheckingTypeTransitInformation(4096L);
-
-    companion object {
-        fun fromValue(v: Long): NSTextCheckingType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextCheckingType value: $v")
-    }
 }
 
 /**
@@ -2011,49 +2011,48 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSStreamStatus}
  */
-enum class NSStreamStatus(val value: Long) {
-    NSStreamStatusNotOpen(0L), NSStreamStatusOpening(1L), NSStreamStatusOpen(2L), NSStreamStatusReading(3L), NSStreamStatusWriting(4L), NSStreamStatusAtEnd(5L), NSStreamStatusClosed(6L), NSStreamStatusError(7L);
-
+@JvmInline
+value class NSStreamStatus(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSStreamStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSStreamStatus value: $v")
+        val NSStreamStatusNotOpen = NSStreamStatus(0L)
+        val NSStreamStatusOpening = NSStreamStatus(1L)
+        val NSStreamStatusOpen = NSStreamStatus(2L)
+        val NSStreamStatusReading = NSStreamStatus(3L)
+        val NSStreamStatusWriting = NSStreamStatus(4L)
+        val NSStreamStatusAtEnd = NSStreamStatus(5L)
+        val NSStreamStatusClosed = NSStreamStatus(6L)
+        val NSStreamStatusError = NSStreamStatus(7L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSStreamEvent}
- */
-enum class NSStreamEvent(val value: Long) {
-    NSStreamEventNone(0L), NSStreamEventOpenCompleted(1L), NSStreamEventHasBytesAvailable(2L), NSStreamEventHasSpaceAvailable(4L), NSStreamEventErrorOccurred(8L), NSStreamEventEndEncountered(16L);
-
-    companion object {
-        fun fromValue(v: Long): NSStreamEvent = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSStreamEvent value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTimeZoneNameStyle}
  */
-enum class NSTimeZoneNameStyle(val value: Long) {
-    NSTimeZoneNameStyleStandard(0L), NSTimeZoneNameStyleShortStandard(1L), NSTimeZoneNameStyleDaylightSaving(2L), NSTimeZoneNameStyleShortDaylightSaving(3L), NSTimeZoneNameStyleGeneric(4L), NSTimeZoneNameStyleShortGeneric(5L);
-
+@JvmInline
+value class NSTimeZoneNameStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTimeZoneNameStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTimeZoneNameStyle value: $v")
+        val NSTimeZoneNameStyleStandard = NSTimeZoneNameStyle(0L)
+        val NSTimeZoneNameStyleShortStandard = NSTimeZoneNameStyle(1L)
+        val NSTimeZoneNameStyleDaylightSaving = NSTimeZoneNameStyle(2L)
+        val NSTimeZoneNameStyleShortDaylightSaving = NSTimeZoneNameStyle(3L)
+        val NSTimeZoneNameStyleGeneric = NSTimeZoneNameStyle(4L)
+        val NSTimeZoneNameStyleShortGeneric = NSTimeZoneNameStyle(5L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLCacheStoragePolicy}
  */
-enum class NSURLCacheStoragePolicy(val value: Long) {
-    NSURLCacheStorageAllowed(0L), NSURLCacheStorageAllowedInMemoryOnly(1L), NSURLCacheStorageNotAllowed(2L);
-
+@JvmInline
+value class NSURLCacheStoragePolicy(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLCacheStoragePolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLCacheStoragePolicy value: $v")
+        val NSURLCacheStorageAllowed = NSURLCacheStoragePolicy(0L)
+        val NSURLCacheStorageAllowedInMemoryOnly = NSURLCacheStoragePolicy(1L)
+        val NSURLCacheStorageNotAllowed = NSURLCacheStoragePolicy(2L)
     }
+
 }
 
 /**
@@ -3149,18 +3148,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum SecKeyUsage}
- */
-enum class SecKeyUsage(val value: Long) {
-    kSecKeyUsageUnspecified(0L), kSecKeyUsageDigitalSignature(1L), kSecKeyUsageNonRepudiation(2L), kSecKeyUsageContentCommitment(2L), kSecKeyUsageKeyEncipherment(4L), kSecKeyUsageDataEncipherment(8L), kSecKeyUsageKeyAgreement(16L), kSecKeyUsageKeyCertSign(32L), kSecKeyUsageCRLSign(64L), kSecKeyUsageEncipherOnly(128L), kSecKeyUsageDecipherOnly(256L), kSecKeyUsageCritical(-2147483648L), kSecKeyUsageAll(2147483647L);
-
-    companion object {
-        fun fromValue(v: Long): SecKeyUsage = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecKeyUsage value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecAccess.h:49:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_SecAccess_h_49_1_(val value: Long) {
@@ -3193,18 +3180,6 @@ enum class SecCredentialType(val value: Long) {
     companion object {
         fun fromValue(v: Long): SecCredentialType = entries.firstOrNull { it.value == v }
             ?: error("Unknown SecCredentialType value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecPadding}
- */
-enum class SecPadding(val value: Long) {
-    kSecPaddingNone(0L), kSecPaddingPKCS1(1L), kSecPaddingOAEP(2L), kSecPaddingSigRaw(16384L), kSecPaddingPKCS1MD2(32768L), kSecPaddingPKCS1MD5(32769L), kSecPaddingPKCS1SHA1(32770L), kSecPaddingPKCS1SHA224(32771L), kSecPaddingPKCS1SHA256(32772L), kSecPaddingPKCS1SHA384(32773L), kSecPaddingPKCS1SHA512(32774L);
-
-    companion object {
-        fun fromValue(v: Long): SecPadding = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecPadding value: $v")
     }
 }
 
@@ -4147,13 +4122,17 @@ enum class SSLCiphersuiteGroup(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum tls_protocol_version_t}
  */
-enum class tls_protocol_version_t(val value: Long) {
-    tls_protocol_version_TLSv10(769L), tls_protocol_version_TLSv11(770L), tls_protocol_version_TLSv12(771L), tls_protocol_version_TLSv13(772L), tls_protocol_version_DTLSv10(-257L), tls_protocol_version_DTLSv12(-259L);
-
+@JvmInline
+value class tls_protocol_version_t(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): tls_protocol_version_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown tls_protocol_version_t value: $v")
+        val tls_protocol_version_TLSv10 = tls_protocol_version_t(769L)
+        val tls_protocol_version_TLSv11 = tls_protocol_version_t(770L)
+        val tls_protocol_version_TLSv12 = tls_protocol_version_t(771L)
+        val tls_protocol_version_TLSv13 = tls_protocol_version_t(772L)
+        val tls_protocol_version_DTLSv10 = tls_protocol_version_t(-257L)
+        val tls_protocol_version_DTLSv12 = tls_protocol_version_t(-259L)
     }
+
 }
 
 /**
@@ -4183,13 +4162,24 @@ enum class tls_ciphersuite_group_t(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum SSLProtocol}
  */
-enum class SSLProtocol(val value: Long) {
-    kSSLProtocolUnknown(0L), kTLSProtocol1(4L), kTLSProtocol11(7L), kTLSProtocol12(8L), kDTLSProtocol1(9L), kTLSProtocol13(10L), kDTLSProtocol12(11L), kTLSProtocolMaxSupported(999L), kSSLProtocol2(1L), kSSLProtocol3(2L), kSSLProtocol3Only(3L), kTLSProtocol1Only(5L), kSSLProtocolAll(6L);
-
+@JvmInline
+value class SSLProtocol(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): SSLProtocol = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SSLProtocol value: $v")
+        val kSSLProtocolUnknown = SSLProtocol(0L)
+        val kTLSProtocol1 = SSLProtocol(4L)
+        val kTLSProtocol11 = SSLProtocol(7L)
+        val kTLSProtocol12 = SSLProtocol(8L)
+        val kDTLSProtocol1 = SSLProtocol(9L)
+        val kTLSProtocol13 = SSLProtocol(10L)
+        val kDTLSProtocol12 = SSLProtocol(11L)
+        val kTLSProtocolMaxSupported = SSLProtocol(999L)
+        val kSSLProtocol2 = SSLProtocol(1L)
+        val kSSLProtocol3 = SSLProtocol(2L)
+        val kSSLProtocol3Only = SSLProtocol(3L)
+        val kTLSProtocol1Only = SSLProtocol(5L)
+        val kSSLProtocolAll = SSLProtocol(6L)
     }
+
 }
 
 /**
@@ -4225,18 +4215,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
     companion object {
         fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_81_1_ = entries.firstOrNull { it.value == v }
             ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_AuthSession_h_81_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SessionAttributeBits}
- */
-enum class SessionAttributeBits(val value: Long) {
-    sessionIsRoot(1L), sessionHasGraphicAccess(16L), sessionHasTTY(32L), sessionIsRemote(4096L);
-
-    companion object {
-        fun fromValue(v: Long): SessionAttributeBits = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SessionAttributeBits value: $v")
     }
 }
 
@@ -4277,18 +4255,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum SecKeychainPromptSelector}
- */
-enum class SecKeychainPromptSelector(val value: Long) {
-    kSecKeychainPromptRequirePassphase(1L), kSecKeychainPromptUnsigned(16L), kSecKeychainPromptUnsignedAct(32L), kSecKeychainPromptInvalid(64L), kSecKeychainPromptInvalidAct(128L);
-
-    companion object {
-        fun fromValue(v: Long): SecKeychainPromptSelector = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecKeychainPromptSelector value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum SecItemClass}
  */
 enum class SecItemClass(val value: Long) {
@@ -4309,18 +4275,6 @@ enum class SecItemAttr(val value: Long) {
     companion object {
         fun fromValue(v: Long): SecItemAttr = entries.firstOrNull { it.value == v }
             ?: error("Unknown SecItemAttr value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecTrustSettingsKeyUsage}
- */
-enum class SecTrustSettingsKeyUsage(val value: Long) {
-    kSecTrustSettingsKeyUseSignature(1L), kSecTrustSettingsKeyUseEnDecryptData(2L), kSecTrustSettingsKeyUseEnDecryptKey(4L), kSecTrustSettingsKeyUseSignCert(8L), kSecTrustSettingsKeyUseSignRevocation(16L), kSecTrustSettingsKeyUseKeyExchange(32L), kSecTrustSettingsKeyUseAny(-1L);
-
-    companion object {
-        fun fromValue(v: Long): SecTrustSettingsKeyUsage = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecTrustSettingsKeyUsage value: $v")
     }
 }
 
@@ -4369,18 +4323,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
     companion object {
         fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_205_1_ = entries.firstOrNull { it.value == v }
             ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_Security_framework_Headers_CSCommon_h_205_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum SecCodeStatus}
- */
-enum class SecCodeStatus(val value: Long) {
-    kSecCodeStatusValid(1L), kSecCodeStatusHard(256L), kSecCodeStatusKill(512L), kSecCodeStatusDebugged(268435456L), kSecCodeStatusPlatform(67108864L);
-
-    companion object {
-        fun fromValue(v: Long): SecCodeStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown SecCodeStatus value: $v")
     }
 }
 
@@ -4445,30 +4387,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum xpc_session_create_flags_t}
- */
-enum class xpc_session_create_flags_t(val value: Long) {
-    XPC_SESSION_CREATE_NONE(0L), XPC_SESSION_CREATE_INACTIVE(1L), XPC_SESSION_CREATE_MACH_PRIVILEGED(2L);
-
-    companion object {
-        fun fromValue(v: Long): xpc_session_create_flags_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown xpc_session_create_flags_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum xpc_listener_create_flags_t}
- */
-enum class xpc_listener_create_flags_t(val value: Long) {
-    XPC_LISTENER_CREATE_NONE(0L), XPC_LISTENER_CREATE_INACTIVE(1L), XPC_LISTENER_CREATE_FORCE_MACH(2L), XPC_LISTENER_CREATE_FORCE_XPCSERVICE(4L);
-
-    companion object {
-        fun fromValue(v: Long): xpc_listener_create_flags_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown xpc_listener_create_flags_t value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum mach_vm_range_flavor_t}
  */
 enum class mach_vm_range_flavor_t(val value: Long) {
@@ -4477,18 +4395,6 @@ enum class mach_vm_range_flavor_t(val value: Long) {
     companion object {
         fun fromValue(v: Long): mach_vm_range_flavor_t = entries.firstOrNull { it.value == v }
             ?: error("Unknown mach_vm_range_flavor_t value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum mach_vm_range_flags_t}
- */
-enum class mach_vm_range_flags_t(val value: Long) {
-    MACH_VM_RANGE_NONE(0L);
-
-    companion object {
-        fun fromValue(v: Long): mach_vm_range_flags_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown mach_vm_range_flags_t value: $v")
     }
 }
 
@@ -4637,18 +4543,6 @@ enum class CMSSignerStatus(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CMSSignedAttributes}
- */
-enum class CMSSignedAttributes(val value: Long) {
-    kCMSAttrNone(0L), kCMSAttrSmimeCapabilities(1L), kCMSAttrSmimeEncryptionKeyPrefs(2L), kCMSAttrSmimeMSEncryptionKeyPrefs(4L), kCMSAttrSigningTime(8L), kCMSAttrAppleCodesigningHashAgility(16L), kCMSAttrAppleCodesigningHashAgilityV2(32L), kCMSAttrAppleExpirationTime(64L);
-
-    companion object {
-        fun fromValue(v: Long): CMSSignedAttributes = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CMSSignedAttributes value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum CMSCertificateChainMode}
  */
 enum class CMSCertificateChainMode(val value: Long) {
@@ -4759,13 +4653,15 @@ enum class SecTransformMetaAttributeType(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLCredentialPersistence}
  */
-enum class NSURLCredentialPersistence(val value: Long) {
-    NSURLCredentialPersistenceNone(0L), NSURLCredentialPersistenceForSession(1L), NSURLCredentialPersistencePermanent(2L), NSURLCredentialPersistenceSynchronizable(3L);
-
+@JvmInline
+value class NSURLCredentialPersistence(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLCredentialPersistence = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLCredentialPersistence value: $v")
+        val NSURLCredentialPersistenceNone = NSURLCredentialPersistence(0L)
+        val NSURLCredentialPersistenceForSession = NSURLCredentialPersistence(1L)
+        val NSURLCredentialPersistencePermanent = NSURLCredentialPersistence(2L)
+        val NSURLCredentialPersistenceSynchronizable = NSURLCredentialPersistence(3L)
     }
+
 }
 
 /**
@@ -15773,18 +15669,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum LSRequestedInfo}
- */
-enum class LSRequestedInfo(val value: Long) {
-    kLSRequestExtension(1L), kLSRequestTypeCreator(2L), kLSRequestBasicFlagsOnly(4L), kLSRequestAppTypeFlags(8L), kLSRequestAllFlags(16L), kLSRequestIconAndKind(32L), kLSRequestExtensionFlagsOnly(64L), kLSRequestAllInfo(-1L);
-
-    companion object {
-        fun fromValue(v: Long): LSRequestedInfo = entries.firstOrNull { it.value == v }
-            ?: error("Unknown LSRequestedInfo value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Headers/LSOpenDeprecated.h:28:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreServices_framework_Frameworks_LaunchServices_framework_Headers_LSOpenDeprecated_h_28_1_(val value: Long) {
@@ -15793,6 +15677,30 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
     companion object {
         fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreServices_framework_Frameworks_LaunchServices_framework_Headers_LSOpenDeprecated_h_28_1_ = entries.firstOrNull { it.value == v }
             ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreServices_framework_Frameworks_LaunchServices_framework_Headers_LSOpenDeprecated_h_28_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum MDQueryOptionFlags}
+ */
+enum class MDQueryOptionFlags(val value: Long) {
+    kMDQuerySynchronous(1L), kMDQueryWantsUpdates(4L), kMDQueryAllowFSTranslation(8L);
+
+    companion object {
+        fun fromValue(v: Long): MDQueryOptionFlags = entries.firstOrNull { it.value == v }
+            ?: error("Unknown MDQueryOptionFlags value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum MDQuerySortOptionFlags}
+ */
+enum class MDQuerySortOptionFlags(val value: Long) {
+    kMDQueryReverseSortOrderFlag(1L);
+
+    companion object {
+        fun fromValue(v: Long): MDQuerySortOptionFlags = entries.firstOrNull { it.value == v }
+            ?: error("Unknown MDQuerySortOptionFlags value: $v")
     }
 }
 
@@ -15943,49 +15851,63 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLRequestCachePolicy}
  */
-enum class NSURLRequestCachePolicy(val value: Long) {
-    NSURLRequestUseProtocolCachePolicy(0L), NSURLRequestReloadIgnoringLocalCacheData(1L), NSURLRequestReloadIgnoringLocalAndRemoteCacheData(4L), NSURLRequestReloadIgnoringCacheData(1L), NSURLRequestReturnCacheDataElseLoad(2L), NSURLRequestReturnCacheDataDontLoad(3L), NSURLRequestReloadRevalidatingCacheData(5L);
-
+@JvmInline
+value class NSURLRequestCachePolicy(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLRequestCachePolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLRequestCachePolicy value: $v")
+        val NSURLRequestUseProtocolCachePolicy = NSURLRequestCachePolicy(0L)
+        val NSURLRequestReloadIgnoringLocalCacheData = NSURLRequestCachePolicy(1L)
+        val NSURLRequestReloadIgnoringLocalAndRemoteCacheData = NSURLRequestCachePolicy(4L)
+        val NSURLRequestReloadIgnoringCacheData = NSURLRequestCachePolicy(1L)
+        val NSURLRequestReturnCacheDataElseLoad = NSURLRequestCachePolicy(2L)
+        val NSURLRequestReturnCacheDataDontLoad = NSURLRequestCachePolicy(3L)
+        val NSURLRequestReloadRevalidatingCacheData = NSURLRequestCachePolicy(5L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLRequestNetworkServiceType}
  */
-enum class NSURLRequestNetworkServiceType(val value: Long) {
-    NSURLNetworkServiceTypeDefault(0L), NSURLNetworkServiceTypeVoIP(1L), NSURLNetworkServiceTypeVideo(2L), NSURLNetworkServiceTypeBackground(3L), NSURLNetworkServiceTypeVoice(4L), NSURLNetworkServiceTypeResponsiveData(6L), NSURLNetworkServiceTypeAVStreaming(8L), NSURLNetworkServiceTypeResponsiveAV(9L), NSURLNetworkServiceTypeCallSignaling(11L);
-
+@JvmInline
+value class NSURLRequestNetworkServiceType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLRequestNetworkServiceType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLRequestNetworkServiceType value: $v")
+        val NSURLNetworkServiceTypeDefault = NSURLRequestNetworkServiceType(0L)
+        val NSURLNetworkServiceTypeVoIP = NSURLRequestNetworkServiceType(1L)
+        val NSURLNetworkServiceTypeVideo = NSURLRequestNetworkServiceType(2L)
+        val NSURLNetworkServiceTypeBackground = NSURLRequestNetworkServiceType(3L)
+        val NSURLNetworkServiceTypeVoice = NSURLRequestNetworkServiceType(4L)
+        val NSURLNetworkServiceTypeResponsiveData = NSURLRequestNetworkServiceType(6L)
+        val NSURLNetworkServiceTypeAVStreaming = NSURLRequestNetworkServiceType(8L)
+        val NSURLNetworkServiceTypeResponsiveAV = NSURLRequestNetworkServiceType(9L)
+        val NSURLNetworkServiceTypeCallSignaling = NSURLRequestNetworkServiceType(11L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLRequestAttribution}
  */
-enum class NSURLRequestAttribution(val value: Long) {
-    NSURLRequestAttributionDeveloper(0L), NSURLRequestAttributionUser(1L);
-
+@JvmInline
+value class NSURLRequestAttribution(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLRequestAttribution = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLRequestAttribution value: $v")
+        val NSURLRequestAttributionDeveloper = NSURLRequestAttribution(0L)
+        val NSURLRequestAttributionUser = NSURLRequestAttribution(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSXMLParserExternalEntityResolvingPolicy}
  */
-enum class NSXMLParserExternalEntityResolvingPolicy(val value: Long) {
-    NSXMLParserResolveExternalEntitiesNever(0L), NSXMLParserResolveExternalEntitiesNoNetwork(1L), NSXMLParserResolveExternalEntitiesSameOriginOnly(2L), NSXMLParserResolveExternalEntitiesAlways(3L);
-
+@JvmInline
+value class NSXMLParserExternalEntityResolvingPolicy(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSXMLParserExternalEntityResolvingPolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSXMLParserExternalEntityResolvingPolicy value: $v")
+        val NSXMLParserResolveExternalEntitiesNever = NSXMLParserExternalEntityResolvingPolicy(0L)
+        val NSXMLParserResolveExternalEntitiesNoNetwork = NSXMLParserExternalEntityResolvingPolicy(1L)
+        val NSXMLParserResolveExternalEntitiesSameOriginOnly = NSXMLParserExternalEntityResolvingPolicy(2L)
+        val NSXMLParserResolveExternalEntitiesAlways = NSXMLParserExternalEntityResolvingPolicy(3L)
     }
+
 }
 
 /**
@@ -16013,111 +15935,120 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSByteCountFormatterUnits}
- */
-enum class NSByteCountFormatterUnits(val value: Long) {
-    NSByteCountFormatterUseDefault(0L), NSByteCountFormatterUseBytes(1L), NSByteCountFormatterUseKB(2L), NSByteCountFormatterUseMB(4L), NSByteCountFormatterUseGB(8L), NSByteCountFormatterUseTB(16L), NSByteCountFormatterUsePB(32L), NSByteCountFormatterUseEB(64L), NSByteCountFormatterUseZB(128L), NSByteCountFormatterUseYBOrHigher(65280L), NSByteCountFormatterUseAll(65535L);
-
-    companion object {
-        fun fromValue(v: Long): NSByteCountFormatterUnits = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSByteCountFormatterUnits value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum NSByteCountFormatterCountStyle}
  */
-enum class NSByteCountFormatterCountStyle(val value: Long) {
-    NSByteCountFormatterCountStyleFile(0L), NSByteCountFormatterCountStyleMemory(1L), NSByteCountFormatterCountStyleDecimal(2L), NSByteCountFormatterCountStyleBinary(3L);
-
+@JvmInline
+value class NSByteCountFormatterCountStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSByteCountFormatterCountStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSByteCountFormatterCountStyle value: $v")
+        val NSByteCountFormatterCountStyleFile = NSByteCountFormatterCountStyle(0L)
+        val NSByteCountFormatterCountStyleMemory = NSByteCountFormatterCountStyle(1L)
+        val NSByteCountFormatterCountStyleDecimal = NSByteCountFormatterCountStyle(2L)
+        val NSByteCountFormatterCountStyleBinary = NSByteCountFormatterCountStyle(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSComparisonPredicateModifier}
  */
-enum class NSComparisonPredicateModifier(val value: Long) {
-    NSDirectPredicateModifier(0L), NSAllPredicateModifier(1L), NSAnyPredicateModifier(2L);
-
+@JvmInline
+value class NSComparisonPredicateModifier(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSComparisonPredicateModifier = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSComparisonPredicateModifier value: $v")
+        val NSDirectPredicateModifier = NSComparisonPredicateModifier(0L)
+        val NSAllPredicateModifier = NSComparisonPredicateModifier(1L)
+        val NSAnyPredicateModifier = NSComparisonPredicateModifier(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPredicateOperatorType}
  */
-enum class NSPredicateOperatorType(val value: Long) {
-    NSLessThanPredicateOperatorType(0L), NSLessThanOrEqualToPredicateOperatorType(1L), NSGreaterThanPredicateOperatorType(2L), NSGreaterThanOrEqualToPredicateOperatorType(3L), NSEqualToPredicateOperatorType(4L), NSNotEqualToPredicateOperatorType(5L), NSMatchesPredicateOperatorType(6L), NSLikePredicateOperatorType(7L), NSBeginsWithPredicateOperatorType(8L), NSEndsWithPredicateOperatorType(9L), NSInPredicateOperatorType(10L), NSCustomSelectorPredicateOperatorType(11L), NSContainsPredicateOperatorType(99L), NSBetweenPredicateOperatorType(100L);
-
+@JvmInline
+value class NSPredicateOperatorType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPredicateOperatorType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPredicateOperatorType value: $v")
+        val NSLessThanPredicateOperatorType = NSPredicateOperatorType(0L)
+        val NSLessThanOrEqualToPredicateOperatorType = NSPredicateOperatorType(1L)
+        val NSGreaterThanPredicateOperatorType = NSPredicateOperatorType(2L)
+        val NSGreaterThanOrEqualToPredicateOperatorType = NSPredicateOperatorType(3L)
+        val NSEqualToPredicateOperatorType = NSPredicateOperatorType(4L)
+        val NSNotEqualToPredicateOperatorType = NSPredicateOperatorType(5L)
+        val NSMatchesPredicateOperatorType = NSPredicateOperatorType(6L)
+        val NSLikePredicateOperatorType = NSPredicateOperatorType(7L)
+        val NSBeginsWithPredicateOperatorType = NSPredicateOperatorType(8L)
+        val NSEndsWithPredicateOperatorType = NSPredicateOperatorType(9L)
+        val NSInPredicateOperatorType = NSPredicateOperatorType(10L)
+        val NSCustomSelectorPredicateOperatorType = NSPredicateOperatorType(11L)
+        val NSContainsPredicateOperatorType = NSPredicateOperatorType(99L)
+        val NSBetweenPredicateOperatorType = NSPredicateOperatorType(100L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCompoundPredicateType}
  */
-enum class NSCompoundPredicateType(val value: Long) {
-    NSNotPredicateType(0L), NSAndPredicateType(1L), NSOrPredicateType(2L);
-
+@JvmInline
+value class NSCompoundPredicateType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCompoundPredicateType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCompoundPredicateType value: $v")
+        val NSNotPredicateType = NSCompoundPredicateType(0L)
+        val NSAndPredicateType = NSCompoundPredicateType(1L)
+        val NSOrPredicateType = NSCompoundPredicateType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDateComponentsFormatterUnitsStyle}
  */
-enum class NSDateComponentsFormatterUnitsStyle(val value: Long) {
-    NSDateComponentsFormatterUnitsStylePositional(0L), NSDateComponentsFormatterUnitsStyleAbbreviated(1L), NSDateComponentsFormatterUnitsStyleShort(2L), NSDateComponentsFormatterUnitsStyleFull(3L), NSDateComponentsFormatterUnitsStyleSpellOut(4L), NSDateComponentsFormatterUnitsStyleBrief(5L);
-
+@JvmInline
+value class NSDateComponentsFormatterUnitsStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDateComponentsFormatterUnitsStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateComponentsFormatterUnitsStyle value: $v")
+        val NSDateComponentsFormatterUnitsStylePositional = NSDateComponentsFormatterUnitsStyle(0L)
+        val NSDateComponentsFormatterUnitsStyleAbbreviated = NSDateComponentsFormatterUnitsStyle(1L)
+        val NSDateComponentsFormatterUnitsStyleShort = NSDateComponentsFormatterUnitsStyle(2L)
+        val NSDateComponentsFormatterUnitsStyleFull = NSDateComponentsFormatterUnitsStyle(3L)
+        val NSDateComponentsFormatterUnitsStyleSpellOut = NSDateComponentsFormatterUnitsStyle(4L)
+        val NSDateComponentsFormatterUnitsStyleBrief = NSDateComponentsFormatterUnitsStyle(5L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDateComponentsFormatterZeroFormattingBehavior}
- */
-enum class NSDateComponentsFormatterZeroFormattingBehavior(val value: Long) {
-    NSDateComponentsFormatterZeroFormattingBehaviorNone(0L), NSDateComponentsFormatterZeroFormattingBehaviorDefault(1L), NSDateComponentsFormatterZeroFormattingBehaviorDropLeading(2L), NSDateComponentsFormatterZeroFormattingBehaviorDropMiddle(4L), NSDateComponentsFormatterZeroFormattingBehaviorDropTrailing(8L), NSDateComponentsFormatterZeroFormattingBehaviorDropAll(14L), NSDateComponentsFormatterZeroFormattingBehaviorPad(65536L);
-
-    companion object {
-        fun fromValue(v: Long): NSDateComponentsFormatterZeroFormattingBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDateComponentsFormatterZeroFormattingBehavior value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSExpressionType}
  */
-enum class NSExpressionType(val value: Long) {
-    NSConstantValueExpressionType(0L), NSEvaluatedObjectExpressionType(1L), NSVariableExpressionType(2L), NSKeyPathExpressionType(3L), NSFunctionExpressionType(4L), NSUnionSetExpressionType(5L), NSIntersectSetExpressionType(6L), NSMinusSetExpressionType(7L), NSSubqueryExpressionType(13L), NSAggregateExpressionType(14L), NSAnyKeyExpressionType(15L), NSBlockExpressionType(19L), NSConditionalExpressionType(20L);
-
+@JvmInline
+value class NSExpressionType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSExpressionType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSExpressionType value: $v")
+        val NSConstantValueExpressionType = NSExpressionType(0L)
+        val NSEvaluatedObjectExpressionType = NSExpressionType(1L)
+        val NSVariableExpressionType = NSExpressionType(2L)
+        val NSKeyPathExpressionType = NSExpressionType(3L)
+        val NSFunctionExpressionType = NSExpressionType(4L)
+        val NSUnionSetExpressionType = NSExpressionType(5L)
+        val NSIntersectSetExpressionType = NSExpressionType(6L)
+        val NSMinusSetExpressionType = NSExpressionType(7L)
+        val NSSubqueryExpressionType = NSExpressionType(13L)
+        val NSAggregateExpressionType = NSExpressionType(14L)
+        val NSAnyKeyExpressionType = NSExpressionType(15L)
+        val NSBlockExpressionType = NSExpressionType(19L)
+        val NSConditionalExpressionType = NSExpressionType(20L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLinguisticTaggerUnit}
  */
-enum class NSLinguisticTaggerUnit(val value: Long) {
-    NSLinguisticTaggerUnitWord(0L), NSLinguisticTaggerUnitSentence(1L), NSLinguisticTaggerUnitParagraph(2L), NSLinguisticTaggerUnitDocument(3L);
-
+@JvmInline
+value class NSLinguisticTaggerUnit(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLinguisticTaggerUnit = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLinguisticTaggerUnit value: $v")
+        val NSLinguisticTaggerUnitWord = NSLinguisticTaggerUnit(0L)
+        val NSLinguisticTaggerUnitSentence = NSLinguisticTaggerUnit(1L)
+        val NSLinguisticTaggerUnitParagraph = NSLinguisticTaggerUnit(2L)
+        val NSLinguisticTaggerUnitDocument = NSLinguisticTaggerUnit(3L)
     }
+
 }
 
 /**
@@ -16147,49 +16078,64 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLSessionTaskState}
  */
-enum class NSURLSessionTaskState(val value: Long) {
-    NSURLSessionTaskStateRunning(0L), NSURLSessionTaskStateSuspended(1L), NSURLSessionTaskStateCanceling(2L), NSURLSessionTaskStateCompleted(3L);
-
+@JvmInline
+value class NSURLSessionTaskState(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLSessionTaskState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionTaskState value: $v")
+        val NSURLSessionTaskStateRunning = NSURLSessionTaskState(0L)
+        val NSURLSessionTaskStateSuspended = NSURLSessionTaskState(1L)
+        val NSURLSessionTaskStateCanceling = NSURLSessionTaskState(2L)
+        val NSURLSessionTaskStateCompleted = NSURLSessionTaskState(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLSessionWebSocketMessageType}
  */
-enum class NSURLSessionWebSocketMessageType(val value: Long) {
-    NSURLSessionWebSocketMessageTypeData(0L), NSURLSessionWebSocketMessageTypeString(1L);
-
+@JvmInline
+value class NSURLSessionWebSocketMessageType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLSessionWebSocketMessageType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionWebSocketMessageType value: $v")
+        val NSURLSessionWebSocketMessageTypeData = NSURLSessionWebSocketMessageType(0L)
+        val NSURLSessionWebSocketMessageTypeString = NSURLSessionWebSocketMessageType(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLSessionWebSocketCloseCode}
  */
-enum class NSURLSessionWebSocketCloseCode(val value: Long) {
-    NSURLSessionWebSocketCloseCodeInvalid(0L), NSURLSessionWebSocketCloseCodeNormalClosure(1000L), NSURLSessionWebSocketCloseCodeGoingAway(1001L), NSURLSessionWebSocketCloseCodeProtocolError(1002L), NSURLSessionWebSocketCloseCodeUnsupportedData(1003L), NSURLSessionWebSocketCloseCodeNoStatusReceived(1005L), NSURLSessionWebSocketCloseCodeAbnormalClosure(1006L), NSURLSessionWebSocketCloseCodeInvalidFramePayloadData(1007L), NSURLSessionWebSocketCloseCodePolicyViolation(1008L), NSURLSessionWebSocketCloseCodeMessageTooBig(1009L), NSURLSessionWebSocketCloseCodeMandatoryExtensionMissing(1010L), NSURLSessionWebSocketCloseCodeInternalServerError(1011L), NSURLSessionWebSocketCloseCodeTLSHandshakeFailure(1015L);
-
+@JvmInline
+value class NSURLSessionWebSocketCloseCode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLSessionWebSocketCloseCode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionWebSocketCloseCode value: $v")
+        val NSURLSessionWebSocketCloseCodeInvalid = NSURLSessionWebSocketCloseCode(0L)
+        val NSURLSessionWebSocketCloseCodeNormalClosure = NSURLSessionWebSocketCloseCode(1000L)
+        val NSURLSessionWebSocketCloseCodeGoingAway = NSURLSessionWebSocketCloseCode(1001L)
+        val NSURLSessionWebSocketCloseCodeProtocolError = NSURLSessionWebSocketCloseCode(1002L)
+        val NSURLSessionWebSocketCloseCodeUnsupportedData = NSURLSessionWebSocketCloseCode(1003L)
+        val NSURLSessionWebSocketCloseCodeNoStatusReceived = NSURLSessionWebSocketCloseCode(1005L)
+        val NSURLSessionWebSocketCloseCodeAbnormalClosure = NSURLSessionWebSocketCloseCode(1006L)
+        val NSURLSessionWebSocketCloseCodeInvalidFramePayloadData = NSURLSessionWebSocketCloseCode(1007L)
+        val NSURLSessionWebSocketCloseCodePolicyViolation = NSURLSessionWebSocketCloseCode(1008L)
+        val NSURLSessionWebSocketCloseCodeMessageTooBig = NSURLSessionWebSocketCloseCode(1009L)
+        val NSURLSessionWebSocketCloseCodeMandatoryExtensionMissing = NSURLSessionWebSocketCloseCode(1010L)
+        val NSURLSessionWebSocketCloseCodeInternalServerError = NSURLSessionWebSocketCloseCode(1011L)
+        val NSURLSessionWebSocketCloseCodeTLSHandshakeFailure = NSURLSessionWebSocketCloseCode(1015L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLSessionMultipathServiceType}
  */
-enum class NSURLSessionMultipathServiceType(val value: Long) {
-    NSURLSessionMultipathServiceTypeNone(0L), NSURLSessionMultipathServiceTypeHandover(1L), NSURLSessionMultipathServiceTypeInteractive(2L), NSURLSessionMultipathServiceTypeAggregate(3L);
-
+@JvmInline
+value class NSURLSessionMultipathServiceType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLSessionMultipathServiceType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionMultipathServiceType value: $v")
+        val NSURLSessionMultipathServiceTypeNone = NSURLSessionMultipathServiceType(0L)
+        val NSURLSessionMultipathServiceTypeHandover = NSURLSessionMultipathServiceType(1L)
+        val NSURLSessionMultipathServiceTypeInteractive = NSURLSessionMultipathServiceType(2L)
+        val NSURLSessionMultipathServiceTypeAggregate = NSURLSessionMultipathServiceType(3L)
     }
+
 }
 
 /**
@@ -16231,25 +16177,30 @@ enum class NSURLSessionResponseDisposition(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLSessionTaskMetricsResourceFetchType}
  */
-enum class NSURLSessionTaskMetricsResourceFetchType(val value: Long) {
-    NSURLSessionTaskMetricsResourceFetchTypeUnknown(0L), NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad(1L), NSURLSessionTaskMetricsResourceFetchTypeServerPush(2L), NSURLSessionTaskMetricsResourceFetchTypeLocalCache(3L);
-
+@JvmInline
+value class NSURLSessionTaskMetricsResourceFetchType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLSessionTaskMetricsResourceFetchType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionTaskMetricsResourceFetchType value: $v")
+        val NSURLSessionTaskMetricsResourceFetchTypeUnknown = NSURLSessionTaskMetricsResourceFetchType(0L)
+        val NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad = NSURLSessionTaskMetricsResourceFetchType(1L)
+        val NSURLSessionTaskMetricsResourceFetchTypeServerPush = NSURLSessionTaskMetricsResourceFetchType(2L)
+        val NSURLSessionTaskMetricsResourceFetchTypeLocalCache = NSURLSessionTaskMetricsResourceFetchType(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSURLSessionTaskMetricsDomainResolutionProtocol}
  */
-enum class NSURLSessionTaskMetricsDomainResolutionProtocol(val value: Long) {
-    NSURLSessionTaskMetricsDomainResolutionProtocolUnknown(0L), NSURLSessionTaskMetricsDomainResolutionProtocolUDP(1L), NSURLSessionTaskMetricsDomainResolutionProtocolTCP(2L), NSURLSessionTaskMetricsDomainResolutionProtocolTLS(3L), NSURLSessionTaskMetricsDomainResolutionProtocolHTTPS(4L);
-
+@JvmInline
+value class NSURLSessionTaskMetricsDomainResolutionProtocol(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSURLSessionTaskMetricsDomainResolutionProtocol = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSURLSessionTaskMetricsDomainResolutionProtocol value: $v")
+        val NSURLSessionTaskMetricsDomainResolutionProtocolUnknown = NSURLSessionTaskMetricsDomainResolutionProtocol(0L)
+        val NSURLSessionTaskMetricsDomainResolutionProtocolUDP = NSURLSessionTaskMetricsDomainResolutionProtocol(1L)
+        val NSURLSessionTaskMetricsDomainResolutionProtocolTCP = NSURLSessionTaskMetricsDomainResolutionProtocol(2L)
+        val NSURLSessionTaskMetricsDomainResolutionProtocolTLS = NSURLSessionTaskMetricsDomainResolutionProtocol(3L)
+        val NSURLSessionTaskMetricsDomainResolutionProtocolHTTPS = NSURLSessionTaskMetricsDomainResolutionProtocol(4L)
     }
+
 }
 
 /**
@@ -16267,61 +16218,94 @@ enum class NSBackgroundActivityResult(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSNotificationSuspensionBehavior}
  */
-enum class NSNotificationSuspensionBehavior(val value: Long) {
-    NSNotificationSuspensionBehaviorDrop(1L), NSNotificationSuspensionBehaviorCoalesce(2L), NSNotificationSuspensionBehaviorHold(3L), NSNotificationSuspensionBehaviorDeliverImmediately(4L);
-
+@JvmInline
+value class NSNotificationSuspensionBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSNotificationSuspensionBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSNotificationSuspensionBehavior value: $v")
+        val NSNotificationSuspensionBehaviorDrop = NSNotificationSuspensionBehavior(1L)
+        val NSNotificationSuspensionBehaviorCoalesce = NSNotificationSuspensionBehavior(2L)
+        val NSNotificationSuspensionBehaviorHold = NSNotificationSuspensionBehavior(3L)
+        val NSNotificationSuspensionBehaviorDeliverImmediately = NSNotificationSuspensionBehavior(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTaskTerminationReason}
  */
-enum class NSTaskTerminationReason(val value: Long) {
-    NSTaskTerminationReasonExit(1L), NSTaskTerminationReasonUncaughtSignal(2L);
-
+@JvmInline
+value class NSTaskTerminationReason(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTaskTerminationReason = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTaskTerminationReason value: $v")
+        val NSTaskTerminationReasonExit = NSTaskTerminationReason(1L)
+        val NSTaskTerminationReasonUncaughtSignal = NSTaskTerminationReason(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSXMLNodeKind}
  */
-enum class NSXMLNodeKind(val value: Long) {
-    NSXMLInvalidKind(0L), NSXMLDocumentKind(1L), NSXMLElementKind(2L), NSXMLAttributeKind(3L), NSXMLNamespaceKind(4L), NSXMLProcessingInstructionKind(5L), NSXMLCommentKind(6L), NSXMLTextKind(7L), NSXMLDTDKind(8L), NSXMLEntityDeclarationKind(9L), NSXMLAttributeDeclarationKind(10L), NSXMLElementDeclarationKind(11L), NSXMLNotationDeclarationKind(12L);
-
+@JvmInline
+value class NSXMLNodeKind(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSXMLNodeKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSXMLNodeKind value: $v")
+        val NSXMLInvalidKind = NSXMLNodeKind(0L)
+        val NSXMLDocumentKind = NSXMLNodeKind(1L)
+        val NSXMLElementKind = NSXMLNodeKind(2L)
+        val NSXMLAttributeKind = NSXMLNodeKind(3L)
+        val NSXMLNamespaceKind = NSXMLNodeKind(4L)
+        val NSXMLProcessingInstructionKind = NSXMLNodeKind(5L)
+        val NSXMLCommentKind = NSXMLNodeKind(6L)
+        val NSXMLTextKind = NSXMLNodeKind(7L)
+        val NSXMLDTDKind = NSXMLNodeKind(8L)
+        val NSXMLEntityDeclarationKind = NSXMLNodeKind(9L)
+        val NSXMLAttributeDeclarationKind = NSXMLNodeKind(10L)
+        val NSXMLElementDeclarationKind = NSXMLNodeKind(11L)
+        val NSXMLNotationDeclarationKind = NSXMLNodeKind(12L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSXMLDTDNodeKind}
  */
-enum class NSXMLDTDNodeKind(val value: Long) {
-    NSXMLEntityGeneralKind(1L), NSXMLEntityParsedKind(2L), NSXMLEntityUnparsedKind(3L), NSXMLEntityParameterKind(4L), NSXMLEntityPredefined(5L), NSXMLAttributeCDATAKind(6L), NSXMLAttributeIDKind(7L), NSXMLAttributeIDRefKind(8L), NSXMLAttributeIDRefsKind(9L), NSXMLAttributeEntityKind(10L), NSXMLAttributeEntitiesKind(11L), NSXMLAttributeNMTokenKind(12L), NSXMLAttributeNMTokensKind(13L), NSXMLAttributeEnumerationKind(14L), NSXMLAttributeNotationKind(15L), NSXMLElementDeclarationUndefinedKind(16L), NSXMLElementDeclarationEmptyKind(17L), NSXMLElementDeclarationAnyKind(18L), NSXMLElementDeclarationMixedKind(19L), NSXMLElementDeclarationElementKind(20L);
-
+@JvmInline
+value class NSXMLDTDNodeKind(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSXMLDTDNodeKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSXMLDTDNodeKind value: $v")
+        val NSXMLEntityGeneralKind = NSXMLDTDNodeKind(1L)
+        val NSXMLEntityParsedKind = NSXMLDTDNodeKind(2L)
+        val NSXMLEntityUnparsedKind = NSXMLDTDNodeKind(3L)
+        val NSXMLEntityParameterKind = NSXMLDTDNodeKind(4L)
+        val NSXMLEntityPredefined = NSXMLDTDNodeKind(5L)
+        val NSXMLAttributeCDATAKind = NSXMLDTDNodeKind(6L)
+        val NSXMLAttributeIDKind = NSXMLDTDNodeKind(7L)
+        val NSXMLAttributeIDRefKind = NSXMLDTDNodeKind(8L)
+        val NSXMLAttributeIDRefsKind = NSXMLDTDNodeKind(9L)
+        val NSXMLAttributeEntityKind = NSXMLDTDNodeKind(10L)
+        val NSXMLAttributeEntitiesKind = NSXMLDTDNodeKind(11L)
+        val NSXMLAttributeNMTokenKind = NSXMLDTDNodeKind(12L)
+        val NSXMLAttributeNMTokensKind = NSXMLDTDNodeKind(13L)
+        val NSXMLAttributeEnumerationKind = NSXMLDTDNodeKind(14L)
+        val NSXMLAttributeNotationKind = NSXMLDTDNodeKind(15L)
+        val NSXMLElementDeclarationUndefinedKind = NSXMLDTDNodeKind(16L)
+        val NSXMLElementDeclarationEmptyKind = NSXMLDTDNodeKind(17L)
+        val NSXMLElementDeclarationAnyKind = NSXMLDTDNodeKind(18L)
+        val NSXMLElementDeclarationMixedKind = NSXMLDTDNodeKind(19L)
+        val NSXMLElementDeclarationElementKind = NSXMLDTDNodeKind(20L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSXMLDocumentContentKind}
  */
-enum class NSXMLDocumentContentKind(val value: Long) {
-    NSXMLDocumentXMLKind(0L), NSXMLDocumentXHTMLKind(1L), NSXMLDocumentHTMLKind(2L), NSXMLDocumentTextKind(3L);
-
+@JvmInline
+value class NSXMLDocumentContentKind(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSXMLDocumentContentKind = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSXMLDocumentContentKind value: $v")
+        val NSXMLDocumentXMLKind = NSXMLDocumentContentKind(0L)
+        val NSXMLDocumentXHTMLKind = NSXMLDocumentContentKind(1L)
+        val NSXMLDocumentHTMLKind = NSXMLDocumentContentKind(2L)
+        val NSXMLDocumentTextKind = NSXMLDocumentContentKind(3L)
     }
+
 }
 
 /**
@@ -16351,61 +16335,89 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSInsertionPosition}
  */
-enum class NSInsertionPosition(val value: Long) {
-    NSPositionAfter(0L), NSPositionBefore(1L), NSPositionBeginning(2L), NSPositionEnd(3L), NSPositionReplace(4L);
-
+@JvmInline
+value class NSInsertionPosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSInsertionPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSInsertionPosition value: $v")
+        val NSPositionAfter = NSInsertionPosition(0L)
+        val NSPositionBefore = NSInsertionPosition(1L)
+        val NSPositionBeginning = NSInsertionPosition(2L)
+        val NSPositionEnd = NSInsertionPosition(3L)
+        val NSPositionReplace = NSInsertionPosition(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSRelativePosition}
  */
-enum class NSRelativePosition(val value: Long) {
-    NSRelativeAfter(0L), NSRelativeBefore(1L);
-
+@JvmInline
+value class NSRelativePosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRelativePosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRelativePosition value: $v")
+        val NSRelativeAfter = NSRelativePosition(0L)
+        val NSRelativeBefore = NSRelativePosition(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWhoseSubelementIdentifier}
  */
-enum class NSWhoseSubelementIdentifier(val value: Long) {
-    NSIndexSubelement(0L), NSEverySubelement(1L), NSMiddleSubelement(2L), NSRandomSubelement(3L), NSNoSubelement(4L);
-
+@JvmInline
+value class NSWhoseSubelementIdentifier(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWhoseSubelementIdentifier = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWhoseSubelementIdentifier value: $v")
+        val NSIndexSubelement = NSWhoseSubelementIdentifier(0L)
+        val NSEverySubelement = NSWhoseSubelementIdentifier(1L)
+        val NSMiddleSubelement = NSWhoseSubelementIdentifier(2L)
+        val NSRandomSubelement = NSWhoseSubelementIdentifier(3L)
+        val NSNoSubelement = NSWhoseSubelementIdentifier(4L)
     }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum NSSaveOptions}
+ */
+@JvmInline
+value class NSSaveOptions(val rawValue: Long) {
+    companion object {
+        val NSSaveOptionsYes = NSSaveOptions(0L)
+        val NSSaveOptionsNo = NSSaveOptions(1L)
+        val NSSaveOptionsAsk = NSSaveOptions(2L)
+    }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTestComparisonOperation}
  */
-enum class NSTestComparisonOperation(val value: Long) {
-    NSEqualToComparison(0L), NSLessThanOrEqualToComparison(1L), NSLessThanComparison(2L), NSGreaterThanOrEqualToComparison(3L), NSGreaterThanComparison(4L), NSBeginsWithComparison(5L), NSEndsWithComparison(6L), NSContainsComparison(7L);
-
+@JvmInline
+value class NSTestComparisonOperation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTestComparisonOperation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTestComparisonOperation value: $v")
+        val NSEqualToComparison = NSTestComparisonOperation(0L)
+        val NSLessThanOrEqualToComparison = NSTestComparisonOperation(1L)
+        val NSLessThanComparison = NSTestComparisonOperation(2L)
+        val NSGreaterThanOrEqualToComparison = NSTestComparisonOperation(3L)
+        val NSGreaterThanComparison = NSTestComparisonOperation(4L)
+        val NSBeginsWithComparison = NSTestComparisonOperation(5L)
+        val NSEndsWithComparison = NSTestComparisonOperation(6L)
+        val NSContainsComparison = NSTestComparisonOperation(7L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSUserNotificationActivationType}
  */
-enum class NSUserNotificationActivationType(val value: Long) {
-    NSUserNotificationActivationTypeNone(0L), NSUserNotificationActivationTypeContentsClicked(1L), NSUserNotificationActivationTypeActionButtonClicked(2L), NSUserNotificationActivationTypeReplied(3L), NSUserNotificationActivationTypeAdditionalActionClicked(4L);
-
+@JvmInline
+value class NSUserNotificationActivationType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSUserNotificationActivationType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSUserNotificationActivationType value: $v")
+        val NSUserNotificationActivationTypeNone = NSUserNotificationActivationType(0L)
+        val NSUserNotificationActivationTypeContentsClicked = NSUserNotificationActivationType(1L)
+        val NSUserNotificationActivationTypeActionButtonClicked = NSUserNotificationActivationType(2L)
+        val NSUserNotificationActivationTypeReplied = NSUserNotificationActivationType(3L)
+        val NSUserNotificationActivationTypeAdditionalActionClicked = NSUserNotificationActivationType(4L)
     }
+
 }
 
 /**
@@ -16423,37 +16435,66 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCompositingOperation}
  */
-enum class NSCompositingOperation(val value: Long) {
-    NSCompositingOperationClear(0L), NSCompositingOperationCopy(1L), NSCompositingOperationSourceOver(2L), NSCompositingOperationSourceIn(3L), NSCompositingOperationSourceOut(4L), NSCompositingOperationSourceAtop(5L), NSCompositingOperationDestinationOver(6L), NSCompositingOperationDestinationIn(7L), NSCompositingOperationDestinationOut(8L), NSCompositingOperationDestinationAtop(9L), NSCompositingOperationXOR(10L), NSCompositingOperationPlusDarker(11L), NSCompositingOperationHighlight(12L), NSCompositingOperationPlusLighter(13L), NSCompositingOperationMultiply(14L), NSCompositingOperationScreen(15L), NSCompositingOperationOverlay(16L), NSCompositingOperationDarken(17L), NSCompositingOperationLighten(18L), NSCompositingOperationColorDodge(19L), NSCompositingOperationColorBurn(20L), NSCompositingOperationSoftLight(21L), NSCompositingOperationHardLight(22L), NSCompositingOperationDifference(23L), NSCompositingOperationExclusion(24L), NSCompositingOperationHue(25L), NSCompositingOperationSaturation(26L), NSCompositingOperationColor(27L), NSCompositingOperationLuminosity(28L);
-
+@JvmInline
+value class NSCompositingOperation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCompositingOperation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCompositingOperation value: $v")
+        val NSCompositingOperationClear = NSCompositingOperation(0L)
+        val NSCompositingOperationCopy = NSCompositingOperation(1L)
+        val NSCompositingOperationSourceOver = NSCompositingOperation(2L)
+        val NSCompositingOperationSourceIn = NSCompositingOperation(3L)
+        val NSCompositingOperationSourceOut = NSCompositingOperation(4L)
+        val NSCompositingOperationSourceAtop = NSCompositingOperation(5L)
+        val NSCompositingOperationDestinationOver = NSCompositingOperation(6L)
+        val NSCompositingOperationDestinationIn = NSCompositingOperation(7L)
+        val NSCompositingOperationDestinationOut = NSCompositingOperation(8L)
+        val NSCompositingOperationDestinationAtop = NSCompositingOperation(9L)
+        val NSCompositingOperationXOR = NSCompositingOperation(10L)
+        val NSCompositingOperationPlusDarker = NSCompositingOperation(11L)
+        val NSCompositingOperationHighlight = NSCompositingOperation(12L)
+        val NSCompositingOperationPlusLighter = NSCompositingOperation(13L)
+        val NSCompositingOperationMultiply = NSCompositingOperation(14L)
+        val NSCompositingOperationScreen = NSCompositingOperation(15L)
+        val NSCompositingOperationOverlay = NSCompositingOperation(16L)
+        val NSCompositingOperationDarken = NSCompositingOperation(17L)
+        val NSCompositingOperationLighten = NSCompositingOperation(18L)
+        val NSCompositingOperationColorDodge = NSCompositingOperation(19L)
+        val NSCompositingOperationColorBurn = NSCompositingOperation(20L)
+        val NSCompositingOperationSoftLight = NSCompositingOperation(21L)
+        val NSCompositingOperationHardLight = NSCompositingOperation(22L)
+        val NSCompositingOperationDifference = NSCompositingOperation(23L)
+        val NSCompositingOperationExclusion = NSCompositingOperation(24L)
+        val NSCompositingOperationHue = NSCompositingOperation(25L)
+        val NSCompositingOperationSaturation = NSCompositingOperation(26L)
+        val NSCompositingOperationColor = NSCompositingOperation(27L)
+        val NSCompositingOperationLuminosity = NSCompositingOperation(28L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSBackingStoreType}
  */
-enum class NSBackingStoreType(val value: Long) {
-    NSBackingStoreRetained(0L), NSBackingStoreNonretained(1L), NSBackingStoreBuffered(2L);
-
+@JvmInline
+value class NSBackingStoreType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSBackingStoreType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBackingStoreType value: $v")
+        val NSBackingStoreRetained = NSBackingStoreType(0L)
+        val NSBackingStoreNonretained = NSBackingStoreType(1L)
+        val NSBackingStoreBuffered = NSBackingStoreType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowOrderingMode}
  */
-enum class NSWindowOrderingMode(val value: Long) {
-    NSWindowAbove(1L), NSWindowBelow(-1L), NSWindowOut(0L);
-
+@JvmInline
+value class NSWindowOrderingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowOrderingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowOrderingMode value: $v")
+        val NSWindowAbove = NSWindowOrderingMode(1L)
+        val NSWindowBelow = NSWindowOrderingMode(-1L)
+        val NSWindowOut = NSWindowOrderingMode(0L)
     }
+
 }
 
 /**
@@ -16471,49 +16512,54 @@ enum class NSFocusRingPlacement(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSFocusRingType}
  */
-enum class NSFocusRingType(val value: Long) {
-    NSFocusRingTypeDefault(0L), NSFocusRingTypeNone(1L), NSFocusRingTypeExterior(2L);
-
+@JvmInline
+value class NSFocusRingType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSFocusRingType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFocusRingType value: $v")
+        val NSFocusRingTypeDefault = NSFocusRingType(0L)
+        val NSFocusRingTypeNone = NSFocusRingType(1L)
+        val NSFocusRingTypeExterior = NSFocusRingType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSColorRenderingIntent}
  */
-enum class NSColorRenderingIntent(val value: Long) {
-    NSColorRenderingIntentDefault(0L), NSColorRenderingIntentAbsoluteColorimetric(1L), NSColorRenderingIntentRelativeColorimetric(2L), NSColorRenderingIntentPerceptual(3L), NSColorRenderingIntentSaturation(4L);
-
+@JvmInline
+value class NSColorRenderingIntent(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSColorRenderingIntent = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSColorRenderingIntent value: $v")
+        val NSColorRenderingIntentDefault = NSColorRenderingIntent(0L)
+        val NSColorRenderingIntentAbsoluteColorimetric = NSColorRenderingIntent(1L)
+        val NSColorRenderingIntentRelativeColorimetric = NSColorRenderingIntent(2L)
+        val NSColorRenderingIntentPerceptual = NSColorRenderingIntent(3L)
+        val NSColorRenderingIntentSaturation = NSColorRenderingIntent(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowDepth}
  */
-enum class NSWindowDepth(val value: Long) {
-    NSWindowDepthTwentyfourBitRGB(520L), NSWindowDepthSixtyfourBitRGB(528L), NSWindowDepthOnehundredtwentyeightBitRGB(544L);
-
+@JvmInline
+value class NSWindowDepth(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowDepth = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowDepth value: $v")
+        val NSWindowDepthTwentyfourBitRGB = NSWindowDepth(520L)
+        val NSWindowDepthSixtyfourBitRGB = NSWindowDepth(528L)
+        val NSWindowDepthOnehundredtwentyeightBitRGB = NSWindowDepth(544L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDisplayGamut}
  */
-enum class NSDisplayGamut(val value: Long) {
-    NSDisplayGamutSRGB(1L), NSDisplayGamutP3(2L);
-
+@JvmInline
+value class NSDisplayGamut(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDisplayGamut = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDisplayGamut value: $v")
+        val NSDisplayGamutSRGB = NSDisplayGamut(1L)
+        val NSDisplayGamutP3 = NSDisplayGamut(2L)
     }
+
 }
 
 /**
@@ -16637,18 +16683,6 @@ enum class CGImagePixelFormatInfo(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CGBitmapInfo}
- */
-enum class CGBitmapInfo(val value: Long) {
-    kCGBitmapAlphaInfoMask(31L), kCGBitmapComponentInfoMask(3840L), kCGBitmapByteOrderInfoMask(28672L), kCGBitmapPixelFormatInfoMask(983040L), kCGBitmapFloatInfoMask(3840L), kCGBitmapByteOrderMask(28672L), kCGBitmapFloatComponents(256L), kCGBitmapByteOrderDefault(0L), kCGBitmapByteOrder16Little(4096L), kCGBitmapByteOrder32Little(8192L), kCGBitmapByteOrder16Big(12288L), kCGBitmapByteOrder32Big(16384L);
-
-    companion object {
-        fun fromValue(v: Long): CGBitmapInfo = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGBitmapInfo value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum CGLineJoin}
  */
 enum class CGLineJoin(val value: Long) {
@@ -16717,18 +16751,6 @@ enum class CGPDFBox(val value: Long) {
     companion object {
         fun fromValue(v: Long): CGPDFBox = entries.firstOrNull { it.value == v }
             ?: error("Unknown CGPDFBox value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGPDFAccessPermissions}
- */
-enum class CGPDFAccessPermissions(val value: Long) {
-    kCGPDFAllowsLowQualityPrinting(1L), kCGPDFAllowsHighQualityPrinting(2L), kCGPDFAllowsDocumentChanges(4L), kCGPDFAllowsDocumentAssembly(8L), kCGPDFAllowsContentCopying(16L), kCGPDFAllowsContentAccessibility(32L), kCGPDFAllowsCommenting(64L), kCGPDFAllowsFormFieldEntry(128L);
-
-    companion object {
-        fun fromValue(v: Long): CGPDFAccessPermissions = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGPDFAccessPermissions value: $v")
     }
 }
 
@@ -16807,13 +16829,16 @@ enum class CGBlendMode(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageInterpolation}
  */
-enum class NSImageInterpolation(val value: Long) {
-    NSImageInterpolationDefault(0L), NSImageInterpolationNone(1L), NSImageInterpolationLow(2L), NSImageInterpolationMedium(4L), NSImageInterpolationHigh(3L);
-
+@JvmInline
+value class NSImageInterpolation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageInterpolation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageInterpolation value: $v")
+        val NSImageInterpolationDefault = NSImageInterpolation(0L)
+        val NSImageInterpolationNone = NSImageInterpolation(1L)
+        val NSImageInterpolationLow = NSImageInterpolation(2L)
+        val NSImageInterpolationMedium = NSImageInterpolation(4L)
+        val NSImageInterpolationHigh = NSImageInterpolation(3L)
     }
+
 }
 
 /**
@@ -16831,49 +16856,60 @@ enum class NSAccessibilityAnnotationPosition(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAccessibilityOrientation}
  */
-enum class NSAccessibilityOrientation(val value: Long) {
-    NSAccessibilityOrientationUnknown(0L), NSAccessibilityOrientationVertical(1L), NSAccessibilityOrientationHorizontal(2L);
-
+@JvmInline
+value class NSAccessibilityOrientation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAccessibilityOrientation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityOrientation value: $v")
+        val NSAccessibilityOrientationUnknown = NSAccessibilityOrientation(0L)
+        val NSAccessibilityOrientationVertical = NSAccessibilityOrientation(1L)
+        val NSAccessibilityOrientationHorizontal = NSAccessibilityOrientation(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAccessibilitySortDirection}
  */
-enum class NSAccessibilitySortDirection(val value: Long) {
-    NSAccessibilitySortDirectionUnknown(0L), NSAccessibilitySortDirectionAscending(1L), NSAccessibilitySortDirectionDescending(2L);
-
+@JvmInline
+value class NSAccessibilitySortDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAccessibilitySortDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilitySortDirection value: $v")
+        val NSAccessibilitySortDirectionUnknown = NSAccessibilitySortDirection(0L)
+        val NSAccessibilitySortDirectionAscending = NSAccessibilitySortDirection(1L)
+        val NSAccessibilitySortDirectionDescending = NSAccessibilitySortDirection(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAccessibilityRulerMarkerType}
  */
-enum class NSAccessibilityRulerMarkerType(val value: Long) {
-    NSAccessibilityRulerMarkerTypeUnknown(0L), NSAccessibilityRulerMarkerTypeTabStopLeft(1L), NSAccessibilityRulerMarkerTypeTabStopRight(2L), NSAccessibilityRulerMarkerTypeTabStopCenter(3L), NSAccessibilityRulerMarkerTypeTabStopDecimal(4L), NSAccessibilityRulerMarkerTypeIndentHead(5L), NSAccessibilityRulerMarkerTypeIndentTail(6L), NSAccessibilityRulerMarkerTypeIndentFirstLine(7L);
-
+@JvmInline
+value class NSAccessibilityRulerMarkerType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAccessibilityRulerMarkerType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityRulerMarkerType value: $v")
+        val NSAccessibilityRulerMarkerTypeUnknown = NSAccessibilityRulerMarkerType(0L)
+        val NSAccessibilityRulerMarkerTypeTabStopLeft = NSAccessibilityRulerMarkerType(1L)
+        val NSAccessibilityRulerMarkerTypeTabStopRight = NSAccessibilityRulerMarkerType(2L)
+        val NSAccessibilityRulerMarkerTypeTabStopCenter = NSAccessibilityRulerMarkerType(3L)
+        val NSAccessibilityRulerMarkerTypeTabStopDecimal = NSAccessibilityRulerMarkerType(4L)
+        val NSAccessibilityRulerMarkerTypeIndentHead = NSAccessibilityRulerMarkerType(5L)
+        val NSAccessibilityRulerMarkerTypeIndentTail = NSAccessibilityRulerMarkerType(6L)
+        val NSAccessibilityRulerMarkerTypeIndentFirstLine = NSAccessibilityRulerMarkerType(7L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAccessibilityUnits}
  */
-enum class NSAccessibilityUnits(val value: Long) {
-    NSAccessibilityUnitsUnknown(0L), NSAccessibilityUnitsInches(1L), NSAccessibilityUnitsCentimeters(2L), NSAccessibilityUnitsPoints(3L), NSAccessibilityUnitsPicas(4L);
-
+@JvmInline
+value class NSAccessibilityUnits(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAccessibilityUnits = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityUnits value: $v")
+        val NSAccessibilityUnitsUnknown = NSAccessibilityUnits(0L)
+        val NSAccessibilityUnitsInches = NSAccessibilityUnits(1L)
+        val NSAccessibilityUnitsCentimeters = NSAccessibilityUnits(2L)
+        val NSAccessibilityUnitsPoints = NSAccessibilityUnits(3L)
+        val NSAccessibilityUnitsPicas = NSAccessibilityUnits(4L)
     }
+
 }
 
 /**
@@ -16903,61 +16939,70 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAccessibilityCustomRotorSearchDirection}
  */
-enum class NSAccessibilityCustomRotorSearchDirection(val value: Long) {
-    NSAccessibilityCustomRotorSearchDirectionPrevious(0L), NSAccessibilityCustomRotorSearchDirectionNext(1L);
-
+@JvmInline
+value class NSAccessibilityCustomRotorSearchDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAccessibilityCustomRotorSearchDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityCustomRotorSearchDirection value: $v")
+        val NSAccessibilityCustomRotorSearchDirectionPrevious = NSAccessibilityCustomRotorSearchDirection(0L)
+        val NSAccessibilityCustomRotorSearchDirectionNext = NSAccessibilityCustomRotorSearchDirection(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAccessibilityCustomRotorType}
  */
-enum class NSAccessibilityCustomRotorType(val value: Long) {
-    NSAccessibilityCustomRotorTypeCustom(0L), NSAccessibilityCustomRotorTypeAny(1L), NSAccessibilityCustomRotorTypeAnnotation(2L), NSAccessibilityCustomRotorTypeBoldText(3L), NSAccessibilityCustomRotorTypeHeading(4L), NSAccessibilityCustomRotorTypeHeadingLevel1(5L), NSAccessibilityCustomRotorTypeHeadingLevel2(6L), NSAccessibilityCustomRotorTypeHeadingLevel3(7L), NSAccessibilityCustomRotorTypeHeadingLevel4(8L), NSAccessibilityCustomRotorTypeHeadingLevel5(9L), NSAccessibilityCustomRotorTypeHeadingLevel6(10L), NSAccessibilityCustomRotorTypeImage(11L), NSAccessibilityCustomRotorTypeItalicText(12L), NSAccessibilityCustomRotorTypeLandmark(13L), NSAccessibilityCustomRotorTypeLink(14L), NSAccessibilityCustomRotorTypeList(15L), NSAccessibilityCustomRotorTypeMisspelledWord(16L), NSAccessibilityCustomRotorTypeTable(17L), NSAccessibilityCustomRotorTypeTextField(18L), NSAccessibilityCustomRotorTypeUnderlinedText(19L), NSAccessibilityCustomRotorTypeVisitedLink(20L), NSAccessibilityCustomRotorTypeAudiograph(21L);
-
+@JvmInline
+value class NSAccessibilityCustomRotorType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAccessibilityCustomRotorType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAccessibilityCustomRotorType value: $v")
+        val NSAccessibilityCustomRotorTypeCustom = NSAccessibilityCustomRotorType(0L)
+        val NSAccessibilityCustomRotorTypeAny = NSAccessibilityCustomRotorType(1L)
+        val NSAccessibilityCustomRotorTypeAnnotation = NSAccessibilityCustomRotorType(2L)
+        val NSAccessibilityCustomRotorTypeBoldText = NSAccessibilityCustomRotorType(3L)
+        val NSAccessibilityCustomRotorTypeHeading = NSAccessibilityCustomRotorType(4L)
+        val NSAccessibilityCustomRotorTypeHeadingLevel1 = NSAccessibilityCustomRotorType(5L)
+        val NSAccessibilityCustomRotorTypeHeadingLevel2 = NSAccessibilityCustomRotorType(6L)
+        val NSAccessibilityCustomRotorTypeHeadingLevel3 = NSAccessibilityCustomRotorType(7L)
+        val NSAccessibilityCustomRotorTypeHeadingLevel4 = NSAccessibilityCustomRotorType(8L)
+        val NSAccessibilityCustomRotorTypeHeadingLevel5 = NSAccessibilityCustomRotorType(9L)
+        val NSAccessibilityCustomRotorTypeHeadingLevel6 = NSAccessibilityCustomRotorType(10L)
+        val NSAccessibilityCustomRotorTypeImage = NSAccessibilityCustomRotorType(11L)
+        val NSAccessibilityCustomRotorTypeItalicText = NSAccessibilityCustomRotorType(12L)
+        val NSAccessibilityCustomRotorTypeLandmark = NSAccessibilityCustomRotorType(13L)
+        val NSAccessibilityCustomRotorTypeLink = NSAccessibilityCustomRotorType(14L)
+        val NSAccessibilityCustomRotorTypeList = NSAccessibilityCustomRotorType(15L)
+        val NSAccessibilityCustomRotorTypeMisspelledWord = NSAccessibilityCustomRotorType(16L)
+        val NSAccessibilityCustomRotorTypeTable = NSAccessibilityCustomRotorType(17L)
+        val NSAccessibilityCustomRotorTypeTextField = NSAccessibilityCustomRotorType(18L)
+        val NSAccessibilityCustomRotorTypeUnderlinedText = NSAccessibilityCustomRotorType(19L)
+        val NSAccessibilityCustomRotorTypeVisitedLink = NSAccessibilityCustomRotorType(20L)
+        val NSAccessibilityCustomRotorTypeAudiograph = NSAccessibilityCustomRotorType(21L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWorkspaceAuthorizationType}
  */
-enum class NSWorkspaceAuthorizationType(val value: Long) {
-    NSWorkspaceAuthorizationTypeCreateSymbolicLink(0L), NSWorkspaceAuthorizationTypeSetAttributes(1L), NSWorkspaceAuthorizationTypeReplaceFile(2L);
-
+@JvmInline
+value class NSWorkspaceAuthorizationType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWorkspaceAuthorizationType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWorkspaceAuthorizationType value: $v")
+        val NSWorkspaceAuthorizationTypeCreateSymbolicLink = NSWorkspaceAuthorizationType(0L)
+        val NSWorkspaceAuthorizationTypeSetAttributes = NSWorkspaceAuthorizationType(1L)
+        val NSWorkspaceAuthorizationTypeReplaceFile = NSWorkspaceAuthorizationType(2L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSTouchPhase}
- */
-enum class NSTouchPhase(val value: Long) {
-    NSTouchPhaseBegan(1L), NSTouchPhaseMoved(2L), NSTouchPhaseStationary(4L), NSTouchPhaseEnded(8L), NSTouchPhaseCancelled(16L), NSTouchPhaseTouching(7L), NSTouchPhaseAny(-1L);
-
-    companion object {
-        fun fromValue(v: Long): NSTouchPhase = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTouchPhase value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTouchType}
  */
-enum class NSTouchType(val value: Long) {
-    NSTouchTypeDirect(0L), NSTouchTypeIndirect(1L);
-
+@JvmInline
+value class NSTouchType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTouchType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTouchType value: $v")
+        val NSTouchTypeDirect = NSTouchType(0L)
+        val NSTouchTypeIndirect = NSTouchType(1L)
     }
+
 }
 
 /**
@@ -18437,18 +18482,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CGColorModel}
- */
-enum class CGColorModel(val value: Long) {
-    kCGColorModelNoColorant(0L), kCGColorModelGray(1L), kCGColorModelRGB(2L), kCGColorModelCMYK(4L), kCGColorModelLab(8L), kCGColorModelDeviceN(16L);
-
-    companion object {
-        fun fromValue(v: Long): CGColorModel = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGColorModel value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum CGComponent}
  */
 enum class CGComponent(val value: Long) {
@@ -18533,30 +18566,6 @@ enum class CGWindowBackingType(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CGWindowListOption}
- */
-enum class CGWindowListOption(val value: Long) {
-    kCGWindowListOptionAll(0L), kCGWindowListOptionOnScreenOnly(1L), kCGWindowListOptionOnScreenAboveWindow(2L), kCGWindowListOptionOnScreenBelowWindow(4L), kCGWindowListOptionIncludingWindow(8L), kCGWindowListExcludeDesktopElements(16L);
-
-    companion object {
-        fun fromValue(v: Long): CGWindowListOption = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGWindowListOption value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGWindowImageOption}
- */
-enum class CGWindowImageOption(val value: Long) {
-    kCGWindowImageDefault(0L), kCGWindowImageBoundsIgnoreFraming(1L), kCGWindowImageShouldBeOpaque(2L), kCGWindowImageOnlyShadows(4L), kCGWindowImageBestResolution(8L), kCGWindowImageNominalResolution(16L);
-
-    companion object {
-        fun fromValue(v: Long): CGWindowImageOption = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGWindowImageOption value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum CGWindowLevelKey}
  */
 enum class CGWindowLevelKey(val value: Long) {
@@ -18565,18 +18574,6 @@ enum class CGWindowLevelKey(val value: Long) {
     companion object {
         fun fromValue(v: Long): CGWindowLevelKey = entries.firstOrNull { it.value == v }
             ?: error("Unknown CGWindowLevelKey value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGConfigureOption}
- */
-enum class CGConfigureOption(val value: Long) {
-    kCGConfigureForAppOnly(0L), kCGConfigureForSession(1L), kCGConfigurePermanently(2L);
-
-    companion object {
-        fun fromValue(v: Long): CGConfigureOption = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGConfigureOption value: $v")
     }
 }
 
@@ -18601,18 +18598,6 @@ enum class CGDisplayStreamFrameStatus(val value: Long) {
     companion object {
         fun fromValue(v: Long): CGDisplayStreamFrameStatus = entries.firstOrNull { it.value == v }
             ?: error("Unknown CGDisplayStreamFrameStatus value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CGScreenUpdateOperation}
- */
-enum class CGScreenUpdateOperation(val value: Long) {
-    kCGScreenUpdateOperationRefresh(0L), kCGScreenUpdateOperationMove(1L), kCGScreenUpdateOperationReducedDirtyRectangleCount(-2147483648L);
-
-    companion object {
-        fun fromValue(v: Long): CGScreenUpdateOperation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGScreenUpdateOperation value: $v")
     }
 }
 
@@ -19493,6 +19478,18 @@ enum class CGEventTapPlacement(val value: Long) {
 }
 
 /**
+ * NS_ENUM: {@snippet lang=c : enum CGEventTapOptions}
+ */
+enum class CGEventTapOptions(val value: Long) {
+    kCGEventTapOptionDefault(0L), kCGEventTapOptionListenOnly(1L);
+
+    companion object {
+        fun fromValue(v: Long): CGEventTapOptions = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CGEventTapOptions value: $v")
+    }
+}
+
+/**
  * NS_ENUM: {@snippet lang=c : enum CGEventSourceStateID}
  */
 enum class CGEventSourceStateID(val value: Long) {
@@ -19513,30 +19510,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
     companion object {
         fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreText_framework_Headers_CTFontTraits_h_49_1_ = entries.firstOrNull { it.value == v }
             ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreText_framework_Headers_CTFontTraits_h_49_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CTFontSymbolicTraits}
- */
-enum class CTFontSymbolicTraits(val value: Long) {
-    kCTFontTraitItalic(1L), kCTFontTraitBold(2L), kCTFontTraitExpanded(32L), kCTFontTraitCondensed(64L), kCTFontTraitMonoSpace(1024L), kCTFontTraitVertical(2048L), kCTFontTraitUIOptimized(4096L), kCTFontTraitColorGlyphs(8192L), kCTFontTraitComposite(16384L), kCTFontTraitClassMask(-268435456L), kCTFontItalicTrait(1L), kCTFontBoldTrait(2L), kCTFontExpandedTrait(32L), kCTFontCondensedTrait(64L), kCTFontMonoSpaceTrait(1024L), kCTFontVerticalTrait(2048L), kCTFontUIOptimizedTrait(4096L), kCTFontColorGlyphsTrait(8192L), kCTFontCompositeTrait(16384L), kCTFontClassMaskTrait(-268435456L);
-
-    companion object {
-        fun fromValue(v: Long): CTFontSymbolicTraits = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CTFontSymbolicTraits value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CTFontStylisticClass}
- */
-enum class CTFontStylisticClass(val value: Long) {
-    kCTFontClassUnknown(0L), kCTFontClassOldStyleSerifs(268435456L), kCTFontClassTransitionalSerifs(536870912L), kCTFontClassModernSerifs(805306368L), kCTFontClassClarendonSerifs(1073741824L), kCTFontClassSlabSerifs(1342177280L), kCTFontClassFreeformSerifs(1879048192L), kCTFontClassSansSerif(-2147483648L), kCTFontClassOrnamentals(-1879048192L), kCTFontClassScripts(-1610612736L), kCTFontClassSymbolic(-1073741824L), kCTFontUnknownClass(0L), kCTFontOldStyleSerifsClass(268435456L), kCTFontTransitionalSerifsClass(536870912L), kCTFontModernSerifsClass(805306368L), kCTFontClarendonSerifsClass(1073741824L), kCTFontSlabSerifsClass(1342177280L), kCTFontFreeformSerifsClass(1879048192L), kCTFontSansSerifClass(-2147483648L), kCTFontOrnamentalsClass(-1879048192L), kCTFontScriptsClass(-1610612736L), kCTFontSymbolicClass(-1073741824L);
-
-    companion object {
-        fun fromValue(v: Long): CTFontStylisticClass = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CTFontStylisticClass value: $v")
     }
 }
 
@@ -19781,18 +19754,6 @@ enum class CTRubyPosition(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum CTRunStatus}
- */
-enum class CTRunStatus(val value: Long) {
-    kCTRunStatusNoStatus(0L), kCTRunStatusRightToLeft(1L), kCTRunStatusNonMonotonic(2L), kCTRunStatusHasNonIdentityMatrix(4L);
-
-    companion object {
-        fun fromValue(v: Long): CTRunStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CTRunStatus value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreText.framework/Headers/CTRunDelegate.h:144:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreText_framework_Headers_CTRunDelegate_h_144_1_(val value: Long) {
@@ -19801,30 +19762,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
     companion object {
         fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreText_framework_Headers_CTRunDelegate_h_144_1_ = entries.firstOrNull { it.value == v }
             ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreText_framework_Headers_CTRunDelegate_h_144_1_ value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CTUnderlineStyle}
- */
-enum class CTUnderlineStyle(val value: Long) {
-    kCTUnderlineStyleNone(0L), kCTUnderlineStyleSingle(1L), kCTUnderlineStyleThick(2L), kCTUnderlineStyleDouble(9L);
-
-    companion object {
-        fun fromValue(v: Long): CTUnderlineStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CTUnderlineStyle value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum CTUnderlineStyleModifiers}
- */
-enum class CTUnderlineStyleModifiers(val value: Long) {
-    kCTUnderlinePatternSolid(0L), kCTUnderlinePatternDot(256L), kCTUnderlinePatternDash(512L), kCTUnderlinePatternDashDot(768L), kCTUnderlinePatternDashDotDot(1024L);
-
-    companion object {
-        fun fromValue(v: Long): CTUnderlineStyleModifiers = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CTUnderlineStyleModifiers value: $v")
     }
 }
 
@@ -20377,6 +20314,18 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
     companion object {
         fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_ApplicationServices_framework_Frameworks_QD_framework_Headers_ColorSyncDeprecated_h_1611_1_ = entries.firstOrNull { it.value == v }
             ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_ApplicationServices_framework_Frameworks_QD_framework_Headers_ColorSyncDeprecated_h_1611_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CMFloatBitmapFlags}
+ */
+enum class CMFloatBitmapFlags(val value: Long) {
+    kCMFloatBitmapFlagsNone(0L), kCMFloatBitmapFlagsAlpha(1L), kCMFloatBitmapFlagsAlphaPremul(2L), kCMFloatBitmapFlagsRangeClipped(4L);
+
+    companion object {
+        fun fromValue(v: Long): CMFloatBitmapFlags = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CMFloatBitmapFlags value: $v")
     }
 }
 
@@ -21005,18 +20954,6 @@ enum class AXError(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum AXMenuItemModifiers}
- */
-enum class AXMenuItemModifiers(val value: Long) {
-    kAXMenuItemModifierNone(0L), kAXMenuItemModifierShift(1L), kAXMenuItemModifierOption(2L), kAXMenuItemModifierControl(4L), kAXMenuItemModifierNoCommand(8L);
-
-    companion object {
-        fun fromValue(v: Long): AXMenuItemModifiers = entries.firstOrNull { it.value == v }
-            ?: error("Unknown AXMenuItemModifiers value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum AXPriority}
  */
 enum class AXPriority(val value: Long) {
@@ -21103,13 +21040,19 @@ enum class CGImageSourceStatus(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum CGImagePropertyOrientation}
  */
-enum class CGImagePropertyOrientation(val value: Long) {
-    kCGImagePropertyOrientationUp(1L), kCGImagePropertyOrientationUpMirrored(2L), kCGImagePropertyOrientationDown(3L), kCGImagePropertyOrientationDownMirrored(4L), kCGImagePropertyOrientationLeftMirrored(5L), kCGImagePropertyOrientationRight(6L), kCGImagePropertyOrientationRightMirrored(7L), kCGImagePropertyOrientationLeft(8L);
-
+@JvmInline
+value class CGImagePropertyOrientation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): CGImagePropertyOrientation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown CGImagePropertyOrientation value: $v")
+        val kCGImagePropertyOrientationUp = CGImagePropertyOrientation(1L)
+        val kCGImagePropertyOrientationUpMirrored = CGImagePropertyOrientation(2L)
+        val kCGImagePropertyOrientationDown = CGImagePropertyOrientation(3L)
+        val kCGImagePropertyOrientationDownMirrored = CGImagePropertyOrientation(4L)
+        val kCGImagePropertyOrientationLeftMirrored = CGImagePropertyOrientation(5L)
+        val kCGImagePropertyOrientationRight = CGImagePropertyOrientation(6L)
+        val kCGImagePropertyOrientationRightMirrored = CGImagePropertyOrientation(7L)
+        val kCGImagePropertyOrientationLeft = CGImagePropertyOrientation(8L)
     }
+
 }
 
 /**
@@ -22279,73 +22222,110 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSEventType}
  */
-enum class NSEventType(val value: Long) {
-    NSEventTypeLeftMouseDown(1L), NSEventTypeLeftMouseUp(2L), NSEventTypeRightMouseDown(3L), NSEventTypeRightMouseUp(4L), NSEventTypeMouseMoved(5L), NSEventTypeLeftMouseDragged(6L), NSEventTypeRightMouseDragged(7L), NSEventTypeMouseEntered(8L), NSEventTypeMouseExited(9L), NSEventTypeKeyDown(10L), NSEventTypeKeyUp(11L), NSEventTypeFlagsChanged(12L), NSEventTypeAppKitDefined(13L), NSEventTypeSystemDefined(14L), NSEventTypeApplicationDefined(15L), NSEventTypePeriodic(16L), NSEventTypeCursorUpdate(17L), NSEventTypeScrollWheel(22L), NSEventTypeTabletPoint(23L), NSEventTypeTabletProximity(24L), NSEventTypeOtherMouseDown(25L), NSEventTypeOtherMouseUp(26L), NSEventTypeOtherMouseDragged(27L), NSEventTypeGesture(29L), NSEventTypeMagnify(30L), NSEventTypeSwipe(31L), NSEventTypeRotate(18L), NSEventTypeBeginGesture(19L), NSEventTypeEndGesture(20L), NSEventTypeSmartMagnify(32L), NSEventTypeQuickLook(33L), NSEventTypePressure(34L), NSEventTypeDirectTouch(37L), NSEventTypeChangeMode(38L), NSEventTypeMouseCancelled(40L);
-
+@JvmInline
+value class NSEventType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSEventType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSEventType value: $v")
+        val NSEventTypeLeftMouseDown = NSEventType(1L)
+        val NSEventTypeLeftMouseUp = NSEventType(2L)
+        val NSEventTypeRightMouseDown = NSEventType(3L)
+        val NSEventTypeRightMouseUp = NSEventType(4L)
+        val NSEventTypeMouseMoved = NSEventType(5L)
+        val NSEventTypeLeftMouseDragged = NSEventType(6L)
+        val NSEventTypeRightMouseDragged = NSEventType(7L)
+        val NSEventTypeMouseEntered = NSEventType(8L)
+        val NSEventTypeMouseExited = NSEventType(9L)
+        val NSEventTypeKeyDown = NSEventType(10L)
+        val NSEventTypeKeyUp = NSEventType(11L)
+        val NSEventTypeFlagsChanged = NSEventType(12L)
+        val NSEventTypeAppKitDefined = NSEventType(13L)
+        val NSEventTypeSystemDefined = NSEventType(14L)
+        val NSEventTypeApplicationDefined = NSEventType(15L)
+        val NSEventTypePeriodic = NSEventType(16L)
+        val NSEventTypeCursorUpdate = NSEventType(17L)
+        val NSEventTypeScrollWheel = NSEventType(22L)
+        val NSEventTypeTabletPoint = NSEventType(23L)
+        val NSEventTypeTabletProximity = NSEventType(24L)
+        val NSEventTypeOtherMouseDown = NSEventType(25L)
+        val NSEventTypeOtherMouseUp = NSEventType(26L)
+        val NSEventTypeOtherMouseDragged = NSEventType(27L)
+        val NSEventTypeGesture = NSEventType(29L)
+        val NSEventTypeMagnify = NSEventType(30L)
+        val NSEventTypeSwipe = NSEventType(31L)
+        val NSEventTypeRotate = NSEventType(18L)
+        val NSEventTypeBeginGesture = NSEventType(19L)
+        val NSEventTypeEndGesture = NSEventType(20L)
+        val NSEventTypeSmartMagnify = NSEventType(32L)
+        val NSEventTypeQuickLook = NSEventType(33L)
+        val NSEventTypePressure = NSEventType(34L)
+        val NSEventTypeDirectTouch = NSEventType(37L)
+        val NSEventTypeChangeMode = NSEventType(38L)
+        val NSEventTypeMouseCancelled = NSEventType(40L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPointingDeviceType}
  */
-enum class NSPointingDeviceType(val value: Long) {
-    NSPointingDeviceTypeUnknown(0L), NSPointingDeviceTypePen(1L), NSPointingDeviceTypeCursor(2L), NSPointingDeviceTypeEraser(3L);
-
+@JvmInline
+value class NSPointingDeviceType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPointingDeviceType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPointingDeviceType value: $v")
+        val NSPointingDeviceTypeUnknown = NSPointingDeviceType(0L)
+        val NSPointingDeviceTypePen = NSPointingDeviceType(1L)
+        val NSPointingDeviceTypeCursor = NSPointingDeviceType(2L)
+        val NSPointingDeviceTypeEraser = NSPointingDeviceType(3L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSEventPhase}
- */
-enum class NSEventPhase(val value: Long) {
-    NSEventPhaseNone(0L), NSEventPhaseBegan(1L), NSEventPhaseStationary(2L), NSEventPhaseChanged(4L), NSEventPhaseEnded(8L), NSEventPhaseCancelled(16L), NSEventPhaseMayBegin(32L);
-
-    companion object {
-        fun fromValue(v: Long): NSEventPhase = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSEventPhase value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSEventGestureAxis}
  */
-enum class NSEventGestureAxis(val value: Long) {
-    NSEventGestureAxisNone(0L), NSEventGestureAxisHorizontal(1L), NSEventGestureAxisVertical(2L);
-
+@JvmInline
+value class NSEventGestureAxis(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSEventGestureAxis = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSEventGestureAxis value: $v")
+        val NSEventGestureAxisNone = NSEventGestureAxis(0L)
+        val NSEventGestureAxisHorizontal = NSEventGestureAxis(1L)
+        val NSEventGestureAxisVertical = NSEventGestureAxis(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSEventSubtype}
  */
-enum class NSEventSubtype(val value: Long) {
-    NSEventSubtypeWindowExposed(0L), NSEventSubtypeApplicationActivated(1L), NSEventSubtypeApplicationDeactivated(2L), NSEventSubtypeWindowMoved(4L), NSEventSubtypeScreenChanged(8L), NSEventSubtypePowerOff(1L), NSEventSubtypeMouseEvent(0L), NSEventSubtypeTabletPoint(1L), NSEventSubtypeTabletProximity(2L), NSEventSubtypeTouch(3L);
-
+@JvmInline
+value class NSEventSubtype(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSEventSubtype = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSEventSubtype value: $v")
+        val NSEventSubtypeWindowExposed = NSEventSubtype(0L)
+        val NSEventSubtypeApplicationActivated = NSEventSubtype(1L)
+        val NSEventSubtypeApplicationDeactivated = NSEventSubtype(2L)
+        val NSEventSubtypeWindowMoved = NSEventSubtype(4L)
+        val NSEventSubtypeScreenChanged = NSEventSubtype(8L)
+        val NSEventSubtypePowerOff = NSEventSubtype(1L)
+        val NSEventSubtypeMouseEvent = NSEventSubtype(0L)
+        val NSEventSubtypeTabletPoint = NSEventSubtype(1L)
+        val NSEventSubtypeTabletProximity = NSEventSubtype(2L)
+        val NSEventSubtypeTouch = NSEventSubtype(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPressureBehavior}
  */
-enum class NSPressureBehavior(val value: Long) {
-    NSPressureBehaviorUnknown(-1L), NSPressureBehaviorPrimaryDefault(0L), NSPressureBehaviorPrimaryClick(1L), NSPressureBehaviorPrimaryGeneric(2L), NSPressureBehaviorPrimaryAccelerator(3L), NSPressureBehaviorPrimaryDeepClick(5L), NSPressureBehaviorPrimaryDeepDrag(6L);
-
+@JvmInline
+value class NSPressureBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPressureBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPressureBehavior value: $v")
+        val NSPressureBehaviorUnknown = NSPressureBehavior(-1L)
+        val NSPressureBehaviorPrimaryDefault = NSPressureBehavior(0L)
+        val NSPressureBehaviorPrimaryClick = NSPressureBehavior(1L)
+        val NSPressureBehaviorPrimaryGeneric = NSPressureBehavior(2L)
+        val NSPressureBehaviorPrimaryAccelerator = NSPressureBehavior(3L)
+        val NSPressureBehaviorPrimaryDeepClick = NSPressureBehavior(5L)
+        val NSPressureBehaviorPrimaryDeepDrag = NSPressureBehavior(6L)
     }
+
 }
 
 /**
@@ -22363,181 +22343,198 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPasteboardAccessBehavior}
  */
-enum class NSPasteboardAccessBehavior(val value: Long) {
-    NSPasteboardAccessBehaviorDefault(0L), NSPasteboardAccessBehaviorAsk(1L), NSPasteboardAccessBehaviorAlwaysAllow(2L), NSPasteboardAccessBehaviorAlwaysDeny(3L);
-
+@JvmInline
+value class NSPasteboardAccessBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPasteboardAccessBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPasteboardAccessBehavior value: $v")
+        val NSPasteboardAccessBehaviorDefault = NSPasteboardAccessBehavior(0L)
+        val NSPasteboardAccessBehaviorAsk = NSPasteboardAccessBehavior(1L)
+        val NSPasteboardAccessBehaviorAlwaysAllow = NSPasteboardAccessBehavior(2L)
+        val NSPasteboardAccessBehaviorAlwaysDeny = NSPasteboardAccessBehavior(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSApplicationActivationPolicy}
  */
-enum class NSApplicationActivationPolicy(val value: Long) {
-    NSApplicationActivationPolicyRegular(0L), NSApplicationActivationPolicyAccessory(1L), NSApplicationActivationPolicyProhibited(2L);
-
+@JvmInline
+value class NSApplicationActivationPolicy(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSApplicationActivationPolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSApplicationActivationPolicy value: $v")
+        val NSApplicationActivationPolicyRegular = NSApplicationActivationPolicy(0L)
+        val NSApplicationActivationPolicyAccessory = NSApplicationActivationPolicy(1L)
+        val NSApplicationActivationPolicyProhibited = NSApplicationActivationPolicy(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAnimationCurve}
  */
-enum class NSAnimationCurve(val value: Long) {
-    NSAnimationEaseInOut(0L), NSAnimationEaseIn(1L), NSAnimationEaseOut(2L), NSAnimationLinear(3L);
-
+@JvmInline
+value class NSAnimationCurve(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAnimationCurve = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAnimationCurve value: $v")
+        val NSAnimationEaseInOut = NSAnimationCurve(0L)
+        val NSAnimationEaseIn = NSAnimationCurve(1L)
+        val NSAnimationEaseOut = NSAnimationCurve(2L)
+        val NSAnimationLinear = NSAnimationCurve(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAnimationBlockingMode}
  */
-enum class NSAnimationBlockingMode(val value: Long) {
-    NSAnimationBlocking(0L), NSAnimationNonblocking(1L), NSAnimationNonblockingThreaded(2L);
-
+@JvmInline
+value class NSAnimationBlockingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAnimationBlockingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAnimationBlockingMode value: $v")
+        val NSAnimationBlocking = NSAnimationBlockingMode(0L)
+        val NSAnimationNonblocking = NSAnimationBlockingMode(1L)
+        val NSAnimationNonblockingThreaded = NSAnimationBlockingMode(2L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDragOperation}
- */
-enum class NSDragOperation(val value: Long) {
-    NSDragOperationNone(0L), NSDragOperationCopy(1L), NSDragOperationLink(2L), NSDragOperationGeneric(4L), NSDragOperationPrivate(8L), NSDragOperationMove(16L), NSDragOperationDelete(32L), NSDragOperationEvery(-1L), NSDragOperationAll_Obsolete(15L), NSDragOperationAll(15L);
-
-    companion object {
-        fun fromValue(v: Long): NSDragOperation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDragOperation value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDraggingFormation}
  */
-enum class NSDraggingFormation(val value: Long) {
-    NSDraggingFormationDefault(0L), NSDraggingFormationNone(1L), NSDraggingFormationPile(2L), NSDraggingFormationList(3L), NSDraggingFormationStack(4L);
-
+@JvmInline
+value class NSDraggingFormation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDraggingFormation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDraggingFormation value: $v")
+        val NSDraggingFormationDefault = NSDraggingFormation(0L)
+        val NSDraggingFormationNone = NSDraggingFormation(1L)
+        val NSDraggingFormationPile = NSDraggingFormation(2L)
+        val NSDraggingFormationList = NSDraggingFormation(3L)
+        val NSDraggingFormationStack = NSDraggingFormation(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDraggingContext}
  */
-enum class NSDraggingContext(val value: Long) {
-    NSDraggingContextOutsideApplication(0L), NSDraggingContextWithinApplication(1L);
-
+@JvmInline
+value class NSDraggingContext(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDraggingContext = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDraggingContext value: $v")
+        val NSDraggingContextOutsideApplication = NSDraggingContext(0L)
+        val NSDraggingContextWithinApplication = NSDraggingContext(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSpringLoadingHighlight}
  */
-enum class NSSpringLoadingHighlight(val value: Long) {
-    NSSpringLoadingHighlightNone(0L), NSSpringLoadingHighlightStandard(1L), NSSpringLoadingHighlightEmphasized(2L);
-
+@JvmInline
+value class NSSpringLoadingHighlight(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSpringLoadingHighlight = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSpringLoadingHighlight value: $v")
+        val NSSpringLoadingHighlightNone = NSSpringLoadingHighlight(0L)
+        val NSSpringLoadingHighlightStandard = NSSpringLoadingHighlight(1L)
+        val NSSpringLoadingHighlightEmphasized = NSSpringLoadingHighlight(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSUserInterfaceLayoutDirection}
  */
-enum class NSUserInterfaceLayoutDirection(val value: Long) {
-    NSUserInterfaceLayoutDirectionLeftToRight(0L), NSUserInterfaceLayoutDirectionRightToLeft(1L);
-
+@JvmInline
+value class NSUserInterfaceLayoutDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSUserInterfaceLayoutDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSUserInterfaceLayoutDirection value: $v")
+        val NSUserInterfaceLayoutDirectionLeftToRight = NSUserInterfaceLayoutDirection(0L)
+        val NSUserInterfaceLayoutDirectionRightToLeft = NSUserInterfaceLayoutDirection(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSUserInterfaceLayoutOrientation}
  */
-enum class NSUserInterfaceLayoutOrientation(val value: Long) {
-    NSUserInterfaceLayoutOrientationHorizontal(0L), NSUserInterfaceLayoutOrientationVertical(1L);
-
+@JvmInline
+value class NSUserInterfaceLayoutOrientation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSUserInterfaceLayoutOrientation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSUserInterfaceLayoutOrientation value: $v")
+        val NSUserInterfaceLayoutOrientationHorizontal = NSUserInterfaceLayoutOrientation(0L)
+        val NSUserInterfaceLayoutOrientationVertical = NSUserInterfaceLayoutOrientation(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSBorderType}
  */
-enum class NSBorderType(val value: Long) {
-    NSNoBorder(0L), NSLineBorder(1L), NSBezelBorder(2L), NSGrooveBorder(3L);
-
+@JvmInline
+value class NSBorderType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSBorderType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBorderType value: $v")
+        val NSNoBorder = NSBorderType(0L)
+        val NSLineBorder = NSBorderType(1L)
+        val NSBezelBorder = NSBorderType(2L)
+        val NSGrooveBorder = NSBorderType(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSViewLayerContentsRedrawPolicy}
  */
-enum class NSViewLayerContentsRedrawPolicy(val value: Long) {
-    NSViewLayerContentsRedrawNever(0L), NSViewLayerContentsRedrawOnSetNeedsDisplay(1L), NSViewLayerContentsRedrawDuringViewResize(2L), NSViewLayerContentsRedrawBeforeViewResize(3L), NSViewLayerContentsRedrawCrossfade(4L);
-
+@JvmInline
+value class NSViewLayerContentsRedrawPolicy(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSViewLayerContentsRedrawPolicy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSViewLayerContentsRedrawPolicy value: $v")
+        val NSViewLayerContentsRedrawNever = NSViewLayerContentsRedrawPolicy(0L)
+        val NSViewLayerContentsRedrawOnSetNeedsDisplay = NSViewLayerContentsRedrawPolicy(1L)
+        val NSViewLayerContentsRedrawDuringViewResize = NSViewLayerContentsRedrawPolicy(2L)
+        val NSViewLayerContentsRedrawBeforeViewResize = NSViewLayerContentsRedrawPolicy(3L)
+        val NSViewLayerContentsRedrawCrossfade = NSViewLayerContentsRedrawPolicy(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSViewLayerContentsPlacement}
  */
-enum class NSViewLayerContentsPlacement(val value: Long) {
-    NSViewLayerContentsPlacementScaleAxesIndependently(0L), NSViewLayerContentsPlacementScaleProportionallyToFit(1L), NSViewLayerContentsPlacementScaleProportionallyToFill(2L), NSViewLayerContentsPlacementCenter(3L), NSViewLayerContentsPlacementTop(4L), NSViewLayerContentsPlacementTopRight(5L), NSViewLayerContentsPlacementRight(6L), NSViewLayerContentsPlacementBottomRight(7L), NSViewLayerContentsPlacementBottom(8L), NSViewLayerContentsPlacementBottomLeft(9L), NSViewLayerContentsPlacementLeft(10L), NSViewLayerContentsPlacementTopLeft(11L);
-
+@JvmInline
+value class NSViewLayerContentsPlacement(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSViewLayerContentsPlacement = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSViewLayerContentsPlacement value: $v")
+        val NSViewLayerContentsPlacementScaleAxesIndependently = NSViewLayerContentsPlacement(0L)
+        val NSViewLayerContentsPlacementScaleProportionallyToFit = NSViewLayerContentsPlacement(1L)
+        val NSViewLayerContentsPlacementScaleProportionallyToFill = NSViewLayerContentsPlacement(2L)
+        val NSViewLayerContentsPlacementCenter = NSViewLayerContentsPlacement(3L)
+        val NSViewLayerContentsPlacementTop = NSViewLayerContentsPlacement(4L)
+        val NSViewLayerContentsPlacementTopRight = NSViewLayerContentsPlacement(5L)
+        val NSViewLayerContentsPlacementRight = NSViewLayerContentsPlacement(6L)
+        val NSViewLayerContentsPlacementBottomRight = NSViewLayerContentsPlacement(7L)
+        val NSViewLayerContentsPlacementBottom = NSViewLayerContentsPlacement(8L)
+        val NSViewLayerContentsPlacementBottomLeft = NSViewLayerContentsPlacement(9L)
+        val NSViewLayerContentsPlacementLeft = NSViewLayerContentsPlacement(10L)
+        val NSViewLayerContentsPlacementTopLeft = NSViewLayerContentsPlacement(11L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWritingDirection}
  */
-enum class NSWritingDirection(val value: Long) {
-    NSWritingDirectionNatural(-1L), NSWritingDirectionLeftToRight(0L), NSWritingDirectionRightToLeft(1L);
-
+@JvmInline
+value class NSWritingDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWritingDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWritingDirection value: $v")
+        val NSWritingDirectionNatural = NSWritingDirection(-1L)
+        val NSWritingDirectionLeftToRight = NSWritingDirection(0L)
+        val NSWritingDirectionRightToLeft = NSWritingDirection(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextAlignment}
  */
-enum class NSTextAlignment(val value: Long) {
-    NSTextAlignmentLeft(0L), NSTextAlignmentCenter(1L), NSTextAlignmentRight(2L), NSTextAlignmentJustified(3L), NSTextAlignmentNatural(4L);
-
+@JvmInline
+value class NSTextAlignment(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextAlignment = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextAlignment value: $v")
+        val NSTextAlignmentLeft = NSTextAlignment(0L)
+        val NSTextAlignmentCenter = NSTextAlignment(1L)
+        val NSTextAlignmentRight = NSTextAlignment(2L)
+        val NSTextAlignmentJustified = NSTextAlignment(3L)
+        val NSTextAlignmentNatural = NSTextAlignment(4L)
     }
+
 }
 
 /**
@@ -22591,133 +22588,150 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLineBreakMode}
  */
-enum class NSLineBreakMode(val value: Long) {
-    NSLineBreakByWordWrapping(0L), NSLineBreakByCharWrapping(1L), NSLineBreakByClipping(2L), NSLineBreakByTruncatingHead(3L), NSLineBreakByTruncatingTail(4L), NSLineBreakByTruncatingMiddle(5L);
-
+@JvmInline
+value class NSLineBreakMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLineBreakMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLineBreakMode value: $v")
+        val NSLineBreakByWordWrapping = NSLineBreakMode(0L)
+        val NSLineBreakByCharWrapping = NSLineBreakMode(1L)
+        val NSLineBreakByClipping = NSLineBreakMode(2L)
+        val NSLineBreakByTruncatingHead = NSLineBreakMode(3L)
+        val NSLineBreakByTruncatingTail = NSLineBreakMode(4L)
+        val NSLineBreakByTruncatingMiddle = NSLineBreakMode(5L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSLineBreakStrategy}
- */
-enum class NSLineBreakStrategy(val value: Long) {
-    NSLineBreakStrategyNone(0L), NSLineBreakStrategyPushOut(1L), NSLineBreakStrategyHangulWordPriority(2L), NSLineBreakStrategyStandard(65535L);
-
-    companion object {
-        fun fromValue(v: Long): NSLineBreakStrategy = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLineBreakStrategy value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextTabType}
  */
-enum class NSTextTabType(val value: Long) {
-    NSLeftTabStopType(0L), NSRightTabStopType(1L), NSCenterTabStopType(2L), NSDecimalTabStopType(3L);
-
+@JvmInline
+value class NSTextTabType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextTabType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextTabType value: $v")
+        val NSLeftTabStopType = NSTextTabType(0L)
+        val NSRightTabStopType = NSTextTabType(1L)
+        val NSCenterTabStopType = NSTextTabType(2L)
+        val NSDecimalTabStopType = NSTextTabType(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCellType}
  */
-enum class NSCellType(val value: Long) {
-    NSNullCellType(0L), NSTextCellType(1L), NSImageCellType(2L);
-
+@JvmInline
+value class NSCellType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCellType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCellType value: $v")
+        val NSNullCellType = NSCellType(0L)
+        val NSTextCellType = NSCellType(1L)
+        val NSImageCellType = NSCellType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCellAttribute}
  */
-enum class NSCellAttribute(val value: Long) {
-    NSCellDisabled(0L), NSCellState(1L), NSPushInCell(2L), NSCellEditable(3L), NSChangeGrayCell(4L), NSCellHighlighted(5L), NSCellLightsByContents(6L), NSCellLightsByGray(7L), NSChangeBackgroundCell(8L), NSCellLightsByBackground(9L), NSCellIsBordered(10L), NSCellHasOverlappingImage(11L), NSCellHasImageHorizontal(12L), NSCellHasImageOnLeftOrBottom(13L), NSCellChangesContents(14L), NSCellIsInsetButton(15L), NSCellAllowsMixedState(16L);
-
+@JvmInline
+value class NSCellAttribute(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCellAttribute = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCellAttribute value: $v")
+        val NSCellDisabled = NSCellAttribute(0L)
+        val NSCellState = NSCellAttribute(1L)
+        val NSPushInCell = NSCellAttribute(2L)
+        val NSCellEditable = NSCellAttribute(3L)
+        val NSChangeGrayCell = NSCellAttribute(4L)
+        val NSCellHighlighted = NSCellAttribute(5L)
+        val NSCellLightsByContents = NSCellAttribute(6L)
+        val NSCellLightsByGray = NSCellAttribute(7L)
+        val NSChangeBackgroundCell = NSCellAttribute(8L)
+        val NSCellLightsByBackground = NSCellAttribute(9L)
+        val NSCellIsBordered = NSCellAttribute(10L)
+        val NSCellHasOverlappingImage = NSCellAttribute(11L)
+        val NSCellHasImageHorizontal = NSCellAttribute(12L)
+        val NSCellHasImageOnLeftOrBottom = NSCellAttribute(13L)
+        val NSCellChangesContents = NSCellAttribute(14L)
+        val NSCellIsInsetButton = NSCellAttribute(15L)
+        val NSCellAllowsMixedState = NSCellAttribute(16L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCellImagePosition}
  */
-enum class NSCellImagePosition(val value: Long) {
-    NSNoImage(0L), NSImageOnly(1L), NSImageLeft(2L), NSImageRight(3L), NSImageBelow(4L), NSImageAbove(5L), NSImageOverlaps(6L), NSImageLeading(7L), NSImageTrailing(8L);
-
+@JvmInline
+value class NSCellImagePosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCellImagePosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCellImagePosition value: $v")
+        val NSNoImage = NSCellImagePosition(0L)
+        val NSImageOnly = NSCellImagePosition(1L)
+        val NSImageLeft = NSCellImagePosition(2L)
+        val NSImageRight = NSCellImagePosition(3L)
+        val NSImageBelow = NSCellImagePosition(4L)
+        val NSImageAbove = NSCellImagePosition(5L)
+        val NSImageOverlaps = NSCellImagePosition(6L)
+        val NSImageLeading = NSCellImagePosition(7L)
+        val NSImageTrailing = NSCellImagePosition(8L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageScaling}
  */
-enum class NSImageScaling(val value: Long) {
-    NSImageScaleProportionallyDown(0L), NSImageScaleAxesIndependently(1L), NSImageScaleNone(2L), NSImageScaleProportionallyUpOrDown(3L), NSScaleProportionally(0L), NSScaleToFit(1L), NSScaleNone(2L);
-
+@JvmInline
+value class NSImageScaling(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageScaling = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageScaling value: $v")
+        val NSImageScaleProportionallyDown = NSImageScaling(0L)
+        val NSImageScaleAxesIndependently = NSImageScaling(1L)
+        val NSImageScaleNone = NSImageScaling(2L)
+        val NSImageScaleProportionallyUpOrDown = NSImageScaling(3L)
+        val NSScaleProportionally = NSImageScaling(0L)
+        val NSScaleToFit = NSImageScaling(1L)
+        val NSScaleNone = NSImageScaling(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSControlTint}
  */
-enum class NSControlTint(val value: Long) {
-    NSDefaultControlTint(0L), NSBlueControlTint(1L), NSGraphiteControlTint(6L), NSClearControlTint(7L);
-
+@JvmInline
+value class NSControlTint(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSControlTint = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSControlTint value: $v")
+        val NSDefaultControlTint = NSControlTint(0L)
+        val NSBlueControlTint = NSControlTint(1L)
+        val NSGraphiteControlTint = NSControlTint(6L)
+        val NSClearControlTint = NSControlTint(7L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSControlSize}
  */
-enum class NSControlSize(val value: Long) {
-    NSControlSizeRegular(0L), NSControlSizeSmall(1L), NSControlSizeMini(2L), NSControlSizeLarge(3L), NSControlSizeExtraLarge(4L);
-
+@JvmInline
+value class NSControlSize(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSControlSize = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSControlSize value: $v")
+        val NSControlSizeRegular = NSControlSize(0L)
+        val NSControlSizeSmall = NSControlSize(1L)
+        val NSControlSizeMini = NSControlSize(2L)
+        val NSControlSizeLarge = NSControlSize(3L)
+        val NSControlSizeExtraLarge = NSControlSize(4L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSCellHitResult}
- */
-enum class NSCellHitResult(val value: Long) {
-    NSCellHitNone(0L), NSCellHitContentArea(1L), NSCellHitEditableTextArea(2L), NSCellHitTrackableArea(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSCellHitResult = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCellHitResult value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSBackgroundStyle}
  */
-enum class NSBackgroundStyle(val value: Long) {
-    NSBackgroundStyleNormal(0L), NSBackgroundStyleEmphasized(1L), NSBackgroundStyleRaised(2L), NSBackgroundStyleLowered(3L);
-
+@JvmInline
+value class NSBackgroundStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSBackgroundStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBackgroundStyle value: $v")
+        val NSBackgroundStyleNormal = NSBackgroundStyle(0L)
+        val NSBackgroundStyleEmphasized = NSBackgroundStyle(1L)
+        val NSBackgroundStyleRaised = NSBackgroundStyle(2L)
+        val NSBackgroundStyleLowered = NSBackgroundStyle(3L)
     }
+
 }
 
 /**
@@ -22735,73 +22749,64 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSMenuPresentationStyle}
  */
-enum class NSMenuPresentationStyle(val value: Long) {
-    NSMenuPresentationStyleRegular(0L), NSMenuPresentationStylePalette(1L);
-
+@JvmInline
+value class NSMenuPresentationStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSMenuPresentationStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSMenuPresentationStyle value: $v")
+        val NSMenuPresentationStyleRegular = NSMenuPresentationStyle(0L)
+        val NSMenuPresentationStylePalette = NSMenuPresentationStyle(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSMenuSelectionMode}
  */
-enum class NSMenuSelectionMode(val value: Long) {
-    NSMenuSelectionModeAutomatic(0L), NSMenuSelectionModeSelectOne(1L), NSMenuSelectionModeSelectAny(2L);
-
+@JvmInline
+value class NSMenuSelectionMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSMenuSelectionMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSMenuSelectionMode value: $v")
+        val NSMenuSelectionModeAutomatic = NSMenuSelectionMode(0L)
+        val NSMenuSelectionModeSelectOne = NSMenuSelectionMode(1L)
+        val NSMenuSelectionModeSelectAny = NSMenuSelectionMode(2L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSMenuProperties}
- */
-enum class NSMenuProperties(val value: Long) {
-    NSMenuPropertyItemTitle(1L), NSMenuPropertyItemAttributedTitle(2L), NSMenuPropertyItemKeyEquivalent(4L), NSMenuPropertyItemImage(8L), NSMenuPropertyItemEnabled(16L), NSMenuPropertyItemAccessibilityDescription(32L);
-
-    companion object {
-        fun fromValue(v: Long): NSMenuProperties = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSMenuProperties value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPrinterTableStatus}
  */
-enum class NSPrinterTableStatus(val value: Long) {
-    NSPrinterTableOK(0L), NSPrinterTableNotFound(1L), NSPrinterTableError(2L);
-
+@JvmInline
+value class NSPrinterTableStatus(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPrinterTableStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPrinterTableStatus value: $v")
+        val NSPrinterTableOK = NSPrinterTableStatus(0L)
+        val NSPrinterTableNotFound = NSPrinterTableStatus(1L)
+        val NSPrinterTableError = NSPrinterTableStatus(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPaperOrientation}
  */
-enum class NSPaperOrientation(val value: Long) {
-    NSPaperOrientationPortrait(0L), NSPaperOrientationLandscape(1L);
-
+@JvmInline
+value class NSPaperOrientation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPaperOrientation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPaperOrientation value: $v")
+        val NSPaperOrientationPortrait = NSPaperOrientation(0L)
+        val NSPaperOrientationLandscape = NSPaperOrientation(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPrintingPaginationMode}
  */
-enum class NSPrintingPaginationMode(val value: Long) {
-    NSPrintingPaginationModeAutomatic(0L), NSPrintingPaginationModeFit(1L), NSPrintingPaginationModeClip(2L);
-
+@JvmInline
+value class NSPrintingPaginationMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPrintingPaginationMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPrintingPaginationMode value: $v")
+        val NSPrintingPaginationModeAutomatic = NSPrintingPaginationMode(0L)
+        val NSPrintingPaginationModeFit = NSPrintingPaginationMode(1L)
+        val NSPrintingPaginationModeClip = NSPrintingPaginationMode(2L)
     }
+
 }
 
 /**
@@ -22831,25 +22836,35 @@ enum class NSManagedObjectContextConcurrencyType(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDocumentChangeType}
  */
-enum class NSDocumentChangeType(val value: Long) {
-    NSChangeDone(0L), NSChangeUndone(1L), NSChangeRedone(5L), NSChangeCleared(2L), NSChangeReadOtherContents(3L), NSChangeAutosaved(4L), NSChangeDiscardable(256L);
-
+@JvmInline
+value class NSDocumentChangeType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDocumentChangeType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDocumentChangeType value: $v")
+        val NSChangeDone = NSDocumentChangeType(0L)
+        val NSChangeUndone = NSDocumentChangeType(1L)
+        val NSChangeRedone = NSDocumentChangeType(5L)
+        val NSChangeCleared = NSDocumentChangeType(2L)
+        val NSChangeReadOtherContents = NSDocumentChangeType(3L)
+        val NSChangeAutosaved = NSDocumentChangeType(4L)
+        val NSChangeDiscardable = NSDocumentChangeType(256L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSaveOperationType}
  */
-enum class NSSaveOperationType(val value: Long) {
-    NSSaveOperation(0L), NSSaveAsOperation(1L), NSSaveToOperation(2L), NSAutosaveInPlaceOperation(4L), NSAutosaveElsewhereOperation(3L), NSAutosaveAsOperation(5L), NSAutosaveOperation(3L);
-
+@JvmInline
+value class NSSaveOperationType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSaveOperationType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSaveOperationType value: $v")
+        val NSSaveOperation = NSSaveOperationType(0L)
+        val NSSaveAsOperation = NSSaveOperationType(1L)
+        val NSSaveToOperation = NSSaveOperationType(2L)
+        val NSAutosaveInPlaceOperation = NSSaveOperationType(4L)
+        val NSAutosaveElsewhereOperation = NSSaveOperationType(3L)
+        val NSAutosaveAsOperation = NSSaveOperationType(5L)
+        val NSAutosaveOperation = NSSaveOperationType(3L)
     }
+
 }
 
 /**
@@ -22865,75 +22880,55 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSApplicationOcclusionState}
- */
-enum class NSApplicationOcclusionState(val value: Long) {
-    NSApplicationOcclusionStateVisible(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSApplicationOcclusionState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSApplicationOcclusionState value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum NSRequestUserAttentionType}
  */
-enum class NSRequestUserAttentionType(val value: Long) {
-    NSCriticalRequest(0L), NSInformationalRequest(10L);
-
+@JvmInline
+value class NSRequestUserAttentionType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRequestUserAttentionType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRequestUserAttentionType value: $v")
+        val NSCriticalRequest = NSRequestUserAttentionType(0L)
+        val NSInformationalRequest = NSRequestUserAttentionType(10L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSApplicationDelegateReply}
  */
-enum class NSApplicationDelegateReply(val value: Long) {
-    NSApplicationDelegateReplySuccess(0L), NSApplicationDelegateReplyCancel(1L), NSApplicationDelegateReplyFailure(2L);
-
+@JvmInline
+value class NSApplicationDelegateReply(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSApplicationDelegateReply = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSApplicationDelegateReply value: $v")
+        val NSApplicationDelegateReplySuccess = NSApplicationDelegateReply(0L)
+        val NSApplicationDelegateReplyCancel = NSApplicationDelegateReply(1L)
+        val NSApplicationDelegateReplyFailure = NSApplicationDelegateReply(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSApplicationTerminateReply}
  */
-enum class NSApplicationTerminateReply(val value: Long) {
-    NSTerminateCancel(0L), NSTerminateNow(1L), NSTerminateLater(2L);
-
+@JvmInline
+value class NSApplicationTerminateReply(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSApplicationTerminateReply = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSApplicationTerminateReply value: $v")
+        val NSTerminateCancel = NSApplicationTerminateReply(0L)
+        val NSTerminateNow = NSApplicationTerminateReply(1L)
+        val NSTerminateLater = NSApplicationTerminateReply(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSApplicationPrintReply}
  */
-enum class NSApplicationPrintReply(val value: Long) {
-    NSPrintingCancelled(0L), NSPrintingSuccess(1L), NSPrintingReplyLater(2L), NSPrintingFailure(3L);
-
+@JvmInline
+value class NSApplicationPrintReply(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSApplicationPrintReply = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSApplicationPrintReply value: $v")
+        val NSPrintingCancelled = NSApplicationPrintReply(0L)
+        val NSPrintingSuccess = NSApplicationPrintReply(1L)
+        val NSPrintingReplyLater = NSApplicationPrintReply(2L)
+        val NSPrintingFailure = NSApplicationPrintReply(3L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSRemoteNotificationType}
- */
-enum class NSRemoteNotificationType(val value: Long) {
-    NSRemoteNotificationTypeNone(0L), NSRemoteNotificationTypeBadge(1L), NSRemoteNotificationTypeSound(2L), NSRemoteNotificationTypeAlert(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSRemoteNotificationType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRemoteNotificationType value: $v")
-    }
 }
 
 /**
@@ -22951,121 +22946,167 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSColorType}
  */
-enum class NSColorType(val value: Long) {
-    NSColorTypeComponentBased(0L), NSColorTypePattern(1L), NSColorTypeCatalog(2L);
-
+@JvmInline
+value class NSColorType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSColorType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSColorType value: $v")
+        val NSColorTypeComponentBased = NSColorType(0L)
+        val NSColorTypePattern = NSColorType(1L)
+        val NSColorTypeCatalog = NSColorType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSColorSystemEffect}
  */
-enum class NSColorSystemEffect(val value: Long) {
-    NSColorSystemEffectNone(0L), NSColorSystemEffectPressed(1L), NSColorSystemEffectDeepPressed(2L), NSColorSystemEffectDisabled(3L), NSColorSystemEffectRollover(4L);
-
+@JvmInline
+value class NSColorSystemEffect(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSColorSystemEffect = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSColorSystemEffect value: $v")
+        val NSColorSystemEffectNone = NSColorSystemEffect(0L)
+        val NSColorSystemEffectPressed = NSColorSystemEffect(1L)
+        val NSColorSystemEffectDeepPressed = NSColorSystemEffect(2L)
+        val NSColorSystemEffectDisabled = NSColorSystemEffect(3L)
+        val NSColorSystemEffectRollover = NSColorSystemEffect(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAlertStyle}
  */
-enum class NSAlertStyle(val value: Long) {
-    NSAlertStyleWarning(0L), NSAlertStyleInformational(1L), NSAlertStyleCritical(2L);
-
+@JvmInline
+value class NSAlertStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAlertStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAlertStyle value: $v")
+        val NSAlertStyleWarning = NSAlertStyle(0L)
+        val NSAlertStyleInformational = NSAlertStyle(1L)
+        val NSAlertStyleCritical = NSAlertStyle(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTitlePosition}
  */
-enum class NSTitlePosition(val value: Long) {
-    NSNoTitle(0L), NSAboveTop(1L), NSAtTop(2L), NSBelowTop(3L), NSAboveBottom(4L), NSAtBottom(5L), NSBelowBottom(6L);
-
+@JvmInline
+value class NSTitlePosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTitlePosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTitlePosition value: $v")
+        val NSNoTitle = NSTitlePosition(0L)
+        val NSAboveTop = NSTitlePosition(1L)
+        val NSAtTop = NSTitlePosition(2L)
+        val NSBelowTop = NSTitlePosition(3L)
+        val NSAboveBottom = NSTitlePosition(4L)
+        val NSAtBottom = NSTitlePosition(5L)
+        val NSBelowBottom = NSTitlePosition(6L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSBoxType}
  */
-enum class NSBoxType(val value: Long) {
-    NSBoxPrimary(0L), NSBoxSeparator(2L), NSBoxCustom(4L);
-
+@JvmInline
+value class NSBoxType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSBoxType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBoxType value: $v")
+        val NSBoxPrimary = NSBoxType(0L)
+        val NSBoxSeparator = NSBoxType(2L)
+        val NSBoxCustom = NSBoxType(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSControlBorderShape}
  */
-enum class NSControlBorderShape(val value: Long) {
-    NSControlBorderShapeAutomatic(0L), NSControlBorderShapeCapsule(1L), NSControlBorderShapeRoundedRectangle(2L), NSControlBorderShapeCircle(3L);
-
+@JvmInline
+value class NSControlBorderShape(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSControlBorderShape = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSControlBorderShape value: $v")
+        val NSControlBorderShapeAutomatic = NSControlBorderShape(0L)
+        val NSControlBorderShapeCapsule = NSControlBorderShape(1L)
+        val NSControlBorderShapeRoundedRectangle = NSControlBorderShape(2L)
+        val NSControlBorderShapeCircle = NSControlBorderShape(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSButtonType}
  */
-enum class NSButtonType(val value: Long) {
-    NSButtonTypeMomentaryLight(0L), NSButtonTypePushOnPushOff(1L), NSButtonTypeToggle(2L), NSButtonTypeSwitch(3L), NSButtonTypeRadio(4L), NSButtonTypeMomentaryChange(5L), NSButtonTypeOnOff(6L), NSButtonTypeMomentaryPushIn(7L), NSButtonTypeAccelerator(8L), NSButtonTypeMultiLevelAccelerator(9L);
-
+@JvmInline
+value class NSButtonType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSButtonType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSButtonType value: $v")
+        val NSButtonTypeMomentaryLight = NSButtonType(0L)
+        val NSButtonTypePushOnPushOff = NSButtonType(1L)
+        val NSButtonTypeToggle = NSButtonType(2L)
+        val NSButtonTypeSwitch = NSButtonType(3L)
+        val NSButtonTypeRadio = NSButtonType(4L)
+        val NSButtonTypeMomentaryChange = NSButtonType(5L)
+        val NSButtonTypeOnOff = NSButtonType(6L)
+        val NSButtonTypeMomentaryPushIn = NSButtonType(7L)
+        val NSButtonTypeAccelerator = NSButtonType(8L)
+        val NSButtonTypeMultiLevelAccelerator = NSButtonType(9L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSBezelStyle}
  */
-enum class NSBezelStyle(val value: Long) {
-    NSBezelStyleAutomatic(0L), NSBezelStylePush(1L), NSBezelStyleFlexiblePush(2L), NSBezelStyleDisclosure(5L), NSBezelStyleCircular(7L), NSBezelStyleHelpButton(9L), NSBezelStyleSmallSquare(10L), NSBezelStyleToolbar(11L), NSBezelStyleAccessoryBarAction(12L), NSBezelStyleAccessoryBar(13L), NSBezelStylePushDisclosure(14L), NSBezelStyleBadge(15L), NSBezelStyleGlass(16L), NSBezelStyleShadowlessSquare(6L), NSBezelStyleTexturedSquare(8L), NSBezelStyleRounded(1L), NSBezelStyleRegularSquare(2L), NSBezelStyleTexturedRounded(11L), NSBezelStyleRoundRect(12L), NSBezelStyleRecessed(13L), NSBezelStyleRoundedDisclosure(14L), NSBezelStyleInline(15L);
-
+@JvmInline
+value class NSBezelStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSBezelStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBezelStyle value: $v")
+        val NSBezelStyleAutomatic = NSBezelStyle(0L)
+        val NSBezelStylePush = NSBezelStyle(1L)
+        val NSBezelStyleFlexiblePush = NSBezelStyle(2L)
+        val NSBezelStyleDisclosure = NSBezelStyle(5L)
+        val NSBezelStyleCircular = NSBezelStyle(7L)
+        val NSBezelStyleHelpButton = NSBezelStyle(9L)
+        val NSBezelStyleSmallSquare = NSBezelStyle(10L)
+        val NSBezelStyleToolbar = NSBezelStyle(11L)
+        val NSBezelStyleAccessoryBarAction = NSBezelStyle(12L)
+        val NSBezelStyleAccessoryBar = NSBezelStyle(13L)
+        val NSBezelStylePushDisclosure = NSBezelStyle(14L)
+        val NSBezelStyleBadge = NSBezelStyle(15L)
+        val NSBezelStyleGlass = NSBezelStyle(16L)
+        val NSBezelStyleShadowlessSquare = NSBezelStyle(6L)
+        val NSBezelStyleTexturedSquare = NSBezelStyle(8L)
+        val NSBezelStyleRounded = NSBezelStyle(1L)
+        val NSBezelStyleRegularSquare = NSBezelStyle(2L)
+        val NSBezelStyleTexturedRounded = NSBezelStyle(11L)
+        val NSBezelStyleRoundRect = NSBezelStyle(12L)
+        val NSBezelStyleRecessed = NSBezelStyle(13L)
+        val NSBezelStyleRoundedDisclosure = NSBezelStyle(14L)
+        val NSBezelStyleInline = NSBezelStyle(15L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGradientType}
  */
-enum class NSGradientType(val value: Long) {
-    NSGradientNone(0L), NSGradientConcaveWeak(1L), NSGradientConcaveStrong(2L), NSGradientConvexWeak(3L), NSGradientConvexStrong(4L);
-
+@JvmInline
+value class NSGradientType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGradientType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGradientType value: $v")
+        val NSGradientNone = NSGradientType(0L)
+        val NSGradientConcaveWeak = NSGradientType(1L)
+        val NSGradientConcaveStrong = NSGradientType(2L)
+        val NSGradientConvexWeak = NSGradientType(3L)
+        val NSGradientConvexStrong = NSGradientType(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTintProminence}
  */
-enum class NSTintProminence(val value: Long) {
-    NSTintProminenceAutomatic(0L), NSTintProminenceNone(1L), NSTintProminencePrimary(2L), NSTintProminenceSecondary(3L);
-
+@JvmInline
+value class NSTintProminence(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTintProminence = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTintProminence value: $v")
+        val NSTintProminenceAutomatic = NSTintProminence(0L)
+        val NSTintProminenceNone = NSTintProminence(1L)
+        val NSTintProminencePrimary = NSTintProminence(2L)
+        val NSTintProminenceSecondary = NSTintProminence(3L)
     }
+
 }
 
 /**
@@ -23083,157 +23124,116 @@ enum class NSPopoverAppearance(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPopoverBehavior}
  */
-enum class NSPopoverBehavior(val value: Long) {
-    NSPopoverBehaviorApplicationDefined(0L), NSPopoverBehaviorTransient(1L), NSPopoverBehaviorSemitransient(2L);
-
+@JvmInline
+value class NSPopoverBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPopoverBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPopoverBehavior value: $v")
+        val NSPopoverBehaviorApplicationDefined = NSPopoverBehavior(0L)
+        val NSPopoverBehaviorTransient = NSPopoverBehavior(1L)
+        val NSPopoverBehaviorSemitransient = NSPopoverBehavior(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCollectionViewDropOperation}
  */
-enum class NSCollectionViewDropOperation(val value: Long) {
-    NSCollectionViewDropOn(0L), NSCollectionViewDropBefore(1L);
-
+@JvmInline
+value class NSCollectionViewDropOperation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCollectionViewDropOperation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCollectionViewDropOperation value: $v")
+        val NSCollectionViewDropOn = NSCollectionViewDropOperation(0L)
+        val NSCollectionViewDropBefore = NSCollectionViewDropOperation(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCollectionViewItemHighlightState}
  */
-enum class NSCollectionViewItemHighlightState(val value: Long) {
-    NSCollectionViewItemHighlightNone(0L), NSCollectionViewItemHighlightForSelection(1L), NSCollectionViewItemHighlightForDeselection(2L), NSCollectionViewItemHighlightAsDropTarget(3L);
-
+@JvmInline
+value class NSCollectionViewItemHighlightState(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCollectionViewItemHighlightState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCollectionViewItemHighlightState value: $v")
+        val NSCollectionViewItemHighlightNone = NSCollectionViewItemHighlightState(0L)
+        val NSCollectionViewItemHighlightForSelection = NSCollectionViewItemHighlightState(1L)
+        val NSCollectionViewItemHighlightForDeselection = NSCollectionViewItemHighlightState(2L)
+        val NSCollectionViewItemHighlightAsDropTarget = NSCollectionViewItemHighlightState(3L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSCollectionViewScrollPosition}
- */
-enum class NSCollectionViewScrollPosition(val value: Long) {
-    NSCollectionViewScrollPositionNone(0L), NSCollectionViewScrollPositionTop(1L), NSCollectionViewScrollPositionCenteredVertically(2L), NSCollectionViewScrollPositionBottom(4L), NSCollectionViewScrollPositionNearestHorizontalEdge(512L), NSCollectionViewScrollPositionLeft(8L), NSCollectionViewScrollPositionCenteredHorizontally(16L), NSCollectionViewScrollPositionRight(32L), NSCollectionViewScrollPositionLeadingEdge(64L), NSCollectionViewScrollPositionTrailingEdge(128L), NSCollectionViewScrollPositionNearestVerticalEdge(256L);
-
-    companion object {
-        fun fromValue(v: Long): NSCollectionViewScrollPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCollectionViewScrollPosition value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCollectionElementCategory}
  */
-enum class NSCollectionElementCategory(val value: Long) {
-    NSCollectionElementCategoryItem(0L), NSCollectionElementCategorySupplementaryView(1L), NSCollectionElementCategoryDecorationView(2L), NSCollectionElementCategoryInterItemGap(3L);
-
+@JvmInline
+value class NSCollectionElementCategory(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCollectionElementCategory = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCollectionElementCategory value: $v")
+        val NSCollectionElementCategoryItem = NSCollectionElementCategory(0L)
+        val NSCollectionElementCategorySupplementaryView = NSCollectionElementCategory(1L)
+        val NSCollectionElementCategoryDecorationView = NSCollectionElementCategory(2L)
+        val NSCollectionElementCategoryInterItemGap = NSCollectionElementCategory(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCollectionUpdateAction}
  */
-enum class NSCollectionUpdateAction(val value: Long) {
-    NSCollectionUpdateActionInsert(0L), NSCollectionUpdateActionDelete(1L), NSCollectionUpdateActionReload(2L), NSCollectionUpdateActionMove(3L), NSCollectionUpdateActionNone(4L);
-
+@JvmInline
+value class NSCollectionUpdateAction(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCollectionUpdateAction = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCollectionUpdateAction value: $v")
+        val NSCollectionUpdateActionInsert = NSCollectionUpdateAction(0L)
+        val NSCollectionUpdateActionDelete = NSCollectionUpdateAction(1L)
+        val NSCollectionUpdateActionReload = NSCollectionUpdateAction(2L)
+        val NSCollectionUpdateActionMove = NSCollectionUpdateAction(3L)
+        val NSCollectionUpdateActionNone = NSCollectionUpdateAction(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCollectionViewScrollDirection}
  */
-enum class NSCollectionViewScrollDirection(val value: Long) {
-    NSCollectionViewScrollDirectionVertical(0L), NSCollectionViewScrollDirectionHorizontal(1L);
-
+@JvmInline
+value class NSCollectionViewScrollDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCollectionViewScrollDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCollectionViewScrollDirection value: $v")
+        val NSCollectionViewScrollDirectionVertical = NSCollectionViewScrollDirection(0L)
+        val NSCollectionViewScrollDirectionHorizontal = NSCollectionViewScrollDirection(1L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSDirectionalRectEdge}
- */
-enum class NSDirectionalRectEdge(val value: Long) {
-    NSDirectionalRectEdgeNone(0L), NSDirectionalRectEdgeTop(1L), NSDirectionalRectEdgeLeading(2L), NSDirectionalRectEdgeBottom(4L), NSDirectionalRectEdgeTrailing(8L), NSDirectionalRectEdgeAll(15L);
-
-    companion object {
-        fun fromValue(v: Long): NSDirectionalRectEdge = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDirectionalRectEdge value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSRectAlignment}
  */
-enum class NSRectAlignment(val value: Long) {
-    NSRectAlignmentNone(0L), NSRectAlignmentTop(1L), NSRectAlignmentTopLeading(2L), NSRectAlignmentLeading(3L), NSRectAlignmentBottomLeading(4L), NSRectAlignmentBottom(5L), NSRectAlignmentBottomTrailing(6L), NSRectAlignmentTrailing(7L), NSRectAlignmentTopTrailing(8L);
-
+@JvmInline
+value class NSRectAlignment(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRectAlignment = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRectAlignment value: $v")
+        val NSRectAlignmentNone = NSRectAlignment(0L)
+        val NSRectAlignmentTop = NSRectAlignment(1L)
+        val NSRectAlignmentTopLeading = NSRectAlignment(2L)
+        val NSRectAlignmentLeading = NSRectAlignment(3L)
+        val NSRectAlignmentBottomLeading = NSRectAlignment(4L)
+        val NSRectAlignmentBottom = NSRectAlignment(5L)
+        val NSRectAlignmentBottomTrailing = NSRectAlignment(6L)
+        val NSRectAlignmentTrailing = NSRectAlignment(7L)
+        val NSRectAlignmentTopTrailing = NSRectAlignment(8L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCollectionLayoutSectionOrthogonalScrollingBehavior}
  */
-enum class NSCollectionLayoutSectionOrthogonalScrollingBehavior(val value: Long) {
-    NSCollectionLayoutSectionOrthogonalScrollingBehaviorNone(0L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorContinuous(1L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorContinuousGroupLeadingBoundary(2L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorPaging(3L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorGroupPaging(4L), NSCollectionLayoutSectionOrthogonalScrollingBehaviorGroupPagingCentered(5L);
-
+@JvmInline
+value class NSCollectionLayoutSectionOrthogonalScrollingBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCollectionLayoutSectionOrthogonalScrollingBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCollectionLayoutSectionOrthogonalScrollingBehavior value: $v")
+        val NSCollectionLayoutSectionOrthogonalScrollingBehaviorNone = NSCollectionLayoutSectionOrthogonalScrollingBehavior(0L)
+        val NSCollectionLayoutSectionOrthogonalScrollingBehaviorContinuous = NSCollectionLayoutSectionOrthogonalScrollingBehavior(1L)
+        val NSCollectionLayoutSectionOrthogonalScrollingBehaviorContinuousGroupLeadingBoundary = NSCollectionLayoutSectionOrthogonalScrollingBehavior(2L)
+        val NSCollectionLayoutSectionOrthogonalScrollingBehaviorPaging = NSCollectionLayoutSectionOrthogonalScrollingBehavior(3L)
+        val NSCollectionLayoutSectionOrthogonalScrollingBehaviorGroupPaging = NSCollectionLayoutSectionOrthogonalScrollingBehavior(4L)
+        val NSCollectionLayoutSectionOrthogonalScrollingBehaviorGroupPagingCentered = NSCollectionLayoutSectionOrthogonalScrollingBehavior(5L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSHorizontalDirections}
- */
-enum class NSHorizontalDirections(val value: Long) {
-    NSHorizontalDirectionsLeft(1L), NSHorizontalDirectionsRight(2L), NSHorizontalDirectionsAll(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSHorizontalDirections = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSHorizontalDirections value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSVerticalDirections}
- */
-enum class NSVerticalDirections(val value: Long) {
-    NSVerticalDirectionsUp(1L), NSVerticalDirectionsDown(2L), NSVerticalDirectionsAll(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSVerticalDirections = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSVerticalDirections value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSFontDescriptorSymbolicTraits}
- */
-enum class NSFontDescriptorSymbolicTraits(val value: Long) {
-    NSFontDescriptorTraitItalic(1L), NSFontDescriptorTraitBold(2L), NSFontDescriptorTraitExpanded(32L), NSFontDescriptorTraitCondensed(64L), NSFontDescriptorTraitMonoSpace(1024L), NSFontDescriptorTraitVertical(2048L), NSFontDescriptorTraitUIOptimized(4096L), NSFontDescriptorTraitTightLeading(32768L), NSFontDescriptorTraitLooseLeading(65536L), NSFontDescriptorTraitEmphasized(2L), NSFontDescriptorClassMask(-268435456L), NSFontDescriptorClassUnknown(0L), NSFontDescriptorClassOldStyleSerifs(268435456L), NSFontDescriptorClassTransitionalSerifs(536870912L), NSFontDescriptorClassModernSerifs(805306368L), NSFontDescriptorClassClarendonSerifs(1073741824L), NSFontDescriptorClassSlabSerifs(1342177280L), NSFontDescriptorClassFreeformSerifs(1879048192L), NSFontDescriptorClassSansSerif(-2147483648L), NSFontDescriptorClassOrnamentals(-1879048192L), NSFontDescriptorClassScripts(-1610612736L), NSFontDescriptorClassSymbolic(-1073741824L);
-
-    companion object {
-        fun fromValue(v: Long): NSFontDescriptorSymbolicTraits = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFontDescriptorSymbolicTraits value: $v")
-    }
 }
 
 /**
@@ -23287,13 +23287,15 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSFontRenderingMode}
  */
-enum class NSFontRenderingMode(val value: Long) {
-    NSFontDefaultRenderingMode(0L), NSFontAntialiasedRenderingMode(1L), NSFontIntegerAdvancementsRenderingMode(2L), NSFontAntialiasedIntegerAdvancementsRenderingMode(3L);
-
+@JvmInline
+value class NSFontRenderingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSFontRenderingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFontRenderingMode value: $v")
+        val NSFontDefaultRenderingMode = NSFontRenderingMode(0L)
+        val NSFontAntialiasedRenderingMode = NSFontRenderingMode(1L)
+        val NSFontIntegerAdvancementsRenderingMode = NSFontRenderingMode(2L)
+        val NSFontAntialiasedIntegerAdvancementsRenderingMode = NSFontRenderingMode(3L)
     }
+
 }
 
 /**
@@ -23309,27 +23311,21 @@ enum class NSMultibyteGlyphPacking(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSFontCollectionVisibility}
- */
-enum class NSFontCollectionVisibility(val value: Long) {
-    NSFontCollectionVisibilityProcess(1L), NSFontCollectionVisibilityUser(2L), NSFontCollectionVisibilityComputer(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSFontCollectionVisibility = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFontCollectionVisibility value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum NSFontAction}
  */
-enum class NSFontAction(val value: Long) {
-    NSNoFontChangeAction(0L), NSViaPanelFontAction(1L), NSAddTraitFontAction(2L), NSSizeUpFontAction(3L), NSSizeDownFontAction(4L), NSHeavierFontAction(5L), NSLighterFontAction(6L), NSRemoveTraitFontAction(7L);
-
+@JvmInline
+value class NSFontAction(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSFontAction = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSFontAction value: $v")
+        val NSNoFontChangeAction = NSFontAction(0L)
+        val NSViaPanelFontAction = NSFontAction(1L)
+        val NSAddTraitFontAction = NSFontAction(2L)
+        val NSSizeUpFontAction = NSFontAction(3L)
+        val NSSizeDownFontAction = NSFontAction(4L)
+        val NSHeavierFontAction = NSFontAction(5L)
+        val NSLighterFontAction = NSFontAction(6L)
+        val NSRemoveTraitFontAction = NSFontAction(7L)
     }
+
 }
 
 /**
@@ -23347,145 +23343,137 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowSharingType}
  */
-enum class NSWindowSharingType(val value: Long) {
-    NSWindowSharingNone(0L), NSWindowSharingReadOnly(1L);
-
+@JvmInline
+value class NSWindowSharingType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowSharingType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowSharingType value: $v")
+        val NSWindowSharingNone = NSWindowSharingType(0L)
+        val NSWindowSharingReadOnly = NSWindowSharingType(1L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSWindowCollectionBehavior}
- */
-enum class NSWindowCollectionBehavior(val value: Long) {
-    NSWindowCollectionBehaviorDefault(0L), NSWindowCollectionBehaviorCanJoinAllSpaces(1L), NSWindowCollectionBehaviorMoveToActiveSpace(2L), NSWindowCollectionBehaviorManaged(4L), NSWindowCollectionBehaviorTransient(8L), NSWindowCollectionBehaviorStationary(16L), NSWindowCollectionBehaviorParticipatesInCycle(32L), NSWindowCollectionBehaviorIgnoresCycle(64L), NSWindowCollectionBehaviorFullScreenPrimary(128L), NSWindowCollectionBehaviorFullScreenAuxiliary(256L), NSWindowCollectionBehaviorFullScreenNone(512L), NSWindowCollectionBehaviorFullScreenAllowsTiling(2048L), NSWindowCollectionBehaviorFullScreenDisallowsTiling(4096L), NSWindowCollectionBehaviorPrimary(65536L), NSWindowCollectionBehaviorAuxiliary(131072L), NSWindowCollectionBehaviorCanJoinAllApplications(262144L);
-
-    companion object {
-        fun fromValue(v: Long): NSWindowCollectionBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowCollectionBehavior value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowAnimationBehavior}
  */
-enum class NSWindowAnimationBehavior(val value: Long) {
-    NSWindowAnimationBehaviorDefault(0L), NSWindowAnimationBehaviorNone(2L), NSWindowAnimationBehaviorDocumentWindow(3L), NSWindowAnimationBehaviorUtilityWindow(4L), NSWindowAnimationBehaviorAlertPanel(5L);
-
+@JvmInline
+value class NSWindowAnimationBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowAnimationBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowAnimationBehavior value: $v")
+        val NSWindowAnimationBehaviorDefault = NSWindowAnimationBehavior(0L)
+        val NSWindowAnimationBehaviorNone = NSWindowAnimationBehavior(2L)
+        val NSWindowAnimationBehaviorDocumentWindow = NSWindowAnimationBehavior(3L)
+        val NSWindowAnimationBehaviorUtilityWindow = NSWindowAnimationBehavior(4L)
+        val NSWindowAnimationBehaviorAlertPanel = NSWindowAnimationBehavior(5L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSWindowOcclusionState}
- */
-enum class NSWindowOcclusionState(val value: Long) {
-    NSWindowOcclusionStateVisible(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSWindowOcclusionState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowOcclusionState value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSelectionDirection}
  */
-enum class NSSelectionDirection(val value: Long) {
-    NSDirectSelection(0L), NSSelectingNext(1L), NSSelectingPrevious(2L);
-
+@JvmInline
+value class NSSelectionDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSelectionDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSelectionDirection value: $v")
+        val NSDirectSelection = NSSelectionDirection(0L)
+        val NSSelectingNext = NSSelectionDirection(1L)
+        val NSSelectingPrevious = NSSelectionDirection(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowButton}
  */
-enum class NSWindowButton(val value: Long) {
-    NSWindowCloseButton(0L), NSWindowMiniaturizeButton(1L), NSWindowZoomButton(2L), NSWindowToolbarButton(3L), NSWindowDocumentIconButton(4L), NSWindowDocumentVersionsButton(6L);
-
+@JvmInline
+value class NSWindowButton(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowButton = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowButton value: $v")
+        val NSWindowCloseButton = NSWindowButton(0L)
+        val NSWindowMiniaturizeButton = NSWindowButton(1L)
+        val NSWindowZoomButton = NSWindowButton(2L)
+        val NSWindowToolbarButton = NSWindowButton(3L)
+        val NSWindowDocumentIconButton = NSWindowButton(4L)
+        val NSWindowDocumentVersionsButton = NSWindowButton(6L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowTitleVisibility}
  */
-enum class NSWindowTitleVisibility(val value: Long) {
-    NSWindowTitleVisible(0L), NSWindowTitleHidden(1L);
-
+@JvmInline
+value class NSWindowTitleVisibility(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowTitleVisibility = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowTitleVisibility value: $v")
+        val NSWindowTitleVisible = NSWindowTitleVisibility(0L)
+        val NSWindowTitleHidden = NSWindowTitleVisibility(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowToolbarStyle}
  */
-enum class NSWindowToolbarStyle(val value: Long) {
-    NSWindowToolbarStyleAutomatic(0L), NSWindowToolbarStyleExpanded(1L), NSWindowToolbarStylePreference(2L), NSWindowToolbarStyleUnified(3L), NSWindowToolbarStyleUnifiedCompact(4L);
-
+@JvmInline
+value class NSWindowToolbarStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowToolbarStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowToolbarStyle value: $v")
+        val NSWindowToolbarStyleAutomatic = NSWindowToolbarStyle(0L)
+        val NSWindowToolbarStyleExpanded = NSWindowToolbarStyle(1L)
+        val NSWindowToolbarStylePreference = NSWindowToolbarStyle(2L)
+        val NSWindowToolbarStyleUnified = NSWindowToolbarStyle(3L)
+        val NSWindowToolbarStyleUnifiedCompact = NSWindowToolbarStyle(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowUserTabbingPreference}
  */
-enum class NSWindowUserTabbingPreference(val value: Long) {
-    NSWindowUserTabbingPreferenceManual(0L), NSWindowUserTabbingPreferenceAlways(1L), NSWindowUserTabbingPreferenceInFullScreen(2L);
-
+@JvmInline
+value class NSWindowUserTabbingPreference(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowUserTabbingPreference = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowUserTabbingPreference value: $v")
+        val NSWindowUserTabbingPreferenceManual = NSWindowUserTabbingPreference(0L)
+        val NSWindowUserTabbingPreferenceAlways = NSWindowUserTabbingPreference(1L)
+        val NSWindowUserTabbingPreferenceInFullScreen = NSWindowUserTabbingPreference(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowTabbingMode}
  */
-enum class NSWindowTabbingMode(val value: Long) {
-    NSWindowTabbingModeAutomatic(0L), NSWindowTabbingModePreferred(1L), NSWindowTabbingModeDisallowed(2L);
-
+@JvmInline
+value class NSWindowTabbingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowTabbingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowTabbingMode value: $v")
+        val NSWindowTabbingModeAutomatic = NSWindowTabbingMode(0L)
+        val NSWindowTabbingModePreferred = NSWindowTabbingMode(1L)
+        val NSWindowTabbingModeDisallowed = NSWindowTabbingMode(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTitlebarSeparatorStyle}
  */
-enum class NSTitlebarSeparatorStyle(val value: Long) {
-    NSTitlebarSeparatorStyleAutomatic(0L), NSTitlebarSeparatorStyleNone(1L), NSTitlebarSeparatorStyleLine(2L), NSTitlebarSeparatorStyleShadow(3L);
-
+@JvmInline
+value class NSTitlebarSeparatorStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTitlebarSeparatorStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTitlebarSeparatorStyle value: $v")
+        val NSTitlebarSeparatorStyleAutomatic = NSTitlebarSeparatorStyle(0L)
+        val NSTitlebarSeparatorStyleNone = NSTitlebarSeparatorStyle(1L)
+        val NSTitlebarSeparatorStyleLine = NSTitlebarSeparatorStyle(2L)
+        val NSTitlebarSeparatorStyleShadow = NSTitlebarSeparatorStyle(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindowBackingLocation}
  */
-enum class NSWindowBackingLocation(val value: Long) {
-    NSWindowBackingLocationDefault(0L), NSWindowBackingLocationVideoMemory(1L), NSWindowBackingLocationMainMemory(2L);
-
+@JvmInline
+value class NSWindowBackingLocation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindowBackingLocation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindowBackingLocation value: $v")
+        val NSWindowBackingLocationDefault = NSWindowBackingLocation(0L)
+        val NSWindowBackingLocationVideoMemory = NSWindowBackingLocation(1L)
+        val NSWindowBackingLocationMainMemory = NSWindowBackingLocation(2L)
     }
+
 }
 
 /**
@@ -23539,49 +23527,59 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSMatrixMode}
  */
-enum class NSMatrixMode(val value: Long) {
-    NSRadioModeMatrix(0L), NSHighlightModeMatrix(1L), NSListModeMatrix(2L), NSTrackModeMatrix(3L);
-
+@JvmInline
+value class NSMatrixMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSMatrixMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSMatrixMode value: $v")
+        val NSRadioModeMatrix = NSMatrixMode(0L)
+        val NSHighlightModeMatrix = NSMatrixMode(1L)
+        val NSListModeMatrix = NSMatrixMode(2L)
+        val NSTrackModeMatrix = NSMatrixMode(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGlassEffectViewStyle}
  */
-enum class NSGlassEffectViewStyle(val value: Long) {
-    NSGlassEffectViewStyleRegular(0L), NSGlassEffectViewStyleClear(1L);
-
+@JvmInline
+value class NSGlassEffectViewStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGlassEffectViewStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGlassEffectViewStyle value: $v")
+        val NSGlassEffectViewStyleRegular = NSGlassEffectViewStyle(0L)
+        val NSGlassEffectViewStyleClear = NSGlassEffectViewStyle(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSMenuItemBadgeType}
  */
-enum class NSMenuItemBadgeType(val value: Long) {
-    NSMenuItemBadgeTypeNone(0L), NSMenuItemBadgeTypeUpdates(1L), NSMenuItemBadgeTypeNewItems(2L), NSMenuItemBadgeTypeAlerts(3L);
-
+@JvmInline
+value class NSMenuItemBadgeType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSMenuItemBadgeType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSMenuItemBadgeType value: $v")
+        val NSMenuItemBadgeTypeNone = NSMenuItemBadgeType(0L)
+        val NSMenuItemBadgeTypeUpdates = NSMenuItemBadgeType(1L)
+        val NSMenuItemBadgeTypeNewItems = NSMenuItemBadgeType(2L)
+        val NSMenuItemBadgeTypeAlerts = NSMenuItemBadgeType(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSColorSpaceModel}
  */
-enum class NSColorSpaceModel(val value: Long) {
-    NSColorSpaceModelUnknown(-1L), NSColorSpaceModelGray(0L), NSColorSpaceModelRGB(1L), NSColorSpaceModelCMYK(2L), NSColorSpaceModelLAB(3L), NSColorSpaceModelDeviceN(4L), NSColorSpaceModelIndexed(5L), NSColorSpaceModelPatterned(6L);
-
+@JvmInline
+value class NSColorSpaceModel(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSColorSpaceModel = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSColorSpaceModel value: $v")
+        val NSColorSpaceModelUnknown = NSColorSpaceModel(-1L)
+        val NSColorSpaceModelGray = NSColorSpaceModel(0L)
+        val NSColorSpaceModelRGB = NSColorSpaceModel(1L)
+        val NSColorSpaceModelCMYK = NSColorSpaceModel(2L)
+        val NSColorSpaceModelLAB = NSColorSpaceModel(3L)
+        val NSColorSpaceModelDeviceN = NSColorSpaceModel(4L)
+        val NSColorSpaceModelIndexed = NSColorSpaceModel(5L)
+        val NSColorSpaceModelPatterned = NSColorSpaceModel(6L)
     }
+
 }
 
 /**
@@ -23599,37 +23597,48 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageLayoutDirection}
  */
-enum class NSImageLayoutDirection(val value: Long) {
-    NSImageLayoutDirectionUnspecified(-1L), NSImageLayoutDirectionLeftToRight(2L), NSImageLayoutDirectionRightToLeft(3L);
-
+@JvmInline
+value class NSImageLayoutDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageLayoutDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageLayoutDirection value: $v")
+        val NSImageLayoutDirectionUnspecified = NSImageLayoutDirection(-1L)
+        val NSImageLayoutDirectionLeftToRight = NSImageLayoutDirection(2L)
+        val NSImageLayoutDirectionRightToLeft = NSImageLayoutDirection(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTIFFCompression}
  */
-enum class NSTIFFCompression(val value: Long) {
-    NSTIFFCompressionNone(1L), NSTIFFCompressionCCITTFAX3(3L), NSTIFFCompressionCCITTFAX4(4L), NSTIFFCompressionLZW(5L), NSTIFFCompressionJPEG(6L), NSTIFFCompressionNEXT(32766L), NSTIFFCompressionPackBits(32773L), NSTIFFCompressionOldJPEG(32865L);
-
+@JvmInline
+value class NSTIFFCompression(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTIFFCompression = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTIFFCompression value: $v")
+        val NSTIFFCompressionNone = NSTIFFCompression(1L)
+        val NSTIFFCompressionCCITTFAX3 = NSTIFFCompression(3L)
+        val NSTIFFCompressionCCITTFAX4 = NSTIFFCompression(4L)
+        val NSTIFFCompressionLZW = NSTIFFCompression(5L)
+        val NSTIFFCompressionJPEG = NSTIFFCompression(6L)
+        val NSTIFFCompressionNEXT = NSTIFFCompression(32766L)
+        val NSTIFFCompressionPackBits = NSTIFFCompression(32773L)
+        val NSTIFFCompressionOldJPEG = NSTIFFCompression(32865L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSBitmapImageFileType}
  */
-enum class NSBitmapImageFileType(val value: Long) {
-    NSBitmapImageFileTypeTIFF(0L), NSBitmapImageFileTypeBMP(1L), NSBitmapImageFileTypeGIF(2L), NSBitmapImageFileTypeJPEG(3L), NSBitmapImageFileTypePNG(4L), NSBitmapImageFileTypeJPEG2000(5L);
-
+@JvmInline
+value class NSBitmapImageFileType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSBitmapImageFileType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBitmapImageFileType value: $v")
+        val NSBitmapImageFileTypeTIFF = NSBitmapImageFileType(0L)
+        val NSBitmapImageFileTypeBMP = NSBitmapImageFileType(1L)
+        val NSBitmapImageFileTypeGIF = NSBitmapImageFileType(2L)
+        val NSBitmapImageFileTypeJPEG = NSBitmapImageFileType(3L)
+        val NSBitmapImageFileTypePNG = NSBitmapImageFileType(4L)
+        val NSBitmapImageFileTypeJPEG2000 = NSBitmapImageFileType(5L)
     }
+
 }
 
 /**
@@ -23645,39 +23654,28 @@ enum class NSImageRepLoadStatus(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSBitmapFormat}
- */
-enum class NSBitmapFormat(val value: Long) {
-    NSBitmapFormatAlphaFirst(1L), NSBitmapFormatAlphaNonpremultiplied(2L), NSBitmapFormatFloatingPointSamples(4L), NSBitmapFormatSixteenBitLittleEndian(256L), NSBitmapFormatThirtyTwoBitLittleEndian(512L), NSBitmapFormatSixteenBitBigEndian(1024L), NSBitmapFormatThirtyTwoBitBigEndian(2048L);
-
-    companion object {
-        fun fromValue(v: Long): NSBitmapFormat = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBitmapFormat value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum NSBrowserColumnResizingType}
  */
-enum class NSBrowserColumnResizingType(val value: Long) {
-    NSBrowserNoColumnResizing(0L), NSBrowserAutoColumnResizing(1L), NSBrowserUserColumnResizing(2L);
-
+@JvmInline
+value class NSBrowserColumnResizingType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSBrowserColumnResizingType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBrowserColumnResizingType value: $v")
+        val NSBrowserNoColumnResizing = NSBrowserColumnResizingType(0L)
+        val NSBrowserAutoColumnResizing = NSBrowserColumnResizingType(1L)
+        val NSBrowserUserColumnResizing = NSBrowserColumnResizingType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSBrowserDropOperation}
  */
-enum class NSBrowserDropOperation(val value: Long) {
-    NSBrowserDropOn(0L), NSBrowserDropAbove(1L);
-
+@JvmInline
+value class NSBrowserDropOperation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSBrowserDropOperation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBrowserDropOperation value: $v")
+        val NSBrowserDropOn = NSBrowserDropOperation(0L)
+        val NSBrowserDropAbove = NSBrowserDropOperation(1L)
     }
+
 }
 
 /**
@@ -23885,18 +23883,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum IOSurfacePurgeabilityState}
- */
-enum class IOSurfacePurgeabilityState(val value: Long) {
-    kIOSurfacePurgeableNonVolatile(0L), kIOSurfacePurgeableVolatile(1L), kIOSurfacePurgeableEmpty(2L), kIOSurfacePurgeableKeepCurrent(3L);
-
-    companion object {
-        fun fromValue(v: Long): IOSurfacePurgeabilityState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown IOSurfacePurgeabilityState value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOSurface.framework/Headers/IOSurfaceTypes.h:43:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOSurface_framework_Headers_IOSurfaceTypes_h_43_1_(val value: Long) {
@@ -23995,241 +23981,271 @@ enum class MTLPixelFormat(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSColorPanelMode}
  */
-enum class NSColorPanelMode(val value: Long) {
-    NSColorPanelModeNone(-1L), NSColorPanelModeGray(0L), NSColorPanelModeRGB(1L), NSColorPanelModeCMYK(2L), NSColorPanelModeHSB(3L), NSColorPanelModeCustomPalette(4L), NSColorPanelModeColorList(5L), NSColorPanelModeWheel(6L), NSColorPanelModeCrayon(7L);
-
+@JvmInline
+value class NSColorPanelMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSColorPanelMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSColorPanelMode value: $v")
+        val NSColorPanelModeNone = NSColorPanelMode(-1L)
+        val NSColorPanelModeGray = NSColorPanelMode(0L)
+        val NSColorPanelModeRGB = NSColorPanelMode(1L)
+        val NSColorPanelModeCMYK = NSColorPanelMode(2L)
+        val NSColorPanelModeHSB = NSColorPanelMode(3L)
+        val NSColorPanelModeCustomPalette = NSColorPanelMode(4L)
+        val NSColorPanelModeColorList = NSColorPanelMode(5L)
+        val NSColorPanelModeWheel = NSColorPanelMode(6L)
+        val NSColorPanelModeCrayon = NSColorPanelMode(7L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSColorWellStyle}
  */
-enum class NSColorWellStyle(val value: Long) {
-    NSColorWellStyleDefault(0L), NSColorWellStyleMinimal(1L), NSColorWellStyleExpanded(2L);
-
+@JvmInline
+value class NSColorWellStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSColorWellStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSColorWellStyle value: $v")
+        val NSColorWellStyleDefault = NSColorWellStyle(0L)
+        val NSColorWellStyleMinimal = NSColorWellStyle(1L)
+        val NSColorWellStyleExpanded = NSColorWellStyle(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCursorFrameResizePosition}
  */
-enum class NSCursorFrameResizePosition(val value: Long) {
-    NSCursorFrameResizePositionTop(1L), NSCursorFrameResizePositionLeft(2L), NSCursorFrameResizePositionBottom(4L), NSCursorFrameResizePositionRight(8L), NSCursorFrameResizePositionTopLeft(3L), NSCursorFrameResizePositionTopRight(9L), NSCursorFrameResizePositionBottomLeft(6L), NSCursorFrameResizePositionBottomRight(12L);
-
+@JvmInline
+value class NSCursorFrameResizePosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCursorFrameResizePosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCursorFrameResizePosition value: $v")
+        val NSCursorFrameResizePositionTop = NSCursorFrameResizePosition(1L)
+        val NSCursorFrameResizePositionLeft = NSCursorFrameResizePosition(2L)
+        val NSCursorFrameResizePositionBottom = NSCursorFrameResizePosition(4L)
+        val NSCursorFrameResizePositionRight = NSCursorFrameResizePosition(8L)
+        val NSCursorFrameResizePositionTopLeft = NSCursorFrameResizePosition(3L)
+        val NSCursorFrameResizePositionTopRight = NSCursorFrameResizePosition(9L)
+        val NSCursorFrameResizePositionBottomLeft = NSCursorFrameResizePosition(6L)
+        val NSCursorFrameResizePositionBottomRight = NSCursorFrameResizePosition(12L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSCursorFrameResizeDirections}
- */
-enum class NSCursorFrameResizeDirections(val value: Long) {
-    NSCursorFrameResizeDirectionsInward(1L), NSCursorFrameResizeDirectionsOutward(2L), NSCursorFrameResizeDirectionsAll(3L);
-
-    companion object {
-        fun fromValue(v: Long): NSCursorFrameResizeDirections = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCursorFrameResizeDirections value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGestureRecognizerState}
  */
-enum class NSGestureRecognizerState(val value: Long) {
-    NSGestureRecognizerStatePossible(0L), NSGestureRecognizerStateBegan(1L), NSGestureRecognizerStateChanged(2L), NSGestureRecognizerStateEnded(3L), NSGestureRecognizerStateCancelled(4L), NSGestureRecognizerStateFailed(5L), NSGestureRecognizerStateRecognized(3L);
-
+@JvmInline
+value class NSGestureRecognizerState(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGestureRecognizerState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGestureRecognizerState value: $v")
+        val NSGestureRecognizerStatePossible = NSGestureRecognizerState(0L)
+        val NSGestureRecognizerStateBegan = NSGestureRecognizerState(1L)
+        val NSGestureRecognizerStateChanged = NSGestureRecognizerState(2L)
+        val NSGestureRecognizerStateEnded = NSGestureRecognizerState(3L)
+        val NSGestureRecognizerStateCancelled = NSGestureRecognizerState(4L)
+        val NSGestureRecognizerStateFailed = NSGestureRecognizerState(5L)
+        val NSGestureRecognizerStateRecognized = NSGestureRecognizerState(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLayoutConstraintOrientation}
  */
-enum class NSLayoutConstraintOrientation(val value: Long) {
-    NSLayoutConstraintOrientationHorizontal(0L), NSLayoutConstraintOrientationVertical(1L);
-
+@JvmInline
+value class NSLayoutConstraintOrientation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLayoutConstraintOrientation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLayoutConstraintOrientation value: $v")
+        val NSLayoutConstraintOrientationHorizontal = NSLayoutConstraintOrientation(0L)
+        val NSLayoutConstraintOrientationVertical = NSLayoutConstraintOrientation(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLayoutRelation}
  */
-enum class NSLayoutRelation(val value: Long) {
-    NSLayoutRelationLessThanOrEqual(-1L), NSLayoutRelationEqual(0L), NSLayoutRelationGreaterThanOrEqual(1L);
-
+@JvmInline
+value class NSLayoutRelation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLayoutRelation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLayoutRelation value: $v")
+        val NSLayoutRelationLessThanOrEqual = NSLayoutRelation(-1L)
+        val NSLayoutRelationEqual = NSLayoutRelation(0L)
+        val NSLayoutRelationGreaterThanOrEqual = NSLayoutRelation(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLayoutAttribute}
  */
-enum class NSLayoutAttribute(val value: Long) {
-    NSLayoutAttributeLeft(1L), NSLayoutAttributeRight(2L), NSLayoutAttributeTop(3L), NSLayoutAttributeBottom(4L), NSLayoutAttributeLeading(5L), NSLayoutAttributeTrailing(6L), NSLayoutAttributeWidth(7L), NSLayoutAttributeHeight(8L), NSLayoutAttributeCenterX(9L), NSLayoutAttributeCenterY(10L), NSLayoutAttributeLastBaseline(11L), NSLayoutAttributeBaseline(11L), NSLayoutAttributeFirstBaseline(12L), NSLayoutAttributeNotAnAttribute(0L);
-
+@JvmInline
+value class NSLayoutAttribute(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLayoutAttribute = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLayoutAttribute value: $v")
+        val NSLayoutAttributeLeft = NSLayoutAttribute(1L)
+        val NSLayoutAttributeRight = NSLayoutAttribute(2L)
+        val NSLayoutAttributeTop = NSLayoutAttribute(3L)
+        val NSLayoutAttributeBottom = NSLayoutAttribute(4L)
+        val NSLayoutAttributeLeading = NSLayoutAttribute(5L)
+        val NSLayoutAttributeTrailing = NSLayoutAttribute(6L)
+        val NSLayoutAttributeWidth = NSLayoutAttribute(7L)
+        val NSLayoutAttributeHeight = NSLayoutAttribute(8L)
+        val NSLayoutAttributeCenterX = NSLayoutAttribute(9L)
+        val NSLayoutAttributeCenterY = NSLayoutAttribute(10L)
+        val NSLayoutAttributeLastBaseline = NSLayoutAttribute(11L)
+        val NSLayoutAttributeBaseline = NSLayoutAttribute(11L)
+        val NSLayoutAttributeFirstBaseline = NSLayoutAttribute(12L)
+        val NSLayoutAttributeNotAnAttribute = NSLayoutAttribute(0L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageLoadStatus}
  */
-enum class NSImageLoadStatus(val value: Long) {
-    NSImageLoadStatusCompleted(0L), NSImageLoadStatusCancelled(1L), NSImageLoadStatusInvalidData(2L), NSImageLoadStatusUnexpectedEOF(3L), NSImageLoadStatusReadError(4L);
-
+@JvmInline
+value class NSImageLoadStatus(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageLoadStatus = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageLoadStatus value: $v")
+        val NSImageLoadStatusCompleted = NSImageLoadStatus(0L)
+        val NSImageLoadStatusCancelled = NSImageLoadStatus(1L)
+        val NSImageLoadStatusInvalidData = NSImageLoadStatus(2L)
+        val NSImageLoadStatusUnexpectedEOF = NSImageLoadStatus(3L)
+        val NSImageLoadStatusReadError = NSImageLoadStatus(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageCacheMode}
  */
-enum class NSImageCacheMode(val value: Long) {
-    NSImageCacheDefault(0L), NSImageCacheAlways(1L), NSImageCacheBySize(2L), NSImageCacheNever(3L);
-
+@JvmInline
+value class NSImageCacheMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageCacheMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageCacheMode value: $v")
+        val NSImageCacheDefault = NSImageCacheMode(0L)
+        val NSImageCacheAlways = NSImageCacheMode(1L)
+        val NSImageCacheBySize = NSImageCacheMode(2L)
+        val NSImageCacheNever = NSImageCacheMode(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageResizingMode}
  */
-enum class NSImageResizingMode(val value: Long) {
-    NSImageResizingModeTile(0L), NSImageResizingModeStretch(1L);
-
+@JvmInline
+value class NSImageResizingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageResizingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageResizingMode value: $v")
+        val NSImageResizingModeTile = NSImageResizingMode(0L)
+        val NSImageResizingModeStretch = NSImageResizingMode(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageSymbolScale}
  */
-enum class NSImageSymbolScale(val value: Long) {
-    NSImageSymbolScaleSmall(1L), NSImageSymbolScaleMedium(2L), NSImageSymbolScaleLarge(3L);
-
+@JvmInline
+value class NSImageSymbolScale(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageSymbolScale = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageSymbolScale value: $v")
+        val NSImageSymbolScaleSmall = NSImageSymbolScale(1L)
+        val NSImageSymbolScaleMedium = NSImageSymbolScale(2L)
+        val NSImageSymbolScaleLarge = NSImageSymbolScale(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageSymbolVariableValueMode}
  */
-enum class NSImageSymbolVariableValueMode(val value: Long) {
-    NSImageSymbolVariableValueModeAutomatic(0L), NSImageSymbolVariableValueModeColor(1L), NSImageSymbolVariableValueModeDraw(2L);
-
+@JvmInline
+value class NSImageSymbolVariableValueMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageSymbolVariableValueMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageSymbolVariableValueMode value: $v")
+        val NSImageSymbolVariableValueModeAutomatic = NSImageSymbolVariableValueMode(0L)
+        val NSImageSymbolVariableValueModeColor = NSImageSymbolVariableValueMode(1L)
+        val NSImageSymbolVariableValueModeDraw = NSImageSymbolVariableValueMode(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageSymbolColorRenderingMode}
  */
-enum class NSImageSymbolColorRenderingMode(val value: Long) {
-    NSImageSymbolColorRenderingModeAutomatic(0L), NSImageSymbolColorRenderingModeFlat(1L), NSImageSymbolColorRenderingModeGradient(2L);
-
+@JvmInline
+value class NSImageSymbolColorRenderingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageSymbolColorRenderingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageSymbolColorRenderingMode value: $v")
+        val NSImageSymbolColorRenderingModeAutomatic = NSImageSymbolColorRenderingMode(0L)
+        val NSImageSymbolColorRenderingModeFlat = NSImageSymbolColorRenderingMode(1L)
+        val NSImageSymbolColorRenderingModeGradient = NSImageSymbolColorRenderingMode(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageAlignment}
  */
-enum class NSImageAlignment(val value: Long) {
-    NSImageAlignCenter(0L), NSImageAlignTop(1L), NSImageAlignTopLeft(2L), NSImageAlignTopRight(3L), NSImageAlignLeft(4L), NSImageAlignBottom(5L), NSImageAlignBottomLeft(6L), NSImageAlignBottomRight(7L), NSImageAlignRight(8L);
-
+@JvmInline
+value class NSImageAlignment(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageAlignment = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageAlignment value: $v")
+        val NSImageAlignCenter = NSImageAlignment(0L)
+        val NSImageAlignTop = NSImageAlignment(1L)
+        val NSImageAlignTopLeft = NSImageAlignment(2L)
+        val NSImageAlignTopRight = NSImageAlignment(3L)
+        val NSImageAlignLeft = NSImageAlignment(4L)
+        val NSImageAlignBottom = NSImageAlignment(5L)
+        val NSImageAlignBottomLeft = NSImageAlignment(6L)
+        val NSImageAlignBottomRight = NSImageAlignment(7L)
+        val NSImageAlignRight = NSImageAlignment(8L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageFrameStyle}
  */
-enum class NSImageFrameStyle(val value: Long) {
-    NSImageFrameNone(0L), NSImageFramePhoto(1L), NSImageFrameGrayBezel(2L), NSImageFrameGroove(3L), NSImageFrameButton(4L);
-
+@JvmInline
+value class NSImageFrameStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageFrameStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageFrameStyle value: $v")
+        val NSImageFrameNone = NSImageFrameStyle(0L)
+        val NSImageFramePhoto = NSImageFrameStyle(1L)
+        val NSImageFrameGrayBezel = NSImageFrameStyle(2L)
+        val NSImageFrameGroove = NSImageFrameStyle(3L)
+        val NSImageFrameButton = NSImageFrameStyle(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSImageDynamicRange}
  */
-enum class NSImageDynamicRange(val value: Long) {
-    NSImageDynamicRangeUnspecified(-1L), NSImageDynamicRangeStandard(0L), NSImageDynamicRangeConstrainedHigh(1L), NSImageDynamicRangeHigh(2L);
-
+@JvmInline
+value class NSImageDynamicRange(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSImageDynamicRange = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSImageDynamicRange value: $v")
+        val NSImageDynamicRangeUnspecified = NSImageDynamicRange(-1L)
+        val NSImageDynamicRangeStandard = NSImageDynamicRange(0L)
+        val NSImageDynamicRangeConstrainedHigh = NSImageDynamicRange(1L)
+        val NSImageDynamicRangeHigh = NSImageDynamicRange(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSScrubberMode}
  */
-enum class NSScrubberMode(val value: Long) {
-    NSScrubberModeFixed(0L), NSScrubberModeFree(1L);
-
+@JvmInline
+value class NSScrubberMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSScrubberMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSScrubberMode value: $v")
+        val NSScrubberModeFixed = NSScrubberMode(0L)
+        val NSScrubberModeFree = NSScrubberMode(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSScrubberAlignment}
  */
-enum class NSScrubberAlignment(val value: Long) {
-    NSScrubberAlignmentNone(0L), NSScrubberAlignmentLeading(1L), NSScrubberAlignmentTrailing(2L), NSScrubberAlignmentCenter(3L);
-
+@JvmInline
+value class NSScrubberAlignment(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSScrubberAlignment = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSScrubberAlignment value: $v")
+        val NSScrubberAlignmentNone = NSScrubberAlignment(0L)
+        val NSScrubberAlignmentLeading = NSScrubberAlignment(1L)
+        val NSScrubberAlignmentTrailing = NSScrubberAlignment(2L)
+        val NSScrubberAlignmentCenter = NSScrubberAlignment(3L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum os_unfair_lock_flags_t}
- */
-enum class os_unfair_lock_flags_t(val value: Long) {
-    OS_UNFAIR_LOCK_FLAG_NONE(0L), OS_UNFAIR_LOCK_FLAG_ADAPTIVE_SPIN(262144L);
-
-    companion object {
-        fun fromValue(v: Long): os_unfair_lock_flags_t = entries.firstOrNull { it.value == v }
-            ?: error("Unknown os_unfair_lock_flags_t value: $v")
-    }
 }
 
 /**
@@ -24247,73 +24263,84 @@ enum class NSSharingContentScope(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSpeechBoundary}
  */
-enum class NSSpeechBoundary(val value: Long) {
-    NSSpeechImmediateBoundary(0L), NSSpeechWordBoundary(1L), NSSpeechSentenceBoundary(2L);
-
+@JvmInline
+value class NSSpeechBoundary(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSpeechBoundary = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSpeechBoundary value: $v")
+        val NSSpeechImmediateBoundary = NSSpeechBoundary(0L)
+        val NSSpeechWordBoundary = NSSpeechBoundary(1L)
+        val NSSpeechSentenceBoundary = NSSpeechBoundary(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCorrectionResponse}
  */
-enum class NSCorrectionResponse(val value: Long) {
-    NSCorrectionResponseNone(0L), NSCorrectionResponseAccepted(1L), NSCorrectionResponseRejected(2L), NSCorrectionResponseIgnored(3L), NSCorrectionResponseEdited(4L), NSCorrectionResponseReverted(5L);
-
+@JvmInline
+value class NSCorrectionResponse(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCorrectionResponse = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCorrectionResponse value: $v")
+        val NSCorrectionResponseNone = NSCorrectionResponse(0L)
+        val NSCorrectionResponseAccepted = NSCorrectionResponse(1L)
+        val NSCorrectionResponseRejected = NSCorrectionResponse(2L)
+        val NSCorrectionResponseIgnored = NSCorrectionResponse(3L)
+        val NSCorrectionResponseEdited = NSCorrectionResponse(4L)
+        val NSCorrectionResponseReverted = NSCorrectionResponse(5L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCorrectionIndicatorType}
  */
-enum class NSCorrectionIndicatorType(val value: Long) {
-    NSCorrectionIndicatorTypeDefault(0L), NSCorrectionIndicatorTypeReversion(1L), NSCorrectionIndicatorTypeGuesses(2L);
-
+@JvmInline
+value class NSCorrectionIndicatorType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCorrectionIndicatorType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCorrectionIndicatorType value: $v")
+        val NSCorrectionIndicatorTypeDefault = NSCorrectionIndicatorType(0L)
+        val NSCorrectionIndicatorTypeReversion = NSCorrectionIndicatorType(1L)
+        val NSCorrectionIndicatorTypeGuesses = NSCorrectionIndicatorType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSplitViewDividerStyle}
  */
-enum class NSSplitViewDividerStyle(val value: Long) {
-    NSSplitViewDividerStyleThick(1L), NSSplitViewDividerStyleThin(2L), NSSplitViewDividerStylePaneSplitter(3L);
-
+@JvmInline
+value class NSSplitViewDividerStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSplitViewDividerStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSplitViewDividerStyle value: $v")
+        val NSSplitViewDividerStyleThick = NSSplitViewDividerStyle(1L)
+        val NSSplitViewDividerStyleThin = NSSplitViewDividerStyle(2L)
+        val NSSplitViewDividerStylePaneSplitter = NSSplitViewDividerStyle(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSplitViewItemBehavior}
  */
-enum class NSSplitViewItemBehavior(val value: Long) {
-    NSSplitViewItemBehaviorDefault(0L), NSSplitViewItemBehaviorSidebar(1L), NSSplitViewItemBehaviorContentList(2L), NSSplitViewItemBehaviorInspector(3L);
-
+@JvmInline
+value class NSSplitViewItemBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSplitViewItemBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSplitViewItemBehavior value: $v")
+        val NSSplitViewItemBehaviorDefault = NSSplitViewItemBehavior(0L)
+        val NSSplitViewItemBehaviorSidebar = NSSplitViewItemBehavior(1L)
+        val NSSplitViewItemBehaviorContentList = NSSplitViewItemBehavior(2L)
+        val NSSplitViewItemBehaviorInspector = NSSplitViewItemBehavior(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSplitViewItemCollapseBehavior}
  */
-enum class NSSplitViewItemCollapseBehavior(val value: Long) {
-    NSSplitViewItemCollapseBehaviorDefault(0L), NSSplitViewItemCollapseBehaviorPreferResizingSplitViewWithFixedSiblings(1L), NSSplitViewItemCollapseBehaviorPreferResizingSiblingsWithFixedSplitView(2L), NSSplitViewItemCollapseBehaviorUseConstraints(3L);
-
+@JvmInline
+value class NSSplitViewItemCollapseBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSplitViewItemCollapseBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSplitViewItemCollapseBehavior value: $v")
+        val NSSplitViewItemCollapseBehaviorDefault = NSSplitViewItemCollapseBehavior(0L)
+        val NSSplitViewItemCollapseBehaviorPreferResizingSplitViewWithFixedSiblings = NSSplitViewItemCollapseBehavior(1L)
+        val NSSplitViewItemCollapseBehaviorPreferResizingSiblingsWithFixedSplitView = NSSplitViewItemCollapseBehavior(2L)
+        val NSSplitViewItemCollapseBehaviorUseConstraints = NSSplitViewItemCollapseBehavior(3L)
     }
+
 }
 
 /**
@@ -24343,37 +24370,40 @@ enum class NSPageLayoutResult(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPopUpArrowPosition}
  */
-enum class NSPopUpArrowPosition(val value: Long) {
-    NSPopUpNoArrow(0L), NSPopUpArrowAtCenter(1L), NSPopUpArrowAtBottom(2L);
-
+@JvmInline
+value class NSPopUpArrowPosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPopUpArrowPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPopUpArrowPosition value: $v")
+        val NSPopUpNoArrow = NSPopUpArrowPosition(0L)
+        val NSPopUpArrowAtCenter = NSPopUpArrowPosition(1L)
+        val NSPopUpArrowAtBottom = NSPopUpArrowPosition(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPrintingPageOrder}
  */
-enum class NSPrintingPageOrder(val value: Long) {
-    NSDescendingPageOrder(-1L), NSSpecialPageOrder(0L), NSAscendingPageOrder(1L), NSUnknownPageOrder(2L);
-
+@JvmInline
+value class NSPrintingPageOrder(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPrintingPageOrder = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPrintingPageOrder value: $v")
+        val NSDescendingPageOrder = NSPrintingPageOrder(-1L)
+        val NSSpecialPageOrder = NSPrintingPageOrder(0L)
+        val NSAscendingPageOrder = NSPrintingPageOrder(1L)
+        val NSUnknownPageOrder = NSPrintingPageOrder(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPrintRenderingQuality}
  */
-enum class NSPrintRenderingQuality(val value: Long) {
-    NSPrintRenderingQualityBest(0L), NSPrintRenderingQualityResponsive(1L);
-
+@JvmInline
+value class NSPrintRenderingQuality(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPrintRenderingQuality = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPrintRenderingQuality value: $v")
+        val NSPrintRenderingQualityBest = NSPrintRenderingQuality(0L)
+        val NSPrintRenderingQualityResponsive = NSPrintRenderingQuality(1L)
     }
+
 }
 
 /**
@@ -24389,99 +24419,107 @@ enum class NSPrintPanelResult(val value: Long) {
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSMediaLibrary}
- */
-enum class NSMediaLibrary(val value: Long) {
-    NSMediaLibraryAudio(1L), NSMediaLibraryImage(2L), NSMediaLibraryMovie(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSMediaLibrary = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSMediaLibrary value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum NSUsableScrollerParts}
  */
-enum class NSUsableScrollerParts(val value: Long) {
-    NSNoScrollerParts(0L), NSOnlyScrollerArrows(1L), NSAllScrollerParts(2L);
-
+@JvmInline
+value class NSUsableScrollerParts(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSUsableScrollerParts = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSUsableScrollerParts value: $v")
+        val NSNoScrollerParts = NSUsableScrollerParts(0L)
+        val NSOnlyScrollerArrows = NSUsableScrollerParts(1L)
+        val NSAllScrollerParts = NSUsableScrollerParts(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSScrollerPart}
  */
-enum class NSScrollerPart(val value: Long) {
-    NSScrollerNoPart(0L), NSScrollerDecrementPage(1L), NSScrollerKnob(2L), NSScrollerIncrementPage(3L), NSScrollerDecrementLine(4L), NSScrollerIncrementLine(5L), NSScrollerKnobSlot(6L);
-
+@JvmInline
+value class NSScrollerPart(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSScrollerPart = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSScrollerPart value: $v")
+        val NSScrollerNoPart = NSScrollerPart(0L)
+        val NSScrollerDecrementPage = NSScrollerPart(1L)
+        val NSScrollerKnob = NSScrollerPart(2L)
+        val NSScrollerIncrementPage = NSScrollerPart(3L)
+        val NSScrollerDecrementLine = NSScrollerPart(4L)
+        val NSScrollerIncrementLine = NSScrollerPart(5L)
+        val NSScrollerKnobSlot = NSScrollerPart(6L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSScrollerStyle}
  */
-enum class NSScrollerStyle(val value: Long) {
-    NSScrollerStyleLegacy(0L), NSScrollerStyleOverlay(1L);
-
+@JvmInline
+value class NSScrollerStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSScrollerStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSScrollerStyle value: $v")
+        val NSScrollerStyleLegacy = NSScrollerStyle(0L)
+        val NSScrollerStyleOverlay = NSScrollerStyle(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSScrollerKnobStyle}
  */
-enum class NSScrollerKnobStyle(val value: Long) {
-    NSScrollerKnobStyleDefault(0L), NSScrollerKnobStyleDark(1L), NSScrollerKnobStyleLight(2L);
-
+@JvmInline
+value class NSScrollerKnobStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSScrollerKnobStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSScrollerKnobStyle value: $v")
+        val NSScrollerKnobStyleDefault = NSScrollerKnobStyle(0L)
+        val NSScrollerKnobStyleDark = NSScrollerKnobStyle(1L)
+        val NSScrollerKnobStyleLight = NSScrollerKnobStyle(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSScrollArrowPosition}
  */
-enum class NSScrollArrowPosition(val value: Long) {
-    NSScrollerArrowsMaxEnd(0L), NSScrollerArrowsMinEnd(1L), NSScrollerArrowsDefaultSetting(0L), NSScrollerArrowsNone(2L);
-
+@JvmInline
+value class NSScrollArrowPosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSScrollArrowPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSScrollArrowPosition value: $v")
+        val NSScrollerArrowsMaxEnd = NSScrollArrowPosition(0L)
+        val NSScrollerArrowsMinEnd = NSScrollArrowPosition(1L)
+        val NSScrollerArrowsDefaultSetting = NSScrollArrowPosition(0L)
+        val NSScrollerArrowsNone = NSScrollArrowPosition(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSScrollerArrow}
  */
-enum class NSScrollerArrow(val value: Long) {
-    NSScrollerIncrementArrow(0L), NSScrollerDecrementArrow(1L);
-
+@JvmInline
+value class NSScrollerArrow(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSScrollerArrow = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSScrollerArrow value: $v")
+        val NSScrollerIncrementArrow = NSScrollerArrow(0L)
+        val NSScrollerDecrementArrow = NSScrollerArrow(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextFinderAction}
  */
-enum class NSTextFinderAction(val value: Long) {
-    NSTextFinderActionShowFindInterface(1L), NSTextFinderActionNextMatch(2L), NSTextFinderActionPreviousMatch(3L), NSTextFinderActionReplaceAll(4L), NSTextFinderActionReplace(5L), NSTextFinderActionReplaceAndFind(6L), NSTextFinderActionSetSearchString(7L), NSTextFinderActionReplaceAllInSelection(8L), NSTextFinderActionSelectAll(9L), NSTextFinderActionSelectAllInSelection(10L), NSTextFinderActionHideFindInterface(11L), NSTextFinderActionShowReplaceInterface(12L), NSTextFinderActionHideReplaceInterface(13L);
-
+@JvmInline
+value class NSTextFinderAction(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextFinderAction = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextFinderAction value: $v")
+        val NSTextFinderActionShowFindInterface = NSTextFinderAction(1L)
+        val NSTextFinderActionNextMatch = NSTextFinderAction(2L)
+        val NSTextFinderActionPreviousMatch = NSTextFinderAction(3L)
+        val NSTextFinderActionReplaceAll = NSTextFinderAction(4L)
+        val NSTextFinderActionReplace = NSTextFinderAction(5L)
+        val NSTextFinderActionReplaceAndFind = NSTextFinderAction(6L)
+        val NSTextFinderActionSetSearchString = NSTextFinderAction(7L)
+        val NSTextFinderActionReplaceAllInSelection = NSTextFinderAction(8L)
+        val NSTextFinderActionSelectAll = NSTextFinderAction(9L)
+        val NSTextFinderActionSelectAllInSelection = NSTextFinderAction(10L)
+        val NSTextFinderActionHideFindInterface = NSTextFinderAction(11L)
+        val NSTextFinderActionShowReplaceInterface = NSTextFinderAction(12L)
+        val NSTextFinderActionHideReplaceInterface = NSTextFinderAction(13L)
     }
+
 }
 
 /**
@@ -24499,217 +24537,245 @@ enum class NSTextFinderMatchingType(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSScrollElasticity}
  */
-enum class NSScrollElasticity(val value: Long) {
-    NSScrollElasticityAutomatic(0L), NSScrollElasticityNone(1L), NSScrollElasticityAllowed(2L);
-
+@JvmInline
+value class NSScrollElasticity(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSScrollElasticity = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSScrollElasticity value: $v")
+        val NSScrollElasticityAutomatic = NSScrollElasticity(0L)
+        val NSScrollElasticityNone = NSScrollElasticity(1L)
+        val NSScrollElasticityAllowed = NSScrollElasticity(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSScrollViewFindBarPosition}
  */
-enum class NSScrollViewFindBarPosition(val value: Long) {
-    NSScrollViewFindBarPositionAboveHorizontalRuler(0L), NSScrollViewFindBarPositionAboveContent(1L), NSScrollViewFindBarPositionBelowContent(2L);
-
+@JvmInline
+value class NSScrollViewFindBarPosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSScrollViewFindBarPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSScrollViewFindBarPosition value: $v")
+        val NSScrollViewFindBarPositionAboveHorizontalRuler = NSScrollViewFindBarPosition(0L)
+        val NSScrollViewFindBarPositionAboveContent = NSScrollViewFindBarPosition(1L)
+        val NSScrollViewFindBarPositionBelowContent = NSScrollViewFindBarPosition(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSegmentSwitchTracking}
  */
-enum class NSSegmentSwitchTracking(val value: Long) {
-    NSSegmentSwitchTrackingSelectOne(0L), NSSegmentSwitchTrackingSelectAny(1L), NSSegmentSwitchTrackingMomentary(2L), NSSegmentSwitchTrackingMomentaryAccelerator(3L);
-
+@JvmInline
+value class NSSegmentSwitchTracking(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSegmentSwitchTracking = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSegmentSwitchTracking value: $v")
+        val NSSegmentSwitchTrackingSelectOne = NSSegmentSwitchTracking(0L)
+        val NSSegmentSwitchTrackingSelectAny = NSSegmentSwitchTracking(1L)
+        val NSSegmentSwitchTrackingMomentary = NSSegmentSwitchTracking(2L)
+        val NSSegmentSwitchTrackingMomentaryAccelerator = NSSegmentSwitchTracking(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSegmentStyle}
  */
-enum class NSSegmentStyle(val value: Long) {
-    NSSegmentStyleAutomatic(0L), NSSegmentStyleRounded(1L), NSSegmentStyleRoundRect(3L), NSSegmentStyleTexturedSquare(4L), NSSegmentStyleSmallSquare(6L), NSSegmentStyleSeparated(8L), NSSegmentStyleTexturedRounded(2L), NSSegmentStyleCapsule(5L);
-
+@JvmInline
+value class NSSegmentStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSegmentStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSegmentStyle value: $v")
+        val NSSegmentStyleAutomatic = NSSegmentStyle(0L)
+        val NSSegmentStyleRounded = NSSegmentStyle(1L)
+        val NSSegmentStyleRoundRect = NSSegmentStyle(3L)
+        val NSSegmentStyleTexturedSquare = NSSegmentStyle(4L)
+        val NSSegmentStyleSmallSquare = NSSegmentStyle(6L)
+        val NSSegmentStyleSeparated = NSSegmentStyle(8L)
+        val NSSegmentStyleTexturedRounded = NSSegmentStyle(2L)
+        val NSSegmentStyleCapsule = NSSegmentStyle(5L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSegmentDistribution}
  */
-enum class NSSegmentDistribution(val value: Long) {
-    NSSegmentDistributionFit(0L), NSSegmentDistributionFill(1L), NSSegmentDistributionFillEqually(2L), NSSegmentDistributionFillProportionally(3L);
-
+@JvmInline
+value class NSSegmentDistribution(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSegmentDistribution = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSegmentDistribution value: $v")
+        val NSSegmentDistributionFit = NSSegmentDistribution(0L)
+        val NSSegmentDistributionFill = NSSegmentDistribution(1L)
+        val NSSegmentDistributionFillEqually = NSSegmentDistribution(2L)
+        val NSSegmentDistributionFillProportionally = NSSegmentDistribution(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSharingCollaborationMode}
  */
-enum class NSSharingCollaborationMode(val value: Long) {
-    NSSharingCollaborationModeSendCopy(0L), NSSharingCollaborationModeCollaborate(1L);
-
+@JvmInline
+value class NSSharingCollaborationMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSharingCollaborationMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSharingCollaborationMode value: $v")
+        val NSSharingCollaborationModeSendCopy = NSSharingCollaborationMode(0L)
+        val NSSharingCollaborationModeCollaborate = NSSharingCollaborationMode(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTickMarkPosition}
  */
-enum class NSTickMarkPosition(val value: Long) {
-    NSTickMarkPositionBelow(0L), NSTickMarkPositionAbove(1L), NSTickMarkPositionLeading(1L), NSTickMarkPositionTrailing(0L);
-
+@JvmInline
+value class NSTickMarkPosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTickMarkPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTickMarkPosition value: $v")
+        val NSTickMarkPositionBelow = NSTickMarkPosition(0L)
+        val NSTickMarkPositionAbove = NSTickMarkPosition(1L)
+        val NSTickMarkPositionLeading = NSTickMarkPosition(1L)
+        val NSTickMarkPositionTrailing = NSTickMarkPosition(0L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSliderType}
  */
-enum class NSSliderType(val value: Long) {
-    NSSliderTypeLinear(0L), NSSliderTypeCircular(1L);
-
+@JvmInline
+value class NSSliderType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSliderType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSliderType value: $v")
+        val NSSliderTypeLinear = NSSliderType(0L)
+        val NSSliderTypeCircular = NSSliderType(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSStackViewGravity}
  */
-enum class NSStackViewGravity(val value: Long) {
-    NSStackViewGravityTop(1L), NSStackViewGravityLeading(1L), NSStackViewGravityCenter(2L), NSStackViewGravityBottom(3L), NSStackViewGravityTrailing(3L);
-
+@JvmInline
+value class NSStackViewGravity(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSStackViewGravity = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSStackViewGravity value: $v")
+        val NSStackViewGravityTop = NSStackViewGravity(1L)
+        val NSStackViewGravityLeading = NSStackViewGravity(1L)
+        val NSStackViewGravityCenter = NSStackViewGravity(2L)
+        val NSStackViewGravityBottom = NSStackViewGravity(3L)
+        val NSStackViewGravityTrailing = NSStackViewGravity(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSStackViewDistribution}
  */
-enum class NSStackViewDistribution(val value: Long) {
-    NSStackViewDistributionGravityAreas(-1L), NSStackViewDistributionFill(0L), NSStackViewDistributionFillEqually(1L), NSStackViewDistributionFillProportionally(2L), NSStackViewDistributionEqualSpacing(3L), NSStackViewDistributionEqualCentering(4L);
-
+@JvmInline
+value class NSStackViewDistribution(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSStackViewDistribution = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSStackViewDistribution value: $v")
+        val NSStackViewDistributionGravityAreas = NSStackViewDistribution(-1L)
+        val NSStackViewDistributionFill = NSStackViewDistribution(0L)
+        val NSStackViewDistributionFillEqually = NSStackViewDistribution(1L)
+        val NSStackViewDistributionFillProportionally = NSStackViewDistribution(2L)
+        val NSStackViewDistributionEqualSpacing = NSStackViewDistribution(3L)
+        val NSStackViewDistributionEqualCentering = NSStackViewDistribution(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGridCellPlacement}
  */
-enum class NSGridCellPlacement(val value: Long) {
-    NSGridCellPlacementInherited(0L), NSGridCellPlacementNone(1L), NSGridCellPlacementLeading(2L), NSGridCellPlacementTop(2L), NSGridCellPlacementTrailing(3L), NSGridCellPlacementBottom(3L), NSGridCellPlacementCenter(4L), NSGridCellPlacementFill(5L);
-
+@JvmInline
+value class NSGridCellPlacement(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGridCellPlacement = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGridCellPlacement value: $v")
+        val NSGridCellPlacementInherited = NSGridCellPlacement(0L)
+        val NSGridCellPlacementNone = NSGridCellPlacement(1L)
+        val NSGridCellPlacementLeading = NSGridCellPlacement(2L)
+        val NSGridCellPlacementTop = NSGridCellPlacement(2L)
+        val NSGridCellPlacementTrailing = NSGridCellPlacement(3L)
+        val NSGridCellPlacementBottom = NSGridCellPlacement(3L)
+        val NSGridCellPlacementCenter = NSGridCellPlacement(4L)
+        val NSGridCellPlacementFill = NSGridCellPlacement(5L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSGridRowAlignment}
  */
-enum class NSGridRowAlignment(val value: Long) {
-    NSGridRowAlignmentInherited(0L), NSGridRowAlignmentNone(1L), NSGridRowAlignmentFirstBaseline(2L), NSGridRowAlignmentLastBaseline(3L);
-
+@JvmInline
+value class NSGridRowAlignment(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSGridRowAlignment = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGridRowAlignment value: $v")
+        val NSGridRowAlignmentInherited = NSGridRowAlignment(0L)
+        val NSGridRowAlignmentNone = NSGridRowAlignment(1L)
+        val NSGridRowAlignmentFirstBaseline = NSGridRowAlignment(2L)
+        val NSGridRowAlignmentLastBaseline = NSGridRowAlignment(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextCursorAccessoryPlacement}
  */
-enum class NSTextCursorAccessoryPlacement(val value: Long) {
-    NSTextCursorAccessoryPlacementUnspecified(0L), NSTextCursorAccessoryPlacementBackward(1L), NSTextCursorAccessoryPlacementForward(2L), NSTextCursorAccessoryPlacementInvisible(3L), NSTextCursorAccessoryPlacementCenter(4L), NSTextCursorAccessoryPlacementOffscreenLeft(5L), NSTextCursorAccessoryPlacementOffscreenTop(6L), NSTextCursorAccessoryPlacementOffscreenRight(7L), NSTextCursorAccessoryPlacementOffscreenBottom(8L);
-
+@JvmInline
+value class NSTextCursorAccessoryPlacement(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextCursorAccessoryPlacement = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextCursorAccessoryPlacement value: $v")
+        val NSTextCursorAccessoryPlacementUnspecified = NSTextCursorAccessoryPlacement(0L)
+        val NSTextCursorAccessoryPlacementBackward = NSTextCursorAccessoryPlacement(1L)
+        val NSTextCursorAccessoryPlacementForward = NSTextCursorAccessoryPlacement(2L)
+        val NSTextCursorAccessoryPlacementInvisible = NSTextCursorAccessoryPlacement(3L)
+        val NSTextCursorAccessoryPlacementCenter = NSTextCursorAccessoryPlacement(4L)
+        val NSTextCursorAccessoryPlacementOffscreenLeft = NSTextCursorAccessoryPlacement(5L)
+        val NSTextCursorAccessoryPlacementOffscreenTop = NSTextCursorAccessoryPlacement(6L)
+        val NSTextCursorAccessoryPlacementOffscreenRight = NSTextCursorAccessoryPlacement(7L)
+        val NSTextCursorAccessoryPlacementOffscreenBottom = NSTextCursorAccessoryPlacement(8L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextInputTraitType}
  */
-enum class NSTextInputTraitType(val value: Long) {
-    NSTextInputTraitTypeDefault(0L), NSTextInputTraitTypeNo(1L), NSTextInputTraitTypeYes(2L);
-
+@JvmInline
+value class NSTextInputTraitType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextInputTraitType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextInputTraitType value: $v")
+        val NSTextInputTraitTypeDefault = NSTextInputTraitType(0L)
+        val NSTextInputTraitTypeNo = NSTextInputTraitType(1L)
+        val NSTextInputTraitTypeYes = NSTextInputTraitType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWritingToolsBehavior}
  */
-enum class NSWritingToolsBehavior(val value: Long) {
-    NSWritingToolsBehaviorNone(-1L), NSWritingToolsBehaviorDefault(0L), NSWritingToolsBehaviorComplete(1L), NSWritingToolsBehaviorLimited(2L);
-
+@JvmInline
+value class NSWritingToolsBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWritingToolsBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWritingToolsBehavior value: $v")
+        val NSWritingToolsBehaviorNone = NSWritingToolsBehavior(-1L)
+        val NSWritingToolsBehaviorDefault = NSWritingToolsBehavior(0L)
+        val NSWritingToolsBehaviorComplete = NSWritingToolsBehavior(1L)
+        val NSWritingToolsBehaviorLimited = NSWritingToolsBehavior(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextFieldBezelStyle}
  */
-enum class NSTextFieldBezelStyle(val value: Long) {
-    NSTextFieldSquareBezel(0L), NSTextFieldRoundedBezel(1L);
-
+@JvmInline
+value class NSTextFieldBezelStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextFieldBezelStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextFieldBezelStyle value: $v")
+        val NSTextFieldSquareBezel = NSTextFieldBezelStyle(0L)
+        val NSTextFieldRoundedBezel = NSTextFieldBezelStyle(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextInsertionIndicatorDisplayMode}
  */
-enum class NSTextInsertionIndicatorDisplayMode(val value: Long) {
-    NSTextInsertionIndicatorDisplayModeAutomatic(0L), NSTextInsertionIndicatorDisplayModeHidden(1L), NSTextInsertionIndicatorDisplayModeVisible(2L);
-
+@JvmInline
+value class NSTextInsertionIndicatorDisplayMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextInsertionIndicatorDisplayMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextInsertionIndicatorDisplayMode value: $v")
+        val NSTextInsertionIndicatorDisplayModeAutomatic = NSTextInsertionIndicatorDisplayMode(0L)
+        val NSTextInsertionIndicatorDisplayModeHidden = NSTextInsertionIndicatorDisplayMode(1L)
+        val NSTextInsertionIndicatorDisplayModeVisible = NSTextInsertionIndicatorDisplayMode(2L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSUnderlineStyle}
- */
-enum class NSUnderlineStyle(val value: Long) {
-    NSUnderlineStyleNone(0L), NSUnderlineStyleSingle(1L), NSUnderlineStyleThick(2L), NSUnderlineStyleDouble(9L), NSUnderlineStylePatternSolid(0L), NSUnderlineStylePatternDot(256L), NSUnderlineStylePatternDash(512L), NSUnderlineStylePatternDashDot(768L), NSUnderlineStylePatternDashDotDot(1024L), NSUnderlineStyleByWord(32768L);
-
-    companion object {
-        fun fromValue(v: Long): NSUnderlineStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSUnderlineStyle value: $v")
-    }
 }
 
 /**
@@ -24761,18 +24827,6 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
- * NS_ENUM: {@snippet lang=c : enum NSTextStorageEditActions}
- */
-enum class NSTextStorageEditActions(val value: Long) {
-    NSTextStorageEditedAttributes(1L), NSTextStorageEditedCharacters(2L);
-
-    companion object {
-        fun fromValue(v: Long): NSTextStorageEditActions = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextStorageEditActions value: $v")
-    }
-}
-
-/**
  * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSGlyphGenerator.h:18:1)}
  */
 enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_AppKit_framework_Headers_NSGlyphGenerator_h_18_1_(val value: Long) {
@@ -24787,49 +24841,29 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextLayoutOrientation}
  */
-enum class NSTextLayoutOrientation(val value: Long) {
-    NSTextLayoutOrientationHorizontal(0L), NSTextLayoutOrientationVertical(1L);
-
+@JvmInline
+value class NSTextLayoutOrientation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextLayoutOrientation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextLayoutOrientation value: $v")
+        val NSTextLayoutOrientationHorizontal = NSTextLayoutOrientation(0L)
+        val NSTextLayoutOrientationVertical = NSTextLayoutOrientation(1L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSGlyphProperty}
- */
-enum class NSGlyphProperty(val value: Long) {
-    NSGlyphPropertyNull(1L), NSGlyphPropertyControlCharacter(2L), NSGlyphPropertyElastic(4L), NSGlyphPropertyNonBaseCharacter(8L);
-
-    companion object {
-        fun fromValue(v: Long): NSGlyphProperty = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSGlyphProperty value: $v")
-    }
-}
-
-/**
- * NS_ENUM: {@snippet lang=c : enum NSControlCharacterAction}
- */
-enum class NSControlCharacterAction(val value: Long) {
-    NSControlCharacterActionZeroAdvancement(1L), NSControlCharacterActionWhitespace(2L), NSControlCharacterActionHorizontalTab(4L), NSControlCharacterActionLineBreak(8L), NSControlCharacterActionParagraphBreak(16L), NSControlCharacterActionContainerBreak(32L);
-
-    companion object {
-        fun fromValue(v: Long): NSControlCharacterAction = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSControlCharacterAction value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTypesetterBehavior}
  */
-enum class NSTypesetterBehavior(val value: Long) {
-    NSTypesetterLatestBehavior(-1L), NSTypesetterOriginalBehavior(0L), NSTypesetterBehavior_10_2_WithCompatibility(1L), NSTypesetterBehavior_10_2(2L), NSTypesetterBehavior_10_3(3L), NSTypesetterBehavior_10_4(4L);
-
+@JvmInline
+value class NSTypesetterBehavior(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTypesetterBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTypesetterBehavior value: $v")
+        val NSTypesetterLatestBehavior = NSTypesetterBehavior(-1L)
+        val NSTypesetterOriginalBehavior = NSTypesetterBehavior(0L)
+        val NSTypesetterBehavior_10_2_WithCompatibility = NSTypesetterBehavior(1L)
+        val NSTypesetterBehavior_10_2 = NSTypesetterBehavior(2L)
+        val NSTypesetterBehavior_10_3 = NSTypesetterBehavior(3L)
+        val NSTypesetterBehavior_10_4 = NSTypesetterBehavior(4L)
     }
+
 }
 
 /**
@@ -24859,97 +24893,109 @@ enum class NSGlyphInscription(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLineSweepDirection}
  */
-enum class NSLineSweepDirection(val value: Long) {
-    NSLineSweepLeft(0L), NSLineSweepRight(1L), NSLineSweepDown(2L), NSLineSweepUp(3L);
-
+@JvmInline
+value class NSLineSweepDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLineSweepDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLineSweepDirection value: $v")
+        val NSLineSweepLeft = NSLineSweepDirection(0L)
+        val NSLineSweepRight = NSLineSweepDirection(1L)
+        val NSLineSweepDown = NSLineSweepDirection(2L)
+        val NSLineSweepUp = NSLineSweepDirection(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLineMovementDirection}
  */
-enum class NSLineMovementDirection(val value: Long) {
-    NSLineDoesntMove(0L), NSLineMovesLeft(1L), NSLineMovesRight(2L), NSLineMovesDown(3L), NSLineMovesUp(4L);
-
+@JvmInline
+value class NSLineMovementDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLineMovementDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLineMovementDirection value: $v")
+        val NSLineDoesntMove = NSLineMovementDirection(0L)
+        val NSLineMovesLeft = NSLineMovementDirection(1L)
+        val NSLineMovesRight = NSLineMovementDirection(2L)
+        val NSLineMovesDown = NSLineMovementDirection(3L)
+        val NSLineMovesUp = NSLineMovementDirection(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTokenStyle}
  */
-enum class NSTokenStyle(val value: Long) {
-    NSTokenStyleDefault(0L), NSTokenStyleNone(1L), NSTokenStyleRounded(2L), NSTokenStyleSquared(3L), NSTokenStylePlainSquared(4L);
-
+@JvmInline
+value class NSTokenStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTokenStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTokenStyle value: $v")
+        val NSTokenStyleDefault = NSTokenStyle(0L)
+        val NSTokenStyleNone = NSTokenStyle(1L)
+        val NSTokenStyleRounded = NSTokenStyle(2L)
+        val NSTokenStyleSquared = NSTokenStyle(3L)
+        val NSTokenStylePlainSquared = NSTokenStyle(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSToolbarDisplayMode}
  */
-enum class NSToolbarDisplayMode(val value: Long) {
-    NSToolbarDisplayModeDefault(0L), NSToolbarDisplayModeIconAndLabel(1L), NSToolbarDisplayModeIconOnly(2L), NSToolbarDisplayModeLabelOnly(3L);
-
+@JvmInline
+value class NSToolbarDisplayMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSToolbarDisplayMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSToolbarDisplayMode value: $v")
+        val NSToolbarDisplayModeDefault = NSToolbarDisplayMode(0L)
+        val NSToolbarDisplayModeIconAndLabel = NSToolbarDisplayMode(1L)
+        val NSToolbarDisplayModeIconOnly = NSToolbarDisplayMode(2L)
+        val NSToolbarDisplayModeLabelOnly = NSToolbarDisplayMode(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSToolbarSizeMode}
  */
-enum class NSToolbarSizeMode(val value: Long) {
-    NSToolbarSizeModeDefault(0L), NSToolbarSizeModeRegular(1L), NSToolbarSizeModeSmall(2L);
-
+@JvmInline
+value class NSToolbarSizeMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSToolbarSizeMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSToolbarSizeMode value: $v")
+        val NSToolbarSizeModeDefault = NSToolbarSizeMode(0L)
+        val NSToolbarSizeModeRegular = NSToolbarSizeMode(1L)
+        val NSToolbarSizeModeSmall = NSToolbarSizeMode(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSToolbarItemStyle}
  */
-enum class NSToolbarItemStyle(val value: Long) {
-    NSToolbarItemStylePlain(0L), NSToolbarItemStyleProminent(1L);
-
+@JvmInline
+value class NSToolbarItemStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSToolbarItemStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSToolbarItemStyle value: $v")
+        val NSToolbarItemStylePlain = NSToolbarItemStyle(0L)
+        val NSToolbarItemStyleProminent = NSToolbarItemStyle(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSViewLayoutRegionAdaptivityAxis}
  */
-enum class NSViewLayoutRegionAdaptivityAxis(val value: Long) {
-    NSViewLayoutRegionAdaptivityAxisNone(0L), NSViewLayoutRegionAdaptivityAxisHorizontal(1L), NSViewLayoutRegionAdaptivityAxisVertical(2L);
-
+@JvmInline
+value class NSViewLayoutRegionAdaptivityAxis(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSViewLayoutRegionAdaptivityAxis = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSViewLayoutRegionAdaptivityAxis value: $v")
+        val NSViewLayoutRegionAdaptivityAxisNone = NSViewLayoutRegionAdaptivityAxis(0L)
+        val NSViewLayoutRegionAdaptivityAxisHorizontal = NSViewLayoutRegionAdaptivityAxis(1L)
+        val NSViewLayoutRegionAdaptivityAxisVertical = NSViewLayoutRegionAdaptivityAxis(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSComboButtonStyle}
  */
-enum class NSComboButtonStyle(val value: Long) {
-    NSComboButtonStyleSplit(0L), NSComboButtonStyleUnified(1L);
-
+@JvmInline
+value class NSComboButtonStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSComboButtonStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSComboButtonStyle value: $v")
+        val NSComboButtonStyleSplit = NSComboButtonStyle(0L)
+        val NSComboButtonStyleUnified = NSComboButtonStyle(1L)
     }
+
 }
 
 /**
@@ -24967,25 +25013,26 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSelectionGranularity}
  */
-enum class NSSelectionGranularity(val value: Long) {
-    NSSelectByCharacter(0L), NSSelectByWord(1L), NSSelectByParagraph(2L);
-
+@JvmInline
+value class NSSelectionGranularity(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSelectionGranularity = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSelectionGranularity value: $v")
+        val NSSelectByCharacter = NSSelectionGranularity(0L)
+        val NSSelectByWord = NSSelectionGranularity(1L)
+        val NSSelectByParagraph = NSSelectionGranularity(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSSelectionAffinity}
  */
-enum class NSSelectionAffinity(val value: Long) {
-    NSSelectionAffinityUpstream(0L), NSSelectionAffinityDownstream(1L);
-
+@JvmInline
+value class NSSelectionAffinity(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSSelectionAffinity = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSSelectionAffinity value: $v")
+        val NSSelectionAffinityUpstream = NSSelectionAffinity(0L)
+        val NSSelectionAffinityDownstream = NSSelectionAffinity(1L)
     }
+
 }
 
 /**
@@ -25015,109 +25062,110 @@ enum class NSFindPanelSubstringMatchType(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTableViewDropOperation}
  */
-enum class NSTableViewDropOperation(val value: Long) {
-    NSTableViewDropOn(0L), NSTableViewDropAbove(1L);
-
+@JvmInline
+value class NSTableViewDropOperation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTableViewDropOperation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTableViewDropOperation value: $v")
+        val NSTableViewDropOn = NSTableViewDropOperation(0L)
+        val NSTableViewDropAbove = NSTableViewDropOperation(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTableViewColumnAutoresizingStyle}
  */
-enum class NSTableViewColumnAutoresizingStyle(val value: Long) {
-    NSTableViewNoColumnAutoresizing(0L), NSTableViewUniformColumnAutoresizingStyle(1L), NSTableViewSequentialColumnAutoresizingStyle(2L), NSTableViewReverseSequentialColumnAutoresizingStyle(3L), NSTableViewLastColumnOnlyAutoresizingStyle(4L), NSTableViewFirstColumnOnlyAutoresizingStyle(5L);
-
+@JvmInline
+value class NSTableViewColumnAutoresizingStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTableViewColumnAutoresizingStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTableViewColumnAutoresizingStyle value: $v")
+        val NSTableViewNoColumnAutoresizing = NSTableViewColumnAutoresizingStyle(0L)
+        val NSTableViewUniformColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle(1L)
+        val NSTableViewSequentialColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle(2L)
+        val NSTableViewReverseSequentialColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle(3L)
+        val NSTableViewLastColumnOnlyAutoresizingStyle = NSTableViewColumnAutoresizingStyle(4L)
+        val NSTableViewFirstColumnOnlyAutoresizingStyle = NSTableViewColumnAutoresizingStyle(5L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSTableViewGridLineStyle}
- */
-enum class NSTableViewGridLineStyle(val value: Long) {
-    NSTableViewGridNone(0L), NSTableViewSolidVerticalGridLineMask(1L), NSTableViewSolidHorizontalGridLineMask(2L), NSTableViewDashedHorizontalGridLineMask(8L);
-
-    companion object {
-        fun fromValue(v: Long): NSTableViewGridLineStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTableViewGridLineStyle value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTableViewRowSizeStyle}
  */
-enum class NSTableViewRowSizeStyle(val value: Long) {
-    NSTableViewRowSizeStyleDefault(-1L), NSTableViewRowSizeStyleCustom(0L), NSTableViewRowSizeStyleSmall(1L), NSTableViewRowSizeStyleMedium(2L), NSTableViewRowSizeStyleLarge(3L);
-
+@JvmInline
+value class NSTableViewRowSizeStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTableViewRowSizeStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTableViewRowSizeStyle value: $v")
+        val NSTableViewRowSizeStyleDefault = NSTableViewRowSizeStyle(-1L)
+        val NSTableViewRowSizeStyleCustom = NSTableViewRowSizeStyle(0L)
+        val NSTableViewRowSizeStyleSmall = NSTableViewRowSizeStyle(1L)
+        val NSTableViewRowSizeStyleMedium = NSTableViewRowSizeStyle(2L)
+        val NSTableViewRowSizeStyleLarge = NSTableViewRowSizeStyle(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTableViewStyle}
  */
-enum class NSTableViewStyle(val value: Long) {
-    NSTableViewStyleAutomatic(0L), NSTableViewStyleFullWidth(1L), NSTableViewStyleInset(2L), NSTableViewStyleSourceList(3L), NSTableViewStylePlain(4L);
-
+@JvmInline
+value class NSTableViewStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTableViewStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTableViewStyle value: $v")
+        val NSTableViewStyleAutomatic = NSTableViewStyle(0L)
+        val NSTableViewStyleFullWidth = NSTableViewStyle(1L)
+        val NSTableViewStyleInset = NSTableViewStyle(2L)
+        val NSTableViewStyleSourceList = NSTableViewStyle(3L)
+        val NSTableViewStylePlain = NSTableViewStyle(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTableViewSelectionHighlightStyle}
  */
-enum class NSTableViewSelectionHighlightStyle(val value: Long) {
-    NSTableViewSelectionHighlightStyleNone(-1L), NSTableViewSelectionHighlightStyleRegular(0L), NSTableViewSelectionHighlightStyleSourceList(1L);
-
+@JvmInline
+value class NSTableViewSelectionHighlightStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTableViewSelectionHighlightStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTableViewSelectionHighlightStyle value: $v")
+        val NSTableViewSelectionHighlightStyleNone = NSTableViewSelectionHighlightStyle(-1L)
+        val NSTableViewSelectionHighlightStyleRegular = NSTableViewSelectionHighlightStyle(0L)
+        val NSTableViewSelectionHighlightStyleSourceList = NSTableViewSelectionHighlightStyle(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTableViewDraggingDestinationFeedbackStyle}
  */
-enum class NSTableViewDraggingDestinationFeedbackStyle(val value: Long) {
-    NSTableViewDraggingDestinationFeedbackStyleNone(-1L), NSTableViewDraggingDestinationFeedbackStyleRegular(0L), NSTableViewDraggingDestinationFeedbackStyleSourceList(1L), NSTableViewDraggingDestinationFeedbackStyleGap(2L);
-
+@JvmInline
+value class NSTableViewDraggingDestinationFeedbackStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTableViewDraggingDestinationFeedbackStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTableViewDraggingDestinationFeedbackStyle value: $v")
+        val NSTableViewDraggingDestinationFeedbackStyleNone = NSTableViewDraggingDestinationFeedbackStyle(-1L)
+        val NSTableViewDraggingDestinationFeedbackStyleRegular = NSTableViewDraggingDestinationFeedbackStyle(0L)
+        val NSTableViewDraggingDestinationFeedbackStyleSourceList = NSTableViewDraggingDestinationFeedbackStyle(1L)
+        val NSTableViewDraggingDestinationFeedbackStyleGap = NSTableViewDraggingDestinationFeedbackStyle(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTableRowActionEdge}
  */
-enum class NSTableRowActionEdge(val value: Long) {
-    NSTableRowActionEdgeLeading(0L), NSTableRowActionEdgeTrailing(1L);
-
+@JvmInline
+value class NSTableRowActionEdge(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTableRowActionEdge = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTableRowActionEdge value: $v")
+        val NSTableRowActionEdgeLeading = NSTableRowActionEdge(0L)
+        val NSTableRowActionEdgeTrailing = NSTableRowActionEdge(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTableViewRowActionStyle}
  */
-enum class NSTableViewRowActionStyle(val value: Long) {
-    NSTableViewRowActionStyleRegular(0L), NSTableViewRowActionStyleDestructive(1L);
-
+@JvmInline
+value class NSTableViewRowActionStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTableViewRowActionStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTableViewRowActionStyle value: $v")
+        val NSTableViewRowActionStyleRegular = NSTableViewRowActionStyle(0L)
+        val NSTableViewRowActionStyleDestructive = NSTableViewRowActionStyle(1L)
     }
+
 }
 
 /**
@@ -25135,13 +25183,13 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSRulerOrientation}
  */
-enum class NSRulerOrientation(val value: Long) {
-    NSHorizontalRuler(0L), NSVerticalRuler(1L);
-
+@JvmInline
+value class NSRulerOrientation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRulerOrientation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRulerOrientation value: $v")
+        val NSHorizontalRuler = NSRulerOrientation(0L)
+        val NSVerticalRuler = NSRulerOrientation(1L)
     }
+
 }
 
 /**
@@ -25159,13 +25207,13 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSProgressIndicatorStyle}
  */
-enum class NSProgressIndicatorStyle(val value: Long) {
-    NSProgressIndicatorStyleBar(0L), NSProgressIndicatorStyleSpinning(1L);
-
+@JvmInline
+value class NSProgressIndicatorStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSProgressIndicatorStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSProgressIndicatorStyle value: $v")
+        val NSProgressIndicatorStyleBar = NSProgressIndicatorStyle(0L)
+        val NSProgressIndicatorStyleSpinning = NSProgressIndicatorStyle(1L)
     }
+
 }
 
 /**
@@ -25183,121 +25231,127 @@ enum class NSProgressIndicatorThickness(val value: Long) {
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTabViewType}
  */
-enum class NSTabViewType(val value: Long) {
-    NSTopTabsBezelBorder(0L), NSLeftTabsBezelBorder(1L), NSBottomTabsBezelBorder(2L), NSRightTabsBezelBorder(3L), NSNoTabsBezelBorder(4L), NSNoTabsLineBorder(5L), NSNoTabsNoBorder(6L);
-
+@JvmInline
+value class NSTabViewType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTabViewType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTabViewType value: $v")
+        val NSTopTabsBezelBorder = NSTabViewType(0L)
+        val NSLeftTabsBezelBorder = NSTabViewType(1L)
+        val NSBottomTabsBezelBorder = NSTabViewType(2L)
+        val NSRightTabsBezelBorder = NSTabViewType(3L)
+        val NSNoTabsBezelBorder = NSTabViewType(4L)
+        val NSNoTabsLineBorder = NSTabViewType(5L)
+        val NSNoTabsNoBorder = NSTabViewType(6L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTabPosition}
  */
-enum class NSTabPosition(val value: Long) {
-    NSTabPositionNone(0L), NSTabPositionTop(1L), NSTabPositionLeft(2L), NSTabPositionBottom(3L), NSTabPositionRight(4L);
-
+@JvmInline
+value class NSTabPosition(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTabPosition = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTabPosition value: $v")
+        val NSTabPositionNone = NSTabPosition(0L)
+        val NSTabPositionTop = NSTabPosition(1L)
+        val NSTabPositionLeft = NSTabPosition(2L)
+        val NSTabPositionBottom = NSTabPosition(3L)
+        val NSTabPositionRight = NSTabPosition(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTabViewBorderType}
  */
-enum class NSTabViewBorderType(val value: Long) {
-    NSTabViewBorderTypeNone(0L), NSTabViewBorderTypeLine(1L), NSTabViewBorderTypeBezel(2L);
-
+@JvmInline
+value class NSTabViewBorderType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTabViewBorderType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTabViewBorderType value: $v")
+        val NSTabViewBorderTypeNone = NSTabViewBorderType(0L)
+        val NSTabViewBorderTypeLine = NSTabViewBorderType(1L)
+        val NSTabViewBorderTypeBezel = NSTabViewBorderType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTabViewControllerTabStyle}
  */
-enum class NSTabViewControllerTabStyle(val value: Long) {
-    NSTabViewControllerTabStyleSegmentedControlOnTop(0L), NSTabViewControllerTabStyleSegmentedControlOnBottom(1L), NSTabViewControllerTabStyleToolbar(2L), NSTabViewControllerTabStyleUnspecified(-1L);
-
+@JvmInline
+value class NSTabViewControllerTabStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTabViewControllerTabStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTabViewControllerTabStyle value: $v")
+        val NSTabViewControllerTabStyleSegmentedControlOnTop = NSTabViewControllerTabStyle(0L)
+        val NSTabViewControllerTabStyleSegmentedControlOnBottom = NSTabViewControllerTabStyle(1L)
+        val NSTabViewControllerTabStyleToolbar = NSTabViewControllerTabStyle(2L)
+        val NSTabViewControllerTabStyleUnspecified = NSTabViewControllerTabStyle(-1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTabState}
  */
-enum class NSTabState(val value: Long) {
-    NSSelectedTab(0L), NSBackgroundTab(1L), NSPressedTab(2L);
-
+@JvmInline
+value class NSTabState(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTabState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTabState value: $v")
+        val NSSelectedTab = NSTabState(0L)
+        val NSBackgroundTab = NSTabState(1L)
+        val NSPressedTab = NSTabState(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLineCapStyle}
  */
-enum class NSLineCapStyle(val value: Long) {
-    NSLineCapStyleButt(0L), NSLineCapStyleRound(1L), NSLineCapStyleSquare(2L);
-
+@JvmInline
+value class NSLineCapStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLineCapStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLineCapStyle value: $v")
+        val NSLineCapStyleButt = NSLineCapStyle(0L)
+        val NSLineCapStyleRound = NSLineCapStyle(1L)
+        val NSLineCapStyleSquare = NSLineCapStyle(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLineJoinStyle}
  */
-enum class NSLineJoinStyle(val value: Long) {
-    NSLineJoinStyleMiter(0L), NSLineJoinStyleRound(1L), NSLineJoinStyleBevel(2L);
-
+@JvmInline
+value class NSLineJoinStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLineJoinStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLineJoinStyle value: $v")
+        val NSLineJoinStyleMiter = NSLineJoinStyle(0L)
+        val NSLineJoinStyleRound = NSLineJoinStyle(1L)
+        val NSLineJoinStyleBevel = NSLineJoinStyle(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWindingRule}
  */
-enum class NSWindingRule(val value: Long) {
-    NSWindingRuleNonZero(0L), NSWindingRuleEvenOdd(1L);
-
+@JvmInline
+value class NSWindingRule(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWindingRule = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWindingRule value: $v")
+        val NSWindingRuleNonZero = NSWindingRule(0L)
+        val NSWindingRuleEvenOdd = NSWindingRule(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSBezierPathElement}
  */
-enum class NSBezierPathElement(val value: Long) {
-    NSBezierPathElementMoveTo(0L), NSBezierPathElementLineTo(1L), NSBezierPathElementCubicCurveTo(2L), NSBezierPathElementClosePath(3L), NSBezierPathElementQuadraticCurveTo(4L), NSBezierPathElementCurveTo(2L);
-
+@JvmInline
+value class NSBezierPathElement(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSBezierPathElement = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSBezierPathElement value: $v")
+        val NSBezierPathElementMoveTo = NSBezierPathElement(0L)
+        val NSBezierPathElementLineTo = NSBezierPathElement(1L)
+        val NSBezierPathElementCubicCurveTo = NSBezierPathElement(2L)
+        val NSBezierPathElementClosePath = NSBezierPathElement(3L)
+        val NSBezierPathElementQuadraticCurveTo = NSBezierPathElement(4L)
+        val NSBezierPathElementCurveTo = NSBezierPathElement(2L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSStatusItemBehavior}
- */
-enum class NSStatusItemBehavior(val value: Long) {
-    NSStatusItemBehaviorRemovalAllowed(2L), NSStatusItemBehaviorTerminationOnRemoval(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSStatusItemBehavior = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSStatusItemBehavior value: $v")
-    }
 }
 
 /**
@@ -25351,481 +25405,548 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 /**
  * NS_ENUM: {@snippet lang=c : enum NSOpenGLContextParameter}
  */
-enum class NSOpenGLContextParameter(val value: Long) {
-    NSOpenGLContextParameterSwapInterval(222L), NSOpenGLContextParameterSurfaceOrder(235L), NSOpenGLContextParameterSurfaceOpacity(236L), NSOpenGLContextParameterSurfaceBackingSize(304L), NSOpenGLContextParameterReclaimResources(308L), NSOpenGLContextParameterCurrentRendererID(309L), NSOpenGLContextParameterGPUVertexProcessing(310L), NSOpenGLContextParameterGPUFragmentProcessing(311L), NSOpenGLContextParameterHasDrawable(314L), NSOpenGLContextParameterMPSwapsInFlight(315L), NSOpenGLContextParameterSwapRectangle(200L), NSOpenGLContextParameterSwapRectangleEnable(201L), NSOpenGLContextParameterRasterizationEnable(221L), NSOpenGLContextParameterStateValidation(301L), NSOpenGLContextParameterSurfaceSurfaceVolatile(306L);
-
+@JvmInline
+value class NSOpenGLContextParameter(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSOpenGLContextParameter = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSOpenGLContextParameter value: $v")
+        val NSOpenGLContextParameterSwapInterval = NSOpenGLContextParameter(222L)
+        val NSOpenGLContextParameterSurfaceOrder = NSOpenGLContextParameter(235L)
+        val NSOpenGLContextParameterSurfaceOpacity = NSOpenGLContextParameter(236L)
+        val NSOpenGLContextParameterSurfaceBackingSize = NSOpenGLContextParameter(304L)
+        val NSOpenGLContextParameterReclaimResources = NSOpenGLContextParameter(308L)
+        val NSOpenGLContextParameterCurrentRendererID = NSOpenGLContextParameter(309L)
+        val NSOpenGLContextParameterGPUVertexProcessing = NSOpenGLContextParameter(310L)
+        val NSOpenGLContextParameterGPUFragmentProcessing = NSOpenGLContextParameter(311L)
+        val NSOpenGLContextParameterHasDrawable = NSOpenGLContextParameter(314L)
+        val NSOpenGLContextParameterMPSwapsInFlight = NSOpenGLContextParameter(315L)
+        val NSOpenGLContextParameterSwapRectangle = NSOpenGLContextParameter(200L)
+        val NSOpenGLContextParameterSwapRectangleEnable = NSOpenGLContextParameter(201L)
+        val NSOpenGLContextParameterRasterizationEnable = NSOpenGLContextParameter(221L)
+        val NSOpenGLContextParameterStateValidation = NSOpenGLContextParameter(301L)
+        val NSOpenGLContextParameterSurfaceSurfaceVolatile = NSOpenGLContextParameter(306L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSToolbarItemGroupSelectionMode}
  */
-enum class NSToolbarItemGroupSelectionMode(val value: Long) {
-    NSToolbarItemGroupSelectionModeSelectOne(0L), NSToolbarItemGroupSelectionModeSelectAny(1L), NSToolbarItemGroupSelectionModeMomentary(2L);
-
+@JvmInline
+value class NSToolbarItemGroupSelectionMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSToolbarItemGroupSelectionMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSToolbarItemGroupSelectionMode value: $v")
+        val NSToolbarItemGroupSelectionModeSelectOne = NSToolbarItemGroupSelectionMode(0L)
+        val NSToolbarItemGroupSelectionModeSelectAny = NSToolbarItemGroupSelectionMode(1L)
+        val NSToolbarItemGroupSelectionModeMomentary = NSToolbarItemGroupSelectionMode(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSToolbarItemGroupControlRepresentation}
  */
-enum class NSToolbarItemGroupControlRepresentation(val value: Long) {
-    NSToolbarItemGroupControlRepresentationAutomatic(0L), NSToolbarItemGroupControlRepresentationExpanded(1L), NSToolbarItemGroupControlRepresentationCollapsed(2L);
-
+@JvmInline
+value class NSToolbarItemGroupControlRepresentation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSToolbarItemGroupControlRepresentation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSToolbarItemGroupControlRepresentation value: $v")
+        val NSToolbarItemGroupControlRepresentationAutomatic = NSToolbarItemGroupControlRepresentation(0L)
+        val NSToolbarItemGroupControlRepresentationExpanded = NSToolbarItemGroupControlRepresentation(1L)
+        val NSToolbarItemGroupControlRepresentationCollapsed = NSToolbarItemGroupControlRepresentation(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSCharacterCollection}
  */
-enum class NSCharacterCollection(val value: Long) {
-    NSIdentityMappingCharacterCollection(0L), NSAdobeCNS1CharacterCollection(1L), NSAdobeGB1CharacterCollection(2L), NSAdobeJapan1CharacterCollection(3L), NSAdobeJapan2CharacterCollection(4L), NSAdobeKorea1CharacterCollection(5L);
-
+@JvmInline
+value class NSCharacterCollection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSCharacterCollection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSCharacterCollection value: $v")
+        val NSIdentityMappingCharacterCollection = NSCharacterCollection(0L)
+        val NSAdobeCNS1CharacterCollection = NSCharacterCollection(1L)
+        val NSAdobeGB1CharacterCollection = NSCharacterCollection(2L)
+        val NSAdobeJapan1CharacterCollection = NSCharacterCollection(3L)
+        val NSAdobeJapan2CharacterCollection = NSCharacterCollection(4L)
+        val NSAdobeKorea1CharacterCollection = NSCharacterCollection(5L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSTypesetterControlCharacterAction}
- */
-enum class NSTypesetterControlCharacterAction(val value: Long) {
-    NSTypesetterZeroAdvancementAction(1L), NSTypesetterWhitespaceAction(2L), NSTypesetterHorizontalTabAction(4L), NSTypesetterLineBreakAction(8L), NSTypesetterParagraphBreakAction(16L), NSTypesetterContainerBreakAction(32L);
-
-    companion object {
-        fun fromValue(v: Long): NSTypesetterControlCharacterAction = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTypesetterControlCharacterAction value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextBlockValueType}
  */
-enum class NSTextBlockValueType(val value: Long) {
-    NSTextBlockAbsoluteValueType(0L), NSTextBlockPercentageValueType(1L);
-
+@JvmInline
+value class NSTextBlockValueType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextBlockValueType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextBlockValueType value: $v")
+        val NSTextBlockAbsoluteValueType = NSTextBlockValueType(0L)
+        val NSTextBlockPercentageValueType = NSTextBlockValueType(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextBlockDimension}
  */
-enum class NSTextBlockDimension(val value: Long) {
-    NSTextBlockWidth(0L), NSTextBlockMinimumWidth(1L), NSTextBlockMaximumWidth(2L), NSTextBlockHeight(4L), NSTextBlockMinimumHeight(5L), NSTextBlockMaximumHeight(6L);
-
+@JvmInline
+value class NSTextBlockDimension(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextBlockDimension = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextBlockDimension value: $v")
+        val NSTextBlockWidth = NSTextBlockDimension(0L)
+        val NSTextBlockMinimumWidth = NSTextBlockDimension(1L)
+        val NSTextBlockMaximumWidth = NSTextBlockDimension(2L)
+        val NSTextBlockHeight = NSTextBlockDimension(4L)
+        val NSTextBlockMinimumHeight = NSTextBlockDimension(5L)
+        val NSTextBlockMaximumHeight = NSTextBlockDimension(6L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextBlockLayer}
  */
-enum class NSTextBlockLayer(val value: Long) {
-    NSTextBlockPadding(-1L), NSTextBlockBorder(0L), NSTextBlockMargin(1L);
-
+@JvmInline
+value class NSTextBlockLayer(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextBlockLayer = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextBlockLayer value: $v")
+        val NSTextBlockPadding = NSTextBlockLayer(-1L)
+        val NSTextBlockBorder = NSTextBlockLayer(0L)
+        val NSTextBlockMargin = NSTextBlockLayer(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextBlockVerticalAlignment}
  */
-enum class NSTextBlockVerticalAlignment(val value: Long) {
-    NSTextBlockTopAlignment(0L), NSTextBlockMiddleAlignment(1L), NSTextBlockBottomAlignment(2L), NSTextBlockBaselineAlignment(3L);
-
+@JvmInline
+value class NSTextBlockVerticalAlignment(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextBlockVerticalAlignment = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextBlockVerticalAlignment value: $v")
+        val NSTextBlockTopAlignment = NSTextBlockVerticalAlignment(0L)
+        val NSTextBlockMiddleAlignment = NSTextBlockVerticalAlignment(1L)
+        val NSTextBlockBottomAlignment = NSTextBlockVerticalAlignment(2L)
+        val NSTextBlockBaselineAlignment = NSTextBlockVerticalAlignment(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextTableLayoutAlgorithm}
  */
-enum class NSTextTableLayoutAlgorithm(val value: Long) {
-    NSTextTableAutomaticLayoutAlgorithm(0L), NSTextTableFixedLayoutAlgorithm(1L);
-
+@JvmInline
+value class NSTextTableLayoutAlgorithm(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextTableLayoutAlgorithm = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextTableLayoutAlgorithm value: $v")
+        val NSTextTableAutomaticLayoutAlgorithm = NSTextTableLayoutAlgorithm(0L)
+        val NSTextTableFixedLayoutAlgorithm = NSTextTableLayoutAlgorithm(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDatePickerStyle}
  */
-enum class NSDatePickerStyle(val value: Long) {
-    NSDatePickerStyleTextFieldAndStepper(0L), NSDatePickerStyleClockAndCalendar(1L), NSDatePickerStyleTextField(2L);
-
+@JvmInline
+value class NSDatePickerStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDatePickerStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDatePickerStyle value: $v")
+        val NSDatePickerStyleTextFieldAndStepper = NSDatePickerStyle(0L)
+        val NSDatePickerStyleClockAndCalendar = NSDatePickerStyle(1L)
+        val NSDatePickerStyleTextField = NSDatePickerStyle(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSDatePickerMode}
  */
-enum class NSDatePickerMode(val value: Long) {
-    NSDatePickerModeSingle(0L), NSDatePickerModeRange(1L);
-
+@JvmInline
+value class NSDatePickerMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSDatePickerMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSDatePickerMode value: $v")
+        val NSDatePickerModeSingle = NSDatePickerMode(0L)
+        val NSDatePickerModeRange = NSDatePickerMode(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLevelIndicatorStyle}
  */
-enum class NSLevelIndicatorStyle(val value: Long) {
-    NSLevelIndicatorStyleRelevancy(0L), NSLevelIndicatorStyleContinuousCapacity(1L), NSLevelIndicatorStyleDiscreteCapacity(2L), NSLevelIndicatorStyleRating(3L);
-
+@JvmInline
+value class NSLevelIndicatorStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLevelIndicatorStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLevelIndicatorStyle value: $v")
+        val NSLevelIndicatorStyleRelevancy = NSLevelIndicatorStyle(0L)
+        val NSLevelIndicatorStyleContinuousCapacity = NSLevelIndicatorStyle(1L)
+        val NSLevelIndicatorStyleDiscreteCapacity = NSLevelIndicatorStyle(2L)
+        val NSLevelIndicatorStyleRating = NSLevelIndicatorStyle(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSLevelIndicatorPlaceholderVisibility}
  */
-enum class NSLevelIndicatorPlaceholderVisibility(val value: Long) {
-    NSLevelIndicatorPlaceholderVisibilityAutomatic(0L), NSLevelIndicatorPlaceholderVisibilityAlways(1L), NSLevelIndicatorPlaceholderVisibilityWhileEditing(2L);
-
+@JvmInline
+value class NSLevelIndicatorPlaceholderVisibility(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSLevelIndicatorPlaceholderVisibility = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSLevelIndicatorPlaceholderVisibility value: $v")
+        val NSLevelIndicatorPlaceholderVisibilityAutomatic = NSLevelIndicatorPlaceholderVisibility(0L)
+        val NSLevelIndicatorPlaceholderVisibilityAlways = NSLevelIndicatorPlaceholderVisibility(1L)
+        val NSLevelIndicatorPlaceholderVisibilityWhileEditing = NSLevelIndicatorPlaceholderVisibility(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSRuleEditorNestingMode}
  */
-enum class NSRuleEditorNestingMode(val value: Long) {
-    NSRuleEditorNestingModeSingle(0L), NSRuleEditorNestingModeList(1L), NSRuleEditorNestingModeCompound(2L), NSRuleEditorNestingModeSimple(3L);
-
+@JvmInline
+value class NSRuleEditorNestingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRuleEditorNestingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRuleEditorNestingMode value: $v")
+        val NSRuleEditorNestingModeSingle = NSRuleEditorNestingMode(0L)
+        val NSRuleEditorNestingModeList = NSRuleEditorNestingMode(1L)
+        val NSRuleEditorNestingModeCompound = NSRuleEditorNestingMode(2L)
+        val NSRuleEditorNestingModeSimple = NSRuleEditorNestingMode(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSRuleEditorRowType}
  */
-enum class NSRuleEditorRowType(val value: Long) {
-    NSRuleEditorRowTypeSimple(0L), NSRuleEditorRowTypeCompound(1L);
-
+@JvmInline
+value class NSRuleEditorRowType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSRuleEditorRowType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSRuleEditorRowType value: $v")
+        val NSRuleEditorRowTypeSimple = NSRuleEditorRowType(0L)
+        val NSRuleEditorRowTypeCompound = NSRuleEditorRowType(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSAttributeType}
  */
-enum class NSAttributeType(val value: Long) {
-    NSUndefinedAttributeType(0L), NSInteger16AttributeType(100L), NSInteger32AttributeType(200L), NSInteger64AttributeType(300L), NSDecimalAttributeType(400L), NSDoubleAttributeType(500L), NSFloatAttributeType(600L), NSStringAttributeType(700L), NSBooleanAttributeType(800L), NSDateAttributeType(900L), NSBinaryDataAttributeType(1000L), NSUUIDAttributeType(1100L), NSURIAttributeType(1200L), NSTransformableAttributeType(1800L), NSObjectIDAttributeType(2000L), NSCompositeAttributeType(2100L);
-
+@JvmInline
+value class NSAttributeType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSAttributeType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSAttributeType value: $v")
+        val NSUndefinedAttributeType = NSAttributeType(0L)
+        val NSInteger16AttributeType = NSAttributeType(100L)
+        val NSInteger32AttributeType = NSAttributeType(200L)
+        val NSInteger64AttributeType = NSAttributeType(300L)
+        val NSDecimalAttributeType = NSAttributeType(400L)
+        val NSDoubleAttributeType = NSAttributeType(500L)
+        val NSFloatAttributeType = NSAttributeType(600L)
+        val NSStringAttributeType = NSAttributeType(700L)
+        val NSBooleanAttributeType = NSAttributeType(800L)
+        val NSDateAttributeType = NSAttributeType(900L)
+        val NSBinaryDataAttributeType = NSAttributeType(1000L)
+        val NSUUIDAttributeType = NSAttributeType(1100L)
+        val NSURIAttributeType = NSAttributeType(1200L)
+        val NSTransformableAttributeType = NSAttributeType(1800L)
+        val NSObjectIDAttributeType = NSAttributeType(2000L)
+        val NSCompositeAttributeType = NSAttributeType(2100L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPathStyle}
  */
-enum class NSPathStyle(val value: Long) {
-    NSPathStyleStandard(0L), NSPathStylePopUp(2L), NSPathStyleNavigationBar(1L);
-
+@JvmInline
+value class NSPathStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPathStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPathStyle value: $v")
+        val NSPathStyleStandard = NSPathStyle(0L)
+        val NSPathStylePopUp = NSPathStyle(2L)
+        val NSPathStyleNavigationBar = NSPathStyle(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPageControllerTransitionStyle}
  */
-enum class NSPageControllerTransitionStyle(val value: Long) {
-    NSPageControllerTransitionStyleStackHistory(0L), NSPageControllerTransitionStyleStackBook(1L), NSPageControllerTransitionStyleHorizontalStrip(2L);
-
+@JvmInline
+value class NSPageControllerTransitionStyle(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPageControllerTransitionStyle = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPageControllerTransitionStyle value: $v")
+        val NSPageControllerTransitionStyleStackHistory = NSPageControllerTransitionStyle(0L)
+        val NSPageControllerTransitionStyleStackBook = NSPageControllerTransitionStyle(1L)
+        val NSPageControllerTransitionStyleHorizontalStrip = NSPageControllerTransitionStyle(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSVisualEffectMaterial}
  */
-enum class NSVisualEffectMaterial(val value: Long) {
-    NSVisualEffectMaterialTitlebar(3L), NSVisualEffectMaterialSelection(4L), NSVisualEffectMaterialMenu(5L), NSVisualEffectMaterialPopover(6L), NSVisualEffectMaterialSidebar(7L), NSVisualEffectMaterialHeaderView(10L), NSVisualEffectMaterialSheet(11L), NSVisualEffectMaterialWindowBackground(12L), NSVisualEffectMaterialHUDWindow(13L), NSVisualEffectMaterialFullScreenUI(15L), NSVisualEffectMaterialToolTip(17L), NSVisualEffectMaterialContentBackground(18L), NSVisualEffectMaterialUnderWindowBackground(21L), NSVisualEffectMaterialUnderPageBackground(22L), NSVisualEffectMaterialAppearanceBased(0L), NSVisualEffectMaterialLight(1L), NSVisualEffectMaterialDark(2L), NSVisualEffectMaterialMediumLight(8L), NSVisualEffectMaterialUltraDark(9L);
-
+@JvmInline
+value class NSVisualEffectMaterial(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSVisualEffectMaterial = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSVisualEffectMaterial value: $v")
+        val NSVisualEffectMaterialTitlebar = NSVisualEffectMaterial(3L)
+        val NSVisualEffectMaterialSelection = NSVisualEffectMaterial(4L)
+        val NSVisualEffectMaterialMenu = NSVisualEffectMaterial(5L)
+        val NSVisualEffectMaterialPopover = NSVisualEffectMaterial(6L)
+        val NSVisualEffectMaterialSidebar = NSVisualEffectMaterial(7L)
+        val NSVisualEffectMaterialHeaderView = NSVisualEffectMaterial(10L)
+        val NSVisualEffectMaterialSheet = NSVisualEffectMaterial(11L)
+        val NSVisualEffectMaterialWindowBackground = NSVisualEffectMaterial(12L)
+        val NSVisualEffectMaterialHUDWindow = NSVisualEffectMaterial(13L)
+        val NSVisualEffectMaterialFullScreenUI = NSVisualEffectMaterial(15L)
+        val NSVisualEffectMaterialToolTip = NSVisualEffectMaterial(17L)
+        val NSVisualEffectMaterialContentBackground = NSVisualEffectMaterial(18L)
+        val NSVisualEffectMaterialUnderWindowBackground = NSVisualEffectMaterial(21L)
+        val NSVisualEffectMaterialUnderPageBackground = NSVisualEffectMaterial(22L)
+        val NSVisualEffectMaterialAppearanceBased = NSVisualEffectMaterial(0L)
+        val NSVisualEffectMaterialLight = NSVisualEffectMaterial(1L)
+        val NSVisualEffectMaterialDark = NSVisualEffectMaterial(2L)
+        val NSVisualEffectMaterialMediumLight = NSVisualEffectMaterial(8L)
+        val NSVisualEffectMaterialUltraDark = NSVisualEffectMaterial(9L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSVisualEffectBlendingMode}
  */
-enum class NSVisualEffectBlendingMode(val value: Long) {
-    NSVisualEffectBlendingModeBehindWindow(0L), NSVisualEffectBlendingModeWithinWindow(1L);
-
+@JvmInline
+value class NSVisualEffectBlendingMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSVisualEffectBlendingMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSVisualEffectBlendingMode value: $v")
+        val NSVisualEffectBlendingModeBehindWindow = NSVisualEffectBlendingMode(0L)
+        val NSVisualEffectBlendingModeWithinWindow = NSVisualEffectBlendingMode(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSVisualEffectState}
  */
-enum class NSVisualEffectState(val value: Long) {
-    NSVisualEffectStateFollowsWindowActiveState(0L), NSVisualEffectStateActive(1L), NSVisualEffectStateInactive(2L);
-
+@JvmInline
+value class NSVisualEffectState(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSVisualEffectState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSVisualEffectState value: $v")
+        val NSVisualEffectStateFollowsWindowActiveState = NSVisualEffectState(0L)
+        val NSVisualEffectStateActive = NSVisualEffectState(1L)
+        val NSVisualEffectStateInactive = NSVisualEffectState(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSHapticFeedbackPattern}
  */
-enum class NSHapticFeedbackPattern(val value: Long) {
-    NSHapticFeedbackPatternGeneric(0L), NSHapticFeedbackPatternAlignment(1L), NSHapticFeedbackPatternLevelChange(2L);
-
+@JvmInline
+value class NSHapticFeedbackPattern(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSHapticFeedbackPattern = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSHapticFeedbackPattern value: $v")
+        val NSHapticFeedbackPatternGeneric = NSHapticFeedbackPattern(0L)
+        val NSHapticFeedbackPatternAlignment = NSHapticFeedbackPattern(1L)
+        val NSHapticFeedbackPatternLevelChange = NSHapticFeedbackPattern(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSHapticFeedbackPerformanceTime}
  */
-enum class NSHapticFeedbackPerformanceTime(val value: Long) {
-    NSHapticFeedbackPerformanceTimeDefault(0L), NSHapticFeedbackPerformanceTimeNow(1L), NSHapticFeedbackPerformanceTimeDrawCompleted(2L);
-
+@JvmInline
+value class NSHapticFeedbackPerformanceTime(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSHapticFeedbackPerformanceTime = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSHapticFeedbackPerformanceTime value: $v")
+        val NSHapticFeedbackPerformanceTimeDefault = NSHapticFeedbackPerformanceTime(0L)
+        val NSHapticFeedbackPerformanceTimeNow = NSHapticFeedbackPerformanceTime(1L)
+        val NSHapticFeedbackPerformanceTimeDrawCompleted = NSHapticFeedbackPerformanceTime(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPickerTouchBarItemSelectionMode}
  */
-enum class NSPickerTouchBarItemSelectionMode(val value: Long) {
-    NSPickerTouchBarItemSelectionModeSelectOne(0L), NSPickerTouchBarItemSelectionModeSelectAny(1L), NSPickerTouchBarItemSelectionModeMomentary(2L);
-
+@JvmInline
+value class NSPickerTouchBarItemSelectionMode(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPickerTouchBarItemSelectionMode = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPickerTouchBarItemSelectionMode value: $v")
+        val NSPickerTouchBarItemSelectionModeSelectOne = NSPickerTouchBarItemSelectionMode(0L)
+        val NSPickerTouchBarItemSelectionModeSelectAny = NSPickerTouchBarItemSelectionMode(1L)
+        val NSPickerTouchBarItemSelectionModeMomentary = NSPickerTouchBarItemSelectionMode(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSPickerTouchBarItemControlRepresentation}
  */
-enum class NSPickerTouchBarItemControlRepresentation(val value: Long) {
-    NSPickerTouchBarItemControlRepresentationAutomatic(0L), NSPickerTouchBarItemControlRepresentationExpanded(1L), NSPickerTouchBarItemControlRepresentationCollapsed(2L);
-
+@JvmInline
+value class NSPickerTouchBarItemControlRepresentation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSPickerTouchBarItemControlRepresentation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSPickerTouchBarItemControlRepresentation value: $v")
+        val NSPickerTouchBarItemControlRepresentationAutomatic = NSPickerTouchBarItemControlRepresentation(0L)
+        val NSPickerTouchBarItemControlRepresentationExpanded = NSPickerTouchBarItemControlRepresentation(1L)
+        val NSPickerTouchBarItemControlRepresentationCollapsed = NSPickerTouchBarItemControlRepresentation(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextSelectionGranularity}
  */
-enum class NSTextSelectionGranularity(val value: Long) {
-    NSTextSelectionGranularityCharacter(0L), NSTextSelectionGranularityWord(1L), NSTextSelectionGranularityParagraph(2L), NSTextSelectionGranularityLine(3L), NSTextSelectionGranularitySentence(4L);
-
+@JvmInline
+value class NSTextSelectionGranularity(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextSelectionGranularity = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextSelectionGranularity value: $v")
+        val NSTextSelectionGranularityCharacter = NSTextSelectionGranularity(0L)
+        val NSTextSelectionGranularityWord = NSTextSelectionGranularity(1L)
+        val NSTextSelectionGranularityParagraph = NSTextSelectionGranularity(2L)
+        val NSTextSelectionGranularityLine = NSTextSelectionGranularity(3L)
+        val NSTextSelectionGranularitySentence = NSTextSelectionGranularity(4L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextSelectionAffinity}
  */
-enum class NSTextSelectionAffinity(val value: Long) {
-    NSTextSelectionAffinityUpstream(0L), NSTextSelectionAffinityDownstream(1L);
-
+@JvmInline
+value class NSTextSelectionAffinity(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextSelectionAffinity = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextSelectionAffinity value: $v")
+        val NSTextSelectionAffinityUpstream = NSTextSelectionAffinity(0L)
+        val NSTextSelectionAffinityDownstream = NSTextSelectionAffinity(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationDirection}
  */
-enum class NSTextSelectionNavigationDirection(val value: Long) {
-    NSTextSelectionNavigationDirectionForward(0L), NSTextSelectionNavigationDirectionBackward(1L), NSTextSelectionNavigationDirectionRight(2L), NSTextSelectionNavigationDirectionLeft(3L), NSTextSelectionNavigationDirectionUp(4L), NSTextSelectionNavigationDirectionDown(5L);
-
+@JvmInline
+value class NSTextSelectionNavigationDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextSelectionNavigationDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextSelectionNavigationDirection value: $v")
+        val NSTextSelectionNavigationDirectionForward = NSTextSelectionNavigationDirection(0L)
+        val NSTextSelectionNavigationDirectionBackward = NSTextSelectionNavigationDirection(1L)
+        val NSTextSelectionNavigationDirectionRight = NSTextSelectionNavigationDirection(2L)
+        val NSTextSelectionNavigationDirectionLeft = NSTextSelectionNavigationDirection(3L)
+        val NSTextSelectionNavigationDirectionUp = NSTextSelectionNavigationDirection(4L)
+        val NSTextSelectionNavigationDirectionDown = NSTextSelectionNavigationDirection(5L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationDestination}
  */
-enum class NSTextSelectionNavigationDestination(val value: Long) {
-    NSTextSelectionNavigationDestinationCharacter(0L), NSTextSelectionNavigationDestinationWord(1L), NSTextSelectionNavigationDestinationLine(2L), NSTextSelectionNavigationDestinationSentence(3L), NSTextSelectionNavigationDestinationParagraph(4L), NSTextSelectionNavigationDestinationContainer(5L), NSTextSelectionNavigationDestinationDocument(6L);
-
+@JvmInline
+value class NSTextSelectionNavigationDestination(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextSelectionNavigationDestination = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextSelectionNavigationDestination value: $v")
+        val NSTextSelectionNavigationDestinationCharacter = NSTextSelectionNavigationDestination(0L)
+        val NSTextSelectionNavigationDestinationWord = NSTextSelectionNavigationDestination(1L)
+        val NSTextSelectionNavigationDestinationLine = NSTextSelectionNavigationDestination(2L)
+        val NSTextSelectionNavigationDestinationSentence = NSTextSelectionNavigationDestination(3L)
+        val NSTextSelectionNavigationDestinationParagraph = NSTextSelectionNavigationDestination(4L)
+        val NSTextSelectionNavigationDestinationContainer = NSTextSelectionNavigationDestination(5L)
+        val NSTextSelectionNavigationDestinationDocument = NSTextSelectionNavigationDestination(6L)
     }
-}
 
-/**
- * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationModifier}
- */
-enum class NSTextSelectionNavigationModifier(val value: Long) {
-    NSTextSelectionNavigationModifierExtend(1L), NSTextSelectionNavigationModifierVisual(2L), NSTextSelectionNavigationModifierMultiple(4L);
-
-    companion object {
-        fun fromValue(v: Long): NSTextSelectionNavigationModifier = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextSelectionNavigationModifier value: $v")
-    }
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationWritingDirection}
  */
-enum class NSTextSelectionNavigationWritingDirection(val value: Long) {
-    NSTextSelectionNavigationWritingDirectionLeftToRight(0L), NSTextSelectionNavigationWritingDirectionRightToLeft(1L);
-
+@JvmInline
+value class NSTextSelectionNavigationWritingDirection(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextSelectionNavigationWritingDirection = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextSelectionNavigationWritingDirection value: $v")
+        val NSTextSelectionNavigationWritingDirectionLeftToRight = NSTextSelectionNavigationWritingDirection(0L)
+        val NSTextSelectionNavigationWritingDirectionRightToLeft = NSTextSelectionNavigationWritingDirection(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextSelectionNavigationLayoutOrientation}
  */
-enum class NSTextSelectionNavigationLayoutOrientation(val value: Long) {
-    NSTextSelectionNavigationLayoutOrientationHorizontal(0L), NSTextSelectionNavigationLayoutOrientationVertical(1L);
-
+@JvmInline
+value class NSTextSelectionNavigationLayoutOrientation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextSelectionNavigationLayoutOrientation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextSelectionNavigationLayoutOrientation value: $v")
+        val NSTextSelectionNavigationLayoutOrientationHorizontal = NSTextSelectionNavigationLayoutOrientation(0L)
+        val NSTextSelectionNavigationLayoutOrientationVertical = NSTextSelectionNavigationLayoutOrientation(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextLayoutFragmentState}
  */
-enum class NSTextLayoutFragmentState(val value: Long) {
-    NSTextLayoutFragmentStateNone(0L), NSTextLayoutFragmentStateEstimatedUsageBounds(1L), NSTextLayoutFragmentStateCalculatedUsageBounds(2L), NSTextLayoutFragmentStateLayoutAvailable(3L);
-
+@JvmInline
+value class NSTextLayoutFragmentState(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextLayoutFragmentState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextLayoutFragmentState value: $v")
+        val NSTextLayoutFragmentStateNone = NSTextLayoutFragmentState(0L)
+        val NSTextLayoutFragmentStateEstimatedUsageBounds = NSTextLayoutFragmentState(1L)
+        val NSTextLayoutFragmentStateCalculatedUsageBounds = NSTextLayoutFragmentState(2L)
+        val NSTextLayoutFragmentStateLayoutAvailable = NSTextLayoutFragmentState(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSTextLayoutManagerSegmentType}
  */
-enum class NSTextLayoutManagerSegmentType(val value: Long) {
-    NSTextLayoutManagerSegmentTypeStandard(0L), NSTextLayoutManagerSegmentTypeSelection(1L), NSTextLayoutManagerSegmentTypeHighlight(2L);
-
+@JvmInline
+value class NSTextLayoutManagerSegmentType(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSTextLayoutManagerSegmentType = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSTextLayoutManagerSegmentType value: $v")
+        val NSTextLayoutManagerSegmentTypeStandard = NSTextLayoutManagerSegmentType(0L)
+        val NSTextLayoutManagerSegmentTypeSelection = NSTextLayoutManagerSegmentType(1L)
+        val NSTextLayoutManagerSegmentTypeHighlight = NSTextLayoutManagerSegmentType(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorTextUpdateReason}
  */
-enum class NSWritingToolsCoordinatorTextUpdateReason(val value: Long) {
-    NSWritingToolsCoordinatorTextUpdateReasonTyping(0L), NSWritingToolsCoordinatorTextUpdateReasonUndoRedo(1L);
-
+@JvmInline
+value class NSWritingToolsCoordinatorTextUpdateReason(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWritingToolsCoordinatorTextUpdateReason = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWritingToolsCoordinatorTextUpdateReason value: $v")
+        val NSWritingToolsCoordinatorTextUpdateReasonTyping = NSWritingToolsCoordinatorTextUpdateReason(0L)
+        val NSWritingToolsCoordinatorTextUpdateReasonUndoRedo = NSWritingToolsCoordinatorTextUpdateReason(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorState}
  */
-enum class NSWritingToolsCoordinatorState(val value: Long) {
-    NSWritingToolsCoordinatorStateInactive(0L), NSWritingToolsCoordinatorStateNoninteractive(1L), NSWritingToolsCoordinatorStateInteractiveResting(2L), NSWritingToolsCoordinatorStateInteractiveStreaming(3L);
-
+@JvmInline
+value class NSWritingToolsCoordinatorState(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWritingToolsCoordinatorState = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWritingToolsCoordinatorState value: $v")
+        val NSWritingToolsCoordinatorStateInactive = NSWritingToolsCoordinatorState(0L)
+        val NSWritingToolsCoordinatorStateNoninteractive = NSWritingToolsCoordinatorState(1L)
+        val NSWritingToolsCoordinatorStateInteractiveResting = NSWritingToolsCoordinatorState(2L)
+        val NSWritingToolsCoordinatorStateInteractiveStreaming = NSWritingToolsCoordinatorState(3L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorTextReplacementReason}
  */
-enum class NSWritingToolsCoordinatorTextReplacementReason(val value: Long) {
-    NSWritingToolsCoordinatorTextReplacementReasonInteractive(0L), NSWritingToolsCoordinatorTextReplacementReasonNoninteractive(1L);
-
+@JvmInline
+value class NSWritingToolsCoordinatorTextReplacementReason(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWritingToolsCoordinatorTextReplacementReason = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWritingToolsCoordinatorTextReplacementReason value: $v")
+        val NSWritingToolsCoordinatorTextReplacementReasonInteractive = NSWritingToolsCoordinatorTextReplacementReason(0L)
+        val NSWritingToolsCoordinatorTextReplacementReasonNoninteractive = NSWritingToolsCoordinatorTextReplacementReason(1L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorContextScope}
  */
-enum class NSWritingToolsCoordinatorContextScope(val value: Long) {
-    NSWritingToolsCoordinatorContextScopeUserSelection(0L), NSWritingToolsCoordinatorContextScopeFullDocument(1L), NSWritingToolsCoordinatorContextScopeVisibleArea(2L);
-
+@JvmInline
+value class NSWritingToolsCoordinatorContextScope(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWritingToolsCoordinatorContextScope = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWritingToolsCoordinatorContextScope value: $v")
+        val NSWritingToolsCoordinatorContextScopeUserSelection = NSWritingToolsCoordinatorContextScope(0L)
+        val NSWritingToolsCoordinatorContextScopeFullDocument = NSWritingToolsCoordinatorContextScope(1L)
+        val NSWritingToolsCoordinatorContextScopeVisibleArea = NSWritingToolsCoordinatorContextScope(2L)
     }
+
 }
 
 /**
  * NS_ENUM: {@snippet lang=c : enum NSWritingToolsCoordinatorTextAnimation}
  */
-enum class NSWritingToolsCoordinatorTextAnimation(val value: Long) {
-    NSWritingToolsCoordinatorTextAnimationAnticipate(0L), NSWritingToolsCoordinatorTextAnimationRemove(1L), NSWritingToolsCoordinatorTextAnimationInsert(2L), NSWritingToolsCoordinatorTextAnimationAnticipateInactive(8L), NSWritingToolsCoordinatorTextAnimationTranslate(9L);
-
+@JvmInline
+value class NSWritingToolsCoordinatorTextAnimation(val rawValue: Long) {
     companion object {
-        fun fromValue(v: Long): NSWritingToolsCoordinatorTextAnimation = entries.firstOrNull { it.value == v }
-            ?: error("Unknown NSWritingToolsCoordinatorTextAnimation value: $v")
+        val NSWritingToolsCoordinatorTextAnimationAnticipate = NSWritingToolsCoordinatorTextAnimation(0L)
+        val NSWritingToolsCoordinatorTextAnimationRemove = NSWritingToolsCoordinatorTextAnimation(1L)
+        val NSWritingToolsCoordinatorTextAnimationInsert = NSWritingToolsCoordinatorTextAnimation(2L)
+        val NSWritingToolsCoordinatorTextAnimationAnticipateInactive = NSWritingToolsCoordinatorTextAnimation(8L)
+        val NSWritingToolsCoordinatorTextAnimationTranslate = NSWritingToolsCoordinatorTextAnimation(9L)
     }
+
 }
 
 /**

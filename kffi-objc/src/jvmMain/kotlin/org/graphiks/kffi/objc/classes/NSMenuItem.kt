@@ -177,13 +177,13 @@ open class NSMenuItem(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun setKeyEquivalent(value: String) = setKeyEquivalent(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property keyEquivalentModifierMask
-    open fun keyEquivalentModifierMask(): MemorySegment {
+    open fun keyEquivalentModifierMask(): NSEventModifierFlags {
         val sel = ObjCRuntime.sel("keyEquivalentModifierMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSEventModifierFlags(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setKeyEquivalentModifierMask(value: MemorySegment) {
+    open fun setKeyEquivalentModifierMask(value: NSEventModifierFlags) {
         val sel = ObjCRuntime.sel("setKeyEquivalentModifierMask:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property userKeyEquivalent

@@ -59,9 +59,9 @@ open class NSGarbageCollector(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, ptr)
     }
 
-    open fun zone(): MemorySegment {
+    open fun zone(): NSZonePointer {
         val sel = ObjCRuntime.sel("zone")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSZonePointer(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
 }

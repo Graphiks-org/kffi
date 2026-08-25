@@ -170,9 +170,9 @@ open class NSUserNotification(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property activationType
-    open fun activationType(): MemorySegment {
+    open fun activationType(): NSUserNotificationActivationType {
         val sel = ObjCRuntime.sel("activationType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSUserNotificationActivationType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property otherButtonTitle

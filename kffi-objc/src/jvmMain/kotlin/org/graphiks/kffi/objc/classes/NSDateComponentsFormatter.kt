@@ -12,13 +12,13 @@ open class NSDateComponentsFormatter(override val ptr: MemorySegment) : NSFormat
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDateComponentsFormatter") }
 
-        fun localizedStringFromDateComponents_unitsStyle(components: MemorySegment, unitsStyle: MemorySegment): MemorySegment {
+        fun localizedStringFromDateComponents_unitsStyle(components: MemorySegment, unitsStyle: NSDateComponentsFormatterUnitsStyle): MemorySegment {
             val sel = ObjCRuntime.sel("localizedStringFromDateComponents:unitsStyle:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, components, unitsStyle) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, components, unitsStyle.rawValue) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-        fun localizedStringFromDateComponents_unitsStyleAsString(components: MemorySegment, unitsStyle: MemorySegment): String = ObjCRuntime.toJavaString(localizedStringFromDateComponents_unitsStyle(components, unitsStyle))
+        fun localizedStringFromDateComponents_unitsStyleAsString(components: MemorySegment, unitsStyle: NSDateComponentsFormatterUnitsStyle): String = ObjCRuntime.toJavaString(localizedStringFromDateComponents_unitsStyle(components, unitsStyle))
 
     }
 
@@ -57,33 +57,33 @@ open class NSDateComponentsFormatter(override val ptr: MemorySegment) : NSFormat
     }
 
     // @property unitsStyle
-    open fun unitsStyle(): MemorySegment {
+    open fun unitsStyle(): NSDateComponentsFormatterUnitsStyle {
         val sel = ObjCRuntime.sel("unitsStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDateComponentsFormatterUnitsStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setUnitsStyle(value: MemorySegment) {
+    open fun setUnitsStyle(value: NSDateComponentsFormatterUnitsStyle) {
         val sel = ObjCRuntime.sel("setUnitsStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowedUnits
-    open fun allowedUnits(): MemorySegment {
+    open fun allowedUnits(): NSCalendarUnit {
         val sel = ObjCRuntime.sel("allowedUnits")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCalendarUnit(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAllowedUnits(value: MemorySegment) {
+    open fun setAllowedUnits(value: NSCalendarUnit) {
         val sel = ObjCRuntime.sel("setAllowedUnits:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property zeroFormattingBehavior
-    open fun zeroFormattingBehavior(): MemorySegment {
+    open fun zeroFormattingBehavior(): NSDateComponentsFormatterZeroFormattingBehavior {
         val sel = ObjCRuntime.sel("zeroFormattingBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDateComponentsFormatterZeroFormattingBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setZeroFormattingBehavior(value: MemorySegment) {
+    open fun setZeroFormattingBehavior(value: NSDateComponentsFormatterZeroFormattingBehavior) {
         val sel = ObjCRuntime.sel("setZeroFormattingBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property calendar
@@ -157,13 +157,13 @@ open class NSDateComponentsFormatter(override val ptr: MemorySegment) : NSFormat
     }
 
     // @property formattingContext
-    open fun formattingContext(): MemorySegment {
+    open fun formattingContext(): NSFormattingContext {
         val sel = ObjCRuntime.sel("formattingContext")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSFormattingContext(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setFormattingContext(value: MemorySegment) {
+    open fun setFormattingContext(value: NSFormattingContext) {
         val sel = ObjCRuntime.sel("setFormattingContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

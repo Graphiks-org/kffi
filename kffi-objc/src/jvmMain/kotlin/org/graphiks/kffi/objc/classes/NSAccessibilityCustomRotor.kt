@@ -22,19 +22,19 @@ open class NSAccessibilityCustomRotor(override val ptr: MemorySegment) : NSObjec
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun initWithLabel_itemSearchDelegate(label: String, itemSearchDelegate: MemorySegment): MemorySegment = initWithLabel_itemSearchDelegate(ObjCRuntime.newNSString(Arena.global(), label), itemSearchDelegate)
 
-    open fun initWithRotorType_itemSearchDelegate(rotorType: MemorySegment, itemSearchDelegate: MemorySegment): MemorySegment {
+    open fun initWithRotorType_itemSearchDelegate(rotorType: NSAccessibilityCustomRotorType, itemSearchDelegate: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithRotorType:itemSearchDelegate:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, rotorType, itemSearchDelegate) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, rotorType.rawValue, itemSearchDelegate) as MemorySegment
     }
 
     // @property type
-    open fun type(): MemorySegment {
+    open fun type(): NSAccessibilityCustomRotorType {
         val sel = ObjCRuntime.sel("type")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSAccessibilityCustomRotorType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setType(value: MemorySegment) {
+    open fun setType(value: NSAccessibilityCustomRotorType) {
         val sel = ObjCRuntime.sel("setType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property label

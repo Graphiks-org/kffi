@@ -22,9 +22,9 @@ open class NSGraphicsContext(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, bitmapRep) as MemorySegment
         }
 
-        fun graphicsContextWithCGContext_flipped(graphicsPort: MemorySegment, initialFlippedState: Boolean): MemorySegment {
+        fun graphicsContextWithCGContext_flipped(graphicsPort: CGContextRef, initialFlippedState: Boolean): MemorySegment {
             val sel = ObjCRuntime.sel("graphicsContextWithCGContext:flipped:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, graphicsPort, initialFlippedState) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, graphicsPort.segment, initialFlippedState) as MemorySegment
         }
 
         fun currentContextDrawingToScreen(): Boolean {
@@ -93,9 +93,9 @@ open class NSGraphicsContext(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property CGContext
-    open fun CGContext(): MemorySegment {
+    open fun CGContext(): CGContextRef {
         val sel = ObjCRuntime.sel("CGContext")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGContextRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     // @property flipped
@@ -118,44 +118,44 @@ fun NSGraphicsContext.setShouldAntialias(shouldAntialias: Boolean): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, shouldAntialias)
 }
 
-fun NSGraphicsContext.imageInterpolation(): MemorySegment {
+fun NSGraphicsContext.imageInterpolation(): NSImageInterpolation {
     val sel = ObjCRuntime.sel("imageInterpolation")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSImageInterpolation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSGraphicsContext.setImageInterpolation(imageInterpolation: MemorySegment): Unit {
+fun NSGraphicsContext.setImageInterpolation(imageInterpolation: NSImageInterpolation): Unit {
     val sel = ObjCRuntime.sel("setImageInterpolation:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, imageInterpolation)
+    ObjCRuntime.msgSend(null, this.ptr, sel, imageInterpolation.rawValue)
 }
 
-fun NSGraphicsContext.patternPhase(): MemorySegment {
+fun NSGraphicsContext.patternPhase(): NSPoint {
     val sel = ObjCRuntime.sel("patternPhase")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel))
 }
 
-fun NSGraphicsContext.setPatternPhase(patternPhase: MemorySegment): Unit {
+fun NSGraphicsContext.setPatternPhase(patternPhase: NSPoint): Unit {
     val sel = ObjCRuntime.sel("setPatternPhase:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, patternPhase)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(patternPhase.segment, NSPoint.layout))
 }
 
-fun NSGraphicsContext.compositingOperation(): MemorySegment {
+fun NSGraphicsContext.compositingOperation(): NSCompositingOperation {
     val sel = ObjCRuntime.sel("compositingOperation")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSCompositingOperation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSGraphicsContext.setCompositingOperation(compositingOperation: MemorySegment): Unit {
+fun NSGraphicsContext.setCompositingOperation(compositingOperation: NSCompositingOperation): Unit {
     val sel = ObjCRuntime.sel("setCompositingOperation:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, compositingOperation)
+    ObjCRuntime.msgSend(null, this.ptr, sel, compositingOperation.rawValue)
 }
 
-fun NSGraphicsContext.colorRenderingIntent(): MemorySegment {
+fun NSGraphicsContext.colorRenderingIntent(): NSColorRenderingIntent {
     val sel = ObjCRuntime.sel("colorRenderingIntent")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSColorRenderingIntent(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSGraphicsContext.setColorRenderingIntent(colorRenderingIntent: MemorySegment): Unit {
+fun NSGraphicsContext.setColorRenderingIntent(colorRenderingIntent: NSColorRenderingIntent): Unit {
     val sel = ObjCRuntime.sel("setColorRenderingIntent:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, colorRenderingIntent)
+    ObjCRuntime.msgSend(null, this.ptr, sel, colorRenderingIntent.rawValue)
 }
 
 // ── Category: NSQuartzCoreAdditions on NSGraphicsContext ─────────────────────────────────────────

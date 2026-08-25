@@ -13,7 +13,7 @@ interface NSPasteboardWriting {
     fun writableTypesForPasteboard(pasteboard: MemorySegment): MemorySegment
 
     // @optional
-    fun writingOptionsForType_pasteboard(type: MemorySegment, pasteboard: MemorySegment): MemorySegment =
+    fun writingOptionsForType_pasteboard(type: MemorySegment, pasteboard: MemorySegment): NSPasteboardWritingOptions =
         throw UnsupportedOperationException("Optional ObjC method 'writingOptionsForType:pasteboard:' not implemented")
 
     fun pasteboardPropertyListForType(type: MemorySegment): MemorySegment

@@ -54,24 +54,24 @@ open class NSStackView(override val ptr: MemorySegment) : NSView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, ptr, sel, view) as Float
     }
 
-    open fun clippingResistancePriorityForOrientation(orientation: MemorySegment): Float {
+    open fun clippingResistancePriorityForOrientation(orientation: NSLayoutConstraintOrientation): Float {
         val sel = ObjCRuntime.sel("clippingResistancePriorityForOrientation:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, ptr, sel, orientation) as Float
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, ptr, sel, orientation.rawValue) as Float
     }
 
-    open fun setClippingResistancePriority_forOrientation(clippingResistancePriority: Float, orientation: MemorySegment): Unit {
+    open fun setClippingResistancePriority_forOrientation(clippingResistancePriority: Float, orientation: NSLayoutConstraintOrientation): Unit {
         val sel = ObjCRuntime.sel("setClippingResistancePriority:forOrientation:")
-        ObjCRuntime.msgSend(null, ptr, sel, clippingResistancePriority, orientation)
+        ObjCRuntime.msgSend(null, ptr, sel, clippingResistancePriority, orientation.rawValue)
     }
 
-    open fun huggingPriorityForOrientation(orientation: MemorySegment): Float {
+    open fun huggingPriorityForOrientation(orientation: NSLayoutConstraintOrientation): Float {
         val sel = ObjCRuntime.sel("huggingPriorityForOrientation:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, ptr, sel, orientation) as Float
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, ptr, sel, orientation.rawValue) as Float
     }
 
-    open fun setHuggingPriority_forOrientation(huggingPriority: Float, orientation: MemorySegment): Unit {
+    open fun setHuggingPriority_forOrientation(huggingPriority: Float, orientation: NSLayoutConstraintOrientation): Unit {
         val sel = ObjCRuntime.sel("setHuggingPriority:forOrientation:")
-        ObjCRuntime.msgSend(null, ptr, sel, huggingPriority, orientation)
+        ObjCRuntime.msgSend(null, ptr, sel, huggingPriority, orientation.rawValue)
     }
 
     // @property delegate
@@ -86,43 +86,43 @@ open class NSStackView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property orientation
-    open fun orientation(): MemorySegment {
+    open fun orientation(): NSUserInterfaceLayoutOrientation {
         val sel = ObjCRuntime.sel("orientation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSUserInterfaceLayoutOrientation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setOrientation(value: MemorySegment) {
+    open fun setOrientation(value: NSUserInterfaceLayoutOrientation) {
         val sel = ObjCRuntime.sel("setOrientation:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property alignment
-    open fun alignment(): MemorySegment {
+    open fun alignment(): NSLayoutAttribute {
         val sel = ObjCRuntime.sel("alignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLayoutAttribute(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAlignment(value: MemorySegment) {
+    open fun setAlignment(value: NSLayoutAttribute) {
         val sel = ObjCRuntime.sel("setAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property edgeInsets
-    open fun edgeInsets(): MemorySegment {
+    open fun edgeInsets(): NSEdgeInsets {
         val sel = ObjCRuntime.sel("edgeInsets")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), ptr, sel) as MemorySegment
+        return NSEdgeInsets(ObjCRuntime.msgSendStruct(NSEdgeInsets.layout, ptr, sel))
     }
-    open fun setEdgeInsets(value: MemorySegment) {
+    open fun setEdgeInsets(value: NSEdgeInsets) {
         val sel = ObjCRuntime.sel("setEdgeInsets:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSEdgeInsets.layout))
     }
 
     // @property distribution
-    open fun distribution(): MemorySegment {
+    open fun distribution(): NSStackViewDistribution {
         val sel = ObjCRuntime.sel("distribution")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSStackViewDistribution(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDistribution(value: MemorySegment) {
+    open fun setDistribution(value: NSStackViewDistribution) {
         val sel = ObjCRuntime.sel("setDistribution:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property spacing
@@ -163,14 +163,14 @@ open class NSStackView(override val ptr: MemorySegment) : NSView(ptr) {
 
 // ── Category: NSStackViewGravityAreas on NSStackView ─────────────────────────────────────────
 
-fun NSStackView.addView_inGravity(view: MemorySegment, gravity: MemorySegment): Unit {
+fun NSStackView.addView_inGravity(view: MemorySegment, gravity: NSStackViewGravity): Unit {
     val sel = ObjCRuntime.sel("addView:inGravity:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, view, gravity)
+    ObjCRuntime.msgSend(null, this.ptr, sel, view, gravity.rawValue)
 }
 
-fun NSStackView.insertView_atIndex_inGravity(view: MemorySegment, index: Long, gravity: MemorySegment): Unit {
+fun NSStackView.insertView_atIndex_inGravity(view: MemorySegment, index: Long, gravity: NSStackViewGravity): Unit {
     val sel = ObjCRuntime.sel("insertView:atIndex:inGravity:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, view, index, gravity)
+    ObjCRuntime.msgSend(null, this.ptr, sel, view, index, gravity.rawValue)
 }
 
 fun NSStackView.removeView(view: MemorySegment): Unit {
@@ -179,14 +179,14 @@ fun NSStackView.removeView(view: MemorySegment): Unit {
 }
 
 /** @return NSArray<__kindof NSView *> * */
-fun NSStackView.viewsInGravity(gravity: MemorySegment): MemorySegment {
+fun NSStackView.viewsInGravity(gravity: NSStackViewGravity): MemorySegment {
     val sel = ObjCRuntime.sel("viewsInGravity:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, gravity) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, gravity.rawValue) as MemorySegment
 }
 
-fun NSStackView.setViews_inGravity(views: MemorySegment, gravity: MemorySegment): Unit {
+fun NSStackView.setViews_inGravity(views: MemorySegment, gravity: NSStackViewGravity): Unit {
     val sel = ObjCRuntime.sel("setViews:inGravity:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, views, gravity)
+    ObjCRuntime.msgSend(null, this.ptr, sel, views, gravity.rawValue)
 }
 
 /** @return NSArray<__kindof NSView *> * */

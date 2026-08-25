@@ -167,7 +167,7 @@ fun NSScanner_localizedScannerWithString(string: MemorySegment): MemorySegment {
 
 // ── Category: NSDecimalNumberScanning on NSScanner ─────────────────────────────────────────
 
-fun NSScanner.scanDecimal(dcm: MemorySegment): Boolean {
+fun NSScanner.scanDecimal(dcm: NSDecimalPointer): Boolean {
     val sel = ObjCRuntime.sel("scanDecimal:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, dcm) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, dcm.segment) as Boolean
 }

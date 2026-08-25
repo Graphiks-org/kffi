@@ -62,14 +62,14 @@ open class NSSpeechSynthesizer(override val ptr: MemorySegment) : NSObject(ptr) 
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun stopSpeakingAtBoundary(boundary: MemorySegment): Unit {
+    open fun stopSpeakingAtBoundary(boundary: NSSpeechBoundary): Unit {
         val sel = ObjCRuntime.sel("stopSpeakingAtBoundary:")
-        ObjCRuntime.msgSend(null, ptr, sel, boundary)
+        ObjCRuntime.msgSend(null, ptr, sel, boundary.rawValue)
     }
 
-    open fun pauseSpeakingAtBoundary(boundary: MemorySegment): Unit {
+    open fun pauseSpeakingAtBoundary(boundary: NSSpeechBoundary): Unit {
         val sel = ObjCRuntime.sel("pauseSpeakingAtBoundary:")
-        ObjCRuntime.msgSend(null, ptr, sel, boundary)
+        ObjCRuntime.msgSend(null, ptr, sel, boundary.rawValue)
     }
 
     open fun continueSpeaking(): Unit {

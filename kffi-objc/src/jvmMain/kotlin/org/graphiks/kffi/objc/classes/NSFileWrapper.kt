@@ -15,9 +15,9 @@ open class NSFileWrapper(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithURL_options_error(url: MemorySegment, options: MemorySegment, outError: MemorySegment): MemorySegment {
+    open fun initWithURL_options_error(url: MemorySegment, options: NSFileWrapperReadingOptions, outError: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithURL:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, options, outError) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, options.rawValue, outError) as MemorySegment
     }
 
     open fun initDirectoryWithFileWrappers(childrenByPreferredName: MemorySegment): MemorySegment {
@@ -50,14 +50,14 @@ open class NSFileWrapper(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url) as Boolean
     }
 
-    open fun readFromURL_options_error(url: MemorySegment, options: MemorySegment, outError: MemorySegment): Boolean {
+    open fun readFromURL_options_error(url: MemorySegment, options: NSFileWrapperReadingOptions, outError: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("readFromURL:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, options, outError) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, options.rawValue, outError) as Boolean
     }
 
-    open fun writeToURL_options_originalContentsURL_error(url: MemorySegment, options: MemorySegment, originalContentsURL: MemorySegment, outError: MemorySegment): Boolean {
+    open fun writeToURL_options_originalContentsURL_error(url: MemorySegment, options: NSFileWrapperWritingOptions, originalContentsURL: MemorySegment, outError: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("writeToURL:options:originalContentsURL:error:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, options, originalContentsURL, outError) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, options.rawValue, originalContentsURL, outError) as Boolean
     }
 
     open fun addFileWrapper(child: MemorySegment): MemorySegment {

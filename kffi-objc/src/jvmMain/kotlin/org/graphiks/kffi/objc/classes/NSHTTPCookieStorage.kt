@@ -73,13 +73,13 @@ open class NSHTTPCookieStorage(override val ptr: MemorySegment) : NSObject(ptr) 
     }
 
     // @property cookieAcceptPolicy
-    open fun cookieAcceptPolicy(): MemorySegment {
+    open fun cookieAcceptPolicy(): NSHTTPCookieAcceptPolicy {
         val sel = ObjCRuntime.sel("cookieAcceptPolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSHTTPCookieAcceptPolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setCookieAcceptPolicy(value: MemorySegment) {
+    open fun setCookieAcceptPolicy(value: NSHTTPCookieAcceptPolicy) {
         val sel = ObjCRuntime.sel("setCookieAcceptPolicy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 

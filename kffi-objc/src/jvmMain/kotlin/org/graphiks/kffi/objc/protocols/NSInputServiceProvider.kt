@@ -14,7 +14,7 @@ interface NSInputServiceProvider {
 
     fun markedTextAbandoned(sender: MemorySegment): Unit
 
-    fun markedTextSelectionChanged_client(newSel: MemorySegment, sender: MemorySegment): Unit
+    fun markedTextSelectionChanged_client(newSel: NSRange, sender: MemorySegment): Unit
 
     fun terminate(sender: MemorySegment): Unit
 

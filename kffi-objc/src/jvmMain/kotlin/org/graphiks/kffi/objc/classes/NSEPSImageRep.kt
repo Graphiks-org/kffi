@@ -30,9 +30,9 @@ open class NSEPSImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
     }
 
     // @property boundingBox
-    open fun boundingBox(): MemorySegment {
+    open fun boundingBox(): NSRect {
         val sel = ObjCRuntime.sel("boundingBox")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property EPSRepresentation

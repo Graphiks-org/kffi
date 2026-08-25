@@ -18,7 +18,7 @@ interface NSPageControllerDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'pageController:viewControllerForIdentifier:' not implemented")
 
     // @optional
-    fun pageController_frameForObject(pageController: MemorySegment, `object`: MemorySegment): MemorySegment =
+    fun pageController_frameForObject(pageController: MemorySegment, `object`: MemorySegment): NSRect =
         throw UnsupportedOperationException("Optional ObjC method 'pageController:frameForObject:' not implemented")
 
     // @optional

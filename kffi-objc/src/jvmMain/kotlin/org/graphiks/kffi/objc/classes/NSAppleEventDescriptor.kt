@@ -111,9 +111,9 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
 
     }
 
-    open fun initWithAEDescNoCopy(aeDesc: MemorySegment): MemorySegment {
+    open fun initWithAEDescNoCopy(aeDesc: AEDescPointer): MemorySegment {
         val sel = ObjCRuntime.sel("initWithAEDescNoCopy:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, aeDesc) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, aeDesc.segment) as MemorySegment
     }
 
     open fun initWithDescriptorType_bytes_length(descriptorType: Int, bytes: MemorySegment, byteCount: Long): MemorySegment {
@@ -166,9 +166,9 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, keyword) as MemorySegment
     }
 
-    open fun sendEventWithOptions_timeout_error(sendOptions: MemorySegment, timeoutInSeconds: Double, error: MemorySegment): MemorySegment {
+    open fun sendEventWithOptions_timeout_error(sendOptions: NSAppleEventSendOptions, timeoutInSeconds: Double, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("sendEventWithOptions:timeout:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, sendOptions, timeoutInSeconds, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, sendOptions.rawValue, timeoutInSeconds, error) as MemorySegment
     }
 
     open fun insertDescriptor_atIndex(descriptor: MemorySegment, index: Long): Unit {
@@ -212,9 +212,9 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
     }
 
     // @property aeDesc
-    open fun aeDesc(): MemorySegment {
+    open fun aeDesc(): AEDescPointer {
         val sel = ObjCRuntime.sel("aeDesc")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return AEDescPointer(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     // @property descriptorType

@@ -34,9 +34,9 @@ open class NSTextAttachmentViewProvider(override val ptr: MemorySegment) : NSObj
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun attachmentBoundsForAttributes_location_textContainer_proposedLineFragment_position(attributes: MemorySegment, location: MemorySegment, textContainer: MemorySegment, proposedLineFragment: MemorySegment, position: MemorySegment): MemorySegment {
+    open fun attachmentBoundsForAttributes_location_textContainer_proposedLineFragment_position(attributes: MemorySegment, location: MemorySegment, textContainer: MemorySegment, proposedLineFragment: CGRect, position: CGPoint): CGRect {
         val sel = ObjCRuntime.sel("attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, attributes, location, textContainer, ObjCRuntime.ObjCStructArg(proposedLineFragment, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), ObjCRuntime.ObjCStructArg(position, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel, attributes, location, textContainer, ObjCRuntime.ObjCStructArg(proposedLineFragment.segment, CGRect.layout), ObjCRuntime.ObjCStructArg(position.segment, CGPoint.layout)))
     }
 
     // @property textAttachment

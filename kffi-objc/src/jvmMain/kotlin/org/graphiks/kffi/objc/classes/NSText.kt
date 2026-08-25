@@ -15,9 +15,9 @@ open class NSText(override val ptr: MemorySegment) : NSView(ptr) {
 
     }
 
-    override fun initWithFrame(frameRect: MemorySegment): MemorySegment {
+    override fun initWithFrame(frameRect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout)) as MemorySegment
     }
 
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -25,32 +25,32 @@ open class NSText(override val ptr: MemorySegment) : NSView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun replaceCharactersInRange_withString(range: MemorySegment, string: MemorySegment): Unit {
+    open fun replaceCharactersInRange_withString(range: NSRange, string: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("replaceCharactersInRange:withString:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), string)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), string)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun replaceCharactersInRange_withString(range: MemorySegment, string: String): Unit = replaceCharactersInRange_withString(range, ObjCRuntime.newNSString(Arena.global(), string))
+    fun replaceCharactersInRange_withString(range: NSRange, string: String): Unit = replaceCharactersInRange_withString(range, ObjCRuntime.newNSString(Arena.global(), string))
 
-    open fun replaceCharactersInRange_withRTF(range: MemorySegment, rtfData: MemorySegment): Unit {
+    open fun replaceCharactersInRange_withRTF(range: NSRange, rtfData: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("replaceCharactersInRange:withRTF:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), rtfData)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), rtfData)
     }
 
-    open fun replaceCharactersInRange_withRTFD(range: MemorySegment, rtfdData: MemorySegment): Unit {
+    open fun replaceCharactersInRange_withRTFD(range: NSRange, rtfdData: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("replaceCharactersInRange:withRTFD:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), rtfdData)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), rtfdData)
     }
 
-    open fun RTFFromRange(range: MemorySegment): MemorySegment {
+    open fun RTFFromRange(range: NSRange): MemorySegment {
         val sel = ObjCRuntime.sel("RTFFromRange:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
     }
 
-    open fun RTFDFromRange(range: MemorySegment): MemorySegment {
+    open fun RTFDFromRange(range: NSRange): MemorySegment {
         val sel = ObjCRuntime.sel("RTFDFromRange:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
     }
 
     open fun writeRTFDToFile_atomically(path: MemorySegment, flag: Boolean): Boolean {
@@ -69,19 +69,19 @@ open class NSText(override val ptr: MemorySegment) : NSView(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun readRTFDFromFile(path: String): Boolean = readRTFDFromFile(ObjCRuntime.newNSString(Arena.global(), path))
 
-    open fun scrollRangeToVisible(range: MemorySegment): Unit {
+    open fun scrollRangeToVisible(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("scrollRangeToVisible:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
-    open fun setTextColor_range(color: MemorySegment, range: MemorySegment): Unit {
+    open fun setTextColor_range(color: MemorySegment, range: NSRange): Unit {
         val sel = ObjCRuntime.sel("setTextColor:range:")
-        ObjCRuntime.msgSend(null, ptr, sel, color, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, color, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
-    open fun setFont_range(font: MemorySegment, range: MemorySegment): Unit {
+    open fun setFont_range(font: MemorySegment, range: NSRange): Unit {
         val sel = ObjCRuntime.sel("setFont:range:")
-        ObjCRuntime.msgSend(null, ptr, sel, font, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, font, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
     open fun sizeToFit(): Unit {
@@ -303,13 +303,13 @@ open class NSText(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property selectedRange
-    open fun selectedRange(): MemorySegment {
+    open fun selectedRange(): NSRange {
         val sel = ObjCRuntime.sel("selectedRange")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
-    open fun setSelectedRange(value: MemorySegment) {
+    open fun setSelectedRange(value: NSRange) {
         val sel = ObjCRuntime.sel("setSelectedRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSRange.layout))
     }
 
     // @property font
@@ -333,43 +333,43 @@ open class NSText(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property alignment
-    open fun alignment(): MemorySegment {
+    open fun alignment(): NSTextAlignment {
         val sel = ObjCRuntime.sel("alignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAlignment(value: MemorySegment) {
+    open fun setAlignment(value: NSTextAlignment) {
         val sel = ObjCRuntime.sel("setAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property baseWritingDirection
-    open fun baseWritingDirection(): MemorySegment {
+    open fun baseWritingDirection(): NSWritingDirection {
         val sel = ObjCRuntime.sel("baseWritingDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBaseWritingDirection(value: MemorySegment) {
+    open fun setBaseWritingDirection(value: NSWritingDirection) {
         val sel = ObjCRuntime.sel("setBaseWritingDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property maxSize
-    open fun maxSize(): MemorySegment {
+    open fun maxSize(): NSSize {
         val sel = ObjCRuntime.sel("maxSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setMaxSize(value: MemorySegment) {
+    open fun setMaxSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMaxSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property minSize
-    open fun minSize(): MemorySegment {
+    open fun minSize(): NSSize {
         val sel = ObjCRuntime.sel("minSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setMinSize(value: MemorySegment) {
+    open fun setMinSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMinSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property horizontallyResizable

@@ -41,9 +41,9 @@ open class NSTextLayoutManager(override val ptr: MemorySegment) : NSObject(ptr) 
         ObjCRuntime.msgSend(null, ptr, sel, range)
     }
 
-    open fun ensureLayoutForBounds(bounds: MemorySegment): Unit {
+    open fun ensureLayoutForBounds(bounds: CGRect): Unit {
         val sel = ObjCRuntime.sel("ensureLayoutForBounds:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(bounds, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(bounds.segment, CGRect.layout))
     }
 
     open fun invalidateLayoutForRange(range: MemorySegment): Unit {
@@ -51,9 +51,9 @@ open class NSTextLayoutManager(override val ptr: MemorySegment) : NSObject(ptr) 
         ObjCRuntime.msgSend(null, ptr, sel, range)
     }
 
-    open fun textLayoutFragmentForPosition(position: MemorySegment): MemorySegment {
+    open fun textLayoutFragmentForPosition(position: CGPoint): MemorySegment {
         val sel = ObjCRuntime.sel("textLayoutFragmentForPosition:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(position, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(position.segment, CGPoint.layout)) as MemorySegment
     }
 
     open fun textLayoutFragmentForLocation(location: MemorySegment): MemorySegment {
@@ -62,9 +62,9 @@ open class NSTextLayoutManager(override val ptr: MemorySegment) : NSObject(ptr) 
     }
 
     /** @return id<NSTextLocation> */
-    open fun enumerateTextLayoutFragmentsFromLocation_options_usingBlock(location: MemorySegment, options: MemorySegment, block: MemorySegment): MemorySegment {
+    open fun enumerateTextLayoutFragmentsFromLocation_options_usingBlock(location: MemorySegment, options: NSTextLayoutFragmentEnumerationOptions, block: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("enumerateTextLayoutFragmentsFromLocation:options:usingBlock:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, location, options, block) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, location, options.rawValue, block) as MemorySegment
     }
 
     open fun enumerateRenderingAttributesFromLocation_reverse_usingBlock(location: MemorySegment, reverse: Boolean, block: MemorySegment): Unit {
@@ -98,9 +98,9 @@ open class NSTextLayoutManager(override val ptr: MemorySegment) : NSObject(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, link, location) as MemorySegment
     }
 
-    open fun enumerateTextSegmentsInRange_type_options_usingBlock(textRange: MemorySegment, type: MemorySegment, options: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateTextSegmentsInRange_type_options_usingBlock(textRange: MemorySegment, type: NSTextLayoutManagerSegmentType, options: NSTextLayoutManagerSegmentOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateTextSegmentsInRange:type:options:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, textRange, type, options, block)
+        ObjCRuntime.msgSend(null, ptr, sel, textRange, type.rawValue, options.rawValue, block)
     }
 
     open fun replaceContentsInRange_withTextElements(range: MemorySegment, textElements: MemorySegment): Unit {
@@ -181,9 +181,9 @@ open class NSTextLayoutManager(override val ptr: MemorySegment) : NSObject(ptr) 
     }
 
     // @property usageBoundsForTextContainer
-    open fun usageBoundsForTextContainer(): MemorySegment {
+    open fun usageBoundsForTextContainer(): CGRect {
         val sel = ObjCRuntime.sel("usageBoundsForTextContainer")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
 
     // @property textViewportLayoutController

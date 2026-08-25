@@ -23,6 +23,10 @@ fun CGPathAddEllipseInRect(arg0: MemorySegment, arg1: MemorySegment, arg2: Memor
     }
 }
 
+fun CGPathAddEllipseInRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect): Unit {
+    CGPathAddEllipseInRect(arg0, arg1, arg2.segment)
+}
+
 /**
  * {@snippet lang=c : CGPathAddRelativeArc Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -156,6 +160,10 @@ fun CGPathGetCurrentPoint(allocator: SegmentAllocator, arg0: MemorySegment): Mem
     }
 }
 
+fun CGPathGetCurrentPointTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGPoint {
+    return CGPoint(CGPathGetCurrentPoint(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGPathGetBoundingBox typedef CGRect = Declared(CGRect)(typedef CGPathRef = (Declared(CGPath))*)
  */
@@ -173,6 +181,10 @@ fun CGPathGetBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment): Memo
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPathGetBoundingBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
+    return CGRect(CGPathGetBoundingBox(allocator, arg0))
 }
 
 /**
@@ -194,6 +206,10 @@ fun CGPathGetPathBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment): 
     }
 }
 
+fun CGPathGetPathBoundingBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
+    return CGRect(CGPathGetPathBoundingBox(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGPathContainsPoint Bool(typedef CGPathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGPoint = Declared(CGPoint),Bool)
  */
@@ -211,6 +227,10 @@ fun CGPathContainsPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySe
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPathContainsPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: CGPoint, arg3: Boolean): Boolean {
+    return CGPathContainsPoint(arg0, arg1, arg2.segment, arg3)
 }
 
 /**
@@ -1530,6 +1550,10 @@ fun CGPDFDocumentGetMediaBox(allocator: SegmentAllocator, arg0: MemorySegment, a
     }
 }
 
+fun CGPDFDocumentGetMediaBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
+    return CGRect(CGPDFDocumentGetMediaBox(allocator, arg0, arg1))
+}
+
 /**
  * {@snippet lang=c : CGPDFDocumentGetCropBox typedef CGRect = Declared(CGRect)(typedef CGPDFDocumentRef = (Declared(CGPDFDocument))*,Int)
  */
@@ -1547,6 +1571,10 @@ fun CGPDFDocumentGetCropBox(allocator: SegmentAllocator, arg0: MemorySegment, ar
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPDFDocumentGetCropBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
+    return CGRect(CGPDFDocumentGetCropBox(allocator, arg0, arg1))
 }
 
 /**
@@ -1568,6 +1596,10 @@ fun CGPDFDocumentGetBleedBox(allocator: SegmentAllocator, arg0: MemorySegment, a
     }
 }
 
+fun CGPDFDocumentGetBleedBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
+    return CGRect(CGPDFDocumentGetBleedBox(allocator, arg0, arg1))
+}
+
 /**
  * {@snippet lang=c : CGPDFDocumentGetTrimBox typedef CGRect = Declared(CGRect)(typedef CGPDFDocumentRef = (Declared(CGPDFDocument))*,Int)
  */
@@ -1587,6 +1619,10 @@ fun CGPDFDocumentGetTrimBox(allocator: SegmentAllocator, arg0: MemorySegment, ar
     }
 }
 
+fun CGPDFDocumentGetTrimBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
+    return CGRect(CGPDFDocumentGetTrimBox(allocator, arg0, arg1))
+}
+
 /**
  * {@snippet lang=c : CGPDFDocumentGetArtBox typedef CGRect = Declared(CGRect)(typedef CGPDFDocumentRef = (Declared(CGPDFDocument))*,Int)
  */
@@ -1604,6 +1640,10 @@ fun CGPDFDocumentGetArtBox(allocator: SegmentAllocator, arg0: MemorySegment, arg
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPDFDocumentGetArtBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
+    return CGRect(CGPDFDocumentGetArtBox(allocator, arg0, arg1))
 }
 
 /**
@@ -1739,6 +1779,10 @@ fun CGShadingCreateAxial(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
     }
 }
 
+fun CGShadingCreateAxial(arg0: MemorySegment, arg1: CGPoint, arg2: CGPoint, arg3: MemorySegment, arg4: Boolean, arg5: Boolean): MemorySegment {
+    return CGShadingCreateAxial(arg0, arg1.segment, arg2.segment, arg3, arg4, arg5)
+}
+
 /**
  * {@snippet lang=c : CGShadingCreateAxialWithContentHeadroom typedef CGShadingRef = (Declared(CGShading))*(Float,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,typedef CGPoint = Declared(CGPoint),typedef CGPoint = Declared(CGPoint),typedef CGFunctionRef = (Declared(CGFunction))*,Bool,Bool)
  */
@@ -1756,6 +1800,10 @@ fun CGShadingCreateAxialWithContentHeadroom(arg0: Float, arg1: MemorySegment, ar
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGShadingCreateAxialWithContentHeadroom(arg0: Float, arg1: MemorySegment, arg2: CGPoint, arg3: CGPoint, arg4: MemorySegment, arg5: Boolean, arg6: Boolean): MemorySegment {
+    return CGShadingCreateAxialWithContentHeadroom(arg0, arg1, arg2.segment, arg3.segment, arg4, arg5, arg6)
 }
 
 /**
@@ -1777,6 +1825,10 @@ fun CGShadingCreateRadial(arg0: MemorySegment, arg1: MemorySegment, arg2: Double
     }
 }
 
+fun CGShadingCreateRadial(arg0: MemorySegment, arg1: CGPoint, arg2: Double, arg3: CGPoint, arg4: Double, arg5: MemorySegment, arg6: Boolean, arg7: Boolean): MemorySegment {
+    return CGShadingCreateRadial(arg0, arg1.segment, arg2, arg3.segment, arg4, arg5, arg6, arg7)
+}
+
 /**
  * {@snippet lang=c : CGShadingCreateRadialWithContentHeadroom typedef CGShadingRef = (Declared(CGShading))*(Float,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double,typedef CGFunctionRef = (Declared(CGFunction))*,Bool,Bool)
  */
@@ -1794,6 +1846,10 @@ fun CGShadingCreateRadialWithContentHeadroom(arg0: Float, arg1: MemorySegment, a
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGShadingCreateRadialWithContentHeadroom(arg0: Float, arg1: MemorySegment, arg2: CGPoint, arg3: Double, arg4: CGPoint, arg5: Double, arg6: MemorySegment, arg7: Boolean, arg8: Boolean): MemorySegment {
+    return CGShadingCreateRadialWithContentHeadroom(arg0, arg1, arg2.segment, arg3, arg4.segment, arg5, arg6, arg7, arg8)
 }
 
 /**
@@ -2159,6 +2215,10 @@ fun CGContextConcatCTM(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun CGContextConcatCTM(arg0: MemorySegment, arg1: CGAffineTransform): Unit {
+    CGContextConcatCTM(arg0, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGContextGetCTM typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGContextRef = (Declared(CGContext))*)
  */
@@ -2176,6 +2236,10 @@ fun CGContextGetCTM(allocator: SegmentAllocator, arg0: MemorySegment): MemorySeg
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextGetCTMTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGAffineTransform {
+    return CGAffineTransform(CGContextGetCTM(allocator, arg0))
 }
 
 /**
@@ -2406,6 +2470,10 @@ fun CGContextAddRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun CGContextAddRect(arg0: MemorySegment, arg1: CGRect): Unit {
+    CGContextAddRect(arg0, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGContextAddRects Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGRect = Declared(CGRect))*,typedef size_t = UNSIGNED = Long)
  */
@@ -2461,6 +2529,10 @@ fun CGContextAddEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextAddEllipseInRect(arg0: MemorySegment, arg1: CGRect): Unit {
+    CGContextAddEllipseInRect(arg0, arg1.segment)
 }
 
 /**
@@ -2577,6 +2649,10 @@ fun CGContextGetPathCurrentPoint(allocator: SegmentAllocator, arg0: MemorySegmen
     }
 }
 
+fun CGContextGetPathCurrentPointTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGPoint {
+    return CGPoint(CGContextGetPathCurrentPoint(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGContextGetPathBoundingBox typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*)
  */
@@ -2594,6 +2670,10 @@ fun CGContextGetPathBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextGetPathBoundingBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
+    return CGRect(CGContextGetPathBoundingBox(allocator, arg0))
 }
 
 /**
@@ -2691,6 +2771,10 @@ fun CGContextFillRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun CGContextFillRect(arg0: MemorySegment, arg1: CGRect): Unit {
+    CGContextFillRect(arg0, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGContextFillRects Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGRect = Declared(CGRect))*,typedef size_t = UNSIGNED = Long)
  */
@@ -2729,6 +2813,10 @@ fun CGContextStrokeRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun CGContextStrokeRect(arg0: MemorySegment, arg1: CGRect): Unit {
+    CGContextStrokeRect(arg0, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGContextStrokeRectWithWidth Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CGFloat = Double)
  */
@@ -2746,6 +2834,10 @@ fun CGContextStrokeRectWithWidth(arg0: MemorySegment, arg1: MemorySegment, arg2:
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextStrokeRectWithWidth(arg0: MemorySegment, arg1: CGRect, arg2: Double): Unit {
+    CGContextStrokeRectWithWidth(arg0, arg1.segment, arg2)
 }
 
 /**
@@ -2767,6 +2859,10 @@ fun CGContextClearRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun CGContextClearRect(arg0: MemorySegment, arg1: CGRect): Unit {
+    CGContextClearRect(arg0, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGContextFillEllipseInRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
  */
@@ -2786,6 +2882,10 @@ fun CGContextFillEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun CGContextFillEllipseInRect(arg0: MemorySegment, arg1: CGRect): Unit {
+    CGContextFillEllipseInRect(arg0, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGContextStrokeEllipseInRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
  */
@@ -2803,6 +2903,10 @@ fun CGContextStrokeEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Unit
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextStrokeEllipseInRect(arg0: MemorySegment, arg1: CGRect): Unit {
+    CGContextStrokeEllipseInRect(arg0, arg1.segment)
 }
 
 /**
@@ -2900,6 +3004,10 @@ fun CGContextClipToMask(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySe
     }
 }
 
+fun CGContextClipToMask(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
+    CGContextClipToMask(arg0, arg1.segment, arg2)
+}
+
 /**
  * {@snippet lang=c : CGContextGetClipBoundingBox typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*)
  */
@@ -2919,6 +3027,10 @@ fun CGContextGetClipBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment
     }
 }
 
+fun CGContextGetClipBoundingBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
+    return CGRect(CGContextGetClipBoundingBox(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGContextClipToRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
  */
@@ -2936,6 +3048,10 @@ fun CGContextClipToRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextClipToRect(arg0: MemorySegment, arg1: CGRect): Unit {
+    CGContextClipToRect(arg0, arg1.segment)
 }
 
 /**
@@ -3128,6 +3244,10 @@ fun CGContextSetPatternPhase(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun CGContextSetPatternPhase(arg0: MemorySegment, arg1: CGSize): Unit {
+    CGContextSetPatternPhase(arg0, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGContextSetGrayFillColor Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -3299,6 +3419,10 @@ fun CGContextDrawImage(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySeg
     }
 }
 
+fun CGContextDrawImage(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
+    CGContextDrawImage(arg0, arg1.segment, arg2)
+}
+
 /**
  * {@snippet lang=c : CGContextDrawTiledImage Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CGImageRef = (Declared(CGImage))*)
  */
@@ -3316,6 +3440,10 @@ fun CGContextDrawTiledImage(arg0: MemorySegment, arg1: MemorySegment, arg2: Memo
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextDrawTiledImage(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
+    CGContextDrawTiledImage(arg0, arg1.segment, arg2)
 }
 
 /**
@@ -3375,6 +3503,10 @@ fun CGContextSetShadowWithColor(arg0: MemorySegment, arg1: MemorySegment, arg2: 
     }
 }
 
+fun CGContextSetShadowWithColor(arg0: MemorySegment, arg1: CGSize, arg2: Double, arg3: MemorySegment): Unit {
+    CGContextSetShadowWithColor(arg0, arg1.segment, arg2, arg3)
+}
+
 /**
  * {@snippet lang=c : CGContextSetShadow Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize),typedef CGFloat = Double)
  */
@@ -3394,6 +3526,10 @@ fun CGContextSetShadow(arg0: MemorySegment, arg1: MemorySegment, arg2: Double): 
     }
 }
 
+fun CGContextSetShadow(arg0: MemorySegment, arg1: CGSize, arg2: Double): Unit {
+    CGContextSetShadow(arg0, arg1.segment, arg2)
+}
+
 /**
  * {@snippet lang=c : CGContextDrawConicGradient Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGGradientRef = (Declared(CGGradient))*,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double)
  */
@@ -3411,6 +3547,10 @@ fun CGContextDrawConicGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: M
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextDrawConicGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: CGPoint, arg3: Double): Unit {
+    CGContextDrawConicGradient(arg0, arg1, arg2.segment, arg3)
 }
 
 /**
@@ -3489,6 +3629,10 @@ fun CGContextGetTextPosition(allocator: SegmentAllocator, arg0: MemorySegment): 
     }
 }
 
+fun CGContextGetTextPositionTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGPoint {
+    return CGPoint(CGContextGetTextPosition(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGContextSetTextMatrix Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGAffineTransform = Declared(CGAffineTransform))
  */
@@ -3508,6 +3652,10 @@ fun CGContextSetTextMatrix(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun CGContextSetTextMatrix(arg0: MemorySegment, arg1: CGAffineTransform): Unit {
+    CGContextSetTextMatrix(arg0, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGContextGetTextMatrix typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGContextRef = (Declared(CGContext))*)
  */
@@ -3525,6 +3673,10 @@ fun CGContextGetTextMatrix(allocator: SegmentAllocator, arg0: MemorySegment): Me
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextGetTextMatrixTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGAffineTransform {
+    return CGAffineTransform(CGContextGetTextMatrix(allocator, arg0))
 }
 
 /**
@@ -3926,6 +4078,10 @@ fun CGContextBeginTransparencyLayerWithRect(arg0: MemorySegment, arg1: MemorySeg
     }
 }
 
+fun CGContextBeginTransparencyLayerWithRect(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
+    CGContextBeginTransparencyLayerWithRect(arg0, arg1.segment, arg2)
+}
+
 /**
  * {@snippet lang=c : CGContextEndTransparencyLayer Void(typedef CGContextRef = (Declared(CGContext))*)
  */
@@ -3964,6 +4120,10 @@ fun CGContextGetUserSpaceToDeviceSpaceTransform(allocator: SegmentAllocator, arg
     }
 }
 
+fun CGContextGetUserSpaceToDeviceSpaceTransformTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGAffineTransform {
+    return CGAffineTransform(CGContextGetUserSpaceToDeviceSpaceTransform(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGContextConvertPointToDeviceSpace typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint))
  */
@@ -3981,6 +4141,10 @@ fun CGContextConvertPointToDeviceSpace(allocator: SegmentAllocator, arg0: Memory
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextConvertPointToDeviceSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPoint): CGPoint {
+    return CGPoint(CGContextConvertPointToDeviceSpace(allocator, arg0, arg1.segment))
 }
 
 /**
@@ -4002,6 +4166,10 @@ fun CGContextConvertPointToUserSpace(allocator: SegmentAllocator, arg0: MemorySe
     }
 }
 
+fun CGContextConvertPointToUserSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPoint): CGPoint {
+    return CGPoint(CGContextConvertPointToUserSpace(allocator, arg0, arg1.segment))
+}
+
 /**
  * {@snippet lang=c : CGContextConvertSizeToDeviceSpace typedef CGSize = Declared(CGSize)(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize))
  */
@@ -4019,6 +4187,10 @@ fun CGContextConvertSizeToDeviceSpace(allocator: SegmentAllocator, arg0: MemoryS
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextConvertSizeToDeviceSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGSize): CGSize {
+    return CGSize(CGContextConvertSizeToDeviceSpace(allocator, arg0, arg1.segment))
 }
 
 /**
@@ -4040,6 +4212,10 @@ fun CGContextConvertSizeToUserSpace(allocator: SegmentAllocator, arg0: MemorySeg
     }
 }
 
+fun CGContextConvertSizeToUserSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGSize): CGSize {
+    return CGSize(CGContextConvertSizeToUserSpace(allocator, arg0, arg1.segment))
+}
+
 /**
  * {@snippet lang=c : CGContextConvertRectToDeviceSpace typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
  */
@@ -4059,6 +4235,10 @@ fun CGContextConvertRectToDeviceSpace(allocator: SegmentAllocator, arg0: MemoryS
     }
 }
 
+fun CGContextConvertRectToDeviceSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGRect): CGRect {
+    return CGRect(CGContextConvertRectToDeviceSpace(allocator, arg0, arg1.segment))
+}
+
 /**
  * {@snippet lang=c : CGContextConvertRectToUserSpace typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
  */
@@ -4076,6 +4256,10 @@ fun CGContextConvertRectToUserSpace(allocator: SegmentAllocator, arg0: MemorySeg
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextConvertRectToUserSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGRect): CGRect {
+    return CGRect(CGContextConvertRectToUserSpace(allocator, arg0, arg1.segment))
 }
 
 /**
@@ -4190,6 +4374,10 @@ fun CGContextDrawPDFDocument(arg0: MemorySegment, arg1: MemorySegment, arg2: Mem
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGContextDrawPDFDocument(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment, arg3: Int): Unit {
+    CGContextDrawPDFDocument(arg0, arg1.segment, arg2, arg3)
 }
 
 /**

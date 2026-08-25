@@ -22,10 +22,10 @@ interface NSColorPickingDefault {
 
     fun detachColorList(colorList: MemorySegment): Unit
 
-    fun setMode(mode: MemorySegment): Unit
+    fun setMode(mode: NSColorPanelMode): Unit
 
     fun buttonToolTip(): MemorySegment
 
-    fun minContentSize(): MemorySegment
+    fun minContentSize(): NSSize
 
 }

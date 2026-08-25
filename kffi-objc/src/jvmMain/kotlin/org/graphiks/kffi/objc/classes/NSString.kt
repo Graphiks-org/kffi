@@ -50,54 +50,54 @@ fun NSString.substringToIndex(to: Long): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, to) as MemorySegment
 }
 
-fun NSString.substringWithRange(range: MemorySegment): MemorySegment {
+fun NSString.substringWithRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("substringWithRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
-fun NSString.getCharacters_range(buffer: MemorySegment, range: MemorySegment): Unit {
+fun NSString.getCharacters_range(buffer: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("getCharacters:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, buffer, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, buffer, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSString.compare(string: MemorySegment): MemorySegment {
+fun NSString.compare(string: MemorySegment): NSComparisonResult {
     val sel = ObjCRuntime.sel("compare:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string) as Long)
 }
 
-fun NSString.compare_options(string: MemorySegment, mask: MemorySegment): MemorySegment {
+fun NSString.compare_options(string: MemorySegment, mask: NSStringCompareOptions): NSComparisonResult {
     val sel = ObjCRuntime.sel("compare:options:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string, mask) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string, mask.rawValue) as Long)
 }
 
-fun NSString.compare_options_range(string: MemorySegment, mask: MemorySegment, rangeOfReceiverToCompare: MemorySegment): MemorySegment {
+fun NSString.compare_options_range(string: MemorySegment, mask: NSStringCompareOptions, rangeOfReceiverToCompare: NSRange): NSComparisonResult {
     val sel = ObjCRuntime.sel("compare:options:range:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string, mask, rangeOfReceiverToCompare) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string, mask.rawValue, ObjCRuntime.ObjCStructArg(rangeOfReceiverToCompare.segment, NSRange.layout)) as Long)
 }
 
-fun NSString.compare_options_range_locale(string: MemorySegment, mask: MemorySegment, rangeOfReceiverToCompare: MemorySegment, locale: MemorySegment): MemorySegment {
+fun NSString.compare_options_range_locale(string: MemorySegment, mask: NSStringCompareOptions, rangeOfReceiverToCompare: NSRange, locale: MemorySegment): NSComparisonResult {
     val sel = ObjCRuntime.sel("compare:options:range:locale:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string, mask, rangeOfReceiverToCompare, locale) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string, mask.rawValue, ObjCRuntime.ObjCStructArg(rangeOfReceiverToCompare.segment, NSRange.layout), locale) as Long)
 }
 
-fun NSString.caseInsensitiveCompare(string: MemorySegment): MemorySegment {
+fun NSString.caseInsensitiveCompare(string: MemorySegment): NSComparisonResult {
     val sel = ObjCRuntime.sel("caseInsensitiveCompare:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string) as Long)
 }
 
-fun NSString.localizedCompare(string: MemorySegment): MemorySegment {
+fun NSString.localizedCompare(string: MemorySegment): NSComparisonResult {
     val sel = ObjCRuntime.sel("localizedCompare:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string) as Long)
 }
 
-fun NSString.localizedCaseInsensitiveCompare(string: MemorySegment): MemorySegment {
+fun NSString.localizedCaseInsensitiveCompare(string: MemorySegment): NSComparisonResult {
     val sel = ObjCRuntime.sel("localizedCaseInsensitiveCompare:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string) as Long)
 }
 
-fun NSString.localizedStandardCompare(string: MemorySegment): MemorySegment {
+fun NSString.localizedStandardCompare(string: MemorySegment): NSComparisonResult {
     val sel = ObjCRuntime.sel("localizedStandardCompare:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string) as MemorySegment
+    return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string) as Long)
 }
 
 fun NSString.isEqualToString(aString: MemorySegment): Boolean {
@@ -115,9 +115,9 @@ fun NSString.hasSuffix(str: MemorySegment): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, str) as Boolean
 }
 
-fun NSString.commonPrefixWithString_options(str: MemorySegment, mask: MemorySegment): MemorySegment {
+fun NSString.commonPrefixWithString_options(str: MemorySegment, mask: NSStringCompareOptions): MemorySegment {
     val sel = ObjCRuntime.sel("commonPrefixWithString:options:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, str, mask) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, str, mask.rawValue) as MemorySegment
 }
 
 fun NSString.containsString(str: MemorySegment): Boolean {
@@ -135,54 +135,54 @@ fun NSString.localizedStandardContainsString(str: MemorySegment): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, str) as Boolean
 }
 
-fun NSString.localizedStandardRangeOfString(str: MemorySegment): MemorySegment {
+fun NSString.localizedStandardRangeOfString(str: MemorySegment): NSRange {
     val sel = ObjCRuntime.sel("localizedStandardRangeOfString:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, str) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, str))
 }
 
-fun NSString.rangeOfString(searchString: MemorySegment): MemorySegment {
+fun NSString.rangeOfString(searchString: MemorySegment): NSRange {
     val sel = ObjCRuntime.sel("rangeOfString:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, searchString) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, searchString))
 }
 
-fun NSString.rangeOfString_options(searchString: MemorySegment, mask: MemorySegment): MemorySegment {
+fun NSString.rangeOfString_options(searchString: MemorySegment, mask: NSStringCompareOptions): NSRange {
     val sel = ObjCRuntime.sel("rangeOfString:options:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, searchString, mask) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, searchString, mask.rawValue))
 }
 
-fun NSString.rangeOfString_options_range(searchString: MemorySegment, mask: MemorySegment, rangeOfReceiverToSearch: MemorySegment): MemorySegment {
+fun NSString.rangeOfString_options_range(searchString: MemorySegment, mask: NSStringCompareOptions, rangeOfReceiverToSearch: NSRange): NSRange {
     val sel = ObjCRuntime.sel("rangeOfString:options:range:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, searchString, mask, rangeOfReceiverToSearch) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, searchString, mask.rawValue, ObjCRuntime.ObjCStructArg(rangeOfReceiverToSearch.segment, NSRange.layout)))
 }
 
-fun NSString.rangeOfString_options_range_locale(searchString: MemorySegment, mask: MemorySegment, rangeOfReceiverToSearch: MemorySegment, locale: MemorySegment): MemorySegment {
+fun NSString.rangeOfString_options_range_locale(searchString: MemorySegment, mask: NSStringCompareOptions, rangeOfReceiverToSearch: NSRange, locale: MemorySegment): NSRange {
     val sel = ObjCRuntime.sel("rangeOfString:options:range:locale:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, searchString, mask, rangeOfReceiverToSearch, locale) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, searchString, mask.rawValue, ObjCRuntime.ObjCStructArg(rangeOfReceiverToSearch.segment, NSRange.layout), locale))
 }
 
-fun NSString.rangeOfCharacterFromSet(searchSet: MemorySegment): MemorySegment {
+fun NSString.rangeOfCharacterFromSet(searchSet: MemorySegment): NSRange {
     val sel = ObjCRuntime.sel("rangeOfCharacterFromSet:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, searchSet) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, searchSet))
 }
 
-fun NSString.rangeOfCharacterFromSet_options(searchSet: MemorySegment, mask: MemorySegment): MemorySegment {
+fun NSString.rangeOfCharacterFromSet_options(searchSet: MemorySegment, mask: NSStringCompareOptions): NSRange {
     val sel = ObjCRuntime.sel("rangeOfCharacterFromSet:options:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, searchSet, mask) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, searchSet, mask.rawValue))
 }
 
-fun NSString.rangeOfCharacterFromSet_options_range(searchSet: MemorySegment, mask: MemorySegment, rangeOfReceiverToSearch: MemorySegment): MemorySegment {
+fun NSString.rangeOfCharacterFromSet_options_range(searchSet: MemorySegment, mask: NSStringCompareOptions, rangeOfReceiverToSearch: NSRange): NSRange {
     val sel = ObjCRuntime.sel("rangeOfCharacterFromSet:options:range:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, searchSet, mask, rangeOfReceiverToSearch) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, searchSet, mask.rawValue, ObjCRuntime.ObjCStructArg(rangeOfReceiverToSearch.segment, NSRange.layout)))
 }
 
-fun NSString.rangeOfComposedCharacterSequenceAtIndex(index: Long): MemorySegment {
+fun NSString.rangeOfComposedCharacterSequenceAtIndex(index: Long): NSRange {
     val sel = ObjCRuntime.sel("rangeOfComposedCharacterSequenceAtIndex:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, index) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, index))
 }
 
-fun NSString.rangeOfComposedCharacterSequencesForRange(range: MemorySegment): MemorySegment {
+fun NSString.rangeOfComposedCharacterSequencesForRange(range: NSRange): NSRange {
     val sel = ObjCRuntime.sel("rangeOfComposedCharacterSequencesForRange:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, range) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)))
 }
 
 fun NSString.stringByAppendingString(aString: MemorySegment): MemorySegment {
@@ -210,29 +210,29 @@ fun NSString.capitalizedStringWithLocale(locale: MemorySegment): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, locale) as MemorySegment
 }
 
-fun NSString.getLineStart_end_contentsEnd_forRange(startPtr: MemorySegment, lineEndPtr: MemorySegment, contentsEndPtr: MemorySegment, range: MemorySegment): Unit {
+fun NSString.getLineStart_end_contentsEnd_forRange(startPtr: MemorySegment, lineEndPtr: MemorySegment, contentsEndPtr: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("getLineStart:end:contentsEnd:forRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, startPtr, lineEndPtr, contentsEndPtr, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, startPtr, lineEndPtr, contentsEndPtr, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSString.lineRangeForRange(range: MemorySegment): MemorySegment {
+fun NSString.lineRangeForRange(range: NSRange): NSRange {
     val sel = ObjCRuntime.sel("lineRangeForRange:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, range) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)))
 }
 
-fun NSString.getParagraphStart_end_contentsEnd_forRange(startPtr: MemorySegment, parEndPtr: MemorySegment, contentsEndPtr: MemorySegment, range: MemorySegment): Unit {
+fun NSString.getParagraphStart_end_contentsEnd_forRange(startPtr: MemorySegment, parEndPtr: MemorySegment, contentsEndPtr: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("getParagraphStart:end:contentsEnd:forRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, startPtr, parEndPtr, contentsEndPtr, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, startPtr, parEndPtr, contentsEndPtr, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSString.paragraphRangeForRange(range: MemorySegment): MemorySegment {
+fun NSString.paragraphRangeForRange(range: NSRange): NSRange {
     val sel = ObjCRuntime.sel("paragraphRangeForRange:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, range) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)))
 }
 
-fun NSString.enumerateSubstringsInRange_options_usingBlock(range: MemorySegment, opts: MemorySegment, block: MemorySegment): Unit {
+fun NSString.enumerateSubstringsInRange_options_usingBlock(range: NSRange, opts: NSStringEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateSubstringsInRange:options:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, opts, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), opts.rawValue, block)
 }
 
 fun NSString.enumerateLinesUsingBlock(block: MemorySegment): Unit {
@@ -265,9 +265,9 @@ fun NSString.getCString_maxLength_encoding(buffer: MemorySegment, maxBufferCount
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, buffer, maxBufferCount, encoding) as Boolean
 }
 
-fun NSString.getBytes_maxLength_usedLength_encoding_options_range_remainingRange(buffer: MemorySegment, maxBufferCount: Long, usedBufferCount: MemorySegment, encoding: Long, options: MemorySegment, range: MemorySegment, leftover: MemorySegment): Boolean {
+fun NSString.getBytes_maxLength_usedLength_encoding_options_range_remainingRange(buffer: MemorySegment, maxBufferCount: Long, usedBufferCount: MemorySegment, encoding: Long, options: NSStringEncodingConversionOptions, range: NSRange, leftover: NSRangePointer): Boolean {
     val sel = ObjCRuntime.sel("getBytes:maxLength:usedLength:encoding:options:range:remainingRange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, buffer, maxBufferCount, usedBufferCount, encoding, options, range, leftover) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, buffer, maxBufferCount, usedBufferCount, encoding, options.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), leftover.segment) as Boolean
 }
 
 fun NSString.maximumLengthOfBytesUsingEncoding(enc: Long): Long {
@@ -302,14 +302,14 @@ fun NSString.stringByPaddingToLength_withString_startingAtIndex(newLength: Long,
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, newLength, padString, padIndex) as MemorySegment
 }
 
-fun NSString.stringByFoldingWithOptions_locale(options: MemorySegment, locale: MemorySegment): MemorySegment {
+fun NSString.stringByFoldingWithOptions_locale(options: NSStringCompareOptions, locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringByFoldingWithOptions:locale:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options, locale) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options.rawValue, locale) as MemorySegment
 }
 
-fun NSString.stringByReplacingOccurrencesOfString_withString_options_range(target: MemorySegment, replacement: MemorySegment, options: MemorySegment, searchRange: MemorySegment): MemorySegment {
+fun NSString.stringByReplacingOccurrencesOfString_withString_options_range(target: MemorySegment, replacement: MemorySegment, options: NSStringCompareOptions, searchRange: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("stringByReplacingOccurrencesOfString:withString:options:range:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, target, replacement, options, searchRange) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, target, replacement, options.rawValue, ObjCRuntime.ObjCStructArg(searchRange.segment, NSRange.layout)) as MemorySegment
 }
 
 fun NSString.stringByReplacingOccurrencesOfString_withString(target: MemorySegment, replacement: MemorySegment): MemorySegment {
@@ -317,9 +317,9 @@ fun NSString.stringByReplacingOccurrencesOfString_withString(target: MemorySegme
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, target, replacement) as MemorySegment
 }
 
-fun NSString.stringByReplacingCharactersInRange_withString(range: MemorySegment, replacement: MemorySegment): MemorySegment {
+fun NSString.stringByReplacingCharactersInRange_withString(range: NSRange, replacement: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringByReplacingCharactersInRange:withString:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range, replacement) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), replacement) as MemorySegment
 }
 
 fun NSString.stringByApplyingTransform_reverse(transform: MemorySegment, reverse: Boolean): MemorySegment {
@@ -726,9 +726,9 @@ fun NSString.getCString_maxLength(bytes: MemorySegment, maxLength: Long): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, bytes, maxLength)
 }
 
-fun NSString.getCString_maxLength_range_remainingRange(bytes: MemorySegment, maxLength: Long, aRange: MemorySegment, leftoverRange: MemorySegment): Unit {
+fun NSString.getCString_maxLength_range_remainingRange(bytes: MemorySegment, maxLength: Long, aRange: NSRange, leftoverRange: NSRangePointer): Unit {
     val sel = ObjCRuntime.sel("getCString:maxLength:range:remainingRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, bytes, maxLength, aRange, leftoverRange)
+    ObjCRuntime.msgSend(null, this.ptr, sel, bytes, maxLength, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout), leftoverRange.segment)
 }
 
 fun NSString.writeToFile_atomically(path: MemorySegment, useAuxiliaryFile: Boolean): Boolean {
@@ -922,55 +922,55 @@ fun NSString.stringByRemovingPercentEncoding(): MemorySegment {
 // ── Category: NSLinguisticAnalysis on NSString ─────────────────────────────────────────
 
 /** @return NSArray<NSLinguisticTag> * */
-fun NSString.linguisticTagsInRange_scheme_options_orthography_tokenRanges(range: MemorySegment, scheme: MemorySegment, options: MemorySegment, orthography: MemorySegment, tokenRanges: MemorySegment): MemorySegment {
+fun NSString.linguisticTagsInRange_scheme_options_orthography_tokenRanges(range: NSRange, scheme: MemorySegment, options: NSLinguisticTaggerOptions, orthography: MemorySegment, tokenRanges: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("linguisticTagsInRange:scheme:options:orthography:tokenRanges:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range, scheme, options, orthography, tokenRanges) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), scheme, options.rawValue, orthography, tokenRanges) as MemorySegment
 }
 
-fun NSString.enumerateLinguisticTagsInRange_scheme_options_orthography_usingBlock(range: MemorySegment, scheme: MemorySegment, options: MemorySegment, orthography: MemorySegment, block: MemorySegment): Unit {
+fun NSString.enumerateLinguisticTagsInRange_scheme_options_orthography_usingBlock(range: NSRange, scheme: MemorySegment, options: NSLinguisticTaggerOptions, orthography: MemorySegment, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateLinguisticTagsInRange:scheme:options:orthography:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, scheme, options, orthography, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), scheme, options.rawValue, orthography, block)
 }
 
 // ── Category: NSPasteboardSupport on NSString ─────────────────────────────────────────
 
 // ── Category: NSStringDrawing on NSString ─────────────────────────────────────────
 
-fun NSString.sizeWithAttributes(attrs: MemorySegment): MemorySegment {
+fun NSString.sizeWithAttributes(attrs: MemorySegment): CGSize {
     val sel = ObjCRuntime.sel("sizeWithAttributes:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel, attrs) as MemorySegment
+    return CGSize(ObjCRuntime.msgSendStruct(CGSize.layout, this.ptr, sel, attrs))
 }
 
-fun NSString.drawAtPoint_withAttributes(point: MemorySegment, attrs: MemorySegment): Unit {
+fun NSString.drawAtPoint_withAttributes(point: CGPoint, attrs: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawAtPoint:withAttributes:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point, attrs)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, CGPoint.layout), attrs)
 }
 
-fun NSString.drawInRect_withAttributes(rect: MemorySegment, attrs: MemorySegment): Unit {
+fun NSString.drawInRect_withAttributes(rect: CGRect, attrs: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawInRect:withAttributes:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect, attrs)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, CGRect.layout), attrs)
 }
 
 // ── Category: NSExtendedStringDrawing on NSString ─────────────────────────────────────────
 
-fun NSString.drawWithRect_options_attributes_context(rect: MemorySegment, options: MemorySegment, attributes: MemorySegment, context: MemorySegment): Unit {
+fun NSString.drawWithRect_options_attributes_context(rect: CGRect, options: NSStringDrawingOptions, attributes: MemorySegment, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawWithRect:options:attributes:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect, options, attributes, context)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, CGRect.layout), options.rawValue, attributes, context)
 }
 
-fun NSString.boundingRectWithSize_options_attributes_context(size: MemorySegment, options: MemorySegment, attributes: MemorySegment, context: MemorySegment): MemorySegment {
+fun NSString.boundingRectWithSize_options_attributes_context(size: CGSize, options: NSStringDrawingOptions, attributes: MemorySegment, context: MemorySegment): CGRect {
     val sel = ObjCRuntime.sel("boundingRectWithSize:options:attributes:context:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, size, options, attributes, context) as MemorySegment
+    return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, CGSize.layout), options.rawValue, attributes, context))
 }
 
 // ── Category: NSStringDrawingDeprecated on NSString ─────────────────────────────────────────
 
-fun NSString.drawWithRect_options_attributes(rect: MemorySegment, options: MemorySegment, attributes: MemorySegment): Unit {
+fun NSString.drawWithRect_options_attributes(rect: NSRect, options: NSStringDrawingOptions, attributes: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawWithRect:options:attributes:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect, options, attributes)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), options.rawValue, attributes)
 }
 
-fun NSString.boundingRectWithSize_options_attributes(size: MemorySegment, options: MemorySegment, attributes: MemorySegment): MemorySegment {
+fun NSString.boundingRectWithSize_options_attributes(size: NSSize, options: NSStringDrawingOptions, attributes: MemorySegment): NSRect {
     val sel = ObjCRuntime.sel("boundingRectWithSize:options:attributes:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, size, options, attributes) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout), options.rawValue, attributes))
 }
