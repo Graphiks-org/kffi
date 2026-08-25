@@ -195,6 +195,16 @@ object ObjCRuntime {
         }
     }
 
+    internal fun retain(receiver: MemorySegment): MemorySegment = msgSend(
+        ValueLayout.ADDRESS,
+        receiver,
+        sel("retain"),
+    ) as MemorySegment
+
+    internal fun release(receiver: MemorySegment) {
+        msgSend(null, receiver, sel("release"))
+    }
+
     // ── Convenience helpers ───────────────────────────────────────────────────
 
     /**
