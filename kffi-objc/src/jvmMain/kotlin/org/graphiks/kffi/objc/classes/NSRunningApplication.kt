@@ -48,14 +48,14 @@ open class NSRunningApplication(override val ptr: MemorySegment) : NSObject(ptr)
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
-    open fun activateFromApplication_options(application: MemorySegment, options: MemorySegment): Boolean {
+    open fun activateFromApplication_options(application: MemorySegment, options: NSApplicationActivationOptions): Boolean {
         val sel = ObjCRuntime.sel("activateFromApplication:options:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, application, options) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, application, options.rawValue) as Boolean
     }
 
-    open fun activateWithOptions(options: MemorySegment): Boolean {
+    open fun activateWithOptions(options: NSApplicationActivationOptions): Boolean {
         val sel = ObjCRuntime.sel("activateWithOptions:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, options) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, options.rawValue) as Boolean
     }
 
     open fun terminate(): Boolean {
@@ -99,9 +99,9 @@ open class NSRunningApplication(override val ptr: MemorySegment) : NSObject(ptr)
     }
 
     // @property activationPolicy
-    open fun activationPolicy(): MemorySegment {
+    open fun activationPolicy(): NSApplicationActivationPolicy {
         val sel = ObjCRuntime.sel("activationPolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSApplicationActivationPolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property localizedName

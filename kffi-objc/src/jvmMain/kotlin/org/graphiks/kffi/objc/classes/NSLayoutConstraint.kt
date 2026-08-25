@@ -13,17 +13,17 @@ open class NSLayoutConstraint(override val ptr: MemorySegment) : NSObject(ptr) {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSLayoutConstraint") }
 
         /** @return NSArray<NSLayoutConstraint *> * */
-        fun constraintsWithVisualFormat_options_metrics_views(format: MemorySegment, opts: MemorySegment, metrics: MemorySegment, views: MemorySegment): MemorySegment {
+        fun constraintsWithVisualFormat_options_metrics_views(format: MemorySegment, opts: NSLayoutFormatOptions, metrics: MemorySegment, views: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("constraintsWithVisualFormat:options:metrics:views:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, format, opts, metrics, views) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, format, opts.rawValue, metrics, views) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun constraintsWithVisualFormat_options_metrics_views(format: String, opts: MemorySegment, metrics: MemorySegment, views: MemorySegment): MemorySegment = constraintsWithVisualFormat_options_metrics_views(ObjCRuntime.newNSString(Arena.global(), format), opts, metrics, views)
+        fun constraintsWithVisualFormat_options_metrics_views(format: String, opts: NSLayoutFormatOptions, metrics: MemorySegment, views: MemorySegment): MemorySegment = constraintsWithVisualFormat_options_metrics_views(ObjCRuntime.newNSString(Arena.global(), format), opts, metrics, views)
 
-        fun constraintWithItem_attribute_relatedBy_toItem_attribute_multiplier_constant(view1: MemorySegment, attr1: MemorySegment, relation: MemorySegment, view2: MemorySegment, attr2: MemorySegment, multiplier: Double, c: Double): MemorySegment {
+        fun constraintWithItem_attribute_relatedBy_toItem_attribute_multiplier_constant(view1: MemorySegment, attr1: NSLayoutAttribute, relation: NSLayoutRelation, view2: MemorySegment, attr2: NSLayoutAttribute, multiplier: Double, c: Double): MemorySegment {
             val sel = ObjCRuntime.sel("constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view1, attr1, relation, view2, attr2, multiplier, c) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, view1, attr1.rawValue, relation.rawValue, view2, attr2.rawValue, multiplier, c) as MemorySegment
         }
 
         fun activateConstraints(constraints: MemorySegment): Unit {
@@ -71,15 +71,15 @@ open class NSLayoutConstraint(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property firstAttribute
-    open fun firstAttribute(): MemorySegment {
+    open fun firstAttribute(): NSLayoutAttribute {
         val sel = ObjCRuntime.sel("firstAttribute")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLayoutAttribute(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property secondAttribute
-    open fun secondAttribute(): MemorySegment {
+    open fun secondAttribute(): NSLayoutAttribute {
         val sel = ObjCRuntime.sel("secondAttribute")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLayoutAttribute(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property firstAnchor
@@ -95,9 +95,9 @@ open class NSLayoutConstraint(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property relation
-    open fun relation(): MemorySegment {
+    open fun relation(): NSLayoutRelation {
         val sel = ObjCRuntime.sel("relation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLayoutRelation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property multiplier

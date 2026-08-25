@@ -20,9 +20,9 @@ open class NSCachedURLResponse(override val ptr: MemorySegment) : NSObject(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, response, `data`) as MemorySegment
     }
 
-    open fun initWithResponse_data_userInfo_storagePolicy(response: MemorySegment, `data`: MemorySegment, userInfo: MemorySegment, storagePolicy: MemorySegment): MemorySegment {
+    open fun initWithResponse_data_userInfo_storagePolicy(response: MemorySegment, `data`: MemorySegment, userInfo: MemorySegment, storagePolicy: NSURLCacheStoragePolicy): MemorySegment {
         val sel = ObjCRuntime.sel("initWithResponse:data:userInfo:storagePolicy:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, response, `data`, userInfo, storagePolicy) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, response, `data`, userInfo, storagePolicy.rawValue) as MemorySegment
     }
 
     // @property response
@@ -44,9 +44,9 @@ open class NSCachedURLResponse(override val ptr: MemorySegment) : NSObject(ptr) 
     }
 
     // @property storagePolicy
-    open fun storagePolicy(): MemorySegment {
+    open fun storagePolicy(): NSURLCacheStoragePolicy {
         val sel = ObjCRuntime.sel("storagePolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLCacheStoragePolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 

@@ -16,33 +16,33 @@ open class NSImageCell(override val ptr: MemorySegment) : NSCell(ptr) {
     }
 
     // @property imageAlignment
-    open fun imageAlignment(): MemorySegment {
+    open fun imageAlignment(): NSImageAlignment {
         val sel = ObjCRuntime.sel("imageAlignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageAlignment(value: MemorySegment) {
+    open fun setImageAlignment(value: NSImageAlignment) {
         val sel = ObjCRuntime.sel("setImageAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property imageScaling
-    open fun imageScaling(): MemorySegment {
+    open fun imageScaling(): NSImageScaling {
         val sel = ObjCRuntime.sel("imageScaling")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageScaling(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageScaling(value: MemorySegment) {
+    open fun setImageScaling(value: NSImageScaling) {
         val sel = ObjCRuntime.sel("setImageScaling:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property imageFrameStyle
-    open fun imageFrameStyle(): MemorySegment {
+    open fun imageFrameStyle(): NSImageFrameStyle {
         val sel = ObjCRuntime.sel("imageFrameStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageFrameStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageFrameStyle(value: MemorySegment) {
+    open fun setImageFrameStyle(value: NSImageFrameStyle) {
         val sel = ObjCRuntime.sel("setImageFrameStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

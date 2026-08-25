@@ -38,13 +38,13 @@ open class NSWhoseSpecifier(override val ptr: MemorySegment) : NSScriptObjectSpe
     }
 
     // @property startSubelementIdentifier
-    open fun startSubelementIdentifier(): MemorySegment {
+    open fun startSubelementIdentifier(): NSWhoseSubelementIdentifier {
         val sel = ObjCRuntime.sel("startSubelementIdentifier")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWhoseSubelementIdentifier(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setStartSubelementIdentifier(value: MemorySegment) {
+    open fun setStartSubelementIdentifier(value: NSWhoseSubelementIdentifier) {
         val sel = ObjCRuntime.sel("setStartSubelementIdentifier:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property startSubelementIndex
@@ -58,13 +58,13 @@ open class NSWhoseSpecifier(override val ptr: MemorySegment) : NSScriptObjectSpe
     }
 
     // @property endSubelementIdentifier
-    open fun endSubelementIdentifier(): MemorySegment {
+    open fun endSubelementIdentifier(): NSWhoseSubelementIdentifier {
         val sel = ObjCRuntime.sel("endSubelementIdentifier")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWhoseSubelementIdentifier(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setEndSubelementIdentifier(value: MemorySegment) {
+    open fun setEndSubelementIdentifier(value: NSWhoseSubelementIdentifier) {
         val sel = ObjCRuntime.sel("setEndSubelementIdentifier:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property endSubelementIndex

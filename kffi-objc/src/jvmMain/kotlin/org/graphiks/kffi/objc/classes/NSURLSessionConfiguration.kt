@@ -65,13 +65,13 @@ open class NSURLSessionConfiguration(override val ptr: MemorySegment) : NSObject
     open fun identifierAsString(): String = ObjCRuntime.toJavaString(identifier())
 
     // @property requestCachePolicy
-    open fun requestCachePolicy(): MemorySegment {
+    open fun requestCachePolicy(): NSURLRequestCachePolicy {
         val sel = ObjCRuntime.sel("requestCachePolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLRequestCachePolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setRequestCachePolicy(value: MemorySegment) {
+    open fun setRequestCachePolicy(value: NSURLRequestCachePolicy) {
         val sel = ObjCRuntime.sel("setRequestCachePolicy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property timeoutIntervalForRequest
@@ -95,13 +95,13 @@ open class NSURLSessionConfiguration(override val ptr: MemorySegment) : NSObject
     }
 
     // @property networkServiceType
-    open fun networkServiceType(): MemorySegment {
+    open fun networkServiceType(): NSURLRequestNetworkServiceType {
         val sel = ObjCRuntime.sel("networkServiceType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLRequestNetworkServiceType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setNetworkServiceType(value: MemorySegment) {
+    open fun setNetworkServiceType(value: NSURLRequestNetworkServiceType) {
         val sel = ObjCRuntime.sel("setNetworkServiceType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowsCellularAccess
@@ -211,43 +211,43 @@ open class NSURLSessionConfiguration(override val ptr: MemorySegment) : NSObject
     }
 
     // @property TLSMinimumSupportedProtocol
-    open fun TLSMinimumSupportedProtocol(): MemorySegment {
+    open fun TLSMinimumSupportedProtocol(): SSLProtocol {
         val sel = ObjCRuntime.sel("TLSMinimumSupportedProtocol")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return SSLProtocol((ObjCRuntime.msgSend(ValueLayout.JAVA_INT, ptr, sel) as Int).toLong())
     }
-    open fun setTLSMinimumSupportedProtocol(value: MemorySegment) {
+    open fun setTLSMinimumSupportedProtocol(value: SSLProtocol) {
         val sel = ObjCRuntime.sel("setTLSMinimumSupportedProtocol:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue.toInt())
     }
 
     // @property TLSMaximumSupportedProtocol
-    open fun TLSMaximumSupportedProtocol(): MemorySegment {
+    open fun TLSMaximumSupportedProtocol(): SSLProtocol {
         val sel = ObjCRuntime.sel("TLSMaximumSupportedProtocol")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return SSLProtocol((ObjCRuntime.msgSend(ValueLayout.JAVA_INT, ptr, sel) as Int).toLong())
     }
-    open fun setTLSMaximumSupportedProtocol(value: MemorySegment) {
+    open fun setTLSMaximumSupportedProtocol(value: SSLProtocol) {
         val sel = ObjCRuntime.sel("setTLSMaximumSupportedProtocol:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue.toInt())
     }
 
     // @property TLSMinimumSupportedProtocolVersion
-    open fun TLSMinimumSupportedProtocolVersion(): MemorySegment {
+    open fun TLSMinimumSupportedProtocolVersion(): tls_protocol_version_t {
         val sel = ObjCRuntime.sel("TLSMinimumSupportedProtocolVersion")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return tls_protocol_version_t(java.lang.Short.toUnsignedInt(ObjCRuntime.msgSend(ValueLayout.JAVA_SHORT, ptr, sel) as Short).toLong())
     }
-    open fun setTLSMinimumSupportedProtocolVersion(value: MemorySegment) {
+    open fun setTLSMinimumSupportedProtocolVersion(value: tls_protocol_version_t) {
         val sel = ObjCRuntime.sel("setTLSMinimumSupportedProtocolVersion:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue.toShort())
     }
 
     // @property TLSMaximumSupportedProtocolVersion
-    open fun TLSMaximumSupportedProtocolVersion(): MemorySegment {
+    open fun TLSMaximumSupportedProtocolVersion(): tls_protocol_version_t {
         val sel = ObjCRuntime.sel("TLSMaximumSupportedProtocolVersion")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return tls_protocol_version_t(java.lang.Short.toUnsignedInt(ObjCRuntime.msgSend(ValueLayout.JAVA_SHORT, ptr, sel) as Short).toLong())
     }
-    open fun setTLSMaximumSupportedProtocolVersion(value: MemorySegment) {
+    open fun setTLSMaximumSupportedProtocolVersion(value: tls_protocol_version_t) {
         val sel = ObjCRuntime.sel("setTLSMaximumSupportedProtocolVersion:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue.toShort())
     }
 
     // @property HTTPShouldUsePipelining
@@ -271,13 +271,13 @@ open class NSURLSessionConfiguration(override val ptr: MemorySegment) : NSObject
     }
 
     // @property HTTPCookieAcceptPolicy
-    open fun HTTPCookieAcceptPolicy(): MemorySegment {
+    open fun HTTPCookieAcceptPolicy(): NSHTTPCookieAcceptPolicy {
         val sel = ObjCRuntime.sel("HTTPCookieAcceptPolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSHTTPCookieAcceptPolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setHTTPCookieAcceptPolicy(value: MemorySegment) {
+    open fun setHTTPCookieAcceptPolicy(value: NSHTTPCookieAcceptPolicy) {
         val sel = ObjCRuntime.sel("setHTTPCookieAcceptPolicy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property HTTPAdditionalHeaders
@@ -352,13 +352,13 @@ open class NSURLSessionConfiguration(override val ptr: MemorySegment) : NSObject
     }
 
     // @property multipathServiceType
-    open fun multipathServiceType(): MemorySegment {
+    open fun multipathServiceType(): NSURLSessionMultipathServiceType {
         val sel = ObjCRuntime.sel("multipathServiceType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSURLSessionMultipathServiceType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setMultipathServiceType(value: MemorySegment) {
+    open fun setMultipathServiceType(value: NSURLSessionMultipathServiceType) {
         val sel = ObjCRuntime.sel("setMultipathServiceType:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property usesClassicLoadingMode

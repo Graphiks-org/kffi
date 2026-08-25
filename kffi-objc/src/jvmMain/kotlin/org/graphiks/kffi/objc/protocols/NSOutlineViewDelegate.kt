@@ -62,7 +62,7 @@ interface NSOutlineViewDelegate : NSControlTextEditingDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'outlineView:didDragTableColumn:' not implemented")
 
     // @optional
-    fun outlineView_toolTipForCell_rect_tableColumn_item_mouseLocation(outlineView: MemorySegment, cell: MemorySegment, rect: MemorySegment, tableColumn: MemorySegment, item: MemorySegment, mouseLocation: MemorySegment): MemorySegment =
+    fun outlineView_toolTipForCell_rect_tableColumn_item_mouseLocation(outlineView: MemorySegment, cell: MemorySegment, rect: NSRectPointer, tableColumn: MemorySegment, item: MemorySegment, mouseLocation: NSPoint): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:' not implemented")
 
     // @optional

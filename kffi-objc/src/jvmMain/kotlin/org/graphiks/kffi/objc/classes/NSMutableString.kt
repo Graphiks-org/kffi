@@ -14,13 +14,13 @@ open class NSMutableString(override val ptr: MemorySegment) : NSString(ptr) {
 
     }
 
-    open fun replaceCharactersInRange_withString(range: MemorySegment, aString: MemorySegment): Unit {
+    open fun replaceCharactersInRange_withString(range: NSRange, aString: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("replaceCharactersInRange:withString:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), aString)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), aString)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun replaceCharactersInRange_withString(range: MemorySegment, aString: String): Unit = replaceCharactersInRange_withString(range, ObjCRuntime.newNSString(Arena.global(), aString))
+    fun replaceCharactersInRange_withString(range: NSRange, aString: String): Unit = replaceCharactersInRange_withString(range, ObjCRuntime.newNSString(Arena.global(), aString))
 
 }
 
@@ -31,9 +31,9 @@ fun NSMutableString.insertString_atIndex(aString: MemorySegment, loc: Long): Uni
     ObjCRuntime.msgSend(null, this.ptr, sel, aString, loc)
 }
 
-fun NSMutableString.deleteCharactersInRange(range: MemorySegment): Unit {
+fun NSMutableString.deleteCharactersInRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("deleteCharactersInRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 fun NSMutableString.appendString(aString: MemorySegment): Unit {
@@ -51,14 +51,14 @@ fun NSMutableString.setString(aString: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, aString)
 }
 
-fun NSMutableString.replaceOccurrencesOfString_withString_options_range(target: MemorySegment, replacement: MemorySegment, options: MemorySegment, searchRange: MemorySegment): Long {
+fun NSMutableString.replaceOccurrencesOfString_withString_options_range(target: MemorySegment, replacement: MemorySegment, options: NSStringCompareOptions, searchRange: NSRange): Long {
     val sel = ObjCRuntime.sel("replaceOccurrencesOfString:withString:options:range:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, target, replacement, options, searchRange) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, target, replacement, options.rawValue, ObjCRuntime.ObjCStructArg(searchRange.segment, NSRange.layout)) as Long
 }
 
-fun NSMutableString.applyTransform_reverse_range_updatedRange(transform: MemorySegment, reverse: Boolean, range: MemorySegment, resultingRange: MemorySegment): Boolean {
+fun NSMutableString.applyTransform_reverse_range_updatedRange(transform: MemorySegment, reverse: Boolean, range: NSRange, resultingRange: NSRangePointer): Boolean {
     val sel = ObjCRuntime.sel("applyTransform:reverse:range:updatedRange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, transform, reverse, range, resultingRange) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, transform, reverse, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), resultingRange.segment) as Boolean
 }
 
 fun NSMutableString.initWithCapacity(capacity: Long): MemorySegment {

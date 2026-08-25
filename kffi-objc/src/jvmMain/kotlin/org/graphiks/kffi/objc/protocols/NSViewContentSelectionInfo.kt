@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 interface NSViewContentSelectionInfo {
     // @optional
-    fun selectionAnchorRect(): MemorySegment =
+    fun selectionAnchorRect(): NSRect =
         throw UnsupportedOperationException("Optional ObjC method 'selectionAnchorRect' not implemented")
 
 }

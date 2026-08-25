@@ -25,9 +25,9 @@ open class NSPopover(override val ptr: MemorySegment) : NSResponder(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun showRelativeToRect_ofView_preferredEdge(positioningRect: MemorySegment, positioningView: MemorySegment, preferredEdge: MemorySegment): Unit {
+    open fun showRelativeToRect_ofView_preferredEdge(positioningRect: NSRect, positioningView: MemorySegment, preferredEdge: NSRectEdge): Unit {
         val sel = ObjCRuntime.sel("showRelativeToRect:ofView:preferredEdge:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(positioningRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), positioningView, preferredEdge)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(positioningRect.segment, NSRect.layout), positioningView, preferredEdge.rawValue)
     }
 
     open fun showRelativeToToolbarItem(toolbarItem: MemorySegment): Unit {
@@ -73,13 +73,13 @@ open class NSPopover(override val ptr: MemorySegment) : NSResponder(ptr) {
     }
 
     // @property behavior
-    open fun behavior(): MemorySegment {
+    open fun behavior(): NSPopoverBehavior {
         val sel = ObjCRuntime.sel("behavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPopoverBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBehavior(value: MemorySegment) {
+    open fun setBehavior(value: NSPopoverBehavior) {
         val sel = ObjCRuntime.sel("setBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property animates
@@ -103,13 +103,13 @@ open class NSPopover(override val ptr: MemorySegment) : NSResponder(ptr) {
     }
 
     // @property contentSize
-    open fun contentSize(): MemorySegment {
+    open fun contentSize(): NSSize {
         val sel = ObjCRuntime.sel("contentSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setContentSize(value: MemorySegment) {
+    open fun setContentSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setContentSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property shown
@@ -125,13 +125,13 @@ open class NSPopover(override val ptr: MemorySegment) : NSResponder(ptr) {
     }
 
     // @property positioningRect
-    open fun positioningRect(): MemorySegment {
+    open fun positioningRect(): NSRect {
         val sel = ObjCRuntime.sel("positioningRect")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
-    open fun setPositioningRect(value: MemorySegment) {
+    open fun setPositioningRect(value: NSRect) {
         val sel = ObjCRuntime.sel("setPositioningRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSRect.layout))
     }
 
     // @property hasFullSizeContent

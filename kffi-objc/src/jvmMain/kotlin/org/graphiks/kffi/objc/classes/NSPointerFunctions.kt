@@ -13,16 +13,16 @@ open class NSPointerFunctions(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSPointerFunctions") }
 
-        fun pointerFunctionsWithOptions(options: MemorySegment): MemorySegment {
+        fun pointerFunctionsWithOptions(options: NSPointerFunctionsOptions): MemorySegment {
             val sel = ObjCRuntime.sel("pointerFunctionsWithOptions:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, options) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, options.rawValue) as MemorySegment
         }
 
     }
 
-    open fun initWithOptions(options: MemorySegment): MemorySegment {
+    open fun initWithOptions(options: NSPointerFunctionsOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithOptions:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options.rawValue) as MemorySegment
     }
 
     // @property hashFunction

@@ -490,6 +490,11 @@ typealias fsblkcnt_t = Int
 typealias fsfilcnt_t = Int
 
 /**
+ * {@snippet lang=c : typedef (Char)* va_list;}
+ */
+typealias va_list = MemorySegment
+
+/**
  * {@snippet lang=c : typedef Int __darwin_nl_item;}
  */
 typealias _darwin_nl_item = Int
@@ -823,6 +828,11 @@ typealias ResType = Int
  * {@snippet lang=c : typedef UNSIGNED = Char Boolean;}
  */
 typealias Boolean_ = Byte
+
+/**
+ * {@snippet lang=c : typedef (Void)* SRefCon;}
+ */
+typealias SRefCon = MemorySegment
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int UnicodeScalarValue;}
@@ -2263,100 +2273,134 @@ typealias CGFloat = Double
 /**
  * {@snippet lang=c : STRUCT CGPoint
  */
-class CGPoint {
+class CGPoint internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_DOUBLE.withName("x"),
-            ValueLayout.JAVA_DOUBLE.withName("y")
-        ).withName("CGPoint")
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("x"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("y")
+        ).withByteAlignment(8L).withName("CGPoint")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): CGPoint =
+            CGPoint(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): CGPointPointer =
+            CGPointPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): CGPoint =
+            CGPoint(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): CGPoint =
+            CGPoint(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): CGPointPointer =
+            CGPointPointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val x_VH: VarHandle = layout.varHandle(groupElement("x"))
+    constructor(x: Double, y: Double) : this(Arena.ofAuto().allocate(layout)) {
+        x(x)
+        y(y)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun x(segment: MemorySegment): Double =
-        x_VH.get(segment, 0L) as Double
+    private val x_VH: VarHandle = layout.varHandle(groupElement("x"))
 
-    fun x(segment: MemorySegment, value: Double) =
+    fun x(): Double = x_VH.get(segment, 0L) as Double
+
+    fun x(value: Double) =
         x_VH.set(segment, 0L, value)
 
-    val y_VH: VarHandle = layout.varHandle(groupElement("y"))
+    var x: Double
+        get() = x()
+        set(value) = x(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun y(segment: MemorySegment): Double =
-        y_VH.get(segment, 0L) as Double
+    private val y_VH: VarHandle = layout.varHandle(groupElement("y"))
 
-    fun y(segment: MemorySegment, value: Double) =
+    fun y(): Double = y_VH.get(segment, 0L) as Double
+
+    fun y(value: Double) =
         y_VH.set(segment, 0L, value)
+
+    var y: Double
+        get() = y()
+        set(value) = y(value)
 } // End class
+
+class CGPointPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): CGPoint {
+        val offset = CGPoint.byteSize * index
+        val bytes = CGPoint.byteSize * (index + 1L)
+        return CGPoint(segment.reinterpret(bytes).asSlice(offset, CGPoint.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : STRUCT CGSize
  */
-class CGSize {
+class CGSize internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_DOUBLE.withName("width"),
-            ValueLayout.JAVA_DOUBLE.withName("height")
-        ).withName("CGSize")
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("width"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("height")
+        ).withByteAlignment(8L).withName("CGSize")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): CGSize =
+            CGSize(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): CGSizePointer =
+            CGSizePointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): CGSize =
+            CGSize(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): CGSize =
+            CGSize(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): CGSizePointer =
+            CGSizePointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val width_VH: VarHandle = layout.varHandle(groupElement("width"))
+    constructor(width: Double, height: Double) : this(Arena.ofAuto().allocate(layout)) {
+        width(width)
+        height(height)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun width(segment: MemorySegment): Double =
-        width_VH.get(segment, 0L) as Double
+    private val width_VH: VarHandle = layout.varHandle(groupElement("width"))
 
-    fun width(segment: MemorySegment, value: Double) =
+    fun width(): Double = width_VH.get(segment, 0L) as Double
+
+    fun width(value: Double) =
         width_VH.set(segment, 0L, value)
 
-    val height_VH: VarHandle = layout.varHandle(groupElement("height"))
+    var width: Double
+        get() = width()
+        set(value) = width(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun height(segment: MemorySegment): Double =
-        height_VH.get(segment, 0L) as Double
+    private val height_VH: VarHandle = layout.varHandle(groupElement("height"))
 
-    fun height(segment: MemorySegment, value: Double) =
+    fun height(): Double = height_VH.get(segment, 0L) as Double
+
+    fun height(value: Double) =
         height_VH.set(segment, 0L, value)
+
+    var height: Double
+        get() = height()
+        set(value) = height(value)
 } // End class
+
+class CGSizePointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): CGSize {
+        val offset = CGSize.byteSize * index
+        val bytes = CGSize.byteSize * (index + 1L)
+        return CGSize(segment.reinterpret(bytes).asSlice(offset, CGSize.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : STRUCT CGVector
@@ -2410,140 +2454,184 @@ class CGVector {
 /**
  * {@snippet lang=c : STRUCT CGRect
  */
-class CGRect {
+class CGRect internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            CGPoint.layout.withName("origin"),
-            CGSize.layout.withName("size")
-        ).withName("CGRect")
+            CGPoint.layout.withByteAlignment(8L).withName("origin"),
+            CGSize.layout.withByteAlignment(8L).withName("size")
+        ).withByteAlignment(8L).withName("CGRect")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): CGRect =
+            CGRect(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): CGRectPointer =
+            CGRectPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): CGRect =
+            CGRect(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): CGRect =
+            CGRect(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): CGRectPointer =
+            CGRectPointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val origin_VH: VarHandle = layout.varHandle(groupElement("origin"))
+    constructor(origin: CGPoint, size: CGSize) : this(Arena.ofAuto().allocate(layout)) {
+        origin(origin)
+        size(size)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun origin(segment: MemorySegment): MemorySegment =
-        origin_VH.get(segment, 0L) as MemorySegment
+    fun origin(): CGPoint =
+        CGPoint(segment.asSlice(layout.byteOffset(groupElement("origin")), CGPoint.byteSize))
 
-    fun origin(segment: MemorySegment, value: MemorySegment) =
-        origin_VH.set(segment, 0L, value)
+    fun origin(value: CGPoint) =
+        MemorySegment.copy(value.segment, 0L, segment, layout.byteOffset(groupElement("origin")), CGPoint.byteSize)
 
-    val size_VH: VarHandle = layout.varHandle(groupElement("size"))
+    var origin: CGPoint
+        get() = origin()
+        set(value) = origin(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun size(segment: MemorySegment): MemorySegment =
-        size_VH.get(segment, 0L) as MemorySegment
+    fun size(): CGSize =
+        CGSize(segment.asSlice(layout.byteOffset(groupElement("size")), CGSize.byteSize))
 
-    fun size(segment: MemorySegment, value: MemorySegment) =
-        size_VH.set(segment, 0L, value)
+    fun size(value: CGSize) =
+        MemorySegment.copy(value.segment, 0L, segment, layout.byteOffset(groupElement("size")), CGSize.byteSize)
+
+    var size: CGSize
+        get() = size()
+        set(value) = size(value)
 } // End class
+
+class CGRectPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): CGRect {
+        val offset = CGRect.byteSize * index
+        val bytes = CGRect.byteSize * (index + 1L)
+        return CGRect(segment.reinterpret(bytes).asSlice(offset, CGRect.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : STRUCT CGAffineTransform
  */
-class CGAffineTransform {
+class CGAffineTransform internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_DOUBLE.withName("a"),
-            ValueLayout.JAVA_DOUBLE.withName("b"),
-            ValueLayout.JAVA_DOUBLE.withName("c"),
-            ValueLayout.JAVA_DOUBLE.withName("d"),
-            ValueLayout.JAVA_DOUBLE.withName("tx"),
-            ValueLayout.JAVA_DOUBLE.withName("ty")
-        ).withName("CGAffineTransform")
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("a"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("b"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("c"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("d"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("tx"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("ty")
+        ).withByteAlignment(8L).withName("CGAffineTransform")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): CGAffineTransform =
+            CGAffineTransform(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): CGAffineTransformPointer =
+            CGAffineTransformPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): CGAffineTransform =
+            CGAffineTransform(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): CGAffineTransform =
+            CGAffineTransform(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): CGAffineTransformPointer =
+            CGAffineTransformPointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val a_VH: VarHandle = layout.varHandle(groupElement("a"))
+    constructor(a: Double, b: Double, c: Double, d: Double, tx: Double, ty: Double) : this(Arena.ofAuto().allocate(layout)) {
+        a(a)
+        b(b)
+        c(c)
+        d(d)
+        tx(tx)
+        ty(ty)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun a(segment: MemorySegment): Double =
-        a_VH.get(segment, 0L) as Double
+    private val a_VH: VarHandle = layout.varHandle(groupElement("a"))
 
-    fun a(segment: MemorySegment, value: Double) =
+    fun a(): Double = a_VH.get(segment, 0L) as Double
+
+    fun a(value: Double) =
         a_VH.set(segment, 0L, value)
 
-    val b_VH: VarHandle = layout.varHandle(groupElement("b"))
+    var a: Double
+        get() = a()
+        set(value) = a(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun b(segment: MemorySegment): Double =
-        b_VH.get(segment, 0L) as Double
+    private val b_VH: VarHandle = layout.varHandle(groupElement("b"))
 
-    fun b(segment: MemorySegment, value: Double) =
+    fun b(): Double = b_VH.get(segment, 0L) as Double
+
+    fun b(value: Double) =
         b_VH.set(segment, 0L, value)
 
-    val c_VH: VarHandle = layout.varHandle(groupElement("c"))
+    var b: Double
+        get() = b()
+        set(value) = b(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun c(segment: MemorySegment): Double =
-        c_VH.get(segment, 0L) as Double
+    private val c_VH: VarHandle = layout.varHandle(groupElement("c"))
 
-    fun c(segment: MemorySegment, value: Double) =
+    fun c(): Double = c_VH.get(segment, 0L) as Double
+
+    fun c(value: Double) =
         c_VH.set(segment, 0L, value)
 
-    val d_VH: VarHandle = layout.varHandle(groupElement("d"))
+    var c: Double
+        get() = c()
+        set(value) = c(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun d(segment: MemorySegment): Double =
-        d_VH.get(segment, 0L) as Double
+    private val d_VH: VarHandle = layout.varHandle(groupElement("d"))
 
-    fun d(segment: MemorySegment, value: Double) =
+    fun d(): Double = d_VH.get(segment, 0L) as Double
+
+    fun d(value: Double) =
         d_VH.set(segment, 0L, value)
 
-    val tx_VH: VarHandle = layout.varHandle(groupElement("tx"))
+    var d: Double
+        get() = d()
+        set(value) = d(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun tx(segment: MemorySegment): Double =
-        tx_VH.get(segment, 0L) as Double
+    private val tx_VH: VarHandle = layout.varHandle(groupElement("tx"))
 
-    fun tx(segment: MemorySegment, value: Double) =
+    fun tx(): Double = tx_VH.get(segment, 0L) as Double
+
+    fun tx(value: Double) =
         tx_VH.set(segment, 0L, value)
 
-    val ty_VH: VarHandle = layout.varHandle(groupElement("ty"))
+    var tx: Double
+        get() = tx()
+        set(value) = tx(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun ty(segment: MemorySegment): Double =
-        ty_VH.get(segment, 0L) as Double
+    private val ty_VH: VarHandle = layout.varHandle(groupElement("ty"))
 
-    fun ty(segment: MemorySegment, value: Double) =
+    fun ty(): Double = ty_VH.get(segment, 0L) as Double
+
+    fun ty(value: Double) =
         ty_VH.set(segment, 0L, value)
+
+    var ty: Double
+        get() = ty()
+        set(value) = ty(value)
 } // End class
+
+class CGAffineTransformPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): CGAffineTransform {
+        val offset = CGAffineTransform.byteSize * index
+        val bytes = CGAffineTransform.byteSize * (index + 1L)
+        return CGAffineTransform(segment.reinterpret(bytes).asSlice(offset, CGAffineTransform.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : STRUCT CGAffineTransformComponents
@@ -2795,9 +2883,14 @@ typealias mach_port_flavor_t = Int
 typealias CFRunLoopMode = MemorySegment
 
 /**
+ * {@snippet lang=c : STRUCT __CFRunLoop
+ */
+class _CFRunLoopPointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef (Declared(__CFRunLoop))* CFRunLoopRef;}
  */
-typealias CFRunLoopRef = MemorySegment
+typealias CFRunLoopRef = _CFRunLoopPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(__CFRunLoopSource))* CFRunLoopSourceRef;}
@@ -3384,6 +3477,26 @@ class CFSocketContext {
 typealias CFSocketNativeHandle = Int
 
 /**
+ * {@snippet lang=c : typedef typedef Class = (Void)* Class;}
+ */
+typealias Class = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* id;}
+ */
+typealias id = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef ((Void)*)* SEL;}
+ */
+typealias SEL = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void())* IMP;}
+ */
+typealias IMP = MemorySegment
+
+/**
  * {@snippet lang=c : typedef Bool BOOL;}
  */
 typealias BOOL = Boolean
@@ -3397,6 +3510,11 @@ typealias NSInteger = Long
  * {@snippet lang=c : typedef UNSIGNED = Long NSUInteger;}
  */
 typealias NSUInteger = Long
+
+/**
+ * {@snippet lang=c : STRUCT _NSZone
+ */
+class _NSZonePointer internal constructor(internal val segment: MemorySegment)
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int os_workgroup_index;}
@@ -3432,6 +3550,11 @@ typealias clock_res_t = Int
  * {@snippet lang=c : typedef UNSIGNED = LongLong dispatch_time_t;}
  */
 typealias dispatch_time_t = Long
+
+/**
+ * {@snippet lang=c : typedef (Void)* dispatch_queue_t;}
+ */
+typealias dispatch_queue_t = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Long dispatch_queue_priority_t;}
@@ -5306,127 +5429,93 @@ typealias NSRunLoopMode = MemorySegment
  */
 typealias NSComparator = MemorySegment
 
+typealias NSZonePointer = _NSZonePointer
+
+/**
+ * {@snippet lang=c : typedef Declared(_NSZone) NSZone;}
+ */
+typealias NSZone = MemorySegment
+
 /**
  * {@snippet lang=c : STRUCT NSFastEnumerationState
  */
-class NSFastEnumerationState {
-    companion object {
-        val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("state"),
-            ValueLayout.ADDRESS.withName("itemsPtr"),
-            ValueLayout.ADDRESS.withName("mutationsPtr"),
-            MemoryLayout.sequenceLayout(5, ValueLayout.JAVA_LONG).withName("extra")
-        ).withName("NSFastEnumerationState")
-
-        val byteSize: Long
-            get() = layout.byteSize()
-
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
-
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
-
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
-
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
-
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
-
-    } // End companion object
-
-    val state_VH: VarHandle = layout.varHandle(groupElement("state"))
-
-    @Suppress("UNCHECKED_CAST")
-    fun state(segment: MemorySegment): Long =
-        state_VH.get(segment, 0L) as Long
-
-    fun state(segment: MemorySegment, value: Long) =
-        state_VH.set(segment, 0L, value)
-
-    val itemsPtr_VH: VarHandle = layout.varHandle(groupElement("itemsPtr"))
-
-    @Suppress("UNCHECKED_CAST")
-    fun itemsPtr(segment: MemorySegment): MemorySegment =
-        itemsPtr_VH.get(segment, 0L) as MemorySegment
-
-    fun itemsPtr(segment: MemorySegment, value: MemorySegment) =
-        itemsPtr_VH.set(segment, 0L, value)
-
-    val mutationsPtr_VH: VarHandle = layout.varHandle(groupElement("mutationsPtr"))
-
-    @Suppress("UNCHECKED_CAST")
-    fun mutationsPtr(segment: MemorySegment): MemorySegment =
-        mutationsPtr_VH.get(segment, 0L) as MemorySegment
-
-    fun mutationsPtr(segment: MemorySegment, value: MemorySegment) =
-        mutationsPtr_VH.set(segment, 0L, value)
-
-    fun extra(segment: MemorySegment): MemorySegment =
-        segment.asSlice(layout.byteOffset(groupElement("extra")), layout.select(groupElement("extra")).byteSize())
-} // End class
+class NSFastEnumerationStatePointer internal constructor(internal val segment: MemorySegment)
 
 /**
  * {@snippet lang=c : STRUCT _NSRange
  */
-class _NSRange {
+class _NSRange internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("location"),
-            ValueLayout.JAVA_LONG.withName("length")
-        ).withName("_NSRange")
+            ValueLayout.JAVA_LONG.withByteAlignment(8L).withName("location"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8L).withName("length")
+        ).withByteAlignment(8L).withName("_NSRange")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): _NSRange =
+            _NSRange(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): _NSRangePointer =
+            _NSRangePointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): _NSRange =
+            _NSRange(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): _NSRange =
+            _NSRange(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): _NSRangePointer =
+            _NSRangePointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val location_VH: VarHandle = layout.varHandle(groupElement("location"))
+    constructor(location: Long, length: Long) : this(Arena.ofAuto().allocate(layout)) {
+        location(location)
+        length(length)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun location(segment: MemorySegment): Long =
-        location_VH.get(segment, 0L) as Long
+    private val location_VH: VarHandle = layout.varHandle(groupElement("location"))
 
-    fun location(segment: MemorySegment, value: Long) =
+    fun location(): Long = location_VH.get(segment, 0L) as Long
+
+    fun location(value: Long) =
         location_VH.set(segment, 0L, value)
 
-    val length_VH: VarHandle = layout.varHandle(groupElement("length"))
+    var location: Long
+        get() = location()
+        set(value) = location(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun length(segment: MemorySegment): Long =
-        length_VH.get(segment, 0L) as Long
+    private val length_VH: VarHandle = layout.varHandle(groupElement("length"))
 
-    fun length(segment: MemorySegment, value: Long) =
+    fun length(): Long = length_VH.get(segment, 0L) as Long
+
+    fun length(value: Long) =
         length_VH.set(segment, 0L, value)
+
+    var length: Long
+        get() = length()
+        set(value) = length(value)
 } // End class
+
+class _NSRangePointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): _NSRange {
+        val offset = _NSRange.byteSize * index
+        val bytes = _NSRange.byteSize * (index + 1L)
+        return _NSRange(segment.reinterpret(bytes).asSlice(offset, _NSRange.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : typedef Declared(_NSRange) NSRange;}
  */
-typealias NSRange = MemorySegment
+typealias NSRange = _NSRange
 
 /**
  * {@snippet lang=c : typedef (Declared(_NSRange))* NSRangePointer;}
  */
-typealias NSRangePointer = MemorySegment
+typealias NSRangePointer = _NSRangePointer
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Short unichar;}
@@ -5594,35 +5683,51 @@ typealias NSLocaleKey = MemorySegment
 /**
  * {@snippet lang=c : STRUCT NSDecimal
  */
-class NSDecimal {
+class NSDecimal internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_SHORT).withName("_mantissa")
-        ).withName("NSDecimal")
+            MemoryLayout.paddingLayout(4L),
+            MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_SHORT).withByteAlignment(2L).withName("_mantissa")
+        ).withByteAlignment(4L).withName("NSDecimal")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): NSDecimal =
+            NSDecimal(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): NSDecimalPointer =
+            NSDecimalPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): NSDecimal =
+            NSDecimal(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): NSDecimal =
+            NSDecimal(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): NSDecimalPointer =
+            NSDecimalPointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    fun _mantissa(segment: MemorySegment): MemorySegment =
+    fun _mantissa(): MemorySegment =
         segment.asSlice(layout.byteOffset(groupElement("_mantissa")), layout.select(groupElement("_mantissa")).byteSize())
+
+    fun _mantissa(value: MemorySegment) =
+        MemorySegment.copy(value, 0L, segment, layout.byteOffset(groupElement("_mantissa")), layout.select(groupElement("_mantissa")).byteSize())
+
+    var _mantissa: MemorySegment
+        get() = _mantissa()
+        set(value) = _mantissa(value)
 } // End class
+
+class NSDecimalPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): NSDecimal {
+        val offset = NSDecimal.byteSize * index
+        val bytes = NSDecimal.byteSize * (index + 1L)
+        return NSDecimal(segment.reinterpret(bytes).asSlice(offset, NSDecimal.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : typedef Void(typedef NSException = (Void)*) NSUncaughtExceptionHandler;}
@@ -5868,123 +5973,151 @@ typealias NSKeyValueChangeKey = MemorySegment
 typealias NSPropertyListWriteOptions = Long
 
 /**
+ * {@snippet lang=c : STRUCT __IOSurface
+ */
+class _IOSurfacePointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef (Declared(__IOSurface))* IOSurfaceRef;}
  */
-typealias IOSurfaceRef = MemorySegment
+typealias IOSurfaceRef = _IOSurfacePointer
 
 /**
  * {@snippet lang=c : typedef Declared(CGPoint) NSPoint;}
  */
-typealias NSPoint = MemorySegment
+typealias NSPoint = CGPoint
 
 /**
  * {@snippet lang=c : typedef (Declared(CGPoint))* NSPointPointer;}
  */
-typealias NSPointPointer = MemorySegment
+typealias NSPointPointer = CGPointPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(CGPoint))* NSPointArray;}
  */
-typealias NSPointArray = MemorySegment
+typealias NSPointArray = CGPointPointer
 
 /**
  * {@snippet lang=c : typedef Declared(CGSize) NSSize;}
  */
-typealias NSSize = MemorySegment
+typealias NSSize = CGSize
 
 /**
  * {@snippet lang=c : typedef (Declared(CGSize))* NSSizePointer;}
  */
-typealias NSSizePointer = MemorySegment
+typealias NSSizePointer = CGSizePointer
 
 /**
  * {@snippet lang=c : typedef (Declared(CGSize))* NSSizeArray;}
  */
-typealias NSSizeArray = MemorySegment
+typealias NSSizeArray = CGSizePointer
 
 /**
  * {@snippet lang=c : typedef Declared(CGRect) NSRect;}
  */
-typealias NSRect = MemorySegment
+typealias NSRect = CGRect
 
 /**
  * {@snippet lang=c : typedef (Declared(CGRect))* NSRectPointer;}
  */
-typealias NSRectPointer = MemorySegment
+typealias NSRectPointer = CGRectPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(CGRect))* NSRectArray;}
  */
-typealias NSRectArray = MemorySegment
+typealias NSRectArray = CGRectPointer
 
 /**
  * {@snippet lang=c : STRUCT NSEdgeInsets
  */
-class NSEdgeInsets {
+class NSEdgeInsets internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_DOUBLE.withName("top"),
-            ValueLayout.JAVA_DOUBLE.withName("left"),
-            ValueLayout.JAVA_DOUBLE.withName("bottom"),
-            ValueLayout.JAVA_DOUBLE.withName("right")
-        ).withName("NSEdgeInsets")
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("top"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("left"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("bottom"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("right")
+        ).withByteAlignment(8L).withName("NSEdgeInsets")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): NSEdgeInsets =
+            NSEdgeInsets(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): NSEdgeInsetsPointer =
+            NSEdgeInsetsPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): NSEdgeInsets =
+            NSEdgeInsets(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): NSEdgeInsets =
+            NSEdgeInsets(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): NSEdgeInsetsPointer =
+            NSEdgeInsetsPointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val top_VH: VarHandle = layout.varHandle(groupElement("top"))
+    constructor(top: Double, left: Double, bottom: Double, right: Double) : this(Arena.ofAuto().allocate(layout)) {
+        top(top)
+        left(left)
+        bottom(bottom)
+        right(right)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun top(segment: MemorySegment): Double =
-        top_VH.get(segment, 0L) as Double
+    private val top_VH: VarHandle = layout.varHandle(groupElement("top"))
 
-    fun top(segment: MemorySegment, value: Double) =
+    fun top(): Double = top_VH.get(segment, 0L) as Double
+
+    fun top(value: Double) =
         top_VH.set(segment, 0L, value)
 
-    val left_VH: VarHandle = layout.varHandle(groupElement("left"))
+    var top: Double
+        get() = top()
+        set(value) = top(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun left(segment: MemorySegment): Double =
-        left_VH.get(segment, 0L) as Double
+    private val left_VH: VarHandle = layout.varHandle(groupElement("left"))
 
-    fun left(segment: MemorySegment, value: Double) =
+    fun left(): Double = left_VH.get(segment, 0L) as Double
+
+    fun left(value: Double) =
         left_VH.set(segment, 0L, value)
 
-    val bottom_VH: VarHandle = layout.varHandle(groupElement("bottom"))
+    var left: Double
+        get() = left()
+        set(value) = left(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun bottom(segment: MemorySegment): Double =
-        bottom_VH.get(segment, 0L) as Double
+    private val bottom_VH: VarHandle = layout.varHandle(groupElement("bottom"))
 
-    fun bottom(segment: MemorySegment, value: Double) =
+    fun bottom(): Double = bottom_VH.get(segment, 0L) as Double
+
+    fun bottom(value: Double) =
         bottom_VH.set(segment, 0L, value)
 
-    val right_VH: VarHandle = layout.varHandle(groupElement("right"))
+    var bottom: Double
+        get() = bottom()
+        set(value) = bottom(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun right(segment: MemorySegment): Double =
-        right_VH.get(segment, 0L) as Double
+    private val right_VH: VarHandle = layout.varHandle(groupElement("right"))
 
-    fun right(segment: MemorySegment, value: Double) =
+    fun right(): Double = right_VH.get(segment, 0L) as Double
+
+    fun right(value: Double) =
         right_VH.set(segment, 0L, value)
+
+    var right: Double
+        get() = right()
+        set(value) = right(value)
 } // End class
+
+class NSEdgeInsetsPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): NSEdgeInsets {
+        val offset = NSEdgeInsets.byteSize * index
+        val bytes = NSEdgeInsets.byteSize * (index + 1L)
+        return NSEdgeInsets(segment.reinterpret(bytes).asSlice(offset, NSEdgeInsets.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long NSMapTableOptions;}
@@ -6206,61 +6339,81 @@ typealias NSSocketNativeHandle = Int
 /**
  * {@snippet lang=c : STRUCT NSOperatingSystemVersion
  */
-class NSOperatingSystemVersion {
+class NSOperatingSystemVersion internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("majorVersion"),
-            ValueLayout.JAVA_LONG.withName("minorVersion"),
-            ValueLayout.JAVA_LONG.withName("patchVersion")
-        ).withName("NSOperatingSystemVersion")
+            ValueLayout.JAVA_LONG.withByteAlignment(8L).withName("majorVersion"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8L).withName("minorVersion"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8L).withName("patchVersion")
+        ).withByteAlignment(8L).withName("NSOperatingSystemVersion")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): NSOperatingSystemVersion =
+            NSOperatingSystemVersion(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): NSOperatingSystemVersionPointer =
+            NSOperatingSystemVersionPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): NSOperatingSystemVersion =
+            NSOperatingSystemVersion(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): NSOperatingSystemVersion =
+            NSOperatingSystemVersion(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): NSOperatingSystemVersionPointer =
+            NSOperatingSystemVersionPointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val majorVersion_VH: VarHandle = layout.varHandle(groupElement("majorVersion"))
+    constructor(majorVersion: Long, minorVersion: Long, patchVersion: Long) : this(Arena.ofAuto().allocate(layout)) {
+        majorVersion(majorVersion)
+        minorVersion(minorVersion)
+        patchVersion(patchVersion)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun majorVersion(segment: MemorySegment): Long =
-        majorVersion_VH.get(segment, 0L) as Long
+    private val majorVersion_VH: VarHandle = layout.varHandle(groupElement("majorVersion"))
 
-    fun majorVersion(segment: MemorySegment, value: Long) =
+    fun majorVersion(): Long = majorVersion_VH.get(segment, 0L) as Long
+
+    fun majorVersion(value: Long) =
         majorVersion_VH.set(segment, 0L, value)
 
-    val minorVersion_VH: VarHandle = layout.varHandle(groupElement("minorVersion"))
+    var majorVersion: Long
+        get() = majorVersion()
+        set(value) = majorVersion(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun minorVersion(segment: MemorySegment): Long =
-        minorVersion_VH.get(segment, 0L) as Long
+    private val minorVersion_VH: VarHandle = layout.varHandle(groupElement("minorVersion"))
 
-    fun minorVersion(segment: MemorySegment, value: Long) =
+    fun minorVersion(): Long = minorVersion_VH.get(segment, 0L) as Long
+
+    fun minorVersion(value: Long) =
         minorVersion_VH.set(segment, 0L, value)
 
-    val patchVersion_VH: VarHandle = layout.varHandle(groupElement("patchVersion"))
+    var minorVersion: Long
+        get() = minorVersion()
+        set(value) = minorVersion(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun patchVersion(segment: MemorySegment): Long =
-        patchVersion_VH.get(segment, 0L) as Long
+    private val patchVersion_VH: VarHandle = layout.varHandle(groupElement("patchVersion"))
 
-    fun patchVersion(segment: MemorySegment, value: Long) =
+    fun patchVersion(): Long = patchVersion_VH.get(segment, 0L) as Long
+
+    fun patchVersion(value: Long) =
         patchVersion_VH.set(segment, 0L, value)
+
+    var patchVersion: Long
+        get() = patchVersion()
+        set(value) = patchVersion(value)
 } // End class
+
+class NSOperatingSystemVersionPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): NSOperatingSystemVersion {
+        val offset = NSOperatingSystemVersion.byteSize * index
+        val bytes = NSOperatingSystemVersion.byteSize * (index + 1L)
+        return NSOperatingSystemVersion(segment.reinterpret(bytes).asSlice(offset, NSOperatingSystemVersion.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = LongLong NSTextCheckingTypes;}
@@ -6296,6 +6449,16 @@ typealias NSStreamSOCKSProxyVersion = MemorySegment
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSStreamNetworkServiceTypeValue;}
  */
 typealias NSStreamNetworkServiceTypeValue = MemorySegment
+
+/**
+ * {@snippet lang=c : STRUCT __SecIdentity
+ */
+class _SecIdentityPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(__SecIdentity))* SecIdentityRef;}
+ */
+typealias SecIdentityRef = _SecIdentityPointer
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int SecKeychainAttrType;}
@@ -6873,6 +7036,16 @@ typealias CSSM_APPLE_TP_ACTION_FLAGS = Int
 typealias CSSM_TP_APPLE_CERT_STATUS = Int
 
 /**
+ * {@snippet lang=c : STRUCT __SecTrust
+ */
+class _SecTrustPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(__SecTrust))* SecTrustRef;}
+ */
+typealias SecTrustRef = _SecTrustPointer
+
+/**
  * {@snippet lang=c : typedef UNSIGNED = Short SSLCipherSuite;}
  */
 typealias SSLCipherSuite = Short
@@ -6951,6 +7124,21 @@ typealias au_asflgs_t = Long
  * {@snippet lang=c : typedef UNSIGNED = Char au_ctlmode_t;}
  */
 typealias au_ctlmode_t = Byte
+
+/**
+ * {@snippet lang=c : STRUCT _xpc_type_s
+ */
+class _xpc_type_sPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(_xpc_type_s))* xpc_type_t;}
+ */
+typealias xpc_type_t = _xpc_type_sPointer
+
+/**
+ * {@snippet lang=c : typedef (Void)* xpc_object_t;}
+ */
+typealias xpc_object_t = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Long xpc_activity_state_t;}
@@ -8418,6 +8606,23 @@ typealias DescType = Int
 typealias AEKeyword = Int
 
 /**
+ * {@snippet lang=c : typedef ((Declared(OpaqueAEDataStorageType))*)* AEDataStorage;}
+ */
+typealias AEDataStorage = MemorySegment
+
+/**
+ * {@snippet lang=c : STRUCT AEDesc
+ */
+class AEDescPointer internal constructor(internal val segment: MemorySegment)
+
+typealias AppleEventPointer = AEDescPointer
+
+/**
+ * {@snippet lang=c : typedef Declared(AEDesc) AppleEvent;}
+ */
+typealias AppleEvent = MemorySegment
+
+/**
  * {@snippet lang=c : typedef Short AEReturnID;}
  */
 typealias AEReturnID = Short
@@ -8548,6 +8753,16 @@ typealias KCVerifyStopOn = Short
 typealias KCCertSearchOptions = Int
 
 /**
+ * {@snippet lang=c : STRUCT OpaqueIconRef
+ */
+class OpaqueIconRefPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(OpaqueIconRef))* IconRef;}
+ */
+typealias IconRef = OpaqueIconRefPointer
+
+/**
  * {@snippet lang=c : typedef UNSIGNED = Int IconServicesUsageFlags;}
  */
 typealias IconServicesUsageFlags = Int
@@ -8610,91 +8825,120 @@ typealias NSUserActivityPersistentIdentifier = MemorySegment
 /**
  * {@snippet lang=c : STRUCT NSAffineTransformStruct
  */
-class NSAffineTransformStruct {
+class NSAffineTransformStruct internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_DOUBLE.withName("m11"),
-            ValueLayout.JAVA_DOUBLE.withName("m12"),
-            ValueLayout.JAVA_DOUBLE.withName("m21"),
-            ValueLayout.JAVA_DOUBLE.withName("m22"),
-            ValueLayout.JAVA_DOUBLE.withName("tX"),
-            ValueLayout.JAVA_DOUBLE.withName("tY")
-        ).withName("NSAffineTransformStruct")
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m11"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m12"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m21"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m22"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("tX"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("tY")
+        ).withByteAlignment(8L).withName("NSAffineTransformStruct")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): NSAffineTransformStruct =
+            NSAffineTransformStruct(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): NSAffineTransformStructPointer =
+            NSAffineTransformStructPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): NSAffineTransformStruct =
+            NSAffineTransformStruct(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): NSAffineTransformStruct =
+            NSAffineTransformStruct(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): NSAffineTransformStructPointer =
+            NSAffineTransformStructPointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val m11_VH: VarHandle = layout.varHandle(groupElement("m11"))
+    constructor(m11: Double, m12: Double, m21: Double, m22: Double, tX: Double, tY: Double) : this(Arena.ofAuto().allocate(layout)) {
+        m11(m11)
+        m12(m12)
+        m21(m21)
+        m22(m22)
+        tX(tX)
+        tY(tY)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun m11(segment: MemorySegment): Double =
-        m11_VH.get(segment, 0L) as Double
+    private val m11_VH: VarHandle = layout.varHandle(groupElement("m11"))
 
-    fun m11(segment: MemorySegment, value: Double) =
+    fun m11(): Double = m11_VH.get(segment, 0L) as Double
+
+    fun m11(value: Double) =
         m11_VH.set(segment, 0L, value)
 
-    val m12_VH: VarHandle = layout.varHandle(groupElement("m12"))
+    var m11: Double
+        get() = m11()
+        set(value) = m11(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m12(segment: MemorySegment): Double =
-        m12_VH.get(segment, 0L) as Double
+    private val m12_VH: VarHandle = layout.varHandle(groupElement("m12"))
 
-    fun m12(segment: MemorySegment, value: Double) =
+    fun m12(): Double = m12_VH.get(segment, 0L) as Double
+
+    fun m12(value: Double) =
         m12_VH.set(segment, 0L, value)
 
-    val m21_VH: VarHandle = layout.varHandle(groupElement("m21"))
+    var m12: Double
+        get() = m12()
+        set(value) = m12(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m21(segment: MemorySegment): Double =
-        m21_VH.get(segment, 0L) as Double
+    private val m21_VH: VarHandle = layout.varHandle(groupElement("m21"))
 
-    fun m21(segment: MemorySegment, value: Double) =
+    fun m21(): Double = m21_VH.get(segment, 0L) as Double
+
+    fun m21(value: Double) =
         m21_VH.set(segment, 0L, value)
 
-    val m22_VH: VarHandle = layout.varHandle(groupElement("m22"))
+    var m21: Double
+        get() = m21()
+        set(value) = m21(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m22(segment: MemorySegment): Double =
-        m22_VH.get(segment, 0L) as Double
+    private val m22_VH: VarHandle = layout.varHandle(groupElement("m22"))
 
-    fun m22(segment: MemorySegment, value: Double) =
+    fun m22(): Double = m22_VH.get(segment, 0L) as Double
+
+    fun m22(value: Double) =
         m22_VH.set(segment, 0L, value)
 
-    val tX_VH: VarHandle = layout.varHandle(groupElement("tX"))
+    var m22: Double
+        get() = m22()
+        set(value) = m22(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun tX(segment: MemorySegment): Double =
-        tX_VH.get(segment, 0L) as Double
+    private val tX_VH: VarHandle = layout.varHandle(groupElement("tX"))
 
-    fun tX(segment: MemorySegment, value: Double) =
+    fun tX(): Double = tX_VH.get(segment, 0L) as Double
+
+    fun tX(value: Double) =
         tX_VH.set(segment, 0L, value)
 
-    val tY_VH: VarHandle = layout.varHandle(groupElement("tY"))
+    var tX: Double
+        get() = tX()
+        set(value) = tX(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun tY(segment: MemorySegment): Double =
-        tY_VH.get(segment, 0L) as Double
+    private val tY_VH: VarHandle = layout.varHandle(groupElement("tY"))
 
-    fun tY(segment: MemorySegment, value: Double) =
+    fun tY(): Double = tY_VH.get(segment, 0L) as Double
+
+    fun tY(value: Double) =
         tY_VH.set(segment, 0L, value)
+
+    var tY: Double
+        get() = tY()
+        set(value) = tY(value)
 } // End class
+
+class NSAffineTransformStructPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): NSAffineTransformStruct {
+        val offset = NSAffineTransformStruct.byteSize * index
+        val bytes = NSAffineTransformStruct.byteSize * (index + 1L)
+        return NSAffineTransformStruct(segment.reinterpret(bytes).asSlice(offset, NSAffineTransformStruct.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : typedef (Void)* NSBackgroundActivityCompletionHandler;}
@@ -8707,9 +8951,14 @@ typealias NSBackgroundActivityCompletionHandler = MemorySegment
 typealias NSDistributedNotificationCenterType = MemorySegment
 
 /**
+ * {@snippet lang=c : STRUCT __NSAppleEventManagerSuspension
+ */
+class _NSAppleEventManagerSuspensionPointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef (Declared(__NSAppleEventManagerSuspension))* NSAppleEventManagerSuspensionID;}
  */
-typealias NSAppleEventManagerSuspensionID = MemorySegment
+typealias NSAppleEventManagerSuspensionID = _NSAppleEventManagerSuspensionPointer
 
 /**
  * {@snippet lang=c : typedef (Void)* NSUserScriptTaskCompletionHandler;}
@@ -8742,19 +8991,34 @@ typealias NSColorSpaceName = MemorySegment
 typealias NSDeviceDescriptionKey = MemorySegment
 
 /**
+ * {@snippet lang=c : STRUCT CGContext
+ */
+class CGContextPointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef (Declared(CGContext))* CGContextRef;}
  */
-typealias CGContextRef = MemorySegment
+typealias CGContextRef = CGContextPointer
+
+/**
+ * {@snippet lang=c : STRUCT CGColor
+ */
+class CGColorPointer internal constructor(internal val segment: MemorySegment)
 
 /**
  * {@snippet lang=c : typedef (Declared(CGColor))* CGColorRef;}
  */
-typealias CGColorRef = MemorySegment
+typealias CGColorRef = CGColorPointer
+
+/**
+ * {@snippet lang=c : STRUCT CGColorSpace
+ */
+class CGColorSpacePointer internal constructor(internal val segment: MemorySegment)
 
 /**
  * {@snippet lang=c : typedef (Declared(CGColorSpace))* CGColorSpaceRef;}
  */
-typealias CGColorSpaceRef = MemorySegment
+typealias CGColorSpaceRef = CGColorSpacePointer
 
 /**
  * {@snippet lang=c : typedef (Declared(CGDataProvider))* CGDataProviderRef;}
@@ -9059,19 +9323,29 @@ typealias CGGlyph = Short
 typealias CGGradientRef = MemorySegment
 
 /**
+ * {@snippet lang=c : STRUCT CGImage
+ */
+class CGImagePointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef (Declared(CGImage))* CGImageRef;}
  */
-typealias CGImageRef = MemorySegment
+typealias CGImageRef = CGImagePointer
+
+/**
+ * {@snippet lang=c : STRUCT CGPath
+ */
+class CGPathPointer internal constructor(internal val segment: MemorySegment)
 
 /**
  * {@snippet lang=c : typedef (Declared(CGPath))* CGMutablePathRef;}
  */
-typealias CGMutablePathRef = MemorySegment
+typealias CGMutablePathRef = CGPathPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(CGPath))* CGPathRef;}
  */
-typealias CGPathRef = MemorySegment
+typealias CGPathRef = CGPathPointer
 
 /**
  * {@snippet lang=c : STRUCT CGPathElement
@@ -10176,9 +10450,14 @@ class CGDataConsumerCallbacks {
 typealias CGErrorCallback = MemorySegment
 
 /**
+ * {@snippet lang=c : STRUCT CGLayer
+ */
+class CGLayerPointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef (Declared(CGLayer))* CGLayerRef;}
  */
-typealias CGLayerRef = MemorySegment
+typealias CGLayerRef = CGLayerPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(CGPDFContentStream))* CGPDFContentStreamRef;}
@@ -10489,9 +10768,14 @@ typealias IOColorComponent = Short
 typealias NXCoord = Float
 
 /**
+ * {@snippet lang=c : STRUCT __CGEvent
+ */
+class _CGEventPointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef (Declared(__CGEvent))* CGEventRef;}
  */
-typealias CGEventRef = MemorySegment
+typealias CGEventRef = _CGEventPointer
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = LongLong CGEventTimestamp;}
@@ -10957,6 +11241,16 @@ typealias TranslationFlags = Int
 typealias UAZoomChangeFocusType = Int
 
 /**
+ * {@snippet lang=c : STRUCT CGImageSource
+ */
+class CGImageSourcePointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(CGImageSource))* CGImageSourceRef;}
+ */
+typealias CGImageSourceRef = CGImageSourcePointer
+
+/**
  * {@snippet lang=c : typedef UNSIGNED = Short PMDestinationType;}
  */
 typealias PMDestinationType = Short
@@ -11332,9 +11626,14 @@ typealias NSAppKitVersion = Double
 typealias NSModalResponse = Long
 
 /**
+ * {@snippet lang=c : STRUCT _NSModalSession
+ */
+class _NSModalSessionPointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef (Declared(_NSModalSession))* NSModalSession;}
  */
-typealias NSModalSession = MemorySegment
+typealias NSModalSession = _NSModalSessionPointer
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAboutPanelOptionKey;}
@@ -11424,71 +11723,94 @@ typealias NSCollectionViewDecorationElementKind = MemorySegment
 /**
  * {@snippet lang=c : STRUCT NSDirectionalEdgeInsets
  */
-class NSDirectionalEdgeInsets {
+class NSDirectionalEdgeInsets internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_DOUBLE.withName("top"),
-            ValueLayout.JAVA_DOUBLE.withName("leading"),
-            ValueLayout.JAVA_DOUBLE.withName("bottom"),
-            ValueLayout.JAVA_DOUBLE.withName("trailing")
-        ).withName("NSDirectionalEdgeInsets")
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("top"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("leading"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("bottom"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("trailing")
+        ).withByteAlignment(8L).withName("NSDirectionalEdgeInsets")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): NSDirectionalEdgeInsets =
+            NSDirectionalEdgeInsets(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): NSDirectionalEdgeInsetsPointer =
+            NSDirectionalEdgeInsetsPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): NSDirectionalEdgeInsets =
+            NSDirectionalEdgeInsets(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): NSDirectionalEdgeInsets =
+            NSDirectionalEdgeInsets(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): NSDirectionalEdgeInsetsPointer =
+            NSDirectionalEdgeInsetsPointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val top_VH: VarHandle = layout.varHandle(groupElement("top"))
+    constructor(top: Double, leading: Double, bottom: Double, trailing: Double) : this(Arena.ofAuto().allocate(layout)) {
+        top(top)
+        leading(leading)
+        bottom(bottom)
+        trailing(trailing)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun top(segment: MemorySegment): Double =
-        top_VH.get(segment, 0L) as Double
+    private val top_VH: VarHandle = layout.varHandle(groupElement("top"))
 
-    fun top(segment: MemorySegment, value: Double) =
+    fun top(): Double = top_VH.get(segment, 0L) as Double
+
+    fun top(value: Double) =
         top_VH.set(segment, 0L, value)
 
-    val leading_VH: VarHandle = layout.varHandle(groupElement("leading"))
+    var top: Double
+        get() = top()
+        set(value) = top(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun leading(segment: MemorySegment): Double =
-        leading_VH.get(segment, 0L) as Double
+    private val leading_VH: VarHandle = layout.varHandle(groupElement("leading"))
 
-    fun leading(segment: MemorySegment, value: Double) =
+    fun leading(): Double = leading_VH.get(segment, 0L) as Double
+
+    fun leading(value: Double) =
         leading_VH.set(segment, 0L, value)
 
-    val bottom_VH: VarHandle = layout.varHandle(groupElement("bottom"))
+    var leading: Double
+        get() = leading()
+        set(value) = leading(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun bottom(segment: MemorySegment): Double =
-        bottom_VH.get(segment, 0L) as Double
+    private val bottom_VH: VarHandle = layout.varHandle(groupElement("bottom"))
 
-    fun bottom(segment: MemorySegment, value: Double) =
+    fun bottom(): Double = bottom_VH.get(segment, 0L) as Double
+
+    fun bottom(value: Double) =
         bottom_VH.set(segment, 0L, value)
 
-    val trailing_VH: VarHandle = layout.varHandle(groupElement("trailing"))
+    var bottom: Double
+        get() = bottom()
+        set(value) = bottom(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun trailing(segment: MemorySegment): Double =
-        trailing_VH.get(segment, 0L) as Double
+    private val trailing_VH: VarHandle = layout.varHandle(groupElement("trailing"))
 
-    fun trailing(segment: MemorySegment, value: Double) =
+    fun trailing(): Double = trailing_VH.get(segment, 0L) as Double
+
+    fun trailing(value: Double) =
         trailing_VH.set(segment, 0L, value)
+
+    var trailing: Double
+        get() = trailing()
+        set(value) = trailing(value)
 } // End class
+
+class NSDirectionalEdgeInsetsPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): NSDirectionalEdgeInsets {
+        val offset = NSDirectionalEdgeInsets.byteSize * index
+        val bytes = NSDirectionalEdgeInsets.byteSize * (index + 1L)
+        return NSDirectionalEdgeInsets(segment.reinterpret(bytes).asSlice(offset, NSDirectionalEdgeInsets.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : typedef (Void)* NSCollectionViewCompositionalLayoutSectionProvider;}
@@ -11641,9 +11963,163 @@ typealias NSBrowserColumnsAutosaveName = MemorySegment
 typealias CVOptionFlags = Long
 
 /**
+ * {@snippet lang=c : STRUCT CVSMPTETime
+ */
+class CVSMPTETime {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withName("subframes"),
+            ValueLayout.JAVA_SHORT.withName("subframeDivisor"),
+            ValueLayout.JAVA_INT.withName("counter"),
+            ValueLayout.JAVA_INT.withName("type"),
+            ValueLayout.JAVA_INT.withName("flags"),
+            ValueLayout.JAVA_SHORT.withName("hours"),
+            ValueLayout.JAVA_SHORT.withName("minutes"),
+            ValueLayout.JAVA_SHORT.withName("seconds"),
+            ValueLayout.JAVA_SHORT.withName("frames")
+        ).withName("CVSMPTETime")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val subframes_VH: VarHandle = layout.varHandle(groupElement("subframes"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun subframes(segment: MemorySegment): Short =
+        subframes_VH.get(segment, 0L) as Short
+
+    fun subframes(segment: MemorySegment, value: Short) =
+        subframes_VH.set(segment, 0L, value)
+
+    val subframeDivisor_VH: VarHandle = layout.varHandle(groupElement("subframeDivisor"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun subframeDivisor(segment: MemorySegment): Short =
+        subframeDivisor_VH.get(segment, 0L) as Short
+
+    fun subframeDivisor(segment: MemorySegment, value: Short) =
+        subframeDivisor_VH.set(segment, 0L, value)
+
+    val counter_VH: VarHandle = layout.varHandle(groupElement("counter"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun counter(segment: MemorySegment): Int =
+        counter_VH.get(segment, 0L) as Int
+
+    fun counter(segment: MemorySegment, value: Int) =
+        counter_VH.set(segment, 0L, value)
+
+    val type_VH: VarHandle = layout.varHandle(groupElement("type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun type(segment: MemorySegment): Int =
+        type_VH.get(segment, 0L) as Int
+
+    fun type(segment: MemorySegment, value: Int) =
+        type_VH.set(segment, 0L, value)
+
+    val flags_VH: VarHandle = layout.varHandle(groupElement("flags"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun flags(segment: MemorySegment): Int =
+        flags_VH.get(segment, 0L) as Int
+
+    fun flags(segment: MemorySegment, value: Int) =
+        flags_VH.set(segment, 0L, value)
+
+    val hours_VH: VarHandle = layout.varHandle(groupElement("hours"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun hours(segment: MemorySegment): Short =
+        hours_VH.get(segment, 0L) as Short
+
+    fun hours(segment: MemorySegment, value: Short) =
+        hours_VH.set(segment, 0L, value)
+
+    val minutes_VH: VarHandle = layout.varHandle(groupElement("minutes"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun minutes(segment: MemorySegment): Short =
+        minutes_VH.get(segment, 0L) as Short
+
+    fun minutes(segment: MemorySegment, value: Short) =
+        minutes_VH.set(segment, 0L, value)
+
+    val seconds_VH: VarHandle = layout.varHandle(groupElement("seconds"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun seconds(segment: MemorySegment): Short =
+        seconds_VH.get(segment, 0L) as Short
+
+    fun seconds(segment: MemorySegment, value: Short) =
+        seconds_VH.set(segment, 0L, value)
+
+    val frames_VH: VarHandle = layout.varHandle(groupElement("frames"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun frames(segment: MemorySegment): Short =
+        frames_VH.get(segment, 0L) as Short
+
+    fun frames(segment: MemorySegment, value: Short) =
+        frames_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT CVTimeStamp
+ */
+class CVTimeStampPointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef Int CVReturn;}
  */
 typealias CVReturn = Int
+
+/**
+ * {@snippet lang=c : STRUCT _CGLContextObject
+ */
+class _CGLContextObjectPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(_CGLContextObject))* CGLContextObj;}
+ */
+typealias CGLContextObj = _CGLContextObjectPointer
+
+/**
+ * {@snippet lang=c : STRUCT _CGLPixelFormatObject
+ */
+class _CGLPixelFormatObjectPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(_CGLPixelFormatObject))* CGLPixelFormatObj;}
+ */
+typealias CGLPixelFormatObj = _CGLPixelFormatObjectPointer
+
+/**
+ * {@snippet lang=c : STRUCT _CGLPBufferObject
+ */
+class _CGLPBufferObjectPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(_CGLPBufferObject))* CGLPBufferObj;}
+ */
+typealias CGLPBufferObj = _CGLPBufferObjectPointer
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int GLbitfield;}
@@ -11779,6 +12255,21 @@ typealias GLintptrARB = Long
  * {@snippet lang=c : typedef Long GLsizeiptrARB;}
  */
 typealias GLsizeiptrARB = Long
+
+/**
+ * {@snippet lang=c : STRUCT __CVBuffer
+ */
+class _CVBufferPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(__CVBuffer))* CVImageBufferRef;}
+ */
+typealias CVImageBufferRef = _CVBufferPointer
+
+/**
+ * {@snippet lang=c : typedef (Declared(__CVBuffer))* CVPixelBufferRef;}
+ */
+typealias CVPixelBufferRef = _CVBufferPointer
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int IOSurfaceID;}
@@ -12038,191 +12529,250 @@ typealias CAMediaTimingFillMode = MemorySegment
 /**
  * {@snippet lang=c : STRUCT CATransform3D
  */
-class CATransform3D {
+class CATransform3D internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_DOUBLE.withName("m11"),
-            ValueLayout.JAVA_DOUBLE.withName("m12"),
-            ValueLayout.JAVA_DOUBLE.withName("m13"),
-            ValueLayout.JAVA_DOUBLE.withName("m14"),
-            ValueLayout.JAVA_DOUBLE.withName("m21"),
-            ValueLayout.JAVA_DOUBLE.withName("m22"),
-            ValueLayout.JAVA_DOUBLE.withName("m23"),
-            ValueLayout.JAVA_DOUBLE.withName("m24"),
-            ValueLayout.JAVA_DOUBLE.withName("m31"),
-            ValueLayout.JAVA_DOUBLE.withName("m32"),
-            ValueLayout.JAVA_DOUBLE.withName("m33"),
-            ValueLayout.JAVA_DOUBLE.withName("m34"),
-            ValueLayout.JAVA_DOUBLE.withName("m41"),
-            ValueLayout.JAVA_DOUBLE.withName("m42"),
-            ValueLayout.JAVA_DOUBLE.withName("m43"),
-            ValueLayout.JAVA_DOUBLE.withName("m44")
-        ).withName("CATransform3D")
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m11"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m12"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m13"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m14"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m21"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m22"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m23"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m24"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m31"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m32"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m33"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m34"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m41"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m42"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m43"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("m44")
+        ).withByteAlignment(8L).withName("CATransform3D")
 
         val byteSize: Long
             get() = layout.byteSize()
 
-        fun allocate(allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(layout)
+        fun allocate(allocator: SegmentAllocator): CATransform3D =
+            CATransform3D(allocator.allocate(layout))
 
-        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
-            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): CATransform3DPointer =
+            CATransform3DPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
 
-        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
-            array.asSlice(byteSize * index)
+        internal fun asSlice(array: MemorySegment, index: Long): CATransform3D =
+            CATransform3D(array.asSlice(byteSize * index, byteSize))
 
-        fun reinterpret(addr: MemorySegment): MemorySegment =
-            addr.reinterpret(byteSize)
+        internal fun reinterpret(addr: MemorySegment): CATransform3D =
+            CATransform3D(addr.reinterpret(byteSize))
 
-        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
-            addr.reinterpret(byteSize * elementCount)
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): CATransform3DPointer =
+            CATransform3DPointer(addr.reinterpret(byteSize * elementCount))
 
     } // End companion object
 
-    val m11_VH: VarHandle = layout.varHandle(groupElement("m11"))
+    constructor(m11: Double, m12: Double, m13: Double, m14: Double, m21: Double, m22: Double, m23: Double, m24: Double, m31: Double, m32: Double, m33: Double, m34: Double, m41: Double, m42: Double, m43: Double, m44: Double) : this(Arena.ofAuto().allocate(layout)) {
+        m11(m11)
+        m12(m12)
+        m13(m13)
+        m14(m14)
+        m21(m21)
+        m22(m22)
+        m23(m23)
+        m24(m24)
+        m31(m31)
+        m32(m32)
+        m33(m33)
+        m34(m34)
+        m41(m41)
+        m42(m42)
+        m43(m43)
+        m44(m44)
+    }
 
-    @Suppress("UNCHECKED_CAST")
-    fun m11(segment: MemorySegment): Double =
-        m11_VH.get(segment, 0L) as Double
+    private val m11_VH: VarHandle = layout.varHandle(groupElement("m11"))
 
-    fun m11(segment: MemorySegment, value: Double) =
+    fun m11(): Double = m11_VH.get(segment, 0L) as Double
+
+    fun m11(value: Double) =
         m11_VH.set(segment, 0L, value)
 
-    val m12_VH: VarHandle = layout.varHandle(groupElement("m12"))
+    var m11: Double
+        get() = m11()
+        set(value) = m11(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m12(segment: MemorySegment): Double =
-        m12_VH.get(segment, 0L) as Double
+    private val m12_VH: VarHandle = layout.varHandle(groupElement("m12"))
 
-    fun m12(segment: MemorySegment, value: Double) =
+    fun m12(): Double = m12_VH.get(segment, 0L) as Double
+
+    fun m12(value: Double) =
         m12_VH.set(segment, 0L, value)
 
-    val m13_VH: VarHandle = layout.varHandle(groupElement("m13"))
+    var m12: Double
+        get() = m12()
+        set(value) = m12(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m13(segment: MemorySegment): Double =
-        m13_VH.get(segment, 0L) as Double
+    private val m13_VH: VarHandle = layout.varHandle(groupElement("m13"))
 
-    fun m13(segment: MemorySegment, value: Double) =
+    fun m13(): Double = m13_VH.get(segment, 0L) as Double
+
+    fun m13(value: Double) =
         m13_VH.set(segment, 0L, value)
 
-    val m14_VH: VarHandle = layout.varHandle(groupElement("m14"))
+    var m13: Double
+        get() = m13()
+        set(value) = m13(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m14(segment: MemorySegment): Double =
-        m14_VH.get(segment, 0L) as Double
+    private val m14_VH: VarHandle = layout.varHandle(groupElement("m14"))
 
-    fun m14(segment: MemorySegment, value: Double) =
+    fun m14(): Double = m14_VH.get(segment, 0L) as Double
+
+    fun m14(value: Double) =
         m14_VH.set(segment, 0L, value)
 
-    val m21_VH: VarHandle = layout.varHandle(groupElement("m21"))
+    var m14: Double
+        get() = m14()
+        set(value) = m14(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m21(segment: MemorySegment): Double =
-        m21_VH.get(segment, 0L) as Double
+    private val m21_VH: VarHandle = layout.varHandle(groupElement("m21"))
 
-    fun m21(segment: MemorySegment, value: Double) =
+    fun m21(): Double = m21_VH.get(segment, 0L) as Double
+
+    fun m21(value: Double) =
         m21_VH.set(segment, 0L, value)
 
-    val m22_VH: VarHandle = layout.varHandle(groupElement("m22"))
+    var m21: Double
+        get() = m21()
+        set(value) = m21(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m22(segment: MemorySegment): Double =
-        m22_VH.get(segment, 0L) as Double
+    private val m22_VH: VarHandle = layout.varHandle(groupElement("m22"))
 
-    fun m22(segment: MemorySegment, value: Double) =
+    fun m22(): Double = m22_VH.get(segment, 0L) as Double
+
+    fun m22(value: Double) =
         m22_VH.set(segment, 0L, value)
 
-    val m23_VH: VarHandle = layout.varHandle(groupElement("m23"))
+    var m22: Double
+        get() = m22()
+        set(value) = m22(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m23(segment: MemorySegment): Double =
-        m23_VH.get(segment, 0L) as Double
+    private val m23_VH: VarHandle = layout.varHandle(groupElement("m23"))
 
-    fun m23(segment: MemorySegment, value: Double) =
+    fun m23(): Double = m23_VH.get(segment, 0L) as Double
+
+    fun m23(value: Double) =
         m23_VH.set(segment, 0L, value)
 
-    val m24_VH: VarHandle = layout.varHandle(groupElement("m24"))
+    var m23: Double
+        get() = m23()
+        set(value) = m23(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m24(segment: MemorySegment): Double =
-        m24_VH.get(segment, 0L) as Double
+    private val m24_VH: VarHandle = layout.varHandle(groupElement("m24"))
 
-    fun m24(segment: MemorySegment, value: Double) =
+    fun m24(): Double = m24_VH.get(segment, 0L) as Double
+
+    fun m24(value: Double) =
         m24_VH.set(segment, 0L, value)
 
-    val m31_VH: VarHandle = layout.varHandle(groupElement("m31"))
+    var m24: Double
+        get() = m24()
+        set(value) = m24(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m31(segment: MemorySegment): Double =
-        m31_VH.get(segment, 0L) as Double
+    private val m31_VH: VarHandle = layout.varHandle(groupElement("m31"))
 
-    fun m31(segment: MemorySegment, value: Double) =
+    fun m31(): Double = m31_VH.get(segment, 0L) as Double
+
+    fun m31(value: Double) =
         m31_VH.set(segment, 0L, value)
 
-    val m32_VH: VarHandle = layout.varHandle(groupElement("m32"))
+    var m31: Double
+        get() = m31()
+        set(value) = m31(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m32(segment: MemorySegment): Double =
-        m32_VH.get(segment, 0L) as Double
+    private val m32_VH: VarHandle = layout.varHandle(groupElement("m32"))
 
-    fun m32(segment: MemorySegment, value: Double) =
+    fun m32(): Double = m32_VH.get(segment, 0L) as Double
+
+    fun m32(value: Double) =
         m32_VH.set(segment, 0L, value)
 
-    val m33_VH: VarHandle = layout.varHandle(groupElement("m33"))
+    var m32: Double
+        get() = m32()
+        set(value) = m32(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m33(segment: MemorySegment): Double =
-        m33_VH.get(segment, 0L) as Double
+    private val m33_VH: VarHandle = layout.varHandle(groupElement("m33"))
 
-    fun m33(segment: MemorySegment, value: Double) =
+    fun m33(): Double = m33_VH.get(segment, 0L) as Double
+
+    fun m33(value: Double) =
         m33_VH.set(segment, 0L, value)
 
-    val m34_VH: VarHandle = layout.varHandle(groupElement("m34"))
+    var m33: Double
+        get() = m33()
+        set(value) = m33(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m34(segment: MemorySegment): Double =
-        m34_VH.get(segment, 0L) as Double
+    private val m34_VH: VarHandle = layout.varHandle(groupElement("m34"))
 
-    fun m34(segment: MemorySegment, value: Double) =
+    fun m34(): Double = m34_VH.get(segment, 0L) as Double
+
+    fun m34(value: Double) =
         m34_VH.set(segment, 0L, value)
 
-    val m41_VH: VarHandle = layout.varHandle(groupElement("m41"))
+    var m34: Double
+        get() = m34()
+        set(value) = m34(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m41(segment: MemorySegment): Double =
-        m41_VH.get(segment, 0L) as Double
+    private val m41_VH: VarHandle = layout.varHandle(groupElement("m41"))
 
-    fun m41(segment: MemorySegment, value: Double) =
+    fun m41(): Double = m41_VH.get(segment, 0L) as Double
+
+    fun m41(value: Double) =
         m41_VH.set(segment, 0L, value)
 
-    val m42_VH: VarHandle = layout.varHandle(groupElement("m42"))
+    var m41: Double
+        get() = m41()
+        set(value) = m41(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m42(segment: MemorySegment): Double =
-        m42_VH.get(segment, 0L) as Double
+    private val m42_VH: VarHandle = layout.varHandle(groupElement("m42"))
 
-    fun m42(segment: MemorySegment, value: Double) =
+    fun m42(): Double = m42_VH.get(segment, 0L) as Double
+
+    fun m42(value: Double) =
         m42_VH.set(segment, 0L, value)
 
-    val m43_VH: VarHandle = layout.varHandle(groupElement("m43"))
+    var m42: Double
+        get() = m42()
+        set(value) = m42(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m43(segment: MemorySegment): Double =
-        m43_VH.get(segment, 0L) as Double
+    private val m43_VH: VarHandle = layout.varHandle(groupElement("m43"))
 
-    fun m43(segment: MemorySegment, value: Double) =
+    fun m43(): Double = m43_VH.get(segment, 0L) as Double
+
+    fun m43(value: Double) =
         m43_VH.set(segment, 0L, value)
 
-    val m44_VH: VarHandle = layout.varHandle(groupElement("m44"))
+    var m43: Double
+        get() = m43()
+        set(value) = m43(value)
 
-    @Suppress("UNCHECKED_CAST")
-    fun m44(segment: MemorySegment): Double =
-        m44_VH.get(segment, 0L) as Double
+    private val m44_VH: VarHandle = layout.varHandle(groupElement("m44"))
 
-    fun m44(segment: MemorySegment, value: Double) =
+    fun m44(): Double = m44_VH.get(segment, 0L) as Double
+
+    fun m44(value: Double) =
         m44_VH.set(segment, 0L, value)
+
+    var m44: Double
+        get() = m44()
+        set(value) = m44(value)
 } // End class
+
+class CATransform3DPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): CATransform3D {
+        val offset = CATransform3D.byteSize * index
+        val bytes = CATransform3D.byteSize * (index + 1L)
+        return CATransform3D(segment.reinterpret(bytes).asSlice(offset, CATransform3D.byteSize))
+    }
+}
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* CALayerContentsGravity;}

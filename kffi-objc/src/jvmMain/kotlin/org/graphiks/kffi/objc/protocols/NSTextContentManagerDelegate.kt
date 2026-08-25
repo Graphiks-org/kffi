@@ -14,7 +14,7 @@ interface NSTextContentManagerDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'textContentManager:textElementAtLocation:' not implemented")
 
     // @optional
-    fun textContentManager_shouldEnumerateTextElement_options(textContentManager: MemorySegment, textElement: MemorySegment, options: MemorySegment): Boolean =
+    fun textContentManager_shouldEnumerateTextElement_options(textContentManager: MemorySegment, textElement: MemorySegment, options: NSTextContentManagerEnumerationOptions): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'textContentManager:shouldEnumerateTextElement:options:' not implemented")
 
 }

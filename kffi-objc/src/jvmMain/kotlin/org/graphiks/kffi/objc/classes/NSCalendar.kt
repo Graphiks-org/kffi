@@ -40,29 +40,29 @@ open class NSCalendar(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ident) as MemorySegment
     }
 
-    open fun minimumRangeOfUnit(unit: MemorySegment): MemorySegment {
+    open fun minimumRangeOfUnit(unit: NSCalendarUnit): NSRange {
         val sel = ObjCRuntime.sel("minimumRangeOfUnit:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, unit) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, unit.rawValue))
     }
 
-    open fun maximumRangeOfUnit(unit: MemorySegment): MemorySegment {
+    open fun maximumRangeOfUnit(unit: NSCalendarUnit): NSRange {
         val sel = ObjCRuntime.sel("maximumRangeOfUnit:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, unit) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, unit.rawValue))
     }
 
-    open fun rangeOfUnit_inUnit_forDate(smaller: MemorySegment, larger: MemorySegment, date: MemorySegment): MemorySegment {
+    open fun rangeOfUnit_inUnit_forDate(smaller: NSCalendarUnit, larger: NSCalendarUnit, date: MemorySegment): NSRange {
         val sel = ObjCRuntime.sel("rangeOfUnit:inUnit:forDate:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, smaller, larger, date) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, smaller.rawValue, larger.rawValue, date))
     }
 
-    open fun ordinalityOfUnit_inUnit_forDate(smaller: MemorySegment, larger: MemorySegment, date: MemorySegment): Long {
+    open fun ordinalityOfUnit_inUnit_forDate(smaller: NSCalendarUnit, larger: NSCalendarUnit, date: MemorySegment): Long {
         val sel = ObjCRuntime.sel("ordinalityOfUnit:inUnit:forDate:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, smaller, larger, date) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, smaller.rawValue, larger.rawValue, date) as Long
     }
 
-    open fun rangeOfUnit_startDate_interval_forDate(unit: MemorySegment, datep: MemorySegment, tip: MemorySegment, date: MemorySegment): Boolean {
+    open fun rangeOfUnit_startDate_interval_forDate(unit: NSCalendarUnit, datep: MemorySegment, tip: MemorySegment, date: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("rangeOfUnit:startDate:interval:forDate:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, unit, datep, tip, date) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, unit.rawValue, datep, tip, date) as Boolean
     }
 
     open fun dateFromComponents(comps: MemorySegment): MemorySegment {
@@ -70,19 +70,19 @@ open class NSCalendar(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, comps) as MemorySegment
     }
 
-    open fun components_fromDate(unitFlags: MemorySegment, date: MemorySegment): MemorySegment {
+    open fun components_fromDate(unitFlags: NSCalendarUnit, date: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("components:fromDate:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unitFlags, date) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unitFlags.rawValue, date) as MemorySegment
     }
 
-    open fun dateByAddingComponents_toDate_options(comps: MemorySegment, date: MemorySegment, opts: MemorySegment): MemorySegment {
+    open fun dateByAddingComponents_toDate_options(comps: MemorySegment, date: MemorySegment, opts: NSCalendarOptions): MemorySegment {
         val sel = ObjCRuntime.sel("dateByAddingComponents:toDate:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, comps, date, opts) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, comps, date, opts.rawValue) as MemorySegment
     }
 
-    open fun components_fromDate_toDate_options(unitFlags: MemorySegment, startingDate: MemorySegment, resultDate: MemorySegment, opts: MemorySegment): MemorySegment {
+    open fun components_fromDate_toDate_options(unitFlags: NSCalendarUnit, startingDate: MemorySegment, resultDate: MemorySegment, opts: NSCalendarOptions): MemorySegment {
         val sel = ObjCRuntime.sel("components:fromDate:toDate:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unitFlags, startingDate, resultDate, opts) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unitFlags.rawValue, startingDate, resultDate, opts.rawValue) as MemorySegment
     }
 
     open fun getEra_year_month_day_fromDate(eraValuePointer: MemorySegment, yearValuePointer: MemorySegment, monthValuePointer: MemorySegment, dayValuePointer: MemorySegment, date: MemorySegment): Unit {
@@ -100,9 +100,9 @@ open class NSCalendar(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, hourValuePointer, minuteValuePointer, secondValuePointer, nanosecondValuePointer, date)
     }
 
-    open fun component_fromDate(unit: MemorySegment, date: MemorySegment): Long {
+    open fun component_fromDate(unit: NSCalendarUnit, date: MemorySegment): Long {
         val sel = ObjCRuntime.sel("component:fromDate:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, unit, date) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, unit.rawValue, date) as Long
     }
 
     open fun dateWithEra_year_month_day_hour_minute_second_nanosecond(eraValue: Long, yearValue: Long, monthValue: Long, dayValue: Long, hourValue: Long, minuteValue: Long, secondValue: Long, nanosecondValue: Long): MemorySegment {
@@ -125,14 +125,14 @@ open class NSCalendar(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, timezone, date) as MemorySegment
     }
 
-    open fun compareDate_toDate_toUnitGranularity(date1: MemorySegment, date2: MemorySegment, unit: MemorySegment): MemorySegment {
+    open fun compareDate_toDate_toUnitGranularity(date1: MemorySegment, date2: MemorySegment, unit: NSCalendarUnit): NSComparisonResult {
         val sel = ObjCRuntime.sel("compareDate:toDate:toUnitGranularity:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, date1, date2, unit) as MemorySegment
+        return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, date1, date2, unit.rawValue) as Long)
     }
 
-    open fun isDate_equalToDate_toUnitGranularity(date1: MemorySegment, date2: MemorySegment, unit: MemorySegment): Boolean {
+    open fun isDate_equalToDate_toUnitGranularity(date1: MemorySegment, date2: MemorySegment, unit: NSCalendarUnit): Boolean {
         val sel = ObjCRuntime.sel("isDate:equalToDate:toUnitGranularity:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, date1, date2, unit) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, date1, date2, unit.rawValue) as Boolean
     }
 
     open fun isDate_inSameDayAsDate(date1: MemorySegment, date2: MemorySegment): Boolean {
@@ -165,49 +165,49 @@ open class NSCalendar(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, datep, tip, date) as Boolean
     }
 
-    open fun nextWeekendStartDate_interval_options_afterDate(datep: MemorySegment, tip: MemorySegment, options: MemorySegment, date: MemorySegment): Boolean {
+    open fun nextWeekendStartDate_interval_options_afterDate(datep: MemorySegment, tip: MemorySegment, options: NSCalendarOptions, date: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("nextWeekendStartDate:interval:options:afterDate:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, datep, tip, options, date) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, datep, tip, options.rawValue, date) as Boolean
     }
 
-    open fun components_fromDateComponents_toDateComponents_options(unitFlags: MemorySegment, startingDateComp: MemorySegment, resultDateComp: MemorySegment, options: MemorySegment): MemorySegment {
+    open fun components_fromDateComponents_toDateComponents_options(unitFlags: NSCalendarUnit, startingDateComp: MemorySegment, resultDateComp: MemorySegment, options: NSCalendarOptions): MemorySegment {
         val sel = ObjCRuntime.sel("components:fromDateComponents:toDateComponents:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unitFlags, startingDateComp, resultDateComp, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unitFlags.rawValue, startingDateComp, resultDateComp, options.rawValue) as MemorySegment
     }
 
-    open fun dateByAddingUnit_value_toDate_options(unit: MemorySegment, value: Long, date: MemorySegment, options: MemorySegment): MemorySegment {
+    open fun dateByAddingUnit_value_toDate_options(unit: NSCalendarUnit, value: Long, date: MemorySegment, options: NSCalendarOptions): MemorySegment {
         val sel = ObjCRuntime.sel("dateByAddingUnit:value:toDate:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unit, value, date, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unit.rawValue, value, date, options.rawValue) as MemorySegment
     }
 
-    open fun enumerateDatesStartingAfterDate_matchingComponents_options_usingBlock(start: MemorySegment, comps: MemorySegment, opts: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateDatesStartingAfterDate_matchingComponents_options_usingBlock(start: MemorySegment, comps: MemorySegment, opts: NSCalendarOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateDatesStartingAfterDate:matchingComponents:options:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, start, comps, opts, block)
+        ObjCRuntime.msgSend(null, ptr, sel, start, comps, opts.rawValue, block)
     }
 
-    open fun nextDateAfterDate_matchingComponents_options(date: MemorySegment, comps: MemorySegment, options: MemorySegment): MemorySegment {
+    open fun nextDateAfterDate_matchingComponents_options(date: MemorySegment, comps: MemorySegment, options: NSCalendarOptions): MemorySegment {
         val sel = ObjCRuntime.sel("nextDateAfterDate:matchingComponents:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, date, comps, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, date, comps, options.rawValue) as MemorySegment
     }
 
-    open fun nextDateAfterDate_matchingUnit_value_options(date: MemorySegment, unit: MemorySegment, value: Long, options: MemorySegment): MemorySegment {
+    open fun nextDateAfterDate_matchingUnit_value_options(date: MemorySegment, unit: NSCalendarUnit, value: Long, options: NSCalendarOptions): MemorySegment {
         val sel = ObjCRuntime.sel("nextDateAfterDate:matchingUnit:value:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, date, unit, value, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, date, unit.rawValue, value, options.rawValue) as MemorySegment
     }
 
-    open fun nextDateAfterDate_matchingHour_minute_second_options(date: MemorySegment, hourValue: Long, minuteValue: Long, secondValue: Long, options: MemorySegment): MemorySegment {
+    open fun nextDateAfterDate_matchingHour_minute_second_options(date: MemorySegment, hourValue: Long, minuteValue: Long, secondValue: Long, options: NSCalendarOptions): MemorySegment {
         val sel = ObjCRuntime.sel("nextDateAfterDate:matchingHour:minute:second:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, date, hourValue, minuteValue, secondValue, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, date, hourValue, minuteValue, secondValue, options.rawValue) as MemorySegment
     }
 
-    open fun dateBySettingUnit_value_ofDate_options(unit: MemorySegment, v: Long, date: MemorySegment, opts: MemorySegment): MemorySegment {
+    open fun dateBySettingUnit_value_ofDate_options(unit: NSCalendarUnit, v: Long, date: MemorySegment, opts: NSCalendarOptions): MemorySegment {
         val sel = ObjCRuntime.sel("dateBySettingUnit:value:ofDate:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unit, v, date, opts) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, unit.rawValue, v, date, opts.rawValue) as MemorySegment
     }
 
-    open fun dateBySettingHour_minute_second_ofDate_options(h: Long, m: Long, s: Long, date: MemorySegment, opts: MemorySegment): MemorySegment {
+    open fun dateBySettingHour_minute_second_ofDate_options(h: Long, m: Long, s: Long, date: MemorySegment, opts: NSCalendarOptions): MemorySegment {
         val sel = ObjCRuntime.sel("dateBySettingHour:minute:second:ofDate:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, h, m, s, date, opts) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, h, m, s, date, opts.rawValue) as MemorySegment
     }
 
     open fun date_matchesComponents(date: MemorySegment, components: MemorySegment): Boolean {

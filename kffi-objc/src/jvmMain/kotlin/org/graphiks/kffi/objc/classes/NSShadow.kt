@@ -26,13 +26,13 @@ open class NSShadow(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property shadowOffset
-    open fun shadowOffset(): MemorySegment {
+    open fun shadowOffset(): NSSize {
         val sel = ObjCRuntime.sel("shadowOffset")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setShadowOffset(value: MemorySegment) {
+    open fun setShadowOffset(value: NSSize) {
         val sel = ObjCRuntime.sel("setShadowOffset:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property shadowBlurRadius

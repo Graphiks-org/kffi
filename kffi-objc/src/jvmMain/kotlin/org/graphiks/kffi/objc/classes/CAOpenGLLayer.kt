@@ -14,34 +14,34 @@ open class CAOpenGLLayer(override val ptr: MemorySegment) : CALayer(ptr) {
 
     }
 
-    open fun canDrawInCGLContext_pixelFormat_forLayerTime_displayTime(ctx: MemorySegment, pf: MemorySegment, t: Double, ts: MemorySegment): Boolean {
+    open fun canDrawInCGLContext_pixelFormat_forLayerTime_displayTime(ctx: CGLContextObj, pf: CGLPixelFormatObj, t: Double, ts: CVTimeStampPointer): Boolean {
         val sel = ObjCRuntime.sel("canDrawInCGLContext:pixelFormat:forLayerTime:displayTime:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ctx, pf, t, ts) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ctx.segment, pf.segment, t, ts.segment) as Boolean
     }
 
-    open fun drawInCGLContext_pixelFormat_forLayerTime_displayTime(ctx: MemorySegment, pf: MemorySegment, t: Double, ts: MemorySegment): Unit {
+    open fun drawInCGLContext_pixelFormat_forLayerTime_displayTime(ctx: CGLContextObj, pf: CGLPixelFormatObj, t: Double, ts: CVTimeStampPointer): Unit {
         val sel = ObjCRuntime.sel("drawInCGLContext:pixelFormat:forLayerTime:displayTime:")
-        ObjCRuntime.msgSend(null, ptr, sel, ctx, pf, t, ts)
+        ObjCRuntime.msgSend(null, ptr, sel, ctx.segment, pf.segment, t, ts.segment)
     }
 
-    open fun copyCGLPixelFormatForDisplayMask(mask: Int): MemorySegment {
+    open fun copyCGLPixelFormatForDisplayMask(mask: Int): CGLPixelFormatObj {
         val sel = ObjCRuntime.sel("copyCGLPixelFormatForDisplayMask:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, mask) as MemorySegment
+        return CGLPixelFormatObj(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, mask) as MemorySegment)
     }
 
-    open fun releaseCGLPixelFormat(pf: MemorySegment): Unit {
+    open fun releaseCGLPixelFormat(pf: CGLPixelFormatObj): Unit {
         val sel = ObjCRuntime.sel("releaseCGLPixelFormat:")
-        ObjCRuntime.msgSend(null, ptr, sel, pf)
+        ObjCRuntime.msgSend(null, ptr, sel, pf.segment)
     }
 
-    open fun copyCGLContextForPixelFormat(pf: MemorySegment): MemorySegment {
+    open fun copyCGLContextForPixelFormat(pf: CGLPixelFormatObj): CGLContextObj {
         val sel = ObjCRuntime.sel("copyCGLContextForPixelFormat:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, pf) as MemorySegment
+        return CGLContextObj(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, pf.segment) as MemorySegment)
     }
 
-    open fun releaseCGLContext(ctx: MemorySegment): Unit {
+    open fun releaseCGLContext(ctx: CGLContextObj): Unit {
         val sel = ObjCRuntime.sel("releaseCGLContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, ctx)
+        ObjCRuntime.msgSend(null, ptr, sel, ctx.segment)
     }
 
     // @property asynchronous
@@ -55,13 +55,13 @@ open class CAOpenGLLayer(override val ptr: MemorySegment) : CALayer(ptr) {
     }
 
     // @property colorspace
-    open fun colorspace(): MemorySegment {
+    open fun colorspace(): CGColorSpaceRef {
         val sel = ObjCRuntime.sel("colorspace")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGColorSpaceRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
-    open fun setColorspace(value: MemorySegment) {
+    open fun setColorspace(value: CGColorSpaceRef) {
         val sel = ObjCRuntime.sel("setColorspace:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.segment)
     }
 
     // @property wantsExtendedDynamicRangeContent

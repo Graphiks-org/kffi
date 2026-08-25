@@ -19,13 +19,13 @@ open class NSCandidateListTouchBarItem(override val ptr: MemorySegment) : NSTouc
         ObjCRuntime.msgSend(null, ptr, sel, isVisible)
     }
 
-    open fun setCandidates_forSelectedRange_inString(candidates: MemorySegment, selectedRange: MemorySegment, originalString: MemorySegment): Unit {
+    open fun setCandidates_forSelectedRange_inString(candidates: MemorySegment, selectedRange: NSRange, originalString: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("setCandidates:forSelectedRange:inString:")
-        ObjCRuntime.msgSend(null, ptr, sel, candidates, ObjCRuntime.ObjCStructArg(selectedRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), originalString)
+        ObjCRuntime.msgSend(null, ptr, sel, candidates, ObjCRuntime.ObjCStructArg(selectedRange.segment, NSRange.layout), originalString)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun setCandidates_forSelectedRange_inString(candidates: MemorySegment, selectedRange: MemorySegment, originalString: String): Unit = setCandidates_forSelectedRange_inString(candidates, selectedRange, ObjCRuntime.newNSString(Arena.global(), originalString))
+    fun setCandidates_forSelectedRange_inString(candidates: MemorySegment, selectedRange: NSRange, originalString: String): Unit = setCandidates_forSelectedRange_inString(candidates, selectedRange, ObjCRuntime.newNSString(Arena.global(), originalString))
 
     // @property client
     /** @return NSView<NSTextInputClient> * */

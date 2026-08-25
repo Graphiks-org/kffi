@@ -34,7 +34,7 @@ interface NSTableViewDelegate : NSControlTextEditingDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'tableView:shouldEditTableColumn:row:' not implemented")
 
     // @optional
-    fun tableView_toolTipForCell_rect_tableColumn_row_mouseLocation(tableView: MemorySegment, cell: MemorySegment, rect: MemorySegment, tableColumn: MemorySegment, row: Long, mouseLocation: MemorySegment): MemorySegment =
+    fun tableView_toolTipForCell_rect_tableColumn_row_mouseLocation(tableView: MemorySegment, cell: MemorySegment, rect: NSRectPointer, tableColumn: MemorySegment, row: Long, mouseLocation: NSPoint): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:' not implemented")
 
     // @optional
@@ -107,7 +107,7 @@ interface NSTableViewDelegate : NSControlTextEditingDelegate {
 
     /** @return NSArray<NSTableViewRowAction *> * */
     // @optional
-    fun tableView_rowActionsForRow_edge(tableView: MemorySegment, row: Long, edge: MemorySegment): MemorySegment =
+    fun tableView_rowActionsForRow_edge(tableView: MemorySegment, row: Long, edge: NSTableRowActionEdge): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'tableView:rowActionsForRow:edge:' not implemented")
 
     // @optional

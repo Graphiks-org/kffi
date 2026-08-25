@@ -168,13 +168,13 @@ open class NSKeyedArchiver(override val ptr: MemorySegment) : NSCoder(ptr) {
     }
 
     // @property outputFormat
-    open fun outputFormat(): MemorySegment {
+    open fun outputFormat(): NSPropertyListFormat {
         val sel = ObjCRuntime.sel("outputFormat")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPropertyListFormat(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setOutputFormat(value: MemorySegment) {
+    open fun setOutputFormat(value: NSPropertyListFormat) {
         val sel = ObjCRuntime.sel("setOutputFormat:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property encodedData

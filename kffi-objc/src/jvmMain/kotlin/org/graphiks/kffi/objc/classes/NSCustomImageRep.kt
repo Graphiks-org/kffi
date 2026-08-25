@@ -14,9 +14,9 @@ open class NSCustomImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
 
     }
 
-    open fun initWithSize_flipped_drawingHandler(size: MemorySegment, drawingHandlerShouldBeCalledWithFlippedContext: Boolean, drawingHandler: MemorySegment): MemorySegment {
+    open fun initWithSize_flipped_drawingHandler(size: NSSize, drawingHandlerShouldBeCalledWithFlippedContext: Boolean, drawingHandler: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithSize:flipped:drawingHandler:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(size, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")), drawingHandlerShouldBeCalledWithFlippedContext, drawingHandler) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout), drawingHandlerShouldBeCalledWithFlippedContext, drawingHandler) as MemorySegment
     }
 
     open fun initWithDrawSelector_delegate(selector: MemorySegment, delegate: MemorySegment): MemorySegment {

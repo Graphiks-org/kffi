@@ -14,41 +14,41 @@ open class NSMutableAttributedString(override val ptr: MemorySegment) : NSAttrib
 
     }
 
-    open fun replaceCharactersInRange_withString(range: MemorySegment, str: MemorySegment): Unit {
+    open fun replaceCharactersInRange_withString(range: NSRange, str: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("replaceCharactersInRange:withString:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), str)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), str)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun replaceCharactersInRange_withString(range: MemorySegment, str: String): Unit = replaceCharactersInRange_withString(range, ObjCRuntime.newNSString(Arena.global(), str))
+    fun replaceCharactersInRange_withString(range: NSRange, str: String): Unit = replaceCharactersInRange_withString(range, ObjCRuntime.newNSString(Arena.global(), str))
 
-    open fun setAttributes_range(attrs: MemorySegment, range: MemorySegment): Unit {
+    open fun setAttributes_range(attrs: MemorySegment, range: NSRange): Unit {
         val sel = ObjCRuntime.sel("setAttributes:range:")
-        ObjCRuntime.msgSend(null, ptr, sel, attrs, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, attrs, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
 }
 
 // ── Category: NSExtendedMutableAttributedString on NSMutableAttributedString ─────────────────────────────────────────
 
-fun NSMutableAttributedString.addAttribute_value_range(name: MemorySegment, value: MemorySegment, range: MemorySegment): Unit {
+fun NSMutableAttributedString.addAttribute_value_range(name: MemorySegment, value: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("addAttribute:value:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, name, value, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, name, value, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.addAttributes_range(attrs: MemorySegment, range: MemorySegment): Unit {
+fun NSMutableAttributedString.addAttributes_range(attrs: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("addAttributes:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, attrs, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, attrs, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.removeAttribute_range(name: MemorySegment, range: MemorySegment): Unit {
+fun NSMutableAttributedString.removeAttribute_range(name: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("removeAttribute:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, name, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, name, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.replaceCharactersInRange_withAttributedString(range: MemorySegment, attrString: MemorySegment): Unit {
+fun NSMutableAttributedString.replaceCharactersInRange_withAttributedString(range: NSRange, attrString: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("replaceCharactersInRange:withAttributedString:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, attrString)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), attrString)
 }
 
 fun NSMutableAttributedString.insertAttributedString_atIndex(attrString: MemorySegment, loc: Long): Unit {
@@ -61,9 +61,9 @@ fun NSMutableAttributedString.appendAttributedString(attrString: MemorySegment):
     ObjCRuntime.msgSend(null, this.ptr, sel, attrString)
 }
 
-fun NSMutableAttributedString.deleteCharactersInRange(range: MemorySegment): Unit {
+fun NSMutableAttributedString.deleteCharactersInRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("deleteCharactersInRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 fun NSMutableAttributedString.setAttributedString(attrString: MemorySegment): Unit {
@@ -95,9 +95,9 @@ fun NSMutableAttributedString.appendLocalizedFormat(format: MemorySegment): Unit
 
 // ── Category: NSAttributedStringAttributeFixing on NSMutableAttributedString ─────────────────────────────────────────
 
-fun NSMutableAttributedString.fixAttributesInRange(range: MemorySegment): Unit {
+fun NSMutableAttributedString.fixAttributesInRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("fixAttributesInRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 // ── Category: NSMutableAttributedStringDocumentFormats on NSMutableAttributedString ─────────────────────────────────────────
@@ -114,51 +114,51 @@ fun NSMutableAttributedString.readFromData_options_documentAttributes_error(`dat
 
 // ── Category: NSAttributedStringAppKitAttributeFixing on NSMutableAttributedString ─────────────────────────────────────────
 
-fun NSMutableAttributedString.fixFontAttributeInRange(range: MemorySegment): Unit {
+fun NSMutableAttributedString.fixFontAttributeInRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("fixFontAttributeInRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.fixParagraphStyleAttributeInRange(range: MemorySegment): Unit {
+fun NSMutableAttributedString.fixParagraphStyleAttributeInRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("fixParagraphStyleAttributeInRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.fixAttachmentAttributeInRange(range: MemorySegment): Unit {
+fun NSMutableAttributedString.fixAttachmentAttributeInRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("fixAttachmentAttributeInRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 // ── Category: NSMutableAttributedStringAppKitAdditions on NSMutableAttributedString ─────────────────────────────────────────
 
-fun NSMutableAttributedString.superscriptRange(range: MemorySegment): Unit {
+fun NSMutableAttributedString.superscriptRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("superscriptRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.subscriptRange(range: MemorySegment): Unit {
+fun NSMutableAttributedString.subscriptRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("subscriptRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.unscriptRange(range: MemorySegment): Unit {
+fun NSMutableAttributedString.unscriptRange(range: NSRange): Unit {
     val sel = ObjCRuntime.sel("unscriptRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.applyFontTraits_range(traitMask: MemorySegment, range: MemorySegment): Unit {
+fun NSMutableAttributedString.applyFontTraits_range(traitMask: NSFontTraitMask, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("applyFontTraits:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, traitMask, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, traitMask.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.setAlignment_range(alignment: MemorySegment, range: MemorySegment): Unit {
+fun NSMutableAttributedString.setAlignment_range(alignment: NSTextAlignment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("setAlignment:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, alignment, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, alignment.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
-fun NSMutableAttributedString.setBaseWritingDirection_range(writingDirection: MemorySegment, range: MemorySegment): Unit {
+fun NSMutableAttributedString.setBaseWritingDirection_range(writingDirection: NSWritingDirection, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("setBaseWritingDirection:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, writingDirection, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, writingDirection.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 // ── Category: NSDeprecatedKitAdditions on NSMutableAttributedString ─────────────────────────────────────────

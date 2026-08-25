@@ -49,14 +49,14 @@ open class NSSegmentedCell(override val ptr: MemorySegment) : NSActionCell(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, segment) as MemorySegment
     }
 
-    open fun setImageScaling_forSegment(scaling: MemorySegment, segment: Long): Unit {
+    open fun setImageScaling_forSegment(scaling: NSImageScaling, segment: Long): Unit {
         val sel = ObjCRuntime.sel("setImageScaling:forSegment:")
-        ObjCRuntime.msgSend(null, ptr, sel, scaling, segment)
+        ObjCRuntime.msgSend(null, ptr, sel, scaling.rawValue, segment)
     }
 
-    open fun imageScalingForSegment(segment: Long): MemorySegment {
+    open fun imageScalingForSegment(segment: Long): NSImageScaling {
         val sel = ObjCRuntime.sel("imageScalingForSegment:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, segment) as MemorySegment
+        return NSImageScaling(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, segment) as Long)
     }
 
     open fun setLabel_forSegment(label: MemorySegment, segment: Long): Unit {
@@ -131,9 +131,9 @@ open class NSSegmentedCell(override val ptr: MemorySegment) : NSActionCell(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, segment) as Long
     }
 
-    open fun drawSegment_inFrame_withView(segment: Long, frame: MemorySegment, controlView: MemorySegment): Unit {
+    open fun drawSegment_inFrame_withView(segment: Long, frame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawSegment:inFrame:withView:")
-        ObjCRuntime.msgSend(null, ptr, sel, segment, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), controlView)
+        ObjCRuntime.msgSend(null, ptr, sel, segment, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), controlView)
     }
 
     // @property segmentCount
@@ -157,30 +157,30 @@ open class NSSegmentedCell(override val ptr: MemorySegment) : NSActionCell(ptr) 
     }
 
     // @property trackingMode
-    open fun trackingMode(): MemorySegment {
+    open fun trackingMode(): NSSegmentSwitchTracking {
         val sel = ObjCRuntime.sel("trackingMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSegmentSwitchTracking(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTrackingMode(value: MemorySegment) {
+    open fun setTrackingMode(value: NSSegmentSwitchTracking) {
         val sel = ObjCRuntime.sel("setTrackingMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property segmentStyle
-    open fun segmentStyle(): MemorySegment {
+    open fun segmentStyle(): NSSegmentStyle {
         val sel = ObjCRuntime.sel("segmentStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSegmentStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setSegmentStyle(value: MemorySegment) {
+    open fun setSegmentStyle(value: NSSegmentStyle) {
         val sel = ObjCRuntime.sel("setSegmentStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }
 
 // ── Category: NSSegmentBackgroundStyle on NSSegmentedCell ─────────────────────────────────────────
 
-fun NSSegmentedCell.interiorBackgroundStyleForSegment(segment: Long): MemorySegment {
+fun NSSegmentedCell.interiorBackgroundStyleForSegment(segment: Long): NSBackgroundStyle {
     val sel = ObjCRuntime.sel("interiorBackgroundStyleForSegment:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, segment) as MemorySegment
+    return NSBackgroundStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, segment) as Long)
 }

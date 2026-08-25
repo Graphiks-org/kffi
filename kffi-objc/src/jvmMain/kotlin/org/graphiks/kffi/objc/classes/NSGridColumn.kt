@@ -20,9 +20,9 @@ open class NSGridColumn(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, index) as MemorySegment
     }
 
-    open fun mergeCellsInRange(range: MemorySegment): Unit {
+    open fun mergeCellsInRange(range: NSRange): Unit {
         val sel = ObjCRuntime.sel("mergeCellsInRange:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
     // @property gridView
@@ -38,13 +38,13 @@ open class NSGridColumn(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property xPlacement
-    open fun xPlacement(): MemorySegment {
+    open fun xPlacement(): NSGridCellPlacement {
         val sel = ObjCRuntime.sel("xPlacement")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGridCellPlacement(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setXPlacement(value: MemorySegment) {
+    open fun setXPlacement(value: NSGridCellPlacement) {
         val sel = ObjCRuntime.sel("setXPlacement:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property width

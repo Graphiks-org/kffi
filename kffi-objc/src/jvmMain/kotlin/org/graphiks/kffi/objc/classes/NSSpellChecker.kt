@@ -69,21 +69,21 @@ open class NSSpellChecker(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun checkSpellingOfString_startingAt_language_wrap_inSpellDocumentWithTag_wordCount(stringToCheck: MemorySegment, startingOffset: Long, language: MemorySegment, wrapFlag: Boolean, tag: Long, wordCount: MemorySegment): MemorySegment {
+    open fun checkSpellingOfString_startingAt_language_wrap_inSpellDocumentWithTag_wordCount(stringToCheck: MemorySegment, startingOffset: Long, language: MemorySegment, wrapFlag: Boolean, tag: Long, wordCount: MemorySegment): NSRange {
         val sel = ObjCRuntime.sel("checkSpellingOfString:startingAt:language:wrap:inSpellDocumentWithTag:wordCount:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, stringToCheck, startingOffset, language, wrapFlag, tag, wordCount) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, stringToCheck, startingOffset, language, wrapFlag, tag, wordCount))
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun checkSpellingOfString_startingAt_language_wrap_inSpellDocumentWithTag_wordCount(stringToCheck: String, startingOffset: Long, language: String, wrapFlag: Boolean, tag: Long, wordCount: MemorySegment): MemorySegment = checkSpellingOfString_startingAt_language_wrap_inSpellDocumentWithTag_wordCount(ObjCRuntime.newNSString(Arena.global(), stringToCheck), startingOffset, ObjCRuntime.newNSString(Arena.global(), language), wrapFlag, tag, wordCount)
+    fun checkSpellingOfString_startingAt_language_wrap_inSpellDocumentWithTag_wordCount(stringToCheck: String, startingOffset: Long, language: String, wrapFlag: Boolean, tag: Long, wordCount: MemorySegment): NSRange = checkSpellingOfString_startingAt_language_wrap_inSpellDocumentWithTag_wordCount(ObjCRuntime.newNSString(Arena.global(), stringToCheck), startingOffset, ObjCRuntime.newNSString(Arena.global(), language), wrapFlag, tag, wordCount)
 
-    open fun checkSpellingOfString_startingAt(stringToCheck: MemorySegment, startingOffset: Long): MemorySegment {
+    open fun checkSpellingOfString_startingAt(stringToCheck: MemorySegment, startingOffset: Long): NSRange {
         val sel = ObjCRuntime.sel("checkSpellingOfString:startingAt:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, stringToCheck, startingOffset) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, stringToCheck, startingOffset))
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun checkSpellingOfString_startingAt(stringToCheck: String, startingOffset: Long): MemorySegment = checkSpellingOfString_startingAt(ObjCRuntime.newNSString(Arena.global(), stringToCheck), startingOffset)
+    fun checkSpellingOfString_startingAt(stringToCheck: String, startingOffset: Long): NSRange = checkSpellingOfString_startingAt(ObjCRuntime.newNSString(Arena.global(), stringToCheck), startingOffset)
 
     open fun countWordsInString_language(stringToCount: MemorySegment, language: MemorySegment): Long {
         val sel = ObjCRuntime.sel("countWordsInString:language:")
@@ -93,46 +93,46 @@ open class NSSpellChecker(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun countWordsInString_language(stringToCount: String, language: String): Long = countWordsInString_language(ObjCRuntime.newNSString(Arena.global(), stringToCount), ObjCRuntime.newNSString(Arena.global(), language))
 
-    open fun checkGrammarOfString_startingAt_language_wrap_inSpellDocumentWithTag_details(stringToCheck: MemorySegment, startingOffset: Long, language: MemorySegment, wrapFlag: Boolean, tag: Long, details: MemorySegment): MemorySegment {
+    open fun checkGrammarOfString_startingAt_language_wrap_inSpellDocumentWithTag_details(stringToCheck: MemorySegment, startingOffset: Long, language: MemorySegment, wrapFlag: Boolean, tag: Long, details: MemorySegment): NSRange {
         val sel = ObjCRuntime.sel("checkGrammarOfString:startingAt:language:wrap:inSpellDocumentWithTag:details:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, stringToCheck, startingOffset, language, wrapFlag, tag, details) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, stringToCheck, startingOffset, language, wrapFlag, tag, details))
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun checkGrammarOfString_startingAt_language_wrap_inSpellDocumentWithTag_details(stringToCheck: String, startingOffset: Long, language: String, wrapFlag: Boolean, tag: Long, details: MemorySegment): MemorySegment = checkGrammarOfString_startingAt_language_wrap_inSpellDocumentWithTag_details(ObjCRuntime.newNSString(Arena.global(), stringToCheck), startingOffset, ObjCRuntime.newNSString(Arena.global(), language), wrapFlag, tag, details)
+    fun checkGrammarOfString_startingAt_language_wrap_inSpellDocumentWithTag_details(stringToCheck: String, startingOffset: Long, language: String, wrapFlag: Boolean, tag: Long, details: MemorySegment): NSRange = checkGrammarOfString_startingAt_language_wrap_inSpellDocumentWithTag_details(ObjCRuntime.newNSString(Arena.global(), stringToCheck), startingOffset, ObjCRuntime.newNSString(Arena.global(), language), wrapFlag, tag, details)
 
     /** @return NSArray<NSTextCheckingResult *> * */
-    open fun checkString_range_types_options_inSpellDocumentWithTag_orthography_wordCount(stringToCheck: MemorySegment, range: MemorySegment, checkingTypes: Long, options: MemorySegment, tag: Long, orthography: MemorySegment, wordCount: MemorySegment): MemorySegment {
+    open fun checkString_range_types_options_inSpellDocumentWithTag_orthography_wordCount(stringToCheck: MemorySegment, range: NSRange, checkingTypes: Long, options: MemorySegment, tag: Long, orthography: MemorySegment, wordCount: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("checkString:range:types:options:inSpellDocumentWithTag:orthography:wordCount:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, stringToCheck, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), checkingTypes, options, tag, orthography, wordCount) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, stringToCheck, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), checkingTypes, options, tag, orthography, wordCount) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun checkString_range_types_options_inSpellDocumentWithTag_orthography_wordCount(stringToCheck: String, range: MemorySegment, checkingTypes: Long, options: MemorySegment, tag: Long, orthography: MemorySegment, wordCount: MemorySegment): MemorySegment = checkString_range_types_options_inSpellDocumentWithTag_orthography_wordCount(ObjCRuntime.newNSString(Arena.global(), stringToCheck), range, checkingTypes, options, tag, orthography, wordCount)
+    fun checkString_range_types_options_inSpellDocumentWithTag_orthography_wordCount(stringToCheck: String, range: NSRange, checkingTypes: Long, options: MemorySegment, tag: Long, orthography: MemorySegment, wordCount: MemorySegment): MemorySegment = checkString_range_types_options_inSpellDocumentWithTag_orthography_wordCount(ObjCRuntime.newNSString(Arena.global(), stringToCheck), range, checkingTypes, options, tag, orthography, wordCount)
 
-    open fun requestCheckingOfString_range_types_options_inSpellDocumentWithTag_completionHandler(stringToCheck: MemorySegment, range: MemorySegment, checkingTypes: Long, options: MemorySegment, tag: Long, completionHandler: MemorySegment): Long {
+    open fun requestCheckingOfString_range_types_options_inSpellDocumentWithTag_completionHandler(stringToCheck: MemorySegment, range: NSRange, checkingTypes: Long, options: MemorySegment, tag: Long, completionHandler: MemorySegment): Long {
         val sel = ObjCRuntime.sel("requestCheckingOfString:range:types:options:inSpellDocumentWithTag:completionHandler:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, stringToCheck, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), checkingTypes, options, tag, completionHandler) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, stringToCheck, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), checkingTypes, options, tag, completionHandler) as Long
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun requestCheckingOfString_range_types_options_inSpellDocumentWithTag_completionHandler(stringToCheck: String, range: MemorySegment, checkingTypes: Long, options: MemorySegment, tag: Long, completionHandler: MemorySegment): Long = requestCheckingOfString_range_types_options_inSpellDocumentWithTag_completionHandler(ObjCRuntime.newNSString(Arena.global(), stringToCheck), range, checkingTypes, options, tag, completionHandler)
+    fun requestCheckingOfString_range_types_options_inSpellDocumentWithTag_completionHandler(stringToCheck: String, range: NSRange, checkingTypes: Long, options: MemorySegment, tag: Long, completionHandler: MemorySegment): Long = requestCheckingOfString_range_types_options_inSpellDocumentWithTag_completionHandler(ObjCRuntime.newNSString(Arena.global(), stringToCheck), range, checkingTypes, options, tag, completionHandler)
 
-    open fun requestCandidatesForSelectedRange_inString_types_options_inSpellDocumentWithTag_completionHandler(selectedRange: MemorySegment, stringToCheck: MemorySegment, checkingTypes: Long, options: MemorySegment, tag: Long, completionHandler: MemorySegment): Long {
+    open fun requestCandidatesForSelectedRange_inString_types_options_inSpellDocumentWithTag_completionHandler(selectedRange: NSRange, stringToCheck: MemorySegment, checkingTypes: Long, options: MemorySegment, tag: Long, completionHandler: MemorySegment): Long {
         val sel = ObjCRuntime.sel("requestCandidatesForSelectedRange:inString:types:options:inSpellDocumentWithTag:completionHandler:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(selectedRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), stringToCheck, checkingTypes, options, tag, completionHandler) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(selectedRange.segment, NSRange.layout), stringToCheck, checkingTypes, options, tag, completionHandler) as Long
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun requestCandidatesForSelectedRange_inString_types_options_inSpellDocumentWithTag_completionHandler(selectedRange: MemorySegment, stringToCheck: String, checkingTypes: Long, options: MemorySegment, tag: Long, completionHandler: MemorySegment): Long = requestCandidatesForSelectedRange_inString_types_options_inSpellDocumentWithTag_completionHandler(selectedRange, ObjCRuntime.newNSString(Arena.global(), stringToCheck), checkingTypes, options, tag, completionHandler)
+    fun requestCandidatesForSelectedRange_inString_types_options_inSpellDocumentWithTag_completionHandler(selectedRange: NSRange, stringToCheck: String, checkingTypes: Long, options: MemorySegment, tag: Long, completionHandler: MemorySegment): Long = requestCandidatesForSelectedRange_inString_types_options_inSpellDocumentWithTag_completionHandler(selectedRange, ObjCRuntime.newNSString(Arena.global(), stringToCheck), checkingTypes, options, tag, completionHandler)
 
-    open fun menuForResult_string_options_atLocation_inView(result: MemorySegment, checkedString: MemorySegment, options: MemorySegment, location: MemorySegment, view: MemorySegment): MemorySegment {
+    open fun menuForResult_string_options_atLocation_inView(result: MemorySegment, checkedString: MemorySegment, options: MemorySegment, location: NSPoint, view: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("menuForResult:string:options:atLocation:inView:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, result, checkedString, options, ObjCRuntime.ObjCStructArg(location, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), view) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, result, checkedString, options, ObjCRuntime.ObjCStructArg(location.segment, NSPoint.layout), view) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun menuForResult_string_options_atLocation_inView(result: MemorySegment, checkedString: String, options: MemorySegment, location: MemorySegment, view: MemorySegment): MemorySegment = menuForResult_string_options_atLocation_inView(result, ObjCRuntime.newNSString(Arena.global(), checkedString), options, location, view)
+    fun menuForResult_string_options_atLocation_inView(result: MemorySegment, checkedString: String, options: MemorySegment, location: NSPoint, view: MemorySegment): MemorySegment = menuForResult_string_options_atLocation_inView(result, ObjCRuntime.newNSString(Arena.global(), checkedString), options, location, view)
 
     /** @return NSArray<NSString *> * */
     open fun userQuotesArrayForLanguage(language: MemorySegment): MemorySegment {
@@ -184,71 +184,71 @@ open class NSSpellChecker(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     /** @return NSArray<NSString *> * */
-    open fun guessesForWordRange_inString_language_inSpellDocumentWithTag(range: MemorySegment, string: MemorySegment, language: MemorySegment, tag: Long): MemorySegment {
+    open fun guessesForWordRange_inString_language_inSpellDocumentWithTag(range: NSRange, string: MemorySegment, language: MemorySegment, tag: Long): MemorySegment {
         val sel = ObjCRuntime.sel("guessesForWordRange:inString:language:inSpellDocumentWithTag:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), string, language, tag) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), string, language, tag) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun guessesForWordRange_inString_language_inSpellDocumentWithTag(range: MemorySegment, string: String, language: String, tag: Long): MemorySegment = guessesForWordRange_inString_language_inSpellDocumentWithTag(range, ObjCRuntime.newNSString(Arena.global(), string), ObjCRuntime.newNSString(Arena.global(), language), tag)
+    fun guessesForWordRange_inString_language_inSpellDocumentWithTag(range: NSRange, string: String, language: String, tag: Long): MemorySegment = guessesForWordRange_inString_language_inSpellDocumentWithTag(range, ObjCRuntime.newNSString(Arena.global(), string), ObjCRuntime.newNSString(Arena.global(), language), tag)
 
-    open fun correctionForWordRange_inString_language_inSpellDocumentWithTag(range: MemorySegment, string: MemorySegment, language: MemorySegment, tag: Long): MemorySegment {
+    open fun correctionForWordRange_inString_language_inSpellDocumentWithTag(range: NSRange, string: MemorySegment, language: MemorySegment, tag: Long): MemorySegment {
         val sel = ObjCRuntime.sel("correctionForWordRange:inString:language:inSpellDocumentWithTag:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), string, language, tag) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), string, language, tag) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-    fun correctionForWordRange_inString_language_inSpellDocumentWithTagAsString(range: MemorySegment, string: MemorySegment, language: MemorySegment, tag: Long): String = ObjCRuntime.toJavaString(correctionForWordRange_inString_language_inSpellDocumentWithTag(range, string, language, tag))
+    fun correctionForWordRange_inString_language_inSpellDocumentWithTagAsString(range: NSRange, string: MemorySegment, language: MemorySegment, tag: Long): String = ObjCRuntime.toJavaString(correctionForWordRange_inString_language_inSpellDocumentWithTag(range, string, language, tag))
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun correctionForWordRange_inString_language_inSpellDocumentWithTag(range: MemorySegment, string: String, language: String, tag: Long): MemorySegment = correctionForWordRange_inString_language_inSpellDocumentWithTag(range, ObjCRuntime.newNSString(Arena.global(), string), ObjCRuntime.newNSString(Arena.global(), language), tag)
+    fun correctionForWordRange_inString_language_inSpellDocumentWithTag(range: NSRange, string: String, language: String, tag: Long): MemorySegment = correctionForWordRange_inString_language_inSpellDocumentWithTag(range, ObjCRuntime.newNSString(Arena.global(), string), ObjCRuntime.newNSString(Arena.global(), language), tag)
 
     /** Convenience overload — [String] parameters and [String] return type. */
-    fun correctionForWordRange_inString_language_inSpellDocumentWithTagAsString(range: MemorySegment, string: String, language: String, tag: Long): String = ObjCRuntime.toJavaString(correctionForWordRange_inString_language_inSpellDocumentWithTag(range, ObjCRuntime.newNSString(Arena.global(), string), ObjCRuntime.newNSString(Arena.global(), language), tag))
+    fun correctionForWordRange_inString_language_inSpellDocumentWithTagAsString(range: NSRange, string: String, language: String, tag: Long): String = ObjCRuntime.toJavaString(correctionForWordRange_inString_language_inSpellDocumentWithTag(range, ObjCRuntime.newNSString(Arena.global(), string), ObjCRuntime.newNSString(Arena.global(), language), tag))
 
     /** @return NSArray<NSString *> * */
-    open fun completionsForPartialWordRange_inString_language_inSpellDocumentWithTag(range: MemorySegment, string: MemorySegment, language: MemorySegment, tag: Long): MemorySegment {
+    open fun completionsForPartialWordRange_inString_language_inSpellDocumentWithTag(range: NSRange, string: MemorySegment, language: MemorySegment, tag: Long): MemorySegment {
         val sel = ObjCRuntime.sel("completionsForPartialWordRange:inString:language:inSpellDocumentWithTag:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), string, language, tag) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), string, language, tag) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun completionsForPartialWordRange_inString_language_inSpellDocumentWithTag(range: MemorySegment, string: String, language: String, tag: Long): MemorySegment = completionsForPartialWordRange_inString_language_inSpellDocumentWithTag(range, ObjCRuntime.newNSString(Arena.global(), string), ObjCRuntime.newNSString(Arena.global(), language), tag)
+    fun completionsForPartialWordRange_inString_language_inSpellDocumentWithTag(range: NSRange, string: String, language: String, tag: Long): MemorySegment = completionsForPartialWordRange_inString_language_inSpellDocumentWithTag(range, ObjCRuntime.newNSString(Arena.global(), string), ObjCRuntime.newNSString(Arena.global(), language), tag)
 
-    open fun languageForWordRange_inString_orthography(range: MemorySegment, string: MemorySegment, orthography: MemorySegment): MemorySegment {
+    open fun languageForWordRange_inString_orthography(range: NSRange, string: MemorySegment, orthography: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("languageForWordRange:inString:orthography:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), string, orthography) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), string, orthography) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-    fun languageForWordRange_inString_orthographyAsString(range: MemorySegment, string: MemorySegment, orthography: MemorySegment): String = ObjCRuntime.toJavaString(languageForWordRange_inString_orthography(range, string, orthography))
+    fun languageForWordRange_inString_orthographyAsString(range: NSRange, string: MemorySegment, orthography: MemorySegment): String = ObjCRuntime.toJavaString(languageForWordRange_inString_orthography(range, string, orthography))
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun languageForWordRange_inString_orthography(range: MemorySegment, string: String, orthography: MemorySegment): MemorySegment = languageForWordRange_inString_orthography(range, ObjCRuntime.newNSString(Arena.global(), string), orthography)
+    fun languageForWordRange_inString_orthography(range: NSRange, string: String, orthography: MemorySegment): MemorySegment = languageForWordRange_inString_orthography(range, ObjCRuntime.newNSString(Arena.global(), string), orthography)
 
     /** Convenience overload — [String] parameters and [String] return type. */
-    fun languageForWordRange_inString_orthographyAsString(range: MemorySegment, string: String, orthography: MemorySegment): String = ObjCRuntime.toJavaString(languageForWordRange_inString_orthography(range, ObjCRuntime.newNSString(Arena.global(), string), orthography))
+    fun languageForWordRange_inString_orthographyAsString(range: NSRange, string: String, orthography: MemorySegment): String = ObjCRuntime.toJavaString(languageForWordRange_inString_orthography(range, ObjCRuntime.newNSString(Arena.global(), string), orthography))
 
     open fun closeSpellDocumentWithTag(tag: Long): Unit {
         val sel = ObjCRuntime.sel("closeSpellDocumentWithTag:")
         ObjCRuntime.msgSend(null, ptr, sel, tag)
     }
 
-    open fun recordResponse_toCorrection_forWord_language_inSpellDocumentWithTag(response: MemorySegment, correction: MemorySegment, word: MemorySegment, language: MemorySegment, tag: Long): Unit {
+    open fun recordResponse_toCorrection_forWord_language_inSpellDocumentWithTag(response: NSCorrectionResponse, correction: MemorySegment, word: MemorySegment, language: MemorySegment, tag: Long): Unit {
         val sel = ObjCRuntime.sel("recordResponse:toCorrection:forWord:language:inSpellDocumentWithTag:")
-        ObjCRuntime.msgSend(null, ptr, sel, response, correction, word, language, tag)
+        ObjCRuntime.msgSend(null, ptr, sel, response.rawValue, correction, word, language, tag)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun recordResponse_toCorrection_forWord_language_inSpellDocumentWithTag(response: MemorySegment, correction: String, word: String, language: String, tag: Long): Unit = recordResponse_toCorrection_forWord_language_inSpellDocumentWithTag(response, ObjCRuntime.newNSString(Arena.global(), correction), ObjCRuntime.newNSString(Arena.global(), word), ObjCRuntime.newNSString(Arena.global(), language), tag)
+    fun recordResponse_toCorrection_forWord_language_inSpellDocumentWithTag(response: NSCorrectionResponse, correction: String, word: String, language: String, tag: Long): Unit = recordResponse_toCorrection_forWord_language_inSpellDocumentWithTag(response, ObjCRuntime.newNSString(Arena.global(), correction), ObjCRuntime.newNSString(Arena.global(), word), ObjCRuntime.newNSString(Arena.global(), language), tag)
 
-    open fun showCorrectionIndicatorOfType_primaryString_alternativeStrings_forStringInRect_view_completionHandler(type: MemorySegment, primaryString: MemorySegment, alternativeStrings: MemorySegment, rectOfTypedString: MemorySegment, view: MemorySegment, completionBlock: MemorySegment): Unit {
+    open fun showCorrectionIndicatorOfType_primaryString_alternativeStrings_forStringInRect_view_completionHandler(type: NSCorrectionIndicatorType, primaryString: MemorySegment, alternativeStrings: MemorySegment, rectOfTypedString: NSRect, view: MemorySegment, completionBlock: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("showCorrectionIndicatorOfType:primaryString:alternativeStrings:forStringInRect:view:completionHandler:")
-        ObjCRuntime.msgSend(null, ptr, sel, type, primaryString, alternativeStrings, ObjCRuntime.ObjCStructArg(rectOfTypedString, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), view, completionBlock)
+        ObjCRuntime.msgSend(null, ptr, sel, type.rawValue, primaryString, alternativeStrings, ObjCRuntime.ObjCStructArg(rectOfTypedString.segment, NSRect.layout), view, completionBlock)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun showCorrectionIndicatorOfType_primaryString_alternativeStrings_forStringInRect_view_completionHandler(type: MemorySegment, primaryString: String, alternativeStrings: MemorySegment, rectOfTypedString: MemorySegment, view: MemorySegment, completionBlock: MemorySegment): Unit = showCorrectionIndicatorOfType_primaryString_alternativeStrings_forStringInRect_view_completionHandler(type, ObjCRuntime.newNSString(Arena.global(), primaryString), alternativeStrings, rectOfTypedString, view, completionBlock)
+    fun showCorrectionIndicatorOfType_primaryString_alternativeStrings_forStringInRect_view_completionHandler(type: NSCorrectionIndicatorType, primaryString: String, alternativeStrings: MemorySegment, rectOfTypedString: NSRect, view: MemorySegment, completionBlock: MemorySegment): Unit = showCorrectionIndicatorOfType_primaryString_alternativeStrings_forStringInRect_view_completionHandler(type, ObjCRuntime.newNSString(Arena.global(), primaryString), alternativeStrings, rectOfTypedString, view, completionBlock)
 
     open fun dismissCorrectionIndicatorForView(view: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("dismissCorrectionIndicatorForView:")

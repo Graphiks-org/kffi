@@ -31,13 +31,13 @@ open class NSTitlebarAccessoryViewController(override val ptr: MemorySegment) : 
     }
 
     // @property layoutAttribute
-    open fun layoutAttribute(): MemorySegment {
+    open fun layoutAttribute(): NSLayoutAttribute {
         val sel = ObjCRuntime.sel("layoutAttribute")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLayoutAttribute(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setLayoutAttribute(value: MemorySegment) {
+    open fun setLayoutAttribute(value: NSLayoutAttribute) {
         val sel = ObjCRuntime.sel("setLayoutAttribute:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property fullScreenMinHeight

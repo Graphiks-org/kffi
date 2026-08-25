@@ -118,19 +118,19 @@ open class NSApplication(override val ptr: MemorySegment) : NSResponder(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun beginModalSessionForWindow(window: MemorySegment): MemorySegment {
+    open fun beginModalSessionForWindow(window: MemorySegment): NSModalSession {
         val sel = ObjCRuntime.sel("beginModalSessionForWindow:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, window) as MemorySegment
+        return NSModalSession(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, window) as MemorySegment)
     }
 
-    open fun runModalSession(session: MemorySegment): Long {
+    open fun runModalSession(session: NSModalSession): Long {
         val sel = ObjCRuntime.sel("runModalSession:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, session) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, session.segment) as Long
     }
 
-    open fun endModalSession(session: MemorySegment): Unit {
+    open fun endModalSession(session: NSModalSession): Unit {
         val sel = ObjCRuntime.sel("endModalSession:")
-        ObjCRuntime.msgSend(null, ptr, sel, session)
+        ObjCRuntime.msgSend(null, ptr, sel, session.segment)
     }
 
     open fun terminate(sender: MemorySegment): Unit {
@@ -138,9 +138,9 @@ open class NSApplication(override val ptr: MemorySegment) : NSResponder(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
-    open fun requestUserAttention(requestType: MemorySegment): Long {
+    open fun requestUserAttention(requestType: NSRequestUserAttentionType): Long {
         val sel = ObjCRuntime.sel("requestUserAttention:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, requestType) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, requestType.rawValue) as Long
     }
 
     open fun cancelUserAttentionRequest(request: Long): Unit {
@@ -148,9 +148,9 @@ open class NSApplication(override val ptr: MemorySegment) : NSResponder(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, request)
     }
 
-    open fun enumerateWindowsWithOptions_usingBlock(options: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateWindowsWithOptions_usingBlock(options: NSWindowListOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateWindowsWithOptions:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, options, block)
+        ObjCRuntime.msgSend(null, ptr, sel, options.rawValue, block)
     }
 
     open fun preventWindowOrdering(): Unit {
@@ -168,14 +168,14 @@ open class NSApplication(override val ptr: MemorySegment) : NSResponder(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun activationPolicy(): MemorySegment {
+    open fun activationPolicy(): NSApplicationActivationPolicy {
         val sel = ObjCRuntime.sel("activationPolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSApplicationActivationPolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
-    open fun setActivationPolicy(activationPolicy: MemorySegment): Boolean {
+    open fun setActivationPolicy(activationPolicy: NSApplicationActivationPolicy): Boolean {
         val sel = ObjCRuntime.sel("setActivationPolicy:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, activationPolicy) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, activationPolicy.rawValue) as Boolean
     }
 
     open fun reportException(exception: MemorySegment): Unit {
@@ -188,9 +188,9 @@ open class NSApplication(override val ptr: MemorySegment) : NSResponder(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, shouldTerminate)
     }
 
-    open fun replyToOpenOrPrint(reply: MemorySegment): Unit {
+    open fun replyToOpenOrPrint(reply: NSApplicationDelegateReply): Unit {
         val sel = ObjCRuntime.sel("replyToOpenOrPrint:")
-        ObjCRuntime.msgSend(null, ptr, sel, reply)
+        ObjCRuntime.msgSend(null, ptr, sel, reply.rawValue)
     }
 
     open fun orderFrontCharacterPalette(sender: MemorySegment): Unit {
@@ -301,25 +301,25 @@ open class NSApplication(override val ptr: MemorySegment) : NSResponder(ptr) {
     }
 
     // @property presentationOptions
-    open fun presentationOptions(): MemorySegment {
+    open fun presentationOptions(): NSApplicationPresentationOptions {
         val sel = ObjCRuntime.sel("presentationOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSApplicationPresentationOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPresentationOptions(value: MemorySegment) {
+    open fun setPresentationOptions(value: NSApplicationPresentationOptions) {
         val sel = ObjCRuntime.sel("setPresentationOptions:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property currentSystemPresentationOptions
-    open fun currentSystemPresentationOptions(): MemorySegment {
+    open fun currentSystemPresentationOptions(): NSApplicationPresentationOptions {
         val sel = ObjCRuntime.sel("currentSystemPresentationOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSApplicationPresentationOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property occlusionState
-    open fun occlusionState(): MemorySegment {
+    open fun occlusionState(): NSApplicationOcclusionState {
         val sel = ObjCRuntime.sel("occlusionState")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSApplicationOcclusionState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property protectedDataAvailable
@@ -359,14 +359,14 @@ fun NSApplication.postEvent_atStart(event: MemorySegment, atStart: Boolean): Uni
     ObjCRuntime.msgSend(null, this.ptr, sel, event, atStart)
 }
 
-fun NSApplication.nextEventMatchingMask_untilDate_inMode_dequeue(mask: MemorySegment, expiration: MemorySegment, mode: MemorySegment, deqFlag: Boolean): MemorySegment {
+fun NSApplication.nextEventMatchingMask_untilDate_inMode_dequeue(mask: NSEventMask, expiration: MemorySegment, mode: MemorySegment, deqFlag: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("nextEventMatchingMask:untilDate:inMode:dequeue:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, mask, expiration, mode, deqFlag) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, mask.rawValue, expiration, mode, deqFlag) as MemorySegment
 }
 
-fun NSApplication.discardEventsMatchingMask_beforeEvent(mask: MemorySegment, lastEvent: MemorySegment): Unit {
+fun NSApplication.discardEventsMatchingMask_beforeEvent(mask: NSEventMask, lastEvent: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("discardEventsMatchingMask:beforeEvent:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, mask, lastEvent)
+    ObjCRuntime.msgSend(null, this.ptr, sel, mask.rawValue, lastEvent)
 }
 
 fun NSApplication.currentEvent(): MemorySegment {
@@ -493,9 +493,9 @@ fun NSApplication.orderFrontStandardAboutPanelWithOptions(optionsDictionary: Mem
 
 // ── Category: NSApplicationLayoutDirection on NSApplication ─────────────────────────────────────────
 
-fun NSApplication.userInterfaceLayoutDirection(): MemorySegment {
+fun NSApplication.userInterfaceLayoutDirection(): NSUserInterfaceLayoutDirection {
     val sel = ObjCRuntime.sel("userInterfaceLayoutDirection")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSUserInterfaceLayoutDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
 // ── Category: NSRestorableUserInterface on NSApplication ─────────────────────────────────────────
@@ -522,9 +522,9 @@ fun NSApplication.unregisterForRemoteNotifications(): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
-fun NSApplication.registerForRemoteNotificationTypes(types: MemorySegment): Unit {
+fun NSApplication.registerForRemoteNotificationTypes(types: NSRemoteNotificationType): Unit {
     val sel = ObjCRuntime.sel("registerForRemoteNotificationTypes:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, types)
+    ObjCRuntime.msgSend(null, this.ptr, sel, types.rawValue)
 }
 
 fun NSApplication.isRegisteredForRemoteNotifications(): Boolean {
@@ -532,9 +532,9 @@ fun NSApplication.isRegisteredForRemoteNotifications(): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
-fun NSApplication.enabledRemoteNotificationTypes(): MemorySegment {
+fun NSApplication.enabledRemoteNotificationTypes(): NSRemoteNotificationType {
     val sel = ObjCRuntime.sel("enabledRemoteNotificationTypes")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSRemoteNotificationType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
 // ── Category: NSDeprecated on NSApplication ─────────────────────────────────────────
@@ -544,9 +544,9 @@ fun NSApplication.runModalForWindow_relativeToWindow(window: MemorySegment, docW
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, window, docWindow) as Long
 }
 
-fun NSApplication.beginModalSessionForWindow_relativeToWindow(window: MemorySegment, docWindow: MemorySegment): MemorySegment {
+fun NSApplication.beginModalSessionForWindow_relativeToWindow(window: MemorySegment, docWindow: MemorySegment): NSModalSession {
     val sel = ObjCRuntime.sel("beginModalSessionForWindow:relativeToWindow:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, window, docWindow) as MemorySegment
+    return NSModalSession(ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, window, docWindow) as MemorySegment)
 }
 
 fun NSApplication.application_printFiles(sender: MemorySegment, filenames: MemorySegment): Unit {
@@ -648,9 +648,9 @@ fun NSApplication.unregisterUserInterfaceItemSearchHandler(handler: MemorySegmen
     ObjCRuntime.msgSend(null, this.ptr, sel, handler)
 }
 
-fun NSApplication.searchString_inUserInterfaceItemString_searchRange_foundRange(searchString: MemorySegment, stringToSearch: MemorySegment, searchRange: MemorySegment, foundRange: MemorySegment): Boolean {
+fun NSApplication.searchString_inUserInterfaceItemString_searchRange_foundRange(searchString: MemorySegment, stringToSearch: MemorySegment, searchRange: NSRange, foundRange: NSRangePointer): Boolean {
     val sel = ObjCRuntime.sel("searchString:inUserInterfaceItemString:searchRange:foundRange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, searchString, stringToSearch, searchRange, foundRange) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, searchString, stringToSearch, ObjCRuntime.ObjCStructArg(searchRange.segment, NSRange.layout), foundRange.segment) as Boolean
 }
 
 // ── Category: NSWindowRestoration on NSApplication ─────────────────────────────────────────

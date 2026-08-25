@@ -14,9 +14,9 @@ open class NSPressureConfiguration(override val ptr: MemorySegment) : NSObject(p
 
     }
 
-    open fun initWithPressureBehavior(pressureBehavior: MemorySegment): MemorySegment {
+    open fun initWithPressureBehavior(pressureBehavior: NSPressureBehavior): MemorySegment {
         val sel = ObjCRuntime.sel("initWithPressureBehavior:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, pressureBehavior) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, pressureBehavior.rawValue) as MemorySegment
     }
 
     open fun `set`(): Unit {
@@ -25,9 +25,9 @@ open class NSPressureConfiguration(override val ptr: MemorySegment) : NSObject(p
     }
 
     // @property pressureBehavior
-    open fun pressureBehavior(): MemorySegment {
+    open fun pressureBehavior(): NSPressureBehavior {
         val sel = ObjCRuntime.sel("pressureBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPressureBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 }

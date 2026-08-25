@@ -17,9 +17,9 @@ open class NSDecimalNumber(override val ptr: MemorySegment) : NSNumber(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, mantissa, exponent, flag) as MemorySegment
         }
 
-        fun decimalNumberWithDecimal(dcm: MemorySegment): MemorySegment {
+        fun decimalNumberWithDecimal(dcm: NSDecimal): MemorySegment {
             val sel = ObjCRuntime.sel("decimalNumberWithDecimal:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(dcm, MemoryLayout.structLayout(ValueLayout.ADDRESS.withName("_mantissa")).withName("NSDecimal"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(dcm.segment, NSDecimal.layout)) as MemorySegment
         }
 
         fun decimalNumberWithString(numberValue: MemorySegment): MemorySegment {
@@ -81,9 +81,9 @@ open class NSDecimalNumber(override val ptr: MemorySegment) : NSNumber(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, mantissa, exponent, flag) as MemorySegment
     }
 
-    open fun initWithDecimal(dcm: MemorySegment): MemorySegment {
+    open fun initWithDecimal(dcm: NSDecimal): MemorySegment {
         val sel = ObjCRuntime.sel("initWithDecimal:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(dcm, MemoryLayout.structLayout(ValueLayout.ADDRESS.withName("_mantissa")).withName("NSDecimal"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(dcm.segment, NSDecimal.layout)) as MemorySegment
     }
 
     open fun initWithString(numberValue: MemorySegment): MemorySegment {
@@ -172,15 +172,15 @@ open class NSDecimalNumber(override val ptr: MemorySegment) : NSNumber(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, behavior) as MemorySegment
     }
 
-    override fun compare(decimalNumber: MemorySegment): MemorySegment {
+    override fun compare(decimalNumber: MemorySegment): NSComparisonResult {
         val sel = ObjCRuntime.sel("compare:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, decimalNumber) as MemorySegment
+        return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, decimalNumber) as Long)
     }
 
     // @property decimalValue
-    open fun decimalValue(): MemorySegment {
+    open fun decimalValue(): NSDecimal {
         val sel = ObjCRuntime.sel("decimalValue")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.ADDRESS.withName("_mantissa")).withName("NSDecimal"), ptr, sel) as MemorySegment
+        return NSDecimal(ObjCRuntime.msgSendStruct(NSDecimal.layout, ptr, sel))
     }
 
     // @property zero

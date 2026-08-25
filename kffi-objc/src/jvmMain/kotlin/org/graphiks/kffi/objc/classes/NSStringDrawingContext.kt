@@ -31,9 +31,9 @@ open class NSStringDrawingContext(override val ptr: MemorySegment) : NSObject(pt
     }
 
     // @property totalBounds
-    open fun totalBounds(): MemorySegment {
+    open fun totalBounds(): CGRect {
         val sel = ObjCRuntime.sel("totalBounds")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
 
 }

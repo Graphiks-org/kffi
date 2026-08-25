@@ -15,24 +15,24 @@ open class NSTableRowView(override val ptr: MemorySegment) : NSView(ptr) {
 
     }
 
-    open fun drawBackgroundInRect(dirtyRect: MemorySegment): Unit {
+    open fun drawBackgroundInRect(dirtyRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawBackgroundInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dirtyRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dirtyRect.segment, NSRect.layout))
     }
 
-    open fun drawSelectionInRect(dirtyRect: MemorySegment): Unit {
+    open fun drawSelectionInRect(dirtyRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawSelectionInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dirtyRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dirtyRect.segment, NSRect.layout))
     }
 
-    open fun drawSeparatorInRect(dirtyRect: MemorySegment): Unit {
+    open fun drawSeparatorInRect(dirtyRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawSeparatorInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dirtyRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dirtyRect.segment, NSRect.layout))
     }
 
-    open fun drawDraggingDestinationFeedbackInRect(dirtyRect: MemorySegment): Unit {
+    open fun drawDraggingDestinationFeedbackInRect(dirtyRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawDraggingDestinationFeedbackInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dirtyRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dirtyRect.segment, NSRect.layout))
     }
 
     open fun viewAtColumn(column: Long): MemorySegment {
@@ -41,13 +41,13 @@ open class NSTableRowView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property selectionHighlightStyle
-    open fun selectionHighlightStyle(): MemorySegment {
+    open fun selectionHighlightStyle(): NSTableViewSelectionHighlightStyle {
         val sel = ObjCRuntime.sel("selectionHighlightStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewSelectionHighlightStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setSelectionHighlightStyle(value: MemorySegment) {
+    open fun setSelectionHighlightStyle(value: NSTableViewSelectionHighlightStyle) {
         val sel = ObjCRuntime.sel("setSelectionHighlightStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property emphasized
@@ -121,13 +121,13 @@ open class NSTableRowView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property draggingDestinationFeedbackStyle
-    open fun draggingDestinationFeedbackStyle(): MemorySegment {
+    open fun draggingDestinationFeedbackStyle(): NSTableViewDraggingDestinationFeedbackStyle {
         val sel = ObjCRuntime.sel("draggingDestinationFeedbackStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewDraggingDestinationFeedbackStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDraggingDestinationFeedbackStyle(value: MemorySegment) {
+    open fun setDraggingDestinationFeedbackStyle(value: NSTableViewDraggingDestinationFeedbackStyle) {
         val sel = ObjCRuntime.sel("setDraggingDestinationFeedbackStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property indentationForDropOperation
@@ -141,9 +141,9 @@ open class NSTableRowView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property interiorBackgroundStyle
-    open fun interiorBackgroundStyle(): MemorySegment {
+    open fun interiorBackgroundStyle(): NSBackgroundStyle {
         val sel = ObjCRuntime.sel("interiorBackgroundStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSBackgroundStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property backgroundColor

@@ -9,31 +9,31 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSAccessibility {
-    fun accessibilityLayoutPointForScreenPoint(point: MemorySegment): MemorySegment
+    fun accessibilityLayoutPointForScreenPoint(point: NSPoint): NSPoint
 
-    fun accessibilityLayoutSizeForScreenSize(size: MemorySegment): MemorySegment
+    fun accessibilityLayoutSizeForScreenSize(size: NSSize): NSSize
 
-    fun accessibilityScreenPointForLayoutPoint(point: MemorySegment): MemorySegment
+    fun accessibilityScreenPointForLayoutPoint(point: NSPoint): NSPoint
 
-    fun accessibilityScreenSizeForLayoutSize(size: MemorySegment): MemorySegment
+    fun accessibilityScreenSizeForLayoutSize(size: NSSize): NSSize
 
     fun accessibilityCellForColumn_row(column: Long, row: Long): MemorySegment
 
-    fun accessibilityAttributedStringForRange(range: MemorySegment): MemorySegment
+    fun accessibilityAttributedStringForRange(range: NSRange): MemorySegment
 
-    fun accessibilityRangeForLine(line: Long): MemorySegment
+    fun accessibilityRangeForLine(line: Long): NSRange
 
-    fun accessibilityStringForRange(range: MemorySegment): MemorySegment
+    fun accessibilityStringForRange(range: NSRange): MemorySegment
 
-    fun accessibilityRangeForPosition(point: MemorySegment): MemorySegment
+    fun accessibilityRangeForPosition(point: NSPoint): NSRange
 
-    fun accessibilityRangeForIndex(index: Long): MemorySegment
+    fun accessibilityRangeForIndex(index: Long): NSRange
 
-    fun accessibilityFrameForRange(range: MemorySegment): MemorySegment
+    fun accessibilityFrameForRange(range: NSRange): NSRect
 
-    fun accessibilityRTFForRange(range: MemorySegment): MemorySegment
+    fun accessibilityRTFForRange(range: NSRange): MemorySegment
 
-    fun accessibilityStyleRangeForIndex(index: Long): MemorySegment
+    fun accessibilityStyleRangeForIndex(index: Long): NSRange
 
     fun accessibilityLineForIndex(index: Long): Long
 
@@ -65,17 +65,17 @@ interface NSAccessibility {
 
     fun setAccessibilityElement(accessibilityElement: Boolean): Unit
 
-    fun accessibilityFrame(): MemorySegment
+    fun accessibilityFrame(): NSRect
 
-    fun setAccessibilityFrame(accessibilityFrame: MemorySegment): Unit
+    fun setAccessibilityFrame(accessibilityFrame: NSRect): Unit
 
     fun isAccessibilityFocused(): Boolean
 
     fun setAccessibilityFocused(accessibilityFocused: Boolean): Unit
 
-    fun accessibilityActivationPoint(): MemorySegment
+    fun accessibilityActivationPoint(): NSPoint
 
-    fun setAccessibilityActivationPoint(accessibilityActivationPoint: MemorySegment): Unit
+    fun setAccessibilityActivationPoint(accessibilityActivationPoint: NSPoint): Unit
 
     fun accessibilityTopLevelUIElement(): MemorySegment
 
@@ -113,9 +113,9 @@ interface NSAccessibility {
 
     fun setAccessibilityNextContents(accessibilityNextContents: MemorySegment): Unit
 
-    fun accessibilityOrientation(): MemorySegment
+    fun accessibilityOrientation(): NSAccessibilityOrientation
 
-    fun setAccessibilityOrientation(accessibilityOrientation: MemorySegment): Unit
+    fun setAccessibilityOrientation(accessibilityOrientation: NSAccessibilityOrientation): Unit
 
     fun accessibilityOverflowButton(): MemorySegment
 
@@ -301,13 +301,13 @@ interface NSAccessibility {
 
     fun setAccessibilityOrderedByRow(accessibilityOrderedByRow: Boolean): Unit
 
-    fun accessibilityHorizontalUnits(): MemorySegment
+    fun accessibilityHorizontalUnits(): NSAccessibilityUnits
 
-    fun setAccessibilityHorizontalUnits(accessibilityHorizontalUnits: MemorySegment): Unit
+    fun setAccessibilityHorizontalUnits(accessibilityHorizontalUnits: NSAccessibilityUnits): Unit
 
-    fun accessibilityVerticalUnits(): MemorySegment
+    fun accessibilityVerticalUnits(): NSAccessibilityUnits
 
-    fun setAccessibilityVerticalUnits(accessibilityVerticalUnits: MemorySegment): Unit
+    fun setAccessibilityVerticalUnits(accessibilityVerticalUnits: NSAccessibilityUnits): Unit
 
     fun accessibilityHorizontalUnitDescription(): MemorySegment
 
@@ -357,17 +357,17 @@ interface NSAccessibility {
 
     fun setAccessibilityMarkerGroupUIElement(accessibilityMarkerGroupUIElement: MemorySegment): Unit
 
-    fun accessibilityUnits(): MemorySegment
+    fun accessibilityUnits(): NSAccessibilityUnits
 
-    fun setAccessibilityUnits(accessibilityUnits: MemorySegment): Unit
+    fun setAccessibilityUnits(accessibilityUnits: NSAccessibilityUnits): Unit
 
     fun accessibilityUnitDescription(): MemorySegment
 
     fun setAccessibilityUnitDescription(accessibilityUnitDescription: MemorySegment): Unit
 
-    fun accessibilityRulerMarkerType(): MemorySegment
+    fun accessibilityRulerMarkerType(): NSAccessibilityRulerMarkerType
 
-    fun setAccessibilityRulerMarkerType(accessibilityRulerMarkerType: MemorySegment): Unit
+    fun setAccessibilityRulerMarkerType(accessibilityRulerMarkerType: NSAccessibilityRulerMarkerType): Unit
 
     fun accessibilityMarkerTypeDescription(): MemorySegment
 
@@ -450,9 +450,9 @@ interface NSAccessibility {
 
     fun setAccessibilitySelectedColumns(accessibilitySelectedColumns: MemorySegment): Unit
 
-    fun accessibilitySortDirection(): MemorySegment
+    fun accessibilitySortDirection(): NSAccessibilitySortDirection
 
-    fun setAccessibilitySortDirection(accessibilitySortDirection: MemorySegment): Unit
+    fun setAccessibilitySortDirection(accessibilitySortDirection: NSAccessibilitySortDirection): Unit
 
     fun accessibilityRowHeaderUIElements(): MemorySegment
 
@@ -470,29 +470,29 @@ interface NSAccessibility {
 
     fun setAccessibilityColumnHeaderUIElements(accessibilityColumnHeaderUIElements: MemorySegment): Unit
 
-    fun accessibilityRowIndexRange(): MemorySegment
+    fun accessibilityRowIndexRange(): NSRange
 
-    fun setAccessibilityRowIndexRange(accessibilityRowIndexRange: MemorySegment): Unit
+    fun setAccessibilityRowIndexRange(accessibilityRowIndexRange: NSRange): Unit
 
-    fun accessibilityColumnIndexRange(): MemorySegment
+    fun accessibilityColumnIndexRange(): NSRange
 
-    fun setAccessibilityColumnIndexRange(accessibilityColumnIndexRange: MemorySegment): Unit
+    fun setAccessibilityColumnIndexRange(accessibilityColumnIndexRange: NSRange): Unit
 
     fun accessibilityInsertionPointLineNumber(): Long
 
     fun setAccessibilityInsertionPointLineNumber(accessibilityInsertionPointLineNumber: Long): Unit
 
-    fun accessibilitySharedCharacterRange(): MemorySegment
+    fun accessibilitySharedCharacterRange(): NSRange
 
-    fun setAccessibilitySharedCharacterRange(accessibilitySharedCharacterRange: MemorySegment): Unit
+    fun setAccessibilitySharedCharacterRange(accessibilitySharedCharacterRange: NSRange): Unit
 
     fun accessibilitySharedTextUIElements(): MemorySegment
 
     fun setAccessibilitySharedTextUIElements(accessibilitySharedTextUIElements: MemorySegment): Unit
 
-    fun accessibilityVisibleCharacterRange(): MemorySegment
+    fun accessibilityVisibleCharacterRange(): NSRange
 
-    fun setAccessibilityVisibleCharacterRange(accessibilityVisibleCharacterRange: MemorySegment): Unit
+    fun setAccessibilityVisibleCharacterRange(accessibilityVisibleCharacterRange: NSRange): Unit
 
     fun accessibilityNumberOfCharacters(): Long
 
@@ -502,9 +502,9 @@ interface NSAccessibility {
 
     fun setAccessibilitySelectedText(accessibilitySelectedText: MemorySegment): Unit
 
-    fun accessibilitySelectedTextRange(): MemorySegment
+    fun accessibilitySelectedTextRange(): NSRange
 
-    fun setAccessibilitySelectedTextRange(accessibilitySelectedTextRange: MemorySegment): Unit
+    fun setAccessibilitySelectedTextRange(accessibilitySelectedTextRange: NSRange): Unit
 
     /** @return NSArray<NSValue *> * */
     fun accessibilitySelectedTextRanges(): MemorySegment

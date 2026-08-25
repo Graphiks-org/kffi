@@ -31,23 +31,23 @@ open class NSAttributedStringMarkdownParsingOptions(override val ptr: MemorySegm
     }
 
     // @property interpretedSyntax
-    open fun interpretedSyntax(): MemorySegment {
+    open fun interpretedSyntax(): NSAttributedStringMarkdownInterpretedSyntax {
         val sel = ObjCRuntime.sel("interpretedSyntax")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSAttributedStringMarkdownInterpretedSyntax(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setInterpretedSyntax(value: MemorySegment) {
+    open fun setInterpretedSyntax(value: NSAttributedStringMarkdownInterpretedSyntax) {
         val sel = ObjCRuntime.sel("setInterpretedSyntax:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property failurePolicy
-    open fun failurePolicy(): MemorySegment {
+    open fun failurePolicy(): NSAttributedStringMarkdownParsingFailurePolicy {
         val sel = ObjCRuntime.sel("failurePolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSAttributedStringMarkdownParsingFailurePolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setFailurePolicy(value: MemorySegment) {
+    open fun setFailurePolicy(value: NSAttributedStringMarkdownParsingFailurePolicy) {
         val sel = ObjCRuntime.sel("setFailurePolicy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property languageCode

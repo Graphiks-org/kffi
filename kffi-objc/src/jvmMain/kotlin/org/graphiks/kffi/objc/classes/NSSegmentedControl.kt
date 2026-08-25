@@ -40,14 +40,14 @@ open class NSSegmentedControl(override val ptr: MemorySegment) : NSControl(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, segment) as MemorySegment
     }
 
-    open fun setImageScaling_forSegment(scaling: MemorySegment, segment: Long): Unit {
+    open fun setImageScaling_forSegment(scaling: NSImageScaling, segment: Long): Unit {
         val sel = ObjCRuntime.sel("setImageScaling:forSegment:")
-        ObjCRuntime.msgSend(null, ptr, sel, scaling, segment)
+        ObjCRuntime.msgSend(null, ptr, sel, scaling.rawValue, segment)
     }
 
-    open fun imageScalingForSegment(segment: Long): MemorySegment {
+    open fun imageScalingForSegment(segment: Long): NSImageScaling {
         val sel = ObjCRuntime.sel("imageScalingForSegment:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, segment) as MemorySegment
+        return NSImageScaling(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, segment) as Long)
     }
 
     open fun setLabel_forSegment(label: MemorySegment, segment: Long): Unit {
@@ -132,14 +132,14 @@ open class NSSegmentedControl(override val ptr: MemorySegment) : NSControl(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, segment) as Boolean
     }
 
-    open fun setAlignment_forSegment(alignment: MemorySegment, segment: Long): Unit {
+    open fun setAlignment_forSegment(alignment: NSTextAlignment, segment: Long): Unit {
         val sel = ObjCRuntime.sel("setAlignment:forSegment:")
-        ObjCRuntime.msgSend(null, ptr, sel, alignment, segment)
+        ObjCRuntime.msgSend(null, ptr, sel, alignment.rawValue, segment)
     }
 
-    open fun alignmentForSegment(segment: Long): MemorySegment {
+    open fun alignmentForSegment(segment: Long): NSTextAlignment {
         val sel = ObjCRuntime.sel("alignmentForSegment:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, segment) as MemorySegment
+        return NSTextAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, segment) as Long)
     }
 
     open fun compressWithPrioritizedCompressionOptions(prioritizedOptions: MemorySegment): Unit {
@@ -147,9 +147,9 @@ open class NSSegmentedControl(override val ptr: MemorySegment) : NSControl(ptr) 
         ObjCRuntime.msgSend(null, ptr, sel, prioritizedOptions)
     }
 
-    open fun minimumSizeWithPrioritizedCompressionOptions(prioritizedOptions: MemorySegment): MemorySegment {
+    open fun minimumSizeWithPrioritizedCompressionOptions(prioritizedOptions: MemorySegment): NSSize {
         val sel = ObjCRuntime.sel("minimumSizeWithPrioritizedCompressionOptions:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel, prioritizedOptions) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel, prioritizedOptions))
     }
 
     // @property segmentCount
@@ -173,13 +173,13 @@ open class NSSegmentedControl(override val ptr: MemorySegment) : NSControl(ptr) 
     }
 
     // @property segmentStyle
-    open fun segmentStyle(): MemorySegment {
+    open fun segmentStyle(): NSSegmentStyle {
         val sel = ObjCRuntime.sel("segmentStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSegmentStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setSegmentStyle(value: MemorySegment) {
+    open fun setSegmentStyle(value: NSSegmentStyle) {
         val sel = ObjCRuntime.sel("setSegmentStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property springLoaded
@@ -193,13 +193,13 @@ open class NSSegmentedControl(override val ptr: MemorySegment) : NSControl(ptr) 
     }
 
     // @property trackingMode
-    open fun trackingMode(): MemorySegment {
+    open fun trackingMode(): NSSegmentSwitchTracking {
         val sel = ObjCRuntime.sel("trackingMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSegmentSwitchTracking(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTrackingMode(value: MemorySegment) {
+    open fun setTrackingMode(value: NSSegmentSwitchTracking) {
         val sel = ObjCRuntime.sel("setTrackingMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property doubleValueForSelectedSegment
@@ -225,13 +225,13 @@ open class NSSegmentedControl(override val ptr: MemorySegment) : NSControl(ptr) 
     }
 
     // @property segmentDistribution
-    open fun segmentDistribution(): MemorySegment {
+    open fun segmentDistribution(): NSSegmentDistribution {
         val sel = ObjCRuntime.sel("segmentDistribution")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSegmentDistribution(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setSegmentDistribution(value: MemorySegment) {
+    open fun setSegmentDistribution(value: NSSegmentDistribution) {
         val sel = ObjCRuntime.sel("setSegmentDistribution:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property activeCompressionOptions
@@ -241,13 +241,13 @@ open class NSSegmentedControl(override val ptr: MemorySegment) : NSControl(ptr) 
     }
 
     // @property borderShape
-    open fun borderShape(): MemorySegment {
+    open fun borderShape(): NSControlBorderShape {
         val sel = ObjCRuntime.sel("borderShape")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSControlBorderShape(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBorderShape(value: MemorySegment) {
+    open fun setBorderShape(value: NSControlBorderShape) {
         val sel = ObjCRuntime.sel("setBorderShape:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }
@@ -255,15 +255,15 @@ open class NSSegmentedControl(override val ptr: MemorySegment) : NSControl(ptr) 
 // ── Category: NSSegmentedControlConvenience on NSSegmentedControl ─────────────────────────────────────────
 
 // Class method: +[NSSegmentedControl segmentedControlWithLabels:trackingMode:target:action:]
-fun NSSegmentedControl_segmentedControlWithLabels_trackingMode_target_action(labels: MemorySegment, trackingMode: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {
+fun NSSegmentedControl_segmentedControlWithLabels_trackingMode_target_action(labels: MemorySegment, trackingMode: NSSegmentSwitchTracking, target: MemorySegment, action: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("segmentedControlWithLabels:trackingMode:target:action:")
     val cls = ObjCRuntime.getClass("NSSegmentedControl")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, labels, trackingMode, target, action) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, labels, trackingMode.rawValue, target, action) as MemorySegment
 }
 
 // Class method: +[NSSegmentedControl segmentedControlWithImages:trackingMode:target:action:]
-fun NSSegmentedControl_segmentedControlWithImages_trackingMode_target_action(images: MemorySegment, trackingMode: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {
+fun NSSegmentedControl_segmentedControlWithImages_trackingMode_target_action(images: MemorySegment, trackingMode: NSSegmentSwitchTracking, target: MemorySegment, action: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("segmentedControlWithImages:trackingMode:target:action:")
     val cls = ObjCRuntime.getClass("NSSegmentedControl")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, images, trackingMode, target, action) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, images, trackingMode.rawValue, target, action) as MemorySegment
 }

@@ -30,9 +30,9 @@ open class NSOpenGLContext(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, format, share) as MemorySegment
     }
 
-    open fun initWithCGLContextObj(context: MemorySegment): MemorySegment {
+    open fun initWithCGLContextObj(context: CGLContextObj): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGLContextObj:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, context) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, context.segment) as MemorySegment
     }
 
     open fun setFullScreen(): Unit {
@@ -70,14 +70,14 @@ open class NSOpenGLContext(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, context, mask)
     }
 
-    open fun setValues_forParameter(vals: MemorySegment, param: MemorySegment): Unit {
+    open fun setValues_forParameter(vals: MemorySegment, param: NSOpenGLContextParameter): Unit {
         val sel = ObjCRuntime.sel("setValues:forParameter:")
-        ObjCRuntime.msgSend(null, ptr, sel, vals, param)
+        ObjCRuntime.msgSend(null, ptr, sel, vals, param.rawValue)
     }
 
-    open fun getValues_forParameter(vals: MemorySegment, param: MemorySegment): Unit {
+    open fun getValues_forParameter(vals: MemorySegment, param: NSOpenGLContextParameter): Unit {
         val sel = ObjCRuntime.sel("getValues:forParameter:")
-        ObjCRuntime.msgSend(null, ptr, sel, vals, param)
+        ObjCRuntime.msgSend(null, ptr, sel, vals, param.rawValue)
     }
 
     open fun createTexture_fromView_internalFormat(target: Int, view: MemorySegment, format: Int): Unit {
@@ -118,9 +118,9 @@ open class NSOpenGLContext(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property CGLContextObj
-    open fun CGLContextObj(): MemorySegment {
+    open fun CGLContextObj(): CGLContextObj {
         val sel = ObjCRuntime.sel("CGLContextObj")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGLContextObj(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
 }

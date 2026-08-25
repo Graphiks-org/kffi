@@ -78,14 +78,14 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun shouldArchiveValueForKey(key: String): Boolean = shouldArchiveValueForKey(ObjCRuntime.newNSString(Arena.global(), key))
 
-    open fun affineTransform(): MemorySegment {
+    open fun affineTransform(): CGAffineTransform {
         val sel = ObjCRuntime.sel("affineTransform")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("a"), ValueLayout.JAVA_DOUBLE.withName("b"), ValueLayout.JAVA_DOUBLE.withName("c"), ValueLayout.JAVA_DOUBLE.withName("d"), ValueLayout.JAVA_DOUBLE.withName("tx"), ValueLayout.JAVA_DOUBLE.withName("ty")).withName("CGAffineTransform"), ptr, sel) as MemorySegment
+        return CGAffineTransform(ObjCRuntime.msgSendStruct(CGAffineTransform.layout, ptr, sel))
     }
 
-    open fun setAffineTransform(m: MemorySegment): Unit {
+    open fun setAffineTransform(m: CGAffineTransform): Unit {
         val sel = ObjCRuntime.sel("setAffineTransform:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(m, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("a"), ValueLayout.JAVA_DOUBLE.withName("b"), ValueLayout.JAVA_DOUBLE.withName("c"), ValueLayout.JAVA_DOUBLE.withName("d"), ValueLayout.JAVA_DOUBLE.withName("tx"), ValueLayout.JAVA_DOUBLE.withName("ty")).withName("CGAffineTransform")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(m.segment, CGAffineTransform.layout))
     }
 
     open fun contentsAreFlipped(): Boolean {
@@ -123,24 +123,24 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, oldLayer, newLayer)
     }
 
-    open fun convertPoint_fromLayer(p: MemorySegment, l: MemorySegment): MemorySegment {
+    open fun convertPoint_fromLayer(p: CGPoint, l: MemorySegment): CGPoint {
         val sel = ObjCRuntime.sel("convertPoint:fromLayer:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel, ObjCRuntime.ObjCStructArg(p, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), l) as MemorySegment
+        return CGPoint(ObjCRuntime.msgSendStruct(CGPoint.layout, ptr, sel, ObjCRuntime.ObjCStructArg(p.segment, CGPoint.layout), l))
     }
 
-    open fun convertPoint_toLayer(p: MemorySegment, l: MemorySegment): MemorySegment {
+    open fun convertPoint_toLayer(p: CGPoint, l: MemorySegment): CGPoint {
         val sel = ObjCRuntime.sel("convertPoint:toLayer:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel, ObjCRuntime.ObjCStructArg(p, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), l) as MemorySegment
+        return CGPoint(ObjCRuntime.msgSendStruct(CGPoint.layout, ptr, sel, ObjCRuntime.ObjCStructArg(p.segment, CGPoint.layout), l))
     }
 
-    open fun convertRect_fromLayer(r: MemorySegment, l: MemorySegment): MemorySegment {
+    open fun convertRect_fromLayer(r: CGRect, l: MemorySegment): CGRect {
         val sel = ObjCRuntime.sel("convertRect:fromLayer:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(r, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), l) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(r.segment, CGRect.layout), l))
     }
 
-    open fun convertRect_toLayer(r: MemorySegment, l: MemorySegment): MemorySegment {
+    open fun convertRect_toLayer(r: CGRect, l: MemorySegment): CGRect {
         val sel = ObjCRuntime.sel("convertRect:toLayer:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(r, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), l) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(r.segment, CGRect.layout), l))
     }
 
     open fun convertTime_fromLayer(t: Double, l: MemorySegment): Double {
@@ -153,14 +153,14 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, t, l) as Double
     }
 
-    open fun hitTest(p: MemorySegment): MemorySegment {
+    open fun hitTest(p: CGPoint): MemorySegment {
         val sel = ObjCRuntime.sel("hitTest:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(p, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(p.segment, CGPoint.layout)) as MemorySegment
     }
 
-    open fun containsPoint(p: MemorySegment): Boolean {
+    open fun containsPoint(p: CGPoint): Boolean {
         val sel = ObjCRuntime.sel("containsPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(p, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(p.segment, CGPoint.layout)) as Boolean
     }
 
     open fun display(): Unit {
@@ -173,9 +173,9 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun setNeedsDisplayInRect(r: MemorySegment): Unit {
+    open fun setNeedsDisplayInRect(r: CGRect): Unit {
         val sel = ObjCRuntime.sel("setNeedsDisplayInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(r, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(r.segment, CGRect.layout))
     }
 
     open fun needsDisplay(): Boolean {
@@ -188,19 +188,19 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun drawInContext(ctx: MemorySegment): Unit {
+    open fun drawInContext(ctx: CGContextRef): Unit {
         val sel = ObjCRuntime.sel("drawInContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, ctx)
+        ObjCRuntime.msgSend(null, ptr, sel, ctx.segment)
     }
 
-    open fun renderInContext(ctx: MemorySegment): Unit {
+    open fun renderInContext(ctx: CGContextRef): Unit {
         val sel = ObjCRuntime.sel("renderInContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, ctx)
+        ObjCRuntime.msgSend(null, ptr, sel, ctx.segment)
     }
 
-    open fun preferredFrameSize(): MemorySegment {
+    open fun preferredFrameSize(): CGSize {
         val sel = ObjCRuntime.sel("preferredFrameSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return CGSize(ObjCRuntime.msgSendStruct(CGSize.layout, ptr, sel))
     }
 
     open fun setNeedsLayout(): Unit {
@@ -223,14 +223,14 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun resizeSublayersWithOldSize(size: MemorySegment): Unit {
+    open fun resizeSublayersWithOldSize(size: CGSize): Unit {
         val sel = ObjCRuntime.sel("resizeSublayersWithOldSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(size, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, CGSize.layout))
     }
 
-    open fun resizeWithOldSuperlayerSize(size: MemorySegment): Unit {
+    open fun resizeWithOldSuperlayerSize(size: CGSize): Unit {
         val sel = ObjCRuntime.sel("resizeWithOldSuperlayerSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(size, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, CGSize.layout))
     }
 
     /** @return id<CAAction> */
@@ -278,23 +278,23 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     fun animationForKey(key: String): MemorySegment = animationForKey(ObjCRuntime.newNSString(Arena.global(), key))
 
     // @property bounds
-    open fun bounds(): MemorySegment {
+    open fun bounds(): CGRect {
         val sel = ObjCRuntime.sel("bounds")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
-    open fun setBounds(value: MemorySegment) {
+    open fun setBounds(value: CGRect) {
         val sel = ObjCRuntime.sel("setBounds:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CGRect.layout))
     }
 
     // @property position
-    open fun position(): MemorySegment {
+    open fun position(): CGPoint {
         val sel = ObjCRuntime.sel("position")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return CGPoint(ObjCRuntime.msgSendStruct(CGPoint.layout, ptr, sel))
     }
-    open fun setPosition(value: MemorySegment) {
+    open fun setPosition(value: CGPoint) {
         val sel = ObjCRuntime.sel("setPosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CGPoint.layout))
     }
 
     // @property zPosition
@@ -308,13 +308,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property anchorPoint
-    open fun anchorPoint(): MemorySegment {
+    open fun anchorPoint(): CGPoint {
         val sel = ObjCRuntime.sel("anchorPoint")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return CGPoint(ObjCRuntime.msgSendStruct(CGPoint.layout, ptr, sel))
     }
-    open fun setAnchorPoint(value: MemorySegment) {
+    open fun setAnchorPoint(value: CGPoint) {
         val sel = ObjCRuntime.sel("setAnchorPoint:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CGPoint.layout))
     }
 
     // @property anchorPointZ
@@ -328,23 +328,23 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property transform
-    open fun transform(): MemorySegment {
+    open fun transform(): CATransform3D {
         val sel = ObjCRuntime.sel("transform")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("m11"), ValueLayout.JAVA_DOUBLE.withName("m12"), ValueLayout.JAVA_DOUBLE.withName("m13"), ValueLayout.JAVA_DOUBLE.withName("m14"), ValueLayout.JAVA_DOUBLE.withName("m21"), ValueLayout.JAVA_DOUBLE.withName("m22"), ValueLayout.JAVA_DOUBLE.withName("m23"), ValueLayout.JAVA_DOUBLE.withName("m24"), ValueLayout.JAVA_DOUBLE.withName("m31"), ValueLayout.JAVA_DOUBLE.withName("m32"), ValueLayout.JAVA_DOUBLE.withName("m33"), ValueLayout.JAVA_DOUBLE.withName("m34"), ValueLayout.JAVA_DOUBLE.withName("m41"), ValueLayout.JAVA_DOUBLE.withName("m42"), ValueLayout.JAVA_DOUBLE.withName("m43"), ValueLayout.JAVA_DOUBLE.withName("m44")).withName("CATransform3D"), ptr, sel) as MemorySegment
+        return CATransform3D(ObjCRuntime.msgSendStruct(CATransform3D.layout, ptr, sel))
     }
-    open fun setTransform(value: MemorySegment) {
+    open fun setTransform(value: CATransform3D) {
         val sel = ObjCRuntime.sel("setTransform:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("m11"), ValueLayout.JAVA_DOUBLE.withName("m12"), ValueLayout.JAVA_DOUBLE.withName("m13"), ValueLayout.JAVA_DOUBLE.withName("m14"), ValueLayout.JAVA_DOUBLE.withName("m21"), ValueLayout.JAVA_DOUBLE.withName("m22"), ValueLayout.JAVA_DOUBLE.withName("m23"), ValueLayout.JAVA_DOUBLE.withName("m24"), ValueLayout.JAVA_DOUBLE.withName("m31"), ValueLayout.JAVA_DOUBLE.withName("m32"), ValueLayout.JAVA_DOUBLE.withName("m33"), ValueLayout.JAVA_DOUBLE.withName("m34"), ValueLayout.JAVA_DOUBLE.withName("m41"), ValueLayout.JAVA_DOUBLE.withName("m42"), ValueLayout.JAVA_DOUBLE.withName("m43"), ValueLayout.JAVA_DOUBLE.withName("m44")).withName("CATransform3D")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CATransform3D.layout))
     }
 
     // @property frame
-    open fun frame(): MemorySegment {
+    open fun frame(): CGRect {
         val sel = ObjCRuntime.sel("frame")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
-    open fun setFrame(value: MemorySegment) {
+    open fun setFrame(value: CGRect) {
         val sel = ObjCRuntime.sel("setFrame:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CGRect.layout))
     }
 
     // @property hidden
@@ -395,13 +395,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property sublayerTransform
-    open fun sublayerTransform(): MemorySegment {
+    open fun sublayerTransform(): CATransform3D {
         val sel = ObjCRuntime.sel("sublayerTransform")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("m11"), ValueLayout.JAVA_DOUBLE.withName("m12"), ValueLayout.JAVA_DOUBLE.withName("m13"), ValueLayout.JAVA_DOUBLE.withName("m14"), ValueLayout.JAVA_DOUBLE.withName("m21"), ValueLayout.JAVA_DOUBLE.withName("m22"), ValueLayout.JAVA_DOUBLE.withName("m23"), ValueLayout.JAVA_DOUBLE.withName("m24"), ValueLayout.JAVA_DOUBLE.withName("m31"), ValueLayout.JAVA_DOUBLE.withName("m32"), ValueLayout.JAVA_DOUBLE.withName("m33"), ValueLayout.JAVA_DOUBLE.withName("m34"), ValueLayout.JAVA_DOUBLE.withName("m41"), ValueLayout.JAVA_DOUBLE.withName("m42"), ValueLayout.JAVA_DOUBLE.withName("m43"), ValueLayout.JAVA_DOUBLE.withName("m44")).withName("CATransform3D"), ptr, sel) as MemorySegment
+        return CATransform3D(ObjCRuntime.msgSendStruct(CATransform3D.layout, ptr, sel))
     }
-    open fun setSublayerTransform(value: MemorySegment) {
+    open fun setSublayerTransform(value: CATransform3D) {
         val sel = ObjCRuntime.sel("setSublayerTransform:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("m11"), ValueLayout.JAVA_DOUBLE.withName("m12"), ValueLayout.JAVA_DOUBLE.withName("m13"), ValueLayout.JAVA_DOUBLE.withName("m14"), ValueLayout.JAVA_DOUBLE.withName("m21"), ValueLayout.JAVA_DOUBLE.withName("m22"), ValueLayout.JAVA_DOUBLE.withName("m23"), ValueLayout.JAVA_DOUBLE.withName("m24"), ValueLayout.JAVA_DOUBLE.withName("m31"), ValueLayout.JAVA_DOUBLE.withName("m32"), ValueLayout.JAVA_DOUBLE.withName("m33"), ValueLayout.JAVA_DOUBLE.withName("m34"), ValueLayout.JAVA_DOUBLE.withName("m41"), ValueLayout.JAVA_DOUBLE.withName("m42"), ValueLayout.JAVA_DOUBLE.withName("m43"), ValueLayout.JAVA_DOUBLE.withName("m44")).withName("CATransform3D")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CATransform3D.layout))
     }
 
     // @property mask
@@ -435,13 +435,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property contentsRect
-    open fun contentsRect(): MemorySegment {
+    open fun contentsRect(): CGRect {
         val sel = ObjCRuntime.sel("contentsRect")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
-    open fun setContentsRect(value: MemorySegment) {
+    open fun setContentsRect(value: CGRect) {
         val sel = ObjCRuntime.sel("setContentsRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CGRect.layout))
     }
 
     // @property contentsGravity
@@ -465,13 +465,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property contentsCenter
-    open fun contentsCenter(): MemorySegment {
+    open fun contentsCenter(): CGRect {
         val sel = ObjCRuntime.sel("contentsCenter")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel))
     }
-    open fun setContentsCenter(value: MemorySegment) {
+    open fun setContentsCenter(value: CGRect) {
         val sel = ObjCRuntime.sel("setContentsCenter:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CGRect.layout))
     }
 
     // @property contentsFormat
@@ -595,13 +595,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property edgeAntialiasingMask
-    open fun edgeAntialiasingMask(): MemorySegment {
+    open fun edgeAntialiasingMask(): CAEdgeAntialiasingMask {
         val sel = ObjCRuntime.sel("edgeAntialiasingMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CAEdgeAntialiasingMask(Integer.toUnsignedLong(ObjCRuntime.msgSend(ValueLayout.JAVA_INT, ptr, sel) as Int))
     }
-    open fun setEdgeAntialiasingMask(value: MemorySegment) {
+    open fun setEdgeAntialiasingMask(value: CAEdgeAntialiasingMask) {
         val sel = ObjCRuntime.sel("setEdgeAntialiasingMask:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue.toInt())
     }
 
     // @property allowsEdgeAntialiasing
@@ -615,13 +615,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property backgroundColor
-    open fun backgroundColor(): MemorySegment {
+    open fun backgroundColor(): CGColorRef {
         val sel = ObjCRuntime.sel("backgroundColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGColorRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
-    open fun setBackgroundColor(value: MemorySegment) {
+    open fun setBackgroundColor(value: CGColorRef) {
         val sel = ObjCRuntime.sel("setBackgroundColor:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.segment)
     }
 
     // @property cornerRadius
@@ -635,13 +635,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property maskedCorners
-    open fun maskedCorners(): MemorySegment {
+    open fun maskedCorners(): CACornerMask {
         val sel = ObjCRuntime.sel("maskedCorners")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CACornerMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setMaskedCorners(value: MemorySegment) {
+    open fun setMaskedCorners(value: CACornerMask) {
         val sel = ObjCRuntime.sel("setMaskedCorners:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property cornerCurve
@@ -665,13 +665,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property borderColor
-    open fun borderColor(): MemorySegment {
+    open fun borderColor(): CGColorRef {
         val sel = ObjCRuntime.sel("borderColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGColorRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
-    open fun setBorderColor(value: MemorySegment) {
+    open fun setBorderColor(value: CGColorRef) {
         val sel = ObjCRuntime.sel("setBorderColor:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.segment)
     }
 
     // @property opacity
@@ -745,13 +745,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property shadowColor
-    open fun shadowColor(): MemorySegment {
+    open fun shadowColor(): CGColorRef {
         val sel = ObjCRuntime.sel("shadowColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGColorRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
-    open fun setShadowColor(value: MemorySegment) {
+    open fun setShadowColor(value: CGColorRef) {
         val sel = ObjCRuntime.sel("setShadowColor:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.segment)
     }
 
     // @property shadowOpacity
@@ -765,13 +765,13 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property shadowOffset
-    open fun shadowOffset(): MemorySegment {
+    open fun shadowOffset(): CGSize {
         val sel = ObjCRuntime.sel("shadowOffset")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return CGSize(ObjCRuntime.msgSendStruct(CGSize.layout, ptr, sel))
     }
-    open fun setShadowOffset(value: MemorySegment) {
+    open fun setShadowOffset(value: CGSize) {
         val sel = ObjCRuntime.sel("setShadowOffset:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, CGSize.layout))
     }
 
     // @property shadowRadius
@@ -785,23 +785,23 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property shadowPath
-    open fun shadowPath(): MemorySegment {
+    open fun shadowPath(): CGPathRef {
         val sel = ObjCRuntime.sel("shadowPath")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGPathRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
-    open fun setShadowPath(value: MemorySegment) {
+    open fun setShadowPath(value: CGPathRef) {
         val sel = ObjCRuntime.sel("setShadowPath:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.segment)
     }
 
     // @property autoresizingMask
-    open fun autoresizingMask(): MemorySegment {
+    open fun autoresizingMask(): CAAutoresizingMask {
         val sel = ObjCRuntime.sel("autoresizingMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CAAutoresizingMask(Integer.toUnsignedLong(ObjCRuntime.msgSend(ValueLayout.JAVA_INT, ptr, sel) as Int))
     }
-    open fun setAutoresizingMask(value: MemorySegment) {
+    open fun setAutoresizingMask(value: CAAutoresizingMask) {
         val sel = ObjCRuntime.sel("setAutoresizingMask:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue.toInt())
     }
 
     // @property layoutManager

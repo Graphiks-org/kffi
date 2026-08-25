@@ -56,9 +56,9 @@ open class NSNetService(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun publishWithOptions(options: MemorySegment): Unit {
+    open fun publishWithOptions(options: NSNetServiceOptions): Unit {
         val sel = ObjCRuntime.sel("publishWithOptions:")
-        ObjCRuntime.msgSend(null, ptr, sel, options)
+        ObjCRuntime.msgSend(null, ptr, sel, options.rawValue)
     }
 
     open fun resolve(): Unit {

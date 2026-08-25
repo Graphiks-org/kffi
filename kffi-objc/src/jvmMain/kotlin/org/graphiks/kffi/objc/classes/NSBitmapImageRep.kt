@@ -29,9 +29,9 @@ open class NSBitmapImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, array) as MemorySegment
         }
 
-        fun TIFFRepresentationOfImageRepsInArray_usingCompression_factor(array: MemorySegment, comp: MemorySegment, factor: Float): MemorySegment {
+        fun TIFFRepresentationOfImageRepsInArray_usingCompression_factor(array: MemorySegment, comp: NSTIFFCompression, factor: Float): MemorySegment {
             val sel = ObjCRuntime.sel("TIFFRepresentationOfImageRepsInArray:usingCompression:factor:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, array, comp, factor) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, array, comp.rawValue, factor) as MemorySegment
         }
 
         fun getTIFFCompressionTypes_count(list: MemorySegment, numTypes: MemorySegment): Unit {
@@ -39,19 +39,19 @@ open class NSBitmapImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
             ObjCRuntime.msgSend(null, _class, sel, list, numTypes)
         }
 
-        fun localizedNameForTIFFCompressionType(compression: MemorySegment): MemorySegment {
+        fun localizedNameForTIFFCompressionType(compression: NSTIFFCompression): MemorySegment {
             val sel = ObjCRuntime.sel("localizedNameForTIFFCompressionType:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, compression) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, compression.rawValue) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-        fun localizedNameForTIFFCompressionTypeAsString(compression: MemorySegment): String = ObjCRuntime.toJavaString(localizedNameForTIFFCompressionType(compression))
+        fun localizedNameForTIFFCompressionTypeAsString(compression: NSTIFFCompression): String = ObjCRuntime.toJavaString(localizedNameForTIFFCompressionType(compression))
 
     }
 
-    open fun initWithFocusedViewRect(rect: MemorySegment): MemorySegment {
+    open fun initWithFocusedViewRect(rect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFocusedViewRect:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as MemorySegment
     }
 
     open fun initWithBitmapDataPlanes_pixelsWide_pixelsHigh_bitsPerSample_samplesPerPixel_hasAlpha_isPlanar_colorSpaceName_bytesPerRow_bitsPerPixel(planes: MemorySegment, width: Long, height: Long, bps: Long, spp: Long, alpha: Boolean, isPlanar: Boolean, colorSpaceName: MemorySegment, rBytes: Long, pBits: Long): MemorySegment {
@@ -59,14 +59,14 @@ open class NSBitmapImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, planes, width, height, bps, spp, alpha, isPlanar, colorSpaceName, rBytes, pBits) as MemorySegment
     }
 
-    open fun initWithBitmapDataPlanes_pixelsWide_pixelsHigh_bitsPerSample_samplesPerPixel_hasAlpha_isPlanar_colorSpaceName_bitmapFormat_bytesPerRow_bitsPerPixel(planes: MemorySegment, width: Long, height: Long, bps: Long, spp: Long, alpha: Boolean, isPlanar: Boolean, colorSpaceName: MemorySegment, bitmapFormat: MemorySegment, rBytes: Long, pBits: Long): MemorySegment {
+    open fun initWithBitmapDataPlanes_pixelsWide_pixelsHigh_bitsPerSample_samplesPerPixel_hasAlpha_isPlanar_colorSpaceName_bitmapFormat_bytesPerRow_bitsPerPixel(planes: MemorySegment, width: Long, height: Long, bps: Long, spp: Long, alpha: Boolean, isPlanar: Boolean, colorSpaceName: MemorySegment, bitmapFormat: NSBitmapFormat, rBytes: Long, pBits: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithBitmapDataPlanes:pixelsWide:pixelsHigh:bitsPerSample:samplesPerPixel:hasAlpha:isPlanar:colorSpaceName:bitmapFormat:bytesPerRow:bitsPerPixel:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, planes, width, height, bps, spp, alpha, isPlanar, colorSpaceName, bitmapFormat, rBytes, pBits) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, planes, width, height, bps, spp, alpha, isPlanar, colorSpaceName, bitmapFormat.rawValue, rBytes, pBits) as MemorySegment
     }
 
-    open fun initWithCGImage(cgImage: MemorySegment): MemorySegment {
+    open fun initWithCGImage(cgImage: CGImageRef): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGImage:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, cgImage) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, cgImage.segment) as MemorySegment
     }
 
     open fun initWithCIImage(ciImage: MemorySegment): MemorySegment {
@@ -89,19 +89,19 @@ open class NSBitmapImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, compression, factor)
     }
 
-    open fun setCompression_factor(compression: MemorySegment, factor: Float): Unit {
+    open fun setCompression_factor(compression: NSTIFFCompression, factor: Float): Unit {
         val sel = ObjCRuntime.sel("setCompression:factor:")
-        ObjCRuntime.msgSend(null, ptr, sel, compression, factor)
+        ObjCRuntime.msgSend(null, ptr, sel, compression.rawValue, factor)
     }
 
-    open fun TIFFRepresentationUsingCompression_factor(comp: MemorySegment, factor: Float): MemorySegment {
+    open fun TIFFRepresentationUsingCompression_factor(comp: NSTIFFCompression, factor: Float): MemorySegment {
         val sel = ObjCRuntime.sel("TIFFRepresentationUsingCompression:factor:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, comp, factor) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, comp.rawValue, factor) as MemorySegment
     }
 
-    open fun canBeCompressedUsing(compression: MemorySegment): Boolean {
+    open fun canBeCompressedUsing(compression: NSTIFFCompression): Boolean {
         val sel = ObjCRuntime.sel("canBeCompressedUsing:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, compression) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, compression.rawValue) as Boolean
     }
 
     open fun colorizeByMappingGray_toColor_blackMapping_whiteMapping(midPoint: Double, midPointColor: MemorySegment, shadowColor: MemorySegment, lightColor: MemorySegment): Unit {
@@ -139,9 +139,9 @@ open class NSBitmapImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, p, x, y)
     }
 
-    open fun bitmapImageRepByConvertingToColorSpace_renderingIntent(targetSpace: MemorySegment, renderingIntent: MemorySegment): MemorySegment {
+    open fun bitmapImageRepByConvertingToColorSpace_renderingIntent(targetSpace: MemorySegment, renderingIntent: NSColorRenderingIntent): MemorySegment {
         val sel = ObjCRuntime.sel("bitmapImageRepByConvertingToColorSpace:renderingIntent:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, targetSpace, renderingIntent) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, targetSpace, renderingIntent.rawValue) as MemorySegment
     }
 
     open fun bitmapImageRepByRetaggingWithColorSpace(newSpace: MemorySegment): MemorySegment {
@@ -192,9 +192,9 @@ open class NSBitmapImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
     }
 
     // @property bitmapFormat
-    open fun bitmapFormat(): MemorySegment {
+    open fun bitmapFormat(): NSBitmapFormat {
         val sel = ObjCRuntime.sel("bitmapFormat")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSBitmapFormat(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property TIFFRepresentation
@@ -204,9 +204,9 @@ open class NSBitmapImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
     }
 
     // @property CGImage
-    open fun CGImage(): MemorySegment {
+    open fun CGImage(): CGImageRef {
         val sel = ObjCRuntime.sel("CGImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGImageRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     // @property colorSpace
@@ -219,9 +219,9 @@ open class NSBitmapImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
 
 // ── Category: NSBitmapImageFileTypeExtensions on NSBitmapImageRep ─────────────────────────────────────────
 
-fun NSBitmapImageRep.representationUsingType_properties(storageType: MemorySegment, properties: MemorySegment): MemorySegment {
+fun NSBitmapImageRep.representationUsingType_properties(storageType: NSBitmapImageFileType, properties: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("representationUsingType:properties:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, storageType, properties) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, storageType.rawValue, properties) as MemorySegment
 }
 
 fun NSBitmapImageRep.setProperty_withValue(property: MemorySegment, value: MemorySegment): Unit {
@@ -235,8 +235,8 @@ fun NSBitmapImageRep.valueForProperty(property: MemorySegment): MemorySegment {
 }
 
 // Class method: +[NSBitmapImageRep representationOfImageRepsInArray:usingType:properties:]
-fun NSBitmapImageRep_representationOfImageRepsInArray_usingType_properties(imageReps: MemorySegment, storageType: MemorySegment, properties: MemorySegment): MemorySegment {
+fun NSBitmapImageRep_representationOfImageRepsInArray_usingType_properties(imageReps: MemorySegment, storageType: NSBitmapImageFileType, properties: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("representationOfImageRepsInArray:usingType:properties:")
     val cls = ObjCRuntime.getClass("NSBitmapImageRep")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, imageReps, storageType, properties) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, imageReps, storageType.rawValue, properties) as MemorySegment
 }

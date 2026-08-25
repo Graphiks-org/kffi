@@ -129,9 +129,9 @@ open class NSFont(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, fontSize, weight) as MemorySegment
         }
 
-        fun systemFontSizeForControlSize(controlSize: MemorySegment): Double {
+        fun systemFontSizeForControlSize(controlSize: NSControlSize): Double {
             val sel = ObjCRuntime.sel("systemFontSizeForControlSize:")
-            return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, _class, sel, controlSize) as Double
+            return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, _class, sel, controlSize.rawValue) as Double
         }
 
         fun systemFontSize(): Double {
@@ -156,24 +156,24 @@ open class NSFont(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, fontSize) as MemorySegment
     }
 
-    open fun boundingRectForCGGlyph(glyph: Short): MemorySegment {
+    open fun boundingRectForCGGlyph(glyph: Short): NSRect {
         val sel = ObjCRuntime.sel("boundingRectForCGGlyph:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, glyph) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, glyph))
     }
 
-    open fun advancementForCGGlyph(glyph: Short): MemorySegment {
+    open fun advancementForCGGlyph(glyph: Short): NSSize {
         val sel = ObjCRuntime.sel("advancementForCGGlyph:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel, glyph) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel, glyph))
     }
 
-    open fun getBoundingRects_forCGGlyphs_count(bounds: MemorySegment, glyphs: MemorySegment, glyphCount: Long): Unit {
+    open fun getBoundingRects_forCGGlyphs_count(bounds: NSRectArray, glyphs: MemorySegment, glyphCount: Long): Unit {
         val sel = ObjCRuntime.sel("getBoundingRects:forCGGlyphs:count:")
-        ObjCRuntime.msgSend(null, ptr, sel, bounds, glyphs, glyphCount)
+        ObjCRuntime.msgSend(null, ptr, sel, bounds.segment, glyphs, glyphCount)
     }
 
-    open fun getAdvancements_forCGGlyphs_count(advancements: MemorySegment, glyphs: MemorySegment, glyphCount: Long): Unit {
+    open fun getAdvancements_forCGGlyphs_count(advancements: NSSizeArray, glyphs: MemorySegment, glyphCount: Long): Unit {
         val sel = ObjCRuntime.sel("getAdvancements:forCGGlyphs:count:")
-        ObjCRuntime.msgSend(null, ptr, sel, advancements, glyphs, glyphCount)
+        ObjCRuntime.msgSend(null, ptr, sel, advancements.segment, glyphs, glyphCount)
     }
 
     open fun `set`(): Unit {
@@ -274,15 +274,15 @@ open class NSFont(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property boundingRectForFont
-    open fun boundingRectForFont(): MemorySegment {
+    open fun boundingRectForFont(): NSRect {
         val sel = ObjCRuntime.sel("boundingRectForFont")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property maximumAdvancement
-    open fun maximumAdvancement(): MemorySegment {
+    open fun maximumAdvancement(): NSSize {
         val sel = ObjCRuntime.sel("maximumAdvancement")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
 
     // @property ascender
@@ -360,34 +360,34 @@ fun NSFont.glyphWithName(name: MemorySegment): Int {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_INT, this.ptr, sel, name) as Int
 }
 
-fun NSFont.boundingRectForGlyph(glyph: Int): MemorySegment {
+fun NSFont.boundingRectForGlyph(glyph: Int): NSRect {
     val sel = ObjCRuntime.sel("boundingRectForGlyph:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), this.ptr, sel, glyph) as MemorySegment
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, glyph))
 }
 
-fun NSFont.advancementForGlyph(glyph: Int): MemorySegment {
+fun NSFont.advancementForGlyph(glyph: Int): NSSize {
     val sel = ObjCRuntime.sel("advancementForGlyph:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel, glyph) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel, glyph))
 }
 
-fun NSFont.getBoundingRects_forGlyphs_count(bounds: MemorySegment, glyphs: MemorySegment, glyphCount: Long): Unit {
+fun NSFont.getBoundingRects_forGlyphs_count(bounds: NSRectArray, glyphs: MemorySegment, glyphCount: Long): Unit {
     val sel = ObjCRuntime.sel("getBoundingRects:forGlyphs:count:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, bounds, glyphs, glyphCount)
+    ObjCRuntime.msgSend(null, this.ptr, sel, bounds.segment, glyphs, glyphCount)
 }
 
-fun NSFont.getAdvancements_forGlyphs_count(advancements: MemorySegment, glyphs: MemorySegment, glyphCount: Long): Unit {
+fun NSFont.getAdvancements_forGlyphs_count(advancements: NSSizeArray, glyphs: MemorySegment, glyphCount: Long): Unit {
     val sel = ObjCRuntime.sel("getAdvancements:forGlyphs:count:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, advancements, glyphs, glyphCount)
+    ObjCRuntime.msgSend(null, this.ptr, sel, advancements.segment, glyphs, glyphCount)
 }
 
-fun NSFont.getAdvancements_forPackedGlyphs_length(advancements: MemorySegment, packedGlyphs: MemorySegment, length: Long): Unit {
+fun NSFont.getAdvancements_forPackedGlyphs_length(advancements: NSSizeArray, packedGlyphs: MemorySegment, length: Long): Unit {
     val sel = ObjCRuntime.sel("getAdvancements:forPackedGlyphs:length:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, advancements, packedGlyphs, length)
+    ObjCRuntime.msgSend(null, this.ptr, sel, advancements.segment, packedGlyphs, length)
 }
 
-fun NSFont.screenFontWithRenderingMode(renderingMode: MemorySegment): MemorySegment {
+fun NSFont.screenFontWithRenderingMode(renderingMode: NSFontRenderingMode): MemorySegment {
     val sel = ObjCRuntime.sel("screenFontWithRenderingMode:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, renderingMode) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, renderingMode.rawValue) as MemorySegment
 }
 
 fun NSFont.printerFont(): MemorySegment {
@@ -400,9 +400,9 @@ fun NSFont.screenFont(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
-fun NSFont.renderingMode(): MemorySegment {
+fun NSFont.renderingMode(): NSFontRenderingMode {
     val sel = ObjCRuntime.sel("renderingMode")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSFontRenderingMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
 // ── Category: NSFont_TextStyles on NSFont ─────────────────────────────────────────

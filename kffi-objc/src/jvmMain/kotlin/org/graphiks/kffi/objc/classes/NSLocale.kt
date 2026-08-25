@@ -288,17 +288,17 @@ fun NSLocale_windowsLocaleCodeFromLocaleIdentifier(localeIdentifier: MemorySegme
 }
 
 // Class method: +[NSLocale characterDirectionForLanguage:]
-fun NSLocale_characterDirectionForLanguage(isoLangCode: MemorySegment): MemorySegment {
+fun NSLocale_characterDirectionForLanguage(isoLangCode: MemorySegment): NSLocaleLanguageDirection {
     val sel = ObjCRuntime.sel("characterDirectionForLanguage:")
     val cls = ObjCRuntime.getClass("NSLocale")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, isoLangCode) as MemorySegment
+    return NSLocaleLanguageDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, cls, sel, isoLangCode) as Long)
 }
 
 // Class method: +[NSLocale lineDirectionForLanguage:]
-fun NSLocale_lineDirectionForLanguage(isoLangCode: MemorySegment): MemorySegment {
+fun NSLocale_lineDirectionForLanguage(isoLangCode: MemorySegment): NSLocaleLanguageDirection {
     val sel = ObjCRuntime.sel("lineDirectionForLanguage:")
     val cls = ObjCRuntime.getClass("NSLocale")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, isoLangCode) as MemorySegment
+    return NSLocaleLanguageDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, cls, sel, isoLangCode) as Long)
 }
 
 // Class method: +[NSLocale availableLocaleIdentifiers]

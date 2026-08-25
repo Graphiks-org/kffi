@@ -15,14 +15,14 @@ open class NSTableHeaderView(override val ptr: MemorySegment) : NSView(ptr) {
 
     }
 
-    open fun headerRectOfColumn(column: Long): MemorySegment {
+    open fun headerRectOfColumn(column: Long): NSRect {
         val sel = ObjCRuntime.sel("headerRectOfColumn:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, column) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, column))
     }
 
-    open fun columnAtPoint(point: MemorySegment): Long {
+    open fun columnAtPoint(point: NSPoint): Long {
         val sel = ObjCRuntime.sel("columnAtPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Long
     }
 
     // @property tableView

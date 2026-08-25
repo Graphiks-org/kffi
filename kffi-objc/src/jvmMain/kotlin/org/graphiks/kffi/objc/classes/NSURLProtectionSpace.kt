@@ -109,7 +109,7 @@ fun NSURLProtectionSpace.distinguishedNames(): MemorySegment {
 
 // ── Category: NSServerTrustValidationSpace on NSURLProtectionSpace ─────────────────────────────────────────
 
-fun NSURLProtectionSpace.serverTrust(): MemorySegment {
+fun NSURLProtectionSpace.serverTrust(): SecTrustRef {
     val sel = ObjCRuntime.sel("serverTrust")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return SecTrustRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment)
 }

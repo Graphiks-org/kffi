@@ -13,13 +13,13 @@ open class NSLinguisticTagger(override val ptr: MemorySegment) : NSObject(ptr) {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSLinguisticTagger") }
 
         /** @return NSArray<NSLinguisticTagScheme> * */
-        fun availableTagSchemesForUnit_language(unit: MemorySegment, language: MemorySegment): MemorySegment {
+        fun availableTagSchemesForUnit_language(unit: NSLinguisticTaggerUnit, language: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("availableTagSchemesForUnit:language:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, unit, language) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, unit.rawValue, language) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun availableTagSchemesForUnit_language(unit: MemorySegment, language: String): MemorySegment = availableTagSchemesForUnit_language(unit, ObjCRuntime.newNSString(Arena.global(), language))
+        fun availableTagSchemesForUnit_language(unit: NSLinguisticTaggerUnit, language: String): MemorySegment = availableTagSchemesForUnit_language(unit, ObjCRuntime.newNSString(Arena.global(), language))
 
         /** @return NSArray<NSLinguisticTagScheme> * */
         fun availableTagSchemesForLanguage(language: MemorySegment): MemorySegment {
@@ -44,30 +44,30 @@ open class NSLinguisticTagger(override val ptr: MemorySegment) : NSObject(ptr) {
         /** Convenience overload — [String] parameters and [String] return type. */
         fun dominantLanguageForStringAsString(string: String): String = ObjCRuntime.toJavaString(dominantLanguageForString(ObjCRuntime.newNSString(Arena.global(), string)))
 
-        fun tagForString_atIndex_unit_scheme_orthography_tokenRange(string: MemorySegment, charIndex: Long, unit: MemorySegment, scheme: MemorySegment, orthography: MemorySegment, tokenRange: MemorySegment): MemorySegment {
+        fun tagForString_atIndex_unit_scheme_orthography_tokenRange(string: MemorySegment, charIndex: Long, unit: NSLinguisticTaggerUnit, scheme: MemorySegment, orthography: MemorySegment, tokenRange: NSRangePointer): MemorySegment {
             val sel = ObjCRuntime.sel("tagForString:atIndex:unit:scheme:orthography:tokenRange:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, string, charIndex, unit, scheme, orthography, tokenRange) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, string, charIndex, unit.rawValue, scheme, orthography, tokenRange.segment) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun tagForString_atIndex_unit_scheme_orthography_tokenRange(string: String, charIndex: Long, unit: MemorySegment, scheme: MemorySegment, orthography: MemorySegment, tokenRange: MemorySegment): MemorySegment = tagForString_atIndex_unit_scheme_orthography_tokenRange(ObjCRuntime.newNSString(Arena.global(), string), charIndex, unit, scheme, orthography, tokenRange)
+        fun tagForString_atIndex_unit_scheme_orthography_tokenRange(string: String, charIndex: Long, unit: NSLinguisticTaggerUnit, scheme: MemorySegment, orthography: MemorySegment, tokenRange: NSRangePointer): MemorySegment = tagForString_atIndex_unit_scheme_orthography_tokenRange(ObjCRuntime.newNSString(Arena.global(), string), charIndex, unit, scheme, orthography, tokenRange)
 
         /** @return NSArray<NSLinguisticTag> * */
-        fun tagsForString_range_unit_scheme_options_orthography_tokenRanges(string: MemorySegment, range: MemorySegment, unit: MemorySegment, scheme: MemorySegment, options: MemorySegment, orthography: MemorySegment, tokenRanges: MemorySegment): MemorySegment {
+        fun tagsForString_range_unit_scheme_options_orthography_tokenRanges(string: MemorySegment, range: NSRange, unit: NSLinguisticTaggerUnit, scheme: MemorySegment, options: NSLinguisticTaggerOptions, orthography: MemorySegment, tokenRanges: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("tagsForString:range:unit:scheme:options:orthography:tokenRanges:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, string, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), unit, scheme, options, orthography, tokenRanges) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, string, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), unit.rawValue, scheme, options.rawValue, orthography, tokenRanges) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun tagsForString_range_unit_scheme_options_orthography_tokenRanges(string: String, range: MemorySegment, unit: MemorySegment, scheme: MemorySegment, options: MemorySegment, orthography: MemorySegment, tokenRanges: MemorySegment): MemorySegment = tagsForString_range_unit_scheme_options_orthography_tokenRanges(ObjCRuntime.newNSString(Arena.global(), string), range, unit, scheme, options, orthography, tokenRanges)
+        fun tagsForString_range_unit_scheme_options_orthography_tokenRanges(string: String, range: NSRange, unit: NSLinguisticTaggerUnit, scheme: MemorySegment, options: NSLinguisticTaggerOptions, orthography: MemorySegment, tokenRanges: MemorySegment): MemorySegment = tagsForString_range_unit_scheme_options_orthography_tokenRanges(ObjCRuntime.newNSString(Arena.global(), string), range, unit, scheme, options, orthography, tokenRanges)
 
-        fun enumerateTagsForString_range_unit_scheme_options_orthography_usingBlock(string: MemorySegment, range: MemorySegment, unit: MemorySegment, scheme: MemorySegment, options: MemorySegment, orthography: MemorySegment, block: MemorySegment): Unit {
+        fun enumerateTagsForString_range_unit_scheme_options_orthography_usingBlock(string: MemorySegment, range: NSRange, unit: NSLinguisticTaggerUnit, scheme: MemorySegment, options: NSLinguisticTaggerOptions, orthography: MemorySegment, block: MemorySegment): Unit {
             val sel = ObjCRuntime.sel("enumerateTagsForString:range:unit:scheme:options:orthography:usingBlock:")
-            ObjCRuntime.msgSend(null, _class, sel, string, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), unit, scheme, options, orthography, block)
+            ObjCRuntime.msgSend(null, _class, sel, string, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), unit.rawValue, scheme, options.rawValue, orthography, block)
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun enumerateTagsForString_range_unit_scheme_options_orthography_usingBlock(string: String, range: MemorySegment, unit: MemorySegment, scheme: MemorySegment, options: MemorySegment, orthography: MemorySegment, block: MemorySegment): Unit = enumerateTagsForString_range_unit_scheme_options_orthography_usingBlock(ObjCRuntime.newNSString(Arena.global(), string), range, unit, scheme, options, orthography, block)
+        fun enumerateTagsForString_range_unit_scheme_options_orthography_usingBlock(string: String, range: NSRange, unit: NSLinguisticTaggerUnit, scheme: MemorySegment, options: NSLinguisticTaggerOptions, orthography: MemorySegment, block: MemorySegment): Unit = enumerateTagsForString_range_unit_scheme_options_orthography_usingBlock(ObjCRuntime.newNSString(Arena.global(), string), range, unit, scheme, options, orthography, block)
 
     }
 
@@ -76,74 +76,74 @@ open class NSLinguisticTagger(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, tagSchemes, opts) as MemorySegment
     }
 
-    open fun setOrthography_range(orthography: MemorySegment, range: MemorySegment): Unit {
+    open fun setOrthography_range(orthography: MemorySegment, range: NSRange): Unit {
         val sel = ObjCRuntime.sel("setOrthography:range:")
-        ObjCRuntime.msgSend(null, ptr, sel, orthography, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, orthography, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
-    open fun orthographyAtIndex_effectiveRange(charIndex: Long, effectiveRange: MemorySegment): MemorySegment {
+    open fun orthographyAtIndex_effectiveRange(charIndex: Long, effectiveRange: NSRangePointer): MemorySegment {
         val sel = ObjCRuntime.sel("orthographyAtIndex:effectiveRange:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, charIndex, effectiveRange) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, charIndex, effectiveRange.segment) as MemorySegment
     }
 
-    open fun stringEditedInRange_changeInLength(newRange: MemorySegment, delta: Long): Unit {
+    open fun stringEditedInRange_changeInLength(newRange: NSRange, delta: Long): Unit {
         val sel = ObjCRuntime.sel("stringEditedInRange:changeInLength:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(newRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), delta)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(newRange.segment, NSRange.layout), delta)
     }
 
-    open fun tokenRangeAtIndex_unit(charIndex: Long, unit: MemorySegment): MemorySegment {
+    open fun tokenRangeAtIndex_unit(charIndex: Long, unit: NSLinguisticTaggerUnit): NSRange {
         val sel = ObjCRuntime.sel("tokenRangeAtIndex:unit:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, charIndex, unit) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, charIndex, unit.rawValue))
     }
 
-    open fun sentenceRangeForRange(range: MemorySegment): MemorySegment {
+    open fun sentenceRangeForRange(range: NSRange): NSRange {
         val sel = ObjCRuntime.sel("sentenceRangeForRange:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)))
     }
 
-    open fun enumerateTagsInRange_unit_scheme_options_usingBlock(range: MemorySegment, unit: MemorySegment, scheme: MemorySegment, options: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateTagsInRange_unit_scheme_options_usingBlock(range: NSRange, unit: NSLinguisticTaggerUnit, scheme: MemorySegment, options: NSLinguisticTaggerOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateTagsInRange:unit:scheme:options:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), unit, scheme, options, block)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), unit.rawValue, scheme, options.rawValue, block)
     }
 
-    open fun tagAtIndex_unit_scheme_tokenRange(charIndex: Long, unit: MemorySegment, scheme: MemorySegment, tokenRange: MemorySegment): MemorySegment {
+    open fun tagAtIndex_unit_scheme_tokenRange(charIndex: Long, unit: NSLinguisticTaggerUnit, scheme: MemorySegment, tokenRange: NSRangePointer): MemorySegment {
         val sel = ObjCRuntime.sel("tagAtIndex:unit:scheme:tokenRange:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, charIndex, unit, scheme, tokenRange) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, charIndex, unit.rawValue, scheme, tokenRange.segment) as MemorySegment
     }
 
     /** @return NSArray<NSLinguisticTag> * */
-    open fun tagsInRange_unit_scheme_options_tokenRanges(range: MemorySegment, unit: MemorySegment, scheme: MemorySegment, options: MemorySegment, tokenRanges: MemorySegment): MemorySegment {
+    open fun tagsInRange_unit_scheme_options_tokenRanges(range: NSRange, unit: NSLinguisticTaggerUnit, scheme: MemorySegment, options: NSLinguisticTaggerOptions, tokenRanges: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("tagsInRange:unit:scheme:options:tokenRanges:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), unit, scheme, options, tokenRanges) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), unit.rawValue, scheme, options.rawValue, tokenRanges) as MemorySegment
     }
 
-    open fun enumerateTagsInRange_scheme_options_usingBlock(range: MemorySegment, tagScheme: MemorySegment, opts: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateTagsInRange_scheme_options_usingBlock(range: NSRange, tagScheme: MemorySegment, opts: NSLinguisticTaggerOptions, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateTagsInRange:scheme:options:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), tagScheme, opts, block)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), tagScheme, opts.rawValue, block)
     }
 
-    open fun tagAtIndex_scheme_tokenRange_sentenceRange(charIndex: Long, scheme: MemorySegment, tokenRange: MemorySegment, sentenceRange: MemorySegment): MemorySegment {
+    open fun tagAtIndex_scheme_tokenRange_sentenceRange(charIndex: Long, scheme: MemorySegment, tokenRange: NSRangePointer, sentenceRange: NSRangePointer): MemorySegment {
         val sel = ObjCRuntime.sel("tagAtIndex:scheme:tokenRange:sentenceRange:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, charIndex, scheme, tokenRange, sentenceRange) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, charIndex, scheme, tokenRange.segment, sentenceRange.segment) as MemorySegment
     }
 
     /** @return NSArray<NSString *> * */
-    open fun tagsInRange_scheme_options_tokenRanges(range: MemorySegment, tagScheme: MemorySegment, opts: MemorySegment, tokenRanges: MemorySegment): MemorySegment {
+    open fun tagsInRange_scheme_options_tokenRanges(range: NSRange, tagScheme: MemorySegment, opts: NSLinguisticTaggerOptions, tokenRanges: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("tagsInRange:scheme:options:tokenRanges:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), tagScheme, opts, tokenRanges) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), tagScheme, opts.rawValue, tokenRanges) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun tagsInRange_scheme_options_tokenRanges(range: MemorySegment, tagScheme: String, opts: MemorySegment, tokenRanges: MemorySegment): MemorySegment = tagsInRange_scheme_options_tokenRanges(range, ObjCRuntime.newNSString(Arena.global(), tagScheme), opts, tokenRanges)
+    fun tagsInRange_scheme_options_tokenRanges(range: NSRange, tagScheme: String, opts: NSLinguisticTaggerOptions, tokenRanges: MemorySegment): MemorySegment = tagsInRange_scheme_options_tokenRanges(range, ObjCRuntime.newNSString(Arena.global(), tagScheme), opts, tokenRanges)
 
     /** @return NSArray<NSString *> * */
-    open fun possibleTagsAtIndex_scheme_tokenRange_sentenceRange_scores(charIndex: Long, tagScheme: MemorySegment, tokenRange: MemorySegment, sentenceRange: MemorySegment, scores: MemorySegment): MemorySegment {
+    open fun possibleTagsAtIndex_scheme_tokenRange_sentenceRange_scores(charIndex: Long, tagScheme: MemorySegment, tokenRange: NSRangePointer, sentenceRange: NSRangePointer, scores: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("possibleTagsAtIndex:scheme:tokenRange:sentenceRange:scores:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, charIndex, tagScheme, tokenRange, sentenceRange, scores) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, charIndex, tagScheme, tokenRange.segment, sentenceRange.segment, scores) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun possibleTagsAtIndex_scheme_tokenRange_sentenceRange_scores(charIndex: Long, tagScheme: String, tokenRange: MemorySegment, sentenceRange: MemorySegment, scores: MemorySegment): MemorySegment = possibleTagsAtIndex_scheme_tokenRange_sentenceRange_scores(charIndex, ObjCRuntime.newNSString(Arena.global(), tagScheme), tokenRange, sentenceRange, scores)
+    fun possibleTagsAtIndex_scheme_tokenRange_sentenceRange_scores(charIndex: Long, tagScheme: String, tokenRange: NSRangePointer, sentenceRange: NSRangePointer, scores: MemorySegment): MemorySegment = possibleTagsAtIndex_scheme_tokenRange_sentenceRange_scores(charIndex, ObjCRuntime.newNSString(Arena.global(), tagScheme), tokenRange, sentenceRange, scores)
 
     // @property tagSchemes
     /** @return NSArray<NSLinguisticTagScheme> * */

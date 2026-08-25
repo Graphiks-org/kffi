@@ -62,9 +62,9 @@ open class NSFontDescriptor(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, attributes) as MemorySegment
     }
 
-    open fun fontDescriptorWithSymbolicTraits(symbolicTraits: MemorySegment): MemorySegment {
+    open fun fontDescriptorWithSymbolicTraits(symbolicTraits: NSFontDescriptorSymbolicTraits): MemorySegment {
         val sel = ObjCRuntime.sel("fontDescriptorWithSymbolicTraits:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, symbolicTraits) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, symbolicTraits.rawValue.toInt()) as MemorySegment
     }
 
     open fun fontDescriptorWithSize(newPointSize: Double): MemorySegment {
@@ -120,9 +120,9 @@ open class NSFontDescriptor(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property symbolicTraits
-    open fun symbolicTraits(): MemorySegment {
+    open fun symbolicTraits(): NSFontDescriptorSymbolicTraits {
         val sel = ObjCRuntime.sel("symbolicTraits")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSFontDescriptorSymbolicTraits(Integer.toUnsignedLong(ObjCRuntime.msgSend(ValueLayout.JAVA_INT, ptr, sel) as Int))
     }
 
     // @property requiresFontAssetRequest

@@ -44,9 +44,9 @@ open class NSHelpManager(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `object`) as MemorySegment
     }
 
-    open fun showContextHelpForObject_locationHint(`object`: MemorySegment, pt: MemorySegment): Boolean {
+    open fun showContextHelpForObject_locationHint(`object`: MemorySegment, pt: NSPoint): Boolean {
         val sel = ObjCRuntime.sel("showContextHelpForObject:locationHint:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, `object`, ObjCRuntime.ObjCStructArg(pt, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, `object`, ObjCRuntime.ObjCStructArg(pt.segment, NSPoint.layout)) as Boolean
     }
 
     open fun openHelpAnchor_inBook(anchor: MemorySegment, book: MemorySegment): Unit {

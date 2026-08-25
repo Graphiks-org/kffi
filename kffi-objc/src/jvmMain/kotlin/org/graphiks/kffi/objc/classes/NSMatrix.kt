@@ -15,19 +15,19 @@ open class NSMatrix(override val ptr: MemorySegment) : NSControl(ptr) {
 
     }
 
-    override fun initWithFrame(frameRect: MemorySegment): MemorySegment {
+    override fun initWithFrame(frameRect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout)) as MemorySegment
     }
 
-    open fun initWithFrame_mode_prototype_numberOfRows_numberOfColumns(frameRect: MemorySegment, mode: MemorySegment, cell: MemorySegment, rowsHigh: Long, colsWide: Long): MemorySegment {
+    open fun initWithFrame_mode_prototype_numberOfRows_numberOfColumns(frameRect: NSRect, mode: NSMatrixMode, cell: MemorySegment, rowsHigh: Long, colsWide: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), mode, cell, rowsHigh, colsWide) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout), mode.rawValue, cell, rowsHigh, colsWide) as MemorySegment
     }
 
-    open fun initWithFrame_mode_cellClass_numberOfRows_numberOfColumns(frameRect: MemorySegment, mode: MemorySegment, factoryId: MemorySegment, rowsHigh: Long, colsWide: Long): MemorySegment {
+    open fun initWithFrame_mode_cellClass_numberOfRows_numberOfColumns(frameRect: NSRect, mode: NSMatrixMode, factoryId: MemorySegment, rowsHigh: Long, colsWide: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), mode, factoryId, rowsHigh, colsWide) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout), mode.rawValue, factoryId, rowsHigh, colsWide) as MemorySegment
     }
 
     open fun makeCellAtRow_column(row: Long, col: Long): MemorySegment {
@@ -100,9 +100,9 @@ open class NSMatrix(override val ptr: MemorySegment) : NSControl(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, row, col) as MemorySegment
     }
 
-    open fun cellFrameAtRow_column(row: Long, col: Long): MemorySegment {
+    open fun cellFrameAtRow_column(row: Long, col: Long): NSRect {
         val sel = ObjCRuntime.sel("cellFrameAtRow:column:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, row, col) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, row, col))
     }
 
     open fun getRow_column_ofCell(row: MemorySegment, col: MemorySegment, cell: MemorySegment): Boolean {
@@ -110,9 +110,9 @@ open class NSMatrix(override val ptr: MemorySegment) : NSControl(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, row, col, cell) as Boolean
     }
 
-    open fun getRow_column_forPoint(row: MemorySegment, col: MemorySegment, point: MemorySegment): Boolean {
+    open fun getRow_column_forPoint(row: MemorySegment, col: MemorySegment, point: NSPoint): Boolean {
         val sel = ObjCRuntime.sel("getRow:column:forPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, row, col, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, row, col, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Boolean
     }
 
     open fun renewRows_columns(newRows: Long, newCols: Long): Unit {
@@ -307,13 +307,13 @@ open class NSMatrix(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property mode
-    open fun mode(): MemorySegment {
+    open fun mode(): NSMatrixMode {
         val sel = ObjCRuntime.sel("mode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSMatrixMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setMode(value: MemorySegment) {
+    open fun setMode(value: NSMatrixMode) {
         val sel = ObjCRuntime.sel("setMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowsEmptySelection
@@ -369,23 +369,23 @@ open class NSMatrix(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property cellSize
-    open fun cellSize(): MemorySegment {
+    open fun cellSize(): NSSize {
         val sel = ObjCRuntime.sel("cellSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setCellSize(value: MemorySegment) {
+    open fun setCellSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setCellSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property intercellSpacing
-    open fun intercellSpacing(): MemorySegment {
+    open fun intercellSpacing(): NSSize {
         val sel = ObjCRuntime.sel("intercellSpacing")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setIntercellSpacing(value: MemorySegment) {
+    open fun setIntercellSpacing(value: NSSize) {
         val sel = ObjCRuntime.sel("setIntercellSpacing:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property backgroundColor

@@ -14,7 +14,7 @@ interface NSSpeechSynthesizerDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'speechSynthesizer:didFinishSpeaking:' not implemented")
 
     // @optional
-    fun speechSynthesizer_willSpeakWord_ofString(sender: MemorySegment, characterRange: MemorySegment, string: MemorySegment): Unit =
+    fun speechSynthesizer_willSpeakWord_ofString(sender: MemorySegment, characterRange: NSRange, string: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'speechSynthesizer:willSpeakWord:ofString:' not implemented")
 
     // @optional

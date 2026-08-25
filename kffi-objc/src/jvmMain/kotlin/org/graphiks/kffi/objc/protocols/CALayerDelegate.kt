@@ -14,7 +14,7 @@ interface CALayerDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'displayLayer:' not implemented")
 
     // @optional
-    fun drawLayer_inContext(layer: MemorySegment, ctx: MemorySegment): Unit =
+    fun drawLayer_inContext(layer: MemorySegment, ctx: CGContextRef): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'drawLayer:inContext:' not implemented")
 
     // @optional

@@ -47,11 +47,11 @@ interface NSOutlineViewDataSource {
         throw UnsupportedOperationException("Optional ObjC method 'outlineView:pasteboardWriterForItem:' not implemented")
 
     // @optional
-    fun outlineView_draggingSession_willBeginAtPoint_forItems(outlineView: MemorySegment, session: MemorySegment, screenPoint: MemorySegment, draggedItems: MemorySegment): Unit =
+    fun outlineView_draggingSession_willBeginAtPoint_forItems(outlineView: MemorySegment, session: MemorySegment, screenPoint: NSPoint, draggedItems: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'outlineView:draggingSession:willBeginAtPoint:forItems:' not implemented")
 
     // @optional
-    fun outlineView_draggingSession_endedAtPoint_operation(outlineView: MemorySegment, session: MemorySegment, screenPoint: MemorySegment, operation: MemorySegment): Unit =
+    fun outlineView_draggingSession_endedAtPoint_operation(outlineView: MemorySegment, session: MemorySegment, screenPoint: NSPoint, operation: NSDragOperation): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'outlineView:draggingSession:endedAtPoint:operation:' not implemented")
 
     // @optional
@@ -63,7 +63,7 @@ interface NSOutlineViewDataSource {
         throw UnsupportedOperationException("Optional ObjC method 'outlineView:updateDraggingItemsForDrag:' not implemented")
 
     // @optional
-    fun outlineView_validateDrop_proposedItem_proposedChildIndex(outlineView: MemorySegment, info: MemorySegment, item: MemorySegment, index: Long): MemorySegment =
+    fun outlineView_validateDrop_proposedItem_proposedChildIndex(outlineView: MemorySegment, info: MemorySegment, item: MemorySegment, index: Long): NSDragOperation =
         throw UnsupportedOperationException("Optional ObjC method 'outlineView:validateDrop:proposedItem:proposedChildIndex:' not implemented")
 
     // @optional

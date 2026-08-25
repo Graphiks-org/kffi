@@ -77,13 +77,13 @@ open class NSToolbar(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property displayMode
-    open fun displayMode(): MemorySegment {
+    open fun displayMode(): NSToolbarDisplayMode {
         val sel = ObjCRuntime.sel("displayMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSToolbarDisplayMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDisplayMode(value: MemorySegment) {
+    open fun setDisplayMode(value: NSToolbarDisplayMode) {
         val sel = ObjCRuntime.sel("setDisplayMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property selectedItemIdentifier
@@ -187,14 +187,14 @@ fun NSToolbar.setConfigurationFromDictionary(configDict: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, configDict)
 }
 
-fun NSToolbar.sizeMode(): MemorySegment {
+fun NSToolbar.sizeMode(): NSToolbarSizeMode {
     val sel = ObjCRuntime.sel("sizeMode")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSToolbarSizeMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSToolbar.setSizeMode(sizeMode: MemorySegment): Unit {
+fun NSToolbar.setSizeMode(sizeMode: NSToolbarSizeMode): Unit {
     val sel = ObjCRuntime.sel("setSizeMode:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, sizeMode)
+    ObjCRuntime.msgSend(null, this.ptr, sel, sizeMode.rawValue)
 }
 
 fun NSToolbar.centeredItemIdentifier(): MemorySegment {

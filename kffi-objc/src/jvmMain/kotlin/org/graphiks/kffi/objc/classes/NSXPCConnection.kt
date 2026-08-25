@@ -28,13 +28,13 @@ open class NSXPCConnection(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun initWithServiceName(serviceName: String): MemorySegment = initWithServiceName(ObjCRuntime.newNSString(Arena.global(), serviceName))
 
-    open fun initWithMachServiceName_options(name: MemorySegment, options: MemorySegment): MemorySegment {
+    open fun initWithMachServiceName_options(name: MemorySegment, options: NSXPCConnectionOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithMachServiceName:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, name, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, name, options.rawValue) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun initWithMachServiceName_options(name: String, options: MemorySegment): MemorySegment = initWithMachServiceName_options(ObjCRuntime.newNSString(Arena.global(), name), options)
+    fun initWithMachServiceName_options(name: String, options: NSXPCConnectionOptions): MemorySegment = initWithMachServiceName_options(ObjCRuntime.newNSString(Arena.global(), name), options)
 
     open fun initWithListenerEndpoint(endpoint: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithListenerEndpoint:")

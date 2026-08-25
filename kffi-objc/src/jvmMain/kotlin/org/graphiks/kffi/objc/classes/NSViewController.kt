@@ -151,13 +151,13 @@ open class NSViewController(override val ptr: MemorySegment) : NSResponder(ptr) 
     }
 
     // @property preferredContentSize
-    open fun preferredContentSize(): MemorySegment {
+    open fun preferredContentSize(): NSSize {
         val sel = ObjCRuntime.sel("preferredContentSize")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setPreferredContentSize(value: MemorySegment) {
+    open fun setPreferredContentSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setPreferredContentSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
 }
@@ -202,19 +202,19 @@ fun NSViewController.presentViewControllerAsModalWindow(viewController: MemorySe
     ObjCRuntime.msgSend(null, this.ptr, sel, viewController)
 }
 
-fun NSViewController.presentViewController_asPopoverRelativeToRect_ofView_preferredEdge_behavior(viewController: MemorySegment, positioningRect: MemorySegment, positioningView: MemorySegment, preferredEdge: MemorySegment, behavior: MemorySegment): Unit {
+fun NSViewController.presentViewController_asPopoverRelativeToRect_ofView_preferredEdge_behavior(viewController: MemorySegment, positioningRect: NSRect, positioningView: MemorySegment, preferredEdge: NSRectEdge, behavior: NSPopoverBehavior): Unit {
     val sel = ObjCRuntime.sel("presentViewController:asPopoverRelativeToRect:ofView:preferredEdge:behavior:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, viewController, positioningRect, positioningView, preferredEdge, behavior)
+    ObjCRuntime.msgSend(null, this.ptr, sel, viewController, ObjCRuntime.ObjCStructArg(positioningRect.segment, NSRect.layout), positioningView, preferredEdge.rawValue, behavior.rawValue)
 }
 
-fun NSViewController.presentViewController_asPopoverRelativeToRect_ofView_preferredEdge_behavior_hasFullSizeContent(viewController: MemorySegment, positioningRect: MemorySegment, positioningView: MemorySegment, preferredEdge: MemorySegment, behavior: MemorySegment, hasFullSizeContent: Boolean): Unit {
+fun NSViewController.presentViewController_asPopoverRelativeToRect_ofView_preferredEdge_behavior_hasFullSizeContent(viewController: MemorySegment, positioningRect: NSRect, positioningView: MemorySegment, preferredEdge: NSRectEdge, behavior: NSPopoverBehavior, hasFullSizeContent: Boolean): Unit {
     val sel = ObjCRuntime.sel("presentViewController:asPopoverRelativeToRect:ofView:preferredEdge:behavior:hasFullSizeContent:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, viewController, positioningRect, positioningView, preferredEdge, behavior, hasFullSizeContent)
+    ObjCRuntime.msgSend(null, this.ptr, sel, viewController, ObjCRuntime.ObjCStructArg(positioningRect.segment, NSRect.layout), positioningView, preferredEdge.rawValue, behavior.rawValue, hasFullSizeContent)
 }
 
-fun NSViewController.transitionFromViewController_toViewController_options_completionHandler(fromViewController: MemorySegment, toViewController: MemorySegment, options: MemorySegment, completion: MemorySegment): Unit {
+fun NSViewController.transitionFromViewController_toViewController_options_completionHandler(fromViewController: MemorySegment, toViewController: MemorySegment, options: NSViewControllerTransitionOptions, completion: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("transitionFromViewController:toViewController:options:completionHandler:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, fromViewController, toViewController, options, completion)
+    ObjCRuntime.msgSend(null, this.ptr, sel, fromViewController, toViewController, options.rawValue, completion)
 }
 
 // ── Category: NSViewControllerContainer on NSViewController ─────────────────────────────────────────
@@ -244,9 +244,9 @@ fun NSViewController.preferredContentSizeDidChangeForViewController(viewControll
     ObjCRuntime.msgSend(null, this.ptr, sel, viewController)
 }
 
-fun NSViewController.viewWillTransitionToSize(newSize: MemorySegment): Unit {
+fun NSViewController.viewWillTransitionToSize(newSize: NSSize): Unit {
     val sel = ObjCRuntime.sel("viewWillTransitionToSize:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, newSize)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(newSize.segment, NSSize.layout))
 }
 
 fun NSViewController.parentViewController(): MemorySegment {
@@ -289,22 +289,22 @@ fun NSViewController.setSourceItemView(sourceItemView: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, sourceItemView)
 }
 
-fun NSViewController.preferredScreenOrigin(): MemorySegment {
+fun NSViewController.preferredScreenOrigin(): NSPoint {
     val sel = ObjCRuntime.sel("preferredScreenOrigin")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel))
 }
 
-fun NSViewController.setPreferredScreenOrigin(preferredScreenOrigin: MemorySegment): Unit {
+fun NSViewController.setPreferredScreenOrigin(preferredScreenOrigin: NSPoint): Unit {
     val sel = ObjCRuntime.sel("setPreferredScreenOrigin:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, preferredScreenOrigin)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(preferredScreenOrigin.segment, NSPoint.layout))
 }
 
-fun NSViewController.preferredMinimumSize(): MemorySegment {
+fun NSViewController.preferredMinimumSize(): NSSize {
     val sel = ObjCRuntime.sel("preferredMinimumSize")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel))
 }
 
-fun NSViewController.preferredMaximumSize(): MemorySegment {
+fun NSViewController.preferredMaximumSize(): NSSize {
     val sel = ObjCRuntime.sel("preferredMaximumSize")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel))
 }

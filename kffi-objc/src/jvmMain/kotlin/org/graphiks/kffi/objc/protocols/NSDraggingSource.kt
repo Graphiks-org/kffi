@@ -9,18 +9,18 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSDraggingSource {
-    fun draggingSession_sourceOperationMaskForDraggingContext(session: MemorySegment, context: MemorySegment): MemorySegment
+    fun draggingSession_sourceOperationMaskForDraggingContext(session: MemorySegment, context: NSDraggingContext): NSDragOperation
 
     // @optional
-    fun draggingSession_willBeginAtPoint(session: MemorySegment, screenPoint: MemorySegment): Unit =
+    fun draggingSession_willBeginAtPoint(session: MemorySegment, screenPoint: NSPoint): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'draggingSession:willBeginAtPoint:' not implemented")
 
     // @optional
-    fun draggingSession_movedToPoint(session: MemorySegment, screenPoint: MemorySegment): Unit =
+    fun draggingSession_movedToPoint(session: MemorySegment, screenPoint: NSPoint): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'draggingSession:movedToPoint:' not implemented")
 
     // @optional
-    fun draggingSession_endedAtPoint_operation(session: MemorySegment, screenPoint: MemorySegment, operation: MemorySegment): Unit =
+    fun draggingSession_endedAtPoint_operation(session: MemorySegment, screenPoint: NSPoint, operation: NSDragOperation): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'draggingSession:endedAtPoint:operation:' not implemented")
 
     // @optional

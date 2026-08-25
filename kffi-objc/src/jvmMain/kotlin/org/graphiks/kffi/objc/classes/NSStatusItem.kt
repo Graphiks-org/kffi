@@ -47,13 +47,13 @@ open class NSStatusItem(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property behavior
-    open fun behavior(): MemorySegment {
+    open fun behavior(): NSStatusItemBehavior {
         val sel = ObjCRuntime.sel("behavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSStatusItemBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBehavior(value: MemorySegment) {
+    open fun setBehavior(value: NSStatusItemBehavior) {
         val sel = ObjCRuntime.sel("setBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property visible
@@ -80,14 +80,14 @@ open class NSStatusItem(override val ptr: MemorySegment) : NSObject(ptr) {
 
 // ── Category: NSStatusItemDeprecated on NSStatusItem ─────────────────────────────────────────
 
-fun NSStatusItem.sendActionOn(mask: MemorySegment): Long {
+fun NSStatusItem.sendActionOn(mask: NSEventMask): Long {
     val sel = ObjCRuntime.sel("sendActionOn:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, mask) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, mask.rawValue) as Long
 }
 
-fun NSStatusItem.drawStatusBarBackgroundInRect_withHighlight(rect: MemorySegment, highlight: Boolean): Unit {
+fun NSStatusItem.drawStatusBarBackgroundInRect_withHighlight(rect: NSRect, highlight: Boolean): Unit {
     val sel = ObjCRuntime.sel("drawStatusBarBackgroundInRect:withHighlight:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect, highlight)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), highlight)
 }
 
 fun NSStatusItem.popUpStatusItemMenu(menu: MemorySegment): Unit {

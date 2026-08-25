@@ -12,14 +12,14 @@ open class NSFileAccessIntent(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSFileAccessIntent") }
 
-        fun readingIntentWithURL_options(url: MemorySegment, options: MemorySegment): MemorySegment {
+        fun readingIntentWithURL_options(url: MemorySegment, options: NSFileCoordinatorReadingOptions): MemorySegment {
             val sel = ObjCRuntime.sel("readingIntentWithURL:options:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, url, options) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, url, options.rawValue) as MemorySegment
         }
 
-        fun writingIntentWithURL_options(url: MemorySegment, options: MemorySegment): MemorySegment {
+        fun writingIntentWithURL_options(url: MemorySegment, options: NSFileCoordinatorWritingOptions): MemorySegment {
             val sel = ObjCRuntime.sel("writingIntentWithURL:options:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, url, options) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, url, options.rawValue) as MemorySegment
         }
 
     }

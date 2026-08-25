@@ -23,6 +23,10 @@ fun CGAffineTransformMake(allocator: SegmentAllocator, arg0: Double, arg1: Doubl
     }
 }
 
+fun CGAffineTransformMakeTyped(allocator: SegmentAllocator, arg0: Double, arg1: Double, arg2: Double, arg3: Double, arg4: Double, arg5: Double): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformMake(allocator, arg0, arg1, arg2, arg3, arg4, arg5))
+}
+
 /**
  * {@snippet lang=c : CGAffineTransformMakeTranslation typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -40,6 +44,10 @@ fun CGAffineTransformMakeTranslation(allocator: SegmentAllocator, arg0: Double, 
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGAffineTransformMakeTranslationTyped(allocator: SegmentAllocator, arg0: Double, arg1: Double): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformMakeTranslation(allocator, arg0, arg1))
 }
 
 /**
@@ -61,6 +69,10 @@ fun CGAffineTransformMakeScale(allocator: SegmentAllocator, arg0: Double, arg1: 
     }
 }
 
+fun CGAffineTransformMakeScaleTyped(allocator: SegmentAllocator, arg0: Double, arg1: Double): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformMakeScale(allocator, arg0, arg1))
+}
+
 /**
  * {@snippet lang=c : CGAffineTransformMakeRotation typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGFloat = Double)
  */
@@ -78,6 +90,10 @@ fun CGAffineTransformMakeRotation(allocator: SegmentAllocator, arg0: Double): Me
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGAffineTransformMakeRotationTyped(allocator: SegmentAllocator, arg0: Double): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformMakeRotation(allocator, arg0))
 }
 
 /**
@@ -99,6 +115,10 @@ fun CGAffineTransformIsIdentity(arg0: MemorySegment): Boolean {
     }
 }
 
+fun CGAffineTransformIsIdentity(arg0: CGAffineTransform): Boolean {
+    return CGAffineTransformIsIdentity(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CGAffineTransformTranslate typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGAffineTransform = Declared(CGAffineTransform),typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -116,6 +136,10 @@ fun CGAffineTransformTranslate(allocator: SegmentAllocator, arg0: MemorySegment,
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGAffineTransformTranslate(allocator: SegmentAllocator, arg0: CGAffineTransform, arg1: Double, arg2: Double): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformTranslate(allocator, arg0.segment, arg1, arg2))
 }
 
 /**
@@ -137,6 +161,10 @@ fun CGAffineTransformScale(allocator: SegmentAllocator, arg0: MemorySegment, arg
     }
 }
 
+fun CGAffineTransformScale(allocator: SegmentAllocator, arg0: CGAffineTransform, arg1: Double, arg2: Double): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformScale(allocator, arg0.segment, arg1, arg2))
+}
+
 /**
  * {@snippet lang=c : CGAffineTransformRotate typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGAffineTransform = Declared(CGAffineTransform),typedef CGFloat = Double)
  */
@@ -154,6 +182,10 @@ fun CGAffineTransformRotate(allocator: SegmentAllocator, arg0: MemorySegment, ar
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGAffineTransformRotate(allocator: SegmentAllocator, arg0: CGAffineTransform, arg1: Double): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformRotate(allocator, arg0.segment, arg1))
 }
 
 /**
@@ -175,6 +207,10 @@ fun CGAffineTransformInvert(allocator: SegmentAllocator, arg0: MemorySegment): M
     }
 }
 
+fun CGAffineTransformInvert(allocator: SegmentAllocator, arg0: CGAffineTransform): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformInvert(allocator, arg0.segment))
+}
+
 /**
  * {@snippet lang=c : CGAffineTransformConcat typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGAffineTransform = Declared(CGAffineTransform),typedef CGAffineTransform = Declared(CGAffineTransform))
  */
@@ -192,6 +228,10 @@ fun CGAffineTransformConcat(allocator: SegmentAllocator, arg0: MemorySegment, ar
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGAffineTransformConcat(allocator: SegmentAllocator, arg0: CGAffineTransform, arg1: CGAffineTransform): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformConcat(allocator, arg0.segment, arg1.segment))
 }
 
 /**
@@ -213,6 +253,10 @@ fun CGAffineTransformEqualToTransform(arg0: MemorySegment, arg1: MemorySegment):
     }
 }
 
+fun CGAffineTransformEqualToTransform(arg0: CGAffineTransform, arg1: CGAffineTransform): Boolean {
+    return CGAffineTransformEqualToTransform(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : CGPointApplyAffineTransform typedef CGPoint = Declared(CGPoint)(typedef CGPoint = Declared(CGPoint),typedef CGAffineTransform = Declared(CGAffineTransform))
  */
@@ -230,6 +274,10 @@ fun CGPointApplyAffineTransform(allocator: SegmentAllocator, arg0: MemorySegment
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPointApplyAffineTransform(allocator: SegmentAllocator, arg0: CGPoint, arg1: CGAffineTransform): CGPoint {
+    return CGPoint(CGPointApplyAffineTransform(allocator, arg0.segment, arg1.segment))
 }
 
 /**
@@ -251,6 +299,10 @@ fun CGSizeApplyAffineTransform(allocator: SegmentAllocator, arg0: MemorySegment,
     }
 }
 
+fun CGSizeApplyAffineTransform(allocator: SegmentAllocator, arg0: CGSize, arg1: CGAffineTransform): CGSize {
+    return CGSize(CGSizeApplyAffineTransform(allocator, arg0.segment, arg1.segment))
+}
+
 /**
  * {@snippet lang=c : CGRectApplyAffineTransform typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect),typedef CGAffineTransform = Declared(CGAffineTransform))
  */
@@ -268,6 +320,10 @@ fun CGRectApplyAffineTransform(allocator: SegmentAllocator, arg0: MemorySegment,
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGRectApplyAffineTransform(allocator: SegmentAllocator, arg0: CGRect, arg1: CGAffineTransform): CGRect {
+    return CGRect(CGRectApplyAffineTransform(allocator, arg0.segment, arg1.segment))
 }
 
 /**
@@ -289,6 +345,10 @@ fun CGAffineTransformDecompose(allocator: SegmentAllocator, arg0: MemorySegment)
     }
 }
 
+fun CGAffineTransformDecompose(allocator: SegmentAllocator, arg0: CGAffineTransform): MemorySegment {
+    return CGAffineTransformDecompose(allocator, arg0.segment)
+}
+
 /**
  * {@snippet lang=c : CGAffineTransformMakeWithComponents typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGAffineTransformComponents = Declared(CGAffineTransformComponents))
  */
@@ -306,6 +366,10 @@ fun CGAffineTransformMakeWithComponents(allocator: SegmentAllocator, arg0: Memor
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGAffineTransformMakeWithComponentsTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGAffineTransform {
+    return CGAffineTransform(CGAffineTransformMakeWithComponents(allocator, arg0))
 }
 
 /**
@@ -862,6 +926,10 @@ fun NSRectFill(arg0: MemorySegment): Unit {
     }
 }
 
+fun NSRectFill(arg0: NSRect): Unit {
+    NSRectFill(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : NSRectFillList Void((typedef NSRect = Declared(CGRect))*,typedef NSInteger = Long)
  */
@@ -938,6 +1006,10 @@ fun NSFrameRect(arg0: MemorySegment): Unit {
     }
 }
 
+fun NSFrameRect(arg0: NSRect): Unit {
+    NSFrameRect(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : NSFrameRectWithWidth Void(typedef NSRect = Declared(CGRect),typedef CGFloat = Double)
  */
@@ -957,6 +1029,10 @@ fun NSFrameRectWithWidth(arg0: MemorySegment, arg1: Double): Unit {
     }
 }
 
+fun NSFrameRectWithWidth(arg0: NSRect, arg1: Double): Unit {
+    NSFrameRectWithWidth(arg0.segment, arg1)
+}
+
 /**
  * {@snippet lang=c : NSRectClip Void(typedef NSRect = Declared(CGRect))
  */
@@ -974,6 +1050,10 @@ fun NSRectClip(arg0: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSRectClip(arg0: NSRect): Unit {
+    NSRectClip(arg0.segment)
 }
 
 /**
@@ -1014,6 +1094,10 @@ fun NSDrawTiledRects(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Mem
     }
 }
 
+fun NSDrawTiledRects(allocator: SegmentAllocator, arg0: NSRect, arg1: NSRect, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): NSRect {
+    return NSRect(NSDrawTiledRects(allocator, arg0.segment, arg1.segment, arg2, arg3, arg4))
+}
+
 /**
  * {@snippet lang=c : NSDrawGrayBezel Void(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
@@ -1031,6 +1115,10 @@ fun NSDrawGrayBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSDrawGrayBezel(arg0: NSRect, arg1: NSRect): Unit {
+    NSDrawGrayBezel(arg0.segment, arg1.segment)
 }
 
 /**
@@ -1052,6 +1140,10 @@ fun NSDrawGroove(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun NSDrawGroove(arg0: NSRect, arg1: NSRect): Unit {
+    NSDrawGroove(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : NSDrawWhiteBezel Void(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
@@ -1069,6 +1161,10 @@ fun NSDrawWhiteBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSDrawWhiteBezel(arg0: NSRect, arg1: NSRect): Unit {
+    NSDrawWhiteBezel(arg0.segment, arg1.segment)
 }
 
 /**
@@ -1090,6 +1186,10 @@ fun NSDrawButton(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun NSDrawButton(arg0: NSRect, arg1: NSRect): Unit {
+    NSDrawButton(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : NSEraseRect Void(typedef NSRect = Declared(CGRect))
  */
@@ -1107,6 +1207,10 @@ fun NSEraseRect(arg0: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSEraseRect(arg0: NSRect): Unit {
+    NSEraseRect(arg0.segment)
 }
 
 /**
@@ -1128,6 +1232,10 @@ fun NSReadPixel(arg0: MemorySegment): MemorySegment {
     }
 }
 
+fun NSReadPixel(arg0: NSPoint): MemorySegment {
+    return NSReadPixel(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : NSDrawBitmap Void(typedef NSRect = Declared(CGRect),typedef NSInteger = Long,typedef NSInteger = Long,typedef NSInteger = Long,typedef NSInteger = Long,typedef NSInteger = Long,typedef NSInteger = Long,typedef BOOL = Bool,typedef BOOL = Bool,typedef NSColorSpaceName = typedef NSString = (Void)*,((UNSIGNED = Char)*)*)
  */
@@ -1147,6 +1255,10 @@ fun NSDrawBitmap(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: Long, arg4: 
     }
 }
 
+fun NSDrawBitmap(arg0: NSRect, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: Long, arg6: Long, arg7: Boolean, arg8: Boolean, arg9: MemorySegment, arg10: MemorySegment): Unit {
+    NSDrawBitmap(arg0.segment, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10)
+}
+
 /**
  * {@snippet lang=c : NSHighlightRect Void(typedef NSRect = Declared(CGRect))
  */
@@ -1164,6 +1276,10 @@ fun NSHighlightRect(arg0: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSHighlightRect(arg0: NSRect): Unit {
+    NSHighlightRect(arg0.segment)
 }
 
 /**
@@ -1223,6 +1339,10 @@ fun NSDrawColorTiledRects(allocator: SegmentAllocator, arg0: MemorySegment, arg1
     }
 }
 
+fun NSDrawColorTiledRects(allocator: SegmentAllocator, arg0: NSRect, arg1: NSRect, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): NSRect {
+    return NSRect(NSDrawColorTiledRects(allocator, arg0.segment, arg1.segment, arg2, arg3, arg4))
+}
+
 /**
  * {@snippet lang=c : NSDrawDarkBezel Void(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
@@ -1240,6 +1360,10 @@ fun NSDrawDarkBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSDrawDarkBezel(arg0: NSRect, arg1: NSRect): Unit {
+    NSDrawDarkBezel(arg0.segment, arg1.segment)
 }
 
 /**
@@ -1261,6 +1385,10 @@ fun NSDrawLightBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+fun NSDrawLightBezel(arg0: NSRect, arg1: NSRect): Unit {
+    NSDrawLightBezel(arg0.segment, arg1.segment)
+}
+
 /**
  * {@snippet lang=c : NSDottedFrameRect Void(typedef NSRect = Declared(CGRect))
  */
@@ -1280,6 +1408,10 @@ fun NSDottedFrameRect(arg0: MemorySegment): Unit {
     }
 }
 
+fun NSDottedFrameRect(arg0: NSRect): Unit {
+    NSDottedFrameRect(arg0.segment)
+}
+
 /**
  * {@snippet lang=c : NSDrawWindowBackground Void(typedef NSRect = Declared(CGRect))
  */
@@ -1297,6 +1429,10 @@ fun NSDrawWindowBackground(arg0: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSDrawWindowBackground(arg0: NSRect): Unit {
+    NSDrawWindowBackground(arg0.segment)
 }
 
 /**
@@ -1430,6 +1566,10 @@ fun NSCopyBits(arg0: Long, arg1: MemorySegment, arg2: MemorySegment): Unit {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun NSCopyBits(arg0: Long, arg1: NSRect, arg2: NSPoint): Unit {
+    NSCopyBits(arg0, arg1.segment, arg2.segment)
 }
 
 /**
@@ -3634,6 +3774,10 @@ fun CGFontGetFontBBox(allocator: SegmentAllocator, arg0: MemorySegment): MemoryS
     }
 }
 
+fun CGFontGetFontBBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
+    return CGRect(CGFontGetFontBBox(allocator, arg0))
+}
+
 /**
  * {@snippet lang=c : CGFontGetItalicAngle typedef CGFloat = Double(typedef CGFontRef = (Declared(CGFont))*)
  */
@@ -4094,6 +4238,10 @@ fun CGImageCreateWithImageInRect(arg0: MemorySegment, arg1: MemorySegment): Memo
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGImageCreateWithImageInRect(arg0: MemorySegment, arg1: CGRect): MemorySegment {
+    return CGImageCreateWithImageInRect(arg0, arg1.segment)
 }
 
 /**
@@ -4715,6 +4863,10 @@ fun CGPathCreateWithRect(arg0: MemorySegment, arg1: MemorySegment): MemorySegmen
     }
 }
 
+fun CGPathCreateWithRect(arg0: CGRect, arg1: MemorySegment): MemorySegment {
+    return CGPathCreateWithRect(arg0.segment, arg1)
+}
+
 /**
  * {@snippet lang=c : CGPathCreateWithEllipseInRect typedef CGPathRef = (Declared(CGPath))*(typedef CGRect = Declared(CGRect),(typedef CGAffineTransform = Declared(CGAffineTransform))*)
  */
@@ -4732,6 +4884,10 @@ fun CGPathCreateWithEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Mem
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPathCreateWithEllipseInRect(arg0: CGRect, arg1: MemorySegment): MemorySegment {
+    return CGPathCreateWithEllipseInRect(arg0.segment, arg1)
 }
 
 /**
@@ -4753,6 +4909,10 @@ fun CGPathCreateWithRoundedRect(arg0: MemorySegment, arg1: Double, arg2: Double,
     }
 }
 
+fun CGPathCreateWithRoundedRect(arg0: CGRect, arg1: Double, arg2: Double, arg3: MemorySegment): MemorySegment {
+    return CGPathCreateWithRoundedRect(arg0.segment, arg1, arg2, arg3)
+}
+
 /**
  * {@snippet lang=c : CGPathAddRoundedRect Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
  */
@@ -4770,6 +4930,10 @@ fun CGPathAddRoundedRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPathAddRoundedRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect, arg3: Double, arg4: Double): Unit {
+    CGPathAddRoundedRect(arg0, arg1, arg2.segment, arg3, arg4)
 }
 
 /**
@@ -4960,6 +5124,10 @@ fun CGPathAddRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment)
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+fun CGPathAddRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect): Unit {
+    CGPathAddRect(arg0, arg1, arg2.segment)
 }
 
 /**

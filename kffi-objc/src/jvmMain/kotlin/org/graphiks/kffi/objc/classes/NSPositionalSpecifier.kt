@@ -14,9 +14,9 @@ open class NSPositionalSpecifier(override val ptr: MemorySegment) : NSObject(ptr
 
     }
 
-    open fun initWithPosition_objectSpecifier(position: MemorySegment, specifier: MemorySegment): MemorySegment {
+    open fun initWithPosition_objectSpecifier(position: NSInsertionPosition, specifier: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithPosition:objectSpecifier:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, position, specifier) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, position.rawValue, specifier) as MemorySegment
     }
 
     open fun setInsertionClassDescription(classDescription: MemorySegment): Unit {
@@ -30,9 +30,9 @@ open class NSPositionalSpecifier(override val ptr: MemorySegment) : NSObject(ptr
     }
 
     // @property position
-    open fun position(): MemorySegment {
+    open fun position(): NSInsertionPosition {
         val sel = ObjCRuntime.sel("position")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSInsertionPosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property objectSpecifier

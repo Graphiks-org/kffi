@@ -14,13 +14,13 @@ open class NSLengthFormatter(override val ptr: MemorySegment) : NSFormatter(ptr)
 
     }
 
-    open fun stringFromValue_unit(value: Double, unit: MemorySegment): MemorySegment {
+    open fun stringFromValue_unit(value: Double, unit: NSLengthFormatterUnit): MemorySegment {
         val sel = ObjCRuntime.sel("stringFromValue:unit:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value, unit) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value, unit.rawValue) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-    fun stringFromValue_unitAsString(value: Double, unit: MemorySegment): String = ObjCRuntime.toJavaString(stringFromValue_unit(value, unit))
+    fun stringFromValue_unitAsString(value: Double, unit: NSLengthFormatterUnit): String = ObjCRuntime.toJavaString(stringFromValue_unit(value, unit))
 
     open fun stringFromMeters(numberInMeters: Double): MemorySegment {
         val sel = ObjCRuntime.sel("stringFromMeters:")
@@ -30,13 +30,13 @@ open class NSLengthFormatter(override val ptr: MemorySegment) : NSFormatter(ptr)
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
     fun stringFromMetersAsString(numberInMeters: Double): String = ObjCRuntime.toJavaString(stringFromMeters(numberInMeters))
 
-    open fun unitStringFromValue_unit(value: Double, unit: MemorySegment): MemorySegment {
+    open fun unitStringFromValue_unit(value: Double, unit: NSLengthFormatterUnit): MemorySegment {
         val sel = ObjCRuntime.sel("unitStringFromValue:unit:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value, unit) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value, unit.rawValue) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-    fun unitStringFromValue_unitAsString(value: Double, unit: MemorySegment): String = ObjCRuntime.toJavaString(unitStringFromValue_unit(value, unit))
+    fun unitStringFromValue_unitAsString(value: Double, unit: NSLengthFormatterUnit): String = ObjCRuntime.toJavaString(unitStringFromValue_unit(value, unit))
 
     open fun unitStringFromMeters_usedUnit(numberInMeters: Double, unitp: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("unitStringFromMeters:usedUnit:")
@@ -62,13 +62,13 @@ open class NSLengthFormatter(override val ptr: MemorySegment) : NSFormatter(ptr)
     }
 
     // @property unitStyle
-    open fun unitStyle(): MemorySegment {
+    open fun unitStyle(): NSFormattingUnitStyle {
         val sel = ObjCRuntime.sel("unitStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSFormattingUnitStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setUnitStyle(value: MemorySegment) {
+    open fun setUnitStyle(value: NSFormattingUnitStyle) {
         val sel = ObjCRuntime.sel("setUnitStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property forPersonHeightUse

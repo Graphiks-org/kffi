@@ -27,9 +27,9 @@ open class NSCollectionViewUpdateItem(override val ptr: MemorySegment) : NSObjec
     }
 
     // @property updateAction
-    open fun updateAction(): MemorySegment {
+    open fun updateAction(): NSCollectionUpdateAction {
         val sel = ObjCRuntime.sel("updateAction")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCollectionUpdateAction(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 }

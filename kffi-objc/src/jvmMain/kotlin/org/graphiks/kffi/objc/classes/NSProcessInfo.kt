@@ -32,9 +32,9 @@ open class NSProcessInfo(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
     fun operatingSystemNameAsString(): String = ObjCRuntime.toJavaString(operatingSystemName())
 
-    open fun isOperatingSystemAtLeastVersion(version: MemorySegment): Boolean {
+    open fun isOperatingSystemAtLeastVersion(version: NSOperatingSystemVersion): Boolean {
         val sel = ObjCRuntime.sel("isOperatingSystemAtLeastVersion:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(version, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("majorVersion"), ValueLayout.JAVA_LONG.withName("minorVersion"), ValueLayout.JAVA_LONG.withName("patchVersion")).withName("NSOperatingSystemVersion"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(version.segment, NSOperatingSystemVersion.layout)) as Boolean
     }
 
     open fun disableSuddenTermination(): Unit {
@@ -133,9 +133,9 @@ open class NSProcessInfo(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun operatingSystemVersionStringAsString(): String = ObjCRuntime.toJavaString(operatingSystemVersionString())
 
     // @property operatingSystemVersion
-    open fun operatingSystemVersion(): MemorySegment {
+    open fun operatingSystemVersion(): NSOperatingSystemVersion {
         val sel = ObjCRuntime.sel("operatingSystemVersion")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("majorVersion"), ValueLayout.JAVA_LONG.withName("minorVersion"), ValueLayout.JAVA_LONG.withName("patchVersion")).withName("NSOperatingSystemVersion"), ptr, sel) as MemorySegment
+        return NSOperatingSystemVersion(ObjCRuntime.msgSendStruct(NSOperatingSystemVersion.layout, ptr, sel))
     }
 
     // @property processorCount
@@ -184,9 +184,9 @@ open class NSProcessInfo(override val ptr: MemorySegment) : NSObject(ptr) {
 // ── Category: NSProcessInfoActivity on NSProcessInfo ─────────────────────────────────────────
 
 /** @return id<NSObject> */
-fun NSProcessInfo.beginActivityWithOptions_reason(options: MemorySegment, reason: MemorySegment): MemorySegment {
+fun NSProcessInfo.beginActivityWithOptions_reason(options: NSActivityOptions, reason: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("beginActivityWithOptions:reason:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options, reason) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options.rawValue, reason) as MemorySegment
 }
 
 fun NSProcessInfo.endActivity(activity: MemorySegment): Unit {
@@ -194,9 +194,9 @@ fun NSProcessInfo.endActivity(activity: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, activity)
 }
 
-fun NSProcessInfo.performActivityWithOptions_reason_usingBlock(options: MemorySegment, reason: MemorySegment, block: MemorySegment): Unit {
+fun NSProcessInfo.performActivityWithOptions_reason_usingBlock(options: NSActivityOptions, reason: MemorySegment, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("performActivityWithOptions:reason:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, options, reason, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, options.rawValue, reason, block)
 }
 
 fun NSProcessInfo.performExpiringActivityWithReason_usingBlock(reason: MemorySegment, block: MemorySegment): Unit {
@@ -218,9 +218,9 @@ fun NSProcessInfo.fullUserName(): MemorySegment {
 
 // ── Category: NSProcessInfoThermalState on NSProcessInfo ─────────────────────────────────────────
 
-fun NSProcessInfo.thermalState(): MemorySegment {
+fun NSProcessInfo.thermalState(): NSProcessInfoThermalState {
     val sel = ObjCRuntime.sel("thermalState")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSProcessInfoThermalState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
 // ── Category: NSProcessInfoPowerState on NSProcessInfo ─────────────────────────────────────────

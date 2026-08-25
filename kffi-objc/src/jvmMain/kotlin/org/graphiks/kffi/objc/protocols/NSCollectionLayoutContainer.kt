@@ -9,12 +9,12 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSCollectionLayoutContainer {
-    fun contentSize(): MemorySegment
+    fun contentSize(): NSSize
 
-    fun effectiveContentSize(): MemorySegment
+    fun effectiveContentSize(): NSSize
 
-    fun contentInsets(): MemorySegment
+    fun contentInsets(): NSDirectionalEdgeInsets
 
-    fun effectiveContentInsets(): MemorySegment
+    fun effectiveContentInsets(): NSDirectionalEdgeInsets
 
 }

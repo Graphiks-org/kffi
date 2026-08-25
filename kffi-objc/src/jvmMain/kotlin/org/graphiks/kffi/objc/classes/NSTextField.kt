@@ -159,13 +159,13 @@ open class NSTextField(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property bezelStyle
-    open fun bezelStyle(): MemorySegment {
+    open fun bezelStyle(): NSTextFieldBezelStyle {
         val sel = ObjCRuntime.sel("bezelStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextFieldBezelStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBezelStyle(value: MemorySegment) {
+    open fun setBezelStyle(value: NSTextFieldBezelStyle) {
         val sel = ObjCRuntime.sel("setBezelStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property preferredMaxLayoutWidth
@@ -199,13 +199,13 @@ open class NSTextField(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property lineBreakStrategy
-    open fun lineBreakStrategy(): MemorySegment {
+    open fun lineBreakStrategy(): NSLineBreakStrategy {
         val sel = ObjCRuntime.sel("lineBreakStrategy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLineBreakStrategy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setLineBreakStrategy(value: MemorySegment) {
+    open fun setLineBreakStrategy(value: NSLineBreakStrategy) {
         val sel = ObjCRuntime.sel("setLineBreakStrategy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowsWritingTools

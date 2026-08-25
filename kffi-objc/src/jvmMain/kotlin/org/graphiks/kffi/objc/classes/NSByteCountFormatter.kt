@@ -12,21 +12,21 @@ open class NSByteCountFormatter(override val ptr: MemorySegment) : NSFormatter(p
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSByteCountFormatter") }
 
-        fun stringFromByteCount_countStyle(byteCount: Long, countStyle: MemorySegment): MemorySegment {
+        fun stringFromByteCount_countStyle(byteCount: Long, countStyle: NSByteCountFormatterCountStyle): MemorySegment {
             val sel = ObjCRuntime.sel("stringFromByteCount:countStyle:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, byteCount, countStyle) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, byteCount, countStyle.rawValue) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-        fun stringFromByteCount_countStyleAsString(byteCount: Long, countStyle: MemorySegment): String = ObjCRuntime.toJavaString(stringFromByteCount_countStyle(byteCount, countStyle))
+        fun stringFromByteCount_countStyleAsString(byteCount: Long, countStyle: NSByteCountFormatterCountStyle): String = ObjCRuntime.toJavaString(stringFromByteCount_countStyle(byteCount, countStyle))
 
-        fun stringFromMeasurement_countStyle(measurement: MemorySegment, countStyle: MemorySegment): MemorySegment {
+        fun stringFromMeasurement_countStyle(measurement: MemorySegment, countStyle: NSByteCountFormatterCountStyle): MemorySegment {
             val sel = ObjCRuntime.sel("stringFromMeasurement:countStyle:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, measurement, countStyle) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, measurement, countStyle.rawValue) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-        fun stringFromMeasurement_countStyleAsString(measurement: MemorySegment, countStyle: MemorySegment): String = ObjCRuntime.toJavaString(stringFromMeasurement_countStyle(measurement, countStyle))
+        fun stringFromMeasurement_countStyleAsString(measurement: MemorySegment, countStyle: NSByteCountFormatterCountStyle): String = ObjCRuntime.toJavaString(stringFromMeasurement_countStyle(measurement, countStyle))
 
     }
 
@@ -52,23 +52,23 @@ open class NSByteCountFormatter(override val ptr: MemorySegment) : NSFormatter(p
     }
 
     // @property allowedUnits
-    open fun allowedUnits(): MemorySegment {
+    open fun allowedUnits(): NSByteCountFormatterUnits {
         val sel = ObjCRuntime.sel("allowedUnits")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSByteCountFormatterUnits(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAllowedUnits(value: MemorySegment) {
+    open fun setAllowedUnits(value: NSByteCountFormatterUnits) {
         val sel = ObjCRuntime.sel("setAllowedUnits:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property countStyle
-    open fun countStyle(): MemorySegment {
+    open fun countStyle(): NSByteCountFormatterCountStyle {
         val sel = ObjCRuntime.sel("countStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSByteCountFormatterCountStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setCountStyle(value: MemorySegment) {
+    open fun setCountStyle(value: NSByteCountFormatterCountStyle) {
         val sel = ObjCRuntime.sel("setCountStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowsNonnumericFormatting
@@ -132,13 +132,13 @@ open class NSByteCountFormatter(override val ptr: MemorySegment) : NSFormatter(p
     }
 
     // @property formattingContext
-    open fun formattingContext(): MemorySegment {
+    open fun formattingContext(): NSFormattingContext {
         val sel = ObjCRuntime.sel("formattingContext")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSFormattingContext(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setFormattingContext(value: MemorySegment) {
+    open fun setFormattingContext(value: NSFormattingContext) {
         val sel = ObjCRuntime.sel("setFormattingContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

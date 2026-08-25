@@ -66,9 +66,9 @@ open class NSSplitViewItem(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property behavior
-    open fun behavior(): MemorySegment {
+    open fun behavior(): NSSplitViewItemBehavior {
         val sel = ObjCRuntime.sel("behavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSplitViewItemBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property viewController
@@ -102,13 +102,13 @@ open class NSSplitViewItem(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property collapseBehavior
-    open fun collapseBehavior(): MemorySegment {
+    open fun collapseBehavior(): NSSplitViewItemCollapseBehavior {
         val sel = ObjCRuntime.sel("collapseBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSplitViewItemCollapseBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setCollapseBehavior(value: MemorySegment) {
+    open fun setCollapseBehavior(value: NSSplitViewItemCollapseBehavior) {
         val sel = ObjCRuntime.sel("setCollapseBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property minimumThickness
@@ -192,13 +192,13 @@ open class NSSplitViewItem(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property titlebarSeparatorStyle
-    open fun titlebarSeparatorStyle(): MemorySegment {
+    open fun titlebarSeparatorStyle(): NSTitlebarSeparatorStyle {
         val sel = ObjCRuntime.sel("titlebarSeparatorStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTitlebarSeparatorStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTitlebarSeparatorStyle(value: MemorySegment) {
+    open fun setTitlebarSeparatorStyle(value: NSTitlebarSeparatorStyle) {
         val sel = ObjCRuntime.sel("setTitlebarSeparatorStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property automaticallyAdjustsSafeAreaInsets

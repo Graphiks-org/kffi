@@ -24,14 +24,14 @@ open class NSOpenGLLayer(override val ptr: MemorySegment) : CAOpenGLLayer(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, pixelFormat) as MemorySegment
     }
 
-    open fun canDrawInOpenGLContext_pixelFormat_forLayerTime_displayTime(context: MemorySegment, pixelFormat: MemorySegment, t: Double, ts: MemorySegment): Boolean {
+    open fun canDrawInOpenGLContext_pixelFormat_forLayerTime_displayTime(context: MemorySegment, pixelFormat: MemorySegment, t: Double, ts: CVTimeStampPointer): Boolean {
         val sel = ObjCRuntime.sel("canDrawInOpenGLContext:pixelFormat:forLayerTime:displayTime:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, context, pixelFormat, t, ts) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, context, pixelFormat, t, ts.segment) as Boolean
     }
 
-    open fun drawInOpenGLContext_pixelFormat_forLayerTime_displayTime(context: MemorySegment, pixelFormat: MemorySegment, t: Double, ts: MemorySegment): Unit {
+    open fun drawInOpenGLContext_pixelFormat_forLayerTime_displayTime(context: MemorySegment, pixelFormat: MemorySegment, t: Double, ts: CVTimeStampPointer): Unit {
         val sel = ObjCRuntime.sel("drawInOpenGLContext:pixelFormat:forLayerTime:displayTime:")
-        ObjCRuntime.msgSend(null, ptr, sel, context, pixelFormat, t, ts)
+        ObjCRuntime.msgSend(null, ptr, sel, context, pixelFormat, t, ts.segment)
     }
 
     // @property view

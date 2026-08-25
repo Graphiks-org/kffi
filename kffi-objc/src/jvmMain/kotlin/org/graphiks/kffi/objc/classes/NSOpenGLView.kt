@@ -19,9 +19,9 @@ open class NSOpenGLView(override val ptr: MemorySegment) : NSView(ptr) {
 
     }
 
-    open fun initWithFrame_pixelFormat(frameRect: MemorySegment, format: MemorySegment): MemorySegment {
+    open fun initWithFrame_pixelFormat(frameRect: NSRect, format: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:pixelFormat:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), format) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout), format) as MemorySegment
     }
 
     open fun clearGLContext(): Unit {

@@ -12,14 +12,14 @@ open class NSPickerTouchBarItem(override val ptr: MemorySegment) : NSTouchBarIte
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSPickerTouchBarItem") }
 
-        fun pickerTouchBarItemWithIdentifier_labels_selectionMode_target_action(identifier: MemorySegment, labels: MemorySegment, selectionMode: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {
+        fun pickerTouchBarItemWithIdentifier_labels_selectionMode_target_action(identifier: MemorySegment, labels: MemorySegment, selectionMode: NSPickerTouchBarItemSelectionMode, target: MemorySegment, action: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("pickerTouchBarItemWithIdentifier:labels:selectionMode:target:action:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, identifier, labels, selectionMode, target, action) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, identifier, labels, selectionMode.rawValue, target, action) as MemorySegment
         }
 
-        fun pickerTouchBarItemWithIdentifier_images_selectionMode_target_action(identifier: MemorySegment, images: MemorySegment, selectionMode: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {
+        fun pickerTouchBarItemWithIdentifier_images_selectionMode_target_action(identifier: MemorySegment, images: MemorySegment, selectionMode: NSPickerTouchBarItemSelectionMode, target: MemorySegment, action: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("pickerTouchBarItemWithIdentifier:images:selectionMode:target:action:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, identifier, images, selectionMode, target, action) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, identifier, images, selectionMode.rawValue, target, action) as MemorySegment
         }
 
     }
@@ -61,13 +61,13 @@ open class NSPickerTouchBarItem(override val ptr: MemorySegment) : NSTouchBarIte
     }
 
     // @property controlRepresentation
-    open fun controlRepresentation(): MemorySegment {
+    open fun controlRepresentation(): NSPickerTouchBarItemControlRepresentation {
         val sel = ObjCRuntime.sel("controlRepresentation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPickerTouchBarItemControlRepresentation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setControlRepresentation(value: MemorySegment) {
+    open fun setControlRepresentation(value: NSPickerTouchBarItemControlRepresentation) {
         val sel = ObjCRuntime.sel("setControlRepresentation:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property collapsedRepresentationLabel
@@ -117,13 +117,13 @@ open class NSPickerTouchBarItem(override val ptr: MemorySegment) : NSTouchBarIte
     }
 
     // @property selectionMode
-    open fun selectionMode(): MemorySegment {
+    open fun selectionMode(): NSPickerTouchBarItemSelectionMode {
         val sel = ObjCRuntime.sel("selectionMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPickerTouchBarItemSelectionMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setSelectionMode(value: MemorySegment) {
+    open fun setSelectionMode(value: NSPickerTouchBarItemSelectionMode) {
         val sel = ObjCRuntime.sel("setSelectionMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property numberOfOptions

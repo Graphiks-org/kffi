@@ -23,19 +23,19 @@ open class NSFontCollection(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, locale) as MemorySegment
         }
 
-        fun showFontCollection_withName_visibility_error(collection: MemorySegment, name: MemorySegment, visibility: MemorySegment, error: MemorySegment): Boolean {
+        fun showFontCollection_withName_visibility_error(collection: MemorySegment, name: MemorySegment, visibility: NSFontCollectionVisibility, error: MemorySegment): Boolean {
             val sel = ObjCRuntime.sel("showFontCollection:withName:visibility:error:")
-            return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, collection, name, visibility, error) as Boolean
+            return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, collection, name, visibility.rawValue, error) as Boolean
         }
 
-        fun hideFontCollectionWithName_visibility_error(name: MemorySegment, visibility: MemorySegment, error: MemorySegment): Boolean {
+        fun hideFontCollectionWithName_visibility_error(name: MemorySegment, visibility: NSFontCollectionVisibility, error: MemorySegment): Boolean {
             val sel = ObjCRuntime.sel("hideFontCollectionWithName:visibility:error:")
-            return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, name, visibility, error) as Boolean
+            return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, name, visibility.rawValue, error) as Boolean
         }
 
-        fun renameFontCollectionWithName_visibility_toName_error(oldName: MemorySegment, visibility: MemorySegment, newName: MemorySegment, outError: MemorySegment): Boolean {
+        fun renameFontCollectionWithName_visibility_toName_error(oldName: MemorySegment, visibility: NSFontCollectionVisibility, newName: MemorySegment, outError: MemorySegment): Boolean {
             val sel = ObjCRuntime.sel("renameFontCollectionWithName:visibility:toName:error:")
-            return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, oldName, visibility, newName, outError) as Boolean
+            return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, oldName, visibility.rawValue, newName, outError) as Boolean
         }
 
         fun fontCollectionWithName(name: MemorySegment): MemorySegment {
@@ -43,9 +43,9 @@ open class NSFontCollection(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, name) as MemorySegment
         }
 
-        fun fontCollectionWithName_visibility(name: MemorySegment, visibility: MemorySegment): MemorySegment {
+        fun fontCollectionWithName_visibility(name: MemorySegment, visibility: NSFontCollectionVisibility): MemorySegment {
             val sel = ObjCRuntime.sel("fontCollectionWithName:visibility:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, name, visibility) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, name, visibility.rawValue) as MemorySegment
         }
 
         fun fontCollectionWithAllAvailableDescriptors(): MemorySegment {

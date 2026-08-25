@@ -16,29 +16,29 @@ open class NSTextCheckingResult(override val ptr: MemorySegment) : NSObject(ptr)
     }
 
     // @property resultType
-    open fun resultType(): MemorySegment {
+    open fun resultType(): NSTextCheckingType {
         val sel = ObjCRuntime.sel("resultType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextCheckingType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property range
-    open fun range(): MemorySegment {
+    open fun range(): NSRange {
         val sel = ObjCRuntime.sel("range")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel))
     }
 
 }
 
 // ── Category: NSTextCheckingResultOptional on NSTextCheckingResult ─────────────────────────────────────────
 
-fun NSTextCheckingResult.rangeAtIndex(idx: Long): MemorySegment {
+fun NSTextCheckingResult.rangeAtIndex(idx: Long): NSRange {
     val sel = ObjCRuntime.sel("rangeAtIndex:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, idx) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, idx))
 }
 
-fun NSTextCheckingResult.rangeWithName(name: MemorySegment): MemorySegment {
+fun NSTextCheckingResult.rangeWithName(name: MemorySegment): NSRange {
     val sel = ObjCRuntime.sel("rangeWithName:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, name) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, name))
 }
 
 fun NSTextCheckingResult.resultByAdjustingRangesWithOffset(offset: Long): MemorySegment {
@@ -118,106 +118,106 @@ fun NSTextCheckingResult.addressComponents(): MemorySegment {
 // ── Category: NSTextCheckingResultCreation on NSTextCheckingResult ─────────────────────────────────────────
 
 // Class method: +[NSTextCheckingResult orthographyCheckingResultWithRange:orthography:]
-fun NSTextCheckingResult_orthographyCheckingResultWithRange_orthography(range: MemorySegment, orthography: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_orthographyCheckingResultWithRange_orthography(range: NSRange, orthography: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("orthographyCheckingResultWithRange:orthography:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, orthography) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), orthography) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult spellCheckingResultWithRange:]
-fun NSTextCheckingResult_spellCheckingResultWithRange(range: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_spellCheckingResultWithRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("spellCheckingResultWithRange:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult grammarCheckingResultWithRange:details:]
-fun NSTextCheckingResult_grammarCheckingResultWithRange_details(range: MemorySegment, details: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_grammarCheckingResultWithRange_details(range: NSRange, details: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("grammarCheckingResultWithRange:details:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, details) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), details) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult dateCheckingResultWithRange:date:]
-fun NSTextCheckingResult_dateCheckingResultWithRange_date(range: MemorySegment, date: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_dateCheckingResultWithRange_date(range: NSRange, date: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dateCheckingResultWithRange:date:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, date) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), date) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult dateCheckingResultWithRange:date:timeZone:duration:]
-fun NSTextCheckingResult_dateCheckingResultWithRange_date_timeZone_duration(range: MemorySegment, date: MemorySegment, timeZone: MemorySegment, duration: Double): MemorySegment {
+fun NSTextCheckingResult_dateCheckingResultWithRange_date_timeZone_duration(range: NSRange, date: MemorySegment, timeZone: MemorySegment, duration: Double): MemorySegment {
     val sel = ObjCRuntime.sel("dateCheckingResultWithRange:date:timeZone:duration:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, date, timeZone, duration) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), date, timeZone, duration) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult addressCheckingResultWithRange:components:]
-fun NSTextCheckingResult_addressCheckingResultWithRange_components(range: MemorySegment, components: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_addressCheckingResultWithRange_components(range: NSRange, components: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("addressCheckingResultWithRange:components:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, components) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), components) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult linkCheckingResultWithRange:URL:]
-fun NSTextCheckingResult_linkCheckingResultWithRange_URL(range: MemorySegment, url: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_linkCheckingResultWithRange_URL(range: NSRange, url: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("linkCheckingResultWithRange:URL:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, url) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), url) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult quoteCheckingResultWithRange:replacementString:]
-fun NSTextCheckingResult_quoteCheckingResultWithRange_replacementString(range: MemorySegment, replacementString: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_quoteCheckingResultWithRange_replacementString(range: NSRange, replacementString: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("quoteCheckingResultWithRange:replacementString:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, replacementString) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), replacementString) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult dashCheckingResultWithRange:replacementString:]
-fun NSTextCheckingResult_dashCheckingResultWithRange_replacementString(range: MemorySegment, replacementString: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_dashCheckingResultWithRange_replacementString(range: NSRange, replacementString: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dashCheckingResultWithRange:replacementString:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, replacementString) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), replacementString) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult replacementCheckingResultWithRange:replacementString:]
-fun NSTextCheckingResult_replacementCheckingResultWithRange_replacementString(range: MemorySegment, replacementString: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_replacementCheckingResultWithRange_replacementString(range: NSRange, replacementString: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("replacementCheckingResultWithRange:replacementString:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, replacementString) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), replacementString) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult correctionCheckingResultWithRange:replacementString:]
-fun NSTextCheckingResult_correctionCheckingResultWithRange_replacementString(range: MemorySegment, replacementString: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_correctionCheckingResultWithRange_replacementString(range: NSRange, replacementString: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("correctionCheckingResultWithRange:replacementString:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, replacementString) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), replacementString) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult correctionCheckingResultWithRange:replacementString:alternativeStrings:]
-fun NSTextCheckingResult_correctionCheckingResultWithRange_replacementString_alternativeStrings(range: MemorySegment, replacementString: MemorySegment, alternativeStrings: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_correctionCheckingResultWithRange_replacementString_alternativeStrings(range: NSRange, replacementString: MemorySegment, alternativeStrings: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("correctionCheckingResultWithRange:replacementString:alternativeStrings:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, replacementString, alternativeStrings) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), replacementString, alternativeStrings) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult regularExpressionCheckingResultWithRanges:count:regularExpression:]
-fun NSTextCheckingResult_regularExpressionCheckingResultWithRanges_count_regularExpression(ranges: MemorySegment, count: Long, regularExpression: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_regularExpressionCheckingResultWithRanges_count_regularExpression(ranges: NSRangePointer, count: Long, regularExpression: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("regularExpressionCheckingResultWithRanges:count:regularExpression:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ranges, count, regularExpression) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ranges.segment, count, regularExpression) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult phoneNumberCheckingResultWithRange:phoneNumber:]
-fun NSTextCheckingResult_phoneNumberCheckingResultWithRange_phoneNumber(range: MemorySegment, phoneNumber: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_phoneNumberCheckingResultWithRange_phoneNumber(range: NSRange, phoneNumber: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("phoneNumberCheckingResultWithRange:phoneNumber:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, phoneNumber) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), phoneNumber) as MemorySegment
 }
 
 // Class method: +[NSTextCheckingResult transitInformationCheckingResultWithRange:components:]
-fun NSTextCheckingResult_transitInformationCheckingResultWithRange_components(range: MemorySegment, components: MemorySegment): MemorySegment {
+fun NSTextCheckingResult_transitInformationCheckingResultWithRange_components(range: NSRange, components: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("transitInformationCheckingResultWithRange:components:")
     val cls = ObjCRuntime.getClass("NSTextCheckingResult")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, range, components) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), components) as MemorySegment
 }

@@ -33,19 +33,19 @@ open class NSCursor(override val ptr: MemorySegment) : NSObject(ptr) {
             ObjCRuntime.msgSend(null, _class, sel)
         }
 
-        fun columnResizeCursorInDirections(directions: MemorySegment): MemorySegment {
+        fun columnResizeCursorInDirections(directions: NSHorizontalDirections): MemorySegment {
             val sel = ObjCRuntime.sel("columnResizeCursorInDirections:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, directions) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, directions.rawValue) as MemorySegment
         }
 
-        fun rowResizeCursorInDirections(directions: MemorySegment): MemorySegment {
+        fun rowResizeCursorInDirections(directions: NSVerticalDirections): MemorySegment {
             val sel = ObjCRuntime.sel("rowResizeCursorInDirections:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, directions) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, directions.rawValue) as MemorySegment
         }
 
-        fun frameResizeCursorFromPosition_inDirections(position: MemorySegment, directions: MemorySegment): MemorySegment {
+        fun frameResizeCursorFromPosition_inDirections(position: NSCursorFrameResizePosition, directions: NSCursorFrameResizeDirections): MemorySegment {
             val sel = ObjCRuntime.sel("frameResizeCursorFromPosition:inDirections:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, position, directions) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, position.rawValue, directions.rawValue) as MemorySegment
         }
 
         fun currentCursor(): MemorySegment {
@@ -135,9 +135,9 @@ open class NSCursor(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithImage_hotSpot(newImage: MemorySegment, point: MemorySegment): MemorySegment {
+    open fun initWithImage_hotSpot(newImage: MemorySegment, point: NSPoint): MemorySegment {
         val sel = ObjCRuntime.sel("initWithImage:hotSpot:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, newImage, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, newImage, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as MemorySegment
     }
 
     open fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -167,9 +167,9 @@ open class NSCursor(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property hotSpot
-    open fun hotSpot(): MemorySegment {
+    open fun hotSpot(): NSPoint {
         val sel = ObjCRuntime.sel("hotSpot")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
     // @property currentCursor
@@ -371,9 +371,9 @@ fun NSCursor.resizeUpDownCursor(): MemorySegment {
 
 // ── Category: NSDeprecated on NSCursor ─────────────────────────────────────────
 
-fun NSCursor.initWithImage_foregroundColorHint_backgroundColorHint_hotSpot(newImage: MemorySegment, fg: MemorySegment, bg: MemorySegment, hotSpot: MemorySegment): MemorySegment {
+fun NSCursor.initWithImage_foregroundColorHint_backgroundColorHint_hotSpot(newImage: MemorySegment, fg: MemorySegment, bg: MemorySegment, hotSpot: NSPoint): MemorySegment {
     val sel = ObjCRuntime.sel("initWithImage:foregroundColorHint:backgroundColorHint:hotSpot:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, newImage, fg, bg, hotSpot) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, newImage, fg, bg, ObjCRuntime.ObjCStructArg(hotSpot.segment, NSPoint.layout)) as MemorySegment
 }
 
 fun NSCursor.setOnMouseExited(flag: Boolean): Unit {

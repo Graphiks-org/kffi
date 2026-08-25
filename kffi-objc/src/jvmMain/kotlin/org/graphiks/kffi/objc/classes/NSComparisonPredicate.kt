@@ -12,9 +12,9 @@ open class NSComparisonPredicate(override val ptr: MemorySegment) : NSPredicate(
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSComparisonPredicate") }
 
-        fun predicateWithLeftExpression_rightExpression_modifier_type_options(lhs: MemorySegment, rhs: MemorySegment, modifier: MemorySegment, type: MemorySegment, options: MemorySegment): MemorySegment {
+        fun predicateWithLeftExpression_rightExpression_modifier_type_options(lhs: MemorySegment, rhs: MemorySegment, modifier: NSComparisonPredicateModifier, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions): MemorySegment {
             val sel = ObjCRuntime.sel("predicateWithLeftExpression:rightExpression:modifier:type:options:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, lhs, rhs, modifier, type, options) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, lhs, rhs, modifier.rawValue, type.rawValue, options.rawValue) as MemorySegment
         }
 
         fun predicateWithLeftExpression_rightExpression_customSelector(lhs: MemorySegment, rhs: MemorySegment, selector: MemorySegment): MemorySegment {
@@ -24,9 +24,9 @@ open class NSComparisonPredicate(override val ptr: MemorySegment) : NSPredicate(
 
     }
 
-    open fun initWithLeftExpression_rightExpression_modifier_type_options(lhs: MemorySegment, rhs: MemorySegment, modifier: MemorySegment, type: MemorySegment, options: MemorySegment): MemorySegment {
+    open fun initWithLeftExpression_rightExpression_modifier_type_options(lhs: MemorySegment, rhs: MemorySegment, modifier: NSComparisonPredicateModifier, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithLeftExpression:rightExpression:modifier:type:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, lhs, rhs, modifier, type, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, lhs, rhs, modifier.rawValue, type.rawValue, options.rawValue) as MemorySegment
     }
 
     open fun initWithLeftExpression_rightExpression_customSelector(lhs: MemorySegment, rhs: MemorySegment, selector: MemorySegment): MemorySegment {
@@ -40,15 +40,15 @@ open class NSComparisonPredicate(override val ptr: MemorySegment) : NSPredicate(
     }
 
     // @property predicateOperatorType
-    open fun predicateOperatorType(): MemorySegment {
+    open fun predicateOperatorType(): NSPredicateOperatorType {
         val sel = ObjCRuntime.sel("predicateOperatorType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSPredicateOperatorType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property comparisonPredicateModifier
-    open fun comparisonPredicateModifier(): MemorySegment {
+    open fun comparisonPredicateModifier(): NSComparisonPredicateModifier {
         val sel = ObjCRuntime.sel("comparisonPredicateModifier")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSComparisonPredicateModifier(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property leftExpression
@@ -70,9 +70,9 @@ open class NSComparisonPredicate(override val ptr: MemorySegment) : NSPredicate(
     }
 
     // @property options
-    open fun options(): MemorySegment {
+    open fun options(): NSComparisonPredicateOptions {
         val sel = ObjCRuntime.sel("options")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSComparisonPredicateOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 }

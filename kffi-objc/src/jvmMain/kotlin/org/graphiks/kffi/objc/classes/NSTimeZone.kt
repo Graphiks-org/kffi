@@ -67,9 +67,9 @@ fun NSTimeZone.isEqualToTimeZone(aTimeZone: MemorySegment): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, aTimeZone) as Boolean
 }
 
-fun NSTimeZone.localizedName_locale(style: MemorySegment, locale: MemorySegment): MemorySegment {
+fun NSTimeZone.localizedName_locale(style: NSTimeZoneNameStyle, locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("localizedName:locale:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, style, locale) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, style.rawValue, locale) as MemorySegment
 }
 
 fun NSTimeZone.secondsFromGMT(): Long {

@@ -13,14 +13,14 @@ open class NSCollectionLayoutGroupCustomItem(override val ptr: MemorySegment) : 
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionLayoutGroupCustomItem") }
 
-        fun customItemWithFrame(frame: MemorySegment): MemorySegment {
+        fun customItemWithFrame(frame: NSRect): MemorySegment {
             val sel = ObjCRuntime.sel("customItemWithFrame:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout)) as MemorySegment
         }
 
-        fun customItemWithFrame_zIndex(frame: MemorySegment, zIndex: Long): MemorySegment {
+        fun customItemWithFrame_zIndex(frame: NSRect, zIndex: Long): MemorySegment {
             val sel = ObjCRuntime.sel("customItemWithFrame:zIndex:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(frame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), zIndex) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), zIndex) as MemorySegment
         }
 
         fun new(): MemorySegment {
@@ -36,9 +36,9 @@ open class NSCollectionLayoutGroupCustomItem(override val ptr: MemorySegment) : 
     }
 
     // @property frame
-    open fun frame(): MemorySegment {
+    open fun frame(): NSRect {
         val sel = ObjCRuntime.sel("frame")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property zIndex

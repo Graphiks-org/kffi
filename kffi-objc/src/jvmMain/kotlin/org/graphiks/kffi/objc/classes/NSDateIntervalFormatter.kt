@@ -77,23 +77,23 @@ open class NSDateIntervalFormatter(override val ptr: MemorySegment) : NSFormatte
     open fun setDateTemplate(value: String) = setDateTemplate(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property dateStyle
-    open fun dateStyle(): MemorySegment {
+    open fun dateStyle(): NSDateIntervalFormatterStyle {
         val sel = ObjCRuntime.sel("dateStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDateIntervalFormatterStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDateStyle(value: MemorySegment) {
+    open fun setDateStyle(value: NSDateIntervalFormatterStyle) {
         val sel = ObjCRuntime.sel("setDateStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property timeStyle
-    open fun timeStyle(): MemorySegment {
+    open fun timeStyle(): NSDateIntervalFormatterStyle {
         val sel = ObjCRuntime.sel("timeStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDateIntervalFormatterStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTimeStyle(value: MemorySegment) {
+    open fun setTimeStyle(value: NSDateIntervalFormatterStyle) {
         val sel = ObjCRuntime.sel("setTimeStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

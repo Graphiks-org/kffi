@@ -94,9 +94,9 @@ open class NSNumber(override val ptr: MemorySegment) : NSValue(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value) as MemorySegment
     }
 
-    open fun compare(otherNumber: MemorySegment): MemorySegment {
+    open fun compare(otherNumber: MemorySegment): NSComparisonResult {
         val sel = ObjCRuntime.sel("compare:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, otherNumber) as MemorySegment
+        return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, otherNumber) as Long)
     }
 
     open fun isEqualToNumber(number: MemorySegment): Boolean {
@@ -322,7 +322,7 @@ fun NSNumber_numberWithUnsignedInteger(value: Long): MemorySegment {
 
 // ── Category: NSDecimalNumberExtensions on NSNumber ─────────────────────────────────────────
 
-fun NSNumber.decimalValue(): MemorySegment {
+fun NSNumber.decimalValue(): NSDecimal {
     val sel = ObjCRuntime.sel("decimalValue")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.ADDRESS.withName("_mantissa")).withName("NSDecimal"), this.ptr, sel) as MemorySegment
+    return NSDecimal(ObjCRuntime.msgSendStruct(NSDecimal.layout, this.ptr, sel))
 }

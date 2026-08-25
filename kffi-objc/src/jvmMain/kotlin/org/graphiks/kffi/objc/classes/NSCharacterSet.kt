@@ -13,9 +13,9 @@ open class NSCharacterSet(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCharacterSet") }
 
-        fun characterSetWithRange(aRange: MemorySegment): MemorySegment {
+        fun characterSetWithRange(aRange: NSRange): MemorySegment {
             val sel = ObjCRuntime.sel("characterSetWithRange:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(aRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"))) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout)) as MemorySegment
         }
 
         fun characterSetWithCharactersInString(aString: MemorySegment): MemorySegment {

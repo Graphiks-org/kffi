@@ -12,9 +12,9 @@ open class NSColorWell(override val ptr: MemorySegment) : NSControl(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSColorWell") }
 
-        fun colorWellWithStyle(style: MemorySegment): MemorySegment {
+        fun colorWellWithStyle(style: NSColorWellStyle): MemorySegment {
             val sel = ObjCRuntime.sel("colorWellWithStyle:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, style) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, style.rawValue) as MemorySegment
         }
 
     }
@@ -29,9 +29,9 @@ open class NSColorWell(override val ptr: MemorySegment) : NSControl(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, exclusive)
     }
 
-    open fun drawWellInside(insideRect: MemorySegment): Unit {
+    open fun drawWellInside(insideRect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawWellInside:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(insideRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(insideRect.segment, NSRect.layout))
     }
 
     open fun takeColorFrom(sender: MemorySegment): Unit {
@@ -66,13 +66,13 @@ open class NSColorWell(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property colorWellStyle
-    open fun colorWellStyle(): MemorySegment {
+    open fun colorWellStyle(): NSColorWellStyle {
         val sel = ObjCRuntime.sel("colorWellStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSColorWellStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setColorWellStyle(value: MemorySegment) {
+    open fun setColorWellStyle(value: NSColorWellStyle) {
         val sel = ObjCRuntime.sel("setColorWellStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property image

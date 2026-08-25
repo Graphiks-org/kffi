@@ -51,9 +51,9 @@ open class NSInputManager(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, cli)
     }
 
-    open fun markedTextSelectionChanged_client(newSel: MemorySegment, cli: MemorySegment): Unit {
+    open fun markedTextSelectionChanged_client(newSel: NSRange, cli: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("markedTextSelectionChanged:client:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(newSel, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), cli)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(newSel.segment, NSRange.layout), cli)
     }
 
     open fun wantsToInterpretAllKeystrokes(): Boolean {

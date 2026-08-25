@@ -14,19 +14,19 @@ open class NSDraggingSession(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun enumerateDraggingItemsWithOptions_forView_classes_searchOptions_usingBlock(enumOpts: MemorySegment, view: MemorySegment, classArray: MemorySegment, searchOptions: MemorySegment, block: MemorySegment): Unit {
+    open fun enumerateDraggingItemsWithOptions_forView_classes_searchOptions_usingBlock(enumOpts: NSDraggingItemEnumerationOptions, view: MemorySegment, classArray: MemorySegment, searchOptions: MemorySegment, block: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:")
-        ObjCRuntime.msgSend(null, ptr, sel, enumOpts, view, classArray, searchOptions, block)
+        ObjCRuntime.msgSend(null, ptr, sel, enumOpts.rawValue, view, classArray, searchOptions, block)
     }
 
     // @property draggingFormation
-    open fun draggingFormation(): MemorySegment {
+    open fun draggingFormation(): NSDraggingFormation {
         val sel = ObjCRuntime.sel("draggingFormation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSDraggingFormation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setDraggingFormation(value: MemorySegment) {
+    open fun setDraggingFormation(value: NSDraggingFormation) {
         val sel = ObjCRuntime.sel("setDraggingFormation:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property animatesToStartingPositionsOnCancelOrFail
@@ -62,9 +62,9 @@ open class NSDraggingSession(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property draggingLocation
-    open fun draggingLocation(): MemorySegment {
+    open fun draggingLocation(): NSPoint {
         val sel = ObjCRuntime.sel("draggingLocation")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
 }

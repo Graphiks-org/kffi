@@ -12,33 +12,33 @@ open class NSNumberFormatter(override val ptr: MemorySegment) : NSFormatter(ptr)
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSNumberFormatter") }
 
-        fun localizedStringFromNumber_numberStyle(num: MemorySegment, nstyle: MemorySegment): MemorySegment {
+        fun localizedStringFromNumber_numberStyle(num: MemorySegment, nstyle: NSNumberFormatterStyle): MemorySegment {
             val sel = ObjCRuntime.sel("localizedStringFromNumber:numberStyle:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, num, nstyle) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, num, nstyle.rawValue) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-        fun localizedStringFromNumber_numberStyleAsString(num: MemorySegment, nstyle: MemorySegment): String = ObjCRuntime.toJavaString(localizedStringFromNumber_numberStyle(num, nstyle))
+        fun localizedStringFromNumber_numberStyleAsString(num: MemorySegment, nstyle: NSNumberFormatterStyle): String = ObjCRuntime.toJavaString(localizedStringFromNumber_numberStyle(num, nstyle))
 
-        fun defaultFormatterBehavior(): MemorySegment {
+        fun defaultFormatterBehavior(): NSNumberFormatterBehavior {
             val sel = ObjCRuntime.sel("defaultFormatterBehavior")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
+            return NSNumberFormatterBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
-        fun setDefaultFormatterBehavior(behavior: MemorySegment): Unit {
+        fun setDefaultFormatterBehavior(behavior: NSNumberFormatterBehavior): Unit {
             val sel = ObjCRuntime.sel("setDefaultFormatterBehavior:")
-            ObjCRuntime.msgSend(null, _class, sel, behavior)
+            ObjCRuntime.msgSend(null, _class, sel, behavior.rawValue)
         }
 
     }
 
-    open fun getObjectValue_forString_range_error(obj: MemorySegment, string: MemorySegment, rangep: MemorySegment, error: MemorySegment): Boolean {
+    open fun getObjectValue_forString_range_error(obj: MemorySegment, string: MemorySegment, rangep: NSRangePointer, error: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("getObjectValue:forString:range:error:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, obj, string, rangep, error) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, obj, string, rangep.segment, error) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun getObjectValue_forString_range_error(obj: MemorySegment, string: String, rangep: MemorySegment, error: MemorySegment): Boolean = getObjectValue_forString_range_error(obj, ObjCRuntime.newNSString(Arena.global(), string), rangep, error)
+    fun getObjectValue_forString_range_error(obj: MemorySegment, string: String, rangep: NSRangePointer, error: MemorySegment): Boolean = getObjectValue_forString_range_error(obj, ObjCRuntime.newNSString(Arena.global(), string), rangep, error)
 
     open fun stringFromNumber(number: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("stringFromNumber:")
@@ -57,13 +57,13 @@ open class NSNumberFormatter(override val ptr: MemorySegment) : NSFormatter(ptr)
     fun numberFromString(string: String): MemorySegment = numberFromString(ObjCRuntime.newNSString(Arena.global(), string))
 
     // @property formattingContext
-    open fun formattingContext(): MemorySegment {
+    open fun formattingContext(): NSFormattingContext {
         val sel = ObjCRuntime.sel("formattingContext")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSFormattingContext(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setFormattingContext(value: MemorySegment) {
+    open fun setFormattingContext(value: NSFormattingContext) {
         val sel = ObjCRuntime.sel("setFormattingContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property minimumGroupingDigits
@@ -77,13 +77,13 @@ open class NSNumberFormatter(override val ptr: MemorySegment) : NSFormatter(ptr)
     }
 
     // @property numberStyle
-    open fun numberStyle(): MemorySegment {
+    open fun numberStyle(): NSNumberFormatterStyle {
         val sel = ObjCRuntime.sel("numberStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSNumberFormatterStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setNumberStyle(value: MemorySegment) {
+    open fun setNumberStyle(value: NSNumberFormatterStyle) {
         val sel = ObjCRuntime.sel("setNumberStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property locale
@@ -107,13 +107,13 @@ open class NSNumberFormatter(override val ptr: MemorySegment) : NSFormatter(ptr)
     }
 
     // @property formatterBehavior
-    open fun formatterBehavior(): MemorySegment {
+    open fun formatterBehavior(): NSNumberFormatterBehavior {
         val sel = ObjCRuntime.sel("formatterBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSNumberFormatterBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setFormatterBehavior(value: MemorySegment) {
+    open fun setFormatterBehavior(value: NSNumberFormatterBehavior) {
         val sel = ObjCRuntime.sel("setFormatterBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property negativeFormat
@@ -632,23 +632,23 @@ open class NSNumberFormatter(override val ptr: MemorySegment) : NSFormatter(ptr)
     open fun setPaddingCharacter(value: String) = setPaddingCharacter(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property paddingPosition
-    open fun paddingPosition(): MemorySegment {
+    open fun paddingPosition(): NSNumberFormatterPadPosition {
         val sel = ObjCRuntime.sel("paddingPosition")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSNumberFormatterPadPosition(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setPaddingPosition(value: MemorySegment) {
+    open fun setPaddingPosition(value: NSNumberFormatterPadPosition) {
         val sel = ObjCRuntime.sel("setPaddingPosition:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property roundingMode
-    open fun roundingMode(): MemorySegment {
+    open fun roundingMode(): NSNumberFormatterRoundingMode {
         val sel = ObjCRuntime.sel("roundingMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSNumberFormatterRoundingMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setRoundingMode(value: MemorySegment) {
+    open fun setRoundingMode(value: NSNumberFormatterRoundingMode) {
         val sel = ObjCRuntime.sel("setRoundingMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property roundingIncrement

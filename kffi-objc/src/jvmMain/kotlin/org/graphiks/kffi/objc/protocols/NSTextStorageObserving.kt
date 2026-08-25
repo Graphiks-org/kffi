@@ -9,7 +9,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSTextStorageObserving {
-    fun processEditingForTextStorage_edited_range_changeInLength_invalidatedRange(textStorage: MemorySegment, editMask: MemorySegment, newCharRange: MemorySegment, delta: Long, invalidatedCharRange: MemorySegment): Unit
+    fun processEditingForTextStorage_edited_range_changeInLength_invalidatedRange(textStorage: MemorySegment, editMask: NSTextStorageEditActions, newCharRange: NSRange, delta: Long, invalidatedCharRange: NSRange): Unit
 
     fun performEditingTransactionForTextStorage_usingBlock(textStorage: MemorySegment, transaction: MemorySegment): Unit
 

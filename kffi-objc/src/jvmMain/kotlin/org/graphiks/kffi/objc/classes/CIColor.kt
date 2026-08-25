@@ -13,9 +13,9 @@ open class CIColor(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("CIColor") }
 
-        fun colorWithCGColor(color: MemorySegment): MemorySegment {
+        fun colorWithCGColor(color: CGColorRef): MemorySegment {
             val sel = ObjCRuntime.sel("colorWithCGColor:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, color) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, color.segment) as MemorySegment
         }
 
         fun colorWithRed_green_blue_alpha(red: Double, green: Double, blue: Double, alpha: Double): MemorySegment {
@@ -28,14 +28,14 @@ open class CIColor(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, red, green, blue) as MemorySegment
         }
 
-        fun colorWithRed_green_blue_alpha_colorSpace(red: Double, green: Double, blue: Double, alpha: Double, colorSpace: MemorySegment): MemorySegment {
+        fun colorWithRed_green_blue_alpha_colorSpace(red: Double, green: Double, blue: Double, alpha: Double, colorSpace: CGColorSpaceRef): MemorySegment {
             val sel = ObjCRuntime.sel("colorWithRed:green:blue:alpha:colorSpace:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, red, green, blue, alpha, colorSpace) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, red, green, blue, alpha, colorSpace.segment) as MemorySegment
         }
 
-        fun colorWithRed_green_blue_colorSpace(red: Double, green: Double, blue: Double, colorSpace: MemorySegment): MemorySegment {
+        fun colorWithRed_green_blue_colorSpace(red: Double, green: Double, blue: Double, colorSpace: CGColorSpaceRef): MemorySegment {
             val sel = ObjCRuntime.sel("colorWithRed:green:blue:colorSpace:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, red, green, blue, colorSpace) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, red, green, blue, colorSpace.segment) as MemorySegment
         }
 
         fun colorWithString(representation: MemorySegment): MemorySegment {
@@ -98,9 +98,9 @@ open class CIColor(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithCGColor(color: MemorySegment): MemorySegment {
+    open fun initWithCGColor(color: CGColorRef): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGColor:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, color) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, color.segment) as MemorySegment
     }
 
     open fun initWithRed_green_blue_alpha(red: Double, green: Double, blue: Double, alpha: Double): MemorySegment {
@@ -113,14 +113,14 @@ open class CIColor(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, red, green, blue) as MemorySegment
     }
 
-    open fun initWithRed_green_blue_alpha_colorSpace(red: Double, green: Double, blue: Double, alpha: Double, colorSpace: MemorySegment): MemorySegment {
+    open fun initWithRed_green_blue_alpha_colorSpace(red: Double, green: Double, blue: Double, alpha: Double, colorSpace: CGColorSpaceRef): MemorySegment {
         val sel = ObjCRuntime.sel("initWithRed:green:blue:alpha:colorSpace:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, red, green, blue, alpha, colorSpace) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, red, green, blue, alpha, colorSpace.segment) as MemorySegment
     }
 
-    open fun initWithRed_green_blue_colorSpace(red: Double, green: Double, blue: Double, colorSpace: MemorySegment): MemorySegment {
+    open fun initWithRed_green_blue_colorSpace(red: Double, green: Double, blue: Double, colorSpace: CGColorSpaceRef): MemorySegment {
         val sel = ObjCRuntime.sel("initWithRed:green:blue:colorSpace:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, red, green, blue, colorSpace) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, red, green, blue, colorSpace.segment) as MemorySegment
     }
 
     // @property numberOfComponents
@@ -142,9 +142,9 @@ open class CIColor(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property colorSpace
-    open fun colorSpace(): MemorySegment {
+    open fun colorSpace(): CGColorSpaceRef {
         val sel = ObjCRuntime.sel("colorSpace")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return CGColorSpaceRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
     // @property red

@@ -25,13 +25,13 @@ open class NSTokenFieldCell(override val ptr: MemorySegment) : NSTextFieldCell(p
     }
 
     // @property tokenStyle
-    open fun tokenStyle(): MemorySegment {
+    open fun tokenStyle(): NSTokenStyle {
         val sel = ObjCRuntime.sel("tokenStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTokenStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setTokenStyle(value: MemorySegment) {
+    open fun setTokenStyle(value: NSTokenStyle) {
         val sel = ObjCRuntime.sel("setTokenStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property completionDelay

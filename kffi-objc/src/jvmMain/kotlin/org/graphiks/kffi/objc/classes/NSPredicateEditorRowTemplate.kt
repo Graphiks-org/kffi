@@ -42,14 +42,14 @@ open class NSPredicateEditorRowTemplate(override val ptr: MemorySegment) : NSObj
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, predicate) as MemorySegment
     }
 
-    open fun initWithLeftExpressions_rightExpressions_modifier_operators_options(leftExpressions: MemorySegment, rightExpressions: MemorySegment, modifier: MemorySegment, operators: MemorySegment, options: Long): MemorySegment {
+    open fun initWithLeftExpressions_rightExpressions_modifier_operators_options(leftExpressions: MemorySegment, rightExpressions: MemorySegment, modifier: NSComparisonPredicateModifier, operators: MemorySegment, options: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithLeftExpressions:rightExpressions:modifier:operators:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, leftExpressions, rightExpressions, modifier, operators, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, leftExpressions, rightExpressions, modifier.rawValue, operators, options) as MemorySegment
     }
 
-    open fun initWithLeftExpressions_rightExpressionAttributeType_modifier_operators_options(leftExpressions: MemorySegment, attributeType: MemorySegment, modifier: MemorySegment, operators: MemorySegment, options: Long): MemorySegment {
+    open fun initWithLeftExpressions_rightExpressionAttributeType_modifier_operators_options(leftExpressions: MemorySegment, attributeType: NSAttributeType, modifier: NSComparisonPredicateModifier, operators: MemorySegment, options: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithLeftExpressions:rightExpressionAttributeType:modifier:operators:options:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, leftExpressions, attributeType, modifier, operators, options) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, leftExpressions, attributeType.rawValue, modifier.rawValue, operators, options) as MemorySegment
     }
 
     open fun initWithCompoundTypes(compoundTypes: MemorySegment): MemorySegment {
@@ -79,15 +79,15 @@ open class NSPredicateEditorRowTemplate(override val ptr: MemorySegment) : NSObj
     }
 
     // @property rightExpressionAttributeType
-    open fun rightExpressionAttributeType(): MemorySegment {
+    open fun rightExpressionAttributeType(): NSAttributeType {
         val sel = ObjCRuntime.sel("rightExpressionAttributeType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSAttributeType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property modifier
-    open fun modifier(): MemorySegment {
+    open fun modifier(): NSComparisonPredicateModifier {
         val sel = ObjCRuntime.sel("modifier")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSComparisonPredicateModifier(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property operators

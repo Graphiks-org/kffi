@@ -14,9 +14,9 @@ open class NSHashTable(override val ptr: MemorySegment) : NSObject(ptr) {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSHashTable") }
 
         /** @return NSHashTable<ObjectType> * */
-        fun hashTableWithOptions(options: MemorySegment): MemorySegment {
+        fun hashTableWithOptions(options: NSPointerFunctionsOptions): MemorySegment {
             val sel = ObjCRuntime.sel("hashTableWithOptions:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, options) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, options.rawValue) as MemorySegment
         }
 
         fun hashTableWithWeakObjects(): MemorySegment {
@@ -32,9 +32,9 @@ open class NSHashTable(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithOptions_capacity(options: MemorySegment, initialCapacity: Long): MemorySegment {
+    open fun initWithOptions_capacity(options: NSPointerFunctionsOptions, initialCapacity: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithOptions:capacity:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options, initialCapacity) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options.rawValue, initialCapacity) as MemorySegment
     }
 
     open fun initWithPointerFunctions_capacity(functions: MemorySegment, initialCapacity: Long): MemorySegment {

@@ -107,15 +107,15 @@ interface NSBrowserDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'browser:canDragRowsWithIndexes:inColumn:withEvent:' not implemented")
 
     // @optional
-    fun browser_draggingImageForRowsWithIndexes_inColumn_withEvent_offset(browser: MemorySegment, rowIndexes: MemorySegment, column: Long, event: MemorySegment, dragImageOffset: MemorySegment): MemorySegment =
+    fun browser_draggingImageForRowsWithIndexes_inColumn_withEvent_offset(browser: MemorySegment, rowIndexes: MemorySegment, column: Long, event: MemorySegment, dragImageOffset: NSPointPointer): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'browser:draggingImageForRowsWithIndexes:inColumn:withEvent:offset:' not implemented")
 
     // @optional
-    fun browser_validateDrop_proposedRow_column_dropOperation(browser: MemorySegment, info: MemorySegment, row: MemorySegment, column: MemorySegment, dropOperation: MemorySegment): MemorySegment =
+    fun browser_validateDrop_proposedRow_column_dropOperation(browser: MemorySegment, info: MemorySegment, row: MemorySegment, column: MemorySegment, dropOperation: MemorySegment): NSDragOperation =
         throw UnsupportedOperationException("Optional ObjC method 'browser:validateDrop:proposedRow:column:dropOperation:' not implemented")
 
     // @optional
-    fun browser_acceptDrop_atRow_column_dropOperation(browser: MemorySegment, info: MemorySegment, row: Long, column: Long, dropOperation: MemorySegment): Boolean =
+    fun browser_acceptDrop_atRow_column_dropOperation(browser: MemorySegment, info: MemorySegment, row: Long, column: Long, dropOperation: NSBrowserDropOperation): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'browser:acceptDrop:atRow:column:dropOperation:' not implemented")
 
     // @optional

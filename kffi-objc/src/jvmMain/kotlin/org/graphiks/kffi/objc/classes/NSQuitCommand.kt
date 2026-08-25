@@ -15,9 +15,9 @@ open class NSQuitCommand(override val ptr: MemorySegment) : NSScriptCommand(ptr)
     }
 
     // @property saveOptions
-    open fun saveOptions(): MemorySegment {
+    open fun saveOptions(): NSSaveOptions {
         val sel = ObjCRuntime.sel("saveOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSSaveOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
 }

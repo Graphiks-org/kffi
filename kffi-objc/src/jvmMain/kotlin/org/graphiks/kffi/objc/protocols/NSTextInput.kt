@@ -12,7 +12,7 @@ interface NSTextInput {
 
     fun doCommandBySelector(selector: MemorySegment): Unit
 
-    fun setMarkedText_selectedRange(string: MemorySegment, selRange: MemorySegment): Unit
+    fun setMarkedText_selectedRange(string: MemorySegment, selRange: NSRange): Unit
 
     fun unmarkText(): Unit
 
@@ -20,15 +20,15 @@ interface NSTextInput {
 
     fun conversationIdentifier(): Long
 
-    fun attributedSubstringFromRange(range: MemorySegment): MemorySegment
+    fun attributedSubstringFromRange(range: NSRange): MemorySegment
 
-    fun markedRange(): MemorySegment
+    fun markedRange(): NSRange
 
-    fun selectedRange(): MemorySegment
+    fun selectedRange(): NSRange
 
-    fun firstRectForCharacterRange(range: MemorySegment): MemorySegment
+    fun firstRectForCharacterRange(range: NSRange): NSRect
 
-    fun characterIndexForPoint(point: MemorySegment): Long
+    fun characterIndexForPoint(point: NSPoint): Long
 
     fun validAttributesForMarkedText(): MemorySegment
 

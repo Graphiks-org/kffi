@@ -13,13 +13,13 @@ open class NSRegularExpression(override val ptr: MemorySegment) : NSObject(ptr) 
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSRegularExpression") }
 
-        fun regularExpressionWithPattern_options_error(pattern: MemorySegment, options: MemorySegment, error: MemorySegment): MemorySegment {
+        fun regularExpressionWithPattern_options_error(pattern: MemorySegment, options: NSRegularExpressionOptions, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("regularExpressionWithPattern:options:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, pattern, options, error) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, pattern, options.rawValue, error) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-        fun regularExpressionWithPattern_options_error(pattern: String, options: MemorySegment, error: MemorySegment): MemorySegment = regularExpressionWithPattern_options_error(ObjCRuntime.newNSString(Arena.global(), pattern), options, error)
+        fun regularExpressionWithPattern_options_error(pattern: String, options: NSRegularExpressionOptions, error: MemorySegment): MemorySegment = regularExpressionWithPattern_options_error(ObjCRuntime.newNSString(Arena.global(), pattern), options, error)
 
         fun escapedPatternForString(string: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("escapedPatternForString:")
@@ -37,13 +37,13 @@ open class NSRegularExpression(override val ptr: MemorySegment) : NSObject(ptr) 
 
     }
 
-    open fun initWithPattern_options_error(pattern: MemorySegment, options: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun initWithPattern_options_error(pattern: MemorySegment, options: NSRegularExpressionOptions, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithPattern:options:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, pattern, options, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, pattern, options.rawValue, error) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
-    fun initWithPattern_options_error(pattern: String, options: MemorySegment, error: MemorySegment): MemorySegment = initWithPattern_options_error(ObjCRuntime.newNSString(Arena.global(), pattern), options, error)
+    fun initWithPattern_options_error(pattern: String, options: NSRegularExpressionOptions, error: MemorySegment): MemorySegment = initWithPattern_options_error(ObjCRuntime.newNSString(Arena.global(), pattern), options, error)
 
     // @property pattern
     open fun pattern(): MemorySegment {
@@ -55,9 +55,9 @@ open class NSRegularExpression(override val ptr: MemorySegment) : NSObject(ptr) 
     open fun patternAsString(): String = ObjCRuntime.toJavaString(pattern())
 
     // @property options
-    open fun options(): MemorySegment {
+    open fun options(): NSRegularExpressionOptions {
         val sel = ObjCRuntime.sel("options")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRegularExpressionOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property numberOfCaptureGroups
@@ -76,42 +76,42 @@ open class NSRegularExpression(override val ptr: MemorySegment) : NSObject(ptr) 
 
 // ── Category: NSMatching on NSRegularExpression ─────────────────────────────────────────
 
-fun NSRegularExpression.enumerateMatchesInString_options_range_usingBlock(string: MemorySegment, options: MemorySegment, range: MemorySegment, block: MemorySegment): Unit {
+fun NSRegularExpression.enumerateMatchesInString_options_range_usingBlock(string: MemorySegment, options: NSMatchingOptions, range: NSRange, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateMatchesInString:options:range:usingBlock:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, string, options, range, block)
+    ObjCRuntime.msgSend(null, this.ptr, sel, string, options.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), block)
 }
 
 /** @return NSArray<NSTextCheckingResult *> * */
-fun NSRegularExpression.matchesInString_options_range(string: MemorySegment, options: MemorySegment, range: MemorySegment): MemorySegment {
+fun NSRegularExpression.matchesInString_options_range(string: MemorySegment, options: NSMatchingOptions, range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("matchesInString:options:range:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string, options, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string, options.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
-fun NSRegularExpression.numberOfMatchesInString_options_range(string: MemorySegment, options: MemorySegment, range: MemorySegment): Long {
+fun NSRegularExpression.numberOfMatchesInString_options_range(string: MemorySegment, options: NSMatchingOptions, range: NSRange): Long {
     val sel = ObjCRuntime.sel("numberOfMatchesInString:options:range:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string, options, range) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string, options.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Long
 }
 
-fun NSRegularExpression.firstMatchInString_options_range(string: MemorySegment, options: MemorySegment, range: MemorySegment): MemorySegment {
+fun NSRegularExpression.firstMatchInString_options_range(string: MemorySegment, options: NSMatchingOptions, range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("firstMatchInString:options:range:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string, options, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string, options.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
-fun NSRegularExpression.rangeOfFirstMatchInString_options_range(string: MemorySegment, options: MemorySegment, range: MemorySegment): MemorySegment {
+fun NSRegularExpression.rangeOfFirstMatchInString_options_range(string: MemorySegment, options: NSMatchingOptions, range: NSRange): NSRange {
     val sel = ObjCRuntime.sel("rangeOfFirstMatchInString:options:range:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, string, options, range) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, string, options.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)))
 }
 
 // ── Category: NSReplacement on NSRegularExpression ─────────────────────────────────────────
 
-fun NSRegularExpression.stringByReplacingMatchesInString_options_range_withTemplate(string: MemorySegment, options: MemorySegment, range: MemorySegment, templ: MemorySegment): MemorySegment {
+fun NSRegularExpression.stringByReplacingMatchesInString_options_range_withTemplate(string: MemorySegment, options: NSMatchingOptions, range: NSRange, templ: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringByReplacingMatchesInString:options:range:withTemplate:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string, options, range, templ) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, string, options.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), templ) as MemorySegment
 }
 
-fun NSRegularExpression.replaceMatchesInString_options_range_withTemplate(string: MemorySegment, options: MemorySegment, range: MemorySegment, templ: MemorySegment): Long {
+fun NSRegularExpression.replaceMatchesInString_options_range_withTemplate(string: MemorySegment, options: NSMatchingOptions, range: NSRange, templ: MemorySegment): Long {
     val sel = ObjCRuntime.sel("replaceMatchesInString:options:range:withTemplate:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string, options, range, templ) as Long
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string, options.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), templ) as Long
 }
 
 fun NSRegularExpression.replacementStringForResult_inString_offset_template(result: MemorySegment, string: MemorySegment, offset: Long, templ: MemorySegment): MemorySegment {

@@ -14,15 +14,15 @@ interface NSTextViewDelegate : NSTextDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'textView:clickedOnLink:atIndex:' not implemented")
 
     // @optional
-    fun textView_clickedOnCell_inRect_atIndex(textView: MemorySegment, cell: MemorySegment, cellFrame: MemorySegment, charIndex: Long): Unit =
+    fun textView_clickedOnCell_inRect_atIndex(textView: MemorySegment, cell: MemorySegment, cellFrame: NSRect, charIndex: Long): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'textView:clickedOnCell:inRect:atIndex:' not implemented")
 
     // @optional
-    fun textView_doubleClickedOnCell_inRect_atIndex(textView: MemorySegment, cell: MemorySegment, cellFrame: MemorySegment, charIndex: Long): Unit =
+    fun textView_doubleClickedOnCell_inRect_atIndex(textView: MemorySegment, cell: MemorySegment, cellFrame: NSRect, charIndex: Long): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'textView:doubleClickedOnCell:inRect:atIndex:' not implemented")
 
     // @optional
-    fun textView_draggedCell_inRect_event_atIndex(view: MemorySegment, cell: MemorySegment, rect: MemorySegment, event: MemorySegment, charIndex: Long): Unit =
+    fun textView_draggedCell_inRect_event_atIndex(view: MemorySegment, cell: MemorySegment, rect: NSRect, event: MemorySegment, charIndex: Long): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'textView:draggedCell:inRect:event:atIndex:' not implemented")
 
     /** @return NSArray<NSPasteboardType> * */
@@ -35,7 +35,7 @@ interface NSTextViewDelegate : NSTextDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'textView:writeCell:atIndex:toPasteboard:type:' not implemented")
 
     // @optional
-    fun textView_willChangeSelectionFromCharacterRange_toCharacterRange(textView: MemorySegment, oldSelectedCharRange: MemorySegment, newSelectedCharRange: MemorySegment): MemorySegment =
+    fun textView_willChangeSelectionFromCharacterRange_toCharacterRange(textView: MemorySegment, oldSelectedCharRange: NSRange, newSelectedCharRange: NSRange): NSRange =
         throw UnsupportedOperationException("Optional ObjC method 'textView:willChangeSelectionFromCharacterRange:toCharacterRange:' not implemented")
 
     /** @return NSArray<NSValue *> * */
@@ -66,11 +66,11 @@ interface NSTextViewDelegate : NSTextDelegate {
 
     /** @return NSArray<NSString *> * */
     // @optional
-    fun textView_completions_forPartialWordRange_indexOfSelectedItem(textView: MemorySegment, words: MemorySegment, charRange: MemorySegment, index: MemorySegment): MemorySegment =
+    fun textView_completions_forPartialWordRange_indexOfSelectedItem(textView: MemorySegment, words: MemorySegment, charRange: NSRange, index: MemorySegment): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'textView:completions:forPartialWordRange:indexOfSelectedItem:' not implemented")
 
     // @optional
-    fun textView_shouldChangeTextInRange_replacementString(textView: MemorySegment, affectedCharRange: MemorySegment, replacementString: MemorySegment): Boolean =
+    fun textView_shouldChangeTextInRange_replacementString(textView: MemorySegment, affectedCharRange: NSRange, replacementString: MemorySegment): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'textView:shouldChangeTextInRange:replacementString:' not implemented")
 
     // @optional
@@ -78,7 +78,7 @@ interface NSTextViewDelegate : NSTextDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'textView:doCommandBySelector:' not implemented")
 
     // @optional
-    fun textView_shouldSetSpellingState_range(textView: MemorySegment, value: Long, affectedCharRange: MemorySegment): Long =
+    fun textView_shouldSetSpellingState_range(textView: MemorySegment, value: Long, affectedCharRange: NSRange): Long =
         throw UnsupportedOperationException("Optional ObjC method 'textView:shouldSetSpellingState:range:' not implemented")
 
     // @optional
@@ -87,12 +87,12 @@ interface NSTextViewDelegate : NSTextDelegate {
 
     /** @return NSDictionary<NSTextCheckingOptionKey,id> * */
     // @optional
-    fun textView_willCheckTextInRange_options_types(view: MemorySegment, range: MemorySegment, options: MemorySegment, checkingTypes: MemorySegment): MemorySegment =
+    fun textView_willCheckTextInRange_options_types(view: MemorySegment, range: NSRange, options: MemorySegment, checkingTypes: MemorySegment): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'textView:willCheckTextInRange:options:types:' not implemented")
 
     /** @return NSArray<NSTextCheckingResult *> * */
     // @optional
-    fun textView_didCheckTextInRange_types_options_results_orthography_wordCount(view: MemorySegment, range: MemorySegment, checkingTypes: Long, options: MemorySegment, results: MemorySegment, orthography: MemorySegment, wordCount: Long): MemorySegment =
+    fun textView_didCheckTextInRange_types_options_results_orthography_wordCount(view: MemorySegment, range: NSRange, checkingTypes: Long, options: MemorySegment, results: MemorySegment, orthography: MemorySegment, wordCount: Long): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'textView:didCheckTextInRange:types:options:results:orthography:wordCount:' not implemented")
 
     // @optional
@@ -113,12 +113,12 @@ interface NSTextViewDelegate : NSTextDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'textView:shouldUpdateTouchBarItemIdentifiers:' not implemented")
 
     // @optional
-    fun textView_candidatesForSelectedRange(textView: MemorySegment, selectedRange: MemorySegment): MemorySegment =
+    fun textView_candidatesForSelectedRange(textView: MemorySegment, selectedRange: NSRange): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'textView:candidatesForSelectedRange:' not implemented")
 
     /** @return NSArray<NSTextCheckingResult *> * */
     // @optional
-    fun textView_candidates_forSelectedRange(textView: MemorySegment, candidates: MemorySegment, selectedRange: MemorySegment): MemorySegment =
+    fun textView_candidates_forSelectedRange(textView: MemorySegment, candidates: MemorySegment, selectedRange: NSRange): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'textView:candidates:forSelectedRange:' not implemented")
 
     // @optional
@@ -135,7 +135,7 @@ interface NSTextViewDelegate : NSTextDelegate {
 
     /** @return NSArray<NSValue *> * */
     // @optional
-    fun textView_writingToolsIgnoredRangesInEnclosingRange(textView: MemorySegment, enclosingRange: MemorySegment): MemorySegment =
+    fun textView_writingToolsIgnoredRangesInEnclosingRange(textView: MemorySegment, enclosingRange: NSRange): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'textView:writingToolsIgnoredRangesInEnclosingRange:' not implemented")
 
     // @optional
@@ -143,15 +143,15 @@ interface NSTextViewDelegate : NSTextDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'textView:clickedOnLink:' not implemented")
 
     // @optional
-    fun textView_clickedOnCell_inRect(textView: MemorySegment, cell: MemorySegment, cellFrame: MemorySegment): Unit =
+    fun textView_clickedOnCell_inRect(textView: MemorySegment, cell: MemorySegment, cellFrame: NSRect): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'textView:clickedOnCell:inRect:' not implemented")
 
     // @optional
-    fun textView_doubleClickedOnCell_inRect(textView: MemorySegment, cell: MemorySegment, cellFrame: MemorySegment): Unit =
+    fun textView_doubleClickedOnCell_inRect(textView: MemorySegment, cell: MemorySegment, cellFrame: NSRect): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'textView:doubleClickedOnCell:inRect:' not implemented")
 
     // @optional
-    fun textView_draggedCell_inRect_event(view: MemorySegment, cell: MemorySegment, rect: MemorySegment, event: MemorySegment): Unit =
+    fun textView_draggedCell_inRect_event(view: MemorySegment, cell: MemorySegment, rect: NSRect, event: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'textView:draggedCell:inRect:event:' not implemented")
 
 }

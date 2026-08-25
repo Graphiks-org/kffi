@@ -14,9 +14,9 @@ open class NSControl(override val ptr: MemorySegment) : NSView(ptr) {
 
     }
 
-    override fun initWithFrame(frameRect: MemorySegment): MemorySegment {
+    override fun initWithFrame(frameRect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout)) as MemorySegment
     }
 
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -24,9 +24,9 @@ open class NSControl(override val ptr: MemorySegment) : NSView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun sizeThatFits(size: MemorySegment): MemorySegment {
+    open fun sizeThatFits(size: NSSize): NSSize {
         val sel = ObjCRuntime.sel("sizeThatFits:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel, ObjCRuntime.ObjCStructArg(size, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"))) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout)))
     }
 
     open fun sizeToFit(): Unit {
@@ -34,9 +34,9 @@ open class NSControl(override val ptr: MemorySegment) : NSView(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun sendActionOn(mask: MemorySegment): Long {
+    open fun sendActionOn(mask: NSEventMask): Long {
         val sel = ObjCRuntime.sel("sendActionOn:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, mask) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, mask.rawValue) as Long
     }
 
     open fun sendAction_to(action: MemorySegment, target: MemorySegment): Boolean {
@@ -79,14 +79,14 @@ open class NSControl(override val ptr: MemorySegment) : NSView(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
-    open fun expansionFrameWithFrame(contentFrame: MemorySegment): MemorySegment {
+    open fun expansionFrameWithFrame(contentFrame: NSRect): NSRect {
         val sel = ObjCRuntime.sel("expansionFrameWithFrame:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel, ObjCRuntime.ObjCStructArg(contentFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(contentFrame.segment, NSRect.layout)))
     }
 
-    open fun drawWithExpansionFrame_inView(contentFrame: MemorySegment, view: MemorySegment): Unit {
+    open fun drawWithExpansionFrame_inView(contentFrame: NSRect, view: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawWithExpansionFrame:inView:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(contentFrame, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), view)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(contentFrame.segment, NSRect.layout), view)
     }
 
     // @property target
@@ -170,13 +170,13 @@ open class NSControl(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property controlSize
-    open fun controlSize(): MemorySegment {
+    open fun controlSize(): NSControlSize {
         val sel = ObjCRuntime.sel("controlSize")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSControlSize(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setControlSize(value: MemorySegment) {
+    open fun setControlSize(value: NSControlSize) {
         val sel = ObjCRuntime.sel("setControlSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property formatter
@@ -286,33 +286,33 @@ open class NSControl(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property lineBreakMode
-    open fun lineBreakMode(): MemorySegment {
+    open fun lineBreakMode(): NSLineBreakMode {
         val sel = ObjCRuntime.sel("lineBreakMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSLineBreakMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setLineBreakMode(value: MemorySegment) {
+    open fun setLineBreakMode(value: NSLineBreakMode) {
         val sel = ObjCRuntime.sel("setLineBreakMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property alignment
-    open fun alignment(): MemorySegment {
+    open fun alignment(): NSTextAlignment {
         val sel = ObjCRuntime.sel("alignment")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTextAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setAlignment(value: MemorySegment) {
+    open fun setAlignment(value: NSTextAlignment) {
         val sel = ObjCRuntime.sel("setAlignment:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property baseWritingDirection
-    open fun baseWritingDirection(): MemorySegment {
+    open fun baseWritingDirection(): NSWritingDirection {
         val sel = ObjCRuntime.sel("baseWritingDirection")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSWritingDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBaseWritingDirection(value: MemorySegment) {
+    open fun setBaseWritingDirection(value: NSWritingDirection) {
         val sel = ObjCRuntime.sel("setBaseWritingDirection:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowsExpansionToolTips
@@ -344,14 +344,14 @@ fun NSControl.validateEditing(): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
-fun NSControl.editWithFrame_editor_delegate_event(rect: MemorySegment, textObj: MemorySegment, delegate: MemorySegment, event: MemorySegment): Unit {
+fun NSControl.editWithFrame_editor_delegate_event(rect: NSRect, textObj: MemorySegment, delegate: MemorySegment, event: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("editWithFrame:editor:delegate:event:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect, textObj, delegate, event)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), textObj, delegate, event)
 }
 
-fun NSControl.selectWithFrame_editor_delegate_start_length(rect: MemorySegment, textObj: MemorySegment, delegate: MemorySegment, selStart: Long, selLength: Long): Unit {
+fun NSControl.selectWithFrame_editor_delegate_start_length(rect: NSRect, textObj: MemorySegment, delegate: MemorySegment, selStart: Long, selLength: Long): Unit {
     val sel = ObjCRuntime.sel("selectWithFrame:editor:delegate:start:length:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, rect, textObj, delegate, selStart, selLength)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), textObj, delegate, selStart, selLength)
 }
 
 fun NSControl.endEditing(textObj: MemorySegment): Unit {

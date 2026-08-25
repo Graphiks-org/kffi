@@ -46,7 +46,7 @@ interface NSTokenFieldCellDelegate {
         throw UnsupportedOperationException("Optional ObjC method 'tokenFieldCell:hasMenuForRepresentedObject:' not implemented")
 
     // @optional
-    fun tokenFieldCell_styleForRepresentedObject(tokenFieldCell: MemorySegment, representedObject: MemorySegment): MemorySegment =
+    fun tokenFieldCell_styleForRepresentedObject(tokenFieldCell: MemorySegment, representedObject: MemorySegment): NSTokenStyle =
         throw UnsupportedOperationException("Optional ObjC method 'tokenFieldCell:styleForRepresentedObject:' not implemented")
 
 }

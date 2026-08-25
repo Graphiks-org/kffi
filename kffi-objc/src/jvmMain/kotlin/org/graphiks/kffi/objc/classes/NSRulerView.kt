@@ -27,9 +27,9 @@ open class NSRulerView(override val ptr: MemorySegment) : NSView(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    open fun initWithScrollView_orientation(scrollView: MemorySegment, orientation: MemorySegment): MemorySegment {
+    open fun initWithScrollView_orientation(scrollView: MemorySegment, orientation: NSRulerOrientation): MemorySegment {
         val sel = ObjCRuntime.sel("initWithScrollView:orientation:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, scrollView, orientation) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, scrollView, orientation.rawValue) as MemorySegment
     }
 
     open fun addMarker(marker: MemorySegment): Unit {
@@ -57,14 +57,14 @@ open class NSRulerView(override val ptr: MemorySegment) : NSView(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun drawHashMarksAndLabelsInRect(rect: MemorySegment): Unit {
+    open fun drawHashMarksAndLabelsInRect(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawHashMarksAndLabelsInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
-    open fun drawMarkersInRect(rect: MemorySegment): Unit {
+    open fun drawMarkersInRect(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawMarkersInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
     // @property scrollView
@@ -78,13 +78,13 @@ open class NSRulerView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property orientation
-    open fun orientation(): MemorySegment {
+    open fun orientation(): NSRulerOrientation {
         val sel = ObjCRuntime.sel("orientation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSRulerOrientation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setOrientation(value: MemorySegment) {
+    open fun setOrientation(value: NSRulerOrientation) {
         val sel = ObjCRuntime.sel("setOrientation:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property baselineLocation

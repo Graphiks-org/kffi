@@ -45,13 +45,13 @@ open class NSGlassEffectView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property style
-    open fun style(): MemorySegment {
+    open fun style(): NSGlassEffectViewStyle {
         val sel = ObjCRuntime.sel("style")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSGlassEffectViewStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setStyle(value: MemorySegment) {
+    open fun setStyle(value: NSGlassEffectViewStyle) {
         val sel = ObjCRuntime.sel("setStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

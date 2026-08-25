@@ -52,9 +52,9 @@ fun NSGlyphInfo.characterIdentifier(): Long {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
-fun NSGlyphInfo.characterCollection(): MemorySegment {
+fun NSGlyphInfo.characterCollection(): NSCharacterCollection {
     val sel = ObjCRuntime.sel("characterCollection")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSCharacterCollection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
 // Class method: +[NSGlyphInfo glyphInfoWithGlyphName:forFont:baseString:]
@@ -72,8 +72,8 @@ fun NSGlyphInfo_glyphInfoWithGlyph_forFont_baseString(glyph: Int, font: MemorySe
 }
 
 // Class method: +[NSGlyphInfo glyphInfoWithCharacterIdentifier:collection:baseString:]
-fun NSGlyphInfo_glyphInfoWithCharacterIdentifier_collection_baseString(cid: Long, characterCollection: MemorySegment, string: MemorySegment): MemorySegment {
+fun NSGlyphInfo_glyphInfoWithCharacterIdentifier_collection_baseString(cid: Long, characterCollection: NSCharacterCollection, string: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("glyphInfoWithCharacterIdentifier:collection:baseString:")
     val cls = ObjCRuntime.getClass("NSGlyphInfo")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, cid, characterCollection, string) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, cid, characterCollection.rawValue, string) as MemorySegment
 }

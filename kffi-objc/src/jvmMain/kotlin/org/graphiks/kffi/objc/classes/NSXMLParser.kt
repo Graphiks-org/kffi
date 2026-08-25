@@ -71,13 +71,13 @@ open class NSXMLParser(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property externalEntityResolvingPolicy
-    open fun externalEntityResolvingPolicy(): MemorySegment {
+    open fun externalEntityResolvingPolicy(): NSXMLParserExternalEntityResolvingPolicy {
         val sel = ObjCRuntime.sel("externalEntityResolvingPolicy")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSXMLParserExternalEntityResolvingPolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setExternalEntityResolvingPolicy(value: MemorySegment) {
+    open fun setExternalEntityResolvingPolicy(value: NSXMLParserExternalEntityResolvingPolicy) {
         val sel = ObjCRuntime.sel("setExternalEntityResolvingPolicy:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowedExternalEntityURLs

@@ -84,9 +84,9 @@ open class NSURL(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `data`, baseURL) as MemorySegment
         }
 
-        fun URLByResolvingBookmarkData_options_relativeToURL_bookmarkDataIsStale_error(bookmarkData: MemorySegment, options: MemorySegment, relativeURL: MemorySegment, isStale: MemorySegment, error: MemorySegment): MemorySegment {
+        fun URLByResolvingBookmarkData_options_relativeToURL_bookmarkDataIsStale_error(bookmarkData: MemorySegment, options: NSURLBookmarkResolutionOptions, relativeURL: MemorySegment, isStale: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, bookmarkData, options, relativeURL, isStale, error) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, bookmarkData, options.rawValue, relativeURL, isStale, error) as MemorySegment
         }
 
         /** @return NSDictionary<NSURLResourceKey,id> * */
@@ -105,9 +105,9 @@ open class NSURL(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, bookmarkFileURL, error) as MemorySegment
         }
 
-        fun URLByResolvingAliasFileAtURL_options_error(url: MemorySegment, options: MemorySegment, error: MemorySegment): MemorySegment {
+        fun URLByResolvingAliasFileAtURL_options_error(url: MemorySegment, options: NSURLBookmarkResolutionOptions, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("URLByResolvingAliasFileAtURL:options:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, url, options, error) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, url, options.rawValue, error) as MemorySegment
         }
 
     }
@@ -242,14 +242,14 @@ open class NSURL(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value, key)
     }
 
-    open fun bookmarkDataWithOptions_includingResourceValuesForKeys_relativeToURL_error(options: MemorySegment, keys: MemorySegment, relativeURL: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun bookmarkDataWithOptions_includingResourceValuesForKeys_relativeToURL_error(options: NSURLBookmarkCreationOptions, keys: MemorySegment, relativeURL: MemorySegment, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options, keys, relativeURL, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, options.rawValue, keys, relativeURL, error) as MemorySegment
     }
 
-    open fun initByResolvingBookmarkData_options_relativeToURL_bookmarkDataIsStale_error(bookmarkData: MemorySegment, options: MemorySegment, relativeURL: MemorySegment, isStale: MemorySegment, error: MemorySegment): MemorySegment {
+    open fun initByResolvingBookmarkData_options_relativeToURL_bookmarkDataIsStale_error(bookmarkData: MemorySegment, options: NSURLBookmarkResolutionOptions, relativeURL: MemorySegment, isStale: MemorySegment, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, bookmarkData, options, relativeURL, isStale, error) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, bookmarkData, options.rawValue, relativeURL, isStale, error) as MemorySegment
     }
 
     open fun startAccessingSecurityScopedResource(): Boolean {

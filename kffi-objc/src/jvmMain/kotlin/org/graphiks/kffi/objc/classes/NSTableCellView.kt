@@ -45,23 +45,23 @@ open class NSTableCellView(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
     // @property backgroundStyle
-    open fun backgroundStyle(): MemorySegment {
+    open fun backgroundStyle(): NSBackgroundStyle {
         val sel = ObjCRuntime.sel("backgroundStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSBackgroundStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setBackgroundStyle(value: MemorySegment) {
+    open fun setBackgroundStyle(value: NSBackgroundStyle) {
         val sel = ObjCRuntime.sel("setBackgroundStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property rowSizeStyle
-    open fun rowSizeStyle(): MemorySegment {
+    open fun rowSizeStyle(): NSTableViewRowSizeStyle {
         val sel = ObjCRuntime.sel("rowSizeStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableViewRowSizeStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setRowSizeStyle(value: MemorySegment) {
+    open fun setRowSizeStyle(value: NSTableViewRowSizeStyle) {
         val sel = ObjCRuntime.sel("setRowSizeStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property draggingImageComponents

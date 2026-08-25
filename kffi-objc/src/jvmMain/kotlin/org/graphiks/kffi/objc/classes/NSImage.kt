@@ -49,9 +49,9 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
         fun imageWithSymbolName_bundle_variableValue(name: String, bundle: MemorySegment, value: Double): MemorySegment = imageWithSymbolName_bundle_variableValue(ObjCRuntime.newNSString(Arena.global(), name), bundle, value)
 
-        fun imageWithSize_flipped_drawingHandler(size: MemorySegment, drawingHandlerShouldBeCalledWithFlippedContext: Boolean, drawingHandler: MemorySegment): MemorySegment {
+        fun imageWithSize_flipped_drawingHandler(size: NSSize, drawingHandlerShouldBeCalledWithFlippedContext: Boolean, drawingHandler: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("imageWithSize:flipped:drawingHandler:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(size, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")), drawingHandlerShouldBeCalledWithFlippedContext, drawingHandler) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout), drawingHandlerShouldBeCalledWithFlippedContext, drawingHandler) as MemorySegment
         }
 
         fun canInitWithPasteboard(pasteboard: MemorySegment): Boolean {
@@ -73,9 +73,9 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    open fun initWithSize(size: MemorySegment): MemorySegment {
+    open fun initWithSize(size: NSSize): MemorySegment {
         val sel = ObjCRuntime.sel("initWithSize:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(size, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout)) as MemorySegment
     }
 
     open fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -134,29 +134,29 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    open fun drawAtPoint_fromRect_operation_fraction(point: MemorySegment, fromRect: MemorySegment, op: MemorySegment, delta: Double): Unit {
+    open fun drawAtPoint_fromRect_operation_fraction(point: NSPoint, fromRect: NSRect, op: NSCompositingOperation, delta: Double): Unit {
         val sel = ObjCRuntime.sel("drawAtPoint:fromRect:operation:fraction:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint")), ObjCRuntime.ObjCStructArg(fromRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), op, delta)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(fromRect.segment, NSRect.layout), op.rawValue, delta)
     }
 
-    open fun drawInRect_fromRect_operation_fraction(rect: MemorySegment, fromRect: MemorySegment, op: MemorySegment, delta: Double): Unit {
+    open fun drawInRect_fromRect_operation_fraction(rect: NSRect, fromRect: NSRect, op: NSCompositingOperation, delta: Double): Unit {
         val sel = ObjCRuntime.sel("drawInRect:fromRect:operation:fraction:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), ObjCRuntime.ObjCStructArg(fromRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), op, delta)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), ObjCRuntime.ObjCStructArg(fromRect.segment, NSRect.layout), op.rawValue, delta)
     }
 
-    open fun drawInRect_fromRect_operation_fraction_respectFlipped_hints(dstSpacePortionRect: MemorySegment, srcSpacePortionRect: MemorySegment, op: MemorySegment, requestedAlpha: Double, respectContextIsFlipped: Boolean, hints: MemorySegment): Unit {
+    open fun drawInRect_fromRect_operation_fraction_respectFlipped_hints(dstSpacePortionRect: NSRect, srcSpacePortionRect: NSRect, op: NSCompositingOperation, requestedAlpha: Double, respectContextIsFlipped: Boolean, hints: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawInRect:fromRect:operation:fraction:respectFlipped:hints:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dstSpacePortionRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), ObjCRuntime.ObjCStructArg(srcSpacePortionRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), op, requestedAlpha, respectContextIsFlipped, hints)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(dstSpacePortionRect.segment, NSRect.layout), ObjCRuntime.ObjCStructArg(srcSpacePortionRect.segment, NSRect.layout), op.rawValue, requestedAlpha, respectContextIsFlipped, hints)
     }
 
-    open fun drawRepresentation_inRect(imageRep: MemorySegment, rect: MemorySegment): Boolean {
+    open fun drawRepresentation_inRect(imageRep: MemorySegment, rect: NSRect): Boolean {
         val sel = ObjCRuntime.sel("drawRepresentation:inRect:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, imageRep, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, imageRep, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as Boolean
     }
 
-    open fun drawInRect(rect: MemorySegment): Unit {
+    open fun drawInRect(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
     open fun recache(): Unit {
@@ -164,9 +164,9 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun TIFFRepresentationUsingCompression_factor(comp: MemorySegment, factor: Float): MemorySegment {
+    open fun TIFFRepresentationUsingCompression_factor(comp: NSTIFFCompression, factor: Float): MemorySegment {
         val sel = ObjCRuntime.sel("TIFFRepresentationUsingCompression:factor:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, comp, factor) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, comp.rawValue, factor) as MemorySegment
     }
 
     open fun addRepresentations(imageReps: MemorySegment): Unit {
@@ -184,24 +184,24 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, imageRep)
     }
 
-    open fun initWithCGImage_size(cgImage: MemorySegment, size: MemorySegment): MemorySegment {
+    open fun initWithCGImage_size(cgImage: CGImageRef, size: NSSize): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCGImage:size:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, cgImage, ObjCRuntime.ObjCStructArg(size, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, cgImage.segment, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout)) as MemorySegment
     }
 
-    open fun CGImageForProposedRect_context_hints(proposedDestRect: MemorySegment, referenceContext: MemorySegment, hints: MemorySegment): MemorySegment {
+    open fun CGImageForProposedRect_context_hints(proposedDestRect: NSRectPointer, referenceContext: MemorySegment, hints: MemorySegment): CGImageRef {
         val sel = ObjCRuntime.sel("CGImageForProposedRect:context:hints:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, proposedDestRect, referenceContext, hints) as MemorySegment
+        return CGImageRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, proposedDestRect.segment, referenceContext, hints) as MemorySegment)
     }
 
-    open fun bestRepresentationForRect_context_hints(rect: MemorySegment, referenceContext: MemorySegment, hints: MemorySegment): MemorySegment {
+    open fun bestRepresentationForRect_context_hints(rect: NSRect, referenceContext: MemorySegment, hints: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("bestRepresentationForRect:context:hints:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), referenceContext, hints) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), referenceContext, hints) as MemorySegment
     }
 
-    open fun hitTestRect_withImageDestinationRect_context_hints_flipped(testRectDestSpace: MemorySegment, imageRectDestSpace: MemorySegment, context: MemorySegment, hints: MemorySegment, flipped: Boolean): Boolean {
+    open fun hitTestRect_withImageDestinationRect_context_hints_flipped(testRectDestSpace: NSRect, imageRectDestSpace: NSRect, context: MemorySegment, hints: MemorySegment, flipped: Boolean): Boolean {
         val sel = ObjCRuntime.sel("hitTestRect:withImageDestinationRect:context:hints:flipped:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(testRectDestSpace, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), ObjCRuntime.ObjCStructArg(imageRectDestSpace, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), context, hints, flipped) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(testRectDestSpace.segment, NSRect.layout), ObjCRuntime.ObjCStructArg(imageRectDestSpace.segment, NSRect.layout), context, hints, flipped) as Boolean
     }
 
     open fun recommendedLayerContentsScale(preferredContentsScale: Double): Double {
@@ -225,13 +225,13 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property size
-    open fun size(): MemorySegment {
+    open fun size(): NSSize {
         val sel = ObjCRuntime.sel("size")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setSize(value: MemorySegment) {
+    open fun setSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property backgroundColor
@@ -329,23 +329,23 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property cacheMode
-    open fun cacheMode(): MemorySegment {
+    open fun cacheMode(): NSImageCacheMode {
         val sel = ObjCRuntime.sel("cacheMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageCacheMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setCacheMode(value: MemorySegment) {
+    open fun setCacheMode(value: NSImageCacheMode) {
         val sel = ObjCRuntime.sel("setCacheMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property alignmentRect
-    open fun alignmentRect(): MemorySegment {
+    open fun alignmentRect(): NSRect {
         val sel = ObjCRuntime.sel("alignmentRect")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"), ptr, sel) as MemorySegment
+        return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
-    open fun setAlignmentRect(value: MemorySegment) {
+    open fun setAlignmentRect(value: NSRect) {
         val sel = ObjCRuntime.sel("setAlignmentRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSRect.layout))
     }
 
     // @property template
@@ -375,23 +375,23 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun setAccessibilityDescription(value: String) = setAccessibilityDescription(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property capInsets
-    open fun capInsets(): MemorySegment {
+    open fun capInsets(): NSEdgeInsets {
         val sel = ObjCRuntime.sel("capInsets")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets"), ptr, sel) as MemorySegment
+        return NSEdgeInsets(ObjCRuntime.msgSendStruct(NSEdgeInsets.layout, ptr, sel))
     }
-    open fun setCapInsets(value: MemorySegment) {
+    open fun setCapInsets(value: NSEdgeInsets) {
         val sel = ObjCRuntime.sel("setCapInsets:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("top"), ValueLayout.JAVA_DOUBLE.withName("left"), ValueLayout.JAVA_DOUBLE.withName("bottom"), ValueLayout.JAVA_DOUBLE.withName("right")).withName("NSEdgeInsets")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSEdgeInsets.layout))
     }
 
     // @property resizingMode
-    open fun resizingMode(): MemorySegment {
+    open fun resizingMode(): NSImageResizingMode {
         val sel = ObjCRuntime.sel("resizingMode")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageResizingMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setResizingMode(value: MemorySegment) {
+    open fun setResizingMode(value: NSImageResizingMode) {
         val sel = ObjCRuntime.sel("setResizingMode:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property symbolConfiguration
@@ -412,9 +412,9 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
 
 // ── Category: Deprecated on NSImage ─────────────────────────────────────────
 
-fun NSImage.initWithIconRef(iconRef: MemorySegment): MemorySegment {
+fun NSImage.initWithIconRef(iconRef: IconRef): MemorySegment {
     val sel = ObjCRuntime.sel("initWithIconRef:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, iconRef) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, iconRef.segment) as MemorySegment
 }
 
 fun NSImage.bestRepresentationForDevice(deviceDescription: MemorySegment): MemorySegment {
@@ -487,34 +487,34 @@ fun NSImage.cacheDepthMatchesImageDepth(): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
-fun NSImage.dissolveToPoint_fraction(point: MemorySegment, fraction: Double): Unit {
+fun NSImage.dissolveToPoint_fraction(point: NSPoint, fraction: Double): Unit {
     val sel = ObjCRuntime.sel("dissolveToPoint:fraction:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point, fraction)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), fraction)
 }
 
-fun NSImage.dissolveToPoint_fromRect_fraction(point: MemorySegment, rect: MemorySegment, fraction: Double): Unit {
+fun NSImage.dissolveToPoint_fromRect_fraction(point: NSPoint, rect: NSRect, fraction: Double): Unit {
     val sel = ObjCRuntime.sel("dissolveToPoint:fromRect:fraction:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point, rect, fraction)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), fraction)
 }
 
-fun NSImage.compositeToPoint_operation(point: MemorySegment, operation: MemorySegment): Unit {
+fun NSImage.compositeToPoint_operation(point: NSPoint, operation: NSCompositingOperation): Unit {
     val sel = ObjCRuntime.sel("compositeToPoint:operation:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point, operation)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), operation.rawValue)
 }
 
-fun NSImage.compositeToPoint_fromRect_operation(point: MemorySegment, rect: MemorySegment, operation: MemorySegment): Unit {
+fun NSImage.compositeToPoint_fromRect_operation(point: NSPoint, rect: NSRect, operation: NSCompositingOperation): Unit {
     val sel = ObjCRuntime.sel("compositeToPoint:fromRect:operation:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point, rect, operation)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), operation.rawValue)
 }
 
-fun NSImage.compositeToPoint_operation_fraction(point: MemorySegment, operation: MemorySegment, fraction: Double): Unit {
+fun NSImage.compositeToPoint_operation_fraction(point: NSPoint, operation: NSCompositingOperation, fraction: Double): Unit {
     val sel = ObjCRuntime.sel("compositeToPoint:operation:fraction:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point, operation, fraction)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), operation.rawValue, fraction)
 }
 
-fun NSImage.compositeToPoint_fromRect_operation_fraction(point: MemorySegment, rect: MemorySegment, operation: MemorySegment, fraction: Double): Unit {
+fun NSImage.compositeToPoint_fromRect_operation_fraction(point: NSPoint, rect: NSRect, operation: NSCompositingOperation, fraction: Double): Unit {
     val sel = ObjCRuntime.sel("compositeToPoint:fromRect:operation:fraction:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, point, rect, operation, fraction)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), operation.rawValue, fraction)
 }
 
 fun NSImage.lockFocusOnRepresentation(imageRepresentation: MemorySegment): Unit {

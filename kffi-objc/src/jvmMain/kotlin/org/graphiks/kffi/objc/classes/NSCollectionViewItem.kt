@@ -32,13 +32,13 @@ open class NSCollectionViewItem(override val ptr: MemorySegment) : NSViewControl
     }
 
     // @property highlightState
-    open fun highlightState(): MemorySegment {
+    open fun highlightState(): NSCollectionViewItemHighlightState {
         val sel = ObjCRuntime.sel("highlightState")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSCollectionViewItemHighlightState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setHighlightState(value: MemorySegment) {
+    open fun setHighlightState(value: NSCollectionViewItemHighlightState) {
         val sel = ObjCRuntime.sel("setHighlightState:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property imageView

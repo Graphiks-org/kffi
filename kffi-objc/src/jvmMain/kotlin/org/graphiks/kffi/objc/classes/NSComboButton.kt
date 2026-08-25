@@ -62,13 +62,13 @@ open class NSComboButton(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property imageScaling
-    open fun imageScaling(): MemorySegment {
+    open fun imageScaling(): NSImageScaling {
         val sel = ObjCRuntime.sel("imageScaling")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSImageScaling(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setImageScaling(value: MemorySegment) {
+    open fun setImageScaling(value: NSImageScaling) {
         val sel = ObjCRuntime.sel("setImageScaling:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property menu
@@ -82,13 +82,13 @@ open class NSComboButton(override val ptr: MemorySegment) : NSControl(ptr) {
     }
 
     // @property style
-    open fun style(): MemorySegment {
+    open fun style(): NSComboButtonStyle {
         val sel = ObjCRuntime.sel("style")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSComboButtonStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setStyle(value: MemorySegment) {
+    open fun setStyle(value: NSComboButtonStyle) {
         val sel = ObjCRuntime.sel("setStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
 }

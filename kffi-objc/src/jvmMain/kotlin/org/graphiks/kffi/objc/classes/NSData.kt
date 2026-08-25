@@ -36,9 +36,9 @@ fun NSData.getBytes_length(buffer: MemorySegment, length: Long): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, buffer, length)
 }
 
-fun NSData.getBytes_range(buffer: MemorySegment, range: MemorySegment): Unit {
+fun NSData.getBytes_range(buffer: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("getBytes:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, buffer, range)
+    ObjCRuntime.msgSend(null, this.ptr, sel, buffer, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
 }
 
 fun NSData.isEqualToData(other: MemorySegment): Boolean {
@@ -46,9 +46,9 @@ fun NSData.isEqualToData(other: MemorySegment): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, other) as Boolean
 }
 
-fun NSData.subdataWithRange(range: MemorySegment): MemorySegment {
+fun NSData.subdataWithRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("subdataWithRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, range) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
 fun NSData.writeToFile_atomically(path: MemorySegment, useAuxiliaryFile: Boolean): Boolean {
@@ -61,19 +61,19 @@ fun NSData.writeToURL_atomically(url: MemorySegment, atomically: Boolean): Boole
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, atomically) as Boolean
 }
 
-fun NSData.writeToFile_options_error(path: MemorySegment, writeOptionsMask: MemorySegment, errorPtr: MemorySegment): Boolean {
+fun NSData.writeToFile_options_error(path: MemorySegment, writeOptionsMask: NSDataWritingOptions, errorPtr: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("writeToFile:options:error:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, path, writeOptionsMask, errorPtr) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, path, writeOptionsMask.rawValue, errorPtr) as Boolean
 }
 
-fun NSData.writeToURL_options_error(url: MemorySegment, writeOptionsMask: MemorySegment, errorPtr: MemorySegment): Boolean {
+fun NSData.writeToURL_options_error(url: MemorySegment, writeOptionsMask: NSDataWritingOptions, errorPtr: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("writeToURL:options:error:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, writeOptionsMask, errorPtr) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, writeOptionsMask.rawValue, errorPtr) as Boolean
 }
 
-fun NSData.rangeOfData_options_range(dataToFind: MemorySegment, mask: MemorySegment, searchRange: MemorySegment): MemorySegment {
+fun NSData.rangeOfData_options_range(dataToFind: MemorySegment, mask: NSDataSearchOptions, searchRange: NSRange): NSRange {
     val sel = ObjCRuntime.sel("rangeOfData:options:range:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, dataToFind, mask, searchRange) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, dataToFind, mask.rawValue, ObjCRuntime.ObjCStructArg(searchRange.segment, NSRange.layout)))
 }
 
 fun NSData.enumerateByteRangesUsingBlock(block: MemorySegment): Unit {
@@ -108,14 +108,14 @@ fun NSData.initWithBytesNoCopy_length_deallocator(bytes: MemorySegment, length: 
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, bytes, length, deallocator) as MemorySegment
 }
 
-fun NSData.initWithContentsOfFile_options_error(path: MemorySegment, readOptionsMask: MemorySegment, errorPtr: MemorySegment): MemorySegment {
+fun NSData.initWithContentsOfFile_options_error(path: MemorySegment, readOptionsMask: NSDataReadingOptions, errorPtr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfFile:options:error:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path, readOptionsMask, errorPtr) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path, readOptionsMask.rawValue, errorPtr) as MemorySegment
 }
 
-fun NSData.initWithContentsOfURL_options_error(url: MemorySegment, readOptionsMask: MemorySegment, errorPtr: MemorySegment): MemorySegment {
+fun NSData.initWithContentsOfURL_options_error(url: MemorySegment, readOptionsMask: NSDataReadingOptions, errorPtr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfURL:options:error:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, readOptionsMask, errorPtr) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, readOptionsMask.rawValue, errorPtr) as MemorySegment
 }
 
 fun NSData.initWithContentsOfFile(path: MemorySegment): MemorySegment {
@@ -162,17 +162,17 @@ fun NSData_dataWithBytesNoCopy_length_freeWhenDone(bytes: MemorySegment, length:
 }
 
 // Class method: +[NSData dataWithContentsOfFile:options:error:]
-fun NSData_dataWithContentsOfFile_options_error(path: MemorySegment, readOptionsMask: MemorySegment, errorPtr: MemorySegment): MemorySegment {
+fun NSData_dataWithContentsOfFile_options_error(path: MemorySegment, readOptionsMask: NSDataReadingOptions, errorPtr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dataWithContentsOfFile:options:error:")
     val cls = ObjCRuntime.getClass("NSData")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, path, readOptionsMask, errorPtr) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, path, readOptionsMask.rawValue, errorPtr) as MemorySegment
 }
 
 // Class method: +[NSData dataWithContentsOfURL:options:error:]
-fun NSData_dataWithContentsOfURL_options_error(url: MemorySegment, readOptionsMask: MemorySegment, errorPtr: MemorySegment): MemorySegment {
+fun NSData_dataWithContentsOfURL_options_error(url: MemorySegment, readOptionsMask: NSDataReadingOptions, errorPtr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dataWithContentsOfURL:options:error:")
     val cls = ObjCRuntime.getClass("NSData")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, url, readOptionsMask, errorPtr) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, url, readOptionsMask.rawValue, errorPtr) as MemorySegment
 }
 
 // Class method: +[NSData dataWithContentsOfFile:]
@@ -198,36 +198,36 @@ fun NSData_dataWithData(`data`: MemorySegment): MemorySegment {
 
 // ── Category: NSDataBase64Encoding on NSData ─────────────────────────────────────────
 
-fun NSData.initWithBase64EncodedString_options(base64String: MemorySegment, options: MemorySegment): MemorySegment {
+fun NSData.initWithBase64EncodedString_options(base64String: MemorySegment, options: NSDataBase64DecodingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("initWithBase64EncodedString:options:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, base64String, options) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, base64String, options.rawValue) as MemorySegment
 }
 
-fun NSData.base64EncodedStringWithOptions(options: MemorySegment): MemorySegment {
+fun NSData.base64EncodedStringWithOptions(options: NSDataBase64EncodingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("base64EncodedStringWithOptions:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options.rawValue) as MemorySegment
 }
 
-fun NSData.initWithBase64EncodedData_options(base64Data: MemorySegment, options: MemorySegment): MemorySegment {
+fun NSData.initWithBase64EncodedData_options(base64Data: MemorySegment, options: NSDataBase64DecodingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("initWithBase64EncodedData:options:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, base64Data, options) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, base64Data, options.rawValue) as MemorySegment
 }
 
-fun NSData.base64EncodedDataWithOptions(options: MemorySegment): MemorySegment {
+fun NSData.base64EncodedDataWithOptions(options: NSDataBase64EncodingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("base64EncodedDataWithOptions:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options.rawValue) as MemorySegment
 }
 
 // ── Category: NSDataCompression on NSData ─────────────────────────────────────────
 
-fun NSData.decompressedDataUsingAlgorithm_error(algorithm: MemorySegment, error: MemorySegment): MemorySegment {
+fun NSData.decompressedDataUsingAlgorithm_error(algorithm: NSDataCompressionAlgorithm, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decompressedDataUsingAlgorithm:error:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, algorithm, error) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, algorithm.rawValue, error) as MemorySegment
 }
 
-fun NSData.compressedDataUsingAlgorithm_error(algorithm: MemorySegment, error: MemorySegment): MemorySegment {
+fun NSData.compressedDataUsingAlgorithm_error(algorithm: NSDataCompressionAlgorithm, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("compressedDataUsingAlgorithm:error:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, algorithm, error) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, algorithm.rawValue, error) as MemorySegment
 }
 
 // ── Category: NSDeprecated on NSData ─────────────────────────────────────────

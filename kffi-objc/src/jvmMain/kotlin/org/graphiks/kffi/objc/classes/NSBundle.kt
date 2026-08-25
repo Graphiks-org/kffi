@@ -561,16 +561,16 @@ fun NSBundle.loadNibNamed_owner_topLevelObjects(nibName: MemorySegment, owner: M
 
 // ── Category: NSNibLoadingDeprecated on NSBundle ─────────────────────────────────────────
 
-fun NSBundle.loadNibFile_externalNameTable_withZone(fileName: MemorySegment, context: MemorySegment, zone: MemorySegment): Boolean {
+fun NSBundle.loadNibFile_externalNameTable_withZone(fileName: MemorySegment, context: MemorySegment, zone: NSZonePointer): Boolean {
     val sel = ObjCRuntime.sel("loadNibFile:externalNameTable:withZone:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fileName, context, zone) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fileName, context, zone.segment) as Boolean
 }
 
 // Class method: +[NSBundle loadNibFile:externalNameTable:withZone:]
-fun NSBundle_loadNibFile_externalNameTable_withZone(fileName: MemorySegment, context: MemorySegment, zone: MemorySegment): Boolean {
+fun NSBundle_loadNibFile_externalNameTable_withZone(fileName: MemorySegment, context: MemorySegment, zone: NSZonePointer): Boolean {
     val sel = ObjCRuntime.sel("loadNibFile:externalNameTable:withZone:")
     val cls = ObjCRuntime.getClass("NSBundle")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel, fileName, context, zone) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel, fileName, context, zone.segment) as Boolean
 }
 
 // Class method: +[NSBundle loadNibNamed:owner:]

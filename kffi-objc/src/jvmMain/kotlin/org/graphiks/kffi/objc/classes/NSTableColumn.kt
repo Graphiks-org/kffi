@@ -127,13 +127,13 @@ open class NSTableColumn(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property resizingMask
-    open fun resizingMask(): MemorySegment {
+    open fun resizingMask(): NSTableColumnResizingOptions {
         val sel = ObjCRuntime.sel("resizingMask")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSTableColumnResizingOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setResizingMask(value: MemorySegment) {
+    open fun setResizingMask(value: NSTableColumnResizingOptions) {
         val sel = ObjCRuntime.sel("setResizingMask:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property headerToolTip

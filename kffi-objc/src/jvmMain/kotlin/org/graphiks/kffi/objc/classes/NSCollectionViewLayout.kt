@@ -51,9 +51,9 @@ fun NSCollectionViewLayout.prepareLayout(): Unit {
 }
 
 /** @return NSArray<__kindof NSCollectionViewLayoutAttributes *> * */
-fun NSCollectionViewLayout.layoutAttributesForElementsInRect(rect: MemorySegment): MemorySegment {
+fun NSCollectionViewLayout.layoutAttributesForElementsInRect(rect: NSRect): MemorySegment {
     val sel = ObjCRuntime.sel("layoutAttributesForElementsInRect:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, rect) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as MemorySegment
 }
 
 fun NSCollectionViewLayout.layoutAttributesForItemAtIndexPath(indexPath: MemorySegment): MemorySegment {
@@ -71,9 +71,9 @@ fun NSCollectionViewLayout.layoutAttributesForDecorationViewOfKind_atIndexPath(e
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, elementKind, indexPath) as MemorySegment
 }
 
-fun NSCollectionViewLayout.layoutAttributesForDropTargetAtPoint(pointInCollectionView: MemorySegment): MemorySegment {
+fun NSCollectionViewLayout.layoutAttributesForDropTargetAtPoint(pointInCollectionView: NSPoint): MemorySegment {
     val sel = ObjCRuntime.sel("layoutAttributesForDropTargetAtPoint:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, pointInCollectionView) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(pointInCollectionView.segment, NSPoint.layout)) as MemorySegment
 }
 
 fun NSCollectionViewLayout.layoutAttributesForInterItemGapBeforeIndexPath(indexPath: MemorySegment): MemorySegment {
@@ -81,14 +81,14 @@ fun NSCollectionViewLayout.layoutAttributesForInterItemGapBeforeIndexPath(indexP
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, indexPath) as MemorySegment
 }
 
-fun NSCollectionViewLayout.shouldInvalidateLayoutForBoundsChange(newBounds: MemorySegment): Boolean {
+fun NSCollectionViewLayout.shouldInvalidateLayoutForBoundsChange(newBounds: NSRect): Boolean {
     val sel = ObjCRuntime.sel("shouldInvalidateLayoutForBoundsChange:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, newBounds) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ObjCRuntime.ObjCStructArg(newBounds.segment, NSRect.layout)) as Boolean
 }
 
-fun NSCollectionViewLayout.invalidationContextForBoundsChange(newBounds: MemorySegment): MemorySegment {
+fun NSCollectionViewLayout.invalidationContextForBoundsChange(newBounds: NSRect): MemorySegment {
     val sel = ObjCRuntime.sel("invalidationContextForBoundsChange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, newBounds) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(newBounds.segment, NSRect.layout)) as MemorySegment
 }
 
 fun NSCollectionViewLayout.shouldInvalidateLayoutForPreferredLayoutAttributes_withOriginalAttributes(preferredAttributes: MemorySegment, originalAttributes: MemorySegment): Boolean {
@@ -101,19 +101,19 @@ fun NSCollectionViewLayout.invalidationContextForPreferredLayoutAttributes_withO
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, preferredAttributes, originalAttributes) as MemorySegment
 }
 
-fun NSCollectionViewLayout.targetContentOffsetForProposedContentOffset_withScrollingVelocity(proposedContentOffset: MemorySegment, velocity: MemorySegment): MemorySegment {
+fun NSCollectionViewLayout.targetContentOffsetForProposedContentOffset_withScrollingVelocity(proposedContentOffset: NSPoint, velocity: NSPoint): NSPoint {
     val sel = ObjCRuntime.sel("targetContentOffsetForProposedContentOffset:withScrollingVelocity:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, proposedContentOffset, velocity) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(proposedContentOffset.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(velocity.segment, NSPoint.layout)))
 }
 
-fun NSCollectionViewLayout.targetContentOffsetForProposedContentOffset(proposedContentOffset: MemorySegment): MemorySegment {
+fun NSCollectionViewLayout.targetContentOffsetForProposedContentOffset(proposedContentOffset: NSPoint): NSPoint {
     val sel = ObjCRuntime.sel("targetContentOffsetForProposedContentOffset:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), this.ptr, sel, proposedContentOffset) as MemorySegment
+    return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(proposedContentOffset.segment, NSPoint.layout)))
 }
 
-fun NSCollectionViewLayout.collectionViewContentSize(): MemorySegment {
+fun NSCollectionViewLayout.collectionViewContentSize(): NSSize {
     val sel = ObjCRuntime.sel("collectionViewContentSize")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), this.ptr, sel) as MemorySegment
+    return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, this.ptr, sel))
 }
 
 // Class method: +[NSCollectionViewLayout layoutAttributesClass]
@@ -154,9 +154,9 @@ fun NSCollectionViewLayout.finalizeCollectionViewUpdates(): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
-fun NSCollectionViewLayout.prepareForAnimatedBoundsChange(oldBounds: MemorySegment): Unit {
+fun NSCollectionViewLayout.prepareForAnimatedBoundsChange(oldBounds: NSRect): Unit {
     val sel = ObjCRuntime.sel("prepareForAnimatedBoundsChange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, oldBounds)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(oldBounds.segment, NSRect.layout))
 }
 
 fun NSCollectionViewLayout.finalizeAnimatedBoundsChange(): Unit {

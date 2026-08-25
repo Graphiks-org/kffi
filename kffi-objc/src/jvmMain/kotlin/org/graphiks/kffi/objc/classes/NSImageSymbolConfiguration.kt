@@ -13,9 +13,9 @@ open class NSImageSymbolConfiguration(override val ptr: MemorySegment) : NSObjec
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSImageSymbolConfiguration") }
 
-        fun configurationWithPointSize_weight_scale(pointSize: Double, weight: Double, scale: MemorySegment): MemorySegment {
+        fun configurationWithPointSize_weight_scale(pointSize: Double, weight: Double, scale: NSImageSymbolScale): MemorySegment {
             val sel = ObjCRuntime.sel("configurationWithPointSize:weight:scale:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, pointSize, weight, scale) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, pointSize, weight, scale.rawValue) as MemorySegment
         }
 
         fun configurationWithPointSize_weight(pointSize: Double, weight: Double): MemorySegment {
@@ -23,9 +23,9 @@ open class NSImageSymbolConfiguration(override val ptr: MemorySegment) : NSObjec
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, pointSize, weight) as MemorySegment
         }
 
-        fun configurationWithTextStyle_scale(style: MemorySegment, scale: MemorySegment): MemorySegment {
+        fun configurationWithTextStyle_scale(style: MemorySegment, scale: NSImageSymbolScale): MemorySegment {
             val sel = ObjCRuntime.sel("configurationWithTextStyle:scale:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, style, scale) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, style, scale.rawValue) as MemorySegment
         }
 
         fun configurationWithTextStyle(style: MemorySegment): MemorySegment {
@@ -33,9 +33,9 @@ open class NSImageSymbolConfiguration(override val ptr: MemorySegment) : NSObjec
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, style) as MemorySegment
         }
 
-        fun configurationWithScale(scale: MemorySegment): MemorySegment {
+        fun configurationWithScale(scale: NSImageSymbolScale): MemorySegment {
             val sel = ObjCRuntime.sel("configurationWithScale:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, scale) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, scale.rawValue) as MemorySegment
         }
 
         fun configurationPreferringMonochrome(): MemorySegment {
@@ -63,14 +63,14 @@ open class NSImageSymbolConfiguration(override val ptr: MemorySegment) : NSObjec
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
         }
 
-        fun configurationWithVariableValueMode(variableValueMode: MemorySegment): MemorySegment {
+        fun configurationWithVariableValueMode(variableValueMode: NSImageSymbolVariableValueMode): MemorySegment {
             val sel = ObjCRuntime.sel("configurationWithVariableValueMode:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, variableValueMode) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, variableValueMode.rawValue) as MemorySegment
         }
 
-        fun configurationWithColorRenderingMode(mode: MemorySegment): MemorySegment {
+        fun configurationWithColorRenderingMode(mode: NSImageSymbolColorRenderingMode): MemorySegment {
             val sel = ObjCRuntime.sel("configurationWithColorRenderingMode:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, mode) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, mode.rawValue) as MemorySegment
         }
 
     }

@@ -14,13 +14,13 @@ open class NSMassFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     }
 
-    open fun stringFromValue_unit(value: Double, unit: MemorySegment): MemorySegment {
+    open fun stringFromValue_unit(value: Double, unit: NSMassFormatterUnit): MemorySegment {
         val sel = ObjCRuntime.sel("stringFromValue:unit:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value, unit) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value, unit.rawValue) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-    fun stringFromValue_unitAsString(value: Double, unit: MemorySegment): String = ObjCRuntime.toJavaString(stringFromValue_unit(value, unit))
+    fun stringFromValue_unitAsString(value: Double, unit: NSMassFormatterUnit): String = ObjCRuntime.toJavaString(stringFromValue_unit(value, unit))
 
     open fun stringFromKilograms(numberInKilograms: Double): MemorySegment {
         val sel = ObjCRuntime.sel("stringFromKilograms:")
@@ -30,13 +30,13 @@ open class NSMassFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
     fun stringFromKilogramsAsString(numberInKilograms: Double): String = ObjCRuntime.toJavaString(stringFromKilograms(numberInKilograms))
 
-    open fun unitStringFromValue_unit(value: Double, unit: MemorySegment): MemorySegment {
+    open fun unitStringFromValue_unit(value: Double, unit: NSMassFormatterUnit): MemorySegment {
         val sel = ObjCRuntime.sel("unitStringFromValue:unit:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value, unit) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value, unit.rawValue) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
-    fun unitStringFromValue_unitAsString(value: Double, unit: MemorySegment): String = ObjCRuntime.toJavaString(unitStringFromValue_unit(value, unit))
+    fun unitStringFromValue_unitAsString(value: Double, unit: NSMassFormatterUnit): String = ObjCRuntime.toJavaString(unitStringFromValue_unit(value, unit))
 
     open fun unitStringFromKilograms_usedUnit(numberInKilograms: Double, unitp: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("unitStringFromKilograms:usedUnit:")
@@ -62,13 +62,13 @@ open class NSMassFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
     }
 
     // @property unitStyle
-    open fun unitStyle(): MemorySegment {
+    open fun unitStyle(): NSFormattingUnitStyle {
         val sel = ObjCRuntime.sel("unitStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
+        return NSFormattingUnitStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
-    open fun setUnitStyle(value: MemorySegment) {
+    open fun setUnitStyle(value: NSFormattingUnitStyle) {
         val sel = ObjCRuntime.sel("setUnitStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
+        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property forPersonMassUse

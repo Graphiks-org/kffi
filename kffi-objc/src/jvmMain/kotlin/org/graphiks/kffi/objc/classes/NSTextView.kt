@@ -25,9 +25,9 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
 
     }
 
-    open fun initWithFrame_textContainer(frameRect: MemorySegment, container: MemorySegment): MemorySegment {
+    open fun initWithFrame_textContainer(frameRect: NSRect, container: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:textContainer:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), container) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout), container) as MemorySegment
     }
 
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
@@ -35,9 +35,9 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
-    override fun initWithFrame(frameRect: MemorySegment): MemorySegment {
+    override fun initWithFrame(frameRect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFrame:")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect"))) as MemorySegment
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout)) as MemorySegment
     }
 
     open fun initUsingTextLayoutManager(usingTextLayoutManager: Boolean): MemorySegment {
@@ -60,19 +60,19 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, insertString)
     }
 
-    open fun setConstrainedFrameSize(desiredSize: MemorySegment): Unit {
+    open fun setConstrainedFrameSize(desiredSize: NSSize): Unit {
         val sel = ObjCRuntime.sel("setConstrainedFrameSize:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(desiredSize, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(desiredSize.segment, NSSize.layout))
     }
 
-    open fun setAlignment_range(alignment: MemorySegment, range: MemorySegment): Unit {
+    open fun setAlignment_range(alignment: NSTextAlignment, range: NSRange): Unit {
         val sel = ObjCRuntime.sel("setAlignment:range:")
-        ObjCRuntime.msgSend(null, ptr, sel, alignment, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, alignment.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
-    open fun setBaseWritingDirection_range(writingDirection: MemorySegment, range: MemorySegment): Unit {
+    open fun setBaseWritingDirection_range(writingDirection: NSWritingDirection, range: NSRange): Unit {
         val sel = ObjCRuntime.sel("setBaseWritingDirection:range:")
-        ObjCRuntime.msgSend(null, ptr, sel, writingDirection, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")))
+        ObjCRuntime.msgSend(null, ptr, sel, writingDirection.rawValue, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
     }
 
     open fun turnOffKerning(sender: MemorySegment): Unit {
@@ -220,19 +220,19 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, ruler, event)
     }
 
-    open fun setNeedsDisplayInRect_avoidAdditionalLayout(rect: MemorySegment, flag: Boolean): Unit {
+    open fun setNeedsDisplayInRect_avoidAdditionalLayout(rect: NSRect, flag: Boolean): Unit {
         val sel = ObjCRuntime.sel("setNeedsDisplayInRect:avoidAdditionalLayout:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), flag)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), flag)
     }
 
-    open fun drawInsertionPointInRect_color_turnedOn(rect: MemorySegment, color: MemorySegment, flag: Boolean): Unit {
+    open fun drawInsertionPointInRect_color_turnedOn(rect: NSRect, color: MemorySegment, flag: Boolean): Unit {
         val sel = ObjCRuntime.sel("drawInsertionPointInRect:color:turnedOn:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")), color, flag)
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), color, flag)
     }
 
-    open fun drawViewBackgroundInRect(rect: MemorySegment): Unit {
+    open fun drawViewBackgroundInRect(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("drawViewBackgroundInRect:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect, MemoryLayout.structLayout(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("origin"), MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("size")).withName("CGRect")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
     open fun updateRuler(): Unit {
@@ -250,9 +250,9 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    open fun selectionRangeForProposedRange_granularity(proposedCharRange: MemorySegment, granularity: MemorySegment): MemorySegment {
+    open fun selectionRangeForProposedRange_granularity(proposedCharRange: NSRange, granularity: NSSelectionGranularity): NSRange {
         val sel = ObjCRuntime.sel("selectionRangeForProposedRange:granularity:")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), ptr, sel, ObjCRuntime.ObjCStructArg(proposedCharRange, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), granularity) as MemorySegment
+        return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, ObjCRuntime.ObjCStructArg(proposedCharRange.segment, NSRange.layout), granularity.rawValue))
     }
 
     open fun clickedOnLink_atIndex(link: MemorySegment, charIndex: Long): Unit {
@@ -270,9 +270,9 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
-    open fun setLayoutOrientation(orientation: MemorySegment): Unit {
+    open fun setLayoutOrientation(orientation: NSTextLayoutOrientation): Unit {
         val sel = ObjCRuntime.sel("setLayoutOrientation:")
-        ObjCRuntime.msgSend(null, ptr, sel, orientation)
+        ObjCRuntime.msgSend(null, ptr, sel, orientation.rawValue)
     }
 
     open fun changeLayoutOrientation(sender: MemorySegment): Unit {
@@ -280,14 +280,14 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
-    open fun characterIndexForInsertionAtPoint(point: MemorySegment): Long {
+    open fun characterIndexForInsertionAtPoint(point: NSPoint): Long {
         val sel = ObjCRuntime.sel("characterIndexForInsertionAtPoint:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(point, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"))) as Long
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Long
     }
 
-    open fun performValidatedReplacementInRange_withAttributedString(range: MemorySegment, attributedString: MemorySegment): Boolean {
+    open fun performValidatedReplacementInRange_withAttributedString(range: NSRange, attributedString: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("performValidatedReplacementInRange:withAttributedString:")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(range, MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange")), attributedString) as Boolean
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), attributedString) as Boolean
     }
 
     // @property textContainer
@@ -301,19 +301,19 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
     }
 
     // @property textContainerInset
-    open fun textContainerInset(): MemorySegment {
+    open fun textContainerInset(): NSSize {
         val sel = ObjCRuntime.sel("textContainerInset")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize"), ptr, sel) as MemorySegment
+        return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
-    open fun setTextContainerInset(value: MemorySegment) {
+    open fun setTextContainerInset(value: NSSize) {
         val sel = ObjCRuntime.sel("setTextContainerInset:")
-        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value, MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("width"), ValueLayout.JAVA_DOUBLE.withName("height")).withName("CGSize")))
+        ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property textContainerOrigin
-    open fun textContainerOrigin(): MemorySegment {
+    open fun textContainerOrigin(): NSPoint {
         val sel = ObjCRuntime.sel("textContainerOrigin")
-        return ObjCRuntime.msgSendStret(MemoryLayout.structLayout(ValueLayout.JAVA_DOUBLE.withName("x"), ValueLayout.JAVA_DOUBLE.withName("y")).withName("CGPoint"), ptr, sel) as MemorySegment
+        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
     // @property layoutManager
@@ -372,19 +372,19 @@ fun NSTextView.complete(sender: MemorySegment): Unit {
 }
 
 /** @return NSArray<NSString *> * */
-fun NSTextView.completionsForPartialWordRange_indexOfSelectedItem(charRange: MemorySegment, index: MemorySegment): MemorySegment {
+fun NSTextView.completionsForPartialWordRange_indexOfSelectedItem(charRange: NSRange, index: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("completionsForPartialWordRange:indexOfSelectedItem:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, charRange, index) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout), index) as MemorySegment
 }
 
-fun NSTextView.insertCompletion_forPartialWordRange_movement_isFinal(word: MemorySegment, charRange: MemorySegment, movement: Long, flag: Boolean): Unit {
+fun NSTextView.insertCompletion_forPartialWordRange_movement_isFinal(word: MemorySegment, charRange: NSRange, movement: Long, flag: Boolean): Unit {
     val sel = ObjCRuntime.sel("insertCompletion:forPartialWordRange:movement:isFinal:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, word, charRange, movement, flag)
+    ObjCRuntime.msgSend(null, this.ptr, sel, word, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout), movement, flag)
 }
 
-fun NSTextView.rangeForUserCompletion(): MemorySegment {
+fun NSTextView.rangeForUserCompletion(): NSRange {
     val sel = ObjCRuntime.sel("rangeForUserCompletion")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel))
 }
 
 // ── Category: NSPasteboard on NSTextView ─────────────────────────────────────────
@@ -450,19 +450,19 @@ fun NSTextView_registerForServices(): Unit {
 
 // ── Category: NSDragging on NSTextView ─────────────────────────────────────────
 
-fun NSTextView.dragSelectionWithEvent_offset_slideBack(event: MemorySegment, mouseOffset: MemorySegment, slideBack: Boolean): Boolean {
+fun NSTextView.dragSelectionWithEvent_offset_slideBack(event: MemorySegment, mouseOffset: NSSize, slideBack: Boolean): Boolean {
     val sel = ObjCRuntime.sel("dragSelectionWithEvent:offset:slideBack:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, event, mouseOffset, slideBack) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, event, ObjCRuntime.ObjCStructArg(mouseOffset.segment, NSSize.layout), slideBack) as Boolean
 }
 
-fun NSTextView.dragImageForSelectionWithEvent_origin(event: MemorySegment, origin: MemorySegment): MemorySegment {
+fun NSTextView.dragImageForSelectionWithEvent_origin(event: MemorySegment, origin: NSPointPointer): MemorySegment {
     val sel = ObjCRuntime.sel("dragImageForSelectionWithEvent:origin:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, event, origin) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, event, origin.segment) as MemorySegment
 }
 
-fun NSTextView.dragOperationForDraggingInfo_type(dragInfo: MemorySegment, type: MemorySegment): MemorySegment {
+fun NSTextView.dragOperationForDraggingInfo_type(dragInfo: MemorySegment, type: MemorySegment): NSDragOperation {
     val sel = ObjCRuntime.sel("dragOperationForDraggingInfo:type:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, dragInfo, type) as MemorySegment
+    return NSDragOperation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, dragInfo, type) as Long)
 }
 
 fun NSTextView.cleanUpAfterDragOperation(): Unit {
@@ -478,14 +478,14 @@ fun NSTextView.acceptableDragTypes(): MemorySegment {
 
 // ── Category: NSSharing on NSTextView ─────────────────────────────────────────
 
-fun NSTextView.setSelectedRanges_affinity_stillSelecting(ranges: MemorySegment, affinity: MemorySegment, stillSelectingFlag: Boolean): Unit {
+fun NSTextView.setSelectedRanges_affinity_stillSelecting(ranges: MemorySegment, affinity: NSSelectionAffinity, stillSelectingFlag: Boolean): Unit {
     val sel = ObjCRuntime.sel("setSelectedRanges:affinity:stillSelecting:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, ranges, affinity, stillSelectingFlag)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ranges, affinity.rawValue, stillSelectingFlag)
 }
 
-fun NSTextView.setSelectedRange_affinity_stillSelecting(charRange: MemorySegment, affinity: MemorySegment, stillSelectingFlag: Boolean): Unit {
+fun NSTextView.setSelectedRange_affinity_stillSelecting(charRange: NSRange, affinity: NSSelectionAffinity, stillSelectingFlag: Boolean): Unit {
     val sel = ObjCRuntime.sel("setSelectedRange:affinity:stillSelecting:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, charRange, affinity, stillSelectingFlag)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout), affinity.rawValue, stillSelectingFlag)
 }
 
 fun NSTextView.updateInsertionPointStateAndRestartTimer(restartFlag: Boolean): Unit {
@@ -503,9 +503,9 @@ fun NSTextView.toggleGrammarChecking(sender: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, sender)
 }
 
-fun NSTextView.setSpellingState_range(value: Long, charRange: MemorySegment): Unit {
+fun NSTextView.setSpellingState_range(value: Long, charRange: NSRange): Unit {
     val sel = ObjCRuntime.sel("setSpellingState:range:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, value, charRange)
+    ObjCRuntime.msgSend(null, this.ptr, sel, value, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout))
 }
 
 fun NSTextView.shouldChangeTextInRanges_replacementStrings(affectedRanges: MemorySegment, replacementStrings: MemorySegment): Boolean {
@@ -513,9 +513,9 @@ fun NSTextView.shouldChangeTextInRanges_replacementStrings(affectedRanges: Memor
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, affectedRanges, replacementStrings) as Boolean
 }
 
-fun NSTextView.shouldChangeTextInRange_replacementString(affectedCharRange: MemorySegment, replacementString: MemorySegment): Boolean {
+fun NSTextView.shouldChangeTextInRange_replacementString(affectedCharRange: NSRange, replacementString: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("shouldChangeTextInRange:replacementString:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, affectedCharRange, replacementString) as Boolean
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ObjCRuntime.ObjCStructArg(affectedCharRange.segment, NSRange.layout), replacementString) as Boolean
 }
 
 fun NSTextView.didChangeText(): Unit {
@@ -528,14 +528,14 @@ fun NSTextView.breakUndoCoalescing(): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
-fun NSTextView.showFindIndicatorForRange(charRange: MemorySegment): Unit {
+fun NSTextView.showFindIndicatorForRange(charRange: NSRange): Unit {
     val sel = ObjCRuntime.sel("showFindIndicatorForRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, charRange)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout))
 }
 
-fun NSTextView.setSelectedRange(charRange: MemorySegment): Unit {
+fun NSTextView.setSelectedRange(charRange: NSRange): Unit {
     val sel = ObjCRuntime.sel("setSelectedRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, charRange)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout))
 }
 
 /** @return NSArray<NSValue *> * */
@@ -549,19 +549,19 @@ fun NSTextView.setSelectedRanges(selectedRanges: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, selectedRanges)
 }
 
-fun NSTextView.selectionAffinity(): MemorySegment {
+fun NSTextView.selectionAffinity(): NSSelectionAffinity {
     val sel = ObjCRuntime.sel("selectionAffinity")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSSelectionAffinity(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSTextView.selectionGranularity(): MemorySegment {
+fun NSTextView.selectionGranularity(): NSSelectionGranularity {
     val sel = ObjCRuntime.sel("selectionGranularity")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSSelectionGranularity(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSTextView.setSelectionGranularity(selectionGranularity: MemorySegment): Unit {
+fun NSTextView.setSelectionGranularity(selectionGranularity: NSSelectionGranularity): Unit {
     val sel = ObjCRuntime.sel("setSelectionGranularity:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, selectionGranularity)
+    ObjCRuntime.msgSend(null, this.ptr, sel, selectionGranularity.rawValue)
 }
 
 /** @return NSDictionary<NSAttributedStringKey,id> * */
@@ -701,19 +701,19 @@ fun NSTextView.rangesForUserParagraphAttributeChange(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
-fun NSTextView.rangeForUserTextChange(): MemorySegment {
+fun NSTextView.rangeForUserTextChange(): NSRange {
     val sel = ObjCRuntime.sel("rangeForUserTextChange")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel))
 }
 
-fun NSTextView.rangeForUserCharacterAttributeChange(): MemorySegment {
+fun NSTextView.rangeForUserCharacterAttributeChange(): NSRange {
     val sel = ObjCRuntime.sel("rangeForUserCharacterAttributeChange")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel))
 }
 
-fun NSTextView.rangeForUserParagraphAttributeChange(): MemorySegment {
+fun NSTextView.rangeForUserParagraphAttributeChange(): NSRange {
     val sel = ObjCRuntime.sel("rangeForUserParagraphAttributeChange")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel))
 }
 
 fun NSTextView.allowsDocumentBackgroundColorChange(): Boolean {
@@ -888,31 +888,31 @@ fun NSTextView.isWritingToolsActive(): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
-fun NSTextView.writingToolsBehavior(): MemorySegment {
+fun NSTextView.writingToolsBehavior(): NSWritingToolsBehavior {
     val sel = ObjCRuntime.sel("writingToolsBehavior")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSWritingToolsBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSTextView.setWritingToolsBehavior(writingToolsBehavior: MemorySegment): Unit {
+fun NSTextView.setWritingToolsBehavior(writingToolsBehavior: NSWritingToolsBehavior): Unit {
     val sel = ObjCRuntime.sel("setWritingToolsBehavior:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, writingToolsBehavior)
+    ObjCRuntime.msgSend(null, this.ptr, sel, writingToolsBehavior.rawValue)
 }
 
-fun NSTextView.allowedWritingToolsResultOptions(): MemorySegment {
+fun NSTextView.allowedWritingToolsResultOptions(): NSWritingToolsResultOptions {
     val sel = ObjCRuntime.sel("allowedWritingToolsResultOptions")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSWritingToolsResultOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSTextView.setAllowedWritingToolsResultOptions(allowedWritingToolsResultOptions: MemorySegment): Unit {
+fun NSTextView.setAllowedWritingToolsResultOptions(allowedWritingToolsResultOptions: NSWritingToolsResultOptions): Unit {
     val sel = ObjCRuntime.sel("setAllowedWritingToolsResultOptions:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, allowedWritingToolsResultOptions)
+    ObjCRuntime.msgSend(null, this.ptr, sel, allowedWritingToolsResultOptions.rawValue)
 }
 
 // ── Category: NSTextChecking on NSTextView ─────────────────────────────────────────
 
-fun NSTextView.smartDeleteRangeForProposedRange(proposedCharRange: MemorySegment): MemorySegment {
+fun NSTextView.smartDeleteRangeForProposedRange(proposedCharRange: NSRange): NSRange {
     val sel = ObjCRuntime.sel("smartDeleteRangeForProposedRange:")
-    return ObjCRuntime.msgSend(MemoryLayout.structLayout(ValueLayout.JAVA_LONG.withName("location"), ValueLayout.JAVA_LONG.withName("length")).withName("_NSRange"), this.ptr, sel, proposedCharRange) as MemorySegment
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(proposedCharRange.segment, NSRange.layout)))
 }
 
 fun NSTextView.toggleSmartInsertDelete(sender: MemorySegment): Unit {
@@ -920,19 +920,19 @@ fun NSTextView.toggleSmartInsertDelete(sender: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, sender)
 }
 
-fun NSTextView.smartInsertForString_replacingRange_beforeString_afterString(pasteString: MemorySegment, charRangeToReplace: MemorySegment, beforeString: MemorySegment, afterString: MemorySegment): Unit {
+fun NSTextView.smartInsertForString_replacingRange_beforeString_afterString(pasteString: MemorySegment, charRangeToReplace: NSRange, beforeString: MemorySegment, afterString: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("smartInsertForString:replacingRange:beforeString:afterString:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, pasteString, charRangeToReplace, beforeString, afterString)
+    ObjCRuntime.msgSend(null, this.ptr, sel, pasteString, ObjCRuntime.ObjCStructArg(charRangeToReplace.segment, NSRange.layout), beforeString, afterString)
 }
 
-fun NSTextView.smartInsertBeforeStringForString_replacingRange(pasteString: MemorySegment, charRangeToReplace: MemorySegment): MemorySegment {
+fun NSTextView.smartInsertBeforeStringForString_replacingRange(pasteString: MemorySegment, charRangeToReplace: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("smartInsertBeforeStringForString:replacingRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, pasteString, charRangeToReplace) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, pasteString, ObjCRuntime.ObjCStructArg(charRangeToReplace.segment, NSRange.layout)) as MemorySegment
 }
 
-fun NSTextView.smartInsertAfterStringForString_replacingRange(pasteString: MemorySegment, charRangeToReplace: MemorySegment): MemorySegment {
+fun NSTextView.smartInsertAfterStringForString_replacingRange(pasteString: MemorySegment, charRangeToReplace: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("smartInsertAfterStringForString:replacingRange:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, pasteString, charRangeToReplace) as MemorySegment
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, pasteString, ObjCRuntime.ObjCStructArg(charRangeToReplace.segment, NSRange.layout)) as MemorySegment
 }
 
 fun NSTextView.toggleAutomaticQuoteSubstitution(sender: MemorySegment): Unit {
@@ -965,14 +965,14 @@ fun NSTextView.toggleAutomaticSpellingCorrection(sender: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, sender)
 }
 
-fun NSTextView.checkTextInRange_types_options(range: MemorySegment, checkingTypes: Long, options: MemorySegment): Unit {
+fun NSTextView.checkTextInRange_types_options(range: NSRange, checkingTypes: Long, options: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("checkTextInRange:types:options:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, range, checkingTypes, options)
+    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), checkingTypes, options)
 }
 
-fun NSTextView.handleTextCheckingResults_forRange_types_options_orthography_wordCount(results: MemorySegment, range: MemorySegment, checkingTypes: Long, options: MemorySegment, orthography: MemorySegment, wordCount: Long): Unit {
+fun NSTextView.handleTextCheckingResults_forRange_types_options_orthography_wordCount(results: MemorySegment, range: NSRange, checkingTypes: Long, options: MemorySegment, orthography: MemorySegment, wordCount: Long): Unit {
     val sel = ObjCRuntime.sel("handleTextCheckingResults:forRange:types:options:orthography:wordCount:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, results, range, checkingTypes, options, orthography, wordCount)
+    ObjCRuntime.msgSend(null, this.ptr, sel, results, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), checkingTypes, options, orthography, wordCount)
 }
 
 fun NSTextView.orderFrontSubstitutionsPanel(sender: MemorySegment): Unit {
@@ -1100,24 +1100,24 @@ fun NSTextView.setIncrementalSearchingEnabled(incrementalSearchingEnabled: Boole
     ObjCRuntime.msgSend(null, this.ptr, sel, incrementalSearchingEnabled)
 }
 
-fun NSTextView.inlinePredictionType(): MemorySegment {
+fun NSTextView.inlinePredictionType(): NSTextInputTraitType {
     val sel = ObjCRuntime.sel("inlinePredictionType")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSTextInputTraitType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSTextView.setInlinePredictionType(inlinePredictionType: MemorySegment): Unit {
+fun NSTextView.setInlinePredictionType(inlinePredictionType: NSTextInputTraitType): Unit {
     val sel = ObjCRuntime.sel("setInlinePredictionType:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, inlinePredictionType)
+    ObjCRuntime.msgSend(null, this.ptr, sel, inlinePredictionType.rawValue)
 }
 
-fun NSTextView.mathExpressionCompletionType(): MemorySegment {
+fun NSTextView.mathExpressionCompletionType(): NSTextInputTraitType {
     val sel = ObjCRuntime.sel("mathExpressionCompletionType")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+    return NSTextInputTraitType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
-fun NSTextView.setMathExpressionCompletionType(mathExpressionCompletionType: MemorySegment): Unit {
+fun NSTextView.setMathExpressionCompletionType(mathExpressionCompletionType: NSTextInputTraitType): Unit {
     val sel = ObjCRuntime.sel("setMathExpressionCompletionType:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, mathExpressionCompletionType)
+    ObjCRuntime.msgSend(null, this.ptr, sel, mathExpressionCompletionType.rawValue)
 }
 
 // ── Category: NSQuickLookPreview on NSTextView ─────────────────────────────────────────
@@ -1224,9 +1224,9 @@ fun NSTextView_scrollablePlainDocumentContentTextView(): MemorySegment {
 
 // ── Category: NSTextView_TextHighlight on NSTextView ─────────────────────────────────────────
 
-fun NSTextView.drawTextHighlightBackgroundForTextRange_origin(textRange: MemorySegment, origin: MemorySegment): Unit {
+fun NSTextView.drawTextHighlightBackgroundForTextRange_origin(textRange: MemorySegment, origin: NSPoint): Unit {
     val sel = ObjCRuntime.sel("drawTextHighlightBackgroundForTextRange:origin:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, textRange, origin)
+    ObjCRuntime.msgSend(null, this.ptr, sel, textRange, ObjCRuntime.ObjCStructArg(origin.segment, NSPoint.layout))
 }
 
 fun NSTextView.highlight(sender: MemorySegment): Unit {
