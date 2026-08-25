@@ -2,6 +2,7 @@ package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.NativeAddress
 import org.graphiks.kffi.engine.JvmUpcallEngine
+import org.graphiks.kffi.objc.ObjCRuntime
 
 /** One finite Objective-C method ABI shape supported by the managed bridge. */
 class ObjCMethodSignature<R> internal constructor(
@@ -66,8 +67,11 @@ internal object ObjCManagedTrampolines {
     fun dispatchVoidObject(self: Long, command: Long, argument: Long) {
         var boundary: ObjCNativeBoundary<Unit>? = null
         try {
-            boundary = ObjCNativeBoundary(Unit)
-            ObjCMethodDispatch.dispatchVoidObject(boundary, self, command, argument)
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(Unit)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchVoidObject(installedBoundary, self, command, argument)
+            }
         } catch (failure: Throwable) {
             boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, Unit)
         }
@@ -77,8 +81,11 @@ internal object ObjCManagedTrampolines {
     fun dispatchBooleanObject(self: Long, command: Long, argument: Long): Boolean {
         var boundary: ObjCNativeBoundary<Boolean>? = null
         return try {
-            boundary = ObjCNativeBoundary(ObjCMethodSignatures.BooleanObject.abiZero)
-            ObjCMethodDispatch.dispatchBooleanObject(boundary, self, command, argument)
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(ObjCMethodSignatures.BooleanObject.abiZero)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchBooleanObject(installedBoundary, self, command, argument)
+            }
         } catch (failure: Throwable) {
             boundary?.contain(failure)
                 ?: ObjCMethodDispatch.containUnrouted(failure, false)
@@ -89,8 +96,11 @@ internal object ObjCManagedTrampolines {
     fun dispatchVoid(self: Long, command: Long) {
         var boundary: ObjCNativeBoundary<Unit>? = null
         try {
-            boundary = ObjCNativeBoundary(Unit)
-            ObjCMethodDispatch.dispatchVoid(boundary, self, command)
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(Unit)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchVoid(installedBoundary, self, command)
+            }
         } catch (failure: Throwable) {
             boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, Unit)
         }
@@ -100,8 +110,11 @@ internal object ObjCManagedTrampolines {
     fun dispatchULongObject(self: Long, command: Long, argument: Long): Long {
         var boundary: ObjCNativeBoundary<Long>? = null
         return try {
-            boundary = ObjCNativeBoundary(ObjCMethodSignatures.ULongObject.abiZero)
-            ObjCMethodDispatch.dispatchULongObject(boundary, self, command, argument)
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(ObjCMethodSignatures.ULongObject.abiZero)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchULongObject(installedBoundary, self, command, argument)
+            }
         } catch (failure: Throwable) {
             boundary?.contain(failure)
                 ?: ObjCMethodDispatch.containUnrouted(failure, 0L)
