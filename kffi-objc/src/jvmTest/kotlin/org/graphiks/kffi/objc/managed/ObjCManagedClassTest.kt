@@ -3,6 +3,8 @@ package org.graphiks.kffi.objc.managed
 import org.graphiks.kffi.CallbackExceptionHandler
 import org.graphiks.kffi.objc.NSObject
 import org.graphiks.kffi.objc.ObjCRuntime
+import org.graphiks.kffi.objc.ObjCSubclassing
+import org.graphiks.kffi.engine.JvmUpcallEngine
 import org.junit.jupiter.api.Assumptions.assumeTrue
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
@@ -236,6 +238,122 @@ class ObjCManagedClassTest {
         }
     }
 
+    @Test
+    fun publicLifecycleDelegatesClosureQuiescenceAndOneShotActions() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiLifecycle" to ObjCMethodSignatures.Void),
+        )
+        val instance = managedClass.createInstance {
+            onVoid("kffiLifecycle") {}
+        }
+        val registeredBeforeClose = AtomicInteger()
+        val registeredAfterClose = AtomicInteger()
+        instance.onQuiescent { registeredBeforeClose.incrementAndGet() }
+
+        assertFalse(instance.isClosed)
+        assertFalse(instance.isQuiescent)
+
+        instance.close()
+        instance.close()
+
+        assertTrue(instance.isClosed)
+        assertTrue(instance.isQuiescent)
+        assertEquals(1, registeredBeforeClose.get())
+
+        instance.onQuiescent { registeredAfterClose.incrementAndGet() }
+        instance.close()
+
+        assertEquals(1, registeredAfterClose.get())
+    }
+
+    @Test
+    fun trampolineContainsFailureBeforeRouteLookupAndReturnsAbiZero() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiBoundaryBeforeLookup:" to ObjCMethodSignatures.BooleanObject),
+        )
+        val invocations = AtomicInteger()
+        val instance = managedClass.createInstance {
+            onBooleanObject("kffiBoundaryBeforeLookup:", fallback = true) {
+                invocations.incrementAndGet()
+                true
+            }
+        }
+        val expected = IllegalStateException("failure before native route lookup")
+        val failures = ConcurrentLinkedQueue<Throwable>()
+        val thread = Thread.currentThread()
+        val previousHandler = thread.uncaughtExceptionHandler
+        val seam = ObjCMethodDispatch.installBeforeRouteLookupForTest { throw expected }
+
+        try {
+            thread.uncaughtExceptionHandler = Thread.UncaughtExceptionHandler { _, failure ->
+                failures += failure
+            }
+
+            assertFalse(sendBoolean(instance, "kffiBoundaryBeforeLookup:"))
+            assertSame(expected, failures.single())
+            assertEquals(0, invocations.get())
+        } finally {
+            seam.close()
+            thread.uncaughtExceptionHandler = previousHandler
+            instance.close()
+        }
+    }
+
+    @Test
+    fun trampolineUsesRouteReporterAndExplicitFallbackAfterRouteLookup() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiBoundaryBeforeAdmission:" to ObjCMethodSignatures.BooleanObject),
+        )
+        val invocations = AtomicInteger()
+        val failures = ConcurrentLinkedQueue<Throwable>()
+        val expected = IllegalStateException("failure before callback admission")
+        val instance = managedClass.createInstance(
+            onError = CallbackExceptionHandler(failures::add),
+        ) {
+            onBooleanObject("kffiBoundaryBeforeAdmission:", fallback = true) {
+                invocations.incrementAndGet()
+                false
+            }
+        }
+        val seam = ObjCMethodDispatch.installBeforeCallbackAdmissionForTest { throw expected }
+
+        try {
+            assertTrue(sendBoolean(instance, "kffiBoundaryBeforeAdmission:"))
+            assertSame(expected, failures.single())
+            assertEquals(0, invocations.get())
+        } finally {
+            seam.close()
+            instance.close()
+        }
+    }
+
+    @Test
+    fun nilInitializerDoesNotReleaseConsumedAllocResultAgain() {
+        requireMacOS()
+        NilInitializerFixture.consumedSelf.set(0)
+        val managedClass = ObjCManagedClass.registerOnce(
+            superclassName = NilInitializerFixture.registerSuperclass(),
+            methods = mapOf("kffiNeverCalled:" to ObjCMethodSignatures.VoidObject),
+        )
+        val managedReleaseAttempts = AtomicInteger()
+
+        ObjCManagedInstanceNativeLifetime.installReleaseOverrideForTest {
+            managedReleaseAttempts.incrementAndGet()
+        }.use {
+            assertFailsWith<IllegalStateException> {
+                managedClass.createInstance {
+                    onVoidObject("kffiNeverCalled:") {}
+                }
+            }
+        }
+
+        assertEquals(1, NilInitializerFixture.consumedSelf.get())
+        assertEquals(0, managedReleaseAttempts.get())
+    }
+
     private fun sendBoolean(instance: ObjCManagedInstance, selector: String): Boolean =
         ObjCRuntime.msgSend(
             ValueLayout.JAVA_BOOLEAN,
@@ -249,5 +367,49 @@ class ObjCManagedClassTest {
             System.getProperty("os.name")?.startsWith("Mac OS") == true,
             "Objective-C runtime tests require macOS",
         )
+    }
+}
+
+private object NilInitializerFixture {
+    private const val CLASS_NAME = "KFFIManagedNilInitializerFixture"
+
+    val consumedSelf = AtomicInteger()
+
+    private val initializer by lazy {
+        JvmUpcallEngine.allocateTrampoline(
+            dispatcherClass = NilInitializerFixture::class.java,
+            dispatchMethod = "initReturningNil",
+            dispatchSig = "(JJ)J",
+        )
+    }
+
+    fun registerSuperclass(): String {
+        if (ObjCSubclassing.lookupClassOrNull(CLASS_NAME) != MemorySegment.NULL) return CLASS_NAME
+        val nativeClass = ObjCSubclassing.allocateClass("NSObject", CLASS_NAME)
+        check(nativeClass != MemorySegment.NULL)
+        check(
+            ObjCSubclassing.addMethod(
+                nativeClass,
+                "init",
+                MemorySegment.ofAddress(initializer.rawValue),
+                "@@:",
+            ),
+        )
+        ObjCSubclassing.registerClass(nativeClass)
+        return CLASS_NAME
+    }
+
+    @JvmStatic
+    fun initReturningNil(
+        self: Long,
+        @Suppress("UNUSED_PARAMETER") command: Long,
+    ): Long {
+        consumedSelf.incrementAndGet()
+        ObjCRuntime.msgSend(
+            null,
+            MemorySegment.ofAddress(self),
+            ObjCRuntime.sel("release"),
+        )
+        return 0L
     }
 }

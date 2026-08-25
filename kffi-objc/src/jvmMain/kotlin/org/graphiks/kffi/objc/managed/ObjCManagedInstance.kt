@@ -17,6 +17,16 @@ class ObjCManagedInstance private constructor(
     val receiver: NSObject,
     private val registration: CallbackRegistration<ManagedObjCCallback>,
 ) : AutoCloseable {
+    val isClosed: Boolean
+        get() = registration.isClosed
+
+    val isQuiescent: Boolean
+        get() = registration.isQuiescent
+
+    fun onQuiescent(action: () -> Unit) {
+        registration.onQuiescent(action)
+    }
+
     override fun close() {
         registration.close()
     }
@@ -40,7 +50,7 @@ class ObjCManagedInstance private constructor(
                 nativeRoute.getAndSet(null)?.close()
                 val receiver = ownedReceiver.getAndSet(MemorySegment.NULL)
                 if (receiver != MemorySegment.NULL) {
-                    ObjCRuntime.msgSend(null, receiver, ObjCRuntime.sel("release"))
+                    ObjCManagedInstanceNativeLifetime.release(receiver)
                 }
             }
 
@@ -58,14 +68,38 @@ class ObjCManagedInstance private constructor(
                     allocated,
                     ObjCRuntime.sel("init"),
                 ) as MemorySegment
-                check(initialized != MemorySegment.NULL) { "Managed Objective-C receiver initialization failed" }
                 ownedReceiver.set(initialized)
+                check(initialized != MemorySegment.NULL) { "Managed Objective-C receiver initialization failed" }
 
-                nativeRoute.set(ObjCMethodDispatch.install(initialized, registration, router))
+                nativeRoute.set(ObjCMethodDispatch.install(initialized, registration, router, onError))
                 return ObjCManagedInstance(NSObject(initialized), registration)
             } catch (failure: Throwable) {
                 registration.close()
                 throw failure
+            }
+        }
+    }
+}
+
+internal object ObjCManagedInstanceNativeLifetime {
+    private val releaseOverrideForTest = AtomicReference<((MemorySegment) -> Unit)?>(null)
+
+    fun release(receiver: MemorySegment) {
+        val override = releaseOverrideForTest.get()
+        if (override != null) {
+            override(receiver)
+        } else {
+            ObjCRuntime.msgSend(null, receiver, ObjCRuntime.sel("release"))
+        }
+    }
+
+    fun installReleaseOverrideForTest(release: (MemorySegment) -> Unit): AutoCloseable {
+        check(releaseOverrideForTest.compareAndSet(null, release)) {
+            "Managed Objective-C release test override is already installed"
+        }
+        return AutoCloseable {
+            check(releaseOverrideForTest.compareAndSet(release, null)) {
+                "Managed Objective-C release test override changed before close"
             }
         }
     }

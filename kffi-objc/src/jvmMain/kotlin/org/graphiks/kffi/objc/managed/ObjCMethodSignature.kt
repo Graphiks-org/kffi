@@ -64,21 +64,49 @@ internal object ObjCManagedTrampolines {
 
     @JvmStatic
     fun dispatchVoidObject(self: Long, command: Long, argument: Long) {
-        ObjCMethodDispatch.dispatchVoidObject(self, command, argument)
+        var boundary: ObjCNativeBoundary<Unit>? = null
+        try {
+            boundary = ObjCNativeBoundary(Unit)
+            ObjCMethodDispatch.dispatchVoidObject(boundary, self, command, argument)
+        } catch (failure: Throwable) {
+            boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, Unit)
+        }
     }
 
     @JvmStatic
-    fun dispatchBooleanObject(self: Long, command: Long, argument: Long): Boolean =
-        ObjCMethodDispatch.dispatchBooleanObject(self, command, argument)
+    fun dispatchBooleanObject(self: Long, command: Long, argument: Long): Boolean {
+        var boundary: ObjCNativeBoundary<Boolean>? = null
+        return try {
+            boundary = ObjCNativeBoundary(ObjCMethodSignatures.BooleanObject.abiZero)
+            ObjCMethodDispatch.dispatchBooleanObject(boundary, self, command, argument)
+        } catch (failure: Throwable) {
+            boundary?.contain(failure)
+                ?: ObjCMethodDispatch.containUnrouted(failure, false)
+        }
+    }
 
     @JvmStatic
     fun dispatchVoid(self: Long, command: Long) {
-        ObjCMethodDispatch.dispatchVoid(self, command)
+        var boundary: ObjCNativeBoundary<Unit>? = null
+        try {
+            boundary = ObjCNativeBoundary(Unit)
+            ObjCMethodDispatch.dispatchVoid(boundary, self, command)
+        } catch (failure: Throwable) {
+            boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, Unit)
+        }
     }
 
     @JvmStatic
-    fun dispatchULongObject(self: Long, command: Long, argument: Long): Long =
-        ObjCMethodDispatch.dispatchULongObject(self, command, argument)
+    fun dispatchULongObject(self: Long, command: Long, argument: Long): Long {
+        var boundary: ObjCNativeBoundary<Long>? = null
+        return try {
+            boundary = ObjCNativeBoundary(ObjCMethodSignatures.ULongObject.abiZero)
+            ObjCMethodDispatch.dispatchULongObject(boundary, self, command, argument)
+        } catch (failure: Throwable) {
+            boundary?.contain(failure)
+                ?: ObjCMethodDispatch.containUnrouted(failure, 0L)
+        }
+    }
 
     private fun allocate(method: String, signature: String): NativeAddress =
         JvmUpcallEngine.allocateTrampoline(

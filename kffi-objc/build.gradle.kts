@@ -77,7 +77,7 @@ val generateManagedRuntimeConsumerSource = tasks.register("generateManagedRuntim
 
                 object ManagedRuntimeConsumer {
                     fun createAndClose() {
-                        ObjCManagedClass.registerOnce(
+                        val instance = ObjCManagedClass.registerOnce(
                             methods = mapOf(
                                 "managedRuntimeConsumer:" to ObjCMethodSignatures.VoidObject,
                             ),
@@ -85,7 +85,13 @@ val generateManagedRuntimeConsumerSource = tasks.register("generateManagedRuntim
                             onError = { error -> requireNotNull(error.message) },
                         ) {
                             onVoidObject("managedRuntimeConsumer:") {}
-                        }.close()
+                        }
+                        instance.onQuiescent {}
+                        check(!instance.isClosed)
+                        check(!instance.isQuiescent)
+                        instance.close()
+                        check(instance.isClosed)
+                        check(instance.isQuiescent)
                     }
                 }
                 """.trimIndent(),

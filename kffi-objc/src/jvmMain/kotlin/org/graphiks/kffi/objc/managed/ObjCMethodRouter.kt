@@ -3,6 +3,7 @@
 package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.Callback
+import org.graphiks.kffi.CallbackExceptionHandler
 import org.graphiks.kffi.CallbackRegistration
 import org.graphiks.kffi.CallbackRuntime
 import org.graphiks.kffi.CallbackType
@@ -11,6 +12,7 @@ import org.graphiks.kffi.objc.NSObject
 import org.graphiks.kffi.objc.ObjCRuntime
 import java.lang.foreign.MemorySegment
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.atomic.AtomicReference
 
 /** Typed per-instance bindings for a registered managed Objective-C class. */
 class ObjCMethodRouter internal constructor(
@@ -143,60 +145,160 @@ internal object ObjCMethodDispatch {
     private data class NativeRoute(
         val token: NativeAddress,
         val router: ObjCMethodRouter,
+        val onError: CallbackExceptionHandler,
     )
 
     private val nativeRoutes = ConcurrentHashMap<Long, NativeRoute>()
+    private val beforeRouteLookupForTest = AtomicReference<(() -> Unit)?>(null)
+    private val beforeCallbackAdmissionForTest = AtomicReference<(() -> Unit)?>(null)
 
     fun install(
         receiver: MemorySegment,
         registration: CallbackRegistration<ManagedObjCCallback>,
         router: ObjCMethodRouter,
+        onError: CallbackExceptionHandler,
     ): AutoCloseable {
         val token = requireNotNull(registration.userdata) {
             "Managed Objective-C callback registration did not allocate routing userdata"
         }
-        val route = NativeRoute(token, router)
+        val route = NativeRoute(token, router, onError)
         check(nativeRoutes.putIfAbsent(receiver.address(), route) == null) {
             "A managed Objective-C route already exists for receiver ${receiver.address()}"
         }
         return AutoCloseable { nativeRoutes.remove(receiver.address(), route) }
     }
 
-    fun dispatchVoidObject(self: Long, command: Long, argument: Long) {
-        val route = nativeRoutes[self] ?: return
+    fun dispatchVoidObject(
+        boundary: ObjCNativeBoundary<Unit>,
+        self: Long,
+        command: Long,
+        argument: Long,
+    ) {
+        val route = acquireRoute(boundary, self) ?: return
+        beforeCallbackAdmissionForTest.get()?.invoke()
         CallbackRuntime.dispatchSafely(callbackType, route.token) { callback ->
             callback.router.invokeVoidObject(command, argument)
         }
     }
 
-    fun dispatchBooleanObject(self: Long, command: Long, argument: Long): Boolean {
-        val abiZero = ObjCMethodSignatures.BooleanObject.abiZero
-        val route = nativeRoutes[self] ?: return abiZero
+    fun dispatchBooleanObject(
+        boundary: ObjCNativeBoundary<Boolean>,
+        self: Long,
+        command: Long,
+        argument: Long,
+    ): Boolean {
+        val route = acquireRoute(boundary, self) ?: return boundary.fallback
         val fallback = route.router.booleanFallback(command)
+        boundary.fallback = fallback
+        beforeCallbackAdmissionForTest.get()?.invoke()
         var admitted = false
         val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) { callback ->
             admitted = true
             callback.router.invokeBooleanObject(command, argument)
         }
-        return if (admitted) result else abiZero
+        return if (admitted) result else ObjCMethodSignatures.BooleanObject.abiZero
     }
 
-    fun dispatchVoid(self: Long, command: Long) {
-        val route = nativeRoutes[self] ?: return
+    fun dispatchVoid(boundary: ObjCNativeBoundary<Unit>, self: Long, command: Long) {
+        val route = acquireRoute(boundary, self) ?: return
+        beforeCallbackAdmissionForTest.get()?.invoke()
         CallbackRuntime.dispatchSafely(callbackType, route.token) { callback ->
             callback.router.invokeVoid(command)
         }
     }
 
-    fun dispatchULongObject(self: Long, command: Long, argument: Long): Long {
-        val abiZero = ObjCMethodSignatures.ULongObject.abiZero
-        val route = nativeRoutes[self] ?: return abiZero
+    fun dispatchULongObject(
+        boundary: ObjCNativeBoundary<Long>,
+        self: Long,
+        command: Long,
+        argument: Long,
+    ): Long {
+        val route = acquireRoute(boundary, self) ?: return boundary.fallback
         val fallback = route.router.uLongFallback(command)
+        boundary.fallback = fallback
+        beforeCallbackAdmissionForTest.get()?.invoke()
         var admitted = false
         val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) { callback ->
             admitted = true
             callback.router.invokeULongObject(command, argument)
         }
-        return if (admitted) result else abiZero
+        return if (admitted) result else ObjCMethodSignatures.ULongObject.abiZero
+    }
+
+    fun installBeforeRouteLookupForTest(action: () -> Unit): AutoCloseable =
+        installTestHook(beforeRouteLookupForTest, action, "route lookup")
+
+    fun installBeforeCallbackAdmissionForTest(action: () -> Unit): AutoCloseable =
+        installTestHook(beforeCallbackAdmissionForTest, action, "callback admission")
+
+    fun <R> containUnrouted(failure: Throwable, fallback: R): R {
+        reportUnroutedSafely(failure)
+        return fallback
+    }
+
+    fun reportUnroutedSafely(failure: Throwable) {
+        try {
+            CallbackRuntime.reportUnroutedFailure(failure)
+        } catch (_: Throwable) {
+            // Last-resort native boundary: reporting must never escape.
+        }
+    }
+
+    private fun <R> acquireRoute(boundary: ObjCNativeBoundary<R>, self: Long): NativeRoute? {
+        beforeRouteLookupForTest.get()?.invoke()
+        val route = nativeRoutes[self] ?: return null
+        boundary.onError = route.onError
+        return route
+    }
+
+    private fun installTestHook(
+        target: AtomicReference<(() -> Unit)?>,
+        action: () -> Unit,
+        stage: String,
+    ): AutoCloseable {
+        check(target.compareAndSet(null, action)) {
+            "Managed Objective-C $stage test hook is already installed"
+        }
+        return AutoCloseable {
+            check(target.compareAndSet(action, null)) {
+                "Managed Objective-C $stage test hook changed before close"
+            }
+        }
+    }
+}
+
+internal class ObjCNativeBoundary<R>(
+    initialFallback: R,
+) {
+    var fallback: R = initialFallback
+    var onError: CallbackExceptionHandler? = null
+
+    fun contain(failure: Throwable): R {
+        try {
+            val reporter = onError
+            if (reporter == null) {
+                ObjCMethodDispatch.reportUnroutedSafely(failure)
+            } else {
+                try {
+                    reporter.onException(failure)
+                } catch (reporterFailure: Throwable) {
+                    ObjCMethodDispatch.reportUnroutedSafely(
+                        ObjCNativeBoundaryReportingFailure(failure, reporterFailure),
+                    )
+                }
+            }
+        } catch (reportingFailure: Throwable) {
+            ObjCMethodDispatch.reportUnroutedSafely(reportingFailure)
+        }
+        return fallback
+    }
+}
+
+private class ObjCNativeBoundaryReportingFailure(
+    callbackFailure: Throwable,
+    reporterFailure: Throwable,
+) : RuntimeException("Managed Objective-C callback and reporter both failed", callbackFailure) {
+    init {
+        addSuppressed(reporterFailure)
     }
 }
