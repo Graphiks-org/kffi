@@ -21,10 +21,20 @@ class ObjCMethodRouter internal constructor(
     private val bindings = mutableMapOf<Long, ObjCMethodBinding>()
     private var frozen = false
 
+    /**
+     * Binds [selector] to [handler]. The [NSObject] argument is borrowed and is valid only for the
+     * dynamic extent of the handler call. Do not retain or use it after the handler returns unless
+     * explicit strong ownership is acquired before returning.
+     */
     fun onVoidObject(selector: String, handler: (NSObject) -> Unit) {
         bind(selector, ObjCMethodSignatures.VoidObject, VoidObjectBinding(handler))
     }
 
+    /**
+     * Binds [selector] to [handler]. The [NSObject] argument is borrowed and is valid only for the
+     * dynamic extent of the handler call. Do not retain or use it after the handler returns unless
+     * explicit strong ownership is acquired before returning.
+     */
     fun onBooleanObject(
         selector: String,
         fallback: Boolean,
@@ -41,6 +51,11 @@ class ObjCMethodRouter internal constructor(
         bind(selector, ObjCMethodSignatures.Void, VoidBinding(handler))
     }
 
+    /**
+     * Binds [selector] to [handler]. The [NSObject] argument is borrowed and is valid only for the
+     * dynamic extent of the handler call. Do not retain or use it after the handler returns unless
+     * explicit strong ownership is acquired before returning.
+     */
     fun onULongObject(
         selector: String,
         fallback: Long,
