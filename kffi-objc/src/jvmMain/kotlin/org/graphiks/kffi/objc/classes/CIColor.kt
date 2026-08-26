@@ -174,70 +174,37 @@ open class CIColor(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
     open fun stringRepresentationAsString(): String = ObjCRuntime.toJavaString(stringRepresentation())
 
-    // @property blackColor
-    open fun blackColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("blackColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property whiteColor
-    open fun whiteColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("whiteColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property grayColor
-    open fun grayColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("grayColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property redColor
-    open fun redColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("redColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property greenColor
-    open fun greenColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("greenColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property blueColor
-    open fun blueColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("blueColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property cyanColor
-    open fun cyanColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("cyanColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property magentaColor
-    open fun magentaColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("magentaColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property yellowColor
-    open fun yellowColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("yellowColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property clearColor
-    open fun clearColor(): MemorySegment {
-        val sel = ObjCRuntime.sel("clearColor")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
 
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _priv: MemorySegment
     // ivar: _pad: MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun CIColor.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun CIColor.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun CIColor_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("CIColor")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun CIColor.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
 }
 
 // ── Category: NSAppKitAdditions on CIColor ─────────────────────────────────────────

@@ -394,6 +394,37 @@ open class NSScrollView(override val ptr: MemorySegment) : NSView(ptr) {
 
 }
 
+/**
+ * Required by Objective-C protocol NSTextFinderBarContainer.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSScrollView.findBarView(): MemorySegment {
+    val sel = ObjCRuntime.sel("findBarView")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+fun NSScrollView.setFindBarView(value: MemorySegment) {
+    val sel = ObjCRuntime.sel("setFindBarView:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/**
+ * Required by Objective-C protocol NSTextFinderBarContainer.
+ */
+fun NSScrollView.isFindBarVisible(): Boolean {
+    val sel = ObjCRuntime.sel("isFindBarVisible")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+fun NSScrollView.setFindBarVisible(value: Boolean) {
+    val sel = ObjCRuntime.sel("setFindBarVisible:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/** Required by Objective-C protocol NSTextFinderBarContainer. */
+fun NSScrollView.findBarViewDidChangeHeight(): Unit {
+    val sel = ObjCRuntime.sel("findBarViewDidChangeHeight")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
 // ── Category: NSRulerSupport on NSScrollView ─────────────────────────────────────────
 
 fun NSScrollView.rulersVisible(): Boolean {
@@ -458,16 +489,6 @@ fun NSScrollView_setRulerViewClass(rulerViewClass: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setRulerViewClass:")
     val cls = ObjCRuntime.getClass("NSScrollView")
     ObjCRuntime.msgSend(null, cls, sel, rulerViewClass)
-}
-
-// @property rulerViewClass
-fun NSScrollView.rulerViewClass(): MemorySegment {
-    val sel = ObjCRuntime.sel("rulerViewClass")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-fun NSScrollView.setRulerViewClass(value: MemorySegment) {
-    val sel = ObjCRuntime.sel("setRulerViewClass:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, value)
 }
 
 // ── Category: NSFindBarSupport on NSScrollView ─────────────────────────────────────────

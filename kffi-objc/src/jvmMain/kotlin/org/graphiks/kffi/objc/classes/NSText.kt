@@ -393,3 +393,15 @@ open class NSText(override val ptr: MemorySegment) : NSView(ptr) {
     }
 
 }
+
+/** Required by Objective-C protocol NSChangeSpelling. */
+fun NSText.changeSpelling(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("changeSpelling:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}
+
+/** Required by Objective-C protocol NSIgnoreMisspelledWords. */
+fun NSText.ignoreSpelling(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("ignoreSpelling:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}

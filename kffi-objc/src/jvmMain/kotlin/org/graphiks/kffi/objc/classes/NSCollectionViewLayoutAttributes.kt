@@ -111,3 +111,9 @@ open class NSCollectionViewLayoutAttributes(override val ptr: MemorySegment) : N
     open fun representedElementKindAsString(): String = ObjCRuntime.toJavaString(representedElementKind())
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSCollectionViewLayoutAttributes.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

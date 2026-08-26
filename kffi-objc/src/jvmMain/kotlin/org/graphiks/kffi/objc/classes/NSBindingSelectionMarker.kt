@@ -45,22 +45,10 @@ open class NSBindingSelectionMarker(override val ptr: MemorySegment) : NSObject(
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property multipleValuesSelectionMarker
-    open fun multipleValuesSelectionMarker(): MemorySegment {
-        val sel = ObjCRuntime.sel("multipleValuesSelectionMarker")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property noSelectionMarker
-    open fun noSelectionMarker(): MemorySegment {
-        val sel = ObjCRuntime.sel("noSelectionMarker")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property notApplicableSelectionMarker
-    open fun notApplicableSelectionMarker(): MemorySegment {
-        val sel = ObjCRuntime.sel("notApplicableSelectionMarker")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/** Required by Objective-C protocol NSCopying. */
+fun NSBindingSelectionMarker.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
 }

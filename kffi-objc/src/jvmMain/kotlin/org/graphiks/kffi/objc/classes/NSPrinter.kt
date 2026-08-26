@@ -45,20 +45,6 @@ open class NSPrinter(override val ptr: MemorySegment) : NSObject(ptr) {
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel, paperName))
     }
 
-    // @property printerNames
-    /** @return NSArray<NSString *> * */
-    open fun printerNames(): MemorySegment {
-        val sel = ObjCRuntime.sel("printerNames")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property printerTypes
-    /** @return NSArray<NSPrinterTypeName> * */
-    open fun printerTypes(): MemorySegment {
-        val sel = ObjCRuntime.sel("printerTypes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property name
     open fun name(): MemorySegment {
         val sel = ObjCRuntime.sel("name")
@@ -87,6 +73,24 @@ open class NSPrinter(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSPrinter.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSPrinter.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSPrinter.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
 }
 
 // ── Category: NSDeprecated on NSPrinter ─────────────────────────────────────────

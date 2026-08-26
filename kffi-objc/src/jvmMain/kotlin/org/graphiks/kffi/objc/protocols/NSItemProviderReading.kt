@@ -9,9 +9,4 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSItemProviderReading {
-    fun objectWithItemProviderData_typeIdentifier_error(`data`: MemorySegment, typeIdentifier: MemorySegment, outError: MemorySegment): MemorySegment
-
-    /** @return NSArray<NSString *> * */
-    fun readableTypeIdentifiersForItemProvider(): MemorySegment
-
 }

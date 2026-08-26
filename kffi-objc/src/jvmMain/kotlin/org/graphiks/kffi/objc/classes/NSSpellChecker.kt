@@ -324,18 +324,6 @@ open class NSSpellChecker(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun setLanguage(language: String): Boolean = setLanguage(ObjCRuntime.newNSString(Arena.global(), language))
 
-    // @property sharedSpellChecker
-    open fun sharedSpellChecker(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedSpellChecker")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property sharedSpellCheckerExists
-    open fun sharedSpellCheckerExists(): Boolean {
-        val sel = ObjCRuntime.sel("sharedSpellCheckerExists")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
     // @property userReplacementsDictionary
     /** @return NSDictionary<NSString *,NSString *> * */
     open fun userReplacementsDictionary(): MemorySegment {
@@ -397,54 +385,6 @@ open class NSSpellChecker(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun setAutomaticallyIdentifiesLanguages(value: Boolean) {
         val sel = ObjCRuntime.sel("setAutomaticallyIdentifiesLanguages:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
-    // @property automaticTextReplacementEnabled
-    open fun isAutomaticTextReplacementEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isAutomaticTextReplacementEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property automaticSpellingCorrectionEnabled
-    open fun isAutomaticSpellingCorrectionEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isAutomaticSpellingCorrectionEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property automaticQuoteSubstitutionEnabled
-    open fun isAutomaticQuoteSubstitutionEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isAutomaticQuoteSubstitutionEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property automaticDashSubstitutionEnabled
-    open fun isAutomaticDashSubstitutionEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isAutomaticDashSubstitutionEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property automaticCapitalizationEnabled
-    open fun isAutomaticCapitalizationEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isAutomaticCapitalizationEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property automaticPeriodSubstitutionEnabled
-    open fun isAutomaticPeriodSubstitutionEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isAutomaticPeriodSubstitutionEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property automaticTextCompletionEnabled
-    open fun isAutomaticTextCompletionEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isAutomaticTextCompletionEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property automaticInlinePredictionEnabled
-    open fun isAutomaticInlinePredictionEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isAutomaticInlinePredictionEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
 }

@@ -100,16 +100,6 @@ open class NSOpenPanel(override val ptr: MemorySegment) : NSSavePanel(ptr) {
 
 // ── Category: InheritedAndUnavailable on NSOpenPanel ─────────────────────────────────────────
 
-fun NSOpenPanel.showsContentTypes(): Boolean {
-    val sel = ObjCRuntime.sel("showsContentTypes")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
-fun NSOpenPanel.setShowsContentTypes(showsContentTypes: Boolean): Unit {
-    val sel = ObjCRuntime.sel("setShowsContentTypes:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, showsContentTypes)
-}
-
 // ── Category: NSDeprecated on NSOpenPanel ─────────────────────────────────────────
 
 fun NSOpenPanel.filenames(): MemorySegment {

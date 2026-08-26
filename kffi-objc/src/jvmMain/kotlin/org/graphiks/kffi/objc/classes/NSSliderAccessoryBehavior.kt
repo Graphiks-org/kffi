@@ -45,22 +45,22 @@ open class NSSliderAccessoryBehavior(override val ptr: MemorySegment) : NSObject
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
-    // @property automaticBehavior
-    open fun automaticBehavior(): MemorySegment {
-        val sel = ObjCRuntime.sel("automaticBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property valueStepBehavior
-    open fun valueStepBehavior(): MemorySegment {
-        val sel = ObjCRuntime.sel("valueStepBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+/** Required by Objective-C protocol NSCoding. */
+fun NSSliderAccessoryBehavior.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
 
-    // @property valueResetBehavior
-    open fun valueResetBehavior(): MemorySegment {
-        val sel = ObjCRuntime.sel("valueResetBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+/** Required by Objective-C protocol NSCoding. */
+fun NSSliderAccessoryBehavior.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSSliderAccessoryBehavior.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
 }

@@ -682,27 +682,9 @@ open class NSDocument(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
-    // @property autosavesInPlace
-    open fun autosavesInPlace(): Boolean {
-        val sel = ObjCRuntime.sel("autosavesInPlace")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property preservesVersions
-    open fun preservesVersions(): Boolean {
-        val sel = ObjCRuntime.sel("preservesVersions")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
     // @property browsingVersions
     open fun isBrowsingVersions(): Boolean {
         val sel = ObjCRuntime.sel("isBrowsingVersions")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property autosavesDrafts
-    open fun autosavesDrafts(): Boolean {
-        val sel = ObjCRuntime.sel("autosavesDrafts")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
@@ -831,26 +813,6 @@ open class NSDocument(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property readableTypes
-    /** @return NSArray<NSString *> * */
-    open fun readableTypes(): MemorySegment {
-        val sel = ObjCRuntime.sel("readableTypes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property writableTypes
-    /** @return NSArray<NSString *> * */
-    open fun writableTypes(): MemorySegment {
-        val sel = ObjCRuntime.sel("writableTypes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property usesUbiquitousStorage
-    open fun usesUbiquitousStorage(): Boolean {
-        val sel = ObjCRuntime.sel("usesUbiquitousStorage")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
     // @property presentedItemURL
     open fun presentedItemURL(): MemorySegment {
         val sel = ObjCRuntime.sel("presentedItemURL")
@@ -864,6 +826,15 @@ open class NSDocument(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+}
+
+/**
+ * Required by Objective-C protocol NSFilePresenter.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSDocument.presentedItemOperationQueue(): MemorySegment {
+    val sel = ObjCRuntime.sel("presentedItemOperationQueue")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 // ── Category: NSDeprecated on NSDocument ─────────────────────────────────────────
@@ -1022,11 +993,6 @@ fun NSDocument.setLastComponentOfFileName(lastComponentOfFileName: MemorySegment
     ObjCRuntime.msgSend(null, this.ptr, sel, lastComponentOfFileName)
 }
 
-fun NSDocument.objectSpecifier(): MemorySegment {
-    val sel = ObjCRuntime.sel("objectSpecifier")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
 // ── Category: NSRestorableState on NSDocument ─────────────────────────────────────────
 
 fun NSDocument.restoreDocumentWindowWithIdentifier_state_completionHandler(identifier: MemorySegment, state: MemorySegment, completionHandler: MemorySegment): Unit {
@@ -1066,11 +1032,4 @@ fun NSDocument_restorableStateKeyPaths(): MemorySegment {
     val sel = ObjCRuntime.sel("restorableStateKeyPaths")
     val cls = ObjCRuntime.getClass("NSDocument")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
-}
-
-// @property restorableStateKeyPaths
-/** @return NSArray<NSString *> * */
-fun NSDocument.restorableStateKeyPaths(): MemorySegment {
-    val sel = ObjCRuntime.sel("restorableStateKeyPaths")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }

@@ -30,12 +30,6 @@ open class NSGridCell(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
-    // @property emptyContentView
-    open fun emptyContentView(): MemorySegment {
-        val sel = ObjCRuntime.sel("emptyContentView")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property row
     open fun row(): MemorySegment {
         val sel = ObjCRuntime.sel("row")
@@ -89,4 +83,16 @@ open class NSGridCell(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSGridCell.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSGridCell.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
 }

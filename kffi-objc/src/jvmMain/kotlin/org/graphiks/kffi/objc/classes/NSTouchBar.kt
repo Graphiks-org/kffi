@@ -138,14 +138,10 @@ open class NSTouchBar(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
-    // @property automaticCustomizeTouchBarMenuItemEnabled
-    open fun isAutomaticCustomizeTouchBarMenuItemEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isAutomaticCustomizeTouchBarMenuItemEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-    open fun setAutomaticCustomizeTouchBarMenuItemEnabled(value: Boolean) {
-        val sel = ObjCRuntime.sel("setAutomaticCustomizeTouchBarMenuItemEnabled:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
+}
 
+/** Required by Objective-C protocol NSCoding. */
+fun NSTouchBar.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
 }

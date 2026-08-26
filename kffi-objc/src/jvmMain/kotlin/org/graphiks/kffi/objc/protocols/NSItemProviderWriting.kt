@@ -16,6 +16,8 @@ interface NSItemProviderWriting {
     fun loadDataWithTypeIdentifier_forItemProviderCompletionHandler(typeIdentifier: MemorySegment, completionHandler: MemorySegment): MemorySegment
 
     /** @return NSArray<NSString *> * */
-    fun writableTypeIdentifiersForItemProvider(): MemorySegment
+    // @optional
+    fun writableTypeIdentifiersForItemProvider(): MemorySegment =
+        throw UnsupportedOperationException("Optional ObjC method 'writableTypeIdentifiersForItemProvider' not implemented")
 
 }

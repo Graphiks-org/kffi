@@ -62,16 +62,6 @@ open class NSURLCache(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, date)
     }
 
-    // @property sharedURLCache
-    open fun sharedURLCache(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedURLCache")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-    open fun setSharedURLCache(value: MemorySegment) {
-        val sel = ObjCRuntime.sel("setSharedURLCache:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
     // @property memoryCapacity
     open fun memoryCapacity(): Long {
         val sel = ObjCRuntime.sel("memoryCapacity")

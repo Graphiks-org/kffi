@@ -39,18 +39,6 @@ open class NSFontPanel(override val ptr: MemorySegment) : NSPanel(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    // @property sharedFontPanel
-    open fun sharedFontPanel(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedFontPanel")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property sharedFontPanelExists
-    open fun sharedFontPanelExists(): Boolean {
-        val sel = ObjCRuntime.sel("sharedFontPanelExists")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
     // @property accessoryView
     open fun accessoryView(): MemorySegment {
         val sel = ObjCRuntime.sel("accessoryView")

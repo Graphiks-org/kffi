@@ -42,3 +42,12 @@ open class NSPreviewRepresentingActivityItem(override val ptr: MemorySegment) : 
     }
 
 }
+
+/**
+ * Required by Objective-C protocol NSPreviewRepresentableActivityItem.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSPreviewRepresentingActivityItem.item(): MemorySegment {
+    val sel = ObjCRuntime.sel("item")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}

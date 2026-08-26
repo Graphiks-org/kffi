@@ -85,19 +85,6 @@ open class NSFontCollection(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun matchingDescriptorsForFamily_options(family: String, options: MemorySegment): MemorySegment = matchingDescriptorsForFamily_options(ObjCRuntime.newNSString(Arena.global(), family), options)
 
-    // @property fontCollectionWithAllAvailableDescriptors
-    open fun fontCollectionWithAllAvailableDescriptors(): MemorySegment {
-        val sel = ObjCRuntime.sel("fontCollectionWithAllAvailableDescriptors")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property allFontCollectionNames
-    /** @return NSArray<NSFontCollectionName> * */
-    open fun allFontCollectionNames(): MemorySegment {
-        val sel = ObjCRuntime.sel("allFontCollectionNames")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property queryDescriptors
     /** @return NSArray<NSFontDescriptor *> * */
     open fun queryDescriptors(): MemorySegment {
@@ -119,4 +106,28 @@ open class NSFontCollection(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSFontCollection.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSMutableCopying. */
+fun NSFontCollection.mutableCopyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("mutableCopyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSFontCollection.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSFontCollection.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
 }

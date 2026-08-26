@@ -347,16 +347,6 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
         return CGEventRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
-    // @property mouseCoalescingEnabled
-    open fun isMouseCoalescingEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isMouseCoalescingEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-    open fun setMouseCoalescingEnabled(value: Boolean) {
-        val sel = ObjCRuntime.sel("setMouseCoalescingEnabled:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
     // @property magnification
     open fun magnification(): Double {
         val sel = ObjCRuntime.sel("magnification")
@@ -507,40 +497,22 @@ open class NSEvent(override val ptr: MemorySegment) : NSObject(ptr) {
         return NSPressureBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
-    // @property swipeTrackingFromScrollEventsEnabled
-    open fun isSwipeTrackingFromScrollEventsEnabled(): Boolean {
-        val sel = ObjCRuntime.sel("isSwipeTrackingFromScrollEventsEnabled")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
+}
 
-    // @property mouseLocation
-    open fun mouseLocation(): NSPoint {
-        val sel = ObjCRuntime.sel("mouseLocation")
-        return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
-    }
+/** Required by Objective-C protocol NSCopying. */
+fun NSEvent.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
 
-    // @property pressedMouseButtons
-    open fun pressedMouseButtons(): Long {
-        val sel = ObjCRuntime.sel("pressedMouseButtons")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
-    }
+/** Required by Objective-C protocol NSCoding. */
+fun NSEvent.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
 
-    // @property doubleClickInterval
-    open fun doubleClickInterval(): Double {
-        val sel = ObjCRuntime.sel("doubleClickInterval")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
-    }
-
-    // @property keyRepeatDelay
-    open fun keyRepeatDelay(): Double {
-        val sel = ObjCRuntime.sel("keyRepeatDelay")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
-    }
-
-    // @property keyRepeatInterval
-    open fun keyRepeatInterval(): Double {
-        val sel = ObjCRuntime.sel("keyRepeatInterval")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
-    }
-
+/** Required by Objective-C protocol NSCoding. */
+fun NSEvent.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
 }

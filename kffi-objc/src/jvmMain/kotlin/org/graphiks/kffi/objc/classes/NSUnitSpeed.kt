@@ -35,28 +35,13 @@ open class NSUnitSpeed(override val ptr: MemorySegment) : NSDimension(ptr) {
 
     }
 
-    // @property metersPerSecond
-    open fun metersPerSecond(): MemorySegment {
-        val sel = ObjCRuntime.sel("metersPerSecond")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property kilometersPerHour
-    open fun kilometersPerHour(): MemorySegment {
-        val sel = ObjCRuntime.sel("kilometersPerHour")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property milesPerHour
-    open fun milesPerHour(): MemorySegment {
-        val sel = ObjCRuntime.sel("milesPerHour")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property knots
-    open fun knots(): MemorySegment {
-        val sel = ObjCRuntime.sel("knots")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitSpeed_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitSpeed")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

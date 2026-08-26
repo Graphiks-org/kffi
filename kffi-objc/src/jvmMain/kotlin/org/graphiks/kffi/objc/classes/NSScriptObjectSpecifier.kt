@@ -163,3 +163,9 @@ open class NSScriptObjectSpecifier(override val ptr: MemorySegment) : NSObject(p
     // ivar: _descriptor: MemorySegment
     // ivar: _error: Long
 }
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSScriptObjectSpecifier.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}

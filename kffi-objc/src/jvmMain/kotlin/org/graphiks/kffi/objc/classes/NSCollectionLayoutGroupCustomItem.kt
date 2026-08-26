@@ -48,3 +48,9 @@ open class NSCollectionLayoutGroupCustomItem(override val ptr: MemorySegment) : 
     }
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSCollectionLayoutGroupCustomItem.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

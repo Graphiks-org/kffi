@@ -39,3 +39,12 @@ open class NSDimension(override val ptr: MemorySegment) : NSUnit(ptr) {
     // ivar: _reserved: Long
     // ivar: _converter: MemorySegment
 }
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSDimension_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSDimension")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}

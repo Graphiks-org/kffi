@@ -111,3 +111,21 @@ open class NSPredicateEditorRowTemplate(override val ptr: MemorySegment) : NSObj
     }
 
 }
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSPredicateEditorRowTemplate.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSPredicateEditorRowTemplate.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSPredicateEditorRowTemplate.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

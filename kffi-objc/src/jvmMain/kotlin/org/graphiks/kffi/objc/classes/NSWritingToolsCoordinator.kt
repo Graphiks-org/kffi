@@ -39,12 +39,6 @@ open class NSWritingToolsCoordinator(override val ptr: MemorySegment) : NSObject
         ObjCRuntime.msgSend(null, ptr, sel, contextID)
     }
 
-    // @property isWritingToolsAvailable
-    open fun isWritingToolsAvailable(): Boolean {
-        val sel = ObjCRuntime.sel("isWritingToolsAvailable")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
     // @property delegate
     /** @return id<NSWritingToolsCoordinatorDelegate> */
     open fun delegate(): MemorySegment {

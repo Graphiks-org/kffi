@@ -9,13 +9,6 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Inherits protocols: NSObject
  */
 interface NSPasteboardReading {
-    /** @return NSArray<NSPasteboardType> * */
-    fun readableTypesForPasteboard(pasteboard: MemorySegment): MemorySegment
-
-    // @optional
-    fun readingOptionsForType_pasteboard(type: MemorySegment, pasteboard: MemorySegment): NSPasteboardReadingOptions =
-        throw UnsupportedOperationException("Optional ObjC method 'readingOptionsForType:pasteboard:' not implemented")
-
     // @optional
     fun initWithPasteboardPropertyList_ofType(propertyList: MemorySegment, type: MemorySegment): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'initWithPasteboardPropertyList:ofType:' not implemented")

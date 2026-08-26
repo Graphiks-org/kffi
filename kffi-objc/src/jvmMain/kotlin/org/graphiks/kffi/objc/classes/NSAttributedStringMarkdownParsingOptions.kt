@@ -77,3 +77,9 @@ open class NSAttributedStringMarkdownParsingOptions(override val ptr: MemorySegm
     }
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSAttributedStringMarkdownParsingOptions.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

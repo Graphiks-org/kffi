@@ -198,12 +198,6 @@ open class NSFontManager(override val ptr: MemorySegment) : NSObject(ptr) {
         return NSFontTraitMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, traits.rawValue) as Long)
     }
 
-    // @property sharedFontManager
-    open fun sharedFontManager(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedFontManager")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property multiple
     open fun isMultiple(): Boolean {
         val sel = ObjCRuntime.sel("isMultiple")

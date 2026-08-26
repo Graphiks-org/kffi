@@ -12,8 +12,6 @@ interface NSAnimatablePropertyContainer {
 
     fun animationForKey(key: MemorySegment): MemorySegment
 
-    fun defaultAnimationForKey(key: MemorySegment): MemorySegment
-
     /** @return NSDictionary<NSAnimatablePropertyKey,id> * */
     fun animations(): MemorySegment
 

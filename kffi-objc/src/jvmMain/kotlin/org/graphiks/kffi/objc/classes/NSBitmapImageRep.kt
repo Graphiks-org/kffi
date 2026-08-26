@@ -217,6 +217,15 @@ open class NSBitmapImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
 
 }
 
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSBitmapImageRep_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSBitmapImageRep")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSBitmapImageFileTypeExtensions on NSBitmapImageRep ─────────────────────────────────────────
 
 fun NSBitmapImageRep.representationUsingType_properties(storageType: NSBitmapImageFileType, properties: MemorySegment): MemorySegment {

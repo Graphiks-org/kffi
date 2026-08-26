@@ -20,10 +20,13 @@ open class NSUnitDispersion(override val ptr: MemorySegment) : NSDimension(ptr) 
 
     }
 
-    // @property partsPerMillion
-    open fun partsPerMillion(): MemorySegment {
-        val sel = ObjCRuntime.sel("partsPerMillion")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitDispersion_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitDispersion")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

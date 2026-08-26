@@ -30,22 +30,13 @@ open class NSUnitFuelEfficiency(override val ptr: MemorySegment) : NSDimension(p
 
     }
 
-    // @property litersPer100Kilometers
-    open fun litersPer100Kilometers(): MemorySegment {
-        val sel = ObjCRuntime.sel("litersPer100Kilometers")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property milesPerImperialGallon
-    open fun milesPerImperialGallon(): MemorySegment {
-        val sel = ObjCRuntime.sel("milesPerImperialGallon")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property milesPerGallon
-    open fun milesPerGallon(): MemorySegment {
-        val sel = ObjCRuntime.sel("milesPerGallon")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitFuelEfficiency_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitFuelEfficiency")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

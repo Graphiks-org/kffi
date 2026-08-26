@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Generated required Objective-C protocol members for adopting classes, including
+  borrowed `NSView.effectiveAppearance()` and `NSWindow.effectiveAppearance()` accessors.
 - JVM-only `kffi-win32` module with generated low-level Win32 FFM bindings for
   selected `user32`, `kernel32`, `gdi32`, and `dwmapi` APIs.
 - Windows integration coverage that creates a real window, verifies a native

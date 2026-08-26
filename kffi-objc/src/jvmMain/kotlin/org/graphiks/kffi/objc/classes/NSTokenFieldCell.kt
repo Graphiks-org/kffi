@@ -44,12 +44,6 @@ open class NSTokenFieldCell(override val ptr: MemorySegment) : NSTextFieldCell(p
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
-    // @property defaultCompletionDelay
-    open fun defaultCompletionDelay(): Double {
-        val sel = ObjCRuntime.sel("defaultCompletionDelay")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
-    }
-
     // @property tokenizingCharacterSet
     open fun tokenizingCharacterSet(): MemorySegment {
         val sel = ObjCRuntime.sel("tokenizingCharacterSet")
@@ -58,12 +52,6 @@ open class NSTokenFieldCell(override val ptr: MemorySegment) : NSTextFieldCell(p
     open fun setTokenizingCharacterSet(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setTokenizingCharacterSet:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
-    // @property defaultTokenizingCharacterSet
-    open fun defaultTokenizingCharacterSet(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultTokenizingCharacterSet")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property delegate

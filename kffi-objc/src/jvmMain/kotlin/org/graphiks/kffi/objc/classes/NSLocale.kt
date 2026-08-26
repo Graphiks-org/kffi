@@ -43,6 +43,27 @@ open class NSLocale(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSLocale.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSLocale.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSLocale_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSLocale")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSExtendedLocale on NSLocale ─────────────────────────────────────────
 
 fun NSLocale.localizedStringForLocaleIdentifier(localeIdentifier: MemorySegment): MemorySegment {
@@ -225,24 +246,6 @@ fun NSLocale_systemLocale(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
 }
 
-// @property autoupdatingCurrentLocale
-fun NSLocale.autoupdatingCurrentLocale(): MemorySegment {
-    val sel = ObjCRuntime.sel("autoupdatingCurrentLocale")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property currentLocale
-fun NSLocale.currentLocale(): MemorySegment {
-    val sel = ObjCRuntime.sel("currentLocale")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property systemLocale
-fun NSLocale.systemLocale(): MemorySegment {
-    val sel = ObjCRuntime.sel("systemLocale")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
 // ── Category: NSLocaleGeneralInfo on NSLocale ─────────────────────────────────────────
 
 // Class method: +[NSLocale componentsFromLocaleIdentifier:]
@@ -341,46 +344,4 @@ fun NSLocale_preferredLanguages(): MemorySegment {
     val sel = ObjCRuntime.sel("preferredLanguages")
     val cls = ObjCRuntime.getClass("NSLocale")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
-}
-
-// @property availableLocaleIdentifiers
-/** @return NSArray<NSString *> * */
-fun NSLocale.availableLocaleIdentifiers(): MemorySegment {
-    val sel = ObjCRuntime.sel("availableLocaleIdentifiers")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property ISOLanguageCodes
-/** @return NSArray<NSString *> * */
-fun NSLocale.ISOLanguageCodes(): MemorySegment {
-    val sel = ObjCRuntime.sel("ISOLanguageCodes")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property ISOCountryCodes
-/** @return NSArray<NSString *> * */
-fun NSLocale.ISOCountryCodes(): MemorySegment {
-    val sel = ObjCRuntime.sel("ISOCountryCodes")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property ISOCurrencyCodes
-/** @return NSArray<NSString *> * */
-fun NSLocale.ISOCurrencyCodes(): MemorySegment {
-    val sel = ObjCRuntime.sel("ISOCurrencyCodes")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property commonISOCurrencyCodes
-/** @return NSArray<NSString *> * */
-fun NSLocale.commonISOCurrencyCodes(): MemorySegment {
-    val sel = ObjCRuntime.sel("commonISOCurrencyCodes")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property preferredLanguages
-/** @return NSArray<NSString *> * */
-fun NSLocale.preferredLanguages(): MemorySegment {
-    val sel = ObjCRuntime.sel("preferredLanguages")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }

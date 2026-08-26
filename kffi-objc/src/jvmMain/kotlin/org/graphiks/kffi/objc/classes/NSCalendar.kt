@@ -215,18 +215,6 @@ open class NSCalendar(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, date, components) as Boolean
     }
 
-    // @property currentCalendar
-    open fun currentCalendar(): MemorySegment {
-        val sel = ObjCRuntime.sel("currentCalendar")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property autoupdatingCurrentCalendar
-    open fun autoupdatingCurrentCalendar(): MemorySegment {
-        val sel = ObjCRuntime.sel("autoupdatingCurrentCalendar")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property calendarIdentifier
     open fun calendarIdentifier(): MemorySegment {
         val sel = ObjCRuntime.sel("calendarIdentifier")
@@ -417,4 +405,31 @@ open class NSCalendar(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
     open fun PMSymbolAsString(): String = ObjCRuntime.toJavaString(PMSymbol())
 
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSCalendar.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSCalendar.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSCalendar.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSCalendar_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSCalendar")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

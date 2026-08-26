@@ -163,23 +163,4 @@ open class NSSpeechSynthesizer(override val ptr: MemorySegment) : NSObject(ptr) 
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
-    // @property anyApplicationSpeaking
-    open fun isAnyApplicationSpeaking(): Boolean {
-        val sel = ObjCRuntime.sel("isAnyApplicationSpeaking")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property defaultVoice
-    open fun defaultVoice(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultVoice")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property availableVoices
-    /** @return NSArray<NSSpeechSynthesizerVoiceName> * */
-    open fun availableVoices(): MemorySegment {
-        val sel = ObjCRuntime.sel("availableVoices")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
 }

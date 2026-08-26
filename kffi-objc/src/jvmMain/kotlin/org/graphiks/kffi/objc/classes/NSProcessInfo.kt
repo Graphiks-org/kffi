@@ -63,12 +63,6 @@ open class NSProcessInfo(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun enableAutomaticTermination(reason: String): Unit = enableAutomaticTermination(ObjCRuntime.newNSString(Arena.global(), reason))
 
-    // @property processInfo
-    open fun processInfo(): MemorySegment {
-        val sel = ObjCRuntime.sel("processInfo")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property environment
     /** @return NSDictionary<NSString *,NSString *> * */
     open fun environment(): MemorySegment {

@@ -95,3 +95,75 @@ open class NSInputManager(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.insertText(string: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("insertText:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, string)
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.doCommandBySelector(selector: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("doCommandBySelector:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, selector)
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.setMarkedText_selectedRange(string: MemorySegment, selRange: NSRange): Unit {
+    val sel = ObjCRuntime.sel("setMarkedText:selectedRange:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, string, ObjCRuntime.ObjCStructArg(selRange.segment, NSRange.layout))
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.unmarkText(): Unit {
+    val sel = ObjCRuntime.sel("unmarkText")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.hasMarkedText(): Boolean {
+    val sel = ObjCRuntime.sel("hasMarkedText")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.conversationIdentifier(): Long {
+    val sel = ObjCRuntime.sel("conversationIdentifier")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.attributedSubstringFromRange(range: NSRange): MemorySegment {
+    val sel = ObjCRuntime.sel("attributedSubstringFromRange:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.markedRange(): NSRange {
+    val sel = ObjCRuntime.sel("markedRange")
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel))
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.selectedRange(): NSRange {
+    val sel = ObjCRuntime.sel("selectedRange")
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel))
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.firstRectForCharacterRange(range: NSRange): NSRect {
+    val sel = ObjCRuntime.sel("firstRectForCharacterRange:")
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)))
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.characterIndexForPoint(point: NSPoint): Long {
+    val sel = ObjCRuntime.sel("characterIndexForPoint:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Long
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSInputManager.validAttributesForMarkedText(): MemorySegment {
+    val sel = ObjCRuntime.sel("validAttributesForMarkedText")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}

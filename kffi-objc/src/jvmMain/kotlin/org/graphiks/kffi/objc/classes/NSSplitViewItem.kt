@@ -234,3 +234,47 @@ open class NSSplitViewItem(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+/**
+ * Required by Objective-C protocol NSAnimatablePropertyContainer.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSSplitViewItem.animations(): MemorySegment {
+    val sel = ObjCRuntime.sel("animations")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+fun NSSplitViewItem.setAnimations(value: MemorySegment) {
+    val sel = ObjCRuntime.sel("setAnimations:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/** Required by Objective-C protocol NSAnimatablePropertyContainer. */
+fun NSSplitViewItem.animator(): MemorySegment {
+    val sel = ObjCRuntime.sel("animator")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSAnimatablePropertyContainer. */
+fun NSSplitViewItem.animationForKey(key: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("animationForKey:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSAnimatablePropertyContainer. */
+fun NSSplitViewItem_defaultAnimationForKey(key: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("defaultAnimationForKey:")
+    val cls = ObjCRuntime.getClass("NSSplitViewItem")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, key) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSSplitViewItem.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSSplitViewItem.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}

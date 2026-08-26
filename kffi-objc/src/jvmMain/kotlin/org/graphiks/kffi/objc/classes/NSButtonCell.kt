@@ -260,11 +260,6 @@ open class NSButtonCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
 
 // ── Category: NSDeprecated on NSButtonCell ─────────────────────────────────────────
 
-fun NSButtonCell.setTitleWithMnemonic(stringWithAmpersand: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("setTitleWithMnemonic:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, stringWithAmpersand)
-}
-
 fun NSButtonCell.setAlternateTitleWithMnemonic(stringWithAmpersand: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setAlternateTitleWithMnemonic:")
     ObjCRuntime.msgSend(null, this.ptr, sel, stringWithAmpersand)

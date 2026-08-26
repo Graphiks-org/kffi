@@ -40,34 +40,13 @@ open class NSUnitElectricResistance(override val ptr: MemorySegment) : NSDimensi
 
     }
 
-    // @property megaohms
-    open fun megaohms(): MemorySegment {
-        val sel = ObjCRuntime.sel("megaohms")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property kiloohms
-    open fun kiloohms(): MemorySegment {
-        val sel = ObjCRuntime.sel("kiloohms")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property ohms
-    open fun ohms(): MemorySegment {
-        val sel = ObjCRuntime.sel("ohms")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property milliohms
-    open fun milliohms(): MemorySegment {
-        val sel = ObjCRuntime.sel("milliohms")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property microohms
-    open fun microohms(): MemorySegment {
-        val sel = ObjCRuntime.sel("microohms")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitElectricResistance_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitElectricResistance")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

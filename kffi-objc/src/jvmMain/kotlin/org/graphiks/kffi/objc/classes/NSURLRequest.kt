@@ -40,12 +40,6 @@ open class NSURLRequest(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, URL, cachePolicy.rawValue, timeoutInterval) as MemorySegment
     }
 
-    // @property supportsSecureCoding
-    open fun supportsSecureCoding(): Boolean {
-        val sel = ObjCRuntime.sel("supportsSecureCoding")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
     // @property URL
     open fun URL(): MemorySegment {
         val sel = ObjCRuntime.sel("URL")
@@ -136,6 +130,30 @@ open class NSURLRequest(override val ptr: MemorySegment) : NSObject(ptr) {
 
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _internal: MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSURLRequest.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSURLRequest.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSURLRequest.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSMutableCopying. */
+fun NSURLRequest.mutableCopyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("mutableCopyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
 }
 
 // ── Category: NSHTTPURLRequest on NSURLRequest ─────────────────────────────────────────

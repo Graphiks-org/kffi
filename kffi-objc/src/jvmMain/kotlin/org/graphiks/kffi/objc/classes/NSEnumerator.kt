@@ -22,6 +22,12 @@ open class NSEnumerator(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSFastEnumeration. */
+fun NSEnumerator.countByEnumeratingWithState_objects_count(state: NSFastEnumerationStatePointer, buffer: MemorySegment, len: Long): Long {
+    val sel = ObjCRuntime.sel("countByEnumeratingWithState:objects:count:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, state.segment, buffer, len) as Long
+}
+
 // ── Category: NSExtendedEnumerator on NSEnumerator ─────────────────────────────────────────
 
 /** @return NSArray<ObjectType> * */

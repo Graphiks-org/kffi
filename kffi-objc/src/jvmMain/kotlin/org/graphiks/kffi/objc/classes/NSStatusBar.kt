@@ -29,12 +29,6 @@ open class NSStatusBar(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, item)
     }
 
-    // @property systemStatusBar
-    open fun systemStatusBar(): MemorySegment {
-        val sel = ObjCRuntime.sel("systemStatusBar")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property vertical
     open fun isVertical(): Boolean {
         val sel = ObjCRuntime.sel("isVertical")

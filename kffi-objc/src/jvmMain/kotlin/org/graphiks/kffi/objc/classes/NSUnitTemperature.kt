@@ -30,22 +30,13 @@ open class NSUnitTemperature(override val ptr: MemorySegment) : NSDimension(ptr)
 
     }
 
-    // @property kelvin
-    open fun kelvin(): MemorySegment {
-        val sel = ObjCRuntime.sel("kelvin")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property celsius
-    open fun celsius(): MemorySegment {
-        val sel = ObjCRuntime.sel("celsius")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property fahrenheit
-    open fun fahrenheit(): MemorySegment {
-        val sel = ObjCRuntime.sel("fahrenheit")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitTemperature_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitTemperature")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

@@ -168,20 +168,9 @@ fun NSMutableURLRequest.addValue_forHTTPHeaderField(value: MemorySegment, field:
     ObjCRuntime.msgSend(null, this.ptr, sel, value, field)
 }
 
-fun NSMutableURLRequest.HTTPMethod(): MemorySegment {
-    val sel = ObjCRuntime.sel("HTTPMethod")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
 fun NSMutableURLRequest.setHTTPMethod(HTTPMethod: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setHTTPMethod:")
     ObjCRuntime.msgSend(null, this.ptr, sel, HTTPMethod)
-}
-
-/** @return NSDictionary<NSString *,NSString *> * */
-fun NSMutableURLRequest.allHTTPHeaderFields(): MemorySegment {
-    val sel = ObjCRuntime.sel("allHTTPHeaderFields")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 fun NSMutableURLRequest.setAllHTTPHeaderFields(allHTTPHeaderFields: MemorySegment): Unit {
@@ -189,19 +178,9 @@ fun NSMutableURLRequest.setAllHTTPHeaderFields(allHTTPHeaderFields: MemorySegmen
     ObjCRuntime.msgSend(null, this.ptr, sel, allHTTPHeaderFields)
 }
 
-fun NSMutableURLRequest.HTTPBody(): MemorySegment {
-    val sel = ObjCRuntime.sel("HTTPBody")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
 fun NSMutableURLRequest.setHTTPBody(HTTPBody: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setHTTPBody:")
     ObjCRuntime.msgSend(null, this.ptr, sel, HTTPBody)
-}
-
-fun NSMutableURLRequest.HTTPBodyStream(): MemorySegment {
-    val sel = ObjCRuntime.sel("HTTPBodyStream")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 fun NSMutableURLRequest.setHTTPBodyStream(HTTPBodyStream: MemorySegment): Unit {
@@ -209,19 +188,9 @@ fun NSMutableURLRequest.setHTTPBodyStream(HTTPBodyStream: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, HTTPBodyStream)
 }
 
-fun NSMutableURLRequest.HTTPShouldHandleCookies(): Boolean {
-    val sel = ObjCRuntime.sel("HTTPShouldHandleCookies")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
 fun NSMutableURLRequest.setHTTPShouldHandleCookies(HTTPShouldHandleCookies: Boolean): Unit {
     val sel = ObjCRuntime.sel("setHTTPShouldHandleCookies:")
     ObjCRuntime.msgSend(null, this.ptr, sel, HTTPShouldHandleCookies)
-}
-
-fun NSMutableURLRequest.HTTPShouldUsePipelining(): Boolean {
-    val sel = ObjCRuntime.sel("HTTPShouldUsePipelining")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
 fun NSMutableURLRequest.setHTTPShouldUsePipelining(HTTPShouldUsePipelining: Boolean): Unit {
