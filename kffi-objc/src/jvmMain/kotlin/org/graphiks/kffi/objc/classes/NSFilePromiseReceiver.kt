@@ -26,13 +26,6 @@ open class NSFilePromiseReceiver(override val ptr: MemorySegment) : NSObject(ptr
         ObjCRuntime.msgSend(null, ptr, sel, destinationDir, options, operationQueue, reader)
     }
 
-    // @property readableDraggedTypes
-    /** @return NSArray<NSString *> * */
-    open fun readableDraggedTypes(): MemorySegment {
-        val sel = ObjCRuntime.sel("readableDraggedTypes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property fileTypes
     /** @return NSArray<NSString *> * */
     open fun fileTypes(): MemorySegment {
@@ -47,4 +40,11 @@ open class NSFilePromiseReceiver(override val ptr: MemorySegment) : NSObject(ptr
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+}
+
+/** Required by Objective-C protocol NSPasteboardReading. */
+fun NSFilePromiseReceiver_readableTypesForPasteboard(pasteboard: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("readableTypesForPasteboard:")
+    val cls = ObjCRuntime.getClass("NSFilePromiseReceiver")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, pasteboard) as MemorySegment
 }

@@ -62,3 +62,9 @@ open class NSDistantObject(override val ptr: MemorySegment) : NSProxy(ptr) {
     // ivar: _wireType: Byte
     // ivar: _remoteClass: MemorySegment
 }
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSDistantObject.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}

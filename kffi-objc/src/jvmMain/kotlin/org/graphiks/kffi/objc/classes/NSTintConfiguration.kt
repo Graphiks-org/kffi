@@ -35,18 +35,6 @@ open class NSTintConfiguration(override val ptr: MemorySegment) : NSObject(ptr) 
 
     }
 
-    // @property defaultTintConfiguration
-    open fun defaultTintConfiguration(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultTintConfiguration")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property monochromeTintConfiguration
-    open fun monochromeTintConfiguration(): MemorySegment {
-        val sel = ObjCRuntime.sel("monochromeTintConfiguration")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property baseTintColor
     open fun baseTintColor(): MemorySegment {
         val sel = ObjCRuntime.sel("baseTintColor")
@@ -65,4 +53,31 @@ open class NSTintConfiguration(override val ptr: MemorySegment) : NSObject(ptr) 
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSTintConfiguration.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSTintConfiguration.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSTintConfiguration.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSTintConfiguration_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSTintConfiguration")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

@@ -183,47 +183,6 @@ open class NSDecimalNumber(override val ptr: MemorySegment) : NSNumber(ptr) {
         return NSDecimal(ObjCRuntime.msgSendStruct(NSDecimal.layout, ptr, sel))
     }
 
-    // @property zero
-    open fun zero(): MemorySegment {
-        val sel = ObjCRuntime.sel("zero")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property one
-    open fun one(): MemorySegment {
-        val sel = ObjCRuntime.sel("one")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property minimumDecimalNumber
-    open fun minimumDecimalNumber(): MemorySegment {
-        val sel = ObjCRuntime.sel("minimumDecimalNumber")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property maximumDecimalNumber
-    open fun maximumDecimalNumber(): MemorySegment {
-        val sel = ObjCRuntime.sel("maximumDecimalNumber")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property notANumber
-    open fun notANumber(): MemorySegment {
-        val sel = ObjCRuntime.sel("notANumber")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property defaultBehavior
-    /** @return id<NSDecimalNumberBehaviors> */
-    open fun defaultBehavior(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultBehavior")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-    open fun setDefaultBehavior(value: MemorySegment) {
-        val sel = ObjCRuntime.sel("setDefaultBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
     // @property objCType
     override fun objCType(): MemorySegment {
         val sel = ObjCRuntime.sel("objCType")

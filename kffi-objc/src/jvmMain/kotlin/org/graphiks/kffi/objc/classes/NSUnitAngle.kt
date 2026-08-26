@@ -45,40 +45,13 @@ open class NSUnitAngle(override val ptr: MemorySegment) : NSDimension(ptr) {
 
     }
 
-    // @property degrees
-    open fun degrees(): MemorySegment {
-        val sel = ObjCRuntime.sel("degrees")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property arcMinutes
-    open fun arcMinutes(): MemorySegment {
-        val sel = ObjCRuntime.sel("arcMinutes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property arcSeconds
-    open fun arcSeconds(): MemorySegment {
-        val sel = ObjCRuntime.sel("arcSeconds")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property radians
-    open fun radians(): MemorySegment {
-        val sel = ObjCRuntime.sel("radians")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property gradians
-    open fun gradians(): MemorySegment {
-        val sel = ObjCRuntime.sel("gradians")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property revolutions
-    open fun revolutions(): MemorySegment {
-        val sel = ObjCRuntime.sel("revolutions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitAngle_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitAngle")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

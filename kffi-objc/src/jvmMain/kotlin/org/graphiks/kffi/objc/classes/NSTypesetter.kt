@@ -230,18 +230,6 @@ open class NSTypesetter(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property sharedSystemTypesetter
-    open fun sharedSystemTypesetter(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedSystemTypesetter")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property defaultTypesetterBehavior
-    open fun defaultTypesetterBehavior(): NSTypesetterBehavior {
-        val sel = ObjCRuntime.sel("defaultTypesetterBehavior")
-        return NSTypesetterBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
-    }
-
 }
 
 // ── Category: NSLayoutPhaseInterface on NSTypesetter ─────────────────────────────────────────

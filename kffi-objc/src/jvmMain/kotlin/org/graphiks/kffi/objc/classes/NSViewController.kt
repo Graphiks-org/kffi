@@ -162,6 +162,19 @@ open class NSViewController(override val ptr: MemorySegment) : NSResponder(ptr) 
 
 }
 
+/**
+ * Required by Objective-C protocol NSUserInterfaceItemIdentification.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSViewController.identifier(): MemorySegment {
+    val sel = ObjCRuntime.sel("identifier")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+fun NSViewController.setIdentifier(value: MemorySegment) {
+    val sel = ObjCRuntime.sel("setIdentifier:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
 // ── Category: NSViewControllerPresentation on NSViewController ─────────────────────────────────────────
 
 fun NSViewController.presentViewController_animator(viewController: MemorySegment, animator: MemorySegment): Unit {

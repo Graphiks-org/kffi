@@ -40,34 +40,13 @@ open class NSUnitElectricPotentialDifference(override val ptr: MemorySegment) : 
 
     }
 
-    // @property megavolts
-    open fun megavolts(): MemorySegment {
-        val sel = ObjCRuntime.sel("megavolts")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property kilovolts
-    open fun kilovolts(): MemorySegment {
-        val sel = ObjCRuntime.sel("kilovolts")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property volts
-    open fun volts(): MemorySegment {
-        val sel = ObjCRuntime.sel("volts")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property millivolts
-    open fun millivolts(): MemorySegment {
-        val sel = ObjCRuntime.sel("millivolts")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property microvolts
-    open fun microvolts(): MemorySegment {
-        val sel = ObjCRuntime.sel("microvolts")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitElectricPotentialDifference_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitElectricPotentialDifference")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

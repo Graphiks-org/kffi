@@ -39,22 +39,4 @@ open class NSScrollEdgeEffectStyle(override val ptr: MemorySegment) : NSObject(p
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property automaticStyle
-    open fun automaticStyle(): MemorySegment {
-        val sel = ObjCRuntime.sel("automaticStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property softStyle
-    open fun softStyle(): MemorySegment {
-        val sel = ObjCRuntime.sel("softStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property hardStyle
-    open fun hardStyle(): MemorySegment {
-        val sel = ObjCRuntime.sel("hardStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
 }

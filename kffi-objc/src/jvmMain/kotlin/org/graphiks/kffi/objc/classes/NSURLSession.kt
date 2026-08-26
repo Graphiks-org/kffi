@@ -142,12 +142,6 @@ open class NSURLSession(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property sharedSession
-    open fun sharedSession(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedSession")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property delegateQueue
     open fun delegateQueue(): MemorySegment {
         val sel = ObjCRuntime.sel("delegateQueue")

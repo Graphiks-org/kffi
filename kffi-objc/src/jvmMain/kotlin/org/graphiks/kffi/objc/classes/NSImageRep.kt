@@ -257,25 +257,16 @@ open class NSImageRep(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
-    // @property registeredImageRepClasses
-    /** @return NSArray<Class> * */
-    open fun registeredImageRepClasses(): MemorySegment {
-        val sel = ObjCRuntime.sel("registeredImageRepClasses")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property imageUnfilteredTypes
-    /** @return NSArray<NSString *> * */
-    open fun imageUnfilteredTypes(): MemorySegment {
-        val sel = ObjCRuntime.sel("imageUnfilteredTypes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+/** Required by Objective-C protocol NSCopying. */
+fun NSImageRep.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
 
-    // @property imageTypes
-    /** @return NSArray<NSString *> * */
-    open fun imageTypes(): MemorySegment {
-        val sel = ObjCRuntime.sel("imageTypes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/** Required by Objective-C protocol NSCoding. */
+fun NSImageRep.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
 }

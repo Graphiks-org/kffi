@@ -74,6 +74,12 @@ open class NSScanner(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSScanner.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
 // ── Category: NSExtendedScanner on NSScanner ─────────────────────────────────────────
 
 fun NSScanner.scanInt(result: MemorySegment): Boolean {

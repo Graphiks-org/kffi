@@ -145,3 +145,9 @@ open class NSScriptCommandDescription(override val ptr: MemorySegment) : NSObjec
     // ivar: _plistResultTypeAppleEventCode: Int
     // ivar: _moreVars: MemorySegment
 }
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSScriptCommandDescription.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}

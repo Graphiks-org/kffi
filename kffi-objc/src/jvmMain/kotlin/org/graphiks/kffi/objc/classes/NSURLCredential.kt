@@ -26,6 +26,33 @@ open class NSURLCredential(override val ptr: MemorySegment) : NSObject(ptr) {
     // ivar: _internal: MemorySegment
 }
 
+/** Required by Objective-C protocol NSCoding. */
+fun NSURLCredential.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSURLCredential.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSURLCredential_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSURLCredential")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSURLCredential.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
 // ── Category: NSInternetPassword on NSURLCredential ─────────────────────────────────────────
 
 fun NSURLCredential.initWithUser_password_persistence(user: MemorySegment, password: MemorySegment, persistence: NSURLCredentialPersistence): MemorySegment {

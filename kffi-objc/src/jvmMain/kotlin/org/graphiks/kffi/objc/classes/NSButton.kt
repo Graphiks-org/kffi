@@ -378,6 +378,12 @@ open class NSButton(override val ptr: MemorySegment) : NSControl(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSUserInterfaceValidations. */
+fun NSButton.validateUserInterfaceItem(item: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("validateUserInterfaceItem:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, item) as Boolean
+}
+
 // ── Category: NSButtonDeprecated on NSButton ─────────────────────────────────────────
 
 fun NSButton.setTitleWithMnemonic(stringWithAmpersand: MemorySegment): Unit {

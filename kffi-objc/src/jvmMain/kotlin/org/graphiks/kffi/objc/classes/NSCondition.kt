@@ -52,3 +52,15 @@ open class NSCondition(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun setName(value: String) = setName(ObjCRuntime.newNSString(Arena.global(), value))
 
 }
+
+/** Required by Objective-C protocol NSLocking. */
+fun NSCondition.lock(): Unit {
+    val sel = ObjCRuntime.sel("lock")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+/** Required by Objective-C protocol NSLocking. */
+fun NSCondition.unlock(): Unit {
+    val sel = ObjCRuntime.sel("unlock")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}

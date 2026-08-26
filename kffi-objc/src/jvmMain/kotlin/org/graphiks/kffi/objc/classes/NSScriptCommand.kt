@@ -170,3 +170,9 @@ open class NSScriptCommand(override val ptr: MemorySegment) : NSObject(ptr) {
     // ivar: _moreVars: MemorySegment
     // ivar: _reserved: MemorySegment
 }
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSScriptCommand.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}

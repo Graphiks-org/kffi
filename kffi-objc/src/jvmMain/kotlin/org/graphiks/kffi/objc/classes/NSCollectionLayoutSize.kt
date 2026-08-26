@@ -43,3 +43,9 @@ open class NSCollectionLayoutSize(override val ptr: MemorySegment) : NSObject(pt
     }
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSCollectionLayoutSize.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

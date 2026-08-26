@@ -101,12 +101,6 @@ open class NSOpenGLContext(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
-    // @property currentContext
-    open fun currentContext(): MemorySegment {
-        val sel = ObjCRuntime.sel("currentContext")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property currentVirtualScreen
     open fun currentVirtualScreen(): Int {
         val sel = ObjCRuntime.sel("currentVirtualScreen")
@@ -123,6 +117,18 @@ open class NSOpenGLContext(override val ptr: MemorySegment) : NSObject(ptr) {
         return CGLContextObj(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
 
+}
+
+/** Required by Objective-C protocol NSLocking. */
+fun NSOpenGLContext.lock(): Unit {
+    val sel = ObjCRuntime.sel("lock")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+/** Required by Objective-C protocol NSLocking. */
+fun NSOpenGLContext.unlock(): Unit {
+    val sel = ObjCRuntime.sel("unlock")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
 // ── Category: NSOpenGLPixelBuffer on NSOpenGLContext ─────────────────────────────────────────

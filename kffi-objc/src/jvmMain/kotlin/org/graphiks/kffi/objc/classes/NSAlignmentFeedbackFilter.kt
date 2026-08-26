@@ -52,10 +52,4 @@ open class NSAlignmentFeedbackFilter(override val ptr: MemorySegment) : NSObject
         ObjCRuntime.msgSend(null, ptr, sel, alignmentFeedbackTokens, performanceTime.rawValue)
     }
 
-    // @property inputEventMask
-    open fun inputEventMask(): NSEventMask {
-        val sel = ObjCRuntime.sel("inputEventMask")
-        return NSEventMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
-    }
-
 }

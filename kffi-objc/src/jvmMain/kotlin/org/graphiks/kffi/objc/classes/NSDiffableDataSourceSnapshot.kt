@@ -148,3 +148,9 @@ open class NSDiffableDataSourceSnapshot(override val ptr: MemorySegment) : NSObj
     }
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSDiffableDataSourceSnapshot.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

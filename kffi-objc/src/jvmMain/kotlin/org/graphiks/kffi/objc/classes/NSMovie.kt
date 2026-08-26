@@ -36,3 +36,9 @@ open class NSMovie(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSMovie.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}

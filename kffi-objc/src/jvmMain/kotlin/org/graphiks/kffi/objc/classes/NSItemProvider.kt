@@ -161,6 +161,12 @@ open class NSItemProvider(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSItemProvider.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
 // ── Category: NSPreviewSupport on NSItemProvider ─────────────────────────────────────────
 
 fun NSItemProvider.loadPreviewImageWithOptions_completionHandler(options: MemorySegment, completionHandler: MemorySegment): Unit {

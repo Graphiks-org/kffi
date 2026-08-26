@@ -66,6 +66,12 @@ open class NSAppleScript(override val ptr: MemorySegment) : NSObject(ptr) {
     // ivar: _reserved2: MemorySegment
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSAppleScript.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
 // ── Category: NSExtensions on NSAppleScript ─────────────────────────────────────────
 
 fun NSAppleScript.richTextSource(): MemorySegment {

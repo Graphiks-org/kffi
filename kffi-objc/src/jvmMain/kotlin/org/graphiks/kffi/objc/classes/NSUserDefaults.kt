@@ -300,12 +300,6 @@ open class NSUserDefaults(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun objectIsForcedForKey_inDomain(key: String, domain: String): Boolean = objectIsForcedForKey_inDomain(ObjCRuntime.newNSString(Arena.global(), key), ObjCRuntime.newNSString(Arena.global(), domain))
 
-    // @property standardUserDefaults
-    open fun standardUserDefaults(): MemorySegment {
-        val sel = ObjCRuntime.sel("standardUserDefaults")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property volatileDomainNames
     /** @return NSArray<NSString *> * */
     open fun volatileDomainNames(): MemorySegment {

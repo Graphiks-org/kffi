@@ -49,6 +49,39 @@ open class NSDictionary(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSDictionary.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSMutableCopying. */
+fun NSDictionary.mutableCopyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("mutableCopyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSDictionary.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSDictionary_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSDictionary")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSFastEnumeration. */
+fun NSDictionary.countByEnumeratingWithState_objects_count(state: NSFastEnumerationStatePointer, buffer: MemorySegment, len: Long): Long {
+    val sel = ObjCRuntime.sel("countByEnumeratingWithState:objects:count:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, state.segment, buffer, len) as Long
+}
+
 // ── Category: NSExtendedDictionary on NSDictionary ─────────────────────────────────────────
 
 /** @return NSArray<KeyType> * */
@@ -292,11 +325,6 @@ fun NSDictionary_sharedKeySetForKeys(keys: MemorySegment): MemorySegment {
 
 // ── Category: NSGenericFastEnumeration on NSDictionary ─────────────────────────────────────────
 
-fun NSDictionary.countByEnumeratingWithState_objects_count(state: NSFastEnumerationStatePointer, buffer: MemorySegment, len: Long): Long {
-    val sel = ObjCRuntime.sel("countByEnumeratingWithState:objects:count:")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, state.segment, buffer, len) as Long
-}
-
 // ── Category: NSFileAttributes on NSDictionary ─────────────────────────────────────────
 
 fun NSDictionary.fileSize(): Long {
@@ -380,8 +408,3 @@ fun NSDictionary.fileGroupOwnerAccountID(): MemorySegment {
 }
 
 // ── Category: NSKeyValueCoding on NSDictionary ─────────────────────────────────────────
-
-fun NSDictionary.valueForKey(key: MemorySegment): MemorySegment {
-    val sel = ObjCRuntime.sel("valueForKey:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key) as MemorySegment
-}

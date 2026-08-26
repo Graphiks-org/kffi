@@ -111,3 +111,30 @@ open class NSError(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSError.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSError.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSError.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSError_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSError")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}

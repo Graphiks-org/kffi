@@ -34,15 +34,14 @@ open class NSSliderCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(knobRect.segment, NSRect.layout))
     }
 
+    open fun drawKnob(): Unit {
+        val sel = ObjCRuntime.sel("drawKnob")
+        ObjCRuntime.msgSend(null, ptr, sel)
+    }
+
     open fun drawBarInside_flipped(rect: NSRect, flipped: Boolean): Unit {
         val sel = ObjCRuntime.sel("drawBarInside:flipped:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), flipped)
-    }
-
-    // @property prefersTrackingUntilMouseUp
-    override fun prefersTrackingUntilMouseUp(): Boolean {
-        val sel = ObjCRuntime.sel("prefersTrackingUntilMouseUp")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property minValue
@@ -200,27 +199,7 @@ fun NSSliderCell.titleFont(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
-fun NSSliderCell.title(): MemorySegment {
-    val sel = ObjCRuntime.sel("title")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-fun NSSliderCell.setTitle(string: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("setTitle:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, string)
-}
-
 fun NSSliderCell.setKnobThickness(thickness: Double): Unit {
     val sel = ObjCRuntime.sel("setKnobThickness:")
     ObjCRuntime.msgSend(null, this.ptr, sel, thickness)
-}
-
-fun NSSliderCell.setImage(backgroundImage: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("setImage:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, backgroundImage)
-}
-
-fun NSSliderCell.image(): MemorySegment {
-    val sel = ObjCRuntime.sel("image")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }

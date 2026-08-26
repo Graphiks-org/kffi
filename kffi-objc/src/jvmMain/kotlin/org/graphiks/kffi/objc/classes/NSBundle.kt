@@ -318,26 +318,6 @@ open class NSBundle(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun classNamed(className: String): MemorySegment = classNamed(ObjCRuntime.newNSString(Arena.global(), className))
 
-    // @property mainBundle
-    open fun mainBundle(): MemorySegment {
-        val sel = ObjCRuntime.sel("mainBundle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property allBundles
-    /** @return NSArray<NSBundle *> * */
-    open fun allBundles(): MemorySegment {
-        val sel = ObjCRuntime.sel("allBundles")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property allFrameworks
-    /** @return NSArray<NSBundle *> * */
-    open fun allFrameworks(): MemorySegment {
-        val sel = ObjCRuntime.sel("allFrameworks")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property loaded
     open fun isLoaded(): Boolean {
         val sel = ObjCRuntime.sel("isLoaded")

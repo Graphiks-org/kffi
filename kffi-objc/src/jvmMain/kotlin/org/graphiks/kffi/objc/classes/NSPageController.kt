@@ -88,3 +88,35 @@ open class NSPageController(override val ptr: MemorySegment) : NSViewController(
     }
 
 }
+
+/**
+ * Required by Objective-C protocol NSAnimatablePropertyContainer.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSPageController.animations(): MemorySegment {
+    val sel = ObjCRuntime.sel("animations")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+fun NSPageController.setAnimations(value: MemorySegment) {
+    val sel = ObjCRuntime.sel("setAnimations:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/** Required by Objective-C protocol NSAnimatablePropertyContainer. */
+fun NSPageController.animator(): MemorySegment {
+    val sel = ObjCRuntime.sel("animator")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSAnimatablePropertyContainer. */
+fun NSPageController.animationForKey(key: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("animationForKey:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSAnimatablePropertyContainer. */
+fun NSPageController_defaultAnimationForKey(key: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("defaultAnimationForKey:")
+    val cls = ObjCRuntime.getClass("NSPageController")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, key) as MemorySegment
+}

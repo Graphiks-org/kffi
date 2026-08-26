@@ -83,6 +83,39 @@ open class NSPointerArray(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSFastEnumeration. */
+fun NSPointerArray.countByEnumeratingWithState_objects_count(state: NSFastEnumerationStatePointer, buffer: MemorySegment, len: Long): Long {
+    val sel = ObjCRuntime.sel("countByEnumeratingWithState:objects:count:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, state.segment, buffer, len) as Long
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSPointerArray.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSPointerArray.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSPointerArray.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSPointerArray_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSPointerArray")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSPointerArrayConveniences on NSPointerArray ─────────────────────────────────────────
 
 fun NSPointerArray.allObjects(): MemorySegment {

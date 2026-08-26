@@ -77,13 +77,6 @@ open class NSColorList(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    // @property availableColorLists
-    /** @return NSArray<NSColorList *> * */
-    open fun availableColorLists(): MemorySegment {
-        val sel = ObjCRuntime.sel("availableColorLists")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property name
     open fun name(): MemorySegment {
         val sel = ObjCRuntime.sel("name")
@@ -103,4 +96,25 @@ open class NSColorList(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSColorList.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSColorList.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSColorList_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSColorList")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

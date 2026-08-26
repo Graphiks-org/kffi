@@ -25,16 +25,13 @@ open class NSUnitAcceleration(override val ptr: MemorySegment) : NSDimension(ptr
 
     }
 
-    // @property metersPerSecondSquared
-    open fun metersPerSecondSquared(): MemorySegment {
-        val sel = ObjCRuntime.sel("metersPerSecondSquared")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property gravity
-    open fun gravity(): MemorySegment {
-        val sel = ObjCRuntime.sel("gravity")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitAcceleration_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitAcceleration")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

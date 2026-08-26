@@ -20,17 +20,31 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-KEXTRACT="${KEXTRACT:-$REPO_ROOT/third_party/kextract/build/kextract/bin/kextract}"
+KEXTRACT_DIR="$REPO_ROOT/third_party/kextract"
+KEXTRACT_BUILD_DIR="$KEXTRACT_DIR/build/kextract"
+KEXTRACT="$KEXTRACT_BUILD_DIR/bin/kextract"
+KEXTRACT_REVISION_FILE="$KEXTRACT_BUILD_DIR/.kffi-source-revision"
 LLVM_HOME="${LLVM_HOME:-}"
 
-if [[ ! -x "$KEXTRACT" ]]; then
+if ! KEXTRACT_REVISION="$(git -C "$KEXTRACT_DIR" rev-parse --verify HEAD)"; then
+    echo "error: could not determine the checked-out Kextract revision at $KEXTRACT_DIR" >&2
+    exit 1
+fi
+
+KEXTRACT_ARTIFACT_REVISION=""
+if [[ -f "$KEXTRACT_REVISION_FILE" ]]; then
+    KEXTRACT_ARTIFACT_REVISION="$(<"$KEXTRACT_REVISION_FILE")"
+fi
+
+if [[ ! -x "$KEXTRACT" || "$KEXTRACT_ARTIFACT_REVISION" != "$KEXTRACT_REVISION" ]]; then
     if [[ -z "$LLVM_HOME" || ! -d "$LLVM_HOME" ]]; then
-        echo "error: kextract is missing and LLVM_HOME is not configured" >&2
+        echo "error: kextract for revision $KEXTRACT_REVISION is missing or stale and LLVM_HOME is not configured" >&2
         echo "hint: set LLVM_HOME to the LLVM installation used to build kextract" >&2
         exit 1
     fi
+    echo "Building kextract for revision $KEXTRACT_REVISION"
     (
-        cd "$REPO_ROOT/third_party/kextract"
+        cd "$KEXTRACT_DIR"
         ./gradlew createKextractImage -Pllvm_home="$LLVM_HOME" --no-daemon --console=plain
     )
 fi
@@ -38,6 +52,10 @@ fi
 if [[ ! -x "$KEXTRACT" ]]; then
     echo "error: kextract build did not produce executable '$KEXTRACT'" >&2
     exit 1
+fi
+
+if [[ "$KEXTRACT_ARTIFACT_REVISION" != "$KEXTRACT_REVISION" ]]; then
+    printf '%s\n' "$KEXTRACT_REVISION" > "$KEXTRACT_REVISION_FILE"
 fi
 
 SDK="${SDKROOT:-$(xcrun --sdk macosx --show-sdk-path)}"

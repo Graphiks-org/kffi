@@ -44,10 +44,4 @@ open class NSStoryboard(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, identifier, block) as MemorySegment
     }
 
-    // @property mainStoryboard
-    open fun mainStoryboard(): MemorySegment {
-        val sel = ObjCRuntime.sel("mainStoryboard")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
 }

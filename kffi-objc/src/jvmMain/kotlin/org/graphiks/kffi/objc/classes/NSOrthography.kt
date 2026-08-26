@@ -46,6 +46,27 @@ open class NSOrthography(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSOrthography.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSOrthography.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSOrthography_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSOrthography")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSOrthographyExtended on NSOrthography ─────────────────────────────────────────
 
 /** @return NSArray<NSString *> * */

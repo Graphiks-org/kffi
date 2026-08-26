@@ -85,13 +85,6 @@ open class NSFileCoordinator(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    // @property filePresenters
-    /** @return NSArray<id<NSFilePresenter>> * */
-    open fun filePresenters(): MemorySegment {
-        val sel = ObjCRuntime.sel("filePresenters")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property purposeIdentifier
     open fun purposeIdentifier(): MemorySegment {
         val sel = ObjCRuntime.sel("purposeIdentifier")

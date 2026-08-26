@@ -216,12 +216,6 @@ open class NSDocumentController(override val ptr: MemorySegment) : NSObject(ptr)
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, item) as Boolean
     }
 
-    // @property sharedDocumentController
-    open fun sharedDocumentController(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedDocumentController")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property documents
     /** @return NSArray<__kindof NSDocument *> * */
     open fun documents(): MemorySegment {
@@ -295,6 +289,12 @@ open class NSDocumentController(override val ptr: MemorySegment) : NSObject(ptr)
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSDocumentController.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
 }
 
 // ── Category: NSDeprecated on NSDocumentController ─────────────────────────────────────────

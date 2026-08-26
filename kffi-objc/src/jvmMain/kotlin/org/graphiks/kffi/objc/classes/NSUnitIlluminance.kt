@@ -20,10 +20,13 @@ open class NSUnitIlluminance(override val ptr: MemorySegment) : NSDimension(ptr)
 
     }
 
-    // @property lux
-    open fun lux(): MemorySegment {
-        val sel = ObjCRuntime.sel("lux")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitIlluminance_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitIlluminance")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

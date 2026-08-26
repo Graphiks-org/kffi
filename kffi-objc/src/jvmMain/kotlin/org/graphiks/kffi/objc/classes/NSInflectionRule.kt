@@ -25,12 +25,33 @@ open class NSInflectionRule(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property automaticRule
-    open fun automaticRule(): MemorySegment {
-        val sel = ObjCRuntime.sel("automaticRule")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSInflectionRule.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSInflectionRule.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSInflectionRule.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSInflectionRule_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSInflectionRule")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }
 
 // ── Category: NSInflectionAvailability on NSInflectionRule ─────────────────────────────────────────
@@ -47,10 +68,4 @@ fun NSInflectionRule_canInflectPreferredLocalization(): Boolean {
     val sel = ObjCRuntime.sel("canInflectPreferredLocalization")
     val cls = ObjCRuntime.getClass("NSInflectionRule")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
-}
-
-// @property canInflectPreferredLocalization
-fun NSInflectionRule.canInflectPreferredLocalization(): Boolean {
-    val sel = ObjCRuntime.sel("canInflectPreferredLocalization")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }

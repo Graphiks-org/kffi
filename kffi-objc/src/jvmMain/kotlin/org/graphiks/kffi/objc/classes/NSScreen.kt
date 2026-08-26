@@ -55,31 +55,6 @@ open class NSScreen(override val ptr: MemorySegment) : NSObject(ptr) {
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), options.rawValue))
     }
 
-    // @property screens
-    /** @return NSArray<NSScreen *> * */
-    open fun screens(): MemorySegment {
-        val sel = ObjCRuntime.sel("screens")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property mainScreen
-    open fun mainScreen(): MemorySegment {
-        val sel = ObjCRuntime.sel("mainScreen")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property deepestScreen
-    open fun deepestScreen(): MemorySegment {
-        val sel = ObjCRuntime.sel("deepestScreen")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property screensHaveSeparateSpaces
-    open fun screensHaveSeparateSpaces(): Boolean {
-        val sel = ObjCRuntime.sel("screensHaveSeparateSpaces")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
     // @property depth
     open fun depth(): NSWindowDepth {
         val sel = ObjCRuntime.sel("depth")

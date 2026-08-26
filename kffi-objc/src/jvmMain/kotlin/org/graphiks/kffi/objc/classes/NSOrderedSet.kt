@@ -48,6 +48,39 @@ open class NSOrderedSet(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSOrderedSet.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSMutableCopying. */
+fun NSOrderedSet.mutableCopyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("mutableCopyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSOrderedSet.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSOrderedSet_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSOrderedSet")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSFastEnumeration. */
+fun NSOrderedSet.countByEnumeratingWithState_objects_count(state: NSFastEnumerationStatePointer, buffer: MemorySegment, len: Long): Long {
+    val sel = ObjCRuntime.sel("countByEnumeratingWithState:objects:count:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, state.segment, buffer, len) as Long
+}
+
 // ── Category: NSExtendedOrderedSet on NSOrderedSet ─────────────────────────────────────────
 
 fun NSOrderedSet.getObjects_range(objects: MemorySegment, range: NSRange): Unit {
@@ -363,32 +396,7 @@ fun NSOrderedSet.orderedSetByApplyingDifference(difference: MemorySegment): Memo
 
 // ── Category: NSKeyValueCoding on NSOrderedSet ─────────────────────────────────────────
 
-fun NSOrderedSet.valueForKey(key: MemorySegment): MemorySegment {
-    val sel = ObjCRuntime.sel("valueForKey:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key) as MemorySegment
-}
-
-fun NSOrderedSet.setValue_forKey(value: MemorySegment, key: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("setValue:forKey:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, value, key)
-}
-
 // ── Category: NSKeyValueObserverRegistration on NSOrderedSet ─────────────────────────────────────────
-
-fun NSOrderedSet.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: NSKeyValueObservingOptions, context: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("addObserver:forKeyPath:options:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options.rawValue, context)
-}
-
-fun NSOrderedSet.removeObserver_forKeyPath_context(observer: MemorySegment, keyPath: MemorySegment, context: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("removeObserver:forKeyPath:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, context)
-}
-
-fun NSOrderedSet.removeObserver_forKeyPath(observer: MemorySegment, keyPath: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("removeObserver:forKeyPath:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath)
-}
 
 // ── Category: NSKeyValueSorting on NSOrderedSet ─────────────────────────────────────────
 

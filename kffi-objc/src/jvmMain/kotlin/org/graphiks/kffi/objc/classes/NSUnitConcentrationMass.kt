@@ -30,16 +30,13 @@ open class NSUnitConcentrationMass(override val ptr: MemorySegment) : NSDimensio
 
     }
 
-    // @property gramsPerLiter
-    open fun gramsPerLiter(): MemorySegment {
-        val sel = ObjCRuntime.sel("gramsPerLiter")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property milligramsPerDeciliter
-    open fun milligramsPerDeciliter(): MemorySegment {
-        val sel = ObjCRuntime.sel("milligramsPerDeciliter")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitConcentrationMass_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitConcentrationMass")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

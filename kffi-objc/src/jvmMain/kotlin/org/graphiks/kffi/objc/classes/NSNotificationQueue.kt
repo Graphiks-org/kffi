@@ -39,10 +39,4 @@ open class NSNotificationQueue(override val ptr: MemorySegment) : NSObject(ptr) 
         ObjCRuntime.msgSend(null, ptr, sel, notification, coalesceMask)
     }
 
-    // @property defaultQueue
-    open fun defaultQueue(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultQueue")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
 }

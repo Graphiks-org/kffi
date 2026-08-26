@@ -100,13 +100,6 @@ open class NSSound(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property soundUnfilteredTypes
-    /** @return NSArray<NSString *> * */
-    open fun soundUnfilteredTypes(): MemorySegment {
-        val sel = ObjCRuntime.sel("soundUnfilteredTypes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property playing
     open fun isPlaying(): Boolean {
         val sel = ObjCRuntime.sel("isPlaying")
@@ -170,6 +163,52 @@ open class NSSound(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSSound.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSSound.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSSound.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSSound_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSSound")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSPasteboardReading. */
+fun NSSound_readableTypesForPasteboard(pasteboard: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("readableTypesForPasteboard:")
+    val cls = ObjCRuntime.getClass("NSSound")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, pasteboard) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSPasteboardWriting. */
+fun NSSound.writableTypesForPasteboard(pasteboard: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("writableTypesForPasteboard:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, pasteboard) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSPasteboardWriting. */
+fun NSSound.pasteboardPropertyListForType(type: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("pasteboardPropertyListForType:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, type) as MemorySegment
 }
 
 // ── Category: NSDeprecated on NSSound ─────────────────────────────────────────

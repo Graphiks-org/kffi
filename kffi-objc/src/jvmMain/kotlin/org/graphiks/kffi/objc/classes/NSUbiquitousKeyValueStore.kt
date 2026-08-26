@@ -167,12 +167,6 @@ open class NSUbiquitousKeyValueStore(override val ptr: MemorySegment) : NSObject
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
-    // @property defaultStore
-    open fun defaultStore(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultStore")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property dictionaryRepresentation
     /** @return NSDictionary<NSString *,id> * */
     open fun dictionaryRepresentation(): MemorySegment {

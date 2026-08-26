@@ -270,3 +270,9 @@ open class NSUserNotification(override val ptr: MemorySegment) : NSObject(ptr) {
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _internal: MemorySegment
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSUserNotification.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

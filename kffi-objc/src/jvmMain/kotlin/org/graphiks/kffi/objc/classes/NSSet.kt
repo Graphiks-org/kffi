@@ -49,6 +49,39 @@ open class NSSet(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSSet.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSMutableCopying. */
+fun NSSet.mutableCopyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("mutableCopyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSSet.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSSet_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSSet")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSFastEnumeration. */
+fun NSSet.countByEnumeratingWithState_objects_count(state: NSFastEnumerationStatePointer, buffer: MemorySegment, len: Long): Long {
+    val sel = ObjCRuntime.sel("countByEnumeratingWithState:objects:count:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, state.segment, buffer, len) as Long
+}
+
 // ── Category: NSExtendedSet on NSSet ─────────────────────────────────────────
 
 fun NSSet.anyObject(): MemorySegment {
@@ -208,32 +241,7 @@ fun NSSet_setWithArray(array: MemorySegment): MemorySegment {
 
 // ── Category: NSKeyValueCoding on NSSet ─────────────────────────────────────────
 
-fun NSSet.valueForKey(key: MemorySegment): MemorySegment {
-    val sel = ObjCRuntime.sel("valueForKey:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key) as MemorySegment
-}
-
-fun NSSet.setValue_forKey(value: MemorySegment, key: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("setValue:forKey:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, value, key)
-}
-
 // ── Category: NSKeyValueObserverRegistration on NSSet ─────────────────────────────────────────
-
-fun NSSet.addObserver_forKeyPath_options_context(observer: MemorySegment, keyPath: MemorySegment, options: NSKeyValueObservingOptions, context: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("addObserver:forKeyPath:options:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, options.rawValue, context)
-}
-
-fun NSSet.removeObserver_forKeyPath_context(observer: MemorySegment, keyPath: MemorySegment, context: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("removeObserver:forKeyPath:context:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath, context)
-}
-
-fun NSSet.removeObserver_forKeyPath(observer: MemorySegment, keyPath: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("removeObserver:forKeyPath:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, observer, keyPath)
-}
 
 // ── Category: NSSortDescriptorSorting on NSSet ─────────────────────────────────────────
 

@@ -100,16 +100,6 @@ open class NSPrintOperation(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    // @property currentOperation
-    open fun currentOperation(): MemorySegment {
-        val sel = ObjCRuntime.sel("currentOperation")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-    open fun setCurrentOperation(value: MemorySegment) {
-        val sel = ObjCRuntime.sel("setCurrentOperation:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
     // @property copyingOperation
     open fun isCopyingOperation(): Boolean {
         val sel = ObjCRuntime.sel("isCopyingOperation")

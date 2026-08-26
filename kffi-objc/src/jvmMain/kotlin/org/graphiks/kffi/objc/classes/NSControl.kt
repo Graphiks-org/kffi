@@ -435,16 +435,6 @@ fun NSControl_setCellClass(cellClass: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, cls, sel, cellClass)
 }
 
-// @property cellClass
-fun NSControl.cellClass(): MemorySegment {
-    val sel = ObjCRuntime.sel("cellClass")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-fun NSControl.setCellClass(value: MemorySegment) {
-    val sel = ObjCRuntime.sel("setCellClass:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, value)
-}
-
 // ── Category: NSConstraintBasedLayoutLayering on NSControl ─────────────────────────────────────────
 
 fun NSControl.invalidateIntrinsicContentSizeForCell(cell: MemorySegment): Unit {

@@ -140,3 +140,15 @@ open class NSTabViewItem(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun setToolTip(value: String) = setToolTip(ObjCRuntime.newNSString(Arena.global(), value))
 
 }
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSTabViewItem.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSTabViewItem.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}

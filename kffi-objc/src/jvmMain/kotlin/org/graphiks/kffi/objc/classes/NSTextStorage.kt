@@ -100,6 +100,15 @@ open class NSTextStorage(override val ptr: MemorySegment) : NSMutableAttributedS
 
 }
 
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSTextStorage_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSTextStorage")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: Scripting on NSTextStorage ─────────────────────────────────────────
 
 /** @return NSArray<NSTextStorage *> * */

@@ -66,3 +66,15 @@ open class NSFilePromiseProvider(override val ptr: MemorySegment) : NSObject(ptr
     }
 
 }
+
+/** Required by Objective-C protocol NSPasteboardWriting. */
+fun NSFilePromiseProvider.writableTypesForPasteboard(pasteboard: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("writableTypesForPasteboard:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, pasteboard) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSPasteboardWriting. */
+fun NSFilePromiseProvider.pasteboardPropertyListForType(type: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("pasteboardPropertyListForType:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, type) as MemorySegment
+}

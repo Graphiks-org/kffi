@@ -205,12 +205,6 @@ open class NSWorkspace(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, applicationURL, contentType, completionHandler)
     }
 
-    // @property sharedWorkspace
-    open fun sharedWorkspace(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedWorkspace")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property notificationCenter
     open fun notificationCenter(): MemorySegment {
         val sel = ObjCRuntime.sel("notificationCenter")
@@ -354,6 +348,11 @@ fun NSWorkspace.slideImage_from_to(image: MemorySegment, fromPoint: NSPoint, toP
 
 fun NSWorkspace.checkForRemovableMedia(): Unit {
     val sel = ObjCRuntime.sel("checkForRemovableMedia")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+fun NSWorkspace.noteFileSystemChanged(): Unit {
+    val sel = ObjCRuntime.sel("noteFileSystemChanged")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 

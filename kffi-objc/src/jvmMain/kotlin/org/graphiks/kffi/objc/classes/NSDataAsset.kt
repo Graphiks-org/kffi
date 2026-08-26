@@ -52,3 +52,9 @@ open class NSDataAsset(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun typeIdentifierAsString(): String = ObjCRuntime.toJavaString(typeIdentifier())
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSDataAsset.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

@@ -262,6 +262,25 @@ open class NSTextField(override val ptr: MemorySegment) : NSControl(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSUserInterfaceValidations. */
+fun NSTextField.validateUserInterfaceItem(item: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("validateUserInterfaceItem:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, item) as Boolean
+}
+
+/**
+ * Required by Objective-C protocol NSTextContent.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSTextField.contentType(): MemorySegment {
+    val sel = ObjCRuntime.sel("contentType")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+fun NSTextField.setContentType(value: MemorySegment) {
+    val sel = ObjCRuntime.sel("setContentType:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
 // ── Category: NSTouchBar on NSTextField ─────────────────────────────────────────
 
 fun NSTextField.isAutomaticTextCompletionEnabled(): Boolean {

@@ -73,3 +73,9 @@ open class NSColorPicker(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+/** Required by Objective-C protocol NSColorPickingDefault. */
+fun NSColorPicker.alphaControlAddedOrRemoved(sender: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("alphaControlAddedOrRemoved:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, sender)
+}

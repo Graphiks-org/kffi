@@ -70,3 +70,12 @@ open class NSISO8601DateFormatter(override val ptr: MemorySegment) : NSFormatter
     // ivar: _timeZone: MemorySegment
     // ivar: _formatOptions: MemorySegment
 }
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSISO8601DateFormatter_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSISO8601DateFormatter")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}

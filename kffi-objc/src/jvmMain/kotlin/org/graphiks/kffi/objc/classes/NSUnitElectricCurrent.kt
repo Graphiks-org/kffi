@@ -40,34 +40,13 @@ open class NSUnitElectricCurrent(override val ptr: MemorySegment) : NSDimension(
 
     }
 
-    // @property megaamperes
-    open fun megaamperes(): MemorySegment {
-        val sel = ObjCRuntime.sel("megaamperes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property kiloamperes
-    open fun kiloamperes(): MemorySegment {
-        val sel = ObjCRuntime.sel("kiloamperes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property amperes
-    open fun amperes(): MemorySegment {
-        val sel = ObjCRuntime.sel("amperes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property milliamperes
-    open fun milliamperes(): MemorySegment {
-        val sel = ObjCRuntime.sel("milliamperes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property microamperes
-    open fun microamperes(): MemorySegment {
-        val sel = ObjCRuntime.sel("microamperes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitElectricCurrent_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitElectricCurrent")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

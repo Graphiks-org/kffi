@@ -97,6 +97,33 @@ open class NSMorphology(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSMorphology.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSMorphology.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSMorphology.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSMorphology_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSMorphology")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSCustomPronouns on NSMorphology ─────────────────────────────────────────
 
 fun NSMorphology.customPronounForLanguage(language: MemorySegment): MemorySegment {
@@ -121,10 +148,4 @@ fun NSMorphology_userMorphology(): MemorySegment {
     val sel = ObjCRuntime.sel("userMorphology")
     val cls = ObjCRuntime.getClass("NSMorphology")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
-}
-
-// @property userMorphology
-fun NSMorphology.userMorphology(): MemorySegment {
-    val sel = ObjCRuntime.sel("userMorphology")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }

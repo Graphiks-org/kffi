@@ -62,3 +62,15 @@ open class NSCollectionViewDiffableDataSource(override val ptr: MemorySegment) :
     }
 
 }
+
+/** Required by Objective-C protocol NSCollectionViewDataSource. */
+fun NSCollectionViewDiffableDataSource.collectionView_numberOfItemsInSection(collectionView: MemorySegment, section: Long): Long {
+    val sel = ObjCRuntime.sel("collectionView:numberOfItemsInSection:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, collectionView, section) as Long
+}
+
+/** Required by Objective-C protocol NSCollectionViewDataSource. */
+fun NSCollectionViewDiffableDataSource.collectionView_itemForRepresentedObjectAtIndexPath(collectionView: MemorySegment, indexPath: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("collectionView:itemForRepresentedObjectAtIndexPath:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, collectionView, indexPath) as MemorySegment
+}

@@ -279,12 +279,6 @@ open class NSBrowser(override val ptr: MemorySegment) : NSControl(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, indexPath, event, select)
     }
 
-    // @property cellClass
-    open fun cellClass(): MemorySegment {
-        val sel = ObjCRuntime.sel("cellClass")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property loaded
     open fun isLoaded(): Boolean {
         val sel = ObjCRuntime.sel("isLoaded")

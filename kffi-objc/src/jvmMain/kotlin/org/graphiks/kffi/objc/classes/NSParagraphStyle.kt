@@ -28,12 +28,6 @@ open class NSParagraphStyle(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
-    // @property defaultParagraphStyle
-    open fun defaultParagraphStyle(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultParagraphStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property lineSpacing
     open fun lineSpacing(): Double {
         val sel = ObjCRuntime.sel("lineSpacing")
@@ -144,6 +138,39 @@ open class NSParagraphStyle(override val ptr: MemorySegment) : NSObject(ptr) {
         return NSLineBreakStrategy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSParagraphStyle.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSMutableCopying. */
+fun NSParagraphStyle.mutableCopyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("mutableCopyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSParagraphStyle.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSParagraphStyle.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSParagraphStyle_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSParagraphStyle")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }
 
 // ── Category:  on NSParagraphStyle ─────────────────────────────────────────

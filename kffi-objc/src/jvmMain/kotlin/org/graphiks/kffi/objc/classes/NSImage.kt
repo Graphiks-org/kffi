@@ -314,20 +314,6 @@ open class NSImage(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
-    // @property imageTypes
-    /** @return NSArray<NSString *> * */
-    open fun imageTypes(): MemorySegment {
-        val sel = ObjCRuntime.sel("imageTypes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property imageUnfilteredTypes
-    /** @return NSArray<NSString *> * */
-    open fun imageUnfilteredTypes(): MemorySegment {
-        val sel = ObjCRuntime.sel("imageUnfilteredTypes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property cacheMode
     open fun cacheMode(): NSImageCacheMode {
         val sel = ObjCRuntime.sel("cacheMode")

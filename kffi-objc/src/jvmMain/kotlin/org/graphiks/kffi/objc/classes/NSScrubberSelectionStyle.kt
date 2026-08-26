@@ -40,16 +40,10 @@ open class NSScrubberSelectionStyle(override val ptr: MemorySegment) : NSObject(
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property outlineOverlayStyle
-    open fun outlineOverlayStyle(): MemorySegment {
-        val sel = ObjCRuntime.sel("outlineOverlayStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property roundedBackgroundStyle
-    open fun roundedBackgroundStyle(): MemorySegment {
-        val sel = ObjCRuntime.sel("roundedBackgroundStyle")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/** Required by Objective-C protocol NSCoding. */
+fun NSScrubberSelectionStyle.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
 }

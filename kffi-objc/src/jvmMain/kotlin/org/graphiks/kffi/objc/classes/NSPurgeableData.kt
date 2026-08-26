@@ -16,3 +16,27 @@ open class NSPurgeableData(override val ptr: MemorySegment) : NSMutableData(ptr)
     }
 
 }
+
+/** Required by Objective-C protocol NSDiscardableContent. */
+fun NSPurgeableData.beginContentAccess(): Boolean {
+    val sel = ObjCRuntime.sel("beginContentAccess")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSDiscardableContent. */
+fun NSPurgeableData.endContentAccess(): Unit {
+    val sel = ObjCRuntime.sel("endContentAccess")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+/** Required by Objective-C protocol NSDiscardableContent. */
+fun NSPurgeableData.discardContentIfPossible(): Unit {
+    val sel = ObjCRuntime.sel("discardContentIfPossible")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+/** Required by Objective-C protocol NSDiscardableContent. */
+fun NSPurgeableData.isContentDiscarded(): Boolean {
+    val sel = ObjCRuntime.sel("isContentDiscarded")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}

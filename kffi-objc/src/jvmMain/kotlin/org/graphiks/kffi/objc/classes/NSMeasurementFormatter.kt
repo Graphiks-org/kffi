@@ -75,3 +75,12 @@ open class NSMeasurementFormatter(override val ptr: MemorySegment) : NSFormatter
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _formatter: MemorySegment
 }
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSMeasurementFormatter_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSMeasurementFormatter")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}

@@ -165,18 +165,6 @@ fun NSMutableArray.sortWithOptions_usingComparator(opts: NSSortOptions, cmptr: M
 
 // ── Category: NSMutableArrayCreation on NSMutableArray ─────────────────────────────────────────
 
-/** @return NSMutableArray<ObjectType> * */
-fun NSMutableArray.initWithContentsOfFile(path: MemorySegment): MemorySegment {
-    val sel = ObjCRuntime.sel("initWithContentsOfFile:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path) as MemorySegment
-}
-
-/** @return NSMutableArray<ObjectType> * */
-fun NSMutableArray.initWithContentsOfURL(url: MemorySegment): MemorySegment {
-    val sel = ObjCRuntime.sel("initWithContentsOfURL:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url) as MemorySegment
-}
-
 // Class method: +[NSMutableArray arrayWithCapacity:]
 fun NSMutableArray_arrayWithCapacity(numItems: Long): MemorySegment {
     val sel = ObjCRuntime.sel("arrayWithCapacity:")

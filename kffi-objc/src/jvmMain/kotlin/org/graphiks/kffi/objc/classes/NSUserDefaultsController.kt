@@ -44,12 +44,6 @@ open class NSUserDefaultsController(override val ptr: MemorySegment) : NSControl
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
-    // @property sharedUserDefaultsController
-    open fun sharedUserDefaultsController(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedUserDefaultsController")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property defaults
     open fun defaults(): MemorySegment {
         val sel = ObjCRuntime.sel("defaults")

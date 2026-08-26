@@ -49,12 +49,6 @@ open class NSMutableFontCollection(override val ptr: MemorySegment) : NSFontColl
         ObjCRuntime.msgSend(null, ptr, sel, descriptors)
     }
 
-    // @property fontCollectionWithAllAvailableDescriptors
-    override fun fontCollectionWithAllAvailableDescriptors(): MemorySegment {
-        val sel = ObjCRuntime.sel("fontCollectionWithAllAvailableDescriptors")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property queryDescriptors
     /** @return NSArray<NSFontDescriptor *> * */
     override fun queryDescriptors(): MemorySegment {

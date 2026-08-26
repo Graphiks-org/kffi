@@ -38,6 +38,33 @@ open class NSString(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSString.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSMutableCopying. */
+fun NSString.mutableCopyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("mutableCopyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSString.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSString_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSString")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSStringExtensionMethods on NSString ─────────────────────────────────────────
 
 fun NSString.substringFromIndex(from: Long): MemorySegment {
@@ -662,18 +689,6 @@ fun NSString_defaultCStringEncoding(): Long {
     val sel = ObjCRuntime.sel("defaultCStringEncoding")
     val cls = ObjCRuntime.getClass("NSString")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, cls, sel) as Long
-}
-
-// @property availableStringEncodings
-fun NSString.availableStringEncodings(): MemorySegment {
-    val sel = ObjCRuntime.sel("availableStringEncodings")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property defaultCStringEncoding
-fun NSString.defaultCStringEncoding(): Long {
-    val sel = ObjCRuntime.sel("defaultCStringEncoding")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
 // ── Category: NSStringEncodingDetection on NSString ─────────────────────────────────────────

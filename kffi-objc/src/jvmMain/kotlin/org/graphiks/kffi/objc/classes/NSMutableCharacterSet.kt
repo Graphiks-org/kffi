@@ -158,3 +158,12 @@ open class NSMutableCharacterSet(override val ptr: MemorySegment) : NSCharacterS
     }
 
 }
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSMutableCharacterSet_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSMutableCharacterSet")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}

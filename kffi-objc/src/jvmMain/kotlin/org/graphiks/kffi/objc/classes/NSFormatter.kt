@@ -61,3 +61,21 @@ open class NSFormatter(override val ptr: MemorySegment) : NSObject(ptr) {
     fun isPartialStringValid_proposedSelectedRange_originalString_originalSelectedRange_errorDescription(partialStringPtr: String, proposedSelRangePtr: NSRangePointer, origString: String, origSelRange: NSRange, error: String): Boolean = isPartialStringValid_proposedSelectedRange_originalString_originalSelectedRange_errorDescription(ObjCRuntime.newNSString(Arena.global(), partialStringPtr), proposedSelRangePtr, ObjCRuntime.newNSString(Arena.global(), origString), origSelRange, ObjCRuntime.newNSString(Arena.global(), error))
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSFormatter.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSFormatter.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSFormatter.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}

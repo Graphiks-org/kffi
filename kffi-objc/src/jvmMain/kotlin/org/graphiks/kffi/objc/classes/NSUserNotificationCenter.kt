@@ -44,12 +44,6 @@ open class NSUserNotificationCenter(override val ptr: MemorySegment) : NSObject(
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    // @property defaultUserNotificationCenter
-    open fun defaultUserNotificationCenter(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultUserNotificationCenter")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property delegate
     /** @return id<NSUserNotificationCenterDelegate> */
     open fun delegate(): MemorySegment {

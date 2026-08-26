@@ -43,18 +43,6 @@ open class NSURLSessionConfiguration(override val ptr: MemorySegment) : NSObject
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property defaultSessionConfiguration
-    open fun defaultSessionConfiguration(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultSessionConfiguration")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property ephemeralSessionConfiguration
-    open fun ephemeralSessionConfiguration(): MemorySegment {
-        val sel = ObjCRuntime.sel("ephemeralSessionConfiguration")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property identifier
     open fun identifier(): MemorySegment {
         val sel = ObjCRuntime.sel("identifier")
@@ -381,6 +369,12 @@ open class NSURLSessionConfiguration(override val ptr: MemorySegment) : NSObject
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSURLSessionConfiguration.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
 }
 
 // ── Category: NSURLSessionDeprecated on NSURLSessionConfiguration ─────────────────────────────────────────

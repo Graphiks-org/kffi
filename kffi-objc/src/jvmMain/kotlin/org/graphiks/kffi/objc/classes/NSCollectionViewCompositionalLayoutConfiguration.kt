@@ -47,3 +47,9 @@ open class NSCollectionViewCompositionalLayoutConfiguration(override val ptr: Me
     }
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSCollectionViewCompositionalLayoutConfiguration.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
