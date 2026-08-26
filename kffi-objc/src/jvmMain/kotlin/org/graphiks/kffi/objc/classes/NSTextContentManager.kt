@@ -111,3 +111,45 @@ open class NSTextContentManager(override val ptr: MemorySegment) : NSObject(ptr)
     }
 
 }
+
+/**
+ * Required by Objective-C protocol NSTextElementProvider.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSTextContentManager.documentRange(): MemorySegment {
+    val sel = ObjCRuntime.sel("documentRange")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextElementProvider. */
+fun NSTextContentManager.enumerateTextElementsFromLocation_options_usingBlock(textLocation: MemorySegment, options: NSTextContentManagerEnumerationOptions, block: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("enumerateTextElementsFromLocation:options:usingBlock:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, textLocation, options.rawValue, block) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextElementProvider. */
+fun NSTextContentManager.replaceContentsInRange_withTextElements(range: MemorySegment, textElements: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("replaceContentsInRange:withTextElements:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, range, textElements)
+}
+
+/** Required by Objective-C protocol NSTextElementProvider. */
+fun NSTextContentManager.synchronizeToBackingStore(completionHandler: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("synchronizeToBackingStore:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, completionHandler)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSTextContentManager.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSTextContentManager_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSTextContentManager")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}

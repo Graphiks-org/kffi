@@ -215,19 +215,9 @@ open class NSMutableParagraphStyle(override val ptr: MemorySegment) : NSParagrap
 
 // ── Category:  on NSMutableParagraphStyle ─────────────────────────────────────────
 
-fun NSMutableParagraphStyle.alignment(): NSTextAlignment {
-    val sel = ObjCRuntime.sel("alignment")
-    return NSTextAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
-}
-
 fun NSMutableParagraphStyle.setAlignment(alignment: NSTextAlignment): Unit {
     val sel = ObjCRuntime.sel("setAlignment:")
     ObjCRuntime.msgSend(null, this.ptr, sel, alignment.rawValue)
-}
-
-fun NSMutableParagraphStyle.tighteningFactorForTruncation(): Float {
-    val sel = ObjCRuntime.sel("tighteningFactorForTruncation")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, this.ptr, sel) as Float
 }
 
 fun NSMutableParagraphStyle.setTighteningFactorForTruncation(tighteningFactorForTruncation: Float): Unit {
@@ -235,20 +225,9 @@ fun NSMutableParagraphStyle.setTighteningFactorForTruncation(tighteningFactorFor
     ObjCRuntime.msgSend(null, this.ptr, sel, tighteningFactorForTruncation)
 }
 
-/** @return NSArray<__kindof NSTextBlock *> * */
-fun NSMutableParagraphStyle.textBlocks(): MemorySegment {
-    val sel = ObjCRuntime.sel("textBlocks")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
 fun NSMutableParagraphStyle.setTextBlocks(textBlocks: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setTextBlocks:")
     ObjCRuntime.msgSend(null, this.ptr, sel, textBlocks)
-}
-
-fun NSMutableParagraphStyle.headerLevel(): Long {
-    val sel = ObjCRuntime.sel("headerLevel")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
 fun NSMutableParagraphStyle.setHeaderLevel(headerLevel: Long): Unit {

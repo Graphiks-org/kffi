@@ -218,12 +218,6 @@ fun NSObject_accessInstanceVariablesDirectly(): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }
 
-// @property accessInstanceVariablesDirectly
-fun NSObject.accessInstanceVariablesDirectly(): Boolean {
-    val sel = ObjCRuntime.sel("accessInstanceVariablesDirectly")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
 // ── Category: NSDeprecatedKeyValueCoding on NSObject ─────────────────────────────────────────
 
 fun NSObject.storedValueForKey(key: MemorySegment): MemorySegment {

@@ -40,34 +40,13 @@ open class NSUnitEnergy(override val ptr: MemorySegment) : NSDimension(ptr) {
 
     }
 
-    // @property kilojoules
-    open fun kilojoules(): MemorySegment {
-        val sel = ObjCRuntime.sel("kilojoules")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property joules
-    open fun joules(): MemorySegment {
-        val sel = ObjCRuntime.sel("joules")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property kilocalories
-    open fun kilocalories(): MemorySegment {
-        val sel = ObjCRuntime.sel("kilocalories")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property calories
-    open fun calories(): MemorySegment {
-        val sel = ObjCRuntime.sel("calories")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property kilowattHours
-    open fun kilowattHours(): MemorySegment {
-        val sel = ObjCRuntime.sel("kilowattHours")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitEnergy_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitEnergy")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

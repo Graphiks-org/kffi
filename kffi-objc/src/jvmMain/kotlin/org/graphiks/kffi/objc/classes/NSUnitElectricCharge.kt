@@ -45,40 +45,13 @@ open class NSUnitElectricCharge(override val ptr: MemorySegment) : NSDimension(p
 
     }
 
-    // @property coulombs
-    open fun coulombs(): MemorySegment {
-        val sel = ObjCRuntime.sel("coulombs")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property megaampereHours
-    open fun megaampereHours(): MemorySegment {
-        val sel = ObjCRuntime.sel("megaampereHours")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property kiloampereHours
-    open fun kiloampereHours(): MemorySegment {
-        val sel = ObjCRuntime.sel("kiloampereHours")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property ampereHours
-    open fun ampereHours(): MemorySegment {
-        val sel = ObjCRuntime.sel("ampereHours")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property milliampereHours
-    open fun milliampereHours(): MemorySegment {
-        val sel = ObjCRuntime.sel("milliampereHours")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property microampereHours
-    open fun microampereHours(): MemorySegment {
-        val sel = ObjCRuntime.sel("microampereHours")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitElectricCharge_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitElectricCharge")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

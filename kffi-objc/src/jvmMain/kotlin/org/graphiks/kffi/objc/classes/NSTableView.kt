@@ -734,6 +734,18 @@ open class NSTableView(override val ptr: MemorySegment) : NSControl(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSUserInterfaceValidations. */
+fun NSTableView.validateUserInterfaceItem(item: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("validateUserInterfaceItem:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, item) as Boolean
+}
+
+/** Required by Objective-C protocol NSDraggingSource. */
+fun NSTableView.draggingSession_sourceOperationMaskForDraggingContext(session: MemorySegment, context: NSDraggingContext): NSDragOperation {
+    val sel = ObjCRuntime.sel("draggingSession:sourceOperationMaskForDraggingContext:")
+    return NSDragOperation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, session, context.rawValue) as Long)
+}
+
 // ── Category: NSDeprecated on NSTableView ─────────────────────────────────────────
 
 fun NSTableView.setDrawsGrid(flag: Boolean): Unit {

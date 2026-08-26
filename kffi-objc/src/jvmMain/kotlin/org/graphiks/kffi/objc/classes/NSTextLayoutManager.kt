@@ -233,11 +233,70 @@ open class NSTextLayoutManager(override val ptr: MemorySegment) : NSObject(ptr) 
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
-    // @property linkRenderingAttributes
-    /** @return NSDictionary<NSAttributedStringKey,id> * */
-    open fun linkRenderingAttributes(): MemorySegment {
-        val sel = ObjCRuntime.sel("linkRenderingAttributes")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
+/** Required by Objective-C protocol NSCoding. */
+fun NSTextLayoutManager.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSTextLayoutManager_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSTextLayoutManager")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+/**
+ * Required by Objective-C protocol NSTextSelectionDataSource.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSTextLayoutManager.documentRange(): MemorySegment {
+    val sel = ObjCRuntime.sel("documentRange")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextSelectionDataSource. */
+fun NSTextLayoutManager.enumerateSubstringsFromLocation_options_usingBlock(location: MemorySegment, options: NSStringEnumerationOptions, block: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("enumerateSubstringsFromLocation:options:usingBlock:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, location, options.rawValue, block)
+}
+
+/** Required by Objective-C protocol NSTextSelectionDataSource. */
+fun NSTextLayoutManager.textRangeForSelectionGranularity_enclosingLocation(selectionGranularity: NSTextSelectionGranularity, location: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("textRangeForSelectionGranularity:enclosingLocation:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, selectionGranularity.rawValue, location) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextSelectionDataSource. */
+fun NSTextLayoutManager.locationFromLocation_withOffset(location: MemorySegment, offset: Long): MemorySegment {
+    val sel = ObjCRuntime.sel("locationFromLocation:withOffset:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, location, offset) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextSelectionDataSource. */
+fun NSTextLayoutManager.offsetFromLocation_toLocation(from: MemorySegment, to: MemorySegment): Long {
+    val sel = ObjCRuntime.sel("offsetFromLocation:toLocation:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, from, to) as Long
+}
+
+/** Required by Objective-C protocol NSTextSelectionDataSource. */
+fun NSTextLayoutManager.baseWritingDirectionAtLocation(location: MemorySegment): NSTextSelectionNavigationWritingDirection {
+    val sel = ObjCRuntime.sel("baseWritingDirectionAtLocation:")
+    return NSTextSelectionNavigationWritingDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, location) as Long)
+}
+
+/** Required by Objective-C protocol NSTextSelectionDataSource. */
+fun NSTextLayoutManager.enumerateCaretOffsetsInLineFragmentAtLocation_usingBlock(location: MemorySegment, block: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("enumerateCaretOffsetsInLineFragmentAtLocation:usingBlock:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, location, block)
+}
+
+/** Required by Objective-C protocol NSTextSelectionDataSource. */
+fun NSTextLayoutManager.lineFragmentRangeForPoint_inContainerAtLocation(point: CGPoint, location: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("lineFragmentRangeForPoint:inContainerAtLocation:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, CGPoint.layout), location) as MemorySegment
 }

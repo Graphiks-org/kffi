@@ -88,16 +88,6 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
-    // @property defaultFormatterBehavior
-    open fun defaultFormatterBehavior(): NSDateFormatterBehavior {
-        val sel = ObjCRuntime.sel("defaultFormatterBehavior")
-        return NSDateFormatterBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
-    }
-    open fun setDefaultFormatterBehavior(value: NSDateFormatterBehavior) {
-        val sel = ObjCRuntime.sel("setDefaultFormatterBehavior:")
-        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
-    }
-
     // @property dateFormat
     open fun dateFormat(): MemorySegment {
         val sel = ObjCRuntime.sel("dateFormat")

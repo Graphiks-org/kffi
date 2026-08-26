@@ -62,3 +62,9 @@ open class NSOrderedCollectionDifference(override val ptr: MemorySegment) : NSOb
     }
 
 }
+
+/** Required by Objective-C protocol NSFastEnumeration. */
+fun NSOrderedCollectionDifference.countByEnumeratingWithState_objects_count(state: NSFastEnumerationStatePointer, buffer: MemorySegment, len: Long): Long {
+    val sel = ObjCRuntime.sel("countByEnumeratingWithState:objects:count:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, state.segment, buffer, len) as Long
+}

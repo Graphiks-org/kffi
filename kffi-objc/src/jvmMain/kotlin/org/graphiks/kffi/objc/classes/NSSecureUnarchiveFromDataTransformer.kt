@@ -20,11 +20,4 @@ open class NSSecureUnarchiveFromDataTransformer(override val ptr: MemorySegment)
 
     }
 
-    // @property allowedTopLevelClasses
-    /** @return NSArray<Class> * */
-    open fun allowedTopLevelClasses(): MemorySegment {
-        val sel = ObjCRuntime.sel("allowedTopLevelClasses")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
 }

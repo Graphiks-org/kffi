@@ -391,6 +391,11 @@ open class CIImage(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    open fun imageByInsertingIntermediate(cache: Boolean): MemorySegment {
+        val sel = ObjCRuntime.sel("imageByInsertingIntermediate:")
+        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, cache) as MemorySegment
+    }
+
     open fun imageByInsertingTiledIntermediate(): MemorySegment {
         val sel = ObjCRuntime.sel("imageByInsertingTiledIntermediate")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
@@ -419,66 +424,6 @@ open class CIImage(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun regionOfInterestForImage_inRect(image: MemorySegment, rect: CGRect): CGRect {
         val sel = ObjCRuntime.sel("regionOfInterestForImage:inRect:")
         return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, ptr, sel, image, ObjCRuntime.ObjCStructArg(rect.segment, CGRect.layout)))
-    }
-
-    // @property blackImage
-    open fun blackImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("blackImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property whiteImage
-    open fun whiteImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("whiteImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property grayImage
-    open fun grayImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("grayImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property redImage
-    open fun redImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("redImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property greenImage
-    open fun greenImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("greenImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property blueImage
-    open fun blueImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("blueImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property cyanImage
-    open fun cyanImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("cyanImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property magentaImage
-    open fun magentaImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("magentaImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property yellowImage
-    open fun yellowImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("yellowImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property clearImage
-    open fun clearImage(): MemorySegment {
-        val sel = ObjCRuntime.sel("clearImage")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property extent
@@ -553,6 +498,33 @@ open class CIImage(override val ptr: MemorySegment) : NSObject(ptr) {
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _state: MemorySegment
     // ivar: _priv: MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun CIImage.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun CIImage.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun CIImage_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("CIImage")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun CIImage.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
 }
 
 // ── Category: AutoAdjustment on CIImage ─────────────────────────────────────────

@@ -65,3 +65,9 @@ open class NSCollectionLayoutAnchor(override val ptr: MemorySegment) : NSObject(
     }
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSCollectionLayoutAnchor.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

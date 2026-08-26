@@ -70,18 +70,6 @@ fun NSMutableDictionary.setObject_forKeyedSubscript(obj: MemorySegment, key: Mem
 
 // ── Category: NSMutableDictionaryCreation on NSMutableDictionary ─────────────────────────────────────────
 
-/** @return NSMutableDictionary<KeyType,ObjectType> * */
-fun NSMutableDictionary.initWithContentsOfFile(path: MemorySegment): MemorySegment {
-    val sel = ObjCRuntime.sel("initWithContentsOfFile:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path) as MemorySegment
-}
-
-/** @return NSMutableDictionary<KeyType,ObjectType> * */
-fun NSMutableDictionary.initWithContentsOfURL(url: MemorySegment): MemorySegment {
-    val sel = ObjCRuntime.sel("initWithContentsOfURL:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url) as MemorySegment
-}
-
 // Class method: +[NSMutableDictionary dictionaryWithCapacity:]
 fun NSMutableDictionary_dictionaryWithCapacity(numItems: Long): MemorySegment {
     val sel = ObjCRuntime.sel("dictionaryWithCapacity:")
@@ -113,8 +101,3 @@ fun NSMutableDictionary_dictionaryWithSharedKeySet(keyset: MemorySegment): Memor
 }
 
 // ── Category: NSKeyValueCoding on NSMutableDictionary ─────────────────────────────────────────
-
-fun NSMutableDictionary.setValue_forKey(value: MemorySegment, key: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("setValue:forKey:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, value, key)
-}

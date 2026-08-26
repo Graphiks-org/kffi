@@ -75,3 +75,9 @@ open class NSMenuItemBadge(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun stringValueAsString(): String = ObjCRuntime.toJavaString(stringValue())
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSMenuItemBadge.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

@@ -38,6 +38,27 @@ open class NSDate(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSDate.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSDate.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSDate_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSDate")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSExtendedDate on NSDate ─────────────────────────────────────────
 
 fun NSDate.timeIntervalSinceDate(anotherDate: MemorySegment): Double {
@@ -173,24 +194,6 @@ fun NSDate_now(): MemorySegment {
     val sel = ObjCRuntime.sel("now")
     val cls = ObjCRuntime.getClass("NSDate")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
-}
-
-// @property distantFuture
-fun NSDate.distantFuture(): MemorySegment {
-    val sel = ObjCRuntime.sel("distantFuture")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property distantPast
-fun NSDate.distantPast(): MemorySegment {
-    val sel = ObjCRuntime.sel("distantPast")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property now
-fun NSDate.now(): MemorySegment {
-    val sel = ObjCRuntime.sel("now")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 // ── Category: NSCalendarDateExtras on NSDate ─────────────────────────────────────────

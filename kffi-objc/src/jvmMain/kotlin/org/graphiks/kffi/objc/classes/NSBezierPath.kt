@@ -290,66 +290,6 @@ open class NSBezierPath(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value.segment)
     }
 
-    // @property defaultMiterLimit
-    open fun defaultMiterLimit(): Double {
-        val sel = ObjCRuntime.sel("defaultMiterLimit")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
-    }
-    open fun setDefaultMiterLimit(value: Double) {
-        val sel = ObjCRuntime.sel("setDefaultMiterLimit:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
-    // @property defaultFlatness
-    open fun defaultFlatness(): Double {
-        val sel = ObjCRuntime.sel("defaultFlatness")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
-    }
-    open fun setDefaultFlatness(value: Double) {
-        val sel = ObjCRuntime.sel("setDefaultFlatness:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
-    // @property defaultWindingRule
-    open fun defaultWindingRule(): NSWindingRule {
-        val sel = ObjCRuntime.sel("defaultWindingRule")
-        return NSWindingRule(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
-    }
-    open fun setDefaultWindingRule(value: NSWindingRule) {
-        val sel = ObjCRuntime.sel("setDefaultWindingRule:")
-        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
-    }
-
-    // @property defaultLineCapStyle
-    open fun defaultLineCapStyle(): NSLineCapStyle {
-        val sel = ObjCRuntime.sel("defaultLineCapStyle")
-        return NSLineCapStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
-    }
-    open fun setDefaultLineCapStyle(value: NSLineCapStyle) {
-        val sel = ObjCRuntime.sel("setDefaultLineCapStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
-    }
-
-    // @property defaultLineJoinStyle
-    open fun defaultLineJoinStyle(): NSLineJoinStyle {
-        val sel = ObjCRuntime.sel("defaultLineJoinStyle")
-        return NSLineJoinStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
-    }
-    open fun setDefaultLineJoinStyle(value: NSLineJoinStyle) {
-        val sel = ObjCRuntime.sel("setDefaultLineJoinStyle:")
-        ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
-    }
-
-    // @property defaultLineWidth
-    open fun defaultLineWidth(): Double {
-        val sel = ObjCRuntime.sel("defaultLineWidth")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
-    }
-    open fun setDefaultLineWidth(value: Double) {
-        val sel = ObjCRuntime.sel("setDefaultLineWidth:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
     // @property lineWidth
     open fun lineWidth(): Double {
         val sel = ObjCRuntime.sel("lineWidth")
@@ -452,6 +392,33 @@ open class NSBezierPath(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
 
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSBezierPath.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSBezierPath.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSBezierPath.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSBezierPath_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSBezierPath")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }
 
 // ── Category: NSBezierPathDeprecated on NSBezierPath ─────────────────────────────────────────

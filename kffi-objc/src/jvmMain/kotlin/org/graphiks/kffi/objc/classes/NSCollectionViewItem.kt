@@ -69,3 +69,9 @@ open class NSCollectionViewItem(override val ptr: MemorySegment) : NSViewControl
     }
 
 }
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSCollectionViewItem.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}

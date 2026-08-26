@@ -86,16 +86,6 @@ open class NSPrintInfo(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, inPDFInfo)
     }
 
-    // @property sharedPrintInfo
-    open fun sharedPrintInfo(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedPrintInfo")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-    open fun setSharedPrintInfo(value: MemorySegment) {
-        val sel = ObjCRuntime.sel("setSharedPrintInfo:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
     // @property paperName
     open fun paperName(): MemorySegment {
         val sel = ObjCRuntime.sel("paperName")
@@ -251,12 +241,6 @@ open class NSPrintInfo(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
     open fun localizedPaperNameAsString(): String = ObjCRuntime.toJavaString(localizedPaperName())
 
-    // @property defaultPrinter
-    open fun defaultPrinter(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultPrinter")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property printSettings
     /** @return NSMutableDictionary<NSPrintInfoSettingKey,id> * */
     open fun printSettings(): MemorySegment {
@@ -274,6 +258,18 @@ open class NSPrintInfo(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
+}
+
+/** Required by Objective-C protocol NSCopying. */
+fun NSPrintInfo.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSPrintInfo.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
 }
 
 // ── Category: NSDeprecated on NSPrintInfo ─────────────────────────────────────────

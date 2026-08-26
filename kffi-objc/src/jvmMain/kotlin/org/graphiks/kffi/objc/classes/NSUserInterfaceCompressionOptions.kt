@@ -89,34 +89,16 @@ open class NSUserInterfaceCompressionOptions(override val ptr: MemorySegment) : 
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
-    // @property hideImagesOption
-    open fun hideImagesOption(): MemorySegment {
-        val sel = ObjCRuntime.sel("hideImagesOption")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property hideTextOption
-    open fun hideTextOption(): MemorySegment {
-        val sel = ObjCRuntime.sel("hideTextOption")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+/** Required by Objective-C protocol NSCopying. */
+fun NSUserInterfaceCompressionOptions.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
 
-    // @property reduceMetricsOption
-    open fun reduceMetricsOption(): MemorySegment {
-        val sel = ObjCRuntime.sel("reduceMetricsOption")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property breakEqualWidthsOption
-    open fun breakEqualWidthsOption(): MemorySegment {
-        val sel = ObjCRuntime.sel("breakEqualWidthsOption")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property standardOptions
-    open fun standardOptions(): MemorySegment {
-        val sel = ObjCRuntime.sel("standardOptions")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/** Required by Objective-C protocol NSCoding. */
+fun NSUserInterfaceCompressionOptions.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
 }

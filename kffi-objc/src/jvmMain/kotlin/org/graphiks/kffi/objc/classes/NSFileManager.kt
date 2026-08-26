@@ -509,12 +509,6 @@ open class NSFileManager(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun containerURLForSecurityApplicationGroupIdentifier(groupIdentifier: String): MemorySegment = containerURLForSecurityApplicationGroupIdentifier(ObjCRuntime.newNSString(Arena.global(), groupIdentifier))
 
-    // @property defaultManager
-    open fun defaultManager(): MemorySegment {
-        val sel = ObjCRuntime.sel("defaultManager")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property delegate
     /** @return id<NSFileManagerDelegate> */
     open fun delegate(): MemorySegment {

@@ -43,6 +43,18 @@ open class NSCollectionViewLayout(override val ptr: MemorySegment) : NSObject(pt
 
 }
 
+/** Required by Objective-C protocol NSCoding. */
+fun NSCollectionViewLayout.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSCollectionViewLayout.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
 // ── Category: NSSubclassingHooks on NSCollectionViewLayout ─────────────────────────────────────────
 
 fun NSCollectionViewLayout.prepareLayout(): Unit {
@@ -128,18 +140,6 @@ fun NSCollectionViewLayout_invalidationContextClass(): MemorySegment {
     val sel = ObjCRuntime.sel("invalidationContextClass")
     val cls = ObjCRuntime.getClass("NSCollectionViewLayout")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
-}
-
-// @property layoutAttributesClass
-fun NSCollectionViewLayout.layoutAttributesClass(): MemorySegment {
-    val sel = ObjCRuntime.sel("layoutAttributesClass")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property invalidationContextClass
-fun NSCollectionViewLayout.invalidationContextClass(): MemorySegment {
-    val sel = ObjCRuntime.sel("invalidationContextClass")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 // ── Category: NSUpdateSupportHooks on NSCollectionViewLayout ─────────────────────────────────────────

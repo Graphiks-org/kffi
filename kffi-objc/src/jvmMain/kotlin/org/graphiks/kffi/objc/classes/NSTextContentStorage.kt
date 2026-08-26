@@ -73,3 +73,28 @@ open class NSTextContentStorage(override val ptr: MemorySegment) : NSTextContent
     }
 
 }
+
+/**
+ * Required by Objective-C protocol NSTextStorageObserving.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSTextContentStorage.textStorage(): MemorySegment {
+    val sel = ObjCRuntime.sel("textStorage")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+fun NSTextContentStorage.setTextStorage(value: MemorySegment) {
+    val sel = ObjCRuntime.sel("setTextStorage:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/** Required by Objective-C protocol NSTextStorageObserving. */
+fun NSTextContentStorage.processEditingForTextStorage_edited_range_changeInLength_invalidatedRange(textStorage: MemorySegment, editMask: NSTextStorageEditActions, newCharRange: NSRange, delta: Long, invalidatedCharRange: NSRange): Unit {
+    val sel = ObjCRuntime.sel("processEditingForTextStorage:edited:range:changeInLength:invalidatedRange:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, textStorage, editMask.rawValue, ObjCRuntime.ObjCStructArg(newCharRange.segment, NSRange.layout), delta, ObjCRuntime.ObjCStructArg(invalidatedCharRange.segment, NSRange.layout))
+}
+
+/** Required by Objective-C protocol NSTextStorageObserving. */
+fun NSTextContentStorage.performEditingTransactionForTextStorage_usingBlock(textStorage: MemorySegment, transaction: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("performEditingTransactionForTextStorage:usingBlock:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, textStorage, transaction)
+}

@@ -117,18 +117,6 @@ open class NSOperationQueue(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
-    // @property currentQueue
-    open fun currentQueue(): MemorySegment {
-        val sel = ObjCRuntime.sel("currentQueue")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property mainQueue
-    open fun mainQueue(): MemorySegment {
-        val sel = ObjCRuntime.sel("mainQueue")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
 }
 
 // ── Category: NSDeprecated on NSOperationQueue ─────────────────────────────────────────

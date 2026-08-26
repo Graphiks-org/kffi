@@ -499,6 +499,12 @@ open class NSMatrix(override val ptr: MemorySegment) : NSControl(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSUserInterfaceValidations. */
+fun NSMatrix.validateUserInterfaceItem(item: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("validateUserInterfaceItem:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, item) as Boolean
+}
+
 // ── Category: NSKeyboardUI on NSMatrix ─────────────────────────────────────────
 
 fun NSMatrix.tabKeyTraversesCells(): Boolean {

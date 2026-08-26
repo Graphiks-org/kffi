@@ -864,3 +864,121 @@ open class CALayer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
 }
+
+/** Required by Objective-C protocol NSCoding. */
+fun CALayer.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun CALayer.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun CALayer_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("CALayer")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
+/**
+ * Required by Objective-C protocol CAMediaTiming.
+ */
+fun CALayer.beginTime(): Double {
+    val sel = ObjCRuntime.sel("beginTime")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+fun CALayer.setBeginTime(value: Double) {
+    val sel = ObjCRuntime.sel("setBeginTime:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/**
+ * Required by Objective-C protocol CAMediaTiming.
+ */
+fun CALayer.duration(): Double {
+    val sel = ObjCRuntime.sel("duration")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+fun CALayer.setDuration(value: Double) {
+    val sel = ObjCRuntime.sel("setDuration:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/**
+ * Required by Objective-C protocol CAMediaTiming.
+ */
+fun CALayer.speed(): Float {
+    val sel = ObjCRuntime.sel("speed")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, this.ptr, sel) as Float
+}
+fun CALayer.setSpeed(value: Float) {
+    val sel = ObjCRuntime.sel("setSpeed:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/**
+ * Required by Objective-C protocol CAMediaTiming.
+ */
+fun CALayer.timeOffset(): Double {
+    val sel = ObjCRuntime.sel("timeOffset")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+fun CALayer.setTimeOffset(value: Double) {
+    val sel = ObjCRuntime.sel("setTimeOffset:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/**
+ * Required by Objective-C protocol CAMediaTiming.
+ */
+fun CALayer.repeatCount(): Float {
+    val sel = ObjCRuntime.sel("repeatCount")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, this.ptr, sel) as Float
+}
+fun CALayer.setRepeatCount(value: Float) {
+    val sel = ObjCRuntime.sel("setRepeatCount:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/**
+ * Required by Objective-C protocol CAMediaTiming.
+ */
+fun CALayer.repeatDuration(): Double {
+    val sel = ObjCRuntime.sel("repeatDuration")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
+}
+fun CALayer.setRepeatDuration(value: Double) {
+    val sel = ObjCRuntime.sel("setRepeatDuration:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/**
+ * Required by Objective-C protocol CAMediaTiming.
+ */
+fun CALayer.autoreverses(): Boolean {
+    val sel = ObjCRuntime.sel("autoreverses")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+fun CALayer.setAutoreverses(value: Boolean) {
+    val sel = ObjCRuntime.sel("setAutoreverses:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}
+
+/**
+ * Required by Objective-C protocol CAMediaTiming.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun CALayer.fillMode(): MemorySegment {
+    val sel = ObjCRuntime.sel("fillMode")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+fun CALayer.setFillMode(value: MemorySegment) {
+    val sel = ObjCRuntime.sel("setFillMode:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
+}

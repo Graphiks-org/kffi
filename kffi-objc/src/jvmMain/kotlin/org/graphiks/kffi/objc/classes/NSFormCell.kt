@@ -130,11 +130,6 @@ open class NSFormCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
 
 // ── Category: NSKeyboardUI on NSFormCell ─────────────────────────────────────────
 
-fun NSFormCell.setTitleWithMnemonic(stringWithAmpersand: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("setTitleWithMnemonic:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, stringWithAmpersand)
-}
-
 // ── Category: NSFormCellAttributedStringMethods on NSFormCell ─────────────────────────────────────────
 
 fun NSFormCell.attributedTitle(): MemorySegment {

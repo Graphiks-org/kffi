@@ -365,6 +365,12 @@ open class NSCollectionView(override val ptr: MemorySegment) : NSView(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSDraggingSource. */
+fun NSCollectionView.draggingSession_sourceOperationMaskForDraggingContext(session: MemorySegment, context: NSDraggingContext): NSDragOperation {
+    val sel = ObjCRuntime.sel("draggingSession:sourceOperationMaskForDraggingContext:")
+    return NSDragOperation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, session, context.rawValue) as Long)
+}
+
 // ── Category: NSDeprecated on NSCollectionView ─────────────────────────────────────────
 
 fun NSCollectionView.newItemForRepresentedObject(`object`: MemorySegment): MemorySegment {

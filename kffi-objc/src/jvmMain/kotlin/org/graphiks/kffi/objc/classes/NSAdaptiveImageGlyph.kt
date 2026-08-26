@@ -59,10 +59,25 @@ open class NSAdaptiveImageGlyph(override val ptr: MemorySegment) : NSObject(ptr)
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
     open fun contentDescriptionAsString(): String = ObjCRuntime.toJavaString(contentDescription())
 
-    // @property contentType
-    open fun contentType(): MemorySegment {
-        val sel = ObjCRuntime.sel("contentType")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSAdaptiveImageGlyph.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSAdaptiveImageGlyph.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSAdaptiveImageGlyph_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSAdaptiveImageGlyph")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

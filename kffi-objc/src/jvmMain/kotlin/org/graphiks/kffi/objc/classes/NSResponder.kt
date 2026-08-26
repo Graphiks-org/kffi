@@ -293,6 +293,12 @@ open class NSResponder(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCoding. */
+fun NSResponder.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
 // ── Category: NSStandardKeyBindingMethods on NSResponder ─────────────────────────────────────────
 
 // ── Category: NSUndoSupport on NSResponder ─────────────────────────────────────────
@@ -434,11 +440,4 @@ fun NSResponder_restorableStateKeyPaths(): MemorySegment {
     val sel = ObjCRuntime.sel("restorableStateKeyPaths")
     val cls = ObjCRuntime.getClass("NSResponder")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
-}
-
-// @property restorableStateKeyPaths
-/** @return NSArray<NSString *> * */
-fun NSResponder.restorableStateKeyPaths(): MemorySegment {
-    val sel = ObjCRuntime.sel("restorableStateKeyPaths")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }

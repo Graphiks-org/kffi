@@ -59,18 +59,6 @@ open class NSScroller(override val ptr: MemorySegment) : NSControl(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, event)
     }
 
-    // @property compatibleWithOverlayScrollers
-    open fun isCompatibleWithOverlayScrollers(): Boolean {
-        val sel = ObjCRuntime.sel("isCompatibleWithOverlayScrollers")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property preferredScrollerStyle
-    open fun preferredScrollerStyle(): NSScrollerStyle {
-        val sel = ObjCRuntime.sel("preferredScrollerStyle")
-        return NSScrollerStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
-    }
-
     // @property scrollerStyle
     open fun scrollerStyle(): NSScrollerStyle {
         val sel = ObjCRuntime.sel("scrollerStyle")

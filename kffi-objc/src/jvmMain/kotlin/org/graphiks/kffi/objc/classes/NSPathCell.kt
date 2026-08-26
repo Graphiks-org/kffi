@@ -87,12 +87,6 @@ open class NSPathCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
-    // @property pathComponentCellClass
-    open fun pathComponentCellClass(): MemorySegment {
-        val sel = ObjCRuntime.sel("pathComponentCellClass")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property pathComponentCells
     /** @return NSArray<__kindof NSPathComponentCell *> * */
     open fun pathComponentCells(): MemorySegment {

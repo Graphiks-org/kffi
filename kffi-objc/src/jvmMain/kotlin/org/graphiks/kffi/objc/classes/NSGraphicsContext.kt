@@ -69,16 +69,6 @@ open class NSGraphicsContext(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    // @property currentContext
-    open fun currentContext(): MemorySegment {
-        val sel = ObjCRuntime.sel("currentContext")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-    open fun setCurrentContext(value: MemorySegment) {
-        val sel = ObjCRuntime.sel("setCurrentContext:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
     // @property attributes
     /** @return NSDictionary<NSGraphicsContextAttributeKey,id> * */
     open fun attributes(): MemorySegment {

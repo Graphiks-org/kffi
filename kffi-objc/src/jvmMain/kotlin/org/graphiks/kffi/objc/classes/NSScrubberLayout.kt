@@ -56,12 +56,6 @@ open class NSScrubberLayout(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(fromVisibleRect.segment, NSRect.layout), ObjCRuntime.ObjCStructArg(toVisibleRect.segment, NSRect.layout)) as Boolean
     }
 
-    // @property layoutAttributesClass
-    open fun layoutAttributesClass(): MemorySegment {
-        val sel = ObjCRuntime.sel("layoutAttributesClass")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property scrubber
     open fun scrubber(): MemorySegment {
         val sel = ObjCRuntime.sel("scrubber")
@@ -98,4 +92,10 @@ open class NSScrubberLayout(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSScrubberLayout.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
 }

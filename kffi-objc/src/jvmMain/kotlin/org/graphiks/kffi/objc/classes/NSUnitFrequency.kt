@@ -60,58 +60,13 @@ open class NSUnitFrequency(override val ptr: MemorySegment) : NSDimension(ptr) {
 
     }
 
-    // @property terahertz
-    open fun terahertz(): MemorySegment {
-        val sel = ObjCRuntime.sel("terahertz")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
+}
 
-    // @property gigahertz
-    open fun gigahertz(): MemorySegment {
-        val sel = ObjCRuntime.sel("gigahertz")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property megahertz
-    open fun megahertz(): MemorySegment {
-        val sel = ObjCRuntime.sel("megahertz")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property kilohertz
-    open fun kilohertz(): MemorySegment {
-        val sel = ObjCRuntime.sel("kilohertz")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property hertz
-    open fun hertz(): MemorySegment {
-        val sel = ObjCRuntime.sel("hertz")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property millihertz
-    open fun millihertz(): MemorySegment {
-        val sel = ObjCRuntime.sel("millihertz")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property microhertz
-    open fun microhertz(): MemorySegment {
-        val sel = ObjCRuntime.sel("microhertz")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property nanohertz
-    open fun nanohertz(): MemorySegment {
-        val sel = ObjCRuntime.sel("nanohertz")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property framesPerSecond
-    open fun framesPerSecond(): MemorySegment {
-        val sel = ObjCRuntime.sel("framesPerSecond")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSUnitFrequency_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSUnitFrequency")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

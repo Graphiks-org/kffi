@@ -346,12 +346,6 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
-    // @property stronglyReferencesTextStorage
-    open fun stronglyReferencesTextStorage(): Boolean {
-        val sel = ObjCRuntime.sel("stronglyReferencesTextStorage")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
     // @property usesAdaptiveColorMappingForDarkAppearance
     open fun usesAdaptiveColorMappingForDarkAppearance(): Boolean {
         val sel = ObjCRuntime.sel("usesAdaptiveColorMappingForDarkAppearance")
@@ -362,6 +356,123 @@ open class NSTextView(override val ptr: MemorySegment) : NSText(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
+}
+
+/** Required by Objective-C protocol NSUserInterfaceValidations. */
+fun NSTextView.validateUserInterfaceItem(item: MemorySegment): Boolean {
+    val sel = ObjCRuntime.sel("validateUserInterfaceItem:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, item) as Boolean
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.insertText_replacementRange(string: MemorySegment, replacementRange: NSRange): Unit {
+    val sel = ObjCRuntime.sel("insertText:replacementRange:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, string, ObjCRuntime.ObjCStructArg(replacementRange.segment, NSRange.layout))
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.doCommandBySelector(selector: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("doCommandBySelector:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, selector)
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.setMarkedText_selectedRange_replacementRange(string: MemorySegment, selectedRange: NSRange, replacementRange: NSRange): Unit {
+    val sel = ObjCRuntime.sel("setMarkedText:selectedRange:replacementRange:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, string, ObjCRuntime.ObjCStructArg(selectedRange.segment, NSRange.layout), ObjCRuntime.ObjCStructArg(replacementRange.segment, NSRange.layout))
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.unmarkText(): Unit {
+    val sel = ObjCRuntime.sel("unmarkText")
+    ObjCRuntime.msgSend(null, this.ptr, sel)
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.markedRange(): NSRange {
+    val sel = ObjCRuntime.sel("markedRange")
+    return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel))
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.hasMarkedText(): Boolean {
+    val sel = ObjCRuntime.sel("hasMarkedText")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.attributedSubstringForProposedRange_actualRange(range: NSRange, actualRange: NSRangePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("attributedSubstringForProposedRange:actualRange:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), actualRange.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.validAttributesForMarkedText(): MemorySegment {
+    val sel = ObjCRuntime.sel("validAttributesForMarkedText")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.firstRectForCharacterRange_actualRange(range: NSRange, actualRange: NSRangePointer): NSRect {
+    val sel = ObjCRuntime.sel("firstRectForCharacterRange:actualRange:")
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), actualRange.segment))
+}
+
+/** Required by Objective-C protocol NSTextInputClient. */
+fun NSTextView.characterIndexForPoint(point: NSPoint): Long {
+    val sel = ObjCRuntime.sel("characterIndexForPoint:")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Long
+}
+
+/**
+ * Required by Objective-C protocol NSTextLayoutOrientationProvider.
+ */
+fun NSTextView.layoutOrientation(): NSTextLayoutOrientation {
+    val sel = ObjCRuntime.sel("layoutOrientation")
+    return NSTextLayoutOrientation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
+}
+
+/** Required by Objective-C protocol NSDraggingSource. */
+fun NSTextView.draggingSession_sourceOperationMaskForDraggingContext(session: MemorySegment, context: NSDraggingContext): NSDragOperation {
+    val sel = ObjCRuntime.sel("draggingSession:sourceOperationMaskForDraggingContext:")
+    return NSDragOperation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, session, context.rawValue) as Long)
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSTextView.setMarkedText_selectedRange(string: MemorySegment, selRange: NSRange): Unit {
+    val sel = ObjCRuntime.sel("setMarkedText:selectedRange:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, string, ObjCRuntime.ObjCStructArg(selRange.segment, NSRange.layout))
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSTextView.conversationIdentifier(): Long {
+    val sel = ObjCRuntime.sel("conversationIdentifier")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSTextView.attributedSubstringFromRange(range: NSRange): MemorySegment {
+    val sel = ObjCRuntime.sel("attributedSubstringFromRange:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextInput. */
+fun NSTextView.firstRectForCharacterRange(range: NSRange): NSRect {
+    val sel = ObjCRuntime.sel("firstRectForCharacterRange:")
+    return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)))
+}
+
+/**
+ * Required by Objective-C protocol NSTextContent.
+ * This getter returns a borrowed (+0) Objective-C reference and does not transfer ownership.
+ */
+fun NSTextView.contentType(): MemorySegment {
+    val sel = ObjCRuntime.sel("contentType")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
+}
+fun NSTextView.setContentType(value: MemorySegment) {
+    val sel = ObjCRuntime.sel("setContentType:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, value)
 }
 
 // ── Category: NSCompletion on NSTextView ─────────────────────────────────────────
@@ -412,11 +523,6 @@ fun NSTextView.readSelectionFromPasteboard_type(pboard: MemorySegment, type: Mem
 fun NSTextView.readSelectionFromPasteboard(pboard: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("readSelectionFromPasteboard:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, pboard) as Boolean
-}
-
-fun NSTextView.validRequestorForSendType_returnType(sendType: MemorySegment, returnType: MemorySegment): MemorySegment {
-    val sel = ObjCRuntime.sel("validRequestorForSendType:returnType:")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, sendType, returnType) as MemorySegment
 }
 
 fun NSTextView.pasteAsPlainText(sender: MemorySegment): Unit {
@@ -530,11 +636,6 @@ fun NSTextView.breakUndoCoalescing(): Unit {
 
 fun NSTextView.showFindIndicatorForRange(charRange: NSRange): Unit {
     val sel = ObjCRuntime.sel("showFindIndicatorForRange:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout))
-}
-
-fun NSTextView.setSelectedRange(charRange: NSRange): Unit {
-    val sel = ObjCRuntime.sel("setSelectedRange:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(charRange.segment, NSRange.layout))
 }
 
@@ -769,102 +870,6 @@ fun NSTextView.usesRolloverButtonForSelection(): Boolean {
 fun NSTextView.setUsesRolloverButtonForSelection(usesRolloverButtonForSelection: Boolean): Unit {
     val sel = ObjCRuntime.sel("setUsesRolloverButtonForSelection:")
     ObjCRuntime.msgSend(null, this.ptr, sel, usesRolloverButtonForSelection)
-}
-
-/** @return id<NSTextViewDelegate> */
-fun NSTextView.delegate(): MemorySegment {
-    val sel = ObjCRuntime.sel("delegate")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-fun NSTextView.setDelegate(delegate: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("setDelegate:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, delegate)
-}
-
-fun NSTextView.isEditable(): Boolean {
-    val sel = ObjCRuntime.sel("isEditable")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
-fun NSTextView.setEditable(editable: Boolean): Unit {
-    val sel = ObjCRuntime.sel("setEditable:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, editable)
-}
-
-fun NSTextView.isSelectable(): Boolean {
-    val sel = ObjCRuntime.sel("isSelectable")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
-fun NSTextView.setSelectable(selectable: Boolean): Unit {
-    val sel = ObjCRuntime.sel("setSelectable:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, selectable)
-}
-
-fun NSTextView.isRichText(): Boolean {
-    val sel = ObjCRuntime.sel("isRichText")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
-fun NSTextView.setRichText(richText: Boolean): Unit {
-    val sel = ObjCRuntime.sel("setRichText:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, richText)
-}
-
-fun NSTextView.importsGraphics(): Boolean {
-    val sel = ObjCRuntime.sel("importsGraphics")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
-fun NSTextView.setImportsGraphics(importsGraphics: Boolean): Unit {
-    val sel = ObjCRuntime.sel("setImportsGraphics:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, importsGraphics)
-}
-
-fun NSTextView.drawsBackground(): Boolean {
-    val sel = ObjCRuntime.sel("drawsBackground")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
-fun NSTextView.setDrawsBackground(drawsBackground: Boolean): Unit {
-    val sel = ObjCRuntime.sel("setDrawsBackground:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, drawsBackground)
-}
-
-fun NSTextView.backgroundColor(): MemorySegment {
-    val sel = ObjCRuntime.sel("backgroundColor")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-fun NSTextView.setBackgroundColor(backgroundColor: MemorySegment): Unit {
-    val sel = ObjCRuntime.sel("setBackgroundColor:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, backgroundColor)
-}
-
-fun NSTextView.isFieldEditor(): Boolean {
-    val sel = ObjCRuntime.sel("isFieldEditor")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
-fun NSTextView.setFieldEditor(fieldEditor: Boolean): Unit {
-    val sel = ObjCRuntime.sel("setFieldEditor:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, fieldEditor)
-}
-
-fun NSTextView.usesFontPanel(): Boolean {
-    val sel = ObjCRuntime.sel("usesFontPanel")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
-}
-
-fun NSTextView.setUsesFontPanel(usesFontPanel: Boolean): Unit {
-    val sel = ObjCRuntime.sel("setUsesFontPanel:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, usesFontPanel)
-}
-
-fun NSTextView.isRulerVisible(): Boolean {
-    val sel = ObjCRuntime.sel("isRulerVisible")
-    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
 fun NSTextView.setRulerVisible(rulerVisible: Boolean): Unit {
@@ -1185,11 +1190,6 @@ fun NSTextView.allowsCharacterPickerTouchBarItem(): Boolean {
 fun NSTextView.setAllowsCharacterPickerTouchBarItem(allowsCharacterPickerTouchBarItem: Boolean): Unit {
     val sel = ObjCRuntime.sel("setAllowsCharacterPickerTouchBarItem:")
     ObjCRuntime.msgSend(null, this.ptr, sel, allowsCharacterPickerTouchBarItem)
-}
-
-fun NSTextView.candidateListTouchBarItem(): MemorySegment {
-    val sel = ObjCRuntime.sel("candidateListTouchBarItem")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 // ── Category: NSTextView_Factory on NSTextView ─────────────────────────────────────────

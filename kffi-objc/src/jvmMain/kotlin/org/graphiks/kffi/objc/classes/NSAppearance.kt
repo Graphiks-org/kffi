@@ -61,26 +61,25 @@ open class NSAppearance(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
-    // @property currentAppearance
-    open fun currentAppearance(): MemorySegment {
-        val sel = ObjCRuntime.sel("currentAppearance")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-    open fun setCurrentAppearance(value: MemorySegment) {
-        val sel = ObjCRuntime.sel("setCurrentAppearance:")
-        ObjCRuntime.msgSend(null, ptr, sel, value)
-    }
-
-    // @property currentDrawingAppearance
-    open fun currentDrawingAppearance(): MemorySegment {
-        val sel = ObjCRuntime.sel("currentDrawingAppearance")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property allowsVibrancy
     open fun allowsVibrancy(): Boolean {
         val sel = ObjCRuntime.sel("allowsVibrancy")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSAppearance.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSAppearance_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSAppearance")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
 }

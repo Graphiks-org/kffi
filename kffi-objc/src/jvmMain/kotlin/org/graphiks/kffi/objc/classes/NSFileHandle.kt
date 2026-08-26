@@ -78,6 +78,21 @@ open class NSFileHandle(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCoding. */
+fun NSFileHandle.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSFileHandle_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSFileHandle")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSFileHandleCreation on NSFileHandle ─────────────────────────────────────────
 
 // Class method: +[NSFileHandle fileHandleForReadingAtPath:]
@@ -148,30 +163,6 @@ fun NSFileHandle_fileHandleWithNullDevice(): MemorySegment {
     val sel = ObjCRuntime.sel("fileHandleWithNullDevice")
     val cls = ObjCRuntime.getClass("NSFileHandle")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
-}
-
-// @property fileHandleWithStandardInput
-fun NSFileHandle.fileHandleWithStandardInput(): MemorySegment {
-    val sel = ObjCRuntime.sel("fileHandleWithStandardInput")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property fileHandleWithStandardOutput
-fun NSFileHandle.fileHandleWithStandardOutput(): MemorySegment {
-    val sel = ObjCRuntime.sel("fileHandleWithStandardOutput")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property fileHandleWithStandardError
-fun NSFileHandle.fileHandleWithStandardError(): MemorySegment {
-    val sel = ObjCRuntime.sel("fileHandleWithStandardError")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property fileHandleWithNullDevice
-fun NSFileHandle.fileHandleWithNullDevice(): MemorySegment {
-    val sel = ObjCRuntime.sel("fileHandleWithNullDevice")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 // ── Category: NSFileHandleAsynchronousAccess on NSFileHandle ─────────────────────────────────────────

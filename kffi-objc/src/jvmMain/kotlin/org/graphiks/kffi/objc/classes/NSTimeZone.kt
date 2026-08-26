@@ -60,6 +60,33 @@ open class NSTimeZone(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSCopying. */
+fun NSTimeZone.copyWithZone(zone: NSZonePointer): MemorySegment {
+    val sel = ObjCRuntime.sel("copyWithZone:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, zone.segment) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSTimeZone.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSTimeZone.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSTimeZone_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSTimeZone")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSExtendedTimeZone on NSTimeZone ─────────────────────────────────────────
 
 fun NSTimeZone.isEqualToTimeZone(aTimeZone: MemorySegment): Boolean {
@@ -163,52 +190,6 @@ fun NSTimeZone_timeZoneDataVersion(): MemorySegment {
     val sel = ObjCRuntime.sel("timeZoneDataVersion")
     val cls = ObjCRuntime.getClass("NSTimeZone")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel) as MemorySegment
-}
-
-// @property systemTimeZone
-fun NSTimeZone.systemTimeZone(): MemorySegment {
-    val sel = ObjCRuntime.sel("systemTimeZone")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property defaultTimeZone
-fun NSTimeZone.defaultTimeZone(): MemorySegment {
-    val sel = ObjCRuntime.sel("defaultTimeZone")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-fun NSTimeZone.setDefaultTimeZone(value: MemorySegment) {
-    val sel = ObjCRuntime.sel("setDefaultTimeZone:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, value)
-}
-
-// @property localTimeZone
-fun NSTimeZone.localTimeZone(): MemorySegment {
-    val sel = ObjCRuntime.sel("localTimeZone")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property knownTimeZoneNames
-/** @return NSArray<NSString *> * */
-fun NSTimeZone.knownTimeZoneNames(): MemorySegment {
-    val sel = ObjCRuntime.sel("knownTimeZoneNames")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-
-// @property abbreviationDictionary
-/** @return NSDictionary<NSString *,NSString *> * */
-fun NSTimeZone.abbreviationDictionary(): MemorySegment {
-    val sel = ObjCRuntime.sel("abbreviationDictionary")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
-}
-fun NSTimeZone.setAbbreviationDictionary(value: MemorySegment) {
-    val sel = ObjCRuntime.sel("setAbbreviationDictionary:")
-    ObjCRuntime.msgSend(null, this.ptr, sel, value)
-}
-
-// @property timeZoneDataVersion
-fun NSTimeZone.timeZoneDataVersion(): MemorySegment {
-    val sel = ObjCRuntime.sel("timeZoneDataVersion")
-    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 // ── Category: NSTimeZoneCreation on NSTimeZone ─────────────────────────────────────────

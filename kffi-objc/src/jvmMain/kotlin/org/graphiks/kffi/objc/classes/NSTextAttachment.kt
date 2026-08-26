@@ -139,4 +139,43 @@ open class NSTextAttachment(override val ptr: MemorySegment) : NSObject(ptr) {
 
 }
 
+/** Required by Objective-C protocol NSTextAttachmentLayout. */
+fun NSTextAttachment.imageForBounds_attributes_location_textContainer(bounds: CGRect, attributes: MemorySegment, location: MemorySegment, textContainer: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("imageForBounds:attributes:location:textContainer:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(bounds.segment, CGRect.layout), attributes, location, textContainer) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSTextAttachmentLayout. */
+fun NSTextAttachment.attachmentBoundsForAttributes_location_textContainer_proposedLineFragment_position(attributes: MemorySegment, location: MemorySegment, textContainer: MemorySegment, proposedLineFragment: CGRect, position: CGPoint): CGRect {
+    val sel = ObjCRuntime.sel("attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:")
+    return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, this.ptr, sel, attributes, location, textContainer, ObjCRuntime.ObjCStructArg(proposedLineFragment.segment, CGRect.layout), ObjCRuntime.ObjCStructArg(position.segment, CGPoint.layout)))
+}
+
+/** Required by Objective-C protocol NSTextAttachmentLayout. */
+fun NSTextAttachment.viewProviderForParentView_location_textContainer(parentView: MemorySegment, location: MemorySegment, textContainer: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("viewProviderForParentView:location:textContainer:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, parentView, location, textContainer) as MemorySegment
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSTextAttachment.encodeWithCoder(coder: MemorySegment): Unit {
+    val sel = ObjCRuntime.sel("encodeWithCoder:")
+    ObjCRuntime.msgSend(null, this.ptr, sel, coder)
+}
+
+/** Required by Objective-C protocol NSCoding. */
+fun NSTextAttachment.initWithCoder(coder: MemorySegment): MemorySegment {
+    val sel = ObjCRuntime.sel("initWithCoder:")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, coder) as MemorySegment
+}
+
+/**
+ * Required by Objective-C protocol NSSecureCoding.
+ */
+fun NSTextAttachment_supportsSecureCoding(): Boolean {
+    val sel = ObjCRuntime.sel("supportsSecureCoding")
+    val cls = ObjCRuntime.getClass("NSTextAttachment")
+    return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, cls, sel) as Boolean
+}
+
 // ── Category: NSTextAttachment_Deprecation on NSTextAttachment ─────────────────────────────────────────

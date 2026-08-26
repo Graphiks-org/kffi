@@ -111,12 +111,6 @@ open class NSThread(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
-    // @property currentThread
-    open fun currentThread(): MemorySegment {
-        val sel = ObjCRuntime.sel("currentThread")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
     // @property threadDictionary
     open fun threadDictionary(): MemorySegment {
         val sel = ObjCRuntime.sel("threadDictionary")
@@ -141,20 +135,6 @@ open class NSThread(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun setQualityOfService(value: NSQualityOfService) {
         val sel = ObjCRuntime.sel("setQualityOfService:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
-    }
-
-    // @property callStackReturnAddresses
-    /** @return NSArray<NSNumber *> * */
-    open fun callStackReturnAddresses(): MemorySegment {
-        val sel = ObjCRuntime.sel("callStackReturnAddresses")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property callStackSymbols
-    /** @return NSArray<NSString *> * */
-    open fun callStackSymbols(): MemorySegment {
-        val sel = ObjCRuntime.sel("callStackSymbols")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property name
@@ -187,12 +167,6 @@ open class NSThread(override val ptr: MemorySegment) : NSObject(ptr) {
     open fun isMainThread(): Boolean {
         val sel = ObjCRuntime.sel("isMainThread")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
-    // @property mainThread
-    open fun mainThread(): MemorySegment {
-        val sel = ObjCRuntime.sel("mainThread")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property executing

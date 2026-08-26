@@ -59,18 +59,6 @@ open class NSColorPanel(override val ptr: MemorySegment) : NSPanel(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, colorList)
     }
 
-    // @property sharedColorPanel
-    open fun sharedColorPanel(): MemorySegment {
-        val sel = ObjCRuntime.sel("sharedColorPanel")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
-    // @property sharedColorPanelExists
-    open fun sharedColorPanelExists(): Boolean {
-        val sel = ObjCRuntime.sel("sharedColorPanelExists")
-        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
-    }
-
     // @property accessoryView
     open fun accessoryView(): MemorySegment {
         val sel = ObjCRuntime.sel("accessoryView")

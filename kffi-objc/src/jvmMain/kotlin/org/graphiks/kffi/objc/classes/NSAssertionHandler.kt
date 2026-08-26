@@ -35,10 +35,4 @@ open class NSAssertionHandler(override val ptr: MemorySegment) : NSObject(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun handleFailureInFunction_file_lineNumber_description(functionName: String, fileName: String, line: Long, format: String): Unit = handleFailureInFunction_file_lineNumber_description(ObjCRuntime.newNSString(Arena.global(), functionName), ObjCRuntime.newNSString(Arena.global(), fileName), line, ObjCRuntime.newNSString(Arena.global(), format))
 
-    // @property currentHandler
-    open fun currentHandler(): MemorySegment {
-        val sel = ObjCRuntime.sel("currentHandler")
-        return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
-    }
-
 }
