@@ -47,6 +47,14 @@ class ObjCMethodRouter internal constructor(
         )
     }
 
+    fun onBoolean(
+        selector: String,
+        fallback: Boolean,
+        handler: () -> Boolean,
+    ) {
+        bind(selector, ObjCMethodSignatures.Boolean, BooleanBinding(fallback, handler))
+    }
+
     fun onVoid(selector: String, handler: () -> Unit) {
         bind(selector, ObjCMethodSignatures.Void, VoidBinding(handler))
     }
@@ -88,6 +96,12 @@ class ObjCMethodRouter internal constructor(
         return binding.handler(NSObject(segment(argument)))
     }
 
+    internal fun invokeBoolean(command: Long): Boolean {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? BooleanBinding ?: return false
+        return binding.handler()
+    }
+
     internal fun invokeVoid(command: Long) {
         check(frozen) { "Managed Objective-C router is not frozen" }
         (bindings[command] as? VoidBinding)?.handler?.invoke()
@@ -101,6 +115,9 @@ class ObjCMethodRouter internal constructor(
 
     internal fun booleanFallback(command: Long): Boolean =
         (bindings[command] as? BooleanObjectBinding)?.fallback ?: false
+
+    internal fun noArgumentBooleanFallback(command: Long): Boolean =
+        (bindings[command] as? BooleanBinding)?.fallback ?: false
 
     internal fun uLongFallback(command: Long): Long =
         (bindings[command] as? ULongObjectBinding)?.fallback ?: 0L
@@ -136,6 +153,11 @@ private class VoidObjectBinding(
 private class BooleanObjectBinding(
     val fallback: Boolean,
     val handler: (NSObject) -> Boolean,
+) : ObjCMethodBinding
+
+private class BooleanBinding(
+    val fallback: Boolean,
+    val handler: () -> Boolean,
 ) : ObjCMethodBinding
 
 private class VoidBinding(
@@ -212,6 +234,23 @@ internal object ObjCMethodDispatch {
             callback.router.invokeBooleanObject(command, argument)
         }
         return if (admitted) result else ObjCMethodSignatures.BooleanObject.abiZero
+    }
+
+    fun dispatchBooleanNoArgument(
+        boundary: ObjCNativeBoundary<Boolean>,
+        self: Long,
+        command: Long,
+    ): Boolean {
+        val route = acquireRoute(boundary, self) ?: return boundary.fallback
+        val fallback = route.router.noArgumentBooleanFallback(command)
+        boundary.fallback = fallback
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        var admitted = false
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) { callback ->
+            admitted = true
+            callback.router.invokeBoolean(command)
+        }
+        return if (admitted) result else ObjCMethodSignatures.Boolean.abiZero
     }
 
     fun dispatchVoid(boundary: ObjCNativeBoundary<Unit>, self: Long, command: Long) {
