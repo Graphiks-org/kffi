@@ -70,7 +70,7 @@ OUTPUT="$REPO_ROOT/kffi-objc/src/jvmMain/kotlin"
 HEADER="$REPO_ROOT/kffi-objc/generation/ObjCSubset.h"
 GENERATED_PACKAGE="$STAGING/org/graphiks/kffi/objc"
 OUTPUT_PACKAGE="$OUTPUT/org/graphiks/kffi/objc"
-PRESERVED_PACKAGE_PATHS=(managed)
+PRESERVED_PACKAGE_PATHS=(managed appkit)
 
 FRAMEWORKS=(
     Foundation CoreFoundation AppKit CoreGraphics
