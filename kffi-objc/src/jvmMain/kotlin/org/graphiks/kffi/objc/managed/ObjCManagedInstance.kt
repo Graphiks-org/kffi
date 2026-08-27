@@ -39,7 +39,7 @@ class ObjCManagedInstance private constructor(
         ): ObjCManagedInstance {
             val registration = CallbackRuntime.register(
                 type = ObjCMethodDispatch.callbackType,
-                trampoline = ObjCMethodSignatures.Void.trampoline,
+                trampoline = requireNotNull(ObjCMethodSignatures.Void.trampoline),
                 policy = CallbackPolicy.REPEATING,
                 onError = onError,
                 callback = ManagedObjCCallback(router),

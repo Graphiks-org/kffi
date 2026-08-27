@@ -75,12 +75,24 @@ class ObjCManagedClass private constructor(
             var registered = false
             try {
                 methods.entries.sortedBy { it.key }.forEach { (selector, signature) ->
-                    ObjCManagedRuntime.requireAddedMethod(
-                        nativeClass = allocated,
-                        selectorName = selector,
-                        implementation = MemorySegment.ofAddress(signature.trampoline.rawValue),
-                        typeEncoding = signature.typeEncoding,
-                    )
+                    if (signature === ObjCMethodSignatures.Boolean) {
+                        val callback = ObjCSubclassing.booleanNoArgumentCallback { receiver, command ->
+                            ObjCManagedTrampolines.dispatchBooleanNoArgument(
+                                receiver.address(),
+                                command.address(),
+                            )
+                        }
+                        require(ObjCSubclassing.addBooleanNoArgumentMethod(allocated, selector, callback)) {
+                            "Objective-C runtime rejected selector '$selector' with encoding '${signature.typeEncoding}'"
+                        }
+                    } else {
+                        ObjCManagedRuntime.requireAddedMethod(
+                            nativeClass = allocated,
+                            selectorName = selector,
+                            implementation = MemorySegment.ofAddress(requireNotNull(signature.trampoline).rawValue),
+                            typeEncoding = signature.typeEncoding,
+                        )
+                    }
                 }
                 key.protocols.forEach { protocol ->
                     ObjCManagedRuntime.requireAddedProtocol(allocated, protocol)

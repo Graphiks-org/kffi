@@ -8,7 +8,7 @@ import org.graphiks.kffi.objc.ObjCRuntime
 class ObjCMethodSignature<R> internal constructor(
     val identity: String,
     val typeEncoding: String,
-    internal val trampoline: NativeAddress,
+    internal val trampoline: NativeAddress?,
     internal val abiZero: R,
 )
 
@@ -25,6 +25,13 @@ object ObjCMethodSignatures {
         identity = "boolean-object",
         typeEncoding = booleanObjectEncoding(),
         trampoline = ObjCManagedTrampolines.booleanObject,
+        abiZero = false,
+    )
+
+    val Boolean: ObjCMethodSignature<Boolean> = ObjCMethodSignature(
+        identity = "boolean",
+        typeEncoding = booleanNoArgumentEncoding(),
+        trampoline = null,
         abiZero = false,
     )
 
@@ -45,6 +52,12 @@ object ObjCMethodSignatures {
     private fun booleanObjectEncoding(): String = when (System.getProperty("os.arch")) {
         "aarch64", "arm64" -> "B@:@"
         "amd64", "x86_64" -> "c@:@"
+        else -> error("Unsupported Objective-C host architecture: ${System.getProperty("os.arch")}")
+    }
+
+    private fun booleanNoArgumentEncoding(): String = when (System.getProperty("os.arch")) {
+        "aarch64", "arm64" -> "B@:"
+        "amd64", "x86_64" -> "c@:"
         else -> error("Unsupported Objective-C host architecture: ${System.getProperty("os.arch")}")
     }
 }
@@ -85,6 +98,20 @@ internal object ObjCManagedTrampolines {
                 val installedBoundary = ObjCNativeBoundary(ObjCMethodSignatures.BooleanObject.abiZero)
                 boundary = installedBoundary
                 ObjCMethodDispatch.dispatchBooleanObject(installedBoundary, self, command, argument)
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure)
+                ?: ObjCMethodDispatch.containUnrouted(failure, false)
+        }
+    }
+
+    fun dispatchBooleanNoArgument(self: Long, command: Long): Boolean {
+        var boundary: ObjCNativeBoundary<Boolean>? = null
+        return try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(ObjCMethodSignatures.Boolean.abiZero)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchBooleanNoArgument(installedBoundary, self, command)
             }
         } catch (failure: Throwable) {
             boundary?.contain(failure)
