@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Generated Objective-C helpers for managed `BOOL(id, SEL)` callbacks without explicit arguments,
+  including typed callback allocation and installation on dynamic subclasses.
 - Generated required Objective-C protocol members for adopting classes, including
   borrowed `NSView.effectiveAppearance()` and `NSWindow.effectiveAppearance()` accessors.
 - JVM-only `kffi-win32` module with generated low-level Win32 FFM bindings for
