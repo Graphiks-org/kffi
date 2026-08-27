@@ -131,6 +131,75 @@ class ObjCManagedClassTest {
     }
 
     @Test
+    fun nsViewAcceptsFirstResponderCrossesTheObjectiveCRuntime() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            methods = mapOf("acceptsFirstResponder" to ObjCMethodSignatures.Boolean),
+        )
+        val instance = managedClass.createInstance {
+            onBoolean("acceptsFirstResponder", fallback = false) { true }
+        }
+
+        try {
+            assertTrue(sendNoArgumentBoolean(instance, "acceptsFirstResponder"))
+        } finally {
+            instance.close()
+        }
+    }
+
+    @Test
+    fun noArgumentBooleanExceptionIsReportedAndReturnsBindingFallback() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiThrowingNoArgumentDecision" to ObjCMethodSignatures.Boolean),
+        )
+        val failures = ConcurrentLinkedQueue<Throwable>()
+        val expected = IllegalStateException("managed no-argument callback failed")
+        val instance = managedClass.createInstance(
+            onError = CallbackExceptionHandler(failures::add),
+        ) {
+            onBoolean("kffiThrowingNoArgumentDecision", fallback = true) { throw expected }
+        }
+
+        try {
+            assertTrue(sendNoArgumentBoolean(instance, "kffiThrowingNoArgumentDecision"))
+            assertSame(expected, failures.single())
+        } finally {
+            instance.close()
+        }
+    }
+
+    @Test
+    fun noArgumentBooleanMessageAfterCloseDoesNotInvokeHandlerAndReturnsAbiZero() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiClosedNoArgumentDecision" to ObjCMethodSignatures.Boolean),
+        )
+        val invocations = AtomicInteger()
+        val instance = managedClass.createInstance {
+            onBoolean("kffiClosedNoArgumentDecision", fallback = true) {
+                invocations.incrementAndGet()
+                true
+            }
+        }
+        ObjCRuntime.msgSend(
+            ValueLayout.ADDRESS,
+            instance.receiver.ptr,
+            ObjCRuntime.sel("retain"),
+        )
+
+        try {
+            instance.close()
+
+            assertFalse(sendNoArgumentBoolean(instance, "kffiClosedNoArgumentDecision"))
+            assertEquals(0, invocations.get())
+        } finally {
+            ObjCRuntime.msgSend(null, instance.receiver.ptr, ObjCRuntime.sel("release"))
+        }
+    }
+
+    @Test
     fun exceptionIsReportedAndReturnsBindingFallback() {
         requireMacOS()
         val managedClass = ObjCManagedClass.registerOnce(
@@ -360,6 +429,13 @@ class ObjCManagedClassTest {
             instance.receiver.ptr,
             ObjCRuntime.sel(selector),
             MemorySegment.NULL,
+        ) as Boolean
+
+    private fun sendNoArgumentBoolean(instance: ObjCManagedInstance, selector: String): Boolean =
+        ObjCRuntime.msgSend(
+            ValueLayout.JAVA_BOOLEAN,
+            instance.receiver.ptr,
+            ObjCRuntime.sel(selector),
         ) as Boolean
 
     private fun requireMacOS() {
