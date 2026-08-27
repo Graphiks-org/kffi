@@ -98,7 +98,7 @@ open class NSXMLDTDNode(override val ptr: MemorySegment) : NSXMLNode(ptr) {
 
 
     // ── Instance variables (direct field access not supported via Panama) ──
-    // ivar: _DTDKind: MemorySegment
+    // ivar: _DTDKind: NSXMLDTDNodeKind
     // ivar: _name: MemorySegment
     // ivar: _notationName: MemorySegment
     // ivar: _publicID: MemorySegment

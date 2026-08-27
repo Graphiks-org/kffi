@@ -141,6 +141,6 @@ open class NSURLHandle(override val ptr: MemorySegment) : NSObject(ptr) {
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _clients: MemorySegment
     // ivar: _data: MemorySegment
-    // ivar: _status: MemorySegment
+    // ivar: _status: NSURLHandleStatus
     // ivar: _reserved: Long
 }

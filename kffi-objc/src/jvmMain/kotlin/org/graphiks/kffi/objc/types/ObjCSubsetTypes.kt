@@ -960,6 +960,11 @@ typealias CFMutableStringRef = MemorySegment
 typealias CFPropertyListRef = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef (Declared(CFComparisonResult)((Void)*,(Void)*,(Void)*))* CFComparatorFunction;}
+ */
+typealias CFComparatorFunction = MemorySegment
+
+/**
  * {@snippet lang=c : STRUCT CFRange
  */
 class CFRange {
@@ -3235,6 +3240,11 @@ class CFRunLoopObserverContext {
 } // End class
 
 /**
+ * {@snippet lang=c : typedef (Void((Declared(__CFRunLoopObserver))*,Declared(CFRunLoopActivity),(Void)*))* CFRunLoopObserverCallBack;}
+ */
+typealias CFRunLoopObserverCallBack = MemorySegment
+
+/**
  * {@snippet lang=c : STRUCT CFRunLoopTimerContext
  */
 class CFRunLoopTimerContext {
@@ -3391,6 +3401,11 @@ class CFSocketSignature {
     fun address(segment: MemorySegment, value: MemorySegment) =
         address_VH.set(segment, 0L, value)
 } // End class
+
+/**
+ * {@snippet lang=c : typedef (Void((Declared(__CFSocket))*,Declared(CFSocketCallBackType),(Declared(__CFData))*,(Void)*,(Void)*))* CFSocketCallBack;}
+ */
+typealias CFSocketCallBack = MemorySegment
 
 /**
  * {@snippet lang=c : STRUCT CFSocketContext
@@ -3848,6 +3863,16 @@ typealias CFReadStreamRef = MemorySegment
  * {@snippet lang=c : typedef (Declared(__CFWriteStream))* CFWriteStreamRef;}
  */
 typealias CFWriteStreamRef = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void((Declared(__CFReadStream))*,Declared(CFStreamEventType),(Void)*))* CFReadStreamClientCallBack;}
+ */
+typealias CFReadStreamClientCallBack = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void((Declared(__CFWriteStream))*,Declared(CFStreamEventType),(Void)*))* CFWriteStreamClientCallBack;}
+ */
+typealias CFWriteStreamClientCallBack = MemorySegment
 
 /**
  * {@snippet lang=c : typedef ((Void)*((Declared(__CFAllocator))*,(Void)*))* CFSetRetainCallBack;}
@@ -5104,7 +5129,7 @@ class CFXMLAttributeListDeclarationInfo {
 class CFXMLEntityInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("entityType"),
+            ValueLayout.JAVA_LONG.withName("entityType"),
             ValueLayout.ADDRESS.withName("replacementText"),
             CFXMLExternalID.layout.withName("entityID"),
             ValueLayout.ADDRESS.withName("notationName")
@@ -5133,10 +5158,10 @@ class CFXMLEntityInfo {
     val entityType_VH: VarHandle = layout.varHandle(groupElement("entityType"))
 
     @Suppress("UNCHECKED_CAST")
-    fun entityType(segment: MemorySegment): MemorySegment =
-        entityType_VH.get(segment, 0L) as MemorySegment
+    fun entityType(segment: MemorySegment): CFXMLEntityTypeCode =
+        entityType_VH.get(segment, 0L) as CFXMLEntityTypeCode
 
-    fun entityType(segment: MemorySegment, value: MemorySegment) =
+    fun entityType(segment: MemorySegment, value: CFXMLEntityTypeCode) =
         entityType_VH.set(segment, 0L, value)
 
     val replacementText_VH: VarHandle = layout.varHandle(groupElement("replacementText"))
@@ -5173,7 +5198,7 @@ class CFXMLEntityInfo {
 class CFXMLEntityReferenceInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("entityType")
+            ValueLayout.JAVA_LONG.withName("entityType")
         ).withName("CFXMLEntityReferenceInfo")
 
         val byteSize: Long
@@ -5199,10 +5224,10 @@ class CFXMLEntityReferenceInfo {
     val entityType_VH: VarHandle = layout.varHandle(groupElement("entityType"))
 
     @Suppress("UNCHECKED_CAST")
-    fun entityType(segment: MemorySegment): MemorySegment =
-        entityType_VH.get(segment, 0L) as MemorySegment
+    fun entityType(segment: MemorySegment): CFXMLEntityTypeCode =
+        entityType_VH.get(segment, 0L) as CFXMLEntityTypeCode
 
-    fun entityType(segment: MemorySegment, value: MemorySegment) =
+    fun entityType(segment: MemorySegment, value: CFXMLEntityTypeCode) =
         entityType_VH.set(segment, 0L, value)
 } // End class
 
@@ -5230,6 +5255,11 @@ typealias CFXMLParserEndXMLStructureCallBack = MemorySegment
  * {@snippet lang=c : typedef ((Declared(__CFData))*((Declared(__CFXMLParser))*,(Declared(CFXMLExternalID))*,(Void)*))* CFXMLParserResolveExternalEntityCallBack;}
  */
 typealias CFXMLParserResolveExternalEntityCallBack = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (UNSIGNED = Char((Declared(__CFXMLParser))*,Declared(CFXMLParserStatusCode),(Void)*))* CFXMLParserHandleErrorCallBack;}
+ */
+typealias CFXMLParserHandleErrorCallBack = MemorySegment
 
 /**
  * {@snippet lang=c : STRUCT CFXMLParserCallBacks
@@ -5966,6 +5996,11 @@ typealias NSKeyValueOperator = MemorySegment
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSKeyValueChangeKey;}
  */
 typealias NSKeyValueChangeKey = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef Declared(NSPropertyListMutabilityOptions) NSPropertyListReadOptions;}
+ */
+typealias NSPropertyListReadOptions = NSPropertyListMutabilityOptions
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long NSPropertyListWriteOptions;}
@@ -9353,7 +9388,7 @@ typealias CGPathRef = CGPathPointer
 class CGPathElement {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("type"),
+            ValueLayout.JAVA_INT.withName("type"),
             ValueLayout.ADDRESS.withName("points")
         ).withName("CGPathElement")
 
@@ -9380,10 +9415,10 @@ class CGPathElement {
     val type_VH: VarHandle = layout.varHandle(groupElement("type"))
 
     @Suppress("UNCHECKED_CAST")
-    fun type(segment: MemorySegment): MemorySegment =
-        type_VH.get(segment, 0L) as MemorySegment
+    fun type(segment: MemorySegment): CGPathElementType =
+        type_VH.get(segment, 0L) as CGPathElementType
 
-    fun type(segment: MemorySegment, value: MemorySegment) =
+    fun type(segment: MemorySegment, value: CGPathElementType) =
         type_VH.set(segment, 0L, value)
 
     val points_VH: VarHandle = layout.varHandle(groupElement("points"))
@@ -9556,7 +9591,7 @@ class CGFunctionCallbacks {
 class CGContentToneMappingInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("method"),
+            ValueLayout.JAVA_INT.withName("method"),
             ValueLayout.ADDRESS.withName("options")
         ).withName("CGContentToneMappingInfo")
 
@@ -9583,10 +9618,10 @@ class CGContentToneMappingInfo {
     val method_VH: VarHandle = layout.varHandle(groupElement("method"))
 
     @Suppress("UNCHECKED_CAST")
-    fun method(segment: MemorySegment): MemorySegment =
-        method_VH.get(segment, 0L) as MemorySegment
+    fun method(segment: MemorySegment): CGToneMapping =
+        method_VH.get(segment, 0L) as CGToneMapping
 
-    fun method(segment: MemorySegment, value: MemorySegment) =
+    fun method(segment: MemorySegment, value: CGToneMapping) =
         method_VH.set(segment, 0L, value)
 
     val options_VH: VarHandle = layout.varHandle(groupElement("options"))
@@ -9985,8 +10020,8 @@ typealias CGBitmapContextReleaseDataCallback = MemorySegment
 class CGContentInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("deepestImageComponent"),
-            ValueLayout.ADDRESS.withName("contentColorModels"),
+            ValueLayout.JAVA_INT.withName("deepestImageComponent"),
+            ValueLayout.JAVA_INT.withName("contentColorModels"),
             ValueLayout.JAVA_BOOLEAN.withName("hasWideGamut"),
             ValueLayout.JAVA_BOOLEAN.withName("hasTransparency"),
             ValueLayout.JAVA_FLOAT.withName("largestContentHeadroom")
@@ -10015,19 +10050,19 @@ class CGContentInfo {
     val deepestImageComponent_VH: VarHandle = layout.varHandle(groupElement("deepestImageComponent"))
 
     @Suppress("UNCHECKED_CAST")
-    fun deepestImageComponent(segment: MemorySegment): MemorySegment =
-        deepestImageComponent_VH.get(segment, 0L) as MemorySegment
+    fun deepestImageComponent(segment: MemorySegment): CGComponent =
+        deepestImageComponent_VH.get(segment, 0L) as CGComponent
 
-    fun deepestImageComponent(segment: MemorySegment, value: MemorySegment) =
+    fun deepestImageComponent(segment: MemorySegment, value: CGComponent) =
         deepestImageComponent_VH.set(segment, 0L, value)
 
     val contentColorModels_VH: VarHandle = layout.varHandle(groupElement("contentColorModels"))
 
     @Suppress("UNCHECKED_CAST")
-    fun contentColorModels(segment: MemorySegment): MemorySegment =
-        contentColorModels_VH.get(segment, 0L) as MemorySegment
+    fun contentColorModels(segment: MemorySegment): CGColorModel =
+        contentColorModels_VH.get(segment, 0L) as CGColorModel
 
-    fun contentColorModels(segment: MemorySegment, value: MemorySegment) =
+    fun contentColorModels(segment: MemorySegment, value: CGColorModel) =
         contentColorModels_VH.set(segment, 0L, value)
 
     val hasWideGamut_VH: VarHandle = layout.varHandle(groupElement("hasWideGamut"))
@@ -10068,9 +10103,9 @@ class CGBitmapParameters {
             ValueLayout.JAVA_LONG.withName("height"),
             ValueLayout.JAVA_LONG.withName("bytesPerPixel"),
             ValueLayout.JAVA_LONG.withName("alignedBytesPerRow"),
-            ValueLayout.ADDRESS.withName("component"),
-            ValueLayout.ADDRESS.withName("layout"),
-            ValueLayout.ADDRESS.withName("format"),
+            ValueLayout.JAVA_INT.withName("component"),
+            ValueLayout.JAVA_INT.withName("layout"),
+            ValueLayout.JAVA_INT.withName("format"),
             ValueLayout.ADDRESS.withName("colorSpace"),
             ValueLayout.JAVA_BOOLEAN.withName("hasPremultipliedAlpha"),
             ValueLayout.JAVA_LONG.withName("byteOrder"),
@@ -10136,28 +10171,28 @@ class CGBitmapParameters {
     val component_VH: VarHandle = layout.varHandle(groupElement("component"))
 
     @Suppress("UNCHECKED_CAST")
-    fun component(segment: MemorySegment): MemorySegment =
-        component_VH.get(segment, 0L) as MemorySegment
+    fun component(segment: MemorySegment): CGComponent =
+        component_VH.get(segment, 0L) as CGComponent
 
-    fun component(segment: MemorySegment, value: MemorySegment) =
+    fun component(segment: MemorySegment, value: CGComponent) =
         component_VH.set(segment, 0L, value)
 
     val layout_VH: VarHandle = layout.varHandle(groupElement("layout"))
 
     @Suppress("UNCHECKED_CAST")
-    fun layout(segment: MemorySegment): MemorySegment =
-        layout_VH.get(segment, 0L) as MemorySegment
+    fun layout(segment: MemorySegment): CGBitmapLayout =
+        layout_VH.get(segment, 0L) as CGBitmapLayout
 
-    fun layout(segment: MemorySegment, value: MemorySegment) =
+    fun layout(segment: MemorySegment, value: CGBitmapLayout) =
         layout_VH.set(segment, 0L, value)
 
     val format_VH: VarHandle = layout.varHandle(groupElement("format"))
 
     @Suppress("UNCHECKED_CAST")
-    fun format(segment: MemorySegment): MemorySegment =
-        format_VH.get(segment, 0L) as MemorySegment
+    fun format(segment: MemorySegment): CGImagePixelFormatInfo =
+        format_VH.get(segment, 0L) as CGImagePixelFormatInfo
 
-    fun format(segment: MemorySegment, value: MemorySegment) =
+    fun format(segment: MemorySegment, value: CGImagePixelFormatInfo) =
         format_VH.set(segment, 0L, value)
 
     val colorSpace_VH: VarHandle = layout.varHandle(groupElement("colorSpace"))
@@ -10209,7 +10244,7 @@ class CGColorBufferFormat {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_INT.withName("version"),
-            ValueLayout.ADDRESS.withName("bitmapInfo"),
+            ValueLayout.JAVA_INT.withName("bitmapInfo"),
             ValueLayout.JAVA_LONG.withName("bitsPerComponent"),
             ValueLayout.JAVA_LONG.withName("bitsPerPixel"),
             ValueLayout.JAVA_LONG.withName("bytesPerRow")
@@ -10247,10 +10282,10 @@ class CGColorBufferFormat {
     val bitmapInfo_VH: VarHandle = layout.varHandle(groupElement("bitmapInfo"))
 
     @Suppress("UNCHECKED_CAST")
-    fun bitmapInfo(segment: MemorySegment): MemorySegment =
-        bitmapInfo_VH.get(segment, 0L) as MemorySegment
+    fun bitmapInfo(segment: MemorySegment): CGBitmapInfo =
+        bitmapInfo_VH.get(segment, 0L) as CGBitmapInfo
 
-    fun bitmapInfo(segment: MemorySegment, value: MemorySegment) =
+    fun bitmapInfo(segment: MemorySegment, value: CGBitmapInfo) =
         bitmapInfo_VH.set(segment, 0L, value)
 
     val bitsPerComponent_VH: VarHandle = layout.varHandle(groupElement("bitsPerComponent"))
@@ -10289,10 +10324,10 @@ class CGColorDataFormat {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_INT.withName("version"),
             ValueLayout.ADDRESS.withName("colorspace_info"),
-            ValueLayout.ADDRESS.withName("bitmap_info"),
+            ValueLayout.JAVA_INT.withName("bitmap_info"),
             ValueLayout.JAVA_LONG.withName("bits_per_component"),
             ValueLayout.JAVA_LONG.withName("bytes_per_row"),
-            ValueLayout.ADDRESS.withName("intent"),
+            ValueLayout.JAVA_INT.withName("intent"),
             ValueLayout.ADDRESS.withName("decode")
         ).withName("CGColorDataFormat")
 
@@ -10337,10 +10372,10 @@ class CGColorDataFormat {
     val bitmap_info_VH: VarHandle = layout.varHandle(groupElement("bitmap_info"))
 
     @Suppress("UNCHECKED_CAST")
-    fun bitmap_info(segment: MemorySegment): MemorySegment =
-        bitmap_info_VH.get(segment, 0L) as MemorySegment
+    fun bitmap_info(segment: MemorySegment): CGBitmapInfo =
+        bitmap_info_VH.get(segment, 0L) as CGBitmapInfo
 
-    fun bitmap_info(segment: MemorySegment, value: MemorySegment) =
+    fun bitmap_info(segment: MemorySegment, value: CGBitmapInfo) =
         bitmap_info_VH.set(segment, 0L, value)
 
     val bits_per_component_VH: VarHandle = layout.varHandle(groupElement("bits_per_component"))
@@ -10364,10 +10399,10 @@ class CGColorDataFormat {
     val intent_VH: VarHandle = layout.varHandle(groupElement("intent"))
 
     @Suppress("UNCHECKED_CAST")
-    fun intent(segment: MemorySegment): MemorySegment =
-        intent_VH.get(segment, 0L) as MemorySegment
+    fun intent(segment: MemorySegment): CGColorRenderingIntent =
+        intent_VH.get(segment, 0L) as CGColorRenderingIntent
 
-    fun intent(segment: MemorySegment, value: MemorySegment) =
+    fun intent(segment: MemorySegment, value: CGColorRenderingIntent) =
         intent_VH.set(segment, 0L, value)
 
     val decode_VH: VarHandle = layout.varHandle(groupElement("decode"))
@@ -10525,6 +10560,11 @@ typealias CGGammaValue = Float
 typealias CGDisplayCount = Int
 
 /**
+ * {@snippet lang=c : typedef Declared(CGError) CGDisplayErr;}
+ */
+typealias CGDisplayErr = CGError
+
+/**
  * {@snippet lang=c : STRUCT CGDeviceColor
  */
 class CGDeviceColor {
@@ -10589,6 +10629,11 @@ class CGDeviceColor {
 typealias CGDisplayConfigRef = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef (Void(UNSIGNED = Int,Declared(CGDisplayChangeSummaryFlags),(Void)*))* CGDisplayReconfigurationCallBack;}
+ */
+typealias CGDisplayReconfigurationCallBack = MemorySegment
+
+/**
  * {@snippet lang=c : typedef UNSIGNED = Int CGDisplayFadeReservationToken;}
  */
 typealias CGDisplayFadeReservationToken = Int
@@ -10622,6 +10667,11 @@ typealias CGDisplayStreamUpdateRef = MemorySegment
  * {@snippet lang=c : typedef (Void)* CGDisplayStreamFrameAvailableHandler;}
  */
 typealias CGDisplayStreamFrameAvailableHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef Declared(CGError) CGEventErr;}
+ */
+typealias CGEventErr = CGError
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int CGButtonCount;}
@@ -10793,14 +10843,19 @@ typealias CGEventMask = Long
 typealias CGEventTapProxy = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef ((Declared(__CGEvent))*((Declared(__CGEventTapProxy))*,Declared(CGEventType),(Declared(__CGEvent))*,(Void)*))* CGEventTapCallBack;}
+ */
+typealias CGEventTapCallBack = MemorySegment
+
+/**
  * {@snippet lang=c : STRUCT __CGEventTapInformation
  */
 class _CGEventTapInformation {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_INT.withName("eventTapID"),
-            ValueLayout.ADDRESS.withName("tapPoint"),
-            ValueLayout.ADDRESS.withName("options"),
+            ValueLayout.JAVA_INT.withName("tapPoint"),
+            ValueLayout.JAVA_INT.withName("options"),
             ValueLayout.JAVA_LONG.withName("eventsOfInterest"),
             ValueLayout.JAVA_INT.withName("tappingProcess"),
             ValueLayout.JAVA_INT.withName("processBeingTapped"),
@@ -10842,19 +10897,19 @@ class _CGEventTapInformation {
     val tapPoint_VH: VarHandle = layout.varHandle(groupElement("tapPoint"))
 
     @Suppress("UNCHECKED_CAST")
-    fun tapPoint(segment: MemorySegment): MemorySegment =
-        tapPoint_VH.get(segment, 0L) as MemorySegment
+    fun tapPoint(segment: MemorySegment): CGEventTapLocation =
+        tapPoint_VH.get(segment, 0L) as CGEventTapLocation
 
-    fun tapPoint(segment: MemorySegment, value: MemorySegment) =
+    fun tapPoint(segment: MemorySegment, value: CGEventTapLocation) =
         tapPoint_VH.set(segment, 0L, value)
 
     val options_VH: VarHandle = layout.varHandle(groupElement("options"))
 
     @Suppress("UNCHECKED_CAST")
-    fun options(segment: MemorySegment): MemorySegment =
-        options_VH.get(segment, 0L) as MemorySegment
+    fun options(segment: MemorySegment): CGEventTapOptions =
+        options_VH.get(segment, 0L) as CGEventTapOptions
 
-    fun options(segment: MemorySegment, value: MemorySegment) =
+    fun options(segment: MemorySegment, value: CGEventTapOptions) =
         options_VH.set(segment, 0L, value)
 
     val eventsOfInterest_VH: VarHandle = layout.varHandle(groupElement("eventsOfInterest"))
