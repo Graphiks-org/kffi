@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Managed Objective-C `BOOL(id, SEL)` callbacks without explicit arguments via
+  `ObjCMethodSignatures.Boolean` and `ObjCMethodRouter.onBoolean`, backed by
+  the generated Objective-C callback helpers.
 - Generated Objective-C helpers for managed `BOOL(id, SEL)` callbacks without explicit arguments,
   including typed callback allocation and installation on dynamic subclasses.
 - Generated required Objective-C protocol members for adopting classes, including

@@ -131,17 +131,18 @@ class ObjCManagedClassTest {
     }
 
     @Test
-    fun noArgumentBooleanMethodCrossesTheObjectiveCRuntime() {
+    fun nsViewAcceptsFirstResponderCrossesTheObjectiveCRuntime() {
         requireMacOS()
         val managedClass = ObjCManagedClass.registerOnce(
-            methods = mapOf("kffiCanRespond" to ObjCMethodSignatures.Boolean),
+            superclassName = "NSView",
+            methods = mapOf("acceptsFirstResponder" to ObjCMethodSignatures.Boolean),
         )
         val instance = managedClass.createInstance {
-            onBoolean("kffiCanRespond", fallback = false) { true }
+            onBoolean("acceptsFirstResponder", fallback = false) { true }
         }
 
         try {
-            assertTrue(sendNoArgumentBoolean(instance, "kffiCanRespond"))
+            assertTrue(sendNoArgumentBoolean(instance, "acceptsFirstResponder"))
         } finally {
             instance.close()
         }
