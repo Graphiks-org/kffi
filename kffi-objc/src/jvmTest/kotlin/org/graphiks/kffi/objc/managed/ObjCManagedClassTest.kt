@@ -22,6 +22,75 @@ import kotlin.test.assertTrue
 
 class ObjCManagedClassTest {
     @Test
+    fun managedNSViewAcceptsFirstResponderRoutesNoArgumentBooleanThroughObjCRuntime() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            methods = mapOf("acceptsFirstResponder" to ObjCMethodSignatures.Boolean),
+        )
+        val instance = managedClass.createInstance {
+            onBoolean("acceptsFirstResponder", fallback = false) { true }
+        }
+
+        try {
+            assertTrue(sendBoolean(instance, "acceptsFirstResponder"))
+        } finally {
+            instance.close()
+        }
+    }
+
+    @Test
+    fun noArgumentBooleanContainsFailureThenUsesFallbackAndAbiZeroAfterRevocation() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiNoArgumentDecision" to ObjCMethodSignatures.Boolean),
+        )
+        val failures = ConcurrentLinkedQueue<Throwable>()
+        val expected = IllegalStateException("no-argument managed callback failed")
+        val invocations = AtomicInteger()
+        val instance = managedClass.createInstance(
+            onError = CallbackExceptionHandler(failures::add),
+        ) {
+            onBoolean("kffiNoArgumentDecision", fallback = true) {
+                invocations.incrementAndGet()
+                throw expected
+            }
+        }
+        ObjCRuntime.msgSend(
+            ValueLayout.ADDRESS,
+            instance.receiver.ptr,
+            ObjCRuntime.sel("retain"),
+        )
+
+        try {
+            assertTrue(sendBoolean(instance, "kffiNoArgumentDecision"))
+            assertSame(expected, failures.single())
+            assertEquals(1, invocations.get())
+
+            instance.close()
+
+            assertFalse(sendBoolean(instance, "kffiNoArgumentDecision"))
+            assertEquals(1, invocations.get())
+        } finally {
+            ObjCRuntime.msgSend(null, instance.receiver.ptr, ObjCRuntime.sel("release"))
+        }
+    }
+
+    @Test
+    fun noArgumentBooleanRejectsBindingForAnotherDeclaredAbiShape() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiNoArgumentDecision" to ObjCMethodSignatures.Boolean),
+        )
+
+        assertFailsWith<IllegalArgumentException> {
+            managedClass.createInstance {
+                onVoid("kffiNoArgumentDecision") {}
+            }
+        }
+    }
+
+    @Test
     fun twoInstancesRouteOneSelectorToDifferentHandlersThroughObjCRuntime() {
         requireMacOS()
         val managedClass = ObjCManagedClass.registerOnce(
