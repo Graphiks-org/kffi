@@ -8,6 +8,7 @@ import org.graphiks.kffi.CallbackRegistration
 import org.graphiks.kffi.CallbackRuntime
 import org.graphiks.kffi.CallbackType
 import org.graphiks.kffi.NativeAddress
+import org.graphiks.kffi.objc.NSEvent
 import org.graphiks.kffi.objc.NSObject
 import org.graphiks.kffi.objc.ObjCRuntime
 import java.lang.foreign.MemorySegment
@@ -28,6 +29,16 @@ class ObjCMethodRouter internal constructor(
      */
     fun onVoidObject(selector: String, handler: (NSObject) -> Unit) {
         bind(selector, ObjCMethodSignatures.VoidObject, VoidObjectBinding(handler))
+    }
+
+    /**
+     * Binds an AppKit event selector to [handler].
+     *
+     * The borrowed native [NSEvent] is copied into [NSEventObservation] before [handler] runs, so
+     * the handler may retain the observation after the Objective-C callback has returned.
+     */
+    fun onNSEvent(selector: String, handler: (NSEventObservation) -> Unit) {
+        bind(selector, ObjCMethodSignatures.VoidObject, NSEventBinding(handler))
     }
 
     /**
@@ -87,7 +98,15 @@ class ObjCMethodRouter internal constructor(
 
     internal fun invokeVoidObject(command: Long, argument: Long) {
         check(frozen) { "Managed Objective-C router is not frozen" }
-        (bindings[command] as? VoidObjectBinding)?.handler(NSObject(segment(argument)))
+        when (val binding = bindings[command]) {
+            is VoidObjectBinding -> binding.handler(NSObject(segment(argument)))
+            is NSEventBinding -> {
+                require(argument != 0L) { "Managed NSEvent callback received a nil event" }
+                binding.handler(NSEventObservation.from(NSEvent(segment(argument))))
+            }
+
+            else -> Unit
+        }
     }
 
     internal fun invokeBooleanObject(command: Long, argument: Long): Boolean {
@@ -148,6 +167,10 @@ private sealed interface ObjCMethodBinding
 
 private class VoidObjectBinding(
     val handler: (NSObject) -> Unit,
+) : ObjCMethodBinding
+
+private class NSEventBinding(
+    val handler: (NSEventObservation) -> Unit,
 ) : ObjCMethodBinding
 
 private class BooleanObjectBinding(
