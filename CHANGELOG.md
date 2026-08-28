@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Managed peer-local AppKit pointer tracking with opaque, idempotent owners that install and
+  revoke `NSTrackingArea` instances and lease `NSWindow.acceptsMouseMovedEvents` safely.
 - Immutable managed AppKit `NSEvent` observations for Objective-C event callbacks,
   exposed through `ObjCMethodRouter.onNSEvent` without leaking borrowed native handles.
 - Managed Objective-C `BOOL(id, SEL)` callbacks without explicit arguments via
