@@ -76,6 +76,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   GitHub Action.
 
 ### Fixed
+- Managed AppKit `NSEvent` observations now preserve native pointer `deltaX` and `deltaY`
+  values for pointer movement and drag routing.
 - Generic Android downcalls now parse and validate declared signatures instead
   of treating every argument as a 64-bit carrier.
 - Android test APKs now package the JNI fixture library required by

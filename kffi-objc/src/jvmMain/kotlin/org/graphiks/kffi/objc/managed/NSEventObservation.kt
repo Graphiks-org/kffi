@@ -40,6 +40,8 @@ data class NSEventObservation(
             val buttonNumber: Long,
             val clickCount: Long,
             val pressure: Float,
+            val deltaX: Double,
+            val deltaY: Double,
         ) : Details
     }
 
@@ -83,6 +85,8 @@ data class NSEventObservation(
                 buttonNumber = buttonNumber(),
                 clickCount = clickCount(),
                 pressure = pressure(),
+                deltaX = deltaX(),
+                deltaY = deltaY(),
             )
 
             else -> Details.None

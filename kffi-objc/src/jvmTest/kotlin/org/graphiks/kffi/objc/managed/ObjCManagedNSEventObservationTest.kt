@@ -91,8 +91,81 @@ class ObjCManagedNSEventObservationTest {
             assertEquals(0L, pointer.buttonNumber)
             assertEquals(3L, pointer.clickCount)
             assertEquals(0.75f, pointer.pressure)
+            assertEquals(0.0, pointer.deltaX)
+            assertEquals(0.0, pointer.deltaY)
         } finally {
             instance.close()
+        }
+    }
+
+    @Test
+    fun mouseMovedSnapshotsPointerDeltasThroughTheManagedNSViewOverride() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            methods = mapOf("mouseMoved:" to ObjCMethodSignatures.VoidObject),
+        )
+        var observed: NSEventObservation? = null
+        val instance = managedClass.createInstance {
+            onNSEvent("mouseMoved:") { observed = it }
+        }
+
+        try {
+            ObjCRuntime.autoreleasePool {
+                val event = NSEvent.mouseEventWithType_location_modifierFlags_timestamp_windowNumber_context_eventNumber_clickCount_pressure(
+                    type = NSEventType.NSEventTypeMouseMoved,
+                    location = NSPoint(x = 23.0, y = 5.0),
+                    flags = NSEventModifierFlags(0),
+                    time = 3.0,
+                    wNum = 0L,
+                    unusedPassNil = MemorySegment.NULL,
+                    eNum = 2L,
+                    cNum = 0L,
+                    pressure = 0f,
+                )
+
+                send(instance, "mouseMoved:", event)
+            }
+
+            val pointer = assertIs<NSEventObservation.Details.Pointer>(requireNotNull(observed).details)
+            assertEquals(0.0, pointer.deltaX)
+            assertEquals(0.0, pointer.deltaY)
+        } finally {
+            instance.close()
+        }
+    }
+
+    @Test
+    fun pointerObservationCopiesNonZeroDeltasFromGeneratedEventGetters() {
+        val observation = NSEventObservation.from(
+            SyntheticNSEvent(
+                type = NSEventType.NSEventTypeLeftMouseDragged,
+                deltaX = -3.5,
+                deltaY = 7.25,
+            ),
+        )
+
+        val pointer = assertIs<NSEventObservation.Details.Pointer>(observation.details)
+        assertEquals(-3.5, pointer.deltaX)
+        assertEquals(7.25, pointer.deltaY)
+    }
+
+    @Test
+    fun eventKindsExposeOnlyTheirApplicableObservationDetails() {
+        val cases = listOf(
+            NSEventType.NSEventTypeFlagsChanged to NSEventObservation.Details.Keyboard::class,
+            NSEventType.NSEventTypeMouseEntered to NSEventObservation.Details.Pointer::class,
+            NSEventType.NSEventTypeMouseExited to NSEventObservation.Details.Pointer::class,
+            NSEventType.NSEventTypeMouseMoved to NSEventObservation.Details.Pointer::class,
+            NSEventType.NSEventTypeLeftMouseDragged to NSEventObservation.Details.Pointer::class,
+            NSEventType.NSEventTypeRightMouseDown to NSEventObservation.Details.Pointer::class,
+            NSEventType.NSEventTypeOtherMouseDown to NSEventObservation.Details.Pointer::class,
+            NSEventType.NSEventTypeMouseCancelled to NSEventObservation.Details.Pointer::class,
+            NSEventType.NSEventTypeApplicationDefined to NSEventObservation.Details.None::class,
+        )
+
+        cases.forEach { (type, expectedDetails) ->
+            assertEquals(expectedDetails, NSEventObservation.from(SyntheticNSEvent(eventType = type)).details::class)
         }
     }
 
@@ -111,4 +184,53 @@ class ObjCManagedNSEventObservationTest {
             "Objective-C runtime tests require macOS",
         )
     }
+}
+
+private class SyntheticNSEvent(
+    private val eventType: NSEventType,
+    private val eventModifierFlags: NSEventModifierFlags = NSEventModifierFlags(0),
+    private val eventLocation: NSPoint = NSPoint(x = 0.0, y = 0.0),
+    private val eventKeyCode: Short = 0,
+    private val eventCharacters: String = "",
+    private val eventCharactersIgnoringModifiers: String = "",
+    private val eventIsRepeat: Boolean = false,
+    private val eventButtonNumber: Long = 0L,
+    private val eventClickCount: Long = 0L,
+    private val eventPressure: Float = 0f,
+    private val eventDeltaX: Double = 0.0,
+    private val eventDeltaY: Double = 0.0,
+) : NSEvent(MemorySegment.NULL) {
+    constructor(
+        type: NSEventType,
+        deltaX: Double,
+        deltaY: Double,
+    ) : this(
+        eventType = type,
+        eventDeltaX = deltaX,
+        eventDeltaY = deltaY,
+    )
+
+    override fun type(): NSEventType = eventType
+
+    override fun modifierFlags(): NSEventModifierFlags = eventModifierFlags
+
+    override fun locationInWindow(): NSPoint = eventLocation
+
+    override fun keyCode(): Short = eventKeyCode
+
+    override fun charactersAsString(): String = eventCharacters
+
+    override fun charactersIgnoringModifiersAsString(): String = eventCharactersIgnoringModifiers
+
+    override fun isARepeat(): Boolean = eventIsRepeat
+
+    override fun buttonNumber(): Long = eventButtonNumber
+
+    override fun clickCount(): Long = eventClickCount
+
+    override fun pressure(): Float = eventPressure
+
+    override fun deltaX(): Double = eventDeltaX
+
+    override fun deltaY(): Double = eventDeltaY
 }
