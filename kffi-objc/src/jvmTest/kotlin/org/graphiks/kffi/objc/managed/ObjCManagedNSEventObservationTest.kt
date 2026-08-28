@@ -10,6 +10,7 @@ import java.lang.foreign.MemorySegment
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.reflect.KClass
 
 class ObjCManagedNSEventObservationTest {
     @Test
@@ -151,20 +152,8 @@ class ObjCManagedNSEventObservationTest {
     }
 
     @Test
-    fun eventKindsExposeOnlyTheirApplicableObservationDetails() {
-        val cases = listOf(
-            NSEventType.NSEventTypeFlagsChanged to NSEventObservation.Details.Keyboard::class,
-            NSEventType.NSEventTypeMouseEntered to NSEventObservation.Details.Pointer::class,
-            NSEventType.NSEventTypeMouseExited to NSEventObservation.Details.Pointer::class,
-            NSEventType.NSEventTypeMouseMoved to NSEventObservation.Details.Pointer::class,
-            NSEventType.NSEventTypeLeftMouseDragged to NSEventObservation.Details.Pointer::class,
-            NSEventType.NSEventTypeRightMouseDown to NSEventObservation.Details.Pointer::class,
-            NSEventType.NSEventTypeOtherMouseDown to NSEventObservation.Details.Pointer::class,
-            NSEventType.NSEventTypeMouseCancelled to NSEventObservation.Details.Pointer::class,
-            NSEventType.NSEventTypeApplicationDefined to NSEventObservation.Details.None::class,
-        )
-
-        cases.forEach { (type, expectedDetails) ->
+    fun everyGeneratedEventTypeHasTheDeclaredObservationDetails() {
+        allGeneratedEventTypeCases.forEach { (type, expectedDetails) ->
             assertEquals(expectedDetails, NSEventObservation.from(SyntheticNSEvent(eventType = type)).details::class)
         }
     }
@@ -185,6 +174,55 @@ class ObjCManagedNSEventObservationTest {
         )
     }
 }
+
+private val keyboardEventTypes = listOf(
+    NSEventType.NSEventTypeKeyDown,
+    NSEventType.NSEventTypeKeyUp,
+    NSEventType.NSEventTypeFlagsChanged,
+)
+
+private val pointerEventTypes = listOf(
+    NSEventType.NSEventTypeLeftMouseDown,
+    NSEventType.NSEventTypeLeftMouseUp,
+    NSEventType.NSEventTypeRightMouseDown,
+    NSEventType.NSEventTypeRightMouseUp,
+    NSEventType.NSEventTypeMouseMoved,
+    NSEventType.NSEventTypeLeftMouseDragged,
+    NSEventType.NSEventTypeRightMouseDragged,
+    NSEventType.NSEventTypeMouseEntered,
+    NSEventType.NSEventTypeMouseExited,
+    NSEventType.NSEventTypeOtherMouseDown,
+    NSEventType.NSEventTypeOtherMouseUp,
+    NSEventType.NSEventTypeOtherMouseDragged,
+    NSEventType.NSEventTypeMouseCancelled,
+)
+
+private val noneEventTypes = listOf(
+    NSEventType.NSEventTypeAppKitDefined,
+    NSEventType.NSEventTypeSystemDefined,
+    NSEventType.NSEventTypeApplicationDefined,
+    NSEventType.NSEventTypePeriodic,
+    NSEventType.NSEventTypeCursorUpdate,
+    NSEventType.NSEventTypeScrollWheel,
+    NSEventType.NSEventTypeTabletPoint,
+    NSEventType.NSEventTypeTabletProximity,
+    NSEventType.NSEventTypeGesture,
+    NSEventType.NSEventTypeMagnify,
+    NSEventType.NSEventTypeSwipe,
+    NSEventType.NSEventTypeRotate,
+    NSEventType.NSEventTypeBeginGesture,
+    NSEventType.NSEventTypeEndGesture,
+    NSEventType.NSEventTypeSmartMagnify,
+    NSEventType.NSEventTypeQuickLook,
+    NSEventType.NSEventTypePressure,
+    NSEventType.NSEventTypeDirectTouch,
+    NSEventType.NSEventTypeChangeMode,
+)
+
+private val allGeneratedEventTypeCases: List<Pair<NSEventType, KClass<out NSEventObservation.Details>>> =
+    keyboardEventTypes.map { it to NSEventObservation.Details.Keyboard::class } +
+        pointerEventTypes.map { it to NSEventObservation.Details.Pointer::class } +
+        noneEventTypes.map { it to NSEventObservation.Details.None::class }
 
 private class SyntheticNSEvent(
     private val eventType: NSEventType,
