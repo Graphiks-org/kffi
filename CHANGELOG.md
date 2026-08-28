@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Immutable managed AppKit `NSEvent` observations for Objective-C event callbacks,
+  exposed through `ObjCMethodRouter.onNSEvent` without leaking borrowed native handles.
 - Managed Objective-C `BOOL(id, SEL)` callbacks without explicit arguments via
   `ObjCMethodSignatures.Boolean` and `ObjCMethodRouter.onBoolean`, backed by
   the generated Objective-C callback helpers.
@@ -74,6 +76,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   GitHub Action.
 
 ### Fixed
+- Managed AppKit `NSEvent` observations now preserve native pointer `deltaX` and `deltaY`
+  values for pointer movement and drag routing.
 - Generic Android downcalls now parse and validate declared signatures instead
   of treating every argument as a 64-bit carrier.
 - Android test APKs now package the JNI fixture library required by
