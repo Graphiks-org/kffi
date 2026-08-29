@@ -243,7 +243,7 @@ open class NSExpression(override val ptr: MemorySegment) : NSObject(ptr) {
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _expressionFlags: MemorySegment
     // ivar: reserved: Int
-    // ivar: _expressionType: MemorySegment
+    // ivar: _expressionType: NSExpressionType
 }
 
 /** Required by Objective-C protocol NSCoding. */

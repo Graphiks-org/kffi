@@ -49,6 +49,6 @@ open class NSRelativeSpecifier(override val ptr: MemorySegment) : NSScriptObject
 
 
     // ── Instance variables (direct field access not supported via Panama) ──
-    // ivar: _relativePosition: MemorySegment
+    // ivar: _relativePosition: NSRelativePosition
     // ivar: _baseSpecifier: MemorySegment
 }

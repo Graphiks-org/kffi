@@ -5,6 +5,120 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : CFStringCreateMutableWithExternalCharactersNoCopy typedef CFMutableStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UniChar = UNSIGNED = Short)*,typedef CFIndex = Long,typedef CFIndex = Long,typedef CFAllocatorRef = (Declared(__CFAllocator))*)
+ */
+private val CFStringCreateMutableWithExternalCharactersNoCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFStringCreateMutableWithExternalCharactersNoCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateMutableWithExternalCharactersNoCopy").orElseThrow()
+private val CFStringCreateMutableWithExternalCharactersNoCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateMutableWithExternalCharactersNoCopy_ADDR, CFStringCreateMutableWithExternalCharactersNoCopy_DESC)
+
+fun CFStringCreateMutableWithExternalCharactersNoCopy(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Long, arg4: MemorySegment): MemorySegment {
+    try {
+        return CFStringCreateMutableWithExternalCharactersNoCopy_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringGetLength typedef CFIndex = Long(typedef CFStringRef = (Declared(__CFString))*)
+ */
+private val CFStringGetLength_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFStringGetLength_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringGetLength").orElseThrow()
+private val CFStringGetLength_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringGetLength_ADDR, CFStringGetLength_DESC)
+
+fun CFStringGetLength(arg0: MemorySegment): Long {
+    try {
+        return CFStringGetLength_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringGetCharacterAtIndex typedef UniChar = UNSIGNED = Short(typedef CFStringRef = (Declared(__CFString))*,typedef CFIndex = Long)
+ */
+private val CFStringGetCharacterAtIndex_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_SHORT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CFStringGetCharacterAtIndex_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringGetCharacterAtIndex").orElseThrow()
+private val CFStringGetCharacterAtIndex_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringGetCharacterAtIndex_ADDR, CFStringGetCharacterAtIndex_DESC)
+
+fun CFStringGetCharacterAtIndex(arg0: MemorySegment, arg1: Long): Short {
+    try {
+        return CFStringGetCharacterAtIndex_HANDLE.invokeExact(arg0, arg1) as Short
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringGetCharacters Void(typedef CFStringRef = (Declared(__CFString))*,typedef CFRange = Declared(CFRange),(typedef UniChar = UNSIGNED = Short)*)
+ */
+private val CFStringGetCharacters_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS)
+private val CFStringGetCharacters_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringGetCharacters").orElseThrow()
+private val CFStringGetCharacters_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringGetCharacters_ADDR, CFStringGetCharacters_DESC)
+
+fun CFStringGetCharacters(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
+    try {
+        CFStringGetCharacters_HANDLE.invokeExact(arg0, arg1, arg2)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringGetPascalString typedef Boolean = UNSIGNED = Char(typedef CFStringRef = (Declared(__CFString))*,typedef StringPtr = (UNSIGNED = Char)*,typedef CFIndex = Long,typedef CFStringEncoding = UNSIGNED = Int)
+ */
+private val CFStringGetPascalString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
+private val CFStringGetPascalString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringGetPascalString").orElseThrow()
+private val CFStringGetPascalString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringGetPascalString_ADDR, CFStringGetPascalString_DESC)
+
+fun CFStringGetPascalString(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Int): Byte {
+    try {
+        return CFStringGetPascalString_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Byte
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringGetCString typedef Boolean = UNSIGNED = Char(typedef CFStringRef = (Declared(__CFString))*,(Char)*,typedef CFIndex = Long,typedef CFStringEncoding = UNSIGNED = Int)
+ */
+private val CFStringGetCString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
+private val CFStringGetCString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringGetCString").orElseThrow()
+private val CFStringGetCString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringGetCString_ADDR, CFStringGetCString_DESC)
+
+fun CFStringGetCString(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Int): Byte {
+    try {
+        return CFStringGetCString_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Byte
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFStringGetPascalStringPtr typedef ConstStringPtr = (UNSIGNED = Char)*(typedef CFStringRef = (Declared(__CFString))*,typedef CFStringEncoding = UNSIGNED = Int)
  */
 private val CFStringGetPascalStringPtr_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
@@ -252,6 +366,139 @@ fun CFStringCreateWithFileSystemRepresentation(arg0: MemorySegment, arg1: Memory
 }
 
 /**
+ * {@snippet lang=c : CFStringCompareWithOptionsAndLocale typedef CFComparisonResult = Declared(CFComparisonResult)(typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFRange = Declared(CFRange),typedef CFStringCompareFlags = Declared(CFStringCompareFlags),typedef CFLocaleRef = (Declared(__CFLocale))*)
+ */
+private val CFStringCompareWithOptionsAndLocale_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFStringCompareWithOptionsAndLocale_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCompareWithOptionsAndLocale").orElseThrow()
+private val CFStringCompareWithOptionsAndLocale_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCompareWithOptionsAndLocale_ADDR, CFStringCompareWithOptionsAndLocale_DESC)
+
+fun CFStringCompareWithOptionsAndLocale(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CFStringCompareFlags, arg4: MemorySegment): CFComparisonResult {
+    try {
+        return CFComparisonResult.fromValue(CFStringCompareWithOptionsAndLocale_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue, arg4) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringCompareWithOptions typedef CFComparisonResult = Declared(CFComparisonResult)(typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFRange = Declared(CFRange),typedef CFStringCompareFlags = Declared(CFStringCompareFlags))
+ */
+private val CFStringCompareWithOptions_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_LONG)
+private val CFStringCompareWithOptions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCompareWithOptions").orElseThrow()
+private val CFStringCompareWithOptions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCompareWithOptions_ADDR, CFStringCompareWithOptions_DESC)
+
+fun CFStringCompareWithOptions(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CFStringCompareFlags): CFComparisonResult {
+    try {
+        return CFComparisonResult.fromValue(CFStringCompareWithOptions_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringCompare typedef CFComparisonResult = Declared(CFComparisonResult)(typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFStringCompareFlags = Declared(CFStringCompareFlags))
+ */
+private val CFStringCompare_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CFStringCompare_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCompare").orElseThrow()
+private val CFStringCompare_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCompare_ADDR, CFStringCompare_DESC)
+
+fun CFStringCompare(arg0: MemorySegment, arg1: MemorySegment, arg2: CFStringCompareFlags): CFComparisonResult {
+    try {
+        return CFComparisonResult.fromValue(CFStringCompare_HANDLE.invokeExact(arg0, arg1, arg2.rawValue) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringFindWithOptionsAndLocale typedef Boolean = UNSIGNED = Char(typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFRange = Declared(CFRange),typedef CFStringCompareFlags = Declared(CFStringCompareFlags),typedef CFLocaleRef = (Declared(__CFLocale))*,(typedef CFRange = Declared(CFRange))*)
+ */
+private val CFStringFindWithOptionsAndLocale_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CFStringFindWithOptionsAndLocale_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringFindWithOptionsAndLocale").orElseThrow()
+private val CFStringFindWithOptionsAndLocale_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringFindWithOptionsAndLocale_ADDR, CFStringFindWithOptionsAndLocale_DESC)
+
+fun CFStringFindWithOptionsAndLocale(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CFStringCompareFlags, arg4: MemorySegment, arg5: MemorySegment): Byte {
+    try {
+        return CFStringFindWithOptionsAndLocale_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue, arg4, arg5) as Byte
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringFindWithOptions typedef Boolean = UNSIGNED = Char(typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFRange = Declared(CFRange),typedef CFStringCompareFlags = Declared(CFStringCompareFlags),(typedef CFRange = Declared(CFRange))*)
+ */
+private val CFStringFindWithOptions_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFStringFindWithOptions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringFindWithOptions").orElseThrow()
+private val CFStringFindWithOptions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringFindWithOptions_ADDR, CFStringFindWithOptions_DESC)
+
+fun CFStringFindWithOptions(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CFStringCompareFlags, arg4: MemorySegment): Byte {
+    try {
+        return CFStringFindWithOptions_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue, arg4) as Byte
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringCreateArrayWithFindResults typedef CFArrayRef = (Declared(__CFArray))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFRange = Declared(CFRange),typedef CFStringCompareFlags = Declared(CFStringCompareFlags))
+ */
+private val CFStringCreateArrayWithFindResults_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_LONG)
+private val CFStringCreateArrayWithFindResults_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateArrayWithFindResults").orElseThrow()
+private val CFStringCreateArrayWithFindResults_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateArrayWithFindResults_ADDR, CFStringCreateArrayWithFindResults_DESC)
+
+fun CFStringCreateArrayWithFindResults(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: CFStringCompareFlags): MemorySegment {
+    try {
+        return CFStringCreateArrayWithFindResults_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4.rawValue) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringFind typedef CFRange = Declared(CFRange)(typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFStringCompareFlags = Declared(CFStringCompareFlags))
+ */
+private val CFStringFind_DESC: FunctionDescriptor = FunctionDescriptor.of(CFRange.layout, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CFStringFind_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringFind").orElseThrow()
+private val CFStringFind_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringFind_ADDR, CFStringFind_DESC)
+
+fun CFStringFind(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment, arg2: CFStringCompareFlags): MemorySegment {
+    try {
+        return CFStringFind_HANDLE.invokeExact(allocator, arg0, arg1, arg2.rawValue) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFStringHasPrefix typedef Boolean = UNSIGNED = Char(typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFStringHasPrefix_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -299,6 +546,25 @@ private val CFStringGetRangeOfComposedCharactersAtIndex_HANDLE: MethodHandle = L
 fun CFStringGetRangeOfComposedCharactersAtIndex(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Long): MemorySegment {
     try {
         return CFStringGetRangeOfComposedCharactersAtIndex_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringFindCharacterFromSet typedef Boolean = UNSIGNED = Char(typedef CFStringRef = (Declared(__CFString))*,typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*,typedef CFRange = Declared(CFRange),typedef CFStringCompareFlags = Declared(CFStringCompareFlags),(typedef CFRange = Declared(CFRange))*)
+ */
+private val CFStringFindCharacterFromSet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFStringFindCharacterFromSet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringFindCharacterFromSet").orElseThrow()
+private val CFStringFindCharacterFromSet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringFindCharacterFromSet_ADDR, CFStringFindCharacterFromSet_DESC)
+
+fun CFStringFindCharacterFromSet(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CFStringCompareFlags, arg4: MemorySegment): Byte {
+    try {
+        return CFStringFindCharacterFromSet_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue, arg4) as Byte
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -651,6 +917,25 @@ fun CFStringReplaceAll(arg0: MemorySegment, arg1: MemorySegment): Unit {
 }
 
 /**
+ * {@snippet lang=c : CFStringFindAndReplace typedef CFIndex = Long(typedef CFMutableStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFRange = Declared(CFRange),typedef CFStringCompareFlags = Declared(CFStringCompareFlags))
+ */
+private val CFStringFindAndReplace_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_LONG)
+private val CFStringFindAndReplace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringFindAndReplace").orElseThrow()
+private val CFStringFindAndReplace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringFindAndReplace_ADDR, CFStringFindAndReplace_DESC)
+
+fun CFStringFindAndReplace(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: CFStringCompareFlags): Long {
+    try {
+        return CFStringFindAndReplace_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4.rawValue) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFStringSetExternalCharactersNoCopy Void(typedef CFMutableStringRef = (Declared(__CFString))*,(typedef UniChar = UNSIGNED = Short)*,typedef CFIndex = Long,typedef CFIndex = Long)
  */
 private val CFStringSetExternalCharactersNoCopy_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
@@ -774,6 +1059,44 @@ private val CFStringCapitalize_HANDLE: MethodHandle = Linker.nativeLinker().down
 fun CFStringCapitalize(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CFStringCapitalize_HANDLE.invokeExact(arg0, arg1)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringNormalize Void(typedef CFMutableStringRef = (Declared(__CFString))*,typedef CFStringNormalizationForm = Declared(CFStringNormalizationForm))
+ */
+private val CFStringNormalize_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CFStringNormalize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringNormalize").orElseThrow()
+private val CFStringNormalize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringNormalize_ADDR, CFStringNormalize_DESC)
+
+fun CFStringNormalize(arg0: MemorySegment, arg1: CFStringNormalizationForm): Unit {
+    try {
+        CFStringNormalize_HANDLE.invokeExact(arg0, arg1.value)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFStringFold Void(typedef CFMutableStringRef = (Declared(__CFString))*,typedef CFStringCompareFlags = Declared(CFStringCompareFlags),typedef CFLocaleRef = (Declared(__CFLocale))*)
+ */
+private val CFStringFold_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFStringFold_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringFold").orElseThrow()
+private val CFStringFold_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringFold_ADDR, CFStringFold_DESC)
+
+fun CFStringFold(arg0: MemorySegment, arg1: CFStringCompareFlags, arg2: MemorySegment): Unit {
+    try {
+        CFStringFold_HANDLE.invokeExact(arg0, arg1.rawValue, arg2)
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -1568,6 +1891,25 @@ fun CFTimeZoneGetNextDaylightSavingTimeTransition(arg0: MemorySegment, arg1: Dou
 }
 
 /**
+ * {@snippet lang=c : CFTimeZoneCopyLocalizedName typedef CFStringRef = (Declared(__CFString))*(typedef CFTimeZoneRef = (Declared(__CFTimeZone))*,typedef CFTimeZoneNameStyle = Declared(CFTimeZoneNameStyle),typedef CFLocaleRef = (Declared(__CFLocale))*)
+ */
+private val CFTimeZoneCopyLocalizedName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFTimeZoneCopyLocalizedName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFTimeZoneCopyLocalizedName").orElseThrow()
+private val CFTimeZoneCopyLocalizedName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFTimeZoneCopyLocalizedName_ADDR, CFTimeZoneCopyLocalizedName_DESC)
+
+fun CFTimeZoneCopyLocalizedName(arg0: MemorySegment, arg1: CFTimeZoneNameStyle, arg2: MemorySegment): MemorySegment {
+    try {
+        return CFTimeZoneCopyLocalizedName_HANDLE.invokeExact(arg0, arg1.value, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : kCFTimeZoneSystemTimeZoneDidChangeNotification typedef const CFNotificationName = (Declared(__CFString))*
  */
 private val kCFTimeZoneSystemTimeZoneDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -1807,6 +2149,101 @@ fun CFCalendarSetMinimumDaysInFirstWeek(arg0: MemorySegment, arg1: Long): Unit {
 }
 
 /**
+ * {@snippet lang=c : CFCalendarGetMinimumRangeOfUnit typedef CFRange = Declared(CFRange)(typedef CFCalendarRef = (Declared(__CFCalendar))*,typedef CFCalendarUnit = Declared(CFCalendarUnit))
+ */
+private val CFCalendarGetMinimumRangeOfUnit_DESC: FunctionDescriptor = FunctionDescriptor.of(CFRange.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CFCalendarGetMinimumRangeOfUnit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCalendarGetMinimumRangeOfUnit").orElseThrow()
+private val CFCalendarGetMinimumRangeOfUnit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCalendarGetMinimumRangeOfUnit_ADDR, CFCalendarGetMinimumRangeOfUnit_DESC)
+
+fun CFCalendarGetMinimumRangeOfUnit(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CFCalendarUnit): MemorySegment {
+    try {
+        return CFCalendarGetMinimumRangeOfUnit_HANDLE.invokeExact(allocator, arg0, arg1.rawValue) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFCalendarGetMaximumRangeOfUnit typedef CFRange = Declared(CFRange)(typedef CFCalendarRef = (Declared(__CFCalendar))*,typedef CFCalendarUnit = Declared(CFCalendarUnit))
+ */
+private val CFCalendarGetMaximumRangeOfUnit_DESC: FunctionDescriptor = FunctionDescriptor.of(CFRange.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CFCalendarGetMaximumRangeOfUnit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCalendarGetMaximumRangeOfUnit").orElseThrow()
+private val CFCalendarGetMaximumRangeOfUnit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCalendarGetMaximumRangeOfUnit_ADDR, CFCalendarGetMaximumRangeOfUnit_DESC)
+
+fun CFCalendarGetMaximumRangeOfUnit(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CFCalendarUnit): MemorySegment {
+    try {
+        return CFCalendarGetMaximumRangeOfUnit_HANDLE.invokeExact(allocator, arg0, arg1.rawValue) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFCalendarGetRangeOfUnit typedef CFRange = Declared(CFRange)(typedef CFCalendarRef = (Declared(__CFCalendar))*,typedef CFCalendarUnit = Declared(CFCalendarUnit),typedef CFCalendarUnit = Declared(CFCalendarUnit),typedef CFAbsoluteTime = Double)
+ */
+private val CFCalendarGetRangeOfUnit_DESC: FunctionDescriptor = FunctionDescriptor.of(CFRange.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_DOUBLE)
+private val CFCalendarGetRangeOfUnit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCalendarGetRangeOfUnit").orElseThrow()
+private val CFCalendarGetRangeOfUnit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCalendarGetRangeOfUnit_ADDR, CFCalendarGetRangeOfUnit_DESC)
+
+fun CFCalendarGetRangeOfUnit(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CFCalendarUnit, arg2: CFCalendarUnit, arg3: Double): MemorySegment {
+    try {
+        return CFCalendarGetRangeOfUnit_HANDLE.invokeExact(allocator, arg0, arg1.rawValue, arg2.rawValue, arg3) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFCalendarGetOrdinalityOfUnit typedef CFIndex = Long(typedef CFCalendarRef = (Declared(__CFCalendar))*,typedef CFCalendarUnit = Declared(CFCalendarUnit),typedef CFCalendarUnit = Declared(CFCalendarUnit),typedef CFAbsoluteTime = Double)
+ */
+private val CFCalendarGetOrdinalityOfUnit_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_DOUBLE)
+private val CFCalendarGetOrdinalityOfUnit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCalendarGetOrdinalityOfUnit").orElseThrow()
+private val CFCalendarGetOrdinalityOfUnit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCalendarGetOrdinalityOfUnit_ADDR, CFCalendarGetOrdinalityOfUnit_DESC)
+
+fun CFCalendarGetOrdinalityOfUnit(arg0: MemorySegment, arg1: CFCalendarUnit, arg2: CFCalendarUnit, arg3: Double): Long {
+    try {
+        return CFCalendarGetOrdinalityOfUnit_HANDLE.invokeExact(arg0, arg1.rawValue, arg2.rawValue, arg3) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFCalendarGetTimeRangeOfUnit typedef Boolean = UNSIGNED = Char(typedef CFCalendarRef = (Declared(__CFCalendar))*,typedef CFCalendarUnit = Declared(CFCalendarUnit),typedef CFAbsoluteTime = Double,(typedef CFAbsoluteTime = Double)*,(typedef CFTimeInterval = Double)*)
+ */
+private val CFCalendarGetTimeRangeOfUnit_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CFCalendarGetTimeRangeOfUnit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCalendarGetTimeRangeOfUnit").orElseThrow()
+private val CFCalendarGetTimeRangeOfUnit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCalendarGetTimeRangeOfUnit_ADDR, CFCalendarGetTimeRangeOfUnit_DESC)
+
+fun CFCalendarGetTimeRangeOfUnit(arg0: MemorySegment, arg1: CFCalendarUnit, arg2: Double, arg3: MemorySegment, arg4: MemorySegment): Byte {
+    try {
+        return CFCalendarGetTimeRangeOfUnit_HANDLE.invokeExact(arg0, arg1.rawValue, arg2, arg3, arg4) as Byte
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFCalendarComposeAbsoluteTime typedef Boolean = UNSIGNED = Char(typedef CFCalendarRef = (Declared(__CFCalendar))*,(typedef CFAbsoluteTime = Double)*,(Char)*)
  */
 private val CFCalendarComposeAbsoluteTime_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -1921,6 +2358,44 @@ fun CFDateFormatterGetTypeID(): Long {
 }
 
 /**
+ * {@snippet lang=c : CFDateFormatterCreateISO8601Formatter typedef CFDateFormatterRef = (Declared(__CFDateFormatter))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFISO8601DateFormatOptions = Declared(CFISO8601DateFormatOptions))
+ */
+private val CFDateFormatterCreateISO8601Formatter_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CFDateFormatterCreateISO8601Formatter_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateFormatterCreateISO8601Formatter").orElseThrow()
+private val CFDateFormatterCreateISO8601Formatter_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateFormatterCreateISO8601Formatter_ADDR, CFDateFormatterCreateISO8601Formatter_DESC)
+
+fun CFDateFormatterCreateISO8601Formatter(arg0: MemorySegment, arg1: CFISO8601DateFormatOptions): MemorySegment {
+    try {
+        return CFDateFormatterCreateISO8601Formatter_HANDLE.invokeExact(arg0, arg1.rawValue) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFDateFormatterCreate typedef CFDateFormatterRef = (Declared(__CFDateFormatter))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFLocaleRef = (Declared(__CFLocale))*,typedef CFDateFormatterStyle = Declared(CFDateFormatterStyle),typedef CFDateFormatterStyle = Declared(CFDateFormatterStyle))
+ */
+private val CFDateFormatterCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val CFDateFormatterCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateFormatterCreate").orElseThrow()
+private val CFDateFormatterCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateFormatterCreate_ADDR, CFDateFormatterCreate_DESC)
+
+fun CFDateFormatterCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: CFDateFormatterStyle, arg3: CFDateFormatterStyle): MemorySegment {
+    try {
+        return CFDateFormatterCreate_HANDLE.invokeExact(arg0, arg1, arg2.value, arg3.value) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFDateFormatterGetLocale typedef CFLocaleRef = (Declared(__CFLocale))*(typedef CFDateFormatterRef = (Declared(__CFDateFormatter))*)
  */
 private val CFDateFormatterGetLocale_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -1930,6 +2405,44 @@ private val CFDateFormatterGetLocale_HANDLE: MethodHandle = Linker.nativeLinker(
 fun CFDateFormatterGetLocale(arg0: MemorySegment): MemorySegment {
     try {
         return CFDateFormatterGetLocale_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFDateFormatterGetDateStyle typedef CFDateFormatterStyle = Declared(CFDateFormatterStyle)(typedef CFDateFormatterRef = (Declared(__CFDateFormatter))*)
+ */
+private val CFDateFormatterGetDateStyle_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFDateFormatterGetDateStyle_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateFormatterGetDateStyle").orElseThrow()
+private val CFDateFormatterGetDateStyle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateFormatterGetDateStyle_ADDR, CFDateFormatterGetDateStyle_DESC)
+
+fun CFDateFormatterGetDateStyle(arg0: MemorySegment): CFDateFormatterStyle {
+    try {
+        return CFDateFormatterStyle.fromValue(CFDateFormatterGetDateStyle_HANDLE.invokeExact(arg0) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFDateFormatterGetTimeStyle typedef CFDateFormatterStyle = Declared(CFDateFormatterStyle)(typedef CFDateFormatterRef = (Declared(__CFDateFormatter))*)
+ */
+private val CFDateFormatterGetTimeStyle_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFDateFormatterGetTimeStyle_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateFormatterGetTimeStyle").orElseThrow()
+private val CFDateFormatterGetTimeStyle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateFormatterGetTimeStyle_ADDR, CFDateFormatterGetTimeStyle_DESC)
+
+fun CFDateFormatterGetTimeStyle(arg0: MemorySegment): CFDateFormatterStyle {
+    try {
+        return CFDateFormatterStyle.fromValue(CFDateFormatterGetTimeStyle_HANDLE.invokeExact(arg0) as Long)
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -2523,6 +3036,44 @@ fun CFNumberGetTypeID(): Long {
 }
 
 /**
+ * {@snippet lang=c : CFNumberCreate typedef CFNumberRef = (Declared(__CFNumber))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFNumberType = Declared(CFNumberType),(Void)*)
+ */
+private val CFNumberCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFNumberCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNumberCreate").orElseThrow()
+private val CFNumberCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNumberCreate_ADDR, CFNumberCreate_DESC)
+
+fun CFNumberCreate(arg0: MemorySegment, arg1: CFNumberType, arg2: MemorySegment): MemorySegment {
+    try {
+        return CFNumberCreate_HANDLE.invokeExact(arg0, arg1.value, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFNumberGetType typedef CFNumberType = Declared(CFNumberType)(typedef CFNumberRef = (Declared(__CFNumber))*)
+ */
+private val CFNumberGetType_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFNumberGetType_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNumberGetType").orElseThrow()
+private val CFNumberGetType_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNumberGetType_ADDR, CFNumberGetType_DESC)
+
+fun CFNumberGetType(arg0: MemorySegment): CFNumberType {
+    try {
+        return CFNumberType.fromValue(CFNumberGetType_HANDLE.invokeExact(arg0) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFNumberGetByteSize typedef CFIndex = Long(typedef CFNumberRef = (Declared(__CFNumber))*)
  */
 private val CFNumberGetByteSize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
@@ -2561,6 +3112,44 @@ fun CFNumberIsFloatType(arg0: MemorySegment): Byte {
 }
 
 /**
+ * {@snippet lang=c : CFNumberGetValue typedef Boolean = UNSIGNED = Char(typedef CFNumberRef = (Declared(__CFNumber))*,typedef CFNumberType = Declared(CFNumberType),(Void)*)
+ */
+private val CFNumberGetValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFNumberGetValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNumberGetValue").orElseThrow()
+private val CFNumberGetValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNumberGetValue_ADDR, CFNumberGetValue_DESC)
+
+fun CFNumberGetValue(arg0: MemorySegment, arg1: CFNumberType, arg2: MemorySegment): Byte {
+    try {
+        return CFNumberGetValue_HANDLE.invokeExact(arg0, arg1.value, arg2) as Byte
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFNumberCompare typedef CFComparisonResult = Declared(CFComparisonResult)(typedef CFNumberRef = (Declared(__CFNumber))*,typedef CFNumberRef = (Declared(__CFNumber))*,(Void)*)
+ */
+private val CFNumberCompare_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CFNumberCompare_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNumberCompare").orElseThrow()
+private val CFNumberCompare_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNumberCompare_ADDR, CFNumberCompare_DESC)
+
+fun CFNumberCompare(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): CFComparisonResult {
+    try {
+        return CFComparisonResult.fromValue(CFNumberCompare_HANDLE.invokeExact(arg0, arg1, arg2) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFNumberFormatterGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFNumberFormatterGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
@@ -2580,6 +3169,25 @@ fun CFNumberFormatterGetTypeID(): Long {
 }
 
 /**
+ * {@snippet lang=c : CFNumberFormatterCreate typedef CFNumberFormatterRef = (Declared(__CFNumberFormatter))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFLocaleRef = (Declared(__CFLocale))*,typedef CFNumberFormatterStyle = Declared(CFNumberFormatterStyle))
+ */
+private val CFNumberFormatterCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CFNumberFormatterCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNumberFormatterCreate").orElseThrow()
+private val CFNumberFormatterCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNumberFormatterCreate_ADDR, CFNumberFormatterCreate_DESC)
+
+fun CFNumberFormatterCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: CFNumberFormatterStyle): MemorySegment {
+    try {
+        return CFNumberFormatterCreate_HANDLE.invokeExact(arg0, arg1, arg2.value) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFNumberFormatterGetLocale typedef CFLocaleRef = (Declared(__CFLocale))*(typedef CFNumberFormatterRef = (Declared(__CFNumberFormatter))*)
  */
 private val CFNumberFormatterGetLocale_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -2589,6 +3197,25 @@ private val CFNumberFormatterGetLocale_HANDLE: MethodHandle = Linker.nativeLinke
 fun CFNumberFormatterGetLocale(arg0: MemorySegment): MemorySegment {
     try {
         return CFNumberFormatterGetLocale_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFNumberFormatterGetStyle typedef CFNumberFormatterStyle = Declared(CFNumberFormatterStyle)(typedef CFNumberFormatterRef = (Declared(__CFNumberFormatter))*)
+ */
+private val CFNumberFormatterGetStyle_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFNumberFormatterGetStyle_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNumberFormatterGetStyle").orElseThrow()
+private val CFNumberFormatterGetStyle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNumberFormatterGetStyle_ADDR, CFNumberFormatterGetStyle_DESC)
+
+fun CFNumberFormatterGetStyle(arg0: MemorySegment): CFNumberFormatterStyle {
+    try {
+        return CFNumberFormatterStyle.fromValue(CFNumberFormatterGetStyle_HANDLE.invokeExact(arg0) as Long)
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -2656,6 +3283,25 @@ fun CFNumberFormatterCreateStringWithNumber(arg0: MemorySegment, arg1: MemorySeg
 }
 
 /**
+ * {@snippet lang=c : CFNumberFormatterCreateStringWithValue typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFNumberFormatterRef = (Declared(__CFNumberFormatter))*,typedef CFNumberType = Declared(CFNumberType),(Void)*)
+ */
+private val CFNumberFormatterCreateStringWithValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFNumberFormatterCreateStringWithValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNumberFormatterCreateStringWithValue").orElseThrow()
+private val CFNumberFormatterCreateStringWithValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNumberFormatterCreateStringWithValue_ADDR, CFNumberFormatterCreateStringWithValue_DESC)
+
+fun CFNumberFormatterCreateStringWithValue(arg0: MemorySegment, arg1: MemorySegment, arg2: CFNumberType, arg3: MemorySegment): MemorySegment {
+    try {
+        return CFNumberFormatterCreateStringWithValue_HANDLE.invokeExact(arg0, arg1, arg2.value, arg3) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFNumberFormatterCreateNumberFromString typedef CFNumberRef = (Declared(__CFNumber))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFNumberFormatterRef = (Declared(__CFNumberFormatter))*,typedef CFStringRef = (Declared(__CFString))*,(typedef CFRange = Declared(CFRange))*,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFNumberFormatterCreateNumberFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
@@ -2665,6 +3311,25 @@ private val CFNumberFormatterCreateNumberFromString_HANDLE: MethodHandle = Linke
 fun CFNumberFormatterCreateNumberFromString(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): MemorySegment {
     try {
         return CFNumberFormatterCreateNumberFromString_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFNumberFormatterGetValueFromString typedef Boolean = UNSIGNED = Char(typedef CFNumberFormatterRef = (Declared(__CFNumberFormatter))*,typedef CFStringRef = (Declared(__CFString))*,(typedef CFRange = Declared(CFRange))*,typedef CFNumberType = Declared(CFNumberType),(Void)*)
+ */
+private val CFNumberFormatterGetValueFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFNumberFormatterGetValueFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNumberFormatterGetValueFromString").orElseThrow()
+private val CFNumberFormatterGetValueFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNumberFormatterGetValueFromString_ADDR, CFNumberFormatterGetValueFromString_DESC)
+
+fun CFNumberFormatterGetValueFromString(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CFNumberType, arg4: MemorySegment): Byte {
+    try {
+        return CFNumberFormatterGetValueFromString_HANDLE.invokeExact(arg0, arg1, arg2, arg3.value, arg4) as Byte
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -3607,6 +4272,25 @@ fun CFURLCreateAbsoluteURLWithBytes(arg0: MemorySegment, arg1: MemorySegment, ar
 }
 
 /**
+ * {@snippet lang=c : CFURLCreateWithFileSystemPath typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFURLPathStyle = Declared(CFURLPathStyle),typedef Boolean = UNSIGNED = Char)
+ */
+private val CFURLCreateWithFileSystemPath_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BYTE)
+private val CFURLCreateWithFileSystemPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateWithFileSystemPath").orElseThrow()
+private val CFURLCreateWithFileSystemPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateWithFileSystemPath_ADDR, CFURLCreateWithFileSystemPath_DESC)
+
+fun CFURLCreateWithFileSystemPath(arg0: MemorySegment, arg1: MemorySegment, arg2: CFURLPathStyle, arg3: Byte): MemorySegment {
+    try {
+        return CFURLCreateWithFileSystemPath_HANDLE.invokeExact(arg0, arg1, arg2.value, arg3) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFURLCreateFromFileSystemRepresentation typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long,typedef Boolean = UNSIGNED = Char)
  */
 private val CFURLCreateFromFileSystemRepresentation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BYTE)
@@ -3616,6 +4300,25 @@ private val CFURLCreateFromFileSystemRepresentation_HANDLE: MethodHandle = Linke
 fun CFURLCreateFromFileSystemRepresentation(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Byte): MemorySegment {
     try {
         return CFURLCreateFromFileSystemRepresentation_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFURLCreateWithFileSystemPathRelativeToBase typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFURLPathStyle = Declared(CFURLPathStyle),typedef Boolean = UNSIGNED = Char,typedef CFURLRef = (Declared(__CFURL))*)
+ */
+private val CFURLCreateWithFileSystemPathRelativeToBase_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
+private val CFURLCreateWithFileSystemPathRelativeToBase_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateWithFileSystemPathRelativeToBase").orElseThrow()
+private val CFURLCreateWithFileSystemPathRelativeToBase_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateWithFileSystemPathRelativeToBase_ADDR, CFURLCreateWithFileSystemPathRelativeToBase_DESC)
+
+fun CFURLCreateWithFileSystemPathRelativeToBase(arg0: MemorySegment, arg1: MemorySegment, arg2: CFURLPathStyle, arg3: Byte, arg4: MemorySegment): MemorySegment {
+    try {
+        return CFURLCreateWithFileSystemPathRelativeToBase_HANDLE.invokeExact(arg0, arg1, arg2.value, arg3, arg4) as MemorySegment
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -3806,6 +4509,25 @@ private val CFURLCopyStrictPath_HANDLE: MethodHandle = Linker.nativeLinker().dow
 fun CFURLCopyStrictPath(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CFURLCopyStrictPath_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFURLCopyFileSystemPath typedef CFStringRef = (Declared(__CFString))*(typedef CFURLRef = (Declared(__CFURL))*,typedef CFURLPathStyle = Declared(CFURLPathStyle))
+ */
+private val CFURLCopyFileSystemPath_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CFURLCopyFileSystemPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCopyFileSystemPath").orElseThrow()
+private val CFURLCopyFileSystemPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCopyFileSystemPath_ADDR, CFURLCopyFileSystemPath_DESC)
+
+fun CFURLCopyFileSystemPath(arg0: MemorySegment, arg1: CFURLPathStyle): MemorySegment {
+    try {
+        return CFURLCopyFileSystemPath_HANDLE.invokeExact(arg0, arg1.value) as MemorySegment
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -4120,6 +4842,25 @@ fun CFURLGetBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Long {
 }
 
 /**
+ * {@snippet lang=c : CFURLGetByteRangeForComponent typedef CFRange = Declared(CFRange)(typedef CFURLRef = (Declared(__CFURL))*,typedef CFURLComponentType = Declared(CFURLComponentType),(typedef CFRange = Declared(CFRange))*)
+ */
+private val CFURLGetByteRangeForComponent_DESC: FunctionDescriptor = FunctionDescriptor.of(CFRange.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CFURLGetByteRangeForComponent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLGetByteRangeForComponent").orElseThrow()
+private val CFURLGetByteRangeForComponent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLGetByteRangeForComponent_ADDR, CFURLGetByteRangeForComponent_DESC)
+
+fun CFURLGetByteRangeForComponent(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CFURLComponentType, arg2: MemorySegment): MemorySegment {
+    try {
+        return CFURLGetByteRangeForComponent_HANDLE.invokeExact(allocator, arg0, arg1.value, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CFURLCreateStringByReplacingPercentEscapes typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFURLCreateStringByReplacingPercentEscapes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -4194,528 +4935,3 @@ fun CFURLIsFileReferenceURL(arg0: MemorySegment): Byte {
         throw AssertionError("should not reach here", ex)
     }
 }
-
-/**
- * {@snippet lang=c : CFURLCreateFileReferenceURL typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFURLRef = (Declared(__CFURL))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
- */
-private val CFURLCreateFileReferenceURL_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateFileReferenceURL_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateFileReferenceURL").orElseThrow()
-private val CFURLCreateFileReferenceURL_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateFileReferenceURL_ADDR, CFURLCreateFileReferenceURL_DESC)
-
-fun CFURLCreateFileReferenceURL(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
-    try {
-        return CFURLCreateFileReferenceURL_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLCreateFilePathURL typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFURLRef = (Declared(__CFURL))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
- */
-private val CFURLCreateFilePathURL_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateFilePathURL_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateFilePathURL").orElseThrow()
-private val CFURLCreateFilePathURL_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateFilePathURL_ADDR, CFURLCreateFilePathURL_DESC)
-
-fun CFURLCreateFilePathURL(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
-    try {
-        return CFURLCreateFilePathURL_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLCreateFromFSRef typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(Void)*)
- */
-private val CFURLCreateFromFSRef_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateFromFSRef_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateFromFSRef").orElseThrow()
-private val CFURLCreateFromFSRef_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateFromFSRef_ADDR, CFURLCreateFromFSRef_DESC)
-
-fun CFURLCreateFromFSRef(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
-    try {
-        return CFURLCreateFromFSRef_HANDLE.invokeExact(arg0, arg1) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLGetFSRef typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,(Void)*)
- */
-private val CFURLGetFSRef_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLGetFSRef_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLGetFSRef").orElseThrow()
-private val CFURLGetFSRef_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLGetFSRef_ADDR, CFURLGetFSRef_DESC)
-
-fun CFURLGetFSRef(arg0: MemorySegment, arg1: MemorySegment): Byte {
-    try {
-        return CFURLGetFSRef_HANDLE.invokeExact(arg0, arg1) as Byte
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLCopyResourcePropertyForKey typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,typedef CFStringRef = (Declared(__CFString))*,(Void)*,(typedef CFErrorRef = (Declared(__CFError))*)*)
- */
-private val CFURLCopyResourcePropertyForKey_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCopyResourcePropertyForKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCopyResourcePropertyForKey").orElseThrow()
-private val CFURLCopyResourcePropertyForKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCopyResourcePropertyForKey_ADDR, CFURLCopyResourcePropertyForKey_DESC)
-
-fun CFURLCopyResourcePropertyForKey(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Byte {
-    try {
-        return CFURLCopyResourcePropertyForKey_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Byte
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLCopyResourcePropertiesForKeys typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CFURLRef = (Declared(__CFURL))*,typedef CFArrayRef = (Declared(__CFArray))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
- */
-private val CFURLCopyResourcePropertiesForKeys_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCopyResourcePropertiesForKeys_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCopyResourcePropertiesForKeys").orElseThrow()
-private val CFURLCopyResourcePropertiesForKeys_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCopyResourcePropertiesForKeys_ADDR, CFURLCopyResourcePropertiesForKeys_DESC)
-
-fun CFURLCopyResourcePropertiesForKeys(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
-    try {
-        return CFURLCopyResourcePropertiesForKeys_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLSetResourcePropertyForKey typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFTypeRef = (Void)*,(typedef CFErrorRef = (Declared(__CFError))*)*)
- */
-private val CFURLSetResourcePropertyForKey_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLSetResourcePropertyForKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLSetResourcePropertyForKey").orElseThrow()
-private val CFURLSetResourcePropertyForKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLSetResourcePropertyForKey_ADDR, CFURLSetResourcePropertyForKey_DESC)
-
-fun CFURLSetResourcePropertyForKey(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Byte {
-    try {
-        return CFURLSetResourcePropertyForKey_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Byte
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLSetResourcePropertiesForKeys typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
- */
-private val CFURLSetResourcePropertiesForKeys_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLSetResourcePropertiesForKeys_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLSetResourcePropertiesForKeys").orElseThrow()
-private val CFURLSetResourcePropertiesForKeys_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLSetResourcePropertiesForKeys_ADDR, CFURLSetResourcePropertiesForKeys_DESC)
-
-fun CFURLSetResourcePropertiesForKeys(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Byte {
-    try {
-        return CFURLSetResourcePropertiesForKeys_HANDLE.invokeExact(arg0, arg1, arg2) as Byte
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : kCFURLKeysOfUnsetValuesKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLKeysOfUnsetValuesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLKeysOfUnsetValuesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLKeysOfUnsetValuesKey").orElseThrow() }
-private val kCFURLKeysOfUnsetValuesKey_VH: VarHandle by lazy { kCFURLKeysOfUnsetValuesKey_LAYOUT.varHandle() }
-
-var kCFURLKeysOfUnsetValuesKey: MemorySegment
-    get() = kCFURLKeysOfUnsetValuesKey_VH.get(kCFURLKeysOfUnsetValuesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLKeysOfUnsetValuesKey_VH.set(kCFURLKeysOfUnsetValuesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : CFURLClearResourcePropertyCacheForKey Void(typedef CFURLRef = (Declared(__CFURL))*,typedef CFStringRef = (Declared(__CFString))*)
- */
-private val CFURLClearResourcePropertyCacheForKey_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLClearResourcePropertyCacheForKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLClearResourcePropertyCacheForKey").orElseThrow()
-private val CFURLClearResourcePropertyCacheForKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLClearResourcePropertyCacheForKey_ADDR, CFURLClearResourcePropertyCacheForKey_DESC)
-
-fun CFURLClearResourcePropertyCacheForKey(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CFURLClearResourcePropertyCacheForKey_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLClearResourcePropertyCache Void(typedef CFURLRef = (Declared(__CFURL))*)
- */
-private val CFURLClearResourcePropertyCache_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFURLClearResourcePropertyCache_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLClearResourcePropertyCache").orElseThrow()
-private val CFURLClearResourcePropertyCache_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLClearResourcePropertyCache_ADDR, CFURLClearResourcePropertyCache_DESC)
-
-fun CFURLClearResourcePropertyCache(arg0: MemorySegment): Unit {
-    try {
-        CFURLClearResourcePropertyCache_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLSetTemporaryResourcePropertyForKey Void(typedef CFURLRef = (Declared(__CFURL))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFTypeRef = (Void)*)
- */
-private val CFURLSetTemporaryResourcePropertyForKey_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLSetTemporaryResourcePropertyForKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLSetTemporaryResourcePropertyForKey").orElseThrow()
-private val CFURLSetTemporaryResourcePropertyForKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLSetTemporaryResourcePropertyForKey_ADDR, CFURLSetTemporaryResourcePropertyForKey_DESC)
-
-fun CFURLSetTemporaryResourcePropertyForKey(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
-    try {
-        CFURLSetTemporaryResourcePropertyForKey_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CFURLResourceIsReachable typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
- */
-private val CFURLResourceIsReachable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLResourceIsReachable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLResourceIsReachable").orElseThrow()
-private val CFURLResourceIsReachable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLResourceIsReachable_ADDR, CFURLResourceIsReachable_DESC)
-
-fun CFURLResourceIsReachable(arg0: MemorySegment, arg1: MemorySegment): Byte {
-    try {
-        return CFURLResourceIsReachable_HANDLE.invokeExact(arg0, arg1) as Byte
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : kCFURLNameKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLNameKey").orElseThrow() }
-private val kCFURLNameKey_VH: VarHandle by lazy { kCFURLNameKey_LAYOUT.varHandle() }
-
-var kCFURLNameKey: MemorySegment
-    get() = kCFURLNameKey_VH.get(kCFURLNameKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLNameKey_VH.set(kCFURLNameKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLLocalizedNameKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLLocalizedNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLLocalizedNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLocalizedNameKey").orElseThrow() }
-private val kCFURLLocalizedNameKey_VH: VarHandle by lazy { kCFURLLocalizedNameKey_LAYOUT.varHandle() }
-
-var kCFURLLocalizedNameKey: MemorySegment
-    get() = kCFURLLocalizedNameKey_VH.get(kCFURLLocalizedNameKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLLocalizedNameKey_VH.set(kCFURLLocalizedNameKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsRegularFileKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsRegularFileKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsRegularFileKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsRegularFileKey").orElseThrow() }
-private val kCFURLIsRegularFileKey_VH: VarHandle by lazy { kCFURLIsRegularFileKey_LAYOUT.varHandle() }
-
-var kCFURLIsRegularFileKey: MemorySegment
-    get() = kCFURLIsRegularFileKey_VH.get(kCFURLIsRegularFileKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsRegularFileKey_VH.set(kCFURLIsRegularFileKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsDirectoryKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsDirectoryKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsDirectoryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsDirectoryKey").orElseThrow() }
-private val kCFURLIsDirectoryKey_VH: VarHandle by lazy { kCFURLIsDirectoryKey_LAYOUT.varHandle() }
-
-var kCFURLIsDirectoryKey: MemorySegment
-    get() = kCFURLIsDirectoryKey_VH.get(kCFURLIsDirectoryKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsDirectoryKey_VH.set(kCFURLIsDirectoryKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsSymbolicLinkKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsSymbolicLinkKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsSymbolicLinkKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsSymbolicLinkKey").orElseThrow() }
-private val kCFURLIsSymbolicLinkKey_VH: VarHandle by lazy { kCFURLIsSymbolicLinkKey_LAYOUT.varHandle() }
-
-var kCFURLIsSymbolicLinkKey: MemorySegment
-    get() = kCFURLIsSymbolicLinkKey_VH.get(kCFURLIsSymbolicLinkKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsSymbolicLinkKey_VH.set(kCFURLIsSymbolicLinkKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsVolumeKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsVolumeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsVolumeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsVolumeKey").orElseThrow() }
-private val kCFURLIsVolumeKey_VH: VarHandle by lazy { kCFURLIsVolumeKey_LAYOUT.varHandle() }
-
-var kCFURLIsVolumeKey: MemorySegment
-    get() = kCFURLIsVolumeKey_VH.get(kCFURLIsVolumeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsVolumeKey_VH.set(kCFURLIsVolumeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsPackageKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsPackageKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsPackageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsPackageKey").orElseThrow() }
-private val kCFURLIsPackageKey_VH: VarHandle by lazy { kCFURLIsPackageKey_LAYOUT.varHandle() }
-
-var kCFURLIsPackageKey: MemorySegment
-    get() = kCFURLIsPackageKey_VH.get(kCFURLIsPackageKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsPackageKey_VH.set(kCFURLIsPackageKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsApplicationKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsApplicationKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsApplicationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsApplicationKey").orElseThrow() }
-private val kCFURLIsApplicationKey_VH: VarHandle by lazy { kCFURLIsApplicationKey_LAYOUT.varHandle() }
-
-var kCFURLIsApplicationKey: MemorySegment
-    get() = kCFURLIsApplicationKey_VH.get(kCFURLIsApplicationKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsApplicationKey_VH.set(kCFURLIsApplicationKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLApplicationIsScriptableKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLApplicationIsScriptableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLApplicationIsScriptableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLApplicationIsScriptableKey").orElseThrow() }
-private val kCFURLApplicationIsScriptableKey_VH: VarHandle by lazy { kCFURLApplicationIsScriptableKey_LAYOUT.varHandle() }
-
-var kCFURLApplicationIsScriptableKey: MemorySegment
-    get() = kCFURLApplicationIsScriptableKey_VH.get(kCFURLApplicationIsScriptableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLApplicationIsScriptableKey_VH.set(kCFURLApplicationIsScriptableKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsSystemImmutableKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsSystemImmutableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsSystemImmutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsSystemImmutableKey").orElseThrow() }
-private val kCFURLIsSystemImmutableKey_VH: VarHandle by lazy { kCFURLIsSystemImmutableKey_LAYOUT.varHandle() }
-
-var kCFURLIsSystemImmutableKey: MemorySegment
-    get() = kCFURLIsSystemImmutableKey_VH.get(kCFURLIsSystemImmutableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsSystemImmutableKey_VH.set(kCFURLIsSystemImmutableKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsUserImmutableKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsUserImmutableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsUserImmutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsUserImmutableKey").orElseThrow() }
-private val kCFURLIsUserImmutableKey_VH: VarHandle by lazy { kCFURLIsUserImmutableKey_LAYOUT.varHandle() }
-
-var kCFURLIsUserImmutableKey: MemorySegment
-    get() = kCFURLIsUserImmutableKey_VH.get(kCFURLIsUserImmutableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsUserImmutableKey_VH.set(kCFURLIsUserImmutableKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsHiddenKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsHiddenKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsHiddenKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsHiddenKey").orElseThrow() }
-private val kCFURLIsHiddenKey_VH: VarHandle by lazy { kCFURLIsHiddenKey_LAYOUT.varHandle() }
-
-var kCFURLIsHiddenKey: MemorySegment
-    get() = kCFURLIsHiddenKey_VH.get(kCFURLIsHiddenKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsHiddenKey_VH.set(kCFURLIsHiddenKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLHasHiddenExtensionKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLHasHiddenExtensionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLHasHiddenExtensionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLHasHiddenExtensionKey").orElseThrow() }
-private val kCFURLHasHiddenExtensionKey_VH: VarHandle by lazy { kCFURLHasHiddenExtensionKey_LAYOUT.varHandle() }
-
-var kCFURLHasHiddenExtensionKey: MemorySegment
-    get() = kCFURLHasHiddenExtensionKey_VH.get(kCFURLHasHiddenExtensionKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLHasHiddenExtensionKey_VH.set(kCFURLHasHiddenExtensionKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLCreationDateKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLCreationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLCreationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLCreationDateKey").orElseThrow() }
-private val kCFURLCreationDateKey_VH: VarHandle by lazy { kCFURLCreationDateKey_LAYOUT.varHandle() }
-
-var kCFURLCreationDateKey: MemorySegment
-    get() = kCFURLCreationDateKey_VH.get(kCFURLCreationDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLCreationDateKey_VH.set(kCFURLCreationDateKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLContentAccessDateKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLContentAccessDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLContentAccessDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLContentAccessDateKey").orElseThrow() }
-private val kCFURLContentAccessDateKey_VH: VarHandle by lazy { kCFURLContentAccessDateKey_LAYOUT.varHandle() }
-
-var kCFURLContentAccessDateKey: MemorySegment
-    get() = kCFURLContentAccessDateKey_VH.get(kCFURLContentAccessDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLContentAccessDateKey_VH.set(kCFURLContentAccessDateKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLContentModificationDateKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLContentModificationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLContentModificationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLContentModificationDateKey").orElseThrow() }
-private val kCFURLContentModificationDateKey_VH: VarHandle by lazy { kCFURLContentModificationDateKey_LAYOUT.varHandle() }
-
-var kCFURLContentModificationDateKey: MemorySegment
-    get() = kCFURLContentModificationDateKey_VH.get(kCFURLContentModificationDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLContentModificationDateKey_VH.set(kCFURLContentModificationDateKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLAttributeModificationDateKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLAttributeModificationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLAttributeModificationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLAttributeModificationDateKey").orElseThrow() }
-private val kCFURLAttributeModificationDateKey_VH: VarHandle by lazy { kCFURLAttributeModificationDateKey_LAYOUT.varHandle() }
-
-var kCFURLAttributeModificationDateKey: MemorySegment
-    get() = kCFURLAttributeModificationDateKey_VH.get(kCFURLAttributeModificationDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLAttributeModificationDateKey_VH.set(kCFURLAttributeModificationDateKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLFileIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLFileIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileIdentifierKey").orElseThrow() }
-private val kCFURLFileIdentifierKey_VH: VarHandle by lazy { kCFURLFileIdentifierKey_LAYOUT.varHandle() }
-
-var kCFURLFileIdentifierKey: MemorySegment
-    get() = kCFURLFileIdentifierKey_VH.get(kCFURLFileIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileIdentifierKey_VH.set(kCFURLFileIdentifierKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLFileContentIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLFileContentIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileContentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileContentIdentifierKey").orElseThrow() }
-private val kCFURLFileContentIdentifierKey_VH: VarHandle by lazy { kCFURLFileContentIdentifierKey_LAYOUT.varHandle() }
-
-var kCFURLFileContentIdentifierKey: MemorySegment
-    get() = kCFURLFileContentIdentifierKey_VH.get(kCFURLFileContentIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileContentIdentifierKey_VH.set(kCFURLFileContentIdentifierKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLMayShareFileContentKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLMayShareFileContentKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLMayShareFileContentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLMayShareFileContentKey").orElseThrow() }
-private val kCFURLMayShareFileContentKey_VH: VarHandle by lazy { kCFURLMayShareFileContentKey_LAYOUT.varHandle() }
-
-var kCFURLMayShareFileContentKey: MemorySegment
-    get() = kCFURLMayShareFileContentKey_VH.get(kCFURLMayShareFileContentKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLMayShareFileContentKey_VH.set(kCFURLMayShareFileContentKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLMayHaveExtendedAttributesKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLMayHaveExtendedAttributesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLMayHaveExtendedAttributesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLMayHaveExtendedAttributesKey").orElseThrow() }
-private val kCFURLMayHaveExtendedAttributesKey_VH: VarHandle by lazy { kCFURLMayHaveExtendedAttributesKey_LAYOUT.varHandle() }
-
-var kCFURLMayHaveExtendedAttributesKey: MemorySegment
-    get() = kCFURLMayHaveExtendedAttributesKey_VH.get(kCFURLMayHaveExtendedAttributesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLMayHaveExtendedAttributesKey_VH.set(kCFURLMayHaveExtendedAttributesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsPurgeableKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsPurgeableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsPurgeableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsPurgeableKey").orElseThrow() }
-private val kCFURLIsPurgeableKey_VH: VarHandle by lazy { kCFURLIsPurgeableKey_LAYOUT.varHandle() }
-
-var kCFURLIsPurgeableKey: MemorySegment
-    get() = kCFURLIsPurgeableKey_VH.get(kCFURLIsPurgeableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsPurgeableKey_VH.set(kCFURLIsPurgeableKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLIsSparseKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLIsSparseKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsSparseKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsSparseKey").orElseThrow() }
-private val kCFURLIsSparseKey_VH: VarHandle by lazy { kCFURLIsSparseKey_LAYOUT.varHandle() }
-
-var kCFURLIsSparseKey: MemorySegment
-    get() = kCFURLIsSparseKey_VH.get(kCFURLIsSparseKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsSparseKey_VH.set(kCFURLIsSparseKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLLinkCountKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLLinkCountKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLLinkCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLinkCountKey").orElseThrow() }
-private val kCFURLLinkCountKey_VH: VarHandle by lazy { kCFURLLinkCountKey_LAYOUT.varHandle() }
-
-var kCFURLLinkCountKey: MemorySegment
-    get() = kCFURLLinkCountKey_VH.get(kCFURLLinkCountKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLLinkCountKey_VH.set(kCFURLLinkCountKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLParentDirectoryURLKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLParentDirectoryURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLParentDirectoryURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLParentDirectoryURLKey").orElseThrow() }
-private val kCFURLParentDirectoryURLKey_VH: VarHandle by lazy { kCFURLParentDirectoryURLKey_LAYOUT.varHandle() }
-
-var kCFURLParentDirectoryURLKey: MemorySegment
-    get() = kCFURLParentDirectoryURLKey_VH.get(kCFURLParentDirectoryURLKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLParentDirectoryURLKey_VH.set(kCFURLParentDirectoryURLKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCFURLVolumeURLKey typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCFURLVolumeURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeURLKey").orElseThrow() }
-private val kCFURLVolumeURLKey_VH: VarHandle by lazy { kCFURLVolumeURLKey_LAYOUT.varHandle() }
-
-var kCFURLVolumeURLKey: MemorySegment
-    get() = kCFURLVolumeURLKey_VH.get(kCFURLVolumeURLKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeURLKey_VH.set(kCFURLVolumeURLKey_SEGMENT, value)

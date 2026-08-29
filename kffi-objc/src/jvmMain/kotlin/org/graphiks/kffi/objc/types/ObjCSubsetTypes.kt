@@ -960,14 +960,19 @@ typealias CFMutableStringRef = MemorySegment
 typealias CFPropertyListRef = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef (Declared(CFComparisonResult)((Void)*,(Void)*,(Void)*))* CFComparatorFunction;}
+ */
+typealias CFComparatorFunction = MemorySegment
+
+/**
  * {@snippet lang=c : STRUCT CFRange
  */
 class CFRange {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("location"),
-            ValueLayout.JAVA_LONG.withName("length")
-        ).withName("CFRange")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("location"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("length")
+        ).withByteAlignment(8L).withName("CFRange")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1059,16 +1064,16 @@ typealias CFAllocatorPreferredSizeCallBack = MemorySegment
 class CFAllocatorContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription"),
-            ValueLayout.ADDRESS.withName("allocate"),
-            ValueLayout.ADDRESS.withName("reallocate"),
-            ValueLayout.ADDRESS.withName("deallocate"),
-            ValueLayout.ADDRESS.withName("preferredSize")
-        ).withName("CFAllocatorContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("allocate"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("reallocate"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("deallocate"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("preferredSize")
+        ).withByteAlignment(8L).withName("CFAllocatorContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1208,12 +1213,12 @@ typealias CFArrayEqualCallBack = MemorySegment
 class CFArrayCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription"),
-            ValueLayout.ADDRESS.withName("equal")
-        ).withName("CFArrayCallBacks")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("equal")
+        ).withByteAlignment(8L).withName("CFArrayCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1327,13 +1332,13 @@ typealias CFBagHashCallBack = MemorySegment
 class CFBagCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription"),
-            ValueLayout.ADDRESS.withName("equal"),
-            ValueLayout.ADDRESS.withName("hash")
-        ).withName("CFBagCallBacks")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("equal"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hash")
+        ).withByteAlignment(8L).withName("CFBagCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1431,12 +1436,12 @@ typealias CFMutableBagRef = MemorySegment
 class CFBinaryHeapCompareContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFBinaryHeapCompareContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFBinaryHeapCompareContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1510,12 +1515,12 @@ class CFBinaryHeapCompareContext {
 class CFBinaryHeapCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription"),
-            ValueLayout.ADDRESS.withName("compare")
-        ).withName("CFBinaryHeapCallBacks")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("compare")
+        ).withByteAlignment(8L).withName("CFBinaryHeapCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1619,8 +1624,8 @@ typealias CFByteOrder = Long
 class CFSwappedFloat32 {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("v")
-        ).withName("CFSwappedFloat32")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("v")
+        ).withByteAlignment(4L).withName("CFSwappedFloat32")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1658,8 +1663,8 @@ class CFSwappedFloat32 {
 class CFSwappedFloat64 {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("v")
-        ).withName("CFSwappedFloat64")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("v")
+        ).withByteAlignment(8L).withName("CFSwappedFloat64")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1722,13 +1727,13 @@ typealias CFDictionaryHashCallBack = MemorySegment
 class CFDictionaryKeyCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription"),
-            ValueLayout.ADDRESS.withName("equal"),
-            ValueLayout.ADDRESS.withName("hash")
-        ).withName("CFDictionaryKeyCallBacks")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("equal"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hash")
+        ).withByteAlignment(8L).withName("CFDictionaryKeyCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1811,12 +1816,12 @@ class CFDictionaryKeyCallBacks {
 class CFDictionaryValueCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription"),
-            ValueLayout.ADDRESS.withName("equal")
-        ).withName("CFDictionaryValueCallBacks")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("equal")
+        ).withByteAlignment(8L).withName("CFDictionaryValueCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -1960,13 +1965,13 @@ typealias CFTimeZoneRef = MemorySegment
 class CFGregorianDate {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("year"),
-            ValueLayout.JAVA_BYTE.withName("month"),
-            ValueLayout.JAVA_BYTE.withName("day"),
-            ValueLayout.JAVA_BYTE.withName("hour"),
-            ValueLayout.JAVA_BYTE.withName("minute"),
-            ValueLayout.JAVA_DOUBLE.withName("second")
-        ).withName("CFGregorianDate")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("year"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("month"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("day"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("hour"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("minute"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8).withName("second")
+        ).withByteAlignment(8L).withName("CFGregorianDate")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -2049,13 +2054,14 @@ class CFGregorianDate {
 class CFGregorianUnits {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("years"),
-            ValueLayout.JAVA_INT.withName("months"),
-            ValueLayout.JAVA_INT.withName("days"),
-            ValueLayout.JAVA_INT.withName("hours"),
-            ValueLayout.JAVA_INT.withName("minutes"),
-            ValueLayout.JAVA_DOUBLE.withName("seconds")
-        ).withName("CFGregorianUnits")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("years"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("months"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("days"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("hours"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("minutes"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8).withName("seconds")
+        ).withByteAlignment(8L).withName("CFGregorianUnits")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -2173,14 +2179,14 @@ typealias CFStringEncoding = Int
 class CFStringInlineBuffer {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(64, ValueLayout.JAVA_SHORT).withName("buffer"),
-            ValueLayout.ADDRESS.withName("theString"),
-            ValueLayout.ADDRESS.withName("directUniCharBuffer"),
-            ValueLayout.ADDRESS.withName("directCStringBuffer"),
-            CFRange.layout.withName("rangeToBuffer"),
-            ValueLayout.JAVA_LONG.withName("bufferedRangeStart"),
-            ValueLayout.JAVA_LONG.withName("bufferedRangeEnd")
-        ).withName("CFStringInlineBuffer")
+            MemoryLayout.sequenceLayout(64, ValueLayout.JAVA_SHORT.withByteAlignment(2)).withByteAlignment(2).withName("buffer"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("theString"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("directUniCharBuffer"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("directCStringBuffer"),
+            CFRange.layout.withByteAlignment(8).withName("rangeToBuffer"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("bufferedRangeStart"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("bufferedRangeEnd")
+        ).withByteAlignment(8L).withName("CFStringInlineBuffer")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -2408,9 +2414,9 @@ class CGSizePointer internal constructor(internal val segment: MemorySegment) {
 class CGVector {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_DOUBLE.withName("dx"),
-            ValueLayout.JAVA_DOUBLE.withName("dy")
-        ).withName("CGVector")
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8).withName("dx"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8).withName("dy")
+        ).withByteAlignment(8L).withName("CGVector")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -2639,11 +2645,11 @@ class CGAffineTransformPointer internal constructor(internal val segment: Memory
 class CGAffineTransformComponents {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            CGSize.layout.withName("scale"),
-            ValueLayout.JAVA_DOUBLE.withName("horizontalShear"),
-            ValueLayout.JAVA_DOUBLE.withName("rotation"),
-            CGVector.layout.withName("translation")
-        ).withName("CGAffineTransformComponents")
+            CGSize.layout.withByteAlignment(8).withName("scale"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8).withName("horizontalShear"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8).withName("rotation"),
+            CGVector.layout.withByteAlignment(8).withName("translation")
+        ).withByteAlignment(8L).withName("CGAffineTransformComponents")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -2913,17 +2919,17 @@ typealias CFRunLoopTimerRef = MemorySegment
 class CFRunLoopSourceContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription"),
-            ValueLayout.ADDRESS.withName("equal"),
-            ValueLayout.ADDRESS.withName("hash"),
-            ValueLayout.ADDRESS.withName("schedule"),
-            ValueLayout.ADDRESS.withName("cancel"),
-            ValueLayout.ADDRESS.withName("perform")
-        ).withName("CFRunLoopSourceContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("equal"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hash"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("schedule"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("cancel"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("perform")
+        ).withByteAlignment(8L).withName("CFRunLoopSourceContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -3042,16 +3048,16 @@ class CFRunLoopSourceContext {
 class CFRunLoopSourceContext1 {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription"),
-            ValueLayout.ADDRESS.withName("equal"),
-            ValueLayout.ADDRESS.withName("hash"),
-            ValueLayout.ADDRESS.withName("getPort"),
-            ValueLayout.ADDRESS.withName("perform")
-        ).withName("CFRunLoopSourceContext1")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("equal"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hash"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("getPort"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("perform")
+        ).withByteAlignment(8L).withName("CFRunLoopSourceContext1")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -3161,12 +3167,12 @@ class CFRunLoopSourceContext1 {
 class CFRunLoopObserverContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFRunLoopObserverContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFRunLoopObserverContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -3235,17 +3241,22 @@ class CFRunLoopObserverContext {
 } // End class
 
 /**
+ * {@snippet lang=c : typedef (Void((Declared(__CFRunLoopObserver))*,Declared(CFRunLoopActivity),(Void)*))* CFRunLoopObserverCallBack;}
+ */
+typealias CFRunLoopObserverCallBack = MemorySegment
+
+/**
  * {@snippet lang=c : STRUCT CFRunLoopTimerContext
  */
 class CFRunLoopTimerContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFRunLoopTimerContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFRunLoopTimerContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -3329,11 +3340,12 @@ typealias CFSocketRef = MemorySegment
 class CFSocketSignature {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("protocolFamily"),
-            ValueLayout.JAVA_INT.withName("socketType"),
-            ValueLayout.JAVA_INT.withName("protocol"),
-            ValueLayout.ADDRESS.withName("address")
-        ).withName("CFSocketSignature")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("protocolFamily"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("socketType"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("protocol"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("address")
+        ).withByteAlignment(8L).withName("CFSocketSignature")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -3393,17 +3405,22 @@ class CFSocketSignature {
 } // End class
 
 /**
+ * {@snippet lang=c : typedef (Void((Declared(__CFSocket))*,Declared(CFSocketCallBackType),(Declared(__CFData))*,(Void)*,(Void)*))* CFSocketCallBack;}
+ */
+typealias CFSocketCallBack = MemorySegment
+
+/**
  * {@snippet lang=c : STRUCT CFSocketContext
  */
 class CFSocketContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFSocketContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFSocketContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -3712,9 +3729,10 @@ typealias dispatch_io_interval_flags_t = Long
 class CFStreamError {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("domain"),
-            ValueLayout.JAVA_INT.withName("error")
-        ).withName("CFStreamError")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("domain"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("error"),
+            MemoryLayout.paddingLayout(4L)
+        ).withByteAlignment(8L).withName("CFStreamError")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -3766,12 +3784,12 @@ typealias CFStreamPropertyKey = MemorySegment
 class CFStreamClientContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFStreamClientContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFStreamClientContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -3850,6 +3868,16 @@ typealias CFReadStreamRef = MemorySegment
 typealias CFWriteStreamRef = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef (Void((Declared(__CFReadStream))*,Declared(CFStreamEventType),(Void)*))* CFReadStreamClientCallBack;}
+ */
+typealias CFReadStreamClientCallBack = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void((Declared(__CFWriteStream))*,Declared(CFStreamEventType),(Void)*))* CFWriteStreamClientCallBack;}
+ */
+typealias CFWriteStreamClientCallBack = MemorySegment
+
+/**
  * {@snippet lang=c : typedef ((Void)*((Declared(__CFAllocator))*,(Void)*))* CFSetRetainCallBack;}
  */
 typealias CFSetRetainCallBack = MemorySegment
@@ -3880,13 +3908,13 @@ typealias CFSetHashCallBack = MemorySegment
 class CFSetCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription"),
-            ValueLayout.ADDRESS.withName("equal"),
-            ValueLayout.ADDRESS.withName("hash")
-        ).withName("CFSetCallBacks")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("equal"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hash")
+        ).withByteAlignment(8L).withName("CFSetCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -3999,12 +4027,12 @@ typealias CFTreeCopyDescriptionCallBack = MemorySegment
 class CFTreeContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFTreeContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFTreeContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4093,23 +4121,23 @@ typealias CFUUIDRef = MemorySegment
 class CFUUIDBytes {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_BYTE.withName("byte0"),
-            ValueLayout.JAVA_BYTE.withName("byte1"),
-            ValueLayout.JAVA_BYTE.withName("byte2"),
-            ValueLayout.JAVA_BYTE.withName("byte3"),
-            ValueLayout.JAVA_BYTE.withName("byte4"),
-            ValueLayout.JAVA_BYTE.withName("byte5"),
-            ValueLayout.JAVA_BYTE.withName("byte6"),
-            ValueLayout.JAVA_BYTE.withName("byte7"),
-            ValueLayout.JAVA_BYTE.withName("byte8"),
-            ValueLayout.JAVA_BYTE.withName("byte9"),
-            ValueLayout.JAVA_BYTE.withName("byte10"),
-            ValueLayout.JAVA_BYTE.withName("byte11"),
-            ValueLayout.JAVA_BYTE.withName("byte12"),
-            ValueLayout.JAVA_BYTE.withName("byte13"),
-            ValueLayout.JAVA_BYTE.withName("byte14"),
-            ValueLayout.JAVA_BYTE.withName("byte15")
-        ).withName("CFUUIDBytes")
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte0"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte1"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte2"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte3"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte4"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte5"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte6"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte7"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte8"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte9"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte10"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte11"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte12"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte13"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte14"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("byte15")
+        ).withByteAlignment(1L).withName("CFUUIDBytes")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4317,12 +4345,12 @@ typealias CFMessagePortRef = MemorySegment
 class CFMessagePortContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFMessagePortContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFMessagePortContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4441,12 +4469,12 @@ typealias CFMachPortRef = MemorySegment
 class CFMachPortContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFMachPortContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFMachPortContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4580,12 +4608,12 @@ typealias CFFileDescriptorCallBack = MemorySegment
 class CFFileDescriptorContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFFileDescriptorContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFFileDescriptorContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4679,11 +4707,12 @@ typealias CFXMLTreeRef = MemorySegment
 class CFXMLElementInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("attributes"),
-            ValueLayout.ADDRESS.withName("attributeOrder"),
-            ValueLayout.JAVA_BYTE.withName("isEmpty"),
-            MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE).withName("_reserved")
-        ).withName("CFXMLElementInfo")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("attributes"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("attributeOrder"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("isEmpty"),
+            MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE.withByteAlignment(1)).withByteAlignment(1).withName("_reserved"),
+            MemoryLayout.paddingLayout(4L)
+        ).withByteAlignment(8L).withName("CFXMLElementInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4742,8 +4771,8 @@ class CFXMLElementInfo {
 class CFXMLProcessingInstructionInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("dataString")
-        ).withName("CFXMLProcessingInstructionInfo")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("dataString")
+        ).withByteAlignment(8L).withName("CFXMLProcessingInstructionInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4781,9 +4810,10 @@ class CFXMLProcessingInstructionInfo {
 class CFXMLDocumentInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("sourceURL"),
-            ValueLayout.JAVA_INT.withName("encoding")
-        ).withName("CFXMLDocumentInfo")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("sourceURL"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("encoding"),
+            MemoryLayout.paddingLayout(4L)
+        ).withByteAlignment(8L).withName("CFXMLDocumentInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4830,9 +4860,9 @@ class CFXMLDocumentInfo {
 class CFXMLExternalID {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("systemID"),
-            ValueLayout.ADDRESS.withName("publicID")
-        ).withName("CFXMLExternalID")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("systemID"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("publicID")
+        ).withByteAlignment(8L).withName("CFXMLExternalID")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4879,8 +4909,8 @@ class CFXMLExternalID {
 class CFXMLDocumentTypeInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            CFXMLExternalID.layout.withName("externalID")
-        ).withName("CFXMLDocumentTypeInfo")
+            CFXMLExternalID.layout.withByteAlignment(8).withName("externalID")
+        ).withByteAlignment(8L).withName("CFXMLDocumentTypeInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4918,8 +4948,8 @@ class CFXMLDocumentTypeInfo {
 class CFXMLNotationInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            CFXMLExternalID.layout.withName("externalID")
-        ).withName("CFXMLNotationInfo")
+            CFXMLExternalID.layout.withByteAlignment(8).withName("externalID")
+        ).withByteAlignment(8L).withName("CFXMLNotationInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4957,8 +4987,8 @@ class CFXMLNotationInfo {
 class CFXMLElementTypeDeclarationInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("contentDescription")
-        ).withName("CFXMLElementTypeDeclarationInfo")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("contentDescription")
+        ).withByteAlignment(8L).withName("CFXMLElementTypeDeclarationInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4996,10 +5026,10 @@ class CFXMLElementTypeDeclarationInfo {
 class CFXMLAttributeDeclarationInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("attributeName"),
-            ValueLayout.ADDRESS.withName("typeString"),
-            ValueLayout.ADDRESS.withName("defaultString")
-        ).withName("CFXMLAttributeDeclarationInfo")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("attributeName"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("typeString"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("defaultString")
+        ).withByteAlignment(8L).withName("CFXMLAttributeDeclarationInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5055,9 +5085,9 @@ class CFXMLAttributeDeclarationInfo {
 class CFXMLAttributeListDeclarationInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("numberOfAttributes"),
-            ValueLayout.ADDRESS.withName("attributes")
-        ).withName("CFXMLAttributeListDeclarationInfo")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("numberOfAttributes"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("attributes")
+        ).withByteAlignment(8L).withName("CFXMLAttributeListDeclarationInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5104,11 +5134,11 @@ class CFXMLAttributeListDeclarationInfo {
 class CFXMLEntityInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("entityType"),
-            ValueLayout.ADDRESS.withName("replacementText"),
-            CFXMLExternalID.layout.withName("entityID"),
-            ValueLayout.ADDRESS.withName("notationName")
-        ).withName("CFXMLEntityInfo")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("entityType"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("replacementText"),
+            CFXMLExternalID.layout.withByteAlignment(8).withName("entityID"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("notationName")
+        ).withByteAlignment(8L).withName("CFXMLEntityInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5133,10 +5163,10 @@ class CFXMLEntityInfo {
     val entityType_VH: VarHandle = layout.varHandle(groupElement("entityType"))
 
     @Suppress("UNCHECKED_CAST")
-    fun entityType(segment: MemorySegment): MemorySegment =
-        entityType_VH.get(segment, 0L) as MemorySegment
+    fun entityType(segment: MemorySegment): CFXMLEntityTypeCode =
+        entityType_VH.get(segment, 0L) as CFXMLEntityTypeCode
 
-    fun entityType(segment: MemorySegment, value: MemorySegment) =
+    fun entityType(segment: MemorySegment, value: CFXMLEntityTypeCode) =
         entityType_VH.set(segment, 0L, value)
 
     val replacementText_VH: VarHandle = layout.varHandle(groupElement("replacementText"))
@@ -5173,8 +5203,8 @@ class CFXMLEntityInfo {
 class CFXMLEntityReferenceInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("entityType")
-        ).withName("CFXMLEntityReferenceInfo")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("entityType")
+        ).withByteAlignment(8L).withName("CFXMLEntityReferenceInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5199,10 +5229,10 @@ class CFXMLEntityReferenceInfo {
     val entityType_VH: VarHandle = layout.varHandle(groupElement("entityType"))
 
     @Suppress("UNCHECKED_CAST")
-    fun entityType(segment: MemorySegment): MemorySegment =
-        entityType_VH.get(segment, 0L) as MemorySegment
+    fun entityType(segment: MemorySegment): CFXMLEntityTypeCode =
+        entityType_VH.get(segment, 0L) as CFXMLEntityTypeCode
 
-    fun entityType(segment: MemorySegment, value: MemorySegment) =
+    fun entityType(segment: MemorySegment, value: CFXMLEntityTypeCode) =
         entityType_VH.set(segment, 0L, value)
 } // End class
 
@@ -5232,18 +5262,23 @@ typealias CFXMLParserEndXMLStructureCallBack = MemorySegment
 typealias CFXMLParserResolveExternalEntityCallBack = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef (UNSIGNED = Char((Declared(__CFXMLParser))*,Declared(CFXMLParserStatusCode),(Void)*))* CFXMLParserHandleErrorCallBack;}
+ */
+typealias CFXMLParserHandleErrorCallBack = MemorySegment
+
+/**
  * {@snippet lang=c : STRUCT CFXMLParserCallBacks
  */
 class CFXMLParserCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("createXMLStructure"),
-            ValueLayout.ADDRESS.withName("addChild"),
-            ValueLayout.ADDRESS.withName("endXMLStructure"),
-            ValueLayout.ADDRESS.withName("resolveExternalEntity"),
-            ValueLayout.ADDRESS.withName("handleError")
-        ).withName("CFXMLParserCallBacks")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("createXMLStructure"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("addChild"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("endXMLStructure"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("resolveExternalEntity"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("handleError")
+        ).withByteAlignment(8L).withName("CFXMLParserCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5341,12 +5376,12 @@ typealias CFXMLParserCopyDescriptionCallBack = MemorySegment
 class CFXMLParserContext {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("version"),
-            ValueLayout.ADDRESS.withName("info"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("copyDescription")
-        ).withName("CFXMLParserContext")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("version"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("info"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("copyDescription")
+        ).withByteAlignment(8L).withName("CFXMLParserContext")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5583,8 +5618,8 @@ typealias NSNotificationName = MemorySegment
 class NSSwappedFloat {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("v")
-        ).withName("NSSwappedFloat")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("v")
+        ).withByteAlignment(4L).withName("NSSwappedFloat")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5622,8 +5657,8 @@ class NSSwappedFloat {
 class NSSwappedDouble {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("v")
-        ).withName("NSSwappedDouble")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("v")
+        ).withByteAlignment(8L).withName("NSSwappedDouble")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5815,10 +5850,10 @@ typealias NSHashTableOptions = Long
 class NSHashEnumerator {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("_pi"),
-            ValueLayout.JAVA_LONG.withName("_si"),
-            ValueLayout.ADDRESS.withName("_bs")
-        ).withName("NSHashEnumerator")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("_pi"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("_si"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("_bs")
+        ).withByteAlignment(8L).withName("NSHashEnumerator")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5874,12 +5909,12 @@ class NSHashEnumerator {
 class NSHashTableCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("hash"),
-            ValueLayout.ADDRESS.withName("isEqual"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("describe")
-        ).withName("NSHashTableCallBacks")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hash"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("isEqual"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("describe")
+        ).withByteAlignment(8L).withName("NSHashTableCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5966,6 +6001,11 @@ typealias NSKeyValueOperator = MemorySegment
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSKeyValueChangeKey;}
  */
 typealias NSKeyValueChangeKey = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef Declared(NSPropertyListMutabilityOptions) NSPropertyListReadOptions;}
+ */
+typealias NSPropertyListReadOptions = NSPropertyListMutabilityOptions
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long NSPropertyListWriteOptions;}
@@ -6130,10 +6170,10 @@ typealias NSMapTableOptions = Long
 class NSMapEnumerator {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("_pi"),
-            ValueLayout.JAVA_LONG.withName("_si"),
-            ValueLayout.ADDRESS.withName("_bs")
-        ).withName("NSMapEnumerator")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("_pi"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("_si"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("_bs")
+        ).withByteAlignment(8L).withName("NSMapEnumerator")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -6189,13 +6229,13 @@ class NSMapEnumerator {
 class NSMapTableKeyCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("hash"),
-            ValueLayout.ADDRESS.withName("isEqual"),
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("describe"),
-            ValueLayout.ADDRESS.withName("notAKeyMarker")
-        ).withName("NSMapTableKeyCallBacks")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hash"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("isEqual"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("describe"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("notAKeyMarker")
+        ).withByteAlignment(8L).withName("NSMapTableKeyCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -6278,10 +6318,10 @@ class NSMapTableKeyCallBacks {
 class NSMapTableValueCallBacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("retain"),
-            ValueLayout.ADDRESS.withName("release"),
-            ValueLayout.ADDRESS.withName("describe")
-        ).withName("NSMapTableValueCallBacks")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("retain"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("release"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("describe")
+        ).withByteAlignment(8L).withName("NSMapTableValueCallBacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -9051,12 +9091,13 @@ typealias CGDataProviderReleaseInfoCallback = MemorySegment
 class CGDataProviderSequentialCallbacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("version"),
-            ValueLayout.ADDRESS.withName("getBytes"),
-            ValueLayout.ADDRESS.withName("skipForward"),
-            ValueLayout.ADDRESS.withName("rewind"),
-            ValueLayout.ADDRESS.withName("releaseInfo")
-        ).withName("CGDataProviderSequentialCallbacks")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("version"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("getBytes"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("skipForward"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("rewind"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("releaseInfo")
+        ).withByteAlignment(8L).withName("CGDataProviderSequentialCallbacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -9145,12 +9186,13 @@ typealias CGDataProviderGetBytesAtPositionCallback = MemorySegment
 class CGDataProviderDirectCallbacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("version"),
-            ValueLayout.ADDRESS.withName("getBytePointer"),
-            ValueLayout.ADDRESS.withName("releaseBytePointer"),
-            ValueLayout.ADDRESS.withName("getBytesAtPosition"),
-            ValueLayout.ADDRESS.withName("releaseInfo")
-        ).withName("CGDataProviderDirectCallbacks")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("version"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("getBytePointer"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("releaseBytePointer"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("getBytesAtPosition"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("releaseInfo")
+        ).withByteAlignment(8L).withName("CGDataProviderDirectCallbacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -9249,10 +9291,11 @@ typealias CGPatternReleaseInfoCallback = MemorySegment
 class CGPatternCallbacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("version"),
-            ValueLayout.ADDRESS.withName("drawPattern"),
-            ValueLayout.ADDRESS.withName("releaseInfo")
-        ).withName("CGPatternCallbacks")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("version"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("drawPattern"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("releaseInfo")
+        ).withByteAlignment(8L).withName("CGPatternCallbacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -9353,9 +9396,10 @@ typealias CGPathRef = CGPathPointer
 class CGPathElement {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("type"),
-            ValueLayout.ADDRESS.withName("points")
-        ).withName("CGPathElement")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("type"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("points")
+        ).withByteAlignment(8L).withName("CGPathElement")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -9380,10 +9424,10 @@ class CGPathElement {
     val type_VH: VarHandle = layout.varHandle(groupElement("type"))
 
     @Suppress("UNCHECKED_CAST")
-    fun type(segment: MemorySegment): MemorySegment =
-        type_VH.get(segment, 0L) as MemorySegment
+    fun type(segment: MemorySegment): CGPathElementType =
+        type_VH.get(segment, 0L) as CGPathElementType
 
-    fun type(segment: MemorySegment, value: MemorySegment) =
+    fun type(segment: MemorySegment, value: CGPathElementType) =
         type_VH.set(segment, 0L, value)
 
     val points_VH: VarHandle = layout.varHandle(groupElement("points"))
@@ -9497,10 +9541,11 @@ typealias CGFunctionReleaseInfoCallback = MemorySegment
 class CGFunctionCallbacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("version"),
-            ValueLayout.ADDRESS.withName("evaluate"),
-            ValueLayout.ADDRESS.withName("releaseInfo")
-        ).withName("CGFunctionCallbacks")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("version"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("evaluate"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("releaseInfo")
+        ).withByteAlignment(8L).withName("CGFunctionCallbacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -9556,9 +9601,10 @@ class CGFunctionCallbacks {
 class CGContentToneMappingInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("method"),
-            ValueLayout.ADDRESS.withName("options")
-        ).withName("CGContentToneMappingInfo")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("method"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("options")
+        ).withByteAlignment(8L).withName("CGContentToneMappingInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -9583,10 +9629,10 @@ class CGContentToneMappingInfo {
     val method_VH: VarHandle = layout.varHandle(groupElement("method"))
 
     @Suppress("UNCHECKED_CAST")
-    fun method(segment: MemorySegment): MemorySegment =
-        method_VH.get(segment, 0L) as MemorySegment
+    fun method(segment: MemorySegment): CGToneMapping =
+        method_VH.get(segment, 0L) as CGToneMapping
 
-    fun method(segment: MemorySegment, value: MemorySegment) =
+    fun method(segment: MemorySegment, value: CGToneMapping) =
         method_VH.set(segment, 0L, value)
 
     val options_VH: VarHandle = layout.varHandle(groupElement("options"))
@@ -9985,12 +10031,13 @@ typealias CGBitmapContextReleaseDataCallback = MemorySegment
 class CGContentInfo {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("deepestImageComponent"),
-            ValueLayout.ADDRESS.withName("contentColorModels"),
-            ValueLayout.JAVA_BOOLEAN.withName("hasWideGamut"),
-            ValueLayout.JAVA_BOOLEAN.withName("hasTransparency"),
-            ValueLayout.JAVA_FLOAT.withName("largestContentHeadroom")
-        ).withName("CGContentInfo")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("deepestImageComponent"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("contentColorModels"),
+            ValueLayout.JAVA_BOOLEAN.withByteAlignment(1).withName("hasWideGamut"),
+            ValueLayout.JAVA_BOOLEAN.withByteAlignment(1).withName("hasTransparency"),
+            MemoryLayout.paddingLayout(2L),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("largestContentHeadroom")
+        ).withByteAlignment(4L).withName("CGContentInfo")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -10015,19 +10062,19 @@ class CGContentInfo {
     val deepestImageComponent_VH: VarHandle = layout.varHandle(groupElement("deepestImageComponent"))
 
     @Suppress("UNCHECKED_CAST")
-    fun deepestImageComponent(segment: MemorySegment): MemorySegment =
-        deepestImageComponent_VH.get(segment, 0L) as MemorySegment
+    fun deepestImageComponent(segment: MemorySegment): CGComponent =
+        deepestImageComponent_VH.get(segment, 0L) as CGComponent
 
-    fun deepestImageComponent(segment: MemorySegment, value: MemorySegment) =
+    fun deepestImageComponent(segment: MemorySegment, value: CGComponent) =
         deepestImageComponent_VH.set(segment, 0L, value)
 
     val contentColorModels_VH: VarHandle = layout.varHandle(groupElement("contentColorModels"))
 
     @Suppress("UNCHECKED_CAST")
-    fun contentColorModels(segment: MemorySegment): MemorySegment =
-        contentColorModels_VH.get(segment, 0L) as MemorySegment
+    fun contentColorModels(segment: MemorySegment): CGColorModel =
+        contentColorModels_VH.get(segment, 0L) as CGColorModel
 
-    fun contentColorModels(segment: MemorySegment, value: MemorySegment) =
+    fun contentColorModels(segment: MemorySegment, value: CGColorModel) =
         contentColorModels_VH.set(segment, 0L, value)
 
     val hasWideGamut_VH: VarHandle = layout.varHandle(groupElement("hasWideGamut"))
@@ -10064,18 +10111,21 @@ class CGContentInfo {
 class CGBitmapParameters {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_LONG.withName("width"),
-            ValueLayout.JAVA_LONG.withName("height"),
-            ValueLayout.JAVA_LONG.withName("bytesPerPixel"),
-            ValueLayout.JAVA_LONG.withName("alignedBytesPerRow"),
-            ValueLayout.ADDRESS.withName("component"),
-            ValueLayout.ADDRESS.withName("layout"),
-            ValueLayout.ADDRESS.withName("format"),
-            ValueLayout.ADDRESS.withName("colorSpace"),
-            ValueLayout.JAVA_BOOLEAN.withName("hasPremultipliedAlpha"),
-            ValueLayout.JAVA_LONG.withName("byteOrder"),
-            ValueLayout.JAVA_FLOAT.withName("edrTargetHeadroom")
-        ).withName("CGBitmapParameters")
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("width"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("height"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("bytesPerPixel"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("alignedBytesPerRow"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("component"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("layout"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("format"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("colorSpace"),
+            ValueLayout.JAVA_BOOLEAN.withByteAlignment(1).withName("hasPremultipliedAlpha"),
+            MemoryLayout.paddingLayout(7L),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("byteOrder"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("edrTargetHeadroom"),
+            MemoryLayout.paddingLayout(4L)
+        ).withByteAlignment(8L).withName("CGBitmapParameters")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -10136,28 +10186,28 @@ class CGBitmapParameters {
     val component_VH: VarHandle = layout.varHandle(groupElement("component"))
 
     @Suppress("UNCHECKED_CAST")
-    fun component(segment: MemorySegment): MemorySegment =
-        component_VH.get(segment, 0L) as MemorySegment
+    fun component(segment: MemorySegment): CGComponent =
+        component_VH.get(segment, 0L) as CGComponent
 
-    fun component(segment: MemorySegment, value: MemorySegment) =
+    fun component(segment: MemorySegment, value: CGComponent) =
         component_VH.set(segment, 0L, value)
 
     val layout_VH: VarHandle = layout.varHandle(groupElement("layout"))
 
     @Suppress("UNCHECKED_CAST")
-    fun layout(segment: MemorySegment): MemorySegment =
-        layout_VH.get(segment, 0L) as MemorySegment
+    fun layout(segment: MemorySegment): CGBitmapLayout =
+        layout_VH.get(segment, 0L) as CGBitmapLayout
 
-    fun layout(segment: MemorySegment, value: MemorySegment) =
+    fun layout(segment: MemorySegment, value: CGBitmapLayout) =
         layout_VH.set(segment, 0L, value)
 
     val format_VH: VarHandle = layout.varHandle(groupElement("format"))
 
     @Suppress("UNCHECKED_CAST")
-    fun format(segment: MemorySegment): MemorySegment =
-        format_VH.get(segment, 0L) as MemorySegment
+    fun format(segment: MemorySegment): CGImagePixelFormatInfo =
+        format_VH.get(segment, 0L) as CGImagePixelFormatInfo
 
-    fun format(segment: MemorySegment, value: MemorySegment) =
+    fun format(segment: MemorySegment, value: CGImagePixelFormatInfo) =
         format_VH.set(segment, 0L, value)
 
     val colorSpace_VH: VarHandle = layout.varHandle(groupElement("colorSpace"))
@@ -10208,12 +10258,12 @@ typealias CGColorConversionInfoRef = MemorySegment
 class CGColorBufferFormat {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("version"),
-            ValueLayout.ADDRESS.withName("bitmapInfo"),
-            ValueLayout.JAVA_LONG.withName("bitsPerComponent"),
-            ValueLayout.JAVA_LONG.withName("bitsPerPixel"),
-            ValueLayout.JAVA_LONG.withName("bytesPerRow")
-        ).withName("CGColorBufferFormat")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("version"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("bitmapInfo"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("bitsPerComponent"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("bitsPerPixel"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("bytesPerRow")
+        ).withByteAlignment(8L).withName("CGColorBufferFormat")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -10247,10 +10297,10 @@ class CGColorBufferFormat {
     val bitmapInfo_VH: VarHandle = layout.varHandle(groupElement("bitmapInfo"))
 
     @Suppress("UNCHECKED_CAST")
-    fun bitmapInfo(segment: MemorySegment): MemorySegment =
-        bitmapInfo_VH.get(segment, 0L) as MemorySegment
+    fun bitmapInfo(segment: MemorySegment): CGBitmapInfo =
+        bitmapInfo_VH.get(segment, 0L) as CGBitmapInfo
 
-    fun bitmapInfo(segment: MemorySegment, value: MemorySegment) =
+    fun bitmapInfo(segment: MemorySegment, value: CGBitmapInfo) =
         bitmapInfo_VH.set(segment, 0L, value)
 
     val bitsPerComponent_VH: VarHandle = layout.varHandle(groupElement("bitsPerComponent"))
@@ -10287,14 +10337,17 @@ class CGColorBufferFormat {
 class CGColorDataFormat {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("version"),
-            ValueLayout.ADDRESS.withName("colorspace_info"),
-            ValueLayout.ADDRESS.withName("bitmap_info"),
-            ValueLayout.JAVA_LONG.withName("bits_per_component"),
-            ValueLayout.JAVA_LONG.withName("bytes_per_row"),
-            ValueLayout.ADDRESS.withName("intent"),
-            ValueLayout.ADDRESS.withName("decode")
-        ).withName("CGColorDataFormat")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("version"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("colorspace_info"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("bitmap_info"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("bits_per_component"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("bytes_per_row"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("intent"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("decode")
+        ).withByteAlignment(8L).withName("CGColorDataFormat")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -10337,10 +10390,10 @@ class CGColorDataFormat {
     val bitmap_info_VH: VarHandle = layout.varHandle(groupElement("bitmap_info"))
 
     @Suppress("UNCHECKED_CAST")
-    fun bitmap_info(segment: MemorySegment): MemorySegment =
-        bitmap_info_VH.get(segment, 0L) as MemorySegment
+    fun bitmap_info(segment: MemorySegment): CGBitmapInfo =
+        bitmap_info_VH.get(segment, 0L) as CGBitmapInfo
 
-    fun bitmap_info(segment: MemorySegment, value: MemorySegment) =
+    fun bitmap_info(segment: MemorySegment, value: CGBitmapInfo) =
         bitmap_info_VH.set(segment, 0L, value)
 
     val bits_per_component_VH: VarHandle = layout.varHandle(groupElement("bits_per_component"))
@@ -10364,10 +10417,10 @@ class CGColorDataFormat {
     val intent_VH: VarHandle = layout.varHandle(groupElement("intent"))
 
     @Suppress("UNCHECKED_CAST")
-    fun intent(segment: MemorySegment): MemorySegment =
-        intent_VH.get(segment, 0L) as MemorySegment
+    fun intent(segment: MemorySegment): CGColorRenderingIntent =
+        intent_VH.get(segment, 0L) as CGColorRenderingIntent
 
-    fun intent(segment: MemorySegment, value: MemorySegment) =
+    fun intent(segment: MemorySegment, value: CGColorRenderingIntent) =
         intent_VH.set(segment, 0L, value)
 
     val decode_VH: VarHandle = layout.varHandle(groupElement("decode"))
@@ -10401,9 +10454,9 @@ typealias CGDataConsumerReleaseInfoCallback = MemorySegment
 class CGDataConsumerCallbacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("putBytes"),
-            ValueLayout.ADDRESS.withName("releaseConsumer")
-        ).withName("CGDataConsumerCallbacks")
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("putBytes"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("releaseConsumer")
+        ).withByteAlignment(8L).withName("CGDataConsumerCallbacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -10525,15 +10578,20 @@ typealias CGGammaValue = Float
 typealias CGDisplayCount = Int
 
 /**
+ * {@snippet lang=c : typedef Declared(CGError) CGDisplayErr;}
+ */
+typealias CGDisplayErr = CGError
+
+/**
  * {@snippet lang=c : STRUCT CGDeviceColor
  */
 class CGDeviceColor {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_FLOAT.withName("red"),
-            ValueLayout.JAVA_FLOAT.withName("green"),
-            ValueLayout.JAVA_FLOAT.withName("blue")
-        ).withName("CGDeviceColor")
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("red"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("green"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("blue")
+        ).withByteAlignment(4L).withName("CGDeviceColor")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -10589,6 +10647,11 @@ class CGDeviceColor {
 typealias CGDisplayConfigRef = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef (Void(UNSIGNED = Int,Declared(CGDisplayChangeSummaryFlags),(Void)*))* CGDisplayReconfigurationCallBack;}
+ */
+typealias CGDisplayReconfigurationCallBack = MemorySegment
+
+/**
  * {@snippet lang=c : typedef UNSIGNED = Int CGDisplayFadeReservationToken;}
  */
 typealias CGDisplayFadeReservationToken = Int
@@ -10624,6 +10687,11 @@ typealias CGDisplayStreamUpdateRef = MemorySegment
 typealias CGDisplayStreamFrameAvailableHandler = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef Declared(CGError) CGEventErr;}
+ */
+typealias CGEventErr = CGError
+
+/**
  * {@snippet lang=c : typedef UNSIGNED = Int CGButtonCount;}
  */
 typealias CGButtonCount = Int
@@ -10654,9 +10722,9 @@ typealias CGScreenRefreshCallback = MemorySegment
 class CGScreenUpdateMoveDelta {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("dX"),
-            ValueLayout.JAVA_INT.withName("dY")
-        ).withName("CGScreenUpdateMoveDelta")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dX"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dY")
+        ).withByteAlignment(4L).withName("CGScreenUpdateMoveDelta")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -10793,22 +10861,29 @@ typealias CGEventMask = Long
 typealias CGEventTapProxy = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef ((Declared(__CGEvent))*((Declared(__CGEventTapProxy))*,Declared(CGEventType),(Declared(__CGEvent))*,(Void)*))* CGEventTapCallBack;}
+ */
+typealias CGEventTapCallBack = MemorySegment
+
+/**
  * {@snippet lang=c : STRUCT __CGEventTapInformation
  */
 class _CGEventTapInformation {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("eventTapID"),
-            ValueLayout.ADDRESS.withName("tapPoint"),
-            ValueLayout.ADDRESS.withName("options"),
-            ValueLayout.JAVA_LONG.withName("eventsOfInterest"),
-            ValueLayout.JAVA_INT.withName("tappingProcess"),
-            ValueLayout.JAVA_INT.withName("processBeingTapped"),
-            ValueLayout.JAVA_BOOLEAN.withName("enabled"),
-            ValueLayout.JAVA_FLOAT.withName("minUsecLatency"),
-            ValueLayout.JAVA_FLOAT.withName("avgUsecLatency"),
-            ValueLayout.JAVA_FLOAT.withName("maxUsecLatency")
-        ).withName("__CGEventTapInformation")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("eventTapID"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("tapPoint"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("options"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("eventsOfInterest"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("tappingProcess"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("processBeingTapped"),
+            ValueLayout.JAVA_BOOLEAN.withByteAlignment(1).withName("enabled"),
+            MemoryLayout.paddingLayout(3L),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("minUsecLatency"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("avgUsecLatency"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("maxUsecLatency")
+        ).withByteAlignment(8L).withName("__CGEventTapInformation")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -10842,19 +10917,19 @@ class _CGEventTapInformation {
     val tapPoint_VH: VarHandle = layout.varHandle(groupElement("tapPoint"))
 
     @Suppress("UNCHECKED_CAST")
-    fun tapPoint(segment: MemorySegment): MemorySegment =
-        tapPoint_VH.get(segment, 0L) as MemorySegment
+    fun tapPoint(segment: MemorySegment): CGEventTapLocation =
+        tapPoint_VH.get(segment, 0L) as CGEventTapLocation
 
-    fun tapPoint(segment: MemorySegment, value: MemorySegment) =
+    fun tapPoint(segment: MemorySegment, value: CGEventTapLocation) =
         tapPoint_VH.set(segment, 0L, value)
 
     val options_VH: VarHandle = layout.varHandle(groupElement("options"))
 
     @Suppress("UNCHECKED_CAST")
-    fun options(segment: MemorySegment): MemorySegment =
-        options_VH.get(segment, 0L) as MemorySegment
+    fun options(segment: MemorySegment): CGEventTapOptions =
+        options_VH.get(segment, 0L) as CGEventTapOptions
 
-    fun options(segment: MemorySegment, value: MemorySegment) =
+    fun options(segment: MemorySegment, value: CGEventTapOptions) =
         options_VH.set(segment, 0L, value)
 
     val eventsOfInterest_VH: VarHandle = layout.varHandle(groupElement("eventsOfInterest"))
@@ -10982,15 +11057,16 @@ typealias CGPSConverterReleaseInfoCallback = MemorySegment
 class CGPSConverterCallbacks {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("version"),
-            ValueLayout.ADDRESS.withName("beginDocument"),
-            ValueLayout.ADDRESS.withName("endDocument"),
-            ValueLayout.ADDRESS.withName("beginPage"),
-            ValueLayout.ADDRESS.withName("endPage"),
-            ValueLayout.ADDRESS.withName("noteProgress"),
-            ValueLayout.ADDRESS.withName("noteMessage"),
-            ValueLayout.ADDRESS.withName("releaseInfo")
-        ).withName("CGPSConverterCallbacks")
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("version"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("beginDocument"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("endDocument"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("beginPage"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("endPage"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("noteProgress"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("noteMessage"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("releaseInfo")
+        ).withByteAlignment(8L).withName("CGPSConverterCallbacks")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -11968,16 +12044,16 @@ typealias CVOptionFlags = Long
 class CVSMPTETime {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
-            ValueLayout.JAVA_SHORT.withName("subframes"),
-            ValueLayout.JAVA_SHORT.withName("subframeDivisor"),
-            ValueLayout.JAVA_INT.withName("counter"),
-            ValueLayout.JAVA_INT.withName("type"),
-            ValueLayout.JAVA_INT.withName("flags"),
-            ValueLayout.JAVA_SHORT.withName("hours"),
-            ValueLayout.JAVA_SHORT.withName("minutes"),
-            ValueLayout.JAVA_SHORT.withName("seconds"),
-            ValueLayout.JAVA_SHORT.withName("frames")
-        ).withName("CVSMPTETime")
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("subframes"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("subframeDivisor"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("counter"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("type"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("flags"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("hours"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("minutes"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("seconds"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("frames")
+        ).withByteAlignment(4L).withName("CVSMPTETime")
 
         val byteSize: Long
             get() = layout.byteSize()

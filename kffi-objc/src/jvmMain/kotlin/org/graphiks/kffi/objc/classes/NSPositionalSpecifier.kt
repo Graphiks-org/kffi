@@ -71,7 +71,7 @@ open class NSPositionalSpecifier(override val ptr: MemorySegment) : NSObject(ptr
 
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _specifier: MemorySegment
-    // ivar: _unadjustedPosition: MemorySegment
+    // ivar: _unadjustedPosition: NSInsertionPosition
     // ivar: _insertionClassDescription: MemorySegment
     // ivar: _moreVars: MemorySegment
     // ivar: _reserved0: MemorySegment

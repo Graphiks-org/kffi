@@ -5,6 +5,845 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSNonOwnedPointerMapValueCallBacks typedef const NSMapTableValueCallBacks = Declared(NSMapTableValueCallBacks)
+ */
+val NSNonOwnedPointerMapValueCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSNonOwnedPointerMapValueCallBacks").orElseThrow()
+
+/**
+ * {@snippet lang=c : NSObjectMapValueCallBacks typedef const NSMapTableValueCallBacks = Declared(NSMapTableValueCallBacks)
+ */
+val NSObjectMapValueCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSObjectMapValueCallBacks").orElseThrow()
+
+/**
+ * {@snippet lang=c : NSNonRetainedObjectMapValueCallBacks typedef const NSMapTableValueCallBacks = Declared(NSMapTableValueCallBacks)
+ */
+val NSNonRetainedObjectMapValueCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSNonRetainedObjectMapValueCallBacks").orElseThrow()
+
+/**
+ * {@snippet lang=c : NSOwnedPointerMapValueCallBacks typedef const NSMapTableValueCallBacks = Declared(NSMapTableValueCallBacks)
+ */
+val NSOwnedPointerMapValueCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSOwnedPointerMapValueCallBacks").orElseThrow()
+
+/**
+ * {@snippet lang=c : NSIntMapValueCallBacks typedef const NSMapTableValueCallBacks = Declared(NSMapTableValueCallBacks)
+ */
+val NSIntMapValueCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSIntMapValueCallBacks").orElseThrow()
+
+/**
+ * {@snippet lang=c : NSInvocationOperationVoidResultException typedef const NSExceptionName = (Void)*
+ */
+private val NSInvocationOperationVoidResultException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSInvocationOperationVoidResultException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSInvocationOperationVoidResultException").orElseThrow() }
+private val NSInvocationOperationVoidResultException_VH: VarHandle by lazy { NSInvocationOperationVoidResultException_LAYOUT.varHandle() }
+
+var NSInvocationOperationVoidResultException: MemorySegment
+    get() = NSInvocationOperationVoidResultException_VH.get(NSInvocationOperationVoidResultException_SEGMENT) as MemorySegment
+    set(value) = NSInvocationOperationVoidResultException_VH.set(NSInvocationOperationVoidResultException_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSInvocationOperationCancelledException typedef const NSExceptionName = (Void)*
+ */
+private val NSInvocationOperationCancelledException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSInvocationOperationCancelledException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSInvocationOperationCancelledException").orElseThrow() }
+private val NSInvocationOperationCancelledException_VH: VarHandle by lazy { NSInvocationOperationCancelledException_LAYOUT.varHandle() }
+
+var NSInvocationOperationCancelledException: MemorySegment
+    get() = NSInvocationOperationCancelledException_VH.get(NSInvocationOperationCancelledException_SEGMENT) as MemorySegment
+    set(value) = NSInvocationOperationCancelledException_VH.set(NSInvocationOperationCancelledException_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSPortDidBecomeInvalidNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSPortDidBecomeInvalidNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSPortDidBecomeInvalidNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPortDidBecomeInvalidNotification").orElseThrow() }
+private val NSPortDidBecomeInvalidNotification_VH: VarHandle by lazy { NSPortDidBecomeInvalidNotification_LAYOUT.varHandle() }
+
+var NSPortDidBecomeInvalidNotification: MemorySegment
+    get() = NSPortDidBecomeInvalidNotification_VH.get(NSPortDidBecomeInvalidNotification_SEGMENT) as MemorySegment
+    set(value) = NSPortDidBecomeInvalidNotification_VH.set(NSPortDidBecomeInvalidNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSProcessInfoThermalStateDidChangeNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSProcessInfoThermalStateDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSProcessInfoThermalStateDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSProcessInfoThermalStateDidChangeNotification").orElseThrow() }
+private val NSProcessInfoThermalStateDidChangeNotification_VH: VarHandle by lazy { NSProcessInfoThermalStateDidChangeNotification_LAYOUT.varHandle() }
+
+var NSProcessInfoThermalStateDidChangeNotification: MemorySegment
+    get() = NSProcessInfoThermalStateDidChangeNotification_VH.get(NSProcessInfoThermalStateDidChangeNotification_SEGMENT) as MemorySegment
+    set(value) = NSProcessInfoThermalStateDidChangeNotification_VH.set(NSProcessInfoThermalStateDidChangeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSProcessInfoPowerStateDidChangeNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSProcessInfoPowerStateDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSProcessInfoPowerStateDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSProcessInfoPowerStateDidChangeNotification").orElseThrow() }
+private val NSProcessInfoPowerStateDidChangeNotification_VH: VarHandle by lazy { NSProcessInfoPowerStateDidChangeNotification_LAYOUT.varHandle() }
+
+var NSProcessInfoPowerStateDidChangeNotification: MemorySegment
+    get() = NSProcessInfoPowerStateDidChangeNotification_VH.get(NSProcessInfoPowerStateDidChangeNotification_SEGMENT) as MemorySegment
+    set(value) = NSProcessInfoPowerStateDidChangeNotification_VH.set(NSProcessInfoPowerStateDidChangeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingNameKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingNameKey").orElseThrow() }
+private val NSTextCheckingNameKey_VH: VarHandle by lazy { NSTextCheckingNameKey_LAYOUT.varHandle() }
+
+var NSTextCheckingNameKey: MemorySegment
+    get() = NSTextCheckingNameKey_VH.get(NSTextCheckingNameKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingNameKey_VH.set(NSTextCheckingNameKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingJobTitleKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingJobTitleKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingJobTitleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingJobTitleKey").orElseThrow() }
+private val NSTextCheckingJobTitleKey_VH: VarHandle by lazy { NSTextCheckingJobTitleKey_LAYOUT.varHandle() }
+
+var NSTextCheckingJobTitleKey: MemorySegment
+    get() = NSTextCheckingJobTitleKey_VH.get(NSTextCheckingJobTitleKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingJobTitleKey_VH.set(NSTextCheckingJobTitleKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingOrganizationKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingOrganizationKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingOrganizationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingOrganizationKey").orElseThrow() }
+private val NSTextCheckingOrganizationKey_VH: VarHandle by lazy { NSTextCheckingOrganizationKey_LAYOUT.varHandle() }
+
+var NSTextCheckingOrganizationKey: MemorySegment
+    get() = NSTextCheckingOrganizationKey_VH.get(NSTextCheckingOrganizationKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingOrganizationKey_VH.set(NSTextCheckingOrganizationKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingStreetKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingStreetKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingStreetKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingStreetKey").orElseThrow() }
+private val NSTextCheckingStreetKey_VH: VarHandle by lazy { NSTextCheckingStreetKey_LAYOUT.varHandle() }
+
+var NSTextCheckingStreetKey: MemorySegment
+    get() = NSTextCheckingStreetKey_VH.get(NSTextCheckingStreetKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingStreetKey_VH.set(NSTextCheckingStreetKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingCityKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingCityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingCityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingCityKey").orElseThrow() }
+private val NSTextCheckingCityKey_VH: VarHandle by lazy { NSTextCheckingCityKey_LAYOUT.varHandle() }
+
+var NSTextCheckingCityKey: MemorySegment
+    get() = NSTextCheckingCityKey_VH.get(NSTextCheckingCityKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingCityKey_VH.set(NSTextCheckingCityKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingStateKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingStateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingStateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingStateKey").orElseThrow() }
+private val NSTextCheckingStateKey_VH: VarHandle by lazy { NSTextCheckingStateKey_LAYOUT.varHandle() }
+
+var NSTextCheckingStateKey: MemorySegment
+    get() = NSTextCheckingStateKey_VH.get(NSTextCheckingStateKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingStateKey_VH.set(NSTextCheckingStateKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingZIPKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingZIPKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingZIPKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingZIPKey").orElseThrow() }
+private val NSTextCheckingZIPKey_VH: VarHandle by lazy { NSTextCheckingZIPKey_LAYOUT.varHandle() }
+
+var NSTextCheckingZIPKey: MemorySegment
+    get() = NSTextCheckingZIPKey_VH.get(NSTextCheckingZIPKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingZIPKey_VH.set(NSTextCheckingZIPKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingCountryKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingCountryKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingCountryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingCountryKey").orElseThrow() }
+private val NSTextCheckingCountryKey_VH: VarHandle by lazy { NSTextCheckingCountryKey_LAYOUT.varHandle() }
+
+var NSTextCheckingCountryKey: MemorySegment
+    get() = NSTextCheckingCountryKey_VH.get(NSTextCheckingCountryKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingCountryKey_VH.set(NSTextCheckingCountryKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingPhoneKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingPhoneKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingPhoneKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingPhoneKey").orElseThrow() }
+private val NSTextCheckingPhoneKey_VH: VarHandle by lazy { NSTextCheckingPhoneKey_LAYOUT.varHandle() }
+
+var NSTextCheckingPhoneKey: MemorySegment
+    get() = NSTextCheckingPhoneKey_VH.get(NSTextCheckingPhoneKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingPhoneKey_VH.set(NSTextCheckingPhoneKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingAirlineKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingAirlineKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingAirlineKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingAirlineKey").orElseThrow() }
+private val NSTextCheckingAirlineKey_VH: VarHandle by lazy { NSTextCheckingAirlineKey_LAYOUT.varHandle() }
+
+var NSTextCheckingAirlineKey: MemorySegment
+    get() = NSTextCheckingAirlineKey_VH.get(NSTextCheckingAirlineKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingAirlineKey_VH.set(NSTextCheckingAirlineKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTextCheckingFlightKey typedef const NSTextCheckingKey = (Void)*
+ */
+private val NSTextCheckingFlightKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTextCheckingFlightKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingFlightKey").orElseThrow() }
+private val NSTextCheckingFlightKey_VH: VarHandle by lazy { NSTextCheckingFlightKey_LAYOUT.varHandle() }
+
+var NSTextCheckingFlightKey: MemorySegment
+    get() = NSTextCheckingFlightKey_VH.get(NSTextCheckingFlightKey_SEGMENT) as MemorySegment
+    set(value) = NSTextCheckingFlightKey_VH.set(NSTextCheckingFlightKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSocketSecurityLevelKey typedef const NSStreamPropertyKey = (Void)*
+ */
+private val NSStreamSocketSecurityLevelKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSocketSecurityLevelKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSocketSecurityLevelKey").orElseThrow() }
+private val NSStreamSocketSecurityLevelKey_VH: VarHandle by lazy { NSStreamSocketSecurityLevelKey_LAYOUT.varHandle() }
+
+var NSStreamSocketSecurityLevelKey: MemorySegment
+    get() = NSStreamSocketSecurityLevelKey_VH.get(NSStreamSocketSecurityLevelKey_SEGMENT) as MemorySegment
+    set(value) = NSStreamSocketSecurityLevelKey_VH.set(NSStreamSocketSecurityLevelKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSocketSecurityLevelNone typedef const NSStreamSocketSecurityLevel = (Void)*
+ */
+private val NSStreamSocketSecurityLevelNone_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSocketSecurityLevelNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSocketSecurityLevelNone").orElseThrow() }
+private val NSStreamSocketSecurityLevelNone_VH: VarHandle by lazy { NSStreamSocketSecurityLevelNone_LAYOUT.varHandle() }
+
+var NSStreamSocketSecurityLevelNone: MemorySegment
+    get() = NSStreamSocketSecurityLevelNone_VH.get(NSStreamSocketSecurityLevelNone_SEGMENT) as MemorySegment
+    set(value) = NSStreamSocketSecurityLevelNone_VH.set(NSStreamSocketSecurityLevelNone_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSocketSecurityLevelSSLv2 typedef const NSStreamSocketSecurityLevel = (Void)*
+ */
+private val NSStreamSocketSecurityLevelSSLv2_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSocketSecurityLevelSSLv2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSocketSecurityLevelSSLv2").orElseThrow() }
+private val NSStreamSocketSecurityLevelSSLv2_VH: VarHandle by lazy { NSStreamSocketSecurityLevelSSLv2_LAYOUT.varHandle() }
+
+var NSStreamSocketSecurityLevelSSLv2: MemorySegment
+    get() = NSStreamSocketSecurityLevelSSLv2_VH.get(NSStreamSocketSecurityLevelSSLv2_SEGMENT) as MemorySegment
+    set(value) = NSStreamSocketSecurityLevelSSLv2_VH.set(NSStreamSocketSecurityLevelSSLv2_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSocketSecurityLevelSSLv3 typedef const NSStreamSocketSecurityLevel = (Void)*
+ */
+private val NSStreamSocketSecurityLevelSSLv3_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSocketSecurityLevelSSLv3_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSocketSecurityLevelSSLv3").orElseThrow() }
+private val NSStreamSocketSecurityLevelSSLv3_VH: VarHandle by lazy { NSStreamSocketSecurityLevelSSLv3_LAYOUT.varHandle() }
+
+var NSStreamSocketSecurityLevelSSLv3: MemorySegment
+    get() = NSStreamSocketSecurityLevelSSLv3_VH.get(NSStreamSocketSecurityLevelSSLv3_SEGMENT) as MemorySegment
+    set(value) = NSStreamSocketSecurityLevelSSLv3_VH.set(NSStreamSocketSecurityLevelSSLv3_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSocketSecurityLevelTLSv1 typedef const NSStreamSocketSecurityLevel = (Void)*
+ */
+private val NSStreamSocketSecurityLevelTLSv1_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSocketSecurityLevelTLSv1_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSocketSecurityLevelTLSv1").orElseThrow() }
+private val NSStreamSocketSecurityLevelTLSv1_VH: VarHandle by lazy { NSStreamSocketSecurityLevelTLSv1_LAYOUT.varHandle() }
+
+var NSStreamSocketSecurityLevelTLSv1: MemorySegment
+    get() = NSStreamSocketSecurityLevelTLSv1_VH.get(NSStreamSocketSecurityLevelTLSv1_SEGMENT) as MemorySegment
+    set(value) = NSStreamSocketSecurityLevelTLSv1_VH.set(NSStreamSocketSecurityLevelTLSv1_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSocketSecurityLevelNegotiatedSSL typedef const NSStreamSocketSecurityLevel = (Void)*
+ */
+private val NSStreamSocketSecurityLevelNegotiatedSSL_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSocketSecurityLevelNegotiatedSSL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSocketSecurityLevelNegotiatedSSL").orElseThrow() }
+private val NSStreamSocketSecurityLevelNegotiatedSSL_VH: VarHandle by lazy { NSStreamSocketSecurityLevelNegotiatedSSL_LAYOUT.varHandle() }
+
+var NSStreamSocketSecurityLevelNegotiatedSSL: MemorySegment
+    get() = NSStreamSocketSecurityLevelNegotiatedSSL_VH.get(NSStreamSocketSecurityLevelNegotiatedSSL_SEGMENT) as MemorySegment
+    set(value) = NSStreamSocketSecurityLevelNegotiatedSSL_VH.set(NSStreamSocketSecurityLevelNegotiatedSSL_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSOCKSProxyConfigurationKey typedef const NSStreamPropertyKey = (Void)*
+ */
+private val NSStreamSOCKSProxyConfigurationKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSOCKSProxyConfigurationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSOCKSProxyConfigurationKey").orElseThrow() }
+private val NSStreamSOCKSProxyConfigurationKey_VH: VarHandle by lazy { NSStreamSOCKSProxyConfigurationKey_LAYOUT.varHandle() }
+
+var NSStreamSOCKSProxyConfigurationKey: MemorySegment
+    get() = NSStreamSOCKSProxyConfigurationKey_VH.get(NSStreamSOCKSProxyConfigurationKey_SEGMENT) as MemorySegment
+    set(value) = NSStreamSOCKSProxyConfigurationKey_VH.set(NSStreamSOCKSProxyConfigurationKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSOCKSProxyHostKey typedef const NSStreamSOCKSProxyConfiguration = (Void)*
+ */
+private val NSStreamSOCKSProxyHostKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSOCKSProxyHostKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSOCKSProxyHostKey").orElseThrow() }
+private val NSStreamSOCKSProxyHostKey_VH: VarHandle by lazy { NSStreamSOCKSProxyHostKey_LAYOUT.varHandle() }
+
+var NSStreamSOCKSProxyHostKey: MemorySegment
+    get() = NSStreamSOCKSProxyHostKey_VH.get(NSStreamSOCKSProxyHostKey_SEGMENT) as MemorySegment
+    set(value) = NSStreamSOCKSProxyHostKey_VH.set(NSStreamSOCKSProxyHostKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSOCKSProxyPortKey typedef const NSStreamSOCKSProxyConfiguration = (Void)*
+ */
+private val NSStreamSOCKSProxyPortKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSOCKSProxyPortKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSOCKSProxyPortKey").orElseThrow() }
+private val NSStreamSOCKSProxyPortKey_VH: VarHandle by lazy { NSStreamSOCKSProxyPortKey_LAYOUT.varHandle() }
+
+var NSStreamSOCKSProxyPortKey: MemorySegment
+    get() = NSStreamSOCKSProxyPortKey_VH.get(NSStreamSOCKSProxyPortKey_SEGMENT) as MemorySegment
+    set(value) = NSStreamSOCKSProxyPortKey_VH.set(NSStreamSOCKSProxyPortKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSOCKSProxyVersionKey typedef const NSStreamSOCKSProxyConfiguration = (Void)*
+ */
+private val NSStreamSOCKSProxyVersionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSOCKSProxyVersionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSOCKSProxyVersionKey").orElseThrow() }
+private val NSStreamSOCKSProxyVersionKey_VH: VarHandle by lazy { NSStreamSOCKSProxyVersionKey_LAYOUT.varHandle() }
+
+var NSStreamSOCKSProxyVersionKey: MemorySegment
+    get() = NSStreamSOCKSProxyVersionKey_VH.get(NSStreamSOCKSProxyVersionKey_SEGMENT) as MemorySegment
+    set(value) = NSStreamSOCKSProxyVersionKey_VH.set(NSStreamSOCKSProxyVersionKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSOCKSProxyUserKey typedef const NSStreamSOCKSProxyConfiguration = (Void)*
+ */
+private val NSStreamSOCKSProxyUserKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSOCKSProxyUserKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSOCKSProxyUserKey").orElseThrow() }
+private val NSStreamSOCKSProxyUserKey_VH: VarHandle by lazy { NSStreamSOCKSProxyUserKey_LAYOUT.varHandle() }
+
+var NSStreamSOCKSProxyUserKey: MemorySegment
+    get() = NSStreamSOCKSProxyUserKey_VH.get(NSStreamSOCKSProxyUserKey_SEGMENT) as MemorySegment
+    set(value) = NSStreamSOCKSProxyUserKey_VH.set(NSStreamSOCKSProxyUserKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSOCKSProxyPasswordKey typedef const NSStreamSOCKSProxyConfiguration = (Void)*
+ */
+private val NSStreamSOCKSProxyPasswordKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSOCKSProxyPasswordKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSOCKSProxyPasswordKey").orElseThrow() }
+private val NSStreamSOCKSProxyPasswordKey_VH: VarHandle by lazy { NSStreamSOCKSProxyPasswordKey_LAYOUT.varHandle() }
+
+var NSStreamSOCKSProxyPasswordKey: MemorySegment
+    get() = NSStreamSOCKSProxyPasswordKey_VH.get(NSStreamSOCKSProxyPasswordKey_SEGMENT) as MemorySegment
+    set(value) = NSStreamSOCKSProxyPasswordKey_VH.set(NSStreamSOCKSProxyPasswordKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSOCKSProxyVersion4 typedef const NSStreamSOCKSProxyVersion = (Void)*
+ */
+private val NSStreamSOCKSProxyVersion4_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSOCKSProxyVersion4_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSOCKSProxyVersion4").orElseThrow() }
+private val NSStreamSOCKSProxyVersion4_VH: VarHandle by lazy { NSStreamSOCKSProxyVersion4_LAYOUT.varHandle() }
+
+var NSStreamSOCKSProxyVersion4: MemorySegment
+    get() = NSStreamSOCKSProxyVersion4_VH.get(NSStreamSOCKSProxyVersion4_SEGMENT) as MemorySegment
+    set(value) = NSStreamSOCKSProxyVersion4_VH.set(NSStreamSOCKSProxyVersion4_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSOCKSProxyVersion5 typedef const NSStreamSOCKSProxyVersion = (Void)*
+ */
+private val NSStreamSOCKSProxyVersion5_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSOCKSProxyVersion5_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSOCKSProxyVersion5").orElseThrow() }
+private val NSStreamSOCKSProxyVersion5_VH: VarHandle by lazy { NSStreamSOCKSProxyVersion5_LAYOUT.varHandle() }
+
+var NSStreamSOCKSProxyVersion5: MemorySegment
+    get() = NSStreamSOCKSProxyVersion5_VH.get(NSStreamSOCKSProxyVersion5_SEGMENT) as MemorySegment
+    set(value) = NSStreamSOCKSProxyVersion5_VH.set(NSStreamSOCKSProxyVersion5_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamDataWrittenToMemoryStreamKey typedef const NSStreamPropertyKey = (Void)*
+ */
+private val NSStreamDataWrittenToMemoryStreamKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamDataWrittenToMemoryStreamKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamDataWrittenToMemoryStreamKey").orElseThrow() }
+private val NSStreamDataWrittenToMemoryStreamKey_VH: VarHandle by lazy { NSStreamDataWrittenToMemoryStreamKey_LAYOUT.varHandle() }
+
+var NSStreamDataWrittenToMemoryStreamKey: MemorySegment
+    get() = NSStreamDataWrittenToMemoryStreamKey_VH.get(NSStreamDataWrittenToMemoryStreamKey_SEGMENT) as MemorySegment
+    set(value) = NSStreamDataWrittenToMemoryStreamKey_VH.set(NSStreamDataWrittenToMemoryStreamKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamFileCurrentOffsetKey typedef const NSStreamPropertyKey = (Void)*
+ */
+private val NSStreamFileCurrentOffsetKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamFileCurrentOffsetKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamFileCurrentOffsetKey").orElseThrow() }
+private val NSStreamFileCurrentOffsetKey_VH: VarHandle by lazy { NSStreamFileCurrentOffsetKey_LAYOUT.varHandle() }
+
+var NSStreamFileCurrentOffsetKey: MemorySegment
+    get() = NSStreamFileCurrentOffsetKey_VH.get(NSStreamFileCurrentOffsetKey_SEGMENT) as MemorySegment
+    set(value) = NSStreamFileCurrentOffsetKey_VH.set(NSStreamFileCurrentOffsetKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSocketSSLErrorDomain typedef const NSErrorDomain = (Void)*
+ */
+private val NSStreamSocketSSLErrorDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSocketSSLErrorDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSocketSSLErrorDomain").orElseThrow() }
+private val NSStreamSocketSSLErrorDomain_VH: VarHandle by lazy { NSStreamSocketSSLErrorDomain_LAYOUT.varHandle() }
+
+var NSStreamSocketSSLErrorDomain: MemorySegment
+    get() = NSStreamSocketSSLErrorDomain_VH.get(NSStreamSocketSSLErrorDomain_SEGMENT) as MemorySegment
+    set(value) = NSStreamSocketSSLErrorDomain_VH.set(NSStreamSocketSSLErrorDomain_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamSOCKSErrorDomain typedef const NSErrorDomain = (Void)*
+ */
+private val NSStreamSOCKSErrorDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamSOCKSErrorDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamSOCKSErrorDomain").orElseThrow() }
+private val NSStreamSOCKSErrorDomain_VH: VarHandle by lazy { NSStreamSOCKSErrorDomain_LAYOUT.varHandle() }
+
+var NSStreamSOCKSErrorDomain: MemorySegment
+    get() = NSStreamSOCKSErrorDomain_VH.get(NSStreamSOCKSErrorDomain_SEGMENT) as MemorySegment
+    set(value) = NSStreamSOCKSErrorDomain_VH.set(NSStreamSOCKSErrorDomain_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamNetworkServiceType typedef const NSStreamPropertyKey = (Void)*
+ */
+private val NSStreamNetworkServiceType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamNetworkServiceType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamNetworkServiceType").orElseThrow() }
+private val NSStreamNetworkServiceType_VH: VarHandle by lazy { NSStreamNetworkServiceType_LAYOUT.varHandle() }
+
+var NSStreamNetworkServiceType: MemorySegment
+    get() = NSStreamNetworkServiceType_VH.get(NSStreamNetworkServiceType_SEGMENT) as MemorySegment
+    set(value) = NSStreamNetworkServiceType_VH.set(NSStreamNetworkServiceType_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamNetworkServiceTypeVoIP typedef const NSStreamNetworkServiceTypeValue = (Void)*
+ */
+private val NSStreamNetworkServiceTypeVoIP_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamNetworkServiceTypeVoIP_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamNetworkServiceTypeVoIP").orElseThrow() }
+private val NSStreamNetworkServiceTypeVoIP_VH: VarHandle by lazy { NSStreamNetworkServiceTypeVoIP_LAYOUT.varHandle() }
+
+var NSStreamNetworkServiceTypeVoIP: MemorySegment
+    get() = NSStreamNetworkServiceTypeVoIP_VH.get(NSStreamNetworkServiceTypeVoIP_SEGMENT) as MemorySegment
+    set(value) = NSStreamNetworkServiceTypeVoIP_VH.set(NSStreamNetworkServiceTypeVoIP_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamNetworkServiceTypeVideo typedef const NSStreamNetworkServiceTypeValue = (Void)*
+ */
+private val NSStreamNetworkServiceTypeVideo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamNetworkServiceTypeVideo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamNetworkServiceTypeVideo").orElseThrow() }
+private val NSStreamNetworkServiceTypeVideo_VH: VarHandle by lazy { NSStreamNetworkServiceTypeVideo_LAYOUT.varHandle() }
+
+var NSStreamNetworkServiceTypeVideo: MemorySegment
+    get() = NSStreamNetworkServiceTypeVideo_VH.get(NSStreamNetworkServiceTypeVideo_SEGMENT) as MemorySegment
+    set(value) = NSStreamNetworkServiceTypeVideo_VH.set(NSStreamNetworkServiceTypeVideo_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamNetworkServiceTypeBackground typedef const NSStreamNetworkServiceTypeValue = (Void)*
+ */
+private val NSStreamNetworkServiceTypeBackground_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamNetworkServiceTypeBackground_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamNetworkServiceTypeBackground").orElseThrow() }
+private val NSStreamNetworkServiceTypeBackground_VH: VarHandle by lazy { NSStreamNetworkServiceTypeBackground_LAYOUT.varHandle() }
+
+var NSStreamNetworkServiceTypeBackground: MemorySegment
+    get() = NSStreamNetworkServiceTypeBackground_VH.get(NSStreamNetworkServiceTypeBackground_SEGMENT) as MemorySegment
+    set(value) = NSStreamNetworkServiceTypeBackground_VH.set(NSStreamNetworkServiceTypeBackground_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamNetworkServiceTypeVoice typedef const NSStreamNetworkServiceTypeValue = (Void)*
+ */
+private val NSStreamNetworkServiceTypeVoice_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamNetworkServiceTypeVoice_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamNetworkServiceTypeVoice").orElseThrow() }
+private val NSStreamNetworkServiceTypeVoice_VH: VarHandle by lazy { NSStreamNetworkServiceTypeVoice_LAYOUT.varHandle() }
+
+var NSStreamNetworkServiceTypeVoice: MemorySegment
+    get() = NSStreamNetworkServiceTypeVoice_VH.get(NSStreamNetworkServiceTypeVoice_SEGMENT) as MemorySegment
+    set(value) = NSStreamNetworkServiceTypeVoice_VH.set(NSStreamNetworkServiceTypeVoice_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStreamNetworkServiceTypeCallSignaling typedef const NSStreamNetworkServiceTypeValue = (Void)*
+ */
+private val NSStreamNetworkServiceTypeCallSignaling_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStreamNetworkServiceTypeCallSignaling_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStreamNetworkServiceTypeCallSignaling").orElseThrow() }
+private val NSStreamNetworkServiceTypeCallSignaling_VH: VarHandle by lazy { NSStreamNetworkServiceTypeCallSignaling_LAYOUT.varHandle() }
+
+var NSStreamNetworkServiceTypeCallSignaling: MemorySegment
+    get() = NSStreamNetworkServiceTypeCallSignaling_VH.get(NSStreamNetworkServiceTypeCallSignaling_SEGMENT) as MemorySegment
+    set(value) = NSStreamNetworkServiceTypeCallSignaling_VH.set(NSStreamNetworkServiceTypeCallSignaling_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWillBecomeMultiThreadedNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWillBecomeMultiThreadedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWillBecomeMultiThreadedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWillBecomeMultiThreadedNotification").orElseThrow() }
+private val NSWillBecomeMultiThreadedNotification_VH: VarHandle by lazy { NSWillBecomeMultiThreadedNotification_LAYOUT.varHandle() }
+
+var NSWillBecomeMultiThreadedNotification: MemorySegment
+    get() = NSWillBecomeMultiThreadedNotification_VH.get(NSWillBecomeMultiThreadedNotification_SEGMENT) as MemorySegment
+    set(value) = NSWillBecomeMultiThreadedNotification_VH.set(NSWillBecomeMultiThreadedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSDidBecomeSingleThreadedNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSDidBecomeSingleThreadedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSDidBecomeSingleThreadedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDidBecomeSingleThreadedNotification").orElseThrow() }
+private val NSDidBecomeSingleThreadedNotification_VH: VarHandle by lazy { NSDidBecomeSingleThreadedNotification_LAYOUT.varHandle() }
+
+var NSDidBecomeSingleThreadedNotification: MemorySegment
+    get() = NSDidBecomeSingleThreadedNotification_VH.get(NSDidBecomeSingleThreadedNotification_SEGMENT) as MemorySegment
+    set(value) = NSDidBecomeSingleThreadedNotification_VH.set(NSDidBecomeSingleThreadedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSThreadWillExitNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSThreadWillExitNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSThreadWillExitNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSThreadWillExitNotification").orElseThrow() }
+private val NSThreadWillExitNotification_VH: VarHandle by lazy { NSThreadWillExitNotification_LAYOUT.varHandle() }
+
+var NSThreadWillExitNotification: MemorySegment
+    get() = NSThreadWillExitNotification_VH.get(NSThreadWillExitNotification_SEGMENT) as MemorySegment
+    set(value) = NSThreadWillExitNotification_VH.set(NSThreadWillExitNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSSystemTimeZoneDidChangeNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSSystemTimeZoneDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSSystemTimeZoneDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSystemTimeZoneDidChangeNotification").orElseThrow() }
+private val NSSystemTimeZoneDidChangeNotification_VH: VarHandle by lazy { NSSystemTimeZoneDidChangeNotification_LAYOUT.varHandle() }
+
+var NSSystemTimeZoneDidChangeNotification: MemorySegment
+    get() = NSSystemTimeZoneDidChangeNotification_VH.get(NSSystemTimeZoneDidChangeNotification_SEGMENT) as MemorySegment
+    set(value) = NSSystemTimeZoneDidChangeNotification_VH.set(NSSystemTimeZoneDidChangeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLProtectionSpaceHTTP (Void)*
+ */
+private val NSURLProtectionSpaceHTTP_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLProtectionSpaceHTTP_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLProtectionSpaceHTTP").orElseThrow() }
+private val NSURLProtectionSpaceHTTP_VH: VarHandle by lazy { NSURLProtectionSpaceHTTP_LAYOUT.varHandle() }
+
+var NSURLProtectionSpaceHTTP: MemorySegment
+    get() = NSURLProtectionSpaceHTTP_VH.get(NSURLProtectionSpaceHTTP_SEGMENT) as MemorySegment
+    set(value) = NSURLProtectionSpaceHTTP_VH.set(NSURLProtectionSpaceHTTP_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLProtectionSpaceHTTPS (Void)*
+ */
+private val NSURLProtectionSpaceHTTPS_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLProtectionSpaceHTTPS_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLProtectionSpaceHTTPS").orElseThrow() }
+private val NSURLProtectionSpaceHTTPS_VH: VarHandle by lazy { NSURLProtectionSpaceHTTPS_LAYOUT.varHandle() }
+
+var NSURLProtectionSpaceHTTPS: MemorySegment
+    get() = NSURLProtectionSpaceHTTPS_VH.get(NSURLProtectionSpaceHTTPS_SEGMENT) as MemorySegment
+    set(value) = NSURLProtectionSpaceHTTPS_VH.set(NSURLProtectionSpaceHTTPS_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLProtectionSpaceFTP (Void)*
+ */
+private val NSURLProtectionSpaceFTP_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLProtectionSpaceFTP_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLProtectionSpaceFTP").orElseThrow() }
+private val NSURLProtectionSpaceFTP_VH: VarHandle by lazy { NSURLProtectionSpaceFTP_LAYOUT.varHandle() }
+
+var NSURLProtectionSpaceFTP: MemorySegment
+    get() = NSURLProtectionSpaceFTP_VH.get(NSURLProtectionSpaceFTP_SEGMENT) as MemorySegment
+    set(value) = NSURLProtectionSpaceFTP_VH.set(NSURLProtectionSpaceFTP_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLProtectionSpaceHTTPProxy (Void)*
+ */
+private val NSURLProtectionSpaceHTTPProxy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLProtectionSpaceHTTPProxy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLProtectionSpaceHTTPProxy").orElseThrow() }
+private val NSURLProtectionSpaceHTTPProxy_VH: VarHandle by lazy { NSURLProtectionSpaceHTTPProxy_LAYOUT.varHandle() }
+
+var NSURLProtectionSpaceHTTPProxy: MemorySegment
+    get() = NSURLProtectionSpaceHTTPProxy_VH.get(NSURLProtectionSpaceHTTPProxy_SEGMENT) as MemorySegment
+    set(value) = NSURLProtectionSpaceHTTPProxy_VH.set(NSURLProtectionSpaceHTTPProxy_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLProtectionSpaceHTTPSProxy (Void)*
+ */
+private val NSURLProtectionSpaceHTTPSProxy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLProtectionSpaceHTTPSProxy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLProtectionSpaceHTTPSProxy").orElseThrow() }
+private val NSURLProtectionSpaceHTTPSProxy_VH: VarHandle by lazy { NSURLProtectionSpaceHTTPSProxy_LAYOUT.varHandle() }
+
+var NSURLProtectionSpaceHTTPSProxy: MemorySegment
+    get() = NSURLProtectionSpaceHTTPSProxy_VH.get(NSURLProtectionSpaceHTTPSProxy_SEGMENT) as MemorySegment
+    set(value) = NSURLProtectionSpaceHTTPSProxy_VH.set(NSURLProtectionSpaceHTTPSProxy_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLProtectionSpaceFTPProxy (Void)*
+ */
+private val NSURLProtectionSpaceFTPProxy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLProtectionSpaceFTPProxy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLProtectionSpaceFTPProxy").orElseThrow() }
+private val NSURLProtectionSpaceFTPProxy_VH: VarHandle by lazy { NSURLProtectionSpaceFTPProxy_LAYOUT.varHandle() }
+
+var NSURLProtectionSpaceFTPProxy: MemorySegment
+    get() = NSURLProtectionSpaceFTPProxy_VH.get(NSURLProtectionSpaceFTPProxy_SEGMENT) as MemorySegment
+    set(value) = NSURLProtectionSpaceFTPProxy_VH.set(NSURLProtectionSpaceFTPProxy_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLProtectionSpaceSOCKSProxy (Void)*
+ */
+private val NSURLProtectionSpaceSOCKSProxy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLProtectionSpaceSOCKSProxy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLProtectionSpaceSOCKSProxy").orElseThrow() }
+private val NSURLProtectionSpaceSOCKSProxy_VH: VarHandle by lazy { NSURLProtectionSpaceSOCKSProxy_LAYOUT.varHandle() }
+
+var NSURLProtectionSpaceSOCKSProxy: MemorySegment
+    get() = NSURLProtectionSpaceSOCKSProxy_VH.get(NSURLProtectionSpaceSOCKSProxy_SEGMENT) as MemorySegment
+    set(value) = NSURLProtectionSpaceSOCKSProxy_VH.set(NSURLProtectionSpaceSOCKSProxy_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLAuthenticationMethodDefault (Void)*
+ */
+private val NSURLAuthenticationMethodDefault_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLAuthenticationMethodDefault_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAuthenticationMethodDefault").orElseThrow() }
+private val NSURLAuthenticationMethodDefault_VH: VarHandle by lazy { NSURLAuthenticationMethodDefault_LAYOUT.varHandle() }
+
+var NSURLAuthenticationMethodDefault: MemorySegment
+    get() = NSURLAuthenticationMethodDefault_VH.get(NSURLAuthenticationMethodDefault_SEGMENT) as MemorySegment
+    set(value) = NSURLAuthenticationMethodDefault_VH.set(NSURLAuthenticationMethodDefault_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLAuthenticationMethodHTTPBasic (Void)*
+ */
+private val NSURLAuthenticationMethodHTTPBasic_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLAuthenticationMethodHTTPBasic_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAuthenticationMethodHTTPBasic").orElseThrow() }
+private val NSURLAuthenticationMethodHTTPBasic_VH: VarHandle by lazy { NSURLAuthenticationMethodHTTPBasic_LAYOUT.varHandle() }
+
+var NSURLAuthenticationMethodHTTPBasic: MemorySegment
+    get() = NSURLAuthenticationMethodHTTPBasic_VH.get(NSURLAuthenticationMethodHTTPBasic_SEGMENT) as MemorySegment
+    set(value) = NSURLAuthenticationMethodHTTPBasic_VH.set(NSURLAuthenticationMethodHTTPBasic_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLAuthenticationMethodHTTPDigest (Void)*
+ */
+private val NSURLAuthenticationMethodHTTPDigest_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLAuthenticationMethodHTTPDigest_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAuthenticationMethodHTTPDigest").orElseThrow() }
+private val NSURLAuthenticationMethodHTTPDigest_VH: VarHandle by lazy { NSURLAuthenticationMethodHTTPDigest_LAYOUT.varHandle() }
+
+var NSURLAuthenticationMethodHTTPDigest: MemorySegment
+    get() = NSURLAuthenticationMethodHTTPDigest_VH.get(NSURLAuthenticationMethodHTTPDigest_SEGMENT) as MemorySegment
+    set(value) = NSURLAuthenticationMethodHTTPDigest_VH.set(NSURLAuthenticationMethodHTTPDigest_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLAuthenticationMethodHTMLForm (Void)*
+ */
+private val NSURLAuthenticationMethodHTMLForm_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLAuthenticationMethodHTMLForm_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAuthenticationMethodHTMLForm").orElseThrow() }
+private val NSURLAuthenticationMethodHTMLForm_VH: VarHandle by lazy { NSURLAuthenticationMethodHTMLForm_LAYOUT.varHandle() }
+
+var NSURLAuthenticationMethodHTMLForm: MemorySegment
+    get() = NSURLAuthenticationMethodHTMLForm_VH.get(NSURLAuthenticationMethodHTMLForm_SEGMENT) as MemorySegment
+    set(value) = NSURLAuthenticationMethodHTMLForm_VH.set(NSURLAuthenticationMethodHTMLForm_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLAuthenticationMethodNTLM (Void)*
+ */
+private val NSURLAuthenticationMethodNTLM_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLAuthenticationMethodNTLM_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAuthenticationMethodNTLM").orElseThrow() }
+private val NSURLAuthenticationMethodNTLM_VH: VarHandle by lazy { NSURLAuthenticationMethodNTLM_LAYOUT.varHandle() }
+
+var NSURLAuthenticationMethodNTLM: MemorySegment
+    get() = NSURLAuthenticationMethodNTLM_VH.get(NSURLAuthenticationMethodNTLM_SEGMENT) as MemorySegment
+    set(value) = NSURLAuthenticationMethodNTLM_VH.set(NSURLAuthenticationMethodNTLM_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLAuthenticationMethodNegotiate (Void)*
+ */
+private val NSURLAuthenticationMethodNegotiate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLAuthenticationMethodNegotiate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAuthenticationMethodNegotiate").orElseThrow() }
+private val NSURLAuthenticationMethodNegotiate_VH: VarHandle by lazy { NSURLAuthenticationMethodNegotiate_LAYOUT.varHandle() }
+
+var NSURLAuthenticationMethodNegotiate: MemorySegment
+    get() = NSURLAuthenticationMethodNegotiate_VH.get(NSURLAuthenticationMethodNegotiate_SEGMENT) as MemorySegment
+    set(value) = NSURLAuthenticationMethodNegotiate_VH.set(NSURLAuthenticationMethodNegotiate_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLAuthenticationMethodClientCertificate (Void)*
+ */
+private val NSURLAuthenticationMethodClientCertificate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLAuthenticationMethodClientCertificate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAuthenticationMethodClientCertificate").orElseThrow() }
+private val NSURLAuthenticationMethodClientCertificate_VH: VarHandle by lazy { NSURLAuthenticationMethodClientCertificate_LAYOUT.varHandle() }
+
+var NSURLAuthenticationMethodClientCertificate: MemorySegment
+    get() = NSURLAuthenticationMethodClientCertificate_VH.get(NSURLAuthenticationMethodClientCertificate_SEGMENT) as MemorySegment
+    set(value) = NSURLAuthenticationMethodClientCertificate_VH.set(NSURLAuthenticationMethodClientCertificate_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLAuthenticationMethodServerTrust (Void)*
+ */
+private val NSURLAuthenticationMethodServerTrust_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLAuthenticationMethodServerTrust_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAuthenticationMethodServerTrust").orElseThrow() }
+private val NSURLAuthenticationMethodServerTrust_VH: VarHandle by lazy { NSURLAuthenticationMethodServerTrust_LAYOUT.varHandle() }
+
+var NSURLAuthenticationMethodServerTrust: MemorySegment
+    get() = NSURLAuthenticationMethodServerTrust_VH.get(NSURLAuthenticationMethodServerTrust_SEGMENT) as MemorySegment
+    set(value) = NSURLAuthenticationMethodServerTrust_VH.set(NSURLAuthenticationMethodServerTrust_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLCredentialStorageChangedNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSURLCredentialStorageChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLCredentialStorageChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLCredentialStorageChangedNotification").orElseThrow() }
+private val NSURLCredentialStorageChangedNotification_VH: VarHandle by lazy { NSURLCredentialStorageChangedNotification_LAYOUT.varHandle() }
+
+var NSURLCredentialStorageChangedNotification: MemorySegment
+    get() = NSURLCredentialStorageChangedNotification_VH.get(NSURLCredentialStorageChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSURLCredentialStorageChangedNotification_VH.set(NSURLCredentialStorageChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLCredentialStorageRemoveSynchronizableCredentials (Void)*
+ */
+private val NSURLCredentialStorageRemoveSynchronizableCredentials_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLCredentialStorageRemoveSynchronizableCredentials_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLCredentialStorageRemoveSynchronizableCredentials").orElseThrow() }
+private val NSURLCredentialStorageRemoveSynchronizableCredentials_VH: VarHandle by lazy { NSURLCredentialStorageRemoveSynchronizableCredentials_LAYOUT.varHandle() }
+
+var NSURLCredentialStorageRemoveSynchronizableCredentials: MemorySegment
+    get() = NSURLCredentialStorageRemoveSynchronizableCredentials_VH.get(NSURLCredentialStorageRemoveSynchronizableCredentials_SEGMENT) as MemorySegment
+    set(value) = NSURLCredentialStorageRemoveSynchronizableCredentials_VH.set(NSURLCredentialStorageRemoveSynchronizableCredentials_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLErrorDomain typedef const NSErrorDomain = (Void)*
+ */
+private val NSURLErrorDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLErrorDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLErrorDomain").orElseThrow() }
+private val NSURLErrorDomain_VH: VarHandle by lazy { NSURLErrorDomain_LAYOUT.varHandle() }
+
+var NSURLErrorDomain: MemorySegment
+    get() = NSURLErrorDomain_VH.get(NSURLErrorDomain_SEGMENT) as MemorySegment
+    set(value) = NSURLErrorDomain_VH.set(NSURLErrorDomain_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLErrorFailingURLErrorKey (Void)*
+ */
+private val NSURLErrorFailingURLErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLErrorFailingURLErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLErrorFailingURLErrorKey").orElseThrow() }
+private val NSURLErrorFailingURLErrorKey_VH: VarHandle by lazy { NSURLErrorFailingURLErrorKey_LAYOUT.varHandle() }
+
+var NSURLErrorFailingURLErrorKey: MemorySegment
+    get() = NSURLErrorFailingURLErrorKey_VH.get(NSURLErrorFailingURLErrorKey_SEGMENT) as MemorySegment
+    set(value) = NSURLErrorFailingURLErrorKey_VH.set(NSURLErrorFailingURLErrorKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLErrorFailingURLStringErrorKey (Void)*
+ */
+private val NSURLErrorFailingURLStringErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLErrorFailingURLStringErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLErrorFailingURLStringErrorKey").orElseThrow() }
+private val NSURLErrorFailingURLStringErrorKey_VH: VarHandle by lazy { NSURLErrorFailingURLStringErrorKey_LAYOUT.varHandle() }
+
+var NSURLErrorFailingURLStringErrorKey: MemorySegment
+    get() = NSURLErrorFailingURLStringErrorKey_VH.get(NSURLErrorFailingURLStringErrorKey_SEGMENT) as MemorySegment
+    set(value) = NSURLErrorFailingURLStringErrorKey_VH.set(NSURLErrorFailingURLStringErrorKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSErrorFailingURLStringKey (Void)*
+ */
+private val NSErrorFailingURLStringKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSErrorFailingURLStringKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSErrorFailingURLStringKey").orElseThrow() }
+private val NSErrorFailingURLStringKey_VH: VarHandle by lazy { NSErrorFailingURLStringKey_LAYOUT.varHandle() }
+
+var NSErrorFailingURLStringKey: MemorySegment
+    get() = NSErrorFailingURLStringKey_VH.get(NSErrorFailingURLStringKey_SEGMENT) as MemorySegment
+    set(value) = NSErrorFailingURLStringKey_VH.set(NSErrorFailingURLStringKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLErrorFailingURLPeerTrustErrorKey (Void)*
+ */
+private val NSURLErrorFailingURLPeerTrustErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLErrorFailingURLPeerTrustErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLErrorFailingURLPeerTrustErrorKey").orElseThrow() }
+private val NSURLErrorFailingURLPeerTrustErrorKey_VH: VarHandle by lazy { NSURLErrorFailingURLPeerTrustErrorKey_LAYOUT.varHandle() }
+
+var NSURLErrorFailingURLPeerTrustErrorKey: MemorySegment
+    get() = NSURLErrorFailingURLPeerTrustErrorKey_VH.get(NSURLErrorFailingURLPeerTrustErrorKey_SEGMENT) as MemorySegment
+    set(value) = NSURLErrorFailingURLPeerTrustErrorKey_VH.set(NSURLErrorFailingURLPeerTrustErrorKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLErrorBackgroundTaskCancelledReasonKey (Void)*
+ */
+private val NSURLErrorBackgroundTaskCancelledReasonKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLErrorBackgroundTaskCancelledReasonKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLErrorBackgroundTaskCancelledReasonKey").orElseThrow() }
+private val NSURLErrorBackgroundTaskCancelledReasonKey_VH: VarHandle by lazy { NSURLErrorBackgroundTaskCancelledReasonKey_LAYOUT.varHandle() }
+
+var NSURLErrorBackgroundTaskCancelledReasonKey: MemorySegment
+    get() = NSURLErrorBackgroundTaskCancelledReasonKey_VH.get(NSURLErrorBackgroundTaskCancelledReasonKey_SEGMENT) as MemorySegment
+    set(value) = NSURLErrorBackgroundTaskCancelledReasonKey_VH.set(NSURLErrorBackgroundTaskCancelledReasonKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSURLErrorNetworkUnavailableReasonKey typedef const NSErrorUserInfoKey = (Void)*
+ */
+private val NSURLErrorNetworkUnavailableReasonKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSURLErrorNetworkUnavailableReasonKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLErrorNetworkUnavailableReasonKey").orElseThrow() }
+private val NSURLErrorNetworkUnavailableReasonKey_VH: VarHandle by lazy { NSURLErrorNetworkUnavailableReasonKey_LAYOUT.varHandle() }
+
+var NSURLErrorNetworkUnavailableReasonKey: MemorySegment
+    get() = NSURLErrorNetworkUnavailableReasonKey_VH.get(NSURLErrorNetworkUnavailableReasonKey_SEGMENT) as MemorySegment
+    set(value) = NSURLErrorNetworkUnavailableReasonKey_VH.set(NSURLErrorNetworkUnavailableReasonKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSGlobalDomain (Void)*
+ */
+private val NSGlobalDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSGlobalDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGlobalDomain").orElseThrow() }
+private val NSGlobalDomain_VH: VarHandle by lazy { NSGlobalDomain_LAYOUT.varHandle() }
+
+var NSGlobalDomain: MemorySegment
+    get() = NSGlobalDomain_VH.get(NSGlobalDomain_SEGMENT) as MemorySegment
+    set(value) = NSGlobalDomain_VH.set(NSGlobalDomain_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSArgumentDomain (Void)*
+ */
+private val NSArgumentDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSArgumentDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSArgumentDomain").orElseThrow() }
+private val NSArgumentDomain_VH: VarHandle by lazy { NSArgumentDomain_LAYOUT.varHandle() }
+
+var NSArgumentDomain: MemorySegment
+    get() = NSArgumentDomain_VH.get(NSArgumentDomain_SEGMENT) as MemorySegment
+    set(value) = NSArgumentDomain_VH.set(NSArgumentDomain_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSRegistrationDomain (Void)*
+ */
+private val NSRegistrationDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSRegistrationDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRegistrationDomain").orElseThrow() }
+private val NSRegistrationDomain_VH: VarHandle by lazy { NSRegistrationDomain_LAYOUT.varHandle() }
+
+var NSRegistrationDomain: MemorySegment
+    get() = NSRegistrationDomain_VH.get(NSRegistrationDomain_SEGMENT) as MemorySegment
+    set(value) = NSRegistrationDomain_VH.set(NSRegistrationDomain_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSUserDefaultsSizeLimitExceededNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSUserDefaultsSizeLimitExceededNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSUserDefaultsSizeLimitExceededNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUserDefaultsSizeLimitExceededNotification").orElseThrow() }
+private val NSUserDefaultsSizeLimitExceededNotification_VH: VarHandle by lazy { NSUserDefaultsSizeLimitExceededNotification_LAYOUT.varHandle() }
+
+var NSUserDefaultsSizeLimitExceededNotification: MemorySegment
+    get() = NSUserDefaultsSizeLimitExceededNotification_VH.get(NSUserDefaultsSizeLimitExceededNotification_SEGMENT) as MemorySegment
+    set(value) = NSUserDefaultsSizeLimitExceededNotification_VH.set(NSUserDefaultsSizeLimitExceededNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSUbiquitousUserDefaultsNoCloudAccountNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSUbiquitousUserDefaultsNoCloudAccountNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSUbiquitousUserDefaultsNoCloudAccountNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquitousUserDefaultsNoCloudAccountNotification").orElseThrow() }
+private val NSUbiquitousUserDefaultsNoCloudAccountNotification_VH: VarHandle by lazy { NSUbiquitousUserDefaultsNoCloudAccountNotification_LAYOUT.varHandle() }
+
+var NSUbiquitousUserDefaultsNoCloudAccountNotification: MemorySegment
+    get() = NSUbiquitousUserDefaultsNoCloudAccountNotification_VH.get(NSUbiquitousUserDefaultsNoCloudAccountNotification_SEGMENT) as MemorySegment
+    set(value) = NSUbiquitousUserDefaultsNoCloudAccountNotification_VH.set(NSUbiquitousUserDefaultsNoCloudAccountNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSUbiquitousUserDefaultsDidChangeAccountsNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSUbiquitousUserDefaultsDidChangeAccountsNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSUbiquitousUserDefaultsDidChangeAccountsNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquitousUserDefaultsDidChangeAccountsNotification").orElseThrow() }
+private val NSUbiquitousUserDefaultsDidChangeAccountsNotification_VH: VarHandle by lazy { NSUbiquitousUserDefaultsDidChangeAccountsNotification_LAYOUT.varHandle() }
+
+var NSUbiquitousUserDefaultsDidChangeAccountsNotification: MemorySegment
+    get() = NSUbiquitousUserDefaultsDidChangeAccountsNotification_VH.get(NSUbiquitousUserDefaultsDidChangeAccountsNotification_SEGMENT) as MemorySegment
+    set(value) = NSUbiquitousUserDefaultsDidChangeAccountsNotification_VH.set(NSUbiquitousUserDefaultsDidChangeAccountsNotification_SEGMENT, value)
+
+/**
  * {@snippet lang=c : NSUbiquitousUserDefaultsCompletedInitialSyncNotification typedef const NSNotificationName = (Void)*
  */
 private val NSUbiquitousUserDefaultsCompletedInitialSyncNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -2434,866 +3273,3 @@ private val NSMetadataItemThemeKey_VH: VarHandle by lazy { NSMetadataItemThemeKe
 var NSMetadataItemThemeKey: MemorySegment
     get() = NSMetadataItemThemeKey_VH.get(NSMetadataItemThemeKey_SEGMENT) as MemorySegment
     set(value) = NSMetadataItemThemeKey_VH.set(NSMetadataItemThemeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemDescriptionKey (Void)*
- */
-private val NSMetadataItemDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemDescriptionKey").orElseThrow() }
-private val NSMetadataItemDescriptionKey_VH: VarHandle by lazy { NSMetadataItemDescriptionKey_LAYOUT.varHandle() }
-
-var NSMetadataItemDescriptionKey: MemorySegment
-    get() = NSMetadataItemDescriptionKey_VH.get(NSMetadataItemDescriptionKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemDescriptionKey_VH.set(NSMetadataItemDescriptionKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemIdentifierKey (Void)*
- */
-private val NSMetadataItemIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemIdentifierKey").orElseThrow() }
-private val NSMetadataItemIdentifierKey_VH: VarHandle by lazy { NSMetadataItemIdentifierKey_LAYOUT.varHandle() }
-
-var NSMetadataItemIdentifierKey: MemorySegment
-    get() = NSMetadataItemIdentifierKey_VH.get(NSMetadataItemIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemIdentifierKey_VH.set(NSMetadataItemIdentifierKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemAudiencesKey (Void)*
- */
-private val NSMetadataItemAudiencesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemAudiencesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAudiencesKey").orElseThrow() }
-private val NSMetadataItemAudiencesKey_VH: VarHandle by lazy { NSMetadataItemAudiencesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemAudiencesKey: MemorySegment
-    get() = NSMetadataItemAudiencesKey_VH.get(NSMetadataItemAudiencesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemAudiencesKey_VH.set(NSMetadataItemAudiencesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemNumberOfPagesKey (Void)*
- */
-private val NSMetadataItemNumberOfPagesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemNumberOfPagesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemNumberOfPagesKey").orElseThrow() }
-private val NSMetadataItemNumberOfPagesKey_VH: VarHandle by lazy { NSMetadataItemNumberOfPagesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemNumberOfPagesKey: MemorySegment
-    get() = NSMetadataItemNumberOfPagesKey_VH.get(NSMetadataItemNumberOfPagesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemNumberOfPagesKey_VH.set(NSMetadataItemNumberOfPagesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemPageWidthKey (Void)*
- */
-private val NSMetadataItemPageWidthKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemPageWidthKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemPageWidthKey").orElseThrow() }
-private val NSMetadataItemPageWidthKey_VH: VarHandle by lazy { NSMetadataItemPageWidthKey_LAYOUT.varHandle() }
-
-var NSMetadataItemPageWidthKey: MemorySegment
-    get() = NSMetadataItemPageWidthKey_VH.get(NSMetadataItemPageWidthKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemPageWidthKey_VH.set(NSMetadataItemPageWidthKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemPageHeightKey (Void)*
- */
-private val NSMetadataItemPageHeightKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemPageHeightKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemPageHeightKey").orElseThrow() }
-private val NSMetadataItemPageHeightKey_VH: VarHandle by lazy { NSMetadataItemPageHeightKey_LAYOUT.varHandle() }
-
-var NSMetadataItemPageHeightKey: MemorySegment
-    get() = NSMetadataItemPageHeightKey_VH.get(NSMetadataItemPageHeightKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemPageHeightKey_VH.set(NSMetadataItemPageHeightKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemSecurityMethodKey (Void)*
- */
-private val NSMetadataItemSecurityMethodKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemSecurityMethodKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemSecurityMethodKey").orElseThrow() }
-private val NSMetadataItemSecurityMethodKey_VH: VarHandle by lazy { NSMetadataItemSecurityMethodKey_LAYOUT.varHandle() }
-
-var NSMetadataItemSecurityMethodKey: MemorySegment
-    get() = NSMetadataItemSecurityMethodKey_VH.get(NSMetadataItemSecurityMethodKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemSecurityMethodKey_VH.set(NSMetadataItemSecurityMethodKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemCreatorKey (Void)*
- */
-private val NSMetadataItemCreatorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemCreatorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemCreatorKey").orElseThrow() }
-private val NSMetadataItemCreatorKey_VH: VarHandle by lazy { NSMetadataItemCreatorKey_LAYOUT.varHandle() }
-
-var NSMetadataItemCreatorKey: MemorySegment
-    get() = NSMetadataItemCreatorKey_VH.get(NSMetadataItemCreatorKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemCreatorKey_VH.set(NSMetadataItemCreatorKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemEncodingApplicationsKey (Void)*
- */
-private val NSMetadataItemEncodingApplicationsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemEncodingApplicationsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemEncodingApplicationsKey").orElseThrow() }
-private val NSMetadataItemEncodingApplicationsKey_VH: VarHandle by lazy { NSMetadataItemEncodingApplicationsKey_LAYOUT.varHandle() }
-
-var NSMetadataItemEncodingApplicationsKey: MemorySegment
-    get() = NSMetadataItemEncodingApplicationsKey_VH.get(NSMetadataItemEncodingApplicationsKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemEncodingApplicationsKey_VH.set(NSMetadataItemEncodingApplicationsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemDueDateKey (Void)*
- */
-private val NSMetadataItemDueDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemDueDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemDueDateKey").orElseThrow() }
-private val NSMetadataItemDueDateKey_VH: VarHandle by lazy { NSMetadataItemDueDateKey_LAYOUT.varHandle() }
-
-var NSMetadataItemDueDateKey: MemorySegment
-    get() = NSMetadataItemDueDateKey_VH.get(NSMetadataItemDueDateKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemDueDateKey_VH.set(NSMetadataItemDueDateKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemStarRatingKey (Void)*
- */
-private val NSMetadataItemStarRatingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemStarRatingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemStarRatingKey").orElseThrow() }
-private val NSMetadataItemStarRatingKey_VH: VarHandle by lazy { NSMetadataItemStarRatingKey_LAYOUT.varHandle() }
-
-var NSMetadataItemStarRatingKey: MemorySegment
-    get() = NSMetadataItemStarRatingKey_VH.get(NSMetadataItemStarRatingKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemStarRatingKey_VH.set(NSMetadataItemStarRatingKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemPhoneNumbersKey (Void)*
- */
-private val NSMetadataItemPhoneNumbersKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemPhoneNumbersKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemPhoneNumbersKey").orElseThrow() }
-private val NSMetadataItemPhoneNumbersKey_VH: VarHandle by lazy { NSMetadataItemPhoneNumbersKey_LAYOUT.varHandle() }
-
-var NSMetadataItemPhoneNumbersKey: MemorySegment
-    get() = NSMetadataItemPhoneNumbersKey_VH.get(NSMetadataItemPhoneNumbersKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemPhoneNumbersKey_VH.set(NSMetadataItemPhoneNumbersKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemEmailAddressesKey (Void)*
- */
-private val NSMetadataItemEmailAddressesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemEmailAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemEmailAddressesKey").orElseThrow() }
-private val NSMetadataItemEmailAddressesKey_VH: VarHandle by lazy { NSMetadataItemEmailAddressesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemEmailAddressesKey: MemorySegment
-    get() = NSMetadataItemEmailAddressesKey_VH.get(NSMetadataItemEmailAddressesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemEmailAddressesKey_VH.set(NSMetadataItemEmailAddressesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemInstantMessageAddressesKey (Void)*
- */
-private val NSMetadataItemInstantMessageAddressesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemInstantMessageAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemInstantMessageAddressesKey").orElseThrow() }
-private val NSMetadataItemInstantMessageAddressesKey_VH: VarHandle by lazy { NSMetadataItemInstantMessageAddressesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemInstantMessageAddressesKey: MemorySegment
-    get() = NSMetadataItemInstantMessageAddressesKey_VH.get(NSMetadataItemInstantMessageAddressesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemInstantMessageAddressesKey_VH.set(NSMetadataItemInstantMessageAddressesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemKindKey (Void)*
- */
-private val NSMetadataItemKindKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemKindKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemKindKey").orElseThrow() }
-private val NSMetadataItemKindKey_VH: VarHandle by lazy { NSMetadataItemKindKey_LAYOUT.varHandle() }
-
-var NSMetadataItemKindKey: MemorySegment
-    get() = NSMetadataItemKindKey_VH.get(NSMetadataItemKindKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemKindKey_VH.set(NSMetadataItemKindKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemRecipientsKey (Void)*
- */
-private val NSMetadataItemRecipientsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemRecipientsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemRecipientsKey").orElseThrow() }
-private val NSMetadataItemRecipientsKey_VH: VarHandle by lazy { NSMetadataItemRecipientsKey_LAYOUT.varHandle() }
-
-var NSMetadataItemRecipientsKey: MemorySegment
-    get() = NSMetadataItemRecipientsKey_VH.get(NSMetadataItemRecipientsKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemRecipientsKey_VH.set(NSMetadataItemRecipientsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemFinderCommentKey (Void)*
- */
-private val NSMetadataItemFinderCommentKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemFinderCommentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemFinderCommentKey").orElseThrow() }
-private val NSMetadataItemFinderCommentKey_VH: VarHandle by lazy { NSMetadataItemFinderCommentKey_LAYOUT.varHandle() }
-
-var NSMetadataItemFinderCommentKey: MemorySegment
-    get() = NSMetadataItemFinderCommentKey_VH.get(NSMetadataItemFinderCommentKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemFinderCommentKey_VH.set(NSMetadataItemFinderCommentKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemFontsKey (Void)*
- */
-private val NSMetadataItemFontsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemFontsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemFontsKey").orElseThrow() }
-private val NSMetadataItemFontsKey_VH: VarHandle by lazy { NSMetadataItemFontsKey_LAYOUT.varHandle() }
-
-var NSMetadataItemFontsKey: MemorySegment
-    get() = NSMetadataItemFontsKey_VH.get(NSMetadataItemFontsKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemFontsKey_VH.set(NSMetadataItemFontsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemAppleLoopsRootKeyKey (Void)*
- */
-private val NSMetadataItemAppleLoopsRootKeyKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemAppleLoopsRootKeyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAppleLoopsRootKeyKey").orElseThrow() }
-private val NSMetadataItemAppleLoopsRootKeyKey_VH: VarHandle by lazy { NSMetadataItemAppleLoopsRootKeyKey_LAYOUT.varHandle() }
-
-var NSMetadataItemAppleLoopsRootKeyKey: MemorySegment
-    get() = NSMetadataItemAppleLoopsRootKeyKey_VH.get(NSMetadataItemAppleLoopsRootKeyKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemAppleLoopsRootKeyKey_VH.set(NSMetadataItemAppleLoopsRootKeyKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemAppleLoopsKeyFilterTypeKey (Void)*
- */
-private val NSMetadataItemAppleLoopsKeyFilterTypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemAppleLoopsKeyFilterTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAppleLoopsKeyFilterTypeKey").orElseThrow() }
-private val NSMetadataItemAppleLoopsKeyFilterTypeKey_VH: VarHandle by lazy { NSMetadataItemAppleLoopsKeyFilterTypeKey_LAYOUT.varHandle() }
-
-var NSMetadataItemAppleLoopsKeyFilterTypeKey: MemorySegment
-    get() = NSMetadataItemAppleLoopsKeyFilterTypeKey_VH.get(NSMetadataItemAppleLoopsKeyFilterTypeKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemAppleLoopsKeyFilterTypeKey_VH.set(NSMetadataItemAppleLoopsKeyFilterTypeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemAppleLoopsLoopModeKey (Void)*
- */
-private val NSMetadataItemAppleLoopsLoopModeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemAppleLoopsLoopModeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAppleLoopsLoopModeKey").orElseThrow() }
-private val NSMetadataItemAppleLoopsLoopModeKey_VH: VarHandle by lazy { NSMetadataItemAppleLoopsLoopModeKey_LAYOUT.varHandle() }
-
-var NSMetadataItemAppleLoopsLoopModeKey: MemorySegment
-    get() = NSMetadataItemAppleLoopsLoopModeKey_VH.get(NSMetadataItemAppleLoopsLoopModeKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemAppleLoopsLoopModeKey_VH.set(NSMetadataItemAppleLoopsLoopModeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemAppleLoopDescriptorsKey (Void)*
- */
-private val NSMetadataItemAppleLoopDescriptorsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemAppleLoopDescriptorsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAppleLoopDescriptorsKey").orElseThrow() }
-private val NSMetadataItemAppleLoopDescriptorsKey_VH: VarHandle by lazy { NSMetadataItemAppleLoopDescriptorsKey_LAYOUT.varHandle() }
-
-var NSMetadataItemAppleLoopDescriptorsKey: MemorySegment
-    get() = NSMetadataItemAppleLoopDescriptorsKey_VH.get(NSMetadataItemAppleLoopDescriptorsKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemAppleLoopDescriptorsKey_VH.set(NSMetadataItemAppleLoopDescriptorsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemMusicalInstrumentCategoryKey (Void)*
- */
-private val NSMetadataItemMusicalInstrumentCategoryKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemMusicalInstrumentCategoryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemMusicalInstrumentCategoryKey").orElseThrow() }
-private val NSMetadataItemMusicalInstrumentCategoryKey_VH: VarHandle by lazy { NSMetadataItemMusicalInstrumentCategoryKey_LAYOUT.varHandle() }
-
-var NSMetadataItemMusicalInstrumentCategoryKey: MemorySegment
-    get() = NSMetadataItemMusicalInstrumentCategoryKey_VH.get(NSMetadataItemMusicalInstrumentCategoryKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemMusicalInstrumentCategoryKey_VH.set(NSMetadataItemMusicalInstrumentCategoryKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemMusicalInstrumentNameKey (Void)*
- */
-private val NSMetadataItemMusicalInstrumentNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemMusicalInstrumentNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemMusicalInstrumentNameKey").orElseThrow() }
-private val NSMetadataItemMusicalInstrumentNameKey_VH: VarHandle by lazy { NSMetadataItemMusicalInstrumentNameKey_LAYOUT.varHandle() }
-
-var NSMetadataItemMusicalInstrumentNameKey: MemorySegment
-    get() = NSMetadataItemMusicalInstrumentNameKey_VH.get(NSMetadataItemMusicalInstrumentNameKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemMusicalInstrumentNameKey_VH.set(NSMetadataItemMusicalInstrumentNameKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemCFBundleIdentifierKey (Void)*
- */
-private val NSMetadataItemCFBundleIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemCFBundleIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemCFBundleIdentifierKey").orElseThrow() }
-private val NSMetadataItemCFBundleIdentifierKey_VH: VarHandle by lazy { NSMetadataItemCFBundleIdentifierKey_LAYOUT.varHandle() }
-
-var NSMetadataItemCFBundleIdentifierKey: MemorySegment
-    get() = NSMetadataItemCFBundleIdentifierKey_VH.get(NSMetadataItemCFBundleIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemCFBundleIdentifierKey_VH.set(NSMetadataItemCFBundleIdentifierKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemInformationKey (Void)*
- */
-private val NSMetadataItemInformationKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemInformationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemInformationKey").orElseThrow() }
-private val NSMetadataItemInformationKey_VH: VarHandle by lazy { NSMetadataItemInformationKey_LAYOUT.varHandle() }
-
-var NSMetadataItemInformationKey: MemorySegment
-    get() = NSMetadataItemInformationKey_VH.get(NSMetadataItemInformationKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemInformationKey_VH.set(NSMetadataItemInformationKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemDirectorKey (Void)*
- */
-private val NSMetadataItemDirectorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemDirectorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemDirectorKey").orElseThrow() }
-private val NSMetadataItemDirectorKey_VH: VarHandle by lazy { NSMetadataItemDirectorKey_LAYOUT.varHandle() }
-
-var NSMetadataItemDirectorKey: MemorySegment
-    get() = NSMetadataItemDirectorKey_VH.get(NSMetadataItemDirectorKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemDirectorKey_VH.set(NSMetadataItemDirectorKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemProducerKey (Void)*
- */
-private val NSMetadataItemProducerKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemProducerKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemProducerKey").orElseThrow() }
-private val NSMetadataItemProducerKey_VH: VarHandle by lazy { NSMetadataItemProducerKey_LAYOUT.varHandle() }
-
-var NSMetadataItemProducerKey: MemorySegment
-    get() = NSMetadataItemProducerKey_VH.get(NSMetadataItemProducerKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemProducerKey_VH.set(NSMetadataItemProducerKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemGenreKey (Void)*
- */
-private val NSMetadataItemGenreKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemGenreKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemGenreKey").orElseThrow() }
-private val NSMetadataItemGenreKey_VH: VarHandle by lazy { NSMetadataItemGenreKey_LAYOUT.varHandle() }
-
-var NSMetadataItemGenreKey: MemorySegment
-    get() = NSMetadataItemGenreKey_VH.get(NSMetadataItemGenreKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemGenreKey_VH.set(NSMetadataItemGenreKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemPerformersKey (Void)*
- */
-private val NSMetadataItemPerformersKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemPerformersKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemPerformersKey").orElseThrow() }
-private val NSMetadataItemPerformersKey_VH: VarHandle by lazy { NSMetadataItemPerformersKey_LAYOUT.varHandle() }
-
-var NSMetadataItemPerformersKey: MemorySegment
-    get() = NSMetadataItemPerformersKey_VH.get(NSMetadataItemPerformersKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemPerformersKey_VH.set(NSMetadataItemPerformersKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemOriginalFormatKey (Void)*
- */
-private val NSMetadataItemOriginalFormatKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemOriginalFormatKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemOriginalFormatKey").orElseThrow() }
-private val NSMetadataItemOriginalFormatKey_VH: VarHandle by lazy { NSMetadataItemOriginalFormatKey_LAYOUT.varHandle() }
-
-var NSMetadataItemOriginalFormatKey: MemorySegment
-    get() = NSMetadataItemOriginalFormatKey_VH.get(NSMetadataItemOriginalFormatKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemOriginalFormatKey_VH.set(NSMetadataItemOriginalFormatKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemOriginalSourceKey (Void)*
- */
-private val NSMetadataItemOriginalSourceKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemOriginalSourceKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemOriginalSourceKey").orElseThrow() }
-private val NSMetadataItemOriginalSourceKey_VH: VarHandle by lazy { NSMetadataItemOriginalSourceKey_LAYOUT.varHandle() }
-
-var NSMetadataItemOriginalSourceKey: MemorySegment
-    get() = NSMetadataItemOriginalSourceKey_VH.get(NSMetadataItemOriginalSourceKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemOriginalSourceKey_VH.set(NSMetadataItemOriginalSourceKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemAuthorEmailAddressesKey (Void)*
- */
-private val NSMetadataItemAuthorEmailAddressesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemAuthorEmailAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAuthorEmailAddressesKey").orElseThrow() }
-private val NSMetadataItemAuthorEmailAddressesKey_VH: VarHandle by lazy { NSMetadataItemAuthorEmailAddressesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemAuthorEmailAddressesKey: MemorySegment
-    get() = NSMetadataItemAuthorEmailAddressesKey_VH.get(NSMetadataItemAuthorEmailAddressesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemAuthorEmailAddressesKey_VH.set(NSMetadataItemAuthorEmailAddressesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemRecipientEmailAddressesKey (Void)*
- */
-private val NSMetadataItemRecipientEmailAddressesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemRecipientEmailAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemRecipientEmailAddressesKey").orElseThrow() }
-private val NSMetadataItemRecipientEmailAddressesKey_VH: VarHandle by lazy { NSMetadataItemRecipientEmailAddressesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemRecipientEmailAddressesKey: MemorySegment
-    get() = NSMetadataItemRecipientEmailAddressesKey_VH.get(NSMetadataItemRecipientEmailAddressesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemRecipientEmailAddressesKey_VH.set(NSMetadataItemRecipientEmailAddressesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemAuthorAddressesKey (Void)*
- */
-private val NSMetadataItemAuthorAddressesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemAuthorAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAuthorAddressesKey").orElseThrow() }
-private val NSMetadataItemAuthorAddressesKey_VH: VarHandle by lazy { NSMetadataItemAuthorAddressesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemAuthorAddressesKey: MemorySegment
-    get() = NSMetadataItemAuthorAddressesKey_VH.get(NSMetadataItemAuthorAddressesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemAuthorAddressesKey_VH.set(NSMetadataItemAuthorAddressesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemRecipientAddressesKey (Void)*
- */
-private val NSMetadataItemRecipientAddressesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemRecipientAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemRecipientAddressesKey").orElseThrow() }
-private val NSMetadataItemRecipientAddressesKey_VH: VarHandle by lazy { NSMetadataItemRecipientAddressesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemRecipientAddressesKey: MemorySegment
-    get() = NSMetadataItemRecipientAddressesKey_VH.get(NSMetadataItemRecipientAddressesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemRecipientAddressesKey_VH.set(NSMetadataItemRecipientAddressesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemIsLikelyJunkKey (Void)*
- */
-private val NSMetadataItemIsLikelyJunkKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemIsLikelyJunkKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemIsLikelyJunkKey").orElseThrow() }
-private val NSMetadataItemIsLikelyJunkKey_VH: VarHandle by lazy { NSMetadataItemIsLikelyJunkKey_LAYOUT.varHandle() }
-
-var NSMetadataItemIsLikelyJunkKey: MemorySegment
-    get() = NSMetadataItemIsLikelyJunkKey_VH.get(NSMetadataItemIsLikelyJunkKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemIsLikelyJunkKey_VH.set(NSMetadataItemIsLikelyJunkKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemExecutableArchitecturesKey (Void)*
- */
-private val NSMetadataItemExecutableArchitecturesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemExecutableArchitecturesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemExecutableArchitecturesKey").orElseThrow() }
-private val NSMetadataItemExecutableArchitecturesKey_VH: VarHandle by lazy { NSMetadataItemExecutableArchitecturesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemExecutableArchitecturesKey: MemorySegment
-    get() = NSMetadataItemExecutableArchitecturesKey_VH.get(NSMetadataItemExecutableArchitecturesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemExecutableArchitecturesKey_VH.set(NSMetadataItemExecutableArchitecturesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemExecutablePlatformKey (Void)*
- */
-private val NSMetadataItemExecutablePlatformKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemExecutablePlatformKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemExecutablePlatformKey").orElseThrow() }
-private val NSMetadataItemExecutablePlatformKey_VH: VarHandle by lazy { NSMetadataItemExecutablePlatformKey_LAYOUT.varHandle() }
-
-var NSMetadataItemExecutablePlatformKey: MemorySegment
-    get() = NSMetadataItemExecutablePlatformKey_VH.get(NSMetadataItemExecutablePlatformKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemExecutablePlatformKey_VH.set(NSMetadataItemExecutablePlatformKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemApplicationCategoriesKey (Void)*
- */
-private val NSMetadataItemApplicationCategoriesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemApplicationCategoriesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemApplicationCategoriesKey").orElseThrow() }
-private val NSMetadataItemApplicationCategoriesKey_VH: VarHandle by lazy { NSMetadataItemApplicationCategoriesKey_LAYOUT.varHandle() }
-
-var NSMetadataItemApplicationCategoriesKey: MemorySegment
-    get() = NSMetadataItemApplicationCategoriesKey_VH.get(NSMetadataItemApplicationCategoriesKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemApplicationCategoriesKey_VH.set(NSMetadataItemApplicationCategoriesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemIsApplicationManagedKey (Void)*
- */
-private val NSMetadataItemIsApplicationManagedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemIsApplicationManagedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemIsApplicationManagedKey").orElseThrow() }
-private val NSMetadataItemIsApplicationManagedKey_VH: VarHandle by lazy { NSMetadataItemIsApplicationManagedKey_LAYOUT.varHandle() }
-
-var NSMetadataItemIsApplicationManagedKey: MemorySegment
-    get() = NSMetadataItemIsApplicationManagedKey_VH.get(NSMetadataItemIsApplicationManagedKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataItemIsApplicationManagedKey_VH.set(NSMetadataItemIsApplicationManagedKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryDidStartGatheringNotification typedef const NSNotificationName = (Void)*
- */
-private val NSMetadataQueryDidStartGatheringNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryDidStartGatheringNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryDidStartGatheringNotification").orElseThrow() }
-private val NSMetadataQueryDidStartGatheringNotification_VH: VarHandle by lazy { NSMetadataQueryDidStartGatheringNotification_LAYOUT.varHandle() }
-
-var NSMetadataQueryDidStartGatheringNotification: MemorySegment
-    get() = NSMetadataQueryDidStartGatheringNotification_VH.get(NSMetadataQueryDidStartGatheringNotification_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryDidStartGatheringNotification_VH.set(NSMetadataQueryDidStartGatheringNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryGatheringProgressNotification typedef const NSNotificationName = (Void)*
- */
-private val NSMetadataQueryGatheringProgressNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryGatheringProgressNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryGatheringProgressNotification").orElseThrow() }
-private val NSMetadataQueryGatheringProgressNotification_VH: VarHandle by lazy { NSMetadataQueryGatheringProgressNotification_LAYOUT.varHandle() }
-
-var NSMetadataQueryGatheringProgressNotification: MemorySegment
-    get() = NSMetadataQueryGatheringProgressNotification_VH.get(NSMetadataQueryGatheringProgressNotification_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryGatheringProgressNotification_VH.set(NSMetadataQueryGatheringProgressNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryDidFinishGatheringNotification typedef const NSNotificationName = (Void)*
- */
-private val NSMetadataQueryDidFinishGatheringNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryDidFinishGatheringNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryDidFinishGatheringNotification").orElseThrow() }
-private val NSMetadataQueryDidFinishGatheringNotification_VH: VarHandle by lazy { NSMetadataQueryDidFinishGatheringNotification_LAYOUT.varHandle() }
-
-var NSMetadataQueryDidFinishGatheringNotification: MemorySegment
-    get() = NSMetadataQueryDidFinishGatheringNotification_VH.get(NSMetadataQueryDidFinishGatheringNotification_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryDidFinishGatheringNotification_VH.set(NSMetadataQueryDidFinishGatheringNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryDidUpdateNotification typedef const NSNotificationName = (Void)*
- */
-private val NSMetadataQueryDidUpdateNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryDidUpdateNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryDidUpdateNotification").orElseThrow() }
-private val NSMetadataQueryDidUpdateNotification_VH: VarHandle by lazy { NSMetadataQueryDidUpdateNotification_LAYOUT.varHandle() }
-
-var NSMetadataQueryDidUpdateNotification: MemorySegment
-    get() = NSMetadataQueryDidUpdateNotification_VH.get(NSMetadataQueryDidUpdateNotification_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryDidUpdateNotification_VH.set(NSMetadataQueryDidUpdateNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryUpdateAddedItemsKey (Void)*
- */
-private val NSMetadataQueryUpdateAddedItemsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryUpdateAddedItemsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUpdateAddedItemsKey").orElseThrow() }
-private val NSMetadataQueryUpdateAddedItemsKey_VH: VarHandle by lazy { NSMetadataQueryUpdateAddedItemsKey_LAYOUT.varHandle() }
-
-var NSMetadataQueryUpdateAddedItemsKey: MemorySegment
-    get() = NSMetadataQueryUpdateAddedItemsKey_VH.get(NSMetadataQueryUpdateAddedItemsKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryUpdateAddedItemsKey_VH.set(NSMetadataQueryUpdateAddedItemsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryUpdateChangedItemsKey (Void)*
- */
-private val NSMetadataQueryUpdateChangedItemsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryUpdateChangedItemsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUpdateChangedItemsKey").orElseThrow() }
-private val NSMetadataQueryUpdateChangedItemsKey_VH: VarHandle by lazy { NSMetadataQueryUpdateChangedItemsKey_LAYOUT.varHandle() }
-
-var NSMetadataQueryUpdateChangedItemsKey: MemorySegment
-    get() = NSMetadataQueryUpdateChangedItemsKey_VH.get(NSMetadataQueryUpdateChangedItemsKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryUpdateChangedItemsKey_VH.set(NSMetadataQueryUpdateChangedItemsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryUpdateRemovedItemsKey (Void)*
- */
-private val NSMetadataQueryUpdateRemovedItemsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryUpdateRemovedItemsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUpdateRemovedItemsKey").orElseThrow() }
-private val NSMetadataQueryUpdateRemovedItemsKey_VH: VarHandle by lazy { NSMetadataQueryUpdateRemovedItemsKey_LAYOUT.varHandle() }
-
-var NSMetadataQueryUpdateRemovedItemsKey: MemorySegment
-    get() = NSMetadataQueryUpdateRemovedItemsKey_VH.get(NSMetadataQueryUpdateRemovedItemsKey_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryUpdateRemovedItemsKey_VH.set(NSMetadataQueryUpdateRemovedItemsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryResultContentRelevanceAttribute (Void)*
- */
-private val NSMetadataQueryResultContentRelevanceAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryResultContentRelevanceAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryResultContentRelevanceAttribute").orElseThrow() }
-private val NSMetadataQueryResultContentRelevanceAttribute_VH: VarHandle by lazy { NSMetadataQueryResultContentRelevanceAttribute_LAYOUT.varHandle() }
-
-var NSMetadataQueryResultContentRelevanceAttribute: MemorySegment
-    get() = NSMetadataQueryResultContentRelevanceAttribute_VH.get(NSMetadataQueryResultContentRelevanceAttribute_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryResultContentRelevanceAttribute_VH.set(NSMetadataQueryResultContentRelevanceAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryUserHomeScope (Void)*
- */
-private val NSMetadataQueryUserHomeScope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryUserHomeScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUserHomeScope").orElseThrow() }
-private val NSMetadataQueryUserHomeScope_VH: VarHandle by lazy { NSMetadataQueryUserHomeScope_LAYOUT.varHandle() }
-
-var NSMetadataQueryUserHomeScope: MemorySegment
-    get() = NSMetadataQueryUserHomeScope_VH.get(NSMetadataQueryUserHomeScope_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryUserHomeScope_VH.set(NSMetadataQueryUserHomeScope_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryLocalComputerScope (Void)*
- */
-private val NSMetadataQueryLocalComputerScope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryLocalComputerScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryLocalComputerScope").orElseThrow() }
-private val NSMetadataQueryLocalComputerScope_VH: VarHandle by lazy { NSMetadataQueryLocalComputerScope_LAYOUT.varHandle() }
-
-var NSMetadataQueryLocalComputerScope: MemorySegment
-    get() = NSMetadataQueryLocalComputerScope_VH.get(NSMetadataQueryLocalComputerScope_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryLocalComputerScope_VH.set(NSMetadataQueryLocalComputerScope_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryNetworkScope (Void)*
- */
-private val NSMetadataQueryNetworkScope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryNetworkScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryNetworkScope").orElseThrow() }
-private val NSMetadataQueryNetworkScope_VH: VarHandle by lazy { NSMetadataQueryNetworkScope_LAYOUT.varHandle() }
-
-var NSMetadataQueryNetworkScope: MemorySegment
-    get() = NSMetadataQueryNetworkScope_VH.get(NSMetadataQueryNetworkScope_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryNetworkScope_VH.set(NSMetadataQueryNetworkScope_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryIndexedLocalComputerScope (Void)*
- */
-private val NSMetadataQueryIndexedLocalComputerScope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryIndexedLocalComputerScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryIndexedLocalComputerScope").orElseThrow() }
-private val NSMetadataQueryIndexedLocalComputerScope_VH: VarHandle by lazy { NSMetadataQueryIndexedLocalComputerScope_LAYOUT.varHandle() }
-
-var NSMetadataQueryIndexedLocalComputerScope: MemorySegment
-    get() = NSMetadataQueryIndexedLocalComputerScope_VH.get(NSMetadataQueryIndexedLocalComputerScope_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryIndexedLocalComputerScope_VH.set(NSMetadataQueryIndexedLocalComputerScope_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryIndexedNetworkScope (Void)*
- */
-private val NSMetadataQueryIndexedNetworkScope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryIndexedNetworkScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryIndexedNetworkScope").orElseThrow() }
-private val NSMetadataQueryIndexedNetworkScope_VH: VarHandle by lazy { NSMetadataQueryIndexedNetworkScope_LAYOUT.varHandle() }
-
-var NSMetadataQueryIndexedNetworkScope: MemorySegment
-    get() = NSMetadataQueryIndexedNetworkScope_VH.get(NSMetadataQueryIndexedNetworkScope_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryIndexedNetworkScope_VH.set(NSMetadataQueryIndexedNetworkScope_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryUbiquitousDocumentsScope (Void)*
- */
-private val NSMetadataQueryUbiquitousDocumentsScope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryUbiquitousDocumentsScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUbiquitousDocumentsScope").orElseThrow() }
-private val NSMetadataQueryUbiquitousDocumentsScope_VH: VarHandle by lazy { NSMetadataQueryUbiquitousDocumentsScope_LAYOUT.varHandle() }
-
-var NSMetadataQueryUbiquitousDocumentsScope: MemorySegment
-    get() = NSMetadataQueryUbiquitousDocumentsScope_VH.get(NSMetadataQueryUbiquitousDocumentsScope_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryUbiquitousDocumentsScope_VH.set(NSMetadataQueryUbiquitousDocumentsScope_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryUbiquitousDataScope (Void)*
- */
-private val NSMetadataQueryUbiquitousDataScope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryUbiquitousDataScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUbiquitousDataScope").orElseThrow() }
-private val NSMetadataQueryUbiquitousDataScope_VH: VarHandle by lazy { NSMetadataQueryUbiquitousDataScope_LAYOUT.varHandle() }
-
-var NSMetadataQueryUbiquitousDataScope: MemorySegment
-    get() = NSMetadataQueryUbiquitousDataScope_VH.get(NSMetadataQueryUbiquitousDataScope_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryUbiquitousDataScope_VH.set(NSMetadataQueryUbiquitousDataScope_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope (Void)*
- */
-private val NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope").orElseThrow() }
-private val NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_VH: VarHandle by lazy { NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_LAYOUT.varHandle() }
-
-var NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope: MemorySegment
-    get() = NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_VH.get(NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_SEGMENT) as MemorySegment
-    set(value) = NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_VH.set(NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSNetServicesErrorCode (Void)*
- */
-private val NSNetServicesErrorCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSNetServicesErrorCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSNetServicesErrorCode").orElseThrow() }
-private val NSNetServicesErrorCode_VH: VarHandle by lazy { NSNetServicesErrorCode_LAYOUT.varHandle() }
-
-var NSNetServicesErrorCode: MemorySegment
-    get() = NSNetServicesErrorCode_VH.get(NSNetServicesErrorCode_SEGMENT) as MemorySegment
-    set(value) = NSNetServicesErrorCode_VH.set(NSNetServicesErrorCode_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSNetServicesErrorDomain typedef const NSErrorDomain = (Void)*
- */
-private val NSNetServicesErrorDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSNetServicesErrorDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSNetServicesErrorDomain").orElseThrow() }
-private val NSNetServicesErrorDomain_VH: VarHandle by lazy { NSNetServicesErrorDomain_LAYOUT.varHandle() }
-
-var NSNetServicesErrorDomain: MemorySegment
-    get() = NSNetServicesErrorDomain_VH.get(NSNetServicesErrorDomain_SEGMENT) as MemorySegment
-    set(value) = NSNetServicesErrorDomain_VH.set(NSNetServicesErrorDomain_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUbiquitousKeyValueStoreDidChangeExternallyNotification typedef const NSNotificationName = (Void)*
- */
-private val NSUbiquitousKeyValueStoreDidChangeExternallyNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUbiquitousKeyValueStoreDidChangeExternallyNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquitousKeyValueStoreDidChangeExternallyNotification").orElseThrow() }
-private val NSUbiquitousKeyValueStoreDidChangeExternallyNotification_VH: VarHandle by lazy { NSUbiquitousKeyValueStoreDidChangeExternallyNotification_LAYOUT.varHandle() }
-
-var NSUbiquitousKeyValueStoreDidChangeExternallyNotification: MemorySegment
-    get() = NSUbiquitousKeyValueStoreDidChangeExternallyNotification_VH.get(NSUbiquitousKeyValueStoreDidChangeExternallyNotification_SEGMENT) as MemorySegment
-    set(value) = NSUbiquitousKeyValueStoreDidChangeExternallyNotification_VH.set(NSUbiquitousKeyValueStoreDidChangeExternallyNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUbiquitousKeyValueStoreChangeReasonKey (Void)*
- */
-private val NSUbiquitousKeyValueStoreChangeReasonKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUbiquitousKeyValueStoreChangeReasonKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquitousKeyValueStoreChangeReasonKey").orElseThrow() }
-private val NSUbiquitousKeyValueStoreChangeReasonKey_VH: VarHandle by lazy { NSUbiquitousKeyValueStoreChangeReasonKey_LAYOUT.varHandle() }
-
-var NSUbiquitousKeyValueStoreChangeReasonKey: MemorySegment
-    get() = NSUbiquitousKeyValueStoreChangeReasonKey_VH.get(NSUbiquitousKeyValueStoreChangeReasonKey_SEGMENT) as MemorySegment
-    set(value) = NSUbiquitousKeyValueStoreChangeReasonKey_VH.set(NSUbiquitousKeyValueStoreChangeReasonKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUbiquitousKeyValueStoreChangedKeysKey (Void)*
- */
-private val NSUbiquitousKeyValueStoreChangedKeysKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUbiquitousKeyValueStoreChangedKeysKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquitousKeyValueStoreChangedKeysKey").orElseThrow() }
-private val NSUbiquitousKeyValueStoreChangedKeysKey_VH: VarHandle by lazy { NSUbiquitousKeyValueStoreChangedKeysKey_LAYOUT.varHandle() }
-
-var NSUbiquitousKeyValueStoreChangedKeysKey: MemorySegment
-    get() = NSUbiquitousKeyValueStoreChangedKeysKey_VH.get(NSUbiquitousKeyValueStoreChangedKeysKey_SEGMENT) as MemorySegment
-    set(value) = NSUbiquitousKeyValueStoreChangedKeysKey_VH.set(NSUbiquitousKeyValueStoreChangedKeysKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUndoManagerGroupIsDiscardableKey (Void)*
- */
-private val NSUndoManagerGroupIsDiscardableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndoManagerGroupIsDiscardableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerGroupIsDiscardableKey").orElseThrow() }
-private val NSUndoManagerGroupIsDiscardableKey_VH: VarHandle by lazy { NSUndoManagerGroupIsDiscardableKey_LAYOUT.varHandle() }
-
-var NSUndoManagerGroupIsDiscardableKey: MemorySegment
-    get() = NSUndoManagerGroupIsDiscardableKey_VH.get(NSUndoManagerGroupIsDiscardableKey_SEGMENT) as MemorySegment
-    set(value) = NSUndoManagerGroupIsDiscardableKey_VH.set(NSUndoManagerGroupIsDiscardableKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUndoManagerCheckpointNotification typedef const NSNotificationName = (Void)*
- */
-private val NSUndoManagerCheckpointNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndoManagerCheckpointNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerCheckpointNotification").orElseThrow() }
-private val NSUndoManagerCheckpointNotification_VH: VarHandle by lazy { NSUndoManagerCheckpointNotification_LAYOUT.varHandle() }
-
-var NSUndoManagerCheckpointNotification: MemorySegment
-    get() = NSUndoManagerCheckpointNotification_VH.get(NSUndoManagerCheckpointNotification_SEGMENT) as MemorySegment
-    set(value) = NSUndoManagerCheckpointNotification_VH.set(NSUndoManagerCheckpointNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUndoManagerWillUndoChangeNotification typedef const NSNotificationName = (Void)*
- */
-private val NSUndoManagerWillUndoChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndoManagerWillUndoChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerWillUndoChangeNotification").orElseThrow() }
-private val NSUndoManagerWillUndoChangeNotification_VH: VarHandle by lazy { NSUndoManagerWillUndoChangeNotification_LAYOUT.varHandle() }
-
-var NSUndoManagerWillUndoChangeNotification: MemorySegment
-    get() = NSUndoManagerWillUndoChangeNotification_VH.get(NSUndoManagerWillUndoChangeNotification_SEGMENT) as MemorySegment
-    set(value) = NSUndoManagerWillUndoChangeNotification_VH.set(NSUndoManagerWillUndoChangeNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUndoManagerWillRedoChangeNotification typedef const NSNotificationName = (Void)*
- */
-private val NSUndoManagerWillRedoChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndoManagerWillRedoChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerWillRedoChangeNotification").orElseThrow() }
-private val NSUndoManagerWillRedoChangeNotification_VH: VarHandle by lazy { NSUndoManagerWillRedoChangeNotification_LAYOUT.varHandle() }
-
-var NSUndoManagerWillRedoChangeNotification: MemorySegment
-    get() = NSUndoManagerWillRedoChangeNotification_VH.get(NSUndoManagerWillRedoChangeNotification_SEGMENT) as MemorySegment
-    set(value) = NSUndoManagerWillRedoChangeNotification_VH.set(NSUndoManagerWillRedoChangeNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUndoManagerDidUndoChangeNotification typedef const NSNotificationName = (Void)*
- */
-private val NSUndoManagerDidUndoChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndoManagerDidUndoChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerDidUndoChangeNotification").orElseThrow() }
-private val NSUndoManagerDidUndoChangeNotification_VH: VarHandle by lazy { NSUndoManagerDidUndoChangeNotification_LAYOUT.varHandle() }
-
-var NSUndoManagerDidUndoChangeNotification: MemorySegment
-    get() = NSUndoManagerDidUndoChangeNotification_VH.get(NSUndoManagerDidUndoChangeNotification_SEGMENT) as MemorySegment
-    set(value) = NSUndoManagerDidUndoChangeNotification_VH.set(NSUndoManagerDidUndoChangeNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUndoManagerDidRedoChangeNotification typedef const NSNotificationName = (Void)*
- */
-private val NSUndoManagerDidRedoChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndoManagerDidRedoChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerDidRedoChangeNotification").orElseThrow() }
-private val NSUndoManagerDidRedoChangeNotification_VH: VarHandle by lazy { NSUndoManagerDidRedoChangeNotification_LAYOUT.varHandle() }
-
-var NSUndoManagerDidRedoChangeNotification: MemorySegment
-    get() = NSUndoManagerDidRedoChangeNotification_VH.get(NSUndoManagerDidRedoChangeNotification_SEGMENT) as MemorySegment
-    set(value) = NSUndoManagerDidRedoChangeNotification_VH.set(NSUndoManagerDidRedoChangeNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUndoManagerDidOpenUndoGroupNotification typedef const NSNotificationName = (Void)*
- */
-private val NSUndoManagerDidOpenUndoGroupNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndoManagerDidOpenUndoGroupNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerDidOpenUndoGroupNotification").orElseThrow() }
-private val NSUndoManagerDidOpenUndoGroupNotification_VH: VarHandle by lazy { NSUndoManagerDidOpenUndoGroupNotification_LAYOUT.varHandle() }
-
-var NSUndoManagerDidOpenUndoGroupNotification: MemorySegment
-    get() = NSUndoManagerDidOpenUndoGroupNotification_VH.get(NSUndoManagerDidOpenUndoGroupNotification_SEGMENT) as MemorySegment
-    set(value) = NSUndoManagerDidOpenUndoGroupNotification_VH.set(NSUndoManagerDidOpenUndoGroupNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUndoManagerWillCloseUndoGroupNotification typedef const NSNotificationName = (Void)*
- */
-private val NSUndoManagerWillCloseUndoGroupNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndoManagerWillCloseUndoGroupNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerWillCloseUndoGroupNotification").orElseThrow() }
-private val NSUndoManagerWillCloseUndoGroupNotification_VH: VarHandle by lazy { NSUndoManagerWillCloseUndoGroupNotification_LAYOUT.varHandle() }
-
-var NSUndoManagerWillCloseUndoGroupNotification: MemorySegment
-    get() = NSUndoManagerWillCloseUndoGroupNotification_VH.get(NSUndoManagerWillCloseUndoGroupNotification_SEGMENT) as MemorySegment
-    set(value) = NSUndoManagerWillCloseUndoGroupNotification_VH.set(NSUndoManagerWillCloseUndoGroupNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUndoManagerDidCloseUndoGroupNotification typedef const NSNotificationName = (Void)*
- */
-private val NSUndoManagerDidCloseUndoGroupNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndoManagerDidCloseUndoGroupNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerDidCloseUndoGroupNotification").orElseThrow() }
-private val NSUndoManagerDidCloseUndoGroupNotification_VH: VarHandle by lazy { NSUndoManagerDidCloseUndoGroupNotification_LAYOUT.varHandle() }
-
-var NSUndoManagerDidCloseUndoGroupNotification: MemorySegment
-    get() = NSUndoManagerDidCloseUndoGroupNotification_VH.get(NSUndoManagerDidCloseUndoGroupNotification_SEGMENT) as MemorySegment
-    set(value) = NSUndoManagerDidCloseUndoGroupNotification_VH.set(NSUndoManagerDidCloseUndoGroupNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLSessionTransferSizeUnknown typedef const int64_t = LongLong
- */
-private val NSURLSessionTransferSizeUnknown_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val NSURLSessionTransferSizeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionTransferSizeUnknown").orElseThrow() }
-private val NSURLSessionTransferSizeUnknown_VH: VarHandle by lazy { NSURLSessionTransferSizeUnknown_LAYOUT.varHandle() }
-
-var NSURLSessionTransferSizeUnknown: Long
-    get() = NSURLSessionTransferSizeUnknown_VH.get(NSURLSessionTransferSizeUnknown_SEGMENT) as Long
-    set(value) = NSURLSessionTransferSizeUnknown_VH.set(NSURLSessionTransferSizeUnknown_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLSessionTaskPriorityDefault Float
- */
-private val NSURLSessionTaskPriorityDefault_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_FLOAT }
-private val NSURLSessionTaskPriorityDefault_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionTaskPriorityDefault").orElseThrow() }
-private val NSURLSessionTaskPriorityDefault_VH: VarHandle by lazy { NSURLSessionTaskPriorityDefault_LAYOUT.varHandle() }
-
-var NSURLSessionTaskPriorityDefault: Float
-    get() = NSURLSessionTaskPriorityDefault_VH.get(NSURLSessionTaskPriorityDefault_SEGMENT) as Float
-    set(value) = NSURLSessionTaskPriorityDefault_VH.set(NSURLSessionTaskPriorityDefault_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLSessionTaskPriorityLow Float
- */
-private val NSURLSessionTaskPriorityLow_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_FLOAT }
-private val NSURLSessionTaskPriorityLow_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionTaskPriorityLow").orElseThrow() }
-private val NSURLSessionTaskPriorityLow_VH: VarHandle by lazy { NSURLSessionTaskPriorityLow_LAYOUT.varHandle() }
-
-var NSURLSessionTaskPriorityLow: Float
-    get() = NSURLSessionTaskPriorityLow_VH.get(NSURLSessionTaskPriorityLow_SEGMENT) as Float
-    set(value) = NSURLSessionTaskPriorityLow_VH.set(NSURLSessionTaskPriorityLow_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLSessionTaskPriorityHigh Float
- */
-private val NSURLSessionTaskPriorityHigh_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_FLOAT }
-private val NSURLSessionTaskPriorityHigh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionTaskPriorityHigh").orElseThrow() }
-private val NSURLSessionTaskPriorityHigh_VH: VarHandle by lazy { NSURLSessionTaskPriorityHigh_LAYOUT.varHandle() }
-
-var NSURLSessionTaskPriorityHigh: Float
-    get() = NSURLSessionTaskPriorityHigh_VH.get(NSURLSessionTaskPriorityHigh_SEGMENT) as Float
-    set(value) = NSURLSessionTaskPriorityHigh_VH.set(NSURLSessionTaskPriorityHigh_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLSessionDownloadTaskResumeData (Void)*
- */
-private val NSURLSessionDownloadTaskResumeData_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLSessionDownloadTaskResumeData_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionDownloadTaskResumeData").orElseThrow() }
-private val NSURLSessionDownloadTaskResumeData_VH: VarHandle by lazy { NSURLSessionDownloadTaskResumeData_LAYOUT.varHandle() }
-
-var NSURLSessionDownloadTaskResumeData: MemorySegment
-    get() = NSURLSessionDownloadTaskResumeData_VH.get(NSURLSessionDownloadTaskResumeData_SEGMENT) as MemorySegment
-    set(value) = NSURLSessionDownloadTaskResumeData_VH.set(NSURLSessionDownloadTaskResumeData_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLSessionUploadTaskResumeData (Void)*
- */
-private val NSURLSessionUploadTaskResumeData_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLSessionUploadTaskResumeData_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionUploadTaskResumeData").orElseThrow() }
-private val NSURLSessionUploadTaskResumeData_VH: VarHandle by lazy { NSURLSessionUploadTaskResumeData_LAYOUT.varHandle() }
-
-var NSURLSessionUploadTaskResumeData: MemorySegment
-    get() = NSURLSessionUploadTaskResumeData_VH.get(NSURLSessionUploadTaskResumeData_SEGMENT) as MemorySegment
-    set(value) = NSURLSessionUploadTaskResumeData_VH.set(NSURLSessionUploadTaskResumeData_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSUserActivityTypeBrowsingWeb (Void)*
- */
-private val NSUserActivityTypeBrowsingWeb_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUserActivityTypeBrowsingWeb_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUserActivityTypeBrowsingWeb").orElseThrow() }
-private val NSUserActivityTypeBrowsingWeb_VH: VarHandle by lazy { NSUserActivityTypeBrowsingWeb_LAYOUT.varHandle() }
-
-var NSUserActivityTypeBrowsingWeb: MemorySegment
-    get() = NSUserActivityTypeBrowsingWeb_VH.get(NSUserActivityTypeBrowsingWeb_SEGMENT) as MemorySegment
-    set(value) = NSUserActivityTypeBrowsingWeb_VH.set(NSUserActivityTypeBrowsingWeb_SEGMENT, value)
-
-/**
- * {@snippet lang=c : CGAffineTransformIdentity typedef const CGAffineTransform = Declared(CGAffineTransform)
- */
-val CGAffineTransformIdentity: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformIdentity").orElseThrow()

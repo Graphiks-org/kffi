@@ -212,5 +212,5 @@ open class NSXMLDocument(override val ptr: MemorySegment) : NSXMLNode(ptr) {
     // ivar: _URI: MemorySegment
     // ivar: _extraIvars: MemorySegment
     // ivar: _fidelityMask: Long
-    // ivar: _contentKind: MemorySegment
+    // ivar: _contentKind: NSXMLDocumentContentKind
 }
