@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -8,131 +10,156 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Kotlin/JVM wrapper for Objective-C class: NSMenuItemCell
  * Superclass: NSButtonCell
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 open class NSMenuItemCell(override val ptr: MemorySegment) : NSButtonCell(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSMenuItemCell") }
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun initTextCell(string: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initTextCell:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, string) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCoder:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun calcSize(): Unit {
         val sel = ObjCRuntime.sel("calcSize")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun stateImageRectForBounds(cellFrame: NSRect): NSRect {
         val sel = ObjCRuntime.sel("stateImageRectForBounds:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun titleRectForBounds(cellFrame: NSRect): NSRect {
         val sel = ObjCRuntime.sel("titleRectForBounds:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun keyEquivalentRectForBounds(cellFrame: NSRect): NSRect {
         val sel = ObjCRuntime.sel("keyEquivalentRectForBounds:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun drawSeparatorItemWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawSeparatorItemWithFrame:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun drawStateImageWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawStateImageWithFrame:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun drawImageWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawImageWithFrame:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun drawTitleWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawTitleWithFrame:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun drawKeyEquivalentWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawKeyEquivalentWithFrame:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun drawBorderAndBackgroundWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawBorderAndBackgroundWithFrame:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
     // @property menuItem
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun menuItem(): MemorySegment {
         val sel = ObjCRuntime.sel("menuItem")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMenuItem(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setMenuItem:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property needsSizing
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun needsSizing(): Boolean {
         val sel = ObjCRuntime.sel("needsSizing")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setNeedsSizing(value: Boolean) {
         val sel = ObjCRuntime.sel("setNeedsSizing:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property needsDisplay
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun needsDisplay(): Boolean {
         val sel = ObjCRuntime.sel("needsDisplay")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setNeedsDisplay(value: Boolean) {
         val sel = ObjCRuntime.sel("setNeedsDisplay:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property stateImageWidth
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun stateImageWidth(): Double {
         val sel = ObjCRuntime.sel("stateImageWidth")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
 
     // @property imageWidth
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun imageWidth(): Double {
         val sel = ObjCRuntime.sel("imageWidth")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
 
     // @property titleWidth
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun titleWidth(): Double {
         val sel = ObjCRuntime.sel("titleWidth")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
 
     // @property keyEquivalentWidth
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun keyEquivalentWidth(): Double {
         val sel = ObjCRuntime.sel("keyEquivalentWidth")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
 
     // @property tag
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun tag(): Long {
         val sel = ObjCRuntime.sel("tag")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun setTag(value: Long) {
         val sel = ObjCRuntime.sel("setTag:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

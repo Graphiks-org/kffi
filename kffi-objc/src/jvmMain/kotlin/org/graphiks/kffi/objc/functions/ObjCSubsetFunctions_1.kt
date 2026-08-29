@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -372,6 +374,10 @@ private val CFStringCompareWithOptionsAndLocale_DESC: FunctionDescriptor = Funct
 private val CFStringCompareWithOptionsAndLocale_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCompareWithOptionsAndLocale").orElseThrow()
 private val CFStringCompareWithOptionsAndLocale_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCompareWithOptionsAndLocale_ADDR, CFStringCompareWithOptionsAndLocale_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFStringCompareWithOptionsAndLocale(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CFStringCompareFlags, arg4: MemorySegment): CFComparisonResult {
     try {
         return CFComparisonResult.fromValue(CFStringCompareWithOptionsAndLocale_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue, arg4) as Long)
@@ -429,6 +435,10 @@ private val CFStringFindWithOptionsAndLocale_DESC: FunctionDescriptor = Function
 private val CFStringFindWithOptionsAndLocale_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringFindWithOptionsAndLocale").orElseThrow()
 private val CFStringFindWithOptionsAndLocale_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringFindWithOptionsAndLocale_ADDR, CFStringFindWithOptionsAndLocale_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFStringFindWithOptionsAndLocale(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CFStringCompareFlags, arg4: MemorySegment, arg5: MemorySegment): Byte {
     try {
         return CFStringFindWithOptionsAndLocale_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue, arg4, arg5) as Byte
@@ -600,6 +610,10 @@ private val CFStringGetParagraphBounds_DESC: FunctionDescriptor = FunctionDescri
 private val CFStringGetParagraphBounds_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringGetParagraphBounds").orElseThrow()
 private val CFStringGetParagraphBounds_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringGetParagraphBounds_ADDR, CFStringGetParagraphBounds_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFStringGetParagraphBounds(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): Unit {
     try {
         CFStringGetParagraphBounds_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4)
@@ -619,6 +633,10 @@ private val CFStringGetHyphenationLocationBeforeIndex_DESC: FunctionDescriptor =
 private val CFStringGetHyphenationLocationBeforeIndex_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringGetHyphenationLocationBeforeIndex").orElseThrow()
 private val CFStringGetHyphenationLocationBeforeIndex_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringGetHyphenationLocationBeforeIndex_ADDR, CFStringGetHyphenationLocationBeforeIndex_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFStringGetHyphenationLocationBeforeIndex(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Long, arg4: MemorySegment, arg5: MemorySegment): Long {
     try {
         return CFStringGetHyphenationLocationBeforeIndex_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Long
@@ -638,6 +656,10 @@ private val CFStringIsHyphenationAvailableForLocale_DESC: FunctionDescriptor = F
 private val CFStringIsHyphenationAvailableForLocale_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringIsHyphenationAvailableForLocale").orElseThrow()
 private val CFStringIsHyphenationAvailableForLocale_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringIsHyphenationAvailableForLocale_ADDR, CFStringIsHyphenationAvailableForLocale_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFStringIsHyphenationAvailableForLocale(arg0: MemorySegment): Byte {
     try {
         return CFStringIsHyphenationAvailableForLocale_HANDLE.invokeExact(arg0) as Byte
@@ -1094,6 +1116,10 @@ private val CFStringFold_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(Va
 private val CFStringFold_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringFold").orElseThrow()
 private val CFStringFold_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringFold_ADDR, CFStringFold_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFStringFold(arg0: MemorySegment, arg1: CFStringCompareFlags, arg2: MemorySegment): Unit {
     try {
         CFStringFold_HANDLE.invokeExact(arg0, arg1.rawValue, arg2)
@@ -1297,6 +1323,10 @@ private val kCFStringTransformStripDiacritics_LAYOUT: ValueLayout by lazy { Valu
 private val kCFStringTransformStripDiacritics_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformStripDiacritics").orElseThrow().reinterpret(kCFStringTransformStripDiacritics_LAYOUT.byteSize()) }
 private val kCFStringTransformStripDiacritics_VH: VarHandle by lazy { kCFStringTransformStripDiacritics_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFStringTransformStripDiacritics: MemorySegment
     get() = kCFStringTransformStripDiacritics_VH.get(kCFStringTransformStripDiacritics_SEGMENT, 0L) as MemorySegment
     set(value) = kCFStringTransformStripDiacritics_VH.set(kCFStringTransformStripDiacritics_SEGMENT, 0L, value)
@@ -1859,6 +1889,10 @@ private val CFTimeZoneGetDaylightSavingTimeOffset_DESC: FunctionDescriptor = Fun
 private val CFTimeZoneGetDaylightSavingTimeOffset_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFTimeZoneGetDaylightSavingTimeOffset").orElseThrow()
 private val CFTimeZoneGetDaylightSavingTimeOffset_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFTimeZoneGetDaylightSavingTimeOffset_ADDR, CFTimeZoneGetDaylightSavingTimeOffset_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFTimeZoneGetDaylightSavingTimeOffset(arg0: MemorySegment, arg1: Double): Double {
     try {
         return CFTimeZoneGetDaylightSavingTimeOffset_HANDLE.invokeExact(arg0, arg1) as Double
@@ -1878,6 +1912,10 @@ private val CFTimeZoneGetNextDaylightSavingTimeTransition_DESC: FunctionDescript
 private val CFTimeZoneGetNextDaylightSavingTimeTransition_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFTimeZoneGetNextDaylightSavingTimeTransition").orElseThrow()
 private val CFTimeZoneGetNextDaylightSavingTimeTransition_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFTimeZoneGetNextDaylightSavingTimeTransition_ADDR, CFTimeZoneGetNextDaylightSavingTimeTransition_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFTimeZoneGetNextDaylightSavingTimeTransition(arg0: MemorySegment, arg1: Double): Double {
     try {
         return CFTimeZoneGetNextDaylightSavingTimeTransition_HANDLE.invokeExact(arg0, arg1) as Double
@@ -1897,6 +1935,10 @@ private val CFTimeZoneCopyLocalizedName_DESC: FunctionDescriptor = FunctionDescr
 private val CFTimeZoneCopyLocalizedName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFTimeZoneCopyLocalizedName").orElseThrow()
 private val CFTimeZoneCopyLocalizedName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFTimeZoneCopyLocalizedName_ADDR, CFTimeZoneCopyLocalizedName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFTimeZoneCopyLocalizedName(arg0: MemorySegment, arg1: CFTimeZoneNameStyle, arg2: MemorySegment): MemorySegment {
     try {
         return CFTimeZoneCopyLocalizedName_HANDLE.invokeExact(arg0, arg1.value, arg2) as MemorySegment
@@ -1916,6 +1958,10 @@ private val kCFTimeZoneSystemTimeZoneDidChangeNotification_LAYOUT: ValueLayout b
 private val kCFTimeZoneSystemTimeZoneDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFTimeZoneSystemTimeZoneDidChangeNotification").orElseThrow().reinterpret(kCFTimeZoneSystemTimeZoneDidChangeNotification_LAYOUT.byteSize()) }
 private val kCFTimeZoneSystemTimeZoneDidChangeNotification_VH: VarHandle by lazy { kCFTimeZoneSystemTimeZoneDidChangeNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFTimeZoneSystemTimeZoneDidChangeNotification: MemorySegment
     get() = kCFTimeZoneSystemTimeZoneDidChangeNotification_VH.get(kCFTimeZoneSystemTimeZoneDidChangeNotification_SEGMENT, 0L) as MemorySegment
     set(value) = kCFTimeZoneSystemTimeZoneDidChangeNotification_VH.set(kCFTimeZoneSystemTimeZoneDidChangeNotification_SEGMENT, 0L, value)
@@ -2231,6 +2277,10 @@ private val CFCalendarGetTimeRangeOfUnit_DESC: FunctionDescriptor = FunctionDesc
 private val CFCalendarGetTimeRangeOfUnit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCalendarGetTimeRangeOfUnit").orElseThrow()
 private val CFCalendarGetTimeRangeOfUnit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCalendarGetTimeRangeOfUnit_ADDR, CFCalendarGetTimeRangeOfUnit_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFCalendarGetTimeRangeOfUnit(arg0: MemorySegment, arg1: CFCalendarUnit, arg2: Double, arg3: MemorySegment, arg4: MemorySegment): Byte {
     try {
         return CFCalendarGetTimeRangeOfUnit_HANDLE.invokeExact(arg0, arg1.rawValue, arg2, arg3, arg4) as Byte
@@ -2326,6 +2376,10 @@ private val CFDateFormatterCreateDateFormatFromTemplate_DESC: FunctionDescriptor
 private val CFDateFormatterCreateDateFormatFromTemplate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateFormatterCreateDateFormatFromTemplate").orElseThrow()
 private val CFDateFormatterCreateDateFormatFromTemplate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateFormatterCreateDateFormatFromTemplate_ADDR, CFDateFormatterCreateDateFormatFromTemplate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFDateFormatterCreateDateFormatFromTemplate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): MemorySegment {
     try {
         return CFDateFormatterCreateDateFormatFromTemplate_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -2364,6 +2418,10 @@ private val CFDateFormatterCreateISO8601Formatter_DESC: FunctionDescriptor = Fun
 private val CFDateFormatterCreateISO8601Formatter_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateFormatterCreateISO8601Formatter").orElseThrow()
 private val CFDateFormatterCreateISO8601Formatter_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateFormatterCreateISO8601Formatter_ADDR, CFDateFormatterCreateISO8601Formatter_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
 fun CFDateFormatterCreateISO8601Formatter(arg0: MemorySegment, arg1: CFISO8601DateFormatOptions): MemorySegment {
     try {
         return CFDateFormatterCreateISO8601Formatter_HANDLE.invokeExact(arg0, arg1.rawValue) as MemorySegment
@@ -2765,6 +2823,10 @@ private val kCFDateFormatterLongEraSymbols_LAYOUT: ValueLayout by lazy { ValueLa
 private val kCFDateFormatterLongEraSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterLongEraSymbols").orElseThrow().reinterpret(kCFDateFormatterLongEraSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterLongEraSymbols_VH: VarHandle by lazy { kCFDateFormatterLongEraSymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterLongEraSymbols: MemorySegment
     get() = kCFDateFormatterLongEraSymbols_VH.get(kCFDateFormatterLongEraSymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterLongEraSymbols_VH.set(kCFDateFormatterLongEraSymbols_SEGMENT, 0L, value)
@@ -2776,6 +2838,10 @@ private val kCFDateFormatterVeryShortMonthSymbols_LAYOUT: ValueLayout by lazy { 
 private val kCFDateFormatterVeryShortMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterVeryShortMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterVeryShortMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterVeryShortMonthSymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterVeryShortMonthSymbols: MemorySegment
     get() = kCFDateFormatterVeryShortMonthSymbols_VH.get(kCFDateFormatterVeryShortMonthSymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterVeryShortMonthSymbols_VH.set(kCFDateFormatterVeryShortMonthSymbols_SEGMENT, 0L, value)
@@ -2787,6 +2853,10 @@ private val kCFDateFormatterStandaloneMonthSymbols_LAYOUT: ValueLayout by lazy {
 private val kCFDateFormatterStandaloneMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterStandaloneMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterStandaloneMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterStandaloneMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterStandaloneMonthSymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterStandaloneMonthSymbols: MemorySegment
     get() = kCFDateFormatterStandaloneMonthSymbols_VH.get(kCFDateFormatterStandaloneMonthSymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterStandaloneMonthSymbols_VH.set(kCFDateFormatterStandaloneMonthSymbols_SEGMENT, 0L, value)
@@ -2798,6 +2868,10 @@ private val kCFDateFormatterShortStandaloneMonthSymbols_LAYOUT: ValueLayout by l
 private val kCFDateFormatterShortStandaloneMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortStandaloneMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterShortStandaloneMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortStandaloneMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterShortStandaloneMonthSymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterShortStandaloneMonthSymbols: MemorySegment
     get() = kCFDateFormatterShortStandaloneMonthSymbols_VH.get(kCFDateFormatterShortStandaloneMonthSymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterShortStandaloneMonthSymbols_VH.set(kCFDateFormatterShortStandaloneMonthSymbols_SEGMENT, 0L, value)
@@ -2809,6 +2883,10 @@ private val kCFDateFormatterVeryShortStandaloneMonthSymbols_LAYOUT: ValueLayout 
 private val kCFDateFormatterVeryShortStandaloneMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortStandaloneMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterVeryShortStandaloneMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterVeryShortStandaloneMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterVeryShortStandaloneMonthSymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterVeryShortStandaloneMonthSymbols: MemorySegment
     get() = kCFDateFormatterVeryShortStandaloneMonthSymbols_VH.get(kCFDateFormatterVeryShortStandaloneMonthSymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterVeryShortStandaloneMonthSymbols_VH.set(kCFDateFormatterVeryShortStandaloneMonthSymbols_SEGMENT, 0L, value)
@@ -2820,6 +2898,10 @@ private val kCFDateFormatterVeryShortWeekdaySymbols_LAYOUT: ValueLayout by lazy 
 private val kCFDateFormatterVeryShortWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterVeryShortWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterVeryShortWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterVeryShortWeekdaySymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterVeryShortWeekdaySymbols: MemorySegment
     get() = kCFDateFormatterVeryShortWeekdaySymbols_VH.get(kCFDateFormatterVeryShortWeekdaySymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterVeryShortWeekdaySymbols_VH.set(kCFDateFormatterVeryShortWeekdaySymbols_SEGMENT, 0L, value)
@@ -2831,6 +2913,10 @@ private val kCFDateFormatterStandaloneWeekdaySymbols_LAYOUT: ValueLayout by lazy
 private val kCFDateFormatterStandaloneWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterStandaloneWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterStandaloneWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterStandaloneWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterStandaloneWeekdaySymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterStandaloneWeekdaySymbols: MemorySegment
     get() = kCFDateFormatterStandaloneWeekdaySymbols_VH.get(kCFDateFormatterStandaloneWeekdaySymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterStandaloneWeekdaySymbols_VH.set(kCFDateFormatterStandaloneWeekdaySymbols_SEGMENT, 0L, value)
@@ -2842,6 +2928,10 @@ private val kCFDateFormatterShortStandaloneWeekdaySymbols_LAYOUT: ValueLayout by
 private val kCFDateFormatterShortStandaloneWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortStandaloneWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterShortStandaloneWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortStandaloneWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterShortStandaloneWeekdaySymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterShortStandaloneWeekdaySymbols: MemorySegment
     get() = kCFDateFormatterShortStandaloneWeekdaySymbols_VH.get(kCFDateFormatterShortStandaloneWeekdaySymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterShortStandaloneWeekdaySymbols_VH.set(kCFDateFormatterShortStandaloneWeekdaySymbols_SEGMENT, 0L, value)
@@ -2853,6 +2943,10 @@ private val kCFDateFormatterVeryShortStandaloneWeekdaySymbols_LAYOUT: ValueLayou
 private val kCFDateFormatterVeryShortStandaloneWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortStandaloneWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterVeryShortStandaloneWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterVeryShortStandaloneWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterVeryShortStandaloneWeekdaySymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterVeryShortStandaloneWeekdaySymbols: MemorySegment
     get() = kCFDateFormatterVeryShortStandaloneWeekdaySymbols_VH.get(kCFDateFormatterVeryShortStandaloneWeekdaySymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterVeryShortStandaloneWeekdaySymbols_VH.set(kCFDateFormatterVeryShortStandaloneWeekdaySymbols_SEGMENT, 0L, value)
@@ -2864,6 +2958,10 @@ private val kCFDateFormatterQuarterSymbols_LAYOUT: ValueLayout by lazy { ValueLa
 private val kCFDateFormatterQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterQuarterSymbols").orElseThrow().reinterpret(kCFDateFormatterQuarterSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterQuarterSymbols_VH: VarHandle by lazy { kCFDateFormatterQuarterSymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterQuarterSymbols: MemorySegment
     get() = kCFDateFormatterQuarterSymbols_VH.get(kCFDateFormatterQuarterSymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterQuarterSymbols_VH.set(kCFDateFormatterQuarterSymbols_SEGMENT, 0L, value)
@@ -2875,6 +2973,10 @@ private val kCFDateFormatterShortQuarterSymbols_LAYOUT: ValueLayout by lazy { Va
 private val kCFDateFormatterShortQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortQuarterSymbols").orElseThrow().reinterpret(kCFDateFormatterShortQuarterSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortQuarterSymbols_VH: VarHandle by lazy { kCFDateFormatterShortQuarterSymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterShortQuarterSymbols: MemorySegment
     get() = kCFDateFormatterShortQuarterSymbols_VH.get(kCFDateFormatterShortQuarterSymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterShortQuarterSymbols_VH.set(kCFDateFormatterShortQuarterSymbols_SEGMENT, 0L, value)
@@ -2886,6 +2988,10 @@ private val kCFDateFormatterStandaloneQuarterSymbols_LAYOUT: ValueLayout by lazy
 private val kCFDateFormatterStandaloneQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterStandaloneQuarterSymbols").orElseThrow().reinterpret(kCFDateFormatterStandaloneQuarterSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterStandaloneQuarterSymbols_VH: VarHandle by lazy { kCFDateFormatterStandaloneQuarterSymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterStandaloneQuarterSymbols: MemorySegment
     get() = kCFDateFormatterStandaloneQuarterSymbols_VH.get(kCFDateFormatterStandaloneQuarterSymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterStandaloneQuarterSymbols_VH.set(kCFDateFormatterStandaloneQuarterSymbols_SEGMENT, 0L, value)
@@ -2897,6 +3003,10 @@ private val kCFDateFormatterShortStandaloneQuarterSymbols_LAYOUT: ValueLayout by
 private val kCFDateFormatterShortStandaloneQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortStandaloneQuarterSymbols").orElseThrow().reinterpret(kCFDateFormatterShortStandaloneQuarterSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortStandaloneQuarterSymbols_VH: VarHandle by lazy { kCFDateFormatterShortStandaloneQuarterSymbols_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterShortStandaloneQuarterSymbols: MemorySegment
     get() = kCFDateFormatterShortStandaloneQuarterSymbols_VH.get(kCFDateFormatterShortStandaloneQuarterSymbols_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterShortStandaloneQuarterSymbols_VH.set(kCFDateFormatterShortStandaloneQuarterSymbols_SEGMENT, 0L, value)
@@ -2908,6 +3018,10 @@ private val kCFDateFormatterGregorianStartDate_LAYOUT: ValueLayout by lazy { Val
 private val kCFDateFormatterGregorianStartDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterGregorianStartDate").orElseThrow().reinterpret(kCFDateFormatterGregorianStartDate_LAYOUT.byteSize()) }
 private val kCFDateFormatterGregorianStartDate_VH: VarHandle by lazy { kCFDateFormatterGregorianStartDate_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterGregorianStartDate: MemorySegment
     get() = kCFDateFormatterGregorianStartDate_VH.get(kCFDateFormatterGregorianStartDate_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterGregorianStartDate_VH.set(kCFDateFormatterGregorianStartDate_SEGMENT, 0L, value)
@@ -2919,6 +3033,10 @@ private val kCFDateFormatterDoesRelativeDateFormattingKey_LAYOUT: ValueLayout by
 private val kCFDateFormatterDoesRelativeDateFormattingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterDoesRelativeDateFormattingKey").orElseThrow().reinterpret(kCFDateFormatterDoesRelativeDateFormattingKey_LAYOUT.byteSize()) }
 private val kCFDateFormatterDoesRelativeDateFormattingKey_VH: VarHandle by lazy { kCFDateFormatterDoesRelativeDateFormattingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFDateFormatterDoesRelativeDateFormattingKey: MemorySegment
     get() = kCFDateFormatterDoesRelativeDateFormattingKey_VH.get(kCFDateFormatterDoesRelativeDateFormattingKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDateFormatterDoesRelativeDateFormattingKey_VH.set(kCFDateFormatterDoesRelativeDateFormattingKey_SEGMENT, 0L, value)
@@ -3747,6 +3865,10 @@ private val kCFNumberFormatterCurrencyGroupingSeparator_LAYOUT: ValueLayout by l
 private val kCFNumberFormatterCurrencyGroupingSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterCurrencyGroupingSeparator").orElseThrow().reinterpret(kCFNumberFormatterCurrencyGroupingSeparator_LAYOUT.byteSize()) }
 private val kCFNumberFormatterCurrencyGroupingSeparator_VH: VarHandle by lazy { kCFNumberFormatterCurrencyGroupingSeparator_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFNumberFormatterCurrencyGroupingSeparator: MemorySegment
     get() = kCFNumberFormatterCurrencyGroupingSeparator_VH.get(kCFNumberFormatterCurrencyGroupingSeparator_SEGMENT, 0L) as MemorySegment
     set(value) = kCFNumberFormatterCurrencyGroupingSeparator_VH.set(kCFNumberFormatterCurrencyGroupingSeparator_SEGMENT, 0L, value)
@@ -3758,6 +3880,10 @@ private val kCFNumberFormatterIsLenient_LAYOUT: ValueLayout by lazy { ValueLayou
 private val kCFNumberFormatterIsLenient_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterIsLenient").orElseThrow().reinterpret(kCFNumberFormatterIsLenient_LAYOUT.byteSize()) }
 private val kCFNumberFormatterIsLenient_VH: VarHandle by lazy { kCFNumberFormatterIsLenient_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFNumberFormatterIsLenient: MemorySegment
     get() = kCFNumberFormatterIsLenient_VH.get(kCFNumberFormatterIsLenient_SEGMENT, 0L) as MemorySegment
     set(value) = kCFNumberFormatterIsLenient_VH.set(kCFNumberFormatterIsLenient_SEGMENT, 0L, value)
@@ -3769,6 +3895,10 @@ private val kCFNumberFormatterUseSignificantDigits_LAYOUT: ValueLayout by lazy {
 private val kCFNumberFormatterUseSignificantDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterUseSignificantDigits").orElseThrow().reinterpret(kCFNumberFormatterUseSignificantDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterUseSignificantDigits_VH: VarHandle by lazy { kCFNumberFormatterUseSignificantDigits_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFNumberFormatterUseSignificantDigits: MemorySegment
     get() = kCFNumberFormatterUseSignificantDigits_VH.get(kCFNumberFormatterUseSignificantDigits_SEGMENT, 0L) as MemorySegment
     set(value) = kCFNumberFormatterUseSignificantDigits_VH.set(kCFNumberFormatterUseSignificantDigits_SEGMENT, 0L, value)
@@ -3780,6 +3910,10 @@ private val kCFNumberFormatterMinSignificantDigits_LAYOUT: ValueLayout by lazy {
 private val kCFNumberFormatterMinSignificantDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinSignificantDigits").orElseThrow().reinterpret(kCFNumberFormatterMinSignificantDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMinSignificantDigits_VH: VarHandle by lazy { kCFNumberFormatterMinSignificantDigits_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFNumberFormatterMinSignificantDigits: MemorySegment
     get() = kCFNumberFormatterMinSignificantDigits_VH.get(kCFNumberFormatterMinSignificantDigits_SEGMENT, 0L) as MemorySegment
     set(value) = kCFNumberFormatterMinSignificantDigits_VH.set(kCFNumberFormatterMinSignificantDigits_SEGMENT, 0L, value)
@@ -3791,6 +3925,10 @@ private val kCFNumberFormatterMaxSignificantDigits_LAYOUT: ValueLayout by lazy {
 private val kCFNumberFormatterMaxSignificantDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMaxSignificantDigits").orElseThrow().reinterpret(kCFNumberFormatterMaxSignificantDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMaxSignificantDigits_VH: VarHandle by lazy { kCFNumberFormatterMaxSignificantDigits_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFNumberFormatterMaxSignificantDigits: MemorySegment
     get() = kCFNumberFormatterMaxSignificantDigits_VH.get(kCFNumberFormatterMaxSignificantDigits_SEGMENT, 0L) as MemorySegment
     set(value) = kCFNumberFormatterMaxSignificantDigits_VH.set(kCFNumberFormatterMaxSignificantDigits_SEGMENT, 0L, value)
@@ -3802,6 +3940,11 @@ private val kCFNumberFormatterMinGroupingDigits_LAYOUT: ValueLayout by lazy { Va
 private val kCFNumberFormatterMinGroupingDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinGroupingDigits").orElseThrow().reinterpret(kCFNumberFormatterMinGroupingDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMinGroupingDigits_VH: VarHandle by lazy { kCFNumberFormatterMinGroupingDigits_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFNumberFormatterMinGroupingDigits: MemorySegment
     get() = kCFNumberFormatterMinGroupingDigits_VH.get(kCFNumberFormatterMinGroupingDigits_SEGMENT, 0L) as MemorySegment
     set(value) = kCFNumberFormatterMinGroupingDigits_VH.set(kCFNumberFormatterMinGroupingDigits_SEGMENT, 0L, value)
@@ -4126,6 +4269,10 @@ private val CFPreferencesCopyApplicationList_DESC: FunctionDescriptor = Function
 private val CFPreferencesCopyApplicationList_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFPreferencesCopyApplicationList").orElseThrow()
 private val CFPreferencesCopyApplicationList_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFPreferencesCopyApplicationList_ADDR, CFPreferencesCopyApplicationList_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Unsupported API")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "Unsupported API")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Unsupported API")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Unsupported API")
 fun CFPreferencesCopyApplicationList(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CFPreferencesCopyApplicationList_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -4658,6 +4805,10 @@ private val CFURLCopyParameterString_DESC: FunctionDescriptor = FunctionDescript
 private val CFURLCopyParameterString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCopyParameterString").orElseThrow()
 private val CFURLCopyParameterString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCopyParameterString_ADDR, CFURLCopyParameterString_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "The CFURLCopyParameterString function is deprecated. Post deprecation for applications linked with or after the macOS 10.15, and for all iOS, watchOS, and tvOS applications, CFURLCopyParameterString will always return NULL, and the CFURLCopyPath(), CFURLCopyStrictPath(), and CFURLCopyFileSystemPath() functions will return the complete path including the semicolon separator and params component if the URL string contains them.")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "The CFURLCopyParameterString function is deprecated. Post deprecation for applications linked with or after the macOS 10.15, and for all iOS, watchOS, and tvOS applications, CFURLCopyParameterString will always return NULL, and the CFURLCopyPath(), CFURLCopyStrictPath(), and CFURLCopyFileSystemPath() functions will return the complete path including the semicolon separator and params component if the URL string contains them.")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "The CFURLCopyParameterString function is deprecated. Post deprecation for applications linked with or after the macOS 10.15, and for all iOS, watchOS, and tvOS applications, CFURLCopyParameterString will always return NULL, and the CFURLCopyPath(), CFURLCopyStrictPath(), and CFURLCopyFileSystemPath() functions will return the complete path including the semicolon separator and params component if the URL string contains them.")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 6, deprecatedMinor = 0, deprecatedSubminor = -1, message = "The CFURLCopyParameterString function is deprecated. Post deprecation for applications linked with or after the macOS 10.15, and for all iOS, watchOS, and tvOS applications, CFURLCopyParameterString will always return NULL, and the CFURLCopyPath(), CFURLCopyStrictPath(), and CFURLCopyFileSystemPath() functions will return the complete path including the semicolon separator and params component if the URL string contains them.")
 fun CFURLCopyParameterString(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CFURLCopyParameterString_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -4886,6 +5037,10 @@ private val CFURLCreateStringByReplacingPercentEscapesUsingEncoding_DESC: Functi
 private val CFURLCreateStringByReplacingPercentEscapesUsingEncoding_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateStringByReplacingPercentEscapesUsingEncoding").orElseThrow()
 private val CFURLCreateStringByReplacingPercentEscapesUsingEncoding_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateStringByReplacingPercentEscapesUsingEncoding_ADDR, CFURLCreateStringByReplacingPercentEscapesUsingEncoding_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use [NSString stringByRemovingPercentEncoding] or CFURLCreateStringByReplacingPercentEscapes() instead, which always uses the recommended UTF-8 encoding.")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use [NSString stringByRemovingPercentEncoding] or CFURLCreateStringByReplacingPercentEscapes() instead, which always uses the recommended UTF-8 encoding.")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use [NSString stringByRemovingPercentEncoding] or CFURLCreateStringByReplacingPercentEscapes() instead, which always uses the recommended UTF-8 encoding.")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use [NSString stringByRemovingPercentEncoding] or CFURLCreateStringByReplacingPercentEscapes() instead, which always uses the recommended UTF-8 encoding.")
 fun CFURLCreateStringByReplacingPercentEscapesUsingEncoding(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Int): MemorySegment {
     try {
         return CFURLCreateStringByReplacingPercentEscapesUsingEncoding_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -4905,6 +5060,10 @@ private val CFURLCreateStringByAddingPercentEscapes_DESC: FunctionDescriptor = F
 private val CFURLCreateStringByAddingPercentEscapes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateStringByAddingPercentEscapes").orElseThrow()
 private val CFURLCreateStringByAddingPercentEscapes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateStringByAddingPercentEscapes_ADDR, CFURLCreateStringByAddingPercentEscapes_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use [NSString stringByAddingPercentEncodingWithAllowedCharacters:] instead, which always uses the recommended UTF-8 encoding, and which encodes for a specific URL component or subcomponent (since each URL component or subcomponent has different rules for what characters are valid).")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use [NSString stringByAddingPercentEncodingWithAllowedCharacters:] instead, which always uses the recommended UTF-8 encoding, and which encodes for a specific URL component or subcomponent (since each URL component or subcomponent has different rules for what characters are valid).")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use [NSString stringByAddingPercentEncodingWithAllowedCharacters:] instead, which always uses the recommended UTF-8 encoding, and which encodes for a specific URL component or subcomponent (since each URL component or subcomponent has different rules for what characters are valid).")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use [NSString stringByAddingPercentEncodingWithAllowedCharacters:] instead, which always uses the recommended UTF-8 encoding, and which encodes for a specific URL component or subcomponent (since each URL component or subcomponent has different rules for what characters are valid).")
 fun CFURLCreateStringByAddingPercentEscapes(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: Int): MemorySegment {
     try {
         return CFURLCreateStringByAddingPercentEscapes_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
@@ -4924,6 +5083,10 @@ private val CFURLIsFileReferenceURL_DESC: FunctionDescriptor = FunctionDescripto
 private val CFURLIsFileReferenceURL_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLIsFileReferenceURL").orElseThrow()
 private val CFURLIsFileReferenceURL_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLIsFileReferenceURL_ADDR, CFURLIsFileReferenceURL_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFURLIsFileReferenceURL(arg0: MemorySegment): Byte {
     try {
         return CFURLIsFileReferenceURL_HANDLE.invokeExact(arg0) as Byte

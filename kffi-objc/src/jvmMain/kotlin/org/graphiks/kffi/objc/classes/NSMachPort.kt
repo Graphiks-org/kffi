@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -17,6 +19,10 @@ open class NSMachPort(override val ptr: MemorySegment) : NSPort(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, machPort) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun portWithMachPort_options(machPort: Int, f: NSMachPortOptions): MemorySegment {
             val sel = ObjCRuntime.sel("portWithMachPort:options:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, machPort, f.rawValue) as MemorySegment
@@ -40,6 +46,10 @@ open class NSMachPort(override val ptr: MemorySegment) : NSPort(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun initWithMachPort_options(machPort: Int, f: NSMachPortOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithMachPort:options:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, machPort, f.rawValue) as MemorySegment

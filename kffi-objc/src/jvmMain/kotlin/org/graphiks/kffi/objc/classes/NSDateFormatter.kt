@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -12,26 +14,50 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDateFormatter") }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun localizedStringFromDate_dateStyle_timeStyle(date: MemorySegment, dstyle: NSDateFormatterStyle, tstyle: NSDateFormatterStyle): MemorySegment {
             val sel = ObjCRuntime.sel("localizedStringFromDate:dateStyle:timeStyle:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, date, dstyle.rawValue, tstyle.rawValue) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun localizedStringFromDate_dateStyle_timeStyleAsString(date: MemorySegment, dstyle: NSDateFormatterStyle, tstyle: NSDateFormatterStyle): String = ObjCRuntime.toJavaString(localizedStringFromDate_dateStyle_timeStyle(date, dstyle, tstyle))
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun dateFormatFromTemplate_options_locale(tmplate: MemorySegment, opts: Long, locale: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("dateFormatFromTemplate:options:locale:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, tmplate, opts, locale) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun dateFormatFromTemplate_options_localeAsString(tmplate: MemorySegment, opts: Long, locale: MemorySegment): String = ObjCRuntime.toJavaString(dateFormatFromTemplate_options_locale(tmplate, opts, locale))
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun dateFormatFromTemplate_options_locale(tmplate: String, opts: Long, locale: MemorySegment): MemorySegment = dateFormatFromTemplate_options_locale(ObjCRuntime.newNSString(Arena.global(), tmplate), opts, locale)
 
         /** Convenience overload — [String] parameters and [String] return type. */
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun dateFormatFromTemplate_options_localeAsString(tmplate: String, opts: Long, locale: MemorySegment): String = ObjCRuntime.toJavaString(dateFormatFromTemplate_options_locale(ObjCRuntime.newNSString(Arena.global(), tmplate), opts, locale))
 
         fun defaultFormatterBehavior(): NSDateFormatterBehavior {
@@ -70,19 +96,35 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun dateFromString(string: String): MemorySegment = dateFromString(ObjCRuntime.newNSString(Arena.global(), string))
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setLocalizedDateFormatFromTemplate(dateFormatTemplate: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("setLocalizedDateFormatFromTemplate:")
         ObjCRuntime.msgSend(null, ptr, sel, dateFormatTemplate)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     fun setLocalizedDateFormatFromTemplate(dateFormatTemplate: String): Unit = setLocalizedDateFormatFromTemplate(ObjCRuntime.newNSString(Arena.global(), dateFormatTemplate))
 
     // @property formattingContext
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun formattingContext(): NSFormattingContext {
         val sel = ObjCRuntime.sel("formattingContext")
         return NSFormattingContext(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setFormattingContext(value: NSFormattingContext) {
         val sel = ObjCRuntime.sel("setFormattingContext:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
@@ -293,10 +335,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property longEraSymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun longEraSymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("longEraSymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setLongEraSymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setLongEraSymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -304,10 +354,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property veryShortMonthSymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun veryShortMonthSymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("veryShortMonthSymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setVeryShortMonthSymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setVeryShortMonthSymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -315,10 +373,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property standaloneMonthSymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun standaloneMonthSymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("standaloneMonthSymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setStandaloneMonthSymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setStandaloneMonthSymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -326,10 +392,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property shortStandaloneMonthSymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun shortStandaloneMonthSymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("shortStandaloneMonthSymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setShortStandaloneMonthSymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setShortStandaloneMonthSymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -337,10 +411,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property veryShortStandaloneMonthSymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun veryShortStandaloneMonthSymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("veryShortStandaloneMonthSymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setVeryShortStandaloneMonthSymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setVeryShortStandaloneMonthSymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -348,10 +430,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property veryShortWeekdaySymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun veryShortWeekdaySymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("veryShortWeekdaySymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setVeryShortWeekdaySymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setVeryShortWeekdaySymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -359,10 +449,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property standaloneWeekdaySymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun standaloneWeekdaySymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("standaloneWeekdaySymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setStandaloneWeekdaySymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setStandaloneWeekdaySymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -370,10 +468,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property shortStandaloneWeekdaySymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun shortStandaloneWeekdaySymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("shortStandaloneWeekdaySymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setShortStandaloneWeekdaySymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setShortStandaloneWeekdaySymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -381,10 +487,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property veryShortStandaloneWeekdaySymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun veryShortStandaloneWeekdaySymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("veryShortStandaloneWeekdaySymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setVeryShortStandaloneWeekdaySymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setVeryShortStandaloneWeekdaySymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -392,10 +506,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property quarterSymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun quarterSymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("quarterSymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setQuarterSymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setQuarterSymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -403,10 +525,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property shortQuarterSymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun shortQuarterSymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("shortQuarterSymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setShortQuarterSymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setShortQuarterSymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -414,10 +544,18 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property standaloneQuarterSymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun standaloneQuarterSymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("standaloneQuarterSymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setStandaloneQuarterSymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setStandaloneQuarterSymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -425,30 +563,54 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
     // @property shortStandaloneQuarterSymbols
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun shortStandaloneQuarterSymbols(): MemorySegment {
         val sel = ObjCRuntime.sel("shortStandaloneQuarterSymbols")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setShortStandaloneQuarterSymbols(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setShortStandaloneQuarterSymbols:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property gregorianStartDate
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun gregorianStartDate(): MemorySegment {
         val sel = ObjCRuntime.sel("gregorianStartDate")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setGregorianStartDate(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setGregorianStartDate:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property doesRelativeDateFormatting
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun doesRelativeDateFormatting(): Boolean {
         val sel = ObjCRuntime.sel("doesRelativeDateFormatting")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setDoesRelativeDateFormatting(value: Boolean) {
         val sel = ObjCRuntime.sel("setDoesRelativeDateFormatting:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -463,11 +625,13 @@ open class NSDateFormatter(override val ptr: MemorySegment) : NSFormatter(ptr) {
 
 // ── Category: NSDateFormatterCompatibility on NSDateFormatter ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "Create an NSDateFormatter with `init` and set the dateFormat property instead.")
 fun NSDateFormatter.initWithDateFormat_allowNaturalLanguage(format: MemorySegment, flag: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("initWithDateFormat:allowNaturalLanguage:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, flag) as MemorySegment
 }
 
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "There is no replacement")
 fun NSDateFormatter.allowsNaturalLanguage(): Boolean {
     val sel = ObjCRuntime.sel("allowsNaturalLanguage")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean

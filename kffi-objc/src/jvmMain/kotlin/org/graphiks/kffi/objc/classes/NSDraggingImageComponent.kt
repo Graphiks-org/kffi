@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -8,10 +10,13 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Kotlin/JVM wrapper for Objective-C class: NSDraggingImageComponent
  * Superclass: NSObject
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 open class NSDraggingImageComponent(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDraggingImageComponent") }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun draggingImageComponentWithKey(key: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("draggingImageComponentWithKey:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, key) as MemorySegment
@@ -19,41 +24,50 @@ open class NSDraggingImageComponent(override val ptr: MemorySegment) : NSObject(
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initWithKey(key: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithKey:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, key) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "all", unavailable = true)
     open fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property key
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun key(): MemorySegment {
         val sel = ObjCRuntime.sel("key")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setKey(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setKey:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property contents
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun contents(): MemorySegment {
         val sel = ObjCRuntime.sel("contents")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContents(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setContents:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property frame
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun frame(): NSRect {
         val sel = ObjCRuntime.sel("frame")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFrame(value: NSRect) {
         val sel = ObjCRuntime.sel("setFrame:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSRect.layout))

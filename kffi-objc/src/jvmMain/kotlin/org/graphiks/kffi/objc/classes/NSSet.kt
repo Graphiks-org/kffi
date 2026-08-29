@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -114,51 +116,81 @@ fun NSSet.isSubsetOfSet(otherSet: MemorySegment): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, otherSet) as Boolean
 }
 
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use enumerateObjectsUsingBlock: or a for loop instead")
 fun NSSet.makeObjectsPerformSelector(aSelector: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("makeObjectsPerformSelector:")
     ObjCRuntime.msgSend(null, this.ptr, sel, aSelector)
 }
 
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use enumerateObjectsUsingBlock: or a for loop instead")
 fun NSSet.makeObjectsPerformSelector_withObject(aSelector: MemorySegment, argument: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("makeObjectsPerformSelector:withObject:")
     ObjCRuntime.msgSend(null, this.ptr, sel, aSelector, argument)
 }
 
 /** @return NSSet<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSSet.setByAddingObject(anObject: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("setByAddingObject:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, anObject) as MemorySegment
 }
 
 /** @return NSSet<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSSet.setByAddingObjectsFromSet(other: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("setByAddingObjectsFromSet:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other) as MemorySegment
 }
 
 /** @return NSSet<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSSet.setByAddingObjectsFromArray(other: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("setByAddingObjectsFromArray:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSSet.enumerateObjectsUsingBlock(block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsUsingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, block)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSSet.enumerateObjectsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsWithOptions:usingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, block)
 }
 
 /** @return NSSet<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSSet.objectsPassingTest(predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("objectsPassingTest:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, predicate) as MemorySegment
 }
 
 /** @return NSSet<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSSet.objectsWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("objectsWithOptions:passingTest:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, predicate) as MemorySegment
@@ -246,6 +278,10 @@ fun NSSet_setWithArray(array: MemorySegment): MemorySegment {
 // ── Category: NSSortDescriptorSorting on NSSet ─────────────────────────────────────────
 
 /** @return NSArray<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSSet.sortedArrayUsingDescriptors(sortDescriptors: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("sortedArrayUsingDescriptors:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, sortDescriptors) as MemorySegment
@@ -254,6 +290,10 @@ fun NSSet.sortedArrayUsingDescriptors(sortDescriptors: MemorySegment): MemorySeg
 // ── Category: NSPredicateSupport on NSSet ─────────────────────────────────────────
 
 /** @return NSSet<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSSet.filteredSetUsingPredicate(predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("filteredSetUsingPredicate:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, predicate) as MemorySegment
@@ -261,12 +301,16 @@ fun NSSet.filteredSetUsingPredicate(predicate: MemorySegment): MemorySegment {
 
 // ── Category: NSCollectionViewAdditions on NSSet ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 fun NSSet.enumerateIndexPathsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateIndexPathsWithOptions:usingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, block)
 }
 
 // Class method: +[NSSet setWithCollectionViewIndexPath:]
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 fun NSSet_setWithCollectionViewIndexPath(indexPath: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("setWithCollectionViewIndexPath:")
     val cls = ObjCRuntime.getClass("NSSet")
@@ -274,6 +318,8 @@ fun NSSet_setWithCollectionViewIndexPath(indexPath: MemorySegment): MemorySegmen
 }
 
 // Class method: +[NSSet setWithCollectionViewIndexPaths:]
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 fun NSSet_setWithCollectionViewIndexPaths(indexPaths: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("setWithCollectionViewIndexPaths:")
     val cls = ObjCRuntime.getClass("NSSet")

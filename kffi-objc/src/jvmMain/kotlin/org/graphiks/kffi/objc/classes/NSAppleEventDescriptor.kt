@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -43,6 +45,10 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, signedInt) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         fun descriptorWithDouble(doubleValue: Double): MemorySegment {
             val sel = ObjCRuntime.sel("descriptorWithDouble:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, doubleValue) as MemorySegment
@@ -61,11 +67,19 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
         fun descriptorWithString(string: String): MemorySegment = descriptorWithString(ObjCRuntime.newNSString(Arena.global(), string))
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         fun descriptorWithDate(date: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("descriptorWithDate:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, date) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         fun descriptorWithFileURL(fileURL: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("descriptorWithFileURL:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, fileURL) as MemorySegment
@@ -86,24 +100,44 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         fun currentProcessDescriptor(): MemorySegment {
             val sel = ObjCRuntime.sel("currentProcessDescriptor")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         fun descriptorWithProcessIdentifier(processIdentifier: Int): MemorySegment {
             val sel = ObjCRuntime.sel("descriptorWithProcessIdentifier:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, processIdentifier) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         fun descriptorWithBundleIdentifier(bundleIdentifier: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("descriptorWithBundleIdentifier:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, bundleIdentifier) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         fun descriptorWithBundleIdentifier(bundleIdentifier: String): MemorySegment = descriptorWithBundleIdentifier(ObjCRuntime.newNSString(Arena.global(), bundleIdentifier))
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         fun descriptorWithApplicationURL(applicationURL: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("descriptorWithApplicationURL:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, applicationURL) as MemorySegment
@@ -166,6 +200,10 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, keyword) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun sendEventWithOptions_timeout_error(sendOptions: NSAppleEventSendOptions, timeoutInSeconds: Double, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("sendEventWithOptions:timeout:error:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, sendOptions.rawValue, timeoutInSeconds, error) as MemorySegment
@@ -248,6 +286,10 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
     }
 
     // @property doubleValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun doubleValue(): Double {
         val sel = ObjCRuntime.sel("doubleValue")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
@@ -269,12 +311,20 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
     open fun stringValueAsString(): String = ObjCRuntime.toJavaString(stringValue())
 
     // @property dateValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun dateValue(): MemorySegment {
         val sel = ObjCRuntime.sel("dateValue")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property fileURLValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun fileURLValue(): MemorySegment {
         val sel = ObjCRuntime.sel("fileURLValue")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
@@ -305,6 +355,10 @@ open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(pt
     }
 
     // @property isRecordDescriptor
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun isRecordDescriptor(): Boolean {
         val sel = ObjCRuntime.sel("isRecordDescriptor")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean

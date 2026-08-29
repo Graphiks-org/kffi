@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -33,11 +35,19 @@ open class NSTimeZone(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, aDate) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun daylightSavingTimeOffsetForDate(aDate: MemorySegment): Double {
         val sel = ObjCRuntime.sel("daylightSavingTimeOffsetForDate:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, aDate) as Double
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun nextDaylightSavingTimeTransitionAfterDate(aDate: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("nextDaylightSavingTimeTransitionAfterDate:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, aDate) as MemorySegment
@@ -94,6 +104,10 @@ fun NSTimeZone.isEqualToTimeZone(aTimeZone: MemorySegment): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, aTimeZone) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSTimeZone.localizedName_locale(style: NSTimeZoneNameStyle, locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("localizedName:locale:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, style.rawValue, locale) as MemorySegment
@@ -114,11 +128,19 @@ fun NSTimeZone.isDaylightSavingTime(): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSTimeZone.daylightSavingTimeOffset(): Double {
     val sel = ObjCRuntime.sel("daylightSavingTimeOffset")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSTimeZone.nextDaylightSavingTimeTransition(): MemorySegment {
     val sel = ObjCRuntime.sel("nextDaylightSavingTimeTransition")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
@@ -179,6 +201,10 @@ fun NSTimeZone_knownTimeZoneNames(): MemorySegment {
 }
 
 // Class method: +[NSTimeZone setAbbreviationDictionary:]
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSTimeZone_setAbbreviationDictionary(abbreviationDictionary: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setAbbreviationDictionary:")
     val cls = ObjCRuntime.getClass("NSTimeZone")
@@ -186,6 +212,10 @@ fun NSTimeZone_setAbbreviationDictionary(abbreviationDictionary: MemorySegment):
 }
 
 // Class method: +[NSTimeZone timeZoneDataVersion]
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSTimeZone_timeZoneDataVersion(): MemorySegment {
     val sel = ObjCRuntime.sel("timeZoneDataVersion")
     val cls = ObjCRuntime.getClass("NSTimeZone")

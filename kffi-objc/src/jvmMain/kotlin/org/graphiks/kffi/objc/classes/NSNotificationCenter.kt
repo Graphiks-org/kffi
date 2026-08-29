@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -50,6 +52,10 @@ open class NSNotificationCenter(override val ptr: MemorySegment) : NSObject(ptr)
     }
 
     /** @return id<NSObject> */
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun addObserverForName_object_queue_usingBlock(name: MemorySegment, obj: MemorySegment, queue: MemorySegment, block: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("addObserverForName:object:queue:usingBlock:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, name, obj, queue, block) as MemorySegment

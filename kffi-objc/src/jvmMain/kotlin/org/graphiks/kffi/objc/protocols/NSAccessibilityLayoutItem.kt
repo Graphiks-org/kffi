@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -8,7 +10,9 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Kotlin/JVM interface for Objective-C protocol: NSAccessibilityLayoutItem
  * Inherits protocols: NSAccessibilityGroup
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 interface NSAccessibilityLayoutItem : NSAccessibilityGroup {
+    @PlatformAvailability(platform = "ios", unavailable = true)
     // @optional
     fun setAccessibilityFrame(frame: NSRect): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'setAccessibilityFrame:' not implemented")

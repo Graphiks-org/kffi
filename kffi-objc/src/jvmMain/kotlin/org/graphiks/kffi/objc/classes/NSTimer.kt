@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -32,11 +34,19 @@ open class NSTimer(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ti, aTarget, aSelector, userInfo, yesOrNo) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         fun timerWithTimeInterval_repeats_block(interval: Double, repeats: Boolean, block: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("timerWithTimeInterval:repeats:block:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, interval, repeats, block) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         fun scheduledTimerWithTimeInterval_repeats_block(interval: Double, repeats: Boolean, block: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("scheduledTimerWithTimeInterval:repeats:block:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, interval, repeats, block) as MemorySegment
@@ -44,6 +54,10 @@ open class NSTimer(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
     open fun initWithFireDate_interval_repeats_block(date: MemorySegment, interval: Double, repeats: Boolean, block: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithFireDate:interval:repeats:block:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, date, interval, repeats, block) as MemorySegment
@@ -81,10 +95,18 @@ open class NSTimer(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property tolerance
+    @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun tolerance(): Double {
         val sel = ObjCRuntime.sel("tolerance")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setTolerance(value: Double) {
         val sel = ObjCRuntime.sel("setTolerance:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

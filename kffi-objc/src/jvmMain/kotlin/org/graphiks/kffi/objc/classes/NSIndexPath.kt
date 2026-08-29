@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -50,6 +52,10 @@ open class NSIndexPath(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, position) as Long
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun getIndexes_range(indexes: MemorySegment, positionRange: NSRange): Unit {
         val sel = ObjCRuntime.sel("getIndexes:range:")
         ObjCRuntime.msgSend(null, ptr, sel, indexes, ObjCRuntime.ObjCStructArg(positionRange.segment, NSRange.layout))
@@ -97,6 +103,10 @@ fun NSIndexPath_supportsSecureCoding(): Boolean {
 
 // ── Category: NSDeprecated on NSIndexPath ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSIndexPath.getIndexes(indexes: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("getIndexes:")
     ObjCRuntime.msgSend(null, this.ptr, sel, indexes)
@@ -104,17 +114,23 @@ fun NSIndexPath.getIndexes(indexes: MemorySegment): Unit {
 
 // ── Category: NSCollectionViewAdditions on NSIndexPath ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 fun NSIndexPath.item(): Long {
     val sel = ObjCRuntime.sel("item")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 fun NSIndexPath.section(): Long {
     val sel = ObjCRuntime.sel("section")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
 // Class method: +[NSIndexPath indexPathForItem:inSection:]
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 fun NSIndexPath_indexPathForItem_inSection(item: Long, section: Long): MemorySegment {
     val sel = ObjCRuntime.sel("indexPathForItem:inSection:")
     val cls = ObjCRuntime.getClass("NSIndexPath")

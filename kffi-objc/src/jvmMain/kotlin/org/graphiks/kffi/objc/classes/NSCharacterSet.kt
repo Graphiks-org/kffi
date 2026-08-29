@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -109,6 +111,10 @@ open class NSCharacterSet(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun newlineCharacterSet(): MemorySegment {
             val sel = ObjCRuntime.sel("newlineCharacterSet")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
@@ -185,6 +191,10 @@ fun NSCharacterSet_supportsSecureCoding(): Boolean {
 // ── Category: NSURLUtilities on NSCharacterSet ─────────────────────────────────────────
 
 // Class method: +[NSCharacterSet URLUserAllowedCharacterSet]
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCharacterSet_URLUserAllowedCharacterSet(): MemorySegment {
     val sel = ObjCRuntime.sel("URLUserAllowedCharacterSet")
     val cls = ObjCRuntime.getClass("NSCharacterSet")
@@ -192,6 +202,10 @@ fun NSCharacterSet_URLUserAllowedCharacterSet(): MemorySegment {
 }
 
 // Class method: +[NSCharacterSet URLPasswordAllowedCharacterSet]
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCharacterSet_URLPasswordAllowedCharacterSet(): MemorySegment {
     val sel = ObjCRuntime.sel("URLPasswordAllowedCharacterSet")
     val cls = ObjCRuntime.getClass("NSCharacterSet")
@@ -199,6 +213,10 @@ fun NSCharacterSet_URLPasswordAllowedCharacterSet(): MemorySegment {
 }
 
 // Class method: +[NSCharacterSet URLHostAllowedCharacterSet]
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCharacterSet_URLHostAllowedCharacterSet(): MemorySegment {
     val sel = ObjCRuntime.sel("URLHostAllowedCharacterSet")
     val cls = ObjCRuntime.getClass("NSCharacterSet")
@@ -206,6 +224,10 @@ fun NSCharacterSet_URLHostAllowedCharacterSet(): MemorySegment {
 }
 
 // Class method: +[NSCharacterSet URLPathAllowedCharacterSet]
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCharacterSet_URLPathAllowedCharacterSet(): MemorySegment {
     val sel = ObjCRuntime.sel("URLPathAllowedCharacterSet")
     val cls = ObjCRuntime.getClass("NSCharacterSet")
@@ -213,6 +235,10 @@ fun NSCharacterSet_URLPathAllowedCharacterSet(): MemorySegment {
 }
 
 // Class method: +[NSCharacterSet URLQueryAllowedCharacterSet]
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCharacterSet_URLQueryAllowedCharacterSet(): MemorySegment {
     val sel = ObjCRuntime.sel("URLQueryAllowedCharacterSet")
     val cls = ObjCRuntime.getClass("NSCharacterSet")
@@ -220,6 +246,10 @@ fun NSCharacterSet_URLQueryAllowedCharacterSet(): MemorySegment {
 }
 
 // Class method: +[NSCharacterSet URLFragmentAllowedCharacterSet]
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCharacterSet_URLFragmentAllowedCharacterSet(): MemorySegment {
     val sel = ObjCRuntime.sel("URLFragmentAllowedCharacterSet")
     val cls = ObjCRuntime.getClass("NSCharacterSet")

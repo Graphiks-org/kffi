@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -8,38 +10,47 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Kotlin/JVM wrapper for Objective-C class: NSDictionaryController
  * Superclass: NSArrayController
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 open class NSDictionaryController(override val ptr: MemorySegment) : NSArrayController(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDictionaryController") }
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun newObject(): MemorySegment {
         val sel = ObjCRuntime.sel("newObject")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property initialKey
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initialKey(): MemorySegment {
         val sel = ObjCRuntime.sel("initialKey")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setInitialKey(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setInitialKey:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initialKeyAsString(): String = ObjCRuntime.toJavaString(initialKey())
 
     /** Convenience overload — accepts Kotlin [String] for the NSString property. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setInitialKey(value: String) = setInitialKey(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property initialValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initialValue(): MemorySegment {
         val sel = ObjCRuntime.sel("initialValue")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setInitialValue(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setInitialValue:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -47,10 +58,12 @@ open class NSDictionaryController(override val ptr: MemorySegment) : NSArrayCont
 
     // @property includedKeys
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun includedKeys(): MemorySegment {
         val sel = ObjCRuntime.sel("includedKeys")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setIncludedKeys(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setIncludedKeys:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -58,10 +71,12 @@ open class NSDictionaryController(override val ptr: MemorySegment) : NSArrayCont
 
     // @property excludedKeys
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun excludedKeys(): MemorySegment {
         val sel = ObjCRuntime.sel("excludedKeys")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setExcludedKeys(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setExcludedKeys:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -69,29 +84,35 @@ open class NSDictionaryController(override val ptr: MemorySegment) : NSArrayCont
 
     // @property localizedKeyDictionary
     /** @return NSDictionary<NSString *,NSString *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun localizedKeyDictionary(): MemorySegment {
         val sel = ObjCRuntime.sel("localizedKeyDictionary")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setLocalizedKeyDictionary(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setLocalizedKeyDictionary:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property localizedKeyTable
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun localizedKeyTable(): MemorySegment {
         val sel = ObjCRuntime.sel("localizedKeyTable")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setLocalizedKeyTable(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setLocalizedKeyTable:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun localizedKeyTableAsString(): String = ObjCRuntime.toJavaString(localizedKeyTable())
 
     /** Convenience overload — accepts Kotlin [String] for the NSString property. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setLocalizedKeyTable(value: String) = setLocalizedKeyTable(ObjCRuntime.newNSString(Arena.global(), value))
 
 }

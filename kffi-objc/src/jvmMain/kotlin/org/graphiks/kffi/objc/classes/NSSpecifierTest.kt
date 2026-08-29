@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -14,6 +16,7 @@ open class NSSpecifierTest(override val ptr: MemorySegment) : NSScriptWhoseTest(
 
     }
 
+    @PlatformAvailability(platform = "all", unavailable = true)
     override fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
