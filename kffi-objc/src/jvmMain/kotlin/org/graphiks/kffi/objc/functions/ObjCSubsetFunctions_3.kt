@@ -1006,89 +1006,89 @@ fun CFURLCreatePropertyFromResource(arg0: MemorySegment, arg1: MemorySegment, ar
  * {@snippet lang=c : kCFURLFileExists typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileExists_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileExists_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileExists").orElseThrow() }
+private val kCFURLFileExists_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileExists").orElseThrow().reinterpret(kCFURLFileExists_LAYOUT.byteSize()) }
 private val kCFURLFileExists_VH: VarHandle by lazy { kCFURLFileExists_LAYOUT.varHandle() }
 
 var kCFURLFileExists: MemorySegment
-    get() = kCFURLFileExists_VH.get(kCFURLFileExists_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileExists_VH.set(kCFURLFileExists_SEGMENT, value)
+    get() = kCFURLFileExists_VH.get(kCFURLFileExists_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileExists_VH.set(kCFURLFileExists_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileDirectoryContents typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileDirectoryContents_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileDirectoryContents_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileDirectoryContents").orElseThrow() }
+private val kCFURLFileDirectoryContents_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileDirectoryContents").orElseThrow().reinterpret(kCFURLFileDirectoryContents_LAYOUT.byteSize()) }
 private val kCFURLFileDirectoryContents_VH: VarHandle by lazy { kCFURLFileDirectoryContents_LAYOUT.varHandle() }
 
 var kCFURLFileDirectoryContents: MemorySegment
-    get() = kCFURLFileDirectoryContents_VH.get(kCFURLFileDirectoryContents_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileDirectoryContents_VH.set(kCFURLFileDirectoryContents_SEGMENT, value)
+    get() = kCFURLFileDirectoryContents_VH.get(kCFURLFileDirectoryContents_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileDirectoryContents_VH.set(kCFURLFileDirectoryContents_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileLength typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileLength_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileLength_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileLength").orElseThrow() }
+private val kCFURLFileLength_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileLength").orElseThrow().reinterpret(kCFURLFileLength_LAYOUT.byteSize()) }
 private val kCFURLFileLength_VH: VarHandle by lazy { kCFURLFileLength_LAYOUT.varHandle() }
 
 var kCFURLFileLength: MemorySegment
-    get() = kCFURLFileLength_VH.get(kCFURLFileLength_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileLength_VH.set(kCFURLFileLength_SEGMENT, value)
+    get() = kCFURLFileLength_VH.get(kCFURLFileLength_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileLength_VH.set(kCFURLFileLength_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileLastModificationTime typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileLastModificationTime_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileLastModificationTime_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileLastModificationTime").orElseThrow() }
+private val kCFURLFileLastModificationTime_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileLastModificationTime").orElseThrow().reinterpret(kCFURLFileLastModificationTime_LAYOUT.byteSize()) }
 private val kCFURLFileLastModificationTime_VH: VarHandle by lazy { kCFURLFileLastModificationTime_LAYOUT.varHandle() }
 
 var kCFURLFileLastModificationTime: MemorySegment
-    get() = kCFURLFileLastModificationTime_VH.get(kCFURLFileLastModificationTime_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileLastModificationTime_VH.set(kCFURLFileLastModificationTime_SEGMENT, value)
+    get() = kCFURLFileLastModificationTime_VH.get(kCFURLFileLastModificationTime_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileLastModificationTime_VH.set(kCFURLFileLastModificationTime_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFilePOSIXMode typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFilePOSIXMode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFilePOSIXMode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFilePOSIXMode").orElseThrow() }
+private val kCFURLFilePOSIXMode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFilePOSIXMode").orElseThrow().reinterpret(kCFURLFilePOSIXMode_LAYOUT.byteSize()) }
 private val kCFURLFilePOSIXMode_VH: VarHandle by lazy { kCFURLFilePOSIXMode_LAYOUT.varHandle() }
 
 var kCFURLFilePOSIXMode: MemorySegment
-    get() = kCFURLFilePOSIXMode_VH.get(kCFURLFilePOSIXMode_SEGMENT) as MemorySegment
-    set(value) = kCFURLFilePOSIXMode_VH.set(kCFURLFilePOSIXMode_SEGMENT, value)
+    get() = kCFURLFilePOSIXMode_VH.get(kCFURLFilePOSIXMode_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFilePOSIXMode_VH.set(kCFURLFilePOSIXMode_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileOwnerID typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileOwnerID_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileOwnerID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileOwnerID").orElseThrow() }
+private val kCFURLFileOwnerID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileOwnerID").orElseThrow().reinterpret(kCFURLFileOwnerID_LAYOUT.byteSize()) }
 private val kCFURLFileOwnerID_VH: VarHandle by lazy { kCFURLFileOwnerID_LAYOUT.varHandle() }
 
 var kCFURLFileOwnerID: MemorySegment
-    get() = kCFURLFileOwnerID_VH.get(kCFURLFileOwnerID_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileOwnerID_VH.set(kCFURLFileOwnerID_SEGMENT, value)
+    get() = kCFURLFileOwnerID_VH.get(kCFURLFileOwnerID_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileOwnerID_VH.set(kCFURLFileOwnerID_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLHTTPStatusCode typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLHTTPStatusCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLHTTPStatusCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLHTTPStatusCode").orElseThrow() }
+private val kCFURLHTTPStatusCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLHTTPStatusCode").orElseThrow().reinterpret(kCFURLHTTPStatusCode_LAYOUT.byteSize()) }
 private val kCFURLHTTPStatusCode_VH: VarHandle by lazy { kCFURLHTTPStatusCode_LAYOUT.varHandle() }
 
 var kCFURLHTTPStatusCode: MemorySegment
-    get() = kCFURLHTTPStatusCode_VH.get(kCFURLHTTPStatusCode_SEGMENT) as MemorySegment
-    set(value) = kCFURLHTTPStatusCode_VH.set(kCFURLHTTPStatusCode_SEGMENT, value)
+    get() = kCFURLHTTPStatusCode_VH.get(kCFURLHTTPStatusCode_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLHTTPStatusCode_VH.set(kCFURLHTTPStatusCode_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLHTTPStatusLine typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLHTTPStatusLine_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLHTTPStatusLine_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLHTTPStatusLine").orElseThrow() }
+private val kCFURLHTTPStatusLine_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLHTTPStatusLine").orElseThrow().reinterpret(kCFURLHTTPStatusLine_LAYOUT.byteSize()) }
 private val kCFURLHTTPStatusLine_VH: VarHandle by lazy { kCFURLHTTPStatusLine_LAYOUT.varHandle() }
 
 var kCFURLHTTPStatusLine: MemorySegment
-    get() = kCFURLHTTPStatusLine_VH.get(kCFURLHTTPStatusLine_SEGMENT) as MemorySegment
-    set(value) = kCFURLHTTPStatusLine_VH.set(kCFURLHTTPStatusLine_SEGMENT, value)
+    get() = kCFURLHTTPStatusLine_VH.get(kCFURLHTTPStatusLine_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLHTTPStatusLine_VH.set(kCFURLHTTPStatusLine_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFUUIDGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -1265,78 +1265,78 @@ fun CFCopyHomeDirectoryURL(): MemorySegment {
  * {@snippet lang=c : kCFBundleInfoDictionaryVersionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFBundleInfoDictionaryVersionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFBundleInfoDictionaryVersionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleInfoDictionaryVersionKey").orElseThrow() }
+private val kCFBundleInfoDictionaryVersionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleInfoDictionaryVersionKey").orElseThrow().reinterpret(kCFBundleInfoDictionaryVersionKey_LAYOUT.byteSize()) }
 private val kCFBundleInfoDictionaryVersionKey_VH: VarHandle by lazy { kCFBundleInfoDictionaryVersionKey_LAYOUT.varHandle() }
 
 var kCFBundleInfoDictionaryVersionKey: MemorySegment
-    get() = kCFBundleInfoDictionaryVersionKey_VH.get(kCFBundleInfoDictionaryVersionKey_SEGMENT) as MemorySegment
-    set(value) = kCFBundleInfoDictionaryVersionKey_VH.set(kCFBundleInfoDictionaryVersionKey_SEGMENT, value)
+    get() = kCFBundleInfoDictionaryVersionKey_VH.get(kCFBundleInfoDictionaryVersionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFBundleInfoDictionaryVersionKey_VH.set(kCFBundleInfoDictionaryVersionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFBundleExecutableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFBundleExecutableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFBundleExecutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleExecutableKey").orElseThrow() }
+private val kCFBundleExecutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleExecutableKey").orElseThrow().reinterpret(kCFBundleExecutableKey_LAYOUT.byteSize()) }
 private val kCFBundleExecutableKey_VH: VarHandle by lazy { kCFBundleExecutableKey_LAYOUT.varHandle() }
 
 var kCFBundleExecutableKey: MemorySegment
-    get() = kCFBundleExecutableKey_VH.get(kCFBundleExecutableKey_SEGMENT) as MemorySegment
-    set(value) = kCFBundleExecutableKey_VH.set(kCFBundleExecutableKey_SEGMENT, value)
+    get() = kCFBundleExecutableKey_VH.get(kCFBundleExecutableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFBundleExecutableKey_VH.set(kCFBundleExecutableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFBundleIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFBundleIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFBundleIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleIdentifierKey").orElseThrow() }
+private val kCFBundleIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleIdentifierKey").orElseThrow().reinterpret(kCFBundleIdentifierKey_LAYOUT.byteSize()) }
 private val kCFBundleIdentifierKey_VH: VarHandle by lazy { kCFBundleIdentifierKey_LAYOUT.varHandle() }
 
 var kCFBundleIdentifierKey: MemorySegment
-    get() = kCFBundleIdentifierKey_VH.get(kCFBundleIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFBundleIdentifierKey_VH.set(kCFBundleIdentifierKey_SEGMENT, value)
+    get() = kCFBundleIdentifierKey_VH.get(kCFBundleIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFBundleIdentifierKey_VH.set(kCFBundleIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFBundleVersionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFBundleVersionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFBundleVersionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleVersionKey").orElseThrow() }
+private val kCFBundleVersionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleVersionKey").orElseThrow().reinterpret(kCFBundleVersionKey_LAYOUT.byteSize()) }
 private val kCFBundleVersionKey_VH: VarHandle by lazy { kCFBundleVersionKey_LAYOUT.varHandle() }
 
 var kCFBundleVersionKey: MemorySegment
-    get() = kCFBundleVersionKey_VH.get(kCFBundleVersionKey_SEGMENT) as MemorySegment
-    set(value) = kCFBundleVersionKey_VH.set(kCFBundleVersionKey_SEGMENT, value)
+    get() = kCFBundleVersionKey_VH.get(kCFBundleVersionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFBundleVersionKey_VH.set(kCFBundleVersionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFBundleDevelopmentRegionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFBundleDevelopmentRegionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFBundleDevelopmentRegionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleDevelopmentRegionKey").orElseThrow() }
+private val kCFBundleDevelopmentRegionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleDevelopmentRegionKey").orElseThrow().reinterpret(kCFBundleDevelopmentRegionKey_LAYOUT.byteSize()) }
 private val kCFBundleDevelopmentRegionKey_VH: VarHandle by lazy { kCFBundleDevelopmentRegionKey_LAYOUT.varHandle() }
 
 var kCFBundleDevelopmentRegionKey: MemorySegment
-    get() = kCFBundleDevelopmentRegionKey_VH.get(kCFBundleDevelopmentRegionKey_SEGMENT) as MemorySegment
-    set(value) = kCFBundleDevelopmentRegionKey_VH.set(kCFBundleDevelopmentRegionKey_SEGMENT, value)
+    get() = kCFBundleDevelopmentRegionKey_VH.get(kCFBundleDevelopmentRegionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFBundleDevelopmentRegionKey_VH.set(kCFBundleDevelopmentRegionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFBundleNameKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFBundleNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFBundleNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleNameKey").orElseThrow() }
+private val kCFBundleNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleNameKey").orElseThrow().reinterpret(kCFBundleNameKey_LAYOUT.byteSize()) }
 private val kCFBundleNameKey_VH: VarHandle by lazy { kCFBundleNameKey_LAYOUT.varHandle() }
 
 var kCFBundleNameKey: MemorySegment
-    get() = kCFBundleNameKey_VH.get(kCFBundleNameKey_SEGMENT) as MemorySegment
-    set(value) = kCFBundleNameKey_VH.set(kCFBundleNameKey_SEGMENT, value)
+    get() = kCFBundleNameKey_VH.get(kCFBundleNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFBundleNameKey_VH.set(kCFBundleNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFBundleLocalizationsKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFBundleLocalizationsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFBundleLocalizationsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleLocalizationsKey").orElseThrow() }
+private val kCFBundleLocalizationsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBundleLocalizationsKey").orElseThrow().reinterpret(kCFBundleLocalizationsKey_LAYOUT.byteSize()) }
 private val kCFBundleLocalizationsKey_VH: VarHandle by lazy { kCFBundleLocalizationsKey_LAYOUT.varHandle() }
 
 var kCFBundleLocalizationsKey: MemorySegment
-    get() = kCFBundleLocalizationsKey_VH.get(kCFBundleLocalizationsKey_SEGMENT) as MemorySegment
-    set(value) = kCFBundleLocalizationsKey_VH.set(kCFBundleLocalizationsKey_SEGMENT, value)
+    get() = kCFBundleLocalizationsKey_VH.get(kCFBundleLocalizationsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFBundleLocalizationsKey_VH.set(kCFBundleLocalizationsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFBundleGetMainBundle typedef CFBundleRef = (Declared(__CFBundle))*()
@@ -2653,56 +2653,56 @@ fun CFMessagePortSetDispatchQueue(arg0: MemorySegment, arg1: MemorySegment): Uni
  * {@snippet lang=c : kCFPlugInDynamicRegistrationKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPlugInDynamicRegistrationKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPlugInDynamicRegistrationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInDynamicRegistrationKey").orElseThrow() }
+private val kCFPlugInDynamicRegistrationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInDynamicRegistrationKey").orElseThrow().reinterpret(kCFPlugInDynamicRegistrationKey_LAYOUT.byteSize()) }
 private val kCFPlugInDynamicRegistrationKey_VH: VarHandle by lazy { kCFPlugInDynamicRegistrationKey_LAYOUT.varHandle() }
 
 var kCFPlugInDynamicRegistrationKey: MemorySegment
-    get() = kCFPlugInDynamicRegistrationKey_VH.get(kCFPlugInDynamicRegistrationKey_SEGMENT) as MemorySegment
-    set(value) = kCFPlugInDynamicRegistrationKey_VH.set(kCFPlugInDynamicRegistrationKey_SEGMENT, value)
+    get() = kCFPlugInDynamicRegistrationKey_VH.get(kCFPlugInDynamicRegistrationKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPlugInDynamicRegistrationKey_VH.set(kCFPlugInDynamicRegistrationKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFPlugInDynamicRegisterFunctionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPlugInDynamicRegisterFunctionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPlugInDynamicRegisterFunctionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInDynamicRegisterFunctionKey").orElseThrow() }
+private val kCFPlugInDynamicRegisterFunctionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInDynamicRegisterFunctionKey").orElseThrow().reinterpret(kCFPlugInDynamicRegisterFunctionKey_LAYOUT.byteSize()) }
 private val kCFPlugInDynamicRegisterFunctionKey_VH: VarHandle by lazy { kCFPlugInDynamicRegisterFunctionKey_LAYOUT.varHandle() }
 
 var kCFPlugInDynamicRegisterFunctionKey: MemorySegment
-    get() = kCFPlugInDynamicRegisterFunctionKey_VH.get(kCFPlugInDynamicRegisterFunctionKey_SEGMENT) as MemorySegment
-    set(value) = kCFPlugInDynamicRegisterFunctionKey_VH.set(kCFPlugInDynamicRegisterFunctionKey_SEGMENT, value)
+    get() = kCFPlugInDynamicRegisterFunctionKey_VH.get(kCFPlugInDynamicRegisterFunctionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPlugInDynamicRegisterFunctionKey_VH.set(kCFPlugInDynamicRegisterFunctionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFPlugInUnloadFunctionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPlugInUnloadFunctionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPlugInUnloadFunctionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInUnloadFunctionKey").orElseThrow() }
+private val kCFPlugInUnloadFunctionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInUnloadFunctionKey").orElseThrow().reinterpret(kCFPlugInUnloadFunctionKey_LAYOUT.byteSize()) }
 private val kCFPlugInUnloadFunctionKey_VH: VarHandle by lazy { kCFPlugInUnloadFunctionKey_LAYOUT.varHandle() }
 
 var kCFPlugInUnloadFunctionKey: MemorySegment
-    get() = kCFPlugInUnloadFunctionKey_VH.get(kCFPlugInUnloadFunctionKey_SEGMENT) as MemorySegment
-    set(value) = kCFPlugInUnloadFunctionKey_VH.set(kCFPlugInUnloadFunctionKey_SEGMENT, value)
+    get() = kCFPlugInUnloadFunctionKey_VH.get(kCFPlugInUnloadFunctionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPlugInUnloadFunctionKey_VH.set(kCFPlugInUnloadFunctionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFPlugInFactoriesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPlugInFactoriesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPlugInFactoriesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInFactoriesKey").orElseThrow() }
+private val kCFPlugInFactoriesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInFactoriesKey").orElseThrow().reinterpret(kCFPlugInFactoriesKey_LAYOUT.byteSize()) }
 private val kCFPlugInFactoriesKey_VH: VarHandle by lazy { kCFPlugInFactoriesKey_LAYOUT.varHandle() }
 
 var kCFPlugInFactoriesKey: MemorySegment
-    get() = kCFPlugInFactoriesKey_VH.get(kCFPlugInFactoriesKey_SEGMENT) as MemorySegment
-    set(value) = kCFPlugInFactoriesKey_VH.set(kCFPlugInFactoriesKey_SEGMENT, value)
+    get() = kCFPlugInFactoriesKey_VH.get(kCFPlugInFactoriesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPlugInFactoriesKey_VH.set(kCFPlugInFactoriesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFPlugInTypesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPlugInTypesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPlugInTypesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInTypesKey").orElseThrow() }
+private val kCFPlugInTypesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPlugInTypesKey").orElseThrow().reinterpret(kCFPlugInTypesKey_LAYOUT.byteSize()) }
 private val kCFPlugInTypesKey_VH: VarHandle by lazy { kCFPlugInTypesKey_LAYOUT.varHandle() }
 
 var kCFPlugInTypesKey: MemorySegment
-    get() = kCFPlugInTypesKey_VH.get(kCFPlugInTypesKey_SEGMENT) as MemorySegment
-    set(value) = kCFPlugInTypesKey_VH.set(kCFPlugInTypesKey_SEGMENT, value)
+    get() = kCFPlugInTypesKey_VH.get(kCFPlugInTypesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPlugInTypesKey_VH.set(kCFPlugInTypesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFPlugInGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -4665,221 +4665,221 @@ fun CFUserNotificationDisplayAlert(arg0: Double, arg1: Long, arg2: MemorySegment
  * {@snippet lang=c : kCFUserNotificationIconURLKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationIconURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationIconURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationIconURLKey").orElseThrow() }
+private val kCFUserNotificationIconURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationIconURLKey").orElseThrow().reinterpret(kCFUserNotificationIconURLKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationIconURLKey_VH: VarHandle by lazy { kCFUserNotificationIconURLKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationIconURLKey: MemorySegment
-    get() = kCFUserNotificationIconURLKey_VH.get(kCFUserNotificationIconURLKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationIconURLKey_VH.set(kCFUserNotificationIconURLKey_SEGMENT, value)
+    get() = kCFUserNotificationIconURLKey_VH.get(kCFUserNotificationIconURLKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationIconURLKey_VH.set(kCFUserNotificationIconURLKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationSoundURLKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationSoundURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationSoundURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationSoundURLKey").orElseThrow() }
+private val kCFUserNotificationSoundURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationSoundURLKey").orElseThrow().reinterpret(kCFUserNotificationSoundURLKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationSoundURLKey_VH: VarHandle by lazy { kCFUserNotificationSoundURLKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationSoundURLKey: MemorySegment
-    get() = kCFUserNotificationSoundURLKey_VH.get(kCFUserNotificationSoundURLKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationSoundURLKey_VH.set(kCFUserNotificationSoundURLKey_SEGMENT, value)
+    get() = kCFUserNotificationSoundURLKey_VH.get(kCFUserNotificationSoundURLKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationSoundURLKey_VH.set(kCFUserNotificationSoundURLKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationLocalizationURLKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationLocalizationURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationLocalizationURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationLocalizationURLKey").orElseThrow() }
+private val kCFUserNotificationLocalizationURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationLocalizationURLKey").orElseThrow().reinterpret(kCFUserNotificationLocalizationURLKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationLocalizationURLKey_VH: VarHandle by lazy { kCFUserNotificationLocalizationURLKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationLocalizationURLKey: MemorySegment
-    get() = kCFUserNotificationLocalizationURLKey_VH.get(kCFUserNotificationLocalizationURLKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationLocalizationURLKey_VH.set(kCFUserNotificationLocalizationURLKey_SEGMENT, value)
+    get() = kCFUserNotificationLocalizationURLKey_VH.get(kCFUserNotificationLocalizationURLKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationLocalizationURLKey_VH.set(kCFUserNotificationLocalizationURLKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationAlertHeaderKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationAlertHeaderKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationAlertHeaderKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlertHeaderKey").orElseThrow() }
+private val kCFUserNotificationAlertHeaderKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlertHeaderKey").orElseThrow().reinterpret(kCFUserNotificationAlertHeaderKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationAlertHeaderKey_VH: VarHandle by lazy { kCFUserNotificationAlertHeaderKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationAlertHeaderKey: MemorySegment
-    get() = kCFUserNotificationAlertHeaderKey_VH.get(kCFUserNotificationAlertHeaderKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationAlertHeaderKey_VH.set(kCFUserNotificationAlertHeaderKey_SEGMENT, value)
+    get() = kCFUserNotificationAlertHeaderKey_VH.get(kCFUserNotificationAlertHeaderKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationAlertHeaderKey_VH.set(kCFUserNotificationAlertHeaderKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationAlertMessageKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationAlertMessageKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationAlertMessageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlertMessageKey").orElseThrow() }
+private val kCFUserNotificationAlertMessageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlertMessageKey").orElseThrow().reinterpret(kCFUserNotificationAlertMessageKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationAlertMessageKey_VH: VarHandle by lazy { kCFUserNotificationAlertMessageKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationAlertMessageKey: MemorySegment
-    get() = kCFUserNotificationAlertMessageKey_VH.get(kCFUserNotificationAlertMessageKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationAlertMessageKey_VH.set(kCFUserNotificationAlertMessageKey_SEGMENT, value)
+    get() = kCFUserNotificationAlertMessageKey_VH.get(kCFUserNotificationAlertMessageKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationAlertMessageKey_VH.set(kCFUserNotificationAlertMessageKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationDefaultButtonTitleKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationDefaultButtonTitleKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationDefaultButtonTitleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationDefaultButtonTitleKey").orElseThrow() }
+private val kCFUserNotificationDefaultButtonTitleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationDefaultButtonTitleKey").orElseThrow().reinterpret(kCFUserNotificationDefaultButtonTitleKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationDefaultButtonTitleKey_VH: VarHandle by lazy { kCFUserNotificationDefaultButtonTitleKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationDefaultButtonTitleKey: MemorySegment
-    get() = kCFUserNotificationDefaultButtonTitleKey_VH.get(kCFUserNotificationDefaultButtonTitleKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationDefaultButtonTitleKey_VH.set(kCFUserNotificationDefaultButtonTitleKey_SEGMENT, value)
+    get() = kCFUserNotificationDefaultButtonTitleKey_VH.get(kCFUserNotificationDefaultButtonTitleKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationDefaultButtonTitleKey_VH.set(kCFUserNotificationDefaultButtonTitleKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationAlternateButtonTitleKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationAlternateButtonTitleKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationAlternateButtonTitleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlternateButtonTitleKey").orElseThrow() }
+private val kCFUserNotificationAlternateButtonTitleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlternateButtonTitleKey").orElseThrow().reinterpret(kCFUserNotificationAlternateButtonTitleKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationAlternateButtonTitleKey_VH: VarHandle by lazy { kCFUserNotificationAlternateButtonTitleKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationAlternateButtonTitleKey: MemorySegment
-    get() = kCFUserNotificationAlternateButtonTitleKey_VH.get(kCFUserNotificationAlternateButtonTitleKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationAlternateButtonTitleKey_VH.set(kCFUserNotificationAlternateButtonTitleKey_SEGMENT, value)
+    get() = kCFUserNotificationAlternateButtonTitleKey_VH.get(kCFUserNotificationAlternateButtonTitleKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationAlternateButtonTitleKey_VH.set(kCFUserNotificationAlternateButtonTitleKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationOtherButtonTitleKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationOtherButtonTitleKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationOtherButtonTitleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationOtherButtonTitleKey").orElseThrow() }
+private val kCFUserNotificationOtherButtonTitleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationOtherButtonTitleKey").orElseThrow().reinterpret(kCFUserNotificationOtherButtonTitleKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationOtherButtonTitleKey_VH: VarHandle by lazy { kCFUserNotificationOtherButtonTitleKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationOtherButtonTitleKey: MemorySegment
-    get() = kCFUserNotificationOtherButtonTitleKey_VH.get(kCFUserNotificationOtherButtonTitleKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationOtherButtonTitleKey_VH.set(kCFUserNotificationOtherButtonTitleKey_SEGMENT, value)
+    get() = kCFUserNotificationOtherButtonTitleKey_VH.get(kCFUserNotificationOtherButtonTitleKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationOtherButtonTitleKey_VH.set(kCFUserNotificationOtherButtonTitleKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationProgressIndicatorValueKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationProgressIndicatorValueKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationProgressIndicatorValueKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationProgressIndicatorValueKey").orElseThrow() }
+private val kCFUserNotificationProgressIndicatorValueKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationProgressIndicatorValueKey").orElseThrow().reinterpret(kCFUserNotificationProgressIndicatorValueKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationProgressIndicatorValueKey_VH: VarHandle by lazy { kCFUserNotificationProgressIndicatorValueKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationProgressIndicatorValueKey: MemorySegment
-    get() = kCFUserNotificationProgressIndicatorValueKey_VH.get(kCFUserNotificationProgressIndicatorValueKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationProgressIndicatorValueKey_VH.set(kCFUserNotificationProgressIndicatorValueKey_SEGMENT, value)
+    get() = kCFUserNotificationProgressIndicatorValueKey_VH.get(kCFUserNotificationProgressIndicatorValueKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationProgressIndicatorValueKey_VH.set(kCFUserNotificationProgressIndicatorValueKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationPopUpTitlesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationPopUpTitlesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationPopUpTitlesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationPopUpTitlesKey").orElseThrow() }
+private val kCFUserNotificationPopUpTitlesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationPopUpTitlesKey").orElseThrow().reinterpret(kCFUserNotificationPopUpTitlesKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationPopUpTitlesKey_VH: VarHandle by lazy { kCFUserNotificationPopUpTitlesKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationPopUpTitlesKey: MemorySegment
-    get() = kCFUserNotificationPopUpTitlesKey_VH.get(kCFUserNotificationPopUpTitlesKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationPopUpTitlesKey_VH.set(kCFUserNotificationPopUpTitlesKey_SEGMENT, value)
+    get() = kCFUserNotificationPopUpTitlesKey_VH.get(kCFUserNotificationPopUpTitlesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationPopUpTitlesKey_VH.set(kCFUserNotificationPopUpTitlesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationTextFieldTitlesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationTextFieldTitlesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationTextFieldTitlesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationTextFieldTitlesKey").orElseThrow() }
+private val kCFUserNotificationTextFieldTitlesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationTextFieldTitlesKey").orElseThrow().reinterpret(kCFUserNotificationTextFieldTitlesKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationTextFieldTitlesKey_VH: VarHandle by lazy { kCFUserNotificationTextFieldTitlesKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationTextFieldTitlesKey: MemorySegment
-    get() = kCFUserNotificationTextFieldTitlesKey_VH.get(kCFUserNotificationTextFieldTitlesKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationTextFieldTitlesKey_VH.set(kCFUserNotificationTextFieldTitlesKey_SEGMENT, value)
+    get() = kCFUserNotificationTextFieldTitlesKey_VH.get(kCFUserNotificationTextFieldTitlesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationTextFieldTitlesKey_VH.set(kCFUserNotificationTextFieldTitlesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationCheckBoxTitlesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationCheckBoxTitlesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationCheckBoxTitlesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationCheckBoxTitlesKey").orElseThrow() }
+private val kCFUserNotificationCheckBoxTitlesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationCheckBoxTitlesKey").orElseThrow().reinterpret(kCFUserNotificationCheckBoxTitlesKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationCheckBoxTitlesKey_VH: VarHandle by lazy { kCFUserNotificationCheckBoxTitlesKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationCheckBoxTitlesKey: MemorySegment
-    get() = kCFUserNotificationCheckBoxTitlesKey_VH.get(kCFUserNotificationCheckBoxTitlesKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationCheckBoxTitlesKey_VH.set(kCFUserNotificationCheckBoxTitlesKey_SEGMENT, value)
+    get() = kCFUserNotificationCheckBoxTitlesKey_VH.get(kCFUserNotificationCheckBoxTitlesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationCheckBoxTitlesKey_VH.set(kCFUserNotificationCheckBoxTitlesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationTextFieldValuesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationTextFieldValuesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationTextFieldValuesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationTextFieldValuesKey").orElseThrow() }
+private val kCFUserNotificationTextFieldValuesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationTextFieldValuesKey").orElseThrow().reinterpret(kCFUserNotificationTextFieldValuesKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationTextFieldValuesKey_VH: VarHandle by lazy { kCFUserNotificationTextFieldValuesKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationTextFieldValuesKey: MemorySegment
-    get() = kCFUserNotificationTextFieldValuesKey_VH.get(kCFUserNotificationTextFieldValuesKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationTextFieldValuesKey_VH.set(kCFUserNotificationTextFieldValuesKey_SEGMENT, value)
+    get() = kCFUserNotificationTextFieldValuesKey_VH.get(kCFUserNotificationTextFieldValuesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationTextFieldValuesKey_VH.set(kCFUserNotificationTextFieldValuesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationPopUpSelectionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationPopUpSelectionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationPopUpSelectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationPopUpSelectionKey").orElseThrow() }
+private val kCFUserNotificationPopUpSelectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationPopUpSelectionKey").orElseThrow().reinterpret(kCFUserNotificationPopUpSelectionKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationPopUpSelectionKey_VH: VarHandle by lazy { kCFUserNotificationPopUpSelectionKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationPopUpSelectionKey: MemorySegment
-    get() = kCFUserNotificationPopUpSelectionKey_VH.get(kCFUserNotificationPopUpSelectionKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationPopUpSelectionKey_VH.set(kCFUserNotificationPopUpSelectionKey_SEGMENT, value)
+    get() = kCFUserNotificationPopUpSelectionKey_VH.get(kCFUserNotificationPopUpSelectionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationPopUpSelectionKey_VH.set(kCFUserNotificationPopUpSelectionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationAlertTopMostKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationAlertTopMostKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationAlertTopMostKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlertTopMostKey").orElseThrow() }
+private val kCFUserNotificationAlertTopMostKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlertTopMostKey").orElseThrow().reinterpret(kCFUserNotificationAlertTopMostKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationAlertTopMostKey_VH: VarHandle by lazy { kCFUserNotificationAlertTopMostKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationAlertTopMostKey: MemorySegment
-    get() = kCFUserNotificationAlertTopMostKey_VH.get(kCFUserNotificationAlertTopMostKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationAlertTopMostKey_VH.set(kCFUserNotificationAlertTopMostKey_SEGMENT, value)
+    get() = kCFUserNotificationAlertTopMostKey_VH.get(kCFUserNotificationAlertTopMostKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationAlertTopMostKey_VH.set(kCFUserNotificationAlertTopMostKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationKeyboardTypesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationKeyboardTypesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationKeyboardTypesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationKeyboardTypesKey").orElseThrow() }
+private val kCFUserNotificationKeyboardTypesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationKeyboardTypesKey").orElseThrow().reinterpret(kCFUserNotificationKeyboardTypesKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationKeyboardTypesKey_VH: VarHandle by lazy { kCFUserNotificationKeyboardTypesKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationKeyboardTypesKey: MemorySegment
-    get() = kCFUserNotificationKeyboardTypesKey_VH.get(kCFUserNotificationKeyboardTypesKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationKeyboardTypesKey_VH.set(kCFUserNotificationKeyboardTypesKey_SEGMENT, value)
+    get() = kCFUserNotificationKeyboardTypesKey_VH.get(kCFUserNotificationKeyboardTypesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationKeyboardTypesKey_VH.set(kCFUserNotificationKeyboardTypesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationAlertAccessibilityIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationAlertAccessibilityIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationAlertAccessibilityIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlertAccessibilityIdentifierKey").orElseThrow() }
+private val kCFUserNotificationAlertAccessibilityIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlertAccessibilityIdentifierKey").orElseThrow().reinterpret(kCFUserNotificationAlertAccessibilityIdentifierKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationAlertAccessibilityIdentifierKey_VH: VarHandle by lazy { kCFUserNotificationAlertAccessibilityIdentifierKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationAlertAccessibilityIdentifierKey: MemorySegment
-    get() = kCFUserNotificationAlertAccessibilityIdentifierKey_VH.get(kCFUserNotificationAlertAccessibilityIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationAlertAccessibilityIdentifierKey_VH.set(kCFUserNotificationAlertAccessibilityIdentifierKey_SEGMENT, value)
+    get() = kCFUserNotificationAlertAccessibilityIdentifierKey_VH.get(kCFUserNotificationAlertAccessibilityIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationAlertAccessibilityIdentifierKey_VH.set(kCFUserNotificationAlertAccessibilityIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationDefaultButtonAccessibilityIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationDefaultButtonAccessibilityIdentifierKey").orElseThrow() }
+private val kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationDefaultButtonAccessibilityIdentifierKey").orElseThrow().reinterpret(kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_VH: VarHandle by lazy { kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationDefaultButtonAccessibilityIdentifierKey: MemorySegment
-    get() = kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_VH.get(kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_VH.set(kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_SEGMENT, value)
+    get() = kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_VH.get(kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_VH.set(kCFUserNotificationDefaultButtonAccessibilityIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationAlternateButtonAccessibilityIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlternateButtonAccessibilityIdentifierKey").orElseThrow() }
+private val kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationAlternateButtonAccessibilityIdentifierKey").orElseThrow().reinterpret(kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_VH: VarHandle by lazy { kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationAlternateButtonAccessibilityIdentifierKey: MemorySegment
-    get() = kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_VH.get(kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_VH.set(kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_SEGMENT, value)
+    get() = kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_VH.get(kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_VH.set(kCFUserNotificationAlternateButtonAccessibilityIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFUserNotificationOtherButtonAccessibilityIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFUserNotificationOtherButtonAccessibilityIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFUserNotificationOtherButtonAccessibilityIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationOtherButtonAccessibilityIdentifierKey").orElseThrow() }
+private val kCFUserNotificationOtherButtonAccessibilityIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFUserNotificationOtherButtonAccessibilityIdentifierKey").orElseThrow().reinterpret(kCFUserNotificationOtherButtonAccessibilityIdentifierKey_LAYOUT.byteSize()) }
 private val kCFUserNotificationOtherButtonAccessibilityIdentifierKey_VH: VarHandle by lazy { kCFUserNotificationOtherButtonAccessibilityIdentifierKey_LAYOUT.varHandle() }
 
 var kCFUserNotificationOtherButtonAccessibilityIdentifierKey: MemorySegment
-    get() = kCFUserNotificationOtherButtonAccessibilityIdentifierKey_VH.get(kCFUserNotificationOtherButtonAccessibilityIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFUserNotificationOtherButtonAccessibilityIdentifierKey_VH.set(kCFUserNotificationOtherButtonAccessibilityIdentifierKey_SEGMENT, value)
+    get() = kCFUserNotificationOtherButtonAccessibilityIdentifierKey_VH.get(kCFUserNotificationOtherButtonAccessibilityIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFUserNotificationOtherButtonAccessibilityIdentifierKey_VH.set(kCFUserNotificationOtherButtonAccessibilityIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFXMLNodeGetTypeID typedef CFTypeID = UNSIGNED = Long()

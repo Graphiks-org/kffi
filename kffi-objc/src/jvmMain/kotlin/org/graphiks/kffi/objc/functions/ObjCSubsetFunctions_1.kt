@@ -1129,177 +1129,177 @@ fun CFStringTransform(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegm
  * {@snippet lang=c : kCFStringTransformStripCombiningMarks typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformStripCombiningMarks_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformStripCombiningMarks_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformStripCombiningMarks").orElseThrow() }
+private val kCFStringTransformStripCombiningMarks_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformStripCombiningMarks").orElseThrow().reinterpret(kCFStringTransformStripCombiningMarks_LAYOUT.byteSize()) }
 private val kCFStringTransformStripCombiningMarks_VH: VarHandle by lazy { kCFStringTransformStripCombiningMarks_LAYOUT.varHandle() }
 
 var kCFStringTransformStripCombiningMarks: MemorySegment
-    get() = kCFStringTransformStripCombiningMarks_VH.get(kCFStringTransformStripCombiningMarks_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformStripCombiningMarks_VH.set(kCFStringTransformStripCombiningMarks_SEGMENT, value)
+    get() = kCFStringTransformStripCombiningMarks_VH.get(kCFStringTransformStripCombiningMarks_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformStripCombiningMarks_VH.set(kCFStringTransformStripCombiningMarks_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformToLatin typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformToLatin_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformToLatin_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformToLatin").orElseThrow() }
+private val kCFStringTransformToLatin_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformToLatin").orElseThrow().reinterpret(kCFStringTransformToLatin_LAYOUT.byteSize()) }
 private val kCFStringTransformToLatin_VH: VarHandle by lazy { kCFStringTransformToLatin_LAYOUT.varHandle() }
 
 var kCFStringTransformToLatin: MemorySegment
-    get() = kCFStringTransformToLatin_VH.get(kCFStringTransformToLatin_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformToLatin_VH.set(kCFStringTransformToLatin_SEGMENT, value)
+    get() = kCFStringTransformToLatin_VH.get(kCFStringTransformToLatin_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformToLatin_VH.set(kCFStringTransformToLatin_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformFullwidthHalfwidth typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformFullwidthHalfwidth_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformFullwidthHalfwidth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformFullwidthHalfwidth").orElseThrow() }
+private val kCFStringTransformFullwidthHalfwidth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformFullwidthHalfwidth").orElseThrow().reinterpret(kCFStringTransformFullwidthHalfwidth_LAYOUT.byteSize()) }
 private val kCFStringTransformFullwidthHalfwidth_VH: VarHandle by lazy { kCFStringTransformFullwidthHalfwidth_LAYOUT.varHandle() }
 
 var kCFStringTransformFullwidthHalfwidth: MemorySegment
-    get() = kCFStringTransformFullwidthHalfwidth_VH.get(kCFStringTransformFullwidthHalfwidth_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformFullwidthHalfwidth_VH.set(kCFStringTransformFullwidthHalfwidth_SEGMENT, value)
+    get() = kCFStringTransformFullwidthHalfwidth_VH.get(kCFStringTransformFullwidthHalfwidth_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformFullwidthHalfwidth_VH.set(kCFStringTransformFullwidthHalfwidth_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformLatinKatakana typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformLatinKatakana_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformLatinKatakana_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinKatakana").orElseThrow() }
+private val kCFStringTransformLatinKatakana_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinKatakana").orElseThrow().reinterpret(kCFStringTransformLatinKatakana_LAYOUT.byteSize()) }
 private val kCFStringTransformLatinKatakana_VH: VarHandle by lazy { kCFStringTransformLatinKatakana_LAYOUT.varHandle() }
 
 var kCFStringTransformLatinKatakana: MemorySegment
-    get() = kCFStringTransformLatinKatakana_VH.get(kCFStringTransformLatinKatakana_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformLatinKatakana_VH.set(kCFStringTransformLatinKatakana_SEGMENT, value)
+    get() = kCFStringTransformLatinKatakana_VH.get(kCFStringTransformLatinKatakana_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformLatinKatakana_VH.set(kCFStringTransformLatinKatakana_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformLatinHiragana typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformLatinHiragana_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformLatinHiragana_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinHiragana").orElseThrow() }
+private val kCFStringTransformLatinHiragana_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinHiragana").orElseThrow().reinterpret(kCFStringTransformLatinHiragana_LAYOUT.byteSize()) }
 private val kCFStringTransformLatinHiragana_VH: VarHandle by lazy { kCFStringTransformLatinHiragana_LAYOUT.varHandle() }
 
 var kCFStringTransformLatinHiragana: MemorySegment
-    get() = kCFStringTransformLatinHiragana_VH.get(kCFStringTransformLatinHiragana_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformLatinHiragana_VH.set(kCFStringTransformLatinHiragana_SEGMENT, value)
+    get() = kCFStringTransformLatinHiragana_VH.get(kCFStringTransformLatinHiragana_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformLatinHiragana_VH.set(kCFStringTransformLatinHiragana_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformHiraganaKatakana typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformHiraganaKatakana_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformHiraganaKatakana_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformHiraganaKatakana").orElseThrow() }
+private val kCFStringTransformHiraganaKatakana_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformHiraganaKatakana").orElseThrow().reinterpret(kCFStringTransformHiraganaKatakana_LAYOUT.byteSize()) }
 private val kCFStringTransformHiraganaKatakana_VH: VarHandle by lazy { kCFStringTransformHiraganaKatakana_LAYOUT.varHandle() }
 
 var kCFStringTransformHiraganaKatakana: MemorySegment
-    get() = kCFStringTransformHiraganaKatakana_VH.get(kCFStringTransformHiraganaKatakana_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformHiraganaKatakana_VH.set(kCFStringTransformHiraganaKatakana_SEGMENT, value)
+    get() = kCFStringTransformHiraganaKatakana_VH.get(kCFStringTransformHiraganaKatakana_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformHiraganaKatakana_VH.set(kCFStringTransformHiraganaKatakana_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformMandarinLatin typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformMandarinLatin_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformMandarinLatin_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformMandarinLatin").orElseThrow() }
+private val kCFStringTransformMandarinLatin_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformMandarinLatin").orElseThrow().reinterpret(kCFStringTransformMandarinLatin_LAYOUT.byteSize()) }
 private val kCFStringTransformMandarinLatin_VH: VarHandle by lazy { kCFStringTransformMandarinLatin_LAYOUT.varHandle() }
 
 var kCFStringTransformMandarinLatin: MemorySegment
-    get() = kCFStringTransformMandarinLatin_VH.get(kCFStringTransformMandarinLatin_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformMandarinLatin_VH.set(kCFStringTransformMandarinLatin_SEGMENT, value)
+    get() = kCFStringTransformMandarinLatin_VH.get(kCFStringTransformMandarinLatin_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformMandarinLatin_VH.set(kCFStringTransformMandarinLatin_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformLatinHangul typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformLatinHangul_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformLatinHangul_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinHangul").orElseThrow() }
+private val kCFStringTransformLatinHangul_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinHangul").orElseThrow().reinterpret(kCFStringTransformLatinHangul_LAYOUT.byteSize()) }
 private val kCFStringTransformLatinHangul_VH: VarHandle by lazy { kCFStringTransformLatinHangul_LAYOUT.varHandle() }
 
 var kCFStringTransformLatinHangul: MemorySegment
-    get() = kCFStringTransformLatinHangul_VH.get(kCFStringTransformLatinHangul_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformLatinHangul_VH.set(kCFStringTransformLatinHangul_SEGMENT, value)
+    get() = kCFStringTransformLatinHangul_VH.get(kCFStringTransformLatinHangul_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformLatinHangul_VH.set(kCFStringTransformLatinHangul_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformLatinArabic typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformLatinArabic_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformLatinArabic_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinArabic").orElseThrow() }
+private val kCFStringTransformLatinArabic_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinArabic").orElseThrow().reinterpret(kCFStringTransformLatinArabic_LAYOUT.byteSize()) }
 private val kCFStringTransformLatinArabic_VH: VarHandle by lazy { kCFStringTransformLatinArabic_LAYOUT.varHandle() }
 
 var kCFStringTransformLatinArabic: MemorySegment
-    get() = kCFStringTransformLatinArabic_VH.get(kCFStringTransformLatinArabic_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformLatinArabic_VH.set(kCFStringTransformLatinArabic_SEGMENT, value)
+    get() = kCFStringTransformLatinArabic_VH.get(kCFStringTransformLatinArabic_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformLatinArabic_VH.set(kCFStringTransformLatinArabic_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformLatinHebrew typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformLatinHebrew_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformLatinHebrew_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinHebrew").orElseThrow() }
+private val kCFStringTransformLatinHebrew_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinHebrew").orElseThrow().reinterpret(kCFStringTransformLatinHebrew_LAYOUT.byteSize()) }
 private val kCFStringTransformLatinHebrew_VH: VarHandle by lazy { kCFStringTransformLatinHebrew_LAYOUT.varHandle() }
 
 var kCFStringTransformLatinHebrew: MemorySegment
-    get() = kCFStringTransformLatinHebrew_VH.get(kCFStringTransformLatinHebrew_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformLatinHebrew_VH.set(kCFStringTransformLatinHebrew_SEGMENT, value)
+    get() = kCFStringTransformLatinHebrew_VH.get(kCFStringTransformLatinHebrew_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformLatinHebrew_VH.set(kCFStringTransformLatinHebrew_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformLatinThai typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformLatinThai_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformLatinThai_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinThai").orElseThrow() }
+private val kCFStringTransformLatinThai_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinThai").orElseThrow().reinterpret(kCFStringTransformLatinThai_LAYOUT.byteSize()) }
 private val kCFStringTransformLatinThai_VH: VarHandle by lazy { kCFStringTransformLatinThai_LAYOUT.varHandle() }
 
 var kCFStringTransformLatinThai: MemorySegment
-    get() = kCFStringTransformLatinThai_VH.get(kCFStringTransformLatinThai_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformLatinThai_VH.set(kCFStringTransformLatinThai_SEGMENT, value)
+    get() = kCFStringTransformLatinThai_VH.get(kCFStringTransformLatinThai_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformLatinThai_VH.set(kCFStringTransformLatinThai_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformLatinCyrillic typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformLatinCyrillic_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformLatinCyrillic_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinCyrillic").orElseThrow() }
+private val kCFStringTransformLatinCyrillic_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinCyrillic").orElseThrow().reinterpret(kCFStringTransformLatinCyrillic_LAYOUT.byteSize()) }
 private val kCFStringTransformLatinCyrillic_VH: VarHandle by lazy { kCFStringTransformLatinCyrillic_LAYOUT.varHandle() }
 
 var kCFStringTransformLatinCyrillic: MemorySegment
-    get() = kCFStringTransformLatinCyrillic_VH.get(kCFStringTransformLatinCyrillic_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformLatinCyrillic_VH.set(kCFStringTransformLatinCyrillic_SEGMENT, value)
+    get() = kCFStringTransformLatinCyrillic_VH.get(kCFStringTransformLatinCyrillic_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformLatinCyrillic_VH.set(kCFStringTransformLatinCyrillic_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformLatinGreek typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformLatinGreek_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformLatinGreek_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinGreek").orElseThrow() }
+private val kCFStringTransformLatinGreek_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformLatinGreek").orElseThrow().reinterpret(kCFStringTransformLatinGreek_LAYOUT.byteSize()) }
 private val kCFStringTransformLatinGreek_VH: VarHandle by lazy { kCFStringTransformLatinGreek_LAYOUT.varHandle() }
 
 var kCFStringTransformLatinGreek: MemorySegment
-    get() = kCFStringTransformLatinGreek_VH.get(kCFStringTransformLatinGreek_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformLatinGreek_VH.set(kCFStringTransformLatinGreek_SEGMENT, value)
+    get() = kCFStringTransformLatinGreek_VH.get(kCFStringTransformLatinGreek_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformLatinGreek_VH.set(kCFStringTransformLatinGreek_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformToXMLHex typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformToXMLHex_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformToXMLHex_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformToXMLHex").orElseThrow() }
+private val kCFStringTransformToXMLHex_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformToXMLHex").orElseThrow().reinterpret(kCFStringTransformToXMLHex_LAYOUT.byteSize()) }
 private val kCFStringTransformToXMLHex_VH: VarHandle by lazy { kCFStringTransformToXMLHex_LAYOUT.varHandle() }
 
 var kCFStringTransformToXMLHex: MemorySegment
-    get() = kCFStringTransformToXMLHex_VH.get(kCFStringTransformToXMLHex_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformToXMLHex_VH.set(kCFStringTransformToXMLHex_SEGMENT, value)
+    get() = kCFStringTransformToXMLHex_VH.get(kCFStringTransformToXMLHex_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformToXMLHex_VH.set(kCFStringTransformToXMLHex_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformToUnicodeName typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformToUnicodeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformToUnicodeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformToUnicodeName").orElseThrow() }
+private val kCFStringTransformToUnicodeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformToUnicodeName").orElseThrow().reinterpret(kCFStringTransformToUnicodeName_LAYOUT.byteSize()) }
 private val kCFStringTransformToUnicodeName_VH: VarHandle by lazy { kCFStringTransformToUnicodeName_LAYOUT.varHandle() }
 
 var kCFStringTransformToUnicodeName: MemorySegment
-    get() = kCFStringTransformToUnicodeName_VH.get(kCFStringTransformToUnicodeName_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformToUnicodeName_VH.set(kCFStringTransformToUnicodeName_SEGMENT, value)
+    get() = kCFStringTransformToUnicodeName_VH.get(kCFStringTransformToUnicodeName_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformToUnicodeName_VH.set(kCFStringTransformToUnicodeName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStringTransformStripDiacritics typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFStringTransformStripDiacritics_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStringTransformStripDiacritics_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformStripDiacritics").orElseThrow() }
+private val kCFStringTransformStripDiacritics_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStringTransformStripDiacritics").orElseThrow().reinterpret(kCFStringTransformStripDiacritics_LAYOUT.byteSize()) }
 private val kCFStringTransformStripDiacritics_VH: VarHandle by lazy { kCFStringTransformStripDiacritics_LAYOUT.varHandle() }
 
 var kCFStringTransformStripDiacritics: MemorySegment
-    get() = kCFStringTransformStripDiacritics_VH.get(kCFStringTransformStripDiacritics_SEGMENT) as MemorySegment
-    set(value) = kCFStringTransformStripDiacritics_VH.set(kCFStringTransformStripDiacritics_SEGMENT, value)
+    get() = kCFStringTransformStripDiacritics_VH.get(kCFStringTransformStripDiacritics_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStringTransformStripDiacritics_VH.set(kCFStringTransformStripDiacritics_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFStringIsEncodingAvailable typedef Boolean = UNSIGNED = Char(typedef CFStringEncoding = UNSIGNED = Int)
@@ -1913,12 +1913,12 @@ fun CFTimeZoneCopyLocalizedName(arg0: MemorySegment, arg1: CFTimeZoneNameStyle, 
  * {@snippet lang=c : kCFTimeZoneSystemTimeZoneDidChangeNotification typedef const CFNotificationName = (Declared(__CFString))*
  */
 private val kCFTimeZoneSystemTimeZoneDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFTimeZoneSystemTimeZoneDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFTimeZoneSystemTimeZoneDidChangeNotification").orElseThrow() }
+private val kCFTimeZoneSystemTimeZoneDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFTimeZoneSystemTimeZoneDidChangeNotification").orElseThrow().reinterpret(kCFTimeZoneSystemTimeZoneDidChangeNotification_LAYOUT.byteSize()) }
 private val kCFTimeZoneSystemTimeZoneDidChangeNotification_VH: VarHandle by lazy { kCFTimeZoneSystemTimeZoneDidChangeNotification_LAYOUT.varHandle() }
 
 var kCFTimeZoneSystemTimeZoneDidChangeNotification: MemorySegment
-    get() = kCFTimeZoneSystemTimeZoneDidChangeNotification_VH.get(kCFTimeZoneSystemTimeZoneDidChangeNotification_SEGMENT) as MemorySegment
-    set(value) = kCFTimeZoneSystemTimeZoneDidChangeNotification_VH.set(kCFTimeZoneSystemTimeZoneDidChangeNotification_SEGMENT, value)
+    get() = kCFTimeZoneSystemTimeZoneDidChangeNotification_VH.get(kCFTimeZoneSystemTimeZoneDidChangeNotification_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFTimeZoneSystemTimeZoneDidChangeNotification_VH.set(kCFTimeZoneSystemTimeZoneDidChangeNotification_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFCalendarGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -2608,342 +2608,342 @@ fun CFDateFormatterCopyProperty(arg0: MemorySegment, arg1: MemorySegment): Memor
  * {@snippet lang=c : kCFDateFormatterIsLenient typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterIsLenient_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterIsLenient_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterIsLenient").orElseThrow() }
+private val kCFDateFormatterIsLenient_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterIsLenient").orElseThrow().reinterpret(kCFDateFormatterIsLenient_LAYOUT.byteSize()) }
 private val kCFDateFormatterIsLenient_VH: VarHandle by lazy { kCFDateFormatterIsLenient_LAYOUT.varHandle() }
 
 var kCFDateFormatterIsLenient: MemorySegment
-    get() = kCFDateFormatterIsLenient_VH.get(kCFDateFormatterIsLenient_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterIsLenient_VH.set(kCFDateFormatterIsLenient_SEGMENT, value)
+    get() = kCFDateFormatterIsLenient_VH.get(kCFDateFormatterIsLenient_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterIsLenient_VH.set(kCFDateFormatterIsLenient_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterTimeZone typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterTimeZone_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterTimeZone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterTimeZone").orElseThrow() }
+private val kCFDateFormatterTimeZone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterTimeZone").orElseThrow().reinterpret(kCFDateFormatterTimeZone_LAYOUT.byteSize()) }
 private val kCFDateFormatterTimeZone_VH: VarHandle by lazy { kCFDateFormatterTimeZone_LAYOUT.varHandle() }
 
 var kCFDateFormatterTimeZone: MemorySegment
-    get() = kCFDateFormatterTimeZone_VH.get(kCFDateFormatterTimeZone_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterTimeZone_VH.set(kCFDateFormatterTimeZone_SEGMENT, value)
+    get() = kCFDateFormatterTimeZone_VH.get(kCFDateFormatterTimeZone_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterTimeZone_VH.set(kCFDateFormatterTimeZone_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterCalendarName typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterCalendarName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterCalendarName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterCalendarName").orElseThrow() }
+private val kCFDateFormatterCalendarName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterCalendarName").orElseThrow().reinterpret(kCFDateFormatterCalendarName_LAYOUT.byteSize()) }
 private val kCFDateFormatterCalendarName_VH: VarHandle by lazy { kCFDateFormatterCalendarName_LAYOUT.varHandle() }
 
 var kCFDateFormatterCalendarName: MemorySegment
-    get() = kCFDateFormatterCalendarName_VH.get(kCFDateFormatterCalendarName_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterCalendarName_VH.set(kCFDateFormatterCalendarName_SEGMENT, value)
+    get() = kCFDateFormatterCalendarName_VH.get(kCFDateFormatterCalendarName_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterCalendarName_VH.set(kCFDateFormatterCalendarName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterDefaultFormat typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterDefaultFormat_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterDefaultFormat_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterDefaultFormat").orElseThrow() }
+private val kCFDateFormatterDefaultFormat_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterDefaultFormat").orElseThrow().reinterpret(kCFDateFormatterDefaultFormat_LAYOUT.byteSize()) }
 private val kCFDateFormatterDefaultFormat_VH: VarHandle by lazy { kCFDateFormatterDefaultFormat_LAYOUT.varHandle() }
 
 var kCFDateFormatterDefaultFormat: MemorySegment
-    get() = kCFDateFormatterDefaultFormat_VH.get(kCFDateFormatterDefaultFormat_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterDefaultFormat_VH.set(kCFDateFormatterDefaultFormat_SEGMENT, value)
+    get() = kCFDateFormatterDefaultFormat_VH.get(kCFDateFormatterDefaultFormat_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterDefaultFormat_VH.set(kCFDateFormatterDefaultFormat_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterTwoDigitStartDate typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterTwoDigitStartDate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterTwoDigitStartDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterTwoDigitStartDate").orElseThrow() }
+private val kCFDateFormatterTwoDigitStartDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterTwoDigitStartDate").orElseThrow().reinterpret(kCFDateFormatterTwoDigitStartDate_LAYOUT.byteSize()) }
 private val kCFDateFormatterTwoDigitStartDate_VH: VarHandle by lazy { kCFDateFormatterTwoDigitStartDate_LAYOUT.varHandle() }
 
 var kCFDateFormatterTwoDigitStartDate: MemorySegment
-    get() = kCFDateFormatterTwoDigitStartDate_VH.get(kCFDateFormatterTwoDigitStartDate_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterTwoDigitStartDate_VH.set(kCFDateFormatterTwoDigitStartDate_SEGMENT, value)
+    get() = kCFDateFormatterTwoDigitStartDate_VH.get(kCFDateFormatterTwoDigitStartDate_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterTwoDigitStartDate_VH.set(kCFDateFormatterTwoDigitStartDate_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterDefaultDate typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterDefaultDate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterDefaultDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterDefaultDate").orElseThrow() }
+private val kCFDateFormatterDefaultDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterDefaultDate").orElseThrow().reinterpret(kCFDateFormatterDefaultDate_LAYOUT.byteSize()) }
 private val kCFDateFormatterDefaultDate_VH: VarHandle by lazy { kCFDateFormatterDefaultDate_LAYOUT.varHandle() }
 
 var kCFDateFormatterDefaultDate: MemorySegment
-    get() = kCFDateFormatterDefaultDate_VH.get(kCFDateFormatterDefaultDate_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterDefaultDate_VH.set(kCFDateFormatterDefaultDate_SEGMENT, value)
+    get() = kCFDateFormatterDefaultDate_VH.get(kCFDateFormatterDefaultDate_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterDefaultDate_VH.set(kCFDateFormatterDefaultDate_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterCalendar typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterCalendar").orElseThrow() }
+private val kCFDateFormatterCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterCalendar").orElseThrow().reinterpret(kCFDateFormatterCalendar_LAYOUT.byteSize()) }
 private val kCFDateFormatterCalendar_VH: VarHandle by lazy { kCFDateFormatterCalendar_LAYOUT.varHandle() }
 
 var kCFDateFormatterCalendar: MemorySegment
-    get() = kCFDateFormatterCalendar_VH.get(kCFDateFormatterCalendar_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterCalendar_VH.set(kCFDateFormatterCalendar_SEGMENT, value)
+    get() = kCFDateFormatterCalendar_VH.get(kCFDateFormatterCalendar_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterCalendar_VH.set(kCFDateFormatterCalendar_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterEraSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterEraSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterEraSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterEraSymbols").orElseThrow() }
+private val kCFDateFormatterEraSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterEraSymbols").orElseThrow().reinterpret(kCFDateFormatterEraSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterEraSymbols_VH: VarHandle by lazy { kCFDateFormatterEraSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterEraSymbols: MemorySegment
-    get() = kCFDateFormatterEraSymbols_VH.get(kCFDateFormatterEraSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterEraSymbols_VH.set(kCFDateFormatterEraSymbols_SEGMENT, value)
+    get() = kCFDateFormatterEraSymbols_VH.get(kCFDateFormatterEraSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterEraSymbols_VH.set(kCFDateFormatterEraSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterMonthSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterMonthSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterMonthSymbols").orElseThrow() }
+private val kCFDateFormatterMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterMonthSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterMonthSymbols: MemorySegment
-    get() = kCFDateFormatterMonthSymbols_VH.get(kCFDateFormatterMonthSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterMonthSymbols_VH.set(kCFDateFormatterMonthSymbols_SEGMENT, value)
+    get() = kCFDateFormatterMonthSymbols_VH.get(kCFDateFormatterMonthSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterMonthSymbols_VH.set(kCFDateFormatterMonthSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterShortMonthSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterShortMonthSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterShortMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortMonthSymbols").orElseThrow() }
+private val kCFDateFormatterShortMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterShortMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterShortMonthSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterShortMonthSymbols: MemorySegment
-    get() = kCFDateFormatterShortMonthSymbols_VH.get(kCFDateFormatterShortMonthSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterShortMonthSymbols_VH.set(kCFDateFormatterShortMonthSymbols_SEGMENT, value)
+    get() = kCFDateFormatterShortMonthSymbols_VH.get(kCFDateFormatterShortMonthSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterShortMonthSymbols_VH.set(kCFDateFormatterShortMonthSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterWeekdaySymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterWeekdaySymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterWeekdaySymbols").orElseThrow() }
+private val kCFDateFormatterWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterWeekdaySymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterWeekdaySymbols: MemorySegment
-    get() = kCFDateFormatterWeekdaySymbols_VH.get(kCFDateFormatterWeekdaySymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterWeekdaySymbols_VH.set(kCFDateFormatterWeekdaySymbols_SEGMENT, value)
+    get() = kCFDateFormatterWeekdaySymbols_VH.get(kCFDateFormatterWeekdaySymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterWeekdaySymbols_VH.set(kCFDateFormatterWeekdaySymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterShortWeekdaySymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterShortWeekdaySymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterShortWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortWeekdaySymbols").orElseThrow() }
+private val kCFDateFormatterShortWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterShortWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterShortWeekdaySymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterShortWeekdaySymbols: MemorySegment
-    get() = kCFDateFormatterShortWeekdaySymbols_VH.get(kCFDateFormatterShortWeekdaySymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterShortWeekdaySymbols_VH.set(kCFDateFormatterShortWeekdaySymbols_SEGMENT, value)
+    get() = kCFDateFormatterShortWeekdaySymbols_VH.get(kCFDateFormatterShortWeekdaySymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterShortWeekdaySymbols_VH.set(kCFDateFormatterShortWeekdaySymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterAMSymbol typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterAMSymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterAMSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterAMSymbol").orElseThrow() }
+private val kCFDateFormatterAMSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterAMSymbol").orElseThrow().reinterpret(kCFDateFormatterAMSymbol_LAYOUT.byteSize()) }
 private val kCFDateFormatterAMSymbol_VH: VarHandle by lazy { kCFDateFormatterAMSymbol_LAYOUT.varHandle() }
 
 var kCFDateFormatterAMSymbol: MemorySegment
-    get() = kCFDateFormatterAMSymbol_VH.get(kCFDateFormatterAMSymbol_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterAMSymbol_VH.set(kCFDateFormatterAMSymbol_SEGMENT, value)
+    get() = kCFDateFormatterAMSymbol_VH.get(kCFDateFormatterAMSymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterAMSymbol_VH.set(kCFDateFormatterAMSymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterPMSymbol typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterPMSymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterPMSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterPMSymbol").orElseThrow() }
+private val kCFDateFormatterPMSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterPMSymbol").orElseThrow().reinterpret(kCFDateFormatterPMSymbol_LAYOUT.byteSize()) }
 private val kCFDateFormatterPMSymbol_VH: VarHandle by lazy { kCFDateFormatterPMSymbol_LAYOUT.varHandle() }
 
 var kCFDateFormatterPMSymbol: MemorySegment
-    get() = kCFDateFormatterPMSymbol_VH.get(kCFDateFormatterPMSymbol_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterPMSymbol_VH.set(kCFDateFormatterPMSymbol_SEGMENT, value)
+    get() = kCFDateFormatterPMSymbol_VH.get(kCFDateFormatterPMSymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterPMSymbol_VH.set(kCFDateFormatterPMSymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterLongEraSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterLongEraSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterLongEraSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterLongEraSymbols").orElseThrow() }
+private val kCFDateFormatterLongEraSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterLongEraSymbols").orElseThrow().reinterpret(kCFDateFormatterLongEraSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterLongEraSymbols_VH: VarHandle by lazy { kCFDateFormatterLongEraSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterLongEraSymbols: MemorySegment
-    get() = kCFDateFormatterLongEraSymbols_VH.get(kCFDateFormatterLongEraSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterLongEraSymbols_VH.set(kCFDateFormatterLongEraSymbols_SEGMENT, value)
+    get() = kCFDateFormatterLongEraSymbols_VH.get(kCFDateFormatterLongEraSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterLongEraSymbols_VH.set(kCFDateFormatterLongEraSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterVeryShortMonthSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterVeryShortMonthSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterVeryShortMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortMonthSymbols").orElseThrow() }
+private val kCFDateFormatterVeryShortMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterVeryShortMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterVeryShortMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterVeryShortMonthSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterVeryShortMonthSymbols: MemorySegment
-    get() = kCFDateFormatterVeryShortMonthSymbols_VH.get(kCFDateFormatterVeryShortMonthSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterVeryShortMonthSymbols_VH.set(kCFDateFormatterVeryShortMonthSymbols_SEGMENT, value)
+    get() = kCFDateFormatterVeryShortMonthSymbols_VH.get(kCFDateFormatterVeryShortMonthSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterVeryShortMonthSymbols_VH.set(kCFDateFormatterVeryShortMonthSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterStandaloneMonthSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterStandaloneMonthSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterStandaloneMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterStandaloneMonthSymbols").orElseThrow() }
+private val kCFDateFormatterStandaloneMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterStandaloneMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterStandaloneMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterStandaloneMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterStandaloneMonthSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterStandaloneMonthSymbols: MemorySegment
-    get() = kCFDateFormatterStandaloneMonthSymbols_VH.get(kCFDateFormatterStandaloneMonthSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterStandaloneMonthSymbols_VH.set(kCFDateFormatterStandaloneMonthSymbols_SEGMENT, value)
+    get() = kCFDateFormatterStandaloneMonthSymbols_VH.get(kCFDateFormatterStandaloneMonthSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterStandaloneMonthSymbols_VH.set(kCFDateFormatterStandaloneMonthSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterShortStandaloneMonthSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterShortStandaloneMonthSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterShortStandaloneMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortStandaloneMonthSymbols").orElseThrow() }
+private val kCFDateFormatterShortStandaloneMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortStandaloneMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterShortStandaloneMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortStandaloneMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterShortStandaloneMonthSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterShortStandaloneMonthSymbols: MemorySegment
-    get() = kCFDateFormatterShortStandaloneMonthSymbols_VH.get(kCFDateFormatterShortStandaloneMonthSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterShortStandaloneMonthSymbols_VH.set(kCFDateFormatterShortStandaloneMonthSymbols_SEGMENT, value)
+    get() = kCFDateFormatterShortStandaloneMonthSymbols_VH.get(kCFDateFormatterShortStandaloneMonthSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterShortStandaloneMonthSymbols_VH.set(kCFDateFormatterShortStandaloneMonthSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterVeryShortStandaloneMonthSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterVeryShortStandaloneMonthSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterVeryShortStandaloneMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortStandaloneMonthSymbols").orElseThrow() }
+private val kCFDateFormatterVeryShortStandaloneMonthSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortStandaloneMonthSymbols").orElseThrow().reinterpret(kCFDateFormatterVeryShortStandaloneMonthSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterVeryShortStandaloneMonthSymbols_VH: VarHandle by lazy { kCFDateFormatterVeryShortStandaloneMonthSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterVeryShortStandaloneMonthSymbols: MemorySegment
-    get() = kCFDateFormatterVeryShortStandaloneMonthSymbols_VH.get(kCFDateFormatterVeryShortStandaloneMonthSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterVeryShortStandaloneMonthSymbols_VH.set(kCFDateFormatterVeryShortStandaloneMonthSymbols_SEGMENT, value)
+    get() = kCFDateFormatterVeryShortStandaloneMonthSymbols_VH.get(kCFDateFormatterVeryShortStandaloneMonthSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterVeryShortStandaloneMonthSymbols_VH.set(kCFDateFormatterVeryShortStandaloneMonthSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterVeryShortWeekdaySymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterVeryShortWeekdaySymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterVeryShortWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortWeekdaySymbols").orElseThrow() }
+private val kCFDateFormatterVeryShortWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterVeryShortWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterVeryShortWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterVeryShortWeekdaySymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterVeryShortWeekdaySymbols: MemorySegment
-    get() = kCFDateFormatterVeryShortWeekdaySymbols_VH.get(kCFDateFormatterVeryShortWeekdaySymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterVeryShortWeekdaySymbols_VH.set(kCFDateFormatterVeryShortWeekdaySymbols_SEGMENT, value)
+    get() = kCFDateFormatterVeryShortWeekdaySymbols_VH.get(kCFDateFormatterVeryShortWeekdaySymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterVeryShortWeekdaySymbols_VH.set(kCFDateFormatterVeryShortWeekdaySymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterStandaloneWeekdaySymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterStandaloneWeekdaySymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterStandaloneWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterStandaloneWeekdaySymbols").orElseThrow() }
+private val kCFDateFormatterStandaloneWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterStandaloneWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterStandaloneWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterStandaloneWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterStandaloneWeekdaySymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterStandaloneWeekdaySymbols: MemorySegment
-    get() = kCFDateFormatterStandaloneWeekdaySymbols_VH.get(kCFDateFormatterStandaloneWeekdaySymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterStandaloneWeekdaySymbols_VH.set(kCFDateFormatterStandaloneWeekdaySymbols_SEGMENT, value)
+    get() = kCFDateFormatterStandaloneWeekdaySymbols_VH.get(kCFDateFormatterStandaloneWeekdaySymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterStandaloneWeekdaySymbols_VH.set(kCFDateFormatterStandaloneWeekdaySymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterShortStandaloneWeekdaySymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterShortStandaloneWeekdaySymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterShortStandaloneWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortStandaloneWeekdaySymbols").orElseThrow() }
+private val kCFDateFormatterShortStandaloneWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortStandaloneWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterShortStandaloneWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortStandaloneWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterShortStandaloneWeekdaySymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterShortStandaloneWeekdaySymbols: MemorySegment
-    get() = kCFDateFormatterShortStandaloneWeekdaySymbols_VH.get(kCFDateFormatterShortStandaloneWeekdaySymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterShortStandaloneWeekdaySymbols_VH.set(kCFDateFormatterShortStandaloneWeekdaySymbols_SEGMENT, value)
+    get() = kCFDateFormatterShortStandaloneWeekdaySymbols_VH.get(kCFDateFormatterShortStandaloneWeekdaySymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterShortStandaloneWeekdaySymbols_VH.set(kCFDateFormatterShortStandaloneWeekdaySymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterVeryShortStandaloneWeekdaySymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterVeryShortStandaloneWeekdaySymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterVeryShortStandaloneWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortStandaloneWeekdaySymbols").orElseThrow() }
+private val kCFDateFormatterVeryShortStandaloneWeekdaySymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterVeryShortStandaloneWeekdaySymbols").orElseThrow().reinterpret(kCFDateFormatterVeryShortStandaloneWeekdaySymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterVeryShortStandaloneWeekdaySymbols_VH: VarHandle by lazy { kCFDateFormatterVeryShortStandaloneWeekdaySymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterVeryShortStandaloneWeekdaySymbols: MemorySegment
-    get() = kCFDateFormatterVeryShortStandaloneWeekdaySymbols_VH.get(kCFDateFormatterVeryShortStandaloneWeekdaySymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterVeryShortStandaloneWeekdaySymbols_VH.set(kCFDateFormatterVeryShortStandaloneWeekdaySymbols_SEGMENT, value)
+    get() = kCFDateFormatterVeryShortStandaloneWeekdaySymbols_VH.get(kCFDateFormatterVeryShortStandaloneWeekdaySymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterVeryShortStandaloneWeekdaySymbols_VH.set(kCFDateFormatterVeryShortStandaloneWeekdaySymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterQuarterSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterQuarterSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterQuarterSymbols").orElseThrow() }
+private val kCFDateFormatterQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterQuarterSymbols").orElseThrow().reinterpret(kCFDateFormatterQuarterSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterQuarterSymbols_VH: VarHandle by lazy { kCFDateFormatterQuarterSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterQuarterSymbols: MemorySegment
-    get() = kCFDateFormatterQuarterSymbols_VH.get(kCFDateFormatterQuarterSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterQuarterSymbols_VH.set(kCFDateFormatterQuarterSymbols_SEGMENT, value)
+    get() = kCFDateFormatterQuarterSymbols_VH.get(kCFDateFormatterQuarterSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterQuarterSymbols_VH.set(kCFDateFormatterQuarterSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterShortQuarterSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterShortQuarterSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterShortQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortQuarterSymbols").orElseThrow() }
+private val kCFDateFormatterShortQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortQuarterSymbols").orElseThrow().reinterpret(kCFDateFormatterShortQuarterSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortQuarterSymbols_VH: VarHandle by lazy { kCFDateFormatterShortQuarterSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterShortQuarterSymbols: MemorySegment
-    get() = kCFDateFormatterShortQuarterSymbols_VH.get(kCFDateFormatterShortQuarterSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterShortQuarterSymbols_VH.set(kCFDateFormatterShortQuarterSymbols_SEGMENT, value)
+    get() = kCFDateFormatterShortQuarterSymbols_VH.get(kCFDateFormatterShortQuarterSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterShortQuarterSymbols_VH.set(kCFDateFormatterShortQuarterSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterStandaloneQuarterSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterStandaloneQuarterSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterStandaloneQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterStandaloneQuarterSymbols").orElseThrow() }
+private val kCFDateFormatterStandaloneQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterStandaloneQuarterSymbols").orElseThrow().reinterpret(kCFDateFormatterStandaloneQuarterSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterStandaloneQuarterSymbols_VH: VarHandle by lazy { kCFDateFormatterStandaloneQuarterSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterStandaloneQuarterSymbols: MemorySegment
-    get() = kCFDateFormatterStandaloneQuarterSymbols_VH.get(kCFDateFormatterStandaloneQuarterSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterStandaloneQuarterSymbols_VH.set(kCFDateFormatterStandaloneQuarterSymbols_SEGMENT, value)
+    get() = kCFDateFormatterStandaloneQuarterSymbols_VH.get(kCFDateFormatterStandaloneQuarterSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterStandaloneQuarterSymbols_VH.set(kCFDateFormatterStandaloneQuarterSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterShortStandaloneQuarterSymbols typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterShortStandaloneQuarterSymbols_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterShortStandaloneQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortStandaloneQuarterSymbols").orElseThrow() }
+private val kCFDateFormatterShortStandaloneQuarterSymbols_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterShortStandaloneQuarterSymbols").orElseThrow().reinterpret(kCFDateFormatterShortStandaloneQuarterSymbols_LAYOUT.byteSize()) }
 private val kCFDateFormatterShortStandaloneQuarterSymbols_VH: VarHandle by lazy { kCFDateFormatterShortStandaloneQuarterSymbols_LAYOUT.varHandle() }
 
 var kCFDateFormatterShortStandaloneQuarterSymbols: MemorySegment
-    get() = kCFDateFormatterShortStandaloneQuarterSymbols_VH.get(kCFDateFormatterShortStandaloneQuarterSymbols_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterShortStandaloneQuarterSymbols_VH.set(kCFDateFormatterShortStandaloneQuarterSymbols_SEGMENT, value)
+    get() = kCFDateFormatterShortStandaloneQuarterSymbols_VH.get(kCFDateFormatterShortStandaloneQuarterSymbols_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterShortStandaloneQuarterSymbols_VH.set(kCFDateFormatterShortStandaloneQuarterSymbols_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterGregorianStartDate typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterGregorianStartDate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterGregorianStartDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterGregorianStartDate").orElseThrow() }
+private val kCFDateFormatterGregorianStartDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterGregorianStartDate").orElseThrow().reinterpret(kCFDateFormatterGregorianStartDate_LAYOUT.byteSize()) }
 private val kCFDateFormatterGregorianStartDate_VH: VarHandle by lazy { kCFDateFormatterGregorianStartDate_LAYOUT.varHandle() }
 
 var kCFDateFormatterGregorianStartDate: MemorySegment
-    get() = kCFDateFormatterGregorianStartDate_VH.get(kCFDateFormatterGregorianStartDate_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterGregorianStartDate_VH.set(kCFDateFormatterGregorianStartDate_SEGMENT, value)
+    get() = kCFDateFormatterGregorianStartDate_VH.get(kCFDateFormatterGregorianStartDate_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterGregorianStartDate_VH.set(kCFDateFormatterGregorianStartDate_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFDateFormatterDoesRelativeDateFormattingKey typedef const CFDateFormatterKey = (Declared(__CFString))*
  */
 private val kCFDateFormatterDoesRelativeDateFormattingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFDateFormatterDoesRelativeDateFormattingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterDoesRelativeDateFormattingKey").orElseThrow() }
+private val kCFDateFormatterDoesRelativeDateFormattingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDateFormatterDoesRelativeDateFormattingKey").orElseThrow().reinterpret(kCFDateFormatterDoesRelativeDateFormattingKey_LAYOUT.byteSize()) }
 private val kCFDateFormatterDoesRelativeDateFormattingKey_VH: VarHandle by lazy { kCFDateFormatterDoesRelativeDateFormattingKey_LAYOUT.varHandle() }
 
 var kCFDateFormatterDoesRelativeDateFormattingKey: MemorySegment
-    get() = kCFDateFormatterDoesRelativeDateFormattingKey_VH.get(kCFDateFormatterDoesRelativeDateFormattingKey_SEGMENT) as MemorySegment
-    set(value) = kCFDateFormatterDoesRelativeDateFormattingKey_VH.set(kCFDateFormatterDoesRelativeDateFormattingKey_SEGMENT, value)
+    get() = kCFDateFormatterDoesRelativeDateFormattingKey_VH.get(kCFDateFormatterDoesRelativeDateFormattingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFDateFormatterDoesRelativeDateFormattingKey_VH.set(kCFDateFormatterDoesRelativeDateFormattingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFBooleanTrue typedef const CFBooleanRef = (Declared(__CFBoolean))*
  */
 private val kCFBooleanTrue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFBooleanTrue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBooleanTrue").orElseThrow() }
+private val kCFBooleanTrue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBooleanTrue").orElseThrow().reinterpret(kCFBooleanTrue_LAYOUT.byteSize()) }
 private val kCFBooleanTrue_VH: VarHandle by lazy { kCFBooleanTrue_LAYOUT.varHandle() }
 
 var kCFBooleanTrue: MemorySegment
-    get() = kCFBooleanTrue_VH.get(kCFBooleanTrue_SEGMENT) as MemorySegment
-    set(value) = kCFBooleanTrue_VH.set(kCFBooleanTrue_SEGMENT, value)
+    get() = kCFBooleanTrue_VH.get(kCFBooleanTrue_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFBooleanTrue_VH.set(kCFBooleanTrue_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFBooleanFalse typedef const CFBooleanRef = (Declared(__CFBoolean))*
  */
 private val kCFBooleanFalse_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFBooleanFalse_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBooleanFalse").orElseThrow() }
+private val kCFBooleanFalse_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBooleanFalse").orElseThrow().reinterpret(kCFBooleanFalse_LAYOUT.byteSize()) }
 private val kCFBooleanFalse_VH: VarHandle by lazy { kCFBooleanFalse_LAYOUT.varHandle() }
 
 var kCFBooleanFalse: MemorySegment
-    get() = kCFBooleanFalse_VH.get(kCFBooleanFalse_SEGMENT) as MemorySegment
-    set(value) = kCFBooleanFalse_VH.set(kCFBooleanFalse_SEGMENT, value)
+    get() = kCFBooleanFalse_VH.get(kCFBooleanFalse_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFBooleanFalse_VH.set(kCFBooleanFalse_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFBooleanGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -2987,34 +2987,34 @@ fun CFBooleanGetValue(arg0: MemorySegment): Byte {
  * {@snippet lang=c : kCFNumberPositiveInfinity typedef const CFNumberRef = (Declared(__CFNumber))*
  */
 private val kCFNumberPositiveInfinity_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberPositiveInfinity_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberPositiveInfinity").orElseThrow() }
+private val kCFNumberPositiveInfinity_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberPositiveInfinity").orElseThrow().reinterpret(kCFNumberPositiveInfinity_LAYOUT.byteSize()) }
 private val kCFNumberPositiveInfinity_VH: VarHandle by lazy { kCFNumberPositiveInfinity_LAYOUT.varHandle() }
 
 var kCFNumberPositiveInfinity: MemorySegment
-    get() = kCFNumberPositiveInfinity_VH.get(kCFNumberPositiveInfinity_SEGMENT) as MemorySegment
-    set(value) = kCFNumberPositiveInfinity_VH.set(kCFNumberPositiveInfinity_SEGMENT, value)
+    get() = kCFNumberPositiveInfinity_VH.get(kCFNumberPositiveInfinity_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberPositiveInfinity_VH.set(kCFNumberPositiveInfinity_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberNegativeInfinity typedef const CFNumberRef = (Declared(__CFNumber))*
  */
 private val kCFNumberNegativeInfinity_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberNegativeInfinity_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberNegativeInfinity").orElseThrow() }
+private val kCFNumberNegativeInfinity_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberNegativeInfinity").orElseThrow().reinterpret(kCFNumberNegativeInfinity_LAYOUT.byteSize()) }
 private val kCFNumberNegativeInfinity_VH: VarHandle by lazy { kCFNumberNegativeInfinity_LAYOUT.varHandle() }
 
 var kCFNumberNegativeInfinity: MemorySegment
-    get() = kCFNumberNegativeInfinity_VH.get(kCFNumberNegativeInfinity_SEGMENT) as MemorySegment
-    set(value) = kCFNumberNegativeInfinity_VH.set(kCFNumberNegativeInfinity_SEGMENT, value)
+    get() = kCFNumberNegativeInfinity_VH.get(kCFNumberNegativeInfinity_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberNegativeInfinity_VH.set(kCFNumberNegativeInfinity_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberNaN typedef const CFNumberRef = (Declared(__CFNumber))*
  */
 private val kCFNumberNaN_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberNaN_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberNaN").orElseThrow() }
+private val kCFNumberNaN_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberNaN").orElseThrow().reinterpret(kCFNumberNaN_LAYOUT.byteSize()) }
 private val kCFNumberNaN_VH: VarHandle by lazy { kCFNumberNaN_LAYOUT.varHandle() }
 
 var kCFNumberNaN: MemorySegment
-    get() = kCFNumberNaN_VH.get(kCFNumberNaN_SEGMENT) as MemorySegment
-    set(value) = kCFNumberNaN_VH.set(kCFNumberNaN_SEGMENT, value)
+    get() = kCFNumberNaN_VH.get(kCFNumberNaN_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberNaN_VH.set(kCFNumberNaN_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFNumberGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -3381,430 +3381,430 @@ fun CFNumberFormatterCopyProperty(arg0: MemorySegment, arg1: MemorySegment): Mem
  * {@snippet lang=c : kCFNumberFormatterCurrencyCode typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterCurrencyCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterCurrencyCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterCurrencyCode").orElseThrow() }
+private val kCFNumberFormatterCurrencyCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterCurrencyCode").orElseThrow().reinterpret(kCFNumberFormatterCurrencyCode_LAYOUT.byteSize()) }
 private val kCFNumberFormatterCurrencyCode_VH: VarHandle by lazy { kCFNumberFormatterCurrencyCode_LAYOUT.varHandle() }
 
 var kCFNumberFormatterCurrencyCode: MemorySegment
-    get() = kCFNumberFormatterCurrencyCode_VH.get(kCFNumberFormatterCurrencyCode_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterCurrencyCode_VH.set(kCFNumberFormatterCurrencyCode_SEGMENT, value)
+    get() = kCFNumberFormatterCurrencyCode_VH.get(kCFNumberFormatterCurrencyCode_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterCurrencyCode_VH.set(kCFNumberFormatterCurrencyCode_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterDecimalSeparator typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterDecimalSeparator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterDecimalSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterDecimalSeparator").orElseThrow() }
+private val kCFNumberFormatterDecimalSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterDecimalSeparator").orElseThrow().reinterpret(kCFNumberFormatterDecimalSeparator_LAYOUT.byteSize()) }
 private val kCFNumberFormatterDecimalSeparator_VH: VarHandle by lazy { kCFNumberFormatterDecimalSeparator_LAYOUT.varHandle() }
 
 var kCFNumberFormatterDecimalSeparator: MemorySegment
-    get() = kCFNumberFormatterDecimalSeparator_VH.get(kCFNumberFormatterDecimalSeparator_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterDecimalSeparator_VH.set(kCFNumberFormatterDecimalSeparator_SEGMENT, value)
+    get() = kCFNumberFormatterDecimalSeparator_VH.get(kCFNumberFormatterDecimalSeparator_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterDecimalSeparator_VH.set(kCFNumberFormatterDecimalSeparator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterCurrencyDecimalSeparator typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterCurrencyDecimalSeparator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterCurrencyDecimalSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterCurrencyDecimalSeparator").orElseThrow() }
+private val kCFNumberFormatterCurrencyDecimalSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterCurrencyDecimalSeparator").orElseThrow().reinterpret(kCFNumberFormatterCurrencyDecimalSeparator_LAYOUT.byteSize()) }
 private val kCFNumberFormatterCurrencyDecimalSeparator_VH: VarHandle by lazy { kCFNumberFormatterCurrencyDecimalSeparator_LAYOUT.varHandle() }
 
 var kCFNumberFormatterCurrencyDecimalSeparator: MemorySegment
-    get() = kCFNumberFormatterCurrencyDecimalSeparator_VH.get(kCFNumberFormatterCurrencyDecimalSeparator_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterCurrencyDecimalSeparator_VH.set(kCFNumberFormatterCurrencyDecimalSeparator_SEGMENT, value)
+    get() = kCFNumberFormatterCurrencyDecimalSeparator_VH.get(kCFNumberFormatterCurrencyDecimalSeparator_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterCurrencyDecimalSeparator_VH.set(kCFNumberFormatterCurrencyDecimalSeparator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterAlwaysShowDecimalSeparator typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterAlwaysShowDecimalSeparator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterAlwaysShowDecimalSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterAlwaysShowDecimalSeparator").orElseThrow() }
+private val kCFNumberFormatterAlwaysShowDecimalSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterAlwaysShowDecimalSeparator").orElseThrow().reinterpret(kCFNumberFormatterAlwaysShowDecimalSeparator_LAYOUT.byteSize()) }
 private val kCFNumberFormatterAlwaysShowDecimalSeparator_VH: VarHandle by lazy { kCFNumberFormatterAlwaysShowDecimalSeparator_LAYOUT.varHandle() }
 
 var kCFNumberFormatterAlwaysShowDecimalSeparator: MemorySegment
-    get() = kCFNumberFormatterAlwaysShowDecimalSeparator_VH.get(kCFNumberFormatterAlwaysShowDecimalSeparator_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterAlwaysShowDecimalSeparator_VH.set(kCFNumberFormatterAlwaysShowDecimalSeparator_SEGMENT, value)
+    get() = kCFNumberFormatterAlwaysShowDecimalSeparator_VH.get(kCFNumberFormatterAlwaysShowDecimalSeparator_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterAlwaysShowDecimalSeparator_VH.set(kCFNumberFormatterAlwaysShowDecimalSeparator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterGroupingSeparator typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterGroupingSeparator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterGroupingSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterGroupingSeparator").orElseThrow() }
+private val kCFNumberFormatterGroupingSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterGroupingSeparator").orElseThrow().reinterpret(kCFNumberFormatterGroupingSeparator_LAYOUT.byteSize()) }
 private val kCFNumberFormatterGroupingSeparator_VH: VarHandle by lazy { kCFNumberFormatterGroupingSeparator_LAYOUT.varHandle() }
 
 var kCFNumberFormatterGroupingSeparator: MemorySegment
-    get() = kCFNumberFormatterGroupingSeparator_VH.get(kCFNumberFormatterGroupingSeparator_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterGroupingSeparator_VH.set(kCFNumberFormatterGroupingSeparator_SEGMENT, value)
+    get() = kCFNumberFormatterGroupingSeparator_VH.get(kCFNumberFormatterGroupingSeparator_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterGroupingSeparator_VH.set(kCFNumberFormatterGroupingSeparator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterUseGroupingSeparator typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterUseGroupingSeparator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterUseGroupingSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterUseGroupingSeparator").orElseThrow() }
+private val kCFNumberFormatterUseGroupingSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterUseGroupingSeparator").orElseThrow().reinterpret(kCFNumberFormatterUseGroupingSeparator_LAYOUT.byteSize()) }
 private val kCFNumberFormatterUseGroupingSeparator_VH: VarHandle by lazy { kCFNumberFormatterUseGroupingSeparator_LAYOUT.varHandle() }
 
 var kCFNumberFormatterUseGroupingSeparator: MemorySegment
-    get() = kCFNumberFormatterUseGroupingSeparator_VH.get(kCFNumberFormatterUseGroupingSeparator_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterUseGroupingSeparator_VH.set(kCFNumberFormatterUseGroupingSeparator_SEGMENT, value)
+    get() = kCFNumberFormatterUseGroupingSeparator_VH.get(kCFNumberFormatterUseGroupingSeparator_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterUseGroupingSeparator_VH.set(kCFNumberFormatterUseGroupingSeparator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterPercentSymbol typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterPercentSymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterPercentSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPercentSymbol").orElseThrow() }
+private val kCFNumberFormatterPercentSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPercentSymbol").orElseThrow().reinterpret(kCFNumberFormatterPercentSymbol_LAYOUT.byteSize()) }
 private val kCFNumberFormatterPercentSymbol_VH: VarHandle by lazy { kCFNumberFormatterPercentSymbol_LAYOUT.varHandle() }
 
 var kCFNumberFormatterPercentSymbol: MemorySegment
-    get() = kCFNumberFormatterPercentSymbol_VH.get(kCFNumberFormatterPercentSymbol_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterPercentSymbol_VH.set(kCFNumberFormatterPercentSymbol_SEGMENT, value)
+    get() = kCFNumberFormatterPercentSymbol_VH.get(kCFNumberFormatterPercentSymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterPercentSymbol_VH.set(kCFNumberFormatterPercentSymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterZeroSymbol typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterZeroSymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterZeroSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterZeroSymbol").orElseThrow() }
+private val kCFNumberFormatterZeroSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterZeroSymbol").orElseThrow().reinterpret(kCFNumberFormatterZeroSymbol_LAYOUT.byteSize()) }
 private val kCFNumberFormatterZeroSymbol_VH: VarHandle by lazy { kCFNumberFormatterZeroSymbol_LAYOUT.varHandle() }
 
 var kCFNumberFormatterZeroSymbol: MemorySegment
-    get() = kCFNumberFormatterZeroSymbol_VH.get(kCFNumberFormatterZeroSymbol_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterZeroSymbol_VH.set(kCFNumberFormatterZeroSymbol_SEGMENT, value)
+    get() = kCFNumberFormatterZeroSymbol_VH.get(kCFNumberFormatterZeroSymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterZeroSymbol_VH.set(kCFNumberFormatterZeroSymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterNaNSymbol typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterNaNSymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterNaNSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterNaNSymbol").orElseThrow() }
+private val kCFNumberFormatterNaNSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterNaNSymbol").orElseThrow().reinterpret(kCFNumberFormatterNaNSymbol_LAYOUT.byteSize()) }
 private val kCFNumberFormatterNaNSymbol_VH: VarHandle by lazy { kCFNumberFormatterNaNSymbol_LAYOUT.varHandle() }
 
 var kCFNumberFormatterNaNSymbol: MemorySegment
-    get() = kCFNumberFormatterNaNSymbol_VH.get(kCFNumberFormatterNaNSymbol_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterNaNSymbol_VH.set(kCFNumberFormatterNaNSymbol_SEGMENT, value)
+    get() = kCFNumberFormatterNaNSymbol_VH.get(kCFNumberFormatterNaNSymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterNaNSymbol_VH.set(kCFNumberFormatterNaNSymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterInfinitySymbol typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterInfinitySymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterInfinitySymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterInfinitySymbol").orElseThrow() }
+private val kCFNumberFormatterInfinitySymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterInfinitySymbol").orElseThrow().reinterpret(kCFNumberFormatterInfinitySymbol_LAYOUT.byteSize()) }
 private val kCFNumberFormatterInfinitySymbol_VH: VarHandle by lazy { kCFNumberFormatterInfinitySymbol_LAYOUT.varHandle() }
 
 var kCFNumberFormatterInfinitySymbol: MemorySegment
-    get() = kCFNumberFormatterInfinitySymbol_VH.get(kCFNumberFormatterInfinitySymbol_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterInfinitySymbol_VH.set(kCFNumberFormatterInfinitySymbol_SEGMENT, value)
+    get() = kCFNumberFormatterInfinitySymbol_VH.get(kCFNumberFormatterInfinitySymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterInfinitySymbol_VH.set(kCFNumberFormatterInfinitySymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterMinusSign typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterMinusSign_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterMinusSign_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinusSign").orElseThrow() }
+private val kCFNumberFormatterMinusSign_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinusSign").orElseThrow().reinterpret(kCFNumberFormatterMinusSign_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMinusSign_VH: VarHandle by lazy { kCFNumberFormatterMinusSign_LAYOUT.varHandle() }
 
 var kCFNumberFormatterMinusSign: MemorySegment
-    get() = kCFNumberFormatterMinusSign_VH.get(kCFNumberFormatterMinusSign_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterMinusSign_VH.set(kCFNumberFormatterMinusSign_SEGMENT, value)
+    get() = kCFNumberFormatterMinusSign_VH.get(kCFNumberFormatterMinusSign_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterMinusSign_VH.set(kCFNumberFormatterMinusSign_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterPlusSign typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterPlusSign_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterPlusSign_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPlusSign").orElseThrow() }
+private val kCFNumberFormatterPlusSign_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPlusSign").orElseThrow().reinterpret(kCFNumberFormatterPlusSign_LAYOUT.byteSize()) }
 private val kCFNumberFormatterPlusSign_VH: VarHandle by lazy { kCFNumberFormatterPlusSign_LAYOUT.varHandle() }
 
 var kCFNumberFormatterPlusSign: MemorySegment
-    get() = kCFNumberFormatterPlusSign_VH.get(kCFNumberFormatterPlusSign_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterPlusSign_VH.set(kCFNumberFormatterPlusSign_SEGMENT, value)
+    get() = kCFNumberFormatterPlusSign_VH.get(kCFNumberFormatterPlusSign_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterPlusSign_VH.set(kCFNumberFormatterPlusSign_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterCurrencySymbol typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterCurrencySymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterCurrencySymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterCurrencySymbol").orElseThrow() }
+private val kCFNumberFormatterCurrencySymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterCurrencySymbol").orElseThrow().reinterpret(kCFNumberFormatterCurrencySymbol_LAYOUT.byteSize()) }
 private val kCFNumberFormatterCurrencySymbol_VH: VarHandle by lazy { kCFNumberFormatterCurrencySymbol_LAYOUT.varHandle() }
 
 var kCFNumberFormatterCurrencySymbol: MemorySegment
-    get() = kCFNumberFormatterCurrencySymbol_VH.get(kCFNumberFormatterCurrencySymbol_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterCurrencySymbol_VH.set(kCFNumberFormatterCurrencySymbol_SEGMENT, value)
+    get() = kCFNumberFormatterCurrencySymbol_VH.get(kCFNumberFormatterCurrencySymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterCurrencySymbol_VH.set(kCFNumberFormatterCurrencySymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterExponentSymbol typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterExponentSymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterExponentSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterExponentSymbol").orElseThrow() }
+private val kCFNumberFormatterExponentSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterExponentSymbol").orElseThrow().reinterpret(kCFNumberFormatterExponentSymbol_LAYOUT.byteSize()) }
 private val kCFNumberFormatterExponentSymbol_VH: VarHandle by lazy { kCFNumberFormatterExponentSymbol_LAYOUT.varHandle() }
 
 var kCFNumberFormatterExponentSymbol: MemorySegment
-    get() = kCFNumberFormatterExponentSymbol_VH.get(kCFNumberFormatterExponentSymbol_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterExponentSymbol_VH.set(kCFNumberFormatterExponentSymbol_SEGMENT, value)
+    get() = kCFNumberFormatterExponentSymbol_VH.get(kCFNumberFormatterExponentSymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterExponentSymbol_VH.set(kCFNumberFormatterExponentSymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterMinIntegerDigits typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterMinIntegerDigits_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterMinIntegerDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinIntegerDigits").orElseThrow() }
+private val kCFNumberFormatterMinIntegerDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinIntegerDigits").orElseThrow().reinterpret(kCFNumberFormatterMinIntegerDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMinIntegerDigits_VH: VarHandle by lazy { kCFNumberFormatterMinIntegerDigits_LAYOUT.varHandle() }
 
 var kCFNumberFormatterMinIntegerDigits: MemorySegment
-    get() = kCFNumberFormatterMinIntegerDigits_VH.get(kCFNumberFormatterMinIntegerDigits_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterMinIntegerDigits_VH.set(kCFNumberFormatterMinIntegerDigits_SEGMENT, value)
+    get() = kCFNumberFormatterMinIntegerDigits_VH.get(kCFNumberFormatterMinIntegerDigits_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterMinIntegerDigits_VH.set(kCFNumberFormatterMinIntegerDigits_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterMaxIntegerDigits typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterMaxIntegerDigits_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterMaxIntegerDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMaxIntegerDigits").orElseThrow() }
+private val kCFNumberFormatterMaxIntegerDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMaxIntegerDigits").orElseThrow().reinterpret(kCFNumberFormatterMaxIntegerDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMaxIntegerDigits_VH: VarHandle by lazy { kCFNumberFormatterMaxIntegerDigits_LAYOUT.varHandle() }
 
 var kCFNumberFormatterMaxIntegerDigits: MemorySegment
-    get() = kCFNumberFormatterMaxIntegerDigits_VH.get(kCFNumberFormatterMaxIntegerDigits_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterMaxIntegerDigits_VH.set(kCFNumberFormatterMaxIntegerDigits_SEGMENT, value)
+    get() = kCFNumberFormatterMaxIntegerDigits_VH.get(kCFNumberFormatterMaxIntegerDigits_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterMaxIntegerDigits_VH.set(kCFNumberFormatterMaxIntegerDigits_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterMinFractionDigits typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterMinFractionDigits_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterMinFractionDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinFractionDigits").orElseThrow() }
+private val kCFNumberFormatterMinFractionDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinFractionDigits").orElseThrow().reinterpret(kCFNumberFormatterMinFractionDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMinFractionDigits_VH: VarHandle by lazy { kCFNumberFormatterMinFractionDigits_LAYOUT.varHandle() }
 
 var kCFNumberFormatterMinFractionDigits: MemorySegment
-    get() = kCFNumberFormatterMinFractionDigits_VH.get(kCFNumberFormatterMinFractionDigits_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterMinFractionDigits_VH.set(kCFNumberFormatterMinFractionDigits_SEGMENT, value)
+    get() = kCFNumberFormatterMinFractionDigits_VH.get(kCFNumberFormatterMinFractionDigits_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterMinFractionDigits_VH.set(kCFNumberFormatterMinFractionDigits_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterMaxFractionDigits typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterMaxFractionDigits_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterMaxFractionDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMaxFractionDigits").orElseThrow() }
+private val kCFNumberFormatterMaxFractionDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMaxFractionDigits").orElseThrow().reinterpret(kCFNumberFormatterMaxFractionDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMaxFractionDigits_VH: VarHandle by lazy { kCFNumberFormatterMaxFractionDigits_LAYOUT.varHandle() }
 
 var kCFNumberFormatterMaxFractionDigits: MemorySegment
-    get() = kCFNumberFormatterMaxFractionDigits_VH.get(kCFNumberFormatterMaxFractionDigits_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterMaxFractionDigits_VH.set(kCFNumberFormatterMaxFractionDigits_SEGMENT, value)
+    get() = kCFNumberFormatterMaxFractionDigits_VH.get(kCFNumberFormatterMaxFractionDigits_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterMaxFractionDigits_VH.set(kCFNumberFormatterMaxFractionDigits_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterGroupingSize typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterGroupingSize_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterGroupingSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterGroupingSize").orElseThrow() }
+private val kCFNumberFormatterGroupingSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterGroupingSize").orElseThrow().reinterpret(kCFNumberFormatterGroupingSize_LAYOUT.byteSize()) }
 private val kCFNumberFormatterGroupingSize_VH: VarHandle by lazy { kCFNumberFormatterGroupingSize_LAYOUT.varHandle() }
 
 var kCFNumberFormatterGroupingSize: MemorySegment
-    get() = kCFNumberFormatterGroupingSize_VH.get(kCFNumberFormatterGroupingSize_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterGroupingSize_VH.set(kCFNumberFormatterGroupingSize_SEGMENT, value)
+    get() = kCFNumberFormatterGroupingSize_VH.get(kCFNumberFormatterGroupingSize_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterGroupingSize_VH.set(kCFNumberFormatterGroupingSize_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterSecondaryGroupingSize typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterSecondaryGroupingSize_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterSecondaryGroupingSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterSecondaryGroupingSize").orElseThrow() }
+private val kCFNumberFormatterSecondaryGroupingSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterSecondaryGroupingSize").orElseThrow().reinterpret(kCFNumberFormatterSecondaryGroupingSize_LAYOUT.byteSize()) }
 private val kCFNumberFormatterSecondaryGroupingSize_VH: VarHandle by lazy { kCFNumberFormatterSecondaryGroupingSize_LAYOUT.varHandle() }
 
 var kCFNumberFormatterSecondaryGroupingSize: MemorySegment
-    get() = kCFNumberFormatterSecondaryGroupingSize_VH.get(kCFNumberFormatterSecondaryGroupingSize_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterSecondaryGroupingSize_VH.set(kCFNumberFormatterSecondaryGroupingSize_SEGMENT, value)
+    get() = kCFNumberFormatterSecondaryGroupingSize_VH.get(kCFNumberFormatterSecondaryGroupingSize_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterSecondaryGroupingSize_VH.set(kCFNumberFormatterSecondaryGroupingSize_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterRoundingMode typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterRoundingMode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterRoundingMode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterRoundingMode").orElseThrow() }
+private val kCFNumberFormatterRoundingMode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterRoundingMode").orElseThrow().reinterpret(kCFNumberFormatterRoundingMode_LAYOUT.byteSize()) }
 private val kCFNumberFormatterRoundingMode_VH: VarHandle by lazy { kCFNumberFormatterRoundingMode_LAYOUT.varHandle() }
 
 var kCFNumberFormatterRoundingMode: MemorySegment
-    get() = kCFNumberFormatterRoundingMode_VH.get(kCFNumberFormatterRoundingMode_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterRoundingMode_VH.set(kCFNumberFormatterRoundingMode_SEGMENT, value)
+    get() = kCFNumberFormatterRoundingMode_VH.get(kCFNumberFormatterRoundingMode_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterRoundingMode_VH.set(kCFNumberFormatterRoundingMode_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterRoundingIncrement typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterRoundingIncrement_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterRoundingIncrement_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterRoundingIncrement").orElseThrow() }
+private val kCFNumberFormatterRoundingIncrement_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterRoundingIncrement").orElseThrow().reinterpret(kCFNumberFormatterRoundingIncrement_LAYOUT.byteSize()) }
 private val kCFNumberFormatterRoundingIncrement_VH: VarHandle by lazy { kCFNumberFormatterRoundingIncrement_LAYOUT.varHandle() }
 
 var kCFNumberFormatterRoundingIncrement: MemorySegment
-    get() = kCFNumberFormatterRoundingIncrement_VH.get(kCFNumberFormatterRoundingIncrement_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterRoundingIncrement_VH.set(kCFNumberFormatterRoundingIncrement_SEGMENT, value)
+    get() = kCFNumberFormatterRoundingIncrement_VH.get(kCFNumberFormatterRoundingIncrement_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterRoundingIncrement_VH.set(kCFNumberFormatterRoundingIncrement_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterFormatWidth typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterFormatWidth_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterFormatWidth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterFormatWidth").orElseThrow() }
+private val kCFNumberFormatterFormatWidth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterFormatWidth").orElseThrow().reinterpret(kCFNumberFormatterFormatWidth_LAYOUT.byteSize()) }
 private val kCFNumberFormatterFormatWidth_VH: VarHandle by lazy { kCFNumberFormatterFormatWidth_LAYOUT.varHandle() }
 
 var kCFNumberFormatterFormatWidth: MemorySegment
-    get() = kCFNumberFormatterFormatWidth_VH.get(kCFNumberFormatterFormatWidth_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterFormatWidth_VH.set(kCFNumberFormatterFormatWidth_SEGMENT, value)
+    get() = kCFNumberFormatterFormatWidth_VH.get(kCFNumberFormatterFormatWidth_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterFormatWidth_VH.set(kCFNumberFormatterFormatWidth_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterPaddingPosition typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterPaddingPosition_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterPaddingPosition_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPaddingPosition").orElseThrow() }
+private val kCFNumberFormatterPaddingPosition_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPaddingPosition").orElseThrow().reinterpret(kCFNumberFormatterPaddingPosition_LAYOUT.byteSize()) }
 private val kCFNumberFormatterPaddingPosition_VH: VarHandle by lazy { kCFNumberFormatterPaddingPosition_LAYOUT.varHandle() }
 
 var kCFNumberFormatterPaddingPosition: MemorySegment
-    get() = kCFNumberFormatterPaddingPosition_VH.get(kCFNumberFormatterPaddingPosition_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterPaddingPosition_VH.set(kCFNumberFormatterPaddingPosition_SEGMENT, value)
+    get() = kCFNumberFormatterPaddingPosition_VH.get(kCFNumberFormatterPaddingPosition_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterPaddingPosition_VH.set(kCFNumberFormatterPaddingPosition_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterPaddingCharacter typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterPaddingCharacter_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterPaddingCharacter_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPaddingCharacter").orElseThrow() }
+private val kCFNumberFormatterPaddingCharacter_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPaddingCharacter").orElseThrow().reinterpret(kCFNumberFormatterPaddingCharacter_LAYOUT.byteSize()) }
 private val kCFNumberFormatterPaddingCharacter_VH: VarHandle by lazy { kCFNumberFormatterPaddingCharacter_LAYOUT.varHandle() }
 
 var kCFNumberFormatterPaddingCharacter: MemorySegment
-    get() = kCFNumberFormatterPaddingCharacter_VH.get(kCFNumberFormatterPaddingCharacter_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterPaddingCharacter_VH.set(kCFNumberFormatterPaddingCharacter_SEGMENT, value)
+    get() = kCFNumberFormatterPaddingCharacter_VH.get(kCFNumberFormatterPaddingCharacter_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterPaddingCharacter_VH.set(kCFNumberFormatterPaddingCharacter_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterDefaultFormat typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterDefaultFormat_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterDefaultFormat_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterDefaultFormat").orElseThrow() }
+private val kCFNumberFormatterDefaultFormat_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterDefaultFormat").orElseThrow().reinterpret(kCFNumberFormatterDefaultFormat_LAYOUT.byteSize()) }
 private val kCFNumberFormatterDefaultFormat_VH: VarHandle by lazy { kCFNumberFormatterDefaultFormat_LAYOUT.varHandle() }
 
 var kCFNumberFormatterDefaultFormat: MemorySegment
-    get() = kCFNumberFormatterDefaultFormat_VH.get(kCFNumberFormatterDefaultFormat_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterDefaultFormat_VH.set(kCFNumberFormatterDefaultFormat_SEGMENT, value)
+    get() = kCFNumberFormatterDefaultFormat_VH.get(kCFNumberFormatterDefaultFormat_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterDefaultFormat_VH.set(kCFNumberFormatterDefaultFormat_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterMultiplier typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterMultiplier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterMultiplier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMultiplier").orElseThrow() }
+private val kCFNumberFormatterMultiplier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMultiplier").orElseThrow().reinterpret(kCFNumberFormatterMultiplier_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMultiplier_VH: VarHandle by lazy { kCFNumberFormatterMultiplier_LAYOUT.varHandle() }
 
 var kCFNumberFormatterMultiplier: MemorySegment
-    get() = kCFNumberFormatterMultiplier_VH.get(kCFNumberFormatterMultiplier_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterMultiplier_VH.set(kCFNumberFormatterMultiplier_SEGMENT, value)
+    get() = kCFNumberFormatterMultiplier_VH.get(kCFNumberFormatterMultiplier_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterMultiplier_VH.set(kCFNumberFormatterMultiplier_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterPositivePrefix typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterPositivePrefix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterPositivePrefix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPositivePrefix").orElseThrow() }
+private val kCFNumberFormatterPositivePrefix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPositivePrefix").orElseThrow().reinterpret(kCFNumberFormatterPositivePrefix_LAYOUT.byteSize()) }
 private val kCFNumberFormatterPositivePrefix_VH: VarHandle by lazy { kCFNumberFormatterPositivePrefix_LAYOUT.varHandle() }
 
 var kCFNumberFormatterPositivePrefix: MemorySegment
-    get() = kCFNumberFormatterPositivePrefix_VH.get(kCFNumberFormatterPositivePrefix_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterPositivePrefix_VH.set(kCFNumberFormatterPositivePrefix_SEGMENT, value)
+    get() = kCFNumberFormatterPositivePrefix_VH.get(kCFNumberFormatterPositivePrefix_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterPositivePrefix_VH.set(kCFNumberFormatterPositivePrefix_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterPositiveSuffix typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterPositiveSuffix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterPositiveSuffix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPositiveSuffix").orElseThrow() }
+private val kCFNumberFormatterPositiveSuffix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPositiveSuffix").orElseThrow().reinterpret(kCFNumberFormatterPositiveSuffix_LAYOUT.byteSize()) }
 private val kCFNumberFormatterPositiveSuffix_VH: VarHandle by lazy { kCFNumberFormatterPositiveSuffix_LAYOUT.varHandle() }
 
 var kCFNumberFormatterPositiveSuffix: MemorySegment
-    get() = kCFNumberFormatterPositiveSuffix_VH.get(kCFNumberFormatterPositiveSuffix_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterPositiveSuffix_VH.set(kCFNumberFormatterPositiveSuffix_SEGMENT, value)
+    get() = kCFNumberFormatterPositiveSuffix_VH.get(kCFNumberFormatterPositiveSuffix_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterPositiveSuffix_VH.set(kCFNumberFormatterPositiveSuffix_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterNegativePrefix typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterNegativePrefix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterNegativePrefix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterNegativePrefix").orElseThrow() }
+private val kCFNumberFormatterNegativePrefix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterNegativePrefix").orElseThrow().reinterpret(kCFNumberFormatterNegativePrefix_LAYOUT.byteSize()) }
 private val kCFNumberFormatterNegativePrefix_VH: VarHandle by lazy { kCFNumberFormatterNegativePrefix_LAYOUT.varHandle() }
 
 var kCFNumberFormatterNegativePrefix: MemorySegment
-    get() = kCFNumberFormatterNegativePrefix_VH.get(kCFNumberFormatterNegativePrefix_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterNegativePrefix_VH.set(kCFNumberFormatterNegativePrefix_SEGMENT, value)
+    get() = kCFNumberFormatterNegativePrefix_VH.get(kCFNumberFormatterNegativePrefix_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterNegativePrefix_VH.set(kCFNumberFormatterNegativePrefix_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterNegativeSuffix typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterNegativeSuffix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterNegativeSuffix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterNegativeSuffix").orElseThrow() }
+private val kCFNumberFormatterNegativeSuffix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterNegativeSuffix").orElseThrow().reinterpret(kCFNumberFormatterNegativeSuffix_LAYOUT.byteSize()) }
 private val kCFNumberFormatterNegativeSuffix_VH: VarHandle by lazy { kCFNumberFormatterNegativeSuffix_LAYOUT.varHandle() }
 
 var kCFNumberFormatterNegativeSuffix: MemorySegment
-    get() = kCFNumberFormatterNegativeSuffix_VH.get(kCFNumberFormatterNegativeSuffix_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterNegativeSuffix_VH.set(kCFNumberFormatterNegativeSuffix_SEGMENT, value)
+    get() = kCFNumberFormatterNegativeSuffix_VH.get(kCFNumberFormatterNegativeSuffix_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterNegativeSuffix_VH.set(kCFNumberFormatterNegativeSuffix_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterPerMillSymbol typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterPerMillSymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterPerMillSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPerMillSymbol").orElseThrow() }
+private val kCFNumberFormatterPerMillSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterPerMillSymbol").orElseThrow().reinterpret(kCFNumberFormatterPerMillSymbol_LAYOUT.byteSize()) }
 private val kCFNumberFormatterPerMillSymbol_VH: VarHandle by lazy { kCFNumberFormatterPerMillSymbol_LAYOUT.varHandle() }
 
 var kCFNumberFormatterPerMillSymbol: MemorySegment
-    get() = kCFNumberFormatterPerMillSymbol_VH.get(kCFNumberFormatterPerMillSymbol_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterPerMillSymbol_VH.set(kCFNumberFormatterPerMillSymbol_SEGMENT, value)
+    get() = kCFNumberFormatterPerMillSymbol_VH.get(kCFNumberFormatterPerMillSymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterPerMillSymbol_VH.set(kCFNumberFormatterPerMillSymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterInternationalCurrencySymbol typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterInternationalCurrencySymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterInternationalCurrencySymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterInternationalCurrencySymbol").orElseThrow() }
+private val kCFNumberFormatterInternationalCurrencySymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterInternationalCurrencySymbol").orElseThrow().reinterpret(kCFNumberFormatterInternationalCurrencySymbol_LAYOUT.byteSize()) }
 private val kCFNumberFormatterInternationalCurrencySymbol_VH: VarHandle by lazy { kCFNumberFormatterInternationalCurrencySymbol_LAYOUT.varHandle() }
 
 var kCFNumberFormatterInternationalCurrencySymbol: MemorySegment
-    get() = kCFNumberFormatterInternationalCurrencySymbol_VH.get(kCFNumberFormatterInternationalCurrencySymbol_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterInternationalCurrencySymbol_VH.set(kCFNumberFormatterInternationalCurrencySymbol_SEGMENT, value)
+    get() = kCFNumberFormatterInternationalCurrencySymbol_VH.get(kCFNumberFormatterInternationalCurrencySymbol_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterInternationalCurrencySymbol_VH.set(kCFNumberFormatterInternationalCurrencySymbol_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterCurrencyGroupingSeparator typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterCurrencyGroupingSeparator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterCurrencyGroupingSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterCurrencyGroupingSeparator").orElseThrow() }
+private val kCFNumberFormatterCurrencyGroupingSeparator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterCurrencyGroupingSeparator").orElseThrow().reinterpret(kCFNumberFormatterCurrencyGroupingSeparator_LAYOUT.byteSize()) }
 private val kCFNumberFormatterCurrencyGroupingSeparator_VH: VarHandle by lazy { kCFNumberFormatterCurrencyGroupingSeparator_LAYOUT.varHandle() }
 
 var kCFNumberFormatterCurrencyGroupingSeparator: MemorySegment
-    get() = kCFNumberFormatterCurrencyGroupingSeparator_VH.get(kCFNumberFormatterCurrencyGroupingSeparator_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterCurrencyGroupingSeparator_VH.set(kCFNumberFormatterCurrencyGroupingSeparator_SEGMENT, value)
+    get() = kCFNumberFormatterCurrencyGroupingSeparator_VH.get(kCFNumberFormatterCurrencyGroupingSeparator_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterCurrencyGroupingSeparator_VH.set(kCFNumberFormatterCurrencyGroupingSeparator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterIsLenient typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterIsLenient_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterIsLenient_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterIsLenient").orElseThrow() }
+private val kCFNumberFormatterIsLenient_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterIsLenient").orElseThrow().reinterpret(kCFNumberFormatterIsLenient_LAYOUT.byteSize()) }
 private val kCFNumberFormatterIsLenient_VH: VarHandle by lazy { kCFNumberFormatterIsLenient_LAYOUT.varHandle() }
 
 var kCFNumberFormatterIsLenient: MemorySegment
-    get() = kCFNumberFormatterIsLenient_VH.get(kCFNumberFormatterIsLenient_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterIsLenient_VH.set(kCFNumberFormatterIsLenient_SEGMENT, value)
+    get() = kCFNumberFormatterIsLenient_VH.get(kCFNumberFormatterIsLenient_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterIsLenient_VH.set(kCFNumberFormatterIsLenient_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterUseSignificantDigits typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterUseSignificantDigits_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterUseSignificantDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterUseSignificantDigits").orElseThrow() }
+private val kCFNumberFormatterUseSignificantDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterUseSignificantDigits").orElseThrow().reinterpret(kCFNumberFormatterUseSignificantDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterUseSignificantDigits_VH: VarHandle by lazy { kCFNumberFormatterUseSignificantDigits_LAYOUT.varHandle() }
 
 var kCFNumberFormatterUseSignificantDigits: MemorySegment
-    get() = kCFNumberFormatterUseSignificantDigits_VH.get(kCFNumberFormatterUseSignificantDigits_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterUseSignificantDigits_VH.set(kCFNumberFormatterUseSignificantDigits_SEGMENT, value)
+    get() = kCFNumberFormatterUseSignificantDigits_VH.get(kCFNumberFormatterUseSignificantDigits_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterUseSignificantDigits_VH.set(kCFNumberFormatterUseSignificantDigits_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterMinSignificantDigits typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterMinSignificantDigits_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterMinSignificantDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinSignificantDigits").orElseThrow() }
+private val kCFNumberFormatterMinSignificantDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinSignificantDigits").orElseThrow().reinterpret(kCFNumberFormatterMinSignificantDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMinSignificantDigits_VH: VarHandle by lazy { kCFNumberFormatterMinSignificantDigits_LAYOUT.varHandle() }
 
 var kCFNumberFormatterMinSignificantDigits: MemorySegment
-    get() = kCFNumberFormatterMinSignificantDigits_VH.get(kCFNumberFormatterMinSignificantDigits_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterMinSignificantDigits_VH.set(kCFNumberFormatterMinSignificantDigits_SEGMENT, value)
+    get() = kCFNumberFormatterMinSignificantDigits_VH.get(kCFNumberFormatterMinSignificantDigits_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterMinSignificantDigits_VH.set(kCFNumberFormatterMinSignificantDigits_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterMaxSignificantDigits typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterMaxSignificantDigits_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterMaxSignificantDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMaxSignificantDigits").orElseThrow() }
+private val kCFNumberFormatterMaxSignificantDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMaxSignificantDigits").orElseThrow().reinterpret(kCFNumberFormatterMaxSignificantDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMaxSignificantDigits_VH: VarHandle by lazy { kCFNumberFormatterMaxSignificantDigits_LAYOUT.varHandle() }
 
 var kCFNumberFormatterMaxSignificantDigits: MemorySegment
-    get() = kCFNumberFormatterMaxSignificantDigits_VH.get(kCFNumberFormatterMaxSignificantDigits_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterMaxSignificantDigits_VH.set(kCFNumberFormatterMaxSignificantDigits_SEGMENT, value)
+    get() = kCFNumberFormatterMaxSignificantDigits_VH.get(kCFNumberFormatterMaxSignificantDigits_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterMaxSignificantDigits_VH.set(kCFNumberFormatterMaxSignificantDigits_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFNumberFormatterMinGroupingDigits typedef const CFNumberFormatterKey = (Declared(__CFString))*
  */
 private val kCFNumberFormatterMinGroupingDigits_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFNumberFormatterMinGroupingDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinGroupingDigits").orElseThrow() }
+private val kCFNumberFormatterMinGroupingDigits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFNumberFormatterMinGroupingDigits").orElseThrow().reinterpret(kCFNumberFormatterMinGroupingDigits_LAYOUT.byteSize()) }
 private val kCFNumberFormatterMinGroupingDigits_VH: VarHandle by lazy { kCFNumberFormatterMinGroupingDigits_LAYOUT.varHandle() }
 
 var kCFNumberFormatterMinGroupingDigits: MemorySegment
-    get() = kCFNumberFormatterMinGroupingDigits_VH.get(kCFNumberFormatterMinGroupingDigits_SEGMENT) as MemorySegment
-    set(value) = kCFNumberFormatterMinGroupingDigits_VH.set(kCFNumberFormatterMinGroupingDigits_SEGMENT, value)
+    get() = kCFNumberFormatterMinGroupingDigits_VH.get(kCFNumberFormatterMinGroupingDigits_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFNumberFormatterMinGroupingDigits_VH.set(kCFNumberFormatterMinGroupingDigits_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFNumberFormatterGetDecimalInfoForCurrencyCode typedef Boolean = UNSIGNED = Char(typedef CFStringRef = (Declared(__CFString))*,(typedef int32_t = Int)*,(Double)*)
@@ -3829,67 +3829,67 @@ fun CFNumberFormatterGetDecimalInfoForCurrencyCode(arg0: MemorySegment, arg1: Me
  * {@snippet lang=c : kCFPreferencesAnyApplication typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPreferencesAnyApplication_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPreferencesAnyApplication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesAnyApplication").orElseThrow() }
+private val kCFPreferencesAnyApplication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesAnyApplication").orElseThrow().reinterpret(kCFPreferencesAnyApplication_LAYOUT.byteSize()) }
 private val kCFPreferencesAnyApplication_VH: VarHandle by lazy { kCFPreferencesAnyApplication_LAYOUT.varHandle() }
 
 var kCFPreferencesAnyApplication: MemorySegment
-    get() = kCFPreferencesAnyApplication_VH.get(kCFPreferencesAnyApplication_SEGMENT) as MemorySegment
-    set(value) = kCFPreferencesAnyApplication_VH.set(kCFPreferencesAnyApplication_SEGMENT, value)
+    get() = kCFPreferencesAnyApplication_VH.get(kCFPreferencesAnyApplication_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPreferencesAnyApplication_VH.set(kCFPreferencesAnyApplication_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFPreferencesCurrentApplication typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPreferencesCurrentApplication_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPreferencesCurrentApplication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesCurrentApplication").orElseThrow() }
+private val kCFPreferencesCurrentApplication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesCurrentApplication").orElseThrow().reinterpret(kCFPreferencesCurrentApplication_LAYOUT.byteSize()) }
 private val kCFPreferencesCurrentApplication_VH: VarHandle by lazy { kCFPreferencesCurrentApplication_LAYOUT.varHandle() }
 
 var kCFPreferencesCurrentApplication: MemorySegment
-    get() = kCFPreferencesCurrentApplication_VH.get(kCFPreferencesCurrentApplication_SEGMENT) as MemorySegment
-    set(value) = kCFPreferencesCurrentApplication_VH.set(kCFPreferencesCurrentApplication_SEGMENT, value)
+    get() = kCFPreferencesCurrentApplication_VH.get(kCFPreferencesCurrentApplication_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPreferencesCurrentApplication_VH.set(kCFPreferencesCurrentApplication_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFPreferencesAnyHost typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPreferencesAnyHost_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPreferencesAnyHost_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesAnyHost").orElseThrow() }
+private val kCFPreferencesAnyHost_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesAnyHost").orElseThrow().reinterpret(kCFPreferencesAnyHost_LAYOUT.byteSize()) }
 private val kCFPreferencesAnyHost_VH: VarHandle by lazy { kCFPreferencesAnyHost_LAYOUT.varHandle() }
 
 var kCFPreferencesAnyHost: MemorySegment
-    get() = kCFPreferencesAnyHost_VH.get(kCFPreferencesAnyHost_SEGMENT) as MemorySegment
-    set(value) = kCFPreferencesAnyHost_VH.set(kCFPreferencesAnyHost_SEGMENT, value)
+    get() = kCFPreferencesAnyHost_VH.get(kCFPreferencesAnyHost_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPreferencesAnyHost_VH.set(kCFPreferencesAnyHost_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFPreferencesCurrentHost typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPreferencesCurrentHost_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPreferencesCurrentHost_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesCurrentHost").orElseThrow() }
+private val kCFPreferencesCurrentHost_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesCurrentHost").orElseThrow().reinterpret(kCFPreferencesCurrentHost_LAYOUT.byteSize()) }
 private val kCFPreferencesCurrentHost_VH: VarHandle by lazy { kCFPreferencesCurrentHost_LAYOUT.varHandle() }
 
 var kCFPreferencesCurrentHost: MemorySegment
-    get() = kCFPreferencesCurrentHost_VH.get(kCFPreferencesCurrentHost_SEGMENT) as MemorySegment
-    set(value) = kCFPreferencesCurrentHost_VH.set(kCFPreferencesCurrentHost_SEGMENT, value)
+    get() = kCFPreferencesCurrentHost_VH.get(kCFPreferencesCurrentHost_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPreferencesCurrentHost_VH.set(kCFPreferencesCurrentHost_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFPreferencesAnyUser typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPreferencesAnyUser_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPreferencesAnyUser_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesAnyUser").orElseThrow() }
+private val kCFPreferencesAnyUser_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesAnyUser").orElseThrow().reinterpret(kCFPreferencesAnyUser_LAYOUT.byteSize()) }
 private val kCFPreferencesAnyUser_VH: VarHandle by lazy { kCFPreferencesAnyUser_LAYOUT.varHandle() }
 
 var kCFPreferencesAnyUser: MemorySegment
-    get() = kCFPreferencesAnyUser_VH.get(kCFPreferencesAnyUser_SEGMENT) as MemorySegment
-    set(value) = kCFPreferencesAnyUser_VH.set(kCFPreferencesAnyUser_SEGMENT, value)
+    get() = kCFPreferencesAnyUser_VH.get(kCFPreferencesAnyUser_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPreferencesAnyUser_VH.set(kCFPreferencesAnyUser_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFPreferencesCurrentUser typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFPreferencesCurrentUser_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFPreferencesCurrentUser_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesCurrentUser").orElseThrow() }
+private val kCFPreferencesCurrentUser_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPreferencesCurrentUser").orElseThrow().reinterpret(kCFPreferencesCurrentUser_LAYOUT.byteSize()) }
 private val kCFPreferencesCurrentUser_VH: VarHandle by lazy { kCFPreferencesCurrentUser_LAYOUT.varHandle() }
 
 var kCFPreferencesCurrentUser: MemorySegment
-    get() = kCFPreferencesCurrentUser_VH.get(kCFPreferencesCurrentUser_SEGMENT) as MemorySegment
-    set(value) = kCFPreferencesCurrentUser_VH.set(kCFPreferencesCurrentUser_SEGMENT, value)
+    get() = kCFPreferencesCurrentUser_VH.get(kCFPreferencesCurrentUser_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFPreferencesCurrentUser_VH.set(kCFPreferencesCurrentUser_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFPreferencesCopyAppValue typedef CFPropertyListRef = (Void)*(typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*)

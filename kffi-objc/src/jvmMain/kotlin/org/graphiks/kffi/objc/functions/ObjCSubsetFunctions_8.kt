@@ -8,23 +8,23 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * {@snippet lang=c : kCGColorBlack typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGColorBlack_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGColorBlack_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorBlack").orElseThrow() }
+private val kCGColorBlack_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorBlack").orElseThrow().reinterpret(kCGColorBlack_LAYOUT.byteSize()) }
 private val kCGColorBlack_VH: VarHandle by lazy { kCGColorBlack_LAYOUT.varHandle() }
 
 var kCGColorBlack: MemorySegment
-    get() = kCGColorBlack_VH.get(kCGColorBlack_SEGMENT) as MemorySegment
-    set(value) = kCGColorBlack_VH.set(kCGColorBlack_SEGMENT, value)
+    get() = kCGColorBlack_VH.get(kCGColorBlack_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGColorBlack_VH.set(kCGColorBlack_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGColorClear typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGColorClear_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGColorClear_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorClear").orElseThrow() }
+private val kCGColorClear_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorClear").orElseThrow().reinterpret(kCGColorClear_LAYOUT.byteSize()) }
 private val kCGColorClear_VH: VarHandle by lazy { kCGColorClear_LAYOUT.varHandle() }
 
 var kCGColorClear: MemorySegment
-    get() = kCGColorClear_VH.get(kCGColorClear_SEGMENT) as MemorySegment
-    set(value) = kCGColorClear_VH.set(kCGColorClear_SEGMENT, value)
+    get() = kCGColorClear_VH.get(kCGColorClear_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGColorClear_VH.set(kCGColorClear_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGFontGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -604,45 +604,45 @@ fun CGFontCopyTableForTag(arg0: MemorySegment, arg1: Int): MemorySegment {
  * {@snippet lang=c : kCGFontVariationAxisName typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGFontVariationAxisName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGFontVariationAxisName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisName").orElseThrow() }
+private val kCGFontVariationAxisName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisName").orElseThrow().reinterpret(kCGFontVariationAxisName_LAYOUT.byteSize()) }
 private val kCGFontVariationAxisName_VH: VarHandle by lazy { kCGFontVariationAxisName_LAYOUT.varHandle() }
 
 var kCGFontVariationAxisName: MemorySegment
-    get() = kCGFontVariationAxisName_VH.get(kCGFontVariationAxisName_SEGMENT) as MemorySegment
-    set(value) = kCGFontVariationAxisName_VH.set(kCGFontVariationAxisName_SEGMENT, value)
+    get() = kCGFontVariationAxisName_VH.get(kCGFontVariationAxisName_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGFontVariationAxisName_VH.set(kCGFontVariationAxisName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGFontVariationAxisMinValue typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGFontVariationAxisMinValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGFontVariationAxisMinValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisMinValue").orElseThrow() }
+private val kCGFontVariationAxisMinValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisMinValue").orElseThrow().reinterpret(kCGFontVariationAxisMinValue_LAYOUT.byteSize()) }
 private val kCGFontVariationAxisMinValue_VH: VarHandle by lazy { kCGFontVariationAxisMinValue_LAYOUT.varHandle() }
 
 var kCGFontVariationAxisMinValue: MemorySegment
-    get() = kCGFontVariationAxisMinValue_VH.get(kCGFontVariationAxisMinValue_SEGMENT) as MemorySegment
-    set(value) = kCGFontVariationAxisMinValue_VH.set(kCGFontVariationAxisMinValue_SEGMENT, value)
+    get() = kCGFontVariationAxisMinValue_VH.get(kCGFontVariationAxisMinValue_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGFontVariationAxisMinValue_VH.set(kCGFontVariationAxisMinValue_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGFontVariationAxisMaxValue typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGFontVariationAxisMaxValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGFontVariationAxisMaxValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisMaxValue").orElseThrow() }
+private val kCGFontVariationAxisMaxValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisMaxValue").orElseThrow().reinterpret(kCGFontVariationAxisMaxValue_LAYOUT.byteSize()) }
 private val kCGFontVariationAxisMaxValue_VH: VarHandle by lazy { kCGFontVariationAxisMaxValue_LAYOUT.varHandle() }
 
 var kCGFontVariationAxisMaxValue: MemorySegment
-    get() = kCGFontVariationAxisMaxValue_VH.get(kCGFontVariationAxisMaxValue_SEGMENT) as MemorySegment
-    set(value) = kCGFontVariationAxisMaxValue_VH.set(kCGFontVariationAxisMaxValue_SEGMENT, value)
+    get() = kCGFontVariationAxisMaxValue_VH.get(kCGFontVariationAxisMaxValue_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGFontVariationAxisMaxValue_VH.set(kCGFontVariationAxisMaxValue_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGFontVariationAxisDefaultValue typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGFontVariationAxisDefaultValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGFontVariationAxisDefaultValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisDefaultValue").orElseThrow() }
+private val kCGFontVariationAxisDefaultValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisDefaultValue").orElseThrow().reinterpret(kCGFontVariationAxisDefaultValue_LAYOUT.byteSize()) }
 private val kCGFontVariationAxisDefaultValue_VH: VarHandle by lazy { kCGFontVariationAxisDefaultValue_LAYOUT.varHandle() }
 
 var kCGFontVariationAxisDefaultValue: MemorySegment
-    get() = kCGFontVariationAxisDefaultValue_VH.get(kCGFontVariationAxisDefaultValue_SEGMENT) as MemorySegment
-    set(value) = kCGFontVariationAxisDefaultValue_VH.set(kCGFontVariationAxisDefaultValue_SEGMENT, value)
+    get() = kCGFontVariationAxisDefaultValue_VH.get(kCGFontVariationAxisDefaultValue_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGFontVariationAxisDefaultValue_VH.set(kCGFontVariationAxisDefaultValue_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGGradientGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -1013,12 +1013,12 @@ fun CGImageCreateCopyWithContentHeadroom(arg0: Float, arg1: MemorySegment): Memo
  * {@snippet lang=c : kCGDefaultHDRImageContentHeadroom Float
  */
 private val kCGDefaultHDRImageContentHeadroom_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_FLOAT }
-private val kCGDefaultHDRImageContentHeadroom_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDefaultHDRImageContentHeadroom").orElseThrow() }
+private val kCGDefaultHDRImageContentHeadroom_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDefaultHDRImageContentHeadroom").orElseThrow().reinterpret(kCGDefaultHDRImageContentHeadroom_LAYOUT.byteSize()) }
 private val kCGDefaultHDRImageContentHeadroom_VH: VarHandle by lazy { kCGDefaultHDRImageContentHeadroom_LAYOUT.varHandle() }
 
 var kCGDefaultHDRImageContentHeadroom: Float
-    get() = kCGDefaultHDRImageContentHeadroom_VH.get(kCGDefaultHDRImageContentHeadroom_SEGMENT) as Float
-    set(value) = kCGDefaultHDRImageContentHeadroom_VH.set(kCGDefaultHDRImageContentHeadroom_SEGMENT, value)
+    get() = kCGDefaultHDRImageContentHeadroom_VH.get(kCGDefaultHDRImageContentHeadroom_SEGMENT, 0L) as Float
+    set(value) = kCGDefaultHDRImageContentHeadroom_VH.set(kCGDefaultHDRImageContentHeadroom_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGImageGetContentHeadroom Float(typedef CGImageRef = (Declared(CGImage))*)
@@ -3219,45 +3219,45 @@ fun CGPDFPageGetTypeID(): Long {
  * {@snippet lang=c : kCGPDFOutlineTitle typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFOutlineTitle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFOutlineTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineTitle").orElseThrow() }
+private val kCGPDFOutlineTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineTitle").orElseThrow().reinterpret(kCGPDFOutlineTitle_LAYOUT.byteSize()) }
 private val kCGPDFOutlineTitle_VH: VarHandle by lazy { kCGPDFOutlineTitle_LAYOUT.varHandle() }
 
 var kCGPDFOutlineTitle: MemorySegment
-    get() = kCGPDFOutlineTitle_VH.get(kCGPDFOutlineTitle_SEGMENT) as MemorySegment
-    set(value) = kCGPDFOutlineTitle_VH.set(kCGPDFOutlineTitle_SEGMENT, value)
+    get() = kCGPDFOutlineTitle_VH.get(kCGPDFOutlineTitle_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFOutlineTitle_VH.set(kCGPDFOutlineTitle_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFOutlineChildren typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFOutlineChildren_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFOutlineChildren_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineChildren").orElseThrow() }
+private val kCGPDFOutlineChildren_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineChildren").orElseThrow().reinterpret(kCGPDFOutlineChildren_LAYOUT.byteSize()) }
 private val kCGPDFOutlineChildren_VH: VarHandle by lazy { kCGPDFOutlineChildren_LAYOUT.varHandle() }
 
 var kCGPDFOutlineChildren: MemorySegment
-    get() = kCGPDFOutlineChildren_VH.get(kCGPDFOutlineChildren_SEGMENT) as MemorySegment
-    set(value) = kCGPDFOutlineChildren_VH.set(kCGPDFOutlineChildren_SEGMENT, value)
+    get() = kCGPDFOutlineChildren_VH.get(kCGPDFOutlineChildren_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFOutlineChildren_VH.set(kCGPDFOutlineChildren_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFOutlineDestination typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFOutlineDestination_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFOutlineDestination_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineDestination").orElseThrow() }
+private val kCGPDFOutlineDestination_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineDestination").orElseThrow().reinterpret(kCGPDFOutlineDestination_LAYOUT.byteSize()) }
 private val kCGPDFOutlineDestination_VH: VarHandle by lazy { kCGPDFOutlineDestination_LAYOUT.varHandle() }
 
 var kCGPDFOutlineDestination: MemorySegment
-    get() = kCGPDFOutlineDestination_VH.get(kCGPDFOutlineDestination_SEGMENT) as MemorySegment
-    set(value) = kCGPDFOutlineDestination_VH.set(kCGPDFOutlineDestination_SEGMENT, value)
+    get() = kCGPDFOutlineDestination_VH.get(kCGPDFOutlineDestination_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFOutlineDestination_VH.set(kCGPDFOutlineDestination_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFOutlineDestinationRect typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFOutlineDestinationRect_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFOutlineDestinationRect_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineDestinationRect").orElseThrow() }
+private val kCGPDFOutlineDestinationRect_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineDestinationRect").orElseThrow().reinterpret(kCGPDFOutlineDestinationRect_LAYOUT.byteSize()) }
 private val kCGPDFOutlineDestinationRect_VH: VarHandle by lazy { kCGPDFOutlineDestinationRect_LAYOUT.varHandle() }
 
 var kCGPDFOutlineDestinationRect: MemorySegment
-    get() = kCGPDFOutlineDestinationRect_VH.get(kCGPDFOutlineDestinationRect_SEGMENT) as MemorySegment
-    set(value) = kCGPDFOutlineDestinationRect_VH.set(kCGPDFOutlineDestinationRect_SEGMENT, value)
+    get() = kCGPDFOutlineDestinationRect_VH.get(kCGPDFOutlineDestinationRect_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFOutlineDestinationRect_VH.set(kCGPDFOutlineDestinationRect_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGPDFDocumentCreateWithProvider typedef CGPDFDocumentRef = (Declared(CGPDFDocument))*(typedef CGDataProviderRef = (Declared(CGDataProvider))*)
@@ -3983,45 +3983,45 @@ fun CGShadingGetContentHeadroom(arg0: MemorySegment): Float {
  * {@snippet lang=c : kCGEXRToneMappingGammaDefog typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGEXRToneMappingGammaDefog_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGEXRToneMappingGammaDefog_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaDefog").orElseThrow() }
+private val kCGEXRToneMappingGammaDefog_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaDefog").orElseThrow().reinterpret(kCGEXRToneMappingGammaDefog_LAYOUT.byteSize()) }
 private val kCGEXRToneMappingGammaDefog_VH: VarHandle by lazy { kCGEXRToneMappingGammaDefog_LAYOUT.varHandle() }
 
 var kCGEXRToneMappingGammaDefog: MemorySegment
-    get() = kCGEXRToneMappingGammaDefog_VH.get(kCGEXRToneMappingGammaDefog_SEGMENT) as MemorySegment
-    set(value) = kCGEXRToneMappingGammaDefog_VH.set(kCGEXRToneMappingGammaDefog_SEGMENT, value)
+    get() = kCGEXRToneMappingGammaDefog_VH.get(kCGEXRToneMappingGammaDefog_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGEXRToneMappingGammaDefog_VH.set(kCGEXRToneMappingGammaDefog_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGEXRToneMappingGammaExposure typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGEXRToneMappingGammaExposure_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGEXRToneMappingGammaExposure_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaExposure").orElseThrow() }
+private val kCGEXRToneMappingGammaExposure_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaExposure").orElseThrow().reinterpret(kCGEXRToneMappingGammaExposure_LAYOUT.byteSize()) }
 private val kCGEXRToneMappingGammaExposure_VH: VarHandle by lazy { kCGEXRToneMappingGammaExposure_LAYOUT.varHandle() }
 
 var kCGEXRToneMappingGammaExposure: MemorySegment
-    get() = kCGEXRToneMappingGammaExposure_VH.get(kCGEXRToneMappingGammaExposure_SEGMENT) as MemorySegment
-    set(value) = kCGEXRToneMappingGammaExposure_VH.set(kCGEXRToneMappingGammaExposure_SEGMENT, value)
+    get() = kCGEXRToneMappingGammaExposure_VH.get(kCGEXRToneMappingGammaExposure_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGEXRToneMappingGammaExposure_VH.set(kCGEXRToneMappingGammaExposure_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGEXRToneMappingGammaKneeLow typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGEXRToneMappingGammaKneeLow_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGEXRToneMappingGammaKneeLow_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaKneeLow").orElseThrow() }
+private val kCGEXRToneMappingGammaKneeLow_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaKneeLow").orElseThrow().reinterpret(kCGEXRToneMappingGammaKneeLow_LAYOUT.byteSize()) }
 private val kCGEXRToneMappingGammaKneeLow_VH: VarHandle by lazy { kCGEXRToneMappingGammaKneeLow_LAYOUT.varHandle() }
 
 var kCGEXRToneMappingGammaKneeLow: MemorySegment
-    get() = kCGEXRToneMappingGammaKneeLow_VH.get(kCGEXRToneMappingGammaKneeLow_SEGMENT) as MemorySegment
-    set(value) = kCGEXRToneMappingGammaKneeLow_VH.set(kCGEXRToneMappingGammaKneeLow_SEGMENT, value)
+    get() = kCGEXRToneMappingGammaKneeLow_VH.get(kCGEXRToneMappingGammaKneeLow_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGEXRToneMappingGammaKneeLow_VH.set(kCGEXRToneMappingGammaKneeLow_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGEXRToneMappingGammaKneeHigh typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGEXRToneMappingGammaKneeHigh_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGEXRToneMappingGammaKneeHigh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaKneeHigh").orElseThrow() }
+private val kCGEXRToneMappingGammaKneeHigh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaKneeHigh").orElseThrow().reinterpret(kCGEXRToneMappingGammaKneeHigh_LAYOUT.byteSize()) }
 private val kCGEXRToneMappingGammaKneeHigh_VH: VarHandle by lazy { kCGEXRToneMappingGammaKneeHigh_LAYOUT.varHandle() }
 
 var kCGEXRToneMappingGammaKneeHigh: MemorySegment
-    get() = kCGEXRToneMappingGammaKneeHigh_VH.get(kCGEXRToneMappingGammaKneeHigh_SEGMENT) as MemorySegment
-    set(value) = kCGEXRToneMappingGammaKneeHigh_VH.set(kCGEXRToneMappingGammaKneeHigh_SEGMENT, value)
+    get() = kCGEXRToneMappingGammaKneeHigh_VH.get(kCGEXRToneMappingGammaKneeHigh_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGEXRToneMappingGammaKneeHigh_VH.set(kCGEXRToneMappingGammaKneeHigh_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGEXRToneMappingGammaGetDefaultOptions typedef CFDictionaryRef = (Declared(__CFDictionary))*()
@@ -4046,111 +4046,111 @@ fun CGEXRToneMappingGammaGetDefaultOptions(): MemorySegment {
  * {@snippet lang=c : kCGUse100nitsHLGOOTF typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGUse100nitsHLGOOTF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGUse100nitsHLGOOTF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGUse100nitsHLGOOTF").orElseThrow() }
+private val kCGUse100nitsHLGOOTF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGUse100nitsHLGOOTF").orElseThrow().reinterpret(kCGUse100nitsHLGOOTF_LAYOUT.byteSize()) }
 private val kCGUse100nitsHLGOOTF_VH: VarHandle by lazy { kCGUse100nitsHLGOOTF_LAYOUT.varHandle() }
 
 var kCGUse100nitsHLGOOTF: MemorySegment
-    get() = kCGUse100nitsHLGOOTF_VH.get(kCGUse100nitsHLGOOTF_SEGMENT) as MemorySegment
-    set(value) = kCGUse100nitsHLGOOTF_VH.set(kCGUse100nitsHLGOOTF_SEGMENT, value)
+    get() = kCGUse100nitsHLGOOTF_VH.get(kCGUse100nitsHLGOOTF_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGUse100nitsHLGOOTF_VH.set(kCGUse100nitsHLGOOTF_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGUseBT1886ForCoreVideoGamma typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGUseBT1886ForCoreVideoGamma_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGUseBT1886ForCoreVideoGamma_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGUseBT1886ForCoreVideoGamma").orElseThrow() }
+private val kCGUseBT1886ForCoreVideoGamma_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGUseBT1886ForCoreVideoGamma").orElseThrow().reinterpret(kCGUseBT1886ForCoreVideoGamma_LAYOUT.byteSize()) }
 private val kCGUseBT1886ForCoreVideoGamma_VH: VarHandle by lazy { kCGUseBT1886ForCoreVideoGamma_LAYOUT.varHandle() }
 
 var kCGUseBT1886ForCoreVideoGamma: MemorySegment
-    get() = kCGUseBT1886ForCoreVideoGamma_VH.get(kCGUseBT1886ForCoreVideoGamma_SEGMENT) as MemorySegment
-    set(value) = kCGUseBT1886ForCoreVideoGamma_VH.set(kCGUseBT1886ForCoreVideoGamma_SEGMENT, value)
+    get() = kCGUseBT1886ForCoreVideoGamma_VH.get(kCGUseBT1886ForCoreVideoGamma_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGUseBT1886ForCoreVideoGamma_VH.set(kCGUseBT1886ForCoreVideoGamma_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGSkipBoostToHDR typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGSkipBoostToHDR_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGSkipBoostToHDR_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGSkipBoostToHDR").orElseThrow() }
+private val kCGSkipBoostToHDR_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGSkipBoostToHDR").orElseThrow().reinterpret(kCGSkipBoostToHDR_LAYOUT.byteSize()) }
 private val kCGSkipBoostToHDR_VH: VarHandle by lazy { kCGSkipBoostToHDR_LAYOUT.varHandle() }
 
 var kCGSkipBoostToHDR: MemorySegment
-    get() = kCGSkipBoostToHDR_VH.get(kCGSkipBoostToHDR_SEGMENT) as MemorySegment
-    set(value) = kCGSkipBoostToHDR_VH.set(kCGSkipBoostToHDR_SEGMENT, value)
+    get() = kCGSkipBoostToHDR_VH.get(kCGSkipBoostToHDR_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGSkipBoostToHDR_VH.set(kCGSkipBoostToHDR_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGUseLegacyHDREcosystem typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGUseLegacyHDREcosystem_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGUseLegacyHDREcosystem_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGUseLegacyHDREcosystem").orElseThrow() }
+private val kCGUseLegacyHDREcosystem_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGUseLegacyHDREcosystem").orElseThrow().reinterpret(kCGUseLegacyHDREcosystem_LAYOUT.byteSize()) }
 private val kCGUseLegacyHDREcosystem_VH: VarHandle by lazy { kCGUseLegacyHDREcosystem_LAYOUT.varHandle() }
 
 var kCGUseLegacyHDREcosystem: MemorySegment
-    get() = kCGUseLegacyHDREcosystem_VH.get(kCGUseLegacyHDREcosystem_SEGMENT) as MemorySegment
-    set(value) = kCGUseLegacyHDREcosystem_VH.set(kCGUseLegacyHDREcosystem_SEGMENT, value)
+    get() = kCGUseLegacyHDREcosystem_VH.get(kCGUseLegacyHDREcosystem_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGUseLegacyHDREcosystem_VH.set(kCGUseLegacyHDREcosystem_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPreferredDynamicRange typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCGPreferredDynamicRange_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPreferredDynamicRange_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPreferredDynamicRange").orElseThrow() }
+private val kCGPreferredDynamicRange_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPreferredDynamicRange").orElseThrow().reinterpret(kCGPreferredDynamicRange_LAYOUT.byteSize()) }
 private val kCGPreferredDynamicRange_VH: VarHandle by lazy { kCGPreferredDynamicRange_LAYOUT.varHandle() }
 
 var kCGPreferredDynamicRange: MemorySegment
-    get() = kCGPreferredDynamicRange_VH.get(kCGPreferredDynamicRange_SEGMENT) as MemorySegment
-    set(value) = kCGPreferredDynamicRange_VH.set(kCGPreferredDynamicRange_SEGMENT, value)
+    get() = kCGPreferredDynamicRange_VH.get(kCGPreferredDynamicRange_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPreferredDynamicRange_VH.set(kCGPreferredDynamicRange_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDynamicRangeHigh typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCGDynamicRangeHigh_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDynamicRangeHigh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDynamicRangeHigh").orElseThrow() }
+private val kCGDynamicRangeHigh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDynamicRangeHigh").orElseThrow().reinterpret(kCGDynamicRangeHigh_LAYOUT.byteSize()) }
 private val kCGDynamicRangeHigh_VH: VarHandle by lazy { kCGDynamicRangeHigh_LAYOUT.varHandle() }
 
 var kCGDynamicRangeHigh: MemorySegment
-    get() = kCGDynamicRangeHigh_VH.get(kCGDynamicRangeHigh_SEGMENT) as MemorySegment
-    set(value) = kCGDynamicRangeHigh_VH.set(kCGDynamicRangeHigh_SEGMENT, value)
+    get() = kCGDynamicRangeHigh_VH.get(kCGDynamicRangeHigh_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDynamicRangeHigh_VH.set(kCGDynamicRangeHigh_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDynamicRangeConstrained typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCGDynamicRangeConstrained_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDynamicRangeConstrained_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDynamicRangeConstrained").orElseThrow() }
+private val kCGDynamicRangeConstrained_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDynamicRangeConstrained").orElseThrow().reinterpret(kCGDynamicRangeConstrained_LAYOUT.byteSize()) }
 private val kCGDynamicRangeConstrained_VH: VarHandle by lazy { kCGDynamicRangeConstrained_LAYOUT.varHandle() }
 
 var kCGDynamicRangeConstrained: MemorySegment
-    get() = kCGDynamicRangeConstrained_VH.get(kCGDynamicRangeConstrained_SEGMENT) as MemorySegment
-    set(value) = kCGDynamicRangeConstrained_VH.set(kCGDynamicRangeConstrained_SEGMENT, value)
+    get() = kCGDynamicRangeConstrained_VH.get(kCGDynamicRangeConstrained_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDynamicRangeConstrained_VH.set(kCGDynamicRangeConstrained_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDynamicRangeStandard typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCGDynamicRangeStandard_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDynamicRangeStandard_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDynamicRangeStandard").orElseThrow() }
+private val kCGDynamicRangeStandard_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDynamicRangeStandard").orElseThrow().reinterpret(kCGDynamicRangeStandard_LAYOUT.byteSize()) }
 private val kCGDynamicRangeStandard_VH: VarHandle by lazy { kCGDynamicRangeStandard_LAYOUT.varHandle() }
 
 var kCGDynamicRangeStandard: MemorySegment
-    get() = kCGDynamicRangeStandard_VH.get(kCGDynamicRangeStandard_SEGMENT) as MemorySegment
-    set(value) = kCGDynamicRangeStandard_VH.set(kCGDynamicRangeStandard_SEGMENT, value)
+    get() = kCGDynamicRangeStandard_VH.get(kCGDynamicRangeStandard_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDynamicRangeStandard_VH.set(kCGDynamicRangeStandard_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGContentAverageLightLevel typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCGContentAverageLightLevel_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGContentAverageLightLevel_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGContentAverageLightLevel").orElseThrow() }
+private val kCGContentAverageLightLevel_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGContentAverageLightLevel").orElseThrow().reinterpret(kCGContentAverageLightLevel_LAYOUT.byteSize()) }
 private val kCGContentAverageLightLevel_VH: VarHandle by lazy { kCGContentAverageLightLevel_LAYOUT.varHandle() }
 
 var kCGContentAverageLightLevel: MemorySegment
-    get() = kCGContentAverageLightLevel_VH.get(kCGContentAverageLightLevel_SEGMENT) as MemorySegment
-    set(value) = kCGContentAverageLightLevel_VH.set(kCGContentAverageLightLevel_SEGMENT, value)
+    get() = kCGContentAverageLightLevel_VH.get(kCGContentAverageLightLevel_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGContentAverageLightLevel_VH.set(kCGContentAverageLightLevel_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGContentAverageLightLevelNits typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCGContentAverageLightLevelNits_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGContentAverageLightLevelNits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGContentAverageLightLevelNits").orElseThrow() }
+private val kCGContentAverageLightLevelNits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGContentAverageLightLevelNits").orElseThrow().reinterpret(kCGContentAverageLightLevelNits_LAYOUT.byteSize()) }
 private val kCGContentAverageLightLevelNits_VH: VarHandle by lazy { kCGContentAverageLightLevelNits_LAYOUT.varHandle() }
 
 var kCGContentAverageLightLevelNits: MemorySegment
-    get() = kCGContentAverageLightLevelNits_VH.get(kCGContentAverageLightLevelNits_SEGMENT) as MemorySegment
-    set(value) = kCGContentAverageLightLevelNits_VH.set(kCGContentAverageLightLevelNits_SEGMENT, value)
+    get() = kCGContentAverageLightLevelNits_VH.get(kCGContentAverageLightLevelNits_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGContentAverageLightLevelNits_VH.set(kCGContentAverageLightLevelNits_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGContextGetTypeID typedef CFTypeID = UNSIGNED = Long()
