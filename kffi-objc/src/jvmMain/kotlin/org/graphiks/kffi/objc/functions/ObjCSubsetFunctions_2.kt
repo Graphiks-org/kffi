@@ -160,12 +160,12 @@ fun CFURLSetResourcePropertiesForKeys(arg0: MemorySegment, arg1: MemorySegment, 
  * {@snippet lang=c : kCFURLKeysOfUnsetValuesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLKeysOfUnsetValuesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLKeysOfUnsetValuesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLKeysOfUnsetValuesKey").orElseThrow() }
+private val kCFURLKeysOfUnsetValuesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLKeysOfUnsetValuesKey").orElseThrow().reinterpret(kCFURLKeysOfUnsetValuesKey_LAYOUT.byteSize()) }
 private val kCFURLKeysOfUnsetValuesKey_VH: VarHandle by lazy { kCFURLKeysOfUnsetValuesKey_LAYOUT.varHandle() }
 
 var kCFURLKeysOfUnsetValuesKey: MemorySegment
-    get() = kCFURLKeysOfUnsetValuesKey_VH.get(kCFURLKeysOfUnsetValuesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLKeysOfUnsetValuesKey_VH.set(kCFURLKeysOfUnsetValuesKey_SEGMENT, value)
+    get() = kCFURLKeysOfUnsetValuesKey_VH.get(kCFURLKeysOfUnsetValuesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLKeysOfUnsetValuesKey_VH.set(kCFURLKeysOfUnsetValuesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFURLClearResourcePropertyCacheForKey Void(typedef CFURLRef = (Declared(__CFURL))*,typedef CFStringRef = (Declared(__CFString))*)
@@ -247,1453 +247,1453 @@ fun CFURLResourceIsReachable(arg0: MemorySegment, arg1: MemorySegment): Byte {
  * {@snippet lang=c : kCFURLNameKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLNameKey").orElseThrow() }
+private val kCFURLNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLNameKey").orElseThrow().reinterpret(kCFURLNameKey_LAYOUT.byteSize()) }
 private val kCFURLNameKey_VH: VarHandle by lazy { kCFURLNameKey_LAYOUT.varHandle() }
 
 var kCFURLNameKey: MemorySegment
-    get() = kCFURLNameKey_VH.get(kCFURLNameKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLNameKey_VH.set(kCFURLNameKey_SEGMENT, value)
+    get() = kCFURLNameKey_VH.get(kCFURLNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLNameKey_VH.set(kCFURLNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLLocalizedNameKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLLocalizedNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLLocalizedNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLocalizedNameKey").orElseThrow() }
+private val kCFURLLocalizedNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLocalizedNameKey").orElseThrow().reinterpret(kCFURLLocalizedNameKey_LAYOUT.byteSize()) }
 private val kCFURLLocalizedNameKey_VH: VarHandle by lazy { kCFURLLocalizedNameKey_LAYOUT.varHandle() }
 
 var kCFURLLocalizedNameKey: MemorySegment
-    get() = kCFURLLocalizedNameKey_VH.get(kCFURLLocalizedNameKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLLocalizedNameKey_VH.set(kCFURLLocalizedNameKey_SEGMENT, value)
+    get() = kCFURLLocalizedNameKey_VH.get(kCFURLLocalizedNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLLocalizedNameKey_VH.set(kCFURLLocalizedNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsRegularFileKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsRegularFileKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsRegularFileKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsRegularFileKey").orElseThrow() }
+private val kCFURLIsRegularFileKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsRegularFileKey").orElseThrow().reinterpret(kCFURLIsRegularFileKey_LAYOUT.byteSize()) }
 private val kCFURLIsRegularFileKey_VH: VarHandle by lazy { kCFURLIsRegularFileKey_LAYOUT.varHandle() }
 
 var kCFURLIsRegularFileKey: MemorySegment
-    get() = kCFURLIsRegularFileKey_VH.get(kCFURLIsRegularFileKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsRegularFileKey_VH.set(kCFURLIsRegularFileKey_SEGMENT, value)
+    get() = kCFURLIsRegularFileKey_VH.get(kCFURLIsRegularFileKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsRegularFileKey_VH.set(kCFURLIsRegularFileKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsDirectoryKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsDirectoryKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsDirectoryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsDirectoryKey").orElseThrow() }
+private val kCFURLIsDirectoryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsDirectoryKey").orElseThrow().reinterpret(kCFURLIsDirectoryKey_LAYOUT.byteSize()) }
 private val kCFURLIsDirectoryKey_VH: VarHandle by lazy { kCFURLIsDirectoryKey_LAYOUT.varHandle() }
 
 var kCFURLIsDirectoryKey: MemorySegment
-    get() = kCFURLIsDirectoryKey_VH.get(kCFURLIsDirectoryKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsDirectoryKey_VH.set(kCFURLIsDirectoryKey_SEGMENT, value)
+    get() = kCFURLIsDirectoryKey_VH.get(kCFURLIsDirectoryKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsDirectoryKey_VH.set(kCFURLIsDirectoryKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsSymbolicLinkKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsSymbolicLinkKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsSymbolicLinkKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsSymbolicLinkKey").orElseThrow() }
+private val kCFURLIsSymbolicLinkKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsSymbolicLinkKey").orElseThrow().reinterpret(kCFURLIsSymbolicLinkKey_LAYOUT.byteSize()) }
 private val kCFURLIsSymbolicLinkKey_VH: VarHandle by lazy { kCFURLIsSymbolicLinkKey_LAYOUT.varHandle() }
 
 var kCFURLIsSymbolicLinkKey: MemorySegment
-    get() = kCFURLIsSymbolicLinkKey_VH.get(kCFURLIsSymbolicLinkKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsSymbolicLinkKey_VH.set(kCFURLIsSymbolicLinkKey_SEGMENT, value)
+    get() = kCFURLIsSymbolicLinkKey_VH.get(kCFURLIsSymbolicLinkKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsSymbolicLinkKey_VH.set(kCFURLIsSymbolicLinkKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsVolumeKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsVolumeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsVolumeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsVolumeKey").orElseThrow() }
+private val kCFURLIsVolumeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsVolumeKey").orElseThrow().reinterpret(kCFURLIsVolumeKey_LAYOUT.byteSize()) }
 private val kCFURLIsVolumeKey_VH: VarHandle by lazy { kCFURLIsVolumeKey_LAYOUT.varHandle() }
 
 var kCFURLIsVolumeKey: MemorySegment
-    get() = kCFURLIsVolumeKey_VH.get(kCFURLIsVolumeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsVolumeKey_VH.set(kCFURLIsVolumeKey_SEGMENT, value)
+    get() = kCFURLIsVolumeKey_VH.get(kCFURLIsVolumeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsVolumeKey_VH.set(kCFURLIsVolumeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsPackageKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsPackageKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsPackageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsPackageKey").orElseThrow() }
+private val kCFURLIsPackageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsPackageKey").orElseThrow().reinterpret(kCFURLIsPackageKey_LAYOUT.byteSize()) }
 private val kCFURLIsPackageKey_VH: VarHandle by lazy { kCFURLIsPackageKey_LAYOUT.varHandle() }
 
 var kCFURLIsPackageKey: MemorySegment
-    get() = kCFURLIsPackageKey_VH.get(kCFURLIsPackageKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsPackageKey_VH.set(kCFURLIsPackageKey_SEGMENT, value)
+    get() = kCFURLIsPackageKey_VH.get(kCFURLIsPackageKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsPackageKey_VH.set(kCFURLIsPackageKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsApplicationKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsApplicationKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsApplicationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsApplicationKey").orElseThrow() }
+private val kCFURLIsApplicationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsApplicationKey").orElseThrow().reinterpret(kCFURLIsApplicationKey_LAYOUT.byteSize()) }
 private val kCFURLIsApplicationKey_VH: VarHandle by lazy { kCFURLIsApplicationKey_LAYOUT.varHandle() }
 
 var kCFURLIsApplicationKey: MemorySegment
-    get() = kCFURLIsApplicationKey_VH.get(kCFURLIsApplicationKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsApplicationKey_VH.set(kCFURLIsApplicationKey_SEGMENT, value)
+    get() = kCFURLIsApplicationKey_VH.get(kCFURLIsApplicationKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsApplicationKey_VH.set(kCFURLIsApplicationKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLApplicationIsScriptableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLApplicationIsScriptableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLApplicationIsScriptableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLApplicationIsScriptableKey").orElseThrow() }
+private val kCFURLApplicationIsScriptableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLApplicationIsScriptableKey").orElseThrow().reinterpret(kCFURLApplicationIsScriptableKey_LAYOUT.byteSize()) }
 private val kCFURLApplicationIsScriptableKey_VH: VarHandle by lazy { kCFURLApplicationIsScriptableKey_LAYOUT.varHandle() }
 
 var kCFURLApplicationIsScriptableKey: MemorySegment
-    get() = kCFURLApplicationIsScriptableKey_VH.get(kCFURLApplicationIsScriptableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLApplicationIsScriptableKey_VH.set(kCFURLApplicationIsScriptableKey_SEGMENT, value)
+    get() = kCFURLApplicationIsScriptableKey_VH.get(kCFURLApplicationIsScriptableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLApplicationIsScriptableKey_VH.set(kCFURLApplicationIsScriptableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsSystemImmutableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsSystemImmutableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsSystemImmutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsSystemImmutableKey").orElseThrow() }
+private val kCFURLIsSystemImmutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsSystemImmutableKey").orElseThrow().reinterpret(kCFURLIsSystemImmutableKey_LAYOUT.byteSize()) }
 private val kCFURLIsSystemImmutableKey_VH: VarHandle by lazy { kCFURLIsSystemImmutableKey_LAYOUT.varHandle() }
 
 var kCFURLIsSystemImmutableKey: MemorySegment
-    get() = kCFURLIsSystemImmutableKey_VH.get(kCFURLIsSystemImmutableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsSystemImmutableKey_VH.set(kCFURLIsSystemImmutableKey_SEGMENT, value)
+    get() = kCFURLIsSystemImmutableKey_VH.get(kCFURLIsSystemImmutableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsSystemImmutableKey_VH.set(kCFURLIsSystemImmutableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsUserImmutableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsUserImmutableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsUserImmutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsUserImmutableKey").orElseThrow() }
+private val kCFURLIsUserImmutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsUserImmutableKey").orElseThrow().reinterpret(kCFURLIsUserImmutableKey_LAYOUT.byteSize()) }
 private val kCFURLIsUserImmutableKey_VH: VarHandle by lazy { kCFURLIsUserImmutableKey_LAYOUT.varHandle() }
 
 var kCFURLIsUserImmutableKey: MemorySegment
-    get() = kCFURLIsUserImmutableKey_VH.get(kCFURLIsUserImmutableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsUserImmutableKey_VH.set(kCFURLIsUserImmutableKey_SEGMENT, value)
+    get() = kCFURLIsUserImmutableKey_VH.get(kCFURLIsUserImmutableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsUserImmutableKey_VH.set(kCFURLIsUserImmutableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsHiddenKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsHiddenKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsHiddenKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsHiddenKey").orElseThrow() }
+private val kCFURLIsHiddenKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsHiddenKey").orElseThrow().reinterpret(kCFURLIsHiddenKey_LAYOUT.byteSize()) }
 private val kCFURLIsHiddenKey_VH: VarHandle by lazy { kCFURLIsHiddenKey_LAYOUT.varHandle() }
 
 var kCFURLIsHiddenKey: MemorySegment
-    get() = kCFURLIsHiddenKey_VH.get(kCFURLIsHiddenKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsHiddenKey_VH.set(kCFURLIsHiddenKey_SEGMENT, value)
+    get() = kCFURLIsHiddenKey_VH.get(kCFURLIsHiddenKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsHiddenKey_VH.set(kCFURLIsHiddenKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLHasHiddenExtensionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLHasHiddenExtensionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLHasHiddenExtensionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLHasHiddenExtensionKey").orElseThrow() }
+private val kCFURLHasHiddenExtensionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLHasHiddenExtensionKey").orElseThrow().reinterpret(kCFURLHasHiddenExtensionKey_LAYOUT.byteSize()) }
 private val kCFURLHasHiddenExtensionKey_VH: VarHandle by lazy { kCFURLHasHiddenExtensionKey_LAYOUT.varHandle() }
 
 var kCFURLHasHiddenExtensionKey: MemorySegment
-    get() = kCFURLHasHiddenExtensionKey_VH.get(kCFURLHasHiddenExtensionKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLHasHiddenExtensionKey_VH.set(kCFURLHasHiddenExtensionKey_SEGMENT, value)
+    get() = kCFURLHasHiddenExtensionKey_VH.get(kCFURLHasHiddenExtensionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLHasHiddenExtensionKey_VH.set(kCFURLHasHiddenExtensionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLCreationDateKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLCreationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLCreationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLCreationDateKey").orElseThrow() }
+private val kCFURLCreationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLCreationDateKey").orElseThrow().reinterpret(kCFURLCreationDateKey_LAYOUT.byteSize()) }
 private val kCFURLCreationDateKey_VH: VarHandle by lazy { kCFURLCreationDateKey_LAYOUT.varHandle() }
 
 var kCFURLCreationDateKey: MemorySegment
-    get() = kCFURLCreationDateKey_VH.get(kCFURLCreationDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLCreationDateKey_VH.set(kCFURLCreationDateKey_SEGMENT, value)
+    get() = kCFURLCreationDateKey_VH.get(kCFURLCreationDateKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLCreationDateKey_VH.set(kCFURLCreationDateKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLContentAccessDateKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLContentAccessDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLContentAccessDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLContentAccessDateKey").orElseThrow() }
+private val kCFURLContentAccessDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLContentAccessDateKey").orElseThrow().reinterpret(kCFURLContentAccessDateKey_LAYOUT.byteSize()) }
 private val kCFURLContentAccessDateKey_VH: VarHandle by lazy { kCFURLContentAccessDateKey_LAYOUT.varHandle() }
 
 var kCFURLContentAccessDateKey: MemorySegment
-    get() = kCFURLContentAccessDateKey_VH.get(kCFURLContentAccessDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLContentAccessDateKey_VH.set(kCFURLContentAccessDateKey_SEGMENT, value)
+    get() = kCFURLContentAccessDateKey_VH.get(kCFURLContentAccessDateKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLContentAccessDateKey_VH.set(kCFURLContentAccessDateKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLContentModificationDateKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLContentModificationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLContentModificationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLContentModificationDateKey").orElseThrow() }
+private val kCFURLContentModificationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLContentModificationDateKey").orElseThrow().reinterpret(kCFURLContentModificationDateKey_LAYOUT.byteSize()) }
 private val kCFURLContentModificationDateKey_VH: VarHandle by lazy { kCFURLContentModificationDateKey_LAYOUT.varHandle() }
 
 var kCFURLContentModificationDateKey: MemorySegment
-    get() = kCFURLContentModificationDateKey_VH.get(kCFURLContentModificationDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLContentModificationDateKey_VH.set(kCFURLContentModificationDateKey_SEGMENT, value)
+    get() = kCFURLContentModificationDateKey_VH.get(kCFURLContentModificationDateKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLContentModificationDateKey_VH.set(kCFURLContentModificationDateKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLAttributeModificationDateKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLAttributeModificationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLAttributeModificationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLAttributeModificationDateKey").orElseThrow() }
+private val kCFURLAttributeModificationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLAttributeModificationDateKey").orElseThrow().reinterpret(kCFURLAttributeModificationDateKey_LAYOUT.byteSize()) }
 private val kCFURLAttributeModificationDateKey_VH: VarHandle by lazy { kCFURLAttributeModificationDateKey_LAYOUT.varHandle() }
 
 var kCFURLAttributeModificationDateKey: MemorySegment
-    get() = kCFURLAttributeModificationDateKey_VH.get(kCFURLAttributeModificationDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLAttributeModificationDateKey_VH.set(kCFURLAttributeModificationDateKey_SEGMENT, value)
+    get() = kCFURLAttributeModificationDateKey_VH.get(kCFURLAttributeModificationDateKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLAttributeModificationDateKey_VH.set(kCFURLAttributeModificationDateKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileIdentifierKey").orElseThrow() }
+private val kCFURLFileIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileIdentifierKey").orElseThrow().reinterpret(kCFURLFileIdentifierKey_LAYOUT.byteSize()) }
 private val kCFURLFileIdentifierKey_VH: VarHandle by lazy { kCFURLFileIdentifierKey_LAYOUT.varHandle() }
 
 var kCFURLFileIdentifierKey: MemorySegment
-    get() = kCFURLFileIdentifierKey_VH.get(kCFURLFileIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileIdentifierKey_VH.set(kCFURLFileIdentifierKey_SEGMENT, value)
+    get() = kCFURLFileIdentifierKey_VH.get(kCFURLFileIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileIdentifierKey_VH.set(kCFURLFileIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileContentIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileContentIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileContentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileContentIdentifierKey").orElseThrow() }
+private val kCFURLFileContentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileContentIdentifierKey").orElseThrow().reinterpret(kCFURLFileContentIdentifierKey_LAYOUT.byteSize()) }
 private val kCFURLFileContentIdentifierKey_VH: VarHandle by lazy { kCFURLFileContentIdentifierKey_LAYOUT.varHandle() }
 
 var kCFURLFileContentIdentifierKey: MemorySegment
-    get() = kCFURLFileContentIdentifierKey_VH.get(kCFURLFileContentIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileContentIdentifierKey_VH.set(kCFURLFileContentIdentifierKey_SEGMENT, value)
+    get() = kCFURLFileContentIdentifierKey_VH.get(kCFURLFileContentIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileContentIdentifierKey_VH.set(kCFURLFileContentIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLMayShareFileContentKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLMayShareFileContentKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLMayShareFileContentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLMayShareFileContentKey").orElseThrow() }
+private val kCFURLMayShareFileContentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLMayShareFileContentKey").orElseThrow().reinterpret(kCFURLMayShareFileContentKey_LAYOUT.byteSize()) }
 private val kCFURLMayShareFileContentKey_VH: VarHandle by lazy { kCFURLMayShareFileContentKey_LAYOUT.varHandle() }
 
 var kCFURLMayShareFileContentKey: MemorySegment
-    get() = kCFURLMayShareFileContentKey_VH.get(kCFURLMayShareFileContentKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLMayShareFileContentKey_VH.set(kCFURLMayShareFileContentKey_SEGMENT, value)
+    get() = kCFURLMayShareFileContentKey_VH.get(kCFURLMayShareFileContentKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLMayShareFileContentKey_VH.set(kCFURLMayShareFileContentKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLMayHaveExtendedAttributesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLMayHaveExtendedAttributesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLMayHaveExtendedAttributesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLMayHaveExtendedAttributesKey").orElseThrow() }
+private val kCFURLMayHaveExtendedAttributesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLMayHaveExtendedAttributesKey").orElseThrow().reinterpret(kCFURLMayHaveExtendedAttributesKey_LAYOUT.byteSize()) }
 private val kCFURLMayHaveExtendedAttributesKey_VH: VarHandle by lazy { kCFURLMayHaveExtendedAttributesKey_LAYOUT.varHandle() }
 
 var kCFURLMayHaveExtendedAttributesKey: MemorySegment
-    get() = kCFURLMayHaveExtendedAttributesKey_VH.get(kCFURLMayHaveExtendedAttributesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLMayHaveExtendedAttributesKey_VH.set(kCFURLMayHaveExtendedAttributesKey_SEGMENT, value)
+    get() = kCFURLMayHaveExtendedAttributesKey_VH.get(kCFURLMayHaveExtendedAttributesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLMayHaveExtendedAttributesKey_VH.set(kCFURLMayHaveExtendedAttributesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsPurgeableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsPurgeableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsPurgeableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsPurgeableKey").orElseThrow() }
+private val kCFURLIsPurgeableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsPurgeableKey").orElseThrow().reinterpret(kCFURLIsPurgeableKey_LAYOUT.byteSize()) }
 private val kCFURLIsPurgeableKey_VH: VarHandle by lazy { kCFURLIsPurgeableKey_LAYOUT.varHandle() }
 
 var kCFURLIsPurgeableKey: MemorySegment
-    get() = kCFURLIsPurgeableKey_VH.get(kCFURLIsPurgeableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsPurgeableKey_VH.set(kCFURLIsPurgeableKey_SEGMENT, value)
+    get() = kCFURLIsPurgeableKey_VH.get(kCFURLIsPurgeableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsPurgeableKey_VH.set(kCFURLIsPurgeableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsSparseKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsSparseKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsSparseKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsSparseKey").orElseThrow() }
+private val kCFURLIsSparseKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsSparseKey").orElseThrow().reinterpret(kCFURLIsSparseKey_LAYOUT.byteSize()) }
 private val kCFURLIsSparseKey_VH: VarHandle by lazy { kCFURLIsSparseKey_LAYOUT.varHandle() }
 
 var kCFURLIsSparseKey: MemorySegment
-    get() = kCFURLIsSparseKey_VH.get(kCFURLIsSparseKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsSparseKey_VH.set(kCFURLIsSparseKey_SEGMENT, value)
+    get() = kCFURLIsSparseKey_VH.get(kCFURLIsSparseKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsSparseKey_VH.set(kCFURLIsSparseKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLLinkCountKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLLinkCountKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLLinkCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLinkCountKey").orElseThrow() }
+private val kCFURLLinkCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLinkCountKey").orElseThrow().reinterpret(kCFURLLinkCountKey_LAYOUT.byteSize()) }
 private val kCFURLLinkCountKey_VH: VarHandle by lazy { kCFURLLinkCountKey_LAYOUT.varHandle() }
 
 var kCFURLLinkCountKey: MemorySegment
-    get() = kCFURLLinkCountKey_VH.get(kCFURLLinkCountKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLLinkCountKey_VH.set(kCFURLLinkCountKey_SEGMENT, value)
+    get() = kCFURLLinkCountKey_VH.get(kCFURLLinkCountKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLLinkCountKey_VH.set(kCFURLLinkCountKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLParentDirectoryURLKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLParentDirectoryURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLParentDirectoryURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLParentDirectoryURLKey").orElseThrow() }
+private val kCFURLParentDirectoryURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLParentDirectoryURLKey").orElseThrow().reinterpret(kCFURLParentDirectoryURLKey_LAYOUT.byteSize()) }
 private val kCFURLParentDirectoryURLKey_VH: VarHandle by lazy { kCFURLParentDirectoryURLKey_LAYOUT.varHandle() }
 
 var kCFURLParentDirectoryURLKey: MemorySegment
-    get() = kCFURLParentDirectoryURLKey_VH.get(kCFURLParentDirectoryURLKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLParentDirectoryURLKey_VH.set(kCFURLParentDirectoryURLKey_SEGMENT, value)
+    get() = kCFURLParentDirectoryURLKey_VH.get(kCFURLParentDirectoryURLKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLParentDirectoryURLKey_VH.set(kCFURLParentDirectoryURLKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeURLKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeURLKey").orElseThrow() }
+private val kCFURLVolumeURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeURLKey").orElseThrow().reinterpret(kCFURLVolumeURLKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeURLKey_VH: VarHandle by lazy { kCFURLVolumeURLKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeURLKey: MemorySegment
-    get() = kCFURLVolumeURLKey_VH.get(kCFURLVolumeURLKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeURLKey_VH.set(kCFURLVolumeURLKey_SEGMENT, value)
+    get() = kCFURLVolumeURLKey_VH.get(kCFURLVolumeURLKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeURLKey_VH.set(kCFURLVolumeURLKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLTypeIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLTypeIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLTypeIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLTypeIdentifierKey").orElseThrow() }
+private val kCFURLTypeIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLTypeIdentifierKey").orElseThrow().reinterpret(kCFURLTypeIdentifierKey_LAYOUT.byteSize()) }
 private val kCFURLTypeIdentifierKey_VH: VarHandle by lazy { kCFURLTypeIdentifierKey_LAYOUT.varHandle() }
 
 var kCFURLTypeIdentifierKey: MemorySegment
-    get() = kCFURLTypeIdentifierKey_VH.get(kCFURLTypeIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLTypeIdentifierKey_VH.set(kCFURLTypeIdentifierKey_SEGMENT, value)
+    get() = kCFURLTypeIdentifierKey_VH.get(kCFURLTypeIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLTypeIdentifierKey_VH.set(kCFURLTypeIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLLocalizedTypeDescriptionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLLocalizedTypeDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLLocalizedTypeDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLocalizedTypeDescriptionKey").orElseThrow() }
+private val kCFURLLocalizedTypeDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLocalizedTypeDescriptionKey").orElseThrow().reinterpret(kCFURLLocalizedTypeDescriptionKey_LAYOUT.byteSize()) }
 private val kCFURLLocalizedTypeDescriptionKey_VH: VarHandle by lazy { kCFURLLocalizedTypeDescriptionKey_LAYOUT.varHandle() }
 
 var kCFURLLocalizedTypeDescriptionKey: MemorySegment
-    get() = kCFURLLocalizedTypeDescriptionKey_VH.get(kCFURLLocalizedTypeDescriptionKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLLocalizedTypeDescriptionKey_VH.set(kCFURLLocalizedTypeDescriptionKey_SEGMENT, value)
+    get() = kCFURLLocalizedTypeDescriptionKey_VH.get(kCFURLLocalizedTypeDescriptionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLLocalizedTypeDescriptionKey_VH.set(kCFURLLocalizedTypeDescriptionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLLabelNumberKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLLabelNumberKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLLabelNumberKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLabelNumberKey").orElseThrow() }
+private val kCFURLLabelNumberKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLabelNumberKey").orElseThrow().reinterpret(kCFURLLabelNumberKey_LAYOUT.byteSize()) }
 private val kCFURLLabelNumberKey_VH: VarHandle by lazy { kCFURLLabelNumberKey_LAYOUT.varHandle() }
 
 var kCFURLLabelNumberKey: MemorySegment
-    get() = kCFURLLabelNumberKey_VH.get(kCFURLLabelNumberKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLLabelNumberKey_VH.set(kCFURLLabelNumberKey_SEGMENT, value)
+    get() = kCFURLLabelNumberKey_VH.get(kCFURLLabelNumberKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLLabelNumberKey_VH.set(kCFURLLabelNumberKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLLabelColorKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLLabelColorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLLabelColorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLabelColorKey").orElseThrow() }
+private val kCFURLLabelColorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLabelColorKey").orElseThrow().reinterpret(kCFURLLabelColorKey_LAYOUT.byteSize()) }
 private val kCFURLLabelColorKey_VH: VarHandle by lazy { kCFURLLabelColorKey_LAYOUT.varHandle() }
 
 var kCFURLLabelColorKey: MemorySegment
-    get() = kCFURLLabelColorKey_VH.get(kCFURLLabelColorKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLLabelColorKey_VH.set(kCFURLLabelColorKey_SEGMENT, value)
+    get() = kCFURLLabelColorKey_VH.get(kCFURLLabelColorKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLLabelColorKey_VH.set(kCFURLLabelColorKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLLocalizedLabelKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLLocalizedLabelKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLLocalizedLabelKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLocalizedLabelKey").orElseThrow() }
+private val kCFURLLocalizedLabelKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLLocalizedLabelKey").orElseThrow().reinterpret(kCFURLLocalizedLabelKey_LAYOUT.byteSize()) }
 private val kCFURLLocalizedLabelKey_VH: VarHandle by lazy { kCFURLLocalizedLabelKey_LAYOUT.varHandle() }
 
 var kCFURLLocalizedLabelKey: MemorySegment
-    get() = kCFURLLocalizedLabelKey_VH.get(kCFURLLocalizedLabelKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLLocalizedLabelKey_VH.set(kCFURLLocalizedLabelKey_SEGMENT, value)
+    get() = kCFURLLocalizedLabelKey_VH.get(kCFURLLocalizedLabelKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLLocalizedLabelKey_VH.set(kCFURLLocalizedLabelKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLEffectiveIconKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLEffectiveIconKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLEffectiveIconKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLEffectiveIconKey").orElseThrow() }
+private val kCFURLEffectiveIconKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLEffectiveIconKey").orElseThrow().reinterpret(kCFURLEffectiveIconKey_LAYOUT.byteSize()) }
 private val kCFURLEffectiveIconKey_VH: VarHandle by lazy { kCFURLEffectiveIconKey_LAYOUT.varHandle() }
 
 var kCFURLEffectiveIconKey: MemorySegment
-    get() = kCFURLEffectiveIconKey_VH.get(kCFURLEffectiveIconKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLEffectiveIconKey_VH.set(kCFURLEffectiveIconKey_SEGMENT, value)
+    get() = kCFURLEffectiveIconKey_VH.get(kCFURLEffectiveIconKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLEffectiveIconKey_VH.set(kCFURLEffectiveIconKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLCustomIconKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLCustomIconKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLCustomIconKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLCustomIconKey").orElseThrow() }
+private val kCFURLCustomIconKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLCustomIconKey").orElseThrow().reinterpret(kCFURLCustomIconKey_LAYOUT.byteSize()) }
 private val kCFURLCustomIconKey_VH: VarHandle by lazy { kCFURLCustomIconKey_LAYOUT.varHandle() }
 
 var kCFURLCustomIconKey: MemorySegment
-    get() = kCFURLCustomIconKey_VH.get(kCFURLCustomIconKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLCustomIconKey_VH.set(kCFURLCustomIconKey_SEGMENT, value)
+    get() = kCFURLCustomIconKey_VH.get(kCFURLCustomIconKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLCustomIconKey_VH.set(kCFURLCustomIconKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceIdentifierKey").orElseThrow() }
+private val kCFURLFileResourceIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceIdentifierKey").orElseThrow().reinterpret(kCFURLFileResourceIdentifierKey_LAYOUT.byteSize()) }
 private val kCFURLFileResourceIdentifierKey_VH: VarHandle by lazy { kCFURLFileResourceIdentifierKey_LAYOUT.varHandle() }
 
 var kCFURLFileResourceIdentifierKey: MemorySegment
-    get() = kCFURLFileResourceIdentifierKey_VH.get(kCFURLFileResourceIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceIdentifierKey_VH.set(kCFURLFileResourceIdentifierKey_SEGMENT, value)
+    get() = kCFURLFileResourceIdentifierKey_VH.get(kCFURLFileResourceIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceIdentifierKey_VH.set(kCFURLFileResourceIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIdentifierKey").orElseThrow() }
+private val kCFURLVolumeIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIdentifierKey").orElseThrow().reinterpret(kCFURLVolumeIdentifierKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIdentifierKey_VH: VarHandle by lazy { kCFURLVolumeIdentifierKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIdentifierKey: MemorySegment
-    get() = kCFURLVolumeIdentifierKey_VH.get(kCFURLVolumeIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIdentifierKey_VH.set(kCFURLVolumeIdentifierKey_SEGMENT, value)
+    get() = kCFURLVolumeIdentifierKey_VH.get(kCFURLVolumeIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIdentifierKey_VH.set(kCFURLVolumeIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLPreferredIOBlockSizeKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLPreferredIOBlockSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLPreferredIOBlockSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLPreferredIOBlockSizeKey").orElseThrow() }
+private val kCFURLPreferredIOBlockSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLPreferredIOBlockSizeKey").orElseThrow().reinterpret(kCFURLPreferredIOBlockSizeKey_LAYOUT.byteSize()) }
 private val kCFURLPreferredIOBlockSizeKey_VH: VarHandle by lazy { kCFURLPreferredIOBlockSizeKey_LAYOUT.varHandle() }
 
 var kCFURLPreferredIOBlockSizeKey: MemorySegment
-    get() = kCFURLPreferredIOBlockSizeKey_VH.get(kCFURLPreferredIOBlockSizeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLPreferredIOBlockSizeKey_VH.set(kCFURLPreferredIOBlockSizeKey_SEGMENT, value)
+    get() = kCFURLPreferredIOBlockSizeKey_VH.get(kCFURLPreferredIOBlockSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLPreferredIOBlockSizeKey_VH.set(kCFURLPreferredIOBlockSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsReadableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsReadableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsReadableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsReadableKey").orElseThrow() }
+private val kCFURLIsReadableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsReadableKey").orElseThrow().reinterpret(kCFURLIsReadableKey_LAYOUT.byteSize()) }
 private val kCFURLIsReadableKey_VH: VarHandle by lazy { kCFURLIsReadableKey_LAYOUT.varHandle() }
 
 var kCFURLIsReadableKey: MemorySegment
-    get() = kCFURLIsReadableKey_VH.get(kCFURLIsReadableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsReadableKey_VH.set(kCFURLIsReadableKey_SEGMENT, value)
+    get() = kCFURLIsReadableKey_VH.get(kCFURLIsReadableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsReadableKey_VH.set(kCFURLIsReadableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsWritableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsWritableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsWritableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsWritableKey").orElseThrow() }
+private val kCFURLIsWritableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsWritableKey").orElseThrow().reinterpret(kCFURLIsWritableKey_LAYOUT.byteSize()) }
 private val kCFURLIsWritableKey_VH: VarHandle by lazy { kCFURLIsWritableKey_LAYOUT.varHandle() }
 
 var kCFURLIsWritableKey: MemorySegment
-    get() = kCFURLIsWritableKey_VH.get(kCFURLIsWritableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsWritableKey_VH.set(kCFURLIsWritableKey_SEGMENT, value)
+    get() = kCFURLIsWritableKey_VH.get(kCFURLIsWritableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsWritableKey_VH.set(kCFURLIsWritableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsExecutableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsExecutableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsExecutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsExecutableKey").orElseThrow() }
+private val kCFURLIsExecutableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsExecutableKey").orElseThrow().reinterpret(kCFURLIsExecutableKey_LAYOUT.byteSize()) }
 private val kCFURLIsExecutableKey_VH: VarHandle by lazy { kCFURLIsExecutableKey_LAYOUT.varHandle() }
 
 var kCFURLIsExecutableKey: MemorySegment
-    get() = kCFURLIsExecutableKey_VH.get(kCFURLIsExecutableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsExecutableKey_VH.set(kCFURLIsExecutableKey_SEGMENT, value)
+    get() = kCFURLIsExecutableKey_VH.get(kCFURLIsExecutableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsExecutableKey_VH.set(kCFURLIsExecutableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileSecurityKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileSecurityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileSecurityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileSecurityKey").orElseThrow() }
+private val kCFURLFileSecurityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileSecurityKey").orElseThrow().reinterpret(kCFURLFileSecurityKey_LAYOUT.byteSize()) }
 private val kCFURLFileSecurityKey_VH: VarHandle by lazy { kCFURLFileSecurityKey_LAYOUT.varHandle() }
 
 var kCFURLFileSecurityKey: MemorySegment
-    get() = kCFURLFileSecurityKey_VH.get(kCFURLFileSecurityKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileSecurityKey_VH.set(kCFURLFileSecurityKey_SEGMENT, value)
+    get() = kCFURLFileSecurityKey_VH.get(kCFURLFileSecurityKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileSecurityKey_VH.set(kCFURLFileSecurityKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsExcludedFromBackupKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsExcludedFromBackupKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsExcludedFromBackupKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsExcludedFromBackupKey").orElseThrow() }
+private val kCFURLIsExcludedFromBackupKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsExcludedFromBackupKey").orElseThrow().reinterpret(kCFURLIsExcludedFromBackupKey_LAYOUT.byteSize()) }
 private val kCFURLIsExcludedFromBackupKey_VH: VarHandle by lazy { kCFURLIsExcludedFromBackupKey_LAYOUT.varHandle() }
 
 var kCFURLIsExcludedFromBackupKey: MemorySegment
-    get() = kCFURLIsExcludedFromBackupKey_VH.get(kCFURLIsExcludedFromBackupKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsExcludedFromBackupKey_VH.set(kCFURLIsExcludedFromBackupKey_SEGMENT, value)
+    get() = kCFURLIsExcludedFromBackupKey_VH.get(kCFURLIsExcludedFromBackupKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsExcludedFromBackupKey_VH.set(kCFURLIsExcludedFromBackupKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLTagNamesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLTagNamesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLTagNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLTagNamesKey").orElseThrow() }
+private val kCFURLTagNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLTagNamesKey").orElseThrow().reinterpret(kCFURLTagNamesKey_LAYOUT.byteSize()) }
 private val kCFURLTagNamesKey_VH: VarHandle by lazy { kCFURLTagNamesKey_LAYOUT.varHandle() }
 
 var kCFURLTagNamesKey: MemorySegment
-    get() = kCFURLTagNamesKey_VH.get(kCFURLTagNamesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLTagNamesKey_VH.set(kCFURLTagNamesKey_SEGMENT, value)
+    get() = kCFURLTagNamesKey_VH.get(kCFURLTagNamesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLTagNamesKey_VH.set(kCFURLTagNamesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLPathKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLPathKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLPathKey").orElseThrow() }
+private val kCFURLPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLPathKey").orElseThrow().reinterpret(kCFURLPathKey_LAYOUT.byteSize()) }
 private val kCFURLPathKey_VH: VarHandle by lazy { kCFURLPathKey_LAYOUT.varHandle() }
 
 var kCFURLPathKey: MemorySegment
-    get() = kCFURLPathKey_VH.get(kCFURLPathKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLPathKey_VH.set(kCFURLPathKey_SEGMENT, value)
+    get() = kCFURLPathKey_VH.get(kCFURLPathKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLPathKey_VH.set(kCFURLPathKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLCanonicalPathKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLCanonicalPathKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLCanonicalPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLCanonicalPathKey").orElseThrow() }
+private val kCFURLCanonicalPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLCanonicalPathKey").orElseThrow().reinterpret(kCFURLCanonicalPathKey_LAYOUT.byteSize()) }
 private val kCFURLCanonicalPathKey_VH: VarHandle by lazy { kCFURLCanonicalPathKey_LAYOUT.varHandle() }
 
 var kCFURLCanonicalPathKey: MemorySegment
-    get() = kCFURLCanonicalPathKey_VH.get(kCFURLCanonicalPathKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLCanonicalPathKey_VH.set(kCFURLCanonicalPathKey_SEGMENT, value)
+    get() = kCFURLCanonicalPathKey_VH.get(kCFURLCanonicalPathKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLCanonicalPathKey_VH.set(kCFURLCanonicalPathKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsMountTriggerKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsMountTriggerKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsMountTriggerKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsMountTriggerKey").orElseThrow() }
+private val kCFURLIsMountTriggerKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsMountTriggerKey").orElseThrow().reinterpret(kCFURLIsMountTriggerKey_LAYOUT.byteSize()) }
 private val kCFURLIsMountTriggerKey_VH: VarHandle by lazy { kCFURLIsMountTriggerKey_LAYOUT.varHandle() }
 
 var kCFURLIsMountTriggerKey: MemorySegment
-    get() = kCFURLIsMountTriggerKey_VH.get(kCFURLIsMountTriggerKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsMountTriggerKey_VH.set(kCFURLIsMountTriggerKey_SEGMENT, value)
+    get() = kCFURLIsMountTriggerKey_VH.get(kCFURLIsMountTriggerKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsMountTriggerKey_VH.set(kCFURLIsMountTriggerKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLGenerationIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLGenerationIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLGenerationIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLGenerationIdentifierKey").orElseThrow() }
+private val kCFURLGenerationIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLGenerationIdentifierKey").orElseThrow().reinterpret(kCFURLGenerationIdentifierKey_LAYOUT.byteSize()) }
 private val kCFURLGenerationIdentifierKey_VH: VarHandle by lazy { kCFURLGenerationIdentifierKey_LAYOUT.varHandle() }
 
 var kCFURLGenerationIdentifierKey: MemorySegment
-    get() = kCFURLGenerationIdentifierKey_VH.get(kCFURLGenerationIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLGenerationIdentifierKey_VH.set(kCFURLGenerationIdentifierKey_SEGMENT, value)
+    get() = kCFURLGenerationIdentifierKey_VH.get(kCFURLGenerationIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLGenerationIdentifierKey_VH.set(kCFURLGenerationIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLDocumentIdentifierKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLDocumentIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLDocumentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLDocumentIdentifierKey").orElseThrow() }
+private val kCFURLDocumentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLDocumentIdentifierKey").orElseThrow().reinterpret(kCFURLDocumentIdentifierKey_LAYOUT.byteSize()) }
 private val kCFURLDocumentIdentifierKey_VH: VarHandle by lazy { kCFURLDocumentIdentifierKey_LAYOUT.varHandle() }
 
 var kCFURLDocumentIdentifierKey: MemorySegment
-    get() = kCFURLDocumentIdentifierKey_VH.get(kCFURLDocumentIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLDocumentIdentifierKey_VH.set(kCFURLDocumentIdentifierKey_SEGMENT, value)
+    get() = kCFURLDocumentIdentifierKey_VH.get(kCFURLDocumentIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLDocumentIdentifierKey_VH.set(kCFURLDocumentIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLAddedToDirectoryDateKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLAddedToDirectoryDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLAddedToDirectoryDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLAddedToDirectoryDateKey").orElseThrow() }
+private val kCFURLAddedToDirectoryDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLAddedToDirectoryDateKey").orElseThrow().reinterpret(kCFURLAddedToDirectoryDateKey_LAYOUT.byteSize()) }
 private val kCFURLAddedToDirectoryDateKey_VH: VarHandle by lazy { kCFURLAddedToDirectoryDateKey_LAYOUT.varHandle() }
 
 var kCFURLAddedToDirectoryDateKey: MemorySegment
-    get() = kCFURLAddedToDirectoryDateKey_VH.get(kCFURLAddedToDirectoryDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLAddedToDirectoryDateKey_VH.set(kCFURLAddedToDirectoryDateKey_SEGMENT, value)
+    get() = kCFURLAddedToDirectoryDateKey_VH.get(kCFURLAddedToDirectoryDateKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLAddedToDirectoryDateKey_VH.set(kCFURLAddedToDirectoryDateKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLQuarantinePropertiesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLQuarantinePropertiesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLQuarantinePropertiesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLQuarantinePropertiesKey").orElseThrow() }
+private val kCFURLQuarantinePropertiesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLQuarantinePropertiesKey").orElseThrow().reinterpret(kCFURLQuarantinePropertiesKey_LAYOUT.byteSize()) }
 private val kCFURLQuarantinePropertiesKey_VH: VarHandle by lazy { kCFURLQuarantinePropertiesKey_LAYOUT.varHandle() }
 
 var kCFURLQuarantinePropertiesKey: MemorySegment
-    get() = kCFURLQuarantinePropertiesKey_VH.get(kCFURLQuarantinePropertiesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLQuarantinePropertiesKey_VH.set(kCFURLQuarantinePropertiesKey_SEGMENT, value)
+    get() = kCFURLQuarantinePropertiesKey_VH.get(kCFURLQuarantinePropertiesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLQuarantinePropertiesKey_VH.set(kCFURLQuarantinePropertiesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceTypeKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceTypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeKey").orElseThrow() }
+private val kCFURLFileResourceTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeKey").orElseThrow().reinterpret(kCFURLFileResourceTypeKey_LAYOUT.byteSize()) }
 private val kCFURLFileResourceTypeKey_VH: VarHandle by lazy { kCFURLFileResourceTypeKey_LAYOUT.varHandle() }
 
 var kCFURLFileResourceTypeKey: MemorySegment
-    get() = kCFURLFileResourceTypeKey_VH.get(kCFURLFileResourceTypeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceTypeKey_VH.set(kCFURLFileResourceTypeKey_SEGMENT, value)
+    get() = kCFURLFileResourceTypeKey_VH.get(kCFURLFileResourceTypeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceTypeKey_VH.set(kCFURLFileResourceTypeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceTypeNamedPipe typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceTypeNamedPipe_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceTypeNamedPipe_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeNamedPipe").orElseThrow() }
+private val kCFURLFileResourceTypeNamedPipe_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeNamedPipe").orElseThrow().reinterpret(kCFURLFileResourceTypeNamedPipe_LAYOUT.byteSize()) }
 private val kCFURLFileResourceTypeNamedPipe_VH: VarHandle by lazy { kCFURLFileResourceTypeNamedPipe_LAYOUT.varHandle() }
 
 var kCFURLFileResourceTypeNamedPipe: MemorySegment
-    get() = kCFURLFileResourceTypeNamedPipe_VH.get(kCFURLFileResourceTypeNamedPipe_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceTypeNamedPipe_VH.set(kCFURLFileResourceTypeNamedPipe_SEGMENT, value)
+    get() = kCFURLFileResourceTypeNamedPipe_VH.get(kCFURLFileResourceTypeNamedPipe_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceTypeNamedPipe_VH.set(kCFURLFileResourceTypeNamedPipe_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceTypeCharacterSpecial typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceTypeCharacterSpecial_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceTypeCharacterSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeCharacterSpecial").orElseThrow() }
+private val kCFURLFileResourceTypeCharacterSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeCharacterSpecial").orElseThrow().reinterpret(kCFURLFileResourceTypeCharacterSpecial_LAYOUT.byteSize()) }
 private val kCFURLFileResourceTypeCharacterSpecial_VH: VarHandle by lazy { kCFURLFileResourceTypeCharacterSpecial_LAYOUT.varHandle() }
 
 var kCFURLFileResourceTypeCharacterSpecial: MemorySegment
-    get() = kCFURLFileResourceTypeCharacterSpecial_VH.get(kCFURLFileResourceTypeCharacterSpecial_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceTypeCharacterSpecial_VH.set(kCFURLFileResourceTypeCharacterSpecial_SEGMENT, value)
+    get() = kCFURLFileResourceTypeCharacterSpecial_VH.get(kCFURLFileResourceTypeCharacterSpecial_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceTypeCharacterSpecial_VH.set(kCFURLFileResourceTypeCharacterSpecial_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceTypeDirectory typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceTypeDirectory_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceTypeDirectory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeDirectory").orElseThrow() }
+private val kCFURLFileResourceTypeDirectory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeDirectory").orElseThrow().reinterpret(kCFURLFileResourceTypeDirectory_LAYOUT.byteSize()) }
 private val kCFURLFileResourceTypeDirectory_VH: VarHandle by lazy { kCFURLFileResourceTypeDirectory_LAYOUT.varHandle() }
 
 var kCFURLFileResourceTypeDirectory: MemorySegment
-    get() = kCFURLFileResourceTypeDirectory_VH.get(kCFURLFileResourceTypeDirectory_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceTypeDirectory_VH.set(kCFURLFileResourceTypeDirectory_SEGMENT, value)
+    get() = kCFURLFileResourceTypeDirectory_VH.get(kCFURLFileResourceTypeDirectory_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceTypeDirectory_VH.set(kCFURLFileResourceTypeDirectory_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceTypeBlockSpecial typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceTypeBlockSpecial_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceTypeBlockSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeBlockSpecial").orElseThrow() }
+private val kCFURLFileResourceTypeBlockSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeBlockSpecial").orElseThrow().reinterpret(kCFURLFileResourceTypeBlockSpecial_LAYOUT.byteSize()) }
 private val kCFURLFileResourceTypeBlockSpecial_VH: VarHandle by lazy { kCFURLFileResourceTypeBlockSpecial_LAYOUT.varHandle() }
 
 var kCFURLFileResourceTypeBlockSpecial: MemorySegment
-    get() = kCFURLFileResourceTypeBlockSpecial_VH.get(kCFURLFileResourceTypeBlockSpecial_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceTypeBlockSpecial_VH.set(kCFURLFileResourceTypeBlockSpecial_SEGMENT, value)
+    get() = kCFURLFileResourceTypeBlockSpecial_VH.get(kCFURLFileResourceTypeBlockSpecial_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceTypeBlockSpecial_VH.set(kCFURLFileResourceTypeBlockSpecial_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceTypeRegular typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceTypeRegular_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceTypeRegular_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeRegular").orElseThrow() }
+private val kCFURLFileResourceTypeRegular_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeRegular").orElseThrow().reinterpret(kCFURLFileResourceTypeRegular_LAYOUT.byteSize()) }
 private val kCFURLFileResourceTypeRegular_VH: VarHandle by lazy { kCFURLFileResourceTypeRegular_LAYOUT.varHandle() }
 
 var kCFURLFileResourceTypeRegular: MemorySegment
-    get() = kCFURLFileResourceTypeRegular_VH.get(kCFURLFileResourceTypeRegular_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceTypeRegular_VH.set(kCFURLFileResourceTypeRegular_SEGMENT, value)
+    get() = kCFURLFileResourceTypeRegular_VH.get(kCFURLFileResourceTypeRegular_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceTypeRegular_VH.set(kCFURLFileResourceTypeRegular_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceTypeSymbolicLink typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceTypeSymbolicLink_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceTypeSymbolicLink_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeSymbolicLink").orElseThrow() }
+private val kCFURLFileResourceTypeSymbolicLink_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeSymbolicLink").orElseThrow().reinterpret(kCFURLFileResourceTypeSymbolicLink_LAYOUT.byteSize()) }
 private val kCFURLFileResourceTypeSymbolicLink_VH: VarHandle by lazy { kCFURLFileResourceTypeSymbolicLink_LAYOUT.varHandle() }
 
 var kCFURLFileResourceTypeSymbolicLink: MemorySegment
-    get() = kCFURLFileResourceTypeSymbolicLink_VH.get(kCFURLFileResourceTypeSymbolicLink_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceTypeSymbolicLink_VH.set(kCFURLFileResourceTypeSymbolicLink_SEGMENT, value)
+    get() = kCFURLFileResourceTypeSymbolicLink_VH.get(kCFURLFileResourceTypeSymbolicLink_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceTypeSymbolicLink_VH.set(kCFURLFileResourceTypeSymbolicLink_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceTypeSocket typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceTypeSocket_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceTypeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeSocket").orElseThrow() }
+private val kCFURLFileResourceTypeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeSocket").orElseThrow().reinterpret(kCFURLFileResourceTypeSocket_LAYOUT.byteSize()) }
 private val kCFURLFileResourceTypeSocket_VH: VarHandle by lazy { kCFURLFileResourceTypeSocket_LAYOUT.varHandle() }
 
 var kCFURLFileResourceTypeSocket: MemorySegment
-    get() = kCFURLFileResourceTypeSocket_VH.get(kCFURLFileResourceTypeSocket_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceTypeSocket_VH.set(kCFURLFileResourceTypeSocket_SEGMENT, value)
+    get() = kCFURLFileResourceTypeSocket_VH.get(kCFURLFileResourceTypeSocket_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceTypeSocket_VH.set(kCFURLFileResourceTypeSocket_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileResourceTypeUnknown typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileResourceTypeUnknown_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileResourceTypeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeUnknown").orElseThrow() }
+private val kCFURLFileResourceTypeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileResourceTypeUnknown").orElseThrow().reinterpret(kCFURLFileResourceTypeUnknown_LAYOUT.byteSize()) }
 private val kCFURLFileResourceTypeUnknown_VH: VarHandle by lazy { kCFURLFileResourceTypeUnknown_LAYOUT.varHandle() }
 
 var kCFURLFileResourceTypeUnknown: MemorySegment
-    get() = kCFURLFileResourceTypeUnknown_VH.get(kCFURLFileResourceTypeUnknown_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileResourceTypeUnknown_VH.set(kCFURLFileResourceTypeUnknown_SEGMENT, value)
+    get() = kCFURLFileResourceTypeUnknown_VH.get(kCFURLFileResourceTypeUnknown_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileResourceTypeUnknown_VH.set(kCFURLFileResourceTypeUnknown_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileSizeKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileSizeKey").orElseThrow() }
+private val kCFURLFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileSizeKey").orElseThrow().reinterpret(kCFURLFileSizeKey_LAYOUT.byteSize()) }
 private val kCFURLFileSizeKey_VH: VarHandle by lazy { kCFURLFileSizeKey_LAYOUT.varHandle() }
 
 var kCFURLFileSizeKey: MemorySegment
-    get() = kCFURLFileSizeKey_VH.get(kCFURLFileSizeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileSizeKey_VH.set(kCFURLFileSizeKey_SEGMENT, value)
+    get() = kCFURLFileSizeKey_VH.get(kCFURLFileSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileSizeKey_VH.set(kCFURLFileSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileAllocatedSizeKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileAllocatedSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileAllocatedSizeKey").orElseThrow() }
+private val kCFURLFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileAllocatedSizeKey").orElseThrow().reinterpret(kCFURLFileAllocatedSizeKey_LAYOUT.byteSize()) }
 private val kCFURLFileAllocatedSizeKey_VH: VarHandle by lazy { kCFURLFileAllocatedSizeKey_LAYOUT.varHandle() }
 
 var kCFURLFileAllocatedSizeKey: MemorySegment
-    get() = kCFURLFileAllocatedSizeKey_VH.get(kCFURLFileAllocatedSizeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileAllocatedSizeKey_VH.set(kCFURLFileAllocatedSizeKey_SEGMENT, value)
+    get() = kCFURLFileAllocatedSizeKey_VH.get(kCFURLFileAllocatedSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileAllocatedSizeKey_VH.set(kCFURLFileAllocatedSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLTotalFileSizeKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLTotalFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLTotalFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLTotalFileSizeKey").orElseThrow() }
+private val kCFURLTotalFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLTotalFileSizeKey").orElseThrow().reinterpret(kCFURLTotalFileSizeKey_LAYOUT.byteSize()) }
 private val kCFURLTotalFileSizeKey_VH: VarHandle by lazy { kCFURLTotalFileSizeKey_LAYOUT.varHandle() }
 
 var kCFURLTotalFileSizeKey: MemorySegment
-    get() = kCFURLTotalFileSizeKey_VH.get(kCFURLTotalFileSizeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLTotalFileSizeKey_VH.set(kCFURLTotalFileSizeKey_SEGMENT, value)
+    get() = kCFURLTotalFileSizeKey_VH.get(kCFURLTotalFileSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLTotalFileSizeKey_VH.set(kCFURLTotalFileSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLTotalFileAllocatedSizeKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLTotalFileAllocatedSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLTotalFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLTotalFileAllocatedSizeKey").orElseThrow() }
+private val kCFURLTotalFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLTotalFileAllocatedSizeKey").orElseThrow().reinterpret(kCFURLTotalFileAllocatedSizeKey_LAYOUT.byteSize()) }
 private val kCFURLTotalFileAllocatedSizeKey_VH: VarHandle by lazy { kCFURLTotalFileAllocatedSizeKey_LAYOUT.varHandle() }
 
 var kCFURLTotalFileAllocatedSizeKey: MemorySegment
-    get() = kCFURLTotalFileAllocatedSizeKey_VH.get(kCFURLTotalFileAllocatedSizeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLTotalFileAllocatedSizeKey_VH.set(kCFURLTotalFileAllocatedSizeKey_SEGMENT, value)
+    get() = kCFURLTotalFileAllocatedSizeKey_VH.get(kCFURLTotalFileAllocatedSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLTotalFileAllocatedSizeKey_VH.set(kCFURLTotalFileAllocatedSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsAliasFileKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsAliasFileKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsAliasFileKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsAliasFileKey").orElseThrow() }
+private val kCFURLIsAliasFileKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsAliasFileKey").orElseThrow().reinterpret(kCFURLIsAliasFileKey_LAYOUT.byteSize()) }
 private val kCFURLIsAliasFileKey_VH: VarHandle by lazy { kCFURLIsAliasFileKey_LAYOUT.varHandle() }
 
 var kCFURLIsAliasFileKey: MemorySegment
-    get() = kCFURLIsAliasFileKey_VH.get(kCFURLIsAliasFileKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsAliasFileKey_VH.set(kCFURLIsAliasFileKey_SEGMENT, value)
+    get() = kCFURLIsAliasFileKey_VH.get(kCFURLIsAliasFileKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsAliasFileKey_VH.set(kCFURLIsAliasFileKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileProtectionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileProtectionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionKey").orElseThrow() }
+private val kCFURLFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionKey").orElseThrow().reinterpret(kCFURLFileProtectionKey_LAYOUT.byteSize()) }
 private val kCFURLFileProtectionKey_VH: VarHandle by lazy { kCFURLFileProtectionKey_LAYOUT.varHandle() }
 
 var kCFURLFileProtectionKey: MemorySegment
-    get() = kCFURLFileProtectionKey_VH.get(kCFURLFileProtectionKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileProtectionKey_VH.set(kCFURLFileProtectionKey_SEGMENT, value)
+    get() = kCFURLFileProtectionKey_VH.get(kCFURLFileProtectionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileProtectionKey_VH.set(kCFURLFileProtectionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileProtectionNone typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileProtectionNone_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileProtectionNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionNone").orElseThrow() }
+private val kCFURLFileProtectionNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionNone").orElseThrow().reinterpret(kCFURLFileProtectionNone_LAYOUT.byteSize()) }
 private val kCFURLFileProtectionNone_VH: VarHandle by lazy { kCFURLFileProtectionNone_LAYOUT.varHandle() }
 
 var kCFURLFileProtectionNone: MemorySegment
-    get() = kCFURLFileProtectionNone_VH.get(kCFURLFileProtectionNone_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileProtectionNone_VH.set(kCFURLFileProtectionNone_SEGMENT, value)
+    get() = kCFURLFileProtectionNone_VH.get(kCFURLFileProtectionNone_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileProtectionNone_VH.set(kCFURLFileProtectionNone_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileProtectionComplete typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileProtectionComplete_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileProtectionComplete_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionComplete").orElseThrow() }
+private val kCFURLFileProtectionComplete_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionComplete").orElseThrow().reinterpret(kCFURLFileProtectionComplete_LAYOUT.byteSize()) }
 private val kCFURLFileProtectionComplete_VH: VarHandle by lazy { kCFURLFileProtectionComplete_LAYOUT.varHandle() }
 
 var kCFURLFileProtectionComplete: MemorySegment
-    get() = kCFURLFileProtectionComplete_VH.get(kCFURLFileProtectionComplete_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileProtectionComplete_VH.set(kCFURLFileProtectionComplete_SEGMENT, value)
+    get() = kCFURLFileProtectionComplete_VH.get(kCFURLFileProtectionComplete_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileProtectionComplete_VH.set(kCFURLFileProtectionComplete_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileProtectionCompleteUnlessOpen typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileProtectionCompleteUnlessOpen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileProtectionCompleteUnlessOpen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionCompleteUnlessOpen").orElseThrow() }
+private val kCFURLFileProtectionCompleteUnlessOpen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionCompleteUnlessOpen").orElseThrow().reinterpret(kCFURLFileProtectionCompleteUnlessOpen_LAYOUT.byteSize()) }
 private val kCFURLFileProtectionCompleteUnlessOpen_VH: VarHandle by lazy { kCFURLFileProtectionCompleteUnlessOpen_LAYOUT.varHandle() }
 
 var kCFURLFileProtectionCompleteUnlessOpen: MemorySegment
-    get() = kCFURLFileProtectionCompleteUnlessOpen_VH.get(kCFURLFileProtectionCompleteUnlessOpen_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileProtectionCompleteUnlessOpen_VH.set(kCFURLFileProtectionCompleteUnlessOpen_SEGMENT, value)
+    get() = kCFURLFileProtectionCompleteUnlessOpen_VH.get(kCFURLFileProtectionCompleteUnlessOpen_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileProtectionCompleteUnlessOpen_VH.set(kCFURLFileProtectionCompleteUnlessOpen_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileProtectionCompleteUntilFirstUserAuthentication typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionCompleteUntilFirstUserAuthentication").orElseThrow() }
+private val kCFURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionCompleteUntilFirstUserAuthentication").orElseThrow().reinterpret(kCFURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.byteSize()) }
 private val kCFURLFileProtectionCompleteUntilFirstUserAuthentication_VH: VarHandle by lazy { kCFURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.varHandle() }
 
 var kCFURLFileProtectionCompleteUntilFirstUserAuthentication: MemorySegment
-    get() = kCFURLFileProtectionCompleteUntilFirstUserAuthentication_VH.get(kCFURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileProtectionCompleteUntilFirstUserAuthentication_VH.set(kCFURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, value)
+    get() = kCFURLFileProtectionCompleteUntilFirstUserAuthentication_VH.get(kCFURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileProtectionCompleteUntilFirstUserAuthentication_VH.set(kCFURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLFileProtectionCompleteWhenUserInactive typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLFileProtectionCompleteWhenUserInactive_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLFileProtectionCompleteWhenUserInactive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionCompleteWhenUserInactive").orElseThrow() }
+private val kCFURLFileProtectionCompleteWhenUserInactive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLFileProtectionCompleteWhenUserInactive").orElseThrow().reinterpret(kCFURLFileProtectionCompleteWhenUserInactive_LAYOUT.byteSize()) }
 private val kCFURLFileProtectionCompleteWhenUserInactive_VH: VarHandle by lazy { kCFURLFileProtectionCompleteWhenUserInactive_LAYOUT.varHandle() }
 
 var kCFURLFileProtectionCompleteWhenUserInactive: MemorySegment
-    get() = kCFURLFileProtectionCompleteWhenUserInactive_VH.get(kCFURLFileProtectionCompleteWhenUserInactive_SEGMENT) as MemorySegment
-    set(value) = kCFURLFileProtectionCompleteWhenUserInactive_VH.set(kCFURLFileProtectionCompleteWhenUserInactive_SEGMENT, value)
+    get() = kCFURLFileProtectionCompleteWhenUserInactive_VH.get(kCFURLFileProtectionCompleteWhenUserInactive_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLFileProtectionCompleteWhenUserInactive_VH.set(kCFURLFileProtectionCompleteWhenUserInactive_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLDirectoryEntryCountKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLDirectoryEntryCountKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLDirectoryEntryCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLDirectoryEntryCountKey").orElseThrow() }
+private val kCFURLDirectoryEntryCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLDirectoryEntryCountKey").orElseThrow().reinterpret(kCFURLDirectoryEntryCountKey_LAYOUT.byteSize()) }
 private val kCFURLDirectoryEntryCountKey_VH: VarHandle by lazy { kCFURLDirectoryEntryCountKey_LAYOUT.varHandle() }
 
 var kCFURLDirectoryEntryCountKey: MemorySegment
-    get() = kCFURLDirectoryEntryCountKey_VH.get(kCFURLDirectoryEntryCountKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLDirectoryEntryCountKey_VH.set(kCFURLDirectoryEntryCountKey_SEGMENT, value)
+    get() = kCFURLDirectoryEntryCountKey_VH.get(kCFURLDirectoryEntryCountKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLDirectoryEntryCountKey_VH.set(kCFURLDirectoryEntryCountKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeLocalizedFormatDescriptionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeLocalizedFormatDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeLocalizedFormatDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeLocalizedFormatDescriptionKey").orElseThrow() }
+private val kCFURLVolumeLocalizedFormatDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeLocalizedFormatDescriptionKey").orElseThrow().reinterpret(kCFURLVolumeLocalizedFormatDescriptionKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeLocalizedFormatDescriptionKey_VH: VarHandle by lazy { kCFURLVolumeLocalizedFormatDescriptionKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeLocalizedFormatDescriptionKey: MemorySegment
-    get() = kCFURLVolumeLocalizedFormatDescriptionKey_VH.get(kCFURLVolumeLocalizedFormatDescriptionKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeLocalizedFormatDescriptionKey_VH.set(kCFURLVolumeLocalizedFormatDescriptionKey_SEGMENT, value)
+    get() = kCFURLVolumeLocalizedFormatDescriptionKey_VH.get(kCFURLVolumeLocalizedFormatDescriptionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeLocalizedFormatDescriptionKey_VH.set(kCFURLVolumeLocalizedFormatDescriptionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeTotalCapacityKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeTotalCapacityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeTotalCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeTotalCapacityKey").orElseThrow() }
+private val kCFURLVolumeTotalCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeTotalCapacityKey").orElseThrow().reinterpret(kCFURLVolumeTotalCapacityKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeTotalCapacityKey_VH: VarHandle by lazy { kCFURLVolumeTotalCapacityKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeTotalCapacityKey: MemorySegment
-    get() = kCFURLVolumeTotalCapacityKey_VH.get(kCFURLVolumeTotalCapacityKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeTotalCapacityKey_VH.set(kCFURLVolumeTotalCapacityKey_SEGMENT, value)
+    get() = kCFURLVolumeTotalCapacityKey_VH.get(kCFURLVolumeTotalCapacityKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeTotalCapacityKey_VH.set(kCFURLVolumeTotalCapacityKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeAvailableCapacityKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeAvailableCapacityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeAvailableCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeAvailableCapacityKey").orElseThrow() }
+private val kCFURLVolumeAvailableCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeAvailableCapacityKey").orElseThrow().reinterpret(kCFURLVolumeAvailableCapacityKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeAvailableCapacityKey_VH: VarHandle by lazy { kCFURLVolumeAvailableCapacityKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeAvailableCapacityKey: MemorySegment
-    get() = kCFURLVolumeAvailableCapacityKey_VH.get(kCFURLVolumeAvailableCapacityKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeAvailableCapacityKey_VH.set(kCFURLVolumeAvailableCapacityKey_SEGMENT, value)
+    get() = kCFURLVolumeAvailableCapacityKey_VH.get(kCFURLVolumeAvailableCapacityKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeAvailableCapacityKey_VH.set(kCFURLVolumeAvailableCapacityKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeAvailableCapacityForImportantUsageKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeAvailableCapacityForImportantUsageKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeAvailableCapacityForImportantUsageKey").orElseThrow() }
+private val kCFURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeAvailableCapacityForImportantUsageKey").orElseThrow().reinterpret(kCFURLVolumeAvailableCapacityForImportantUsageKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeAvailableCapacityForImportantUsageKey_VH: VarHandle by lazy { kCFURLVolumeAvailableCapacityForImportantUsageKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeAvailableCapacityForImportantUsageKey: MemorySegment
-    get() = kCFURLVolumeAvailableCapacityForImportantUsageKey_VH.get(kCFURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeAvailableCapacityForImportantUsageKey_VH.set(kCFURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT, value)
+    get() = kCFURLVolumeAvailableCapacityForImportantUsageKey_VH.get(kCFURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeAvailableCapacityForImportantUsageKey_VH.set(kCFURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeAvailableCapacityForOpportunisticUsageKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeAvailableCapacityForOpportunisticUsageKey").orElseThrow() }
+private val kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeAvailableCapacityForOpportunisticUsageKey").orElseThrow().reinterpret(kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_VH: VarHandle by lazy { kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeAvailableCapacityForOpportunisticUsageKey: MemorySegment
-    get() = kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.get(kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.set(kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT, value)
+    get() = kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.get(kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.set(kCFURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeResourceCountKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeResourceCountKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeResourceCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeResourceCountKey").orElseThrow() }
+private val kCFURLVolumeResourceCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeResourceCountKey").orElseThrow().reinterpret(kCFURLVolumeResourceCountKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeResourceCountKey_VH: VarHandle by lazy { kCFURLVolumeResourceCountKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeResourceCountKey: MemorySegment
-    get() = kCFURLVolumeResourceCountKey_VH.get(kCFURLVolumeResourceCountKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeResourceCountKey_VH.set(kCFURLVolumeResourceCountKey_SEGMENT, value)
+    get() = kCFURLVolumeResourceCountKey_VH.get(kCFURLVolumeResourceCountKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeResourceCountKey_VH.set(kCFURLVolumeResourceCountKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsPersistentIDsKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsPersistentIDsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsPersistentIDsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsPersistentIDsKey").orElseThrow() }
+private val kCFURLVolumeSupportsPersistentIDsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsPersistentIDsKey").orElseThrow().reinterpret(kCFURLVolumeSupportsPersistentIDsKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsPersistentIDsKey_VH: VarHandle by lazy { kCFURLVolumeSupportsPersistentIDsKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsPersistentIDsKey: MemorySegment
-    get() = kCFURLVolumeSupportsPersistentIDsKey_VH.get(kCFURLVolumeSupportsPersistentIDsKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsPersistentIDsKey_VH.set(kCFURLVolumeSupportsPersistentIDsKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsPersistentIDsKey_VH.get(kCFURLVolumeSupportsPersistentIDsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsPersistentIDsKey_VH.set(kCFURLVolumeSupportsPersistentIDsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsSymbolicLinksKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsSymbolicLinksKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsSymbolicLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsSymbolicLinksKey").orElseThrow() }
+private val kCFURLVolumeSupportsSymbolicLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsSymbolicLinksKey").orElseThrow().reinterpret(kCFURLVolumeSupportsSymbolicLinksKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsSymbolicLinksKey_VH: VarHandle by lazy { kCFURLVolumeSupportsSymbolicLinksKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsSymbolicLinksKey: MemorySegment
-    get() = kCFURLVolumeSupportsSymbolicLinksKey_VH.get(kCFURLVolumeSupportsSymbolicLinksKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsSymbolicLinksKey_VH.set(kCFURLVolumeSupportsSymbolicLinksKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsSymbolicLinksKey_VH.get(kCFURLVolumeSupportsSymbolicLinksKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsSymbolicLinksKey_VH.set(kCFURLVolumeSupportsSymbolicLinksKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsHardLinksKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsHardLinksKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsHardLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsHardLinksKey").orElseThrow() }
+private val kCFURLVolumeSupportsHardLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsHardLinksKey").orElseThrow().reinterpret(kCFURLVolumeSupportsHardLinksKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsHardLinksKey_VH: VarHandle by lazy { kCFURLVolumeSupportsHardLinksKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsHardLinksKey: MemorySegment
-    get() = kCFURLVolumeSupportsHardLinksKey_VH.get(kCFURLVolumeSupportsHardLinksKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsHardLinksKey_VH.set(kCFURLVolumeSupportsHardLinksKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsHardLinksKey_VH.get(kCFURLVolumeSupportsHardLinksKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsHardLinksKey_VH.set(kCFURLVolumeSupportsHardLinksKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsJournalingKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsJournalingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsJournalingKey").orElseThrow() }
+private val kCFURLVolumeSupportsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsJournalingKey").orElseThrow().reinterpret(kCFURLVolumeSupportsJournalingKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsJournalingKey_VH: VarHandle by lazy { kCFURLVolumeSupportsJournalingKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsJournalingKey: MemorySegment
-    get() = kCFURLVolumeSupportsJournalingKey_VH.get(kCFURLVolumeSupportsJournalingKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsJournalingKey_VH.set(kCFURLVolumeSupportsJournalingKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsJournalingKey_VH.get(kCFURLVolumeSupportsJournalingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsJournalingKey_VH.set(kCFURLVolumeSupportsJournalingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsJournalingKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsJournalingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsJournalingKey").orElseThrow() }
+private val kCFURLVolumeIsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsJournalingKey").orElseThrow().reinterpret(kCFURLVolumeIsJournalingKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsJournalingKey_VH: VarHandle by lazy { kCFURLVolumeIsJournalingKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsJournalingKey: MemorySegment
-    get() = kCFURLVolumeIsJournalingKey_VH.get(kCFURLVolumeIsJournalingKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsJournalingKey_VH.set(kCFURLVolumeIsJournalingKey_SEGMENT, value)
+    get() = kCFURLVolumeIsJournalingKey_VH.get(kCFURLVolumeIsJournalingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsJournalingKey_VH.set(kCFURLVolumeIsJournalingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsSparseFilesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsSparseFilesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsSparseFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsSparseFilesKey").orElseThrow() }
+private val kCFURLVolumeSupportsSparseFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsSparseFilesKey").orElseThrow().reinterpret(kCFURLVolumeSupportsSparseFilesKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsSparseFilesKey_VH: VarHandle by lazy { kCFURLVolumeSupportsSparseFilesKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsSparseFilesKey: MemorySegment
-    get() = kCFURLVolumeSupportsSparseFilesKey_VH.get(kCFURLVolumeSupportsSparseFilesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsSparseFilesKey_VH.set(kCFURLVolumeSupportsSparseFilesKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsSparseFilesKey_VH.get(kCFURLVolumeSupportsSparseFilesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsSparseFilesKey_VH.set(kCFURLVolumeSupportsSparseFilesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsZeroRunsKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsZeroRunsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsZeroRunsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsZeroRunsKey").orElseThrow() }
+private val kCFURLVolumeSupportsZeroRunsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsZeroRunsKey").orElseThrow().reinterpret(kCFURLVolumeSupportsZeroRunsKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsZeroRunsKey_VH: VarHandle by lazy { kCFURLVolumeSupportsZeroRunsKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsZeroRunsKey: MemorySegment
-    get() = kCFURLVolumeSupportsZeroRunsKey_VH.get(kCFURLVolumeSupportsZeroRunsKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsZeroRunsKey_VH.set(kCFURLVolumeSupportsZeroRunsKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsZeroRunsKey_VH.get(kCFURLVolumeSupportsZeroRunsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsZeroRunsKey_VH.set(kCFURLVolumeSupportsZeroRunsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsCaseSensitiveNamesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsCaseSensitiveNamesKey").orElseThrow() }
+private val kCFURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsCaseSensitiveNamesKey").orElseThrow().reinterpret(kCFURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsCaseSensitiveNamesKey_VH: VarHandle by lazy { kCFURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsCaseSensitiveNamesKey: MemorySegment
-    get() = kCFURLVolumeSupportsCaseSensitiveNamesKey_VH.get(kCFURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsCaseSensitiveNamesKey_VH.set(kCFURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsCaseSensitiveNamesKey_VH.get(kCFURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsCaseSensitiveNamesKey_VH.set(kCFURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsCasePreservedNamesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsCasePreservedNamesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsCasePreservedNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsCasePreservedNamesKey").orElseThrow() }
+private val kCFURLVolumeSupportsCasePreservedNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsCasePreservedNamesKey").orElseThrow().reinterpret(kCFURLVolumeSupportsCasePreservedNamesKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsCasePreservedNamesKey_VH: VarHandle by lazy { kCFURLVolumeSupportsCasePreservedNamesKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsCasePreservedNamesKey: MemorySegment
-    get() = kCFURLVolumeSupportsCasePreservedNamesKey_VH.get(kCFURLVolumeSupportsCasePreservedNamesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsCasePreservedNamesKey_VH.set(kCFURLVolumeSupportsCasePreservedNamesKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsCasePreservedNamesKey_VH.get(kCFURLVolumeSupportsCasePreservedNamesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsCasePreservedNamesKey_VH.set(kCFURLVolumeSupportsCasePreservedNamesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsRootDirectoryDatesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsRootDirectoryDatesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsRootDirectoryDatesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsRootDirectoryDatesKey").orElseThrow() }
+private val kCFURLVolumeSupportsRootDirectoryDatesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsRootDirectoryDatesKey").orElseThrow().reinterpret(kCFURLVolumeSupportsRootDirectoryDatesKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsRootDirectoryDatesKey_VH: VarHandle by lazy { kCFURLVolumeSupportsRootDirectoryDatesKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsRootDirectoryDatesKey: MemorySegment
-    get() = kCFURLVolumeSupportsRootDirectoryDatesKey_VH.get(kCFURLVolumeSupportsRootDirectoryDatesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsRootDirectoryDatesKey_VH.set(kCFURLVolumeSupportsRootDirectoryDatesKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsRootDirectoryDatesKey_VH.get(kCFURLVolumeSupportsRootDirectoryDatesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsRootDirectoryDatesKey_VH.set(kCFURLVolumeSupportsRootDirectoryDatesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsVolumeSizesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsVolumeSizesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsVolumeSizesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsVolumeSizesKey").orElseThrow() }
+private val kCFURLVolumeSupportsVolumeSizesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsVolumeSizesKey").orElseThrow().reinterpret(kCFURLVolumeSupportsVolumeSizesKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsVolumeSizesKey_VH: VarHandle by lazy { kCFURLVolumeSupportsVolumeSizesKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsVolumeSizesKey: MemorySegment
-    get() = kCFURLVolumeSupportsVolumeSizesKey_VH.get(kCFURLVolumeSupportsVolumeSizesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsVolumeSizesKey_VH.set(kCFURLVolumeSupportsVolumeSizesKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsVolumeSizesKey_VH.get(kCFURLVolumeSupportsVolumeSizesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsVolumeSizesKey_VH.set(kCFURLVolumeSupportsVolumeSizesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsRenamingKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsRenamingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsRenamingKey").orElseThrow() }
+private val kCFURLVolumeSupportsRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsRenamingKey").orElseThrow().reinterpret(kCFURLVolumeSupportsRenamingKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsRenamingKey_VH: VarHandle by lazy { kCFURLVolumeSupportsRenamingKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsRenamingKey: MemorySegment
-    get() = kCFURLVolumeSupportsRenamingKey_VH.get(kCFURLVolumeSupportsRenamingKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsRenamingKey_VH.set(kCFURLVolumeSupportsRenamingKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsRenamingKey_VH.get(kCFURLVolumeSupportsRenamingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsRenamingKey_VH.set(kCFURLVolumeSupportsRenamingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsAdvisoryFileLockingKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsAdvisoryFileLockingKey").orElseThrow() }
+private val kCFURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsAdvisoryFileLockingKey").orElseThrow().reinterpret(kCFURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsAdvisoryFileLockingKey_VH: VarHandle by lazy { kCFURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsAdvisoryFileLockingKey: MemorySegment
-    get() = kCFURLVolumeSupportsAdvisoryFileLockingKey_VH.get(kCFURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsAdvisoryFileLockingKey_VH.set(kCFURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsAdvisoryFileLockingKey_VH.get(kCFURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsAdvisoryFileLockingKey_VH.set(kCFURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsExtendedSecurityKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsExtendedSecurityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsExtendedSecurityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsExtendedSecurityKey").orElseThrow() }
+private val kCFURLVolumeSupportsExtendedSecurityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsExtendedSecurityKey").orElseThrow().reinterpret(kCFURLVolumeSupportsExtendedSecurityKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsExtendedSecurityKey_VH: VarHandle by lazy { kCFURLVolumeSupportsExtendedSecurityKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsExtendedSecurityKey: MemorySegment
-    get() = kCFURLVolumeSupportsExtendedSecurityKey_VH.get(kCFURLVolumeSupportsExtendedSecurityKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsExtendedSecurityKey_VH.set(kCFURLVolumeSupportsExtendedSecurityKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsExtendedSecurityKey_VH.get(kCFURLVolumeSupportsExtendedSecurityKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsExtendedSecurityKey_VH.set(kCFURLVolumeSupportsExtendedSecurityKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsBrowsableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsBrowsableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsBrowsableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsBrowsableKey").orElseThrow() }
+private val kCFURLVolumeIsBrowsableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsBrowsableKey").orElseThrow().reinterpret(kCFURLVolumeIsBrowsableKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsBrowsableKey_VH: VarHandle by lazy { kCFURLVolumeIsBrowsableKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsBrowsableKey: MemorySegment
-    get() = kCFURLVolumeIsBrowsableKey_VH.get(kCFURLVolumeIsBrowsableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsBrowsableKey_VH.set(kCFURLVolumeIsBrowsableKey_SEGMENT, value)
+    get() = kCFURLVolumeIsBrowsableKey_VH.get(kCFURLVolumeIsBrowsableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsBrowsableKey_VH.set(kCFURLVolumeIsBrowsableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeMaximumFileSizeKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeMaximumFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeMaximumFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeMaximumFileSizeKey").orElseThrow() }
+private val kCFURLVolumeMaximumFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeMaximumFileSizeKey").orElseThrow().reinterpret(kCFURLVolumeMaximumFileSizeKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeMaximumFileSizeKey_VH: VarHandle by lazy { kCFURLVolumeMaximumFileSizeKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeMaximumFileSizeKey: MemorySegment
-    get() = kCFURLVolumeMaximumFileSizeKey_VH.get(kCFURLVolumeMaximumFileSizeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeMaximumFileSizeKey_VH.set(kCFURLVolumeMaximumFileSizeKey_SEGMENT, value)
+    get() = kCFURLVolumeMaximumFileSizeKey_VH.get(kCFURLVolumeMaximumFileSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeMaximumFileSizeKey_VH.set(kCFURLVolumeMaximumFileSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsEjectableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsEjectableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsEjectableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsEjectableKey").orElseThrow() }
+private val kCFURLVolumeIsEjectableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsEjectableKey").orElseThrow().reinterpret(kCFURLVolumeIsEjectableKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsEjectableKey_VH: VarHandle by lazy { kCFURLVolumeIsEjectableKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsEjectableKey: MemorySegment
-    get() = kCFURLVolumeIsEjectableKey_VH.get(kCFURLVolumeIsEjectableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsEjectableKey_VH.set(kCFURLVolumeIsEjectableKey_SEGMENT, value)
+    get() = kCFURLVolumeIsEjectableKey_VH.get(kCFURLVolumeIsEjectableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsEjectableKey_VH.set(kCFURLVolumeIsEjectableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsRemovableKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsRemovableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsRemovableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsRemovableKey").orElseThrow() }
+private val kCFURLVolumeIsRemovableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsRemovableKey").orElseThrow().reinterpret(kCFURLVolumeIsRemovableKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsRemovableKey_VH: VarHandle by lazy { kCFURLVolumeIsRemovableKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsRemovableKey: MemorySegment
-    get() = kCFURLVolumeIsRemovableKey_VH.get(kCFURLVolumeIsRemovableKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsRemovableKey_VH.set(kCFURLVolumeIsRemovableKey_SEGMENT, value)
+    get() = kCFURLVolumeIsRemovableKey_VH.get(kCFURLVolumeIsRemovableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsRemovableKey_VH.set(kCFURLVolumeIsRemovableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsInternalKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsInternalKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsInternalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsInternalKey").orElseThrow() }
+private val kCFURLVolumeIsInternalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsInternalKey").orElseThrow().reinterpret(kCFURLVolumeIsInternalKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsInternalKey_VH: VarHandle by lazy { kCFURLVolumeIsInternalKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsInternalKey: MemorySegment
-    get() = kCFURLVolumeIsInternalKey_VH.get(kCFURLVolumeIsInternalKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsInternalKey_VH.set(kCFURLVolumeIsInternalKey_SEGMENT, value)
+    get() = kCFURLVolumeIsInternalKey_VH.get(kCFURLVolumeIsInternalKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsInternalKey_VH.set(kCFURLVolumeIsInternalKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsAutomountedKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsAutomountedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsAutomountedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsAutomountedKey").orElseThrow() }
+private val kCFURLVolumeIsAutomountedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsAutomountedKey").orElseThrow().reinterpret(kCFURLVolumeIsAutomountedKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsAutomountedKey_VH: VarHandle by lazy { kCFURLVolumeIsAutomountedKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsAutomountedKey: MemorySegment
-    get() = kCFURLVolumeIsAutomountedKey_VH.get(kCFURLVolumeIsAutomountedKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsAutomountedKey_VH.set(kCFURLVolumeIsAutomountedKey_SEGMENT, value)
+    get() = kCFURLVolumeIsAutomountedKey_VH.get(kCFURLVolumeIsAutomountedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsAutomountedKey_VH.set(kCFURLVolumeIsAutomountedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsLocalKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsLocalKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsLocalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsLocalKey").orElseThrow() }
+private val kCFURLVolumeIsLocalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsLocalKey").orElseThrow().reinterpret(kCFURLVolumeIsLocalKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsLocalKey_VH: VarHandle by lazy { kCFURLVolumeIsLocalKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsLocalKey: MemorySegment
-    get() = kCFURLVolumeIsLocalKey_VH.get(kCFURLVolumeIsLocalKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsLocalKey_VH.set(kCFURLVolumeIsLocalKey_SEGMENT, value)
+    get() = kCFURLVolumeIsLocalKey_VH.get(kCFURLVolumeIsLocalKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsLocalKey_VH.set(kCFURLVolumeIsLocalKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsReadOnlyKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsReadOnlyKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsReadOnlyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsReadOnlyKey").orElseThrow() }
+private val kCFURLVolumeIsReadOnlyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsReadOnlyKey").orElseThrow().reinterpret(kCFURLVolumeIsReadOnlyKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsReadOnlyKey_VH: VarHandle by lazy { kCFURLVolumeIsReadOnlyKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsReadOnlyKey: MemorySegment
-    get() = kCFURLVolumeIsReadOnlyKey_VH.get(kCFURLVolumeIsReadOnlyKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsReadOnlyKey_VH.set(kCFURLVolumeIsReadOnlyKey_SEGMENT, value)
+    get() = kCFURLVolumeIsReadOnlyKey_VH.get(kCFURLVolumeIsReadOnlyKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsReadOnlyKey_VH.set(kCFURLVolumeIsReadOnlyKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeCreationDateKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeCreationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeCreationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeCreationDateKey").orElseThrow() }
+private val kCFURLVolumeCreationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeCreationDateKey").orElseThrow().reinterpret(kCFURLVolumeCreationDateKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeCreationDateKey_VH: VarHandle by lazy { kCFURLVolumeCreationDateKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeCreationDateKey: MemorySegment
-    get() = kCFURLVolumeCreationDateKey_VH.get(kCFURLVolumeCreationDateKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeCreationDateKey_VH.set(kCFURLVolumeCreationDateKey_SEGMENT, value)
+    get() = kCFURLVolumeCreationDateKey_VH.get(kCFURLVolumeCreationDateKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeCreationDateKey_VH.set(kCFURLVolumeCreationDateKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeURLForRemountingKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeURLForRemountingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeURLForRemountingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeURLForRemountingKey").orElseThrow() }
+private val kCFURLVolumeURLForRemountingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeURLForRemountingKey").orElseThrow().reinterpret(kCFURLVolumeURLForRemountingKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeURLForRemountingKey_VH: VarHandle by lazy { kCFURLVolumeURLForRemountingKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeURLForRemountingKey: MemorySegment
-    get() = kCFURLVolumeURLForRemountingKey_VH.get(kCFURLVolumeURLForRemountingKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeURLForRemountingKey_VH.set(kCFURLVolumeURLForRemountingKey_SEGMENT, value)
+    get() = kCFURLVolumeURLForRemountingKey_VH.get(kCFURLVolumeURLForRemountingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeURLForRemountingKey_VH.set(kCFURLVolumeURLForRemountingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeUUIDStringKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeUUIDStringKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeUUIDStringKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeUUIDStringKey").orElseThrow() }
+private val kCFURLVolumeUUIDStringKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeUUIDStringKey").orElseThrow().reinterpret(kCFURLVolumeUUIDStringKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeUUIDStringKey_VH: VarHandle by lazy { kCFURLVolumeUUIDStringKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeUUIDStringKey: MemorySegment
-    get() = kCFURLVolumeUUIDStringKey_VH.get(kCFURLVolumeUUIDStringKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeUUIDStringKey_VH.set(kCFURLVolumeUUIDStringKey_SEGMENT, value)
+    get() = kCFURLVolumeUUIDStringKey_VH.get(kCFURLVolumeUUIDStringKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeUUIDStringKey_VH.set(kCFURLVolumeUUIDStringKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeNameKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeNameKey").orElseThrow() }
+private val kCFURLVolumeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeNameKey").orElseThrow().reinterpret(kCFURLVolumeNameKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeNameKey_VH: VarHandle by lazy { kCFURLVolumeNameKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeNameKey: MemorySegment
-    get() = kCFURLVolumeNameKey_VH.get(kCFURLVolumeNameKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeNameKey_VH.set(kCFURLVolumeNameKey_SEGMENT, value)
+    get() = kCFURLVolumeNameKey_VH.get(kCFURLVolumeNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeNameKey_VH.set(kCFURLVolumeNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeLocalizedNameKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeLocalizedNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeLocalizedNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeLocalizedNameKey").orElseThrow() }
+private val kCFURLVolumeLocalizedNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeLocalizedNameKey").orElseThrow().reinterpret(kCFURLVolumeLocalizedNameKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeLocalizedNameKey_VH: VarHandle by lazy { kCFURLVolumeLocalizedNameKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeLocalizedNameKey: MemorySegment
-    get() = kCFURLVolumeLocalizedNameKey_VH.get(kCFURLVolumeLocalizedNameKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeLocalizedNameKey_VH.set(kCFURLVolumeLocalizedNameKey_SEGMENT, value)
+    get() = kCFURLVolumeLocalizedNameKey_VH.get(kCFURLVolumeLocalizedNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeLocalizedNameKey_VH.set(kCFURLVolumeLocalizedNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsEncryptedKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsEncryptedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsEncryptedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsEncryptedKey").orElseThrow() }
+private val kCFURLVolumeIsEncryptedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsEncryptedKey").orElseThrow().reinterpret(kCFURLVolumeIsEncryptedKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsEncryptedKey_VH: VarHandle by lazy { kCFURLVolumeIsEncryptedKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsEncryptedKey: MemorySegment
-    get() = kCFURLVolumeIsEncryptedKey_VH.get(kCFURLVolumeIsEncryptedKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsEncryptedKey_VH.set(kCFURLVolumeIsEncryptedKey_SEGMENT, value)
+    get() = kCFURLVolumeIsEncryptedKey_VH.get(kCFURLVolumeIsEncryptedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsEncryptedKey_VH.set(kCFURLVolumeIsEncryptedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeIsRootFileSystemKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeIsRootFileSystemKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeIsRootFileSystemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsRootFileSystemKey").orElseThrow() }
+private val kCFURLVolumeIsRootFileSystemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeIsRootFileSystemKey").orElseThrow().reinterpret(kCFURLVolumeIsRootFileSystemKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeIsRootFileSystemKey_VH: VarHandle by lazy { kCFURLVolumeIsRootFileSystemKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeIsRootFileSystemKey: MemorySegment
-    get() = kCFURLVolumeIsRootFileSystemKey_VH.get(kCFURLVolumeIsRootFileSystemKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeIsRootFileSystemKey_VH.set(kCFURLVolumeIsRootFileSystemKey_SEGMENT, value)
+    get() = kCFURLVolumeIsRootFileSystemKey_VH.get(kCFURLVolumeIsRootFileSystemKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeIsRootFileSystemKey_VH.set(kCFURLVolumeIsRootFileSystemKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsCompressionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsCompressionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsCompressionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsCompressionKey").orElseThrow() }
+private val kCFURLVolumeSupportsCompressionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsCompressionKey").orElseThrow().reinterpret(kCFURLVolumeSupportsCompressionKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsCompressionKey_VH: VarHandle by lazy { kCFURLVolumeSupportsCompressionKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsCompressionKey: MemorySegment
-    get() = kCFURLVolumeSupportsCompressionKey_VH.get(kCFURLVolumeSupportsCompressionKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsCompressionKey_VH.set(kCFURLVolumeSupportsCompressionKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsCompressionKey_VH.get(kCFURLVolumeSupportsCompressionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsCompressionKey_VH.set(kCFURLVolumeSupportsCompressionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsFileCloningKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsFileCloningKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsFileCloningKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsFileCloningKey").orElseThrow() }
+private val kCFURLVolumeSupportsFileCloningKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsFileCloningKey").orElseThrow().reinterpret(kCFURLVolumeSupportsFileCloningKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsFileCloningKey_VH: VarHandle by lazy { kCFURLVolumeSupportsFileCloningKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsFileCloningKey: MemorySegment
-    get() = kCFURLVolumeSupportsFileCloningKey_VH.get(kCFURLVolumeSupportsFileCloningKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsFileCloningKey_VH.set(kCFURLVolumeSupportsFileCloningKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsFileCloningKey_VH.get(kCFURLVolumeSupportsFileCloningKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsFileCloningKey_VH.set(kCFURLVolumeSupportsFileCloningKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsSwapRenamingKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsSwapRenamingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsSwapRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsSwapRenamingKey").orElseThrow() }
+private val kCFURLVolumeSupportsSwapRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsSwapRenamingKey").orElseThrow().reinterpret(kCFURLVolumeSupportsSwapRenamingKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsSwapRenamingKey_VH: VarHandle by lazy { kCFURLVolumeSupportsSwapRenamingKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsSwapRenamingKey: MemorySegment
-    get() = kCFURLVolumeSupportsSwapRenamingKey_VH.get(kCFURLVolumeSupportsSwapRenamingKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsSwapRenamingKey_VH.set(kCFURLVolumeSupportsSwapRenamingKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsSwapRenamingKey_VH.get(kCFURLVolumeSupportsSwapRenamingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsSwapRenamingKey_VH.set(kCFURLVolumeSupportsSwapRenamingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsExclusiveRenamingKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsExclusiveRenamingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsExclusiveRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsExclusiveRenamingKey").orElseThrow() }
+private val kCFURLVolumeSupportsExclusiveRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsExclusiveRenamingKey").orElseThrow().reinterpret(kCFURLVolumeSupportsExclusiveRenamingKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsExclusiveRenamingKey_VH: VarHandle by lazy { kCFURLVolumeSupportsExclusiveRenamingKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsExclusiveRenamingKey: MemorySegment
-    get() = kCFURLVolumeSupportsExclusiveRenamingKey_VH.get(kCFURLVolumeSupportsExclusiveRenamingKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsExclusiveRenamingKey_VH.set(kCFURLVolumeSupportsExclusiveRenamingKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsExclusiveRenamingKey_VH.get(kCFURLVolumeSupportsExclusiveRenamingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsExclusiveRenamingKey_VH.set(kCFURLVolumeSupportsExclusiveRenamingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsImmutableFilesKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsImmutableFilesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsImmutableFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsImmutableFilesKey").orElseThrow() }
+private val kCFURLVolumeSupportsImmutableFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsImmutableFilesKey").orElseThrow().reinterpret(kCFURLVolumeSupportsImmutableFilesKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsImmutableFilesKey_VH: VarHandle by lazy { kCFURLVolumeSupportsImmutableFilesKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsImmutableFilesKey: MemorySegment
-    get() = kCFURLVolumeSupportsImmutableFilesKey_VH.get(kCFURLVolumeSupportsImmutableFilesKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsImmutableFilesKey_VH.set(kCFURLVolumeSupportsImmutableFilesKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsImmutableFilesKey_VH.get(kCFURLVolumeSupportsImmutableFilesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsImmutableFilesKey_VH.set(kCFURLVolumeSupportsImmutableFilesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsAccessPermissionsKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsAccessPermissionsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsAccessPermissionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsAccessPermissionsKey").orElseThrow() }
+private val kCFURLVolumeSupportsAccessPermissionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsAccessPermissionsKey").orElseThrow().reinterpret(kCFURLVolumeSupportsAccessPermissionsKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsAccessPermissionsKey_VH: VarHandle by lazy { kCFURLVolumeSupportsAccessPermissionsKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsAccessPermissionsKey: MemorySegment
-    get() = kCFURLVolumeSupportsAccessPermissionsKey_VH.get(kCFURLVolumeSupportsAccessPermissionsKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsAccessPermissionsKey_VH.set(kCFURLVolumeSupportsAccessPermissionsKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsAccessPermissionsKey_VH.get(kCFURLVolumeSupportsAccessPermissionsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsAccessPermissionsKey_VH.set(kCFURLVolumeSupportsAccessPermissionsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSupportsFileProtectionKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSupportsFileProtectionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSupportsFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsFileProtectionKey").orElseThrow() }
+private val kCFURLVolumeSupportsFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSupportsFileProtectionKey").orElseThrow().reinterpret(kCFURLVolumeSupportsFileProtectionKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSupportsFileProtectionKey_VH: VarHandle by lazy { kCFURLVolumeSupportsFileProtectionKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSupportsFileProtectionKey: MemorySegment
-    get() = kCFURLVolumeSupportsFileProtectionKey_VH.get(kCFURLVolumeSupportsFileProtectionKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSupportsFileProtectionKey_VH.set(kCFURLVolumeSupportsFileProtectionKey_SEGMENT, value)
+    get() = kCFURLVolumeSupportsFileProtectionKey_VH.get(kCFURLVolumeSupportsFileProtectionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSupportsFileProtectionKey_VH.set(kCFURLVolumeSupportsFileProtectionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeTypeNameKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeTypeNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeTypeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeTypeNameKey").orElseThrow() }
+private val kCFURLVolumeTypeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeTypeNameKey").orElseThrow().reinterpret(kCFURLVolumeTypeNameKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeTypeNameKey_VH: VarHandle by lazy { kCFURLVolumeTypeNameKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeTypeNameKey: MemorySegment
-    get() = kCFURLVolumeTypeNameKey_VH.get(kCFURLVolumeTypeNameKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeTypeNameKey_VH.set(kCFURLVolumeTypeNameKey_SEGMENT, value)
+    get() = kCFURLVolumeTypeNameKey_VH.get(kCFURLVolumeTypeNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeTypeNameKey_VH.set(kCFURLVolumeTypeNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeSubtypeKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeSubtypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeSubtypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSubtypeKey").orElseThrow() }
+private val kCFURLVolumeSubtypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeSubtypeKey").orElseThrow().reinterpret(kCFURLVolumeSubtypeKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeSubtypeKey_VH: VarHandle by lazy { kCFURLVolumeSubtypeKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeSubtypeKey: MemorySegment
-    get() = kCFURLVolumeSubtypeKey_VH.get(kCFURLVolumeSubtypeKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeSubtypeKey_VH.set(kCFURLVolumeSubtypeKey_SEGMENT, value)
+    get() = kCFURLVolumeSubtypeKey_VH.get(kCFURLVolumeSubtypeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeSubtypeKey_VH.set(kCFURLVolumeSubtypeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLVolumeMountFromLocationKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLVolumeMountFromLocationKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLVolumeMountFromLocationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeMountFromLocationKey").orElseThrow() }
+private val kCFURLVolumeMountFromLocationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLVolumeMountFromLocationKey").orElseThrow().reinterpret(kCFURLVolumeMountFromLocationKey_LAYOUT.byteSize()) }
 private val kCFURLVolumeMountFromLocationKey_VH: VarHandle by lazy { kCFURLVolumeMountFromLocationKey_LAYOUT.varHandle() }
 
 var kCFURLVolumeMountFromLocationKey: MemorySegment
-    get() = kCFURLVolumeMountFromLocationKey_VH.get(kCFURLVolumeMountFromLocationKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLVolumeMountFromLocationKey_VH.set(kCFURLVolumeMountFromLocationKey_SEGMENT, value)
+    get() = kCFURLVolumeMountFromLocationKey_VH.get(kCFURLVolumeMountFromLocationKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLVolumeMountFromLocationKey_VH.set(kCFURLVolumeMountFromLocationKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLIsUbiquitousItemKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLIsUbiquitousItemKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLIsUbiquitousItemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsUbiquitousItemKey").orElseThrow() }
+private val kCFURLIsUbiquitousItemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLIsUbiquitousItemKey").orElseThrow().reinterpret(kCFURLIsUbiquitousItemKey_LAYOUT.byteSize()) }
 private val kCFURLIsUbiquitousItemKey_VH: VarHandle by lazy { kCFURLIsUbiquitousItemKey_LAYOUT.varHandle() }
 
 var kCFURLIsUbiquitousItemKey: MemorySegment
-    get() = kCFURLIsUbiquitousItemKey_VH.get(kCFURLIsUbiquitousItemKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLIsUbiquitousItemKey_VH.set(kCFURLIsUbiquitousItemKey_SEGMENT, value)
+    get() = kCFURLIsUbiquitousItemKey_VH.get(kCFURLIsUbiquitousItemKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLIsUbiquitousItemKey_VH.set(kCFURLIsUbiquitousItemKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemHasUnresolvedConflictsKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemHasUnresolvedConflictsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemHasUnresolvedConflictsKey").orElseThrow() }
+private val kCFURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemHasUnresolvedConflictsKey").orElseThrow().reinterpret(kCFURLUbiquitousItemHasUnresolvedConflictsKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemHasUnresolvedConflictsKey_VH: VarHandle by lazy { kCFURLUbiquitousItemHasUnresolvedConflictsKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemHasUnresolvedConflictsKey: MemorySegment
-    get() = kCFURLUbiquitousItemHasUnresolvedConflictsKey_VH.get(kCFURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemHasUnresolvedConflictsKey_VH.set(kCFURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemHasUnresolvedConflictsKey_VH.get(kCFURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemHasUnresolvedConflictsKey_VH.set(kCFURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemIsDownloadedKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemIsDownloadedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemIsDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsDownloadedKey").orElseThrow() }
+private val kCFURLUbiquitousItemIsDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsDownloadedKey").orElseThrow().reinterpret(kCFURLUbiquitousItemIsDownloadedKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemIsDownloadedKey_VH: VarHandle by lazy { kCFURLUbiquitousItemIsDownloadedKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemIsDownloadedKey: MemorySegment
-    get() = kCFURLUbiquitousItemIsDownloadedKey_VH.get(kCFURLUbiquitousItemIsDownloadedKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemIsDownloadedKey_VH.set(kCFURLUbiquitousItemIsDownloadedKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemIsDownloadedKey_VH.get(kCFURLUbiquitousItemIsDownloadedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemIsDownloadedKey_VH.set(kCFURLUbiquitousItemIsDownloadedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemIsDownloadingKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemIsDownloadingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemIsDownloadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsDownloadingKey").orElseThrow() }
+private val kCFURLUbiquitousItemIsDownloadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsDownloadingKey").orElseThrow().reinterpret(kCFURLUbiquitousItemIsDownloadingKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemIsDownloadingKey_VH: VarHandle by lazy { kCFURLUbiquitousItemIsDownloadingKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemIsDownloadingKey: MemorySegment
-    get() = kCFURLUbiquitousItemIsDownloadingKey_VH.get(kCFURLUbiquitousItemIsDownloadingKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemIsDownloadingKey_VH.set(kCFURLUbiquitousItemIsDownloadingKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemIsDownloadingKey_VH.get(kCFURLUbiquitousItemIsDownloadingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemIsDownloadingKey_VH.set(kCFURLUbiquitousItemIsDownloadingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemIsUploadedKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemIsUploadedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemIsUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsUploadedKey").orElseThrow() }
+private val kCFURLUbiquitousItemIsUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsUploadedKey").orElseThrow().reinterpret(kCFURLUbiquitousItemIsUploadedKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemIsUploadedKey_VH: VarHandle by lazy { kCFURLUbiquitousItemIsUploadedKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemIsUploadedKey: MemorySegment
-    get() = kCFURLUbiquitousItemIsUploadedKey_VH.get(kCFURLUbiquitousItemIsUploadedKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemIsUploadedKey_VH.set(kCFURLUbiquitousItemIsUploadedKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemIsUploadedKey_VH.get(kCFURLUbiquitousItemIsUploadedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemIsUploadedKey_VH.set(kCFURLUbiquitousItemIsUploadedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemIsUploadingKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemIsUploadingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemIsUploadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsUploadingKey").orElseThrow() }
+private val kCFURLUbiquitousItemIsUploadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsUploadingKey").orElseThrow().reinterpret(kCFURLUbiquitousItemIsUploadingKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemIsUploadingKey_VH: VarHandle by lazy { kCFURLUbiquitousItemIsUploadingKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemIsUploadingKey: MemorySegment
-    get() = kCFURLUbiquitousItemIsUploadingKey_VH.get(kCFURLUbiquitousItemIsUploadingKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemIsUploadingKey_VH.set(kCFURLUbiquitousItemIsUploadingKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemIsUploadingKey_VH.get(kCFURLUbiquitousItemIsUploadingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemIsUploadingKey_VH.set(kCFURLUbiquitousItemIsUploadingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemPercentDownloadedKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemPercentDownloadedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemPercentDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemPercentDownloadedKey").orElseThrow() }
+private val kCFURLUbiquitousItemPercentDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemPercentDownloadedKey").orElseThrow().reinterpret(kCFURLUbiquitousItemPercentDownloadedKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemPercentDownloadedKey_VH: VarHandle by lazy { kCFURLUbiquitousItemPercentDownloadedKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemPercentDownloadedKey: MemorySegment
-    get() = kCFURLUbiquitousItemPercentDownloadedKey_VH.get(kCFURLUbiquitousItemPercentDownloadedKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemPercentDownloadedKey_VH.set(kCFURLUbiquitousItemPercentDownloadedKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemPercentDownloadedKey_VH.get(kCFURLUbiquitousItemPercentDownloadedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemPercentDownloadedKey_VH.set(kCFURLUbiquitousItemPercentDownloadedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemPercentUploadedKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemPercentUploadedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemPercentUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemPercentUploadedKey").orElseThrow() }
+private val kCFURLUbiquitousItemPercentUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemPercentUploadedKey").orElseThrow().reinterpret(kCFURLUbiquitousItemPercentUploadedKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemPercentUploadedKey_VH: VarHandle by lazy { kCFURLUbiquitousItemPercentUploadedKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemPercentUploadedKey: MemorySegment
-    get() = kCFURLUbiquitousItemPercentUploadedKey_VH.get(kCFURLUbiquitousItemPercentUploadedKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemPercentUploadedKey_VH.set(kCFURLUbiquitousItemPercentUploadedKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemPercentUploadedKey_VH.get(kCFURLUbiquitousItemPercentUploadedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemPercentUploadedKey_VH.set(kCFURLUbiquitousItemPercentUploadedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemDownloadingStatusKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemDownloadingStatusKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemDownloadingStatusKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingStatusKey").orElseThrow() }
+private val kCFURLUbiquitousItemDownloadingStatusKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingStatusKey").orElseThrow().reinterpret(kCFURLUbiquitousItemDownloadingStatusKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemDownloadingStatusKey_VH: VarHandle by lazy { kCFURLUbiquitousItemDownloadingStatusKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemDownloadingStatusKey: MemorySegment
-    get() = kCFURLUbiquitousItemDownloadingStatusKey_VH.get(kCFURLUbiquitousItemDownloadingStatusKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemDownloadingStatusKey_VH.set(kCFURLUbiquitousItemDownloadingStatusKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemDownloadingStatusKey_VH.get(kCFURLUbiquitousItemDownloadingStatusKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemDownloadingStatusKey_VH.set(kCFURLUbiquitousItemDownloadingStatusKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemDownloadingErrorKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemDownloadingErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemDownloadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingErrorKey").orElseThrow() }
+private val kCFURLUbiquitousItemDownloadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingErrorKey").orElseThrow().reinterpret(kCFURLUbiquitousItemDownloadingErrorKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemDownloadingErrorKey_VH: VarHandle by lazy { kCFURLUbiquitousItemDownloadingErrorKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemDownloadingErrorKey: MemorySegment
-    get() = kCFURLUbiquitousItemDownloadingErrorKey_VH.get(kCFURLUbiquitousItemDownloadingErrorKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemDownloadingErrorKey_VH.set(kCFURLUbiquitousItemDownloadingErrorKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemDownloadingErrorKey_VH.get(kCFURLUbiquitousItemDownloadingErrorKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemDownloadingErrorKey_VH.set(kCFURLUbiquitousItemDownloadingErrorKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemUploadingErrorKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemUploadingErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemUploadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemUploadingErrorKey").orElseThrow() }
+private val kCFURLUbiquitousItemUploadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemUploadingErrorKey").orElseThrow().reinterpret(kCFURLUbiquitousItemUploadingErrorKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemUploadingErrorKey_VH: VarHandle by lazy { kCFURLUbiquitousItemUploadingErrorKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemUploadingErrorKey: MemorySegment
-    get() = kCFURLUbiquitousItemUploadingErrorKey_VH.get(kCFURLUbiquitousItemUploadingErrorKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemUploadingErrorKey_VH.set(kCFURLUbiquitousItemUploadingErrorKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemUploadingErrorKey_VH.get(kCFURLUbiquitousItemUploadingErrorKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemUploadingErrorKey_VH.set(kCFURLUbiquitousItemUploadingErrorKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemIsExcludedFromSyncKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemIsExcludedFromSyncKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsExcludedFromSyncKey").orElseThrow() }
+private val kCFURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsExcludedFromSyncKey").orElseThrow().reinterpret(kCFURLUbiquitousItemIsExcludedFromSyncKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemIsExcludedFromSyncKey_VH: VarHandle by lazy { kCFURLUbiquitousItemIsExcludedFromSyncKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemIsExcludedFromSyncKey: MemorySegment
-    get() = kCFURLUbiquitousItemIsExcludedFromSyncKey_VH.get(kCFURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemIsExcludedFromSyncKey_VH.set(kCFURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemIsExcludedFromSyncKey_VH.get(kCFURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemIsExcludedFromSyncKey_VH.set(kCFURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemDownloadingStatusNotDownloaded typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemDownloadingStatusNotDownloaded_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingStatusNotDownloaded").orElseThrow() }
+private val kCFURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingStatusNotDownloaded").orElseThrow().reinterpret(kCFURLUbiquitousItemDownloadingStatusNotDownloaded_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemDownloadingStatusNotDownloaded_VH: VarHandle by lazy { kCFURLUbiquitousItemDownloadingStatusNotDownloaded_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemDownloadingStatusNotDownloaded: MemorySegment
-    get() = kCFURLUbiquitousItemDownloadingStatusNotDownloaded_VH.get(kCFURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemDownloadingStatusNotDownloaded_VH.set(kCFURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT, value)
+    get() = kCFURLUbiquitousItemDownloadingStatusNotDownloaded_VH.get(kCFURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemDownloadingStatusNotDownloaded_VH.set(kCFURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemDownloadingStatusDownloaded typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemDownloadingStatusDownloaded_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingStatusDownloaded").orElseThrow() }
+private val kCFURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingStatusDownloaded").orElseThrow().reinterpret(kCFURLUbiquitousItemDownloadingStatusDownloaded_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemDownloadingStatusDownloaded_VH: VarHandle by lazy { kCFURLUbiquitousItemDownloadingStatusDownloaded_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemDownloadingStatusDownloaded: MemorySegment
-    get() = kCFURLUbiquitousItemDownloadingStatusDownloaded_VH.get(kCFURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemDownloadingStatusDownloaded_VH.set(kCFURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT, value)
+    get() = kCFURLUbiquitousItemDownloadingStatusDownloaded_VH.get(kCFURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemDownloadingStatusDownloaded_VH.set(kCFURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemDownloadingStatusCurrent typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemDownloadingStatusCurrent_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemDownloadingStatusCurrent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingStatusCurrent").orElseThrow() }
+private val kCFURLUbiquitousItemDownloadingStatusCurrent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemDownloadingStatusCurrent").orElseThrow().reinterpret(kCFURLUbiquitousItemDownloadingStatusCurrent_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemDownloadingStatusCurrent_VH: VarHandle by lazy { kCFURLUbiquitousItemDownloadingStatusCurrent_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemDownloadingStatusCurrent: MemorySegment
-    get() = kCFURLUbiquitousItemDownloadingStatusCurrent_VH.get(kCFURLUbiquitousItemDownloadingStatusCurrent_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemDownloadingStatusCurrent_VH.set(kCFURLUbiquitousItemDownloadingStatusCurrent_SEGMENT, value)
+    get() = kCFURLUbiquitousItemDownloadingStatusCurrent_VH.get(kCFURLUbiquitousItemDownloadingStatusCurrent_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemDownloadingStatusCurrent_VH.set(kCFURLUbiquitousItemDownloadingStatusCurrent_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemSupportedSyncControlsKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemSupportedSyncControlsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemSupportedSyncControlsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemSupportedSyncControlsKey").orElseThrow() }
+private val kCFURLUbiquitousItemSupportedSyncControlsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemSupportedSyncControlsKey").orElseThrow().reinterpret(kCFURLUbiquitousItemSupportedSyncControlsKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemSupportedSyncControlsKey_VH: VarHandle by lazy { kCFURLUbiquitousItemSupportedSyncControlsKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemSupportedSyncControlsKey: MemorySegment
-    get() = kCFURLUbiquitousItemSupportedSyncControlsKey_VH.get(kCFURLUbiquitousItemSupportedSyncControlsKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemSupportedSyncControlsKey_VH.set(kCFURLUbiquitousItemSupportedSyncControlsKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemSupportedSyncControlsKey_VH.get(kCFURLUbiquitousItemSupportedSyncControlsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemSupportedSyncControlsKey_VH.set(kCFURLUbiquitousItemSupportedSyncControlsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFURLUbiquitousItemIsSyncPausedKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFURLUbiquitousItemIsSyncPausedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFURLUbiquitousItemIsSyncPausedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsSyncPausedKey").orElseThrow() }
+private val kCFURLUbiquitousItemIsSyncPausedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFURLUbiquitousItemIsSyncPausedKey").orElseThrow().reinterpret(kCFURLUbiquitousItemIsSyncPausedKey_LAYOUT.byteSize()) }
 private val kCFURLUbiquitousItemIsSyncPausedKey_VH: VarHandle by lazy { kCFURLUbiquitousItemIsSyncPausedKey_LAYOUT.varHandle() }
 
 var kCFURLUbiquitousItemIsSyncPausedKey: MemorySegment
-    get() = kCFURLUbiquitousItemIsSyncPausedKey_VH.get(kCFURLUbiquitousItemIsSyncPausedKey_SEGMENT) as MemorySegment
-    set(value) = kCFURLUbiquitousItemIsSyncPausedKey_VH.set(kCFURLUbiquitousItemIsSyncPausedKey_SEGMENT, value)
+    get() = kCFURLUbiquitousItemIsSyncPausedKey_VH.get(kCFURLUbiquitousItemIsSyncPausedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFURLUbiquitousItemIsSyncPausedKey_VH.set(kCFURLUbiquitousItemIsSyncPausedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFURLCreateBookmarkData typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFURLRef = (Declared(__CFURL))*,typedef CFURLBookmarkCreationOptions = Declared(CFURLBookmarkCreationOptions),typedef CFArrayRef = (Declared(__CFArray))*,typedef CFURLRef = (Declared(__CFURL))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
@@ -1870,23 +1870,23 @@ fun CFURLStopAccessingSecurityScopedResource(arg0: MemorySegment): Unit {
  * {@snippet lang=c : kCFRunLoopDefaultMode typedef const CFRunLoopMode = (Declared(__CFString))*
  */
 private val kCFRunLoopDefaultMode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFRunLoopDefaultMode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFRunLoopDefaultMode").orElseThrow() }
+private val kCFRunLoopDefaultMode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFRunLoopDefaultMode").orElseThrow().reinterpret(kCFRunLoopDefaultMode_LAYOUT.byteSize()) }
 private val kCFRunLoopDefaultMode_VH: VarHandle by lazy { kCFRunLoopDefaultMode_LAYOUT.varHandle() }
 
 var kCFRunLoopDefaultMode: MemorySegment
-    get() = kCFRunLoopDefaultMode_VH.get(kCFRunLoopDefaultMode_SEGMENT) as MemorySegment
-    set(value) = kCFRunLoopDefaultMode_VH.set(kCFRunLoopDefaultMode_SEGMENT, value)
+    get() = kCFRunLoopDefaultMode_VH.get(kCFRunLoopDefaultMode_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFRunLoopDefaultMode_VH.set(kCFRunLoopDefaultMode_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFRunLoopCommonModes typedef const CFRunLoopMode = (Declared(__CFString))*
  */
 private val kCFRunLoopCommonModes_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFRunLoopCommonModes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFRunLoopCommonModes").orElseThrow() }
+private val kCFRunLoopCommonModes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFRunLoopCommonModes").orElseThrow().reinterpret(kCFRunLoopCommonModes_LAYOUT.byteSize()) }
 private val kCFRunLoopCommonModes_VH: VarHandle by lazy { kCFRunLoopCommonModes_LAYOUT.varHandle() }
 
 var kCFRunLoopCommonModes: MemorySegment
-    get() = kCFRunLoopCommonModes_VH.get(kCFRunLoopCommonModes_SEGMENT) as MemorySegment
-    set(value) = kCFRunLoopCommonModes_VH.set(kCFRunLoopCommonModes_SEGMENT, value)
+    get() = kCFRunLoopCommonModes_VH.get(kCFRunLoopCommonModes_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFRunLoopCommonModes_VH.set(kCFRunLoopCommonModes_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFRunLoopGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -3355,78 +3355,78 @@ fun CFSocketGetDefaultNameRegistryPortNumber(): Short {
  * {@snippet lang=c : kCFSocketCommandKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFSocketCommandKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFSocketCommandKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketCommandKey").orElseThrow() }
+private val kCFSocketCommandKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketCommandKey").orElseThrow().reinterpret(kCFSocketCommandKey_LAYOUT.byteSize()) }
 private val kCFSocketCommandKey_VH: VarHandle by lazy { kCFSocketCommandKey_LAYOUT.varHandle() }
 
 var kCFSocketCommandKey: MemorySegment
-    get() = kCFSocketCommandKey_VH.get(kCFSocketCommandKey_SEGMENT) as MemorySegment
-    set(value) = kCFSocketCommandKey_VH.set(kCFSocketCommandKey_SEGMENT, value)
+    get() = kCFSocketCommandKey_VH.get(kCFSocketCommandKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFSocketCommandKey_VH.set(kCFSocketCommandKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFSocketNameKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFSocketNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFSocketNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketNameKey").orElseThrow() }
+private val kCFSocketNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketNameKey").orElseThrow().reinterpret(kCFSocketNameKey_LAYOUT.byteSize()) }
 private val kCFSocketNameKey_VH: VarHandle by lazy { kCFSocketNameKey_LAYOUT.varHandle() }
 
 var kCFSocketNameKey: MemorySegment
-    get() = kCFSocketNameKey_VH.get(kCFSocketNameKey_SEGMENT) as MemorySegment
-    set(value) = kCFSocketNameKey_VH.set(kCFSocketNameKey_SEGMENT, value)
+    get() = kCFSocketNameKey_VH.get(kCFSocketNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFSocketNameKey_VH.set(kCFSocketNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFSocketValueKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFSocketValueKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFSocketValueKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketValueKey").orElseThrow() }
+private val kCFSocketValueKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketValueKey").orElseThrow().reinterpret(kCFSocketValueKey_LAYOUT.byteSize()) }
 private val kCFSocketValueKey_VH: VarHandle by lazy { kCFSocketValueKey_LAYOUT.varHandle() }
 
 var kCFSocketValueKey: MemorySegment
-    get() = kCFSocketValueKey_VH.get(kCFSocketValueKey_SEGMENT) as MemorySegment
-    set(value) = kCFSocketValueKey_VH.set(kCFSocketValueKey_SEGMENT, value)
+    get() = kCFSocketValueKey_VH.get(kCFSocketValueKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFSocketValueKey_VH.set(kCFSocketValueKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFSocketResultKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFSocketResultKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFSocketResultKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketResultKey").orElseThrow() }
+private val kCFSocketResultKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketResultKey").orElseThrow().reinterpret(kCFSocketResultKey_LAYOUT.byteSize()) }
 private val kCFSocketResultKey_VH: VarHandle by lazy { kCFSocketResultKey_LAYOUT.varHandle() }
 
 var kCFSocketResultKey: MemorySegment
-    get() = kCFSocketResultKey_VH.get(kCFSocketResultKey_SEGMENT) as MemorySegment
-    set(value) = kCFSocketResultKey_VH.set(kCFSocketResultKey_SEGMENT, value)
+    get() = kCFSocketResultKey_VH.get(kCFSocketResultKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFSocketResultKey_VH.set(kCFSocketResultKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFSocketErrorKey typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFSocketErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFSocketErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketErrorKey").orElseThrow() }
+private val kCFSocketErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketErrorKey").orElseThrow().reinterpret(kCFSocketErrorKey_LAYOUT.byteSize()) }
 private val kCFSocketErrorKey_VH: VarHandle by lazy { kCFSocketErrorKey_LAYOUT.varHandle() }
 
 var kCFSocketErrorKey: MemorySegment
-    get() = kCFSocketErrorKey_VH.get(kCFSocketErrorKey_SEGMENT) as MemorySegment
-    set(value) = kCFSocketErrorKey_VH.set(kCFSocketErrorKey_SEGMENT, value)
+    get() = kCFSocketErrorKey_VH.get(kCFSocketErrorKey_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFSocketErrorKey_VH.set(kCFSocketErrorKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFSocketRegisterCommand typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFSocketRegisterCommand_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFSocketRegisterCommand_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketRegisterCommand").orElseThrow() }
+private val kCFSocketRegisterCommand_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketRegisterCommand").orElseThrow().reinterpret(kCFSocketRegisterCommand_LAYOUT.byteSize()) }
 private val kCFSocketRegisterCommand_VH: VarHandle by lazy { kCFSocketRegisterCommand_LAYOUT.varHandle() }
 
 var kCFSocketRegisterCommand: MemorySegment
-    get() = kCFSocketRegisterCommand_VH.get(kCFSocketRegisterCommand_SEGMENT) as MemorySegment
-    set(value) = kCFSocketRegisterCommand_VH.set(kCFSocketRegisterCommand_SEGMENT, value)
+    get() = kCFSocketRegisterCommand_VH.get(kCFSocketRegisterCommand_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFSocketRegisterCommand_VH.set(kCFSocketRegisterCommand_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFSocketRetrieveCommand typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCFSocketRetrieveCommand_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFSocketRetrieveCommand_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketRetrieveCommand").orElseThrow() }
+private val kCFSocketRetrieveCommand_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFSocketRetrieveCommand").orElseThrow().reinterpret(kCFSocketRetrieveCommand_LAYOUT.byteSize()) }
 private val kCFSocketRetrieveCommand_VH: VarHandle by lazy { kCFSocketRetrieveCommand_LAYOUT.varHandle() }
 
 var kCFSocketRetrieveCommand: MemorySegment
-    get() = kCFSocketRetrieveCommand_VH.get(kCFSocketRetrieveCommand_SEGMENT) as MemorySegment
-    set(value) = kCFSocketRetrieveCommand_VH.set(kCFSocketRetrieveCommand_SEGMENT, value)
+    get() = kCFSocketRetrieveCommand_VH.get(kCFSocketRetrieveCommand_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFSocketRetrieveCommand_VH.set(kCFSocketRetrieveCommand_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFReadStreamGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -3470,12 +3470,12 @@ fun CFWriteStreamGetTypeID(): Long {
  * {@snippet lang=c : kCFStreamPropertyDataWritten typedef CFStreamPropertyKey = (Declared(__CFString))*
  */
 private val kCFStreamPropertyDataWritten_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertyDataWritten_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertyDataWritten").orElseThrow() }
+private val kCFStreamPropertyDataWritten_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertyDataWritten").orElseThrow().reinterpret(kCFStreamPropertyDataWritten_LAYOUT.byteSize()) }
 private val kCFStreamPropertyDataWritten_VH: VarHandle by lazy { kCFStreamPropertyDataWritten_LAYOUT.varHandle() }
 
 var kCFStreamPropertyDataWritten: MemorySegment
-    get() = kCFStreamPropertyDataWritten_VH.get(kCFStreamPropertyDataWritten_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertyDataWritten_VH.set(kCFStreamPropertyDataWritten_SEGMENT, value)
+    get() = kCFStreamPropertyDataWritten_VH.get(kCFStreamPropertyDataWritten_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertyDataWritten_VH.set(kCFStreamPropertyDataWritten_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFReadStreamCreateWithBytesNoCopy typedef CFReadStreamRef = (Declared(__CFReadStream))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long,typedef CFAllocatorRef = (Declared(__CFAllocator))*)
@@ -3595,243 +3595,243 @@ fun CFStreamCreateBoundPair(arg0: MemorySegment, arg1: MemorySegment, arg2: Memo
  * {@snippet lang=c : kCFStreamPropertyAppendToFile typedef CFStreamPropertyKey = (Declared(__CFString))*
  */
 private val kCFStreamPropertyAppendToFile_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertyAppendToFile_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertyAppendToFile").orElseThrow() }
+private val kCFStreamPropertyAppendToFile_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertyAppendToFile").orElseThrow().reinterpret(kCFStreamPropertyAppendToFile_LAYOUT.byteSize()) }
 private val kCFStreamPropertyAppendToFile_VH: VarHandle by lazy { kCFStreamPropertyAppendToFile_LAYOUT.varHandle() }
 
 var kCFStreamPropertyAppendToFile: MemorySegment
-    get() = kCFStreamPropertyAppendToFile_VH.get(kCFStreamPropertyAppendToFile_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertyAppendToFile_VH.set(kCFStreamPropertyAppendToFile_SEGMENT, value)
+    get() = kCFStreamPropertyAppendToFile_VH.get(kCFStreamPropertyAppendToFile_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertyAppendToFile_VH.set(kCFStreamPropertyAppendToFile_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertyFileCurrentOffset typedef CFStreamPropertyKey = (Declared(__CFString))*
  */
 private val kCFStreamPropertyFileCurrentOffset_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertyFileCurrentOffset_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertyFileCurrentOffset").orElseThrow() }
+private val kCFStreamPropertyFileCurrentOffset_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertyFileCurrentOffset").orElseThrow().reinterpret(kCFStreamPropertyFileCurrentOffset_LAYOUT.byteSize()) }
 private val kCFStreamPropertyFileCurrentOffset_VH: VarHandle by lazy { kCFStreamPropertyFileCurrentOffset_LAYOUT.varHandle() }
 
 var kCFStreamPropertyFileCurrentOffset: MemorySegment
-    get() = kCFStreamPropertyFileCurrentOffset_VH.get(kCFStreamPropertyFileCurrentOffset_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertyFileCurrentOffset_VH.set(kCFStreamPropertyFileCurrentOffset_SEGMENT, value)
+    get() = kCFStreamPropertyFileCurrentOffset_VH.get(kCFStreamPropertyFileCurrentOffset_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertyFileCurrentOffset_VH.set(kCFStreamPropertyFileCurrentOffset_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySocketNativeHandle typedef CFStreamPropertyKey = (Declared(__CFString))*
  */
 private val kCFStreamPropertySocketNativeHandle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySocketNativeHandle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySocketNativeHandle").orElseThrow() }
+private val kCFStreamPropertySocketNativeHandle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySocketNativeHandle").orElseThrow().reinterpret(kCFStreamPropertySocketNativeHandle_LAYOUT.byteSize()) }
 private val kCFStreamPropertySocketNativeHandle_VH: VarHandle by lazy { kCFStreamPropertySocketNativeHandle_LAYOUT.varHandle() }
 
 var kCFStreamPropertySocketNativeHandle: MemorySegment
-    get() = kCFStreamPropertySocketNativeHandle_VH.get(kCFStreamPropertySocketNativeHandle_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySocketNativeHandle_VH.set(kCFStreamPropertySocketNativeHandle_SEGMENT, value)
+    get() = kCFStreamPropertySocketNativeHandle_VH.get(kCFStreamPropertySocketNativeHandle_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySocketNativeHandle_VH.set(kCFStreamPropertySocketNativeHandle_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySocketRemoteHostName typedef CFStreamPropertyKey = (Declared(__CFString))*
  */
 private val kCFStreamPropertySocketRemoteHostName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySocketRemoteHostName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySocketRemoteHostName").orElseThrow() }
+private val kCFStreamPropertySocketRemoteHostName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySocketRemoteHostName").orElseThrow().reinterpret(kCFStreamPropertySocketRemoteHostName_LAYOUT.byteSize()) }
 private val kCFStreamPropertySocketRemoteHostName_VH: VarHandle by lazy { kCFStreamPropertySocketRemoteHostName_LAYOUT.varHandle() }
 
 var kCFStreamPropertySocketRemoteHostName: MemorySegment
-    get() = kCFStreamPropertySocketRemoteHostName_VH.get(kCFStreamPropertySocketRemoteHostName_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySocketRemoteHostName_VH.set(kCFStreamPropertySocketRemoteHostName_SEGMENT, value)
+    get() = kCFStreamPropertySocketRemoteHostName_VH.get(kCFStreamPropertySocketRemoteHostName_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySocketRemoteHostName_VH.set(kCFStreamPropertySocketRemoteHostName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySocketRemotePortNumber typedef CFStreamPropertyKey = (Declared(__CFString))*
  */
 private val kCFStreamPropertySocketRemotePortNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySocketRemotePortNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySocketRemotePortNumber").orElseThrow() }
+private val kCFStreamPropertySocketRemotePortNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySocketRemotePortNumber").orElseThrow().reinterpret(kCFStreamPropertySocketRemotePortNumber_LAYOUT.byteSize()) }
 private val kCFStreamPropertySocketRemotePortNumber_VH: VarHandle by lazy { kCFStreamPropertySocketRemotePortNumber_LAYOUT.varHandle() }
 
 var kCFStreamPropertySocketRemotePortNumber: MemorySegment
-    get() = kCFStreamPropertySocketRemotePortNumber_VH.get(kCFStreamPropertySocketRemotePortNumber_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySocketRemotePortNumber_VH.set(kCFStreamPropertySocketRemotePortNumber_SEGMENT, value)
+    get() = kCFStreamPropertySocketRemotePortNumber_VH.get(kCFStreamPropertySocketRemotePortNumber_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySocketRemotePortNumber_VH.set(kCFStreamPropertySocketRemotePortNumber_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamErrorDomainSOCKS Int
  */
 private val kCFStreamErrorDomainSOCKS_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
-private val kCFStreamErrorDomainSOCKS_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamErrorDomainSOCKS").orElseThrow() }
+private val kCFStreamErrorDomainSOCKS_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamErrorDomainSOCKS").orElseThrow().reinterpret(kCFStreamErrorDomainSOCKS_LAYOUT.byteSize()) }
 private val kCFStreamErrorDomainSOCKS_VH: VarHandle by lazy { kCFStreamErrorDomainSOCKS_LAYOUT.varHandle() }
 
 var kCFStreamErrorDomainSOCKS: Int
-    get() = kCFStreamErrorDomainSOCKS_VH.get(kCFStreamErrorDomainSOCKS_SEGMENT) as Int
-    set(value) = kCFStreamErrorDomainSOCKS_VH.set(kCFStreamErrorDomainSOCKS_SEGMENT, value)
+    get() = kCFStreamErrorDomainSOCKS_VH.get(kCFStreamErrorDomainSOCKS_SEGMENT, 0L) as Int
+    set(value) = kCFStreamErrorDomainSOCKS_VH.set(kCFStreamErrorDomainSOCKS_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySOCKSProxy typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamPropertySOCKSProxy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySOCKSProxy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSProxy").orElseThrow() }
+private val kCFStreamPropertySOCKSProxy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSProxy").orElseThrow().reinterpret(kCFStreamPropertySOCKSProxy_LAYOUT.byteSize()) }
 private val kCFStreamPropertySOCKSProxy_VH: VarHandle by lazy { kCFStreamPropertySOCKSProxy_LAYOUT.varHandle() }
 
 var kCFStreamPropertySOCKSProxy: MemorySegment
-    get() = kCFStreamPropertySOCKSProxy_VH.get(kCFStreamPropertySOCKSProxy_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySOCKSProxy_VH.set(kCFStreamPropertySOCKSProxy_SEGMENT, value)
+    get() = kCFStreamPropertySOCKSProxy_VH.get(kCFStreamPropertySOCKSProxy_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySOCKSProxy_VH.set(kCFStreamPropertySOCKSProxy_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySOCKSProxyHost typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamPropertySOCKSProxyHost_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySOCKSProxyHost_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSProxyHost").orElseThrow() }
+private val kCFStreamPropertySOCKSProxyHost_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSProxyHost").orElseThrow().reinterpret(kCFStreamPropertySOCKSProxyHost_LAYOUT.byteSize()) }
 private val kCFStreamPropertySOCKSProxyHost_VH: VarHandle by lazy { kCFStreamPropertySOCKSProxyHost_LAYOUT.varHandle() }
 
 var kCFStreamPropertySOCKSProxyHost: MemorySegment
-    get() = kCFStreamPropertySOCKSProxyHost_VH.get(kCFStreamPropertySOCKSProxyHost_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySOCKSProxyHost_VH.set(kCFStreamPropertySOCKSProxyHost_SEGMENT, value)
+    get() = kCFStreamPropertySOCKSProxyHost_VH.get(kCFStreamPropertySOCKSProxyHost_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySOCKSProxyHost_VH.set(kCFStreamPropertySOCKSProxyHost_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySOCKSProxyPort typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamPropertySOCKSProxyPort_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySOCKSProxyPort_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSProxyPort").orElseThrow() }
+private val kCFStreamPropertySOCKSProxyPort_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSProxyPort").orElseThrow().reinterpret(kCFStreamPropertySOCKSProxyPort_LAYOUT.byteSize()) }
 private val kCFStreamPropertySOCKSProxyPort_VH: VarHandle by lazy { kCFStreamPropertySOCKSProxyPort_LAYOUT.varHandle() }
 
 var kCFStreamPropertySOCKSProxyPort: MemorySegment
-    get() = kCFStreamPropertySOCKSProxyPort_VH.get(kCFStreamPropertySOCKSProxyPort_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySOCKSProxyPort_VH.set(kCFStreamPropertySOCKSProxyPort_SEGMENT, value)
+    get() = kCFStreamPropertySOCKSProxyPort_VH.get(kCFStreamPropertySOCKSProxyPort_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySOCKSProxyPort_VH.set(kCFStreamPropertySOCKSProxyPort_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySOCKSVersion typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamPropertySOCKSVersion_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySOCKSVersion_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSVersion").orElseThrow() }
+private val kCFStreamPropertySOCKSVersion_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSVersion").orElseThrow().reinterpret(kCFStreamPropertySOCKSVersion_LAYOUT.byteSize()) }
 private val kCFStreamPropertySOCKSVersion_VH: VarHandle by lazy { kCFStreamPropertySOCKSVersion_LAYOUT.varHandle() }
 
 var kCFStreamPropertySOCKSVersion: MemorySegment
-    get() = kCFStreamPropertySOCKSVersion_VH.get(kCFStreamPropertySOCKSVersion_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySOCKSVersion_VH.set(kCFStreamPropertySOCKSVersion_SEGMENT, value)
+    get() = kCFStreamPropertySOCKSVersion_VH.get(kCFStreamPropertySOCKSVersion_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySOCKSVersion_VH.set(kCFStreamPropertySOCKSVersion_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamSocketSOCKSVersion4 typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamSocketSOCKSVersion4_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamSocketSOCKSVersion4_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSOCKSVersion4").orElseThrow() }
+private val kCFStreamSocketSOCKSVersion4_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSOCKSVersion4").orElseThrow().reinterpret(kCFStreamSocketSOCKSVersion4_LAYOUT.byteSize()) }
 private val kCFStreamSocketSOCKSVersion4_VH: VarHandle by lazy { kCFStreamSocketSOCKSVersion4_LAYOUT.varHandle() }
 
 var kCFStreamSocketSOCKSVersion4: MemorySegment
-    get() = kCFStreamSocketSOCKSVersion4_VH.get(kCFStreamSocketSOCKSVersion4_SEGMENT) as MemorySegment
-    set(value) = kCFStreamSocketSOCKSVersion4_VH.set(kCFStreamSocketSOCKSVersion4_SEGMENT, value)
+    get() = kCFStreamSocketSOCKSVersion4_VH.get(kCFStreamSocketSOCKSVersion4_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamSocketSOCKSVersion4_VH.set(kCFStreamSocketSOCKSVersion4_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamSocketSOCKSVersion5 typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamSocketSOCKSVersion5_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamSocketSOCKSVersion5_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSOCKSVersion5").orElseThrow() }
+private val kCFStreamSocketSOCKSVersion5_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSOCKSVersion5").orElseThrow().reinterpret(kCFStreamSocketSOCKSVersion5_LAYOUT.byteSize()) }
 private val kCFStreamSocketSOCKSVersion5_VH: VarHandle by lazy { kCFStreamSocketSOCKSVersion5_LAYOUT.varHandle() }
 
 var kCFStreamSocketSOCKSVersion5: MemorySegment
-    get() = kCFStreamSocketSOCKSVersion5_VH.get(kCFStreamSocketSOCKSVersion5_SEGMENT) as MemorySegment
-    set(value) = kCFStreamSocketSOCKSVersion5_VH.set(kCFStreamSocketSOCKSVersion5_SEGMENT, value)
+    get() = kCFStreamSocketSOCKSVersion5_VH.get(kCFStreamSocketSOCKSVersion5_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamSocketSOCKSVersion5_VH.set(kCFStreamSocketSOCKSVersion5_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySOCKSUser typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamPropertySOCKSUser_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySOCKSUser_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSUser").orElseThrow() }
+private val kCFStreamPropertySOCKSUser_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSUser").orElseThrow().reinterpret(kCFStreamPropertySOCKSUser_LAYOUT.byteSize()) }
 private val kCFStreamPropertySOCKSUser_VH: VarHandle by lazy { kCFStreamPropertySOCKSUser_LAYOUT.varHandle() }
 
 var kCFStreamPropertySOCKSUser: MemorySegment
-    get() = kCFStreamPropertySOCKSUser_VH.get(kCFStreamPropertySOCKSUser_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySOCKSUser_VH.set(kCFStreamPropertySOCKSUser_SEGMENT, value)
+    get() = kCFStreamPropertySOCKSUser_VH.get(kCFStreamPropertySOCKSUser_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySOCKSUser_VH.set(kCFStreamPropertySOCKSUser_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySOCKSPassword typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamPropertySOCKSPassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySOCKSPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSPassword").orElseThrow() }
+private val kCFStreamPropertySOCKSPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySOCKSPassword").orElseThrow().reinterpret(kCFStreamPropertySOCKSPassword_LAYOUT.byteSize()) }
 private val kCFStreamPropertySOCKSPassword_VH: VarHandle by lazy { kCFStreamPropertySOCKSPassword_LAYOUT.varHandle() }
 
 var kCFStreamPropertySOCKSPassword: MemorySegment
-    get() = kCFStreamPropertySOCKSPassword_VH.get(kCFStreamPropertySOCKSPassword_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySOCKSPassword_VH.set(kCFStreamPropertySOCKSPassword_SEGMENT, value)
+    get() = kCFStreamPropertySOCKSPassword_VH.get(kCFStreamPropertySOCKSPassword_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySOCKSPassword_VH.set(kCFStreamPropertySOCKSPassword_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamErrorDomainSSL Int
  */
 private val kCFStreamErrorDomainSSL_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
-private val kCFStreamErrorDomainSSL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamErrorDomainSSL").orElseThrow() }
+private val kCFStreamErrorDomainSSL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamErrorDomainSSL").orElseThrow().reinterpret(kCFStreamErrorDomainSSL_LAYOUT.byteSize()) }
 private val kCFStreamErrorDomainSSL_VH: VarHandle by lazy { kCFStreamErrorDomainSSL_LAYOUT.varHandle() }
 
 var kCFStreamErrorDomainSSL: Int
-    get() = kCFStreamErrorDomainSSL_VH.get(kCFStreamErrorDomainSSL_SEGMENT) as Int
-    set(value) = kCFStreamErrorDomainSSL_VH.set(kCFStreamErrorDomainSSL_SEGMENT, value)
+    get() = kCFStreamErrorDomainSSL_VH.get(kCFStreamErrorDomainSSL_SEGMENT, 0L) as Int
+    set(value) = kCFStreamErrorDomainSSL_VH.set(kCFStreamErrorDomainSSL_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertySocketSecurityLevel typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamPropertySocketSecurityLevel_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertySocketSecurityLevel_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySocketSecurityLevel").orElseThrow() }
+private val kCFStreamPropertySocketSecurityLevel_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertySocketSecurityLevel").orElseThrow().reinterpret(kCFStreamPropertySocketSecurityLevel_LAYOUT.byteSize()) }
 private val kCFStreamPropertySocketSecurityLevel_VH: VarHandle by lazy { kCFStreamPropertySocketSecurityLevel_LAYOUT.varHandle() }
 
 var kCFStreamPropertySocketSecurityLevel: MemorySegment
-    get() = kCFStreamPropertySocketSecurityLevel_VH.get(kCFStreamPropertySocketSecurityLevel_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertySocketSecurityLevel_VH.set(kCFStreamPropertySocketSecurityLevel_SEGMENT, value)
+    get() = kCFStreamPropertySocketSecurityLevel_VH.get(kCFStreamPropertySocketSecurityLevel_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertySocketSecurityLevel_VH.set(kCFStreamPropertySocketSecurityLevel_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamSocketSecurityLevelNone typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamSocketSecurityLevelNone_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamSocketSecurityLevelNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelNone").orElseThrow() }
+private val kCFStreamSocketSecurityLevelNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelNone").orElseThrow().reinterpret(kCFStreamSocketSecurityLevelNone_LAYOUT.byteSize()) }
 private val kCFStreamSocketSecurityLevelNone_VH: VarHandle by lazy { kCFStreamSocketSecurityLevelNone_LAYOUT.varHandle() }
 
 var kCFStreamSocketSecurityLevelNone: MemorySegment
-    get() = kCFStreamSocketSecurityLevelNone_VH.get(kCFStreamSocketSecurityLevelNone_SEGMENT) as MemorySegment
-    set(value) = kCFStreamSocketSecurityLevelNone_VH.set(kCFStreamSocketSecurityLevelNone_SEGMENT, value)
+    get() = kCFStreamSocketSecurityLevelNone_VH.get(kCFStreamSocketSecurityLevelNone_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamSocketSecurityLevelNone_VH.set(kCFStreamSocketSecurityLevelNone_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamSocketSecurityLevelSSLv2 typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamSocketSecurityLevelSSLv2_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamSocketSecurityLevelSSLv2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelSSLv2").orElseThrow() }
+private val kCFStreamSocketSecurityLevelSSLv2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelSSLv2").orElseThrow().reinterpret(kCFStreamSocketSecurityLevelSSLv2_LAYOUT.byteSize()) }
 private val kCFStreamSocketSecurityLevelSSLv2_VH: VarHandle by lazy { kCFStreamSocketSecurityLevelSSLv2_LAYOUT.varHandle() }
 
 var kCFStreamSocketSecurityLevelSSLv2: MemorySegment
-    get() = kCFStreamSocketSecurityLevelSSLv2_VH.get(kCFStreamSocketSecurityLevelSSLv2_SEGMENT) as MemorySegment
-    set(value) = kCFStreamSocketSecurityLevelSSLv2_VH.set(kCFStreamSocketSecurityLevelSSLv2_SEGMENT, value)
+    get() = kCFStreamSocketSecurityLevelSSLv2_VH.get(kCFStreamSocketSecurityLevelSSLv2_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamSocketSecurityLevelSSLv2_VH.set(kCFStreamSocketSecurityLevelSSLv2_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamSocketSecurityLevelSSLv3 typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamSocketSecurityLevelSSLv3_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamSocketSecurityLevelSSLv3_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelSSLv3").orElseThrow() }
+private val kCFStreamSocketSecurityLevelSSLv3_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelSSLv3").orElseThrow().reinterpret(kCFStreamSocketSecurityLevelSSLv3_LAYOUT.byteSize()) }
 private val kCFStreamSocketSecurityLevelSSLv3_VH: VarHandle by lazy { kCFStreamSocketSecurityLevelSSLv3_LAYOUT.varHandle() }
 
 var kCFStreamSocketSecurityLevelSSLv3: MemorySegment
-    get() = kCFStreamSocketSecurityLevelSSLv3_VH.get(kCFStreamSocketSecurityLevelSSLv3_SEGMENT) as MemorySegment
-    set(value) = kCFStreamSocketSecurityLevelSSLv3_VH.set(kCFStreamSocketSecurityLevelSSLv3_SEGMENT, value)
+    get() = kCFStreamSocketSecurityLevelSSLv3_VH.get(kCFStreamSocketSecurityLevelSSLv3_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamSocketSecurityLevelSSLv3_VH.set(kCFStreamSocketSecurityLevelSSLv3_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamSocketSecurityLevelTLSv1 typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamSocketSecurityLevelTLSv1_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamSocketSecurityLevelTLSv1_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelTLSv1").orElseThrow() }
+private val kCFStreamSocketSecurityLevelTLSv1_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelTLSv1").orElseThrow().reinterpret(kCFStreamSocketSecurityLevelTLSv1_LAYOUT.byteSize()) }
 private val kCFStreamSocketSecurityLevelTLSv1_VH: VarHandle by lazy { kCFStreamSocketSecurityLevelTLSv1_LAYOUT.varHandle() }
 
 var kCFStreamSocketSecurityLevelTLSv1: MemorySegment
-    get() = kCFStreamSocketSecurityLevelTLSv1_VH.get(kCFStreamSocketSecurityLevelTLSv1_SEGMENT) as MemorySegment
-    set(value) = kCFStreamSocketSecurityLevelTLSv1_VH.set(kCFStreamSocketSecurityLevelTLSv1_SEGMENT, value)
+    get() = kCFStreamSocketSecurityLevelTLSv1_VH.get(kCFStreamSocketSecurityLevelTLSv1_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamSocketSecurityLevelTLSv1_VH.set(kCFStreamSocketSecurityLevelTLSv1_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamSocketSecurityLevelNegotiatedSSL typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamSocketSecurityLevelNegotiatedSSL_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamSocketSecurityLevelNegotiatedSSL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelNegotiatedSSL").orElseThrow() }
+private val kCFStreamSocketSecurityLevelNegotiatedSSL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamSocketSecurityLevelNegotiatedSSL").orElseThrow().reinterpret(kCFStreamSocketSecurityLevelNegotiatedSSL_LAYOUT.byteSize()) }
 private val kCFStreamSocketSecurityLevelNegotiatedSSL_VH: VarHandle by lazy { kCFStreamSocketSecurityLevelNegotiatedSSL_LAYOUT.varHandle() }
 
 var kCFStreamSocketSecurityLevelNegotiatedSSL: MemorySegment
-    get() = kCFStreamSocketSecurityLevelNegotiatedSSL_VH.get(kCFStreamSocketSecurityLevelNegotiatedSSL_SEGMENT) as MemorySegment
-    set(value) = kCFStreamSocketSecurityLevelNegotiatedSSL_VH.set(kCFStreamSocketSecurityLevelNegotiatedSSL_SEGMENT, value)
+    get() = kCFStreamSocketSecurityLevelNegotiatedSSL_VH.get(kCFStreamSocketSecurityLevelNegotiatedSSL_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamSocketSecurityLevelNegotiatedSSL_VH.set(kCFStreamSocketSecurityLevelNegotiatedSSL_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCFStreamPropertyShouldCloseNativeSocket typedef CFStringRef = (Declared(__CFString))*
  */
 private val kCFStreamPropertyShouldCloseNativeSocket_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCFStreamPropertyShouldCloseNativeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertyShouldCloseNativeSocket").orElseThrow() }
+private val kCFStreamPropertyShouldCloseNativeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFStreamPropertyShouldCloseNativeSocket").orElseThrow().reinterpret(kCFStreamPropertyShouldCloseNativeSocket_LAYOUT.byteSize()) }
 private val kCFStreamPropertyShouldCloseNativeSocket_VH: VarHandle by lazy { kCFStreamPropertyShouldCloseNativeSocket_LAYOUT.varHandle() }
 
 var kCFStreamPropertyShouldCloseNativeSocket: MemorySegment
-    get() = kCFStreamPropertyShouldCloseNativeSocket_VH.get(kCFStreamPropertyShouldCloseNativeSocket_SEGMENT) as MemorySegment
-    set(value) = kCFStreamPropertyShouldCloseNativeSocket_VH.set(kCFStreamPropertyShouldCloseNativeSocket_SEGMENT, value)
+    get() = kCFStreamPropertyShouldCloseNativeSocket_VH.get(kCFStreamPropertyShouldCloseNativeSocket_SEGMENT, 0L) as MemorySegment
+    set(value) = kCFStreamPropertyShouldCloseNativeSocket_VH.set(kCFStreamPropertyShouldCloseNativeSocket_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CFStreamCreatePairWithSocket Void(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFSocketNativeHandle = Int,(typedef CFReadStreamRef = (Declared(__CFReadStream))*)*,(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)*)

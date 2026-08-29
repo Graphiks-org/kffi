@@ -4,7 +4,6 @@ import org.graphiks.kffi.objc.appkit.AppKitScrollWheelEvent
 import org.graphiks.kffi.objc.appkit.postScrollWheelEvent
 import org.junit.jupiter.api.Assumptions.assumeTrue
 import java.io.File
-import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
@@ -129,7 +128,7 @@ object AppKitScrollWheelEventPostingProbe {
         val event = nextEventMatchingMask_untilDate_inMode_dequeue(
             NSEventMask.NSEventMaskScrollWheel,
             NSDate_distantFuture(),
-            ObjCRuntime.newNSString(Arena.global(), "kCFRunLoopDefaultMode"),
+            NSDefaultRunLoopMode,
             true,
         )
         check(event != MemorySegment.NULL) { "AppKit queue did not contain a posted scroll-wheel event" }
@@ -140,7 +139,7 @@ object AppKitScrollWheelEventPostingProbe {
         val event = nextEventMatchingMask_untilDate_inMode_dequeue(
             NSEventMask.NSEventMaskScrollWheel,
             NSDate_date(),
-            ObjCRuntime.newNSString(Arena.global(), "kCFRunLoopDefaultMode"),
+            NSDefaultRunLoopMode,
             true,
         )
         check(event == MemorySegment.NULL) {
