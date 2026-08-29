@@ -5,6 +5,1359 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSAccessibilityShowDefaultUIAction typedef const NSAccessibilityActionName = (Void)*
+ */
+private val NSAccessibilityShowDefaultUIAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityShowDefaultUIAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityShowDefaultUIAction").orElseThrow() }
+private val NSAccessibilityShowDefaultUIAction_VH: VarHandle by lazy { NSAccessibilityShowDefaultUIAction_LAYOUT.varHandle() }
+
+var NSAccessibilityShowDefaultUIAction: MemorySegment
+    get() = NSAccessibilityShowDefaultUIAction_VH.get(NSAccessibilityShowDefaultUIAction_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityShowDefaultUIAction_VH.set(NSAccessibilityShowDefaultUIAction_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityMainWindowChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityMainWindowChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityMainWindowChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMainWindowChangedNotification").orElseThrow() }
+private val NSAccessibilityMainWindowChangedNotification_VH: VarHandle by lazy { NSAccessibilityMainWindowChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityMainWindowChangedNotification: MemorySegment
+    get() = NSAccessibilityMainWindowChangedNotification_VH.get(NSAccessibilityMainWindowChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityMainWindowChangedNotification_VH.set(NSAccessibilityMainWindowChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityFocusedWindowChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityFocusedWindowChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityFocusedWindowChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFocusedWindowChangedNotification").orElseThrow() }
+private val NSAccessibilityFocusedWindowChangedNotification_VH: VarHandle by lazy { NSAccessibilityFocusedWindowChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityFocusedWindowChangedNotification: MemorySegment
+    get() = NSAccessibilityFocusedWindowChangedNotification_VH.get(NSAccessibilityFocusedWindowChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityFocusedWindowChangedNotification_VH.set(NSAccessibilityFocusedWindowChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityFocusedUIElementChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityFocusedUIElementChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityFocusedUIElementChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFocusedUIElementChangedNotification").orElseThrow() }
+private val NSAccessibilityFocusedUIElementChangedNotification_VH: VarHandle by lazy { NSAccessibilityFocusedUIElementChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityFocusedUIElementChangedNotification: MemorySegment
+    get() = NSAccessibilityFocusedUIElementChangedNotification_VH.get(NSAccessibilityFocusedUIElementChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityFocusedUIElementChangedNotification_VH.set(NSAccessibilityFocusedUIElementChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityApplicationActivatedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityApplicationActivatedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityApplicationActivatedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityApplicationActivatedNotification").orElseThrow() }
+private val NSAccessibilityApplicationActivatedNotification_VH: VarHandle by lazy { NSAccessibilityApplicationActivatedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityApplicationActivatedNotification: MemorySegment
+    get() = NSAccessibilityApplicationActivatedNotification_VH.get(NSAccessibilityApplicationActivatedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityApplicationActivatedNotification_VH.set(NSAccessibilityApplicationActivatedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityApplicationDeactivatedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityApplicationDeactivatedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityApplicationDeactivatedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityApplicationDeactivatedNotification").orElseThrow() }
+private val NSAccessibilityApplicationDeactivatedNotification_VH: VarHandle by lazy { NSAccessibilityApplicationDeactivatedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityApplicationDeactivatedNotification: MemorySegment
+    get() = NSAccessibilityApplicationDeactivatedNotification_VH.get(NSAccessibilityApplicationDeactivatedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityApplicationDeactivatedNotification_VH.set(NSAccessibilityApplicationDeactivatedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityApplicationHiddenNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityApplicationHiddenNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityApplicationHiddenNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityApplicationHiddenNotification").orElseThrow() }
+private val NSAccessibilityApplicationHiddenNotification_VH: VarHandle by lazy { NSAccessibilityApplicationHiddenNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityApplicationHiddenNotification: MemorySegment
+    get() = NSAccessibilityApplicationHiddenNotification_VH.get(NSAccessibilityApplicationHiddenNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityApplicationHiddenNotification_VH.set(NSAccessibilityApplicationHiddenNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityApplicationShownNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityApplicationShownNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityApplicationShownNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityApplicationShownNotification").orElseThrow() }
+private val NSAccessibilityApplicationShownNotification_VH: VarHandle by lazy { NSAccessibilityApplicationShownNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityApplicationShownNotification: MemorySegment
+    get() = NSAccessibilityApplicationShownNotification_VH.get(NSAccessibilityApplicationShownNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityApplicationShownNotification_VH.set(NSAccessibilityApplicationShownNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityWindowCreatedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityWindowCreatedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityWindowCreatedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWindowCreatedNotification").orElseThrow() }
+private val NSAccessibilityWindowCreatedNotification_VH: VarHandle by lazy { NSAccessibilityWindowCreatedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityWindowCreatedNotification: MemorySegment
+    get() = NSAccessibilityWindowCreatedNotification_VH.get(NSAccessibilityWindowCreatedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityWindowCreatedNotification_VH.set(NSAccessibilityWindowCreatedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityWindowMovedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityWindowMovedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityWindowMovedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWindowMovedNotification").orElseThrow() }
+private val NSAccessibilityWindowMovedNotification_VH: VarHandle by lazy { NSAccessibilityWindowMovedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityWindowMovedNotification: MemorySegment
+    get() = NSAccessibilityWindowMovedNotification_VH.get(NSAccessibilityWindowMovedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityWindowMovedNotification_VH.set(NSAccessibilityWindowMovedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityWindowResizedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityWindowResizedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityWindowResizedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWindowResizedNotification").orElseThrow() }
+private val NSAccessibilityWindowResizedNotification_VH: VarHandle by lazy { NSAccessibilityWindowResizedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityWindowResizedNotification: MemorySegment
+    get() = NSAccessibilityWindowResizedNotification_VH.get(NSAccessibilityWindowResizedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityWindowResizedNotification_VH.set(NSAccessibilityWindowResizedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityWindowMiniaturizedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityWindowMiniaturizedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityWindowMiniaturizedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWindowMiniaturizedNotification").orElseThrow() }
+private val NSAccessibilityWindowMiniaturizedNotification_VH: VarHandle by lazy { NSAccessibilityWindowMiniaturizedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityWindowMiniaturizedNotification: MemorySegment
+    get() = NSAccessibilityWindowMiniaturizedNotification_VH.get(NSAccessibilityWindowMiniaturizedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityWindowMiniaturizedNotification_VH.set(NSAccessibilityWindowMiniaturizedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityWindowDeminiaturizedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityWindowDeminiaturizedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityWindowDeminiaturizedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWindowDeminiaturizedNotification").orElseThrow() }
+private val NSAccessibilityWindowDeminiaturizedNotification_VH: VarHandle by lazy { NSAccessibilityWindowDeminiaturizedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityWindowDeminiaturizedNotification: MemorySegment
+    get() = NSAccessibilityWindowDeminiaturizedNotification_VH.get(NSAccessibilityWindowDeminiaturizedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityWindowDeminiaturizedNotification_VH.set(NSAccessibilityWindowDeminiaturizedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDrawerCreatedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityDrawerCreatedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDrawerCreatedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDrawerCreatedNotification").orElseThrow() }
+private val NSAccessibilityDrawerCreatedNotification_VH: VarHandle by lazy { NSAccessibilityDrawerCreatedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityDrawerCreatedNotification: MemorySegment
+    get() = NSAccessibilityDrawerCreatedNotification_VH.get(NSAccessibilityDrawerCreatedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDrawerCreatedNotification_VH.set(NSAccessibilityDrawerCreatedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySheetCreatedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilitySheetCreatedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySheetCreatedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySheetCreatedNotification").orElseThrow() }
+private val NSAccessibilitySheetCreatedNotification_VH: VarHandle by lazy { NSAccessibilitySheetCreatedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilitySheetCreatedNotification: MemorySegment
+    get() = NSAccessibilitySheetCreatedNotification_VH.get(NSAccessibilitySheetCreatedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySheetCreatedNotification_VH.set(NSAccessibilitySheetCreatedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityUIElementDestroyedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityUIElementDestroyedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityUIElementDestroyedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUIElementDestroyedNotification").orElseThrow() }
+private val NSAccessibilityUIElementDestroyedNotification_VH: VarHandle by lazy { NSAccessibilityUIElementDestroyedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityUIElementDestroyedNotification: MemorySegment
+    get() = NSAccessibilityUIElementDestroyedNotification_VH.get(NSAccessibilityUIElementDestroyedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityUIElementDestroyedNotification_VH.set(NSAccessibilityUIElementDestroyedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityValueChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityValueChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityValueChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityValueChangedNotification").orElseThrow() }
+private val NSAccessibilityValueChangedNotification_VH: VarHandle by lazy { NSAccessibilityValueChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityValueChangedNotification: MemorySegment
+    get() = NSAccessibilityValueChangedNotification_VH.get(NSAccessibilityValueChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityValueChangedNotification_VH.set(NSAccessibilityValueChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTitleChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityTitleChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTitleChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTitleChangedNotification").orElseThrow() }
+private val NSAccessibilityTitleChangedNotification_VH: VarHandle by lazy { NSAccessibilityTitleChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityTitleChangedNotification: MemorySegment
+    get() = NSAccessibilityTitleChangedNotification_VH.get(NSAccessibilityTitleChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTitleChangedNotification_VH.set(NSAccessibilityTitleChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityResizedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityResizedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityResizedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityResizedNotification").orElseThrow() }
+private val NSAccessibilityResizedNotification_VH: VarHandle by lazy { NSAccessibilityResizedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityResizedNotification: MemorySegment
+    get() = NSAccessibilityResizedNotification_VH.get(NSAccessibilityResizedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityResizedNotification_VH.set(NSAccessibilityResizedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityMovedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityMovedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityMovedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMovedNotification").orElseThrow() }
+private val NSAccessibilityMovedNotification_VH: VarHandle by lazy { NSAccessibilityMovedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityMovedNotification: MemorySegment
+    get() = NSAccessibilityMovedNotification_VH.get(NSAccessibilityMovedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityMovedNotification_VH.set(NSAccessibilityMovedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityCreatedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityCreatedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityCreatedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCreatedNotification").orElseThrow() }
+private val NSAccessibilityCreatedNotification_VH: VarHandle by lazy { NSAccessibilityCreatedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityCreatedNotification: MemorySegment
+    get() = NSAccessibilityCreatedNotification_VH.get(NSAccessibilityCreatedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityCreatedNotification_VH.set(NSAccessibilityCreatedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityLayoutChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityLayoutChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityLayoutChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLayoutChangedNotification").orElseThrow() }
+private val NSAccessibilityLayoutChangedNotification_VH: VarHandle by lazy { NSAccessibilityLayoutChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityLayoutChangedNotification: MemorySegment
+    get() = NSAccessibilityLayoutChangedNotification_VH.get(NSAccessibilityLayoutChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityLayoutChangedNotification_VH.set(NSAccessibilityLayoutChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityHelpTagCreatedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityHelpTagCreatedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityHelpTagCreatedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHelpTagCreatedNotification").orElseThrow() }
+private val NSAccessibilityHelpTagCreatedNotification_VH: VarHandle by lazy { NSAccessibilityHelpTagCreatedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityHelpTagCreatedNotification: MemorySegment
+    get() = NSAccessibilityHelpTagCreatedNotification_VH.get(NSAccessibilityHelpTagCreatedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityHelpTagCreatedNotification_VH.set(NSAccessibilityHelpTagCreatedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySelectedTextChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilitySelectedTextChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySelectedTextChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedTextChangedNotification").orElseThrow() }
+private val NSAccessibilitySelectedTextChangedNotification_VH: VarHandle by lazy { NSAccessibilitySelectedTextChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilitySelectedTextChangedNotification: MemorySegment
+    get() = NSAccessibilitySelectedTextChangedNotification_VH.get(NSAccessibilitySelectedTextChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySelectedTextChangedNotification_VH.set(NSAccessibilitySelectedTextChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityRowCountChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityRowCountChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityRowCountChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRowCountChangedNotification").orElseThrow() }
+private val NSAccessibilityRowCountChangedNotification_VH: VarHandle by lazy { NSAccessibilityRowCountChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityRowCountChangedNotification: MemorySegment
+    get() = NSAccessibilityRowCountChangedNotification_VH.get(NSAccessibilityRowCountChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityRowCountChangedNotification_VH.set(NSAccessibilityRowCountChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySelectedChildrenChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilitySelectedChildrenChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySelectedChildrenChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedChildrenChangedNotification").orElseThrow() }
+private val NSAccessibilitySelectedChildrenChangedNotification_VH: VarHandle by lazy { NSAccessibilitySelectedChildrenChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilitySelectedChildrenChangedNotification: MemorySegment
+    get() = NSAccessibilitySelectedChildrenChangedNotification_VH.get(NSAccessibilitySelectedChildrenChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySelectedChildrenChangedNotification_VH.set(NSAccessibilitySelectedChildrenChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySelectedRowsChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilitySelectedRowsChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySelectedRowsChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedRowsChangedNotification").orElseThrow() }
+private val NSAccessibilitySelectedRowsChangedNotification_VH: VarHandle by lazy { NSAccessibilitySelectedRowsChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilitySelectedRowsChangedNotification: MemorySegment
+    get() = NSAccessibilitySelectedRowsChangedNotification_VH.get(NSAccessibilitySelectedRowsChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySelectedRowsChangedNotification_VH.set(NSAccessibilitySelectedRowsChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySelectedColumnsChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilitySelectedColumnsChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySelectedColumnsChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedColumnsChangedNotification").orElseThrow() }
+private val NSAccessibilitySelectedColumnsChangedNotification_VH: VarHandle by lazy { NSAccessibilitySelectedColumnsChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilitySelectedColumnsChangedNotification: MemorySegment
+    get() = NSAccessibilitySelectedColumnsChangedNotification_VH.get(NSAccessibilitySelectedColumnsChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySelectedColumnsChangedNotification_VH.set(NSAccessibilitySelectedColumnsChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityRowExpandedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityRowExpandedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityRowExpandedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRowExpandedNotification").orElseThrow() }
+private val NSAccessibilityRowExpandedNotification_VH: VarHandle by lazy { NSAccessibilityRowExpandedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityRowExpandedNotification: MemorySegment
+    get() = NSAccessibilityRowExpandedNotification_VH.get(NSAccessibilityRowExpandedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityRowExpandedNotification_VH.set(NSAccessibilityRowExpandedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityRowCollapsedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityRowCollapsedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityRowCollapsedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRowCollapsedNotification").orElseThrow() }
+private val NSAccessibilityRowCollapsedNotification_VH: VarHandle by lazy { NSAccessibilityRowCollapsedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityRowCollapsedNotification: MemorySegment
+    get() = NSAccessibilityRowCollapsedNotification_VH.get(NSAccessibilityRowCollapsedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityRowCollapsedNotification_VH.set(NSAccessibilityRowCollapsedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityAutocorrectionOccurredNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityAutocorrectionOccurredNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityAutocorrectionOccurredNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAutocorrectionOccurredNotification").orElseThrow() }
+private val NSAccessibilityAutocorrectionOccurredNotification_VH: VarHandle by lazy { NSAccessibilityAutocorrectionOccurredNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityAutocorrectionOccurredNotification: MemorySegment
+    get() = NSAccessibilityAutocorrectionOccurredNotification_VH.get(NSAccessibilityAutocorrectionOccurredNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityAutocorrectionOccurredNotification_VH.set(NSAccessibilityAutocorrectionOccurredNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTextInputMarkingSessionBeganNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityTextInputMarkingSessionBeganNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTextInputMarkingSessionBeganNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTextInputMarkingSessionBeganNotification").orElseThrow() }
+private val NSAccessibilityTextInputMarkingSessionBeganNotification_VH: VarHandle by lazy { NSAccessibilityTextInputMarkingSessionBeganNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityTextInputMarkingSessionBeganNotification: MemorySegment
+    get() = NSAccessibilityTextInputMarkingSessionBeganNotification_VH.get(NSAccessibilityTextInputMarkingSessionBeganNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTextInputMarkingSessionBeganNotification_VH.set(NSAccessibilityTextInputMarkingSessionBeganNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTextInputMarkingSessionEndedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityTextInputMarkingSessionEndedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTextInputMarkingSessionEndedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTextInputMarkingSessionEndedNotification").orElseThrow() }
+private val NSAccessibilityTextInputMarkingSessionEndedNotification_VH: VarHandle by lazy { NSAccessibilityTextInputMarkingSessionEndedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityTextInputMarkingSessionEndedNotification: MemorySegment
+    get() = NSAccessibilityTextInputMarkingSessionEndedNotification_VH.get(NSAccessibilityTextInputMarkingSessionEndedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTextInputMarkingSessionEndedNotification_VH.set(NSAccessibilityTextInputMarkingSessionEndedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDraggingSourceDragBeganNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityDraggingSourceDragBeganNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDraggingSourceDragBeganNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDraggingSourceDragBeganNotification").orElseThrow() }
+private val NSAccessibilityDraggingSourceDragBeganNotification_VH: VarHandle by lazy { NSAccessibilityDraggingSourceDragBeganNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityDraggingSourceDragBeganNotification: MemorySegment
+    get() = NSAccessibilityDraggingSourceDragBeganNotification_VH.get(NSAccessibilityDraggingSourceDragBeganNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDraggingSourceDragBeganNotification_VH.set(NSAccessibilityDraggingSourceDragBeganNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDraggingSourceDragEndedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityDraggingSourceDragEndedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDraggingSourceDragEndedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDraggingSourceDragEndedNotification").orElseThrow() }
+private val NSAccessibilityDraggingSourceDragEndedNotification_VH: VarHandle by lazy { NSAccessibilityDraggingSourceDragEndedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityDraggingSourceDragEndedNotification: MemorySegment
+    get() = NSAccessibilityDraggingSourceDragEndedNotification_VH.get(NSAccessibilityDraggingSourceDragEndedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDraggingSourceDragEndedNotification_VH.set(NSAccessibilityDraggingSourceDragEndedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDraggingDestinationDropAllowedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityDraggingDestinationDropAllowedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDraggingDestinationDropAllowedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDraggingDestinationDropAllowedNotification").orElseThrow() }
+private val NSAccessibilityDraggingDestinationDropAllowedNotification_VH: VarHandle by lazy { NSAccessibilityDraggingDestinationDropAllowedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityDraggingDestinationDropAllowedNotification: MemorySegment
+    get() = NSAccessibilityDraggingDestinationDropAllowedNotification_VH.get(NSAccessibilityDraggingDestinationDropAllowedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDraggingDestinationDropAllowedNotification_VH.set(NSAccessibilityDraggingDestinationDropAllowedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDraggingDestinationDropNotAllowedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityDraggingDestinationDropNotAllowedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDraggingDestinationDropNotAllowedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDraggingDestinationDropNotAllowedNotification").orElseThrow() }
+private val NSAccessibilityDraggingDestinationDropNotAllowedNotification_VH: VarHandle by lazy { NSAccessibilityDraggingDestinationDropNotAllowedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityDraggingDestinationDropNotAllowedNotification: MemorySegment
+    get() = NSAccessibilityDraggingDestinationDropNotAllowedNotification_VH.get(NSAccessibilityDraggingDestinationDropNotAllowedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDraggingDestinationDropNotAllowedNotification_VH.set(NSAccessibilityDraggingDestinationDropNotAllowedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDraggingDestinationDragAcceptedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityDraggingDestinationDragAcceptedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDraggingDestinationDragAcceptedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDraggingDestinationDragAcceptedNotification").orElseThrow() }
+private val NSAccessibilityDraggingDestinationDragAcceptedNotification_VH: VarHandle by lazy { NSAccessibilityDraggingDestinationDragAcceptedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityDraggingDestinationDragAcceptedNotification: MemorySegment
+    get() = NSAccessibilityDraggingDestinationDragAcceptedNotification_VH.get(NSAccessibilityDraggingDestinationDragAcceptedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDraggingDestinationDragAcceptedNotification_VH.set(NSAccessibilityDraggingDestinationDragAcceptedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDraggingDestinationDragNotAcceptedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityDraggingDestinationDragNotAcceptedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDraggingDestinationDragNotAcceptedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDraggingDestinationDragNotAcceptedNotification").orElseThrow() }
+private val NSAccessibilityDraggingDestinationDragNotAcceptedNotification_VH: VarHandle by lazy { NSAccessibilityDraggingDestinationDragNotAcceptedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityDraggingDestinationDragNotAcceptedNotification: MemorySegment
+    get() = NSAccessibilityDraggingDestinationDragNotAcceptedNotification_VH.get(NSAccessibilityDraggingDestinationDragNotAcceptedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDraggingDestinationDragNotAcceptedNotification_VH.set(NSAccessibilityDraggingDestinationDragNotAcceptedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySelectedCellsChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilitySelectedCellsChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySelectedCellsChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedCellsChangedNotification").orElseThrow() }
+private val NSAccessibilitySelectedCellsChangedNotification_VH: VarHandle by lazy { NSAccessibilitySelectedCellsChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilitySelectedCellsChangedNotification: MemorySegment
+    get() = NSAccessibilitySelectedCellsChangedNotification_VH.get(NSAccessibilitySelectedCellsChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySelectedCellsChangedNotification_VH.set(NSAccessibilitySelectedCellsChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityUnitsChangedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityUnitsChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityUnitsChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnitsChangedNotification").orElseThrow() }
+private val NSAccessibilityUnitsChangedNotification_VH: VarHandle by lazy { NSAccessibilityUnitsChangedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityUnitsChangedNotification: MemorySegment
+    get() = NSAccessibilityUnitsChangedNotification_VH.get(NSAccessibilityUnitsChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityUnitsChangedNotification_VH.set(NSAccessibilityUnitsChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySelectedChildrenMovedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilitySelectedChildrenMovedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySelectedChildrenMovedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedChildrenMovedNotification").orElseThrow() }
+private val NSAccessibilitySelectedChildrenMovedNotification_VH: VarHandle by lazy { NSAccessibilitySelectedChildrenMovedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilitySelectedChildrenMovedNotification: MemorySegment
+    get() = NSAccessibilitySelectedChildrenMovedNotification_VH.get(NSAccessibilitySelectedChildrenMovedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySelectedChildrenMovedNotification_VH.set(NSAccessibilitySelectedChildrenMovedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityAnnouncementRequestedNotification typedef const NSAccessibilityNotificationName = (Void)*
+ */
+private val NSAccessibilityAnnouncementRequestedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityAnnouncementRequestedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAnnouncementRequestedNotification").orElseThrow() }
+private val NSAccessibilityAnnouncementRequestedNotification_VH: VarHandle by lazy { NSAccessibilityAnnouncementRequestedNotification_LAYOUT.varHandle() }
+
+var NSAccessibilityAnnouncementRequestedNotification: MemorySegment
+    get() = NSAccessibilityAnnouncementRequestedNotification_VH.get(NSAccessibilityAnnouncementRequestedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityAnnouncementRequestedNotification_VH.set(NSAccessibilityAnnouncementRequestedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityUnknownRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityUnknownRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityUnknownRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnknownRole").orElseThrow() }
+private val NSAccessibilityUnknownRole_VH: VarHandle by lazy { NSAccessibilityUnknownRole_LAYOUT.varHandle() }
+
+var NSAccessibilityUnknownRole: MemorySegment
+    get() = NSAccessibilityUnknownRole_VH.get(NSAccessibilityUnknownRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityUnknownRole_VH.set(NSAccessibilityUnknownRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityButtonRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityButtonRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityButtonRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityButtonRole").orElseThrow() }
+private val NSAccessibilityButtonRole_VH: VarHandle by lazy { NSAccessibilityButtonRole_LAYOUT.varHandle() }
+
+var NSAccessibilityButtonRole: MemorySegment
+    get() = NSAccessibilityButtonRole_VH.get(NSAccessibilityButtonRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityButtonRole_VH.set(NSAccessibilityButtonRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityRadioButtonRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityRadioButtonRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityRadioButtonRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRadioButtonRole").orElseThrow() }
+private val NSAccessibilityRadioButtonRole_VH: VarHandle by lazy { NSAccessibilityRadioButtonRole_LAYOUT.varHandle() }
+
+var NSAccessibilityRadioButtonRole: MemorySegment
+    get() = NSAccessibilityRadioButtonRole_VH.get(NSAccessibilityRadioButtonRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityRadioButtonRole_VH.set(NSAccessibilityRadioButtonRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityCheckBoxRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityCheckBoxRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityCheckBoxRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCheckBoxRole").orElseThrow() }
+private val NSAccessibilityCheckBoxRole_VH: VarHandle by lazy { NSAccessibilityCheckBoxRole_LAYOUT.varHandle() }
+
+var NSAccessibilityCheckBoxRole: MemorySegment
+    get() = NSAccessibilityCheckBoxRole_VH.get(NSAccessibilityCheckBoxRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityCheckBoxRole_VH.set(NSAccessibilityCheckBoxRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySliderRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilitySliderRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySliderRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySliderRole").orElseThrow() }
+private val NSAccessibilitySliderRole_VH: VarHandle by lazy { NSAccessibilitySliderRole_LAYOUT.varHandle() }
+
+var NSAccessibilitySliderRole: MemorySegment
+    get() = NSAccessibilitySliderRole_VH.get(NSAccessibilitySliderRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySliderRole_VH.set(NSAccessibilitySliderRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTabGroupRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityTabGroupRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTabGroupRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTabGroupRole").orElseThrow() }
+private val NSAccessibilityTabGroupRole_VH: VarHandle by lazy { NSAccessibilityTabGroupRole_LAYOUT.varHandle() }
+
+var NSAccessibilityTabGroupRole: MemorySegment
+    get() = NSAccessibilityTabGroupRole_VH.get(NSAccessibilityTabGroupRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTabGroupRole_VH.set(NSAccessibilityTabGroupRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTextFieldRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityTextFieldRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTextFieldRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTextFieldRole").orElseThrow() }
+private val NSAccessibilityTextFieldRole_VH: VarHandle by lazy { NSAccessibilityTextFieldRole_LAYOUT.varHandle() }
+
+var NSAccessibilityTextFieldRole: MemorySegment
+    get() = NSAccessibilityTextFieldRole_VH.get(NSAccessibilityTextFieldRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTextFieldRole_VH.set(NSAccessibilityTextFieldRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityStaticTextRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityStaticTextRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityStaticTextRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityStaticTextRole").orElseThrow() }
+private val NSAccessibilityStaticTextRole_VH: VarHandle by lazy { NSAccessibilityStaticTextRole_LAYOUT.varHandle() }
+
+var NSAccessibilityStaticTextRole: MemorySegment
+    get() = NSAccessibilityStaticTextRole_VH.get(NSAccessibilityStaticTextRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityStaticTextRole_VH.set(NSAccessibilityStaticTextRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTextAreaRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityTextAreaRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTextAreaRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTextAreaRole").orElseThrow() }
+private val NSAccessibilityTextAreaRole_VH: VarHandle by lazy { NSAccessibilityTextAreaRole_LAYOUT.varHandle() }
+
+var NSAccessibilityTextAreaRole: MemorySegment
+    get() = NSAccessibilityTextAreaRole_VH.get(NSAccessibilityTextAreaRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTextAreaRole_VH.set(NSAccessibilityTextAreaRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityScrollAreaRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityScrollAreaRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityScrollAreaRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityScrollAreaRole").orElseThrow() }
+private val NSAccessibilityScrollAreaRole_VH: VarHandle by lazy { NSAccessibilityScrollAreaRole_LAYOUT.varHandle() }
+
+var NSAccessibilityScrollAreaRole: MemorySegment
+    get() = NSAccessibilityScrollAreaRole_VH.get(NSAccessibilityScrollAreaRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityScrollAreaRole_VH.set(NSAccessibilityScrollAreaRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityPopUpButtonRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityPopUpButtonRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityPopUpButtonRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPopUpButtonRole").orElseThrow() }
+private val NSAccessibilityPopUpButtonRole_VH: VarHandle by lazy { NSAccessibilityPopUpButtonRole_LAYOUT.varHandle() }
+
+var NSAccessibilityPopUpButtonRole: MemorySegment
+    get() = NSAccessibilityPopUpButtonRole_VH.get(NSAccessibilityPopUpButtonRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityPopUpButtonRole_VH.set(NSAccessibilityPopUpButtonRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityMenuButtonRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityMenuButtonRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityMenuButtonRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMenuButtonRole").orElseThrow() }
+private val NSAccessibilityMenuButtonRole_VH: VarHandle by lazy { NSAccessibilityMenuButtonRole_LAYOUT.varHandle() }
+
+var NSAccessibilityMenuButtonRole: MemorySegment
+    get() = NSAccessibilityMenuButtonRole_VH.get(NSAccessibilityMenuButtonRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityMenuButtonRole_VH.set(NSAccessibilityMenuButtonRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTableRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityTableRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTableRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTableRole").orElseThrow() }
+private val NSAccessibilityTableRole_VH: VarHandle by lazy { NSAccessibilityTableRole_LAYOUT.varHandle() }
+
+var NSAccessibilityTableRole: MemorySegment
+    get() = NSAccessibilityTableRole_VH.get(NSAccessibilityTableRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTableRole_VH.set(NSAccessibilityTableRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityApplicationRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityApplicationRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityApplicationRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityApplicationRole").orElseThrow() }
+private val NSAccessibilityApplicationRole_VH: VarHandle by lazy { NSAccessibilityApplicationRole_LAYOUT.varHandle() }
+
+var NSAccessibilityApplicationRole: MemorySegment
+    get() = NSAccessibilityApplicationRole_VH.get(NSAccessibilityApplicationRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityApplicationRole_VH.set(NSAccessibilityApplicationRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityGroupRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityGroupRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityGroupRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityGroupRole").orElseThrow() }
+private val NSAccessibilityGroupRole_VH: VarHandle by lazy { NSAccessibilityGroupRole_LAYOUT.varHandle() }
+
+var NSAccessibilityGroupRole: MemorySegment
+    get() = NSAccessibilityGroupRole_VH.get(NSAccessibilityGroupRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityGroupRole_VH.set(NSAccessibilityGroupRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityRadioGroupRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityRadioGroupRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityRadioGroupRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRadioGroupRole").orElseThrow() }
+private val NSAccessibilityRadioGroupRole_VH: VarHandle by lazy { NSAccessibilityRadioGroupRole_LAYOUT.varHandle() }
+
+var NSAccessibilityRadioGroupRole: MemorySegment
+    get() = NSAccessibilityRadioGroupRole_VH.get(NSAccessibilityRadioGroupRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityRadioGroupRole_VH.set(NSAccessibilityRadioGroupRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityListRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityListRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityListRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityListRole").orElseThrow() }
+private val NSAccessibilityListRole_VH: VarHandle by lazy { NSAccessibilityListRole_LAYOUT.varHandle() }
+
+var NSAccessibilityListRole: MemorySegment
+    get() = NSAccessibilityListRole_VH.get(NSAccessibilityListRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityListRole_VH.set(NSAccessibilityListRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityScrollBarRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityScrollBarRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityScrollBarRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityScrollBarRole").orElseThrow() }
+private val NSAccessibilityScrollBarRole_VH: VarHandle by lazy { NSAccessibilityScrollBarRole_LAYOUT.varHandle() }
+
+var NSAccessibilityScrollBarRole: MemorySegment
+    get() = NSAccessibilityScrollBarRole_VH.get(NSAccessibilityScrollBarRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityScrollBarRole_VH.set(NSAccessibilityScrollBarRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityValueIndicatorRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityValueIndicatorRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityValueIndicatorRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityValueIndicatorRole").orElseThrow() }
+private val NSAccessibilityValueIndicatorRole_VH: VarHandle by lazy { NSAccessibilityValueIndicatorRole_LAYOUT.varHandle() }
+
+var NSAccessibilityValueIndicatorRole: MemorySegment
+    get() = NSAccessibilityValueIndicatorRole_VH.get(NSAccessibilityValueIndicatorRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityValueIndicatorRole_VH.set(NSAccessibilityValueIndicatorRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityImageRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityImageRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityImageRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityImageRole").orElseThrow() }
+private val NSAccessibilityImageRole_VH: VarHandle by lazy { NSAccessibilityImageRole_LAYOUT.varHandle() }
+
+var NSAccessibilityImageRole: MemorySegment
+    get() = NSAccessibilityImageRole_VH.get(NSAccessibilityImageRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityImageRole_VH.set(NSAccessibilityImageRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityMenuBarRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityMenuBarRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityMenuBarRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMenuBarRole").orElseThrow() }
+private val NSAccessibilityMenuBarRole_VH: VarHandle by lazy { NSAccessibilityMenuBarRole_LAYOUT.varHandle() }
+
+var NSAccessibilityMenuBarRole: MemorySegment
+    get() = NSAccessibilityMenuBarRole_VH.get(NSAccessibilityMenuBarRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityMenuBarRole_VH.set(NSAccessibilityMenuBarRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityMenuBarItemRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityMenuBarItemRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityMenuBarItemRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMenuBarItemRole").orElseThrow() }
+private val NSAccessibilityMenuBarItemRole_VH: VarHandle by lazy { NSAccessibilityMenuBarItemRole_LAYOUT.varHandle() }
+
+var NSAccessibilityMenuBarItemRole: MemorySegment
+    get() = NSAccessibilityMenuBarItemRole_VH.get(NSAccessibilityMenuBarItemRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityMenuBarItemRole_VH.set(NSAccessibilityMenuBarItemRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityMenuRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityMenuRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityMenuRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMenuRole").orElseThrow() }
+private val NSAccessibilityMenuRole_VH: VarHandle by lazy { NSAccessibilityMenuRole_LAYOUT.varHandle() }
+
+var NSAccessibilityMenuRole: MemorySegment
+    get() = NSAccessibilityMenuRole_VH.get(NSAccessibilityMenuRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityMenuRole_VH.set(NSAccessibilityMenuRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityMenuItemRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityMenuItemRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityMenuItemRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMenuItemRole").orElseThrow() }
+private val NSAccessibilityMenuItemRole_VH: VarHandle by lazy { NSAccessibilityMenuItemRole_LAYOUT.varHandle() }
+
+var NSAccessibilityMenuItemRole: MemorySegment
+    get() = NSAccessibilityMenuItemRole_VH.get(NSAccessibilityMenuItemRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityMenuItemRole_VH.set(NSAccessibilityMenuItemRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityColumnRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityColumnRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityColumnRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityColumnRole").orElseThrow() }
+private val NSAccessibilityColumnRole_VH: VarHandle by lazy { NSAccessibilityColumnRole_LAYOUT.varHandle() }
+
+var NSAccessibilityColumnRole: MemorySegment
+    get() = NSAccessibilityColumnRole_VH.get(NSAccessibilityColumnRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityColumnRole_VH.set(NSAccessibilityColumnRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityRowRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityRowRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityRowRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRowRole").orElseThrow() }
+private val NSAccessibilityRowRole_VH: VarHandle by lazy { NSAccessibilityRowRole_LAYOUT.varHandle() }
+
+var NSAccessibilityRowRole: MemorySegment
+    get() = NSAccessibilityRowRole_VH.get(NSAccessibilityRowRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityRowRole_VH.set(NSAccessibilityRowRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityToolbarRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityToolbarRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityToolbarRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityToolbarRole").orElseThrow() }
+private val NSAccessibilityToolbarRole_VH: VarHandle by lazy { NSAccessibilityToolbarRole_LAYOUT.varHandle() }
+
+var NSAccessibilityToolbarRole: MemorySegment
+    get() = NSAccessibilityToolbarRole_VH.get(NSAccessibilityToolbarRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityToolbarRole_VH.set(NSAccessibilityToolbarRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityBusyIndicatorRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityBusyIndicatorRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityBusyIndicatorRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityBusyIndicatorRole").orElseThrow() }
+private val NSAccessibilityBusyIndicatorRole_VH: VarHandle by lazy { NSAccessibilityBusyIndicatorRole_LAYOUT.varHandle() }
+
+var NSAccessibilityBusyIndicatorRole: MemorySegment
+    get() = NSAccessibilityBusyIndicatorRole_VH.get(NSAccessibilityBusyIndicatorRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityBusyIndicatorRole_VH.set(NSAccessibilityBusyIndicatorRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityProgressIndicatorRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityProgressIndicatorRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityProgressIndicatorRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityProgressIndicatorRole").orElseThrow() }
+private val NSAccessibilityProgressIndicatorRole_VH: VarHandle by lazy { NSAccessibilityProgressIndicatorRole_LAYOUT.varHandle() }
+
+var NSAccessibilityProgressIndicatorRole: MemorySegment
+    get() = NSAccessibilityProgressIndicatorRole_VH.get(NSAccessibilityProgressIndicatorRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityProgressIndicatorRole_VH.set(NSAccessibilityProgressIndicatorRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityWindowRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityWindowRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityWindowRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWindowRole").orElseThrow() }
+private val NSAccessibilityWindowRole_VH: VarHandle by lazy { NSAccessibilityWindowRole_LAYOUT.varHandle() }
+
+var NSAccessibilityWindowRole: MemorySegment
+    get() = NSAccessibilityWindowRole_VH.get(NSAccessibilityWindowRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityWindowRole_VH.set(NSAccessibilityWindowRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDrawerRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityDrawerRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDrawerRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDrawerRole").orElseThrow() }
+private val NSAccessibilityDrawerRole_VH: VarHandle by lazy { NSAccessibilityDrawerRole_LAYOUT.varHandle() }
+
+var NSAccessibilityDrawerRole: MemorySegment
+    get() = NSAccessibilityDrawerRole_VH.get(NSAccessibilityDrawerRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDrawerRole_VH.set(NSAccessibilityDrawerRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySystemWideRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilitySystemWideRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySystemWideRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySystemWideRole").orElseThrow() }
+private val NSAccessibilitySystemWideRole_VH: VarHandle by lazy { NSAccessibilitySystemWideRole_LAYOUT.varHandle() }
+
+var NSAccessibilitySystemWideRole: MemorySegment
+    get() = NSAccessibilitySystemWideRole_VH.get(NSAccessibilitySystemWideRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySystemWideRole_VH.set(NSAccessibilitySystemWideRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityOutlineRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityOutlineRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityOutlineRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityOutlineRole").orElseThrow() }
+private val NSAccessibilityOutlineRole_VH: VarHandle by lazy { NSAccessibilityOutlineRole_LAYOUT.varHandle() }
+
+var NSAccessibilityOutlineRole: MemorySegment
+    get() = NSAccessibilityOutlineRole_VH.get(NSAccessibilityOutlineRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityOutlineRole_VH.set(NSAccessibilityOutlineRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityIncrementorRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityIncrementorRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityIncrementorRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityIncrementorRole").orElseThrow() }
+private val NSAccessibilityIncrementorRole_VH: VarHandle by lazy { NSAccessibilityIncrementorRole_LAYOUT.varHandle() }
+
+var NSAccessibilityIncrementorRole: MemorySegment
+    get() = NSAccessibilityIncrementorRole_VH.get(NSAccessibilityIncrementorRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityIncrementorRole_VH.set(NSAccessibilityIncrementorRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityBrowserRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityBrowserRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityBrowserRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityBrowserRole").orElseThrow() }
+private val NSAccessibilityBrowserRole_VH: VarHandle by lazy { NSAccessibilityBrowserRole_LAYOUT.varHandle() }
+
+var NSAccessibilityBrowserRole: MemorySegment
+    get() = NSAccessibilityBrowserRole_VH.get(NSAccessibilityBrowserRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityBrowserRole_VH.set(NSAccessibilityBrowserRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityComboBoxRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityComboBoxRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityComboBoxRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityComboBoxRole").orElseThrow() }
+private val NSAccessibilityComboBoxRole_VH: VarHandle by lazy { NSAccessibilityComboBoxRole_LAYOUT.varHandle() }
+
+var NSAccessibilityComboBoxRole: MemorySegment
+    get() = NSAccessibilityComboBoxRole_VH.get(NSAccessibilityComboBoxRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityComboBoxRole_VH.set(NSAccessibilityComboBoxRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySplitGroupRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilitySplitGroupRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySplitGroupRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySplitGroupRole").orElseThrow() }
+private val NSAccessibilitySplitGroupRole_VH: VarHandle by lazy { NSAccessibilitySplitGroupRole_LAYOUT.varHandle() }
+
+var NSAccessibilitySplitGroupRole: MemorySegment
+    get() = NSAccessibilitySplitGroupRole_VH.get(NSAccessibilitySplitGroupRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySplitGroupRole_VH.set(NSAccessibilitySplitGroupRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySplitterRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilitySplitterRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySplitterRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySplitterRole").orElseThrow() }
+private val NSAccessibilitySplitterRole_VH: VarHandle by lazy { NSAccessibilitySplitterRole_LAYOUT.varHandle() }
+
+var NSAccessibilitySplitterRole: MemorySegment
+    get() = NSAccessibilitySplitterRole_VH.get(NSAccessibilitySplitterRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySplitterRole_VH.set(NSAccessibilitySplitterRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityColorWellRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityColorWellRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityColorWellRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityColorWellRole").orElseThrow() }
+private val NSAccessibilityColorWellRole_VH: VarHandle by lazy { NSAccessibilityColorWellRole_LAYOUT.varHandle() }
+
+var NSAccessibilityColorWellRole: MemorySegment
+    get() = NSAccessibilityColorWellRole_VH.get(NSAccessibilityColorWellRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityColorWellRole_VH.set(NSAccessibilityColorWellRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityGrowAreaRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityGrowAreaRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityGrowAreaRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityGrowAreaRole").orElseThrow() }
+private val NSAccessibilityGrowAreaRole_VH: VarHandle by lazy { NSAccessibilityGrowAreaRole_LAYOUT.varHandle() }
+
+var NSAccessibilityGrowAreaRole: MemorySegment
+    get() = NSAccessibilityGrowAreaRole_VH.get(NSAccessibilityGrowAreaRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityGrowAreaRole_VH.set(NSAccessibilityGrowAreaRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySheetRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilitySheetRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySheetRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySheetRole").orElseThrow() }
+private val NSAccessibilitySheetRole_VH: VarHandle by lazy { NSAccessibilitySheetRole_LAYOUT.varHandle() }
+
+var NSAccessibilitySheetRole: MemorySegment
+    get() = NSAccessibilitySheetRole_VH.get(NSAccessibilitySheetRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySheetRole_VH.set(NSAccessibilitySheetRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityHelpTagRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityHelpTagRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityHelpTagRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHelpTagRole").orElseThrow() }
+private val NSAccessibilityHelpTagRole_VH: VarHandle by lazy { NSAccessibilityHelpTagRole_LAYOUT.varHandle() }
+
+var NSAccessibilityHelpTagRole: MemorySegment
+    get() = NSAccessibilityHelpTagRole_VH.get(NSAccessibilityHelpTagRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityHelpTagRole_VH.set(NSAccessibilityHelpTagRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityMatteRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityMatteRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityMatteRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMatteRole").orElseThrow() }
+private val NSAccessibilityMatteRole_VH: VarHandle by lazy { NSAccessibilityMatteRole_LAYOUT.varHandle() }
+
+var NSAccessibilityMatteRole: MemorySegment
+    get() = NSAccessibilityMatteRole_VH.get(NSAccessibilityMatteRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityMatteRole_VH.set(NSAccessibilityMatteRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityRulerRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityRulerRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityRulerRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRulerRole").orElseThrow() }
+private val NSAccessibilityRulerRole_VH: VarHandle by lazy { NSAccessibilityRulerRole_LAYOUT.varHandle() }
+
+var NSAccessibilityRulerRole: MemorySegment
+    get() = NSAccessibilityRulerRole_VH.get(NSAccessibilityRulerRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityRulerRole_VH.set(NSAccessibilityRulerRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityRulerMarkerRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityRulerMarkerRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityRulerMarkerRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRulerMarkerRole").orElseThrow() }
+private val NSAccessibilityRulerMarkerRole_VH: VarHandle by lazy { NSAccessibilityRulerMarkerRole_LAYOUT.varHandle() }
+
+var NSAccessibilityRulerMarkerRole: MemorySegment
+    get() = NSAccessibilityRulerMarkerRole_VH.get(NSAccessibilityRulerMarkerRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityRulerMarkerRole_VH.set(NSAccessibilityRulerMarkerRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityLinkRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityLinkRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityLinkRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLinkRole").orElseThrow() }
+private val NSAccessibilityLinkRole_VH: VarHandle by lazy { NSAccessibilityLinkRole_LAYOUT.varHandle() }
+
+var NSAccessibilityLinkRole: MemorySegment
+    get() = NSAccessibilityLinkRole_VH.get(NSAccessibilityLinkRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityLinkRole_VH.set(NSAccessibilityLinkRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDisclosureTriangleRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityDisclosureTriangleRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDisclosureTriangleRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDisclosureTriangleRole").orElseThrow() }
+private val NSAccessibilityDisclosureTriangleRole_VH: VarHandle by lazy { NSAccessibilityDisclosureTriangleRole_LAYOUT.varHandle() }
+
+var NSAccessibilityDisclosureTriangleRole: MemorySegment
+    get() = NSAccessibilityDisclosureTriangleRole_VH.get(NSAccessibilityDisclosureTriangleRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDisclosureTriangleRole_VH.set(NSAccessibilityDisclosureTriangleRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityGridRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityGridRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityGridRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityGridRole").orElseThrow() }
+private val NSAccessibilityGridRole_VH: VarHandle by lazy { NSAccessibilityGridRole_LAYOUT.varHandle() }
+
+var NSAccessibilityGridRole: MemorySegment
+    get() = NSAccessibilityGridRole_VH.get(NSAccessibilityGridRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityGridRole_VH.set(NSAccessibilityGridRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityRelevanceIndicatorRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityRelevanceIndicatorRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityRelevanceIndicatorRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRelevanceIndicatorRole").orElseThrow() }
+private val NSAccessibilityRelevanceIndicatorRole_VH: VarHandle by lazy { NSAccessibilityRelevanceIndicatorRole_LAYOUT.varHandle() }
+
+var NSAccessibilityRelevanceIndicatorRole: MemorySegment
+    get() = NSAccessibilityRelevanceIndicatorRole_VH.get(NSAccessibilityRelevanceIndicatorRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityRelevanceIndicatorRole_VH.set(NSAccessibilityRelevanceIndicatorRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDateTimeAreaRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityDateTimeAreaRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDateTimeAreaRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDateTimeAreaRole").orElseThrow() }
+private val NSAccessibilityDateTimeAreaRole_VH: VarHandle by lazy { NSAccessibilityDateTimeAreaRole_LAYOUT.varHandle() }
+
+var NSAccessibilityDateTimeAreaRole: MemorySegment
+    get() = NSAccessibilityDateTimeAreaRole_VH.get(NSAccessibilityDateTimeAreaRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDateTimeAreaRole_VH.set(NSAccessibilityDateTimeAreaRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityLevelIndicatorRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityLevelIndicatorRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityLevelIndicatorRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLevelIndicatorRole").orElseThrow() }
+private val NSAccessibilityLevelIndicatorRole_VH: VarHandle by lazy { NSAccessibilityLevelIndicatorRole_LAYOUT.varHandle() }
+
+var NSAccessibilityLevelIndicatorRole: MemorySegment
+    get() = NSAccessibilityLevelIndicatorRole_VH.get(NSAccessibilityLevelIndicatorRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityLevelIndicatorRole_VH.set(NSAccessibilityLevelIndicatorRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityCellRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityCellRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityCellRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCellRole").orElseThrow() }
+private val NSAccessibilityCellRole_VH: VarHandle by lazy { NSAccessibilityCellRole_LAYOUT.varHandle() }
+
+var NSAccessibilityCellRole: MemorySegment
+    get() = NSAccessibilityCellRole_VH.get(NSAccessibilityCellRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityCellRole_VH.set(NSAccessibilityCellRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityPopoverRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityPopoverRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityPopoverRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPopoverRole").orElseThrow() }
+private val NSAccessibilityPopoverRole_VH: VarHandle by lazy { NSAccessibilityPopoverRole_LAYOUT.varHandle() }
+
+var NSAccessibilityPopoverRole: MemorySegment
+    get() = NSAccessibilityPopoverRole_VH.get(NSAccessibilityPopoverRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityPopoverRole_VH.set(NSAccessibilityPopoverRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityPageRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityPageRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityPageRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPageRole").orElseThrow() }
+private val NSAccessibilityPageRole_VH: VarHandle by lazy { NSAccessibilityPageRole_LAYOUT.varHandle() }
+
+var NSAccessibilityPageRole: MemorySegment
+    get() = NSAccessibilityPageRole_VH.get(NSAccessibilityPageRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityPageRole_VH.set(NSAccessibilityPageRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityHeadingRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityHeadingRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityHeadingRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHeadingRole").orElseThrow() }
+private val NSAccessibilityHeadingRole_VH: VarHandle by lazy { NSAccessibilityHeadingRole_LAYOUT.varHandle() }
+
+var NSAccessibilityHeadingRole: MemorySegment
+    get() = NSAccessibilityHeadingRole_VH.get(NSAccessibilityHeadingRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityHeadingRole_VH.set(NSAccessibilityHeadingRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityListMarkerRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityListMarkerRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityListMarkerRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityListMarkerRole").orElseThrow() }
+private val NSAccessibilityListMarkerRole_VH: VarHandle by lazy { NSAccessibilityListMarkerRole_LAYOUT.varHandle() }
+
+var NSAccessibilityListMarkerRole: MemorySegment
+    get() = NSAccessibilityListMarkerRole_VH.get(NSAccessibilityListMarkerRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityListMarkerRole_VH.set(NSAccessibilityListMarkerRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityWebAreaRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityWebAreaRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityWebAreaRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWebAreaRole").orElseThrow() }
+private val NSAccessibilityWebAreaRole_VH: VarHandle by lazy { NSAccessibilityWebAreaRole_LAYOUT.varHandle() }
+
+var NSAccessibilityWebAreaRole: MemorySegment
+    get() = NSAccessibilityWebAreaRole_VH.get(NSAccessibilityWebAreaRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityWebAreaRole_VH.set(NSAccessibilityWebAreaRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityLayoutAreaRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityLayoutAreaRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityLayoutAreaRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLayoutAreaRole").orElseThrow() }
+private val NSAccessibilityLayoutAreaRole_VH: VarHandle by lazy { NSAccessibilityLayoutAreaRole_LAYOUT.varHandle() }
+
+var NSAccessibilityLayoutAreaRole: MemorySegment
+    get() = NSAccessibilityLayoutAreaRole_VH.get(NSAccessibilityLayoutAreaRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityLayoutAreaRole_VH.set(NSAccessibilityLayoutAreaRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityLayoutItemRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityLayoutItemRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityLayoutItemRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLayoutItemRole").orElseThrow() }
+private val NSAccessibilityLayoutItemRole_VH: VarHandle by lazy { NSAccessibilityLayoutItemRole_LAYOUT.varHandle() }
+
+var NSAccessibilityLayoutItemRole: MemorySegment
+    get() = NSAccessibilityLayoutItemRole_VH.get(NSAccessibilityLayoutItemRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityLayoutItemRole_VH.set(NSAccessibilityLayoutItemRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityHandleRole typedef const NSAccessibilityRole = (Void)*
+ */
+private val NSAccessibilityHandleRole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityHandleRole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHandleRole").orElseThrow() }
+private val NSAccessibilityHandleRole_VH: VarHandle by lazy { NSAccessibilityHandleRole_LAYOUT.varHandle() }
+
+var NSAccessibilityHandleRole: MemorySegment
+    get() = NSAccessibilityHandleRole_VH.get(NSAccessibilityHandleRole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityHandleRole_VH.set(NSAccessibilityHandleRole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityUnknownSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityUnknownSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityUnknownSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnknownSubrole").orElseThrow() }
+private val NSAccessibilityUnknownSubrole_VH: VarHandle by lazy { NSAccessibilityUnknownSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityUnknownSubrole: MemorySegment
+    get() = NSAccessibilityUnknownSubrole_VH.get(NSAccessibilityUnknownSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityUnknownSubrole_VH.set(NSAccessibilityUnknownSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityCloseButtonSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityCloseButtonSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityCloseButtonSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCloseButtonSubrole").orElseThrow() }
+private val NSAccessibilityCloseButtonSubrole_VH: VarHandle by lazy { NSAccessibilityCloseButtonSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityCloseButtonSubrole: MemorySegment
+    get() = NSAccessibilityCloseButtonSubrole_VH.get(NSAccessibilityCloseButtonSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityCloseButtonSubrole_VH.set(NSAccessibilityCloseButtonSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityZoomButtonSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityZoomButtonSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityZoomButtonSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityZoomButtonSubrole").orElseThrow() }
+private val NSAccessibilityZoomButtonSubrole_VH: VarHandle by lazy { NSAccessibilityZoomButtonSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityZoomButtonSubrole: MemorySegment
+    get() = NSAccessibilityZoomButtonSubrole_VH.get(NSAccessibilityZoomButtonSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityZoomButtonSubrole_VH.set(NSAccessibilityZoomButtonSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityMinimizeButtonSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityMinimizeButtonSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityMinimizeButtonSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMinimizeButtonSubrole").orElseThrow() }
+private val NSAccessibilityMinimizeButtonSubrole_VH: VarHandle by lazy { NSAccessibilityMinimizeButtonSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityMinimizeButtonSubrole: MemorySegment
+    get() = NSAccessibilityMinimizeButtonSubrole_VH.get(NSAccessibilityMinimizeButtonSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityMinimizeButtonSubrole_VH.set(NSAccessibilityMinimizeButtonSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityToolbarButtonSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityToolbarButtonSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityToolbarButtonSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityToolbarButtonSubrole").orElseThrow() }
+private val NSAccessibilityToolbarButtonSubrole_VH: VarHandle by lazy { NSAccessibilityToolbarButtonSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityToolbarButtonSubrole: MemorySegment
+    get() = NSAccessibilityToolbarButtonSubrole_VH.get(NSAccessibilityToolbarButtonSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityToolbarButtonSubrole_VH.set(NSAccessibilityToolbarButtonSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTableRowSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityTableRowSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTableRowSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTableRowSubrole").orElseThrow() }
+private val NSAccessibilityTableRowSubrole_VH: VarHandle by lazy { NSAccessibilityTableRowSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityTableRowSubrole: MemorySegment
+    get() = NSAccessibilityTableRowSubrole_VH.get(NSAccessibilityTableRowSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTableRowSubrole_VH.set(NSAccessibilityTableRowSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityOutlineRowSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityOutlineRowSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityOutlineRowSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityOutlineRowSubrole").orElseThrow() }
+private val NSAccessibilityOutlineRowSubrole_VH: VarHandle by lazy { NSAccessibilityOutlineRowSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityOutlineRowSubrole: MemorySegment
+    get() = NSAccessibilityOutlineRowSubrole_VH.get(NSAccessibilityOutlineRowSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityOutlineRowSubrole_VH.set(NSAccessibilityOutlineRowSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySecureTextFieldSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilitySecureTextFieldSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySecureTextFieldSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySecureTextFieldSubrole").orElseThrow() }
+private val NSAccessibilitySecureTextFieldSubrole_VH: VarHandle by lazy { NSAccessibilitySecureTextFieldSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilitySecureTextFieldSubrole: MemorySegment
+    get() = NSAccessibilitySecureTextFieldSubrole_VH.get(NSAccessibilitySecureTextFieldSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySecureTextFieldSubrole_VH.set(NSAccessibilitySecureTextFieldSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityStandardWindowSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityStandardWindowSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityStandardWindowSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityStandardWindowSubrole").orElseThrow() }
+private val NSAccessibilityStandardWindowSubrole_VH: VarHandle by lazy { NSAccessibilityStandardWindowSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityStandardWindowSubrole: MemorySegment
+    get() = NSAccessibilityStandardWindowSubrole_VH.get(NSAccessibilityStandardWindowSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityStandardWindowSubrole_VH.set(NSAccessibilityStandardWindowSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDialogSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityDialogSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDialogSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDialogSubrole").orElseThrow() }
+private val NSAccessibilityDialogSubrole_VH: VarHandle by lazy { NSAccessibilityDialogSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityDialogSubrole: MemorySegment
+    get() = NSAccessibilityDialogSubrole_VH.get(NSAccessibilityDialogSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDialogSubrole_VH.set(NSAccessibilityDialogSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySystemDialogSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilitySystemDialogSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySystemDialogSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySystemDialogSubrole").orElseThrow() }
+private val NSAccessibilitySystemDialogSubrole_VH: VarHandle by lazy { NSAccessibilitySystemDialogSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilitySystemDialogSubrole: MemorySegment
+    get() = NSAccessibilitySystemDialogSubrole_VH.get(NSAccessibilitySystemDialogSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySystemDialogSubrole_VH.set(NSAccessibilitySystemDialogSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityFloatingWindowSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityFloatingWindowSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityFloatingWindowSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFloatingWindowSubrole").orElseThrow() }
+private val NSAccessibilityFloatingWindowSubrole_VH: VarHandle by lazy { NSAccessibilityFloatingWindowSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityFloatingWindowSubrole: MemorySegment
+    get() = NSAccessibilityFloatingWindowSubrole_VH.get(NSAccessibilityFloatingWindowSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityFloatingWindowSubrole_VH.set(NSAccessibilityFloatingWindowSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySystemFloatingWindowSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilitySystemFloatingWindowSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySystemFloatingWindowSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySystemFloatingWindowSubrole").orElseThrow() }
+private val NSAccessibilitySystemFloatingWindowSubrole_VH: VarHandle by lazy { NSAccessibilitySystemFloatingWindowSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilitySystemFloatingWindowSubrole: MemorySegment
+    get() = NSAccessibilitySystemFloatingWindowSubrole_VH.get(NSAccessibilitySystemFloatingWindowSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySystemFloatingWindowSubrole_VH.set(NSAccessibilitySystemFloatingWindowSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityIncrementArrowSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityIncrementArrowSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityIncrementArrowSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityIncrementArrowSubrole").orElseThrow() }
+private val NSAccessibilityIncrementArrowSubrole_VH: VarHandle by lazy { NSAccessibilityIncrementArrowSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityIncrementArrowSubrole: MemorySegment
+    get() = NSAccessibilityIncrementArrowSubrole_VH.get(NSAccessibilityIncrementArrowSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityIncrementArrowSubrole_VH.set(NSAccessibilityIncrementArrowSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDecrementArrowSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityDecrementArrowSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDecrementArrowSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDecrementArrowSubrole").orElseThrow() }
+private val NSAccessibilityDecrementArrowSubrole_VH: VarHandle by lazy { NSAccessibilityDecrementArrowSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityDecrementArrowSubrole: MemorySegment
+    get() = NSAccessibilityDecrementArrowSubrole_VH.get(NSAccessibilityDecrementArrowSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDecrementArrowSubrole_VH.set(NSAccessibilityDecrementArrowSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityIncrementPageSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityIncrementPageSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityIncrementPageSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityIncrementPageSubrole").orElseThrow() }
+private val NSAccessibilityIncrementPageSubrole_VH: VarHandle by lazy { NSAccessibilityIncrementPageSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityIncrementPageSubrole: MemorySegment
+    get() = NSAccessibilityIncrementPageSubrole_VH.get(NSAccessibilityIncrementPageSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityIncrementPageSubrole_VH.set(NSAccessibilityIncrementPageSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityDecrementPageSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityDecrementPageSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityDecrementPageSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDecrementPageSubrole").orElseThrow() }
+private val NSAccessibilityDecrementPageSubrole_VH: VarHandle by lazy { NSAccessibilityDecrementPageSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityDecrementPageSubrole: MemorySegment
+    get() = NSAccessibilityDecrementPageSubrole_VH.get(NSAccessibilityDecrementPageSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityDecrementPageSubrole_VH.set(NSAccessibilityDecrementPageSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilitySearchFieldSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilitySearchFieldSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilitySearchFieldSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySearchFieldSubrole").orElseThrow() }
+private val NSAccessibilitySearchFieldSubrole_VH: VarHandle by lazy { NSAccessibilitySearchFieldSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilitySearchFieldSubrole: MemorySegment
+    get() = NSAccessibilitySearchFieldSubrole_VH.get(NSAccessibilitySearchFieldSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilitySearchFieldSubrole_VH.set(NSAccessibilitySearchFieldSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTextAttachmentSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityTextAttachmentSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTextAttachmentSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTextAttachmentSubrole").orElseThrow() }
+private val NSAccessibilityTextAttachmentSubrole_VH: VarHandle by lazy { NSAccessibilityTextAttachmentSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityTextAttachmentSubrole: MemorySegment
+    get() = NSAccessibilityTextAttachmentSubrole_VH.get(NSAccessibilityTextAttachmentSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTextAttachmentSubrole_VH.set(NSAccessibilityTextAttachmentSubrole_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAccessibilityTextLinkSubrole typedef const NSAccessibilitySubrole = (Void)*
+ */
+private val NSAccessibilityTextLinkSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityTextLinkSubrole_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTextLinkSubrole").orElseThrow() }
+private val NSAccessibilityTextLinkSubrole_VH: VarHandle by lazy { NSAccessibilityTextLinkSubrole_LAYOUT.varHandle() }
+
+var NSAccessibilityTextLinkSubrole: MemorySegment
+    get() = NSAccessibilityTextLinkSubrole_VH.get(NSAccessibilityTextLinkSubrole_SEGMENT) as MemorySegment
+    set(value) = NSAccessibilityTextLinkSubrole_VH.set(NSAccessibilityTextLinkSubrole_SEGMENT, value)
+
+/**
  * {@snippet lang=c : NSAccessibilityTimelineSubrole typedef const NSAccessibilitySubrole = (Void)*
  */
 private val NSAccessibilityTimelineSubrole_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -1716,6 +3069,44 @@ fun CGRenderingBufferProviderGetTypeID(): Long {
 }
 
 /**
+ * {@snippet lang=c : CGBitmapContextCreateWithData typedef CGContextRef = (Declared(CGContext))*((Void)*,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,typedef CGBitmapInfo = Declared(CGBitmapInfo),typedef CGBitmapContextReleaseDataCallback = (Void((Void)*,(Void)*))*,(Void)*)
+ */
+private val CGBitmapContextCreateWithData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGBitmapContextCreateWithData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGBitmapContextCreateWithData").orElseThrow()
+private val CGBitmapContextCreateWithData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGBitmapContextCreateWithData_ADDR, CGBitmapContextCreateWithData_DESC)
+
+fun CGBitmapContextCreateWithData(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: MemorySegment, arg6: CGBitmapInfo, arg7: MemorySegment, arg8: MemorySegment): MemorySegment {
+    try {
+        return CGBitmapContextCreateWithData_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6.rawValue.toInt(), arg7, arg8) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGBitmapContextCreate typedef CGContextRef = (Declared(CGContext))*((Void)*,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,typedef CGBitmapInfo = Declared(CGBitmapInfo))
+ */
+private val CGBitmapContextCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val CGBitmapContextCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGBitmapContextCreate").orElseThrow()
+private val CGBitmapContextCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGBitmapContextCreate_ADDR, CGBitmapContextCreate_DESC)
+
+fun CGBitmapContextCreate(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: MemorySegment, arg6: CGBitmapInfo): MemorySegment {
+    try {
+        return CGBitmapContextCreate_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6.rawValue.toInt()) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CGBitmapContextCreateAdaptive typedef CGContextRef = (Declared(CGContext))*(typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef CFDictionaryRef = (Declared(__CFDictionary))*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val CGBitmapContextCreateAdaptive_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -1879,6 +3270,44 @@ fun CGBitmapContextGetColorSpace(arg0: MemorySegment): MemorySegment {
 }
 
 /**
+ * {@snippet lang=c : CGBitmapContextGetAlphaInfo typedef CGImageAlphaInfo = Declared(CGImageAlphaInfo)(typedef CGContextRef = (Declared(CGContext))*)
+ */
+private val CGBitmapContextGetAlphaInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGBitmapContextGetAlphaInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGBitmapContextGetAlphaInfo").orElseThrow()
+private val CGBitmapContextGetAlphaInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGBitmapContextGetAlphaInfo_ADDR, CGBitmapContextGetAlphaInfo_DESC)
+
+fun CGBitmapContextGetAlphaInfo(arg0: MemorySegment): CGImageAlphaInfo {
+    try {
+        return CGImageAlphaInfo.fromValue(Integer.toUnsignedLong(CGBitmapContextGetAlphaInfo_HANDLE.invokeExact(arg0) as Int))
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGBitmapContextGetBitmapInfo typedef CGBitmapInfo = Declared(CGBitmapInfo)(typedef CGContextRef = (Declared(CGContext))*)
+ */
+private val CGBitmapContextGetBitmapInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGBitmapContextGetBitmapInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGBitmapContextGetBitmapInfo").orElseThrow()
+private val CGBitmapContextGetBitmapInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGBitmapContextGetBitmapInfo_ADDR, CGBitmapContextGetBitmapInfo_DESC)
+
+fun CGBitmapContextGetBitmapInfo(arg0: MemorySegment): CGBitmapInfo {
+    try {
+        return CGBitmapInfo(Integer.toUnsignedLong(CGBitmapContextGetBitmapInfo_HANDLE.invokeExact(arg0) as Int))
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CGBitmapContextCreateImage typedef CGImageRef = (Declared(CGImage))*(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGBitmapContextCreateImage_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -1945,6 +3374,63 @@ private val CGColorConversionInfoCreateWithOptions_HANDLE: MethodHandle = Linker
 fun CGColorConversionInfoCreateWithOptions(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
     try {
         return CGColorConversionInfoCreateWithOptions_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGColorConversionInfoCreateFromList typedef CGColorConversionInfoRef = (Declared(CGColorConversionInfo))*(typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,typedef CGColorConversionInfoTransformType = Declared(CGColorConversionInfoTransformType),typedef CGColorRenderingIntent = Declared(CGColorRenderingIntent))
+ */
+private val CGColorConversionInfoCreateFromList_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val CGColorConversionInfoCreateFromList_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorConversionInfoCreateFromList").orElseThrow()
+private val CGColorConversionInfoCreateFromList_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorConversionInfoCreateFromList_ADDR, CGColorConversionInfoCreateFromList_DESC)
+
+fun CGColorConversionInfoCreateFromList(arg0: MemorySegment, arg1: MemorySegment, arg2: CGColorConversionInfoTransformType, arg3: CGColorRenderingIntent): MemorySegment {
+    try {
+        return CGColorConversionInfoCreateFromList_HANDLE.invokeExact(arg0, arg1, arg2.value.toInt(), arg3.value.toInt()) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGColorConversionInfoCreateFromListWithArguments typedef CGColorConversionInfoRef = (Declared(CGColorConversionInfo))*(typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,typedef CGColorConversionInfoTransformType = Declared(CGColorConversionInfoTransformType),typedef CGColorRenderingIntent = Declared(CGColorRenderingIntent),typedef va_list = (Char)*)
+ */
+private val CGColorConversionInfoCreateFromListWithArguments_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGColorConversionInfoCreateFromListWithArguments_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorConversionInfoCreateFromListWithArguments").orElseThrow()
+private val CGColorConversionInfoCreateFromListWithArguments_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorConversionInfoCreateFromListWithArguments_ADDR, CGColorConversionInfoCreateFromListWithArguments_DESC)
+
+fun CGColorConversionInfoCreateFromListWithArguments(arg0: MemorySegment, arg1: MemorySegment, arg2: CGColorConversionInfoTransformType, arg3: CGColorRenderingIntent, arg4: MemorySegment): MemorySegment {
+    try {
+        return CGColorConversionInfoCreateFromListWithArguments_HANDLE.invokeExact(arg0, arg1, arg2.value.toInt(), arg3.value.toInt(), arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGColorConversionInfoCreateForToneMapping typedef CGColorConversionInfoRef = (Declared(CGColorConversionInfo))*(typedef CGColorSpaceRef = (Declared(CGColorSpace))*,Float,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,Float,typedef CGToneMapping = Declared(CGToneMapping),typedef CFDictionaryRef = (Declared(__CFDictionary))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
+ */
+private val CGColorConversionInfoCreateForToneMapping_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGColorConversionInfoCreateForToneMapping_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorConversionInfoCreateForToneMapping").orElseThrow()
+private val CGColorConversionInfoCreateForToneMapping_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorConversionInfoCreateForToneMapping_ADDR, CGColorConversionInfoCreateForToneMapping_DESC)
+
+fun CGColorConversionInfoCreateForToneMapping(arg0: MemorySegment, arg1: Float, arg2: MemorySegment, arg3: Float, arg4: CGToneMapping, arg5: MemorySegment, arg6: MemorySegment): MemorySegment {
+    try {
+        return CGColorConversionInfoCreateForToneMapping_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4.value.toInt(), arg5, arg6) as MemorySegment
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -2241,2152 +3727,6 @@ private val CGLayerGetContext_HANDLE: MethodHandle = Linker.nativeLinker().downc
 fun CGLayerGetContext(arg0: MemorySegment): MemorySegment {
     try {
         return CGLayerGetContext_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextDrawLayerInRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CGLayerRef = (Declared(CGLayer))*)
- */
-private val CGContextDrawLayerInRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS)
-private val CGContextDrawLayerInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawLayerInRect").orElseThrow()
-private val CGContextDrawLayerInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawLayerInRect_ADDR, CGContextDrawLayerInRect_DESC)
-
-fun CGContextDrawLayerInRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
-    try {
-        CGContextDrawLayerInRect_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextDrawLayerInRect(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
-    CGContextDrawLayerInRect(arg0, arg1.segment, arg2)
-}
-
-/**
- * {@snippet lang=c : CGContextDrawLayerAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint),typedef CGLayerRef = (Declared(CGLayer))*)
- */
-private val CGContextDrawLayerAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGPoint.layout, ValueLayout.ADDRESS)
-private val CGContextDrawLayerAtPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawLayerAtPoint").orElseThrow()
-private val CGContextDrawLayerAtPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawLayerAtPoint_ADDR, CGContextDrawLayerAtPoint_DESC)
-
-fun CGContextDrawLayerAtPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
-    try {
-        CGContextDrawLayerAtPoint_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextDrawLayerAtPoint(arg0: MemorySegment, arg1: CGPoint, arg2: MemorySegment): Unit {
-    CGContextDrawLayerAtPoint(arg0, arg1.segment, arg2)
-}
-
-/**
- * {@snippet lang=c : CGLayerGetTypeID typedef CFTypeID = UNSIGNED = Long()
- */
-private val CGLayerGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CGLayerGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGLayerGetTypeID").orElseThrow()
-private val CGLayerGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGLayerGetTypeID_ADDR, CGLayerGetTypeID_DESC)
-
-fun CGLayerGetTypeID(): Long {
-    try {
-        return CGLayerGetTypeID_HANDLE.invokeExact() as Long
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContentStreamCreateWithPage typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*(typedef CGPDFPageRef = (Declared(CGPDFPage))*)
- */
-private val CGPDFContentStreamCreateWithPage_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamCreateWithPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContentStreamCreateWithPage").orElseThrow()
-private val CGPDFContentStreamCreateWithPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContentStreamCreateWithPage_ADDR, CGPDFContentStreamCreateWithPage_DESC)
-
-fun CGPDFContentStreamCreateWithPage(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGPDFContentStreamCreateWithPage_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContentStreamCreateWithStream typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*(typedef CGPDFStreamRef = (Declared(CGPDFStream))*,typedef CGPDFDictionaryRef = (Declared(CGPDFDictionary))*,typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*)
- */
-private val CGPDFContentStreamCreateWithStream_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamCreateWithStream_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContentStreamCreateWithStream").orElseThrow()
-private val CGPDFContentStreamCreateWithStream_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContentStreamCreateWithStream_ADDR, CGPDFContentStreamCreateWithStream_DESC)
-
-fun CGPDFContentStreamCreateWithStream(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
-    try {
-        return CGPDFContentStreamCreateWithStream_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContentStreamRetain typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*)
- */
-private val CGPDFContentStreamRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContentStreamRetain").orElseThrow()
-private val CGPDFContentStreamRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContentStreamRetain_ADDR, CGPDFContentStreamRetain_DESC)
-
-fun CGPDFContentStreamRetain(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGPDFContentStreamRetain_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContentStreamRelease Void(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*)
- */
-private val CGPDFContentStreamRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFContentStreamRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContentStreamRelease").orElseThrow()
-private val CGPDFContentStreamRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContentStreamRelease_ADDR, CGPDFContentStreamRelease_DESC)
-
-fun CGPDFContentStreamRelease(arg0: MemorySegment): Unit {
-    try {
-        CGPDFContentStreamRelease_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContentStreamGetStreams typedef CFArrayRef = (Declared(__CFArray))*(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*)
- */
-private val CGPDFContentStreamGetStreams_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamGetStreams_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContentStreamGetStreams").orElseThrow()
-private val CGPDFContentStreamGetStreams_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContentStreamGetStreams_ADDR, CGPDFContentStreamGetStreams_DESC)
-
-fun CGPDFContentStreamGetStreams(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGPDFContentStreamGetStreams_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContentStreamGetResource typedef CGPDFObjectRef = (Declared(CGPDFObject))*(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*,(Char)*,(Char)*)
- */
-private val CGPDFContentStreamGetResource_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamGetResource_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContentStreamGetResource").orElseThrow()
-private val CGPDFContentStreamGetResource_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContentStreamGetResource_ADDR, CGPDFContentStreamGetResource_DESC)
-
-fun CGPDFContentStreamGetResource(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
-    try {
-        return CGPDFContentStreamGetResource_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextCreate typedef CGContextRef = (Declared(CGContext))*(typedef CGDataConsumerRef = (Declared(CGDataConsumer))*,(typedef CGRect = Declared(CGRect))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
- */
-private val CGPDFContextCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextCreate").orElseThrow()
-private val CGPDFContextCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextCreate_ADDR, CGPDFContextCreate_DESC)
-
-fun CGPDFContextCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
-    try {
-        return CGPDFContextCreate_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextCreateWithURL typedef CGContextRef = (Declared(CGContext))*(typedef CFURLRef = (Declared(__CFURL))*,(typedef CGRect = Declared(CGRect))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
- */
-private val CGPDFContextCreateWithURL_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextCreateWithURL_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextCreateWithURL").orElseThrow()
-private val CGPDFContextCreateWithURL_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextCreateWithURL_ADDR, CGPDFContextCreateWithURL_DESC)
-
-fun CGPDFContextCreateWithURL(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
-    try {
-        return CGPDFContextCreateWithURL_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextClose Void(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGPDFContextClose_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFContextClose_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextClose").orElseThrow()
-private val CGPDFContextClose_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextClose_ADDR, CGPDFContextClose_DESC)
-
-fun CGPDFContextClose(arg0: MemorySegment): Unit {
-    try {
-        CGPDFContextClose_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextBeginPage Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
- */
-private val CGPDFContextBeginPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextBeginPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextBeginPage").orElseThrow()
-private val CGPDFContextBeginPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextBeginPage_ADDR, CGPDFContextBeginPage_DESC)
-
-fun CGPDFContextBeginPage(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGPDFContextBeginPage_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextEndPage Void(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGPDFContextEndPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFContextEndPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextEndPage").orElseThrow()
-private val CGPDFContextEndPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextEndPage_ADDR, CGPDFContextEndPage_DESC)
-
-fun CGPDFContextEndPage(arg0: MemorySegment): Unit {
-    try {
-        CGPDFContextEndPage_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextAddDocumentMetadata Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDataRef = (Declared(__CFData))*)
- */
-private val CGPDFContextAddDocumentMetadata_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextAddDocumentMetadata_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextAddDocumentMetadata").orElseThrow()
-private val CGPDFContextAddDocumentMetadata_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextAddDocumentMetadata_ADDR, CGPDFContextAddDocumentMetadata_DESC)
-
-fun CGPDFContextAddDocumentMetadata(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGPDFContextAddDocumentMetadata_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextSetParentTree Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPDFDictionaryRef = (Declared(CGPDFDictionary))*)
- */
-private val CGPDFContextSetParentTree_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextSetParentTree_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextSetParentTree").orElseThrow()
-private val CGPDFContextSetParentTree_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextSetParentTree_ADDR, CGPDFContextSetParentTree_DESC)
-
-fun CGPDFContextSetParentTree(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGPDFContextSetParentTree_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextSetIDTree Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPDFDictionaryRef = (Declared(CGPDFDictionary))*)
- */
-private val CGPDFContextSetIDTree_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextSetIDTree_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextSetIDTree").orElseThrow()
-private val CGPDFContextSetIDTree_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextSetIDTree_ADDR, CGPDFContextSetIDTree_DESC)
-
-fun CGPDFContextSetIDTree(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGPDFContextSetIDTree_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextSetPageTagStructureTree Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
- */
-private val CGPDFContextSetPageTagStructureTree_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextSetPageTagStructureTree_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextSetPageTagStructureTree").orElseThrow()
-private val CGPDFContextSetPageTagStructureTree_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextSetPageTagStructureTree_ADDR, CGPDFContextSetPageTagStructureTree_DESC)
-
-fun CGPDFContextSetPageTagStructureTree(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGPDFContextSetPageTagStructureTree_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFContextSetURLForRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFURLRef = (Declared(__CFURL))*,typedef CGRect = Declared(CGRect))
- */
-private val CGPDFContextSetURLForRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGRect.layout)
-private val CGPDFContextSetURLForRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextSetURLForRect").orElseThrow()
-private val CGPDFContextSetURLForRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextSetURLForRect_ADDR, CGPDFContextSetURLForRect_DESC)
-
-fun CGPDFContextSetURLForRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
-    try {
-        CGPDFContextSetURLForRect_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGPDFContextSetURLForRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect): Unit {
-    CGPDFContextSetURLForRect(arg0, arg1, arg2.segment)
-}
-
-/**
- * {@snippet lang=c : CGPDFContextAddDestinationAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFStringRef = (Declared(__CFString))*,typedef CGPoint = Declared(CGPoint))
- */
-private val CGPDFContextAddDestinationAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGPoint.layout)
-private val CGPDFContextAddDestinationAtPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextAddDestinationAtPoint").orElseThrow()
-private val CGPDFContextAddDestinationAtPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextAddDestinationAtPoint_ADDR, CGPDFContextAddDestinationAtPoint_DESC)
-
-fun CGPDFContextAddDestinationAtPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
-    try {
-        CGPDFContextAddDestinationAtPoint_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGPDFContextAddDestinationAtPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: CGPoint): Unit {
-    CGPDFContextAddDestinationAtPoint(arg0, arg1, arg2.segment)
-}
-
-/**
- * {@snippet lang=c : CGPDFContextSetDestinationForRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFStringRef = (Declared(__CFString))*,typedef CGRect = Declared(CGRect))
- */
-private val CGPDFContextSetDestinationForRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGRect.layout)
-private val CGPDFContextSetDestinationForRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextSetDestinationForRect").orElseThrow()
-private val CGPDFContextSetDestinationForRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextSetDestinationForRect_ADDR, CGPDFContextSetDestinationForRect_DESC)
-
-fun CGPDFContextSetDestinationForRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
-    try {
-        CGPDFContextSetDestinationForRect_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGPDFContextSetDestinationForRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect): Unit {
-    CGPDFContextSetDestinationForRect(arg0, arg1, arg2.segment)
-}
-
-/**
- * {@snippet lang=c : kCGPDFContextMediaBox typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextMediaBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextMediaBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextMediaBox").orElseThrow() }
-private val kCGPDFContextMediaBox_VH: VarHandle by lazy { kCGPDFContextMediaBox_LAYOUT.varHandle() }
-
-var kCGPDFContextMediaBox: MemorySegment
-    get() = kCGPDFContextMediaBox_VH.get(kCGPDFContextMediaBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextMediaBox_VH.set(kCGPDFContextMediaBox_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextCropBox typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextCropBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCropBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCropBox").orElseThrow() }
-private val kCGPDFContextCropBox_VH: VarHandle by lazy { kCGPDFContextCropBox_LAYOUT.varHandle() }
-
-var kCGPDFContextCropBox: MemorySegment
-    get() = kCGPDFContextCropBox_VH.get(kCGPDFContextCropBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextCropBox_VH.set(kCGPDFContextCropBox_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextBleedBox typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextBleedBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextBleedBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextBleedBox").orElseThrow() }
-private val kCGPDFContextBleedBox_VH: VarHandle by lazy { kCGPDFContextBleedBox_LAYOUT.varHandle() }
-
-var kCGPDFContextBleedBox: MemorySegment
-    get() = kCGPDFContextBleedBox_VH.get(kCGPDFContextBleedBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextBleedBox_VH.set(kCGPDFContextBleedBox_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextTrimBox typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextTrimBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextTrimBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextTrimBox").orElseThrow() }
-private val kCGPDFContextTrimBox_VH: VarHandle by lazy { kCGPDFContextTrimBox_LAYOUT.varHandle() }
-
-var kCGPDFContextTrimBox: MemorySegment
-    get() = kCGPDFContextTrimBox_VH.get(kCGPDFContextTrimBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextTrimBox_VH.set(kCGPDFContextTrimBox_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextArtBox typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextArtBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextArtBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextArtBox").orElseThrow() }
-private val kCGPDFContextArtBox_VH: VarHandle by lazy { kCGPDFContextArtBox_LAYOUT.varHandle() }
-
-var kCGPDFContextArtBox: MemorySegment
-    get() = kCGPDFContextArtBox_VH.get(kCGPDFContextArtBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextArtBox_VH.set(kCGPDFContextArtBox_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextTitle typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextTitle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextTitle").orElseThrow() }
-private val kCGPDFContextTitle_VH: VarHandle by lazy { kCGPDFContextTitle_LAYOUT.varHandle() }
-
-var kCGPDFContextTitle: MemorySegment
-    get() = kCGPDFContextTitle_VH.get(kCGPDFContextTitle_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextTitle_VH.set(kCGPDFContextTitle_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextAuthor typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextAuthor_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAuthor_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAuthor").orElseThrow() }
-private val kCGPDFContextAuthor_VH: VarHandle by lazy { kCGPDFContextAuthor_LAYOUT.varHandle() }
-
-var kCGPDFContextAuthor: MemorySegment
-    get() = kCGPDFContextAuthor_VH.get(kCGPDFContextAuthor_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextAuthor_VH.set(kCGPDFContextAuthor_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextSubject typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextSubject_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextSubject_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextSubject").orElseThrow() }
-private val kCGPDFContextSubject_VH: VarHandle by lazy { kCGPDFContextSubject_LAYOUT.varHandle() }
-
-var kCGPDFContextSubject: MemorySegment
-    get() = kCGPDFContextSubject_VH.get(kCGPDFContextSubject_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextSubject_VH.set(kCGPDFContextSubject_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextKeywords typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextKeywords_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextKeywords_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextKeywords").orElseThrow() }
-private val kCGPDFContextKeywords_VH: VarHandle by lazy { kCGPDFContextKeywords_LAYOUT.varHandle() }
-
-var kCGPDFContextKeywords: MemorySegment
-    get() = kCGPDFContextKeywords_VH.get(kCGPDFContextKeywords_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextKeywords_VH.set(kCGPDFContextKeywords_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextCreator typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextCreator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCreator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreator").orElseThrow() }
-private val kCGPDFContextCreator_VH: VarHandle by lazy { kCGPDFContextCreator_LAYOUT.varHandle() }
-
-var kCGPDFContextCreator: MemorySegment
-    get() = kCGPDFContextCreator_VH.get(kCGPDFContextCreator_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextCreator_VH.set(kCGPDFContextCreator_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextOwnerPassword typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextOwnerPassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextOwnerPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOwnerPassword").orElseThrow() }
-private val kCGPDFContextOwnerPassword_VH: VarHandle by lazy { kCGPDFContextOwnerPassword_LAYOUT.varHandle() }
-
-var kCGPDFContextOwnerPassword: MemorySegment
-    get() = kCGPDFContextOwnerPassword_VH.get(kCGPDFContextOwnerPassword_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextOwnerPassword_VH.set(kCGPDFContextOwnerPassword_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextUserPassword typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextUserPassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextUserPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextUserPassword").orElseThrow() }
-private val kCGPDFContextUserPassword_VH: VarHandle by lazy { kCGPDFContextUserPassword_LAYOUT.varHandle() }
-
-var kCGPDFContextUserPassword: MemorySegment
-    get() = kCGPDFContextUserPassword_VH.get(kCGPDFContextUserPassword_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextUserPassword_VH.set(kCGPDFContextUserPassword_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextEncryptionKeyLength typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextEncryptionKeyLength_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextEncryptionKeyLength_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextEncryptionKeyLength").orElseThrow() }
-private val kCGPDFContextEncryptionKeyLength_VH: VarHandle by lazy { kCGPDFContextEncryptionKeyLength_LAYOUT.varHandle() }
-
-var kCGPDFContextEncryptionKeyLength: MemorySegment
-    get() = kCGPDFContextEncryptionKeyLength_VH.get(kCGPDFContextEncryptionKeyLength_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextEncryptionKeyLength_VH.set(kCGPDFContextEncryptionKeyLength_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextAllowsPrinting typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextAllowsPrinting_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAllowsPrinting_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAllowsPrinting").orElseThrow() }
-private val kCGPDFContextAllowsPrinting_VH: VarHandle by lazy { kCGPDFContextAllowsPrinting_LAYOUT.varHandle() }
-
-var kCGPDFContextAllowsPrinting: MemorySegment
-    get() = kCGPDFContextAllowsPrinting_VH.get(kCGPDFContextAllowsPrinting_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextAllowsPrinting_VH.set(kCGPDFContextAllowsPrinting_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextAllowsCopying typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextAllowsCopying_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAllowsCopying_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAllowsCopying").orElseThrow() }
-private val kCGPDFContextAllowsCopying_VH: VarHandle by lazy { kCGPDFContextAllowsCopying_LAYOUT.varHandle() }
-
-var kCGPDFContextAllowsCopying: MemorySegment
-    get() = kCGPDFContextAllowsCopying_VH.get(kCGPDFContextAllowsCopying_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextAllowsCopying_VH.set(kCGPDFContextAllowsCopying_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextOutputIntent typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextOutputIntent_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextOutputIntent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOutputIntent").orElseThrow() }
-private val kCGPDFContextOutputIntent_VH: VarHandle by lazy { kCGPDFContextOutputIntent_LAYOUT.varHandle() }
-
-var kCGPDFContextOutputIntent: MemorySegment
-    get() = kCGPDFContextOutputIntent_VH.get(kCGPDFContextOutputIntent_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextOutputIntent_VH.set(kCGPDFContextOutputIntent_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFXOutputIntentSubtype typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFXOutputIntentSubtype_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXOutputIntentSubtype_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputIntentSubtype").orElseThrow() }
-private val kCGPDFXOutputIntentSubtype_VH: VarHandle by lazy { kCGPDFXOutputIntentSubtype_LAYOUT.varHandle() }
-
-var kCGPDFXOutputIntentSubtype: MemorySegment
-    get() = kCGPDFXOutputIntentSubtype_VH.get(kCGPDFXOutputIntentSubtype_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXOutputIntentSubtype_VH.set(kCGPDFXOutputIntentSubtype_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFXOutputConditionIdentifier typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFXOutputConditionIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXOutputConditionIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputConditionIdentifier").orElseThrow() }
-private val kCGPDFXOutputConditionIdentifier_VH: VarHandle by lazy { kCGPDFXOutputConditionIdentifier_LAYOUT.varHandle() }
-
-var kCGPDFXOutputConditionIdentifier: MemorySegment
-    get() = kCGPDFXOutputConditionIdentifier_VH.get(kCGPDFXOutputConditionIdentifier_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXOutputConditionIdentifier_VH.set(kCGPDFXOutputConditionIdentifier_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFXOutputCondition typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFXOutputCondition_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXOutputCondition_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputCondition").orElseThrow() }
-private val kCGPDFXOutputCondition_VH: VarHandle by lazy { kCGPDFXOutputCondition_LAYOUT.varHandle() }
-
-var kCGPDFXOutputCondition: MemorySegment
-    get() = kCGPDFXOutputCondition_VH.get(kCGPDFXOutputCondition_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXOutputCondition_VH.set(kCGPDFXOutputCondition_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFXRegistryName typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFXRegistryName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXRegistryName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXRegistryName").orElseThrow() }
-private val kCGPDFXRegistryName_VH: VarHandle by lazy { kCGPDFXRegistryName_LAYOUT.varHandle() }
-
-var kCGPDFXRegistryName: MemorySegment
-    get() = kCGPDFXRegistryName_VH.get(kCGPDFXRegistryName_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXRegistryName_VH.set(kCGPDFXRegistryName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFXInfo typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFXInfo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXInfo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXInfo").orElseThrow() }
-private val kCGPDFXInfo_VH: VarHandle by lazy { kCGPDFXInfo_LAYOUT.varHandle() }
-
-var kCGPDFXInfo: MemorySegment
-    get() = kCGPDFXInfo_VH.get(kCGPDFXInfo_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXInfo_VH.set(kCGPDFXInfo_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFXDestinationOutputProfile typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFXDestinationOutputProfile_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXDestinationOutputProfile_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXDestinationOutputProfile").orElseThrow() }
-private val kCGPDFXDestinationOutputProfile_VH: VarHandle by lazy { kCGPDFXDestinationOutputProfile_LAYOUT.varHandle() }
-
-var kCGPDFXDestinationOutputProfile: MemorySegment
-    get() = kCGPDFXDestinationOutputProfile_VH.get(kCGPDFXDestinationOutputProfile_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXDestinationOutputProfile_VH.set(kCGPDFXDestinationOutputProfile_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextOutputIntents typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextOutputIntents_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextOutputIntents_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOutputIntents").orElseThrow() }
-private val kCGPDFContextOutputIntents_VH: VarHandle by lazy { kCGPDFContextOutputIntents_LAYOUT.varHandle() }
-
-var kCGPDFContextOutputIntents: MemorySegment
-    get() = kCGPDFContextOutputIntents_VH.get(kCGPDFContextOutputIntents_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextOutputIntents_VH.set(kCGPDFContextOutputIntents_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextAccessPermissions typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextAccessPermissions_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAccessPermissions_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAccessPermissions").orElseThrow() }
-private val kCGPDFContextAccessPermissions_VH: VarHandle by lazy { kCGPDFContextAccessPermissions_LAYOUT.varHandle() }
-
-var kCGPDFContextAccessPermissions: MemorySegment
-    get() = kCGPDFContextAccessPermissions_VH.get(kCGPDFContextAccessPermissions_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextAccessPermissions_VH.set(kCGPDFContextAccessPermissions_SEGMENT, value)
-
-/**
- * {@snippet lang=c : CGPDFContextSetOutline Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
- */
-private val CGPDFContextSetOutline_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextSetOutline_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextSetOutline").orElseThrow()
-private val CGPDFContextSetOutline_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextSetOutline_ADDR, CGPDFContextSetOutline_DESC)
-
-fun CGPDFContextSetOutline(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGPDFContextSetOutline_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : kCGPDFContextCreateLinearizedPDF typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextCreateLinearizedPDF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCreateLinearizedPDF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreateLinearizedPDF").orElseThrow() }
-private val kCGPDFContextCreateLinearizedPDF_VH: VarHandle by lazy { kCGPDFContextCreateLinearizedPDF_LAYOUT.varHandle() }
-
-var kCGPDFContextCreateLinearizedPDF: MemorySegment
-    get() = kCGPDFContextCreateLinearizedPDF_VH.get(kCGPDFContextCreateLinearizedPDF_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextCreateLinearizedPDF_VH.set(kCGPDFContextCreateLinearizedPDF_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFContextCreatePDFA typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGPDFContextCreatePDFA_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCreatePDFA_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreatePDFA").orElseThrow() }
-private val kCGPDFContextCreatePDFA_VH: VarHandle by lazy { kCGPDFContextCreatePDFA_LAYOUT.varHandle() }
-
-var kCGPDFContextCreatePDFA: MemorySegment
-    get() = kCGPDFContextCreatePDFA_VH.get(kCGPDFContextCreatePDFA_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextCreatePDFA_VH.set(kCGPDFContextCreatePDFA_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFTagPropertyActualText typedef CGPDFTagProperty = (Declared(__CFString))*
- */
-private val kCGPDFTagPropertyActualText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyActualText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyActualText").orElseThrow() }
-private val kCGPDFTagPropertyActualText_VH: VarHandle by lazy { kCGPDFTagPropertyActualText_LAYOUT.varHandle() }
-
-var kCGPDFTagPropertyActualText: MemorySegment
-    get() = kCGPDFTagPropertyActualText_VH.get(kCGPDFTagPropertyActualText_SEGMENT) as MemorySegment
-    set(value) = kCGPDFTagPropertyActualText_VH.set(kCGPDFTagPropertyActualText_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFTagPropertyAlternativeText typedef CGPDFTagProperty = (Declared(__CFString))*
- */
-private val kCGPDFTagPropertyAlternativeText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyAlternativeText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyAlternativeText").orElseThrow() }
-private val kCGPDFTagPropertyAlternativeText_VH: VarHandle by lazy { kCGPDFTagPropertyAlternativeText_LAYOUT.varHandle() }
-
-var kCGPDFTagPropertyAlternativeText: MemorySegment
-    get() = kCGPDFTagPropertyAlternativeText_VH.get(kCGPDFTagPropertyAlternativeText_SEGMENT) as MemorySegment
-    set(value) = kCGPDFTagPropertyAlternativeText_VH.set(kCGPDFTagPropertyAlternativeText_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFTagPropertyTitleText typedef CGPDFTagProperty = (Declared(__CFString))*
- */
-private val kCGPDFTagPropertyTitleText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyTitleText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyTitleText").orElseThrow() }
-private val kCGPDFTagPropertyTitleText_VH: VarHandle by lazy { kCGPDFTagPropertyTitleText_LAYOUT.varHandle() }
-
-var kCGPDFTagPropertyTitleText: MemorySegment
-    get() = kCGPDFTagPropertyTitleText_VH.get(kCGPDFTagPropertyTitleText_SEGMENT) as MemorySegment
-    set(value) = kCGPDFTagPropertyTitleText_VH.set(kCGPDFTagPropertyTitleText_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGPDFTagPropertyLanguageText typedef CGPDFTagProperty = (Declared(__CFString))*
- */
-private val kCGPDFTagPropertyLanguageText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyLanguageText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyLanguageText").orElseThrow() }
-private val kCGPDFTagPropertyLanguageText_VH: VarHandle by lazy { kCGPDFTagPropertyLanguageText_LAYOUT.varHandle() }
-
-var kCGPDFTagPropertyLanguageText: MemorySegment
-    get() = kCGPDFTagPropertyLanguageText_VH.get(kCGPDFTagPropertyLanguageText_SEGMENT) as MemorySegment
-    set(value) = kCGPDFTagPropertyLanguageText_VH.set(kCGPDFTagPropertyLanguageText_SEGMENT, value)
-
-/**
- * {@snippet lang=c : CGPDFContextEndTag Void(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGPDFContextEndTag_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFContextEndTag_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFContextEndTag").orElseThrow()
-private val CGPDFContextEndTag_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFContextEndTag_ADDR, CGPDFContextEndTag_DESC)
-
-fun CGPDFContextEndTag(arg0: MemorySegment): Unit {
-    try {
-        CGPDFContextEndTag_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerCreate typedef CGPDFScannerRef = (Declared(CGPDFScanner))*(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*,typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*,(Void)*)
- */
-private val CGPDFScannerCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerCreate").orElseThrow()
-private val CGPDFScannerCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerCreate_ADDR, CGPDFScannerCreate_DESC)
-
-fun CGPDFScannerCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
-    try {
-        return CGPDFScannerCreate_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerRetain typedef CGPDFScannerRef = (Declared(CGPDFScanner))*(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
- */
-private val CGPDFScannerRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerRetain").orElseThrow()
-private val CGPDFScannerRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerRetain_ADDR, CGPDFScannerRetain_DESC)
-
-fun CGPDFScannerRetain(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGPDFScannerRetain_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerRelease Void(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
- */
-private val CGPDFScannerRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFScannerRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerRelease").orElseThrow()
-private val CGPDFScannerRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerRelease_ADDR, CGPDFScannerRelease_DESC)
-
-fun CGPDFScannerRelease(arg0: MemorySegment): Unit {
-    try {
-        CGPDFScannerRelease_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerScan Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
- */
-private val CGPDFScannerScan_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
-private val CGPDFScannerScan_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerScan").orElseThrow()
-private val CGPDFScannerScan_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerScan_ADDR, CGPDFScannerScan_DESC)
-
-fun CGPDFScannerScan(arg0: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerScan_HANDLE.invokeExact(arg0) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerGetContentStream typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
- */
-private val CGPDFScannerGetContentStream_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerGetContentStream_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerGetContentStream").orElseThrow()
-private val CGPDFScannerGetContentStream_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerGetContentStream_ADDR, CGPDFScannerGetContentStream_DESC)
-
-fun CGPDFScannerGetContentStream(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGPDFScannerGetContentStream_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerPopObject Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFObjectRef = (Declared(CGPDFObject))*)*)
- */
-private val CGPDFScannerPopObject_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopObject_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerPopObject").orElseThrow()
-private val CGPDFScannerPopObject_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerPopObject_ADDR, CGPDFScannerPopObject_DESC)
-
-fun CGPDFScannerPopObject(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerPopObject_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerPopBoolean Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFBoolean = UNSIGNED = Char)*)
- */
-private val CGPDFScannerPopBoolean_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopBoolean_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerPopBoolean").orElseThrow()
-private val CGPDFScannerPopBoolean_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerPopBoolean_ADDR, CGPDFScannerPopBoolean_DESC)
-
-fun CGPDFScannerPopBoolean(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerPopBoolean_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerPopInteger Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFInteger = Long)*)
- */
-private val CGPDFScannerPopInteger_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopInteger_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerPopInteger").orElseThrow()
-private val CGPDFScannerPopInteger_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerPopInteger_ADDR, CGPDFScannerPopInteger_DESC)
-
-fun CGPDFScannerPopInteger(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerPopInteger_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerPopNumber Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFReal = Double)*)
- */
-private val CGPDFScannerPopNumber_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopNumber_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerPopNumber").orElseThrow()
-private val CGPDFScannerPopNumber_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerPopNumber_ADDR, CGPDFScannerPopNumber_DESC)
-
-fun CGPDFScannerPopNumber(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerPopNumber_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerPopName Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,((Char)*)*)
- */
-private val CGPDFScannerPopName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerPopName").orElseThrow()
-private val CGPDFScannerPopName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerPopName_ADDR, CGPDFScannerPopName_DESC)
-
-fun CGPDFScannerPopName(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerPopName_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerPopString Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFStringRef = (Declared(CGPDFString))*)*)
- */
-private val CGPDFScannerPopString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerPopString").orElseThrow()
-private val CGPDFScannerPopString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerPopString_ADDR, CGPDFScannerPopString_DESC)
-
-fun CGPDFScannerPopString(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerPopString_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerPopArray Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFArrayRef = (Declared(CGPDFArray))*)*)
- */
-private val CGPDFScannerPopArray_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopArray_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerPopArray").orElseThrow()
-private val CGPDFScannerPopArray_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerPopArray_ADDR, CGPDFScannerPopArray_DESC)
-
-fun CGPDFScannerPopArray(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerPopArray_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerPopDictionary Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFDictionaryRef = (Declared(CGPDFDictionary))*)*)
- */
-private val CGPDFScannerPopDictionary_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopDictionary_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerPopDictionary").orElseThrow()
-private val CGPDFScannerPopDictionary_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerPopDictionary_ADDR, CGPDFScannerPopDictionary_DESC)
-
-fun CGPDFScannerPopDictionary(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerPopDictionary_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerPopStream Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFStreamRef = (Declared(CGPDFStream))*)*)
- */
-private val CGPDFScannerPopStream_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopStream_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerPopStream").orElseThrow()
-private val CGPDFScannerPopStream_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerPopStream_ADDR, CGPDFScannerPopStream_DESC)
-
-fun CGPDFScannerPopStream(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return CGPDFScannerPopStream_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFScannerStop Void(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
- */
-private val CGPDFScannerStop_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFScannerStop_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFScannerStop").orElseThrow()
-private val CGPDFScannerStop_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFScannerStop_ADDR, CGPDFScannerStop_DESC)
-
-fun CGPDFScannerStop(arg0: MemorySegment): Unit {
-    try {
-        CGPDFScannerStop_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFOperatorTableCreate typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*()
- */
-private val CGPDFOperatorTableCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CGPDFOperatorTableCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFOperatorTableCreate").orElseThrow()
-private val CGPDFOperatorTableCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFOperatorTableCreate_ADDR, CGPDFOperatorTableCreate_DESC)
-
-fun CGPDFOperatorTableCreate(): MemorySegment {
-    try {
-        return CGPDFOperatorTableCreate_HANDLE.invokeExact() as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFOperatorTableRetain typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*(typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*)
- */
-private val CGPDFOperatorTableRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFOperatorTableRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFOperatorTableRetain").orElseThrow()
-private val CGPDFOperatorTableRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFOperatorTableRetain_ADDR, CGPDFOperatorTableRetain_DESC)
-
-fun CGPDFOperatorTableRetain(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGPDFOperatorTableRetain_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFOperatorTableRelease Void(typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*)
- */
-private val CGPDFOperatorTableRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFOperatorTableRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFOperatorTableRelease").orElseThrow()
-private val CGPDFOperatorTableRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFOperatorTableRelease_ADDR, CGPDFOperatorTableRelease_DESC)
-
-fun CGPDFOperatorTableRelease(arg0: MemorySegment): Unit {
-    try {
-        CGPDFOperatorTableRelease_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPDFOperatorTableSetCallback Void(typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*,(Char)*,typedef CGPDFOperatorCallback = (Void((Declared(CGPDFScanner))*,(Void)*))*)
- */
-private val CGPDFOperatorTableSetCallback_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFOperatorTableSetCallback_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFOperatorTableSetCallback").orElseThrow()
-private val CGPDFOperatorTableSetCallback_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFOperatorTableSetCallback_ADDR, CGPDFOperatorTableSetCallback_DESC)
-
-fun CGPDFOperatorTableSetCallback(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
-    try {
-        CGPDFOperatorTableSetCallback_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : kCGWindowNumber typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowNumber").orElseThrow() }
-private val kCGWindowNumber_VH: VarHandle by lazy { kCGWindowNumber_LAYOUT.varHandle() }
-
-var kCGWindowNumber: MemorySegment
-    get() = kCGWindowNumber_VH.get(kCGWindowNumber_SEGMENT) as MemorySegment
-    set(value) = kCGWindowNumber_VH.set(kCGWindowNumber_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowStoreType typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowStoreType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowStoreType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowStoreType").orElseThrow() }
-private val kCGWindowStoreType_VH: VarHandle by lazy { kCGWindowStoreType_LAYOUT.varHandle() }
-
-var kCGWindowStoreType: MemorySegment
-    get() = kCGWindowStoreType_VH.get(kCGWindowStoreType_SEGMENT) as MemorySegment
-    set(value) = kCGWindowStoreType_VH.set(kCGWindowStoreType_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowLayer typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowLayer_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowLayer_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowLayer").orElseThrow() }
-private val kCGWindowLayer_VH: VarHandle by lazy { kCGWindowLayer_LAYOUT.varHandle() }
-
-var kCGWindowLayer: MemorySegment
-    get() = kCGWindowLayer_VH.get(kCGWindowLayer_SEGMENT) as MemorySegment
-    set(value) = kCGWindowLayer_VH.set(kCGWindowLayer_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowBounds typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowBounds_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowBounds_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowBounds").orElseThrow() }
-private val kCGWindowBounds_VH: VarHandle by lazy { kCGWindowBounds_LAYOUT.varHandle() }
-
-var kCGWindowBounds: MemorySegment
-    get() = kCGWindowBounds_VH.get(kCGWindowBounds_SEGMENT) as MemorySegment
-    set(value) = kCGWindowBounds_VH.set(kCGWindowBounds_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowSharingState typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowSharingState_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowSharingState_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowSharingState").orElseThrow() }
-private val kCGWindowSharingState_VH: VarHandle by lazy { kCGWindowSharingState_LAYOUT.varHandle() }
-
-var kCGWindowSharingState: MemorySegment
-    get() = kCGWindowSharingState_VH.get(kCGWindowSharingState_SEGMENT) as MemorySegment
-    set(value) = kCGWindowSharingState_VH.set(kCGWindowSharingState_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowAlpha typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowAlpha_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowAlpha_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowAlpha").orElseThrow() }
-private val kCGWindowAlpha_VH: VarHandle by lazy { kCGWindowAlpha_LAYOUT.varHandle() }
-
-var kCGWindowAlpha: MemorySegment
-    get() = kCGWindowAlpha_VH.get(kCGWindowAlpha_SEGMENT) as MemorySegment
-    set(value) = kCGWindowAlpha_VH.set(kCGWindowAlpha_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowOwnerPID typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowOwnerPID_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowOwnerPID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowOwnerPID").orElseThrow() }
-private val kCGWindowOwnerPID_VH: VarHandle by lazy { kCGWindowOwnerPID_LAYOUT.varHandle() }
-
-var kCGWindowOwnerPID: MemorySegment
-    get() = kCGWindowOwnerPID_VH.get(kCGWindowOwnerPID_SEGMENT) as MemorySegment
-    set(value) = kCGWindowOwnerPID_VH.set(kCGWindowOwnerPID_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowMemoryUsage typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowMemoryUsage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowMemoryUsage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowMemoryUsage").orElseThrow() }
-private val kCGWindowMemoryUsage_VH: VarHandle by lazy { kCGWindowMemoryUsage_LAYOUT.varHandle() }
-
-var kCGWindowMemoryUsage: MemorySegment
-    get() = kCGWindowMemoryUsage_VH.get(kCGWindowMemoryUsage_SEGMENT) as MemorySegment
-    set(value) = kCGWindowMemoryUsage_VH.set(kCGWindowMemoryUsage_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowWorkspace typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowWorkspace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowWorkspace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowWorkspace").orElseThrow() }
-private val kCGWindowWorkspace_VH: VarHandle by lazy { kCGWindowWorkspace_LAYOUT.varHandle() }
-
-var kCGWindowWorkspace: MemorySegment
-    get() = kCGWindowWorkspace_VH.get(kCGWindowWorkspace_SEGMENT) as MemorySegment
-    set(value) = kCGWindowWorkspace_VH.set(kCGWindowWorkspace_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowOwnerName typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowOwnerName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowOwnerName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowOwnerName").orElseThrow() }
-private val kCGWindowOwnerName_VH: VarHandle by lazy { kCGWindowOwnerName_LAYOUT.varHandle() }
-
-var kCGWindowOwnerName: MemorySegment
-    get() = kCGWindowOwnerName_VH.get(kCGWindowOwnerName_SEGMENT) as MemorySegment
-    set(value) = kCGWindowOwnerName_VH.set(kCGWindowOwnerName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowName typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowName").orElseThrow() }
-private val kCGWindowName_VH: VarHandle by lazy { kCGWindowName_LAYOUT.varHandle() }
-
-var kCGWindowName: MemorySegment
-    get() = kCGWindowName_VH.get(kCGWindowName_SEGMENT) as MemorySegment
-    set(value) = kCGWindowName_VH.set(kCGWindowName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowIsOnscreen typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowIsOnscreen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowIsOnscreen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowIsOnscreen").orElseThrow() }
-private val kCGWindowIsOnscreen_VH: VarHandle by lazy { kCGWindowIsOnscreen_LAYOUT.varHandle() }
-
-var kCGWindowIsOnscreen: MemorySegment
-    get() = kCGWindowIsOnscreen_VH.get(kCGWindowIsOnscreen_SEGMENT) as MemorySegment
-    set(value) = kCGWindowIsOnscreen_VH.set(kCGWindowIsOnscreen_SEGMENT, value)
-
-/**
- * {@snippet lang=c : kCGWindowBackingLocationVideoMemory typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGWindowBackingLocationVideoMemory_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowBackingLocationVideoMemory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowBackingLocationVideoMemory").orElseThrow() }
-private val kCGWindowBackingLocationVideoMemory_VH: VarHandle by lazy { kCGWindowBackingLocationVideoMemory_LAYOUT.varHandle() }
-
-var kCGWindowBackingLocationVideoMemory: MemorySegment
-    get() = kCGWindowBackingLocationVideoMemory_VH.get(kCGWindowBackingLocationVideoMemory_SEGMENT) as MemorySegment
-    set(value) = kCGWindowBackingLocationVideoMemory_VH.set(kCGWindowBackingLocationVideoMemory_SEGMENT, value)
-
-/**
- * {@snippet lang=c : CGWindowListCreateDescriptionFromArray typedef CFArrayRef = (Declared(__CFArray))*(typedef CFArrayRef = (Declared(__CFArray))*)
- */
-private val CGWindowListCreateDescriptionFromArray_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGWindowListCreateDescriptionFromArray_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGWindowListCreateDescriptionFromArray").orElseThrow()
-private val CGWindowListCreateDescriptionFromArray_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGWindowListCreateDescriptionFromArray_ADDR, CGWindowListCreateDescriptionFromArray_DESC)
-
-fun CGWindowListCreateDescriptionFromArray(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGWindowListCreateDescriptionFromArray_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGPreflightScreenCaptureAccess Bool()
- */
-private val CGPreflightScreenCaptureAccess_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN)
-private val CGPreflightScreenCaptureAccess_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPreflightScreenCaptureAccess").orElseThrow()
-private val CGPreflightScreenCaptureAccess_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPreflightScreenCaptureAccess_ADDR, CGPreflightScreenCaptureAccess_DESC)
-
-fun CGPreflightScreenCaptureAccess(): Boolean {
-    try {
-        return CGPreflightScreenCaptureAccess_HANDLE.invokeExact() as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGRequestScreenCaptureAccess Bool()
- */
-private val CGRequestScreenCaptureAccess_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN)
-private val CGRequestScreenCaptureAccess_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRequestScreenCaptureAccess").orElseThrow()
-private val CGRequestScreenCaptureAccess_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRequestScreenCaptureAccess_ADDR, CGRequestScreenCaptureAccess_DESC)
-
-fun CGRequestScreenCaptureAccess(): Boolean {
-    try {
-        return CGRequestScreenCaptureAccess_HANDLE.invokeExact() as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGMainDisplayID typedef CGDirectDisplayID = UNSIGNED = Int()
- */
-private val CGMainDisplayID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
-private val CGMainDisplayID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGMainDisplayID").orElseThrow()
-private val CGMainDisplayID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGMainDisplayID_ADDR, CGMainDisplayID_DESC)
-
-fun CGMainDisplayID(): Int {
-    try {
-        return CGMainDisplayID_HANDLE.invokeExact() as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayIDToOpenGLDisplayMask typedef CGOpenGLDisplayMask = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayIDToOpenGLDisplayMask_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIDToOpenGLDisplayMask_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayIDToOpenGLDisplayMask").orElseThrow()
-private val CGDisplayIDToOpenGLDisplayMask_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayIDToOpenGLDisplayMask_ADDR, CGDisplayIDToOpenGLDisplayMask_DESC)
-
-fun CGDisplayIDToOpenGLDisplayMask(arg0: Int): Int {
-    try {
-        return CGDisplayIDToOpenGLDisplayMask_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGOpenGLDisplayMaskToDisplayID typedef CGDirectDisplayID = UNSIGNED = Int(typedef CGOpenGLDisplayMask = UNSIGNED = Int)
- */
-private val CGOpenGLDisplayMaskToDisplayID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGOpenGLDisplayMaskToDisplayID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGOpenGLDisplayMaskToDisplayID").orElseThrow()
-private val CGOpenGLDisplayMaskToDisplayID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGOpenGLDisplayMaskToDisplayID_ADDR, CGOpenGLDisplayMaskToDisplayID_DESC)
-
-fun CGOpenGLDisplayMaskToDisplayID(arg0: Int): Int {
-    try {
-        return CGOpenGLDisplayMaskToDisplayID_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayBounds typedef CGRect = Declared(CGRect)(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayBounds_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.JAVA_INT)
-private val CGDisplayBounds_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayBounds").orElseThrow()
-private val CGDisplayBounds_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayBounds_ADDR, CGDisplayBounds_DESC)
-
-fun CGDisplayBounds(allocator: SegmentAllocator, arg0: Int): MemorySegment {
-    try {
-        return CGDisplayBounds_HANDLE.invokeExact(allocator, arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGDisplayBoundsTyped(allocator: SegmentAllocator, arg0: Int): CGRect {
-    return CGRect(CGDisplayBounds(allocator, arg0))
-}
-
-/**
- * {@snippet lang=c : CGDisplayPixelsWide typedef size_t = UNSIGNED = Long(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayPixelsWide_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
-private val CGDisplayPixelsWide_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayPixelsWide").orElseThrow()
-private val CGDisplayPixelsWide_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayPixelsWide_ADDR, CGDisplayPixelsWide_DESC)
-
-fun CGDisplayPixelsWide(arg0: Int): Long {
-    try {
-        return CGDisplayPixelsWide_HANDLE.invokeExact(arg0) as Long
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayPixelsHigh typedef size_t = UNSIGNED = Long(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayPixelsHigh_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
-private val CGDisplayPixelsHigh_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayPixelsHigh").orElseThrow()
-private val CGDisplayPixelsHigh_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayPixelsHigh_ADDR, CGDisplayPixelsHigh_DESC)
-
-fun CGDisplayPixelsHigh(arg0: Int): Long {
-    try {
-        return CGDisplayPixelsHigh_HANDLE.invokeExact(arg0) as Long
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayCopyAllDisplayModes typedef CFArrayRef = (Declared(__CFArray))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
- */
-private val CGDisplayCopyAllDisplayModes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplayCopyAllDisplayModes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayCopyAllDisplayModes").orElseThrow()
-private val CGDisplayCopyAllDisplayModes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayCopyAllDisplayModes_ADDR, CGDisplayCopyAllDisplayModes_DESC)
-
-fun CGDisplayCopyAllDisplayModes(arg0: Int, arg1: MemorySegment): MemorySegment {
-    try {
-        return CGDisplayCopyAllDisplayModes_HANDLE.invokeExact(arg0, arg1) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : kCGDisplayShowDuplicateLowResolutionModes typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGDisplayShowDuplicateLowResolutionModes_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayShowDuplicateLowResolutionModes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayShowDuplicateLowResolutionModes").orElseThrow() }
-private val kCGDisplayShowDuplicateLowResolutionModes_VH: VarHandle by lazy { kCGDisplayShowDuplicateLowResolutionModes_LAYOUT.varHandle() }
-
-var kCGDisplayShowDuplicateLowResolutionModes: MemorySegment
-    get() = kCGDisplayShowDuplicateLowResolutionModes_VH.get(kCGDisplayShowDuplicateLowResolutionModes_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayShowDuplicateLowResolutionModes_VH.set(kCGDisplayShowDuplicateLowResolutionModes_SEGMENT, value)
-
-/**
- * {@snippet lang=c : CGDisplayCopyDisplayMode typedef CGDisplayModeRef = (Declared(CGDisplayMode))*(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayCopyDisplayMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayCopyDisplayMode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayCopyDisplayMode").orElseThrow()
-private val CGDisplayCopyDisplayMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayCopyDisplayMode_ADDR, CGDisplayCopyDisplayMode_DESC)
-
-fun CGDisplayCopyDisplayMode(arg0: Int): MemorySegment {
-    try {
-        return CGDisplayCopyDisplayMode_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeGetWidth typedef size_t = UNSIGNED = Long(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeGetWidth_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayModeGetWidth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeGetWidth").orElseThrow()
-private val CGDisplayModeGetWidth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeGetWidth_ADDR, CGDisplayModeGetWidth_DESC)
-
-fun CGDisplayModeGetWidth(arg0: MemorySegment): Long {
-    try {
-        return CGDisplayModeGetWidth_HANDLE.invokeExact(arg0) as Long
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeGetHeight typedef size_t = UNSIGNED = Long(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeGetHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayModeGetHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeGetHeight").orElseThrow()
-private val CGDisplayModeGetHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeGetHeight_ADDR, CGDisplayModeGetHeight_DESC)
-
-fun CGDisplayModeGetHeight(arg0: MemorySegment): Long {
-    try {
-        return CGDisplayModeGetHeight_HANDLE.invokeExact(arg0) as Long
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeCopyPixelEncoding typedef CFStringRef = (Declared(__CFString))*(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeCopyPixelEncoding_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayModeCopyPixelEncoding_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeCopyPixelEncoding").orElseThrow()
-private val CGDisplayModeCopyPixelEncoding_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeCopyPixelEncoding_ADDR, CGDisplayModeCopyPixelEncoding_DESC)
-
-fun CGDisplayModeCopyPixelEncoding(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGDisplayModeCopyPixelEncoding_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeGetRefreshRate Double(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeGetRefreshRate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CGDisplayModeGetRefreshRate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeGetRefreshRate").orElseThrow()
-private val CGDisplayModeGetRefreshRate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeGetRefreshRate_ADDR, CGDisplayModeGetRefreshRate_DESC)
-
-fun CGDisplayModeGetRefreshRate(arg0: MemorySegment): Double {
-    try {
-        return CGDisplayModeGetRefreshRate_HANDLE.invokeExact(arg0) as Double
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeGetIOFlags typedef uint32_t = UNSIGNED = Int(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeGetIOFlags_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplayModeGetIOFlags_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeGetIOFlags").orElseThrow()
-private val CGDisplayModeGetIOFlags_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeGetIOFlags_ADDR, CGDisplayModeGetIOFlags_DESC)
-
-fun CGDisplayModeGetIOFlags(arg0: MemorySegment): Int {
-    try {
-        return CGDisplayModeGetIOFlags_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeGetIODisplayModeID typedef int32_t = Int(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeGetIODisplayModeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplayModeGetIODisplayModeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeGetIODisplayModeID").orElseThrow()
-private val CGDisplayModeGetIODisplayModeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeGetIODisplayModeID_ADDR, CGDisplayModeGetIODisplayModeID_DESC)
-
-fun CGDisplayModeGetIODisplayModeID(arg0: MemorySegment): Int {
-    try {
-        return CGDisplayModeGetIODisplayModeID_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeIsUsableForDesktopGUI Bool(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeIsUsableForDesktopGUI_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
-private val CGDisplayModeIsUsableForDesktopGUI_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeIsUsableForDesktopGUI").orElseThrow()
-private val CGDisplayModeIsUsableForDesktopGUI_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeIsUsableForDesktopGUI_ADDR, CGDisplayModeIsUsableForDesktopGUI_DESC)
-
-fun CGDisplayModeIsUsableForDesktopGUI(arg0: MemorySegment): Boolean {
-    try {
-        return CGDisplayModeIsUsableForDesktopGUI_HANDLE.invokeExact(arg0) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeGetTypeID typedef CFTypeID = UNSIGNED = Long()
- */
-private val CGDisplayModeGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CGDisplayModeGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeGetTypeID").orElseThrow()
-private val CGDisplayModeGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeGetTypeID_ADDR, CGDisplayModeGetTypeID_DESC)
-
-fun CGDisplayModeGetTypeID(): Long {
-    try {
-        return CGDisplayModeGetTypeID_HANDLE.invokeExact() as Long
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeRetain typedef CGDisplayModeRef = (Declared(CGDisplayMode))*(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayModeRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeRetain").orElseThrow()
-private val CGDisplayModeRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeRetain_ADDR, CGDisplayModeRetain_DESC)
-
-fun CGDisplayModeRetain(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGDisplayModeRetain_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeRelease Void(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGDisplayModeRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeRelease").orElseThrow()
-private val CGDisplayModeRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeRelease_ADDR, CGDisplayModeRelease_DESC)
-
-fun CGDisplayModeRelease(arg0: MemorySegment): Unit {
-    try {
-        CGDisplayModeRelease_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeGetPixelWidth typedef size_t = UNSIGNED = Long(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeGetPixelWidth_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayModeGetPixelWidth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeGetPixelWidth").orElseThrow()
-private val CGDisplayModeGetPixelWidth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeGetPixelWidth_ADDR, CGDisplayModeGetPixelWidth_DESC)
-
-fun CGDisplayModeGetPixelWidth(arg0: MemorySegment): Long {
-    try {
-        return CGDisplayModeGetPixelWidth_HANDLE.invokeExact(arg0) as Long
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayModeGetPixelHeight typedef size_t = UNSIGNED = Long(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
- */
-private val CGDisplayModeGetPixelHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayModeGetPixelHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayModeGetPixelHeight").orElseThrow()
-private val CGDisplayModeGetPixelHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayModeGetPixelHeight_ADDR, CGDisplayModeGetPixelHeight_DESC)
-
-fun CGDisplayModeGetPixelHeight(arg0: MemorySegment): Long {
-    try {
-        return CGDisplayModeGetPixelHeight_HANDLE.invokeExact(arg0) as Long
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayGammaTableCapacity typedef uint32_t = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayGammaTableCapacity_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayGammaTableCapacity_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayGammaTableCapacity").orElseThrow()
-private val CGDisplayGammaTableCapacity_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayGammaTableCapacity_ADDR, CGDisplayGammaTableCapacity_DESC)
-
-fun CGDisplayGammaTableCapacity(arg0: Int): Int {
-    try {
-        return CGDisplayGammaTableCapacity_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayRestoreColorSyncSettings Void()
- */
-private val CGDisplayRestoreColorSyncSettings_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid()
-private val CGDisplayRestoreColorSyncSettings_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayRestoreColorSyncSettings").orElseThrow()
-private val CGDisplayRestoreColorSyncSettings_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayRestoreColorSyncSettings_ADDR, CGDisplayRestoreColorSyncSettings_DESC)
-
-fun CGDisplayRestoreColorSyncSettings(): Unit {
-    try {
-        CGDisplayRestoreColorSyncSettings_HANDLE.invokeExact()
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayIsCaptured typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayIsCaptured_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsCaptured_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayIsCaptured").orElseThrow()
-private val CGDisplayIsCaptured_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayIsCaptured_ADDR, CGDisplayIsCaptured_DESC)
-
-fun CGDisplayIsCaptured(arg0: Int): Int {
-    try {
-        return CGDisplayIsCaptured_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGShieldingWindowID typedef CGWindowID = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGShieldingWindowID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGShieldingWindowID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShieldingWindowID").orElseThrow()
-private val CGShieldingWindowID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShieldingWindowID_ADDR, CGShieldingWindowID_DESC)
-
-fun CGShieldingWindowID(arg0: Int): Int {
-    try {
-        return CGShieldingWindowID_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGShieldingWindowLevel typedef CGWindowLevel = Int()
- */
-private val CGShieldingWindowLevel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
-private val CGShieldingWindowLevel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShieldingWindowLevel").orElseThrow()
-private val CGShieldingWindowLevel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShieldingWindowLevel_ADDR, CGShieldingWindowLevel_DESC)
-
-fun CGShieldingWindowLevel(): Int {
-    try {
-        return CGShieldingWindowLevel_HANDLE.invokeExact() as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayCreateImage typedef CGImageRef = (Declared(CGImage))*(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayCreateImage_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayCreateImage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayCreateImage").orElseThrow()
-private val CGDisplayCreateImage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayCreateImage_ADDR, CGDisplayCreateImage_DESC)
-
-fun CGDisplayCreateImage(arg0: Int): MemorySegment {
-    try {
-        return CGDisplayCreateImage_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayCreateImageForRect typedef CGImageRef = (Declared(CGImage))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef CGRect = Declared(CGRect))
- */
-private val CGDisplayCreateImageForRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, CGRect.layout)
-private val CGDisplayCreateImageForRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayCreateImageForRect").orElseThrow()
-private val CGDisplayCreateImageForRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayCreateImageForRect_ADDR, CGDisplayCreateImageForRect_DESC)
-
-fun CGDisplayCreateImageForRect(arg0: Int, arg1: MemorySegment): MemorySegment {
-    try {
-        return CGDisplayCreateImageForRect_HANDLE.invokeExact(arg0, arg1) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGDisplayCreateImageForRect(arg0: Int, arg1: CGRect): MemorySegment {
-    return CGDisplayCreateImageForRect(arg0, arg1.segment)
-}
-
-/**
- * {@snippet lang=c : CGGetLastMouseDelta Void((typedef int32_t = Int)*,(typedef int32_t = Int)*)
- */
-private val CGGetLastMouseDelta_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetLastMouseDelta_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGetLastMouseDelta").orElseThrow()
-private val CGGetLastMouseDelta_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGetLastMouseDelta_ADDR, CGGetLastMouseDelta_DESC)
-
-fun CGGetLastMouseDelta(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGGetLastMouseDelta_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayGetDrawingContext typedef CGContextRef = (Declared(CGContext))*(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayGetDrawingContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayGetDrawingContext_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayGetDrawingContext").orElseThrow()
-private val CGDisplayGetDrawingContext_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayGetDrawingContext_ADDR, CGDisplayGetDrawingContext_DESC)
-
-fun CGDisplayGetDrawingContext(arg0: Int): MemorySegment {
-    try {
-        return CGDisplayGetDrawingContext_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayAvailableModes typedef CFArrayRef = (Declared(__CFArray))*(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayAvailableModes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayAvailableModes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayAvailableModes").orElseThrow()
-private val CGDisplayAvailableModes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayAvailableModes_ADDR, CGDisplayAvailableModes_DESC)
-
-fun CGDisplayAvailableModes(arg0: Int): MemorySegment {
-    try {
-        return CGDisplayAvailableModes_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayBestModeForParameters typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,(typedef boolean_t = Int)*)
- */
-private val CGDisplayBestModeForParameters_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayBestModeForParameters_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayBestModeForParameters").orElseThrow()
-private val CGDisplayBestModeForParameters_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayBestModeForParameters_ADDR, CGDisplayBestModeForParameters_DESC)
-
-fun CGDisplayBestModeForParameters(arg0: Int, arg1: Long, arg2: Long, arg3: Long, arg4: MemorySegment): MemorySegment {
-    try {
-        return CGDisplayBestModeForParameters_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayBestModeForParametersAndRefreshRate typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef CGRefreshRate = Double,(typedef boolean_t = Int)*)
- */
-private val CGDisplayBestModeForParametersAndRefreshRate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CGDisplayBestModeForParametersAndRefreshRate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayBestModeForParametersAndRefreshRate").orElseThrow()
-private val CGDisplayBestModeForParametersAndRefreshRate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayBestModeForParametersAndRefreshRate_ADDR, CGDisplayBestModeForParametersAndRefreshRate_DESC)
-
-fun CGDisplayBestModeForParametersAndRefreshRate(arg0: Int, arg1: Long, arg2: Long, arg3: Long, arg4: Double, arg5: MemorySegment): MemorySegment {
-    try {
-        return CGDisplayBestModeForParametersAndRefreshRate_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayCurrentMode typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayCurrentMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayCurrentMode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayCurrentMode").orElseThrow()
-private val CGDisplayCurrentMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayCurrentMode_ADDR, CGDisplayCurrentMode_DESC)
-
-fun CGDisplayCurrentMode(arg0: Int): MemorySegment {
-    try {
-        return CGDisplayCurrentMode_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGRestorePermanentDisplayConfiguration Void()
- */
-private val CGRestorePermanentDisplayConfiguration_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid()
-private val CGRestorePermanentDisplayConfiguration_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRestorePermanentDisplayConfiguration").orElseThrow()
-private val CGRestorePermanentDisplayConfiguration_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRestorePermanentDisplayConfiguration_ADDR, CGRestorePermanentDisplayConfiguration_DESC)
-
-fun CGRestorePermanentDisplayConfiguration(): Unit {
-    try {
-        CGRestorePermanentDisplayConfiguration_HANDLE.invokeExact()
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayIsActive typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayIsActive_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsActive_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayIsActive").orElseThrow()
-private val CGDisplayIsActive_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayIsActive_ADDR, CGDisplayIsActive_DESC)
-
-fun CGDisplayIsActive(arg0: Int): Int {
-    try {
-        return CGDisplayIsActive_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayIsAsleep typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayIsAsleep_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsAsleep_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayIsAsleep").orElseThrow()
-private val CGDisplayIsAsleep_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayIsAsleep_ADDR, CGDisplayIsAsleep_DESC)
-
-fun CGDisplayIsAsleep(arg0: Int): Int {
-    try {
-        return CGDisplayIsAsleep_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayIsOnline typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayIsOnline_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsOnline_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayIsOnline").orElseThrow()
-private val CGDisplayIsOnline_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayIsOnline_ADDR, CGDisplayIsOnline_DESC)
-
-fun CGDisplayIsOnline(arg0: Int): Int {
-    try {
-        return CGDisplayIsOnline_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayIsMain typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayIsMain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsMain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayIsMain").orElseThrow()
-private val CGDisplayIsMain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayIsMain_ADDR, CGDisplayIsMain_DESC)
-
-fun CGDisplayIsMain(arg0: Int): Int {
-    try {
-        return CGDisplayIsMain_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayIsBuiltin typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayIsBuiltin_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsBuiltin_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayIsBuiltin").orElseThrow()
-private val CGDisplayIsBuiltin_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayIsBuiltin_ADDR, CGDisplayIsBuiltin_DESC)
-
-fun CGDisplayIsBuiltin(arg0: Int): Int {
-    try {
-        return CGDisplayIsBuiltin_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayIsInMirrorSet typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayIsInMirrorSet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsInMirrorSet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayIsInMirrorSet").orElseThrow()
-private val CGDisplayIsInMirrorSet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayIsInMirrorSet_ADDR, CGDisplayIsInMirrorSet_DESC)
-
-fun CGDisplayIsInMirrorSet(arg0: Int): Int {
-    try {
-        return CGDisplayIsInMirrorSet_HANDLE.invokeExact(arg0) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGDisplayIsAlwaysInMirrorSet typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
- */
-private val CGDisplayIsAlwaysInMirrorSet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsAlwaysInMirrorSet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDisplayIsAlwaysInMirrorSet").orElseThrow()
-private val CGDisplayIsAlwaysInMirrorSet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDisplayIsAlwaysInMirrorSet_ADDR, CGDisplayIsAlwaysInMirrorSet_DESC)
-
-fun CGDisplayIsAlwaysInMirrorSet(arg0: Int): Int {
-    try {
-        return CGDisplayIsAlwaysInMirrorSet_HANDLE.invokeExact(arg0) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {

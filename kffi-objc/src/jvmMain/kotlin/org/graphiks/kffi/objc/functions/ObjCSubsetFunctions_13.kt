@@ -5,6 +5,2507 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSSystemColorsDidChangeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSSystemColorsDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSSystemColorsDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSystemColorsDidChangeNotification").orElseThrow() }
+private val NSSystemColorsDidChangeNotification_VH: VarHandle by lazy { NSSystemColorsDidChangeNotification_LAYOUT.varHandle() }
+
+var NSSystemColorsDidChangeNotification: MemorySegment
+    get() = NSSystemColorsDidChangeNotification_VH.get(NSSystemColorsDidChangeNotification_SEGMENT) as MemorySegment
+    set(value) = NSSystemColorsDidChangeNotification_VH.set(NSSystemColorsDidChangeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSContextHelpModeDidActivateNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSContextHelpModeDidActivateNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSContextHelpModeDidActivateNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSContextHelpModeDidActivateNotification").orElseThrow() }
+private val NSContextHelpModeDidActivateNotification_VH: VarHandle by lazy { NSContextHelpModeDidActivateNotification_LAYOUT.varHandle() }
+
+var NSContextHelpModeDidActivateNotification: MemorySegment
+    get() = NSContextHelpModeDidActivateNotification_VH.get(NSContextHelpModeDidActivateNotification_SEGMENT) as MemorySegment
+    set(value) = NSContextHelpModeDidActivateNotification_VH.set(NSContextHelpModeDidActivateNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSContextHelpModeDidDeactivateNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSContextHelpModeDidDeactivateNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSContextHelpModeDidDeactivateNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSContextHelpModeDidDeactivateNotification").orElseThrow() }
+private val NSContextHelpModeDidDeactivateNotification_VH: VarHandle by lazy { NSContextHelpModeDidDeactivateNotification_LAYOUT.varHandle() }
+
+var NSContextHelpModeDidDeactivateNotification: MemorySegment
+    get() = NSContextHelpModeDidDeactivateNotification_VH.get(NSContextHelpModeDidDeactivateNotification_SEGMENT) as MemorySegment
+    set(value) = NSContextHelpModeDidDeactivateNotification_VH.set(NSContextHelpModeDidDeactivateNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSControlTextDidBeginEditingNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSControlTextDidBeginEditingNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSControlTextDidBeginEditingNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSControlTextDidBeginEditingNotification").orElseThrow() }
+private val NSControlTextDidBeginEditingNotification_VH: VarHandle by lazy { NSControlTextDidBeginEditingNotification_LAYOUT.varHandle() }
+
+var NSControlTextDidBeginEditingNotification: MemorySegment
+    get() = NSControlTextDidBeginEditingNotification_VH.get(NSControlTextDidBeginEditingNotification_SEGMENT) as MemorySegment
+    set(value) = NSControlTextDidBeginEditingNotification_VH.set(NSControlTextDidBeginEditingNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSControlTextDidEndEditingNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSControlTextDidEndEditingNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSControlTextDidEndEditingNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSControlTextDidEndEditingNotification").orElseThrow() }
+private val NSControlTextDidEndEditingNotification_VH: VarHandle by lazy { NSControlTextDidEndEditingNotification_LAYOUT.varHandle() }
+
+var NSControlTextDidEndEditingNotification: MemorySegment
+    get() = NSControlTextDidEndEditingNotification_VH.get(NSControlTextDidEndEditingNotification_SEGMENT) as MemorySegment
+    set(value) = NSControlTextDidEndEditingNotification_VH.set(NSControlTextDidEndEditingNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSControlTextDidChangeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSControlTextDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSControlTextDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSControlTextDidChangeNotification").orElseThrow() }
+private val NSControlTextDidChangeNotification_VH: VarHandle by lazy { NSControlTextDidChangeNotification_LAYOUT.varHandle() }
+
+var NSControlTextDidChangeNotification: MemorySegment
+    get() = NSControlTextDidChangeNotification_VH.get(NSControlTextDidChangeNotification_SEGMENT) as MemorySegment
+    set(value) = NSControlTextDidChangeNotification_VH.set(NSControlTextDidChangeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTouchBarItemIdentifierFixedSpaceSmall typedef const NSTouchBarItemIdentifier = (Void)*
+ */
+private val NSTouchBarItemIdentifierFixedSpaceSmall_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTouchBarItemIdentifierFixedSpaceSmall_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTouchBarItemIdentifierFixedSpaceSmall").orElseThrow() }
+private val NSTouchBarItemIdentifierFixedSpaceSmall_VH: VarHandle by lazy { NSTouchBarItemIdentifierFixedSpaceSmall_LAYOUT.varHandle() }
+
+var NSTouchBarItemIdentifierFixedSpaceSmall: MemorySegment
+    get() = NSTouchBarItemIdentifierFixedSpaceSmall_VH.get(NSTouchBarItemIdentifierFixedSpaceSmall_SEGMENT) as MemorySegment
+    set(value) = NSTouchBarItemIdentifierFixedSpaceSmall_VH.set(NSTouchBarItemIdentifierFixedSpaceSmall_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTouchBarItemIdentifierFixedSpaceLarge typedef const NSTouchBarItemIdentifier = (Void)*
+ */
+private val NSTouchBarItemIdentifierFixedSpaceLarge_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTouchBarItemIdentifierFixedSpaceLarge_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTouchBarItemIdentifierFixedSpaceLarge").orElseThrow() }
+private val NSTouchBarItemIdentifierFixedSpaceLarge_VH: VarHandle by lazy { NSTouchBarItemIdentifierFixedSpaceLarge_LAYOUT.varHandle() }
+
+var NSTouchBarItemIdentifierFixedSpaceLarge: MemorySegment
+    get() = NSTouchBarItemIdentifierFixedSpaceLarge_VH.get(NSTouchBarItemIdentifierFixedSpaceLarge_SEGMENT) as MemorySegment
+    set(value) = NSTouchBarItemIdentifierFixedSpaceLarge_VH.set(NSTouchBarItemIdentifierFixedSpaceLarge_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTouchBarItemIdentifierFlexibleSpace typedef const NSTouchBarItemIdentifier = (Void)*
+ */
+private val NSTouchBarItemIdentifierFlexibleSpace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTouchBarItemIdentifierFlexibleSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTouchBarItemIdentifierFlexibleSpace").orElseThrow() }
+private val NSTouchBarItemIdentifierFlexibleSpace_VH: VarHandle by lazy { NSTouchBarItemIdentifierFlexibleSpace_LAYOUT.varHandle() }
+
+var NSTouchBarItemIdentifierFlexibleSpace: MemorySegment
+    get() = NSTouchBarItemIdentifierFlexibleSpace_VH.get(NSTouchBarItemIdentifierFlexibleSpace_SEGMENT) as MemorySegment
+    set(value) = NSTouchBarItemIdentifierFlexibleSpace_VH.set(NSTouchBarItemIdentifierFlexibleSpace_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTouchBarItemIdentifierOtherItemsProxy typedef const NSTouchBarItemIdentifier = (Void)*
+ */
+private val NSTouchBarItemIdentifierOtherItemsProxy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTouchBarItemIdentifierOtherItemsProxy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTouchBarItemIdentifierOtherItemsProxy").orElseThrow() }
+private val NSTouchBarItemIdentifierOtherItemsProxy_VH: VarHandle by lazy { NSTouchBarItemIdentifierOtherItemsProxy_LAYOUT.varHandle() }
+
+var NSTouchBarItemIdentifierOtherItemsProxy: MemorySegment
+    get() = NSTouchBarItemIdentifierOtherItemsProxy_VH.get(NSTouchBarItemIdentifierOtherItemsProxy_SEGMENT) as MemorySegment
+    set(value) = NSTouchBarItemIdentifierOtherItemsProxy_VH.set(NSTouchBarItemIdentifierOtherItemsProxy_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSTouchBarItemIdentifierCandidateList typedef const NSTouchBarItemIdentifier = (Void)*
+ */
+private val NSTouchBarItemIdentifierCandidateList_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTouchBarItemIdentifierCandidateList_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTouchBarItemIdentifierCandidateList").orElseThrow() }
+private val NSTouchBarItemIdentifierCandidateList_VH: VarHandle by lazy { NSTouchBarItemIdentifierCandidateList_LAYOUT.varHandle() }
+
+var NSTouchBarItemIdentifierCandidateList: MemorySegment
+    get() = NSTouchBarItemIdentifierCandidateList_VH.get(NSTouchBarItemIdentifierCandidateList_SEGMENT) as MemorySegment
+    set(value) = NSTouchBarItemIdentifierCandidateList_VH.set(NSTouchBarItemIdentifierCandidateList_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSPopoverCloseReasonKey (Void)*
+ */
+private val NSPopoverCloseReasonKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSPopoverCloseReasonKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopoverCloseReasonKey").orElseThrow() }
+private val NSPopoverCloseReasonKey_VH: VarHandle by lazy { NSPopoverCloseReasonKey_LAYOUT.varHandle() }
+
+var NSPopoverCloseReasonKey: MemorySegment
+    get() = NSPopoverCloseReasonKey_VH.get(NSPopoverCloseReasonKey_SEGMENT) as MemorySegment
+    set(value) = NSPopoverCloseReasonKey_VH.set(NSPopoverCloseReasonKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSPopoverCloseReasonStandard typedef const NSPopoverCloseReasonValue = (Void)*
+ */
+private val NSPopoverCloseReasonStandard_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSPopoverCloseReasonStandard_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopoverCloseReasonStandard").orElseThrow() }
+private val NSPopoverCloseReasonStandard_VH: VarHandle by lazy { NSPopoverCloseReasonStandard_LAYOUT.varHandle() }
+
+var NSPopoverCloseReasonStandard: MemorySegment
+    get() = NSPopoverCloseReasonStandard_VH.get(NSPopoverCloseReasonStandard_SEGMENT) as MemorySegment
+    set(value) = NSPopoverCloseReasonStandard_VH.set(NSPopoverCloseReasonStandard_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSPopoverCloseReasonDetachToWindow typedef const NSPopoverCloseReasonValue = (Void)*
+ */
+private val NSPopoverCloseReasonDetachToWindow_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSPopoverCloseReasonDetachToWindow_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopoverCloseReasonDetachToWindow").orElseThrow() }
+private val NSPopoverCloseReasonDetachToWindow_VH: VarHandle by lazy { NSPopoverCloseReasonDetachToWindow_LAYOUT.varHandle() }
+
+var NSPopoverCloseReasonDetachToWindow: MemorySegment
+    get() = NSPopoverCloseReasonDetachToWindow_VH.get(NSPopoverCloseReasonDetachToWindow_SEGMENT) as MemorySegment
+    set(value) = NSPopoverCloseReasonDetachToWindow_VH.set(NSPopoverCloseReasonDetachToWindow_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSPopoverWillShowNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSPopoverWillShowNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSPopoverWillShowNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopoverWillShowNotification").orElseThrow() }
+private val NSPopoverWillShowNotification_VH: VarHandle by lazy { NSPopoverWillShowNotification_LAYOUT.varHandle() }
+
+var NSPopoverWillShowNotification: MemorySegment
+    get() = NSPopoverWillShowNotification_VH.get(NSPopoverWillShowNotification_SEGMENT) as MemorySegment
+    set(value) = NSPopoverWillShowNotification_VH.set(NSPopoverWillShowNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSPopoverDidShowNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSPopoverDidShowNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSPopoverDidShowNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopoverDidShowNotification").orElseThrow() }
+private val NSPopoverDidShowNotification_VH: VarHandle by lazy { NSPopoverDidShowNotification_LAYOUT.varHandle() }
+
+var NSPopoverDidShowNotification: MemorySegment
+    get() = NSPopoverDidShowNotification_VH.get(NSPopoverDidShowNotification_SEGMENT) as MemorySegment
+    set(value) = NSPopoverDidShowNotification_VH.set(NSPopoverDidShowNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSPopoverWillCloseNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSPopoverWillCloseNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSPopoverWillCloseNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopoverWillCloseNotification").orElseThrow() }
+private val NSPopoverWillCloseNotification_VH: VarHandle by lazy { NSPopoverWillCloseNotification_LAYOUT.varHandle() }
+
+var NSPopoverWillCloseNotification: MemorySegment
+    get() = NSPopoverWillCloseNotification_VH.get(NSPopoverWillCloseNotification_SEGMENT) as MemorySegment
+    set(value) = NSPopoverWillCloseNotification_VH.set(NSPopoverWillCloseNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSPopoverDidCloseNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSPopoverDidCloseNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSPopoverDidCloseNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopoverDidCloseNotification").orElseThrow() }
+private val NSPopoverDidCloseNotification_VH: VarHandle by lazy { NSPopoverDidCloseNotification_LAYOUT.varHandle() }
+
+var NSPopoverDidCloseNotification: MemorySegment
+    get() = NSPopoverDidCloseNotification_VH.get(NSPopoverDidCloseNotification_SEGMENT) as MemorySegment
+    set(value) = NSPopoverDidCloseNotification_VH.set(NSPopoverDidCloseNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSCollectionElementKindInterItemGapIndicator typedef const NSCollectionViewSupplementaryElementKind = (Void)*
+ */
+private val NSCollectionElementKindInterItemGapIndicator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSCollectionElementKindInterItemGapIndicator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCollectionElementKindInterItemGapIndicator").orElseThrow() }
+private val NSCollectionElementKindInterItemGapIndicator_VH: VarHandle by lazy { NSCollectionElementKindInterItemGapIndicator_LAYOUT.varHandle() }
+
+var NSCollectionElementKindInterItemGapIndicator: MemorySegment
+    get() = NSCollectionElementKindInterItemGapIndicator_VH.get(NSCollectionElementKindInterItemGapIndicator_SEGMENT) as MemorySegment
+    set(value) = NSCollectionElementKindInterItemGapIndicator_VH.set(NSCollectionElementKindInterItemGapIndicator_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSCollectionElementKindSectionHeader typedef const NSCollectionViewSupplementaryElementKind = (Void)*
+ */
+private val NSCollectionElementKindSectionHeader_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSCollectionElementKindSectionHeader_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCollectionElementKindSectionHeader").orElseThrow() }
+private val NSCollectionElementKindSectionHeader_VH: VarHandle by lazy { NSCollectionElementKindSectionHeader_LAYOUT.varHandle() }
+
+var NSCollectionElementKindSectionHeader: MemorySegment
+    get() = NSCollectionElementKindSectionHeader_VH.get(NSCollectionElementKindSectionHeader_SEGMENT) as MemorySegment
+    set(value) = NSCollectionElementKindSectionHeader_VH.set(NSCollectionElementKindSectionHeader_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSCollectionElementKindSectionFooter typedef const NSCollectionViewSupplementaryElementKind = (Void)*
+ */
+private val NSCollectionElementKindSectionFooter_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSCollectionElementKindSectionFooter_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCollectionElementKindSectionFooter").orElseThrow() }
+private val NSCollectionElementKindSectionFooter_VH: VarHandle by lazy { NSCollectionElementKindSectionFooter_LAYOUT.varHandle() }
+
+var NSCollectionElementKindSectionFooter: MemorySegment
+    get() = NSCollectionElementKindSectionFooter_VH.get(NSCollectionElementKindSectionFooter_SEGMENT) as MemorySegment
+    set(value) = NSCollectionElementKindSectionFooter_VH.set(NSCollectionElementKindSectionFooter_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSDirectionalEdgeInsetsZero typedef const NSDirectionalEdgeInsets = Declared(NSDirectionalEdgeInsets)
+ */
+val NSDirectionalEdgeInsetsZero: MemorySegment = SymbolLookup.loaderLookup().find("NSDirectionalEdgeInsetsZero").orElseThrow()
+
+/**
+ * {@snippet lang=c : NSFontFamilyAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontFamilyAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontFamilyAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontFamilyAttribute").orElseThrow() }
+private val NSFontFamilyAttribute_VH: VarHandle by lazy { NSFontFamilyAttribute_LAYOUT.varHandle() }
+
+var NSFontFamilyAttribute: MemorySegment
+    get() = NSFontFamilyAttribute_VH.get(NSFontFamilyAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontFamilyAttribute_VH.set(NSFontFamilyAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontNameAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontNameAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontNameAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontNameAttribute").orElseThrow() }
+private val NSFontNameAttribute_VH: VarHandle by lazy { NSFontNameAttribute_LAYOUT.varHandle() }
+
+var NSFontNameAttribute: MemorySegment
+    get() = NSFontNameAttribute_VH.get(NSFontNameAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontNameAttribute_VH.set(NSFontNameAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontFaceAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontFaceAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontFaceAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontFaceAttribute").orElseThrow() }
+private val NSFontFaceAttribute_VH: VarHandle by lazy { NSFontFaceAttribute_LAYOUT.varHandle() }
+
+var NSFontFaceAttribute: MemorySegment
+    get() = NSFontFaceAttribute_VH.get(NSFontFaceAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontFaceAttribute_VH.set(NSFontFaceAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontSizeAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontSizeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontSizeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontSizeAttribute").orElseThrow() }
+private val NSFontSizeAttribute_VH: VarHandle by lazy { NSFontSizeAttribute_LAYOUT.varHandle() }
+
+var NSFontSizeAttribute: MemorySegment
+    get() = NSFontSizeAttribute_VH.get(NSFontSizeAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontSizeAttribute_VH.set(NSFontSizeAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontVisibleNameAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontVisibleNameAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontVisibleNameAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontVisibleNameAttribute").orElseThrow() }
+private val NSFontVisibleNameAttribute_VH: VarHandle by lazy { NSFontVisibleNameAttribute_LAYOUT.varHandle() }
+
+var NSFontVisibleNameAttribute: MemorySegment
+    get() = NSFontVisibleNameAttribute_VH.get(NSFontVisibleNameAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontVisibleNameAttribute_VH.set(NSFontVisibleNameAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontMatrixAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontMatrixAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontMatrixAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontMatrixAttribute").orElseThrow() }
+private val NSFontMatrixAttribute_VH: VarHandle by lazy { NSFontMatrixAttribute_LAYOUT.varHandle() }
+
+var NSFontMatrixAttribute: MemorySegment
+    get() = NSFontMatrixAttribute_VH.get(NSFontMatrixAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontMatrixAttribute_VH.set(NSFontMatrixAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontVariationAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontVariationAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontVariationAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontVariationAttribute").orElseThrow() }
+private val NSFontVariationAttribute_VH: VarHandle by lazy { NSFontVariationAttribute_LAYOUT.varHandle() }
+
+var NSFontVariationAttribute: MemorySegment
+    get() = NSFontVariationAttribute_VH.get(NSFontVariationAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontVariationAttribute_VH.set(NSFontVariationAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCharacterSetAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontCharacterSetAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCharacterSetAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCharacterSetAttribute").orElseThrow() }
+private val NSFontCharacterSetAttribute_VH: VarHandle by lazy { NSFontCharacterSetAttribute_LAYOUT.varHandle() }
+
+var NSFontCharacterSetAttribute: MemorySegment
+    get() = NSFontCharacterSetAttribute_VH.get(NSFontCharacterSetAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontCharacterSetAttribute_VH.set(NSFontCharacterSetAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCascadeListAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontCascadeListAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCascadeListAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCascadeListAttribute").orElseThrow() }
+private val NSFontCascadeListAttribute_VH: VarHandle by lazy { NSFontCascadeListAttribute_LAYOUT.varHandle() }
+
+var NSFontCascadeListAttribute: MemorySegment
+    get() = NSFontCascadeListAttribute_VH.get(NSFontCascadeListAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontCascadeListAttribute_VH.set(NSFontCascadeListAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTraitsAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontTraitsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTraitsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTraitsAttribute").orElseThrow() }
+private val NSFontTraitsAttribute_VH: VarHandle by lazy { NSFontTraitsAttribute_LAYOUT.varHandle() }
+
+var NSFontTraitsAttribute: MemorySegment
+    get() = NSFontTraitsAttribute_VH.get(NSFontTraitsAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontTraitsAttribute_VH.set(NSFontTraitsAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontFixedAdvanceAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontFixedAdvanceAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontFixedAdvanceAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontFixedAdvanceAttribute").orElseThrow() }
+private val NSFontFixedAdvanceAttribute_VH: VarHandle by lazy { NSFontFixedAdvanceAttribute_LAYOUT.varHandle() }
+
+var NSFontFixedAdvanceAttribute: MemorySegment
+    get() = NSFontFixedAdvanceAttribute_VH.get(NSFontFixedAdvanceAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontFixedAdvanceAttribute_VH.set(NSFontFixedAdvanceAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontFeatureSettingsAttribute typedef NSFontDescriptorAttributeName = typedef NSString = (Void)*
+ */
+private val NSFontFeatureSettingsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontFeatureSettingsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontFeatureSettingsAttribute").orElseThrow() }
+private val NSFontFeatureSettingsAttribute_VH: VarHandle by lazy { NSFontFeatureSettingsAttribute_LAYOUT.varHandle() }
+
+var NSFontFeatureSettingsAttribute: MemorySegment
+    get() = NSFontFeatureSettingsAttribute_VH.get(NSFontFeatureSettingsAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontFeatureSettingsAttribute_VH.set(NSFontFeatureSettingsAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontSymbolicTrait typedef NSFontDescriptorTraitKey = typedef NSString = (Void)*
+ */
+private val NSFontSymbolicTrait_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontSymbolicTrait_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontSymbolicTrait").orElseThrow() }
+private val NSFontSymbolicTrait_VH: VarHandle by lazy { NSFontSymbolicTrait_LAYOUT.varHandle() }
+
+var NSFontSymbolicTrait: MemorySegment
+    get() = NSFontSymbolicTrait_VH.get(NSFontSymbolicTrait_SEGMENT) as MemorySegment
+    set(value) = NSFontSymbolicTrait_VH.set(NSFontSymbolicTrait_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightTrait typedef NSFontDescriptorTraitKey = typedef NSString = (Void)*
+ */
+private val NSFontWeightTrait_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontWeightTrait_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightTrait").orElseThrow() }
+private val NSFontWeightTrait_VH: VarHandle by lazy { NSFontWeightTrait_LAYOUT.varHandle() }
+
+var NSFontWeightTrait: MemorySegment
+    get() = NSFontWeightTrait_VH.get(NSFontWeightTrait_SEGMENT) as MemorySegment
+    set(value) = NSFontWeightTrait_VH.set(NSFontWeightTrait_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWidthTrait typedef NSFontDescriptorTraitKey = typedef NSString = (Void)*
+ */
+private val NSFontWidthTrait_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontWidthTrait_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWidthTrait").orElseThrow() }
+private val NSFontWidthTrait_VH: VarHandle by lazy { NSFontWidthTrait_LAYOUT.varHandle() }
+
+var NSFontWidthTrait: MemorySegment
+    get() = NSFontWidthTrait_VH.get(NSFontWidthTrait_SEGMENT) as MemorySegment
+    set(value) = NSFontWidthTrait_VH.set(NSFontWidthTrait_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontSlantTrait typedef NSFontDescriptorTraitKey = typedef NSString = (Void)*
+ */
+private val NSFontSlantTrait_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontSlantTrait_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontSlantTrait").orElseThrow() }
+private val NSFontSlantTrait_VH: VarHandle by lazy { NSFontSlantTrait_LAYOUT.varHandle() }
+
+var NSFontSlantTrait: MemorySegment
+    get() = NSFontSlantTrait_VH.get(NSFontSlantTrait_SEGMENT) as MemorySegment
+    set(value) = NSFontSlantTrait_VH.set(NSFontSlantTrait_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontVariationAxisIdentifierKey typedef NSFontDescriptorVariationKey = typedef NSString = (Void)*
+ */
+private val NSFontVariationAxisIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontVariationAxisIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontVariationAxisIdentifierKey").orElseThrow() }
+private val NSFontVariationAxisIdentifierKey_VH: VarHandle by lazy { NSFontVariationAxisIdentifierKey_LAYOUT.varHandle() }
+
+var NSFontVariationAxisIdentifierKey: MemorySegment
+    get() = NSFontVariationAxisIdentifierKey_VH.get(NSFontVariationAxisIdentifierKey_SEGMENT) as MemorySegment
+    set(value) = NSFontVariationAxisIdentifierKey_VH.set(NSFontVariationAxisIdentifierKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontVariationAxisMinimumValueKey typedef NSFontDescriptorVariationKey = typedef NSString = (Void)*
+ */
+private val NSFontVariationAxisMinimumValueKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontVariationAxisMinimumValueKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontVariationAxisMinimumValueKey").orElseThrow() }
+private val NSFontVariationAxisMinimumValueKey_VH: VarHandle by lazy { NSFontVariationAxisMinimumValueKey_LAYOUT.varHandle() }
+
+var NSFontVariationAxisMinimumValueKey: MemorySegment
+    get() = NSFontVariationAxisMinimumValueKey_VH.get(NSFontVariationAxisMinimumValueKey_SEGMENT) as MemorySegment
+    set(value) = NSFontVariationAxisMinimumValueKey_VH.set(NSFontVariationAxisMinimumValueKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontVariationAxisMaximumValueKey typedef NSFontDescriptorVariationKey = typedef NSString = (Void)*
+ */
+private val NSFontVariationAxisMaximumValueKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontVariationAxisMaximumValueKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontVariationAxisMaximumValueKey").orElseThrow() }
+private val NSFontVariationAxisMaximumValueKey_VH: VarHandle by lazy { NSFontVariationAxisMaximumValueKey_LAYOUT.varHandle() }
+
+var NSFontVariationAxisMaximumValueKey: MemorySegment
+    get() = NSFontVariationAxisMaximumValueKey_VH.get(NSFontVariationAxisMaximumValueKey_SEGMENT) as MemorySegment
+    set(value) = NSFontVariationAxisMaximumValueKey_VH.set(NSFontVariationAxisMaximumValueKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontVariationAxisDefaultValueKey typedef NSFontDescriptorVariationKey = typedef NSString = (Void)*
+ */
+private val NSFontVariationAxisDefaultValueKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontVariationAxisDefaultValueKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontVariationAxisDefaultValueKey").orElseThrow() }
+private val NSFontVariationAxisDefaultValueKey_VH: VarHandle by lazy { NSFontVariationAxisDefaultValueKey_LAYOUT.varHandle() }
+
+var NSFontVariationAxisDefaultValueKey: MemorySegment
+    get() = NSFontVariationAxisDefaultValueKey_VH.get(NSFontVariationAxisDefaultValueKey_SEGMENT) as MemorySegment
+    set(value) = NSFontVariationAxisDefaultValueKey_VH.set(NSFontVariationAxisDefaultValueKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontVariationAxisNameKey typedef NSFontDescriptorVariationKey = typedef NSString = (Void)*
+ */
+private val NSFontVariationAxisNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontVariationAxisNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontVariationAxisNameKey").orElseThrow() }
+private val NSFontVariationAxisNameKey_VH: VarHandle by lazy { NSFontVariationAxisNameKey_LAYOUT.varHandle() }
+
+var NSFontVariationAxisNameKey: MemorySegment
+    get() = NSFontVariationAxisNameKey_VH.get(NSFontVariationAxisNameKey_SEGMENT) as MemorySegment
+    set(value) = NSFontVariationAxisNameKey_VH.set(NSFontVariationAxisNameKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontFeatureTypeIdentifierKey typedef NSFontDescriptorFeatureKey = typedef NSString = (Void)*
+ */
+private val NSFontFeatureTypeIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontFeatureTypeIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontFeatureTypeIdentifierKey").orElseThrow() }
+private val NSFontFeatureTypeIdentifierKey_VH: VarHandle by lazy { NSFontFeatureTypeIdentifierKey_LAYOUT.varHandle() }
+
+var NSFontFeatureTypeIdentifierKey: MemorySegment
+    get() = NSFontFeatureTypeIdentifierKey_VH.get(NSFontFeatureTypeIdentifierKey_SEGMENT) as MemorySegment
+    set(value) = NSFontFeatureTypeIdentifierKey_VH.set(NSFontFeatureTypeIdentifierKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontFeatureSelectorIdentifierKey typedef NSFontDescriptorFeatureKey = typedef NSString = (Void)*
+ */
+private val NSFontFeatureSelectorIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontFeatureSelectorIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontFeatureSelectorIdentifierKey").orElseThrow() }
+private val NSFontFeatureSelectorIdentifierKey_VH: VarHandle by lazy { NSFontFeatureSelectorIdentifierKey_LAYOUT.varHandle() }
+
+var NSFontFeatureSelectorIdentifierKey: MemorySegment
+    get() = NSFontFeatureSelectorIdentifierKey_VH.get(NSFontFeatureSelectorIdentifierKey_SEGMENT) as MemorySegment
+    set(value) = NSFontFeatureSelectorIdentifierKey_VH.set(NSFontFeatureSelectorIdentifierKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightUltraLight typedef const NSFontWeight = Double
+ */
+private val NSFontWeightUltraLight_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWeightUltraLight_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightUltraLight").orElseThrow() }
+private val NSFontWeightUltraLight_VH: VarHandle by lazy { NSFontWeightUltraLight_LAYOUT.varHandle() }
+
+var NSFontWeightUltraLight: Double
+    get() = NSFontWeightUltraLight_VH.get(NSFontWeightUltraLight_SEGMENT) as Double
+    set(value) = NSFontWeightUltraLight_VH.set(NSFontWeightUltraLight_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightThin typedef const NSFontWeight = Double
+ */
+private val NSFontWeightThin_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWeightThin_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightThin").orElseThrow() }
+private val NSFontWeightThin_VH: VarHandle by lazy { NSFontWeightThin_LAYOUT.varHandle() }
+
+var NSFontWeightThin: Double
+    get() = NSFontWeightThin_VH.get(NSFontWeightThin_SEGMENT) as Double
+    set(value) = NSFontWeightThin_VH.set(NSFontWeightThin_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightLight typedef const NSFontWeight = Double
+ */
+private val NSFontWeightLight_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWeightLight_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightLight").orElseThrow() }
+private val NSFontWeightLight_VH: VarHandle by lazy { NSFontWeightLight_LAYOUT.varHandle() }
+
+var NSFontWeightLight: Double
+    get() = NSFontWeightLight_VH.get(NSFontWeightLight_SEGMENT) as Double
+    set(value) = NSFontWeightLight_VH.set(NSFontWeightLight_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightRegular typedef const NSFontWeight = Double
+ */
+private val NSFontWeightRegular_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWeightRegular_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightRegular").orElseThrow() }
+private val NSFontWeightRegular_VH: VarHandle by lazy { NSFontWeightRegular_LAYOUT.varHandle() }
+
+var NSFontWeightRegular: Double
+    get() = NSFontWeightRegular_VH.get(NSFontWeightRegular_SEGMENT) as Double
+    set(value) = NSFontWeightRegular_VH.set(NSFontWeightRegular_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightMedium typedef const NSFontWeight = Double
+ */
+private val NSFontWeightMedium_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWeightMedium_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightMedium").orElseThrow() }
+private val NSFontWeightMedium_VH: VarHandle by lazy { NSFontWeightMedium_LAYOUT.varHandle() }
+
+var NSFontWeightMedium: Double
+    get() = NSFontWeightMedium_VH.get(NSFontWeightMedium_SEGMENT) as Double
+    set(value) = NSFontWeightMedium_VH.set(NSFontWeightMedium_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightSemibold typedef const NSFontWeight = Double
+ */
+private val NSFontWeightSemibold_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWeightSemibold_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightSemibold").orElseThrow() }
+private val NSFontWeightSemibold_VH: VarHandle by lazy { NSFontWeightSemibold_LAYOUT.varHandle() }
+
+var NSFontWeightSemibold: Double
+    get() = NSFontWeightSemibold_VH.get(NSFontWeightSemibold_SEGMENT) as Double
+    set(value) = NSFontWeightSemibold_VH.set(NSFontWeightSemibold_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightBold typedef const NSFontWeight = Double
+ */
+private val NSFontWeightBold_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWeightBold_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightBold").orElseThrow() }
+private val NSFontWeightBold_VH: VarHandle by lazy { NSFontWeightBold_LAYOUT.varHandle() }
+
+var NSFontWeightBold: Double
+    get() = NSFontWeightBold_VH.get(NSFontWeightBold_SEGMENT) as Double
+    set(value) = NSFontWeightBold_VH.set(NSFontWeightBold_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightHeavy typedef const NSFontWeight = Double
+ */
+private val NSFontWeightHeavy_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWeightHeavy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightHeavy").orElseThrow() }
+private val NSFontWeightHeavy_VH: VarHandle by lazy { NSFontWeightHeavy_LAYOUT.varHandle() }
+
+var NSFontWeightHeavy: Double
+    get() = NSFontWeightHeavy_VH.get(NSFontWeightHeavy_SEGMENT) as Double
+    set(value) = NSFontWeightHeavy_VH.set(NSFontWeightHeavy_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWeightBlack typedef const NSFontWeight = Double
+ */
+private val NSFontWeightBlack_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWeightBlack_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWeightBlack").orElseThrow() }
+private val NSFontWeightBlack_VH: VarHandle by lazy { NSFontWeightBlack_LAYOUT.varHandle() }
+
+var NSFontWeightBlack: Double
+    get() = NSFontWeightBlack_VH.get(NSFontWeightBlack_SEGMENT) as Double
+    set(value) = NSFontWeightBlack_VH.set(NSFontWeightBlack_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWidthCompressed typedef const NSFontWidth = Double
+ */
+private val NSFontWidthCompressed_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWidthCompressed_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWidthCompressed").orElseThrow() }
+private val NSFontWidthCompressed_VH: VarHandle by lazy { NSFontWidthCompressed_LAYOUT.varHandle() }
+
+var NSFontWidthCompressed: Double
+    get() = NSFontWidthCompressed_VH.get(NSFontWidthCompressed_SEGMENT) as Double
+    set(value) = NSFontWidthCompressed_VH.set(NSFontWidthCompressed_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWidthCondensed typedef const NSFontWidth = Double
+ */
+private val NSFontWidthCondensed_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWidthCondensed_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWidthCondensed").orElseThrow() }
+private val NSFontWidthCondensed_VH: VarHandle by lazy { NSFontWidthCondensed_LAYOUT.varHandle() }
+
+var NSFontWidthCondensed: Double
+    get() = NSFontWidthCondensed_VH.get(NSFontWidthCondensed_SEGMENT) as Double
+    set(value) = NSFontWidthCondensed_VH.set(NSFontWidthCondensed_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWidthStandard typedef const NSFontWidth = Double
+ */
+private val NSFontWidthStandard_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWidthStandard_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWidthStandard").orElseThrow() }
+private val NSFontWidthStandard_VH: VarHandle by lazy { NSFontWidthStandard_LAYOUT.varHandle() }
+
+var NSFontWidthStandard: Double
+    get() = NSFontWidthStandard_VH.get(NSFontWidthStandard_SEGMENT) as Double
+    set(value) = NSFontWidthStandard_VH.set(NSFontWidthStandard_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontWidthExpanded typedef const NSFontWidth = Double
+ */
+private val NSFontWidthExpanded_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFontWidthExpanded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontWidthExpanded").orElseThrow() }
+private val NSFontWidthExpanded_VH: VarHandle by lazy { NSFontWidthExpanded_LAYOUT.varHandle() }
+
+var NSFontWidthExpanded: Double
+    get() = NSFontWidthExpanded_VH.get(NSFontWidthExpanded_SEGMENT) as Double
+    set(value) = NSFontWidthExpanded_VH.set(NSFontWidthExpanded_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontDescriptorSystemDesignDefault typedef const NSFontDescriptorSystemDesign = (Void)*
+ */
+private val NSFontDescriptorSystemDesignDefault_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontDescriptorSystemDesignDefault_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontDescriptorSystemDesignDefault").orElseThrow() }
+private val NSFontDescriptorSystemDesignDefault_VH: VarHandle by lazy { NSFontDescriptorSystemDesignDefault_LAYOUT.varHandle() }
+
+var NSFontDescriptorSystemDesignDefault: MemorySegment
+    get() = NSFontDescriptorSystemDesignDefault_VH.get(NSFontDescriptorSystemDesignDefault_SEGMENT) as MemorySegment
+    set(value) = NSFontDescriptorSystemDesignDefault_VH.set(NSFontDescriptorSystemDesignDefault_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontDescriptorSystemDesignSerif typedef const NSFontDescriptorSystemDesign = (Void)*
+ */
+private val NSFontDescriptorSystemDesignSerif_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontDescriptorSystemDesignSerif_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontDescriptorSystemDesignSerif").orElseThrow() }
+private val NSFontDescriptorSystemDesignSerif_VH: VarHandle by lazy { NSFontDescriptorSystemDesignSerif_LAYOUT.varHandle() }
+
+var NSFontDescriptorSystemDesignSerif: MemorySegment
+    get() = NSFontDescriptorSystemDesignSerif_VH.get(NSFontDescriptorSystemDesignSerif_SEGMENT) as MemorySegment
+    set(value) = NSFontDescriptorSystemDesignSerif_VH.set(NSFontDescriptorSystemDesignSerif_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontDescriptorSystemDesignMonospaced typedef const NSFontDescriptorSystemDesign = (Void)*
+ */
+private val NSFontDescriptorSystemDesignMonospaced_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontDescriptorSystemDesignMonospaced_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontDescriptorSystemDesignMonospaced").orElseThrow() }
+private val NSFontDescriptorSystemDesignMonospaced_VH: VarHandle by lazy { NSFontDescriptorSystemDesignMonospaced_LAYOUT.varHandle() }
+
+var NSFontDescriptorSystemDesignMonospaced: MemorySegment
+    get() = NSFontDescriptorSystemDesignMonospaced_VH.get(NSFontDescriptorSystemDesignMonospaced_SEGMENT) as MemorySegment
+    set(value) = NSFontDescriptorSystemDesignMonospaced_VH.set(NSFontDescriptorSystemDesignMonospaced_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontDescriptorSystemDesignRounded typedef const NSFontDescriptorSystemDesign = (Void)*
+ */
+private val NSFontDescriptorSystemDesignRounded_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontDescriptorSystemDesignRounded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontDescriptorSystemDesignRounded").orElseThrow() }
+private val NSFontDescriptorSystemDesignRounded_VH: VarHandle by lazy { NSFontDescriptorSystemDesignRounded_LAYOUT.varHandle() }
+
+var NSFontDescriptorSystemDesignRounded: MemorySegment
+    get() = NSFontDescriptorSystemDesignRounded_VH.get(NSFontDescriptorSystemDesignRounded_SEGMENT) as MemorySegment
+    set(value) = NSFontDescriptorSystemDesignRounded_VH.set(NSFontDescriptorSystemDesignRounded_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleLargeTitle typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleLargeTitle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleLargeTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleLargeTitle").orElseThrow() }
+private val NSFontTextStyleLargeTitle_VH: VarHandle by lazy { NSFontTextStyleLargeTitle_LAYOUT.varHandle() }
+
+var NSFontTextStyleLargeTitle: MemorySegment
+    get() = NSFontTextStyleLargeTitle_VH.get(NSFontTextStyleLargeTitle_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleLargeTitle_VH.set(NSFontTextStyleLargeTitle_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleTitle1 typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleTitle1_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleTitle1_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleTitle1").orElseThrow() }
+private val NSFontTextStyleTitle1_VH: VarHandle by lazy { NSFontTextStyleTitle1_LAYOUT.varHandle() }
+
+var NSFontTextStyleTitle1: MemorySegment
+    get() = NSFontTextStyleTitle1_VH.get(NSFontTextStyleTitle1_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleTitle1_VH.set(NSFontTextStyleTitle1_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleTitle2 typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleTitle2_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleTitle2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleTitle2").orElseThrow() }
+private val NSFontTextStyleTitle2_VH: VarHandle by lazy { NSFontTextStyleTitle2_LAYOUT.varHandle() }
+
+var NSFontTextStyleTitle2: MemorySegment
+    get() = NSFontTextStyleTitle2_VH.get(NSFontTextStyleTitle2_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleTitle2_VH.set(NSFontTextStyleTitle2_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleTitle3 typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleTitle3_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleTitle3_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleTitle3").orElseThrow() }
+private val NSFontTextStyleTitle3_VH: VarHandle by lazy { NSFontTextStyleTitle3_LAYOUT.varHandle() }
+
+var NSFontTextStyleTitle3: MemorySegment
+    get() = NSFontTextStyleTitle3_VH.get(NSFontTextStyleTitle3_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleTitle3_VH.set(NSFontTextStyleTitle3_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleHeadline typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleHeadline_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleHeadline_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleHeadline").orElseThrow() }
+private val NSFontTextStyleHeadline_VH: VarHandle by lazy { NSFontTextStyleHeadline_LAYOUT.varHandle() }
+
+var NSFontTextStyleHeadline: MemorySegment
+    get() = NSFontTextStyleHeadline_VH.get(NSFontTextStyleHeadline_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleHeadline_VH.set(NSFontTextStyleHeadline_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleSubheadline typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleSubheadline_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleSubheadline_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleSubheadline").orElseThrow() }
+private val NSFontTextStyleSubheadline_VH: VarHandle by lazy { NSFontTextStyleSubheadline_LAYOUT.varHandle() }
+
+var NSFontTextStyleSubheadline: MemorySegment
+    get() = NSFontTextStyleSubheadline_VH.get(NSFontTextStyleSubheadline_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleSubheadline_VH.set(NSFontTextStyleSubheadline_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleBody typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleBody_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleBody_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleBody").orElseThrow() }
+private val NSFontTextStyleBody_VH: VarHandle by lazy { NSFontTextStyleBody_LAYOUT.varHandle() }
+
+var NSFontTextStyleBody: MemorySegment
+    get() = NSFontTextStyleBody_VH.get(NSFontTextStyleBody_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleBody_VH.set(NSFontTextStyleBody_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleCallout typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleCallout_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleCallout_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleCallout").orElseThrow() }
+private val NSFontTextStyleCallout_VH: VarHandle by lazy { NSFontTextStyleCallout_LAYOUT.varHandle() }
+
+var NSFontTextStyleCallout: MemorySegment
+    get() = NSFontTextStyleCallout_VH.get(NSFontTextStyleCallout_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleCallout_VH.set(NSFontTextStyleCallout_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleFootnote typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleFootnote_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleFootnote_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleFootnote").orElseThrow() }
+private val NSFontTextStyleFootnote_VH: VarHandle by lazy { NSFontTextStyleFootnote_LAYOUT.varHandle() }
+
+var NSFontTextStyleFootnote: MemorySegment
+    get() = NSFontTextStyleFootnote_VH.get(NSFontTextStyleFootnote_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleFootnote_VH.set(NSFontTextStyleFootnote_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleCaption1 typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleCaption1_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleCaption1_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleCaption1").orElseThrow() }
+private val NSFontTextStyleCaption1_VH: VarHandle by lazy { NSFontTextStyleCaption1_LAYOUT.varHandle() }
+
+var NSFontTextStyleCaption1: MemorySegment
+    get() = NSFontTextStyleCaption1_VH.get(NSFontTextStyleCaption1_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleCaption1_VH.set(NSFontTextStyleCaption1_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontTextStyleCaption2 typedef const NSFontTextStyle = (Void)*
+ */
+private val NSFontTextStyleCaption2_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontTextStyleCaption2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontTextStyleCaption2").orElseThrow() }
+private val NSFontTextStyleCaption2_VH: VarHandle by lazy { NSFontTextStyleCaption2_LAYOUT.varHandle() }
+
+var NSFontTextStyleCaption2: MemorySegment
+    get() = NSFontTextStyleCaption2_VH.get(NSFontTextStyleCaption2_SEGMENT) as MemorySegment
+    set(value) = NSFontTextStyleCaption2_VH.set(NSFontTextStyleCaption2_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontColorAttribute typedef NSString = (Void)*
+ */
+private val NSFontColorAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontColorAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontColorAttribute").orElseThrow() }
+private val NSFontColorAttribute_VH: VarHandle by lazy { NSFontColorAttribute_LAYOUT.varHandle() }
+
+var NSFontColorAttribute: MemorySegment
+    get() = NSFontColorAttribute_VH.get(NSFontColorAttribute_SEGMENT) as MemorySegment
+    set(value) = NSFontColorAttribute_VH.set(NSFontColorAttribute_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontIdentityMatrix (typedef CGFloat = Double)*
+ */
+private val NSFontIdentityMatrix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontIdentityMatrix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontIdentityMatrix").orElseThrow() }
+private val NSFontIdentityMatrix_VH: VarHandle by lazy { NSFontIdentityMatrix_LAYOUT.varHandle() }
+
+var NSFontIdentityMatrix: MemorySegment
+    get() = NSFontIdentityMatrix_VH.get(NSFontIdentityMatrix_SEGMENT) as MemorySegment
+    set(value) = NSFontIdentityMatrix_VH.set(NSFontIdentityMatrix_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSAntialiasThresholdChangedNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSAntialiasThresholdChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAntialiasThresholdChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAntialiasThresholdChangedNotification").orElseThrow() }
+private val NSAntialiasThresholdChangedNotification_VH: VarHandle by lazy { NSAntialiasThresholdChangedNotification_LAYOUT.varHandle() }
+
+var NSAntialiasThresholdChangedNotification: MemorySegment
+    get() = NSAntialiasThresholdChangedNotification_VH.get(NSAntialiasThresholdChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSAntialiasThresholdChangedNotification_VH.set(NSAntialiasThresholdChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontSetChangedNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSFontSetChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontSetChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontSetChangedNotification").orElseThrow() }
+private val NSFontSetChangedNotification_VH: VarHandle by lazy { NSFontSetChangedNotification_LAYOUT.varHandle() }
+
+var NSFontSetChangedNotification: MemorySegment
+    get() = NSFontSetChangedNotification_VH.get(NSFontSetChangedNotification_SEGMENT) as MemorySegment
+    set(value) = NSFontSetChangedNotification_VH.set(NSFontSetChangedNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSConvertGlyphsToPackedGlyphs typedef NSInteger = Long((typedef NSGlyph = UNSIGNED = Int)*,typedef NSInteger = Long,typedef NSMultibyteGlyphPacking = Declared(NSMultibyteGlyphPacking),(Char)*)
+ */
+private val NSConvertGlyphsToPackedGlyphs_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val NSConvertGlyphsToPackedGlyphs_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSConvertGlyphsToPackedGlyphs").orElseThrow()
+private val NSConvertGlyphsToPackedGlyphs_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSConvertGlyphsToPackedGlyphs_ADDR, NSConvertGlyphsToPackedGlyphs_DESC)
+
+fun NSConvertGlyphsToPackedGlyphs(arg0: MemorySegment, arg1: Long, arg2: NSMultibyteGlyphPacking, arg3: MemorySegment): Long {
+    try {
+        return NSConvertGlyphsToPackedGlyphs_HANDLE.invokeExact(arg0, arg1, arg2.value, arg3) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSFontCollectionIncludeDisabledFontsOption typedef const NSFontCollectionMatchingOptionKey = (Void)*
+ */
+private val NSFontCollectionIncludeDisabledFontsOption_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionIncludeDisabledFontsOption_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionIncludeDisabledFontsOption").orElseThrow() }
+private val NSFontCollectionIncludeDisabledFontsOption_VH: VarHandle by lazy { NSFontCollectionIncludeDisabledFontsOption_LAYOUT.varHandle() }
+
+var NSFontCollectionIncludeDisabledFontsOption: MemorySegment
+    get() = NSFontCollectionIncludeDisabledFontsOption_VH.get(NSFontCollectionIncludeDisabledFontsOption_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionIncludeDisabledFontsOption_VH.set(NSFontCollectionIncludeDisabledFontsOption_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionRemoveDuplicatesOption typedef const NSFontCollectionMatchingOptionKey = (Void)*
+ */
+private val NSFontCollectionRemoveDuplicatesOption_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionRemoveDuplicatesOption_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionRemoveDuplicatesOption").orElseThrow() }
+private val NSFontCollectionRemoveDuplicatesOption_VH: VarHandle by lazy { NSFontCollectionRemoveDuplicatesOption_LAYOUT.varHandle() }
+
+var NSFontCollectionRemoveDuplicatesOption: MemorySegment
+    get() = NSFontCollectionRemoveDuplicatesOption_VH.get(NSFontCollectionRemoveDuplicatesOption_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionRemoveDuplicatesOption_VH.set(NSFontCollectionRemoveDuplicatesOption_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionDisallowAutoActivationOption typedef const NSFontCollectionMatchingOptionKey = (Void)*
+ */
+private val NSFontCollectionDisallowAutoActivationOption_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionDisallowAutoActivationOption_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionDisallowAutoActivationOption").orElseThrow() }
+private val NSFontCollectionDisallowAutoActivationOption_VH: VarHandle by lazy { NSFontCollectionDisallowAutoActivationOption_LAYOUT.varHandle() }
+
+var NSFontCollectionDisallowAutoActivationOption: MemorySegment
+    get() = NSFontCollectionDisallowAutoActivationOption_VH.get(NSFontCollectionDisallowAutoActivationOption_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionDisallowAutoActivationOption_VH.set(NSFontCollectionDisallowAutoActivationOption_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionDidChangeNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSFontCollectionDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionDidChangeNotification").orElseThrow() }
+private val NSFontCollectionDidChangeNotification_VH: VarHandle by lazy { NSFontCollectionDidChangeNotification_LAYOUT.varHandle() }
+
+var NSFontCollectionDidChangeNotification: MemorySegment
+    get() = NSFontCollectionDidChangeNotification_VH.get(NSFontCollectionDidChangeNotification_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionDidChangeNotification_VH.set(NSFontCollectionDidChangeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionActionKey typedef const NSFontCollectionUserInfoKey = (Void)*
+ */
+private val NSFontCollectionActionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionActionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionActionKey").orElseThrow() }
+private val NSFontCollectionActionKey_VH: VarHandle by lazy { NSFontCollectionActionKey_LAYOUT.varHandle() }
+
+var NSFontCollectionActionKey: MemorySegment
+    get() = NSFontCollectionActionKey_VH.get(NSFontCollectionActionKey_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionActionKey_VH.set(NSFontCollectionActionKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionNameKey typedef const NSFontCollectionUserInfoKey = (Void)*
+ */
+private val NSFontCollectionNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionNameKey").orElseThrow() }
+private val NSFontCollectionNameKey_VH: VarHandle by lazy { NSFontCollectionNameKey_LAYOUT.varHandle() }
+
+var NSFontCollectionNameKey: MemorySegment
+    get() = NSFontCollectionNameKey_VH.get(NSFontCollectionNameKey_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionNameKey_VH.set(NSFontCollectionNameKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionOldNameKey typedef const NSFontCollectionUserInfoKey = (Void)*
+ */
+private val NSFontCollectionOldNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionOldNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionOldNameKey").orElseThrow() }
+private val NSFontCollectionOldNameKey_VH: VarHandle by lazy { NSFontCollectionOldNameKey_LAYOUT.varHandle() }
+
+var NSFontCollectionOldNameKey: MemorySegment
+    get() = NSFontCollectionOldNameKey_VH.get(NSFontCollectionOldNameKey_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionOldNameKey_VH.set(NSFontCollectionOldNameKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionVisibilityKey typedef const NSFontCollectionUserInfoKey = (Void)*
+ */
+private val NSFontCollectionVisibilityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionVisibilityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionVisibilityKey").orElseThrow() }
+private val NSFontCollectionVisibilityKey_VH: VarHandle by lazy { NSFontCollectionVisibilityKey_LAYOUT.varHandle() }
+
+var NSFontCollectionVisibilityKey: MemorySegment
+    get() = NSFontCollectionVisibilityKey_VH.get(NSFontCollectionVisibilityKey_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionVisibilityKey_VH.set(NSFontCollectionVisibilityKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionWasShown typedef const NSFontCollectionActionTypeKey = (Void)*
+ */
+private val NSFontCollectionWasShown_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionWasShown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionWasShown").orElseThrow() }
+private val NSFontCollectionWasShown_VH: VarHandle by lazy { NSFontCollectionWasShown_LAYOUT.varHandle() }
+
+var NSFontCollectionWasShown: MemorySegment
+    get() = NSFontCollectionWasShown_VH.get(NSFontCollectionWasShown_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionWasShown_VH.set(NSFontCollectionWasShown_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionWasHidden typedef const NSFontCollectionActionTypeKey = (Void)*
+ */
+private val NSFontCollectionWasHidden_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionWasHidden_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionWasHidden").orElseThrow() }
+private val NSFontCollectionWasHidden_VH: VarHandle by lazy { NSFontCollectionWasHidden_LAYOUT.varHandle() }
+
+var NSFontCollectionWasHidden: MemorySegment
+    get() = NSFontCollectionWasHidden_VH.get(NSFontCollectionWasHidden_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionWasHidden_VH.set(NSFontCollectionWasHidden_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionWasRenamed typedef const NSFontCollectionActionTypeKey = (Void)*
+ */
+private val NSFontCollectionWasRenamed_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionWasRenamed_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionWasRenamed").orElseThrow() }
+private val NSFontCollectionWasRenamed_VH: VarHandle by lazy { NSFontCollectionWasRenamed_LAYOUT.varHandle() }
+
+var NSFontCollectionWasRenamed: MemorySegment
+    get() = NSFontCollectionWasRenamed_VH.get(NSFontCollectionWasRenamed_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionWasRenamed_VH.set(NSFontCollectionWasRenamed_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionAllFonts typedef const NSFontCollectionName = (Void)*
+ */
+private val NSFontCollectionAllFonts_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionAllFonts_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionAllFonts").orElseThrow() }
+private val NSFontCollectionAllFonts_VH: VarHandle by lazy { NSFontCollectionAllFonts_LAYOUT.varHandle() }
+
+var NSFontCollectionAllFonts: MemorySegment
+    get() = NSFontCollectionAllFonts_VH.get(NSFontCollectionAllFonts_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionAllFonts_VH.set(NSFontCollectionAllFonts_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionUser typedef const NSFontCollectionName = (Void)*
+ */
+private val NSFontCollectionUser_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionUser_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionUser").orElseThrow() }
+private val NSFontCollectionUser_VH: VarHandle by lazy { NSFontCollectionUser_LAYOUT.varHandle() }
+
+var NSFontCollectionUser: MemorySegment
+    get() = NSFontCollectionUser_VH.get(NSFontCollectionUser_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionUser_VH.set(NSFontCollectionUser_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionFavorites typedef const NSFontCollectionName = (Void)*
+ */
+private val NSFontCollectionFavorites_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionFavorites_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionFavorites").orElseThrow() }
+private val NSFontCollectionFavorites_VH: VarHandle by lazy { NSFontCollectionFavorites_LAYOUT.varHandle() }
+
+var NSFontCollectionFavorites: MemorySegment
+    get() = NSFontCollectionFavorites_VH.get(NSFontCollectionFavorites_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionFavorites_VH.set(NSFontCollectionFavorites_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFontCollectionRecentlyUsed typedef const NSFontCollectionName = (Void)*
+ */
+private val NSFontCollectionRecentlyUsed_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFontCollectionRecentlyUsed_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontCollectionRecentlyUsed").orElseThrow() }
+private val NSFontCollectionRecentlyUsed_VH: VarHandle by lazy { NSFontCollectionRecentlyUsed_LAYOUT.varHandle() }
+
+var NSFontCollectionRecentlyUsed: MemorySegment
+    get() = NSFontCollectionRecentlyUsed_VH.get(NSFontCollectionRecentlyUsed_SEGMENT) as MemorySegment
+    set(value) = NSFontCollectionRecentlyUsed_VH.set(NSFontCollectionRecentlyUsed_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidBecomeKeyNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidBecomeKeyNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidBecomeKeyNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidBecomeKeyNotification").orElseThrow() }
+private val NSWindowDidBecomeKeyNotification_VH: VarHandle by lazy { NSWindowDidBecomeKeyNotification_LAYOUT.varHandle() }
+
+var NSWindowDidBecomeKeyNotification: MemorySegment
+    get() = NSWindowDidBecomeKeyNotification_VH.get(NSWindowDidBecomeKeyNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidBecomeKeyNotification_VH.set(NSWindowDidBecomeKeyNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidBecomeMainNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidBecomeMainNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidBecomeMainNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidBecomeMainNotification").orElseThrow() }
+private val NSWindowDidBecomeMainNotification_VH: VarHandle by lazy { NSWindowDidBecomeMainNotification_LAYOUT.varHandle() }
+
+var NSWindowDidBecomeMainNotification: MemorySegment
+    get() = NSWindowDidBecomeMainNotification_VH.get(NSWindowDidBecomeMainNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidBecomeMainNotification_VH.set(NSWindowDidBecomeMainNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidChangeScreenNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidChangeScreenNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidChangeScreenNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidChangeScreenNotification").orElseThrow() }
+private val NSWindowDidChangeScreenNotification_VH: VarHandle by lazy { NSWindowDidChangeScreenNotification_LAYOUT.varHandle() }
+
+var NSWindowDidChangeScreenNotification: MemorySegment
+    get() = NSWindowDidChangeScreenNotification_VH.get(NSWindowDidChangeScreenNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidChangeScreenNotification_VH.set(NSWindowDidChangeScreenNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidDeminiaturizeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidDeminiaturizeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidDeminiaturizeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidDeminiaturizeNotification").orElseThrow() }
+private val NSWindowDidDeminiaturizeNotification_VH: VarHandle by lazy { NSWindowDidDeminiaturizeNotification_LAYOUT.varHandle() }
+
+var NSWindowDidDeminiaturizeNotification: MemorySegment
+    get() = NSWindowDidDeminiaturizeNotification_VH.get(NSWindowDidDeminiaturizeNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidDeminiaturizeNotification_VH.set(NSWindowDidDeminiaturizeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidExposeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidExposeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidExposeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidExposeNotification").orElseThrow() }
+private val NSWindowDidExposeNotification_VH: VarHandle by lazy { NSWindowDidExposeNotification_LAYOUT.varHandle() }
+
+var NSWindowDidExposeNotification: MemorySegment
+    get() = NSWindowDidExposeNotification_VH.get(NSWindowDidExposeNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidExposeNotification_VH.set(NSWindowDidExposeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidMiniaturizeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidMiniaturizeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidMiniaturizeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidMiniaturizeNotification").orElseThrow() }
+private val NSWindowDidMiniaturizeNotification_VH: VarHandle by lazy { NSWindowDidMiniaturizeNotification_LAYOUT.varHandle() }
+
+var NSWindowDidMiniaturizeNotification: MemorySegment
+    get() = NSWindowDidMiniaturizeNotification_VH.get(NSWindowDidMiniaturizeNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidMiniaturizeNotification_VH.set(NSWindowDidMiniaturizeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidMoveNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidMoveNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidMoveNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidMoveNotification").orElseThrow() }
+private val NSWindowDidMoveNotification_VH: VarHandle by lazy { NSWindowDidMoveNotification_LAYOUT.varHandle() }
+
+var NSWindowDidMoveNotification: MemorySegment
+    get() = NSWindowDidMoveNotification_VH.get(NSWindowDidMoveNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidMoveNotification_VH.set(NSWindowDidMoveNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidResignKeyNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidResignKeyNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidResignKeyNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidResignKeyNotification").orElseThrow() }
+private val NSWindowDidResignKeyNotification_VH: VarHandle by lazy { NSWindowDidResignKeyNotification_LAYOUT.varHandle() }
+
+var NSWindowDidResignKeyNotification: MemorySegment
+    get() = NSWindowDidResignKeyNotification_VH.get(NSWindowDidResignKeyNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidResignKeyNotification_VH.set(NSWindowDidResignKeyNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidResignMainNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidResignMainNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidResignMainNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidResignMainNotification").orElseThrow() }
+private val NSWindowDidResignMainNotification_VH: VarHandle by lazy { NSWindowDidResignMainNotification_LAYOUT.varHandle() }
+
+var NSWindowDidResignMainNotification: MemorySegment
+    get() = NSWindowDidResignMainNotification_VH.get(NSWindowDidResignMainNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidResignMainNotification_VH.set(NSWindowDidResignMainNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidResizeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidResizeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidResizeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidResizeNotification").orElseThrow() }
+private val NSWindowDidResizeNotification_VH: VarHandle by lazy { NSWindowDidResizeNotification_LAYOUT.varHandle() }
+
+var NSWindowDidResizeNotification: MemorySegment
+    get() = NSWindowDidResizeNotification_VH.get(NSWindowDidResizeNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidResizeNotification_VH.set(NSWindowDidResizeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidUpdateNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidUpdateNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidUpdateNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidUpdateNotification").orElseThrow() }
+private val NSWindowDidUpdateNotification_VH: VarHandle by lazy { NSWindowDidUpdateNotification_LAYOUT.varHandle() }
+
+var NSWindowDidUpdateNotification: MemorySegment
+    get() = NSWindowDidUpdateNotification_VH.get(NSWindowDidUpdateNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidUpdateNotification_VH.set(NSWindowDidUpdateNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowWillCloseNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowWillCloseNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowWillCloseNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowWillCloseNotification").orElseThrow() }
+private val NSWindowWillCloseNotification_VH: VarHandle by lazy { NSWindowWillCloseNotification_LAYOUT.varHandle() }
+
+var NSWindowWillCloseNotification: MemorySegment
+    get() = NSWindowWillCloseNotification_VH.get(NSWindowWillCloseNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowWillCloseNotification_VH.set(NSWindowWillCloseNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowWillMiniaturizeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowWillMiniaturizeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowWillMiniaturizeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowWillMiniaturizeNotification").orElseThrow() }
+private val NSWindowWillMiniaturizeNotification_VH: VarHandle by lazy { NSWindowWillMiniaturizeNotification_LAYOUT.varHandle() }
+
+var NSWindowWillMiniaturizeNotification: MemorySegment
+    get() = NSWindowWillMiniaturizeNotification_VH.get(NSWindowWillMiniaturizeNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowWillMiniaturizeNotification_VH.set(NSWindowWillMiniaturizeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowWillMoveNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowWillMoveNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowWillMoveNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowWillMoveNotification").orElseThrow() }
+private val NSWindowWillMoveNotification_VH: VarHandle by lazy { NSWindowWillMoveNotification_LAYOUT.varHandle() }
+
+var NSWindowWillMoveNotification: MemorySegment
+    get() = NSWindowWillMoveNotification_VH.get(NSWindowWillMoveNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowWillMoveNotification_VH.set(NSWindowWillMoveNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowWillBeginSheetNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowWillBeginSheetNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowWillBeginSheetNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowWillBeginSheetNotification").orElseThrow() }
+private val NSWindowWillBeginSheetNotification_VH: VarHandle by lazy { NSWindowWillBeginSheetNotification_LAYOUT.varHandle() }
+
+var NSWindowWillBeginSheetNotification: MemorySegment
+    get() = NSWindowWillBeginSheetNotification_VH.get(NSWindowWillBeginSheetNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowWillBeginSheetNotification_VH.set(NSWindowWillBeginSheetNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidEndSheetNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidEndSheetNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidEndSheetNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidEndSheetNotification").orElseThrow() }
+private val NSWindowDidEndSheetNotification_VH: VarHandle by lazy { NSWindowDidEndSheetNotification_LAYOUT.varHandle() }
+
+var NSWindowDidEndSheetNotification: MemorySegment
+    get() = NSWindowDidEndSheetNotification_VH.get(NSWindowDidEndSheetNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidEndSheetNotification_VH.set(NSWindowDidEndSheetNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidChangeBackingPropertiesNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowDidChangeBackingPropertiesNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidChangeBackingPropertiesNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidChangeBackingPropertiesNotification").orElseThrow() }
+private val NSWindowDidChangeBackingPropertiesNotification_VH: VarHandle by lazy { NSWindowDidChangeBackingPropertiesNotification_LAYOUT.varHandle() }
+
+var NSWindowDidChangeBackingPropertiesNotification: MemorySegment
+    get() = NSWindowDidChangeBackingPropertiesNotification_VH.get(NSWindowDidChangeBackingPropertiesNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidChangeBackingPropertiesNotification_VH.set(NSWindowDidChangeBackingPropertiesNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSBackingPropertyOldScaleFactorKey (Void)*
+ */
+private val NSBackingPropertyOldScaleFactorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSBackingPropertyOldScaleFactorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBackingPropertyOldScaleFactorKey").orElseThrow() }
+private val NSBackingPropertyOldScaleFactorKey_VH: VarHandle by lazy { NSBackingPropertyOldScaleFactorKey_LAYOUT.varHandle() }
+
+var NSBackingPropertyOldScaleFactorKey: MemorySegment
+    get() = NSBackingPropertyOldScaleFactorKey_VH.get(NSBackingPropertyOldScaleFactorKey_SEGMENT) as MemorySegment
+    set(value) = NSBackingPropertyOldScaleFactorKey_VH.set(NSBackingPropertyOldScaleFactorKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSBackingPropertyOldColorSpaceKey (Void)*
+ */
+private val NSBackingPropertyOldColorSpaceKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSBackingPropertyOldColorSpaceKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBackingPropertyOldColorSpaceKey").orElseThrow() }
+private val NSBackingPropertyOldColorSpaceKey_VH: VarHandle by lazy { NSBackingPropertyOldColorSpaceKey_LAYOUT.varHandle() }
+
+var NSBackingPropertyOldColorSpaceKey: MemorySegment
+    get() = NSBackingPropertyOldColorSpaceKey_VH.get(NSBackingPropertyOldColorSpaceKey_SEGMENT) as MemorySegment
+    set(value) = NSBackingPropertyOldColorSpaceKey_VH.set(NSBackingPropertyOldColorSpaceKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidChangeScreenProfileNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSWindowDidChangeScreenProfileNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidChangeScreenProfileNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidChangeScreenProfileNotification").orElseThrow() }
+private val NSWindowDidChangeScreenProfileNotification_VH: VarHandle by lazy { NSWindowDidChangeScreenProfileNotification_LAYOUT.varHandle() }
+
+var NSWindowDidChangeScreenProfileNotification: MemorySegment
+    get() = NSWindowDidChangeScreenProfileNotification_VH.get(NSWindowDidChangeScreenProfileNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidChangeScreenProfileNotification_VH.set(NSWindowDidChangeScreenProfileNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowWillStartLiveResizeNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowWillStartLiveResizeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowWillStartLiveResizeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowWillStartLiveResizeNotification").orElseThrow() }
+private val NSWindowWillStartLiveResizeNotification_VH: VarHandle by lazy { NSWindowWillStartLiveResizeNotification_LAYOUT.varHandle() }
+
+var NSWindowWillStartLiveResizeNotification: MemorySegment
+    get() = NSWindowWillStartLiveResizeNotification_VH.get(NSWindowWillStartLiveResizeNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowWillStartLiveResizeNotification_VH.set(NSWindowWillStartLiveResizeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidEndLiveResizeNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowDidEndLiveResizeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidEndLiveResizeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidEndLiveResizeNotification").orElseThrow() }
+private val NSWindowDidEndLiveResizeNotification_VH: VarHandle by lazy { NSWindowDidEndLiveResizeNotification_LAYOUT.varHandle() }
+
+var NSWindowDidEndLiveResizeNotification: MemorySegment
+    get() = NSWindowDidEndLiveResizeNotification_VH.get(NSWindowDidEndLiveResizeNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidEndLiveResizeNotification_VH.set(NSWindowDidEndLiveResizeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowWillEnterFullScreenNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowWillEnterFullScreenNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowWillEnterFullScreenNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowWillEnterFullScreenNotification").orElseThrow() }
+private val NSWindowWillEnterFullScreenNotification_VH: VarHandle by lazy { NSWindowWillEnterFullScreenNotification_LAYOUT.varHandle() }
+
+var NSWindowWillEnterFullScreenNotification: MemorySegment
+    get() = NSWindowWillEnterFullScreenNotification_VH.get(NSWindowWillEnterFullScreenNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowWillEnterFullScreenNotification_VH.set(NSWindowWillEnterFullScreenNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidEnterFullScreenNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowDidEnterFullScreenNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidEnterFullScreenNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidEnterFullScreenNotification").orElseThrow() }
+private val NSWindowDidEnterFullScreenNotification_VH: VarHandle by lazy { NSWindowDidEnterFullScreenNotification_LAYOUT.varHandle() }
+
+var NSWindowDidEnterFullScreenNotification: MemorySegment
+    get() = NSWindowDidEnterFullScreenNotification_VH.get(NSWindowDidEnterFullScreenNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidEnterFullScreenNotification_VH.set(NSWindowDidEnterFullScreenNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowWillExitFullScreenNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowWillExitFullScreenNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowWillExitFullScreenNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowWillExitFullScreenNotification").orElseThrow() }
+private val NSWindowWillExitFullScreenNotification_VH: VarHandle by lazy { NSWindowWillExitFullScreenNotification_LAYOUT.varHandle() }
+
+var NSWindowWillExitFullScreenNotification: MemorySegment
+    get() = NSWindowWillExitFullScreenNotification_VH.get(NSWindowWillExitFullScreenNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowWillExitFullScreenNotification_VH.set(NSWindowWillExitFullScreenNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidExitFullScreenNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowDidExitFullScreenNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidExitFullScreenNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidExitFullScreenNotification").orElseThrow() }
+private val NSWindowDidExitFullScreenNotification_VH: VarHandle by lazy { NSWindowDidExitFullScreenNotification_LAYOUT.varHandle() }
+
+var NSWindowDidExitFullScreenNotification: MemorySegment
+    get() = NSWindowDidExitFullScreenNotification_VH.get(NSWindowDidExitFullScreenNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidExitFullScreenNotification_VH.set(NSWindowDidExitFullScreenNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowWillEnterVersionBrowserNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowWillEnterVersionBrowserNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowWillEnterVersionBrowserNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowWillEnterVersionBrowserNotification").orElseThrow() }
+private val NSWindowWillEnterVersionBrowserNotification_VH: VarHandle by lazy { NSWindowWillEnterVersionBrowserNotification_LAYOUT.varHandle() }
+
+var NSWindowWillEnterVersionBrowserNotification: MemorySegment
+    get() = NSWindowWillEnterVersionBrowserNotification_VH.get(NSWindowWillEnterVersionBrowserNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowWillEnterVersionBrowserNotification_VH.set(NSWindowWillEnterVersionBrowserNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidEnterVersionBrowserNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowDidEnterVersionBrowserNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidEnterVersionBrowserNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidEnterVersionBrowserNotification").orElseThrow() }
+private val NSWindowDidEnterVersionBrowserNotification_VH: VarHandle by lazy { NSWindowDidEnterVersionBrowserNotification_LAYOUT.varHandle() }
+
+var NSWindowDidEnterVersionBrowserNotification: MemorySegment
+    get() = NSWindowDidEnterVersionBrowserNotification_VH.get(NSWindowDidEnterVersionBrowserNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidEnterVersionBrowserNotification_VH.set(NSWindowDidEnterVersionBrowserNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowWillExitVersionBrowserNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowWillExitVersionBrowserNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowWillExitVersionBrowserNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowWillExitVersionBrowserNotification").orElseThrow() }
+private val NSWindowWillExitVersionBrowserNotification_VH: VarHandle by lazy { NSWindowWillExitVersionBrowserNotification_LAYOUT.varHandle() }
+
+var NSWindowWillExitVersionBrowserNotification: MemorySegment
+    get() = NSWindowWillExitVersionBrowserNotification_VH.get(NSWindowWillExitVersionBrowserNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowWillExitVersionBrowserNotification_VH.set(NSWindowWillExitVersionBrowserNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidExitVersionBrowserNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowDidExitVersionBrowserNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidExitVersionBrowserNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidExitVersionBrowserNotification").orElseThrow() }
+private val NSWindowDidExitVersionBrowserNotification_VH: VarHandle by lazy { NSWindowDidExitVersionBrowserNotification_LAYOUT.varHandle() }
+
+var NSWindowDidExitVersionBrowserNotification: MemorySegment
+    get() = NSWindowDidExitVersionBrowserNotification_VH.get(NSWindowDidExitVersionBrowserNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidExitVersionBrowserNotification_VH.set(NSWindowDidExitVersionBrowserNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSWindowDidChangeOcclusionStateNotification typedef const NSNotificationName = (Void)*
+ */
+private val NSWindowDidChangeOcclusionStateNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWindowDidChangeOcclusionStateNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowDidChangeOcclusionStateNotification").orElseThrow() }
+private val NSWindowDidChangeOcclusionStateNotification_VH: VarHandle by lazy { NSWindowDidChangeOcclusionStateNotification_LAYOUT.varHandle() }
+
+var NSWindowDidChangeOcclusionStateNotification: MemorySegment
+    get() = NSWindowDidChangeOcclusionStateNotification_VH.get(NSWindowDidChangeOcclusionStateNotification_SEGMENT) as MemorySegment
+    set(value) = NSWindowDidChangeOcclusionStateNotification_VH.set(NSWindowDidChangeOcclusionStateNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSRunAlertPanelRelativeToWindow typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
+ */
+private val NSRunAlertPanelRelativeToWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSRunAlertPanelRelativeToWindow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunAlertPanelRelativeToWindow").orElseThrow()
+private val NSRunAlertPanelRelativeToWindow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunAlertPanelRelativeToWindow_ADDR, NSRunAlertPanelRelativeToWindow_DESC)
+
+fun NSRunAlertPanelRelativeToWindow(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment): Long {
+    try {
+        return NSRunAlertPanelRelativeToWindow_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSRunInformationalAlertPanelRelativeToWindow typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
+ */
+private val NSRunInformationalAlertPanelRelativeToWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSRunInformationalAlertPanelRelativeToWindow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunInformationalAlertPanelRelativeToWindow").orElseThrow()
+private val NSRunInformationalAlertPanelRelativeToWindow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunInformationalAlertPanelRelativeToWindow_ADDR, NSRunInformationalAlertPanelRelativeToWindow_DESC)
+
+fun NSRunInformationalAlertPanelRelativeToWindow(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment): Long {
+    try {
+        return NSRunInformationalAlertPanelRelativeToWindow_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSRunCriticalAlertPanelRelativeToWindow typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
+ */
+private val NSRunCriticalAlertPanelRelativeToWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSRunCriticalAlertPanelRelativeToWindow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunCriticalAlertPanelRelativeToWindow").orElseThrow()
+private val NSRunCriticalAlertPanelRelativeToWindow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunCriticalAlertPanelRelativeToWindow_ADDR, NSRunCriticalAlertPanelRelativeToWindow_DESC)
+
+fun NSRunCriticalAlertPanelRelativeToWindow(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment): Long {
+    try {
+        return NSRunCriticalAlertPanelRelativeToWindow_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSRunAlertPanel typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
+ */
+private val NSRunAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSRunAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunAlertPanel").orElseThrow()
+private val NSRunAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunAlertPanel_ADDR, NSRunAlertPanel_DESC)
+
+fun NSRunAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): Long {
+    try {
+        return NSRunAlertPanel_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSRunInformationalAlertPanel typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
+ */
+private val NSRunInformationalAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSRunInformationalAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunInformationalAlertPanel").orElseThrow()
+private val NSRunInformationalAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunInformationalAlertPanel_ADDR, NSRunInformationalAlertPanel_DESC)
+
+fun NSRunInformationalAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): Long {
+    try {
+        return NSRunInformationalAlertPanel_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSRunCriticalAlertPanel typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
+ */
+private val NSRunCriticalAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSRunCriticalAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunCriticalAlertPanel").orElseThrow()
+private val NSRunCriticalAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunCriticalAlertPanel_ADDR, NSRunCriticalAlertPanel_DESC)
+
+fun NSRunCriticalAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): Long {
+    try {
+        return NSRunCriticalAlertPanel_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSBeginAlertSheet Void((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,typedef __strong id = (Void)*,typedef SEL = ((Void)*)*,typedef SEL = ((Void)*)*,(Void)*,(Void)*)
+ */
+private val NSBeginAlertSheet_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSBeginAlertSheet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBeginAlertSheet").orElseThrow()
+private val NSBeginAlertSheet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBeginAlertSheet_ADDR, NSBeginAlertSheet_DESC)
+
+fun NSBeginAlertSheet(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment, arg6: MemorySegment, arg7: MemorySegment, arg8: MemorySegment, arg9: MemorySegment): Unit {
+    try {
+        NSBeginAlertSheet_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSBeginInformationalAlertSheet Void((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,typedef __strong id = (Void)*,typedef SEL = ((Void)*)*,typedef SEL = ((Void)*)*,(Void)*,(Void)*)
+ */
+private val NSBeginInformationalAlertSheet_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSBeginInformationalAlertSheet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBeginInformationalAlertSheet").orElseThrow()
+private val NSBeginInformationalAlertSheet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBeginInformationalAlertSheet_ADDR, NSBeginInformationalAlertSheet_DESC)
+
+fun NSBeginInformationalAlertSheet(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment, arg6: MemorySegment, arg7: MemorySegment, arg8: MemorySegment, arg9: MemorySegment): Unit {
+    try {
+        NSBeginInformationalAlertSheet_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSBeginCriticalAlertSheet Void((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,typedef __strong id = (Void)*,typedef SEL = ((Void)*)*,typedef SEL = ((Void)*)*,(Void)*,(Void)*)
+ */
+private val NSBeginCriticalAlertSheet_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSBeginCriticalAlertSheet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBeginCriticalAlertSheet").orElseThrow()
+private val NSBeginCriticalAlertSheet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBeginCriticalAlertSheet_ADDR, NSBeginCriticalAlertSheet_DESC)
+
+fun NSBeginCriticalAlertSheet(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment, arg6: MemorySegment, arg7: MemorySegment, arg8: MemorySegment, arg9: MemorySegment): Unit {
+    try {
+        NSBeginCriticalAlertSheet_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSGetAlertPanel typedef id = (Void)*((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
+ */
+private val NSGetAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSGetAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSGetAlertPanel").orElseThrow()
+private val NSGetAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSGetAlertPanel_ADDR, NSGetAlertPanel_DESC)
+
+fun NSGetAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): MemorySegment {
+    try {
+        return NSGetAlertPanel_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSGetInformationalAlertPanel typedef id = (Void)*((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
+ */
+private val NSGetInformationalAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSGetInformationalAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSGetInformationalAlertPanel").orElseThrow()
+private val NSGetInformationalAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSGetInformationalAlertPanel_ADDR, NSGetInformationalAlertPanel_DESC)
+
+fun NSGetInformationalAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): MemorySegment {
+    try {
+        return NSGetInformationalAlertPanel_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSGetCriticalAlertPanel typedef id = (Void)*((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
+ */
+private val NSGetCriticalAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSGetCriticalAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSGetCriticalAlertPanel").orElseThrow()
+private val NSGetCriticalAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSGetCriticalAlertPanel_ADDR, NSGetCriticalAlertPanel_DESC)
+
+fun NSGetCriticalAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): MemorySegment {
+    try {
+        return NSGetCriticalAlertPanel_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSReleaseAlertPanel Void(typedef __strong id = (Void)*)
+ */
+private val NSReleaseAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val NSReleaseAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSReleaseAlertPanel").orElseThrow()
+private val NSReleaseAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSReleaseAlertPanel_ADDR, NSReleaseAlertPanel_DESC)
+
+fun NSReleaseAlertPanel(arg0: MemorySegment): Unit {
+    try {
+        NSReleaseAlertPanel_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSImageRepRegistryDidChangeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSImageRepRegistryDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageRepRegistryDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageRepRegistryDidChangeNotification").orElseThrow() }
+private val NSImageRepRegistryDidChangeNotification_VH: VarHandle by lazy { NSImageRepRegistryDidChangeNotification_LAYOUT.varHandle() }
+
+var NSImageRepRegistryDidChangeNotification: MemorySegment
+    get() = NSImageRepRegistryDidChangeNotification_VH.get(NSImageRepRegistryDidChangeNotification_SEGMENT) as MemorySegment
+    set(value) = NSImageRepRegistryDidChangeNotification_VH.set(NSImageRepRegistryDidChangeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageCompressionMethod typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageCompressionMethod_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageCompressionMethod_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageCompressionMethod").orElseThrow() }
+private val NSImageCompressionMethod_VH: VarHandle by lazy { NSImageCompressionMethod_LAYOUT.varHandle() }
+
+var NSImageCompressionMethod: MemorySegment
+    get() = NSImageCompressionMethod_VH.get(NSImageCompressionMethod_SEGMENT) as MemorySegment
+    set(value) = NSImageCompressionMethod_VH.set(NSImageCompressionMethod_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageCompressionFactor typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageCompressionFactor_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageCompressionFactor_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageCompressionFactor").orElseThrow() }
+private val NSImageCompressionFactor_VH: VarHandle by lazy { NSImageCompressionFactor_LAYOUT.varHandle() }
+
+var NSImageCompressionFactor: MemorySegment
+    get() = NSImageCompressionFactor_VH.get(NSImageCompressionFactor_SEGMENT) as MemorySegment
+    set(value) = NSImageCompressionFactor_VH.set(NSImageCompressionFactor_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageDitherTransparency typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageDitherTransparency_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageDitherTransparency_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageDitherTransparency").orElseThrow() }
+private val NSImageDitherTransparency_VH: VarHandle by lazy { NSImageDitherTransparency_LAYOUT.varHandle() }
+
+var NSImageDitherTransparency: MemorySegment
+    get() = NSImageDitherTransparency_VH.get(NSImageDitherTransparency_SEGMENT) as MemorySegment
+    set(value) = NSImageDitherTransparency_VH.set(NSImageDitherTransparency_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageRGBColorTable typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageRGBColorTable_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageRGBColorTable_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageRGBColorTable").orElseThrow() }
+private val NSImageRGBColorTable_VH: VarHandle by lazy { NSImageRGBColorTable_LAYOUT.varHandle() }
+
+var NSImageRGBColorTable: MemorySegment
+    get() = NSImageRGBColorTable_VH.get(NSImageRGBColorTable_SEGMENT) as MemorySegment
+    set(value) = NSImageRGBColorTable_VH.set(NSImageRGBColorTable_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageInterlaced typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageInterlaced_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageInterlaced_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageInterlaced").orElseThrow() }
+private val NSImageInterlaced_VH: VarHandle by lazy { NSImageInterlaced_LAYOUT.varHandle() }
+
+var NSImageInterlaced: MemorySegment
+    get() = NSImageInterlaced_VH.get(NSImageInterlaced_SEGMENT) as MemorySegment
+    set(value) = NSImageInterlaced_VH.set(NSImageInterlaced_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageColorSyncProfileData typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageColorSyncProfileData_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageColorSyncProfileData_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageColorSyncProfileData").orElseThrow() }
+private val NSImageColorSyncProfileData_VH: VarHandle by lazy { NSImageColorSyncProfileData_LAYOUT.varHandle() }
+
+var NSImageColorSyncProfileData: MemorySegment
+    get() = NSImageColorSyncProfileData_VH.get(NSImageColorSyncProfileData_SEGMENT) as MemorySegment
+    set(value) = NSImageColorSyncProfileData_VH.set(NSImageColorSyncProfileData_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageFrameCount typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageFrameCount_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageFrameCount_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageFrameCount").orElseThrow() }
+private val NSImageFrameCount_VH: VarHandle by lazy { NSImageFrameCount_LAYOUT.varHandle() }
+
+var NSImageFrameCount: MemorySegment
+    get() = NSImageFrameCount_VH.get(NSImageFrameCount_SEGMENT) as MemorySegment
+    set(value) = NSImageFrameCount_VH.set(NSImageFrameCount_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageCurrentFrame typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageCurrentFrame_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageCurrentFrame_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageCurrentFrame").orElseThrow() }
+private val NSImageCurrentFrame_VH: VarHandle by lazy { NSImageCurrentFrame_LAYOUT.varHandle() }
+
+var NSImageCurrentFrame: MemorySegment
+    get() = NSImageCurrentFrame_VH.get(NSImageCurrentFrame_SEGMENT) as MemorySegment
+    set(value) = NSImageCurrentFrame_VH.set(NSImageCurrentFrame_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageCurrentFrameDuration typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageCurrentFrameDuration_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageCurrentFrameDuration_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageCurrentFrameDuration").orElseThrow() }
+private val NSImageCurrentFrameDuration_VH: VarHandle by lazy { NSImageCurrentFrameDuration_LAYOUT.varHandle() }
+
+var NSImageCurrentFrameDuration: MemorySegment
+    get() = NSImageCurrentFrameDuration_VH.get(NSImageCurrentFrameDuration_SEGMENT) as MemorySegment
+    set(value) = NSImageCurrentFrameDuration_VH.set(NSImageCurrentFrameDuration_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageLoopCount typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageLoopCount_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageLoopCount_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageLoopCount").orElseThrow() }
+private val NSImageLoopCount_VH: VarHandle by lazy { NSImageLoopCount_LAYOUT.varHandle() }
+
+var NSImageLoopCount: MemorySegment
+    get() = NSImageLoopCount_VH.get(NSImageLoopCount_SEGMENT) as MemorySegment
+    set(value) = NSImageLoopCount_VH.set(NSImageLoopCount_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageGamma typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageGamma_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageGamma_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageGamma").orElseThrow() }
+private val NSImageGamma_VH: VarHandle by lazy { NSImageGamma_LAYOUT.varHandle() }
+
+var NSImageGamma: MemorySegment
+    get() = NSImageGamma_VH.get(NSImageGamma_SEGMENT) as MemorySegment
+    set(value) = NSImageGamma_VH.set(NSImageGamma_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageProgressive typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageProgressive_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageProgressive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageProgressive").orElseThrow() }
+private val NSImageProgressive_VH: VarHandle by lazy { NSImageProgressive_LAYOUT.varHandle() }
+
+var NSImageProgressive: MemorySegment
+    get() = NSImageProgressive_VH.get(NSImageProgressive_SEGMENT) as MemorySegment
+    set(value) = NSImageProgressive_VH.set(NSImageProgressive_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageEXIFData typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageEXIFData_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageEXIFData_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageEXIFData").orElseThrow() }
+private val NSImageEXIFData_VH: VarHandle by lazy { NSImageEXIFData_LAYOUT.varHandle() }
+
+var NSImageEXIFData: MemorySegment
+    get() = NSImageEXIFData_VH.get(NSImageEXIFData_SEGMENT) as MemorySegment
+    set(value) = NSImageEXIFData_VH.set(NSImageEXIFData_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageIPTCData typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageIPTCData_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageIPTCData_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageIPTCData").orElseThrow() }
+private val NSImageIPTCData_VH: VarHandle by lazy { NSImageIPTCData_LAYOUT.varHandle() }
+
+var NSImageIPTCData: MemorySegment
+    get() = NSImageIPTCData_VH.get(NSImageIPTCData_SEGMENT) as MemorySegment
+    set(value) = NSImageIPTCData_VH.set(NSImageIPTCData_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSImageFallbackBackgroundColor typedef NSBitmapImageRepPropertyKey = typedef NSString = (Void)*
+ */
+private val NSImageFallbackBackgroundColor_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageFallbackBackgroundColor_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageFallbackBackgroundColor").orElseThrow() }
+private val NSImageFallbackBackgroundColor_VH: VarHandle by lazy { NSImageFallbackBackgroundColor_LAYOUT.varHandle() }
+
+var NSImageFallbackBackgroundColor: MemorySegment
+    get() = NSImageFallbackBackgroundColor_VH.get(NSImageFallbackBackgroundColor_SEGMENT) as MemorySegment
+    set(value) = NSImageFallbackBackgroundColor_VH.set(NSImageFallbackBackgroundColor_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSBrowserColumnConfigurationDidChangeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSBrowserColumnConfigurationDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSBrowserColumnConfigurationDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBrowserColumnConfigurationDidChangeNotification").orElseThrow() }
+private val NSBrowserColumnConfigurationDidChangeNotification_VH: VarHandle by lazy { NSBrowserColumnConfigurationDidChangeNotification_LAYOUT.varHandle() }
+
+var NSBrowserColumnConfigurationDidChangeNotification: MemorySegment
+    get() = NSBrowserColumnConfigurationDidChangeNotification_VH.get(NSBrowserColumnConfigurationDidChangeNotification_SEGMENT) as MemorySegment
+    set(value) = NSBrowserColumnConfigurationDidChangeNotification_VH.set(NSBrowserColumnConfigurationDidChangeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatARGB8 typedef const CIFormat = Int
+ */
+private val kCIFormatARGB8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatARGB8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatARGB8").orElseThrow() }
+private val kCIFormatARGB8_VH: VarHandle by lazy { kCIFormatARGB8_LAYOUT.varHandle() }
+
+var kCIFormatARGB8: Int
+    get() = kCIFormatARGB8_VH.get(kCIFormatARGB8_SEGMENT) as Int
+    set(value) = kCIFormatARGB8_VH.set(kCIFormatARGB8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatBGRA8 typedef const CIFormat = Int
+ */
+private val kCIFormatBGRA8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatBGRA8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatBGRA8").orElseThrow() }
+private val kCIFormatBGRA8_VH: VarHandle by lazy { kCIFormatBGRA8_LAYOUT.varHandle() }
+
+var kCIFormatBGRA8: Int
+    get() = kCIFormatBGRA8_VH.get(kCIFormatBGRA8_SEGMENT) as Int
+    set(value) = kCIFormatBGRA8_VH.set(kCIFormatBGRA8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGBA8 typedef const CIFormat = Int
+ */
+private val kCIFormatRGBA8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGBA8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGBA8").orElseThrow() }
+private val kCIFormatRGBA8_VH: VarHandle by lazy { kCIFormatRGBA8_LAYOUT.varHandle() }
+
+var kCIFormatRGBA8: Int
+    get() = kCIFormatRGBA8_VH.get(kCIFormatRGBA8_SEGMENT) as Int
+    set(value) = kCIFormatRGBA8_VH.set(kCIFormatRGBA8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGBX8 typedef const CIFormat = Int
+ */
+private val kCIFormatRGBX8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGBX8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGBX8").orElseThrow() }
+private val kCIFormatRGBX8_VH: VarHandle by lazy { kCIFormatRGBX8_LAYOUT.varHandle() }
+
+var kCIFormatRGBX8: Int
+    get() = kCIFormatRGBX8_VH.get(kCIFormatRGBX8_SEGMENT) as Int
+    set(value) = kCIFormatRGBX8_VH.set(kCIFormatRGBX8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatABGR8 typedef const CIFormat = Int
+ */
+private val kCIFormatABGR8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatABGR8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatABGR8").orElseThrow() }
+private val kCIFormatABGR8_VH: VarHandle by lazy { kCIFormatABGR8_LAYOUT.varHandle() }
+
+var kCIFormatABGR8: Int
+    get() = kCIFormatABGR8_VH.get(kCIFormatABGR8_SEGMENT) as Int
+    set(value) = kCIFormatABGR8_VH.set(kCIFormatABGR8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGBAh typedef const CIFormat = Int
+ */
+private val kCIFormatRGBAh_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGBAh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGBAh").orElseThrow() }
+private val kCIFormatRGBAh_VH: VarHandle by lazy { kCIFormatRGBAh_LAYOUT.varHandle() }
+
+var kCIFormatRGBAh: Int
+    get() = kCIFormatRGBAh_VH.get(kCIFormatRGBAh_SEGMENT) as Int
+    set(value) = kCIFormatRGBAh_VH.set(kCIFormatRGBAh_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGBA16 typedef const CIFormat = Int
+ */
+private val kCIFormatRGBA16_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGBA16_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGBA16").orElseThrow() }
+private val kCIFormatRGBA16_VH: VarHandle by lazy { kCIFormatRGBA16_LAYOUT.varHandle() }
+
+var kCIFormatRGBA16: Int
+    get() = kCIFormatRGBA16_VH.get(kCIFormatRGBA16_SEGMENT) as Int
+    set(value) = kCIFormatRGBA16_VH.set(kCIFormatRGBA16_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGBAf typedef const CIFormat = Int
+ */
+private val kCIFormatRGBAf_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGBAf_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGBAf").orElseThrow() }
+private val kCIFormatRGBAf_VH: VarHandle by lazy { kCIFormatRGBAf_LAYOUT.varHandle() }
+
+var kCIFormatRGBAf: Int
+    get() = kCIFormatRGBAf_VH.get(kCIFormatRGBAf_SEGMENT) as Int
+    set(value) = kCIFormatRGBAf_VH.set(kCIFormatRGBAf_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGBX16 typedef const CIFormat = Int
+ */
+private val kCIFormatRGBX16_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGBX16_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGBX16").orElseThrow() }
+private val kCIFormatRGBX16_VH: VarHandle by lazy { kCIFormatRGBX16_LAYOUT.varHandle() }
+
+var kCIFormatRGBX16: Int
+    get() = kCIFormatRGBX16_VH.get(kCIFormatRGBX16_SEGMENT) as Int
+    set(value) = kCIFormatRGBX16_VH.set(kCIFormatRGBX16_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGBXh typedef const CIFormat = Int
+ */
+private val kCIFormatRGBXh_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGBXh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGBXh").orElseThrow() }
+private val kCIFormatRGBXh_VH: VarHandle by lazy { kCIFormatRGBXh_LAYOUT.varHandle() }
+
+var kCIFormatRGBXh: Int
+    get() = kCIFormatRGBXh_VH.get(kCIFormatRGBXh_SEGMENT) as Int
+    set(value) = kCIFormatRGBXh_VH.set(kCIFormatRGBXh_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGBXf typedef const CIFormat = Int
+ */
+private val kCIFormatRGBXf_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGBXf_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGBXf").orElseThrow() }
+private val kCIFormatRGBXf_VH: VarHandle by lazy { kCIFormatRGBXf_LAYOUT.varHandle() }
+
+var kCIFormatRGBXf: Int
+    get() = kCIFormatRGBXf_VH.get(kCIFormatRGBXf_SEGMENT) as Int
+    set(value) = kCIFormatRGBXf_VH.set(kCIFormatRGBXf_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGB10 typedef const CIFormat = Int
+ */
+private val kCIFormatRGB10_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGB10_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGB10").orElseThrow() }
+private val kCIFormatRGB10_VH: VarHandle by lazy { kCIFormatRGB10_LAYOUT.varHandle() }
+
+var kCIFormatRGB10: Int
+    get() = kCIFormatRGB10_VH.get(kCIFormatRGB10_SEGMENT) as Int
+    set(value) = kCIFormatRGB10_VH.set(kCIFormatRGB10_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatA8 typedef const CIFormat = Int
+ */
+private val kCIFormatA8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatA8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatA8").orElseThrow() }
+private val kCIFormatA8_VH: VarHandle by lazy { kCIFormatA8_LAYOUT.varHandle() }
+
+var kCIFormatA8: Int
+    get() = kCIFormatA8_VH.get(kCIFormatA8_SEGMENT) as Int
+    set(value) = kCIFormatA8_VH.set(kCIFormatA8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatA16 typedef const CIFormat = Int
+ */
+private val kCIFormatA16_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatA16_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatA16").orElseThrow() }
+private val kCIFormatA16_VH: VarHandle by lazy { kCIFormatA16_LAYOUT.varHandle() }
+
+var kCIFormatA16: Int
+    get() = kCIFormatA16_VH.get(kCIFormatA16_SEGMENT) as Int
+    set(value) = kCIFormatA16_VH.set(kCIFormatA16_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatAh typedef const CIFormat = Int
+ */
+private val kCIFormatAh_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatAh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatAh").orElseThrow() }
+private val kCIFormatAh_VH: VarHandle by lazy { kCIFormatAh_LAYOUT.varHandle() }
+
+var kCIFormatAh: Int
+    get() = kCIFormatAh_VH.get(kCIFormatAh_SEGMENT) as Int
+    set(value) = kCIFormatAh_VH.set(kCIFormatAh_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatAf typedef const CIFormat = Int
+ */
+private val kCIFormatAf_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatAf_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatAf").orElseThrow() }
+private val kCIFormatAf_VH: VarHandle by lazy { kCIFormatAf_LAYOUT.varHandle() }
+
+var kCIFormatAf: Int
+    get() = kCIFormatAf_VH.get(kCIFormatAf_SEGMENT) as Int
+    set(value) = kCIFormatAf_VH.set(kCIFormatAf_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatR8 typedef const CIFormat = Int
+ */
+private val kCIFormatR8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatR8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatR8").orElseThrow() }
+private val kCIFormatR8_VH: VarHandle by lazy { kCIFormatR8_LAYOUT.varHandle() }
+
+var kCIFormatR8: Int
+    get() = kCIFormatR8_VH.get(kCIFormatR8_SEGMENT) as Int
+    set(value) = kCIFormatR8_VH.set(kCIFormatR8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatR16 typedef const CIFormat = Int
+ */
+private val kCIFormatR16_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatR16_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatR16").orElseThrow() }
+private val kCIFormatR16_VH: VarHandle by lazy { kCIFormatR16_LAYOUT.varHandle() }
+
+var kCIFormatR16: Int
+    get() = kCIFormatR16_VH.get(kCIFormatR16_SEGMENT) as Int
+    set(value) = kCIFormatR16_VH.set(kCIFormatR16_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRh typedef const CIFormat = Int
+ */
+private val kCIFormatRh_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRh").orElseThrow() }
+private val kCIFormatRh_VH: VarHandle by lazy { kCIFormatRh_LAYOUT.varHandle() }
+
+var kCIFormatRh: Int
+    get() = kCIFormatRh_VH.get(kCIFormatRh_SEGMENT) as Int
+    set(value) = kCIFormatRh_VH.set(kCIFormatRh_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRf typedef const CIFormat = Int
+ */
+private val kCIFormatRf_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRf_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRf").orElseThrow() }
+private val kCIFormatRf_VH: VarHandle by lazy { kCIFormatRf_LAYOUT.varHandle() }
+
+var kCIFormatRf: Int
+    get() = kCIFormatRf_VH.get(kCIFormatRf_SEGMENT) as Int
+    set(value) = kCIFormatRf_VH.set(kCIFormatRf_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRG8 typedef const CIFormat = Int
+ */
+private val kCIFormatRG8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRG8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRG8").orElseThrow() }
+private val kCIFormatRG8_VH: VarHandle by lazy { kCIFormatRG8_LAYOUT.varHandle() }
+
+var kCIFormatRG8: Int
+    get() = kCIFormatRG8_VH.get(kCIFormatRG8_SEGMENT) as Int
+    set(value) = kCIFormatRG8_VH.set(kCIFormatRG8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRG16 typedef const CIFormat = Int
+ */
+private val kCIFormatRG16_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRG16_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRG16").orElseThrow() }
+private val kCIFormatRG16_VH: VarHandle by lazy { kCIFormatRG16_LAYOUT.varHandle() }
+
+var kCIFormatRG16: Int
+    get() = kCIFormatRG16_VH.get(kCIFormatRG16_SEGMENT) as Int
+    set(value) = kCIFormatRG16_VH.set(kCIFormatRG16_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGh typedef const CIFormat = Int
+ */
+private val kCIFormatRGh_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGh").orElseThrow() }
+private val kCIFormatRGh_VH: VarHandle by lazy { kCIFormatRGh_LAYOUT.varHandle() }
+
+var kCIFormatRGh: Int
+    get() = kCIFormatRGh_VH.get(kCIFormatRGh_SEGMENT) as Int
+    set(value) = kCIFormatRGh_VH.set(kCIFormatRGh_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatRGf typedef const CIFormat = Int
+ */
+private val kCIFormatRGf_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatRGf_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatRGf").orElseThrow() }
+private val kCIFormatRGf_VH: VarHandle by lazy { kCIFormatRGf_LAYOUT.varHandle() }
+
+var kCIFormatRGf: Int
+    get() = kCIFormatRGf_VH.get(kCIFormatRGf_SEGMENT) as Int
+    set(value) = kCIFormatRGf_VH.set(kCIFormatRGf_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatL8 typedef const CIFormat = Int
+ */
+private val kCIFormatL8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatL8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatL8").orElseThrow() }
+private val kCIFormatL8_VH: VarHandle by lazy { kCIFormatL8_LAYOUT.varHandle() }
+
+var kCIFormatL8: Int
+    get() = kCIFormatL8_VH.get(kCIFormatL8_SEGMENT) as Int
+    set(value) = kCIFormatL8_VH.set(kCIFormatL8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatL16 typedef const CIFormat = Int
+ */
+private val kCIFormatL16_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatL16_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatL16").orElseThrow() }
+private val kCIFormatL16_VH: VarHandle by lazy { kCIFormatL16_LAYOUT.varHandle() }
+
+var kCIFormatL16: Int
+    get() = kCIFormatL16_VH.get(kCIFormatL16_SEGMENT) as Int
+    set(value) = kCIFormatL16_VH.set(kCIFormatL16_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatLh typedef const CIFormat = Int
+ */
+private val kCIFormatLh_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatLh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatLh").orElseThrow() }
+private val kCIFormatLh_VH: VarHandle by lazy { kCIFormatLh_LAYOUT.varHandle() }
+
+var kCIFormatLh: Int
+    get() = kCIFormatLh_VH.get(kCIFormatLh_SEGMENT) as Int
+    set(value) = kCIFormatLh_VH.set(kCIFormatLh_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatLf typedef const CIFormat = Int
+ */
+private val kCIFormatLf_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatLf_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatLf").orElseThrow() }
+private val kCIFormatLf_VH: VarHandle by lazy { kCIFormatLf_LAYOUT.varHandle() }
+
+var kCIFormatLf: Int
+    get() = kCIFormatLf_VH.get(kCIFormatLf_SEGMENT) as Int
+    set(value) = kCIFormatLf_VH.set(kCIFormatLf_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatLA8 typedef const CIFormat = Int
+ */
+private val kCIFormatLA8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatLA8_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatLA8").orElseThrow() }
+private val kCIFormatLA8_VH: VarHandle by lazy { kCIFormatLA8_LAYOUT.varHandle() }
+
+var kCIFormatLA8: Int
+    get() = kCIFormatLA8_VH.get(kCIFormatLA8_SEGMENT) as Int
+    set(value) = kCIFormatLA8_VH.set(kCIFormatLA8_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatLA16 typedef const CIFormat = Int
+ */
+private val kCIFormatLA16_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatLA16_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatLA16").orElseThrow() }
+private val kCIFormatLA16_VH: VarHandle by lazy { kCIFormatLA16_LAYOUT.varHandle() }
+
+var kCIFormatLA16: Int
+    get() = kCIFormatLA16_VH.get(kCIFormatLA16_SEGMENT) as Int
+    set(value) = kCIFormatLA16_VH.set(kCIFormatLA16_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatLAh typedef const CIFormat = Int
+ */
+private val kCIFormatLAh_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatLAh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatLAh").orElseThrow() }
+private val kCIFormatLAh_VH: VarHandle by lazy { kCIFormatLAh_LAYOUT.varHandle() }
+
+var kCIFormatLAh: Int
+    get() = kCIFormatLAh_VH.get(kCIFormatLAh_SEGMENT) as Int
+    set(value) = kCIFormatLAh_VH.set(kCIFormatLAh_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIFormatLAf typedef const CIFormat = Int
+ */
+private val kCIFormatLAf_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
+private val kCIFormatLAf_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIFormatLAf").orElseThrow() }
+private val kCIFormatLAf_VH: VarHandle by lazy { kCIFormatLAf_LAYOUT.varHandle() }
+
+var kCIFormatLAf: Int
+    get() = kCIFormatLAf_VH.get(kCIFormatLAf_SEGMENT) as Int
+    set(value) = kCIFormatLAf_VH.set(kCIFormatLAf_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageColorSpace typedef const CIImageOption = (Void)*
+ */
+private val kCIImageColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageColorSpace").orElseThrow() }
+private val kCIImageColorSpace_VH: VarHandle by lazy { kCIImageColorSpace_LAYOUT.varHandle() }
+
+var kCIImageColorSpace: MemorySegment
+    get() = kCIImageColorSpace_VH.get(kCIImageColorSpace_SEGMENT) as MemorySegment
+    set(value) = kCIImageColorSpace_VH.set(kCIImageColorSpace_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageApplyCleanAperture typedef const CIImageOption = (Void)*
+ */
+private val kCIImageApplyCleanAperture_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageApplyCleanAperture_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageApplyCleanAperture").orElseThrow() }
+private val kCIImageApplyCleanAperture_VH: VarHandle by lazy { kCIImageApplyCleanAperture_LAYOUT.varHandle() }
+
+var kCIImageApplyCleanAperture: MemorySegment
+    get() = kCIImageApplyCleanAperture_VH.get(kCIImageApplyCleanAperture_SEGMENT) as MemorySegment
+    set(value) = kCIImageApplyCleanAperture_VH.set(kCIImageApplyCleanAperture_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageToneMapHDRtoSDR typedef const CIImageOption = (Void)*
+ */
+private val kCIImageToneMapHDRtoSDR_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageToneMapHDRtoSDR_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageToneMapHDRtoSDR").orElseThrow() }
+private val kCIImageToneMapHDRtoSDR_VH: VarHandle by lazy { kCIImageToneMapHDRtoSDR_LAYOUT.varHandle() }
+
+var kCIImageToneMapHDRtoSDR: MemorySegment
+    get() = kCIImageToneMapHDRtoSDR_VH.get(kCIImageToneMapHDRtoSDR_SEGMENT) as MemorySegment
+    set(value) = kCIImageToneMapHDRtoSDR_VH.set(kCIImageToneMapHDRtoSDR_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageExpandToHDR typedef const CIImageOption = (Void)*
+ */
+private val kCIImageExpandToHDR_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageExpandToHDR_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageExpandToHDR").orElseThrow() }
+private val kCIImageExpandToHDR_VH: VarHandle by lazy { kCIImageExpandToHDR_LAYOUT.varHandle() }
+
+var kCIImageExpandToHDR: MemorySegment
+    get() = kCIImageExpandToHDR_VH.get(kCIImageExpandToHDR_SEGMENT) as MemorySegment
+    set(value) = kCIImageExpandToHDR_VH.set(kCIImageExpandToHDR_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageContentHeadroom typedef const CIImageOption = (Void)*
+ */
+private val kCIImageContentHeadroom_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageContentHeadroom_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageContentHeadroom").orElseThrow() }
+private val kCIImageContentHeadroom_VH: VarHandle by lazy { kCIImageContentHeadroom_LAYOUT.varHandle() }
+
+var kCIImageContentHeadroom: MemorySegment
+    get() = kCIImageContentHeadroom_VH.get(kCIImageContentHeadroom_SEGMENT) as MemorySegment
+    set(value) = kCIImageContentHeadroom_VH.set(kCIImageContentHeadroom_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageContentAverageLightLevel typedef const CIImageOption = (Void)*
+ */
+private val kCIImageContentAverageLightLevel_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageContentAverageLightLevel_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageContentAverageLightLevel").orElseThrow() }
+private val kCIImageContentAverageLightLevel_VH: VarHandle by lazy { kCIImageContentAverageLightLevel_LAYOUT.varHandle() }
+
+var kCIImageContentAverageLightLevel: MemorySegment
+    get() = kCIImageContentAverageLightLevel_VH.get(kCIImageContentAverageLightLevel_SEGMENT) as MemorySegment
+    set(value) = kCIImageContentAverageLightLevel_VH.set(kCIImageContentAverageLightLevel_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageNearestSampling typedef const CIImageOption = (Void)*
+ */
+private val kCIImageNearestSampling_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageNearestSampling_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageNearestSampling").orElseThrow() }
+private val kCIImageNearestSampling_VH: VarHandle by lazy { kCIImageNearestSampling_LAYOUT.varHandle() }
+
+var kCIImageNearestSampling: MemorySegment
+    get() = kCIImageNearestSampling_VH.get(kCIImageNearestSampling_SEGMENT) as MemorySegment
+    set(value) = kCIImageNearestSampling_VH.set(kCIImageNearestSampling_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageCacheImmediately typedef const CIImageOption = (Void)*
+ */
+private val kCIImageCacheImmediately_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageCacheImmediately_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageCacheImmediately").orElseThrow() }
+private val kCIImageCacheImmediately_VH: VarHandle by lazy { kCIImageCacheImmediately_LAYOUT.varHandle() }
+
+var kCIImageCacheImmediately: MemorySegment
+    get() = kCIImageCacheImmediately_VH.get(kCIImageCacheImmediately_SEGMENT) as MemorySegment
+    set(value) = kCIImageCacheImmediately_VH.set(kCIImageCacheImmediately_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageProperties typedef const CIImageOption = (Void)*
+ */
+private val kCIImageProperties_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageProperties_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageProperties").orElseThrow() }
+private val kCIImageProperties_VH: VarHandle by lazy { kCIImageProperties_LAYOUT.varHandle() }
+
+var kCIImageProperties: MemorySegment
+    get() = kCIImageProperties_VH.get(kCIImageProperties_SEGMENT) as MemorySegment
+    set(value) = kCIImageProperties_VH.set(kCIImageProperties_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageApplyOrientationProperty typedef const CIImageOption = (Void)*
+ */
+private val kCIImageApplyOrientationProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageApplyOrientationProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageApplyOrientationProperty").orElseThrow() }
+private val kCIImageApplyOrientationProperty_VH: VarHandle by lazy { kCIImageApplyOrientationProperty_LAYOUT.varHandle() }
+
+var kCIImageApplyOrientationProperty: MemorySegment
+    get() = kCIImageApplyOrientationProperty_VH.get(kCIImageApplyOrientationProperty_SEGMENT) as MemorySegment
+    set(value) = kCIImageApplyOrientationProperty_VH.set(kCIImageApplyOrientationProperty_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageTextureTarget typedef const CIImageOption = (Void)*
+ */
+private val kCIImageTextureTarget_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageTextureTarget_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageTextureTarget").orElseThrow() }
+private val kCIImageTextureTarget_VH: VarHandle by lazy { kCIImageTextureTarget_LAYOUT.varHandle() }
+
+var kCIImageTextureTarget: MemorySegment
+    get() = kCIImageTextureTarget_VH.get(kCIImageTextureTarget_SEGMENT) as MemorySegment
+    set(value) = kCIImageTextureTarget_VH.set(kCIImageTextureTarget_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageTextureFormat typedef const CIImageOption = (Void)*
+ */
+private val kCIImageTextureFormat_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageTextureFormat_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageTextureFormat").orElseThrow() }
+private val kCIImageTextureFormat_VH: VarHandle by lazy { kCIImageTextureFormat_LAYOUT.varHandle() }
+
+var kCIImageTextureFormat: MemorySegment
+    get() = kCIImageTextureFormat_VH.get(kCIImageTextureFormat_SEGMENT) as MemorySegment
+    set(value) = kCIImageTextureFormat_VH.set(kCIImageTextureFormat_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAuxiliaryDepth typedef const CIImageOption = (Void)*
+ */
+private val kCIImageAuxiliaryDepth_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAuxiliaryDepth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAuxiliaryDepth").orElseThrow() }
+private val kCIImageAuxiliaryDepth_VH: VarHandle by lazy { kCIImageAuxiliaryDepth_LAYOUT.varHandle() }
+
+var kCIImageAuxiliaryDepth: MemorySegment
+    get() = kCIImageAuxiliaryDepth_VH.get(kCIImageAuxiliaryDepth_SEGMENT) as MemorySegment
+    set(value) = kCIImageAuxiliaryDepth_VH.set(kCIImageAuxiliaryDepth_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAuxiliaryDisparity typedef const CIImageOption = (Void)*
+ */
+private val kCIImageAuxiliaryDisparity_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAuxiliaryDisparity_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAuxiliaryDisparity").orElseThrow() }
+private val kCIImageAuxiliaryDisparity_VH: VarHandle by lazy { kCIImageAuxiliaryDisparity_LAYOUT.varHandle() }
+
+var kCIImageAuxiliaryDisparity: MemorySegment
+    get() = kCIImageAuxiliaryDisparity_VH.get(kCIImageAuxiliaryDisparity_SEGMENT) as MemorySegment
+    set(value) = kCIImageAuxiliaryDisparity_VH.set(kCIImageAuxiliaryDisparity_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAuxiliaryPortraitEffectsMatte typedef const CIImageOption = (Void)*
+ */
+private val kCIImageAuxiliaryPortraitEffectsMatte_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAuxiliaryPortraitEffectsMatte_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAuxiliaryPortraitEffectsMatte").orElseThrow() }
+private val kCIImageAuxiliaryPortraitEffectsMatte_VH: VarHandle by lazy { kCIImageAuxiliaryPortraitEffectsMatte_LAYOUT.varHandle() }
+
+var kCIImageAuxiliaryPortraitEffectsMatte: MemorySegment
+    get() = kCIImageAuxiliaryPortraitEffectsMatte_VH.get(kCIImageAuxiliaryPortraitEffectsMatte_SEGMENT) as MemorySegment
+    set(value) = kCIImageAuxiliaryPortraitEffectsMatte_VH.set(kCIImageAuxiliaryPortraitEffectsMatte_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAuxiliarySemanticSegmentationSkinMatte typedef const CIImageOption = (Void)*
+ */
+private val kCIImageAuxiliarySemanticSegmentationSkinMatte_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAuxiliarySemanticSegmentationSkinMatte_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAuxiliarySemanticSegmentationSkinMatte").orElseThrow() }
+private val kCIImageAuxiliarySemanticSegmentationSkinMatte_VH: VarHandle by lazy { kCIImageAuxiliarySemanticSegmentationSkinMatte_LAYOUT.varHandle() }
+
+var kCIImageAuxiliarySemanticSegmentationSkinMatte: MemorySegment
+    get() = kCIImageAuxiliarySemanticSegmentationSkinMatte_VH.get(kCIImageAuxiliarySemanticSegmentationSkinMatte_SEGMENT) as MemorySegment
+    set(value) = kCIImageAuxiliarySemanticSegmentationSkinMatte_VH.set(kCIImageAuxiliarySemanticSegmentationSkinMatte_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAuxiliarySemanticSegmentationHairMatte typedef const CIImageOption = (Void)*
+ */
+private val kCIImageAuxiliarySemanticSegmentationHairMatte_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAuxiliarySemanticSegmentationHairMatte_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAuxiliarySemanticSegmentationHairMatte").orElseThrow() }
+private val kCIImageAuxiliarySemanticSegmentationHairMatte_VH: VarHandle by lazy { kCIImageAuxiliarySemanticSegmentationHairMatte_LAYOUT.varHandle() }
+
+var kCIImageAuxiliarySemanticSegmentationHairMatte: MemorySegment
+    get() = kCIImageAuxiliarySemanticSegmentationHairMatte_VH.get(kCIImageAuxiliarySemanticSegmentationHairMatte_SEGMENT) as MemorySegment
+    set(value) = kCIImageAuxiliarySemanticSegmentationHairMatte_VH.set(kCIImageAuxiliarySemanticSegmentationHairMatte_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAuxiliarySemanticSegmentationTeethMatte typedef const CIImageOption = (Void)*
+ */
+private val kCIImageAuxiliarySemanticSegmentationTeethMatte_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAuxiliarySemanticSegmentationTeethMatte_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAuxiliarySemanticSegmentationTeethMatte").orElseThrow() }
+private val kCIImageAuxiliarySemanticSegmentationTeethMatte_VH: VarHandle by lazy { kCIImageAuxiliarySemanticSegmentationTeethMatte_LAYOUT.varHandle() }
+
+var kCIImageAuxiliarySemanticSegmentationTeethMatte: MemorySegment
+    get() = kCIImageAuxiliarySemanticSegmentationTeethMatte_VH.get(kCIImageAuxiliarySemanticSegmentationTeethMatte_SEGMENT) as MemorySegment
+    set(value) = kCIImageAuxiliarySemanticSegmentationTeethMatte_VH.set(kCIImageAuxiliarySemanticSegmentationTeethMatte_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAuxiliarySemanticSegmentationGlassesMatte typedef const CIImageOption = (Void)*
+ */
+private val kCIImageAuxiliarySemanticSegmentationGlassesMatte_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAuxiliarySemanticSegmentationGlassesMatte_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAuxiliarySemanticSegmentationGlassesMatte").orElseThrow() }
+private val kCIImageAuxiliarySemanticSegmentationGlassesMatte_VH: VarHandle by lazy { kCIImageAuxiliarySemanticSegmentationGlassesMatte_LAYOUT.varHandle() }
+
+var kCIImageAuxiliarySemanticSegmentationGlassesMatte: MemorySegment
+    get() = kCIImageAuxiliarySemanticSegmentationGlassesMatte_VH.get(kCIImageAuxiliarySemanticSegmentationGlassesMatte_SEGMENT) as MemorySegment
+    set(value) = kCIImageAuxiliarySemanticSegmentationGlassesMatte_VH.set(kCIImageAuxiliarySemanticSegmentationGlassesMatte_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAuxiliarySemanticSegmentationSkyMatte typedef const CIImageOption = (Void)*
+ */
+private val kCIImageAuxiliarySemanticSegmentationSkyMatte_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAuxiliarySemanticSegmentationSkyMatte_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAuxiliarySemanticSegmentationSkyMatte").orElseThrow() }
+private val kCIImageAuxiliarySemanticSegmentationSkyMatte_VH: VarHandle by lazy { kCIImageAuxiliarySemanticSegmentationSkyMatte_LAYOUT.varHandle() }
+
+var kCIImageAuxiliarySemanticSegmentationSkyMatte: MemorySegment
+    get() = kCIImageAuxiliarySemanticSegmentationSkyMatte_VH.get(kCIImageAuxiliarySemanticSegmentationSkyMatte_SEGMENT) as MemorySegment
+    set(value) = kCIImageAuxiliarySemanticSegmentationSkyMatte_VH.set(kCIImageAuxiliarySemanticSegmentationSkyMatte_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAuxiliaryHDRGainMap typedef const CIImageOption = (Void)*
+ */
+private val kCIImageAuxiliaryHDRGainMap_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAuxiliaryHDRGainMap_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAuxiliaryHDRGainMap").orElseThrow() }
+private val kCIImageAuxiliaryHDRGainMap_VH: VarHandle by lazy { kCIImageAuxiliaryHDRGainMap_LAYOUT.varHandle() }
+
+var kCIImageAuxiliaryHDRGainMap: MemorySegment
+    get() = kCIImageAuxiliaryHDRGainMap_VH.get(kCIImageAuxiliaryHDRGainMap_SEGMENT) as MemorySegment
+    set(value) = kCIImageAuxiliaryHDRGainMap_VH.set(kCIImageAuxiliaryHDRGainMap_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAutoAdjustEnhance typedef const CIImageAutoAdjustmentOption = (Void)*
+ */
+private val kCIImageAutoAdjustEnhance_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAutoAdjustEnhance_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAutoAdjustEnhance").orElseThrow() }
+private val kCIImageAutoAdjustEnhance_VH: VarHandle by lazy { kCIImageAutoAdjustEnhance_LAYOUT.varHandle() }
+
+var kCIImageAutoAdjustEnhance: MemorySegment
+    get() = kCIImageAutoAdjustEnhance_VH.get(kCIImageAutoAdjustEnhance_SEGMENT) as MemorySegment
+    set(value) = kCIImageAutoAdjustEnhance_VH.set(kCIImageAutoAdjustEnhance_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAutoAdjustRedEye typedef const CIImageAutoAdjustmentOption = (Void)*
+ */
+private val kCIImageAutoAdjustRedEye_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAutoAdjustRedEye_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAutoAdjustRedEye").orElseThrow() }
+private val kCIImageAutoAdjustRedEye_VH: VarHandle by lazy { kCIImageAutoAdjustRedEye_LAYOUT.varHandle() }
+
+var kCIImageAutoAdjustRedEye: MemorySegment
+    get() = kCIImageAutoAdjustRedEye_VH.get(kCIImageAutoAdjustRedEye_SEGMENT) as MemorySegment
+    set(value) = kCIImageAutoAdjustRedEye_VH.set(kCIImageAutoAdjustRedEye_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAutoAdjustFeatures typedef const CIImageAutoAdjustmentOption = (Void)*
+ */
+private val kCIImageAutoAdjustFeatures_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAutoAdjustFeatures_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAutoAdjustFeatures").orElseThrow() }
+private val kCIImageAutoAdjustFeatures_VH: VarHandle by lazy { kCIImageAutoAdjustFeatures_LAYOUT.varHandle() }
+
+var kCIImageAutoAdjustFeatures: MemorySegment
+    get() = kCIImageAutoAdjustFeatures_VH.get(kCIImageAutoAdjustFeatures_SEGMENT) as MemorySegment
+    set(value) = kCIImageAutoAdjustFeatures_VH.set(kCIImageAutoAdjustFeatures_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAutoAdjustCrop typedef const CIImageAutoAdjustmentOption = (Void)*
+ */
+private val kCIImageAutoAdjustCrop_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAutoAdjustCrop_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAutoAdjustCrop").orElseThrow() }
+private val kCIImageAutoAdjustCrop_VH: VarHandle by lazy { kCIImageAutoAdjustCrop_LAYOUT.varHandle() }
+
+var kCIImageAutoAdjustCrop: MemorySegment
+    get() = kCIImageAutoAdjustCrop_VH.get(kCIImageAutoAdjustCrop_SEGMENT) as MemorySegment
+    set(value) = kCIImageAutoAdjustCrop_VH.set(kCIImageAutoAdjustCrop_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCIImageAutoAdjustLevel typedef const CIImageAutoAdjustmentOption = (Void)*
+ */
+private val kCIImageAutoAdjustLevel_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCIImageAutoAdjustLevel_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCIImageAutoAdjustLevel").orElseThrow() }
+private val kCIImageAutoAdjustLevel_VH: VarHandle by lazy { kCIImageAutoAdjustLevel_LAYOUT.varHandle() }
+
+var kCIImageAutoAdjustLevel: MemorySegment
+    get() = kCIImageAutoAdjustLevel_VH.get(kCIImageAutoAdjustLevel_SEGMENT) as MemorySegment
+    set(value) = kCIImageAutoAdjustLevel_VH.set(kCIImageAutoAdjustLevel_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSColorPanelColorDidChangeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSColorPanelColorDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSColorPanelColorDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSColorPanelColorDidChangeNotification").orElseThrow() }
+private val NSColorPanelColorDidChangeNotification_VH: VarHandle by lazy { NSColorPanelColorDidChangeNotification_LAYOUT.varHandle() }
+
+var NSColorPanelColorDidChangeNotification: MemorySegment
+    get() = NSColorPanelColorDidChangeNotification_VH.get(NSColorPanelColorDidChangeNotification_SEGMENT) as MemorySegment
+    set(value) = NSColorPanelColorDidChangeNotification_VH.set(NSColorPanelColorDidChangeNotification_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSDraggingImageComponentIconKey typedef const NSDraggingImageComponentKey = (Void)*
+ */
+private val NSDraggingImageComponentIconKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSDraggingImageComponentIconKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDraggingImageComponentIconKey").orElseThrow() }
+private val NSDraggingImageComponentIconKey_VH: VarHandle by lazy { NSDraggingImageComponentIconKey_LAYOUT.varHandle() }
+
+var NSDraggingImageComponentIconKey: MemorySegment
+    get() = NSDraggingImageComponentIconKey_VH.get(NSDraggingImageComponentIconKey_SEGMENT) as MemorySegment
+    set(value) = NSDraggingImageComponentIconKey_VH.set(NSDraggingImageComponentIconKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSDraggingImageComponentLabelKey typedef const NSDraggingImageComponentKey = (Void)*
+ */
+private val NSDraggingImageComponentLabelKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSDraggingImageComponentLabelKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDraggingImageComponentLabelKey").orElseThrow() }
+private val NSDraggingImageComponentLabelKey_VH: VarHandle by lazy { NSDraggingImageComponentLabelKey_LAYOUT.varHandle() }
+
+var NSDraggingImageComponentLabelKey: MemorySegment
+    get() = NSDraggingImageComponentLabelKey_VH.get(NSDraggingImageComponentLabelKey_SEGMENT) as MemorySegment
+    set(value) = NSDraggingImageComponentLabelKey_VH.set(NSDraggingImageComponentLabelKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : _NSDictionaryOfVariableBindings (Void)*(typedef NSString = (Void)*,typedef id = (Void)*)
+ */
+private val _NSDictionaryOfVariableBindings_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val _NSDictionaryOfVariableBindings_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("_NSDictionaryOfVariableBindings").orElseThrow()
+private val _NSDictionaryOfVariableBindings_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(_NSDictionaryOfVariableBindings_ADDR, _NSDictionaryOfVariableBindings_DESC)
+
+fun _NSDictionaryOfVariableBindings(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return _NSDictionaryOfVariableBindings_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSViewNoInstrinsicMetric typedef const CGFloat = Double
+ */
+private val NSViewNoInstrinsicMetric_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSViewNoInstrinsicMetric_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSViewNoInstrinsicMetric").orElseThrow() }
+private val NSViewNoInstrinsicMetric_VH: VarHandle by lazy { NSViewNoInstrinsicMetric_LAYOUT.varHandle() }
+
+var NSViewNoInstrinsicMetric: Double
+    get() = NSViewNoInstrinsicMetric_VH.get(NSViewNoInstrinsicMetric_SEGMENT) as Double
+    set(value) = NSViewNoInstrinsicMetric_VH.set(NSViewNoInstrinsicMetric_SEGMENT, value)
+
+/**
  * {@snippet lang=c : NSViewNoIntrinsicMetric typedef const CGFloat = Double
  */
 private val NSViewNoIntrinsicMetric_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
@@ -916,2390 +3417,3 @@ private val NSImageNameTouchBarComposeTemplate_VH: VarHandle by lazy { NSImageNa
 var NSImageNameTouchBarComposeTemplate: MemorySegment
     get() = NSImageNameTouchBarComposeTemplate_VH.get(NSImageNameTouchBarComposeTemplate_SEGMENT) as MemorySegment
     set(value) = NSImageNameTouchBarComposeTemplate_VH.set(NSImageNameTouchBarComposeTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarDeleteTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarDeleteTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarDeleteTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarDeleteTemplate").orElseThrow() }
-private val NSImageNameTouchBarDeleteTemplate_VH: VarHandle by lazy { NSImageNameTouchBarDeleteTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarDeleteTemplate: MemorySegment
-    get() = NSImageNameTouchBarDeleteTemplate_VH.get(NSImageNameTouchBarDeleteTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarDeleteTemplate_VH.set(NSImageNameTouchBarDeleteTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarDownloadTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarDownloadTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarDownloadTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarDownloadTemplate").orElseThrow() }
-private val NSImageNameTouchBarDownloadTemplate_VH: VarHandle by lazy { NSImageNameTouchBarDownloadTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarDownloadTemplate: MemorySegment
-    get() = NSImageNameTouchBarDownloadTemplate_VH.get(NSImageNameTouchBarDownloadTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarDownloadTemplate_VH.set(NSImageNameTouchBarDownloadTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarEnterFullScreenTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarEnterFullScreenTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarEnterFullScreenTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarEnterFullScreenTemplate").orElseThrow() }
-private val NSImageNameTouchBarEnterFullScreenTemplate_VH: VarHandle by lazy { NSImageNameTouchBarEnterFullScreenTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarEnterFullScreenTemplate: MemorySegment
-    get() = NSImageNameTouchBarEnterFullScreenTemplate_VH.get(NSImageNameTouchBarEnterFullScreenTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarEnterFullScreenTemplate_VH.set(NSImageNameTouchBarEnterFullScreenTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarExitFullScreenTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarExitFullScreenTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarExitFullScreenTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarExitFullScreenTemplate").orElseThrow() }
-private val NSImageNameTouchBarExitFullScreenTemplate_VH: VarHandle by lazy { NSImageNameTouchBarExitFullScreenTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarExitFullScreenTemplate: MemorySegment
-    get() = NSImageNameTouchBarExitFullScreenTemplate_VH.get(NSImageNameTouchBarExitFullScreenTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarExitFullScreenTemplate_VH.set(NSImageNameTouchBarExitFullScreenTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarFastForwardTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarFastForwardTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarFastForwardTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarFastForwardTemplate").orElseThrow() }
-private val NSImageNameTouchBarFastForwardTemplate_VH: VarHandle by lazy { NSImageNameTouchBarFastForwardTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarFastForwardTemplate: MemorySegment
-    get() = NSImageNameTouchBarFastForwardTemplate_VH.get(NSImageNameTouchBarFastForwardTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarFastForwardTemplate_VH.set(NSImageNameTouchBarFastForwardTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarFolderCopyToTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarFolderCopyToTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarFolderCopyToTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarFolderCopyToTemplate").orElseThrow() }
-private val NSImageNameTouchBarFolderCopyToTemplate_VH: VarHandle by lazy { NSImageNameTouchBarFolderCopyToTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarFolderCopyToTemplate: MemorySegment
-    get() = NSImageNameTouchBarFolderCopyToTemplate_VH.get(NSImageNameTouchBarFolderCopyToTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarFolderCopyToTemplate_VH.set(NSImageNameTouchBarFolderCopyToTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarFolderMoveToTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarFolderMoveToTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarFolderMoveToTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarFolderMoveToTemplate").orElseThrow() }
-private val NSImageNameTouchBarFolderMoveToTemplate_VH: VarHandle by lazy { NSImageNameTouchBarFolderMoveToTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarFolderMoveToTemplate: MemorySegment
-    get() = NSImageNameTouchBarFolderMoveToTemplate_VH.get(NSImageNameTouchBarFolderMoveToTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarFolderMoveToTemplate_VH.set(NSImageNameTouchBarFolderMoveToTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarFolderTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarFolderTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarFolderTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarFolderTemplate").orElseThrow() }
-private val NSImageNameTouchBarFolderTemplate_VH: VarHandle by lazy { NSImageNameTouchBarFolderTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarFolderTemplate: MemorySegment
-    get() = NSImageNameTouchBarFolderTemplate_VH.get(NSImageNameTouchBarFolderTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarFolderTemplate_VH.set(NSImageNameTouchBarFolderTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarGetInfoTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarGetInfoTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGetInfoTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGetInfoTemplate").orElseThrow() }
-private val NSImageNameTouchBarGetInfoTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGetInfoTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarGetInfoTemplate: MemorySegment
-    get() = NSImageNameTouchBarGetInfoTemplate_VH.get(NSImageNameTouchBarGetInfoTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarGetInfoTemplate_VH.set(NSImageNameTouchBarGetInfoTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarGoBackTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarGoBackTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGoBackTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGoBackTemplate").orElseThrow() }
-private val NSImageNameTouchBarGoBackTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGoBackTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarGoBackTemplate: MemorySegment
-    get() = NSImageNameTouchBarGoBackTemplate_VH.get(NSImageNameTouchBarGoBackTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarGoBackTemplate_VH.set(NSImageNameTouchBarGoBackTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarGoDownTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarGoDownTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGoDownTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGoDownTemplate").orElseThrow() }
-private val NSImageNameTouchBarGoDownTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGoDownTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarGoDownTemplate: MemorySegment
-    get() = NSImageNameTouchBarGoDownTemplate_VH.get(NSImageNameTouchBarGoDownTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarGoDownTemplate_VH.set(NSImageNameTouchBarGoDownTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarGoForwardTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarGoForwardTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGoForwardTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGoForwardTemplate").orElseThrow() }
-private val NSImageNameTouchBarGoForwardTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGoForwardTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarGoForwardTemplate: MemorySegment
-    get() = NSImageNameTouchBarGoForwardTemplate_VH.get(NSImageNameTouchBarGoForwardTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarGoForwardTemplate_VH.set(NSImageNameTouchBarGoForwardTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarGoUpTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarGoUpTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGoUpTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGoUpTemplate").orElseThrow() }
-private val NSImageNameTouchBarGoUpTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGoUpTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarGoUpTemplate: MemorySegment
-    get() = NSImageNameTouchBarGoUpTemplate_VH.get(NSImageNameTouchBarGoUpTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarGoUpTemplate_VH.set(NSImageNameTouchBarGoUpTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarHistoryTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarHistoryTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarHistoryTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarHistoryTemplate").orElseThrow() }
-private val NSImageNameTouchBarHistoryTemplate_VH: VarHandle by lazy { NSImageNameTouchBarHistoryTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarHistoryTemplate: MemorySegment
-    get() = NSImageNameTouchBarHistoryTemplate_VH.get(NSImageNameTouchBarHistoryTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarHistoryTemplate_VH.set(NSImageNameTouchBarHistoryTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarIconViewTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarIconViewTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarIconViewTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarIconViewTemplate").orElseThrow() }
-private val NSImageNameTouchBarIconViewTemplate_VH: VarHandle by lazy { NSImageNameTouchBarIconViewTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarIconViewTemplate: MemorySegment
-    get() = NSImageNameTouchBarIconViewTemplate_VH.get(NSImageNameTouchBarIconViewTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarIconViewTemplate_VH.set(NSImageNameTouchBarIconViewTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarListViewTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarListViewTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarListViewTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarListViewTemplate").orElseThrow() }
-private val NSImageNameTouchBarListViewTemplate_VH: VarHandle by lazy { NSImageNameTouchBarListViewTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarListViewTemplate: MemorySegment
-    get() = NSImageNameTouchBarListViewTemplate_VH.get(NSImageNameTouchBarListViewTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarListViewTemplate_VH.set(NSImageNameTouchBarListViewTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarMailTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarMailTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarMailTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarMailTemplate").orElseThrow() }
-private val NSImageNameTouchBarMailTemplate_VH: VarHandle by lazy { NSImageNameTouchBarMailTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarMailTemplate: MemorySegment
-    get() = NSImageNameTouchBarMailTemplate_VH.get(NSImageNameTouchBarMailTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarMailTemplate_VH.set(NSImageNameTouchBarMailTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarNewFolderTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarNewFolderTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarNewFolderTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarNewFolderTemplate").orElseThrow() }
-private val NSImageNameTouchBarNewFolderTemplate_VH: VarHandle by lazy { NSImageNameTouchBarNewFolderTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarNewFolderTemplate: MemorySegment
-    get() = NSImageNameTouchBarNewFolderTemplate_VH.get(NSImageNameTouchBarNewFolderTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarNewFolderTemplate_VH.set(NSImageNameTouchBarNewFolderTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarNewMessageTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarNewMessageTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarNewMessageTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarNewMessageTemplate").orElseThrow() }
-private val NSImageNameTouchBarNewMessageTemplate_VH: VarHandle by lazy { NSImageNameTouchBarNewMessageTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarNewMessageTemplate: MemorySegment
-    get() = NSImageNameTouchBarNewMessageTemplate_VH.get(NSImageNameTouchBarNewMessageTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarNewMessageTemplate_VH.set(NSImageNameTouchBarNewMessageTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarOpenInBrowserTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarOpenInBrowserTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarOpenInBrowserTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarOpenInBrowserTemplate").orElseThrow() }
-private val NSImageNameTouchBarOpenInBrowserTemplate_VH: VarHandle by lazy { NSImageNameTouchBarOpenInBrowserTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarOpenInBrowserTemplate: MemorySegment
-    get() = NSImageNameTouchBarOpenInBrowserTemplate_VH.get(NSImageNameTouchBarOpenInBrowserTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarOpenInBrowserTemplate_VH.set(NSImageNameTouchBarOpenInBrowserTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarPauseTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarPauseTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarPauseTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarPauseTemplate").orElseThrow() }
-private val NSImageNameTouchBarPauseTemplate_VH: VarHandle by lazy { NSImageNameTouchBarPauseTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarPauseTemplate: MemorySegment
-    get() = NSImageNameTouchBarPauseTemplate_VH.get(NSImageNameTouchBarPauseTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarPauseTemplate_VH.set(NSImageNameTouchBarPauseTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarPlayPauseTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarPlayPauseTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarPlayPauseTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarPlayPauseTemplate").orElseThrow() }
-private val NSImageNameTouchBarPlayPauseTemplate_VH: VarHandle by lazy { NSImageNameTouchBarPlayPauseTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarPlayPauseTemplate: MemorySegment
-    get() = NSImageNameTouchBarPlayPauseTemplate_VH.get(NSImageNameTouchBarPlayPauseTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarPlayPauseTemplate_VH.set(NSImageNameTouchBarPlayPauseTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarPlayTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarPlayTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarPlayTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarPlayTemplate").orElseThrow() }
-private val NSImageNameTouchBarPlayTemplate_VH: VarHandle by lazy { NSImageNameTouchBarPlayTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarPlayTemplate: MemorySegment
-    get() = NSImageNameTouchBarPlayTemplate_VH.get(NSImageNameTouchBarPlayTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarPlayTemplate_VH.set(NSImageNameTouchBarPlayTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarQuickLookTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarQuickLookTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarQuickLookTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarQuickLookTemplate").orElseThrow() }
-private val NSImageNameTouchBarQuickLookTemplate_VH: VarHandle by lazy { NSImageNameTouchBarQuickLookTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarQuickLookTemplate: MemorySegment
-    get() = NSImageNameTouchBarQuickLookTemplate_VH.get(NSImageNameTouchBarQuickLookTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarQuickLookTemplate_VH.set(NSImageNameTouchBarQuickLookTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarRecordStartTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarRecordStartTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRecordStartTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRecordStartTemplate").orElseThrow() }
-private val NSImageNameTouchBarRecordStartTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRecordStartTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarRecordStartTemplate: MemorySegment
-    get() = NSImageNameTouchBarRecordStartTemplate_VH.get(NSImageNameTouchBarRecordStartTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarRecordStartTemplate_VH.set(NSImageNameTouchBarRecordStartTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarRecordStopTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarRecordStopTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRecordStopTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRecordStopTemplate").orElseThrow() }
-private val NSImageNameTouchBarRecordStopTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRecordStopTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarRecordStopTemplate: MemorySegment
-    get() = NSImageNameTouchBarRecordStopTemplate_VH.get(NSImageNameTouchBarRecordStopTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarRecordStopTemplate_VH.set(NSImageNameTouchBarRecordStopTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarRefreshTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarRefreshTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRefreshTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRefreshTemplate").orElseThrow() }
-private val NSImageNameTouchBarRefreshTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRefreshTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarRefreshTemplate: MemorySegment
-    get() = NSImageNameTouchBarRefreshTemplate_VH.get(NSImageNameTouchBarRefreshTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarRefreshTemplate_VH.set(NSImageNameTouchBarRefreshTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarRemoveTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarRemoveTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRemoveTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRemoveTemplate").orElseThrow() }
-private val NSImageNameTouchBarRemoveTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRemoveTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarRemoveTemplate: MemorySegment
-    get() = NSImageNameTouchBarRemoveTemplate_VH.get(NSImageNameTouchBarRemoveTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarRemoveTemplate_VH.set(NSImageNameTouchBarRemoveTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarRewindTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarRewindTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRewindTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRewindTemplate").orElseThrow() }
-private val NSImageNameTouchBarRewindTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRewindTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarRewindTemplate: MemorySegment
-    get() = NSImageNameTouchBarRewindTemplate_VH.get(NSImageNameTouchBarRewindTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarRewindTemplate_VH.set(NSImageNameTouchBarRewindTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarRotateLeftTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarRotateLeftTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRotateLeftTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRotateLeftTemplate").orElseThrow() }
-private val NSImageNameTouchBarRotateLeftTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRotateLeftTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarRotateLeftTemplate: MemorySegment
-    get() = NSImageNameTouchBarRotateLeftTemplate_VH.get(NSImageNameTouchBarRotateLeftTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarRotateLeftTemplate_VH.set(NSImageNameTouchBarRotateLeftTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarRotateRightTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarRotateRightTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRotateRightTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRotateRightTemplate").orElseThrow() }
-private val NSImageNameTouchBarRotateRightTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRotateRightTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarRotateRightTemplate: MemorySegment
-    get() = NSImageNameTouchBarRotateRightTemplate_VH.get(NSImageNameTouchBarRotateRightTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarRotateRightTemplate_VH.set(NSImageNameTouchBarRotateRightTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSearchTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSearchTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSearchTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSearchTemplate").orElseThrow() }
-private val NSImageNameTouchBarSearchTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSearchTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSearchTemplate: MemorySegment
-    get() = NSImageNameTouchBarSearchTemplate_VH.get(NSImageNameTouchBarSearchTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSearchTemplate_VH.set(NSImageNameTouchBarSearchTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarShareTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarShareTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarShareTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarShareTemplate").orElseThrow() }
-private val NSImageNameTouchBarShareTemplate_VH: VarHandle by lazy { NSImageNameTouchBarShareTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarShareTemplate: MemorySegment
-    get() = NSImageNameTouchBarShareTemplate_VH.get(NSImageNameTouchBarShareTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarShareTemplate_VH.set(NSImageNameTouchBarShareTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSidebarTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSidebarTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSidebarTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSidebarTemplate").orElseThrow() }
-private val NSImageNameTouchBarSidebarTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSidebarTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSidebarTemplate: MemorySegment
-    get() = NSImageNameTouchBarSidebarTemplate_VH.get(NSImageNameTouchBarSidebarTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSidebarTemplate_VH.set(NSImageNameTouchBarSidebarTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSkipAhead15SecondsTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSkipAhead15SecondsTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipAhead15SecondsTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipAhead15SecondsTemplate").orElseThrow() }
-private val NSImageNameTouchBarSkipAhead15SecondsTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipAhead15SecondsTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSkipAhead15SecondsTemplate: MemorySegment
-    get() = NSImageNameTouchBarSkipAhead15SecondsTemplate_VH.get(NSImageNameTouchBarSkipAhead15SecondsTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSkipAhead15SecondsTemplate_VH.set(NSImageNameTouchBarSkipAhead15SecondsTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSkipAhead30SecondsTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSkipAhead30SecondsTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipAhead30SecondsTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipAhead30SecondsTemplate").orElseThrow() }
-private val NSImageNameTouchBarSkipAhead30SecondsTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipAhead30SecondsTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSkipAhead30SecondsTemplate: MemorySegment
-    get() = NSImageNameTouchBarSkipAhead30SecondsTemplate_VH.get(NSImageNameTouchBarSkipAhead30SecondsTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSkipAhead30SecondsTemplate_VH.set(NSImageNameTouchBarSkipAhead30SecondsTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSkipAheadTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSkipAheadTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipAheadTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipAheadTemplate").orElseThrow() }
-private val NSImageNameTouchBarSkipAheadTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipAheadTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSkipAheadTemplate: MemorySegment
-    get() = NSImageNameTouchBarSkipAheadTemplate_VH.get(NSImageNameTouchBarSkipAheadTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSkipAheadTemplate_VH.set(NSImageNameTouchBarSkipAheadTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSkipBack15SecondsTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSkipBack15SecondsTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipBack15SecondsTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipBack15SecondsTemplate").orElseThrow() }
-private val NSImageNameTouchBarSkipBack15SecondsTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipBack15SecondsTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSkipBack15SecondsTemplate: MemorySegment
-    get() = NSImageNameTouchBarSkipBack15SecondsTemplate_VH.get(NSImageNameTouchBarSkipBack15SecondsTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSkipBack15SecondsTemplate_VH.set(NSImageNameTouchBarSkipBack15SecondsTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSkipBack30SecondsTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSkipBack30SecondsTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipBack30SecondsTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipBack30SecondsTemplate").orElseThrow() }
-private val NSImageNameTouchBarSkipBack30SecondsTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipBack30SecondsTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSkipBack30SecondsTemplate: MemorySegment
-    get() = NSImageNameTouchBarSkipBack30SecondsTemplate_VH.get(NSImageNameTouchBarSkipBack30SecondsTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSkipBack30SecondsTemplate_VH.set(NSImageNameTouchBarSkipBack30SecondsTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSkipBackTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSkipBackTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipBackTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipBackTemplate").orElseThrow() }
-private val NSImageNameTouchBarSkipBackTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipBackTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSkipBackTemplate: MemorySegment
-    get() = NSImageNameTouchBarSkipBackTemplate_VH.get(NSImageNameTouchBarSkipBackTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSkipBackTemplate_VH.set(NSImageNameTouchBarSkipBackTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSkipToEndTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSkipToEndTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipToEndTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipToEndTemplate").orElseThrow() }
-private val NSImageNameTouchBarSkipToEndTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipToEndTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSkipToEndTemplate: MemorySegment
-    get() = NSImageNameTouchBarSkipToEndTemplate_VH.get(NSImageNameTouchBarSkipToEndTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSkipToEndTemplate_VH.set(NSImageNameTouchBarSkipToEndTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSkipToStartTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSkipToStartTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipToStartTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipToStartTemplate").orElseThrow() }
-private val NSImageNameTouchBarSkipToStartTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipToStartTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSkipToStartTemplate: MemorySegment
-    get() = NSImageNameTouchBarSkipToStartTemplate_VH.get(NSImageNameTouchBarSkipToStartTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSkipToStartTemplate_VH.set(NSImageNameTouchBarSkipToStartTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarSlideshowTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarSlideshowTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSlideshowTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSlideshowTemplate").orElseThrow() }
-private val NSImageNameTouchBarSlideshowTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSlideshowTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarSlideshowTemplate: MemorySegment
-    get() = NSImageNameTouchBarSlideshowTemplate_VH.get(NSImageNameTouchBarSlideshowTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarSlideshowTemplate_VH.set(NSImageNameTouchBarSlideshowTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTagIconTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTagIconTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTagIconTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTagIconTemplate").orElseThrow() }
-private val NSImageNameTouchBarTagIconTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTagIconTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTagIconTemplate: MemorySegment
-    get() = NSImageNameTouchBarTagIconTemplate_VH.get(NSImageNameTouchBarTagIconTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTagIconTemplate_VH.set(NSImageNameTouchBarTagIconTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextBoldTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextBoldTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextBoldTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextBoldTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextBoldTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextBoldTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextBoldTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextBoldTemplate_VH.get(NSImageNameTouchBarTextBoldTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextBoldTemplate_VH.set(NSImageNameTouchBarTextBoldTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextBoxTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextBoxTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextBoxTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextBoxTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextBoxTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextBoxTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextBoxTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextBoxTemplate_VH.get(NSImageNameTouchBarTextBoxTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextBoxTemplate_VH.set(NSImageNameTouchBarTextBoxTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextCenterAlignTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextCenterAlignTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextCenterAlignTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextCenterAlignTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextCenterAlignTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextCenterAlignTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextCenterAlignTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextCenterAlignTemplate_VH.get(NSImageNameTouchBarTextCenterAlignTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextCenterAlignTemplate_VH.set(NSImageNameTouchBarTextCenterAlignTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextItalicTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextItalicTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextItalicTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextItalicTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextItalicTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextItalicTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextItalicTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextItalicTemplate_VH.get(NSImageNameTouchBarTextItalicTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextItalicTemplate_VH.set(NSImageNameTouchBarTextItalicTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextJustifiedAlignTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextJustifiedAlignTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextJustifiedAlignTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextJustifiedAlignTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextJustifiedAlignTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextJustifiedAlignTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextJustifiedAlignTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextJustifiedAlignTemplate_VH.get(NSImageNameTouchBarTextJustifiedAlignTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextJustifiedAlignTemplate_VH.set(NSImageNameTouchBarTextJustifiedAlignTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextLeftAlignTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextLeftAlignTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextLeftAlignTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextLeftAlignTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextLeftAlignTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextLeftAlignTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextLeftAlignTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextLeftAlignTemplate_VH.get(NSImageNameTouchBarTextLeftAlignTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextLeftAlignTemplate_VH.set(NSImageNameTouchBarTextLeftAlignTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextListTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextListTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextListTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextListTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextListTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextListTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextListTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextListTemplate_VH.get(NSImageNameTouchBarTextListTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextListTemplate_VH.set(NSImageNameTouchBarTextListTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextRightAlignTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextRightAlignTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextRightAlignTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextRightAlignTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextRightAlignTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextRightAlignTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextRightAlignTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextRightAlignTemplate_VH.get(NSImageNameTouchBarTextRightAlignTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextRightAlignTemplate_VH.set(NSImageNameTouchBarTextRightAlignTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextStrikethroughTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextStrikethroughTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextStrikethroughTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextStrikethroughTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextStrikethroughTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextStrikethroughTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextStrikethroughTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextStrikethroughTemplate_VH.get(NSImageNameTouchBarTextStrikethroughTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextStrikethroughTemplate_VH.set(NSImageNameTouchBarTextStrikethroughTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarTextUnderlineTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarTextUnderlineTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextUnderlineTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextUnderlineTemplate").orElseThrow() }
-private val NSImageNameTouchBarTextUnderlineTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextUnderlineTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarTextUnderlineTemplate: MemorySegment
-    get() = NSImageNameTouchBarTextUnderlineTemplate_VH.get(NSImageNameTouchBarTextUnderlineTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarTextUnderlineTemplate_VH.set(NSImageNameTouchBarTextUnderlineTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarUserAddTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarUserAddTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarUserAddTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarUserAddTemplate").orElseThrow() }
-private val NSImageNameTouchBarUserAddTemplate_VH: VarHandle by lazy { NSImageNameTouchBarUserAddTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarUserAddTemplate: MemorySegment
-    get() = NSImageNameTouchBarUserAddTemplate_VH.get(NSImageNameTouchBarUserAddTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarUserAddTemplate_VH.set(NSImageNameTouchBarUserAddTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarUserGroupTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarUserGroupTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarUserGroupTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarUserGroupTemplate").orElseThrow() }
-private val NSImageNameTouchBarUserGroupTemplate_VH: VarHandle by lazy { NSImageNameTouchBarUserGroupTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarUserGroupTemplate: MemorySegment
-    get() = NSImageNameTouchBarUserGroupTemplate_VH.get(NSImageNameTouchBarUserGroupTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarUserGroupTemplate_VH.set(NSImageNameTouchBarUserGroupTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarUserTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarUserTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarUserTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarUserTemplate").orElseThrow() }
-private val NSImageNameTouchBarUserTemplate_VH: VarHandle by lazy { NSImageNameTouchBarUserTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarUserTemplate: MemorySegment
-    get() = NSImageNameTouchBarUserTemplate_VH.get(NSImageNameTouchBarUserTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarUserTemplate_VH.set(NSImageNameTouchBarUserTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarVolumeDownTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarVolumeDownTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarVolumeDownTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarVolumeDownTemplate").orElseThrow() }
-private val NSImageNameTouchBarVolumeDownTemplate_VH: VarHandle by lazy { NSImageNameTouchBarVolumeDownTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarVolumeDownTemplate: MemorySegment
-    get() = NSImageNameTouchBarVolumeDownTemplate_VH.get(NSImageNameTouchBarVolumeDownTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarVolumeDownTemplate_VH.set(NSImageNameTouchBarVolumeDownTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarVolumeUpTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarVolumeUpTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarVolumeUpTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarVolumeUpTemplate").orElseThrow() }
-private val NSImageNameTouchBarVolumeUpTemplate_VH: VarHandle by lazy { NSImageNameTouchBarVolumeUpTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarVolumeUpTemplate: MemorySegment
-    get() = NSImageNameTouchBarVolumeUpTemplate_VH.get(NSImageNameTouchBarVolumeUpTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarVolumeUpTemplate_VH.set(NSImageNameTouchBarVolumeUpTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarPlayheadTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarPlayheadTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarPlayheadTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarPlayheadTemplate").orElseThrow() }
-private val NSImageNameTouchBarPlayheadTemplate_VH: VarHandle by lazy { NSImageNameTouchBarPlayheadTemplate_LAYOUT.varHandle() }
-
-var NSImageNameTouchBarPlayheadTemplate: MemorySegment
-    get() = NSImageNameTouchBarPlayheadTemplate_VH.get(NSImageNameTouchBarPlayheadTemplate_SEGMENT) as MemorySegment
-    set(value) = NSImageNameTouchBarPlayheadTemplate_VH.set(NSImageNameTouchBarPlayheadTemplate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameComposeEmail typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameComposeEmail_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameComposeEmail_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameComposeEmail").orElseThrow() }
-private val NSSharingServiceNameComposeEmail_VH: VarHandle by lazy { NSSharingServiceNameComposeEmail_LAYOUT.varHandle() }
-
-var NSSharingServiceNameComposeEmail: MemorySegment
-    get() = NSSharingServiceNameComposeEmail_VH.get(NSSharingServiceNameComposeEmail_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameComposeEmail_VH.set(NSSharingServiceNameComposeEmail_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameComposeMessage typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameComposeMessage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameComposeMessage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameComposeMessage").orElseThrow() }
-private val NSSharingServiceNameComposeMessage_VH: VarHandle by lazy { NSSharingServiceNameComposeMessage_LAYOUT.varHandle() }
-
-var NSSharingServiceNameComposeMessage: MemorySegment
-    get() = NSSharingServiceNameComposeMessage_VH.get(NSSharingServiceNameComposeMessage_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameComposeMessage_VH.set(NSSharingServiceNameComposeMessage_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameSendViaAirDrop typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameSendViaAirDrop_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameSendViaAirDrop_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameSendViaAirDrop").orElseThrow() }
-private val NSSharingServiceNameSendViaAirDrop_VH: VarHandle by lazy { NSSharingServiceNameSendViaAirDrop_LAYOUT.varHandle() }
-
-var NSSharingServiceNameSendViaAirDrop: MemorySegment
-    get() = NSSharingServiceNameSendViaAirDrop_VH.get(NSSharingServiceNameSendViaAirDrop_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameSendViaAirDrop_VH.set(NSSharingServiceNameSendViaAirDrop_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameAddToSafariReadingList typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameAddToSafariReadingList_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameAddToSafariReadingList_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameAddToSafariReadingList").orElseThrow() }
-private val NSSharingServiceNameAddToSafariReadingList_VH: VarHandle by lazy { NSSharingServiceNameAddToSafariReadingList_LAYOUT.varHandle() }
-
-var NSSharingServiceNameAddToSafariReadingList: MemorySegment
-    get() = NSSharingServiceNameAddToSafariReadingList_VH.get(NSSharingServiceNameAddToSafariReadingList_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameAddToSafariReadingList_VH.set(NSSharingServiceNameAddToSafariReadingList_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameAddToIPhoto typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameAddToIPhoto_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameAddToIPhoto_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameAddToIPhoto").orElseThrow() }
-private val NSSharingServiceNameAddToIPhoto_VH: VarHandle by lazy { NSSharingServiceNameAddToIPhoto_LAYOUT.varHandle() }
-
-var NSSharingServiceNameAddToIPhoto: MemorySegment
-    get() = NSSharingServiceNameAddToIPhoto_VH.get(NSSharingServiceNameAddToIPhoto_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameAddToIPhoto_VH.set(NSSharingServiceNameAddToIPhoto_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameAddToAperture typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameAddToAperture_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameAddToAperture_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameAddToAperture").orElseThrow() }
-private val NSSharingServiceNameAddToAperture_VH: VarHandle by lazy { NSSharingServiceNameAddToAperture_LAYOUT.varHandle() }
-
-var NSSharingServiceNameAddToAperture: MemorySegment
-    get() = NSSharingServiceNameAddToAperture_VH.get(NSSharingServiceNameAddToAperture_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameAddToAperture_VH.set(NSSharingServiceNameAddToAperture_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameUseAsDesktopPicture typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameUseAsDesktopPicture_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameUseAsDesktopPicture_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameUseAsDesktopPicture").orElseThrow() }
-private val NSSharingServiceNameUseAsDesktopPicture_VH: VarHandle by lazy { NSSharingServiceNameUseAsDesktopPicture_LAYOUT.varHandle() }
-
-var NSSharingServiceNameUseAsDesktopPicture: MemorySegment
-    get() = NSSharingServiceNameUseAsDesktopPicture_VH.get(NSSharingServiceNameUseAsDesktopPicture_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameUseAsDesktopPicture_VH.set(NSSharingServiceNameUseAsDesktopPicture_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNamePostOnFacebook typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNamePostOnFacebook_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnFacebook_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnFacebook").orElseThrow() }
-private val NSSharingServiceNamePostOnFacebook_VH: VarHandle by lazy { NSSharingServiceNamePostOnFacebook_LAYOUT.varHandle() }
-
-var NSSharingServiceNamePostOnFacebook: MemorySegment
-    get() = NSSharingServiceNamePostOnFacebook_VH.get(NSSharingServiceNamePostOnFacebook_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNamePostOnFacebook_VH.set(NSSharingServiceNamePostOnFacebook_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNamePostOnTwitter typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNamePostOnTwitter_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnTwitter_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnTwitter").orElseThrow() }
-private val NSSharingServiceNamePostOnTwitter_VH: VarHandle by lazy { NSSharingServiceNamePostOnTwitter_LAYOUT.varHandle() }
-
-var NSSharingServiceNamePostOnTwitter: MemorySegment
-    get() = NSSharingServiceNamePostOnTwitter_VH.get(NSSharingServiceNamePostOnTwitter_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNamePostOnTwitter_VH.set(NSSharingServiceNamePostOnTwitter_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNamePostOnSinaWeibo typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNamePostOnSinaWeibo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnSinaWeibo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnSinaWeibo").orElseThrow() }
-private val NSSharingServiceNamePostOnSinaWeibo_VH: VarHandle by lazy { NSSharingServiceNamePostOnSinaWeibo_LAYOUT.varHandle() }
-
-var NSSharingServiceNamePostOnSinaWeibo: MemorySegment
-    get() = NSSharingServiceNamePostOnSinaWeibo_VH.get(NSSharingServiceNamePostOnSinaWeibo_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNamePostOnSinaWeibo_VH.set(NSSharingServiceNamePostOnSinaWeibo_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNamePostOnTencentWeibo typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNamePostOnTencentWeibo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnTencentWeibo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnTencentWeibo").orElseThrow() }
-private val NSSharingServiceNamePostOnTencentWeibo_VH: VarHandle by lazy { NSSharingServiceNamePostOnTencentWeibo_LAYOUT.varHandle() }
-
-var NSSharingServiceNamePostOnTencentWeibo: MemorySegment
-    get() = NSSharingServiceNamePostOnTencentWeibo_VH.get(NSSharingServiceNamePostOnTencentWeibo_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNamePostOnTencentWeibo_VH.set(NSSharingServiceNamePostOnTencentWeibo_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNamePostOnLinkedIn typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNamePostOnLinkedIn_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnLinkedIn_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnLinkedIn").orElseThrow() }
-private val NSSharingServiceNamePostOnLinkedIn_VH: VarHandle by lazy { NSSharingServiceNamePostOnLinkedIn_LAYOUT.varHandle() }
-
-var NSSharingServiceNamePostOnLinkedIn: MemorySegment
-    get() = NSSharingServiceNamePostOnLinkedIn_VH.get(NSSharingServiceNamePostOnLinkedIn_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNamePostOnLinkedIn_VH.set(NSSharingServiceNamePostOnLinkedIn_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameUseAsTwitterProfileImage typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameUseAsTwitterProfileImage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameUseAsTwitterProfileImage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameUseAsTwitterProfileImage").orElseThrow() }
-private val NSSharingServiceNameUseAsTwitterProfileImage_VH: VarHandle by lazy { NSSharingServiceNameUseAsTwitterProfileImage_LAYOUT.varHandle() }
-
-var NSSharingServiceNameUseAsTwitterProfileImage: MemorySegment
-    get() = NSSharingServiceNameUseAsTwitterProfileImage_VH.get(NSSharingServiceNameUseAsTwitterProfileImage_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameUseAsTwitterProfileImage_VH.set(NSSharingServiceNameUseAsTwitterProfileImage_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameUseAsFacebookProfileImage typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameUseAsFacebookProfileImage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameUseAsFacebookProfileImage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameUseAsFacebookProfileImage").orElseThrow() }
-private val NSSharingServiceNameUseAsFacebookProfileImage_VH: VarHandle by lazy { NSSharingServiceNameUseAsFacebookProfileImage_LAYOUT.varHandle() }
-
-var NSSharingServiceNameUseAsFacebookProfileImage: MemorySegment
-    get() = NSSharingServiceNameUseAsFacebookProfileImage_VH.get(NSSharingServiceNameUseAsFacebookProfileImage_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameUseAsFacebookProfileImage_VH.set(NSSharingServiceNameUseAsFacebookProfileImage_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameUseAsLinkedInProfileImage typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameUseAsLinkedInProfileImage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameUseAsLinkedInProfileImage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameUseAsLinkedInProfileImage").orElseThrow() }
-private val NSSharingServiceNameUseAsLinkedInProfileImage_VH: VarHandle by lazy { NSSharingServiceNameUseAsLinkedInProfileImage_LAYOUT.varHandle() }
-
-var NSSharingServiceNameUseAsLinkedInProfileImage: MemorySegment
-    get() = NSSharingServiceNameUseAsLinkedInProfileImage_VH.get(NSSharingServiceNameUseAsLinkedInProfileImage_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameUseAsLinkedInProfileImage_VH.set(NSSharingServiceNameUseAsLinkedInProfileImage_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNamePostImageOnFlickr typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNamePostImageOnFlickr_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostImageOnFlickr_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostImageOnFlickr").orElseThrow() }
-private val NSSharingServiceNamePostImageOnFlickr_VH: VarHandle by lazy { NSSharingServiceNamePostImageOnFlickr_LAYOUT.varHandle() }
-
-var NSSharingServiceNamePostImageOnFlickr: MemorySegment
-    get() = NSSharingServiceNamePostImageOnFlickr_VH.get(NSSharingServiceNamePostImageOnFlickr_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNamePostImageOnFlickr_VH.set(NSSharingServiceNamePostImageOnFlickr_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNamePostVideoOnVimeo typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNamePostVideoOnVimeo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostVideoOnVimeo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostVideoOnVimeo").orElseThrow() }
-private val NSSharingServiceNamePostVideoOnVimeo_VH: VarHandle by lazy { NSSharingServiceNamePostVideoOnVimeo_LAYOUT.varHandle() }
-
-var NSSharingServiceNamePostVideoOnVimeo: MemorySegment
-    get() = NSSharingServiceNamePostVideoOnVimeo_VH.get(NSSharingServiceNamePostVideoOnVimeo_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNamePostVideoOnVimeo_VH.set(NSSharingServiceNamePostVideoOnVimeo_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNamePostVideoOnYouku typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNamePostVideoOnYouku_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostVideoOnYouku_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostVideoOnYouku").orElseThrow() }
-private val NSSharingServiceNamePostVideoOnYouku_VH: VarHandle by lazy { NSSharingServiceNamePostVideoOnYouku_LAYOUT.varHandle() }
-
-var NSSharingServiceNamePostVideoOnYouku: MemorySegment
-    get() = NSSharingServiceNamePostVideoOnYouku_VH.get(NSSharingServiceNamePostVideoOnYouku_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNamePostVideoOnYouku_VH.set(NSSharingServiceNamePostVideoOnYouku_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNamePostVideoOnTudou typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNamePostVideoOnTudou_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostVideoOnTudou_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostVideoOnTudou").orElseThrow() }
-private val NSSharingServiceNamePostVideoOnTudou_VH: VarHandle by lazy { NSSharingServiceNamePostVideoOnTudou_LAYOUT.varHandle() }
-
-var NSSharingServiceNamePostVideoOnTudou: MemorySegment
-    get() = NSSharingServiceNamePostVideoOnTudou_VH.get(NSSharingServiceNamePostVideoOnTudou_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNamePostVideoOnTudou_VH.set(NSSharingServiceNamePostVideoOnTudou_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSharingServiceNameCloudSharing typedef const NSSharingServiceName = (Void)*
- */
-private val NSSharingServiceNameCloudSharing_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameCloudSharing_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameCloudSharing").orElseThrow() }
-private val NSSharingServiceNameCloudSharing_VH: VarHandle by lazy { NSSharingServiceNameCloudSharing_LAYOUT.varHandle() }
-
-var NSSharingServiceNameCloudSharing: MemorySegment
-    get() = NSSharingServiceNameCloudSharing_VH.get(NSSharingServiceNameCloudSharing_SEGMENT) as MemorySegment
-    set(value) = NSSharingServiceNameCloudSharing_VH.set(NSSharingServiceNameCloudSharing_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSliderAccessoryWidthDefault typedef const NSSliderAccessoryWidth = Double
- */
-private val NSSliderAccessoryWidthDefault_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSSliderAccessoryWidthDefault_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSliderAccessoryWidthDefault").orElseThrow() }
-private val NSSliderAccessoryWidthDefault_VH: VarHandle by lazy { NSSliderAccessoryWidthDefault_LAYOUT.varHandle() }
-
-var NSSliderAccessoryWidthDefault: Double
-    get() = NSSliderAccessoryWidthDefault_VH.get(NSSliderAccessoryWidthDefault_SEGMENT) as Double
-    set(value) = NSSliderAccessoryWidthDefault_VH.set(NSSliderAccessoryWidthDefault_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSliderAccessoryWidthWide typedef const NSSliderAccessoryWidth = Double
- */
-private val NSSliderAccessoryWidthWide_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSSliderAccessoryWidthWide_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSliderAccessoryWidthWide").orElseThrow() }
-private val NSSliderAccessoryWidthWide_VH: VarHandle by lazy { NSSliderAccessoryWidthWide_LAYOUT.varHandle() }
-
-var NSSliderAccessoryWidthWide: Double
-    get() = NSSliderAccessoryWidthWide_VH.get(NSSliderAccessoryWidthWide_SEGMENT) as Double
-    set(value) = NSSliderAccessoryWidthWide_VH.set(NSSliderAccessoryWidthWide_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceName typedef const NSVoiceAttributeKey = (Void)*
- */
-private val NSVoiceName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceName").orElseThrow() }
-private val NSVoiceName_VH: VarHandle by lazy { NSVoiceName_LAYOUT.varHandle() }
-
-var NSVoiceName: MemorySegment
-    get() = NSVoiceName_VH.get(NSVoiceName_SEGMENT) as MemorySegment
-    set(value) = NSVoiceName_VH.set(NSVoiceName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceIdentifier typedef const NSVoiceAttributeKey = (Void)*
- */
-private val NSVoiceIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceIdentifier").orElseThrow() }
-private val NSVoiceIdentifier_VH: VarHandle by lazy { NSVoiceIdentifier_LAYOUT.varHandle() }
-
-var NSVoiceIdentifier: MemorySegment
-    get() = NSVoiceIdentifier_VH.get(NSVoiceIdentifier_SEGMENT) as MemorySegment
-    set(value) = NSVoiceIdentifier_VH.set(NSVoiceIdentifier_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceAge typedef const NSVoiceAttributeKey = (Void)*
- */
-private val NSVoiceAge_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceAge_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceAge").orElseThrow() }
-private val NSVoiceAge_VH: VarHandle by lazy { NSVoiceAge_LAYOUT.varHandle() }
-
-var NSVoiceAge: MemorySegment
-    get() = NSVoiceAge_VH.get(NSVoiceAge_SEGMENT) as MemorySegment
-    set(value) = NSVoiceAge_VH.set(NSVoiceAge_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceGender typedef const NSVoiceAttributeKey = (Void)*
- */
-private val NSVoiceGender_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGender_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGender").orElseThrow() }
-private val NSVoiceGender_VH: VarHandle by lazy { NSVoiceGender_LAYOUT.varHandle() }
-
-var NSVoiceGender: MemorySegment
-    get() = NSVoiceGender_VH.get(NSVoiceGender_SEGMENT) as MemorySegment
-    set(value) = NSVoiceGender_VH.set(NSVoiceGender_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceDemoText typedef const NSVoiceAttributeKey = (Void)*
- */
-private val NSVoiceDemoText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceDemoText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceDemoText").orElseThrow() }
-private val NSVoiceDemoText_VH: VarHandle by lazy { NSVoiceDemoText_LAYOUT.varHandle() }
-
-var NSVoiceDemoText: MemorySegment
-    get() = NSVoiceDemoText_VH.get(NSVoiceDemoText_SEGMENT) as MemorySegment
-    set(value) = NSVoiceDemoText_VH.set(NSVoiceDemoText_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceLocaleIdentifier typedef const NSVoiceAttributeKey = (Void)*
- */
-private val NSVoiceLocaleIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceLocaleIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceLocaleIdentifier").orElseThrow() }
-private val NSVoiceLocaleIdentifier_VH: VarHandle by lazy { NSVoiceLocaleIdentifier_LAYOUT.varHandle() }
-
-var NSVoiceLocaleIdentifier: MemorySegment
-    get() = NSVoiceLocaleIdentifier_VH.get(NSVoiceLocaleIdentifier_SEGMENT) as MemorySegment
-    set(value) = NSVoiceLocaleIdentifier_VH.set(NSVoiceLocaleIdentifier_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceSupportedCharacters typedef const NSVoiceAttributeKey = (Void)*
- */
-private val NSVoiceSupportedCharacters_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceSupportedCharacters_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceSupportedCharacters").orElseThrow() }
-private val NSVoiceSupportedCharacters_VH: VarHandle by lazy { NSVoiceSupportedCharacters_LAYOUT.varHandle() }
-
-var NSVoiceSupportedCharacters: MemorySegment
-    get() = NSVoiceSupportedCharacters_VH.get(NSVoiceSupportedCharacters_SEGMENT) as MemorySegment
-    set(value) = NSVoiceSupportedCharacters_VH.set(NSVoiceSupportedCharacters_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceIndividuallySpokenCharacters typedef const NSVoiceAttributeKey = (Void)*
- */
-private val NSVoiceIndividuallySpokenCharacters_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceIndividuallySpokenCharacters_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceIndividuallySpokenCharacters").orElseThrow() }
-private val NSVoiceIndividuallySpokenCharacters_VH: VarHandle by lazy { NSVoiceIndividuallySpokenCharacters_LAYOUT.varHandle() }
-
-var NSVoiceIndividuallySpokenCharacters: MemorySegment
-    get() = NSVoiceIndividuallySpokenCharacters_VH.get(NSVoiceIndividuallySpokenCharacters_SEGMENT) as MemorySegment
-    set(value) = NSVoiceIndividuallySpokenCharacters_VH.set(NSVoiceIndividuallySpokenCharacters_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechDictionaryLocaleIdentifier typedef const NSSpeechDictionaryKey = (Void)*
- */
-private val NSSpeechDictionaryLocaleIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryLocaleIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryLocaleIdentifier").orElseThrow() }
-private val NSSpeechDictionaryLocaleIdentifier_VH: VarHandle by lazy { NSSpeechDictionaryLocaleIdentifier_LAYOUT.varHandle() }
-
-var NSSpeechDictionaryLocaleIdentifier: MemorySegment
-    get() = NSSpeechDictionaryLocaleIdentifier_VH.get(NSSpeechDictionaryLocaleIdentifier_SEGMENT) as MemorySegment
-    set(value) = NSSpeechDictionaryLocaleIdentifier_VH.set(NSSpeechDictionaryLocaleIdentifier_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechDictionaryModificationDate typedef const NSSpeechDictionaryKey = (Void)*
- */
-private val NSSpeechDictionaryModificationDate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryModificationDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryModificationDate").orElseThrow() }
-private val NSSpeechDictionaryModificationDate_VH: VarHandle by lazy { NSSpeechDictionaryModificationDate_LAYOUT.varHandle() }
-
-var NSSpeechDictionaryModificationDate: MemorySegment
-    get() = NSSpeechDictionaryModificationDate_VH.get(NSSpeechDictionaryModificationDate_SEGMENT) as MemorySegment
-    set(value) = NSSpeechDictionaryModificationDate_VH.set(NSSpeechDictionaryModificationDate_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechDictionaryPronunciations typedef const NSSpeechDictionaryKey = (Void)*
- */
-private val NSSpeechDictionaryPronunciations_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryPronunciations_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryPronunciations").orElseThrow() }
-private val NSSpeechDictionaryPronunciations_VH: VarHandle by lazy { NSSpeechDictionaryPronunciations_LAYOUT.varHandle() }
-
-var NSSpeechDictionaryPronunciations: MemorySegment
-    get() = NSSpeechDictionaryPronunciations_VH.get(NSSpeechDictionaryPronunciations_SEGMENT) as MemorySegment
-    set(value) = NSSpeechDictionaryPronunciations_VH.set(NSSpeechDictionaryPronunciations_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechDictionaryAbbreviations typedef const NSSpeechDictionaryKey = (Void)*
- */
-private val NSSpeechDictionaryAbbreviations_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryAbbreviations_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryAbbreviations").orElseThrow() }
-private val NSSpeechDictionaryAbbreviations_VH: VarHandle by lazy { NSSpeechDictionaryAbbreviations_LAYOUT.varHandle() }
-
-var NSSpeechDictionaryAbbreviations: MemorySegment
-    get() = NSSpeechDictionaryAbbreviations_VH.get(NSSpeechDictionaryAbbreviations_SEGMENT) as MemorySegment
-    set(value) = NSSpeechDictionaryAbbreviations_VH.set(NSSpeechDictionaryAbbreviations_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechDictionaryEntrySpelling typedef const NSSpeechDictionaryKey = (Void)*
- */
-private val NSSpeechDictionaryEntrySpelling_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryEntrySpelling_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryEntrySpelling").orElseThrow() }
-private val NSSpeechDictionaryEntrySpelling_VH: VarHandle by lazy { NSSpeechDictionaryEntrySpelling_LAYOUT.varHandle() }
-
-var NSSpeechDictionaryEntrySpelling: MemorySegment
-    get() = NSSpeechDictionaryEntrySpelling_VH.get(NSSpeechDictionaryEntrySpelling_SEGMENT) as MemorySegment
-    set(value) = NSSpeechDictionaryEntrySpelling_VH.set(NSSpeechDictionaryEntrySpelling_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechDictionaryEntryPhonemes typedef const NSSpeechDictionaryKey = (Void)*
- */
-private val NSSpeechDictionaryEntryPhonemes_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryEntryPhonemes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryEntryPhonemes").orElseThrow() }
-private val NSSpeechDictionaryEntryPhonemes_VH: VarHandle by lazy { NSSpeechDictionaryEntryPhonemes_LAYOUT.varHandle() }
-
-var NSSpeechDictionaryEntryPhonemes: MemorySegment
-    get() = NSSpeechDictionaryEntryPhonemes_VH.get(NSSpeechDictionaryEntryPhonemes_SEGMENT) as MemorySegment
-    set(value) = NSSpeechDictionaryEntryPhonemes_VH.set(NSSpeechDictionaryEntryPhonemes_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceGenderNeuter typedef const NSVoiceGenderName = (Void)*
- */
-private val NSVoiceGenderNeuter_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGenderNeuter_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGenderNeuter").orElseThrow() }
-private val NSVoiceGenderNeuter_VH: VarHandle by lazy { NSVoiceGenderNeuter_LAYOUT.varHandle() }
-
-var NSVoiceGenderNeuter: MemorySegment
-    get() = NSVoiceGenderNeuter_VH.get(NSVoiceGenderNeuter_SEGMENT) as MemorySegment
-    set(value) = NSVoiceGenderNeuter_VH.set(NSVoiceGenderNeuter_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceGenderMale typedef const NSVoiceGenderName = (Void)*
- */
-private val NSVoiceGenderMale_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGenderMale_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGenderMale").orElseThrow() }
-private val NSVoiceGenderMale_VH: VarHandle by lazy { NSVoiceGenderMale_LAYOUT.varHandle() }
-
-var NSVoiceGenderMale: MemorySegment
-    get() = NSVoiceGenderMale_VH.get(NSVoiceGenderMale_SEGMENT) as MemorySegment
-    set(value) = NSVoiceGenderMale_VH.set(NSVoiceGenderMale_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceGenderFemale typedef const NSVoiceGenderName = (Void)*
- */
-private val NSVoiceGenderFemale_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGenderFemale_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGenderFemale").orElseThrow() }
-private val NSVoiceGenderFemale_VH: VarHandle by lazy { NSVoiceGenderFemale_LAYOUT.varHandle() }
-
-var NSVoiceGenderFemale: MemorySegment
-    get() = NSVoiceGenderFemale_VH.get(NSVoiceGenderFemale_SEGMENT) as MemorySegment
-    set(value) = NSVoiceGenderFemale_VH.set(NSVoiceGenderFemale_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceGenderNeutral typedef const NSVoiceGenderName = (Void)*
- */
-private val NSVoiceGenderNeutral_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGenderNeutral_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGenderNeutral").orElseThrow() }
-private val NSVoiceGenderNeutral_VH: VarHandle by lazy { NSVoiceGenderNeutral_LAYOUT.varHandle() }
-
-var NSVoiceGenderNeutral: MemorySegment
-    get() = NSVoiceGenderNeutral_VH.get(NSVoiceGenderNeutral_SEGMENT) as MemorySegment
-    set(value) = NSVoiceGenderNeutral_VH.set(NSVoiceGenderNeutral_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechStatusProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechStatusProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusProperty").orElseThrow() }
-private val NSSpeechStatusProperty_VH: VarHandle by lazy { NSSpeechStatusProperty_LAYOUT.varHandle() }
-
-var NSSpeechStatusProperty: MemorySegment
-    get() = NSSpeechStatusProperty_VH.get(NSSpeechStatusProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechStatusProperty_VH.set(NSSpeechStatusProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechErrorsProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechErrorsProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorsProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorsProperty").orElseThrow() }
-private val NSSpeechErrorsProperty_VH: VarHandle by lazy { NSSpeechErrorsProperty_LAYOUT.varHandle() }
-
-var NSSpeechErrorsProperty: MemorySegment
-    get() = NSSpeechErrorsProperty_VH.get(NSSpeechErrorsProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechErrorsProperty_VH.set(NSSpeechErrorsProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechInputModeProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechInputModeProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechInputModeProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechInputModeProperty").orElseThrow() }
-private val NSSpeechInputModeProperty_VH: VarHandle by lazy { NSSpeechInputModeProperty_LAYOUT.varHandle() }
-
-var NSSpeechInputModeProperty: MemorySegment
-    get() = NSSpeechInputModeProperty_VH.get(NSSpeechInputModeProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechInputModeProperty_VH.set(NSSpeechInputModeProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechCharacterModeProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechCharacterModeProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCharacterModeProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCharacterModeProperty").orElseThrow() }
-private val NSSpeechCharacterModeProperty_VH: VarHandle by lazy { NSSpeechCharacterModeProperty_LAYOUT.varHandle() }
-
-var NSSpeechCharacterModeProperty: MemorySegment
-    get() = NSSpeechCharacterModeProperty_VH.get(NSSpeechCharacterModeProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechCharacterModeProperty_VH.set(NSSpeechCharacterModeProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechNumberModeProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechNumberModeProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechNumberModeProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechNumberModeProperty").orElseThrow() }
-private val NSSpeechNumberModeProperty_VH: VarHandle by lazy { NSSpeechNumberModeProperty_LAYOUT.varHandle() }
-
-var NSSpeechNumberModeProperty: MemorySegment
-    get() = NSSpeechNumberModeProperty_VH.get(NSSpeechNumberModeProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechNumberModeProperty_VH.set(NSSpeechNumberModeProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechRateProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechRateProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechRateProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechRateProperty").orElseThrow() }
-private val NSSpeechRateProperty_VH: VarHandle by lazy { NSSpeechRateProperty_LAYOUT.varHandle() }
-
-var NSSpeechRateProperty: MemorySegment
-    get() = NSSpeechRateProperty_VH.get(NSSpeechRateProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechRateProperty_VH.set(NSSpeechRateProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechPitchBaseProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechPitchBaseProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPitchBaseProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPitchBaseProperty").orElseThrow() }
-private val NSSpeechPitchBaseProperty_VH: VarHandle by lazy { NSSpeechPitchBaseProperty_LAYOUT.varHandle() }
-
-var NSSpeechPitchBaseProperty: MemorySegment
-    get() = NSSpeechPitchBaseProperty_VH.get(NSSpeechPitchBaseProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechPitchBaseProperty_VH.set(NSSpeechPitchBaseProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechPitchModProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechPitchModProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPitchModProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPitchModProperty").orElseThrow() }
-private val NSSpeechPitchModProperty_VH: VarHandle by lazy { NSSpeechPitchModProperty_LAYOUT.varHandle() }
-
-var NSSpeechPitchModProperty: MemorySegment
-    get() = NSSpeechPitchModProperty_VH.get(NSSpeechPitchModProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechPitchModProperty_VH.set(NSSpeechPitchModProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechVolumeProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechVolumeProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechVolumeProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechVolumeProperty").orElseThrow() }
-private val NSSpeechVolumeProperty_VH: VarHandle by lazy { NSSpeechVolumeProperty_LAYOUT.varHandle() }
-
-var NSSpeechVolumeProperty: MemorySegment
-    get() = NSSpeechVolumeProperty_VH.get(NSSpeechVolumeProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechVolumeProperty_VH.set(NSSpeechVolumeProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechSynthesizerInfoProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechSynthesizerInfoProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechSynthesizerInfoProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechSynthesizerInfoProperty").orElseThrow() }
-private val NSSpeechSynthesizerInfoProperty_VH: VarHandle by lazy { NSSpeechSynthesizerInfoProperty_LAYOUT.varHandle() }
-
-var NSSpeechSynthesizerInfoProperty: MemorySegment
-    get() = NSSpeechSynthesizerInfoProperty_VH.get(NSSpeechSynthesizerInfoProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechSynthesizerInfoProperty_VH.set(NSSpeechSynthesizerInfoProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechRecentSyncProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechRecentSyncProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechRecentSyncProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechRecentSyncProperty").orElseThrow() }
-private val NSSpeechRecentSyncProperty_VH: VarHandle by lazy { NSSpeechRecentSyncProperty_LAYOUT.varHandle() }
-
-var NSSpeechRecentSyncProperty: MemorySegment
-    get() = NSSpeechRecentSyncProperty_VH.get(NSSpeechRecentSyncProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechRecentSyncProperty_VH.set(NSSpeechRecentSyncProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechPhonemeSymbolsProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechPhonemeSymbolsProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeSymbolsProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeSymbolsProperty").orElseThrow() }
-private val NSSpeechPhonemeSymbolsProperty_VH: VarHandle by lazy { NSSpeechPhonemeSymbolsProperty_LAYOUT.varHandle() }
-
-var NSSpeechPhonemeSymbolsProperty: MemorySegment
-    get() = NSSpeechPhonemeSymbolsProperty_VH.get(NSSpeechPhonemeSymbolsProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechPhonemeSymbolsProperty_VH.set(NSSpeechPhonemeSymbolsProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechCurrentVoiceProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechCurrentVoiceProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCurrentVoiceProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCurrentVoiceProperty").orElseThrow() }
-private val NSSpeechCurrentVoiceProperty_VH: VarHandle by lazy { NSSpeechCurrentVoiceProperty_LAYOUT.varHandle() }
-
-var NSSpeechCurrentVoiceProperty: MemorySegment
-    get() = NSSpeechCurrentVoiceProperty_VH.get(NSSpeechCurrentVoiceProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechCurrentVoiceProperty_VH.set(NSSpeechCurrentVoiceProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechCommandDelimiterProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechCommandDelimiterProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCommandDelimiterProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCommandDelimiterProperty").orElseThrow() }
-private val NSSpeechCommandDelimiterProperty_VH: VarHandle by lazy { NSSpeechCommandDelimiterProperty_LAYOUT.varHandle() }
-
-var NSSpeechCommandDelimiterProperty: MemorySegment
-    get() = NSSpeechCommandDelimiterProperty_VH.get(NSSpeechCommandDelimiterProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechCommandDelimiterProperty_VH.set(NSSpeechCommandDelimiterProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechResetProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechResetProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechResetProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechResetProperty").orElseThrow() }
-private val NSSpeechResetProperty_VH: VarHandle by lazy { NSSpeechResetProperty_LAYOUT.varHandle() }
-
-var NSSpeechResetProperty: MemorySegment
-    get() = NSSpeechResetProperty_VH.get(NSSpeechResetProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechResetProperty_VH.set(NSSpeechResetProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechOutputToFileURLProperty typedef const NSSpeechPropertyKey = (Void)*
- */
-private val NSSpeechOutputToFileURLProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechOutputToFileURLProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechOutputToFileURLProperty").orElseThrow() }
-private val NSSpeechOutputToFileURLProperty_VH: VarHandle by lazy { NSSpeechOutputToFileURLProperty_LAYOUT.varHandle() }
-
-var NSSpeechOutputToFileURLProperty: MemorySegment
-    get() = NSSpeechOutputToFileURLProperty_VH.get(NSSpeechOutputToFileURLProperty_SEGMENT) as MemorySegment
-    set(value) = NSSpeechOutputToFileURLProperty_VH.set(NSSpeechOutputToFileURLProperty_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSVoiceLanguage typedef const NSVoiceAttributeKey = (Void)*
- */
-private val NSVoiceLanguage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceLanguage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceLanguage").orElseThrow() }
-private val NSVoiceLanguage_VH: VarHandle by lazy { NSVoiceLanguage_LAYOUT.varHandle() }
-
-var NSVoiceLanguage: MemorySegment
-    get() = NSVoiceLanguage_VH.get(NSVoiceLanguage_SEGMENT) as MemorySegment
-    set(value) = NSVoiceLanguage_VH.set(NSVoiceLanguage_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechModeText typedef const NSSpeechMode = (Void)*
- */
-private val NSSpeechModeText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechModeText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechModeText").orElseThrow() }
-private val NSSpeechModeText_VH: VarHandle by lazy { NSSpeechModeText_LAYOUT.varHandle() }
-
-var NSSpeechModeText: MemorySegment
-    get() = NSSpeechModeText_VH.get(NSSpeechModeText_SEGMENT) as MemorySegment
-    set(value) = NSSpeechModeText_VH.set(NSSpeechModeText_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechModePhoneme typedef const NSSpeechMode = (Void)*
- */
-private val NSSpeechModePhoneme_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechModePhoneme_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechModePhoneme").orElseThrow() }
-private val NSSpeechModePhoneme_VH: VarHandle by lazy { NSSpeechModePhoneme_LAYOUT.varHandle() }
-
-var NSSpeechModePhoneme: MemorySegment
-    get() = NSSpeechModePhoneme_VH.get(NSSpeechModePhoneme_SEGMENT) as MemorySegment
-    set(value) = NSSpeechModePhoneme_VH.set(NSSpeechModePhoneme_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechModeNormal typedef const NSSpeechMode = (Void)*
- */
-private val NSSpeechModeNormal_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechModeNormal_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechModeNormal").orElseThrow() }
-private val NSSpeechModeNormal_VH: VarHandle by lazy { NSSpeechModeNormal_LAYOUT.varHandle() }
-
-var NSSpeechModeNormal: MemorySegment
-    get() = NSSpeechModeNormal_VH.get(NSSpeechModeNormal_SEGMENT) as MemorySegment
-    set(value) = NSSpeechModeNormal_VH.set(NSSpeechModeNormal_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechModeLiteral typedef const NSSpeechMode = (Void)*
- */
-private val NSSpeechModeLiteral_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechModeLiteral_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechModeLiteral").orElseThrow() }
-private val NSSpeechModeLiteral_VH: VarHandle by lazy { NSSpeechModeLiteral_LAYOUT.varHandle() }
-
-var NSSpeechModeLiteral: MemorySegment
-    get() = NSSpeechModeLiteral_VH.get(NSSpeechModeLiteral_SEGMENT) as MemorySegment
-    set(value) = NSSpeechModeLiteral_VH.set(NSSpeechModeLiteral_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechStatusOutputBusy typedef const NSSpeechStatusKey = (Void)*
- */
-private val NSSpeechStatusOutputBusy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusOutputBusy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusOutputBusy").orElseThrow() }
-private val NSSpeechStatusOutputBusy_VH: VarHandle by lazy { NSSpeechStatusOutputBusy_LAYOUT.varHandle() }
-
-var NSSpeechStatusOutputBusy: MemorySegment
-    get() = NSSpeechStatusOutputBusy_VH.get(NSSpeechStatusOutputBusy_SEGMENT) as MemorySegment
-    set(value) = NSSpeechStatusOutputBusy_VH.set(NSSpeechStatusOutputBusy_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechStatusOutputPaused typedef const NSSpeechStatusKey = (Void)*
- */
-private val NSSpeechStatusOutputPaused_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusOutputPaused_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusOutputPaused").orElseThrow() }
-private val NSSpeechStatusOutputPaused_VH: VarHandle by lazy { NSSpeechStatusOutputPaused_LAYOUT.varHandle() }
-
-var NSSpeechStatusOutputPaused: MemorySegment
-    get() = NSSpeechStatusOutputPaused_VH.get(NSSpeechStatusOutputPaused_SEGMENT) as MemorySegment
-    set(value) = NSSpeechStatusOutputPaused_VH.set(NSSpeechStatusOutputPaused_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechStatusNumberOfCharactersLeft typedef const NSSpeechStatusKey = (Void)*
- */
-private val NSSpeechStatusNumberOfCharactersLeft_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusNumberOfCharactersLeft_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusNumberOfCharactersLeft").orElseThrow() }
-private val NSSpeechStatusNumberOfCharactersLeft_VH: VarHandle by lazy { NSSpeechStatusNumberOfCharactersLeft_LAYOUT.varHandle() }
-
-var NSSpeechStatusNumberOfCharactersLeft: MemorySegment
-    get() = NSSpeechStatusNumberOfCharactersLeft_VH.get(NSSpeechStatusNumberOfCharactersLeft_SEGMENT) as MemorySegment
-    set(value) = NSSpeechStatusNumberOfCharactersLeft_VH.set(NSSpeechStatusNumberOfCharactersLeft_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechStatusPhonemeCode typedef const NSSpeechStatusKey = (Void)*
- */
-private val NSSpeechStatusPhonemeCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusPhonemeCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusPhonemeCode").orElseThrow() }
-private val NSSpeechStatusPhonemeCode_VH: VarHandle by lazy { NSSpeechStatusPhonemeCode_LAYOUT.varHandle() }
-
-var NSSpeechStatusPhonemeCode: MemorySegment
-    get() = NSSpeechStatusPhonemeCode_VH.get(NSSpeechStatusPhonemeCode_SEGMENT) as MemorySegment
-    set(value) = NSSpeechStatusPhonemeCode_VH.set(NSSpeechStatusPhonemeCode_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechErrorCount typedef const NSSpeechErrorKey = (Void)*
- */
-private val NSSpeechErrorCount_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorCount_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorCount").orElseThrow() }
-private val NSSpeechErrorCount_VH: VarHandle by lazy { NSSpeechErrorCount_LAYOUT.varHandle() }
-
-var NSSpeechErrorCount: MemorySegment
-    get() = NSSpeechErrorCount_VH.get(NSSpeechErrorCount_SEGMENT) as MemorySegment
-    set(value) = NSSpeechErrorCount_VH.set(NSSpeechErrorCount_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechErrorOldestCode typedef const NSSpeechErrorKey = (Void)*
- */
-private val NSSpeechErrorOldestCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorOldestCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorOldestCode").orElseThrow() }
-private val NSSpeechErrorOldestCode_VH: VarHandle by lazy { NSSpeechErrorOldestCode_LAYOUT.varHandle() }
-
-var NSSpeechErrorOldestCode: MemorySegment
-    get() = NSSpeechErrorOldestCode_VH.get(NSSpeechErrorOldestCode_SEGMENT) as MemorySegment
-    set(value) = NSSpeechErrorOldestCode_VH.set(NSSpeechErrorOldestCode_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechErrorOldestCharacterOffset typedef const NSSpeechErrorKey = (Void)*
- */
-private val NSSpeechErrorOldestCharacterOffset_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorOldestCharacterOffset_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorOldestCharacterOffset").orElseThrow() }
-private val NSSpeechErrorOldestCharacterOffset_VH: VarHandle by lazy { NSSpeechErrorOldestCharacterOffset_LAYOUT.varHandle() }
-
-var NSSpeechErrorOldestCharacterOffset: MemorySegment
-    get() = NSSpeechErrorOldestCharacterOffset_VH.get(NSSpeechErrorOldestCharacterOffset_SEGMENT) as MemorySegment
-    set(value) = NSSpeechErrorOldestCharacterOffset_VH.set(NSSpeechErrorOldestCharacterOffset_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechErrorNewestCode typedef const NSSpeechErrorKey = (Void)*
- */
-private val NSSpeechErrorNewestCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorNewestCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorNewestCode").orElseThrow() }
-private val NSSpeechErrorNewestCode_VH: VarHandle by lazy { NSSpeechErrorNewestCode_LAYOUT.varHandle() }
-
-var NSSpeechErrorNewestCode: MemorySegment
-    get() = NSSpeechErrorNewestCode_VH.get(NSSpeechErrorNewestCode_SEGMENT) as MemorySegment
-    set(value) = NSSpeechErrorNewestCode_VH.set(NSSpeechErrorNewestCode_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechErrorNewestCharacterOffset typedef const NSSpeechErrorKey = (Void)*
- */
-private val NSSpeechErrorNewestCharacterOffset_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorNewestCharacterOffset_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorNewestCharacterOffset").orElseThrow() }
-private val NSSpeechErrorNewestCharacterOffset_VH: VarHandle by lazy { NSSpeechErrorNewestCharacterOffset_LAYOUT.varHandle() }
-
-var NSSpeechErrorNewestCharacterOffset: MemorySegment
-    get() = NSSpeechErrorNewestCharacterOffset_VH.get(NSSpeechErrorNewestCharacterOffset_SEGMENT) as MemorySegment
-    set(value) = NSSpeechErrorNewestCharacterOffset_VH.set(NSSpeechErrorNewestCharacterOffset_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechSynthesizerInfoIdentifier typedef const NSSpeechSynthesizerInfoKey = (Void)*
- */
-private val NSSpeechSynthesizerInfoIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechSynthesizerInfoIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechSynthesizerInfoIdentifier").orElseThrow() }
-private val NSSpeechSynthesizerInfoIdentifier_VH: VarHandle by lazy { NSSpeechSynthesizerInfoIdentifier_LAYOUT.varHandle() }
-
-var NSSpeechSynthesizerInfoIdentifier: MemorySegment
-    get() = NSSpeechSynthesizerInfoIdentifier_VH.get(NSSpeechSynthesizerInfoIdentifier_SEGMENT) as MemorySegment
-    set(value) = NSSpeechSynthesizerInfoIdentifier_VH.set(NSSpeechSynthesizerInfoIdentifier_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechSynthesizerInfoVersion typedef const NSSpeechSynthesizerInfoKey = (Void)*
- */
-private val NSSpeechSynthesizerInfoVersion_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechSynthesizerInfoVersion_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechSynthesizerInfoVersion").orElseThrow() }
-private val NSSpeechSynthesizerInfoVersion_VH: VarHandle by lazy { NSSpeechSynthesizerInfoVersion_LAYOUT.varHandle() }
-
-var NSSpeechSynthesizerInfoVersion: MemorySegment
-    get() = NSSpeechSynthesizerInfoVersion_VH.get(NSSpeechSynthesizerInfoVersion_SEGMENT) as MemorySegment
-    set(value) = NSSpeechSynthesizerInfoVersion_VH.set(NSSpeechSynthesizerInfoVersion_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechPhonemeInfoOpcode typedef const NSSpeechPhonemeInfoKey = (Void)*
- */
-private val NSSpeechPhonemeInfoOpcode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoOpcode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoOpcode").orElseThrow() }
-private val NSSpeechPhonemeInfoOpcode_VH: VarHandle by lazy { NSSpeechPhonemeInfoOpcode_LAYOUT.varHandle() }
-
-var NSSpeechPhonemeInfoOpcode: MemorySegment
-    get() = NSSpeechPhonemeInfoOpcode_VH.get(NSSpeechPhonemeInfoOpcode_SEGMENT) as MemorySegment
-    set(value) = NSSpeechPhonemeInfoOpcode_VH.set(NSSpeechPhonemeInfoOpcode_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechPhonemeInfoSymbol typedef const NSSpeechPhonemeInfoKey = (Void)*
- */
-private val NSSpeechPhonemeInfoSymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoSymbol").orElseThrow() }
-private val NSSpeechPhonemeInfoSymbol_VH: VarHandle by lazy { NSSpeechPhonemeInfoSymbol_LAYOUT.varHandle() }
-
-var NSSpeechPhonemeInfoSymbol: MemorySegment
-    get() = NSSpeechPhonemeInfoSymbol_VH.get(NSSpeechPhonemeInfoSymbol_SEGMENT) as MemorySegment
-    set(value) = NSSpeechPhonemeInfoSymbol_VH.set(NSSpeechPhonemeInfoSymbol_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechPhonemeInfoExample typedef const NSSpeechPhonemeInfoKey = (Void)*
- */
-private val NSSpeechPhonemeInfoExample_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoExample_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoExample").orElseThrow() }
-private val NSSpeechPhonemeInfoExample_VH: VarHandle by lazy { NSSpeechPhonemeInfoExample_LAYOUT.varHandle() }
-
-var NSSpeechPhonemeInfoExample: MemorySegment
-    get() = NSSpeechPhonemeInfoExample_VH.get(NSSpeechPhonemeInfoExample_SEGMENT) as MemorySegment
-    set(value) = NSSpeechPhonemeInfoExample_VH.set(NSSpeechPhonemeInfoExample_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechPhonemeInfoHiliteStart typedef const NSSpeechPhonemeInfoKey = (Void)*
- */
-private val NSSpeechPhonemeInfoHiliteStart_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoHiliteStart_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoHiliteStart").orElseThrow() }
-private val NSSpeechPhonemeInfoHiliteStart_VH: VarHandle by lazy { NSSpeechPhonemeInfoHiliteStart_LAYOUT.varHandle() }
-
-var NSSpeechPhonemeInfoHiliteStart: MemorySegment
-    get() = NSSpeechPhonemeInfoHiliteStart_VH.get(NSSpeechPhonemeInfoHiliteStart_SEGMENT) as MemorySegment
-    set(value) = NSSpeechPhonemeInfoHiliteStart_VH.set(NSSpeechPhonemeInfoHiliteStart_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechPhonemeInfoHiliteEnd typedef const NSSpeechPhonemeInfoKey = (Void)*
- */
-private val NSSpeechPhonemeInfoHiliteEnd_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoHiliteEnd_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoHiliteEnd").orElseThrow() }
-private val NSSpeechPhonemeInfoHiliteEnd_VH: VarHandle by lazy { NSSpeechPhonemeInfoHiliteEnd_LAYOUT.varHandle() }
-
-var NSSpeechPhonemeInfoHiliteEnd: MemorySegment
-    get() = NSSpeechPhonemeInfoHiliteEnd_VH.get(NSSpeechPhonemeInfoHiliteEnd_SEGMENT) as MemorySegment
-    set(value) = NSSpeechPhonemeInfoHiliteEnd_VH.set(NSSpeechPhonemeInfoHiliteEnd_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechCommandPrefix typedef const NSSpeechCommandDelimiterKey = (Void)*
- */
-private val NSSpeechCommandPrefix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCommandPrefix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCommandPrefix").orElseThrow() }
-private val NSSpeechCommandPrefix_VH: VarHandle by lazy { NSSpeechCommandPrefix_LAYOUT.varHandle() }
-
-var NSSpeechCommandPrefix: MemorySegment
-    get() = NSSpeechCommandPrefix_VH.get(NSSpeechCommandPrefix_SEGMENT) as MemorySegment
-    set(value) = NSSpeechCommandPrefix_VH.set(NSSpeechCommandPrefix_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpeechCommandSuffix typedef const NSSpeechCommandDelimiterKey = (Void)*
- */
-private val NSSpeechCommandSuffix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCommandSuffix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCommandSuffix").orElseThrow() }
-private val NSSpeechCommandSuffix_VH: VarHandle by lazy { NSSpeechCommandSuffix_LAYOUT.varHandle() }
-
-var NSSpeechCommandSuffix: MemorySegment
-    get() = NSSpeechCommandSuffix_VH.get(NSSpeechCommandSuffix_SEGMENT) as MemorySegment
-    set(value) = NSSpeechCommandSuffix_VH.set(NSSpeechCommandSuffix_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingOrthographyKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingOrthographyKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingOrthographyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingOrthographyKey").orElseThrow() }
-private val NSTextCheckingOrthographyKey_VH: VarHandle by lazy { NSTextCheckingOrthographyKey_LAYOUT.varHandle() }
-
-var NSTextCheckingOrthographyKey: MemorySegment
-    get() = NSTextCheckingOrthographyKey_VH.get(NSTextCheckingOrthographyKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingOrthographyKey_VH.set(NSTextCheckingOrthographyKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingQuotesKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingQuotesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingQuotesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingQuotesKey").orElseThrow() }
-private val NSTextCheckingQuotesKey_VH: VarHandle by lazy { NSTextCheckingQuotesKey_LAYOUT.varHandle() }
-
-var NSTextCheckingQuotesKey: MemorySegment
-    get() = NSTextCheckingQuotesKey_VH.get(NSTextCheckingQuotesKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingQuotesKey_VH.set(NSTextCheckingQuotesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingReplacementsKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingReplacementsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingReplacementsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingReplacementsKey").orElseThrow() }
-private val NSTextCheckingReplacementsKey_VH: VarHandle by lazy { NSTextCheckingReplacementsKey_LAYOUT.varHandle() }
-
-var NSTextCheckingReplacementsKey: MemorySegment
-    get() = NSTextCheckingReplacementsKey_VH.get(NSTextCheckingReplacementsKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingReplacementsKey_VH.set(NSTextCheckingReplacementsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingReferenceDateKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingReferenceDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingReferenceDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingReferenceDateKey").orElseThrow() }
-private val NSTextCheckingReferenceDateKey_VH: VarHandle by lazy { NSTextCheckingReferenceDateKey_LAYOUT.varHandle() }
-
-var NSTextCheckingReferenceDateKey: MemorySegment
-    get() = NSTextCheckingReferenceDateKey_VH.get(NSTextCheckingReferenceDateKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingReferenceDateKey_VH.set(NSTextCheckingReferenceDateKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingReferenceTimeZoneKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingReferenceTimeZoneKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingReferenceTimeZoneKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingReferenceTimeZoneKey").orElseThrow() }
-private val NSTextCheckingReferenceTimeZoneKey_VH: VarHandle by lazy { NSTextCheckingReferenceTimeZoneKey_LAYOUT.varHandle() }
-
-var NSTextCheckingReferenceTimeZoneKey: MemorySegment
-    get() = NSTextCheckingReferenceTimeZoneKey_VH.get(NSTextCheckingReferenceTimeZoneKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingReferenceTimeZoneKey_VH.set(NSTextCheckingReferenceTimeZoneKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingDocumentURLKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingDocumentURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingDocumentURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingDocumentURLKey").orElseThrow() }
-private val NSTextCheckingDocumentURLKey_VH: VarHandle by lazy { NSTextCheckingDocumentURLKey_LAYOUT.varHandle() }
-
-var NSTextCheckingDocumentURLKey: MemorySegment
-    get() = NSTextCheckingDocumentURLKey_VH.get(NSTextCheckingDocumentURLKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingDocumentURLKey_VH.set(NSTextCheckingDocumentURLKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingDocumentTitleKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingDocumentTitleKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingDocumentTitleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingDocumentTitleKey").orElseThrow() }
-private val NSTextCheckingDocumentTitleKey_VH: VarHandle by lazy { NSTextCheckingDocumentTitleKey_LAYOUT.varHandle() }
-
-var NSTextCheckingDocumentTitleKey: MemorySegment
-    get() = NSTextCheckingDocumentTitleKey_VH.get(NSTextCheckingDocumentTitleKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingDocumentTitleKey_VH.set(NSTextCheckingDocumentTitleKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingDocumentAuthorKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingDocumentAuthorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingDocumentAuthorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingDocumentAuthorKey").orElseThrow() }
-private val NSTextCheckingDocumentAuthorKey_VH: VarHandle by lazy { NSTextCheckingDocumentAuthorKey_LAYOUT.varHandle() }
-
-var NSTextCheckingDocumentAuthorKey: MemorySegment
-    get() = NSTextCheckingDocumentAuthorKey_VH.get(NSTextCheckingDocumentAuthorKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingDocumentAuthorKey_VH.set(NSTextCheckingDocumentAuthorKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingRegularExpressionsKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingRegularExpressionsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingRegularExpressionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingRegularExpressionsKey").orElseThrow() }
-private val NSTextCheckingRegularExpressionsKey_VH: VarHandle by lazy { NSTextCheckingRegularExpressionsKey_LAYOUT.varHandle() }
-
-var NSTextCheckingRegularExpressionsKey: MemorySegment
-    get() = NSTextCheckingRegularExpressionsKey_VH.get(NSTextCheckingRegularExpressionsKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingRegularExpressionsKey_VH.set(NSTextCheckingRegularExpressionsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingSelectedRangeKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingSelectedRangeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingSelectedRangeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingSelectedRangeKey").orElseThrow() }
-private val NSTextCheckingSelectedRangeKey_VH: VarHandle by lazy { NSTextCheckingSelectedRangeKey_LAYOUT.varHandle() }
-
-var NSTextCheckingSelectedRangeKey: MemorySegment
-    get() = NSTextCheckingSelectedRangeKey_VH.get(NSTextCheckingSelectedRangeKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingSelectedRangeKey_VH.set(NSTextCheckingSelectedRangeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextCheckingGenerateInlinePredictionsKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
- */
-private val NSTextCheckingGenerateInlinePredictionsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingGenerateInlinePredictionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingGenerateInlinePredictionsKey").orElseThrow() }
-private val NSTextCheckingGenerateInlinePredictionsKey_VH: VarHandle by lazy { NSTextCheckingGenerateInlinePredictionsKey_LAYOUT.varHandle() }
-
-var NSTextCheckingGenerateInlinePredictionsKey: MemorySegment
-    get() = NSTextCheckingGenerateInlinePredictionsKey_VH.get(NSTextCheckingGenerateInlinePredictionsKey_SEGMENT) as MemorySegment
-    set(value) = NSTextCheckingGenerateInlinePredictionsKey_VH.set(NSTextCheckingGenerateInlinePredictionsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification typedef const NSNotificationName = (Void)*
- */
-private val NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification").orElseThrow() }
-private val NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_LAYOUT.varHandle() }
-
-var NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification: MemorySegment
-    get() = NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_VH.get(NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_SEGMENT) as MemorySegment
-    set(value) = NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_VH.set(NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticTextReplacementNotification typedef const NSNotificationName = (Void)*
- */
-private val NSSpellCheckerDidChangeAutomaticTextReplacementNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticTextReplacementNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticTextReplacementNotification").orElseThrow() }
-private val NSSpellCheckerDidChangeAutomaticTextReplacementNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticTextReplacementNotification_LAYOUT.varHandle() }
-
-var NSSpellCheckerDidChangeAutomaticTextReplacementNotification: MemorySegment
-    get() = NSSpellCheckerDidChangeAutomaticTextReplacementNotification_VH.get(NSSpellCheckerDidChangeAutomaticTextReplacementNotification_SEGMENT) as MemorySegment
-    set(value) = NSSpellCheckerDidChangeAutomaticTextReplacementNotification_VH.set(NSSpellCheckerDidChangeAutomaticTextReplacementNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification typedef const NSNotificationName = (Void)*
- */
-private val NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification").orElseThrow() }
-private val NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_LAYOUT.varHandle() }
-
-var NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification: MemorySegment
-    get() = NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_VH.get(NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_SEGMENT) as MemorySegment
-    set(value) = NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_VH.set(NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification typedef const NSNotificationName = (Void)*
- */
-private val NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification").orElseThrow() }
-private val NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_LAYOUT.varHandle() }
-
-var NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification: MemorySegment
-    get() = NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_VH.get(NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_SEGMENT) as MemorySegment
-    set(value) = NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_VH.set(NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticCapitalizationNotification typedef const NSNotificationName = (Void)*
- */
-private val NSSpellCheckerDidChangeAutomaticCapitalizationNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticCapitalizationNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticCapitalizationNotification").orElseThrow() }
-private val NSSpellCheckerDidChangeAutomaticCapitalizationNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticCapitalizationNotification_LAYOUT.varHandle() }
-
-var NSSpellCheckerDidChangeAutomaticCapitalizationNotification: MemorySegment
-    get() = NSSpellCheckerDidChangeAutomaticCapitalizationNotification_VH.get(NSSpellCheckerDidChangeAutomaticCapitalizationNotification_SEGMENT) as MemorySegment
-    set(value) = NSSpellCheckerDidChangeAutomaticCapitalizationNotification_VH.set(NSSpellCheckerDidChangeAutomaticCapitalizationNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification typedef const NSNotificationName = (Void)*
- */
-private val NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification").orElseThrow() }
-private val NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_LAYOUT.varHandle() }
-
-var NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification: MemorySegment
-    get() = NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_VH.get(NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_SEGMENT) as MemorySegment
-    set(value) = NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_VH.set(NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticTextCompletionNotification typedef const NSNotificationName = (Void)*
- */
-private val NSSpellCheckerDidChangeAutomaticTextCompletionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticTextCompletionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticTextCompletionNotification").orElseThrow() }
-private val NSSpellCheckerDidChangeAutomaticTextCompletionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticTextCompletionNotification_LAYOUT.varHandle() }
-
-var NSSpellCheckerDidChangeAutomaticTextCompletionNotification: MemorySegment
-    get() = NSSpellCheckerDidChangeAutomaticTextCompletionNotification_VH.get(NSSpellCheckerDidChangeAutomaticTextCompletionNotification_SEGMENT) as MemorySegment
-    set(value) = NSSpellCheckerDidChangeAutomaticTextCompletionNotification_VH.set(NSSpellCheckerDidChangeAutomaticTextCompletionNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticInlinePredictionNotification typedef const NSNotificationName = (Void)*
- */
-private val NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticInlinePredictionNotification").orElseThrow() }
-private val NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_LAYOUT.varHandle() }
-
-var NSSpellCheckerDidChangeAutomaticInlinePredictionNotification: MemorySegment
-    get() = NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_VH.get(NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_SEGMENT) as MemorySegment
-    set(value) = NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_VH.set(NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSplitViewWillResizeSubviewsNotification typedef NSNotificationName = typedef NSString = (Void)*
- */
-private val NSSplitViewWillResizeSubviewsNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSplitViewWillResizeSubviewsNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSplitViewWillResizeSubviewsNotification").orElseThrow() }
-private val NSSplitViewWillResizeSubviewsNotification_VH: VarHandle by lazy { NSSplitViewWillResizeSubviewsNotification_LAYOUT.varHandle() }
-
-var NSSplitViewWillResizeSubviewsNotification: MemorySegment
-    get() = NSSplitViewWillResizeSubviewsNotification_VH.get(NSSplitViewWillResizeSubviewsNotification_SEGMENT) as MemorySegment
-    set(value) = NSSplitViewWillResizeSubviewsNotification_VH.set(NSSplitViewWillResizeSubviewsNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSplitViewDidResizeSubviewsNotification typedef NSNotificationName = typedef NSString = (Void)*
- */
-private val NSSplitViewDidResizeSubviewsNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSplitViewDidResizeSubviewsNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSplitViewDidResizeSubviewsNotification").orElseThrow() }
-private val NSSplitViewDidResizeSubviewsNotification_VH: VarHandle by lazy { NSSplitViewDidResizeSubviewsNotification_LAYOUT.varHandle() }
-
-var NSSplitViewDidResizeSubviewsNotification: MemorySegment
-    get() = NSSplitViewDidResizeSubviewsNotification_VH.get(NSSplitViewDidResizeSubviewsNotification_SEGMENT) as MemorySegment
-    set(value) = NSSplitViewDidResizeSubviewsNotification_VH.set(NSSplitViewDidResizeSubviewsNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSplitViewItemUnspecifiedDimension typedef const CGFloat = Double
- */
-private val NSSplitViewItemUnspecifiedDimension_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSSplitViewItemUnspecifiedDimension_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSplitViewItemUnspecifiedDimension").orElseThrow() }
-private val NSSplitViewItemUnspecifiedDimension_VH: VarHandle by lazy { NSSplitViewItemUnspecifiedDimension_LAYOUT.varHandle() }
-
-var NSSplitViewItemUnspecifiedDimension: Double
-    get() = NSSplitViewItemUnspecifiedDimension_VH.get(NSSplitViewItemUnspecifiedDimension_SEGMENT) as Double
-    set(value) = NSSplitViewItemUnspecifiedDimension_VH.set(NSSplitViewItemUnspecifiedDimension_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSSplitViewControllerAutomaticDimension typedef const CGFloat = Double
- */
-private val NSSplitViewControllerAutomaticDimension_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSSplitViewControllerAutomaticDimension_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSplitViewControllerAutomaticDimension").orElseThrow() }
-private val NSSplitViewControllerAutomaticDimension_VH: VarHandle by lazy { NSSplitViewControllerAutomaticDimension_LAYOUT.varHandle() }
-
-var NSSplitViewControllerAutomaticDimension: Double
-    get() = NSSplitViewControllerAutomaticDimension_VH.get(NSSplitViewControllerAutomaticDimension_SEGMENT) as Double
-    set(value) = NSSplitViewControllerAutomaticDimension_VH.set(NSSplitViewControllerAutomaticDimension_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPopUpButtonCellWillPopUpNotification typedef NSNotificationName = typedef NSString = (Void)*
- */
-private val NSPopUpButtonCellWillPopUpNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPopUpButtonCellWillPopUpNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopUpButtonCellWillPopUpNotification").orElseThrow() }
-private val NSPopUpButtonCellWillPopUpNotification_VH: VarHandle by lazy { NSPopUpButtonCellWillPopUpNotification_LAYOUT.varHandle() }
-
-var NSPopUpButtonCellWillPopUpNotification: MemorySegment
-    get() = NSPopUpButtonCellWillPopUpNotification_VH.get(NSPopUpButtonCellWillPopUpNotification_SEGMENT) as MemorySegment
-    set(value) = NSPopUpButtonCellWillPopUpNotification_VH.set(NSPopUpButtonCellWillPopUpNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPopUpButtonWillPopUpNotification typedef NSNotificationName = typedef NSString = (Void)*
- */
-private val NSPopUpButtonWillPopUpNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPopUpButtonWillPopUpNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopUpButtonWillPopUpNotification").orElseThrow() }
-private val NSPopUpButtonWillPopUpNotification_VH: VarHandle by lazy { NSPopUpButtonWillPopUpNotification_LAYOUT.varHandle() }
-
-var NSPopUpButtonWillPopUpNotification: MemorySegment
-    get() = NSPopUpButtonWillPopUpNotification_VH.get(NSPopUpButtonWillPopUpNotification_SEGMENT) as MemorySegment
-    set(value) = NSPopUpButtonWillPopUpNotification_VH.set(NSPopUpButtonWillPopUpNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPrintOperationExistsException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSPrintOperationExistsException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintOperationExistsException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintOperationExistsException").orElseThrow() }
-private val NSPrintOperationExistsException_VH: VarHandle by lazy { NSPrintOperationExistsException_LAYOUT.varHandle() }
-
-var NSPrintOperationExistsException: MemorySegment
-    get() = NSPrintOperationExistsException_VH.get(NSPrintOperationExistsException_SEGMENT) as MemorySegment
-    set(value) = NSPrintOperationExistsException_VH.set(NSPrintOperationExistsException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPrintPhotoJobStyleHint typedef const NSPrintPanelJobStyleHint = (Void)*
- */
-private val NSPrintPhotoJobStyleHint_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintPhotoJobStyleHint_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintPhotoJobStyleHint").orElseThrow() }
-private val NSPrintPhotoJobStyleHint_VH: VarHandle by lazy { NSPrintPhotoJobStyleHint_LAYOUT.varHandle() }
-
-var NSPrintPhotoJobStyleHint: MemorySegment
-    get() = NSPrintPhotoJobStyleHint_VH.get(NSPrintPhotoJobStyleHint_SEGMENT) as MemorySegment
-    set(value) = NSPrintPhotoJobStyleHint_VH.set(NSPrintPhotoJobStyleHint_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPrintAllPresetsJobStyleHint typedef const NSPrintPanelJobStyleHint = (Void)*
- */
-private val NSPrintAllPresetsJobStyleHint_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintAllPresetsJobStyleHint_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintAllPresetsJobStyleHint").orElseThrow() }
-private val NSPrintAllPresetsJobStyleHint_VH: VarHandle by lazy { NSPrintAllPresetsJobStyleHint_LAYOUT.varHandle() }
-
-var NSPrintAllPresetsJobStyleHint: MemorySegment
-    get() = NSPrintAllPresetsJobStyleHint_VH.get(NSPrintAllPresetsJobStyleHint_SEGMENT) as MemorySegment
-    set(value) = NSPrintAllPresetsJobStyleHint_VH.set(NSPrintAllPresetsJobStyleHint_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPrintNoPresetsJobStyleHint typedef const NSPrintPanelJobStyleHint = (Void)*
- */
-private val NSPrintNoPresetsJobStyleHint_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintNoPresetsJobStyleHint_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintNoPresetsJobStyleHint").orElseThrow() }
-private val NSPrintNoPresetsJobStyleHint_VH: VarHandle by lazy { NSPrintNoPresetsJobStyleHint_LAYOUT.varHandle() }
-
-var NSPrintNoPresetsJobStyleHint: MemorySegment
-    get() = NSPrintNoPresetsJobStyleHint_VH.get(NSPrintNoPresetsJobStyleHint_SEGMENT) as MemorySegment
-    set(value) = NSPrintNoPresetsJobStyleHint_VH.set(NSPrintNoPresetsJobStyleHint_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPrintPanelAccessorySummaryItemNameKey typedef const NSPrintPanelAccessorySummaryKey = (Void)*
- */
-private val NSPrintPanelAccessorySummaryItemNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintPanelAccessorySummaryItemNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintPanelAccessorySummaryItemNameKey").orElseThrow() }
-private val NSPrintPanelAccessorySummaryItemNameKey_VH: VarHandle by lazy { NSPrintPanelAccessorySummaryItemNameKey_LAYOUT.varHandle() }
-
-var NSPrintPanelAccessorySummaryItemNameKey: MemorySegment
-    get() = NSPrintPanelAccessorySummaryItemNameKey_VH.get(NSPrintPanelAccessorySummaryItemNameKey_SEGMENT) as MemorySegment
-    set(value) = NSPrintPanelAccessorySummaryItemNameKey_VH.set(NSPrintPanelAccessorySummaryItemNameKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPrintPanelAccessorySummaryItemDescriptionKey typedef const NSPrintPanelAccessorySummaryKey = (Void)*
- */
-private val NSPrintPanelAccessorySummaryItemDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintPanelAccessorySummaryItemDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintPanelAccessorySummaryItemDescriptionKey").orElseThrow() }
-private val NSPrintPanelAccessorySummaryItemDescriptionKey_VH: VarHandle by lazy { NSPrintPanelAccessorySummaryItemDescriptionKey_LAYOUT.varHandle() }
-
-var NSPrintPanelAccessorySummaryItemDescriptionKey: MemorySegment
-    get() = NSPrintPanelAccessorySummaryItemDescriptionKey_VH.get(NSPrintPanelAccessorySummaryItemDescriptionKey_SEGMENT) as MemorySegment
-    set(value) = NSPrintPanelAccessorySummaryItemDescriptionKey_VH.set(NSPrintPanelAccessorySummaryItemDescriptionKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSScreenColorSpaceDidChangeNotification typedef const NSNotificationName = (Void)*
- */
-private val NSScreenColorSpaceDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScreenColorSpaceDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScreenColorSpaceDidChangeNotification").orElseThrow() }
-private val NSScreenColorSpaceDidChangeNotification_VH: VarHandle by lazy { NSScreenColorSpaceDidChangeNotification_LAYOUT.varHandle() }
-
-var NSScreenColorSpaceDidChangeNotification: MemorySegment
-    get() = NSScreenColorSpaceDidChangeNotification_VH.get(NSScreenColorSpaceDidChangeNotification_SEGMENT) as MemorySegment
-    set(value) = NSScreenColorSpaceDidChangeNotification_VH.set(NSScreenColorSpaceDidChangeNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPreferredScrollerStyleDidChangeNotification typedef const NSNotificationName = (Void)*
- */
-private val NSPreferredScrollerStyleDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPreferredScrollerStyleDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPreferredScrollerStyleDidChangeNotification").orElseThrow() }
-private val NSPreferredScrollerStyleDidChangeNotification_VH: VarHandle by lazy { NSPreferredScrollerStyleDidChangeNotification_LAYOUT.varHandle() }
-
-var NSPreferredScrollerStyleDidChangeNotification: MemorySegment
-    get() = NSPreferredScrollerStyleDidChangeNotification_VH.get(NSPreferredScrollerStyleDidChangeNotification_SEGMENT) as MemorySegment
-    set(value) = NSPreferredScrollerStyleDidChangeNotification_VH.set(NSPreferredScrollerStyleDidChangeNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextFinderCaseInsensitiveKey typedef const NSPasteboardTypeTextFinderOptionKey = (Void)*
- */
-private val NSTextFinderCaseInsensitiveKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextFinderCaseInsensitiveKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextFinderCaseInsensitiveKey").orElseThrow() }
-private val NSTextFinderCaseInsensitiveKey_VH: VarHandle by lazy { NSTextFinderCaseInsensitiveKey_LAYOUT.varHandle() }
-
-var NSTextFinderCaseInsensitiveKey: MemorySegment
-    get() = NSTextFinderCaseInsensitiveKey_VH.get(NSTextFinderCaseInsensitiveKey_SEGMENT) as MemorySegment
-    set(value) = NSTextFinderCaseInsensitiveKey_VH.set(NSTextFinderCaseInsensitiveKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextFinderMatchingTypeKey typedef const NSPasteboardTypeTextFinderOptionKey = (Void)*
- */
-private val NSTextFinderMatchingTypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextFinderMatchingTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextFinderMatchingTypeKey").orElseThrow() }
-private val NSTextFinderMatchingTypeKey_VH: VarHandle by lazy { NSTextFinderMatchingTypeKey_LAYOUT.varHandle() }
-
-var NSTextFinderMatchingTypeKey: MemorySegment
-    get() = NSTextFinderMatchingTypeKey_VH.get(NSTextFinderMatchingTypeKey_SEGMENT) as MemorySegment
-    set(value) = NSTextFinderMatchingTypeKey_VH.set(NSTextFinderMatchingTypeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSScrollViewWillStartLiveMagnifyNotification typedef const NSNotificationName = (Void)*
- */
-private val NSScrollViewWillStartLiveMagnifyNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewWillStartLiveMagnifyNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewWillStartLiveMagnifyNotification").orElseThrow() }
-private val NSScrollViewWillStartLiveMagnifyNotification_VH: VarHandle by lazy { NSScrollViewWillStartLiveMagnifyNotification_LAYOUT.varHandle() }
-
-var NSScrollViewWillStartLiveMagnifyNotification: MemorySegment
-    get() = NSScrollViewWillStartLiveMagnifyNotification_VH.get(NSScrollViewWillStartLiveMagnifyNotification_SEGMENT) as MemorySegment
-    set(value) = NSScrollViewWillStartLiveMagnifyNotification_VH.set(NSScrollViewWillStartLiveMagnifyNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSScrollViewDidEndLiveMagnifyNotification typedef const NSNotificationName = (Void)*
- */
-private val NSScrollViewDidEndLiveMagnifyNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewDidEndLiveMagnifyNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewDidEndLiveMagnifyNotification").orElseThrow() }
-private val NSScrollViewDidEndLiveMagnifyNotification_VH: VarHandle by lazy { NSScrollViewDidEndLiveMagnifyNotification_LAYOUT.varHandle() }
-
-var NSScrollViewDidEndLiveMagnifyNotification: MemorySegment
-    get() = NSScrollViewDidEndLiveMagnifyNotification_VH.get(NSScrollViewDidEndLiveMagnifyNotification_SEGMENT) as MemorySegment
-    set(value) = NSScrollViewDidEndLiveMagnifyNotification_VH.set(NSScrollViewDidEndLiveMagnifyNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSScrollViewWillStartLiveScrollNotification typedef const NSNotificationName = (Void)*
- */
-private val NSScrollViewWillStartLiveScrollNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewWillStartLiveScrollNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewWillStartLiveScrollNotification").orElseThrow() }
-private val NSScrollViewWillStartLiveScrollNotification_VH: VarHandle by lazy { NSScrollViewWillStartLiveScrollNotification_LAYOUT.varHandle() }
-
-var NSScrollViewWillStartLiveScrollNotification: MemorySegment
-    get() = NSScrollViewWillStartLiveScrollNotification_VH.get(NSScrollViewWillStartLiveScrollNotification_SEGMENT) as MemorySegment
-    set(value) = NSScrollViewWillStartLiveScrollNotification_VH.set(NSScrollViewWillStartLiveScrollNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSScrollViewDidLiveScrollNotification typedef const NSNotificationName = (Void)*
- */
-private val NSScrollViewDidLiveScrollNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewDidLiveScrollNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewDidLiveScrollNotification").orElseThrow() }
-private val NSScrollViewDidLiveScrollNotification_VH: VarHandle by lazy { NSScrollViewDidLiveScrollNotification_LAYOUT.varHandle() }
-
-var NSScrollViewDidLiveScrollNotification: MemorySegment
-    get() = NSScrollViewDidLiveScrollNotification_VH.get(NSScrollViewDidLiveScrollNotification_SEGMENT) as MemorySegment
-    set(value) = NSScrollViewDidLiveScrollNotification_VH.set(NSScrollViewDidLiveScrollNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSScrollViewDidEndLiveScrollNotification typedef const NSNotificationName = (Void)*
- */
-private val NSScrollViewDidEndLiveScrollNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewDidEndLiveScrollNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewDidEndLiveScrollNotification").orElseThrow() }
-private val NSScrollViewDidEndLiveScrollNotification_VH: VarHandle by lazy { NSScrollViewDidEndLiveScrollNotification_LAYOUT.varHandle() }
-
-var NSScrollViewDidEndLiveScrollNotification: MemorySegment
-    get() = NSScrollViewDidEndLiveScrollNotification_VH.get(NSScrollViewDidEndLiveScrollNotification_SEGMENT) as MemorySegment
-    set(value) = NSScrollViewDidEndLiveScrollNotification_VH.set(NSScrollViewDidEndLiveScrollNotification_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSGridViewSizeForContent typedef const CGFloat = Double
- */
-private val NSGridViewSizeForContent_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSGridViewSizeForContent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGridViewSizeForContent").orElseThrow() }
-private val NSGridViewSizeForContent_VH: VarHandle by lazy { NSGridViewSizeForContent_LAYOUT.varHandle() }
-
-var NSGridViewSizeForContent: Double
-    get() = NSGridViewSizeForContent_VH.get(NSGridViewSizeForContent_SEGMENT) as Double
-    set(value) = NSGridViewSizeForContent_VH.set(NSGridViewSizeForContent_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeUsername typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeUsername_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeUsername_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeUsername").orElseThrow() }
-private val NSTextContentTypeUsername_VH: VarHandle by lazy { NSTextContentTypeUsername_LAYOUT.varHandle() }
-
-var NSTextContentTypeUsername: MemorySegment
-    get() = NSTextContentTypeUsername_VH.get(NSTextContentTypeUsername_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeUsername_VH.set(NSTextContentTypeUsername_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypePassword typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypePassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypePassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypePassword").orElseThrow() }
-private val NSTextContentTypePassword_VH: VarHandle by lazy { NSTextContentTypePassword_LAYOUT.varHandle() }
-
-var NSTextContentTypePassword: MemorySegment
-    get() = NSTextContentTypePassword_VH.get(NSTextContentTypePassword_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypePassword_VH.set(NSTextContentTypePassword_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeOneTimeCode typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeOneTimeCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeOneTimeCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeOneTimeCode").orElseThrow() }
-private val NSTextContentTypeOneTimeCode_VH: VarHandle by lazy { NSTextContentTypeOneTimeCode_LAYOUT.varHandle() }
-
-var NSTextContentTypeOneTimeCode: MemorySegment
-    get() = NSTextContentTypeOneTimeCode_VH.get(NSTextContentTypeOneTimeCode_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeOneTimeCode_VH.set(NSTextContentTypeOneTimeCode_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeNewPassword typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeNewPassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeNewPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeNewPassword").orElseThrow() }
-private val NSTextContentTypeNewPassword_VH: VarHandle by lazy { NSTextContentTypeNewPassword_LAYOUT.varHandle() }
-
-var NSTextContentTypeNewPassword: MemorySegment
-    get() = NSTextContentTypeNewPassword_VH.get(NSTextContentTypeNewPassword_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeNewPassword_VH.set(NSTextContentTypeNewPassword_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeName").orElseThrow() }
-private val NSTextContentTypeName_VH: VarHandle by lazy { NSTextContentTypeName_LAYOUT.varHandle() }
-
-var NSTextContentTypeName: MemorySegment
-    get() = NSTextContentTypeName_VH.get(NSTextContentTypeName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeName_VH.set(NSTextContentTypeName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeNamePrefix typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeNamePrefix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeNamePrefix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeNamePrefix").orElseThrow() }
-private val NSTextContentTypeNamePrefix_VH: VarHandle by lazy { NSTextContentTypeNamePrefix_LAYOUT.varHandle() }
-
-var NSTextContentTypeNamePrefix: MemorySegment
-    get() = NSTextContentTypeNamePrefix_VH.get(NSTextContentTypeNamePrefix_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeNamePrefix_VH.set(NSTextContentTypeNamePrefix_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeGivenName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeGivenName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeGivenName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeGivenName").orElseThrow() }
-private val NSTextContentTypeGivenName_VH: VarHandle by lazy { NSTextContentTypeGivenName_LAYOUT.varHandle() }
-
-var NSTextContentTypeGivenName: MemorySegment
-    get() = NSTextContentTypeGivenName_VH.get(NSTextContentTypeGivenName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeGivenName_VH.set(NSTextContentTypeGivenName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeMiddleName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeMiddleName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeMiddleName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeMiddleName").orElseThrow() }
-private val NSTextContentTypeMiddleName_VH: VarHandle by lazy { NSTextContentTypeMiddleName_LAYOUT.varHandle() }
-
-var NSTextContentTypeMiddleName: MemorySegment
-    get() = NSTextContentTypeMiddleName_VH.get(NSTextContentTypeMiddleName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeMiddleName_VH.set(NSTextContentTypeMiddleName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeFamilyName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeFamilyName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeFamilyName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeFamilyName").orElseThrow() }
-private val NSTextContentTypeFamilyName_VH: VarHandle by lazy { NSTextContentTypeFamilyName_LAYOUT.varHandle() }
-
-var NSTextContentTypeFamilyName: MemorySegment
-    get() = NSTextContentTypeFamilyName_VH.get(NSTextContentTypeFamilyName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeFamilyName_VH.set(NSTextContentTypeFamilyName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeNameSuffix typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeNameSuffix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeNameSuffix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeNameSuffix").orElseThrow() }
-private val NSTextContentTypeNameSuffix_VH: VarHandle by lazy { NSTextContentTypeNameSuffix_LAYOUT.varHandle() }
-
-var NSTextContentTypeNameSuffix: MemorySegment
-    get() = NSTextContentTypeNameSuffix_VH.get(NSTextContentTypeNameSuffix_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeNameSuffix_VH.set(NSTextContentTypeNameSuffix_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeNickname typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeNickname_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeNickname_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeNickname").orElseThrow() }
-private val NSTextContentTypeNickname_VH: VarHandle by lazy { NSTextContentTypeNickname_LAYOUT.varHandle() }
-
-var NSTextContentTypeNickname: MemorySegment
-    get() = NSTextContentTypeNickname_VH.get(NSTextContentTypeNickname_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeNickname_VH.set(NSTextContentTypeNickname_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeJobTitle typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeJobTitle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeJobTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeJobTitle").orElseThrow() }
-private val NSTextContentTypeJobTitle_VH: VarHandle by lazy { NSTextContentTypeJobTitle_LAYOUT.varHandle() }
-
-var NSTextContentTypeJobTitle: MemorySegment
-    get() = NSTextContentTypeJobTitle_VH.get(NSTextContentTypeJobTitle_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeJobTitle_VH.set(NSTextContentTypeJobTitle_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeOrganizationName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeOrganizationName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeOrganizationName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeOrganizationName").orElseThrow() }
-private val NSTextContentTypeOrganizationName_VH: VarHandle by lazy { NSTextContentTypeOrganizationName_LAYOUT.varHandle() }
-
-var NSTextContentTypeOrganizationName: MemorySegment
-    get() = NSTextContentTypeOrganizationName_VH.get(NSTextContentTypeOrganizationName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeOrganizationName_VH.set(NSTextContentTypeOrganizationName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeLocation typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeLocation_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeLocation_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeLocation").orElseThrow() }
-private val NSTextContentTypeLocation_VH: VarHandle by lazy { NSTextContentTypeLocation_LAYOUT.varHandle() }
-
-var NSTextContentTypeLocation: MemorySegment
-    get() = NSTextContentTypeLocation_VH.get(NSTextContentTypeLocation_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeLocation_VH.set(NSTextContentTypeLocation_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeFullStreetAddress typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeFullStreetAddress_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeFullStreetAddress_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeFullStreetAddress").orElseThrow() }
-private val NSTextContentTypeFullStreetAddress_VH: VarHandle by lazy { NSTextContentTypeFullStreetAddress_LAYOUT.varHandle() }
-
-var NSTextContentTypeFullStreetAddress: MemorySegment
-    get() = NSTextContentTypeFullStreetAddress_VH.get(NSTextContentTypeFullStreetAddress_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeFullStreetAddress_VH.set(NSTextContentTypeFullStreetAddress_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeStreetAddressLine1 typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeStreetAddressLine1_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeStreetAddressLine1_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeStreetAddressLine1").orElseThrow() }
-private val NSTextContentTypeStreetAddressLine1_VH: VarHandle by lazy { NSTextContentTypeStreetAddressLine1_LAYOUT.varHandle() }
-
-var NSTextContentTypeStreetAddressLine1: MemorySegment
-    get() = NSTextContentTypeStreetAddressLine1_VH.get(NSTextContentTypeStreetAddressLine1_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeStreetAddressLine1_VH.set(NSTextContentTypeStreetAddressLine1_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeStreetAddressLine2 typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeStreetAddressLine2_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeStreetAddressLine2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeStreetAddressLine2").orElseThrow() }
-private val NSTextContentTypeStreetAddressLine2_VH: VarHandle by lazy { NSTextContentTypeStreetAddressLine2_LAYOUT.varHandle() }
-
-var NSTextContentTypeStreetAddressLine2: MemorySegment
-    get() = NSTextContentTypeStreetAddressLine2_VH.get(NSTextContentTypeStreetAddressLine2_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeStreetAddressLine2_VH.set(NSTextContentTypeStreetAddressLine2_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeAddressCity typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeAddressCity_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeAddressCity_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeAddressCity").orElseThrow() }
-private val NSTextContentTypeAddressCity_VH: VarHandle by lazy { NSTextContentTypeAddressCity_LAYOUT.varHandle() }
-
-var NSTextContentTypeAddressCity: MemorySegment
-    get() = NSTextContentTypeAddressCity_VH.get(NSTextContentTypeAddressCity_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeAddressCity_VH.set(NSTextContentTypeAddressCity_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeAddressState typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeAddressState_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeAddressState_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeAddressState").orElseThrow() }
-private val NSTextContentTypeAddressState_VH: VarHandle by lazy { NSTextContentTypeAddressState_LAYOUT.varHandle() }
-
-var NSTextContentTypeAddressState: MemorySegment
-    get() = NSTextContentTypeAddressState_VH.get(NSTextContentTypeAddressState_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeAddressState_VH.set(NSTextContentTypeAddressState_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeAddressCityAndState typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeAddressCityAndState_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeAddressCityAndState_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeAddressCityAndState").orElseThrow() }
-private val NSTextContentTypeAddressCityAndState_VH: VarHandle by lazy { NSTextContentTypeAddressCityAndState_LAYOUT.varHandle() }
-
-var NSTextContentTypeAddressCityAndState: MemorySegment
-    get() = NSTextContentTypeAddressCityAndState_VH.get(NSTextContentTypeAddressCityAndState_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeAddressCityAndState_VH.set(NSTextContentTypeAddressCityAndState_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeSublocality typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeSublocality_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeSublocality_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeSublocality").orElseThrow() }
-private val NSTextContentTypeSublocality_VH: VarHandle by lazy { NSTextContentTypeSublocality_LAYOUT.varHandle() }
-
-var NSTextContentTypeSublocality: MemorySegment
-    get() = NSTextContentTypeSublocality_VH.get(NSTextContentTypeSublocality_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeSublocality_VH.set(NSTextContentTypeSublocality_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCountryName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCountryName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCountryName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCountryName").orElseThrow() }
-private val NSTextContentTypeCountryName_VH: VarHandle by lazy { NSTextContentTypeCountryName_LAYOUT.varHandle() }
-
-var NSTextContentTypeCountryName: MemorySegment
-    get() = NSTextContentTypeCountryName_VH.get(NSTextContentTypeCountryName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCountryName_VH.set(NSTextContentTypeCountryName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypePostalCode typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypePostalCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypePostalCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypePostalCode").orElseThrow() }
-private val NSTextContentTypePostalCode_VH: VarHandle by lazy { NSTextContentTypePostalCode_LAYOUT.varHandle() }
-
-var NSTextContentTypePostalCode: MemorySegment
-    get() = NSTextContentTypePostalCode_VH.get(NSTextContentTypePostalCode_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypePostalCode_VH.set(NSTextContentTypePostalCode_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeTelephoneNumber typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeTelephoneNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeTelephoneNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeTelephoneNumber").orElseThrow() }
-private val NSTextContentTypeTelephoneNumber_VH: VarHandle by lazy { NSTextContentTypeTelephoneNumber_LAYOUT.varHandle() }
-
-var NSTextContentTypeTelephoneNumber: MemorySegment
-    get() = NSTextContentTypeTelephoneNumber_VH.get(NSTextContentTypeTelephoneNumber_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeTelephoneNumber_VH.set(NSTextContentTypeTelephoneNumber_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeEmailAddress typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeEmailAddress_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeEmailAddress_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeEmailAddress").orElseThrow() }
-private val NSTextContentTypeEmailAddress_VH: VarHandle by lazy { NSTextContentTypeEmailAddress_LAYOUT.varHandle() }
-
-var NSTextContentTypeEmailAddress: MemorySegment
-    get() = NSTextContentTypeEmailAddress_VH.get(NSTextContentTypeEmailAddress_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeEmailAddress_VH.set(NSTextContentTypeEmailAddress_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeURL typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeURL_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeURL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeURL").orElseThrow() }
-private val NSTextContentTypeURL_VH: VarHandle by lazy { NSTextContentTypeURL_LAYOUT.varHandle() }
-
-var NSTextContentTypeURL: MemorySegment
-    get() = NSTextContentTypeURL_VH.get(NSTextContentTypeURL_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeURL_VH.set(NSTextContentTypeURL_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardNumber typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardNumber").orElseThrow() }
-private val NSTextContentTypeCreditCardNumber_VH: VarHandle by lazy { NSTextContentTypeCreditCardNumber_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardNumber: MemorySegment
-    get() = NSTextContentTypeCreditCardNumber_VH.get(NSTextContentTypeCreditCardNumber_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardNumber_VH.set(NSTextContentTypeCreditCardNumber_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardName").orElseThrow() }
-private val NSTextContentTypeCreditCardName_VH: VarHandle by lazy { NSTextContentTypeCreditCardName_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardName: MemorySegment
-    get() = NSTextContentTypeCreditCardName_VH.get(NSTextContentTypeCreditCardName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardName_VH.set(NSTextContentTypeCreditCardName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardGivenName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardGivenName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardGivenName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardGivenName").orElseThrow() }
-private val NSTextContentTypeCreditCardGivenName_VH: VarHandle by lazy { NSTextContentTypeCreditCardGivenName_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardGivenName: MemorySegment
-    get() = NSTextContentTypeCreditCardGivenName_VH.get(NSTextContentTypeCreditCardGivenName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardGivenName_VH.set(NSTextContentTypeCreditCardGivenName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardMiddleName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardMiddleName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardMiddleName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardMiddleName").orElseThrow() }
-private val NSTextContentTypeCreditCardMiddleName_VH: VarHandle by lazy { NSTextContentTypeCreditCardMiddleName_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardMiddleName: MemorySegment
-    get() = NSTextContentTypeCreditCardMiddleName_VH.get(NSTextContentTypeCreditCardMiddleName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardMiddleName_VH.set(NSTextContentTypeCreditCardMiddleName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardFamilyName typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardFamilyName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardFamilyName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardFamilyName").orElseThrow() }
-private val NSTextContentTypeCreditCardFamilyName_VH: VarHandle by lazy { NSTextContentTypeCreditCardFamilyName_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardFamilyName: MemorySegment
-    get() = NSTextContentTypeCreditCardFamilyName_VH.get(NSTextContentTypeCreditCardFamilyName_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardFamilyName_VH.set(NSTextContentTypeCreditCardFamilyName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardSecurityCode typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardSecurityCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardSecurityCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardSecurityCode").orElseThrow() }
-private val NSTextContentTypeCreditCardSecurityCode_VH: VarHandle by lazy { NSTextContentTypeCreditCardSecurityCode_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardSecurityCode: MemorySegment
-    get() = NSTextContentTypeCreditCardSecurityCode_VH.get(NSTextContentTypeCreditCardSecurityCode_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardSecurityCode_VH.set(NSTextContentTypeCreditCardSecurityCode_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardExpiration typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardExpiration_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardExpiration_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardExpiration").orElseThrow() }
-private val NSTextContentTypeCreditCardExpiration_VH: VarHandle by lazy { NSTextContentTypeCreditCardExpiration_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardExpiration: MemorySegment
-    get() = NSTextContentTypeCreditCardExpiration_VH.get(NSTextContentTypeCreditCardExpiration_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardExpiration_VH.set(NSTextContentTypeCreditCardExpiration_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardExpirationMonth typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardExpirationMonth_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardExpirationMonth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardExpirationMonth").orElseThrow() }
-private val NSTextContentTypeCreditCardExpirationMonth_VH: VarHandle by lazy { NSTextContentTypeCreditCardExpirationMonth_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardExpirationMonth: MemorySegment
-    get() = NSTextContentTypeCreditCardExpirationMonth_VH.get(NSTextContentTypeCreditCardExpirationMonth_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardExpirationMonth_VH.set(NSTextContentTypeCreditCardExpirationMonth_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardExpirationYear typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardExpirationYear_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardExpirationYear_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardExpirationYear").orElseThrow() }
-private val NSTextContentTypeCreditCardExpirationYear_VH: VarHandle by lazy { NSTextContentTypeCreditCardExpirationYear_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardExpirationYear: MemorySegment
-    get() = NSTextContentTypeCreditCardExpirationYear_VH.get(NSTextContentTypeCreditCardExpirationYear_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardExpirationYear_VH.set(NSTextContentTypeCreditCardExpirationYear_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeCreditCardType typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeCreditCardType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardType").orElseThrow() }
-private val NSTextContentTypeCreditCardType_VH: VarHandle by lazy { NSTextContentTypeCreditCardType_LAYOUT.varHandle() }
-
-var NSTextContentTypeCreditCardType: MemorySegment
-    get() = NSTextContentTypeCreditCardType_VH.get(NSTextContentTypeCreditCardType_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeCreditCardType_VH.set(NSTextContentTypeCreditCardType_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextContentTypeShipmentTrackingNumber typedef const NSTextContentType = (Void)*
- */
-private val NSTextContentTypeShipmentTrackingNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeShipmentTrackingNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeShipmentTrackingNumber").orElseThrow() }
-private val NSTextContentTypeShipmentTrackingNumber_VH: VarHandle by lazy { NSTextContentTypeShipmentTrackingNumber_LAYOUT.varHandle() }
-
-var NSTextContentTypeShipmentTrackingNumber: MemorySegment
-    get() = NSTextContentTypeShipmentTrackingNumber_VH.get(NSTextContentTypeShipmentTrackingNumber_SEGMENT) as MemorySegment
-    set(value) = NSTextContentTypeShipmentTrackingNumber_VH.set(NSTextContentTypeShipmentTrackingNumber_SEGMENT, value)

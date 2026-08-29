@@ -31,7 +31,7 @@ open class NSSpecifierTest(override val ptr: MemorySegment) : NSScriptWhoseTest(
 
 
     // ── Instance variables (direct field access not supported via Panama) ──
-    // ivar: _comparisonOperator: MemorySegment
+    // ivar: _comparisonOperator: NSTestComparisonOperation
     // ivar: _object1: MemorySegment
     // ivar: _object2: MemorySegment
 }

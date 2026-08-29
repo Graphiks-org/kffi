@@ -80,8 +80,8 @@ open class NSWhoseSpecifier(override val ptr: MemorySegment) : NSScriptObjectSpe
 
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _test: MemorySegment
-    // ivar: _startSubelementIdentifier: MemorySegment
+    // ivar: _startSubelementIdentifier: NSWhoseSubelementIdentifier
     // ivar: _startSubelementIndex: Long
-    // ivar: _endSubelementIdentifier: MemorySegment
+    // ivar: _endSubelementIdentifier: NSWhoseSubelementIdentifier
     // ivar: _endSubelementIndex: Long
 }

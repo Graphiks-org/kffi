@@ -5,6 +5,1973 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : kCGColorBlack typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCGColorBlack_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCGColorBlack_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorBlack").orElseThrow() }
+private val kCGColorBlack_VH: VarHandle by lazy { kCGColorBlack_LAYOUT.varHandle() }
+
+var kCGColorBlack: MemorySegment
+    get() = kCGColorBlack_VH.get(kCGColorBlack_SEGMENT) as MemorySegment
+    set(value) = kCGColorBlack_VH.set(kCGColorBlack_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCGColorClear typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCGColorClear_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCGColorClear_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorClear").orElseThrow() }
+private val kCGColorClear_VH: VarHandle by lazy { kCGColorClear_LAYOUT.varHandle() }
+
+var kCGColorClear: MemorySegment
+    get() = kCGColorClear_VH.get(kCGColorClear_SEGMENT) as MemorySegment
+    set(value) = kCGColorClear_VH.set(kCGColorClear_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : CGFontGetTypeID typedef CFTypeID = UNSIGNED = Long()
+ */
+private val CGFontGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private val CGFontGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetTypeID").orElseThrow()
+private val CGFontGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetTypeID_ADDR, CGFontGetTypeID_DESC)
+
+fun CGFontGetTypeID(): Long {
+    try {
+        return CGFontGetTypeID_HANDLE.invokeExact() as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCreateWithPlatformFont typedef CGFontRef = (Declared(CGFont))*((Void)*)
+ */
+private val CGFontCreateWithPlatformFont_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCreateWithPlatformFont_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreateWithPlatformFont").orElseThrow()
+private val CGFontCreateWithPlatformFont_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreateWithPlatformFont_ADDR, CGFontCreateWithPlatformFont_DESC)
+
+fun CGFontCreateWithPlatformFont(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontCreateWithPlatformFont_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCreateWithDataProvider typedef CGFontRef = (Declared(CGFont))*(typedef CGDataProviderRef = (Declared(CGDataProvider))*)
+ */
+private val CGFontCreateWithDataProvider_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCreateWithDataProvider_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreateWithDataProvider").orElseThrow()
+private val CGFontCreateWithDataProvider_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreateWithDataProvider_ADDR, CGFontCreateWithDataProvider_DESC)
+
+fun CGFontCreateWithDataProvider(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontCreateWithDataProvider_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCreateWithFontName typedef CGFontRef = (Declared(CGFont))*(typedef CFStringRef = (Declared(__CFString))*)
+ */
+private val CGFontCreateWithFontName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCreateWithFontName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreateWithFontName").orElseThrow()
+private val CGFontCreateWithFontName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreateWithFontName_ADDR, CGFontCreateWithFontName_DESC)
+
+fun CGFontCreateWithFontName(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontCreateWithFontName_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCreateCopyWithVariations typedef CGFontRef = (Declared(CGFont))*(typedef CGFontRef = (Declared(CGFont))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
+ */
+private val CGFontCreateCopyWithVariations_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCreateCopyWithVariations_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreateCopyWithVariations").orElseThrow()
+private val CGFontCreateCopyWithVariations_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreateCopyWithVariations_ADDR, CGFontCreateCopyWithVariations_DESC)
+
+fun CGFontCreateCopyWithVariations(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGFontCreateCopyWithVariations_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontRetain typedef CGFontRef = (Declared(CGFont))*(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontRetain").orElseThrow()
+private val CGFontRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontRetain_ADDR, CGFontRetain_DESC)
+
+fun CGFontRetain(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontRetain_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontRelease Void(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val CGFontRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontRelease").orElseThrow()
+private val CGFontRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontRelease_ADDR, CGFontRelease_DESC)
+
+fun CGFontRelease(arg0: MemorySegment): Unit {
+    try {
+        CGFontRelease_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetNumberOfGlyphs typedef size_t = UNSIGNED = Long(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetNumberOfGlyphs_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CGFontGetNumberOfGlyphs_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetNumberOfGlyphs").orElseThrow()
+private val CGFontGetNumberOfGlyphs_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetNumberOfGlyphs_ADDR, CGFontGetNumberOfGlyphs_DESC)
+
+fun CGFontGetNumberOfGlyphs(arg0: MemorySegment): Long {
+    try {
+        return CGFontGetNumberOfGlyphs_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetUnitsPerEm Int(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetUnitsPerEm_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGFontGetUnitsPerEm_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetUnitsPerEm").orElseThrow()
+private val CGFontGetUnitsPerEm_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetUnitsPerEm_ADDR, CGFontGetUnitsPerEm_DESC)
+
+fun CGFontGetUnitsPerEm(arg0: MemorySegment): Int {
+    try {
+        return CGFontGetUnitsPerEm_HANDLE.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCopyPostScriptName typedef CFStringRef = (Declared(__CFString))*(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontCopyPostScriptName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCopyPostScriptName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyPostScriptName").orElseThrow()
+private val CGFontCopyPostScriptName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyPostScriptName_ADDR, CGFontCopyPostScriptName_DESC)
+
+fun CGFontCopyPostScriptName(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontCopyPostScriptName_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCopyFullName typedef CFStringRef = (Declared(__CFString))*(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontCopyFullName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCopyFullName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyFullName").orElseThrow()
+private val CGFontCopyFullName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyFullName_ADDR, CGFontCopyFullName_DESC)
+
+fun CGFontCopyFullName(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontCopyFullName_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetAscent Int(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetAscent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGFontGetAscent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetAscent").orElseThrow()
+private val CGFontGetAscent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetAscent_ADDR, CGFontGetAscent_DESC)
+
+fun CGFontGetAscent(arg0: MemorySegment): Int {
+    try {
+        return CGFontGetAscent_HANDLE.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetDescent Int(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetDescent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGFontGetDescent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetDescent").orElseThrow()
+private val CGFontGetDescent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetDescent_ADDR, CGFontGetDescent_DESC)
+
+fun CGFontGetDescent(arg0: MemorySegment): Int {
+    try {
+        return CGFontGetDescent_HANDLE.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetLeading Int(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetLeading_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGFontGetLeading_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetLeading").orElseThrow()
+private val CGFontGetLeading_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetLeading_ADDR, CGFontGetLeading_DESC)
+
+fun CGFontGetLeading(arg0: MemorySegment): Int {
+    try {
+        return CGFontGetLeading_HANDLE.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetCapHeight Int(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetCapHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGFontGetCapHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetCapHeight").orElseThrow()
+private val CGFontGetCapHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetCapHeight_ADDR, CGFontGetCapHeight_DESC)
+
+fun CGFontGetCapHeight(arg0: MemorySegment): Int {
+    try {
+        return CGFontGetCapHeight_HANDLE.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetXHeight Int(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetXHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGFontGetXHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetXHeight").orElseThrow()
+private val CGFontGetXHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetXHeight_ADDR, CGFontGetXHeight_DESC)
+
+fun CGFontGetXHeight(arg0: MemorySegment): Int {
+    try {
+        return CGFontGetXHeight_HANDLE.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetFontBBox typedef CGRect = Declared(CGRect)(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetFontBBox_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.ADDRESS)
+private val CGFontGetFontBBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetFontBBox").orElseThrow()
+private val CGFontGetFontBBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetFontBBox_ADDR, CGFontGetFontBBox_DESC)
+
+fun CGFontGetFontBBox(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontGetFontBBox_HANDLE.invokeExact(allocator, arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGFontGetFontBBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
+    return CGRect(CGFontGetFontBBox(allocator, arg0))
+}
+
+/**
+ * {@snippet lang=c : CGFontGetItalicAngle typedef CGFloat = Double(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetItalicAngle_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
+private val CGFontGetItalicAngle_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetItalicAngle").orElseThrow()
+private val CGFontGetItalicAngle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetItalicAngle_ADDR, CGFontGetItalicAngle_DESC)
+
+fun CGFontGetItalicAngle(arg0: MemorySegment): Double {
+    try {
+        return CGFontGetItalicAngle_HANDLE.invokeExact(arg0) as Double
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetStemV typedef CGFloat = Double(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontGetStemV_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
+private val CGFontGetStemV_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetStemV").orElseThrow()
+private val CGFontGetStemV_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetStemV_ADDR, CGFontGetStemV_DESC)
+
+fun CGFontGetStemV(arg0: MemorySegment): Double {
+    try {
+        return CGFontGetStemV_HANDLE.invokeExact(arg0) as Double
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCopyVariationAxes typedef CFArrayRef = (Declared(__CFArray))*(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontCopyVariationAxes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCopyVariationAxes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyVariationAxes").orElseThrow()
+private val CGFontCopyVariationAxes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyVariationAxes_ADDR, CGFontCopyVariationAxes_DESC)
+
+fun CGFontCopyVariationAxes(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontCopyVariationAxes_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCopyVariations typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontCopyVariations_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCopyVariations_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyVariations").orElseThrow()
+private val CGFontCopyVariations_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyVariations_ADDR, CGFontCopyVariations_DESC)
+
+fun CGFontCopyVariations(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontCopyVariations_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetGlyphAdvances Bool(typedef CGFontRef = (Declared(CGFont))*,(typedef CGGlyph = UNSIGNED = Short)*,typedef size_t = UNSIGNED = Long,(Int)*)
+ */
+private val CGFontGetGlyphAdvances_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CGFontGetGlyphAdvances_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetGlyphAdvances").orElseThrow()
+private val CGFontGetGlyphAdvances_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetGlyphAdvances_ADDR, CGFontGetGlyphAdvances_DESC)
+
+fun CGFontGetGlyphAdvances(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): Boolean {
+    try {
+        return CGFontGetGlyphAdvances_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetGlyphBBoxes Bool(typedef CGFontRef = (Declared(CGFont))*,(typedef CGGlyph = UNSIGNED = Short)*,typedef size_t = UNSIGNED = Long,(typedef CGRect = Declared(CGRect))*)
+ */
+private val CGFontGetGlyphBBoxes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CGFontGetGlyphBBoxes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetGlyphBBoxes").orElseThrow()
+private val CGFontGetGlyphBBoxes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetGlyphBBoxes_ADDR, CGFontGetGlyphBBoxes_DESC)
+
+fun CGFontGetGlyphBBoxes(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): Boolean {
+    try {
+        return CGFontGetGlyphBBoxes_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontGetGlyphWithGlyphName typedef CGGlyph = UNSIGNED = Short(typedef CGFontRef = (Declared(CGFont))*,typedef CFStringRef = (Declared(__CFString))*)
+ */
+private val CGFontGetGlyphWithGlyphName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_SHORT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontGetGlyphWithGlyphName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetGlyphWithGlyphName").orElseThrow()
+private val CGFontGetGlyphWithGlyphName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetGlyphWithGlyphName_ADDR, CGFontGetGlyphWithGlyphName_DESC)
+
+fun CGFontGetGlyphWithGlyphName(arg0: MemorySegment, arg1: MemorySegment): Short {
+    try {
+        return CGFontGetGlyphWithGlyphName_HANDLE.invokeExact(arg0, arg1) as Short
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCopyGlyphNameForGlyph typedef CFStringRef = (Declared(__CFString))*(typedef CGFontRef = (Declared(CGFont))*,typedef CGGlyph = UNSIGNED = Short)
+ */
+private val CGFontCopyGlyphNameForGlyph_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_SHORT)
+private val CGFontCopyGlyphNameForGlyph_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyGlyphNameForGlyph").orElseThrow()
+private val CGFontCopyGlyphNameForGlyph_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyGlyphNameForGlyph_ADDR, CGFontCopyGlyphNameForGlyph_DESC)
+
+fun CGFontCopyGlyphNameForGlyph(arg0: MemorySegment, arg1: Short): MemorySegment {
+    try {
+        return CGFontCopyGlyphNameForGlyph_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCanCreatePostScriptSubset Bool(typedef CGFontRef = (Declared(CGFont))*,typedef CGFontPostScriptFormat = Declared(CGFontPostScriptFormat))
+ */
+private val CGFontCanCreatePostScriptSubset_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val CGFontCanCreatePostScriptSubset_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCanCreatePostScriptSubset").orElseThrow()
+private val CGFontCanCreatePostScriptSubset_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCanCreatePostScriptSubset_ADDR, CGFontCanCreatePostScriptSubset_DESC)
+
+fun CGFontCanCreatePostScriptSubset(arg0: MemorySegment, arg1: CGFontPostScriptFormat): Boolean {
+    try {
+        return CGFontCanCreatePostScriptSubset_HANDLE.invokeExact(arg0, arg1.value.toInt()) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCreatePostScriptSubset typedef CFDataRef = (Declared(__CFData))*(typedef CGFontRef = (Declared(CGFont))*,typedef CFStringRef = (Declared(__CFString))*,typedef CGFontPostScriptFormat = Declared(CGFontPostScriptFormat),(typedef CGGlyph = UNSIGNED = Short)*,typedef size_t = UNSIGNED = Long,(typedef CGGlyph = UNSIGNED = Short)*)
+ */
+private val CGFontCreatePostScriptSubset_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CGFontCreatePostScriptSubset_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreatePostScriptSubset").orElseThrow()
+private val CGFontCreatePostScriptSubset_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreatePostScriptSubset_ADDR, CGFontCreatePostScriptSubset_DESC)
+
+fun CGFontCreatePostScriptSubset(arg0: MemorySegment, arg1: MemorySegment, arg2: CGFontPostScriptFormat, arg3: MemorySegment, arg4: Long, arg5: MemorySegment): MemorySegment {
+    try {
+        return CGFontCreatePostScriptSubset_HANDLE.invokeExact(arg0, arg1, arg2.value.toInt(), arg3, arg4, arg5) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCreatePostScriptEncoding typedef CFDataRef = (Declared(__CFData))*(typedef CGFontRef = (Declared(CGFont))*,(typedef CGGlyph = UNSIGNED = Short)*)
+ */
+private val CGFontCreatePostScriptEncoding_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCreatePostScriptEncoding_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreatePostScriptEncoding").orElseThrow()
+private val CGFontCreatePostScriptEncoding_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreatePostScriptEncoding_ADDR, CGFontCreatePostScriptEncoding_DESC)
+
+fun CGFontCreatePostScriptEncoding(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGFontCreatePostScriptEncoding_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCopyTableTags typedef CFArrayRef = (Declared(__CFArray))*(typedef CGFontRef = (Declared(CGFont))*)
+ */
+private val CGFontCopyTableTags_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGFontCopyTableTags_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyTableTags").orElseThrow()
+private val CGFontCopyTableTags_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyTableTags_ADDR, CGFontCopyTableTags_DESC)
+
+fun CGFontCopyTableTags(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGFontCopyTableTags_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGFontCopyTableForTag typedef CFDataRef = (Declared(__CFData))*(typedef CGFontRef = (Declared(CGFont))*,typedef uint32_t = UNSIGNED = Int)
+ */
+private val CGFontCopyTableForTag_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val CGFontCopyTableForTag_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyTableForTag").orElseThrow()
+private val CGFontCopyTableForTag_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyTableForTag_ADDR, CGFontCopyTableForTag_DESC)
+
+fun CGFontCopyTableForTag(arg0: MemorySegment, arg1: Int): MemorySegment {
+    try {
+        return CGFontCopyTableForTag_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : kCGFontVariationAxisName typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCGFontVariationAxisName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCGFontVariationAxisName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisName").orElseThrow() }
+private val kCGFontVariationAxisName_VH: VarHandle by lazy { kCGFontVariationAxisName_LAYOUT.varHandle() }
+
+var kCGFontVariationAxisName: MemorySegment
+    get() = kCGFontVariationAxisName_VH.get(kCGFontVariationAxisName_SEGMENT) as MemorySegment
+    set(value) = kCGFontVariationAxisName_VH.set(kCGFontVariationAxisName_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCGFontVariationAxisMinValue typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCGFontVariationAxisMinValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCGFontVariationAxisMinValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisMinValue").orElseThrow() }
+private val kCGFontVariationAxisMinValue_VH: VarHandle by lazy { kCGFontVariationAxisMinValue_LAYOUT.varHandle() }
+
+var kCGFontVariationAxisMinValue: MemorySegment
+    get() = kCGFontVariationAxisMinValue_VH.get(kCGFontVariationAxisMinValue_SEGMENT) as MemorySegment
+    set(value) = kCGFontVariationAxisMinValue_VH.set(kCGFontVariationAxisMinValue_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCGFontVariationAxisMaxValue typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCGFontVariationAxisMaxValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCGFontVariationAxisMaxValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisMaxValue").orElseThrow() }
+private val kCGFontVariationAxisMaxValue_VH: VarHandle by lazy { kCGFontVariationAxisMaxValue_LAYOUT.varHandle() }
+
+var kCGFontVariationAxisMaxValue: MemorySegment
+    get() = kCGFontVariationAxisMaxValue_VH.get(kCGFontVariationAxisMaxValue_SEGMENT) as MemorySegment
+    set(value) = kCGFontVariationAxisMaxValue_VH.set(kCGFontVariationAxisMaxValue_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCGFontVariationAxisDefaultValue typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCGFontVariationAxisDefaultValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCGFontVariationAxisDefaultValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisDefaultValue").orElseThrow() }
+private val kCGFontVariationAxisDefaultValue_VH: VarHandle by lazy { kCGFontVariationAxisDefaultValue_LAYOUT.varHandle() }
+
+var kCGFontVariationAxisDefaultValue: MemorySegment
+    get() = kCGFontVariationAxisDefaultValue_VH.get(kCGFontVariationAxisDefaultValue_SEGMENT) as MemorySegment
+    set(value) = kCGFontVariationAxisDefaultValue_VH.set(kCGFontVariationAxisDefaultValue_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : CGGradientGetTypeID typedef CFTypeID = UNSIGNED = Long()
+ */
+private val CGGradientGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private val CGGradientGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientGetTypeID").orElseThrow()
+private val CGGradientGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientGetTypeID_ADDR, CGGradientGetTypeID_DESC)
+
+fun CGGradientGetTypeID(): Long {
+    try {
+        return CGGradientGetTypeID_HANDLE.invokeExact() as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGGradientCreateWithColorComponents typedef CGGradientRef = (Declared(CGGradient))*(typedef CGColorSpaceRef = (Declared(CGColorSpace))*,(typedef CGFloat = Double)*,(typedef CGFloat = Double)*,typedef size_t = UNSIGNED = Long)
+ */
+private val CGGradientCreateWithColorComponents_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CGGradientCreateWithColorComponents_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientCreateWithColorComponents").orElseThrow()
+private val CGGradientCreateWithColorComponents_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientCreateWithColorComponents_ADDR, CGGradientCreateWithColorComponents_DESC)
+
+fun CGGradientCreateWithColorComponents(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): MemorySegment {
+    try {
+        return CGGradientCreateWithColorComponents_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGGradientCreateWithContentHeadroom typedef CGGradientRef = (Declared(CGGradient))*(Float,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,(typedef CGFloat = Double)*,(typedef CGFloat = Double)*,typedef size_t = UNSIGNED = Long)
+ */
+private val CGGradientCreateWithContentHeadroom_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CGGradientCreateWithContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientCreateWithContentHeadroom").orElseThrow()
+private val CGGradientCreateWithContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientCreateWithContentHeadroom_ADDR, CGGradientCreateWithContentHeadroom_DESC)
+
+fun CGGradientCreateWithContentHeadroom(arg0: Float, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): MemorySegment {
+    try {
+        return CGGradientCreateWithContentHeadroom_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGGradientCreateWithColors typedef CGGradientRef = (Declared(CGGradient))*(typedef CGColorSpaceRef = (Declared(CGColorSpace))*,typedef CFArrayRef = (Declared(__CFArray))*,(typedef CGFloat = Double)*)
+ */
+private val CGGradientCreateWithColors_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGGradientCreateWithColors_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientCreateWithColors").orElseThrow()
+private val CGGradientCreateWithColors_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientCreateWithColors_ADDR, CGGradientCreateWithColors_DESC)
+
+fun CGGradientCreateWithColors(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
+    try {
+        return CGGradientCreateWithColors_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGGradientRetain typedef CGGradientRef = (Declared(CGGradient))*(typedef CGGradientRef = (Declared(CGGradient))*)
+ */
+private val CGGradientRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGGradientRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientRetain").orElseThrow()
+private val CGGradientRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientRetain_ADDR, CGGradientRetain_DESC)
+
+fun CGGradientRetain(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGGradientRetain_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGGradientRelease Void(typedef CGGradientRef = (Declared(CGGradient))*)
+ */
+private val CGGradientRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val CGGradientRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientRelease").orElseThrow()
+private val CGGradientRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientRelease_ADDR, CGGradientRelease_DESC)
+
+fun CGGradientRelease(arg0: MemorySegment): Unit {
+    try {
+        CGGradientRelease_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGGradientGetContentHeadroom Float(typedef CGGradientRef = (Declared(CGGradient))*)
+ */
+private val CGGradientGetContentHeadroom_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS)
+private val CGGradientGetContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientGetContentHeadroom").orElseThrow()
+private val CGGradientGetContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientGetContentHeadroom_ADDR, CGGradientGetContentHeadroom_DESC)
+
+fun CGGradientGetContentHeadroom(arg0: MemorySegment): Float {
+    try {
+        return CGGradientGetContentHeadroom_HANDLE.invokeExact(arg0) as Float
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetTypeID typedef CFTypeID = UNSIGNED = Long()
+ */
+private val CGImageGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private val CGImageGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetTypeID").orElseThrow()
+private val CGImageGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetTypeID_ADDR, CGImageGetTypeID_DESC)
+
+fun CGImageGetTypeID(): Long {
+    try {
+        return CGImageGetTypeID_HANDLE.invokeExact() as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreate typedef CGImageRef = (Declared(CGImage))*(typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,typedef CGBitmapInfo = Declared(CGBitmapInfo),typedef CGDataProviderRef = (Declared(CGDataProvider))*,(typedef CGFloat = Double)*,Bool,typedef CGColorRenderingIntent = Declared(CGColorRenderingIntent))
+ */
+private val CGImageCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT)
+private val CGImageCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreate").orElseThrow()
+private val CGImageCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreate_ADDR, CGImageCreate_DESC)
+
+fun CGImageCreate(arg0: Long, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: MemorySegment, arg6: CGBitmapInfo, arg7: MemorySegment, arg8: MemorySegment, arg9: Boolean, arg10: CGColorRenderingIntent): MemorySegment {
+    try {
+        return CGImageCreate_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6.rawValue.toInt(), arg7, arg8, arg9, arg10.value.toInt()) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageMaskCreate typedef CGImageRef = (Declared(CGImage))*(typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef CGDataProviderRef = (Declared(CGDataProvider))*,(typedef CGFloat = Double)*,Bool)
+ */
+private val CGImageMaskCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
+private val CGImageMaskCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageMaskCreate").orElseThrow()
+private val CGImageMaskCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageMaskCreate_ADDR, CGImageMaskCreate_DESC)
+
+fun CGImageMaskCreate(arg0: Long, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: MemorySegment, arg6: MemorySegment, arg7: Boolean): MemorySegment {
+    try {
+        return CGImageMaskCreate_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateCopy typedef CGImageRef = (Declared(CGImage))*(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopy").orElseThrow()
+private val CGImageCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopy_ADDR, CGImageCreateCopy_DESC)
+
+fun CGImageCreateCopy(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGImageCreateCopy_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateWithJPEGDataProvider typedef CGImageRef = (Declared(CGImage))*(typedef CGDataProviderRef = (Declared(CGDataProvider))*,(typedef CGFloat = Double)*,Bool,typedef CGColorRenderingIntent = Declared(CGColorRenderingIntent))
+ */
+private val CGImageCreateWithJPEGDataProvider_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT)
+private val CGImageCreateWithJPEGDataProvider_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithJPEGDataProvider").orElseThrow()
+private val CGImageCreateWithJPEGDataProvider_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithJPEGDataProvider_ADDR, CGImageCreateWithJPEGDataProvider_DESC)
+
+fun CGImageCreateWithJPEGDataProvider(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean, arg3: CGColorRenderingIntent): MemorySegment {
+    try {
+        return CGImageCreateWithJPEGDataProvider_HANDLE.invokeExact(arg0, arg1, arg2, arg3.value.toInt()) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateWithPNGDataProvider typedef CGImageRef = (Declared(CGImage))*(typedef CGDataProviderRef = (Declared(CGDataProvider))*,(typedef CGFloat = Double)*,Bool,typedef CGColorRenderingIntent = Declared(CGColorRenderingIntent))
+ */
+private val CGImageCreateWithPNGDataProvider_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT)
+private val CGImageCreateWithPNGDataProvider_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithPNGDataProvider").orElseThrow()
+private val CGImageCreateWithPNGDataProvider_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithPNGDataProvider_ADDR, CGImageCreateWithPNGDataProvider_DESC)
+
+fun CGImageCreateWithPNGDataProvider(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean, arg3: CGColorRenderingIntent): MemorySegment {
+    try {
+        return CGImageCreateWithPNGDataProvider_HANDLE.invokeExact(arg0, arg1, arg2, arg3.value.toInt()) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateWithImageInRect typedef CGImageRef = (Declared(CGImage))*(typedef CGImageRef = (Declared(CGImage))*,typedef CGRect = Declared(CGRect))
+ */
+private val CGImageCreateWithImageInRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGRect.layout)
+private val CGImageCreateWithImageInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithImageInRect").orElseThrow()
+private val CGImageCreateWithImageInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithImageInRect_ADDR, CGImageCreateWithImageInRect_DESC)
+
+fun CGImageCreateWithImageInRect(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGImageCreateWithImageInRect_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGImageCreateWithImageInRect(arg0: MemorySegment, arg1: CGRect): MemorySegment {
+    return CGImageCreateWithImageInRect(arg0, arg1.segment)
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateWithMask typedef CGImageRef = (Declared(CGImage))*(typedef CGImageRef = (Declared(CGImage))*,typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageCreateWithMask_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageCreateWithMask_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithMask").orElseThrow()
+private val CGImageCreateWithMask_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithMask_ADDR, CGImageCreateWithMask_DESC)
+
+fun CGImageCreateWithMask(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGImageCreateWithMask_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateWithMaskingColors typedef CGImageRef = (Declared(CGImage))*(typedef CGImageRef = (Declared(CGImage))*,(typedef CGFloat = Double)*)
+ */
+private val CGImageCreateWithMaskingColors_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageCreateWithMaskingColors_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithMaskingColors").orElseThrow()
+private val CGImageCreateWithMaskingColors_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithMaskingColors_ADDR, CGImageCreateWithMaskingColors_DESC)
+
+fun CGImageCreateWithMaskingColors(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGImageCreateWithMaskingColors_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateCopyWithColorSpace typedef CGImageRef = (Declared(CGImage))*(typedef CGImageRef = (Declared(CGImage))*,typedef CGColorSpaceRef = (Declared(CGColorSpace))*)
+ */
+private val CGImageCreateCopyWithColorSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageCreateCopyWithColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopyWithColorSpace").orElseThrow()
+private val CGImageCreateCopyWithColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopyWithColorSpace_ADDR, CGImageCreateCopyWithColorSpace_DESC)
+
+fun CGImageCreateCopyWithColorSpace(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGImageCreateCopyWithColorSpace_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateWithContentHeadroom typedef CGImageRef = (Declared(CGImage))*(Float,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef CGColorSpaceRef = (Declared(CGColorSpace))*,typedef CGBitmapInfo = Declared(CGBitmapInfo),typedef CGDataProviderRef = (Declared(CGDataProvider))*,(typedef CGFloat = Double)*,Bool,typedef CGColorRenderingIntent = Declared(CGColorRenderingIntent))
+ */
+private val CGImageCreateWithContentHeadroom_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT)
+private val CGImageCreateWithContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithContentHeadroom").orElseThrow()
+private val CGImageCreateWithContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithContentHeadroom_ADDR, CGImageCreateWithContentHeadroom_DESC)
+
+fun CGImageCreateWithContentHeadroom(arg0: Float, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: Long, arg6: MemorySegment, arg7: CGBitmapInfo, arg8: MemorySegment, arg9: MemorySegment, arg10: Boolean, arg11: CGColorRenderingIntent): MemorySegment {
+    try {
+        return CGImageCreateWithContentHeadroom_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7.rawValue.toInt(), arg8, arg9, arg10, arg11.value.toInt()) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateCopyWithContentHeadroom typedef CGImageRef = (Declared(CGImage))*(Float,typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageCreateCopyWithContentHeadroom_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS)
+private val CGImageCreateCopyWithContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopyWithContentHeadroom").orElseThrow()
+private val CGImageCreateCopyWithContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopyWithContentHeadroom_ADDR, CGImageCreateCopyWithContentHeadroom_DESC)
+
+fun CGImageCreateCopyWithContentHeadroom(arg0: Float, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGImageCreateCopyWithContentHeadroom_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : kCGDefaultHDRImageContentHeadroom Float
+ */
+private val kCGDefaultHDRImageContentHeadroom_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_FLOAT }
+private val kCGDefaultHDRImageContentHeadroom_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDefaultHDRImageContentHeadroom").orElseThrow() }
+private val kCGDefaultHDRImageContentHeadroom_VH: VarHandle by lazy { kCGDefaultHDRImageContentHeadroom_LAYOUT.varHandle() }
+
+var kCGDefaultHDRImageContentHeadroom: Float
+    get() = kCGDefaultHDRImageContentHeadroom_VH.get(kCGDefaultHDRImageContentHeadroom_SEGMENT) as Float
+    set(value) = kCGDefaultHDRImageContentHeadroom_VH.set(kCGDefaultHDRImageContentHeadroom_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : CGImageGetContentHeadroom Float(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetContentHeadroom_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS)
+private val CGImageGetContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetContentHeadroom").orElseThrow()
+private val CGImageGetContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetContentHeadroom_ADDR, CGImageGetContentHeadroom_DESC)
+
+fun CGImageGetContentHeadroom(arg0: MemorySegment): Float {
+    try {
+        return CGImageGetContentHeadroom_HANDLE.invokeExact(arg0) as Float
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCalculateContentHeadroom Float(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageCalculateContentHeadroom_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS)
+private val CGImageCalculateContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCalculateContentHeadroom").orElseThrow()
+private val CGImageCalculateContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCalculateContentHeadroom_ADDR, CGImageCalculateContentHeadroom_DESC)
+
+fun CGImageCalculateContentHeadroom(arg0: MemorySegment): Float {
+    try {
+        return CGImageCalculateContentHeadroom_HANDLE.invokeExact(arg0) as Float
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetContentAverageLightLevel Float(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetContentAverageLightLevel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS)
+private val CGImageGetContentAverageLightLevel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetContentAverageLightLevel").orElseThrow()
+private val CGImageGetContentAverageLightLevel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetContentAverageLightLevel_ADDR, CGImageGetContentAverageLightLevel_DESC)
+
+fun CGImageGetContentAverageLightLevel(arg0: MemorySegment): Float {
+    try {
+        return CGImageGetContentAverageLightLevel_HANDLE.invokeExact(arg0) as Float
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCalculateContentAverageLightLevel Float(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageCalculateContentAverageLightLevel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS)
+private val CGImageCalculateContentAverageLightLevel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCalculateContentAverageLightLevel").orElseThrow()
+private val CGImageCalculateContentAverageLightLevel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCalculateContentAverageLightLevel_ADDR, CGImageCalculateContentAverageLightLevel_DESC)
+
+fun CGImageCalculateContentAverageLightLevel(arg0: MemorySegment): Float {
+    try {
+        return CGImageCalculateContentAverageLightLevel_HANDLE.invokeExact(arg0) as Float
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateCopyWithContentAverageLightLevel typedef CGImageRef = (Declared(CGImage))*(typedef CGImageRef = (Declared(CGImage))*,Float)
+ */
+private val CGImageCreateCopyWithContentAverageLightLevel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT)
+private val CGImageCreateCopyWithContentAverageLightLevel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopyWithContentAverageLightLevel").orElseThrow()
+private val CGImageCreateCopyWithContentAverageLightLevel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopyWithContentAverageLightLevel_ADDR, CGImageCreateCopyWithContentAverageLightLevel_DESC)
+
+fun CGImageCreateCopyWithContentAverageLightLevel(arg0: MemorySegment, arg1: Float): MemorySegment {
+    try {
+        return CGImageCreateCopyWithContentAverageLightLevel_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageCreateCopyWithCalculatedHDRStats typedef CGImageRef = (Declared(CGImage))*(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageCreateCopyWithCalculatedHDRStats_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageCreateCopyWithCalculatedHDRStats_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopyWithCalculatedHDRStats").orElseThrow()
+private val CGImageCreateCopyWithCalculatedHDRStats_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopyWithCalculatedHDRStats_ADDR, CGImageCreateCopyWithCalculatedHDRStats_DESC)
+
+fun CGImageCreateCopyWithCalculatedHDRStats(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGImageCreateCopyWithCalculatedHDRStats_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageRetain typedef CGImageRef = (Declared(CGImage))*(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageRetain").orElseThrow()
+private val CGImageRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageRetain_ADDR, CGImageRetain_DESC)
+
+fun CGImageRetain(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGImageRetain_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageRelease Void(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val CGImageRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageRelease").orElseThrow()
+private val CGImageRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageRelease_ADDR, CGImageRelease_DESC)
+
+fun CGImageRelease(arg0: MemorySegment): Unit {
+    try {
+        CGImageRelease_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageIsMask Bool(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageIsMask_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
+private val CGImageIsMask_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageIsMask").orElseThrow()
+private val CGImageIsMask_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageIsMask_ADDR, CGImageIsMask_DESC)
+
+fun CGImageIsMask(arg0: MemorySegment): Boolean {
+    try {
+        return CGImageIsMask_HANDLE.invokeExact(arg0) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetWidth typedef size_t = UNSIGNED = Long(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetWidth_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CGImageGetWidth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetWidth").orElseThrow()
+private val CGImageGetWidth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetWidth_ADDR, CGImageGetWidth_DESC)
+
+fun CGImageGetWidth(arg0: MemorySegment): Long {
+    try {
+        return CGImageGetWidth_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetHeight typedef size_t = UNSIGNED = Long(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CGImageGetHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetHeight").orElseThrow()
+private val CGImageGetHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetHeight_ADDR, CGImageGetHeight_DESC)
+
+fun CGImageGetHeight(arg0: MemorySegment): Long {
+    try {
+        return CGImageGetHeight_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetBitsPerComponent typedef size_t = UNSIGNED = Long(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetBitsPerComponent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CGImageGetBitsPerComponent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetBitsPerComponent").orElseThrow()
+private val CGImageGetBitsPerComponent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetBitsPerComponent_ADDR, CGImageGetBitsPerComponent_DESC)
+
+fun CGImageGetBitsPerComponent(arg0: MemorySegment): Long {
+    try {
+        return CGImageGetBitsPerComponent_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetBitsPerPixel typedef size_t = UNSIGNED = Long(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetBitsPerPixel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CGImageGetBitsPerPixel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetBitsPerPixel").orElseThrow()
+private val CGImageGetBitsPerPixel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetBitsPerPixel_ADDR, CGImageGetBitsPerPixel_DESC)
+
+fun CGImageGetBitsPerPixel(arg0: MemorySegment): Long {
+    try {
+        return CGImageGetBitsPerPixel_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetBytesPerRow typedef size_t = UNSIGNED = Long(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetBytesPerRow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CGImageGetBytesPerRow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetBytesPerRow").orElseThrow()
+private val CGImageGetBytesPerRow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetBytesPerRow_ADDR, CGImageGetBytesPerRow_DESC)
+
+fun CGImageGetBytesPerRow(arg0: MemorySegment): Long {
+    try {
+        return CGImageGetBytesPerRow_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetColorSpace typedef CGColorSpaceRef = (Declared(CGColorSpace))*(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetColorSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageGetColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetColorSpace").orElseThrow()
+private val CGImageGetColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetColorSpace_ADDR, CGImageGetColorSpace_DESC)
+
+fun CGImageGetColorSpace(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGImageGetColorSpace_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetAlphaInfo typedef CGImageAlphaInfo = Declared(CGImageAlphaInfo)(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetAlphaInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGImageGetAlphaInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetAlphaInfo").orElseThrow()
+private val CGImageGetAlphaInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetAlphaInfo_ADDR, CGImageGetAlphaInfo_DESC)
+
+fun CGImageGetAlphaInfo(arg0: MemorySegment): CGImageAlphaInfo {
+    try {
+        return CGImageAlphaInfo.fromValue(Integer.toUnsignedLong(CGImageGetAlphaInfo_HANDLE.invokeExact(arg0) as Int))
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetDataProvider typedef CGDataProviderRef = (Declared(CGDataProvider))*(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetDataProvider_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageGetDataProvider_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetDataProvider").orElseThrow()
+private val CGImageGetDataProvider_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetDataProvider_ADDR, CGImageGetDataProvider_DESC)
+
+fun CGImageGetDataProvider(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGImageGetDataProvider_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetDecode (typedef CGFloat = Double)*(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetDecode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageGetDecode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetDecode").orElseThrow()
+private val CGImageGetDecode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetDecode_ADDR, CGImageGetDecode_DESC)
+
+fun CGImageGetDecode(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGImageGetDecode_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetShouldInterpolate Bool(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetShouldInterpolate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
+private val CGImageGetShouldInterpolate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetShouldInterpolate").orElseThrow()
+private val CGImageGetShouldInterpolate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetShouldInterpolate_ADDR, CGImageGetShouldInterpolate_DESC)
+
+fun CGImageGetShouldInterpolate(arg0: MemorySegment): Boolean {
+    try {
+        return CGImageGetShouldInterpolate_HANDLE.invokeExact(arg0) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetRenderingIntent typedef CGColorRenderingIntent = Declared(CGColorRenderingIntent)(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetRenderingIntent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGImageGetRenderingIntent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetRenderingIntent").orElseThrow()
+private val CGImageGetRenderingIntent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetRenderingIntent_ADDR, CGImageGetRenderingIntent_DESC)
+
+fun CGImageGetRenderingIntent(arg0: MemorySegment): CGColorRenderingIntent {
+    try {
+        return CGColorRenderingIntent.fromValue((CGImageGetRenderingIntent_HANDLE.invokeExact(arg0) as Int).toLong())
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetBitmapInfo typedef CGBitmapInfo = Declared(CGBitmapInfo)(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetBitmapInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGImageGetBitmapInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetBitmapInfo").orElseThrow()
+private val CGImageGetBitmapInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetBitmapInfo_ADDR, CGImageGetBitmapInfo_DESC)
+
+fun CGImageGetBitmapInfo(arg0: MemorySegment): CGBitmapInfo {
+    try {
+        return CGBitmapInfo(Integer.toUnsignedLong(CGImageGetBitmapInfo_HANDLE.invokeExact(arg0) as Int))
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetByteOrderInfo typedef CGImageByteOrderInfo = Declared(CGImageByteOrderInfo)(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetByteOrderInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGImageGetByteOrderInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetByteOrderInfo").orElseThrow()
+private val CGImageGetByteOrderInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetByteOrderInfo_ADDR, CGImageGetByteOrderInfo_DESC)
+
+fun CGImageGetByteOrderInfo(arg0: MemorySegment): CGImageByteOrderInfo {
+    try {
+        return CGImageByteOrderInfo.fromValue(Integer.toUnsignedLong(CGImageGetByteOrderInfo_HANDLE.invokeExact(arg0) as Int))
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetPixelFormatInfo typedef CGImagePixelFormatInfo = Declared(CGImagePixelFormatInfo)(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetPixelFormatInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGImageGetPixelFormatInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetPixelFormatInfo").orElseThrow()
+private val CGImageGetPixelFormatInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetPixelFormatInfo_ADDR, CGImageGetPixelFormatInfo_DESC)
+
+fun CGImageGetPixelFormatInfo(arg0: MemorySegment): CGImagePixelFormatInfo {
+    try {
+        return CGImagePixelFormatInfo.fromValue(Integer.toUnsignedLong(CGImageGetPixelFormatInfo_HANDLE.invokeExact(arg0) as Int))
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageShouldToneMap Bool(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageShouldToneMap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
+private val CGImageShouldToneMap_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageShouldToneMap").orElseThrow()
+private val CGImageShouldToneMap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageShouldToneMap_ADDR, CGImageShouldToneMap_DESC)
+
+fun CGImageShouldToneMap(arg0: MemorySegment): Boolean {
+    try {
+        return CGImageShouldToneMap_HANDLE.invokeExact(arg0) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageContainsImageSpecificToneMappingMetadata Bool(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageContainsImageSpecificToneMappingMetadata_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
+private val CGImageContainsImageSpecificToneMappingMetadata_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageContainsImageSpecificToneMappingMetadata").orElseThrow()
+private val CGImageContainsImageSpecificToneMappingMetadata_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageContainsImageSpecificToneMappingMetadata_ADDR, CGImageContainsImageSpecificToneMappingMetadata_DESC)
+
+fun CGImageContainsImageSpecificToneMappingMetadata(arg0: MemorySegment): Boolean {
+    try {
+        return CGImageContainsImageSpecificToneMappingMetadata_HANDLE.invokeExact(arg0) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGImageGetUTType typedef CFStringRef = (Declared(__CFString))*(typedef CGImageRef = (Declared(CGImage))*)
+ */
+private val CGImageGetUTType_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGImageGetUTType_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetUTType").orElseThrow()
+private val CGImageGetUTType_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetUTType_ADDR, CGImageGetUTType_DESC)
+
+fun CGImageGetUTType(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGImageGetUTType_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathGetTypeID typedef CFTypeID = UNSIGNED = Long()
+ */
+private val CGPathGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private val CGPathGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathGetTypeID").orElseThrow()
+private val CGPathGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathGetTypeID_ADDR, CGPathGetTypeID_DESC)
+
+fun CGPathGetTypeID(): Long {
+    try {
+        return CGPathGetTypeID_HANDLE.invokeExact() as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateMutable typedef CGMutablePathRef = (Declared(CGPath))*()
+ */
+private val CGPathCreateMutable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
+private val CGPathCreateMutable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateMutable").orElseThrow()
+private val CGPathCreateMutable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateMutable_ADDR, CGPathCreateMutable_DESC)
+
+fun CGPathCreateMutable(): MemorySegment {
+    try {
+        return CGPathCreateMutable_HANDLE.invokeExact() as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateCopy typedef CGPathRef = (Declared(CGPath))*(typedef CGPathRef = (Declared(CGPath))*)
+ */
+private val CGPathCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGPathCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopy").orElseThrow()
+private val CGPathCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopy_ADDR, CGPathCreateCopy_DESC)
+
+fun CGPathCreateCopy(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGPathCreateCopy_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateCopyByTransformingPath typedef CGPathRef = (Declared(CGPath))*(typedef CGPathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*)
+ */
+private val CGPathCreateCopyByTransformingPath_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGPathCreateCopyByTransformingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByTransformingPath").orElseThrow()
+private val CGPathCreateCopyByTransformingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByTransformingPath_ADDR, CGPathCreateCopyByTransformingPath_DESC)
+
+fun CGPathCreateCopyByTransformingPath(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGPathCreateCopyByTransformingPath_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateMutableCopy typedef CGMutablePathRef = (Declared(CGPath))*(typedef CGPathRef = (Declared(CGPath))*)
+ */
+private val CGPathCreateMutableCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGPathCreateMutableCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateMutableCopy").orElseThrow()
+private val CGPathCreateMutableCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateMutableCopy_ADDR, CGPathCreateMutableCopy_DESC)
+
+fun CGPathCreateMutableCopy(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGPathCreateMutableCopy_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateMutableCopyByTransformingPath typedef CGMutablePathRef = (Declared(CGPath))*(typedef CGPathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*)
+ */
+private val CGPathCreateMutableCopyByTransformingPath_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGPathCreateMutableCopyByTransformingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateMutableCopyByTransformingPath").orElseThrow()
+private val CGPathCreateMutableCopyByTransformingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateMutableCopyByTransformingPath_ADDR, CGPathCreateMutableCopyByTransformingPath_DESC)
+
+fun CGPathCreateMutableCopyByTransformingPath(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGPathCreateMutableCopyByTransformingPath_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateWithRect typedef CGPathRef = (Declared(CGPath))*(typedef CGRect = Declared(CGRect),(typedef CGAffineTransform = Declared(CGAffineTransform))*)
+ */
+private val CGPathCreateWithRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS)
+private val CGPathCreateWithRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateWithRect").orElseThrow()
+private val CGPathCreateWithRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateWithRect_ADDR, CGPathCreateWithRect_DESC)
+
+fun CGPathCreateWithRect(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGPathCreateWithRect_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGPathCreateWithRect(arg0: CGRect, arg1: MemorySegment): MemorySegment {
+    return CGPathCreateWithRect(arg0.segment, arg1)
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateWithEllipseInRect typedef CGPathRef = (Declared(CGPath))*(typedef CGRect = Declared(CGRect),(typedef CGAffineTransform = Declared(CGAffineTransform))*)
+ */
+private val CGPathCreateWithEllipseInRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS)
+private val CGPathCreateWithEllipseInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateWithEllipseInRect").orElseThrow()
+private val CGPathCreateWithEllipseInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateWithEllipseInRect_ADDR, CGPathCreateWithEllipseInRect_DESC)
+
+fun CGPathCreateWithEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CGPathCreateWithEllipseInRect_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGPathCreateWithEllipseInRect(arg0: CGRect, arg1: MemorySegment): MemorySegment {
+    return CGPathCreateWithEllipseInRect(arg0.segment, arg1)
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateWithRoundedRect typedef CGPathRef = (Declared(CGPath))*(typedef CGRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double,(typedef CGAffineTransform = Declared(CGAffineTransform))*)
+ */
+private val CGPathCreateWithRoundedRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
+private val CGPathCreateWithRoundedRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateWithRoundedRect").orElseThrow()
+private val CGPathCreateWithRoundedRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateWithRoundedRect_ADDR, CGPathCreateWithRoundedRect_DESC)
+
+fun CGPathCreateWithRoundedRect(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: MemorySegment): MemorySegment {
+    try {
+        return CGPathCreateWithRoundedRect_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGPathCreateWithRoundedRect(arg0: CGRect, arg1: Double, arg2: Double, arg3: MemorySegment): MemorySegment {
+    return CGPathCreateWithRoundedRect(arg0.segment, arg1, arg2, arg3)
+}
+
+/**
+ * {@snippet lang=c : CGPathAddRoundedRect Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
+ */
+private val CGPathAddRoundedRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGRect.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
+private val CGPathAddRoundedRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddRoundedRect").orElseThrow()
+private val CGPathAddRoundedRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddRoundedRect_ADDR, CGPathAddRoundedRect_DESC)
+
+fun CGPathAddRoundedRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Double, arg4: Double): Unit {
+    try {
+        CGPathAddRoundedRect_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGPathAddRoundedRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect, arg3: Double, arg4: Double): Unit {
+    CGPathAddRoundedRect(arg0, arg1, arg2.segment, arg3, arg4)
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateCopyByDashingPath typedef CGPathRef = (Declared(CGPath))*(typedef CGPathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGFloat = Double,(typedef CGFloat = Double)*,typedef size_t = UNSIGNED = Long)
+ */
+private val CGPathCreateCopyByDashingPath_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CGPathCreateCopyByDashingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByDashingPath").orElseThrow()
+private val CGPathCreateCopyByDashingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByDashingPath_ADDR, CGPathCreateCopyByDashingPath_DESC)
+
+fun CGPathCreateCopyByDashingPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: MemorySegment, arg4: Long): MemorySegment {
+    try {
+        return CGPathCreateCopyByDashingPath_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathCreateCopyByStrokingPath typedef CGPathRef = (Declared(CGPath))*(typedef CGPathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGFloat = Double,typedef CGLineCap = Declared(CGLineCap),typedef CGLineJoin = Declared(CGLineJoin),typedef CGFloat = Double)
+ */
+private val CGPathCreateCopyByStrokingPath_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE)
+private val CGPathCreateCopyByStrokingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByStrokingPath").orElseThrow()
+private val CGPathCreateCopyByStrokingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByStrokingPath_ADDR, CGPathCreateCopyByStrokingPath_DESC)
+
+fun CGPathCreateCopyByStrokingPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: CGLineCap, arg4: CGLineJoin, arg5: Double): MemorySegment {
+    try {
+        return CGPathCreateCopyByStrokingPath_HANDLE.invokeExact(arg0, arg1, arg2, arg3.value.toInt(), arg4.value.toInt(), arg5) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathRetain typedef CGPathRef = (Declared(CGPath))*(typedef CGPathRef = (Declared(CGPath))*)
+ */
+private val CGPathRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGPathRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathRetain").orElseThrow()
+private val CGPathRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathRetain_ADDR, CGPathRetain_DESC)
+
+fun CGPathRetain(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGPathRetain_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathRelease Void(typedef CGPathRef = (Declared(CGPath))*)
+ */
+private val CGPathRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val CGPathRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathRelease").orElseThrow()
+private val CGPathRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathRelease_ADDR, CGPathRelease_DESC)
+
+fun CGPathRelease(arg0: MemorySegment): Unit {
+    try {
+        CGPathRelease_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathEqualToPath Bool(typedef CGPathRef = (Declared(CGPath))*,typedef CGPathRef = (Declared(CGPath))*)
+ */
+private val CGPathEqualToPath_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGPathEqualToPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathEqualToPath").orElseThrow()
+private val CGPathEqualToPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathEqualToPath_ADDR, CGPathEqualToPath_DESC)
+
+fun CGPathEqualToPath(arg0: MemorySegment, arg1: MemorySegment): Boolean {
+    try {
+        return CGPathEqualToPath_HANDLE.invokeExact(arg0, arg1) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathMoveToPoint Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGFloat = Double,typedef CGFloat = Double)
+ */
+private val CGPathMoveToPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
+private val CGPathMoveToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathMoveToPoint").orElseThrow()
+private val CGPathMoveToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathMoveToPoint_ADDR, CGPathMoveToPoint_DESC)
+
+fun CGPathMoveToPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double): Unit {
+    try {
+        CGPathMoveToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathAddLineToPoint Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGFloat = Double,typedef CGFloat = Double)
+ */
+private val CGPathAddLineToPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
+private val CGPathAddLineToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddLineToPoint").orElseThrow()
+private val CGPathAddLineToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddLineToPoint_ADDR, CGPathAddLineToPoint_DESC)
+
+fun CGPathAddLineToPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double): Unit {
+    try {
+        CGPathAddLineToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathAddQuadCurveToPoint Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
+ */
+private val CGPathAddQuadCurveToPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
+private val CGPathAddQuadCurveToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddQuadCurveToPoint").orElseThrow()
+private val CGPathAddQuadCurveToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddQuadCurveToPoint_ADDR, CGPathAddQuadCurveToPoint_DESC)
+
+fun CGPathAddQuadCurveToPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double, arg4: Double, arg5: Double): Unit {
+    try {
+        CGPathAddQuadCurveToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathAddCurveToPoint Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
+ */
+private val CGPathAddCurveToPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
+private val CGPathAddCurveToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddCurveToPoint").orElseThrow()
+private val CGPathAddCurveToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddCurveToPoint_ADDR, CGPathAddCurveToPoint_DESC)
+
+fun CGPathAddCurveToPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double, arg4: Double, arg5: Double, arg6: Double, arg7: Double): Unit {
+    try {
+        CGPathAddCurveToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathCloseSubpath Void(typedef CGMutablePathRef = (Declared(CGPath))*)
+ */
+private val CGPathCloseSubpath_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val CGPathCloseSubpath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCloseSubpath").orElseThrow()
+private val CGPathCloseSubpath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCloseSubpath_ADDR, CGPathCloseSubpath_DESC)
+
+fun CGPathCloseSubpath(arg0: MemorySegment): Unit {
+    try {
+        CGPathCloseSubpath_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathAddRect Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGRect = Declared(CGRect))
+ */
+private val CGPathAddRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGRect.layout)
+private val CGPathAddRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddRect").orElseThrow()
+private val CGPathAddRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddRect_ADDR, CGPathAddRect_DESC)
+
+fun CGPathAddRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
+    try {
+        CGPathAddRect_HANDLE.invokeExact(arg0, arg1, arg2)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGPathAddRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect): Unit {
+    CGPathAddRect(arg0, arg1, arg2.segment)
+}
+
+/**
+ * {@snippet lang=c : CGPathAddRects Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,(typedef CGRect = Declared(CGRect))*,typedef size_t = UNSIGNED = Long)
+ */
+private val CGPathAddRects_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CGPathAddRects_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddRects").orElseThrow()
+private val CGPathAddRects_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddRects_ADDR, CGPathAddRects_DESC)
+
+fun CGPathAddRects(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Unit {
+    try {
+        CGPathAddRects_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPathAddLines Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,(typedef CGPoint = Declared(CGPoint))*,typedef size_t = UNSIGNED = Long)
+ */
+private val CGPathAddLines_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CGPathAddLines_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddLines").orElseThrow()
+private val CGPathAddLines_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddLines_ADDR, CGPathAddLines_DESC)
+
+fun CGPathAddLines(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Unit {
+    try {
+        CGPathAddLines_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CGPathAddEllipseInRect Void(typedef CGMutablePathRef = (Declared(CGPath))*,(typedef CGAffineTransform = Declared(CGAffineTransform))*,typedef CGRect = Declared(CGRect))
  */
 private val CGPathAddEllipseInRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGRect.layout)
@@ -462,6 +2429,44 @@ fun CGPathIntersectsPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean
 }
 
 /**
+ * {@snippet lang=c : CGPDFObjectGetType typedef CGPDFObjectType = Declared(CGPDFObjectType)(typedef CGPDFObjectRef = (Declared(CGPDFObject))*)
+ */
+private val CGPDFObjectGetType_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGPDFObjectGetType_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFObjectGetType").orElseThrow()
+private val CGPDFObjectGetType_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFObjectGetType_ADDR, CGPDFObjectGetType_DESC)
+
+fun CGPDFObjectGetType(arg0: MemorySegment): CGPDFObjectType {
+    try {
+        return CGPDFObjectType.fromValue((CGPDFObjectGetType_HANDLE.invokeExact(arg0) as Int).toLong())
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPDFObjectGetValue Bool(typedef CGPDFObjectRef = (Declared(CGPDFObject))*,typedef CGPDFObjectType = Declared(CGPDFObjectType),(Void)*)
+ */
+private val CGPDFObjectGetValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGPDFObjectGetValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFObjectGetValue").orElseThrow()
+private val CGPDFObjectGetValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFObjectGetValue_ADDR, CGPDFObjectGetValue_DESC)
+
+fun CGPDFObjectGetValue(arg0: MemorySegment, arg1: CGPDFObjectType, arg2: MemorySegment): Boolean {
+    try {
+        return CGPDFObjectGetValue_HANDLE.invokeExact(arg0, arg1.value.toInt(), arg2) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CGPDFStreamGetDictionary typedef CGPDFDictionaryRef = (Declared(CGPDFDictionary))*(typedef CGPDFStreamRef = (Declared(CGPDFStream))*)
  */
 private val CGPDFStreamGetDictionary_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -481,7 +2486,7 @@ fun CGPDFStreamGetDictionary(arg0: MemorySegment): MemorySegment {
 }
 
 /**
- * {@snippet lang=c : CGPDFStreamCopyData typedef CFDataRef = (Declared(__CFData))*(typedef CGPDFStreamRef = (Declared(CGPDFStream))*,(typedef CGPDFDataFormat = <error: enum CGPDFDataFormat>)*)
+ * {@snippet lang=c : CGPDFStreamCopyData typedef CFDataRef = (Declared(__CFData))*(typedef CGPDFStreamRef = (Declared(CGPDFStream))*,(typedef CGPDFDataFormat = Declared(CGPDFDataFormat))*)
  */
 private val CGPDFStreamCopyData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private val CGPDFStreamCopyData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFStreamCopyData").orElseThrow()
@@ -1108,6 +3113,29 @@ fun CGPDFPageGetPageNumber(arg0: MemorySegment): Long {
 }
 
 /**
+ * {@snippet lang=c : CGPDFPageGetBoxRect typedef CGRect = Declared(CGRect)(typedef CGPDFPageRef = (Declared(CGPDFPage))*,typedef CGPDFBox = Declared(CGPDFBox))
+ */
+private val CGPDFPageGetBoxRect_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val CGPDFPageGetBoxRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageGetBoxRect").orElseThrow()
+private val CGPDFPageGetBoxRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageGetBoxRect_ADDR, CGPDFPageGetBoxRect_DESC)
+
+fun CGPDFPageGetBoxRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPDFBox): MemorySegment {
+    try {
+        return CGPDFPageGetBoxRect_HANDLE.invokeExact(allocator, arg0, arg1.value.toInt()) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGPDFPageGetBoxRectTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPDFBox): CGRect {
+    return CGRect(CGPDFPageGetBoxRect(allocator, arg0, arg1))
+}
+
+/**
  * {@snippet lang=c : CGPDFPageGetRotationAngle Int(typedef CGPDFPageRef = (Declared(CGPDFPage))*)
  */
 private val CGPDFPageGetRotationAngle_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
@@ -1124,6 +3152,29 @@ fun CGPDFPageGetRotationAngle(arg0: MemorySegment): Int {
     } catch (ex: Throwable) {
         throw AssertionError("should not reach here", ex)
     }
+}
+
+/**
+ * {@snippet lang=c : CGPDFPageGetDrawingTransform typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGPDFPageRef = (Declared(CGPDFPage))*,typedef CGPDFBox = Declared(CGPDFBox),typedef CGRect = Declared(CGRect),Int,Bool)
+ */
+private val CGPDFPageGetDrawingTransform_DESC: FunctionDescriptor = FunctionDescriptor.of(CGAffineTransform.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, CGRect.layout, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN)
+private val CGPDFPageGetDrawingTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageGetDrawingTransform").orElseThrow()
+private val CGPDFPageGetDrawingTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageGetDrawingTransform_ADDR, CGPDFPageGetDrawingTransform_DESC)
+
+fun CGPDFPageGetDrawingTransform(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPDFBox, arg2: MemorySegment, arg3: Int, arg4: Boolean): MemorySegment {
+    try {
+        return CGPDFPageGetDrawingTransform_HANDLE.invokeExact(allocator, arg0, arg1.value.toInt(), arg2, arg3, arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGPDFPageGetDrawingTransform(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPDFBox, arg2: CGRect, arg3: Int, arg4: Boolean): CGAffineTransform {
+    return CGAffineTransform(CGPDFPageGetDrawingTransform(allocator, arg0, arg1, arg2.segment, arg3, arg4))
 }
 
 /**
@@ -1522,6 +3573,25 @@ private val CGPDFDocumentGetOutline_HANDLE: MethodHandle = Linker.nativeLinker()
 fun CGPDFDocumentGetOutline(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFDocumentGetOutline_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGPDFDocumentGetAccessPermissions typedef CGPDFAccessPermissions = Declared(CGPDFAccessPermissions)(typedef CGPDFDocumentRef = (Declared(CGPDFDocument))*)
+ */
+private val CGPDFDocumentGetAccessPermissions_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGPDFDocumentGetAccessPermissions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetAccessPermissions").orElseThrow()
+private val CGPDFDocumentGetAccessPermissions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetAccessPermissions_ADDR, CGPDFDocumentGetAccessPermissions_DESC)
+
+fun CGPDFDocumentGetAccessPermissions(arg0: MemorySegment): CGPDFAccessPermissions {
+    try {
+        return CGPDFAccessPermissions(Integer.toUnsignedLong(CGPDFDocumentGetAccessPermissions_HANDLE.invokeExact(arg0) as Int))
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -2262,6 +4332,44 @@ fun CGContextSetLineWidth(arg0: MemorySegment, arg1: Double): Unit {
 }
 
 /**
+ * {@snippet lang=c : CGContextSetLineCap Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGLineCap = Declared(CGLineCap))
+ */
+private val CGContextSetLineCap_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val CGContextSetLineCap_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetLineCap").orElseThrow()
+private val CGContextSetLineCap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetLineCap_ADDR, CGContextSetLineCap_DESC)
+
+fun CGContextSetLineCap(arg0: MemorySegment, arg1: CGLineCap): Unit {
+    try {
+        CGContextSetLineCap_HANDLE.invokeExact(arg0, arg1.value.toInt())
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGContextSetLineJoin Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGLineJoin = Declared(CGLineJoin))
+ */
+private val CGContextSetLineJoin_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val CGContextSetLineJoin_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetLineJoin").orElseThrow()
+private val CGContextSetLineJoin_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetLineJoin_ADDR, CGContextSetLineJoin_DESC)
+
+fun CGContextSetLineJoin(arg0: MemorySegment, arg1: CGLineJoin): Unit {
+    try {
+        CGContextSetLineJoin_HANDLE.invokeExact(arg0, arg1.value.toInt())
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CGContextSetMiterLimit Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double)
  */
 private val CGContextSetMiterLimit_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
@@ -2328,6 +4436,25 @@ private val CGContextSetAlpha_HANDLE: MethodHandle = Linker.nativeLinker().downc
 fun CGContextSetAlpha(arg0: MemorySegment, arg1: Double): Unit {
     try {
         CGContextSetAlpha_HANDLE.invokeExact(arg0, arg1)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGContextSetBlendMode Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGBlendMode = Declared(CGBlendMode))
+ */
+private val CGContextSetBlendMode_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val CGContextSetBlendMode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetBlendMode").orElseThrow()
+private val CGContextSetBlendMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetBlendMode_ADDR, CGContextSetBlendMode_DESC)
+
+fun CGContextSetBlendMode(arg0: MemorySegment, arg1: CGBlendMode): Unit {
+    try {
+        CGContextSetBlendMode_HANDLE.invokeExact(arg0, arg1.value.toInt())
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -2686,6 +4813,48 @@ private val CGContextCopyPath_HANDLE: MethodHandle = Linker.nativeLinker().downc
 fun CGContextCopyPath(arg0: MemorySegment): MemorySegment {
     try {
         return CGContextCopyPath_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CGContextPathContainsPoint Bool(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint),typedef CGPathDrawingMode = Declared(CGPathDrawingMode))
+ */
+private val CGContextPathContainsPoint_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, CGPoint.layout, ValueLayout.JAVA_INT)
+private val CGContextPathContainsPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextPathContainsPoint").orElseThrow()
+private val CGContextPathContainsPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextPathContainsPoint_ADDR, CGContextPathContainsPoint_DESC)
+
+fun CGContextPathContainsPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: CGPathDrawingMode): Boolean {
+    try {
+        return CGContextPathContainsPoint_HANDLE.invokeExact(arg0, arg1, arg2.value.toInt()) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGContextPathContainsPoint(arg0: MemorySegment, arg1: CGPoint, arg2: CGPathDrawingMode): Boolean {
+    return CGContextPathContainsPoint(arg0, arg1.segment, arg2)
+}
+
+/**
+ * {@snippet lang=c : CGContextDrawPath Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPathDrawingMode = Declared(CGPathDrawingMode))
+ */
+private val CGContextDrawPath_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val CGContextDrawPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawPath").orElseThrow()
+private val CGContextDrawPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawPath_ADDR, CGContextDrawPath_DESC)
+
+fun CGContextDrawPath(arg0: MemorySegment, arg1: CGPathDrawingMode): Unit {
+    try {
+        CGContextDrawPath_HANDLE.invokeExact(arg0, arg1.value.toInt())
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -3363,6 +5532,25 @@ fun CGContextSetCMYKStrokeColor(arg0: MemorySegment, arg1: Double, arg2: Double,
 }
 
 /**
+ * {@snippet lang=c : CGContextSetRenderingIntent Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGColorRenderingIntent = Declared(CGColorRenderingIntent))
+ */
+private val CGContextSetRenderingIntent_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val CGContextSetRenderingIntent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetRenderingIntent").orElseThrow()
+private val CGContextSetRenderingIntent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetRenderingIntent_ADDR, CGContextSetRenderingIntent_DESC)
+
+fun CGContextSetRenderingIntent(arg0: MemorySegment, arg1: CGColorRenderingIntent): Unit {
+    try {
+        CGContextSetRenderingIntent_HANDLE.invokeExact(arg0, arg1.value.toInt())
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CGContextSetEDRTargetHeadroom Bool(typedef CGContextRef = (Declared(CGContext))*,Float)
  */
 private val CGContextSetEDRTargetHeadroom_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT)
@@ -3447,6 +5635,29 @@ fun CGContextDrawTiledImage(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegme
 }
 
 /**
+ * {@snippet lang=c : CGContextDrawImageApplyingToneMapping Bool(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CGImageRef = (Declared(CGImage))*,typedef CGToneMapping = Declared(CGToneMapping),typedef CFDictionaryRef = (Declared(__CFDictionary))*)
+ */
+private val CGContextDrawImageApplyingToneMapping_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val CGContextDrawImageApplyingToneMapping_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawImageApplyingToneMapping").orElseThrow()
+private val CGContextDrawImageApplyingToneMapping_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawImageApplyingToneMapping_ADDR, CGContextDrawImageApplyingToneMapping_DESC)
+
+fun CGContextDrawImageApplyingToneMapping(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CGToneMapping, arg4: MemorySegment): Boolean {
+    try {
+        return CGContextDrawImageApplyingToneMapping_HANDLE.invokeExact(arg0, arg1, arg2, arg3.value.toInt(), arg4) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun CGContextDrawImageApplyingToneMapping(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment, arg3: CGToneMapping, arg4: MemorySegment): Boolean {
+    return CGContextDrawImageApplyingToneMapping(arg0, arg1.segment, arg2, arg3, arg4)
+}
+
+/**
  * {@snippet lang=c : CGContextGetContentToneMappingInfo typedef CGContentToneMappingInfo = Declared(CGContentToneMappingInfo)(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextGetContentToneMappingInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(CGContentToneMappingInfo.layout, ValueLayout.ADDRESS)
@@ -3464,1710 +5675,3 @@ fun CGContextGetContentToneMappingInfo(allocator: SegmentAllocator, arg0: Memory
         throw AssertionError("should not reach here", ex)
     }
 }
-
-/**
- * {@snippet lang=c : CGContextSetContentToneMappingInfo Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGContentToneMappingInfo = Declared(CGContentToneMappingInfo))
- */
-private val CGContextSetContentToneMappingInfo_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGContentToneMappingInfo.layout)
-private val CGContextSetContentToneMappingInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetContentToneMappingInfo").orElseThrow()
-private val CGContextSetContentToneMappingInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetContentToneMappingInfo_ADDR, CGContextSetContentToneMappingInfo_DESC)
-
-fun CGContextSetContentToneMappingInfo(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGContextSetContentToneMappingInfo_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetShadowWithColor Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize),typedef CGFloat = Double,typedef CGColorRef = (Declared(CGColor))*)
- */
-private val CGContextSetShadowWithColor_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGSize.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CGContextSetShadowWithColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShadowWithColor").orElseThrow()
-private val CGContextSetShadowWithColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShadowWithColor_ADDR, CGContextSetShadowWithColor_DESC)
-
-fun CGContextSetShadowWithColor(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: MemorySegment): Unit {
-    try {
-        CGContextSetShadowWithColor_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextSetShadowWithColor(arg0: MemorySegment, arg1: CGSize, arg2: Double, arg3: MemorySegment): Unit {
-    CGContextSetShadowWithColor(arg0, arg1.segment, arg2, arg3)
-}
-
-/**
- * {@snippet lang=c : CGContextSetShadow Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize),typedef CGFloat = Double)
- */
-private val CGContextSetShadow_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGSize.layout, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetShadow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShadow").orElseThrow()
-private val CGContextSetShadow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShadow_ADDR, CGContextSetShadow_DESC)
-
-fun CGContextSetShadow(arg0: MemorySegment, arg1: MemorySegment, arg2: Double): Unit {
-    try {
-        CGContextSetShadow_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextSetShadow(arg0: MemorySegment, arg1: CGSize, arg2: Double): Unit {
-    CGContextSetShadow(arg0, arg1.segment, arg2)
-}
-
-/**
- * {@snippet lang=c : CGContextDrawConicGradient Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGGradientRef = (Declared(CGGradient))*,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double)
- */
-private val CGContextDrawConicGradient_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGPoint.layout, ValueLayout.JAVA_DOUBLE)
-private val CGContextDrawConicGradient_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawConicGradient").orElseThrow()
-private val CGContextDrawConicGradient_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawConicGradient_ADDR, CGContextDrawConicGradient_DESC)
-
-fun CGContextDrawConicGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Double): Unit {
-    try {
-        CGContextDrawConicGradient_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextDrawConicGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: CGPoint, arg3: Double): Unit {
-    CGContextDrawConicGradient(arg0, arg1, arg2.segment, arg3)
-}
-
-/**
- * {@snippet lang=c : CGContextDrawShading Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGShadingRef = (Declared(CGShading))*)
- */
-private val CGContextDrawShading_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextDrawShading_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawShading").orElseThrow()
-private val CGContextDrawShading_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawShading_ADDR, CGContextDrawShading_DESC)
-
-fun CGContextDrawShading(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGContextDrawShading_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetCharacterSpacing Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double)
- */
-private val CGContextSetCharacterSpacing_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetCharacterSpacing_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetCharacterSpacing").orElseThrow()
-private val CGContextSetCharacterSpacing_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetCharacterSpacing_ADDR, CGContextSetCharacterSpacing_DESC)
-
-fun CGContextSetCharacterSpacing(arg0: MemorySegment, arg1: Double): Unit {
-    try {
-        CGContextSetCharacterSpacing_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetTextPosition Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double)
- */
-private val CGContextSetTextPosition_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetTextPosition_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetTextPosition").orElseThrow()
-private val CGContextSetTextPosition_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetTextPosition_ADDR, CGContextSetTextPosition_DESC)
-
-fun CGContextSetTextPosition(arg0: MemorySegment, arg1: Double, arg2: Double): Unit {
-    try {
-        CGContextSetTextPosition_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextGetTextPosition typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextGetTextPosition_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS)
-private val CGContextGetTextPosition_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetTextPosition").orElseThrow()
-private val CGContextGetTextPosition_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetTextPosition_ADDR, CGContextGetTextPosition_DESC)
-
-fun CGContextGetTextPosition(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
-    try {
-        return CGContextGetTextPosition_HANDLE.invokeExact(allocator, arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextGetTextPositionTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGPoint {
-    return CGPoint(CGContextGetTextPosition(allocator, arg0))
-}
-
-/**
- * {@snippet lang=c : CGContextSetTextMatrix Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGAffineTransform = Declared(CGAffineTransform))
- */
-private val CGContextSetTextMatrix_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGAffineTransform.layout)
-private val CGContextSetTextMatrix_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetTextMatrix").orElseThrow()
-private val CGContextSetTextMatrix_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetTextMatrix_ADDR, CGContextSetTextMatrix_DESC)
-
-fun CGContextSetTextMatrix(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGContextSetTextMatrix_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextSetTextMatrix(arg0: MemorySegment, arg1: CGAffineTransform): Unit {
-    CGContextSetTextMatrix(arg0, arg1.segment)
-}
-
-/**
- * {@snippet lang=c : CGContextGetTextMatrix typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextGetTextMatrix_DESC: FunctionDescriptor = FunctionDescriptor.of(CGAffineTransform.layout, ValueLayout.ADDRESS)
-private val CGContextGetTextMatrix_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetTextMatrix").orElseThrow()
-private val CGContextGetTextMatrix_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetTextMatrix_ADDR, CGContextGetTextMatrix_DESC)
-
-fun CGContextGetTextMatrix(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
-    try {
-        return CGContextGetTextMatrix_HANDLE.invokeExact(allocator, arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextGetTextMatrixTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGAffineTransform {
-    return CGAffineTransform(CGContextGetTextMatrix(allocator, arg0))
-}
-
-/**
- * {@snippet lang=c : CGContextSetFont Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFontRef = (Declared(CGFont))*)
- */
-private val CGContextSetFont_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextSetFont_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetFont").orElseThrow()
-private val CGContextSetFont_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetFont_ADDR, CGContextSetFont_DESC)
-
-fun CGContextSetFont(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGContextSetFont_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetFontSize Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double)
- */
-private val CGContextSetFontSize_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetFontSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetFontSize").orElseThrow()
-private val CGContextSetFontSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetFontSize_ADDR, CGContextSetFontSize_DESC)
-
-fun CGContextSetFontSize(arg0: MemorySegment, arg1: Double): Unit {
-    try {
-        CGContextSetFontSize_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextShowGlyphsAtPositions Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGGlyph = UNSIGNED = Short)*,(typedef CGPoint = Declared(CGPoint))*,typedef size_t = UNSIGNED = Long)
- */
-private val CGContextShowGlyphsAtPositions_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphsAtPositions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowGlyphsAtPositions").orElseThrow()
-private val CGContextShowGlyphsAtPositions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowGlyphsAtPositions_ADDR, CGContextShowGlyphsAtPositions_DESC)
-
-fun CGContextShowGlyphsAtPositions(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Unit {
-    try {
-        CGContextShowGlyphsAtPositions_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextDrawPDFPage Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPDFPageRef = (Declared(CGPDFPage))*)
- */
-private val CGContextDrawPDFPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextDrawPDFPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawPDFPage").orElseThrow()
-private val CGContextDrawPDFPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawPDFPage_ADDR, CGContextDrawPDFPage_DESC)
-
-fun CGContextDrawPDFPage(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGContextDrawPDFPage_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextBeginPage Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGRect = Declared(CGRect))*)
- */
-private val CGContextBeginPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextBeginPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextBeginPage").orElseThrow()
-private val CGContextBeginPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextBeginPage_ADDR, CGContextBeginPage_DESC)
-
-fun CGContextBeginPage(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGContextBeginPage_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextEndPage Void(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextEndPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextEndPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextEndPage").orElseThrow()
-private val CGContextEndPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextEndPage_ADDR, CGContextEndPage_DESC)
-
-fun CGContextEndPage(arg0: MemorySegment): Unit {
-    try {
-        CGContextEndPage_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextRetain typedef CGContextRef = (Declared(CGContext))*(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextRetain").orElseThrow()
-private val CGContextRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextRetain_ADDR, CGContextRetain_DESC)
-
-fun CGContextRetain(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGContextRetain_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextRelease Void(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextRelease").orElseThrow()
-private val CGContextRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextRelease_ADDR, CGContextRelease_DESC)
-
-fun CGContextRelease(arg0: MemorySegment): Unit {
-    try {
-        CGContextRelease_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextFlush Void(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextFlush_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextFlush_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextFlush").orElseThrow()
-private val CGContextFlush_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextFlush_ADDR, CGContextFlush_DESC)
-
-fun CGContextFlush(arg0: MemorySegment): Unit {
-    try {
-        CGContextFlush_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSynchronize Void(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextSynchronize_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextSynchronize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSynchronize").orElseThrow()
-private val CGContextSynchronize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSynchronize_ADDR, CGContextSynchronize_DESC)
-
-fun CGContextSynchronize(arg0: MemorySegment): Unit {
-    try {
-        CGContextSynchronize_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSynchronizeAttributes Void(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextSynchronizeAttributes_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextSynchronizeAttributes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSynchronizeAttributes").orElseThrow()
-private val CGContextSynchronizeAttributes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSynchronizeAttributes_ADDR, CGContextSynchronizeAttributes_DESC)
-
-fun CGContextSynchronizeAttributes(arg0: MemorySegment): Unit {
-    try {
-        CGContextSynchronizeAttributes_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetShouldAntialias Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
- */
-private val CGContextSetShouldAntialias_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldAntialias_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShouldAntialias").orElseThrow()
-private val CGContextSetShouldAntialias_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShouldAntialias_ADDR, CGContextSetShouldAntialias_DESC)
-
-fun CGContextSetShouldAntialias(arg0: MemorySegment, arg1: Boolean): Unit {
-    try {
-        CGContextSetShouldAntialias_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetAllowsAntialiasing Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
- */
-private val CGContextSetAllowsAntialiasing_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsAntialiasing_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetAllowsAntialiasing").orElseThrow()
-private val CGContextSetAllowsAntialiasing_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetAllowsAntialiasing_ADDR, CGContextSetAllowsAntialiasing_DESC)
-
-fun CGContextSetAllowsAntialiasing(arg0: MemorySegment, arg1: Boolean): Unit {
-    try {
-        CGContextSetAllowsAntialiasing_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetShouldSmoothFonts Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
- */
-private val CGContextSetShouldSmoothFonts_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldSmoothFonts_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShouldSmoothFonts").orElseThrow()
-private val CGContextSetShouldSmoothFonts_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShouldSmoothFonts_ADDR, CGContextSetShouldSmoothFonts_DESC)
-
-fun CGContextSetShouldSmoothFonts(arg0: MemorySegment, arg1: Boolean): Unit {
-    try {
-        CGContextSetShouldSmoothFonts_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetAllowsFontSmoothing Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
- */
-private val CGContextSetAllowsFontSmoothing_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsFontSmoothing_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSmoothing").orElseThrow()
-private val CGContextSetAllowsFontSmoothing_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSmoothing_ADDR, CGContextSetAllowsFontSmoothing_DESC)
-
-fun CGContextSetAllowsFontSmoothing(arg0: MemorySegment, arg1: Boolean): Unit {
-    try {
-        CGContextSetAllowsFontSmoothing_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetShouldSubpixelPositionFonts Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
- */
-private val CGContextSetShouldSubpixelPositionFonts_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldSubpixelPositionFonts_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShouldSubpixelPositionFonts").orElseThrow()
-private val CGContextSetShouldSubpixelPositionFonts_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShouldSubpixelPositionFonts_ADDR, CGContextSetShouldSubpixelPositionFonts_DESC)
-
-fun CGContextSetShouldSubpixelPositionFonts(arg0: MemorySegment, arg1: Boolean): Unit {
-    try {
-        CGContextSetShouldSubpixelPositionFonts_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetAllowsFontSubpixelPositioning Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
- */
-private val CGContextSetAllowsFontSubpixelPositioning_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsFontSubpixelPositioning_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSubpixelPositioning").orElseThrow()
-private val CGContextSetAllowsFontSubpixelPositioning_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSubpixelPositioning_ADDR, CGContextSetAllowsFontSubpixelPositioning_DESC)
-
-fun CGContextSetAllowsFontSubpixelPositioning(arg0: MemorySegment, arg1: Boolean): Unit {
-    try {
-        CGContextSetAllowsFontSubpixelPositioning_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetShouldSubpixelQuantizeFonts Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
- */
-private val CGContextSetShouldSubpixelQuantizeFonts_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldSubpixelQuantizeFonts_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShouldSubpixelQuantizeFonts").orElseThrow()
-private val CGContextSetShouldSubpixelQuantizeFonts_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShouldSubpixelQuantizeFonts_ADDR, CGContextSetShouldSubpixelQuantizeFonts_DESC)
-
-fun CGContextSetShouldSubpixelQuantizeFonts(arg0: MemorySegment, arg1: Boolean): Unit {
-    try {
-        CGContextSetShouldSubpixelQuantizeFonts_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextSetAllowsFontSubpixelQuantization Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
- */
-private val CGContextSetAllowsFontSubpixelQuantization_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsFontSubpixelQuantization_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSubpixelQuantization").orElseThrow()
-private val CGContextSetAllowsFontSubpixelQuantization_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSubpixelQuantization_ADDR, CGContextSetAllowsFontSubpixelQuantization_DESC)
-
-fun CGContextSetAllowsFontSubpixelQuantization(arg0: MemorySegment, arg1: Boolean): Unit {
-    try {
-        CGContextSetAllowsFontSubpixelQuantization_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextBeginTransparencyLayer Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
- */
-private val CGContextBeginTransparencyLayer_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextBeginTransparencyLayer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextBeginTransparencyLayer").orElseThrow()
-private val CGContextBeginTransparencyLayer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextBeginTransparencyLayer_ADDR, CGContextBeginTransparencyLayer_DESC)
-
-fun CGContextBeginTransparencyLayer(arg0: MemorySegment, arg1: MemorySegment): Unit {
-    try {
-        CGContextBeginTransparencyLayer_HANDLE.invokeExact(arg0, arg1)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextBeginTransparencyLayerWithRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CFDictionaryRef = (Declared(__CFDictionary))*)
- */
-private val CGContextBeginTransparencyLayerWithRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS)
-private val CGContextBeginTransparencyLayerWithRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextBeginTransparencyLayerWithRect").orElseThrow()
-private val CGContextBeginTransparencyLayerWithRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextBeginTransparencyLayerWithRect_ADDR, CGContextBeginTransparencyLayerWithRect_DESC)
-
-fun CGContextBeginTransparencyLayerWithRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
-    try {
-        CGContextBeginTransparencyLayerWithRect_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextBeginTransparencyLayerWithRect(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
-    CGContextBeginTransparencyLayerWithRect(arg0, arg1.segment, arg2)
-}
-
-/**
- * {@snippet lang=c : CGContextEndTransparencyLayer Void(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextEndTransparencyLayer_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextEndTransparencyLayer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextEndTransparencyLayer").orElseThrow()
-private val CGContextEndTransparencyLayer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextEndTransparencyLayer_ADDR, CGContextEndTransparencyLayer_DESC)
-
-fun CGContextEndTransparencyLayer(arg0: MemorySegment): Unit {
-    try {
-        CGContextEndTransparencyLayer_HANDLE.invokeExact(arg0)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextGetUserSpaceToDeviceSpaceTransform typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextGetUserSpaceToDeviceSpaceTransform_DESC: FunctionDescriptor = FunctionDescriptor.of(CGAffineTransform.layout, ValueLayout.ADDRESS)
-private val CGContextGetUserSpaceToDeviceSpaceTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetUserSpaceToDeviceSpaceTransform").orElseThrow()
-private val CGContextGetUserSpaceToDeviceSpaceTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetUserSpaceToDeviceSpaceTransform_ADDR, CGContextGetUserSpaceToDeviceSpaceTransform_DESC)
-
-fun CGContextGetUserSpaceToDeviceSpaceTransform(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
-    try {
-        return CGContextGetUserSpaceToDeviceSpaceTransform_HANDLE.invokeExact(allocator, arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextGetUserSpaceToDeviceSpaceTransformTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGAffineTransform {
-    return CGAffineTransform(CGContextGetUserSpaceToDeviceSpaceTransform(allocator, arg0))
-}
-
-/**
- * {@snippet lang=c : CGContextConvertPointToDeviceSpace typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint))
- */
-private val CGContextConvertPointToDeviceSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS, CGPoint.layout)
-private val CGContextConvertPointToDeviceSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertPointToDeviceSpace").orElseThrow()
-private val CGContextConvertPointToDeviceSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertPointToDeviceSpace_ADDR, CGContextConvertPointToDeviceSpace_DESC)
-
-fun CGContextConvertPointToDeviceSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
-    try {
-        return CGContextConvertPointToDeviceSpace_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextConvertPointToDeviceSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPoint): CGPoint {
-    return CGPoint(CGContextConvertPointToDeviceSpace(allocator, arg0, arg1.segment))
-}
-
-/**
- * {@snippet lang=c : CGContextConvertPointToUserSpace typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint))
- */
-private val CGContextConvertPointToUserSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS, CGPoint.layout)
-private val CGContextConvertPointToUserSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertPointToUserSpace").orElseThrow()
-private val CGContextConvertPointToUserSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertPointToUserSpace_ADDR, CGContextConvertPointToUserSpace_DESC)
-
-fun CGContextConvertPointToUserSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
-    try {
-        return CGContextConvertPointToUserSpace_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextConvertPointToUserSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPoint): CGPoint {
-    return CGPoint(CGContextConvertPointToUserSpace(allocator, arg0, arg1.segment))
-}
-
-/**
- * {@snippet lang=c : CGContextConvertSizeToDeviceSpace typedef CGSize = Declared(CGSize)(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize))
- */
-private val CGContextConvertSizeToDeviceSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGSize.layout, ValueLayout.ADDRESS, CGSize.layout)
-private val CGContextConvertSizeToDeviceSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertSizeToDeviceSpace").orElseThrow()
-private val CGContextConvertSizeToDeviceSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertSizeToDeviceSpace_ADDR, CGContextConvertSizeToDeviceSpace_DESC)
-
-fun CGContextConvertSizeToDeviceSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
-    try {
-        return CGContextConvertSizeToDeviceSpace_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextConvertSizeToDeviceSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGSize): CGSize {
-    return CGSize(CGContextConvertSizeToDeviceSpace(allocator, arg0, arg1.segment))
-}
-
-/**
- * {@snippet lang=c : CGContextConvertSizeToUserSpace typedef CGSize = Declared(CGSize)(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize))
- */
-private val CGContextConvertSizeToUserSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGSize.layout, ValueLayout.ADDRESS, CGSize.layout)
-private val CGContextConvertSizeToUserSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertSizeToUserSpace").orElseThrow()
-private val CGContextConvertSizeToUserSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertSizeToUserSpace_ADDR, CGContextConvertSizeToUserSpace_DESC)
-
-fun CGContextConvertSizeToUserSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
-    try {
-        return CGContextConvertSizeToUserSpace_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextConvertSizeToUserSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGSize): CGSize {
-    return CGSize(CGContextConvertSizeToUserSpace(allocator, arg0, arg1.segment))
-}
-
-/**
- * {@snippet lang=c : CGContextConvertRectToDeviceSpace typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
- */
-private val CGContextConvertRectToDeviceSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.ADDRESS, CGRect.layout)
-private val CGContextConvertRectToDeviceSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertRectToDeviceSpace").orElseThrow()
-private val CGContextConvertRectToDeviceSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertRectToDeviceSpace_ADDR, CGContextConvertRectToDeviceSpace_DESC)
-
-fun CGContextConvertRectToDeviceSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
-    try {
-        return CGContextConvertRectToDeviceSpace_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextConvertRectToDeviceSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGRect): CGRect {
-    return CGRect(CGContextConvertRectToDeviceSpace(allocator, arg0, arg1.segment))
-}
-
-/**
- * {@snippet lang=c : CGContextConvertRectToUserSpace typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
- */
-private val CGContextConvertRectToUserSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.ADDRESS, CGRect.layout)
-private val CGContextConvertRectToUserSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertRectToUserSpace").orElseThrow()
-private val CGContextConvertRectToUserSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertRectToUserSpace_ADDR, CGContextConvertRectToUserSpace_DESC)
-
-fun CGContextConvertRectToUserSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
-    try {
-        return CGContextConvertRectToUserSpace_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextConvertRectToUserSpace(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGRect): CGRect {
-    return CGRect(CGContextConvertRectToUserSpace(allocator, arg0, arg1.segment))
-}
-
-/**
- * {@snippet lang=c : CGContextShowText Void(typedef CGContextRef = (Declared(CGContext))*,(Char)*,typedef size_t = UNSIGNED = Long)
- */
-private val CGContextShowText_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowText_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowText").orElseThrow()
-private val CGContextShowText_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowText_ADDR, CGContextShowText_DESC)
-
-fun CGContextShowText(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
-    try {
-        CGContextShowText_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextShowTextAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double,(Char)*,typedef size_t = UNSIGNED = Long)
- */
-private val CGContextShowTextAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowTextAtPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowTextAtPoint").orElseThrow()
-private val CGContextShowTextAtPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowTextAtPoint_ADDR, CGContextShowTextAtPoint_DESC)
-
-fun CGContextShowTextAtPoint(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: MemorySegment, arg4: Long): Unit {
-    try {
-        CGContextShowTextAtPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextShowGlyphs Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGGlyph = UNSIGNED = Short)*,typedef size_t = UNSIGNED = Long)
- */
-private val CGContextShowGlyphs_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphs_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowGlyphs").orElseThrow()
-private val CGContextShowGlyphs_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowGlyphs_ADDR, CGContextShowGlyphs_DESC)
-
-fun CGContextShowGlyphs(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
-    try {
-        CGContextShowGlyphs_HANDLE.invokeExact(arg0, arg1, arg2)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextShowGlyphsAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double,(typedef CGGlyph = UNSIGNED = Short)*,typedef size_t = UNSIGNED = Long)
- */
-private val CGContextShowGlyphsAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphsAtPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowGlyphsAtPoint").orElseThrow()
-private val CGContextShowGlyphsAtPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowGlyphsAtPoint_ADDR, CGContextShowGlyphsAtPoint_DESC)
-
-fun CGContextShowGlyphsAtPoint(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: MemorySegment, arg4: Long): Unit {
-    try {
-        CGContextShowGlyphsAtPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextShowGlyphsWithAdvances Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGGlyph = UNSIGNED = Short)*,(typedef CGSize = Declared(CGSize))*,typedef size_t = UNSIGNED = Long)
- */
-private val CGContextShowGlyphsWithAdvances_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphsWithAdvances_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowGlyphsWithAdvances").orElseThrow()
-private val CGContextShowGlyphsWithAdvances_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowGlyphsWithAdvances_ADDR, CGContextShowGlyphsWithAdvances_DESC)
-
-fun CGContextShowGlyphsWithAdvances(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Unit {
-    try {
-        CGContextShowGlyphsWithAdvances_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : CGContextDrawPDFDocument Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CGPDFDocumentRef = (Declared(CGPDFDocument))*,Int)
- */
-private val CGContextDrawPDFDocument_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGContextDrawPDFDocument_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawPDFDocument").orElseThrow()
-private val CGContextDrawPDFDocument_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawPDFDocument_ADDR, CGContextDrawPDFDocument_DESC)
-
-fun CGContextDrawPDFDocument(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Int): Unit {
-    try {
-        CGContextDrawPDFDocument_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-fun CGContextDrawPDFDocument(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment, arg3: Int): Unit {
-    CGContextDrawPDFDocument(arg0, arg1.segment, arg2, arg3)
-}
-
-/**
- * {@snippet lang=c : NSGraphicsContextDestinationAttributeName typedef NSGraphicsContextAttributeKey = typedef NSString = (Void)*
- */
-private val NSGraphicsContextDestinationAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSGraphicsContextDestinationAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGraphicsContextDestinationAttributeName").orElseThrow() }
-private val NSGraphicsContextDestinationAttributeName_VH: VarHandle by lazy { NSGraphicsContextDestinationAttributeName_LAYOUT.varHandle() }
-
-var NSGraphicsContextDestinationAttributeName: MemorySegment
-    get() = NSGraphicsContextDestinationAttributeName_VH.get(NSGraphicsContextDestinationAttributeName_SEGMENT) as MemorySegment
-    set(value) = NSGraphicsContextDestinationAttributeName_VH.set(NSGraphicsContextDestinationAttributeName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSGraphicsContextRepresentationFormatAttributeName typedef NSGraphicsContextAttributeKey = typedef NSString = (Void)*
- */
-private val NSGraphicsContextRepresentationFormatAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSGraphicsContextRepresentationFormatAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGraphicsContextRepresentationFormatAttributeName").orElseThrow() }
-private val NSGraphicsContextRepresentationFormatAttributeName_VH: VarHandle by lazy { NSGraphicsContextRepresentationFormatAttributeName_LAYOUT.varHandle() }
-
-var NSGraphicsContextRepresentationFormatAttributeName: MemorySegment
-    get() = NSGraphicsContextRepresentationFormatAttributeName_VH.get(NSGraphicsContextRepresentationFormatAttributeName_SEGMENT) as MemorySegment
-    set(value) = NSGraphicsContextRepresentationFormatAttributeName_VH.set(NSGraphicsContextRepresentationFormatAttributeName_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSGraphicsContextPSFormat typedef NSGraphicsContextRepresentationFormatName = typedef NSString = (Void)*
- */
-private val NSGraphicsContextPSFormat_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSGraphicsContextPSFormat_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGraphicsContextPSFormat").orElseThrow() }
-private val NSGraphicsContextPSFormat_VH: VarHandle by lazy { NSGraphicsContextPSFormat_LAYOUT.varHandle() }
-
-var NSGraphicsContextPSFormat: MemorySegment
-    get() = NSGraphicsContextPSFormat_VH.get(NSGraphicsContextPSFormat_SEGMENT) as MemorySegment
-    set(value) = NSGraphicsContextPSFormat_VH.set(NSGraphicsContextPSFormat_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSGraphicsContextPDFFormat typedef NSGraphicsContextRepresentationFormatName = typedef NSString = (Void)*
- */
-private val NSGraphicsContextPDFFormat_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSGraphicsContextPDFFormat_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGraphicsContextPDFFormat").orElseThrow() }
-private val NSGraphicsContextPDFFormat_VH: VarHandle by lazy { NSGraphicsContextPDFFormat_LAYOUT.varHandle() }
-
-var NSGraphicsContextPDFFormat: MemorySegment
-    get() = NSGraphicsContextPDFFormat_VH.get(NSGraphicsContextPDFFormat_SEGMENT) as MemorySegment
-    set(value) = NSGraphicsContextPDFFormat_VH.set(NSGraphicsContextPDFFormat_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextLineTooLongException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSTextLineTooLongException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextLineTooLongException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextLineTooLongException").orElseThrow() }
-private val NSTextLineTooLongException_VH: VarHandle by lazy { NSTextLineTooLongException_LAYOUT.varHandle() }
-
-var NSTextLineTooLongException: MemorySegment
-    get() = NSTextLineTooLongException_VH.get(NSTextLineTooLongException_SEGMENT) as MemorySegment
-    set(value) = NSTextLineTooLongException_VH.set(NSTextLineTooLongException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextNoSelectionException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSTextNoSelectionException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextNoSelectionException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextNoSelectionException").orElseThrow() }
-private val NSTextNoSelectionException_VH: VarHandle by lazy { NSTextNoSelectionException_LAYOUT.varHandle() }
-
-var NSTextNoSelectionException: MemorySegment
-    get() = NSTextNoSelectionException_VH.get(NSTextNoSelectionException_SEGMENT) as MemorySegment
-    set(value) = NSTextNoSelectionException_VH.set(NSTextNoSelectionException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSWordTablesWriteException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSWordTablesWriteException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWordTablesWriteException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWordTablesWriteException").orElseThrow() }
-private val NSWordTablesWriteException_VH: VarHandle by lazy { NSWordTablesWriteException_LAYOUT.varHandle() }
-
-var NSWordTablesWriteException: MemorySegment
-    get() = NSWordTablesWriteException_VH.get(NSWordTablesWriteException_SEGMENT) as MemorySegment
-    set(value) = NSWordTablesWriteException_VH.set(NSWordTablesWriteException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSWordTablesReadException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSWordTablesReadException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWordTablesReadException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWordTablesReadException").orElseThrow() }
-private val NSWordTablesReadException_VH: VarHandle by lazy { NSWordTablesReadException_LAYOUT.varHandle() }
-
-var NSWordTablesReadException: MemorySegment
-    get() = NSWordTablesReadException_VH.get(NSWordTablesReadException_SEGMENT) as MemorySegment
-    set(value) = NSWordTablesReadException_VH.set(NSWordTablesReadException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextReadException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSTextReadException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextReadException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextReadException").orElseThrow() }
-private val NSTextReadException_VH: VarHandle by lazy { NSTextReadException_LAYOUT.varHandle() }
-
-var NSTextReadException: MemorySegment
-    get() = NSTextReadException_VH.get(NSTextReadException_SEGMENT) as MemorySegment
-    set(value) = NSTextReadException_VH.set(NSTextReadException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTextWriteException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSTextWriteException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextWriteException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextWriteException").orElseThrow() }
-private val NSTextWriteException_VH: VarHandle by lazy { NSTextWriteException_LAYOUT.varHandle() }
-
-var NSTextWriteException: MemorySegment
-    get() = NSTextWriteException_VH.get(NSTextWriteException_SEGMENT) as MemorySegment
-    set(value) = NSTextWriteException_VH.set(NSTextWriteException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPasteboardCommunicationException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSPasteboardCommunicationException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardCommunicationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardCommunicationException").orElseThrow() }
-private val NSPasteboardCommunicationException_VH: VarHandle by lazy { NSPasteboardCommunicationException_LAYOUT.varHandle() }
-
-var NSPasteboardCommunicationException: MemorySegment
-    get() = NSPasteboardCommunicationException_VH.get(NSPasteboardCommunicationException_SEGMENT) as MemorySegment
-    set(value) = NSPasteboardCommunicationException_VH.set(NSPasteboardCommunicationException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPrintingCommunicationException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSPrintingCommunicationException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintingCommunicationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintingCommunicationException").orElseThrow() }
-private val NSPrintingCommunicationException_VH: VarHandle by lazy { NSPrintingCommunicationException_LAYOUT.varHandle() }
-
-var NSPrintingCommunicationException: MemorySegment
-    get() = NSPrintingCommunicationException_VH.get(NSPrintingCommunicationException_SEGMENT) as MemorySegment
-    set(value) = NSPrintingCommunicationException_VH.set(NSPrintingCommunicationException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAbortModalException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSAbortModalException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAbortModalException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAbortModalException").orElseThrow() }
-private val NSAbortModalException_VH: VarHandle by lazy { NSAbortModalException_LAYOUT.varHandle() }
-
-var NSAbortModalException: MemorySegment
-    get() = NSAbortModalException_VH.get(NSAbortModalException_SEGMENT) as MemorySegment
-    set(value) = NSAbortModalException_VH.set(NSAbortModalException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAbortPrintingException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSAbortPrintingException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAbortPrintingException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAbortPrintingException").orElseThrow() }
-private val NSAbortPrintingException_VH: VarHandle by lazy { NSAbortPrintingException_LAYOUT.varHandle() }
-
-var NSAbortPrintingException: MemorySegment
-    get() = NSAbortPrintingException_VH.get(NSAbortPrintingException_SEGMENT) as MemorySegment
-    set(value) = NSAbortPrintingException_VH.set(NSAbortPrintingException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSIllegalSelectorException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSIllegalSelectorException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSIllegalSelectorException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSIllegalSelectorException").orElseThrow() }
-private val NSIllegalSelectorException_VH: VarHandle by lazy { NSIllegalSelectorException_LAYOUT.varHandle() }
-
-var NSIllegalSelectorException: MemorySegment
-    get() = NSIllegalSelectorException_VH.get(NSIllegalSelectorException_SEGMENT) as MemorySegment
-    set(value) = NSIllegalSelectorException_VH.set(NSIllegalSelectorException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAppKitVirtualMemoryException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSAppKitVirtualMemoryException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAppKitVirtualMemoryException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAppKitVirtualMemoryException").orElseThrow() }
-private val NSAppKitVirtualMemoryException_VH: VarHandle by lazy { NSAppKitVirtualMemoryException_LAYOUT.varHandle() }
-
-var NSAppKitVirtualMemoryException: MemorySegment
-    get() = NSAppKitVirtualMemoryException_VH.get(NSAppKitVirtualMemoryException_SEGMENT) as MemorySegment
-    set(value) = NSAppKitVirtualMemoryException_VH.set(NSAppKitVirtualMemoryException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSBadRTFDirectiveException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSBadRTFDirectiveException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadRTFDirectiveException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadRTFDirectiveException").orElseThrow() }
-private val NSBadRTFDirectiveException_VH: VarHandle by lazy { NSBadRTFDirectiveException_LAYOUT.varHandle() }
-
-var NSBadRTFDirectiveException: MemorySegment
-    get() = NSBadRTFDirectiveException_VH.get(NSBadRTFDirectiveException_SEGMENT) as MemorySegment
-    set(value) = NSBadRTFDirectiveException_VH.set(NSBadRTFDirectiveException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSBadRTFFontTableException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSBadRTFFontTableException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadRTFFontTableException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadRTFFontTableException").orElseThrow() }
-private val NSBadRTFFontTableException_VH: VarHandle by lazy { NSBadRTFFontTableException_LAYOUT.varHandle() }
-
-var NSBadRTFFontTableException: MemorySegment
-    get() = NSBadRTFFontTableException_VH.get(NSBadRTFFontTableException_SEGMENT) as MemorySegment
-    set(value) = NSBadRTFFontTableException_VH.set(NSBadRTFFontTableException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSBadRTFStyleSheetException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSBadRTFStyleSheetException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadRTFStyleSheetException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadRTFStyleSheetException").orElseThrow() }
-private val NSBadRTFStyleSheetException_VH: VarHandle by lazy { NSBadRTFStyleSheetException_LAYOUT.varHandle() }
-
-var NSBadRTFStyleSheetException: MemorySegment
-    get() = NSBadRTFStyleSheetException_VH.get(NSBadRTFStyleSheetException_SEGMENT) as MemorySegment
-    set(value) = NSBadRTFStyleSheetException_VH.set(NSBadRTFStyleSheetException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTypedStreamVersionException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSTypedStreamVersionException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTypedStreamVersionException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTypedStreamVersionException").orElseThrow() }
-private val NSTypedStreamVersionException_VH: VarHandle by lazy { NSTypedStreamVersionException_LAYOUT.varHandle() }
-
-var NSTypedStreamVersionException: MemorySegment
-    get() = NSTypedStreamVersionException_VH.get(NSTypedStreamVersionException_SEGMENT) as MemorySegment
-    set(value) = NSTypedStreamVersionException_VH.set(NSTypedStreamVersionException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSTIFFException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSTIFFException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTIFFException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTIFFException").orElseThrow() }
-private val NSTIFFException_VH: VarHandle by lazy { NSTIFFException_LAYOUT.varHandle() }
-
-var NSTIFFException: MemorySegment
-    get() = NSTIFFException_VH.get(NSTIFFException_SEGMENT) as MemorySegment
-    set(value) = NSTIFFException_VH.set(NSTIFFException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPrintPackageException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSPrintPackageException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintPackageException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintPackageException").orElseThrow() }
-private val NSPrintPackageException_VH: VarHandle by lazy { NSPrintPackageException_LAYOUT.varHandle() }
-
-var NSPrintPackageException: MemorySegment
-    get() = NSPrintPackageException_VH.get(NSPrintPackageException_SEGMENT) as MemorySegment
-    set(value) = NSPrintPackageException_VH.set(NSPrintPackageException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSBadRTFColorTableException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSBadRTFColorTableException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadRTFColorTableException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadRTFColorTableException").orElseThrow() }
-private val NSBadRTFColorTableException_VH: VarHandle by lazy { NSBadRTFColorTableException_LAYOUT.varHandle() }
-
-var NSBadRTFColorTableException: MemorySegment
-    get() = NSBadRTFColorTableException_VH.get(NSBadRTFColorTableException_SEGMENT) as MemorySegment
-    set(value) = NSBadRTFColorTableException_VH.set(NSBadRTFColorTableException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSDraggingException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSDraggingException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDraggingException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDraggingException").orElseThrow() }
-private val NSDraggingException_VH: VarHandle by lazy { NSDraggingException_LAYOUT.varHandle() }
-
-var NSDraggingException: MemorySegment
-    get() = NSDraggingException_VH.get(NSDraggingException_SEGMENT) as MemorySegment
-    set(value) = NSDraggingException_VH.set(NSDraggingException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSColorListIOException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSColorListIOException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSColorListIOException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSColorListIOException").orElseThrow() }
-private val NSColorListIOException_VH: VarHandle by lazy { NSColorListIOException_LAYOUT.varHandle() }
-
-var NSColorListIOException: MemorySegment
-    get() = NSColorListIOException_VH.get(NSColorListIOException_SEGMENT) as MemorySegment
-    set(value) = NSColorListIOException_VH.set(NSColorListIOException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSColorListNotEditableException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSColorListNotEditableException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSColorListNotEditableException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSColorListNotEditableException").orElseThrow() }
-private val NSColorListNotEditableException_VH: VarHandle by lazy { NSColorListNotEditableException_LAYOUT.varHandle() }
-
-var NSColorListNotEditableException: MemorySegment
-    get() = NSColorListNotEditableException_VH.get(NSColorListNotEditableException_SEGMENT) as MemorySegment
-    set(value) = NSColorListNotEditableException_VH.set(NSColorListNotEditableException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSBadBitmapParametersException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSBadBitmapParametersException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadBitmapParametersException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadBitmapParametersException").orElseThrow() }
-private val NSBadBitmapParametersException_VH: VarHandle by lazy { NSBadBitmapParametersException_LAYOUT.varHandle() }
-
-var NSBadBitmapParametersException: MemorySegment
-    get() = NSBadBitmapParametersException_VH.get(NSBadBitmapParametersException_SEGMENT) as MemorySegment
-    set(value) = NSBadBitmapParametersException_VH.set(NSBadBitmapParametersException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSWindowServerCommunicationException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSWindowServerCommunicationException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWindowServerCommunicationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowServerCommunicationException").orElseThrow() }
-private val NSWindowServerCommunicationException_VH: VarHandle by lazy { NSWindowServerCommunicationException_LAYOUT.varHandle() }
-
-var NSWindowServerCommunicationException: MemorySegment
-    get() = NSWindowServerCommunicationException_VH.get(NSWindowServerCommunicationException_SEGMENT) as MemorySegment
-    set(value) = NSWindowServerCommunicationException_VH.set(NSWindowServerCommunicationException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSFontUnavailableException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSFontUnavailableException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFontUnavailableException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontUnavailableException").orElseThrow() }
-private val NSFontUnavailableException_VH: VarHandle by lazy { NSFontUnavailableException_LAYOUT.varHandle() }
-
-var NSFontUnavailableException: MemorySegment
-    get() = NSFontUnavailableException_VH.get(NSFontUnavailableException_SEGMENT) as MemorySegment
-    set(value) = NSFontUnavailableException_VH.set(NSFontUnavailableException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPPDIncludeNotFoundException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSPPDIncludeNotFoundException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPPDIncludeNotFoundException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPPDIncludeNotFoundException").orElseThrow() }
-private val NSPPDIncludeNotFoundException_VH: VarHandle by lazy { NSPPDIncludeNotFoundException_LAYOUT.varHandle() }
-
-var NSPPDIncludeNotFoundException: MemorySegment
-    get() = NSPPDIncludeNotFoundException_VH.get(NSPPDIncludeNotFoundException_SEGMENT) as MemorySegment
-    set(value) = NSPPDIncludeNotFoundException_VH.set(NSPPDIncludeNotFoundException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPPDParseException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSPPDParseException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPPDParseException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPPDParseException").orElseThrow() }
-private val NSPPDParseException_VH: VarHandle by lazy { NSPPDParseException_LAYOUT.varHandle() }
-
-var NSPPDParseException: MemorySegment
-    get() = NSPPDParseException_VH.get(NSPPDParseException_SEGMENT) as MemorySegment
-    set(value) = NSPPDParseException_VH.set(NSPPDParseException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPPDIncludeStackOverflowException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSPPDIncludeStackOverflowException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPPDIncludeStackOverflowException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPPDIncludeStackOverflowException").orElseThrow() }
-private val NSPPDIncludeStackOverflowException_VH: VarHandle by lazy { NSPPDIncludeStackOverflowException_LAYOUT.varHandle() }
-
-var NSPPDIncludeStackOverflowException: MemorySegment
-    get() = NSPPDIncludeStackOverflowException_VH.get(NSPPDIncludeStackOverflowException_SEGMENT) as MemorySegment
-    set(value) = NSPPDIncludeStackOverflowException_VH.set(NSPPDIncludeStackOverflowException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSPPDIncludeStackUnderflowException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSPPDIncludeStackUnderflowException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPPDIncludeStackUnderflowException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPPDIncludeStackUnderflowException").orElseThrow() }
-private val NSPPDIncludeStackUnderflowException_VH: VarHandle by lazy { NSPPDIncludeStackUnderflowException_LAYOUT.varHandle() }
-
-var NSPPDIncludeStackUnderflowException: MemorySegment
-    get() = NSPPDIncludeStackUnderflowException_VH.get(NSPPDIncludeStackUnderflowException_SEGMENT) as MemorySegment
-    set(value) = NSPPDIncludeStackUnderflowException_VH.set(NSPPDIncludeStackUnderflowException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSRTFPropertyStackOverflowException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSRTFPropertyStackOverflowException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSRTFPropertyStackOverflowException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRTFPropertyStackOverflowException").orElseThrow() }
-private val NSRTFPropertyStackOverflowException_VH: VarHandle by lazy { NSRTFPropertyStackOverflowException_LAYOUT.varHandle() }
-
-var NSRTFPropertyStackOverflowException: MemorySegment
-    get() = NSRTFPropertyStackOverflowException_VH.get(NSRTFPropertyStackOverflowException_SEGMENT) as MemorySegment
-    set(value) = NSRTFPropertyStackOverflowException_VH.set(NSRTFPropertyStackOverflowException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAppKitIgnoredException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSAppKitIgnoredException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAppKitIgnoredException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAppKitIgnoredException").orElseThrow() }
-private val NSAppKitIgnoredException_VH: VarHandle by lazy { NSAppKitIgnoredException_LAYOUT.varHandle() }
-
-var NSAppKitIgnoredException: MemorySegment
-    get() = NSAppKitIgnoredException_VH.get(NSAppKitIgnoredException_SEGMENT) as MemorySegment
-    set(value) = NSAppKitIgnoredException_VH.set(NSAppKitIgnoredException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSBadComparisonException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSBadComparisonException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadComparisonException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadComparisonException").orElseThrow() }
-private val NSBadComparisonException_VH: VarHandle by lazy { NSBadComparisonException_LAYOUT.varHandle() }
-
-var NSBadComparisonException: MemorySegment
-    get() = NSBadComparisonException_VH.get(NSBadComparisonException_SEGMENT) as MemorySegment
-    set(value) = NSBadComparisonException_VH.set(NSBadComparisonException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSImageCacheException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSImageCacheException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageCacheException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageCacheException").orElseThrow() }
-private val NSImageCacheException_VH: VarHandle by lazy { NSImageCacheException_LAYOUT.varHandle() }
-
-var NSImageCacheException: MemorySegment
-    get() = NSImageCacheException_VH.get(NSImageCacheException_SEGMENT) as MemorySegment
-    set(value) = NSImageCacheException_VH.set(NSImageCacheException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSNibLoadingException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSNibLoadingException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSNibLoadingException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSNibLoadingException").orElseThrow() }
-private val NSNibLoadingException_VH: VarHandle by lazy { NSNibLoadingException_LAYOUT.varHandle() }
-
-var NSNibLoadingException: MemorySegment
-    get() = NSNibLoadingException_VH.get(NSNibLoadingException_SEGMENT) as MemorySegment
-    set(value) = NSNibLoadingException_VH.set(NSNibLoadingException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSBrowserIllegalDelegateException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSBrowserIllegalDelegateException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBrowserIllegalDelegateException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBrowserIllegalDelegateException").orElseThrow() }
-private val NSBrowserIllegalDelegateException_VH: VarHandle by lazy { NSBrowserIllegalDelegateException_LAYOUT.varHandle() }
-
-var NSBrowserIllegalDelegateException: MemorySegment
-    get() = NSBrowserIllegalDelegateException_VH.get(NSBrowserIllegalDelegateException_SEGMENT) as MemorySegment
-    set(value) = NSBrowserIllegalDelegateException_VH.set(NSBrowserIllegalDelegateException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityException typedef NSExceptionName = typedef NSString = (Void)*
- */
-private val NSAccessibilityException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityException").orElseThrow() }
-private val NSAccessibilityException_VH: VarHandle by lazy { NSAccessibilityException_LAYOUT.varHandle() }
-
-var NSAccessibilityException: MemorySegment
-    get() = NSAccessibilityException_VH.get(NSAccessibilityException_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityException_VH.set(NSAccessibilityException_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityErrorCodeExceptionInfo (Void)*
- */
-private val NSAccessibilityErrorCodeExceptionInfo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityErrorCodeExceptionInfo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityErrorCodeExceptionInfo").orElseThrow() }
-private val NSAccessibilityErrorCodeExceptionInfo_VH: VarHandle by lazy { NSAccessibilityErrorCodeExceptionInfo_LAYOUT.varHandle() }
-
-var NSAccessibilityErrorCodeExceptionInfo: MemorySegment
-    get() = NSAccessibilityErrorCodeExceptionInfo_VH.get(NSAccessibilityErrorCodeExceptionInfo_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityErrorCodeExceptionInfo_VH.set(NSAccessibilityErrorCodeExceptionInfo_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityRoleAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityRoleAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRoleAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRoleAttribute").orElseThrow() }
-private val NSAccessibilityRoleAttribute_VH: VarHandle by lazy { NSAccessibilityRoleAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityRoleAttribute: MemorySegment
-    get() = NSAccessibilityRoleAttribute_VH.get(NSAccessibilityRoleAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityRoleAttribute_VH.set(NSAccessibilityRoleAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityRoleDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityRoleDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRoleDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRoleDescriptionAttribute").orElseThrow() }
-private val NSAccessibilityRoleDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityRoleDescriptionAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityRoleDescriptionAttribute: MemorySegment
-    get() = NSAccessibilityRoleDescriptionAttribute_VH.get(NSAccessibilityRoleDescriptionAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityRoleDescriptionAttribute_VH.set(NSAccessibilityRoleDescriptionAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilitySubroleAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilitySubroleAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySubroleAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySubroleAttribute").orElseThrow() }
-private val NSAccessibilitySubroleAttribute_VH: VarHandle by lazy { NSAccessibilitySubroleAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilitySubroleAttribute: MemorySegment
-    get() = NSAccessibilitySubroleAttribute_VH.get(NSAccessibilitySubroleAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilitySubroleAttribute_VH.set(NSAccessibilitySubroleAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityHelpAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityHelpAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHelpAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHelpAttribute").orElseThrow() }
-private val NSAccessibilityHelpAttribute_VH: VarHandle by lazy { NSAccessibilityHelpAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityHelpAttribute: MemorySegment
-    get() = NSAccessibilityHelpAttribute_VH.get(NSAccessibilityHelpAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityHelpAttribute_VH.set(NSAccessibilityHelpAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityValueAttribute").orElseThrow() }
-private val NSAccessibilityValueAttribute_VH: VarHandle by lazy { NSAccessibilityValueAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityValueAttribute: MemorySegment
-    get() = NSAccessibilityValueAttribute_VH.get(NSAccessibilityValueAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityValueAttribute_VH.set(NSAccessibilityValueAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityMinValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityMinValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMinValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMinValueAttribute").orElseThrow() }
-private val NSAccessibilityMinValueAttribute_VH: VarHandle by lazy { NSAccessibilityMinValueAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityMinValueAttribute: MemorySegment
-    get() = NSAccessibilityMinValueAttribute_VH.get(NSAccessibilityMinValueAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityMinValueAttribute_VH.set(NSAccessibilityMinValueAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityMaxValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityMaxValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMaxValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMaxValueAttribute").orElseThrow() }
-private val NSAccessibilityMaxValueAttribute_VH: VarHandle by lazy { NSAccessibilityMaxValueAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityMaxValueAttribute: MemorySegment
-    get() = NSAccessibilityMaxValueAttribute_VH.get(NSAccessibilityMaxValueAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityMaxValueAttribute_VH.set(NSAccessibilityMaxValueAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityEnabledAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityEnabledAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityEnabledAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityEnabledAttribute").orElseThrow() }
-private val NSAccessibilityEnabledAttribute_VH: VarHandle by lazy { NSAccessibilityEnabledAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityEnabledAttribute: MemorySegment
-    get() = NSAccessibilityEnabledAttribute_VH.get(NSAccessibilityEnabledAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityEnabledAttribute_VH.set(NSAccessibilityEnabledAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityFocusedAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityFocusedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFocusedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFocusedAttribute").orElseThrow() }
-private val NSAccessibilityFocusedAttribute_VH: VarHandle by lazy { NSAccessibilityFocusedAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityFocusedAttribute: MemorySegment
-    get() = NSAccessibilityFocusedAttribute_VH.get(NSAccessibilityFocusedAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityFocusedAttribute_VH.set(NSAccessibilityFocusedAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityParentAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityParentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityParentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityParentAttribute").orElseThrow() }
-private val NSAccessibilityParentAttribute_VH: VarHandle by lazy { NSAccessibilityParentAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityParentAttribute: MemorySegment
-    get() = NSAccessibilityParentAttribute_VH.get(NSAccessibilityParentAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityParentAttribute_VH.set(NSAccessibilityParentAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityChildrenAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityChildrenAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityChildrenAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityChildrenAttribute").orElseThrow() }
-private val NSAccessibilityChildrenAttribute_VH: VarHandle by lazy { NSAccessibilityChildrenAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityChildrenAttribute: MemorySegment
-    get() = NSAccessibilityChildrenAttribute_VH.get(NSAccessibilityChildrenAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityChildrenAttribute_VH.set(NSAccessibilityChildrenAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityWindowAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityWindowAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityWindowAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWindowAttribute").orElseThrow() }
-private val NSAccessibilityWindowAttribute_VH: VarHandle by lazy { NSAccessibilityWindowAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityWindowAttribute: MemorySegment
-    get() = NSAccessibilityWindowAttribute_VH.get(NSAccessibilityWindowAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityWindowAttribute_VH.set(NSAccessibilityWindowAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityTopLevelUIElementAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityTopLevelUIElementAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTopLevelUIElementAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTopLevelUIElementAttribute").orElseThrow() }
-private val NSAccessibilityTopLevelUIElementAttribute_VH: VarHandle by lazy { NSAccessibilityTopLevelUIElementAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityTopLevelUIElementAttribute: MemorySegment
-    get() = NSAccessibilityTopLevelUIElementAttribute_VH.get(NSAccessibilityTopLevelUIElementAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityTopLevelUIElementAttribute_VH.set(NSAccessibilityTopLevelUIElementAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilitySelectedChildrenAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilitySelectedChildrenAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySelectedChildrenAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedChildrenAttribute").orElseThrow() }
-private val NSAccessibilitySelectedChildrenAttribute_VH: VarHandle by lazy { NSAccessibilitySelectedChildrenAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilitySelectedChildrenAttribute: MemorySegment
-    get() = NSAccessibilitySelectedChildrenAttribute_VH.get(NSAccessibilitySelectedChildrenAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilitySelectedChildrenAttribute_VH.set(NSAccessibilitySelectedChildrenAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityVisibleChildrenAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityVisibleChildrenAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVisibleChildrenAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVisibleChildrenAttribute").orElseThrow() }
-private val NSAccessibilityVisibleChildrenAttribute_VH: VarHandle by lazy { NSAccessibilityVisibleChildrenAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityVisibleChildrenAttribute: MemorySegment
-    get() = NSAccessibilityVisibleChildrenAttribute_VH.get(NSAccessibilityVisibleChildrenAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityVisibleChildrenAttribute_VH.set(NSAccessibilityVisibleChildrenAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityPositionAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityPositionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPositionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPositionAttribute").orElseThrow() }
-private val NSAccessibilityPositionAttribute_VH: VarHandle by lazy { NSAccessibilityPositionAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityPositionAttribute: MemorySegment
-    get() = NSAccessibilityPositionAttribute_VH.get(NSAccessibilityPositionAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityPositionAttribute_VH.set(NSAccessibilityPositionAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilitySizeAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilitySizeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySizeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySizeAttribute").orElseThrow() }
-private val NSAccessibilitySizeAttribute_VH: VarHandle by lazy { NSAccessibilitySizeAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilitySizeAttribute: MemorySegment
-    get() = NSAccessibilitySizeAttribute_VH.get(NSAccessibilitySizeAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilitySizeAttribute_VH.set(NSAccessibilitySizeAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityContentsAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityContentsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityContentsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityContentsAttribute").orElseThrow() }
-private val NSAccessibilityContentsAttribute_VH: VarHandle by lazy { NSAccessibilityContentsAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityContentsAttribute: MemorySegment
-    get() = NSAccessibilityContentsAttribute_VH.get(NSAccessibilityContentsAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityContentsAttribute_VH.set(NSAccessibilityContentsAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityTitleAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityTitleAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTitleAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTitleAttribute").orElseThrow() }
-private val NSAccessibilityTitleAttribute_VH: VarHandle by lazy { NSAccessibilityTitleAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityTitleAttribute: MemorySegment
-    get() = NSAccessibilityTitleAttribute_VH.get(NSAccessibilityTitleAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityTitleAttribute_VH.set(NSAccessibilityTitleAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDescriptionAttribute").orElseThrow() }
-private val NSAccessibilityDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityDescriptionAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityDescriptionAttribute: MemorySegment
-    get() = NSAccessibilityDescriptionAttribute_VH.get(NSAccessibilityDescriptionAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityDescriptionAttribute_VH.set(NSAccessibilityDescriptionAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityShownMenuAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityShownMenuAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityShownMenuAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityShownMenuAttribute").orElseThrow() }
-private val NSAccessibilityShownMenuAttribute_VH: VarHandle by lazy { NSAccessibilityShownMenuAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityShownMenuAttribute: MemorySegment
-    get() = NSAccessibilityShownMenuAttribute_VH.get(NSAccessibilityShownMenuAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityShownMenuAttribute_VH.set(NSAccessibilityShownMenuAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityValueDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityValueDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityValueDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityValueDescriptionAttribute").orElseThrow() }
-private val NSAccessibilityValueDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityValueDescriptionAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityValueDescriptionAttribute: MemorySegment
-    get() = NSAccessibilityValueDescriptionAttribute_VH.get(NSAccessibilityValueDescriptionAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityValueDescriptionAttribute_VH.set(NSAccessibilityValueDescriptionAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilitySharedFocusElementsAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilitySharedFocusElementsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySharedFocusElementsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySharedFocusElementsAttribute").orElseThrow() }
-private val NSAccessibilitySharedFocusElementsAttribute_VH: VarHandle by lazy { NSAccessibilitySharedFocusElementsAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilitySharedFocusElementsAttribute: MemorySegment
-    get() = NSAccessibilitySharedFocusElementsAttribute_VH.get(NSAccessibilitySharedFocusElementsAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilitySharedFocusElementsAttribute_VH.set(NSAccessibilitySharedFocusElementsAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityPreviousContentsAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityPreviousContentsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPreviousContentsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPreviousContentsAttribute").orElseThrow() }
-private val NSAccessibilityPreviousContentsAttribute_VH: VarHandle by lazy { NSAccessibilityPreviousContentsAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityPreviousContentsAttribute: MemorySegment
-    get() = NSAccessibilityPreviousContentsAttribute_VH.get(NSAccessibilityPreviousContentsAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityPreviousContentsAttribute_VH.set(NSAccessibilityPreviousContentsAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityNextContentsAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityNextContentsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityNextContentsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityNextContentsAttribute").orElseThrow() }
-private val NSAccessibilityNextContentsAttribute_VH: VarHandle by lazy { NSAccessibilityNextContentsAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityNextContentsAttribute: MemorySegment
-    get() = NSAccessibilityNextContentsAttribute_VH.get(NSAccessibilityNextContentsAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityNextContentsAttribute_VH.set(NSAccessibilityNextContentsAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityHeaderAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityHeaderAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHeaderAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHeaderAttribute").orElseThrow() }
-private val NSAccessibilityHeaderAttribute_VH: VarHandle by lazy { NSAccessibilityHeaderAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityHeaderAttribute: MemorySegment
-    get() = NSAccessibilityHeaderAttribute_VH.get(NSAccessibilityHeaderAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityHeaderAttribute_VH.set(NSAccessibilityHeaderAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityEditedAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityEditedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityEditedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityEditedAttribute").orElseThrow() }
-private val NSAccessibilityEditedAttribute_VH: VarHandle by lazy { NSAccessibilityEditedAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityEditedAttribute: MemorySegment
-    get() = NSAccessibilityEditedAttribute_VH.get(NSAccessibilityEditedAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityEditedAttribute_VH.set(NSAccessibilityEditedAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityTabsAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityTabsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTabsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTabsAttribute").orElseThrow() }
-private val NSAccessibilityTabsAttribute_VH: VarHandle by lazy { NSAccessibilityTabsAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityTabsAttribute: MemorySegment
-    get() = NSAccessibilityTabsAttribute_VH.get(NSAccessibilityTabsAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityTabsAttribute_VH.set(NSAccessibilityTabsAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityHorizontalScrollBarAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityHorizontalScrollBarAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHorizontalScrollBarAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHorizontalScrollBarAttribute").orElseThrow() }
-private val NSAccessibilityHorizontalScrollBarAttribute_VH: VarHandle by lazy { NSAccessibilityHorizontalScrollBarAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityHorizontalScrollBarAttribute: MemorySegment
-    get() = NSAccessibilityHorizontalScrollBarAttribute_VH.get(NSAccessibilityHorizontalScrollBarAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityHorizontalScrollBarAttribute_VH.set(NSAccessibilityHorizontalScrollBarAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityVerticalScrollBarAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityVerticalScrollBarAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVerticalScrollBarAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVerticalScrollBarAttribute").orElseThrow() }
-private val NSAccessibilityVerticalScrollBarAttribute_VH: VarHandle by lazy { NSAccessibilityVerticalScrollBarAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityVerticalScrollBarAttribute: MemorySegment
-    get() = NSAccessibilityVerticalScrollBarAttribute_VH.get(NSAccessibilityVerticalScrollBarAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityVerticalScrollBarAttribute_VH.set(NSAccessibilityVerticalScrollBarAttribute_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityOverflowButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
- */
-private val NSAccessibilityOverflowButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityOverflowButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityOverflowButtonAttribute").orElseThrow() }
-private val NSAccessibilityOverflowButtonAttribute_VH: VarHandle by lazy { NSAccessibilityOverflowButtonAttribute_LAYOUT.varHandle() }
-
-var NSAccessibilityOverflowButtonAttribute: MemorySegment
-    get() = NSAccessibilityOverflowButtonAttribute_VH.get(NSAccessibilityOverflowButtonAttribute_SEGMENT) as MemorySegment
-    set(value) = NSAccessibilityOverflowButtonAttribute_VH.set(NSAccessibilityOverflowButtonAttribute_SEGMENT, value)

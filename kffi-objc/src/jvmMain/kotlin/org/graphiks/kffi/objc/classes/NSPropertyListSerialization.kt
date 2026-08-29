@@ -27,14 +27,14 @@ open class NSPropertyListSerialization(override val ptr: MemorySegment) : NSObje
             return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel, plist, stream, format.rawValue, opt, error) as Long
         }
 
-        fun propertyListWithData_options_format_error(`data`: MemorySegment, opt: MemorySegment, format: MemorySegment, error: MemorySegment): MemorySegment {
+        fun propertyListWithData_options_format_error(`data`: MemorySegment, opt: NSPropertyListMutabilityOptions, format: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("propertyListWithData:options:format:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `data`, opt, format, error) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `data`, opt.rawValue, format, error) as MemorySegment
         }
 
-        fun propertyListWithStream_options_format_error(stream: MemorySegment, opt: MemorySegment, format: MemorySegment, error: MemorySegment): MemorySegment {
+        fun propertyListWithStream_options_format_error(stream: MemorySegment, opt: NSPropertyListMutabilityOptions, format: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("propertyListWithStream:options:format:error:")
-            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, stream, opt, format, error) as MemorySegment
+            return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, stream, opt.rawValue, format, error) as MemorySegment
         }
 
         fun dataFromPropertyList_format_errorDescription(plist: MemorySegment, format: NSPropertyListFormat, errorString: MemorySegment): MemorySegment {

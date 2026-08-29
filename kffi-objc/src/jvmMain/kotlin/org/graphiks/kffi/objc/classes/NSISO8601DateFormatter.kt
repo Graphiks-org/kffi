@@ -68,7 +68,7 @@ open class NSISO8601DateFormatter(override val ptr: MemorySegment) : NSFormatter
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _formatter: MemorySegment
     // ivar: _timeZone: MemorySegment
-    // ivar: _formatOptions: MemorySegment
+    // ivar: _formatOptions: NSISO8601DateFormatOptions
 }
 
 /**

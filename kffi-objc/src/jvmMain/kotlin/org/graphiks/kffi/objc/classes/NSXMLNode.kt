@@ -397,7 +397,7 @@ open class NSXMLNode(override val ptr: MemorySegment) : NSObject(ptr) {
     // ── Instance variables (direct field access not supported via Panama) ──
     // ivar: _parent: MemorySegment
     // ivar: _objectValue: MemorySegment
-    // ivar: _kind: MemorySegment
+    // ivar: _kind: NSXMLNodeKind
     // ivar: _index: Int
     // ivar: _private: Int
 }

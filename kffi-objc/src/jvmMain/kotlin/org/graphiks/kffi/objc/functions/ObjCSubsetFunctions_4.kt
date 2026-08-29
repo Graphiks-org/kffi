@@ -5,6 +5,1092 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : CFXMLTreeCreateXMLData typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFXMLTreeRef = (Declared(__CFTree))*)
+ */
+private val CFXMLTreeCreateXMLData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CFXMLTreeCreateXMLData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFXMLTreeCreateXMLData").orElseThrow()
+private val CFXMLTreeCreateXMLData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFXMLTreeCreateXMLData_ADDR, CFXMLTreeCreateXMLData_DESC)
+
+fun CFXMLTreeCreateXMLData(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return CFXMLTreeCreateXMLData_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFXMLCreateStringByEscapingEntities typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
+ */
+private val CFXMLCreateStringByEscapingEntities_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CFXMLCreateStringByEscapingEntities_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFXMLCreateStringByEscapingEntities").orElseThrow()
+private val CFXMLCreateStringByEscapingEntities_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFXMLCreateStringByEscapingEntities_ADDR, CFXMLCreateStringByEscapingEntities_DESC)
+
+fun CFXMLCreateStringByEscapingEntities(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
+    try {
+        return CFXMLCreateStringByEscapingEntities_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CFXMLCreateStringByUnescapingEntities typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
+ */
+private val CFXMLCreateStringByUnescapingEntities_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CFXMLCreateStringByUnescapingEntities_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFXMLCreateStringByUnescapingEntities").orElseThrow()
+private val CFXMLCreateStringByUnescapingEntities_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFXMLCreateStringByUnescapingEntities_ADDR, CFXMLCreateStringByUnescapingEntities_DESC)
+
+fun CFXMLCreateStringByUnescapingEntities(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
+    try {
+        return CFXMLCreateStringByUnescapingEntities_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : kCFXMLTreeErrorDescription typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCFXMLTreeErrorDescription_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCFXMLTreeErrorDescription_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFXMLTreeErrorDescription").orElseThrow() }
+private val kCFXMLTreeErrorDescription_VH: VarHandle by lazy { kCFXMLTreeErrorDescription_LAYOUT.varHandle() }
+
+var kCFXMLTreeErrorDescription: MemorySegment
+    get() = kCFXMLTreeErrorDescription_VH.get(kCFXMLTreeErrorDescription_SEGMENT) as MemorySegment
+    set(value) = kCFXMLTreeErrorDescription_VH.set(kCFXMLTreeErrorDescription_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCFXMLTreeErrorLineNumber typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCFXMLTreeErrorLineNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCFXMLTreeErrorLineNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFXMLTreeErrorLineNumber").orElseThrow() }
+private val kCFXMLTreeErrorLineNumber_VH: VarHandle by lazy { kCFXMLTreeErrorLineNumber_LAYOUT.varHandle() }
+
+var kCFXMLTreeErrorLineNumber: MemorySegment
+    get() = kCFXMLTreeErrorLineNumber_VH.get(kCFXMLTreeErrorLineNumber_SEGMENT) as MemorySegment
+    set(value) = kCFXMLTreeErrorLineNumber_VH.set(kCFXMLTreeErrorLineNumber_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCFXMLTreeErrorLocation typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCFXMLTreeErrorLocation_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCFXMLTreeErrorLocation_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFXMLTreeErrorLocation").orElseThrow() }
+private val kCFXMLTreeErrorLocation_VH: VarHandle by lazy { kCFXMLTreeErrorLocation_LAYOUT.varHandle() }
+
+var kCFXMLTreeErrorLocation: MemorySegment
+    get() = kCFXMLTreeErrorLocation_VH.get(kCFXMLTreeErrorLocation_SEGMENT) as MemorySegment
+    set(value) = kCFXMLTreeErrorLocation_VH.set(kCFXMLTreeErrorLocation_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : kCFXMLTreeErrorStatusCode typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCFXMLTreeErrorStatusCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCFXMLTreeErrorStatusCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFXMLTreeErrorStatusCode").orElseThrow() }
+private val kCFXMLTreeErrorStatusCode_VH: VarHandle by lazy { kCFXMLTreeErrorStatusCode_LAYOUT.varHandle() }
+
+var kCFXMLTreeErrorStatusCode: MemorySegment
+    get() = kCFXMLTreeErrorStatusCode_VH.get(kCFXMLTreeErrorStatusCode_SEGMENT) as MemorySegment
+    set(value) = kCFXMLTreeErrorStatusCode_VH.set(kCFXMLTreeErrorStatusCode_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSFoundationVersionNumber Double
+ */
+private val NSFoundationVersionNumber_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
+private val NSFoundationVersionNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFoundationVersionNumber").orElseThrow() }
+private val NSFoundationVersionNumber_VH: VarHandle by lazy { NSFoundationVersionNumber_LAYOUT.varHandle() }
+
+var NSFoundationVersionNumber: Double
+    get() = NSFoundationVersionNumber_VH.get(NSFoundationVersionNumber_SEGMENT) as Double
+    set(value) = NSFoundationVersionNumber_VH.set(NSFoundationVersionNumber_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringFromSelector typedef NSString = (Void)*(typedef SEL = ((Void)*)*)
+ */
+private val NSStringFromSelector_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSStringFromSelector_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSStringFromSelector").orElseThrow()
+private val NSStringFromSelector_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSStringFromSelector_ADDR, NSStringFromSelector_DESC)
+
+fun NSStringFromSelector(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSStringFromSelector_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSSelectorFromString typedef SEL = ((Void)*)*(typedef NSString = (Void)*)
+ */
+private val NSSelectorFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSSelectorFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSSelectorFromString").orElseThrow()
+private val NSSelectorFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSSelectorFromString_ADDR, NSSelectorFromString_DESC)
+
+fun NSSelectorFromString(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSSelectorFromString_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSStringFromClass typedef NSString = (Void)*(typedef Class = typedef Class = (Void)*)
+ */
+private val NSStringFromClass_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSStringFromClass_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSStringFromClass").orElseThrow()
+private val NSStringFromClass_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSStringFromClass_ADDR, NSStringFromClass_DESC)
+
+fun NSStringFromClass(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSStringFromClass_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSClassFromString typedef Class = typedef Class = (Void)*(typedef NSString = (Void)*)
+ */
+private val NSClassFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSClassFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSClassFromString").orElseThrow()
+private val NSClassFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSClassFromString_ADDR, NSClassFromString_DESC)
+
+fun NSClassFromString(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSClassFromString_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSStringFromProtocol typedef NSString = (Void)*(typedef Protocol = (Void)*)
+ */
+private val NSStringFromProtocol_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSStringFromProtocol_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSStringFromProtocol").orElseThrow()
+private val NSStringFromProtocol_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSStringFromProtocol_ADDR, NSStringFromProtocol_DESC)
+
+fun NSStringFromProtocol(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSStringFromProtocol_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSProtocolFromString typedef Protocol = (Void)*(typedef NSString = (Void)*)
+ */
+private val NSProtocolFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSProtocolFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSProtocolFromString").orElseThrow()
+private val NSProtocolFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSProtocolFromString_ADDR, NSProtocolFromString_DESC)
+
+fun NSProtocolFromString(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSProtocolFromString_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSGetSizeAndAlignment (Char)*((Char)*,(typedef NSUInteger = UNSIGNED = Long)*,(typedef NSUInteger = UNSIGNED = Long)*)
+ */
+private val NSGetSizeAndAlignment_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSGetSizeAndAlignment_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSGetSizeAndAlignment").orElseThrow()
+private val NSGetSizeAndAlignment_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSGetSizeAndAlignment_ADDR, NSGetSizeAndAlignment_DESC)
+
+fun NSGetSizeAndAlignment(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
+    try {
+        return NSGetSizeAndAlignment_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSLog Void((Void)*)
+ */
+private val NSLog_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val NSLog_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSLog").orElseThrow()
+private val NSLog_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSLog_ADDR, NSLog_DESC)
+
+fun NSLog(arg0: MemorySegment): Unit {
+    try {
+        NSLog_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSLogv Void((Void)*,typedef __builtin_va_list = (Char)*)
+ */
+private val NSLogv_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSLogv_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSLogv").orElseThrow()
+private val NSLogv_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSLogv_ADDR, NSLogv_DESC)
+
+fun NSLogv(arg0: MemorySegment, arg1: MemorySegment): Unit {
+    try {
+        NSLogv_HANDLE.invokeExact(arg0, arg1)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDefaultMallocZone (typedef NSZone = Declared(_NSZone))*()
+ */
+private val NSDefaultMallocZone_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
+private val NSDefaultMallocZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDefaultMallocZone").orElseThrow()
+private val NSDefaultMallocZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDefaultMallocZone_ADDR, NSDefaultMallocZone_DESC)
+
+fun NSDefaultMallocZone(): MemorySegment {
+    try {
+        return NSDefaultMallocZone_HANDLE.invokeExact() as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSCreateZone (typedef NSZone = Declared(_NSZone))*(typedef NSUInteger = UNSIGNED = Long,typedef NSUInteger = UNSIGNED = Long,typedef BOOL = Bool)
+ */
+private val NSCreateZone_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN)
+private val NSCreateZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCreateZone").orElseThrow()
+private val NSCreateZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCreateZone_ADDR, NSCreateZone_DESC)
+
+fun NSCreateZone(arg0: Long, arg1: Long, arg2: Boolean): MemorySegment {
+    try {
+        return NSCreateZone_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSRecycleZone Void((typedef NSZone = Declared(_NSZone))*)
+ */
+private val NSRecycleZone_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val NSRecycleZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRecycleZone").orElseThrow()
+private val NSRecycleZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRecycleZone_ADDR, NSRecycleZone_DESC)
+
+fun NSRecycleZone(arg0: MemorySegment): Unit {
+    try {
+        NSRecycleZone_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSSetZoneName Void((typedef NSZone = Declared(_NSZone))*,typedef NSString = (Void)*)
+ */
+private val NSSetZoneName_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSSetZoneName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSSetZoneName").orElseThrow()
+private val NSSetZoneName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSSetZoneName_ADDR, NSSetZoneName_DESC)
+
+fun NSSetZoneName(arg0: MemorySegment, arg1: MemorySegment): Unit {
+    try {
+        NSSetZoneName_HANDLE.invokeExact(arg0, arg1)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSZoneName typedef NSString = (Void)*((typedef NSZone = Declared(_NSZone))*)
+ */
+private val NSZoneName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSZoneName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSZoneName").orElseThrow()
+private val NSZoneName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSZoneName_ADDR, NSZoneName_DESC)
+
+fun NSZoneName(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSZoneName_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSZoneFromPointer (typedef NSZone = Declared(_NSZone))*((Void)*)
+ */
+private val NSZoneFromPointer_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSZoneFromPointer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSZoneFromPointer").orElseThrow()
+private val NSZoneFromPointer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSZoneFromPointer_ADDR, NSZoneFromPointer_DESC)
+
+fun NSZoneFromPointer(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSZoneFromPointer_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSZoneMalloc (Void)*((typedef NSZone = Declared(_NSZone))*,typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSZoneMalloc_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSZoneMalloc_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSZoneMalloc").orElseThrow()
+private val NSZoneMalloc_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSZoneMalloc_ADDR, NSZoneMalloc_DESC)
+
+fun NSZoneMalloc(arg0: MemorySegment, arg1: Long): MemorySegment {
+    try {
+        return NSZoneMalloc_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSZoneCalloc (Void)*((typedef NSZone = Declared(_NSZone))*,typedef NSUInteger = UNSIGNED = Long,typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSZoneCalloc_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val NSZoneCalloc_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSZoneCalloc").orElseThrow()
+private val NSZoneCalloc_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSZoneCalloc_ADDR, NSZoneCalloc_DESC)
+
+fun NSZoneCalloc(arg0: MemorySegment, arg1: Long, arg2: Long): MemorySegment {
+    try {
+        return NSZoneCalloc_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSZoneRealloc (Void)*((typedef NSZone = Declared(_NSZone))*,(Void)*,typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSZoneRealloc_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSZoneRealloc_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSZoneRealloc").orElseThrow()
+private val NSZoneRealloc_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSZoneRealloc_ADDR, NSZoneRealloc_DESC)
+
+fun NSZoneRealloc(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): MemorySegment {
+    try {
+        return NSZoneRealloc_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSZoneFree Void((typedef NSZone = Declared(_NSZone))*,(Void)*)
+ */
+private val NSZoneFree_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSZoneFree_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSZoneFree").orElseThrow()
+private val NSZoneFree_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSZoneFree_ADDR, NSZoneFree_DESC)
+
+fun NSZoneFree(arg0: MemorySegment, arg1: MemorySegment): Unit {
+    try {
+        NSZoneFree_HANDLE.invokeExact(arg0, arg1)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSAllocateCollectable (Void)*(typedef NSUInteger = UNSIGNED = Long,typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSAllocateCollectable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val NSAllocateCollectable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSAllocateCollectable").orElseThrow()
+private val NSAllocateCollectable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSAllocateCollectable_ADDR, NSAllocateCollectable_DESC)
+
+fun NSAllocateCollectable(arg0: Long, arg1: Long): MemorySegment {
+    try {
+        return NSAllocateCollectable_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSReallocateCollectable (Void)*((Void)*,typedef NSUInteger = UNSIGNED = Long,typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSReallocateCollectable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val NSReallocateCollectable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSReallocateCollectable").orElseThrow()
+private val NSReallocateCollectable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSReallocateCollectable_ADDR, NSReallocateCollectable_DESC)
+
+fun NSReallocateCollectable(arg0: MemorySegment, arg1: Long, arg2: Long): MemorySegment {
+    try {
+        return NSReallocateCollectable_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSPageSize typedef NSUInteger = UNSIGNED = Long()
+ */
+private val NSPageSize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private val NSPageSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSPageSize").orElseThrow()
+private val NSPageSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSPageSize_ADDR, NSPageSize_DESC)
+
+fun NSPageSize(): Long {
+    try {
+        return NSPageSize_HANDLE.invokeExact() as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSLogPageSize typedef NSUInteger = UNSIGNED = Long()
+ */
+private val NSLogPageSize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private val NSLogPageSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSLogPageSize").orElseThrow()
+private val NSLogPageSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSLogPageSize_ADDR, NSLogPageSize_DESC)
+
+fun NSLogPageSize(): Long {
+    try {
+        return NSLogPageSize_HANDLE.invokeExact() as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSRoundUpToMultipleOfPageSize typedef NSUInteger = UNSIGNED = Long(typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSRoundUpToMultipleOfPageSize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val NSRoundUpToMultipleOfPageSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRoundUpToMultipleOfPageSize").orElseThrow()
+private val NSRoundUpToMultipleOfPageSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRoundUpToMultipleOfPageSize_ADDR, NSRoundUpToMultipleOfPageSize_DESC)
+
+fun NSRoundUpToMultipleOfPageSize(arg0: Long): Long {
+    try {
+        return NSRoundUpToMultipleOfPageSize_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSRoundDownToMultipleOfPageSize typedef NSUInteger = UNSIGNED = Long(typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSRoundDownToMultipleOfPageSize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val NSRoundDownToMultipleOfPageSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRoundDownToMultipleOfPageSize").orElseThrow()
+private val NSRoundDownToMultipleOfPageSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRoundDownToMultipleOfPageSize_ADDR, NSRoundDownToMultipleOfPageSize_DESC)
+
+fun NSRoundDownToMultipleOfPageSize(arg0: Long): Long {
+    try {
+        return NSRoundDownToMultipleOfPageSize_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSAllocateMemoryPages (Void)*(typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSAllocateMemoryPages_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSAllocateMemoryPages_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSAllocateMemoryPages").orElseThrow()
+private val NSAllocateMemoryPages_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSAllocateMemoryPages_ADDR, NSAllocateMemoryPages_DESC)
+
+fun NSAllocateMemoryPages(arg0: Long): MemorySegment {
+    try {
+        return NSAllocateMemoryPages_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDeallocateMemoryPages Void((Void)*,typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSDeallocateMemoryPages_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSDeallocateMemoryPages_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDeallocateMemoryPages").orElseThrow()
+private val NSDeallocateMemoryPages_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDeallocateMemoryPages_ADDR, NSDeallocateMemoryPages_DESC)
+
+fun NSDeallocateMemoryPages(arg0: MemorySegment, arg1: Long): Unit {
+    try {
+        NSDeallocateMemoryPages_HANDLE.invokeExact(arg0, arg1)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSCopyMemoryPages Void((Void)*,(Void)*,typedef NSUInteger = UNSIGNED = Long)
+ */
+private val NSCopyMemoryPages_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSCopyMemoryPages_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCopyMemoryPages").orElseThrow()
+private val NSCopyMemoryPages_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCopyMemoryPages_ADDR, NSCopyMemoryPages_DESC)
+
+fun NSCopyMemoryPages(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
+    try {
+        NSCopyMemoryPages_HANDLE.invokeExact(arg0, arg1, arg2)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSRealMemoryAvailable typedef NSUInteger = UNSIGNED = Long()
+ */
+private val NSRealMemoryAvailable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private val NSRealMemoryAvailable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRealMemoryAvailable").orElseThrow()
+private val NSRealMemoryAvailable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRealMemoryAvailable_ADDR, NSRealMemoryAvailable_DESC)
+
+fun NSRealMemoryAvailable(): Long {
+    try {
+        return NSRealMemoryAvailable_HANDLE.invokeExact() as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSAllocateObject typedef id = (Void)*(typedef Class = typedef Class = (Void)*,typedef NSUInteger = UNSIGNED = Long,(typedef NSZone = Declared(_NSZone))*)
+ */
+private val NSAllocateObject_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val NSAllocateObject_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSAllocateObject").orElseThrow()
+private val NSAllocateObject_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSAllocateObject_ADDR, NSAllocateObject_DESC)
+
+fun NSAllocateObject(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
+    try {
+        return NSAllocateObject_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDeallocateObject Void(typedef id = (Void)*)
+ */
+private val NSDeallocateObject_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val NSDeallocateObject_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDeallocateObject").orElseThrow()
+private val NSDeallocateObject_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDeallocateObject_ADDR, NSDeallocateObject_DESC)
+
+fun NSDeallocateObject(arg0: MemorySegment): Unit {
+    try {
+        NSDeallocateObject_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSCopyObject typedef id = (Void)*(typedef id = (Void)*,typedef NSUInteger = UNSIGNED = Long,(typedef NSZone = Declared(_NSZone))*)
+ */
+private val NSCopyObject_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val NSCopyObject_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCopyObject").orElseThrow()
+private val NSCopyObject_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCopyObject_ADDR, NSCopyObject_DESC)
+
+fun NSCopyObject(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
+    try {
+        return NSCopyObject_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSShouldRetainWithZone typedef BOOL = Bool(typedef id = (Void)*,(typedef NSZone = Declared(_NSZone))*)
+ */
+private val NSShouldRetainWithZone_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSShouldRetainWithZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSShouldRetainWithZone").orElseThrow()
+private val NSShouldRetainWithZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSShouldRetainWithZone_ADDR, NSShouldRetainWithZone_DESC)
+
+fun NSShouldRetainWithZone(arg0: MemorySegment, arg1: MemorySegment): Boolean {
+    try {
+        return NSShouldRetainWithZone_HANDLE.invokeExact(arg0, arg1) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSIncrementExtraRefCount Void(typedef id = (Void)*)
+ */
+private val NSIncrementExtraRefCount_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private val NSIncrementExtraRefCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSIncrementExtraRefCount").orElseThrow()
+private val NSIncrementExtraRefCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSIncrementExtraRefCount_ADDR, NSIncrementExtraRefCount_DESC)
+
+fun NSIncrementExtraRefCount(arg0: MemorySegment): Unit {
+    try {
+        NSIncrementExtraRefCount_HANDLE.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDecrementExtraRefCountWasZero typedef BOOL = Bool(typedef id = (Void)*)
+ */
+private val NSDecrementExtraRefCountWasZero_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
+private val NSDecrementExtraRefCountWasZero_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecrementExtraRefCountWasZero").orElseThrow()
+private val NSDecrementExtraRefCountWasZero_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecrementExtraRefCountWasZero_ADDR, NSDecrementExtraRefCountWasZero_DESC)
+
+fun NSDecrementExtraRefCountWasZero(arg0: MemorySegment): Boolean {
+    try {
+        return NSDecrementExtraRefCountWasZero_HANDLE.invokeExact(arg0) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSExtraRefCount typedef NSUInteger = UNSIGNED = Long(typedef id = (Void)*)
+ */
+private val NSExtraRefCount_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val NSExtraRefCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSExtraRefCount").orElseThrow()
+private val NSExtraRefCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSExtraRefCount_ADDR, NSExtraRefCount_DESC)
+
+fun NSExtraRefCount(arg0: MemorySegment): Long {
+    try {
+        return NSExtraRefCount_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSUnionRange typedef NSRange = Declared(_NSRange)(typedef NSRange = Declared(_NSRange),typedef NSRange = Declared(_NSRange))
+ */
+private val NSUnionRange_DESC: FunctionDescriptor = FunctionDescriptor.of(_NSRange.layout, _NSRange.layout, _NSRange.layout)
+private val NSUnionRange_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSUnionRange").orElseThrow()
+private val NSUnionRange_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSUnionRange_ADDR, NSUnionRange_DESC)
+
+fun NSUnionRange(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return NSUnionRange_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun NSUnionRange(allocator: SegmentAllocator, arg0: NSRange, arg1: NSRange): NSRange {
+    return NSRange(NSUnionRange(allocator, arg0.segment, arg1.segment))
+}
+
+/**
+ * {@snippet lang=c : NSIntersectionRange typedef NSRange = Declared(_NSRange)(typedef NSRange = Declared(_NSRange),typedef NSRange = Declared(_NSRange))
+ */
+private val NSIntersectionRange_DESC: FunctionDescriptor = FunctionDescriptor.of(_NSRange.layout, _NSRange.layout, _NSRange.layout)
+private val NSIntersectionRange_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSIntersectionRange").orElseThrow()
+private val NSIntersectionRange_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSIntersectionRange_ADDR, NSIntersectionRange_DESC)
+
+fun NSIntersectionRange(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return NSIntersectionRange_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun NSIntersectionRange(allocator: SegmentAllocator, arg0: NSRange, arg1: NSRange): NSRange {
+    return NSRange(NSIntersectionRange(allocator, arg0.segment, arg1.segment))
+}
+
+/**
+ * {@snippet lang=c : NSStringFromRange typedef NSString = (Void)*(typedef NSRange = Declared(_NSRange))
+ */
+private val NSStringFromRange_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, _NSRange.layout)
+private val NSStringFromRange_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSStringFromRange").orElseThrow()
+private val NSStringFromRange_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSStringFromRange_ADDR, NSStringFromRange_DESC)
+
+fun NSStringFromRange(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSStringFromRange_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun NSStringFromRange(arg0: NSRange): MemorySegment {
+    return NSStringFromRange(arg0.segment)
+}
+
+/**
+ * {@snippet lang=c : NSRangeFromString typedef NSRange = Declared(_NSRange)(typedef NSString = (Void)*)
+ */
+private val NSRangeFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(_NSRange.layout, ValueLayout.ADDRESS)
+private val NSRangeFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRangeFromString").orElseThrow()
+private val NSRangeFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRangeFromString_ADDR, NSRangeFromString_DESC)
+
+fun NSRangeFromString(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
+    try {
+        return NSRangeFromString_HANDLE.invokeExact(allocator, arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+fun NSRangeFromStringTyped(allocator: SegmentAllocator, arg0: MemorySegment): NSRange {
+    return NSRange(NSRangeFromString(allocator, arg0))
+}
+
+/**
+ * {@snippet lang=c : NSItemProviderPreferredImageSizeKey (Void)*
+ */
+private val NSItemProviderPreferredImageSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSItemProviderPreferredImageSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSItemProviderPreferredImageSizeKey").orElseThrow() }
+private val NSItemProviderPreferredImageSizeKey_VH: VarHandle by lazy { NSItemProviderPreferredImageSizeKey_LAYOUT.varHandle() }
+
+var NSItemProviderPreferredImageSizeKey: MemorySegment
+    get() = NSItemProviderPreferredImageSizeKey_VH.get(NSItemProviderPreferredImageSizeKey_SEGMENT) as MemorySegment
+    set(value) = NSItemProviderPreferredImageSizeKey_VH.set(NSItemProviderPreferredImageSizeKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSExtensionJavaScriptPreprocessingResultsKey (Void)*
+ */
+private val NSExtensionJavaScriptPreprocessingResultsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSExtensionJavaScriptPreprocessingResultsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSExtensionJavaScriptPreprocessingResultsKey").orElseThrow() }
+private val NSExtensionJavaScriptPreprocessingResultsKey_VH: VarHandle by lazy { NSExtensionJavaScriptPreprocessingResultsKey_LAYOUT.varHandle() }
+
+var NSExtensionJavaScriptPreprocessingResultsKey: MemorySegment
+    get() = NSExtensionJavaScriptPreprocessingResultsKey_VH.get(NSExtensionJavaScriptPreprocessingResultsKey_SEGMENT) as MemorySegment
+    set(value) = NSExtensionJavaScriptPreprocessingResultsKey_VH.set(NSExtensionJavaScriptPreprocessingResultsKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSExtensionJavaScriptFinalizeArgumentKey (Void)*
+ */
+private val NSExtensionJavaScriptFinalizeArgumentKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSExtensionJavaScriptFinalizeArgumentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSExtensionJavaScriptFinalizeArgumentKey").orElseThrow() }
+private val NSExtensionJavaScriptFinalizeArgumentKey_VH: VarHandle by lazy { NSExtensionJavaScriptFinalizeArgumentKey_LAYOUT.varHandle() }
+
+var NSExtensionJavaScriptFinalizeArgumentKey: MemorySegment
+    get() = NSExtensionJavaScriptFinalizeArgumentKey_VH.get(NSExtensionJavaScriptFinalizeArgumentKey_SEGMENT) as MemorySegment
+    set(value) = NSExtensionJavaScriptFinalizeArgumentKey_VH.set(NSExtensionJavaScriptFinalizeArgumentKey_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSItemProviderErrorDomain (Void)*
+ */
+private val NSItemProviderErrorDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSItemProviderErrorDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSItemProviderErrorDomain").orElseThrow() }
+private val NSItemProviderErrorDomain_VH: VarHandle by lazy { NSItemProviderErrorDomain_LAYOUT.varHandle() }
+
+var NSItemProviderErrorDomain: MemorySegment
+    get() = NSItemProviderErrorDomain_VH.get(NSItemProviderErrorDomain_SEGMENT) as MemorySegment
+    set(value) = NSItemProviderErrorDomain_VH.set(NSItemProviderErrorDomain_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformLatinToKatakana typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformLatinToKatakana_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformLatinToKatakana_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformLatinToKatakana").orElseThrow() }
+private val NSStringTransformLatinToKatakana_VH: VarHandle by lazy { NSStringTransformLatinToKatakana_LAYOUT.varHandle() }
+
+var NSStringTransformLatinToKatakana: MemorySegment
+    get() = NSStringTransformLatinToKatakana_VH.get(NSStringTransformLatinToKatakana_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformLatinToKatakana_VH.set(NSStringTransformLatinToKatakana_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformLatinToHiragana typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformLatinToHiragana_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformLatinToHiragana_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformLatinToHiragana").orElseThrow() }
+private val NSStringTransformLatinToHiragana_VH: VarHandle by lazy { NSStringTransformLatinToHiragana_LAYOUT.varHandle() }
+
+var NSStringTransformLatinToHiragana: MemorySegment
+    get() = NSStringTransformLatinToHiragana_VH.get(NSStringTransformLatinToHiragana_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformLatinToHiragana_VH.set(NSStringTransformLatinToHiragana_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformLatinToHangul typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformLatinToHangul_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformLatinToHangul_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformLatinToHangul").orElseThrow() }
+private val NSStringTransformLatinToHangul_VH: VarHandle by lazy { NSStringTransformLatinToHangul_LAYOUT.varHandle() }
+
+var NSStringTransformLatinToHangul: MemorySegment
+    get() = NSStringTransformLatinToHangul_VH.get(NSStringTransformLatinToHangul_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformLatinToHangul_VH.set(NSStringTransformLatinToHangul_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformLatinToArabic typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformLatinToArabic_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformLatinToArabic_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformLatinToArabic").orElseThrow() }
+private val NSStringTransformLatinToArabic_VH: VarHandle by lazy { NSStringTransformLatinToArabic_LAYOUT.varHandle() }
+
+var NSStringTransformLatinToArabic: MemorySegment
+    get() = NSStringTransformLatinToArabic_VH.get(NSStringTransformLatinToArabic_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformLatinToArabic_VH.set(NSStringTransformLatinToArabic_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformLatinToHebrew typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformLatinToHebrew_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformLatinToHebrew_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformLatinToHebrew").orElseThrow() }
+private val NSStringTransformLatinToHebrew_VH: VarHandle by lazy { NSStringTransformLatinToHebrew_LAYOUT.varHandle() }
+
+var NSStringTransformLatinToHebrew: MemorySegment
+    get() = NSStringTransformLatinToHebrew_VH.get(NSStringTransformLatinToHebrew_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformLatinToHebrew_VH.set(NSStringTransformLatinToHebrew_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformLatinToThai typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformLatinToThai_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformLatinToThai_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformLatinToThai").orElseThrow() }
+private val NSStringTransformLatinToThai_VH: VarHandle by lazy { NSStringTransformLatinToThai_LAYOUT.varHandle() }
+
+var NSStringTransformLatinToThai: MemorySegment
+    get() = NSStringTransformLatinToThai_VH.get(NSStringTransformLatinToThai_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformLatinToThai_VH.set(NSStringTransformLatinToThai_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformLatinToCyrillic typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformLatinToCyrillic_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformLatinToCyrillic_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformLatinToCyrillic").orElseThrow() }
+private val NSStringTransformLatinToCyrillic_VH: VarHandle by lazy { NSStringTransformLatinToCyrillic_LAYOUT.varHandle() }
+
+var NSStringTransformLatinToCyrillic: MemorySegment
+    get() = NSStringTransformLatinToCyrillic_VH.get(NSStringTransformLatinToCyrillic_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformLatinToCyrillic_VH.set(NSStringTransformLatinToCyrillic_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformLatinToGreek typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformLatinToGreek_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformLatinToGreek_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformLatinToGreek").orElseThrow() }
+private val NSStringTransformLatinToGreek_VH: VarHandle by lazy { NSStringTransformLatinToGreek_LAYOUT.varHandle() }
+
+var NSStringTransformLatinToGreek: MemorySegment
+    get() = NSStringTransformLatinToGreek_VH.get(NSStringTransformLatinToGreek_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformLatinToGreek_VH.set(NSStringTransformLatinToGreek_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformToLatin typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformToLatin_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformToLatin_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformToLatin").orElseThrow() }
+private val NSStringTransformToLatin_VH: VarHandle by lazy { NSStringTransformToLatin_LAYOUT.varHandle() }
+
+var NSStringTransformToLatin: MemorySegment
+    get() = NSStringTransformToLatin_VH.get(NSStringTransformToLatin_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformToLatin_VH.set(NSStringTransformToLatin_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformMandarinToLatin typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformMandarinToLatin_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformMandarinToLatin_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformMandarinToLatin").orElseThrow() }
+private val NSStringTransformMandarinToLatin_VH: VarHandle by lazy { NSStringTransformMandarinToLatin_LAYOUT.varHandle() }
+
+var NSStringTransformMandarinToLatin: MemorySegment
+    get() = NSStringTransformMandarinToLatin_VH.get(NSStringTransformMandarinToLatin_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformMandarinToLatin_VH.set(NSStringTransformMandarinToLatin_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformHiraganaToKatakana typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformHiraganaToKatakana_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformHiraganaToKatakana_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformHiraganaToKatakana").orElseThrow() }
+private val NSStringTransformHiraganaToKatakana_VH: VarHandle by lazy { NSStringTransformHiraganaToKatakana_LAYOUT.varHandle() }
+
+var NSStringTransformHiraganaToKatakana: MemorySegment
+    get() = NSStringTransformHiraganaToKatakana_VH.get(NSStringTransformHiraganaToKatakana_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformHiraganaToKatakana_VH.set(NSStringTransformHiraganaToKatakana_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformFullwidthToHalfwidth typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformFullwidthToHalfwidth_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformFullwidthToHalfwidth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformFullwidthToHalfwidth").orElseThrow() }
+private val NSStringTransformFullwidthToHalfwidth_VH: VarHandle by lazy { NSStringTransformFullwidthToHalfwidth_LAYOUT.varHandle() }
+
+var NSStringTransformFullwidthToHalfwidth: MemorySegment
+    get() = NSStringTransformFullwidthToHalfwidth_VH.get(NSStringTransformFullwidthToHalfwidth_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformFullwidthToHalfwidth_VH.set(NSStringTransformFullwidthToHalfwidth_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformToXMLHex typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformToXMLHex_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformToXMLHex_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformToXMLHex").orElseThrow() }
+private val NSStringTransformToXMLHex_VH: VarHandle by lazy { NSStringTransformToXMLHex_LAYOUT.varHandle() }
+
+var NSStringTransformToXMLHex: MemorySegment
+    get() = NSStringTransformToXMLHex_VH.get(NSStringTransformToXMLHex_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformToXMLHex_VH.set(NSStringTransformToXMLHex_SEGMENT, value)
+
+/**
+ * {@snippet lang=c : NSStringTransformToUnicodeName typedef const NSStringTransform = (Void)*
+ */
+private val NSStringTransformToUnicodeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSStringTransformToUnicodeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringTransformToUnicodeName").orElseThrow() }
+private val NSStringTransformToUnicodeName_VH: VarHandle by lazy { NSStringTransformToUnicodeName_LAYOUT.varHandle() }
+
+var NSStringTransformToUnicodeName: MemorySegment
+    get() = NSStringTransformToUnicodeName_VH.get(NSStringTransformToUnicodeName_SEGMENT) as MemorySegment
+    set(value) = NSStringTransformToUnicodeName_VH.set(NSStringTransformToUnicodeName_SEGMENT, value)
+
+/**
  * {@snippet lang=c : NSStringTransformStripCombiningMarks typedef const NSStringTransform = (Void)*
  */
 private val NSStringTransformStripCombiningMarks_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -1327,6 +2413,177 @@ fun NSDecimalCompact(arg0: MemorySegment): Unit {
 }
 
 /**
+ * {@snippet lang=c : NSDecimalCompare typedef NSComparisonResult = Declared(NSComparisonResult)((typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*)
+ */
+private val NSDecimalCompare_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSDecimalCompare_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecimalCompare").orElseThrow()
+private val NSDecimalCompare_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecimalCompare_ADDR, NSDecimalCompare_DESC)
+
+fun NSDecimalCompare(arg0: MemorySegment, arg1: MemorySegment): NSComparisonResult {
+    try {
+        return NSComparisonResult(NSDecimalCompare_HANDLE.invokeExact(arg0, arg1) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDecimalRound Void((typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,typedef NSInteger = Long,typedef NSRoundingMode = Declared(NSRoundingMode))
+ */
+private val NSDecimalRound_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val NSDecimalRound_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecimalRound").orElseThrow()
+private val NSDecimalRound_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecimalRound_ADDR, NSDecimalRound_DESC)
+
+fun NSDecimalRound(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: NSRoundingMode): Unit {
+    try {
+        NSDecimalRound_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDecimalNormalize typedef NSCalculationError = Declared(NSCalculationError)((typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,typedef NSRoundingMode = Declared(NSRoundingMode))
+ */
+private val NSDecimalNormalize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSDecimalNormalize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecimalNormalize").orElseThrow()
+private val NSDecimalNormalize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecimalNormalize_ADDR, NSDecimalNormalize_DESC)
+
+fun NSDecimalNormalize(arg0: MemorySegment, arg1: MemorySegment, arg2: NSRoundingMode): NSCalculationError {
+    try {
+        return NSCalculationError(NSDecimalNormalize_HANDLE.invokeExact(arg0, arg1, arg2.rawValue) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDecimalAdd typedef NSCalculationError = Declared(NSCalculationError)((typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,typedef NSRoundingMode = Declared(NSRoundingMode))
+ */
+private val NSDecimalAdd_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSDecimalAdd_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecimalAdd").orElseThrow()
+private val NSDecimalAdd_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecimalAdd_ADDR, NSDecimalAdd_DESC)
+
+fun NSDecimalAdd(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: NSRoundingMode): NSCalculationError {
+    try {
+        return NSCalculationError(NSDecimalAdd_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDecimalSubtract typedef NSCalculationError = Declared(NSCalculationError)((typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,typedef NSRoundingMode = Declared(NSRoundingMode))
+ */
+private val NSDecimalSubtract_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSDecimalSubtract_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecimalSubtract").orElseThrow()
+private val NSDecimalSubtract_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecimalSubtract_ADDR, NSDecimalSubtract_DESC)
+
+fun NSDecimalSubtract(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: NSRoundingMode): NSCalculationError {
+    try {
+        return NSCalculationError(NSDecimalSubtract_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDecimalMultiply typedef NSCalculationError = Declared(NSCalculationError)((typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,typedef NSRoundingMode = Declared(NSRoundingMode))
+ */
+private val NSDecimalMultiply_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSDecimalMultiply_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecimalMultiply").orElseThrow()
+private val NSDecimalMultiply_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecimalMultiply_ADDR, NSDecimalMultiply_DESC)
+
+fun NSDecimalMultiply(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: NSRoundingMode): NSCalculationError {
+    try {
+        return NSCalculationError(NSDecimalMultiply_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDecimalDivide typedef NSCalculationError = Declared(NSCalculationError)((typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,typedef NSRoundingMode = Declared(NSRoundingMode))
+ */
+private val NSDecimalDivide_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val NSDecimalDivide_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecimalDivide").orElseThrow()
+private val NSDecimalDivide_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecimalDivide_ADDR, NSDecimalDivide_DESC)
+
+fun NSDecimalDivide(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: NSRoundingMode): NSCalculationError {
+    try {
+        return NSCalculationError(NSDecimalDivide_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDecimalPower typedef NSCalculationError = Declared(NSCalculationError)((typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,typedef NSUInteger = UNSIGNED = Long,typedef NSRoundingMode = Declared(NSRoundingMode))
+ */
+private val NSDecimalPower_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val NSDecimalPower_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecimalPower").orElseThrow()
+private val NSDecimalPower_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecimalPower_ADDR, NSDecimalPower_DESC)
+
+fun NSDecimalPower(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: NSRoundingMode): NSCalculationError {
+    try {
+        return NSCalculationError(NSDecimalPower_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDecimalMultiplyByPowerOf10 typedef NSCalculationError = Declared(NSCalculationError)((typedef NSDecimal = Declared(NSDecimal))*,(typedef NSDecimal = Declared(NSDecimal))*,Short,typedef NSRoundingMode = Declared(NSRoundingMode))
+ */
+private val NSDecimalMultiplyByPowerOf10_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_LONG)
+private val NSDecimalMultiplyByPowerOf10_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDecimalMultiplyByPowerOf10").orElseThrow()
+private val NSDecimalMultiplyByPowerOf10_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDecimalMultiplyByPowerOf10_ADDR, NSDecimalMultiplyByPowerOf10_DESC)
+
+fun NSDecimalMultiplyByPowerOf10(arg0: MemorySegment, arg1: MemorySegment, arg2: Short, arg3: NSRoundingMode): NSCalculationError {
+    try {
+        return NSCalculationError(NSDecimalMultiplyByPowerOf10_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue) as Long)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : NSDecimalString typedef NSString = (Void)*((typedef NSDecimal = Declared(NSDecimal))*,typedef id = (Void)*)
  */
 private val NSDecimalString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -2015,6 +3272,25 @@ fun NSOpenStepRootDirectory(): MemorySegment {
 }
 
 /**
+ * {@snippet lang=c : NSSearchPathForDirectoriesInDomains (Void)*(typedef NSSearchPathDirectory = Declared(NSSearchPathDirectory),typedef NSSearchPathDomainMask = Declared(NSSearchPathDomainMask),typedef BOOL = Bool)
+ */
+private val NSSearchPathForDirectoriesInDomains_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN)
+private val NSSearchPathForDirectoriesInDomains_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSSearchPathForDirectoriesInDomains").orElseThrow()
+private val NSSearchPathForDirectoriesInDomains_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSSearchPathForDirectoriesInDomains_ADDR, NSSearchPathForDirectoriesInDomains_DESC)
+
+fun NSSearchPathForDirectoriesInDomains(arg0: NSSearchPathDirectory, arg1: NSSearchPathDomainMask, arg2: Boolean): MemorySegment {
+    try {
+        return NSSearchPathForDirectoriesInDomains_HANDLE.invokeExact(arg0.rawValue, arg1.rawValue, arg2) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : NSHTTPPropertyStatusCodeKey (Void)*
  */
 private val NSHTTPPropertyStatusCodeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -2563,839 +3839,3 @@ private val NSURLTagNamesKey_VH: VarHandle by lazy { NSURLTagNamesKey_LAYOUT.var
 var NSURLTagNamesKey: MemorySegment
     get() = NSURLTagNamesKey_VH.get(NSURLTagNamesKey_SEGMENT) as MemorySegment
     set(value) = NSURLTagNamesKey_VH.set(NSURLTagNamesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLPathKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLPathKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLPathKey").orElseThrow() }
-private val NSURLPathKey_VH: VarHandle by lazy { NSURLPathKey_LAYOUT.varHandle() }
-
-var NSURLPathKey: MemorySegment
-    get() = NSURLPathKey_VH.get(NSURLPathKey_SEGMENT) as MemorySegment
-    set(value) = NSURLPathKey_VH.set(NSURLPathKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLCanonicalPathKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLCanonicalPathKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLCanonicalPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLCanonicalPathKey").orElseThrow() }
-private val NSURLCanonicalPathKey_VH: VarHandle by lazy { NSURLCanonicalPathKey_LAYOUT.varHandle() }
-
-var NSURLCanonicalPathKey: MemorySegment
-    get() = NSURLCanonicalPathKey_VH.get(NSURLCanonicalPathKey_SEGMENT) as MemorySegment
-    set(value) = NSURLCanonicalPathKey_VH.set(NSURLCanonicalPathKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLIsMountTriggerKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLIsMountTriggerKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLIsMountTriggerKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsMountTriggerKey").orElseThrow() }
-private val NSURLIsMountTriggerKey_VH: VarHandle by lazy { NSURLIsMountTriggerKey_LAYOUT.varHandle() }
-
-var NSURLIsMountTriggerKey: MemorySegment
-    get() = NSURLIsMountTriggerKey_VH.get(NSURLIsMountTriggerKey_SEGMENT) as MemorySegment
-    set(value) = NSURLIsMountTriggerKey_VH.set(NSURLIsMountTriggerKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLGenerationIdentifierKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLGenerationIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLGenerationIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLGenerationIdentifierKey").orElseThrow() }
-private val NSURLGenerationIdentifierKey_VH: VarHandle by lazy { NSURLGenerationIdentifierKey_LAYOUT.varHandle() }
-
-var NSURLGenerationIdentifierKey: MemorySegment
-    get() = NSURLGenerationIdentifierKey_VH.get(NSURLGenerationIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSURLGenerationIdentifierKey_VH.set(NSURLGenerationIdentifierKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLDocumentIdentifierKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLDocumentIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLDocumentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLDocumentIdentifierKey").orElseThrow() }
-private val NSURLDocumentIdentifierKey_VH: VarHandle by lazy { NSURLDocumentIdentifierKey_LAYOUT.varHandle() }
-
-var NSURLDocumentIdentifierKey: MemorySegment
-    get() = NSURLDocumentIdentifierKey_VH.get(NSURLDocumentIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSURLDocumentIdentifierKey_VH.set(NSURLDocumentIdentifierKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLAddedToDirectoryDateKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLAddedToDirectoryDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLAddedToDirectoryDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAddedToDirectoryDateKey").orElseThrow() }
-private val NSURLAddedToDirectoryDateKey_VH: VarHandle by lazy { NSURLAddedToDirectoryDateKey_LAYOUT.varHandle() }
-
-var NSURLAddedToDirectoryDateKey: MemorySegment
-    get() = NSURLAddedToDirectoryDateKey_VH.get(NSURLAddedToDirectoryDateKey_SEGMENT) as MemorySegment
-    set(value) = NSURLAddedToDirectoryDateKey_VH.set(NSURLAddedToDirectoryDateKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLQuarantinePropertiesKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLQuarantinePropertiesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLQuarantinePropertiesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLQuarantinePropertiesKey").orElseThrow() }
-private val NSURLQuarantinePropertiesKey_VH: VarHandle by lazy { NSURLQuarantinePropertiesKey_LAYOUT.varHandle() }
-
-var NSURLQuarantinePropertiesKey: MemorySegment
-    get() = NSURLQuarantinePropertiesKey_VH.get(NSURLQuarantinePropertiesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLQuarantinePropertiesKey_VH.set(NSURLQuarantinePropertiesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileResourceTypeKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLFileResourceTypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeKey").orElseThrow() }
-private val NSURLFileResourceTypeKey_VH: VarHandle by lazy { NSURLFileResourceTypeKey_LAYOUT.varHandle() }
-
-var NSURLFileResourceTypeKey: MemorySegment
-    get() = NSURLFileResourceTypeKey_VH.get(NSURLFileResourceTypeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeKey_VH.set(NSURLFileResourceTypeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileIdentifierKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLFileIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileIdentifierKey").orElseThrow() }
-private val NSURLFileIdentifierKey_VH: VarHandle by lazy { NSURLFileIdentifierKey_LAYOUT.varHandle() }
-
-var NSURLFileIdentifierKey: MemorySegment
-    get() = NSURLFileIdentifierKey_VH.get(NSURLFileIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileIdentifierKey_VH.set(NSURLFileIdentifierKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileContentIdentifierKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLFileContentIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileContentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileContentIdentifierKey").orElseThrow() }
-private val NSURLFileContentIdentifierKey_VH: VarHandle by lazy { NSURLFileContentIdentifierKey_LAYOUT.varHandle() }
-
-var NSURLFileContentIdentifierKey: MemorySegment
-    get() = NSURLFileContentIdentifierKey_VH.get(NSURLFileContentIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileContentIdentifierKey_VH.set(NSURLFileContentIdentifierKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLMayShareFileContentKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLMayShareFileContentKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLMayShareFileContentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLMayShareFileContentKey").orElseThrow() }
-private val NSURLMayShareFileContentKey_VH: VarHandle by lazy { NSURLMayShareFileContentKey_LAYOUT.varHandle() }
-
-var NSURLMayShareFileContentKey: MemorySegment
-    get() = NSURLMayShareFileContentKey_VH.get(NSURLMayShareFileContentKey_SEGMENT) as MemorySegment
-    set(value) = NSURLMayShareFileContentKey_VH.set(NSURLMayShareFileContentKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLMayHaveExtendedAttributesKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLMayHaveExtendedAttributesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLMayHaveExtendedAttributesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLMayHaveExtendedAttributesKey").orElseThrow() }
-private val NSURLMayHaveExtendedAttributesKey_VH: VarHandle by lazy { NSURLMayHaveExtendedAttributesKey_LAYOUT.varHandle() }
-
-var NSURLMayHaveExtendedAttributesKey: MemorySegment
-    get() = NSURLMayHaveExtendedAttributesKey_VH.get(NSURLMayHaveExtendedAttributesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLMayHaveExtendedAttributesKey_VH.set(NSURLMayHaveExtendedAttributesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLIsPurgeableKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLIsPurgeableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLIsPurgeableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsPurgeableKey").orElseThrow() }
-private val NSURLIsPurgeableKey_VH: VarHandle by lazy { NSURLIsPurgeableKey_LAYOUT.varHandle() }
-
-var NSURLIsPurgeableKey: MemorySegment
-    get() = NSURLIsPurgeableKey_VH.get(NSURLIsPurgeableKey_SEGMENT) as MemorySegment
-    set(value) = NSURLIsPurgeableKey_VH.set(NSURLIsPurgeableKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLIsSparseKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLIsSparseKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLIsSparseKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsSparseKey").orElseThrow() }
-private val NSURLIsSparseKey_VH: VarHandle by lazy { NSURLIsSparseKey_LAYOUT.varHandle() }
-
-var NSURLIsSparseKey: MemorySegment
-    get() = NSURLIsSparseKey_VH.get(NSURLIsSparseKey_SEGMENT) as MemorySegment
-    set(value) = NSURLIsSparseKey_VH.set(NSURLIsSparseKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileResourceTypeNamedPipe typedef const NSURLFileResourceType = (Void)*
- */
-private val NSURLFileResourceTypeNamedPipe_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeNamedPipe_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeNamedPipe").orElseThrow() }
-private val NSURLFileResourceTypeNamedPipe_VH: VarHandle by lazy { NSURLFileResourceTypeNamedPipe_LAYOUT.varHandle() }
-
-var NSURLFileResourceTypeNamedPipe: MemorySegment
-    get() = NSURLFileResourceTypeNamedPipe_VH.get(NSURLFileResourceTypeNamedPipe_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeNamedPipe_VH.set(NSURLFileResourceTypeNamedPipe_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileResourceTypeCharacterSpecial typedef const NSURLFileResourceType = (Void)*
- */
-private val NSURLFileResourceTypeCharacterSpecial_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeCharacterSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeCharacterSpecial").orElseThrow() }
-private val NSURLFileResourceTypeCharacterSpecial_VH: VarHandle by lazy { NSURLFileResourceTypeCharacterSpecial_LAYOUT.varHandle() }
-
-var NSURLFileResourceTypeCharacterSpecial: MemorySegment
-    get() = NSURLFileResourceTypeCharacterSpecial_VH.get(NSURLFileResourceTypeCharacterSpecial_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeCharacterSpecial_VH.set(NSURLFileResourceTypeCharacterSpecial_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileResourceTypeDirectory typedef const NSURLFileResourceType = (Void)*
- */
-private val NSURLFileResourceTypeDirectory_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeDirectory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeDirectory").orElseThrow() }
-private val NSURLFileResourceTypeDirectory_VH: VarHandle by lazy { NSURLFileResourceTypeDirectory_LAYOUT.varHandle() }
-
-var NSURLFileResourceTypeDirectory: MemorySegment
-    get() = NSURLFileResourceTypeDirectory_VH.get(NSURLFileResourceTypeDirectory_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeDirectory_VH.set(NSURLFileResourceTypeDirectory_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileResourceTypeBlockSpecial typedef const NSURLFileResourceType = (Void)*
- */
-private val NSURLFileResourceTypeBlockSpecial_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeBlockSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeBlockSpecial").orElseThrow() }
-private val NSURLFileResourceTypeBlockSpecial_VH: VarHandle by lazy { NSURLFileResourceTypeBlockSpecial_LAYOUT.varHandle() }
-
-var NSURLFileResourceTypeBlockSpecial: MemorySegment
-    get() = NSURLFileResourceTypeBlockSpecial_VH.get(NSURLFileResourceTypeBlockSpecial_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeBlockSpecial_VH.set(NSURLFileResourceTypeBlockSpecial_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileResourceTypeRegular typedef const NSURLFileResourceType = (Void)*
- */
-private val NSURLFileResourceTypeRegular_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeRegular_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeRegular").orElseThrow() }
-private val NSURLFileResourceTypeRegular_VH: VarHandle by lazy { NSURLFileResourceTypeRegular_LAYOUT.varHandle() }
-
-var NSURLFileResourceTypeRegular: MemorySegment
-    get() = NSURLFileResourceTypeRegular_VH.get(NSURLFileResourceTypeRegular_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeRegular_VH.set(NSURLFileResourceTypeRegular_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileResourceTypeSymbolicLink typedef const NSURLFileResourceType = (Void)*
- */
-private val NSURLFileResourceTypeSymbolicLink_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeSymbolicLink_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeSymbolicLink").orElseThrow() }
-private val NSURLFileResourceTypeSymbolicLink_VH: VarHandle by lazy { NSURLFileResourceTypeSymbolicLink_LAYOUT.varHandle() }
-
-var NSURLFileResourceTypeSymbolicLink: MemorySegment
-    get() = NSURLFileResourceTypeSymbolicLink_VH.get(NSURLFileResourceTypeSymbolicLink_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeSymbolicLink_VH.set(NSURLFileResourceTypeSymbolicLink_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileResourceTypeSocket typedef const NSURLFileResourceType = (Void)*
- */
-private val NSURLFileResourceTypeSocket_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeSocket").orElseThrow() }
-private val NSURLFileResourceTypeSocket_VH: VarHandle by lazy { NSURLFileResourceTypeSocket_LAYOUT.varHandle() }
-
-var NSURLFileResourceTypeSocket: MemorySegment
-    get() = NSURLFileResourceTypeSocket_VH.get(NSURLFileResourceTypeSocket_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeSocket_VH.set(NSURLFileResourceTypeSocket_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileResourceTypeUnknown typedef const NSURLFileResourceType = (Void)*
- */
-private val NSURLFileResourceTypeUnknown_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeUnknown").orElseThrow() }
-private val NSURLFileResourceTypeUnknown_VH: VarHandle by lazy { NSURLFileResourceTypeUnknown_LAYOUT.varHandle() }
-
-var NSURLFileResourceTypeUnknown: MemorySegment
-    get() = NSURLFileResourceTypeUnknown_VH.get(NSURLFileResourceTypeUnknown_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeUnknown_VH.set(NSURLFileResourceTypeUnknown_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLThumbnailDictionaryKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLThumbnailDictionaryKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLThumbnailDictionaryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLThumbnailDictionaryKey").orElseThrow() }
-private val NSURLThumbnailDictionaryKey_VH: VarHandle by lazy { NSURLThumbnailDictionaryKey_LAYOUT.varHandle() }
-
-var NSURLThumbnailDictionaryKey: MemorySegment
-    get() = NSURLThumbnailDictionaryKey_VH.get(NSURLThumbnailDictionaryKey_SEGMENT) as MemorySegment
-    set(value) = NSURLThumbnailDictionaryKey_VH.set(NSURLThumbnailDictionaryKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLThumbnailKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLThumbnailKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLThumbnailKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLThumbnailKey").orElseThrow() }
-private val NSURLThumbnailKey_VH: VarHandle by lazy { NSURLThumbnailKey_LAYOUT.varHandle() }
-
-var NSURLThumbnailKey: MemorySegment
-    get() = NSURLThumbnailKey_VH.get(NSURLThumbnailKey_SEGMENT) as MemorySegment
-    set(value) = NSURLThumbnailKey_VH.set(NSURLThumbnailKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSThumbnail1024x1024SizeKey typedef const NSURLThumbnailDictionaryItem = (Void)*
- */
-private val NSThumbnail1024x1024SizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSThumbnail1024x1024SizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSThumbnail1024x1024SizeKey").orElseThrow() }
-private val NSThumbnail1024x1024SizeKey_VH: VarHandle by lazy { NSThumbnail1024x1024SizeKey_LAYOUT.varHandle() }
-
-var NSThumbnail1024x1024SizeKey: MemorySegment
-    get() = NSThumbnail1024x1024SizeKey_VH.get(NSThumbnail1024x1024SizeKey_SEGMENT) as MemorySegment
-    set(value) = NSThumbnail1024x1024SizeKey_VH.set(NSThumbnail1024x1024SizeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileSizeKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileSizeKey").orElseThrow() }
-private val NSURLFileSizeKey_VH: VarHandle by lazy { NSURLFileSizeKey_LAYOUT.varHandle() }
-
-var NSURLFileSizeKey: MemorySegment
-    get() = NSURLFileSizeKey_VH.get(NSURLFileSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileSizeKey_VH.set(NSURLFileSizeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileAllocatedSizeKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLFileAllocatedSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileAllocatedSizeKey").orElseThrow() }
-private val NSURLFileAllocatedSizeKey_VH: VarHandle by lazy { NSURLFileAllocatedSizeKey_LAYOUT.varHandle() }
-
-var NSURLFileAllocatedSizeKey: MemorySegment
-    get() = NSURLFileAllocatedSizeKey_VH.get(NSURLFileAllocatedSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileAllocatedSizeKey_VH.set(NSURLFileAllocatedSizeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLTotalFileSizeKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLTotalFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLTotalFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLTotalFileSizeKey").orElseThrow() }
-private val NSURLTotalFileSizeKey_VH: VarHandle by lazy { NSURLTotalFileSizeKey_LAYOUT.varHandle() }
-
-var NSURLTotalFileSizeKey: MemorySegment
-    get() = NSURLTotalFileSizeKey_VH.get(NSURLTotalFileSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLTotalFileSizeKey_VH.set(NSURLTotalFileSizeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLTotalFileAllocatedSizeKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLTotalFileAllocatedSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLTotalFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLTotalFileAllocatedSizeKey").orElseThrow() }
-private val NSURLTotalFileAllocatedSizeKey_VH: VarHandle by lazy { NSURLTotalFileAllocatedSizeKey_LAYOUT.varHandle() }
-
-var NSURLTotalFileAllocatedSizeKey: MemorySegment
-    get() = NSURLTotalFileAllocatedSizeKey_VH.get(NSURLTotalFileAllocatedSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLTotalFileAllocatedSizeKey_VH.set(NSURLTotalFileAllocatedSizeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLIsAliasFileKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLIsAliasFileKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLIsAliasFileKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsAliasFileKey").orElseThrow() }
-private val NSURLIsAliasFileKey_VH: VarHandle by lazy { NSURLIsAliasFileKey_LAYOUT.varHandle() }
-
-var NSURLIsAliasFileKey: MemorySegment
-    get() = NSURLIsAliasFileKey_VH.get(NSURLIsAliasFileKey_SEGMENT) as MemorySegment
-    set(value) = NSURLIsAliasFileKey_VH.set(NSURLIsAliasFileKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileProtectionKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLFileProtectionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionKey").orElseThrow() }
-private val NSURLFileProtectionKey_VH: VarHandle by lazy { NSURLFileProtectionKey_LAYOUT.varHandle() }
-
-var NSURLFileProtectionKey: MemorySegment
-    get() = NSURLFileProtectionKey_VH.get(NSURLFileProtectionKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionKey_VH.set(NSURLFileProtectionKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileProtectionNone typedef const NSURLFileProtectionType = (Void)*
- */
-private val NSURLFileProtectionNone_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionNone").orElseThrow() }
-private val NSURLFileProtectionNone_VH: VarHandle by lazy { NSURLFileProtectionNone_LAYOUT.varHandle() }
-
-var NSURLFileProtectionNone: MemorySegment
-    get() = NSURLFileProtectionNone_VH.get(NSURLFileProtectionNone_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionNone_VH.set(NSURLFileProtectionNone_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileProtectionComplete typedef const NSURLFileProtectionType = (Void)*
- */
-private val NSURLFileProtectionComplete_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionComplete_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionComplete").orElseThrow() }
-private val NSURLFileProtectionComplete_VH: VarHandle by lazy { NSURLFileProtectionComplete_LAYOUT.varHandle() }
-
-var NSURLFileProtectionComplete: MemorySegment
-    get() = NSURLFileProtectionComplete_VH.get(NSURLFileProtectionComplete_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionComplete_VH.set(NSURLFileProtectionComplete_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileProtectionCompleteUnlessOpen typedef const NSURLFileProtectionType = (Void)*
- */
-private val NSURLFileProtectionCompleteUnlessOpen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionCompleteUnlessOpen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteUnlessOpen").orElseThrow() }
-private val NSURLFileProtectionCompleteUnlessOpen_VH: VarHandle by lazy { NSURLFileProtectionCompleteUnlessOpen_LAYOUT.varHandle() }
-
-var NSURLFileProtectionCompleteUnlessOpen: MemorySegment
-    get() = NSURLFileProtectionCompleteUnlessOpen_VH.get(NSURLFileProtectionCompleteUnlessOpen_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionCompleteUnlessOpen_VH.set(NSURLFileProtectionCompleteUnlessOpen_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileProtectionCompleteUntilFirstUserAuthentication typedef const NSURLFileProtectionType = (Void)*
- */
-private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteUntilFirstUserAuthentication").orElseThrow() }
-private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH: VarHandle by lazy { NSURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.varHandle() }
-
-var NSURLFileProtectionCompleteUntilFirstUserAuthentication: MemorySegment
-    get() = NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH.get(NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH.set(NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLFileProtectionCompleteWhenUserInactive typedef const NSURLFileProtectionType = (Void)*
- */
-private val NSURLFileProtectionCompleteWhenUserInactive_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionCompleteWhenUserInactive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteWhenUserInactive").orElseThrow() }
-private val NSURLFileProtectionCompleteWhenUserInactive_VH: VarHandle by lazy { NSURLFileProtectionCompleteWhenUserInactive_LAYOUT.varHandle() }
-
-var NSURLFileProtectionCompleteWhenUserInactive: MemorySegment
-    get() = NSURLFileProtectionCompleteWhenUserInactive_VH.get(NSURLFileProtectionCompleteWhenUserInactive_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionCompleteWhenUserInactive_VH.set(NSURLFileProtectionCompleteWhenUserInactive_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLDirectoryEntryCountKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLDirectoryEntryCountKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLDirectoryEntryCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLDirectoryEntryCountKey").orElseThrow() }
-private val NSURLDirectoryEntryCountKey_VH: VarHandle by lazy { NSURLDirectoryEntryCountKey_LAYOUT.varHandle() }
-
-var NSURLDirectoryEntryCountKey: MemorySegment
-    get() = NSURLDirectoryEntryCountKey_VH.get(NSURLDirectoryEntryCountKey_SEGMENT) as MemorySegment
-    set(value) = NSURLDirectoryEntryCountKey_VH.set(NSURLDirectoryEntryCountKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeLocalizedFormatDescriptionKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeLocalizedFormatDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeLocalizedFormatDescriptionKey").orElseThrow() }
-private val NSURLVolumeLocalizedFormatDescriptionKey_VH: VarHandle by lazy { NSURLVolumeLocalizedFormatDescriptionKey_LAYOUT.varHandle() }
-
-var NSURLVolumeLocalizedFormatDescriptionKey: MemorySegment
-    get() = NSURLVolumeLocalizedFormatDescriptionKey_VH.get(NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeLocalizedFormatDescriptionKey_VH.set(NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeTotalCapacityKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeTotalCapacityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeTotalCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeTotalCapacityKey").orElseThrow() }
-private val NSURLVolumeTotalCapacityKey_VH: VarHandle by lazy { NSURLVolumeTotalCapacityKey_LAYOUT.varHandle() }
-
-var NSURLVolumeTotalCapacityKey: MemorySegment
-    get() = NSURLVolumeTotalCapacityKey_VH.get(NSURLVolumeTotalCapacityKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeTotalCapacityKey_VH.set(NSURLVolumeTotalCapacityKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeAvailableCapacityKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeAvailableCapacityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeAvailableCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityKey").orElseThrow() }
-private val NSURLVolumeAvailableCapacityKey_VH: VarHandle by lazy { NSURLVolumeAvailableCapacityKey_LAYOUT.varHandle() }
-
-var NSURLVolumeAvailableCapacityKey: MemorySegment
-    get() = NSURLVolumeAvailableCapacityKey_VH.get(NSURLVolumeAvailableCapacityKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeAvailableCapacityKey_VH.set(NSURLVolumeAvailableCapacityKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeResourceCountKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeResourceCountKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeResourceCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeResourceCountKey").orElseThrow() }
-private val NSURLVolumeResourceCountKey_VH: VarHandle by lazy { NSURLVolumeResourceCountKey_LAYOUT.varHandle() }
-
-var NSURLVolumeResourceCountKey: MemorySegment
-    get() = NSURLVolumeResourceCountKey_VH.get(NSURLVolumeResourceCountKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeResourceCountKey_VH.set(NSURLVolumeResourceCountKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsPersistentIDsKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsPersistentIDsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsPersistentIDsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsPersistentIDsKey").orElseThrow() }
-private val NSURLVolumeSupportsPersistentIDsKey_VH: VarHandle by lazy { NSURLVolumeSupportsPersistentIDsKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsPersistentIDsKey: MemorySegment
-    get() = NSURLVolumeSupportsPersistentIDsKey_VH.get(NSURLVolumeSupportsPersistentIDsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsPersistentIDsKey_VH.set(NSURLVolumeSupportsPersistentIDsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsSymbolicLinksKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsSymbolicLinksKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsSymbolicLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSymbolicLinksKey").orElseThrow() }
-private val NSURLVolumeSupportsSymbolicLinksKey_VH: VarHandle by lazy { NSURLVolumeSupportsSymbolicLinksKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsSymbolicLinksKey: MemorySegment
-    get() = NSURLVolumeSupportsSymbolicLinksKey_VH.get(NSURLVolumeSupportsSymbolicLinksKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsSymbolicLinksKey_VH.set(NSURLVolumeSupportsSymbolicLinksKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsHardLinksKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsHardLinksKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsHardLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsHardLinksKey").orElseThrow() }
-private val NSURLVolumeSupportsHardLinksKey_VH: VarHandle by lazy { NSURLVolumeSupportsHardLinksKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsHardLinksKey: MemorySegment
-    get() = NSURLVolumeSupportsHardLinksKey_VH.get(NSURLVolumeSupportsHardLinksKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsHardLinksKey_VH.set(NSURLVolumeSupportsHardLinksKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsJournalingKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsJournalingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsJournalingKey").orElseThrow() }
-private val NSURLVolumeSupportsJournalingKey_VH: VarHandle by lazy { NSURLVolumeSupportsJournalingKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsJournalingKey: MemorySegment
-    get() = NSURLVolumeSupportsJournalingKey_VH.get(NSURLVolumeSupportsJournalingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsJournalingKey_VH.set(NSURLVolumeSupportsJournalingKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsJournalingKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsJournalingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsJournalingKey").orElseThrow() }
-private val NSURLVolumeIsJournalingKey_VH: VarHandle by lazy { NSURLVolumeIsJournalingKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsJournalingKey: MemorySegment
-    get() = NSURLVolumeIsJournalingKey_VH.get(NSURLVolumeIsJournalingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsJournalingKey_VH.set(NSURLVolumeIsJournalingKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsSparseFilesKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsSparseFilesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsSparseFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSparseFilesKey").orElseThrow() }
-private val NSURLVolumeSupportsSparseFilesKey_VH: VarHandle by lazy { NSURLVolumeSupportsSparseFilesKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsSparseFilesKey: MemorySegment
-    get() = NSURLVolumeSupportsSparseFilesKey_VH.get(NSURLVolumeSupportsSparseFilesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsSparseFilesKey_VH.set(NSURLVolumeSupportsSparseFilesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsZeroRunsKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsZeroRunsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsZeroRunsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsZeroRunsKey").orElseThrow() }
-private val NSURLVolumeSupportsZeroRunsKey_VH: VarHandle by lazy { NSURLVolumeSupportsZeroRunsKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsZeroRunsKey: MemorySegment
-    get() = NSURLVolumeSupportsZeroRunsKey_VH.get(NSURLVolumeSupportsZeroRunsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsZeroRunsKey_VH.set(NSURLVolumeSupportsZeroRunsKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsCaseSensitiveNamesKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCaseSensitiveNamesKey").orElseThrow() }
-private val NSURLVolumeSupportsCaseSensitiveNamesKey_VH: VarHandle by lazy { NSURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsCaseSensitiveNamesKey: MemorySegment
-    get() = NSURLVolumeSupportsCaseSensitiveNamesKey_VH.get(NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsCaseSensitiveNamesKey_VH.set(NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsCasePreservedNamesKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsCasePreservedNamesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCasePreservedNamesKey").orElseThrow() }
-private val NSURLVolumeSupportsCasePreservedNamesKey_VH: VarHandle by lazy { NSURLVolumeSupportsCasePreservedNamesKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsCasePreservedNamesKey: MemorySegment
-    get() = NSURLVolumeSupportsCasePreservedNamesKey_VH.get(NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsCasePreservedNamesKey_VH.set(NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsRootDirectoryDatesKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsRootDirectoryDatesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsRootDirectoryDatesKey").orElseThrow() }
-private val NSURLVolumeSupportsRootDirectoryDatesKey_VH: VarHandle by lazy { NSURLVolumeSupportsRootDirectoryDatesKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsRootDirectoryDatesKey: MemorySegment
-    get() = NSURLVolumeSupportsRootDirectoryDatesKey_VH.get(NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsRootDirectoryDatesKey_VH.set(NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsVolumeSizesKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsVolumeSizesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsVolumeSizesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsVolumeSizesKey").orElseThrow() }
-private val NSURLVolumeSupportsVolumeSizesKey_VH: VarHandle by lazy { NSURLVolumeSupportsVolumeSizesKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsVolumeSizesKey: MemorySegment
-    get() = NSURLVolumeSupportsVolumeSizesKey_VH.get(NSURLVolumeSupportsVolumeSizesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsVolumeSizesKey_VH.set(NSURLVolumeSupportsVolumeSizesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsRenamingKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsRenamingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsRenamingKey").orElseThrow() }
-private val NSURLVolumeSupportsRenamingKey_VH: VarHandle by lazy { NSURLVolumeSupportsRenamingKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsRenamingKey: MemorySegment
-    get() = NSURLVolumeSupportsRenamingKey_VH.get(NSURLVolumeSupportsRenamingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsRenamingKey_VH.set(NSURLVolumeSupportsRenamingKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsAdvisoryFileLockingKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsAdvisoryFileLockingKey").orElseThrow() }
-private val NSURLVolumeSupportsAdvisoryFileLockingKey_VH: VarHandle by lazy { NSURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsAdvisoryFileLockingKey: MemorySegment
-    get() = NSURLVolumeSupportsAdvisoryFileLockingKey_VH.get(NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsAdvisoryFileLockingKey_VH.set(NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsExtendedSecurityKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsExtendedSecurityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsExtendedSecurityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsExtendedSecurityKey").orElseThrow() }
-private val NSURLVolumeSupportsExtendedSecurityKey_VH: VarHandle by lazy { NSURLVolumeSupportsExtendedSecurityKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsExtendedSecurityKey: MemorySegment
-    get() = NSURLVolumeSupportsExtendedSecurityKey_VH.get(NSURLVolumeSupportsExtendedSecurityKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsExtendedSecurityKey_VH.set(NSURLVolumeSupportsExtendedSecurityKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsBrowsableKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsBrowsableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsBrowsableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsBrowsableKey").orElseThrow() }
-private val NSURLVolumeIsBrowsableKey_VH: VarHandle by lazy { NSURLVolumeIsBrowsableKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsBrowsableKey: MemorySegment
-    get() = NSURLVolumeIsBrowsableKey_VH.get(NSURLVolumeIsBrowsableKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsBrowsableKey_VH.set(NSURLVolumeIsBrowsableKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeMaximumFileSizeKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeMaximumFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeMaximumFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeMaximumFileSizeKey").orElseThrow() }
-private val NSURLVolumeMaximumFileSizeKey_VH: VarHandle by lazy { NSURLVolumeMaximumFileSizeKey_LAYOUT.varHandle() }
-
-var NSURLVolumeMaximumFileSizeKey: MemorySegment
-    get() = NSURLVolumeMaximumFileSizeKey_VH.get(NSURLVolumeMaximumFileSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeMaximumFileSizeKey_VH.set(NSURLVolumeMaximumFileSizeKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsEjectableKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsEjectableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsEjectableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsEjectableKey").orElseThrow() }
-private val NSURLVolumeIsEjectableKey_VH: VarHandle by lazy { NSURLVolumeIsEjectableKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsEjectableKey: MemorySegment
-    get() = NSURLVolumeIsEjectableKey_VH.get(NSURLVolumeIsEjectableKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsEjectableKey_VH.set(NSURLVolumeIsEjectableKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsRemovableKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsRemovableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsRemovableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsRemovableKey").orElseThrow() }
-private val NSURLVolumeIsRemovableKey_VH: VarHandle by lazy { NSURLVolumeIsRemovableKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsRemovableKey: MemorySegment
-    get() = NSURLVolumeIsRemovableKey_VH.get(NSURLVolumeIsRemovableKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsRemovableKey_VH.set(NSURLVolumeIsRemovableKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsInternalKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsInternalKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsInternalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsInternalKey").orElseThrow() }
-private val NSURLVolumeIsInternalKey_VH: VarHandle by lazy { NSURLVolumeIsInternalKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsInternalKey: MemorySegment
-    get() = NSURLVolumeIsInternalKey_VH.get(NSURLVolumeIsInternalKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsInternalKey_VH.set(NSURLVolumeIsInternalKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsAutomountedKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsAutomountedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsAutomountedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsAutomountedKey").orElseThrow() }
-private val NSURLVolumeIsAutomountedKey_VH: VarHandle by lazy { NSURLVolumeIsAutomountedKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsAutomountedKey: MemorySegment
-    get() = NSURLVolumeIsAutomountedKey_VH.get(NSURLVolumeIsAutomountedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsAutomountedKey_VH.set(NSURLVolumeIsAutomountedKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsLocalKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsLocalKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsLocalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsLocalKey").orElseThrow() }
-private val NSURLVolumeIsLocalKey_VH: VarHandle by lazy { NSURLVolumeIsLocalKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsLocalKey: MemorySegment
-    get() = NSURLVolumeIsLocalKey_VH.get(NSURLVolumeIsLocalKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsLocalKey_VH.set(NSURLVolumeIsLocalKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsReadOnlyKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsReadOnlyKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsReadOnlyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsReadOnlyKey").orElseThrow() }
-private val NSURLVolumeIsReadOnlyKey_VH: VarHandle by lazy { NSURLVolumeIsReadOnlyKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsReadOnlyKey: MemorySegment
-    get() = NSURLVolumeIsReadOnlyKey_VH.get(NSURLVolumeIsReadOnlyKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsReadOnlyKey_VH.set(NSURLVolumeIsReadOnlyKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeCreationDateKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeCreationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeCreationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeCreationDateKey").orElseThrow() }
-private val NSURLVolumeCreationDateKey_VH: VarHandle by lazy { NSURLVolumeCreationDateKey_LAYOUT.varHandle() }
-
-var NSURLVolumeCreationDateKey: MemorySegment
-    get() = NSURLVolumeCreationDateKey_VH.get(NSURLVolumeCreationDateKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeCreationDateKey_VH.set(NSURLVolumeCreationDateKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeURLForRemountingKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeURLForRemountingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeURLForRemountingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeURLForRemountingKey").orElseThrow() }
-private val NSURLVolumeURLForRemountingKey_VH: VarHandle by lazy { NSURLVolumeURLForRemountingKey_LAYOUT.varHandle() }
-
-var NSURLVolumeURLForRemountingKey: MemorySegment
-    get() = NSURLVolumeURLForRemountingKey_VH.get(NSURLVolumeURLForRemountingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeURLForRemountingKey_VH.set(NSURLVolumeURLForRemountingKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeUUIDStringKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeUUIDStringKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeUUIDStringKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeUUIDStringKey").orElseThrow() }
-private val NSURLVolumeUUIDStringKey_VH: VarHandle by lazy { NSURLVolumeUUIDStringKey_LAYOUT.varHandle() }
-
-var NSURLVolumeUUIDStringKey: MemorySegment
-    get() = NSURLVolumeUUIDStringKey_VH.get(NSURLVolumeUUIDStringKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeUUIDStringKey_VH.set(NSURLVolumeUUIDStringKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeNameKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeNameKey").orElseThrow() }
-private val NSURLVolumeNameKey_VH: VarHandle by lazy { NSURLVolumeNameKey_LAYOUT.varHandle() }
-
-var NSURLVolumeNameKey: MemorySegment
-    get() = NSURLVolumeNameKey_VH.get(NSURLVolumeNameKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeNameKey_VH.set(NSURLVolumeNameKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeLocalizedNameKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeLocalizedNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeLocalizedNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeLocalizedNameKey").orElseThrow() }
-private val NSURLVolumeLocalizedNameKey_VH: VarHandle by lazy { NSURLVolumeLocalizedNameKey_LAYOUT.varHandle() }
-
-var NSURLVolumeLocalizedNameKey: MemorySegment
-    get() = NSURLVolumeLocalizedNameKey_VH.get(NSURLVolumeLocalizedNameKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeLocalizedNameKey_VH.set(NSURLVolumeLocalizedNameKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsEncryptedKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsEncryptedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsEncryptedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsEncryptedKey").orElseThrow() }
-private val NSURLVolumeIsEncryptedKey_VH: VarHandle by lazy { NSURLVolumeIsEncryptedKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsEncryptedKey: MemorySegment
-    get() = NSURLVolumeIsEncryptedKey_VH.get(NSURLVolumeIsEncryptedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsEncryptedKey_VH.set(NSURLVolumeIsEncryptedKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeIsRootFileSystemKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeIsRootFileSystemKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsRootFileSystemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsRootFileSystemKey").orElseThrow() }
-private val NSURLVolumeIsRootFileSystemKey_VH: VarHandle by lazy { NSURLVolumeIsRootFileSystemKey_LAYOUT.varHandle() }
-
-var NSURLVolumeIsRootFileSystemKey: MemorySegment
-    get() = NSURLVolumeIsRootFileSystemKey_VH.get(NSURLVolumeIsRootFileSystemKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsRootFileSystemKey_VH.set(NSURLVolumeIsRootFileSystemKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsCompressionKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsCompressionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsCompressionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCompressionKey").orElseThrow() }
-private val NSURLVolumeSupportsCompressionKey_VH: VarHandle by lazy { NSURLVolumeSupportsCompressionKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsCompressionKey: MemorySegment
-    get() = NSURLVolumeSupportsCompressionKey_VH.get(NSURLVolumeSupportsCompressionKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsCompressionKey_VH.set(NSURLVolumeSupportsCompressionKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsFileCloningKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsFileCloningKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsFileCloningKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsFileCloningKey").orElseThrow() }
-private val NSURLVolumeSupportsFileCloningKey_VH: VarHandle by lazy { NSURLVolumeSupportsFileCloningKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsFileCloningKey: MemorySegment
-    get() = NSURLVolumeSupportsFileCloningKey_VH.get(NSURLVolumeSupportsFileCloningKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsFileCloningKey_VH.set(NSURLVolumeSupportsFileCloningKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsSwapRenamingKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsSwapRenamingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsSwapRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSwapRenamingKey").orElseThrow() }
-private val NSURLVolumeSupportsSwapRenamingKey_VH: VarHandle by lazy { NSURLVolumeSupportsSwapRenamingKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsSwapRenamingKey: MemorySegment
-    get() = NSURLVolumeSupportsSwapRenamingKey_VH.get(NSURLVolumeSupportsSwapRenamingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsSwapRenamingKey_VH.set(NSURLVolumeSupportsSwapRenamingKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsExclusiveRenamingKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsExclusiveRenamingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsExclusiveRenamingKey").orElseThrow() }
-private val NSURLVolumeSupportsExclusiveRenamingKey_VH: VarHandle by lazy { NSURLVolumeSupportsExclusiveRenamingKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsExclusiveRenamingKey: MemorySegment
-    get() = NSURLVolumeSupportsExclusiveRenamingKey_VH.get(NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsExclusiveRenamingKey_VH.set(NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsImmutableFilesKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsImmutableFilesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsImmutableFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsImmutableFilesKey").orElseThrow() }
-private val NSURLVolumeSupportsImmutableFilesKey_VH: VarHandle by lazy { NSURLVolumeSupportsImmutableFilesKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsImmutableFilesKey: MemorySegment
-    get() = NSURLVolumeSupportsImmutableFilesKey_VH.get(NSURLVolumeSupportsImmutableFilesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsImmutableFilesKey_VH.set(NSURLVolumeSupportsImmutableFilesKey_SEGMENT, value)
-
-/**
- * {@snippet lang=c : NSURLVolumeSupportsAccessPermissionsKey typedef const NSURLResourceKey = (Void)*
- */
-private val NSURLVolumeSupportsAccessPermissionsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsAccessPermissionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsAccessPermissionsKey").orElseThrow() }
-private val NSURLVolumeSupportsAccessPermissionsKey_VH: VarHandle by lazy { NSURLVolumeSupportsAccessPermissionsKey_LAYOUT.varHandle() }
-
-var NSURLVolumeSupportsAccessPermissionsKey: MemorySegment
-    get() = NSURLVolumeSupportsAccessPermissionsKey_VH.get(NSURLVolumeSupportsAccessPermissionsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsAccessPermissionsKey_VH.set(NSURLVolumeSupportsAccessPermissionsKey_SEGMENT, value)
