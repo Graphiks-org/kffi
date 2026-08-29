@@ -8,1629 +8,1629 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * {@snippet lang=c : NSURLPathKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLPathKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLPathKey").orElseThrow() }
+private val NSURLPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLPathKey").orElseThrow().reinterpret(NSURLPathKey_LAYOUT.byteSize()) }
 private val NSURLPathKey_VH: VarHandle by lazy { NSURLPathKey_LAYOUT.varHandle() }
 
 var NSURLPathKey: MemorySegment
-    get() = NSURLPathKey_VH.get(NSURLPathKey_SEGMENT) as MemorySegment
-    set(value) = NSURLPathKey_VH.set(NSURLPathKey_SEGMENT, value)
+    get() = NSURLPathKey_VH.get(NSURLPathKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLPathKey_VH.set(NSURLPathKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLCanonicalPathKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLCanonicalPathKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLCanonicalPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLCanonicalPathKey").orElseThrow() }
+private val NSURLCanonicalPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLCanonicalPathKey").orElseThrow().reinterpret(NSURLCanonicalPathKey_LAYOUT.byteSize()) }
 private val NSURLCanonicalPathKey_VH: VarHandle by lazy { NSURLCanonicalPathKey_LAYOUT.varHandle() }
 
 var NSURLCanonicalPathKey: MemorySegment
-    get() = NSURLCanonicalPathKey_VH.get(NSURLCanonicalPathKey_SEGMENT) as MemorySegment
-    set(value) = NSURLCanonicalPathKey_VH.set(NSURLCanonicalPathKey_SEGMENT, value)
+    get() = NSURLCanonicalPathKey_VH.get(NSURLCanonicalPathKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLCanonicalPathKey_VH.set(NSURLCanonicalPathKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLIsMountTriggerKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLIsMountTriggerKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLIsMountTriggerKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsMountTriggerKey").orElseThrow() }
+private val NSURLIsMountTriggerKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsMountTriggerKey").orElseThrow().reinterpret(NSURLIsMountTriggerKey_LAYOUT.byteSize()) }
 private val NSURLIsMountTriggerKey_VH: VarHandle by lazy { NSURLIsMountTriggerKey_LAYOUT.varHandle() }
 
 var NSURLIsMountTriggerKey: MemorySegment
-    get() = NSURLIsMountTriggerKey_VH.get(NSURLIsMountTriggerKey_SEGMENT) as MemorySegment
-    set(value) = NSURLIsMountTriggerKey_VH.set(NSURLIsMountTriggerKey_SEGMENT, value)
+    get() = NSURLIsMountTriggerKey_VH.get(NSURLIsMountTriggerKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLIsMountTriggerKey_VH.set(NSURLIsMountTriggerKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLGenerationIdentifierKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLGenerationIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLGenerationIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLGenerationIdentifierKey").orElseThrow() }
+private val NSURLGenerationIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLGenerationIdentifierKey").orElseThrow().reinterpret(NSURLGenerationIdentifierKey_LAYOUT.byteSize()) }
 private val NSURLGenerationIdentifierKey_VH: VarHandle by lazy { NSURLGenerationIdentifierKey_LAYOUT.varHandle() }
 
 var NSURLGenerationIdentifierKey: MemorySegment
-    get() = NSURLGenerationIdentifierKey_VH.get(NSURLGenerationIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSURLGenerationIdentifierKey_VH.set(NSURLGenerationIdentifierKey_SEGMENT, value)
+    get() = NSURLGenerationIdentifierKey_VH.get(NSURLGenerationIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLGenerationIdentifierKey_VH.set(NSURLGenerationIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLDocumentIdentifierKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLDocumentIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLDocumentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLDocumentIdentifierKey").orElseThrow() }
+private val NSURLDocumentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLDocumentIdentifierKey").orElseThrow().reinterpret(NSURLDocumentIdentifierKey_LAYOUT.byteSize()) }
 private val NSURLDocumentIdentifierKey_VH: VarHandle by lazy { NSURLDocumentIdentifierKey_LAYOUT.varHandle() }
 
 var NSURLDocumentIdentifierKey: MemorySegment
-    get() = NSURLDocumentIdentifierKey_VH.get(NSURLDocumentIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSURLDocumentIdentifierKey_VH.set(NSURLDocumentIdentifierKey_SEGMENT, value)
+    get() = NSURLDocumentIdentifierKey_VH.get(NSURLDocumentIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLDocumentIdentifierKey_VH.set(NSURLDocumentIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLAddedToDirectoryDateKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLAddedToDirectoryDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLAddedToDirectoryDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAddedToDirectoryDateKey").orElseThrow() }
+private val NSURLAddedToDirectoryDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAddedToDirectoryDateKey").orElseThrow().reinterpret(NSURLAddedToDirectoryDateKey_LAYOUT.byteSize()) }
 private val NSURLAddedToDirectoryDateKey_VH: VarHandle by lazy { NSURLAddedToDirectoryDateKey_LAYOUT.varHandle() }
 
 var NSURLAddedToDirectoryDateKey: MemorySegment
-    get() = NSURLAddedToDirectoryDateKey_VH.get(NSURLAddedToDirectoryDateKey_SEGMENT) as MemorySegment
-    set(value) = NSURLAddedToDirectoryDateKey_VH.set(NSURLAddedToDirectoryDateKey_SEGMENT, value)
+    get() = NSURLAddedToDirectoryDateKey_VH.get(NSURLAddedToDirectoryDateKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLAddedToDirectoryDateKey_VH.set(NSURLAddedToDirectoryDateKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLQuarantinePropertiesKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLQuarantinePropertiesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLQuarantinePropertiesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLQuarantinePropertiesKey").orElseThrow() }
+private val NSURLQuarantinePropertiesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLQuarantinePropertiesKey").orElseThrow().reinterpret(NSURLQuarantinePropertiesKey_LAYOUT.byteSize()) }
 private val NSURLQuarantinePropertiesKey_VH: VarHandle by lazy { NSURLQuarantinePropertiesKey_LAYOUT.varHandle() }
 
 var NSURLQuarantinePropertiesKey: MemorySegment
-    get() = NSURLQuarantinePropertiesKey_VH.get(NSURLQuarantinePropertiesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLQuarantinePropertiesKey_VH.set(NSURLQuarantinePropertiesKey_SEGMENT, value)
+    get() = NSURLQuarantinePropertiesKey_VH.get(NSURLQuarantinePropertiesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLQuarantinePropertiesKey_VH.set(NSURLQuarantinePropertiesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileResourceTypeKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLFileResourceTypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeKey").orElseThrow() }
+private val NSURLFileResourceTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeKey").orElseThrow().reinterpret(NSURLFileResourceTypeKey_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeKey_VH: VarHandle by lazy { NSURLFileResourceTypeKey_LAYOUT.varHandle() }
 
 var NSURLFileResourceTypeKey: MemorySegment
-    get() = NSURLFileResourceTypeKey_VH.get(NSURLFileResourceTypeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeKey_VH.set(NSURLFileResourceTypeKey_SEGMENT, value)
+    get() = NSURLFileResourceTypeKey_VH.get(NSURLFileResourceTypeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileResourceTypeKey_VH.set(NSURLFileResourceTypeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileIdentifierKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLFileIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileIdentifierKey").orElseThrow() }
+private val NSURLFileIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileIdentifierKey").orElseThrow().reinterpret(NSURLFileIdentifierKey_LAYOUT.byteSize()) }
 private val NSURLFileIdentifierKey_VH: VarHandle by lazy { NSURLFileIdentifierKey_LAYOUT.varHandle() }
 
 var NSURLFileIdentifierKey: MemorySegment
-    get() = NSURLFileIdentifierKey_VH.get(NSURLFileIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileIdentifierKey_VH.set(NSURLFileIdentifierKey_SEGMENT, value)
+    get() = NSURLFileIdentifierKey_VH.get(NSURLFileIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileIdentifierKey_VH.set(NSURLFileIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileContentIdentifierKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLFileContentIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileContentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileContentIdentifierKey").orElseThrow() }
+private val NSURLFileContentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileContentIdentifierKey").orElseThrow().reinterpret(NSURLFileContentIdentifierKey_LAYOUT.byteSize()) }
 private val NSURLFileContentIdentifierKey_VH: VarHandle by lazy { NSURLFileContentIdentifierKey_LAYOUT.varHandle() }
 
 var NSURLFileContentIdentifierKey: MemorySegment
-    get() = NSURLFileContentIdentifierKey_VH.get(NSURLFileContentIdentifierKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileContentIdentifierKey_VH.set(NSURLFileContentIdentifierKey_SEGMENT, value)
+    get() = NSURLFileContentIdentifierKey_VH.get(NSURLFileContentIdentifierKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileContentIdentifierKey_VH.set(NSURLFileContentIdentifierKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLMayShareFileContentKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLMayShareFileContentKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLMayShareFileContentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLMayShareFileContentKey").orElseThrow() }
+private val NSURLMayShareFileContentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLMayShareFileContentKey").orElseThrow().reinterpret(NSURLMayShareFileContentKey_LAYOUT.byteSize()) }
 private val NSURLMayShareFileContentKey_VH: VarHandle by lazy { NSURLMayShareFileContentKey_LAYOUT.varHandle() }
 
 var NSURLMayShareFileContentKey: MemorySegment
-    get() = NSURLMayShareFileContentKey_VH.get(NSURLMayShareFileContentKey_SEGMENT) as MemorySegment
-    set(value) = NSURLMayShareFileContentKey_VH.set(NSURLMayShareFileContentKey_SEGMENT, value)
+    get() = NSURLMayShareFileContentKey_VH.get(NSURLMayShareFileContentKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLMayShareFileContentKey_VH.set(NSURLMayShareFileContentKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLMayHaveExtendedAttributesKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLMayHaveExtendedAttributesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLMayHaveExtendedAttributesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLMayHaveExtendedAttributesKey").orElseThrow() }
+private val NSURLMayHaveExtendedAttributesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLMayHaveExtendedAttributesKey").orElseThrow().reinterpret(NSURLMayHaveExtendedAttributesKey_LAYOUT.byteSize()) }
 private val NSURLMayHaveExtendedAttributesKey_VH: VarHandle by lazy { NSURLMayHaveExtendedAttributesKey_LAYOUT.varHandle() }
 
 var NSURLMayHaveExtendedAttributesKey: MemorySegment
-    get() = NSURLMayHaveExtendedAttributesKey_VH.get(NSURLMayHaveExtendedAttributesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLMayHaveExtendedAttributesKey_VH.set(NSURLMayHaveExtendedAttributesKey_SEGMENT, value)
+    get() = NSURLMayHaveExtendedAttributesKey_VH.get(NSURLMayHaveExtendedAttributesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLMayHaveExtendedAttributesKey_VH.set(NSURLMayHaveExtendedAttributesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLIsPurgeableKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLIsPurgeableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLIsPurgeableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsPurgeableKey").orElseThrow() }
+private val NSURLIsPurgeableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsPurgeableKey").orElseThrow().reinterpret(NSURLIsPurgeableKey_LAYOUT.byteSize()) }
 private val NSURLIsPurgeableKey_VH: VarHandle by lazy { NSURLIsPurgeableKey_LAYOUT.varHandle() }
 
 var NSURLIsPurgeableKey: MemorySegment
-    get() = NSURLIsPurgeableKey_VH.get(NSURLIsPurgeableKey_SEGMENT) as MemorySegment
-    set(value) = NSURLIsPurgeableKey_VH.set(NSURLIsPurgeableKey_SEGMENT, value)
+    get() = NSURLIsPurgeableKey_VH.get(NSURLIsPurgeableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLIsPurgeableKey_VH.set(NSURLIsPurgeableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLIsSparseKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLIsSparseKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLIsSparseKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsSparseKey").orElseThrow() }
+private val NSURLIsSparseKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsSparseKey").orElseThrow().reinterpret(NSURLIsSparseKey_LAYOUT.byteSize()) }
 private val NSURLIsSparseKey_VH: VarHandle by lazy { NSURLIsSparseKey_LAYOUT.varHandle() }
 
 var NSURLIsSparseKey: MemorySegment
-    get() = NSURLIsSparseKey_VH.get(NSURLIsSparseKey_SEGMENT) as MemorySegment
-    set(value) = NSURLIsSparseKey_VH.set(NSURLIsSparseKey_SEGMENT, value)
+    get() = NSURLIsSparseKey_VH.get(NSURLIsSparseKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLIsSparseKey_VH.set(NSURLIsSparseKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileResourceTypeNamedPipe typedef const NSURLFileResourceType = (Void)*
  */
 private val NSURLFileResourceTypeNamedPipe_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeNamedPipe_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeNamedPipe").orElseThrow() }
+private val NSURLFileResourceTypeNamedPipe_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeNamedPipe").orElseThrow().reinterpret(NSURLFileResourceTypeNamedPipe_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeNamedPipe_VH: VarHandle by lazy { NSURLFileResourceTypeNamedPipe_LAYOUT.varHandle() }
 
 var NSURLFileResourceTypeNamedPipe: MemorySegment
-    get() = NSURLFileResourceTypeNamedPipe_VH.get(NSURLFileResourceTypeNamedPipe_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeNamedPipe_VH.set(NSURLFileResourceTypeNamedPipe_SEGMENT, value)
+    get() = NSURLFileResourceTypeNamedPipe_VH.get(NSURLFileResourceTypeNamedPipe_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileResourceTypeNamedPipe_VH.set(NSURLFileResourceTypeNamedPipe_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileResourceTypeCharacterSpecial typedef const NSURLFileResourceType = (Void)*
  */
 private val NSURLFileResourceTypeCharacterSpecial_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeCharacterSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeCharacterSpecial").orElseThrow() }
+private val NSURLFileResourceTypeCharacterSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeCharacterSpecial").orElseThrow().reinterpret(NSURLFileResourceTypeCharacterSpecial_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeCharacterSpecial_VH: VarHandle by lazy { NSURLFileResourceTypeCharacterSpecial_LAYOUT.varHandle() }
 
 var NSURLFileResourceTypeCharacterSpecial: MemorySegment
-    get() = NSURLFileResourceTypeCharacterSpecial_VH.get(NSURLFileResourceTypeCharacterSpecial_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeCharacterSpecial_VH.set(NSURLFileResourceTypeCharacterSpecial_SEGMENT, value)
+    get() = NSURLFileResourceTypeCharacterSpecial_VH.get(NSURLFileResourceTypeCharacterSpecial_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileResourceTypeCharacterSpecial_VH.set(NSURLFileResourceTypeCharacterSpecial_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileResourceTypeDirectory typedef const NSURLFileResourceType = (Void)*
  */
 private val NSURLFileResourceTypeDirectory_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeDirectory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeDirectory").orElseThrow() }
+private val NSURLFileResourceTypeDirectory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeDirectory").orElseThrow().reinterpret(NSURLFileResourceTypeDirectory_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeDirectory_VH: VarHandle by lazy { NSURLFileResourceTypeDirectory_LAYOUT.varHandle() }
 
 var NSURLFileResourceTypeDirectory: MemorySegment
-    get() = NSURLFileResourceTypeDirectory_VH.get(NSURLFileResourceTypeDirectory_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeDirectory_VH.set(NSURLFileResourceTypeDirectory_SEGMENT, value)
+    get() = NSURLFileResourceTypeDirectory_VH.get(NSURLFileResourceTypeDirectory_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileResourceTypeDirectory_VH.set(NSURLFileResourceTypeDirectory_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileResourceTypeBlockSpecial typedef const NSURLFileResourceType = (Void)*
  */
 private val NSURLFileResourceTypeBlockSpecial_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeBlockSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeBlockSpecial").orElseThrow() }
+private val NSURLFileResourceTypeBlockSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeBlockSpecial").orElseThrow().reinterpret(NSURLFileResourceTypeBlockSpecial_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeBlockSpecial_VH: VarHandle by lazy { NSURLFileResourceTypeBlockSpecial_LAYOUT.varHandle() }
 
 var NSURLFileResourceTypeBlockSpecial: MemorySegment
-    get() = NSURLFileResourceTypeBlockSpecial_VH.get(NSURLFileResourceTypeBlockSpecial_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeBlockSpecial_VH.set(NSURLFileResourceTypeBlockSpecial_SEGMENT, value)
+    get() = NSURLFileResourceTypeBlockSpecial_VH.get(NSURLFileResourceTypeBlockSpecial_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileResourceTypeBlockSpecial_VH.set(NSURLFileResourceTypeBlockSpecial_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileResourceTypeRegular typedef const NSURLFileResourceType = (Void)*
  */
 private val NSURLFileResourceTypeRegular_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeRegular_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeRegular").orElseThrow() }
+private val NSURLFileResourceTypeRegular_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeRegular").orElseThrow().reinterpret(NSURLFileResourceTypeRegular_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeRegular_VH: VarHandle by lazy { NSURLFileResourceTypeRegular_LAYOUT.varHandle() }
 
 var NSURLFileResourceTypeRegular: MemorySegment
-    get() = NSURLFileResourceTypeRegular_VH.get(NSURLFileResourceTypeRegular_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeRegular_VH.set(NSURLFileResourceTypeRegular_SEGMENT, value)
+    get() = NSURLFileResourceTypeRegular_VH.get(NSURLFileResourceTypeRegular_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileResourceTypeRegular_VH.set(NSURLFileResourceTypeRegular_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileResourceTypeSymbolicLink typedef const NSURLFileResourceType = (Void)*
  */
 private val NSURLFileResourceTypeSymbolicLink_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeSymbolicLink_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeSymbolicLink").orElseThrow() }
+private val NSURLFileResourceTypeSymbolicLink_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeSymbolicLink").orElseThrow().reinterpret(NSURLFileResourceTypeSymbolicLink_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeSymbolicLink_VH: VarHandle by lazy { NSURLFileResourceTypeSymbolicLink_LAYOUT.varHandle() }
 
 var NSURLFileResourceTypeSymbolicLink: MemorySegment
-    get() = NSURLFileResourceTypeSymbolicLink_VH.get(NSURLFileResourceTypeSymbolicLink_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeSymbolicLink_VH.set(NSURLFileResourceTypeSymbolicLink_SEGMENT, value)
+    get() = NSURLFileResourceTypeSymbolicLink_VH.get(NSURLFileResourceTypeSymbolicLink_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileResourceTypeSymbolicLink_VH.set(NSURLFileResourceTypeSymbolicLink_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileResourceTypeSocket typedef const NSURLFileResourceType = (Void)*
  */
 private val NSURLFileResourceTypeSocket_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeSocket").orElseThrow() }
+private val NSURLFileResourceTypeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeSocket").orElseThrow().reinterpret(NSURLFileResourceTypeSocket_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeSocket_VH: VarHandle by lazy { NSURLFileResourceTypeSocket_LAYOUT.varHandle() }
 
 var NSURLFileResourceTypeSocket: MemorySegment
-    get() = NSURLFileResourceTypeSocket_VH.get(NSURLFileResourceTypeSocket_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeSocket_VH.set(NSURLFileResourceTypeSocket_SEGMENT, value)
+    get() = NSURLFileResourceTypeSocket_VH.get(NSURLFileResourceTypeSocket_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileResourceTypeSocket_VH.set(NSURLFileResourceTypeSocket_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileResourceTypeUnknown typedef const NSURLFileResourceType = (Void)*
  */
 private val NSURLFileResourceTypeUnknown_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileResourceTypeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeUnknown").orElseThrow() }
+private val NSURLFileResourceTypeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeUnknown").orElseThrow().reinterpret(NSURLFileResourceTypeUnknown_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeUnknown_VH: VarHandle by lazy { NSURLFileResourceTypeUnknown_LAYOUT.varHandle() }
 
 var NSURLFileResourceTypeUnknown: MemorySegment
-    get() = NSURLFileResourceTypeUnknown_VH.get(NSURLFileResourceTypeUnknown_SEGMENT) as MemorySegment
-    set(value) = NSURLFileResourceTypeUnknown_VH.set(NSURLFileResourceTypeUnknown_SEGMENT, value)
+    get() = NSURLFileResourceTypeUnknown_VH.get(NSURLFileResourceTypeUnknown_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileResourceTypeUnknown_VH.set(NSURLFileResourceTypeUnknown_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLThumbnailDictionaryKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLThumbnailDictionaryKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLThumbnailDictionaryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLThumbnailDictionaryKey").orElseThrow() }
+private val NSURLThumbnailDictionaryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLThumbnailDictionaryKey").orElseThrow().reinterpret(NSURLThumbnailDictionaryKey_LAYOUT.byteSize()) }
 private val NSURLThumbnailDictionaryKey_VH: VarHandle by lazy { NSURLThumbnailDictionaryKey_LAYOUT.varHandle() }
 
 var NSURLThumbnailDictionaryKey: MemorySegment
-    get() = NSURLThumbnailDictionaryKey_VH.get(NSURLThumbnailDictionaryKey_SEGMENT) as MemorySegment
-    set(value) = NSURLThumbnailDictionaryKey_VH.set(NSURLThumbnailDictionaryKey_SEGMENT, value)
+    get() = NSURLThumbnailDictionaryKey_VH.get(NSURLThumbnailDictionaryKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLThumbnailDictionaryKey_VH.set(NSURLThumbnailDictionaryKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLThumbnailKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLThumbnailKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLThumbnailKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLThumbnailKey").orElseThrow() }
+private val NSURLThumbnailKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLThumbnailKey").orElseThrow().reinterpret(NSURLThumbnailKey_LAYOUT.byteSize()) }
 private val NSURLThumbnailKey_VH: VarHandle by lazy { NSURLThumbnailKey_LAYOUT.varHandle() }
 
 var NSURLThumbnailKey: MemorySegment
-    get() = NSURLThumbnailKey_VH.get(NSURLThumbnailKey_SEGMENT) as MemorySegment
-    set(value) = NSURLThumbnailKey_VH.set(NSURLThumbnailKey_SEGMENT, value)
+    get() = NSURLThumbnailKey_VH.get(NSURLThumbnailKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLThumbnailKey_VH.set(NSURLThumbnailKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSThumbnail1024x1024SizeKey typedef const NSURLThumbnailDictionaryItem = (Void)*
  */
 private val NSThumbnail1024x1024SizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSThumbnail1024x1024SizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSThumbnail1024x1024SizeKey").orElseThrow() }
+private val NSThumbnail1024x1024SizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSThumbnail1024x1024SizeKey").orElseThrow().reinterpret(NSThumbnail1024x1024SizeKey_LAYOUT.byteSize()) }
 private val NSThumbnail1024x1024SizeKey_VH: VarHandle by lazy { NSThumbnail1024x1024SizeKey_LAYOUT.varHandle() }
 
 var NSThumbnail1024x1024SizeKey: MemorySegment
-    get() = NSThumbnail1024x1024SizeKey_VH.get(NSThumbnail1024x1024SizeKey_SEGMENT) as MemorySegment
-    set(value) = NSThumbnail1024x1024SizeKey_VH.set(NSThumbnail1024x1024SizeKey_SEGMENT, value)
+    get() = NSThumbnail1024x1024SizeKey_VH.get(NSThumbnail1024x1024SizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSThumbnail1024x1024SizeKey_VH.set(NSThumbnail1024x1024SizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileSizeKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileSizeKey").orElseThrow() }
+private val NSURLFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileSizeKey").orElseThrow().reinterpret(NSURLFileSizeKey_LAYOUT.byteSize()) }
 private val NSURLFileSizeKey_VH: VarHandle by lazy { NSURLFileSizeKey_LAYOUT.varHandle() }
 
 var NSURLFileSizeKey: MemorySegment
-    get() = NSURLFileSizeKey_VH.get(NSURLFileSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileSizeKey_VH.set(NSURLFileSizeKey_SEGMENT, value)
+    get() = NSURLFileSizeKey_VH.get(NSURLFileSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileSizeKey_VH.set(NSURLFileSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileAllocatedSizeKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLFileAllocatedSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileAllocatedSizeKey").orElseThrow() }
+private val NSURLFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileAllocatedSizeKey").orElseThrow().reinterpret(NSURLFileAllocatedSizeKey_LAYOUT.byteSize()) }
 private val NSURLFileAllocatedSizeKey_VH: VarHandle by lazy { NSURLFileAllocatedSizeKey_LAYOUT.varHandle() }
 
 var NSURLFileAllocatedSizeKey: MemorySegment
-    get() = NSURLFileAllocatedSizeKey_VH.get(NSURLFileAllocatedSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileAllocatedSizeKey_VH.set(NSURLFileAllocatedSizeKey_SEGMENT, value)
+    get() = NSURLFileAllocatedSizeKey_VH.get(NSURLFileAllocatedSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileAllocatedSizeKey_VH.set(NSURLFileAllocatedSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLTotalFileSizeKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLTotalFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLTotalFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLTotalFileSizeKey").orElseThrow() }
+private val NSURLTotalFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLTotalFileSizeKey").orElseThrow().reinterpret(NSURLTotalFileSizeKey_LAYOUT.byteSize()) }
 private val NSURLTotalFileSizeKey_VH: VarHandle by lazy { NSURLTotalFileSizeKey_LAYOUT.varHandle() }
 
 var NSURLTotalFileSizeKey: MemorySegment
-    get() = NSURLTotalFileSizeKey_VH.get(NSURLTotalFileSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLTotalFileSizeKey_VH.set(NSURLTotalFileSizeKey_SEGMENT, value)
+    get() = NSURLTotalFileSizeKey_VH.get(NSURLTotalFileSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLTotalFileSizeKey_VH.set(NSURLTotalFileSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLTotalFileAllocatedSizeKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLTotalFileAllocatedSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLTotalFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLTotalFileAllocatedSizeKey").orElseThrow() }
+private val NSURLTotalFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLTotalFileAllocatedSizeKey").orElseThrow().reinterpret(NSURLTotalFileAllocatedSizeKey_LAYOUT.byteSize()) }
 private val NSURLTotalFileAllocatedSizeKey_VH: VarHandle by lazy { NSURLTotalFileAllocatedSizeKey_LAYOUT.varHandle() }
 
 var NSURLTotalFileAllocatedSizeKey: MemorySegment
-    get() = NSURLTotalFileAllocatedSizeKey_VH.get(NSURLTotalFileAllocatedSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLTotalFileAllocatedSizeKey_VH.set(NSURLTotalFileAllocatedSizeKey_SEGMENT, value)
+    get() = NSURLTotalFileAllocatedSizeKey_VH.get(NSURLTotalFileAllocatedSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLTotalFileAllocatedSizeKey_VH.set(NSURLTotalFileAllocatedSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLIsAliasFileKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLIsAliasFileKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLIsAliasFileKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsAliasFileKey").orElseThrow() }
+private val NSURLIsAliasFileKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsAliasFileKey").orElseThrow().reinterpret(NSURLIsAliasFileKey_LAYOUT.byteSize()) }
 private val NSURLIsAliasFileKey_VH: VarHandle by lazy { NSURLIsAliasFileKey_LAYOUT.varHandle() }
 
 var NSURLIsAliasFileKey: MemorySegment
-    get() = NSURLIsAliasFileKey_VH.get(NSURLIsAliasFileKey_SEGMENT) as MemorySegment
-    set(value) = NSURLIsAliasFileKey_VH.set(NSURLIsAliasFileKey_SEGMENT, value)
+    get() = NSURLIsAliasFileKey_VH.get(NSURLIsAliasFileKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLIsAliasFileKey_VH.set(NSURLIsAliasFileKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileProtectionKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLFileProtectionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionKey").orElseThrow() }
+private val NSURLFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionKey").orElseThrow().reinterpret(NSURLFileProtectionKey_LAYOUT.byteSize()) }
 private val NSURLFileProtectionKey_VH: VarHandle by lazy { NSURLFileProtectionKey_LAYOUT.varHandle() }
 
 var NSURLFileProtectionKey: MemorySegment
-    get() = NSURLFileProtectionKey_VH.get(NSURLFileProtectionKey_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionKey_VH.set(NSURLFileProtectionKey_SEGMENT, value)
+    get() = NSURLFileProtectionKey_VH.get(NSURLFileProtectionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileProtectionKey_VH.set(NSURLFileProtectionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileProtectionNone typedef const NSURLFileProtectionType = (Void)*
  */
 private val NSURLFileProtectionNone_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionNone").orElseThrow() }
+private val NSURLFileProtectionNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionNone").orElseThrow().reinterpret(NSURLFileProtectionNone_LAYOUT.byteSize()) }
 private val NSURLFileProtectionNone_VH: VarHandle by lazy { NSURLFileProtectionNone_LAYOUT.varHandle() }
 
 var NSURLFileProtectionNone: MemorySegment
-    get() = NSURLFileProtectionNone_VH.get(NSURLFileProtectionNone_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionNone_VH.set(NSURLFileProtectionNone_SEGMENT, value)
+    get() = NSURLFileProtectionNone_VH.get(NSURLFileProtectionNone_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileProtectionNone_VH.set(NSURLFileProtectionNone_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileProtectionComplete typedef const NSURLFileProtectionType = (Void)*
  */
 private val NSURLFileProtectionComplete_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionComplete_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionComplete").orElseThrow() }
+private val NSURLFileProtectionComplete_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionComplete").orElseThrow().reinterpret(NSURLFileProtectionComplete_LAYOUT.byteSize()) }
 private val NSURLFileProtectionComplete_VH: VarHandle by lazy { NSURLFileProtectionComplete_LAYOUT.varHandle() }
 
 var NSURLFileProtectionComplete: MemorySegment
-    get() = NSURLFileProtectionComplete_VH.get(NSURLFileProtectionComplete_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionComplete_VH.set(NSURLFileProtectionComplete_SEGMENT, value)
+    get() = NSURLFileProtectionComplete_VH.get(NSURLFileProtectionComplete_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileProtectionComplete_VH.set(NSURLFileProtectionComplete_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileProtectionCompleteUnlessOpen typedef const NSURLFileProtectionType = (Void)*
  */
 private val NSURLFileProtectionCompleteUnlessOpen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionCompleteUnlessOpen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteUnlessOpen").orElseThrow() }
+private val NSURLFileProtectionCompleteUnlessOpen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteUnlessOpen").orElseThrow().reinterpret(NSURLFileProtectionCompleteUnlessOpen_LAYOUT.byteSize()) }
 private val NSURLFileProtectionCompleteUnlessOpen_VH: VarHandle by lazy { NSURLFileProtectionCompleteUnlessOpen_LAYOUT.varHandle() }
 
 var NSURLFileProtectionCompleteUnlessOpen: MemorySegment
-    get() = NSURLFileProtectionCompleteUnlessOpen_VH.get(NSURLFileProtectionCompleteUnlessOpen_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionCompleteUnlessOpen_VH.set(NSURLFileProtectionCompleteUnlessOpen_SEGMENT, value)
+    get() = NSURLFileProtectionCompleteUnlessOpen_VH.get(NSURLFileProtectionCompleteUnlessOpen_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileProtectionCompleteUnlessOpen_VH.set(NSURLFileProtectionCompleteUnlessOpen_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileProtectionCompleteUntilFirstUserAuthentication typedef const NSURLFileProtectionType = (Void)*
  */
 private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteUntilFirstUserAuthentication").orElseThrow() }
+private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteUntilFirstUserAuthentication").orElseThrow().reinterpret(NSURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.byteSize()) }
 private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH: VarHandle by lazy { NSURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.varHandle() }
 
 var NSURLFileProtectionCompleteUntilFirstUserAuthentication: MemorySegment
-    get() = NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH.get(NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH.set(NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, value)
+    get() = NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH.get(NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH.set(NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLFileProtectionCompleteWhenUserInactive typedef const NSURLFileProtectionType = (Void)*
  */
 private val NSURLFileProtectionCompleteWhenUserInactive_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLFileProtectionCompleteWhenUserInactive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteWhenUserInactive").orElseThrow() }
+private val NSURLFileProtectionCompleteWhenUserInactive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteWhenUserInactive").orElseThrow().reinterpret(NSURLFileProtectionCompleteWhenUserInactive_LAYOUT.byteSize()) }
 private val NSURLFileProtectionCompleteWhenUserInactive_VH: VarHandle by lazy { NSURLFileProtectionCompleteWhenUserInactive_LAYOUT.varHandle() }
 
 var NSURLFileProtectionCompleteWhenUserInactive: MemorySegment
-    get() = NSURLFileProtectionCompleteWhenUserInactive_VH.get(NSURLFileProtectionCompleteWhenUserInactive_SEGMENT) as MemorySegment
-    set(value) = NSURLFileProtectionCompleteWhenUserInactive_VH.set(NSURLFileProtectionCompleteWhenUserInactive_SEGMENT, value)
+    get() = NSURLFileProtectionCompleteWhenUserInactive_VH.get(NSURLFileProtectionCompleteWhenUserInactive_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLFileProtectionCompleteWhenUserInactive_VH.set(NSURLFileProtectionCompleteWhenUserInactive_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLDirectoryEntryCountKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLDirectoryEntryCountKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLDirectoryEntryCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLDirectoryEntryCountKey").orElseThrow() }
+private val NSURLDirectoryEntryCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLDirectoryEntryCountKey").orElseThrow().reinterpret(NSURLDirectoryEntryCountKey_LAYOUT.byteSize()) }
 private val NSURLDirectoryEntryCountKey_VH: VarHandle by lazy { NSURLDirectoryEntryCountKey_LAYOUT.varHandle() }
 
 var NSURLDirectoryEntryCountKey: MemorySegment
-    get() = NSURLDirectoryEntryCountKey_VH.get(NSURLDirectoryEntryCountKey_SEGMENT) as MemorySegment
-    set(value) = NSURLDirectoryEntryCountKey_VH.set(NSURLDirectoryEntryCountKey_SEGMENT, value)
+    get() = NSURLDirectoryEntryCountKey_VH.get(NSURLDirectoryEntryCountKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLDirectoryEntryCountKey_VH.set(NSURLDirectoryEntryCountKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeLocalizedFormatDescriptionKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeLocalizedFormatDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeLocalizedFormatDescriptionKey").orElseThrow() }
+private val NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeLocalizedFormatDescriptionKey").orElseThrow().reinterpret(NSURLVolumeLocalizedFormatDescriptionKey_LAYOUT.byteSize()) }
 private val NSURLVolumeLocalizedFormatDescriptionKey_VH: VarHandle by lazy { NSURLVolumeLocalizedFormatDescriptionKey_LAYOUT.varHandle() }
 
 var NSURLVolumeLocalizedFormatDescriptionKey: MemorySegment
-    get() = NSURLVolumeLocalizedFormatDescriptionKey_VH.get(NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeLocalizedFormatDescriptionKey_VH.set(NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT, value)
+    get() = NSURLVolumeLocalizedFormatDescriptionKey_VH.get(NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeLocalizedFormatDescriptionKey_VH.set(NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeTotalCapacityKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeTotalCapacityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeTotalCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeTotalCapacityKey").orElseThrow() }
+private val NSURLVolumeTotalCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeTotalCapacityKey").orElseThrow().reinterpret(NSURLVolumeTotalCapacityKey_LAYOUT.byteSize()) }
 private val NSURLVolumeTotalCapacityKey_VH: VarHandle by lazy { NSURLVolumeTotalCapacityKey_LAYOUT.varHandle() }
 
 var NSURLVolumeTotalCapacityKey: MemorySegment
-    get() = NSURLVolumeTotalCapacityKey_VH.get(NSURLVolumeTotalCapacityKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeTotalCapacityKey_VH.set(NSURLVolumeTotalCapacityKey_SEGMENT, value)
+    get() = NSURLVolumeTotalCapacityKey_VH.get(NSURLVolumeTotalCapacityKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeTotalCapacityKey_VH.set(NSURLVolumeTotalCapacityKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeAvailableCapacityKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeAvailableCapacityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeAvailableCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityKey").orElseThrow() }
+private val NSURLVolumeAvailableCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityKey").orElseThrow().reinterpret(NSURLVolumeAvailableCapacityKey_LAYOUT.byteSize()) }
 private val NSURLVolumeAvailableCapacityKey_VH: VarHandle by lazy { NSURLVolumeAvailableCapacityKey_LAYOUT.varHandle() }
 
 var NSURLVolumeAvailableCapacityKey: MemorySegment
-    get() = NSURLVolumeAvailableCapacityKey_VH.get(NSURLVolumeAvailableCapacityKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeAvailableCapacityKey_VH.set(NSURLVolumeAvailableCapacityKey_SEGMENT, value)
+    get() = NSURLVolumeAvailableCapacityKey_VH.get(NSURLVolumeAvailableCapacityKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeAvailableCapacityKey_VH.set(NSURLVolumeAvailableCapacityKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeResourceCountKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeResourceCountKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeResourceCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeResourceCountKey").orElseThrow() }
+private val NSURLVolumeResourceCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeResourceCountKey").orElseThrow().reinterpret(NSURLVolumeResourceCountKey_LAYOUT.byteSize()) }
 private val NSURLVolumeResourceCountKey_VH: VarHandle by lazy { NSURLVolumeResourceCountKey_LAYOUT.varHandle() }
 
 var NSURLVolumeResourceCountKey: MemorySegment
-    get() = NSURLVolumeResourceCountKey_VH.get(NSURLVolumeResourceCountKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeResourceCountKey_VH.set(NSURLVolumeResourceCountKey_SEGMENT, value)
+    get() = NSURLVolumeResourceCountKey_VH.get(NSURLVolumeResourceCountKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeResourceCountKey_VH.set(NSURLVolumeResourceCountKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsPersistentIDsKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsPersistentIDsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsPersistentIDsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsPersistentIDsKey").orElseThrow() }
+private val NSURLVolumeSupportsPersistentIDsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsPersistentIDsKey").orElseThrow().reinterpret(NSURLVolumeSupportsPersistentIDsKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsPersistentIDsKey_VH: VarHandle by lazy { NSURLVolumeSupportsPersistentIDsKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsPersistentIDsKey: MemorySegment
-    get() = NSURLVolumeSupportsPersistentIDsKey_VH.get(NSURLVolumeSupportsPersistentIDsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsPersistentIDsKey_VH.set(NSURLVolumeSupportsPersistentIDsKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsPersistentIDsKey_VH.get(NSURLVolumeSupportsPersistentIDsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsPersistentIDsKey_VH.set(NSURLVolumeSupportsPersistentIDsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsSymbolicLinksKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsSymbolicLinksKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsSymbolicLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSymbolicLinksKey").orElseThrow() }
+private val NSURLVolumeSupportsSymbolicLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSymbolicLinksKey").orElseThrow().reinterpret(NSURLVolumeSupportsSymbolicLinksKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsSymbolicLinksKey_VH: VarHandle by lazy { NSURLVolumeSupportsSymbolicLinksKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsSymbolicLinksKey: MemorySegment
-    get() = NSURLVolumeSupportsSymbolicLinksKey_VH.get(NSURLVolumeSupportsSymbolicLinksKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsSymbolicLinksKey_VH.set(NSURLVolumeSupportsSymbolicLinksKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsSymbolicLinksKey_VH.get(NSURLVolumeSupportsSymbolicLinksKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsSymbolicLinksKey_VH.set(NSURLVolumeSupportsSymbolicLinksKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsHardLinksKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsHardLinksKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsHardLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsHardLinksKey").orElseThrow() }
+private val NSURLVolumeSupportsHardLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsHardLinksKey").orElseThrow().reinterpret(NSURLVolumeSupportsHardLinksKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsHardLinksKey_VH: VarHandle by lazy { NSURLVolumeSupportsHardLinksKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsHardLinksKey: MemorySegment
-    get() = NSURLVolumeSupportsHardLinksKey_VH.get(NSURLVolumeSupportsHardLinksKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsHardLinksKey_VH.set(NSURLVolumeSupportsHardLinksKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsHardLinksKey_VH.get(NSURLVolumeSupportsHardLinksKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsHardLinksKey_VH.set(NSURLVolumeSupportsHardLinksKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsJournalingKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsJournalingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsJournalingKey").orElseThrow() }
+private val NSURLVolumeSupportsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsJournalingKey").orElseThrow().reinterpret(NSURLVolumeSupportsJournalingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsJournalingKey_VH: VarHandle by lazy { NSURLVolumeSupportsJournalingKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsJournalingKey: MemorySegment
-    get() = NSURLVolumeSupportsJournalingKey_VH.get(NSURLVolumeSupportsJournalingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsJournalingKey_VH.set(NSURLVolumeSupportsJournalingKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsJournalingKey_VH.get(NSURLVolumeSupportsJournalingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsJournalingKey_VH.set(NSURLVolumeSupportsJournalingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsJournalingKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsJournalingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsJournalingKey").orElseThrow() }
+private val NSURLVolumeIsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsJournalingKey").orElseThrow().reinterpret(NSURLVolumeIsJournalingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsJournalingKey_VH: VarHandle by lazy { NSURLVolumeIsJournalingKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsJournalingKey: MemorySegment
-    get() = NSURLVolumeIsJournalingKey_VH.get(NSURLVolumeIsJournalingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsJournalingKey_VH.set(NSURLVolumeIsJournalingKey_SEGMENT, value)
+    get() = NSURLVolumeIsJournalingKey_VH.get(NSURLVolumeIsJournalingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsJournalingKey_VH.set(NSURLVolumeIsJournalingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsSparseFilesKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsSparseFilesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsSparseFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSparseFilesKey").orElseThrow() }
+private val NSURLVolumeSupportsSparseFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSparseFilesKey").orElseThrow().reinterpret(NSURLVolumeSupportsSparseFilesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsSparseFilesKey_VH: VarHandle by lazy { NSURLVolumeSupportsSparseFilesKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsSparseFilesKey: MemorySegment
-    get() = NSURLVolumeSupportsSparseFilesKey_VH.get(NSURLVolumeSupportsSparseFilesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsSparseFilesKey_VH.set(NSURLVolumeSupportsSparseFilesKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsSparseFilesKey_VH.get(NSURLVolumeSupportsSparseFilesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsSparseFilesKey_VH.set(NSURLVolumeSupportsSparseFilesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsZeroRunsKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsZeroRunsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsZeroRunsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsZeroRunsKey").orElseThrow() }
+private val NSURLVolumeSupportsZeroRunsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsZeroRunsKey").orElseThrow().reinterpret(NSURLVolumeSupportsZeroRunsKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsZeroRunsKey_VH: VarHandle by lazy { NSURLVolumeSupportsZeroRunsKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsZeroRunsKey: MemorySegment
-    get() = NSURLVolumeSupportsZeroRunsKey_VH.get(NSURLVolumeSupportsZeroRunsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsZeroRunsKey_VH.set(NSURLVolumeSupportsZeroRunsKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsZeroRunsKey_VH.get(NSURLVolumeSupportsZeroRunsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsZeroRunsKey_VH.set(NSURLVolumeSupportsZeroRunsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsCaseSensitiveNamesKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCaseSensitiveNamesKey").orElseThrow() }
+private val NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCaseSensitiveNamesKey").orElseThrow().reinterpret(NSURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsCaseSensitiveNamesKey_VH: VarHandle by lazy { NSURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsCaseSensitiveNamesKey: MemorySegment
-    get() = NSURLVolumeSupportsCaseSensitiveNamesKey_VH.get(NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsCaseSensitiveNamesKey_VH.set(NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsCaseSensitiveNamesKey_VH.get(NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsCaseSensitiveNamesKey_VH.set(NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsCasePreservedNamesKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsCasePreservedNamesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCasePreservedNamesKey").orElseThrow() }
+private val NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCasePreservedNamesKey").orElseThrow().reinterpret(NSURLVolumeSupportsCasePreservedNamesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsCasePreservedNamesKey_VH: VarHandle by lazy { NSURLVolumeSupportsCasePreservedNamesKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsCasePreservedNamesKey: MemorySegment
-    get() = NSURLVolumeSupportsCasePreservedNamesKey_VH.get(NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsCasePreservedNamesKey_VH.set(NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsCasePreservedNamesKey_VH.get(NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsCasePreservedNamesKey_VH.set(NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsRootDirectoryDatesKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsRootDirectoryDatesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsRootDirectoryDatesKey").orElseThrow() }
+private val NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsRootDirectoryDatesKey").orElseThrow().reinterpret(NSURLVolumeSupportsRootDirectoryDatesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsRootDirectoryDatesKey_VH: VarHandle by lazy { NSURLVolumeSupportsRootDirectoryDatesKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsRootDirectoryDatesKey: MemorySegment
-    get() = NSURLVolumeSupportsRootDirectoryDatesKey_VH.get(NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsRootDirectoryDatesKey_VH.set(NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsRootDirectoryDatesKey_VH.get(NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsRootDirectoryDatesKey_VH.set(NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsVolumeSizesKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsVolumeSizesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsVolumeSizesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsVolumeSizesKey").orElseThrow() }
+private val NSURLVolumeSupportsVolumeSizesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsVolumeSizesKey").orElseThrow().reinterpret(NSURLVolumeSupportsVolumeSizesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsVolumeSizesKey_VH: VarHandle by lazy { NSURLVolumeSupportsVolumeSizesKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsVolumeSizesKey: MemorySegment
-    get() = NSURLVolumeSupportsVolumeSizesKey_VH.get(NSURLVolumeSupportsVolumeSizesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsVolumeSizesKey_VH.set(NSURLVolumeSupportsVolumeSizesKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsVolumeSizesKey_VH.get(NSURLVolumeSupportsVolumeSizesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsVolumeSizesKey_VH.set(NSURLVolumeSupportsVolumeSizesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsRenamingKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsRenamingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsRenamingKey").orElseThrow() }
+private val NSURLVolumeSupportsRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsRenamingKey").orElseThrow().reinterpret(NSURLVolumeSupportsRenamingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsRenamingKey_VH: VarHandle by lazy { NSURLVolumeSupportsRenamingKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsRenamingKey: MemorySegment
-    get() = NSURLVolumeSupportsRenamingKey_VH.get(NSURLVolumeSupportsRenamingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsRenamingKey_VH.set(NSURLVolumeSupportsRenamingKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsRenamingKey_VH.get(NSURLVolumeSupportsRenamingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsRenamingKey_VH.set(NSURLVolumeSupportsRenamingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsAdvisoryFileLockingKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsAdvisoryFileLockingKey").orElseThrow() }
+private val NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsAdvisoryFileLockingKey").orElseThrow().reinterpret(NSURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsAdvisoryFileLockingKey_VH: VarHandle by lazy { NSURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsAdvisoryFileLockingKey: MemorySegment
-    get() = NSURLVolumeSupportsAdvisoryFileLockingKey_VH.get(NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsAdvisoryFileLockingKey_VH.set(NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsAdvisoryFileLockingKey_VH.get(NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsAdvisoryFileLockingKey_VH.set(NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsExtendedSecurityKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsExtendedSecurityKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsExtendedSecurityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsExtendedSecurityKey").orElseThrow() }
+private val NSURLVolumeSupportsExtendedSecurityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsExtendedSecurityKey").orElseThrow().reinterpret(NSURLVolumeSupportsExtendedSecurityKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsExtendedSecurityKey_VH: VarHandle by lazy { NSURLVolumeSupportsExtendedSecurityKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsExtendedSecurityKey: MemorySegment
-    get() = NSURLVolumeSupportsExtendedSecurityKey_VH.get(NSURLVolumeSupportsExtendedSecurityKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsExtendedSecurityKey_VH.set(NSURLVolumeSupportsExtendedSecurityKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsExtendedSecurityKey_VH.get(NSURLVolumeSupportsExtendedSecurityKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsExtendedSecurityKey_VH.set(NSURLVolumeSupportsExtendedSecurityKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsBrowsableKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsBrowsableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsBrowsableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsBrowsableKey").orElseThrow() }
+private val NSURLVolumeIsBrowsableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsBrowsableKey").orElseThrow().reinterpret(NSURLVolumeIsBrowsableKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsBrowsableKey_VH: VarHandle by lazy { NSURLVolumeIsBrowsableKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsBrowsableKey: MemorySegment
-    get() = NSURLVolumeIsBrowsableKey_VH.get(NSURLVolumeIsBrowsableKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsBrowsableKey_VH.set(NSURLVolumeIsBrowsableKey_SEGMENT, value)
+    get() = NSURLVolumeIsBrowsableKey_VH.get(NSURLVolumeIsBrowsableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsBrowsableKey_VH.set(NSURLVolumeIsBrowsableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeMaximumFileSizeKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeMaximumFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeMaximumFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeMaximumFileSizeKey").orElseThrow() }
+private val NSURLVolumeMaximumFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeMaximumFileSizeKey").orElseThrow().reinterpret(NSURLVolumeMaximumFileSizeKey_LAYOUT.byteSize()) }
 private val NSURLVolumeMaximumFileSizeKey_VH: VarHandle by lazy { NSURLVolumeMaximumFileSizeKey_LAYOUT.varHandle() }
 
 var NSURLVolumeMaximumFileSizeKey: MemorySegment
-    get() = NSURLVolumeMaximumFileSizeKey_VH.get(NSURLVolumeMaximumFileSizeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeMaximumFileSizeKey_VH.set(NSURLVolumeMaximumFileSizeKey_SEGMENT, value)
+    get() = NSURLVolumeMaximumFileSizeKey_VH.get(NSURLVolumeMaximumFileSizeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeMaximumFileSizeKey_VH.set(NSURLVolumeMaximumFileSizeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsEjectableKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsEjectableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsEjectableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsEjectableKey").orElseThrow() }
+private val NSURLVolumeIsEjectableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsEjectableKey").orElseThrow().reinterpret(NSURLVolumeIsEjectableKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsEjectableKey_VH: VarHandle by lazy { NSURLVolumeIsEjectableKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsEjectableKey: MemorySegment
-    get() = NSURLVolumeIsEjectableKey_VH.get(NSURLVolumeIsEjectableKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsEjectableKey_VH.set(NSURLVolumeIsEjectableKey_SEGMENT, value)
+    get() = NSURLVolumeIsEjectableKey_VH.get(NSURLVolumeIsEjectableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsEjectableKey_VH.set(NSURLVolumeIsEjectableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsRemovableKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsRemovableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsRemovableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsRemovableKey").orElseThrow() }
+private val NSURLVolumeIsRemovableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsRemovableKey").orElseThrow().reinterpret(NSURLVolumeIsRemovableKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsRemovableKey_VH: VarHandle by lazy { NSURLVolumeIsRemovableKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsRemovableKey: MemorySegment
-    get() = NSURLVolumeIsRemovableKey_VH.get(NSURLVolumeIsRemovableKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsRemovableKey_VH.set(NSURLVolumeIsRemovableKey_SEGMENT, value)
+    get() = NSURLVolumeIsRemovableKey_VH.get(NSURLVolumeIsRemovableKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsRemovableKey_VH.set(NSURLVolumeIsRemovableKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsInternalKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsInternalKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsInternalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsInternalKey").orElseThrow() }
+private val NSURLVolumeIsInternalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsInternalKey").orElseThrow().reinterpret(NSURLVolumeIsInternalKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsInternalKey_VH: VarHandle by lazy { NSURLVolumeIsInternalKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsInternalKey: MemorySegment
-    get() = NSURLVolumeIsInternalKey_VH.get(NSURLVolumeIsInternalKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsInternalKey_VH.set(NSURLVolumeIsInternalKey_SEGMENT, value)
+    get() = NSURLVolumeIsInternalKey_VH.get(NSURLVolumeIsInternalKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsInternalKey_VH.set(NSURLVolumeIsInternalKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsAutomountedKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsAutomountedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsAutomountedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsAutomountedKey").orElseThrow() }
+private val NSURLVolumeIsAutomountedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsAutomountedKey").orElseThrow().reinterpret(NSURLVolumeIsAutomountedKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsAutomountedKey_VH: VarHandle by lazy { NSURLVolumeIsAutomountedKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsAutomountedKey: MemorySegment
-    get() = NSURLVolumeIsAutomountedKey_VH.get(NSURLVolumeIsAutomountedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsAutomountedKey_VH.set(NSURLVolumeIsAutomountedKey_SEGMENT, value)
+    get() = NSURLVolumeIsAutomountedKey_VH.get(NSURLVolumeIsAutomountedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsAutomountedKey_VH.set(NSURLVolumeIsAutomountedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsLocalKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsLocalKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsLocalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsLocalKey").orElseThrow() }
+private val NSURLVolumeIsLocalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsLocalKey").orElseThrow().reinterpret(NSURLVolumeIsLocalKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsLocalKey_VH: VarHandle by lazy { NSURLVolumeIsLocalKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsLocalKey: MemorySegment
-    get() = NSURLVolumeIsLocalKey_VH.get(NSURLVolumeIsLocalKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsLocalKey_VH.set(NSURLVolumeIsLocalKey_SEGMENT, value)
+    get() = NSURLVolumeIsLocalKey_VH.get(NSURLVolumeIsLocalKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsLocalKey_VH.set(NSURLVolumeIsLocalKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsReadOnlyKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsReadOnlyKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsReadOnlyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsReadOnlyKey").orElseThrow() }
+private val NSURLVolumeIsReadOnlyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsReadOnlyKey").orElseThrow().reinterpret(NSURLVolumeIsReadOnlyKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsReadOnlyKey_VH: VarHandle by lazy { NSURLVolumeIsReadOnlyKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsReadOnlyKey: MemorySegment
-    get() = NSURLVolumeIsReadOnlyKey_VH.get(NSURLVolumeIsReadOnlyKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsReadOnlyKey_VH.set(NSURLVolumeIsReadOnlyKey_SEGMENT, value)
+    get() = NSURLVolumeIsReadOnlyKey_VH.get(NSURLVolumeIsReadOnlyKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsReadOnlyKey_VH.set(NSURLVolumeIsReadOnlyKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeCreationDateKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeCreationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeCreationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeCreationDateKey").orElseThrow() }
+private val NSURLVolumeCreationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeCreationDateKey").orElseThrow().reinterpret(NSURLVolumeCreationDateKey_LAYOUT.byteSize()) }
 private val NSURLVolumeCreationDateKey_VH: VarHandle by lazy { NSURLVolumeCreationDateKey_LAYOUT.varHandle() }
 
 var NSURLVolumeCreationDateKey: MemorySegment
-    get() = NSURLVolumeCreationDateKey_VH.get(NSURLVolumeCreationDateKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeCreationDateKey_VH.set(NSURLVolumeCreationDateKey_SEGMENT, value)
+    get() = NSURLVolumeCreationDateKey_VH.get(NSURLVolumeCreationDateKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeCreationDateKey_VH.set(NSURLVolumeCreationDateKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeURLForRemountingKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeURLForRemountingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeURLForRemountingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeURLForRemountingKey").orElseThrow() }
+private val NSURLVolumeURLForRemountingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeURLForRemountingKey").orElseThrow().reinterpret(NSURLVolumeURLForRemountingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeURLForRemountingKey_VH: VarHandle by lazy { NSURLVolumeURLForRemountingKey_LAYOUT.varHandle() }
 
 var NSURLVolumeURLForRemountingKey: MemorySegment
-    get() = NSURLVolumeURLForRemountingKey_VH.get(NSURLVolumeURLForRemountingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeURLForRemountingKey_VH.set(NSURLVolumeURLForRemountingKey_SEGMENT, value)
+    get() = NSURLVolumeURLForRemountingKey_VH.get(NSURLVolumeURLForRemountingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeURLForRemountingKey_VH.set(NSURLVolumeURLForRemountingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeUUIDStringKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeUUIDStringKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeUUIDStringKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeUUIDStringKey").orElseThrow() }
+private val NSURLVolumeUUIDStringKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeUUIDStringKey").orElseThrow().reinterpret(NSURLVolumeUUIDStringKey_LAYOUT.byteSize()) }
 private val NSURLVolumeUUIDStringKey_VH: VarHandle by lazy { NSURLVolumeUUIDStringKey_LAYOUT.varHandle() }
 
 var NSURLVolumeUUIDStringKey: MemorySegment
-    get() = NSURLVolumeUUIDStringKey_VH.get(NSURLVolumeUUIDStringKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeUUIDStringKey_VH.set(NSURLVolumeUUIDStringKey_SEGMENT, value)
+    get() = NSURLVolumeUUIDStringKey_VH.get(NSURLVolumeUUIDStringKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeUUIDStringKey_VH.set(NSURLVolumeUUIDStringKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeNameKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeNameKey").orElseThrow() }
+private val NSURLVolumeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeNameKey").orElseThrow().reinterpret(NSURLVolumeNameKey_LAYOUT.byteSize()) }
 private val NSURLVolumeNameKey_VH: VarHandle by lazy { NSURLVolumeNameKey_LAYOUT.varHandle() }
 
 var NSURLVolumeNameKey: MemorySegment
-    get() = NSURLVolumeNameKey_VH.get(NSURLVolumeNameKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeNameKey_VH.set(NSURLVolumeNameKey_SEGMENT, value)
+    get() = NSURLVolumeNameKey_VH.get(NSURLVolumeNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeNameKey_VH.set(NSURLVolumeNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeLocalizedNameKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeLocalizedNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeLocalizedNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeLocalizedNameKey").orElseThrow() }
+private val NSURLVolumeLocalizedNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeLocalizedNameKey").orElseThrow().reinterpret(NSURLVolumeLocalizedNameKey_LAYOUT.byteSize()) }
 private val NSURLVolumeLocalizedNameKey_VH: VarHandle by lazy { NSURLVolumeLocalizedNameKey_LAYOUT.varHandle() }
 
 var NSURLVolumeLocalizedNameKey: MemorySegment
-    get() = NSURLVolumeLocalizedNameKey_VH.get(NSURLVolumeLocalizedNameKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeLocalizedNameKey_VH.set(NSURLVolumeLocalizedNameKey_SEGMENT, value)
+    get() = NSURLVolumeLocalizedNameKey_VH.get(NSURLVolumeLocalizedNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeLocalizedNameKey_VH.set(NSURLVolumeLocalizedNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsEncryptedKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsEncryptedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsEncryptedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsEncryptedKey").orElseThrow() }
+private val NSURLVolumeIsEncryptedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsEncryptedKey").orElseThrow().reinterpret(NSURLVolumeIsEncryptedKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsEncryptedKey_VH: VarHandle by lazy { NSURLVolumeIsEncryptedKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsEncryptedKey: MemorySegment
-    get() = NSURLVolumeIsEncryptedKey_VH.get(NSURLVolumeIsEncryptedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsEncryptedKey_VH.set(NSURLVolumeIsEncryptedKey_SEGMENT, value)
+    get() = NSURLVolumeIsEncryptedKey_VH.get(NSURLVolumeIsEncryptedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsEncryptedKey_VH.set(NSURLVolumeIsEncryptedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeIsRootFileSystemKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeIsRootFileSystemKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeIsRootFileSystemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsRootFileSystemKey").orElseThrow() }
+private val NSURLVolumeIsRootFileSystemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsRootFileSystemKey").orElseThrow().reinterpret(NSURLVolumeIsRootFileSystemKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsRootFileSystemKey_VH: VarHandle by lazy { NSURLVolumeIsRootFileSystemKey_LAYOUT.varHandle() }
 
 var NSURLVolumeIsRootFileSystemKey: MemorySegment
-    get() = NSURLVolumeIsRootFileSystemKey_VH.get(NSURLVolumeIsRootFileSystemKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeIsRootFileSystemKey_VH.set(NSURLVolumeIsRootFileSystemKey_SEGMENT, value)
+    get() = NSURLVolumeIsRootFileSystemKey_VH.get(NSURLVolumeIsRootFileSystemKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeIsRootFileSystemKey_VH.set(NSURLVolumeIsRootFileSystemKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsCompressionKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsCompressionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsCompressionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCompressionKey").orElseThrow() }
+private val NSURLVolumeSupportsCompressionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCompressionKey").orElseThrow().reinterpret(NSURLVolumeSupportsCompressionKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsCompressionKey_VH: VarHandle by lazy { NSURLVolumeSupportsCompressionKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsCompressionKey: MemorySegment
-    get() = NSURLVolumeSupportsCompressionKey_VH.get(NSURLVolumeSupportsCompressionKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsCompressionKey_VH.set(NSURLVolumeSupportsCompressionKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsCompressionKey_VH.get(NSURLVolumeSupportsCompressionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsCompressionKey_VH.set(NSURLVolumeSupportsCompressionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsFileCloningKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsFileCloningKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsFileCloningKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsFileCloningKey").orElseThrow() }
+private val NSURLVolumeSupportsFileCloningKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsFileCloningKey").orElseThrow().reinterpret(NSURLVolumeSupportsFileCloningKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsFileCloningKey_VH: VarHandle by lazy { NSURLVolumeSupportsFileCloningKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsFileCloningKey: MemorySegment
-    get() = NSURLVolumeSupportsFileCloningKey_VH.get(NSURLVolumeSupportsFileCloningKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsFileCloningKey_VH.set(NSURLVolumeSupportsFileCloningKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsFileCloningKey_VH.get(NSURLVolumeSupportsFileCloningKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsFileCloningKey_VH.set(NSURLVolumeSupportsFileCloningKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsSwapRenamingKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsSwapRenamingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsSwapRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSwapRenamingKey").orElseThrow() }
+private val NSURLVolumeSupportsSwapRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSwapRenamingKey").orElseThrow().reinterpret(NSURLVolumeSupportsSwapRenamingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsSwapRenamingKey_VH: VarHandle by lazy { NSURLVolumeSupportsSwapRenamingKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsSwapRenamingKey: MemorySegment
-    get() = NSURLVolumeSupportsSwapRenamingKey_VH.get(NSURLVolumeSupportsSwapRenamingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsSwapRenamingKey_VH.set(NSURLVolumeSupportsSwapRenamingKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsSwapRenamingKey_VH.get(NSURLVolumeSupportsSwapRenamingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsSwapRenamingKey_VH.set(NSURLVolumeSupportsSwapRenamingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsExclusiveRenamingKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsExclusiveRenamingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsExclusiveRenamingKey").orElseThrow() }
+private val NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsExclusiveRenamingKey").orElseThrow().reinterpret(NSURLVolumeSupportsExclusiveRenamingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsExclusiveRenamingKey_VH: VarHandle by lazy { NSURLVolumeSupportsExclusiveRenamingKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsExclusiveRenamingKey: MemorySegment
-    get() = NSURLVolumeSupportsExclusiveRenamingKey_VH.get(NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsExclusiveRenamingKey_VH.set(NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsExclusiveRenamingKey_VH.get(NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsExclusiveRenamingKey_VH.set(NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsImmutableFilesKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsImmutableFilesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsImmutableFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsImmutableFilesKey").orElseThrow() }
+private val NSURLVolumeSupportsImmutableFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsImmutableFilesKey").orElseThrow().reinterpret(NSURLVolumeSupportsImmutableFilesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsImmutableFilesKey_VH: VarHandle by lazy { NSURLVolumeSupportsImmutableFilesKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsImmutableFilesKey: MemorySegment
-    get() = NSURLVolumeSupportsImmutableFilesKey_VH.get(NSURLVolumeSupportsImmutableFilesKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsImmutableFilesKey_VH.set(NSURLVolumeSupportsImmutableFilesKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsImmutableFilesKey_VH.get(NSURLVolumeSupportsImmutableFilesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsImmutableFilesKey_VH.set(NSURLVolumeSupportsImmutableFilesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsAccessPermissionsKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsAccessPermissionsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsAccessPermissionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsAccessPermissionsKey").orElseThrow() }
+private val NSURLVolumeSupportsAccessPermissionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsAccessPermissionsKey").orElseThrow().reinterpret(NSURLVolumeSupportsAccessPermissionsKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsAccessPermissionsKey_VH: VarHandle by lazy { NSURLVolumeSupportsAccessPermissionsKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsAccessPermissionsKey: MemorySegment
-    get() = NSURLVolumeSupportsAccessPermissionsKey_VH.get(NSURLVolumeSupportsAccessPermissionsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsAccessPermissionsKey_VH.set(NSURLVolumeSupportsAccessPermissionsKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsAccessPermissionsKey_VH.get(NSURLVolumeSupportsAccessPermissionsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsAccessPermissionsKey_VH.set(NSURLVolumeSupportsAccessPermissionsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSupportsFileProtectionKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSupportsFileProtectionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSupportsFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsFileProtectionKey").orElseThrow() }
+private val NSURLVolumeSupportsFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsFileProtectionKey").orElseThrow().reinterpret(NSURLVolumeSupportsFileProtectionKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsFileProtectionKey_VH: VarHandle by lazy { NSURLVolumeSupportsFileProtectionKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSupportsFileProtectionKey: MemorySegment
-    get() = NSURLVolumeSupportsFileProtectionKey_VH.get(NSURLVolumeSupportsFileProtectionKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSupportsFileProtectionKey_VH.set(NSURLVolumeSupportsFileProtectionKey_SEGMENT, value)
+    get() = NSURLVolumeSupportsFileProtectionKey_VH.get(NSURLVolumeSupportsFileProtectionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSupportsFileProtectionKey_VH.set(NSURLVolumeSupportsFileProtectionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeAvailableCapacityForImportantUsageKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeAvailableCapacityForImportantUsageKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityForImportantUsageKey").orElseThrow() }
+private val NSURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityForImportantUsageKey").orElseThrow().reinterpret(NSURLVolumeAvailableCapacityForImportantUsageKey_LAYOUT.byteSize()) }
 private val NSURLVolumeAvailableCapacityForImportantUsageKey_VH: VarHandle by lazy { NSURLVolumeAvailableCapacityForImportantUsageKey_LAYOUT.varHandle() }
 
 var NSURLVolumeAvailableCapacityForImportantUsageKey: MemorySegment
-    get() = NSURLVolumeAvailableCapacityForImportantUsageKey_VH.get(NSURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeAvailableCapacityForImportantUsageKey_VH.set(NSURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT, value)
+    get() = NSURLVolumeAvailableCapacityForImportantUsageKey_VH.get(NSURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeAvailableCapacityForImportantUsageKey_VH.set(NSURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeAvailableCapacityForOpportunisticUsageKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeAvailableCapacityForOpportunisticUsageKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityForOpportunisticUsageKey").orElseThrow() }
+private val NSURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityForOpportunisticUsageKey").orElseThrow().reinterpret(NSURLVolumeAvailableCapacityForOpportunisticUsageKey_LAYOUT.byteSize()) }
 private val NSURLVolumeAvailableCapacityForOpportunisticUsageKey_VH: VarHandle by lazy { NSURLVolumeAvailableCapacityForOpportunisticUsageKey_LAYOUT.varHandle() }
 
 var NSURLVolumeAvailableCapacityForOpportunisticUsageKey: MemorySegment
-    get() = NSURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.get(NSURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.set(NSURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT, value)
+    get() = NSURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.get(NSURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.set(NSURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeTypeNameKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeTypeNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeTypeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeTypeNameKey").orElseThrow() }
+private val NSURLVolumeTypeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeTypeNameKey").orElseThrow().reinterpret(NSURLVolumeTypeNameKey_LAYOUT.byteSize()) }
 private val NSURLVolumeTypeNameKey_VH: VarHandle by lazy { NSURLVolumeTypeNameKey_LAYOUT.varHandle() }
 
 var NSURLVolumeTypeNameKey: MemorySegment
-    get() = NSURLVolumeTypeNameKey_VH.get(NSURLVolumeTypeNameKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeTypeNameKey_VH.set(NSURLVolumeTypeNameKey_SEGMENT, value)
+    get() = NSURLVolumeTypeNameKey_VH.get(NSURLVolumeTypeNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeTypeNameKey_VH.set(NSURLVolumeTypeNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeSubtypeKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeSubtypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeSubtypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSubtypeKey").orElseThrow() }
+private val NSURLVolumeSubtypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSubtypeKey").orElseThrow().reinterpret(NSURLVolumeSubtypeKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSubtypeKey_VH: VarHandle by lazy { NSURLVolumeSubtypeKey_LAYOUT.varHandle() }
 
 var NSURLVolumeSubtypeKey: MemorySegment
-    get() = NSURLVolumeSubtypeKey_VH.get(NSURLVolumeSubtypeKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeSubtypeKey_VH.set(NSURLVolumeSubtypeKey_SEGMENT, value)
+    get() = NSURLVolumeSubtypeKey_VH.get(NSURLVolumeSubtypeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeSubtypeKey_VH.set(NSURLVolumeSubtypeKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLVolumeMountFromLocationKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLVolumeMountFromLocationKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLVolumeMountFromLocationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeMountFromLocationKey").orElseThrow() }
+private val NSURLVolumeMountFromLocationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeMountFromLocationKey").orElseThrow().reinterpret(NSURLVolumeMountFromLocationKey_LAYOUT.byteSize()) }
 private val NSURLVolumeMountFromLocationKey_VH: VarHandle by lazy { NSURLVolumeMountFromLocationKey_LAYOUT.varHandle() }
 
 var NSURLVolumeMountFromLocationKey: MemorySegment
-    get() = NSURLVolumeMountFromLocationKey_VH.get(NSURLVolumeMountFromLocationKey_SEGMENT) as MemorySegment
-    set(value) = NSURLVolumeMountFromLocationKey_VH.set(NSURLVolumeMountFromLocationKey_SEGMENT, value)
+    get() = NSURLVolumeMountFromLocationKey_VH.get(NSURLVolumeMountFromLocationKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLVolumeMountFromLocationKey_VH.set(NSURLVolumeMountFromLocationKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLIsUbiquitousItemKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLIsUbiquitousItemKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLIsUbiquitousItemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsUbiquitousItemKey").orElseThrow() }
+private val NSURLIsUbiquitousItemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsUbiquitousItemKey").orElseThrow().reinterpret(NSURLIsUbiquitousItemKey_LAYOUT.byteSize()) }
 private val NSURLIsUbiquitousItemKey_VH: VarHandle by lazy { NSURLIsUbiquitousItemKey_LAYOUT.varHandle() }
 
 var NSURLIsUbiquitousItemKey: MemorySegment
-    get() = NSURLIsUbiquitousItemKey_VH.get(NSURLIsUbiquitousItemKey_SEGMENT) as MemorySegment
-    set(value) = NSURLIsUbiquitousItemKey_VH.set(NSURLIsUbiquitousItemKey_SEGMENT, value)
+    get() = NSURLIsUbiquitousItemKey_VH.get(NSURLIsUbiquitousItemKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLIsUbiquitousItemKey_VH.set(NSURLIsUbiquitousItemKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemHasUnresolvedConflictsKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemHasUnresolvedConflictsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemHasUnresolvedConflictsKey").orElseThrow() }
+private val NSURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemHasUnresolvedConflictsKey").orElseThrow().reinterpret(NSURLUbiquitousItemHasUnresolvedConflictsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemHasUnresolvedConflictsKey_VH: VarHandle by lazy { NSURLUbiquitousItemHasUnresolvedConflictsKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemHasUnresolvedConflictsKey: MemorySegment
-    get() = NSURLUbiquitousItemHasUnresolvedConflictsKey_VH.get(NSURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemHasUnresolvedConflictsKey_VH.set(NSURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemHasUnresolvedConflictsKey_VH.get(NSURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemHasUnresolvedConflictsKey_VH.set(NSURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemIsDownloadedKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemIsDownloadedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemIsDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsDownloadedKey").orElseThrow() }
+private val NSURLUbiquitousItemIsDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsDownloadedKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsDownloadedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsDownloadedKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsDownloadedKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemIsDownloadedKey: MemorySegment
-    get() = NSURLUbiquitousItemIsDownloadedKey_VH.get(NSURLUbiquitousItemIsDownloadedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemIsDownloadedKey_VH.set(NSURLUbiquitousItemIsDownloadedKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemIsDownloadedKey_VH.get(NSURLUbiquitousItemIsDownloadedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemIsDownloadedKey_VH.set(NSURLUbiquitousItemIsDownloadedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemIsDownloadingKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemIsDownloadingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemIsDownloadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsDownloadingKey").orElseThrow() }
+private val NSURLUbiquitousItemIsDownloadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsDownloadingKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsDownloadingKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsDownloadingKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsDownloadingKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemIsDownloadingKey: MemorySegment
-    get() = NSURLUbiquitousItemIsDownloadingKey_VH.get(NSURLUbiquitousItemIsDownloadingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemIsDownloadingKey_VH.set(NSURLUbiquitousItemIsDownloadingKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemIsDownloadingKey_VH.get(NSURLUbiquitousItemIsDownloadingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemIsDownloadingKey_VH.set(NSURLUbiquitousItemIsDownloadingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemIsUploadedKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemIsUploadedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemIsUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsUploadedKey").orElseThrow() }
+private val NSURLUbiquitousItemIsUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsUploadedKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsUploadedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsUploadedKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsUploadedKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemIsUploadedKey: MemorySegment
-    get() = NSURLUbiquitousItemIsUploadedKey_VH.get(NSURLUbiquitousItemIsUploadedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemIsUploadedKey_VH.set(NSURLUbiquitousItemIsUploadedKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemIsUploadedKey_VH.get(NSURLUbiquitousItemIsUploadedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemIsUploadedKey_VH.set(NSURLUbiquitousItemIsUploadedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemIsUploadingKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemIsUploadingKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemIsUploadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsUploadingKey").orElseThrow() }
+private val NSURLUbiquitousItemIsUploadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsUploadingKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsUploadingKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsUploadingKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsUploadingKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemIsUploadingKey: MemorySegment
-    get() = NSURLUbiquitousItemIsUploadingKey_VH.get(NSURLUbiquitousItemIsUploadingKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemIsUploadingKey_VH.set(NSURLUbiquitousItemIsUploadingKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemIsUploadingKey_VH.get(NSURLUbiquitousItemIsUploadingKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemIsUploadingKey_VH.set(NSURLUbiquitousItemIsUploadingKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemPercentDownloadedKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemPercentDownloadedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemPercentDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemPercentDownloadedKey").orElseThrow() }
+private val NSURLUbiquitousItemPercentDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemPercentDownloadedKey").orElseThrow().reinterpret(NSURLUbiquitousItemPercentDownloadedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemPercentDownloadedKey_VH: VarHandle by lazy { NSURLUbiquitousItemPercentDownloadedKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemPercentDownloadedKey: MemorySegment
-    get() = NSURLUbiquitousItemPercentDownloadedKey_VH.get(NSURLUbiquitousItemPercentDownloadedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemPercentDownloadedKey_VH.set(NSURLUbiquitousItemPercentDownloadedKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemPercentDownloadedKey_VH.get(NSURLUbiquitousItemPercentDownloadedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemPercentDownloadedKey_VH.set(NSURLUbiquitousItemPercentDownloadedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemPercentUploadedKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemPercentUploadedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemPercentUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemPercentUploadedKey").orElseThrow() }
+private val NSURLUbiquitousItemPercentUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemPercentUploadedKey").orElseThrow().reinterpret(NSURLUbiquitousItemPercentUploadedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemPercentUploadedKey_VH: VarHandle by lazy { NSURLUbiquitousItemPercentUploadedKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemPercentUploadedKey: MemorySegment
-    get() = NSURLUbiquitousItemPercentUploadedKey_VH.get(NSURLUbiquitousItemPercentUploadedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemPercentUploadedKey_VH.set(NSURLUbiquitousItemPercentUploadedKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemPercentUploadedKey_VH.get(NSURLUbiquitousItemPercentUploadedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemPercentUploadedKey_VH.set(NSURLUbiquitousItemPercentUploadedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemDownloadingStatusKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemDownloadingStatusKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemDownloadingStatusKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusKey").orElseThrow() }
+private val NSURLUbiquitousItemDownloadingStatusKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusKey").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingStatusKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingStatusKey_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingStatusKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemDownloadingStatusKey: MemorySegment
-    get() = NSURLUbiquitousItemDownloadingStatusKey_VH.get(NSURLUbiquitousItemDownloadingStatusKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemDownloadingStatusKey_VH.set(NSURLUbiquitousItemDownloadingStatusKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemDownloadingStatusKey_VH.get(NSURLUbiquitousItemDownloadingStatusKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemDownloadingStatusKey_VH.set(NSURLUbiquitousItemDownloadingStatusKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemDownloadingErrorKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemDownloadingErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemDownloadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingErrorKey").orElseThrow() }
+private val NSURLUbiquitousItemDownloadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingErrorKey").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingErrorKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingErrorKey_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingErrorKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemDownloadingErrorKey: MemorySegment
-    get() = NSURLUbiquitousItemDownloadingErrorKey_VH.get(NSURLUbiquitousItemDownloadingErrorKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemDownloadingErrorKey_VH.set(NSURLUbiquitousItemDownloadingErrorKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemDownloadingErrorKey_VH.get(NSURLUbiquitousItemDownloadingErrorKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemDownloadingErrorKey_VH.set(NSURLUbiquitousItemDownloadingErrorKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemUploadingErrorKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemUploadingErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemUploadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemUploadingErrorKey").orElseThrow() }
+private val NSURLUbiquitousItemUploadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemUploadingErrorKey").orElseThrow().reinterpret(NSURLUbiquitousItemUploadingErrorKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemUploadingErrorKey_VH: VarHandle by lazy { NSURLUbiquitousItemUploadingErrorKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemUploadingErrorKey: MemorySegment
-    get() = NSURLUbiquitousItemUploadingErrorKey_VH.get(NSURLUbiquitousItemUploadingErrorKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemUploadingErrorKey_VH.set(NSURLUbiquitousItemUploadingErrorKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemUploadingErrorKey_VH.get(NSURLUbiquitousItemUploadingErrorKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemUploadingErrorKey_VH.set(NSURLUbiquitousItemUploadingErrorKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemDownloadRequestedKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemDownloadRequestedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemDownloadRequestedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadRequestedKey").orElseThrow() }
+private val NSURLUbiquitousItemDownloadRequestedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadRequestedKey").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadRequestedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadRequestedKey_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadRequestedKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemDownloadRequestedKey: MemorySegment
-    get() = NSURLUbiquitousItemDownloadRequestedKey_VH.get(NSURLUbiquitousItemDownloadRequestedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemDownloadRequestedKey_VH.set(NSURLUbiquitousItemDownloadRequestedKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemDownloadRequestedKey_VH.get(NSURLUbiquitousItemDownloadRequestedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemDownloadRequestedKey_VH.set(NSURLUbiquitousItemDownloadRequestedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemContainerDisplayNameKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemContainerDisplayNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemContainerDisplayNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemContainerDisplayNameKey").orElseThrow() }
+private val NSURLUbiquitousItemContainerDisplayNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemContainerDisplayNameKey").orElseThrow().reinterpret(NSURLUbiquitousItemContainerDisplayNameKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemContainerDisplayNameKey_VH: VarHandle by lazy { NSURLUbiquitousItemContainerDisplayNameKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemContainerDisplayNameKey: MemorySegment
-    get() = NSURLUbiquitousItemContainerDisplayNameKey_VH.get(NSURLUbiquitousItemContainerDisplayNameKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemContainerDisplayNameKey_VH.set(NSURLUbiquitousItemContainerDisplayNameKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemContainerDisplayNameKey_VH.get(NSURLUbiquitousItemContainerDisplayNameKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemContainerDisplayNameKey_VH.set(NSURLUbiquitousItemContainerDisplayNameKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemIsExcludedFromSyncKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemIsExcludedFromSyncKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsExcludedFromSyncKey").orElseThrow() }
+private val NSURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsExcludedFromSyncKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsExcludedFromSyncKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsExcludedFromSyncKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsExcludedFromSyncKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemIsExcludedFromSyncKey: MemorySegment
-    get() = NSURLUbiquitousItemIsExcludedFromSyncKey_VH.get(NSURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemIsExcludedFromSyncKey_VH.set(NSURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemIsExcludedFromSyncKey_VH.get(NSURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemIsExcludedFromSyncKey_VH.set(NSURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemIsSharedKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemIsSharedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemIsSharedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsSharedKey").orElseThrow() }
+private val NSURLUbiquitousItemIsSharedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsSharedKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsSharedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsSharedKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsSharedKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemIsSharedKey: MemorySegment
-    get() = NSURLUbiquitousItemIsSharedKey_VH.get(NSURLUbiquitousItemIsSharedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemIsSharedKey_VH.set(NSURLUbiquitousItemIsSharedKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemIsSharedKey_VH.get(NSURLUbiquitousItemIsSharedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemIsSharedKey_VH.set(NSURLUbiquitousItemIsSharedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousSharedItemCurrentUserRoleKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousSharedItemCurrentUserRoleKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousSharedItemCurrentUserRoleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemCurrentUserRoleKey").orElseThrow() }
+private val NSURLUbiquitousSharedItemCurrentUserRoleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemCurrentUserRoleKey").orElseThrow().reinterpret(NSURLUbiquitousSharedItemCurrentUserRoleKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemCurrentUserRoleKey_VH: VarHandle by lazy { NSURLUbiquitousSharedItemCurrentUserRoleKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousSharedItemCurrentUserRoleKey: MemorySegment
-    get() = NSURLUbiquitousSharedItemCurrentUserRoleKey_VH.get(NSURLUbiquitousSharedItemCurrentUserRoleKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousSharedItemCurrentUserRoleKey_VH.set(NSURLUbiquitousSharedItemCurrentUserRoleKey_SEGMENT, value)
+    get() = NSURLUbiquitousSharedItemCurrentUserRoleKey_VH.get(NSURLUbiquitousSharedItemCurrentUserRoleKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousSharedItemCurrentUserRoleKey_VH.set(NSURLUbiquitousSharedItemCurrentUserRoleKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousSharedItemCurrentUserPermissionsKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousSharedItemCurrentUserPermissionsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousSharedItemCurrentUserPermissionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemCurrentUserPermissionsKey").orElseThrow() }
+private val NSURLUbiquitousSharedItemCurrentUserPermissionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemCurrentUserPermissionsKey").orElseThrow().reinterpret(NSURLUbiquitousSharedItemCurrentUserPermissionsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemCurrentUserPermissionsKey_VH: VarHandle by lazy { NSURLUbiquitousSharedItemCurrentUserPermissionsKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousSharedItemCurrentUserPermissionsKey: MemorySegment
-    get() = NSURLUbiquitousSharedItemCurrentUserPermissionsKey_VH.get(NSURLUbiquitousSharedItemCurrentUserPermissionsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousSharedItemCurrentUserPermissionsKey_VH.set(NSURLUbiquitousSharedItemCurrentUserPermissionsKey_SEGMENT, value)
+    get() = NSURLUbiquitousSharedItemCurrentUserPermissionsKey_VH.get(NSURLUbiquitousSharedItemCurrentUserPermissionsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousSharedItemCurrentUserPermissionsKey_VH.set(NSURLUbiquitousSharedItemCurrentUserPermissionsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousSharedItemOwnerNameComponentsKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousSharedItemOwnerNameComponentsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousSharedItemOwnerNameComponentsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemOwnerNameComponentsKey").orElseThrow() }
+private val NSURLUbiquitousSharedItemOwnerNameComponentsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemOwnerNameComponentsKey").orElseThrow().reinterpret(NSURLUbiquitousSharedItemOwnerNameComponentsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemOwnerNameComponentsKey_VH: VarHandle by lazy { NSURLUbiquitousSharedItemOwnerNameComponentsKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousSharedItemOwnerNameComponentsKey: MemorySegment
-    get() = NSURLUbiquitousSharedItemOwnerNameComponentsKey_VH.get(NSURLUbiquitousSharedItemOwnerNameComponentsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousSharedItemOwnerNameComponentsKey_VH.set(NSURLUbiquitousSharedItemOwnerNameComponentsKey_SEGMENT, value)
+    get() = NSURLUbiquitousSharedItemOwnerNameComponentsKey_VH.get(NSURLUbiquitousSharedItemOwnerNameComponentsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousSharedItemOwnerNameComponentsKey_VH.set(NSURLUbiquitousSharedItemOwnerNameComponentsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey").orElseThrow() }
+private val NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey").orElseThrow().reinterpret(NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_VH: VarHandle by lazy { NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey: MemorySegment
-    get() = NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_VH.get(NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_VH.set(NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_SEGMENT, value)
+    get() = NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_VH.get(NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_VH.set(NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemDownloadingStatusNotDownloaded typedef const NSURLUbiquitousItemDownloadingStatus = (Void)*
  */
 private val NSURLUbiquitousItemDownloadingStatusNotDownloaded_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusNotDownloaded").orElseThrow() }
+private val NSURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusNotDownloaded").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingStatusNotDownloaded_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingStatusNotDownloaded_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingStatusNotDownloaded_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemDownloadingStatusNotDownloaded: MemorySegment
-    get() = NSURLUbiquitousItemDownloadingStatusNotDownloaded_VH.get(NSURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemDownloadingStatusNotDownloaded_VH.set(NSURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT, value)
+    get() = NSURLUbiquitousItemDownloadingStatusNotDownloaded_VH.get(NSURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemDownloadingStatusNotDownloaded_VH.set(NSURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemDownloadingStatusDownloaded typedef const NSURLUbiquitousItemDownloadingStatus = (Void)*
  */
 private val NSURLUbiquitousItemDownloadingStatusDownloaded_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusDownloaded").orElseThrow() }
+private val NSURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusDownloaded").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingStatusDownloaded_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingStatusDownloaded_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingStatusDownloaded_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemDownloadingStatusDownloaded: MemorySegment
-    get() = NSURLUbiquitousItemDownloadingStatusDownloaded_VH.get(NSURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemDownloadingStatusDownloaded_VH.set(NSURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT, value)
+    get() = NSURLUbiquitousItemDownloadingStatusDownloaded_VH.get(NSURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemDownloadingStatusDownloaded_VH.set(NSURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemDownloadingStatusCurrent typedef const NSURLUbiquitousItemDownloadingStatus = (Void)*
  */
 private val NSURLUbiquitousItemDownloadingStatusCurrent_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemDownloadingStatusCurrent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusCurrent").orElseThrow() }
+private val NSURLUbiquitousItemDownloadingStatusCurrent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusCurrent").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingStatusCurrent_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingStatusCurrent_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingStatusCurrent_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemDownloadingStatusCurrent: MemorySegment
-    get() = NSURLUbiquitousItemDownloadingStatusCurrent_VH.get(NSURLUbiquitousItemDownloadingStatusCurrent_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemDownloadingStatusCurrent_VH.set(NSURLUbiquitousItemDownloadingStatusCurrent_SEGMENT, value)
+    get() = NSURLUbiquitousItemDownloadingStatusCurrent_VH.get(NSURLUbiquitousItemDownloadingStatusCurrent_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemDownloadingStatusCurrent_VH.set(NSURLUbiquitousItemDownloadingStatusCurrent_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousSharedItemRoleOwner typedef const NSURLUbiquitousSharedItemRole = (Void)*
  */
 private val NSURLUbiquitousSharedItemRoleOwner_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousSharedItemRoleOwner_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemRoleOwner").orElseThrow() }
+private val NSURLUbiquitousSharedItemRoleOwner_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemRoleOwner").orElseThrow().reinterpret(NSURLUbiquitousSharedItemRoleOwner_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemRoleOwner_VH: VarHandle by lazy { NSURLUbiquitousSharedItemRoleOwner_LAYOUT.varHandle() }
 
 var NSURLUbiquitousSharedItemRoleOwner: MemorySegment
-    get() = NSURLUbiquitousSharedItemRoleOwner_VH.get(NSURLUbiquitousSharedItemRoleOwner_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousSharedItemRoleOwner_VH.set(NSURLUbiquitousSharedItemRoleOwner_SEGMENT, value)
+    get() = NSURLUbiquitousSharedItemRoleOwner_VH.get(NSURLUbiquitousSharedItemRoleOwner_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousSharedItemRoleOwner_VH.set(NSURLUbiquitousSharedItemRoleOwner_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousSharedItemRoleParticipant typedef const NSURLUbiquitousSharedItemRole = (Void)*
  */
 private val NSURLUbiquitousSharedItemRoleParticipant_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousSharedItemRoleParticipant_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemRoleParticipant").orElseThrow() }
+private val NSURLUbiquitousSharedItemRoleParticipant_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemRoleParticipant").orElseThrow().reinterpret(NSURLUbiquitousSharedItemRoleParticipant_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemRoleParticipant_VH: VarHandle by lazy { NSURLUbiquitousSharedItemRoleParticipant_LAYOUT.varHandle() }
 
 var NSURLUbiquitousSharedItemRoleParticipant: MemorySegment
-    get() = NSURLUbiquitousSharedItemRoleParticipant_VH.get(NSURLUbiquitousSharedItemRoleParticipant_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousSharedItemRoleParticipant_VH.set(NSURLUbiquitousSharedItemRoleParticipant_SEGMENT, value)
+    get() = NSURLUbiquitousSharedItemRoleParticipant_VH.get(NSURLUbiquitousSharedItemRoleParticipant_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousSharedItemRoleParticipant_VH.set(NSURLUbiquitousSharedItemRoleParticipant_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousSharedItemPermissionsReadOnly typedef const NSURLUbiquitousSharedItemPermissions = (Void)*
  */
 private val NSURLUbiquitousSharedItemPermissionsReadOnly_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousSharedItemPermissionsReadOnly_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemPermissionsReadOnly").orElseThrow() }
+private val NSURLUbiquitousSharedItemPermissionsReadOnly_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemPermissionsReadOnly").orElseThrow().reinterpret(NSURLUbiquitousSharedItemPermissionsReadOnly_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemPermissionsReadOnly_VH: VarHandle by lazy { NSURLUbiquitousSharedItemPermissionsReadOnly_LAYOUT.varHandle() }
 
 var NSURLUbiquitousSharedItemPermissionsReadOnly: MemorySegment
-    get() = NSURLUbiquitousSharedItemPermissionsReadOnly_VH.get(NSURLUbiquitousSharedItemPermissionsReadOnly_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousSharedItemPermissionsReadOnly_VH.set(NSURLUbiquitousSharedItemPermissionsReadOnly_SEGMENT, value)
+    get() = NSURLUbiquitousSharedItemPermissionsReadOnly_VH.get(NSURLUbiquitousSharedItemPermissionsReadOnly_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousSharedItemPermissionsReadOnly_VH.set(NSURLUbiquitousSharedItemPermissionsReadOnly_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousSharedItemPermissionsReadWrite typedef const NSURLUbiquitousSharedItemPermissions = (Void)*
  */
 private val NSURLUbiquitousSharedItemPermissionsReadWrite_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousSharedItemPermissionsReadWrite_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemPermissionsReadWrite").orElseThrow() }
+private val NSURLUbiquitousSharedItemPermissionsReadWrite_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemPermissionsReadWrite").orElseThrow().reinterpret(NSURLUbiquitousSharedItemPermissionsReadWrite_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemPermissionsReadWrite_VH: VarHandle by lazy { NSURLUbiquitousSharedItemPermissionsReadWrite_LAYOUT.varHandle() }
 
 var NSURLUbiquitousSharedItemPermissionsReadWrite: MemorySegment
-    get() = NSURLUbiquitousSharedItemPermissionsReadWrite_VH.get(NSURLUbiquitousSharedItemPermissionsReadWrite_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousSharedItemPermissionsReadWrite_VH.set(NSURLUbiquitousSharedItemPermissionsReadWrite_SEGMENT, value)
+    get() = NSURLUbiquitousSharedItemPermissionsReadWrite_VH.get(NSURLUbiquitousSharedItemPermissionsReadWrite_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousSharedItemPermissionsReadWrite_VH.set(NSURLUbiquitousSharedItemPermissionsReadWrite_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemSupportedSyncControlsKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemSupportedSyncControlsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemSupportedSyncControlsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemSupportedSyncControlsKey").orElseThrow() }
+private val NSURLUbiquitousItemSupportedSyncControlsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemSupportedSyncControlsKey").orElseThrow().reinterpret(NSURLUbiquitousItemSupportedSyncControlsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemSupportedSyncControlsKey_VH: VarHandle by lazy { NSURLUbiquitousItemSupportedSyncControlsKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemSupportedSyncControlsKey: MemorySegment
-    get() = NSURLUbiquitousItemSupportedSyncControlsKey_VH.get(NSURLUbiquitousItemSupportedSyncControlsKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemSupportedSyncControlsKey_VH.set(NSURLUbiquitousItemSupportedSyncControlsKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemSupportedSyncControlsKey_VH.get(NSURLUbiquitousItemSupportedSyncControlsKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemSupportedSyncControlsKey_VH.set(NSURLUbiquitousItemSupportedSyncControlsKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSURLUbiquitousItemIsSyncPausedKey typedef const NSURLResourceKey = (Void)*
  */
 private val NSURLUbiquitousItemIsSyncPausedKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSURLUbiquitousItemIsSyncPausedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsSyncPausedKey").orElseThrow() }
+private val NSURLUbiquitousItemIsSyncPausedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsSyncPausedKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsSyncPausedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsSyncPausedKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsSyncPausedKey_LAYOUT.varHandle() }
 
 var NSURLUbiquitousItemIsSyncPausedKey: MemorySegment
-    get() = NSURLUbiquitousItemIsSyncPausedKey_VH.get(NSURLUbiquitousItemIsSyncPausedKey_SEGMENT) as MemorySegment
-    set(value) = NSURLUbiquitousItemIsSyncPausedKey_VH.set(NSURLUbiquitousItemIsSyncPausedKey_SEGMENT, value)
+    get() = NSURLUbiquitousItemIsSyncPausedKey_VH.get(NSURLUbiquitousItemIsSyncPausedKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSURLUbiquitousItemIsSyncPausedKey_VH.set(NSURLUbiquitousItemIsSyncPausedKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileManagerUnmountDissentingProcessIdentifierErrorKey (Void)*
  */
 private val NSFileManagerUnmountDissentingProcessIdentifierErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileManagerUnmountDissentingProcessIdentifierErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileManagerUnmountDissentingProcessIdentifierErrorKey").orElseThrow() }
+private val NSFileManagerUnmountDissentingProcessIdentifierErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileManagerUnmountDissentingProcessIdentifierErrorKey").orElseThrow().reinterpret(NSFileManagerUnmountDissentingProcessIdentifierErrorKey_LAYOUT.byteSize()) }
 private val NSFileManagerUnmountDissentingProcessIdentifierErrorKey_VH: VarHandle by lazy { NSFileManagerUnmountDissentingProcessIdentifierErrorKey_LAYOUT.varHandle() }
 
 var NSFileManagerUnmountDissentingProcessIdentifierErrorKey: MemorySegment
-    get() = NSFileManagerUnmountDissentingProcessIdentifierErrorKey_VH.get(NSFileManagerUnmountDissentingProcessIdentifierErrorKey_SEGMENT) as MemorySegment
-    set(value) = NSFileManagerUnmountDissentingProcessIdentifierErrorKey_VH.set(NSFileManagerUnmountDissentingProcessIdentifierErrorKey_SEGMENT, value)
+    get() = NSFileManagerUnmountDissentingProcessIdentifierErrorKey_VH.get(NSFileManagerUnmountDissentingProcessIdentifierErrorKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileManagerUnmountDissentingProcessIdentifierErrorKey_VH.set(NSFileManagerUnmountDissentingProcessIdentifierErrorKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSUbiquityIdentityDidChangeNotification typedef const NSNotificationName = (Void)*
  */
 private val NSUbiquityIdentityDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUbiquityIdentityDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquityIdentityDidChangeNotification").orElseThrow() }
+private val NSUbiquityIdentityDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquityIdentityDidChangeNotification").orElseThrow().reinterpret(NSUbiquityIdentityDidChangeNotification_LAYOUT.byteSize()) }
 private val NSUbiquityIdentityDidChangeNotification_VH: VarHandle by lazy { NSUbiquityIdentityDidChangeNotification_LAYOUT.varHandle() }
 
 var NSUbiquityIdentityDidChangeNotification: MemorySegment
-    get() = NSUbiquityIdentityDidChangeNotification_VH.get(NSUbiquityIdentityDidChangeNotification_SEGMENT) as MemorySegment
-    set(value) = NSUbiquityIdentityDidChangeNotification_VH.set(NSUbiquityIdentityDidChangeNotification_SEGMENT, value)
+    get() = NSUbiquityIdentityDidChangeNotification_VH.get(NSUbiquityIdentityDidChangeNotification_SEGMENT, 0L) as MemorySegment
+    set(value) = NSUbiquityIdentityDidChangeNotification_VH.set(NSUbiquityIdentityDidChangeNotification_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileType typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileType").orElseThrow() }
+private val NSFileType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileType").orElseThrow().reinterpret(NSFileType_LAYOUT.byteSize()) }
 private val NSFileType_VH: VarHandle by lazy { NSFileType_LAYOUT.varHandle() }
 
 var NSFileType: MemorySegment
-    get() = NSFileType_VH.get(NSFileType_SEGMENT) as MemorySegment
-    set(value) = NSFileType_VH.set(NSFileType_SEGMENT, value)
+    get() = NSFileType_VH.get(NSFileType_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileType_VH.set(NSFileType_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileTypeDirectory typedef const NSFileAttributeType = (Void)*
  */
 private val NSFileTypeDirectory_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileTypeDirectory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeDirectory").orElseThrow() }
+private val NSFileTypeDirectory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeDirectory").orElseThrow().reinterpret(NSFileTypeDirectory_LAYOUT.byteSize()) }
 private val NSFileTypeDirectory_VH: VarHandle by lazy { NSFileTypeDirectory_LAYOUT.varHandle() }
 
 var NSFileTypeDirectory: MemorySegment
-    get() = NSFileTypeDirectory_VH.get(NSFileTypeDirectory_SEGMENT) as MemorySegment
-    set(value) = NSFileTypeDirectory_VH.set(NSFileTypeDirectory_SEGMENT, value)
+    get() = NSFileTypeDirectory_VH.get(NSFileTypeDirectory_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileTypeDirectory_VH.set(NSFileTypeDirectory_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileTypeRegular typedef const NSFileAttributeType = (Void)*
  */
 private val NSFileTypeRegular_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileTypeRegular_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeRegular").orElseThrow() }
+private val NSFileTypeRegular_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeRegular").orElseThrow().reinterpret(NSFileTypeRegular_LAYOUT.byteSize()) }
 private val NSFileTypeRegular_VH: VarHandle by lazy { NSFileTypeRegular_LAYOUT.varHandle() }
 
 var NSFileTypeRegular: MemorySegment
-    get() = NSFileTypeRegular_VH.get(NSFileTypeRegular_SEGMENT) as MemorySegment
-    set(value) = NSFileTypeRegular_VH.set(NSFileTypeRegular_SEGMENT, value)
+    get() = NSFileTypeRegular_VH.get(NSFileTypeRegular_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileTypeRegular_VH.set(NSFileTypeRegular_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileTypeSymbolicLink typedef const NSFileAttributeType = (Void)*
  */
 private val NSFileTypeSymbolicLink_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileTypeSymbolicLink_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeSymbolicLink").orElseThrow() }
+private val NSFileTypeSymbolicLink_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeSymbolicLink").orElseThrow().reinterpret(NSFileTypeSymbolicLink_LAYOUT.byteSize()) }
 private val NSFileTypeSymbolicLink_VH: VarHandle by lazy { NSFileTypeSymbolicLink_LAYOUT.varHandle() }
 
 var NSFileTypeSymbolicLink: MemorySegment
-    get() = NSFileTypeSymbolicLink_VH.get(NSFileTypeSymbolicLink_SEGMENT) as MemorySegment
-    set(value) = NSFileTypeSymbolicLink_VH.set(NSFileTypeSymbolicLink_SEGMENT, value)
+    get() = NSFileTypeSymbolicLink_VH.get(NSFileTypeSymbolicLink_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileTypeSymbolicLink_VH.set(NSFileTypeSymbolicLink_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileTypeSocket typedef const NSFileAttributeType = (Void)*
  */
 private val NSFileTypeSocket_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileTypeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeSocket").orElseThrow() }
+private val NSFileTypeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeSocket").orElseThrow().reinterpret(NSFileTypeSocket_LAYOUT.byteSize()) }
 private val NSFileTypeSocket_VH: VarHandle by lazy { NSFileTypeSocket_LAYOUT.varHandle() }
 
 var NSFileTypeSocket: MemorySegment
-    get() = NSFileTypeSocket_VH.get(NSFileTypeSocket_SEGMENT) as MemorySegment
-    set(value) = NSFileTypeSocket_VH.set(NSFileTypeSocket_SEGMENT, value)
+    get() = NSFileTypeSocket_VH.get(NSFileTypeSocket_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileTypeSocket_VH.set(NSFileTypeSocket_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileTypeCharacterSpecial typedef const NSFileAttributeType = (Void)*
  */
 private val NSFileTypeCharacterSpecial_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileTypeCharacterSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeCharacterSpecial").orElseThrow() }
+private val NSFileTypeCharacterSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeCharacterSpecial").orElseThrow().reinterpret(NSFileTypeCharacterSpecial_LAYOUT.byteSize()) }
 private val NSFileTypeCharacterSpecial_VH: VarHandle by lazy { NSFileTypeCharacterSpecial_LAYOUT.varHandle() }
 
 var NSFileTypeCharacterSpecial: MemorySegment
-    get() = NSFileTypeCharacterSpecial_VH.get(NSFileTypeCharacterSpecial_SEGMENT) as MemorySegment
-    set(value) = NSFileTypeCharacterSpecial_VH.set(NSFileTypeCharacterSpecial_SEGMENT, value)
+    get() = NSFileTypeCharacterSpecial_VH.get(NSFileTypeCharacterSpecial_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileTypeCharacterSpecial_VH.set(NSFileTypeCharacterSpecial_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileTypeBlockSpecial typedef const NSFileAttributeType = (Void)*
  */
 private val NSFileTypeBlockSpecial_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileTypeBlockSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeBlockSpecial").orElseThrow() }
+private val NSFileTypeBlockSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeBlockSpecial").orElseThrow().reinterpret(NSFileTypeBlockSpecial_LAYOUT.byteSize()) }
 private val NSFileTypeBlockSpecial_VH: VarHandle by lazy { NSFileTypeBlockSpecial_LAYOUT.varHandle() }
 
 var NSFileTypeBlockSpecial: MemorySegment
-    get() = NSFileTypeBlockSpecial_VH.get(NSFileTypeBlockSpecial_SEGMENT) as MemorySegment
-    set(value) = NSFileTypeBlockSpecial_VH.set(NSFileTypeBlockSpecial_SEGMENT, value)
+    get() = NSFileTypeBlockSpecial_VH.get(NSFileTypeBlockSpecial_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileTypeBlockSpecial_VH.set(NSFileTypeBlockSpecial_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileTypeUnknown typedef const NSFileAttributeType = (Void)*
  */
 private val NSFileTypeUnknown_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileTypeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeUnknown").orElseThrow() }
+private val NSFileTypeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeUnknown").orElseThrow().reinterpret(NSFileTypeUnknown_LAYOUT.byteSize()) }
 private val NSFileTypeUnknown_VH: VarHandle by lazy { NSFileTypeUnknown_LAYOUT.varHandle() }
 
 var NSFileTypeUnknown: MemorySegment
-    get() = NSFileTypeUnknown_VH.get(NSFileTypeUnknown_SEGMENT) as MemorySegment
-    set(value) = NSFileTypeUnknown_VH.set(NSFileTypeUnknown_SEGMENT, value)
+    get() = NSFileTypeUnknown_VH.get(NSFileTypeUnknown_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileTypeUnknown_VH.set(NSFileTypeUnknown_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileSize typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileSize_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSize").orElseThrow() }
+private val NSFileSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSize").orElseThrow().reinterpret(NSFileSize_LAYOUT.byteSize()) }
 private val NSFileSize_VH: VarHandle by lazy { NSFileSize_LAYOUT.varHandle() }
 
 var NSFileSize: MemorySegment
-    get() = NSFileSize_VH.get(NSFileSize_SEGMENT) as MemorySegment
-    set(value) = NSFileSize_VH.set(NSFileSize_SEGMENT, value)
+    get() = NSFileSize_VH.get(NSFileSize_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileSize_VH.set(NSFileSize_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileModificationDate typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileModificationDate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileModificationDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileModificationDate").orElseThrow() }
+private val NSFileModificationDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileModificationDate").orElseThrow().reinterpret(NSFileModificationDate_LAYOUT.byteSize()) }
 private val NSFileModificationDate_VH: VarHandle by lazy { NSFileModificationDate_LAYOUT.varHandle() }
 
 var NSFileModificationDate: MemorySegment
-    get() = NSFileModificationDate_VH.get(NSFileModificationDate_SEGMENT) as MemorySegment
-    set(value) = NSFileModificationDate_VH.set(NSFileModificationDate_SEGMENT, value)
+    get() = NSFileModificationDate_VH.get(NSFileModificationDate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileModificationDate_VH.set(NSFileModificationDate_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileReferenceCount typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileReferenceCount_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileReferenceCount_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileReferenceCount").orElseThrow() }
+private val NSFileReferenceCount_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileReferenceCount").orElseThrow().reinterpret(NSFileReferenceCount_LAYOUT.byteSize()) }
 private val NSFileReferenceCount_VH: VarHandle by lazy { NSFileReferenceCount_LAYOUT.varHandle() }
 
 var NSFileReferenceCount: MemorySegment
-    get() = NSFileReferenceCount_VH.get(NSFileReferenceCount_SEGMENT) as MemorySegment
-    set(value) = NSFileReferenceCount_VH.set(NSFileReferenceCount_SEGMENT, value)
+    get() = NSFileReferenceCount_VH.get(NSFileReferenceCount_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileReferenceCount_VH.set(NSFileReferenceCount_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileDeviceIdentifier typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileDeviceIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileDeviceIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileDeviceIdentifier").orElseThrow() }
+private val NSFileDeviceIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileDeviceIdentifier").orElseThrow().reinterpret(NSFileDeviceIdentifier_LAYOUT.byteSize()) }
 private val NSFileDeviceIdentifier_VH: VarHandle by lazy { NSFileDeviceIdentifier_LAYOUT.varHandle() }
 
 var NSFileDeviceIdentifier: MemorySegment
-    get() = NSFileDeviceIdentifier_VH.get(NSFileDeviceIdentifier_SEGMENT) as MemorySegment
-    set(value) = NSFileDeviceIdentifier_VH.set(NSFileDeviceIdentifier_SEGMENT, value)
+    get() = NSFileDeviceIdentifier_VH.get(NSFileDeviceIdentifier_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileDeviceIdentifier_VH.set(NSFileDeviceIdentifier_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileOwnerAccountName typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileOwnerAccountName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileOwnerAccountName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileOwnerAccountName").orElseThrow() }
+private val NSFileOwnerAccountName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileOwnerAccountName").orElseThrow().reinterpret(NSFileOwnerAccountName_LAYOUT.byteSize()) }
 private val NSFileOwnerAccountName_VH: VarHandle by lazy { NSFileOwnerAccountName_LAYOUT.varHandle() }
 
 var NSFileOwnerAccountName: MemorySegment
-    get() = NSFileOwnerAccountName_VH.get(NSFileOwnerAccountName_SEGMENT) as MemorySegment
-    set(value) = NSFileOwnerAccountName_VH.set(NSFileOwnerAccountName_SEGMENT, value)
+    get() = NSFileOwnerAccountName_VH.get(NSFileOwnerAccountName_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileOwnerAccountName_VH.set(NSFileOwnerAccountName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileGroupOwnerAccountName typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileGroupOwnerAccountName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileGroupOwnerAccountName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileGroupOwnerAccountName").orElseThrow() }
+private val NSFileGroupOwnerAccountName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileGroupOwnerAccountName").orElseThrow().reinterpret(NSFileGroupOwnerAccountName_LAYOUT.byteSize()) }
 private val NSFileGroupOwnerAccountName_VH: VarHandle by lazy { NSFileGroupOwnerAccountName_LAYOUT.varHandle() }
 
 var NSFileGroupOwnerAccountName: MemorySegment
-    get() = NSFileGroupOwnerAccountName_VH.get(NSFileGroupOwnerAccountName_SEGMENT) as MemorySegment
-    set(value) = NSFileGroupOwnerAccountName_VH.set(NSFileGroupOwnerAccountName_SEGMENT, value)
+    get() = NSFileGroupOwnerAccountName_VH.get(NSFileGroupOwnerAccountName_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileGroupOwnerAccountName_VH.set(NSFileGroupOwnerAccountName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFilePosixPermissions typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFilePosixPermissions_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFilePosixPermissions_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFilePosixPermissions").orElseThrow() }
+private val NSFilePosixPermissions_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFilePosixPermissions").orElseThrow().reinterpret(NSFilePosixPermissions_LAYOUT.byteSize()) }
 private val NSFilePosixPermissions_VH: VarHandle by lazy { NSFilePosixPermissions_LAYOUT.varHandle() }
 
 var NSFilePosixPermissions: MemorySegment
-    get() = NSFilePosixPermissions_VH.get(NSFilePosixPermissions_SEGMENT) as MemorySegment
-    set(value) = NSFilePosixPermissions_VH.set(NSFilePosixPermissions_SEGMENT, value)
+    get() = NSFilePosixPermissions_VH.get(NSFilePosixPermissions_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFilePosixPermissions_VH.set(NSFilePosixPermissions_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileSystemNumber typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileSystemNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileSystemNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemNumber").orElseThrow() }
+private val NSFileSystemNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemNumber").orElseThrow().reinterpret(NSFileSystemNumber_LAYOUT.byteSize()) }
 private val NSFileSystemNumber_VH: VarHandle by lazy { NSFileSystemNumber_LAYOUT.varHandle() }
 
 var NSFileSystemNumber: MemorySegment
-    get() = NSFileSystemNumber_VH.get(NSFileSystemNumber_SEGMENT) as MemorySegment
-    set(value) = NSFileSystemNumber_VH.set(NSFileSystemNumber_SEGMENT, value)
+    get() = NSFileSystemNumber_VH.get(NSFileSystemNumber_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileSystemNumber_VH.set(NSFileSystemNumber_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileSystemFileNumber typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileSystemFileNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileSystemFileNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemFileNumber").orElseThrow() }
+private val NSFileSystemFileNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemFileNumber").orElseThrow().reinterpret(NSFileSystemFileNumber_LAYOUT.byteSize()) }
 private val NSFileSystemFileNumber_VH: VarHandle by lazy { NSFileSystemFileNumber_LAYOUT.varHandle() }
 
 var NSFileSystemFileNumber: MemorySegment
-    get() = NSFileSystemFileNumber_VH.get(NSFileSystemFileNumber_SEGMENT) as MemorySegment
-    set(value) = NSFileSystemFileNumber_VH.set(NSFileSystemFileNumber_SEGMENT, value)
+    get() = NSFileSystemFileNumber_VH.get(NSFileSystemFileNumber_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileSystemFileNumber_VH.set(NSFileSystemFileNumber_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileExtensionHidden typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileExtensionHidden_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileExtensionHidden_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileExtensionHidden").orElseThrow() }
+private val NSFileExtensionHidden_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileExtensionHidden").orElseThrow().reinterpret(NSFileExtensionHidden_LAYOUT.byteSize()) }
 private val NSFileExtensionHidden_VH: VarHandle by lazy { NSFileExtensionHidden_LAYOUT.varHandle() }
 
 var NSFileExtensionHidden: MemorySegment
-    get() = NSFileExtensionHidden_VH.get(NSFileExtensionHidden_SEGMENT) as MemorySegment
-    set(value) = NSFileExtensionHidden_VH.set(NSFileExtensionHidden_SEGMENT, value)
+    get() = NSFileExtensionHidden_VH.get(NSFileExtensionHidden_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileExtensionHidden_VH.set(NSFileExtensionHidden_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileHFSCreatorCode typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileHFSCreatorCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileHFSCreatorCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileHFSCreatorCode").orElseThrow() }
+private val NSFileHFSCreatorCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileHFSCreatorCode").orElseThrow().reinterpret(NSFileHFSCreatorCode_LAYOUT.byteSize()) }
 private val NSFileHFSCreatorCode_VH: VarHandle by lazy { NSFileHFSCreatorCode_LAYOUT.varHandle() }
 
 var NSFileHFSCreatorCode: MemorySegment
-    get() = NSFileHFSCreatorCode_VH.get(NSFileHFSCreatorCode_SEGMENT) as MemorySegment
-    set(value) = NSFileHFSCreatorCode_VH.set(NSFileHFSCreatorCode_SEGMENT, value)
+    get() = NSFileHFSCreatorCode_VH.get(NSFileHFSCreatorCode_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileHFSCreatorCode_VH.set(NSFileHFSCreatorCode_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileHFSTypeCode typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileHFSTypeCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileHFSTypeCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileHFSTypeCode").orElseThrow() }
+private val NSFileHFSTypeCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileHFSTypeCode").orElseThrow().reinterpret(NSFileHFSTypeCode_LAYOUT.byteSize()) }
 private val NSFileHFSTypeCode_VH: VarHandle by lazy { NSFileHFSTypeCode_LAYOUT.varHandle() }
 
 var NSFileHFSTypeCode: MemorySegment
-    get() = NSFileHFSTypeCode_VH.get(NSFileHFSTypeCode_SEGMENT) as MemorySegment
-    set(value) = NSFileHFSTypeCode_VH.set(NSFileHFSTypeCode_SEGMENT, value)
+    get() = NSFileHFSTypeCode_VH.get(NSFileHFSTypeCode_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileHFSTypeCode_VH.set(NSFileHFSTypeCode_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileImmutable typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileImmutable_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileImmutable_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileImmutable").orElseThrow() }
+private val NSFileImmutable_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileImmutable").orElseThrow().reinterpret(NSFileImmutable_LAYOUT.byteSize()) }
 private val NSFileImmutable_VH: VarHandle by lazy { NSFileImmutable_LAYOUT.varHandle() }
 
 var NSFileImmutable: MemorySegment
-    get() = NSFileImmutable_VH.get(NSFileImmutable_SEGMENT) as MemorySegment
-    set(value) = NSFileImmutable_VH.set(NSFileImmutable_SEGMENT, value)
+    get() = NSFileImmutable_VH.get(NSFileImmutable_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileImmutable_VH.set(NSFileImmutable_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileAppendOnly typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileAppendOnly_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileAppendOnly_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileAppendOnly").orElseThrow() }
+private val NSFileAppendOnly_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileAppendOnly").orElseThrow().reinterpret(NSFileAppendOnly_LAYOUT.byteSize()) }
 private val NSFileAppendOnly_VH: VarHandle by lazy { NSFileAppendOnly_LAYOUT.varHandle() }
 
 var NSFileAppendOnly: MemorySegment
-    get() = NSFileAppendOnly_VH.get(NSFileAppendOnly_SEGMENT) as MemorySegment
-    set(value) = NSFileAppendOnly_VH.set(NSFileAppendOnly_SEGMENT, value)
+    get() = NSFileAppendOnly_VH.get(NSFileAppendOnly_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileAppendOnly_VH.set(NSFileAppendOnly_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileCreationDate typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileCreationDate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileCreationDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileCreationDate").orElseThrow() }
+private val NSFileCreationDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileCreationDate").orElseThrow().reinterpret(NSFileCreationDate_LAYOUT.byteSize()) }
 private val NSFileCreationDate_VH: VarHandle by lazy { NSFileCreationDate_LAYOUT.varHandle() }
 
 var NSFileCreationDate: MemorySegment
-    get() = NSFileCreationDate_VH.get(NSFileCreationDate_SEGMENT) as MemorySegment
-    set(value) = NSFileCreationDate_VH.set(NSFileCreationDate_SEGMENT, value)
+    get() = NSFileCreationDate_VH.get(NSFileCreationDate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileCreationDate_VH.set(NSFileCreationDate_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileOwnerAccountID typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileOwnerAccountID_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileOwnerAccountID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileOwnerAccountID").orElseThrow() }
+private val NSFileOwnerAccountID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileOwnerAccountID").orElseThrow().reinterpret(NSFileOwnerAccountID_LAYOUT.byteSize()) }
 private val NSFileOwnerAccountID_VH: VarHandle by lazy { NSFileOwnerAccountID_LAYOUT.varHandle() }
 
 var NSFileOwnerAccountID: MemorySegment
-    get() = NSFileOwnerAccountID_VH.get(NSFileOwnerAccountID_SEGMENT) as MemorySegment
-    set(value) = NSFileOwnerAccountID_VH.set(NSFileOwnerAccountID_SEGMENT, value)
+    get() = NSFileOwnerAccountID_VH.get(NSFileOwnerAccountID_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileOwnerAccountID_VH.set(NSFileOwnerAccountID_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileGroupOwnerAccountID typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileGroupOwnerAccountID_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileGroupOwnerAccountID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileGroupOwnerAccountID").orElseThrow() }
+private val NSFileGroupOwnerAccountID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileGroupOwnerAccountID").orElseThrow().reinterpret(NSFileGroupOwnerAccountID_LAYOUT.byteSize()) }
 private val NSFileGroupOwnerAccountID_VH: VarHandle by lazy { NSFileGroupOwnerAccountID_LAYOUT.varHandle() }
 
 var NSFileGroupOwnerAccountID: MemorySegment
-    get() = NSFileGroupOwnerAccountID_VH.get(NSFileGroupOwnerAccountID_SEGMENT) as MemorySegment
-    set(value) = NSFileGroupOwnerAccountID_VH.set(NSFileGroupOwnerAccountID_SEGMENT, value)
+    get() = NSFileGroupOwnerAccountID_VH.get(NSFileGroupOwnerAccountID_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileGroupOwnerAccountID_VH.set(NSFileGroupOwnerAccountID_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileBusy typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileBusy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileBusy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileBusy").orElseThrow() }
+private val NSFileBusy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileBusy").orElseThrow().reinterpret(NSFileBusy_LAYOUT.byteSize()) }
 private val NSFileBusy_VH: VarHandle by lazy { NSFileBusy_LAYOUT.varHandle() }
 
 var NSFileBusy: MemorySegment
-    get() = NSFileBusy_VH.get(NSFileBusy_SEGMENT) as MemorySegment
-    set(value) = NSFileBusy_VH.set(NSFileBusy_SEGMENT, value)
+    get() = NSFileBusy_VH.get(NSFileBusy_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileBusy_VH.set(NSFileBusy_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileProtectionKey typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileProtectionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionKey").orElseThrow() }
+private val NSFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionKey").orElseThrow().reinterpret(NSFileProtectionKey_LAYOUT.byteSize()) }
 private val NSFileProtectionKey_VH: VarHandle by lazy { NSFileProtectionKey_LAYOUT.varHandle() }
 
 var NSFileProtectionKey: MemorySegment
-    get() = NSFileProtectionKey_VH.get(NSFileProtectionKey_SEGMENT) as MemorySegment
-    set(value) = NSFileProtectionKey_VH.set(NSFileProtectionKey_SEGMENT, value)
+    get() = NSFileProtectionKey_VH.get(NSFileProtectionKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileProtectionKey_VH.set(NSFileProtectionKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileProtectionNone typedef const NSFileProtectionType = (Void)*
  */
 private val NSFileProtectionNone_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileProtectionNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionNone").orElseThrow() }
+private val NSFileProtectionNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionNone").orElseThrow().reinterpret(NSFileProtectionNone_LAYOUT.byteSize()) }
 private val NSFileProtectionNone_VH: VarHandle by lazy { NSFileProtectionNone_LAYOUT.varHandle() }
 
 var NSFileProtectionNone: MemorySegment
-    get() = NSFileProtectionNone_VH.get(NSFileProtectionNone_SEGMENT) as MemorySegment
-    set(value) = NSFileProtectionNone_VH.set(NSFileProtectionNone_SEGMENT, value)
+    get() = NSFileProtectionNone_VH.get(NSFileProtectionNone_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileProtectionNone_VH.set(NSFileProtectionNone_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileProtectionComplete typedef const NSFileProtectionType = (Void)*
  */
 private val NSFileProtectionComplete_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileProtectionComplete_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionComplete").orElseThrow() }
+private val NSFileProtectionComplete_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionComplete").orElseThrow().reinterpret(NSFileProtectionComplete_LAYOUT.byteSize()) }
 private val NSFileProtectionComplete_VH: VarHandle by lazy { NSFileProtectionComplete_LAYOUT.varHandle() }
 
 var NSFileProtectionComplete: MemorySegment
-    get() = NSFileProtectionComplete_VH.get(NSFileProtectionComplete_SEGMENT) as MemorySegment
-    set(value) = NSFileProtectionComplete_VH.set(NSFileProtectionComplete_SEGMENT, value)
+    get() = NSFileProtectionComplete_VH.get(NSFileProtectionComplete_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileProtectionComplete_VH.set(NSFileProtectionComplete_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileProtectionCompleteUnlessOpen typedef const NSFileProtectionType = (Void)*
  */
 private val NSFileProtectionCompleteUnlessOpen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileProtectionCompleteUnlessOpen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionCompleteUnlessOpen").orElseThrow() }
+private val NSFileProtectionCompleteUnlessOpen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionCompleteUnlessOpen").orElseThrow().reinterpret(NSFileProtectionCompleteUnlessOpen_LAYOUT.byteSize()) }
 private val NSFileProtectionCompleteUnlessOpen_VH: VarHandle by lazy { NSFileProtectionCompleteUnlessOpen_LAYOUT.varHandle() }
 
 var NSFileProtectionCompleteUnlessOpen: MemorySegment
-    get() = NSFileProtectionCompleteUnlessOpen_VH.get(NSFileProtectionCompleteUnlessOpen_SEGMENT) as MemorySegment
-    set(value) = NSFileProtectionCompleteUnlessOpen_VH.set(NSFileProtectionCompleteUnlessOpen_SEGMENT, value)
+    get() = NSFileProtectionCompleteUnlessOpen_VH.get(NSFileProtectionCompleteUnlessOpen_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileProtectionCompleteUnlessOpen_VH.set(NSFileProtectionCompleteUnlessOpen_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileProtectionCompleteUntilFirstUserAuthentication typedef const NSFileProtectionType = (Void)*
  */
 private val NSFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionCompleteUntilFirstUserAuthentication").orElseThrow() }
+private val NSFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionCompleteUntilFirstUserAuthentication").orElseThrow().reinterpret(NSFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.byteSize()) }
 private val NSFileProtectionCompleteUntilFirstUserAuthentication_VH: VarHandle by lazy { NSFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.varHandle() }
 
 var NSFileProtectionCompleteUntilFirstUserAuthentication: MemorySegment
-    get() = NSFileProtectionCompleteUntilFirstUserAuthentication_VH.get(NSFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT) as MemorySegment
-    set(value) = NSFileProtectionCompleteUntilFirstUserAuthentication_VH.set(NSFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, value)
+    get() = NSFileProtectionCompleteUntilFirstUserAuthentication_VH.get(NSFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileProtectionCompleteUntilFirstUserAuthentication_VH.set(NSFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileProtectionCompleteWhenUserInactive typedef const NSFileProtectionType = (Void)*
  */
 private val NSFileProtectionCompleteWhenUserInactive_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileProtectionCompleteWhenUserInactive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionCompleteWhenUserInactive").orElseThrow() }
+private val NSFileProtectionCompleteWhenUserInactive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionCompleteWhenUserInactive").orElseThrow().reinterpret(NSFileProtectionCompleteWhenUserInactive_LAYOUT.byteSize()) }
 private val NSFileProtectionCompleteWhenUserInactive_VH: VarHandle by lazy { NSFileProtectionCompleteWhenUserInactive_LAYOUT.varHandle() }
 
 var NSFileProtectionCompleteWhenUserInactive: MemorySegment
-    get() = NSFileProtectionCompleteWhenUserInactive_VH.get(NSFileProtectionCompleteWhenUserInactive_SEGMENT) as MemorySegment
-    set(value) = NSFileProtectionCompleteWhenUserInactive_VH.set(NSFileProtectionCompleteWhenUserInactive_SEGMENT, value)
+    get() = NSFileProtectionCompleteWhenUserInactive_VH.get(NSFileProtectionCompleteWhenUserInactive_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileProtectionCompleteWhenUserInactive_VH.set(NSFileProtectionCompleteWhenUserInactive_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileSystemSize typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileSystemSize_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileSystemSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemSize").orElseThrow() }
+private val NSFileSystemSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemSize").orElseThrow().reinterpret(NSFileSystemSize_LAYOUT.byteSize()) }
 private val NSFileSystemSize_VH: VarHandle by lazy { NSFileSystemSize_LAYOUT.varHandle() }
 
 var NSFileSystemSize: MemorySegment
-    get() = NSFileSystemSize_VH.get(NSFileSystemSize_SEGMENT) as MemorySegment
-    set(value) = NSFileSystemSize_VH.set(NSFileSystemSize_SEGMENT, value)
+    get() = NSFileSystemSize_VH.get(NSFileSystemSize_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileSystemSize_VH.set(NSFileSystemSize_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileSystemFreeSize typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileSystemFreeSize_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileSystemFreeSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemFreeSize").orElseThrow() }
+private val NSFileSystemFreeSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemFreeSize").orElseThrow().reinterpret(NSFileSystemFreeSize_LAYOUT.byteSize()) }
 private val NSFileSystemFreeSize_VH: VarHandle by lazy { NSFileSystemFreeSize_LAYOUT.varHandle() }
 
 var NSFileSystemFreeSize: MemorySegment
-    get() = NSFileSystemFreeSize_VH.get(NSFileSystemFreeSize_SEGMENT) as MemorySegment
-    set(value) = NSFileSystemFreeSize_VH.set(NSFileSystemFreeSize_SEGMENT, value)
+    get() = NSFileSystemFreeSize_VH.get(NSFileSystemFreeSize_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileSystemFreeSize_VH.set(NSFileSystemFreeSize_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileSystemNodes typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileSystemNodes_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileSystemNodes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemNodes").orElseThrow() }
+private val NSFileSystemNodes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemNodes").orElseThrow().reinterpret(NSFileSystemNodes_LAYOUT.byteSize()) }
 private val NSFileSystemNodes_VH: VarHandle by lazy { NSFileSystemNodes_LAYOUT.varHandle() }
 
 var NSFileSystemNodes: MemorySegment
-    get() = NSFileSystemNodes_VH.get(NSFileSystemNodes_SEGMENT) as MemorySegment
-    set(value) = NSFileSystemNodes_VH.set(NSFileSystemNodes_SEGMENT, value)
+    get() = NSFileSystemNodes_VH.get(NSFileSystemNodes_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileSystemNodes_VH.set(NSFileSystemNodes_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFileSystemFreeNodes typedef const NSFileAttributeKey = (Void)*
  */
 private val NSFileSystemFreeNodes_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileSystemFreeNodes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemFreeNodes").orElseThrow() }
+private val NSFileSystemFreeNodes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileSystemFreeNodes").orElseThrow().reinterpret(NSFileSystemFreeNodes_LAYOUT.byteSize()) }
 private val NSFileSystemFreeNodes_VH: VarHandle by lazy { NSFileSystemFreeNodes_LAYOUT.varHandle() }
 
 var NSFileSystemFreeNodes: MemorySegment
-    get() = NSFileSystemFreeNodes_VH.get(NSFileSystemFreeNodes_SEGMENT) as MemorySegment
-    set(value) = NSFileSystemFreeNodes_VH.set(NSFileSystemFreeNodes_SEGMENT, value)
+    get() = NSFileSystemFreeNodes_VH.get(NSFileSystemFreeNodes_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileSystemFreeNodes_VH.set(NSFileSystemFreeNodes_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFreeHashTable Void(typedef NSHashTable = (Void)*)
@@ -1999,397 +1999,397 @@ val NSIntHashCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSIntH
  * {@snippet lang=c : NSHTTPCookieName typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieName").orElseThrow() }
+private val NSHTTPCookieName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieName").orElseThrow().reinterpret(NSHTTPCookieName_LAYOUT.byteSize()) }
 private val NSHTTPCookieName_VH: VarHandle by lazy { NSHTTPCookieName_LAYOUT.varHandle() }
 
 var NSHTTPCookieName: MemorySegment
-    get() = NSHTTPCookieName_VH.get(NSHTTPCookieName_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieName_VH.set(NSHTTPCookieName_SEGMENT, value)
+    get() = NSHTTPCookieName_VH.get(NSHTTPCookieName_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieName_VH.set(NSHTTPCookieName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieValue typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieValue").orElseThrow() }
+private val NSHTTPCookieValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieValue").orElseThrow().reinterpret(NSHTTPCookieValue_LAYOUT.byteSize()) }
 private val NSHTTPCookieValue_VH: VarHandle by lazy { NSHTTPCookieValue_LAYOUT.varHandle() }
 
 var NSHTTPCookieValue: MemorySegment
-    get() = NSHTTPCookieValue_VH.get(NSHTTPCookieValue_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieValue_VH.set(NSHTTPCookieValue_SEGMENT, value)
+    get() = NSHTTPCookieValue_VH.get(NSHTTPCookieValue_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieValue_VH.set(NSHTTPCookieValue_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieOriginURL typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieOriginURL_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieOriginURL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieOriginURL").orElseThrow() }
+private val NSHTTPCookieOriginURL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieOriginURL").orElseThrow().reinterpret(NSHTTPCookieOriginURL_LAYOUT.byteSize()) }
 private val NSHTTPCookieOriginURL_VH: VarHandle by lazy { NSHTTPCookieOriginURL_LAYOUT.varHandle() }
 
 var NSHTTPCookieOriginURL: MemorySegment
-    get() = NSHTTPCookieOriginURL_VH.get(NSHTTPCookieOriginURL_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieOriginURL_VH.set(NSHTTPCookieOriginURL_SEGMENT, value)
+    get() = NSHTTPCookieOriginURL_VH.get(NSHTTPCookieOriginURL_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieOriginURL_VH.set(NSHTTPCookieOriginURL_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieVersion typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieVersion_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieVersion_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieVersion").orElseThrow() }
+private val NSHTTPCookieVersion_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieVersion").orElseThrow().reinterpret(NSHTTPCookieVersion_LAYOUT.byteSize()) }
 private val NSHTTPCookieVersion_VH: VarHandle by lazy { NSHTTPCookieVersion_LAYOUT.varHandle() }
 
 var NSHTTPCookieVersion: MemorySegment
-    get() = NSHTTPCookieVersion_VH.get(NSHTTPCookieVersion_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieVersion_VH.set(NSHTTPCookieVersion_SEGMENT, value)
+    get() = NSHTTPCookieVersion_VH.get(NSHTTPCookieVersion_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieVersion_VH.set(NSHTTPCookieVersion_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieDomain typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieDomain").orElseThrow() }
+private val NSHTTPCookieDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieDomain").orElseThrow().reinterpret(NSHTTPCookieDomain_LAYOUT.byteSize()) }
 private val NSHTTPCookieDomain_VH: VarHandle by lazy { NSHTTPCookieDomain_LAYOUT.varHandle() }
 
 var NSHTTPCookieDomain: MemorySegment
-    get() = NSHTTPCookieDomain_VH.get(NSHTTPCookieDomain_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieDomain_VH.set(NSHTTPCookieDomain_SEGMENT, value)
+    get() = NSHTTPCookieDomain_VH.get(NSHTTPCookieDomain_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieDomain_VH.set(NSHTTPCookieDomain_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookiePath typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookiePath_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookiePath_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookiePath").orElseThrow() }
+private val NSHTTPCookiePath_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookiePath").orElseThrow().reinterpret(NSHTTPCookiePath_LAYOUT.byteSize()) }
 private val NSHTTPCookiePath_VH: VarHandle by lazy { NSHTTPCookiePath_LAYOUT.varHandle() }
 
 var NSHTTPCookiePath: MemorySegment
-    get() = NSHTTPCookiePath_VH.get(NSHTTPCookiePath_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookiePath_VH.set(NSHTTPCookiePath_SEGMENT, value)
+    get() = NSHTTPCookiePath_VH.get(NSHTTPCookiePath_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookiePath_VH.set(NSHTTPCookiePath_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieSecure typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieSecure_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieSecure_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSecure").orElseThrow() }
+private val NSHTTPCookieSecure_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSecure").orElseThrow().reinterpret(NSHTTPCookieSecure_LAYOUT.byteSize()) }
 private val NSHTTPCookieSecure_VH: VarHandle by lazy { NSHTTPCookieSecure_LAYOUT.varHandle() }
 
 var NSHTTPCookieSecure: MemorySegment
-    get() = NSHTTPCookieSecure_VH.get(NSHTTPCookieSecure_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieSecure_VH.set(NSHTTPCookieSecure_SEGMENT, value)
+    get() = NSHTTPCookieSecure_VH.get(NSHTTPCookieSecure_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieSecure_VH.set(NSHTTPCookieSecure_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieExpires typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieExpires_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieExpires_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieExpires").orElseThrow() }
+private val NSHTTPCookieExpires_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieExpires").orElseThrow().reinterpret(NSHTTPCookieExpires_LAYOUT.byteSize()) }
 private val NSHTTPCookieExpires_VH: VarHandle by lazy { NSHTTPCookieExpires_LAYOUT.varHandle() }
 
 var NSHTTPCookieExpires: MemorySegment
-    get() = NSHTTPCookieExpires_VH.get(NSHTTPCookieExpires_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieExpires_VH.set(NSHTTPCookieExpires_SEGMENT, value)
+    get() = NSHTTPCookieExpires_VH.get(NSHTTPCookieExpires_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieExpires_VH.set(NSHTTPCookieExpires_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieComment typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieComment_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieComment_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieComment").orElseThrow() }
+private val NSHTTPCookieComment_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieComment").orElseThrow().reinterpret(NSHTTPCookieComment_LAYOUT.byteSize()) }
 private val NSHTTPCookieComment_VH: VarHandle by lazy { NSHTTPCookieComment_LAYOUT.varHandle() }
 
 var NSHTTPCookieComment: MemorySegment
-    get() = NSHTTPCookieComment_VH.get(NSHTTPCookieComment_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieComment_VH.set(NSHTTPCookieComment_SEGMENT, value)
+    get() = NSHTTPCookieComment_VH.get(NSHTTPCookieComment_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieComment_VH.set(NSHTTPCookieComment_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieCommentURL typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieCommentURL_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieCommentURL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieCommentURL").orElseThrow() }
+private val NSHTTPCookieCommentURL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieCommentURL").orElseThrow().reinterpret(NSHTTPCookieCommentURL_LAYOUT.byteSize()) }
 private val NSHTTPCookieCommentURL_VH: VarHandle by lazy { NSHTTPCookieCommentURL_LAYOUT.varHandle() }
 
 var NSHTTPCookieCommentURL: MemorySegment
-    get() = NSHTTPCookieCommentURL_VH.get(NSHTTPCookieCommentURL_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieCommentURL_VH.set(NSHTTPCookieCommentURL_SEGMENT, value)
+    get() = NSHTTPCookieCommentURL_VH.get(NSHTTPCookieCommentURL_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieCommentURL_VH.set(NSHTTPCookieCommentURL_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieDiscard typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieDiscard_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieDiscard_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieDiscard").orElseThrow() }
+private val NSHTTPCookieDiscard_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieDiscard").orElseThrow().reinterpret(NSHTTPCookieDiscard_LAYOUT.byteSize()) }
 private val NSHTTPCookieDiscard_VH: VarHandle by lazy { NSHTTPCookieDiscard_LAYOUT.varHandle() }
 
 var NSHTTPCookieDiscard: MemorySegment
-    get() = NSHTTPCookieDiscard_VH.get(NSHTTPCookieDiscard_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieDiscard_VH.set(NSHTTPCookieDiscard_SEGMENT, value)
+    get() = NSHTTPCookieDiscard_VH.get(NSHTTPCookieDiscard_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieDiscard_VH.set(NSHTTPCookieDiscard_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieMaximumAge typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieMaximumAge_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieMaximumAge_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieMaximumAge").orElseThrow() }
+private val NSHTTPCookieMaximumAge_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieMaximumAge").orElseThrow().reinterpret(NSHTTPCookieMaximumAge_LAYOUT.byteSize()) }
 private val NSHTTPCookieMaximumAge_VH: VarHandle by lazy { NSHTTPCookieMaximumAge_LAYOUT.varHandle() }
 
 var NSHTTPCookieMaximumAge: MemorySegment
-    get() = NSHTTPCookieMaximumAge_VH.get(NSHTTPCookieMaximumAge_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieMaximumAge_VH.set(NSHTTPCookieMaximumAge_SEGMENT, value)
+    get() = NSHTTPCookieMaximumAge_VH.get(NSHTTPCookieMaximumAge_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieMaximumAge_VH.set(NSHTTPCookieMaximumAge_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookiePort typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookiePort_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookiePort_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookiePort").orElseThrow() }
+private val NSHTTPCookiePort_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookiePort").orElseThrow().reinterpret(NSHTTPCookiePort_LAYOUT.byteSize()) }
 private val NSHTTPCookiePort_VH: VarHandle by lazy { NSHTTPCookiePort_LAYOUT.varHandle() }
 
 var NSHTTPCookiePort: MemorySegment
-    get() = NSHTTPCookiePort_VH.get(NSHTTPCookiePort_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookiePort_VH.set(NSHTTPCookiePort_SEGMENT, value)
+    get() = NSHTTPCookiePort_VH.get(NSHTTPCookiePort_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookiePort_VH.set(NSHTTPCookiePort_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieSetByJavaScript typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieSetByJavaScript_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieSetByJavaScript_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSetByJavaScript").orElseThrow() }
+private val NSHTTPCookieSetByJavaScript_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSetByJavaScript").orElseThrow().reinterpret(NSHTTPCookieSetByJavaScript_LAYOUT.byteSize()) }
 private val NSHTTPCookieSetByJavaScript_VH: VarHandle by lazy { NSHTTPCookieSetByJavaScript_LAYOUT.varHandle() }
 
 var NSHTTPCookieSetByJavaScript: MemorySegment
-    get() = NSHTTPCookieSetByJavaScript_VH.get(NSHTTPCookieSetByJavaScript_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieSetByJavaScript_VH.set(NSHTTPCookieSetByJavaScript_SEGMENT, value)
+    get() = NSHTTPCookieSetByJavaScript_VH.get(NSHTTPCookieSetByJavaScript_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieSetByJavaScript_VH.set(NSHTTPCookieSetByJavaScript_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieSameSitePolicy typedef const NSHTTPCookiePropertyKey = (Void)*
  */
 private val NSHTTPCookieSameSitePolicy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieSameSitePolicy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSameSitePolicy").orElseThrow() }
+private val NSHTTPCookieSameSitePolicy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSameSitePolicy").orElseThrow().reinterpret(NSHTTPCookieSameSitePolicy_LAYOUT.byteSize()) }
 private val NSHTTPCookieSameSitePolicy_VH: VarHandle by lazy { NSHTTPCookieSameSitePolicy_LAYOUT.varHandle() }
 
 var NSHTTPCookieSameSitePolicy: MemorySegment
-    get() = NSHTTPCookieSameSitePolicy_VH.get(NSHTTPCookieSameSitePolicy_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieSameSitePolicy_VH.set(NSHTTPCookieSameSitePolicy_SEGMENT, value)
+    get() = NSHTTPCookieSameSitePolicy_VH.get(NSHTTPCookieSameSitePolicy_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieSameSitePolicy_VH.set(NSHTTPCookieSameSitePolicy_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieSameSiteLax typedef const NSHTTPCookieStringPolicy = (Void)*
  */
 private val NSHTTPCookieSameSiteLax_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieSameSiteLax_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSameSiteLax").orElseThrow() }
+private val NSHTTPCookieSameSiteLax_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSameSiteLax").orElseThrow().reinterpret(NSHTTPCookieSameSiteLax_LAYOUT.byteSize()) }
 private val NSHTTPCookieSameSiteLax_VH: VarHandle by lazy { NSHTTPCookieSameSiteLax_LAYOUT.varHandle() }
 
 var NSHTTPCookieSameSiteLax: MemorySegment
-    get() = NSHTTPCookieSameSiteLax_VH.get(NSHTTPCookieSameSiteLax_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieSameSiteLax_VH.set(NSHTTPCookieSameSiteLax_SEGMENT, value)
+    get() = NSHTTPCookieSameSiteLax_VH.get(NSHTTPCookieSameSiteLax_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieSameSiteLax_VH.set(NSHTTPCookieSameSiteLax_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieSameSiteStrict typedef const NSHTTPCookieStringPolicy = (Void)*
  */
 private val NSHTTPCookieSameSiteStrict_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieSameSiteStrict_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSameSiteStrict").orElseThrow() }
+private val NSHTTPCookieSameSiteStrict_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSameSiteStrict").orElseThrow().reinterpret(NSHTTPCookieSameSiteStrict_LAYOUT.byteSize()) }
 private val NSHTTPCookieSameSiteStrict_VH: VarHandle by lazy { NSHTTPCookieSameSiteStrict_LAYOUT.varHandle() }
 
 var NSHTTPCookieSameSiteStrict: MemorySegment
-    get() = NSHTTPCookieSameSiteStrict_VH.get(NSHTTPCookieSameSiteStrict_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieSameSiteStrict_VH.set(NSHTTPCookieSameSiteStrict_SEGMENT, value)
+    get() = NSHTTPCookieSameSiteStrict_VH.get(NSHTTPCookieSameSiteStrict_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieSameSiteStrict_VH.set(NSHTTPCookieSameSiteStrict_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieManagerAcceptPolicyChangedNotification typedef const NSNotificationName = (Void)*
  */
 private val NSHTTPCookieManagerAcceptPolicyChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieManagerAcceptPolicyChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieManagerAcceptPolicyChangedNotification").orElseThrow() }
+private val NSHTTPCookieManagerAcceptPolicyChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieManagerAcceptPolicyChangedNotification").orElseThrow().reinterpret(NSHTTPCookieManagerAcceptPolicyChangedNotification_LAYOUT.byteSize()) }
 private val NSHTTPCookieManagerAcceptPolicyChangedNotification_VH: VarHandle by lazy { NSHTTPCookieManagerAcceptPolicyChangedNotification_LAYOUT.varHandle() }
 
 var NSHTTPCookieManagerAcceptPolicyChangedNotification: MemorySegment
-    get() = NSHTTPCookieManagerAcceptPolicyChangedNotification_VH.get(NSHTTPCookieManagerAcceptPolicyChangedNotification_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieManagerAcceptPolicyChangedNotification_VH.set(NSHTTPCookieManagerAcceptPolicyChangedNotification_SEGMENT, value)
+    get() = NSHTTPCookieManagerAcceptPolicyChangedNotification_VH.get(NSHTTPCookieManagerAcceptPolicyChangedNotification_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieManagerAcceptPolicyChangedNotification_VH.set(NSHTTPCookieManagerAcceptPolicyChangedNotification_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSHTTPCookieManagerCookiesChangedNotification typedef const NSNotificationName = (Void)*
  */
 private val NSHTTPCookieManagerCookiesChangedNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTTPCookieManagerCookiesChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieManagerCookiesChangedNotification").orElseThrow() }
+private val NSHTTPCookieManagerCookiesChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieManagerCookiesChangedNotification").orElseThrow().reinterpret(NSHTTPCookieManagerCookiesChangedNotification_LAYOUT.byteSize()) }
 private val NSHTTPCookieManagerCookiesChangedNotification_VH: VarHandle by lazy { NSHTTPCookieManagerCookiesChangedNotification_LAYOUT.varHandle() }
 
 var NSHTTPCookieManagerCookiesChangedNotification: MemorySegment
-    get() = NSHTTPCookieManagerCookiesChangedNotification_VH.get(NSHTTPCookieManagerCookiesChangedNotification_SEGMENT) as MemorySegment
-    set(value) = NSHTTPCookieManagerCookiesChangedNotification_VH.set(NSHTTPCookieManagerCookiesChangedNotification_SEGMENT, value)
+    get() = NSHTTPCookieManagerCookiesChangedNotification_VH.get(NSHTTPCookieManagerCookiesChangedNotification_SEGMENT, 0L) as MemorySegment
+    set(value) = NSHTTPCookieManagerCookiesChangedNotification_VH.set(NSHTTPCookieManagerCookiesChangedNotification_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSUndefinedKeyException typedef const NSExceptionName = (Void)*
  */
 private val NSUndefinedKeyException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUndefinedKeyException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndefinedKeyException").orElseThrow() }
+private val NSUndefinedKeyException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndefinedKeyException").orElseThrow().reinterpret(NSUndefinedKeyException_LAYOUT.byteSize()) }
 private val NSUndefinedKeyException_VH: VarHandle by lazy { NSUndefinedKeyException_LAYOUT.varHandle() }
 
 var NSUndefinedKeyException: MemorySegment
-    get() = NSUndefinedKeyException_VH.get(NSUndefinedKeyException_SEGMENT) as MemorySegment
-    set(value) = NSUndefinedKeyException_VH.set(NSUndefinedKeyException_SEGMENT, value)
+    get() = NSUndefinedKeyException_VH.get(NSUndefinedKeyException_SEGMENT, 0L) as MemorySegment
+    set(value) = NSUndefinedKeyException_VH.set(NSUndefinedKeyException_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSAverageKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSAverageKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAverageKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAverageKeyValueOperator").orElseThrow() }
+private val NSAverageKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAverageKeyValueOperator").orElseThrow().reinterpret(NSAverageKeyValueOperator_LAYOUT.byteSize()) }
 private val NSAverageKeyValueOperator_VH: VarHandle by lazy { NSAverageKeyValueOperator_LAYOUT.varHandle() }
 
 var NSAverageKeyValueOperator: MemorySegment
-    get() = NSAverageKeyValueOperator_VH.get(NSAverageKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSAverageKeyValueOperator_VH.set(NSAverageKeyValueOperator_SEGMENT, value)
+    get() = NSAverageKeyValueOperator_VH.get(NSAverageKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSAverageKeyValueOperator_VH.set(NSAverageKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSCountKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSCountKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSCountKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCountKeyValueOperator").orElseThrow() }
+private val NSCountKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCountKeyValueOperator").orElseThrow().reinterpret(NSCountKeyValueOperator_LAYOUT.byteSize()) }
 private val NSCountKeyValueOperator_VH: VarHandle by lazy { NSCountKeyValueOperator_LAYOUT.varHandle() }
 
 var NSCountKeyValueOperator: MemorySegment
-    get() = NSCountKeyValueOperator_VH.get(NSCountKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSCountKeyValueOperator_VH.set(NSCountKeyValueOperator_SEGMENT, value)
+    get() = NSCountKeyValueOperator_VH.get(NSCountKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSCountKeyValueOperator_VH.set(NSCountKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSDistinctUnionOfArraysKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSDistinctUnionOfArraysKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDistinctUnionOfArraysKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDistinctUnionOfArraysKeyValueOperator").orElseThrow() }
+private val NSDistinctUnionOfArraysKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDistinctUnionOfArraysKeyValueOperator").orElseThrow().reinterpret(NSDistinctUnionOfArraysKeyValueOperator_LAYOUT.byteSize()) }
 private val NSDistinctUnionOfArraysKeyValueOperator_VH: VarHandle by lazy { NSDistinctUnionOfArraysKeyValueOperator_LAYOUT.varHandle() }
 
 var NSDistinctUnionOfArraysKeyValueOperator: MemorySegment
-    get() = NSDistinctUnionOfArraysKeyValueOperator_VH.get(NSDistinctUnionOfArraysKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSDistinctUnionOfArraysKeyValueOperator_VH.set(NSDistinctUnionOfArraysKeyValueOperator_SEGMENT, value)
+    get() = NSDistinctUnionOfArraysKeyValueOperator_VH.get(NSDistinctUnionOfArraysKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSDistinctUnionOfArraysKeyValueOperator_VH.set(NSDistinctUnionOfArraysKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSDistinctUnionOfObjectsKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSDistinctUnionOfObjectsKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDistinctUnionOfObjectsKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDistinctUnionOfObjectsKeyValueOperator").orElseThrow() }
+private val NSDistinctUnionOfObjectsKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDistinctUnionOfObjectsKeyValueOperator").orElseThrow().reinterpret(NSDistinctUnionOfObjectsKeyValueOperator_LAYOUT.byteSize()) }
 private val NSDistinctUnionOfObjectsKeyValueOperator_VH: VarHandle by lazy { NSDistinctUnionOfObjectsKeyValueOperator_LAYOUT.varHandle() }
 
 var NSDistinctUnionOfObjectsKeyValueOperator: MemorySegment
-    get() = NSDistinctUnionOfObjectsKeyValueOperator_VH.get(NSDistinctUnionOfObjectsKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSDistinctUnionOfObjectsKeyValueOperator_VH.set(NSDistinctUnionOfObjectsKeyValueOperator_SEGMENT, value)
+    get() = NSDistinctUnionOfObjectsKeyValueOperator_VH.get(NSDistinctUnionOfObjectsKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSDistinctUnionOfObjectsKeyValueOperator_VH.set(NSDistinctUnionOfObjectsKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSDistinctUnionOfSetsKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSDistinctUnionOfSetsKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDistinctUnionOfSetsKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDistinctUnionOfSetsKeyValueOperator").orElseThrow() }
+private val NSDistinctUnionOfSetsKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDistinctUnionOfSetsKeyValueOperator").orElseThrow().reinterpret(NSDistinctUnionOfSetsKeyValueOperator_LAYOUT.byteSize()) }
 private val NSDistinctUnionOfSetsKeyValueOperator_VH: VarHandle by lazy { NSDistinctUnionOfSetsKeyValueOperator_LAYOUT.varHandle() }
 
 var NSDistinctUnionOfSetsKeyValueOperator: MemorySegment
-    get() = NSDistinctUnionOfSetsKeyValueOperator_VH.get(NSDistinctUnionOfSetsKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSDistinctUnionOfSetsKeyValueOperator_VH.set(NSDistinctUnionOfSetsKeyValueOperator_SEGMENT, value)
+    get() = NSDistinctUnionOfSetsKeyValueOperator_VH.get(NSDistinctUnionOfSetsKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSDistinctUnionOfSetsKeyValueOperator_VH.set(NSDistinctUnionOfSetsKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSMaximumKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSMaximumKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMaximumKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMaximumKeyValueOperator").orElseThrow() }
+private val NSMaximumKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMaximumKeyValueOperator").orElseThrow().reinterpret(NSMaximumKeyValueOperator_LAYOUT.byteSize()) }
 private val NSMaximumKeyValueOperator_VH: VarHandle by lazy { NSMaximumKeyValueOperator_LAYOUT.varHandle() }
 
 var NSMaximumKeyValueOperator: MemorySegment
-    get() = NSMaximumKeyValueOperator_VH.get(NSMaximumKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSMaximumKeyValueOperator_VH.set(NSMaximumKeyValueOperator_SEGMENT, value)
+    get() = NSMaximumKeyValueOperator_VH.get(NSMaximumKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSMaximumKeyValueOperator_VH.set(NSMaximumKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSMinimumKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSMinimumKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMinimumKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMinimumKeyValueOperator").orElseThrow() }
+private val NSMinimumKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMinimumKeyValueOperator").orElseThrow().reinterpret(NSMinimumKeyValueOperator_LAYOUT.byteSize()) }
 private val NSMinimumKeyValueOperator_VH: VarHandle by lazy { NSMinimumKeyValueOperator_LAYOUT.varHandle() }
 
 var NSMinimumKeyValueOperator: MemorySegment
-    get() = NSMinimumKeyValueOperator_VH.get(NSMinimumKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSMinimumKeyValueOperator_VH.set(NSMinimumKeyValueOperator_SEGMENT, value)
+    get() = NSMinimumKeyValueOperator_VH.get(NSMinimumKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSMinimumKeyValueOperator_VH.set(NSMinimumKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSSumKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSSumKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSumKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSumKeyValueOperator").orElseThrow() }
+private val NSSumKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSumKeyValueOperator").orElseThrow().reinterpret(NSSumKeyValueOperator_LAYOUT.byteSize()) }
 private val NSSumKeyValueOperator_VH: VarHandle by lazy { NSSumKeyValueOperator_LAYOUT.varHandle() }
 
 var NSSumKeyValueOperator: MemorySegment
-    get() = NSSumKeyValueOperator_VH.get(NSSumKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSSumKeyValueOperator_VH.set(NSSumKeyValueOperator_SEGMENT, value)
+    get() = NSSumKeyValueOperator_VH.get(NSSumKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSSumKeyValueOperator_VH.set(NSSumKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSUnionOfArraysKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSUnionOfArraysKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUnionOfArraysKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUnionOfArraysKeyValueOperator").orElseThrow() }
+private val NSUnionOfArraysKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUnionOfArraysKeyValueOperator").orElseThrow().reinterpret(NSUnionOfArraysKeyValueOperator_LAYOUT.byteSize()) }
 private val NSUnionOfArraysKeyValueOperator_VH: VarHandle by lazy { NSUnionOfArraysKeyValueOperator_LAYOUT.varHandle() }
 
 var NSUnionOfArraysKeyValueOperator: MemorySegment
-    get() = NSUnionOfArraysKeyValueOperator_VH.get(NSUnionOfArraysKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSUnionOfArraysKeyValueOperator_VH.set(NSUnionOfArraysKeyValueOperator_SEGMENT, value)
+    get() = NSUnionOfArraysKeyValueOperator_VH.get(NSUnionOfArraysKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSUnionOfArraysKeyValueOperator_VH.set(NSUnionOfArraysKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSUnionOfObjectsKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSUnionOfObjectsKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUnionOfObjectsKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUnionOfObjectsKeyValueOperator").orElseThrow() }
+private val NSUnionOfObjectsKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUnionOfObjectsKeyValueOperator").orElseThrow().reinterpret(NSUnionOfObjectsKeyValueOperator_LAYOUT.byteSize()) }
 private val NSUnionOfObjectsKeyValueOperator_VH: VarHandle by lazy { NSUnionOfObjectsKeyValueOperator_LAYOUT.varHandle() }
 
 var NSUnionOfObjectsKeyValueOperator: MemorySegment
-    get() = NSUnionOfObjectsKeyValueOperator_VH.get(NSUnionOfObjectsKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSUnionOfObjectsKeyValueOperator_VH.set(NSUnionOfObjectsKeyValueOperator_SEGMENT, value)
+    get() = NSUnionOfObjectsKeyValueOperator_VH.get(NSUnionOfObjectsKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSUnionOfObjectsKeyValueOperator_VH.set(NSUnionOfObjectsKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSUnionOfSetsKeyValueOperator typedef const NSKeyValueOperator = (Void)*
  */
 private val NSUnionOfSetsKeyValueOperator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUnionOfSetsKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUnionOfSetsKeyValueOperator").orElseThrow() }
+private val NSUnionOfSetsKeyValueOperator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUnionOfSetsKeyValueOperator").orElseThrow().reinterpret(NSUnionOfSetsKeyValueOperator_LAYOUT.byteSize()) }
 private val NSUnionOfSetsKeyValueOperator_VH: VarHandle by lazy { NSUnionOfSetsKeyValueOperator_LAYOUT.varHandle() }
 
 var NSUnionOfSetsKeyValueOperator: MemorySegment
-    get() = NSUnionOfSetsKeyValueOperator_VH.get(NSUnionOfSetsKeyValueOperator_SEGMENT) as MemorySegment
-    set(value) = NSUnionOfSetsKeyValueOperator_VH.set(NSUnionOfSetsKeyValueOperator_SEGMENT, value)
+    get() = NSUnionOfSetsKeyValueOperator_VH.get(NSUnionOfSetsKeyValueOperator_SEGMENT, 0L) as MemorySegment
+    set(value) = NSUnionOfSetsKeyValueOperator_VH.set(NSUnionOfSetsKeyValueOperator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSKeyValueChangeKindKey typedef const NSKeyValueChangeKey = (Void)*
  */
 private val NSKeyValueChangeKindKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSKeyValueChangeKindKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeKindKey").orElseThrow() }
+private val NSKeyValueChangeKindKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeKindKey").orElseThrow().reinterpret(NSKeyValueChangeKindKey_LAYOUT.byteSize()) }
 private val NSKeyValueChangeKindKey_VH: VarHandle by lazy { NSKeyValueChangeKindKey_LAYOUT.varHandle() }
 
 var NSKeyValueChangeKindKey: MemorySegment
-    get() = NSKeyValueChangeKindKey_VH.get(NSKeyValueChangeKindKey_SEGMENT) as MemorySegment
-    set(value) = NSKeyValueChangeKindKey_VH.set(NSKeyValueChangeKindKey_SEGMENT, value)
+    get() = NSKeyValueChangeKindKey_VH.get(NSKeyValueChangeKindKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSKeyValueChangeKindKey_VH.set(NSKeyValueChangeKindKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSKeyValueChangeNewKey typedef const NSKeyValueChangeKey = (Void)*
  */
 private val NSKeyValueChangeNewKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSKeyValueChangeNewKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeNewKey").orElseThrow() }
+private val NSKeyValueChangeNewKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeNewKey").orElseThrow().reinterpret(NSKeyValueChangeNewKey_LAYOUT.byteSize()) }
 private val NSKeyValueChangeNewKey_VH: VarHandle by lazy { NSKeyValueChangeNewKey_LAYOUT.varHandle() }
 
 var NSKeyValueChangeNewKey: MemorySegment
-    get() = NSKeyValueChangeNewKey_VH.get(NSKeyValueChangeNewKey_SEGMENT) as MemorySegment
-    set(value) = NSKeyValueChangeNewKey_VH.set(NSKeyValueChangeNewKey_SEGMENT, value)
+    get() = NSKeyValueChangeNewKey_VH.get(NSKeyValueChangeNewKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSKeyValueChangeNewKey_VH.set(NSKeyValueChangeNewKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSKeyValueChangeOldKey typedef const NSKeyValueChangeKey = (Void)*
  */
 private val NSKeyValueChangeOldKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSKeyValueChangeOldKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeOldKey").orElseThrow() }
+private val NSKeyValueChangeOldKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeOldKey").orElseThrow().reinterpret(NSKeyValueChangeOldKey_LAYOUT.byteSize()) }
 private val NSKeyValueChangeOldKey_VH: VarHandle by lazy { NSKeyValueChangeOldKey_LAYOUT.varHandle() }
 
 var NSKeyValueChangeOldKey: MemorySegment
-    get() = NSKeyValueChangeOldKey_VH.get(NSKeyValueChangeOldKey_SEGMENT) as MemorySegment
-    set(value) = NSKeyValueChangeOldKey_VH.set(NSKeyValueChangeOldKey_SEGMENT, value)
+    get() = NSKeyValueChangeOldKey_VH.get(NSKeyValueChangeOldKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSKeyValueChangeOldKey_VH.set(NSKeyValueChangeOldKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSKeyValueChangeIndexesKey typedef const NSKeyValueChangeKey = (Void)*
  */
 private val NSKeyValueChangeIndexesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSKeyValueChangeIndexesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeIndexesKey").orElseThrow() }
+private val NSKeyValueChangeIndexesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeIndexesKey").orElseThrow().reinterpret(NSKeyValueChangeIndexesKey_LAYOUT.byteSize()) }
 private val NSKeyValueChangeIndexesKey_VH: VarHandle by lazy { NSKeyValueChangeIndexesKey_LAYOUT.varHandle() }
 
 var NSKeyValueChangeIndexesKey: MemorySegment
-    get() = NSKeyValueChangeIndexesKey_VH.get(NSKeyValueChangeIndexesKey_SEGMENT) as MemorySegment
-    set(value) = NSKeyValueChangeIndexesKey_VH.set(NSKeyValueChangeIndexesKey_SEGMENT, value)
+    get() = NSKeyValueChangeIndexesKey_VH.get(NSKeyValueChangeIndexesKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSKeyValueChangeIndexesKey_VH.set(NSKeyValueChangeIndexesKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSKeyValueChangeNotificationIsPriorKey typedef const NSKeyValueChangeKey = (Void)*
  */
 private val NSKeyValueChangeNotificationIsPriorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSKeyValueChangeNotificationIsPriorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeNotificationIsPriorKey").orElseThrow() }
+private val NSKeyValueChangeNotificationIsPriorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeNotificationIsPriorKey").orElseThrow().reinterpret(NSKeyValueChangeNotificationIsPriorKey_LAYOUT.byteSize()) }
 private val NSKeyValueChangeNotificationIsPriorKey_VH: VarHandle by lazy { NSKeyValueChangeNotificationIsPriorKey_LAYOUT.varHandle() }
 
 var NSKeyValueChangeNotificationIsPriorKey: MemorySegment
-    get() = NSKeyValueChangeNotificationIsPriorKey_VH.get(NSKeyValueChangeNotificationIsPriorKey_SEGMENT) as MemorySegment
-    set(value) = NSKeyValueChangeNotificationIsPriorKey_VH.set(NSKeyValueChangeNotificationIsPriorKey_SEGMENT, value)
+    get() = NSKeyValueChangeNotificationIsPriorKey_VH.get(NSKeyValueChangeNotificationIsPriorKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSKeyValueChangeNotificationIsPriorKey_VH.set(NSKeyValueChangeNotificationIsPriorKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGPointZero typedef const CGPoint = Declared(CGPoint)
@@ -3624,34 +3624,34 @@ fun NSRectFromStringTyped(allocator: SegmentAllocator, arg0: MemorySegment): NSR
  * {@snippet lang=c : NSInvalidArchiveOperationException typedef const NSExceptionName = (Void)*
  */
 private val NSInvalidArchiveOperationException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSInvalidArchiveOperationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSInvalidArchiveOperationException").orElseThrow() }
+private val NSInvalidArchiveOperationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSInvalidArchiveOperationException").orElseThrow().reinterpret(NSInvalidArchiveOperationException_LAYOUT.byteSize()) }
 private val NSInvalidArchiveOperationException_VH: VarHandle by lazy { NSInvalidArchiveOperationException_LAYOUT.varHandle() }
 
 var NSInvalidArchiveOperationException: MemorySegment
-    get() = NSInvalidArchiveOperationException_VH.get(NSInvalidArchiveOperationException_SEGMENT) as MemorySegment
-    set(value) = NSInvalidArchiveOperationException_VH.set(NSInvalidArchiveOperationException_SEGMENT, value)
+    get() = NSInvalidArchiveOperationException_VH.get(NSInvalidArchiveOperationException_SEGMENT, 0L) as MemorySegment
+    set(value) = NSInvalidArchiveOperationException_VH.set(NSInvalidArchiveOperationException_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSInvalidUnarchiveOperationException typedef const NSExceptionName = (Void)*
  */
 private val NSInvalidUnarchiveOperationException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSInvalidUnarchiveOperationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSInvalidUnarchiveOperationException").orElseThrow() }
+private val NSInvalidUnarchiveOperationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSInvalidUnarchiveOperationException").orElseThrow().reinterpret(NSInvalidUnarchiveOperationException_LAYOUT.byteSize()) }
 private val NSInvalidUnarchiveOperationException_VH: VarHandle by lazy { NSInvalidUnarchiveOperationException_LAYOUT.varHandle() }
 
 var NSInvalidUnarchiveOperationException: MemorySegment
-    get() = NSInvalidUnarchiveOperationException_VH.get(NSInvalidUnarchiveOperationException_SEGMENT) as MemorySegment
-    set(value) = NSInvalidUnarchiveOperationException_VH.set(NSInvalidUnarchiveOperationException_SEGMENT, value)
+    get() = NSInvalidUnarchiveOperationException_VH.get(NSInvalidUnarchiveOperationException_SEGMENT, 0L) as MemorySegment
+    set(value) = NSInvalidUnarchiveOperationException_VH.set(NSInvalidUnarchiveOperationException_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSKeyedArchiveRootObjectKey (Void)*
  */
 private val NSKeyedArchiveRootObjectKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSKeyedArchiveRootObjectKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyedArchiveRootObjectKey").orElseThrow() }
+private val NSKeyedArchiveRootObjectKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyedArchiveRootObjectKey").orElseThrow().reinterpret(NSKeyedArchiveRootObjectKey_LAYOUT.byteSize()) }
 private val NSKeyedArchiveRootObjectKey_VH: VarHandle by lazy { NSKeyedArchiveRootObjectKey_LAYOUT.varHandle() }
 
 var NSKeyedArchiveRootObjectKey: MemorySegment
-    get() = NSKeyedArchiveRootObjectKey_VH.get(NSKeyedArchiveRootObjectKey_SEGMENT) as MemorySegment
-    set(value) = NSKeyedArchiveRootObjectKey_VH.set(NSKeyedArchiveRootObjectKey_SEGMENT, value)
+    get() = NSKeyedArchiveRootObjectKey_VH.get(NSKeyedArchiveRootObjectKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSKeyedArchiveRootObjectKey_VH.set(NSKeyedArchiveRootObjectKey_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSFreeMapTable Void(typedef NSMapTable = (Void)*)

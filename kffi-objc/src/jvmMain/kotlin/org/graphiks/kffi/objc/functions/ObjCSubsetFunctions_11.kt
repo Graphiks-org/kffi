@@ -427,265 +427,265 @@ fun CGPDFContextSetDestinationForRect(arg0: MemorySegment, arg1: MemorySegment, 
  * {@snippet lang=c : kCGPDFContextMediaBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextMediaBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextMediaBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextMediaBox").orElseThrow() }
+private val kCGPDFContextMediaBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextMediaBox").orElseThrow().reinterpret(kCGPDFContextMediaBox_LAYOUT.byteSize()) }
 private val kCGPDFContextMediaBox_VH: VarHandle by lazy { kCGPDFContextMediaBox_LAYOUT.varHandle() }
 
 var kCGPDFContextMediaBox: MemorySegment
-    get() = kCGPDFContextMediaBox_VH.get(kCGPDFContextMediaBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextMediaBox_VH.set(kCGPDFContextMediaBox_SEGMENT, value)
+    get() = kCGPDFContextMediaBox_VH.get(kCGPDFContextMediaBox_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextMediaBox_VH.set(kCGPDFContextMediaBox_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextCropBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextCropBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCropBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCropBox").orElseThrow() }
+private val kCGPDFContextCropBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCropBox").orElseThrow().reinterpret(kCGPDFContextCropBox_LAYOUT.byteSize()) }
 private val kCGPDFContextCropBox_VH: VarHandle by lazy { kCGPDFContextCropBox_LAYOUT.varHandle() }
 
 var kCGPDFContextCropBox: MemorySegment
-    get() = kCGPDFContextCropBox_VH.get(kCGPDFContextCropBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextCropBox_VH.set(kCGPDFContextCropBox_SEGMENT, value)
+    get() = kCGPDFContextCropBox_VH.get(kCGPDFContextCropBox_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextCropBox_VH.set(kCGPDFContextCropBox_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextBleedBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextBleedBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextBleedBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextBleedBox").orElseThrow() }
+private val kCGPDFContextBleedBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextBleedBox").orElseThrow().reinterpret(kCGPDFContextBleedBox_LAYOUT.byteSize()) }
 private val kCGPDFContextBleedBox_VH: VarHandle by lazy { kCGPDFContextBleedBox_LAYOUT.varHandle() }
 
 var kCGPDFContextBleedBox: MemorySegment
-    get() = kCGPDFContextBleedBox_VH.get(kCGPDFContextBleedBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextBleedBox_VH.set(kCGPDFContextBleedBox_SEGMENT, value)
+    get() = kCGPDFContextBleedBox_VH.get(kCGPDFContextBleedBox_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextBleedBox_VH.set(kCGPDFContextBleedBox_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextTrimBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextTrimBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextTrimBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextTrimBox").orElseThrow() }
+private val kCGPDFContextTrimBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextTrimBox").orElseThrow().reinterpret(kCGPDFContextTrimBox_LAYOUT.byteSize()) }
 private val kCGPDFContextTrimBox_VH: VarHandle by lazy { kCGPDFContextTrimBox_LAYOUT.varHandle() }
 
 var kCGPDFContextTrimBox: MemorySegment
-    get() = kCGPDFContextTrimBox_VH.get(kCGPDFContextTrimBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextTrimBox_VH.set(kCGPDFContextTrimBox_SEGMENT, value)
+    get() = kCGPDFContextTrimBox_VH.get(kCGPDFContextTrimBox_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextTrimBox_VH.set(kCGPDFContextTrimBox_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextArtBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextArtBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextArtBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextArtBox").orElseThrow() }
+private val kCGPDFContextArtBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextArtBox").orElseThrow().reinterpret(kCGPDFContextArtBox_LAYOUT.byteSize()) }
 private val kCGPDFContextArtBox_VH: VarHandle by lazy { kCGPDFContextArtBox_LAYOUT.varHandle() }
 
 var kCGPDFContextArtBox: MemorySegment
-    get() = kCGPDFContextArtBox_VH.get(kCGPDFContextArtBox_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextArtBox_VH.set(kCGPDFContextArtBox_SEGMENT, value)
+    get() = kCGPDFContextArtBox_VH.get(kCGPDFContextArtBox_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextArtBox_VH.set(kCGPDFContextArtBox_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextTitle typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextTitle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextTitle").orElseThrow() }
+private val kCGPDFContextTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextTitle").orElseThrow().reinterpret(kCGPDFContextTitle_LAYOUT.byteSize()) }
 private val kCGPDFContextTitle_VH: VarHandle by lazy { kCGPDFContextTitle_LAYOUT.varHandle() }
 
 var kCGPDFContextTitle: MemorySegment
-    get() = kCGPDFContextTitle_VH.get(kCGPDFContextTitle_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextTitle_VH.set(kCGPDFContextTitle_SEGMENT, value)
+    get() = kCGPDFContextTitle_VH.get(kCGPDFContextTitle_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextTitle_VH.set(kCGPDFContextTitle_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextAuthor typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextAuthor_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAuthor_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAuthor").orElseThrow() }
+private val kCGPDFContextAuthor_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAuthor").orElseThrow().reinterpret(kCGPDFContextAuthor_LAYOUT.byteSize()) }
 private val kCGPDFContextAuthor_VH: VarHandle by lazy { kCGPDFContextAuthor_LAYOUT.varHandle() }
 
 var kCGPDFContextAuthor: MemorySegment
-    get() = kCGPDFContextAuthor_VH.get(kCGPDFContextAuthor_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextAuthor_VH.set(kCGPDFContextAuthor_SEGMENT, value)
+    get() = kCGPDFContextAuthor_VH.get(kCGPDFContextAuthor_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextAuthor_VH.set(kCGPDFContextAuthor_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextSubject typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextSubject_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextSubject_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextSubject").orElseThrow() }
+private val kCGPDFContextSubject_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextSubject").orElseThrow().reinterpret(kCGPDFContextSubject_LAYOUT.byteSize()) }
 private val kCGPDFContextSubject_VH: VarHandle by lazy { kCGPDFContextSubject_LAYOUT.varHandle() }
 
 var kCGPDFContextSubject: MemorySegment
-    get() = kCGPDFContextSubject_VH.get(kCGPDFContextSubject_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextSubject_VH.set(kCGPDFContextSubject_SEGMENT, value)
+    get() = kCGPDFContextSubject_VH.get(kCGPDFContextSubject_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextSubject_VH.set(kCGPDFContextSubject_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextKeywords typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextKeywords_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextKeywords_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextKeywords").orElseThrow() }
+private val kCGPDFContextKeywords_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextKeywords").orElseThrow().reinterpret(kCGPDFContextKeywords_LAYOUT.byteSize()) }
 private val kCGPDFContextKeywords_VH: VarHandle by lazy { kCGPDFContextKeywords_LAYOUT.varHandle() }
 
 var kCGPDFContextKeywords: MemorySegment
-    get() = kCGPDFContextKeywords_VH.get(kCGPDFContextKeywords_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextKeywords_VH.set(kCGPDFContextKeywords_SEGMENT, value)
+    get() = kCGPDFContextKeywords_VH.get(kCGPDFContextKeywords_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextKeywords_VH.set(kCGPDFContextKeywords_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextCreator typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextCreator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCreator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreator").orElseThrow() }
+private val kCGPDFContextCreator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreator").orElseThrow().reinterpret(kCGPDFContextCreator_LAYOUT.byteSize()) }
 private val kCGPDFContextCreator_VH: VarHandle by lazy { kCGPDFContextCreator_LAYOUT.varHandle() }
 
 var kCGPDFContextCreator: MemorySegment
-    get() = kCGPDFContextCreator_VH.get(kCGPDFContextCreator_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextCreator_VH.set(kCGPDFContextCreator_SEGMENT, value)
+    get() = kCGPDFContextCreator_VH.get(kCGPDFContextCreator_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextCreator_VH.set(kCGPDFContextCreator_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextOwnerPassword typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextOwnerPassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextOwnerPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOwnerPassword").orElseThrow() }
+private val kCGPDFContextOwnerPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOwnerPassword").orElseThrow().reinterpret(kCGPDFContextOwnerPassword_LAYOUT.byteSize()) }
 private val kCGPDFContextOwnerPassword_VH: VarHandle by lazy { kCGPDFContextOwnerPassword_LAYOUT.varHandle() }
 
 var kCGPDFContextOwnerPassword: MemorySegment
-    get() = kCGPDFContextOwnerPassword_VH.get(kCGPDFContextOwnerPassword_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextOwnerPassword_VH.set(kCGPDFContextOwnerPassword_SEGMENT, value)
+    get() = kCGPDFContextOwnerPassword_VH.get(kCGPDFContextOwnerPassword_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextOwnerPassword_VH.set(kCGPDFContextOwnerPassword_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextUserPassword typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextUserPassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextUserPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextUserPassword").orElseThrow() }
+private val kCGPDFContextUserPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextUserPassword").orElseThrow().reinterpret(kCGPDFContextUserPassword_LAYOUT.byteSize()) }
 private val kCGPDFContextUserPassword_VH: VarHandle by lazy { kCGPDFContextUserPassword_LAYOUT.varHandle() }
 
 var kCGPDFContextUserPassword: MemorySegment
-    get() = kCGPDFContextUserPassword_VH.get(kCGPDFContextUserPassword_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextUserPassword_VH.set(kCGPDFContextUserPassword_SEGMENT, value)
+    get() = kCGPDFContextUserPassword_VH.get(kCGPDFContextUserPassword_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextUserPassword_VH.set(kCGPDFContextUserPassword_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextEncryptionKeyLength typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextEncryptionKeyLength_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextEncryptionKeyLength_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextEncryptionKeyLength").orElseThrow() }
+private val kCGPDFContextEncryptionKeyLength_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextEncryptionKeyLength").orElseThrow().reinterpret(kCGPDFContextEncryptionKeyLength_LAYOUT.byteSize()) }
 private val kCGPDFContextEncryptionKeyLength_VH: VarHandle by lazy { kCGPDFContextEncryptionKeyLength_LAYOUT.varHandle() }
 
 var kCGPDFContextEncryptionKeyLength: MemorySegment
-    get() = kCGPDFContextEncryptionKeyLength_VH.get(kCGPDFContextEncryptionKeyLength_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextEncryptionKeyLength_VH.set(kCGPDFContextEncryptionKeyLength_SEGMENT, value)
+    get() = kCGPDFContextEncryptionKeyLength_VH.get(kCGPDFContextEncryptionKeyLength_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextEncryptionKeyLength_VH.set(kCGPDFContextEncryptionKeyLength_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextAllowsPrinting typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextAllowsPrinting_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAllowsPrinting_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAllowsPrinting").orElseThrow() }
+private val kCGPDFContextAllowsPrinting_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAllowsPrinting").orElseThrow().reinterpret(kCGPDFContextAllowsPrinting_LAYOUT.byteSize()) }
 private val kCGPDFContextAllowsPrinting_VH: VarHandle by lazy { kCGPDFContextAllowsPrinting_LAYOUT.varHandle() }
 
 var kCGPDFContextAllowsPrinting: MemorySegment
-    get() = kCGPDFContextAllowsPrinting_VH.get(kCGPDFContextAllowsPrinting_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextAllowsPrinting_VH.set(kCGPDFContextAllowsPrinting_SEGMENT, value)
+    get() = kCGPDFContextAllowsPrinting_VH.get(kCGPDFContextAllowsPrinting_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextAllowsPrinting_VH.set(kCGPDFContextAllowsPrinting_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextAllowsCopying typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextAllowsCopying_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAllowsCopying_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAllowsCopying").orElseThrow() }
+private val kCGPDFContextAllowsCopying_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAllowsCopying").orElseThrow().reinterpret(kCGPDFContextAllowsCopying_LAYOUT.byteSize()) }
 private val kCGPDFContextAllowsCopying_VH: VarHandle by lazy { kCGPDFContextAllowsCopying_LAYOUT.varHandle() }
 
 var kCGPDFContextAllowsCopying: MemorySegment
-    get() = kCGPDFContextAllowsCopying_VH.get(kCGPDFContextAllowsCopying_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextAllowsCopying_VH.set(kCGPDFContextAllowsCopying_SEGMENT, value)
+    get() = kCGPDFContextAllowsCopying_VH.get(kCGPDFContextAllowsCopying_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextAllowsCopying_VH.set(kCGPDFContextAllowsCopying_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextOutputIntent typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextOutputIntent_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextOutputIntent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOutputIntent").orElseThrow() }
+private val kCGPDFContextOutputIntent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOutputIntent").orElseThrow().reinterpret(kCGPDFContextOutputIntent_LAYOUT.byteSize()) }
 private val kCGPDFContextOutputIntent_VH: VarHandle by lazy { kCGPDFContextOutputIntent_LAYOUT.varHandle() }
 
 var kCGPDFContextOutputIntent: MemorySegment
-    get() = kCGPDFContextOutputIntent_VH.get(kCGPDFContextOutputIntent_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextOutputIntent_VH.set(kCGPDFContextOutputIntent_SEGMENT, value)
+    get() = kCGPDFContextOutputIntent_VH.get(kCGPDFContextOutputIntent_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextOutputIntent_VH.set(kCGPDFContextOutputIntent_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFXOutputIntentSubtype typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXOutputIntentSubtype_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXOutputIntentSubtype_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputIntentSubtype").orElseThrow() }
+private val kCGPDFXOutputIntentSubtype_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputIntentSubtype").orElseThrow().reinterpret(kCGPDFXOutputIntentSubtype_LAYOUT.byteSize()) }
 private val kCGPDFXOutputIntentSubtype_VH: VarHandle by lazy { kCGPDFXOutputIntentSubtype_LAYOUT.varHandle() }
 
 var kCGPDFXOutputIntentSubtype: MemorySegment
-    get() = kCGPDFXOutputIntentSubtype_VH.get(kCGPDFXOutputIntentSubtype_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXOutputIntentSubtype_VH.set(kCGPDFXOutputIntentSubtype_SEGMENT, value)
+    get() = kCGPDFXOutputIntentSubtype_VH.get(kCGPDFXOutputIntentSubtype_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFXOutputIntentSubtype_VH.set(kCGPDFXOutputIntentSubtype_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFXOutputConditionIdentifier typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXOutputConditionIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXOutputConditionIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputConditionIdentifier").orElseThrow() }
+private val kCGPDFXOutputConditionIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputConditionIdentifier").orElseThrow().reinterpret(kCGPDFXOutputConditionIdentifier_LAYOUT.byteSize()) }
 private val kCGPDFXOutputConditionIdentifier_VH: VarHandle by lazy { kCGPDFXOutputConditionIdentifier_LAYOUT.varHandle() }
 
 var kCGPDFXOutputConditionIdentifier: MemorySegment
-    get() = kCGPDFXOutputConditionIdentifier_VH.get(kCGPDFXOutputConditionIdentifier_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXOutputConditionIdentifier_VH.set(kCGPDFXOutputConditionIdentifier_SEGMENT, value)
+    get() = kCGPDFXOutputConditionIdentifier_VH.get(kCGPDFXOutputConditionIdentifier_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFXOutputConditionIdentifier_VH.set(kCGPDFXOutputConditionIdentifier_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFXOutputCondition typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXOutputCondition_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXOutputCondition_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputCondition").orElseThrow() }
+private val kCGPDFXOutputCondition_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputCondition").orElseThrow().reinterpret(kCGPDFXOutputCondition_LAYOUT.byteSize()) }
 private val kCGPDFXOutputCondition_VH: VarHandle by lazy { kCGPDFXOutputCondition_LAYOUT.varHandle() }
 
 var kCGPDFXOutputCondition: MemorySegment
-    get() = kCGPDFXOutputCondition_VH.get(kCGPDFXOutputCondition_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXOutputCondition_VH.set(kCGPDFXOutputCondition_SEGMENT, value)
+    get() = kCGPDFXOutputCondition_VH.get(kCGPDFXOutputCondition_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFXOutputCondition_VH.set(kCGPDFXOutputCondition_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFXRegistryName typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXRegistryName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXRegistryName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXRegistryName").orElseThrow() }
+private val kCGPDFXRegistryName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXRegistryName").orElseThrow().reinterpret(kCGPDFXRegistryName_LAYOUT.byteSize()) }
 private val kCGPDFXRegistryName_VH: VarHandle by lazy { kCGPDFXRegistryName_LAYOUT.varHandle() }
 
 var kCGPDFXRegistryName: MemorySegment
-    get() = kCGPDFXRegistryName_VH.get(kCGPDFXRegistryName_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXRegistryName_VH.set(kCGPDFXRegistryName_SEGMENT, value)
+    get() = kCGPDFXRegistryName_VH.get(kCGPDFXRegistryName_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFXRegistryName_VH.set(kCGPDFXRegistryName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFXInfo typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXInfo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXInfo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXInfo").orElseThrow() }
+private val kCGPDFXInfo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXInfo").orElseThrow().reinterpret(kCGPDFXInfo_LAYOUT.byteSize()) }
 private val kCGPDFXInfo_VH: VarHandle by lazy { kCGPDFXInfo_LAYOUT.varHandle() }
 
 var kCGPDFXInfo: MemorySegment
-    get() = kCGPDFXInfo_VH.get(kCGPDFXInfo_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXInfo_VH.set(kCGPDFXInfo_SEGMENT, value)
+    get() = kCGPDFXInfo_VH.get(kCGPDFXInfo_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFXInfo_VH.set(kCGPDFXInfo_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFXDestinationOutputProfile typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXDestinationOutputProfile_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXDestinationOutputProfile_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXDestinationOutputProfile").orElseThrow() }
+private val kCGPDFXDestinationOutputProfile_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXDestinationOutputProfile").orElseThrow().reinterpret(kCGPDFXDestinationOutputProfile_LAYOUT.byteSize()) }
 private val kCGPDFXDestinationOutputProfile_VH: VarHandle by lazy { kCGPDFXDestinationOutputProfile_LAYOUT.varHandle() }
 
 var kCGPDFXDestinationOutputProfile: MemorySegment
-    get() = kCGPDFXDestinationOutputProfile_VH.get(kCGPDFXDestinationOutputProfile_SEGMENT) as MemorySegment
-    set(value) = kCGPDFXDestinationOutputProfile_VH.set(kCGPDFXDestinationOutputProfile_SEGMENT, value)
+    get() = kCGPDFXDestinationOutputProfile_VH.get(kCGPDFXDestinationOutputProfile_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFXDestinationOutputProfile_VH.set(kCGPDFXDestinationOutputProfile_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextOutputIntents typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextOutputIntents_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextOutputIntents_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOutputIntents").orElseThrow() }
+private val kCGPDFContextOutputIntents_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOutputIntents").orElseThrow().reinterpret(kCGPDFContextOutputIntents_LAYOUT.byteSize()) }
 private val kCGPDFContextOutputIntents_VH: VarHandle by lazy { kCGPDFContextOutputIntents_LAYOUT.varHandle() }
 
 var kCGPDFContextOutputIntents: MemorySegment
-    get() = kCGPDFContextOutputIntents_VH.get(kCGPDFContextOutputIntents_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextOutputIntents_VH.set(kCGPDFContextOutputIntents_SEGMENT, value)
+    get() = kCGPDFContextOutputIntents_VH.get(kCGPDFContextOutputIntents_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextOutputIntents_VH.set(kCGPDFContextOutputIntents_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextAccessPermissions typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextAccessPermissions_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAccessPermissions_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAccessPermissions").orElseThrow() }
+private val kCGPDFContextAccessPermissions_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAccessPermissions").orElseThrow().reinterpret(kCGPDFContextAccessPermissions_LAYOUT.byteSize()) }
 private val kCGPDFContextAccessPermissions_VH: VarHandle by lazy { kCGPDFContextAccessPermissions_LAYOUT.varHandle() }
 
 var kCGPDFContextAccessPermissions: MemorySegment
-    get() = kCGPDFContextAccessPermissions_VH.get(kCGPDFContextAccessPermissions_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextAccessPermissions_VH.set(kCGPDFContextAccessPermissions_SEGMENT, value)
+    get() = kCGPDFContextAccessPermissions_VH.get(kCGPDFContextAccessPermissions_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextAccessPermissions_VH.set(kCGPDFContextAccessPermissions_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGPDFContextSetOutline Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
@@ -710,23 +710,23 @@ fun CGPDFContextSetOutline(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : kCGPDFContextCreateLinearizedPDF typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextCreateLinearizedPDF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCreateLinearizedPDF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreateLinearizedPDF").orElseThrow() }
+private val kCGPDFContextCreateLinearizedPDF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreateLinearizedPDF").orElseThrow().reinterpret(kCGPDFContextCreateLinearizedPDF_LAYOUT.byteSize()) }
 private val kCGPDFContextCreateLinearizedPDF_VH: VarHandle by lazy { kCGPDFContextCreateLinearizedPDF_LAYOUT.varHandle() }
 
 var kCGPDFContextCreateLinearizedPDF: MemorySegment
-    get() = kCGPDFContextCreateLinearizedPDF_VH.get(kCGPDFContextCreateLinearizedPDF_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextCreateLinearizedPDF_VH.set(kCGPDFContextCreateLinearizedPDF_SEGMENT, value)
+    get() = kCGPDFContextCreateLinearizedPDF_VH.get(kCGPDFContextCreateLinearizedPDF_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextCreateLinearizedPDF_VH.set(kCGPDFContextCreateLinearizedPDF_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFContextCreatePDFA typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextCreatePDFA_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCreatePDFA_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreatePDFA").orElseThrow() }
+private val kCGPDFContextCreatePDFA_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreatePDFA").orElseThrow().reinterpret(kCGPDFContextCreatePDFA_LAYOUT.byteSize()) }
 private val kCGPDFContextCreatePDFA_VH: VarHandle by lazy { kCGPDFContextCreatePDFA_LAYOUT.varHandle() }
 
 var kCGPDFContextCreatePDFA: MemorySegment
-    get() = kCGPDFContextCreatePDFA_VH.get(kCGPDFContextCreatePDFA_SEGMENT) as MemorySegment
-    set(value) = kCGPDFContextCreatePDFA_VH.set(kCGPDFContextCreatePDFA_SEGMENT, value)
+    get() = kCGPDFContextCreatePDFA_VH.get(kCGPDFContextCreatePDFA_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFContextCreatePDFA_VH.set(kCGPDFContextCreatePDFA_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGPDFTagTypeGetName (Char)*(typedef CGPDFTagType = Declared(CGPDFTagType))
@@ -751,45 +751,45 @@ fun CGPDFTagTypeGetName(arg0: CGPDFTagType): MemorySegment {
  * {@snippet lang=c : kCGPDFTagPropertyActualText typedef CGPDFTagProperty = (Declared(__CFString))*
  */
 private val kCGPDFTagPropertyActualText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyActualText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyActualText").orElseThrow() }
+private val kCGPDFTagPropertyActualText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyActualText").orElseThrow().reinterpret(kCGPDFTagPropertyActualText_LAYOUT.byteSize()) }
 private val kCGPDFTagPropertyActualText_VH: VarHandle by lazy { kCGPDFTagPropertyActualText_LAYOUT.varHandle() }
 
 var kCGPDFTagPropertyActualText: MemorySegment
-    get() = kCGPDFTagPropertyActualText_VH.get(kCGPDFTagPropertyActualText_SEGMENT) as MemorySegment
-    set(value) = kCGPDFTagPropertyActualText_VH.set(kCGPDFTagPropertyActualText_SEGMENT, value)
+    get() = kCGPDFTagPropertyActualText_VH.get(kCGPDFTagPropertyActualText_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFTagPropertyActualText_VH.set(kCGPDFTagPropertyActualText_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFTagPropertyAlternativeText typedef CGPDFTagProperty = (Declared(__CFString))*
  */
 private val kCGPDFTagPropertyAlternativeText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyAlternativeText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyAlternativeText").orElseThrow() }
+private val kCGPDFTagPropertyAlternativeText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyAlternativeText").orElseThrow().reinterpret(kCGPDFTagPropertyAlternativeText_LAYOUT.byteSize()) }
 private val kCGPDFTagPropertyAlternativeText_VH: VarHandle by lazy { kCGPDFTagPropertyAlternativeText_LAYOUT.varHandle() }
 
 var kCGPDFTagPropertyAlternativeText: MemorySegment
-    get() = kCGPDFTagPropertyAlternativeText_VH.get(kCGPDFTagPropertyAlternativeText_SEGMENT) as MemorySegment
-    set(value) = kCGPDFTagPropertyAlternativeText_VH.set(kCGPDFTagPropertyAlternativeText_SEGMENT, value)
+    get() = kCGPDFTagPropertyAlternativeText_VH.get(kCGPDFTagPropertyAlternativeText_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFTagPropertyAlternativeText_VH.set(kCGPDFTagPropertyAlternativeText_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFTagPropertyTitleText typedef CGPDFTagProperty = (Declared(__CFString))*
  */
 private val kCGPDFTagPropertyTitleText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyTitleText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyTitleText").orElseThrow() }
+private val kCGPDFTagPropertyTitleText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyTitleText").orElseThrow().reinterpret(kCGPDFTagPropertyTitleText_LAYOUT.byteSize()) }
 private val kCGPDFTagPropertyTitleText_VH: VarHandle by lazy { kCGPDFTagPropertyTitleText_LAYOUT.varHandle() }
 
 var kCGPDFTagPropertyTitleText: MemorySegment
-    get() = kCGPDFTagPropertyTitleText_VH.get(kCGPDFTagPropertyTitleText_SEGMENT) as MemorySegment
-    set(value) = kCGPDFTagPropertyTitleText_VH.set(kCGPDFTagPropertyTitleText_SEGMENT, value)
+    get() = kCGPDFTagPropertyTitleText_VH.get(kCGPDFTagPropertyTitleText_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFTagPropertyTitleText_VH.set(kCGPDFTagPropertyTitleText_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGPDFTagPropertyLanguageText typedef CGPDFTagProperty = (Declared(__CFString))*
  */
 private val kCGPDFTagPropertyLanguageText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyLanguageText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyLanguageText").orElseThrow() }
+private val kCGPDFTagPropertyLanguageText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyLanguageText").orElseThrow().reinterpret(kCGPDFTagPropertyLanguageText_LAYOUT.byteSize()) }
 private val kCGPDFTagPropertyLanguageText_VH: VarHandle by lazy { kCGPDFTagPropertyLanguageText_LAYOUT.varHandle() }
 
 var kCGPDFTagPropertyLanguageText: MemorySegment
-    get() = kCGPDFTagPropertyLanguageText_VH.get(kCGPDFTagPropertyLanguageText_SEGMENT) as MemorySegment
-    set(value) = kCGPDFTagPropertyLanguageText_VH.set(kCGPDFTagPropertyLanguageText_SEGMENT, value)
+    get() = kCGPDFTagPropertyLanguageText_VH.get(kCGPDFTagPropertyLanguageText_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGPDFTagPropertyLanguageText_VH.set(kCGPDFTagPropertyLanguageText_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGPDFContextBeginTag Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPDFTagType = Declared(CGPDFTagType),typedef CFDictionaryRef = (Declared(__CFDictionary))*)
@@ -1194,144 +1194,144 @@ fun CGPDFOperatorTableSetCallback(arg0: MemorySegment, arg1: MemorySegment, arg2
  * {@snippet lang=c : kCGWindowNumber typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowNumber").orElseThrow() }
+private val kCGWindowNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowNumber").orElseThrow().reinterpret(kCGWindowNumber_LAYOUT.byteSize()) }
 private val kCGWindowNumber_VH: VarHandle by lazy { kCGWindowNumber_LAYOUT.varHandle() }
 
 var kCGWindowNumber: MemorySegment
-    get() = kCGWindowNumber_VH.get(kCGWindowNumber_SEGMENT) as MemorySegment
-    set(value) = kCGWindowNumber_VH.set(kCGWindowNumber_SEGMENT, value)
+    get() = kCGWindowNumber_VH.get(kCGWindowNumber_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowNumber_VH.set(kCGWindowNumber_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowStoreType typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowStoreType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowStoreType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowStoreType").orElseThrow() }
+private val kCGWindowStoreType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowStoreType").orElseThrow().reinterpret(kCGWindowStoreType_LAYOUT.byteSize()) }
 private val kCGWindowStoreType_VH: VarHandle by lazy { kCGWindowStoreType_LAYOUT.varHandle() }
 
 var kCGWindowStoreType: MemorySegment
-    get() = kCGWindowStoreType_VH.get(kCGWindowStoreType_SEGMENT) as MemorySegment
-    set(value) = kCGWindowStoreType_VH.set(kCGWindowStoreType_SEGMENT, value)
+    get() = kCGWindowStoreType_VH.get(kCGWindowStoreType_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowStoreType_VH.set(kCGWindowStoreType_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowLayer typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowLayer_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowLayer_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowLayer").orElseThrow() }
+private val kCGWindowLayer_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowLayer").orElseThrow().reinterpret(kCGWindowLayer_LAYOUT.byteSize()) }
 private val kCGWindowLayer_VH: VarHandle by lazy { kCGWindowLayer_LAYOUT.varHandle() }
 
 var kCGWindowLayer: MemorySegment
-    get() = kCGWindowLayer_VH.get(kCGWindowLayer_SEGMENT) as MemorySegment
-    set(value) = kCGWindowLayer_VH.set(kCGWindowLayer_SEGMENT, value)
+    get() = kCGWindowLayer_VH.get(kCGWindowLayer_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowLayer_VH.set(kCGWindowLayer_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowBounds typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowBounds_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowBounds_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowBounds").orElseThrow() }
+private val kCGWindowBounds_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowBounds").orElseThrow().reinterpret(kCGWindowBounds_LAYOUT.byteSize()) }
 private val kCGWindowBounds_VH: VarHandle by lazy { kCGWindowBounds_LAYOUT.varHandle() }
 
 var kCGWindowBounds: MemorySegment
-    get() = kCGWindowBounds_VH.get(kCGWindowBounds_SEGMENT) as MemorySegment
-    set(value) = kCGWindowBounds_VH.set(kCGWindowBounds_SEGMENT, value)
+    get() = kCGWindowBounds_VH.get(kCGWindowBounds_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowBounds_VH.set(kCGWindowBounds_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowSharingState typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowSharingState_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowSharingState_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowSharingState").orElseThrow() }
+private val kCGWindowSharingState_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowSharingState").orElseThrow().reinterpret(kCGWindowSharingState_LAYOUT.byteSize()) }
 private val kCGWindowSharingState_VH: VarHandle by lazy { kCGWindowSharingState_LAYOUT.varHandle() }
 
 var kCGWindowSharingState: MemorySegment
-    get() = kCGWindowSharingState_VH.get(kCGWindowSharingState_SEGMENT) as MemorySegment
-    set(value) = kCGWindowSharingState_VH.set(kCGWindowSharingState_SEGMENT, value)
+    get() = kCGWindowSharingState_VH.get(kCGWindowSharingState_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowSharingState_VH.set(kCGWindowSharingState_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowAlpha typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowAlpha_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowAlpha_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowAlpha").orElseThrow() }
+private val kCGWindowAlpha_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowAlpha").orElseThrow().reinterpret(kCGWindowAlpha_LAYOUT.byteSize()) }
 private val kCGWindowAlpha_VH: VarHandle by lazy { kCGWindowAlpha_LAYOUT.varHandle() }
 
 var kCGWindowAlpha: MemorySegment
-    get() = kCGWindowAlpha_VH.get(kCGWindowAlpha_SEGMENT) as MemorySegment
-    set(value) = kCGWindowAlpha_VH.set(kCGWindowAlpha_SEGMENT, value)
+    get() = kCGWindowAlpha_VH.get(kCGWindowAlpha_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowAlpha_VH.set(kCGWindowAlpha_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowOwnerPID typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowOwnerPID_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowOwnerPID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowOwnerPID").orElseThrow() }
+private val kCGWindowOwnerPID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowOwnerPID").orElseThrow().reinterpret(kCGWindowOwnerPID_LAYOUT.byteSize()) }
 private val kCGWindowOwnerPID_VH: VarHandle by lazy { kCGWindowOwnerPID_LAYOUT.varHandle() }
 
 var kCGWindowOwnerPID: MemorySegment
-    get() = kCGWindowOwnerPID_VH.get(kCGWindowOwnerPID_SEGMENT) as MemorySegment
-    set(value) = kCGWindowOwnerPID_VH.set(kCGWindowOwnerPID_SEGMENT, value)
+    get() = kCGWindowOwnerPID_VH.get(kCGWindowOwnerPID_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowOwnerPID_VH.set(kCGWindowOwnerPID_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowMemoryUsage typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowMemoryUsage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowMemoryUsage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowMemoryUsage").orElseThrow() }
+private val kCGWindowMemoryUsage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowMemoryUsage").orElseThrow().reinterpret(kCGWindowMemoryUsage_LAYOUT.byteSize()) }
 private val kCGWindowMemoryUsage_VH: VarHandle by lazy { kCGWindowMemoryUsage_LAYOUT.varHandle() }
 
 var kCGWindowMemoryUsage: MemorySegment
-    get() = kCGWindowMemoryUsage_VH.get(kCGWindowMemoryUsage_SEGMENT) as MemorySegment
-    set(value) = kCGWindowMemoryUsage_VH.set(kCGWindowMemoryUsage_SEGMENT, value)
+    get() = kCGWindowMemoryUsage_VH.get(kCGWindowMemoryUsage_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowMemoryUsage_VH.set(kCGWindowMemoryUsage_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowWorkspace typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowWorkspace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowWorkspace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowWorkspace").orElseThrow() }
+private val kCGWindowWorkspace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowWorkspace").orElseThrow().reinterpret(kCGWindowWorkspace_LAYOUT.byteSize()) }
 private val kCGWindowWorkspace_VH: VarHandle by lazy { kCGWindowWorkspace_LAYOUT.varHandle() }
 
 var kCGWindowWorkspace: MemorySegment
-    get() = kCGWindowWorkspace_VH.get(kCGWindowWorkspace_SEGMENT) as MemorySegment
-    set(value) = kCGWindowWorkspace_VH.set(kCGWindowWorkspace_SEGMENT, value)
+    get() = kCGWindowWorkspace_VH.get(kCGWindowWorkspace_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowWorkspace_VH.set(kCGWindowWorkspace_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowOwnerName typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowOwnerName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowOwnerName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowOwnerName").orElseThrow() }
+private val kCGWindowOwnerName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowOwnerName").orElseThrow().reinterpret(kCGWindowOwnerName_LAYOUT.byteSize()) }
 private val kCGWindowOwnerName_VH: VarHandle by lazy { kCGWindowOwnerName_LAYOUT.varHandle() }
 
 var kCGWindowOwnerName: MemorySegment
-    get() = kCGWindowOwnerName_VH.get(kCGWindowOwnerName_SEGMENT) as MemorySegment
-    set(value) = kCGWindowOwnerName_VH.set(kCGWindowOwnerName_SEGMENT, value)
+    get() = kCGWindowOwnerName_VH.get(kCGWindowOwnerName_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowOwnerName_VH.set(kCGWindowOwnerName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowName typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowName").orElseThrow() }
+private val kCGWindowName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowName").orElseThrow().reinterpret(kCGWindowName_LAYOUT.byteSize()) }
 private val kCGWindowName_VH: VarHandle by lazy { kCGWindowName_LAYOUT.varHandle() }
 
 var kCGWindowName: MemorySegment
-    get() = kCGWindowName_VH.get(kCGWindowName_SEGMENT) as MemorySegment
-    set(value) = kCGWindowName_VH.set(kCGWindowName_SEGMENT, value)
+    get() = kCGWindowName_VH.get(kCGWindowName_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowName_VH.set(kCGWindowName_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowIsOnscreen typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowIsOnscreen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowIsOnscreen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowIsOnscreen").orElseThrow() }
+private val kCGWindowIsOnscreen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowIsOnscreen").orElseThrow().reinterpret(kCGWindowIsOnscreen_LAYOUT.byteSize()) }
 private val kCGWindowIsOnscreen_VH: VarHandle by lazy { kCGWindowIsOnscreen_LAYOUT.varHandle() }
 
 var kCGWindowIsOnscreen: MemorySegment
-    get() = kCGWindowIsOnscreen_VH.get(kCGWindowIsOnscreen_SEGMENT) as MemorySegment
-    set(value) = kCGWindowIsOnscreen_VH.set(kCGWindowIsOnscreen_SEGMENT, value)
+    get() = kCGWindowIsOnscreen_VH.get(kCGWindowIsOnscreen_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowIsOnscreen_VH.set(kCGWindowIsOnscreen_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGWindowBackingLocationVideoMemory typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowBackingLocationVideoMemory_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowBackingLocationVideoMemory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowBackingLocationVideoMemory").orElseThrow() }
+private val kCGWindowBackingLocationVideoMemory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowBackingLocationVideoMemory").orElseThrow().reinterpret(kCGWindowBackingLocationVideoMemory_LAYOUT.byteSize()) }
 private val kCGWindowBackingLocationVideoMemory_VH: VarHandle by lazy { kCGWindowBackingLocationVideoMemory_LAYOUT.varHandle() }
 
 var kCGWindowBackingLocationVideoMemory: MemorySegment
-    get() = kCGWindowBackingLocationVideoMemory_VH.get(kCGWindowBackingLocationVideoMemory_SEGMENT) as MemorySegment
-    set(value) = kCGWindowBackingLocationVideoMemory_VH.set(kCGWindowBackingLocationVideoMemory_SEGMENT, value)
+    get() = kCGWindowBackingLocationVideoMemory_VH.get(kCGWindowBackingLocationVideoMemory_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGWindowBackingLocationVideoMemory_VH.set(kCGWindowBackingLocationVideoMemory_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGWindowListCopyWindowInfo typedef CFArrayRef = (Declared(__CFArray))*(typedef CGWindowListOption = Declared(CGWindowListOption),typedef CGWindowID = UNSIGNED = Int)
@@ -1737,12 +1737,12 @@ fun CGDisplayCopyAllDisplayModes(arg0: Int, arg1: MemorySegment): MemorySegment 
  * {@snippet lang=c : kCGDisplayShowDuplicateLowResolutionModes typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayShowDuplicateLowResolutionModes_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayShowDuplicateLowResolutionModes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayShowDuplicateLowResolutionModes").orElseThrow() }
+private val kCGDisplayShowDuplicateLowResolutionModes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayShowDuplicateLowResolutionModes").orElseThrow().reinterpret(kCGDisplayShowDuplicateLowResolutionModes_LAYOUT.byteSize()) }
 private val kCGDisplayShowDuplicateLowResolutionModes_VH: VarHandle by lazy { kCGDisplayShowDuplicateLowResolutionModes_LAYOUT.varHandle() }
 
 var kCGDisplayShowDuplicateLowResolutionModes: MemorySegment
-    get() = kCGDisplayShowDuplicateLowResolutionModes_VH.get(kCGDisplayShowDuplicateLowResolutionModes_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayShowDuplicateLowResolutionModes_VH.set(kCGDisplayShowDuplicateLowResolutionModes_SEGMENT, value)
+    get() = kCGDisplayShowDuplicateLowResolutionModes_VH.get(kCGDisplayShowDuplicateLowResolutionModes_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayShowDuplicateLowResolutionModes_VH.set(kCGDisplayShowDuplicateLowResolutionModes_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGDisplayCopyDisplayMode typedef CGDisplayModeRef = (Declared(CGDisplayMode))*(typedef CGDirectDisplayID = UNSIGNED = Int)
@@ -3356,122 +3356,122 @@ fun CGDisplayStreamUpdateGetDropCount(arg0: MemorySegment): Long {
  * {@snippet lang=c : kCGDisplayStreamSourceRect typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamSourceRect_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamSourceRect_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamSourceRect").orElseThrow() }
+private val kCGDisplayStreamSourceRect_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamSourceRect").orElseThrow().reinterpret(kCGDisplayStreamSourceRect_LAYOUT.byteSize()) }
 private val kCGDisplayStreamSourceRect_VH: VarHandle by lazy { kCGDisplayStreamSourceRect_LAYOUT.varHandle() }
 
 var kCGDisplayStreamSourceRect: MemorySegment
-    get() = kCGDisplayStreamSourceRect_VH.get(kCGDisplayStreamSourceRect_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamSourceRect_VH.set(kCGDisplayStreamSourceRect_SEGMENT, value)
+    get() = kCGDisplayStreamSourceRect_VH.get(kCGDisplayStreamSourceRect_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamSourceRect_VH.set(kCGDisplayStreamSourceRect_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamDestinationRect typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamDestinationRect_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamDestinationRect_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamDestinationRect").orElseThrow() }
+private val kCGDisplayStreamDestinationRect_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamDestinationRect").orElseThrow().reinterpret(kCGDisplayStreamDestinationRect_LAYOUT.byteSize()) }
 private val kCGDisplayStreamDestinationRect_VH: VarHandle by lazy { kCGDisplayStreamDestinationRect_LAYOUT.varHandle() }
 
 var kCGDisplayStreamDestinationRect: MemorySegment
-    get() = kCGDisplayStreamDestinationRect_VH.get(kCGDisplayStreamDestinationRect_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamDestinationRect_VH.set(kCGDisplayStreamDestinationRect_SEGMENT, value)
+    get() = kCGDisplayStreamDestinationRect_VH.get(kCGDisplayStreamDestinationRect_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamDestinationRect_VH.set(kCGDisplayStreamDestinationRect_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamPreserveAspectRatio typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamPreserveAspectRatio_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamPreserveAspectRatio_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamPreserveAspectRatio").orElseThrow() }
+private val kCGDisplayStreamPreserveAspectRatio_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamPreserveAspectRatio").orElseThrow().reinterpret(kCGDisplayStreamPreserveAspectRatio_LAYOUT.byteSize()) }
 private val kCGDisplayStreamPreserveAspectRatio_VH: VarHandle by lazy { kCGDisplayStreamPreserveAspectRatio_LAYOUT.varHandle() }
 
 var kCGDisplayStreamPreserveAspectRatio: MemorySegment
-    get() = kCGDisplayStreamPreserveAspectRatio_VH.get(kCGDisplayStreamPreserveAspectRatio_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamPreserveAspectRatio_VH.set(kCGDisplayStreamPreserveAspectRatio_SEGMENT, value)
+    get() = kCGDisplayStreamPreserveAspectRatio_VH.get(kCGDisplayStreamPreserveAspectRatio_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamPreserveAspectRatio_VH.set(kCGDisplayStreamPreserveAspectRatio_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamColorSpace typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamColorSpace").orElseThrow() }
+private val kCGDisplayStreamColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamColorSpace").orElseThrow().reinterpret(kCGDisplayStreamColorSpace_LAYOUT.byteSize()) }
 private val kCGDisplayStreamColorSpace_VH: VarHandle by lazy { kCGDisplayStreamColorSpace_LAYOUT.varHandle() }
 
 var kCGDisplayStreamColorSpace: MemorySegment
-    get() = kCGDisplayStreamColorSpace_VH.get(kCGDisplayStreamColorSpace_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamColorSpace_VH.set(kCGDisplayStreamColorSpace_SEGMENT, value)
+    get() = kCGDisplayStreamColorSpace_VH.get(kCGDisplayStreamColorSpace_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamColorSpace_VH.set(kCGDisplayStreamColorSpace_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamMinimumFrameTime typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamMinimumFrameTime_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamMinimumFrameTime_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamMinimumFrameTime").orElseThrow() }
+private val kCGDisplayStreamMinimumFrameTime_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamMinimumFrameTime").orElseThrow().reinterpret(kCGDisplayStreamMinimumFrameTime_LAYOUT.byteSize()) }
 private val kCGDisplayStreamMinimumFrameTime_VH: VarHandle by lazy { kCGDisplayStreamMinimumFrameTime_LAYOUT.varHandle() }
 
 var kCGDisplayStreamMinimumFrameTime: MemorySegment
-    get() = kCGDisplayStreamMinimumFrameTime_VH.get(kCGDisplayStreamMinimumFrameTime_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamMinimumFrameTime_VH.set(kCGDisplayStreamMinimumFrameTime_SEGMENT, value)
+    get() = kCGDisplayStreamMinimumFrameTime_VH.get(kCGDisplayStreamMinimumFrameTime_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamMinimumFrameTime_VH.set(kCGDisplayStreamMinimumFrameTime_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamShowCursor typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamShowCursor_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamShowCursor_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamShowCursor").orElseThrow() }
+private val kCGDisplayStreamShowCursor_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamShowCursor").orElseThrow().reinterpret(kCGDisplayStreamShowCursor_LAYOUT.byteSize()) }
 private val kCGDisplayStreamShowCursor_VH: VarHandle by lazy { kCGDisplayStreamShowCursor_LAYOUT.varHandle() }
 
 var kCGDisplayStreamShowCursor: MemorySegment
-    get() = kCGDisplayStreamShowCursor_VH.get(kCGDisplayStreamShowCursor_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamShowCursor_VH.set(kCGDisplayStreamShowCursor_SEGMENT, value)
+    get() = kCGDisplayStreamShowCursor_VH.get(kCGDisplayStreamShowCursor_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamShowCursor_VH.set(kCGDisplayStreamShowCursor_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamQueueDepth typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamQueueDepth_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamQueueDepth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamQueueDepth").orElseThrow() }
+private val kCGDisplayStreamQueueDepth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamQueueDepth").orElseThrow().reinterpret(kCGDisplayStreamQueueDepth_LAYOUT.byteSize()) }
 private val kCGDisplayStreamQueueDepth_VH: VarHandle by lazy { kCGDisplayStreamQueueDepth_LAYOUT.varHandle() }
 
 var kCGDisplayStreamQueueDepth: MemorySegment
-    get() = kCGDisplayStreamQueueDepth_VH.get(kCGDisplayStreamQueueDepth_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamQueueDepth_VH.set(kCGDisplayStreamQueueDepth_SEGMENT, value)
+    get() = kCGDisplayStreamQueueDepth_VH.get(kCGDisplayStreamQueueDepth_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamQueueDepth_VH.set(kCGDisplayStreamQueueDepth_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamYCbCrMatrix typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamYCbCrMatrix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamYCbCrMatrix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix").orElseThrow() }
+private val kCGDisplayStreamYCbCrMatrix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_LAYOUT.byteSize()) }
 private val kCGDisplayStreamYCbCrMatrix_VH: VarHandle by lazy { kCGDisplayStreamYCbCrMatrix_LAYOUT.varHandle() }
 
 var kCGDisplayStreamYCbCrMatrix: MemorySegment
-    get() = kCGDisplayStreamYCbCrMatrix_VH.get(kCGDisplayStreamYCbCrMatrix_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamYCbCrMatrix_VH.set(kCGDisplayStreamYCbCrMatrix_SEGMENT, value)
+    get() = kCGDisplayStreamYCbCrMatrix_VH.get(kCGDisplayStreamYCbCrMatrix_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamYCbCrMatrix_VH.set(kCGDisplayStreamYCbCrMatrix_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamYCbCrMatrix_ITU_R_709_2 typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix_ITU_R_709_2").orElseThrow() }
+private val kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix_ITU_R_709_2").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_LAYOUT.byteSize()) }
 private val kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_VH: VarHandle by lazy { kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_LAYOUT.varHandle() }
 
 var kCGDisplayStreamYCbCrMatrix_ITU_R_709_2: MemorySegment
-    get() = kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_VH.get(kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_VH.set(kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_SEGMENT, value)
+    get() = kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_VH.get(kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_VH.set(kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamYCbCrMatrix_ITU_R_601_4 typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix_ITU_R_601_4").orElseThrow() }
+private val kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix_ITU_R_601_4").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_LAYOUT.byteSize()) }
 private val kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_VH: VarHandle by lazy { kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_LAYOUT.varHandle() }
 
 var kCGDisplayStreamYCbCrMatrix_ITU_R_601_4: MemorySegment
-    get() = kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_VH.get(kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_VH.set(kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_SEGMENT, value)
+    get() = kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_VH.get(kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_VH.set(kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995 typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995").orElseThrow() }
+private val kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_LAYOUT.byteSize()) }
 private val kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_VH: VarHandle by lazy { kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_LAYOUT.varHandle() }
 
 var kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995: MemorySegment
-    get() = kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_VH.get(kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_SEGMENT) as MemorySegment
-    set(value) = kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_VH.set(kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_SEGMENT, value)
+    get() = kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_VH.get(kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_VH.set(kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : CGDisplayStreamGetTypeID typedef CFTypeID = UNSIGNED = Long()
@@ -5226,64 +5226,64 @@ fun CGDirectDisplayCopyCurrentMetalDevice(arg0: Int): MemorySegment {
  * {@snippet lang=c : NSPasteboardTypeString typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypeString_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypeString_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeString").orElseThrow() }
+private val NSPasteboardTypeString_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeString").orElseThrow().reinterpret(NSPasteboardTypeString_LAYOUT.byteSize()) }
 private val NSPasteboardTypeString_VH: VarHandle by lazy { NSPasteboardTypeString_LAYOUT.varHandle() }
 
 var NSPasteboardTypeString: MemorySegment
-    get() = NSPasteboardTypeString_VH.get(NSPasteboardTypeString_SEGMENT) as MemorySegment
-    set(value) = NSPasteboardTypeString_VH.set(NSPasteboardTypeString_SEGMENT, value)
+    get() = NSPasteboardTypeString_VH.get(NSPasteboardTypeString_SEGMENT, 0L) as MemorySegment
+    set(value) = NSPasteboardTypeString_VH.set(NSPasteboardTypeString_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSPasteboardTypePDF typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypePDF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypePDF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypePDF").orElseThrow() }
+private val NSPasteboardTypePDF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypePDF").orElseThrow().reinterpret(NSPasteboardTypePDF_LAYOUT.byteSize()) }
 private val NSPasteboardTypePDF_VH: VarHandle by lazy { NSPasteboardTypePDF_LAYOUT.varHandle() }
 
 var NSPasteboardTypePDF: MemorySegment
-    get() = NSPasteboardTypePDF_VH.get(NSPasteboardTypePDF_SEGMENT) as MemorySegment
-    set(value) = NSPasteboardTypePDF_VH.set(NSPasteboardTypePDF_SEGMENT, value)
+    get() = NSPasteboardTypePDF_VH.get(NSPasteboardTypePDF_SEGMENT, 0L) as MemorySegment
+    set(value) = NSPasteboardTypePDF_VH.set(NSPasteboardTypePDF_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSPasteboardTypeTIFF typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypeTIFF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypeTIFF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeTIFF").orElseThrow() }
+private val NSPasteboardTypeTIFF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeTIFF").orElseThrow().reinterpret(NSPasteboardTypeTIFF_LAYOUT.byteSize()) }
 private val NSPasteboardTypeTIFF_VH: VarHandle by lazy { NSPasteboardTypeTIFF_LAYOUT.varHandle() }
 
 var NSPasteboardTypeTIFF: MemorySegment
-    get() = NSPasteboardTypeTIFF_VH.get(NSPasteboardTypeTIFF_SEGMENT) as MemorySegment
-    set(value) = NSPasteboardTypeTIFF_VH.set(NSPasteboardTypeTIFF_SEGMENT, value)
+    get() = NSPasteboardTypeTIFF_VH.get(NSPasteboardTypeTIFF_SEGMENT, 0L) as MemorySegment
+    set(value) = NSPasteboardTypeTIFF_VH.set(NSPasteboardTypeTIFF_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSPasteboardTypePNG typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypePNG_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypePNG_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypePNG").orElseThrow() }
+private val NSPasteboardTypePNG_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypePNG").orElseThrow().reinterpret(NSPasteboardTypePNG_LAYOUT.byteSize()) }
 private val NSPasteboardTypePNG_VH: VarHandle by lazy { NSPasteboardTypePNG_LAYOUT.varHandle() }
 
 var NSPasteboardTypePNG: MemorySegment
-    get() = NSPasteboardTypePNG_VH.get(NSPasteboardTypePNG_SEGMENT) as MemorySegment
-    set(value) = NSPasteboardTypePNG_VH.set(NSPasteboardTypePNG_SEGMENT, value)
+    get() = NSPasteboardTypePNG_VH.get(NSPasteboardTypePNG_SEGMENT, 0L) as MemorySegment
+    set(value) = NSPasteboardTypePNG_VH.set(NSPasteboardTypePNG_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSPasteboardTypeRTF typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypeRTF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypeRTF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeRTF").orElseThrow() }
+private val NSPasteboardTypeRTF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeRTF").orElseThrow().reinterpret(NSPasteboardTypeRTF_LAYOUT.byteSize()) }
 private val NSPasteboardTypeRTF_VH: VarHandle by lazy { NSPasteboardTypeRTF_LAYOUT.varHandle() }
 
 var NSPasteboardTypeRTF: MemorySegment
-    get() = NSPasteboardTypeRTF_VH.get(NSPasteboardTypeRTF_SEGMENT) as MemorySegment
-    set(value) = NSPasteboardTypeRTF_VH.set(NSPasteboardTypeRTF_SEGMENT, value)
+    get() = NSPasteboardTypeRTF_VH.get(NSPasteboardTypeRTF_SEGMENT, 0L) as MemorySegment
+    set(value) = NSPasteboardTypeRTF_VH.set(NSPasteboardTypeRTF_SEGMENT, 0L, value)
 
 /**
  * {@snippet lang=c : NSPasteboardTypeRTFD typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypeRTFD_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypeRTFD_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeRTFD").orElseThrow() }
+private val NSPasteboardTypeRTFD_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeRTFD").orElseThrow().reinterpret(NSPasteboardTypeRTFD_LAYOUT.byteSize()) }
 private val NSPasteboardTypeRTFD_VH: VarHandle by lazy { NSPasteboardTypeRTFD_LAYOUT.varHandle() }
 
 var NSPasteboardTypeRTFD: MemorySegment
-    get() = NSPasteboardTypeRTFD_VH.get(NSPasteboardTypeRTFD_SEGMENT) as MemorySegment
-    set(value) = NSPasteboardTypeRTFD_VH.set(NSPasteboardTypeRTFD_SEGMENT, value)
+    get() = NSPasteboardTypeRTFD_VH.get(NSPasteboardTypeRTFD_SEGMENT, 0L) as MemorySegment
+    set(value) = NSPasteboardTypeRTFD_VH.set(NSPasteboardTypeRTFD_SEGMENT, 0L, value)
