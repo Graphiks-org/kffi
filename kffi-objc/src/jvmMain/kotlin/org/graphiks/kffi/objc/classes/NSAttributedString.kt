@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,6 +11,10 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSObject
  * Protocols: NSCopying, NSMutableCopying, NSSecureCoding
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 open class NSAttributedString(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSAttributedString") }
@@ -16,18 +22,30 @@ open class NSAttributedString(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     /** @return NSDictionary<NSAttributedStringKey,id> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun attributesAtIndex_effectiveRange(location: Long, range: NSRangePointer): MemorySegment {
         val sel = ObjCRuntime.sel("attributesAtIndex:effectiveRange:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, location, range.segment) as MemorySegment
     }
 
     // @property string
+    @PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun string(): MemorySegment {
         val sel = ObjCRuntime.sel("string")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun stringAsString(): String = ObjCRuntime.toJavaString(string())
 
 }
@@ -67,57 +85,101 @@ fun NSAttributedString_supportsSecureCoding(): Boolean {
 
 // ── Category: NSExtendedAttributedString on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.attribute_atIndex_effectiveRange(attrName: MemorySegment, location: Long, range: NSRangePointer): MemorySegment {
     val sel = ObjCRuntime.sel("attribute:atIndex:effectiveRange:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, attrName, location, range.segment) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.attributedSubstringFromRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("attributedSubstringFromRange:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
 /** @return NSDictionary<NSAttributedStringKey,id> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.attributesAtIndex_longestEffectiveRange_inRange(location: Long, range: NSRangePointer, rangeLimit: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("attributesAtIndex:longestEffectiveRange:inRange:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, location, range.segment, ObjCRuntime.ObjCStructArg(rangeLimit.segment, NSRange.layout)) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.attribute_atIndex_longestEffectiveRange_inRange(attrName: MemorySegment, location: Long, range: NSRangePointer, rangeLimit: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("attribute:atIndex:longestEffectiveRange:inRange:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, attrName, location, range.segment, ObjCRuntime.ObjCStructArg(rangeLimit.segment, NSRange.layout)) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.isEqualToAttributedString(other: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("isEqualToAttributedString:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, other) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithString(str: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithString:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, str) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithString_attributes(str: MemorySegment, attrs: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithString:attributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, str, attrs) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithAttributedString(attrStr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithAttributedString:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, attrStr) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.enumerateAttributesInRange_options_usingBlock(enumerationRange: NSRange, opts: NSAttributedStringEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateAttributesInRange:options:usingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(enumerationRange.segment, NSRange.layout), opts.rawValue, block)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.enumerateAttribute_inRange_options_usingBlock(attrName: MemorySegment, enumerationRange: NSRange, opts: NSAttributedStringEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateAttribute:inRange:options:usingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, attrName, ObjCRuntime.ObjCStructArg(enumerationRange.segment, NSRange.layout), opts.rawValue, block)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.length(): Long {
     val sel = ObjCRuntime.sel("length")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
@@ -125,16 +187,28 @@ fun NSAttributedString.length(): Long {
 
 // ── Category: NSAttributedStringCreateFromMarkdown on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithContentsOfMarkdownFileAtURL_options_baseURL_error(markdownFile: MemorySegment, options: MemorySegment, baseURL: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfMarkdownFileAtURL:options:baseURL:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, markdownFile, options, baseURL, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithMarkdown_options_baseURL_error(markdown: MemorySegment, options: MemorySegment, baseURL: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithMarkdown:options:baseURL:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, markdown, options, baseURL, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithMarkdownString_options_baseURL_error(markdownString: MemorySegment, options: MemorySegment, baseURL: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithMarkdownString:options:baseURL:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, markdownString, options, baseURL, error) as MemorySegment
@@ -142,27 +216,47 @@ fun NSAttributedString.initWithMarkdownString_options_baseURL_error(markdownStri
 
 // ── Category: NSAttributedStringFormatting on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithFormat_options_locale(format: MemorySegment, options: NSAttributedStringFormattingOptions, locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithFormat:options:locale:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options.rawValue, locale) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithFormat_options_locale_arguments(format: MemorySegment, options: NSAttributedStringFormattingOptions, locale: MemorySegment, arguments: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithFormat:options:locale:arguments:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options.rawValue, locale, arguments) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithFormat_options_locale_context(format: MemorySegment, options: NSAttributedStringFormattingOptions, locale: MemorySegment, context: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithFormat:options:locale:context:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options.rawValue, locale, context) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithFormat_options_locale_context_arguments(format: MemorySegment, options: NSAttributedStringFormattingOptions, locale: MemorySegment, context: MemorySegment, arguments: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithFormat:options:locale:context:arguments:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, options.rawValue, locale, context, arguments) as MemorySegment
 }
 
 // Class method: +[NSAttributedString localizedAttributedStringWithFormat:]
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString_localizedAttributedStringWithFormat(format: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("localizedAttributedStringWithFormat:")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -170,6 +264,10 @@ fun NSAttributedString_localizedAttributedStringWithFormat(format: MemorySegment
 }
 
 // Class method: +[NSAttributedString localizedAttributedStringWithFormat:options:]
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString_localizedAttributedStringWithFormat_options(format: MemorySegment, options: NSAttributedStringFormattingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("localizedAttributedStringWithFormat:options:")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -177,6 +275,10 @@ fun NSAttributedString_localizedAttributedStringWithFormat_options(format: Memor
 }
 
 // Class method: +[NSAttributedString localizedAttributedStringWithFormat:context:]
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString_localizedAttributedStringWithFormat_context(format: MemorySegment, context: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("localizedAttributedStringWithFormat:context:")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -184,6 +286,10 @@ fun NSAttributedString_localizedAttributedStringWithFormat_context(format: Memor
 }
 
 // Class method: +[NSAttributedString localizedAttributedStringWithFormat:options:context:]
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString_localizedAttributedStringWithFormat_options_context(format: MemorySegment, options: NSAttributedStringFormattingOptions, context: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("localizedAttributedStringWithFormat:options:context:")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -192,6 +298,10 @@ fun NSAttributedString_localizedAttributedStringWithFormat_options_context(forma
 
 // ── Category: NSMorphology on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.attributedStringByInflectingString(): MemorySegment {
     val sel = ObjCRuntime.sel("attributedStringByInflectingString")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
@@ -199,21 +309,41 @@ fun NSAttributedString.attributedStringByInflectingString(): MemorySegment {
 
 // ── Category: NSAttributedStringDocumentFormats on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithURL_options_documentAttributes_error(url: MemorySegment, options: MemorySegment, dict: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithURL:options:documentAttributes:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, options, dict, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithData_options_documentAttributes_error(`data`: MemorySegment, options: MemorySegment, dict: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithData:options:documentAttributes:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `data`, options, dict, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.dataFromRange_documentAttributes_error(range: NSRange, dict: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dataFromRange:documentAttributes:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.fileWrapperFromRange_documentAttributes_error(range: NSRange, dict: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("fileWrapperFromRange:documentAttributes:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict, error) as MemorySegment
@@ -221,11 +351,21 @@ fun NSAttributedString.fileWrapperFromRange_documentAttributes_error(range: NSRa
 
 // ── Category: NSAttributedStringKitAdditions on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.containsAttachmentsInRange(range: NSRange): Boolean {
     val sel = ObjCRuntime.sel("containsAttachmentsInRange:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.prefersRTFDInRange(range: NSRange): Boolean {
     val sel = ObjCRuntime.sel("prefersRTFDInRange:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as Boolean
@@ -233,56 +373,100 @@ fun NSAttributedString.prefersRTFDInRange(range: NSRange): Boolean {
 
 // ── Category: NSAttributedStringAppKitDocumentFormats on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithRTF_documentAttributes(`data`: MemorySegment, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithRTF:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `data`, dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithRTFD_documentAttributes(`data`: MemorySegment, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithRTFD:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `data`, dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithHTML_documentAttributes(`data`: MemorySegment, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithHTML:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `data`, dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithHTML_baseURL_documentAttributes(`data`: MemorySegment, base: MemorySegment, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithHTML:baseURL:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `data`, base, dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithDocFormat_documentAttributes(`data`: MemorySegment, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithDocFormat:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `data`, dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithHTML_options_documentAttributes(`data`: MemorySegment, options: MemorySegment, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithHTML:options:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, `data`, options, dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.initWithRTFDFileWrapper_documentAttributes(wrapper: MemorySegment, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithRTFDFileWrapper:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, wrapper, dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.RTFFromRange_documentAttributes(range: NSRange, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("RTFFromRange:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.RTFDFromRange_documentAttributes(range: NSRange, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("RTFDFromRange:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.RTFDFileWrapperFromRange_documentAttributes(range: NSRange, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("RTFDFileWrapperFromRange:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.docFormatFromRange_documentAttributes(range: NSRange, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("docFormatFromRange:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), dict) as MemorySegment
@@ -291,52 +475,92 @@ fun NSAttributedString.docFormatFromRange_documentAttributes(range: NSRange, dic
 // ── Category: NSAttributedStringAppKitAdditions on NSAttributedString ─────────────────────────────────────────
 
 /** @return NSDictionary<NSAttributedStringKey,id> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.fontAttributesInRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("fontAttributesInRange:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
 /** @return NSDictionary<NSAttributedStringKey,id> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.rulerAttributesInRange(range: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("rulerAttributesInRange:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.lineBreakBeforeIndex_withinRange(location: Long, aRange: NSRange): Long {
     val sel = ObjCRuntime.sel("lineBreakBeforeIndex:withinRange:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, location, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout)) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.lineBreakByHyphenatingBeforeIndex_withinRange(location: Long, aRange: NSRange): Long {
     val sel = ObjCRuntime.sel("lineBreakByHyphenatingBeforeIndex:withinRange:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, location, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout)) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.doubleClickAtIndex(location: Long): NSRange {
     val sel = ObjCRuntime.sel("doubleClickAtIndex:")
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, location))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.nextWordFromIndex_forward(location: Long, isForward: Boolean): Long {
     val sel = ObjCRuntime.sel("nextWordFromIndex:forward:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, location, isForward) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.rangeOfTextBlock_atIndex(block: MemorySegment, location: Long): NSRange {
     val sel = ObjCRuntime.sel("rangeOfTextBlock:atIndex:")
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, block, location))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.rangeOfTextTable_atIndex(table: MemorySegment, location: Long): NSRange {
     val sel = ObjCRuntime.sel("rangeOfTextTable:atIndex:")
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, table, location))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.rangeOfTextList_atIndex(list: MemorySegment, location: Long): NSRange {
     val sel = ObjCRuntime.sel("rangeOfTextList:atIndex:")
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, list, location))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.itemNumberInTextList_atIndex(list: MemorySegment, location: Long): Long {
     val sel = ObjCRuntime.sel("itemNumberInTextList:atIndex:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, list, location) as Long
@@ -345,6 +569,7 @@ fun NSAttributedString.itemNumberInTextList_atIndex(list: MemorySegment, locatio
 // ── Category: NSAttributedStringPasteboardAdditions on NSAttributedString ─────────────────────────────────────────
 
 // Class method: +[NSAttributedString textTypes]
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSAttributedString_textTypes(): MemorySegment {
     val sel = ObjCRuntime.sel("textTypes")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -352,6 +577,7 @@ fun NSAttributedString_textTypes(): MemorySegment {
 }
 
 // Class method: +[NSAttributedString textUnfilteredTypes]
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSAttributedString_textUnfilteredTypes(): MemorySegment {
     val sel = ObjCRuntime.sel("textUnfilteredTypes")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -360,27 +586,35 @@ fun NSAttributedString_textUnfilteredTypes(): MemorySegment {
 
 // ── Category: NSDeprecatedKitAdditions on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use -initWithURL:options:documentAttributes:error: instead")
 fun NSAttributedString.initWithURL_documentAttributes(url: MemorySegment, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithURL:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use -initWithURL:options:documentAttributes:error: instead")
 fun NSAttributedString.initWithPath_documentAttributes(path: MemorySegment, dict: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithPath:documentAttributes:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path, dict) as MemorySegment
 }
 
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use NSDataDetector instead")
 fun NSAttributedString.URLAtIndex_effectiveRange(location: Long, effectiveRange: NSRangePointer): MemorySegment {
     val sel = ObjCRuntime.sel("URLAtIndex:effectiveRange:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, location, effectiveRange.segment) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.containsAttachments(): Boolean {
     val sel = ObjCRuntime.sel("containsAttachments")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
 // Class method: +[NSAttributedString textFileTypes]
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1)
 fun NSAttributedString_textFileTypes(): MemorySegment {
     val sel = ObjCRuntime.sel("textFileTypes")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -388,6 +622,7 @@ fun NSAttributedString_textFileTypes(): MemorySegment {
 }
 
 // Class method: +[NSAttributedString textPasteboardTypes]
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1)
 fun NSAttributedString_textPasteboardTypes(): MemorySegment {
     val sel = ObjCRuntime.sel("textPasteboardTypes")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -395,6 +630,7 @@ fun NSAttributedString_textPasteboardTypes(): MemorySegment {
 }
 
 // Class method: +[NSAttributedString textUnfilteredFileTypes]
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1)
 fun NSAttributedString_textUnfilteredFileTypes(): MemorySegment {
     val sel = ObjCRuntime.sel("textUnfilteredFileTypes")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -402,6 +638,7 @@ fun NSAttributedString_textUnfilteredFileTypes(): MemorySegment {
 }
 
 // Class method: +[NSAttributedString textUnfilteredPasteboardTypes]
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1)
 fun NSAttributedString_textUnfilteredPasteboardTypes(): MemorySegment {
     val sel = ObjCRuntime.sel("textUnfilteredPasteboardTypes")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -411,6 +648,11 @@ fun NSAttributedString_textUnfilteredPasteboardTypes(): MemorySegment {
 // ── Category: NSAttributedStringAttachmentConveniences on NSAttributedString ─────────────────────────────────────────
 
 // Class method: +[NSAttributedString attributedStringWithAttachment:]
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString_attributedStringWithAttachment(attachment: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("attributedStringWithAttachment:")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -418,6 +660,11 @@ fun NSAttributedString_attributedStringWithAttachment(attachment: MemorySegment)
 }
 
 // Class method: +[NSAttributedString attributedStringWithAttachment:attributes:]
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString_attributedStringWithAttachment_attributes(attachment: MemorySegment, attributes: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("attributedStringWithAttachment:attributes:")
     val cls = ObjCRuntime.getClass("NSAttributedString")
@@ -426,16 +673,31 @@ fun NSAttributedString_attributedStringWithAttachment_attributes(attachment: Mem
 
 // ── Category: NSStringDrawing on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.size(): CGSize {
     val sel = ObjCRuntime.sel("size")
     return CGSize(ObjCRuntime.msgSendStruct(CGSize.layout, this.ptr, sel))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.drawAtPoint(point: CGPoint): Unit {
     val sel = ObjCRuntime.sel("drawAtPoint:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, CGPoint.layout))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.drawInRect(rect: CGRect): Unit {
     val sel = ObjCRuntime.sel("drawInRect:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, CGRect.layout))
@@ -443,11 +705,21 @@ fun NSAttributedString.drawInRect(rect: CGRect): Unit {
 
 // ── Category: NSExtendedStringDrawing on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.drawWithRect_options_context(rect: CGRect, options: NSStringDrawingOptions, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawWithRect:options:context:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, CGRect.layout), options.rawValue, context)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.boundingRectWithSize_options_context(size: CGSize, options: NSStringDrawingOptions, context: MemorySegment): CGRect {
     val sel = ObjCRuntime.sel("boundingRectWithSize:options:context:")
     return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, CGSize.layout), options.rawValue, context))
@@ -455,11 +727,19 @@ fun NSAttributedString.boundingRectWithSize_options_context(size: CGSize, option
 
 // ── Category: NSStringDrawingDeprecated on NSAttributedString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.drawWithRect_options(rect: NSRect, options: NSStringDrawingOptions): Unit {
     val sel = ObjCRuntime.sel("drawWithRect:options:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), options.rawValue)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString.boundingRectWithSize_options(size: NSSize, options: NSStringDrawingOptions): NSRect {
     val sel = ObjCRuntime.sel("boundingRectWithSize:options:")
     return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout), options.rawValue))
@@ -468,6 +748,11 @@ fun NSAttributedString.boundingRectWithSize_options(size: NSSize, options: NSStr
 // ── Category: NSAttributedStringAdaptiveImageGlyphConveniences on NSAttributedString ─────────────────────────────────────────
 
 // Class method: +[NSAttributedString attributedStringWithAdaptiveImageGlyph:attributes:]
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSAttributedString_attributedStringWithAdaptiveImageGlyph_attributes(adaptiveImageGlyph: MemorySegment, attributes: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("attributedStringWithAdaptiveImageGlyph:attributes:")
     val cls = ObjCRuntime.getClass("NSAttributedString")

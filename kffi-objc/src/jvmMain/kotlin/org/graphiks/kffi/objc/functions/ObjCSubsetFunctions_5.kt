@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -11,6 +13,10 @@ private val NSURLPathKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val NSURLPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLPathKey").orElseThrow().reinterpret(NSURLPathKey_LAYOUT.byteSize()) }
 private val NSURLPathKey_VH: VarHandle by lazy { NSURLPathKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLPathKey: MemorySegment
     get() = NSURLPathKey_VH.get(NSURLPathKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLPathKey_VH.set(NSURLPathKey_SEGMENT, 0L, value)
@@ -22,6 +28,10 @@ private val NSURLCanonicalPathKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val NSURLCanonicalPathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLCanonicalPathKey").orElseThrow().reinterpret(NSURLCanonicalPathKey_LAYOUT.byteSize()) }
 private val NSURLCanonicalPathKey_VH: VarHandle by lazy { NSURLCanonicalPathKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
 var NSURLCanonicalPathKey: MemorySegment
     get() = NSURLCanonicalPathKey_VH.get(NSURLCanonicalPathKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLCanonicalPathKey_VH.set(NSURLCanonicalPathKey_SEGMENT, 0L, value)
@@ -33,6 +43,10 @@ private val NSURLIsMountTriggerKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSURLIsMountTriggerKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsMountTriggerKey").orElseThrow().reinterpret(NSURLIsMountTriggerKey_LAYOUT.byteSize()) }
 private val NSURLIsMountTriggerKey_VH: VarHandle by lazy { NSURLIsMountTriggerKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLIsMountTriggerKey: MemorySegment
     get() = NSURLIsMountTriggerKey_VH.get(NSURLIsMountTriggerKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLIsMountTriggerKey_VH.set(NSURLIsMountTriggerKey_SEGMENT, 0L, value)
@@ -44,6 +58,10 @@ private val NSURLGenerationIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayo
 private val NSURLGenerationIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLGenerationIdentifierKey").orElseThrow().reinterpret(NSURLGenerationIdentifierKey_LAYOUT.byteSize()) }
 private val NSURLGenerationIdentifierKey_VH: VarHandle by lazy { NSURLGenerationIdentifierKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLGenerationIdentifierKey: MemorySegment
     get() = NSURLGenerationIdentifierKey_VH.get(NSURLGenerationIdentifierKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLGenerationIdentifierKey_VH.set(NSURLGenerationIdentifierKey_SEGMENT, 0L, value)
@@ -55,6 +73,10 @@ private val NSURLDocumentIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout
 private val NSURLDocumentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLDocumentIdentifierKey").orElseThrow().reinterpret(NSURLDocumentIdentifierKey_LAYOUT.byteSize()) }
 private val NSURLDocumentIdentifierKey_VH: VarHandle by lazy { NSURLDocumentIdentifierKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLDocumentIdentifierKey: MemorySegment
     get() = NSURLDocumentIdentifierKey_VH.get(NSURLDocumentIdentifierKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLDocumentIdentifierKey_VH.set(NSURLDocumentIdentifierKey_SEGMENT, 0L, value)
@@ -66,6 +88,10 @@ private val NSURLAddedToDirectoryDateKey_LAYOUT: ValueLayout by lazy { ValueLayo
 private val NSURLAddedToDirectoryDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLAddedToDirectoryDateKey").orElseThrow().reinterpret(NSURLAddedToDirectoryDateKey_LAYOUT.byteSize()) }
 private val NSURLAddedToDirectoryDateKey_VH: VarHandle by lazy { NSURLAddedToDirectoryDateKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLAddedToDirectoryDateKey: MemorySegment
     get() = NSURLAddedToDirectoryDateKey_VH.get(NSURLAddedToDirectoryDateKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLAddedToDirectoryDateKey_VH.set(NSURLAddedToDirectoryDateKey_SEGMENT, 0L, value)
@@ -77,6 +103,10 @@ private val NSURLQuarantinePropertiesKey_LAYOUT: ValueLayout by lazy { ValueLayo
 private val NSURLQuarantinePropertiesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLQuarantinePropertiesKey").orElseThrow().reinterpret(NSURLQuarantinePropertiesKey_LAYOUT.byteSize()) }
 private val NSURLQuarantinePropertiesKey_VH: VarHandle by lazy { NSURLQuarantinePropertiesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLQuarantinePropertiesKey: MemorySegment
     get() = NSURLQuarantinePropertiesKey_VH.get(NSURLQuarantinePropertiesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLQuarantinePropertiesKey_VH.set(NSURLQuarantinePropertiesKey_SEGMENT, 0L, value)
@@ -88,6 +118,10 @@ private val NSURLFileResourceTypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSURLFileResourceTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeKey").orElseThrow().reinterpret(NSURLFileResourceTypeKey_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeKey_VH: VarHandle by lazy { NSURLFileResourceTypeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileResourceTypeKey: MemorySegment
     get() = NSURLFileResourceTypeKey_VH.get(NSURLFileResourceTypeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileResourceTypeKey_VH.set(NSURLFileResourceTypeKey_SEGMENT, 0L, value)
@@ -99,6 +133,10 @@ private val NSURLFileIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSURLFileIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileIdentifierKey").orElseThrow().reinterpret(NSURLFileIdentifierKey_LAYOUT.byteSize()) }
 private val NSURLFileIdentifierKey_VH: VarHandle by lazy { NSURLFileIdentifierKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 9, introducedMinor = 4, introducedSubminor = -1)
 var NSURLFileIdentifierKey: MemorySegment
     get() = NSURLFileIdentifierKey_VH.get(NSURLFileIdentifierKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileIdentifierKey_VH.set(NSURLFileIdentifierKey_SEGMENT, 0L, value)
@@ -110,6 +148,10 @@ private val NSURLFileContentIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLay
 private val NSURLFileContentIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileContentIdentifierKey").orElseThrow().reinterpret(NSURLFileContentIdentifierKey_LAYOUT.byteSize()) }
 private val NSURLFileContentIdentifierKey_VH: VarHandle by lazy { NSURLFileContentIdentifierKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileContentIdentifierKey: MemorySegment
     get() = NSURLFileContentIdentifierKey_VH.get(NSURLFileContentIdentifierKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileContentIdentifierKey_VH.set(NSURLFileContentIdentifierKey_SEGMENT, 0L, value)
@@ -121,6 +163,10 @@ private val NSURLMayShareFileContentKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLMayShareFileContentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLMayShareFileContentKey").orElseThrow().reinterpret(NSURLMayShareFileContentKey_LAYOUT.byteSize()) }
 private val NSURLMayShareFileContentKey_VH: VarHandle by lazy { NSURLMayShareFileContentKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 var NSURLMayShareFileContentKey: MemorySegment
     get() = NSURLMayShareFileContentKey_VH.get(NSURLMayShareFileContentKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLMayShareFileContentKey_VH.set(NSURLMayShareFileContentKey_SEGMENT, 0L, value)
@@ -132,6 +178,10 @@ private val NSURLMayHaveExtendedAttributesKey_LAYOUT: ValueLayout by lazy { Valu
 private val NSURLMayHaveExtendedAttributesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLMayHaveExtendedAttributesKey").orElseThrow().reinterpret(NSURLMayHaveExtendedAttributesKey_LAYOUT.byteSize()) }
 private val NSURLMayHaveExtendedAttributesKey_VH: VarHandle by lazy { NSURLMayHaveExtendedAttributesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 var NSURLMayHaveExtendedAttributesKey: MemorySegment
     get() = NSURLMayHaveExtendedAttributesKey_VH.get(NSURLMayHaveExtendedAttributesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLMayHaveExtendedAttributesKey_VH.set(NSURLMayHaveExtendedAttributesKey_SEGMENT, 0L, value)
@@ -143,6 +193,10 @@ private val NSURLIsPurgeableKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val NSURLIsPurgeableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsPurgeableKey").orElseThrow().reinterpret(NSURLIsPurgeableKey_LAYOUT.byteSize()) }
 private val NSURLIsPurgeableKey_VH: VarHandle by lazy { NSURLIsPurgeableKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 var NSURLIsPurgeableKey: MemorySegment
     get() = NSURLIsPurgeableKey_VH.get(NSURLIsPurgeableKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLIsPurgeableKey_VH.set(NSURLIsPurgeableKey_SEGMENT, 0L, value)
@@ -154,6 +208,10 @@ private val NSURLIsSparseKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val NSURLIsSparseKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsSparseKey").orElseThrow().reinterpret(NSURLIsSparseKey_LAYOUT.byteSize()) }
 private val NSURLIsSparseKey_VH: VarHandle by lazy { NSURLIsSparseKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 var NSURLIsSparseKey: MemorySegment
     get() = NSURLIsSparseKey_VH.get(NSURLIsSparseKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLIsSparseKey_VH.set(NSURLIsSparseKey_SEGMENT, 0L, value)
@@ -165,6 +223,10 @@ private val NSURLFileResourceTypeNamedPipe_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSURLFileResourceTypeNamedPipe_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeNamedPipe").orElseThrow().reinterpret(NSURLFileResourceTypeNamedPipe_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeNamedPipe_VH: VarHandle by lazy { NSURLFileResourceTypeNamedPipe_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileResourceTypeNamedPipe: MemorySegment
     get() = NSURLFileResourceTypeNamedPipe_VH.get(NSURLFileResourceTypeNamedPipe_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileResourceTypeNamedPipe_VH.set(NSURLFileResourceTypeNamedPipe_SEGMENT, 0L, value)
@@ -176,6 +238,10 @@ private val NSURLFileResourceTypeCharacterSpecial_LAYOUT: ValueLayout by lazy { 
 private val NSURLFileResourceTypeCharacterSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeCharacterSpecial").orElseThrow().reinterpret(NSURLFileResourceTypeCharacterSpecial_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeCharacterSpecial_VH: VarHandle by lazy { NSURLFileResourceTypeCharacterSpecial_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileResourceTypeCharacterSpecial: MemorySegment
     get() = NSURLFileResourceTypeCharacterSpecial_VH.get(NSURLFileResourceTypeCharacterSpecial_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileResourceTypeCharacterSpecial_VH.set(NSURLFileResourceTypeCharacterSpecial_SEGMENT, 0L, value)
@@ -187,6 +253,10 @@ private val NSURLFileResourceTypeDirectory_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSURLFileResourceTypeDirectory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeDirectory").orElseThrow().reinterpret(NSURLFileResourceTypeDirectory_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeDirectory_VH: VarHandle by lazy { NSURLFileResourceTypeDirectory_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileResourceTypeDirectory: MemorySegment
     get() = NSURLFileResourceTypeDirectory_VH.get(NSURLFileResourceTypeDirectory_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileResourceTypeDirectory_VH.set(NSURLFileResourceTypeDirectory_SEGMENT, 0L, value)
@@ -198,6 +268,10 @@ private val NSURLFileResourceTypeBlockSpecial_LAYOUT: ValueLayout by lazy { Valu
 private val NSURLFileResourceTypeBlockSpecial_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeBlockSpecial").orElseThrow().reinterpret(NSURLFileResourceTypeBlockSpecial_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeBlockSpecial_VH: VarHandle by lazy { NSURLFileResourceTypeBlockSpecial_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileResourceTypeBlockSpecial: MemorySegment
     get() = NSURLFileResourceTypeBlockSpecial_VH.get(NSURLFileResourceTypeBlockSpecial_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileResourceTypeBlockSpecial_VH.set(NSURLFileResourceTypeBlockSpecial_SEGMENT, 0L, value)
@@ -209,6 +283,10 @@ private val NSURLFileResourceTypeRegular_LAYOUT: ValueLayout by lazy { ValueLayo
 private val NSURLFileResourceTypeRegular_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeRegular").orElseThrow().reinterpret(NSURLFileResourceTypeRegular_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeRegular_VH: VarHandle by lazy { NSURLFileResourceTypeRegular_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileResourceTypeRegular: MemorySegment
     get() = NSURLFileResourceTypeRegular_VH.get(NSURLFileResourceTypeRegular_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileResourceTypeRegular_VH.set(NSURLFileResourceTypeRegular_SEGMENT, 0L, value)
@@ -220,6 +298,10 @@ private val NSURLFileResourceTypeSymbolicLink_LAYOUT: ValueLayout by lazy { Valu
 private val NSURLFileResourceTypeSymbolicLink_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeSymbolicLink").orElseThrow().reinterpret(NSURLFileResourceTypeSymbolicLink_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeSymbolicLink_VH: VarHandle by lazy { NSURLFileResourceTypeSymbolicLink_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileResourceTypeSymbolicLink: MemorySegment
     get() = NSURLFileResourceTypeSymbolicLink_VH.get(NSURLFileResourceTypeSymbolicLink_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileResourceTypeSymbolicLink_VH.set(NSURLFileResourceTypeSymbolicLink_SEGMENT, 0L, value)
@@ -231,6 +313,10 @@ private val NSURLFileResourceTypeSocket_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLFileResourceTypeSocket_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeSocket").orElseThrow().reinterpret(NSURLFileResourceTypeSocket_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeSocket_VH: VarHandle by lazy { NSURLFileResourceTypeSocket_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileResourceTypeSocket: MemorySegment
     get() = NSURLFileResourceTypeSocket_VH.get(NSURLFileResourceTypeSocket_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileResourceTypeSocket_VH.set(NSURLFileResourceTypeSocket_SEGMENT, 0L, value)
@@ -242,6 +328,10 @@ private val NSURLFileResourceTypeUnknown_LAYOUT: ValueLayout by lazy { ValueLayo
 private val NSURLFileResourceTypeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileResourceTypeUnknown").orElseThrow().reinterpret(NSURLFileResourceTypeUnknown_LAYOUT.byteSize()) }
 private val NSURLFileResourceTypeUnknown_VH: VarHandle by lazy { NSURLFileResourceTypeUnknown_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileResourceTypeUnknown: MemorySegment
     get() = NSURLFileResourceTypeUnknown_VH.get(NSURLFileResourceTypeUnknown_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileResourceTypeUnknown_VH.set(NSURLFileResourceTypeUnknown_SEGMENT, 0L, value)
@@ -253,6 +343,10 @@ private val NSURLThumbnailDictionaryKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLThumbnailDictionaryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLThumbnailDictionaryKey").orElseThrow().reinterpret(NSURLThumbnailDictionaryKey_LAYOUT.byteSize()) }
 private val NSURLThumbnailDictionaryKey_VH: VarHandle by lazy { NSURLThumbnailDictionaryKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the QuickLookThumbnailing framework and extension point instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the QuickLookThumbnailing framework and extension point instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the QuickLookThumbnailing framework and extension point instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the QuickLookThumbnailing framework and extension point instead")
 var NSURLThumbnailDictionaryKey: MemorySegment
     get() = NSURLThumbnailDictionaryKey_VH.get(NSURLThumbnailDictionaryKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLThumbnailDictionaryKey_VH.set(NSURLThumbnailDictionaryKey_SEGMENT, 0L, value)
@@ -264,6 +358,10 @@ private val NSURLThumbnailKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val NSURLThumbnailKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLThumbnailKey").orElseThrow().reinterpret(NSURLThumbnailKey_LAYOUT.byteSize()) }
 private val NSURLThumbnailKey_VH: VarHandle by lazy { NSURLThumbnailKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the QuickLookThumbnailing framework and extension point instead")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLThumbnailKey: MemorySegment
     get() = NSURLThumbnailKey_VH.get(NSURLThumbnailKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLThumbnailKey_VH.set(NSURLThumbnailKey_SEGMENT, 0L, value)
@@ -275,6 +373,10 @@ private val NSThumbnail1024x1024SizeKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSThumbnail1024x1024SizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSThumbnail1024x1024SizeKey").orElseThrow().reinterpret(NSThumbnail1024x1024SizeKey_LAYOUT.byteSize()) }
 private val NSThumbnail1024x1024SizeKey_VH: VarHandle by lazy { NSThumbnail1024x1024SizeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the QuickLookThumbnailing framework and extension point instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the QuickLookThumbnailing framework and extension point instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the QuickLookThumbnailing framework and extension point instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the QuickLookThumbnailing framework and extension point instead")
 var NSThumbnail1024x1024SizeKey: MemorySegment
     get() = NSThumbnail1024x1024SizeKey_VH.get(NSThumbnail1024x1024SizeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSThumbnail1024x1024SizeKey_VH.set(NSThumbnail1024x1024SizeKey_SEGMENT, 0L, value)
@@ -286,6 +388,10 @@ private val NSURLFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val NSURLFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileSizeKey").orElseThrow().reinterpret(NSURLFileSizeKey_LAYOUT.byteSize()) }
 private val NSURLFileSizeKey_VH: VarHandle by lazy { NSURLFileSizeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileSizeKey: MemorySegment
     get() = NSURLFileSizeKey_VH.get(NSURLFileSizeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileSizeKey_VH.set(NSURLFileSizeKey_SEGMENT, 0L, value)
@@ -297,6 +403,10 @@ private val NSURLFileAllocatedSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSURLFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileAllocatedSizeKey").orElseThrow().reinterpret(NSURLFileAllocatedSizeKey_LAYOUT.byteSize()) }
 private val NSURLFileAllocatedSizeKey_VH: VarHandle by lazy { NSURLFileAllocatedSizeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileAllocatedSizeKey: MemorySegment
     get() = NSURLFileAllocatedSizeKey_VH.get(NSURLFileAllocatedSizeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileAllocatedSizeKey_VH.set(NSURLFileAllocatedSizeKey_SEGMENT, 0L, value)
@@ -308,6 +418,10 @@ private val NSURLTotalFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val NSURLTotalFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLTotalFileSizeKey").orElseThrow().reinterpret(NSURLTotalFileSizeKey_LAYOUT.byteSize()) }
 private val NSURLTotalFileSizeKey_VH: VarHandle by lazy { NSURLTotalFileSizeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLTotalFileSizeKey: MemorySegment
     get() = NSURLTotalFileSizeKey_VH.get(NSURLTotalFileSizeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLTotalFileSizeKey_VH.set(NSURLTotalFileSizeKey_SEGMENT, 0L, value)
@@ -319,6 +433,10 @@ private val NSURLTotalFileAllocatedSizeKey_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSURLTotalFileAllocatedSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLTotalFileAllocatedSizeKey").orElseThrow().reinterpret(NSURLTotalFileAllocatedSizeKey_LAYOUT.byteSize()) }
 private val NSURLTotalFileAllocatedSizeKey_VH: VarHandle by lazy { NSURLTotalFileAllocatedSizeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLTotalFileAllocatedSizeKey: MemorySegment
     get() = NSURLTotalFileAllocatedSizeKey_VH.get(NSURLTotalFileAllocatedSizeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLTotalFileAllocatedSizeKey_VH.set(NSURLTotalFileAllocatedSizeKey_SEGMENT, 0L, value)
@@ -330,6 +448,10 @@ private val NSURLIsAliasFileKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val NSURLIsAliasFileKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsAliasFileKey").orElseThrow().reinterpret(NSURLIsAliasFileKey_LAYOUT.byteSize()) }
 private val NSURLIsAliasFileKey_VH: VarHandle by lazy { NSURLIsAliasFileKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLIsAliasFileKey: MemorySegment
     get() = NSURLIsAliasFileKey_VH.get(NSURLIsAliasFileKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLIsAliasFileKey_VH.set(NSURLIsAliasFileKey_SEGMENT, 0L, value)
@@ -341,6 +463,10 @@ private val NSURLFileProtectionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSURLFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionKey").orElseThrow().reinterpret(NSURLFileProtectionKey_LAYOUT.byteSize()) }
 private val NSURLFileProtectionKey_VH: VarHandle by lazy { NSURLFileProtectionKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileProtectionKey: MemorySegment
     get() = NSURLFileProtectionKey_VH.get(NSURLFileProtectionKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileProtectionKey_VH.set(NSURLFileProtectionKey_SEGMENT, 0L, value)
@@ -352,6 +478,10 @@ private val NSURLFileProtectionNone_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val NSURLFileProtectionNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionNone").orElseThrow().reinterpret(NSURLFileProtectionNone_LAYOUT.byteSize()) }
 private val NSURLFileProtectionNone_VH: VarHandle by lazy { NSURLFileProtectionNone_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileProtectionNone: MemorySegment
     get() = NSURLFileProtectionNone_VH.get(NSURLFileProtectionNone_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileProtectionNone_VH.set(NSURLFileProtectionNone_SEGMENT, 0L, value)
@@ -363,6 +493,10 @@ private val NSURLFileProtectionComplete_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLFileProtectionComplete_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionComplete").orElseThrow().reinterpret(NSURLFileProtectionComplete_LAYOUT.byteSize()) }
 private val NSURLFileProtectionComplete_VH: VarHandle by lazy { NSURLFileProtectionComplete_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileProtectionComplete: MemorySegment
     get() = NSURLFileProtectionComplete_VH.get(NSURLFileProtectionComplete_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileProtectionComplete_VH.set(NSURLFileProtectionComplete_SEGMENT, 0L, value)
@@ -374,6 +508,10 @@ private val NSURLFileProtectionCompleteUnlessOpen_LAYOUT: ValueLayout by lazy { 
 private val NSURLFileProtectionCompleteUnlessOpen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteUnlessOpen").orElseThrow().reinterpret(NSURLFileProtectionCompleteUnlessOpen_LAYOUT.byteSize()) }
 private val NSURLFileProtectionCompleteUnlessOpen_VH: VarHandle by lazy { NSURLFileProtectionCompleteUnlessOpen_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileProtectionCompleteUnlessOpen: MemorySegment
     get() = NSURLFileProtectionCompleteUnlessOpen_VH.get(NSURLFileProtectionCompleteUnlessOpen_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileProtectionCompleteUnlessOpen_VH.set(NSURLFileProtectionCompleteUnlessOpen_SEGMENT, 0L, value)
@@ -385,6 +523,10 @@ private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT: Valu
 private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteUntilFirstUserAuthentication").orElseThrow().reinterpret(NSURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.byteSize()) }
 private val NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH: VarHandle by lazy { NSURLFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileProtectionCompleteUntilFirstUserAuthentication: MemorySegment
     get() = NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH.get(NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileProtectionCompleteUntilFirstUserAuthentication_VH.set(NSURLFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L, value)
@@ -396,6 +538,10 @@ private val NSURLFileProtectionCompleteWhenUserInactive_LAYOUT: ValueLayout by l
 private val NSURLFileProtectionCompleteWhenUserInactive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLFileProtectionCompleteWhenUserInactive").orElseThrow().reinterpret(NSURLFileProtectionCompleteWhenUserInactive_LAYOUT.byteSize()) }
 private val NSURLFileProtectionCompleteWhenUserInactive_VH: VarHandle by lazy { NSURLFileProtectionCompleteWhenUserInactive_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", unavailable = true)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 var NSURLFileProtectionCompleteWhenUserInactive: MemorySegment
     get() = NSURLFileProtectionCompleteWhenUserInactive_VH.get(NSURLFileProtectionCompleteWhenUserInactive_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLFileProtectionCompleteWhenUserInactive_VH.set(NSURLFileProtectionCompleteWhenUserInactive_SEGMENT, 0L, value)
@@ -407,6 +553,10 @@ private val NSURLDirectoryEntryCountKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLDirectoryEntryCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLDirectoryEntryCountKey").orElseThrow().reinterpret(NSURLDirectoryEntryCountKey_LAYOUT.byteSize()) }
 private val NSURLDirectoryEntryCountKey_VH: VarHandle by lazy { NSURLDirectoryEntryCountKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 var NSURLDirectoryEntryCountKey: MemorySegment
     get() = NSURLDirectoryEntryCountKey_VH.get(NSURLDirectoryEntryCountKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLDirectoryEntryCountKey_VH.set(NSURLDirectoryEntryCountKey_SEGMENT, 0L, value)
@@ -418,6 +568,10 @@ private val NSURLVolumeLocalizedFormatDescriptionKey_LAYOUT: ValueLayout by lazy
 private val NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeLocalizedFormatDescriptionKey").orElseThrow().reinterpret(NSURLVolumeLocalizedFormatDescriptionKey_LAYOUT.byteSize()) }
 private val NSURLVolumeLocalizedFormatDescriptionKey_VH: VarHandle by lazy { NSURLVolumeLocalizedFormatDescriptionKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeLocalizedFormatDescriptionKey: MemorySegment
     get() = NSURLVolumeLocalizedFormatDescriptionKey_VH.get(NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeLocalizedFormatDescriptionKey_VH.set(NSURLVolumeLocalizedFormatDescriptionKey_SEGMENT, 0L, value)
@@ -429,6 +583,10 @@ private val NSURLVolumeTotalCapacityKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLVolumeTotalCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeTotalCapacityKey").orElseThrow().reinterpret(NSURLVolumeTotalCapacityKey_LAYOUT.byteSize()) }
 private val NSURLVolumeTotalCapacityKey_VH: VarHandle by lazy { NSURLVolumeTotalCapacityKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeTotalCapacityKey: MemorySegment
     get() = NSURLVolumeTotalCapacityKey_VH.get(NSURLVolumeTotalCapacityKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeTotalCapacityKey_VH.set(NSURLVolumeTotalCapacityKey_SEGMENT, 0L, value)
@@ -440,6 +598,10 @@ private val NSURLVolumeAvailableCapacityKey_LAYOUT: ValueLayout by lazy { ValueL
 private val NSURLVolumeAvailableCapacityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityKey").orElseThrow().reinterpret(NSURLVolumeAvailableCapacityKey_LAYOUT.byteSize()) }
 private val NSURLVolumeAvailableCapacityKey_VH: VarHandle by lazy { NSURLVolumeAvailableCapacityKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeAvailableCapacityKey: MemorySegment
     get() = NSURLVolumeAvailableCapacityKey_VH.get(NSURLVolumeAvailableCapacityKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeAvailableCapacityKey_VH.set(NSURLVolumeAvailableCapacityKey_SEGMENT, 0L, value)
@@ -451,6 +613,10 @@ private val NSURLVolumeResourceCountKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLVolumeResourceCountKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeResourceCountKey").orElseThrow().reinterpret(NSURLVolumeResourceCountKey_LAYOUT.byteSize()) }
 private val NSURLVolumeResourceCountKey_VH: VarHandle by lazy { NSURLVolumeResourceCountKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeResourceCountKey: MemorySegment
     get() = NSURLVolumeResourceCountKey_VH.get(NSURLVolumeResourceCountKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeResourceCountKey_VH.set(NSURLVolumeResourceCountKey_SEGMENT, 0L, value)
@@ -462,6 +628,10 @@ private val NSURLVolumeSupportsPersistentIDsKey_LAYOUT: ValueLayout by lazy { Va
 private val NSURLVolumeSupportsPersistentIDsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsPersistentIDsKey").orElseThrow().reinterpret(NSURLVolumeSupportsPersistentIDsKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsPersistentIDsKey_VH: VarHandle by lazy { NSURLVolumeSupportsPersistentIDsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsPersistentIDsKey: MemorySegment
     get() = NSURLVolumeSupportsPersistentIDsKey_VH.get(NSURLVolumeSupportsPersistentIDsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsPersistentIDsKey_VH.set(NSURLVolumeSupportsPersistentIDsKey_SEGMENT, 0L, value)
@@ -473,6 +643,10 @@ private val NSURLVolumeSupportsSymbolicLinksKey_LAYOUT: ValueLayout by lazy { Va
 private val NSURLVolumeSupportsSymbolicLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSymbolicLinksKey").orElseThrow().reinterpret(NSURLVolumeSupportsSymbolicLinksKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsSymbolicLinksKey_VH: VarHandle by lazy { NSURLVolumeSupportsSymbolicLinksKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsSymbolicLinksKey: MemorySegment
     get() = NSURLVolumeSupportsSymbolicLinksKey_VH.get(NSURLVolumeSupportsSymbolicLinksKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsSymbolicLinksKey_VH.set(NSURLVolumeSupportsSymbolicLinksKey_SEGMENT, 0L, value)
@@ -484,6 +658,10 @@ private val NSURLVolumeSupportsHardLinksKey_LAYOUT: ValueLayout by lazy { ValueL
 private val NSURLVolumeSupportsHardLinksKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsHardLinksKey").orElseThrow().reinterpret(NSURLVolumeSupportsHardLinksKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsHardLinksKey_VH: VarHandle by lazy { NSURLVolumeSupportsHardLinksKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsHardLinksKey: MemorySegment
     get() = NSURLVolumeSupportsHardLinksKey_VH.get(NSURLVolumeSupportsHardLinksKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsHardLinksKey_VH.set(NSURLVolumeSupportsHardLinksKey_SEGMENT, 0L, value)
@@ -495,6 +673,10 @@ private val NSURLVolumeSupportsJournalingKey_LAYOUT: ValueLayout by lazy { Value
 private val NSURLVolumeSupportsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsJournalingKey").orElseThrow().reinterpret(NSURLVolumeSupportsJournalingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsJournalingKey_VH: VarHandle by lazy { NSURLVolumeSupportsJournalingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsJournalingKey: MemorySegment
     get() = NSURLVolumeSupportsJournalingKey_VH.get(NSURLVolumeSupportsJournalingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsJournalingKey_VH.set(NSURLVolumeSupportsJournalingKey_SEGMENT, 0L, value)
@@ -506,6 +688,10 @@ private val NSURLVolumeIsJournalingKey_LAYOUT: ValueLayout by lazy { ValueLayout
 private val NSURLVolumeIsJournalingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsJournalingKey").orElseThrow().reinterpret(NSURLVolumeIsJournalingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsJournalingKey_VH: VarHandle by lazy { NSURLVolumeIsJournalingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsJournalingKey: MemorySegment
     get() = NSURLVolumeIsJournalingKey_VH.get(NSURLVolumeIsJournalingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsJournalingKey_VH.set(NSURLVolumeIsJournalingKey_SEGMENT, 0L, value)
@@ -517,6 +703,10 @@ private val NSURLVolumeSupportsSparseFilesKey_LAYOUT: ValueLayout by lazy { Valu
 private val NSURLVolumeSupportsSparseFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSparseFilesKey").orElseThrow().reinterpret(NSURLVolumeSupportsSparseFilesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsSparseFilesKey_VH: VarHandle by lazy { NSURLVolumeSupportsSparseFilesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsSparseFilesKey: MemorySegment
     get() = NSURLVolumeSupportsSparseFilesKey_VH.get(NSURLVolumeSupportsSparseFilesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsSparseFilesKey_VH.set(NSURLVolumeSupportsSparseFilesKey_SEGMENT, 0L, value)
@@ -528,6 +718,10 @@ private val NSURLVolumeSupportsZeroRunsKey_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSURLVolumeSupportsZeroRunsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsZeroRunsKey").orElseThrow().reinterpret(NSURLVolumeSupportsZeroRunsKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsZeroRunsKey_VH: VarHandle by lazy { NSURLVolumeSupportsZeroRunsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsZeroRunsKey: MemorySegment
     get() = NSURLVolumeSupportsZeroRunsKey_VH.get(NSURLVolumeSupportsZeroRunsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsZeroRunsKey_VH.set(NSURLVolumeSupportsZeroRunsKey_SEGMENT, 0L, value)
@@ -539,6 +733,10 @@ private val NSURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT: ValueLayout by lazy
 private val NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCaseSensitiveNamesKey").orElseThrow().reinterpret(NSURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsCaseSensitiveNamesKey_VH: VarHandle by lazy { NSURLVolumeSupportsCaseSensitiveNamesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsCaseSensitiveNamesKey: MemorySegment
     get() = NSURLVolumeSupportsCaseSensitiveNamesKey_VH.get(NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsCaseSensitiveNamesKey_VH.set(NSURLVolumeSupportsCaseSensitiveNamesKey_SEGMENT, 0L, value)
@@ -550,6 +748,10 @@ private val NSURLVolumeSupportsCasePreservedNamesKey_LAYOUT: ValueLayout by lazy
 private val NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCasePreservedNamesKey").orElseThrow().reinterpret(NSURLVolumeSupportsCasePreservedNamesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsCasePreservedNamesKey_VH: VarHandle by lazy { NSURLVolumeSupportsCasePreservedNamesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsCasePreservedNamesKey: MemorySegment
     get() = NSURLVolumeSupportsCasePreservedNamesKey_VH.get(NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsCasePreservedNamesKey_VH.set(NSURLVolumeSupportsCasePreservedNamesKey_SEGMENT, 0L, value)
@@ -561,6 +763,10 @@ private val NSURLVolumeSupportsRootDirectoryDatesKey_LAYOUT: ValueLayout by lazy
 private val NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsRootDirectoryDatesKey").orElseThrow().reinterpret(NSURLVolumeSupportsRootDirectoryDatesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsRootDirectoryDatesKey_VH: VarHandle by lazy { NSURLVolumeSupportsRootDirectoryDatesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsRootDirectoryDatesKey: MemorySegment
     get() = NSURLVolumeSupportsRootDirectoryDatesKey_VH.get(NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsRootDirectoryDatesKey_VH.set(NSURLVolumeSupportsRootDirectoryDatesKey_SEGMENT, 0L, value)
@@ -572,6 +778,10 @@ private val NSURLVolumeSupportsVolumeSizesKey_LAYOUT: ValueLayout by lazy { Valu
 private val NSURLVolumeSupportsVolumeSizesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsVolumeSizesKey").orElseThrow().reinterpret(NSURLVolumeSupportsVolumeSizesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsVolumeSizesKey_VH: VarHandle by lazy { NSURLVolumeSupportsVolumeSizesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsVolumeSizesKey: MemorySegment
     get() = NSURLVolumeSupportsVolumeSizesKey_VH.get(NSURLVolumeSupportsVolumeSizesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsVolumeSizesKey_VH.set(NSURLVolumeSupportsVolumeSizesKey_SEGMENT, 0L, value)
@@ -583,6 +793,10 @@ private val NSURLVolumeSupportsRenamingKey_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSURLVolumeSupportsRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsRenamingKey").orElseThrow().reinterpret(NSURLVolumeSupportsRenamingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsRenamingKey_VH: VarHandle by lazy { NSURLVolumeSupportsRenamingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsRenamingKey: MemorySegment
     get() = NSURLVolumeSupportsRenamingKey_VH.get(NSURLVolumeSupportsRenamingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsRenamingKey_VH.set(NSURLVolumeSupportsRenamingKey_SEGMENT, 0L, value)
@@ -594,6 +808,10 @@ private val NSURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT: ValueLayout by laz
 private val NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsAdvisoryFileLockingKey").orElseThrow().reinterpret(NSURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsAdvisoryFileLockingKey_VH: VarHandle by lazy { NSURLVolumeSupportsAdvisoryFileLockingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsAdvisoryFileLockingKey: MemorySegment
     get() = NSURLVolumeSupportsAdvisoryFileLockingKey_VH.get(NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsAdvisoryFileLockingKey_VH.set(NSURLVolumeSupportsAdvisoryFileLockingKey_SEGMENT, 0L, value)
@@ -605,6 +823,10 @@ private val NSURLVolumeSupportsExtendedSecurityKey_LAYOUT: ValueLayout by lazy {
 private val NSURLVolumeSupportsExtendedSecurityKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsExtendedSecurityKey").orElseThrow().reinterpret(NSURLVolumeSupportsExtendedSecurityKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsExtendedSecurityKey_VH: VarHandle by lazy { NSURLVolumeSupportsExtendedSecurityKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsExtendedSecurityKey: MemorySegment
     get() = NSURLVolumeSupportsExtendedSecurityKey_VH.get(NSURLVolumeSupportsExtendedSecurityKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsExtendedSecurityKey_VH.set(NSURLVolumeSupportsExtendedSecurityKey_SEGMENT, 0L, value)
@@ -616,6 +838,10 @@ private val NSURLVolumeIsBrowsableKey_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSURLVolumeIsBrowsableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsBrowsableKey").orElseThrow().reinterpret(NSURLVolumeIsBrowsableKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsBrowsableKey_VH: VarHandle by lazy { NSURLVolumeIsBrowsableKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsBrowsableKey: MemorySegment
     get() = NSURLVolumeIsBrowsableKey_VH.get(NSURLVolumeIsBrowsableKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsBrowsableKey_VH.set(NSURLVolumeIsBrowsableKey_SEGMENT, 0L, value)
@@ -627,6 +853,10 @@ private val NSURLVolumeMaximumFileSizeKey_LAYOUT: ValueLayout by lazy { ValueLay
 private val NSURLVolumeMaximumFileSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeMaximumFileSizeKey").orElseThrow().reinterpret(NSURLVolumeMaximumFileSizeKey_LAYOUT.byteSize()) }
 private val NSURLVolumeMaximumFileSizeKey_VH: VarHandle by lazy { NSURLVolumeMaximumFileSizeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeMaximumFileSizeKey: MemorySegment
     get() = NSURLVolumeMaximumFileSizeKey_VH.get(NSURLVolumeMaximumFileSizeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeMaximumFileSizeKey_VH.set(NSURLVolumeMaximumFileSizeKey_SEGMENT, 0L, value)
@@ -638,6 +868,10 @@ private val NSURLVolumeIsEjectableKey_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSURLVolumeIsEjectableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsEjectableKey").orElseThrow().reinterpret(NSURLVolumeIsEjectableKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsEjectableKey_VH: VarHandle by lazy { NSURLVolumeIsEjectableKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsEjectableKey: MemorySegment
     get() = NSURLVolumeIsEjectableKey_VH.get(NSURLVolumeIsEjectableKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsEjectableKey_VH.set(NSURLVolumeIsEjectableKey_SEGMENT, 0L, value)
@@ -649,6 +883,10 @@ private val NSURLVolumeIsRemovableKey_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSURLVolumeIsRemovableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsRemovableKey").orElseThrow().reinterpret(NSURLVolumeIsRemovableKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsRemovableKey_VH: VarHandle by lazy { NSURLVolumeIsRemovableKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsRemovableKey: MemorySegment
     get() = NSURLVolumeIsRemovableKey_VH.get(NSURLVolumeIsRemovableKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsRemovableKey_VH.set(NSURLVolumeIsRemovableKey_SEGMENT, 0L, value)
@@ -660,6 +898,10 @@ private val NSURLVolumeIsInternalKey_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSURLVolumeIsInternalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsInternalKey").orElseThrow().reinterpret(NSURLVolumeIsInternalKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsInternalKey_VH: VarHandle by lazy { NSURLVolumeIsInternalKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsInternalKey: MemorySegment
     get() = NSURLVolumeIsInternalKey_VH.get(NSURLVolumeIsInternalKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsInternalKey_VH.set(NSURLVolumeIsInternalKey_SEGMENT, 0L, value)
@@ -671,6 +913,10 @@ private val NSURLVolumeIsAutomountedKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLVolumeIsAutomountedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsAutomountedKey").orElseThrow().reinterpret(NSURLVolumeIsAutomountedKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsAutomountedKey_VH: VarHandle by lazy { NSURLVolumeIsAutomountedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsAutomountedKey: MemorySegment
     get() = NSURLVolumeIsAutomountedKey_VH.get(NSURLVolumeIsAutomountedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsAutomountedKey_VH.set(NSURLVolumeIsAutomountedKey_SEGMENT, 0L, value)
@@ -682,6 +928,10 @@ private val NSURLVolumeIsLocalKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val NSURLVolumeIsLocalKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsLocalKey").orElseThrow().reinterpret(NSURLVolumeIsLocalKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsLocalKey_VH: VarHandle by lazy { NSURLVolumeIsLocalKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsLocalKey: MemorySegment
     get() = NSURLVolumeIsLocalKey_VH.get(NSURLVolumeIsLocalKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsLocalKey_VH.set(NSURLVolumeIsLocalKey_SEGMENT, 0L, value)
@@ -693,6 +943,10 @@ private val NSURLVolumeIsReadOnlyKey_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSURLVolumeIsReadOnlyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsReadOnlyKey").orElseThrow().reinterpret(NSURLVolumeIsReadOnlyKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsReadOnlyKey_VH: VarHandle by lazy { NSURLVolumeIsReadOnlyKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsReadOnlyKey: MemorySegment
     get() = NSURLVolumeIsReadOnlyKey_VH.get(NSURLVolumeIsReadOnlyKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsReadOnlyKey_VH.set(NSURLVolumeIsReadOnlyKey_SEGMENT, 0L, value)
@@ -704,6 +958,10 @@ private val NSURLVolumeCreationDateKey_LAYOUT: ValueLayout by lazy { ValueLayout
 private val NSURLVolumeCreationDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeCreationDateKey").orElseThrow().reinterpret(NSURLVolumeCreationDateKey_LAYOUT.byteSize()) }
 private val NSURLVolumeCreationDateKey_VH: VarHandle by lazy { NSURLVolumeCreationDateKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeCreationDateKey: MemorySegment
     get() = NSURLVolumeCreationDateKey_VH.get(NSURLVolumeCreationDateKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeCreationDateKey_VH.set(NSURLVolumeCreationDateKey_SEGMENT, 0L, value)
@@ -715,6 +973,10 @@ private val NSURLVolumeURLForRemountingKey_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSURLVolumeURLForRemountingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeURLForRemountingKey").orElseThrow().reinterpret(NSURLVolumeURLForRemountingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeURLForRemountingKey_VH: VarHandle by lazy { NSURLVolumeURLForRemountingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeURLForRemountingKey: MemorySegment
     get() = NSURLVolumeURLForRemountingKey_VH.get(NSURLVolumeURLForRemountingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeURLForRemountingKey_VH.set(NSURLVolumeURLForRemountingKey_SEGMENT, 0L, value)
@@ -726,6 +988,10 @@ private val NSURLVolumeUUIDStringKey_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSURLVolumeUUIDStringKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeUUIDStringKey").orElseThrow().reinterpret(NSURLVolumeUUIDStringKey_LAYOUT.byteSize()) }
 private val NSURLVolumeUUIDStringKey_VH: VarHandle by lazy { NSURLVolumeUUIDStringKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeUUIDStringKey: MemorySegment
     get() = NSURLVolumeUUIDStringKey_VH.get(NSURLVolumeUUIDStringKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeUUIDStringKey_VH.set(NSURLVolumeUUIDStringKey_SEGMENT, 0L, value)
@@ -737,6 +1003,10 @@ private val NSURLVolumeNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val NSURLVolumeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeNameKey").orElseThrow().reinterpret(NSURLVolumeNameKey_LAYOUT.byteSize()) }
 private val NSURLVolumeNameKey_VH: VarHandle by lazy { NSURLVolumeNameKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeNameKey: MemorySegment
     get() = NSURLVolumeNameKey_VH.get(NSURLVolumeNameKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeNameKey_VH.set(NSURLVolumeNameKey_SEGMENT, 0L, value)
@@ -748,6 +1018,10 @@ private val NSURLVolumeLocalizedNameKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLVolumeLocalizedNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeLocalizedNameKey").orElseThrow().reinterpret(NSURLVolumeLocalizedNameKey_LAYOUT.byteSize()) }
 private val NSURLVolumeLocalizedNameKey_VH: VarHandle by lazy { NSURLVolumeLocalizedNameKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeLocalizedNameKey: MemorySegment
     get() = NSURLVolumeLocalizedNameKey_VH.get(NSURLVolumeLocalizedNameKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeLocalizedNameKey_VH.set(NSURLVolumeLocalizedNameKey_SEGMENT, 0L, value)
@@ -759,6 +1033,10 @@ private val NSURLVolumeIsEncryptedKey_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSURLVolumeIsEncryptedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsEncryptedKey").orElseThrow().reinterpret(NSURLVolumeIsEncryptedKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsEncryptedKey_VH: VarHandle by lazy { NSURLVolumeIsEncryptedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsEncryptedKey: MemorySegment
     get() = NSURLVolumeIsEncryptedKey_VH.get(NSURLVolumeIsEncryptedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsEncryptedKey_VH.set(NSURLVolumeIsEncryptedKey_SEGMENT, 0L, value)
@@ -770,6 +1048,10 @@ private val NSURLVolumeIsRootFileSystemKey_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSURLVolumeIsRootFileSystemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeIsRootFileSystemKey").orElseThrow().reinterpret(NSURLVolumeIsRootFileSystemKey_LAYOUT.byteSize()) }
 private val NSURLVolumeIsRootFileSystemKey_VH: VarHandle by lazy { NSURLVolumeIsRootFileSystemKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeIsRootFileSystemKey: MemorySegment
     get() = NSURLVolumeIsRootFileSystemKey_VH.get(NSURLVolumeIsRootFileSystemKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeIsRootFileSystemKey_VH.set(NSURLVolumeIsRootFileSystemKey_SEGMENT, 0L, value)
@@ -781,6 +1063,10 @@ private val NSURLVolumeSupportsCompressionKey_LAYOUT: ValueLayout by lazy { Valu
 private val NSURLVolumeSupportsCompressionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsCompressionKey").orElseThrow().reinterpret(NSURLVolumeSupportsCompressionKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsCompressionKey_VH: VarHandle by lazy { NSURLVolumeSupportsCompressionKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsCompressionKey: MemorySegment
     get() = NSURLVolumeSupportsCompressionKey_VH.get(NSURLVolumeSupportsCompressionKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsCompressionKey_VH.set(NSURLVolumeSupportsCompressionKey_SEGMENT, 0L, value)
@@ -792,6 +1078,10 @@ private val NSURLVolumeSupportsFileCloningKey_LAYOUT: ValueLayout by lazy { Valu
 private val NSURLVolumeSupportsFileCloningKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsFileCloningKey").orElseThrow().reinterpret(NSURLVolumeSupportsFileCloningKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsFileCloningKey_VH: VarHandle by lazy { NSURLVolumeSupportsFileCloningKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsFileCloningKey: MemorySegment
     get() = NSURLVolumeSupportsFileCloningKey_VH.get(NSURLVolumeSupportsFileCloningKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsFileCloningKey_VH.set(NSURLVolumeSupportsFileCloningKey_SEGMENT, 0L, value)
@@ -803,6 +1093,10 @@ private val NSURLVolumeSupportsSwapRenamingKey_LAYOUT: ValueLayout by lazy { Val
 private val NSURLVolumeSupportsSwapRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsSwapRenamingKey").orElseThrow().reinterpret(NSURLVolumeSupportsSwapRenamingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsSwapRenamingKey_VH: VarHandle by lazy { NSURLVolumeSupportsSwapRenamingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsSwapRenamingKey: MemorySegment
     get() = NSURLVolumeSupportsSwapRenamingKey_VH.get(NSURLVolumeSupportsSwapRenamingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsSwapRenamingKey_VH.set(NSURLVolumeSupportsSwapRenamingKey_SEGMENT, 0L, value)
@@ -814,6 +1108,10 @@ private val NSURLVolumeSupportsExclusiveRenamingKey_LAYOUT: ValueLayout by lazy 
 private val NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsExclusiveRenamingKey").orElseThrow().reinterpret(NSURLVolumeSupportsExclusiveRenamingKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsExclusiveRenamingKey_VH: VarHandle by lazy { NSURLVolumeSupportsExclusiveRenamingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsExclusiveRenamingKey: MemorySegment
     get() = NSURLVolumeSupportsExclusiveRenamingKey_VH.get(NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsExclusiveRenamingKey_VH.set(NSURLVolumeSupportsExclusiveRenamingKey_SEGMENT, 0L, value)
@@ -825,6 +1123,10 @@ private val NSURLVolumeSupportsImmutableFilesKey_LAYOUT: ValueLayout by lazy { V
 private val NSURLVolumeSupportsImmutableFilesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsImmutableFilesKey").orElseThrow().reinterpret(NSURLVolumeSupportsImmutableFilesKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsImmutableFilesKey_VH: VarHandle by lazy { NSURLVolumeSupportsImmutableFilesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsImmutableFilesKey: MemorySegment
     get() = NSURLVolumeSupportsImmutableFilesKey_VH.get(NSURLVolumeSupportsImmutableFilesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsImmutableFilesKey_VH.set(NSURLVolumeSupportsImmutableFilesKey_SEGMENT, 0L, value)
@@ -836,6 +1138,10 @@ private val NSURLVolumeSupportsAccessPermissionsKey_LAYOUT: ValueLayout by lazy 
 private val NSURLVolumeSupportsAccessPermissionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsAccessPermissionsKey").orElseThrow().reinterpret(NSURLVolumeSupportsAccessPermissionsKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsAccessPermissionsKey_VH: VarHandle by lazy { NSURLVolumeSupportsAccessPermissionsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsAccessPermissionsKey: MemorySegment
     get() = NSURLVolumeSupportsAccessPermissionsKey_VH.get(NSURLVolumeSupportsAccessPermissionsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsAccessPermissionsKey_VH.set(NSURLVolumeSupportsAccessPermissionsKey_SEGMENT, 0L, value)
@@ -847,6 +1153,10 @@ private val NSURLVolumeSupportsFileProtectionKey_LAYOUT: ValueLayout by lazy { V
 private val NSURLVolumeSupportsFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSupportsFileProtectionKey").orElseThrow().reinterpret(NSURLVolumeSupportsFileProtectionKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSupportsFileProtectionKey_VH: VarHandle by lazy { NSURLVolumeSupportsFileProtectionKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 var NSURLVolumeSupportsFileProtectionKey: MemorySegment
     get() = NSURLVolumeSupportsFileProtectionKey_VH.get(NSURLVolumeSupportsFileProtectionKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSupportsFileProtectionKey_VH.set(NSURLVolumeSupportsFileProtectionKey_SEGMENT, 0L, value)
@@ -858,6 +1168,10 @@ private val NSURLVolumeAvailableCapacityForImportantUsageKey_LAYOUT: ValueLayout
 private val NSURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityForImportantUsageKey").orElseThrow().reinterpret(NSURLVolumeAvailableCapacityForImportantUsageKey_LAYOUT.byteSize()) }
 private val NSURLVolumeAvailableCapacityForImportantUsageKey_VH: VarHandle by lazy { NSURLVolumeAvailableCapacityForImportantUsageKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLVolumeAvailableCapacityForImportantUsageKey: MemorySegment
     get() = NSURLVolumeAvailableCapacityForImportantUsageKey_VH.get(NSURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeAvailableCapacityForImportantUsageKey_VH.set(NSURLVolumeAvailableCapacityForImportantUsageKey_SEGMENT, 0L, value)
@@ -869,6 +1183,10 @@ private val NSURLVolumeAvailableCapacityForOpportunisticUsageKey_LAYOUT: ValueLa
 private val NSURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeAvailableCapacityForOpportunisticUsageKey").orElseThrow().reinterpret(NSURLVolumeAvailableCapacityForOpportunisticUsageKey_LAYOUT.byteSize()) }
 private val NSURLVolumeAvailableCapacityForOpportunisticUsageKey_VH: VarHandle by lazy { NSURLVolumeAvailableCapacityForOpportunisticUsageKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLVolumeAvailableCapacityForOpportunisticUsageKey: MemorySegment
     get() = NSURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.get(NSURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeAvailableCapacityForOpportunisticUsageKey_VH.set(NSURLVolumeAvailableCapacityForOpportunisticUsageKey_SEGMENT, 0L, value)
@@ -880,6 +1198,10 @@ private val NSURLVolumeTypeNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSURLVolumeTypeNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeTypeNameKey").orElseThrow().reinterpret(NSURLVolumeTypeNameKey_LAYOUT.byteSize()) }
 private val NSURLVolumeTypeNameKey_VH: VarHandle by lazy { NSURLVolumeTypeNameKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 9, introducedMinor = 4, introducedSubminor = -1)
 var NSURLVolumeTypeNameKey: MemorySegment
     get() = NSURLVolumeTypeNameKey_VH.get(NSURLVolumeTypeNameKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeTypeNameKey_VH.set(NSURLVolumeTypeNameKey_SEGMENT, 0L, value)
@@ -891,6 +1213,10 @@ private val NSURLVolumeSubtypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val NSURLVolumeSubtypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeSubtypeKey").orElseThrow().reinterpret(NSURLVolumeSubtypeKey_LAYOUT.byteSize()) }
 private val NSURLVolumeSubtypeKey_VH: VarHandle by lazy { NSURLVolumeSubtypeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 9, introducedMinor = 4, introducedSubminor = -1)
 var NSURLVolumeSubtypeKey: MemorySegment
     get() = NSURLVolumeSubtypeKey_VH.get(NSURLVolumeSubtypeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeSubtypeKey_VH.set(NSURLVolumeSubtypeKey_SEGMENT, 0L, value)
@@ -902,6 +1228,10 @@ private val NSURLVolumeMountFromLocationKey_LAYOUT: ValueLayout by lazy { ValueL
 private val NSURLVolumeMountFromLocationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLVolumeMountFromLocationKey").orElseThrow().reinterpret(NSURLVolumeMountFromLocationKey_LAYOUT.byteSize()) }
 private val NSURLVolumeMountFromLocationKey_VH: VarHandle by lazy { NSURLVolumeMountFromLocationKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 9, introducedMinor = 4, introducedSubminor = -1)
 var NSURLVolumeMountFromLocationKey: MemorySegment
     get() = NSURLVolumeMountFromLocationKey_VH.get(NSURLVolumeMountFromLocationKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLVolumeMountFromLocationKey_VH.set(NSURLVolumeMountFromLocationKey_SEGMENT, 0L, value)
@@ -913,6 +1243,10 @@ private val NSURLIsUbiquitousItemKey_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSURLIsUbiquitousItemKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLIsUbiquitousItemKey").orElseThrow().reinterpret(NSURLIsUbiquitousItemKey_LAYOUT.byteSize()) }
 private val NSURLIsUbiquitousItemKey_VH: VarHandle by lazy { NSURLIsUbiquitousItemKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLIsUbiquitousItemKey: MemorySegment
     get() = NSURLIsUbiquitousItemKey_VH.get(NSURLIsUbiquitousItemKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLIsUbiquitousItemKey_VH.set(NSURLIsUbiquitousItemKey_SEGMENT, 0L, value)
@@ -924,6 +1258,10 @@ private val NSURLUbiquitousItemHasUnresolvedConflictsKey_LAYOUT: ValueLayout by 
 private val NSURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemHasUnresolvedConflictsKey").orElseThrow().reinterpret(NSURLUbiquitousItemHasUnresolvedConflictsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemHasUnresolvedConflictsKey_VH: VarHandle by lazy { NSURLUbiquitousItemHasUnresolvedConflictsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemHasUnresolvedConflictsKey: MemorySegment
     get() = NSURLUbiquitousItemHasUnresolvedConflictsKey_VH.get(NSURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemHasUnresolvedConflictsKey_VH.set(NSURLUbiquitousItemHasUnresolvedConflictsKey_SEGMENT, 0L, value)
@@ -935,6 +1273,10 @@ private val NSURLUbiquitousItemIsDownloadedKey_LAYOUT: ValueLayout by lazy { Val
 private val NSURLUbiquitousItemIsDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsDownloadedKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsDownloadedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsDownloadedKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsDownloadedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSURLUbiquitousItemDownloadingStatusKey instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "Use NSURLUbiquitousItemDownloadingStatusKey instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSURLUbiquitousItemDownloadingStatusKey instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSURLUbiquitousItemDownloadingStatusKey instead")
 var NSURLUbiquitousItemIsDownloadedKey: MemorySegment
     get() = NSURLUbiquitousItemIsDownloadedKey_VH.get(NSURLUbiquitousItemIsDownloadedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemIsDownloadedKey_VH.set(NSURLUbiquitousItemIsDownloadedKey_SEGMENT, 0L, value)
@@ -946,6 +1288,10 @@ private val NSURLUbiquitousItemIsDownloadingKey_LAYOUT: ValueLayout by lazy { Va
 private val NSURLUbiquitousItemIsDownloadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsDownloadingKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsDownloadingKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsDownloadingKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsDownloadingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemIsDownloadingKey: MemorySegment
     get() = NSURLUbiquitousItemIsDownloadingKey_VH.get(NSURLUbiquitousItemIsDownloadingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemIsDownloadingKey_VH.set(NSURLUbiquitousItemIsDownloadingKey_SEGMENT, 0L, value)
@@ -957,6 +1303,10 @@ private val NSURLUbiquitousItemIsUploadedKey_LAYOUT: ValueLayout by lazy { Value
 private val NSURLUbiquitousItemIsUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsUploadedKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsUploadedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsUploadedKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsUploadedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemIsUploadedKey: MemorySegment
     get() = NSURLUbiquitousItemIsUploadedKey_VH.get(NSURLUbiquitousItemIsUploadedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemIsUploadedKey_VH.set(NSURLUbiquitousItemIsUploadedKey_SEGMENT, 0L, value)
@@ -968,6 +1318,10 @@ private val NSURLUbiquitousItemIsUploadingKey_LAYOUT: ValueLayout by lazy { Valu
 private val NSURLUbiquitousItemIsUploadingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsUploadingKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsUploadingKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsUploadingKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsUploadingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemIsUploadingKey: MemorySegment
     get() = NSURLUbiquitousItemIsUploadingKey_VH.get(NSURLUbiquitousItemIsUploadingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemIsUploadingKey_VH.set(NSURLUbiquitousItemIsUploadingKey_SEGMENT, 0L, value)
@@ -979,6 +1333,10 @@ private val NSURLUbiquitousItemPercentDownloadedKey_LAYOUT: ValueLayout by lazy 
 private val NSURLUbiquitousItemPercentDownloadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemPercentDownloadedKey").orElseThrow().reinterpret(NSURLUbiquitousItemPercentDownloadedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemPercentDownloadedKey_VH: VarHandle by lazy { NSURLUbiquitousItemPercentDownloadedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 6, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSMetadataUbiquitousItemPercentDownloadedKey instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "Use NSMetadataUbiquitousItemPercentDownloadedKey instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSMetadataUbiquitousItemPercentDownloadedKey instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSMetadataUbiquitousItemPercentDownloadedKey instead")
 var NSURLUbiquitousItemPercentDownloadedKey: MemorySegment
     get() = NSURLUbiquitousItemPercentDownloadedKey_VH.get(NSURLUbiquitousItemPercentDownloadedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemPercentDownloadedKey_VH.set(NSURLUbiquitousItemPercentDownloadedKey_SEGMENT, 0L, value)
@@ -990,6 +1348,10 @@ private val NSURLUbiquitousItemPercentUploadedKey_LAYOUT: ValueLayout by lazy { 
 private val NSURLUbiquitousItemPercentUploadedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemPercentUploadedKey").orElseThrow().reinterpret(NSURLUbiquitousItemPercentUploadedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemPercentUploadedKey_VH: VarHandle by lazy { NSURLUbiquitousItemPercentUploadedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 6, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSMetadataUbiquitousItemPercentUploadedKey instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "Use NSMetadataUbiquitousItemPercentUploadedKey instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSMetadataUbiquitousItemPercentUploadedKey instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSMetadataUbiquitousItemPercentUploadedKey instead")
 var NSURLUbiquitousItemPercentUploadedKey: MemorySegment
     get() = NSURLUbiquitousItemPercentUploadedKey_VH.get(NSURLUbiquitousItemPercentUploadedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemPercentUploadedKey_VH.set(NSURLUbiquitousItemPercentUploadedKey_SEGMENT, 0L, value)
@@ -1001,6 +1363,10 @@ private val NSURLUbiquitousItemDownloadingStatusKey_LAYOUT: ValueLayout by lazy 
 private val NSURLUbiquitousItemDownloadingStatusKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusKey").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingStatusKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingStatusKey_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingStatusKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemDownloadingStatusKey: MemorySegment
     get() = NSURLUbiquitousItemDownloadingStatusKey_VH.get(NSURLUbiquitousItemDownloadingStatusKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemDownloadingStatusKey_VH.set(NSURLUbiquitousItemDownloadingStatusKey_SEGMENT, 0L, value)
@@ -1012,6 +1378,10 @@ private val NSURLUbiquitousItemDownloadingErrorKey_LAYOUT: ValueLayout by lazy {
 private val NSURLUbiquitousItemDownloadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingErrorKey").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingErrorKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingErrorKey_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingErrorKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemDownloadingErrorKey: MemorySegment
     get() = NSURLUbiquitousItemDownloadingErrorKey_VH.get(NSURLUbiquitousItemDownloadingErrorKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemDownloadingErrorKey_VH.set(NSURLUbiquitousItemDownloadingErrorKey_SEGMENT, 0L, value)
@@ -1023,6 +1393,10 @@ private val NSURLUbiquitousItemUploadingErrorKey_LAYOUT: ValueLayout by lazy { V
 private val NSURLUbiquitousItemUploadingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemUploadingErrorKey").orElseThrow().reinterpret(NSURLUbiquitousItemUploadingErrorKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemUploadingErrorKey_VH: VarHandle by lazy { NSURLUbiquitousItemUploadingErrorKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemUploadingErrorKey: MemorySegment
     get() = NSURLUbiquitousItemUploadingErrorKey_VH.get(NSURLUbiquitousItemUploadingErrorKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemUploadingErrorKey_VH.set(NSURLUbiquitousItemUploadingErrorKey_SEGMENT, 0L, value)
@@ -1034,6 +1408,10 @@ private val NSURLUbiquitousItemDownloadRequestedKey_LAYOUT: ValueLayout by lazy 
 private val NSURLUbiquitousItemDownloadRequestedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadRequestedKey").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadRequestedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadRequestedKey_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadRequestedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemDownloadRequestedKey: MemorySegment
     get() = NSURLUbiquitousItemDownloadRequestedKey_VH.get(NSURLUbiquitousItemDownloadRequestedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemDownloadRequestedKey_VH.set(NSURLUbiquitousItemDownloadRequestedKey_SEGMENT, 0L, value)
@@ -1045,6 +1423,10 @@ private val NSURLUbiquitousItemContainerDisplayNameKey_LAYOUT: ValueLayout by la
 private val NSURLUbiquitousItemContainerDisplayNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemContainerDisplayNameKey").orElseThrow().reinterpret(NSURLUbiquitousItemContainerDisplayNameKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemContainerDisplayNameKey_VH: VarHandle by lazy { NSURLUbiquitousItemContainerDisplayNameKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemContainerDisplayNameKey: MemorySegment
     get() = NSURLUbiquitousItemContainerDisplayNameKey_VH.get(NSURLUbiquitousItemContainerDisplayNameKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemContainerDisplayNameKey_VH.set(NSURLUbiquitousItemContainerDisplayNameKey_SEGMENT, 0L, value)
@@ -1056,6 +1438,10 @@ private val NSURLUbiquitousItemIsExcludedFromSyncKey_LAYOUT: ValueLayout by lazy
 private val NSURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsExcludedFromSyncKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsExcludedFromSyncKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsExcludedFromSyncKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsExcludedFromSyncKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 4, introducedSubminor = -1)
 var NSURLUbiquitousItemIsExcludedFromSyncKey: MemorySegment
     get() = NSURLUbiquitousItemIsExcludedFromSyncKey_VH.get(NSURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemIsExcludedFromSyncKey_VH.set(NSURLUbiquitousItemIsExcludedFromSyncKey_SEGMENT, 0L, value)
@@ -1067,6 +1453,10 @@ private val NSURLUbiquitousItemIsSharedKey_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSURLUbiquitousItemIsSharedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsSharedKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsSharedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsSharedKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsSharedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLUbiquitousItemIsSharedKey: MemorySegment
     get() = NSURLUbiquitousItemIsSharedKey_VH.get(NSURLUbiquitousItemIsSharedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemIsSharedKey_VH.set(NSURLUbiquitousItemIsSharedKey_SEGMENT, 0L, value)
@@ -1078,6 +1468,10 @@ private val NSURLUbiquitousSharedItemCurrentUserRoleKey_LAYOUT: ValueLayout by l
 private val NSURLUbiquitousSharedItemCurrentUserRoleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemCurrentUserRoleKey").orElseThrow().reinterpret(NSURLUbiquitousSharedItemCurrentUserRoleKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemCurrentUserRoleKey_VH: VarHandle by lazy { NSURLUbiquitousSharedItemCurrentUserRoleKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLUbiquitousSharedItemCurrentUserRoleKey: MemorySegment
     get() = NSURLUbiquitousSharedItemCurrentUserRoleKey_VH.get(NSURLUbiquitousSharedItemCurrentUserRoleKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousSharedItemCurrentUserRoleKey_VH.set(NSURLUbiquitousSharedItemCurrentUserRoleKey_SEGMENT, 0L, value)
@@ -1089,6 +1483,10 @@ private val NSURLUbiquitousSharedItemCurrentUserPermissionsKey_LAYOUT: ValueLayo
 private val NSURLUbiquitousSharedItemCurrentUserPermissionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemCurrentUserPermissionsKey").orElseThrow().reinterpret(NSURLUbiquitousSharedItemCurrentUserPermissionsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemCurrentUserPermissionsKey_VH: VarHandle by lazy { NSURLUbiquitousSharedItemCurrentUserPermissionsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLUbiquitousSharedItemCurrentUserPermissionsKey: MemorySegment
     get() = NSURLUbiquitousSharedItemCurrentUserPermissionsKey_VH.get(NSURLUbiquitousSharedItemCurrentUserPermissionsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousSharedItemCurrentUserPermissionsKey_VH.set(NSURLUbiquitousSharedItemCurrentUserPermissionsKey_SEGMENT, 0L, value)
@@ -1100,6 +1498,10 @@ private val NSURLUbiquitousSharedItemOwnerNameComponentsKey_LAYOUT: ValueLayout 
 private val NSURLUbiquitousSharedItemOwnerNameComponentsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemOwnerNameComponentsKey").orElseThrow().reinterpret(NSURLUbiquitousSharedItemOwnerNameComponentsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemOwnerNameComponentsKey_VH: VarHandle by lazy { NSURLUbiquitousSharedItemOwnerNameComponentsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLUbiquitousSharedItemOwnerNameComponentsKey: MemorySegment
     get() = NSURLUbiquitousSharedItemOwnerNameComponentsKey_VH.get(NSURLUbiquitousSharedItemOwnerNameComponentsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousSharedItemOwnerNameComponentsKey_VH.set(NSURLUbiquitousSharedItemOwnerNameComponentsKey_SEGMENT, 0L, value)
@@ -1111,6 +1513,10 @@ private val NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_LAYOUT: V
 private val NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey").orElseThrow().reinterpret(NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_VH: VarHandle by lazy { NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey: MemorySegment
     get() = NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_VH.get(NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_VH.set(NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey_SEGMENT, 0L, value)
@@ -1122,6 +1528,10 @@ private val NSURLUbiquitousItemDownloadingStatusNotDownloaded_LAYOUT: ValueLayou
 private val NSURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusNotDownloaded").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingStatusNotDownloaded_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingStatusNotDownloaded_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingStatusNotDownloaded_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemDownloadingStatusNotDownloaded: MemorySegment
     get() = NSURLUbiquitousItemDownloadingStatusNotDownloaded_VH.get(NSURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemDownloadingStatusNotDownloaded_VH.set(NSURLUbiquitousItemDownloadingStatusNotDownloaded_SEGMENT, 0L, value)
@@ -1133,6 +1543,10 @@ private val NSURLUbiquitousItemDownloadingStatusDownloaded_LAYOUT: ValueLayout b
 private val NSURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusDownloaded").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingStatusDownloaded_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingStatusDownloaded_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingStatusDownloaded_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemDownloadingStatusDownloaded: MemorySegment
     get() = NSURLUbiquitousItemDownloadingStatusDownloaded_VH.get(NSURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemDownloadingStatusDownloaded_VH.set(NSURLUbiquitousItemDownloadingStatusDownloaded_SEGMENT, 0L, value)
@@ -1144,6 +1558,10 @@ private val NSURLUbiquitousItemDownloadingStatusCurrent_LAYOUT: ValueLayout by l
 private val NSURLUbiquitousItemDownloadingStatusCurrent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemDownloadingStatusCurrent").orElseThrow().reinterpret(NSURLUbiquitousItemDownloadingStatusCurrent_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemDownloadingStatusCurrent_VH: VarHandle by lazy { NSURLUbiquitousItemDownloadingStatusCurrent_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemDownloadingStatusCurrent: MemorySegment
     get() = NSURLUbiquitousItemDownloadingStatusCurrent_VH.get(NSURLUbiquitousItemDownloadingStatusCurrent_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemDownloadingStatusCurrent_VH.set(NSURLUbiquitousItemDownloadingStatusCurrent_SEGMENT, 0L, value)
@@ -1155,6 +1573,10 @@ private val NSURLUbiquitousSharedItemRoleOwner_LAYOUT: ValueLayout by lazy { Val
 private val NSURLUbiquitousSharedItemRoleOwner_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemRoleOwner").orElseThrow().reinterpret(NSURLUbiquitousSharedItemRoleOwner_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemRoleOwner_VH: VarHandle by lazy { NSURLUbiquitousSharedItemRoleOwner_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLUbiquitousSharedItemRoleOwner: MemorySegment
     get() = NSURLUbiquitousSharedItemRoleOwner_VH.get(NSURLUbiquitousSharedItemRoleOwner_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousSharedItemRoleOwner_VH.set(NSURLUbiquitousSharedItemRoleOwner_SEGMENT, 0L, value)
@@ -1166,6 +1588,10 @@ private val NSURLUbiquitousSharedItemRoleParticipant_LAYOUT: ValueLayout by lazy
 private val NSURLUbiquitousSharedItemRoleParticipant_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemRoleParticipant").orElseThrow().reinterpret(NSURLUbiquitousSharedItemRoleParticipant_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemRoleParticipant_VH: VarHandle by lazy { NSURLUbiquitousSharedItemRoleParticipant_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLUbiquitousSharedItemRoleParticipant: MemorySegment
     get() = NSURLUbiquitousSharedItemRoleParticipant_VH.get(NSURLUbiquitousSharedItemRoleParticipant_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousSharedItemRoleParticipant_VH.set(NSURLUbiquitousSharedItemRoleParticipant_SEGMENT, 0L, value)
@@ -1177,6 +1603,10 @@ private val NSURLUbiquitousSharedItemPermissionsReadOnly_LAYOUT: ValueLayout by 
 private val NSURLUbiquitousSharedItemPermissionsReadOnly_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemPermissionsReadOnly").orElseThrow().reinterpret(NSURLUbiquitousSharedItemPermissionsReadOnly_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemPermissionsReadOnly_VH: VarHandle by lazy { NSURLUbiquitousSharedItemPermissionsReadOnly_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLUbiquitousSharedItemPermissionsReadOnly: MemorySegment
     get() = NSURLUbiquitousSharedItemPermissionsReadOnly_VH.get(NSURLUbiquitousSharedItemPermissionsReadOnly_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousSharedItemPermissionsReadOnly_VH.set(NSURLUbiquitousSharedItemPermissionsReadOnly_SEGMENT, 0L, value)
@@ -1188,6 +1618,10 @@ private val NSURLUbiquitousSharedItemPermissionsReadWrite_LAYOUT: ValueLayout by
 private val NSURLUbiquitousSharedItemPermissionsReadWrite_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousSharedItemPermissionsReadWrite").orElseThrow().reinterpret(NSURLUbiquitousSharedItemPermissionsReadWrite_LAYOUT.byteSize()) }
 private val NSURLUbiquitousSharedItemPermissionsReadWrite_VH: VarHandle by lazy { NSURLUbiquitousSharedItemPermissionsReadWrite_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSURLUbiquitousSharedItemPermissionsReadWrite: MemorySegment
     get() = NSURLUbiquitousSharedItemPermissionsReadWrite_VH.get(NSURLUbiquitousSharedItemPermissionsReadWrite_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousSharedItemPermissionsReadWrite_VH.set(NSURLUbiquitousSharedItemPermissionsReadWrite_SEGMENT, 0L, value)
@@ -1199,6 +1633,11 @@ private val NSURLUbiquitousItemSupportedSyncControlsKey_LAYOUT: ValueLayout by l
 private val NSURLUbiquitousItemSupportedSyncControlsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemSupportedSyncControlsKey").orElseThrow().reinterpret(NSURLUbiquitousItemSupportedSyncControlsKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemSupportedSyncControlsKey_VH: VarHandle by lazy { NSURLUbiquitousItemSupportedSyncControlsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemSupportedSyncControlsKey: MemorySegment
     get() = NSURLUbiquitousItemSupportedSyncControlsKey_VH.get(NSURLUbiquitousItemSupportedSyncControlsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemSupportedSyncControlsKey_VH.set(NSURLUbiquitousItemSupportedSyncControlsKey_SEGMENT, 0L, value)
@@ -1210,6 +1649,11 @@ private val NSURLUbiquitousItemIsSyncPausedKey_LAYOUT: ValueLayout by lazy { Val
 private val NSURLUbiquitousItemIsSyncPausedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLUbiquitousItemIsSyncPausedKey").orElseThrow().reinterpret(NSURLUbiquitousItemIsSyncPausedKey_LAYOUT.byteSize()) }
 private val NSURLUbiquitousItemIsSyncPausedKey_VH: VarHandle by lazy { NSURLUbiquitousItemIsSyncPausedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var NSURLUbiquitousItemIsSyncPausedKey: MemorySegment
     get() = NSURLUbiquitousItemIsSyncPausedKey_VH.get(NSURLUbiquitousItemIsSyncPausedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLUbiquitousItemIsSyncPausedKey_VH.set(NSURLUbiquitousItemIsSyncPausedKey_SEGMENT, 0L, value)
@@ -1221,6 +1665,10 @@ private val NSFileManagerUnmountDissentingProcessIdentifierErrorKey_LAYOUT: Valu
 private val NSFileManagerUnmountDissentingProcessIdentifierErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileManagerUnmountDissentingProcessIdentifierErrorKey").orElseThrow().reinterpret(NSFileManagerUnmountDissentingProcessIdentifierErrorKey_LAYOUT.byteSize()) }
 private val NSFileManagerUnmountDissentingProcessIdentifierErrorKey_VH: VarHandle by lazy { NSFileManagerUnmountDissentingProcessIdentifierErrorKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSFileManagerUnmountDissentingProcessIdentifierErrorKey: MemorySegment
     get() = NSFileManagerUnmountDissentingProcessIdentifierErrorKey_VH.get(NSFileManagerUnmountDissentingProcessIdentifierErrorKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSFileManagerUnmountDissentingProcessIdentifierErrorKey_VH.set(NSFileManagerUnmountDissentingProcessIdentifierErrorKey_SEGMENT, 0L, value)
@@ -1232,6 +1680,10 @@ private val NSUbiquityIdentityDidChangeNotification_LAYOUT: ValueLayout by lazy 
 private val NSUbiquityIdentityDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquityIdentityDidChangeNotification").orElseThrow().reinterpret(NSUbiquityIdentityDidChangeNotification_LAYOUT.byteSize()) }
 private val NSUbiquityIdentityDidChangeNotification_VH: VarHandle by lazy { NSUbiquityIdentityDidChangeNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUbiquityIdentityDidChangeNotification: MemorySegment
     get() = NSUbiquityIdentityDidChangeNotification_VH.get(NSUbiquityIdentityDidChangeNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUbiquityIdentityDidChangeNotification_VH.set(NSUbiquityIdentityDidChangeNotification_SEGMENT, 0L, value)
@@ -1529,6 +1981,10 @@ private val NSFileProtectionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val NSFileProtectionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionKey").orElseThrow().reinterpret(NSFileProtectionKey_LAYOUT.byteSize()) }
 private val NSFileProtectionKey_VH: VarHandle by lazy { NSFileProtectionKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSFileProtectionKey: MemorySegment
     get() = NSFileProtectionKey_VH.get(NSFileProtectionKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSFileProtectionKey_VH.set(NSFileProtectionKey_SEGMENT, 0L, value)
@@ -1540,6 +1996,10 @@ private val NSFileProtectionNone_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRE
 private val NSFileProtectionNone_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionNone").orElseThrow().reinterpret(NSFileProtectionNone_LAYOUT.byteSize()) }
 private val NSFileProtectionNone_VH: VarHandle by lazy { NSFileProtectionNone_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSFileProtectionNone: MemorySegment
     get() = NSFileProtectionNone_VH.get(NSFileProtectionNone_SEGMENT, 0L) as MemorySegment
     set(value) = NSFileProtectionNone_VH.set(NSFileProtectionNone_SEGMENT, 0L, value)
@@ -1551,6 +2011,10 @@ private val NSFileProtectionComplete_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSFileProtectionComplete_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionComplete").orElseThrow().reinterpret(NSFileProtectionComplete_LAYOUT.byteSize()) }
 private val NSFileProtectionComplete_VH: VarHandle by lazy { NSFileProtectionComplete_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSFileProtectionComplete: MemorySegment
     get() = NSFileProtectionComplete_VH.get(NSFileProtectionComplete_SEGMENT, 0L) as MemorySegment
     set(value) = NSFileProtectionComplete_VH.set(NSFileProtectionComplete_SEGMENT, 0L, value)
@@ -1562,6 +2026,10 @@ private val NSFileProtectionCompleteUnlessOpen_LAYOUT: ValueLayout by lazy { Val
 private val NSFileProtectionCompleteUnlessOpen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionCompleteUnlessOpen").orElseThrow().reinterpret(NSFileProtectionCompleteUnlessOpen_LAYOUT.byteSize()) }
 private val NSFileProtectionCompleteUnlessOpen_VH: VarHandle by lazy { NSFileProtectionCompleteUnlessOpen_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSFileProtectionCompleteUnlessOpen: MemorySegment
     get() = NSFileProtectionCompleteUnlessOpen_VH.get(NSFileProtectionCompleteUnlessOpen_SEGMENT, 0L) as MemorySegment
     set(value) = NSFileProtectionCompleteUnlessOpen_VH.set(NSFileProtectionCompleteUnlessOpen_SEGMENT, 0L, value)
@@ -1573,6 +2041,10 @@ private val NSFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT: ValueLa
 private val NSFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionCompleteUntilFirstUserAuthentication").orElseThrow().reinterpret(NSFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.byteSize()) }
 private val NSFileProtectionCompleteUntilFirstUserAuthentication_VH: VarHandle by lazy { NSFileProtectionCompleteUntilFirstUserAuthentication_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSFileProtectionCompleteUntilFirstUserAuthentication: MemorySegment
     get() = NSFileProtectionCompleteUntilFirstUserAuthentication_VH.get(NSFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L) as MemorySegment
     set(value) = NSFileProtectionCompleteUntilFirstUserAuthentication_VH.set(NSFileProtectionCompleteUntilFirstUserAuthentication_SEGMENT, 0L, value)
@@ -1584,6 +2056,10 @@ private val NSFileProtectionCompleteWhenUserInactive_LAYOUT: ValueLayout by lazy
 private val NSFileProtectionCompleteWhenUserInactive_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileProtectionCompleteWhenUserInactive").orElseThrow().reinterpret(NSFileProtectionCompleteWhenUserInactive_LAYOUT.byteSize()) }
 private val NSFileProtectionCompleteWhenUserInactive_VH: VarHandle by lazy { NSFileProtectionCompleteWhenUserInactive_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", unavailable = true)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 var NSFileProtectionCompleteWhenUserInactive: MemorySegment
     get() = NSFileProtectionCompleteWhenUserInactive_VH.get(NSFileProtectionCompleteWhenUserInactive_SEGMENT, 0L) as MemorySegment
     set(value) = NSFileProtectionCompleteWhenUserInactive_VH.set(NSFileProtectionCompleteWhenUserInactive_SEGMENT, 0L, value)
@@ -1958,6 +2434,10 @@ fun NSCreateHashTable(arg0: MemorySegment, arg1: Long): MemorySegment {
 /**
  * {@snippet lang=c : NSIntegerHashCallBacks typedef const NSHashTableCallBacks = Declared(NSHashTableCallBacks)
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 val NSIntegerHashCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSIntegerHashCallBacks").orElseThrow()
 
 /**
@@ -1993,6 +2473,10 @@ val NSPointerToStructHashCallBacks: MemorySegment = SymbolLookup.loaderLookup().
 /**
  * {@snippet lang=c : NSIntHashCallBacks typedef const NSHashTableCallBacks = Declared(NSHashTableCallBacks)
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 val NSIntHashCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSIntHashCallBacks").orElseThrow()
 
 /**
@@ -2002,6 +2486,10 @@ private val NSHTTPCookieName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val NSHTTPCookieName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieName").orElseThrow().reinterpret(NSHTTPCookieName_LAYOUT.byteSize()) }
 private val NSHTTPCookieName_VH: VarHandle by lazy { NSHTTPCookieName_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieName: MemorySegment
     get() = NSHTTPCookieName_VH.get(NSHTTPCookieName_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieName_VH.set(NSHTTPCookieName_SEGMENT, 0L, value)
@@ -2013,6 +2501,10 @@ private val NSHTTPCookieValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val NSHTTPCookieValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieValue").orElseThrow().reinterpret(NSHTTPCookieValue_LAYOUT.byteSize()) }
 private val NSHTTPCookieValue_VH: VarHandle by lazy { NSHTTPCookieValue_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieValue: MemorySegment
     get() = NSHTTPCookieValue_VH.get(NSHTTPCookieValue_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieValue_VH.set(NSHTTPCookieValue_SEGMENT, 0L, value)
@@ -2024,6 +2516,10 @@ private val NSHTTPCookieOriginURL_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val NSHTTPCookieOriginURL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieOriginURL").orElseThrow().reinterpret(NSHTTPCookieOriginURL_LAYOUT.byteSize()) }
 private val NSHTTPCookieOriginURL_VH: VarHandle by lazy { NSHTTPCookieOriginURL_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieOriginURL: MemorySegment
     get() = NSHTTPCookieOriginURL_VH.get(NSHTTPCookieOriginURL_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieOriginURL_VH.set(NSHTTPCookieOriginURL_SEGMENT, 0L, value)
@@ -2035,6 +2531,10 @@ private val NSHTTPCookieVersion_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val NSHTTPCookieVersion_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieVersion").orElseThrow().reinterpret(NSHTTPCookieVersion_LAYOUT.byteSize()) }
 private val NSHTTPCookieVersion_VH: VarHandle by lazy { NSHTTPCookieVersion_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieVersion: MemorySegment
     get() = NSHTTPCookieVersion_VH.get(NSHTTPCookieVersion_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieVersion_VH.set(NSHTTPCookieVersion_SEGMENT, 0L, value)
@@ -2046,6 +2546,10 @@ private val NSHTTPCookieDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val NSHTTPCookieDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieDomain").orElseThrow().reinterpret(NSHTTPCookieDomain_LAYOUT.byteSize()) }
 private val NSHTTPCookieDomain_VH: VarHandle by lazy { NSHTTPCookieDomain_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieDomain: MemorySegment
     get() = NSHTTPCookieDomain_VH.get(NSHTTPCookieDomain_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieDomain_VH.set(NSHTTPCookieDomain_SEGMENT, 0L, value)
@@ -2057,6 +2561,10 @@ private val NSHTTPCookiePath_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val NSHTTPCookiePath_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookiePath").orElseThrow().reinterpret(NSHTTPCookiePath_LAYOUT.byteSize()) }
 private val NSHTTPCookiePath_VH: VarHandle by lazy { NSHTTPCookiePath_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookiePath: MemorySegment
     get() = NSHTTPCookiePath_VH.get(NSHTTPCookiePath_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookiePath_VH.set(NSHTTPCookiePath_SEGMENT, 0L, value)
@@ -2068,6 +2576,10 @@ private val NSHTTPCookieSecure_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val NSHTTPCookieSecure_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSecure").orElseThrow().reinterpret(NSHTTPCookieSecure_LAYOUT.byteSize()) }
 private val NSHTTPCookieSecure_VH: VarHandle by lazy { NSHTTPCookieSecure_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieSecure: MemorySegment
     get() = NSHTTPCookieSecure_VH.get(NSHTTPCookieSecure_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieSecure_VH.set(NSHTTPCookieSecure_SEGMENT, 0L, value)
@@ -2079,6 +2591,10 @@ private val NSHTTPCookieExpires_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val NSHTTPCookieExpires_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieExpires").orElseThrow().reinterpret(NSHTTPCookieExpires_LAYOUT.byteSize()) }
 private val NSHTTPCookieExpires_VH: VarHandle by lazy { NSHTTPCookieExpires_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieExpires: MemorySegment
     get() = NSHTTPCookieExpires_VH.get(NSHTTPCookieExpires_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieExpires_VH.set(NSHTTPCookieExpires_SEGMENT, 0L, value)
@@ -2090,6 +2606,10 @@ private val NSHTTPCookieComment_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val NSHTTPCookieComment_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieComment").orElseThrow().reinterpret(NSHTTPCookieComment_LAYOUT.byteSize()) }
 private val NSHTTPCookieComment_VH: VarHandle by lazy { NSHTTPCookieComment_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieComment: MemorySegment
     get() = NSHTTPCookieComment_VH.get(NSHTTPCookieComment_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieComment_VH.set(NSHTTPCookieComment_SEGMENT, 0L, value)
@@ -2101,6 +2621,10 @@ private val NSHTTPCookieCommentURL_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSHTTPCookieCommentURL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieCommentURL").orElseThrow().reinterpret(NSHTTPCookieCommentURL_LAYOUT.byteSize()) }
 private val NSHTTPCookieCommentURL_VH: VarHandle by lazy { NSHTTPCookieCommentURL_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieCommentURL: MemorySegment
     get() = NSHTTPCookieCommentURL_VH.get(NSHTTPCookieCommentURL_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieCommentURL_VH.set(NSHTTPCookieCommentURL_SEGMENT, 0L, value)
@@ -2112,6 +2636,10 @@ private val NSHTTPCookieDiscard_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val NSHTTPCookieDiscard_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieDiscard").orElseThrow().reinterpret(NSHTTPCookieDiscard_LAYOUT.byteSize()) }
 private val NSHTTPCookieDiscard_VH: VarHandle by lazy { NSHTTPCookieDiscard_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieDiscard: MemorySegment
     get() = NSHTTPCookieDiscard_VH.get(NSHTTPCookieDiscard_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieDiscard_VH.set(NSHTTPCookieDiscard_SEGMENT, 0L, value)
@@ -2123,6 +2651,10 @@ private val NSHTTPCookieMaximumAge_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSHTTPCookieMaximumAge_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieMaximumAge").orElseThrow().reinterpret(NSHTTPCookieMaximumAge_LAYOUT.byteSize()) }
 private val NSHTTPCookieMaximumAge_VH: VarHandle by lazy { NSHTTPCookieMaximumAge_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieMaximumAge: MemorySegment
     get() = NSHTTPCookieMaximumAge_VH.get(NSHTTPCookieMaximumAge_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieMaximumAge_VH.set(NSHTTPCookieMaximumAge_SEGMENT, 0L, value)
@@ -2134,6 +2666,10 @@ private val NSHTTPCookiePort_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val NSHTTPCookiePort_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookiePort").orElseThrow().reinterpret(NSHTTPCookiePort_LAYOUT.byteSize()) }
 private val NSHTTPCookiePort_VH: VarHandle by lazy { NSHTTPCookiePort_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookiePort: MemorySegment
     get() = NSHTTPCookiePort_VH.get(NSHTTPCookiePort_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookiePort_VH.set(NSHTTPCookiePort_SEGMENT, 0L, value)
@@ -2145,6 +2681,11 @@ private val NSHTTPCookieSetByJavaScript_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSHTTPCookieSetByJavaScript_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSetByJavaScript").orElseThrow().reinterpret(NSHTTPCookieSetByJavaScript_LAYOUT.byteSize()) }
 private val NSHTTPCookieSetByJavaScript_VH: VarHandle by lazy { NSHTTPCookieSetByJavaScript_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 2, introducedSubminor = -1)
 var NSHTTPCookieSetByJavaScript: MemorySegment
     get() = NSHTTPCookieSetByJavaScript_VH.get(NSHTTPCookieSetByJavaScript_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieSetByJavaScript_VH.set(NSHTTPCookieSetByJavaScript_SEGMENT, 0L, value)
@@ -2156,6 +2697,10 @@ private val NSHTTPCookieSameSitePolicy_LAYOUT: ValueLayout by lazy { ValueLayout
 private val NSHTTPCookieSameSitePolicy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSameSitePolicy").orElseThrow().reinterpret(NSHTTPCookieSameSitePolicy_LAYOUT.byteSize()) }
 private val NSHTTPCookieSameSitePolicy_VH: VarHandle by lazy { NSHTTPCookieSameSitePolicy_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieSameSitePolicy: MemorySegment
     get() = NSHTTPCookieSameSitePolicy_VH.get(NSHTTPCookieSameSitePolicy_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieSameSitePolicy_VH.set(NSHTTPCookieSameSitePolicy_SEGMENT, 0L, value)
@@ -2167,6 +2712,10 @@ private val NSHTTPCookieSameSiteLax_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val NSHTTPCookieSameSiteLax_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSameSiteLax").orElseThrow().reinterpret(NSHTTPCookieSameSiteLax_LAYOUT.byteSize()) }
 private val NSHTTPCookieSameSiteLax_VH: VarHandle by lazy { NSHTTPCookieSameSiteLax_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieSameSiteLax: MemorySegment
     get() = NSHTTPCookieSameSiteLax_VH.get(NSHTTPCookieSameSiteLax_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieSameSiteLax_VH.set(NSHTTPCookieSameSiteLax_SEGMENT, 0L, value)
@@ -2178,6 +2727,10 @@ private val NSHTTPCookieSameSiteStrict_LAYOUT: ValueLayout by lazy { ValueLayout
 private val NSHTTPCookieSameSiteStrict_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieSameSiteStrict").orElseThrow().reinterpret(NSHTTPCookieSameSiteStrict_LAYOUT.byteSize()) }
 private val NSHTTPCookieSameSiteStrict_VH: VarHandle by lazy { NSHTTPCookieSameSiteStrict_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieSameSiteStrict: MemorySegment
     get() = NSHTTPCookieSameSiteStrict_VH.get(NSHTTPCookieSameSiteStrict_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieSameSiteStrict_VH.set(NSHTTPCookieSameSiteStrict_SEGMENT, 0L, value)
@@ -2189,6 +2742,11 @@ private val NSHTTPCookieManagerAcceptPolicyChangedNotification_LAYOUT: ValueLayo
 private val NSHTTPCookieManagerAcceptPolicyChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieManagerAcceptPolicyChangedNotification").orElseThrow().reinterpret(NSHTTPCookieManagerAcceptPolicyChangedNotification_LAYOUT.byteSize()) }
 private val NSHTTPCookieManagerAcceptPolicyChangedNotification_VH: VarHandle by lazy { NSHTTPCookieManagerAcceptPolicyChangedNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Notification is never posted")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Notification is never posted")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Notification is never posted")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Notification is never posted")
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 1, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Notification is never posted")
 var NSHTTPCookieManagerAcceptPolicyChangedNotification: MemorySegment
     get() = NSHTTPCookieManagerAcceptPolicyChangedNotification_VH.get(NSHTTPCookieManagerAcceptPolicyChangedNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieManagerAcceptPolicyChangedNotification_VH.set(NSHTTPCookieManagerAcceptPolicyChangedNotification_SEGMENT, 0L, value)
@@ -2200,6 +2758,10 @@ private val NSHTTPCookieManagerCookiesChangedNotification_LAYOUT: ValueLayout by
 private val NSHTTPCookieManagerCookiesChangedNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTTPCookieManagerCookiesChangedNotification").orElseThrow().reinterpret(NSHTTPCookieManagerCookiesChangedNotification_LAYOUT.byteSize()) }
 private val NSHTTPCookieManagerCookiesChangedNotification_VH: VarHandle by lazy { NSHTTPCookieManagerCookiesChangedNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSHTTPCookieManagerCookiesChangedNotification: MemorySegment
     get() = NSHTTPCookieManagerCookiesChangedNotification_VH.get(NSHTTPCookieManagerCookiesChangedNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSHTTPCookieManagerCookiesChangedNotification_VH.set(NSHTTPCookieManagerCookiesChangedNotification_SEGMENT, 0L, value)
@@ -2387,6 +2949,10 @@ private val NSKeyValueChangeNotificationIsPriorKey_LAYOUT: ValueLayout by lazy {
 private val NSKeyValueChangeNotificationIsPriorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyValueChangeNotificationIsPriorKey").orElseThrow().reinterpret(NSKeyValueChangeNotificationIsPriorKey_LAYOUT.byteSize()) }
 private val NSKeyValueChangeNotificationIsPriorKey_VH: VarHandle by lazy { NSKeyValueChangeNotificationIsPriorKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSKeyValueChangeNotificationIsPriorKey: MemorySegment
     get() = NSKeyValueChangeNotificationIsPriorKey_VH.get(NSKeyValueChangeNotificationIsPriorKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSKeyValueChangeNotificationIsPriorKey_VH.set(NSKeyValueChangeNotificationIsPriorKey_SEGMENT, 0L, value)
@@ -2394,26 +2960,36 @@ var NSKeyValueChangeNotificationIsPriorKey: MemorySegment
 /**
  * {@snippet lang=c : CGPointZero typedef const CGPoint = Declared(CGPoint)
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 val CGPointZero: MemorySegment = SymbolLookup.loaderLookup().find("CGPointZero").orElseThrow()
 
 /**
  * {@snippet lang=c : CGSizeZero typedef const CGSize = Declared(CGSize)
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 val CGSizeZero: MemorySegment = SymbolLookup.loaderLookup().find("CGSizeZero").orElseThrow()
 
 /**
  * {@snippet lang=c : CGRectZero typedef const CGRect = Declared(CGRect)
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 val CGRectZero: MemorySegment = SymbolLookup.loaderLookup().find("CGRectZero").orElseThrow()
 
 /**
  * {@snippet lang=c : CGRectNull typedef const CGRect = Declared(CGRect)
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 val CGRectNull: MemorySegment = SymbolLookup.loaderLookup().find("CGRectNull").orElseThrow()
 
 /**
  * {@snippet lang=c : CGRectInfinite typedef const CGRect = Declared(CGRect)
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 val CGRectInfinite: MemorySegment = SymbolLookup.loaderLookup().find("CGRectInfinite").orElseThrow()
 
 /**
@@ -2423,6 +2999,8 @@ private val CGRectGetMinX_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGRectGetMinX_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMinX").orElseThrow()
 private val CGRectGetMinX_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMinX_ADDR, CGRectGetMinX_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMinX(arg0: MemorySegment): Double {
     try {
         return CGRectGetMinX_HANDLE.invokeExact(arg0) as Double
@@ -2435,6 +3013,8 @@ fun CGRectGetMinX(arg0: MemorySegment): Double {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMinX(arg0: CGRect): Double {
     return CGRectGetMinX(arg0.segment)
 }
@@ -2446,6 +3026,8 @@ private val CGRectGetMidX_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGRectGetMidX_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMidX").orElseThrow()
 private val CGRectGetMidX_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMidX_ADDR, CGRectGetMidX_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMidX(arg0: MemorySegment): Double {
     try {
         return CGRectGetMidX_HANDLE.invokeExact(arg0) as Double
@@ -2458,6 +3040,8 @@ fun CGRectGetMidX(arg0: MemorySegment): Double {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMidX(arg0: CGRect): Double {
     return CGRectGetMidX(arg0.segment)
 }
@@ -2469,6 +3053,8 @@ private val CGRectGetMaxX_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGRectGetMaxX_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMaxX").orElseThrow()
 private val CGRectGetMaxX_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMaxX_ADDR, CGRectGetMaxX_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMaxX(arg0: MemorySegment): Double {
     try {
         return CGRectGetMaxX_HANDLE.invokeExact(arg0) as Double
@@ -2481,6 +3067,8 @@ fun CGRectGetMaxX(arg0: MemorySegment): Double {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMaxX(arg0: CGRect): Double {
     return CGRectGetMaxX(arg0.segment)
 }
@@ -2492,6 +3080,8 @@ private val CGRectGetMinY_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGRectGetMinY_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMinY").orElseThrow()
 private val CGRectGetMinY_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMinY_ADDR, CGRectGetMinY_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMinY(arg0: MemorySegment): Double {
     try {
         return CGRectGetMinY_HANDLE.invokeExact(arg0) as Double
@@ -2504,6 +3094,8 @@ fun CGRectGetMinY(arg0: MemorySegment): Double {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMinY(arg0: CGRect): Double {
     return CGRectGetMinY(arg0.segment)
 }
@@ -2515,6 +3107,8 @@ private val CGRectGetMidY_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGRectGetMidY_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMidY").orElseThrow()
 private val CGRectGetMidY_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMidY_ADDR, CGRectGetMidY_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMidY(arg0: MemorySegment): Double {
     try {
         return CGRectGetMidY_HANDLE.invokeExact(arg0) as Double
@@ -2527,6 +3121,8 @@ fun CGRectGetMidY(arg0: MemorySegment): Double {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMidY(arg0: CGRect): Double {
     return CGRectGetMidY(arg0.segment)
 }
@@ -2538,6 +3134,8 @@ private val CGRectGetMaxY_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGRectGetMaxY_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMaxY").orElseThrow()
 private val CGRectGetMaxY_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMaxY_ADDR, CGRectGetMaxY_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMaxY(arg0: MemorySegment): Double {
     try {
         return CGRectGetMaxY_HANDLE.invokeExact(arg0) as Double
@@ -2550,6 +3148,8 @@ fun CGRectGetMaxY(arg0: MemorySegment): Double {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetMaxY(arg0: CGRect): Double {
     return CGRectGetMaxY(arg0.segment)
 }
@@ -2561,6 +3161,8 @@ private val CGRectGetWidth_DESC: FunctionDescriptor = FunctionDescriptor.of(Valu
 private val CGRectGetWidth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetWidth").orElseThrow()
 private val CGRectGetWidth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetWidth_ADDR, CGRectGetWidth_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetWidth(arg0: MemorySegment): Double {
     try {
         return CGRectGetWidth_HANDLE.invokeExact(arg0) as Double
@@ -2573,6 +3175,8 @@ fun CGRectGetWidth(arg0: MemorySegment): Double {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetWidth(arg0: CGRect): Double {
     return CGRectGetWidth(arg0.segment)
 }
@@ -2584,6 +3188,8 @@ private val CGRectGetHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGRectGetHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetHeight").orElseThrow()
 private val CGRectGetHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetHeight_ADDR, CGRectGetHeight_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetHeight(arg0: MemorySegment): Double {
     try {
         return CGRectGetHeight_HANDLE.invokeExact(arg0) as Double
@@ -2596,6 +3202,8 @@ fun CGRectGetHeight(arg0: MemorySegment): Double {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectGetHeight(arg0: CGRect): Double {
     return CGRectGetHeight(arg0.segment)
 }
@@ -2607,6 +3215,8 @@ private val CGPointEqualToPoint_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPointEqualToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPointEqualToPoint").orElseThrow()
 private val CGPointEqualToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPointEqualToPoint_ADDR, CGPointEqualToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPointEqualToPoint(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGPointEqualToPoint_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -2619,6 +3229,8 @@ fun CGPointEqualToPoint(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPointEqualToPoint(arg0: CGPoint, arg1: CGPoint): Boolean {
     return CGPointEqualToPoint(arg0.segment, arg1.segment)
 }
@@ -2630,6 +3242,8 @@ private val CGSizeEqualToSize_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGSizeEqualToSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGSizeEqualToSize").orElseThrow()
 private val CGSizeEqualToSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGSizeEqualToSize_ADDR, CGSizeEqualToSize_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGSizeEqualToSize(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGSizeEqualToSize_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -2642,6 +3256,8 @@ fun CGSizeEqualToSize(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGSizeEqualToSize(arg0: CGSize, arg1: CGSize): Boolean {
     return CGSizeEqualToSize(arg0.segment, arg1.segment)
 }
@@ -2653,6 +3269,8 @@ private val CGRectEqualToRect_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGRectEqualToRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectEqualToRect").orElseThrow()
 private val CGRectEqualToRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectEqualToRect_ADDR, CGRectEqualToRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectEqualToRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGRectEqualToRect_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -2665,6 +3283,8 @@ fun CGRectEqualToRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectEqualToRect(arg0: CGRect, arg1: CGRect): Boolean {
     return CGRectEqualToRect(arg0.segment, arg1.segment)
 }
@@ -2676,6 +3296,8 @@ private val CGRectStandardize_DESC: FunctionDescriptor = FunctionDescriptor.of(C
 private val CGRectStandardize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectStandardize").orElseThrow()
 private val CGRectStandardize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectStandardize_ADDR, CGRectStandardize_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectStandardize(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGRectStandardize_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -2688,6 +3310,8 @@ fun CGRectStandardize(allocator: SegmentAllocator, arg0: MemorySegment): MemoryS
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectStandardize(allocator: SegmentAllocator, arg0: CGRect): CGRect {
     return CGRect(CGRectStandardize(allocator, arg0.segment))
 }
@@ -2699,6 +3323,8 @@ private val CGRectIsEmpty_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGRectIsEmpty_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIsEmpty").orElseThrow()
 private val CGRectIsEmpty_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIsEmpty_ADDR, CGRectIsEmpty_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIsEmpty(arg0: MemorySegment): Boolean {
     try {
         return CGRectIsEmpty_HANDLE.invokeExact(arg0) as Boolean
@@ -2711,6 +3337,8 @@ fun CGRectIsEmpty(arg0: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIsEmpty(arg0: CGRect): Boolean {
     return CGRectIsEmpty(arg0.segment)
 }
@@ -2722,6 +3350,8 @@ private val CGRectIsNull_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueL
 private val CGRectIsNull_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIsNull").orElseThrow()
 private val CGRectIsNull_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIsNull_ADDR, CGRectIsNull_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIsNull(arg0: MemorySegment): Boolean {
     try {
         return CGRectIsNull_HANDLE.invokeExact(arg0) as Boolean
@@ -2734,6 +3364,8 @@ fun CGRectIsNull(arg0: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIsNull(arg0: CGRect): Boolean {
     return CGRectIsNull(arg0.segment)
 }
@@ -2745,6 +3377,8 @@ private val CGRectIsInfinite_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGRectIsInfinite_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIsInfinite").orElseThrow()
 private val CGRectIsInfinite_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIsInfinite_ADDR, CGRectIsInfinite_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGRectIsInfinite(arg0: MemorySegment): Boolean {
     try {
         return CGRectIsInfinite_HANDLE.invokeExact(arg0) as Boolean
@@ -2757,6 +3391,8 @@ fun CGRectIsInfinite(arg0: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGRectIsInfinite(arg0: CGRect): Boolean {
     return CGRectIsInfinite(arg0.segment)
 }
@@ -2768,6 +3404,8 @@ private val CGRectInset_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.
 private val CGRectInset_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectInset").orElseThrow()
 private val CGRectInset_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectInset_ADDR, CGRectInset_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectInset(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double, arg2: Double): MemorySegment {
     try {
         return CGRectInset_HANDLE.invokeExact(allocator, arg0, arg1, arg2) as MemorySegment
@@ -2780,6 +3418,8 @@ fun CGRectInset(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double, 
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectInset(allocator: SegmentAllocator, arg0: CGRect, arg1: Double, arg2: Double): CGRect {
     return CGRect(CGRectInset(allocator, arg0.segment, arg1, arg2))
 }
@@ -2791,6 +3431,8 @@ private val CGRectIntegral_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRe
 private val CGRectIntegral_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIntegral").orElseThrow()
 private val CGRectIntegral_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIntegral_ADDR, CGRectIntegral_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIntegral(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGRectIntegral_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -2803,6 +3445,8 @@ fun CGRectIntegral(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegm
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIntegral(allocator: SegmentAllocator, arg0: CGRect): CGRect {
     return CGRect(CGRectIntegral(allocator, arg0.segment))
 }
@@ -2814,6 +3458,8 @@ private val CGRectUnion_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.
 private val CGRectUnion_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectUnion").orElseThrow()
 private val CGRectUnion_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectUnion_ADDR, CGRectUnion_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectUnion(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGRectUnion_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -2826,6 +3472,8 @@ fun CGRectUnion(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySe
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectUnion(allocator: SegmentAllocator, arg0: CGRect, arg1: CGRect): CGRect {
     return CGRect(CGRectUnion(allocator, arg0.segment, arg1.segment))
 }
@@ -2837,6 +3485,8 @@ private val CGRectIntersection_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGRectIntersection_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIntersection").orElseThrow()
 private val CGRectIntersection_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIntersection_ADDR, CGRectIntersection_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIntersection(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGRectIntersection_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -2849,6 +3499,8 @@ fun CGRectIntersection(allocator: SegmentAllocator, arg0: MemorySegment, arg1: M
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIntersection(allocator: SegmentAllocator, arg0: CGRect, arg1: CGRect): CGRect {
     return CGRect(CGRectIntersection(allocator, arg0.segment, arg1.segment))
 }
@@ -2860,6 +3512,8 @@ private val CGRectOffset_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect
 private val CGRectOffset_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectOffset").orElseThrow()
 private val CGRectOffset_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectOffset_ADDR, CGRectOffset_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectOffset(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double, arg2: Double): MemorySegment {
     try {
         return CGRectOffset_HANDLE.invokeExact(allocator, arg0, arg1, arg2) as MemorySegment
@@ -2872,6 +3526,8 @@ fun CGRectOffset(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double,
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectOffset(allocator: SegmentAllocator, arg0: CGRect, arg1: Double, arg2: Double): CGRect {
     return CGRect(CGRectOffset(allocator, arg0.segment, arg1, arg2))
 }
@@ -2883,6 +3539,8 @@ private val CGRectDivide_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CG
 private val CGRectDivide_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectDivide").orElseThrow()
 private val CGRectDivide_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectDivide_ADDR, CGRectDivide_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectDivide(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Double, arg4: CGRectEdge): Unit {
     try {
         CGRectDivide_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4.value.toInt())
@@ -2895,6 +3553,8 @@ fun CGRectDivide(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, 
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectDivide(arg0: CGRect, arg1: MemorySegment, arg2: MemorySegment, arg3: Double, arg4: CGRectEdge): Unit {
     CGRectDivide(arg0.segment, arg1, arg2, arg3, arg4)
 }
@@ -2906,6 +3566,8 @@ private val CGRectContainsPoint_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGRectContainsPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectContainsPoint").orElseThrow()
 private val CGRectContainsPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectContainsPoint_ADDR, CGRectContainsPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectContainsPoint(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGRectContainsPoint_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -2918,6 +3580,8 @@ fun CGRectContainsPoint(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectContainsPoint(arg0: CGRect, arg1: CGPoint): Boolean {
     return CGRectContainsPoint(arg0.segment, arg1.segment)
 }
@@ -2929,6 +3593,8 @@ private val CGRectContainsRect_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGRectContainsRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectContainsRect").orElseThrow()
 private val CGRectContainsRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectContainsRect_ADDR, CGRectContainsRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectContainsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGRectContainsRect_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -2941,6 +3607,8 @@ fun CGRectContainsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectContainsRect(arg0: CGRect, arg1: CGRect): Boolean {
     return CGRectContainsRect(arg0.segment, arg1.segment)
 }
@@ -2952,6 +3620,8 @@ private val CGRectIntersectsRect_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGRectIntersectsRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIntersectsRect").orElseThrow()
 private val CGRectIntersectsRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIntersectsRect_ADDR, CGRectIntersectsRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIntersectsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGRectIntersectsRect_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -2964,6 +3634,8 @@ fun CGRectIntersectsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGRectIntersectsRect(arg0: CGRect, arg1: CGRect): Boolean {
     return CGRectIntersectsRect(arg0.segment, arg1.segment)
 }
@@ -2975,6 +3647,8 @@ private val CGPointCreateDictionaryRepresentation_DESC: FunctionDescriptor = Fun
 private val CGPointCreateDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPointCreateDictionaryRepresentation").orElseThrow()
 private val CGPointCreateDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPointCreateDictionaryRepresentation_ADDR, CGPointCreateDictionaryRepresentation_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGPointCreateDictionaryRepresentation(arg0: MemorySegment): MemorySegment {
     try {
         return CGPointCreateDictionaryRepresentation_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2987,6 +3661,8 @@ fun CGPointCreateDictionaryRepresentation(arg0: MemorySegment): MemorySegment {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGPointCreateDictionaryRepresentation(arg0: CGPoint): MemorySegment {
     return CGPointCreateDictionaryRepresentation(arg0.segment)
 }
@@ -2998,6 +3674,8 @@ private val CGPointMakeWithDictionaryRepresentation_DESC: FunctionDescriptor = F
 private val CGPointMakeWithDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPointMakeWithDictionaryRepresentation").orElseThrow()
 private val CGPointMakeWithDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPointMakeWithDictionaryRepresentation_ADDR, CGPointMakeWithDictionaryRepresentation_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGPointMakeWithDictionaryRepresentation(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGPointMakeWithDictionaryRepresentation_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -3017,6 +3695,8 @@ private val CGSizeCreateDictionaryRepresentation_DESC: FunctionDescriptor = Func
 private val CGSizeCreateDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGSizeCreateDictionaryRepresentation").orElseThrow()
 private val CGSizeCreateDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGSizeCreateDictionaryRepresentation_ADDR, CGSizeCreateDictionaryRepresentation_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGSizeCreateDictionaryRepresentation(arg0: MemorySegment): MemorySegment {
     try {
         return CGSizeCreateDictionaryRepresentation_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3029,6 +3709,8 @@ fun CGSizeCreateDictionaryRepresentation(arg0: MemorySegment): MemorySegment {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGSizeCreateDictionaryRepresentation(arg0: CGSize): MemorySegment {
     return CGSizeCreateDictionaryRepresentation(arg0.segment)
 }
@@ -3040,6 +3722,8 @@ private val CGSizeMakeWithDictionaryRepresentation_DESC: FunctionDescriptor = Fu
 private val CGSizeMakeWithDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGSizeMakeWithDictionaryRepresentation").orElseThrow()
 private val CGSizeMakeWithDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGSizeMakeWithDictionaryRepresentation_ADDR, CGSizeMakeWithDictionaryRepresentation_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGSizeMakeWithDictionaryRepresentation(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGSizeMakeWithDictionaryRepresentation_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -3059,6 +3743,8 @@ private val CGRectCreateDictionaryRepresentation_DESC: FunctionDescriptor = Func
 private val CGRectCreateDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectCreateDictionaryRepresentation").orElseThrow()
 private val CGRectCreateDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectCreateDictionaryRepresentation_ADDR, CGRectCreateDictionaryRepresentation_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGRectCreateDictionaryRepresentation(arg0: MemorySegment): MemorySegment {
     try {
         return CGRectCreateDictionaryRepresentation_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3071,6 +3757,8 @@ fun CGRectCreateDictionaryRepresentation(arg0: MemorySegment): MemorySegment {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGRectCreateDictionaryRepresentation(arg0: CGRect): MemorySegment {
     return CGRectCreateDictionaryRepresentation(arg0.segment)
 }
@@ -3082,6 +3770,8 @@ private val CGRectMakeWithDictionaryRepresentation_DESC: FunctionDescriptor = Fu
 private val CGRectMakeWithDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectMakeWithDictionaryRepresentation").orElseThrow()
 private val CGRectMakeWithDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectMakeWithDictionaryRepresentation_ADDR, CGRectMakeWithDictionaryRepresentation_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGRectMakeWithDictionaryRepresentation(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGRectMakeWithDictionaryRepresentation_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -3112,6 +3802,10 @@ val NSZeroRect: MemorySegment = SymbolLookup.loaderLookup().find("NSZeroRect").o
 /**
  * {@snippet lang=c : NSEdgeInsetsZero typedef const NSEdgeInsets = Declared(NSEdgeInsets)
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 val NSEdgeInsetsZero: MemorySegment = SymbolLookup.loaderLookup().find("NSEdgeInsetsZero").orElseThrow()
 
 /**
@@ -3213,6 +3907,10 @@ private val NSEdgeInsetsEqual_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val NSEdgeInsetsEqual_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEdgeInsetsEqual").orElseThrow()
 private val NSEdgeInsetsEqual_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEdgeInsetsEqual_ADDR, NSEdgeInsetsEqual_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSEdgeInsetsEqual(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return NSEdgeInsetsEqual_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -3225,6 +3923,10 @@ fun NSEdgeInsetsEqual(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSEdgeInsetsEqual(arg0: NSEdgeInsets, arg1: NSEdgeInsets): Boolean {
     return NSEdgeInsetsEqual(arg0.segment, arg1.segment)
 }
@@ -3282,6 +3984,10 @@ private val NSIntegralRectWithOptions_DESC: FunctionDescriptor = FunctionDescrip
 private val NSIntegralRectWithOptions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSIntegralRectWithOptions").orElseThrow()
 private val NSIntegralRectWithOptions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSIntegralRectWithOptions_ADDR, NSIntegralRectWithOptions_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSIntegralRectWithOptions(allocator: SegmentAllocator, arg0: MemorySegment, arg1: NSAlignmentOptions): MemorySegment {
     try {
         return NSIntegralRectWithOptions_HANDLE.invokeExact(allocator, arg0, arg1.rawValue) as MemorySegment
@@ -3294,6 +4000,10 @@ fun NSIntegralRectWithOptions(allocator: SegmentAllocator, arg0: MemorySegment, 
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSIntegralRectWithOptions(allocator: SegmentAllocator, arg0: NSRect, arg1: NSAlignmentOptions): NSRect {
     return NSRect(NSIntegralRectWithOptions(allocator, arg0.segment, arg1))
 }
@@ -3649,6 +4359,10 @@ private val NSKeyedArchiveRootObjectKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSKeyedArchiveRootObjectKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKeyedArchiveRootObjectKey").orElseThrow().reinterpret(NSKeyedArchiveRootObjectKey_LAYOUT.byteSize()) }
 private val NSKeyedArchiveRootObjectKey_VH: VarHandle by lazy { NSKeyedArchiveRootObjectKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSKeyedArchiveRootObjectKey: MemorySegment
     get() = NSKeyedArchiveRootObjectKey_VH.get(NSKeyedArchiveRootObjectKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSKeyedArchiveRootObjectKey_VH.set(NSKeyedArchiveRootObjectKey_SEGMENT, 0L, value)
@@ -4017,6 +4731,10 @@ fun NSCreateMapTable(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Memo
 /**
  * {@snippet lang=c : NSIntegerMapKeyCallBacks typedef const NSMapTableKeyCallBacks = Declared(NSMapTableKeyCallBacks)
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 val NSIntegerMapKeyCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSIntegerMapKeyCallBacks").orElseThrow()
 
 /**
@@ -4047,9 +4765,17 @@ val NSOwnedPointerMapKeyCallBacks: MemorySegment = SymbolLookup.loaderLookup().f
 /**
  * {@snippet lang=c : NSIntMapKeyCallBacks typedef const NSMapTableKeyCallBacks = Declared(NSMapTableKeyCallBacks)
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
 val NSIntMapKeyCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSIntMapKeyCallBacks").orElseThrow()
 
 /**
  * {@snippet lang=c : NSIntegerMapValueCallBacks typedef const NSMapTableValueCallBacks = Declared(NSMapTableValueCallBacks)
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 val NSIntegerMapValueCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("NSIntegerMapValueCallBacks").orElseThrow()

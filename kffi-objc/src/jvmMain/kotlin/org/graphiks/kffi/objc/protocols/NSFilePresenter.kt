@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -25,6 +27,10 @@ interface NSFilePresenter {
     fun accommodatePresentedItemDeletionWithCompletionHandler(completionHandler: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'accommodatePresentedItemDeletionWithCompletionHandler:' not implemented")
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 4, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     // @optional
     fun accommodatePresentedItemEvictionWithCompletionHandler(completionHandler: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'accommodatePresentedItemEvictionWithCompletionHandler:' not implemented")
@@ -37,6 +43,10 @@ interface NSFilePresenter {
     fun presentedItemDidChange(): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'presentedItemDidChange' not implemented")
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     // @optional
     fun presentedItemDidChangeUbiquityAttributes(attributes: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'presentedItemDidChangeUbiquityAttributes:' not implemented")
@@ -85,11 +95,19 @@ interface NSFilePresenter {
 
     fun presentedItemOperationQueue(): MemorySegment
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     // @optional
     fun primaryPresentedItemURL(): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'primaryPresentedItemURL' not implemented")
 
     /** @return NSSet<NSURLResourceKey> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     // @optional
     fun observedPresentedItemUbiquityAttributes(): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'observedPresentedItemUbiquityAttributes' not implemented")

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -18,11 +20,19 @@ open class NSError(override val ptr: MemorySegment) : NSObject(ptr) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, domain, code, dict) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun setUserInfoValueProviderForDomain_provider(errorDomain: MemorySegment, provider: MemorySegment): Unit {
             val sel = ObjCRuntime.sel("setUserInfoValueProviderForDomain:provider:")
             ObjCRuntime.msgSend(null, _class, sel, errorDomain, provider)
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun userInfoValueProviderForDomain(errorDomain: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("userInfoValueProviderForDomain:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, errorDomain) as MemorySegment
@@ -105,6 +115,10 @@ open class NSError(override val ptr: MemorySegment) : NSObject(ptr) {
 
     // @property underlyingErrors
     /** @return NSArray<NSError *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 4, introducedSubminor = -1)
     open fun underlyingErrors(): MemorySegment {
         val sel = ObjCRuntime.sel("underlyingErrors")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment

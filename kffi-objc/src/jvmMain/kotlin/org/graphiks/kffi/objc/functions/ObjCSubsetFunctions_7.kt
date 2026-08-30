@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -11,6 +13,10 @@ private val NSMetadataItemDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayo
 private val NSMetadataItemDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemDescriptionKey").orElseThrow().reinterpret(NSMetadataItemDescriptionKey_LAYOUT.byteSize()) }
 private val NSMetadataItemDescriptionKey_VH: VarHandle by lazy { NSMetadataItemDescriptionKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemDescriptionKey: MemorySegment
     get() = NSMetadataItemDescriptionKey_VH.get(NSMetadataItemDescriptionKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemDescriptionKey_VH.set(NSMetadataItemDescriptionKey_SEGMENT, 0L, value)
@@ -22,6 +28,10 @@ private val NSMetadataItemIdentifierKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSMetadataItemIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemIdentifierKey").orElseThrow().reinterpret(NSMetadataItemIdentifierKey_LAYOUT.byteSize()) }
 private val NSMetadataItemIdentifierKey_VH: VarHandle by lazy { NSMetadataItemIdentifierKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemIdentifierKey: MemorySegment
     get() = NSMetadataItemIdentifierKey_VH.get(NSMetadataItemIdentifierKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemIdentifierKey_VH.set(NSMetadataItemIdentifierKey_SEGMENT, 0L, value)
@@ -33,6 +43,10 @@ private val NSMetadataItemAudiencesKey_LAYOUT: ValueLayout by lazy { ValueLayout
 private val NSMetadataItemAudiencesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAudiencesKey").orElseThrow().reinterpret(NSMetadataItemAudiencesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemAudiencesKey_VH: VarHandle by lazy { NSMetadataItemAudiencesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemAudiencesKey: MemorySegment
     get() = NSMetadataItemAudiencesKey_VH.get(NSMetadataItemAudiencesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemAudiencesKey_VH.set(NSMetadataItemAudiencesKey_SEGMENT, 0L, value)
@@ -44,6 +58,10 @@ private val NSMetadataItemNumberOfPagesKey_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSMetadataItemNumberOfPagesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemNumberOfPagesKey").orElseThrow().reinterpret(NSMetadataItemNumberOfPagesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemNumberOfPagesKey_VH: VarHandle by lazy { NSMetadataItemNumberOfPagesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemNumberOfPagesKey: MemorySegment
     get() = NSMetadataItemNumberOfPagesKey_VH.get(NSMetadataItemNumberOfPagesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemNumberOfPagesKey_VH.set(NSMetadataItemNumberOfPagesKey_SEGMENT, 0L, value)
@@ -55,6 +73,10 @@ private val NSMetadataItemPageWidthKey_LAYOUT: ValueLayout by lazy { ValueLayout
 private val NSMetadataItemPageWidthKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemPageWidthKey").orElseThrow().reinterpret(NSMetadataItemPageWidthKey_LAYOUT.byteSize()) }
 private val NSMetadataItemPageWidthKey_VH: VarHandle by lazy { NSMetadataItemPageWidthKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemPageWidthKey: MemorySegment
     get() = NSMetadataItemPageWidthKey_VH.get(NSMetadataItemPageWidthKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemPageWidthKey_VH.set(NSMetadataItemPageWidthKey_SEGMENT, 0L, value)
@@ -66,6 +88,10 @@ private val NSMetadataItemPageHeightKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSMetadataItemPageHeightKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemPageHeightKey").orElseThrow().reinterpret(NSMetadataItemPageHeightKey_LAYOUT.byteSize()) }
 private val NSMetadataItemPageHeightKey_VH: VarHandle by lazy { NSMetadataItemPageHeightKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemPageHeightKey: MemorySegment
     get() = NSMetadataItemPageHeightKey_VH.get(NSMetadataItemPageHeightKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemPageHeightKey_VH.set(NSMetadataItemPageHeightKey_SEGMENT, 0L, value)
@@ -77,6 +103,10 @@ private val NSMetadataItemSecurityMethodKey_LAYOUT: ValueLayout by lazy { ValueL
 private val NSMetadataItemSecurityMethodKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemSecurityMethodKey").orElseThrow().reinterpret(NSMetadataItemSecurityMethodKey_LAYOUT.byteSize()) }
 private val NSMetadataItemSecurityMethodKey_VH: VarHandle by lazy { NSMetadataItemSecurityMethodKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemSecurityMethodKey: MemorySegment
     get() = NSMetadataItemSecurityMethodKey_VH.get(NSMetadataItemSecurityMethodKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemSecurityMethodKey_VH.set(NSMetadataItemSecurityMethodKey_SEGMENT, 0L, value)
@@ -88,6 +118,10 @@ private val NSMetadataItemCreatorKey_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSMetadataItemCreatorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemCreatorKey").orElseThrow().reinterpret(NSMetadataItemCreatorKey_LAYOUT.byteSize()) }
 private val NSMetadataItemCreatorKey_VH: VarHandle by lazy { NSMetadataItemCreatorKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemCreatorKey: MemorySegment
     get() = NSMetadataItemCreatorKey_VH.get(NSMetadataItemCreatorKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemCreatorKey_VH.set(NSMetadataItemCreatorKey_SEGMENT, 0L, value)
@@ -99,6 +133,10 @@ private val NSMetadataItemEncodingApplicationsKey_LAYOUT: ValueLayout by lazy { 
 private val NSMetadataItemEncodingApplicationsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemEncodingApplicationsKey").orElseThrow().reinterpret(NSMetadataItemEncodingApplicationsKey_LAYOUT.byteSize()) }
 private val NSMetadataItemEncodingApplicationsKey_VH: VarHandle by lazy { NSMetadataItemEncodingApplicationsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemEncodingApplicationsKey: MemorySegment
     get() = NSMetadataItemEncodingApplicationsKey_VH.get(NSMetadataItemEncodingApplicationsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemEncodingApplicationsKey_VH.set(NSMetadataItemEncodingApplicationsKey_SEGMENT, 0L, value)
@@ -110,6 +148,10 @@ private val NSMetadataItemDueDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSMetadataItemDueDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemDueDateKey").orElseThrow().reinterpret(NSMetadataItemDueDateKey_LAYOUT.byteSize()) }
 private val NSMetadataItemDueDateKey_VH: VarHandle by lazy { NSMetadataItemDueDateKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemDueDateKey: MemorySegment
     get() = NSMetadataItemDueDateKey_VH.get(NSMetadataItemDueDateKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemDueDateKey_VH.set(NSMetadataItemDueDateKey_SEGMENT, 0L, value)
@@ -121,6 +163,10 @@ private val NSMetadataItemStarRatingKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSMetadataItemStarRatingKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemStarRatingKey").orElseThrow().reinterpret(NSMetadataItemStarRatingKey_LAYOUT.byteSize()) }
 private val NSMetadataItemStarRatingKey_VH: VarHandle by lazy { NSMetadataItemStarRatingKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemStarRatingKey: MemorySegment
     get() = NSMetadataItemStarRatingKey_VH.get(NSMetadataItemStarRatingKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemStarRatingKey_VH.set(NSMetadataItemStarRatingKey_SEGMENT, 0L, value)
@@ -132,6 +178,10 @@ private val NSMetadataItemPhoneNumbersKey_LAYOUT: ValueLayout by lazy { ValueLay
 private val NSMetadataItemPhoneNumbersKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemPhoneNumbersKey").orElseThrow().reinterpret(NSMetadataItemPhoneNumbersKey_LAYOUT.byteSize()) }
 private val NSMetadataItemPhoneNumbersKey_VH: VarHandle by lazy { NSMetadataItemPhoneNumbersKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemPhoneNumbersKey: MemorySegment
     get() = NSMetadataItemPhoneNumbersKey_VH.get(NSMetadataItemPhoneNumbersKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemPhoneNumbersKey_VH.set(NSMetadataItemPhoneNumbersKey_SEGMENT, 0L, value)
@@ -143,6 +193,10 @@ private val NSMetadataItemEmailAddressesKey_LAYOUT: ValueLayout by lazy { ValueL
 private val NSMetadataItemEmailAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemEmailAddressesKey").orElseThrow().reinterpret(NSMetadataItemEmailAddressesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemEmailAddressesKey_VH: VarHandle by lazy { NSMetadataItemEmailAddressesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemEmailAddressesKey: MemorySegment
     get() = NSMetadataItemEmailAddressesKey_VH.get(NSMetadataItemEmailAddressesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemEmailAddressesKey_VH.set(NSMetadataItemEmailAddressesKey_SEGMENT, 0L, value)
@@ -154,6 +208,10 @@ private val NSMetadataItemInstantMessageAddressesKey_LAYOUT: ValueLayout by lazy
 private val NSMetadataItemInstantMessageAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemInstantMessageAddressesKey").orElseThrow().reinterpret(NSMetadataItemInstantMessageAddressesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemInstantMessageAddressesKey_VH: VarHandle by lazy { NSMetadataItemInstantMessageAddressesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemInstantMessageAddressesKey: MemorySegment
     get() = NSMetadataItemInstantMessageAddressesKey_VH.get(NSMetadataItemInstantMessageAddressesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemInstantMessageAddressesKey_VH.set(NSMetadataItemInstantMessageAddressesKey_SEGMENT, 0L, value)
@@ -165,6 +223,10 @@ private val NSMetadataItemKindKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val NSMetadataItemKindKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemKindKey").orElseThrow().reinterpret(NSMetadataItemKindKey_LAYOUT.byteSize()) }
 private val NSMetadataItemKindKey_VH: VarHandle by lazy { NSMetadataItemKindKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemKindKey: MemorySegment
     get() = NSMetadataItemKindKey_VH.get(NSMetadataItemKindKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemKindKey_VH.set(NSMetadataItemKindKey_SEGMENT, 0L, value)
@@ -176,6 +238,10 @@ private val NSMetadataItemRecipientsKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSMetadataItemRecipientsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemRecipientsKey").orElseThrow().reinterpret(NSMetadataItemRecipientsKey_LAYOUT.byteSize()) }
 private val NSMetadataItemRecipientsKey_VH: VarHandle by lazy { NSMetadataItemRecipientsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemRecipientsKey: MemorySegment
     get() = NSMetadataItemRecipientsKey_VH.get(NSMetadataItemRecipientsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemRecipientsKey_VH.set(NSMetadataItemRecipientsKey_SEGMENT, 0L, value)
@@ -187,6 +253,10 @@ private val NSMetadataItemFinderCommentKey_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSMetadataItemFinderCommentKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemFinderCommentKey").orElseThrow().reinterpret(NSMetadataItemFinderCommentKey_LAYOUT.byteSize()) }
 private val NSMetadataItemFinderCommentKey_VH: VarHandle by lazy { NSMetadataItemFinderCommentKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemFinderCommentKey: MemorySegment
     get() = NSMetadataItemFinderCommentKey_VH.get(NSMetadataItemFinderCommentKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemFinderCommentKey_VH.set(NSMetadataItemFinderCommentKey_SEGMENT, 0L, value)
@@ -198,6 +268,10 @@ private val NSMetadataItemFontsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSMetadataItemFontsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemFontsKey").orElseThrow().reinterpret(NSMetadataItemFontsKey_LAYOUT.byteSize()) }
 private val NSMetadataItemFontsKey_VH: VarHandle by lazy { NSMetadataItemFontsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemFontsKey: MemorySegment
     get() = NSMetadataItemFontsKey_VH.get(NSMetadataItemFontsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemFontsKey_VH.set(NSMetadataItemFontsKey_SEGMENT, 0L, value)
@@ -209,6 +283,10 @@ private val NSMetadataItemAppleLoopsRootKeyKey_LAYOUT: ValueLayout by lazy { Val
 private val NSMetadataItemAppleLoopsRootKeyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAppleLoopsRootKeyKey").orElseThrow().reinterpret(NSMetadataItemAppleLoopsRootKeyKey_LAYOUT.byteSize()) }
 private val NSMetadataItemAppleLoopsRootKeyKey_VH: VarHandle by lazy { NSMetadataItemAppleLoopsRootKeyKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemAppleLoopsRootKeyKey: MemorySegment
     get() = NSMetadataItemAppleLoopsRootKeyKey_VH.get(NSMetadataItemAppleLoopsRootKeyKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemAppleLoopsRootKeyKey_VH.set(NSMetadataItemAppleLoopsRootKeyKey_SEGMENT, 0L, value)
@@ -220,6 +298,10 @@ private val NSMetadataItemAppleLoopsKeyFilterTypeKey_LAYOUT: ValueLayout by lazy
 private val NSMetadataItemAppleLoopsKeyFilterTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAppleLoopsKeyFilterTypeKey").orElseThrow().reinterpret(NSMetadataItemAppleLoopsKeyFilterTypeKey_LAYOUT.byteSize()) }
 private val NSMetadataItemAppleLoopsKeyFilterTypeKey_VH: VarHandle by lazy { NSMetadataItemAppleLoopsKeyFilterTypeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemAppleLoopsKeyFilterTypeKey: MemorySegment
     get() = NSMetadataItemAppleLoopsKeyFilterTypeKey_VH.get(NSMetadataItemAppleLoopsKeyFilterTypeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemAppleLoopsKeyFilterTypeKey_VH.set(NSMetadataItemAppleLoopsKeyFilterTypeKey_SEGMENT, 0L, value)
@@ -231,6 +313,10 @@ private val NSMetadataItemAppleLoopsLoopModeKey_LAYOUT: ValueLayout by lazy { Va
 private val NSMetadataItemAppleLoopsLoopModeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAppleLoopsLoopModeKey").orElseThrow().reinterpret(NSMetadataItemAppleLoopsLoopModeKey_LAYOUT.byteSize()) }
 private val NSMetadataItemAppleLoopsLoopModeKey_VH: VarHandle by lazy { NSMetadataItemAppleLoopsLoopModeKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemAppleLoopsLoopModeKey: MemorySegment
     get() = NSMetadataItemAppleLoopsLoopModeKey_VH.get(NSMetadataItemAppleLoopsLoopModeKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemAppleLoopsLoopModeKey_VH.set(NSMetadataItemAppleLoopsLoopModeKey_SEGMENT, 0L, value)
@@ -242,6 +328,10 @@ private val NSMetadataItemAppleLoopDescriptorsKey_LAYOUT: ValueLayout by lazy { 
 private val NSMetadataItemAppleLoopDescriptorsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAppleLoopDescriptorsKey").orElseThrow().reinterpret(NSMetadataItemAppleLoopDescriptorsKey_LAYOUT.byteSize()) }
 private val NSMetadataItemAppleLoopDescriptorsKey_VH: VarHandle by lazy { NSMetadataItemAppleLoopDescriptorsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemAppleLoopDescriptorsKey: MemorySegment
     get() = NSMetadataItemAppleLoopDescriptorsKey_VH.get(NSMetadataItemAppleLoopDescriptorsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemAppleLoopDescriptorsKey_VH.set(NSMetadataItemAppleLoopDescriptorsKey_SEGMENT, 0L, value)
@@ -253,6 +343,10 @@ private val NSMetadataItemMusicalInstrumentCategoryKey_LAYOUT: ValueLayout by la
 private val NSMetadataItemMusicalInstrumentCategoryKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemMusicalInstrumentCategoryKey").orElseThrow().reinterpret(NSMetadataItemMusicalInstrumentCategoryKey_LAYOUT.byteSize()) }
 private val NSMetadataItemMusicalInstrumentCategoryKey_VH: VarHandle by lazy { NSMetadataItemMusicalInstrumentCategoryKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemMusicalInstrumentCategoryKey: MemorySegment
     get() = NSMetadataItemMusicalInstrumentCategoryKey_VH.get(NSMetadataItemMusicalInstrumentCategoryKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemMusicalInstrumentCategoryKey_VH.set(NSMetadataItemMusicalInstrumentCategoryKey_SEGMENT, 0L, value)
@@ -264,6 +358,10 @@ private val NSMetadataItemMusicalInstrumentNameKey_LAYOUT: ValueLayout by lazy {
 private val NSMetadataItemMusicalInstrumentNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemMusicalInstrumentNameKey").orElseThrow().reinterpret(NSMetadataItemMusicalInstrumentNameKey_LAYOUT.byteSize()) }
 private val NSMetadataItemMusicalInstrumentNameKey_VH: VarHandle by lazy { NSMetadataItemMusicalInstrumentNameKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemMusicalInstrumentNameKey: MemorySegment
     get() = NSMetadataItemMusicalInstrumentNameKey_VH.get(NSMetadataItemMusicalInstrumentNameKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemMusicalInstrumentNameKey_VH.set(NSMetadataItemMusicalInstrumentNameKey_SEGMENT, 0L, value)
@@ -275,6 +373,10 @@ private val NSMetadataItemCFBundleIdentifierKey_LAYOUT: ValueLayout by lazy { Va
 private val NSMetadataItemCFBundleIdentifierKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemCFBundleIdentifierKey").orElseThrow().reinterpret(NSMetadataItemCFBundleIdentifierKey_LAYOUT.byteSize()) }
 private val NSMetadataItemCFBundleIdentifierKey_VH: VarHandle by lazy { NSMetadataItemCFBundleIdentifierKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemCFBundleIdentifierKey: MemorySegment
     get() = NSMetadataItemCFBundleIdentifierKey_VH.get(NSMetadataItemCFBundleIdentifierKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemCFBundleIdentifierKey_VH.set(NSMetadataItemCFBundleIdentifierKey_SEGMENT, 0L, value)
@@ -286,6 +388,10 @@ private val NSMetadataItemInformationKey_LAYOUT: ValueLayout by lazy { ValueLayo
 private val NSMetadataItemInformationKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemInformationKey").orElseThrow().reinterpret(NSMetadataItemInformationKey_LAYOUT.byteSize()) }
 private val NSMetadataItemInformationKey_VH: VarHandle by lazy { NSMetadataItemInformationKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemInformationKey: MemorySegment
     get() = NSMetadataItemInformationKey_VH.get(NSMetadataItemInformationKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemInformationKey_VH.set(NSMetadataItemInformationKey_SEGMENT, 0L, value)
@@ -297,6 +403,10 @@ private val NSMetadataItemDirectorKey_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSMetadataItemDirectorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemDirectorKey").orElseThrow().reinterpret(NSMetadataItemDirectorKey_LAYOUT.byteSize()) }
 private val NSMetadataItemDirectorKey_VH: VarHandle by lazy { NSMetadataItemDirectorKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemDirectorKey: MemorySegment
     get() = NSMetadataItemDirectorKey_VH.get(NSMetadataItemDirectorKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemDirectorKey_VH.set(NSMetadataItemDirectorKey_SEGMENT, 0L, value)
@@ -308,6 +418,10 @@ private val NSMetadataItemProducerKey_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSMetadataItemProducerKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemProducerKey").orElseThrow().reinterpret(NSMetadataItemProducerKey_LAYOUT.byteSize()) }
 private val NSMetadataItemProducerKey_VH: VarHandle by lazy { NSMetadataItemProducerKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemProducerKey: MemorySegment
     get() = NSMetadataItemProducerKey_VH.get(NSMetadataItemProducerKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemProducerKey_VH.set(NSMetadataItemProducerKey_SEGMENT, 0L, value)
@@ -319,6 +433,10 @@ private val NSMetadataItemGenreKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSMetadataItemGenreKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemGenreKey").orElseThrow().reinterpret(NSMetadataItemGenreKey_LAYOUT.byteSize()) }
 private val NSMetadataItemGenreKey_VH: VarHandle by lazy { NSMetadataItemGenreKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemGenreKey: MemorySegment
     get() = NSMetadataItemGenreKey_VH.get(NSMetadataItemGenreKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemGenreKey_VH.set(NSMetadataItemGenreKey_SEGMENT, 0L, value)
@@ -330,6 +448,10 @@ private val NSMetadataItemPerformersKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSMetadataItemPerformersKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemPerformersKey").orElseThrow().reinterpret(NSMetadataItemPerformersKey_LAYOUT.byteSize()) }
 private val NSMetadataItemPerformersKey_VH: VarHandle by lazy { NSMetadataItemPerformersKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemPerformersKey: MemorySegment
     get() = NSMetadataItemPerformersKey_VH.get(NSMetadataItemPerformersKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemPerformersKey_VH.set(NSMetadataItemPerformersKey_SEGMENT, 0L, value)
@@ -341,6 +463,10 @@ private val NSMetadataItemOriginalFormatKey_LAYOUT: ValueLayout by lazy { ValueL
 private val NSMetadataItemOriginalFormatKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemOriginalFormatKey").orElseThrow().reinterpret(NSMetadataItemOriginalFormatKey_LAYOUT.byteSize()) }
 private val NSMetadataItemOriginalFormatKey_VH: VarHandle by lazy { NSMetadataItemOriginalFormatKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemOriginalFormatKey: MemorySegment
     get() = NSMetadataItemOriginalFormatKey_VH.get(NSMetadataItemOriginalFormatKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemOriginalFormatKey_VH.set(NSMetadataItemOriginalFormatKey_SEGMENT, 0L, value)
@@ -352,6 +478,10 @@ private val NSMetadataItemOriginalSourceKey_LAYOUT: ValueLayout by lazy { ValueL
 private val NSMetadataItemOriginalSourceKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemOriginalSourceKey").orElseThrow().reinterpret(NSMetadataItemOriginalSourceKey_LAYOUT.byteSize()) }
 private val NSMetadataItemOriginalSourceKey_VH: VarHandle by lazy { NSMetadataItemOriginalSourceKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemOriginalSourceKey: MemorySegment
     get() = NSMetadataItemOriginalSourceKey_VH.get(NSMetadataItemOriginalSourceKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemOriginalSourceKey_VH.set(NSMetadataItemOriginalSourceKey_SEGMENT, 0L, value)
@@ -363,6 +493,10 @@ private val NSMetadataItemAuthorEmailAddressesKey_LAYOUT: ValueLayout by lazy { 
 private val NSMetadataItemAuthorEmailAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAuthorEmailAddressesKey").orElseThrow().reinterpret(NSMetadataItemAuthorEmailAddressesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemAuthorEmailAddressesKey_VH: VarHandle by lazy { NSMetadataItemAuthorEmailAddressesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemAuthorEmailAddressesKey: MemorySegment
     get() = NSMetadataItemAuthorEmailAddressesKey_VH.get(NSMetadataItemAuthorEmailAddressesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemAuthorEmailAddressesKey_VH.set(NSMetadataItemAuthorEmailAddressesKey_SEGMENT, 0L, value)
@@ -374,6 +508,10 @@ private val NSMetadataItemRecipientEmailAddressesKey_LAYOUT: ValueLayout by lazy
 private val NSMetadataItemRecipientEmailAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemRecipientEmailAddressesKey").orElseThrow().reinterpret(NSMetadataItemRecipientEmailAddressesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemRecipientEmailAddressesKey_VH: VarHandle by lazy { NSMetadataItemRecipientEmailAddressesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemRecipientEmailAddressesKey: MemorySegment
     get() = NSMetadataItemRecipientEmailAddressesKey_VH.get(NSMetadataItemRecipientEmailAddressesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemRecipientEmailAddressesKey_VH.set(NSMetadataItemRecipientEmailAddressesKey_SEGMENT, 0L, value)
@@ -385,6 +523,10 @@ private val NSMetadataItemAuthorAddressesKey_LAYOUT: ValueLayout by lazy { Value
 private val NSMetadataItemAuthorAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemAuthorAddressesKey").orElseThrow().reinterpret(NSMetadataItemAuthorAddressesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemAuthorAddressesKey_VH: VarHandle by lazy { NSMetadataItemAuthorAddressesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemAuthorAddressesKey: MemorySegment
     get() = NSMetadataItemAuthorAddressesKey_VH.get(NSMetadataItemAuthorAddressesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemAuthorAddressesKey_VH.set(NSMetadataItemAuthorAddressesKey_SEGMENT, 0L, value)
@@ -396,6 +538,10 @@ private val NSMetadataItemRecipientAddressesKey_LAYOUT: ValueLayout by lazy { Va
 private val NSMetadataItemRecipientAddressesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemRecipientAddressesKey").orElseThrow().reinterpret(NSMetadataItemRecipientAddressesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemRecipientAddressesKey_VH: VarHandle by lazy { NSMetadataItemRecipientAddressesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemRecipientAddressesKey: MemorySegment
     get() = NSMetadataItemRecipientAddressesKey_VH.get(NSMetadataItemRecipientAddressesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemRecipientAddressesKey_VH.set(NSMetadataItemRecipientAddressesKey_SEGMENT, 0L, value)
@@ -407,6 +553,10 @@ private val NSMetadataItemIsLikelyJunkKey_LAYOUT: ValueLayout by lazy { ValueLay
 private val NSMetadataItemIsLikelyJunkKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemIsLikelyJunkKey").orElseThrow().reinterpret(NSMetadataItemIsLikelyJunkKey_LAYOUT.byteSize()) }
 private val NSMetadataItemIsLikelyJunkKey_VH: VarHandle by lazy { NSMetadataItemIsLikelyJunkKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemIsLikelyJunkKey: MemorySegment
     get() = NSMetadataItemIsLikelyJunkKey_VH.get(NSMetadataItemIsLikelyJunkKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemIsLikelyJunkKey_VH.set(NSMetadataItemIsLikelyJunkKey_SEGMENT, 0L, value)
@@ -418,6 +568,10 @@ private val NSMetadataItemExecutableArchitecturesKey_LAYOUT: ValueLayout by lazy
 private val NSMetadataItemExecutableArchitecturesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemExecutableArchitecturesKey").orElseThrow().reinterpret(NSMetadataItemExecutableArchitecturesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemExecutableArchitecturesKey_VH: VarHandle by lazy { NSMetadataItemExecutableArchitecturesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemExecutableArchitecturesKey: MemorySegment
     get() = NSMetadataItemExecutableArchitecturesKey_VH.get(NSMetadataItemExecutableArchitecturesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemExecutableArchitecturesKey_VH.set(NSMetadataItemExecutableArchitecturesKey_SEGMENT, 0L, value)
@@ -429,6 +583,10 @@ private val NSMetadataItemExecutablePlatformKey_LAYOUT: ValueLayout by lazy { Va
 private val NSMetadataItemExecutablePlatformKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemExecutablePlatformKey").orElseThrow().reinterpret(NSMetadataItemExecutablePlatformKey_LAYOUT.byteSize()) }
 private val NSMetadataItemExecutablePlatformKey_VH: VarHandle by lazy { NSMetadataItemExecutablePlatformKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemExecutablePlatformKey: MemorySegment
     get() = NSMetadataItemExecutablePlatformKey_VH.get(NSMetadataItemExecutablePlatformKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemExecutablePlatformKey_VH.set(NSMetadataItemExecutablePlatformKey_SEGMENT, 0L, value)
@@ -440,6 +598,10 @@ private val NSMetadataItemApplicationCategoriesKey_LAYOUT: ValueLayout by lazy {
 private val NSMetadataItemApplicationCategoriesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemApplicationCategoriesKey").orElseThrow().reinterpret(NSMetadataItemApplicationCategoriesKey_LAYOUT.byteSize()) }
 private val NSMetadataItemApplicationCategoriesKey_VH: VarHandle by lazy { NSMetadataItemApplicationCategoriesKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemApplicationCategoriesKey: MemorySegment
     get() = NSMetadataItemApplicationCategoriesKey_VH.get(NSMetadataItemApplicationCategoriesKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemApplicationCategoriesKey_VH.set(NSMetadataItemApplicationCategoriesKey_SEGMENT, 0L, value)
@@ -451,6 +613,10 @@ private val NSMetadataItemIsApplicationManagedKey_LAYOUT: ValueLayout by lazy { 
 private val NSMetadataItemIsApplicationManagedKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataItemIsApplicationManagedKey").orElseThrow().reinterpret(NSMetadataItemIsApplicationManagedKey_LAYOUT.byteSize()) }
 private val NSMetadataItemIsApplicationManagedKey_VH: VarHandle by lazy { NSMetadataItemIsApplicationManagedKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataItemIsApplicationManagedKey: MemorySegment
     get() = NSMetadataItemIsApplicationManagedKey_VH.get(NSMetadataItemIsApplicationManagedKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemIsApplicationManagedKey_VH.set(NSMetadataItemIsApplicationManagedKey_SEGMENT, 0L, value)
@@ -462,6 +628,10 @@ private val NSMetadataQueryDidStartGatheringNotification_LAYOUT: ValueLayout by 
 private val NSMetadataQueryDidStartGatheringNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryDidStartGatheringNotification").orElseThrow().reinterpret(NSMetadataQueryDidStartGatheringNotification_LAYOUT.byteSize()) }
 private val NSMetadataQueryDidStartGatheringNotification_VH: VarHandle by lazy { NSMetadataQueryDidStartGatheringNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryDidStartGatheringNotification: MemorySegment
     get() = NSMetadataQueryDidStartGatheringNotification_VH.get(NSMetadataQueryDidStartGatheringNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryDidStartGatheringNotification_VH.set(NSMetadataQueryDidStartGatheringNotification_SEGMENT, 0L, value)
@@ -473,6 +643,10 @@ private val NSMetadataQueryGatheringProgressNotification_LAYOUT: ValueLayout by 
 private val NSMetadataQueryGatheringProgressNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryGatheringProgressNotification").orElseThrow().reinterpret(NSMetadataQueryGatheringProgressNotification_LAYOUT.byteSize()) }
 private val NSMetadataQueryGatheringProgressNotification_VH: VarHandle by lazy { NSMetadataQueryGatheringProgressNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryGatheringProgressNotification: MemorySegment
     get() = NSMetadataQueryGatheringProgressNotification_VH.get(NSMetadataQueryGatheringProgressNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryGatheringProgressNotification_VH.set(NSMetadataQueryGatheringProgressNotification_SEGMENT, 0L, value)
@@ -484,6 +658,10 @@ private val NSMetadataQueryDidFinishGatheringNotification_LAYOUT: ValueLayout by
 private val NSMetadataQueryDidFinishGatheringNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryDidFinishGatheringNotification").orElseThrow().reinterpret(NSMetadataQueryDidFinishGatheringNotification_LAYOUT.byteSize()) }
 private val NSMetadataQueryDidFinishGatheringNotification_VH: VarHandle by lazy { NSMetadataQueryDidFinishGatheringNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryDidFinishGatheringNotification: MemorySegment
     get() = NSMetadataQueryDidFinishGatheringNotification_VH.get(NSMetadataQueryDidFinishGatheringNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryDidFinishGatheringNotification_VH.set(NSMetadataQueryDidFinishGatheringNotification_SEGMENT, 0L, value)
@@ -495,6 +673,10 @@ private val NSMetadataQueryDidUpdateNotification_LAYOUT: ValueLayout by lazy { V
 private val NSMetadataQueryDidUpdateNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryDidUpdateNotification").orElseThrow().reinterpret(NSMetadataQueryDidUpdateNotification_LAYOUT.byteSize()) }
 private val NSMetadataQueryDidUpdateNotification_VH: VarHandle by lazy { NSMetadataQueryDidUpdateNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryDidUpdateNotification: MemorySegment
     get() = NSMetadataQueryDidUpdateNotification_VH.get(NSMetadataQueryDidUpdateNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryDidUpdateNotification_VH.set(NSMetadataQueryDidUpdateNotification_SEGMENT, 0L, value)
@@ -506,6 +688,10 @@ private val NSMetadataQueryUpdateAddedItemsKey_LAYOUT: ValueLayout by lazy { Val
 private val NSMetadataQueryUpdateAddedItemsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUpdateAddedItemsKey").orElseThrow().reinterpret(NSMetadataQueryUpdateAddedItemsKey_LAYOUT.byteSize()) }
 private val NSMetadataQueryUpdateAddedItemsKey_VH: VarHandle by lazy { NSMetadataQueryUpdateAddedItemsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryUpdateAddedItemsKey: MemorySegment
     get() = NSMetadataQueryUpdateAddedItemsKey_VH.get(NSMetadataQueryUpdateAddedItemsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryUpdateAddedItemsKey_VH.set(NSMetadataQueryUpdateAddedItemsKey_SEGMENT, 0L, value)
@@ -517,6 +703,10 @@ private val NSMetadataQueryUpdateChangedItemsKey_LAYOUT: ValueLayout by lazy { V
 private val NSMetadataQueryUpdateChangedItemsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUpdateChangedItemsKey").orElseThrow().reinterpret(NSMetadataQueryUpdateChangedItemsKey_LAYOUT.byteSize()) }
 private val NSMetadataQueryUpdateChangedItemsKey_VH: VarHandle by lazy { NSMetadataQueryUpdateChangedItemsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryUpdateChangedItemsKey: MemorySegment
     get() = NSMetadataQueryUpdateChangedItemsKey_VH.get(NSMetadataQueryUpdateChangedItemsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryUpdateChangedItemsKey_VH.set(NSMetadataQueryUpdateChangedItemsKey_SEGMENT, 0L, value)
@@ -528,6 +718,10 @@ private val NSMetadataQueryUpdateRemovedItemsKey_LAYOUT: ValueLayout by lazy { V
 private val NSMetadataQueryUpdateRemovedItemsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUpdateRemovedItemsKey").orElseThrow().reinterpret(NSMetadataQueryUpdateRemovedItemsKey_LAYOUT.byteSize()) }
 private val NSMetadataQueryUpdateRemovedItemsKey_VH: VarHandle by lazy { NSMetadataQueryUpdateRemovedItemsKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryUpdateRemovedItemsKey: MemorySegment
     get() = NSMetadataQueryUpdateRemovedItemsKey_VH.get(NSMetadataQueryUpdateRemovedItemsKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryUpdateRemovedItemsKey_VH.set(NSMetadataQueryUpdateRemovedItemsKey_SEGMENT, 0L, value)
@@ -539,6 +733,10 @@ private val NSMetadataQueryResultContentRelevanceAttribute_LAYOUT: ValueLayout b
 private val NSMetadataQueryResultContentRelevanceAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryResultContentRelevanceAttribute").orElseThrow().reinterpret(NSMetadataQueryResultContentRelevanceAttribute_LAYOUT.byteSize()) }
 private val NSMetadataQueryResultContentRelevanceAttribute_VH: VarHandle by lazy { NSMetadataQueryResultContentRelevanceAttribute_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryResultContentRelevanceAttribute: MemorySegment
     get() = NSMetadataQueryResultContentRelevanceAttribute_VH.get(NSMetadataQueryResultContentRelevanceAttribute_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryResultContentRelevanceAttribute_VH.set(NSMetadataQueryResultContentRelevanceAttribute_SEGMENT, 0L, value)
@@ -550,6 +748,10 @@ private val NSMetadataQueryUserHomeScope_LAYOUT: ValueLayout by lazy { ValueLayo
 private val NSMetadataQueryUserHomeScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUserHomeScope").orElseThrow().reinterpret(NSMetadataQueryUserHomeScope_LAYOUT.byteSize()) }
 private val NSMetadataQueryUserHomeScope_VH: VarHandle by lazy { NSMetadataQueryUserHomeScope_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataQueryUserHomeScope: MemorySegment
     get() = NSMetadataQueryUserHomeScope_VH.get(NSMetadataQueryUserHomeScope_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryUserHomeScope_VH.set(NSMetadataQueryUserHomeScope_SEGMENT, 0L, value)
@@ -561,6 +763,10 @@ private val NSMetadataQueryLocalComputerScope_LAYOUT: ValueLayout by lazy { Valu
 private val NSMetadataQueryLocalComputerScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryLocalComputerScope").orElseThrow().reinterpret(NSMetadataQueryLocalComputerScope_LAYOUT.byteSize()) }
 private val NSMetadataQueryLocalComputerScope_VH: VarHandle by lazy { NSMetadataQueryLocalComputerScope_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataQueryLocalComputerScope: MemorySegment
     get() = NSMetadataQueryLocalComputerScope_VH.get(NSMetadataQueryLocalComputerScope_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryLocalComputerScope_VH.set(NSMetadataQueryLocalComputerScope_SEGMENT, 0L, value)
@@ -572,6 +778,10 @@ private val NSMetadataQueryNetworkScope_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSMetadataQueryNetworkScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryNetworkScope").orElseThrow().reinterpret(NSMetadataQueryNetworkScope_LAYOUT.byteSize()) }
 private val NSMetadataQueryNetworkScope_VH: VarHandle by lazy { NSMetadataQueryNetworkScope_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataQueryNetworkScope: MemorySegment
     get() = NSMetadataQueryNetworkScope_VH.get(NSMetadataQueryNetworkScope_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryNetworkScope_VH.set(NSMetadataQueryNetworkScope_SEGMENT, 0L, value)
@@ -583,6 +793,10 @@ private val NSMetadataQueryIndexedLocalComputerScope_LAYOUT: ValueLayout by lazy
 private val NSMetadataQueryIndexedLocalComputerScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryIndexedLocalComputerScope").orElseThrow().reinterpret(NSMetadataQueryIndexedLocalComputerScope_LAYOUT.byteSize()) }
 private val NSMetadataQueryIndexedLocalComputerScope_VH: VarHandle by lazy { NSMetadataQueryIndexedLocalComputerScope_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataQueryIndexedLocalComputerScope: MemorySegment
     get() = NSMetadataQueryIndexedLocalComputerScope_VH.get(NSMetadataQueryIndexedLocalComputerScope_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryIndexedLocalComputerScope_VH.set(NSMetadataQueryIndexedLocalComputerScope_SEGMENT, 0L, value)
@@ -594,6 +808,10 @@ private val NSMetadataQueryIndexedNetworkScope_LAYOUT: ValueLayout by lazy { Val
 private val NSMetadataQueryIndexedNetworkScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryIndexedNetworkScope").orElseThrow().reinterpret(NSMetadataQueryIndexedNetworkScope_LAYOUT.byteSize()) }
 private val NSMetadataQueryIndexedNetworkScope_VH: VarHandle by lazy { NSMetadataQueryIndexedNetworkScope_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSMetadataQueryIndexedNetworkScope: MemorySegment
     get() = NSMetadataQueryIndexedNetworkScope_VH.get(NSMetadataQueryIndexedNetworkScope_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryIndexedNetworkScope_VH.set(NSMetadataQueryIndexedNetworkScope_SEGMENT, 0L, value)
@@ -605,6 +823,10 @@ private val NSMetadataQueryUbiquitousDocumentsScope_LAYOUT: ValueLayout by lazy 
 private val NSMetadataQueryUbiquitousDocumentsScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUbiquitousDocumentsScope").orElseThrow().reinterpret(NSMetadataQueryUbiquitousDocumentsScope_LAYOUT.byteSize()) }
 private val NSMetadataQueryUbiquitousDocumentsScope_VH: VarHandle by lazy { NSMetadataQueryUbiquitousDocumentsScope_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryUbiquitousDocumentsScope: MemorySegment
     get() = NSMetadataQueryUbiquitousDocumentsScope_VH.get(NSMetadataQueryUbiquitousDocumentsScope_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryUbiquitousDocumentsScope_VH.set(NSMetadataQueryUbiquitousDocumentsScope_SEGMENT, 0L, value)
@@ -616,6 +838,10 @@ private val NSMetadataQueryUbiquitousDataScope_LAYOUT: ValueLayout by lazy { Val
 private val NSMetadataQueryUbiquitousDataScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryUbiquitousDataScope").orElseThrow().reinterpret(NSMetadataQueryUbiquitousDataScope_LAYOUT.byteSize()) }
 private val NSMetadataQueryUbiquitousDataScope_VH: VarHandle by lazy { NSMetadataQueryUbiquitousDataScope_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryUbiquitousDataScope: MemorySegment
     get() = NSMetadataQueryUbiquitousDataScope_VH.get(NSMetadataQueryUbiquitousDataScope_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryUbiquitousDataScope_VH.set(NSMetadataQueryUbiquitousDataScope_SEGMENT, 0L, value)
@@ -627,6 +853,10 @@ private val NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_LAYOUT: Va
 private val NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope").orElseThrow().reinterpret(NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_LAYOUT.byteSize()) }
 private val NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_VH: VarHandle by lazy { NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope: MemorySegment
     get() = NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_VH.get(NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_VH.set(NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope_SEGMENT, 0L, value)
@@ -638,6 +868,10 @@ private val NSNetServicesErrorCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSNetServicesErrorCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSNetServicesErrorCode").orElseThrow().reinterpret(NSNetServicesErrorCode_LAYOUT.byteSize()) }
 private val NSNetServicesErrorCode_VH: VarHandle by lazy { NSNetServicesErrorCode_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSNetServicesErrorCode: MemorySegment
     get() = NSNetServicesErrorCode_VH.get(NSNetServicesErrorCode_SEGMENT, 0L) as MemorySegment
     set(value) = NSNetServicesErrorCode_VH.set(NSNetServicesErrorCode_SEGMENT, 0L, value)
@@ -649,6 +883,10 @@ private val NSNetServicesErrorDomain_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSNetServicesErrorDomain_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSNetServicesErrorDomain").orElseThrow().reinterpret(NSNetServicesErrorDomain_LAYOUT.byteSize()) }
 private val NSNetServicesErrorDomain_VH: VarHandle by lazy { NSNetServicesErrorDomain_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSNetServicesErrorDomain: MemorySegment
     get() = NSNetServicesErrorDomain_VH.get(NSNetServicesErrorDomain_SEGMENT, 0L) as MemorySegment
     set(value) = NSNetServicesErrorDomain_VH.set(NSNetServicesErrorDomain_SEGMENT, 0L, value)
@@ -660,6 +898,10 @@ private val NSUbiquitousKeyValueStoreDidChangeExternallyNotification_LAYOUT: Val
 private val NSUbiquitousKeyValueStoreDidChangeExternallyNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquitousKeyValueStoreDidChangeExternallyNotification").orElseThrow().reinterpret(NSUbiquitousKeyValueStoreDidChangeExternallyNotification_LAYOUT.byteSize()) }
 private val NSUbiquitousKeyValueStoreDidChangeExternallyNotification_VH: VarHandle by lazy { NSUbiquitousKeyValueStoreDidChangeExternallyNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUbiquitousKeyValueStoreDidChangeExternallyNotification: MemorySegment
     get() = NSUbiquitousKeyValueStoreDidChangeExternallyNotification_VH.get(NSUbiquitousKeyValueStoreDidChangeExternallyNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUbiquitousKeyValueStoreDidChangeExternallyNotification_VH.set(NSUbiquitousKeyValueStoreDidChangeExternallyNotification_SEGMENT, 0L, value)
@@ -671,6 +913,10 @@ private val NSUbiquitousKeyValueStoreChangeReasonKey_LAYOUT: ValueLayout by lazy
 private val NSUbiquitousKeyValueStoreChangeReasonKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquitousKeyValueStoreChangeReasonKey").orElseThrow().reinterpret(NSUbiquitousKeyValueStoreChangeReasonKey_LAYOUT.byteSize()) }
 private val NSUbiquitousKeyValueStoreChangeReasonKey_VH: VarHandle by lazy { NSUbiquitousKeyValueStoreChangeReasonKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUbiquitousKeyValueStoreChangeReasonKey: MemorySegment
     get() = NSUbiquitousKeyValueStoreChangeReasonKey_VH.get(NSUbiquitousKeyValueStoreChangeReasonKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSUbiquitousKeyValueStoreChangeReasonKey_VH.set(NSUbiquitousKeyValueStoreChangeReasonKey_SEGMENT, 0L, value)
@@ -682,6 +928,10 @@ private val NSUbiquitousKeyValueStoreChangedKeysKey_LAYOUT: ValueLayout by lazy 
 private val NSUbiquitousKeyValueStoreChangedKeysKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUbiquitousKeyValueStoreChangedKeysKey").orElseThrow().reinterpret(NSUbiquitousKeyValueStoreChangedKeysKey_LAYOUT.byteSize()) }
 private val NSUbiquitousKeyValueStoreChangedKeysKey_VH: VarHandle by lazy { NSUbiquitousKeyValueStoreChangedKeysKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUbiquitousKeyValueStoreChangedKeysKey: MemorySegment
     get() = NSUbiquitousKeyValueStoreChangedKeysKey_VH.get(NSUbiquitousKeyValueStoreChangedKeysKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSUbiquitousKeyValueStoreChangedKeysKey_VH.set(NSUbiquitousKeyValueStoreChangedKeysKey_SEGMENT, 0L, value)
@@ -693,6 +943,10 @@ private val NSUndoManagerGroupIsDiscardableKey_LAYOUT: ValueLayout by lazy { Val
 private val NSUndoManagerGroupIsDiscardableKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerGroupIsDiscardableKey").orElseThrow().reinterpret(NSUndoManagerGroupIsDiscardableKey_LAYOUT.byteSize()) }
 private val NSUndoManagerGroupIsDiscardableKey_VH: VarHandle by lazy { NSUndoManagerGroupIsDiscardableKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUndoManagerGroupIsDiscardableKey: MemorySegment
     get() = NSUndoManagerGroupIsDiscardableKey_VH.get(NSUndoManagerGroupIsDiscardableKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSUndoManagerGroupIsDiscardableKey_VH.set(NSUndoManagerGroupIsDiscardableKey_SEGMENT, 0L, value)
@@ -704,6 +958,10 @@ private val NSUndoManagerCheckpointNotification_LAYOUT: ValueLayout by lazy { Va
 private val NSUndoManagerCheckpointNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerCheckpointNotification").orElseThrow().reinterpret(NSUndoManagerCheckpointNotification_LAYOUT.byteSize()) }
 private val NSUndoManagerCheckpointNotification_VH: VarHandle by lazy { NSUndoManagerCheckpointNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUndoManagerCheckpointNotification: MemorySegment
     get() = NSUndoManagerCheckpointNotification_VH.get(NSUndoManagerCheckpointNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUndoManagerCheckpointNotification_VH.set(NSUndoManagerCheckpointNotification_SEGMENT, 0L, value)
@@ -715,6 +973,10 @@ private val NSUndoManagerWillUndoChangeNotification_LAYOUT: ValueLayout by lazy 
 private val NSUndoManagerWillUndoChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerWillUndoChangeNotification").orElseThrow().reinterpret(NSUndoManagerWillUndoChangeNotification_LAYOUT.byteSize()) }
 private val NSUndoManagerWillUndoChangeNotification_VH: VarHandle by lazy { NSUndoManagerWillUndoChangeNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUndoManagerWillUndoChangeNotification: MemorySegment
     get() = NSUndoManagerWillUndoChangeNotification_VH.get(NSUndoManagerWillUndoChangeNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUndoManagerWillUndoChangeNotification_VH.set(NSUndoManagerWillUndoChangeNotification_SEGMENT, 0L, value)
@@ -726,6 +988,10 @@ private val NSUndoManagerWillRedoChangeNotification_LAYOUT: ValueLayout by lazy 
 private val NSUndoManagerWillRedoChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerWillRedoChangeNotification").orElseThrow().reinterpret(NSUndoManagerWillRedoChangeNotification_LAYOUT.byteSize()) }
 private val NSUndoManagerWillRedoChangeNotification_VH: VarHandle by lazy { NSUndoManagerWillRedoChangeNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUndoManagerWillRedoChangeNotification: MemorySegment
     get() = NSUndoManagerWillRedoChangeNotification_VH.get(NSUndoManagerWillRedoChangeNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUndoManagerWillRedoChangeNotification_VH.set(NSUndoManagerWillRedoChangeNotification_SEGMENT, 0L, value)
@@ -737,6 +1003,10 @@ private val NSUndoManagerDidUndoChangeNotification_LAYOUT: ValueLayout by lazy {
 private val NSUndoManagerDidUndoChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerDidUndoChangeNotification").orElseThrow().reinterpret(NSUndoManagerDidUndoChangeNotification_LAYOUT.byteSize()) }
 private val NSUndoManagerDidUndoChangeNotification_VH: VarHandle by lazy { NSUndoManagerDidUndoChangeNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUndoManagerDidUndoChangeNotification: MemorySegment
     get() = NSUndoManagerDidUndoChangeNotification_VH.get(NSUndoManagerDidUndoChangeNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUndoManagerDidUndoChangeNotification_VH.set(NSUndoManagerDidUndoChangeNotification_SEGMENT, 0L, value)
@@ -748,6 +1018,10 @@ private val NSUndoManagerDidRedoChangeNotification_LAYOUT: ValueLayout by lazy {
 private val NSUndoManagerDidRedoChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerDidRedoChangeNotification").orElseThrow().reinterpret(NSUndoManagerDidRedoChangeNotification_LAYOUT.byteSize()) }
 private val NSUndoManagerDidRedoChangeNotification_VH: VarHandle by lazy { NSUndoManagerDidRedoChangeNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUndoManagerDidRedoChangeNotification: MemorySegment
     get() = NSUndoManagerDidRedoChangeNotification_VH.get(NSUndoManagerDidRedoChangeNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUndoManagerDidRedoChangeNotification_VH.set(NSUndoManagerDidRedoChangeNotification_SEGMENT, 0L, value)
@@ -759,6 +1033,10 @@ private val NSUndoManagerDidOpenUndoGroupNotification_LAYOUT: ValueLayout by laz
 private val NSUndoManagerDidOpenUndoGroupNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerDidOpenUndoGroupNotification").orElseThrow().reinterpret(NSUndoManagerDidOpenUndoGroupNotification_LAYOUT.byteSize()) }
 private val NSUndoManagerDidOpenUndoGroupNotification_VH: VarHandle by lazy { NSUndoManagerDidOpenUndoGroupNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUndoManagerDidOpenUndoGroupNotification: MemorySegment
     get() = NSUndoManagerDidOpenUndoGroupNotification_VH.get(NSUndoManagerDidOpenUndoGroupNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUndoManagerDidOpenUndoGroupNotification_VH.set(NSUndoManagerDidOpenUndoGroupNotification_SEGMENT, 0L, value)
@@ -770,6 +1048,10 @@ private val NSUndoManagerWillCloseUndoGroupNotification_LAYOUT: ValueLayout by l
 private val NSUndoManagerWillCloseUndoGroupNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerWillCloseUndoGroupNotification").orElseThrow().reinterpret(NSUndoManagerWillCloseUndoGroupNotification_LAYOUT.byteSize()) }
 private val NSUndoManagerWillCloseUndoGroupNotification_VH: VarHandle by lazy { NSUndoManagerWillCloseUndoGroupNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUndoManagerWillCloseUndoGroupNotification: MemorySegment
     get() = NSUndoManagerWillCloseUndoGroupNotification_VH.get(NSUndoManagerWillCloseUndoGroupNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUndoManagerWillCloseUndoGroupNotification_VH.set(NSUndoManagerWillCloseUndoGroupNotification_SEGMENT, 0L, value)
@@ -781,6 +1063,10 @@ private val NSUndoManagerDidCloseUndoGroupNotification_LAYOUT: ValueLayout by la
 private val NSUndoManagerDidCloseUndoGroupNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUndoManagerDidCloseUndoGroupNotification").orElseThrow().reinterpret(NSUndoManagerDidCloseUndoGroupNotification_LAYOUT.byteSize()) }
 private val NSUndoManagerDidCloseUndoGroupNotification_VH: VarHandle by lazy { NSUndoManagerDidCloseUndoGroupNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSUndoManagerDidCloseUndoGroupNotification: MemorySegment
     get() = NSUndoManagerDidCloseUndoGroupNotification_VH.get(NSUndoManagerDidCloseUndoGroupNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSUndoManagerDidCloseUndoGroupNotification_VH.set(NSUndoManagerDidCloseUndoGroupNotification_SEGMENT, 0L, value)
@@ -792,6 +1078,10 @@ private val NSURLSessionTransferSizeUnknown_LAYOUT: ValueLayout by lazy { ValueL
 private val NSURLSessionTransferSizeUnknown_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionTransferSizeUnknown").orElseThrow().reinterpret(NSURLSessionTransferSizeUnknown_LAYOUT.byteSize()) }
 private val NSURLSessionTransferSizeUnknown_VH: VarHandle by lazy { NSURLSessionTransferSizeUnknown_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLSessionTransferSizeUnknown: Long
     get() = NSURLSessionTransferSizeUnknown_VH.get(NSURLSessionTransferSizeUnknown_SEGMENT, 0L) as Long
     set(value) = NSURLSessionTransferSizeUnknown_VH.set(NSURLSessionTransferSizeUnknown_SEGMENT, 0L, value)
@@ -803,6 +1093,10 @@ private val NSURLSessionTaskPriorityDefault_LAYOUT: ValueLayout by lazy { ValueL
 private val NSURLSessionTaskPriorityDefault_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionTaskPriorityDefault").orElseThrow().reinterpret(NSURLSessionTaskPriorityDefault_LAYOUT.byteSize()) }
 private val NSURLSessionTaskPriorityDefault_VH: VarHandle by lazy { NSURLSessionTaskPriorityDefault_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLSessionTaskPriorityDefault: Float
     get() = NSURLSessionTaskPriorityDefault_VH.get(NSURLSessionTaskPriorityDefault_SEGMENT, 0L) as Float
     set(value) = NSURLSessionTaskPriorityDefault_VH.set(NSURLSessionTaskPriorityDefault_SEGMENT, 0L, value)
@@ -814,6 +1108,10 @@ private val NSURLSessionTaskPriorityLow_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSURLSessionTaskPriorityLow_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionTaskPriorityLow").orElseThrow().reinterpret(NSURLSessionTaskPriorityLow_LAYOUT.byteSize()) }
 private val NSURLSessionTaskPriorityLow_VH: VarHandle by lazy { NSURLSessionTaskPriorityLow_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLSessionTaskPriorityLow: Float
     get() = NSURLSessionTaskPriorityLow_VH.get(NSURLSessionTaskPriorityLow_SEGMENT, 0L) as Float
     set(value) = NSURLSessionTaskPriorityLow_VH.set(NSURLSessionTaskPriorityLow_SEGMENT, 0L, value)
@@ -825,6 +1123,10 @@ private val NSURLSessionTaskPriorityHigh_LAYOUT: ValueLayout by lazy { ValueLayo
 private val NSURLSessionTaskPriorityHigh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionTaskPriorityHigh").orElseThrow().reinterpret(NSURLSessionTaskPriorityHigh_LAYOUT.byteSize()) }
 private val NSURLSessionTaskPriorityHigh_VH: VarHandle by lazy { NSURLSessionTaskPriorityHigh_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLSessionTaskPriorityHigh: Float
     get() = NSURLSessionTaskPriorityHigh_VH.get(NSURLSessionTaskPriorityHigh_SEGMENT, 0L) as Float
     set(value) = NSURLSessionTaskPriorityHigh_VH.set(NSURLSessionTaskPriorityHigh_SEGMENT, 0L, value)
@@ -836,6 +1138,10 @@ private val NSURLSessionDownloadTaskResumeData_LAYOUT: ValueLayout by lazy { Val
 private val NSURLSessionDownloadTaskResumeData_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionDownloadTaskResumeData").orElseThrow().reinterpret(NSURLSessionDownloadTaskResumeData_LAYOUT.byteSize()) }
 private val NSURLSessionDownloadTaskResumeData_VH: VarHandle by lazy { NSURLSessionDownloadTaskResumeData_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var NSURLSessionDownloadTaskResumeData: MemorySegment
     get() = NSURLSessionDownloadTaskResumeData_VH.get(NSURLSessionDownloadTaskResumeData_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLSessionDownloadTaskResumeData_VH.set(NSURLSessionDownloadTaskResumeData_SEGMENT, 0L, value)
@@ -847,6 +1153,10 @@ private val NSURLSessionUploadTaskResumeData_LAYOUT: ValueLayout by lazy { Value
 private val NSURLSessionUploadTaskResumeData_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSURLSessionUploadTaskResumeData").orElseThrow().reinterpret(NSURLSessionUploadTaskResumeData_LAYOUT.byteSize()) }
 private val NSURLSessionUploadTaskResumeData_VH: VarHandle by lazy { NSURLSessionUploadTaskResumeData_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 var NSURLSessionUploadTaskResumeData: MemorySegment
     get() = NSURLSessionUploadTaskResumeData_VH.get(NSURLSessionUploadTaskResumeData_SEGMENT, 0L) as MemorySegment
     set(value) = NSURLSessionUploadTaskResumeData_VH.set(NSURLSessionUploadTaskResumeData_SEGMENT, 0L, value)
@@ -865,6 +1175,8 @@ var NSUserActivityTypeBrowsingWeb: MemorySegment
 /**
  * {@snippet lang=c : CGAffineTransformIdentity typedef const CGAffineTransform = Declared(CGAffineTransform)
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 val CGAffineTransformIdentity: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformIdentity").orElseThrow()
 
 /**
@@ -874,6 +1186,8 @@ private val CGAffineTransformMake_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGAffineTransformMake_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformMake").orElseThrow()
 private val CGAffineTransformMake_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformMake_ADDR, CGAffineTransformMake_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMake(allocator: SegmentAllocator, arg0: Double, arg1: Double, arg2: Double, arg3: Double, arg4: Double, arg5: Double): MemorySegment {
     try {
         return CGAffineTransformMake_HANDLE.invokeExact(allocator, arg0, arg1, arg2, arg3, arg4, arg5) as MemorySegment
@@ -886,6 +1200,8 @@ fun CGAffineTransformMake(allocator: SegmentAllocator, arg0: Double, arg1: Doubl
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMakeTyped(allocator: SegmentAllocator, arg0: Double, arg1: Double, arg2: Double, arg3: Double, arg4: Double, arg5: Double): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformMake(allocator, arg0, arg1, arg2, arg3, arg4, arg5))
 }
@@ -897,6 +1213,8 @@ private val CGAffineTransformMakeTranslation_DESC: FunctionDescriptor = Function
 private val CGAffineTransformMakeTranslation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformMakeTranslation").orElseThrow()
 private val CGAffineTransformMakeTranslation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformMakeTranslation_ADDR, CGAffineTransformMakeTranslation_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMakeTranslation(allocator: SegmentAllocator, arg0: Double, arg1: Double): MemorySegment {
     try {
         return CGAffineTransformMakeTranslation_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -909,6 +1227,8 @@ fun CGAffineTransformMakeTranslation(allocator: SegmentAllocator, arg0: Double, 
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMakeTranslationTyped(allocator: SegmentAllocator, arg0: Double, arg1: Double): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformMakeTranslation(allocator, arg0, arg1))
 }
@@ -920,6 +1240,8 @@ private val CGAffineTransformMakeScale_DESC: FunctionDescriptor = FunctionDescri
 private val CGAffineTransformMakeScale_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformMakeScale").orElseThrow()
 private val CGAffineTransformMakeScale_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformMakeScale_ADDR, CGAffineTransformMakeScale_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMakeScale(allocator: SegmentAllocator, arg0: Double, arg1: Double): MemorySegment {
     try {
         return CGAffineTransformMakeScale_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -932,6 +1254,8 @@ fun CGAffineTransformMakeScale(allocator: SegmentAllocator, arg0: Double, arg1: 
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMakeScaleTyped(allocator: SegmentAllocator, arg0: Double, arg1: Double): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformMakeScale(allocator, arg0, arg1))
 }
@@ -943,6 +1267,8 @@ private val CGAffineTransformMakeRotation_DESC: FunctionDescriptor = FunctionDes
 private val CGAffineTransformMakeRotation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformMakeRotation").orElseThrow()
 private val CGAffineTransformMakeRotation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformMakeRotation_ADDR, CGAffineTransformMakeRotation_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMakeRotation(allocator: SegmentAllocator, arg0: Double): MemorySegment {
     try {
         return CGAffineTransformMakeRotation_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -955,6 +1281,8 @@ fun CGAffineTransformMakeRotation(allocator: SegmentAllocator, arg0: Double): Me
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMakeRotationTyped(allocator: SegmentAllocator, arg0: Double): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformMakeRotation(allocator, arg0))
 }
@@ -966,6 +1294,8 @@ private val CGAffineTransformIsIdentity_DESC: FunctionDescriptor = FunctionDescr
 private val CGAffineTransformIsIdentity_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformIsIdentity").orElseThrow()
 private val CGAffineTransformIsIdentity_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformIsIdentity_ADDR, CGAffineTransformIsIdentity_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGAffineTransformIsIdentity(arg0: MemorySegment): Boolean {
     try {
         return CGAffineTransformIsIdentity_HANDLE.invokeExact(arg0) as Boolean
@@ -978,6 +1308,8 @@ fun CGAffineTransformIsIdentity(arg0: MemorySegment): Boolean {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGAffineTransformIsIdentity(arg0: CGAffineTransform): Boolean {
     return CGAffineTransformIsIdentity(arg0.segment)
 }
@@ -989,6 +1321,8 @@ private val CGAffineTransformTranslate_DESC: FunctionDescriptor = FunctionDescri
 private val CGAffineTransformTranslate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformTranslate").orElseThrow()
 private val CGAffineTransformTranslate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformTranslate_ADDR, CGAffineTransformTranslate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformTranslate(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double, arg2: Double): MemorySegment {
     try {
         return CGAffineTransformTranslate_HANDLE.invokeExact(allocator, arg0, arg1, arg2) as MemorySegment
@@ -1001,6 +1335,8 @@ fun CGAffineTransformTranslate(allocator: SegmentAllocator, arg0: MemorySegment,
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformTranslate(allocator: SegmentAllocator, arg0: CGAffineTransform, arg1: Double, arg2: Double): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformTranslate(allocator, arg0.segment, arg1, arg2))
 }
@@ -1012,6 +1348,8 @@ private val CGAffineTransformScale_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGAffineTransformScale_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformScale").orElseThrow()
 private val CGAffineTransformScale_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformScale_ADDR, CGAffineTransformScale_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformScale(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double, arg2: Double): MemorySegment {
     try {
         return CGAffineTransformScale_HANDLE.invokeExact(allocator, arg0, arg1, arg2) as MemorySegment
@@ -1024,6 +1362,8 @@ fun CGAffineTransformScale(allocator: SegmentAllocator, arg0: MemorySegment, arg
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformScale(allocator: SegmentAllocator, arg0: CGAffineTransform, arg1: Double, arg2: Double): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformScale(allocator, arg0.segment, arg1, arg2))
 }
@@ -1035,6 +1375,8 @@ private val CGAffineTransformRotate_DESC: FunctionDescriptor = FunctionDescripto
 private val CGAffineTransformRotate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformRotate").orElseThrow()
 private val CGAffineTransformRotate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformRotate_ADDR, CGAffineTransformRotate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformRotate(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double): MemorySegment {
     try {
         return CGAffineTransformRotate_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -1047,6 +1389,8 @@ fun CGAffineTransformRotate(allocator: SegmentAllocator, arg0: MemorySegment, ar
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformRotate(allocator: SegmentAllocator, arg0: CGAffineTransform, arg1: Double): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformRotate(allocator, arg0.segment, arg1))
 }
@@ -1058,6 +1402,8 @@ private val CGAffineTransformInvert_DESC: FunctionDescriptor = FunctionDescripto
 private val CGAffineTransformInvert_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformInvert").orElseThrow()
 private val CGAffineTransformInvert_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformInvert_ADDR, CGAffineTransformInvert_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformInvert(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGAffineTransformInvert_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -1070,6 +1416,8 @@ fun CGAffineTransformInvert(allocator: SegmentAllocator, arg0: MemorySegment): M
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformInvert(allocator: SegmentAllocator, arg0: CGAffineTransform): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformInvert(allocator, arg0.segment))
 }
@@ -1081,6 +1429,8 @@ private val CGAffineTransformConcat_DESC: FunctionDescriptor = FunctionDescripto
 private val CGAffineTransformConcat_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformConcat").orElseThrow()
 private val CGAffineTransformConcat_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformConcat_ADDR, CGAffineTransformConcat_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformConcat(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGAffineTransformConcat_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -1093,6 +1443,8 @@ fun CGAffineTransformConcat(allocator: SegmentAllocator, arg0: MemorySegment, ar
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformConcat(allocator: SegmentAllocator, arg0: CGAffineTransform, arg1: CGAffineTransform): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformConcat(allocator, arg0.segment, arg1.segment))
 }
@@ -1104,6 +1456,8 @@ private val CGAffineTransformEqualToTransform_DESC: FunctionDescriptor = Functio
 private val CGAffineTransformEqualToTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformEqualToTransform").orElseThrow()
 private val CGAffineTransformEqualToTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformEqualToTransform_ADDR, CGAffineTransformEqualToTransform_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGAffineTransformEqualToTransform(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGAffineTransformEqualToTransform_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -1116,6 +1470,8 @@ fun CGAffineTransformEqualToTransform(arg0: MemorySegment, arg1: MemorySegment):
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGAffineTransformEqualToTransform(arg0: CGAffineTransform, arg1: CGAffineTransform): Boolean {
     return CGAffineTransformEqualToTransform(arg0.segment, arg1.segment)
 }
@@ -1127,6 +1483,8 @@ private val CGPointApplyAffineTransform_DESC: FunctionDescriptor = FunctionDescr
 private val CGPointApplyAffineTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPointApplyAffineTransform").orElseThrow()
 private val CGPointApplyAffineTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPointApplyAffineTransform_ADDR, CGPointApplyAffineTransform_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPointApplyAffineTransform(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGPointApplyAffineTransform_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -1139,6 +1497,8 @@ fun CGPointApplyAffineTransform(allocator: SegmentAllocator, arg0: MemorySegment
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPointApplyAffineTransform(allocator: SegmentAllocator, arg0: CGPoint, arg1: CGAffineTransform): CGPoint {
     return CGPoint(CGPointApplyAffineTransform(allocator, arg0.segment, arg1.segment))
 }
@@ -1150,6 +1510,8 @@ private val CGSizeApplyAffineTransform_DESC: FunctionDescriptor = FunctionDescri
 private val CGSizeApplyAffineTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGSizeApplyAffineTransform").orElseThrow()
 private val CGSizeApplyAffineTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGSizeApplyAffineTransform_ADDR, CGSizeApplyAffineTransform_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGSizeApplyAffineTransform(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGSizeApplyAffineTransform_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -1162,6 +1524,8 @@ fun CGSizeApplyAffineTransform(allocator: SegmentAllocator, arg0: MemorySegment,
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGSizeApplyAffineTransform(allocator: SegmentAllocator, arg0: CGSize, arg1: CGAffineTransform): CGSize {
     return CGSize(CGSizeApplyAffineTransform(allocator, arg0.segment, arg1.segment))
 }
@@ -1173,6 +1537,8 @@ private val CGRectApplyAffineTransform_DESC: FunctionDescriptor = FunctionDescri
 private val CGRectApplyAffineTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectApplyAffineTransform").orElseThrow()
 private val CGRectApplyAffineTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectApplyAffineTransform_ADDR, CGRectApplyAffineTransform_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGRectApplyAffineTransform(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGRectApplyAffineTransform_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -1185,6 +1551,8 @@ fun CGRectApplyAffineTransform(allocator: SegmentAllocator, arg0: MemorySegment,
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGRectApplyAffineTransform(allocator: SegmentAllocator, arg0: CGRect, arg1: CGAffineTransform): CGRect {
     return CGRect(CGRectApplyAffineTransform(allocator, arg0.segment, arg1.segment))
 }
@@ -1196,6 +1564,8 @@ private val CGAffineTransformDecompose_DESC: FunctionDescriptor = FunctionDescri
 private val CGAffineTransformDecompose_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformDecompose").orElseThrow()
 private val CGAffineTransformDecompose_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformDecompose_ADDR, CGAffineTransformDecompose_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformDecompose(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGAffineTransformDecompose_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -1208,6 +1578,8 @@ fun CGAffineTransformDecompose(allocator: SegmentAllocator, arg0: MemorySegment)
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformDecompose(allocator: SegmentAllocator, arg0: CGAffineTransform): MemorySegment {
     return CGAffineTransformDecompose(allocator, arg0.segment)
 }
@@ -1219,6 +1591,8 @@ private val CGAffineTransformMakeWithComponents_DESC: FunctionDescriptor = Funct
 private val CGAffineTransformMakeWithComponents_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGAffineTransformMakeWithComponents").orElseThrow()
 private val CGAffineTransformMakeWithComponents_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGAffineTransformMakeWithComponents_ADDR, CGAffineTransformMakeWithComponents_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMakeWithComponents(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGAffineTransformMakeWithComponents_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -1231,6 +1605,8 @@ fun CGAffineTransformMakeWithComponents(allocator: SegmentAllocator, arg0: Memor
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGAffineTransformMakeWithComponentsTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGAffineTransform {
     return CGAffineTransform(CGAffineTransformMakeWithComponents(allocator, arg0))
 }
@@ -1242,6 +1618,10 @@ private val NSAppleScriptErrorMessage_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSAppleScriptErrorMessage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAppleScriptErrorMessage").orElseThrow().reinterpret(NSAppleScriptErrorMessage_LAYOUT.byteSize()) }
 private val NSAppleScriptErrorMessage_VH: VarHandle by lazy { NSAppleScriptErrorMessage_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSAppleScriptErrorMessage: MemorySegment
     get() = NSAppleScriptErrorMessage_VH.get(NSAppleScriptErrorMessage_SEGMENT, 0L) as MemorySegment
     set(value) = NSAppleScriptErrorMessage_VH.set(NSAppleScriptErrorMessage_SEGMENT, 0L, value)
@@ -1253,6 +1633,10 @@ private val NSAppleScriptErrorNumber_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSAppleScriptErrorNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAppleScriptErrorNumber").orElseThrow().reinterpret(NSAppleScriptErrorNumber_LAYOUT.byteSize()) }
 private val NSAppleScriptErrorNumber_VH: VarHandle by lazy { NSAppleScriptErrorNumber_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSAppleScriptErrorNumber: MemorySegment
     get() = NSAppleScriptErrorNumber_VH.get(NSAppleScriptErrorNumber_SEGMENT, 0L) as MemorySegment
     set(value) = NSAppleScriptErrorNumber_VH.set(NSAppleScriptErrorNumber_SEGMENT, 0L, value)
@@ -1264,6 +1648,10 @@ private val NSAppleScriptErrorAppName_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSAppleScriptErrorAppName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAppleScriptErrorAppName").orElseThrow().reinterpret(NSAppleScriptErrorAppName_LAYOUT.byteSize()) }
 private val NSAppleScriptErrorAppName_VH: VarHandle by lazy { NSAppleScriptErrorAppName_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSAppleScriptErrorAppName: MemorySegment
     get() = NSAppleScriptErrorAppName_VH.get(NSAppleScriptErrorAppName_SEGMENT, 0L) as MemorySegment
     set(value) = NSAppleScriptErrorAppName_VH.set(NSAppleScriptErrorAppName_SEGMENT, 0L, value)
@@ -1275,6 +1663,10 @@ private val NSAppleScriptErrorBriefMessage_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSAppleScriptErrorBriefMessage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAppleScriptErrorBriefMessage").orElseThrow().reinterpret(NSAppleScriptErrorBriefMessage_LAYOUT.byteSize()) }
 private val NSAppleScriptErrorBriefMessage_VH: VarHandle by lazy { NSAppleScriptErrorBriefMessage_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSAppleScriptErrorBriefMessage: MemorySegment
     get() = NSAppleScriptErrorBriefMessage_VH.get(NSAppleScriptErrorBriefMessage_SEGMENT, 0L) as MemorySegment
     set(value) = NSAppleScriptErrorBriefMessage_VH.set(NSAppleScriptErrorBriefMessage_SEGMENT, 0L, value)
@@ -1286,6 +1678,10 @@ private val NSAppleScriptErrorRange_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val NSAppleScriptErrorRange_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAppleScriptErrorRange").orElseThrow().reinterpret(NSAppleScriptErrorRange_LAYOUT.byteSize()) }
 private val NSAppleScriptErrorRange_VH: VarHandle by lazy { NSAppleScriptErrorRange_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSAppleScriptErrorRange: MemorySegment
     get() = NSAppleScriptErrorRange_VH.get(NSAppleScriptErrorRange_SEGMENT, 0L) as MemorySegment
     set(value) = NSAppleScriptErrorRange_VH.set(NSAppleScriptErrorRange_SEGMENT, 0L, value)
@@ -1297,6 +1693,11 @@ private val NSConnectionReplyMode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val NSConnectionReplyMode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSConnectionReplyMode").orElseThrow().reinterpret(NSConnectionReplyMode_LAYOUT.byteSize()) }
 private val NSConnectionReplyMode_VH: VarHandle by lazy { NSConnectionReplyMode_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
 var NSConnectionReplyMode: MemorySegment
     get() = NSConnectionReplyMode_VH.get(NSConnectionReplyMode_SEGMENT, 0L) as MemorySegment
     set(value) = NSConnectionReplyMode_VH.set(NSConnectionReplyMode_SEGMENT, 0L, value)
@@ -1308,6 +1709,11 @@ private val NSConnectionDidDieNotification_LAYOUT: ValueLayout by lazy { ValueLa
 private val NSConnectionDidDieNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSConnectionDidDieNotification").orElseThrow().reinterpret(NSConnectionDidDieNotification_LAYOUT.byteSize()) }
 private val NSConnectionDidDieNotification_VH: VarHandle by lazy { NSConnectionDidDieNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
 var NSConnectionDidDieNotification: MemorySegment
     get() = NSConnectionDidDieNotification_VH.get(NSConnectionDidDieNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSConnectionDidDieNotification_VH.set(NSConnectionDidDieNotification_SEGMENT, 0L, value)
@@ -1319,6 +1725,11 @@ private val NSFailedAuthenticationException_LAYOUT: ValueLayout by lazy { ValueL
 private val NSFailedAuthenticationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFailedAuthenticationException").orElseThrow().reinterpret(NSFailedAuthenticationException_LAYOUT.byteSize()) }
 private val NSFailedAuthenticationException_VH: VarHandle by lazy { NSFailedAuthenticationException_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
 var NSFailedAuthenticationException: MemorySegment
     get() = NSFailedAuthenticationException_VH.get(NSFailedAuthenticationException_SEGMENT, 0L) as MemorySegment
     set(value) = NSFailedAuthenticationException_VH.set(NSFailedAuthenticationException_SEGMENT, 0L, value)
@@ -1330,6 +1741,11 @@ private val NSConnectionDidInitializeNotification_LAYOUT: ValueLayout by lazy { 
 private val NSConnectionDidInitializeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSConnectionDidInitializeNotification").orElseThrow().reinterpret(NSConnectionDidInitializeNotification_LAYOUT.byteSize()) }
 private val NSConnectionDidInitializeNotification_VH: VarHandle by lazy { NSConnectionDidInitializeNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSXPCConnection instead")
 var NSConnectionDidInitializeNotification: MemorySegment
     get() = NSConnectionDidInitializeNotification_VH.get(NSConnectionDidInitializeNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSConnectionDidInitializeNotification_VH.set(NSConnectionDidInitializeNotification_SEGMENT, 0L, value)
@@ -1475,6 +1891,10 @@ private val NSGrammarRange_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val NSGrammarRange_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGrammarRange").orElseThrow().reinterpret(NSGrammarRange_LAYOUT.byteSize()) }
 private val NSGrammarRange_VH: VarHandle by lazy { NSGrammarRange_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSGrammarRange: MemorySegment
     get() = NSGrammarRange_VH.get(NSGrammarRange_SEGMENT, 0L) as MemorySegment
     set(value) = NSGrammarRange_VH.set(NSGrammarRange_SEGMENT, 0L, value)
@@ -1486,6 +1906,10 @@ private val NSGrammarUserDescription_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val NSGrammarUserDescription_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGrammarUserDescription").orElseThrow().reinterpret(NSGrammarUserDescription_LAYOUT.byteSize()) }
 private val NSGrammarUserDescription_VH: VarHandle by lazy { NSGrammarUserDescription_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSGrammarUserDescription: MemorySegment
     get() = NSGrammarUserDescription_VH.get(NSGrammarUserDescription_SEGMENT, 0L) as MemorySegment
     set(value) = NSGrammarUserDescription_VH.set(NSGrammarUserDescription_SEGMENT, 0L, value)
@@ -1497,6 +1921,10 @@ private val NSGrammarCorrections_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRE
 private val NSGrammarCorrections_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGrammarCorrections").orElseThrow().reinterpret(NSGrammarCorrections_LAYOUT.byteSize()) }
 private val NSGrammarCorrections_VH: VarHandle by lazy { NSGrammarCorrections_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSGrammarCorrections: MemorySegment
     get() = NSGrammarCorrections_VH.get(NSGrammarCorrections_SEGMENT, 0L) as MemorySegment
     set(value) = NSGrammarCorrections_VH.set(NSGrammarCorrections_SEGMENT, 0L, value)
@@ -1508,6 +1936,10 @@ private val NSUserNotificationDefaultSoundName_LAYOUT: ValueLayout by lazy { Val
 private val NSUserNotificationDefaultSoundName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUserNotificationDefaultSoundName").orElseThrow().reinterpret(NSUserNotificationDefaultSoundName_LAYOUT.byteSize()) }
 private val NSUserNotificationDefaultSoundName_VH: VarHandle by lazy { NSUserNotificationDefaultSoundName_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 var NSUserNotificationDefaultSoundName: MemorySegment
     get() = NSUserNotificationDefaultSoundName_VH.get(NSUserNotificationDefaultSoundName_SEGMENT, 0L) as MemorySegment
     set(value) = NSUserNotificationDefaultSoundName_VH.set(NSUserNotificationDefaultSoundName_SEGMENT, 0L, value)
@@ -1519,6 +1951,7 @@ private val NSCalibratedWhiteColorSpace_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSCalibratedWhiteColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCalibratedWhiteColorSpace").orElseThrow().reinterpret(NSCalibratedWhiteColorSpace_LAYOUT.byteSize()) }
 private val NSCalibratedWhiteColorSpace_VH: VarHandle by lazy { NSCalibratedWhiteColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSCalibratedWhiteColorSpace: MemorySegment
     get() = NSCalibratedWhiteColorSpace_VH.get(NSCalibratedWhiteColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSCalibratedWhiteColorSpace_VH.set(NSCalibratedWhiteColorSpace_SEGMENT, 0L, value)
@@ -1530,6 +1963,7 @@ private val NSCalibratedRGBColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val NSCalibratedRGBColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCalibratedRGBColorSpace").orElseThrow().reinterpret(NSCalibratedRGBColorSpace_LAYOUT.byteSize()) }
 private val NSCalibratedRGBColorSpace_VH: VarHandle by lazy { NSCalibratedRGBColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSCalibratedRGBColorSpace: MemorySegment
     get() = NSCalibratedRGBColorSpace_VH.get(NSCalibratedRGBColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSCalibratedRGBColorSpace_VH.set(NSCalibratedRGBColorSpace_SEGMENT, 0L, value)
@@ -1541,6 +1975,7 @@ private val NSDeviceWhiteColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val NSDeviceWhiteColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceWhiteColorSpace").orElseThrow().reinterpret(NSDeviceWhiteColorSpace_LAYOUT.byteSize()) }
 private val NSDeviceWhiteColorSpace_VH: VarHandle by lazy { NSDeviceWhiteColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDeviceWhiteColorSpace: MemorySegment
     get() = NSDeviceWhiteColorSpace_VH.get(NSDeviceWhiteColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceWhiteColorSpace_VH.set(NSDeviceWhiteColorSpace_SEGMENT, 0L, value)
@@ -1552,6 +1987,7 @@ private val NSDeviceRGBColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val NSDeviceRGBColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceRGBColorSpace").orElseThrow().reinterpret(NSDeviceRGBColorSpace_LAYOUT.byteSize()) }
 private val NSDeviceRGBColorSpace_VH: VarHandle by lazy { NSDeviceRGBColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDeviceRGBColorSpace: MemorySegment
     get() = NSDeviceRGBColorSpace_VH.get(NSDeviceRGBColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceRGBColorSpace_VH.set(NSDeviceRGBColorSpace_SEGMENT, 0L, value)
@@ -1563,6 +1999,7 @@ private val NSDeviceCMYKColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSDeviceCMYKColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceCMYKColorSpace").orElseThrow().reinterpret(NSDeviceCMYKColorSpace_LAYOUT.byteSize()) }
 private val NSDeviceCMYKColorSpace_VH: VarHandle by lazy { NSDeviceCMYKColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDeviceCMYKColorSpace: MemorySegment
     get() = NSDeviceCMYKColorSpace_VH.get(NSDeviceCMYKColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceCMYKColorSpace_VH.set(NSDeviceCMYKColorSpace_SEGMENT, 0L, value)
@@ -1574,6 +2011,7 @@ private val NSNamedColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val NSNamedColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSNamedColorSpace").orElseThrow().reinterpret(NSNamedColorSpace_LAYOUT.byteSize()) }
 private val NSNamedColorSpace_VH: VarHandle by lazy { NSNamedColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSNamedColorSpace: MemorySegment
     get() = NSNamedColorSpace_VH.get(NSNamedColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSNamedColorSpace_VH.set(NSNamedColorSpace_SEGMENT, 0L, value)
@@ -1585,6 +2023,7 @@ private val NSPatternColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val NSPatternColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPatternColorSpace").orElseThrow().reinterpret(NSPatternColorSpace_LAYOUT.byteSize()) }
 private val NSPatternColorSpace_VH: VarHandle by lazy { NSPatternColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSPatternColorSpace: MemorySegment
     get() = NSPatternColorSpace_VH.get(NSPatternColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSPatternColorSpace_VH.set(NSPatternColorSpace_SEGMENT, 0L, value)
@@ -1596,6 +2035,7 @@ private val NSCustomColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val NSCustomColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCustomColorSpace").orElseThrow().reinterpret(NSCustomColorSpace_LAYOUT.byteSize()) }
 private val NSCustomColorSpace_VH: VarHandle by lazy { NSCustomColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSCustomColorSpace: MemorySegment
     get() = NSCustomColorSpace_VH.get(NSCustomColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSCustomColorSpace_VH.set(NSCustomColorSpace_SEGMENT, 0L, value)
@@ -1607,6 +2047,8 @@ private val NSCalibratedBlackColorSpace_LAYOUT: ValueLayout by lazy { ValueLayou
 private val NSCalibratedBlackColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCalibratedBlackColorSpace").orElseThrow().reinterpret(NSCalibratedBlackColorSpace_LAYOUT.byteSize()) }
 private val NSCalibratedBlackColorSpace_VH: VarHandle by lazy { NSCalibratedBlackColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1)
 var NSCalibratedBlackColorSpace: MemorySegment
     get() = NSCalibratedBlackColorSpace_VH.get(NSCalibratedBlackColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSCalibratedBlackColorSpace_VH.set(NSCalibratedBlackColorSpace_SEGMENT, 0L, value)
@@ -1618,6 +2060,8 @@ private val NSDeviceBlackColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val NSDeviceBlackColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceBlackColorSpace").orElseThrow().reinterpret(NSDeviceBlackColorSpace_LAYOUT.byteSize()) }
 private val NSDeviceBlackColorSpace_VH: VarHandle by lazy { NSDeviceBlackColorSpace_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1)
 var NSDeviceBlackColorSpace: MemorySegment
     get() = NSDeviceBlackColorSpace_VH.get(NSDeviceBlackColorSpace_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceBlackColorSpace_VH.set(NSDeviceBlackColorSpace_SEGMENT, 0L, value)
@@ -1629,6 +2073,7 @@ private val NSBestDepth_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLa
 private val NSBestDepth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBestDepth").orElseThrow()
 private val NSBestDepth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBestDepth_ADDR, NSBestDepth_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSBestDepth(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: Boolean, arg4: MemorySegment): NSWindowDepth {
     try {
         return NSWindowDepth((NSBestDepth_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int).toLong())
@@ -1648,6 +2093,7 @@ private val NSPlanarFromDepth_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val NSPlanarFromDepth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSPlanarFromDepth").orElseThrow()
 private val NSPlanarFromDepth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSPlanarFromDepth_ADDR, NSPlanarFromDepth_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSPlanarFromDepth(arg0: NSWindowDepth): Boolean {
     try {
         return NSPlanarFromDepth_HANDLE.invokeExact(arg0.rawValue.toInt()) as Boolean
@@ -1667,6 +2113,7 @@ private val NSColorSpaceFromDepth_DESC: FunctionDescriptor = FunctionDescriptor.
 private val NSColorSpaceFromDepth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSColorSpaceFromDepth").orElseThrow()
 private val NSColorSpaceFromDepth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSColorSpaceFromDepth_ADDR, NSColorSpaceFromDepth_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSColorSpaceFromDepth(arg0: NSWindowDepth): MemorySegment {
     try {
         return NSColorSpaceFromDepth_HANDLE.invokeExact(arg0.rawValue.toInt()) as MemorySegment
@@ -1686,6 +2133,7 @@ private val NSBitsPerSampleFromDepth_DESC: FunctionDescriptor = FunctionDescript
 private val NSBitsPerSampleFromDepth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBitsPerSampleFromDepth").orElseThrow()
 private val NSBitsPerSampleFromDepth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBitsPerSampleFromDepth_ADDR, NSBitsPerSampleFromDepth_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSBitsPerSampleFromDepth(arg0: NSWindowDepth): Long {
     try {
         return NSBitsPerSampleFromDepth_HANDLE.invokeExact(arg0.rawValue.toInt()) as Long
@@ -1705,6 +2153,7 @@ private val NSBitsPerPixelFromDepth_DESC: FunctionDescriptor = FunctionDescripto
 private val NSBitsPerPixelFromDepth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBitsPerPixelFromDepth").orElseThrow()
 private val NSBitsPerPixelFromDepth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBitsPerPixelFromDepth_ADDR, NSBitsPerPixelFromDepth_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSBitsPerPixelFromDepth(arg0: NSWindowDepth): Long {
     try {
         return NSBitsPerPixelFromDepth_HANDLE.invokeExact(arg0.rawValue.toInt()) as Long
@@ -1724,6 +2173,7 @@ private val NSNumberOfColorComponents_DESC: FunctionDescriptor = FunctionDescrip
 private val NSNumberOfColorComponents_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSNumberOfColorComponents").orElseThrow()
 private val NSNumberOfColorComponents_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSNumberOfColorComponents_ADDR, NSNumberOfColorComponents_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSNumberOfColorComponents(arg0: MemorySegment): Long {
     try {
         return NSNumberOfColorComponents_HANDLE.invokeExact(arg0) as Long
@@ -1743,6 +2193,7 @@ private val NSAvailableWindowDepths_DESC: FunctionDescriptor = FunctionDescripto
 private val NSAvailableWindowDepths_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSAvailableWindowDepths").orElseThrow()
 private val NSAvailableWindowDepths_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSAvailableWindowDepths_ADDR, NSAvailableWindowDepths_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSAvailableWindowDepths(): MemorySegment {
     try {
         return NSAvailableWindowDepths_HANDLE.invokeExact() as MemorySegment
@@ -1762,6 +2213,7 @@ private val NSWhite_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
 private val NSWhite_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWhite").orElseThrow().reinterpret(NSWhite_LAYOUT.byteSize()) }
 private val NSWhite_VH: VarHandle by lazy { NSWhite_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSWhite: Double
     get() = NSWhite_VH.get(NSWhite_SEGMENT, 0L) as Double
     set(value) = NSWhite_VH.set(NSWhite_SEGMENT, 0L, value)
@@ -1773,6 +2225,7 @@ private val NSLightGray_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
 private val NSLightGray_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSLightGray").orElseThrow().reinterpret(NSLightGray_LAYOUT.byteSize()) }
 private val NSLightGray_VH: VarHandle by lazy { NSLightGray_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSLightGray: Double
     get() = NSLightGray_VH.get(NSLightGray_SEGMENT, 0L) as Double
     set(value) = NSLightGray_VH.set(NSLightGray_SEGMENT, 0L, value)
@@ -1784,6 +2237,7 @@ private val NSDarkGray_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
 private val NSDarkGray_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDarkGray").orElseThrow().reinterpret(NSDarkGray_LAYOUT.byteSize()) }
 private val NSDarkGray_VH: VarHandle by lazy { NSDarkGray_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDarkGray: Double
     get() = NSDarkGray_VH.get(NSDarkGray_SEGMENT, 0L) as Double
     set(value) = NSDarkGray_VH.set(NSDarkGray_SEGMENT, 0L, value)
@@ -1795,6 +2249,7 @@ private val NSBlack_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
 private val NSBlack_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBlack").orElseThrow().reinterpret(NSBlack_LAYOUT.byteSize()) }
 private val NSBlack_VH: VarHandle by lazy { NSBlack_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSBlack: Double
     get() = NSBlack_VH.get(NSBlack_SEGMENT, 0L) as Double
     set(value) = NSBlack_VH.set(NSBlack_SEGMENT, 0L, value)
@@ -1806,6 +2261,7 @@ private val NSDeviceResolution_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val NSDeviceResolution_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceResolution").orElseThrow().reinterpret(NSDeviceResolution_LAYOUT.byteSize()) }
 private val NSDeviceResolution_VH: VarHandle by lazy { NSDeviceResolution_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDeviceResolution: MemorySegment
     get() = NSDeviceResolution_VH.get(NSDeviceResolution_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceResolution_VH.set(NSDeviceResolution_SEGMENT, 0L, value)
@@ -1817,6 +2273,7 @@ private val NSDeviceColorSpaceName_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val NSDeviceColorSpaceName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceColorSpaceName").orElseThrow().reinterpret(NSDeviceColorSpaceName_LAYOUT.byteSize()) }
 private val NSDeviceColorSpaceName_VH: VarHandle by lazy { NSDeviceColorSpaceName_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDeviceColorSpaceName: MemorySegment
     get() = NSDeviceColorSpaceName_VH.get(NSDeviceColorSpaceName_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceColorSpaceName_VH.set(NSDeviceColorSpaceName_SEGMENT, 0L, value)
@@ -1828,6 +2285,7 @@ private val NSDeviceBitsPerSample_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val NSDeviceBitsPerSample_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceBitsPerSample").orElseThrow().reinterpret(NSDeviceBitsPerSample_LAYOUT.byteSize()) }
 private val NSDeviceBitsPerSample_VH: VarHandle by lazy { NSDeviceBitsPerSample_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDeviceBitsPerSample: MemorySegment
     get() = NSDeviceBitsPerSample_VH.get(NSDeviceBitsPerSample_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceBitsPerSample_VH.set(NSDeviceBitsPerSample_SEGMENT, 0L, value)
@@ -1839,6 +2297,7 @@ private val NSDeviceIsScreen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val NSDeviceIsScreen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceIsScreen").orElseThrow().reinterpret(NSDeviceIsScreen_LAYOUT.byteSize()) }
 private val NSDeviceIsScreen_VH: VarHandle by lazy { NSDeviceIsScreen_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDeviceIsScreen: MemorySegment
     get() = NSDeviceIsScreen_VH.get(NSDeviceIsScreen_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceIsScreen_VH.set(NSDeviceIsScreen_SEGMENT, 0L, value)
@@ -1850,6 +2309,7 @@ private val NSDeviceIsPrinter_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val NSDeviceIsPrinter_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceIsPrinter").orElseThrow().reinterpret(NSDeviceIsPrinter_LAYOUT.byteSize()) }
 private val NSDeviceIsPrinter_VH: VarHandle by lazy { NSDeviceIsPrinter_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDeviceIsPrinter: MemorySegment
     get() = NSDeviceIsPrinter_VH.get(NSDeviceIsPrinter_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceIsPrinter_VH.set(NSDeviceIsPrinter_SEGMENT, 0L, value)
@@ -1861,6 +2321,7 @@ private val NSDeviceSize_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val NSDeviceSize_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDeviceSize").orElseThrow().reinterpret(NSDeviceSize_LAYOUT.byteSize()) }
 private val NSDeviceSize_VH: VarHandle by lazy { NSDeviceSize_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 var NSDeviceSize: MemorySegment
     get() = NSDeviceSize_VH.get(NSDeviceSize_SEGMENT, 0L) as MemorySegment
     set(value) = NSDeviceSize_VH.set(NSDeviceSize_SEGMENT, 0L, value)
@@ -1872,6 +2333,7 @@ private val NSRectFill_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CGRe
 private val NSRectFill_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectFill").orElseThrow()
 private val NSRectFill_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectFill_ADDR, NSRectFill_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectFill(arg0: MemorySegment): Unit {
     try {
         NSRectFill_HANDLE.invokeExact(arg0)
@@ -1884,6 +2346,7 @@ fun NSRectFill(arg0: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectFill(arg0: NSRect): Unit {
     NSRectFill(arg0.segment)
 }
@@ -1895,6 +2358,7 @@ private val NSRectFillList_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(
 private val NSRectFillList_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectFillList").orElseThrow()
 private val NSRectFillList_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectFillList_ADDR, NSRectFillList_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectFillList(arg0: MemorySegment, arg1: Long): Unit {
     try {
         NSRectFillList_HANDLE.invokeExact(arg0, arg1)
@@ -1914,6 +2378,7 @@ private val NSRectFillListWithGrays_DESC: FunctionDescriptor = FunctionDescripto
 private val NSRectFillListWithGrays_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectFillListWithGrays").orElseThrow()
 private val NSRectFillListWithGrays_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectFillListWithGrays_ADDR, NSRectFillListWithGrays_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectFillListWithGrays(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
     try {
         NSRectFillListWithGrays_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -1933,6 +2398,7 @@ private val NSRectFillListWithColors_DESC: FunctionDescriptor = FunctionDescript
 private val NSRectFillListWithColors_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectFillListWithColors").orElseThrow()
 private val NSRectFillListWithColors_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectFillListWithColors_ADDR, NSRectFillListWithColors_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectFillListWithColors(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
     try {
         NSRectFillListWithColors_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -1952,6 +2418,7 @@ private val NSRectFillUsingOperation_DESC: FunctionDescriptor = FunctionDescript
 private val NSRectFillUsingOperation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectFillUsingOperation").orElseThrow()
 private val NSRectFillUsingOperation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectFillUsingOperation_ADDR, NSRectFillUsingOperation_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectFillUsingOperation(arg0: MemorySegment, arg1: NSCompositingOperation): Unit {
     try {
         NSRectFillUsingOperation_HANDLE.invokeExact(arg0, arg1.rawValue)
@@ -1964,6 +2431,7 @@ fun NSRectFillUsingOperation(arg0: MemorySegment, arg1: NSCompositingOperation):
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectFillUsingOperation(arg0: NSRect, arg1: NSCompositingOperation): Unit {
     NSRectFillUsingOperation(arg0.segment, arg1)
 }
@@ -1975,6 +2443,7 @@ private val NSRectFillListUsingOperation_DESC: FunctionDescriptor = FunctionDesc
 private val NSRectFillListUsingOperation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectFillListUsingOperation").orElseThrow()
 private val NSRectFillListUsingOperation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectFillListUsingOperation_ADDR, NSRectFillListUsingOperation_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectFillListUsingOperation(arg0: MemorySegment, arg1: Long, arg2: NSCompositingOperation): Unit {
     try {
         NSRectFillListUsingOperation_HANDLE.invokeExact(arg0, arg1, arg2.rawValue)
@@ -1994,6 +2463,7 @@ private val NSRectFillListWithColorsUsingOperation_DESC: FunctionDescriptor = Fu
 private val NSRectFillListWithColorsUsingOperation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectFillListWithColorsUsingOperation").orElseThrow()
 private val NSRectFillListWithColorsUsingOperation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectFillListWithColorsUsingOperation_ADDR, NSRectFillListWithColorsUsingOperation_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectFillListWithColorsUsingOperation(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: NSCompositingOperation): Unit {
     try {
         NSRectFillListWithColorsUsingOperation_HANDLE.invokeExact(arg0, arg1, arg2, arg3.rawValue)
@@ -2013,6 +2483,7 @@ private val NSFrameRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CGR
 private val NSFrameRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSFrameRect").orElseThrow()
 private val NSFrameRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSFrameRect_ADDR, NSFrameRect_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSFrameRect(arg0: MemorySegment): Unit {
     try {
         NSFrameRect_HANDLE.invokeExact(arg0)
@@ -2025,6 +2496,7 @@ fun NSFrameRect(arg0: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSFrameRect(arg0: NSRect): Unit {
     NSFrameRect(arg0.segment)
 }
@@ -2036,6 +2508,7 @@ private val NSFrameRectWithWidth_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val NSFrameRectWithWidth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSFrameRectWithWidth").orElseThrow()
 private val NSFrameRectWithWidth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSFrameRectWithWidth_ADDR, NSFrameRectWithWidth_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSFrameRectWithWidth(arg0: MemorySegment, arg1: Double): Unit {
     try {
         NSFrameRectWithWidth_HANDLE.invokeExact(arg0, arg1)
@@ -2048,6 +2521,7 @@ fun NSFrameRectWithWidth(arg0: MemorySegment, arg1: Double): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSFrameRectWithWidth(arg0: NSRect, arg1: Double): Unit {
     NSFrameRectWithWidth(arg0.segment, arg1)
 }
@@ -2059,6 +2533,7 @@ private val NSFrameRectWithWidthUsingOperation_DESC: FunctionDescriptor = Functi
 private val NSFrameRectWithWidthUsingOperation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSFrameRectWithWidthUsingOperation").orElseThrow()
 private val NSFrameRectWithWidthUsingOperation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSFrameRectWithWidthUsingOperation_ADDR, NSFrameRectWithWidthUsingOperation_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSFrameRectWithWidthUsingOperation(arg0: MemorySegment, arg1: Double, arg2: NSCompositingOperation): Unit {
     try {
         NSFrameRectWithWidthUsingOperation_HANDLE.invokeExact(arg0, arg1, arg2.rawValue)
@@ -2071,6 +2546,7 @@ fun NSFrameRectWithWidthUsingOperation(arg0: MemorySegment, arg1: Double, arg2: 
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSFrameRectWithWidthUsingOperation(arg0: NSRect, arg1: Double, arg2: NSCompositingOperation): Unit {
     NSFrameRectWithWidthUsingOperation(arg0.segment, arg1, arg2)
 }
@@ -2082,6 +2558,7 @@ private val NSRectClip_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CGRe
 private val NSRectClip_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectClip").orElseThrow()
 private val NSRectClip_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectClip_ADDR, NSRectClip_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectClip(arg0: MemorySegment): Unit {
     try {
         NSRectClip_HANDLE.invokeExact(arg0)
@@ -2094,6 +2571,7 @@ fun NSRectClip(arg0: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectClip(arg0: NSRect): Unit {
     NSRectClip(arg0.segment)
 }
@@ -2105,6 +2583,7 @@ private val NSRectClipList_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(
 private val NSRectClipList_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectClipList").orElseThrow()
 private val NSRectClipList_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectClipList_ADDR, NSRectClipList_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSRectClipList(arg0: MemorySegment, arg1: Long): Unit {
     try {
         NSRectClipList_HANDLE.invokeExact(arg0, arg1)
@@ -2124,6 +2603,7 @@ private val NSDrawTiledRects_DESC: FunctionDescriptor = FunctionDescriptor.of(CG
 private val NSDrawTiledRects_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawTiledRects").orElseThrow()
 private val NSDrawTiledRects_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawTiledRects_ADDR, NSDrawTiledRects_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawTiledRects(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): MemorySegment {
     try {
         return NSDrawTiledRects_HANDLE.invokeExact(allocator, arg0, arg1, arg2, arg3, arg4) as MemorySegment
@@ -2136,6 +2616,7 @@ fun NSDrawTiledRects(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Mem
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawTiledRects(allocator: SegmentAllocator, arg0: NSRect, arg1: NSRect, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): NSRect {
     return NSRect(NSDrawTiledRects(allocator, arg0.segment, arg1.segment, arg2, arg3, arg4))
 }
@@ -2147,6 +2628,7 @@ private val NSDrawGrayBezel_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid
 private val NSDrawGrayBezel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawGrayBezel").orElseThrow()
 private val NSDrawGrayBezel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawGrayBezel_ADDR, NSDrawGrayBezel_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawGrayBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         NSDrawGrayBezel_HANDLE.invokeExact(arg0, arg1)
@@ -2159,6 +2641,7 @@ fun NSDrawGrayBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawGrayBezel(arg0: NSRect, arg1: NSRect): Unit {
     NSDrawGrayBezel(arg0.segment, arg1.segment)
 }
@@ -2170,6 +2653,7 @@ private val NSDrawGroove_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CG
 private val NSDrawGroove_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawGroove").orElseThrow()
 private val NSDrawGroove_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawGroove_ADDR, NSDrawGroove_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawGroove(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         NSDrawGroove_HANDLE.invokeExact(arg0, arg1)
@@ -2182,6 +2666,7 @@ fun NSDrawGroove(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawGroove(arg0: NSRect, arg1: NSRect): Unit {
     NSDrawGroove(arg0.segment, arg1.segment)
 }
@@ -2193,6 +2678,7 @@ private val NSDrawWhiteBezel_DESC: FunctionDescriptor = FunctionDescriptor.ofVoi
 private val NSDrawWhiteBezel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawWhiteBezel").orElseThrow()
 private val NSDrawWhiteBezel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawWhiteBezel_ADDR, NSDrawWhiteBezel_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawWhiteBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         NSDrawWhiteBezel_HANDLE.invokeExact(arg0, arg1)
@@ -2205,6 +2691,7 @@ fun NSDrawWhiteBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawWhiteBezel(arg0: NSRect, arg1: NSRect): Unit {
     NSDrawWhiteBezel(arg0.segment, arg1.segment)
 }
@@ -2216,6 +2703,7 @@ private val NSDrawButton_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CG
 private val NSDrawButton_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawButton").orElseThrow()
 private val NSDrawButton_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawButton_ADDR, NSDrawButton_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawButton(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         NSDrawButton_HANDLE.invokeExact(arg0, arg1)
@@ -2228,6 +2716,7 @@ fun NSDrawButton(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawButton(arg0: NSRect, arg1: NSRect): Unit {
     NSDrawButton(arg0.segment, arg1.segment)
 }
@@ -2239,6 +2728,7 @@ private val NSEraseRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CGR
 private val NSEraseRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEraseRect").orElseThrow()
 private val NSEraseRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEraseRect_ADDR, NSEraseRect_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSEraseRect(arg0: MemorySegment): Unit {
     try {
         NSEraseRect_HANDLE.invokeExact(arg0)
@@ -2251,6 +2741,7 @@ fun NSEraseRect(arg0: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSEraseRect(arg0: NSRect): Unit {
     NSEraseRect(arg0.segment)
 }
@@ -2262,6 +2753,8 @@ private val NSReadPixel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLa
 private val NSReadPixel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSReadPixel").orElseThrow()
 private val NSReadPixel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSReadPixel_ADDR, NSReadPixel_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -[NSBitmapImageRep colorAtX:y:] to interrogate pixel values.  If necessary, use -[NSView cacheDisplayInRect:toBitmapImageRep:] to snapshot a view hierarchy into an NSBitmapImageRep.")
 fun NSReadPixel(arg0: MemorySegment): MemorySegment {
     try {
         return NSReadPixel_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2274,6 +2767,8 @@ fun NSReadPixel(arg0: MemorySegment): MemorySegment {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -[NSBitmapImageRep colorAtX:y:] to interrogate pixel values.  If necessary, use -[NSView cacheDisplayInRect:toBitmapImageRep:] to snapshot a view hierarchy into an NSBitmapImageRep.")
 fun NSReadPixel(arg0: NSPoint): MemorySegment {
     return NSReadPixel(arg0.segment)
 }
@@ -2285,6 +2780,7 @@ private val NSDrawBitmap_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CG
 private val NSDrawBitmap_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawBitmap").orElseThrow()
 private val NSDrawBitmap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawBitmap_ADDR, NSDrawBitmap_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawBitmap(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: Long, arg6: Long, arg7: Boolean, arg8: Boolean, arg9: MemorySegment, arg10: MemorySegment): Unit {
     try {
         NSDrawBitmap_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10)
@@ -2297,6 +2793,7 @@ fun NSDrawBitmap(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: Long, arg4: 
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawBitmap(arg0: NSRect, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: Long, arg6: Long, arg7: Boolean, arg8: Boolean, arg9: MemorySegment, arg10: MemorySegment): Unit {
     NSDrawBitmap(arg0.segment, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10)
 }
@@ -2308,6 +2805,8 @@ private val NSHighlightRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid
 private val NSHighlightRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSHighlightRect").orElseThrow()
 private val NSHighlightRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSHighlightRect_ADDR, NSHighlightRect_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSHighlightRect(arg0: MemorySegment): Unit {
     try {
         NSHighlightRect_HANDLE.invokeExact(arg0)
@@ -2320,6 +2819,8 @@ fun NSHighlightRect(arg0: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSHighlightRect(arg0: NSRect): Unit {
     NSHighlightRect(arg0.segment)
 }
@@ -2331,6 +2832,7 @@ private val NSBeep_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid()
 private val NSBeep_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBeep").orElseThrow()
 private val NSBeep_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBeep_ADDR, NSBeep_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSBeep(): Unit {
     try {
         NSBeep_HANDLE.invokeExact()
@@ -2350,6 +2852,8 @@ private val NSGetWindowServerMemory_DESC: FunctionDescriptor = FunctionDescripto
 private val NSGetWindowServerMemory_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSGetWindowServerMemory").orElseThrow()
 private val NSGetWindowServerMemory_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSGetWindowServerMemory_ADDR, NSGetWindowServerMemory_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Doesn't return anything useful since 10.0")
 fun NSGetWindowServerMemory(arg0: Long, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Long {
     try {
         return NSGetWindowServerMemory_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Long
@@ -2369,6 +2873,7 @@ private val NSDrawColorTiledRects_DESC: FunctionDescriptor = FunctionDescriptor.
 private val NSDrawColorTiledRects_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawColorTiledRects").orElseThrow()
 private val NSDrawColorTiledRects_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawColorTiledRects_ADDR, NSDrawColorTiledRects_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawColorTiledRects(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): MemorySegment {
     try {
         return NSDrawColorTiledRects_HANDLE.invokeExact(allocator, arg0, arg1, arg2, arg3, arg4) as MemorySegment
@@ -2381,6 +2886,7 @@ fun NSDrawColorTiledRects(allocator: SegmentAllocator, arg0: MemorySegment, arg1
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawColorTiledRects(allocator: SegmentAllocator, arg0: NSRect, arg1: NSRect, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): NSRect {
     return NSRect(NSDrawColorTiledRects(allocator, arg0.segment, arg1.segment, arg2, arg3, arg4))
 }
@@ -2392,6 +2898,7 @@ private val NSDrawDarkBezel_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid
 private val NSDrawDarkBezel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawDarkBezel").orElseThrow()
 private val NSDrawDarkBezel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawDarkBezel_ADDR, NSDrawDarkBezel_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawDarkBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         NSDrawDarkBezel_HANDLE.invokeExact(arg0, arg1)
@@ -2404,6 +2911,7 @@ fun NSDrawDarkBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawDarkBezel(arg0: NSRect, arg1: NSRect): Unit {
     NSDrawDarkBezel(arg0.segment, arg1.segment)
 }
@@ -2415,6 +2923,7 @@ private val NSDrawLightBezel_DESC: FunctionDescriptor = FunctionDescriptor.ofVoi
 private val NSDrawLightBezel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawLightBezel").orElseThrow()
 private val NSDrawLightBezel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawLightBezel_ADDR, NSDrawLightBezel_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawLightBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         NSDrawLightBezel_HANDLE.invokeExact(arg0, arg1)
@@ -2427,6 +2936,7 @@ fun NSDrawLightBezel(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawLightBezel(arg0: NSRect, arg1: NSRect): Unit {
     NSDrawLightBezel(arg0.segment, arg1.segment)
 }
@@ -2438,6 +2948,7 @@ private val NSDottedFrameRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val NSDottedFrameRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDottedFrameRect").orElseThrow()
 private val NSDottedFrameRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDottedFrameRect_ADDR, NSDottedFrameRect_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDottedFrameRect(arg0: MemorySegment): Unit {
     try {
         NSDottedFrameRect_HANDLE.invokeExact(arg0)
@@ -2450,6 +2961,7 @@ fun NSDottedFrameRect(arg0: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDottedFrameRect(arg0: NSRect): Unit {
     NSDottedFrameRect(arg0.segment)
 }
@@ -2461,6 +2973,7 @@ private val NSDrawWindowBackground_DESC: FunctionDescriptor = FunctionDescriptor
 private val NSDrawWindowBackground_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDrawWindowBackground").orElseThrow()
 private val NSDrawWindowBackground_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDrawWindowBackground_ADDR, NSDrawWindowBackground_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawWindowBackground(arg0: MemorySegment): Unit {
     try {
         NSDrawWindowBackground_HANDLE.invokeExact(arg0)
@@ -2473,6 +2986,7 @@ fun NSDrawWindowBackground(arg0: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSDrawWindowBackground(arg0: NSRect): Unit {
     NSDrawWindowBackground(arg0.segment)
 }
@@ -2484,6 +2998,7 @@ private val NSSetFocusRingStyle_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val NSSetFocusRingStyle_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSSetFocusRingStyle").orElseThrow()
 private val NSSetFocusRingStyle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSSetFocusRingStyle_ADDR, NSSetFocusRingStyle_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSSetFocusRingStyle(arg0: NSFocusRingPlacement): Unit {
     try {
         NSSetFocusRingStyle_HANDLE.invokeExact(arg0.value)
@@ -2503,6 +3018,8 @@ private val NSDisableScreenUpdates_DESC: FunctionDescriptor = FunctionDescriptor
 private val NSDisableScreenUpdates_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDisableScreenUpdates").orElseThrow()
 private val NSDisableScreenUpdates_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDisableScreenUpdates_ADDR, NSDisableScreenUpdates_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "As of 10.11 it is not generally necessary to take explicit action to achieve visual atomicity. +[NSAnimationContext runAnimationGroup:] and other similar methods can be used when a stronger than normal need for visual atomicity is required. The NSAnimationContext methods do not suffer from the same performance problems as NSDisableScreenUpdates.")
 fun NSDisableScreenUpdates(): Unit {
     try {
         NSDisableScreenUpdates_HANDLE.invokeExact()
@@ -2522,6 +3039,8 @@ private val NSEnableScreenUpdates_DESC: FunctionDescriptor = FunctionDescriptor.
 private val NSEnableScreenUpdates_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEnableScreenUpdates").orElseThrow()
 private val NSEnableScreenUpdates_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEnableScreenUpdates_ADDR, NSEnableScreenUpdates_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "As of 10.11 it is not generally necessary to take explicit action to achieve visual atomicity. +[NSAnimationContext runAnimationGroup:] and other similar methods can be used when a stronger than normal need for visual atomicity is required. The NSAnimationContext methods do not suffer from the same performance problems as NSEnableScreenUpdates.")
 fun NSEnableScreenUpdates(): Unit {
     try {
         NSEnableScreenUpdates_HANDLE.invokeExact()
@@ -2541,6 +3060,8 @@ private val NSShowAnimationEffect_DESC: FunctionDescriptor = FunctionDescriptor.
 private val NSShowAnimationEffect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSShowAnimationEffect").orElseThrow()
 private val NSShowAnimationEffect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSShowAnimationEffect_ADDR, NSShowAnimationEffect_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +[NSCursor disappearingItemCursor] instead")
 fun NSShowAnimationEffect(arg0: NSAnimationEffect, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment): Unit {
     try {
         NSShowAnimationEffect_HANDLE.invokeExact(arg0.value, arg1, arg2, arg3, arg4, arg5)
@@ -2553,6 +3074,8 @@ fun NSShowAnimationEffect(arg0: NSAnimationEffect, arg1: MemorySegment, arg2: Me
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +[NSCursor disappearingItemCursor] instead")
 fun NSShowAnimationEffect(arg0: NSAnimationEffect, arg1: NSPoint, arg2: NSSize, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment): Unit {
     NSShowAnimationEffect(arg0, arg1.segment, arg2.segment, arg3, arg4, arg5)
 }
@@ -2564,6 +3087,8 @@ private val NSCountWindows_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(
 private val NSCountWindows_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCountWindows").orElseThrow()
 private val NSCountWindows_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCountWindows_ADDR, NSCountWindows_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "Use +[NSWindow windowNumbersWithOptions:] instead")
 fun NSCountWindows(arg0: MemorySegment): Unit {
     try {
         NSCountWindows_HANDLE.invokeExact(arg0)
@@ -2583,6 +3108,8 @@ private val NSWindowList_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(Va
 private val NSWindowList_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSWindowList").orElseThrow()
 private val NSWindowList_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSWindowList_ADDR, NSWindowList_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "Use +[NSWindow windowNumbersWithOptions:] instead")
 fun NSWindowList(arg0: Long, arg1: MemorySegment): Unit {
     try {
         NSWindowList_HANDLE.invokeExact(arg0, arg1)
@@ -2602,6 +3129,8 @@ private val NSCountWindowsForContext_DESC: FunctionDescriptor = FunctionDescript
 private val NSCountWindowsForContext_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCountWindowsForContext").orElseThrow()
 private val NSCountWindowsForContext_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCountWindowsForContext_ADDR, NSCountWindowsForContext_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "Use +[NSWindow windowNumbersWithOptions:] instead")
 fun NSCountWindowsForContext(arg0: Long, arg1: MemorySegment): Unit {
     try {
         NSCountWindowsForContext_HANDLE.invokeExact(arg0, arg1)
@@ -2621,6 +3150,8 @@ private val NSWindowListForContext_DESC: FunctionDescriptor = FunctionDescriptor
 private val NSWindowListForContext_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSWindowListForContext").orElseThrow()
 private val NSWindowListForContext_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSWindowListForContext_ADDR, NSWindowListForContext_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "Use +[NSWindow windowNumbersWithOptions:] instead")
 fun NSWindowListForContext(arg0: Long, arg1: Long, arg2: MemorySegment): Unit {
     try {
         NSWindowListForContext_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -2640,6 +3171,8 @@ private val NSCopyBits_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(Valu
 private val NSCopyBits_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCopyBits").orElseThrow()
 private val NSCopyBits_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCopyBits_ADDR, NSCopyBits_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
 fun NSCopyBits(arg0: Long, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         NSCopyBits_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -2652,6 +3185,8 @@ fun NSCopyBits(arg0: Long, arg1: MemorySegment, arg2: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
 fun NSCopyBits(arg0: Long, arg1: NSRect, arg2: NSPoint): Unit {
     NSCopyBits(arg0, arg1.segment, arg2.segment)
 }
@@ -2663,6 +3198,8 @@ private val CGDataProviderGetTypeID_DESC: FunctionDescriptor = FunctionDescripto
 private val CGDataProviderGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderGetTypeID").orElseThrow()
 private val CGDataProviderGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderGetTypeID_ADDR, CGDataProviderGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGDataProviderGetTypeID(): Long {
     try {
         return CGDataProviderGetTypeID_HANDLE.invokeExact() as Long
@@ -2682,6 +3219,8 @@ private val CGDataProviderCreateSequential_DESC: FunctionDescriptor = FunctionDe
 private val CGDataProviderCreateSequential_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderCreateSequential").orElseThrow()
 private val CGDataProviderCreateSequential_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderCreateSequential_ADDR, CGDataProviderCreateSequential_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGDataProviderCreateSequential(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGDataProviderCreateSequential_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -2701,6 +3240,8 @@ private val CGDataProviderCreateDirect_DESC: FunctionDescriptor = FunctionDescri
 private val CGDataProviderCreateDirect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderCreateDirect").orElseThrow()
 private val CGDataProviderCreateDirect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderCreateDirect_ADDR, CGDataProviderCreateDirect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGDataProviderCreateDirect(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
         return CGDataProviderCreateDirect_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -2720,6 +3261,8 @@ private val CGDataProviderCreateWithData_DESC: FunctionDescriptor = FunctionDesc
 private val CGDataProviderCreateWithData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderCreateWithData").orElseThrow()
 private val CGDataProviderCreateWithData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderCreateWithData_ADDR, CGDataProviderCreateWithData_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGDataProviderCreateWithData(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): MemorySegment {
     try {
         return CGDataProviderCreateWithData_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -2739,6 +3282,8 @@ private val CGDataProviderCreateWithCFData_DESC: FunctionDescriptor = FunctionDe
 private val CGDataProviderCreateWithCFData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderCreateWithCFData").orElseThrow()
 private val CGDataProviderCreateWithCFData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderCreateWithCFData_ADDR, CGDataProviderCreateWithCFData_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGDataProviderCreateWithCFData(arg0: MemorySegment): MemorySegment {
     try {
         return CGDataProviderCreateWithCFData_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2758,6 +3303,8 @@ private val CGDataProviderCreateWithURL_DESC: FunctionDescriptor = FunctionDescr
 private val CGDataProviderCreateWithURL_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderCreateWithURL").orElseThrow()
 private val CGDataProviderCreateWithURL_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderCreateWithURL_ADDR, CGDataProviderCreateWithURL_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGDataProviderCreateWithURL(arg0: MemorySegment): MemorySegment {
     try {
         return CGDataProviderCreateWithURL_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2777,6 +3324,8 @@ private val CGDataProviderCreateWithFilename_DESC: FunctionDescriptor = Function
 private val CGDataProviderCreateWithFilename_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderCreateWithFilename").orElseThrow()
 private val CGDataProviderCreateWithFilename_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderCreateWithFilename_ADDR, CGDataProviderCreateWithFilename_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGDataProviderCreateWithFilename(arg0: MemorySegment): MemorySegment {
     try {
         return CGDataProviderCreateWithFilename_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2796,6 +3345,8 @@ private val CGDataProviderRetain_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGDataProviderRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderRetain").orElseThrow()
 private val CGDataProviderRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderRetain_ADDR, CGDataProviderRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGDataProviderRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGDataProviderRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2815,6 +3366,8 @@ private val CGDataProviderRelease_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGDataProviderRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderRelease").orElseThrow()
 private val CGDataProviderRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderRelease_ADDR, CGDataProviderRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGDataProviderRelease(arg0: MemorySegment): Unit {
     try {
         CGDataProviderRelease_HANDLE.invokeExact(arg0)
@@ -2834,6 +3387,8 @@ private val CGDataProviderCopyData_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGDataProviderCopyData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderCopyData").orElseThrow()
 private val CGDataProviderCopyData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderCopyData_ADDR, CGDataProviderCopyData_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGDataProviderCopyData(arg0: MemorySegment): MemorySegment {
     try {
         return CGDataProviderCopyData_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2853,6 +3408,8 @@ private val CGDataProviderGetInfo_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGDataProviderGetInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGDataProviderGetInfo").orElseThrow()
 private val CGDataProviderGetInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGDataProviderGetInfo_ADDR, CGDataProviderGetInfo_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 fun CGDataProviderGetInfo(arg0: MemorySegment): MemorySegment {
     try {
         return CGDataProviderGetInfo_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2872,6 +3429,8 @@ private val kCGColorSpaceGenericGray_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val kCGColorSpaceGenericGray_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceGenericGray").orElseThrow().reinterpret(kCGColorSpaceGenericGray_LAYOUT.byteSize()) }
 private val kCGColorSpaceGenericGray_VH: VarHandle by lazy { kCGColorSpaceGenericGray_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 var kCGColorSpaceGenericGray: MemorySegment
     get() = kCGColorSpaceGenericGray_VH.get(kCGColorSpaceGenericGray_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceGenericGray_VH.set(kCGColorSpaceGenericGray_SEGMENT, 0L, value)
@@ -2883,6 +3442,8 @@ private val kCGColorSpaceGenericRGB_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val kCGColorSpaceGenericRGB_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceGenericRGB").orElseThrow().reinterpret(kCGColorSpaceGenericRGB_LAYOUT.byteSize()) }
 private val kCGColorSpaceGenericRGB_VH: VarHandle by lazy { kCGColorSpaceGenericRGB_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 var kCGColorSpaceGenericRGB: MemorySegment
     get() = kCGColorSpaceGenericRGB_VH.get(kCGColorSpaceGenericRGB_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceGenericRGB_VH.set(kCGColorSpaceGenericRGB_SEGMENT, 0L, value)
@@ -2894,6 +3455,8 @@ private val kCGColorSpaceGenericCMYK_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val kCGColorSpaceGenericCMYK_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceGenericCMYK").orElseThrow().reinterpret(kCGColorSpaceGenericCMYK_LAYOUT.byteSize()) }
 private val kCGColorSpaceGenericCMYK_VH: VarHandle by lazy { kCGColorSpaceGenericCMYK_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 var kCGColorSpaceGenericCMYK: MemorySegment
     get() = kCGColorSpaceGenericCMYK_VH.get(kCGColorSpaceGenericCMYK_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceGenericCMYK_VH.set(kCGColorSpaceGenericCMYK_SEGMENT, 0L, value)
@@ -2905,6 +3468,8 @@ private val kCGColorSpaceDisplayP3_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val kCGColorSpaceDisplayP3_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceDisplayP3").orElseThrow().reinterpret(kCGColorSpaceDisplayP3_LAYOUT.byteSize()) }
 private val kCGColorSpaceDisplayP3_VH: VarHandle by lazy { kCGColorSpaceDisplayP3_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = 2)
 var kCGColorSpaceDisplayP3: MemorySegment
     get() = kCGColorSpaceDisplayP3_VH.get(kCGColorSpaceDisplayP3_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceDisplayP3_VH.set(kCGColorSpaceDisplayP3_SEGMENT, 0L, value)
@@ -2916,6 +3481,8 @@ private val kCGColorSpaceGenericRGBLinear_LAYOUT: ValueLayout by lazy { ValueLay
 private val kCGColorSpaceGenericRGBLinear_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceGenericRGBLinear").orElseThrow().reinterpret(kCGColorSpaceGenericRGBLinear_LAYOUT.byteSize()) }
 private val kCGColorSpaceGenericRGBLinear_VH: VarHandle by lazy { kCGColorSpaceGenericRGBLinear_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 var kCGColorSpaceGenericRGBLinear: MemorySegment
     get() = kCGColorSpaceGenericRGBLinear_VH.get(kCGColorSpaceGenericRGBLinear_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceGenericRGBLinear_VH.set(kCGColorSpaceGenericRGBLinear_SEGMENT, 0L, value)
@@ -2927,6 +3494,8 @@ private val kCGColorSpaceAdobeRGB1998_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCGColorSpaceAdobeRGB1998_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceAdobeRGB1998").orElseThrow().reinterpret(kCGColorSpaceAdobeRGB1998_LAYOUT.byteSize()) }
 private val kCGColorSpaceAdobeRGB1998_VH: VarHandle by lazy { kCGColorSpaceAdobeRGB1998_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 var kCGColorSpaceAdobeRGB1998: MemorySegment
     get() = kCGColorSpaceAdobeRGB1998_VH.get(kCGColorSpaceAdobeRGB1998_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceAdobeRGB1998_VH.set(kCGColorSpaceAdobeRGB1998_SEGMENT, 0L, value)
@@ -2938,6 +3507,8 @@ private val kCGColorSpaceSRGB_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val kCGColorSpaceSRGB_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceSRGB").orElseThrow().reinterpret(kCGColorSpaceSRGB_LAYOUT.byteSize()) }
 private val kCGColorSpaceSRGB_VH: VarHandle by lazy { kCGColorSpaceSRGB_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 var kCGColorSpaceSRGB: MemorySegment
     get() = kCGColorSpaceSRGB_VH.get(kCGColorSpaceSRGB_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceSRGB_VH.set(kCGColorSpaceSRGB_SEGMENT, 0L, value)
@@ -2949,6 +3520,8 @@ private val kCGColorSpaceGenericGrayGamma2_2_LAYOUT: ValueLayout by lazy { Value
 private val kCGColorSpaceGenericGrayGamma2_2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceGenericGrayGamma2_2").orElseThrow().reinterpret(kCGColorSpaceGenericGrayGamma2_2_LAYOUT.byteSize()) }
 private val kCGColorSpaceGenericGrayGamma2_2_VH: VarHandle by lazy { kCGColorSpaceGenericGrayGamma2_2_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
 var kCGColorSpaceGenericGrayGamma2_2: MemorySegment
     get() = kCGColorSpaceGenericGrayGamma2_2_VH.get(kCGColorSpaceGenericGrayGamma2_2_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceGenericGrayGamma2_2_VH.set(kCGColorSpaceGenericGrayGamma2_2_SEGMENT, 0L, value)
@@ -2960,6 +3533,8 @@ private val kCGColorSpaceGenericXYZ_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val kCGColorSpaceGenericXYZ_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceGenericXYZ").orElseThrow().reinterpret(kCGColorSpaceGenericXYZ_LAYOUT.byteSize()) }
 private val kCGColorSpaceGenericXYZ_VH: VarHandle by lazy { kCGColorSpaceGenericXYZ_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 var kCGColorSpaceGenericXYZ: MemorySegment
     get() = kCGColorSpaceGenericXYZ_VH.get(kCGColorSpaceGenericXYZ_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceGenericXYZ_VH.set(kCGColorSpaceGenericXYZ_SEGMENT, 0L, value)
@@ -2971,6 +3546,8 @@ private val kCGColorSpaceGenericLab_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val kCGColorSpaceGenericLab_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceGenericLab").orElseThrow().reinterpret(kCGColorSpaceGenericLab_LAYOUT.byteSize()) }
 private val kCGColorSpaceGenericLab_VH: VarHandle by lazy { kCGColorSpaceGenericLab_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 var kCGColorSpaceGenericLab: MemorySegment
     get() = kCGColorSpaceGenericLab_VH.get(kCGColorSpaceGenericLab_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceGenericLab_VH.set(kCGColorSpaceGenericLab_SEGMENT, 0L, value)
@@ -2982,6 +3559,8 @@ private val kCGColorSpaceACESCGLinear_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCGColorSpaceACESCGLinear_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceACESCGLinear").orElseThrow().reinterpret(kCGColorSpaceACESCGLinear_LAYOUT.byteSize()) }
 private val kCGColorSpaceACESCGLinear_VH: VarHandle by lazy { kCGColorSpaceACESCGLinear_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 var kCGColorSpaceACESCGLinear: MemorySegment
     get() = kCGColorSpaceACESCGLinear_VH.get(kCGColorSpaceACESCGLinear_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceACESCGLinear_VH.set(kCGColorSpaceACESCGLinear_SEGMENT, 0L, value)
@@ -2993,6 +3572,8 @@ private val kCGColorSpaceITUR_709_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val kCGColorSpaceITUR_709_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_709").orElseThrow().reinterpret(kCGColorSpaceITUR_709_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_709_VH: VarHandle by lazy { kCGColorSpaceITUR_709_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 var kCGColorSpaceITUR_709: MemorySegment
     get() = kCGColorSpaceITUR_709_VH.get(kCGColorSpaceITUR_709_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_709_VH.set(kCGColorSpaceITUR_709_SEGMENT, 0L, value)
@@ -3004,6 +3585,8 @@ private val kCGColorSpaceITUR_709_PQ_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val kCGColorSpaceITUR_709_PQ_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_709_PQ").orElseThrow().reinterpret(kCGColorSpaceITUR_709_PQ_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_709_PQ_VH: VarHandle by lazy { kCGColorSpaceITUR_709_PQ_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 1, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceITUR_709_PQ: MemorySegment
     get() = kCGColorSpaceITUR_709_PQ_VH.get(kCGColorSpaceITUR_709_PQ_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_709_PQ_VH.set(kCGColorSpaceITUR_709_PQ_SEGMENT, 0L, value)
@@ -3015,6 +3598,8 @@ private val kCGColorSpaceITUR_709_HLG_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCGColorSpaceITUR_709_HLG_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_709_HLG").orElseThrow().reinterpret(kCGColorSpaceITUR_709_HLG_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_709_HLG_VH: VarHandle by lazy { kCGColorSpaceITUR_709_HLG_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 1, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceITUR_709_HLG: MemorySegment
     get() = kCGColorSpaceITUR_709_HLG_VH.get(kCGColorSpaceITUR_709_HLG_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_709_HLG_VH.set(kCGColorSpaceITUR_709_HLG_SEGMENT, 0L, value)
@@ -3026,6 +3611,8 @@ private val kCGColorSpaceITUR_2020_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val kCGColorSpaceITUR_2020_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_2020").orElseThrow().reinterpret(kCGColorSpaceITUR_2020_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_2020_VH: VarHandle by lazy { kCGColorSpaceITUR_2020_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 var kCGColorSpaceITUR_2020: MemorySegment
     get() = kCGColorSpaceITUR_2020_VH.get(kCGColorSpaceITUR_2020_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_2020_VH.set(kCGColorSpaceITUR_2020_SEGMENT, 0L, value)
@@ -3037,6 +3624,8 @@ private val kCGColorSpaceITUR_2020_sRGBGamma_LAYOUT: ValueLayout by lazy { Value
 private val kCGColorSpaceITUR_2020_sRGBGamma_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_2020_sRGBGamma").orElseThrow().reinterpret(kCGColorSpaceITUR_2020_sRGBGamma_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_2020_sRGBGamma_VH: VarHandle by lazy { kCGColorSpaceITUR_2020_sRGBGamma_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 1, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceITUR_2020_sRGBGamma: MemorySegment
     get() = kCGColorSpaceITUR_2020_sRGBGamma_VH.get(kCGColorSpaceITUR_2020_sRGBGamma_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_2020_sRGBGamma_VH.set(kCGColorSpaceITUR_2020_sRGBGamma_SEGMENT, 0L, value)
@@ -3048,6 +3637,8 @@ private val kCGColorSpaceROMMRGB_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRE
 private val kCGColorSpaceROMMRGB_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceROMMRGB").orElseThrow().reinterpret(kCGColorSpaceROMMRGB_LAYOUT.byteSize()) }
 private val kCGColorSpaceROMMRGB_VH: VarHandle by lazy { kCGColorSpaceROMMRGB_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 var kCGColorSpaceROMMRGB: MemorySegment
     get() = kCGColorSpaceROMMRGB_VH.get(kCGColorSpaceROMMRGB_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceROMMRGB_VH.set(kCGColorSpaceROMMRGB_SEGMENT, 0L, value)
@@ -3059,6 +3650,8 @@ private val kCGColorSpaceDCIP3_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val kCGColorSpaceDCIP3_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceDCIP3").orElseThrow().reinterpret(kCGColorSpaceDCIP3_LAYOUT.byteSize()) }
 private val kCGColorSpaceDCIP3_VH: VarHandle by lazy { kCGColorSpaceDCIP3_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 var kCGColorSpaceDCIP3: MemorySegment
     get() = kCGColorSpaceDCIP3_VH.get(kCGColorSpaceDCIP3_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceDCIP3_VH.set(kCGColorSpaceDCIP3_SEGMENT, 0L, value)
@@ -3070,6 +3663,8 @@ private val kCGColorSpaceLinearITUR_2020_LAYOUT: ValueLayout by lazy { ValueLayo
 private val kCGColorSpaceLinearITUR_2020_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceLinearITUR_2020").orElseThrow().reinterpret(kCGColorSpaceLinearITUR_2020_LAYOUT.byteSize()) }
 private val kCGColorSpaceLinearITUR_2020_VH: VarHandle by lazy { kCGColorSpaceLinearITUR_2020_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceLinearITUR_2020: MemorySegment
     get() = kCGColorSpaceLinearITUR_2020_VH.get(kCGColorSpaceLinearITUR_2020_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceLinearITUR_2020_VH.set(kCGColorSpaceLinearITUR_2020_SEGMENT, 0L, value)
@@ -3081,6 +3676,8 @@ private val kCGColorSpaceExtendedITUR_2020_LAYOUT: ValueLayout by lazy { ValueLa
 private val kCGColorSpaceExtendedITUR_2020_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceExtendedITUR_2020").orElseThrow().reinterpret(kCGColorSpaceExtendedITUR_2020_LAYOUT.byteSize()) }
 private val kCGColorSpaceExtendedITUR_2020_VH: VarHandle by lazy { kCGColorSpaceExtendedITUR_2020_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceExtendedITUR_2020: MemorySegment
     get() = kCGColorSpaceExtendedITUR_2020_VH.get(kCGColorSpaceExtendedITUR_2020_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceExtendedITUR_2020_VH.set(kCGColorSpaceExtendedITUR_2020_SEGMENT, 0L, value)
@@ -3092,6 +3689,8 @@ private val kCGColorSpaceExtendedLinearITUR_2020_LAYOUT: ValueLayout by lazy { V
 private val kCGColorSpaceExtendedLinearITUR_2020_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceExtendedLinearITUR_2020").orElseThrow().reinterpret(kCGColorSpaceExtendedLinearITUR_2020_LAYOUT.byteSize()) }
 private val kCGColorSpaceExtendedLinearITUR_2020_VH: VarHandle by lazy { kCGColorSpaceExtendedLinearITUR_2020_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 3)
 var kCGColorSpaceExtendedLinearITUR_2020: MemorySegment
     get() = kCGColorSpaceExtendedLinearITUR_2020_VH.get(kCGColorSpaceExtendedLinearITUR_2020_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceExtendedLinearITUR_2020_VH.set(kCGColorSpaceExtendedLinearITUR_2020_SEGMENT, 0L, value)
@@ -3103,6 +3702,8 @@ private val kCGColorSpaceLinearDisplayP3_LAYOUT: ValueLayout by lazy { ValueLayo
 private val kCGColorSpaceLinearDisplayP3_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceLinearDisplayP3").orElseThrow().reinterpret(kCGColorSpaceLinearDisplayP3_LAYOUT.byteSize()) }
 private val kCGColorSpaceLinearDisplayP3_VH: VarHandle by lazy { kCGColorSpaceLinearDisplayP3_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceLinearDisplayP3: MemorySegment
     get() = kCGColorSpaceLinearDisplayP3_VH.get(kCGColorSpaceLinearDisplayP3_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceLinearDisplayP3_VH.set(kCGColorSpaceLinearDisplayP3_SEGMENT, 0L, value)
@@ -3114,6 +3715,8 @@ private val kCGColorSpaceExtendedDisplayP3_LAYOUT: ValueLayout by lazy { ValueLa
 private val kCGColorSpaceExtendedDisplayP3_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceExtendedDisplayP3").orElseThrow().reinterpret(kCGColorSpaceExtendedDisplayP3_LAYOUT.byteSize()) }
 private val kCGColorSpaceExtendedDisplayP3_VH: VarHandle by lazy { kCGColorSpaceExtendedDisplayP3_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceExtendedDisplayP3: MemorySegment
     get() = kCGColorSpaceExtendedDisplayP3_VH.get(kCGColorSpaceExtendedDisplayP3_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceExtendedDisplayP3_VH.set(kCGColorSpaceExtendedDisplayP3_SEGMENT, 0L, value)
@@ -3125,6 +3728,8 @@ private val kCGColorSpaceExtendedLinearDisplayP3_LAYOUT: ValueLayout by lazy { V
 private val kCGColorSpaceExtendedLinearDisplayP3_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceExtendedLinearDisplayP3").orElseThrow().reinterpret(kCGColorSpaceExtendedLinearDisplayP3_LAYOUT.byteSize()) }
 private val kCGColorSpaceExtendedLinearDisplayP3_VH: VarHandle by lazy { kCGColorSpaceExtendedLinearDisplayP3_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 3)
 var kCGColorSpaceExtendedLinearDisplayP3: MemorySegment
     get() = kCGColorSpaceExtendedLinearDisplayP3_VH.get(kCGColorSpaceExtendedLinearDisplayP3_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceExtendedLinearDisplayP3_VH.set(kCGColorSpaceExtendedLinearDisplayP3_SEGMENT, 0L, value)
@@ -3136,6 +3741,8 @@ private val kCGColorSpaceITUR_2100_PQ_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCGColorSpaceITUR_2100_PQ_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_2100_PQ").orElseThrow().reinterpret(kCGColorSpaceITUR_2100_PQ_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_2100_PQ_VH: VarHandle by lazy { kCGColorSpaceITUR_2100_PQ_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceITUR_2100_PQ: MemorySegment
     get() = kCGColorSpaceITUR_2100_PQ_VH.get(kCGColorSpaceITUR_2100_PQ_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_2100_PQ_VH.set(kCGColorSpaceITUR_2100_PQ_SEGMENT, 0L, value)
@@ -3147,6 +3754,8 @@ private val kCGColorSpaceITUR_2100_HLG_LAYOUT: ValueLayout by lazy { ValueLayout
 private val kCGColorSpaceITUR_2100_HLG_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_2100_HLG").orElseThrow().reinterpret(kCGColorSpaceITUR_2100_HLG_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_2100_HLG_VH: VarHandle by lazy { kCGColorSpaceITUR_2100_HLG_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceITUR_2100_HLG: MemorySegment
     get() = kCGColorSpaceITUR_2100_HLG_VH.get(kCGColorSpaceITUR_2100_HLG_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_2100_HLG_VH.set(kCGColorSpaceITUR_2100_HLG_SEGMENT, 0L, value)
@@ -3158,6 +3767,8 @@ private val kCGColorSpaceDisplayP3_PQ_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCGColorSpaceDisplayP3_PQ_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceDisplayP3_PQ").orElseThrow().reinterpret(kCGColorSpaceDisplayP3_PQ_LAYOUT.byteSize()) }
 private val kCGColorSpaceDisplayP3_PQ_VH: VarHandle by lazy { kCGColorSpaceDisplayP3_PQ_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = 4)
 var kCGColorSpaceDisplayP3_PQ: MemorySegment
     get() = kCGColorSpaceDisplayP3_PQ_VH.get(kCGColorSpaceDisplayP3_PQ_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceDisplayP3_PQ_VH.set(kCGColorSpaceDisplayP3_PQ_SEGMENT, 0L, value)
@@ -3169,6 +3780,8 @@ private val kCGColorSpaceDisplayP3_HLG_LAYOUT: ValueLayout by lazy { ValueLayout
 private val kCGColorSpaceDisplayP3_HLG_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceDisplayP3_HLG").orElseThrow().reinterpret(kCGColorSpaceDisplayP3_HLG_LAYOUT.byteSize()) }
 private val kCGColorSpaceDisplayP3_HLG_VH: VarHandle by lazy { kCGColorSpaceDisplayP3_HLG_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 6)
 var kCGColorSpaceDisplayP3_HLG: MemorySegment
     get() = kCGColorSpaceDisplayP3_HLG_VH.get(kCGColorSpaceDisplayP3_HLG_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceDisplayP3_HLG_VH.set(kCGColorSpaceDisplayP3_HLG_SEGMENT, 0L, value)
@@ -3180,6 +3793,8 @@ private val kCGColorSpaceITUR_2020_PQ_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCGColorSpaceITUR_2020_PQ_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_2020_PQ").orElseThrow().reinterpret(kCGColorSpaceITUR_2020_PQ_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_2020_PQ_VH: VarHandle by lazy { kCGColorSpaceITUR_2020_PQ_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = 4, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
 var kCGColorSpaceITUR_2020_PQ: MemorySegment
     get() = kCGColorSpaceITUR_2020_PQ_VH.get(kCGColorSpaceITUR_2020_PQ_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_2020_PQ_VH.set(kCGColorSpaceITUR_2020_PQ_SEGMENT, 0L, value)
@@ -3191,6 +3806,8 @@ private val kCGColorSpaceITUR_2020_HLG_LAYOUT: ValueLayout by lazy { ValueLayout
 private val kCGColorSpaceITUR_2020_HLG_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_2020_HLG").orElseThrow().reinterpret(kCGColorSpaceITUR_2020_HLG_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_2020_HLG_VH: VarHandle by lazy { kCGColorSpaceITUR_2020_HLG_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = 6, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
 var kCGColorSpaceITUR_2020_HLG: MemorySegment
     get() = kCGColorSpaceITUR_2020_HLG_VH.get(kCGColorSpaceITUR_2020_HLG_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_2020_HLG_VH.set(kCGColorSpaceITUR_2020_HLG_SEGMENT, 0L, value)
@@ -3202,6 +3819,8 @@ private val kCGColorSpaceDisplayP3_PQ_EOTF_LAYOUT: ValueLayout by lazy { ValueLa
 private val kCGColorSpaceDisplayP3_PQ_EOTF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceDisplayP3_PQ_EOTF").orElseThrow().reinterpret(kCGColorSpaceDisplayP3_PQ_EOTF_LAYOUT.byteSize()) }
 private val kCGColorSpaceDisplayP3_PQ_EOTF_VH: VarHandle by lazy { kCGColorSpaceDisplayP3_PQ_EOTF_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 4, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 6, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = 4, message = "No longer supported")
 var kCGColorSpaceDisplayP3_PQ_EOTF: MemorySegment
     get() = kCGColorSpaceDisplayP3_PQ_EOTF_VH.get(kCGColorSpaceDisplayP3_PQ_EOTF_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceDisplayP3_PQ_EOTF_VH.set(kCGColorSpaceDisplayP3_PQ_EOTF_SEGMENT, 0L, value)
@@ -3213,6 +3832,8 @@ private val kCGColorSpaceITUR_2020_PQ_EOTF_LAYOUT: ValueLayout by lazy { ValueLa
 private val kCGColorSpaceITUR_2020_PQ_EOTF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceITUR_2020_PQ_EOTF").orElseThrow().reinterpret(kCGColorSpaceITUR_2020_PQ_EOTF_LAYOUT.byteSize()) }
 private val kCGColorSpaceITUR_2020_PQ_EOTF_VH: VarHandle by lazy { kCGColorSpaceITUR_2020_PQ_EOTF_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 4, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 6, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = 4, message = "No longer supported")
 var kCGColorSpaceITUR_2020_PQ_EOTF: MemorySegment
     get() = kCGColorSpaceITUR_2020_PQ_EOTF_VH.get(kCGColorSpaceITUR_2020_PQ_EOTF_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceITUR_2020_PQ_EOTF_VH.set(kCGColorSpaceITUR_2020_PQ_EOTF_SEGMENT, 0L, value)
@@ -3224,6 +3845,8 @@ private val kCGColorSpaceExtendedSRGB_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCGColorSpaceExtendedSRGB_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceExtendedSRGB").orElseThrow().reinterpret(kCGColorSpaceExtendedSRGB_LAYOUT.byteSize()) }
 private val kCGColorSpaceExtendedSRGB_VH: VarHandle by lazy { kCGColorSpaceExtendedSRGB_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 var kCGColorSpaceExtendedSRGB: MemorySegment
     get() = kCGColorSpaceExtendedSRGB_VH.get(kCGColorSpaceExtendedSRGB_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceExtendedSRGB_VH.set(kCGColorSpaceExtendedSRGB_SEGMENT, 0L, value)
@@ -3235,6 +3858,8 @@ private val kCGColorSpaceLinearSRGB_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val kCGColorSpaceLinearSRGB_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceLinearSRGB").orElseThrow().reinterpret(kCGColorSpaceLinearSRGB_LAYOUT.byteSize()) }
 private val kCGColorSpaceLinearSRGB_VH: VarHandle by lazy { kCGColorSpaceLinearSRGB_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 var kCGColorSpaceLinearSRGB: MemorySegment
     get() = kCGColorSpaceLinearSRGB_VH.get(kCGColorSpaceLinearSRGB_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceLinearSRGB_VH.set(kCGColorSpaceLinearSRGB_SEGMENT, 0L, value)
@@ -3246,6 +3871,8 @@ private val kCGColorSpaceExtendedLinearSRGB_LAYOUT: ValueLayout by lazy { ValueL
 private val kCGColorSpaceExtendedLinearSRGB_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceExtendedLinearSRGB").orElseThrow().reinterpret(kCGColorSpaceExtendedLinearSRGB_LAYOUT.byteSize()) }
 private val kCGColorSpaceExtendedLinearSRGB_VH: VarHandle by lazy { kCGColorSpaceExtendedLinearSRGB_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 var kCGColorSpaceExtendedLinearSRGB: MemorySegment
     get() = kCGColorSpaceExtendedLinearSRGB_VH.get(kCGColorSpaceExtendedLinearSRGB_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceExtendedLinearSRGB_VH.set(kCGColorSpaceExtendedLinearSRGB_SEGMENT, 0L, value)
@@ -3257,6 +3884,8 @@ private val kCGColorSpaceExtendedGray_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCGColorSpaceExtendedGray_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceExtendedGray").orElseThrow().reinterpret(kCGColorSpaceExtendedGray_LAYOUT.byteSize()) }
 private val kCGColorSpaceExtendedGray_VH: VarHandle by lazy { kCGColorSpaceExtendedGray_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 var kCGColorSpaceExtendedGray: MemorySegment
     get() = kCGColorSpaceExtendedGray_VH.get(kCGColorSpaceExtendedGray_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceExtendedGray_VH.set(kCGColorSpaceExtendedGray_SEGMENT, 0L, value)
@@ -3268,6 +3897,8 @@ private val kCGColorSpaceLinearGray_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val kCGColorSpaceLinearGray_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceLinearGray").orElseThrow().reinterpret(kCGColorSpaceLinearGray_LAYOUT.byteSize()) }
 private val kCGColorSpaceLinearGray_VH: VarHandle by lazy { kCGColorSpaceLinearGray_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 var kCGColorSpaceLinearGray: MemorySegment
     get() = kCGColorSpaceLinearGray_VH.get(kCGColorSpaceLinearGray_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceLinearGray_VH.set(kCGColorSpaceLinearGray_SEGMENT, 0L, value)
@@ -3279,6 +3910,8 @@ private val kCGColorSpaceExtendedLinearGray_LAYOUT: ValueLayout by lazy { ValueL
 private val kCGColorSpaceExtendedLinearGray_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceExtendedLinearGray").orElseThrow().reinterpret(kCGColorSpaceExtendedLinearGray_LAYOUT.byteSize()) }
 private val kCGColorSpaceExtendedLinearGray_VH: VarHandle by lazy { kCGColorSpaceExtendedLinearGray_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 var kCGColorSpaceExtendedLinearGray: MemorySegment
     get() = kCGColorSpaceExtendedLinearGray_VH.get(kCGColorSpaceExtendedLinearGray_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceExtendedLinearGray_VH.set(kCGColorSpaceExtendedLinearGray_SEGMENT, 0L, value)
@@ -3290,6 +3923,8 @@ private val kCGColorSpaceCoreMedia709_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCGColorSpaceCoreMedia709_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorSpaceCoreMedia709").orElseThrow().reinterpret(kCGColorSpaceCoreMedia709_LAYOUT.byteSize()) }
 private val kCGColorSpaceCoreMedia709_VH: VarHandle by lazy { kCGColorSpaceCoreMedia709_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
 var kCGColorSpaceCoreMedia709: MemorySegment
     get() = kCGColorSpaceCoreMedia709_VH.get(kCGColorSpaceCoreMedia709_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorSpaceCoreMedia709_VH.set(kCGColorSpaceCoreMedia709_SEGMENT, 0L, value)
@@ -3301,6 +3936,8 @@ private val CGColorSpaceCreateDeviceGray_DESC: FunctionDescriptor = FunctionDesc
 private val CGColorSpaceCreateDeviceGray_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateDeviceGray").orElseThrow()
 private val CGColorSpaceCreateDeviceGray_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateDeviceGray_ADDR, CGColorSpaceCreateDeviceGray_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateDeviceGray(): MemorySegment {
     try {
         return CGColorSpaceCreateDeviceGray_HANDLE.invokeExact() as MemorySegment
@@ -3320,6 +3957,8 @@ private val CGColorSpaceCreateDeviceRGB_DESC: FunctionDescriptor = FunctionDescr
 private val CGColorSpaceCreateDeviceRGB_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateDeviceRGB").orElseThrow()
 private val CGColorSpaceCreateDeviceRGB_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateDeviceRGB_ADDR, CGColorSpaceCreateDeviceRGB_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateDeviceRGB(): MemorySegment {
     try {
         return CGColorSpaceCreateDeviceRGB_HANDLE.invokeExact() as MemorySegment
@@ -3339,6 +3978,8 @@ private val CGColorSpaceCreateDeviceCMYK_DESC: FunctionDescriptor = FunctionDesc
 private val CGColorSpaceCreateDeviceCMYK_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateDeviceCMYK").orElseThrow()
 private val CGColorSpaceCreateDeviceCMYK_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateDeviceCMYK_ADDR, CGColorSpaceCreateDeviceCMYK_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateDeviceCMYK(): MemorySegment {
     try {
         return CGColorSpaceCreateDeviceCMYK_HANDLE.invokeExact() as MemorySegment
@@ -3358,6 +3999,8 @@ private val CGColorSpaceCreateCalibratedGray_DESC: FunctionDescriptor = Function
 private val CGColorSpaceCreateCalibratedGray_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateCalibratedGray").orElseThrow()
 private val CGColorSpaceCreateCalibratedGray_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateCalibratedGray_ADDR, CGColorSpaceCreateCalibratedGray_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateCalibratedGray(arg0: MemorySegment, arg1: MemorySegment, arg2: Double): MemorySegment {
     try {
         return CGColorSpaceCreateCalibratedGray_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -3377,6 +4020,8 @@ private val CGColorSpaceCreateCalibratedRGB_DESC: FunctionDescriptor = FunctionD
 private val CGColorSpaceCreateCalibratedRGB_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateCalibratedRGB").orElseThrow()
 private val CGColorSpaceCreateCalibratedRGB_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateCalibratedRGB_ADDR, CGColorSpaceCreateCalibratedRGB_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateCalibratedRGB(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateCalibratedRGB_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -3396,6 +4041,8 @@ private val CGColorSpaceCreateLab_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGColorSpaceCreateLab_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateLab").orElseThrow()
 private val CGColorSpaceCreateLab_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateLab_ADDR, CGColorSpaceCreateLab_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateLab(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateLab_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -3415,6 +4062,8 @@ private val CGColorSpaceCreateWithICCData_DESC: FunctionDescriptor = FunctionDes
 private val CGColorSpaceCreateWithICCData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateWithICCData").orElseThrow()
 private val CGColorSpaceCreateWithICCData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateWithICCData_ADDR, CGColorSpaceCreateWithICCData_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 fun CGColorSpaceCreateWithICCData(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateWithICCData_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3434,6 +4083,8 @@ private val CGColorSpaceCreateICCBased_DESC: FunctionDescriptor = FunctionDescri
 private val CGColorSpaceCreateICCBased_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateICCBased").orElseThrow()
 private val CGColorSpaceCreateICCBased_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateICCBased_ADDR, CGColorSpaceCreateICCBased_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateICCBased(arg0: Long, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateICCBased_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -3453,6 +4104,8 @@ private val CGColorSpaceCreateIndexed_DESC: FunctionDescriptor = FunctionDescrip
 private val CGColorSpaceCreateIndexed_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateIndexed").orElseThrow()
 private val CGColorSpaceCreateIndexed_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateIndexed_ADDR, CGColorSpaceCreateIndexed_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateIndexed(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateIndexed_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -3472,6 +4125,8 @@ private val CGColorSpaceCreatePattern_DESC: FunctionDescriptor = FunctionDescrip
 private val CGColorSpaceCreatePattern_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreatePattern").orElseThrow()
 private val CGColorSpaceCreatePattern_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreatePattern_ADDR, CGColorSpaceCreatePattern_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreatePattern(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreatePattern_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3502,6 +4157,8 @@ private val CGColorSpaceCreateWithColorSyncProfile_DESC: FunctionDescriptor = Fu
 private val CGColorSpaceCreateWithColorSyncProfile_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateWithColorSyncProfile").orElseThrow()
 private val CGColorSpaceCreateWithColorSyncProfile_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateWithColorSyncProfile_ADDR, CGColorSpaceCreateWithColorSyncProfile_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateWithColorSyncProfile(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateWithColorSyncProfile_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -3521,6 +4178,8 @@ private val CGColorSpaceCreateWithName_DESC: FunctionDescriptor = FunctionDescri
 private val CGColorSpaceCreateWithName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateWithName").orElseThrow()
 private val CGColorSpaceCreateWithName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateWithName_ADDR, CGColorSpaceCreateWithName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGColorSpaceCreateWithName(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateWithName_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3540,6 +4199,8 @@ private val CGColorSpaceRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGColorSpaceRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceRetain").orElseThrow()
 private val CGColorSpaceRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceRetain_ADDR, CGColorSpaceRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3559,6 +4220,8 @@ private val CGColorSpaceRelease_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGColorSpaceRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceRelease").orElseThrow()
 private val CGColorSpaceRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceRelease_ADDR, CGColorSpaceRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceRelease(arg0: MemorySegment): Unit {
     try {
         CGColorSpaceRelease_HANDLE.invokeExact(arg0)
@@ -3578,6 +4241,8 @@ private val CGColorSpaceGetName_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGColorSpaceGetName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceGetName").orElseThrow()
 private val CGColorSpaceGetName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceGetName_ADDR, CGColorSpaceGetName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 fun CGColorSpaceGetName(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceGetName_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3597,6 +4262,8 @@ private val CGColorSpaceCopyName_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGColorSpaceCopyName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCopyName").orElseThrow()
 private val CGColorSpaceCopyName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCopyName_ADDR, CGColorSpaceCopyName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
 fun CGColorSpaceCopyName(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCopyName_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3616,6 +4283,8 @@ private val CGColorSpaceGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGColorSpaceGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceGetTypeID").orElseThrow()
 private val CGColorSpaceGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceGetTypeID_ADDR, CGColorSpaceGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGColorSpaceGetTypeID(): Long {
     try {
         return CGColorSpaceGetTypeID_HANDLE.invokeExact() as Long
@@ -3635,6 +4304,8 @@ private val CGColorSpaceGetNumberOfComponents_DESC: FunctionDescriptor = Functio
 private val CGColorSpaceGetNumberOfComponents_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceGetNumberOfComponents").orElseThrow()
 private val CGColorSpaceGetNumberOfComponents_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceGetNumberOfComponents_ADDR, CGColorSpaceGetNumberOfComponents_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceGetNumberOfComponents(arg0: MemorySegment): Long {
     try {
         return CGColorSpaceGetNumberOfComponents_HANDLE.invokeExact(arg0) as Long
@@ -3654,6 +4325,8 @@ private val CGColorSpaceGetModel_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGColorSpaceGetModel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceGetModel").orElseThrow()
 private val CGColorSpaceGetModel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceGetModel_ADDR, CGColorSpaceGetModel_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGColorSpaceGetModel(arg0: MemorySegment): CGColorSpaceModel {
     try {
         return CGColorSpaceModel.fromValue((CGColorSpaceGetModel_HANDLE.invokeExact(arg0) as Int).toLong())
@@ -3673,6 +4346,8 @@ private val CGColorSpaceGetBaseColorSpace_DESC: FunctionDescriptor = FunctionDes
 private val CGColorSpaceGetBaseColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceGetBaseColorSpace").orElseThrow()
 private val CGColorSpaceGetBaseColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceGetBaseColorSpace_ADDR, CGColorSpaceGetBaseColorSpace_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGColorSpaceGetBaseColorSpace(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceGetBaseColorSpace_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3692,6 +4367,10 @@ private val CGColorSpaceCopyBaseColorSpace_DESC: FunctionDescriptor = FunctionDe
 private val CGColorSpaceCopyBaseColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCopyBaseColorSpace").orElseThrow()
 private val CGColorSpaceCopyBaseColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCopyBaseColorSpace_ADDR, CGColorSpaceCopyBaseColorSpace_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCopyBaseColorSpace(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCopyBaseColorSpace_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3711,6 +4390,8 @@ private val CGColorSpaceGetColorTableCount_DESC: FunctionDescriptor = FunctionDe
 private val CGColorSpaceGetColorTableCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceGetColorTableCount").orElseThrow()
 private val CGColorSpaceGetColorTableCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceGetColorTableCount_ADDR, CGColorSpaceGetColorTableCount_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGColorSpaceGetColorTableCount(arg0: MemorySegment): Long {
     try {
         return CGColorSpaceGetColorTableCount_HANDLE.invokeExact(arg0) as Long
@@ -3730,6 +4411,8 @@ private val CGColorSpaceGetColorTable_DESC: FunctionDescriptor = FunctionDescrip
 private val CGColorSpaceGetColorTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceGetColorTable").orElseThrow()
 private val CGColorSpaceGetColorTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceGetColorTable_ADDR, CGColorSpaceGetColorTable_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGColorSpaceGetColorTable(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGColorSpaceGetColorTable_HANDLE.invokeExact(arg0, arg1)
@@ -3749,6 +4432,8 @@ private val CGColorSpaceCopyICCData_DESC: FunctionDescriptor = FunctionDescripto
 private val CGColorSpaceCopyICCData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCopyICCData").orElseThrow()
 private val CGColorSpaceCopyICCData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCopyICCData_ADDR, CGColorSpaceCopyICCData_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 fun CGColorSpaceCopyICCData(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCopyICCData_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3768,6 +4453,8 @@ private val CGColorSpaceIsWideGamutRGB_DESC: FunctionDescriptor = FunctionDescri
 private val CGColorSpaceIsWideGamutRGB_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceIsWideGamutRGB").orElseThrow()
 private val CGColorSpaceIsWideGamutRGB_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceIsWideGamutRGB_ADDR, CGColorSpaceIsWideGamutRGB_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 fun CGColorSpaceIsWideGamutRGB(arg0: MemorySegment): Boolean {
     try {
         return CGColorSpaceIsWideGamutRGB_HANDLE.invokeExact(arg0) as Boolean
@@ -3787,6 +4474,8 @@ private val CGColorSpaceIsHDR_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGColorSpaceIsHDR_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceIsHDR").orElseThrow()
 private val CGColorSpaceIsHDR_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceIsHDR_ADDR, CGColorSpaceIsHDR_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 fun CGColorSpaceIsHDR(arg0: MemorySegment): Boolean {
     try {
         return CGColorSpaceIsHDR_HANDLE.invokeExact(arg0) as Boolean
@@ -3806,6 +4495,8 @@ private val CGColorSpaceUsesITUR_2100TF_DESC: FunctionDescriptor = FunctionDescr
 private val CGColorSpaceUsesITUR_2100TF_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceUsesITUR_2100TF").orElseThrow()
 private val CGColorSpaceUsesITUR_2100TF_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceUsesITUR_2100TF_ADDR, CGColorSpaceUsesITUR_2100TF_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceUsesITUR_2100TF(arg0: MemorySegment): Boolean {
     try {
         return CGColorSpaceUsesITUR_2100TF_HANDLE.invokeExact(arg0) as Boolean
@@ -3825,6 +4516,8 @@ private val CGColorSpaceIsPQBased_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGColorSpaceIsPQBased_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceIsPQBased").orElseThrow()
 private val CGColorSpaceIsPQBased_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceIsPQBased_ADDR, CGColorSpaceIsPQBased_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceIsPQBased(arg0: MemorySegment): Boolean {
     try {
         return CGColorSpaceIsPQBased_HANDLE.invokeExact(arg0) as Boolean
@@ -3844,6 +4537,8 @@ private val CGColorSpaceIsHLGBased_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGColorSpaceIsHLGBased_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceIsHLGBased").orElseThrow()
 private val CGColorSpaceIsHLGBased_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceIsHLGBased_ADDR, CGColorSpaceIsHLGBased_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceIsHLGBased(arg0: MemorySegment): Boolean {
     try {
         return CGColorSpaceIsHLGBased_HANDLE.invokeExact(arg0) as Boolean
@@ -3863,6 +4558,8 @@ private val CGColorSpaceSupportsOutput_DESC: FunctionDescriptor = FunctionDescri
 private val CGColorSpaceSupportsOutput_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceSupportsOutput").orElseThrow()
 private val CGColorSpaceSupportsOutput_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceSupportsOutput_ADDR, CGColorSpaceSupportsOutput_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 fun CGColorSpaceSupportsOutput(arg0: MemorySegment): Boolean {
     try {
         return CGColorSpaceSupportsOutput_HANDLE.invokeExact(arg0) as Boolean
@@ -3882,6 +4579,8 @@ private val CGColorSpaceCopyPropertyList_DESC: FunctionDescriptor = FunctionDesc
 private val CGColorSpaceCopyPropertyList_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCopyPropertyList").orElseThrow()
 private val CGColorSpaceCopyPropertyList_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCopyPropertyList_ADDR, CGColorSpaceCopyPropertyList_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 fun CGColorSpaceCopyPropertyList(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCopyPropertyList_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3901,6 +4600,8 @@ private val CGColorSpaceCreateWithPropertyList_DESC: FunctionDescriptor = Functi
 private val CGColorSpaceCreateWithPropertyList_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateWithPropertyList").orElseThrow()
 private val CGColorSpaceCreateWithPropertyList_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateWithPropertyList_ADDR, CGColorSpaceCreateWithPropertyList_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 fun CGColorSpaceCreateWithPropertyList(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateWithPropertyList_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3920,6 +4621,8 @@ private val CGColorSpaceUsesExtendedRange_DESC: FunctionDescriptor = FunctionDes
 private val CGColorSpaceUsesExtendedRange_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceUsesExtendedRange").orElseThrow()
 private val CGColorSpaceUsesExtendedRange_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceUsesExtendedRange_ADDR, CGColorSpaceUsesExtendedRange_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 fun CGColorSpaceUsesExtendedRange(arg0: MemorySegment): Boolean {
     try {
         return CGColorSpaceUsesExtendedRange_HANDLE.invokeExact(arg0) as Boolean
@@ -3939,6 +4642,8 @@ private val CGColorSpaceCreateLinearized_DESC: FunctionDescriptor = FunctionDesc
 private val CGColorSpaceCreateLinearized_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateLinearized").orElseThrow()
 private val CGColorSpaceCreateLinearized_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateLinearized_ADDR, CGColorSpaceCreateLinearized_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateLinearized(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateLinearized_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3958,6 +4663,8 @@ private val CGColorSpaceCreateExtended_DESC: FunctionDescriptor = FunctionDescri
 private val CGColorSpaceCreateExtended_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateExtended").orElseThrow()
 private val CGColorSpaceCreateExtended_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateExtended_ADDR, CGColorSpaceCreateExtended_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateExtended(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateExtended_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3977,6 +4684,8 @@ private val CGColorSpaceCreateExtendedLinearized_DESC: FunctionDescriptor = Func
 private val CGColorSpaceCreateExtendedLinearized_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateExtendedLinearized").orElseThrow()
 private val CGColorSpaceCreateExtendedLinearized_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateExtendedLinearized_ADDR, CGColorSpaceCreateExtendedLinearized_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateExtendedLinearized(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateExtendedLinearized_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3996,6 +4705,8 @@ private val CGColorSpaceCreateCopyWithStandardRange_DESC: FunctionDescriptor = F
 private val CGColorSpaceCreateCopyWithStandardRange_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateCopyWithStandardRange").orElseThrow()
 private val CGColorSpaceCreateCopyWithStandardRange_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateCopyWithStandardRange_ADDR, CGColorSpaceCreateCopyWithStandardRange_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorSpaceCreateCopyWithStandardRange(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateCopyWithStandardRange_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4015,6 +4726,8 @@ private val CGColorSpaceCreateWithICCProfile_DESC: FunctionDescriptor = Function
 private val CGColorSpaceCreateWithICCProfile_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateWithICCProfile").orElseThrow()
 private val CGColorSpaceCreateWithICCProfile_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateWithICCProfile_ADDR, CGColorSpaceCreateWithICCProfile_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "No longer supported")
 fun CGColorSpaceCreateWithICCProfile(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateWithICCProfile_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4034,6 +4747,8 @@ private val CGColorSpaceCopyICCProfile_DESC: FunctionDescriptor = FunctionDescri
 private val CGColorSpaceCopyICCProfile_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCopyICCProfile").orElseThrow()
 private val CGColorSpaceCopyICCProfile_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCopyICCProfile_ADDR, CGColorSpaceCopyICCProfile_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "No longer supported")
 fun CGColorSpaceCopyICCProfile(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCopyICCProfile_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4053,6 +4768,8 @@ private val CGColorSpaceCreateWithPlatformColorSpace_DESC: FunctionDescriptor = 
 private val CGColorSpaceCreateWithPlatformColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorSpaceCreateWithPlatformColorSpace").orElseThrow()
 private val CGColorSpaceCreateWithPlatformColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorSpaceCreateWithPlatformColorSpace_ADDR, CGColorSpaceCreateWithPlatformColorSpace_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
 fun CGColorSpaceCreateWithPlatformColorSpace(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorSpaceCreateWithPlatformColorSpace_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4072,6 +4789,8 @@ private val CGPatternGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGPatternGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPatternGetTypeID").orElseThrow()
 private val CGPatternGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPatternGetTypeID_ADDR, CGPatternGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPatternGetTypeID(): Long {
     try {
         return CGPatternGetTypeID_HANDLE.invokeExact() as Long
@@ -4091,6 +4810,8 @@ private val CGPatternCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGPatternCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPatternCreate").orElseThrow()
 private val CGPatternCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPatternCreate_ADDR, CGPatternCreate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPatternCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Double, arg4: Double, arg5: CGPatternTiling, arg6: Boolean, arg7: MemorySegment): MemorySegment {
     try {
         return CGPatternCreate_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5.value.toInt(), arg6, arg7) as MemorySegment
@@ -4103,6 +4824,8 @@ fun CGPatternCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegmen
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPatternCreate(arg0: MemorySegment, arg1: CGRect, arg2: CGAffineTransform, arg3: Double, arg4: Double, arg5: CGPatternTiling, arg6: Boolean, arg7: MemorySegment): MemorySegment {
     return CGPatternCreate(arg0, arg1.segment, arg2.segment, arg3, arg4, arg5, arg6, arg7)
 }
@@ -4114,6 +4837,8 @@ private val CGPatternRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGPatternRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPatternRetain").orElseThrow()
 private val CGPatternRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPatternRetain_ADDR, CGPatternRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPatternRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGPatternRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4133,6 +4858,8 @@ private val CGPatternRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoi
 private val CGPatternRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPatternRelease").orElseThrow()
 private val CGPatternRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPatternRelease_ADDR, CGPatternRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPatternRelease(arg0: MemorySegment): Unit {
     try {
         CGPatternRelease_HANDLE.invokeExact(arg0)
@@ -4152,6 +4879,8 @@ private val CGColorCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGColorCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreate").orElseThrow()
 private val CGColorCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreate_ADDR, CGColorCreate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorCreate(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGColorCreate_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -4171,6 +4900,8 @@ private val CGColorCreateGenericGray_DESC: FunctionDescriptor = FunctionDescript
 private val CGColorCreateGenericGray_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateGenericGray").orElseThrow()
 private val CGColorCreateGenericGray_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateGenericGray_ADDR, CGColorCreateGenericGray_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGColorCreateGenericGray(arg0: Double, arg1: Double): MemorySegment {
     try {
         return CGColorCreateGenericGray_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -4190,6 +4921,8 @@ private val CGColorCreateGenericRGB_DESC: FunctionDescriptor = FunctionDescripto
 private val CGColorCreateGenericRGB_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateGenericRGB").orElseThrow()
 private val CGColorCreateGenericRGB_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateGenericRGB_ADDR, CGColorCreateGenericRGB_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGColorCreateGenericRGB(arg0: Double, arg1: Double, arg2: Double, arg3: Double): MemorySegment {
     try {
         return CGColorCreateGenericRGB_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -4209,6 +4942,8 @@ private val CGColorCreateGenericCMYK_DESC: FunctionDescriptor = FunctionDescript
 private val CGColorCreateGenericCMYK_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateGenericCMYK").orElseThrow()
 private val CGColorCreateGenericCMYK_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateGenericCMYK_ADDR, CGColorCreateGenericCMYK_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGColorCreateGenericCMYK(arg0: Double, arg1: Double, arg2: Double, arg3: Double, arg4: Double): MemorySegment {
     try {
         return CGColorCreateGenericCMYK_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
@@ -4228,6 +4963,8 @@ private val CGColorCreateGenericGrayGamma2_2_DESC: FunctionDescriptor = Function
 private val CGColorCreateGenericGrayGamma2_2_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateGenericGrayGamma2_2").orElseThrow()
 private val CGColorCreateGenericGrayGamma2_2_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateGenericGrayGamma2_2_ADDR, CGColorCreateGenericGrayGamma2_2_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 fun CGColorCreateGenericGrayGamma2_2(arg0: Double, arg1: Double): MemorySegment {
     try {
         return CGColorCreateGenericGrayGamma2_2_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -4247,6 +4984,8 @@ private val CGColorCreateSRGB_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGColorCreateSRGB_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateSRGB").orElseThrow()
 private val CGColorCreateSRGB_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateSRGB_ADDR, CGColorCreateSRGB_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 fun CGColorCreateSRGB(arg0: Double, arg1: Double, arg2: Double, arg3: Double): MemorySegment {
     try {
         return CGColorCreateSRGB_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -4266,6 +5005,8 @@ private val CGColorCreateWithContentHeadroom_DESC: FunctionDescriptor = Function
 private val CGColorCreateWithContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateWithContentHeadroom").orElseThrow()
 private val CGColorCreateWithContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateWithContentHeadroom_ADDR, CGColorCreateWithContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorCreateWithContentHeadroom(arg0: Float, arg1: MemorySegment, arg2: Double, arg3: Double, arg4: Double, arg5: Double): MemorySegment {
     try {
         return CGColorCreateWithContentHeadroom_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as MemorySegment
@@ -4285,6 +5026,8 @@ private val CGColorGetContentHeadroom_DESC: FunctionDescriptor = FunctionDescrip
 private val CGColorGetContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorGetContentHeadroom").orElseThrow()
 private val CGColorGetContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorGetContentHeadroom_ADDR, CGColorGetContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGColorGetContentHeadroom(arg0: MemorySegment): Float {
     try {
         return CGColorGetContentHeadroom_HANDLE.invokeExact(arg0) as Float
@@ -4304,6 +5047,8 @@ private val CGColorGetConstantColor_DESC: FunctionDescriptor = FunctionDescripto
 private val CGColorGetConstantColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorGetConstantColor").orElseThrow()
 private val CGColorGetConstantColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorGetConstantColor_ADDR, CGColorGetConstantColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGColorGetConstantColor(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorGetConstantColor_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4323,6 +5068,8 @@ private val CGColorCreateWithPattern_DESC: FunctionDescriptor = FunctionDescript
 private val CGColorCreateWithPattern_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateWithPattern").orElseThrow()
 private val CGColorCreateWithPattern_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateWithPattern_ADDR, CGColorCreateWithPattern_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorCreateWithPattern(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
     try {
         return CGColorCreateWithPattern_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -4342,6 +5089,8 @@ private val CGColorCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGColorCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateCopy").orElseThrow()
 private val CGColorCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateCopy_ADDR, CGColorCreateCopy_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorCreateCopy(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorCreateCopy_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4361,6 +5110,8 @@ private val CGColorCreateCopyWithAlpha_DESC: FunctionDescriptor = FunctionDescri
 private val CGColorCreateCopyWithAlpha_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateCopyWithAlpha").orElseThrow()
 private val CGColorCreateCopyWithAlpha_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateCopyWithAlpha_ADDR, CGColorCreateCopyWithAlpha_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorCreateCopyWithAlpha(arg0: MemorySegment, arg1: Double): MemorySegment {
     try {
         return CGColorCreateCopyWithAlpha_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -4380,6 +5131,8 @@ private val CGColorCreateCopyByMatchingToColorSpace_DESC: FunctionDescriptor = F
 private val CGColorCreateCopyByMatchingToColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorCreateCopyByMatchingToColorSpace").orElseThrow()
 private val CGColorCreateCopyByMatchingToColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorCreateCopyByMatchingToColorSpace_ADDR, CGColorCreateCopyByMatchingToColorSpace_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 fun CGColorCreateCopyByMatchingToColorSpace(arg0: MemorySegment, arg1: CGColorRenderingIntent, arg2: MemorySegment, arg3: MemorySegment): MemorySegment {
     try {
         return CGColorCreateCopyByMatchingToColorSpace_HANDLE.invokeExact(arg0, arg1.value.toInt(), arg2, arg3) as MemorySegment
@@ -4399,6 +5152,8 @@ private val CGColorRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGColorRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorRetain").orElseThrow()
 private val CGColorRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorRetain_ADDR, CGColorRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4418,6 +5173,8 @@ private val CGColorRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(
 private val CGColorRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorRelease").orElseThrow()
 private val CGColorRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorRelease_ADDR, CGColorRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorRelease(arg0: MemorySegment): Unit {
     try {
         CGColorRelease_HANDLE.invokeExact(arg0)
@@ -4437,6 +5194,8 @@ private val CGColorEqualToColor_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGColorEqualToColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorEqualToColor").orElseThrow()
 private val CGColorEqualToColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorEqualToColor_ADDR, CGColorEqualToColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorEqualToColor(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGColorEqualToColor_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -4456,6 +5215,8 @@ private val CGColorGetNumberOfComponents_DESC: FunctionDescriptor = FunctionDesc
 private val CGColorGetNumberOfComponents_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorGetNumberOfComponents").orElseThrow()
 private val CGColorGetNumberOfComponents_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorGetNumberOfComponents_ADDR, CGColorGetNumberOfComponents_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorGetNumberOfComponents(arg0: MemorySegment): Long {
     try {
         return CGColorGetNumberOfComponents_HANDLE.invokeExact(arg0) as Long
@@ -4475,6 +5236,8 @@ private val CGColorGetComponents_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGColorGetComponents_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorGetComponents").orElseThrow()
 private val CGColorGetComponents_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorGetComponents_ADDR, CGColorGetComponents_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorGetComponents(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorGetComponents_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4494,6 +5257,8 @@ private val CGColorGetAlpha_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGColorGetAlpha_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorGetAlpha").orElseThrow()
 private val CGColorGetAlpha_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorGetAlpha_ADDR, CGColorGetAlpha_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorGetAlpha(arg0: MemorySegment): Double {
     try {
         return CGColorGetAlpha_HANDLE.invokeExact(arg0) as Double
@@ -4513,6 +5278,8 @@ private val CGColorGetColorSpace_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGColorGetColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorGetColorSpace").orElseThrow()
 private val CGColorGetColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorGetColorSpace_ADDR, CGColorGetColorSpace_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorGetColorSpace(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorGetColorSpace_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4532,6 +5299,8 @@ private val CGColorGetPattern_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGColorGetPattern_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorGetPattern").orElseThrow()
 private val CGColorGetPattern_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorGetPattern_ADDR, CGColorGetPattern_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorGetPattern(arg0: MemorySegment): MemorySegment {
     try {
         return CGColorGetPattern_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4551,6 +5320,8 @@ private val CGColorGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGColorGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGColorGetTypeID").orElseThrow()
 private val CGColorGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGColorGetTypeID_ADDR, CGColorGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGColorGetTypeID(): Long {
     try {
         return CGColorGetTypeID_HANDLE.invokeExact() as Long
@@ -4570,6 +5341,8 @@ private val kCGColorWhite_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val kCGColorWhite_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorWhite").orElseThrow().reinterpret(kCGColorWhite_LAYOUT.byteSize()) }
 private val kCGColorWhite_VH: VarHandle by lazy { kCGColorWhite_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 var kCGColorWhite: MemorySegment
     get() = kCGColorWhite_VH.get(kCGColorWhite_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorWhite_VH.set(kCGColorWhite_SEGMENT, 0L, value)

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -104,11 +106,19 @@ fun NSData.writeToURL_options_error(url: MemorySegment, writeOptionsMask: NSData
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, writeOptionsMask.rawValue, errorPtr) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSData.rangeOfData_options_range(dataToFind: MemorySegment, mask: NSDataSearchOptions, searchRange: NSRange): NSRange {
     val sel = ObjCRuntime.sel("rangeOfData:options:range:")
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, dataToFind, mask.rawValue, ObjCRuntime.ObjCStructArg(searchRange.segment, NSRange.layout)))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSData.enumerateByteRangesUsingBlock(block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateByteRangesUsingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, block)
@@ -136,6 +146,10 @@ fun NSData.initWithBytesNoCopy_length_freeWhenDone(bytes: MemorySegment, length:
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, bytes, length, b) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSData.initWithBytesNoCopy_length_deallocator(bytes: MemorySegment, length: Long, deallocator: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithBytesNoCopy:length:deallocator:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, bytes, length, deallocator) as MemorySegment
@@ -231,21 +245,37 @@ fun NSData_dataWithData(`data`: MemorySegment): MemorySegment {
 
 // ── Category: NSDataBase64Encoding on NSData ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSData.initWithBase64EncodedString_options(base64String: MemorySegment, options: NSDataBase64DecodingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("initWithBase64EncodedString:options:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, base64String, options.rawValue) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSData.base64EncodedStringWithOptions(options: NSDataBase64EncodingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("base64EncodedStringWithOptions:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options.rawValue) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSData.initWithBase64EncodedData_options(base64Data: MemorySegment, options: NSDataBase64DecodingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("initWithBase64EncodedData:options:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, base64Data, options.rawValue) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSData.base64EncodedDataWithOptions(options: NSDataBase64EncodingOptions): MemorySegment {
     val sel = ObjCRuntime.sel("base64EncodedDataWithOptions:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options.rawValue) as MemorySegment
@@ -253,11 +283,19 @@ fun NSData.base64EncodedDataWithOptions(options: NSDataBase64EncodingOptions): M
 
 // ── Category: NSDataCompression on NSData ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSData.decompressedDataUsingAlgorithm_error(algorithm: NSDataCompressionAlgorithm, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decompressedDataUsingAlgorithm:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, algorithm.rawValue, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSData.compressedDataUsingAlgorithm_error(algorithm: NSDataCompressionAlgorithm, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("compressedDataUsingAlgorithm:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, algorithm.rawValue, error) as MemorySegment
@@ -265,27 +303,47 @@ fun NSData.compressedDataUsingAlgorithm_error(algorithm: NSDataCompressionAlgori
 
 // ── Category: NSDeprecated on NSData ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "This method is unsafe because it could potentially cause buffer overruns. Use -getBytes:length: instead.")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "This method is unsafe because it could potentially cause buffer overruns. Use -getBytes:length: instead.")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "This method is unsafe because it could potentially cause buffer overruns. Use -getBytes:length: instead.")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "This method is unsafe because it could potentially cause buffer overruns. Use -getBytes:length: instead.")
 fun NSData.getBytes(buffer: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("getBytes:")
     ObjCRuntime.msgSend(null, this.ptr, sel, buffer)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithContentsOfURL:options:error: and NSDataReadingMappedIfSafe or NSDataReadingMappedAlways instead.")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use -initWithContentsOfURL:options:error: and NSDataReadingMappedIfSafe or NSDataReadingMappedAlways instead.")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithContentsOfURL:options:error: and NSDataReadingMappedIfSafe or NSDataReadingMappedAlways instead.")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithContentsOfURL:options:error: and NSDataReadingMappedIfSafe or NSDataReadingMappedAlways instead.")
 fun NSData.initWithContentsOfMappedFile(path: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfMappedFile:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use initWithBase64EncodedString:options: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "Use initWithBase64EncodedString:options: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use initWithBase64EncodedString:options: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use initWithBase64EncodedString:options: instead")
 fun NSData.initWithBase64Encoding(base64String: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithBase64Encoding:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, base64String) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use base64EncodedStringWithOptions: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "Use base64EncodedStringWithOptions: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use base64EncodedStringWithOptions: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use base64EncodedStringWithOptions: instead")
 fun NSData.base64Encoding(): MemorySegment {
     val sel = ObjCRuntime.sel("base64Encoding")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 // Class method: +[NSData dataWithContentsOfMappedFile:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +dataWithContentsOfURL:options:error: and NSDataReadingMappedIfSafe or NSDataReadingMappedAlways instead.")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use +dataWithContentsOfURL:options:error: and NSDataReadingMappedIfSafe or NSDataReadingMappedAlways instead.")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +dataWithContentsOfURL:options:error: and NSDataReadingMappedIfSafe or NSDataReadingMappedAlways instead.")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +dataWithContentsOfURL:options:error: and NSDataReadingMappedIfSafe or NSDataReadingMappedAlways instead.")
 fun NSData_dataWithContentsOfMappedFile(path: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dataWithContentsOfMappedFile:")
     val cls = ObjCRuntime.getClass("NSData")

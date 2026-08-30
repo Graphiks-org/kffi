@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -213,6 +215,11 @@ private val CFAllocatorCreateWithZone_DESC: FunctionDescriptor = FunctionDescrip
 private val CFAllocatorCreateWithZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorCreateWithZone").orElseThrow()
 private val CFAllocatorCreateWithZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorCreateWithZone_ADDR, CFAllocatorCreateWithZone_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", unavailable = true)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+@PlatformAvailability(platform = "xros", unavailable = true)
 fun CFAllocatorCreateWithZone(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CFAllocatorCreateWithZone_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -232,6 +239,11 @@ private val CFAllocatorAllocateTyped_DESC: FunctionDescriptor = FunctionDescript
 private val CFAllocatorAllocateTyped_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorAllocateTyped").orElseThrow()
 private val CFAllocatorAllocateTyped_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorAllocateTyped_ADDR, CFAllocatorAllocateTyped_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFAllocatorAllocateTyped(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: Long): MemorySegment {
     try {
         return CFAllocatorAllocateTyped_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -251,6 +263,11 @@ private val CFAllocatorReallocateTyped_DESC: FunctionDescriptor = FunctionDescri
 private val CFAllocatorReallocateTyped_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorReallocateTyped").orElseThrow()
 private val CFAllocatorReallocateTyped_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorReallocateTyped_ADDR, CFAllocatorReallocateTyped_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFAllocatorReallocateTyped(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Long, arg4: Long): MemorySegment {
     try {
         return CFAllocatorReallocateTyped_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
@@ -270,6 +287,11 @@ private val CFAllocatorAllocateBytes_DESC: FunctionDescriptor = FunctionDescript
 private val CFAllocatorAllocateBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorAllocateBytes").orElseThrow()
 private val CFAllocatorAllocateBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorAllocateBytes_ADDR, CFAllocatorAllocateBytes_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFAllocatorAllocateBytes(arg0: MemorySegment, arg1: Long, arg2: Long): MemorySegment {
     try {
         return CFAllocatorAllocateBytes_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -289,6 +311,11 @@ private val CFAllocatorReallocateBytes_DESC: FunctionDescriptor = FunctionDescri
 private val CFAllocatorReallocateBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorReallocateBytes").orElseThrow()
 private val CFAllocatorReallocateBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorReallocateBytes_ADDR, CFAllocatorReallocateBytes_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFAllocatorReallocateBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Long): MemorySegment {
     try {
         return CFAllocatorReallocateBytes_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -479,6 +506,10 @@ private val CFAutorelease_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CFAutorelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAutorelease").orElseThrow()
 private val CFAutorelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAutorelease_ADDR, CFAutorelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFAutorelease(arg0: MemorySegment): MemorySegment {
     try {
         return CFAutorelease_HANDLE.invokeExact(arg0) as MemorySegment
@@ -593,6 +624,7 @@ private val CFMakeCollectable_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CFMakeCollectable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFMakeCollectable").orElseThrow()
 private val CFMakeCollectable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFMakeCollectable_ADDR, CFMakeCollectable_DESC)
 
+@PlatformAvailability(platform = "all", unavailable = true, message = "not available in automatic reference counting mode")
 fun CFMakeCollectable(arg0: MemorySegment): MemorySegment {
     try {
         return CFMakeCollectable_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2661,6 +2693,10 @@ private val CFLocaleCopyCommonISOCurrencyCodes_DESC: FunctionDescriptor = Functi
 private val CFLocaleCopyCommonISOCurrencyCodes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyCommonISOCurrencyCodes").orElseThrow()
 private val CFLocaleCopyCommonISOCurrencyCodes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyCommonISOCurrencyCodes_ADDR, CFLocaleCopyCommonISOCurrencyCodes_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFLocaleCopyCommonISOCurrencyCodes(): MemorySegment {
     try {
         return CFLocaleCopyCommonISOCurrencyCodes_HANDLE.invokeExact() as MemorySegment
@@ -2680,6 +2716,10 @@ private val CFLocaleCopyPreferredLanguages_DESC: FunctionDescriptor = FunctionDe
 private val CFLocaleCopyPreferredLanguages_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyPreferredLanguages").orElseThrow()
 private val CFLocaleCopyPreferredLanguages_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyPreferredLanguages_ADDR, CFLocaleCopyPreferredLanguages_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFLocaleCopyPreferredLanguages(): MemorySegment {
     try {
         return CFLocaleCopyPreferredLanguages_HANDLE.invokeExact() as MemorySegment
@@ -2756,6 +2796,10 @@ private val CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_DESC: FunctionDe
 private val CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode").orElseThrow()
 private val CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_ADDR, CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode(arg0: MemorySegment, arg1: Int): MemorySegment {
     try {
         return CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -2775,6 +2819,10 @@ private val CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_DESC: FunctionDescr
 private val CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier").orElseThrow()
 private val CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_ADDR, CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier(arg0: MemorySegment): Int {
     try {
         return CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_HANDLE.invokeExact(arg0) as Int
@@ -2794,6 +2842,10 @@ private val CFLocaleGetLanguageCharacterDirection_DESC: FunctionDescriptor = Fun
 private val CFLocaleGetLanguageCharacterDirection_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetLanguageCharacterDirection").orElseThrow()
 private val CFLocaleGetLanguageCharacterDirection_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetLanguageCharacterDirection_ADDR, CFLocaleGetLanguageCharacterDirection_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFLocaleGetLanguageCharacterDirection(arg0: MemorySegment): CFLocaleLanguageDirection {
     try {
         return CFLocaleLanguageDirection.fromValue(CFLocaleGetLanguageCharacterDirection_HANDLE.invokeExact(arg0) as Long)
@@ -2813,6 +2865,10 @@ private val CFLocaleGetLanguageLineDirection_DESC: FunctionDescriptor = Function
 private val CFLocaleGetLanguageLineDirection_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetLanguageLineDirection").orElseThrow()
 private val CFLocaleGetLanguageLineDirection_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetLanguageLineDirection_ADDR, CFLocaleGetLanguageLineDirection_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFLocaleGetLanguageLineDirection(arg0: MemorySegment): CFLocaleLanguageDirection {
     try {
         return CFLocaleLanguageDirection.fromValue(CFLocaleGetLanguageLineDirection_HANDLE.invokeExact(arg0) as Long)
@@ -2965,6 +3021,10 @@ private val kCFLocaleCurrentLocaleDidChangeNotification_LAYOUT: ValueLayout by l
 private val kCFLocaleCurrentLocaleDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFLocaleCurrentLocaleDidChangeNotification").orElseThrow().reinterpret(kCFLocaleCurrentLocaleDidChangeNotification_LAYOUT.byteSize()) }
 private val kCFLocaleCurrentLocaleDidChangeNotification_VH: VarHandle by lazy { kCFLocaleCurrentLocaleDidChangeNotification_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFLocaleCurrentLocaleDidChangeNotification: MemorySegment
     get() = kCFLocaleCurrentLocaleDidChangeNotification_VH.get(kCFLocaleCurrentLocaleDidChangeNotification_SEGMENT, 0L) as MemorySegment
     set(value) = kCFLocaleCurrentLocaleDidChangeNotification_VH.set(kCFLocaleCurrentLocaleDidChangeNotification_SEGMENT, 0L, value)
@@ -3141,6 +3201,10 @@ private val kCFLocaleCollatorIdentifier_LAYOUT: ValueLayout by lazy { ValueLayou
 private val kCFLocaleCollatorIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFLocaleCollatorIdentifier").orElseThrow().reinterpret(kCFLocaleCollatorIdentifier_LAYOUT.byteSize()) }
 private val kCFLocaleCollatorIdentifier_VH: VarHandle by lazy { kCFLocaleCollatorIdentifier_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFLocaleCollatorIdentifier: MemorySegment
     get() = kCFLocaleCollatorIdentifier_VH.get(kCFLocaleCollatorIdentifier_SEGMENT, 0L) as MemorySegment
     set(value) = kCFLocaleCollatorIdentifier_VH.set(kCFLocaleCollatorIdentifier_SEGMENT, 0L, value)
@@ -3152,6 +3216,10 @@ private val kCFLocaleQuotationBeginDelimiterKey_LAYOUT: ValueLayout by lazy { Va
 private val kCFLocaleQuotationBeginDelimiterKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFLocaleQuotationBeginDelimiterKey").orElseThrow().reinterpret(kCFLocaleQuotationBeginDelimiterKey_LAYOUT.byteSize()) }
 private val kCFLocaleQuotationBeginDelimiterKey_VH: VarHandle by lazy { kCFLocaleQuotationBeginDelimiterKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFLocaleQuotationBeginDelimiterKey: MemorySegment
     get() = kCFLocaleQuotationBeginDelimiterKey_VH.get(kCFLocaleQuotationBeginDelimiterKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFLocaleQuotationBeginDelimiterKey_VH.set(kCFLocaleQuotationBeginDelimiterKey_SEGMENT, 0L, value)
@@ -3163,6 +3231,10 @@ private val kCFLocaleQuotationEndDelimiterKey_LAYOUT: ValueLayout by lazy { Valu
 private val kCFLocaleQuotationEndDelimiterKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFLocaleQuotationEndDelimiterKey").orElseThrow().reinterpret(kCFLocaleQuotationEndDelimiterKey_LAYOUT.byteSize()) }
 private val kCFLocaleQuotationEndDelimiterKey_VH: VarHandle by lazy { kCFLocaleQuotationEndDelimiterKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFLocaleQuotationEndDelimiterKey: MemorySegment
     get() = kCFLocaleQuotationEndDelimiterKey_VH.get(kCFLocaleQuotationEndDelimiterKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFLocaleQuotationEndDelimiterKey_VH.set(kCFLocaleQuotationEndDelimiterKey_SEGMENT, 0L, value)
@@ -3174,6 +3246,10 @@ private val kCFLocaleAlternateQuotationBeginDelimiterKey_LAYOUT: ValueLayout by 
 private val kCFLocaleAlternateQuotationBeginDelimiterKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFLocaleAlternateQuotationBeginDelimiterKey").orElseThrow().reinterpret(kCFLocaleAlternateQuotationBeginDelimiterKey_LAYOUT.byteSize()) }
 private val kCFLocaleAlternateQuotationBeginDelimiterKey_VH: VarHandle by lazy { kCFLocaleAlternateQuotationBeginDelimiterKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFLocaleAlternateQuotationBeginDelimiterKey: MemorySegment
     get() = kCFLocaleAlternateQuotationBeginDelimiterKey_VH.get(kCFLocaleAlternateQuotationBeginDelimiterKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFLocaleAlternateQuotationBeginDelimiterKey_VH.set(kCFLocaleAlternateQuotationBeginDelimiterKey_SEGMENT, 0L, value)
@@ -3185,6 +3261,10 @@ private val kCFLocaleAlternateQuotationEndDelimiterKey_LAYOUT: ValueLayout by la
 private val kCFLocaleAlternateQuotationEndDelimiterKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFLocaleAlternateQuotationEndDelimiterKey").orElseThrow().reinterpret(kCFLocaleAlternateQuotationEndDelimiterKey_LAYOUT.byteSize()) }
 private val kCFLocaleAlternateQuotationEndDelimiterKey_VH: VarHandle by lazy { kCFLocaleAlternateQuotationEndDelimiterKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFLocaleAlternateQuotationEndDelimiterKey: MemorySegment
     get() = kCFLocaleAlternateQuotationEndDelimiterKey_VH.get(kCFLocaleAlternateQuotationEndDelimiterKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFLocaleAlternateQuotationEndDelimiterKey_VH.set(kCFLocaleAlternateQuotationEndDelimiterKey_SEGMENT, 0L, value)
@@ -3273,6 +3353,10 @@ private val kCFRepublicOfChinaCalendar_LAYOUT: ValueLayout by lazy { ValueLayout
 private val kCFRepublicOfChinaCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFRepublicOfChinaCalendar").orElseThrow().reinterpret(kCFRepublicOfChinaCalendar_LAYOUT.byteSize()) }
 private val kCFRepublicOfChinaCalendar_VH: VarHandle by lazy { kCFRepublicOfChinaCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFRepublicOfChinaCalendar: MemorySegment
     get() = kCFRepublicOfChinaCalendar_VH.get(kCFRepublicOfChinaCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFRepublicOfChinaCalendar_VH.set(kCFRepublicOfChinaCalendar_SEGMENT, 0L, value)
@@ -3284,6 +3368,10 @@ private val kCFPersianCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val kCFPersianCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFPersianCalendar").orElseThrow().reinterpret(kCFPersianCalendar_LAYOUT.byteSize()) }
 private val kCFPersianCalendar_VH: VarHandle by lazy { kCFPersianCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFPersianCalendar: MemorySegment
     get() = kCFPersianCalendar_VH.get(kCFPersianCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFPersianCalendar_VH.set(kCFPersianCalendar_SEGMENT, 0L, value)
@@ -3295,6 +3383,10 @@ private val kCFIndianCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val kCFIndianCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFIndianCalendar").orElseThrow().reinterpret(kCFIndianCalendar_LAYOUT.byteSize()) }
 private val kCFIndianCalendar_VH: VarHandle by lazy { kCFIndianCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFIndianCalendar: MemorySegment
     get() = kCFIndianCalendar_VH.get(kCFIndianCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFIndianCalendar_VH.set(kCFIndianCalendar_SEGMENT, 0L, value)
@@ -3306,6 +3398,10 @@ private val kCFISO8601Calendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val kCFISO8601Calendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFISO8601Calendar").orElseThrow().reinterpret(kCFISO8601Calendar_LAYOUT.byteSize()) }
 private val kCFISO8601Calendar_VH: VarHandle by lazy { kCFISO8601Calendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFISO8601Calendar: MemorySegment
     get() = kCFISO8601Calendar_VH.get(kCFISO8601Calendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFISO8601Calendar_VH.set(kCFISO8601Calendar_SEGMENT, 0L, value)
@@ -3317,6 +3413,10 @@ private val kCFIslamicTabularCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.
 private val kCFIslamicTabularCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFIslamicTabularCalendar").orElseThrow().reinterpret(kCFIslamicTabularCalendar_LAYOUT.byteSize()) }
 private val kCFIslamicTabularCalendar_VH: VarHandle by lazy { kCFIslamicTabularCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFIslamicTabularCalendar: MemorySegment
     get() = kCFIslamicTabularCalendar_VH.get(kCFIslamicTabularCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFIslamicTabularCalendar_VH.set(kCFIslamicTabularCalendar_SEGMENT, 0L, value)
@@ -3328,6 +3428,10 @@ private val kCFIslamicUmmAlQuraCalendar_LAYOUT: ValueLayout by lazy { ValueLayou
 private val kCFIslamicUmmAlQuraCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFIslamicUmmAlQuraCalendar").orElseThrow().reinterpret(kCFIslamicUmmAlQuraCalendar_LAYOUT.byteSize()) }
 private val kCFIslamicUmmAlQuraCalendar_VH: VarHandle by lazy { kCFIslamicUmmAlQuraCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFIslamicUmmAlQuraCalendar: MemorySegment
     get() = kCFIslamicUmmAlQuraCalendar_VH.get(kCFIslamicUmmAlQuraCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFIslamicUmmAlQuraCalendar_VH.set(kCFIslamicUmmAlQuraCalendar_SEGMENT, 0L, value)
@@ -3339,6 +3443,11 @@ private val kCFBanglaCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val kCFBanglaCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFBanglaCalendar").orElseThrow().reinterpret(kCFBanglaCalendar_LAYOUT.byteSize()) }
 private val kCFBanglaCalendar_VH: VarHandle by lazy { kCFBanglaCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFBanglaCalendar: MemorySegment
     get() = kCFBanglaCalendar_VH.get(kCFBanglaCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFBanglaCalendar_VH.set(kCFBanglaCalendar_SEGMENT, 0L, value)
@@ -3350,6 +3459,11 @@ private val kCFGujaratiCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val kCFGujaratiCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFGujaratiCalendar").orElseThrow().reinterpret(kCFGujaratiCalendar_LAYOUT.byteSize()) }
 private val kCFGujaratiCalendar_VH: VarHandle by lazy { kCFGujaratiCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFGujaratiCalendar: MemorySegment
     get() = kCFGujaratiCalendar_VH.get(kCFGujaratiCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFGujaratiCalendar_VH.set(kCFGujaratiCalendar_SEGMENT, 0L, value)
@@ -3361,6 +3475,11 @@ private val kCFKannadaCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val kCFKannadaCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFKannadaCalendar").orElseThrow().reinterpret(kCFKannadaCalendar_LAYOUT.byteSize()) }
 private val kCFKannadaCalendar_VH: VarHandle by lazy { kCFKannadaCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFKannadaCalendar: MemorySegment
     get() = kCFKannadaCalendar_VH.get(kCFKannadaCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFKannadaCalendar_VH.set(kCFKannadaCalendar_SEGMENT, 0L, value)
@@ -3372,6 +3491,11 @@ private val kCFMalayalamCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRE
 private val kCFMalayalamCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFMalayalamCalendar").orElseThrow().reinterpret(kCFMalayalamCalendar_LAYOUT.byteSize()) }
 private val kCFMalayalamCalendar_VH: VarHandle by lazy { kCFMalayalamCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFMalayalamCalendar: MemorySegment
     get() = kCFMalayalamCalendar_VH.get(kCFMalayalamCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFMalayalamCalendar_VH.set(kCFMalayalamCalendar_SEGMENT, 0L, value)
@@ -3383,6 +3507,11 @@ private val kCFMarathiCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val kCFMarathiCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFMarathiCalendar").orElseThrow().reinterpret(kCFMarathiCalendar_LAYOUT.byteSize()) }
 private val kCFMarathiCalendar_VH: VarHandle by lazy { kCFMarathiCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFMarathiCalendar: MemorySegment
     get() = kCFMarathiCalendar_VH.get(kCFMarathiCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFMarathiCalendar_VH.set(kCFMarathiCalendar_SEGMENT, 0L, value)
@@ -3394,6 +3523,11 @@ private val kCFOdiaCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val kCFOdiaCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFOdiaCalendar").orElseThrow().reinterpret(kCFOdiaCalendar_LAYOUT.byteSize()) }
 private val kCFOdiaCalendar_VH: VarHandle by lazy { kCFOdiaCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFOdiaCalendar: MemorySegment
     get() = kCFOdiaCalendar_VH.get(kCFOdiaCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFOdiaCalendar_VH.set(kCFOdiaCalendar_SEGMENT, 0L, value)
@@ -3405,6 +3539,11 @@ private val kCFTamilCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val kCFTamilCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFTamilCalendar").orElseThrow().reinterpret(kCFTamilCalendar_LAYOUT.byteSize()) }
 private val kCFTamilCalendar_VH: VarHandle by lazy { kCFTamilCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFTamilCalendar: MemorySegment
     get() = kCFTamilCalendar_VH.get(kCFTamilCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFTamilCalendar_VH.set(kCFTamilCalendar_SEGMENT, 0L, value)
@@ -3416,6 +3555,11 @@ private val kCFTeluguCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val kCFTeluguCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFTeluguCalendar").orElseThrow().reinterpret(kCFTeluguCalendar_LAYOUT.byteSize()) }
 private val kCFTeluguCalendar_VH: VarHandle by lazy { kCFTeluguCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFTeluguCalendar: MemorySegment
     get() = kCFTeluguCalendar_VH.get(kCFTeluguCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFTeluguCalendar_VH.set(kCFTeluguCalendar_SEGMENT, 0L, value)
@@ -3427,6 +3571,11 @@ private val kCFVikramCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val kCFVikramCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFVikramCalendar").orElseThrow().reinterpret(kCFVikramCalendar_LAYOUT.byteSize()) }
 private val kCFVikramCalendar_VH: VarHandle by lazy { kCFVikramCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFVikramCalendar: MemorySegment
     get() = kCFVikramCalendar_VH.get(kCFVikramCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFVikramCalendar_VH.set(kCFVikramCalendar_SEGMENT, 0L, value)
@@ -3438,6 +3587,11 @@ private val kCFDangiCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val kCFDangiCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFDangiCalendar").orElseThrow().reinterpret(kCFDangiCalendar_LAYOUT.byteSize()) }
 private val kCFDangiCalendar_VH: VarHandle by lazy { kCFDangiCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFDangiCalendar: MemorySegment
     get() = kCFDangiCalendar_VH.get(kCFDangiCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFDangiCalendar_VH.set(kCFDangiCalendar_SEGMENT, 0L, value)
@@ -3449,6 +3603,11 @@ private val kCFVietnameseCalendar_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val kCFVietnameseCalendar_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFVietnameseCalendar").orElseThrow().reinterpret(kCFVietnameseCalendar_LAYOUT.byteSize()) }
 private val kCFVietnameseCalendar_VH: VarHandle by lazy { kCFVietnameseCalendar_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCFVietnameseCalendar: MemorySegment
     get() = kCFVietnameseCalendar_VH.get(kCFVietnameseCalendar_SEGMENT, 0L) as MemorySegment
     set(value) = kCFVietnameseCalendar_VH.set(kCFVietnameseCalendar_SEGMENT, 0L, value)
@@ -3596,6 +3755,10 @@ private val CFGregorianDateIsValid_DESC: FunctionDescriptor = FunctionDescriptor
 private val CFGregorianDateIsValid_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFGregorianDateIsValid").orElseThrow()
 private val CFGregorianDateIsValid_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFGregorianDateIsValid_ADDR, CFGregorianDateIsValid_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 fun CFGregorianDateIsValid(arg0: MemorySegment, arg1: Long): Byte {
     try {
         return CFGregorianDateIsValid_HANDLE.invokeExact(arg0, arg1) as Byte
@@ -3615,6 +3778,10 @@ private val CFGregorianDateGetAbsoluteTime_DESC: FunctionDescriptor = FunctionDe
 private val CFGregorianDateGetAbsoluteTime_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFGregorianDateGetAbsoluteTime").orElseThrow()
 private val CFGregorianDateGetAbsoluteTime_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFGregorianDateGetAbsoluteTime_ADDR, CFGregorianDateGetAbsoluteTime_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 fun CFGregorianDateGetAbsoluteTime(arg0: MemorySegment, arg1: MemorySegment): Double {
     try {
         return CFGregorianDateGetAbsoluteTime_HANDLE.invokeExact(arg0, arg1) as Double
@@ -3634,6 +3801,10 @@ private val CFAbsoluteTimeGetGregorianDate_DESC: FunctionDescriptor = FunctionDe
 private val CFAbsoluteTimeGetGregorianDate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetGregorianDate").orElseThrow()
 private val CFAbsoluteTimeGetGregorianDate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetGregorianDate_ADDR, CFAbsoluteTimeGetGregorianDate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 fun CFAbsoluteTimeGetGregorianDate(allocator: SegmentAllocator, arg0: Double, arg1: MemorySegment): MemorySegment {
     try {
         return CFAbsoluteTimeGetGregorianDate_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -3653,6 +3824,10 @@ private val CFAbsoluteTimeAddGregorianUnits_DESC: FunctionDescriptor = FunctionD
 private val CFAbsoluteTimeAddGregorianUnits_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeAddGregorianUnits").orElseThrow()
 private val CFAbsoluteTimeAddGregorianUnits_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeAddGregorianUnits_ADDR, CFAbsoluteTimeAddGregorianUnits_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 fun CFAbsoluteTimeAddGregorianUnits(arg0: Double, arg1: MemorySegment, arg2: MemorySegment): Double {
     try {
         return CFAbsoluteTimeAddGregorianUnits_HANDLE.invokeExact(arg0, arg1, arg2) as Double
@@ -3672,6 +3847,10 @@ private val CFAbsoluteTimeGetDifferenceAsGregorianUnits_DESC: FunctionDescriptor
 private val CFAbsoluteTimeGetDifferenceAsGregorianUnits_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetDifferenceAsGregorianUnits").orElseThrow()
 private val CFAbsoluteTimeGetDifferenceAsGregorianUnits_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetDifferenceAsGregorianUnits_ADDR, CFAbsoluteTimeGetDifferenceAsGregorianUnits_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 fun CFAbsoluteTimeGetDifferenceAsGregorianUnits(allocator: SegmentAllocator, arg0: Double, arg1: Double, arg2: MemorySegment, arg3: Long): MemorySegment {
     try {
         return CFAbsoluteTimeGetDifferenceAsGregorianUnits_HANDLE.invokeExact(allocator, arg0, arg1, arg2, arg3) as MemorySegment
@@ -3691,6 +3870,10 @@ private val CFAbsoluteTimeGetDayOfWeek_DESC: FunctionDescriptor = FunctionDescri
 private val CFAbsoluteTimeGetDayOfWeek_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetDayOfWeek").orElseThrow()
 private val CFAbsoluteTimeGetDayOfWeek_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetDayOfWeek_ADDR, CFAbsoluteTimeGetDayOfWeek_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 fun CFAbsoluteTimeGetDayOfWeek(arg0: Double, arg1: MemorySegment): Int {
     try {
         return CFAbsoluteTimeGetDayOfWeek_HANDLE.invokeExact(arg0, arg1) as Int
@@ -3710,6 +3893,10 @@ private val CFAbsoluteTimeGetDayOfYear_DESC: FunctionDescriptor = FunctionDescri
 private val CFAbsoluteTimeGetDayOfYear_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetDayOfYear").orElseThrow()
 private val CFAbsoluteTimeGetDayOfYear_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetDayOfYear_ADDR, CFAbsoluteTimeGetDayOfYear_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 fun CFAbsoluteTimeGetDayOfYear(arg0: Double, arg1: MemorySegment): Int {
     try {
         return CFAbsoluteTimeGetDayOfYear_HANDLE.invokeExact(arg0, arg1) as Int
@@ -3729,6 +3916,10 @@ private val CFAbsoluteTimeGetWeekOfYear_DESC: FunctionDescriptor = FunctionDescr
 private val CFAbsoluteTimeGetWeekOfYear_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetWeekOfYear").orElseThrow()
 private val CFAbsoluteTimeGetWeekOfYear_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetWeekOfYear_ADDR, CFAbsoluteTimeGetWeekOfYear_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 fun CFAbsoluteTimeGetWeekOfYear(arg0: Double, arg1: MemorySegment): Int {
     try {
         return CFAbsoluteTimeGetWeekOfYear_HANDLE.invokeExact(arg0, arg1) as Int
@@ -4033,6 +4224,10 @@ private val CFDataFind_DESC: FunctionDescriptor = FunctionDescriptor.of(CFRange.
 private val CFDataFind_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataFind").orElseThrow()
 private val CFDataFind_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataFind_ADDR, CFDataFind_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFDataFind(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CFDataSearchFlags): MemorySegment {
     try {
         return CFDataFind_HANDLE.invokeExact(allocator, arg0, arg1, arg2, arg3.rawValue) as MemorySegment
@@ -4451,6 +4646,10 @@ private val CFErrorGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CFErrorGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorGetTypeID").orElseThrow()
 private val CFErrorGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorGetTypeID_ADDR, CFErrorGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFErrorGetTypeID(): Long {
     try {
         return CFErrorGetTypeID_HANDLE.invokeExact() as Long
@@ -4470,6 +4669,10 @@ private val kCFErrorDomainPOSIX_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val kCFErrorDomainPOSIX_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorDomainPOSIX").orElseThrow().reinterpret(kCFErrorDomainPOSIX_LAYOUT.byteSize()) }
 private val kCFErrorDomainPOSIX_VH: VarHandle by lazy { kCFErrorDomainPOSIX_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorDomainPOSIX: MemorySegment
     get() = kCFErrorDomainPOSIX_VH.get(kCFErrorDomainPOSIX_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorDomainPOSIX_VH.set(kCFErrorDomainPOSIX_SEGMENT, 0L, value)
@@ -4481,6 +4684,10 @@ private val kCFErrorDomainOSStatus_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val kCFErrorDomainOSStatus_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorDomainOSStatus").orElseThrow().reinterpret(kCFErrorDomainOSStatus_LAYOUT.byteSize()) }
 private val kCFErrorDomainOSStatus_VH: VarHandle by lazy { kCFErrorDomainOSStatus_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorDomainOSStatus: MemorySegment
     get() = kCFErrorDomainOSStatus_VH.get(kCFErrorDomainOSStatus_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorDomainOSStatus_VH.set(kCFErrorDomainOSStatus_SEGMENT, 0L, value)
@@ -4492,6 +4699,10 @@ private val kCFErrorDomainMach_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val kCFErrorDomainMach_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorDomainMach").orElseThrow().reinterpret(kCFErrorDomainMach_LAYOUT.byteSize()) }
 private val kCFErrorDomainMach_VH: VarHandle by lazy { kCFErrorDomainMach_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorDomainMach: MemorySegment
     get() = kCFErrorDomainMach_VH.get(kCFErrorDomainMach_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorDomainMach_VH.set(kCFErrorDomainMach_SEGMENT, 0L, value)
@@ -4503,6 +4714,10 @@ private val kCFErrorDomainCocoa_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val kCFErrorDomainCocoa_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorDomainCocoa").orElseThrow().reinterpret(kCFErrorDomainCocoa_LAYOUT.byteSize()) }
 private val kCFErrorDomainCocoa_VH: VarHandle by lazy { kCFErrorDomainCocoa_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorDomainCocoa: MemorySegment
     get() = kCFErrorDomainCocoa_VH.get(kCFErrorDomainCocoa_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorDomainCocoa_VH.set(kCFErrorDomainCocoa_SEGMENT, 0L, value)
@@ -4514,6 +4729,10 @@ private val kCFErrorLocalizedDescriptionKey_LAYOUT: ValueLayout by lazy { ValueL
 private val kCFErrorLocalizedDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorLocalizedDescriptionKey").orElseThrow().reinterpret(kCFErrorLocalizedDescriptionKey_LAYOUT.byteSize()) }
 private val kCFErrorLocalizedDescriptionKey_VH: VarHandle by lazy { kCFErrorLocalizedDescriptionKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorLocalizedDescriptionKey: MemorySegment
     get() = kCFErrorLocalizedDescriptionKey_VH.get(kCFErrorLocalizedDescriptionKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorLocalizedDescriptionKey_VH.set(kCFErrorLocalizedDescriptionKey_SEGMENT, 0L, value)
@@ -4525,6 +4744,10 @@ private val kCFErrorLocalizedFailureKey_LAYOUT: ValueLayout by lazy { ValueLayou
 private val kCFErrorLocalizedFailureKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorLocalizedFailureKey").orElseThrow().reinterpret(kCFErrorLocalizedFailureKey_LAYOUT.byteSize()) }
 private val kCFErrorLocalizedFailureKey_VH: VarHandle by lazy { kCFErrorLocalizedFailureKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorLocalizedFailureKey: MemorySegment
     get() = kCFErrorLocalizedFailureKey_VH.get(kCFErrorLocalizedFailureKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorLocalizedFailureKey_VH.set(kCFErrorLocalizedFailureKey_SEGMENT, 0L, value)
@@ -4536,6 +4759,10 @@ private val kCFErrorLocalizedFailureReasonKey_LAYOUT: ValueLayout by lazy { Valu
 private val kCFErrorLocalizedFailureReasonKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorLocalizedFailureReasonKey").orElseThrow().reinterpret(kCFErrorLocalizedFailureReasonKey_LAYOUT.byteSize()) }
 private val kCFErrorLocalizedFailureReasonKey_VH: VarHandle by lazy { kCFErrorLocalizedFailureReasonKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorLocalizedFailureReasonKey: MemorySegment
     get() = kCFErrorLocalizedFailureReasonKey_VH.get(kCFErrorLocalizedFailureReasonKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorLocalizedFailureReasonKey_VH.set(kCFErrorLocalizedFailureReasonKey_SEGMENT, 0L, value)
@@ -4547,6 +4774,10 @@ private val kCFErrorLocalizedRecoverySuggestionKey_LAYOUT: ValueLayout by lazy {
 private val kCFErrorLocalizedRecoverySuggestionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorLocalizedRecoverySuggestionKey").orElseThrow().reinterpret(kCFErrorLocalizedRecoverySuggestionKey_LAYOUT.byteSize()) }
 private val kCFErrorLocalizedRecoverySuggestionKey_VH: VarHandle by lazy { kCFErrorLocalizedRecoverySuggestionKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorLocalizedRecoverySuggestionKey: MemorySegment
     get() = kCFErrorLocalizedRecoverySuggestionKey_VH.get(kCFErrorLocalizedRecoverySuggestionKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorLocalizedRecoverySuggestionKey_VH.set(kCFErrorLocalizedRecoverySuggestionKey_SEGMENT, 0L, value)
@@ -4558,6 +4789,10 @@ private val kCFErrorDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADD
 private val kCFErrorDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorDescriptionKey").orElseThrow().reinterpret(kCFErrorDescriptionKey_LAYOUT.byteSize()) }
 private val kCFErrorDescriptionKey_VH: VarHandle by lazy { kCFErrorDescriptionKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorDescriptionKey: MemorySegment
     get() = kCFErrorDescriptionKey_VH.get(kCFErrorDescriptionKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorDescriptionKey_VH.set(kCFErrorDescriptionKey_SEGMENT, 0L, value)
@@ -4569,6 +4804,10 @@ private val kCFErrorUnderlyingErrorKey_LAYOUT: ValueLayout by lazy { ValueLayout
 private val kCFErrorUnderlyingErrorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorUnderlyingErrorKey").orElseThrow().reinterpret(kCFErrorUnderlyingErrorKey_LAYOUT.byteSize()) }
 private val kCFErrorUnderlyingErrorKey_VH: VarHandle by lazy { kCFErrorUnderlyingErrorKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorUnderlyingErrorKey: MemorySegment
     get() = kCFErrorUnderlyingErrorKey_VH.get(kCFErrorUnderlyingErrorKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorUnderlyingErrorKey_VH.set(kCFErrorUnderlyingErrorKey_SEGMENT, 0L, value)
@@ -4580,6 +4819,10 @@ private val kCFErrorURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val kCFErrorURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorURLKey").orElseThrow().reinterpret(kCFErrorURLKey_LAYOUT.byteSize()) }
 private val kCFErrorURLKey_VH: VarHandle by lazy { kCFErrorURLKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorURLKey: MemorySegment
     get() = kCFErrorURLKey_VH.get(kCFErrorURLKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorURLKey_VH.set(kCFErrorURLKey_SEGMENT, 0L, value)
@@ -4591,6 +4834,10 @@ private val kCFErrorFilePathKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val kCFErrorFilePathKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCFErrorFilePathKey").orElseThrow().reinterpret(kCFErrorFilePathKey_LAYOUT.byteSize()) }
 private val kCFErrorFilePathKey_VH: VarHandle by lazy { kCFErrorFilePathKey_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 var kCFErrorFilePathKey: MemorySegment
     get() = kCFErrorFilePathKey_VH.get(kCFErrorFilePathKey_SEGMENT, 0L) as MemorySegment
     set(value) = kCFErrorFilePathKey_VH.set(kCFErrorFilePathKey_SEGMENT, 0L, value)
@@ -4602,6 +4849,10 @@ private val CFErrorCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CFErrorCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCreate").orElseThrow()
 private val CFErrorCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCreate_ADDR, CFErrorCreate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFErrorCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): MemorySegment {
     try {
         return CFErrorCreate_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -4621,6 +4872,10 @@ private val CFErrorCreateWithUserInfoKeysAndValues_DESC: FunctionDescriptor = Fu
 private val CFErrorCreateWithUserInfoKeysAndValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCreateWithUserInfoKeysAndValues").orElseThrow()
 private val CFErrorCreateWithUserInfoKeysAndValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCreateWithUserInfoKeysAndValues_ADDR, CFErrorCreateWithUserInfoKeysAndValues_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFErrorCreateWithUserInfoKeysAndValues(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment, arg4: MemorySegment, arg5: Long): MemorySegment {
     try {
         return CFErrorCreateWithUserInfoKeysAndValues_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as MemorySegment
@@ -4640,6 +4895,10 @@ private val CFErrorGetDomain_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CFErrorGetDomain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorGetDomain").orElseThrow()
 private val CFErrorGetDomain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorGetDomain_ADDR, CFErrorGetDomain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFErrorGetDomain(arg0: MemorySegment): MemorySegment {
     try {
         return CFErrorGetDomain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4659,6 +4918,10 @@ private val CFErrorGetCode_DESC: FunctionDescriptor = FunctionDescriptor.of(Valu
 private val CFErrorGetCode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorGetCode").orElseThrow()
 private val CFErrorGetCode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorGetCode_ADDR, CFErrorGetCode_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFErrorGetCode(arg0: MemorySegment): Long {
     try {
         return CFErrorGetCode_HANDLE.invokeExact(arg0) as Long
@@ -4678,6 +4941,10 @@ private val CFErrorCopyUserInfo_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CFErrorCopyUserInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCopyUserInfo").orElseThrow()
 private val CFErrorCopyUserInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCopyUserInfo_ADDR, CFErrorCopyUserInfo_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFErrorCopyUserInfo(arg0: MemorySegment): MemorySegment {
     try {
         return CFErrorCopyUserInfo_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4697,6 +4964,10 @@ private val CFErrorCopyDescription_DESC: FunctionDescriptor = FunctionDescriptor
 private val CFErrorCopyDescription_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCopyDescription").orElseThrow()
 private val CFErrorCopyDescription_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCopyDescription_ADDR, CFErrorCopyDescription_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFErrorCopyDescription(arg0: MemorySegment): MemorySegment {
     try {
         return CFErrorCopyDescription_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4716,6 +4987,10 @@ private val CFErrorCopyFailureReason_DESC: FunctionDescriptor = FunctionDescript
 private val CFErrorCopyFailureReason_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCopyFailureReason").orElseThrow()
 private val CFErrorCopyFailureReason_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCopyFailureReason_ADDR, CFErrorCopyFailureReason_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFErrorCopyFailureReason(arg0: MemorySegment): MemorySegment {
     try {
         return CFErrorCopyFailureReason_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4735,6 +5010,10 @@ private val CFErrorCopyRecoverySuggestion_DESC: FunctionDescriptor = FunctionDes
 private val CFErrorCopyRecoverySuggestion_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCopyRecoverySuggestion").orElseThrow()
 private val CFErrorCopyRecoverySuggestion_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCopyRecoverySuggestion_ADDR, CFErrorCopyRecoverySuggestion_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun CFErrorCopyRecoverySuggestion(arg0: MemorySegment): MemorySegment {
     try {
         return CFErrorCopyRecoverySuggestion_HANDLE.invokeExact(arg0) as MemorySegment
@@ -5001,6 +5280,11 @@ private val CFStringCreateStringWithValidatedFormat_DESC: FunctionDescriptor = F
 private val CFStringCreateStringWithValidatedFormat_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateStringWithValidatedFormat").orElseThrow()
 private val CFStringCreateStringWithValidatedFormat_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateStringWithValidatedFormat_ADDR, CFStringCreateStringWithValidatedFormat_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use string interpolations instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun CFStringCreateStringWithValidatedFormat(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): MemorySegment {
     try {
         return CFStringCreateStringWithValidatedFormat_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
@@ -5020,6 +5304,11 @@ private val CFStringCreateStringWithValidatedFormatAndArguments_DESC: FunctionDe
 private val CFStringCreateStringWithValidatedFormatAndArguments_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateStringWithValidatedFormatAndArguments").orElseThrow()
 private val CFStringCreateStringWithValidatedFormatAndArguments_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateStringWithValidatedFormatAndArguments_ADDR, CFStringCreateStringWithValidatedFormatAndArguments_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use string interpolations instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun CFStringCreateStringWithValidatedFormatAndArguments(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: MemorySegment): MemorySegment {
     try {
         return CFStringCreateStringWithValidatedFormatAndArguments_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as MemorySegment

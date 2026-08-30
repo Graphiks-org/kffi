@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -121,16 +123,19 @@ fun NSAffineTransform_supportsSecureCoding(): Boolean {
 
 // ── Category: NSAppKitAdditions on NSAffineTransform ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSAffineTransform.transformBezierPath(path: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("transformBezierPath:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSAffineTransform.`set`(): Unit {
     val sel = ObjCRuntime.sel("set")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSAffineTransform.concat(): Unit {
     val sel = ObjCRuntime.sel("concat")
     ObjCRuntime.msgSend(null, this.ptr, sel)

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -11,6 +13,8 @@ private val kCGColorBlack_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val kCGColorBlack_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorBlack").orElseThrow().reinterpret(kCGColorBlack_LAYOUT.byteSize()) }
 private val kCGColorBlack_VH: VarHandle by lazy { kCGColorBlack_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 var kCGColorBlack: MemorySegment
     get() = kCGColorBlack_VH.get(kCGColorBlack_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorBlack_VH.set(kCGColorBlack_SEGMENT, 0L, value)
@@ -22,6 +26,8 @@ private val kCGColorClear_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
 private val kCGColorClear_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGColorClear").orElseThrow().reinterpret(kCGColorClear_LAYOUT.byteSize()) }
 private val kCGColorClear_VH: VarHandle by lazy { kCGColorClear_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 var kCGColorClear: MemorySegment
     get() = kCGColorClear_VH.get(kCGColorClear_SEGMENT, 0L) as MemorySegment
     set(value) = kCGColorClear_VH.set(kCGColorClear_SEGMENT, 0L, value)
@@ -33,6 +39,8 @@ private val CGFontGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGFontGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetTypeID").orElseThrow()
 private val CGFontGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetTypeID_ADDR, CGFontGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGFontGetTypeID(): Long {
     try {
         return CGFontGetTypeID_HANDLE.invokeExact() as Long
@@ -52,6 +60,10 @@ private val CGFontCreateWithPlatformFont_DESC: FunctionDescriptor = FunctionDesc
 private val CGFontCreateWithPlatformFont_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreateWithPlatformFont").orElseThrow()
 private val CGFontCreateWithPlatformFont_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreateWithPlatformFont_ADDR, CGFontCreateWithPlatformFont_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGFontCreateWithPlatformFont(arg0: MemorySegment): MemorySegment {
     try {
         return CGFontCreateWithPlatformFont_HANDLE.invokeExact(arg0) as MemorySegment
@@ -71,6 +83,8 @@ private val CGFontCreateWithDataProvider_DESC: FunctionDescriptor = FunctionDesc
 private val CGFontCreateWithDataProvider_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreateWithDataProvider").orElseThrow()
 private val CGFontCreateWithDataProvider_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreateWithDataProvider_ADDR, CGFontCreateWithDataProvider_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontCreateWithDataProvider(arg0: MemorySegment): MemorySegment {
     try {
         return CGFontCreateWithDataProvider_HANDLE.invokeExact(arg0) as MemorySegment
@@ -90,6 +104,8 @@ private val CGFontCreateWithFontName_DESC: FunctionDescriptor = FunctionDescript
 private val CGFontCreateWithFontName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreateWithFontName").orElseThrow()
 private val CGFontCreateWithFontName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreateWithFontName_ADDR, CGFontCreateWithFontName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontCreateWithFontName(arg0: MemorySegment): MemorySegment {
     try {
         return CGFontCreateWithFontName_HANDLE.invokeExact(arg0) as MemorySegment
@@ -109,6 +125,8 @@ private val CGFontCreateCopyWithVariations_DESC: FunctionDescriptor = FunctionDe
 private val CGFontCreateCopyWithVariations_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreateCopyWithVariations").orElseThrow()
 private val CGFontCreateCopyWithVariations_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreateCopyWithVariations_ADDR, CGFontCreateCopyWithVariations_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGFontCreateCopyWithVariations(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGFontCreateCopyWithVariations_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -128,6 +146,8 @@ private val CGFontRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueL
 private val CGFontRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontRetain").orElseThrow()
 private val CGFontRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontRetain_ADDR, CGFontRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGFontRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGFontRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -147,6 +167,8 @@ private val CGFontRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(V
 private val CGFontRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontRelease").orElseThrow()
 private val CGFontRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontRelease_ADDR, CGFontRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGFontRelease(arg0: MemorySegment): Unit {
     try {
         CGFontRelease_HANDLE.invokeExact(arg0)
@@ -166,6 +188,8 @@ private val CGFontGetNumberOfGlyphs_DESC: FunctionDescriptor = FunctionDescripto
 private val CGFontGetNumberOfGlyphs_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetNumberOfGlyphs").orElseThrow()
 private val CGFontGetNumberOfGlyphs_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetNumberOfGlyphs_ADDR, CGFontGetNumberOfGlyphs_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGFontGetNumberOfGlyphs(arg0: MemorySegment): Long {
     try {
         return CGFontGetNumberOfGlyphs_HANDLE.invokeExact(arg0) as Long
@@ -185,6 +209,8 @@ private val CGFontGetUnitsPerEm_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGFontGetUnitsPerEm_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetUnitsPerEm").orElseThrow()
 private val CGFontGetUnitsPerEm_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetUnitsPerEm_ADDR, CGFontGetUnitsPerEm_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGFontGetUnitsPerEm(arg0: MemorySegment): Int {
     try {
         return CGFontGetUnitsPerEm_HANDLE.invokeExact(arg0) as Int
@@ -204,6 +230,8 @@ private val CGFontCopyPostScriptName_DESC: FunctionDescriptor = FunctionDescript
 private val CGFontCopyPostScriptName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyPostScriptName").orElseThrow()
 private val CGFontCopyPostScriptName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyPostScriptName_ADDR, CGFontCopyPostScriptName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGFontCopyPostScriptName(arg0: MemorySegment): MemorySegment {
     try {
         return CGFontCopyPostScriptName_HANDLE.invokeExact(arg0) as MemorySegment
@@ -223,6 +251,8 @@ private val CGFontCopyFullName_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGFontCopyFullName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyFullName").orElseThrow()
 private val CGFontCopyFullName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyFullName_ADDR, CGFontCopyFullName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontCopyFullName(arg0: MemorySegment): MemorySegment {
     try {
         return CGFontCopyFullName_HANDLE.invokeExact(arg0) as MemorySegment
@@ -242,6 +272,8 @@ private val CGFontGetAscent_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGFontGetAscent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetAscent").orElseThrow()
 private val CGFontGetAscent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetAscent_ADDR, CGFontGetAscent_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetAscent(arg0: MemorySegment): Int {
     try {
         return CGFontGetAscent_HANDLE.invokeExact(arg0) as Int
@@ -261,6 +293,8 @@ private val CGFontGetDescent_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGFontGetDescent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetDescent").orElseThrow()
 private val CGFontGetDescent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetDescent_ADDR, CGFontGetDescent_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetDescent(arg0: MemorySegment): Int {
     try {
         return CGFontGetDescent_HANDLE.invokeExact(arg0) as Int
@@ -280,6 +314,8 @@ private val CGFontGetLeading_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGFontGetLeading_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetLeading").orElseThrow()
 private val CGFontGetLeading_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetLeading_ADDR, CGFontGetLeading_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetLeading(arg0: MemorySegment): Int {
     try {
         return CGFontGetLeading_HANDLE.invokeExact(arg0) as Int
@@ -299,6 +335,8 @@ private val CGFontGetCapHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGFontGetCapHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetCapHeight").orElseThrow()
 private val CGFontGetCapHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetCapHeight_ADDR, CGFontGetCapHeight_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetCapHeight(arg0: MemorySegment): Int {
     try {
         return CGFontGetCapHeight_HANDLE.invokeExact(arg0) as Int
@@ -318,6 +356,8 @@ private val CGFontGetXHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGFontGetXHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetXHeight").orElseThrow()
 private val CGFontGetXHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetXHeight_ADDR, CGFontGetXHeight_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetXHeight(arg0: MemorySegment): Int {
     try {
         return CGFontGetXHeight_HANDLE.invokeExact(arg0) as Int
@@ -337,6 +377,8 @@ private val CGFontGetFontBBox_DESC: FunctionDescriptor = FunctionDescriptor.of(C
 private val CGFontGetFontBBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetFontBBox").orElseThrow()
 private val CGFontGetFontBBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetFontBBox_ADDR, CGFontGetFontBBox_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetFontBBox(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGFontGetFontBBox_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -349,6 +391,8 @@ fun CGFontGetFontBBox(allocator: SegmentAllocator, arg0: MemorySegment): MemoryS
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetFontBBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
     return CGRect(CGFontGetFontBBox(allocator, arg0))
 }
@@ -360,6 +404,8 @@ private val CGFontGetItalicAngle_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGFontGetItalicAngle_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetItalicAngle").orElseThrow()
 private val CGFontGetItalicAngle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetItalicAngle_ADDR, CGFontGetItalicAngle_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetItalicAngle(arg0: MemorySegment): Double {
     try {
         return CGFontGetItalicAngle_HANDLE.invokeExact(arg0) as Double
@@ -379,6 +425,8 @@ private val CGFontGetStemV_DESC: FunctionDescriptor = FunctionDescriptor.of(Valu
 private val CGFontGetStemV_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetStemV").orElseThrow()
 private val CGFontGetStemV_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetStemV_ADDR, CGFontGetStemV_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetStemV(arg0: MemorySegment): Double {
     try {
         return CGFontGetStemV_HANDLE.invokeExact(arg0) as Double
@@ -398,6 +446,8 @@ private val CGFontCopyVariationAxes_DESC: FunctionDescriptor = FunctionDescripto
 private val CGFontCopyVariationAxes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyVariationAxes").orElseThrow()
 private val CGFontCopyVariationAxes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyVariationAxes_ADDR, CGFontCopyVariationAxes_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGFontCopyVariationAxes(arg0: MemorySegment): MemorySegment {
     try {
         return CGFontCopyVariationAxes_HANDLE.invokeExact(arg0) as MemorySegment
@@ -417,6 +467,8 @@ private val CGFontCopyVariations_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGFontCopyVariations_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyVariations").orElseThrow()
 private val CGFontCopyVariations_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyVariations_ADDR, CGFontCopyVariations_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGFontCopyVariations(arg0: MemorySegment): MemorySegment {
     try {
         return CGFontCopyVariations_HANDLE.invokeExact(arg0) as MemorySegment
@@ -436,6 +488,8 @@ private val CGFontGetGlyphAdvances_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGFontGetGlyphAdvances_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetGlyphAdvances").orElseThrow()
 private val CGFontGetGlyphAdvances_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetGlyphAdvances_ADDR, CGFontGetGlyphAdvances_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGFontGetGlyphAdvances(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): Boolean {
     try {
         return CGFontGetGlyphAdvances_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Boolean
@@ -455,6 +509,8 @@ private val CGFontGetGlyphBBoxes_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGFontGetGlyphBBoxes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetGlyphBBoxes").orElseThrow()
 private val CGFontGetGlyphBBoxes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetGlyphBBoxes_ADDR, CGFontGetGlyphBBoxes_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetGlyphBBoxes(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): Boolean {
     try {
         return CGFontGetGlyphBBoxes_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Boolean
@@ -474,6 +530,8 @@ private val CGFontGetGlyphWithGlyphName_DESC: FunctionDescriptor = FunctionDescr
 private val CGFontGetGlyphWithGlyphName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontGetGlyphWithGlyphName").orElseThrow()
 private val CGFontGetGlyphWithGlyphName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontGetGlyphWithGlyphName_ADDR, CGFontGetGlyphWithGlyphName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontGetGlyphWithGlyphName(arg0: MemorySegment, arg1: MemorySegment): Short {
     try {
         return CGFontGetGlyphWithGlyphName_HANDLE.invokeExact(arg0, arg1) as Short
@@ -493,6 +551,8 @@ private val CGFontCopyGlyphNameForGlyph_DESC: FunctionDescriptor = FunctionDescr
 private val CGFontCopyGlyphNameForGlyph_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyGlyphNameForGlyph").orElseThrow()
 private val CGFontCopyGlyphNameForGlyph_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyGlyphNameForGlyph_ADDR, CGFontCopyGlyphNameForGlyph_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontCopyGlyphNameForGlyph(arg0: MemorySegment, arg1: Short): MemorySegment {
     try {
         return CGFontCopyGlyphNameForGlyph_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -512,6 +572,8 @@ private val CGFontCanCreatePostScriptSubset_DESC: FunctionDescriptor = FunctionD
 private val CGFontCanCreatePostScriptSubset_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCanCreatePostScriptSubset").orElseThrow()
 private val CGFontCanCreatePostScriptSubset_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCanCreatePostScriptSubset_ADDR, CGFontCanCreatePostScriptSubset_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGFontCanCreatePostScriptSubset(arg0: MemorySegment, arg1: CGFontPostScriptFormat): Boolean {
     try {
         return CGFontCanCreatePostScriptSubset_HANDLE.invokeExact(arg0, arg1.value.toInt()) as Boolean
@@ -531,6 +593,8 @@ private val CGFontCreatePostScriptSubset_DESC: FunctionDescriptor = FunctionDesc
 private val CGFontCreatePostScriptSubset_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreatePostScriptSubset").orElseThrow()
 private val CGFontCreatePostScriptSubset_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreatePostScriptSubset_ADDR, CGFontCreatePostScriptSubset_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGFontCreatePostScriptSubset(arg0: MemorySegment, arg1: MemorySegment, arg2: CGFontPostScriptFormat, arg3: MemorySegment, arg4: Long, arg5: MemorySegment): MemorySegment {
     try {
         return CGFontCreatePostScriptSubset_HANDLE.invokeExact(arg0, arg1, arg2.value.toInt(), arg3, arg4, arg5) as MemorySegment
@@ -550,6 +614,8 @@ private val CGFontCreatePostScriptEncoding_DESC: FunctionDescriptor = FunctionDe
 private val CGFontCreatePostScriptEncoding_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCreatePostScriptEncoding").orElseThrow()
 private val CGFontCreatePostScriptEncoding_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCreatePostScriptEncoding_ADDR, CGFontCreatePostScriptEncoding_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGFontCreatePostScriptEncoding(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGFontCreatePostScriptEncoding_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -569,6 +635,8 @@ private val CGFontCopyTableTags_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGFontCopyTableTags_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyTableTags").orElseThrow()
 private val CGFontCopyTableTags_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyTableTags_ADDR, CGFontCopyTableTags_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontCopyTableTags(arg0: MemorySegment): MemorySegment {
     try {
         return CGFontCopyTableTags_HANDLE.invokeExact(arg0) as MemorySegment
@@ -588,6 +656,8 @@ private val CGFontCopyTableForTag_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGFontCopyTableForTag_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFontCopyTableForTag").orElseThrow()
 private val CGFontCopyTableForTag_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFontCopyTableForTag_ADDR, CGFontCopyTableForTag_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGFontCopyTableForTag(arg0: MemorySegment, arg1: Int): MemorySegment {
     try {
         return CGFontCopyTableForTag_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -607,6 +677,8 @@ private val kCGFontVariationAxisName_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val kCGFontVariationAxisName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisName").orElseThrow().reinterpret(kCGFontVariationAxisName_LAYOUT.byteSize()) }
 private val kCGFontVariationAxisName_VH: VarHandle by lazy { kCGFontVariationAxisName_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 var kCGFontVariationAxisName: MemorySegment
     get() = kCGFontVariationAxisName_VH.get(kCGFontVariationAxisName_SEGMENT, 0L) as MemorySegment
     set(value) = kCGFontVariationAxisName_VH.set(kCGFontVariationAxisName_SEGMENT, 0L, value)
@@ -618,6 +690,8 @@ private val kCGFontVariationAxisMinValue_LAYOUT: ValueLayout by lazy { ValueLayo
 private val kCGFontVariationAxisMinValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisMinValue").orElseThrow().reinterpret(kCGFontVariationAxisMinValue_LAYOUT.byteSize()) }
 private val kCGFontVariationAxisMinValue_VH: VarHandle by lazy { kCGFontVariationAxisMinValue_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 var kCGFontVariationAxisMinValue: MemorySegment
     get() = kCGFontVariationAxisMinValue_VH.get(kCGFontVariationAxisMinValue_SEGMENT, 0L) as MemorySegment
     set(value) = kCGFontVariationAxisMinValue_VH.set(kCGFontVariationAxisMinValue_SEGMENT, 0L, value)
@@ -629,6 +703,8 @@ private val kCGFontVariationAxisMaxValue_LAYOUT: ValueLayout by lazy { ValueLayo
 private val kCGFontVariationAxisMaxValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisMaxValue").orElseThrow().reinterpret(kCGFontVariationAxisMaxValue_LAYOUT.byteSize()) }
 private val kCGFontVariationAxisMaxValue_VH: VarHandle by lazy { kCGFontVariationAxisMaxValue_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 var kCGFontVariationAxisMaxValue: MemorySegment
     get() = kCGFontVariationAxisMaxValue_VH.get(kCGFontVariationAxisMaxValue_SEGMENT, 0L) as MemorySegment
     set(value) = kCGFontVariationAxisMaxValue_VH.set(kCGFontVariationAxisMaxValue_SEGMENT, 0L, value)
@@ -640,6 +716,8 @@ private val kCGFontVariationAxisDefaultValue_LAYOUT: ValueLayout by lazy { Value
 private val kCGFontVariationAxisDefaultValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGFontVariationAxisDefaultValue").orElseThrow().reinterpret(kCGFontVariationAxisDefaultValue_LAYOUT.byteSize()) }
 private val kCGFontVariationAxisDefaultValue_VH: VarHandle by lazy { kCGFontVariationAxisDefaultValue_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 var kCGFontVariationAxisDefaultValue: MemorySegment
     get() = kCGFontVariationAxisDefaultValue_VH.get(kCGFontVariationAxisDefaultValue_SEGMENT, 0L) as MemorySegment
     set(value) = kCGFontVariationAxisDefaultValue_VH.set(kCGFontVariationAxisDefaultValue_SEGMENT, 0L, value)
@@ -651,6 +729,8 @@ private val CGGradientGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGGradientGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientGetTypeID").orElseThrow()
 private val CGGradientGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientGetTypeID_ADDR, CGGradientGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGGradientGetTypeID(): Long {
     try {
         return CGGradientGetTypeID_HANDLE.invokeExact() as Long
@@ -670,6 +750,8 @@ private val CGGradientCreateWithColorComponents_DESC: FunctionDescriptor = Funct
 private val CGGradientCreateWithColorComponents_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientCreateWithColorComponents").orElseThrow()
 private val CGGradientCreateWithColorComponents_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientCreateWithColorComponents_ADDR, CGGradientCreateWithColorComponents_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGGradientCreateWithColorComponents(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): MemorySegment {
     try {
         return CGGradientCreateWithColorComponents_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -689,6 +771,11 @@ private val CGGradientCreateWithContentHeadroom_DESC: FunctionDescriptor = Funct
 private val CGGradientCreateWithContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientCreateWithContentHeadroom").orElseThrow()
 private val CGGradientCreateWithContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientCreateWithContentHeadroom_ADDR, CGGradientCreateWithContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGGradientCreateWithContentHeadroom(arg0: Float, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): MemorySegment {
     try {
         return CGGradientCreateWithContentHeadroom_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
@@ -708,6 +795,8 @@ private val CGGradientCreateWithColors_DESC: FunctionDescriptor = FunctionDescri
 private val CGGradientCreateWithColors_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientCreateWithColors").orElseThrow()
 private val CGGradientCreateWithColors_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientCreateWithColors_ADDR, CGGradientCreateWithColors_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGGradientCreateWithColors(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
     try {
         return CGGradientCreateWithColors_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -727,6 +816,8 @@ private val CGGradientRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGGradientRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientRetain").orElseThrow()
 private val CGGradientRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientRetain_ADDR, CGGradientRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGGradientRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGGradientRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -746,6 +837,8 @@ private val CGGradientRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGGradientRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientRelease").orElseThrow()
 private val CGGradientRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientRelease_ADDR, CGGradientRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGGradientRelease(arg0: MemorySegment): Unit {
     try {
         CGGradientRelease_HANDLE.invokeExact(arg0)
@@ -765,6 +858,11 @@ private val CGGradientGetContentHeadroom_DESC: FunctionDescriptor = FunctionDesc
 private val CGGradientGetContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGGradientGetContentHeadroom").orElseThrow()
 private val CGGradientGetContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGGradientGetContentHeadroom_ADDR, CGGradientGetContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGGradientGetContentHeadroom(arg0: MemorySegment): Float {
     try {
         return CGGradientGetContentHeadroom_HANDLE.invokeExact(arg0) as Float
@@ -784,6 +882,8 @@ private val CGImageGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGImageGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetTypeID").orElseThrow()
 private val CGImageGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetTypeID_ADDR, CGImageGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGImageGetTypeID(): Long {
     try {
         return CGImageGetTypeID_HANDLE.invokeExact() as Long
@@ -803,6 +903,8 @@ private val CGImageCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGImageCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreate").orElseThrow()
 private val CGImageCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreate_ADDR, CGImageCreate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageCreate(arg0: Long, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: MemorySegment, arg6: CGBitmapInfo, arg7: MemorySegment, arg8: MemorySegment, arg9: Boolean, arg10: CGColorRenderingIntent): MemorySegment {
     try {
         return CGImageCreate_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6.rawValue.toInt(), arg7, arg8, arg9, arg10.value.toInt()) as MemorySegment
@@ -822,6 +924,8 @@ private val CGImageMaskCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGImageMaskCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageMaskCreate").orElseThrow()
 private val CGImageMaskCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageMaskCreate_ADDR, CGImageMaskCreate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageMaskCreate(arg0: Long, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: MemorySegment, arg6: MemorySegment, arg7: Boolean): MemorySegment {
     try {
         return CGImageMaskCreate_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7) as MemorySegment
@@ -841,6 +945,8 @@ private val CGImageCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGImageCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopy").orElseThrow()
 private val CGImageCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopy_ADDR, CGImageCreateCopy_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGImageCreateCopy(arg0: MemorySegment): MemorySegment {
     try {
         return CGImageCreateCopy_HANDLE.invokeExact(arg0) as MemorySegment
@@ -860,6 +966,8 @@ private val CGImageCreateWithJPEGDataProvider_DESC: FunctionDescriptor = Functio
 private val CGImageCreateWithJPEGDataProvider_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithJPEGDataProvider").orElseThrow()
 private val CGImageCreateWithJPEGDataProvider_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithJPEGDataProvider_ADDR, CGImageCreateWithJPEGDataProvider_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1)
 fun CGImageCreateWithJPEGDataProvider(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean, arg3: CGColorRenderingIntent): MemorySegment {
     try {
         return CGImageCreateWithJPEGDataProvider_HANDLE.invokeExact(arg0, arg1, arg2, arg3.value.toInt()) as MemorySegment
@@ -879,6 +987,8 @@ private val CGImageCreateWithPNGDataProvider_DESC: FunctionDescriptor = Function
 private val CGImageCreateWithPNGDataProvider_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithPNGDataProvider").orElseThrow()
 private val CGImageCreateWithPNGDataProvider_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithPNGDataProvider_ADDR, CGImageCreateWithPNGDataProvider_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGImageCreateWithPNGDataProvider(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean, arg3: CGColorRenderingIntent): MemorySegment {
     try {
         return CGImageCreateWithPNGDataProvider_HANDLE.invokeExact(arg0, arg1, arg2, arg3.value.toInt()) as MemorySegment
@@ -898,6 +1008,8 @@ private val CGImageCreateWithImageInRect_DESC: FunctionDescriptor = FunctionDesc
 private val CGImageCreateWithImageInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithImageInRect").orElseThrow()
 private val CGImageCreateWithImageInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithImageInRect_ADDR, CGImageCreateWithImageInRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGImageCreateWithImageInRect(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGImageCreateWithImageInRect_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -910,6 +1022,8 @@ fun CGImageCreateWithImageInRect(arg0: MemorySegment, arg1: MemorySegment): Memo
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGImageCreateWithImageInRect(arg0: MemorySegment, arg1: CGRect): MemorySegment {
     return CGImageCreateWithImageInRect(arg0, arg1.segment)
 }
@@ -921,6 +1035,8 @@ private val CGImageCreateWithMask_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGImageCreateWithMask_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithMask").orElseThrow()
 private val CGImageCreateWithMask_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithMask_ADDR, CGImageCreateWithMask_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGImageCreateWithMask(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGImageCreateWithMask_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -940,6 +1056,8 @@ private val CGImageCreateWithMaskingColors_DESC: FunctionDescriptor = FunctionDe
 private val CGImageCreateWithMaskingColors_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithMaskingColors").orElseThrow()
 private val CGImageCreateWithMaskingColors_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithMaskingColors_ADDR, CGImageCreateWithMaskingColors_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGImageCreateWithMaskingColors(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGImageCreateWithMaskingColors_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -959,6 +1077,8 @@ private val CGImageCreateCopyWithColorSpace_DESC: FunctionDescriptor = FunctionD
 private val CGImageCreateCopyWithColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopyWithColorSpace").orElseThrow()
 private val CGImageCreateCopyWithColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopyWithColorSpace_ADDR, CGImageCreateCopyWithColorSpace_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGImageCreateCopyWithColorSpace(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGImageCreateCopyWithColorSpace_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -978,6 +1098,10 @@ private val CGImageCreateWithContentHeadroom_DESC: FunctionDescriptor = Function
 private val CGImageCreateWithContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateWithContentHeadroom").orElseThrow()
 private val CGImageCreateWithContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateWithContentHeadroom_ADDR, CGImageCreateWithContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageCreateWithContentHeadroom(arg0: Float, arg1: Long, arg2: Long, arg3: Long, arg4: Long, arg5: Long, arg6: MemorySegment, arg7: CGBitmapInfo, arg8: MemorySegment, arg9: MemorySegment, arg10: Boolean, arg11: CGColorRenderingIntent): MemorySegment {
     try {
         return CGImageCreateWithContentHeadroom_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7.rawValue.toInt(), arg8, arg9, arg10, arg11.value.toInt()) as MemorySegment
@@ -997,6 +1121,10 @@ private val CGImageCreateCopyWithContentHeadroom_DESC: FunctionDescriptor = Func
 private val CGImageCreateCopyWithContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopyWithContentHeadroom").orElseThrow()
 private val CGImageCreateCopyWithContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopyWithContentHeadroom_ADDR, CGImageCreateCopyWithContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageCreateCopyWithContentHeadroom(arg0: Float, arg1: MemorySegment): MemorySegment {
     try {
         return CGImageCreateCopyWithContentHeadroom_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -1016,6 +1144,10 @@ private val kCGDefaultHDRImageContentHeadroom_LAYOUT: ValueLayout by lazy { Valu
 private val kCGDefaultHDRImageContentHeadroom_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDefaultHDRImageContentHeadroom").orElseThrow().reinterpret(kCGDefaultHDRImageContentHeadroom_LAYOUT.byteSize()) }
 private val kCGDefaultHDRImageContentHeadroom_VH: VarHandle by lazy { kCGDefaultHDRImageContentHeadroom_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGDefaultHDRImageContentHeadroom: Float
     get() = kCGDefaultHDRImageContentHeadroom_VH.get(kCGDefaultHDRImageContentHeadroom_SEGMENT, 0L) as Float
     set(value) = kCGDefaultHDRImageContentHeadroom_VH.set(kCGDefaultHDRImageContentHeadroom_SEGMENT, 0L, value)
@@ -1027,6 +1159,10 @@ private val CGImageGetContentHeadroom_DESC: FunctionDescriptor = FunctionDescrip
 private val CGImageGetContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetContentHeadroom").orElseThrow()
 private val CGImageGetContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetContentHeadroom_ADDR, CGImageGetContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetContentHeadroom(arg0: MemorySegment): Float {
     try {
         return CGImageGetContentHeadroom_HANDLE.invokeExact(arg0) as Float
@@ -1046,6 +1182,10 @@ private val CGImageCalculateContentHeadroom_DESC: FunctionDescriptor = FunctionD
 private val CGImageCalculateContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCalculateContentHeadroom").orElseThrow()
 private val CGImageCalculateContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCalculateContentHeadroom_ADDR, CGImageCalculateContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageCalculateContentHeadroom(arg0: MemorySegment): Float {
     try {
         return CGImageCalculateContentHeadroom_HANDLE.invokeExact(arg0) as Float
@@ -1065,6 +1205,10 @@ private val CGImageGetContentAverageLightLevel_DESC: FunctionDescriptor = Functi
 private val CGImageGetContentAverageLightLevel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetContentAverageLightLevel").orElseThrow()
 private val CGImageGetContentAverageLightLevel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetContentAverageLightLevel_ADDR, CGImageGetContentAverageLightLevel_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetContentAverageLightLevel(arg0: MemorySegment): Float {
     try {
         return CGImageGetContentAverageLightLevel_HANDLE.invokeExact(arg0) as Float
@@ -1084,6 +1228,10 @@ private val CGImageCalculateContentAverageLightLevel_DESC: FunctionDescriptor = 
 private val CGImageCalculateContentAverageLightLevel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCalculateContentAverageLightLevel").orElseThrow()
 private val CGImageCalculateContentAverageLightLevel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCalculateContentAverageLightLevel_ADDR, CGImageCalculateContentAverageLightLevel_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageCalculateContentAverageLightLevel(arg0: MemorySegment): Float {
     try {
         return CGImageCalculateContentAverageLightLevel_HANDLE.invokeExact(arg0) as Float
@@ -1103,6 +1251,10 @@ private val CGImageCreateCopyWithContentAverageLightLevel_DESC: FunctionDescript
 private val CGImageCreateCopyWithContentAverageLightLevel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopyWithContentAverageLightLevel").orElseThrow()
 private val CGImageCreateCopyWithContentAverageLightLevel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopyWithContentAverageLightLevel_ADDR, CGImageCreateCopyWithContentAverageLightLevel_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageCreateCopyWithContentAverageLightLevel(arg0: MemorySegment, arg1: Float): MemorySegment {
     try {
         return CGImageCreateCopyWithContentAverageLightLevel_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -1122,6 +1274,10 @@ private val CGImageCreateCopyWithCalculatedHDRStats_DESC: FunctionDescriptor = F
 private val CGImageCreateCopyWithCalculatedHDRStats_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageCreateCopyWithCalculatedHDRStats").orElseThrow()
 private val CGImageCreateCopyWithCalculatedHDRStats_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageCreateCopyWithCalculatedHDRStats_ADDR, CGImageCreateCopyWithCalculatedHDRStats_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageCreateCopyWithCalculatedHDRStats(arg0: MemorySegment): MemorySegment {
     try {
         return CGImageCreateCopyWithCalculatedHDRStats_HANDLE.invokeExact(arg0) as MemorySegment
@@ -1141,6 +1297,8 @@ private val CGImageRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGImageRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageRetain").orElseThrow()
 private val CGImageRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageRetain_ADDR, CGImageRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGImageRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -1160,6 +1318,8 @@ private val CGImageRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(
 private val CGImageRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageRelease").orElseThrow()
 private val CGImageRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageRelease_ADDR, CGImageRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageRelease(arg0: MemorySegment): Unit {
     try {
         CGImageRelease_HANDLE.invokeExact(arg0)
@@ -1179,6 +1339,8 @@ private val CGImageIsMask_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGImageIsMask_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageIsMask").orElseThrow()
 private val CGImageIsMask_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageIsMask_ADDR, CGImageIsMask_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageIsMask(arg0: MemorySegment): Boolean {
     try {
         return CGImageIsMask_HANDLE.invokeExact(arg0) as Boolean
@@ -1198,6 +1360,8 @@ private val CGImageGetWidth_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGImageGetWidth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetWidth").orElseThrow()
 private val CGImageGetWidth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetWidth_ADDR, CGImageGetWidth_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetWidth(arg0: MemorySegment): Long {
     try {
         return CGImageGetWidth_HANDLE.invokeExact(arg0) as Long
@@ -1217,6 +1381,8 @@ private val CGImageGetHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGImageGetHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetHeight").orElseThrow()
 private val CGImageGetHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetHeight_ADDR, CGImageGetHeight_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetHeight(arg0: MemorySegment): Long {
     try {
         return CGImageGetHeight_HANDLE.invokeExact(arg0) as Long
@@ -1236,6 +1402,8 @@ private val CGImageGetBitsPerComponent_DESC: FunctionDescriptor = FunctionDescri
 private val CGImageGetBitsPerComponent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetBitsPerComponent").orElseThrow()
 private val CGImageGetBitsPerComponent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetBitsPerComponent_ADDR, CGImageGetBitsPerComponent_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetBitsPerComponent(arg0: MemorySegment): Long {
     try {
         return CGImageGetBitsPerComponent_HANDLE.invokeExact(arg0) as Long
@@ -1255,6 +1423,8 @@ private val CGImageGetBitsPerPixel_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGImageGetBitsPerPixel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetBitsPerPixel").orElseThrow()
 private val CGImageGetBitsPerPixel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetBitsPerPixel_ADDR, CGImageGetBitsPerPixel_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetBitsPerPixel(arg0: MemorySegment): Long {
     try {
         return CGImageGetBitsPerPixel_HANDLE.invokeExact(arg0) as Long
@@ -1274,6 +1444,8 @@ private val CGImageGetBytesPerRow_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGImageGetBytesPerRow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetBytesPerRow").orElseThrow()
 private val CGImageGetBytesPerRow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetBytesPerRow_ADDR, CGImageGetBytesPerRow_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetBytesPerRow(arg0: MemorySegment): Long {
     try {
         return CGImageGetBytesPerRow_HANDLE.invokeExact(arg0) as Long
@@ -1293,6 +1465,8 @@ private val CGImageGetColorSpace_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGImageGetColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetColorSpace").orElseThrow()
 private val CGImageGetColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetColorSpace_ADDR, CGImageGetColorSpace_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetColorSpace(arg0: MemorySegment): MemorySegment {
     try {
         return CGImageGetColorSpace_HANDLE.invokeExact(arg0) as MemorySegment
@@ -1312,6 +1486,8 @@ private val CGImageGetAlphaInfo_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGImageGetAlphaInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetAlphaInfo").orElseThrow()
 private val CGImageGetAlphaInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetAlphaInfo_ADDR, CGImageGetAlphaInfo_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetAlphaInfo(arg0: MemorySegment): CGImageAlphaInfo {
     try {
         return CGImageAlphaInfo.fromValue(Integer.toUnsignedLong(CGImageGetAlphaInfo_HANDLE.invokeExact(arg0) as Int))
@@ -1331,6 +1507,8 @@ private val CGImageGetDataProvider_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGImageGetDataProvider_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetDataProvider").orElseThrow()
 private val CGImageGetDataProvider_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetDataProvider_ADDR, CGImageGetDataProvider_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetDataProvider(arg0: MemorySegment): MemorySegment {
     try {
         return CGImageGetDataProvider_HANDLE.invokeExact(arg0) as MemorySegment
@@ -1350,6 +1528,8 @@ private val CGImageGetDecode_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGImageGetDecode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetDecode").orElseThrow()
 private val CGImageGetDecode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetDecode_ADDR, CGImageGetDecode_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetDecode(arg0: MemorySegment): MemorySegment {
     try {
         return CGImageGetDecode_HANDLE.invokeExact(arg0) as MemorySegment
@@ -1369,6 +1549,8 @@ private val CGImageGetShouldInterpolate_DESC: FunctionDescriptor = FunctionDescr
 private val CGImageGetShouldInterpolate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetShouldInterpolate").orElseThrow()
 private val CGImageGetShouldInterpolate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetShouldInterpolate_ADDR, CGImageGetShouldInterpolate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetShouldInterpolate(arg0: MemorySegment): Boolean {
     try {
         return CGImageGetShouldInterpolate_HANDLE.invokeExact(arg0) as Boolean
@@ -1388,6 +1570,8 @@ private val CGImageGetRenderingIntent_DESC: FunctionDescriptor = FunctionDescrip
 private val CGImageGetRenderingIntent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetRenderingIntent").orElseThrow()
 private val CGImageGetRenderingIntent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetRenderingIntent_ADDR, CGImageGetRenderingIntent_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageGetRenderingIntent(arg0: MemorySegment): CGColorRenderingIntent {
     try {
         return CGColorRenderingIntent.fromValue((CGImageGetRenderingIntent_HANDLE.invokeExact(arg0) as Int).toLong())
@@ -1407,6 +1591,8 @@ private val CGImageGetBitmapInfo_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGImageGetBitmapInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetBitmapInfo").orElseThrow()
 private val CGImageGetBitmapInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetBitmapInfo_ADDR, CGImageGetBitmapInfo_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGImageGetBitmapInfo(arg0: MemorySegment): CGBitmapInfo {
     try {
         return CGBitmapInfo(Integer.toUnsignedLong(CGImageGetBitmapInfo_HANDLE.invokeExact(arg0) as Int))
@@ -1426,6 +1612,8 @@ private val CGImageGetByteOrderInfo_DESC: FunctionDescriptor = FunctionDescripto
 private val CGImageGetByteOrderInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetByteOrderInfo").orElseThrow()
 private val CGImageGetByteOrderInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetByteOrderInfo_ADDR, CGImageGetByteOrderInfo_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = -1)
 fun CGImageGetByteOrderInfo(arg0: MemorySegment): CGImageByteOrderInfo {
     try {
         return CGImageByteOrderInfo.fromValue(Integer.toUnsignedLong(CGImageGetByteOrderInfo_HANDLE.invokeExact(arg0) as Int))
@@ -1445,6 +1633,8 @@ private val CGImageGetPixelFormatInfo_DESC: FunctionDescriptor = FunctionDescrip
 private val CGImageGetPixelFormatInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetPixelFormatInfo").orElseThrow()
 private val CGImageGetPixelFormatInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetPixelFormatInfo_ADDR, CGImageGetPixelFormatInfo_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = -1)
 fun CGImageGetPixelFormatInfo(arg0: MemorySegment): CGImagePixelFormatInfo {
     try {
         return CGImagePixelFormatInfo.fromValue(Integer.toUnsignedLong(CGImageGetPixelFormatInfo_HANDLE.invokeExact(arg0) as Int))
@@ -1464,6 +1654,10 @@ private val CGImageShouldToneMap_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGImageShouldToneMap_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageShouldToneMap").orElseThrow()
 private val CGImageShouldToneMap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageShouldToneMap_ADDR, CGImageShouldToneMap_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageShouldToneMap(arg0: MemorySegment): Boolean {
     try {
         return CGImageShouldToneMap_HANDLE.invokeExact(arg0) as Boolean
@@ -1483,6 +1677,10 @@ private val CGImageContainsImageSpecificToneMappingMetadata_DESC: FunctionDescri
 private val CGImageContainsImageSpecificToneMappingMetadata_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageContainsImageSpecificToneMappingMetadata").orElseThrow()
 private val CGImageContainsImageSpecificToneMappingMetadata_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageContainsImageSpecificToneMappingMetadata_ADDR, CGImageContainsImageSpecificToneMappingMetadata_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGImageContainsImageSpecificToneMappingMetadata(arg0: MemorySegment): Boolean {
     try {
         return CGImageContainsImageSpecificToneMappingMetadata_HANDLE.invokeExact(arg0) as Boolean
@@ -1502,6 +1700,8 @@ private val CGImageGetUTType_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGImageGetUTType_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGImageGetUTType").orElseThrow()
 private val CGImageGetUTType_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGImageGetUTType_ADDR, CGImageGetUTType_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 fun CGImageGetUTType(arg0: MemorySegment): MemorySegment {
     try {
         return CGImageGetUTType_HANDLE.invokeExact(arg0) as MemorySegment
@@ -1521,6 +1721,8 @@ private val CGPathGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGPathGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathGetTypeID").orElseThrow()
 private val CGPathGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathGetTypeID_ADDR, CGPathGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathGetTypeID(): Long {
     try {
         return CGPathGetTypeID_HANDLE.invokeExact() as Long
@@ -1540,6 +1742,8 @@ private val CGPathCreateMutable_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPathCreateMutable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateMutable").orElseThrow()
 private val CGPathCreateMutable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateMutable_ADDR, CGPathCreateMutable_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathCreateMutable(): MemorySegment {
     try {
         return CGPathCreateMutable_HANDLE.invokeExact() as MemorySegment
@@ -1559,6 +1763,8 @@ private val CGPathCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGPathCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopy").orElseThrow()
 private val CGPathCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopy_ADDR, CGPathCreateCopy_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathCreateCopy(arg0: MemorySegment): MemorySegment {
     try {
         return CGPathCreateCopy_HANDLE.invokeExact(arg0) as MemorySegment
@@ -1578,6 +1784,8 @@ private val CGPathCreateCopyByTransformingPath_DESC: FunctionDescriptor = Functi
 private val CGPathCreateCopyByTransformingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByTransformingPath").orElseThrow()
 private val CGPathCreateCopyByTransformingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByTransformingPath_ADDR, CGPathCreateCopyByTransformingPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun CGPathCreateCopyByTransformingPath(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGPathCreateCopyByTransformingPath_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -1597,6 +1805,8 @@ private val CGPathCreateMutableCopy_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPathCreateMutableCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateMutableCopy").orElseThrow()
 private val CGPathCreateMutableCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateMutableCopy_ADDR, CGPathCreateMutableCopy_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathCreateMutableCopy(arg0: MemorySegment): MemorySegment {
     try {
         return CGPathCreateMutableCopy_HANDLE.invokeExact(arg0) as MemorySegment
@@ -1616,6 +1826,8 @@ private val CGPathCreateMutableCopyByTransformingPath_DESC: FunctionDescriptor =
 private val CGPathCreateMutableCopyByTransformingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateMutableCopyByTransformingPath").orElseThrow()
 private val CGPathCreateMutableCopyByTransformingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateMutableCopyByTransformingPath_ADDR, CGPathCreateMutableCopyByTransformingPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun CGPathCreateMutableCopyByTransformingPath(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGPathCreateMutableCopyByTransformingPath_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -1635,6 +1847,8 @@ private val CGPathCreateWithRect_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPathCreateWithRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateWithRect").orElseThrow()
 private val CGPathCreateWithRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateWithRect_ADDR, CGPathCreateWithRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGPathCreateWithRect(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGPathCreateWithRect_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -1647,6 +1861,8 @@ fun CGPathCreateWithRect(arg0: MemorySegment, arg1: MemorySegment): MemorySegmen
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGPathCreateWithRect(arg0: CGRect, arg1: MemorySegment): MemorySegment {
     return CGPathCreateWithRect(arg0.segment, arg1)
 }
@@ -1658,6 +1874,8 @@ private val CGPathCreateWithEllipseInRect_DESC: FunctionDescriptor = FunctionDes
 private val CGPathCreateWithEllipseInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateWithEllipseInRect").orElseThrow()
 private val CGPathCreateWithEllipseInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateWithEllipseInRect_ADDR, CGPathCreateWithEllipseInRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun CGPathCreateWithEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGPathCreateWithEllipseInRect_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -1670,6 +1888,8 @@ fun CGPathCreateWithEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Mem
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun CGPathCreateWithEllipseInRect(arg0: CGRect, arg1: MemorySegment): MemorySegment {
     return CGPathCreateWithEllipseInRect(arg0.segment, arg1)
 }
@@ -1681,6 +1901,8 @@ private val CGPathCreateWithRoundedRect_DESC: FunctionDescriptor = FunctionDescr
 private val CGPathCreateWithRoundedRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateWithRoundedRect").orElseThrow()
 private val CGPathCreateWithRoundedRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateWithRoundedRect_ADDR, CGPathCreateWithRoundedRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 fun CGPathCreateWithRoundedRect(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: MemorySegment): MemorySegment {
     try {
         return CGPathCreateWithRoundedRect_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
@@ -1693,6 +1915,8 @@ fun CGPathCreateWithRoundedRect(arg0: MemorySegment, arg1: Double, arg2: Double,
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 fun CGPathCreateWithRoundedRect(arg0: CGRect, arg1: Double, arg2: Double, arg3: MemorySegment): MemorySegment {
     return CGPathCreateWithRoundedRect(arg0.segment, arg1, arg2, arg3)
 }
@@ -1704,6 +1928,8 @@ private val CGPathAddRoundedRect_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPathAddRoundedRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddRoundedRect").orElseThrow()
 private val CGPathAddRoundedRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddRoundedRect_ADDR, CGPathAddRoundedRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 fun CGPathAddRoundedRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Double, arg4: Double): Unit {
     try {
         CGPathAddRoundedRect_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4)
@@ -1716,6 +1942,8 @@ fun CGPathAddRoundedRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 fun CGPathAddRoundedRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect, arg3: Double, arg4: Double): Unit {
     CGPathAddRoundedRect(arg0, arg1, arg2.segment, arg3, arg4)
 }
@@ -1727,6 +1955,8 @@ private val CGPathCreateCopyByDashingPath_DESC: FunctionDescriptor = FunctionDes
 private val CGPathCreateCopyByDashingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByDashingPath").orElseThrow()
 private val CGPathCreateCopyByDashingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByDashingPath_ADDR, CGPathCreateCopyByDashingPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun CGPathCreateCopyByDashingPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: MemorySegment, arg4: Long): MemorySegment {
     try {
         return CGPathCreateCopyByDashingPath_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
@@ -1746,6 +1976,8 @@ private val CGPathCreateCopyByStrokingPath_DESC: FunctionDescriptor = FunctionDe
 private val CGPathCreateCopyByStrokingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByStrokingPath").orElseThrow()
 private val CGPathCreateCopyByStrokingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByStrokingPath_ADDR, CGPathCreateCopyByStrokingPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun CGPathCreateCopyByStrokingPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: CGLineCap, arg4: CGLineJoin, arg5: Double): MemorySegment {
     try {
         return CGPathCreateCopyByStrokingPath_HANDLE.invokeExact(arg0, arg1, arg2, arg3.value.toInt(), arg4.value.toInt(), arg5) as MemorySegment
@@ -1765,6 +1997,8 @@ private val CGPathRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueL
 private val CGPathRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathRetain").orElseThrow()
 private val CGPathRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathRetain_ADDR, CGPathRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGPathRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -1784,6 +2018,8 @@ private val CGPathRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(V
 private val CGPathRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathRelease").orElseThrow()
 private val CGPathRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathRelease_ADDR, CGPathRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathRelease(arg0: MemorySegment): Unit {
     try {
         CGPathRelease_HANDLE.invokeExact(arg0)
@@ -1803,6 +2039,8 @@ private val CGPathEqualToPath_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGPathEqualToPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathEqualToPath").orElseThrow()
 private val CGPathEqualToPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathEqualToPath_ADDR, CGPathEqualToPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathEqualToPath(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGPathEqualToPath_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -1822,6 +2060,8 @@ private val CGPathMoveToPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGPathMoveToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathMoveToPoint").orElseThrow()
 private val CGPathMoveToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathMoveToPoint_ADDR, CGPathMoveToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathMoveToPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double): Unit {
     try {
         CGPathMoveToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
@@ -1841,6 +2081,8 @@ private val CGPathAddLineToPoint_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPathAddLineToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddLineToPoint").orElseThrow()
 private val CGPathAddLineToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddLineToPoint_ADDR, CGPathAddLineToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddLineToPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double): Unit {
     try {
         CGPathAddLineToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
@@ -1860,6 +2102,8 @@ private val CGPathAddQuadCurveToPoint_DESC: FunctionDescriptor = FunctionDescrip
 private val CGPathAddQuadCurveToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddQuadCurveToPoint").orElseThrow()
 private val CGPathAddQuadCurveToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddQuadCurveToPoint_ADDR, CGPathAddQuadCurveToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddQuadCurveToPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double, arg4: Double, arg5: Double): Unit {
     try {
         CGPathAddQuadCurveToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5)
@@ -1879,6 +2123,8 @@ private val CGPathAddCurveToPoint_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGPathAddCurveToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddCurveToPoint").orElseThrow()
 private val CGPathAddCurveToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddCurveToPoint_ADDR, CGPathAddCurveToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddCurveToPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double, arg4: Double, arg5: Double, arg6: Double, arg7: Double): Unit {
     try {
         CGPathAddCurveToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
@@ -1898,6 +2144,8 @@ private val CGPathCloseSubpath_DESC: FunctionDescriptor = FunctionDescriptor.ofV
 private val CGPathCloseSubpath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCloseSubpath").orElseThrow()
 private val CGPathCloseSubpath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCloseSubpath_ADDR, CGPathCloseSubpath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathCloseSubpath(arg0: MemorySegment): Unit {
     try {
         CGPathCloseSubpath_HANDLE.invokeExact(arg0)
@@ -1917,6 +2165,8 @@ private val CGPathAddRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(V
 private val CGPathAddRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddRect").orElseThrow()
 private val CGPathAddRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddRect_ADDR, CGPathAddRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGPathAddRect_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -1929,6 +2179,8 @@ fun CGPathAddRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment)
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect): Unit {
     CGPathAddRect(arg0, arg1, arg2.segment)
 }
@@ -1940,6 +2192,8 @@ private val CGPathAddRects_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(
 private val CGPathAddRects_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddRects").orElseThrow()
 private val CGPathAddRects_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddRects_ADDR, CGPathAddRects_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddRects(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Unit {
     try {
         CGPathAddRects_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
@@ -1959,6 +2213,8 @@ private val CGPathAddLines_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(
 private val CGPathAddLines_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddLines").orElseThrow()
 private val CGPathAddLines_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddLines_ADDR, CGPathAddLines_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddLines(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Unit {
     try {
         CGPathAddLines_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
@@ -1978,6 +2234,8 @@ private val CGPathAddEllipseInRect_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGPathAddEllipseInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddEllipseInRect").orElseThrow()
 private val CGPathAddEllipseInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddEllipseInRect_ADDR, CGPathAddEllipseInRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGPathAddEllipseInRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGPathAddEllipseInRect_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -1990,6 +2248,8 @@ fun CGPathAddEllipseInRect(arg0: MemorySegment, arg1: MemorySegment, arg2: Memor
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGPathAddEllipseInRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CGRect): Unit {
     CGPathAddEllipseInRect(arg0, arg1, arg2.segment)
 }
@@ -2001,6 +2261,8 @@ private val CGPathAddRelativeArc_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPathAddRelativeArc_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddRelativeArc").orElseThrow()
 private val CGPathAddRelativeArc_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddRelativeArc_ADDR, CGPathAddRelativeArc_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun CGPathAddRelativeArc(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double, arg4: Double, arg5: Double, arg6: Double): Unit {
     try {
         CGPathAddRelativeArc_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
@@ -2020,6 +2282,8 @@ private val CGPathAddArc_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(Va
 private val CGPathAddArc_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddArc").orElseThrow()
 private val CGPathAddArc_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddArc_ADDR, CGPathAddArc_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddArc(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double, arg4: Double, arg5: Double, arg6: Double, arg7: Boolean): Unit {
     try {
         CGPathAddArc_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
@@ -2039,6 +2303,8 @@ private val CGPathAddArcToPoint_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPathAddArcToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddArcToPoint").orElseThrow()
 private val CGPathAddArcToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddArcToPoint_ADDR, CGPathAddArcToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddArcToPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: Double, arg4: Double, arg5: Double, arg6: Double): Unit {
     try {
         CGPathAddArcToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
@@ -2058,6 +2324,8 @@ private val CGPathAddPath_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(V
 private val CGPathAddPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathAddPath").orElseThrow()
 private val CGPathAddPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathAddPath_ADDR, CGPathAddPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathAddPath(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGPathAddPath_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -2077,6 +2345,8 @@ private val CGPathIsEmpty_DESC: FunctionDescriptor = FunctionDescriptor.of(Value
 private val CGPathIsEmpty_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathIsEmpty").orElseThrow()
 private val CGPathIsEmpty_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathIsEmpty_ADDR, CGPathIsEmpty_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathIsEmpty(arg0: MemorySegment): Boolean {
     try {
         return CGPathIsEmpty_HANDLE.invokeExact(arg0) as Boolean
@@ -2096,6 +2366,8 @@ private val CGPathIsRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueL
 private val CGPathIsRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathIsRect").orElseThrow()
 private val CGPathIsRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathIsRect_ADDR, CGPathIsRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathIsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGPathIsRect_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -2115,6 +2387,8 @@ private val CGPathGetCurrentPoint_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGPathGetCurrentPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathGetCurrentPoint").orElseThrow()
 private val CGPathGetCurrentPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathGetCurrentPoint_ADDR, CGPathGetCurrentPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathGetCurrentPoint(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGPathGetCurrentPoint_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -2127,6 +2401,8 @@ fun CGPathGetCurrentPoint(allocator: SegmentAllocator, arg0: MemorySegment): Mem
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathGetCurrentPointTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGPoint {
     return CGPoint(CGPathGetCurrentPoint(allocator, arg0))
 }
@@ -2138,6 +2414,8 @@ private val CGPathGetBoundingBox_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPathGetBoundingBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathGetBoundingBox").orElseThrow()
 private val CGPathGetBoundingBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathGetBoundingBox_ADDR, CGPathGetBoundingBox_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathGetBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGPathGetBoundingBox_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -2150,6 +2428,8 @@ fun CGPathGetBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment): Memo
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathGetBoundingBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
     return CGRect(CGPathGetBoundingBox(allocator, arg0))
 }
@@ -2161,6 +2441,8 @@ private val CGPathGetPathBoundingBox_DESC: FunctionDescriptor = FunctionDescript
 private val CGPathGetPathBoundingBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathGetPathBoundingBox").orElseThrow()
 private val CGPathGetPathBoundingBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathGetPathBoundingBox_ADDR, CGPathGetPathBoundingBox_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
 fun CGPathGetPathBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGPathGetPathBoundingBox_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -2173,6 +2455,8 @@ fun CGPathGetPathBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment): 
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
 fun CGPathGetPathBoundingBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
     return CGRect(CGPathGetPathBoundingBox(allocator, arg0))
 }
@@ -2184,6 +2468,8 @@ private val CGPathContainsPoint_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPathContainsPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathContainsPoint").orElseThrow()
 private val CGPathContainsPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathContainsPoint_ADDR, CGPathContainsPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGPathContainsPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Boolean): Boolean {
     try {
         return CGPathContainsPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Boolean
@@ -2196,6 +2482,8 @@ fun CGPathContainsPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySe
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGPathContainsPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: CGPoint, arg3: Boolean): Boolean {
     return CGPathContainsPoint(arg0, arg1, arg2.segment, arg3)
 }
@@ -2207,6 +2495,8 @@ private val CGPathApply_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(Val
 private val CGPathApply_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathApply").orElseThrow()
 private val CGPathApply_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathApply_ADDR, CGPathApply_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPathApply(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGPathApply_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -2226,6 +2516,8 @@ private val CGPathApplyWithBlock_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPathApplyWithBlock_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathApplyWithBlock").orElseThrow()
 private val CGPathApplyWithBlock_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathApplyWithBlock_ADDR, CGPathApplyWithBlock_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 fun CGPathApplyWithBlock(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGPathApplyWithBlock_HANDLE.invokeExact(arg0, arg1)
@@ -2245,6 +2537,8 @@ private val CGPathCreateCopyByNormalizing_DESC: FunctionDescriptor = FunctionDes
 private val CGPathCreateCopyByNormalizing_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByNormalizing").orElseThrow()
 private val CGPathCreateCopyByNormalizing_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByNormalizing_ADDR, CGPathCreateCopyByNormalizing_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathCreateCopyByNormalizing(arg0: MemorySegment, arg1: Boolean): MemorySegment {
     try {
         return CGPathCreateCopyByNormalizing_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -2264,6 +2558,8 @@ private val CGPathCreateCopyByUnioningPath_DESC: FunctionDescriptor = FunctionDe
 private val CGPathCreateCopyByUnioningPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByUnioningPath").orElseThrow()
 private val CGPathCreateCopyByUnioningPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByUnioningPath_ADDR, CGPathCreateCopyByUnioningPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathCreateCopyByUnioningPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean): MemorySegment {
     try {
         return CGPathCreateCopyByUnioningPath_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -2283,6 +2579,8 @@ private val CGPathCreateCopyByIntersectingPath_DESC: FunctionDescriptor = Functi
 private val CGPathCreateCopyByIntersectingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByIntersectingPath").orElseThrow()
 private val CGPathCreateCopyByIntersectingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByIntersectingPath_ADDR, CGPathCreateCopyByIntersectingPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathCreateCopyByIntersectingPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean): MemorySegment {
     try {
         return CGPathCreateCopyByIntersectingPath_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -2302,6 +2600,8 @@ private val CGPathCreateCopyBySubtractingPath_DESC: FunctionDescriptor = Functio
 private val CGPathCreateCopyBySubtractingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyBySubtractingPath").orElseThrow()
 private val CGPathCreateCopyBySubtractingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyBySubtractingPath_ADDR, CGPathCreateCopyBySubtractingPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathCreateCopyBySubtractingPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean): MemorySegment {
     try {
         return CGPathCreateCopyBySubtractingPath_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -2321,6 +2621,8 @@ private val CGPathCreateCopyBySymmetricDifferenceOfPath_DESC: FunctionDescriptor
 private val CGPathCreateCopyBySymmetricDifferenceOfPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyBySymmetricDifferenceOfPath").orElseThrow()
 private val CGPathCreateCopyBySymmetricDifferenceOfPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyBySymmetricDifferenceOfPath_ADDR, CGPathCreateCopyBySymmetricDifferenceOfPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathCreateCopyBySymmetricDifferenceOfPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean): MemorySegment {
     try {
         return CGPathCreateCopyBySymmetricDifferenceOfPath_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -2340,6 +2642,8 @@ private val CGPathCreateCopyOfLineBySubtractingPath_DESC: FunctionDescriptor = F
 private val CGPathCreateCopyOfLineBySubtractingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyOfLineBySubtractingPath").orElseThrow()
 private val CGPathCreateCopyOfLineBySubtractingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyOfLineBySubtractingPath_ADDR, CGPathCreateCopyOfLineBySubtractingPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathCreateCopyOfLineBySubtractingPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean): MemorySegment {
     try {
         return CGPathCreateCopyOfLineBySubtractingPath_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -2359,6 +2663,8 @@ private val CGPathCreateCopyOfLineByIntersectingPath_DESC: FunctionDescriptor = 
 private val CGPathCreateCopyOfLineByIntersectingPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyOfLineByIntersectingPath").orElseThrow()
 private val CGPathCreateCopyOfLineByIntersectingPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyOfLineByIntersectingPath_ADDR, CGPathCreateCopyOfLineByIntersectingPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathCreateCopyOfLineByIntersectingPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean): MemorySegment {
     try {
         return CGPathCreateCopyOfLineByIntersectingPath_HANDLE.invokeExact(arg0, arg1, arg2) as MemorySegment
@@ -2378,6 +2684,8 @@ private val CGPathCreateSeparateComponents_DESC: FunctionDescriptor = FunctionDe
 private val CGPathCreateSeparateComponents_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateSeparateComponents").orElseThrow()
 private val CGPathCreateSeparateComponents_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateSeparateComponents_ADDR, CGPathCreateSeparateComponents_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathCreateSeparateComponents(arg0: MemorySegment, arg1: Boolean): MemorySegment {
     try {
         return CGPathCreateSeparateComponents_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -2397,6 +2705,8 @@ private val CGPathCreateCopyByFlattening_DESC: FunctionDescriptor = FunctionDesc
 private val CGPathCreateCopyByFlattening_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathCreateCopyByFlattening").orElseThrow()
 private val CGPathCreateCopyByFlattening_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathCreateCopyByFlattening_ADDR, CGPathCreateCopyByFlattening_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathCreateCopyByFlattening(arg0: MemorySegment, arg1: Double): MemorySegment {
     try {
         return CGPathCreateCopyByFlattening_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -2416,6 +2726,8 @@ private val CGPathIntersectsPath_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPathIntersectsPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPathIntersectsPath").orElseThrow()
 private val CGPathIntersectsPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPathIntersectsPath_ADDR, CGPathIntersectsPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 fun CGPathIntersectsPath(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean): Boolean {
     try {
         return CGPathIntersectsPath_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2435,6 +2747,8 @@ private val CGPDFObjectGetType_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGPDFObjectGetType_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFObjectGetType").orElseThrow()
 private val CGPDFObjectGetType_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFObjectGetType_ADDR, CGPDFObjectGetType_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFObjectGetType(arg0: MemorySegment): CGPDFObjectType {
     try {
         return CGPDFObjectType.fromValue((CGPDFObjectGetType_HANDLE.invokeExact(arg0) as Int).toLong())
@@ -2454,6 +2768,8 @@ private val CGPDFObjectGetValue_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPDFObjectGetValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFObjectGetValue").orElseThrow()
 private val CGPDFObjectGetValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFObjectGetValue_ADDR, CGPDFObjectGetValue_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFObjectGetValue(arg0: MemorySegment, arg1: CGPDFObjectType, arg2: MemorySegment): Boolean {
     try {
         return CGPDFObjectGetValue_HANDLE.invokeExact(arg0, arg1.value.toInt(), arg2) as Boolean
@@ -2473,6 +2789,8 @@ private val CGPDFStreamGetDictionary_DESC: FunctionDescriptor = FunctionDescript
 private val CGPDFStreamGetDictionary_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFStreamGetDictionary").orElseThrow()
 private val CGPDFStreamGetDictionary_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFStreamGetDictionary_ADDR, CGPDFStreamGetDictionary_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFStreamGetDictionary(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFStreamGetDictionary_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2492,6 +2810,8 @@ private val CGPDFStreamCopyData_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPDFStreamCopyData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFStreamCopyData").orElseThrow()
 private val CGPDFStreamCopyData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFStreamCopyData_ADDR, CGPDFStreamCopyData_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFStreamCopyData(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
         return CGPDFStreamCopyData_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -2511,6 +2831,8 @@ private val CGPDFStringGetLength_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPDFStringGetLength_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFStringGetLength").orElseThrow()
 private val CGPDFStringGetLength_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFStringGetLength_ADDR, CGPDFStringGetLength_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFStringGetLength(arg0: MemorySegment): Long {
     try {
         return CGPDFStringGetLength_HANDLE.invokeExact(arg0) as Long
@@ -2530,6 +2852,8 @@ private val CGPDFStringGetBytePtr_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGPDFStringGetBytePtr_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFStringGetBytePtr").orElseThrow()
 private val CGPDFStringGetBytePtr_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFStringGetBytePtr_ADDR, CGPDFStringGetBytePtr_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFStringGetBytePtr(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFStringGetBytePtr_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2549,6 +2873,8 @@ private val CGPDFStringCopyTextString_DESC: FunctionDescriptor = FunctionDescrip
 private val CGPDFStringCopyTextString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFStringCopyTextString").orElseThrow()
 private val CGPDFStringCopyTextString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFStringCopyTextString_ADDR, CGPDFStringCopyTextString_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFStringCopyTextString(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFStringCopyTextString_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2568,6 +2894,8 @@ private val CGPDFStringCopyDate_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPDFStringCopyDate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFStringCopyDate").orElseThrow()
 private val CGPDFStringCopyDate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFStringCopyDate_ADDR, CGPDFStringCopyDate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGPDFStringCopyDate(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFStringCopyDate_HANDLE.invokeExact(arg0) as MemorySegment
@@ -2587,6 +2915,8 @@ private val CGPDFArrayGetCount_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGPDFArrayGetCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetCount").orElseThrow()
 private val CGPDFArrayGetCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetCount_ADDR, CGPDFArrayGetCount_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetCount(arg0: MemorySegment): Long {
     try {
         return CGPDFArrayGetCount_HANDLE.invokeExact(arg0) as Long
@@ -2606,6 +2936,8 @@ private val CGPDFArrayGetObject_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPDFArrayGetObject_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetObject").orElseThrow()
 private val CGPDFArrayGetObject_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetObject_ADDR, CGPDFArrayGetObject_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetObject(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Boolean {
     try {
         return CGPDFArrayGetObject_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2625,6 +2957,8 @@ private val CGPDFArrayGetNull_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGPDFArrayGetNull_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetNull").orElseThrow()
 private val CGPDFArrayGetNull_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetNull_ADDR, CGPDFArrayGetNull_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetNull(arg0: MemorySegment, arg1: Long): Boolean {
     try {
         return CGPDFArrayGetNull_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -2644,6 +2978,8 @@ private val CGPDFArrayGetBoolean_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPDFArrayGetBoolean_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetBoolean").orElseThrow()
 private val CGPDFArrayGetBoolean_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetBoolean_ADDR, CGPDFArrayGetBoolean_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetBoolean(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Boolean {
     try {
         return CGPDFArrayGetBoolean_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2663,6 +2999,8 @@ private val CGPDFArrayGetInteger_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPDFArrayGetInteger_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetInteger").orElseThrow()
 private val CGPDFArrayGetInteger_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetInteger_ADDR, CGPDFArrayGetInteger_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetInteger(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Boolean {
     try {
         return CGPDFArrayGetInteger_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2682,6 +3020,8 @@ private val CGPDFArrayGetNumber_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPDFArrayGetNumber_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetNumber").orElseThrow()
 private val CGPDFArrayGetNumber_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetNumber_ADDR, CGPDFArrayGetNumber_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetNumber(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Boolean {
     try {
         return CGPDFArrayGetNumber_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2701,6 +3041,8 @@ private val CGPDFArrayGetName_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGPDFArrayGetName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetName").orElseThrow()
 private val CGPDFArrayGetName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetName_ADDR, CGPDFArrayGetName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetName(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Boolean {
     try {
         return CGPDFArrayGetName_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2720,6 +3062,8 @@ private val CGPDFArrayGetString_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPDFArrayGetString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetString").orElseThrow()
 private val CGPDFArrayGetString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetString_ADDR, CGPDFArrayGetString_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetString(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Boolean {
     try {
         return CGPDFArrayGetString_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2739,6 +3083,8 @@ private val CGPDFArrayGetArray_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGPDFArrayGetArray_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetArray").orElseThrow()
 private val CGPDFArrayGetArray_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetArray_ADDR, CGPDFArrayGetArray_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetArray(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Boolean {
     try {
         return CGPDFArrayGetArray_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2758,6 +3104,8 @@ private val CGPDFArrayGetDictionary_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPDFArrayGetDictionary_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetDictionary").orElseThrow()
 private val CGPDFArrayGetDictionary_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetDictionary_ADDR, CGPDFArrayGetDictionary_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetDictionary(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Boolean {
     try {
         return CGPDFArrayGetDictionary_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2777,6 +3125,8 @@ private val CGPDFArrayGetStream_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPDFArrayGetStream_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayGetStream").orElseThrow()
 private val CGPDFArrayGetStream_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayGetStream_ADDR, CGPDFArrayGetStream_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFArrayGetStream(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Boolean {
     try {
         return CGPDFArrayGetStream_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2796,6 +3146,8 @@ private val CGPDFArrayApplyBlock_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPDFArrayApplyBlock_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFArrayApplyBlock").orElseThrow()
 private val CGPDFArrayApplyBlock_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFArrayApplyBlock_ADDR, CGPDFArrayApplyBlock_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = -1)
 fun CGPDFArrayApplyBlock(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGPDFArrayApplyBlock_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -2815,6 +3167,8 @@ private val CGPDFDictionaryGetCount_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPDFDictionaryGetCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetCount").orElseThrow()
 private val CGPDFDictionaryGetCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetCount_ADDR, CGPDFDictionaryGetCount_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetCount(arg0: MemorySegment): Long {
     try {
         return CGPDFDictionaryGetCount_HANDLE.invokeExact(arg0) as Long
@@ -2834,6 +3188,8 @@ private val CGPDFDictionaryGetObject_DESC: FunctionDescriptor = FunctionDescript
 private val CGPDFDictionaryGetObject_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetObject").orElseThrow()
 private val CGPDFDictionaryGetObject_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetObject_ADDR, CGPDFDictionaryGetObject_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetObject(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
         return CGPDFDictionaryGetObject_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2853,6 +3209,8 @@ private val CGPDFDictionaryGetBoolean_DESC: FunctionDescriptor = FunctionDescrip
 private val CGPDFDictionaryGetBoolean_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetBoolean").orElseThrow()
 private val CGPDFDictionaryGetBoolean_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetBoolean_ADDR, CGPDFDictionaryGetBoolean_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetBoolean(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
         return CGPDFDictionaryGetBoolean_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2872,6 +3230,8 @@ private val CGPDFDictionaryGetInteger_DESC: FunctionDescriptor = FunctionDescrip
 private val CGPDFDictionaryGetInteger_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetInteger").orElseThrow()
 private val CGPDFDictionaryGetInteger_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetInteger_ADDR, CGPDFDictionaryGetInteger_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetInteger(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
         return CGPDFDictionaryGetInteger_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2891,6 +3251,8 @@ private val CGPDFDictionaryGetNumber_DESC: FunctionDescriptor = FunctionDescript
 private val CGPDFDictionaryGetNumber_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetNumber").orElseThrow()
 private val CGPDFDictionaryGetNumber_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetNumber_ADDR, CGPDFDictionaryGetNumber_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetNumber(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
         return CGPDFDictionaryGetNumber_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2910,6 +3272,8 @@ private val CGPDFDictionaryGetName_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGPDFDictionaryGetName_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetName").orElseThrow()
 private val CGPDFDictionaryGetName_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetName_ADDR, CGPDFDictionaryGetName_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetName(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
         return CGPDFDictionaryGetName_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2929,6 +3293,8 @@ private val CGPDFDictionaryGetString_DESC: FunctionDescriptor = FunctionDescript
 private val CGPDFDictionaryGetString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetString").orElseThrow()
 private val CGPDFDictionaryGetString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetString_ADDR, CGPDFDictionaryGetString_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetString(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
         return CGPDFDictionaryGetString_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2948,6 +3314,8 @@ private val CGPDFDictionaryGetArray_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPDFDictionaryGetArray_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetArray").orElseThrow()
 private val CGPDFDictionaryGetArray_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetArray_ADDR, CGPDFDictionaryGetArray_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetArray(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
         return CGPDFDictionaryGetArray_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2967,6 +3335,8 @@ private val CGPDFDictionaryGetDictionary_DESC: FunctionDescriptor = FunctionDesc
 private val CGPDFDictionaryGetDictionary_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetDictionary").orElseThrow()
 private val CGPDFDictionaryGetDictionary_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetDictionary_ADDR, CGPDFDictionaryGetDictionary_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetDictionary(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
         return CGPDFDictionaryGetDictionary_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -2986,6 +3356,8 @@ private val CGPDFDictionaryGetStream_DESC: FunctionDescriptor = FunctionDescript
 private val CGPDFDictionaryGetStream_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryGetStream").orElseThrow()
 private val CGPDFDictionaryGetStream_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryGetStream_ADDR, CGPDFDictionaryGetStream_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryGetStream(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
         return CGPDFDictionaryGetStream_HANDLE.invokeExact(arg0, arg1, arg2) as Boolean
@@ -3005,6 +3377,8 @@ private val CGPDFDictionaryApplyFunction_DESC: FunctionDescriptor = FunctionDesc
 private val CGPDFDictionaryApplyFunction_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryApplyFunction").orElseThrow()
 private val CGPDFDictionaryApplyFunction_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryApplyFunction_ADDR, CGPDFDictionaryApplyFunction_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDictionaryApplyFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGPDFDictionaryApplyFunction_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -3024,6 +3398,8 @@ private val CGPDFDictionaryApplyBlock_DESC: FunctionDescriptor = FunctionDescrip
 private val CGPDFDictionaryApplyBlock_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDictionaryApplyBlock").orElseThrow()
 private val CGPDFDictionaryApplyBlock_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDictionaryApplyBlock_ADDR, CGPDFDictionaryApplyBlock_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = -1)
 fun CGPDFDictionaryApplyBlock(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGPDFDictionaryApplyBlock_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -3043,6 +3419,8 @@ private val CGPDFPageRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGPDFPageRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageRetain").orElseThrow()
 private val CGPDFPageRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageRetain_ADDR, CGPDFPageRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFPageRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3062,6 +3440,8 @@ private val CGPDFPageRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoi
 private val CGPDFPageRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageRelease").orElseThrow()
 private val CGPDFPageRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageRelease_ADDR, CGPDFPageRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageRelease(arg0: MemorySegment): Unit {
     try {
         CGPDFPageRelease_HANDLE.invokeExact(arg0)
@@ -3081,6 +3461,8 @@ private val CGPDFPageGetDocument_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPDFPageGetDocument_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageGetDocument").orElseThrow()
 private val CGPDFPageGetDocument_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageGetDocument_ADDR, CGPDFPageGetDocument_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageGetDocument(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFPageGetDocument_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3100,6 +3482,8 @@ private val CGPDFPageGetPageNumber_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGPDFPageGetPageNumber_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageGetPageNumber").orElseThrow()
 private val CGPDFPageGetPageNumber_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageGetPageNumber_ADDR, CGPDFPageGetPageNumber_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageGetPageNumber(arg0: MemorySegment): Long {
     try {
         return CGPDFPageGetPageNumber_HANDLE.invokeExact(arg0) as Long
@@ -3119,6 +3503,8 @@ private val CGPDFPageGetBoxRect_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPDFPageGetBoxRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageGetBoxRect").orElseThrow()
 private val CGPDFPageGetBoxRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageGetBoxRect_ADDR, CGPDFPageGetBoxRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageGetBoxRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPDFBox): MemorySegment {
     try {
         return CGPDFPageGetBoxRect_HANDLE.invokeExact(allocator, arg0, arg1.value.toInt()) as MemorySegment
@@ -3131,6 +3517,8 @@ fun CGPDFPageGetBoxRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: 
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageGetBoxRectTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPDFBox): CGRect {
     return CGRect(CGPDFPageGetBoxRect(allocator, arg0, arg1))
 }
@@ -3142,6 +3530,8 @@ private val CGPDFPageGetRotationAngle_DESC: FunctionDescriptor = FunctionDescrip
 private val CGPDFPageGetRotationAngle_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageGetRotationAngle").orElseThrow()
 private val CGPDFPageGetRotationAngle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageGetRotationAngle_ADDR, CGPDFPageGetRotationAngle_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageGetRotationAngle(arg0: MemorySegment): Int {
     try {
         return CGPDFPageGetRotationAngle_HANDLE.invokeExact(arg0) as Int
@@ -3161,6 +3551,8 @@ private val CGPDFPageGetDrawingTransform_DESC: FunctionDescriptor = FunctionDesc
 private val CGPDFPageGetDrawingTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageGetDrawingTransform").orElseThrow()
 private val CGPDFPageGetDrawingTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageGetDrawingTransform_ADDR, CGPDFPageGetDrawingTransform_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageGetDrawingTransform(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPDFBox, arg2: MemorySegment, arg3: Int, arg4: Boolean): MemorySegment {
     try {
         return CGPDFPageGetDrawingTransform_HANDLE.invokeExact(allocator, arg0, arg1.value.toInt(), arg2, arg3, arg4) as MemorySegment
@@ -3173,6 +3565,8 @@ fun CGPDFPageGetDrawingTransform(allocator: SegmentAllocator, arg0: MemorySegmen
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageGetDrawingTransform(allocator: SegmentAllocator, arg0: MemorySegment, arg1: CGPDFBox, arg2: CGRect, arg3: Int, arg4: Boolean): CGAffineTransform {
     return CGAffineTransform(CGPDFPageGetDrawingTransform(allocator, arg0, arg1, arg2.segment, arg3, arg4))
 }
@@ -3184,6 +3578,8 @@ private val CGPDFPageGetDictionary_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGPDFPageGetDictionary_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageGetDictionary").orElseThrow()
 private val CGPDFPageGetDictionary_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageGetDictionary_ADDR, CGPDFPageGetDictionary_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageGetDictionary(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFPageGetDictionary_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3203,6 +3599,8 @@ private val CGPDFPageGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGPDFPageGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFPageGetTypeID").orElseThrow()
 private val CGPDFPageGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFPageGetTypeID_ADDR, CGPDFPageGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFPageGetTypeID(): Long {
     try {
         return CGPDFPageGetTypeID_HANDLE.invokeExact() as Long
@@ -3222,6 +3620,8 @@ private val kCGPDFOutlineTitle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS
 private val kCGPDFOutlineTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineTitle").orElseThrow().reinterpret(kCGPDFOutlineTitle_LAYOUT.byteSize()) }
 private val kCGPDFOutlineTitle_VH: VarHandle by lazy { kCGPDFOutlineTitle_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 var kCGPDFOutlineTitle: MemorySegment
     get() = kCGPDFOutlineTitle_VH.get(kCGPDFOutlineTitle_SEGMENT, 0L) as MemorySegment
     set(value) = kCGPDFOutlineTitle_VH.set(kCGPDFOutlineTitle_SEGMENT, 0L, value)
@@ -3233,6 +3633,8 @@ private val kCGPDFOutlineChildren_LAYOUT: ValueLayout by lazy { ValueLayout.ADDR
 private val kCGPDFOutlineChildren_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineChildren").orElseThrow().reinterpret(kCGPDFOutlineChildren_LAYOUT.byteSize()) }
 private val kCGPDFOutlineChildren_VH: VarHandle by lazy { kCGPDFOutlineChildren_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 var kCGPDFOutlineChildren: MemorySegment
     get() = kCGPDFOutlineChildren_VH.get(kCGPDFOutlineChildren_SEGMENT, 0L) as MemorySegment
     set(value) = kCGPDFOutlineChildren_VH.set(kCGPDFOutlineChildren_SEGMENT, 0L, value)
@@ -3244,6 +3646,8 @@ private val kCGPDFOutlineDestination_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val kCGPDFOutlineDestination_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineDestination").orElseThrow().reinterpret(kCGPDFOutlineDestination_LAYOUT.byteSize()) }
 private val kCGPDFOutlineDestination_VH: VarHandle by lazy { kCGPDFOutlineDestination_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 var kCGPDFOutlineDestination: MemorySegment
     get() = kCGPDFOutlineDestination_VH.get(kCGPDFOutlineDestination_SEGMENT, 0L) as MemorySegment
     set(value) = kCGPDFOutlineDestination_VH.set(kCGPDFOutlineDestination_SEGMENT, 0L, value)
@@ -3255,6 +3659,8 @@ private val kCGPDFOutlineDestinationRect_LAYOUT: ValueLayout by lazy { ValueLayo
 private val kCGPDFOutlineDestinationRect_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFOutlineDestinationRect").orElseThrow().reinterpret(kCGPDFOutlineDestinationRect_LAYOUT.byteSize()) }
 private val kCGPDFOutlineDestinationRect_VH: VarHandle by lazy { kCGPDFOutlineDestinationRect_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 var kCGPDFOutlineDestinationRect: MemorySegment
     get() = kCGPDFOutlineDestinationRect_VH.get(kCGPDFOutlineDestinationRect_SEGMENT, 0L) as MemorySegment
     set(value) = kCGPDFOutlineDestinationRect_VH.set(kCGPDFOutlineDestinationRect_SEGMENT, 0L, value)
@@ -3266,6 +3672,8 @@ private val CGPDFDocumentCreateWithProvider_DESC: FunctionDescriptor = FunctionD
 private val CGPDFDocumentCreateWithProvider_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentCreateWithProvider").orElseThrow()
 private val CGPDFDocumentCreateWithProvider_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentCreateWithProvider_ADDR, CGPDFDocumentCreateWithProvider_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPDFDocumentCreateWithProvider(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFDocumentCreateWithProvider_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3285,6 +3693,8 @@ private val CGPDFDocumentCreateWithURL_DESC: FunctionDescriptor = FunctionDescri
 private val CGPDFDocumentCreateWithURL_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentCreateWithURL").orElseThrow()
 private val CGPDFDocumentCreateWithURL_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentCreateWithURL_ADDR, CGPDFDocumentCreateWithURL_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPDFDocumentCreateWithURL(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFDocumentCreateWithURL_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3304,6 +3714,8 @@ private val CGPDFDocumentRetain_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGPDFDocumentRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentRetain").orElseThrow()
 private val CGPDFDocumentRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentRetain_ADDR, CGPDFDocumentRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPDFDocumentRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFDocumentRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3323,6 +3735,8 @@ private val CGPDFDocumentRelease_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPDFDocumentRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentRelease").orElseThrow()
 private val CGPDFDocumentRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentRelease_ADDR, CGPDFDocumentRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPDFDocumentRelease(arg0: MemorySegment): Unit {
     try {
         CGPDFDocumentRelease_HANDLE.invokeExact(arg0)
@@ -3342,6 +3756,8 @@ private val CGPDFDocumentGetVersion_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPDFDocumentGetVersion_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetVersion").orElseThrow()
 private val CGPDFDocumentGetVersion_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetVersion_ADDR, CGPDFDocumentGetVersion_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDocumentGetVersion(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGPDFDocumentGetVersion_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -3361,6 +3777,8 @@ private val CGPDFDocumentIsEncrypted_DESC: FunctionDescriptor = FunctionDescript
 private val CGPDFDocumentIsEncrypted_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentIsEncrypted").orElseThrow()
 private val CGPDFDocumentIsEncrypted_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentIsEncrypted_ADDR, CGPDFDocumentIsEncrypted_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPDFDocumentIsEncrypted(arg0: MemorySegment): Boolean {
     try {
         return CGPDFDocumentIsEncrypted_HANDLE.invokeExact(arg0) as Boolean
@@ -3380,6 +3798,8 @@ private val CGPDFDocumentUnlockWithPassword_DESC: FunctionDescriptor = FunctionD
 private val CGPDFDocumentUnlockWithPassword_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentUnlockWithPassword").orElseThrow()
 private val CGPDFDocumentUnlockWithPassword_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentUnlockWithPassword_ADDR, CGPDFDocumentUnlockWithPassword_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPDFDocumentUnlockWithPassword(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
         return CGPDFDocumentUnlockWithPassword_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -3399,6 +3819,8 @@ private val CGPDFDocumentIsUnlocked_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPDFDocumentIsUnlocked_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentIsUnlocked").orElseThrow()
 private val CGPDFDocumentIsUnlocked_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentIsUnlocked_ADDR, CGPDFDocumentIsUnlocked_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPDFDocumentIsUnlocked(arg0: MemorySegment): Boolean {
     try {
         return CGPDFDocumentIsUnlocked_HANDLE.invokeExact(arg0) as Boolean
@@ -3418,6 +3840,8 @@ private val CGPDFDocumentAllowsPrinting_DESC: FunctionDescriptor = FunctionDescr
 private val CGPDFDocumentAllowsPrinting_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentAllowsPrinting").orElseThrow()
 private val CGPDFDocumentAllowsPrinting_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentAllowsPrinting_ADDR, CGPDFDocumentAllowsPrinting_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPDFDocumentAllowsPrinting(arg0: MemorySegment): Boolean {
     try {
         return CGPDFDocumentAllowsPrinting_HANDLE.invokeExact(arg0) as Boolean
@@ -3437,6 +3861,8 @@ private val CGPDFDocumentAllowsCopying_DESC: FunctionDescriptor = FunctionDescri
 private val CGPDFDocumentAllowsCopying_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentAllowsCopying").orElseThrow()
 private val CGPDFDocumentAllowsCopying_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentAllowsCopying_ADDR, CGPDFDocumentAllowsCopying_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPDFDocumentAllowsCopying(arg0: MemorySegment): Boolean {
     try {
         return CGPDFDocumentAllowsCopying_HANDLE.invokeExact(arg0) as Boolean
@@ -3456,6 +3882,8 @@ private val CGPDFDocumentGetNumberOfPages_DESC: FunctionDescriptor = FunctionDes
 private val CGPDFDocumentGetNumberOfPages_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetNumberOfPages").orElseThrow()
 private val CGPDFDocumentGetNumberOfPages_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetNumberOfPages_ADDR, CGPDFDocumentGetNumberOfPages_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGPDFDocumentGetNumberOfPages(arg0: MemorySegment): Long {
     try {
         return CGPDFDocumentGetNumberOfPages_HANDLE.invokeExact(arg0) as Long
@@ -3475,6 +3903,8 @@ private val CGPDFDocumentGetPage_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPDFDocumentGetPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetPage").orElseThrow()
 private val CGPDFDocumentGetPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetPage_ADDR, CGPDFDocumentGetPage_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDocumentGetPage(arg0: MemorySegment, arg1: Long): MemorySegment {
     try {
         return CGPDFDocumentGetPage_HANDLE.invokeExact(arg0, arg1) as MemorySegment
@@ -3494,6 +3924,8 @@ private val CGPDFDocumentGetCatalog_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPDFDocumentGetCatalog_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetCatalog").orElseThrow()
 private val CGPDFDocumentGetCatalog_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetCatalog_ADDR, CGPDFDocumentGetCatalog_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGPDFDocumentGetCatalog(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFDocumentGetCatalog_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3513,6 +3945,8 @@ private val CGPDFDocumentGetInfo_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGPDFDocumentGetInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetInfo").orElseThrow()
 private val CGPDFDocumentGetInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetInfo_ADDR, CGPDFDocumentGetInfo_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGPDFDocumentGetInfo(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFDocumentGetInfo_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3532,6 +3966,8 @@ private val CGPDFDocumentGetID_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGPDFDocumentGetID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetID").orElseThrow()
 private val CGPDFDocumentGetID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetID_ADDR, CGPDFDocumentGetID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGPDFDocumentGetID(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFDocumentGetID_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3551,6 +3987,8 @@ private val CGPDFDocumentGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGPDFDocumentGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetTypeID").orElseThrow()
 private val CGPDFDocumentGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetTypeID_ADDR, CGPDFDocumentGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGPDFDocumentGetTypeID(): Long {
     try {
         return CGPDFDocumentGetTypeID_HANDLE.invokeExact() as Long
@@ -3570,6 +4008,8 @@ private val CGPDFDocumentGetOutline_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPDFDocumentGetOutline_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetOutline").orElseThrow()
 private val CGPDFDocumentGetOutline_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetOutline_ADDR, CGPDFDocumentGetOutline_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 fun CGPDFDocumentGetOutline(arg0: MemorySegment): MemorySegment {
     try {
         return CGPDFDocumentGetOutline_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3589,6 +4029,8 @@ private val CGPDFDocumentGetAccessPermissions_DESC: FunctionDescriptor = Functio
 private val CGPDFDocumentGetAccessPermissions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetAccessPermissions").orElseThrow()
 private val CGPDFDocumentGetAccessPermissions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetAccessPermissions_ADDR, CGPDFDocumentGetAccessPermissions_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 fun CGPDFDocumentGetAccessPermissions(arg0: MemorySegment): CGPDFAccessPermissions {
     try {
         return CGPDFAccessPermissions(Integer.toUnsignedLong(CGPDFDocumentGetAccessPermissions_HANDLE.invokeExact(arg0) as Int))
@@ -3608,6 +4050,10 @@ private val CGPDFDocumentGetMediaBox_DESC: FunctionDescriptor = FunctionDescript
 private val CGPDFDocumentGetMediaBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetMediaBox").orElseThrow()
 private val CGPDFDocumentGetMediaBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetMediaBox_ADDR, CGPDFDocumentGetMediaBox_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetMediaBox(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): MemorySegment {
     try {
         return CGPDFDocumentGetMediaBox_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -3620,6 +4066,10 @@ fun CGPDFDocumentGetMediaBox(allocator: SegmentAllocator, arg0: MemorySegment, a
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetMediaBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
     return CGRect(CGPDFDocumentGetMediaBox(allocator, arg0, arg1))
 }
@@ -3631,6 +4081,10 @@ private val CGPDFDocumentGetCropBox_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPDFDocumentGetCropBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetCropBox").orElseThrow()
 private val CGPDFDocumentGetCropBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetCropBox_ADDR, CGPDFDocumentGetCropBox_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetCropBox(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): MemorySegment {
     try {
         return CGPDFDocumentGetCropBox_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -3643,6 +4097,10 @@ fun CGPDFDocumentGetCropBox(allocator: SegmentAllocator, arg0: MemorySegment, ar
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetCropBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
     return CGRect(CGPDFDocumentGetCropBox(allocator, arg0, arg1))
 }
@@ -3654,6 +4112,10 @@ private val CGPDFDocumentGetBleedBox_DESC: FunctionDescriptor = FunctionDescript
 private val CGPDFDocumentGetBleedBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetBleedBox").orElseThrow()
 private val CGPDFDocumentGetBleedBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetBleedBox_ADDR, CGPDFDocumentGetBleedBox_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetBleedBox(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): MemorySegment {
     try {
         return CGPDFDocumentGetBleedBox_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -3666,6 +4128,10 @@ fun CGPDFDocumentGetBleedBox(allocator: SegmentAllocator, arg0: MemorySegment, a
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetBleedBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
     return CGRect(CGPDFDocumentGetBleedBox(allocator, arg0, arg1))
 }
@@ -3677,6 +4143,10 @@ private val CGPDFDocumentGetTrimBox_DESC: FunctionDescriptor = FunctionDescripto
 private val CGPDFDocumentGetTrimBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetTrimBox").orElseThrow()
 private val CGPDFDocumentGetTrimBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetTrimBox_ADDR, CGPDFDocumentGetTrimBox_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetTrimBox(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): MemorySegment {
     try {
         return CGPDFDocumentGetTrimBox_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -3689,6 +4159,10 @@ fun CGPDFDocumentGetTrimBox(allocator: SegmentAllocator, arg0: MemorySegment, ar
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetTrimBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
     return CGRect(CGPDFDocumentGetTrimBox(allocator, arg0, arg1))
 }
@@ -3700,6 +4174,10 @@ private val CGPDFDocumentGetArtBox_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGPDFDocumentGetArtBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetArtBox").orElseThrow()
 private val CGPDFDocumentGetArtBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetArtBox_ADDR, CGPDFDocumentGetArtBox_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetArtBox(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): MemorySegment {
     try {
         return CGPDFDocumentGetArtBox_HANDLE.invokeExact(allocator, arg0, arg1) as MemorySegment
@@ -3712,6 +4190,10 @@ fun CGPDFDocumentGetArtBox(allocator: SegmentAllocator, arg0: MemorySegment, arg
     }
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetArtBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Int): CGRect {
     return CGRect(CGPDFDocumentGetArtBox(allocator, arg0, arg1))
 }
@@ -3723,6 +4205,10 @@ private val CGPDFDocumentGetRotationAngle_DESC: FunctionDescriptor = FunctionDes
 private val CGPDFDocumentGetRotationAngle_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPDFDocumentGetRotationAngle").orElseThrow()
 private val CGPDFDocumentGetRotationAngle_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPDFDocumentGetRotationAngle_ADDR, CGPDFDocumentGetRotationAngle_DESC)
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun CGPDFDocumentGetRotationAngle(arg0: MemorySegment, arg1: Int): Int {
     try {
         return CGPDFDocumentGetRotationAngle_HANDLE.invokeExact(arg0, arg1) as Int
@@ -3742,6 +4228,8 @@ private val CGFunctionGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGFunctionGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFunctionGetTypeID").orElseThrow()
 private val CGFunctionGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFunctionGetTypeID_ADDR, CGFunctionGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGFunctionGetTypeID(): Long {
     try {
         return CGFunctionGetTypeID_HANDLE.invokeExact() as Long
@@ -3761,6 +4249,8 @@ private val CGFunctionCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGFunctionCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFunctionCreate").orElseThrow()
 private val CGFunctionCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFunctionCreate_ADDR, CGFunctionCreate_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGFunctionCreate(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Long, arg4: MemorySegment, arg5: MemorySegment): MemorySegment {
     try {
         return CGFunctionCreate_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as MemorySegment
@@ -3780,6 +4270,8 @@ private val CGFunctionRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(Va
 private val CGFunctionRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFunctionRetain").orElseThrow()
 private val CGFunctionRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFunctionRetain_ADDR, CGFunctionRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGFunctionRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGFunctionRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3799,6 +4291,8 @@ private val CGFunctionRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGFunctionRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGFunctionRelease").orElseThrow()
 private val CGFunctionRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGFunctionRelease_ADDR, CGFunctionRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGFunctionRelease(arg0: MemorySegment): Unit {
     try {
         CGFunctionRelease_HANDLE.invokeExact(arg0)
@@ -3818,6 +4312,8 @@ private val CGShadingGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGShadingGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShadingGetTypeID").orElseThrow()
 private val CGShadingGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShadingGetTypeID_ADDR, CGShadingGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGShadingGetTypeID(): Long {
     try {
         return CGShadingGetTypeID_HANDLE.invokeExact() as Long
@@ -3837,6 +4333,8 @@ private val CGShadingCreateAxial_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGShadingCreateAxial_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShadingCreateAxial").orElseThrow()
 private val CGShadingCreateAxial_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShadingCreateAxial_ADDR, CGShadingCreateAxial_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGShadingCreateAxial(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: Boolean, arg5: Boolean): MemorySegment {
     try {
         return CGShadingCreateAxial_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as MemorySegment
@@ -3849,6 +4347,8 @@ fun CGShadingCreateAxial(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGShadingCreateAxial(arg0: MemorySegment, arg1: CGPoint, arg2: CGPoint, arg3: MemorySegment, arg4: Boolean, arg5: Boolean): MemorySegment {
     return CGShadingCreateAxial(arg0, arg1.segment, arg2.segment, arg3, arg4, arg5)
 }
@@ -3860,6 +4360,11 @@ private val CGShadingCreateAxialWithContentHeadroom_DESC: FunctionDescriptor = F
 private val CGShadingCreateAxialWithContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShadingCreateAxialWithContentHeadroom").orElseThrow()
 private val CGShadingCreateAxialWithContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShadingCreateAxialWithContentHeadroom_ADDR, CGShadingCreateAxialWithContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGShadingCreateAxialWithContentHeadroom(arg0: Float, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: Boolean, arg6: Boolean): MemorySegment {
     try {
         return CGShadingCreateAxialWithContentHeadroom_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as MemorySegment
@@ -3872,6 +4377,11 @@ fun CGShadingCreateAxialWithContentHeadroom(arg0: Float, arg1: MemorySegment, ar
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGShadingCreateAxialWithContentHeadroom(arg0: Float, arg1: MemorySegment, arg2: CGPoint, arg3: CGPoint, arg4: MemorySegment, arg5: Boolean, arg6: Boolean): MemorySegment {
     return CGShadingCreateAxialWithContentHeadroom(arg0, arg1, arg2.segment, arg3.segment, arg4, arg5, arg6)
 }
@@ -3883,6 +4393,8 @@ private val CGShadingCreateRadial_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGShadingCreateRadial_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShadingCreateRadial").orElseThrow()
 private val CGShadingCreateRadial_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShadingCreateRadial_ADDR, CGShadingCreateRadial_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGShadingCreateRadial(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, arg3: MemorySegment, arg4: Double, arg5: MemorySegment, arg6: Boolean, arg7: Boolean): MemorySegment {
     try {
         return CGShadingCreateRadial_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7) as MemorySegment
@@ -3895,6 +4407,8 @@ fun CGShadingCreateRadial(arg0: MemorySegment, arg1: MemorySegment, arg2: Double
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGShadingCreateRadial(arg0: MemorySegment, arg1: CGPoint, arg2: Double, arg3: CGPoint, arg4: Double, arg5: MemorySegment, arg6: Boolean, arg7: Boolean): MemorySegment {
     return CGShadingCreateRadial(arg0, arg1.segment, arg2, arg3.segment, arg4, arg5, arg6, arg7)
 }
@@ -3906,6 +4420,11 @@ private val CGShadingCreateRadialWithContentHeadroom_DESC: FunctionDescriptor = 
 private val CGShadingCreateRadialWithContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShadingCreateRadialWithContentHeadroom").orElseThrow()
 private val CGShadingCreateRadialWithContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShadingCreateRadialWithContentHeadroom_ADDR, CGShadingCreateRadialWithContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGShadingCreateRadialWithContentHeadroom(arg0: Float, arg1: MemorySegment, arg2: MemorySegment, arg3: Double, arg4: MemorySegment, arg5: Double, arg6: MemorySegment, arg7: Boolean, arg8: Boolean): MemorySegment {
     try {
         return CGShadingCreateRadialWithContentHeadroom_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) as MemorySegment
@@ -3918,6 +4437,11 @@ fun CGShadingCreateRadialWithContentHeadroom(arg0: Float, arg1: MemorySegment, a
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGShadingCreateRadialWithContentHeadroom(arg0: Float, arg1: MemorySegment, arg2: CGPoint, arg3: Double, arg4: CGPoint, arg5: Double, arg6: MemorySegment, arg7: Boolean, arg8: Boolean): MemorySegment {
     return CGShadingCreateRadialWithContentHeadroom(arg0, arg1, arg2.segment, arg3, arg4.segment, arg5, arg6, arg7, arg8)
 }
@@ -3929,6 +4453,8 @@ private val CGShadingRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(Val
 private val CGShadingRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShadingRetain").orElseThrow()
 private val CGShadingRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShadingRetain_ADDR, CGShadingRetain_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGShadingRetain(arg0: MemorySegment): MemorySegment {
     try {
         return CGShadingRetain_HANDLE.invokeExact(arg0) as MemorySegment
@@ -3948,6 +4474,8 @@ private val CGShadingRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoi
 private val CGShadingRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShadingRelease").orElseThrow()
 private val CGShadingRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShadingRelease_ADDR, CGShadingRelease_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGShadingRelease(arg0: MemorySegment): Unit {
     try {
         CGShadingRelease_HANDLE.invokeExact(arg0)
@@ -3967,6 +4495,11 @@ private val CGShadingGetContentHeadroom_DESC: FunctionDescriptor = FunctionDescr
 private val CGShadingGetContentHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGShadingGetContentHeadroom").orElseThrow()
 private val CGShadingGetContentHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGShadingGetContentHeadroom_ADDR, CGShadingGetContentHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGShadingGetContentHeadroom(arg0: MemorySegment): Float {
     try {
         return CGShadingGetContentHeadroom_HANDLE.invokeExact(arg0) as Float
@@ -3986,6 +4519,10 @@ private val kCGEXRToneMappingGammaDefog_LAYOUT: ValueLayout by lazy { ValueLayou
 private val kCGEXRToneMappingGammaDefog_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaDefog").orElseThrow().reinterpret(kCGEXRToneMappingGammaDefog_LAYOUT.byteSize()) }
 private val kCGEXRToneMappingGammaDefog_VH: VarHandle by lazy { kCGEXRToneMappingGammaDefog_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGEXRToneMappingGammaDefog: MemorySegment
     get() = kCGEXRToneMappingGammaDefog_VH.get(kCGEXRToneMappingGammaDefog_SEGMENT, 0L) as MemorySegment
     set(value) = kCGEXRToneMappingGammaDefog_VH.set(kCGEXRToneMappingGammaDefog_SEGMENT, 0L, value)
@@ -3997,6 +4534,10 @@ private val kCGEXRToneMappingGammaExposure_LAYOUT: ValueLayout by lazy { ValueLa
 private val kCGEXRToneMappingGammaExposure_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaExposure").orElseThrow().reinterpret(kCGEXRToneMappingGammaExposure_LAYOUT.byteSize()) }
 private val kCGEXRToneMappingGammaExposure_VH: VarHandle by lazy { kCGEXRToneMappingGammaExposure_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGEXRToneMappingGammaExposure: MemorySegment
     get() = kCGEXRToneMappingGammaExposure_VH.get(kCGEXRToneMappingGammaExposure_SEGMENT, 0L) as MemorySegment
     set(value) = kCGEXRToneMappingGammaExposure_VH.set(kCGEXRToneMappingGammaExposure_SEGMENT, 0L, value)
@@ -4008,6 +4549,10 @@ private val kCGEXRToneMappingGammaKneeLow_LAYOUT: ValueLayout by lazy { ValueLay
 private val kCGEXRToneMappingGammaKneeLow_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaKneeLow").orElseThrow().reinterpret(kCGEXRToneMappingGammaKneeLow_LAYOUT.byteSize()) }
 private val kCGEXRToneMappingGammaKneeLow_VH: VarHandle by lazy { kCGEXRToneMappingGammaKneeLow_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGEXRToneMappingGammaKneeLow: MemorySegment
     get() = kCGEXRToneMappingGammaKneeLow_VH.get(kCGEXRToneMappingGammaKneeLow_SEGMENT, 0L) as MemorySegment
     set(value) = kCGEXRToneMappingGammaKneeLow_VH.set(kCGEXRToneMappingGammaKneeLow_SEGMENT, 0L, value)
@@ -4019,6 +4564,10 @@ private val kCGEXRToneMappingGammaKneeHigh_LAYOUT: ValueLayout by lazy { ValueLa
 private val kCGEXRToneMappingGammaKneeHigh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGEXRToneMappingGammaKneeHigh").orElseThrow().reinterpret(kCGEXRToneMappingGammaKneeHigh_LAYOUT.byteSize()) }
 private val kCGEXRToneMappingGammaKneeHigh_VH: VarHandle by lazy { kCGEXRToneMappingGammaKneeHigh_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGEXRToneMappingGammaKneeHigh: MemorySegment
     get() = kCGEXRToneMappingGammaKneeHigh_VH.get(kCGEXRToneMappingGammaKneeHigh_SEGMENT, 0L) as MemorySegment
     set(value) = kCGEXRToneMappingGammaKneeHigh_VH.set(kCGEXRToneMappingGammaKneeHigh_SEGMENT, 0L, value)
@@ -4030,6 +4579,11 @@ private val CGEXRToneMappingGammaGetDefaultOptions_DESC: FunctionDescriptor = Fu
 private val CGEXRToneMappingGammaGetDefaultOptions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGEXRToneMappingGammaGetDefaultOptions").orElseThrow()
 private val CGEXRToneMappingGammaGetDefaultOptions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGEXRToneMappingGammaGetDefaultOptions_ADDR, CGEXRToneMappingGammaGetDefaultOptions_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGEXRToneMappingGammaGetDefaultOptions(): MemorySegment {
     try {
         return CGEXRToneMappingGammaGetDefaultOptions_HANDLE.invokeExact() as MemorySegment
@@ -4049,6 +4603,10 @@ private val kCGUse100nitsHLGOOTF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRE
 private val kCGUse100nitsHLGOOTF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGUse100nitsHLGOOTF").orElseThrow().reinterpret(kCGUse100nitsHLGOOTF_LAYOUT.byteSize()) }
 private val kCGUse100nitsHLGOOTF_VH: VarHandle by lazy { kCGUse100nitsHLGOOTF_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGUse100nitsHLGOOTF: MemorySegment
     get() = kCGUse100nitsHLGOOTF_VH.get(kCGUse100nitsHLGOOTF_SEGMENT, 0L) as MemorySegment
     set(value) = kCGUse100nitsHLGOOTF_VH.set(kCGUse100nitsHLGOOTF_SEGMENT, 0L, value)
@@ -4060,6 +4618,10 @@ private val kCGUseBT1886ForCoreVideoGamma_LAYOUT: ValueLayout by lazy { ValueLay
 private val kCGUseBT1886ForCoreVideoGamma_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGUseBT1886ForCoreVideoGamma").orElseThrow().reinterpret(kCGUseBT1886ForCoreVideoGamma_LAYOUT.byteSize()) }
 private val kCGUseBT1886ForCoreVideoGamma_VH: VarHandle by lazy { kCGUseBT1886ForCoreVideoGamma_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGUseBT1886ForCoreVideoGamma: MemorySegment
     get() = kCGUseBT1886ForCoreVideoGamma_VH.get(kCGUseBT1886ForCoreVideoGamma_SEGMENT, 0L) as MemorySegment
     set(value) = kCGUseBT1886ForCoreVideoGamma_VH.set(kCGUseBT1886ForCoreVideoGamma_SEGMENT, 0L, value)
@@ -4071,6 +4633,10 @@ private val kCGSkipBoostToHDR_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS 
 private val kCGSkipBoostToHDR_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGSkipBoostToHDR").orElseThrow().reinterpret(kCGSkipBoostToHDR_LAYOUT.byteSize()) }
 private val kCGSkipBoostToHDR_VH: VarHandle by lazy { kCGSkipBoostToHDR_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 var kCGSkipBoostToHDR: MemorySegment
     get() = kCGSkipBoostToHDR_VH.get(kCGSkipBoostToHDR_SEGMENT, 0L) as MemorySegment
     set(value) = kCGSkipBoostToHDR_VH.set(kCGSkipBoostToHDR_SEGMENT, 0L, value)
@@ -4082,6 +4648,10 @@ private val kCGUseLegacyHDREcosystem_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val kCGUseLegacyHDREcosystem_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGUseLegacyHDREcosystem").orElseThrow().reinterpret(kCGUseLegacyHDREcosystem_LAYOUT.byteSize()) }
 private val kCGUseLegacyHDREcosystem_VH: VarHandle by lazy { kCGUseLegacyHDREcosystem_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 1, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 1, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 1, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 1, introducedSubminor = -1)
 var kCGUseLegacyHDREcosystem: MemorySegment
     get() = kCGUseLegacyHDREcosystem_VH.get(kCGUseLegacyHDREcosystem_SEGMENT, 0L) as MemorySegment
     set(value) = kCGUseLegacyHDREcosystem_VH.set(kCGUseLegacyHDREcosystem_SEGMENT, 0L, value)
@@ -4093,6 +4663,11 @@ private val kCGPreferredDynamicRange_LAYOUT: ValueLayout by lazy { ValueLayout.A
 private val kCGPreferredDynamicRange_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPreferredDynamicRange").orElseThrow().reinterpret(kCGPreferredDynamicRange_LAYOUT.byteSize()) }
 private val kCGPreferredDynamicRange_VH: VarHandle by lazy { kCGPreferredDynamicRange_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCGPreferredDynamicRange: MemorySegment
     get() = kCGPreferredDynamicRange_VH.get(kCGPreferredDynamicRange_SEGMENT, 0L) as MemorySegment
     set(value) = kCGPreferredDynamicRange_VH.set(kCGPreferredDynamicRange_SEGMENT, 0L, value)
@@ -4104,6 +4679,11 @@ private val kCGDynamicRangeHigh_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRES
 private val kCGDynamicRangeHigh_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDynamicRangeHigh").orElseThrow().reinterpret(kCGDynamicRangeHigh_LAYOUT.byteSize()) }
 private val kCGDynamicRangeHigh_VH: VarHandle by lazy { kCGDynamicRangeHigh_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCGDynamicRangeHigh: MemorySegment
     get() = kCGDynamicRangeHigh_VH.get(kCGDynamicRangeHigh_SEGMENT, 0L) as MemorySegment
     set(value) = kCGDynamicRangeHigh_VH.set(kCGDynamicRangeHigh_SEGMENT, 0L, value)
@@ -4115,6 +4695,11 @@ private val kCGDynamicRangeConstrained_LAYOUT: ValueLayout by lazy { ValueLayout
 private val kCGDynamicRangeConstrained_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDynamicRangeConstrained").orElseThrow().reinterpret(kCGDynamicRangeConstrained_LAYOUT.byteSize()) }
 private val kCGDynamicRangeConstrained_VH: VarHandle by lazy { kCGDynamicRangeConstrained_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCGDynamicRangeConstrained: MemorySegment
     get() = kCGDynamicRangeConstrained_VH.get(kCGDynamicRangeConstrained_SEGMENT, 0L) as MemorySegment
     set(value) = kCGDynamicRangeConstrained_VH.set(kCGDynamicRangeConstrained_SEGMENT, 0L, value)
@@ -4126,6 +4711,11 @@ private val kCGDynamicRangeStandard_LAYOUT: ValueLayout by lazy { ValueLayout.AD
 private val kCGDynamicRangeStandard_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDynamicRangeStandard").orElseThrow().reinterpret(kCGDynamicRangeStandard_LAYOUT.byteSize()) }
 private val kCGDynamicRangeStandard_VH: VarHandle by lazy { kCGDynamicRangeStandard_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCGDynamicRangeStandard: MemorySegment
     get() = kCGDynamicRangeStandard_VH.get(kCGDynamicRangeStandard_SEGMENT, 0L) as MemorySegment
     set(value) = kCGDynamicRangeStandard_VH.set(kCGDynamicRangeStandard_SEGMENT, 0L, value)
@@ -4137,6 +4727,11 @@ private val kCGContentAverageLightLevel_LAYOUT: ValueLayout by lazy { ValueLayou
 private val kCGContentAverageLightLevel_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGContentAverageLightLevel").orElseThrow().reinterpret(kCGContentAverageLightLevel_LAYOUT.byteSize()) }
 private val kCGContentAverageLightLevel_VH: VarHandle by lazy { kCGContentAverageLightLevel_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCGContentAverageLightLevel: MemorySegment
     get() = kCGContentAverageLightLevel_VH.get(kCGContentAverageLightLevel_SEGMENT, 0L) as MemorySegment
     set(value) = kCGContentAverageLightLevel_VH.set(kCGContentAverageLightLevel_SEGMENT, 0L, value)
@@ -4148,6 +4743,11 @@ private val kCGContentAverageLightLevelNits_LAYOUT: ValueLayout by lazy { ValueL
 private val kCGContentAverageLightLevelNits_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGContentAverageLightLevelNits").orElseThrow().reinterpret(kCGContentAverageLightLevelNits_LAYOUT.byteSize()) }
 private val kCGContentAverageLightLevelNits_VH: VarHandle by lazy { kCGContentAverageLightLevelNits_LAYOUT.varHandle() }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 var kCGContentAverageLightLevelNits: MemorySegment
     get() = kCGContentAverageLightLevelNits_VH.get(kCGContentAverageLightLevelNits_SEGMENT, 0L) as MemorySegment
     set(value) = kCGContentAverageLightLevelNits_VH.set(kCGContentAverageLightLevelNits_SEGMENT, 0L, value)
@@ -4159,6 +4759,8 @@ private val CGContextGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(
 private val CGContextGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetTypeID").orElseThrow()
 private val CGContextGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetTypeID_ADDR, CGContextGetTypeID_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGContextGetTypeID(): Long {
     try {
         return CGContextGetTypeID_HANDLE.invokeExact() as Long
@@ -4178,6 +4780,8 @@ private val CGContextSaveGState_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGContextSaveGState_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSaveGState").orElseThrow()
 private val CGContextSaveGState_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSaveGState_ADDR, CGContextSaveGState_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSaveGState(arg0: MemorySegment): Unit {
     try {
         CGContextSaveGState_HANDLE.invokeExact(arg0)
@@ -4197,6 +4801,8 @@ private val CGContextRestoreGState_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGContextRestoreGState_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextRestoreGState").orElseThrow()
 private val CGContextRestoreGState_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextRestoreGState_ADDR, CGContextRestoreGState_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextRestoreGState(arg0: MemorySegment): Unit {
     try {
         CGContextRestoreGState_HANDLE.invokeExact(arg0)
@@ -4216,6 +4822,8 @@ private val CGContextScaleCTM_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGContextScaleCTM_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextScaleCTM").orElseThrow()
 private val CGContextScaleCTM_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextScaleCTM_ADDR, CGContextScaleCTM_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextScaleCTM(arg0: MemorySegment, arg1: Double, arg2: Double): Unit {
     try {
         CGContextScaleCTM_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -4235,6 +4843,8 @@ private val CGContextTranslateCTM_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGContextTranslateCTM_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextTranslateCTM").orElseThrow()
 private val CGContextTranslateCTM_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextTranslateCTM_ADDR, CGContextTranslateCTM_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextTranslateCTM(arg0: MemorySegment, arg1: Double, arg2: Double): Unit {
     try {
         CGContextTranslateCTM_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -4254,6 +4864,8 @@ private val CGContextRotateCTM_DESC: FunctionDescriptor = FunctionDescriptor.ofV
 private val CGContextRotateCTM_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextRotateCTM").orElseThrow()
 private val CGContextRotateCTM_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextRotateCTM_ADDR, CGContextRotateCTM_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextRotateCTM(arg0: MemorySegment, arg1: Double): Unit {
     try {
         CGContextRotateCTM_HANDLE.invokeExact(arg0, arg1)
@@ -4273,6 +4885,8 @@ private val CGContextConcatCTM_DESC: FunctionDescriptor = FunctionDescriptor.ofV
 private val CGContextConcatCTM_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConcatCTM").orElseThrow()
 private val CGContextConcatCTM_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConcatCTM_ADDR, CGContextConcatCTM_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextConcatCTM(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextConcatCTM_HANDLE.invokeExact(arg0, arg1)
@@ -4285,6 +4899,8 @@ fun CGContextConcatCTM(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextConcatCTM(arg0: MemorySegment, arg1: CGAffineTransform): Unit {
     CGContextConcatCTM(arg0, arg1.segment)
 }
@@ -4296,6 +4912,8 @@ private val CGContextGetCTM_DESC: FunctionDescriptor = FunctionDescriptor.of(CGA
 private val CGContextGetCTM_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetCTM").orElseThrow()
 private val CGContextGetCTM_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetCTM_ADDR, CGContextGetCTM_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextGetCTM(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGContextGetCTM_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -4308,6 +4926,8 @@ fun CGContextGetCTM(allocator: SegmentAllocator, arg0: MemorySegment): MemorySeg
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextGetCTMTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGAffineTransform {
     return CGAffineTransform(CGContextGetCTM(allocator, arg0))
 }
@@ -4319,6 +4939,8 @@ private val CGContextSetLineWidth_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGContextSetLineWidth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetLineWidth").orElseThrow()
 private val CGContextSetLineWidth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetLineWidth_ADDR, CGContextSetLineWidth_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetLineWidth(arg0: MemorySegment, arg1: Double): Unit {
     try {
         CGContextSetLineWidth_HANDLE.invokeExact(arg0, arg1)
@@ -4338,6 +4960,8 @@ private val CGContextSetLineCap_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGContextSetLineCap_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetLineCap").orElseThrow()
 private val CGContextSetLineCap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetLineCap_ADDR, CGContextSetLineCap_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetLineCap(arg0: MemorySegment, arg1: CGLineCap): Unit {
     try {
         CGContextSetLineCap_HANDLE.invokeExact(arg0, arg1.value.toInt())
@@ -4357,6 +4981,8 @@ private val CGContextSetLineJoin_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGContextSetLineJoin_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetLineJoin").orElseThrow()
 private val CGContextSetLineJoin_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetLineJoin_ADDR, CGContextSetLineJoin_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetLineJoin(arg0: MemorySegment, arg1: CGLineJoin): Unit {
     try {
         CGContextSetLineJoin_HANDLE.invokeExact(arg0, arg1.value.toInt())
@@ -4376,6 +5002,8 @@ private val CGContextSetMiterLimit_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGContextSetMiterLimit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetMiterLimit").orElseThrow()
 private val CGContextSetMiterLimit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetMiterLimit_ADDR, CGContextSetMiterLimit_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetMiterLimit(arg0: MemorySegment, arg1: Double): Unit {
     try {
         CGContextSetMiterLimit_HANDLE.invokeExact(arg0, arg1)
@@ -4395,6 +5023,8 @@ private val CGContextSetLineDash_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGContextSetLineDash_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetLineDash").orElseThrow()
 private val CGContextSetLineDash_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetLineDash_ADDR, CGContextSetLineDash_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetLineDash(arg0: MemorySegment, arg1: Double, arg2: MemorySegment, arg3: Long): Unit {
     try {
         CGContextSetLineDash_HANDLE.invokeExact(arg0, arg1, arg2, arg3)
@@ -4414,6 +5044,8 @@ private val CGContextSetFlatness_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGContextSetFlatness_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetFlatness").orElseThrow()
 private val CGContextSetFlatness_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetFlatness_ADDR, CGContextSetFlatness_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetFlatness(arg0: MemorySegment, arg1: Double): Unit {
     try {
         CGContextSetFlatness_HANDLE.invokeExact(arg0, arg1)
@@ -4433,6 +5065,8 @@ private val CGContextSetAlpha_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGContextSetAlpha_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetAlpha").orElseThrow()
 private val CGContextSetAlpha_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetAlpha_ADDR, CGContextSetAlpha_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetAlpha(arg0: MemorySegment, arg1: Double): Unit {
     try {
         CGContextSetAlpha_HANDLE.invokeExact(arg0, arg1)
@@ -4452,6 +5086,8 @@ private val CGContextSetBlendMode_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGContextSetBlendMode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetBlendMode").orElseThrow()
 private val CGContextSetBlendMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetBlendMode_ADDR, CGContextSetBlendMode_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextSetBlendMode(arg0: MemorySegment, arg1: CGBlendMode): Unit {
     try {
         CGContextSetBlendMode_HANDLE.invokeExact(arg0, arg1.value.toInt())
@@ -4471,6 +5107,8 @@ private val CGContextBeginPath_DESC: FunctionDescriptor = FunctionDescriptor.ofV
 private val CGContextBeginPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextBeginPath").orElseThrow()
 private val CGContextBeginPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextBeginPath_ADDR, CGContextBeginPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextBeginPath(arg0: MemorySegment): Unit {
     try {
         CGContextBeginPath_HANDLE.invokeExact(arg0)
@@ -4490,6 +5128,8 @@ private val CGContextMoveToPoint_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGContextMoveToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextMoveToPoint").orElseThrow()
 private val CGContextMoveToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextMoveToPoint_ADDR, CGContextMoveToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextMoveToPoint(arg0: MemorySegment, arg1: Double, arg2: Double): Unit {
     try {
         CGContextMoveToPoint_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -4509,6 +5149,8 @@ private val CGContextAddLineToPoint_DESC: FunctionDescriptor = FunctionDescripto
 private val CGContextAddLineToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddLineToPoint").orElseThrow()
 private val CGContextAddLineToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddLineToPoint_ADDR, CGContextAddLineToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextAddLineToPoint(arg0: MemorySegment, arg1: Double, arg2: Double): Unit {
     try {
         CGContextAddLineToPoint_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -4528,6 +5170,8 @@ private val CGContextAddCurveToPoint_DESC: FunctionDescriptor = FunctionDescript
 private val CGContextAddCurveToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddCurveToPoint").orElseThrow()
 private val CGContextAddCurveToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddCurveToPoint_ADDR, CGContextAddCurveToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextAddCurveToPoint(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: Double, arg4: Double, arg5: Double, arg6: Double): Unit {
     try {
         CGContextAddCurveToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
@@ -4547,6 +5191,8 @@ private val CGContextAddQuadCurveToPoint_DESC: FunctionDescriptor = FunctionDesc
 private val CGContextAddQuadCurveToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddQuadCurveToPoint").orElseThrow()
 private val CGContextAddQuadCurveToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddQuadCurveToPoint_ADDR, CGContextAddQuadCurveToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextAddQuadCurveToPoint(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: Double, arg4: Double): Unit {
     try {
         CGContextAddQuadCurveToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4)
@@ -4566,6 +5212,8 @@ private val CGContextClosePath_DESC: FunctionDescriptor = FunctionDescriptor.ofV
 private val CGContextClosePath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextClosePath").orElseThrow()
 private val CGContextClosePath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextClosePath_ADDR, CGContextClosePath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextClosePath(arg0: MemorySegment): Unit {
     try {
         CGContextClosePath_HANDLE.invokeExact(arg0)
@@ -4585,6 +5233,8 @@ private val CGContextAddRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoi
 private val CGContextAddRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddRect").orElseThrow()
 private val CGContextAddRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddRect_ADDR, CGContextAddRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextAddRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextAddRect_HANDLE.invokeExact(arg0, arg1)
@@ -4597,6 +5247,8 @@ fun CGContextAddRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextAddRect(arg0: MemorySegment, arg1: CGRect): Unit {
     CGContextAddRect(arg0, arg1.segment)
 }
@@ -4608,6 +5260,8 @@ private val CGContextAddRects_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGContextAddRects_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddRects").orElseThrow()
 private val CGContextAddRects_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddRects_ADDR, CGContextAddRects_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextAddRects(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
     try {
         CGContextAddRects_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -4627,6 +5281,8 @@ private val CGContextAddLines_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGContextAddLines_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddLines").orElseThrow()
 private val CGContextAddLines_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddLines_ADDR, CGContextAddLines_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextAddLines(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
     try {
         CGContextAddLines_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -4646,6 +5302,8 @@ private val CGContextAddEllipseInRect_DESC: FunctionDescriptor = FunctionDescrip
 private val CGContextAddEllipseInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddEllipseInRect").orElseThrow()
 private val CGContextAddEllipseInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddEllipseInRect_ADDR, CGContextAddEllipseInRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextAddEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextAddEllipseInRect_HANDLE.invokeExact(arg0, arg1)
@@ -4658,6 +5316,8 @@ fun CGContextAddEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextAddEllipseInRect(arg0: MemorySegment, arg1: CGRect): Unit {
     CGContextAddEllipseInRect(arg0, arg1.segment)
 }
@@ -4669,6 +5329,8 @@ private val CGContextAddArc_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid
 private val CGContextAddArc_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddArc").orElseThrow()
 private val CGContextAddArc_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddArc_ADDR, CGContextAddArc_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextAddArc(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: Double, arg4: Double, arg5: Double, arg6: Int): Unit {
     try {
         CGContextAddArc_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
@@ -4688,6 +5350,8 @@ private val CGContextAddArcToPoint_DESC: FunctionDescriptor = FunctionDescriptor
 private val CGContextAddArcToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddArcToPoint").orElseThrow()
 private val CGContextAddArcToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddArcToPoint_ADDR, CGContextAddArcToPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextAddArcToPoint(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: Double, arg4: Double, arg5: Double): Unit {
     try {
         CGContextAddArcToPoint_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5)
@@ -4707,6 +5371,8 @@ private val CGContextAddPath_DESC: FunctionDescriptor = FunctionDescriptor.ofVoi
 private val CGContextAddPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextAddPath").orElseThrow()
 private val CGContextAddPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextAddPath_ADDR, CGContextAddPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGContextAddPath(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextAddPath_HANDLE.invokeExact(arg0, arg1)
@@ -4726,6 +5392,8 @@ private val CGContextReplacePathWithStrokedPath_DESC: FunctionDescriptor = Funct
 private val CGContextReplacePathWithStrokedPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextReplacePathWithStrokedPath").orElseThrow()
 private val CGContextReplacePathWithStrokedPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextReplacePathWithStrokedPath_ADDR, CGContextReplacePathWithStrokedPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextReplacePathWithStrokedPath(arg0: MemorySegment): Unit {
     try {
         CGContextReplacePathWithStrokedPath_HANDLE.invokeExact(arg0)
@@ -4745,6 +5413,8 @@ private val CGContextIsPathEmpty_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGContextIsPathEmpty_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextIsPathEmpty").orElseThrow()
 private val CGContextIsPathEmpty_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextIsPathEmpty_ADDR, CGContextIsPathEmpty_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextIsPathEmpty(arg0: MemorySegment): Boolean {
     try {
         return CGContextIsPathEmpty_HANDLE.invokeExact(arg0) as Boolean
@@ -4764,6 +5434,8 @@ private val CGContextGetPathCurrentPoint_DESC: FunctionDescriptor = FunctionDesc
 private val CGContextGetPathCurrentPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetPathCurrentPoint").orElseThrow()
 private val CGContextGetPathCurrentPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetPathCurrentPoint_ADDR, CGContextGetPathCurrentPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextGetPathCurrentPoint(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGContextGetPathCurrentPoint_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -4776,6 +5448,8 @@ fun CGContextGetPathCurrentPoint(allocator: SegmentAllocator, arg0: MemorySegmen
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextGetPathCurrentPointTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGPoint {
     return CGPoint(CGContextGetPathCurrentPoint(allocator, arg0))
 }
@@ -4787,6 +5461,8 @@ private val CGContextGetPathBoundingBox_DESC: FunctionDescriptor = FunctionDescr
 private val CGContextGetPathBoundingBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetPathBoundingBox").orElseThrow()
 private val CGContextGetPathBoundingBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetPathBoundingBox_ADDR, CGContextGetPathBoundingBox_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextGetPathBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGContextGetPathBoundingBox_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -4799,6 +5475,8 @@ fun CGContextGetPathBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextGetPathBoundingBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
     return CGRect(CGContextGetPathBoundingBox(allocator, arg0))
 }
@@ -4810,6 +5488,8 @@ private val CGContextCopyPath_DESC: FunctionDescriptor = FunctionDescriptor.of(V
 private val CGContextCopyPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextCopyPath").orElseThrow()
 private val CGContextCopyPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextCopyPath_ADDR, CGContextCopyPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
 fun CGContextCopyPath(arg0: MemorySegment): MemorySegment {
     try {
         return CGContextCopyPath_HANDLE.invokeExact(arg0) as MemorySegment
@@ -4829,6 +5509,8 @@ private val CGContextPathContainsPoint_DESC: FunctionDescriptor = FunctionDescri
 private val CGContextPathContainsPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextPathContainsPoint").orElseThrow()
 private val CGContextPathContainsPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextPathContainsPoint_ADDR, CGContextPathContainsPoint_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextPathContainsPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: CGPathDrawingMode): Boolean {
     try {
         return CGContextPathContainsPoint_HANDLE.invokeExact(arg0, arg1, arg2.value.toInt()) as Boolean
@@ -4841,6 +5523,8 @@ fun CGContextPathContainsPoint(arg0: MemorySegment, arg1: MemorySegment, arg2: C
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextPathContainsPoint(arg0: MemorySegment, arg1: CGPoint, arg2: CGPathDrawingMode): Boolean {
     return CGContextPathContainsPoint(arg0, arg1.segment, arg2)
 }
@@ -4852,6 +5536,8 @@ private val CGContextDrawPath_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGContextDrawPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawPath").orElseThrow()
 private val CGContextDrawPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawPath_ADDR, CGContextDrawPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextDrawPath(arg0: MemorySegment, arg1: CGPathDrawingMode): Unit {
     try {
         CGContextDrawPath_HANDLE.invokeExact(arg0, arg1.value.toInt())
@@ -4871,6 +5557,8 @@ private val CGContextFillPath_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGContextFillPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextFillPath").orElseThrow()
 private val CGContextFillPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextFillPath_ADDR, CGContextFillPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextFillPath(arg0: MemorySegment): Unit {
     try {
         CGContextFillPath_HANDLE.invokeExact(arg0)
@@ -4890,6 +5578,8 @@ private val CGContextEOFillPath_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGContextEOFillPath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextEOFillPath").orElseThrow()
 private val CGContextEOFillPath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextEOFillPath_ADDR, CGContextEOFillPath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextEOFillPath(arg0: MemorySegment): Unit {
     try {
         CGContextEOFillPath_HANDLE.invokeExact(arg0)
@@ -4909,6 +5599,8 @@ private val CGContextStrokePath_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGContextStrokePath_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextStrokePath").orElseThrow()
 private val CGContextStrokePath_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextStrokePath_ADDR, CGContextStrokePath_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextStrokePath(arg0: MemorySegment): Unit {
     try {
         CGContextStrokePath_HANDLE.invokeExact(arg0)
@@ -4928,6 +5620,8 @@ private val CGContextFillRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVo
 private val CGContextFillRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextFillRect").orElseThrow()
 private val CGContextFillRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextFillRect_ADDR, CGContextFillRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextFillRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextFillRect_HANDLE.invokeExact(arg0, arg1)
@@ -4940,6 +5634,8 @@ fun CGContextFillRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextFillRect(arg0: MemorySegment, arg1: CGRect): Unit {
     CGContextFillRect(arg0, arg1.segment)
 }
@@ -4951,6 +5647,8 @@ private val CGContextFillRects_DESC: FunctionDescriptor = FunctionDescriptor.ofV
 private val CGContextFillRects_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextFillRects").orElseThrow()
 private val CGContextFillRects_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextFillRects_ADDR, CGContextFillRects_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextFillRects(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
     try {
         CGContextFillRects_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -4970,6 +5668,8 @@ private val CGContextStrokeRect_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGContextStrokeRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextStrokeRect").orElseThrow()
 private val CGContextStrokeRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextStrokeRect_ADDR, CGContextStrokeRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextStrokeRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextStrokeRect_HANDLE.invokeExact(arg0, arg1)
@@ -4982,6 +5682,8 @@ fun CGContextStrokeRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextStrokeRect(arg0: MemorySegment, arg1: CGRect): Unit {
     CGContextStrokeRect(arg0, arg1.segment)
 }
@@ -4993,6 +5695,8 @@ private val CGContextStrokeRectWithWidth_DESC: FunctionDescriptor = FunctionDesc
 private val CGContextStrokeRectWithWidth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextStrokeRectWithWidth").orElseThrow()
 private val CGContextStrokeRectWithWidth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextStrokeRectWithWidth_ADDR, CGContextStrokeRectWithWidth_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextStrokeRectWithWidth(arg0: MemorySegment, arg1: MemorySegment, arg2: Double): Unit {
     try {
         CGContextStrokeRectWithWidth_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5005,6 +5709,8 @@ fun CGContextStrokeRectWithWidth(arg0: MemorySegment, arg1: MemorySegment, arg2:
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextStrokeRectWithWidth(arg0: MemorySegment, arg1: CGRect, arg2: Double): Unit {
     CGContextStrokeRectWithWidth(arg0, arg1.segment, arg2)
 }
@@ -5016,6 +5722,8 @@ private val CGContextClearRect_DESC: FunctionDescriptor = FunctionDescriptor.ofV
 private val CGContextClearRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextClearRect").orElseThrow()
 private val CGContextClearRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextClearRect_ADDR, CGContextClearRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextClearRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextClearRect_HANDLE.invokeExact(arg0, arg1)
@@ -5028,6 +5736,8 @@ fun CGContextClearRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextClearRect(arg0: MemorySegment, arg1: CGRect): Unit {
     CGContextClearRect(arg0, arg1.segment)
 }
@@ -5039,6 +5749,8 @@ private val CGContextFillEllipseInRect_DESC: FunctionDescriptor = FunctionDescri
 private val CGContextFillEllipseInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextFillEllipseInRect").orElseThrow()
 private val CGContextFillEllipseInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextFillEllipseInRect_ADDR, CGContextFillEllipseInRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextFillEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextFillEllipseInRect_HANDLE.invokeExact(arg0, arg1)
@@ -5051,6 +5763,8 @@ fun CGContextFillEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextFillEllipseInRect(arg0: MemorySegment, arg1: CGRect): Unit {
     CGContextFillEllipseInRect(arg0, arg1.segment)
 }
@@ -5062,6 +5776,8 @@ private val CGContextStrokeEllipseInRect_DESC: FunctionDescriptor = FunctionDesc
 private val CGContextStrokeEllipseInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextStrokeEllipseInRect").orElseThrow()
 private val CGContextStrokeEllipseInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextStrokeEllipseInRect_ADDR, CGContextStrokeEllipseInRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextStrokeEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextStrokeEllipseInRect_HANDLE.invokeExact(arg0, arg1)
@@ -5074,6 +5790,8 @@ fun CGContextStrokeEllipseInRect(arg0: MemorySegment, arg1: MemorySegment): Unit
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextStrokeEllipseInRect(arg0: MemorySegment, arg1: CGRect): Unit {
     CGContextStrokeEllipseInRect(arg0, arg1.segment)
 }
@@ -5085,6 +5803,8 @@ private val CGContextStrokeLineSegments_DESC: FunctionDescriptor = FunctionDescr
 private val CGContextStrokeLineSegments_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextStrokeLineSegments").orElseThrow()
 private val CGContextStrokeLineSegments_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextStrokeLineSegments_ADDR, CGContextStrokeLineSegments_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextStrokeLineSegments(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
     try {
         CGContextStrokeLineSegments_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5104,6 +5824,8 @@ private val CGContextClip_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(V
 private val CGContextClip_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextClip").orElseThrow()
 private val CGContextClip_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextClip_ADDR, CGContextClip_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextClip(arg0: MemorySegment): Unit {
     try {
         CGContextClip_HANDLE.invokeExact(arg0)
@@ -5123,6 +5845,8 @@ private val CGContextEOClip_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid
 private val CGContextEOClip_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextEOClip").orElseThrow()
 private val CGContextEOClip_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextEOClip_ADDR, CGContextEOClip_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextEOClip(arg0: MemorySegment): Unit {
     try {
         CGContextEOClip_HANDLE.invokeExact(arg0)
@@ -5161,6 +5885,8 @@ private val CGContextClipToMask_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGContextClipToMask_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextClipToMask").orElseThrow()
 private val CGContextClipToMask_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextClipToMask_ADDR, CGContextClipToMask_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextClipToMask(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGContextClipToMask_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5173,6 +5899,8 @@ fun CGContextClipToMask(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySe
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGContextClipToMask(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
     CGContextClipToMask(arg0, arg1.segment, arg2)
 }
@@ -5184,6 +5912,8 @@ private val CGContextGetClipBoundingBox_DESC: FunctionDescriptor = FunctionDescr
 private val CGContextGetClipBoundingBox_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetClipBoundingBox").orElseThrow()
 private val CGContextGetClipBoundingBox_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetClipBoundingBox_ADDR, CGContextGetClipBoundingBox_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGContextGetClipBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGContextGetClipBoundingBox_HANDLE.invokeExact(allocator, arg0) as MemorySegment
@@ -5196,6 +5926,8 @@ fun CGContextGetClipBoundingBox(allocator: SegmentAllocator, arg0: MemorySegment
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGContextGetClipBoundingBoxTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGRect {
     return CGRect(CGContextGetClipBoundingBox(allocator, arg0))
 }
@@ -5207,6 +5939,8 @@ private val CGContextClipToRect_DESC: FunctionDescriptor = FunctionDescriptor.of
 private val CGContextClipToRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextClipToRect").orElseThrow()
 private val CGContextClipToRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextClipToRect_ADDR, CGContextClipToRect_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextClipToRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextClipToRect_HANDLE.invokeExact(arg0, arg1)
@@ -5219,6 +5953,8 @@ fun CGContextClipToRect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextClipToRect(arg0: MemorySegment, arg1: CGRect): Unit {
     CGContextClipToRect(arg0, arg1.segment)
 }
@@ -5230,6 +5966,8 @@ private val CGContextClipToRects_DESC: FunctionDescriptor = FunctionDescriptor.o
 private val CGContextClipToRects_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextClipToRects").orElseThrow()
 private val CGContextClipToRects_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextClipToRects_ADDR, CGContextClipToRects_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextClipToRects(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
     try {
         CGContextClipToRects_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5249,6 +5987,8 @@ private val CGContextSetFillColorWithColor_DESC: FunctionDescriptor = FunctionDe
 private val CGContextSetFillColorWithColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetFillColorWithColor").orElseThrow()
 private val CGContextSetFillColorWithColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetFillColorWithColor_ADDR, CGContextSetFillColorWithColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGContextSetFillColorWithColor(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextSetFillColorWithColor_HANDLE.invokeExact(arg0, arg1)
@@ -5268,6 +6008,8 @@ private val CGContextSetStrokeColorWithColor_DESC: FunctionDescriptor = Function
 private val CGContextSetStrokeColorWithColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetStrokeColorWithColor").orElseThrow()
 private val CGContextSetStrokeColorWithColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetStrokeColorWithColor_ADDR, CGContextSetStrokeColorWithColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
 fun CGContextSetStrokeColorWithColor(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextSetStrokeColorWithColor_HANDLE.invokeExact(arg0, arg1)
@@ -5287,6 +6029,8 @@ private val CGContextSetFillColorSpace_DESC: FunctionDescriptor = FunctionDescri
 private val CGContextSetFillColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetFillColorSpace").orElseThrow()
 private val CGContextSetFillColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetFillColorSpace_ADDR, CGContextSetFillColorSpace_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetFillColorSpace(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextSetFillColorSpace_HANDLE.invokeExact(arg0, arg1)
@@ -5306,6 +6050,8 @@ private val CGContextSetStrokeColorSpace_DESC: FunctionDescriptor = FunctionDesc
 private val CGContextSetStrokeColorSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetStrokeColorSpace").orElseThrow()
 private val CGContextSetStrokeColorSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetStrokeColorSpace_ADDR, CGContextSetStrokeColorSpace_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetStrokeColorSpace(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextSetStrokeColorSpace_HANDLE.invokeExact(arg0, arg1)
@@ -5325,6 +6071,8 @@ private val CGContextSetFillColor_DESC: FunctionDescriptor = FunctionDescriptor.
 private val CGContextSetFillColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetFillColor").orElseThrow()
 private val CGContextSetFillColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetFillColor_ADDR, CGContextSetFillColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetFillColor(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextSetFillColor_HANDLE.invokeExact(arg0, arg1)
@@ -5344,6 +6092,8 @@ private val CGContextSetStrokeColor_DESC: FunctionDescriptor = FunctionDescripto
 private val CGContextSetStrokeColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetStrokeColor").orElseThrow()
 private val CGContextSetStrokeColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetStrokeColor_ADDR, CGContextSetStrokeColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetStrokeColor(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextSetStrokeColor_HANDLE.invokeExact(arg0, arg1)
@@ -5363,6 +6113,8 @@ private val CGContextSetFillPattern_DESC: FunctionDescriptor = FunctionDescripto
 private val CGContextSetFillPattern_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetFillPattern").orElseThrow()
 private val CGContextSetFillPattern_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetFillPattern_ADDR, CGContextSetFillPattern_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetFillPattern(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGContextSetFillPattern_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5382,6 +6134,8 @@ private val CGContextSetStrokePattern_DESC: FunctionDescriptor = FunctionDescrip
 private val CGContextSetStrokePattern_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetStrokePattern").orElseThrow()
 private val CGContextSetStrokePattern_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetStrokePattern_ADDR, CGContextSetStrokePattern_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetStrokePattern(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGContextSetStrokePattern_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5401,6 +6155,8 @@ private val CGContextSetPatternPhase_DESC: FunctionDescriptor = FunctionDescript
 private val CGContextSetPatternPhase_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetPatternPhase").orElseThrow()
 private val CGContextSetPatternPhase_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetPatternPhase_ADDR, CGContextSetPatternPhase_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetPatternPhase(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         CGContextSetPatternPhase_HANDLE.invokeExact(arg0, arg1)
@@ -5413,6 +6169,8 @@ fun CGContextSetPatternPhase(arg0: MemorySegment, arg1: MemorySegment): Unit {
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetPatternPhase(arg0: MemorySegment, arg1: CGSize): Unit {
     CGContextSetPatternPhase(arg0, arg1.segment)
 }
@@ -5424,6 +6182,8 @@ private val CGContextSetGrayFillColor_DESC: FunctionDescriptor = FunctionDescrip
 private val CGContextSetGrayFillColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetGrayFillColor").orElseThrow()
 private val CGContextSetGrayFillColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetGrayFillColor_ADDR, CGContextSetGrayFillColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetGrayFillColor(arg0: MemorySegment, arg1: Double, arg2: Double): Unit {
     try {
         CGContextSetGrayFillColor_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5443,6 +6203,8 @@ private val CGContextSetGrayStrokeColor_DESC: FunctionDescriptor = FunctionDescr
 private val CGContextSetGrayStrokeColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetGrayStrokeColor").orElseThrow()
 private val CGContextSetGrayStrokeColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetGrayStrokeColor_ADDR, CGContextSetGrayStrokeColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetGrayStrokeColor(arg0: MemorySegment, arg1: Double, arg2: Double): Unit {
     try {
         CGContextSetGrayStrokeColor_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5462,6 +6224,8 @@ private val CGContextSetRGBFillColor_DESC: FunctionDescriptor = FunctionDescript
 private val CGContextSetRGBFillColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetRGBFillColor").orElseThrow()
 private val CGContextSetRGBFillColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetRGBFillColor_ADDR, CGContextSetRGBFillColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetRGBFillColor(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: Double, arg4: Double): Unit {
     try {
         CGContextSetRGBFillColor_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4)
@@ -5481,6 +6245,8 @@ private val CGContextSetRGBStrokeColor_DESC: FunctionDescriptor = FunctionDescri
 private val CGContextSetRGBStrokeColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetRGBStrokeColor").orElseThrow()
 private val CGContextSetRGBStrokeColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetRGBStrokeColor_ADDR, CGContextSetRGBStrokeColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetRGBStrokeColor(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: Double, arg4: Double): Unit {
     try {
         CGContextSetRGBStrokeColor_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4)
@@ -5500,6 +6266,8 @@ private val CGContextSetCMYKFillColor_DESC: FunctionDescriptor = FunctionDescrip
 private val CGContextSetCMYKFillColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetCMYKFillColor").orElseThrow()
 private val CGContextSetCMYKFillColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetCMYKFillColor_ADDR, CGContextSetCMYKFillColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetCMYKFillColor(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: Double, arg4: Double, arg5: Double): Unit {
     try {
         CGContextSetCMYKFillColor_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5)
@@ -5519,6 +6287,8 @@ private val CGContextSetCMYKStrokeColor_DESC: FunctionDescriptor = FunctionDescr
 private val CGContextSetCMYKStrokeColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetCMYKStrokeColor").orElseThrow()
 private val CGContextSetCMYKStrokeColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetCMYKStrokeColor_ADDR, CGContextSetCMYKStrokeColor_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetCMYKStrokeColor(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: Double, arg4: Double, arg5: Double): Unit {
     try {
         CGContextSetCMYKStrokeColor_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5)
@@ -5538,6 +6308,8 @@ private val CGContextSetRenderingIntent_DESC: FunctionDescriptor = FunctionDescr
 private val CGContextSetRenderingIntent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetRenderingIntent").orElseThrow()
 private val CGContextSetRenderingIntent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetRenderingIntent_ADDR, CGContextSetRenderingIntent_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetRenderingIntent(arg0: MemorySegment, arg1: CGColorRenderingIntent): Unit {
     try {
         CGContextSetRenderingIntent_HANDLE.invokeExact(arg0, arg1.value.toInt())
@@ -5557,6 +6329,10 @@ private val CGContextSetEDRTargetHeadroom_DESC: FunctionDescriptor = FunctionDes
 private val CGContextSetEDRTargetHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetEDRTargetHeadroom").orElseThrow()
 private val CGContextSetEDRTargetHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetEDRTargetHeadroom_ADDR, CGContextSetEDRTargetHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextSetEDRTargetHeadroom(arg0: MemorySegment, arg1: Float): Boolean {
     try {
         return CGContextSetEDRTargetHeadroom_HANDLE.invokeExact(arg0, arg1) as Boolean
@@ -5576,6 +6352,10 @@ private val CGContextGetEDRTargetHeadroom_DESC: FunctionDescriptor = FunctionDes
 private val CGContextGetEDRTargetHeadroom_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetEDRTargetHeadroom").orElseThrow()
 private val CGContextGetEDRTargetHeadroom_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetEDRTargetHeadroom_ADDR, CGContextGetEDRTargetHeadroom_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextGetEDRTargetHeadroom(arg0: MemorySegment): Float {
     try {
         return CGContextGetEDRTargetHeadroom_HANDLE.invokeExact(arg0) as Float
@@ -5595,6 +6375,8 @@ private val CGContextDrawImage_DESC: FunctionDescriptor = FunctionDescriptor.ofV
 private val CGContextDrawImage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawImage").orElseThrow()
 private val CGContextDrawImage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawImage_ADDR, CGContextDrawImage_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextDrawImage(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGContextDrawImage_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5607,6 +6389,8 @@ fun CGContextDrawImage(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySeg
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextDrawImage(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
     CGContextDrawImage(arg0, arg1.segment, arg2)
 }
@@ -5618,6 +6402,8 @@ private val CGContextDrawTiledImage_DESC: FunctionDescriptor = FunctionDescripto
 private val CGContextDrawTiledImage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawTiledImage").orElseThrow()
 private val CGContextDrawTiledImage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawTiledImage_ADDR, CGContextDrawTiledImage_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGContextDrawTiledImage(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
         CGContextDrawTiledImage_HANDLE.invokeExact(arg0, arg1, arg2)
@@ -5630,6 +6416,8 @@ fun CGContextDrawTiledImage(arg0: MemorySegment, arg1: MemorySegment, arg2: Memo
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun CGContextDrawTiledImage(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment): Unit {
     CGContextDrawTiledImage(arg0, arg1.segment, arg2)
 }
@@ -5641,6 +6429,10 @@ private val CGContextDrawImageApplyingToneMapping_DESC: FunctionDescriptor = Fun
 private val CGContextDrawImageApplyingToneMapping_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawImageApplyingToneMapping").orElseThrow()
 private val CGContextDrawImageApplyingToneMapping_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawImageApplyingToneMapping_ADDR, CGContextDrawImageApplyingToneMapping_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextDrawImageApplyingToneMapping(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: CGToneMapping, arg4: MemorySegment): Boolean {
     try {
         return CGContextDrawImageApplyingToneMapping_HANDLE.invokeExact(arg0, arg1, arg2, arg3.value.toInt(), arg4) as Boolean
@@ -5653,6 +6445,10 @@ fun CGContextDrawImageApplyingToneMapping(arg0: MemorySegment, arg1: MemorySegme
     }
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextDrawImageApplyingToneMapping(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment, arg3: CGToneMapping, arg4: MemorySegment): Boolean {
     return CGContextDrawImageApplyingToneMapping(arg0, arg1.segment, arg2, arg3, arg4)
 }
@@ -5664,6 +6460,11 @@ private val CGContextGetContentToneMappingInfo_DESC: FunctionDescriptor = Functi
 private val CGContextGetContentToneMappingInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetContentToneMappingInfo").orElseThrow()
 private val CGContextGetContentToneMappingInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetContentToneMappingInfo_ADDR, CGContextGetContentToneMappingInfo_DESC)
 
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextGetContentToneMappingInfo(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
         return CGContextGetContentToneMappingInfo_HANDLE.invokeExact(allocator, arg0) as MemorySegment

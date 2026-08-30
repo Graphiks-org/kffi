@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -8,116 +10,138 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Kotlin/JVM wrapper for Objective-C class: NSObjectController
  * Superclass: NSController
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 open class NSObjectController(override val ptr: MemorySegment) : NSController(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSObjectController") }
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initWithContent(content: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithContent:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, content) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCoder:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun prepareContent(): Unit {
         val sel = ObjCRuntime.sel("prepareContent")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun newObject(): MemorySegment {
         val sel = ObjCRuntime.sel("newObject")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun addObject(`object`: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("addObject:")
         ObjCRuntime.msgSend(null, ptr, sel, `object`)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun removeObject(`object`: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("removeObject:")
         ObjCRuntime.msgSend(null, ptr, sel, `object`)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun add(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("add:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun remove(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("remove:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun validateUserInterfaceItem(item: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("validateUserInterfaceItem:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, item) as Boolean
     }
 
     // @property content
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun content(): MemorySegment {
         val sel = ObjCRuntime.sel("content")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContent(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setContent:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property selection
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun selection(): MemorySegment {
         val sel = ObjCRuntime.sel("selection")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property selectedObjects
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun selectedObjects(): MemorySegment {
         val sel = ObjCRuntime.sel("selectedObjects")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property automaticallyPreparesContent
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun automaticallyPreparesContent(): Boolean {
         val sel = ObjCRuntime.sel("automaticallyPreparesContent")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAutomaticallyPreparesContent(value: Boolean) {
         val sel = ObjCRuntime.sel("setAutomaticallyPreparesContent:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property objectClass
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun objectClass(): MemorySegment {
         val sel = ObjCRuntime.sel("objectClass")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setObjectClass(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setObjectClass:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property editable
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isEditable(): Boolean {
         val sel = ObjCRuntime.sel("isEditable")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setEditable(value: Boolean) {
         val sel = ObjCRuntime.sel("setEditable:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property canAdd
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun canAdd(): Boolean {
         val sel = ObjCRuntime.sel("canAdd")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property canRemove
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun canRemove(): Boolean {
         val sel = ObjCRuntime.sel("canRemove")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
@@ -127,56 +151,70 @@ open class NSObjectController(override val ptr: MemorySegment) : NSController(pt
 
 // ── Category: NSManagedController on NSObjectController ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSObjectController.fetchWithRequest_merge_error(fetchRequest: MemorySegment, merge: Boolean, error: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("fetchWithRequest:merge:error:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, fetchRequest, merge, error) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSObjectController.fetch(sender: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("fetch:")
     ObjCRuntime.msgSend(null, this.ptr, sel, sender)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSObjectController.defaultFetchRequest(): MemorySegment {
     val sel = ObjCRuntime.sel("defaultFetchRequest")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSObjectController.managedObjectContext(): MemorySegment {
     val sel = ObjCRuntime.sel("managedObjectContext")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSObjectController.setManagedObjectContext(managedObjectContext: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setManagedObjectContext:")
     ObjCRuntime.msgSend(null, this.ptr, sel, managedObjectContext)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSObjectController.entityName(): MemorySegment {
     val sel = ObjCRuntime.sel("entityName")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSObjectController.setEntityName(entityName: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setEntityName:")
     ObjCRuntime.msgSend(null, this.ptr, sel, entityName)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSObjectController.fetchPredicate(): MemorySegment {
     val sel = ObjCRuntime.sel("fetchPredicate")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSObjectController.setFetchPredicate(fetchPredicate: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setFetchPredicate:")
     ObjCRuntime.msgSend(null, this.ptr, sel, fetchPredicate)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSObjectController.usesLazyFetching(): Boolean {
     val sel = ObjCRuntime.sel("usesLazyFetching")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSObjectController.setUsesLazyFetching(usesLazyFetching: Boolean): Unit {
     val sel = ObjCRuntime.sel("setUsesLazyFetching:")
     ObjCRuntime.msgSend(null, this.ptr, sel, usesLazyFetching)

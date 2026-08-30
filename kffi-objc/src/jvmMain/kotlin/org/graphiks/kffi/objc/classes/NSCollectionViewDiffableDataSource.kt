@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,10 +11,14 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSObject
  * Protocols: NSCollectionViewDataSource
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 open class NSCollectionViewDiffableDataSource(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionViewDiffableDataSource") }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "all", unavailable = true)
         fun new(): MemorySegment {
             val sel = ObjCRuntime.sel("new")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
@@ -20,42 +26,51 @@ open class NSCollectionViewDiffableDataSource(override val ptr: MemorySegment) :
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initWithCollectionView_itemProvider(collectionView: MemorySegment, itemProvider: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCollectionView:itemProvider:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, collectionView, itemProvider) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "all", unavailable = true)
     open fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     /** @return NSDiffableDataSourceSnapshot<SectionIdentifierType,ItemIdentifierType> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun snapshot(): MemorySegment {
         val sel = ObjCRuntime.sel("snapshot")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun applySnapshot_animatingDifferences(snapshot: MemorySegment, animatingDifferences: Boolean): Unit {
         val sel = ObjCRuntime.sel("applySnapshot:animatingDifferences:")
         ObjCRuntime.msgSend(null, ptr, sel, snapshot, animatingDifferences)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun itemIdentifierForIndexPath(indexPath: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("itemIdentifierForIndexPath:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, indexPath) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun indexPathForItemIdentifier(identifier: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("indexPathForItemIdentifier:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, identifier) as MemorySegment
     }
 
     // @property supplementaryViewProvider
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun supplementaryViewProvider(): MemorySegment {
         val sel = ObjCRuntime.sel("supplementaryViewProvider")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setSupplementaryViewProvider(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setSupplementaryViewProvider:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

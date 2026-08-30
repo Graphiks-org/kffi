@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -10,12 +12,40 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @JvmInline
 value class CFGregorianUnitFlags(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
         val kCFGregorianUnitsYears = CFGregorianUnitFlags(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
         val kCFGregorianUnitsMonths = CFGregorianUnitFlags(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
         val kCFGregorianUnitsDays = CFGregorianUnitFlags(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
         val kCFGregorianUnitsHours = CFGregorianUnitFlags(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
         val kCFGregorianUnitsMinutes = CFGregorianUnitFlags(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
         val kCFGregorianUnitsSeconds = CFGregorianUnitFlags(32L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
         val kCFGregorianAllUnits = CFGregorianUnitFlags(16777215L)
     }
 
@@ -26,10 +56,22 @@ value class CFGregorianUnitFlags(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum CFDataSearchFlags}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class CFDataSearchFlags(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFDataSearchBackwards = CFDataSearchFlags(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFDataSearchAnchored = CFDataSearchFlags(2L)
     }
 
@@ -49,8 +91,20 @@ value class CFStringCompareFlags(val rawValue: Long) {
         val kCFCompareNonliteral = CFStringCompareFlags(16L)
         val kCFCompareLocalized = CFStringCompareFlags(32L)
         val kCFCompareNumerically = CFStringCompareFlags(64L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFCompareDiacriticInsensitive = CFStringCompareFlags(128L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFCompareWidthInsensitive = CFStringCompareFlags(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFCompareForcedOrdering = CFStringCompareFlags(512L)
     }
 
@@ -71,13 +125,37 @@ value class CFCalendarUnit(val rawValue: Long) {
         val kCFCalendarUnitHour = CFCalendarUnit(32L)
         val kCFCalendarUnitMinute = CFCalendarUnit(64L)
         val kCFCalendarUnitSecond = CFCalendarUnit(128L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use kCFCalendarUnitWeekOfYear or kCFCalendarUnitWeekOfMonth instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use kCFCalendarUnitWeekOfYear or kCFCalendarUnitWeekOfMonth instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use kCFCalendarUnitWeekOfYear or kCFCalendarUnitWeekOfMonth instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use kCFCalendarUnitWeekOfYear or kCFCalendarUnitWeekOfMonth instead")
         val kCFCalendarUnitWeek = CFCalendarUnit(256L)
         val kCFCalendarUnitWeekday = CFCalendarUnit(512L)
         val kCFCalendarUnitWeekdayOrdinal = CFCalendarUnit(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFCalendarUnitQuarter = CFCalendarUnit(2048L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFCalendarUnitWeekOfMonth = CFCalendarUnit(4096L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFCalendarUnitWeekOfYear = CFCalendarUnit(8192L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFCalendarUnitYearForWeekOfYear = CFCalendarUnit(16384L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
         val kCFCalendarUnitDayOfYear = CFCalendarUnit(65536L)
     }
 
@@ -91,19 +169,75 @@ value class CFCalendarUnit(val rawValue: Long) {
 @JvmInline
 value class CFISO8601DateFormatOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithYear = CFISO8601DateFormatOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithMonth = CFISO8601DateFormatOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithWeekOfYear = CFISO8601DateFormatOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithDay = CFISO8601DateFormatOptions(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithTime = CFISO8601DateFormatOptions(32L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithTimeZone = CFISO8601DateFormatOptions(64L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithSpaceBetweenDateAndTime = CFISO8601DateFormatOptions(128L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithDashSeparatorInDate = CFISO8601DateFormatOptions(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithColonSeparatorInTime = CFISO8601DateFormatOptions(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithColonSeparatorInTimeZone = CFISO8601DateFormatOptions(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithFractionalSeconds = CFISO8601DateFormatOptions(2048L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithFullDate = CFISO8601DateFormatOptions(275L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithFullTime = CFISO8601DateFormatOptions(1632L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val kCFISO8601DateFormatWithInternetDateTime = CFISO8601DateFormatOptions(1907L)
     }
 
@@ -127,14 +261,42 @@ value class CFNumberFormatterOptionFlags(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum CFURLBookmarkCreationOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class CFURLBookmarkCreationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFURLBookmarkCreationMinimalBookmarkMask = CFURLBookmarkCreationOptions(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFURLBookmarkCreationSuitableForBookmarkFile = CFURLBookmarkCreationOptions(1024L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCFURLBookmarkCreationWithSecurityScope = CFURLBookmarkCreationOptions(2048L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCFURLBookmarkCreationSecurityScopeAllowOnlyReadAccess = CFURLBookmarkCreationOptions(4096L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFURLBookmarkCreationWithoutImplicitSecurityScope = CFURLBookmarkCreationOptions(536870912L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "kCFURLBookmarkCreationPreferFileIDResolutionMask does nothing and has no effect on bookmark resolution")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "kCFURLBookmarkCreationPreferFileIDResolutionMask does nothing and has no effect on bookmark resolution")
         val kCFURLBookmarkCreationPreferFileIDResolutionMask = CFURLBookmarkCreationOptions(256L)
     }
 
@@ -145,14 +307,43 @@ value class CFURLBookmarkCreationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum CFURLBookmarkResolutionOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class CFURLBookmarkResolutionOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFURLBookmarkResolutionWithoutUIMask = CFURLBookmarkResolutionOptions(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFURLBookmarkResolutionWithoutMountingMask = CFURLBookmarkResolutionOptions(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCFURLBookmarkResolutionWithSecurityScope = CFURLBookmarkResolutionOptions(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 2, introducedSubminor = -1)
         val kCFURLBookmarkResolutionWithoutImplicitStartAccessing = CFURLBookmarkResolutionOptions(32768L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFBookmarkResolutionWithoutUIMask = CFURLBookmarkResolutionOptions(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFBookmarkResolutionWithoutMountingMask = CFURLBookmarkResolutionOptions(512L)
     }
 
@@ -223,11 +414,29 @@ value class CFSocketCallBackType(val rawValue: Long) {
 @JvmInline
 value class dispatch_block_flags_t(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchWorkItemFlags.barrier")
         val DISPATCH_BLOCK_BARRIER = dispatch_block_flags_t(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchWorkItemFlags.detached")
         val DISPATCH_BLOCK_DETACHED = dispatch_block_flags_t(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchWorkItemFlags.assignCurrentContext")
         val DISPATCH_BLOCK_ASSIGN_CURRENT = dispatch_block_flags_t(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchWorkItemFlags.noQoS")
         val DISPATCH_BLOCK_NO_QOS_CLASS = dispatch_block_flags_t(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchWorkItemFlags.inheritQoS")
         val DISPATCH_BLOCK_INHERIT_QOS_CLASS = dispatch_block_flags_t(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchWorkItemFlags.enforceQoS")
         val DISPATCH_BLOCK_ENFORCE_QOS_CLASS = dispatch_block_flags_t(32L)
     }
 
@@ -281,6 +490,10 @@ value class CFURLEnumeratorOptions(val rawValue: Long) {
         val kCFURLEnumeratorSkipPackageContents = CFURLEnumeratorOptions(8L)
         val kCFURLEnumeratorIncludeDirectoriesPreOrder = CFURLEnumeratorOptions(16L)
         val kCFURLEnumeratorIncludeDirectoriesPostOrder = CFURLEnumeratorOptions(32L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
         val kCFURLEnumeratorGenerateRelativePathURLs = CFURLEnumeratorOptions(64L)
     }
 
@@ -291,14 +504,42 @@ value class CFURLEnumeratorOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum CFFileSecurityClearOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class CFFileSecurityClearOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFFileSecurityClearOwner = CFFileSecurityClearOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFFileSecurityClearGroup = CFFileSecurityClearOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFFileSecurityClearMode = CFFileSecurityClearOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFFileSecurityClearOwnerUUID = CFFileSecurityClearOptions(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFFileSecurityClearGroupUUID = CFFileSecurityClearOptions(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val kCFFileSecurityClearAccessControlList = CFFileSecurityClearOptions(32L)
     }
 
@@ -406,11 +647,27 @@ value class NSSortOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSOrderedCollectionDifferenceCalculationOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSOrderedCollectionDifferenceCalculationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
         val NSOrderedCollectionDifferenceCalculationOmitInsertedObjects = NSOrderedCollectionDifferenceCalculationOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
         val NSOrderedCollectionDifferenceCalculationOmitRemovedObjects = NSOrderedCollectionDifferenceCalculationOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
         val NSOrderedCollectionDifferenceCalculationInferMoves = NSOrderedCollectionDifferenceCalculationOptions(4L)
     }
 
@@ -436,9 +693,17 @@ value class NSBinarySearchingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSItemProviderFileOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSItemProviderFileOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
         val NSItemProviderFileOptionOpenInPlace = NSItemProviderFileOptions(1L)
     }
 
@@ -457,9 +722,25 @@ value class NSStringCompareOptions(val rawValue: Long) {
         val NSBackwardsSearch = NSStringCompareOptions(4L)
         val NSAnchoredSearch = NSStringCompareOptions(8L)
         val NSNumericSearch = NSStringCompareOptions(64L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDiacriticInsensitiveSearch = NSStringCompareOptions(128L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSWidthInsensitiveSearch = NSStringCompareOptions(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSForcedOrderingSearch = NSStringCompareOptions(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSRegularExpressionSearch = NSStringCompareOptions(1024L)
     }
 
@@ -492,7 +773,15 @@ value class NSStringEnumerationOptions(val rawValue: Long) {
         val NSStringEnumerationByComposedCharacterSequences = NSStringEnumerationOptions(2L)
         val NSStringEnumerationByWords = NSStringEnumerationOptions(3L)
         val NSStringEnumerationBySentences = NSStringEnumerationOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
         val NSStringEnumerationByCaretPositions = NSStringEnumerationOptions(5L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
         val NSStringEnumerationByDeletionClusters = NSStringEnumerationOptions(6L)
         val NSStringEnumerationReverse = NSStringEnumerationOptions(256L)
         val NSStringEnumerationSubstringNotRequired = NSStringEnumerationOptions(512L)
@@ -518,31 +807,137 @@ value class NSCalendarUnit(val rawValue: Long) {
         val NSCalendarUnitSecond = NSCalendarUnit(128L)
         val NSCalendarUnitWeekday = NSCalendarUnit(512L)
         val NSCalendarUnitWeekdayOrdinal = NSCalendarUnit(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitQuarter = NSCalendarUnit(2048L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitWeekOfMonth = NSCalendarUnit(4096L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitWeekOfYear = NSCalendarUnit(8192L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitYearForWeekOfYear = NSCalendarUnit(16384L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitNanosecond = NSCalendarUnit(32768L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitDayOfYear = NSCalendarUnit(65536L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitCalendar = NSCalendarUnit(1048576L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitTimeZone = NSCalendarUnit(2097152L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitIsLeapMonth = NSCalendarUnit(1073741824L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarUnitIsRepeatedDay = NSCalendarUnit(2147483648L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSEraCalendarUnit = NSCalendarUnit(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSYearCalendarUnit = NSCalendarUnit(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSMonthCalendarUnit = NSCalendarUnit(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSDayCalendarUnit = NSCalendarUnit(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSHourCalendarUnit = NSCalendarUnit(32L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSMinuteCalendarUnit = NSCalendarUnit(64L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSSecondCalendarUnit = NSCalendarUnit(128L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "NSCalendarUnitWeekOfMonth or NSCalendarUnitWeekOfYear, depending on which you mean")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "NSCalendarUnitWeekOfMonth or NSCalendarUnitWeekOfYear, depending on which you mean")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "NSCalendarUnitWeekOfMonth or NSCalendarUnitWeekOfYear, depending on which you mean")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "NSCalendarUnitWeekOfMonth or NSCalendarUnitWeekOfYear, depending on which you mean")
         val NSWeekCalendarUnit = NSCalendarUnit(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSWeekdayCalendarUnit = NSCalendarUnit(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSWeekdayOrdinalCalendarUnit = NSCalendarUnit(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSQuarterCalendarUnit = NSCalendarUnit(2048L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSWeekOfMonthCalendarUnit = NSCalendarUnit(4096L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSWeekOfYearCalendarUnit = NSCalendarUnit(8192L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSYearForWeekOfYearCalendarUnit = NSCalendarUnit(16384L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSCalendarCalendarUnit = NSCalendarUnit(1048576L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
         val NSTimeZoneCalendarUnit = NSCalendarUnit(2097152L)
     }
 
@@ -557,12 +952,40 @@ value class NSCalendarUnit(val rawValue: Long) {
 value class NSCalendarOptions(val rawValue: Long) {
     companion object {
         val NSCalendarWrapComponents = NSCalendarOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarMatchStrictly = NSCalendarOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarSearchBackwards = NSCalendarOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarMatchPreviousTimePreservingSmallerUnits = NSCalendarOptions(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarMatchNextTimePreservingSmallerUnits = NSCalendarOptions(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarMatchNextTime = NSCalendarOptions(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarMatchFirst = NSCalendarOptions(4096L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSCalendarMatchLast = NSCalendarOptions(8192L)
     }
 
@@ -578,9 +1001,25 @@ value class NSDataReadingOptions(val rawValue: Long) {
     companion object {
         val NSDataReadingMappedIfSafe = NSDataReadingOptions(1L)
         val NSDataReadingUncached = NSDataReadingOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataReadingMappedAlways = NSDataReadingOptions(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val NSDataReadingMapped = NSDataReadingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val NSMappedRead = NSDataReadingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val NSUncachedRead = NSDataReadingOptions(2L)
     }
 
@@ -595,13 +1034,45 @@ value class NSDataReadingOptions(val rawValue: Long) {
 value class NSDataWritingOptions(val rawValue: Long) {
     companion object {
         val NSDataWritingAtomic = NSDataWritingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataWritingWithoutOverwriting = NSDataWritingOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataWritingFileProtectionNone = NSDataWritingOptions(268435456L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataWritingFileProtectionComplete = NSDataWritingOptions(536870912L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataWritingFileProtectionCompleteUnlessOpen = NSDataWritingOptions(805306368L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataWritingFileProtectionCompleteUntilFirstUserAuthentication = NSDataWritingOptions(1073741824L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", unavailable = true)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
         val NSDataWritingFileProtectionCompleteWhenUserInactive = NSDataWritingOptions(1342177280L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataWritingFileProtectionMask = NSDataWritingOptions(4026531840L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val NSAtomicWrite = NSDataWritingOptions(1L)
     }
 
@@ -612,10 +1083,22 @@ value class NSDataWritingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSDataSearchOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSDataSearchOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataSearchBackwards = NSDataSearchOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataSearchAnchored = NSDataSearchOptions(2L)
     }
 
@@ -626,12 +1109,32 @@ value class NSDataSearchOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSDataBase64EncodingOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSDataBase64EncodingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataBase64Encoding64CharacterLineLength = NSDataBase64EncodingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataBase64Encoding76CharacterLineLength = NSDataBase64EncodingOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataBase64EncodingEndLineWithCarriageReturn = NSDataBase64EncodingOptions(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataBase64EncodingEndLineWithLineFeed = NSDataBase64EncodingOptions(32L)
     }
 
@@ -642,9 +1145,17 @@ value class NSDataBase64EncodingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSDataBase64DecodingOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSDataBase64DecodingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDataBase64DecodingIgnoreUnknownCharacters = NSDataBase64DecodingOptions(1L)
     }
 
@@ -669,16 +1180,52 @@ value class NSAttributedStringEnumerationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSInlinePresentationIntent}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSInlinePresentationIntent(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSInlinePresentationIntentEmphasized = NSInlinePresentationIntent(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSInlinePresentationIntentStronglyEmphasized = NSInlinePresentationIntent(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSInlinePresentationIntentCode = NSInlinePresentationIntent(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSInlinePresentationIntentStrikethrough = NSInlinePresentationIntent(32L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSInlinePresentationIntentSoftBreak = NSInlinePresentationIntent(64L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSInlinePresentationIntentLineBreak = NSInlinePresentationIntent(128L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSInlinePresentationIntentInlineHTML = NSInlinePresentationIntent(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSInlinePresentationIntentBlockHTML = NSInlinePresentationIntent(512L)
     }
 
@@ -692,7 +1239,15 @@ value class NSInlinePresentationIntent(val rawValue: Long) {
 @JvmInline
 value class NSAttributedStringFormattingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSAttributedStringFormattingInsertArgumentAttributesWithoutMerging = NSAttributedStringFormattingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSAttributedStringFormattingApplyReplacementIndexAttribute = NSAttributedStringFormattingOptions(2L)
     }
 
@@ -706,19 +1261,75 @@ value class NSAttributedStringFormattingOptions(val rawValue: Long) {
 @JvmInline
 value class NSISO8601DateFormatOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithYear = NSISO8601DateFormatOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithMonth = NSISO8601DateFormatOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithWeekOfYear = NSISO8601DateFormatOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithDay = NSISO8601DateFormatOptions(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithTime = NSISO8601DateFormatOptions(32L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithTimeZone = NSISO8601DateFormatOptions(64L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithSpaceBetweenDateAndTime = NSISO8601DateFormatOptions(128L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithDashSeparatorInDate = NSISO8601DateFormatOptions(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithColonSeparatorInTime = NSISO8601DateFormatOptions(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithColonSeparatorInTimeZone = NSISO8601DateFormatOptions(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithFractionalSeconds = NSISO8601DateFormatOptions(2048L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithFullDate = NSISO8601DateFormatOptions(275L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithFullTime = NSISO8601DateFormatOptions(1632L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSISO8601DateFormatWithInternetDateTime = NSISO8601DateFormatOptions(1907L)
     }
 
@@ -729,11 +1340,27 @@ value class NSISO8601DateFormatOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSMeasurementFormatterUnitOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSMeasurementFormatterUnitOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSMeasurementFormatterUnitOptionsProvidedUnit = NSMeasurementFormatterUnitOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSMeasurementFormatterUnitOptionsNaturalScale = NSMeasurementFormatterUnitOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
         val NSMeasurementFormatterUnitOptionsTemperatureWithoutUnit = NSMeasurementFormatterUnitOptions(4L)
     }
 
@@ -744,9 +1371,17 @@ value class NSMeasurementFormatterUnitOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSPersonNameComponentsFormatterOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSPersonNameComponentsFormatterOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPersonNameComponentsFormatterPhonetic = NSPersonNameComponentsFormatterOptions(2L)
     }
 
@@ -774,14 +1409,44 @@ value class NSSearchPathDomainMask(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSURLBookmarkCreationOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSURLBookmarkCreationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "Not supported")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
         val NSURLBookmarkCreationPreferFileIDResolution = NSURLBookmarkCreationOptions(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSURLBookmarkCreationMinimalBookmark = NSURLBookmarkCreationOptions(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSURLBookmarkCreationSuitableForBookmarkFile = NSURLBookmarkCreationOptions(1024L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSURLBookmarkCreationWithSecurityScope = NSURLBookmarkCreationOptions(2048L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess = NSURLBookmarkCreationOptions(4096L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSURLBookmarkCreationWithoutImplicitSecurityScope = NSURLBookmarkCreationOptions(536870912L)
     }
 
@@ -792,12 +1457,33 @@ value class NSURLBookmarkCreationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSURLBookmarkResolutionOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSURLBookmarkResolutionOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSURLBookmarkResolutionWithoutUI = NSURLBookmarkResolutionOptions(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSURLBookmarkResolutionWithoutMounting = NSURLBookmarkResolutionOptions(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSURLBookmarkResolutionWithSecurityScope = NSURLBookmarkResolutionOptions(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 2, introducedSubminor = -1)
         val NSURLBookmarkResolutionWithoutImplicitStartAccessing = NSURLBookmarkResolutionOptions(32768L)
     }
 
@@ -808,10 +1494,22 @@ value class NSURLBookmarkResolutionOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSVolumeEnumerationOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSVolumeEnumerationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSVolumeEnumerationSkipHiddenVolumes = NSVolumeEnumerationOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSVolumeEnumerationProduceFileReferenceURLs = NSVolumeEnumerationOptions(4L)
     }
 
@@ -822,13 +1520,37 @@ value class NSVolumeEnumerationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSDirectoryEnumerationOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSDirectoryEnumerationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDirectoryEnumerationSkipsSubdirectoryDescendants = NSDirectoryEnumerationOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDirectoryEnumerationSkipsPackageDescendants = NSDirectoryEnumerationOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSDirectoryEnumerationSkipsHiddenFiles = NSDirectoryEnumerationOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
         val NSDirectoryEnumerationIncludesDirectoriesPostOrder = NSDirectoryEnumerationOptions(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
         val NSDirectoryEnumerationProducesRelativePathURLs = NSDirectoryEnumerationOptions(16L)
     }
 
@@ -839,10 +1561,22 @@ value class NSDirectoryEnumerationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFileManagerItemReplacementOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSFileManagerItemReplacementOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSFileManagerItemReplacementUsingNewMetadataOnly = NSFileManagerItemReplacementOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSFileManagerItemReplacementWithoutDeletingBackupItem = NSFileManagerItemReplacementOptions(2L)
     }
 
@@ -853,10 +1587,22 @@ value class NSFileManagerItemReplacementOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFileManagerUnmountOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 @JvmInline
 value class NSFileManagerUnmountOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSFileManagerUnmountAllPartitionsAndEjectDisk = NSFileManagerUnmountOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSFileManagerUnmountWithoutUI = NSFileManagerUnmountOptions(2L)
     }
 
@@ -867,10 +1613,25 @@ value class NSFileManagerUnmountOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFileManagerSupportedSyncControls}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSFileManagerSupportedSyncControls(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
         val NSFileManagerSupportedSyncControlsPauseSync = NSFileManagerSupportedSyncControls(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
         val NSFileManagerSupportedSyncControlsFailUploadOnConflict = NSFileManagerSupportedSyncControls(2L)
     }
 
@@ -884,18 +1645,70 @@ value class NSFileManagerSupportedSyncControls(val rawValue: Long) {
 @JvmInline
 value class NSPointerFunctionsOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsStrongMemory = NSPointerFunctionsOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "GC no longer supported")
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSPointerFunctionsZeroingWeakMemory = NSPointerFunctionsOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsOpaqueMemory = NSPointerFunctionsOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsMallocMemory = NSPointerFunctionsOptions(3L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsMachVirtualMemory = NSPointerFunctionsOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsWeakMemory = NSPointerFunctionsOptions(5L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsObjectPersonality = NSPointerFunctionsOptions(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsOpaquePersonality = NSPointerFunctionsOptions(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsObjectPointerPersonality = NSPointerFunctionsOptions(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsCStringPersonality = NSPointerFunctionsOptions(768L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsStructPersonality = NSPointerFunctionsOptions(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsIntegerPersonality = NSPointerFunctionsOptions(1280L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSPointerFunctionsCopyIn = NSPointerFunctionsOptions(65536L)
     }
 
@@ -906,14 +1719,42 @@ value class NSPointerFunctionsOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSJSONReadingOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSJSONReadingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSJSONReadingMutableContainers = NSJSONReadingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSJSONReadingMutableLeaves = NSJSONReadingOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSJSONReadingFragmentsAllowed = NSJSONReadingOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSJSONReadingJSON5Allowed = NSJSONReadingOptions(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
         val NSJSONReadingTopLevelDictionaryAssumed = NSJSONReadingOptions(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val NSJSONReadingAllowFragments = NSJSONReadingOptions(4L)
     }
 
@@ -924,12 +1765,32 @@ value class NSJSONReadingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSJSONWritingOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSJSONWritingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSJSONWritingPrettyPrinted = NSJSONWritingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
         val NSJSONWritingSortedKeys = NSJSONWritingOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSJSONWritingFragmentsAllowed = NSJSONWritingOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
         val NSJSONWritingWithoutEscapingSlashes = NSJSONWritingOptions(8L)
     }
 
@@ -945,7 +1806,15 @@ value class NSKeyValueObservingOptions(val rawValue: Long) {
     companion object {
         val NSKeyValueObservingOptionNew = NSKeyValueObservingOptions(1L)
         val NSKeyValueObservingOptionOld = NSKeyValueObservingOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSKeyValueObservingOptionInitial = NSKeyValueObservingOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSKeyValueObservingOptionPrior = NSKeyValueObservingOptions(8L)
     }
 
@@ -1020,11 +1889,27 @@ value class NSNotificationCoalescing(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSMachPortOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSMachPortOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSMachPortDeallocateNone = NSMachPortOptions(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSMachPortDeallocateSendRight = NSMachPortOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSMachPortDeallocateReceiveRight = NSMachPortOptions(2L)
     }
 
@@ -1035,19 +1920,67 @@ value class NSMachPortOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSActivityOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSActivityOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityIdleDisplaySleepDisabled = NSActivityOptions(1099511627776L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityIdleSystemSleepDisabled = NSActivityOptions(1048576L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSActivitySuddenTerminationDisabled = NSActivityOptions(16384L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityAutomaticTerminationDisabled = NSActivityOptions(32768L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityAnimationTrackingEnabled = NSActivityOptions(35184372088832L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityTrackingEnabled = NSActivityOptions(70368744177664L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityUserInitiated = NSActivityOptions(16777215L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityUserInitiatedAllowingIdleSystemSleep = NSActivityOptions(15728639L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityBackground = NSActivityOptions(255L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityLatencyCritical = NSActivityOptions(1095216660480L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSActivityUserInteractive = NSActivityOptions(1095233437695L)
     }
 
@@ -1071,8 +2004,20 @@ value class NSTextCheckingType(val rawValue: Long) {
         val NSTextCheckingTypeDash = NSTextCheckingType(128L)
         val NSTextCheckingTypeReplacement = NSTextCheckingType(256L)
         val NSTextCheckingTypeCorrection = NSTextCheckingType(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSTextCheckingTypeRegularExpression = NSTextCheckingType(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSTextCheckingTypePhoneNumber = NSTextCheckingType(2048L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSTextCheckingTypeTransitInformation = NSTextCheckingType(4096L)
     }
 
@@ -1179,20 +2124,46 @@ value class SecKeyUsage(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum SecAccessControlCreateFlags}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
 @JvmInline
 value class SecAccessControlCreateFlags(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
         val kSecAccessControlUserPresence = SecAccessControlCreateFlags(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = 4)
         val kSecAccessControlBiometryAny = SecAccessControlCreateFlags(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 3, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = 4)
         val kSecAccessControlTouchIDAny = SecAccessControlCreateFlags(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = 4)
         val kSecAccessControlBiometryCurrentSet = SecAccessControlCreateFlags(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 3, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = 4)
         val kSecAccessControlTouchIDCurrentSet = SecAccessControlCreateFlags(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
         val kSecAccessControlDevicePasscode = SecAccessControlCreateFlags(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 18, deprecatedMinor = 0, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1)
         val kSecAccessControlWatch = SecAccessControlCreateFlags(32L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val kSecAccessControlCompanion = SecAccessControlCreateFlags(32L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 1)
         val kSecAccessControlOr = SecAccessControlCreateFlags(16384L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 1)
         val kSecAccessControlAnd = SecAccessControlCreateFlags(32768L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 1)
         val kSecAccessControlPrivateKeyUsage = SecAccessControlCreateFlags(1073741824L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 1)
         val kSecAccessControlApplicationPassword = SecAccessControlCreateFlags(2147483648L)
     }
 
@@ -1203,19 +2174,67 @@ value class SecAccessControlCreateFlags(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum SecPadding}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+@PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+@PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
 @JvmInline
 value class SecPadding(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingNone = SecPadding(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingPKCS1 = SecPadding(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingOAEP = SecPadding(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingSigRaw = SecPadding(16384L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingPKCS1MD2 = SecPadding(32768L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingPKCS1MD5 = SecPadding(32769L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingPKCS1SHA1 = SecPadding(32770L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingPKCS1SHA224 = SecPadding(32771L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingPKCS1SHA256 = SecPadding(32772L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingPKCS1SHA384 = SecPadding(32773L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Replaced with SecKeyAlgorithm")
         val kSecPaddingPKCS1SHA512 = SecPadding(32774L)
     }
 
@@ -1236,6 +2255,7 @@ value class SecKeychainEventMask(val rawValue: Long) {
         val kSecUpdateEventMask = SecKeychainEventMask(32L)
         val kSecPasswordChangedEventMask = SecKeychainEventMask(64L)
         val kSecDefaultChangedEventMask = SecKeychainEventMask(512L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Read events are no longer posted")
         val kSecDataAccessEventMask = SecKeychainEventMask(1024L)
         val kSecKeychainListChangedMask = SecKeychainEventMask(2048L)
         val kSecTrustSettingsChangedEventMask = SecKeychainEventMask(4096L)
@@ -1525,6 +2545,7 @@ value class CFNetServiceBrowserFlags(val rawValue: Long) {
         val kCFNetServiceFlagMoreComing = CFNetServiceBrowserFlags(1L)
         val kCFNetServiceFlagIsDomain = CFNetServiceBrowserFlags(2L)
         val kCFNetServiceFlagIsDefault = CFNetServiceBrowserFlags(4L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1)
         val kCFNetServiceFlagIsRegistrationDomain = CFNetServiceBrowserFlags(4L)
         val kCFNetServiceFlagRemove = CFNetServiceBrowserFlags(8L)
     }
@@ -1570,13 +2591,21 @@ value class LSAcceptanceFlags(val rawValue: Long) {
 @JvmInline
 value class LSRequestedInfo(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use CFURLCopyPathExtension(), -[NSURL pathExtension], or -[NSString pathExtension] instead.")
         val kLSRequestExtension = LSRequestedInfo(1L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Creator codes are deprecated on OS X.")
         val kLSRequestTypeCreator = LSRequestedInfo(2L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use CFURLCopyResourcePropertiesForKeys or -[NSURL resourceValuesForKeys:error:] instead.")
         val kLSRequestBasicFlagsOnly = LSRequestedInfo(4L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use CFURLCopyResourcePropertiesForKeys or -[NSURL resourceValuesForKeys:error:] instead.")
         val kLSRequestAppTypeFlags = LSRequestedInfo(8L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use CFURLCopyResourcePropertiesForKeys or -[NSURL resourceValuesForKeys:error:] instead.")
         val kLSRequestAllFlags = LSRequestedInfo(16L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use CFURLCopyResourcePropertiesForKeys or -[NSURL resourceValuesForKeys:error:] instead.")
         val kLSRequestIconAndKind = LSRequestedInfo(32L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use CFURLCopyResourcePropertiesForKeys or -[NSURL resourceValuesForKeys:error:] instead.")
         val kLSRequestExtensionFlagsOnly = LSRequestedInfo(64L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use CFURLCopyResourcePropertiesForKeys or -[NSURL resourceValuesForKeys:error:] instead.")
         val kLSRequestAllInfo = LSRequestedInfo(-1L)
     }
 
@@ -1590,19 +2619,33 @@ value class LSRequestedInfo(val rawValue: Long) {
 @JvmInline
 value class LSItemInfoFlags(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLIsRegularFileKey or NSURLIsRegularFileKey instead.")
         val kLSItemInfoIsPlainFile = LSItemInfoFlags(1L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLIsPackageKey or NSURLIsPackageKey instead.")
         val kLSItemInfoIsPackage = LSItemInfoFlags(2L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLIsApplicationKey or NSURLIsApplicationKey instead.")
         val kLSItemInfoIsApplication = LSItemInfoFlags(4L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLIsDirectoryKey or NSURLIsDirectoryKey instead.")
         val kLSItemInfoIsContainer = LSItemInfoFlags(8L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLIsAliasFileKey or NSURLIsAliasFileKey instead.")
         val kLSItemInfoIsAliasFile = LSItemInfoFlags(16L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLIsSymbolicLinkKey or NSURLIsSymbolicLinkKey.")
         val kLSItemInfoIsSymlink = LSItemInfoFlags(32L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLIsHiddenKey or NSURLIsHiddenKey instead.")
         val kLSItemInfoIsInvisible = LSItemInfoFlags(64L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "The Classic environment is no longer supported.")
         val kLSItemInfoIsNativeApp = LSItemInfoFlags(128L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "The Classic environment is no longer supported.")
         val kLSItemInfoIsClassicApp = LSItemInfoFlags(256L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "The Classic environment is no longer supported.")
         val kLSItemInfoAppPrefersNative = LSItemInfoFlags(512L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "The Classic environment is no longer supported.")
         val kLSItemInfoAppPrefersClassic = LSItemInfoFlags(1024L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLApplicationIsScriptableKey or NSURLApplicationIsScriptableKey instead.")
         val kLSItemInfoAppIsScriptable = LSItemInfoFlags(2048L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLIsVolumeKey or NSURLIsVolumeKey instead.")
         val kLSItemInfoIsVolume = LSItemInfoFlags(4096L)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use the URL resource property kCFURLHasHiddenExtensionKey or NSURLHasHiddenExtensionKey instead.")
         val kLSItemInfoExtensionIsHidden = LSItemInfoFlags(1048576L)
     }
 
@@ -1616,7 +2659,15 @@ value class LSItemInfoFlags(val rawValue: Long) {
 @JvmInline
 value class LSHandlerOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Creator codes are deprecated on OS X.")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Creator codes are deprecated on OS X.")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Creator codes are deprecated on OS X.")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Creator codes are deprecated on OS X.")
         val kLSHandlerOptionsDefault = LSHandlerOptions(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Creator codes are deprecated on OS X.")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Creator codes are deprecated on OS X.")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Creator codes are deprecated on OS X.")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Creator codes are deprecated on OS X.")
         val kLSHandlerOptionsIgnoreCreator = LSHandlerOptions(1L)
     }
 
@@ -1648,9 +2699,17 @@ value class LSLaunchFlags(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSXPCConnectionOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSXPCConnectionOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSXPCConnectionPrivileged = NSXPCConnectionOptions(4096L)
     }
 
@@ -1689,6 +2748,10 @@ value class NSComparisonPredicateOptions(val rawValue: Long) {
     companion object {
         val NSCaseInsensitivePredicateOption = NSComparisonPredicateOptions(1L)
         val NSDiacriticInsensitivePredicateOption = NSComparisonPredicateOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSNormalizedPredicateOption = NSComparisonPredicateOptions(4L)
     }
 
@@ -1723,7 +2786,15 @@ value class NSFileCoordinatorReadingOptions(val rawValue: Long) {
     companion object {
         val NSFileCoordinatorReadingWithoutChanges = NSFileCoordinatorReadingOptions(1L)
         val NSFileCoordinatorReadingResolvesSymbolicLink = NSFileCoordinatorReadingOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSFileCoordinatorReadingImmediatelyAvailableMetadataOnly = NSFileCoordinatorReadingOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSFileCoordinatorReadingForUploading = NSFileCoordinatorReadingOptions(8L)
     }
 
@@ -1741,6 +2812,10 @@ value class NSFileCoordinatorWritingOptions(val rawValue: Long) {
         val NSFileCoordinatorWritingForMoving = NSFileCoordinatorWritingOptions(2L)
         val NSFileCoordinatorWritingForMerging = NSFileCoordinatorWritingOptions(4L)
         val NSFileCoordinatorWritingForReplacing = NSFileCoordinatorWritingOptions(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSFileCoordinatorWritingContentIndependentMetadataOnly = NSFileCoordinatorWritingOptions(16L)
     }
 
@@ -1777,10 +2852,22 @@ value class NSFileVersionReplacingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFileWrapperReadingOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSFileWrapperReadingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSFileWrapperReadingImmediate = NSFileWrapperReadingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSFileWrapperReadingWithoutMapping = NSFileWrapperReadingOptions(2L)
     }
 
@@ -1791,10 +2878,22 @@ value class NSFileWrapperReadingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFileWrapperWritingOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSFileWrapperWritingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSFileWrapperWritingAtomic = NSFileWrapperWritingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSFileWrapperWritingWithNameUpdating = NSFileWrapperWritingOptions(2L)
     }
 
@@ -1822,10 +2921,22 @@ value class NSLinguisticTaggerOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSNetServiceOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 @JvmInline
 value class NSNetServiceOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSNetServiceNoAutoRename = NSNetServiceOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val NSNetServiceListenForConnections = NSNetServiceOptions(2L)
     }
 
@@ -1890,19 +3001,67 @@ value class NSXMLNodeOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSAppleEventSendOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 @JvmInline
 value class NSAppleEventSendOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendNoReply = NSAppleEventSendOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendQueueReply = NSAppleEventSendOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendWaitForReply = NSAppleEventSendOptions(3L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendNeverInteract = NSAppleEventSendOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendCanInteract = NSAppleEventSendOptions(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendAlwaysInteract = NSAppleEventSendOptions(48L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendCanSwitchLayer = NSAppleEventSendOptions(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendDontRecord = NSAppleEventSendOptions(4096L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendDontExecute = NSAppleEventSendOptions(8192L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendDontAnnotate = NSAppleEventSendOptions(65536L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val NSAppleEventSendDefaultOptions = NSAppleEventSendOptions(35L)
     }
 
@@ -1927,20 +3086,46 @@ value class CGGradientDrawingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum CGBitmapInfo}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class CGBitmapInfo(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
         val kCGBitmapAlphaInfoMask = CGBitmapInfo(31L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
         val kCGBitmapComponentInfoMask = CGBitmapInfo(3840L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
         val kCGBitmapByteOrderInfoMask = CGBitmapInfo(28672L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
         val kCGBitmapPixelFormatInfoMask = CGBitmapInfo(983040L)
+        @PlatformAvailability(platform = "ios", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val kCGBitmapFloatInfoMask = CGBitmapInfo(3840L)
+        @PlatformAvailability(platform = "ios", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val kCGBitmapByteOrderMask = CGBitmapInfo(28672L)
+        @PlatformAvailability(platform = "ios", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val kCGBitmapFloatComponents = CGBitmapInfo(256L)
+        @PlatformAvailability(platform = "ios", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val kCGBitmapByteOrderDefault = CGBitmapInfo(0L)
+        @PlatformAvailability(platform = "ios", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val kCGBitmapByteOrder16Little = CGBitmapInfo(4096L)
+        @PlatformAvailability(platform = "ios", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val kCGBitmapByteOrder32Little = CGBitmapInfo(8192L)
+        @PlatformAvailability(platform = "ios", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val kCGBitmapByteOrder16Big = CGBitmapInfo(12288L)
+        @PlatformAvailability(platform = "ios", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+        @PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
         val kCGBitmapByteOrder32Big = CGBitmapInfo(16384L)
     }
 
@@ -1971,10 +3156,13 @@ value class CGPDFAccessPermissions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSWorkspaceIconCreationOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSWorkspaceIconCreationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSExcludeQuickDrawElementsIconCreationOption = NSWorkspaceIconCreationOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSExclude10_4ElementsIconCreationOption = NSWorkspaceIconCreationOptions(4L)
     }
 
@@ -1985,20 +3173,45 @@ value class NSWorkspaceIconCreationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSWorkspaceLaunchOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSWorkspaceLaunchOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -[NSWorkspaceOpenConfiguration setForPrinting:YES] instead.")
         val NSWorkspaceLaunchAndPrint = NSWorkspaceLaunchOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -[NSWorkspaceOpenConfiguration setPromptsUserIfNeeded:YES] instead.")
         val NSWorkspaceLaunchWithErrorPresentation = NSWorkspaceLaunchOptions(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "This option does nothing.")
         val NSWorkspaceLaunchInhibitingBackgroundOnly = NSWorkspaceLaunchOptions(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -[NSWorkspaceOpenConfiguration setAddsToRecentItems:YES] instead.")
         val NSWorkspaceLaunchWithoutAddingToRecents = NSWorkspaceLaunchOptions(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -[NSWorkspaceOpenConfiguration setActivates:NO] instead.")
         val NSWorkspaceLaunchWithoutActivation = NSWorkspaceLaunchOptions(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "When using NSWorkspaceOpenConfiguration, all launches are asynchronous.")
         val NSWorkspaceLaunchAsync = NSWorkspaceLaunchOptions(65536L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -[NSWorkspaceOpenConfiguration setCreatesNewApplicationInstance:YES] instead.")
         val NSWorkspaceLaunchNewInstance = NSWorkspaceLaunchOptions(524288L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -[NSWorkspaceOpenConfiguration setHides:YES] instead.")
         val NSWorkspaceLaunchAndHide = NSWorkspaceLaunchOptions(1048576L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -[NSWorkspaceOpenConfiguration setHidesOthers:YES] instead.")
         val NSWorkspaceLaunchAndHideOthers = NSWorkspaceLaunchOptions(2097152L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSWorkspaceOpenConfiguration instead.")
         val NSWorkspaceLaunchDefault = NSWorkspaceLaunchOptions(65536L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "The Classic environment is no longer supported.")
         val NSWorkspaceLaunchAllowingClassicStartup = NSWorkspaceLaunchOptions(131072L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "The Classic environment is no longer supported.")
         val NSWorkspaceLaunchPreferringClassic = NSWorkspaceLaunchOptions(262144L)
     }
 
@@ -2009,15 +3222,24 @@ value class NSWorkspaceLaunchOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTouchPhase}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 @JvmInline
 value class NSTouchPhase(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTouchPhaseBegan = NSTouchPhase(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTouchPhaseMoved = NSTouchPhase(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTouchPhaseStationary = NSTouchPhase(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTouchPhaseEnded = NSTouchPhase(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTouchPhaseCancelled = NSTouchPhase(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTouchPhaseTouching = NSTouchPhase(7L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTouchPhaseAny = NSTouchPhase(-1L)
     }
 
@@ -2028,10 +3250,14 @@ value class NSTouchPhase(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTouchTypeMask}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
 @JvmInline
 value class NSTouchTypeMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTouchTypeMaskDirect = NSTouchTypeMask(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTouchTypeMaskIndirect = NSTouchTypeMask(2L)
     }
 
@@ -2100,6 +3326,7 @@ value class CGWindowImageOption(val rawValue: Long) {
 value class CGCaptureOptions(val rawValue: Long) {
     companion object {
         val kCGCaptureNoOptions = CGCaptureOptions(0L)
+        @PlatformAvailability(platform = "all", deprecated = true)
         val kCGCaptureNoFill = CGCaptureOptions(1L)
     }
 
@@ -2270,6 +3497,7 @@ value class CTFontOptions(val rawValue: Long) {
     companion object {
         val kCTFontOptionsDefault = CTFontOptions(0L)
         val kCTFontOptionsPreventAutoActivation = CTFontOptions(1L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
         val kCTFontOptionsPreventAutoDownload = CTFontOptions(2L)
         val kCTFontOptionsPreferSystemFont = CTFontOptions(4L)
     }
@@ -2285,6 +3513,10 @@ value class CTFontOptions(val rawValue: Long) {
 value class CTFontTableOptions(val rawValue: Long) {
     companion object {
         val kCTFontTableOptionNoOptions = CTFontTableOptions(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 6, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Unsupported")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "Unsupported")
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCTFontTableOptionExcludeSynthetic = CTFontTableOptions(1L)
     }
 
@@ -2295,11 +3527,27 @@ value class CTFontTableOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum CTFontCollectionCopyOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class CTFontCollectionCopyOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
         val kCTFontCollectionCopyDefaultOptions = CTFontCollectionCopyOptions(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
         val kCTFontCollectionCopyUnique = CTFontCollectionCopyOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
         val kCTFontCollectionCopyStandardSort = CTFontCollectionCopyOptions(2L)
     }
 
@@ -2440,43 +3688,90 @@ value class AXCopyMultipleAttributeOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSEventMask}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSEventMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskLeftMouseDown = NSEventMask(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskLeftMouseUp = NSEventMask(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskRightMouseDown = NSEventMask(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskRightMouseUp = NSEventMask(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskMouseMoved = NSEventMask(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskLeftMouseDragged = NSEventMask(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskRightMouseDragged = NSEventMask(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskMouseEntered = NSEventMask(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskMouseExited = NSEventMask(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskKeyDown = NSEventMask(1024L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskKeyUp = NSEventMask(2048L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskFlagsChanged = NSEventMask(4096L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskAppKitDefined = NSEventMask(8192L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskSystemDefined = NSEventMask(16384L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskApplicationDefined = NSEventMask(32768L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskPeriodic = NSEventMask(65536L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskCursorUpdate = NSEventMask(131072L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskScrollWheel = NSEventMask(4194304L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskTabletPoint = NSEventMask(8388608L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskTabletProximity = NSEventMask(16777216L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskOtherMouseDown = NSEventMask(33554432L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskOtherMouseUp = NSEventMask(67108864L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskOtherMouseDragged = NSEventMask(134217728L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
         val NSEventMaskGesture = NSEventMask(536870912L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
         val NSEventMaskMagnify = NSEventMask(1073741824L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
         val NSEventMaskSwipe = NSEventMask(2147483648L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
         val NSEventMaskRotate = NSEventMask(262144L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
         val NSEventMaskBeginGesture = NSEventMask(524288L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
         val NSEventMaskEndGesture = NSEventMask(1048576L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
         val NSEventMaskSmartMagnify = NSEventMask(4294967296L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = 3)
         val NSEventMaskPressure = NSEventMask(17179869184L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
         val NSEventMaskDirectTouch = NSEventMask(137438953472L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
         val NSEventMaskChangeMode = NSEventMask(274877906944L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
         val NSEventMaskMouseCancelled = NSEventMask(1099511627776L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventMaskAny = NSEventMask(-1L)
     }
 
@@ -2487,17 +3782,27 @@ value class NSEventMask(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSEventModifierFlags}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSEventModifierFlags(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventModifierFlagCapsLock = NSEventModifierFlags(65536L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventModifierFlagShift = NSEventModifierFlags(131072L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventModifierFlagControl = NSEventModifierFlags(262144L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventModifierFlagOption = NSEventModifierFlags(524288L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventModifierFlagCommand = NSEventModifierFlags(1048576L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventModifierFlagNumericPad = NSEventModifierFlags(2097152L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventModifierFlagHelp = NSEventModifierFlags(4194304L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventModifierFlagFunction = NSEventModifierFlags(8388608L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventModifierFlagDeviceIndependentFlagsMask = NSEventModifierFlags(4294901760L)
     }
 
@@ -2508,11 +3813,15 @@ value class NSEventModifierFlags(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSEventButtonMask}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSEventButtonMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventButtonMaskPenTip = NSEventButtonMask(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventButtonMaskPenLowerSide = NSEventButtonMask(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventButtonMaskPenUpperSide = NSEventButtonMask(4L)
     }
 
@@ -2523,15 +3832,24 @@ value class NSEventButtonMask(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSEventPhase}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 @JvmInline
 value class NSEventPhase(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventPhaseNone = NSEventPhase(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventPhaseBegan = NSEventPhase(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventPhaseStationary = NSEventPhase(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventPhaseChanged = NSEventPhase(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventPhaseEnded = NSEventPhase(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventPhaseCancelled = NSEventPhase(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventPhaseMayBegin = NSEventPhase(32L)
     }
 
@@ -2542,10 +3860,14 @@ value class NSEventPhase(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSEventSwipeTrackingOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 @JvmInline
 value class NSEventSwipeTrackingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventSwipeTrackingLockDirection = NSEventSwipeTrackingOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSEventSwipeTrackingClampGestureAmount = NSEventSwipeTrackingOptions(2L)
     }
 
@@ -2556,9 +3878,12 @@ value class NSEventSwipeTrackingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSPasteboardContentsOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 @JvmInline
 value class NSPasteboardContentsOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPasteboardContentsCurrentHostOnly = NSPasteboardContentsOptions(1L)
     }
 
@@ -2569,9 +3894,12 @@ value class NSPasteboardContentsOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSPasteboardWritingOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
 @JvmInline
 value class NSPasteboardWritingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPasteboardWritingPromised = NSPasteboardWritingOptions(512L)
     }
 
@@ -2582,12 +3910,18 @@ value class NSPasteboardWritingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSPasteboardReadingOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
 @JvmInline
 value class NSPasteboardReadingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPasteboardReadingAsData = NSPasteboardReadingOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPasteboardReadingAsString = NSPasteboardReadingOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPasteboardReadingAsPropertyList = NSPasteboardReadingOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPasteboardReadingAsKeyedArchive = NSPasteboardReadingOptions(4L)
     }
 
@@ -2598,10 +3932,14 @@ value class NSPasteboardReadingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSApplicationActivationOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSApplicationActivationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationActivateAllWindows = NSApplicationActivationOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "ignoringOtherApps is deprecated in macOS 14 and will have no effect.")
         val NSApplicationActivateIgnoringOtherApps = NSApplicationActivationOptions(2L)
     }
 
@@ -2612,18 +3950,31 @@ value class NSApplicationActivationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSDragOperation}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSDragOperation(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDragOperationNone = NSDragOperation(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDragOperationCopy = NSDragOperation(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDragOperationLink = NSDragOperation(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDragOperationGeneric = NSDragOperation(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDragOperationPrivate = NSDragOperation(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDragOperationMove = NSDragOperation(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDragOperationDelete = NSDragOperation(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDragOperationEvery = NSDragOperation(-1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
         val NSDragOperationAll_Obsolete = NSDragOperation(15L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
         val NSDragOperationAll = NSDragOperation(15L)
     }
 
@@ -2634,10 +3985,14 @@ value class NSDragOperation(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSDraggingItemEnumerationOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 @JvmInline
 value class NSDraggingItemEnumerationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDraggingItemEnumerationConcurrent = NSDraggingItemEnumerationOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDraggingItemEnumerationClearNonenumeratedImages = NSDraggingItemEnumerationOptions(65536L)
     }
 
@@ -2648,12 +4003,18 @@ value class NSDraggingItemEnumerationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSSpringLoadingOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 @JvmInline
 value class NSSpringLoadingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSSpringLoadingDisabled = NSSpringLoadingOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSSpringLoadingEnabled = NSSpringLoadingOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSSpringLoadingContinuousActivation = NSSpringLoadingOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSSpringLoadingNoHover = NSSpringLoadingOptions(8L)
     }
 
@@ -2664,15 +4025,23 @@ value class NSSpringLoadingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSAutoresizingMaskOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSAutoresizingMaskOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewNotSizable = NSAutoresizingMaskOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewMinXMargin = NSAutoresizingMaskOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewWidthSizable = NSAutoresizingMaskOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewMaxXMargin = NSAutoresizingMaskOptions(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewMinYMargin = NSAutoresizingMaskOptions(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewHeightSizable = NSAutoresizingMaskOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewMaxYMargin = NSAutoresizingMaskOptions(32L)
     }
 
@@ -2683,12 +4052,37 @@ value class NSAutoresizingMaskOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSLineBreakStrategy}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSLineBreakStrategy(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSLineBreakStrategyNone = NSLineBreakStrategy(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSLineBreakStrategyPushOut = NSLineBreakStrategy(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSLineBreakStrategyHangulWordPriority = NSLineBreakStrategy(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSLineBreakStrategyStandard = NSLineBreakStrategy(65535L)
     }
 
@@ -2699,13 +4093,19 @@ value class NSLineBreakStrategy(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSCellStyleMask}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSCellStyleMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSNoCellMask = NSCellStyleMask(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSContentsCellMask = NSCellStyleMask(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPushInCellMask = NSCellStyleMask(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSChangeGrayCellMask = NSCellStyleMask(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSChangeBackgroundCellMask = NSCellStyleMask(8L)
     }
 
@@ -2716,12 +4116,18 @@ value class NSCellStyleMask(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSCellHitResult}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 @JvmInline
 value class NSCellHitResult(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCellHitNone = NSCellHitResult(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCellHitContentArea = NSCellHitResult(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCellHitEditableTextArea = NSCellHitResult(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCellHitTrackableArea = NSCellHitResult(4L)
     }
 
@@ -2732,14 +4138,21 @@ value class NSCellHitResult(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSMenuProperties}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSMenuProperties(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSMenuPropertyItemTitle = NSMenuProperties(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSMenuPropertyItemAttributedTitle = NSMenuProperties(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSMenuPropertyItemKeyEquivalent = NSMenuProperties(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSMenuPropertyItemImage = NSMenuProperties(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSMenuPropertyItemEnabled = NSMenuProperties(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSMenuPropertyItemAccessibilityDescription = NSMenuProperties(32L)
     }
 
@@ -2750,22 +4163,41 @@ value class NSMenuProperties(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSApplicationPresentationOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
 @JvmInline
 value class NSApplicationPresentationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationDefault = NSApplicationPresentationOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationAutoHideDock = NSApplicationPresentationOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationHideDock = NSApplicationPresentationOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationAutoHideMenuBar = NSApplicationPresentationOptions(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationHideMenuBar = NSApplicationPresentationOptions(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationDisableAppleMenu = NSApplicationPresentationOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationDisableProcessSwitching = NSApplicationPresentationOptions(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationDisableForceQuit = NSApplicationPresentationOptions(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationDisableSessionTermination = NSApplicationPresentationOptions(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationDisableHideApplication = NSApplicationPresentationOptions(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationPresentationDisableMenuBarTransparency = NSApplicationPresentationOptions(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
         val NSApplicationPresentationFullScreen = NSApplicationPresentationOptions(1024L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
         val NSApplicationPresentationAutoHideToolbar = NSApplicationPresentationOptions(2048L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = 2)
         val NSApplicationPresentationDisableCursorLocationAssistance = NSApplicationPresentationOptions(4096L)
     }
 
@@ -2776,9 +4208,12 @@ value class NSApplicationPresentationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSApplicationOcclusionState}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 @JvmInline
 value class NSApplicationOcclusionState(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSApplicationOcclusionStateVisible = NSApplicationOcclusionState(2L)
     }
 
@@ -2789,9 +4224,12 @@ value class NSApplicationOcclusionState(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSWindowListOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 @JvmInline
 value class NSWindowListOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowListOrderedFrontToBack = NSWindowListOptions(1L)
     }
 
@@ -2802,12 +4240,21 @@ value class NSWindowListOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSRemoteNotificationType}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSRemoteNotificationType(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
         val NSRemoteNotificationTypeNone = NSRemoteNotificationType(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
         val NSRemoteNotificationTypeBadge = NSRemoteNotificationType(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
         val NSRemoteNotificationTypeSound = NSRemoteNotificationType(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
         val NSRemoteNotificationTypeAlert = NSRemoteNotificationType(4L)
     }
 
@@ -2818,17 +4265,28 @@ value class NSRemoteNotificationType(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSViewControllerTransitionOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
 @JvmInline
 value class NSViewControllerTransitionOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewControllerTransitionNone = NSViewControllerTransitionOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewControllerTransitionCrossfade = NSViewControllerTransitionOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewControllerTransitionSlideUp = NSViewControllerTransitionOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewControllerTransitionSlideDown = NSViewControllerTransitionOptions(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewControllerTransitionSlideLeft = NSViewControllerTransitionOptions(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewControllerTransitionSlideRight = NSViewControllerTransitionOptions(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewControllerTransitionSlideForward = NSViewControllerTransitionOptions(320L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewControllerTransitionSlideBackward = NSViewControllerTransitionOptions(384L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSViewControllerTransitionAllowUserInteraction = NSViewControllerTransitionOptions(4096L)
     }
 
@@ -2839,19 +4297,31 @@ value class NSViewControllerTransitionOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSCollectionViewScrollPosition}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSCollectionViewScrollPosition(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionNone = NSCollectionViewScrollPosition(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionTop = NSCollectionViewScrollPosition(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionCenteredVertically = NSCollectionViewScrollPosition(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionBottom = NSCollectionViewScrollPosition(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionNearestHorizontalEdge = NSCollectionViewScrollPosition(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionLeft = NSCollectionViewScrollPosition(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionCenteredHorizontally = NSCollectionViewScrollPosition(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionRight = NSCollectionViewScrollPosition(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionLeadingEdge = NSCollectionViewScrollPosition(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionTrailingEdge = NSCollectionViewScrollPosition(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCollectionViewScrollPositionNearestVerticalEdge = NSCollectionViewScrollPosition(256L)
     }
 
@@ -2862,14 +4332,22 @@ value class NSCollectionViewScrollPosition(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSDirectionalRectEdge}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 @JvmInline
 value class NSDirectionalRectEdge(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDirectionalRectEdgeNone = NSDirectionalRectEdge(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDirectionalRectEdgeTop = NSDirectionalRectEdge(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDirectionalRectEdgeLeading = NSDirectionalRectEdge(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDirectionalRectEdgeBottom = NSDirectionalRectEdge(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDirectionalRectEdgeTrailing = NSDirectionalRectEdge(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDirectionalRectEdgeAll = NSDirectionalRectEdge(15L)
     }
 
@@ -2880,11 +4358,15 @@ value class NSDirectionalRectEdge(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSHorizontalDirections}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSHorizontalDirections(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val NSHorizontalDirectionsLeft = NSHorizontalDirections(1L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val NSHorizontalDirectionsRight = NSHorizontalDirections(2L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val NSHorizontalDirectionsAll = NSHorizontalDirections(3L)
     }
 
@@ -2895,11 +4377,15 @@ value class NSHorizontalDirections(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSVerticalDirections}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSVerticalDirections(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val NSVerticalDirectionsUp = NSVerticalDirections(1L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val NSVerticalDirectionsDown = NSVerticalDirections(2L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val NSVerticalDirectionsAll = NSVerticalDirections(3L)
     }
 
@@ -2910,30 +4396,54 @@ value class NSVerticalDirections(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFontDescriptorSymbolicTraits}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSFontDescriptorSymbolicTraits(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorTraitItalic = NSFontDescriptorSymbolicTraits(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorTraitBold = NSFontDescriptorSymbolicTraits(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorTraitExpanded = NSFontDescriptorSymbolicTraits(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorTraitCondensed = NSFontDescriptorSymbolicTraits(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorTraitMonoSpace = NSFontDescriptorSymbolicTraits(1024L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorTraitVertical = NSFontDescriptorSymbolicTraits(2048L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorTraitUIOptimized = NSFontDescriptorSymbolicTraits(4096L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorTraitTightLeading = NSFontDescriptorSymbolicTraits(32768L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorTraitLooseLeading = NSFontDescriptorSymbolicTraits(65536L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", unavailable = true)
         val NSFontDescriptorTraitEmphasized = NSFontDescriptorSymbolicTraits(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassMask = NSFontDescriptorSymbolicTraits(-268435456L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassUnknown = NSFontDescriptorSymbolicTraits(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassOldStyleSerifs = NSFontDescriptorSymbolicTraits(268435456L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassTransitionalSerifs = NSFontDescriptorSymbolicTraits(536870912L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassModernSerifs = NSFontDescriptorSymbolicTraits(805306368L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassClarendonSerifs = NSFontDescriptorSymbolicTraits(1073741824L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassSlabSerifs = NSFontDescriptorSymbolicTraits(1342177280L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassFreeformSerifs = NSFontDescriptorSymbolicTraits(1879048192L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassSansSerif = NSFontDescriptorSymbolicTraits(-2147483648L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassOrnamentals = NSFontDescriptorSymbolicTraits(-1879048192L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassScripts = NSFontDescriptorSymbolicTraits(-1610612736L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontDescriptorClassSymbolic = NSFontDescriptorSymbolicTraits(-1073741824L)
     }
 
@@ -2944,9 +4454,12 @@ value class NSFontDescriptorSymbolicTraits(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFontAssetRequestOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
 @JvmInline
 value class NSFontAssetRequestOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontAssetRequestOptionUsesStandardUI = NSFontAssetRequestOptions(1L)
     }
 
@@ -2957,11 +4470,15 @@ value class NSFontAssetRequestOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFontCollectionVisibility}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSFontCollectionVisibility(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontCollectionVisibilityProcess = NSFontCollectionVisibility(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontCollectionVisibilityUser = NSFontCollectionVisibility(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontCollectionVisibilityComputer = NSFontCollectionVisibility(4L)
     }
 
@@ -2972,20 +4489,33 @@ value class NSFontCollectionVisibility(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFontTraitMask}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSFontTraitMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSItalicFontMask = NSFontTraitMask(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSBoldFontMask = NSFontTraitMask(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSUnboldFontMask = NSFontTraitMask(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSNonStandardCharacterSetFontMask = NSFontTraitMask(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSNarrowFontMask = NSFontTraitMask(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSExpandedFontMask = NSFontTraitMask(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCondensedFontMask = NSFontTraitMask(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSSmallCapsFontMask = NSFontTraitMask(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPosterFontMask = NSFontTraitMask(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCompressedFontMask = NSFontTraitMask(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFixedPitchFontMask = NSFontTraitMask(1024L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSUnitalicFontMask = NSFontTraitMask(16777216L)
     }
 
@@ -2996,9 +4526,11 @@ value class NSFontTraitMask(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFontCollectionOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSFontCollectionOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontCollectionApplicationOnlyMask = NSFontCollectionOptions(1L)
     }
 
@@ -3009,21 +4541,39 @@ value class NSFontCollectionOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSWindowStyleMask}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSWindowStyleMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowStyleMaskBorderless = NSWindowStyleMask(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowStyleMaskTitled = NSWindowStyleMask(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowStyleMaskClosable = NSWindowStyleMask(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowStyleMaskMiniaturizable = NSWindowStyleMask(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowStyleMaskResizable = NSWindowStyleMask(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Textured window style should no longer be used")
         val NSWindowStyleMaskTexturedBackground = NSWindowStyleMask(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowStyleMaskUnifiedTitleAndToolbar = NSWindowStyleMask(4096L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
         val NSWindowStyleMaskFullScreen = NSWindowStyleMask(16384L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
         val NSWindowStyleMaskFullSizeContentView = NSWindowStyleMask(32768L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowStyleMaskUtilityWindow = NSWindowStyleMask(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowStyleMaskDocModalWindow = NSWindowStyleMask(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowStyleMaskNonactivatingPanel = NSWindowStyleMask(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
         val NSWindowStyleMaskHUDWindow = NSWindowStyleMask(8192L)
     }
 
@@ -3034,24 +4584,55 @@ value class NSWindowStyleMask(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSWindowCollectionBehavior}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 @JvmInline
 value class NSWindowCollectionBehavior(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowCollectionBehaviorDefault = NSWindowCollectionBehavior(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowCollectionBehaviorCanJoinAllSpaces = NSWindowCollectionBehavior(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowCollectionBehaviorMoveToActiveSpace = NSWindowCollectionBehavior(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
         val NSWindowCollectionBehaviorManaged = NSWindowCollectionBehavior(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
         val NSWindowCollectionBehaviorTransient = NSWindowCollectionBehavior(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
         val NSWindowCollectionBehaviorStationary = NSWindowCollectionBehavior(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
         val NSWindowCollectionBehaviorParticipatesInCycle = NSWindowCollectionBehavior(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
         val NSWindowCollectionBehaviorIgnoresCycle = NSWindowCollectionBehavior(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
         val NSWindowCollectionBehaviorFullScreenPrimary = NSWindowCollectionBehavior(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
         val NSWindowCollectionBehaviorFullScreenAuxiliary = NSWindowCollectionBehavior(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
         val NSWindowCollectionBehaviorFullScreenNone = NSWindowCollectionBehavior(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
         val NSWindowCollectionBehaviorFullScreenAllowsTiling = NSWindowCollectionBehavior(2048L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
         val NSWindowCollectionBehaviorFullScreenDisallowsTiling = NSWindowCollectionBehavior(4096L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
         val NSWindowCollectionBehaviorPrimary = NSWindowCollectionBehavior(65536L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
         val NSWindowCollectionBehaviorAuxiliary = NSWindowCollectionBehavior(131072L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
         val NSWindowCollectionBehaviorCanJoinAllApplications = NSWindowCollectionBehavior(262144L)
     }
 
@@ -3062,10 +4643,14 @@ value class NSWindowCollectionBehavior(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSWindowNumberListOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
 @JvmInline
 value class NSWindowNumberListOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowNumberListAllApplications = NSWindowNumberListOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowNumberListAllSpaces = NSWindowNumberListOptions(16L)
     }
 
@@ -3076,9 +4661,12 @@ value class NSWindowNumberListOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSWindowOcclusionState}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 @JvmInline
 value class NSWindowOcclusionState(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWindowOcclusionStateVisible = NSWindowOcclusionState(2L)
     }
 
@@ -3089,19 +4677,31 @@ value class NSWindowOcclusionState(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSFontPanelModeMask}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSFontPanelModeMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModeMaskFace = NSFontPanelModeMask(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModeMaskSize = NSFontPanelModeMask(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModeMaskCollection = NSFontPanelModeMask(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModeMaskUnderlineEffect = NSFontPanelModeMask(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModeMaskStrikethroughEffect = NSFontPanelModeMask(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModeMaskTextColorEffect = NSFontPanelModeMask(1024L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModeMaskDocumentColorEffect = NSFontPanelModeMask(2048L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModeMaskShadowEffect = NSFontPanelModeMask(4096L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModeMaskAllEffects = NSFontPanelModeMask(1048320L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModesMaskStandardModes = NSFontPanelModeMask(65535L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSFontPanelModesMaskAllModes = NSFontPanelModeMask(4294967295L)
     }
 
@@ -3112,15 +4712,27 @@ value class NSFontPanelModeMask(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSBitmapFormat}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSBitmapFormat(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSBitmapFormatAlphaFirst = NSBitmapFormat(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSBitmapFormatAlphaNonpremultiplied = NSBitmapFormat(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSBitmapFormatFloatingPointSamples = NSBitmapFormat(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
         val NSBitmapFormatSixteenBitLittleEndian = NSBitmapFormat(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
         val NSBitmapFormatThirtyTwoBitLittleEndian = NSBitmapFormat(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
         val NSBitmapFormatSixteenBitBigEndian = NSBitmapFormat(1024L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
         val NSBitmapFormatThirtyTwoBitBigEndian = NSBitmapFormat(2048L)
     }
 
@@ -3248,17 +4860,27 @@ value class CVPixelBufferPoolFlushFlags(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSColorPanelOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSColorPanelOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSColorPanelGrayModeMask = NSColorPanelOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSColorPanelRGBModeMask = NSColorPanelOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSColorPanelCMYKModeMask = NSColorPanelOptions(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSColorPanelHSBModeMask = NSColorPanelOptions(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSColorPanelCustomPaletteModeMask = NSColorPanelOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSColorPanelColorListModeMask = NSColorPanelOptions(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSColorPanelWheelModeMask = NSColorPanelOptions(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSColorPanelCrayonModeMask = NSColorPanelOptions(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSColorPanelAllModesMask = NSColorPanelOptions(65535L)
     }
 
@@ -3269,11 +4891,15 @@ value class NSColorPanelOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSCursorFrameResizeDirections}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSCursorFrameResizeDirections(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val NSCursorFrameResizeDirectionsInward = NSCursorFrameResizeDirections(1L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val NSCursorFrameResizeDirectionsOutward = NSCursorFrameResizeDirections(2L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
         val NSCursorFrameResizeDirectionsAll = NSCursorFrameResizeDirections(3L)
     }
 
@@ -3284,10 +4910,13 @@ value class NSCursorFrameResizeDirections(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSGradientDrawingOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSGradientDrawingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSGradientDrawsBeforeStartingLocation = NSGradientDrawingOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSGradientDrawsAfterEndingLocation = NSGradientDrawingOptions(2L)
     }
 
@@ -3298,24 +4927,42 @@ value class NSGradientDrawingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSLayoutFormatOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSLayoutFormatOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllLeft = NSLayoutFormatOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllRight = NSLayoutFormatOptions(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllTop = NSLayoutFormatOptions(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllBottom = NSLayoutFormatOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllLeading = NSLayoutFormatOptions(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllTrailing = NSLayoutFormatOptions(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllCenterX = NSLayoutFormatOptions(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllCenterY = NSLayoutFormatOptions(1024L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllLastBaseline = NSLayoutFormatOptions(2048L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
         val NSLayoutFormatAlignAllFirstBaseline = NSLayoutFormatOptions(4096L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignAllBaseline = NSLayoutFormatOptions(2048L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatAlignmentMask = NSLayoutFormatOptions(65535L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatDirectionLeadingToTrailing = NSLayoutFormatOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatDirectionLeftToRight = NSLayoutFormatOptions(65536L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatDirectionRightToLeft = NSLayoutFormatOptions(131072L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSLayoutFormatDirectionMask = NSLayoutFormatOptions(196608L)
     }
 
@@ -3329,7 +4976,19 @@ value class NSLayoutFormatOptions(val rawValue: Long) {
 @JvmInline
 value class os_unfair_lock_flags_t(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "swift", unavailable = true, message = "Use OSAllocatedUnfairLock APIs that do not require flags.")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val OS_UNFAIR_LOCK_FLAG_NONE = os_unfair_lock_flags_t(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "swift", unavailable = true, message = "Use OSAllocatedUnfairLockFlags.AdaptiveSpin")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         val OS_UNFAIR_LOCK_FLAG_ADAPTIVE_SPIN = os_unfair_lock_flags_t(262144L)
     }
 
@@ -3340,13 +4999,20 @@ value class os_unfair_lock_flags_t(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSCloudKitSharingServiceOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 @JvmInline
 value class NSCloudKitSharingServiceOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCloudKitSharingServiceStandard = NSCloudKitSharingServiceOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCloudKitSharingServiceAllowPublic = NSCloudKitSharingServiceOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCloudKitSharingServiceAllowPrivate = NSCloudKitSharingServiceOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCloudKitSharingServiceAllowReadOnly = NSCloudKitSharingServiceOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSCloudKitSharingServiceAllowReadWrite = NSCloudKitSharingServiceOptions(32L)
     }
 
@@ -3357,16 +5023,27 @@ value class NSCloudKitSharingServiceOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSPrintPanelOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 @JvmInline
 value class NSPrintPanelOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPrintPanelShowsCopies = NSPrintPanelOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPrintPanelShowsPageRange = NSPrintPanelOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPrintPanelShowsPaperSize = NSPrintPanelOptions(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPrintPanelShowsOrientation = NSPrintPanelOptions(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPrintPanelShowsScaling = NSPrintPanelOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
         val NSPrintPanelShowsPrintSelection = NSPrintPanelOptions(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPrintPanelShowsPageSetupAccessory = NSPrintPanelOptions(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPrintPanelShowsPreview = NSPrintPanelOptions(131072L)
     }
 
@@ -3377,11 +5054,16 @@ value class NSPrintPanelOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSPDFPanelOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 @JvmInline
 value class NSPDFPanelOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPDFPanelShowsPaperSize = NSPDFPanelOptions(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPDFPanelShowsOrientation = NSPDFPanelOptions(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSPDFPanelRequestsParentDirectory = NSPDFPanelOptions(16777216L)
     }
 
@@ -3392,11 +5074,16 @@ value class NSPDFPanelOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSMediaLibrary}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 @JvmInline
 value class NSMediaLibrary(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSMediaLibraryAudio = NSMediaLibrary(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSMediaLibraryImage = NSMediaLibrary(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSMediaLibraryMovie = NSMediaLibrary(4L)
     }
 
@@ -3407,14 +5094,23 @@ value class NSMediaLibrary(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSWritingToolsResultOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSWritingToolsResultOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWritingToolsResultDefault = NSWritingToolsResultOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWritingToolsResultPlainText = NSWritingToolsResultOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWritingToolsResultRichText = NSWritingToolsResultOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWritingToolsResultList = NSWritingToolsResultOptions(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSWritingToolsResultTable = NSWritingToolsResultOptions(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
         val NSWritingToolsResultPresentationIntent = NSWritingToolsResultOptions(16L)
     }
 
@@ -3425,10 +5121,14 @@ value class NSWritingToolsResultOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTextInsertionIndicatorAutomaticModeOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSTextInsertionIndicatorAutomaticModeOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTextInsertionIndicatorAutomaticModeOptionsShowEffectsView = NSTextInsertionIndicatorAutomaticModeOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTextInsertionIndicatorAutomaticModeOptionsShowWhileTracking = NSTextInsertionIndicatorAutomaticModeOptions(2L)
     }
 
@@ -3439,18 +5139,73 @@ value class NSTextInsertionIndicatorAutomaticModeOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSUnderlineStyle}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSUnderlineStyle(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStyleNone = NSUnderlineStyle(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStyleSingle = NSUnderlineStyle(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStyleThick = NSUnderlineStyle(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStyleDouble = NSUnderlineStyle(9L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStylePatternSolid = NSUnderlineStyle(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStylePatternDot = NSUnderlineStyle(256L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStylePatternDash = NSUnderlineStyle(512L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStylePatternDashDot = NSUnderlineStyle(768L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStylePatternDashDotDot = NSUnderlineStyle(1024L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSUnderlineStyleByWord = NSUnderlineStyle(32768L)
     }
 
@@ -3461,10 +5216,19 @@ value class NSUnderlineStyle(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTextStorageEditActions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSTextStorageEditActions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSTextStorageEditedAttributes = NSTextStorageEditActions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSTextStorageEditedCharacters = NSTextStorageEditActions(2L)
     }
 
@@ -3475,12 +5239,27 @@ value class NSTextStorageEditActions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSGlyphProperty}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSGlyphProperty(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSGlyphPropertyNull = NSGlyphProperty(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSGlyphPropertyControlCharacter = NSGlyphProperty(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSGlyphPropertyElastic = NSGlyphProperty(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSGlyphPropertyNonBaseCharacter = NSGlyphProperty(8L)
     }
 
@@ -3491,14 +5270,35 @@ value class NSGlyphProperty(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSControlCharacterAction}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSControlCharacterAction(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSControlCharacterActionZeroAdvancement = NSControlCharacterAction(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSControlCharacterActionWhitespace = NSControlCharacterAction(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSControlCharacterActionHorizontalTab = NSControlCharacterAction(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSControlCharacterActionLineBreak = NSControlCharacterAction(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSControlCharacterActionParagraphBreak = NSControlCharacterAction(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
         val NSControlCharacterActionContainerBreak = NSControlCharacterAction(32L)
     }
 
@@ -3509,18 +5309,29 @@ value class NSControlCharacterAction(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTrackingAreaOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSTrackingAreaOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingMouseEnteredAndExited = NSTrackingAreaOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingMouseMoved = NSTrackingAreaOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingCursorUpdate = NSTrackingAreaOptions(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingActiveWhenFirstResponder = NSTrackingAreaOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingActiveInKeyWindow = NSTrackingAreaOptions(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingActiveInActiveApp = NSTrackingAreaOptions(64L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingActiveAlways = NSTrackingAreaOptions(128L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingAssumeInside = NSTrackingAreaOptions(256L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingInVisibleRect = NSTrackingAreaOptions(512L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTrackingEnabledDuringMouseDrag = NSTrackingAreaOptions(1024L)
     }
 
@@ -3531,12 +5342,18 @@ value class NSTrackingAreaOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTableViewGridLineStyle}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSTableViewGridLineStyle(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewGridNone = NSTableViewGridLineStyle(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewSolidVerticalGridLineMask = NSTableViewGridLineStyle(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewSolidHorizontalGridLineMask = NSTableViewGridLineStyle(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
         val NSTableViewDashedHorizontalGridLineMask = NSTableViewGridLineStyle(8L)
     }
 
@@ -3547,15 +5364,24 @@ value class NSTableViewGridLineStyle(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTableViewAnimationOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 @JvmInline
 value class NSTableViewAnimationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewAnimationEffectNone = NSTableViewAnimationOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewAnimationEffectFade = NSTableViewAnimationOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewAnimationEffectGap = NSTableViewAnimationOptions(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewAnimationSlideUp = NSTableViewAnimationOptions(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewAnimationSlideDown = NSTableViewAnimationOptions(32L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewAnimationSlideLeft = NSTableViewAnimationOptions(48L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableViewAnimationSlideRight = NSTableViewAnimationOptions(64L)
     }
 
@@ -3566,11 +5392,15 @@ value class NSTableViewAnimationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTableColumnResizingOptions}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSTableColumnResizingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableColumnNoResizing = NSTableColumnResizingOptions(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableColumnAutoresizingMask = NSTableColumnResizingOptions(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSTableColumnUserResizingMask = NSTableColumnResizingOptions(2L)
     }
 
@@ -3581,15 +5411,47 @@ value class NSTableColumnResizingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSStringDrawingOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSStringDrawingOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSStringDrawingUsesLineFragmentOrigin = NSStringDrawingOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSStringDrawingUsesFontLeading = NSStringDrawingOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSStringDrawingUsesDeviceMetrics = NSStringDrawingOptions(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSStringDrawingTruncatesLastVisibleLine = NSStringDrawingOptions(32L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
         val NSStringDrawingOptionsResolvesNaturalAlignmentWithBaseWritingDirection = NSStringDrawingOptions(512L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1)
         val NSStringDrawingDisableScreenFontSubstitution = NSStringDrawingOptions(4L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1)
         val NSStringDrawingOneShot = NSStringDrawingOptions(16L)
     }
 
@@ -3600,10 +5462,14 @@ value class NSStringDrawingOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSStatusItemBehavior}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 @JvmInline
 value class NSStatusItemBehavior(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSStatusItemBehaviorRemovalAllowed = NSStatusItemBehavior(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSStatusItemBehaviorTerminationOnRemoval = NSStatusItemBehavior(4L)
     }
 
@@ -3614,15 +5480,55 @@ value class NSStatusItemBehavior(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum CAAutoresizingMask}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 1, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+@PlatformAvailability(platform = "xros", unavailable = true)
 @JvmInline
 value class CAAutoresizingMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 1, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", unavailable = true)
         val kCALayerNotSizable = CAAutoresizingMask(0L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 1, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", unavailable = true)
         val kCALayerMinXMargin = CAAutoresizingMask(1L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 1, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", unavailable = true)
         val kCALayerWidthSizable = CAAutoresizingMask(2L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 1, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", unavailable = true)
         val kCALayerMaxXMargin = CAAutoresizingMask(4L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 1, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", unavailable = true)
         val kCALayerMinYMargin = CAAutoresizingMask(8L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 1, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", unavailable = true)
         val kCALayerHeightSizable = CAAutoresizingMask(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 1, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", unavailable = true)
         val kCALayerMaxYMargin = CAAutoresizingMask(32L)
     }
 
@@ -3633,12 +5539,32 @@ value class CAAutoresizingMask(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum CAEdgeAntialiasingMask}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 @JvmInline
 value class CAEdgeAntialiasingMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCALayerLeftEdge = CAEdgeAntialiasingMask(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCALayerRightEdge = CAEdgeAntialiasingMask(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCALayerBottomEdge = CAEdgeAntialiasingMask(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCALayerTopEdge = CAEdgeAntialiasingMask(8L)
     }
 
@@ -3649,12 +5575,32 @@ value class CAEdgeAntialiasingMask(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum CACornerMask}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 @JvmInline
 value class CACornerMask(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCALayerMinXMinYCorner = CACornerMask(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCALayerMaxXMinYCorner = CACornerMask(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCALayerMinXMaxYCorner = CACornerMask(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         val kCALayerMaxXMaxYCorner = CACornerMask(8L)
     }
 
@@ -3683,9 +5629,19 @@ value class NSTypesetterControlCharacterAction(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTextListOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSTextListOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextListPrependEnclosingMarker = NSTextListOptions(1L)
     }
 
@@ -3696,14 +5652,21 @@ value class NSTextListOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSDatePickerElementFlags}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 @JvmInline
 value class NSDatePickerElementFlags(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDatePickerElementFlagHourMinute = NSDatePickerElementFlags(12L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDatePickerElementFlagHourMinuteSecond = NSDatePickerElementFlags(14L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDatePickerElementFlagTimeZone = NSDatePickerElementFlags(16L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDatePickerElementFlagYearMonth = NSDatePickerElementFlags(192L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDatePickerElementFlagYearMonthDay = NSDatePickerElementFlags(224L)
+        @PlatformAvailability(platform = "ios", unavailable = true)
         val NSDatePickerElementFlagEra = NSDatePickerElementFlags(256L)
     }
 
@@ -3714,11 +5677,31 @@ value class NSDatePickerElementFlags(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTextSelectionNavigationModifier}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSTextSelectionNavigationModifier(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextSelectionNavigationModifierExtend = NSTextSelectionNavigationModifier(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextSelectionNavigationModifierVisual = NSTextSelectionNavigationModifier(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextSelectionNavigationModifierMultiple = NSTextSelectionNavigationModifier(4L)
     }
 
@@ -3729,10 +5712,25 @@ value class NSTextSelectionNavigationModifier(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTextContentManagerEnumerationOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSTextContentManagerEnumerationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextContentManagerEnumerationOptionsNone = NSTextContentManagerEnumerationOptions(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextContentManagerEnumerationOptionsReverse = NSTextContentManagerEnumerationOptions(1L)
     }
 
@@ -3743,13 +5741,43 @@ value class NSTextContentManagerEnumerationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTextLayoutFragmentEnumerationOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSTextLayoutFragmentEnumerationOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutFragmentEnumerationOptionsNone = NSTextLayoutFragmentEnumerationOptions(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutFragmentEnumerationOptionsReverse = NSTextLayoutFragmentEnumerationOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutFragmentEnumerationOptionsEstimatesSize = NSTextLayoutFragmentEnumerationOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutFragmentEnumerationOptionsEnsuresLayout = NSTextLayoutFragmentEnumerationOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutFragmentEnumerationOptionsEnsuresExtraLineFragment = NSTextLayoutFragmentEnumerationOptions(8L)
     }
 
@@ -3760,14 +5788,49 @@ value class NSTextLayoutFragmentEnumerationOptions(val rawValue: Long) {
 /**
  * NS_OPTIONS: {@snippet lang=c : enum NSTextLayoutManagerSegmentOptions}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 @JvmInline
 value class NSTextLayoutManagerSegmentOptions(val rawValue: Long) {
     companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutManagerSegmentOptionsNone = NSTextLayoutManagerSegmentOptions(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutManagerSegmentOptionsRangeNotRequired = NSTextLayoutManagerSegmentOptions(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutManagerSegmentOptionsMiddleFragmentsExcluded = NSTextLayoutManagerSegmentOptions(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutManagerSegmentOptionsHeadSegmentExtended = NSTextLayoutManagerSegmentOptions(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutManagerSegmentOptionsTailSegmentExtended = NSTextLayoutManagerSegmentOptions(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
         val NSTextLayoutManagerSegmentOptionsUpstreamAffinity = NSTextLayoutManagerSegmentOptions(16L)
     }
 

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,29 +11,36 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSObject
  * Protocols: NSCopying, NSCoding, NSUserInterfaceItemIdentification, NSAccessibilityElement, NSAccessibility
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 open class NSCell(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCell") }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun _bulletStringForString_bulletCharacter(string: MemorySegment, bulletChar: Short): MemorySegment {
             val sel = ObjCRuntime.sel("_bulletStringForString:bulletCharacter:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, string, bulletChar) as MemorySegment
         }
 
         /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun _bulletStringForString_bulletCharacterAsString(string: MemorySegment, bulletChar: Short): String = ObjCRuntime.toJavaString(_bulletStringForString_bulletCharacter(string, bulletChar))
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun _bulletStringForString_bulletCharacter(string: String, bulletChar: Short): MemorySegment = _bulletStringForString_bulletCharacter(ObjCRuntime.newNSString(Arena.global(), string), bulletChar)
 
         /** Convenience overload — [String] parameters and [String] return type. */
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun _bulletStringForString_bulletCharacterAsString(string: String, bulletChar: Short): String = ObjCRuntime.toJavaString(_bulletStringForString_bulletCharacter(ObjCRuntime.newNSString(Arena.global(), string), bulletChar))
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun prefersTrackingUntilMouseUp(): Boolean {
             val sel = ObjCRuntime.sel("prefersTrackingUntilMouseUp")
             return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel) as Boolean
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultMenu(): MemorySegment {
             val sel = ObjCRuntime.sel("defaultMenu")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
@@ -39,590 +48,720 @@ open class NSCell(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initTextCell(string: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initTextCell:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, string) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun initTextCell(string: String): MemorySegment = initTextCell(ObjCRuntime.newNSString(Arena.global(), string))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initImageCell(image: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initImageCell:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, image) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initWithCoder(coder: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCoder:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun sendActionOn(mask: NSEventMask): Long {
         val sel = ObjCRuntime.sel("sendActionOn:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, mask.rawValue) as Long
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun compare(otherCell: MemorySegment): NSComparisonResult {
         val sel = ObjCRuntime.sel("compare:")
         return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, otherCell) as Long)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun takeIntValueFrom(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("takeIntValueFrom:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun takeFloatValueFrom(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("takeFloatValueFrom:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun takeDoubleValueFrom(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("takeDoubleValueFrom:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun takeStringValueFrom(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("takeStringValueFrom:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun takeObjectValueFrom(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("takeObjectValueFrom:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun takeIntegerValueFrom(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("takeIntegerValueFrom:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun cellAttribute(parameter: NSCellAttribute): Long {
         val sel = ObjCRuntime.sel("cellAttribute:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, parameter.rawValue) as Long
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setCellAttribute_to(parameter: NSCellAttribute, value: Long): Unit {
         val sel = ObjCRuntime.sel("setCellAttribute:to:")
         ObjCRuntime.msgSend(null, ptr, sel, parameter.rawValue, value)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun imageRectForBounds(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("imageRectForBounds:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun titleRectForBounds(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("titleRectForBounds:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun drawingRectForBounds(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("drawingRectForBounds:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun cellSizeForBounds(rect: NSRect): NSSize {
         val sel = ObjCRuntime.sel("cellSizeForBounds:")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun highlightColorWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("highlightColorWithFrame:inView:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun calcDrawInfo(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("calcDrawInfo:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setUpFieldEditorAttributes(textObj: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("setUpFieldEditorAttributes:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, textObj) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun drawInteriorWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawInteriorWithFrame:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun drawWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("drawWithFrame:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun highlight_withFrame_inView(flag: Boolean, cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("highlight:withFrame:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, flag, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun getPeriodicDelay_interval(delay: MemorySegment, interval: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("getPeriodicDelay:interval:")
         ObjCRuntime.msgSend(null, ptr, sel, delay, interval)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun startTrackingAt_inView(startPoint: NSPoint, controlView: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("startTrackingAt:inView:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(startPoint.segment, NSPoint.layout), controlView) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun continueTracking_at_inView(lastPoint: NSPoint, currentPoint: NSPoint, controlView: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("continueTracking:at:inView:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(lastPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(currentPoint.segment, NSPoint.layout), controlView) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun stopTracking_at_inView_mouseIsUp(lastPoint: NSPoint, stopPoint: NSPoint, controlView: MemorySegment, flag: Boolean): Unit {
         val sel = ObjCRuntime.sel("stopTracking:at:inView:mouseIsUp:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(lastPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(stopPoint.segment, NSPoint.layout), controlView, flag)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun trackMouse_inRect_ofView_untilMouseUp(event: MemorySegment, cellFrame: NSRect, controlView: MemorySegment, flag: Boolean): Boolean {
         val sel = ObjCRuntime.sel("trackMouse:inRect:ofView:untilMouseUp:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, event, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView, flag) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun editWithFrame_inView_editor_delegate_event(rect: NSRect, controlView: MemorySegment, textObj: MemorySegment, delegate: MemorySegment, event: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("editWithFrame:inView:editor:delegate:event:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), controlView, textObj, delegate, event)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun selectWithFrame_inView_editor_delegate_start_length(rect: NSRect, controlView: MemorySegment, textObj: MemorySegment, delegate: MemorySegment, selStart: Long, selLength: Long): Unit {
         val sel = ObjCRuntime.sel("selectWithFrame:inView:editor:delegate:start:length:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), controlView, textObj, delegate, selStart, selLength)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun endEditing(textObj: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("endEditing:")
         ObjCRuntime.msgSend(null, ptr, sel, textObj)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun resetCursorRect_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("resetCursorRect:inView:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun menuForEvent_inRect_ofView(event: MemorySegment, cellFrame: NSRect, view: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("menuForEvent:inRect:ofView:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, event, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), view) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun fieldEditorForView(controlView: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("fieldEditorForView:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, controlView) as MemorySegment
     }
 
     /** @return NSArray<NSDraggingImageComponent *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun draggingImageComponentsWithFrame_inView(frame: NSRect, view: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("draggingImageComponentsWithFrame:inView:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(frame.segment, NSRect.layout), view) as MemorySegment
     }
 
     // @property controlView
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun controlView(): MemorySegment {
         val sel = ObjCRuntime.sel("controlView")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setControlView(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setControlView:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property type
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun type(): NSCellType {
         val sel = ObjCRuntime.sel("type")
         return NSCellType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setType(value: NSCellType) {
         val sel = ObjCRuntime.sel("setType:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property state
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun state(): Long {
         val sel = ObjCRuntime.sel("state")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setState(value: Long) {
         val sel = ObjCRuntime.sel("setState:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property target
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun target(): MemorySegment {
         val sel = ObjCRuntime.sel("target")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTarget(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setTarget:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property action
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun action(): MemorySegment {
         val sel = ObjCRuntime.sel("action")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAction(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setAction:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property tag
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun tag(): Long {
         val sel = ObjCRuntime.sel("tag")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTag(value: Long) {
         val sel = ObjCRuntime.sel("setTag:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property title
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun title(): MemorySegment {
         val sel = ObjCRuntime.sel("title")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTitle(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setTitle:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun titleAsString(): String = ObjCRuntime.toJavaString(title())
 
     /** Convenience overload — accepts Kotlin [String] for the NSString property. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTitle(value: String) = setTitle(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property opaque
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isOpaque(): Boolean {
         val sel = ObjCRuntime.sel("isOpaque")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property enabled
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isEnabled(): Boolean {
         val sel = ObjCRuntime.sel("isEnabled")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setEnabled(value: Boolean) {
         val sel = ObjCRuntime.sel("setEnabled:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property continuous
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isContinuous(): Boolean {
         val sel = ObjCRuntime.sel("isContinuous")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContinuous(value: Boolean) {
         val sel = ObjCRuntime.sel("setContinuous:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property editable
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isEditable(): Boolean {
         val sel = ObjCRuntime.sel("isEditable")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setEditable(value: Boolean) {
         val sel = ObjCRuntime.sel("setEditable:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property selectable
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isSelectable(): Boolean {
         val sel = ObjCRuntime.sel("isSelectable")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setSelectable(value: Boolean) {
         val sel = ObjCRuntime.sel("setSelectable:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property bordered
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isBordered(): Boolean {
         val sel = ObjCRuntime.sel("isBordered")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setBordered(value: Boolean) {
         val sel = ObjCRuntime.sel("setBordered:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property bezeled
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isBezeled(): Boolean {
         val sel = ObjCRuntime.sel("isBezeled")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setBezeled(value: Boolean) {
         val sel = ObjCRuntime.sel("setBezeled:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property scrollable
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isScrollable(): Boolean {
         val sel = ObjCRuntime.sel("isScrollable")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setScrollable(value: Boolean) {
         val sel = ObjCRuntime.sel("setScrollable:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property highlighted
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isHighlighted(): Boolean {
         val sel = ObjCRuntime.sel("isHighlighted")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setHighlighted(value: Boolean) {
         val sel = ObjCRuntime.sel("setHighlighted:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property alignment
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun alignment(): NSTextAlignment {
         val sel = ObjCRuntime.sel("alignment")
         return NSTextAlignment(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAlignment(value: NSTextAlignment) {
         val sel = ObjCRuntime.sel("setAlignment:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property wraps
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun wraps(): Boolean {
         val sel = ObjCRuntime.sel("wraps")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setWraps(value: Boolean) {
         val sel = ObjCRuntime.sel("setWraps:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property font
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun font(): MemorySegment {
         val sel = ObjCRuntime.sel("font")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFont(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setFont:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property keyEquivalent
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun keyEquivalent(): MemorySegment {
         val sel = ObjCRuntime.sel("keyEquivalent")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun keyEquivalentAsString(): String = ObjCRuntime.toJavaString(keyEquivalent())
 
     // @property formatter
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun formatter(): MemorySegment {
         val sel = ObjCRuntime.sel("formatter")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFormatter(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setFormatter:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property objectValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun objectValue(): MemorySegment {
         val sel = ObjCRuntime.sel("objectValue")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setObjectValue(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setObjectValue:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property hasValidObjectValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun hasValidObjectValue(): Boolean {
         val sel = ObjCRuntime.sel("hasValidObjectValue")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property stringValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun stringValue(): MemorySegment {
         val sel = ObjCRuntime.sel("stringValue")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setStringValue(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setStringValue:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun stringValueAsString(): String = ObjCRuntime.toJavaString(stringValue())
 
     /** Convenience overload — accepts Kotlin [String] for the NSString property. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setStringValue(value: String) = setStringValue(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property intValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun intValue(): Int {
         val sel = ObjCRuntime.sel("intValue")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_INT, ptr, sel) as Int
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setIntValue(value: Int) {
         val sel = ObjCRuntime.sel("setIntValue:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property floatValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun floatValue(): Float {
         val sel = ObjCRuntime.sel("floatValue")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_FLOAT, ptr, sel) as Float
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFloatValue(value: Float) {
         val sel = ObjCRuntime.sel("setFloatValue:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property doubleValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun doubleValue(): Double {
         val sel = ObjCRuntime.sel("doubleValue")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setDoubleValue(value: Double) {
         val sel = ObjCRuntime.sel("setDoubleValue:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property integerValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun integerValue(): Long {
         val sel = ObjCRuntime.sel("integerValue")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun setIntegerValue(value: Long) {
         val sel = ObjCRuntime.sel("setIntegerValue:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property image
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun image(): MemorySegment {
         val sel = ObjCRuntime.sel("image")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setImage(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setImage:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property controlSize
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun controlSize(): NSControlSize {
         val sel = ObjCRuntime.sel("controlSize")
         return NSControlSize(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setControlSize(value: NSControlSize) {
         val sel = ObjCRuntime.sel("setControlSize:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property representedObject
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun representedObject(): MemorySegment {
         val sel = ObjCRuntime.sel("representedObject")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setRepresentedObject(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setRepresentedObject:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property cellSize
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun cellSize(): NSSize {
         val sel = ObjCRuntime.sel("cellSize")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
 
     // @property mouseDownFlags
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun mouseDownFlags(): Long {
         val sel = ObjCRuntime.sel("mouseDownFlags")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
 
     // @property menu
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun menu(): MemorySegment {
         val sel = ObjCRuntime.sel("menu")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMenu(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setMenu:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property sendsActionOnEndEditing
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun sendsActionOnEndEditing(): Boolean {
         val sel = ObjCRuntime.sel("sendsActionOnEndEditing")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setSendsActionOnEndEditing(value: Boolean) {
         val sel = ObjCRuntime.sel("setSendsActionOnEndEditing:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property baseWritingDirection
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun baseWritingDirection(): NSWritingDirection {
         val sel = ObjCRuntime.sel("baseWritingDirection")
         return NSWritingDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setBaseWritingDirection(value: NSWritingDirection) {
         val sel = ObjCRuntime.sel("setBaseWritingDirection:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property lineBreakMode
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun lineBreakMode(): NSLineBreakMode {
         val sel = ObjCRuntime.sel("lineBreakMode")
         return NSLineBreakMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setLineBreakMode(value: NSLineBreakMode) {
         val sel = ObjCRuntime.sel("setLineBreakMode:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowsUndo
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun allowsUndo(): Boolean {
         val sel = ObjCRuntime.sel("allowsUndo")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAllowsUndo(value: Boolean) {
         val sel = ObjCRuntime.sel("setAllowsUndo:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property truncatesLastVisibleLine
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun truncatesLastVisibleLine(): Boolean {
         val sel = ObjCRuntime.sel("truncatesLastVisibleLine")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun setTruncatesLastVisibleLine(value: Boolean) {
         val sel = ObjCRuntime.sel("setTruncatesLastVisibleLine:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property userInterfaceLayoutDirection
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun userInterfaceLayoutDirection(): NSUserInterfaceLayoutDirection {
         val sel = ObjCRuntime.sel("userInterfaceLayoutDirection")
         return NSUserInterfaceLayoutDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun setUserInterfaceLayoutDirection(value: NSUserInterfaceLayoutDirection) {
         val sel = ObjCRuntime.sel("setUserInterfaceLayoutDirection:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property usesSingleLineMode
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun usesSingleLineMode(): Boolean {
         val sel = ObjCRuntime.sel("usesSingleLineMode")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun setUsesSingleLineMode(value: Boolean) {
         val sel = ObjCRuntime.sel("setUsesSingleLineMode:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -2386,62 +2525,76 @@ fun NSCell.isAccessibilitySelectorAllowed(selector: MemorySegment): Boolean {
 
 // ── Category: NSKeyboardUI on NSCell ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.performClick(sender: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("performClick:")
     ObjCRuntime.msgSend(null, this.ptr, sel, sender)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun NSCell.drawFocusRingMaskWithFrame_inView(cellFrame: NSRect, controlView: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawFocusRingMaskWithFrame:inView:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun NSCell.focusRingMaskBoundsForFrame_inView(cellFrame: NSRect, controlView: MemorySegment): NSRect {
     val sel = ObjCRuntime.sel("focusRingMaskBoundsForFrame:inView:")
     return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView))
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.refusesFirstResponder(): Boolean {
     val sel = ObjCRuntime.sel("refusesFirstResponder")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.setRefusesFirstResponder(refusesFirstResponder: Boolean): Unit {
     val sel = ObjCRuntime.sel("setRefusesFirstResponder:")
     ObjCRuntime.msgSend(null, this.ptr, sel, refusesFirstResponder)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.acceptsFirstResponder(): Boolean {
     val sel = ObjCRuntime.sel("acceptsFirstResponder")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.showsFirstResponder(): Boolean {
     val sel = ObjCRuntime.sel("showsFirstResponder")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.setShowsFirstResponder(showsFirstResponder: Boolean): Unit {
     val sel = ObjCRuntime.sel("setShowsFirstResponder:")
     ObjCRuntime.msgSend(null, this.ptr, sel, showsFirstResponder)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.focusRingType(): NSFocusRingType {
     val sel = ObjCRuntime.sel("focusRingType")
     return NSFocusRingType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.setFocusRingType(focusRingType: NSFocusRingType): Unit {
     val sel = ObjCRuntime.sel("setFocusRingType:")
     ObjCRuntime.msgSend(null, this.ptr, sel, focusRingType.rawValue)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.wantsNotificationForMarkedText(): Boolean {
     val sel = ObjCRuntime.sel("wantsNotificationForMarkedText")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
 // Class method: +[NSCell defaultFocusRingType]
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell_defaultFocusRingType(): NSFocusRingType {
     val sel = ObjCRuntime.sel("defaultFocusRingType")
     val cls = ObjCRuntime.getClass("NSCell")
@@ -2450,31 +2603,37 @@ fun NSCell_defaultFocusRingType(): NSFocusRingType {
 
 // ── Category: NSCellAttributedStringMethods on NSCell ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.attributedStringValue(): MemorySegment {
     val sel = ObjCRuntime.sel("attributedStringValue")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.setAttributedStringValue(attributedStringValue: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setAttributedStringValue:")
     ObjCRuntime.msgSend(null, this.ptr, sel, attributedStringValue)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.allowsEditingTextAttributes(): Boolean {
     val sel = ObjCRuntime.sel("allowsEditingTextAttributes")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.setAllowsEditingTextAttributes(allowsEditingTextAttributes: Boolean): Unit {
     val sel = ObjCRuntime.sel("setAllowsEditingTextAttributes:")
     ObjCRuntime.msgSend(null, this.ptr, sel, allowsEditingTextAttributes)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.importsGraphics(): Boolean {
     val sel = ObjCRuntime.sel("importsGraphics")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.setImportsGraphics(importsGraphics: Boolean): Unit {
     val sel = ObjCRuntime.sel("setImportsGraphics:")
     ObjCRuntime.msgSend(null, this.ptr, sel, importsGraphics)
@@ -2482,21 +2641,25 @@ fun NSCell.setImportsGraphics(importsGraphics: Boolean): Unit {
 
 // ── Category: NSCellMixedState on NSCell ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.setNextState(): Unit {
     val sel = ObjCRuntime.sel("setNextState")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.allowsMixedState(): Boolean {
     val sel = ObjCRuntime.sel("allowsMixedState")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.setAllowsMixedState(allowsMixedState: Boolean): Unit {
     val sel = ObjCRuntime.sel("setAllowsMixedState:")
     ObjCRuntime.msgSend(null, this.ptr, sel, allowsMixedState)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSCell.nextState(): Long {
     val sel = ObjCRuntime.sel("nextState")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
@@ -2504,6 +2667,8 @@ fun NSCell.nextState(): Long {
 
 // ── Category: NSCellHitTest on NSCell ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSCell.hitTestForEvent_inRect_ofView(event: MemorySegment, cellFrame: NSRect, controlView: MemorySegment): NSCellHitResult {
     val sel = ObjCRuntime.sel("hitTestForEvent:inRect:ofView:")
     return NSCellHitResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, event, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), controlView) as Long)
@@ -2511,11 +2676,15 @@ fun NSCell.hitTestForEvent_inRect_ofView(event: MemorySegment, cellFrame: NSRect
 
 // ── Category: NSCellExpansion on NSCell ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSCell.expansionFrameWithFrame_inView(cellFrame: NSRect, view: MemorySegment): NSRect {
     val sel = ObjCRuntime.sel("expansionFrameWithFrame:inView:")
     return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), view))
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSCell.drawWithExpansionFrame_inView(cellFrame: NSRect, view: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawWithExpansionFrame:inView:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(cellFrame.segment, NSRect.layout), view)
@@ -2523,16 +2692,22 @@ fun NSCell.drawWithExpansionFrame_inView(cellFrame: NSRect, view: MemorySegment)
 
 // ── Category: NSCellBackgroundStyle on NSCell ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSCell.backgroundStyle(): NSBackgroundStyle {
     val sel = ObjCRuntime.sel("backgroundStyle")
     return NSBackgroundStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSCell.setBackgroundStyle(backgroundStyle: NSBackgroundStyle): Unit {
     val sel = ObjCRuntime.sel("setBackgroundStyle:")
     ObjCRuntime.msgSend(null, this.ptr, sel, backgroundStyle.rawValue)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 fun NSCell.interiorBackgroundStyle(): NSBackgroundStyle {
     val sel = ObjCRuntime.sel("interiorBackgroundStyle")
     return NSBackgroundStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
@@ -2540,51 +2715,71 @@ fun NSCell.interiorBackgroundStyle(): NSBackgroundStyle {
 
 // ── Category: NSDeprecated on NSCell ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSCell.entryType(): Long {
     val sel = ObjCRuntime.sel("entryType")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSCell.setEntryType(type: Long): Unit {
     val sel = ObjCRuntime.sel("setEntryType:")
     ObjCRuntime.msgSend(null, this.ptr, sel, type)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSCell.isEntryAcceptable(string: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("isEntryAcceptable:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, string) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSCell.setFloatingPointFormat_left_right(autoRange: Boolean, leftDigits: Long, rightDigits: Long): Unit {
     val sel = ObjCRuntime.sel("setFloatingPointFormat:left:right:")
     ObjCRuntime.msgSend(null, this.ptr, sel, autoRange, leftDigits, rightDigits)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1)
 fun NSCell.setMnemonicLocation(location: Long): Unit {
     val sel = ObjCRuntime.sel("setMnemonicLocation:")
     ObjCRuntime.msgSend(null, this.ptr, sel, location)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1)
 fun NSCell.mnemonicLocation(): Long {
     val sel = ObjCRuntime.sel("mnemonicLocation")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1)
 fun NSCell.mnemonic(): MemorySegment {
     val sel = ObjCRuntime.sel("mnemonic")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1)
 fun NSCell.setTitleWithMnemonic(stringWithAmpersand: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setTitleWithMnemonic:")
     ObjCRuntime.msgSend(null, this.ptr, sel, stringWithAmpersand)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "The controlTint property is not respected on 10.14 and later. For custom cells, use +[NSColor controlAccentColor] to respect the user's preferred accent color when drawing.")
 fun NSCell.controlTint(): NSControlTint {
     val sel = ObjCRuntime.sel("controlTint")
     return NSControlTint(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "The controlTint property is not respected on 10.14 and later. For custom cells, use +[NSColor controlAccentColor] to respect the user's preferred accent color when drawing.")
 fun NSCell.setControlTint(controlTint: NSControlTint): Unit {
     val sel = ObjCRuntime.sel("setControlTint:")
     ObjCRuntime.msgSend(null, this.ptr, sel, controlTint.rawValue)

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -15,6 +17,10 @@ open class NSValue(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
     open fun getValue_size(value: MemorySegment, size: Long): Unit {
         val sel = ObjCRuntime.sel("getValue:size:")
         ObjCRuntime.msgSend(null, ptr, sel, value, size)
@@ -108,6 +114,10 @@ fun NSValue_valueWithPointer(pointer: MemorySegment): MemorySegment {
 
 // ── Category: NSDeprecated on NSValue ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSValue.getValue(value: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("getValue:")
     ObjCRuntime.msgSend(null, this.ptr, sel, value)
@@ -144,6 +154,10 @@ fun NSValue.rectValue(): NSRect {
     return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, this.ptr, sel))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSValue.edgeInsetsValue(): NSEdgeInsets {
     val sel = ObjCRuntime.sel("edgeInsetsValue")
     return NSEdgeInsets(ObjCRuntime.msgSendStruct(NSEdgeInsets.layout, this.ptr, sel))
@@ -171,6 +185,10 @@ fun NSValue_valueWithRect(rect: NSRect): MemorySegment {
 }
 
 // Class method: +[NSValue valueWithEdgeInsets:]
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSValue_valueWithEdgeInsets(insets: NSEdgeInsets): MemorySegment {
     val sel = ObjCRuntime.sel("valueWithEdgeInsets:")
     val cls = ObjCRuntime.getClass("NSValue")
@@ -179,12 +197,20 @@ fun NSValue_valueWithEdgeInsets(insets: NSEdgeInsets): MemorySegment {
 
 // ── Category: CATransform3DAdditions on NSValue ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSValue.CATransform3DValue(): CATransform3D {
     val sel = ObjCRuntime.sel("CATransform3DValue")
     return CATransform3D(ObjCRuntime.msgSendStruct(CATransform3D.layout, this.ptr, sel))
 }
 
 // Class method: +[NSValue valueWithCATransform3D:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSValue_valueWithCATransform3D(t: CATransform3D): MemorySegment {
     val sel = ObjCRuntime.sel("valueWithCATransform3D:")
     val cls = ObjCRuntime.getClass("NSValue")

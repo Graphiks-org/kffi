@@ -1,4 +1,7 @@
-@file:OptIn(org.graphiks.kffi.CallbackRuntimeApi::class)
+@file:OptIn(
+    org.graphiks.kffi.CallbackRuntimeApi::class,
+    org.graphiks.kffi.objc.PlatformAvailability::class,
+)
 
 package org.graphiks.kffi.objc.managed
 

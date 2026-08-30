@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -8,7 +10,9 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Kotlin/JVM interface for Objective-C protocol: NSAccessibilityImage
  * Inherits protocols: NSAccessibilityElement
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 interface NSAccessibilityImage {
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun accessibilityLabel(): MemorySegment
 
 }

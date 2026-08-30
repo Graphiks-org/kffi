@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -13,28 +15,52 @@ open class NSSortDescriptor(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSSortDescriptor") }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun sortDescriptorWithKey_ascending(key: MemorySegment, ascending: Boolean): MemorySegment {
             val sel = ObjCRuntime.sel("sortDescriptorWithKey:ascending:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, key, ascending) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun sortDescriptorWithKey_ascending(key: String, ascending: Boolean): MemorySegment = sortDescriptorWithKey_ascending(ObjCRuntime.newNSString(Arena.global(), key), ascending)
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun sortDescriptorWithKey_ascending_selector(key: MemorySegment, ascending: Boolean, selector: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("sortDescriptorWithKey:ascending:selector:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, key, ascending, selector) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun sortDescriptorWithKey_ascending_selector(key: String, ascending: Boolean, selector: MemorySegment): MemorySegment = sortDescriptorWithKey_ascending_selector(ObjCRuntime.newNSString(Arena.global(), key), ascending, selector)
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun sortDescriptorWithKey_ascending_comparator(key: MemorySegment, ascending: Boolean, cmptr: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("sortDescriptorWithKey:ascending:comparator:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, key, ascending, cmptr) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
         fun sortDescriptorWithKey_ascending_comparator(key: String, ascending: Boolean, cmptr: MemorySegment): MemorySegment = sortDescriptorWithKey_ascending_comparator(ObjCRuntime.newNSString(Arena.global(), key), ascending, cmptr)
 
     }
@@ -60,17 +86,29 @@ open class NSSortDescriptor(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun allowEvaluation(): Unit {
         val sel = ObjCRuntime.sel("allowEvaluation")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun initWithKey_ascending_comparator(key: MemorySegment, ascending: Boolean, cmptr: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithKey:ascending:comparator:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, key, ascending, cmptr) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     fun initWithKey_ascending_comparator(key: String, ascending: Boolean, cmptr: MemorySegment): MemorySegment = initWithKey_ascending_comparator(ObjCRuntime.newNSString(Arena.global(), key), ascending, cmptr)
 
     open fun compareObject_toObject(object1: MemorySegment, object2: MemorySegment): NSComparisonResult {
@@ -100,6 +138,10 @@ open class NSSortDescriptor(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property comparator
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun comparator(): MemorySegment {
         val sel = ObjCRuntime.sel("comparator")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
