@@ -10,8 +10,8 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * {@snippet lang=c : CFURLCreateFileReferenceURL typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFURLRef = (Declared(__CFURL))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLCreateFileReferenceURL_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateFileReferenceURL_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateFileReferenceURL").orElseThrow()
-private val CFURLCreateFileReferenceURL_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateFileReferenceURL_ADDR, CFURLCreateFileReferenceURL_DESC)
+private val CFURLCreateFileReferenceURL_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCreateFileReferenceURL").orElseThrow() }
+private val CFURLCreateFileReferenceURL_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCreateFileReferenceURL_ADDR, CFURLCreateFileReferenceURL_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -33,8 +33,8 @@ fun CFURLCreateFileReferenceURL(arg0: MemorySegment, arg1: MemorySegment, arg2: 
  * {@snippet lang=c : CFURLCreateFilePathURL typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFURLRef = (Declared(__CFURL))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLCreateFilePathURL_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateFilePathURL_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateFilePathURL").orElseThrow()
-private val CFURLCreateFilePathURL_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateFilePathURL_ADDR, CFURLCreateFilePathURL_DESC)
+private val CFURLCreateFilePathURL_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCreateFilePathURL").orElseThrow() }
+private val CFURLCreateFilePathURL_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCreateFilePathURL_ADDR, CFURLCreateFilePathURL_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -56,8 +56,8 @@ fun CFURLCreateFilePathURL(arg0: MemorySegment, arg1: MemorySegment, arg2: Memor
  * {@snippet lang=c : CFURLCreateFromFSRef typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(Void)*)
  */
 private val CFURLCreateFromFSRef_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateFromFSRef_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateFromFSRef").orElseThrow()
-private val CFURLCreateFromFSRef_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateFromFSRef_ADDR, CFURLCreateFromFSRef_DESC)
+private val CFURLCreateFromFSRef_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCreateFromFSRef").orElseThrow() }
+private val CFURLCreateFromFSRef_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCreateFromFSRef_ADDR, CFURLCreateFromFSRef_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "Not supported")
@@ -79,8 +79,8 @@ fun CFURLCreateFromFSRef(arg0: MemorySegment, arg1: MemorySegment): MemorySegmen
  * {@snippet lang=c : CFURLGetFSRef typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,(Void)*)
  */
 private val CFURLGetFSRef_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLGetFSRef_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLGetFSRef").orElseThrow()
-private val CFURLGetFSRef_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLGetFSRef_ADDR, CFURLGetFSRef_DESC)
+private val CFURLGetFSRef_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLGetFSRef").orElseThrow() }
+private val CFURLGetFSRef_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLGetFSRef_ADDR, CFURLGetFSRef_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "Not supported")
@@ -102,8 +102,8 @@ fun CFURLGetFSRef(arg0: MemorySegment, arg1: MemorySegment): Byte {
  * {@snippet lang=c : CFURLCopyResourcePropertyForKey typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,typedef CFStringRef = (Declared(__CFString))*,(Void)*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLCopyResourcePropertyForKey_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCopyResourcePropertyForKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCopyResourcePropertyForKey").orElseThrow()
-private val CFURLCopyResourcePropertyForKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCopyResourcePropertyForKey_ADDR, CFURLCopyResourcePropertyForKey_DESC)
+private val CFURLCopyResourcePropertyForKey_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCopyResourcePropertyForKey").orElseThrow() }
+private val CFURLCopyResourcePropertyForKey_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCopyResourcePropertyForKey_ADDR, CFURLCopyResourcePropertyForKey_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -125,8 +125,8 @@ fun CFURLCopyResourcePropertyForKey(arg0: MemorySegment, arg1: MemorySegment, ar
  * {@snippet lang=c : CFURLCopyResourcePropertiesForKeys typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CFURLRef = (Declared(__CFURL))*,typedef CFArrayRef = (Declared(__CFArray))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLCopyResourcePropertiesForKeys_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCopyResourcePropertiesForKeys_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCopyResourcePropertiesForKeys").orElseThrow()
-private val CFURLCopyResourcePropertiesForKeys_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCopyResourcePropertiesForKeys_ADDR, CFURLCopyResourcePropertiesForKeys_DESC)
+private val CFURLCopyResourcePropertiesForKeys_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCopyResourcePropertiesForKeys").orElseThrow() }
+private val CFURLCopyResourcePropertiesForKeys_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCopyResourcePropertiesForKeys_ADDR, CFURLCopyResourcePropertiesForKeys_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -148,8 +148,8 @@ fun CFURLCopyResourcePropertiesForKeys(arg0: MemorySegment, arg1: MemorySegment,
  * {@snippet lang=c : CFURLSetResourcePropertyForKey typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFTypeRef = (Void)*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLSetResourcePropertyForKey_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLSetResourcePropertyForKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLSetResourcePropertyForKey").orElseThrow()
-private val CFURLSetResourcePropertyForKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLSetResourcePropertyForKey_ADDR, CFURLSetResourcePropertyForKey_DESC)
+private val CFURLSetResourcePropertyForKey_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLSetResourcePropertyForKey").orElseThrow() }
+private val CFURLSetResourcePropertyForKey_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLSetResourcePropertyForKey_ADDR, CFURLSetResourcePropertyForKey_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -171,8 +171,8 @@ fun CFURLSetResourcePropertyForKey(arg0: MemorySegment, arg1: MemorySegment, arg
  * {@snippet lang=c : CFURLSetResourcePropertiesForKeys typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLSetResourcePropertiesForKeys_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLSetResourcePropertiesForKeys_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLSetResourcePropertiesForKeys").orElseThrow()
-private val CFURLSetResourcePropertiesForKeys_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLSetResourcePropertiesForKeys_ADDR, CFURLSetResourcePropertiesForKeys_DESC)
+private val CFURLSetResourcePropertiesForKeys_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLSetResourcePropertiesForKeys").orElseThrow() }
+private val CFURLSetResourcePropertiesForKeys_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLSetResourcePropertiesForKeys_ADDR, CFURLSetResourcePropertiesForKeys_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -209,8 +209,8 @@ var kCFURLKeysOfUnsetValuesKey: MemorySegment
  * {@snippet lang=c : CFURLClearResourcePropertyCacheForKey Void(typedef CFURLRef = (Declared(__CFURL))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFURLClearResourcePropertyCacheForKey_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLClearResourcePropertyCacheForKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLClearResourcePropertyCacheForKey").orElseThrow()
-private val CFURLClearResourcePropertyCacheForKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLClearResourcePropertyCacheForKey_ADDR, CFURLClearResourcePropertyCacheForKey_DESC)
+private val CFURLClearResourcePropertyCacheForKey_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLClearResourcePropertyCacheForKey").orElseThrow() }
+private val CFURLClearResourcePropertyCacheForKey_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLClearResourcePropertyCacheForKey_ADDR, CFURLClearResourcePropertyCacheForKey_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -232,8 +232,8 @@ fun CFURLClearResourcePropertyCacheForKey(arg0: MemorySegment, arg1: MemorySegme
  * {@snippet lang=c : CFURLClearResourcePropertyCache Void(typedef CFURLRef = (Declared(__CFURL))*)
  */
 private val CFURLClearResourcePropertyCache_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFURLClearResourcePropertyCache_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLClearResourcePropertyCache").orElseThrow()
-private val CFURLClearResourcePropertyCache_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLClearResourcePropertyCache_ADDR, CFURLClearResourcePropertyCache_DESC)
+private val CFURLClearResourcePropertyCache_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLClearResourcePropertyCache").orElseThrow() }
+private val CFURLClearResourcePropertyCache_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLClearResourcePropertyCache_ADDR, CFURLClearResourcePropertyCache_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -255,8 +255,8 @@ fun CFURLClearResourcePropertyCache(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFURLSetTemporaryResourcePropertyForKey Void(typedef CFURLRef = (Declared(__CFURL))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFTypeRef = (Void)*)
  */
 private val CFURLSetTemporaryResourcePropertyForKey_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLSetTemporaryResourcePropertyForKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLSetTemporaryResourcePropertyForKey").orElseThrow()
-private val CFURLSetTemporaryResourcePropertyForKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLSetTemporaryResourcePropertyForKey_ADDR, CFURLSetTemporaryResourcePropertyForKey_DESC)
+private val CFURLSetTemporaryResourcePropertyForKey_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLSetTemporaryResourcePropertyForKey").orElseThrow() }
+private val CFURLSetTemporaryResourcePropertyForKey_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLSetTemporaryResourcePropertyForKey_ADDR, CFURLSetTemporaryResourcePropertyForKey_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -278,8 +278,8 @@ fun CFURLSetTemporaryResourcePropertyForKey(arg0: MemorySegment, arg1: MemorySeg
  * {@snippet lang=c : CFURLResourceIsReachable typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLResourceIsReachable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLResourceIsReachable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLResourceIsReachable").orElseThrow()
-private val CFURLResourceIsReachable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLResourceIsReachable_ADDR, CFURLResourceIsReachable_DESC)
+private val CFURLResourceIsReachable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLResourceIsReachable").orElseThrow() }
+private val CFURLResourceIsReachable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLResourceIsReachable_ADDR, CFURLResourceIsReachable_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2281,8 +2281,8 @@ var kCFURLUbiquitousItemIsSyncPausedKey: MemorySegment
  * {@snippet lang=c : CFURLCreateBookmarkData typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFURLRef = (Declared(__CFURL))*,typedef CFURLBookmarkCreationOptions = Declared(CFURLBookmarkCreationOptions),typedef CFArrayRef = (Declared(__CFArray))*,typedef CFURLRef = (Declared(__CFURL))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLCreateBookmarkData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateBookmarkData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateBookmarkData").orElseThrow()
-private val CFURLCreateBookmarkData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateBookmarkData_ADDR, CFURLCreateBookmarkData_DESC)
+private val CFURLCreateBookmarkData_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCreateBookmarkData").orElseThrow() }
+private val CFURLCreateBookmarkData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCreateBookmarkData_ADDR, CFURLCreateBookmarkData_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2304,8 +2304,8 @@ fun CFURLCreateBookmarkData(arg0: MemorySegment, arg1: MemorySegment, arg2: CFUR
  * {@snippet lang=c : CFURLCreateByResolvingBookmarkData typedef CFURLRef = (Declared(__CFURL))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDataRef = (Declared(__CFData))*,typedef CFURLBookmarkResolutionOptions = Declared(CFURLBookmarkResolutionOptions),typedef CFURLRef = (Declared(__CFURL))*,typedef CFArrayRef = (Declared(__CFArray))*,(typedef Boolean = UNSIGNED = Char)*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLCreateByResolvingBookmarkData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateByResolvingBookmarkData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateByResolvingBookmarkData").orElseThrow()
-private val CFURLCreateByResolvingBookmarkData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateByResolvingBookmarkData_ADDR, CFURLCreateByResolvingBookmarkData_DESC)
+private val CFURLCreateByResolvingBookmarkData_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCreateByResolvingBookmarkData").orElseThrow() }
+private val CFURLCreateByResolvingBookmarkData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCreateByResolvingBookmarkData_ADDR, CFURLCreateByResolvingBookmarkData_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2327,8 +2327,8 @@ fun CFURLCreateByResolvingBookmarkData(arg0: MemorySegment, arg1: MemorySegment,
  * {@snippet lang=c : CFURLCreateResourcePropertiesForKeysFromBookmarkData typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFArrayRef = (Declared(__CFArray))*,typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CFURLCreateResourcePropertiesForKeysFromBookmarkData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateResourcePropertiesForKeysFromBookmarkData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateResourcePropertiesForKeysFromBookmarkData").orElseThrow()
-private val CFURLCreateResourcePropertiesForKeysFromBookmarkData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateResourcePropertiesForKeysFromBookmarkData_ADDR, CFURLCreateResourcePropertiesForKeysFromBookmarkData_DESC)
+private val CFURLCreateResourcePropertiesForKeysFromBookmarkData_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCreateResourcePropertiesForKeysFromBookmarkData").orElseThrow() }
+private val CFURLCreateResourcePropertiesForKeysFromBookmarkData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCreateResourcePropertiesForKeysFromBookmarkData_ADDR, CFURLCreateResourcePropertiesForKeysFromBookmarkData_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2350,8 +2350,8 @@ fun CFURLCreateResourcePropertiesForKeysFromBookmarkData(arg0: MemorySegment, ar
  * {@snippet lang=c : CFURLCreateResourcePropertyForKeyFromBookmarkData typedef CFTypeRef = (Void)*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CFURLCreateResourcePropertyForKeyFromBookmarkData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateResourcePropertyForKeyFromBookmarkData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateResourcePropertyForKeyFromBookmarkData").orElseThrow()
-private val CFURLCreateResourcePropertyForKeyFromBookmarkData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateResourcePropertyForKeyFromBookmarkData_ADDR, CFURLCreateResourcePropertyForKeyFromBookmarkData_DESC)
+private val CFURLCreateResourcePropertyForKeyFromBookmarkData_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCreateResourcePropertyForKeyFromBookmarkData").orElseThrow() }
+private val CFURLCreateResourcePropertyForKeyFromBookmarkData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCreateResourcePropertyForKeyFromBookmarkData_ADDR, CFURLCreateResourcePropertyForKeyFromBookmarkData_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2373,8 +2373,8 @@ fun CFURLCreateResourcePropertyForKeyFromBookmarkData(arg0: MemorySegment, arg1:
  * {@snippet lang=c : CFURLCreateBookmarkDataFromFile typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFURLRef = (Declared(__CFURL))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLCreateBookmarkDataFromFile_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateBookmarkDataFromFile_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateBookmarkDataFromFile").orElseThrow()
-private val CFURLCreateBookmarkDataFromFile_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateBookmarkDataFromFile_ADDR, CFURLCreateBookmarkDataFromFile_DESC)
+private val CFURLCreateBookmarkDataFromFile_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCreateBookmarkDataFromFile").orElseThrow() }
+private val CFURLCreateBookmarkDataFromFile_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCreateBookmarkDataFromFile_ADDR, CFURLCreateBookmarkDataFromFile_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2396,8 +2396,8 @@ fun CFURLCreateBookmarkDataFromFile(arg0: MemorySegment, arg1: MemorySegment, ar
  * {@snippet lang=c : CFURLWriteBookmarkDataToFile typedef Boolean = UNSIGNED = Char(typedef CFDataRef = (Declared(__CFData))*,typedef CFURLRef = (Declared(__CFURL))*,typedef CFURLBookmarkFileCreationOptions = UNSIGNED = Long,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFURLWriteBookmarkDataToFile_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFURLWriteBookmarkDataToFile_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLWriteBookmarkDataToFile").orElseThrow()
-private val CFURLWriteBookmarkDataToFile_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLWriteBookmarkDataToFile_ADDR, CFURLWriteBookmarkDataToFile_DESC)
+private val CFURLWriteBookmarkDataToFile_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLWriteBookmarkDataToFile").orElseThrow() }
+private val CFURLWriteBookmarkDataToFile_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLWriteBookmarkDataToFile_ADDR, CFURLWriteBookmarkDataToFile_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2419,8 +2419,8 @@ fun CFURLWriteBookmarkDataToFile(arg0: MemorySegment, arg1: MemorySegment, arg2:
  * {@snippet lang=c : CFURLCreateBookmarkDataFromAliasRecord typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CFURLCreateBookmarkDataFromAliasRecord_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFURLCreateBookmarkDataFromAliasRecord_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLCreateBookmarkDataFromAliasRecord").orElseThrow()
-private val CFURLCreateBookmarkDataFromAliasRecord_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLCreateBookmarkDataFromAliasRecord_ADDR, CFURLCreateBookmarkDataFromAliasRecord_DESC)
+private val CFURLCreateBookmarkDataFromAliasRecord_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLCreateBookmarkDataFromAliasRecord").orElseThrow() }
+private val CFURLCreateBookmarkDataFromAliasRecord_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLCreateBookmarkDataFromAliasRecord_ADDR, CFURLCreateBookmarkDataFromAliasRecord_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "The Carbon Alias Manager is deprecated. This function should only be used to convert Carbon AliasRecords to bookmark data.")
@@ -2442,8 +2442,8 @@ fun CFURLCreateBookmarkDataFromAliasRecord(arg0: MemorySegment, arg1: MemorySegm
  * {@snippet lang=c : CFURLStartAccessingSecurityScopedResource typedef Boolean = UNSIGNED = Char(typedef CFURLRef = (Declared(__CFURL))*)
  */
 private val CFURLStartAccessingSecurityScopedResource_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFURLStartAccessingSecurityScopedResource_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLStartAccessingSecurityScopedResource").orElseThrow()
-private val CFURLStartAccessingSecurityScopedResource_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLStartAccessingSecurityScopedResource_ADDR, CFURLStartAccessingSecurityScopedResource_DESC)
+private val CFURLStartAccessingSecurityScopedResource_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLStartAccessingSecurityScopedResource").orElseThrow() }
+private val CFURLStartAccessingSecurityScopedResource_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLStartAccessingSecurityScopedResource_ADDR, CFURLStartAccessingSecurityScopedResource_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
@@ -2465,8 +2465,8 @@ fun CFURLStartAccessingSecurityScopedResource(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFURLStopAccessingSecurityScopedResource Void(typedef CFURLRef = (Declared(__CFURL))*)
  */
 private val CFURLStopAccessingSecurityScopedResource_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFURLStopAccessingSecurityScopedResource_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFURLStopAccessingSecurityScopedResource").orElseThrow()
-private val CFURLStopAccessingSecurityScopedResource_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFURLStopAccessingSecurityScopedResource_ADDR, CFURLStopAccessingSecurityScopedResource_DESC)
+private val CFURLStopAccessingSecurityScopedResource_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFURLStopAccessingSecurityScopedResource").orElseThrow() }
+private val CFURLStopAccessingSecurityScopedResource_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFURLStopAccessingSecurityScopedResource_ADDR, CFURLStopAccessingSecurityScopedResource_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
@@ -2510,8 +2510,8 @@ var kCFRunLoopCommonModes: MemorySegment
  * {@snippet lang=c : CFRunLoopGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFRunLoopGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFRunLoopGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopGetTypeID").orElseThrow()
-private val CFRunLoopGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopGetTypeID_ADDR, CFRunLoopGetTypeID_DESC)
+private val CFRunLoopGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopGetTypeID").orElseThrow() }
+private val CFRunLoopGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopGetTypeID_ADDR, CFRunLoopGetTypeID_DESC) }
 
 fun CFRunLoopGetTypeID(): Long {
     try {
@@ -2529,8 +2529,8 @@ fun CFRunLoopGetTypeID(): Long {
  * {@snippet lang=c : CFRunLoopGetCurrent typedef CFRunLoopRef = (Declared(__CFRunLoop))*()
  */
 private val CFRunLoopGetCurrent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFRunLoopGetCurrent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopGetCurrent").orElseThrow()
-private val CFRunLoopGetCurrent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopGetCurrent_ADDR, CFRunLoopGetCurrent_DESC)
+private val CFRunLoopGetCurrent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopGetCurrent").orElseThrow() }
+private val CFRunLoopGetCurrent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopGetCurrent_ADDR, CFRunLoopGetCurrent_DESC) }
 
 fun CFRunLoopGetCurrent(): MemorySegment {
     try {
@@ -2548,8 +2548,8 @@ fun CFRunLoopGetCurrent(): MemorySegment {
  * {@snippet lang=c : CFRunLoopGetMain typedef CFRunLoopRef = (Declared(__CFRunLoop))*()
  */
 private val CFRunLoopGetMain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFRunLoopGetMain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopGetMain").orElseThrow()
-private val CFRunLoopGetMain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopGetMain_ADDR, CFRunLoopGetMain_DESC)
+private val CFRunLoopGetMain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopGetMain").orElseThrow() }
+private val CFRunLoopGetMain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopGetMain_ADDR, CFRunLoopGetMain_DESC) }
 
 fun CFRunLoopGetMain(): MemorySegment {
     try {
@@ -2567,8 +2567,8 @@ fun CFRunLoopGetMain(): MemorySegment {
  * {@snippet lang=c : CFRunLoopCopyCurrentMode typedef CFRunLoopMode = (Declared(__CFString))*(typedef CFRunLoopRef = (Declared(__CFRunLoop))*)
  */
 private val CFRunLoopCopyCurrentMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopCopyCurrentMode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopCopyCurrentMode").orElseThrow()
-private val CFRunLoopCopyCurrentMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopCopyCurrentMode_ADDR, CFRunLoopCopyCurrentMode_DESC)
+private val CFRunLoopCopyCurrentMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopCopyCurrentMode").orElseThrow() }
+private val CFRunLoopCopyCurrentMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopCopyCurrentMode_ADDR, CFRunLoopCopyCurrentMode_DESC) }
 
 fun CFRunLoopCopyCurrentMode(arg0: MemorySegment): MemorySegment {
     try {
@@ -2586,8 +2586,8 @@ fun CFRunLoopCopyCurrentMode(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFRunLoopCopyAllModes typedef CFArrayRef = (Declared(__CFArray))*(typedef CFRunLoopRef = (Declared(__CFRunLoop))*)
  */
 private val CFRunLoopCopyAllModes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopCopyAllModes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopCopyAllModes").orElseThrow()
-private val CFRunLoopCopyAllModes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopCopyAllModes_ADDR, CFRunLoopCopyAllModes_DESC)
+private val CFRunLoopCopyAllModes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopCopyAllModes").orElseThrow() }
+private val CFRunLoopCopyAllModes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopCopyAllModes_ADDR, CFRunLoopCopyAllModes_DESC) }
 
 fun CFRunLoopCopyAllModes(arg0: MemorySegment): MemorySegment {
     try {
@@ -2605,8 +2605,8 @@ fun CFRunLoopCopyAllModes(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFRunLoopAddCommonMode Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopAddCommonMode_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopAddCommonMode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopAddCommonMode").orElseThrow()
-private val CFRunLoopAddCommonMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopAddCommonMode_ADDR, CFRunLoopAddCommonMode_DESC)
+private val CFRunLoopAddCommonMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopAddCommonMode").orElseThrow() }
+private val CFRunLoopAddCommonMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopAddCommonMode_ADDR, CFRunLoopAddCommonMode_DESC) }
 
 fun CFRunLoopAddCommonMode(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -2624,8 +2624,8 @@ fun CFRunLoopAddCommonMode(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFRunLoopGetNextTimerFireDate typedef CFAbsoluteTime = Double(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopGetNextTimerFireDate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopGetNextTimerFireDate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopGetNextTimerFireDate").orElseThrow()
-private val CFRunLoopGetNextTimerFireDate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopGetNextTimerFireDate_ADDR, CFRunLoopGetNextTimerFireDate_DESC)
+private val CFRunLoopGetNextTimerFireDate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopGetNextTimerFireDate").orElseThrow() }
+private val CFRunLoopGetNextTimerFireDate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopGetNextTimerFireDate_ADDR, CFRunLoopGetNextTimerFireDate_DESC) }
 
 fun CFRunLoopGetNextTimerFireDate(arg0: MemorySegment, arg1: MemorySegment): Double {
     try {
@@ -2643,8 +2643,8 @@ fun CFRunLoopGetNextTimerFireDate(arg0: MemorySegment, arg1: MemorySegment): Dou
  * {@snippet lang=c : CFRunLoopRun Void()
  */
 private val CFRunLoopRun_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid()
-private val CFRunLoopRun_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopRun").orElseThrow()
-private val CFRunLoopRun_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopRun_ADDR, CFRunLoopRun_DESC)
+private val CFRunLoopRun_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopRun").orElseThrow() }
+private val CFRunLoopRun_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopRun_ADDR, CFRunLoopRun_DESC) }
 
 fun CFRunLoopRun(): Unit {
     try {
@@ -2662,8 +2662,8 @@ fun CFRunLoopRun(): Unit {
  * {@snippet lang=c : CFRunLoopRunInMode typedef CFRunLoopRunResult = Declared(CFRunLoopRunResult)(typedef CFRunLoopMode = (Declared(__CFString))*,typedef CFTimeInterval = Double,typedef Boolean = UNSIGNED = Char)
  */
 private val CFRunLoopRunInMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_BYTE)
-private val CFRunLoopRunInMode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopRunInMode").orElseThrow()
-private val CFRunLoopRunInMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopRunInMode_ADDR, CFRunLoopRunInMode_DESC)
+private val CFRunLoopRunInMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopRunInMode").orElseThrow() }
+private val CFRunLoopRunInMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopRunInMode_ADDR, CFRunLoopRunInMode_DESC) }
 
 fun CFRunLoopRunInMode(arg0: MemorySegment, arg1: Double, arg2: Byte): CFRunLoopRunResult {
     try {
@@ -2681,8 +2681,8 @@ fun CFRunLoopRunInMode(arg0: MemorySegment, arg1: Double, arg2: Byte): CFRunLoop
  * {@snippet lang=c : CFRunLoopIsWaiting typedef Boolean = UNSIGNED = Char(typedef CFRunLoopRef = (Declared(__CFRunLoop))*)
  */
 private val CFRunLoopIsWaiting_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFRunLoopIsWaiting_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopIsWaiting").orElseThrow()
-private val CFRunLoopIsWaiting_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopIsWaiting_ADDR, CFRunLoopIsWaiting_DESC)
+private val CFRunLoopIsWaiting_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopIsWaiting").orElseThrow() }
+private val CFRunLoopIsWaiting_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopIsWaiting_ADDR, CFRunLoopIsWaiting_DESC) }
 
 fun CFRunLoopIsWaiting(arg0: MemorySegment): Byte {
     try {
@@ -2700,8 +2700,8 @@ fun CFRunLoopIsWaiting(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFRunLoopWakeUp Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*)
  */
 private val CFRunLoopWakeUp_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFRunLoopWakeUp_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopWakeUp").orElseThrow()
-private val CFRunLoopWakeUp_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopWakeUp_ADDR, CFRunLoopWakeUp_DESC)
+private val CFRunLoopWakeUp_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopWakeUp").orElseThrow() }
+private val CFRunLoopWakeUp_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopWakeUp_ADDR, CFRunLoopWakeUp_DESC) }
 
 fun CFRunLoopWakeUp(arg0: MemorySegment): Unit {
     try {
@@ -2719,8 +2719,8 @@ fun CFRunLoopWakeUp(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFRunLoopStop Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*)
  */
 private val CFRunLoopStop_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFRunLoopStop_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopStop").orElseThrow()
-private val CFRunLoopStop_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopStop_ADDR, CFRunLoopStop_DESC)
+private val CFRunLoopStop_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopStop").orElseThrow() }
+private val CFRunLoopStop_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopStop_ADDR, CFRunLoopStop_DESC) }
 
 fun CFRunLoopStop(arg0: MemorySegment): Unit {
     try {
@@ -2738,8 +2738,8 @@ fun CFRunLoopStop(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFRunLoopPerformBlock Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFTypeRef = (Void)*,(Void)*)
  */
 private val CFRunLoopPerformBlock_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopPerformBlock_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopPerformBlock").orElseThrow()
-private val CFRunLoopPerformBlock_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopPerformBlock_ADDR, CFRunLoopPerformBlock_DESC)
+private val CFRunLoopPerformBlock_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopPerformBlock").orElseThrow() }
+private val CFRunLoopPerformBlock_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopPerformBlock_ADDR, CFRunLoopPerformBlock_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2761,8 +2761,8 @@ fun CFRunLoopPerformBlock(arg0: MemorySegment, arg1: MemorySegment, arg2: Memory
  * {@snippet lang=c : CFRunLoopContainsSource typedef Boolean = UNSIGNED = Char(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopContainsSource_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopContainsSource_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopContainsSource").orElseThrow()
-private val CFRunLoopContainsSource_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopContainsSource_ADDR, CFRunLoopContainsSource_DESC)
+private val CFRunLoopContainsSource_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopContainsSource").orElseThrow() }
+private val CFRunLoopContainsSource_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopContainsSource_ADDR, CFRunLoopContainsSource_DESC) }
 
 fun CFRunLoopContainsSource(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Byte {
     try {
@@ -2780,8 +2780,8 @@ fun CFRunLoopContainsSource(arg0: MemorySegment, arg1: MemorySegment, arg2: Memo
  * {@snippet lang=c : CFRunLoopAddSource Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopAddSource_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopAddSource_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopAddSource").orElseThrow()
-private val CFRunLoopAddSource_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopAddSource_ADDR, CFRunLoopAddSource_DESC)
+private val CFRunLoopAddSource_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopAddSource").orElseThrow() }
+private val CFRunLoopAddSource_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopAddSource_ADDR, CFRunLoopAddSource_DESC) }
 
 fun CFRunLoopAddSource(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2799,8 +2799,8 @@ fun CFRunLoopAddSource(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySeg
  * {@snippet lang=c : CFRunLoopRemoveSource Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopRemoveSource_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopRemoveSource_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopRemoveSource").orElseThrow()
-private val CFRunLoopRemoveSource_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopRemoveSource_ADDR, CFRunLoopRemoveSource_DESC)
+private val CFRunLoopRemoveSource_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopRemoveSource").orElseThrow() }
+private val CFRunLoopRemoveSource_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopRemoveSource_ADDR, CFRunLoopRemoveSource_DESC) }
 
 fun CFRunLoopRemoveSource(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2818,8 +2818,8 @@ fun CFRunLoopRemoveSource(arg0: MemorySegment, arg1: MemorySegment, arg2: Memory
  * {@snippet lang=c : CFRunLoopContainsObserver typedef Boolean = UNSIGNED = Char(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopContainsObserver_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopContainsObserver_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopContainsObserver").orElseThrow()
-private val CFRunLoopContainsObserver_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopContainsObserver_ADDR, CFRunLoopContainsObserver_DESC)
+private val CFRunLoopContainsObserver_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopContainsObserver").orElseThrow() }
+private val CFRunLoopContainsObserver_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopContainsObserver_ADDR, CFRunLoopContainsObserver_DESC) }
 
 fun CFRunLoopContainsObserver(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Byte {
     try {
@@ -2837,8 +2837,8 @@ fun CFRunLoopContainsObserver(arg0: MemorySegment, arg1: MemorySegment, arg2: Me
  * {@snippet lang=c : CFRunLoopAddObserver Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopAddObserver_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopAddObserver_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopAddObserver").orElseThrow()
-private val CFRunLoopAddObserver_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopAddObserver_ADDR, CFRunLoopAddObserver_DESC)
+private val CFRunLoopAddObserver_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopAddObserver").orElseThrow() }
+private val CFRunLoopAddObserver_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopAddObserver_ADDR, CFRunLoopAddObserver_DESC) }
 
 fun CFRunLoopAddObserver(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2856,8 +2856,8 @@ fun CFRunLoopAddObserver(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
  * {@snippet lang=c : CFRunLoopRemoveObserver Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopRemoveObserver_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopRemoveObserver_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopRemoveObserver").orElseThrow()
-private val CFRunLoopRemoveObserver_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopRemoveObserver_ADDR, CFRunLoopRemoveObserver_DESC)
+private val CFRunLoopRemoveObserver_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopRemoveObserver").orElseThrow() }
+private val CFRunLoopRemoveObserver_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopRemoveObserver_ADDR, CFRunLoopRemoveObserver_DESC) }
 
 fun CFRunLoopRemoveObserver(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2875,8 +2875,8 @@ fun CFRunLoopRemoveObserver(arg0: MemorySegment, arg1: MemorySegment, arg2: Memo
  * {@snippet lang=c : CFRunLoopContainsTimer typedef Boolean = UNSIGNED = Char(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopContainsTimer_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopContainsTimer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopContainsTimer").orElseThrow()
-private val CFRunLoopContainsTimer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopContainsTimer_ADDR, CFRunLoopContainsTimer_DESC)
+private val CFRunLoopContainsTimer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopContainsTimer").orElseThrow() }
+private val CFRunLoopContainsTimer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopContainsTimer_ADDR, CFRunLoopContainsTimer_DESC) }
 
 fun CFRunLoopContainsTimer(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Byte {
     try {
@@ -2894,8 +2894,8 @@ fun CFRunLoopContainsTimer(arg0: MemorySegment, arg1: MemorySegment, arg2: Memor
  * {@snippet lang=c : CFRunLoopAddTimer Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopAddTimer_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopAddTimer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopAddTimer").orElseThrow()
-private val CFRunLoopAddTimer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopAddTimer_ADDR, CFRunLoopAddTimer_DESC)
+private val CFRunLoopAddTimer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopAddTimer").orElseThrow() }
+private val CFRunLoopAddTimer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopAddTimer_ADDR, CFRunLoopAddTimer_DESC) }
 
 fun CFRunLoopAddTimer(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2913,8 +2913,8 @@ fun CFRunLoopAddTimer(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegm
  * {@snippet lang=c : CFRunLoopRemoveTimer Void(typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFRunLoopRemoveTimer_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopRemoveTimer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopRemoveTimer").orElseThrow()
-private val CFRunLoopRemoveTimer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopRemoveTimer_ADDR, CFRunLoopRemoveTimer_DESC)
+private val CFRunLoopRemoveTimer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopRemoveTimer").orElseThrow() }
+private val CFRunLoopRemoveTimer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopRemoveTimer_ADDR, CFRunLoopRemoveTimer_DESC) }
 
 fun CFRunLoopRemoveTimer(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2932,8 +2932,8 @@ fun CFRunLoopRemoveTimer(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
  * {@snippet lang=c : CFRunLoopSourceGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFRunLoopSourceGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFRunLoopSourceGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopSourceGetTypeID").orElseThrow()
-private val CFRunLoopSourceGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopSourceGetTypeID_ADDR, CFRunLoopSourceGetTypeID_DESC)
+private val CFRunLoopSourceGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopSourceGetTypeID").orElseThrow() }
+private val CFRunLoopSourceGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopSourceGetTypeID_ADDR, CFRunLoopSourceGetTypeID_DESC) }
 
 fun CFRunLoopSourceGetTypeID(): Long {
     try {
@@ -2951,8 +2951,8 @@ fun CFRunLoopSourceGetTypeID(): Long {
  * {@snippet lang=c : CFRunLoopSourceCreate typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,(typedef CFRunLoopSourceContext = Declared(CFRunLoopSourceContext))*)
  */
 private val CFRunLoopSourceCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFRunLoopSourceCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopSourceCreate").orElseThrow()
-private val CFRunLoopSourceCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopSourceCreate_ADDR, CFRunLoopSourceCreate_DESC)
+private val CFRunLoopSourceCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopSourceCreate").orElseThrow() }
+private val CFRunLoopSourceCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopSourceCreate_ADDR, CFRunLoopSourceCreate_DESC) }
 
 fun CFRunLoopSourceCreate(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -2970,8 +2970,8 @@ fun CFRunLoopSourceCreate(arg0: MemorySegment, arg1: Long, arg2: MemorySegment):
  * {@snippet lang=c : CFRunLoopSourceGetOrder typedef CFIndex = Long(typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*)
  */
 private val CFRunLoopSourceGetOrder_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFRunLoopSourceGetOrder_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopSourceGetOrder").orElseThrow()
-private val CFRunLoopSourceGetOrder_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopSourceGetOrder_ADDR, CFRunLoopSourceGetOrder_DESC)
+private val CFRunLoopSourceGetOrder_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopSourceGetOrder").orElseThrow() }
+private val CFRunLoopSourceGetOrder_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopSourceGetOrder_ADDR, CFRunLoopSourceGetOrder_DESC) }
 
 fun CFRunLoopSourceGetOrder(arg0: MemorySegment): Long {
     try {
@@ -2989,8 +2989,8 @@ fun CFRunLoopSourceGetOrder(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFRunLoopSourceInvalidate Void(typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*)
  */
 private val CFRunLoopSourceInvalidate_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFRunLoopSourceInvalidate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopSourceInvalidate").orElseThrow()
-private val CFRunLoopSourceInvalidate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopSourceInvalidate_ADDR, CFRunLoopSourceInvalidate_DESC)
+private val CFRunLoopSourceInvalidate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopSourceInvalidate").orElseThrow() }
+private val CFRunLoopSourceInvalidate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopSourceInvalidate_ADDR, CFRunLoopSourceInvalidate_DESC) }
 
 fun CFRunLoopSourceInvalidate(arg0: MemorySegment): Unit {
     try {
@@ -3008,8 +3008,8 @@ fun CFRunLoopSourceInvalidate(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFRunLoopSourceIsValid typedef Boolean = UNSIGNED = Char(typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*)
  */
 private val CFRunLoopSourceIsValid_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFRunLoopSourceIsValid_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopSourceIsValid").orElseThrow()
-private val CFRunLoopSourceIsValid_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopSourceIsValid_ADDR, CFRunLoopSourceIsValid_DESC)
+private val CFRunLoopSourceIsValid_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopSourceIsValid").orElseThrow() }
+private val CFRunLoopSourceIsValid_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopSourceIsValid_ADDR, CFRunLoopSourceIsValid_DESC) }
 
 fun CFRunLoopSourceIsValid(arg0: MemorySegment): Byte {
     try {
@@ -3027,8 +3027,8 @@ fun CFRunLoopSourceIsValid(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFRunLoopSourceGetContext Void(typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*,(typedef CFRunLoopSourceContext = Declared(CFRunLoopSourceContext))*)
  */
 private val CFRunLoopSourceGetContext_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopSourceGetContext_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopSourceGetContext").orElseThrow()
-private val CFRunLoopSourceGetContext_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopSourceGetContext_ADDR, CFRunLoopSourceGetContext_DESC)
+private val CFRunLoopSourceGetContext_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopSourceGetContext").orElseThrow() }
+private val CFRunLoopSourceGetContext_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopSourceGetContext_ADDR, CFRunLoopSourceGetContext_DESC) }
 
 fun CFRunLoopSourceGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -3046,8 +3046,8 @@ fun CFRunLoopSourceGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFRunLoopSourceSignal Void(typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*)
  */
 private val CFRunLoopSourceSignal_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFRunLoopSourceSignal_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopSourceSignal").orElseThrow()
-private val CFRunLoopSourceSignal_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopSourceSignal_ADDR, CFRunLoopSourceSignal_DESC)
+private val CFRunLoopSourceSignal_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopSourceSignal").orElseThrow() }
+private val CFRunLoopSourceSignal_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopSourceSignal_ADDR, CFRunLoopSourceSignal_DESC) }
 
 fun CFRunLoopSourceSignal(arg0: MemorySegment): Unit {
     try {
@@ -3065,8 +3065,8 @@ fun CFRunLoopSourceSignal(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFRunLoopObserverGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFRunLoopObserverGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFRunLoopObserverGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopObserverGetTypeID").orElseThrow()
-private val CFRunLoopObserverGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopObserverGetTypeID_ADDR, CFRunLoopObserverGetTypeID_DESC)
+private val CFRunLoopObserverGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopObserverGetTypeID").orElseThrow() }
+private val CFRunLoopObserverGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopObserverGetTypeID_ADDR, CFRunLoopObserverGetTypeID_DESC) }
 
 fun CFRunLoopObserverGetTypeID(): Long {
     try {
@@ -3084,8 +3084,8 @@ fun CFRunLoopObserverGetTypeID(): Long {
  * {@snippet lang=c : CFRunLoopObserverCreate typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFOptionFlags = UNSIGNED = Long,typedef Boolean = UNSIGNED = Char,typedef CFIndex = Long,typedef CFRunLoopObserverCallBack = (Void((Declared(__CFRunLoopObserver))*,Declared(CFRunLoopActivity),(Void)*))*,(typedef CFRunLoopObserverContext = Declared(CFRunLoopObserverContext))*)
  */
 private val CFRunLoopObserverCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopObserverCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopObserverCreate").orElseThrow()
-private val CFRunLoopObserverCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopObserverCreate_ADDR, CFRunLoopObserverCreate_DESC)
+private val CFRunLoopObserverCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopObserverCreate").orElseThrow() }
+private val CFRunLoopObserverCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopObserverCreate_ADDR, CFRunLoopObserverCreate_DESC) }
 
 fun CFRunLoopObserverCreate(arg0: MemorySegment, arg1: Long, arg2: Byte, arg3: Long, arg4: MemorySegment, arg5: MemorySegment): MemorySegment {
     try {
@@ -3103,8 +3103,8 @@ fun CFRunLoopObserverCreate(arg0: MemorySegment, arg1: Long, arg2: Byte, arg3: L
  * {@snippet lang=c : CFRunLoopObserverCreateWithHandler typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFOptionFlags = UNSIGNED = Long,typedef Boolean = UNSIGNED = Char,typedef CFIndex = Long,(Void)*)
  */
 private val CFRunLoopObserverCreateWithHandler_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFRunLoopObserverCreateWithHandler_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopObserverCreateWithHandler").orElseThrow()
-private val CFRunLoopObserverCreateWithHandler_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopObserverCreateWithHandler_ADDR, CFRunLoopObserverCreateWithHandler_DESC)
+private val CFRunLoopObserverCreateWithHandler_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopObserverCreateWithHandler").orElseThrow() }
+private val CFRunLoopObserverCreateWithHandler_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopObserverCreateWithHandler_ADDR, CFRunLoopObserverCreateWithHandler_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
@@ -3126,8 +3126,8 @@ fun CFRunLoopObserverCreateWithHandler(arg0: MemorySegment, arg1: Long, arg2: By
  * {@snippet lang=c : CFRunLoopObserverGetActivities typedef CFOptionFlags = UNSIGNED = Long(typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*)
  */
 private val CFRunLoopObserverGetActivities_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFRunLoopObserverGetActivities_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopObserverGetActivities").orElseThrow()
-private val CFRunLoopObserverGetActivities_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopObserverGetActivities_ADDR, CFRunLoopObserverGetActivities_DESC)
+private val CFRunLoopObserverGetActivities_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopObserverGetActivities").orElseThrow() }
+private val CFRunLoopObserverGetActivities_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopObserverGetActivities_ADDR, CFRunLoopObserverGetActivities_DESC) }
 
 fun CFRunLoopObserverGetActivities(arg0: MemorySegment): Long {
     try {
@@ -3145,8 +3145,8 @@ fun CFRunLoopObserverGetActivities(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFRunLoopObserverDoesRepeat typedef Boolean = UNSIGNED = Char(typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*)
  */
 private val CFRunLoopObserverDoesRepeat_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFRunLoopObserverDoesRepeat_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopObserverDoesRepeat").orElseThrow()
-private val CFRunLoopObserverDoesRepeat_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopObserverDoesRepeat_ADDR, CFRunLoopObserverDoesRepeat_DESC)
+private val CFRunLoopObserverDoesRepeat_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopObserverDoesRepeat").orElseThrow() }
+private val CFRunLoopObserverDoesRepeat_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopObserverDoesRepeat_ADDR, CFRunLoopObserverDoesRepeat_DESC) }
 
 fun CFRunLoopObserverDoesRepeat(arg0: MemorySegment): Byte {
     try {
@@ -3164,8 +3164,8 @@ fun CFRunLoopObserverDoesRepeat(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFRunLoopObserverGetOrder typedef CFIndex = Long(typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*)
  */
 private val CFRunLoopObserverGetOrder_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFRunLoopObserverGetOrder_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopObserverGetOrder").orElseThrow()
-private val CFRunLoopObserverGetOrder_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopObserverGetOrder_ADDR, CFRunLoopObserverGetOrder_DESC)
+private val CFRunLoopObserverGetOrder_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopObserverGetOrder").orElseThrow() }
+private val CFRunLoopObserverGetOrder_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopObserverGetOrder_ADDR, CFRunLoopObserverGetOrder_DESC) }
 
 fun CFRunLoopObserverGetOrder(arg0: MemorySegment): Long {
     try {
@@ -3183,8 +3183,8 @@ fun CFRunLoopObserverGetOrder(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFRunLoopObserverInvalidate Void(typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*)
  */
 private val CFRunLoopObserverInvalidate_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFRunLoopObserverInvalidate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopObserverInvalidate").orElseThrow()
-private val CFRunLoopObserverInvalidate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopObserverInvalidate_ADDR, CFRunLoopObserverInvalidate_DESC)
+private val CFRunLoopObserverInvalidate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopObserverInvalidate").orElseThrow() }
+private val CFRunLoopObserverInvalidate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopObserverInvalidate_ADDR, CFRunLoopObserverInvalidate_DESC) }
 
 fun CFRunLoopObserverInvalidate(arg0: MemorySegment): Unit {
     try {
@@ -3202,8 +3202,8 @@ fun CFRunLoopObserverInvalidate(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFRunLoopObserverIsValid typedef Boolean = UNSIGNED = Char(typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*)
  */
 private val CFRunLoopObserverIsValid_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFRunLoopObserverIsValid_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopObserverIsValid").orElseThrow()
-private val CFRunLoopObserverIsValid_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopObserverIsValid_ADDR, CFRunLoopObserverIsValid_DESC)
+private val CFRunLoopObserverIsValid_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopObserverIsValid").orElseThrow() }
+private val CFRunLoopObserverIsValid_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopObserverIsValid_ADDR, CFRunLoopObserverIsValid_DESC) }
 
 fun CFRunLoopObserverIsValid(arg0: MemorySegment): Byte {
     try {
@@ -3221,8 +3221,8 @@ fun CFRunLoopObserverIsValid(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFRunLoopObserverGetContext Void(typedef CFRunLoopObserverRef = (Declared(__CFRunLoopObserver))*,(typedef CFRunLoopObserverContext = Declared(CFRunLoopObserverContext))*)
  */
 private val CFRunLoopObserverGetContext_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopObserverGetContext_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopObserverGetContext").orElseThrow()
-private val CFRunLoopObserverGetContext_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopObserverGetContext_ADDR, CFRunLoopObserverGetContext_DESC)
+private val CFRunLoopObserverGetContext_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopObserverGetContext").orElseThrow() }
+private val CFRunLoopObserverGetContext_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopObserverGetContext_ADDR, CFRunLoopObserverGetContext_DESC) }
 
 fun CFRunLoopObserverGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -3240,8 +3240,8 @@ fun CFRunLoopObserverGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit 
  * {@snippet lang=c : CFRunLoopTimerGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFRunLoopTimerGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFRunLoopTimerGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerGetTypeID").orElseThrow()
-private val CFRunLoopTimerGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetTypeID_ADDR, CFRunLoopTimerGetTypeID_DESC)
+private val CFRunLoopTimerGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerGetTypeID").orElseThrow() }
+private val CFRunLoopTimerGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetTypeID_ADDR, CFRunLoopTimerGetTypeID_DESC) }
 
 fun CFRunLoopTimerGetTypeID(): Long {
     try {
@@ -3259,8 +3259,8 @@ fun CFRunLoopTimerGetTypeID(): Long {
  * {@snippet lang=c : CFRunLoopTimerCreate typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFAbsoluteTime = Double,typedef CFTimeInterval = Double,typedef CFOptionFlags = UNSIGNED = Long,typedef CFIndex = Long,typedef CFRunLoopTimerCallBack = (Void((Declared(__CFRunLoopTimer))*,(Void)*))*,(typedef CFRunLoopTimerContext = Declared(CFRunLoopTimerContext))*)
  */
 private val CFRunLoopTimerCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopTimerCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerCreate").orElseThrow()
-private val CFRunLoopTimerCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerCreate_ADDR, CFRunLoopTimerCreate_DESC)
+private val CFRunLoopTimerCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerCreate").orElseThrow() }
+private val CFRunLoopTimerCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerCreate_ADDR, CFRunLoopTimerCreate_DESC) }
 
 fun CFRunLoopTimerCreate(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: Long, arg4: Long, arg5: MemorySegment, arg6: MemorySegment): MemorySegment {
     try {
@@ -3278,8 +3278,8 @@ fun CFRunLoopTimerCreate(arg0: MemorySegment, arg1: Double, arg2: Double, arg3: 
  * {@snippet lang=c : CFRunLoopTimerCreateWithHandler typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFAbsoluteTime = Double,typedef CFTimeInterval = Double,typedef CFOptionFlags = UNSIGNED = Long,typedef CFIndex = Long,(Void)*)
  */
 private val CFRunLoopTimerCreateWithHandler_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFRunLoopTimerCreateWithHandler_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerCreateWithHandler").orElseThrow()
-private val CFRunLoopTimerCreateWithHandler_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerCreateWithHandler_ADDR, CFRunLoopTimerCreateWithHandler_DESC)
+private val CFRunLoopTimerCreateWithHandler_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerCreateWithHandler").orElseThrow() }
+private val CFRunLoopTimerCreateWithHandler_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerCreateWithHandler_ADDR, CFRunLoopTimerCreateWithHandler_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
@@ -3301,8 +3301,8 @@ fun CFRunLoopTimerCreateWithHandler(arg0: MemorySegment, arg1: Double, arg2: Dou
  * {@snippet lang=c : CFRunLoopTimerGetNextFireDate typedef CFAbsoluteTime = Double(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*)
  */
 private val CFRunLoopTimerGetNextFireDate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CFRunLoopTimerGetNextFireDate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerGetNextFireDate").orElseThrow()
-private val CFRunLoopTimerGetNextFireDate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetNextFireDate_ADDR, CFRunLoopTimerGetNextFireDate_DESC)
+private val CFRunLoopTimerGetNextFireDate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerGetNextFireDate").orElseThrow() }
+private val CFRunLoopTimerGetNextFireDate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetNextFireDate_ADDR, CFRunLoopTimerGetNextFireDate_DESC) }
 
 fun CFRunLoopTimerGetNextFireDate(arg0: MemorySegment): Double {
     try {
@@ -3320,8 +3320,8 @@ fun CFRunLoopTimerGetNextFireDate(arg0: MemorySegment): Double {
  * {@snippet lang=c : CFRunLoopTimerSetNextFireDate Void(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*,typedef CFAbsoluteTime = Double)
  */
 private val CFRunLoopTimerSetNextFireDate_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CFRunLoopTimerSetNextFireDate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerSetNextFireDate").orElseThrow()
-private val CFRunLoopTimerSetNextFireDate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerSetNextFireDate_ADDR, CFRunLoopTimerSetNextFireDate_DESC)
+private val CFRunLoopTimerSetNextFireDate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerSetNextFireDate").orElseThrow() }
+private val CFRunLoopTimerSetNextFireDate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerSetNextFireDate_ADDR, CFRunLoopTimerSetNextFireDate_DESC) }
 
 fun CFRunLoopTimerSetNextFireDate(arg0: MemorySegment, arg1: Double): Unit {
     try {
@@ -3339,8 +3339,8 @@ fun CFRunLoopTimerSetNextFireDate(arg0: MemorySegment, arg1: Double): Unit {
  * {@snippet lang=c : CFRunLoopTimerGetInterval typedef CFTimeInterval = Double(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*)
  */
 private val CFRunLoopTimerGetInterval_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CFRunLoopTimerGetInterval_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerGetInterval").orElseThrow()
-private val CFRunLoopTimerGetInterval_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetInterval_ADDR, CFRunLoopTimerGetInterval_DESC)
+private val CFRunLoopTimerGetInterval_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerGetInterval").orElseThrow() }
+private val CFRunLoopTimerGetInterval_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetInterval_ADDR, CFRunLoopTimerGetInterval_DESC) }
 
 fun CFRunLoopTimerGetInterval(arg0: MemorySegment): Double {
     try {
@@ -3358,8 +3358,8 @@ fun CFRunLoopTimerGetInterval(arg0: MemorySegment): Double {
  * {@snippet lang=c : CFRunLoopTimerDoesRepeat typedef Boolean = UNSIGNED = Char(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*)
  */
 private val CFRunLoopTimerDoesRepeat_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFRunLoopTimerDoesRepeat_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerDoesRepeat").orElseThrow()
-private val CFRunLoopTimerDoesRepeat_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerDoesRepeat_ADDR, CFRunLoopTimerDoesRepeat_DESC)
+private val CFRunLoopTimerDoesRepeat_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerDoesRepeat").orElseThrow() }
+private val CFRunLoopTimerDoesRepeat_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerDoesRepeat_ADDR, CFRunLoopTimerDoesRepeat_DESC) }
 
 fun CFRunLoopTimerDoesRepeat(arg0: MemorySegment): Byte {
     try {
@@ -3377,8 +3377,8 @@ fun CFRunLoopTimerDoesRepeat(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFRunLoopTimerGetOrder typedef CFIndex = Long(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*)
  */
 private val CFRunLoopTimerGetOrder_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFRunLoopTimerGetOrder_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerGetOrder").orElseThrow()
-private val CFRunLoopTimerGetOrder_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetOrder_ADDR, CFRunLoopTimerGetOrder_DESC)
+private val CFRunLoopTimerGetOrder_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerGetOrder").orElseThrow() }
+private val CFRunLoopTimerGetOrder_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetOrder_ADDR, CFRunLoopTimerGetOrder_DESC) }
 
 fun CFRunLoopTimerGetOrder(arg0: MemorySegment): Long {
     try {
@@ -3396,8 +3396,8 @@ fun CFRunLoopTimerGetOrder(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFRunLoopTimerInvalidate Void(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*)
  */
 private val CFRunLoopTimerInvalidate_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFRunLoopTimerInvalidate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerInvalidate").orElseThrow()
-private val CFRunLoopTimerInvalidate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerInvalidate_ADDR, CFRunLoopTimerInvalidate_DESC)
+private val CFRunLoopTimerInvalidate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerInvalidate").orElseThrow() }
+private val CFRunLoopTimerInvalidate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerInvalidate_ADDR, CFRunLoopTimerInvalidate_DESC) }
 
 fun CFRunLoopTimerInvalidate(arg0: MemorySegment): Unit {
     try {
@@ -3415,8 +3415,8 @@ fun CFRunLoopTimerInvalidate(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFRunLoopTimerIsValid typedef Boolean = UNSIGNED = Char(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*)
  */
 private val CFRunLoopTimerIsValid_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFRunLoopTimerIsValid_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerIsValid").orElseThrow()
-private val CFRunLoopTimerIsValid_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerIsValid_ADDR, CFRunLoopTimerIsValid_DESC)
+private val CFRunLoopTimerIsValid_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerIsValid").orElseThrow() }
+private val CFRunLoopTimerIsValid_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerIsValid_ADDR, CFRunLoopTimerIsValid_DESC) }
 
 fun CFRunLoopTimerIsValid(arg0: MemorySegment): Byte {
     try {
@@ -3434,8 +3434,8 @@ fun CFRunLoopTimerIsValid(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFRunLoopTimerGetContext Void(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*,(typedef CFRunLoopTimerContext = Declared(CFRunLoopTimerContext))*)
  */
 private val CFRunLoopTimerGetContext_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRunLoopTimerGetContext_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerGetContext").orElseThrow()
-private val CFRunLoopTimerGetContext_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetContext_ADDR, CFRunLoopTimerGetContext_DESC)
+private val CFRunLoopTimerGetContext_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerGetContext").orElseThrow() }
+private val CFRunLoopTimerGetContext_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetContext_ADDR, CFRunLoopTimerGetContext_DESC) }
 
 fun CFRunLoopTimerGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -3453,8 +3453,8 @@ fun CFRunLoopTimerGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFRunLoopTimerGetTolerance typedef CFTimeInterval = Double(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*)
  */
 private val CFRunLoopTimerGetTolerance_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CFRunLoopTimerGetTolerance_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerGetTolerance").orElseThrow()
-private val CFRunLoopTimerGetTolerance_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetTolerance_ADDR, CFRunLoopTimerGetTolerance_DESC)
+private val CFRunLoopTimerGetTolerance_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerGetTolerance").orElseThrow() }
+private val CFRunLoopTimerGetTolerance_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerGetTolerance_ADDR, CFRunLoopTimerGetTolerance_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
@@ -3476,8 +3476,8 @@ fun CFRunLoopTimerGetTolerance(arg0: MemorySegment): Double {
  * {@snippet lang=c : CFRunLoopTimerSetTolerance Void(typedef CFRunLoopTimerRef = (Declared(__CFRunLoopTimer))*,typedef CFTimeInterval = Double)
  */
 private val CFRunLoopTimerSetTolerance_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CFRunLoopTimerSetTolerance_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRunLoopTimerSetTolerance").orElseThrow()
-private val CFRunLoopTimerSetTolerance_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRunLoopTimerSetTolerance_ADDR, CFRunLoopTimerSetTolerance_DESC)
+private val CFRunLoopTimerSetTolerance_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRunLoopTimerSetTolerance").orElseThrow() }
+private val CFRunLoopTimerSetTolerance_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRunLoopTimerSetTolerance_ADDR, CFRunLoopTimerSetTolerance_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
@@ -3499,8 +3499,8 @@ fun CFRunLoopTimerSetTolerance(arg0: MemorySegment, arg1: Double): Unit {
  * {@snippet lang=c : CFSocketGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFSocketGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFSocketGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketGetTypeID").orElseThrow()
-private val CFSocketGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketGetTypeID_ADDR, CFSocketGetTypeID_DESC)
+private val CFSocketGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketGetTypeID").orElseThrow() }
+private val CFSocketGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketGetTypeID_ADDR, CFSocketGetTypeID_DESC) }
 
 fun CFSocketGetTypeID(): Long {
     try {
@@ -3518,8 +3518,8 @@ fun CFSocketGetTypeID(): Long {
  * {@snippet lang=c : CFSocketCreate typedef CFSocketRef = (Declared(__CFSocket))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef SInt32 = Int,typedef SInt32 = Int,typedef SInt32 = Int,typedef CFOptionFlags = UNSIGNED = Long,typedef CFSocketCallBack = (Void((Declared(__CFSocket))*,Declared(CFSocketCallBackType),(Declared(__CFData))*,(Void)*,(Void)*))*,(typedef CFSocketContext = Declared(CFSocketContext))*)
  */
 private val CFSocketCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketCreate").orElseThrow()
-private val CFSocketCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketCreate_ADDR, CFSocketCreate_DESC)
+private val CFSocketCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketCreate").orElseThrow() }
+private val CFSocketCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketCreate_ADDR, CFSocketCreate_DESC) }
 
 fun CFSocketCreate(arg0: MemorySegment, arg1: Int, arg2: Int, arg3: Int, arg4: Long, arg5: MemorySegment, arg6: MemorySegment): MemorySegment {
     try {
@@ -3537,8 +3537,8 @@ fun CFSocketCreate(arg0: MemorySegment, arg1: Int, arg2: Int, arg3: Int, arg4: L
  * {@snippet lang=c : CFSocketCreateWithNative typedef CFSocketRef = (Declared(__CFSocket))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFSocketNativeHandle = Int,typedef CFOptionFlags = UNSIGNED = Long,typedef CFSocketCallBack = (Void((Declared(__CFSocket))*,Declared(CFSocketCallBackType),(Declared(__CFData))*,(Void)*,(Void)*))*,(typedef CFSocketContext = Declared(CFSocketContext))*)
  */
 private val CFSocketCreateWithNative_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketCreateWithNative_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketCreateWithNative").orElseThrow()
-private val CFSocketCreateWithNative_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketCreateWithNative_ADDR, CFSocketCreateWithNative_DESC)
+private val CFSocketCreateWithNative_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketCreateWithNative").orElseThrow() }
+private val CFSocketCreateWithNative_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketCreateWithNative_ADDR, CFSocketCreateWithNative_DESC) }
 
 fun CFSocketCreateWithNative(arg0: MemorySegment, arg1: Int, arg2: Long, arg3: MemorySegment, arg4: MemorySegment): MemorySegment {
     try {
@@ -3556,8 +3556,8 @@ fun CFSocketCreateWithNative(arg0: MemorySegment, arg1: Int, arg2: Long, arg3: M
  * {@snippet lang=c : CFSocketCreateWithSocketSignature typedef CFSocketRef = (Declared(__CFSocket))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef CFSocketSignature = Declared(CFSocketSignature))*,typedef CFOptionFlags = UNSIGNED = Long,typedef CFSocketCallBack = (Void((Declared(__CFSocket))*,Declared(CFSocketCallBackType),(Declared(__CFData))*,(Void)*,(Void)*))*,(typedef CFSocketContext = Declared(CFSocketContext))*)
  */
 private val CFSocketCreateWithSocketSignature_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketCreateWithSocketSignature_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketCreateWithSocketSignature").orElseThrow()
-private val CFSocketCreateWithSocketSignature_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketCreateWithSocketSignature_ADDR, CFSocketCreateWithSocketSignature_DESC)
+private val CFSocketCreateWithSocketSignature_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketCreateWithSocketSignature").orElseThrow() }
+private val CFSocketCreateWithSocketSignature_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketCreateWithSocketSignature_ADDR, CFSocketCreateWithSocketSignature_DESC) }
 
 fun CFSocketCreateWithSocketSignature(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment, arg4: MemorySegment): MemorySegment {
     try {
@@ -3575,8 +3575,8 @@ fun CFSocketCreateWithSocketSignature(arg0: MemorySegment, arg1: MemorySegment, 
  * {@snippet lang=c : CFSocketCreateConnectedToSocketSignature typedef CFSocketRef = (Declared(__CFSocket))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef CFSocketSignature = Declared(CFSocketSignature))*,typedef CFOptionFlags = UNSIGNED = Long,typedef CFSocketCallBack = (Void((Declared(__CFSocket))*,Declared(CFSocketCallBackType),(Declared(__CFData))*,(Void)*,(Void)*))*,(typedef CFSocketContext = Declared(CFSocketContext))*,typedef CFTimeInterval = Double)
  */
 private val CFSocketCreateConnectedToSocketSignature_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CFSocketCreateConnectedToSocketSignature_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketCreateConnectedToSocketSignature").orElseThrow()
-private val CFSocketCreateConnectedToSocketSignature_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketCreateConnectedToSocketSignature_ADDR, CFSocketCreateConnectedToSocketSignature_DESC)
+private val CFSocketCreateConnectedToSocketSignature_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketCreateConnectedToSocketSignature").orElseThrow() }
+private val CFSocketCreateConnectedToSocketSignature_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketCreateConnectedToSocketSignature_ADDR, CFSocketCreateConnectedToSocketSignature_DESC) }
 
 fun CFSocketCreateConnectedToSocketSignature(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment, arg4: MemorySegment, arg5: Double): MemorySegment {
     try {
@@ -3594,8 +3594,8 @@ fun CFSocketCreateConnectedToSocketSignature(arg0: MemorySegment, arg1: MemorySe
  * {@snippet lang=c : CFSocketSetAddress typedef CFSocketError = Declared(CFSocketError)(typedef CFSocketRef = (Declared(__CFSocket))*,typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CFSocketSetAddress_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketSetAddress_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketSetAddress").orElseThrow()
-private val CFSocketSetAddress_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketSetAddress_ADDR, CFSocketSetAddress_DESC)
+private val CFSocketSetAddress_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketSetAddress").orElseThrow() }
+private val CFSocketSetAddress_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketSetAddress_ADDR, CFSocketSetAddress_DESC) }
 
 fun CFSocketSetAddress(arg0: MemorySegment, arg1: MemorySegment): CFSocketError {
     try {
@@ -3613,8 +3613,8 @@ fun CFSocketSetAddress(arg0: MemorySegment, arg1: MemorySegment): CFSocketError 
  * {@snippet lang=c : CFSocketConnectToAddress typedef CFSocketError = Declared(CFSocketError)(typedef CFSocketRef = (Declared(__CFSocket))*,typedef CFDataRef = (Declared(__CFData))*,typedef CFTimeInterval = Double)
  */
 private val CFSocketConnectToAddress_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CFSocketConnectToAddress_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketConnectToAddress").orElseThrow()
-private val CFSocketConnectToAddress_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketConnectToAddress_ADDR, CFSocketConnectToAddress_DESC)
+private val CFSocketConnectToAddress_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketConnectToAddress").orElseThrow() }
+private val CFSocketConnectToAddress_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketConnectToAddress_ADDR, CFSocketConnectToAddress_DESC) }
 
 fun CFSocketConnectToAddress(arg0: MemorySegment, arg1: MemorySegment, arg2: Double): CFSocketError {
     try {
@@ -3632,8 +3632,8 @@ fun CFSocketConnectToAddress(arg0: MemorySegment, arg1: MemorySegment, arg2: Dou
  * {@snippet lang=c : CFSocketInvalidate Void(typedef CFSocketRef = (Declared(__CFSocket))*)
  */
 private val CFSocketInvalidate_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFSocketInvalidate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketInvalidate").orElseThrow()
-private val CFSocketInvalidate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketInvalidate_ADDR, CFSocketInvalidate_DESC)
+private val CFSocketInvalidate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketInvalidate").orElseThrow() }
+private val CFSocketInvalidate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketInvalidate_ADDR, CFSocketInvalidate_DESC) }
 
 fun CFSocketInvalidate(arg0: MemorySegment): Unit {
     try {
@@ -3651,8 +3651,8 @@ fun CFSocketInvalidate(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFSocketIsValid typedef Boolean = UNSIGNED = Char(typedef CFSocketRef = (Declared(__CFSocket))*)
  */
 private val CFSocketIsValid_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFSocketIsValid_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketIsValid").orElseThrow()
-private val CFSocketIsValid_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketIsValid_ADDR, CFSocketIsValid_DESC)
+private val CFSocketIsValid_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketIsValid").orElseThrow() }
+private val CFSocketIsValid_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketIsValid_ADDR, CFSocketIsValid_DESC) }
 
 fun CFSocketIsValid(arg0: MemorySegment): Byte {
     try {
@@ -3670,8 +3670,8 @@ fun CFSocketIsValid(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFSocketCopyAddress typedef CFDataRef = (Declared(__CFData))*(typedef CFSocketRef = (Declared(__CFSocket))*)
  */
 private val CFSocketCopyAddress_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketCopyAddress_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketCopyAddress").orElseThrow()
-private val CFSocketCopyAddress_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketCopyAddress_ADDR, CFSocketCopyAddress_DESC)
+private val CFSocketCopyAddress_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketCopyAddress").orElseThrow() }
+private val CFSocketCopyAddress_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketCopyAddress_ADDR, CFSocketCopyAddress_DESC) }
 
 fun CFSocketCopyAddress(arg0: MemorySegment): MemorySegment {
     try {
@@ -3689,8 +3689,8 @@ fun CFSocketCopyAddress(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFSocketCopyPeerAddress typedef CFDataRef = (Declared(__CFData))*(typedef CFSocketRef = (Declared(__CFSocket))*)
  */
 private val CFSocketCopyPeerAddress_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketCopyPeerAddress_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketCopyPeerAddress").orElseThrow()
-private val CFSocketCopyPeerAddress_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketCopyPeerAddress_ADDR, CFSocketCopyPeerAddress_DESC)
+private val CFSocketCopyPeerAddress_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketCopyPeerAddress").orElseThrow() }
+private val CFSocketCopyPeerAddress_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketCopyPeerAddress_ADDR, CFSocketCopyPeerAddress_DESC) }
 
 fun CFSocketCopyPeerAddress(arg0: MemorySegment): MemorySegment {
     try {
@@ -3708,8 +3708,8 @@ fun CFSocketCopyPeerAddress(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFSocketGetContext Void(typedef CFSocketRef = (Declared(__CFSocket))*,(typedef CFSocketContext = Declared(CFSocketContext))*)
  */
 private val CFSocketGetContext_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketGetContext_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketGetContext").orElseThrow()
-private val CFSocketGetContext_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketGetContext_ADDR, CFSocketGetContext_DESC)
+private val CFSocketGetContext_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketGetContext").orElseThrow() }
+private val CFSocketGetContext_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketGetContext_ADDR, CFSocketGetContext_DESC) }
 
 fun CFSocketGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -3727,8 +3727,8 @@ fun CFSocketGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFSocketGetNative typedef CFSocketNativeHandle = Int(typedef CFSocketRef = (Declared(__CFSocket))*)
  */
 private val CFSocketGetNative_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CFSocketGetNative_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketGetNative").orElseThrow()
-private val CFSocketGetNative_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketGetNative_ADDR, CFSocketGetNative_DESC)
+private val CFSocketGetNative_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketGetNative").orElseThrow() }
+private val CFSocketGetNative_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketGetNative_ADDR, CFSocketGetNative_DESC) }
 
 fun CFSocketGetNative(arg0: MemorySegment): Int {
     try {
@@ -3746,8 +3746,8 @@ fun CFSocketGetNative(arg0: MemorySegment): Int {
  * {@snippet lang=c : CFSocketCreateRunLoopSource typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFSocketRef = (Declared(__CFSocket))*,typedef CFIndex = Long)
  */
 private val CFSocketCreateRunLoopSource_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFSocketCreateRunLoopSource_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketCreateRunLoopSource").orElseThrow()
-private val CFSocketCreateRunLoopSource_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketCreateRunLoopSource_ADDR, CFSocketCreateRunLoopSource_DESC)
+private val CFSocketCreateRunLoopSource_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketCreateRunLoopSource").orElseThrow() }
+private val CFSocketCreateRunLoopSource_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketCreateRunLoopSource_ADDR, CFSocketCreateRunLoopSource_DESC) }
 
 fun CFSocketCreateRunLoopSource(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): MemorySegment {
     try {
@@ -3765,8 +3765,8 @@ fun CFSocketCreateRunLoopSource(arg0: MemorySegment, arg1: MemorySegment, arg2: 
  * {@snippet lang=c : CFSocketGetSocketFlags typedef CFOptionFlags = UNSIGNED = Long(typedef CFSocketRef = (Declared(__CFSocket))*)
  */
 private val CFSocketGetSocketFlags_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFSocketGetSocketFlags_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketGetSocketFlags").orElseThrow()
-private val CFSocketGetSocketFlags_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketGetSocketFlags_ADDR, CFSocketGetSocketFlags_DESC)
+private val CFSocketGetSocketFlags_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketGetSocketFlags").orElseThrow() }
+private val CFSocketGetSocketFlags_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketGetSocketFlags_ADDR, CFSocketGetSocketFlags_DESC) }
 
 fun CFSocketGetSocketFlags(arg0: MemorySegment): Long {
     try {
@@ -3784,8 +3784,8 @@ fun CFSocketGetSocketFlags(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFSocketSetSocketFlags Void(typedef CFSocketRef = (Declared(__CFSocket))*,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFSocketSetSocketFlags_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFSocketSetSocketFlags_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketSetSocketFlags").orElseThrow()
-private val CFSocketSetSocketFlags_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketSetSocketFlags_ADDR, CFSocketSetSocketFlags_DESC)
+private val CFSocketSetSocketFlags_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketSetSocketFlags").orElseThrow() }
+private val CFSocketSetSocketFlags_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketSetSocketFlags_ADDR, CFSocketSetSocketFlags_DESC) }
 
 fun CFSocketSetSocketFlags(arg0: MemorySegment, arg1: Long): Unit {
     try {
@@ -3803,8 +3803,8 @@ fun CFSocketSetSocketFlags(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CFSocketDisableCallBacks Void(typedef CFSocketRef = (Declared(__CFSocket))*,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFSocketDisableCallBacks_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFSocketDisableCallBacks_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketDisableCallBacks").orElseThrow()
-private val CFSocketDisableCallBacks_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketDisableCallBacks_ADDR, CFSocketDisableCallBacks_DESC)
+private val CFSocketDisableCallBacks_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketDisableCallBacks").orElseThrow() }
+private val CFSocketDisableCallBacks_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketDisableCallBacks_ADDR, CFSocketDisableCallBacks_DESC) }
 
 fun CFSocketDisableCallBacks(arg0: MemorySegment, arg1: Long): Unit {
     try {
@@ -3822,8 +3822,8 @@ fun CFSocketDisableCallBacks(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CFSocketEnableCallBacks Void(typedef CFSocketRef = (Declared(__CFSocket))*,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFSocketEnableCallBacks_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFSocketEnableCallBacks_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketEnableCallBacks").orElseThrow()
-private val CFSocketEnableCallBacks_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketEnableCallBacks_ADDR, CFSocketEnableCallBacks_DESC)
+private val CFSocketEnableCallBacks_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketEnableCallBacks").orElseThrow() }
+private val CFSocketEnableCallBacks_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketEnableCallBacks_ADDR, CFSocketEnableCallBacks_DESC) }
 
 fun CFSocketEnableCallBacks(arg0: MemorySegment, arg1: Long): Unit {
     try {
@@ -3841,8 +3841,8 @@ fun CFSocketEnableCallBacks(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CFSocketSendData typedef CFSocketError = Declared(CFSocketError)(typedef CFSocketRef = (Declared(__CFSocket))*,typedef CFDataRef = (Declared(__CFData))*,typedef CFDataRef = (Declared(__CFData))*,typedef CFTimeInterval = Double)
  */
 private val CFSocketSendData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CFSocketSendData_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketSendData").orElseThrow()
-private val CFSocketSendData_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketSendData_ADDR, CFSocketSendData_DESC)
+private val CFSocketSendData_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketSendData").orElseThrow() }
+private val CFSocketSendData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketSendData_ADDR, CFSocketSendData_DESC) }
 
 fun CFSocketSendData(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Double): CFSocketError {
     try {
@@ -3860,8 +3860,8 @@ fun CFSocketSendData(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegme
  * {@snippet lang=c : CFSocketRegisterValue typedef CFSocketError = Declared(CFSocketError)((typedef CFSocketSignature = Declared(CFSocketSignature))*,typedef CFTimeInterval = Double,typedef CFStringRef = (Declared(__CFString))*,typedef CFPropertyListRef = (Void)*)
  */
 private val CFSocketRegisterValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketRegisterValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketRegisterValue").orElseThrow()
-private val CFSocketRegisterValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketRegisterValue_ADDR, CFSocketRegisterValue_DESC)
+private val CFSocketRegisterValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketRegisterValue").orElseThrow() }
+private val CFSocketRegisterValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketRegisterValue_ADDR, CFSocketRegisterValue_DESC) }
 
 fun CFSocketRegisterValue(arg0: MemorySegment, arg1: Double, arg2: MemorySegment, arg3: MemorySegment): CFSocketError {
     try {
@@ -3879,8 +3879,8 @@ fun CFSocketRegisterValue(arg0: MemorySegment, arg1: Double, arg2: MemorySegment
  * {@snippet lang=c : CFSocketCopyRegisteredValue typedef CFSocketError = Declared(CFSocketError)((typedef CFSocketSignature = Declared(CFSocketSignature))*,typedef CFTimeInterval = Double,typedef CFStringRef = (Declared(__CFString))*,(typedef CFPropertyListRef = (Void)*)*,(typedef CFDataRef = (Declared(__CFData))*)*)
  */
 private val CFSocketCopyRegisteredValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketCopyRegisteredValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketCopyRegisteredValue").orElseThrow()
-private val CFSocketCopyRegisteredValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketCopyRegisteredValue_ADDR, CFSocketCopyRegisteredValue_DESC)
+private val CFSocketCopyRegisteredValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketCopyRegisteredValue").orElseThrow() }
+private val CFSocketCopyRegisteredValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketCopyRegisteredValue_ADDR, CFSocketCopyRegisteredValue_DESC) }
 
 fun CFSocketCopyRegisteredValue(arg0: MemorySegment, arg1: Double, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): CFSocketError {
     try {
@@ -3898,8 +3898,8 @@ fun CFSocketCopyRegisteredValue(arg0: MemorySegment, arg1: Double, arg2: MemoryS
  * {@snippet lang=c : CFSocketRegisterSocketSignature typedef CFSocketError = Declared(CFSocketError)((typedef CFSocketSignature = Declared(CFSocketSignature))*,typedef CFTimeInterval = Double,typedef CFStringRef = (Declared(__CFString))*,(typedef CFSocketSignature = Declared(CFSocketSignature))*)
  */
 private val CFSocketRegisterSocketSignature_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketRegisterSocketSignature_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketRegisterSocketSignature").orElseThrow()
-private val CFSocketRegisterSocketSignature_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketRegisterSocketSignature_ADDR, CFSocketRegisterSocketSignature_DESC)
+private val CFSocketRegisterSocketSignature_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketRegisterSocketSignature").orElseThrow() }
+private val CFSocketRegisterSocketSignature_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketRegisterSocketSignature_ADDR, CFSocketRegisterSocketSignature_DESC) }
 
 fun CFSocketRegisterSocketSignature(arg0: MemorySegment, arg1: Double, arg2: MemorySegment, arg3: MemorySegment): CFSocketError {
     try {
@@ -3917,8 +3917,8 @@ fun CFSocketRegisterSocketSignature(arg0: MemorySegment, arg1: Double, arg2: Mem
  * {@snippet lang=c : CFSocketCopyRegisteredSocketSignature typedef CFSocketError = Declared(CFSocketError)((typedef CFSocketSignature = Declared(CFSocketSignature))*,typedef CFTimeInterval = Double,typedef CFStringRef = (Declared(__CFString))*,(typedef CFSocketSignature = Declared(CFSocketSignature))*,(typedef CFDataRef = (Declared(__CFData))*)*)
  */
 private val CFSocketCopyRegisteredSocketSignature_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFSocketCopyRegisteredSocketSignature_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketCopyRegisteredSocketSignature").orElseThrow()
-private val CFSocketCopyRegisteredSocketSignature_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketCopyRegisteredSocketSignature_ADDR, CFSocketCopyRegisteredSocketSignature_DESC)
+private val CFSocketCopyRegisteredSocketSignature_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketCopyRegisteredSocketSignature").orElseThrow() }
+private val CFSocketCopyRegisteredSocketSignature_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketCopyRegisteredSocketSignature_ADDR, CFSocketCopyRegisteredSocketSignature_DESC) }
 
 fun CFSocketCopyRegisteredSocketSignature(arg0: MemorySegment, arg1: Double, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): CFSocketError {
     try {
@@ -3936,8 +3936,8 @@ fun CFSocketCopyRegisteredSocketSignature(arg0: MemorySegment, arg1: Double, arg
  * {@snippet lang=c : CFSocketUnregister typedef CFSocketError = Declared(CFSocketError)((typedef CFSocketSignature = Declared(CFSocketSignature))*,typedef CFTimeInterval = Double,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFSocketUnregister_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CFSocketUnregister_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketUnregister").orElseThrow()
-private val CFSocketUnregister_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketUnregister_ADDR, CFSocketUnregister_DESC)
+private val CFSocketUnregister_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketUnregister").orElseThrow() }
+private val CFSocketUnregister_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketUnregister_ADDR, CFSocketUnregister_DESC) }
 
 fun CFSocketUnregister(arg0: MemorySegment, arg1: Double, arg2: MemorySegment): CFSocketError {
     try {
@@ -3955,8 +3955,8 @@ fun CFSocketUnregister(arg0: MemorySegment, arg1: Double, arg2: MemorySegment): 
  * {@snippet lang=c : CFSocketSetDefaultNameRegistryPortNumber Void(typedef UInt16 = UNSIGNED = Short)
  */
 private val CFSocketSetDefaultNameRegistryPortNumber_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT)
-private val CFSocketSetDefaultNameRegistryPortNumber_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketSetDefaultNameRegistryPortNumber").orElseThrow()
-private val CFSocketSetDefaultNameRegistryPortNumber_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketSetDefaultNameRegistryPortNumber_ADDR, CFSocketSetDefaultNameRegistryPortNumber_DESC)
+private val CFSocketSetDefaultNameRegistryPortNumber_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketSetDefaultNameRegistryPortNumber").orElseThrow() }
+private val CFSocketSetDefaultNameRegistryPortNumber_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketSetDefaultNameRegistryPortNumber_ADDR, CFSocketSetDefaultNameRegistryPortNumber_DESC) }
 
 fun CFSocketSetDefaultNameRegistryPortNumber(arg0: Short): Unit {
     try {
@@ -3974,8 +3974,8 @@ fun CFSocketSetDefaultNameRegistryPortNumber(arg0: Short): Unit {
  * {@snippet lang=c : CFSocketGetDefaultNameRegistryPortNumber typedef UInt16 = UNSIGNED = Short()
  */
 private val CFSocketGetDefaultNameRegistryPortNumber_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_SHORT)
-private val CFSocketGetDefaultNameRegistryPortNumber_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFSocketGetDefaultNameRegistryPortNumber").orElseThrow()
-private val CFSocketGetDefaultNameRegistryPortNumber_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFSocketGetDefaultNameRegistryPortNumber_ADDR, CFSocketGetDefaultNameRegistryPortNumber_DESC)
+private val CFSocketGetDefaultNameRegistryPortNumber_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFSocketGetDefaultNameRegistryPortNumber").orElseThrow() }
+private val CFSocketGetDefaultNameRegistryPortNumber_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFSocketGetDefaultNameRegistryPortNumber_ADDR, CFSocketGetDefaultNameRegistryPortNumber_DESC) }
 
 fun CFSocketGetDefaultNameRegistryPortNumber(): Short {
     try {
@@ -4070,8 +4070,8 @@ var kCFSocketRetrieveCommand: MemorySegment
  * {@snippet lang=c : CFReadStreamGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFReadStreamGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFReadStreamGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamGetTypeID").orElseThrow()
-private val CFReadStreamGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamGetTypeID_ADDR, CFReadStreamGetTypeID_DESC)
+private val CFReadStreamGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamGetTypeID").orElseThrow() }
+private val CFReadStreamGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamGetTypeID_ADDR, CFReadStreamGetTypeID_DESC) }
 
 fun CFReadStreamGetTypeID(): Long {
     try {
@@ -4089,8 +4089,8 @@ fun CFReadStreamGetTypeID(): Long {
  * {@snippet lang=c : CFWriteStreamGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFWriteStreamGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFWriteStreamGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamGetTypeID").orElseThrow()
-private val CFWriteStreamGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamGetTypeID_ADDR, CFWriteStreamGetTypeID_DESC)
+private val CFWriteStreamGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamGetTypeID").orElseThrow() }
+private val CFWriteStreamGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamGetTypeID_ADDR, CFWriteStreamGetTypeID_DESC) }
 
 fun CFWriteStreamGetTypeID(): Long {
     try {
@@ -4119,8 +4119,8 @@ var kCFStreamPropertyDataWritten: MemorySegment
  * {@snippet lang=c : CFReadStreamCreateWithBytesNoCopy typedef CFReadStreamRef = (Declared(__CFReadStream))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long,typedef CFAllocatorRef = (Declared(__CFAllocator))*)
  */
 private val CFReadStreamCreateWithBytesNoCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFReadStreamCreateWithBytesNoCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamCreateWithBytesNoCopy").orElseThrow()
-private val CFReadStreamCreateWithBytesNoCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamCreateWithBytesNoCopy_ADDR, CFReadStreamCreateWithBytesNoCopy_DESC)
+private val CFReadStreamCreateWithBytesNoCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamCreateWithBytesNoCopy").orElseThrow() }
+private val CFReadStreamCreateWithBytesNoCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamCreateWithBytesNoCopy_ADDR, CFReadStreamCreateWithBytesNoCopy_DESC) }
 
 fun CFReadStreamCreateWithBytesNoCopy(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): MemorySegment {
     try {
@@ -4138,8 +4138,8 @@ fun CFReadStreamCreateWithBytesNoCopy(arg0: MemorySegment, arg1: MemorySegment, 
  * {@snippet lang=c : CFWriteStreamCreateWithBuffer typedef CFWriteStreamRef = (Declared(__CFWriteStream))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long)
  */
 private val CFWriteStreamCreateWithBuffer_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFWriteStreamCreateWithBuffer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamCreateWithBuffer").orElseThrow()
-private val CFWriteStreamCreateWithBuffer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamCreateWithBuffer_ADDR, CFWriteStreamCreateWithBuffer_DESC)
+private val CFWriteStreamCreateWithBuffer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamCreateWithBuffer").orElseThrow() }
+private val CFWriteStreamCreateWithBuffer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamCreateWithBuffer_ADDR, CFWriteStreamCreateWithBuffer_DESC) }
 
 fun CFWriteStreamCreateWithBuffer(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): MemorySegment {
     try {
@@ -4157,8 +4157,8 @@ fun CFWriteStreamCreateWithBuffer(arg0: MemorySegment, arg1: MemorySegment, arg2
  * {@snippet lang=c : CFWriteStreamCreateWithAllocatedBuffers typedef CFWriteStreamRef = (Declared(__CFWriteStream))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFAllocatorRef = (Declared(__CFAllocator))*)
  */
 private val CFWriteStreamCreateWithAllocatedBuffers_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFWriteStreamCreateWithAllocatedBuffers_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamCreateWithAllocatedBuffers").orElseThrow()
-private val CFWriteStreamCreateWithAllocatedBuffers_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamCreateWithAllocatedBuffers_ADDR, CFWriteStreamCreateWithAllocatedBuffers_DESC)
+private val CFWriteStreamCreateWithAllocatedBuffers_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamCreateWithAllocatedBuffers").orElseThrow() }
+private val CFWriteStreamCreateWithAllocatedBuffers_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamCreateWithAllocatedBuffers_ADDR, CFWriteStreamCreateWithAllocatedBuffers_DESC) }
 
 fun CFWriteStreamCreateWithAllocatedBuffers(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4176,8 +4176,8 @@ fun CFWriteStreamCreateWithAllocatedBuffers(arg0: MemorySegment, arg1: MemorySeg
  * {@snippet lang=c : CFReadStreamCreateWithFile typedef CFReadStreamRef = (Declared(__CFReadStream))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFURLRef = (Declared(__CFURL))*)
  */
 private val CFReadStreamCreateWithFile_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFReadStreamCreateWithFile_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamCreateWithFile").orElseThrow()
-private val CFReadStreamCreateWithFile_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamCreateWithFile_ADDR, CFReadStreamCreateWithFile_DESC)
+private val CFReadStreamCreateWithFile_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamCreateWithFile").orElseThrow() }
+private val CFReadStreamCreateWithFile_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamCreateWithFile_ADDR, CFReadStreamCreateWithFile_DESC) }
 
 fun CFReadStreamCreateWithFile(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4195,8 +4195,8 @@ fun CFReadStreamCreateWithFile(arg0: MemorySegment, arg1: MemorySegment): Memory
  * {@snippet lang=c : CFWriteStreamCreateWithFile typedef CFWriteStreamRef = (Declared(__CFWriteStream))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFURLRef = (Declared(__CFURL))*)
  */
 private val CFWriteStreamCreateWithFile_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFWriteStreamCreateWithFile_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamCreateWithFile").orElseThrow()
-private val CFWriteStreamCreateWithFile_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamCreateWithFile_ADDR, CFWriteStreamCreateWithFile_DESC)
+private val CFWriteStreamCreateWithFile_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamCreateWithFile").orElseThrow() }
+private val CFWriteStreamCreateWithFile_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamCreateWithFile_ADDR, CFWriteStreamCreateWithFile_DESC) }
 
 fun CFWriteStreamCreateWithFile(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4214,8 +4214,8 @@ fun CFWriteStreamCreateWithFile(arg0: MemorySegment, arg1: MemorySegment): Memor
  * {@snippet lang=c : CFStreamCreateBoundPair Void(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef CFReadStreamRef = (Declared(__CFReadStream))*)*,(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)*,typedef CFIndex = Long)
  */
 private val CFStreamCreateBoundPair_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFStreamCreateBoundPair_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStreamCreateBoundPair").orElseThrow()
-private val CFStreamCreateBoundPair_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStreamCreateBoundPair_ADDR, CFStreamCreateBoundPair_DESC)
+private val CFStreamCreateBoundPair_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStreamCreateBoundPair").orElseThrow() }
+private val CFStreamCreateBoundPair_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStreamCreateBoundPair_ADDR, CFStreamCreateBoundPair_DESC) }
 
 fun CFStreamCreateBoundPair(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Unit {
     try {
@@ -4492,8 +4492,8 @@ var kCFStreamPropertyShouldCloseNativeSocket: MemorySegment
  * {@snippet lang=c : CFStreamCreatePairWithSocket Void(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFSocketNativeHandle = Int,(typedef CFReadStreamRef = (Declared(__CFReadStream))*)*,(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)*)
  */
 private val CFStreamCreatePairWithSocket_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFStreamCreatePairWithSocket_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStreamCreatePairWithSocket").orElseThrow()
-private val CFStreamCreatePairWithSocket_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStreamCreatePairWithSocket_ADDR, CFStreamCreatePairWithSocket_DESC)
+private val CFStreamCreatePairWithSocket_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStreamCreatePairWithSocket").orElseThrow() }
+private val CFStreamCreatePairWithSocket_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStreamCreatePairWithSocket_ADDR, CFStreamCreatePairWithSocket_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "Use nw_connection_t in Network framework instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "Use nw_connection_t in Network framework instead")
@@ -4515,8 +4515,8 @@ fun CFStreamCreatePairWithSocket(arg0: MemorySegment, arg1: Int, arg2: MemorySeg
  * {@snippet lang=c : CFStreamCreatePairWithSocketToHost Void(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*,typedef UInt32 = UNSIGNED = Int,(typedef CFReadStreamRef = (Declared(__CFReadStream))*)*,(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)*)
  */
 private val CFStreamCreatePairWithSocketToHost_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFStreamCreatePairWithSocketToHost_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStreamCreatePairWithSocketToHost").orElseThrow()
-private val CFStreamCreatePairWithSocketToHost_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStreamCreatePairWithSocketToHost_ADDR, CFStreamCreatePairWithSocketToHost_DESC)
+private val CFStreamCreatePairWithSocketToHost_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStreamCreatePairWithSocketToHost").orElseThrow() }
+private val CFStreamCreatePairWithSocketToHost_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStreamCreatePairWithSocketToHost_ADDR, CFStreamCreatePairWithSocketToHost_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "Use nw_connection_t in Network framework instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "Use nw_connection_t in Network framework instead")
@@ -4538,8 +4538,8 @@ fun CFStreamCreatePairWithSocketToHost(arg0: MemorySegment, arg1: MemorySegment,
  * {@snippet lang=c : CFStreamCreatePairWithPeerSocketSignature Void(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef CFSocketSignature = Declared(CFSocketSignature))*,(typedef CFReadStreamRef = (Declared(__CFReadStream))*)*,(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)*)
  */
 private val CFStreamCreatePairWithPeerSocketSignature_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFStreamCreatePairWithPeerSocketSignature_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStreamCreatePairWithPeerSocketSignature").orElseThrow()
-private val CFStreamCreatePairWithPeerSocketSignature_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStreamCreatePairWithPeerSocketSignature_ADDR, CFStreamCreatePairWithPeerSocketSignature_DESC)
+private val CFStreamCreatePairWithPeerSocketSignature_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStreamCreatePairWithPeerSocketSignature").orElseThrow() }
+private val CFStreamCreatePairWithPeerSocketSignature_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStreamCreatePairWithPeerSocketSignature_ADDR, CFStreamCreatePairWithPeerSocketSignature_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "Use nw_connection_t in Network framework instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "Use nw_connection_t in Network framework instead")
@@ -4561,8 +4561,8 @@ fun CFStreamCreatePairWithPeerSocketSignature(arg0: MemorySegment, arg1: MemoryS
  * {@snippet lang=c : CFReadStreamGetStatus typedef CFStreamStatus = Declared(CFStreamStatus)(typedef CFReadStreamRef = (Declared(__CFReadStream))*)
  */
 private val CFReadStreamGetStatus_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFReadStreamGetStatus_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamGetStatus").orElseThrow()
-private val CFReadStreamGetStatus_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamGetStatus_ADDR, CFReadStreamGetStatus_DESC)
+private val CFReadStreamGetStatus_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamGetStatus").orElseThrow() }
+private val CFReadStreamGetStatus_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamGetStatus_ADDR, CFReadStreamGetStatus_DESC) }
 
 fun CFReadStreamGetStatus(arg0: MemorySegment): CFStreamStatus {
     try {
@@ -4580,8 +4580,8 @@ fun CFReadStreamGetStatus(arg0: MemorySegment): CFStreamStatus {
  * {@snippet lang=c : CFWriteStreamGetStatus typedef CFStreamStatus = Declared(CFStreamStatus)(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)
  */
 private val CFWriteStreamGetStatus_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFWriteStreamGetStatus_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamGetStatus").orElseThrow()
-private val CFWriteStreamGetStatus_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamGetStatus_ADDR, CFWriteStreamGetStatus_DESC)
+private val CFWriteStreamGetStatus_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamGetStatus").orElseThrow() }
+private val CFWriteStreamGetStatus_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamGetStatus_ADDR, CFWriteStreamGetStatus_DESC) }
 
 fun CFWriteStreamGetStatus(arg0: MemorySegment): CFStreamStatus {
     try {
@@ -4599,8 +4599,8 @@ fun CFWriteStreamGetStatus(arg0: MemorySegment): CFStreamStatus {
  * {@snippet lang=c : CFReadStreamCopyError typedef CFErrorRef = (Declared(__CFError))*(typedef CFReadStreamRef = (Declared(__CFReadStream))*)
  */
 private val CFReadStreamCopyError_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFReadStreamCopyError_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamCopyError").orElseThrow()
-private val CFReadStreamCopyError_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamCopyError_ADDR, CFReadStreamCopyError_DESC)
+private val CFReadStreamCopyError_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamCopyError").orElseThrow() }
+private val CFReadStreamCopyError_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamCopyError_ADDR, CFReadStreamCopyError_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4622,8 +4622,8 @@ fun CFReadStreamCopyError(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFWriteStreamCopyError typedef CFErrorRef = (Declared(__CFError))*(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)
  */
 private val CFWriteStreamCopyError_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFWriteStreamCopyError_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamCopyError").orElseThrow()
-private val CFWriteStreamCopyError_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamCopyError_ADDR, CFWriteStreamCopyError_DESC)
+private val CFWriteStreamCopyError_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamCopyError").orElseThrow() }
+private val CFWriteStreamCopyError_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamCopyError_ADDR, CFWriteStreamCopyError_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4645,8 +4645,8 @@ fun CFWriteStreamCopyError(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFReadStreamOpen typedef Boolean = UNSIGNED = Char(typedef CFReadStreamRef = (Declared(__CFReadStream))*)
  */
 private val CFReadStreamOpen_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFReadStreamOpen_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamOpen").orElseThrow()
-private val CFReadStreamOpen_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamOpen_ADDR, CFReadStreamOpen_DESC)
+private val CFReadStreamOpen_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamOpen").orElseThrow() }
+private val CFReadStreamOpen_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamOpen_ADDR, CFReadStreamOpen_DESC) }
 
 fun CFReadStreamOpen(arg0: MemorySegment): Byte {
     try {
@@ -4664,8 +4664,8 @@ fun CFReadStreamOpen(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFWriteStreamOpen typedef Boolean = UNSIGNED = Char(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)
  */
 private val CFWriteStreamOpen_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFWriteStreamOpen_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamOpen").orElseThrow()
-private val CFWriteStreamOpen_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamOpen_ADDR, CFWriteStreamOpen_DESC)
+private val CFWriteStreamOpen_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamOpen").orElseThrow() }
+private val CFWriteStreamOpen_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamOpen_ADDR, CFWriteStreamOpen_DESC) }
 
 fun CFWriteStreamOpen(arg0: MemorySegment): Byte {
     try {
@@ -4683,8 +4683,8 @@ fun CFWriteStreamOpen(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFReadStreamClose Void(typedef CFReadStreamRef = (Declared(__CFReadStream))*)
  */
 private val CFReadStreamClose_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFReadStreamClose_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamClose").orElseThrow()
-private val CFReadStreamClose_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamClose_ADDR, CFReadStreamClose_DESC)
+private val CFReadStreamClose_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamClose").orElseThrow() }
+private val CFReadStreamClose_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamClose_ADDR, CFReadStreamClose_DESC) }
 
 fun CFReadStreamClose(arg0: MemorySegment): Unit {
     try {
@@ -4702,8 +4702,8 @@ fun CFReadStreamClose(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFWriteStreamClose Void(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)
  */
 private val CFWriteStreamClose_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFWriteStreamClose_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamClose").orElseThrow()
-private val CFWriteStreamClose_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamClose_ADDR, CFWriteStreamClose_DESC)
+private val CFWriteStreamClose_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamClose").orElseThrow() }
+private val CFWriteStreamClose_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamClose_ADDR, CFWriteStreamClose_DESC) }
 
 fun CFWriteStreamClose(arg0: MemorySegment): Unit {
     try {
@@ -4721,8 +4721,8 @@ fun CFWriteStreamClose(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFReadStreamHasBytesAvailable typedef Boolean = UNSIGNED = Char(typedef CFReadStreamRef = (Declared(__CFReadStream))*)
  */
 private val CFReadStreamHasBytesAvailable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFReadStreamHasBytesAvailable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamHasBytesAvailable").orElseThrow()
-private val CFReadStreamHasBytesAvailable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamHasBytesAvailable_ADDR, CFReadStreamHasBytesAvailable_DESC)
+private val CFReadStreamHasBytesAvailable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamHasBytesAvailable").orElseThrow() }
+private val CFReadStreamHasBytesAvailable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamHasBytesAvailable_ADDR, CFReadStreamHasBytesAvailable_DESC) }
 
 fun CFReadStreamHasBytesAvailable(arg0: MemorySegment): Byte {
     try {
@@ -4740,8 +4740,8 @@ fun CFReadStreamHasBytesAvailable(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFReadStreamRead typedef CFIndex = Long(typedef CFReadStreamRef = (Declared(__CFReadStream))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long)
  */
 private val CFReadStreamRead_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFReadStreamRead_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamRead").orElseThrow()
-private val CFReadStreamRead_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamRead_ADDR, CFReadStreamRead_DESC)
+private val CFReadStreamRead_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamRead").orElseThrow() }
+private val CFReadStreamRead_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamRead_ADDR, CFReadStreamRead_DESC) }
 
 fun CFReadStreamRead(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Long {
     try {
@@ -4759,8 +4759,8 @@ fun CFReadStreamRead(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Long
  * {@snippet lang=c : CFReadStreamGetBuffer (typedef UInt8 = UNSIGNED = Char)*(typedef CFReadStreamRef = (Declared(__CFReadStream))*,typedef CFIndex = Long,(typedef CFIndex = Long)*)
  */
 private val CFReadStreamGetBuffer_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFReadStreamGetBuffer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamGetBuffer").orElseThrow()
-private val CFReadStreamGetBuffer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamGetBuffer_ADDR, CFReadStreamGetBuffer_DESC)
+private val CFReadStreamGetBuffer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamGetBuffer").orElseThrow() }
+private val CFReadStreamGetBuffer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamGetBuffer_ADDR, CFReadStreamGetBuffer_DESC) }
 
 fun CFReadStreamGetBuffer(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -4778,8 +4778,8 @@ fun CFReadStreamGetBuffer(arg0: MemorySegment, arg1: Long, arg2: MemorySegment):
  * {@snippet lang=c : CFWriteStreamCanAcceptBytes typedef Boolean = UNSIGNED = Char(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*)
  */
 private val CFWriteStreamCanAcceptBytes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFWriteStreamCanAcceptBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamCanAcceptBytes").orElseThrow()
-private val CFWriteStreamCanAcceptBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamCanAcceptBytes_ADDR, CFWriteStreamCanAcceptBytes_DESC)
+private val CFWriteStreamCanAcceptBytes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamCanAcceptBytes").orElseThrow() }
+private val CFWriteStreamCanAcceptBytes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamCanAcceptBytes_ADDR, CFWriteStreamCanAcceptBytes_DESC) }
 
 fun CFWriteStreamCanAcceptBytes(arg0: MemorySegment): Byte {
     try {
@@ -4797,8 +4797,8 @@ fun CFWriteStreamCanAcceptBytes(arg0: MemorySegment): Byte {
  * {@snippet lang=c : CFWriteStreamWrite typedef CFIndex = Long(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long)
  */
 private val CFWriteStreamWrite_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFWriteStreamWrite_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamWrite").orElseThrow()
-private val CFWriteStreamWrite_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamWrite_ADDR, CFWriteStreamWrite_DESC)
+private val CFWriteStreamWrite_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamWrite").orElseThrow() }
+private val CFWriteStreamWrite_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamWrite_ADDR, CFWriteStreamWrite_DESC) }
 
 fun CFWriteStreamWrite(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Long {
     try {
@@ -4816,8 +4816,8 @@ fun CFWriteStreamWrite(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Lo
  * {@snippet lang=c : CFReadStreamCopyProperty typedef CFTypeRef = (Void)*(typedef CFReadStreamRef = (Declared(__CFReadStream))*,typedef CFStreamPropertyKey = (Declared(__CFString))*)
  */
 private val CFReadStreamCopyProperty_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFReadStreamCopyProperty_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamCopyProperty").orElseThrow()
-private val CFReadStreamCopyProperty_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamCopyProperty_ADDR, CFReadStreamCopyProperty_DESC)
+private val CFReadStreamCopyProperty_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamCopyProperty").orElseThrow() }
+private val CFReadStreamCopyProperty_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamCopyProperty_ADDR, CFReadStreamCopyProperty_DESC) }
 
 fun CFReadStreamCopyProperty(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4835,8 +4835,8 @@ fun CFReadStreamCopyProperty(arg0: MemorySegment, arg1: MemorySegment): MemorySe
  * {@snippet lang=c : CFWriteStreamCopyProperty typedef CFTypeRef = (Void)*(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*,typedef CFStreamPropertyKey = (Declared(__CFString))*)
  */
 private val CFWriteStreamCopyProperty_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFWriteStreamCopyProperty_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamCopyProperty").orElseThrow()
-private val CFWriteStreamCopyProperty_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamCopyProperty_ADDR, CFWriteStreamCopyProperty_DESC)
+private val CFWriteStreamCopyProperty_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamCopyProperty").orElseThrow() }
+private val CFWriteStreamCopyProperty_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamCopyProperty_ADDR, CFWriteStreamCopyProperty_DESC) }
 
 fun CFWriteStreamCopyProperty(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4854,8 +4854,8 @@ fun CFWriteStreamCopyProperty(arg0: MemorySegment, arg1: MemorySegment): MemoryS
  * {@snippet lang=c : CFReadStreamSetProperty typedef Boolean = UNSIGNED = Char(typedef CFReadStreamRef = (Declared(__CFReadStream))*,typedef CFStreamPropertyKey = (Declared(__CFString))*,typedef CFTypeRef = (Void)*)
  */
 private val CFReadStreamSetProperty_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFReadStreamSetProperty_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamSetProperty").orElseThrow()
-private val CFReadStreamSetProperty_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamSetProperty_ADDR, CFReadStreamSetProperty_DESC)
+private val CFReadStreamSetProperty_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamSetProperty").orElseThrow() }
+private val CFReadStreamSetProperty_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamSetProperty_ADDR, CFReadStreamSetProperty_DESC) }
 
 fun CFReadStreamSetProperty(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Byte {
     try {
@@ -4873,8 +4873,8 @@ fun CFReadStreamSetProperty(arg0: MemorySegment, arg1: MemorySegment, arg2: Memo
  * {@snippet lang=c : CFWriteStreamSetProperty typedef Boolean = UNSIGNED = Char(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*,typedef CFStreamPropertyKey = (Declared(__CFString))*,typedef CFTypeRef = (Void)*)
  */
 private val CFWriteStreamSetProperty_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFWriteStreamSetProperty_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamSetProperty").orElseThrow()
-private val CFWriteStreamSetProperty_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamSetProperty_ADDR, CFWriteStreamSetProperty_DESC)
+private val CFWriteStreamSetProperty_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamSetProperty").orElseThrow() }
+private val CFWriteStreamSetProperty_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamSetProperty_ADDR, CFWriteStreamSetProperty_DESC) }
 
 fun CFWriteStreamSetProperty(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Byte {
     try {
@@ -4892,8 +4892,8 @@ fun CFWriteStreamSetProperty(arg0: MemorySegment, arg1: MemorySegment, arg2: Mem
  * {@snippet lang=c : CFReadStreamSetClient typedef Boolean = UNSIGNED = Char(typedef CFReadStreamRef = (Declared(__CFReadStream))*,typedef CFOptionFlags = UNSIGNED = Long,typedef CFReadStreamClientCallBack = (Void((Declared(__CFReadStream))*,Declared(CFStreamEventType),(Void)*))*,(typedef CFStreamClientContext = Declared(CFStreamClientContext))*)
  */
 private val CFReadStreamSetClient_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFReadStreamSetClient_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamSetClient").orElseThrow()
-private val CFReadStreamSetClient_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamSetClient_ADDR, CFReadStreamSetClient_DESC)
+private val CFReadStreamSetClient_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamSetClient").orElseThrow() }
+private val CFReadStreamSetClient_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamSetClient_ADDR, CFReadStreamSetClient_DESC) }
 
 fun CFReadStreamSetClient(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment): Byte {
     try {
@@ -4911,8 +4911,8 @@ fun CFReadStreamSetClient(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, 
  * {@snippet lang=c : CFWriteStreamSetClient typedef Boolean = UNSIGNED = Char(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*,typedef CFOptionFlags = UNSIGNED = Long,typedef CFWriteStreamClientCallBack = (Void((Declared(__CFWriteStream))*,Declared(CFStreamEventType),(Void)*))*,(typedef CFStreamClientContext = Declared(CFStreamClientContext))*)
  */
 private val CFWriteStreamSetClient_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFWriteStreamSetClient_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamSetClient").orElseThrow()
-private val CFWriteStreamSetClient_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamSetClient_ADDR, CFWriteStreamSetClient_DESC)
+private val CFWriteStreamSetClient_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamSetClient").orElseThrow() }
+private val CFWriteStreamSetClient_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamSetClient_ADDR, CFWriteStreamSetClient_DESC) }
 
 fun CFWriteStreamSetClient(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment): Byte {
     try {
@@ -4930,8 +4930,8 @@ fun CFWriteStreamSetClient(arg0: MemorySegment, arg1: Long, arg2: MemorySegment,
  * {@snippet lang=c : CFReadStreamScheduleWithRunLoop Void(typedef CFReadStreamRef = (Declared(__CFReadStream))*,typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFReadStreamScheduleWithRunLoop_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFReadStreamScheduleWithRunLoop_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamScheduleWithRunLoop").orElseThrow()
-private val CFReadStreamScheduleWithRunLoop_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamScheduleWithRunLoop_ADDR, CFReadStreamScheduleWithRunLoop_DESC)
+private val CFReadStreamScheduleWithRunLoop_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamScheduleWithRunLoop").orElseThrow() }
+private val CFReadStreamScheduleWithRunLoop_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamScheduleWithRunLoop_ADDR, CFReadStreamScheduleWithRunLoop_DESC) }
 
 fun CFReadStreamScheduleWithRunLoop(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -4949,8 +4949,8 @@ fun CFReadStreamScheduleWithRunLoop(arg0: MemorySegment, arg1: MemorySegment, ar
  * {@snippet lang=c : CFWriteStreamScheduleWithRunLoop Void(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*,typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFWriteStreamScheduleWithRunLoop_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFWriteStreamScheduleWithRunLoop_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamScheduleWithRunLoop").orElseThrow()
-private val CFWriteStreamScheduleWithRunLoop_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamScheduleWithRunLoop_ADDR, CFWriteStreamScheduleWithRunLoop_DESC)
+private val CFWriteStreamScheduleWithRunLoop_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamScheduleWithRunLoop").orElseThrow() }
+private val CFWriteStreamScheduleWithRunLoop_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamScheduleWithRunLoop_ADDR, CFWriteStreamScheduleWithRunLoop_DESC) }
 
 fun CFWriteStreamScheduleWithRunLoop(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -4968,8 +4968,8 @@ fun CFWriteStreamScheduleWithRunLoop(arg0: MemorySegment, arg1: MemorySegment, a
  * {@snippet lang=c : CFReadStreamUnscheduleFromRunLoop Void(typedef CFReadStreamRef = (Declared(__CFReadStream))*,typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFReadStreamUnscheduleFromRunLoop_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFReadStreamUnscheduleFromRunLoop_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamUnscheduleFromRunLoop").orElseThrow()
-private val CFReadStreamUnscheduleFromRunLoop_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamUnscheduleFromRunLoop_ADDR, CFReadStreamUnscheduleFromRunLoop_DESC)
+private val CFReadStreamUnscheduleFromRunLoop_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamUnscheduleFromRunLoop").orElseThrow() }
+private val CFReadStreamUnscheduleFromRunLoop_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamUnscheduleFromRunLoop_ADDR, CFReadStreamUnscheduleFromRunLoop_DESC) }
 
 fun CFReadStreamUnscheduleFromRunLoop(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -4987,8 +4987,8 @@ fun CFReadStreamUnscheduleFromRunLoop(arg0: MemorySegment, arg1: MemorySegment, 
  * {@snippet lang=c : CFWriteStreamUnscheduleFromRunLoop Void(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*,typedef CFRunLoopRef = (Declared(__CFRunLoop))*,typedef CFRunLoopMode = (Declared(__CFString))*)
  */
 private val CFWriteStreamUnscheduleFromRunLoop_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFWriteStreamUnscheduleFromRunLoop_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamUnscheduleFromRunLoop").orElseThrow()
-private val CFWriteStreamUnscheduleFromRunLoop_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamUnscheduleFromRunLoop_ADDR, CFWriteStreamUnscheduleFromRunLoop_DESC)
+private val CFWriteStreamUnscheduleFromRunLoop_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamUnscheduleFromRunLoop").orElseThrow() }
+private val CFWriteStreamUnscheduleFromRunLoop_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamUnscheduleFromRunLoop_ADDR, CFWriteStreamUnscheduleFromRunLoop_DESC) }
 
 fun CFWriteStreamUnscheduleFromRunLoop(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -5006,8 +5006,8 @@ fun CFWriteStreamUnscheduleFromRunLoop(arg0: MemorySegment, arg1: MemorySegment,
  * {@snippet lang=c : CFReadStreamSetDispatchQueue Void(typedef CFReadStreamRef = (Declared(__CFReadStream))*,typedef dispatch_queue_t = (Void)*)
  */
 private val CFReadStreamSetDispatchQueue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFReadStreamSetDispatchQueue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamSetDispatchQueue").orElseThrow()
-private val CFReadStreamSetDispatchQueue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamSetDispatchQueue_ADDR, CFReadStreamSetDispatchQueue_DESC)
+private val CFReadStreamSetDispatchQueue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamSetDispatchQueue").orElseThrow() }
+private val CFReadStreamSetDispatchQueue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamSetDispatchQueue_ADDR, CFReadStreamSetDispatchQueue_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
@@ -5029,8 +5029,8 @@ fun CFReadStreamSetDispatchQueue(arg0: MemorySegment, arg1: MemorySegment): Unit
  * {@snippet lang=c : CFWriteStreamSetDispatchQueue Void(typedef CFWriteStreamRef = (Declared(__CFWriteStream))*,typedef dispatch_queue_t = (Void)*)
  */
 private val CFWriteStreamSetDispatchQueue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFWriteStreamSetDispatchQueue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFWriteStreamSetDispatchQueue").orElseThrow()
-private val CFWriteStreamSetDispatchQueue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFWriteStreamSetDispatchQueue_ADDR, CFWriteStreamSetDispatchQueue_DESC)
+private val CFWriteStreamSetDispatchQueue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFWriteStreamSetDispatchQueue").orElseThrow() }
+private val CFWriteStreamSetDispatchQueue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFWriteStreamSetDispatchQueue_ADDR, CFWriteStreamSetDispatchQueue_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
@@ -5052,8 +5052,8 @@ fun CFWriteStreamSetDispatchQueue(arg0: MemorySegment, arg1: MemorySegment): Uni
  * {@snippet lang=c : CFReadStreamCopyDispatchQueue typedef dispatch_queue_t = (Void)*(typedef CFReadStreamRef = (Declared(__CFReadStream))*)
  */
 private val CFReadStreamCopyDispatchQueue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFReadStreamCopyDispatchQueue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFReadStreamCopyDispatchQueue").orElseThrow()
-private val CFReadStreamCopyDispatchQueue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFReadStreamCopyDispatchQueue_ADDR, CFReadStreamCopyDispatchQueue_DESC)
+private val CFReadStreamCopyDispatchQueue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFReadStreamCopyDispatchQueue").orElseThrow() }
+private val CFReadStreamCopyDispatchQueue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFReadStreamCopyDispatchQueue_ADDR, CFReadStreamCopyDispatchQueue_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)

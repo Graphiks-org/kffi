@@ -10,8 +10,8 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * {@snippet lang=c : CGContextSetContentToneMappingInfo Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGContentToneMappingInfo = Declared(CGContentToneMappingInfo))
  */
 private val CGContextSetContentToneMappingInfo_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGContentToneMappingInfo.layout)
-private val CGContextSetContentToneMappingInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetContentToneMappingInfo").orElseThrow()
-private val CGContextSetContentToneMappingInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetContentToneMappingInfo_ADDR, CGContextSetContentToneMappingInfo_DESC)
+private val CGContextSetContentToneMappingInfo_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetContentToneMappingInfo").orElseThrow() }
+private val CGContextSetContentToneMappingInfo_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetContentToneMappingInfo_ADDR, CGContextSetContentToneMappingInfo_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
@@ -34,8 +34,8 @@ fun CGContextSetContentToneMappingInfo(arg0: MemorySegment, arg1: MemorySegment)
  * {@snippet lang=c : CGContextGetInterpolationQuality typedef CGInterpolationQuality = Declared(CGInterpolationQuality)(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextGetInterpolationQuality_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGContextGetInterpolationQuality_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetInterpolationQuality").orElseThrow()
-private val CGContextGetInterpolationQuality_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetInterpolationQuality_ADDR, CGContextGetInterpolationQuality_DESC)
+private val CGContextGetInterpolationQuality_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextGetInterpolationQuality").orElseThrow() }
+private val CGContextGetInterpolationQuality_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetInterpolationQuality_ADDR, CGContextGetInterpolationQuality_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -55,8 +55,8 @@ fun CGContextGetInterpolationQuality(arg0: MemorySegment): CGInterpolationQualit
  * {@snippet lang=c : CGContextSetInterpolationQuality Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGInterpolationQuality = Declared(CGInterpolationQuality))
  */
 private val CGContextSetInterpolationQuality_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGContextSetInterpolationQuality_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetInterpolationQuality").orElseThrow()
-private val CGContextSetInterpolationQuality_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetInterpolationQuality_ADDR, CGContextSetInterpolationQuality_DESC)
+private val CGContextSetInterpolationQuality_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetInterpolationQuality").orElseThrow() }
+private val CGContextSetInterpolationQuality_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetInterpolationQuality_ADDR, CGContextSetInterpolationQuality_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -76,8 +76,8 @@ fun CGContextSetInterpolationQuality(arg0: MemorySegment, arg1: CGInterpolationQ
  * {@snippet lang=c : CGContextSetShadowWithColor Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize),typedef CGFloat = Double,typedef CGColorRef = (Declared(CGColor))*)
  */
 private val CGContextSetShadowWithColor_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGSize.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CGContextSetShadowWithColor_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShadowWithColor").orElseThrow()
-private val CGContextSetShadowWithColor_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShadowWithColor_ADDR, CGContextSetShadowWithColor_DESC)
+private val CGContextSetShadowWithColor_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShadowWithColor").orElseThrow() }
+private val CGContextSetShadowWithColor_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShadowWithColor_ADDR, CGContextSetShadowWithColor_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -103,8 +103,8 @@ fun CGContextSetShadowWithColor(arg0: MemorySegment, arg1: CGSize, arg2: Double,
  * {@snippet lang=c : CGContextSetShadow Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize),typedef CGFloat = Double)
  */
 private val CGContextSetShadow_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGSize.layout, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetShadow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShadow").orElseThrow()
-private val CGContextSetShadow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShadow_ADDR, CGContextSetShadow_DESC)
+private val CGContextSetShadow_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShadow").orElseThrow() }
+private val CGContextSetShadow_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShadow_ADDR, CGContextSetShadow_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -130,8 +130,8 @@ fun CGContextSetShadow(arg0: MemorySegment, arg1: CGSize, arg2: Double): Unit {
  * {@snippet lang=c : CGContextDrawLinearGradient Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGGradientRef = (Declared(CGGradient))*,typedef CGPoint = Declared(CGPoint),typedef CGPoint = Declared(CGPoint),typedef CGGradientDrawingOptions = Declared(CGGradientDrawingOptions))
  */
 private val CGContextDrawLinearGradient_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGPoint.layout, CGPoint.layout, ValueLayout.JAVA_INT)
-private val CGContextDrawLinearGradient_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawLinearGradient").orElseThrow()
-private val CGContextDrawLinearGradient_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawLinearGradient_ADDR, CGContextDrawLinearGradient_DESC)
+private val CGContextDrawLinearGradient_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawLinearGradient").orElseThrow() }
+private val CGContextDrawLinearGradient_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawLinearGradient_ADDR, CGContextDrawLinearGradient_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -157,8 +157,8 @@ fun CGContextDrawLinearGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: 
  * {@snippet lang=c : CGContextDrawRadialGradient Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGGradientRef = (Declared(CGGradient))*,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double,typedef CGGradientDrawingOptions = Declared(CGGradientDrawingOptions))
  */
 private val CGContextDrawRadialGradient_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGPoint.layout, ValueLayout.JAVA_DOUBLE, CGPoint.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT)
-private val CGContextDrawRadialGradient_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawRadialGradient").orElseThrow()
-private val CGContextDrawRadialGradient_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawRadialGradient_ADDR, CGContextDrawRadialGradient_DESC)
+private val CGContextDrawRadialGradient_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawRadialGradient").orElseThrow() }
+private val CGContextDrawRadialGradient_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawRadialGradient_ADDR, CGContextDrawRadialGradient_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -184,8 +184,8 @@ fun CGContextDrawRadialGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: 
  * {@snippet lang=c : CGContextDrawConicGradient Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGGradientRef = (Declared(CGGradient))*,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double)
  */
 private val CGContextDrawConicGradient_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGPoint.layout, ValueLayout.JAVA_DOUBLE)
-private val CGContextDrawConicGradient_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawConicGradient").orElseThrow()
-private val CGContextDrawConicGradient_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawConicGradient_ADDR, CGContextDrawConicGradient_DESC)
+private val CGContextDrawConicGradient_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawConicGradient").orElseThrow() }
+private val CGContextDrawConicGradient_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawConicGradient_ADDR, CGContextDrawConicGradient_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -211,8 +211,8 @@ fun CGContextDrawConicGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: C
  * {@snippet lang=c : CGContextDrawShading Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGShadingRef = (Declared(CGShading))*)
  */
 private val CGContextDrawShading_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextDrawShading_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawShading").orElseThrow()
-private val CGContextDrawShading_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawShading_ADDR, CGContextDrawShading_DESC)
+private val CGContextDrawShading_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawShading").orElseThrow() }
+private val CGContextDrawShading_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawShading_ADDR, CGContextDrawShading_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -232,8 +232,8 @@ fun CGContextDrawShading(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSetCharacterSpacing Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double)
  */
 private val CGContextSetCharacterSpacing_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetCharacterSpacing_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetCharacterSpacing").orElseThrow()
-private val CGContextSetCharacterSpacing_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetCharacterSpacing_ADDR, CGContextSetCharacterSpacing_DESC)
+private val CGContextSetCharacterSpacing_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetCharacterSpacing").orElseThrow() }
+private val CGContextSetCharacterSpacing_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetCharacterSpacing_ADDR, CGContextSetCharacterSpacing_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -253,8 +253,8 @@ fun CGContextSetCharacterSpacing(arg0: MemorySegment, arg1: Double): Unit {
  * {@snippet lang=c : CGContextSetTextPosition Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CGContextSetTextPosition_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetTextPosition_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetTextPosition").orElseThrow()
-private val CGContextSetTextPosition_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetTextPosition_ADDR, CGContextSetTextPosition_DESC)
+private val CGContextSetTextPosition_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetTextPosition").orElseThrow() }
+private val CGContextSetTextPosition_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetTextPosition_ADDR, CGContextSetTextPosition_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -274,8 +274,8 @@ fun CGContextSetTextPosition(arg0: MemorySegment, arg1: Double, arg2: Double): U
  * {@snippet lang=c : CGContextGetTextPosition typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextGetTextPosition_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS)
-private val CGContextGetTextPosition_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetTextPosition").orElseThrow()
-private val CGContextGetTextPosition_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetTextPosition_ADDR, CGContextGetTextPosition_DESC)
+private val CGContextGetTextPosition_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextGetTextPosition").orElseThrow() }
+private val CGContextGetTextPosition_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetTextPosition_ADDR, CGContextGetTextPosition_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -301,8 +301,8 @@ fun CGContextGetTextPositionTyped(allocator: SegmentAllocator, arg0: MemorySegme
  * {@snippet lang=c : CGContextSetTextMatrix Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGAffineTransform = Declared(CGAffineTransform))
  */
 private val CGContextSetTextMatrix_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGAffineTransform.layout)
-private val CGContextSetTextMatrix_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetTextMatrix").orElseThrow()
-private val CGContextSetTextMatrix_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetTextMatrix_ADDR, CGContextSetTextMatrix_DESC)
+private val CGContextSetTextMatrix_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetTextMatrix").orElseThrow() }
+private val CGContextSetTextMatrix_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetTextMatrix_ADDR, CGContextSetTextMatrix_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -328,8 +328,8 @@ fun CGContextSetTextMatrix(arg0: MemorySegment, arg1: CGAffineTransform): Unit {
  * {@snippet lang=c : CGContextGetTextMatrix typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextGetTextMatrix_DESC: FunctionDescriptor = FunctionDescriptor.of(CGAffineTransform.layout, ValueLayout.ADDRESS)
-private val CGContextGetTextMatrix_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetTextMatrix").orElseThrow()
-private val CGContextGetTextMatrix_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetTextMatrix_ADDR, CGContextGetTextMatrix_DESC)
+private val CGContextGetTextMatrix_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextGetTextMatrix").orElseThrow() }
+private val CGContextGetTextMatrix_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetTextMatrix_ADDR, CGContextGetTextMatrix_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -355,8 +355,8 @@ fun CGContextGetTextMatrixTyped(allocator: SegmentAllocator, arg0: MemorySegment
  * {@snippet lang=c : CGContextSetTextDrawingMode Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGTextDrawingMode = Declared(CGTextDrawingMode))
  */
 private val CGContextSetTextDrawingMode_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGContextSetTextDrawingMode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetTextDrawingMode").orElseThrow()
-private val CGContextSetTextDrawingMode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetTextDrawingMode_ADDR, CGContextSetTextDrawingMode_DESC)
+private val CGContextSetTextDrawingMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetTextDrawingMode").orElseThrow() }
+private val CGContextSetTextDrawingMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetTextDrawingMode_ADDR, CGContextSetTextDrawingMode_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -376,8 +376,8 @@ fun CGContextSetTextDrawingMode(arg0: MemorySegment, arg1: CGTextDrawingMode): U
  * {@snippet lang=c : CGContextSetFont Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFontRef = (Declared(CGFont))*)
  */
 private val CGContextSetFont_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextSetFont_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetFont").orElseThrow()
-private val CGContextSetFont_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetFont_ADDR, CGContextSetFont_DESC)
+private val CGContextSetFont_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetFont").orElseThrow() }
+private val CGContextSetFont_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetFont_ADDR, CGContextSetFont_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -397,8 +397,8 @@ fun CGContextSetFont(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSetFontSize Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double)
  */
 private val CGContextSetFontSize_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetFontSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetFontSize").orElseThrow()
-private val CGContextSetFontSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetFontSize_ADDR, CGContextSetFontSize_DESC)
+private val CGContextSetFontSize_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetFontSize").orElseThrow() }
+private val CGContextSetFontSize_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetFontSize_ADDR, CGContextSetFontSize_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -418,8 +418,8 @@ fun CGContextSetFontSize(arg0: MemorySegment, arg1: Double): Unit {
  * {@snippet lang=c : CGContextShowGlyphsAtPositions Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGGlyph = UNSIGNED = Short)*,(typedef CGPoint = Declared(CGPoint))*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowGlyphsAtPositions_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphsAtPositions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowGlyphsAtPositions").orElseThrow()
-private val CGContextShowGlyphsAtPositions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowGlyphsAtPositions_ADDR, CGContextShowGlyphsAtPositions_DESC)
+private val CGContextShowGlyphsAtPositions_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowGlyphsAtPositions").orElseThrow() }
+private val CGContextShowGlyphsAtPositions_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowGlyphsAtPositions_ADDR, CGContextShowGlyphsAtPositions_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -439,8 +439,8 @@ fun CGContextShowGlyphsAtPositions(arg0: MemorySegment, arg1: MemorySegment, arg
  * {@snippet lang=c : CGContextDrawPDFPage Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPDFPageRef = (Declared(CGPDFPage))*)
  */
 private val CGContextDrawPDFPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextDrawPDFPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawPDFPage").orElseThrow()
-private val CGContextDrawPDFPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawPDFPage_ADDR, CGContextDrawPDFPage_DESC)
+private val CGContextDrawPDFPage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawPDFPage").orElseThrow() }
+private val CGContextDrawPDFPage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawPDFPage_ADDR, CGContextDrawPDFPage_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -460,8 +460,8 @@ fun CGContextDrawPDFPage(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGContextBeginPage Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGRect = Declared(CGRect))*)
  */
 private val CGContextBeginPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextBeginPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextBeginPage").orElseThrow()
-private val CGContextBeginPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextBeginPage_ADDR, CGContextBeginPage_DESC)
+private val CGContextBeginPage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextBeginPage").orElseThrow() }
+private val CGContextBeginPage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextBeginPage_ADDR, CGContextBeginPage_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -481,8 +481,8 @@ fun CGContextBeginPage(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGContextEndPage Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextEndPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextEndPage_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextEndPage").orElseThrow()
-private val CGContextEndPage_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextEndPage_ADDR, CGContextEndPage_DESC)
+private val CGContextEndPage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextEndPage").orElseThrow() }
+private val CGContextEndPage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextEndPage_ADDR, CGContextEndPage_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -502,8 +502,8 @@ fun CGContextEndPage(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextRetain typedef CGContextRef = (Declared(CGContext))*(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextRetain").orElseThrow()
-private val CGContextRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextRetain_ADDR, CGContextRetain_DESC)
+private val CGContextRetain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextRetain").orElseThrow() }
+private val CGContextRetain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextRetain_ADDR, CGContextRetain_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -523,8 +523,8 @@ fun CGContextRetain(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGContextRelease Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextRelease").orElseThrow()
-private val CGContextRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextRelease_ADDR, CGContextRelease_DESC)
+private val CGContextRelease_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextRelease").orElseThrow() }
+private val CGContextRelease_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextRelease_ADDR, CGContextRelease_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -544,8 +544,8 @@ fun CGContextRelease(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextFlush Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextFlush_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextFlush_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextFlush").orElseThrow()
-private val CGContextFlush_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextFlush_ADDR, CGContextFlush_DESC)
+private val CGContextFlush_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextFlush").orElseThrow() }
+private val CGContextFlush_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextFlush_ADDR, CGContextFlush_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -565,8 +565,8 @@ fun CGContextFlush(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSynchronize Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextSynchronize_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextSynchronize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSynchronize").orElseThrow()
-private val CGContextSynchronize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSynchronize_ADDR, CGContextSynchronize_DESC)
+private val CGContextSynchronize_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSynchronize").orElseThrow() }
+private val CGContextSynchronize_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSynchronize_ADDR, CGContextSynchronize_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -586,8 +586,8 @@ fun CGContextSynchronize(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSynchronizeAttributes Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextSynchronizeAttributes_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextSynchronizeAttributes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSynchronizeAttributes").orElseThrow()
-private val CGContextSynchronizeAttributes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSynchronizeAttributes_ADDR, CGContextSynchronizeAttributes_DESC)
+private val CGContextSynchronizeAttributes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSynchronizeAttributes").orElseThrow() }
+private val CGContextSynchronizeAttributes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSynchronizeAttributes_ADDR, CGContextSynchronizeAttributes_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
@@ -607,8 +607,8 @@ fun CGContextSynchronizeAttributes(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSetShouldAntialias Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetShouldAntialias_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldAntialias_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShouldAntialias").orElseThrow()
-private val CGContextSetShouldAntialias_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShouldAntialias_ADDR, CGContextSetShouldAntialias_DESC)
+private val CGContextSetShouldAntialias_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShouldAntialias").orElseThrow() }
+private val CGContextSetShouldAntialias_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShouldAntialias_ADDR, CGContextSetShouldAntialias_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -628,8 +628,8 @@ fun CGContextSetShouldAntialias(arg0: MemorySegment, arg1: Boolean): Unit {
  * {@snippet lang=c : CGContextSetAllowsAntialiasing Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetAllowsAntialiasing_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsAntialiasing_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetAllowsAntialiasing").orElseThrow()
-private val CGContextSetAllowsAntialiasing_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetAllowsAntialiasing_ADDR, CGContextSetAllowsAntialiasing_DESC)
+private val CGContextSetAllowsAntialiasing_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetAllowsAntialiasing").orElseThrow() }
+private val CGContextSetAllowsAntialiasing_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetAllowsAntialiasing_ADDR, CGContextSetAllowsAntialiasing_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -649,8 +649,8 @@ fun CGContextSetAllowsAntialiasing(arg0: MemorySegment, arg1: Boolean): Unit {
  * {@snippet lang=c : CGContextSetShouldSmoothFonts Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetShouldSmoothFonts_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldSmoothFonts_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShouldSmoothFonts").orElseThrow()
-private val CGContextSetShouldSmoothFonts_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShouldSmoothFonts_ADDR, CGContextSetShouldSmoothFonts_DESC)
+private val CGContextSetShouldSmoothFonts_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShouldSmoothFonts").orElseThrow() }
+private val CGContextSetShouldSmoothFonts_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShouldSmoothFonts_ADDR, CGContextSetShouldSmoothFonts_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -670,8 +670,8 @@ fun CGContextSetShouldSmoothFonts(arg0: MemorySegment, arg1: Boolean): Unit {
  * {@snippet lang=c : CGContextSetAllowsFontSmoothing Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetAllowsFontSmoothing_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsFontSmoothing_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSmoothing").orElseThrow()
-private val CGContextSetAllowsFontSmoothing_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSmoothing_ADDR, CGContextSetAllowsFontSmoothing_DESC)
+private val CGContextSetAllowsFontSmoothing_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSmoothing").orElseThrow() }
+private val CGContextSetAllowsFontSmoothing_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSmoothing_ADDR, CGContextSetAllowsFontSmoothing_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -691,8 +691,8 @@ fun CGContextSetAllowsFontSmoothing(arg0: MemorySegment, arg1: Boolean): Unit {
  * {@snippet lang=c : CGContextSetShouldSubpixelPositionFonts Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetShouldSubpixelPositionFonts_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldSubpixelPositionFonts_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShouldSubpixelPositionFonts").orElseThrow()
-private val CGContextSetShouldSubpixelPositionFonts_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShouldSubpixelPositionFonts_ADDR, CGContextSetShouldSubpixelPositionFonts_DESC)
+private val CGContextSetShouldSubpixelPositionFonts_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShouldSubpixelPositionFonts").orElseThrow() }
+private val CGContextSetShouldSubpixelPositionFonts_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShouldSubpixelPositionFonts_ADDR, CGContextSetShouldSubpixelPositionFonts_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -712,8 +712,8 @@ fun CGContextSetShouldSubpixelPositionFonts(arg0: MemorySegment, arg1: Boolean):
  * {@snippet lang=c : CGContextSetAllowsFontSubpixelPositioning Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetAllowsFontSubpixelPositioning_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsFontSubpixelPositioning_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSubpixelPositioning").orElseThrow()
-private val CGContextSetAllowsFontSubpixelPositioning_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSubpixelPositioning_ADDR, CGContextSetAllowsFontSubpixelPositioning_DESC)
+private val CGContextSetAllowsFontSubpixelPositioning_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSubpixelPositioning").orElseThrow() }
+private val CGContextSetAllowsFontSubpixelPositioning_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSubpixelPositioning_ADDR, CGContextSetAllowsFontSubpixelPositioning_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -733,8 +733,8 @@ fun CGContextSetAllowsFontSubpixelPositioning(arg0: MemorySegment, arg1: Boolean
  * {@snippet lang=c : CGContextSetShouldSubpixelQuantizeFonts Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetShouldSubpixelQuantizeFonts_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldSubpixelQuantizeFonts_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetShouldSubpixelQuantizeFonts").orElseThrow()
-private val CGContextSetShouldSubpixelQuantizeFonts_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetShouldSubpixelQuantizeFonts_ADDR, CGContextSetShouldSubpixelQuantizeFonts_DESC)
+private val CGContextSetShouldSubpixelQuantizeFonts_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShouldSubpixelQuantizeFonts").orElseThrow() }
+private val CGContextSetShouldSubpixelQuantizeFonts_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShouldSubpixelQuantizeFonts_ADDR, CGContextSetShouldSubpixelQuantizeFonts_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -754,8 +754,8 @@ fun CGContextSetShouldSubpixelQuantizeFonts(arg0: MemorySegment, arg1: Boolean):
  * {@snippet lang=c : CGContextSetAllowsFontSubpixelQuantization Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetAllowsFontSubpixelQuantization_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsFontSubpixelQuantization_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSubpixelQuantization").orElseThrow()
-private val CGContextSetAllowsFontSubpixelQuantization_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSubpixelQuantization_ADDR, CGContextSetAllowsFontSubpixelQuantization_DESC)
+private val CGContextSetAllowsFontSubpixelQuantization_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSubpixelQuantization").orElseThrow() }
+private val CGContextSetAllowsFontSubpixelQuantization_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSubpixelQuantization_ADDR, CGContextSetAllowsFontSubpixelQuantization_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -775,8 +775,8 @@ fun CGContextSetAllowsFontSubpixelQuantization(arg0: MemorySegment, arg1: Boolea
  * {@snippet lang=c : CGContextBeginTransparencyLayer Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGContextBeginTransparencyLayer_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextBeginTransparencyLayer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextBeginTransparencyLayer").orElseThrow()
-private val CGContextBeginTransparencyLayer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextBeginTransparencyLayer_ADDR, CGContextBeginTransparencyLayer_DESC)
+private val CGContextBeginTransparencyLayer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextBeginTransparencyLayer").orElseThrow() }
+private val CGContextBeginTransparencyLayer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextBeginTransparencyLayer_ADDR, CGContextBeginTransparencyLayer_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -796,8 +796,8 @@ fun CGContextBeginTransparencyLayer(arg0: MemorySegment, arg1: MemorySegment): U
  * {@snippet lang=c : CGContextBeginTransparencyLayerWithRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGContextBeginTransparencyLayerWithRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS)
-private val CGContextBeginTransparencyLayerWithRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextBeginTransparencyLayerWithRect").orElseThrow()
-private val CGContextBeginTransparencyLayerWithRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextBeginTransparencyLayerWithRect_ADDR, CGContextBeginTransparencyLayerWithRect_DESC)
+private val CGContextBeginTransparencyLayerWithRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextBeginTransparencyLayerWithRect").orElseThrow() }
+private val CGContextBeginTransparencyLayerWithRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextBeginTransparencyLayerWithRect_ADDR, CGContextBeginTransparencyLayerWithRect_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -823,8 +823,8 @@ fun CGContextBeginTransparencyLayerWithRect(arg0: MemorySegment, arg1: CGRect, a
  * {@snippet lang=c : CGContextEndTransparencyLayer Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextEndTransparencyLayer_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextEndTransparencyLayer_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextEndTransparencyLayer").orElseThrow()
-private val CGContextEndTransparencyLayer_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextEndTransparencyLayer_ADDR, CGContextEndTransparencyLayer_DESC)
+private val CGContextEndTransparencyLayer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextEndTransparencyLayer").orElseThrow() }
+private val CGContextEndTransparencyLayer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextEndTransparencyLayer_ADDR, CGContextEndTransparencyLayer_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -844,8 +844,8 @@ fun CGContextEndTransparencyLayer(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextGetUserSpaceToDeviceSpaceTransform typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextGetUserSpaceToDeviceSpaceTransform_DESC: FunctionDescriptor = FunctionDescriptor.of(CGAffineTransform.layout, ValueLayout.ADDRESS)
-private val CGContextGetUserSpaceToDeviceSpaceTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextGetUserSpaceToDeviceSpaceTransform").orElseThrow()
-private val CGContextGetUserSpaceToDeviceSpaceTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextGetUserSpaceToDeviceSpaceTransform_ADDR, CGContextGetUserSpaceToDeviceSpaceTransform_DESC)
+private val CGContextGetUserSpaceToDeviceSpaceTransform_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextGetUserSpaceToDeviceSpaceTransform").orElseThrow() }
+private val CGContextGetUserSpaceToDeviceSpaceTransform_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetUserSpaceToDeviceSpaceTransform_ADDR, CGContextGetUserSpaceToDeviceSpaceTransform_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -871,8 +871,8 @@ fun CGContextGetUserSpaceToDeviceSpaceTransformTyped(allocator: SegmentAllocator
  * {@snippet lang=c : CGContextConvertPointToDeviceSpace typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint))
  */
 private val CGContextConvertPointToDeviceSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS, CGPoint.layout)
-private val CGContextConvertPointToDeviceSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertPointToDeviceSpace").orElseThrow()
-private val CGContextConvertPointToDeviceSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertPointToDeviceSpace_ADDR, CGContextConvertPointToDeviceSpace_DESC)
+private val CGContextConvertPointToDeviceSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertPointToDeviceSpace").orElseThrow() }
+private val CGContextConvertPointToDeviceSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertPointToDeviceSpace_ADDR, CGContextConvertPointToDeviceSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -898,8 +898,8 @@ fun CGContextConvertPointToDeviceSpace(allocator: SegmentAllocator, arg0: Memory
  * {@snippet lang=c : CGContextConvertPointToUserSpace typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint))
  */
 private val CGContextConvertPointToUserSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS, CGPoint.layout)
-private val CGContextConvertPointToUserSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertPointToUserSpace").orElseThrow()
-private val CGContextConvertPointToUserSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertPointToUserSpace_ADDR, CGContextConvertPointToUserSpace_DESC)
+private val CGContextConvertPointToUserSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertPointToUserSpace").orElseThrow() }
+private val CGContextConvertPointToUserSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertPointToUserSpace_ADDR, CGContextConvertPointToUserSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -925,8 +925,8 @@ fun CGContextConvertPointToUserSpace(allocator: SegmentAllocator, arg0: MemorySe
  * {@snippet lang=c : CGContextConvertSizeToDeviceSpace typedef CGSize = Declared(CGSize)(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize))
  */
 private val CGContextConvertSizeToDeviceSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGSize.layout, ValueLayout.ADDRESS, CGSize.layout)
-private val CGContextConvertSizeToDeviceSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertSizeToDeviceSpace").orElseThrow()
-private val CGContextConvertSizeToDeviceSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertSizeToDeviceSpace_ADDR, CGContextConvertSizeToDeviceSpace_DESC)
+private val CGContextConvertSizeToDeviceSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertSizeToDeviceSpace").orElseThrow() }
+private val CGContextConvertSizeToDeviceSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertSizeToDeviceSpace_ADDR, CGContextConvertSizeToDeviceSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -952,8 +952,8 @@ fun CGContextConvertSizeToDeviceSpace(allocator: SegmentAllocator, arg0: MemoryS
  * {@snippet lang=c : CGContextConvertSizeToUserSpace typedef CGSize = Declared(CGSize)(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize))
  */
 private val CGContextConvertSizeToUserSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGSize.layout, ValueLayout.ADDRESS, CGSize.layout)
-private val CGContextConvertSizeToUserSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertSizeToUserSpace").orElseThrow()
-private val CGContextConvertSizeToUserSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertSizeToUserSpace_ADDR, CGContextConvertSizeToUserSpace_DESC)
+private val CGContextConvertSizeToUserSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertSizeToUserSpace").orElseThrow() }
+private val CGContextConvertSizeToUserSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertSizeToUserSpace_ADDR, CGContextConvertSizeToUserSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -979,8 +979,8 @@ fun CGContextConvertSizeToUserSpace(allocator: SegmentAllocator, arg0: MemorySeg
  * {@snippet lang=c : CGContextConvertRectToDeviceSpace typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
  */
 private val CGContextConvertRectToDeviceSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.ADDRESS, CGRect.layout)
-private val CGContextConvertRectToDeviceSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertRectToDeviceSpace").orElseThrow()
-private val CGContextConvertRectToDeviceSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertRectToDeviceSpace_ADDR, CGContextConvertRectToDeviceSpace_DESC)
+private val CGContextConvertRectToDeviceSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertRectToDeviceSpace").orElseThrow() }
+private val CGContextConvertRectToDeviceSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertRectToDeviceSpace_ADDR, CGContextConvertRectToDeviceSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -1006,8 +1006,8 @@ fun CGContextConvertRectToDeviceSpace(allocator: SegmentAllocator, arg0: MemoryS
  * {@snippet lang=c : CGContextConvertRectToUserSpace typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
  */
 private val CGContextConvertRectToUserSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.ADDRESS, CGRect.layout)
-private val CGContextConvertRectToUserSpace_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextConvertRectToUserSpace").orElseThrow()
-private val CGContextConvertRectToUserSpace_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextConvertRectToUserSpace_ADDR, CGContextConvertRectToUserSpace_DESC)
+private val CGContextConvertRectToUserSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertRectToUserSpace").orElseThrow() }
+private val CGContextConvertRectToUserSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertRectToUserSpace_ADDR, CGContextConvertRectToUserSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -1033,8 +1033,8 @@ fun CGContextConvertRectToUserSpace(allocator: SegmentAllocator, arg0: MemorySeg
  * {@snippet lang=c : CGContextSelectFont Void(typedef CGContextRef = (Declared(CGContext))*,(Char)*,typedef CGFloat = Double,typedef CGTextEncoding = Declared(CGTextEncoding))
  */
 private val CGContextSelectFont_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT)
-private val CGContextSelectFont_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextSelectFont").orElseThrow()
-private val CGContextSelectFont_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextSelectFont_ADDR, CGContextSelectFont_DESC)
+private val CGContextSelectFont_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSelectFont").orElseThrow() }
+private val CGContextSelectFont_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSelectFont_ADDR, CGContextSelectFont_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -1054,8 +1054,8 @@ fun CGContextSelectFont(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, 
  * {@snippet lang=c : CGContextShowText Void(typedef CGContextRef = (Declared(CGContext))*,(Char)*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowText_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowText_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowText").orElseThrow()
-private val CGContextShowText_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowText_ADDR, CGContextShowText_DESC)
+private val CGContextShowText_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowText").orElseThrow() }
+private val CGContextShowText_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowText_ADDR, CGContextShowText_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -1075,8 +1075,8 @@ fun CGContextShowText(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Uni
  * {@snippet lang=c : CGContextShowTextAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double,(Char)*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowTextAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowTextAtPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowTextAtPoint").orElseThrow()
-private val CGContextShowTextAtPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowTextAtPoint_ADDR, CGContextShowTextAtPoint_DESC)
+private val CGContextShowTextAtPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowTextAtPoint").orElseThrow() }
+private val CGContextShowTextAtPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowTextAtPoint_ADDR, CGContextShowTextAtPoint_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -1096,8 +1096,8 @@ fun CGContextShowTextAtPoint(arg0: MemorySegment, arg1: Double, arg2: Double, ar
  * {@snippet lang=c : CGContextShowGlyphs Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGGlyph = UNSIGNED = Short)*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowGlyphs_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphs_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowGlyphs").orElseThrow()
-private val CGContextShowGlyphs_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowGlyphs_ADDR, CGContextShowGlyphs_DESC)
+private val CGContextShowGlyphs_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowGlyphs").orElseThrow() }
+private val CGContextShowGlyphs_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowGlyphs_ADDR, CGContextShowGlyphs_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -1117,8 +1117,8 @@ fun CGContextShowGlyphs(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): U
  * {@snippet lang=c : CGContextShowGlyphsAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double,(typedef CGGlyph = UNSIGNED = Short)*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowGlyphsAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphsAtPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowGlyphsAtPoint").orElseThrow()
-private val CGContextShowGlyphsAtPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowGlyphsAtPoint_ADDR, CGContextShowGlyphsAtPoint_DESC)
+private val CGContextShowGlyphsAtPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowGlyphsAtPoint").orElseThrow() }
+private val CGContextShowGlyphsAtPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowGlyphsAtPoint_ADDR, CGContextShowGlyphsAtPoint_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -1138,8 +1138,8 @@ fun CGContextShowGlyphsAtPoint(arg0: MemorySegment, arg1: Double, arg2: Double, 
  * {@snippet lang=c : CGContextShowGlyphsWithAdvances Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGGlyph = UNSIGNED = Short)*,(typedef CGSize = Declared(CGSize))*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowGlyphsWithAdvances_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphsWithAdvances_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextShowGlyphsWithAdvances").orElseThrow()
-private val CGContextShowGlyphsWithAdvances_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextShowGlyphsWithAdvances_ADDR, CGContextShowGlyphsWithAdvances_DESC)
+private val CGContextShowGlyphsWithAdvances_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowGlyphsWithAdvances").orElseThrow() }
+private val CGContextShowGlyphsWithAdvances_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowGlyphsWithAdvances_ADDR, CGContextShowGlyphsWithAdvances_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -1159,8 +1159,8 @@ fun CGContextShowGlyphsWithAdvances(arg0: MemorySegment, arg1: MemorySegment, ar
  * {@snippet lang=c : CGContextDrawPDFDocument Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CGPDFDocumentRef = (Declared(CGPDFDocument))*,Int)
  */
 private val CGContextDrawPDFDocument_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGContextDrawPDFDocument_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGContextDrawPDFDocument").orElseThrow()
-private val CGContextDrawPDFDocument_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGContextDrawPDFDocument_ADDR, CGContextDrawPDFDocument_DESC)
+private val CGContextDrawPDFDocument_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawPDFDocument").orElseThrow() }
+private val CGContextDrawPDFDocument_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawPDFDocument_ADDR, CGContextDrawPDFDocument_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "No longer supported")

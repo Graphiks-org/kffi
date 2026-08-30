@@ -2112,8 +2112,8 @@ var NSFileSystemFreeNodes: MemorySegment
  * {@snippet lang=c : NSFreeHashTable Void(typedef NSHashTable = (Void)*)
  */
 private val NSFreeHashTable_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val NSFreeHashTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSFreeHashTable").orElseThrow()
-private val NSFreeHashTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSFreeHashTable_ADDR, NSFreeHashTable_DESC)
+private val NSFreeHashTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFreeHashTable").orElseThrow() }
+private val NSFreeHashTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSFreeHashTable_ADDR, NSFreeHashTable_DESC) }
 
 fun NSFreeHashTable(arg0: MemorySegment): Unit {
     try {
@@ -2131,8 +2131,8 @@ fun NSFreeHashTable(arg0: MemorySegment): Unit {
  * {@snippet lang=c : NSResetHashTable Void(typedef NSHashTable = (Void)*)
  */
 private val NSResetHashTable_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val NSResetHashTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSResetHashTable").orElseThrow()
-private val NSResetHashTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSResetHashTable_ADDR, NSResetHashTable_DESC)
+private val NSResetHashTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSResetHashTable").orElseThrow() }
+private val NSResetHashTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSResetHashTable_ADDR, NSResetHashTable_DESC) }
 
 fun NSResetHashTable(arg0: MemorySegment): Unit {
     try {
@@ -2150,8 +2150,8 @@ fun NSResetHashTable(arg0: MemorySegment): Unit {
  * {@snippet lang=c : NSCompareHashTables typedef BOOL = Bool(typedef NSHashTable = (Void)*,typedef NSHashTable = (Void)*)
  */
 private val NSCompareHashTables_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSCompareHashTables_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCompareHashTables").orElseThrow()
-private val NSCompareHashTables_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCompareHashTables_ADDR, NSCompareHashTables_DESC)
+private val NSCompareHashTables_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCompareHashTables").orElseThrow() }
+private val NSCompareHashTables_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCompareHashTables_ADDR, NSCompareHashTables_DESC) }
 
 fun NSCompareHashTables(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
@@ -2169,8 +2169,8 @@ fun NSCompareHashTables(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : NSCopyHashTableWithZone typedef NSHashTable = (Void)*(typedef NSHashTable = (Void)*,(typedef NSZone = Declared(_NSZone))*)
  */
 private val NSCopyHashTableWithZone_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSCopyHashTableWithZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCopyHashTableWithZone").orElseThrow()
-private val NSCopyHashTableWithZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCopyHashTableWithZone_ADDR, NSCopyHashTableWithZone_DESC)
+private val NSCopyHashTableWithZone_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCopyHashTableWithZone").orElseThrow() }
+private val NSCopyHashTableWithZone_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCopyHashTableWithZone_ADDR, NSCopyHashTableWithZone_DESC) }
 
 fun NSCopyHashTableWithZone(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2188,8 +2188,8 @@ fun NSCopyHashTableWithZone(arg0: MemorySegment, arg1: MemorySegment): MemorySeg
  * {@snippet lang=c : NSHashGet (Void)*(typedef NSHashTable = (Void)*,(Void)*)
  */
 private val NSHashGet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSHashGet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSHashGet").orElseThrow()
-private val NSHashGet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSHashGet_ADDR, NSHashGet_DESC)
+private val NSHashGet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHashGet").orElseThrow() }
+private val NSHashGet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSHashGet_ADDR, NSHashGet_DESC) }
 
 fun NSHashGet(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2207,8 +2207,8 @@ fun NSHashGet(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : NSHashInsert Void(typedef NSHashTable = (Void)*,(Void)*)
  */
 private val NSHashInsert_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSHashInsert_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSHashInsert").orElseThrow()
-private val NSHashInsert_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSHashInsert_ADDR, NSHashInsert_DESC)
+private val NSHashInsert_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHashInsert").orElseThrow() }
+private val NSHashInsert_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSHashInsert_ADDR, NSHashInsert_DESC) }
 
 fun NSHashInsert(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -2226,8 +2226,8 @@ fun NSHashInsert(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : NSHashInsertKnownAbsent Void(typedef NSHashTable = (Void)*,(Void)*)
  */
 private val NSHashInsertKnownAbsent_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSHashInsertKnownAbsent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSHashInsertKnownAbsent").orElseThrow()
-private val NSHashInsertKnownAbsent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSHashInsertKnownAbsent_ADDR, NSHashInsertKnownAbsent_DESC)
+private val NSHashInsertKnownAbsent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHashInsertKnownAbsent").orElseThrow() }
+private val NSHashInsertKnownAbsent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSHashInsertKnownAbsent_ADDR, NSHashInsertKnownAbsent_DESC) }
 
 fun NSHashInsertKnownAbsent(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -2245,8 +2245,8 @@ fun NSHashInsertKnownAbsent(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : NSHashInsertIfAbsent (Void)*(typedef NSHashTable = (Void)*,(Void)*)
  */
 private val NSHashInsertIfAbsent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSHashInsertIfAbsent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSHashInsertIfAbsent").orElseThrow()
-private val NSHashInsertIfAbsent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSHashInsertIfAbsent_ADDR, NSHashInsertIfAbsent_DESC)
+private val NSHashInsertIfAbsent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHashInsertIfAbsent").orElseThrow() }
+private val NSHashInsertIfAbsent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSHashInsertIfAbsent_ADDR, NSHashInsertIfAbsent_DESC) }
 
 fun NSHashInsertIfAbsent(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2264,8 +2264,8 @@ fun NSHashInsertIfAbsent(arg0: MemorySegment, arg1: MemorySegment): MemorySegmen
  * {@snippet lang=c : NSHashRemove Void(typedef NSHashTable = (Void)*,(Void)*)
  */
 private val NSHashRemove_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSHashRemove_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSHashRemove").orElseThrow()
-private val NSHashRemove_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSHashRemove_ADDR, NSHashRemove_DESC)
+private val NSHashRemove_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHashRemove").orElseThrow() }
+private val NSHashRemove_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSHashRemove_ADDR, NSHashRemove_DESC) }
 
 fun NSHashRemove(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -2283,8 +2283,8 @@ fun NSHashRemove(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : NSEnumerateHashTable typedef NSHashEnumerator = Declared(NSHashEnumerator)(typedef NSHashTable = (Void)*)
  */
 private val NSEnumerateHashTable_DESC: FunctionDescriptor = FunctionDescriptor.of(NSHashEnumerator.layout, ValueLayout.ADDRESS)
-private val NSEnumerateHashTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEnumerateHashTable").orElseThrow()
-private val NSEnumerateHashTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEnumerateHashTable_ADDR, NSEnumerateHashTable_DESC)
+private val NSEnumerateHashTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSEnumerateHashTable").orElseThrow() }
+private val NSEnumerateHashTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSEnumerateHashTable_ADDR, NSEnumerateHashTable_DESC) }
 
 fun NSEnumerateHashTable(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
@@ -2302,8 +2302,8 @@ fun NSEnumerateHashTable(allocator: SegmentAllocator, arg0: MemorySegment): Memo
  * {@snippet lang=c : NSNextHashEnumeratorItem (Void)*((typedef NSHashEnumerator = Declared(NSHashEnumerator))*)
  */
 private val NSNextHashEnumeratorItem_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSNextHashEnumeratorItem_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSNextHashEnumeratorItem").orElseThrow()
-private val NSNextHashEnumeratorItem_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSNextHashEnumeratorItem_ADDR, NSNextHashEnumeratorItem_DESC)
+private val NSNextHashEnumeratorItem_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSNextHashEnumeratorItem").orElseThrow() }
+private val NSNextHashEnumeratorItem_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSNextHashEnumeratorItem_ADDR, NSNextHashEnumeratorItem_DESC) }
 
 fun NSNextHashEnumeratorItem(arg0: MemorySegment): MemorySegment {
     try {
@@ -2321,8 +2321,8 @@ fun NSNextHashEnumeratorItem(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : NSEndHashTableEnumeration Void((typedef NSHashEnumerator = Declared(NSHashEnumerator))*)
  */
 private val NSEndHashTableEnumeration_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val NSEndHashTableEnumeration_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEndHashTableEnumeration").orElseThrow()
-private val NSEndHashTableEnumeration_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEndHashTableEnumeration_ADDR, NSEndHashTableEnumeration_DESC)
+private val NSEndHashTableEnumeration_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSEndHashTableEnumeration").orElseThrow() }
+private val NSEndHashTableEnumeration_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSEndHashTableEnumeration_ADDR, NSEndHashTableEnumeration_DESC) }
 
 fun NSEndHashTableEnumeration(arg0: MemorySegment): Unit {
     try {
@@ -2340,8 +2340,8 @@ fun NSEndHashTableEnumeration(arg0: MemorySegment): Unit {
  * {@snippet lang=c : NSCountHashTable typedef NSUInteger = UNSIGNED = Long(typedef NSHashTable = (Void)*)
  */
 private val NSCountHashTable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val NSCountHashTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCountHashTable").orElseThrow()
-private val NSCountHashTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCountHashTable_ADDR, NSCountHashTable_DESC)
+private val NSCountHashTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCountHashTable").orElseThrow() }
+private val NSCountHashTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCountHashTable_ADDR, NSCountHashTable_DESC) }
 
 fun NSCountHashTable(arg0: MemorySegment): Long {
     try {
@@ -2359,8 +2359,8 @@ fun NSCountHashTable(arg0: MemorySegment): Long {
  * {@snippet lang=c : NSStringFromHashTable typedef NSString = (Void)*(typedef NSHashTable = (Void)*)
  */
 private val NSStringFromHashTable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSStringFromHashTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSStringFromHashTable").orElseThrow()
-private val NSStringFromHashTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSStringFromHashTable_ADDR, NSStringFromHashTable_DESC)
+private val NSStringFromHashTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringFromHashTable").orElseThrow() }
+private val NSStringFromHashTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSStringFromHashTable_ADDR, NSStringFromHashTable_DESC) }
 
 fun NSStringFromHashTable(arg0: MemorySegment): MemorySegment {
     try {
@@ -2378,8 +2378,8 @@ fun NSStringFromHashTable(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : NSAllHashTableObjects typedef NSArray = (Void)*(typedef NSHashTable = (Void)*)
  */
 private val NSAllHashTableObjects_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSAllHashTableObjects_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSAllHashTableObjects").orElseThrow()
-private val NSAllHashTableObjects_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSAllHashTableObjects_ADDR, NSAllHashTableObjects_DESC)
+private val NSAllHashTableObjects_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAllHashTableObjects").orElseThrow() }
+private val NSAllHashTableObjects_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSAllHashTableObjects_ADDR, NSAllHashTableObjects_DESC) }
 
 fun NSAllHashTableObjects(arg0: MemorySegment): MemorySegment {
     try {
@@ -2397,8 +2397,8 @@ fun NSAllHashTableObjects(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : NSCreateHashTableWithZone typedef NSHashTable = (Void)*(typedef NSHashTableCallBacks = Declared(NSHashTableCallBacks),typedef NSUInteger = UNSIGNED = Long,(typedef NSZone = Declared(_NSZone))*)
  */
 private val NSCreateHashTableWithZone_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, NSHashTableCallBacks.layout, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val NSCreateHashTableWithZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCreateHashTableWithZone").orElseThrow()
-private val NSCreateHashTableWithZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCreateHashTableWithZone_ADDR, NSCreateHashTableWithZone_DESC)
+private val NSCreateHashTableWithZone_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCreateHashTableWithZone").orElseThrow() }
+private val NSCreateHashTableWithZone_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCreateHashTableWithZone_ADDR, NSCreateHashTableWithZone_DESC) }
 
 fun NSCreateHashTableWithZone(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -2416,8 +2416,8 @@ fun NSCreateHashTableWithZone(arg0: MemorySegment, arg1: Long, arg2: MemorySegme
  * {@snippet lang=c : NSCreateHashTable typedef NSHashTable = (Void)*(typedef NSHashTableCallBacks = Declared(NSHashTableCallBacks),typedef NSUInteger = UNSIGNED = Long)
  */
 private val NSCreateHashTable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, NSHashTableCallBacks.layout, ValueLayout.JAVA_LONG)
-private val NSCreateHashTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCreateHashTable").orElseThrow()
-private val NSCreateHashTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCreateHashTable_ADDR, NSCreateHashTable_DESC)
+private val NSCreateHashTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCreateHashTable").orElseThrow() }
+private val NSCreateHashTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCreateHashTable_ADDR, NSCreateHashTable_DESC) }
 
 fun NSCreateHashTable(arg0: MemorySegment, arg1: Long): MemorySegment {
     try {
@@ -2996,8 +2996,8 @@ val CGRectInfinite: MemorySegment = SymbolLookup.loaderLookup().find("CGRectInfi
  * {@snippet lang=c : CGRectGetMinX typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
 private val CGRectGetMinX_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, CGRect.layout)
-private val CGRectGetMinX_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMinX").orElseThrow()
-private val CGRectGetMinX_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMinX_ADDR, CGRectGetMinX_DESC)
+private val CGRectGetMinX_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectGetMinX").orElseThrow() }
+private val CGRectGetMinX_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectGetMinX_ADDR, CGRectGetMinX_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3023,8 +3023,8 @@ fun CGRectGetMinX(arg0: CGRect): Double {
  * {@snippet lang=c : CGRectGetMidX typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
 private val CGRectGetMidX_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, CGRect.layout)
-private val CGRectGetMidX_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMidX").orElseThrow()
-private val CGRectGetMidX_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMidX_ADDR, CGRectGetMidX_DESC)
+private val CGRectGetMidX_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectGetMidX").orElseThrow() }
+private val CGRectGetMidX_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectGetMidX_ADDR, CGRectGetMidX_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3050,8 +3050,8 @@ fun CGRectGetMidX(arg0: CGRect): Double {
  * {@snippet lang=c : CGRectGetMaxX typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
 private val CGRectGetMaxX_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, CGRect.layout)
-private val CGRectGetMaxX_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMaxX").orElseThrow()
-private val CGRectGetMaxX_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMaxX_ADDR, CGRectGetMaxX_DESC)
+private val CGRectGetMaxX_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectGetMaxX").orElseThrow() }
+private val CGRectGetMaxX_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectGetMaxX_ADDR, CGRectGetMaxX_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3077,8 +3077,8 @@ fun CGRectGetMaxX(arg0: CGRect): Double {
  * {@snippet lang=c : CGRectGetMinY typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
 private val CGRectGetMinY_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, CGRect.layout)
-private val CGRectGetMinY_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMinY").orElseThrow()
-private val CGRectGetMinY_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMinY_ADDR, CGRectGetMinY_DESC)
+private val CGRectGetMinY_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectGetMinY").orElseThrow() }
+private val CGRectGetMinY_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectGetMinY_ADDR, CGRectGetMinY_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3104,8 +3104,8 @@ fun CGRectGetMinY(arg0: CGRect): Double {
  * {@snippet lang=c : CGRectGetMidY typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
 private val CGRectGetMidY_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, CGRect.layout)
-private val CGRectGetMidY_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMidY").orElseThrow()
-private val CGRectGetMidY_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMidY_ADDR, CGRectGetMidY_DESC)
+private val CGRectGetMidY_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectGetMidY").orElseThrow() }
+private val CGRectGetMidY_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectGetMidY_ADDR, CGRectGetMidY_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3131,8 +3131,8 @@ fun CGRectGetMidY(arg0: CGRect): Double {
  * {@snippet lang=c : CGRectGetMaxY typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
 private val CGRectGetMaxY_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, CGRect.layout)
-private val CGRectGetMaxY_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetMaxY").orElseThrow()
-private val CGRectGetMaxY_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetMaxY_ADDR, CGRectGetMaxY_DESC)
+private val CGRectGetMaxY_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectGetMaxY").orElseThrow() }
+private val CGRectGetMaxY_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectGetMaxY_ADDR, CGRectGetMaxY_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3158,8 +3158,8 @@ fun CGRectGetMaxY(arg0: CGRect): Double {
  * {@snippet lang=c : CGRectGetWidth typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
 private val CGRectGetWidth_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, CGRect.layout)
-private val CGRectGetWidth_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetWidth").orElseThrow()
-private val CGRectGetWidth_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetWidth_ADDR, CGRectGetWidth_DESC)
+private val CGRectGetWidth_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectGetWidth").orElseThrow() }
+private val CGRectGetWidth_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectGetWidth_ADDR, CGRectGetWidth_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3185,8 +3185,8 @@ fun CGRectGetWidth(arg0: CGRect): Double {
  * {@snippet lang=c : CGRectGetHeight typedef CGFloat = Double(typedef CGRect = Declared(CGRect))
  */
 private val CGRectGetHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, CGRect.layout)
-private val CGRectGetHeight_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectGetHeight").orElseThrow()
-private val CGRectGetHeight_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectGetHeight_ADDR, CGRectGetHeight_DESC)
+private val CGRectGetHeight_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectGetHeight").orElseThrow() }
+private val CGRectGetHeight_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectGetHeight_ADDR, CGRectGetHeight_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3212,8 +3212,8 @@ fun CGRectGetHeight(arg0: CGRect): Double {
  * {@snippet lang=c : CGPointEqualToPoint Bool(typedef CGPoint = Declared(CGPoint),typedef CGPoint = Declared(CGPoint))
  */
 private val CGPointEqualToPoint_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGPoint.layout, CGPoint.layout)
-private val CGPointEqualToPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPointEqualToPoint").orElseThrow()
-private val CGPointEqualToPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPointEqualToPoint_ADDR, CGPointEqualToPoint_DESC)
+private val CGPointEqualToPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPointEqualToPoint").orElseThrow() }
+private val CGPointEqualToPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPointEqualToPoint_ADDR, CGPointEqualToPoint_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3239,8 +3239,8 @@ fun CGPointEqualToPoint(arg0: CGPoint, arg1: CGPoint): Boolean {
  * {@snippet lang=c : CGSizeEqualToSize Bool(typedef CGSize = Declared(CGSize),typedef CGSize = Declared(CGSize))
  */
 private val CGSizeEqualToSize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGSize.layout, CGSize.layout)
-private val CGSizeEqualToSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGSizeEqualToSize").orElseThrow()
-private val CGSizeEqualToSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGSizeEqualToSize_ADDR, CGSizeEqualToSize_DESC)
+private val CGSizeEqualToSize_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGSizeEqualToSize").orElseThrow() }
+private val CGSizeEqualToSize_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGSizeEqualToSize_ADDR, CGSizeEqualToSize_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3266,8 +3266,8 @@ fun CGSizeEqualToSize(arg0: CGSize, arg1: CGSize): Boolean {
  * {@snippet lang=c : CGRectEqualToRect Bool(typedef CGRect = Declared(CGRect),typedef CGRect = Declared(CGRect))
  */
 private val CGRectEqualToRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout, CGRect.layout)
-private val CGRectEqualToRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectEqualToRect").orElseThrow()
-private val CGRectEqualToRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectEqualToRect_ADDR, CGRectEqualToRect_DESC)
+private val CGRectEqualToRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectEqualToRect").orElseThrow() }
+private val CGRectEqualToRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectEqualToRect_ADDR, CGRectEqualToRect_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3293,8 +3293,8 @@ fun CGRectEqualToRect(arg0: CGRect, arg1: CGRect): Boolean {
  * {@snippet lang=c : CGRectStandardize typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect))
  */
 private val CGRectStandardize_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout)
-private val CGRectStandardize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectStandardize").orElseThrow()
-private val CGRectStandardize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectStandardize_ADDR, CGRectStandardize_DESC)
+private val CGRectStandardize_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectStandardize").orElseThrow() }
+private val CGRectStandardize_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectStandardize_ADDR, CGRectStandardize_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3320,8 +3320,8 @@ fun CGRectStandardize(allocator: SegmentAllocator, arg0: CGRect): CGRect {
  * {@snippet lang=c : CGRectIsEmpty Bool(typedef CGRect = Declared(CGRect))
  */
 private val CGRectIsEmpty_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout)
-private val CGRectIsEmpty_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIsEmpty").orElseThrow()
-private val CGRectIsEmpty_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIsEmpty_ADDR, CGRectIsEmpty_DESC)
+private val CGRectIsEmpty_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectIsEmpty").orElseThrow() }
+private val CGRectIsEmpty_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectIsEmpty_ADDR, CGRectIsEmpty_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3347,8 +3347,8 @@ fun CGRectIsEmpty(arg0: CGRect): Boolean {
  * {@snippet lang=c : CGRectIsNull Bool(typedef CGRect = Declared(CGRect))
  */
 private val CGRectIsNull_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout)
-private val CGRectIsNull_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIsNull").orElseThrow()
-private val CGRectIsNull_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIsNull_ADDR, CGRectIsNull_DESC)
+private val CGRectIsNull_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectIsNull").orElseThrow() }
+private val CGRectIsNull_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectIsNull_ADDR, CGRectIsNull_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3374,8 +3374,8 @@ fun CGRectIsNull(arg0: CGRect): Boolean {
  * {@snippet lang=c : CGRectIsInfinite Bool(typedef CGRect = Declared(CGRect))
  */
 private val CGRectIsInfinite_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout)
-private val CGRectIsInfinite_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIsInfinite").orElseThrow()
-private val CGRectIsInfinite_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIsInfinite_ADDR, CGRectIsInfinite_DESC)
+private val CGRectIsInfinite_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectIsInfinite").orElseThrow() }
+private val CGRectIsInfinite_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectIsInfinite_ADDR, CGRectIsInfinite_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -3401,8 +3401,8 @@ fun CGRectIsInfinite(arg0: CGRect): Boolean {
  * {@snippet lang=c : CGRectInset typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CGRectInset_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CGRectInset_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectInset").orElseThrow()
-private val CGRectInset_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectInset_ADDR, CGRectInset_DESC)
+private val CGRectInset_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectInset").orElseThrow() }
+private val CGRectInset_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectInset_ADDR, CGRectInset_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3428,8 +3428,8 @@ fun CGRectInset(allocator: SegmentAllocator, arg0: CGRect, arg1: Double, arg2: D
  * {@snippet lang=c : CGRectIntegral typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect))
  */
 private val CGRectIntegral_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout)
-private val CGRectIntegral_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIntegral").orElseThrow()
-private val CGRectIntegral_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIntegral_ADDR, CGRectIntegral_DESC)
+private val CGRectIntegral_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectIntegral").orElseThrow() }
+private val CGRectIntegral_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectIntegral_ADDR, CGRectIntegral_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3455,8 +3455,8 @@ fun CGRectIntegral(allocator: SegmentAllocator, arg0: CGRect): CGRect {
  * {@snippet lang=c : CGRectUnion typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect),typedef CGRect = Declared(CGRect))
  */
 private val CGRectUnion_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout, CGRect.layout)
-private val CGRectUnion_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectUnion").orElseThrow()
-private val CGRectUnion_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectUnion_ADDR, CGRectUnion_DESC)
+private val CGRectUnion_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectUnion").orElseThrow() }
+private val CGRectUnion_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectUnion_ADDR, CGRectUnion_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3482,8 +3482,8 @@ fun CGRectUnion(allocator: SegmentAllocator, arg0: CGRect, arg1: CGRect): CGRect
  * {@snippet lang=c : CGRectIntersection typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect),typedef CGRect = Declared(CGRect))
  */
 private val CGRectIntersection_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout, CGRect.layout)
-private val CGRectIntersection_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIntersection").orElseThrow()
-private val CGRectIntersection_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIntersection_ADDR, CGRectIntersection_DESC)
+private val CGRectIntersection_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectIntersection").orElseThrow() }
+private val CGRectIntersection_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectIntersection_ADDR, CGRectIntersection_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3509,8 +3509,8 @@ fun CGRectIntersection(allocator: SegmentAllocator, arg0: CGRect, arg1: CGRect):
  * {@snippet lang=c : CGRectOffset typedef CGRect = Declared(CGRect)(typedef CGRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CGRectOffset_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CGRectOffset_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectOffset").orElseThrow()
-private val CGRectOffset_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectOffset_ADDR, CGRectOffset_DESC)
+private val CGRectOffset_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectOffset").orElseThrow() }
+private val CGRectOffset_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectOffset_ADDR, CGRectOffset_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3536,8 +3536,8 @@ fun CGRectOffset(allocator: SegmentAllocator, arg0: CGRect, arg1: Double, arg2: 
  * {@snippet lang=c : CGRectDivide Void(typedef CGRect = Declared(CGRect),(typedef CGRect = Declared(CGRect))*,(typedef CGRect = Declared(CGRect))*,typedef CGFloat = Double,typedef CGRectEdge = Declared(CGRectEdge))
  */
 private val CGRectDivide_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CGRect.layout, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT)
-private val CGRectDivide_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectDivide").orElseThrow()
-private val CGRectDivide_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectDivide_ADDR, CGRectDivide_DESC)
+private val CGRectDivide_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectDivide").orElseThrow() }
+private val CGRectDivide_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectDivide_ADDR, CGRectDivide_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3563,8 +3563,8 @@ fun CGRectDivide(arg0: CGRect, arg1: MemorySegment, arg2: MemorySegment, arg3: D
  * {@snippet lang=c : CGRectContainsPoint Bool(typedef CGRect = Declared(CGRect),typedef CGPoint = Declared(CGPoint))
  */
 private val CGRectContainsPoint_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout, CGPoint.layout)
-private val CGRectContainsPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectContainsPoint").orElseThrow()
-private val CGRectContainsPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectContainsPoint_ADDR, CGRectContainsPoint_DESC)
+private val CGRectContainsPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectContainsPoint").orElseThrow() }
+private val CGRectContainsPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectContainsPoint_ADDR, CGRectContainsPoint_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3590,8 +3590,8 @@ fun CGRectContainsPoint(arg0: CGRect, arg1: CGPoint): Boolean {
  * {@snippet lang=c : CGRectContainsRect Bool(typedef CGRect = Declared(CGRect),typedef CGRect = Declared(CGRect))
  */
 private val CGRectContainsRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout, CGRect.layout)
-private val CGRectContainsRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectContainsRect").orElseThrow()
-private val CGRectContainsRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectContainsRect_ADDR, CGRectContainsRect_DESC)
+private val CGRectContainsRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectContainsRect").orElseThrow() }
+private val CGRectContainsRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectContainsRect_ADDR, CGRectContainsRect_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3617,8 +3617,8 @@ fun CGRectContainsRect(arg0: CGRect, arg1: CGRect): Boolean {
  * {@snippet lang=c : CGRectIntersectsRect Bool(typedef CGRect = Declared(CGRect),typedef CGRect = Declared(CGRect))
  */
 private val CGRectIntersectsRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout, CGRect.layout)
-private val CGRectIntersectsRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectIntersectsRect").orElseThrow()
-private val CGRectIntersectsRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectIntersectsRect_ADDR, CGRectIntersectsRect_DESC)
+private val CGRectIntersectsRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectIntersectsRect").orElseThrow() }
+private val CGRectIntersectsRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectIntersectsRect_ADDR, CGRectIntersectsRect_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -3644,8 +3644,8 @@ fun CGRectIntersectsRect(arg0: CGRect, arg1: CGRect): Boolean {
  * {@snippet lang=c : CGPointCreateDictionaryRepresentation typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGPoint = Declared(CGPoint))
  */
 private val CGPointCreateDictionaryRepresentation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGPoint.layout)
-private val CGPointCreateDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPointCreateDictionaryRepresentation").orElseThrow()
-private val CGPointCreateDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPointCreateDictionaryRepresentation_ADDR, CGPointCreateDictionaryRepresentation_DESC)
+private val CGPointCreateDictionaryRepresentation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPointCreateDictionaryRepresentation").orElseThrow() }
+private val CGPointCreateDictionaryRepresentation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPointCreateDictionaryRepresentation_ADDR, CGPointCreateDictionaryRepresentation_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3671,8 +3671,8 @@ fun CGPointCreateDictionaryRepresentation(arg0: CGPoint): MemorySegment {
  * {@snippet lang=c : CGPointMakeWithDictionaryRepresentation Bool(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(typedef CGPoint = Declared(CGPoint))*)
  */
 private val CGPointMakeWithDictionaryRepresentation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPointMakeWithDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGPointMakeWithDictionaryRepresentation").orElseThrow()
-private val CGPointMakeWithDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGPointMakeWithDictionaryRepresentation_ADDR, CGPointMakeWithDictionaryRepresentation_DESC)
+private val CGPointMakeWithDictionaryRepresentation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPointMakeWithDictionaryRepresentation").orElseThrow() }
+private val CGPointMakeWithDictionaryRepresentation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPointMakeWithDictionaryRepresentation_ADDR, CGPointMakeWithDictionaryRepresentation_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3692,8 +3692,8 @@ fun CGPointMakeWithDictionaryRepresentation(arg0: MemorySegment, arg1: MemorySeg
  * {@snippet lang=c : CGSizeCreateDictionaryRepresentation typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGSize = Declared(CGSize))
  */
 private val CGSizeCreateDictionaryRepresentation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGSize.layout)
-private val CGSizeCreateDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGSizeCreateDictionaryRepresentation").orElseThrow()
-private val CGSizeCreateDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGSizeCreateDictionaryRepresentation_ADDR, CGSizeCreateDictionaryRepresentation_DESC)
+private val CGSizeCreateDictionaryRepresentation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGSizeCreateDictionaryRepresentation").orElseThrow() }
+private val CGSizeCreateDictionaryRepresentation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGSizeCreateDictionaryRepresentation_ADDR, CGSizeCreateDictionaryRepresentation_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3719,8 +3719,8 @@ fun CGSizeCreateDictionaryRepresentation(arg0: CGSize): MemorySegment {
  * {@snippet lang=c : CGSizeMakeWithDictionaryRepresentation Bool(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(typedef CGSize = Declared(CGSize))*)
  */
 private val CGSizeMakeWithDictionaryRepresentation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGSizeMakeWithDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGSizeMakeWithDictionaryRepresentation").orElseThrow()
-private val CGSizeMakeWithDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGSizeMakeWithDictionaryRepresentation_ADDR, CGSizeMakeWithDictionaryRepresentation_DESC)
+private val CGSizeMakeWithDictionaryRepresentation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGSizeMakeWithDictionaryRepresentation").orElseThrow() }
+private val CGSizeMakeWithDictionaryRepresentation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGSizeMakeWithDictionaryRepresentation_ADDR, CGSizeMakeWithDictionaryRepresentation_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3740,8 +3740,8 @@ fun CGSizeMakeWithDictionaryRepresentation(arg0: MemorySegment, arg1: MemorySegm
  * {@snippet lang=c : CGRectCreateDictionaryRepresentation typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGRect = Declared(CGRect))
  */
 private val CGRectCreateDictionaryRepresentation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGRect.layout)
-private val CGRectCreateDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectCreateDictionaryRepresentation").orElseThrow()
-private val CGRectCreateDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectCreateDictionaryRepresentation_ADDR, CGRectCreateDictionaryRepresentation_DESC)
+private val CGRectCreateDictionaryRepresentation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectCreateDictionaryRepresentation").orElseThrow() }
+private val CGRectCreateDictionaryRepresentation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectCreateDictionaryRepresentation_ADDR, CGRectCreateDictionaryRepresentation_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3767,8 +3767,8 @@ fun CGRectCreateDictionaryRepresentation(arg0: CGRect): MemorySegment {
  * {@snippet lang=c : CGRectMakeWithDictionaryRepresentation Bool(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(typedef CGRect = Declared(CGRect))*)
  */
 private val CGRectMakeWithDictionaryRepresentation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGRectMakeWithDictionaryRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CGRectMakeWithDictionaryRepresentation").orElseThrow()
-private val CGRectMakeWithDictionaryRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CGRectMakeWithDictionaryRepresentation_ADDR, CGRectMakeWithDictionaryRepresentation_DESC)
+private val CGRectMakeWithDictionaryRepresentation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRectMakeWithDictionaryRepresentation").orElseThrow() }
+private val CGRectMakeWithDictionaryRepresentation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRectMakeWithDictionaryRepresentation_ADDR, CGRectMakeWithDictionaryRepresentation_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3812,8 +3812,8 @@ val NSEdgeInsetsZero: MemorySegment = SymbolLookup.loaderLookup().find("NSEdgeIn
  * {@snippet lang=c : NSEqualPoints typedef BOOL = Bool(typedef NSPoint = Declared(CGPoint),typedef NSPoint = Declared(CGPoint))
  */
 private val NSEqualPoints_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGPoint.layout, CGPoint.layout)
-private val NSEqualPoints_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEqualPoints").orElseThrow()
-private val NSEqualPoints_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEqualPoints_ADDR, NSEqualPoints_DESC)
+private val NSEqualPoints_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSEqualPoints").orElseThrow() }
+private val NSEqualPoints_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSEqualPoints_ADDR, NSEqualPoints_DESC) }
 
 fun NSEqualPoints(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
@@ -3835,8 +3835,8 @@ fun NSEqualPoints(arg0: NSPoint, arg1: NSPoint): Boolean {
  * {@snippet lang=c : NSEqualSizes typedef BOOL = Bool(typedef NSSize = Declared(CGSize),typedef NSSize = Declared(CGSize))
  */
 private val NSEqualSizes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGSize.layout, CGSize.layout)
-private val NSEqualSizes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEqualSizes").orElseThrow()
-private val NSEqualSizes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEqualSizes_ADDR, NSEqualSizes_DESC)
+private val NSEqualSizes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSEqualSizes").orElseThrow() }
+private val NSEqualSizes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSEqualSizes_ADDR, NSEqualSizes_DESC) }
 
 fun NSEqualSizes(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
@@ -3858,8 +3858,8 @@ fun NSEqualSizes(arg0: NSSize, arg1: NSSize): Boolean {
  * {@snippet lang=c : NSEqualRects typedef BOOL = Bool(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
 private val NSEqualRects_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout, CGRect.layout)
-private val NSEqualRects_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEqualRects").orElseThrow()
-private val NSEqualRects_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEqualRects_ADDR, NSEqualRects_DESC)
+private val NSEqualRects_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSEqualRects").orElseThrow() }
+private val NSEqualRects_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSEqualRects_ADDR, NSEqualRects_DESC) }
 
 fun NSEqualRects(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
@@ -3881,8 +3881,8 @@ fun NSEqualRects(arg0: NSRect, arg1: NSRect): Boolean {
  * {@snippet lang=c : NSIsEmptyRect typedef BOOL = Bool(typedef NSRect = Declared(CGRect))
  */
 private val NSIsEmptyRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout)
-private val NSIsEmptyRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSIsEmptyRect").orElseThrow()
-private val NSIsEmptyRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSIsEmptyRect_ADDR, NSIsEmptyRect_DESC)
+private val NSIsEmptyRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSIsEmptyRect").orElseThrow() }
+private val NSIsEmptyRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSIsEmptyRect_ADDR, NSIsEmptyRect_DESC) }
 
 fun NSIsEmptyRect(arg0: MemorySegment): Boolean {
     try {
@@ -3904,8 +3904,8 @@ fun NSIsEmptyRect(arg0: NSRect): Boolean {
  * {@snippet lang=c : NSEdgeInsetsEqual typedef BOOL = Bool(typedef NSEdgeInsets = Declared(NSEdgeInsets),typedef NSEdgeInsets = Declared(NSEdgeInsets))
  */
 private val NSEdgeInsetsEqual_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, NSEdgeInsets.layout, NSEdgeInsets.layout)
-private val NSEdgeInsetsEqual_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEdgeInsetsEqual").orElseThrow()
-private val NSEdgeInsetsEqual_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEdgeInsetsEqual_ADDR, NSEdgeInsetsEqual_DESC)
+private val NSEdgeInsetsEqual_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSEdgeInsetsEqual").orElseThrow() }
+private val NSEdgeInsetsEqual_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSEdgeInsetsEqual_ADDR, NSEdgeInsetsEqual_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
@@ -3935,8 +3935,8 @@ fun NSEdgeInsetsEqual(arg0: NSEdgeInsets, arg1: NSEdgeInsets): Boolean {
  * {@snippet lang=c : NSInsetRect typedef NSRect = Declared(CGRect)(typedef NSRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val NSInsetRect_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val NSInsetRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSInsetRect").orElseThrow()
-private val NSInsetRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSInsetRect_ADDR, NSInsetRect_DESC)
+private val NSInsetRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSInsetRect").orElseThrow() }
+private val NSInsetRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSInsetRect_ADDR, NSInsetRect_DESC) }
 
 fun NSInsetRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double, arg2: Double): MemorySegment {
     try {
@@ -3958,8 +3958,8 @@ fun NSInsetRect(allocator: SegmentAllocator, arg0: NSRect, arg1: Double, arg2: D
  * {@snippet lang=c : NSIntegralRect typedef NSRect = Declared(CGRect)(typedef NSRect = Declared(CGRect))
  */
 private val NSIntegralRect_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout)
-private val NSIntegralRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSIntegralRect").orElseThrow()
-private val NSIntegralRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSIntegralRect_ADDR, NSIntegralRect_DESC)
+private val NSIntegralRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSIntegralRect").orElseThrow() }
+private val NSIntegralRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSIntegralRect_ADDR, NSIntegralRect_DESC) }
 
 fun NSIntegralRect(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
@@ -3981,8 +3981,8 @@ fun NSIntegralRect(allocator: SegmentAllocator, arg0: NSRect): NSRect {
  * {@snippet lang=c : NSIntegralRectWithOptions typedef NSRect = Declared(CGRect)(typedef NSRect = Declared(CGRect),typedef NSAlignmentOptions = Declared(NSAlignmentOptions))
  */
 private val NSIntegralRectWithOptions_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout, ValueLayout.JAVA_LONG)
-private val NSIntegralRectWithOptions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSIntegralRectWithOptions").orElseThrow()
-private val NSIntegralRectWithOptions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSIntegralRectWithOptions_ADDR, NSIntegralRectWithOptions_DESC)
+private val NSIntegralRectWithOptions_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSIntegralRectWithOptions").orElseThrow() }
+private val NSIntegralRectWithOptions_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSIntegralRectWithOptions_ADDR, NSIntegralRectWithOptions_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
@@ -4012,8 +4012,8 @@ fun NSIntegralRectWithOptions(allocator: SegmentAllocator, arg0: NSRect, arg1: N
  * {@snippet lang=c : NSUnionRect typedef NSRect = Declared(CGRect)(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
 private val NSUnionRect_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout, CGRect.layout)
-private val NSUnionRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSUnionRect").orElseThrow()
-private val NSUnionRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSUnionRect_ADDR, NSUnionRect_DESC)
+private val NSUnionRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUnionRect").orElseThrow() }
+private val NSUnionRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSUnionRect_ADDR, NSUnionRect_DESC) }
 
 fun NSUnionRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4035,8 +4035,8 @@ fun NSUnionRect(allocator: SegmentAllocator, arg0: NSRect, arg1: NSRect): NSRect
  * {@snippet lang=c : NSIntersectionRect typedef NSRect = Declared(CGRect)(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
 private val NSIntersectionRect_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout, CGRect.layout)
-private val NSIntersectionRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSIntersectionRect").orElseThrow()
-private val NSIntersectionRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSIntersectionRect_ADDR, NSIntersectionRect_DESC)
+private val NSIntersectionRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSIntersectionRect").orElseThrow() }
+private val NSIntersectionRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSIntersectionRect_ADDR, NSIntersectionRect_DESC) }
 
 fun NSIntersectionRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4058,8 +4058,8 @@ fun NSIntersectionRect(allocator: SegmentAllocator, arg0: NSRect, arg1: NSRect):
  * {@snippet lang=c : NSOffsetRect typedef NSRect = Declared(CGRect)(typedef NSRect = Declared(CGRect),typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val NSOffsetRect_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, CGRect.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val NSOffsetRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSOffsetRect").orElseThrow()
-private val NSOffsetRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSOffsetRect_ADDR, NSOffsetRect_DESC)
+private val NSOffsetRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSOffsetRect").orElseThrow() }
+private val NSOffsetRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSOffsetRect_ADDR, NSOffsetRect_DESC) }
 
 fun NSOffsetRect(allocator: SegmentAllocator, arg0: MemorySegment, arg1: Double, arg2: Double): MemorySegment {
     try {
@@ -4081,8 +4081,8 @@ fun NSOffsetRect(allocator: SegmentAllocator, arg0: NSRect, arg1: Double, arg2: 
  * {@snippet lang=c : NSDivideRect Void(typedef NSRect = Declared(CGRect),(typedef NSRect = Declared(CGRect))*,(typedef NSRect = Declared(CGRect))*,typedef CGFloat = Double,typedef NSRectEdge = Declared(NSRectEdge))
  */
 private val NSDivideRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(CGRect.layout, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_LONG)
-private val NSDivideRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSDivideRect").orElseThrow()
-private val NSDivideRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSDivideRect_ADDR, NSDivideRect_DESC)
+private val NSDivideRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDivideRect").orElseThrow() }
+private val NSDivideRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSDivideRect_ADDR, NSDivideRect_DESC) }
 
 fun NSDivideRect(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Double, arg4: NSRectEdge): Unit {
     try {
@@ -4104,8 +4104,8 @@ fun NSDivideRect(arg0: NSRect, arg1: MemorySegment, arg2: MemorySegment, arg3: D
  * {@snippet lang=c : NSPointInRect typedef BOOL = Bool(typedef NSPoint = Declared(CGPoint),typedef NSRect = Declared(CGRect))
  */
 private val NSPointInRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGPoint.layout, CGRect.layout)
-private val NSPointInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSPointInRect").orElseThrow()
-private val NSPointInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSPointInRect_ADDR, NSPointInRect_DESC)
+private val NSPointInRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPointInRect").orElseThrow() }
+private val NSPointInRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSPointInRect_ADDR, NSPointInRect_DESC) }
 
 fun NSPointInRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
@@ -4127,8 +4127,8 @@ fun NSPointInRect(arg0: NSPoint, arg1: NSRect): Boolean {
  * {@snippet lang=c : NSMouseInRect typedef BOOL = Bool(typedef NSPoint = Declared(CGPoint),typedef NSRect = Declared(CGRect),typedef BOOL = Bool)
  */
 private val NSMouseInRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGPoint.layout, CGRect.layout, ValueLayout.JAVA_BOOLEAN)
-private val NSMouseInRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSMouseInRect").orElseThrow()
-private val NSMouseInRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSMouseInRect_ADDR, NSMouseInRect_DESC)
+private val NSMouseInRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMouseInRect").orElseThrow() }
+private val NSMouseInRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSMouseInRect_ADDR, NSMouseInRect_DESC) }
 
 fun NSMouseInRect(arg0: MemorySegment, arg1: MemorySegment, arg2: Boolean): Boolean {
     try {
@@ -4150,8 +4150,8 @@ fun NSMouseInRect(arg0: NSPoint, arg1: NSRect, arg2: Boolean): Boolean {
  * {@snippet lang=c : NSContainsRect typedef BOOL = Bool(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
 private val NSContainsRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout, CGRect.layout)
-private val NSContainsRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSContainsRect").orElseThrow()
-private val NSContainsRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSContainsRect_ADDR, NSContainsRect_DESC)
+private val NSContainsRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSContainsRect").orElseThrow() }
+private val NSContainsRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSContainsRect_ADDR, NSContainsRect_DESC) }
 
 fun NSContainsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
@@ -4173,8 +4173,8 @@ fun NSContainsRect(arg0: NSRect, arg1: NSRect): Boolean {
  * {@snippet lang=c : NSIntersectsRect typedef BOOL = Bool(typedef NSRect = Declared(CGRect),typedef NSRect = Declared(CGRect))
  */
 private val NSIntersectsRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CGRect.layout, CGRect.layout)
-private val NSIntersectsRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSIntersectsRect").orElseThrow()
-private val NSIntersectsRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSIntersectsRect_ADDR, NSIntersectsRect_DESC)
+private val NSIntersectsRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSIntersectsRect").orElseThrow() }
+private val NSIntersectsRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSIntersectsRect_ADDR, NSIntersectsRect_DESC) }
 
 fun NSIntersectsRect(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
@@ -4196,8 +4196,8 @@ fun NSIntersectsRect(arg0: NSRect, arg1: NSRect): Boolean {
  * {@snippet lang=c : NSStringFromPoint typedef NSString = (Void)*(typedef NSPoint = Declared(CGPoint))
  */
 private val NSStringFromPoint_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGPoint.layout)
-private val NSStringFromPoint_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSStringFromPoint").orElseThrow()
-private val NSStringFromPoint_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSStringFromPoint_ADDR, NSStringFromPoint_DESC)
+private val NSStringFromPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringFromPoint").orElseThrow() }
+private val NSStringFromPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSStringFromPoint_ADDR, NSStringFromPoint_DESC) }
 
 fun NSStringFromPoint(arg0: MemorySegment): MemorySegment {
     try {
@@ -4219,8 +4219,8 @@ fun NSStringFromPoint(arg0: NSPoint): MemorySegment {
  * {@snippet lang=c : NSStringFromSize typedef NSString = (Void)*(typedef NSSize = Declared(CGSize))
  */
 private val NSStringFromSize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGSize.layout)
-private val NSStringFromSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSStringFromSize").orElseThrow()
-private val NSStringFromSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSStringFromSize_ADDR, NSStringFromSize_DESC)
+private val NSStringFromSize_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringFromSize").orElseThrow() }
+private val NSStringFromSize_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSStringFromSize_ADDR, NSStringFromSize_DESC) }
 
 fun NSStringFromSize(arg0: MemorySegment): MemorySegment {
     try {
@@ -4242,8 +4242,8 @@ fun NSStringFromSize(arg0: NSSize): MemorySegment {
  * {@snippet lang=c : NSStringFromRect typedef NSString = (Void)*(typedef NSRect = Declared(CGRect))
  */
 private val NSStringFromRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGRect.layout)
-private val NSStringFromRect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSStringFromRect").orElseThrow()
-private val NSStringFromRect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSStringFromRect_ADDR, NSStringFromRect_DESC)
+private val NSStringFromRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringFromRect").orElseThrow() }
+private val NSStringFromRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSStringFromRect_ADDR, NSStringFromRect_DESC) }
 
 fun NSStringFromRect(arg0: MemorySegment): MemorySegment {
     try {
@@ -4265,8 +4265,8 @@ fun NSStringFromRect(arg0: NSRect): MemorySegment {
  * {@snippet lang=c : NSPointFromString typedef NSPoint = Declared(CGPoint)(typedef NSString = (Void)*)
  */
 private val NSPointFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS)
-private val NSPointFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSPointFromString").orElseThrow()
-private val NSPointFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSPointFromString_ADDR, NSPointFromString_DESC)
+private val NSPointFromString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPointFromString").orElseThrow() }
+private val NSPointFromString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSPointFromString_ADDR, NSPointFromString_DESC) }
 
 fun NSPointFromString(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
@@ -4288,8 +4288,8 @@ fun NSPointFromStringTyped(allocator: SegmentAllocator, arg0: MemorySegment): NS
  * {@snippet lang=c : NSSizeFromString typedef NSSize = Declared(CGSize)(typedef NSString = (Void)*)
  */
 private val NSSizeFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(CGSize.layout, ValueLayout.ADDRESS)
-private val NSSizeFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSSizeFromString").orElseThrow()
-private val NSSizeFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSSizeFromString_ADDR, NSSizeFromString_DESC)
+private val NSSizeFromString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSizeFromString").orElseThrow() }
+private val NSSizeFromString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSSizeFromString_ADDR, NSSizeFromString_DESC) }
 
 fun NSSizeFromString(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
@@ -4311,8 +4311,8 @@ fun NSSizeFromStringTyped(allocator: SegmentAllocator, arg0: MemorySegment): NSS
  * {@snippet lang=c : NSRectFromString typedef NSRect = Declared(CGRect)(typedef NSString = (Void)*)
  */
 private val NSRectFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.ADDRESS)
-private val NSRectFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRectFromString").orElseThrow()
-private val NSRectFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRectFromString_ADDR, NSRectFromString_DESC)
+private val NSRectFromString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRectFromString").orElseThrow() }
+private val NSRectFromString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSRectFromString_ADDR, NSRectFromString_DESC) }
 
 fun NSRectFromString(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
@@ -4371,8 +4371,8 @@ var NSKeyedArchiveRootObjectKey: MemorySegment
  * {@snippet lang=c : NSFreeMapTable Void(typedef NSMapTable = (Void)*)
  */
 private val NSFreeMapTable_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val NSFreeMapTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSFreeMapTable").orElseThrow()
-private val NSFreeMapTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSFreeMapTable_ADDR, NSFreeMapTable_DESC)
+private val NSFreeMapTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFreeMapTable").orElseThrow() }
+private val NSFreeMapTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSFreeMapTable_ADDR, NSFreeMapTable_DESC) }
 
 fun NSFreeMapTable(arg0: MemorySegment): Unit {
     try {
@@ -4390,8 +4390,8 @@ fun NSFreeMapTable(arg0: MemorySegment): Unit {
  * {@snippet lang=c : NSResetMapTable Void(typedef NSMapTable = (Void)*)
  */
 private val NSResetMapTable_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val NSResetMapTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSResetMapTable").orElseThrow()
-private val NSResetMapTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSResetMapTable_ADDR, NSResetMapTable_DESC)
+private val NSResetMapTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSResetMapTable").orElseThrow() }
+private val NSResetMapTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSResetMapTable_ADDR, NSResetMapTable_DESC) }
 
 fun NSResetMapTable(arg0: MemorySegment): Unit {
     try {
@@ -4409,8 +4409,8 @@ fun NSResetMapTable(arg0: MemorySegment): Unit {
  * {@snippet lang=c : NSCompareMapTables typedef BOOL = Bool(typedef NSMapTable = (Void)*,typedef NSMapTable = (Void)*)
  */
 private val NSCompareMapTables_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSCompareMapTables_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCompareMapTables").orElseThrow()
-private val NSCompareMapTables_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCompareMapTables_ADDR, NSCompareMapTables_DESC)
+private val NSCompareMapTables_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCompareMapTables").orElseThrow() }
+private val NSCompareMapTables_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCompareMapTables_ADDR, NSCompareMapTables_DESC) }
 
 fun NSCompareMapTables(arg0: MemorySegment, arg1: MemorySegment): Boolean {
     try {
@@ -4428,8 +4428,8 @@ fun NSCompareMapTables(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : NSCopyMapTableWithZone typedef NSMapTable = (Void)*(typedef NSMapTable = (Void)*,(typedef NSZone = Declared(_NSZone))*)
  */
 private val NSCopyMapTableWithZone_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSCopyMapTableWithZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCopyMapTableWithZone").orElseThrow()
-private val NSCopyMapTableWithZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCopyMapTableWithZone_ADDR, NSCopyMapTableWithZone_DESC)
+private val NSCopyMapTableWithZone_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCopyMapTableWithZone").orElseThrow() }
+private val NSCopyMapTableWithZone_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCopyMapTableWithZone_ADDR, NSCopyMapTableWithZone_DESC) }
 
 fun NSCopyMapTableWithZone(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4447,8 +4447,8 @@ fun NSCopyMapTableWithZone(arg0: MemorySegment, arg1: MemorySegment): MemorySegm
  * {@snippet lang=c : NSMapMember typedef BOOL = Bool(typedef NSMapTable = (Void)*,(Void)*,((Void)*)*,((Void)*)*)
  */
 private val NSMapMember_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSMapMember_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSMapMember").orElseThrow()
-private val NSMapMember_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSMapMember_ADDR, NSMapMember_DESC)
+private val NSMapMember_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMapMember").orElseThrow() }
+private val NSMapMember_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSMapMember_ADDR, NSMapMember_DESC) }
 
 fun NSMapMember(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Boolean {
     try {
@@ -4466,8 +4466,8 @@ fun NSMapMember(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, a
  * {@snippet lang=c : NSMapGet (Void)*(typedef NSMapTable = (Void)*,(Void)*)
  */
 private val NSMapGet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSMapGet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSMapGet").orElseThrow()
-private val NSMapGet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSMapGet_ADDR, NSMapGet_DESC)
+private val NSMapGet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMapGet").orElseThrow() }
+private val NSMapGet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSMapGet_ADDR, NSMapGet_DESC) }
 
 fun NSMapGet(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4485,8 +4485,8 @@ fun NSMapGet(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : NSMapInsert Void(typedef NSMapTable = (Void)*,(Void)*,(Void)*)
  */
 private val NSMapInsert_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSMapInsert_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSMapInsert").orElseThrow()
-private val NSMapInsert_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSMapInsert_ADDR, NSMapInsert_DESC)
+private val NSMapInsert_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMapInsert").orElseThrow() }
+private val NSMapInsert_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSMapInsert_ADDR, NSMapInsert_DESC) }
 
 fun NSMapInsert(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -4504,8 +4504,8 @@ fun NSMapInsert(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): 
  * {@snippet lang=c : NSMapInsertKnownAbsent Void(typedef NSMapTable = (Void)*,(Void)*,(Void)*)
  */
 private val NSMapInsertKnownAbsent_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSMapInsertKnownAbsent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSMapInsertKnownAbsent").orElseThrow()
-private val NSMapInsertKnownAbsent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSMapInsertKnownAbsent_ADDR, NSMapInsertKnownAbsent_DESC)
+private val NSMapInsertKnownAbsent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMapInsertKnownAbsent").orElseThrow() }
+private val NSMapInsertKnownAbsent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSMapInsertKnownAbsent_ADDR, NSMapInsertKnownAbsent_DESC) }
 
 fun NSMapInsertKnownAbsent(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -4523,8 +4523,8 @@ fun NSMapInsertKnownAbsent(arg0: MemorySegment, arg1: MemorySegment, arg2: Memor
  * {@snippet lang=c : NSMapInsertIfAbsent (Void)*(typedef NSMapTable = (Void)*,(Void)*,(Void)*)
  */
 private val NSMapInsertIfAbsent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSMapInsertIfAbsent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSMapInsertIfAbsent").orElseThrow()
-private val NSMapInsertIfAbsent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSMapInsertIfAbsent_ADDR, NSMapInsertIfAbsent_DESC)
+private val NSMapInsertIfAbsent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMapInsertIfAbsent").orElseThrow() }
+private val NSMapInsertIfAbsent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSMapInsertIfAbsent_ADDR, NSMapInsertIfAbsent_DESC) }
 
 fun NSMapInsertIfAbsent(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
     try {
@@ -4542,8 +4542,8 @@ fun NSMapInsertIfAbsent(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySe
  * {@snippet lang=c : NSMapRemove Void(typedef NSMapTable = (Void)*,(Void)*)
  */
 private val NSMapRemove_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSMapRemove_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSMapRemove").orElseThrow()
-private val NSMapRemove_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSMapRemove_ADDR, NSMapRemove_DESC)
+private val NSMapRemove_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMapRemove").orElseThrow() }
+private val NSMapRemove_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSMapRemove_ADDR, NSMapRemove_DESC) }
 
 fun NSMapRemove(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -4561,8 +4561,8 @@ fun NSMapRemove(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : NSEnumerateMapTable typedef NSMapEnumerator = Declared(NSMapEnumerator)(typedef NSMapTable = (Void)*)
  */
 private val NSEnumerateMapTable_DESC: FunctionDescriptor = FunctionDescriptor.of(NSMapEnumerator.layout, ValueLayout.ADDRESS)
-private val NSEnumerateMapTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEnumerateMapTable").orElseThrow()
-private val NSEnumerateMapTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEnumerateMapTable_ADDR, NSEnumerateMapTable_DESC)
+private val NSEnumerateMapTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSEnumerateMapTable").orElseThrow() }
+private val NSEnumerateMapTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSEnumerateMapTable_ADDR, NSEnumerateMapTable_DESC) }
 
 fun NSEnumerateMapTable(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
     try {
@@ -4580,8 +4580,8 @@ fun NSEnumerateMapTable(allocator: SegmentAllocator, arg0: MemorySegment): Memor
  * {@snippet lang=c : NSNextMapEnumeratorPair typedef BOOL = Bool((typedef NSMapEnumerator = Declared(NSMapEnumerator))*,((Void)*)*,((Void)*)*)
  */
 private val NSNextMapEnumeratorPair_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSNextMapEnumeratorPair_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSNextMapEnumeratorPair").orElseThrow()
-private val NSNextMapEnumeratorPair_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSNextMapEnumeratorPair_ADDR, NSNextMapEnumeratorPair_DESC)
+private val NSNextMapEnumeratorPair_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSNextMapEnumeratorPair").orElseThrow() }
+private val NSNextMapEnumeratorPair_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSNextMapEnumeratorPair_ADDR, NSNextMapEnumeratorPair_DESC) }
 
 fun NSNextMapEnumeratorPair(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Boolean {
     try {
@@ -4599,8 +4599,8 @@ fun NSNextMapEnumeratorPair(arg0: MemorySegment, arg1: MemorySegment, arg2: Memo
  * {@snippet lang=c : NSEndMapTableEnumeration Void((typedef NSMapEnumerator = Declared(NSMapEnumerator))*)
  */
 private val NSEndMapTableEnumeration_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val NSEndMapTableEnumeration_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSEndMapTableEnumeration").orElseThrow()
-private val NSEndMapTableEnumeration_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSEndMapTableEnumeration_ADDR, NSEndMapTableEnumeration_DESC)
+private val NSEndMapTableEnumeration_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSEndMapTableEnumeration").orElseThrow() }
+private val NSEndMapTableEnumeration_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSEndMapTableEnumeration_ADDR, NSEndMapTableEnumeration_DESC) }
 
 fun NSEndMapTableEnumeration(arg0: MemorySegment): Unit {
     try {
@@ -4618,8 +4618,8 @@ fun NSEndMapTableEnumeration(arg0: MemorySegment): Unit {
  * {@snippet lang=c : NSCountMapTable typedef NSUInteger = UNSIGNED = Long(typedef NSMapTable = (Void)*)
  */
 private val NSCountMapTable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val NSCountMapTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCountMapTable").orElseThrow()
-private val NSCountMapTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCountMapTable_ADDR, NSCountMapTable_DESC)
+private val NSCountMapTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCountMapTable").orElseThrow() }
+private val NSCountMapTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCountMapTable_ADDR, NSCountMapTable_DESC) }
 
 fun NSCountMapTable(arg0: MemorySegment): Long {
     try {
@@ -4637,8 +4637,8 @@ fun NSCountMapTable(arg0: MemorySegment): Long {
  * {@snippet lang=c : NSStringFromMapTable typedef NSString = (Void)*(typedef NSMapTable = (Void)*)
  */
 private val NSStringFromMapTable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSStringFromMapTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSStringFromMapTable").orElseThrow()
-private val NSStringFromMapTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSStringFromMapTable_ADDR, NSStringFromMapTable_DESC)
+private val NSStringFromMapTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStringFromMapTable").orElseThrow() }
+private val NSStringFromMapTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSStringFromMapTable_ADDR, NSStringFromMapTable_DESC) }
 
 fun NSStringFromMapTable(arg0: MemorySegment): MemorySegment {
     try {
@@ -4656,8 +4656,8 @@ fun NSStringFromMapTable(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : NSAllMapTableKeys typedef NSArray = (Void)*(typedef NSMapTable = (Void)*)
  */
 private val NSAllMapTableKeys_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSAllMapTableKeys_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSAllMapTableKeys").orElseThrow()
-private val NSAllMapTableKeys_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSAllMapTableKeys_ADDR, NSAllMapTableKeys_DESC)
+private val NSAllMapTableKeys_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAllMapTableKeys").orElseThrow() }
+private val NSAllMapTableKeys_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSAllMapTableKeys_ADDR, NSAllMapTableKeys_DESC) }
 
 fun NSAllMapTableKeys(arg0: MemorySegment): MemorySegment {
     try {
@@ -4675,8 +4675,8 @@ fun NSAllMapTableKeys(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : NSAllMapTableValues typedef NSArray = (Void)*(typedef NSMapTable = (Void)*)
  */
 private val NSAllMapTableValues_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSAllMapTableValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSAllMapTableValues").orElseThrow()
-private val NSAllMapTableValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSAllMapTableValues_ADDR, NSAllMapTableValues_DESC)
+private val NSAllMapTableValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAllMapTableValues").orElseThrow() }
+private val NSAllMapTableValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSAllMapTableValues_ADDR, NSAllMapTableValues_DESC) }
 
 fun NSAllMapTableValues(arg0: MemorySegment): MemorySegment {
     try {
@@ -4694,8 +4694,8 @@ fun NSAllMapTableValues(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : NSCreateMapTableWithZone typedef NSMapTable = (Void)*(typedef NSMapTableKeyCallBacks = Declared(NSMapTableKeyCallBacks),typedef NSMapTableValueCallBacks = Declared(NSMapTableValueCallBacks),typedef NSUInteger = UNSIGNED = Long,(typedef NSZone = Declared(_NSZone))*)
  */
 private val NSCreateMapTableWithZone_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, NSMapTableKeyCallBacks.layout, NSMapTableValueCallBacks.layout, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val NSCreateMapTableWithZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCreateMapTableWithZone").orElseThrow()
-private val NSCreateMapTableWithZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCreateMapTableWithZone_ADDR, NSCreateMapTableWithZone_DESC)
+private val NSCreateMapTableWithZone_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCreateMapTableWithZone").orElseThrow() }
+private val NSCreateMapTableWithZone_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCreateMapTableWithZone_ADDR, NSCreateMapTableWithZone_DESC) }
 
 fun NSCreateMapTableWithZone(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): MemorySegment {
     try {
@@ -4713,8 +4713,8 @@ fun NSCreateMapTableWithZone(arg0: MemorySegment, arg1: MemorySegment, arg2: Lon
  * {@snippet lang=c : NSCreateMapTable typedef NSMapTable = (Void)*(typedef NSMapTableKeyCallBacks = Declared(NSMapTableKeyCallBacks),typedef NSMapTableValueCallBacks = Declared(NSMapTableValueCallBacks),typedef NSUInteger = UNSIGNED = Long)
  */
 private val NSCreateMapTable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, NSMapTableKeyCallBacks.layout, NSMapTableValueCallBacks.layout, ValueLayout.JAVA_LONG)
-private val NSCreateMapTable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSCreateMapTable").orElseThrow()
-private val NSCreateMapTable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSCreateMapTable_ADDR, NSCreateMapTable_DESC)
+private val NSCreateMapTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCreateMapTable").orElseThrow() }
+private val NSCreateMapTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSCreateMapTable_ADDR, NSCreateMapTable_DESC) }
 
 fun NSCreateMapTable(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): MemorySegment {
     try {
