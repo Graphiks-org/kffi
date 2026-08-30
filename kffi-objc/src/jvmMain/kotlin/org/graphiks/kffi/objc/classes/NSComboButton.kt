@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 open class NSComboButton(override val ptr: MemorySegment) : NSControl(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSComboButton") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSComboButton") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun comboButtonWithTitle_menu_target_action(title: MemorySegment, menu: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {

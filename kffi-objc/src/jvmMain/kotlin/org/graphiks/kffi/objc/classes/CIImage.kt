@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 open class CIImage(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("CIImage") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("CIImage") } }
 
         @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
         fun imageWithCGImage(image: CGImageRef): MemorySegment {

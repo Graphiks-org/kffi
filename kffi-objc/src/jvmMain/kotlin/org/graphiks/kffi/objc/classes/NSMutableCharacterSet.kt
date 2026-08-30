@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSMutableCharacterSet(override val ptr: MemorySegment) : NSCharacterSet(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSMutableCharacterSet") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSMutableCharacterSet") } }
 
         fun controlCharacterSet(): MemorySegment {
             val sel = ObjCRuntime.sel("controlCharacterSet")

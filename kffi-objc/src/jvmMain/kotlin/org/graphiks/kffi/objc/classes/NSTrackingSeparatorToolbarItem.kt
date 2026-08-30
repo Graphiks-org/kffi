@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 open class NSTrackingSeparatorToolbarItem(override val ptr: MemorySegment) : NSToolbarItem(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSTrackingSeparatorToolbarItem") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSTrackingSeparatorToolbarItem") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun trackingSeparatorToolbarItemWithIdentifier_splitView_dividerIndex(identifier: MemorySegment, splitView: MemorySegment, dividerIndex: Long): MemorySegment {

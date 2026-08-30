@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSTokenField(override val ptr: MemorySegment) : NSTextField(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSTokenField") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSTokenField") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultCompletionDelay(): Double {

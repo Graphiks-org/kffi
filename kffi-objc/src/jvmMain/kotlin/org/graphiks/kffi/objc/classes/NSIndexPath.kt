@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSIndexPath(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSIndexPath") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSIndexPath") } }
 
         fun indexPathWithIndex(index: Long): MemorySegment {
             val sel = ObjCRuntime.sel("indexPathWithIndex:")

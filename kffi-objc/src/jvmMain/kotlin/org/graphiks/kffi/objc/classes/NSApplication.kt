@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSApplication(override val ptr: MemorySegment) : NSResponder(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSApplication") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSApplication") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun detachDrawingThread_toTarget_withObject(selector: MemorySegment, target: MemorySegment, argument: MemorySegment): Unit {

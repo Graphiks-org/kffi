@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSScriptSuiteRegistry(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSScriptSuiteRegistry") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSScriptSuiteRegistry") } }
 
         fun sharedScriptSuiteRegistry(): MemorySegment {
             val sel = ObjCRuntime.sel("sharedScriptSuiteRegistry")

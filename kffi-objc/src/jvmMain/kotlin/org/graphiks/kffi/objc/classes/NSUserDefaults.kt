@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSUserDefaults(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSUserDefaults") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSUserDefaults") } }
 
         fun resetStandardUserDefaults(): Unit {
             val sel = ObjCRuntime.sel("resetStandardUserDefaults")

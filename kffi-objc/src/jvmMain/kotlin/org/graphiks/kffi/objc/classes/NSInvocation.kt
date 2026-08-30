@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "swift", unavailable = true, message = "NSInvocation and related APIs not available")
 open class NSInvocation(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSInvocation") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSInvocation") } }
 
         @PlatformAvailability(platform = "swift", unavailable = true, message = "NSInvocation and related APIs not available")
         fun invocationWithMethodSignature(sig: MemorySegment): MemorySegment {
