@@ -29,7 +29,12 @@ data class NSEventObservation(
         /** The event is neither a keyboard nor a pointer event covered by this observation. */
         data object None : Details
 
-        /** Keyboard data captured for key-down, key-up, and modifier-change events. */
+        /**
+         * Keyboard data captured for key-down, key-up, and modifier-change events.
+         *
+         * Modifier-change events only provide [keyCode]; their text fields are empty and
+         * [isRepeat] is false.
+         */
         data class Keyboard(
             val keyCode: Int,
             val characters: String,
@@ -37,13 +42,18 @@ data class NSEventObservation(
             val isRepeat: Boolean,
         ) : Details
 
-        /** Pointer data captured for mouse movement, button, enter/exit, and drag events. */
+        /** Pointer data captured for mouse movement, button, and drag events. */
         data class Pointer(
             val buttonNumber: Long,
             val clickCount: Long,
             val pressure: Float,
             val deltaX: Double,
             val deltaY: Double,
+        ) : Details
+
+        /** Tracking-area data captured for mouse enter and exit events. */
+        data class Tracking(
+            val trackingNumber: Long,
         ) : Details
     }
 
@@ -62,12 +72,18 @@ data class NSEventObservation(
         private fun NSEvent.detailsFor(type: NSEventType): Details = when (type) {
             NSEventType.NSEventTypeKeyDown,
             NSEventType.NSEventTypeKeyUp,
-            NSEventType.NSEventTypeFlagsChanged,
             -> Details.Keyboard(
                 keyCode = keyCode().toInt() and 0xffff,
                 characters = charactersAsString(),
                 charactersIgnoringModifiers = charactersIgnoringModifiersAsString(),
                 isRepeat = isARepeat(),
+            )
+
+            NSEventType.NSEventTypeFlagsChanged -> Details.Keyboard(
+                keyCode = keyCode().toInt() and 0xffff,
+                characters = "",
+                charactersIgnoringModifiers = "",
+                isRepeat = false,
             )
 
             NSEventType.NSEventTypeLeftMouseDown,
@@ -80,8 +96,6 @@ data class NSEventObservation(
             NSEventType.NSEventTypeLeftMouseDragged,
             NSEventType.NSEventTypeRightMouseDragged,
             NSEventType.NSEventTypeOtherMouseDragged,
-            NSEventType.NSEventTypeMouseEntered,
-            NSEventType.NSEventTypeMouseExited,
             NSEventType.NSEventTypeMouseCancelled,
             -> Details.Pointer(
                 buttonNumber = buttonNumber(),
@@ -89,6 +103,12 @@ data class NSEventObservation(
                 pressure = pressure(),
                 deltaX = deltaX(),
                 deltaY = deltaY(),
+            )
+
+            NSEventType.NSEventTypeMouseEntered,
+            NSEventType.NSEventTypeMouseExited,
+            -> Details.Tracking(
+                trackingNumber = trackingNumber(),
             )
 
             else -> Details.None
