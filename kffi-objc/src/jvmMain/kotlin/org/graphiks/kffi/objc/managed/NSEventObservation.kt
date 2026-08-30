@@ -37,13 +37,18 @@ data class NSEventObservation(
             val isRepeat: Boolean,
         ) : Details
 
-        /** Pointer data captured for mouse movement, button, enter/exit, and drag events. */
+        /** Pointer data captured for mouse movement, button, and drag events. */
         data class Pointer(
             val buttonNumber: Long,
             val clickCount: Long,
             val pressure: Float,
             val deltaX: Double,
             val deltaY: Double,
+        ) : Details
+
+        /** Tracking-area data captured for mouse enter and exit events. */
+        data class Tracking(
+            val trackingNumber: Long,
         ) : Details
     }
 
@@ -80,8 +85,6 @@ data class NSEventObservation(
             NSEventType.NSEventTypeLeftMouseDragged,
             NSEventType.NSEventTypeRightMouseDragged,
             NSEventType.NSEventTypeOtherMouseDragged,
-            NSEventType.NSEventTypeMouseEntered,
-            NSEventType.NSEventTypeMouseExited,
             NSEventType.NSEventTypeMouseCancelled,
             -> Details.Pointer(
                 buttonNumber = buttonNumber(),
@@ -89,6 +92,12 @@ data class NSEventObservation(
                 pressure = pressure(),
                 deltaX = deltaX(),
                 deltaY = deltaY(),
+            )
+
+            NSEventType.NSEventTypeMouseEntered,
+            NSEventType.NSEventTypeMouseExited,
+            -> Details.Tracking(
+                trackingNumber = trackingNumber(),
             )
 
             else -> Details.None

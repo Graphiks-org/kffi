@@ -137,6 +137,44 @@ class ObjCManagedNSEventObservationTest {
     }
 
     @Test
+    fun mouseEnteredDeliversTrackingDetailsWithoutReadingButtonOnlyProperties() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            methods = mapOf("mouseEntered:" to ObjCMethodSignatures.VoidObject),
+        )
+        var observed: NSEventObservation? = null
+        val instance = managedClass.createInstance {
+            onNSEvent("mouseEntered:") { observed = it }
+        }
+
+        try {
+            ObjCRuntime.autoreleasePool {
+                val event = NSEvent.enterExitEventWithType_location_modifierFlags_timestamp_windowNumber_context_eventNumber_trackingNumber_userData(
+                    type = NSEventType.NSEventTypeMouseEntered,
+                    location = NSPoint(x = 3.0, y = 7.0),
+                    flags = NSEventModifierFlags(0L),
+                    time = 4.0,
+                    wNum = 0L,
+                    unusedPassNil = MemorySegment.NULL,
+                    eNum = 2L,
+                    tNum = 41L,
+                    data = MemorySegment.NULL,
+                )
+
+                send(instance, "mouseEntered:", event)
+            }
+
+            val tracking = assertIs<NSEventObservation.Details.Tracking>(requireNotNull(observed).details)
+            assertEquals(NSEventType.NSEventTypeMouseEntered, observed.type)
+            assertEquals(NSEventObservation.Position(x = 3.0, y = 7.0), observed.position)
+            assertEquals(41L, tracking.trackingNumber)
+        } finally {
+            instance.close()
+        }
+    }
+
+    @Test
     fun pointerObservationCopiesNonZeroDeltasFromGeneratedEventGetters() {
         val observation = NSEventObservation.from(
             SyntheticNSEvent(
@@ -189,12 +227,15 @@ private val pointerEventTypes = listOf(
     NSEventType.NSEventTypeMouseMoved,
     NSEventType.NSEventTypeLeftMouseDragged,
     NSEventType.NSEventTypeRightMouseDragged,
-    NSEventType.NSEventTypeMouseEntered,
-    NSEventType.NSEventTypeMouseExited,
     NSEventType.NSEventTypeOtherMouseDown,
     NSEventType.NSEventTypeOtherMouseUp,
     NSEventType.NSEventTypeOtherMouseDragged,
     NSEventType.NSEventTypeMouseCancelled,
+)
+
+private val trackingEventTypes = listOf(
+    NSEventType.NSEventTypeMouseEntered,
+    NSEventType.NSEventTypeMouseExited,
 )
 
 private val noneEventTypes = listOf(
@@ -222,6 +263,7 @@ private val noneEventTypes = listOf(
 private val allGeneratedEventTypeCases: List<Pair<NSEventType, KClass<out NSEventObservation.Details>>> =
     keyboardEventTypes.map { it to NSEventObservation.Details.Keyboard::class } +
         pointerEventTypes.map { it to NSEventObservation.Details.Pointer::class } +
+        trackingEventTypes.map { it to NSEventObservation.Details.Tracking::class } +
         noneEventTypes.map { it to NSEventObservation.Details.None::class }
 
 private class SyntheticNSEvent(
@@ -237,6 +279,7 @@ private class SyntheticNSEvent(
     private val eventPressure: Float = 0f,
     private val eventDeltaX: Double = 0.0,
     private val eventDeltaY: Double = 0.0,
+    private val eventTrackingNumber: Long = 0L,
 ) : NSEvent(MemorySegment.NULL) {
     constructor(
         type: NSEventType,
@@ -271,4 +314,6 @@ private class SyntheticNSEvent(
     override fun deltaX(): Double = eventDeltaX
 
     override fun deltaY(): Double = eventDeltaY
+
+    override fun trackingNumber(): Long = eventTrackingNumber
 }
