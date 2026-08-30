@@ -1084,8 +1084,8 @@ var NSRulerViewUnitPicas: MemorySegment
  * {@snippet lang=c : NSInterfaceStyleForKey typedef NSInterfaceStyle = UNSIGNED = Long((Void)*,(Void)*)
  */
 private val NSInterfaceStyleForKey_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSInterfaceStyleForKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSInterfaceStyleForKey").orElseThrow()
-private val NSInterfaceStyleForKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSInterfaceStyleForKey_ADDR, NSInterfaceStyleForKey_DESC)
+private val NSInterfaceStyleForKey_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSInterfaceStyleForKey").orElseThrow() }
+private val NSInterfaceStyleForKey_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSInterfaceStyleForKey_ADDR, NSInterfaceStyleForKey_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1)
@@ -1182,8 +1182,8 @@ var NSDrawerDidCloseNotification: MemorySegment
  * {@snippet lang=c : NSOpenGLSetOption Void(typedef NSOpenGLGlobalOption = Declared(NSOpenGLGlobalOption),typedef GLint = Int)
  */
 private val NSOpenGLSetOption_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val NSOpenGLSetOption_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSOpenGLSetOption").orElseThrow()
-private val NSOpenGLSetOption_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSOpenGLSetOption_ADDR, NSOpenGLSetOption_DESC)
+private val NSOpenGLSetOption_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSOpenGLSetOption").orElseThrow() }
+private val NSOpenGLSetOption_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSOpenGLSetOption_ADDR, NSOpenGLSetOption_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)")
@@ -1203,8 +1203,8 @@ fun NSOpenGLSetOption(arg0: NSOpenGLGlobalOption, arg1: Int): Unit {
  * {@snippet lang=c : NSOpenGLGetOption Void(typedef NSOpenGLGlobalOption = Declared(NSOpenGLGlobalOption),(typedef GLint = Int)*)
  */
 private val NSOpenGLGetOption_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val NSOpenGLGetOption_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSOpenGLGetOption").orElseThrow()
-private val NSOpenGLGetOption_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSOpenGLGetOption_ADDR, NSOpenGLGetOption_DESC)
+private val NSOpenGLGetOption_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSOpenGLGetOption").orElseThrow() }
+private val NSOpenGLGetOption_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSOpenGLGetOption_ADDR, NSOpenGLGetOption_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)")
@@ -1224,8 +1224,8 @@ fun NSOpenGLGetOption(arg0: NSOpenGLGlobalOption, arg1: MemorySegment): Unit {
  * {@snippet lang=c : NSOpenGLGetVersion Void((typedef GLint = Int)*,(typedef GLint = Int)*)
  */
 private val NSOpenGLGetVersion_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSOpenGLGetVersion_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSOpenGLGetVersion").orElseThrow()
-private val NSOpenGLGetVersion_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSOpenGLGetVersion_ADDR, NSOpenGLGetVersion_DESC)
+private val NSOpenGLGetVersion_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSOpenGLGetVersion").orElseThrow() }
+private val NSOpenGLGetVersion_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSOpenGLGetVersion_ADDR, NSOpenGLGetVersion_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)")
@@ -1245,8 +1245,8 @@ fun NSOpenGLGetVersion(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CACurrentMediaTime typedef CFTimeInterval = Double()
  */
 private val CACurrentMediaTime_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE)
-private val CACurrentMediaTime_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CACurrentMediaTime").orElseThrow()
-private val CACurrentMediaTime_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CACurrentMediaTime_ADDR, CACurrentMediaTime_DESC)
+private val CACurrentMediaTime_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CACurrentMediaTime").orElseThrow() }
+private val CACurrentMediaTime_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CACurrentMediaTime_ADDR, CACurrentMediaTime_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1336,8 +1336,8 @@ val CATransform3DIdentity: MemorySegment = SymbolLookup.loaderLookup().find("CAT
  * {@snippet lang=c : CATransform3DIsIdentity Bool(typedef CATransform3D = Declared(CATransform3D))
  */
 private val CATransform3DIsIdentity_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CATransform3D.layout)
-private val CATransform3DIsIdentity_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DIsIdentity").orElseThrow()
-private val CATransform3DIsIdentity_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DIsIdentity_ADDR, CATransform3DIsIdentity_DESC)
+private val CATransform3DIsIdentity_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DIsIdentity").orElseThrow() }
+private val CATransform3DIsIdentity_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DIsIdentity_ADDR, CATransform3DIsIdentity_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1367,8 +1367,8 @@ fun CATransform3DIsIdentity(arg0: CATransform3D): Boolean {
  * {@snippet lang=c : CATransform3DEqualToTransform Bool(typedef CATransform3D = Declared(CATransform3D),typedef CATransform3D = Declared(CATransform3D))
  */
 private val CATransform3DEqualToTransform_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CATransform3D.layout, CATransform3D.layout)
-private val CATransform3DEqualToTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DEqualToTransform").orElseThrow()
-private val CATransform3DEqualToTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DEqualToTransform_ADDR, CATransform3DEqualToTransform_DESC)
+private val CATransform3DEqualToTransform_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DEqualToTransform").orElseThrow() }
+private val CATransform3DEqualToTransform_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DEqualToTransform_ADDR, CATransform3DEqualToTransform_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1398,8 +1398,8 @@ fun CATransform3DEqualToTransform(arg0: CATransform3D, arg1: CATransform3D): Boo
  * {@snippet lang=c : CATransform3DMakeTranslation typedef CATransform3D = Declared(CATransform3D)(typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CATransform3DMakeTranslation_DESC: FunctionDescriptor = FunctionDescriptor.of(CATransform3D.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CATransform3DMakeTranslation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DMakeTranslation").orElseThrow()
-private val CATransform3DMakeTranslation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DMakeTranslation_ADDR, CATransform3DMakeTranslation_DESC)
+private val CATransform3DMakeTranslation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DMakeTranslation").orElseThrow() }
+private val CATransform3DMakeTranslation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DMakeTranslation_ADDR, CATransform3DMakeTranslation_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1429,8 +1429,8 @@ fun CATransform3DMakeTranslationTyped(allocator: SegmentAllocator, arg0: Double,
  * {@snippet lang=c : CATransform3DMakeScale typedef CATransform3D = Declared(CATransform3D)(typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CATransform3DMakeScale_DESC: FunctionDescriptor = FunctionDescriptor.of(CATransform3D.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CATransform3DMakeScale_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DMakeScale").orElseThrow()
-private val CATransform3DMakeScale_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DMakeScale_ADDR, CATransform3DMakeScale_DESC)
+private val CATransform3DMakeScale_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DMakeScale").orElseThrow() }
+private val CATransform3DMakeScale_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DMakeScale_ADDR, CATransform3DMakeScale_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1460,8 +1460,8 @@ fun CATransform3DMakeScaleTyped(allocator: SegmentAllocator, arg0: Double, arg1:
  * {@snippet lang=c : CATransform3DMakeRotation typedef CATransform3D = Declared(CATransform3D)(typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CATransform3DMakeRotation_DESC: FunctionDescriptor = FunctionDescriptor.of(CATransform3D.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CATransform3DMakeRotation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DMakeRotation").orElseThrow()
-private val CATransform3DMakeRotation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DMakeRotation_ADDR, CATransform3DMakeRotation_DESC)
+private val CATransform3DMakeRotation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DMakeRotation").orElseThrow() }
+private val CATransform3DMakeRotation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DMakeRotation_ADDR, CATransform3DMakeRotation_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1491,8 +1491,8 @@ fun CATransform3DMakeRotationTyped(allocator: SegmentAllocator, arg0: Double, ar
  * {@snippet lang=c : CATransform3DTranslate typedef CATransform3D = Declared(CATransform3D)(typedef CATransform3D = Declared(CATransform3D),typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CATransform3DTranslate_DESC: FunctionDescriptor = FunctionDescriptor.of(CATransform3D.layout, CATransform3D.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CATransform3DTranslate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DTranslate").orElseThrow()
-private val CATransform3DTranslate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DTranslate_ADDR, CATransform3DTranslate_DESC)
+private val CATransform3DTranslate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DTranslate").orElseThrow() }
+private val CATransform3DTranslate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DTranslate_ADDR, CATransform3DTranslate_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1522,8 +1522,8 @@ fun CATransform3DTranslate(allocator: SegmentAllocator, arg0: CATransform3D, arg
  * {@snippet lang=c : CATransform3DScale typedef CATransform3D = Declared(CATransform3D)(typedef CATransform3D = Declared(CATransform3D),typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CATransform3DScale_DESC: FunctionDescriptor = FunctionDescriptor.of(CATransform3D.layout, CATransform3D.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CATransform3DScale_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DScale").orElseThrow()
-private val CATransform3DScale_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DScale_ADDR, CATransform3DScale_DESC)
+private val CATransform3DScale_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DScale").orElseThrow() }
+private val CATransform3DScale_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DScale_ADDR, CATransform3DScale_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1553,8 +1553,8 @@ fun CATransform3DScale(allocator: SegmentAllocator, arg0: CATransform3D, arg1: D
  * {@snippet lang=c : CATransform3DRotate typedef CATransform3D = Declared(CATransform3D)(typedef CATransform3D = Declared(CATransform3D),typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CATransform3DRotate_DESC: FunctionDescriptor = FunctionDescriptor.of(CATransform3D.layout, CATransform3D.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CATransform3DRotate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DRotate").orElseThrow()
-private val CATransform3DRotate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DRotate_ADDR, CATransform3DRotate_DESC)
+private val CATransform3DRotate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DRotate").orElseThrow() }
+private val CATransform3DRotate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DRotate_ADDR, CATransform3DRotate_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1584,8 +1584,8 @@ fun CATransform3DRotate(allocator: SegmentAllocator, arg0: CATransform3D, arg1: 
  * {@snippet lang=c : CATransform3DConcat typedef CATransform3D = Declared(CATransform3D)(typedef CATransform3D = Declared(CATransform3D),typedef CATransform3D = Declared(CATransform3D))
  */
 private val CATransform3DConcat_DESC: FunctionDescriptor = FunctionDescriptor.of(CATransform3D.layout, CATransform3D.layout, CATransform3D.layout)
-private val CATransform3DConcat_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DConcat").orElseThrow()
-private val CATransform3DConcat_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DConcat_ADDR, CATransform3DConcat_DESC)
+private val CATransform3DConcat_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DConcat").orElseThrow() }
+private val CATransform3DConcat_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DConcat_ADDR, CATransform3DConcat_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1615,8 +1615,8 @@ fun CATransform3DConcat(allocator: SegmentAllocator, arg0: CATransform3D, arg1: 
  * {@snippet lang=c : CATransform3DInvert typedef CATransform3D = Declared(CATransform3D)(typedef CATransform3D = Declared(CATransform3D))
  */
 private val CATransform3DInvert_DESC: FunctionDescriptor = FunctionDescriptor.of(CATransform3D.layout, CATransform3D.layout)
-private val CATransform3DInvert_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DInvert").orElseThrow()
-private val CATransform3DInvert_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DInvert_ADDR, CATransform3DInvert_DESC)
+private val CATransform3DInvert_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DInvert").orElseThrow() }
+private val CATransform3DInvert_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DInvert_ADDR, CATransform3DInvert_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1646,8 +1646,8 @@ fun CATransform3DInvert(allocator: SegmentAllocator, arg0: CATransform3D): CATra
  * {@snippet lang=c : CATransform3DMakeAffineTransform typedef CATransform3D = Declared(CATransform3D)(typedef CGAffineTransform = Declared(CGAffineTransform))
  */
 private val CATransform3DMakeAffineTransform_DESC: FunctionDescriptor = FunctionDescriptor.of(CATransform3D.layout, CGAffineTransform.layout)
-private val CATransform3DMakeAffineTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DMakeAffineTransform").orElseThrow()
-private val CATransform3DMakeAffineTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DMakeAffineTransform_ADDR, CATransform3DMakeAffineTransform_DESC)
+private val CATransform3DMakeAffineTransform_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DMakeAffineTransform").orElseThrow() }
+private val CATransform3DMakeAffineTransform_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DMakeAffineTransform_ADDR, CATransform3DMakeAffineTransform_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1677,8 +1677,8 @@ fun CATransform3DMakeAffineTransform(allocator: SegmentAllocator, arg0: CGAffine
  * {@snippet lang=c : CATransform3DIsAffine Bool(typedef CATransform3D = Declared(CATransform3D))
  */
 private val CATransform3DIsAffine_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, CATransform3D.layout)
-private val CATransform3DIsAffine_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DIsAffine").orElseThrow()
-private val CATransform3DIsAffine_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DIsAffine_ADDR, CATransform3DIsAffine_DESC)
+private val CATransform3DIsAffine_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DIsAffine").orElseThrow() }
+private val CATransform3DIsAffine_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DIsAffine_ADDR, CATransform3DIsAffine_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1708,8 +1708,8 @@ fun CATransform3DIsAffine(arg0: CATransform3D): Boolean {
  * {@snippet lang=c : CATransform3DGetAffineTransform typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CATransform3D = Declared(CATransform3D))
  */
 private val CATransform3DGetAffineTransform_DESC: FunctionDescriptor = FunctionDescriptor.of(CGAffineTransform.layout, CATransform3D.layout)
-private val CATransform3DGetAffineTransform_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CATransform3DGetAffineTransform").orElseThrow()
-private val CATransform3DGetAffineTransform_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CATransform3DGetAffineTransform_ADDR, CATransform3DGetAffineTransform_DESC)
+private val CATransform3DGetAffineTransform_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CATransform3DGetAffineTransform").orElseThrow() }
+private val CATransform3DGetAffineTransform_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CATransform3DGetAffineTransform_ADDR, CATransform3DGetAffineTransform_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)

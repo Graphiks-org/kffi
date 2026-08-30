@@ -977,8 +977,8 @@ var NSFontSetChangedNotification: MemorySegment
  * {@snippet lang=c : NSConvertGlyphsToPackedGlyphs typedef NSInteger = Long((typedef NSGlyph = UNSIGNED = Int)*,typedef NSInteger = Long,typedef NSMultibyteGlyphPacking = Declared(NSMultibyteGlyphPacking),(Char)*)
  */
 private val NSConvertGlyphsToPackedGlyphs_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val NSConvertGlyphsToPackedGlyphs_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSConvertGlyphsToPackedGlyphs").orElseThrow()
-private val NSConvertGlyphsToPackedGlyphs_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSConvertGlyphsToPackedGlyphs_ADDR, NSConvertGlyphsToPackedGlyphs_DESC)
+private val NSConvertGlyphsToPackedGlyphs_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSConvertGlyphsToPackedGlyphs").orElseThrow() }
+private val NSConvertGlyphsToPackedGlyphs_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSConvertGlyphsToPackedGlyphs_ADDR, NSConvertGlyphsToPackedGlyphs_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1)
@@ -1579,8 +1579,8 @@ var NSWindowDidChangeOcclusionStateNotification: MemorySegment
  * {@snippet lang=c : NSRunAlertPanelRelativeToWindow typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val NSRunAlertPanelRelativeToWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSRunAlertPanelRelativeToWindow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunAlertPanelRelativeToWindow").orElseThrow()
-private val NSRunAlertPanelRelativeToWindow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunAlertPanelRelativeToWindow_ADDR, NSRunAlertPanelRelativeToWindow_DESC)
+private val NSRunAlertPanelRelativeToWindow_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRunAlertPanelRelativeToWindow").orElseThrow() }
+private val NSRunAlertPanelRelativeToWindow_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSRunAlertPanelRelativeToWindow_ADDR, NSRunAlertPanelRelativeToWindow_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSAlert, and present it with -[NSAlert beginSheetModalForWindow:completionHandler:] instead")
@@ -1600,8 +1600,8 @@ fun NSRunAlertPanelRelativeToWindow(arg0: MemorySegment, arg1: MemorySegment, ar
  * {@snippet lang=c : NSRunInformationalAlertPanelRelativeToWindow typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val NSRunInformationalAlertPanelRelativeToWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSRunInformationalAlertPanelRelativeToWindow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunInformationalAlertPanelRelativeToWindow").orElseThrow()
-private val NSRunInformationalAlertPanelRelativeToWindow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunInformationalAlertPanelRelativeToWindow_ADDR, NSRunInformationalAlertPanelRelativeToWindow_DESC)
+private val NSRunInformationalAlertPanelRelativeToWindow_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRunInformationalAlertPanelRelativeToWindow").orElseThrow() }
+private val NSRunInformationalAlertPanelRelativeToWindow_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSRunInformationalAlertPanelRelativeToWindow_ADDR, NSRunInformationalAlertPanelRelativeToWindow_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSAlert with a style of NSAlertStyleInformational, and present it with -[NSAlert beginSheetModalForWindow:completionHandler:] instead")
@@ -1621,8 +1621,8 @@ fun NSRunInformationalAlertPanelRelativeToWindow(arg0: MemorySegment, arg1: Memo
  * {@snippet lang=c : NSRunCriticalAlertPanelRelativeToWindow typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val NSRunCriticalAlertPanelRelativeToWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSRunCriticalAlertPanelRelativeToWindow_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunCriticalAlertPanelRelativeToWindow").orElseThrow()
-private val NSRunCriticalAlertPanelRelativeToWindow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunCriticalAlertPanelRelativeToWindow_ADDR, NSRunCriticalAlertPanelRelativeToWindow_DESC)
+private val NSRunCriticalAlertPanelRelativeToWindow_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRunCriticalAlertPanelRelativeToWindow").orElseThrow() }
+private val NSRunCriticalAlertPanelRelativeToWindow_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSRunCriticalAlertPanelRelativeToWindow_ADDR, NSRunCriticalAlertPanelRelativeToWindow_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSAlert with a style of NSAlertStyleCritical, and present it with -[NSAlert beginSheetModalForWindow:completionHandler:] instead")
@@ -1642,8 +1642,8 @@ fun NSRunCriticalAlertPanelRelativeToWindow(arg0: MemorySegment, arg1: MemorySeg
  * {@snippet lang=c : NSRunAlertPanel typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val NSRunAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSRunAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunAlertPanel").orElseThrow()
-private val NSRunAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunAlertPanel_ADDR, NSRunAlertPanel_DESC)
+private val NSRunAlertPanel_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRunAlertPanel").orElseThrow() }
+private val NSRunAlertPanel_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSRunAlertPanel_ADDR, NSRunAlertPanel_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert instead")
@@ -1663,8 +1663,8 @@ fun NSRunAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegmen
  * {@snippet lang=c : NSRunInformationalAlertPanel typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val NSRunInformationalAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSRunInformationalAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunInformationalAlertPanel").orElseThrow()
-private val NSRunInformationalAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunInformationalAlertPanel_ADDR, NSRunInformationalAlertPanel_DESC)
+private val NSRunInformationalAlertPanel_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRunInformationalAlertPanel").orElseThrow() }
+private val NSRunInformationalAlertPanel_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSRunInformationalAlertPanel_ADDR, NSRunInformationalAlertPanel_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert with a style of NSAlertStyleInformational, and present it with -[NSAlert runModal] instead")
@@ -1684,8 +1684,8 @@ fun NSRunInformationalAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2:
  * {@snippet lang=c : NSRunCriticalAlertPanel typedef NSInteger = Long((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val NSRunCriticalAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSRunCriticalAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSRunCriticalAlertPanel").orElseThrow()
-private val NSRunCriticalAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSRunCriticalAlertPanel_ADDR, NSRunCriticalAlertPanel_DESC)
+private val NSRunCriticalAlertPanel_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRunCriticalAlertPanel").orElseThrow() }
+private val NSRunCriticalAlertPanel_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSRunCriticalAlertPanel_ADDR, NSRunCriticalAlertPanel_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert with a style of NSAlertStyleCritical, and present it with -[NSAlert runModal] instead")
@@ -1705,8 +1705,8 @@ fun NSRunCriticalAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: Memo
  * {@snippet lang=c : NSBeginAlertSheet Void((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,typedef __strong id = (Void)*,typedef SEL = ((Void)*)*,typedef SEL = ((Void)*)*,(Void)*,(Void)*)
  */
 private val NSBeginAlertSheet_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSBeginAlertSheet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBeginAlertSheet").orElseThrow()
-private val NSBeginAlertSheet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBeginAlertSheet_ADDR, NSBeginAlertSheet_DESC)
+private val NSBeginAlertSheet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBeginAlertSheet").orElseThrow() }
+private val NSBeginAlertSheet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSBeginAlertSheet_ADDR, NSBeginAlertSheet_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert, and present it with -[NSAlert beginSheetModalForWindow:completionHandler:] instead")
@@ -1726,8 +1726,8 @@ fun NSBeginAlertSheet(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegm
  * {@snippet lang=c : NSBeginInformationalAlertSheet Void((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,typedef __strong id = (Void)*,typedef SEL = ((Void)*)*,typedef SEL = ((Void)*)*,(Void)*,(Void)*)
  */
 private val NSBeginInformationalAlertSheet_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSBeginInformationalAlertSheet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBeginInformationalAlertSheet").orElseThrow()
-private val NSBeginInformationalAlertSheet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBeginInformationalAlertSheet_ADDR, NSBeginInformationalAlertSheet_DESC)
+private val NSBeginInformationalAlertSheet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBeginInformationalAlertSheet").orElseThrow() }
+private val NSBeginInformationalAlertSheet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSBeginInformationalAlertSheet_ADDR, NSBeginInformationalAlertSheet_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert with a style of NSAlertStyleInformational, and present it with -[NSAlert beginSheetModalForWindow:completionHandler:] instead")
@@ -1747,8 +1747,8 @@ fun NSBeginInformationalAlertSheet(arg0: MemorySegment, arg1: MemorySegment, arg
  * {@snippet lang=c : NSBeginCriticalAlertSheet Void((Void)*,(Void)*,(Void)*,(Void)*,(Void)*,typedef __strong id = (Void)*,typedef SEL = ((Void)*)*,typedef SEL = ((Void)*)*,(Void)*,(Void)*)
  */
 private val NSBeginCriticalAlertSheet_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSBeginCriticalAlertSheet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSBeginCriticalAlertSheet").orElseThrow()
-private val NSBeginCriticalAlertSheet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSBeginCriticalAlertSheet_ADDR, NSBeginCriticalAlertSheet_DESC)
+private val NSBeginCriticalAlertSheet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBeginCriticalAlertSheet").orElseThrow() }
+private val NSBeginCriticalAlertSheet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSBeginCriticalAlertSheet_ADDR, NSBeginCriticalAlertSheet_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert with a style of NSAlertStyleCritical, and present it with -[NSAlert beginSheetModalForWindow:completionHandler:] instead")
@@ -1768,8 +1768,8 @@ fun NSBeginCriticalAlertSheet(arg0: MemorySegment, arg1: MemorySegment, arg2: Me
  * {@snippet lang=c : NSGetAlertPanel typedef id = (Void)*((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val NSGetAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSGetAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSGetAlertPanel").orElseThrow()
-private val NSGetAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSGetAlertPanel_ADDR, NSGetAlertPanel_DESC)
+private val NSGetAlertPanel_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGetAlertPanel").orElseThrow() }
+private val NSGetAlertPanel_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSGetAlertPanel_ADDR, NSGetAlertPanel_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert")
@@ -1789,8 +1789,8 @@ fun NSGetAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegmen
  * {@snippet lang=c : NSGetInformationalAlertPanel typedef id = (Void)*((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val NSGetInformationalAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSGetInformationalAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSGetInformationalAlertPanel").orElseThrow()
-private val NSGetInformationalAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSGetInformationalAlertPanel_ADDR, NSGetInformationalAlertPanel_DESC)
+private val NSGetInformationalAlertPanel_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGetInformationalAlertPanel").orElseThrow() }
+private val NSGetInformationalAlertPanel_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSGetInformationalAlertPanel_ADDR, NSGetInformationalAlertPanel_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert with a style of NSAlertStyleInformational instead")
@@ -1810,8 +1810,8 @@ fun NSGetInformationalAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2:
  * {@snippet lang=c : NSGetCriticalAlertPanel typedef id = (Void)*((Void)*,(Void)*,(Void)*,(Void)*,(Void)*)
  */
 private val NSGetCriticalAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSGetCriticalAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSGetCriticalAlertPanel").orElseThrow()
-private val NSGetCriticalAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSGetCriticalAlertPanel_ADDR, NSGetCriticalAlertPanel_DESC)
+private val NSGetCriticalAlertPanel_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGetCriticalAlertPanel").orElseThrow() }
+private val NSGetCriticalAlertPanel_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSGetCriticalAlertPanel_ADDR, NSGetCriticalAlertPanel_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert with a style of NSAlertStyleCritical instead")
@@ -1831,8 +1831,8 @@ fun NSGetCriticalAlertPanel(arg0: MemorySegment, arg1: MemorySegment, arg2: Memo
  * {@snippet lang=c : NSReleaseAlertPanel Void(typedef __strong id = (Void)*)
  */
 private val NSReleaseAlertPanel_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val NSReleaseAlertPanel_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("NSReleaseAlertPanel").orElseThrow()
-private val NSReleaseAlertPanel_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(NSReleaseAlertPanel_ADDR, NSReleaseAlertPanel_DESC)
+private val NSReleaseAlertPanel_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSReleaseAlertPanel").orElseThrow() }
+private val NSReleaseAlertPanel_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSReleaseAlertPanel_ADDR, NSReleaseAlertPanel_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSAlert instead")
@@ -2786,8 +2786,8 @@ var NSDraggingImageComponentLabelKey: MemorySegment
  * {@snippet lang=c : _NSDictionaryOfVariableBindings (Void)*(typedef NSString = (Void)*,typedef id = (Void)*)
  */
 private val _NSDictionaryOfVariableBindings_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val _NSDictionaryOfVariableBindings_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("_NSDictionaryOfVariableBindings").orElseThrow()
-private val _NSDictionaryOfVariableBindings_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(_NSDictionaryOfVariableBindings_ADDR, _NSDictionaryOfVariableBindings_DESC)
+private val _NSDictionaryOfVariableBindings_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("_NSDictionaryOfVariableBindings").orElseThrow() }
+private val _NSDictionaryOfVariableBindings_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(_NSDictionaryOfVariableBindings_ADDR, _NSDictionaryOfVariableBindings_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)

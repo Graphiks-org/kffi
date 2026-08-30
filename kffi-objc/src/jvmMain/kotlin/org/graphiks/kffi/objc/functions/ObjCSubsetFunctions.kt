@@ -21,8 +21,8 @@ var kCFCoreFoundationVersionNumber: Double
  * {@snippet lang=c : __CFRangeMake typedef CFRange = Declared(CFRange)(typedef CFIndex = Long,typedef CFIndex = Long)
  */
 private val _CFRangeMake_DESC: FunctionDescriptor = FunctionDescriptor.of(CFRange.layout, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
-private val _CFRangeMake_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("__CFRangeMake").orElseThrow()
-private val _CFRangeMake_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(_CFRangeMake_ADDR, _CFRangeMake_DESC)
+private val _CFRangeMake_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("__CFRangeMake").orElseThrow() }
+private val _CFRangeMake_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(_CFRangeMake_ADDR, _CFRangeMake_DESC) }
 
 fun _CFRangeMake(allocator: SegmentAllocator, arg0: Long, arg1: Long): MemorySegment {
     try {
@@ -40,8 +40,8 @@ fun _CFRangeMake(allocator: SegmentAllocator, arg0: Long, arg1: Long): MemorySeg
  * {@snippet lang=c : CFNullGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFNullGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFNullGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNullGetTypeID").orElseThrow()
-private val CFNullGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNullGetTypeID_ADDR, CFNullGetTypeID_DESC)
+private val CFNullGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNullGetTypeID").orElseThrow() }
+private val CFNullGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNullGetTypeID_ADDR, CFNullGetTypeID_DESC) }
 
 fun CFNullGetTypeID(): Long {
     try {
@@ -136,8 +136,8 @@ var kCFAllocatorUseContext: MemorySegment
  * {@snippet lang=c : CFAllocatorGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFAllocatorGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFAllocatorGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorGetTypeID").orElseThrow()
-private val CFAllocatorGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorGetTypeID_ADDR, CFAllocatorGetTypeID_DESC)
+private val CFAllocatorGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorGetTypeID").orElseThrow() }
+private val CFAllocatorGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorGetTypeID_ADDR, CFAllocatorGetTypeID_DESC) }
 
 fun CFAllocatorGetTypeID(): Long {
     try {
@@ -155,8 +155,8 @@ fun CFAllocatorGetTypeID(): Long {
  * {@snippet lang=c : CFAllocatorSetDefault Void(typedef CFAllocatorRef = (Declared(__CFAllocator))*)
  */
 private val CFAllocatorSetDefault_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFAllocatorSetDefault_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorSetDefault").orElseThrow()
-private val CFAllocatorSetDefault_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorSetDefault_ADDR, CFAllocatorSetDefault_DESC)
+private val CFAllocatorSetDefault_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorSetDefault").orElseThrow() }
+private val CFAllocatorSetDefault_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorSetDefault_ADDR, CFAllocatorSetDefault_DESC) }
 
 fun CFAllocatorSetDefault(arg0: MemorySegment): Unit {
     try {
@@ -174,8 +174,8 @@ fun CFAllocatorSetDefault(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFAllocatorGetDefault typedef CFAllocatorRef = (Declared(__CFAllocator))*()
  */
 private val CFAllocatorGetDefault_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFAllocatorGetDefault_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorGetDefault").orElseThrow()
-private val CFAllocatorGetDefault_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorGetDefault_ADDR, CFAllocatorGetDefault_DESC)
+private val CFAllocatorGetDefault_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorGetDefault").orElseThrow() }
+private val CFAllocatorGetDefault_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorGetDefault_ADDR, CFAllocatorGetDefault_DESC) }
 
 fun CFAllocatorGetDefault(): MemorySegment {
     try {
@@ -193,8 +193,8 @@ fun CFAllocatorGetDefault(): MemorySegment {
  * {@snippet lang=c : CFAllocatorCreate typedef CFAllocatorRef = (Declared(__CFAllocator))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef CFAllocatorContext = Declared(CFAllocatorContext))*)
  */
 private val CFAllocatorCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFAllocatorCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorCreate").orElseThrow()
-private val CFAllocatorCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorCreate_ADDR, CFAllocatorCreate_DESC)
+private val CFAllocatorCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorCreate").orElseThrow() }
+private val CFAllocatorCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorCreate_ADDR, CFAllocatorCreate_DESC) }
 
 fun CFAllocatorCreate(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -212,8 +212,8 @@ fun CFAllocatorCreate(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFAllocatorCreateWithZone typedef CFAllocatorRef = (Declared(__CFAllocator))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(Declared(_malloc_zone_t))*)
  */
 private val CFAllocatorCreateWithZone_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFAllocatorCreateWithZone_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorCreateWithZone").orElseThrow()
-private val CFAllocatorCreateWithZone_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorCreateWithZone_ADDR, CFAllocatorCreateWithZone_DESC)
+private val CFAllocatorCreateWithZone_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorCreateWithZone").orElseThrow() }
+private val CFAllocatorCreateWithZone_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorCreateWithZone_ADDR, CFAllocatorCreateWithZone_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
 @PlatformAvailability(platform = "macos", unavailable = true)
@@ -236,8 +236,8 @@ fun CFAllocatorCreateWithZone(arg0: MemorySegment, arg1: MemorySegment): MemoryS
  * {@snippet lang=c : CFAllocatorAllocateTyped (Void)*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFAllocatorTypeID = UNSIGNED = LongLong,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFAllocatorAllocateTyped_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
-private val CFAllocatorAllocateTyped_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorAllocateTyped").orElseThrow()
-private val CFAllocatorAllocateTyped_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorAllocateTyped_ADDR, CFAllocatorAllocateTyped_DESC)
+private val CFAllocatorAllocateTyped_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorAllocateTyped").orElseThrow() }
+private val CFAllocatorAllocateTyped_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorAllocateTyped_ADDR, CFAllocatorAllocateTyped_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
@@ -260,8 +260,8 @@ fun CFAllocatorAllocateTyped(arg0: MemorySegment, arg1: Long, arg2: Long, arg3: 
  * {@snippet lang=c : CFAllocatorReallocateTyped (Void)*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(Void)*,typedef CFIndex = Long,typedef CFAllocatorTypeID = UNSIGNED = LongLong,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFAllocatorReallocateTyped_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
-private val CFAllocatorReallocateTyped_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorReallocateTyped").orElseThrow()
-private val CFAllocatorReallocateTyped_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorReallocateTyped_ADDR, CFAllocatorReallocateTyped_DESC)
+private val CFAllocatorReallocateTyped_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorReallocateTyped").orElseThrow() }
+private val CFAllocatorReallocateTyped_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorReallocateTyped_ADDR, CFAllocatorReallocateTyped_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
@@ -284,8 +284,8 @@ fun CFAllocatorReallocateTyped(arg0: MemorySegment, arg1: MemorySegment, arg2: L
  * {@snippet lang=c : CFAllocatorAllocateBytes (Void)*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFAllocatorAllocateBytes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
-private val CFAllocatorAllocateBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorAllocateBytes").orElseThrow()
-private val CFAllocatorAllocateBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorAllocateBytes_ADDR, CFAllocatorAllocateBytes_DESC)
+private val CFAllocatorAllocateBytes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorAllocateBytes").orElseThrow() }
+private val CFAllocatorAllocateBytes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorAllocateBytes_ADDR, CFAllocatorAllocateBytes_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
@@ -308,8 +308,8 @@ fun CFAllocatorAllocateBytes(arg0: MemorySegment, arg1: Long, arg2: Long): Memor
  * {@snippet lang=c : CFAllocatorReallocateBytes (Void)*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(Void)*,typedef CFIndex = Long,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFAllocatorReallocateBytes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
-private val CFAllocatorReallocateBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorReallocateBytes").orElseThrow()
-private val CFAllocatorReallocateBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorReallocateBytes_ADDR, CFAllocatorReallocateBytes_DESC)
+private val CFAllocatorReallocateBytes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorReallocateBytes").orElseThrow() }
+private val CFAllocatorReallocateBytes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorReallocateBytes_ADDR, CFAllocatorReallocateBytes_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
@@ -332,8 +332,8 @@ fun CFAllocatorReallocateBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: L
  * {@snippet lang=c : CFAllocatorAllocate (Void)*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFAllocatorAllocate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
-private val CFAllocatorAllocate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorAllocate").orElseThrow()
-private val CFAllocatorAllocate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorAllocate_ADDR, CFAllocatorAllocate_DESC)
+private val CFAllocatorAllocate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorAllocate").orElseThrow() }
+private val CFAllocatorAllocate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorAllocate_ADDR, CFAllocatorAllocate_DESC) }
 
 fun CFAllocatorAllocate(arg0: MemorySegment, arg1: Long, arg2: Long): MemorySegment {
     try {
@@ -351,8 +351,8 @@ fun CFAllocatorAllocate(arg0: MemorySegment, arg1: Long, arg2: Long): MemorySegm
  * {@snippet lang=c : CFAllocatorReallocate (Void)*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(Void)*,typedef CFIndex = Long,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFAllocatorReallocate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
-private val CFAllocatorReallocate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorReallocate").orElseThrow()
-private val CFAllocatorReallocate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorReallocate_ADDR, CFAllocatorReallocate_DESC)
+private val CFAllocatorReallocate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorReallocate").orElseThrow() }
+private val CFAllocatorReallocate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorReallocate_ADDR, CFAllocatorReallocate_DESC) }
 
 fun CFAllocatorReallocate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Long): MemorySegment {
     try {
@@ -370,8 +370,8 @@ fun CFAllocatorReallocate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, 
  * {@snippet lang=c : CFAllocatorDeallocate Void(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(Void)*)
  */
 private val CFAllocatorDeallocate_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFAllocatorDeallocate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorDeallocate").orElseThrow()
-private val CFAllocatorDeallocate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorDeallocate_ADDR, CFAllocatorDeallocate_DESC)
+private val CFAllocatorDeallocate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorDeallocate").orElseThrow() }
+private val CFAllocatorDeallocate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorDeallocate_ADDR, CFAllocatorDeallocate_DESC) }
 
 fun CFAllocatorDeallocate(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -389,8 +389,8 @@ fun CFAllocatorDeallocate(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFAllocatorGetPreferredSizeForSize typedef CFIndex = Long(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFAllocatorGetPreferredSizeForSize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
-private val CFAllocatorGetPreferredSizeForSize_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorGetPreferredSizeForSize").orElseThrow()
-private val CFAllocatorGetPreferredSizeForSize_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorGetPreferredSizeForSize_ADDR, CFAllocatorGetPreferredSizeForSize_DESC)
+private val CFAllocatorGetPreferredSizeForSize_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorGetPreferredSizeForSize").orElseThrow() }
+private val CFAllocatorGetPreferredSizeForSize_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorGetPreferredSizeForSize_ADDR, CFAllocatorGetPreferredSizeForSize_DESC) }
 
 fun CFAllocatorGetPreferredSizeForSize(arg0: MemorySegment, arg1: Long, arg2: Long): Long {
     try {
@@ -408,8 +408,8 @@ fun CFAllocatorGetPreferredSizeForSize(arg0: MemorySegment, arg1: Long, arg2: Lo
  * {@snippet lang=c : CFAllocatorGetContext Void(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef CFAllocatorContext = Declared(CFAllocatorContext))*)
  */
 private val CFAllocatorGetContext_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFAllocatorGetContext_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAllocatorGetContext").orElseThrow()
-private val CFAllocatorGetContext_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAllocatorGetContext_ADDR, CFAllocatorGetContext_DESC)
+private val CFAllocatorGetContext_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAllocatorGetContext").orElseThrow() }
+private val CFAllocatorGetContext_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAllocatorGetContext_ADDR, CFAllocatorGetContext_DESC) }
 
 fun CFAllocatorGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -427,8 +427,8 @@ fun CFAllocatorGetContext(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFGetTypeID typedef CFTypeID = UNSIGNED = Long(typedef CFTypeRef = (Void)*)
  */
 private val CFGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFGetTypeID").orElseThrow()
-private val CFGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFGetTypeID_ADDR, CFGetTypeID_DESC)
+private val CFGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFGetTypeID").orElseThrow() }
+private val CFGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFGetTypeID_ADDR, CFGetTypeID_DESC) }
 
 fun CFGetTypeID(arg0: MemorySegment): Long {
     try {
@@ -446,8 +446,8 @@ fun CFGetTypeID(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFCopyTypeIDDescription typedef CFStringRef = (Declared(__CFString))*(typedef CFTypeID = UNSIGNED = Long)
  */
 private val CFCopyTypeIDDescription_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFCopyTypeIDDescription_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCopyTypeIDDescription").orElseThrow()
-private val CFCopyTypeIDDescription_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCopyTypeIDDescription_ADDR, CFCopyTypeIDDescription_DESC)
+private val CFCopyTypeIDDescription_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCopyTypeIDDescription").orElseThrow() }
+private val CFCopyTypeIDDescription_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCopyTypeIDDescription_ADDR, CFCopyTypeIDDescription_DESC) }
 
 fun CFCopyTypeIDDescription(arg0: Long): MemorySegment {
     try {
@@ -465,8 +465,8 @@ fun CFCopyTypeIDDescription(arg0: Long): MemorySegment {
  * {@snippet lang=c : CFRetain typedef CFTypeRef = (Void)*(typedef CFTypeRef = (Void)*)
  */
 private val CFRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFRetain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRetain").orElseThrow()
-private val CFRetain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRetain_ADDR, CFRetain_DESC)
+private val CFRetain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRetain").orElseThrow() }
+private val CFRetain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRetain_ADDR, CFRetain_DESC) }
 
 fun CFRetain(arg0: MemorySegment): MemorySegment {
     try {
@@ -484,8 +484,8 @@ fun CFRetain(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFRelease Void(typedef CFTypeRef = (Void)*)
  */
 private val CFRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFRelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFRelease").orElseThrow()
-private val CFRelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFRelease_ADDR, CFRelease_DESC)
+private val CFRelease_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFRelease").orElseThrow() }
+private val CFRelease_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFRelease_ADDR, CFRelease_DESC) }
 
 fun CFRelease(arg0: MemorySegment): Unit {
     try {
@@ -503,8 +503,8 @@ fun CFRelease(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFAutorelease typedef CFTypeRef = (Void)*(typedef CFTypeRef = (Void)*)
  */
 private val CFAutorelease_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFAutorelease_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAutorelease").orElseThrow()
-private val CFAutorelease_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAutorelease_ADDR, CFAutorelease_DESC)
+private val CFAutorelease_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAutorelease").orElseThrow() }
+private val CFAutorelease_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAutorelease_ADDR, CFAutorelease_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
@@ -526,8 +526,8 @@ fun CFAutorelease(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFGetRetainCount typedef CFIndex = Long(typedef CFTypeRef = (Void)*)
  */
 private val CFGetRetainCount_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFGetRetainCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFGetRetainCount").orElseThrow()
-private val CFGetRetainCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFGetRetainCount_ADDR, CFGetRetainCount_DESC)
+private val CFGetRetainCount_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFGetRetainCount").orElseThrow() }
+private val CFGetRetainCount_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFGetRetainCount_ADDR, CFGetRetainCount_DESC) }
 
 fun CFGetRetainCount(arg0: MemorySegment): Long {
     try {
@@ -545,8 +545,8 @@ fun CFGetRetainCount(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFEqual typedef Boolean = UNSIGNED = Char(typedef CFTypeRef = (Void)*,typedef CFTypeRef = (Void)*)
  */
 private val CFEqual_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFEqual_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFEqual").orElseThrow()
-private val CFEqual_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFEqual_ADDR, CFEqual_DESC)
+private val CFEqual_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFEqual").orElseThrow() }
+private val CFEqual_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFEqual_ADDR, CFEqual_DESC) }
 
 fun CFEqual(arg0: MemorySegment, arg1: MemorySegment): Byte {
     try {
@@ -564,8 +564,8 @@ fun CFEqual(arg0: MemorySegment, arg1: MemorySegment): Byte {
  * {@snippet lang=c : CFHash typedef CFHashCode = UNSIGNED = Long(typedef CFTypeRef = (Void)*)
  */
 private val CFHash_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFHash_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFHash").orElseThrow()
-private val CFHash_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFHash_ADDR, CFHash_DESC)
+private val CFHash_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFHash").orElseThrow() }
+private val CFHash_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFHash_ADDR, CFHash_DESC) }
 
 fun CFHash(arg0: MemorySegment): Long {
     try {
@@ -583,8 +583,8 @@ fun CFHash(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFCopyDescription typedef CFStringRef = (Declared(__CFString))*(typedef CFTypeRef = (Void)*)
  */
 private val CFCopyDescription_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCopyDescription_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCopyDescription").orElseThrow()
-private val CFCopyDescription_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCopyDescription_ADDR, CFCopyDescription_DESC)
+private val CFCopyDescription_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCopyDescription").orElseThrow() }
+private val CFCopyDescription_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCopyDescription_ADDR, CFCopyDescription_DESC) }
 
 fun CFCopyDescription(arg0: MemorySegment): MemorySegment {
     try {
@@ -602,8 +602,8 @@ fun CFCopyDescription(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFGetAllocator typedef CFAllocatorRef = (Declared(__CFAllocator))*(typedef CFTypeRef = (Void)*)
  */
 private val CFGetAllocator_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFGetAllocator_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFGetAllocator").orElseThrow()
-private val CFGetAllocator_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFGetAllocator_ADDR, CFGetAllocator_DESC)
+private val CFGetAllocator_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFGetAllocator").orElseThrow() }
+private val CFGetAllocator_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFGetAllocator_ADDR, CFGetAllocator_DESC) }
 
 fun CFGetAllocator(arg0: MemorySegment): MemorySegment {
     try {
@@ -621,8 +621,8 @@ fun CFGetAllocator(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFMakeCollectable typedef CFTypeRef = (Void)*(typedef CFTypeRef = (Void)*)
  */
 private val CFMakeCollectable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFMakeCollectable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFMakeCollectable").orElseThrow()
-private val CFMakeCollectable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFMakeCollectable_ADDR, CFMakeCollectable_DESC)
+private val CFMakeCollectable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFMakeCollectable").orElseThrow() }
+private val CFMakeCollectable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFMakeCollectable_ADDR, CFMakeCollectable_DESC) }
 
 @PlatformAvailability(platform = "all", unavailable = true, message = "not available in automatic reference counting mode")
 fun CFMakeCollectable(arg0: MemorySegment): MemorySegment {
@@ -646,8 +646,8 @@ val kCFTypeArrayCallBacks: MemorySegment = SymbolLookup.loaderLookup().find("kCF
  * {@snippet lang=c : CFArrayGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFArrayGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFArrayGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayGetTypeID").orElseThrow()
-private val CFArrayGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayGetTypeID_ADDR, CFArrayGetTypeID_DESC)
+private val CFArrayGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayGetTypeID").orElseThrow() }
+private val CFArrayGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayGetTypeID_ADDR, CFArrayGetTypeID_DESC) }
 
 fun CFArrayGetTypeID(): Long {
     try {
@@ -665,8 +665,8 @@ fun CFArrayGetTypeID(): Long {
  * {@snippet lang=c : CFArrayCreate typedef CFArrayRef = (Declared(__CFArray))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,((Void)*)*,typedef CFIndex = Long,(typedef CFArrayCallBacks = Declared(CFArrayCallBacks))*)
  */
 private val CFArrayCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFArrayCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayCreate").orElseThrow()
-private val CFArrayCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayCreate_ADDR, CFArrayCreate_DESC)
+private val CFArrayCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayCreate").orElseThrow() }
+private val CFArrayCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayCreate_ADDR, CFArrayCreate_DESC) }
 
 fun CFArrayCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): MemorySegment {
     try {
@@ -684,8 +684,8 @@ fun CFArrayCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Me
  * {@snippet lang=c : CFArrayCreateCopy typedef CFArrayRef = (Declared(__CFArray))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFArrayRef = (Declared(__CFArray))*)
  */
 private val CFArrayCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFArrayCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayCreateCopy").orElseThrow()
-private val CFArrayCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayCreateCopy_ADDR, CFArrayCreateCopy_DESC)
+private val CFArrayCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayCreateCopy").orElseThrow() }
+private val CFArrayCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayCreateCopy_ADDR, CFArrayCreateCopy_DESC) }
 
 fun CFArrayCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -703,8 +703,8 @@ fun CFArrayCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFArrayCreateMutable typedef CFMutableArrayRef = (Declared(__CFArray))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,(typedef CFArrayCallBacks = Declared(CFArrayCallBacks))*)
  */
 private val CFArrayCreateMutable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFArrayCreateMutable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayCreateMutable").orElseThrow()
-private val CFArrayCreateMutable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayCreateMutable_ADDR, CFArrayCreateMutable_DESC)
+private val CFArrayCreateMutable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayCreateMutable").orElseThrow() }
+private val CFArrayCreateMutable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayCreateMutable_ADDR, CFArrayCreateMutable_DESC) }
 
 fun CFArrayCreateMutable(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -722,8 +722,8 @@ fun CFArrayCreateMutable(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): 
  * {@snippet lang=c : CFArrayCreateMutableCopy typedef CFMutableArrayRef = (Declared(__CFArray))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFArrayRef = (Declared(__CFArray))*)
  */
 private val CFArrayCreateMutableCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFArrayCreateMutableCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayCreateMutableCopy").orElseThrow()
-private val CFArrayCreateMutableCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayCreateMutableCopy_ADDR, CFArrayCreateMutableCopy_DESC)
+private val CFArrayCreateMutableCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayCreateMutableCopy").orElseThrow() }
+private val CFArrayCreateMutableCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayCreateMutableCopy_ADDR, CFArrayCreateMutableCopy_DESC) }
 
 fun CFArrayCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -741,8 +741,8 @@ fun CFArrayCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegmen
  * {@snippet lang=c : CFArrayGetCount typedef CFIndex = Long(typedef CFArrayRef = (Declared(__CFArray))*)
  */
 private val CFArrayGetCount_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFArrayGetCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayGetCount").orElseThrow()
-private val CFArrayGetCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayGetCount_ADDR, CFArrayGetCount_DESC)
+private val CFArrayGetCount_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayGetCount").orElseThrow() }
+private val CFArrayGetCount_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayGetCount_ADDR, CFArrayGetCount_DESC) }
 
 fun CFArrayGetCount(arg0: MemorySegment): Long {
     try {
@@ -760,8 +760,8 @@ fun CFArrayGetCount(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFArrayGetCountOfValue typedef CFIndex = Long(typedef CFArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange),(Void)*)
  */
 private val CFArrayGetCountOfValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS)
-private val CFArrayGetCountOfValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayGetCountOfValue").orElseThrow()
-private val CFArrayGetCountOfValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayGetCountOfValue_ADDR, CFArrayGetCountOfValue_DESC)
+private val CFArrayGetCountOfValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayGetCountOfValue").orElseThrow() }
+private val CFArrayGetCountOfValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayGetCountOfValue_ADDR, CFArrayGetCountOfValue_DESC) }
 
 fun CFArrayGetCountOfValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Long {
     try {
@@ -779,8 +779,8 @@ fun CFArrayGetCountOfValue(arg0: MemorySegment, arg1: MemorySegment, arg2: Memor
  * {@snippet lang=c : CFArrayContainsValue typedef Boolean = UNSIGNED = Char(typedef CFArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange),(Void)*)
  */
 private val CFArrayContainsValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS)
-private val CFArrayContainsValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayContainsValue").orElseThrow()
-private val CFArrayContainsValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayContainsValue_ADDR, CFArrayContainsValue_DESC)
+private val CFArrayContainsValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayContainsValue").orElseThrow() }
+private val CFArrayContainsValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayContainsValue_ADDR, CFArrayContainsValue_DESC) }
 
 fun CFArrayContainsValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Byte {
     try {
@@ -798,8 +798,8 @@ fun CFArrayContainsValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
  * {@snippet lang=c : CFArrayGetValueAtIndex (Void)*(typedef CFArrayRef = (Declared(__CFArray))*,typedef CFIndex = Long)
  */
 private val CFArrayGetValueAtIndex_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFArrayGetValueAtIndex_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayGetValueAtIndex").orElseThrow()
-private val CFArrayGetValueAtIndex_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayGetValueAtIndex_ADDR, CFArrayGetValueAtIndex_DESC)
+private val CFArrayGetValueAtIndex_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayGetValueAtIndex").orElseThrow() }
+private val CFArrayGetValueAtIndex_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayGetValueAtIndex_ADDR, CFArrayGetValueAtIndex_DESC) }
 
 fun CFArrayGetValueAtIndex(arg0: MemorySegment, arg1: Long): MemorySegment {
     try {
@@ -817,8 +817,8 @@ fun CFArrayGetValueAtIndex(arg0: MemorySegment, arg1: Long): MemorySegment {
  * {@snippet lang=c : CFArrayGetValues Void(typedef CFArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange),((Void)*)*)
  */
 private val CFArrayGetValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS)
-private val CFArrayGetValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayGetValues").orElseThrow()
-private val CFArrayGetValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayGetValues_ADDR, CFArrayGetValues_DESC)
+private val CFArrayGetValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayGetValues").orElseThrow() }
+private val CFArrayGetValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayGetValues_ADDR, CFArrayGetValues_DESC) }
 
 fun CFArrayGetValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -836,8 +836,8 @@ fun CFArrayGetValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegme
  * {@snippet lang=c : CFArrayApplyFunction Void(typedef CFArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange),typedef CFArrayApplierFunction = (Void((Void)*,(Void)*))*,(Void)*)
  */
 private val CFArrayApplyFunction_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFArrayApplyFunction_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayApplyFunction").orElseThrow()
-private val CFArrayApplyFunction_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayApplyFunction_ADDR, CFArrayApplyFunction_DESC)
+private val CFArrayApplyFunction_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayApplyFunction").orElseThrow() }
+private val CFArrayApplyFunction_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayApplyFunction_ADDR, CFArrayApplyFunction_DESC) }
 
 fun CFArrayApplyFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Unit {
     try {
@@ -855,8 +855,8 @@ fun CFArrayApplyFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
  * {@snippet lang=c : CFArrayGetFirstIndexOfValue typedef CFIndex = Long(typedef CFArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange),(Void)*)
  */
 private val CFArrayGetFirstIndexOfValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS)
-private val CFArrayGetFirstIndexOfValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayGetFirstIndexOfValue").orElseThrow()
-private val CFArrayGetFirstIndexOfValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayGetFirstIndexOfValue_ADDR, CFArrayGetFirstIndexOfValue_DESC)
+private val CFArrayGetFirstIndexOfValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayGetFirstIndexOfValue").orElseThrow() }
+private val CFArrayGetFirstIndexOfValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayGetFirstIndexOfValue_ADDR, CFArrayGetFirstIndexOfValue_DESC) }
 
 fun CFArrayGetFirstIndexOfValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Long {
     try {
@@ -874,8 +874,8 @@ fun CFArrayGetFirstIndexOfValue(arg0: MemorySegment, arg1: MemorySegment, arg2: 
  * {@snippet lang=c : CFArrayGetLastIndexOfValue typedef CFIndex = Long(typedef CFArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange),(Void)*)
  */
 private val CFArrayGetLastIndexOfValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS)
-private val CFArrayGetLastIndexOfValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayGetLastIndexOfValue").orElseThrow()
-private val CFArrayGetLastIndexOfValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayGetLastIndexOfValue_ADDR, CFArrayGetLastIndexOfValue_DESC)
+private val CFArrayGetLastIndexOfValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayGetLastIndexOfValue").orElseThrow() }
+private val CFArrayGetLastIndexOfValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayGetLastIndexOfValue_ADDR, CFArrayGetLastIndexOfValue_DESC) }
 
 fun CFArrayGetLastIndexOfValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Long {
     try {
@@ -893,8 +893,8 @@ fun CFArrayGetLastIndexOfValue(arg0: MemorySegment, arg1: MemorySegment, arg2: M
  * {@snippet lang=c : CFArrayBSearchValues typedef CFIndex = Long(typedef CFArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange),(Void)*,typedef CFComparatorFunction = (Declared(CFComparisonResult)((Void)*,(Void)*,(Void)*))*,(Void)*)
  */
 private val CFArrayBSearchValues_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFArrayBSearchValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayBSearchValues").orElseThrow()
-private val CFArrayBSearchValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayBSearchValues_ADDR, CFArrayBSearchValues_DESC)
+private val CFArrayBSearchValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayBSearchValues").orElseThrow() }
+private val CFArrayBSearchValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayBSearchValues_ADDR, CFArrayBSearchValues_DESC) }
 
 fun CFArrayBSearchValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment): Long {
     try {
@@ -912,8 +912,8 @@ fun CFArrayBSearchValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
  * {@snippet lang=c : CFArrayAppendValue Void(typedef CFMutableArrayRef = (Declared(__CFArray))*,(Void)*)
  */
 private val CFArrayAppendValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFArrayAppendValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayAppendValue").orElseThrow()
-private val CFArrayAppendValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayAppendValue_ADDR, CFArrayAppendValue_DESC)
+private val CFArrayAppendValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayAppendValue").orElseThrow() }
+private val CFArrayAppendValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayAppendValue_ADDR, CFArrayAppendValue_DESC) }
 
 fun CFArrayAppendValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -931,8 +931,8 @@ fun CFArrayAppendValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFArrayInsertValueAtIndex Void(typedef CFMutableArrayRef = (Declared(__CFArray))*,typedef CFIndex = Long,(Void)*)
  */
 private val CFArrayInsertValueAtIndex_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFArrayInsertValueAtIndex_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayInsertValueAtIndex").orElseThrow()
-private val CFArrayInsertValueAtIndex_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayInsertValueAtIndex_ADDR, CFArrayInsertValueAtIndex_DESC)
+private val CFArrayInsertValueAtIndex_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayInsertValueAtIndex").orElseThrow() }
+private val CFArrayInsertValueAtIndex_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayInsertValueAtIndex_ADDR, CFArrayInsertValueAtIndex_DESC) }
 
 fun CFArrayInsertValueAtIndex(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Unit {
     try {
@@ -950,8 +950,8 @@ fun CFArrayInsertValueAtIndex(arg0: MemorySegment, arg1: Long, arg2: MemorySegme
  * {@snippet lang=c : CFArraySetValueAtIndex Void(typedef CFMutableArrayRef = (Declared(__CFArray))*,typedef CFIndex = Long,(Void)*)
  */
 private val CFArraySetValueAtIndex_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFArraySetValueAtIndex_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArraySetValueAtIndex").orElseThrow()
-private val CFArraySetValueAtIndex_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArraySetValueAtIndex_ADDR, CFArraySetValueAtIndex_DESC)
+private val CFArraySetValueAtIndex_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArraySetValueAtIndex").orElseThrow() }
+private val CFArraySetValueAtIndex_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArraySetValueAtIndex_ADDR, CFArraySetValueAtIndex_DESC) }
 
 fun CFArraySetValueAtIndex(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Unit {
     try {
@@ -969,8 +969,8 @@ fun CFArraySetValueAtIndex(arg0: MemorySegment, arg1: Long, arg2: MemorySegment)
  * {@snippet lang=c : CFArrayRemoveValueAtIndex Void(typedef CFMutableArrayRef = (Declared(__CFArray))*,typedef CFIndex = Long)
  */
 private val CFArrayRemoveValueAtIndex_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFArrayRemoveValueAtIndex_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayRemoveValueAtIndex").orElseThrow()
-private val CFArrayRemoveValueAtIndex_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayRemoveValueAtIndex_ADDR, CFArrayRemoveValueAtIndex_DESC)
+private val CFArrayRemoveValueAtIndex_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayRemoveValueAtIndex").orElseThrow() }
+private val CFArrayRemoveValueAtIndex_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayRemoveValueAtIndex_ADDR, CFArrayRemoveValueAtIndex_DESC) }
 
 fun CFArrayRemoveValueAtIndex(arg0: MemorySegment, arg1: Long): Unit {
     try {
@@ -988,8 +988,8 @@ fun CFArrayRemoveValueAtIndex(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CFArrayRemoveAllValues Void(typedef CFMutableArrayRef = (Declared(__CFArray))*)
  */
 private val CFArrayRemoveAllValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFArrayRemoveAllValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayRemoveAllValues").orElseThrow()
-private val CFArrayRemoveAllValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayRemoveAllValues_ADDR, CFArrayRemoveAllValues_DESC)
+private val CFArrayRemoveAllValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayRemoveAllValues").orElseThrow() }
+private val CFArrayRemoveAllValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayRemoveAllValues_ADDR, CFArrayRemoveAllValues_DESC) }
 
 fun CFArrayRemoveAllValues(arg0: MemorySegment): Unit {
     try {
@@ -1007,8 +1007,8 @@ fun CFArrayRemoveAllValues(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFArrayReplaceValues Void(typedef CFMutableArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange),((Void)*)*,typedef CFIndex = Long)
  */
 private val CFArrayReplaceValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFArrayReplaceValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayReplaceValues").orElseThrow()
-private val CFArrayReplaceValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayReplaceValues_ADDR, CFArrayReplaceValues_DESC)
+private val CFArrayReplaceValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayReplaceValues").orElseThrow() }
+private val CFArrayReplaceValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayReplaceValues_ADDR, CFArrayReplaceValues_DESC) }
 
 fun CFArrayReplaceValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Unit {
     try {
@@ -1026,8 +1026,8 @@ fun CFArrayReplaceValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
  * {@snippet lang=c : CFArrayExchangeValuesAtIndices Void(typedef CFMutableArrayRef = (Declared(__CFArray))*,typedef CFIndex = Long,typedef CFIndex = Long)
  */
 private val CFArrayExchangeValuesAtIndices_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
-private val CFArrayExchangeValuesAtIndices_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayExchangeValuesAtIndices").orElseThrow()
-private val CFArrayExchangeValuesAtIndices_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayExchangeValuesAtIndices_ADDR, CFArrayExchangeValuesAtIndices_DESC)
+private val CFArrayExchangeValuesAtIndices_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayExchangeValuesAtIndices").orElseThrow() }
+private val CFArrayExchangeValuesAtIndices_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayExchangeValuesAtIndices_ADDR, CFArrayExchangeValuesAtIndices_DESC) }
 
 fun CFArrayExchangeValuesAtIndices(arg0: MemorySegment, arg1: Long, arg2: Long): Unit {
     try {
@@ -1045,8 +1045,8 @@ fun CFArrayExchangeValuesAtIndices(arg0: MemorySegment, arg1: Long, arg2: Long):
  * {@snippet lang=c : CFArraySortValues Void(typedef CFMutableArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange),typedef CFComparatorFunction = (Declared(CFComparisonResult)((Void)*,(Void)*,(Void)*))*,(Void)*)
  */
 private val CFArraySortValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFArraySortValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArraySortValues").orElseThrow()
-private val CFArraySortValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArraySortValues_ADDR, CFArraySortValues_DESC)
+private val CFArraySortValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArraySortValues").orElseThrow() }
+private val CFArraySortValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArraySortValues_ADDR, CFArraySortValues_DESC) }
 
 fun CFArraySortValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Unit {
     try {
@@ -1064,8 +1064,8 @@ fun CFArraySortValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegm
  * {@snippet lang=c : CFArrayAppendArray Void(typedef CFMutableArrayRef = (Declared(__CFArray))*,typedef CFArrayRef = (Declared(__CFArray))*,typedef CFRange = Declared(CFRange))
  */
 private val CFArrayAppendArray_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout)
-private val CFArrayAppendArray_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFArrayAppendArray").orElseThrow()
-private val CFArrayAppendArray_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFArrayAppendArray_ADDR, CFArrayAppendArray_DESC)
+private val CFArrayAppendArray_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFArrayAppendArray").orElseThrow() }
+private val CFArrayAppendArray_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFArrayAppendArray_ADDR, CFArrayAppendArray_DESC) }
 
 fun CFArrayAppendArray(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -1093,8 +1093,8 @@ val kCFCopyStringBagCallBacks: MemorySegment = SymbolLookup.loaderLookup().find(
  * {@snippet lang=c : CFBagGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFBagGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFBagGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagGetTypeID").orElseThrow()
-private val CFBagGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagGetTypeID_ADDR, CFBagGetTypeID_DESC)
+private val CFBagGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagGetTypeID").orElseThrow() }
+private val CFBagGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagGetTypeID_ADDR, CFBagGetTypeID_DESC) }
 
 fun CFBagGetTypeID(): Long {
     try {
@@ -1112,8 +1112,8 @@ fun CFBagGetTypeID(): Long {
  * {@snippet lang=c : CFBagCreate typedef CFBagRef = (Declared(__CFBag))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,((Void)*)*,typedef CFIndex = Long,(typedef CFBagCallBacks = Declared(CFBagCallBacks))*)
  */
 private val CFBagCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFBagCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagCreate").orElseThrow()
-private val CFBagCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagCreate_ADDR, CFBagCreate_DESC)
+private val CFBagCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagCreate").orElseThrow() }
+private val CFBagCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagCreate_ADDR, CFBagCreate_DESC) }
 
 fun CFBagCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): MemorySegment {
     try {
@@ -1131,8 +1131,8 @@ fun CFBagCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Memo
  * {@snippet lang=c : CFBagCreateCopy typedef CFBagRef = (Declared(__CFBag))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFBagRef = (Declared(__CFBag))*)
  */
 private val CFBagCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagCreateCopy").orElseThrow()
-private val CFBagCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagCreateCopy_ADDR, CFBagCreateCopy_DESC)
+private val CFBagCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagCreateCopy").orElseThrow() }
+private val CFBagCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagCreateCopy_ADDR, CFBagCreateCopy_DESC) }
 
 fun CFBagCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -1150,8 +1150,8 @@ fun CFBagCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFBagCreateMutable typedef CFMutableBagRef = (Declared(__CFBag))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,(typedef CFBagCallBacks = Declared(CFBagCallBacks))*)
  */
 private val CFBagCreateMutable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFBagCreateMutable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagCreateMutable").orElseThrow()
-private val CFBagCreateMutable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagCreateMutable_ADDR, CFBagCreateMutable_DESC)
+private val CFBagCreateMutable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagCreateMutable").orElseThrow() }
+private val CFBagCreateMutable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagCreateMutable_ADDR, CFBagCreateMutable_DESC) }
 
 fun CFBagCreateMutable(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -1169,8 +1169,8 @@ fun CFBagCreateMutable(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): Me
  * {@snippet lang=c : CFBagCreateMutableCopy typedef CFMutableBagRef = (Declared(__CFBag))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFBagRef = (Declared(__CFBag))*)
  */
 private val CFBagCreateMutableCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFBagCreateMutableCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagCreateMutableCopy").orElseThrow()
-private val CFBagCreateMutableCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagCreateMutableCopy_ADDR, CFBagCreateMutableCopy_DESC)
+private val CFBagCreateMutableCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagCreateMutableCopy").orElseThrow() }
+private val CFBagCreateMutableCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagCreateMutableCopy_ADDR, CFBagCreateMutableCopy_DESC) }
 
 fun CFBagCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -1188,8 +1188,8 @@ fun CFBagCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment)
  * {@snippet lang=c : CFBagGetCount typedef CFIndex = Long(typedef CFBagRef = (Declared(__CFBag))*)
  */
 private val CFBagGetCount_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFBagGetCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagGetCount").orElseThrow()
-private val CFBagGetCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagGetCount_ADDR, CFBagGetCount_DESC)
+private val CFBagGetCount_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagGetCount").orElseThrow() }
+private val CFBagGetCount_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagGetCount_ADDR, CFBagGetCount_DESC) }
 
 fun CFBagGetCount(arg0: MemorySegment): Long {
     try {
@@ -1207,8 +1207,8 @@ fun CFBagGetCount(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFBagGetCountOfValue typedef CFIndex = Long(typedef CFBagRef = (Declared(__CFBag))*,(Void)*)
  */
 private val CFBagGetCountOfValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagGetCountOfValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagGetCountOfValue").orElseThrow()
-private val CFBagGetCountOfValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagGetCountOfValue_ADDR, CFBagGetCountOfValue_DESC)
+private val CFBagGetCountOfValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagGetCountOfValue").orElseThrow() }
+private val CFBagGetCountOfValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagGetCountOfValue_ADDR, CFBagGetCountOfValue_DESC) }
 
 fun CFBagGetCountOfValue(arg0: MemorySegment, arg1: MemorySegment): Long {
     try {
@@ -1226,8 +1226,8 @@ fun CFBagGetCountOfValue(arg0: MemorySegment, arg1: MemorySegment): Long {
  * {@snippet lang=c : CFBagContainsValue typedef Boolean = UNSIGNED = Char(typedef CFBagRef = (Declared(__CFBag))*,(Void)*)
  */
 private val CFBagContainsValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagContainsValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagContainsValue").orElseThrow()
-private val CFBagContainsValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagContainsValue_ADDR, CFBagContainsValue_DESC)
+private val CFBagContainsValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagContainsValue").orElseThrow() }
+private val CFBagContainsValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagContainsValue_ADDR, CFBagContainsValue_DESC) }
 
 fun CFBagContainsValue(arg0: MemorySegment, arg1: MemorySegment): Byte {
     try {
@@ -1245,8 +1245,8 @@ fun CFBagContainsValue(arg0: MemorySegment, arg1: MemorySegment): Byte {
  * {@snippet lang=c : CFBagGetValue (Void)*(typedef CFBagRef = (Declared(__CFBag))*,(Void)*)
  */
 private val CFBagGetValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagGetValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagGetValue").orElseThrow()
-private val CFBagGetValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagGetValue_ADDR, CFBagGetValue_DESC)
+private val CFBagGetValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagGetValue").orElseThrow() }
+private val CFBagGetValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagGetValue_ADDR, CFBagGetValue_DESC) }
 
 fun CFBagGetValue(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -1264,8 +1264,8 @@ fun CFBagGetValue(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFBagGetValueIfPresent typedef Boolean = UNSIGNED = Char(typedef CFBagRef = (Declared(__CFBag))*,(Void)*,((Void)*)*)
  */
 private val CFBagGetValueIfPresent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagGetValueIfPresent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagGetValueIfPresent").orElseThrow()
-private val CFBagGetValueIfPresent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagGetValueIfPresent_ADDR, CFBagGetValueIfPresent_DESC)
+private val CFBagGetValueIfPresent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagGetValueIfPresent").orElseThrow() }
+private val CFBagGetValueIfPresent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagGetValueIfPresent_ADDR, CFBagGetValueIfPresent_DESC) }
 
 fun CFBagGetValueIfPresent(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Byte {
     try {
@@ -1283,8 +1283,8 @@ fun CFBagGetValueIfPresent(arg0: MemorySegment, arg1: MemorySegment, arg2: Memor
  * {@snippet lang=c : CFBagGetValues Void(typedef CFBagRef = (Declared(__CFBag))*,((Void)*)*)
  */
 private val CFBagGetValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagGetValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagGetValues").orElseThrow()
-private val CFBagGetValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagGetValues_ADDR, CFBagGetValues_DESC)
+private val CFBagGetValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagGetValues").orElseThrow() }
+private val CFBagGetValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagGetValues_ADDR, CFBagGetValues_DESC) }
 
 fun CFBagGetValues(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -1302,8 +1302,8 @@ fun CFBagGetValues(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFBagApplyFunction Void(typedef CFBagRef = (Declared(__CFBag))*,typedef CFBagApplierFunction = (Void((Void)*,(Void)*))*,(Void)*)
  */
 private val CFBagApplyFunction_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagApplyFunction_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagApplyFunction").orElseThrow()
-private val CFBagApplyFunction_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagApplyFunction_ADDR, CFBagApplyFunction_DESC)
+private val CFBagApplyFunction_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagApplyFunction").orElseThrow() }
+private val CFBagApplyFunction_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagApplyFunction_ADDR, CFBagApplyFunction_DESC) }
 
 fun CFBagApplyFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -1321,8 +1321,8 @@ fun CFBagApplyFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySeg
  * {@snippet lang=c : CFBagAddValue Void(typedef CFMutableBagRef = (Declared(__CFBag))*,(Void)*)
  */
 private val CFBagAddValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagAddValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagAddValue").orElseThrow()
-private val CFBagAddValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagAddValue_ADDR, CFBagAddValue_DESC)
+private val CFBagAddValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagAddValue").orElseThrow() }
+private val CFBagAddValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagAddValue_ADDR, CFBagAddValue_DESC) }
 
 fun CFBagAddValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -1340,8 +1340,8 @@ fun CFBagAddValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFBagReplaceValue Void(typedef CFMutableBagRef = (Declared(__CFBag))*,(Void)*)
  */
 private val CFBagReplaceValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagReplaceValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagReplaceValue").orElseThrow()
-private val CFBagReplaceValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagReplaceValue_ADDR, CFBagReplaceValue_DESC)
+private val CFBagReplaceValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagReplaceValue").orElseThrow() }
+private val CFBagReplaceValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagReplaceValue_ADDR, CFBagReplaceValue_DESC) }
 
 fun CFBagReplaceValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -1359,8 +1359,8 @@ fun CFBagReplaceValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFBagSetValue Void(typedef CFMutableBagRef = (Declared(__CFBag))*,(Void)*)
  */
 private val CFBagSetValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagSetValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagSetValue").orElseThrow()
-private val CFBagSetValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagSetValue_ADDR, CFBagSetValue_DESC)
+private val CFBagSetValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagSetValue").orElseThrow() }
+private val CFBagSetValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagSetValue_ADDR, CFBagSetValue_DESC) }
 
 fun CFBagSetValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -1378,8 +1378,8 @@ fun CFBagSetValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFBagRemoveValue Void(typedef CFMutableBagRef = (Declared(__CFBag))*,(Void)*)
  */
 private val CFBagRemoveValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBagRemoveValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagRemoveValue").orElseThrow()
-private val CFBagRemoveValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagRemoveValue_ADDR, CFBagRemoveValue_DESC)
+private val CFBagRemoveValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagRemoveValue").orElseThrow() }
+private val CFBagRemoveValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagRemoveValue_ADDR, CFBagRemoveValue_DESC) }
 
 fun CFBagRemoveValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -1397,8 +1397,8 @@ fun CFBagRemoveValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFBagRemoveAllValues Void(typedef CFMutableBagRef = (Declared(__CFBag))*)
  */
 private val CFBagRemoveAllValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFBagRemoveAllValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBagRemoveAllValues").orElseThrow()
-private val CFBagRemoveAllValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBagRemoveAllValues_ADDR, CFBagRemoveAllValues_DESC)
+private val CFBagRemoveAllValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBagRemoveAllValues").orElseThrow() }
+private val CFBagRemoveAllValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBagRemoveAllValues_ADDR, CFBagRemoveAllValues_DESC) }
 
 fun CFBagRemoveAllValues(arg0: MemorySegment): Unit {
     try {
@@ -1421,8 +1421,8 @@ val kCFStringBinaryHeapCallBacks: MemorySegment = SymbolLookup.loaderLookup().fi
  * {@snippet lang=c : CFBinaryHeapGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFBinaryHeapGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFBinaryHeapGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapGetTypeID").orElseThrow()
-private val CFBinaryHeapGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapGetTypeID_ADDR, CFBinaryHeapGetTypeID_DESC)
+private val CFBinaryHeapGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapGetTypeID").orElseThrow() }
+private val CFBinaryHeapGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapGetTypeID_ADDR, CFBinaryHeapGetTypeID_DESC) }
 
 fun CFBinaryHeapGetTypeID(): Long {
     try {
@@ -1440,8 +1440,8 @@ fun CFBinaryHeapGetTypeID(): Long {
  * {@snippet lang=c : CFBinaryHeapCreate typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,(typedef CFBinaryHeapCallBacks = Declared(CFBinaryHeapCallBacks))*,(typedef CFBinaryHeapCompareContext = Declared(CFBinaryHeapCompareContext))*)
  */
 private val CFBinaryHeapCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBinaryHeapCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapCreate").orElseThrow()
-private val CFBinaryHeapCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapCreate_ADDR, CFBinaryHeapCreate_DESC)
+private val CFBinaryHeapCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapCreate").orElseThrow() }
+private val CFBinaryHeapCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapCreate_ADDR, CFBinaryHeapCreate_DESC) }
 
 fun CFBinaryHeapCreate(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment): MemorySegment {
     try {
@@ -1459,8 +1459,8 @@ fun CFBinaryHeapCreate(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg
  * {@snippet lang=c : CFBinaryHeapCreateCopy typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*)
  */
 private val CFBinaryHeapCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFBinaryHeapCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapCreateCopy").orElseThrow()
-private val CFBinaryHeapCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapCreateCopy_ADDR, CFBinaryHeapCreateCopy_DESC)
+private val CFBinaryHeapCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapCreateCopy").orElseThrow() }
+private val CFBinaryHeapCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapCreateCopy_ADDR, CFBinaryHeapCreateCopy_DESC) }
 
 fun CFBinaryHeapCreateCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -1478,8 +1478,8 @@ fun CFBinaryHeapCreateCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment)
  * {@snippet lang=c : CFBinaryHeapGetCount typedef CFIndex = Long(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*)
  */
 private val CFBinaryHeapGetCount_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFBinaryHeapGetCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapGetCount").orElseThrow()
-private val CFBinaryHeapGetCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapGetCount_ADDR, CFBinaryHeapGetCount_DESC)
+private val CFBinaryHeapGetCount_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapGetCount").orElseThrow() }
+private val CFBinaryHeapGetCount_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapGetCount_ADDR, CFBinaryHeapGetCount_DESC) }
 
 fun CFBinaryHeapGetCount(arg0: MemorySegment): Long {
     try {
@@ -1497,8 +1497,8 @@ fun CFBinaryHeapGetCount(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFBinaryHeapGetCountOfValue typedef CFIndex = Long(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*,(Void)*)
  */
 private val CFBinaryHeapGetCountOfValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBinaryHeapGetCountOfValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapGetCountOfValue").orElseThrow()
-private val CFBinaryHeapGetCountOfValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapGetCountOfValue_ADDR, CFBinaryHeapGetCountOfValue_DESC)
+private val CFBinaryHeapGetCountOfValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapGetCountOfValue").orElseThrow() }
+private val CFBinaryHeapGetCountOfValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapGetCountOfValue_ADDR, CFBinaryHeapGetCountOfValue_DESC) }
 
 fun CFBinaryHeapGetCountOfValue(arg0: MemorySegment, arg1: MemorySegment): Long {
     try {
@@ -1516,8 +1516,8 @@ fun CFBinaryHeapGetCountOfValue(arg0: MemorySegment, arg1: MemorySegment): Long 
  * {@snippet lang=c : CFBinaryHeapContainsValue typedef Boolean = UNSIGNED = Char(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*,(Void)*)
  */
 private val CFBinaryHeapContainsValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBinaryHeapContainsValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapContainsValue").orElseThrow()
-private val CFBinaryHeapContainsValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapContainsValue_ADDR, CFBinaryHeapContainsValue_DESC)
+private val CFBinaryHeapContainsValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapContainsValue").orElseThrow() }
+private val CFBinaryHeapContainsValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapContainsValue_ADDR, CFBinaryHeapContainsValue_DESC) }
 
 fun CFBinaryHeapContainsValue(arg0: MemorySegment, arg1: MemorySegment): Byte {
     try {
@@ -1535,8 +1535,8 @@ fun CFBinaryHeapContainsValue(arg0: MemorySegment, arg1: MemorySegment): Byte {
  * {@snippet lang=c : CFBinaryHeapGetMinimum (Void)*(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*)
  */
 private val CFBinaryHeapGetMinimum_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBinaryHeapGetMinimum_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapGetMinimum").orElseThrow()
-private val CFBinaryHeapGetMinimum_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapGetMinimum_ADDR, CFBinaryHeapGetMinimum_DESC)
+private val CFBinaryHeapGetMinimum_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapGetMinimum").orElseThrow() }
+private val CFBinaryHeapGetMinimum_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapGetMinimum_ADDR, CFBinaryHeapGetMinimum_DESC) }
 
 fun CFBinaryHeapGetMinimum(arg0: MemorySegment): MemorySegment {
     try {
@@ -1554,8 +1554,8 @@ fun CFBinaryHeapGetMinimum(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFBinaryHeapGetMinimumIfPresent typedef Boolean = UNSIGNED = Char(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*,((Void)*)*)
  */
 private val CFBinaryHeapGetMinimumIfPresent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBinaryHeapGetMinimumIfPresent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapGetMinimumIfPresent").orElseThrow()
-private val CFBinaryHeapGetMinimumIfPresent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapGetMinimumIfPresent_ADDR, CFBinaryHeapGetMinimumIfPresent_DESC)
+private val CFBinaryHeapGetMinimumIfPresent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapGetMinimumIfPresent").orElseThrow() }
+private val CFBinaryHeapGetMinimumIfPresent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapGetMinimumIfPresent_ADDR, CFBinaryHeapGetMinimumIfPresent_DESC) }
 
 fun CFBinaryHeapGetMinimumIfPresent(arg0: MemorySegment, arg1: MemorySegment): Byte {
     try {
@@ -1573,8 +1573,8 @@ fun CFBinaryHeapGetMinimumIfPresent(arg0: MemorySegment, arg1: MemorySegment): B
  * {@snippet lang=c : CFBinaryHeapGetValues Void(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*,((Void)*)*)
  */
 private val CFBinaryHeapGetValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBinaryHeapGetValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapGetValues").orElseThrow()
-private val CFBinaryHeapGetValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapGetValues_ADDR, CFBinaryHeapGetValues_DESC)
+private val CFBinaryHeapGetValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapGetValues").orElseThrow() }
+private val CFBinaryHeapGetValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapGetValues_ADDR, CFBinaryHeapGetValues_DESC) }
 
 fun CFBinaryHeapGetValues(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -1592,8 +1592,8 @@ fun CFBinaryHeapGetValues(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFBinaryHeapApplyFunction Void(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*,typedef CFBinaryHeapApplierFunction = (Void((Void)*,(Void)*))*,(Void)*)
  */
 private val CFBinaryHeapApplyFunction_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBinaryHeapApplyFunction_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapApplyFunction").orElseThrow()
-private val CFBinaryHeapApplyFunction_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapApplyFunction_ADDR, CFBinaryHeapApplyFunction_DESC)
+private val CFBinaryHeapApplyFunction_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapApplyFunction").orElseThrow() }
+private val CFBinaryHeapApplyFunction_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapApplyFunction_ADDR, CFBinaryHeapApplyFunction_DESC) }
 
 fun CFBinaryHeapApplyFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -1611,8 +1611,8 @@ fun CFBinaryHeapApplyFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: Me
  * {@snippet lang=c : CFBinaryHeapAddValue Void(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*,(Void)*)
  */
 private val CFBinaryHeapAddValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBinaryHeapAddValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapAddValue").orElseThrow()
-private val CFBinaryHeapAddValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapAddValue_ADDR, CFBinaryHeapAddValue_DESC)
+private val CFBinaryHeapAddValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapAddValue").orElseThrow() }
+private val CFBinaryHeapAddValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapAddValue_ADDR, CFBinaryHeapAddValue_DESC) }
 
 fun CFBinaryHeapAddValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -1630,8 +1630,8 @@ fun CFBinaryHeapAddValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFBinaryHeapRemoveMinimumValue Void(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*)
  */
 private val CFBinaryHeapRemoveMinimumValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFBinaryHeapRemoveMinimumValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapRemoveMinimumValue").orElseThrow()
-private val CFBinaryHeapRemoveMinimumValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapRemoveMinimumValue_ADDR, CFBinaryHeapRemoveMinimumValue_DESC)
+private val CFBinaryHeapRemoveMinimumValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapRemoveMinimumValue").orElseThrow() }
+private val CFBinaryHeapRemoveMinimumValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapRemoveMinimumValue_ADDR, CFBinaryHeapRemoveMinimumValue_DESC) }
 
 fun CFBinaryHeapRemoveMinimumValue(arg0: MemorySegment): Unit {
     try {
@@ -1649,8 +1649,8 @@ fun CFBinaryHeapRemoveMinimumValue(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFBinaryHeapRemoveAllValues Void(typedef CFBinaryHeapRef = (Declared(__CFBinaryHeap))*)
  */
 private val CFBinaryHeapRemoveAllValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFBinaryHeapRemoveAllValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBinaryHeapRemoveAllValues").orElseThrow()
-private val CFBinaryHeapRemoveAllValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBinaryHeapRemoveAllValues_ADDR, CFBinaryHeapRemoveAllValues_DESC)
+private val CFBinaryHeapRemoveAllValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBinaryHeapRemoveAllValues").orElseThrow() }
+private val CFBinaryHeapRemoveAllValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBinaryHeapRemoveAllValues_ADDR, CFBinaryHeapRemoveAllValues_DESC) }
 
 fun CFBinaryHeapRemoveAllValues(arg0: MemorySegment): Unit {
     try {
@@ -1668,8 +1668,8 @@ fun CFBinaryHeapRemoveAllValues(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFBitVectorGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFBitVectorGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFBitVectorGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorGetTypeID").orElseThrow()
-private val CFBitVectorGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorGetTypeID_ADDR, CFBitVectorGetTypeID_DESC)
+private val CFBitVectorGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorGetTypeID").orElseThrow() }
+private val CFBitVectorGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorGetTypeID_ADDR, CFBitVectorGetTypeID_DESC) }
 
 fun CFBitVectorGetTypeID(): Long {
     try {
@@ -1687,8 +1687,8 @@ fun CFBitVectorGetTypeID(): Long {
  * {@snippet lang=c : CFBitVectorCreate typedef CFBitVectorRef = (Declared(__CFBitVector))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long)
  */
 private val CFBitVectorCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFBitVectorCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorCreate").orElseThrow()
-private val CFBitVectorCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorCreate_ADDR, CFBitVectorCreate_DESC)
+private val CFBitVectorCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorCreate").orElseThrow() }
+private val CFBitVectorCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorCreate_ADDR, CFBitVectorCreate_DESC) }
 
 fun CFBitVectorCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): MemorySegment {
     try {
@@ -1706,8 +1706,8 @@ fun CFBitVectorCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Mem
  * {@snippet lang=c : CFBitVectorCreateCopy typedef CFBitVectorRef = (Declared(__CFBitVector))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFBitVectorRef = (Declared(__CFBitVector))*)
  */
 private val CFBitVectorCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFBitVectorCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorCreateCopy").orElseThrow()
-private val CFBitVectorCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorCreateCopy_ADDR, CFBitVectorCreateCopy_DESC)
+private val CFBitVectorCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorCreateCopy").orElseThrow() }
+private val CFBitVectorCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorCreateCopy_ADDR, CFBitVectorCreateCopy_DESC) }
 
 fun CFBitVectorCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -1725,8 +1725,8 @@ fun CFBitVectorCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegme
  * {@snippet lang=c : CFBitVectorCreateMutable typedef CFMutableBitVectorRef = (Declared(__CFBitVector))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long)
  */
 private val CFBitVectorCreateMutable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFBitVectorCreateMutable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorCreateMutable").orElseThrow()
-private val CFBitVectorCreateMutable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorCreateMutable_ADDR, CFBitVectorCreateMutable_DESC)
+private val CFBitVectorCreateMutable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorCreateMutable").orElseThrow() }
+private val CFBitVectorCreateMutable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorCreateMutable_ADDR, CFBitVectorCreateMutable_DESC) }
 
 fun CFBitVectorCreateMutable(arg0: MemorySegment, arg1: Long): MemorySegment {
     try {
@@ -1744,8 +1744,8 @@ fun CFBitVectorCreateMutable(arg0: MemorySegment, arg1: Long): MemorySegment {
  * {@snippet lang=c : CFBitVectorCreateMutableCopy typedef CFMutableBitVectorRef = (Declared(__CFBitVector))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFBitVectorRef = (Declared(__CFBitVector))*)
  */
 private val CFBitVectorCreateMutableCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFBitVectorCreateMutableCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorCreateMutableCopy").orElseThrow()
-private val CFBitVectorCreateMutableCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorCreateMutableCopy_ADDR, CFBitVectorCreateMutableCopy_DESC)
+private val CFBitVectorCreateMutableCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorCreateMutableCopy").orElseThrow() }
+private val CFBitVectorCreateMutableCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorCreateMutableCopy_ADDR, CFBitVectorCreateMutableCopy_DESC) }
 
 fun CFBitVectorCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -1763,8 +1763,8 @@ fun CFBitVectorCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySe
  * {@snippet lang=c : CFBitVectorGetCount typedef CFIndex = Long(typedef CFBitVectorRef = (Declared(__CFBitVector))*)
  */
 private val CFBitVectorGetCount_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFBitVectorGetCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorGetCount").orElseThrow()
-private val CFBitVectorGetCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorGetCount_ADDR, CFBitVectorGetCount_DESC)
+private val CFBitVectorGetCount_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorGetCount").orElseThrow() }
+private val CFBitVectorGetCount_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorGetCount_ADDR, CFBitVectorGetCount_DESC) }
 
 fun CFBitVectorGetCount(arg0: MemorySegment): Long {
     try {
@@ -1782,8 +1782,8 @@ fun CFBitVectorGetCount(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFBitVectorGetCountOfBit typedef CFIndex = Long(typedef CFBitVectorRef = (Declared(__CFBitVector))*,typedef CFRange = Declared(CFRange),typedef CFBit = UNSIGNED = Int)
  */
 private val CFBitVectorGetCountOfBit_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_INT)
-private val CFBitVectorGetCountOfBit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorGetCountOfBit").orElseThrow()
-private val CFBitVectorGetCountOfBit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorGetCountOfBit_ADDR, CFBitVectorGetCountOfBit_DESC)
+private val CFBitVectorGetCountOfBit_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorGetCountOfBit").orElseThrow() }
+private val CFBitVectorGetCountOfBit_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorGetCountOfBit_ADDR, CFBitVectorGetCountOfBit_DESC) }
 
 fun CFBitVectorGetCountOfBit(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Long {
     try {
@@ -1801,8 +1801,8 @@ fun CFBitVectorGetCountOfBit(arg0: MemorySegment, arg1: MemorySegment, arg2: Int
  * {@snippet lang=c : CFBitVectorContainsBit typedef Boolean = UNSIGNED = Char(typedef CFBitVectorRef = (Declared(__CFBitVector))*,typedef CFRange = Declared(CFRange),typedef CFBit = UNSIGNED = Int)
  */
 private val CFBitVectorContainsBit_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_INT)
-private val CFBitVectorContainsBit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorContainsBit").orElseThrow()
-private val CFBitVectorContainsBit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorContainsBit_ADDR, CFBitVectorContainsBit_DESC)
+private val CFBitVectorContainsBit_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorContainsBit").orElseThrow() }
+private val CFBitVectorContainsBit_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorContainsBit_ADDR, CFBitVectorContainsBit_DESC) }
 
 fun CFBitVectorContainsBit(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Byte {
     try {
@@ -1820,8 +1820,8 @@ fun CFBitVectorContainsBit(arg0: MemorySegment, arg1: MemorySegment, arg2: Int):
  * {@snippet lang=c : CFBitVectorGetBitAtIndex typedef CFBit = UNSIGNED = Int(typedef CFBitVectorRef = (Declared(__CFBitVector))*,typedef CFIndex = Long)
  */
 private val CFBitVectorGetBitAtIndex_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFBitVectorGetBitAtIndex_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorGetBitAtIndex").orElseThrow()
-private val CFBitVectorGetBitAtIndex_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorGetBitAtIndex_ADDR, CFBitVectorGetBitAtIndex_DESC)
+private val CFBitVectorGetBitAtIndex_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorGetBitAtIndex").orElseThrow() }
+private val CFBitVectorGetBitAtIndex_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorGetBitAtIndex_ADDR, CFBitVectorGetBitAtIndex_DESC) }
 
 fun CFBitVectorGetBitAtIndex(arg0: MemorySegment, arg1: Long): Int {
     try {
@@ -1839,8 +1839,8 @@ fun CFBitVectorGetBitAtIndex(arg0: MemorySegment, arg1: Long): Int {
  * {@snippet lang=c : CFBitVectorGetBits Void(typedef CFBitVectorRef = (Declared(__CFBitVector))*,typedef CFRange = Declared(CFRange),(typedef UInt8 = UNSIGNED = Char)*)
  */
 private val CFBitVectorGetBits_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS)
-private val CFBitVectorGetBits_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorGetBits").orElseThrow()
-private val CFBitVectorGetBits_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorGetBits_ADDR, CFBitVectorGetBits_DESC)
+private val CFBitVectorGetBits_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorGetBits").orElseThrow() }
+private val CFBitVectorGetBits_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorGetBits_ADDR, CFBitVectorGetBits_DESC) }
 
 fun CFBitVectorGetBits(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -1858,8 +1858,8 @@ fun CFBitVectorGetBits(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySeg
  * {@snippet lang=c : CFBitVectorGetFirstIndexOfBit typedef CFIndex = Long(typedef CFBitVectorRef = (Declared(__CFBitVector))*,typedef CFRange = Declared(CFRange),typedef CFBit = UNSIGNED = Int)
  */
 private val CFBitVectorGetFirstIndexOfBit_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_INT)
-private val CFBitVectorGetFirstIndexOfBit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorGetFirstIndexOfBit").orElseThrow()
-private val CFBitVectorGetFirstIndexOfBit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorGetFirstIndexOfBit_ADDR, CFBitVectorGetFirstIndexOfBit_DESC)
+private val CFBitVectorGetFirstIndexOfBit_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorGetFirstIndexOfBit").orElseThrow() }
+private val CFBitVectorGetFirstIndexOfBit_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorGetFirstIndexOfBit_ADDR, CFBitVectorGetFirstIndexOfBit_DESC) }
 
 fun CFBitVectorGetFirstIndexOfBit(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Long {
     try {
@@ -1877,8 +1877,8 @@ fun CFBitVectorGetFirstIndexOfBit(arg0: MemorySegment, arg1: MemorySegment, arg2
  * {@snippet lang=c : CFBitVectorGetLastIndexOfBit typedef CFIndex = Long(typedef CFBitVectorRef = (Declared(__CFBitVector))*,typedef CFRange = Declared(CFRange),typedef CFBit = UNSIGNED = Int)
  */
 private val CFBitVectorGetLastIndexOfBit_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_INT)
-private val CFBitVectorGetLastIndexOfBit_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorGetLastIndexOfBit").orElseThrow()
-private val CFBitVectorGetLastIndexOfBit_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorGetLastIndexOfBit_ADDR, CFBitVectorGetLastIndexOfBit_DESC)
+private val CFBitVectorGetLastIndexOfBit_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorGetLastIndexOfBit").orElseThrow() }
+private val CFBitVectorGetLastIndexOfBit_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorGetLastIndexOfBit_ADDR, CFBitVectorGetLastIndexOfBit_DESC) }
 
 fun CFBitVectorGetLastIndexOfBit(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Long {
     try {
@@ -1896,8 +1896,8 @@ fun CFBitVectorGetLastIndexOfBit(arg0: MemorySegment, arg1: MemorySegment, arg2:
  * {@snippet lang=c : CFBitVectorSetCount Void(typedef CFMutableBitVectorRef = (Declared(__CFBitVector))*,typedef CFIndex = Long)
  */
 private val CFBitVectorSetCount_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFBitVectorSetCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorSetCount").orElseThrow()
-private val CFBitVectorSetCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorSetCount_ADDR, CFBitVectorSetCount_DESC)
+private val CFBitVectorSetCount_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorSetCount").orElseThrow() }
+private val CFBitVectorSetCount_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorSetCount_ADDR, CFBitVectorSetCount_DESC) }
 
 fun CFBitVectorSetCount(arg0: MemorySegment, arg1: Long): Unit {
     try {
@@ -1915,8 +1915,8 @@ fun CFBitVectorSetCount(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CFBitVectorFlipBitAtIndex Void(typedef CFMutableBitVectorRef = (Declared(__CFBitVector))*,typedef CFIndex = Long)
  */
 private val CFBitVectorFlipBitAtIndex_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFBitVectorFlipBitAtIndex_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorFlipBitAtIndex").orElseThrow()
-private val CFBitVectorFlipBitAtIndex_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorFlipBitAtIndex_ADDR, CFBitVectorFlipBitAtIndex_DESC)
+private val CFBitVectorFlipBitAtIndex_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorFlipBitAtIndex").orElseThrow() }
+private val CFBitVectorFlipBitAtIndex_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorFlipBitAtIndex_ADDR, CFBitVectorFlipBitAtIndex_DESC) }
 
 fun CFBitVectorFlipBitAtIndex(arg0: MemorySegment, arg1: Long): Unit {
     try {
@@ -1934,8 +1934,8 @@ fun CFBitVectorFlipBitAtIndex(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CFBitVectorFlipBits Void(typedef CFMutableBitVectorRef = (Declared(__CFBitVector))*,typedef CFRange = Declared(CFRange))
  */
 private val CFBitVectorFlipBits_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout)
-private val CFBitVectorFlipBits_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorFlipBits").orElseThrow()
-private val CFBitVectorFlipBits_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorFlipBits_ADDR, CFBitVectorFlipBits_DESC)
+private val CFBitVectorFlipBits_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorFlipBits").orElseThrow() }
+private val CFBitVectorFlipBits_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorFlipBits_ADDR, CFBitVectorFlipBits_DESC) }
 
 fun CFBitVectorFlipBits(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -1953,8 +1953,8 @@ fun CFBitVectorFlipBits(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFBitVectorSetBitAtIndex Void(typedef CFMutableBitVectorRef = (Declared(__CFBitVector))*,typedef CFIndex = Long,typedef CFBit = UNSIGNED = Int)
  */
 private val CFBitVectorSetBitAtIndex_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
-private val CFBitVectorSetBitAtIndex_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorSetBitAtIndex").orElseThrow()
-private val CFBitVectorSetBitAtIndex_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorSetBitAtIndex_ADDR, CFBitVectorSetBitAtIndex_DESC)
+private val CFBitVectorSetBitAtIndex_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorSetBitAtIndex").orElseThrow() }
+private val CFBitVectorSetBitAtIndex_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorSetBitAtIndex_ADDR, CFBitVectorSetBitAtIndex_DESC) }
 
 fun CFBitVectorSetBitAtIndex(arg0: MemorySegment, arg1: Long, arg2: Int): Unit {
     try {
@@ -1972,8 +1972,8 @@ fun CFBitVectorSetBitAtIndex(arg0: MemorySegment, arg1: Long, arg2: Int): Unit {
  * {@snippet lang=c : CFBitVectorSetBits Void(typedef CFMutableBitVectorRef = (Declared(__CFBitVector))*,typedef CFRange = Declared(CFRange),typedef CFBit = UNSIGNED = Int)
  */
 private val CFBitVectorSetBits_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_INT)
-private val CFBitVectorSetBits_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorSetBits").orElseThrow()
-private val CFBitVectorSetBits_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorSetBits_ADDR, CFBitVectorSetBits_DESC)
+private val CFBitVectorSetBits_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorSetBits").orElseThrow() }
+private val CFBitVectorSetBits_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorSetBits_ADDR, CFBitVectorSetBits_DESC) }
 
 fun CFBitVectorSetBits(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Unit {
     try {
@@ -1991,8 +1991,8 @@ fun CFBitVectorSetBits(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Uni
  * {@snippet lang=c : CFBitVectorSetAllBits Void(typedef CFMutableBitVectorRef = (Declared(__CFBitVector))*,typedef CFBit = UNSIGNED = Int)
  */
 private val CFBitVectorSetAllBits_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CFBitVectorSetAllBits_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFBitVectorSetAllBits").orElseThrow()
-private val CFBitVectorSetAllBits_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFBitVectorSetAllBits_ADDR, CFBitVectorSetAllBits_DESC)
+private val CFBitVectorSetAllBits_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFBitVectorSetAllBits").orElseThrow() }
+private val CFBitVectorSetAllBits_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFBitVectorSetAllBits_ADDR, CFBitVectorSetAllBits_DESC) }
 
 fun CFBitVectorSetAllBits(arg0: MemorySegment, arg1: Int): Unit {
     try {
@@ -2025,8 +2025,8 @@ val kCFTypeDictionaryValueCallBacks: MemorySegment = SymbolLookup.loaderLookup()
  * {@snippet lang=c : CFDictionaryGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFDictionaryGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFDictionaryGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryGetTypeID").orElseThrow()
-private val CFDictionaryGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryGetTypeID_ADDR, CFDictionaryGetTypeID_DESC)
+private val CFDictionaryGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryGetTypeID").orElseThrow() }
+private val CFDictionaryGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryGetTypeID_ADDR, CFDictionaryGetTypeID_DESC) }
 
 fun CFDictionaryGetTypeID(): Long {
     try {
@@ -2044,8 +2044,8 @@ fun CFDictionaryGetTypeID(): Long {
  * {@snippet lang=c : CFDictionaryCreate typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,((Void)*)*,((Void)*)*,typedef CFIndex = Long,(typedef CFDictionaryKeyCallBacks = Declared(CFDictionaryKeyCallBacks))*,(typedef CFDictionaryValueCallBacks = Declared(CFDictionaryValueCallBacks))*)
  */
 private val CFDictionaryCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryCreate").orElseThrow()
-private val CFDictionaryCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryCreate_ADDR, CFDictionaryCreate_DESC)
+private val CFDictionaryCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryCreate").orElseThrow() }
+private val CFDictionaryCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryCreate_ADDR, CFDictionaryCreate_DESC) }
 
 fun CFDictionaryCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long, arg4: MemorySegment, arg5: MemorySegment): MemorySegment {
     try {
@@ -2063,8 +2063,8 @@ fun CFDictionaryCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySeg
  * {@snippet lang=c : CFDictionaryCreateCopy typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CFDictionaryCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryCreateCopy").orElseThrow()
-private val CFDictionaryCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryCreateCopy_ADDR, CFDictionaryCreateCopy_DESC)
+private val CFDictionaryCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryCreateCopy").orElseThrow() }
+private val CFDictionaryCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryCreateCopy_ADDR, CFDictionaryCreateCopy_DESC) }
 
 fun CFDictionaryCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2082,8 +2082,8 @@ fun CFDictionaryCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegm
  * {@snippet lang=c : CFDictionaryCreateMutable typedef CFMutableDictionaryRef = (Declared(__CFDictionary))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,(typedef CFDictionaryKeyCallBacks = Declared(CFDictionaryKeyCallBacks))*,(typedef CFDictionaryValueCallBacks = Declared(CFDictionaryValueCallBacks))*)
  */
 private val CFDictionaryCreateMutable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryCreateMutable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryCreateMutable").orElseThrow()
-private val CFDictionaryCreateMutable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryCreateMutable_ADDR, CFDictionaryCreateMutable_DESC)
+private val CFDictionaryCreateMutable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryCreateMutable").orElseThrow() }
+private val CFDictionaryCreateMutable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryCreateMutable_ADDR, CFDictionaryCreateMutable_DESC) }
 
 fun CFDictionaryCreateMutable(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: MemorySegment): MemorySegment {
     try {
@@ -2101,8 +2101,8 @@ fun CFDictionaryCreateMutable(arg0: MemorySegment, arg1: Long, arg2: MemorySegme
  * {@snippet lang=c : CFDictionaryCreateMutableCopy typedef CFMutableDictionaryRef = (Declared(__CFDictionary))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CFDictionaryCreateMutableCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFDictionaryCreateMutableCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryCreateMutableCopy").orElseThrow()
-private val CFDictionaryCreateMutableCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryCreateMutableCopy_ADDR, CFDictionaryCreateMutableCopy_DESC)
+private val CFDictionaryCreateMutableCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryCreateMutableCopy").orElseThrow() }
+private val CFDictionaryCreateMutableCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryCreateMutableCopy_ADDR, CFDictionaryCreateMutableCopy_DESC) }
 
 fun CFDictionaryCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -2120,8 +2120,8 @@ fun CFDictionaryCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemoryS
  * {@snippet lang=c : CFDictionaryGetCount typedef CFIndex = Long(typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CFDictionaryGetCount_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFDictionaryGetCount_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryGetCount").orElseThrow()
-private val CFDictionaryGetCount_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryGetCount_ADDR, CFDictionaryGetCount_DESC)
+private val CFDictionaryGetCount_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryGetCount").orElseThrow() }
+private val CFDictionaryGetCount_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryGetCount_ADDR, CFDictionaryGetCount_DESC) }
 
 fun CFDictionaryGetCount(arg0: MemorySegment): Long {
     try {
@@ -2139,8 +2139,8 @@ fun CFDictionaryGetCount(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFDictionaryGetCountOfKey typedef CFIndex = Long(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(Void)*)
  */
 private val CFDictionaryGetCountOfKey_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryGetCountOfKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryGetCountOfKey").orElseThrow()
-private val CFDictionaryGetCountOfKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryGetCountOfKey_ADDR, CFDictionaryGetCountOfKey_DESC)
+private val CFDictionaryGetCountOfKey_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryGetCountOfKey").orElseThrow() }
+private val CFDictionaryGetCountOfKey_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryGetCountOfKey_ADDR, CFDictionaryGetCountOfKey_DESC) }
 
 fun CFDictionaryGetCountOfKey(arg0: MemorySegment, arg1: MemorySegment): Long {
     try {
@@ -2158,8 +2158,8 @@ fun CFDictionaryGetCountOfKey(arg0: MemorySegment, arg1: MemorySegment): Long {
  * {@snippet lang=c : CFDictionaryGetCountOfValue typedef CFIndex = Long(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(Void)*)
  */
 private val CFDictionaryGetCountOfValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryGetCountOfValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryGetCountOfValue").orElseThrow()
-private val CFDictionaryGetCountOfValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryGetCountOfValue_ADDR, CFDictionaryGetCountOfValue_DESC)
+private val CFDictionaryGetCountOfValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryGetCountOfValue").orElseThrow() }
+private val CFDictionaryGetCountOfValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryGetCountOfValue_ADDR, CFDictionaryGetCountOfValue_DESC) }
 
 fun CFDictionaryGetCountOfValue(arg0: MemorySegment, arg1: MemorySegment): Long {
     try {
@@ -2177,8 +2177,8 @@ fun CFDictionaryGetCountOfValue(arg0: MemorySegment, arg1: MemorySegment): Long 
  * {@snippet lang=c : CFDictionaryContainsKey typedef Boolean = UNSIGNED = Char(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(Void)*)
  */
 private val CFDictionaryContainsKey_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryContainsKey_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryContainsKey").orElseThrow()
-private val CFDictionaryContainsKey_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryContainsKey_ADDR, CFDictionaryContainsKey_DESC)
+private val CFDictionaryContainsKey_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryContainsKey").orElseThrow() }
+private val CFDictionaryContainsKey_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryContainsKey_ADDR, CFDictionaryContainsKey_DESC) }
 
 fun CFDictionaryContainsKey(arg0: MemorySegment, arg1: MemorySegment): Byte {
     try {
@@ -2196,8 +2196,8 @@ fun CFDictionaryContainsKey(arg0: MemorySegment, arg1: MemorySegment): Byte {
  * {@snippet lang=c : CFDictionaryContainsValue typedef Boolean = UNSIGNED = Char(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(Void)*)
  */
 private val CFDictionaryContainsValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryContainsValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryContainsValue").orElseThrow()
-private val CFDictionaryContainsValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryContainsValue_ADDR, CFDictionaryContainsValue_DESC)
+private val CFDictionaryContainsValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryContainsValue").orElseThrow() }
+private val CFDictionaryContainsValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryContainsValue_ADDR, CFDictionaryContainsValue_DESC) }
 
 fun CFDictionaryContainsValue(arg0: MemorySegment, arg1: MemorySegment): Byte {
     try {
@@ -2215,8 +2215,8 @@ fun CFDictionaryContainsValue(arg0: MemorySegment, arg1: MemorySegment): Byte {
  * {@snippet lang=c : CFDictionaryGetValue (Void)*(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(Void)*)
  */
 private val CFDictionaryGetValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryGetValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryGetValue").orElseThrow()
-private val CFDictionaryGetValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryGetValue_ADDR, CFDictionaryGetValue_DESC)
+private val CFDictionaryGetValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryGetValue").orElseThrow() }
+private val CFDictionaryGetValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryGetValue_ADDR, CFDictionaryGetValue_DESC) }
 
 fun CFDictionaryGetValue(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2234,8 +2234,8 @@ fun CFDictionaryGetValue(arg0: MemorySegment, arg1: MemorySegment): MemorySegmen
  * {@snippet lang=c : CFDictionaryGetValueIfPresent typedef Boolean = UNSIGNED = Char(typedef CFDictionaryRef = (Declared(__CFDictionary))*,(Void)*,((Void)*)*)
  */
 private val CFDictionaryGetValueIfPresent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryGetValueIfPresent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryGetValueIfPresent").orElseThrow()
-private val CFDictionaryGetValueIfPresent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryGetValueIfPresent_ADDR, CFDictionaryGetValueIfPresent_DESC)
+private val CFDictionaryGetValueIfPresent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryGetValueIfPresent").orElseThrow() }
+private val CFDictionaryGetValueIfPresent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryGetValueIfPresent_ADDR, CFDictionaryGetValueIfPresent_DESC) }
 
 fun CFDictionaryGetValueIfPresent(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Byte {
     try {
@@ -2253,8 +2253,8 @@ fun CFDictionaryGetValueIfPresent(arg0: MemorySegment, arg1: MemorySegment, arg2
  * {@snippet lang=c : CFDictionaryGetKeysAndValues Void(typedef CFDictionaryRef = (Declared(__CFDictionary))*,((Void)*)*,((Void)*)*)
  */
 private val CFDictionaryGetKeysAndValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryGetKeysAndValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryGetKeysAndValues").orElseThrow()
-private val CFDictionaryGetKeysAndValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryGetKeysAndValues_ADDR, CFDictionaryGetKeysAndValues_DESC)
+private val CFDictionaryGetKeysAndValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryGetKeysAndValues").orElseThrow() }
+private val CFDictionaryGetKeysAndValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryGetKeysAndValues_ADDR, CFDictionaryGetKeysAndValues_DESC) }
 
 fun CFDictionaryGetKeysAndValues(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2272,8 +2272,8 @@ fun CFDictionaryGetKeysAndValues(arg0: MemorySegment, arg1: MemorySegment, arg2:
  * {@snippet lang=c : CFDictionaryApplyFunction Void(typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef CFDictionaryApplierFunction = (Void((Void)*,(Void)*,(Void)*))*,(Void)*)
  */
 private val CFDictionaryApplyFunction_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryApplyFunction_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryApplyFunction").orElseThrow()
-private val CFDictionaryApplyFunction_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryApplyFunction_ADDR, CFDictionaryApplyFunction_DESC)
+private val CFDictionaryApplyFunction_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryApplyFunction").orElseThrow() }
+private val CFDictionaryApplyFunction_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryApplyFunction_ADDR, CFDictionaryApplyFunction_DESC) }
 
 fun CFDictionaryApplyFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2291,8 +2291,8 @@ fun CFDictionaryApplyFunction(arg0: MemorySegment, arg1: MemorySegment, arg2: Me
  * {@snippet lang=c : CFDictionaryAddValue Void(typedef CFMutableDictionaryRef = (Declared(__CFDictionary))*,(Void)*,(Void)*)
  */
 private val CFDictionaryAddValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryAddValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryAddValue").orElseThrow()
-private val CFDictionaryAddValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryAddValue_ADDR, CFDictionaryAddValue_DESC)
+private val CFDictionaryAddValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryAddValue").orElseThrow() }
+private val CFDictionaryAddValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryAddValue_ADDR, CFDictionaryAddValue_DESC) }
 
 fun CFDictionaryAddValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2310,8 +2310,8 @@ fun CFDictionaryAddValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
  * {@snippet lang=c : CFDictionarySetValue Void(typedef CFMutableDictionaryRef = (Declared(__CFDictionary))*,(Void)*,(Void)*)
  */
 private val CFDictionarySetValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionarySetValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionarySetValue").orElseThrow()
-private val CFDictionarySetValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionarySetValue_ADDR, CFDictionarySetValue_DESC)
+private val CFDictionarySetValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionarySetValue").orElseThrow() }
+private val CFDictionarySetValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionarySetValue_ADDR, CFDictionarySetValue_DESC) }
 
 fun CFDictionarySetValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2329,8 +2329,8 @@ fun CFDictionarySetValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
  * {@snippet lang=c : CFDictionaryReplaceValue Void(typedef CFMutableDictionaryRef = (Declared(__CFDictionary))*,(Void)*,(Void)*)
  */
 private val CFDictionaryReplaceValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryReplaceValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryReplaceValue").orElseThrow()
-private val CFDictionaryReplaceValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryReplaceValue_ADDR, CFDictionaryReplaceValue_DESC)
+private val CFDictionaryReplaceValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryReplaceValue").orElseThrow() }
+private val CFDictionaryReplaceValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryReplaceValue_ADDR, CFDictionaryReplaceValue_DESC) }
 
 fun CFDictionaryReplaceValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -2348,8 +2348,8 @@ fun CFDictionaryReplaceValue(arg0: MemorySegment, arg1: MemorySegment, arg2: Mem
  * {@snippet lang=c : CFDictionaryRemoveValue Void(typedef CFMutableDictionaryRef = (Declared(__CFDictionary))*,(Void)*)
  */
 private val CFDictionaryRemoveValue_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDictionaryRemoveValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryRemoveValue").orElseThrow()
-private val CFDictionaryRemoveValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryRemoveValue_ADDR, CFDictionaryRemoveValue_DESC)
+private val CFDictionaryRemoveValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryRemoveValue").orElseThrow() }
+private val CFDictionaryRemoveValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryRemoveValue_ADDR, CFDictionaryRemoveValue_DESC) }
 
 fun CFDictionaryRemoveValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -2367,8 +2367,8 @@ fun CFDictionaryRemoveValue(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFDictionaryRemoveAllValues Void(typedef CFMutableDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CFDictionaryRemoveAllValues_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFDictionaryRemoveAllValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDictionaryRemoveAllValues").orElseThrow()
-private val CFDictionaryRemoveAllValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDictionaryRemoveAllValues_ADDR, CFDictionaryRemoveAllValues_DESC)
+private val CFDictionaryRemoveAllValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDictionaryRemoveAllValues").orElseThrow() }
+private val CFDictionaryRemoveAllValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDictionaryRemoveAllValues_ADDR, CFDictionaryRemoveAllValues_DESC) }
 
 fun CFDictionaryRemoveAllValues(arg0: MemorySegment): Unit {
     try {
@@ -2386,8 +2386,8 @@ fun CFDictionaryRemoveAllValues(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFNotificationCenterGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFNotificationCenterGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFNotificationCenterGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNotificationCenterGetTypeID").orElseThrow()
-private val CFNotificationCenterGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNotificationCenterGetTypeID_ADDR, CFNotificationCenterGetTypeID_DESC)
+private val CFNotificationCenterGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNotificationCenterGetTypeID").orElseThrow() }
+private val CFNotificationCenterGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNotificationCenterGetTypeID_ADDR, CFNotificationCenterGetTypeID_DESC) }
 
 fun CFNotificationCenterGetTypeID(): Long {
     try {
@@ -2405,8 +2405,8 @@ fun CFNotificationCenterGetTypeID(): Long {
  * {@snippet lang=c : CFNotificationCenterGetLocalCenter typedef CFNotificationCenterRef = (Declared(__CFNotificationCenter))*()
  */
 private val CFNotificationCenterGetLocalCenter_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFNotificationCenterGetLocalCenter_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNotificationCenterGetLocalCenter").orElseThrow()
-private val CFNotificationCenterGetLocalCenter_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNotificationCenterGetLocalCenter_ADDR, CFNotificationCenterGetLocalCenter_DESC)
+private val CFNotificationCenterGetLocalCenter_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNotificationCenterGetLocalCenter").orElseThrow() }
+private val CFNotificationCenterGetLocalCenter_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNotificationCenterGetLocalCenter_ADDR, CFNotificationCenterGetLocalCenter_DESC) }
 
 fun CFNotificationCenterGetLocalCenter(): MemorySegment {
     try {
@@ -2424,8 +2424,8 @@ fun CFNotificationCenterGetLocalCenter(): MemorySegment {
  * {@snippet lang=c : CFNotificationCenterGetDistributedCenter typedef CFNotificationCenterRef = (Declared(__CFNotificationCenter))*()
  */
 private val CFNotificationCenterGetDistributedCenter_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFNotificationCenterGetDistributedCenter_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNotificationCenterGetDistributedCenter").orElseThrow()
-private val CFNotificationCenterGetDistributedCenter_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNotificationCenterGetDistributedCenter_ADDR, CFNotificationCenterGetDistributedCenter_DESC)
+private val CFNotificationCenterGetDistributedCenter_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNotificationCenterGetDistributedCenter").orElseThrow() }
+private val CFNotificationCenterGetDistributedCenter_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNotificationCenterGetDistributedCenter_ADDR, CFNotificationCenterGetDistributedCenter_DESC) }
 
 fun CFNotificationCenterGetDistributedCenter(): MemorySegment {
     try {
@@ -2443,8 +2443,8 @@ fun CFNotificationCenterGetDistributedCenter(): MemorySegment {
  * {@snippet lang=c : CFNotificationCenterGetDarwinNotifyCenter typedef CFNotificationCenterRef = (Declared(__CFNotificationCenter))*()
  */
 private val CFNotificationCenterGetDarwinNotifyCenter_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFNotificationCenterGetDarwinNotifyCenter_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNotificationCenterGetDarwinNotifyCenter").orElseThrow()
-private val CFNotificationCenterGetDarwinNotifyCenter_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNotificationCenterGetDarwinNotifyCenter_ADDR, CFNotificationCenterGetDarwinNotifyCenter_DESC)
+private val CFNotificationCenterGetDarwinNotifyCenter_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNotificationCenterGetDarwinNotifyCenter").orElseThrow() }
+private val CFNotificationCenterGetDarwinNotifyCenter_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNotificationCenterGetDarwinNotifyCenter_ADDR, CFNotificationCenterGetDarwinNotifyCenter_DESC) }
 
 fun CFNotificationCenterGetDarwinNotifyCenter(): MemorySegment {
     try {
@@ -2462,8 +2462,8 @@ fun CFNotificationCenterGetDarwinNotifyCenter(): MemorySegment {
  * {@snippet lang=c : CFNotificationCenterAddObserver Void(typedef CFNotificationCenterRef = (Declared(__CFNotificationCenter))*,(Void)*,typedef CFNotificationCallback = (Void((Declared(__CFNotificationCenter))*,(Void)*,(Declared(__CFString))*,(Void)*,(Declared(__CFDictionary))*))*,typedef CFStringRef = (Declared(__CFString))*,(Void)*,typedef CFNotificationSuspensionBehavior = Declared(CFNotificationSuspensionBehavior))
  */
 private val CFNotificationCenterAddObserver_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFNotificationCenterAddObserver_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNotificationCenterAddObserver").orElseThrow()
-private val CFNotificationCenterAddObserver_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNotificationCenterAddObserver_ADDR, CFNotificationCenterAddObserver_DESC)
+private val CFNotificationCenterAddObserver_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNotificationCenterAddObserver").orElseThrow() }
+private val CFNotificationCenterAddObserver_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNotificationCenterAddObserver_ADDR, CFNotificationCenterAddObserver_DESC) }
 
 fun CFNotificationCenterAddObserver(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: MemorySegment, arg5: CFNotificationSuspensionBehavior): Unit {
     try {
@@ -2481,8 +2481,8 @@ fun CFNotificationCenterAddObserver(arg0: MemorySegment, arg1: MemorySegment, ar
  * {@snippet lang=c : CFNotificationCenterRemoveObserver Void(typedef CFNotificationCenterRef = (Declared(__CFNotificationCenter))*,(Void)*,typedef CFNotificationName = (Declared(__CFString))*,(Void)*)
  */
 private val CFNotificationCenterRemoveObserver_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFNotificationCenterRemoveObserver_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNotificationCenterRemoveObserver").orElseThrow()
-private val CFNotificationCenterRemoveObserver_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNotificationCenterRemoveObserver_ADDR, CFNotificationCenterRemoveObserver_DESC)
+private val CFNotificationCenterRemoveObserver_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNotificationCenterRemoveObserver").orElseThrow() }
+private val CFNotificationCenterRemoveObserver_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNotificationCenterRemoveObserver_ADDR, CFNotificationCenterRemoveObserver_DESC) }
 
 fun CFNotificationCenterRemoveObserver(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Unit {
     try {
@@ -2500,8 +2500,8 @@ fun CFNotificationCenterRemoveObserver(arg0: MemorySegment, arg1: MemorySegment,
  * {@snippet lang=c : CFNotificationCenterRemoveEveryObserver Void(typedef CFNotificationCenterRef = (Declared(__CFNotificationCenter))*,(Void)*)
  */
 private val CFNotificationCenterRemoveEveryObserver_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFNotificationCenterRemoveEveryObserver_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNotificationCenterRemoveEveryObserver").orElseThrow()
-private val CFNotificationCenterRemoveEveryObserver_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNotificationCenterRemoveEveryObserver_ADDR, CFNotificationCenterRemoveEveryObserver_DESC)
+private val CFNotificationCenterRemoveEveryObserver_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNotificationCenterRemoveEveryObserver").orElseThrow() }
+private val CFNotificationCenterRemoveEveryObserver_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNotificationCenterRemoveEveryObserver_ADDR, CFNotificationCenterRemoveEveryObserver_DESC) }
 
 fun CFNotificationCenterRemoveEveryObserver(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -2519,8 +2519,8 @@ fun CFNotificationCenterRemoveEveryObserver(arg0: MemorySegment, arg1: MemorySeg
  * {@snippet lang=c : CFNotificationCenterPostNotification Void(typedef CFNotificationCenterRef = (Declared(__CFNotificationCenter))*,typedef CFNotificationName = (Declared(__CFString))*,(Void)*,typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef Boolean = UNSIGNED = Char)
  */
 private val CFNotificationCenterPostNotification_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_BYTE)
-private val CFNotificationCenterPostNotification_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNotificationCenterPostNotification").orElseThrow()
-private val CFNotificationCenterPostNotification_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNotificationCenterPostNotification_ADDR, CFNotificationCenterPostNotification_DESC)
+private val CFNotificationCenterPostNotification_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNotificationCenterPostNotification").orElseThrow() }
+private val CFNotificationCenterPostNotification_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNotificationCenterPostNotification_ADDR, CFNotificationCenterPostNotification_DESC) }
 
 fun CFNotificationCenterPostNotification(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: Byte): Unit {
     try {
@@ -2538,8 +2538,8 @@ fun CFNotificationCenterPostNotification(arg0: MemorySegment, arg1: MemorySegmen
  * {@snippet lang=c : CFNotificationCenterPostNotificationWithOptions Void(typedef CFNotificationCenterRef = (Declared(__CFNotificationCenter))*,typedef CFNotificationName = (Declared(__CFString))*,(Void)*,typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFNotificationCenterPostNotificationWithOptions_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFNotificationCenterPostNotificationWithOptions_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFNotificationCenterPostNotificationWithOptions").orElseThrow()
-private val CFNotificationCenterPostNotificationWithOptions_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFNotificationCenterPostNotificationWithOptions_ADDR, CFNotificationCenterPostNotificationWithOptions_DESC)
+private val CFNotificationCenterPostNotificationWithOptions_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFNotificationCenterPostNotificationWithOptions").orElseThrow() }
+private val CFNotificationCenterPostNotificationWithOptions_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFNotificationCenterPostNotificationWithOptions_ADDR, CFNotificationCenterPostNotificationWithOptions_DESC) }
 
 fun CFNotificationCenterPostNotificationWithOptions(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment, arg4: Long): Unit {
     try {
@@ -2557,8 +2557,8 @@ fun CFNotificationCenterPostNotificationWithOptions(arg0: MemorySegment, arg1: M
  * {@snippet lang=c : CFLocaleGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFLocaleGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFLocaleGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetTypeID").orElseThrow()
-private val CFLocaleGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetTypeID_ADDR, CFLocaleGetTypeID_DESC)
+private val CFLocaleGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleGetTypeID").orElseThrow() }
+private val CFLocaleGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleGetTypeID_ADDR, CFLocaleGetTypeID_DESC) }
 
 fun CFLocaleGetTypeID(): Long {
     try {
@@ -2576,8 +2576,8 @@ fun CFLocaleGetTypeID(): Long {
  * {@snippet lang=c : CFLocaleGetSystem typedef CFLocaleRef = (Declared(__CFLocale))*()
  */
 private val CFLocaleGetSystem_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFLocaleGetSystem_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetSystem").orElseThrow()
-private val CFLocaleGetSystem_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetSystem_ADDR, CFLocaleGetSystem_DESC)
+private val CFLocaleGetSystem_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleGetSystem").orElseThrow() }
+private val CFLocaleGetSystem_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleGetSystem_ADDR, CFLocaleGetSystem_DESC) }
 
 fun CFLocaleGetSystem(): MemorySegment {
     try {
@@ -2595,8 +2595,8 @@ fun CFLocaleGetSystem(): MemorySegment {
  * {@snippet lang=c : CFLocaleCopyCurrent typedef CFLocaleRef = (Declared(__CFLocale))*()
  */
 private val CFLocaleCopyCurrent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFLocaleCopyCurrent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyCurrent").orElseThrow()
-private val CFLocaleCopyCurrent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyCurrent_ADDR, CFLocaleCopyCurrent_DESC)
+private val CFLocaleCopyCurrent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCopyCurrent").orElseThrow() }
+private val CFLocaleCopyCurrent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCopyCurrent_ADDR, CFLocaleCopyCurrent_DESC) }
 
 fun CFLocaleCopyCurrent(): MemorySegment {
     try {
@@ -2614,8 +2614,8 @@ fun CFLocaleCopyCurrent(): MemorySegment {
  * {@snippet lang=c : CFLocaleCopyAvailableLocaleIdentifiers typedef CFArrayRef = (Declared(__CFArray))*()
  */
 private val CFLocaleCopyAvailableLocaleIdentifiers_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFLocaleCopyAvailableLocaleIdentifiers_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyAvailableLocaleIdentifiers").orElseThrow()
-private val CFLocaleCopyAvailableLocaleIdentifiers_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyAvailableLocaleIdentifiers_ADDR, CFLocaleCopyAvailableLocaleIdentifiers_DESC)
+private val CFLocaleCopyAvailableLocaleIdentifiers_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCopyAvailableLocaleIdentifiers").orElseThrow() }
+private val CFLocaleCopyAvailableLocaleIdentifiers_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCopyAvailableLocaleIdentifiers_ADDR, CFLocaleCopyAvailableLocaleIdentifiers_DESC) }
 
 fun CFLocaleCopyAvailableLocaleIdentifiers(): MemorySegment {
     try {
@@ -2633,8 +2633,8 @@ fun CFLocaleCopyAvailableLocaleIdentifiers(): MemorySegment {
  * {@snippet lang=c : CFLocaleCopyISOLanguageCodes typedef CFArrayRef = (Declared(__CFArray))*()
  */
 private val CFLocaleCopyISOLanguageCodes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFLocaleCopyISOLanguageCodes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyISOLanguageCodes").orElseThrow()
-private val CFLocaleCopyISOLanguageCodes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyISOLanguageCodes_ADDR, CFLocaleCopyISOLanguageCodes_DESC)
+private val CFLocaleCopyISOLanguageCodes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCopyISOLanguageCodes").orElseThrow() }
+private val CFLocaleCopyISOLanguageCodes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCopyISOLanguageCodes_ADDR, CFLocaleCopyISOLanguageCodes_DESC) }
 
 fun CFLocaleCopyISOLanguageCodes(): MemorySegment {
     try {
@@ -2652,8 +2652,8 @@ fun CFLocaleCopyISOLanguageCodes(): MemorySegment {
  * {@snippet lang=c : CFLocaleCopyISOCountryCodes typedef CFArrayRef = (Declared(__CFArray))*()
  */
 private val CFLocaleCopyISOCountryCodes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFLocaleCopyISOCountryCodes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyISOCountryCodes").orElseThrow()
-private val CFLocaleCopyISOCountryCodes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyISOCountryCodes_ADDR, CFLocaleCopyISOCountryCodes_DESC)
+private val CFLocaleCopyISOCountryCodes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCopyISOCountryCodes").orElseThrow() }
+private val CFLocaleCopyISOCountryCodes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCopyISOCountryCodes_ADDR, CFLocaleCopyISOCountryCodes_DESC) }
 
 fun CFLocaleCopyISOCountryCodes(): MemorySegment {
     try {
@@ -2671,8 +2671,8 @@ fun CFLocaleCopyISOCountryCodes(): MemorySegment {
  * {@snippet lang=c : CFLocaleCopyISOCurrencyCodes typedef CFArrayRef = (Declared(__CFArray))*()
  */
 private val CFLocaleCopyISOCurrencyCodes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFLocaleCopyISOCurrencyCodes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyISOCurrencyCodes").orElseThrow()
-private val CFLocaleCopyISOCurrencyCodes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyISOCurrencyCodes_ADDR, CFLocaleCopyISOCurrencyCodes_DESC)
+private val CFLocaleCopyISOCurrencyCodes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCopyISOCurrencyCodes").orElseThrow() }
+private val CFLocaleCopyISOCurrencyCodes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCopyISOCurrencyCodes_ADDR, CFLocaleCopyISOCurrencyCodes_DESC) }
 
 fun CFLocaleCopyISOCurrencyCodes(): MemorySegment {
     try {
@@ -2690,8 +2690,8 @@ fun CFLocaleCopyISOCurrencyCodes(): MemorySegment {
  * {@snippet lang=c : CFLocaleCopyCommonISOCurrencyCodes typedef CFArrayRef = (Declared(__CFArray))*()
  */
 private val CFLocaleCopyCommonISOCurrencyCodes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFLocaleCopyCommonISOCurrencyCodes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyCommonISOCurrencyCodes").orElseThrow()
-private val CFLocaleCopyCommonISOCurrencyCodes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyCommonISOCurrencyCodes_ADDR, CFLocaleCopyCommonISOCurrencyCodes_DESC)
+private val CFLocaleCopyCommonISOCurrencyCodes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCopyCommonISOCurrencyCodes").orElseThrow() }
+private val CFLocaleCopyCommonISOCurrencyCodes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCopyCommonISOCurrencyCodes_ADDR, CFLocaleCopyCommonISOCurrencyCodes_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -2713,8 +2713,8 @@ fun CFLocaleCopyCommonISOCurrencyCodes(): MemorySegment {
  * {@snippet lang=c : CFLocaleCopyPreferredLanguages typedef CFArrayRef = (Declared(__CFArray))*()
  */
 private val CFLocaleCopyPreferredLanguages_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CFLocaleCopyPreferredLanguages_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyPreferredLanguages").orElseThrow()
-private val CFLocaleCopyPreferredLanguages_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyPreferredLanguages_ADDR, CFLocaleCopyPreferredLanguages_DESC)
+private val CFLocaleCopyPreferredLanguages_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCopyPreferredLanguages").orElseThrow() }
+private val CFLocaleCopyPreferredLanguages_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCopyPreferredLanguages_ADDR, CFLocaleCopyPreferredLanguages_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -2736,8 +2736,8 @@ fun CFLocaleCopyPreferredLanguages(): MemorySegment {
  * {@snippet lang=c : CFLocaleCreateCanonicalLanguageIdentifierFromString typedef CFLocaleIdentifier = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFLocaleCreateCanonicalLanguageIdentifierFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFLocaleCreateCanonicalLanguageIdentifierFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCreateCanonicalLanguageIdentifierFromString").orElseThrow()
-private val CFLocaleCreateCanonicalLanguageIdentifierFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCreateCanonicalLanguageIdentifierFromString_ADDR, CFLocaleCreateCanonicalLanguageIdentifierFromString_DESC)
+private val CFLocaleCreateCanonicalLanguageIdentifierFromString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCreateCanonicalLanguageIdentifierFromString").orElseThrow() }
+private val CFLocaleCreateCanonicalLanguageIdentifierFromString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCreateCanonicalLanguageIdentifierFromString_ADDR, CFLocaleCreateCanonicalLanguageIdentifierFromString_DESC) }
 
 fun CFLocaleCreateCanonicalLanguageIdentifierFromString(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2755,8 +2755,8 @@ fun CFLocaleCreateCanonicalLanguageIdentifierFromString(arg0: MemorySegment, arg
  * {@snippet lang=c : CFLocaleCreateCanonicalLocaleIdentifierFromString typedef CFLocaleIdentifier = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFLocaleCreateCanonicalLocaleIdentifierFromString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFLocaleCreateCanonicalLocaleIdentifierFromString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCreateCanonicalLocaleIdentifierFromString").orElseThrow()
-private val CFLocaleCreateCanonicalLocaleIdentifierFromString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCreateCanonicalLocaleIdentifierFromString_ADDR, CFLocaleCreateCanonicalLocaleIdentifierFromString_DESC)
+private val CFLocaleCreateCanonicalLocaleIdentifierFromString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCreateCanonicalLocaleIdentifierFromString").orElseThrow() }
+private val CFLocaleCreateCanonicalLocaleIdentifierFromString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCreateCanonicalLocaleIdentifierFromString_ADDR, CFLocaleCreateCanonicalLocaleIdentifierFromString_DESC) }
 
 fun CFLocaleCreateCanonicalLocaleIdentifierFromString(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2774,8 +2774,8 @@ fun CFLocaleCreateCanonicalLocaleIdentifierFromString(arg0: MemorySegment, arg1:
  * {@snippet lang=c : CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes typedef CFLocaleIdentifier = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef LangCode = Short,typedef RegionCode = Short)
  */
 private val CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT)
-private val CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes").orElseThrow()
-private val CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes_ADDR, CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes_DESC)
+private val CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes").orElseThrow() }
+private val CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes_ADDR, CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes_DESC) }
 
 fun CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes(arg0: MemorySegment, arg1: Short, arg2: Short): MemorySegment {
     try {
@@ -2793,8 +2793,8 @@ fun CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes(arg0: MemorySe
  * {@snippet lang=c : CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode typedef CFLocaleIdentifier = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef uint32_t = UNSIGNED = Int)
  */
 private val CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode").orElseThrow()
-private val CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_ADDR, CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_DESC)
+private val CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode").orElseThrow() }
+private val CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_ADDR, CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2816,8 +2816,8 @@ fun CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode(arg0: MemorySegment, arg
  * {@snippet lang=c : CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier typedef uint32_t = UNSIGNED = Int(typedef CFLocaleIdentifier = (Declared(__CFString))*)
  */
 private val CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier").orElseThrow()
-private val CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_ADDR, CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_DESC)
+private val CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier").orElseThrow() }
+private val CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_ADDR, CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2839,8 +2839,8 @@ fun CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier(arg0: MemorySegment): Int {
  * {@snippet lang=c : CFLocaleGetLanguageCharacterDirection typedef CFLocaleLanguageDirection = Declared(CFLocaleLanguageDirection)(typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFLocaleGetLanguageCharacterDirection_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFLocaleGetLanguageCharacterDirection_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetLanguageCharacterDirection").orElseThrow()
-private val CFLocaleGetLanguageCharacterDirection_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetLanguageCharacterDirection_ADDR, CFLocaleGetLanguageCharacterDirection_DESC)
+private val CFLocaleGetLanguageCharacterDirection_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleGetLanguageCharacterDirection").orElseThrow() }
+private val CFLocaleGetLanguageCharacterDirection_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleGetLanguageCharacterDirection_ADDR, CFLocaleGetLanguageCharacterDirection_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2862,8 +2862,8 @@ fun CFLocaleGetLanguageCharacterDirection(arg0: MemorySegment): CFLocaleLanguage
  * {@snippet lang=c : CFLocaleGetLanguageLineDirection typedef CFLocaleLanguageDirection = Declared(CFLocaleLanguageDirection)(typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFLocaleGetLanguageLineDirection_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFLocaleGetLanguageLineDirection_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetLanguageLineDirection").orElseThrow()
-private val CFLocaleGetLanguageLineDirection_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetLanguageLineDirection_ADDR, CFLocaleGetLanguageLineDirection_DESC)
+private val CFLocaleGetLanguageLineDirection_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleGetLanguageLineDirection").orElseThrow() }
+private val CFLocaleGetLanguageLineDirection_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleGetLanguageLineDirection_ADDR, CFLocaleGetLanguageLineDirection_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2885,8 +2885,8 @@ fun CFLocaleGetLanguageLineDirection(arg0: MemorySegment): CFLocaleLanguageDirec
  * {@snippet lang=c : CFLocaleCreateComponentsFromLocaleIdentifier typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFLocaleIdentifier = (Declared(__CFString))*)
  */
 private val CFLocaleCreateComponentsFromLocaleIdentifier_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFLocaleCreateComponentsFromLocaleIdentifier_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCreateComponentsFromLocaleIdentifier").orElseThrow()
-private val CFLocaleCreateComponentsFromLocaleIdentifier_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCreateComponentsFromLocaleIdentifier_ADDR, CFLocaleCreateComponentsFromLocaleIdentifier_DESC)
+private val CFLocaleCreateComponentsFromLocaleIdentifier_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCreateComponentsFromLocaleIdentifier").orElseThrow() }
+private val CFLocaleCreateComponentsFromLocaleIdentifier_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCreateComponentsFromLocaleIdentifier_ADDR, CFLocaleCreateComponentsFromLocaleIdentifier_DESC) }
 
 fun CFLocaleCreateComponentsFromLocaleIdentifier(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2904,8 +2904,8 @@ fun CFLocaleCreateComponentsFromLocaleIdentifier(arg0: MemorySegment, arg1: Memo
  * {@snippet lang=c : CFLocaleCreateLocaleIdentifierFromComponents typedef CFLocaleIdentifier = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CFLocaleCreateLocaleIdentifierFromComponents_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFLocaleCreateLocaleIdentifierFromComponents_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCreateLocaleIdentifierFromComponents").orElseThrow()
-private val CFLocaleCreateLocaleIdentifierFromComponents_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCreateLocaleIdentifierFromComponents_ADDR, CFLocaleCreateLocaleIdentifierFromComponents_DESC)
+private val CFLocaleCreateLocaleIdentifierFromComponents_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCreateLocaleIdentifierFromComponents").orElseThrow() }
+private val CFLocaleCreateLocaleIdentifierFromComponents_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCreateLocaleIdentifierFromComponents_ADDR, CFLocaleCreateLocaleIdentifierFromComponents_DESC) }
 
 fun CFLocaleCreateLocaleIdentifierFromComponents(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2923,8 +2923,8 @@ fun CFLocaleCreateLocaleIdentifierFromComponents(arg0: MemorySegment, arg1: Memo
  * {@snippet lang=c : CFLocaleCreate typedef CFLocaleRef = (Declared(__CFLocale))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFLocaleIdentifier = (Declared(__CFString))*)
  */
 private val CFLocaleCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFLocaleCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCreate").orElseThrow()
-private val CFLocaleCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCreate_ADDR, CFLocaleCreate_DESC)
+private val CFLocaleCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCreate").orElseThrow() }
+private val CFLocaleCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCreate_ADDR, CFLocaleCreate_DESC) }
 
 fun CFLocaleCreate(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2942,8 +2942,8 @@ fun CFLocaleCreate(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFLocaleCreateCopy typedef CFLocaleRef = (Declared(__CFLocale))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFLocaleRef = (Declared(__CFLocale))*)
  */
 private val CFLocaleCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFLocaleCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCreateCopy").orElseThrow()
-private val CFLocaleCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCreateCopy_ADDR, CFLocaleCreateCopy_DESC)
+private val CFLocaleCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCreateCopy").orElseThrow() }
+private val CFLocaleCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCreateCopy_ADDR, CFLocaleCreateCopy_DESC) }
 
 fun CFLocaleCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2961,8 +2961,8 @@ fun CFLocaleCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment 
  * {@snippet lang=c : CFLocaleGetIdentifier typedef CFLocaleIdentifier = (Declared(__CFString))*(typedef CFLocaleRef = (Declared(__CFLocale))*)
  */
 private val CFLocaleGetIdentifier_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFLocaleGetIdentifier_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetIdentifier").orElseThrow()
-private val CFLocaleGetIdentifier_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetIdentifier_ADDR, CFLocaleGetIdentifier_DESC)
+private val CFLocaleGetIdentifier_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleGetIdentifier").orElseThrow() }
+private val CFLocaleGetIdentifier_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleGetIdentifier_ADDR, CFLocaleGetIdentifier_DESC) }
 
 fun CFLocaleGetIdentifier(arg0: MemorySegment): MemorySegment {
     try {
@@ -2980,8 +2980,8 @@ fun CFLocaleGetIdentifier(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFLocaleGetValue typedef CFTypeRef = (Void)*(typedef CFLocaleRef = (Declared(__CFLocale))*,typedef CFLocaleKey = (Declared(__CFString))*)
  */
 private val CFLocaleGetValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFLocaleGetValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleGetValue").orElseThrow()
-private val CFLocaleGetValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleGetValue_ADDR, CFLocaleGetValue_DESC)
+private val CFLocaleGetValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleGetValue").orElseThrow() }
+private val CFLocaleGetValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleGetValue_ADDR, CFLocaleGetValue_DESC) }
 
 fun CFLocaleGetValue(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -2999,8 +2999,8 @@ fun CFLocaleGetValue(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFLocaleCopyDisplayNameForPropertyValue typedef CFStringRef = (Declared(__CFString))*(typedef CFLocaleRef = (Declared(__CFLocale))*,typedef CFLocaleKey = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFLocaleCopyDisplayNameForPropertyValue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFLocaleCopyDisplayNameForPropertyValue_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFLocaleCopyDisplayNameForPropertyValue").orElseThrow()
-private val CFLocaleCopyDisplayNameForPropertyValue_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFLocaleCopyDisplayNameForPropertyValue_ADDR, CFLocaleCopyDisplayNameForPropertyValue_DESC)
+private val CFLocaleCopyDisplayNameForPropertyValue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFLocaleCopyDisplayNameForPropertyValue").orElseThrow() }
+private val CFLocaleCopyDisplayNameForPropertyValue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFLocaleCopyDisplayNameForPropertyValue_ADDR, CFLocaleCopyDisplayNameForPropertyValue_DESC) }
 
 fun CFLocaleCopyDisplayNameForPropertyValue(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
     try {
@@ -3616,8 +3616,8 @@ var kCFVietnameseCalendar: MemorySegment
  * {@snippet lang=c : CFAbsoluteTimeGetCurrent typedef CFAbsoluteTime = Double()
  */
 private val CFAbsoluteTimeGetCurrent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE)
-private val CFAbsoluteTimeGetCurrent_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetCurrent").orElseThrow()
-private val CFAbsoluteTimeGetCurrent_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetCurrent_ADDR, CFAbsoluteTimeGetCurrent_DESC)
+private val CFAbsoluteTimeGetCurrent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetCurrent").orElseThrow() }
+private val CFAbsoluteTimeGetCurrent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetCurrent_ADDR, CFAbsoluteTimeGetCurrent_DESC) }
 
 fun CFAbsoluteTimeGetCurrent(): Double {
     try {
@@ -3657,8 +3657,8 @@ var kCFAbsoluteTimeIntervalSince1904: Double
  * {@snippet lang=c : CFDateGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFDateGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFDateGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateGetTypeID").orElseThrow()
-private val CFDateGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateGetTypeID_ADDR, CFDateGetTypeID_DESC)
+private val CFDateGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDateGetTypeID").orElseThrow() }
+private val CFDateGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDateGetTypeID_ADDR, CFDateGetTypeID_DESC) }
 
 fun CFDateGetTypeID(): Long {
     try {
@@ -3676,8 +3676,8 @@ fun CFDateGetTypeID(): Long {
  * {@snippet lang=c : CFDateCreate typedef CFDateRef = (Declared(__CFDate))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFAbsoluteTime = Double)
  */
 private val CFDateCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CFDateCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateCreate").orElseThrow()
-private val CFDateCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateCreate_ADDR, CFDateCreate_DESC)
+private val CFDateCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDateCreate").orElseThrow() }
+private val CFDateCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDateCreate_ADDR, CFDateCreate_DESC) }
 
 fun CFDateCreate(arg0: MemorySegment, arg1: Double): MemorySegment {
     try {
@@ -3695,8 +3695,8 @@ fun CFDateCreate(arg0: MemorySegment, arg1: Double): MemorySegment {
  * {@snippet lang=c : CFDateGetAbsoluteTime typedef CFAbsoluteTime = Double(typedef CFDateRef = (Declared(__CFDate))*)
  */
 private val CFDateGetAbsoluteTime_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CFDateGetAbsoluteTime_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateGetAbsoluteTime").orElseThrow()
-private val CFDateGetAbsoluteTime_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateGetAbsoluteTime_ADDR, CFDateGetAbsoluteTime_DESC)
+private val CFDateGetAbsoluteTime_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDateGetAbsoluteTime").orElseThrow() }
+private val CFDateGetAbsoluteTime_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDateGetAbsoluteTime_ADDR, CFDateGetAbsoluteTime_DESC) }
 
 fun CFDateGetAbsoluteTime(arg0: MemorySegment): Double {
     try {
@@ -3714,8 +3714,8 @@ fun CFDateGetAbsoluteTime(arg0: MemorySegment): Double {
  * {@snippet lang=c : CFDateGetTimeIntervalSinceDate typedef CFTimeInterval = Double(typedef CFDateRef = (Declared(__CFDate))*,typedef CFDateRef = (Declared(__CFDate))*)
  */
 private val CFDateGetTimeIntervalSinceDate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDateGetTimeIntervalSinceDate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateGetTimeIntervalSinceDate").orElseThrow()
-private val CFDateGetTimeIntervalSinceDate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateGetTimeIntervalSinceDate_ADDR, CFDateGetTimeIntervalSinceDate_DESC)
+private val CFDateGetTimeIntervalSinceDate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDateGetTimeIntervalSinceDate").orElseThrow() }
+private val CFDateGetTimeIntervalSinceDate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDateGetTimeIntervalSinceDate_ADDR, CFDateGetTimeIntervalSinceDate_DESC) }
 
 fun CFDateGetTimeIntervalSinceDate(arg0: MemorySegment, arg1: MemorySegment): Double {
     try {
@@ -3733,8 +3733,8 @@ fun CFDateGetTimeIntervalSinceDate(arg0: MemorySegment, arg1: MemorySegment): Do
  * {@snippet lang=c : CFDateCompare typedef CFComparisonResult = Declared(CFComparisonResult)(typedef CFDateRef = (Declared(__CFDate))*,typedef CFDateRef = (Declared(__CFDate))*,(Void)*)
  */
 private val CFDateCompare_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDateCompare_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDateCompare").orElseThrow()
-private val CFDateCompare_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDateCompare_ADDR, CFDateCompare_DESC)
+private val CFDateCompare_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDateCompare").orElseThrow() }
+private val CFDateCompare_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDateCompare_ADDR, CFDateCompare_DESC) }
 
 fun CFDateCompare(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): CFComparisonResult {
     try {
@@ -3752,8 +3752,8 @@ fun CFDateCompare(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment)
  * {@snippet lang=c : CFGregorianDateIsValid typedef Boolean = UNSIGNED = Char(typedef CFGregorianDate = Declared(CFGregorianDate),typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFGregorianDateIsValid_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, CFGregorianDate.layout, ValueLayout.JAVA_LONG)
-private val CFGregorianDateIsValid_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFGregorianDateIsValid").orElseThrow()
-private val CFGregorianDateIsValid_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFGregorianDateIsValid_ADDR, CFGregorianDateIsValid_DESC)
+private val CFGregorianDateIsValid_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFGregorianDateIsValid").orElseThrow() }
+private val CFGregorianDateIsValid_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFGregorianDateIsValid_ADDR, CFGregorianDateIsValid_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
@@ -3775,8 +3775,8 @@ fun CFGregorianDateIsValid(arg0: MemorySegment, arg1: Long): Byte {
  * {@snippet lang=c : CFGregorianDateGetAbsoluteTime typedef CFAbsoluteTime = Double(typedef CFGregorianDate = Declared(CFGregorianDate),typedef CFTimeZoneRef = (Declared(__CFTimeZone))*)
  */
 private val CFGregorianDateGetAbsoluteTime_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, CFGregorianDate.layout, ValueLayout.ADDRESS)
-private val CFGregorianDateGetAbsoluteTime_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFGregorianDateGetAbsoluteTime").orElseThrow()
-private val CFGregorianDateGetAbsoluteTime_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFGregorianDateGetAbsoluteTime_ADDR, CFGregorianDateGetAbsoluteTime_DESC)
+private val CFGregorianDateGetAbsoluteTime_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFGregorianDateGetAbsoluteTime").orElseThrow() }
+private val CFGregorianDateGetAbsoluteTime_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFGregorianDateGetAbsoluteTime_ADDR, CFGregorianDateGetAbsoluteTime_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
@@ -3798,8 +3798,8 @@ fun CFGregorianDateGetAbsoluteTime(arg0: MemorySegment, arg1: MemorySegment): Do
  * {@snippet lang=c : CFAbsoluteTimeGetGregorianDate typedef CFGregorianDate = Declared(CFGregorianDate)(typedef CFAbsoluteTime = Double,typedef CFTimeZoneRef = (Declared(__CFTimeZone))*)
  */
 private val CFAbsoluteTimeGetGregorianDate_DESC: FunctionDescriptor = FunctionDescriptor.of(CFGregorianDate.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CFAbsoluteTimeGetGregorianDate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetGregorianDate").orElseThrow()
-private val CFAbsoluteTimeGetGregorianDate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetGregorianDate_ADDR, CFAbsoluteTimeGetGregorianDate_DESC)
+private val CFAbsoluteTimeGetGregorianDate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetGregorianDate").orElseThrow() }
+private val CFAbsoluteTimeGetGregorianDate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetGregorianDate_ADDR, CFAbsoluteTimeGetGregorianDate_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
@@ -3821,8 +3821,8 @@ fun CFAbsoluteTimeGetGregorianDate(allocator: SegmentAllocator, arg0: Double, ar
  * {@snippet lang=c : CFAbsoluteTimeAddGregorianUnits typedef CFAbsoluteTime = Double(typedef CFAbsoluteTime = Double,typedef CFTimeZoneRef = (Declared(__CFTimeZone))*,typedef CFGregorianUnits = Declared(CFGregorianUnits))
  */
 private val CFAbsoluteTimeAddGregorianUnits_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, CFGregorianUnits.layout)
-private val CFAbsoluteTimeAddGregorianUnits_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeAddGregorianUnits").orElseThrow()
-private val CFAbsoluteTimeAddGregorianUnits_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeAddGregorianUnits_ADDR, CFAbsoluteTimeAddGregorianUnits_DESC)
+private val CFAbsoluteTimeAddGregorianUnits_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAbsoluteTimeAddGregorianUnits").orElseThrow() }
+private val CFAbsoluteTimeAddGregorianUnits_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAbsoluteTimeAddGregorianUnits_ADDR, CFAbsoluteTimeAddGregorianUnits_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
@@ -3844,8 +3844,8 @@ fun CFAbsoluteTimeAddGregorianUnits(arg0: Double, arg1: MemorySegment, arg2: Mem
  * {@snippet lang=c : CFAbsoluteTimeGetDifferenceAsGregorianUnits typedef CFGregorianUnits = Declared(CFGregorianUnits)(typedef CFAbsoluteTime = Double,typedef CFAbsoluteTime = Double,typedef CFTimeZoneRef = (Declared(__CFTimeZone))*,typedef CFOptionFlags = UNSIGNED = Long)
  */
 private val CFAbsoluteTimeGetDifferenceAsGregorianUnits_DESC: FunctionDescriptor = FunctionDescriptor.of(CFGregorianUnits.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFAbsoluteTimeGetDifferenceAsGregorianUnits_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetDifferenceAsGregorianUnits").orElseThrow()
-private val CFAbsoluteTimeGetDifferenceAsGregorianUnits_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetDifferenceAsGregorianUnits_ADDR, CFAbsoluteTimeGetDifferenceAsGregorianUnits_DESC)
+private val CFAbsoluteTimeGetDifferenceAsGregorianUnits_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetDifferenceAsGregorianUnits").orElseThrow() }
+private val CFAbsoluteTimeGetDifferenceAsGregorianUnits_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetDifferenceAsGregorianUnits_ADDR, CFAbsoluteTimeGetDifferenceAsGregorianUnits_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
@@ -3867,8 +3867,8 @@ fun CFAbsoluteTimeGetDifferenceAsGregorianUnits(allocator: SegmentAllocator, arg
  * {@snippet lang=c : CFAbsoluteTimeGetDayOfWeek typedef SInt32 = Int(typedef CFAbsoluteTime = Double,typedef CFTimeZoneRef = (Declared(__CFTimeZone))*)
  */
 private val CFAbsoluteTimeGetDayOfWeek_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CFAbsoluteTimeGetDayOfWeek_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetDayOfWeek").orElseThrow()
-private val CFAbsoluteTimeGetDayOfWeek_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetDayOfWeek_ADDR, CFAbsoluteTimeGetDayOfWeek_DESC)
+private val CFAbsoluteTimeGetDayOfWeek_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetDayOfWeek").orElseThrow() }
+private val CFAbsoluteTimeGetDayOfWeek_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetDayOfWeek_ADDR, CFAbsoluteTimeGetDayOfWeek_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
@@ -3890,8 +3890,8 @@ fun CFAbsoluteTimeGetDayOfWeek(arg0: Double, arg1: MemorySegment): Int {
  * {@snippet lang=c : CFAbsoluteTimeGetDayOfYear typedef SInt32 = Int(typedef CFAbsoluteTime = Double,typedef CFTimeZoneRef = (Declared(__CFTimeZone))*)
  */
 private val CFAbsoluteTimeGetDayOfYear_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CFAbsoluteTimeGetDayOfYear_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetDayOfYear").orElseThrow()
-private val CFAbsoluteTimeGetDayOfYear_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetDayOfYear_ADDR, CFAbsoluteTimeGetDayOfYear_DESC)
+private val CFAbsoluteTimeGetDayOfYear_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetDayOfYear").orElseThrow() }
+private val CFAbsoluteTimeGetDayOfYear_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetDayOfYear_ADDR, CFAbsoluteTimeGetDayOfYear_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
@@ -3913,8 +3913,8 @@ fun CFAbsoluteTimeGetDayOfYear(arg0: Double, arg1: MemorySegment): Int {
  * {@snippet lang=c : CFAbsoluteTimeGetWeekOfYear typedef SInt32 = Int(typedef CFAbsoluteTime = Double,typedef CFTimeZoneRef = (Declared(__CFTimeZone))*)
  */
 private val CFAbsoluteTimeGetWeekOfYear_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CFAbsoluteTimeGetWeekOfYear_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetWeekOfYear").orElseThrow()
-private val CFAbsoluteTimeGetWeekOfYear_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetWeekOfYear_ADDR, CFAbsoluteTimeGetWeekOfYear_DESC)
+private val CFAbsoluteTimeGetWeekOfYear_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFAbsoluteTimeGetWeekOfYear").orElseThrow() }
+private val CFAbsoluteTimeGetWeekOfYear_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFAbsoluteTimeGetWeekOfYear_ADDR, CFAbsoluteTimeGetWeekOfYear_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use CFCalendar or NSCalendar API instead")
@@ -3936,8 +3936,8 @@ fun CFAbsoluteTimeGetWeekOfYear(arg0: Double, arg1: MemorySegment): Int {
  * {@snippet lang=c : CFDataGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFDataGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFDataGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataGetTypeID").orElseThrow()
-private val CFDataGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataGetTypeID_ADDR, CFDataGetTypeID_DESC)
+private val CFDataGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataGetTypeID").orElseThrow() }
+private val CFDataGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataGetTypeID_ADDR, CFDataGetTypeID_DESC) }
 
 fun CFDataGetTypeID(): Long {
     try {
@@ -3955,8 +3955,8 @@ fun CFDataGetTypeID(): Long {
  * {@snippet lang=c : CFDataCreate typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long)
  */
 private val CFDataCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFDataCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataCreate").orElseThrow()
-private val CFDataCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataCreate_ADDR, CFDataCreate_DESC)
+private val CFDataCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataCreate").orElseThrow() }
+private val CFDataCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataCreate_ADDR, CFDataCreate_DESC) }
 
 fun CFDataCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): MemorySegment {
     try {
@@ -3974,8 +3974,8 @@ fun CFDataCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): MemorySe
  * {@snippet lang=c : CFDataCreateWithBytesNoCopy typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long,typedef CFAllocatorRef = (Declared(__CFAllocator))*)
  */
 private val CFDataCreateWithBytesNoCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFDataCreateWithBytesNoCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataCreateWithBytesNoCopy").orElseThrow()
-private val CFDataCreateWithBytesNoCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataCreateWithBytesNoCopy_ADDR, CFDataCreateWithBytesNoCopy_DESC)
+private val CFDataCreateWithBytesNoCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataCreateWithBytesNoCopy").orElseThrow() }
+private val CFDataCreateWithBytesNoCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataCreateWithBytesNoCopy_ADDR, CFDataCreateWithBytesNoCopy_DESC) }
 
 fun CFDataCreateWithBytesNoCopy(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): MemorySegment {
     try {
@@ -3993,8 +3993,8 @@ fun CFDataCreateWithBytesNoCopy(arg0: MemorySegment, arg1: MemorySegment, arg2: 
  * {@snippet lang=c : CFDataCreateCopy typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CFDataCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDataCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataCreateCopy").orElseThrow()
-private val CFDataCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataCreateCopy_ADDR, CFDataCreateCopy_DESC)
+private val CFDataCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataCreateCopy").orElseThrow() }
+private val CFDataCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataCreateCopy_ADDR, CFDataCreateCopy_DESC) }
 
 fun CFDataCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4012,8 +4012,8 @@ fun CFDataCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFDataCreateMutable typedef CFMutableDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long)
  */
 private val CFDataCreateMutable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFDataCreateMutable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataCreateMutable").orElseThrow()
-private val CFDataCreateMutable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataCreateMutable_ADDR, CFDataCreateMutable_DESC)
+private val CFDataCreateMutable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataCreateMutable").orElseThrow() }
+private val CFDataCreateMutable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataCreateMutable_ADDR, CFDataCreateMutable_DESC) }
 
 fun CFDataCreateMutable(arg0: MemorySegment, arg1: Long): MemorySegment {
     try {
@@ -4031,8 +4031,8 @@ fun CFDataCreateMutable(arg0: MemorySegment, arg1: Long): MemorySegment {
  * {@snippet lang=c : CFDataCreateMutableCopy typedef CFMutableDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CFDataCreateMutableCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFDataCreateMutableCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataCreateMutableCopy").orElseThrow()
-private val CFDataCreateMutableCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataCreateMutableCopy_ADDR, CFDataCreateMutableCopy_DESC)
+private val CFDataCreateMutableCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataCreateMutableCopy").orElseThrow() }
+private val CFDataCreateMutableCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataCreateMutableCopy_ADDR, CFDataCreateMutableCopy_DESC) }
 
 fun CFDataCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
@@ -4050,8 +4050,8 @@ fun CFDataCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment
  * {@snippet lang=c : CFDataGetLength typedef CFIndex = Long(typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CFDataGetLength_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFDataGetLength_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataGetLength").orElseThrow()
-private val CFDataGetLength_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataGetLength_ADDR, CFDataGetLength_DESC)
+private val CFDataGetLength_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataGetLength").orElseThrow() }
+private val CFDataGetLength_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataGetLength_ADDR, CFDataGetLength_DESC) }
 
 fun CFDataGetLength(arg0: MemorySegment): Long {
     try {
@@ -4069,8 +4069,8 @@ fun CFDataGetLength(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFDataGetBytePtr (typedef UInt8 = UNSIGNED = Char)*(typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CFDataGetBytePtr_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDataGetBytePtr_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataGetBytePtr").orElseThrow()
-private val CFDataGetBytePtr_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataGetBytePtr_ADDR, CFDataGetBytePtr_DESC)
+private val CFDataGetBytePtr_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataGetBytePtr").orElseThrow() }
+private val CFDataGetBytePtr_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataGetBytePtr_ADDR, CFDataGetBytePtr_DESC) }
 
 fun CFDataGetBytePtr(arg0: MemorySegment): MemorySegment {
     try {
@@ -4088,8 +4088,8 @@ fun CFDataGetBytePtr(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFDataGetMutableBytePtr (typedef UInt8 = UNSIGNED = Char)*(typedef CFMutableDataRef = (Declared(__CFData))*)
  */
 private val CFDataGetMutableBytePtr_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFDataGetMutableBytePtr_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataGetMutableBytePtr").orElseThrow()
-private val CFDataGetMutableBytePtr_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataGetMutableBytePtr_ADDR, CFDataGetMutableBytePtr_DESC)
+private val CFDataGetMutableBytePtr_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataGetMutableBytePtr").orElseThrow() }
+private val CFDataGetMutableBytePtr_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataGetMutableBytePtr_ADDR, CFDataGetMutableBytePtr_DESC) }
 
 fun CFDataGetMutableBytePtr(arg0: MemorySegment): MemorySegment {
     try {
@@ -4107,8 +4107,8 @@ fun CFDataGetMutableBytePtr(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFDataGetBytes Void(typedef CFDataRef = (Declared(__CFData))*,typedef CFRange = Declared(CFRange),(typedef UInt8 = UNSIGNED = Char)*)
  */
 private val CFDataGetBytes_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS)
-private val CFDataGetBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataGetBytes").orElseThrow()
-private val CFDataGetBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataGetBytes_ADDR, CFDataGetBytes_DESC)
+private val CFDataGetBytes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataGetBytes").orElseThrow() }
+private val CFDataGetBytes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataGetBytes_ADDR, CFDataGetBytes_DESC) }
 
 fun CFDataGetBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Unit {
     try {
@@ -4126,8 +4126,8 @@ fun CFDataGetBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment
  * {@snippet lang=c : CFDataSetLength Void(typedef CFMutableDataRef = (Declared(__CFData))*,typedef CFIndex = Long)
  */
 private val CFDataSetLength_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFDataSetLength_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataSetLength").orElseThrow()
-private val CFDataSetLength_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataSetLength_ADDR, CFDataSetLength_DESC)
+private val CFDataSetLength_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataSetLength").orElseThrow() }
+private val CFDataSetLength_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataSetLength_ADDR, CFDataSetLength_DESC) }
 
 fun CFDataSetLength(arg0: MemorySegment, arg1: Long): Unit {
     try {
@@ -4145,8 +4145,8 @@ fun CFDataSetLength(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CFDataIncreaseLength Void(typedef CFMutableDataRef = (Declared(__CFData))*,typedef CFIndex = Long)
  */
 private val CFDataIncreaseLength_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFDataIncreaseLength_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataIncreaseLength").orElseThrow()
-private val CFDataIncreaseLength_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataIncreaseLength_ADDR, CFDataIncreaseLength_DESC)
+private val CFDataIncreaseLength_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataIncreaseLength").orElseThrow() }
+private val CFDataIncreaseLength_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataIncreaseLength_ADDR, CFDataIncreaseLength_DESC) }
 
 fun CFDataIncreaseLength(arg0: MemorySegment, arg1: Long): Unit {
     try {
@@ -4164,8 +4164,8 @@ fun CFDataIncreaseLength(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CFDataAppendBytes Void(typedef CFMutableDataRef = (Declared(__CFData))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long)
  */
 private val CFDataAppendBytes_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFDataAppendBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataAppendBytes").orElseThrow()
-private val CFDataAppendBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataAppendBytes_ADDR, CFDataAppendBytes_DESC)
+private val CFDataAppendBytes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataAppendBytes").orElseThrow() }
+private val CFDataAppendBytes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataAppendBytes_ADDR, CFDataAppendBytes_DESC) }
 
 fun CFDataAppendBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Unit {
     try {
@@ -4183,8 +4183,8 @@ fun CFDataAppendBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Uni
  * {@snippet lang=c : CFDataReplaceBytes Void(typedef CFMutableDataRef = (Declared(__CFData))*,typedef CFRange = Declared(CFRange),(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long)
  */
 private val CFDataReplaceBytes_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFDataReplaceBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataReplaceBytes").orElseThrow()
-private val CFDataReplaceBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataReplaceBytes_ADDR, CFDataReplaceBytes_DESC)
+private val CFDataReplaceBytes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataReplaceBytes").orElseThrow() }
+private val CFDataReplaceBytes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataReplaceBytes_ADDR, CFDataReplaceBytes_DESC) }
 
 fun CFDataReplaceBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Unit {
     try {
@@ -4202,8 +4202,8 @@ fun CFDataReplaceBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySeg
  * {@snippet lang=c : CFDataDeleteBytes Void(typedef CFMutableDataRef = (Declared(__CFData))*,typedef CFRange = Declared(CFRange))
  */
 private val CFDataDeleteBytes_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout)
-private val CFDataDeleteBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataDeleteBytes").orElseThrow()
-private val CFDataDeleteBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataDeleteBytes_ADDR, CFDataDeleteBytes_DESC)
+private val CFDataDeleteBytes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataDeleteBytes").orElseThrow() }
+private val CFDataDeleteBytes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataDeleteBytes_ADDR, CFDataDeleteBytes_DESC) }
 
 fun CFDataDeleteBytes(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -4221,8 +4221,8 @@ fun CFDataDeleteBytes(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFDataFind typedef CFRange = Declared(CFRange)(typedef CFDataRef = (Declared(__CFData))*,typedef CFDataRef = (Declared(__CFData))*,typedef CFRange = Declared(CFRange),typedef CFDataSearchFlags = Declared(CFDataSearchFlags))
  */
 private val CFDataFind_DESC: FunctionDescriptor = FunctionDescriptor.of(CFRange.layout, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout, ValueLayout.JAVA_LONG)
-private val CFDataFind_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFDataFind").orElseThrow()
-private val CFDataFind_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFDataFind_ADDR, CFDataFind_DESC)
+private val CFDataFind_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFDataFind").orElseThrow() }
+private val CFDataFind_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFDataFind_ADDR, CFDataFind_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -4244,8 +4244,8 @@ fun CFDataFind(allocator: SegmentAllocator, arg0: MemorySegment, arg1: MemorySeg
  * {@snippet lang=c : CFCharacterSetGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFCharacterSetGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFCharacterSetGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetGetTypeID").orElseThrow()
-private val CFCharacterSetGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetGetTypeID_ADDR, CFCharacterSetGetTypeID_DESC)
+private val CFCharacterSetGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetGetTypeID").orElseThrow() }
+private val CFCharacterSetGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetGetTypeID_ADDR, CFCharacterSetGetTypeID_DESC) }
 
 fun CFCharacterSetGetTypeID(): Long {
     try {
@@ -4263,8 +4263,8 @@ fun CFCharacterSetGetTypeID(): Long {
  * {@snippet lang=c : CFCharacterSetGetPredefined typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*(typedef CFCharacterSetPredefinedSet = Declared(CFCharacterSetPredefinedSet))
  */
 private val CFCharacterSetGetPredefined_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFCharacterSetGetPredefined_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetGetPredefined").orElseThrow()
-private val CFCharacterSetGetPredefined_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetGetPredefined_ADDR, CFCharacterSetGetPredefined_DESC)
+private val CFCharacterSetGetPredefined_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetGetPredefined").orElseThrow() }
+private val CFCharacterSetGetPredefined_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetGetPredefined_ADDR, CFCharacterSetGetPredefined_DESC) }
 
 fun CFCharacterSetGetPredefined(arg0: CFCharacterSetPredefinedSet): MemorySegment {
     try {
@@ -4282,8 +4282,8 @@ fun CFCharacterSetGetPredefined(arg0: CFCharacterSetPredefinedSet): MemorySegmen
  * {@snippet lang=c : CFCharacterSetCreateWithCharactersInRange typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFRange = Declared(CFRange))
  */
 private val CFCharacterSetCreateWithCharactersInRange_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout)
-private val CFCharacterSetCreateWithCharactersInRange_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetCreateWithCharactersInRange").orElseThrow()
-private val CFCharacterSetCreateWithCharactersInRange_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetCreateWithCharactersInRange_ADDR, CFCharacterSetCreateWithCharactersInRange_DESC)
+private val CFCharacterSetCreateWithCharactersInRange_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetCreateWithCharactersInRange").orElseThrow() }
+private val CFCharacterSetCreateWithCharactersInRange_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetCreateWithCharactersInRange_ADDR, CFCharacterSetCreateWithCharactersInRange_DESC) }
 
 fun CFCharacterSetCreateWithCharactersInRange(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4301,8 +4301,8 @@ fun CFCharacterSetCreateWithCharactersInRange(arg0: MemorySegment, arg1: MemoryS
  * {@snippet lang=c : CFCharacterSetCreateWithCharactersInString typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFCharacterSetCreateWithCharactersInString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetCreateWithCharactersInString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetCreateWithCharactersInString").orElseThrow()
-private val CFCharacterSetCreateWithCharactersInString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetCreateWithCharactersInString_ADDR, CFCharacterSetCreateWithCharactersInString_DESC)
+private val CFCharacterSetCreateWithCharactersInString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetCreateWithCharactersInString").orElseThrow() }
+private val CFCharacterSetCreateWithCharactersInString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetCreateWithCharactersInString_ADDR, CFCharacterSetCreateWithCharactersInString_DESC) }
 
 fun CFCharacterSetCreateWithCharactersInString(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4320,8 +4320,8 @@ fun CFCharacterSetCreateWithCharactersInString(arg0: MemorySegment, arg1: Memory
  * {@snippet lang=c : CFCharacterSetCreateWithBitmapRepresentation typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CFCharacterSetCreateWithBitmapRepresentation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetCreateWithBitmapRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetCreateWithBitmapRepresentation").orElseThrow()
-private val CFCharacterSetCreateWithBitmapRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetCreateWithBitmapRepresentation_ADDR, CFCharacterSetCreateWithBitmapRepresentation_DESC)
+private val CFCharacterSetCreateWithBitmapRepresentation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetCreateWithBitmapRepresentation").orElseThrow() }
+private val CFCharacterSetCreateWithBitmapRepresentation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetCreateWithBitmapRepresentation_ADDR, CFCharacterSetCreateWithBitmapRepresentation_DESC) }
 
 fun CFCharacterSetCreateWithBitmapRepresentation(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4339,8 +4339,8 @@ fun CFCharacterSetCreateWithBitmapRepresentation(arg0: MemorySegment, arg1: Memo
  * {@snippet lang=c : CFCharacterSetCreateInvertedSet typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*)
  */
 private val CFCharacterSetCreateInvertedSet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetCreateInvertedSet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetCreateInvertedSet").orElseThrow()
-private val CFCharacterSetCreateInvertedSet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetCreateInvertedSet_ADDR, CFCharacterSetCreateInvertedSet_DESC)
+private val CFCharacterSetCreateInvertedSet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetCreateInvertedSet").orElseThrow() }
+private val CFCharacterSetCreateInvertedSet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetCreateInvertedSet_ADDR, CFCharacterSetCreateInvertedSet_DESC) }
 
 fun CFCharacterSetCreateInvertedSet(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4358,8 +4358,8 @@ fun CFCharacterSetCreateInvertedSet(arg0: MemorySegment, arg1: MemorySegment): M
  * {@snippet lang=c : CFCharacterSetIsSupersetOfSet typedef Boolean = UNSIGNED = Char(typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*,typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*)
  */
 private val CFCharacterSetIsSupersetOfSet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetIsSupersetOfSet_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetIsSupersetOfSet").orElseThrow()
-private val CFCharacterSetIsSupersetOfSet_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetIsSupersetOfSet_ADDR, CFCharacterSetIsSupersetOfSet_DESC)
+private val CFCharacterSetIsSupersetOfSet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetIsSupersetOfSet").orElseThrow() }
+private val CFCharacterSetIsSupersetOfSet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetIsSupersetOfSet_ADDR, CFCharacterSetIsSupersetOfSet_DESC) }
 
 fun CFCharacterSetIsSupersetOfSet(arg0: MemorySegment, arg1: MemorySegment): Byte {
     try {
@@ -4377,8 +4377,8 @@ fun CFCharacterSetIsSupersetOfSet(arg0: MemorySegment, arg1: MemorySegment): Byt
  * {@snippet lang=c : CFCharacterSetHasMemberInPlane typedef Boolean = UNSIGNED = Char(typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*,typedef CFIndex = Long)
  */
 private val CFCharacterSetHasMemberInPlane_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFCharacterSetHasMemberInPlane_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetHasMemberInPlane").orElseThrow()
-private val CFCharacterSetHasMemberInPlane_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetHasMemberInPlane_ADDR, CFCharacterSetHasMemberInPlane_DESC)
+private val CFCharacterSetHasMemberInPlane_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetHasMemberInPlane").orElseThrow() }
+private val CFCharacterSetHasMemberInPlane_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetHasMemberInPlane_ADDR, CFCharacterSetHasMemberInPlane_DESC) }
 
 fun CFCharacterSetHasMemberInPlane(arg0: MemorySegment, arg1: Long): Byte {
     try {
@@ -4396,8 +4396,8 @@ fun CFCharacterSetHasMemberInPlane(arg0: MemorySegment, arg1: Long): Byte {
  * {@snippet lang=c : CFCharacterSetCreateMutable typedef CFMutableCharacterSetRef = (Declared(__CFCharacterSet))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*)
  */
 private val CFCharacterSetCreateMutable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetCreateMutable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetCreateMutable").orElseThrow()
-private val CFCharacterSetCreateMutable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetCreateMutable_ADDR, CFCharacterSetCreateMutable_DESC)
+private val CFCharacterSetCreateMutable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetCreateMutable").orElseThrow() }
+private val CFCharacterSetCreateMutable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetCreateMutable_ADDR, CFCharacterSetCreateMutable_DESC) }
 
 fun CFCharacterSetCreateMutable(arg0: MemorySegment): MemorySegment {
     try {
@@ -4415,8 +4415,8 @@ fun CFCharacterSetCreateMutable(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFCharacterSetCreateCopy typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*)
  */
 private val CFCharacterSetCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetCreateCopy").orElseThrow()
-private val CFCharacterSetCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetCreateCopy_ADDR, CFCharacterSetCreateCopy_DESC)
+private val CFCharacterSetCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetCreateCopy").orElseThrow() }
+private val CFCharacterSetCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetCreateCopy_ADDR, CFCharacterSetCreateCopy_DESC) }
 
 fun CFCharacterSetCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4434,8 +4434,8 @@ fun CFCharacterSetCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySe
  * {@snippet lang=c : CFCharacterSetCreateMutableCopy typedef CFMutableCharacterSetRef = (Declared(__CFCharacterSet))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*)
  */
 private val CFCharacterSetCreateMutableCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetCreateMutableCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetCreateMutableCopy").orElseThrow()
-private val CFCharacterSetCreateMutableCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetCreateMutableCopy_ADDR, CFCharacterSetCreateMutableCopy_DESC)
+private val CFCharacterSetCreateMutableCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetCreateMutableCopy").orElseThrow() }
+private val CFCharacterSetCreateMutableCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetCreateMutableCopy_ADDR, CFCharacterSetCreateMutableCopy_DESC) }
 
 fun CFCharacterSetCreateMutableCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4453,8 +4453,8 @@ fun CFCharacterSetCreateMutableCopy(arg0: MemorySegment, arg1: MemorySegment): M
  * {@snippet lang=c : CFCharacterSetIsCharacterMember typedef Boolean = UNSIGNED = Char(typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*,typedef UniChar = UNSIGNED = Short)
  */
 private val CFCharacterSetIsCharacterMember_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.JAVA_SHORT)
-private val CFCharacterSetIsCharacterMember_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetIsCharacterMember").orElseThrow()
-private val CFCharacterSetIsCharacterMember_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetIsCharacterMember_ADDR, CFCharacterSetIsCharacterMember_DESC)
+private val CFCharacterSetIsCharacterMember_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetIsCharacterMember").orElseThrow() }
+private val CFCharacterSetIsCharacterMember_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetIsCharacterMember_ADDR, CFCharacterSetIsCharacterMember_DESC) }
 
 fun CFCharacterSetIsCharacterMember(arg0: MemorySegment, arg1: Short): Byte {
     try {
@@ -4472,8 +4472,8 @@ fun CFCharacterSetIsCharacterMember(arg0: MemorySegment, arg1: Short): Byte {
  * {@snippet lang=c : CFCharacterSetIsLongCharacterMember typedef Boolean = UNSIGNED = Char(typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*,typedef UTF32Char = UNSIGNED = Int)
  */
 private val CFCharacterSetIsLongCharacterMember_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CFCharacterSetIsLongCharacterMember_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetIsLongCharacterMember").orElseThrow()
-private val CFCharacterSetIsLongCharacterMember_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetIsLongCharacterMember_ADDR, CFCharacterSetIsLongCharacterMember_DESC)
+private val CFCharacterSetIsLongCharacterMember_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetIsLongCharacterMember").orElseThrow() }
+private val CFCharacterSetIsLongCharacterMember_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetIsLongCharacterMember_ADDR, CFCharacterSetIsLongCharacterMember_DESC) }
 
 fun CFCharacterSetIsLongCharacterMember(arg0: MemorySegment, arg1: Int): Byte {
     try {
@@ -4491,8 +4491,8 @@ fun CFCharacterSetIsLongCharacterMember(arg0: MemorySegment, arg1: Int): Byte {
  * {@snippet lang=c : CFCharacterSetCreateBitmapRepresentation typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*)
  */
 private val CFCharacterSetCreateBitmapRepresentation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetCreateBitmapRepresentation_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetCreateBitmapRepresentation").orElseThrow()
-private val CFCharacterSetCreateBitmapRepresentation_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetCreateBitmapRepresentation_ADDR, CFCharacterSetCreateBitmapRepresentation_DESC)
+private val CFCharacterSetCreateBitmapRepresentation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetCreateBitmapRepresentation").orElseThrow() }
+private val CFCharacterSetCreateBitmapRepresentation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetCreateBitmapRepresentation_ADDR, CFCharacterSetCreateBitmapRepresentation_DESC) }
 
 fun CFCharacterSetCreateBitmapRepresentation(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -4510,8 +4510,8 @@ fun CFCharacterSetCreateBitmapRepresentation(arg0: MemorySegment, arg1: MemorySe
  * {@snippet lang=c : CFCharacterSetAddCharactersInRange Void(typedef CFMutableCharacterSetRef = (Declared(__CFCharacterSet))*,typedef CFRange = Declared(CFRange))
  */
 private val CFCharacterSetAddCharactersInRange_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout)
-private val CFCharacterSetAddCharactersInRange_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetAddCharactersInRange").orElseThrow()
-private val CFCharacterSetAddCharactersInRange_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetAddCharactersInRange_ADDR, CFCharacterSetAddCharactersInRange_DESC)
+private val CFCharacterSetAddCharactersInRange_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetAddCharactersInRange").orElseThrow() }
+private val CFCharacterSetAddCharactersInRange_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetAddCharactersInRange_ADDR, CFCharacterSetAddCharactersInRange_DESC) }
 
 fun CFCharacterSetAddCharactersInRange(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -4529,8 +4529,8 @@ fun CFCharacterSetAddCharactersInRange(arg0: MemorySegment, arg1: MemorySegment)
  * {@snippet lang=c : CFCharacterSetRemoveCharactersInRange Void(typedef CFMutableCharacterSetRef = (Declared(__CFCharacterSet))*,typedef CFRange = Declared(CFRange))
  */
 private val CFCharacterSetRemoveCharactersInRange_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CFRange.layout)
-private val CFCharacterSetRemoveCharactersInRange_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetRemoveCharactersInRange").orElseThrow()
-private val CFCharacterSetRemoveCharactersInRange_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetRemoveCharactersInRange_ADDR, CFCharacterSetRemoveCharactersInRange_DESC)
+private val CFCharacterSetRemoveCharactersInRange_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetRemoveCharactersInRange").orElseThrow() }
+private val CFCharacterSetRemoveCharactersInRange_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetRemoveCharactersInRange_ADDR, CFCharacterSetRemoveCharactersInRange_DESC) }
 
 fun CFCharacterSetRemoveCharactersInRange(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -4548,8 +4548,8 @@ fun CFCharacterSetRemoveCharactersInRange(arg0: MemorySegment, arg1: MemorySegme
  * {@snippet lang=c : CFCharacterSetAddCharactersInString Void(typedef CFMutableCharacterSetRef = (Declared(__CFCharacterSet))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFCharacterSetAddCharactersInString_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetAddCharactersInString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetAddCharactersInString").orElseThrow()
-private val CFCharacterSetAddCharactersInString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetAddCharactersInString_ADDR, CFCharacterSetAddCharactersInString_DESC)
+private val CFCharacterSetAddCharactersInString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetAddCharactersInString").orElseThrow() }
+private val CFCharacterSetAddCharactersInString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetAddCharactersInString_ADDR, CFCharacterSetAddCharactersInString_DESC) }
 
 fun CFCharacterSetAddCharactersInString(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -4567,8 +4567,8 @@ fun CFCharacterSetAddCharactersInString(arg0: MemorySegment, arg1: MemorySegment
  * {@snippet lang=c : CFCharacterSetRemoveCharactersInString Void(typedef CFMutableCharacterSetRef = (Declared(__CFCharacterSet))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFCharacterSetRemoveCharactersInString_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetRemoveCharactersInString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetRemoveCharactersInString").orElseThrow()
-private val CFCharacterSetRemoveCharactersInString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetRemoveCharactersInString_ADDR, CFCharacterSetRemoveCharactersInString_DESC)
+private val CFCharacterSetRemoveCharactersInString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetRemoveCharactersInString").orElseThrow() }
+private val CFCharacterSetRemoveCharactersInString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetRemoveCharactersInString_ADDR, CFCharacterSetRemoveCharactersInString_DESC) }
 
 fun CFCharacterSetRemoveCharactersInString(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -4586,8 +4586,8 @@ fun CFCharacterSetRemoveCharactersInString(arg0: MemorySegment, arg1: MemorySegm
  * {@snippet lang=c : CFCharacterSetUnion Void(typedef CFMutableCharacterSetRef = (Declared(__CFCharacterSet))*,typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*)
  */
 private val CFCharacterSetUnion_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetUnion_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetUnion").orElseThrow()
-private val CFCharacterSetUnion_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetUnion_ADDR, CFCharacterSetUnion_DESC)
+private val CFCharacterSetUnion_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetUnion").orElseThrow() }
+private val CFCharacterSetUnion_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetUnion_ADDR, CFCharacterSetUnion_DESC) }
 
 fun CFCharacterSetUnion(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -4605,8 +4605,8 @@ fun CFCharacterSetUnion(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFCharacterSetIntersect Void(typedef CFMutableCharacterSetRef = (Declared(__CFCharacterSet))*,typedef CFCharacterSetRef = (Declared(__CFCharacterSet))*)
  */
 private val CFCharacterSetIntersect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFCharacterSetIntersect_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetIntersect").orElseThrow()
-private val CFCharacterSetIntersect_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetIntersect_ADDR, CFCharacterSetIntersect_DESC)
+private val CFCharacterSetIntersect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetIntersect").orElseThrow() }
+private val CFCharacterSetIntersect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetIntersect_ADDR, CFCharacterSetIntersect_DESC) }
 
 fun CFCharacterSetIntersect(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
@@ -4624,8 +4624,8 @@ fun CFCharacterSetIntersect(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CFCharacterSetInvert Void(typedef CFMutableCharacterSetRef = (Declared(__CFCharacterSet))*)
  */
 private val CFCharacterSetInvert_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CFCharacterSetInvert_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFCharacterSetInvert").orElseThrow()
-private val CFCharacterSetInvert_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFCharacterSetInvert_ADDR, CFCharacterSetInvert_DESC)
+private val CFCharacterSetInvert_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFCharacterSetInvert").orElseThrow() }
+private val CFCharacterSetInvert_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFCharacterSetInvert_ADDR, CFCharacterSetInvert_DESC) }
 
 fun CFCharacterSetInvert(arg0: MemorySegment): Unit {
     try {
@@ -4643,8 +4643,8 @@ fun CFCharacterSetInvert(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CFErrorGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFErrorGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFErrorGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorGetTypeID").orElseThrow()
-private val CFErrorGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorGetTypeID_ADDR, CFErrorGetTypeID_DESC)
+private val CFErrorGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFErrorGetTypeID").orElseThrow() }
+private val CFErrorGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFErrorGetTypeID_ADDR, CFErrorGetTypeID_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4846,8 +4846,8 @@ var kCFErrorFilePathKey: MemorySegment
  * {@snippet lang=c : CFErrorCreate typedef CFErrorRef = (Declared(__CFError))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFErrorDomain = (Declared(__CFString))*,typedef CFIndex = Long,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CFErrorCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFErrorCreate_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCreate").orElseThrow()
-private val CFErrorCreate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCreate_ADDR, CFErrorCreate_DESC)
+private val CFErrorCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFErrorCreate").orElseThrow() }
+private val CFErrorCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFErrorCreate_ADDR, CFErrorCreate_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4869,8 +4869,8 @@ fun CFErrorCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Me
  * {@snippet lang=c : CFErrorCreateWithUserInfoKeysAndValues typedef CFErrorRef = (Declared(__CFError))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFErrorDomain = (Declared(__CFString))*,typedef CFIndex = Long,((Void)*)*,((Void)*)*,typedef CFIndex = Long)
  */
 private val CFErrorCreateWithUserInfoKeysAndValues_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFErrorCreateWithUserInfoKeysAndValues_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCreateWithUserInfoKeysAndValues").orElseThrow()
-private val CFErrorCreateWithUserInfoKeysAndValues_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCreateWithUserInfoKeysAndValues_ADDR, CFErrorCreateWithUserInfoKeysAndValues_DESC)
+private val CFErrorCreateWithUserInfoKeysAndValues_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFErrorCreateWithUserInfoKeysAndValues").orElseThrow() }
+private val CFErrorCreateWithUserInfoKeysAndValues_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFErrorCreateWithUserInfoKeysAndValues_ADDR, CFErrorCreateWithUserInfoKeysAndValues_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4892,8 +4892,8 @@ fun CFErrorCreateWithUserInfoKeysAndValues(arg0: MemorySegment, arg1: MemorySegm
  * {@snippet lang=c : CFErrorGetDomain typedef CFErrorDomain = (Declared(__CFString))*(typedef CFErrorRef = (Declared(__CFError))*)
  */
 private val CFErrorGetDomain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFErrorGetDomain_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorGetDomain").orElseThrow()
-private val CFErrorGetDomain_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorGetDomain_ADDR, CFErrorGetDomain_DESC)
+private val CFErrorGetDomain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFErrorGetDomain").orElseThrow() }
+private val CFErrorGetDomain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFErrorGetDomain_ADDR, CFErrorGetDomain_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4915,8 +4915,8 @@ fun CFErrorGetDomain(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFErrorGetCode typedef CFIndex = Long(typedef CFErrorRef = (Declared(__CFError))*)
  */
 private val CFErrorGetCode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFErrorGetCode_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorGetCode").orElseThrow()
-private val CFErrorGetCode_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorGetCode_ADDR, CFErrorGetCode_DESC)
+private val CFErrorGetCode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFErrorGetCode").orElseThrow() }
+private val CFErrorGetCode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFErrorGetCode_ADDR, CFErrorGetCode_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4938,8 +4938,8 @@ fun CFErrorGetCode(arg0: MemorySegment): Long {
  * {@snippet lang=c : CFErrorCopyUserInfo typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CFErrorRef = (Declared(__CFError))*)
  */
 private val CFErrorCopyUserInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFErrorCopyUserInfo_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCopyUserInfo").orElseThrow()
-private val CFErrorCopyUserInfo_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCopyUserInfo_ADDR, CFErrorCopyUserInfo_DESC)
+private val CFErrorCopyUserInfo_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFErrorCopyUserInfo").orElseThrow() }
+private val CFErrorCopyUserInfo_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFErrorCopyUserInfo_ADDR, CFErrorCopyUserInfo_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4961,8 +4961,8 @@ fun CFErrorCopyUserInfo(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFErrorCopyDescription typedef CFStringRef = (Declared(__CFString))*(typedef CFErrorRef = (Declared(__CFError))*)
  */
 private val CFErrorCopyDescription_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFErrorCopyDescription_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCopyDescription").orElseThrow()
-private val CFErrorCopyDescription_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCopyDescription_ADDR, CFErrorCopyDescription_DESC)
+private val CFErrorCopyDescription_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFErrorCopyDescription").orElseThrow() }
+private val CFErrorCopyDescription_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFErrorCopyDescription_ADDR, CFErrorCopyDescription_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4984,8 +4984,8 @@ fun CFErrorCopyDescription(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFErrorCopyFailureReason typedef CFStringRef = (Declared(__CFString))*(typedef CFErrorRef = (Declared(__CFError))*)
  */
 private val CFErrorCopyFailureReason_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFErrorCopyFailureReason_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCopyFailureReason").orElseThrow()
-private val CFErrorCopyFailureReason_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCopyFailureReason_ADDR, CFErrorCopyFailureReason_DESC)
+private val CFErrorCopyFailureReason_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFErrorCopyFailureReason").orElseThrow() }
+private val CFErrorCopyFailureReason_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFErrorCopyFailureReason_ADDR, CFErrorCopyFailureReason_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -5007,8 +5007,8 @@ fun CFErrorCopyFailureReason(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFErrorCopyRecoverySuggestion typedef CFStringRef = (Declared(__CFString))*(typedef CFErrorRef = (Declared(__CFError))*)
  */
 private val CFErrorCopyRecoverySuggestion_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFErrorCopyRecoverySuggestion_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFErrorCopyRecoverySuggestion").orElseThrow()
-private val CFErrorCopyRecoverySuggestion_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFErrorCopyRecoverySuggestion_ADDR, CFErrorCopyRecoverySuggestion_DESC)
+private val CFErrorCopyRecoverySuggestion_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFErrorCopyRecoverySuggestion").orElseThrow() }
+private val CFErrorCopyRecoverySuggestion_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFErrorCopyRecoverySuggestion_ADDR, CFErrorCopyRecoverySuggestion_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -5030,8 +5030,8 @@ fun CFErrorCopyRecoverySuggestion(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CFStringGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CFStringGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CFStringGetTypeID_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringGetTypeID").orElseThrow()
-private val CFStringGetTypeID_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringGetTypeID_ADDR, CFStringGetTypeID_DESC)
+private val CFStringGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringGetTypeID").orElseThrow() }
+private val CFStringGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringGetTypeID_ADDR, CFStringGetTypeID_DESC) }
 
 fun CFStringGetTypeID(): Long {
     try {
@@ -5049,8 +5049,8 @@ fun CFStringGetTypeID(): Long {
  * {@snippet lang=c : CFStringCreateWithPascalString typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef ConstStr255Param = (UNSIGNED = Char)*,typedef CFStringEncoding = UNSIGNED = Int)
  */
 private val CFStringCreateWithPascalString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CFStringCreateWithPascalString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithPascalString").orElseThrow()
-private val CFStringCreateWithPascalString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithPascalString_ADDR, CFStringCreateWithPascalString_DESC)
+private val CFStringCreateWithPascalString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithPascalString").orElseThrow() }
+private val CFStringCreateWithPascalString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithPascalString_ADDR, CFStringCreateWithPascalString_DESC) }
 
 fun CFStringCreateWithPascalString(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): MemorySegment {
     try {
@@ -5068,8 +5068,8 @@ fun CFStringCreateWithPascalString(arg0: MemorySegment, arg1: MemorySegment, arg
  * {@snippet lang=c : CFStringCreateWithCString typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(Char)*,typedef CFStringEncoding = UNSIGNED = Int)
  */
 private val CFStringCreateWithCString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CFStringCreateWithCString_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithCString").orElseThrow()
-private val CFStringCreateWithCString_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithCString_ADDR, CFStringCreateWithCString_DESC)
+private val CFStringCreateWithCString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithCString").orElseThrow() }
+private val CFStringCreateWithCString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithCString_ADDR, CFStringCreateWithCString_DESC) }
 
 fun CFStringCreateWithCString(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): MemorySegment {
     try {
@@ -5087,8 +5087,8 @@ fun CFStringCreateWithCString(arg0: MemorySegment, arg1: MemorySegment, arg2: In
  * {@snippet lang=c : CFStringCreateWithBytes typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long,typedef CFStringEncoding = UNSIGNED = Int,typedef Boolean = UNSIGNED = Char)
  */
 private val CFStringCreateWithBytes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE)
-private val CFStringCreateWithBytes_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithBytes").orElseThrow()
-private val CFStringCreateWithBytes_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithBytes_ADDR, CFStringCreateWithBytes_DESC)
+private val CFStringCreateWithBytes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithBytes").orElseThrow() }
+private val CFStringCreateWithBytes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithBytes_ADDR, CFStringCreateWithBytes_DESC) }
 
 fun CFStringCreateWithBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Int, arg4: Byte): MemorySegment {
     try {
@@ -5106,8 +5106,8 @@ fun CFStringCreateWithBytes(arg0: MemorySegment, arg1: MemorySegment, arg2: Long
  * {@snippet lang=c : CFStringCreateWithCharacters typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UniChar = UNSIGNED = Short)*,typedef CFIndex = Long)
  */
 private val CFStringCreateWithCharacters_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFStringCreateWithCharacters_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithCharacters").orElseThrow()
-private val CFStringCreateWithCharacters_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithCharacters_ADDR, CFStringCreateWithCharacters_DESC)
+private val CFStringCreateWithCharacters_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithCharacters").orElseThrow() }
+private val CFStringCreateWithCharacters_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithCharacters_ADDR, CFStringCreateWithCharacters_DESC) }
 
 fun CFStringCreateWithCharacters(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): MemorySegment {
     try {
@@ -5125,8 +5125,8 @@ fun CFStringCreateWithCharacters(arg0: MemorySegment, arg1: MemorySegment, arg2:
  * {@snippet lang=c : CFStringCreateWithPascalStringNoCopy typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef ConstStr255Param = (UNSIGNED = Char)*,typedef CFStringEncoding = UNSIGNED = Int,typedef CFAllocatorRef = (Declared(__CFAllocator))*)
  */
 private val CFStringCreateWithPascalStringNoCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CFStringCreateWithPascalStringNoCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithPascalStringNoCopy").orElseThrow()
-private val CFStringCreateWithPascalStringNoCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithPascalStringNoCopy_ADDR, CFStringCreateWithPascalStringNoCopy_DESC)
+private val CFStringCreateWithPascalStringNoCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithPascalStringNoCopy").orElseThrow() }
+private val CFStringCreateWithPascalStringNoCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithPascalStringNoCopy_ADDR, CFStringCreateWithPascalStringNoCopy_DESC) }
 
 fun CFStringCreateWithPascalStringNoCopy(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: MemorySegment): MemorySegment {
     try {
@@ -5144,8 +5144,8 @@ fun CFStringCreateWithPascalStringNoCopy(arg0: MemorySegment, arg1: MemorySegmen
  * {@snippet lang=c : CFStringCreateWithCStringNoCopy typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(Char)*,typedef CFStringEncoding = UNSIGNED = Int,typedef CFAllocatorRef = (Declared(__CFAllocator))*)
  */
 private val CFStringCreateWithCStringNoCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CFStringCreateWithCStringNoCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithCStringNoCopy").orElseThrow()
-private val CFStringCreateWithCStringNoCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithCStringNoCopy_ADDR, CFStringCreateWithCStringNoCopy_DESC)
+private val CFStringCreateWithCStringNoCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithCStringNoCopy").orElseThrow() }
+private val CFStringCreateWithCStringNoCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithCStringNoCopy_ADDR, CFStringCreateWithCStringNoCopy_DESC) }
 
 fun CFStringCreateWithCStringNoCopy(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: MemorySegment): MemorySegment {
     try {
@@ -5163,8 +5163,8 @@ fun CFStringCreateWithCStringNoCopy(arg0: MemorySegment, arg1: MemorySegment, ar
  * {@snippet lang=c : CFStringCreateWithBytesNoCopy typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UInt8 = UNSIGNED = Char)*,typedef CFIndex = Long,typedef CFStringEncoding = UNSIGNED = Int,typedef Boolean = UNSIGNED = Char,typedef CFAllocatorRef = (Declared(__CFAllocator))*)
  */
 private val CFStringCreateWithBytesNoCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
-private val CFStringCreateWithBytesNoCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithBytesNoCopy").orElseThrow()
-private val CFStringCreateWithBytesNoCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithBytesNoCopy_ADDR, CFStringCreateWithBytesNoCopy_DESC)
+private val CFStringCreateWithBytesNoCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithBytesNoCopy").orElseThrow() }
+private val CFStringCreateWithBytesNoCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithBytesNoCopy_ADDR, CFStringCreateWithBytesNoCopy_DESC) }
 
 fun CFStringCreateWithBytesNoCopy(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: Int, arg4: Byte, arg5: MemorySegment): MemorySegment {
     try {
@@ -5182,8 +5182,8 @@ fun CFStringCreateWithBytesNoCopy(arg0: MemorySegment, arg1: MemorySegment, arg2
  * {@snippet lang=c : CFStringCreateWithCharactersNoCopy typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,(typedef UniChar = UNSIGNED = Short)*,typedef CFIndex = Long,typedef CFAllocatorRef = (Declared(__CFAllocator))*)
  */
 private val CFStringCreateWithCharactersNoCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFStringCreateWithCharactersNoCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithCharactersNoCopy").orElseThrow()
-private val CFStringCreateWithCharactersNoCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithCharactersNoCopy_ADDR, CFStringCreateWithCharactersNoCopy_DESC)
+private val CFStringCreateWithCharactersNoCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithCharactersNoCopy").orElseThrow() }
+private val CFStringCreateWithCharactersNoCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithCharactersNoCopy_ADDR, CFStringCreateWithCharactersNoCopy_DESC) }
 
 fun CFStringCreateWithCharactersNoCopy(arg0: MemorySegment, arg1: MemorySegment, arg2: Long, arg3: MemorySegment): MemorySegment {
     try {
@@ -5201,8 +5201,8 @@ fun CFStringCreateWithCharactersNoCopy(arg0: MemorySegment, arg1: MemorySegment,
  * {@snippet lang=c : CFStringCreateWithSubstring typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFRange = Declared(CFRange))
  */
 private val CFStringCreateWithSubstring_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CFRange.layout)
-private val CFStringCreateWithSubstring_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithSubstring").orElseThrow()
-private val CFStringCreateWithSubstring_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithSubstring_ADDR, CFStringCreateWithSubstring_DESC)
+private val CFStringCreateWithSubstring_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithSubstring").orElseThrow() }
+private val CFStringCreateWithSubstring_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithSubstring_ADDR, CFStringCreateWithSubstring_DESC) }
 
 fun CFStringCreateWithSubstring(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
     try {
@@ -5220,8 +5220,8 @@ fun CFStringCreateWithSubstring(arg0: MemorySegment, arg1: MemorySegment, arg2: 
  * {@snippet lang=c : CFStringCreateCopy typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFStringCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFStringCreateCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateCopy").orElseThrow()
-private val CFStringCreateCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateCopy_ADDR, CFStringCreateCopy_DESC)
+private val CFStringCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateCopy").orElseThrow() }
+private val CFStringCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateCopy_ADDR, CFStringCreateCopy_DESC) }
 
 fun CFStringCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
     try {
@@ -5239,8 +5239,8 @@ fun CFStringCreateCopy(arg0: MemorySegment, arg1: MemorySegment): MemorySegment 
  * {@snippet lang=c : CFStringCreateWithFormat typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFStringCreateWithFormat_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFStringCreateWithFormat_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithFormat").orElseThrow()
-private val CFStringCreateWithFormat_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithFormat_ADDR, CFStringCreateWithFormat_DESC)
+private val CFStringCreateWithFormat_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithFormat").orElseThrow() }
+private val CFStringCreateWithFormat_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithFormat_ADDR, CFStringCreateWithFormat_DESC) }
 
 fun CFStringCreateWithFormat(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): MemorySegment {
     try {
@@ -5258,8 +5258,8 @@ fun CFStringCreateWithFormat(arg0: MemorySegment, arg1: MemorySegment, arg2: Mem
  * {@snippet lang=c : CFStringCreateWithFormatAndArguments typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef CFStringRef = (Declared(__CFString))*,typedef va_list = (Char)*)
  */
 private val CFStringCreateWithFormatAndArguments_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFStringCreateWithFormatAndArguments_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateWithFormatAndArguments").orElseThrow()
-private val CFStringCreateWithFormatAndArguments_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateWithFormatAndArguments_ADDR, CFStringCreateWithFormatAndArguments_DESC)
+private val CFStringCreateWithFormatAndArguments_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateWithFormatAndArguments").orElseThrow() }
+private val CFStringCreateWithFormatAndArguments_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateWithFormatAndArguments_ADDR, CFStringCreateWithFormatAndArguments_DESC) }
 
 fun CFStringCreateWithFormatAndArguments(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): MemorySegment {
     try {
@@ -5277,8 +5277,8 @@ fun CFStringCreateWithFormatAndArguments(arg0: MemorySegment, arg1: MemorySegmen
  * {@snippet lang=c : CFStringCreateStringWithValidatedFormat typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFStringCreateStringWithValidatedFormat_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFStringCreateStringWithValidatedFormat_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateStringWithValidatedFormat").orElseThrow()
-private val CFStringCreateStringWithValidatedFormat_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateStringWithValidatedFormat_ADDR, CFStringCreateStringWithValidatedFormat_DESC)
+private val CFStringCreateStringWithValidatedFormat_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateStringWithValidatedFormat").orElseThrow() }
+private val CFStringCreateStringWithValidatedFormat_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateStringWithValidatedFormat_ADDR, CFStringCreateStringWithValidatedFormat_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -5301,8 +5301,8 @@ fun CFStringCreateStringWithValidatedFormat(arg0: MemorySegment, arg1: MemorySeg
  * {@snippet lang=c : CFStringCreateStringWithValidatedFormatAndArguments typedef CFStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef CFStringRef = (Declared(__CFString))*,typedef CFStringRef = (Declared(__CFString))*,typedef va_list = (Char)*,(typedef CFErrorRef = (Declared(__CFError))*)*)
  */
 private val CFStringCreateStringWithValidatedFormatAndArguments_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CFStringCreateStringWithValidatedFormatAndArguments_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateStringWithValidatedFormatAndArguments").orElseThrow()
-private val CFStringCreateStringWithValidatedFormatAndArguments_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateStringWithValidatedFormatAndArguments_ADDR, CFStringCreateStringWithValidatedFormatAndArguments_DESC)
+private val CFStringCreateStringWithValidatedFormatAndArguments_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateStringWithValidatedFormatAndArguments").orElseThrow() }
+private val CFStringCreateStringWithValidatedFormatAndArguments_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateStringWithValidatedFormatAndArguments_ADDR, CFStringCreateStringWithValidatedFormatAndArguments_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -5325,8 +5325,8 @@ fun CFStringCreateStringWithValidatedFormatAndArguments(arg0: MemorySegment, arg
  * {@snippet lang=c : CFStringCreateMutable typedef CFMutableStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long)
  */
 private val CFStringCreateMutable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CFStringCreateMutable_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateMutable").orElseThrow()
-private val CFStringCreateMutable_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateMutable_ADDR, CFStringCreateMutable_DESC)
+private val CFStringCreateMutable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateMutable").orElseThrow() }
+private val CFStringCreateMutable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateMutable_ADDR, CFStringCreateMutable_DESC) }
 
 fun CFStringCreateMutable(arg0: MemorySegment, arg1: Long): MemorySegment {
     try {
@@ -5344,8 +5344,8 @@ fun CFStringCreateMutable(arg0: MemorySegment, arg1: Long): MemorySegment {
  * {@snippet lang=c : CFStringCreateMutableCopy typedef CFMutableStringRef = (Declared(__CFString))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFIndex = Long,typedef CFStringRef = (Declared(__CFString))*)
  */
 private val CFStringCreateMutableCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CFStringCreateMutableCopy_ADDR: MemorySegment = SymbolLookup.loaderLookup().find("CFStringCreateMutableCopy").orElseThrow()
-private val CFStringCreateMutableCopy_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(CFStringCreateMutableCopy_ADDR, CFStringCreateMutableCopy_DESC)
+private val CFStringCreateMutableCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CFStringCreateMutableCopy").orElseThrow() }
+private val CFStringCreateMutableCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CFStringCreateMutableCopy_ADDR, CFStringCreateMutableCopy_DESC) }
 
 fun CFStringCreateMutableCopy(arg0: MemorySegment, arg1: Long, arg2: MemorySegment): MemorySegment {
     try {
