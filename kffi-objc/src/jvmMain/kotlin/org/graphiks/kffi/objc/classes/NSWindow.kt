@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,69 +11,89 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSResponder
  * Protocols: NSAnimatablePropertyContainer, NSMenuItemValidation, NSUserInterfaceValidations, NSUserInterfaceItemIdentification, NSAppearanceCustomization, NSAccessibilityElement, NSAccessibility
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSWindow") }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun frameRectForContentRect_styleMask(cRect: NSRect, style: NSWindowStyleMask): NSRect {
             val sel = ObjCRuntime.sel("frameRectForContentRect:styleMask:")
             return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, _class, sel, ObjCRuntime.ObjCStructArg(cRect.segment, NSRect.layout), style.rawValue))
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun contentRectForFrameRect_styleMask(fRect: NSRect, style: NSWindowStyleMask): NSRect {
             val sel = ObjCRuntime.sel("contentRectForFrameRect:styleMask:")
             return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, _class, sel, ObjCRuntime.ObjCStructArg(fRect.segment, NSRect.layout), style.rawValue))
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun minFrameWidthWithTitle_styleMask(title: MemorySegment, style: NSWindowStyleMask): Double {
             val sel = ObjCRuntime.sel("minFrameWidthWithTitle:styleMask:")
             return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, _class, sel, title, style.rawValue) as Double
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun minFrameWidthWithTitle_styleMask(title: String, style: NSWindowStyleMask): Double = minFrameWidthWithTitle_styleMask(ObjCRuntime.newNSString(Arena.global(), title), style)
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun removeFrameUsingName(name: MemorySegment): Unit {
             val sel = ObjCRuntime.sel("removeFrameUsingName:")
             ObjCRuntime.msgSend(null, _class, sel, name)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun standardWindowButton_forStyleMask(b: NSWindowButton, styleMask: NSWindowStyleMask): MemorySegment {
             val sel = ObjCRuntime.sel("standardWindowButton:forStyleMask:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, b.rawValue, styleMask.rawValue) as MemorySegment
         }
 
         /** @return NSArray<NSNumber *> * */
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
         fun windowNumbersWithOptions(options: NSWindowNumberListOptions): MemorySegment {
             val sel = ObjCRuntime.sel("windowNumbersWithOptions:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, options.rawValue) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
         fun windowNumberAtPoint_belowWindowWithWindowNumber(point: NSPoint, windowNumber: Long): Long {
             val sel = ObjCRuntime.sel("windowNumberAtPoint:belowWindowWithWindowNumber:")
             return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout), windowNumber) as Long
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
         fun windowWithContentViewController(contentViewController: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("windowWithContentViewController:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, contentViewController) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultDepthLimit(): NSWindowDepth {
             val sel = ObjCRuntime.sel("defaultDepthLimit")
             return NSWindowDepth((ObjCRuntime.msgSend(ValueLayout.JAVA_INT, _class, sel) as Int).toLong())
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
         fun allowsAutomaticWindowTabbing(): Boolean {
             val sel = ObjCRuntime.sel("allowsAutomaticWindowTabbing")
             return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel) as Boolean
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
         fun setAllowsAutomaticWindowTabbing(allowsAutomaticWindowTabbing: Boolean): Unit {
             val sel = ObjCRuntime.sel("setAllowsAutomaticWindowTabbing:")
             ObjCRuntime.msgSend(null, _class, sel, allowsAutomaticWindowTabbing)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
         fun userTabbingPreference(): NSWindowUserTabbingPreference {
             val sel = ObjCRuntime.sel("userTabbingPreference")
             return NSWindowUserTabbingPreference(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
@@ -79,566 +101,728 @@ open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun frameRectForContentRect(contentRect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("frameRectForContentRect:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(contentRect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun contentRectForFrameRect(frameRect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("contentRectForFrameRect:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initWithContentRect_styleMask_backing_defer(contentRect: NSRect, style: NSWindowStyleMask, backingStoreType: NSBackingStoreType, flag: Boolean): MemorySegment {
         val sel = ObjCRuntime.sel("initWithContentRect:styleMask:backing:defer:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(contentRect.segment, NSRect.layout), style.rawValue, backingStoreType.rawValue, flag) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initWithContentRect_styleMask_backing_defer_screen(contentRect: NSRect, style: NSWindowStyleMask, backingStoreType: NSBackingStoreType, flag: Boolean, screen: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithContentRect:styleMask:backing:defer:screen:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(contentRect.segment, NSRect.layout), style.rawValue, backingStoreType.rawValue, flag, screen) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "all", unavailable = true)
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCoder:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun addTitlebarAccessoryViewController(childViewController: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("addTitlebarAccessoryViewController:")
         ObjCRuntime.msgSend(null, ptr, sel, childViewController)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun insertTitlebarAccessoryViewController_atIndex(childViewController: MemorySegment, index: Long): Unit {
         val sel = ObjCRuntime.sel("insertTitlebarAccessoryViewController:atIndex:")
         ObjCRuntime.msgSend(null, ptr, sel, childViewController, index)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun removeTitlebarAccessoryViewControllerAtIndex(index: Long): Unit {
         val sel = ObjCRuntime.sel("removeTitlebarAccessoryViewControllerAtIndex:")
         ObjCRuntime.msgSend(null, ptr, sel, index)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTitleWithRepresentedFilename(filename: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("setTitleWithRepresentedFilename:")
         ObjCRuntime.msgSend(null, ptr, sel, filename)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun setTitleWithRepresentedFilename(filename: String): Unit = setTitleWithRepresentedFilename(ObjCRuntime.newNSString(Arena.global(), filename))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun fieldEditor_forObject(createFlag: Boolean, `object`: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("fieldEditor:forObject:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, createFlag, `object`) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun endEditingFor(`object`: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("endEditingFor:")
         ObjCRuntime.msgSend(null, ptr, sel, `object`)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun constrainFrameRect_toScreen(frameRect: NSRect, screen: MemorySegment): NSRect {
         val sel = ObjCRuntime.sel("constrainFrameRect:toScreen:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout), screen))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFrame_display(frameRect: NSRect, flag: Boolean): Unit {
         val sel = ObjCRuntime.sel("setFrame:display:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout), flag)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContentSize(size: NSSize): Unit {
         val sel = ObjCRuntime.sel("setContentSize:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, NSSize.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFrameOrigin(point: NSPoint): Unit {
         val sel = ObjCRuntime.sel("setFrameOrigin:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFrameTopLeftPoint(point: NSPoint): Unit {
         val sel = ObjCRuntime.sel("setFrameTopLeftPoint:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun cascadeTopLeftFromPoint(topLeftPoint: NSPoint): NSPoint {
         val sel = ObjCRuntime.sel("cascadeTopLeftFromPoint:")
         return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel, ObjCRuntime.ObjCStructArg(topLeftPoint.segment, NSPoint.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun animationResizeTime(newFrame: NSRect): Double {
         val sel = ObjCRuntime.sel("animationResizeTime:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, ObjCRuntime.ObjCStructArg(newFrame.segment, NSRect.layout)) as Double
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFrame_display_animate(frameRect: NSRect, displayFlag: Boolean, animateFlag: Boolean): Unit {
         val sel = ObjCRuntime.sel("setFrame:display:animate:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(frameRect.segment, NSRect.layout), displayFlag, animateFlag)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun displayIfNeeded(): Unit {
         val sel = ObjCRuntime.sel("displayIfNeeded")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun display(): Unit {
         val sel = ObjCRuntime.sel("display")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun update(): Unit {
         val sel = ObjCRuntime.sel("update")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun makeFirstResponder(responder: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("makeFirstResponder:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, responder) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun close(): Unit {
         val sel = ObjCRuntime.sel("close")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun miniaturize(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("miniaturize:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun deminiaturize(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("deminiaturize:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun zoom(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("zoom:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun tryToPerform_with(action: MemorySegment, `object`: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("tryToPerform:with:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, action, `object`) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun validRequestorForSendType_returnType(sendType: MemorySegment, returnType: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("validRequestorForSendType:returnType:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, sendType, returnType) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun setContentBorderThickness_forEdge(thickness: Double, edge: NSRectEdge): Unit {
         val sel = ObjCRuntime.sel("setContentBorderThickness:forEdge:")
         ObjCRuntime.msgSend(null, ptr, sel, thickness, edge.rawValue)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun contentBorderThicknessForEdge(edge: NSRectEdge): Double {
         val sel = ObjCRuntime.sel("contentBorderThicknessForEdge:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel, edge.rawValue) as Double
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun setAutorecalculatesContentBorderThickness_forEdge(flag: Boolean, edge: NSRectEdge): Unit {
         val sel = ObjCRuntime.sel("setAutorecalculatesContentBorderThickness:forEdge:")
         ObjCRuntime.msgSend(null, ptr, sel, flag, edge.rawValue)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun autorecalculatesContentBorderThicknessForEdge(edge: NSRectEdge): Boolean {
         val sel = ObjCRuntime.sel("autorecalculatesContentBorderThicknessForEdge:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, edge.rawValue) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun center(): Unit {
         val sel = ObjCRuntime.sel("center")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun makeKeyAndOrderFront(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("makeKeyAndOrderFront:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun orderFront(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("orderFront:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun orderBack(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("orderBack:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun orderOut(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("orderOut:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun orderWindow_relativeTo(place: NSWindowOrderingMode, otherWin: Long): Unit {
         val sel = ObjCRuntime.sel("orderWindow:relativeTo:")
         ObjCRuntime.msgSend(null, ptr, sel, place.rawValue, otherWin)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun orderFrontRegardless(): Unit {
         val sel = ObjCRuntime.sel("orderFrontRegardless")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun makeKeyWindow(): Unit {
         val sel = ObjCRuntime.sel("makeKeyWindow")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun makeMainWindow(): Unit {
         val sel = ObjCRuntime.sel("makeMainWindow")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun becomeKeyWindow(): Unit {
         val sel = ObjCRuntime.sel("becomeKeyWindow")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun resignKeyWindow(): Unit {
         val sel = ObjCRuntime.sel("resignKeyWindow")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun becomeMainWindow(): Unit {
         val sel = ObjCRuntime.sel("becomeMainWindow")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun resignMainWindow(): Unit {
         val sel = ObjCRuntime.sel("resignMainWindow")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun convertRectToScreen(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("convertRectToScreen:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun convertRectFromScreen(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("convertRectFromScreen:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun convertPointToScreen(point: NSPoint): NSPoint {
         val sel = ObjCRuntime.sel("convertPointToScreen:")
         return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun convertPointFromScreen(point: NSPoint): NSPoint {
         val sel = ObjCRuntime.sel("convertPointFromScreen:")
         return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun convertRectToBacking(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("convertRectToBacking:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun convertRectFromBacking(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("convertRectFromBacking:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = -1)
     open fun convertPointToBacking(point: NSPoint): NSPoint {
         val sel = ObjCRuntime.sel("convertPointToBacking:")
         return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = -1)
     open fun convertPointFromBacking(point: NSPoint): NSPoint {
         val sel = ObjCRuntime.sel("convertPointFromBacking:")
         return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun backingAlignedRect_options(rect: NSRect, options: NSAlignmentOptions): NSRect {
         val sel = ObjCRuntime.sel("backingAlignedRect:options:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), options.rawValue))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun performClose(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("performClose:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun performMiniaturize(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("performMiniaturize:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun performZoom(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("performZoom:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun dataWithEPSInsideRect(rect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("dataWithEPSInsideRect:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun dataWithPDFInsideRect(rect: NSRect): MemorySegment {
         val sel = ObjCRuntime.sel("dataWithPDFInsideRect:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun print(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("print:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setDynamicDepthLimit(flag: Boolean): Unit {
         val sel = ObjCRuntime.sel("setDynamicDepthLimit:")
         ObjCRuntime.msgSend(null, ptr, sel, flag)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun invalidateShadow(): Unit {
         val sel = ObjCRuntime.sel("invalidateShadow")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun toggleFullScreen(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("toggleFullScreen:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFrameFromString(string: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("setFrameFromString:")
         ObjCRuntime.msgSend(null, ptr, sel, string)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun saveFrameUsingName(name: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("saveFrameUsingName:")
         ObjCRuntime.msgSend(null, ptr, sel, name)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFrameUsingName_force(name: MemorySegment, force: Boolean): Boolean {
         val sel = ObjCRuntime.sel("setFrameUsingName:force:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, name, force) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFrameUsingName(name: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("setFrameUsingName:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, name) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFrameAutosaveName(name: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("setFrameAutosaveName:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, name) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
     open fun beginSheet_completionHandler(sheetWindow: MemorySegment, handler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("beginSheet:completionHandler:")
         ObjCRuntime.msgSend(null, ptr, sel, sheetWindow, handler)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
     open fun beginCriticalSheet_completionHandler(sheetWindow: MemorySegment, handler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("beginCriticalSheet:completionHandler:")
         ObjCRuntime.msgSend(null, ptr, sel, sheetWindow, handler)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
     open fun endSheet(sheetWindow: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("endSheet:")
         ObjCRuntime.msgSend(null, ptr, sel, sheetWindow)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
     open fun endSheet_returnCode(sheetWindow: MemorySegment, returnCode: Long): Unit {
         val sel = ObjCRuntime.sel("endSheet:returnCode:")
         ObjCRuntime.msgSend(null, ptr, sel, sheetWindow, returnCode)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun standardWindowButton(b: NSWindowButton): MemorySegment {
         val sel = ObjCRuntime.sel("standardWindowButton:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, b.rawValue) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun addChildWindow_ordered(childWin: MemorySegment, place: NSWindowOrderingMode): Unit {
         val sel = ObjCRuntime.sel("addChildWindow:ordered:")
         ObjCRuntime.msgSend(null, ptr, sel, childWin, place.rawValue)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun removeChildWindow(childWin: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("removeChildWindow:")
         ObjCRuntime.msgSend(null, ptr, sel, childWin)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun canRepresentDisplayGamut(displayGamut: NSDisplayGamut): Boolean {
         val sel = ObjCRuntime.sel("canRepresentDisplayGamut:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, displayGamut.rawValue) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
     open fun performWindowDragWithEvent(event: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("performWindowDragWithEvent:")
         ObjCRuntime.msgSend(null, ptr, sel, event)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun selectNextKeyView(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("selectNextKeyView:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun selectPreviousKeyView(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("selectPreviousKeyView:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun selectKeyViewFollowingView(view: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("selectKeyViewFollowingView:")
         ObjCRuntime.msgSend(null, ptr, sel, view)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun selectKeyViewPrecedingView(view: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("selectKeyViewPrecedingView:")
         ObjCRuntime.msgSend(null, ptr, sel, view)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun disableKeyEquivalentForDefaultButtonCell(): Unit {
         val sel = ObjCRuntime.sel("disableKeyEquivalentForDefaultButtonCell")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun enableKeyEquivalentForDefaultButtonCell(): Unit {
         val sel = ObjCRuntime.sel("enableKeyEquivalentForDefaultButtonCell")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun recalculateKeyViewLoop(): Unit {
         val sel = ObjCRuntime.sel("recalculateKeyViewLoop")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun toggleToolbarShown(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("toggleToolbarShown:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun runToolbarCustomizationPalette(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("runToolbarCustomizationPalette:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun selectNextTab(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("selectNextTab:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun selectPreviousTab(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("selectPreviousTab:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun moveTabToNewWindow(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("moveTabToNewWindow:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun mergeAllWindows(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("mergeAllWindows:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun toggleTabBar(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("toggleTabBar:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
     open fun toggleTabOverview(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("toggleTabOverview:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun addTabbedWindow_ordered(window: MemorySegment, ordered: NSWindowOrderingMode): Unit {
         val sel = ObjCRuntime.sel("addTabbedWindow:ordered:")
         ObjCRuntime.msgSend(null, ptr, sel, window, ordered.rawValue)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 3, introducedSubminor = -1)
     open fun transferWindowSharingToWindow_completionHandler(window: MemorySegment, completionHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("transferWindowSharingToWindow:completionHandler:")
         ObjCRuntime.msgSend(null, ptr, sel, window, completionHandler)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
     open fun requestSharingOfWindow_completionHandler(window: MemorySegment, completionHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("requestSharingOfWindow:completionHandler:")
         ObjCRuntime.msgSend(null, ptr, sel, window, completionHandler)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
     open fun requestSharingOfWindowUsingPreview_title_completionHandler(image: MemorySegment, title: MemorySegment, completionHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("requestSharingOfWindowUsingPreview:title:completionHandler:")
         ObjCRuntime.msgSend(null, ptr, sel, image, title, completionHandler)
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
     fun requestSharingOfWindowUsingPreview_title_completionHandler(image: MemorySegment, title: String, completionHandler: MemorySegment): Unit = requestSharingOfWindowUsingPreview_title_completionHandler(image, ObjCRuntime.newNSString(Arena.global(), title), completionHandler)
 
     // @property title
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun title(): MemorySegment {
         val sel = ObjCRuntime.sel("title")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTitle(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setTitle:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun titleAsString(): String = ObjCRuntime.toJavaString(title())
 
     /** Convenience overload — accepts Kotlin [String] for the NSString property. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTitle(value: String) = setTitle(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property subtitle
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
     open fun subtitle(): MemorySegment {
         val sel = ObjCRuntime.sel("subtitle")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
     open fun setSubtitle(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setSubtitle:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
     open fun subtitleAsString(): String = ObjCRuntime.toJavaString(subtitle())
 
     /** Convenience overload — accepts Kotlin [String] for the NSString property. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
     open fun setSubtitle(value: String) = setSubtitle(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property titleVisibility
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun titleVisibility(): NSWindowTitleVisibility {
         val sel = ObjCRuntime.sel("titleVisibility")
         return NSWindowTitleVisibility(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun setTitleVisibility(value: NSWindowTitleVisibility) {
         val sel = ObjCRuntime.sel("setTitleVisibility:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property titlebarAppearsTransparent
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun titlebarAppearsTransparent(): Boolean {
         val sel = ObjCRuntime.sel("titlebarAppearsTransparent")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun setTitlebarAppearsTransparent(value: Boolean) {
         val sel = ObjCRuntime.sel("setTitlebarAppearsTransparent:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property toolbarStyle
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
     open fun toolbarStyle(): NSWindowToolbarStyle {
         val sel = ObjCRuntime.sel("toolbarStyle")
         return NSWindowToolbarStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
     open fun setToolbarStyle(value: NSWindowToolbarStyle) {
         val sel = ObjCRuntime.sel("setToolbarStyle:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property contentLayoutRect
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun contentLayoutRect(): NSRect {
         val sel = ObjCRuntime.sel("contentLayoutRect")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property contentLayoutGuide
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun contentLayoutGuide(): MemorySegment {
         val sel = ObjCRuntime.sel("contentLayoutGuide")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
@@ -646,56 +830,72 @@ open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     // @property titlebarAccessoryViewControllers
     /** @return NSArray<__kindof NSTitlebarAccessoryViewController *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun titlebarAccessoryViewControllers(): MemorySegment {
         val sel = ObjCRuntime.sel("titlebarAccessoryViewControllers")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun setTitlebarAccessoryViewControllers(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setTitlebarAccessoryViewControllers:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property representedURL
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun representedURL(): MemorySegment {
         val sel = ObjCRuntime.sel("representedURL")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun setRepresentedURL(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setRepresentedURL:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property representedFilename
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun representedFilename(): MemorySegment {
         val sel = ObjCRuntime.sel("representedFilename")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setRepresentedFilename(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setRepresentedFilename:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun representedFilenameAsString(): String = ObjCRuntime.toJavaString(representedFilename())
 
     /** Convenience overload — accepts Kotlin [String] for the NSString property. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setRepresentedFilename(value: String) = setRepresentedFilename(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property excludedFromWindowsMenu
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isExcludedFromWindowsMenu(): Boolean {
         val sel = ObjCRuntime.sel("isExcludedFromWindowsMenu")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setExcludedFromWindowsMenu(value: Boolean) {
         val sel = ObjCRuntime.sel("setExcludedFromWindowsMenu:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property contentView
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun contentView(): MemorySegment {
         val sel = ObjCRuntime.sel("contentView")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContentView(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setContentView:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -703,508 +903,629 @@ open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     // @property delegate
     /** @return id<NSWindowDelegate> */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun delegate(): MemorySegment {
         val sel = ObjCRuntime.sel("delegate")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setDelegate(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setDelegate:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property windowNumber
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun windowNumber(): Long {
         val sel = ObjCRuntime.sel("windowNumber")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
 
     // @property styleMask
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun styleMask(): NSWindowStyleMask {
         val sel = ObjCRuntime.sel("styleMask")
         return NSWindowStyleMask(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setStyleMask(value: NSWindowStyleMask) {
         val sel = ObjCRuntime.sel("setStyleMask:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property cascadingReferenceFrame
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
     open fun cascadingReferenceFrame(): NSRect {
         val sel = ObjCRuntime.sel("cascadingReferenceFrame")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property frame
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun frame(): NSRect {
         val sel = ObjCRuntime.sel("frame")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property inLiveResize
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun inLiveResize(): Boolean {
         val sel = ObjCRuntime.sel("inLiveResize")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property resizeIncrements
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun resizeIncrements(): NSSize {
         val sel = ObjCRuntime.sel("resizeIncrements")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setResizeIncrements(value: NSSize) {
         val sel = ObjCRuntime.sel("setResizeIncrements:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property aspectRatio
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun aspectRatio(): NSSize {
         val sel = ObjCRuntime.sel("aspectRatio")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAspectRatio(value: NSSize) {
         val sel = ObjCRuntime.sel("setAspectRatio:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property contentResizeIncrements
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun contentResizeIncrements(): NSSize {
         val sel = ObjCRuntime.sel("contentResizeIncrements")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContentResizeIncrements(value: NSSize) {
         val sel = ObjCRuntime.sel("setContentResizeIncrements:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property contentAspectRatio
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun contentAspectRatio(): NSSize {
         val sel = ObjCRuntime.sel("contentAspectRatio")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContentAspectRatio(value: NSSize) {
         val sel = ObjCRuntime.sel("setContentAspectRatio:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property viewsNeedDisplay
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun viewsNeedDisplay(): Boolean {
         val sel = ObjCRuntime.sel("viewsNeedDisplay")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setViewsNeedDisplay(value: Boolean) {
         val sel = ObjCRuntime.sel("setViewsNeedDisplay:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property preservesContentDuringLiveResize
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun preservesContentDuringLiveResize(): Boolean {
         val sel = ObjCRuntime.sel("preservesContentDuringLiveResize")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setPreservesContentDuringLiveResize(value: Boolean) {
         val sel = ObjCRuntime.sel("setPreservesContentDuringLiveResize:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property firstResponder
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun firstResponder(): MemorySegment {
         val sel = ObjCRuntime.sel("firstResponder")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property resizeFlags
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun resizeFlags(): NSEventModifierFlags {
         val sel = ObjCRuntime.sel("resizeFlags")
         return NSEventModifierFlags(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property releasedWhenClosed
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isReleasedWhenClosed(): Boolean {
         val sel = ObjCRuntime.sel("isReleasedWhenClosed")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setReleasedWhenClosed(value: Boolean) {
         val sel = ObjCRuntime.sel("setReleasedWhenClosed:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property zoomed
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isZoomed(): Boolean {
         val sel = ObjCRuntime.sel("isZoomed")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property miniaturized
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isMiniaturized(): Boolean {
         val sel = ObjCRuntime.sel("isMiniaturized")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property backgroundColor
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun backgroundColor(): MemorySegment {
         val sel = ObjCRuntime.sel("backgroundColor")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setBackgroundColor(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setBackgroundColor:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property movable
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun isMovable(): Boolean {
         val sel = ObjCRuntime.sel("isMovable")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun setMovable(value: Boolean) {
         val sel = ObjCRuntime.sel("setMovable:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property movableByWindowBackground
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isMovableByWindowBackground(): Boolean {
         val sel = ObjCRuntime.sel("isMovableByWindowBackground")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMovableByWindowBackground(value: Boolean) {
         val sel = ObjCRuntime.sel("setMovableByWindowBackground:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property hidesOnDeactivate
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun hidesOnDeactivate(): Boolean {
         val sel = ObjCRuntime.sel("hidesOnDeactivate")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setHidesOnDeactivate(value: Boolean) {
         val sel = ObjCRuntime.sel("setHidesOnDeactivate:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property canHide
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun canHide(): Boolean {
         val sel = ObjCRuntime.sel("canHide")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setCanHide(value: Boolean) {
         val sel = ObjCRuntime.sel("setCanHide:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property miniwindowImage
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun miniwindowImage(): MemorySegment {
         val sel = ObjCRuntime.sel("miniwindowImage")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMiniwindowImage(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setMiniwindowImage:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property miniwindowTitle
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun miniwindowTitle(): MemorySegment {
         val sel = ObjCRuntime.sel("miniwindowTitle")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMiniwindowTitle(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setMiniwindowTitle:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     /** Convenience overload — returns Kotlin [String] by converting the NSString via UTF8String. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun miniwindowTitleAsString(): String = ObjCRuntime.toJavaString(miniwindowTitle())
 
     /** Convenience overload — accepts Kotlin [String] for the NSString property. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMiniwindowTitle(value: String) = setMiniwindowTitle(ObjCRuntime.newNSString(Arena.global(), value))
 
     // @property dockTile
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun dockTile(): MemorySegment {
         val sel = ObjCRuntime.sel("dockTile")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property documentEdited
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isDocumentEdited(): Boolean {
         val sel = ObjCRuntime.sel("isDocumentEdited")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setDocumentEdited(value: Boolean) {
         val sel = ObjCRuntime.sel("setDocumentEdited:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property visible
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isVisible(): Boolean {
         val sel = ObjCRuntime.sel("isVisible")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property keyWindow
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isKeyWindow(): Boolean {
         val sel = ObjCRuntime.sel("isKeyWindow")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property mainWindow
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isMainWindow(): Boolean {
         val sel = ObjCRuntime.sel("isMainWindow")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property canBecomeKeyWindow
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun canBecomeKeyWindow(): Boolean {
         val sel = ObjCRuntime.sel("canBecomeKeyWindow")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property canBecomeMainWindow
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun canBecomeMainWindow(): Boolean {
         val sel = ObjCRuntime.sel("canBecomeMainWindow")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property worksWhenModal
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun worksWhenModal(): Boolean {
         val sel = ObjCRuntime.sel("worksWhenModal")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property preventsApplicationTerminationWhenModal
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun preventsApplicationTerminationWhenModal(): Boolean {
         val sel = ObjCRuntime.sel("preventsApplicationTerminationWhenModal")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun setPreventsApplicationTerminationWhenModal(value: Boolean) {
         val sel = ObjCRuntime.sel("setPreventsApplicationTerminationWhenModal:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property backingScaleFactor
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun backingScaleFactor(): Double {
         val sel = ObjCRuntime.sel("backingScaleFactor")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
 
     // @property allowsToolTipsWhenApplicationIsInactive
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun allowsToolTipsWhenApplicationIsInactive(): Boolean {
         val sel = ObjCRuntime.sel("allowsToolTipsWhenApplicationIsInactive")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAllowsToolTipsWhenApplicationIsInactive(value: Boolean) {
         val sel = ObjCRuntime.sel("setAllowsToolTipsWhenApplicationIsInactive:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property backingType
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun backingType(): NSBackingStoreType {
         val sel = ObjCRuntime.sel("backingType")
         return NSBackingStoreType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setBackingType(value: NSBackingStoreType) {
         val sel = ObjCRuntime.sel("setBackingType:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property level
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun level(): Long {
         val sel = ObjCRuntime.sel("level")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setLevel(value: Long) {
         val sel = ObjCRuntime.sel("setLevel:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property depthLimit
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun depthLimit(): NSWindowDepth {
         val sel = ObjCRuntime.sel("depthLimit")
         return NSWindowDepth((ObjCRuntime.msgSend(ValueLayout.JAVA_INT, ptr, sel) as Int).toLong())
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setDepthLimit(value: NSWindowDepth) {
         val sel = ObjCRuntime.sel("setDepthLimit:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue.toInt())
     }
 
     // @property hasDynamicDepthLimit
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun hasDynamicDepthLimit(): Boolean {
         val sel = ObjCRuntime.sel("hasDynamicDepthLimit")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property screen
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun screen(): MemorySegment {
         val sel = ObjCRuntime.sel("screen")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property deepestScreen
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun deepestScreen(): MemorySegment {
         val sel = ObjCRuntime.sel("deepestScreen")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property hasShadow
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun hasShadow(): Boolean {
         val sel = ObjCRuntime.sel("hasShadow")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setHasShadow(value: Boolean) {
         val sel = ObjCRuntime.sel("setHasShadow:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property alphaValue
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun alphaValue(): Double {
         val sel = ObjCRuntime.sel("alphaValue")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAlphaValue(value: Double) {
         val sel = ObjCRuntime.sel("setAlphaValue:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property opaque
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isOpaque(): Boolean {
         val sel = ObjCRuntime.sel("isOpaque")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setOpaque(value: Boolean) {
         val sel = ObjCRuntime.sel("setOpaque:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property sharingType
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun sharingType(): NSWindowSharingType {
         val sel = ObjCRuntime.sel("sharingType")
         return NSWindowSharingType(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun setSharingType(value: NSWindowSharingType) {
         val sel = ObjCRuntime.sel("setSharingType:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property allowsConcurrentViewDrawing
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun allowsConcurrentViewDrawing(): Boolean {
         val sel = ObjCRuntime.sel("allowsConcurrentViewDrawing")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun setAllowsConcurrentViewDrawing(value: Boolean) {
         val sel = ObjCRuntime.sel("setAllowsConcurrentViewDrawing:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property displaysWhenScreenProfileChanges
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun displaysWhenScreenProfileChanges(): Boolean {
         val sel = ObjCRuntime.sel("displaysWhenScreenProfileChanges")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setDisplaysWhenScreenProfileChanges(value: Boolean) {
         val sel = ObjCRuntime.sel("setDisplaysWhenScreenProfileChanges:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property canBecomeVisibleWithoutLogin
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun canBecomeVisibleWithoutLogin(): Boolean {
         val sel = ObjCRuntime.sel("canBecomeVisibleWithoutLogin")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun setCanBecomeVisibleWithoutLogin(value: Boolean) {
         val sel = ObjCRuntime.sel("setCanBecomeVisibleWithoutLogin:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property collectionBehavior
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun collectionBehavior(): NSWindowCollectionBehavior {
         val sel = ObjCRuntime.sel("collectionBehavior")
         return NSWindowCollectionBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun setCollectionBehavior(value: NSWindowCollectionBehavior) {
         val sel = ObjCRuntime.sel("setCollectionBehavior:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property animationBehavior
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun animationBehavior(): NSWindowAnimationBehavior {
         val sel = ObjCRuntime.sel("animationBehavior")
         return NSWindowAnimationBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     open fun setAnimationBehavior(value: NSWindowAnimationBehavior) {
         val sel = ObjCRuntime.sel("setAnimationBehavior:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property onActiveSpace
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun isOnActiveSpace(): Boolean {
         val sel = ObjCRuntime.sel("isOnActiveSpace")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property stringWithSavedFrame
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun stringWithSavedFrame(): MemorySegment {
         val sel = ObjCRuntime.sel("stringWithSavedFrame")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property frameAutosaveName
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun frameAutosaveName(): MemorySegment {
         val sel = ObjCRuntime.sel("frameAutosaveName")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property minSize
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun minSize(): NSSize {
         val sel = ObjCRuntime.sel("minSize")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMinSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMinSize:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property maxSize
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun maxSize(): NSSize {
         val sel = ObjCRuntime.sel("maxSize")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMaxSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMaxSize:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property contentMinSize
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun contentMinSize(): NSSize {
         val sel = ObjCRuntime.sel("contentMinSize")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContentMinSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setContentMinSize:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property contentMaxSize
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun contentMaxSize(): NSSize {
         val sel = ObjCRuntime.sel("contentMaxSize")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContentMaxSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setContentMaxSize:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property minFullScreenContentSize
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
     open fun minFullScreenContentSize(): NSSize {
         val sel = ObjCRuntime.sel("minFullScreenContentSize")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
     open fun setMinFullScreenContentSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMinFullScreenContentSize:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property maxFullScreenContentSize
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
     open fun maxFullScreenContentSize(): NSSize {
         val sel = ObjCRuntime.sel("maxFullScreenContentSize")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
     open fun setMaxFullScreenContentSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setMaxFullScreenContentSize:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
@@ -1212,16 +1533,19 @@ open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     // @property deviceDescription
     /** @return NSDictionary<NSDeviceDescriptionKey,id> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun deviceDescription(): MemorySegment {
         val sel = ObjCRuntime.sel("deviceDescription")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property windowController
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun windowController(): MemorySegment {
         val sel = ObjCRuntime.sel("windowController")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setWindowController(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setWindowController:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -1229,24 +1553,30 @@ open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     // @property sheets
     /** @return NSArray<__kindof NSWindow *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
     open fun sheets(): MemorySegment {
         val sel = ObjCRuntime.sel("sheets")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property attachedSheet
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun attachedSheet(): MemorySegment {
         val sel = ObjCRuntime.sel("attachedSheet")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property sheet
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isSheet(): Boolean {
         val sel = ObjCRuntime.sel("isSheet")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property sheetParent
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
     open fun sheetParent(): MemorySegment {
         val sel = ObjCRuntime.sel("sheetParent")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
@@ -1254,16 +1584,19 @@ open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     // @property childWindows
     /** @return NSArray<__kindof NSWindow *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun childWindows(): MemorySegment {
         val sel = ObjCRuntime.sel("childWindows")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property parentWindow
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun parentWindow(): MemorySegment {
         val sel = ObjCRuntime.sel("parentWindow")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setParentWindow(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setParentWindow:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -1271,122 +1604,161 @@ open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     // @property appearanceSource
     /** @return NSObject<NSAppearanceCustomization> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = -1)
     open fun appearanceSource(): MemorySegment {
         val sel = ObjCRuntime.sel("appearanceSource")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = -1)
     open fun setAppearanceSource(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setAppearanceSource:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property colorSpace
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun colorSpace(): MemorySegment {
         val sel = ObjCRuntime.sel("colorSpace")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
     open fun setColorSpace(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setColorSpace:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property occlusionState
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
     open fun occlusionState(): NSWindowOcclusionState {
         val sel = ObjCRuntime.sel("occlusionState")
         return NSWindowOcclusionState(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property titlebarSeparatorStyle
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
     open fun titlebarSeparatorStyle(): NSTitlebarSeparatorStyle {
         val sel = ObjCRuntime.sel("titlebarSeparatorStyle")
         return NSTitlebarSeparatorStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
     open fun setTitlebarSeparatorStyle(value: NSTitlebarSeparatorStyle) {
         val sel = ObjCRuntime.sel("setTitlebarSeparatorStyle:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property contentViewController
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun contentViewController(): MemorySegment {
         val sel = ObjCRuntime.sel("contentViewController")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun setContentViewController(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setContentViewController:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property initialFirstResponder
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initialFirstResponder(): MemorySegment {
         val sel = ObjCRuntime.sel("initialFirstResponder")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setInitialFirstResponder(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setInitialFirstResponder:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property keyViewSelectionDirection
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun keyViewSelectionDirection(): NSSelectionDirection {
         val sel = ObjCRuntime.sel("keyViewSelectionDirection")
         return NSSelectionDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property defaultButtonCell
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun defaultButtonCell(): MemorySegment {
         val sel = ObjCRuntime.sel("defaultButtonCell")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setDefaultButtonCell(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setDefaultButtonCell:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property autorecalculatesKeyViewLoop
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun autorecalculatesKeyViewLoop(): Boolean {
         val sel = ObjCRuntime.sel("autorecalculatesKeyViewLoop")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAutorecalculatesKeyViewLoop(value: Boolean) {
         val sel = ObjCRuntime.sel("setAutorecalculatesKeyViewLoop:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property toolbar
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun toolbar(): MemorySegment {
         val sel = ObjCRuntime.sel("toolbar")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setToolbar(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setToolbar:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property showsToolbarButton
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "This property has no effect")
     open fun showsToolbarButton(): Boolean {
         val sel = ObjCRuntime.sel("showsToolbarButton")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "This property has no effect")
     open fun setShowsToolbarButton(value: Boolean) {
         val sel = ObjCRuntime.sel("setShowsToolbarButton:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property tabbingMode
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun tabbingMode(): NSWindowTabbingMode {
         val sel = ObjCRuntime.sel("tabbingMode")
         return NSWindowTabbingMode(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun setTabbingMode(value: NSWindowTabbingMode) {
         val sel = ObjCRuntime.sel("setTabbingMode:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property tabbingIdentifier
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun tabbingIdentifier(): MemorySegment {
         val sel = ObjCRuntime.sel("tabbingIdentifier")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun setTabbingIdentifier(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setTabbingIdentifier:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -1394,30 +1766,40 @@ open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     // @property tabbedWindows
     /** @return NSArray<NSWindow *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun tabbedWindows(): MemorySegment {
         val sel = ObjCRuntime.sel("tabbedWindows")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property tab
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
     open fun tab(): MemorySegment {
         val sel = ObjCRuntime.sel("tab")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property tabGroup
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
     open fun tabGroup(): MemorySegment {
         val sel = ObjCRuntime.sel("tabGroup")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property hasActiveWindowSharingSession
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 3, introducedSubminor = -1)
     open fun hasActiveWindowSharingSession(): Boolean {
         val sel = ObjCRuntime.sel("hasActiveWindowSharingSession")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property windowTitlebarLayoutDirection
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
     open fun windowTitlebarLayoutDirection(): NSUserInterfaceLayoutDirection {
         val sel = ObjCRuntime.sel("windowTitlebarLayoutDirection")
         return NSUserInterfaceLayoutDirection(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
@@ -3229,61 +3611,74 @@ fun NSWindow.isAccessibilitySelectorAllowed(selector: MemorySegment): Boolean {
 
 // ── Category: NSEvent on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
 fun NSWindow.trackEventsMatchingMask_timeout_mode_handler(mask: NSEventMask, timeout: Double, mode: MemorySegment, trackingHandler: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("trackEventsMatchingMask:timeout:mode:handler:")
     ObjCRuntime.msgSend(null, this.ptr, sel, mask.rawValue, timeout, mode, trackingHandler)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.nextEventMatchingMask(mask: NSEventMask): MemorySegment {
     val sel = ObjCRuntime.sel("nextEventMatchingMask:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, mask.rawValue) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.nextEventMatchingMask_untilDate_inMode_dequeue(mask: NSEventMask, expiration: MemorySegment, mode: MemorySegment, deqFlag: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("nextEventMatchingMask:untilDate:inMode:dequeue:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, mask.rawValue, expiration, mode, deqFlag) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.discardEventsMatchingMask_beforeEvent(mask: NSEventMask, lastEvent: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("discardEventsMatchingMask:beforeEvent:")
     ObjCRuntime.msgSend(null, this.ptr, sel, mask.rawValue, lastEvent)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.postEvent_atStart(event: MemorySegment, flag: Boolean): Unit {
     val sel = ObjCRuntime.sel("postEvent:atStart:")
     ObjCRuntime.msgSend(null, this.ptr, sel, event, flag)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.sendEvent(event: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("sendEvent:")
     ObjCRuntime.msgSend(null, this.ptr, sel, event)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.currentEvent(): MemorySegment {
     val sel = ObjCRuntime.sel("currentEvent")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.acceptsMouseMovedEvents(): Boolean {
     val sel = ObjCRuntime.sel("acceptsMouseMovedEvents")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.setAcceptsMouseMovedEvents(acceptsMouseMovedEvents: Boolean): Unit {
     val sel = ObjCRuntime.sel("setAcceptsMouseMovedEvents:")
     ObjCRuntime.msgSend(null, this.ptr, sel, acceptsMouseMovedEvents)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.ignoresMouseEvents(): Boolean {
     val sel = ObjCRuntime.sel("ignoresMouseEvents")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.setIgnoresMouseEvents(ignoresMouseEvents: Boolean): Unit {
     val sel = ObjCRuntime.sel("setIgnoresMouseEvents:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ignoresMouseEvents)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.mouseLocationOutsideOfEventStream(): NSPoint {
     val sel = ObjCRuntime.sel("mouseLocationOutsideOfEventStream")
     return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel))
@@ -3291,31 +3686,37 @@ fun NSWindow.mouseLocationOutsideOfEventStream(): NSPoint {
 
 // ── Category: NSCursorRect on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.disableCursorRects(): Unit {
     val sel = ObjCRuntime.sel("disableCursorRects")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.enableCursorRects(): Unit {
     val sel = ObjCRuntime.sel("enableCursorRects")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.discardCursorRects(): Unit {
     val sel = ObjCRuntime.sel("discardCursorRects")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.invalidateCursorRectsForView(view: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("invalidateCursorRectsForView:")
     ObjCRuntime.msgSend(null, this.ptr, sel, view)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.resetCursorRects(): Unit {
     val sel = ObjCRuntime.sel("resetCursorRects")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.areCursorRectsEnabled(): Boolean {
     val sel = ObjCRuntime.sel("areCursorRectsEnabled")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
@@ -3323,21 +3724,27 @@ fun NSWindow.areCursorRectsEnabled(): Boolean {
 
 // ── Category: NSDrag on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
 fun NSWindow.beginDraggingSessionWithItems_event_source(items: MemorySegment, event: MemorySegment, source: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("beginDraggingSessionWithItems:event:source:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, items, event, source) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "Use -[NSWindow beginDraggingSessionWithItems:event:source:] instead.")
 fun NSWindow.dragImage_at_offset_event_pasteboard_source_slideBack(image: MemorySegment, baseLocation: NSPoint, initialOffset: NSSize, event: MemorySegment, pboard: MemorySegment, sourceObj: MemorySegment, slideFlag: Boolean): Unit {
     val sel = ObjCRuntime.sel("dragImage:at:offset:event:pasteboard:source:slideBack:")
     ObjCRuntime.msgSend(null, this.ptr, sel, image, ObjCRuntime.ObjCStructArg(baseLocation.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(initialOffset.segment, NSSize.layout), event, pboard, sourceObj, slideFlag)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.registerForDraggedTypes(newTypes: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("registerForDraggedTypes:")
     ObjCRuntime.msgSend(null, this.ptr, sel, newTypes)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.unregisterDraggedTypes(): Unit {
     val sel = ObjCRuntime.sel("unregisterDraggedTypes")
     ObjCRuntime.msgSend(null, this.ptr, sel)
@@ -3345,6 +3752,7 @@ fun NSWindow.unregisterDraggedTypes(): Unit {
 
 // ── Category: NSDisplayLink on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.displayLinkWithTarget_selector(target: MemorySegment, selector: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("displayLinkWithTarget:selector:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, target, selector) as MemorySegment
@@ -3352,142 +3760,198 @@ fun NSWindow.displayLinkWithTarget_selector(target: MemorySegment, selector: Mem
 
 // ── Category: NSDeprecated on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "This method shouldn’t be used as it doesn’t work in all drawing situations; instead, a subview should be used that implements the desired drawing behavior")
 fun NSWindow.cacheImageInRect(rect: NSRect): Unit {
     val sel = ObjCRuntime.sel("cacheImageInRect:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "This method shouldn’t be used as it doesn’t work in all drawing situations; instead, a subview should be used that implements the desired drawing behavior")
 fun NSWindow.restoreCachedImage(): Unit {
     val sel = ObjCRuntime.sel("restoreCachedImage")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "This method shouldn’t be used as it doesn’t work in all drawing situations; instead, a subview should be used that implements the desired drawing behavior")
 fun NSWindow.discardCachedImage(): Unit {
     val sel = ObjCRuntime.sel("discardCachedImage")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "This method is unused and should not be called.")
 fun NSWindow.gState(): Long {
     val sel = ObjCRuntime.sel("gState")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 7, deprecatedSubminor = -1, message = "Use -convertRectToScreen: or -convertPointToScreen: instead")
 fun NSWindow.convertBaseToScreen(point: NSPoint): NSPoint {
     val sel = ObjCRuntime.sel("convertBaseToScreen:")
     return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)))
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 7, deprecatedSubminor = -1, message = "Use -convertRectFromScreen or -convertPointFromScreen: instead")
 fun NSWindow.convertScreenToBase(point: NSPoint): NSPoint {
     val sel = ObjCRuntime.sel("convertScreenToBase:")
     return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)))
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 7, deprecatedSubminor = -1, message = "Use -convertRectToBacking: and -backingScaleFactor instead")
 fun NSWindow.userSpaceScaleFactor(): Double {
     val sel = ObjCRuntime.sel("userSpaceScaleFactor")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel) as Double
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "This method does not do anything and should not be called.")
 fun NSWindow.useOptimizedDrawing(flag: Boolean): Unit {
     val sel = ObjCRuntime.sel("useOptimizedDrawing:")
     ObjCRuntime.msgSend(null, this.ptr, sel, flag)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "This method does not do anything and should not be called.")
 fun NSWindow.canStoreColor(): Boolean {
     val sel = ObjCRuntime.sel("canStoreColor")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +[NSAnimationContext runAnimationGroup:completionHandler:] to perform atomic updates across runloop invocations.")
 fun NSWindow.disableFlushWindow(): Unit {
     val sel = ObjCRuntime.sel("disableFlushWindow")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +[NSAnimationContext runAnimationGroup:completionHandler:] to perform atomic updates across runloop invocations.")
 fun NSWindow.enableFlushWindow(): Unit {
     val sel = ObjCRuntime.sel("enableFlushWindow")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Allow AppKit's automatic deferred display mechanism to take care of flushing any graphics contexts as needed.")
 fun NSWindow.flushWindow(): Unit {
     val sel = ObjCRuntime.sel("flushWindow")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Allow AppKit's automatic deferred display mechanism to take care of flushing any graphics contexts as needed.")
 fun NSWindow.flushWindowIfNeeded(): Unit {
     val sel = ObjCRuntime.sel("flushWindowIfNeeded")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "This method should not be used.")
 fun NSWindow.initWithWindowRef(windowRef: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithWindowRef:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, windowRef) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "This method does not do anything and should not be called.")
 fun NSWindow.disableScreenUpdatesUntilFlush(): Unit {
     val sel = ObjCRuntime.sel("disableScreenUpdatesUntilFlush")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +[NSAnimationContext runAnimationGroup:completionHandler:] to perform atomic updates across runloop invocations.")
 fun NSWindow.isFlushWindowDisabled(): Boolean {
     val sel = ObjCRuntime.sel("isFlushWindowDisabled")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +[NSAnimationContext runAnimationGroup:completionHandler:] to temporarily prevent AppKit's automatic deferred display mechanism from drawing.")
 fun NSWindow.isAutodisplay(): Boolean {
     val sel = ObjCRuntime.sel("isAutodisplay")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +[NSAnimationContext runAnimationGroup:completionHandler:] to temporarily prevent AppKit's automatic deferred display mechanism from drawing.")
 fun NSWindow.setAutodisplay(autodisplay: Boolean): Unit {
     val sel = ObjCRuntime.sel("setAutodisplay:")
     ObjCRuntime.msgSend(null, this.ptr, sel, autodisplay)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Add instances of NSView to display content in a window.")
 fun NSWindow.graphicsContext(): MemorySegment {
     val sel = ObjCRuntime.sel("graphicsContext")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "This property does not do anything and should not be used")
 fun NSWindow.isOneShot(): Boolean {
     val sel = ObjCRuntime.sel("isOneShot")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "This property does not do anything and should not be used")
 fun NSWindow.setOneShot(oneShot: Boolean): Unit {
     val sel = ObjCRuntime.sel("setOneShot:")
     ObjCRuntime.msgSend(null, this.ptr, sel, oneShot)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "This property does not do anything and should not be used")
 fun NSWindow.preferredBackingLocation(): NSWindowBackingLocation {
     val sel = ObjCRuntime.sel("preferredBackingLocation")
     return NSWindowBackingLocation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "This property does not do anything and should not be used")
 fun NSWindow.setPreferredBackingLocation(preferredBackingLocation: NSWindowBackingLocation): Unit {
     val sel = ObjCRuntime.sel("setPreferredBackingLocation:")
     ObjCRuntime.msgSend(null, this.ptr, sel, preferredBackingLocation.rawValue)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "This property does not do anything and should not be used")
 fun NSWindow.backingLocation(): NSWindowBackingLocation {
     val sel = ObjCRuntime.sel("backingLocation")
     return NSWindowBackingLocation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "This property does not do anything and should not be used.")
 fun NSWindow.showsResizeIndicator(): Boolean {
     val sel = ObjCRuntime.sel("showsResizeIndicator")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "This property does not do anything and should not be used.")
 fun NSWindow.setShowsResizeIndicator(showsResizeIndicator: Boolean): Unit {
     val sel = ObjCRuntime.sel("setShowsResizeIndicator:")
     ObjCRuntime.msgSend(null, this.ptr, sel, showsResizeIndicator)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "This method should not be used.")
 fun NSWindow.windowRef(): MemorySegment {
     val sel = ObjCRuntime.sel("windowRef")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 // Class method: +[NSWindow menuChanged:]
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "This method does not do anything and should not be called.")
 fun NSWindow_menuChanged(menu: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("menuChanged:")
     val cls = ObjCRuntime.getClass("NSWindow")
@@ -3496,11 +3960,15 @@ fun NSWindow_menuChanged(menu: MemorySegment): Unit {
 
 // ── Category: NSConstraintBasedLayoutCoreMethods on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun NSWindow.updateConstraintsIfNeeded(): Unit {
     val sel = ObjCRuntime.sel("updateConstraintsIfNeeded")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun NSWindow.layoutIfNeeded(): Unit {
     val sel = ObjCRuntime.sel("layoutIfNeeded")
     ObjCRuntime.msgSend(null, this.ptr, sel)
@@ -3508,11 +3976,13 @@ fun NSWindow.layoutIfNeeded(): Unit {
 
 // ── Category: NSConstraintBasedLayoutAnchoring on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.anchorAttributeForOrientation(orientation: NSLayoutConstraintOrientation): NSLayoutAttribute {
     val sel = ObjCRuntime.sel("anchorAttributeForOrientation:")
     return NSLayoutAttribute(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, orientation.rawValue) as Long)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.setAnchorAttribute_forOrientation(attr: NSLayoutAttribute, orientation: NSLayoutConstraintOrientation): Unit {
     val sel = ObjCRuntime.sel("setAnchorAttribute:forOrientation:")
     ObjCRuntime.msgSend(null, this.ptr, sel, attr.rawValue, orientation.rawValue)
@@ -3520,6 +3990,8 @@ fun NSWindow.setAnchorAttribute_forOrientation(attr: NSLayoutAttribute, orientat
 
 // ── Category: NSConstraintBasedLayoutDebugging on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun NSWindow.visualizeConstraints(constraints: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("visualizeConstraints:")
     ObjCRuntime.msgSend(null, this.ptr, sel, constraints)
@@ -3528,6 +4000,8 @@ fun NSWindow.visualizeConstraints(constraints: MemorySegment): Unit {
 // ── Category: NSDrawers on NSWindow ─────────────────────────────────────────
 
 /** @return NSArray<NSDrawer *> * */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "Drawers are deprecated; consider using NSSplitViewController")
 fun NSWindow.drawers(): MemorySegment {
     val sel = ObjCRuntime.sel("drawers")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
@@ -3535,76 +4009,91 @@ fun NSWindow.drawers(): MemorySegment {
 
 // ── Category: NSScripting on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.setIsMiniaturized(flag: Boolean): Unit {
     val sel = ObjCRuntime.sel("setIsMiniaturized:")
     ObjCRuntime.msgSend(null, this.ptr, sel, flag)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.setIsVisible(flag: Boolean): Unit {
     val sel = ObjCRuntime.sel("setIsVisible:")
     ObjCRuntime.msgSend(null, this.ptr, sel, flag)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.setIsZoomed(flag: Boolean): Unit {
     val sel = ObjCRuntime.sel("setIsZoomed:")
     ObjCRuntime.msgSend(null, this.ptr, sel, flag)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.handleCloseScriptCommand(command: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("handleCloseScriptCommand:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, command) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.handlePrintScriptCommand(command: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("handlePrintScriptCommand:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, command) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.handleSaveScriptCommand(command: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("handleSaveScriptCommand:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, command) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.hasCloseBox(): Boolean {
     val sel = ObjCRuntime.sel("hasCloseBox")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.hasTitleBar(): Boolean {
     val sel = ObjCRuntime.sel("hasTitleBar")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.isFloatingPanel(): Boolean {
     val sel = ObjCRuntime.sel("isFloatingPanel")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.isMiniaturizable(): Boolean {
     val sel = ObjCRuntime.sel("isMiniaturizable")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.isModalPanel(): Boolean {
     val sel = ObjCRuntime.sel("isModalPanel")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.isResizable(): Boolean {
     val sel = ObjCRuntime.sel("isResizable")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.isZoomable(): Boolean {
     val sel = ObjCRuntime.sel("isZoomable")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.orderedIndex(): Long {
     val sel = ObjCRuntime.sel("orderedIndex")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.setOrderedIndex(orderedIndex: Long): Unit {
     val sel = ObjCRuntime.sel("setOrderedIndex:")
     ObjCRuntime.msgSend(null, this.ptr, sel, orderedIndex)
@@ -3612,32 +4101,42 @@ fun NSWindow.setOrderedIndex(orderedIndex: Long): Unit {
 
 // ── Category: NSUserInterfaceRestoration on NSWindow ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.disableSnapshotRestoration(): Unit {
     val sel = ObjCRuntime.sel("disableSnapshotRestoration")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSWindow.enableSnapshotRestoration(): Unit {
     val sel = ObjCRuntime.sel("enableSnapshotRestoration")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun NSWindow.isRestorable(): Boolean {
     val sel = ObjCRuntime.sel("isRestorable")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun NSWindow.setRestorable(restorable: Boolean): Unit {
     val sel = ObjCRuntime.sel("setRestorable:")
     ObjCRuntime.msgSend(null, this.ptr, sel, restorable)
 }
 
 /** @return Class<NSWindowRestoration> */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun NSWindow.restorationClass(): MemorySegment {
     val sel = ObjCRuntime.sel("restorationClass")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 fun NSWindow.setRestorationClass(restorationClass: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setRestorationClass:")
     ObjCRuntime.msgSend(null, this.ptr, sel, restorationClass)

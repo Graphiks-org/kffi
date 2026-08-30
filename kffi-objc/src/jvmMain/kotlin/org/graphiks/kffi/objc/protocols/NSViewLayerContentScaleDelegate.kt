@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -8,7 +10,10 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Kotlin/JVM interface for Objective-C protocol: NSViewLayerContentScaleDelegate
  * Inherits protocols: NSObject
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 interface NSViewLayerContentScaleDelegate {
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
     // @optional
     fun layer_shouldInheritContentsScale_fromWindow(layer: MemorySegment, newScale: Double, window: MemorySegment): Boolean =
         throw UnsupportedOperationException("Optional ObjC method 'layer:shouldInheritContentsScale:fromWindow:' not implemented")

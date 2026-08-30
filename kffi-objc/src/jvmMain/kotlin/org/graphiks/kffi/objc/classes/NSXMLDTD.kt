@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -27,6 +29,10 @@ open class NSXMLDTD(override val ptr: MemorySegment) : NSXMLNode(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", unavailable = true)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     override fun initWithKind_options(kind: NSXMLNodeKind, options: NSXMLNodeOptions): MemorySegment {
         val sel = ObjCRuntime.sel("initWithKind:options:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, kind.rawValue, options.rawValue) as MemorySegment

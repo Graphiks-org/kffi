@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -29,6 +31,10 @@ open class NSOutputStream(override val ptr: MemorySegment) : NSStream(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, buffer, capacity) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun initWithURL_append(url: MemorySegment, shouldAppend: Boolean): MemorySegment {
         val sel = ObjCRuntime.sel("initWithURL:append:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, url, shouldAppend) as MemorySegment
@@ -71,6 +77,10 @@ fun NSOutputStream_outputStreamToFileAtPath_append(path: MemorySegment, shouldAp
 }
 
 // Class method: +[NSOutputStream outputStreamWithURL:append:]
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSOutputStream_outputStreamWithURL_append(url: MemorySegment, shouldAppend: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("outputStreamWithURL:append:")
     val cls = ObjCRuntime.getClass("NSOutputStream")

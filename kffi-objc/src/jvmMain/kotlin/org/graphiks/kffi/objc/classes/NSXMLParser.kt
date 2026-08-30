@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -24,6 +26,10 @@ open class NSXMLParser(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `data`) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun initWithStream(stream: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithStream:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, stream) as MemorySegment
@@ -71,10 +77,18 @@ open class NSXMLParser(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property externalEntityResolvingPolicy
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun externalEntityResolvingPolicy(): NSXMLParserExternalEntityResolvingPolicy {
         val sel = ObjCRuntime.sel("externalEntityResolvingPolicy")
         return NSXMLParserExternalEntityResolvingPolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setExternalEntityResolvingPolicy(value: NSXMLParserExternalEntityResolvingPolicy) {
         val sel = ObjCRuntime.sel("setExternalEntityResolvingPolicy:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
@@ -82,10 +96,18 @@ open class NSXMLParser(override val ptr: MemorySegment) : NSObject(ptr) {
 
     // @property allowedExternalEntityURLs
     /** @return NSSet<NSURL *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun allowedExternalEntityURLs(): MemorySegment {
         val sel = ObjCRuntime.sel("allowedExternalEntityURLs")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setAllowedExternalEntityURLs(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setAllowedExternalEntityURLs:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

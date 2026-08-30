@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -74,6 +76,7 @@ fun NSAppleScript.copyWithZone(zone: NSZonePointer): MemorySegment {
 
 // ── Category: NSExtensions on NSAppleScript ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 fun NSAppleScript.richTextSource(): MemorySegment {
     val sel = ObjCRuntime.sel("richTextSource")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment

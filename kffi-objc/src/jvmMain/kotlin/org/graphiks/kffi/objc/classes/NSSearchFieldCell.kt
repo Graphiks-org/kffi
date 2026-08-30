@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -8,97 +10,117 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Kotlin/JVM wrapper for Objective-C class: NSSearchFieldCell
  * Superclass: NSTextFieldCell
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 open class NSSearchFieldCell(override val ptr: MemorySegment) : NSTextFieldCell(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSSearchFieldCell") }
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun initTextCell(string: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initTextCell:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, string) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCoder:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "all", unavailable = true)
     override fun initImageCell(image: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initImageCell:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, image) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun resetSearchButtonCell(): Unit {
         val sel = ObjCRuntime.sel("resetSearchButtonCell")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun resetCancelButtonCell(): Unit {
         val sel = ObjCRuntime.sel("resetCancelButtonCell")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun searchTextRectForBounds(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("searchTextRectForBounds:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun searchButtonRectForBounds(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("searchButtonRectForBounds:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun cancelButtonRectForBounds(rect: NSRect): NSRect {
         val sel = ObjCRuntime.sel("cancelButtonRectForBounds:")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)))
     }
 
     // @property searchButtonCell
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun searchButtonCell(): MemorySegment {
         val sel = ObjCRuntime.sel("searchButtonCell")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setSearchButtonCell(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setSearchButtonCell:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property cancelButtonCell
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun cancelButtonCell(): MemorySegment {
         val sel = ObjCRuntime.sel("cancelButtonCell")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setCancelButtonCell(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setCancelButtonCell:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property searchMenuTemplate
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun searchMenuTemplate(): MemorySegment {
         val sel = ObjCRuntime.sel("searchMenuTemplate")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setSearchMenuTemplate(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setSearchMenuTemplate:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property sendsWholeSearchString
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun sendsWholeSearchString(): Boolean {
         val sel = ObjCRuntime.sel("sendsWholeSearchString")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setSendsWholeSearchString(value: Boolean) {
         val sel = ObjCRuntime.sel("setSendsWholeSearchString:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property maximumRecents
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun maximumRecents(): Long {
         val sel = ObjCRuntime.sel("maximumRecents")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMaximumRecents(value: Long) {
         val sel = ObjCRuntime.sel("setMaximumRecents:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -106,30 +128,36 @@ open class NSSearchFieldCell(override val ptr: MemorySegment) : NSTextFieldCell(
 
     // @property recentSearches
     /** @return NSArray<NSString *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun recentSearches(): MemorySegment {
         val sel = ObjCRuntime.sel("recentSearches")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setRecentSearches(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setRecentSearches:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property recentsAutosaveName
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun recentsAutosaveName(): MemorySegment {
         val sel = ObjCRuntime.sel("recentsAutosaveName")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setRecentsAutosaveName(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setRecentsAutosaveName:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property sendsSearchStringImmediately
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun sendsSearchStringImmediately(): Boolean {
         val sel = ObjCRuntime.sel("sendsSearchStringImmediately")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setSendsSearchStringImmediately(value: Boolean) {
         val sel = ObjCRuntime.sel("setSendsSearchStringImmediately:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

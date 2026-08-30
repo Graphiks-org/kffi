@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -12,52 +14,93 @@ open class NSKeyedUnarchiver(override val ptr: MemorySegment) : NSCoder(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSKeyedUnarchiver") }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
         fun unarchivedObjectOfClass_fromData_error(cls: MemorySegment, `data`: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("unarchivedObjectOfClass:fromData:error:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, cls, `data`, error) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
         fun unarchivedArrayOfObjectsOfClass_fromData_error(cls: MemorySegment, `data`: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("unarchivedArrayOfObjectsOfClass:fromData:error:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, cls, `data`, error) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
         fun unarchivedDictionaryWithKeysOfClass_objectsOfClass_fromData_error(keyCls: MemorySegment, valueCls: MemorySegment, `data`: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("unarchivedDictionaryWithKeysOfClass:objectsOfClass:fromData:error:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, keyCls, valueCls, `data`, error) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
         fun unarchivedObjectOfClasses_fromData_error(classes: MemorySegment, `data`: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("unarchivedObjectOfClasses:fromData:error:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, classes, `data`, error) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
         fun unarchivedArrayOfObjectsOfClasses_fromData_error(classes: MemorySegment, `data`: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("unarchivedArrayOfObjectsOfClasses:fromData:error:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, classes, `data`, error) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
         fun unarchivedDictionaryWithKeysOfClasses_objectsOfClasses_fromData_error(keyClasses: MemorySegment, valueClasses: MemorySegment, `data`: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("unarchivedDictionaryWithKeysOfClasses:objectsOfClasses:fromData:error:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, keyClasses, valueClasses, `data`, error) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
         fun unarchiveObjectWithData(`data`: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("unarchiveObjectWithData:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `data`) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "swift", unavailable = true, message = "Use 'unarchiveTopLevelObjectWithData(_:) throws' instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
         fun unarchiveTopLevelObjectWithData_error(`data`: MemorySegment, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("unarchiveTopLevelObjectWithData:error:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `data`, error) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
         fun unarchiveObjectWithFile(path: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("unarchiveObjectWithFile:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, path) as MemorySegment
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +unarchivedObjectOfClass:fromData:error: instead")
         fun unarchiveObjectWithFile(path: String): MemorySegment = unarchiveObjectWithFile(ObjCRuntime.newNSString(Arena.global(), path))
 
         fun setClass_forClassName(cls: MemorySegment, codedName: MemorySegment): Unit {
@@ -78,16 +121,28 @@ open class NSKeyedUnarchiver(override val ptr: MemorySegment) : NSCoder(ptr) {
 
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
     open fun initForReadingFromData_error(`data`: MemorySegment, error: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initForReadingFromData:error:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `data`, error) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initForReadingFromData:error: instead")
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -initForReadingFromData:error: instead")
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initForReadingFromData:error: instead")
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initForReadingFromData:error: instead")
     open fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initForReadingFromData:error: instead")
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -initForReadingFromData:error: instead")
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initForReadingFromData:error: instead")
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initForReadingFromData:error: instead")
     open fun initForReadingWithData(`data`: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initForReadingWithData:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `data`) as MemorySegment
@@ -198,20 +253,36 @@ open class NSKeyedUnarchiver(override val ptr: MemorySegment) : NSCoder(ptr) {
     }
 
     // @property requiresSecureCoding
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun requiresSecureCoding(): Boolean {
         val sel = ObjCRuntime.sel("requiresSecureCoding")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setRequiresSecureCoding(value: Boolean) {
         val sel = ObjCRuntime.sel("setRequiresSecureCoding:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property decodingFailurePolicy
+    @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun decodingFailurePolicy(): NSDecodingFailurePolicy {
         val sel = ObjCRuntime.sel("decodingFailurePolicy")
         return NSDecodingFailurePolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setDecodingFailurePolicy(value: NSDecodingFailurePolicy) {
         val sel = ObjCRuntime.sel("setDecodingFailurePolicy:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)

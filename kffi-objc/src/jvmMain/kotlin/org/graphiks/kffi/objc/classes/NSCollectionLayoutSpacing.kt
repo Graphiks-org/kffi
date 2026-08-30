@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,20 +11,26 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSObject
  * Protocols: NSCopying
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 open class NSCollectionLayoutSpacing(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionLayoutSpacing") }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun flexibleSpacing(flexibleSpacing: Double): MemorySegment {
             val sel = ObjCRuntime.sel("flexibleSpacing:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, flexibleSpacing) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun fixedSpacing(fixedSpacing: Double): MemorySegment {
             val sel = ObjCRuntime.sel("fixedSpacing:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, fixedSpacing) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "all", unavailable = true)
         fun new(): MemorySegment {
             val sel = ObjCRuntime.sel("new")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
@@ -30,24 +38,29 @@ open class NSCollectionLayoutSpacing(override val ptr: MemorySegment) : NSObject
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "all", unavailable = true)
     open fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property spacing
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun spacing(): Double {
         val sel = ObjCRuntime.sel("spacing")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
 
     // @property isFlexibleSpacing
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isFlexibleSpacing(): Boolean {
         val sel = ObjCRuntime.sel("isFlexibleSpacing")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property isFixedSpacing
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isFixedSpacing(): Boolean {
         val sel = ObjCRuntime.sel("isFixedSpacing")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean

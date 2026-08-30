@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -97,11 +99,19 @@ fun NSMutableData_dataWithLength(length: Long): MemorySegment {
 
 // ── Category: NSMutableDataCompression on NSMutableData ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableData.decompressUsingAlgorithm_error(algorithm: NSDataCompressionAlgorithm, error: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("decompressUsingAlgorithm:error:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, algorithm.rawValue, error) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableData.compressUsingAlgorithm_error(algorithm: NSDataCompressionAlgorithm, error: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("compressUsingAlgorithm:error:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, algorithm.rawValue, error) as Boolean

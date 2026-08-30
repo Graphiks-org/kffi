@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -17,6 +19,7 @@ open class NSProxy(open val ptr: MemorySegment) {
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "all", unavailable = true, message = "not available in automatic reference counting mode")
         fun allocWithZone(zone: NSZonePointer): MemorySegment {
             val sel = ObjCRuntime.sel("allocWithZone:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, zone.segment) as MemorySegment
@@ -39,6 +42,7 @@ open class NSProxy(open val ptr: MemorySegment) {
         ObjCRuntime.msgSend(null, ptr, sel, invocation)
     }
 
+    @PlatformAvailability(platform = "swift", unavailable = true, message = "NSInvocation and related APIs not available")
     open fun methodSignatureForSelector(sel: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("methodSignatureForSelector:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, sel) as MemorySegment
@@ -54,11 +58,19 @@ open class NSProxy(open val ptr: MemorySegment) {
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", unavailable = true)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun allowsWeakReference(): Boolean {
         val sel = ObjCRuntime.sel("allowsWeakReference")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", unavailable = true)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun retainWeakReference(): Boolean {
         val sel = ObjCRuntime.sel("retainWeakReference")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,48 +11,93 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSObject
  * Protocols: NSTextElementProvider, NSSecureCoding
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 open class NSTextContentManager(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSTextContentManager") }
 
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun initWithCoder(coder: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCoder:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun addTextLayoutManager(textLayoutManager: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("addTextLayoutManager:")
         ObjCRuntime.msgSend(null, ptr, sel, textLayoutManager)
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun removeTextLayoutManager(textLayoutManager: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("removeTextLayoutManager:")
         ObjCRuntime.msgSend(null, ptr, sel, textLayoutManager)
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun synchronizeTextLayoutManagers(completionHandler: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("synchronizeTextLayoutManagers:")
         ObjCRuntime.msgSend(null, ptr, sel, completionHandler)
     }
 
     /** @return NSArray<NSTextElement *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun textElementsForRange(range: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("textElementsForRange:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, range) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun performEditingTransactionUsingBlock(transaction: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("performEditingTransactionUsingBlock:")
         ObjCRuntime.msgSend(null, ptr, sel, transaction)
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun recordEditActionInRange_newTextRange(originalTextRange: MemorySegment, newTextRange: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("recordEditActionInRange:newTextRange:")
         ObjCRuntime.msgSend(null, ptr, sel, originalTextRange, newTextRange)
@@ -58,10 +105,20 @@ open class NSTextContentManager(override val ptr: MemorySegment) : NSObject(ptr)
 
     // @property delegate
     /** @return id<NSTextContentManagerDelegate> */
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun delegate(): MemorySegment {
         val sel = ObjCRuntime.sel("delegate")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun setDelegate(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setDelegate:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -69,42 +126,82 @@ open class NSTextContentManager(override val ptr: MemorySegment) : NSObject(ptr)
 
     // @property textLayoutManagers
     /** @return NSArray<NSTextLayoutManager *> * */
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun textLayoutManagers(): MemorySegment {
         val sel = ObjCRuntime.sel("textLayoutManagers")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property primaryTextLayoutManager
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun primaryTextLayoutManager(): MemorySegment {
         val sel = ObjCRuntime.sel("primaryTextLayoutManager")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun setPrimaryTextLayoutManager(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setPrimaryTextLayoutManager:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property hasEditingTransaction
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun hasEditingTransaction(): Boolean {
         val sel = ObjCRuntime.sel("hasEditingTransaction")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property automaticallySynchronizesTextLayoutManagers
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun automaticallySynchronizesTextLayoutManagers(): Boolean {
         val sel = ObjCRuntime.sel("automaticallySynchronizesTextLayoutManagers")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun setAutomaticallySynchronizesTextLayoutManagers(value: Boolean) {
         val sel = ObjCRuntime.sel("setAutomaticallySynchronizesTextLayoutManagers:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property automaticallySynchronizesToBackingStore
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun automaticallySynchronizesToBackingStore(): Boolean {
         val sel = ObjCRuntime.sel("automaticallySynchronizesToBackingStore")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
     open fun setAutomaticallySynchronizesToBackingStore(value: Boolean) {
         val sel = ObjCRuntime.sel("setAutomaticallySynchronizesToBackingStore:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

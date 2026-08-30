@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -2238,14 +2240,8 @@ class CFStringInlineBuffer {
     fun directCStringBuffer(segment: MemorySegment, value: MemorySegment) =
         directCStringBuffer_VH.set(segment, 0L, value)
 
-    val rangeToBuffer_VH: VarHandle = layout.varHandle(groupElement("rangeToBuffer"))
-
-    @Suppress("UNCHECKED_CAST")
     fun rangeToBuffer(segment: MemorySegment): MemorySegment =
-        rangeToBuffer_VH.get(segment, 0L) as MemorySegment
-
-    fun rangeToBuffer(segment: MemorySegment, value: MemorySegment) =
-        rangeToBuffer_VH.set(segment, 0L, value)
+        segment.asSlice(layout.byteOffset(groupElement("rangeToBuffer")), layout.select(groupElement("rangeToBuffer")).byteSize())
 
     val bufferedRangeStart_VH: VarHandle = layout.varHandle(groupElement("bufferedRangeStart"))
 
@@ -2671,14 +2667,8 @@ class CGAffineTransformComponents {
 
     } // End companion object
 
-    val scale_VH: VarHandle = layout.varHandle(groupElement("scale"))
-
-    @Suppress("UNCHECKED_CAST")
     fun scale(segment: MemorySegment): MemorySegment =
-        scale_VH.get(segment, 0L) as MemorySegment
-
-    fun scale(segment: MemorySegment, value: MemorySegment) =
-        scale_VH.set(segment, 0L, value)
+        segment.asSlice(layout.byteOffset(groupElement("scale")), layout.select(groupElement("scale")).byteSize())
 
     val horizontalShear_VH: VarHandle = layout.varHandle(groupElement("horizontalShear"))
 
@@ -2698,14 +2688,8 @@ class CGAffineTransformComponents {
     fun rotation(segment: MemorySegment, value: Double) =
         rotation_VH.set(segment, 0L, value)
 
-    val translation_VH: VarHandle = layout.varHandle(groupElement("translation"))
-
-    @Suppress("UNCHECKED_CAST")
     fun translation(segment: MemorySegment): MemorySegment =
-        translation_VH.get(segment, 0L) as MemorySegment
-
-    fun translation(segment: MemorySegment, value: MemorySegment) =
-        translation_VH.set(segment, 0L, value)
+        segment.asSlice(layout.byteOffset(groupElement("translation")), layout.select(groupElement("translation")).byteSize())
 } // End class
 
 /**
@@ -3576,6 +3560,7 @@ typealias dispatch_queue_t = MemorySegment
 /**
  * {@snippet lang=c : typedef Long dispatch_queue_priority_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchQueue.GlobalQueuePriority")
 typealias dispatch_queue_priority_t = Long
 
 /**
@@ -3671,6 +3656,7 @@ typealias mach_msg_return_t = Int
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long dispatch_source_mach_send_flags_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchSource.MachSendEvent")
 typealias dispatch_source_mach_send_flags_t = Long
 
 /**
@@ -3681,21 +3667,25 @@ typealias dispatch_source_mach_recv_flags_t = Long
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long dispatch_source_memorypressure_flags_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchSource.MemoryPressureEvent")
 typealias dispatch_source_memorypressure_flags_t = Long
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long dispatch_source_proc_flags_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchSource.ProcessEvent")
 typealias dispatch_source_proc_flags_t = Long
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long dispatch_source_vnode_flags_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchSource.FileSystemEvent")
 typealias dispatch_source_vnode_flags_t = Long
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long dispatch_source_timer_flags_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchSource.TimerFlags")
 typealias dispatch_source_timer_flags_t = Long
 
 /**
@@ -3706,21 +3696,25 @@ typealias dispatch_once_t = Long
 /**
  * {@snippet lang=c : typedef Int dispatch_fd_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Unavailable in Swift")
 typealias dispatch_fd_t = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long dispatch_io_type_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchIO.StreamType")
 typealias dispatch_io_type_t = Long
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long dispatch_io_close_flags_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchIO.CloseFlags")
 typealias dispatch_io_close_flags_t = Long
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long dispatch_io_interval_flags_t;}
  */
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use DispatchIO.IntervalFlags")
 typealias dispatch_io_interval_flags_t = Long
 
 /**
@@ -4932,14 +4926,8 @@ class CFXMLDocumentTypeInfo {
 
     } // End companion object
 
-    val externalID_VH: VarHandle = layout.varHandle(groupElement("externalID"))
-
-    @Suppress("UNCHECKED_CAST")
     fun externalID(segment: MemorySegment): MemorySegment =
-        externalID_VH.get(segment, 0L) as MemorySegment
-
-    fun externalID(segment: MemorySegment, value: MemorySegment) =
-        externalID_VH.set(segment, 0L, value)
+        segment.asSlice(layout.byteOffset(groupElement("externalID")), layout.select(groupElement("externalID")).byteSize())
 } // End class
 
 /**
@@ -4971,14 +4959,8 @@ class CFXMLNotationInfo {
 
     } // End companion object
 
-    val externalID_VH: VarHandle = layout.varHandle(groupElement("externalID"))
-
-    @Suppress("UNCHECKED_CAST")
     fun externalID(segment: MemorySegment): MemorySegment =
-        externalID_VH.get(segment, 0L) as MemorySegment
-
-    fun externalID(segment: MemorySegment, value: MemorySegment) =
-        externalID_VH.set(segment, 0L, value)
+        segment.asSlice(layout.byteOffset(groupElement("externalID")), layout.select(groupElement("externalID")).byteSize())
 } // End class
 
 /**
@@ -5178,14 +5160,8 @@ class CFXMLEntityInfo {
     fun replacementText(segment: MemorySegment, value: MemorySegment) =
         replacementText_VH.set(segment, 0L, value)
 
-    val entityID_VH: VarHandle = layout.varHandle(groupElement("entityID"))
-
-    @Suppress("UNCHECKED_CAST")
     fun entityID(segment: MemorySegment): MemorySegment =
-        entityID_VH.get(segment, 0L) as MemorySegment
-
-    fun entityID(segment: MemorySegment, value: MemorySegment) =
-        entityID_VH.set(segment, 0L, value)
+        segment.asSlice(layout.byteOffset(groupElement("entityID")), layout.select(groupElement("entityID")).byteSize())
 
     val notationName_VH: VarHandle = layout.varHandle(groupElement("notationName"))
 
@@ -6503,11 +6479,19 @@ typealias SecIdentityRef = _SecIdentityPointer
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int SecKeychainAttrType;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", unavailable = true)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 typealias SecKeychainAttrType = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int SecKeychainStatus;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", unavailable = true)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 typealias SecKeychainStatus = Int
 
 /**
@@ -7023,21 +7007,25 @@ typealias SecAccessOwnerType = Int
 /**
  * {@snippet lang=c : typedef UNSIGNED = Short CE_KeyUsage;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 7, deprecatedSubminor = -1)
 typealias CE_KeyUsage = Short
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int CE_CrlReason;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 7, deprecatedSubminor = -1)
 typealias CE_CrlReason = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Short CE_NetscapeCertType;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 7, deprecatedSubminor = -1)
 typealias CE_NetscapeCertType = Short
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Char CE_CrlDistReasonFlags;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 7, deprecatedSubminor = -1)
 typealias CE_CrlDistReasonFlags = Byte
 
 /**
@@ -7053,6 +7041,7 @@ typealias CE_DeltaCrl = Int
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int CE_InhibitAnyPolicy;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 7, deprecatedSubminor = -1)
 typealias CE_InhibitAnyPolicy = Int
 
 /**
@@ -7988,11 +7977,13 @@ typealias DateOrders = Byte
 /**
  * {@snippet lang=c : typedef SIGNED = Char TokenResults;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Deprecated")
 typealias TokenResults = Byte
 
 /**
  * {@snippet lang=c : typedef Short ScriptTokenType;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Deprecated")
 typealias ScriptTokenType = Short
 
 /**
@@ -8710,6 +8701,7 @@ typealias AEBuildErrorCode = Int
 /**
  * {@snippet lang=c : typedef Long CFNetDiagnosticStatus;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1)
 typealias CFNetDiagnosticStatus = Long
 
 /**
@@ -8855,6 +8847,10 @@ typealias NSLinguisticTag = MemorySegment
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSUndoManagerUserInfoKey;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 typealias NSUndoManagerUserInfoKey = MemorySegment
 
 /**
@@ -8983,6 +8979,10 @@ class NSAffineTransformStructPointer internal constructor(internal val segment: 
 /**
  * {@snippet lang=c : typedef (Void)* NSBackgroundActivityCompletionHandler;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 typealias NSBackgroundActivityCompletionHandler = MemorySegment
 
 /**
@@ -9023,11 +9023,13 @@ typealias NSUserAutomatorTaskCompletionHandler = MemorySegment
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSColorSpaceName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSColorSpaceName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSDeviceDescriptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSDeviceDescriptionKey = MemorySegment
 
 /**
@@ -9648,106 +9650,129 @@ class CGContentToneMappingInfo {
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSGraphicsContextAttributeKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSGraphicsContextAttributeKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSGraphicsContextRepresentationFormatName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSGraphicsContextRepresentationFormatName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityAttributeName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityAttributeName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityParameterizedAttributeName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityParameterizedAttributeName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityAnnotationAttributeKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityAnnotationAttributeKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityFontAttributeKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityFontAttributeKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityOrientationValue;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityOrientationValue = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilitySortDirectionValue;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilitySortDirectionValue = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityRulerMarkerTypeValue;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityRulerMarkerTypeValue = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityRulerUnitValue;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityRulerUnitValue = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityActionName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityActionName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityNotificationName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityNotificationName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityRole;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityRole = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilitySubrole;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilitySubrole = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilityNotificationUserInfoKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityNotificationUserInfoKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef (Void)* NSAccessibilityLoadingToken;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityLoadingToken = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAccessibilitySearchKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilitySearchKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long NSAccessibilityDateTimeComponentsFlags;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAccessibilityDateTimeComponentsFlags = Long
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSWorkspaceDesktopImageOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSWorkspaceDesktopImageOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSWorkspaceFileOperationName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1)
 typealias NSWorkspaceFileOperationName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSWorkspaceLaunchConfigurationKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSWorkspaceOpenConfiguration instead.")
 typealias NSWorkspaceLaunchConfigurationKey = MemorySegment
 
 /**
@@ -10783,6 +10808,10 @@ typealias OSAtomic_int64_aligned64_t = Long
 /**
  * {@snippet lang=c : typedef Int OSSpinLock;}
  */
+@PlatformAvailability(platform = "ios", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use os_unfair_lock() from <os/lock.h> instead")
+@PlatformAvailability(platform = "macos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 12, deprecatedSubminor = -1, message = "Use os_unfair_lock() from <os/lock.h> instead")
+@PlatformAvailability(platform = "tvos", deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use os_unfair_lock() from <os/lock.h> instead")
+@PlatformAvailability(platform = "watchos", deprecated = true, deprecatedMajor = 3, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use os_unfair_lock() from <os/lock.h> instead")
 typealias OSSpinLock = Int
 
 /**
@@ -11179,31 +11208,37 @@ typealias CMXYZComponent = Short
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int CMDisplayIDType;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1)
 typealias CMDisplayIDType = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int CMChromaticAdaptation;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1)
 typealias CMChromaticAdaptation = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int CMBitmapColorSpace;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1)
 typealias CMBitmapColorSpace = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int CMDeviceState;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1)
 typealias CMDeviceState = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int CMDeviceID;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1)
 typealias CMDeviceID = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int CMDeviceProfileID;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1)
 typealias CMDeviceProfileID = Int
 
 /**
@@ -11554,251 +11589,309 @@ typealias ATSUDirectDataSelector = Int
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPasteboardType;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPasteboardType = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPasteboardName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPasteboardName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPasteboardDetectionPattern;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 4, introducedSubminor = -1)
 typealias NSPasteboardDetectionPattern = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPasteboardMetadataType;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 4, introducedSubminor = -1)
 typealias NSPasteboardMetadataType = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPasteboardReadingOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPasteboardReadingOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSNibName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSNibName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSUserInterfaceItemIdentifier;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSUserInterfaceItemIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Float NSAnimationProgress;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAnimationProgress = Float
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSViewAnimationKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSViewAnimationKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSViewAnimationEffectName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSViewAnimationEffectName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAnimatablePropertyKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAnimatablePropertyKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAppearanceName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAppearanceName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Long NSTrackingRectTag;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSTrackingRectTag = Long
 
 /**
  * {@snippet lang=c : typedef Long NSToolTipTag;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSToolTipTag = Long
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSViewFullScreenModeOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSViewFullScreenModeOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSDefinitionOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSDefinitionOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSDefinitionPresentationType;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSDefinitionPresentationType = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTextTabOptionKey;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 typealias NSTextTabOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Long NSControlStateValue;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSControlStateValue = Long
 
 /**
  * {@snippet lang=c : typedef Long NSCellStateValue;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1)
 typealias NSCellStateValue = Long
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPrinterTypeName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPrinterTypeName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPrinterPaperName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPrinterPaperName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPrintInfoAttributeKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPrintInfoAttributeKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPrintJobDispositionValue;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPrintJobDispositionValue = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPrintInfoSettingKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPrintInfoSettingKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSBindingName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSBindingName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSBindingOption;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSBindingOption = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSBindingInfoKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSBindingInfoKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Double NSAppKitVersion;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAppKitVersion = Double
 
 /**
  * {@snippet lang=c : typedef Long NSModalResponse;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSModalResponse = Long
 
 /**
  * {@snippet lang=c : STRUCT _NSModalSession
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 class _NSModalSessionPointer internal constructor(internal val segment: MemorySegment)
 
 /**
  * {@snippet lang=c : typedef (Declared(_NSModalSession))* NSModalSession;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSModalSession = _NSModalSessionPointer
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAboutPanelOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSAboutPanelOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSServiceProviderName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSServiceProviderName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSColorListName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSColorListName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSColorName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSColorName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSHelpBookName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSHelpBookName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSHelpAnchorName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSHelpAnchorName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSHelpManagerContextHelpKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSHelpManagerContextHelpKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTouchBarItemIdentifier;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 typealias NSTouchBarItemIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Float NSTouchBarItemPriority;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
 typealias NSTouchBarItemPriority = Float
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTouchBarCustomizationIdentifier;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 typealias NSTouchBarCustomizationIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPopoverCloseReasonValue;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPopoverCloseReasonValue = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSStoryboardName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSStoryboardName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSStoryboardSceneIdentifier;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSStoryboardSceneIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef (Void)* NSStoryboardControllerCreator;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSStoryboardControllerCreator = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSStoryboardSegueIdentifier;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSStoryboardSegueIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSCollectionViewSupplementaryElementKind;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSCollectionViewSupplementaryElementKind = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSCollectionViewDecorationElementKind;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSCollectionViewDecorationElementKind = MemorySegment
 
 /**
  * {@snippet lang=c : STRUCT NSDirectionalEdgeInsets
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 class NSDirectionalEdgeInsets internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
@@ -11837,49 +11930,62 @@ class NSDirectionalEdgeInsets internal constructor(internal val segment: MemoryS
 
     private val top_VH: VarHandle = layout.varHandle(groupElement("top"))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun top(): Double = top_VH.get(segment, 0L) as Double
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun top(value: Double) =
         top_VH.set(segment, 0L, value)
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     var top: Double
         get() = top()
         set(value) = top(value)
 
     private val leading_VH: VarHandle = layout.varHandle(groupElement("leading"))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun leading(): Double = leading_VH.get(segment, 0L) as Double
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun leading(value: Double) =
         leading_VH.set(segment, 0L, value)
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     var leading: Double
         get() = leading()
         set(value) = leading(value)
 
     private val bottom_VH: VarHandle = layout.varHandle(groupElement("bottom"))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun bottom(): Double = bottom_VH.get(segment, 0L) as Double
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun bottom(value: Double) =
         bottom_VH.set(segment, 0L, value)
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     var bottom: Double
         get() = bottom()
         set(value) = bottom(value)
 
     private val trailing_VH: VarHandle = layout.varHandle(groupElement("trailing"))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun trailing(): Double = trailing_VH.get(segment, 0L) as Double
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun trailing(value: Double) =
         trailing_VH.set(segment, 0L, value)
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     var trailing: Double
         get() = trailing()
         set(value) = trailing(value)
 } // End class
 
+@PlatformAvailability(platform = "ios", unavailable = true)
 class NSDirectionalEdgeInsetsPointer internal constructor(internal val segment: MemorySegment) {
     fun pointed(index: Long = 0L): NSDirectionalEdgeInsets {
         val offset = NSDirectionalEdgeInsets.byteSize * index
@@ -11891,146 +11997,177 @@ class NSDirectionalEdgeInsetsPointer internal constructor(internal val segment: 
 /**
  * {@snippet lang=c : typedef (Void)* NSCollectionViewCompositionalLayoutSectionProvider;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSCollectionViewCompositionalLayoutSectionProvider = MemorySegment
 
 /**
  * {@snippet lang=c : typedef (Void)* NSCollectionLayoutSectionVisibleItemsInvalidationHandler;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSCollectionLayoutSectionVisibleItemsInvalidationHandler = MemorySegment
 
 /**
  * {@snippet lang=c : typedef (Void)* NSCollectionLayoutGroupCustomItemProvider;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSCollectionLayoutGroupCustomItemProvider = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSCollectionViewTransitionLayoutAnimatedKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSCollectionViewTransitionLayoutAnimatedKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef (Void)* NSCollectionViewDiffableDataSourceItemProvider;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSCollectionViewDiffableDataSourceItemProvider = MemorySegment
 
 /**
  * {@snippet lang=c : typedef (Void)* NSCollectionViewDiffableDataSourceSupplementaryViewProvider;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSCollectionViewDiffableDataSourceSupplementaryViewProvider = MemorySegment
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int NSFontSymbolicTraits;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontSymbolicTraits = Int
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontDescriptorAttributeName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontDescriptorAttributeName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontDescriptorTraitKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontDescriptorTraitKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontDescriptorVariationKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontDescriptorVariationKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontDescriptorFeatureKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontDescriptorFeatureKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Double NSFontWeight;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontWeight = Double
 
 /**
  * {@snippet lang=c : typedef Double NSFontWidth;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontWidth = Double
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontDescriptorSystemDesign;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontDescriptorSystemDesign = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontTextStyle;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 typealias NSFontTextStyle = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontTextStyleOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 typealias NSFontTextStyleOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int NSFontFamilyClass;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontFamilyClass = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int NSGlyph;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSGlyph = Int
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontCollectionMatchingOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontCollectionMatchingOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontCollectionName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontCollectionName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontCollectionUserInfoKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontCollectionUserInfoKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSFontCollectionActionTypeKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSFontCollectionActionTypeKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Long NSWindowLevel;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSWindowLevel = Long
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSWindowFrameAutosaveName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSWindowFrameAutosaveName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSWindowPersistableFrameDescriptor;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSWindowPersistableFrameDescriptor = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSWindowTabbingIdentifier;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSWindowTabbingIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSImageHintKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSImageHintKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSBitmapImageRepPropertyKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSBitmapImageRepPropertyKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSBrowserColumnsAutosaveName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSBrowserColumnsAutosaveName = MemorySegment
 
 /**
@@ -12195,6 +12332,7 @@ class _CGLPBufferObjectPointer internal constructor(internal val segment: Memory
 /**
  * {@snippet lang=c : typedef (Declared(_CGLPBufferObject))* CGLPBufferObj;}
  */
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 7, deprecatedSubminor = -1, message = "OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings)")
 typealias CGLPBufferObj = _CGLPBufferObjectPointer
 
 /**
@@ -12370,151 +12508,223 @@ typealias CIImageAutoAdjustmentOption = MemorySegment
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSDraggingImageComponentKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSDraggingImageComponentKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Float NSLayoutPriority;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 typealias NSLayoutPriority = Float
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSImageName;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 typealias NSImageName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSharingServiceName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSSharingServiceName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Double NSSliderAccessoryWidth;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
 typealias NSSliderAccessoryWidth = Double
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSpeechSynthesizerVoiceName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSSpeechSynthesizerVoiceName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSVoiceAttributeKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSVoiceAttributeKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSpeechDictionaryKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSSpeechDictionaryKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSVoiceGenderName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSVoiceGenderName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSpeechPropertyKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSSpeechPropertyKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSpeechMode;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSSpeechMode = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSpeechStatusKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSSpeechStatusKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSpeechErrorKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSSpeechErrorKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSpeechSynthesizerInfoKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSSpeechSynthesizerInfoKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSpeechPhonemeInfoKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSSpeechPhonemeInfoKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSpeechCommandDelimiterKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 typealias NSSpeechCommandDelimiterKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTextCheckingOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSTextCheckingOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSplitViewAutosaveName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSSplitViewAutosaveName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPrintPanelJobStyleHint;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPrintPanelJobStyleHint = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPrintPanelAccessorySummaryKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPrintPanelAccessorySummaryKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPasteboardTypeTextFinderOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPasteboardTypeTextFinderOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef Float NSStackViewVisibilityPriority;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 typealias NSStackViewVisibilityPriority = Float
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTextContentType;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSTextContentType = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTextEffectStyle;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 typealias NSTextEffectStyle = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTextHighlightStyle;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 typealias NSTextHighlightStyle = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTextHighlightColorScheme;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 typealias NSTextHighlightColorScheme = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAttributedStringDocumentType;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 typealias NSAttributedStringDocumentType = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTextLayoutSectionKey;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 typealias NSTextLayoutSectionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAttributedStringDocumentAttributeKey;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 typealias NSAttributedStringDocumentAttributeKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSAttributedStringDocumentReadingOptionKey;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 typealias NSAttributedStringDocumentReadingOptionKey = MemorySegment
 
 /**
@@ -12525,11 +12735,13 @@ typealias NSTextStorageEditedOptions = Long
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSToolbarIdentifier;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 typealias NSToolbarIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSToolbarItemIdentifier;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 typealias NSToolbarItemIdentifier = MemorySegment
 
 /**
@@ -12540,71 +12752,93 @@ typealias NSToolbarUserInfoKey = MemorySegment
 /**
  * {@snippet lang=c : typedef Long NSToolbarItemVisibilityPriority;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
 typealias NSToolbarItemVisibilityPriority = Long
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPasteboardTypeFindPanelSearchOptionKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPasteboardTypeFindPanelSearchOptionKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTableViewAutosaveName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSTableViewAutosaveName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef (Void)* NSTableViewDiffableDataSourceCellProvider;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSTableViewDiffableDataSourceCellProvider = MemorySegment
 
 /**
  * {@snippet lang=c : typedef (Void)* NSTableViewDiffableDataSourceRowProvider;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSTableViewDiffableDataSourceRowProvider = MemorySegment
 
 /**
  * {@snippet lang=c : typedef (Void)* NSTableViewDiffableDataSourceSectionHeaderViewProvider;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSTableViewDiffableDataSourceSectionHeaderViewProvider = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSRulerViewUnitName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSRulerViewUnitName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Long NSInterfaceStyle;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1)
 typealias NSInterfaceStyle = Long
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSStatusItemAutosaveName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSStatusItemAutosaveName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSoundName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSSoundName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSoundPlaybackDeviceIdentifier;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSSoundPlaybackDeviceIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int NSOpenGLPixelFormatAttribute;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)")
 typealias NSOpenGLPixelFormatAttribute = Int
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* CAMediaTimingFillMode;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 typealias CAMediaTimingFillMode = MemorySegment
 
 /**
  * {@snippet lang=c : STRUCT CATransform3D
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 class CATransform3D internal constructor(internal val segment: MemorySegment) {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
@@ -12842,6 +13076,10 @@ class CATransform3D internal constructor(internal val segment: MemorySegment) {
         set(value) = m44(value)
 } // End class
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 class CATransform3DPointer internal constructor(internal val segment: MemorySegment) {
     fun pointed(index: Long = 0L): CATransform3D {
         val offset = CATransform3D.byteSize * index
@@ -12853,59 +13091,98 @@ class CATransform3DPointer internal constructor(internal val segment: MemorySegm
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* CALayerContentsGravity;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 typealias CALayerContentsGravity = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* CALayerContentsFormat;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 typealias CALayerContentsFormat = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* CALayerContentsFilter;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 typealias CALayerContentsFilter = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* CALayerCornerCurve;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 typealias CALayerCornerCurve = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* CAToneMapMode;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 typealias CAToneMapMode = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* CADynamicRange;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 typealias CADynamicRange = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSSearchFieldRecentsAutosaveName;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSSearchFieldRecentsAutosaveName = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTextListMarkerFormat;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 typealias NSTextListMarkerFormat = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSRuleEditorPredicatePartKey;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSRuleEditorPredicatePartKey = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSPageControllerObjectIdentifier;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSPageControllerObjectIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSTextInputSourceIdentifier;}
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 typealias NSTextInputSourceIdentifier = MemorySegment
 
 /**
  * {@snippet lang=c : typedef typedef NSString = (Void)* NSDataAssetName;}
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 typealias NSDataAssetName = MemorySegment

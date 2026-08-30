@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -104,6 +106,7 @@ open class NSTypesetter(override val ptr: MemorySegment) : NSObject(ptr) {
         ObjCRuntime.msgSend(null, ptr, sel, layoutManager, startGlyphIndex, maxNumLines, nextGlyph)
     }
 
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun layoutCharactersInRange_forLayoutManager_maximumNumberOfLineFragments(characterRange: NSRange, layoutManager: MemorySegment, maxNumLines: Long): NSRange {
         val sel = ObjCRuntime.sel("layoutCharactersInRange:forLayoutManager:maximumNumberOfLineFragments:")
         return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, ptr, sel, ObjCRuntime.ObjCStructArg(characterRange.segment, NSRange.layout), layoutManager, maxNumLines))
@@ -318,21 +321,25 @@ fun NSTypesetter.actionForControlCharacterAtIndex(charIndex: Long): NSTypesetter
     return NSTypesetterControlCharacterAction(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, charIndex) as Long)
 }
 
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1)
 fun NSTypesetter.getGlyphsInRange_glyphs_characterIndexes_glyphInscriptions_elasticBits_bidiLevels(glyphsRange: NSRange, glyphBuffer: MemorySegment, charIndexBuffer: MemorySegment, inscribeBuffer: MemorySegment, elasticBuffer: MemorySegment, bidiLevelBuffer: MemorySegment): Long {
     val sel = ObjCRuntime.sel("getGlyphsInRange:glyphs:characterIndexes:glyphInscriptions:elasticBits:bidiLevels:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, ObjCRuntime.ObjCStructArg(glyphsRange.segment, NSRange.layout), glyphBuffer, charIndexBuffer, inscribeBuffer, elasticBuffer, bidiLevelBuffer) as Long
 }
 
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1)
 fun NSTypesetter.substituteGlyphsInRange_withGlyphs(glyphRange: NSRange, glyphs: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("substituteGlyphsInRange:withGlyphs:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(glyphRange.segment, NSRange.layout), glyphs)
 }
 
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1)
 fun NSTypesetter.insertGlyph_atGlyphIndex_characterIndex(glyph: Int, glyphIndex: Long, characterIndex: Long): Unit {
     val sel = ObjCRuntime.sel("insertGlyph:atGlyphIndex:characterIndex:")
     ObjCRuntime.msgSend(null, this.ptr, sel, glyph, glyphIndex, characterIndex)
 }
 
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1)
 fun NSTypesetter.deleteGlyphsInRange(glyphRange: NSRange): Unit {
     val sel = ObjCRuntime.sel("deleteGlyphsInRange:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(glyphRange.segment, NSRange.layout))

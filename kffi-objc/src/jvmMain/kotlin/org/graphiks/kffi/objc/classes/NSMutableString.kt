@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -56,6 +58,10 @@ fun NSMutableString.replaceOccurrencesOfString_withString_options_range(target: 
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, target, replacement, options.rawValue, ObjCRuntime.ObjCStructArg(searchRange.segment, NSRange.layout)) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableString.applyTransform_reverse_range_updatedRange(transform: MemorySegment, reverse: Boolean, range: NSRange, resultingRange: NSRangePointer): Boolean {
     val sel = ObjCRuntime.sel("applyTransform:reverse:range:updatedRange:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, transform, reverse, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), resultingRange.segment) as Boolean

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -29,6 +31,10 @@ open class NSCoder(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
     open fun decodeValueOfObjCType_at_size(type: MemorySegment, `data`: MemorySegment, size: Long): Unit {
         val sel = ObjCRuntime.sel("decodeValueOfObjCType:at:size:")
         ObjCRuntime.msgSend(null, ptr, sel, type, `data`, size)
@@ -91,6 +97,11 @@ fun NSCoder.decodeObject(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use 'decodeTopLevelObject() throws' instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeTopLevelObjectAndReturnError(error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeTopLevelObjectAndReturnError:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, error) as MemorySegment
@@ -121,11 +132,13 @@ fun NSCoder.decodePropertyList(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "all", unavailable = true, message = "not available in automatic reference counting mode")
 fun NSCoder.setObjectZone(zone: NSZonePointer): Unit {
     val sel = ObjCRuntime.sel("setObjectZone:")
     ObjCRuntime.msgSend(null, this.ptr, sel, zone.segment)
 }
 
+@PlatformAvailability(platform = "all", unavailable = true, message = "not available in automatic reference counting mode")
 fun NSCoder.objectZone(): NSZonePointer {
     val sel = ObjCRuntime.sel("objectZone")
     return NSZonePointer(ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment)
@@ -186,6 +199,11 @@ fun NSCoder.decodeObjectForKey(key: MemorySegment): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use 'decodeObject(of:, forKey:)' instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeTopLevelObjectForKey_error(key: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeTopLevelObjectForKey:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key, error) as MemorySegment
@@ -226,71 +244,131 @@ fun NSCoder.decodeBytesForKey_returnedLength(key: MemorySegment, lengthp: Memory
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key, lengthp) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 4, introducedSubminor = -1)
 fun NSCoder.decodeBytesWithMinimumLength(length: Long): MemorySegment {
     val sel = ObjCRuntime.sel("decodeBytesWithMinimumLength:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, length) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 18, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 2, introducedMinor = 4, introducedSubminor = -1)
 fun NSCoder.decodeBytesForKey_minimumLength(key: MemorySegment, length: Long): MemorySegment {
     val sel = ObjCRuntime.sel("decodeBytesForKey:minimumLength:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key, length) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.encodeInteger_forKey(value: Long, key: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("encodeInteger:forKey:")
     ObjCRuntime.msgSend(null, this.ptr, sel, value, key)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeIntegerForKey(key: MemorySegment): Long {
     val sel = ObjCRuntime.sel("decodeIntegerForKey:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, key) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeObjectOfClass_forKey(aClass: MemorySegment, key: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeObjectOfClass:forKey:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, aClass, key) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use 'decodeObject(of:, forKey:)' instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeTopLevelObjectOfClass_forKey_error(aClass: MemorySegment, key: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeTopLevelObjectOfClass:forKey:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, aClass, key, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeArrayOfObjectsOfClass_forKey(cls: MemorySegment, key: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeArrayOfObjectsOfClass:forKey:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, cls, key) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeDictionaryWithKeysOfClass_objectsOfClass_forKey(keyCls: MemorySegment, objectCls: MemorySegment, key: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeDictionaryWithKeysOfClass:objectsOfClass:forKey:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, keyCls, objectCls, key) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeObjectOfClasses_forKey(classes: MemorySegment, key: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeObjectOfClasses:forKey:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, classes, key) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use 'decodeObject(of:, forKey:)' instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeTopLevelObjectOfClasses_forKey_error(classes: MemorySegment, key: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeTopLevelObjectOfClasses:forKey:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, classes, key, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeArrayOfObjectsOfClasses_forKey(classes: MemorySegment, key: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeArrayOfObjectsOfClasses:forKey:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, classes, key) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodeDictionaryWithKeysOfClasses_objectsOfClasses_forKey(keyClasses: MemorySegment, objectClasses: MemorySegment, key: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodeDictionaryWithKeysOfClasses:objectsOfClasses:forKey:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, keyClasses, objectClasses, key) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodePropertyListForKey(key: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("decodePropertyListForKey:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.failWithError(error: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("failWithError:")
     ObjCRuntime.msgSend(null, this.ptr, sel, error)
@@ -306,22 +384,38 @@ fun NSCoder.allowsKeyedCoding(): Boolean {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.requiresSecureCoding(): Boolean {
     val sel = ObjCRuntime.sel("requiresSecureCoding")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
 /** @return NSSet<Class> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.allowedClasses(): MemorySegment {
     val sel = ObjCRuntime.sel("allowedClasses")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.decodingFailurePolicy(): NSDecodingFailurePolicy {
     val sel = ObjCRuntime.sel("decodingFailurePolicy")
     return NSDecodingFailurePolicy(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSCoder.error(): MemorySegment {
     val sel = ObjCRuntime.sel("error")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
@@ -329,11 +423,19 @@ fun NSCoder.error(): MemorySegment {
 
 // ── Category: NSTypedstreamCompatibility on NSCoder ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
 fun NSCoder.encodeNXObject(`object`: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("encodeNXObject:")
     ObjCRuntime.msgSend(null, this.ptr, sel, `object`)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
 fun NSCoder.decodeNXObject(): MemorySegment {
     val sel = ObjCRuntime.sel("decodeNXObject")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
@@ -341,6 +443,10 @@ fun NSCoder.decodeNXObject(): MemorySegment {
 
 // ── Category: NSDeprecated on NSCoder ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSCoder.decodeValueOfObjCType_at(type: MemorySegment, `data`: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("decodeValueOfObjCType:at:")
     ObjCRuntime.msgSend(null, this.ptr, sel, type, `data`)
@@ -412,6 +518,8 @@ fun NSCoder.decodeRectForKey(key: MemorySegment): NSRect {
 
 // ── Category: NSAppKitColorExtensions on NSCoder ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1)
 fun NSCoder.decodeNXColor(): MemorySegment {
     val sel = ObjCRuntime.sel("decodeNXColor")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment

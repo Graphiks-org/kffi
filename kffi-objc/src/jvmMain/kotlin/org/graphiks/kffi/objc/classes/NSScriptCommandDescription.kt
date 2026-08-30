@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -15,6 +17,7 @@ open class NSScriptCommandDescription(override val ptr: MemorySegment) : NSObjec
 
     }
 
+    @PlatformAvailability(platform = "all", unavailable = true)
     open fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,16 +11,19 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSObject
  * Protocols: NSSecureCoding
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 open class NSColorList(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSColorList") }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun colorListNamed(name: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("colorListNamed:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, name) as MemorySegment
         }
 
         /** @return NSArray<NSColorList *> * */
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun availableColorLists(): MemorySegment {
             val sel = ObjCRuntime.sel("availableColorLists")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
@@ -26,58 +31,73 @@ open class NSColorList(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initWithName(name: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithName:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, name) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun initWithName_fromFile(name: MemorySegment, path: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithName:fromFile:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, name, path) as MemorySegment
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     fun initWithName_fromFile(name: MemorySegment, path: String): MemorySegment = initWithName_fromFile(name, ObjCRuntime.newNSString(Arena.global(), path))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setColor_forKey(color: MemorySegment, key: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("setColor:forKey:")
         ObjCRuntime.msgSend(null, ptr, sel, color, key)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun insertColor_key_atIndex(color: MemorySegment, key: MemorySegment, loc: Long): Unit {
         val sel = ObjCRuntime.sel("insertColor:key:atIndex:")
         ObjCRuntime.msgSend(null, ptr, sel, color, key, loc)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun removeColorWithKey(key: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("removeColorWithKey:")
         ObjCRuntime.msgSend(null, ptr, sel, key)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun colorWithKey(key: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("colorWithKey:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, key) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
     open fun writeToURL_error(url: MemorySegment, errPtr: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("writeToURL:error:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, url, errPtr) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -writeToURL:error: instead")
     open fun writeToFile(path: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("writeToFile:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, path) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -writeToURL:error: instead")
     fun writeToFile(path: String): Boolean = writeToFile(ObjCRuntime.newNSString(Arena.global(), path))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun removeFile(): Unit {
         val sel = ObjCRuntime.sel("removeFile")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
     // @property name
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun name(): MemorySegment {
         val sel = ObjCRuntime.sel("name")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
@@ -85,12 +105,14 @@ open class NSColorList(override val ptr: MemorySegment) : NSObject(ptr) {
 
     // @property allKeys
     /** @return NSArray<NSColorName> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun allKeys(): MemorySegment {
         val sel = ObjCRuntime.sel("allKeys")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property editable
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isEditable(): Boolean {
         val sel = ObjCRuntime.sel("isEditable")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean

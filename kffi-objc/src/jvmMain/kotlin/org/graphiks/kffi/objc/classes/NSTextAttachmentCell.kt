@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,6 +11,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSCell
  * Protocols: NSTextAttachmentCell
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 open class NSTextAttachmentCell(override val ptr: MemorySegment) : NSCell(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSTextAttachmentCell") }

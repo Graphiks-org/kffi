@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -88,36 +90,68 @@ open class NSScriptClassDescription(override val ptr: MemorySegment) : NSClassDe
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
     fun isLocationRequiredToCreateForKey(toManyRelationshipKey: String): Boolean = isLocationRequiredToCreateForKey(ObjCRuntime.newNSString(Arena.global(), toManyRelationshipKey))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun hasPropertyForKey(key: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("hasPropertyForKey:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, key) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     fun hasPropertyForKey(key: String): Boolean = hasPropertyForKey(ObjCRuntime.newNSString(Arena.global(), key))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun hasOrderedToManyRelationshipForKey(key: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("hasOrderedToManyRelationshipForKey:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, key) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     fun hasOrderedToManyRelationshipForKey(key: String): Boolean = hasOrderedToManyRelationshipForKey(ObjCRuntime.newNSString(Arena.global(), key))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun hasReadablePropertyForKey(key: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("hasReadablePropertyForKey:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, key) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     fun hasReadablePropertyForKey(key: String): Boolean = hasReadablePropertyForKey(ObjCRuntime.newNSString(Arena.global(), key))
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun hasWritablePropertyForKey(key: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("hasWritablePropertyForKey:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, key) as Boolean
     }
 
     /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     fun hasWritablePropertyForKey(key: String): Boolean = hasWritablePropertyForKey(ObjCRuntime.newNSString(Arena.global(), key))
 
     // @property suiteName
@@ -183,6 +217,10 @@ open class NSScriptClassDescription(override val ptr: MemorySegment) : NSClassDe
 
 // ── Category: NSDeprecated on NSScriptClassDescription ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 5, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSScriptClassDescription.isReadOnlyKey(key: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("isReadOnlyKey:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, key) as Boolean

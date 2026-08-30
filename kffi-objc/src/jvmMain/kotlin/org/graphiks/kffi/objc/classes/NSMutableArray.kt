@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -93,6 +95,10 @@ fun NSMutableArray.removeObjectIdenticalTo(anObject: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, anObject)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Not supported")
 fun NSMutableArray.removeObjectsFromIndices_numIndices(indices: MemorySegment, cnt: Long): Unit {
     val sel = ObjCRuntime.sel("removeObjectsFromIndices:numIndices:")
     ObjCRuntime.msgSend(null, this.ptr, sel, indices, cnt)
@@ -148,16 +154,28 @@ fun NSMutableArray.replaceObjectsAtIndexes_withObjects(indexes: MemorySegment, o
     ObjCRuntime.msgSend(null, this.ptr, sel, indexes, objects)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableArray.setObject_atIndexedSubscript(obj: MemorySegment, idx: Long): Unit {
     val sel = ObjCRuntime.sel("setObject:atIndexedSubscript:")
     ObjCRuntime.msgSend(null, this.ptr, sel, obj, idx)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableArray.sortUsingComparator(cmptr: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("sortUsingComparator:")
     ObjCRuntime.msgSend(null, this.ptr, sel, cmptr)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableArray.sortWithOptions_usingComparator(opts: NSSortOptions, cmptr: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("sortWithOptions:usingComparator:")
     ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, cmptr)
@@ -188,6 +206,11 @@ fun NSMutableArray_arrayWithContentsOfURL(url: MemorySegment): MemorySegment {
 
 // ── Category: NSMutableArrayDiffing on NSMutableArray ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "NSMutableArray diffing methods are not available in Swift")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableArray.applyDifference(difference: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("applyDifference:")
     ObjCRuntime.msgSend(null, this.ptr, sel, difference)

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -84,6 +86,10 @@ fun NSMutableSet_setWithCapacity(numItems: Long): MemorySegment {
 
 // ── Category: NSPredicateSupport on NSMutableSet ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableSet.filterUsingPredicate(predicate: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("filterUsingPredicate:")
     ObjCRuntime.msgSend(null, this.ptr, sel, predicate)

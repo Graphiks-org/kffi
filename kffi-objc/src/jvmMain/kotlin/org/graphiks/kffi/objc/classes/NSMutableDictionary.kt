@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -63,6 +65,10 @@ fun NSMutableDictionary.setDictionary(otherDictionary: MemorySegment): Unit {
     ObjCRuntime.msgSend(null, this.ptr, sel, otherDictionary)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableDictionary.setObject_forKeyedSubscript(obj: MemorySegment, key: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setObject:forKeyedSubscript:")
     ObjCRuntime.msgSend(null, this.ptr, sel, obj, key)
@@ -94,6 +100,10 @@ fun NSMutableDictionary_dictionaryWithContentsOfURL(url: MemorySegment): MemoryS
 // ── Category: NSSharedKeySetDictionary on NSMutableDictionary ─────────────────────────────────────────
 
 // Class method: +[NSMutableDictionary dictionaryWithSharedKeySet:]
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSMutableDictionary_dictionaryWithSharedKeySet(keyset: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dictionaryWithSharedKeySet:")
     val cls = ObjCRuntime.getClass("NSMutableDictionary")

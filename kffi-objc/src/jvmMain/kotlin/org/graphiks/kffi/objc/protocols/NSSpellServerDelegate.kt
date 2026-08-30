@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -31,15 +33,27 @@ interface NSSpellServerDelegate {
     fun spellServer_suggestCompletionsForPartialWordRange_inString_language(sender: MemorySegment, range: NSRange, string: MemorySegment, language: MemorySegment): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'spellServer:suggestCompletionsForPartialWordRange:inString:language:' not implemented")
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     // @optional
     fun spellServer_checkGrammarInString_language_details(sender: MemorySegment, stringToCheck: MemorySegment, language: MemorySegment, details: MemorySegment): NSRange =
         throw UnsupportedOperationException("Optional ObjC method 'spellServer:checkGrammarInString:language:details:' not implemented")
 
     /** @return NSArray<NSTextCheckingResult *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     // @optional
     fun spellServer_checkString_offset_types_options_orthography_wordCount(sender: MemorySegment, stringToCheck: MemorySegment, offset: Long, checkingTypes: Long, options: MemorySegment, orthography: MemorySegment, wordCount: MemorySegment): MemorySegment =
         throw UnsupportedOperationException("Optional ObjC method 'spellServer:checkString:offset:types:options:orthography:wordCount:' not implemented")
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     // @optional
     fun spellServer_recordResponse_toCorrection_forWord_language(sender: MemorySegment, response: Long, correction: MemorySegment, word: MemorySegment, language: MemorySegment): Unit =
         throw UnsupportedOperationException("Optional ObjC method 'spellServer:recordResponse:toCorrection:forWord:language:' not implemented")

@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -66,11 +68,19 @@ fun NSDate.timeIntervalSinceDate(anotherDate: MemorySegment): Double {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, this.ptr, sel, anotherDate) as Double
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use dateByAddingTimeInterval instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "Use dateByAddingTimeInterval instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use dateByAddingTimeInterval instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use dateByAddingTimeInterval instead")
 fun NSDate.addTimeInterval(seconds: Double): MemorySegment {
     val sel = ObjCRuntime.sel("addTimeInterval:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, seconds) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDate.dateByAddingTimeInterval(ti: Double): MemorySegment {
     val sel = ObjCRuntime.sel("dateByAddingTimeInterval:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ti) as MemorySegment
@@ -190,6 +200,10 @@ fun NSDate_distantPast(): MemorySegment {
 }
 
 // Class method: +[NSDate now]
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSDate_now(): MemorySegment {
     val sel = ObjCRuntime.sel("now")
     val cls = ObjCRuntime.getClass("NSDate")
@@ -198,22 +212,38 @@ fun NSDate_now(): MemorySegment {
 
 // ── Category: NSCalendarDateExtras on NSDate ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSDate.dateWithCalendarFormat_timeZone(format: MemorySegment, aTimeZone: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dateWithCalendarFormat:timeZone:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, aTimeZone) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSDate.descriptionWithCalendarFormat_timeZone_locale(format: MemorySegment, aTimeZone: MemorySegment, locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("descriptionWithCalendarFormat:timeZone:locale:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, aTimeZone, locale) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSDateFormatter instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSDateFormatter instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSDateFormatter instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSDateFormatter instead")
 fun NSDate.initWithString(description: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithString:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, description) as MemorySegment
 }
 
 // Class method: +[NSDate dateWithNaturalLanguageString:locale:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Create an NSDateFormatter with `init` and set the dateFormat property instead.")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Create an NSDateFormatter with `init` and set the dateFormat property instead.")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Create an NSDateFormatter with `init` and set the dateFormat property instead.")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Create an NSDateFormatter with `init` and set the dateFormat property instead.")
 fun NSDate_dateWithNaturalLanguageString_locale(string: MemorySegment, locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dateWithNaturalLanguageString:locale:")
     val cls = ObjCRuntime.getClass("NSDate")
@@ -221,6 +251,10 @@ fun NSDate_dateWithNaturalLanguageString_locale(string: MemorySegment, locale: M
 }
 
 // Class method: +[NSDate dateWithNaturalLanguageString:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Create an NSDateFormatter with `init` and set the dateFormat property instead.")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Create an NSDateFormatter with `init` and set the dateFormat property instead.")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Create an NSDateFormatter with `init` and set the dateFormat property instead.")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Create an NSDateFormatter with `init` and set the dateFormat property instead.")
 fun NSDate_dateWithNaturalLanguageString(string: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dateWithNaturalLanguageString:")
     val cls = ObjCRuntime.getClass("NSDate")
@@ -228,6 +262,10 @@ fun NSDate_dateWithNaturalLanguageString(string: MemorySegment): MemorySegment {
 }
 
 // Class method: +[NSDate dateWithString:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 8, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSDateFormatter instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 10, deprecatedSubminor = -1, message = "Use NSDateFormatter instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSDateFormatter instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use NSDateFormatter instead")
 fun NSDate_dateWithString(aString: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dateWithString:")
     val cls = ObjCRuntime.getClass("NSDate")

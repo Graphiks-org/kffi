@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -13,6 +15,10 @@ open class NSScriptObjectSpecifier(override val ptr: MemorySegment) : NSObject(p
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSScriptObjectSpecifier") }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", unavailable = true)
+        @PlatformAvailability(platform = "watchos", unavailable = true)
         fun objectSpecifierWithDescriptor(descriptor: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("objectSpecifierWithDescriptor:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, descriptor) as MemorySegment
@@ -146,6 +152,10 @@ open class NSScriptObjectSpecifier(override val ptr: MemorySegment) : NSObject(p
     }
 
     // @property descriptor
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun descriptor(): MemorySegment {
         val sel = ObjCRuntime.sel("descriptor")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment

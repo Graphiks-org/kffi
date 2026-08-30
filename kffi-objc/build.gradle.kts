@@ -21,6 +21,9 @@ kotlin {
         jvmTest.dependencies {
             implementation(kotlin("test"))
         }
+        jvmTest.languageSettings {
+            optIn("org.graphiks.kffi.objc.PlatformAvailability")
+        }
     }
 }
 

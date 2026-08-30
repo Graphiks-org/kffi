@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,6 +11,10 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSObject
  * Protocols: NSSecureCoding, NSCopying
  */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 open class NSURLCredential(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSURLCredential") }
@@ -16,6 +22,10 @@ open class NSURLCredential(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property persistence
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun persistence(): NSURLCredentialPersistence {
         val sel = ObjCRuntime.sel("persistence")
         return NSURLCredentialPersistence(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
@@ -55,27 +65,47 @@ fun NSURLCredential.copyWithZone(zone: NSZonePointer): MemorySegment {
 
 // ── Category: NSInternetPassword on NSURLCredential ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential.initWithUser_password_persistence(user: MemorySegment, password: MemorySegment, persistence: NSURLCredentialPersistence): MemorySegment {
     val sel = ObjCRuntime.sel("initWithUser:password:persistence:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, user, password, persistence.rawValue) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential.user(): MemorySegment {
     val sel = ObjCRuntime.sel("user")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential.password(): MemorySegment {
     val sel = ObjCRuntime.sel("password")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential.hasPassword(): Boolean {
     val sel = ObjCRuntime.sel("hasPassword")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
 // Class method: +[NSURLCredential credentialWithUser:password:persistence:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential_credentialWithUser_password_persistence(user: MemorySegment, password: MemorySegment, persistence: NSURLCredentialPersistence): MemorySegment {
     val sel = ObjCRuntime.sel("credentialWithUser:password:persistence:")
     val cls = ObjCRuntime.getClass("NSURLCredential")
@@ -84,22 +114,38 @@ fun NSURLCredential_credentialWithUser_password_persistence(user: MemorySegment,
 
 // ── Category: NSClientCertificate on NSURLCredential ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential.initWithIdentity_certificates_persistence(identity: SecIdentityRef, certArray: MemorySegment, persistence: NSURLCredentialPersistence): MemorySegment {
     val sel = ObjCRuntime.sel("initWithIdentity:certificates:persistence:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, identity.segment, certArray, persistence.rawValue) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential.identity(): SecIdentityRef {
     val sel = ObjCRuntime.sel("identity")
     return SecIdentityRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential.certificates(): MemorySegment {
     val sel = ObjCRuntime.sel("certificates")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
 // Class method: +[NSURLCredential credentialWithIdentity:certificates:persistence:]
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential_credentialWithIdentity_certificates_persistence(identity: SecIdentityRef, certArray: MemorySegment, persistence: NSURLCredentialPersistence): MemorySegment {
     val sel = ObjCRuntime.sel("credentialWithIdentity:certificates:persistence:")
     val cls = ObjCRuntime.getClass("NSURLCredential")
@@ -108,12 +154,20 @@ fun NSURLCredential_credentialWithIdentity_certificates_persistence(identity: Se
 
 // ── Category: NSServerTrust on NSURLCredential ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential.initWithTrust(trust: SecTrustRef): MemorySegment {
     val sel = ObjCRuntime.sel("initWithTrust:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, trust.segment) as MemorySegment
 }
 
 // Class method: +[NSURLCredential credentialForTrust:]
+@PlatformAvailability(platform = "ios", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSURLCredential_credentialForTrust(trust: SecTrustRef): MemorySegment {
     val sel = ObjCRuntime.sel("credentialForTrust:")
     val cls = ObjCRuntime.getClass("NSURLCredential")

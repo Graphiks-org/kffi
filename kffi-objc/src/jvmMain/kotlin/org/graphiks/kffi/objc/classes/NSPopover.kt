@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,37 +11,46 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSResponder
  * Protocols: NSAppearanceCustomization, NSAccessibilityElement, NSAccessibility
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 open class NSPopover(override val ptr: MemorySegment) : NSResponder(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSPopover") }
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun initWithCoder(coder: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithCoder:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, coder) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun showRelativeToRect_ofView_preferredEdge(positioningRect: NSRect, positioningView: MemorySegment, preferredEdge: NSRectEdge): Unit {
         val sel = ObjCRuntime.sel("showRelativeToRect:ofView:preferredEdge:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(positioningRect.segment, NSRect.layout), positioningView, preferredEdge.rawValue)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
     open fun showRelativeToToolbarItem(toolbarItem: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("showRelativeToToolbarItem:")
         ObjCRuntime.msgSend(null, ptr, sel, toolbarItem)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun performClose(sender: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("performClose:")
         ObjCRuntime.msgSend(null, ptr, sel, sender)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun close(): Unit {
         val sel = ObjCRuntime.sel("close")
         ObjCRuntime.msgSend(null, ptr, sel)
@@ -47,98 +58,123 @@ open class NSPopover(override val ptr: MemorySegment) : NSResponder(ptr) {
 
     // @property delegate
     /** @return id<NSPopoverDelegate> */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun delegate(): MemorySegment {
         val sel = ObjCRuntime.sel("delegate")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setDelegate(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setDelegate:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property appearance
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun appearance(): MemorySegment {
         val sel = ObjCRuntime.sel("appearance")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun setAppearance(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setAppearance:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property effectiveAppearance
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun effectiveAppearance(): MemorySegment {
         val sel = ObjCRuntime.sel("effectiveAppearance")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property behavior
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun behavior(): NSPopoverBehavior {
         val sel = ObjCRuntime.sel("behavior")
         return NSPopoverBehavior(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setBehavior(value: NSPopoverBehavior) {
         val sel = ObjCRuntime.sel("setBehavior:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property animates
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun animates(): Boolean {
         val sel = ObjCRuntime.sel("animates")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAnimates(value: Boolean) {
         val sel = ObjCRuntime.sel("setAnimates:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property contentViewController
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun contentViewController(): MemorySegment {
         val sel = ObjCRuntime.sel("contentViewController")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContentViewController(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setContentViewController:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property contentSize
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun contentSize(): NSSize {
         val sel = ObjCRuntime.sel("contentSize")
         return NSSize(ObjCRuntime.msgSendStruct(NSSize.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setContentSize(value: NSSize) {
         val sel = ObjCRuntime.sel("setContentSize:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSSize.layout))
     }
 
     // @property shown
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isShown(): Boolean {
         val sel = ObjCRuntime.sel("isShown")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property detached
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
     open fun isDetached(): Boolean {
         val sel = ObjCRuntime.sel("isDetached")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property positioningRect
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun positioningRect(): NSRect {
         val sel = ObjCRuntime.sel("positioningRect")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setPositioningRect(value: NSRect) {
         val sel = ObjCRuntime.sel("setPositioningRect:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(value.segment, NSRect.layout))
     }
 
     // @property hasFullSizeContent
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
     open fun hasFullSizeContent(): Boolean {
         val sel = ObjCRuntime.sel("hasFullSizeContent")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
     open fun setHasFullSizeContent(value: Boolean) {
         val sel = ObjCRuntime.sel("setHasFullSizeContent:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

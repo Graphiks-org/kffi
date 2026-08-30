@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -122,6 +124,10 @@ fun NSString.localizedCaseInsensitiveCompare(string: MemorySegment): NSCompariso
     return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string) as Long)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.localizedStandardCompare(string: MemorySegment): NSComparisonResult {
     val sel = ObjCRuntime.sel("localizedStandardCompare:")
     return NSComparisonResult(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, string) as Long)
@@ -147,21 +153,37 @@ fun NSString.commonPrefixWithString_options(str: MemorySegment, mask: NSStringCo
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, str, mask.rawValue) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.containsString(str: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("containsString:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, str) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.localizedCaseInsensitiveContainsString(str: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("localizedCaseInsensitiveContainsString:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, str) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.localizedStandardContainsString(str: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("localizedStandardContainsString:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, str) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.localizedStandardRangeOfString(str: MemorySegment): NSRange {
     val sel = ObjCRuntime.sel("localizedStandardRangeOfString:")
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, str))
@@ -182,6 +204,10 @@ fun NSString.rangeOfString_options_range(searchString: MemorySegment, mask: NSSt
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, searchString, mask.rawValue, ObjCRuntime.ObjCStructArg(rangeOfReceiverToSearch.segment, NSRange.layout)))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.rangeOfString_options_range_locale(searchString: MemorySegment, mask: NSStringCompareOptions, rangeOfReceiverToSearch: NSRange, locale: MemorySegment): NSRange {
     val sel = ObjCRuntime.sel("rangeOfString:options:range:locale:")
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, searchString, mask.rawValue, ObjCRuntime.ObjCStructArg(rangeOfReceiverToSearch.segment, NSRange.layout), locale))
@@ -207,6 +233,10 @@ fun NSString.rangeOfComposedCharacterSequenceAtIndex(index: Long): NSRange {
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, index))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.rangeOfComposedCharacterSequencesForRange(range: NSRange): NSRange {
     val sel = ObjCRuntime.sel("rangeOfComposedCharacterSequencesForRange:")
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)))
@@ -222,16 +252,28 @@ fun NSString.stringByAppendingFormat(format: MemorySegment): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.uppercaseStringWithLocale(locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("uppercaseStringWithLocale:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, locale) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.lowercaseStringWithLocale(locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("lowercaseStringWithLocale:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, locale) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.capitalizedStringWithLocale(locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("capitalizedStringWithLocale:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, locale) as MemorySegment
@@ -257,11 +299,19 @@ fun NSString.paragraphRangeForRange(range: NSRange): NSRange {
     return NSRange(ObjCRuntime.msgSendStruct(NSRange.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.enumerateSubstringsInRange_options_usingBlock(range: NSRange, opts: NSStringEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateSubstringsInRange:options:usingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), opts.rawValue, block)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.enumerateLinesUsingBlock(block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateLinesUsingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, block)
@@ -314,6 +364,10 @@ fun NSString.componentsSeparatedByString(separator: MemorySegment): MemorySegmen
 }
 
 /** @return NSArray<NSString *> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.componentsSeparatedByCharactersInSet(separator: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("componentsSeparatedByCharactersInSet:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, separator) as MemorySegment
@@ -329,26 +383,46 @@ fun NSString.stringByPaddingToLength_withString_startingAtIndex(newLength: Long,
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, newLength, padString, padIndex) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.stringByFoldingWithOptions_locale(options: NSStringCompareOptions, locale: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringByFoldingWithOptions:locale:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, options.rawValue, locale) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.stringByReplacingOccurrencesOfString_withString_options_range(target: MemorySegment, replacement: MemorySegment, options: NSStringCompareOptions, searchRange: NSRange): MemorySegment {
     val sel = ObjCRuntime.sel("stringByReplacingOccurrencesOfString:withString:options:range:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, target, replacement, options.rawValue, ObjCRuntime.ObjCStructArg(searchRange.segment, NSRange.layout)) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.stringByReplacingOccurrencesOfString_withString(target: MemorySegment, replacement: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringByReplacingOccurrencesOfString:withString:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, target, replacement) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.stringByReplacingCharactersInRange_withString(range: NSRange, replacement: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringByReplacingCharactersInRange:withString:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), replacement) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.stringByApplyingTransform_reverse(transform: MemorySegment, reverse: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("stringByApplyingTransform:reverse:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, transform, reverse) as MemorySegment
@@ -409,21 +483,41 @@ fun NSString.initWithFormat_locale_arguments(format: MemorySegment, locale: Memo
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, locale, argList) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use string interpolations instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.initWithValidatedFormat_validFormatSpecifiers_error(format: MemorySegment, validFormatSpecifiers: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithValidatedFormat:validFormatSpecifiers:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, validFormatSpecifiers, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use string interpolations instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.initWithValidatedFormat_validFormatSpecifiers_locale_error(format: MemorySegment, validFormatSpecifiers: MemorySegment, locale: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithValidatedFormat:validFormatSpecifiers:locale:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, validFormatSpecifiers, locale, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use string interpolations instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.initWithValidatedFormat_validFormatSpecifiers_arguments_error(format: MemorySegment, validFormatSpecifiers: MemorySegment, argList: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithValidatedFormat:validFormatSpecifiers:arguments:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, validFormatSpecifiers, argList, error) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use string interpolations instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.initWithValidatedFormat_validFormatSpecifiers_locale_arguments_error(format: MemorySegment, validFormatSpecifiers: MemorySegment, locale: MemorySegment, argList: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithValidatedFormat:validFormatSpecifiers:locale:arguments:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, format, validFormatSpecifiers, locale, argList, error) as MemorySegment
@@ -489,16 +583,28 @@ fun NSString.intValue(): Int {
     return ObjCRuntime.msgSend(ValueLayout.JAVA_INT, this.ptr, sel) as Int
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.integerValue(): Long {
     val sel = ObjCRuntime.sel("integerValue")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.longLongValue(): Long {
     val sel = ObjCRuntime.sel("longLongValue")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.boolValue(): Boolean {
     val sel = ObjCRuntime.sel("boolValue")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
@@ -519,16 +625,28 @@ fun NSString.capitalizedString(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.localizedUppercaseString(): MemorySegment {
     val sel = ObjCRuntime.sel("localizedUppercaseString")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.localizedLowercaseString(): MemorySegment {
     val sel = ObjCRuntime.sel("localizedLowercaseString")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.localizedCapitalizedString(): MemorySegment {
     val sel = ObjCRuntime.sel("localizedCapitalizedString")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
@@ -629,6 +747,11 @@ fun NSString_localizedStringWithFormat(format: MemorySegment): MemorySegment {
 }
 
 // Class method: +[NSString stringWithValidatedFormat:validFormatSpecifiers:error:]
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use string interpolations instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 fun NSString_stringWithValidatedFormat_validFormatSpecifiers_error(format: MemorySegment, validFormatSpecifiers: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringWithValidatedFormat:validFormatSpecifiers:error:")
     val cls = ObjCRuntime.getClass("NSString")
@@ -636,6 +759,11 @@ fun NSString_stringWithValidatedFormat_validFormatSpecifiers_error(format: Memor
 }
 
 // Class method: +[NSString localizedStringWithValidatedFormat:validFormatSpecifiers:error:]
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use string interpolations instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 fun NSString_localizedStringWithValidatedFormat_validFormatSpecifiers_error(format: MemorySegment, validFormatSpecifiers: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("localizedStringWithValidatedFormat:validFormatSpecifiers:error:")
     val cls = ObjCRuntime.getClass("NSString")
@@ -694,6 +822,10 @@ fun NSString_defaultCStringEncoding(): Long {
 // ── Category: NSStringEncodingDetection on NSString ─────────────────────────────────────────
 
 // Class method: +[NSString stringEncodingForData:encodingOptions:convertedString:usedLossyConversion:]
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString_stringEncodingForData_encodingOptions_convertedString_usedLossyConversion(`data`: MemorySegment, opts: MemorySegment, string: MemorySegment, usedLossyConversion: MemorySegment): Long {
     val sel = ObjCRuntime.sel("stringEncodingForData:encodingOptions:convertedString:usedLossyConversion:")
     val cls = ObjCRuntime.getClass("NSString")
@@ -716,66 +848,118 @@ fun NSString.propertyListFromStringsFileFormat(): MemorySegment {
 
 // ── Category: NSStringDeprecated on NSString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -cStringUsingEncoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -cStringUsingEncoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -cStringUsingEncoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -cStringUsingEncoding: instead")
 fun NSString.cString(): MemorySegment {
     val sel = ObjCRuntime.sel("cString")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -cStringUsingEncoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -cStringUsingEncoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -cStringUsingEncoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -cStringUsingEncoding: instead")
 fun NSString.lossyCString(): MemorySegment {
     val sel = ObjCRuntime.sel("lossyCString")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -lengthOfBytesUsingEncoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -lengthOfBytesUsingEncoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -lengthOfBytesUsingEncoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -lengthOfBytesUsingEncoding: instead")
 fun NSString.cStringLength(): Long {
     val sel = ObjCRuntime.sel("cStringLength")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
 fun NSString.getCString(bytes: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("getCString:")
     ObjCRuntime.msgSend(null, this.ptr, sel, bytes)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
 fun NSString.getCString_maxLength(bytes: MemorySegment, maxLength: Long): Unit {
     val sel = ObjCRuntime.sel("getCString:maxLength:")
     ObjCRuntime.msgSend(null, this.ptr, sel, bytes, maxLength)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getCString:maxLength:encoding: instead")
 fun NSString.getCString_maxLength_range_remainingRange(bytes: MemorySegment, maxLength: Long, aRange: NSRange, leftoverRange: NSRangePointer): Unit {
     val sel = ObjCRuntime.sel("getCString:maxLength:range:remainingRange:")
     ObjCRuntime.msgSend(null, this.ptr, sel, bytes, maxLength, ObjCRuntime.ObjCStructArg(aRange.segment, NSRange.layout), leftoverRange.segment)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -writeToFile:atomically:encoding:error: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -writeToFile:atomically:encoding:error: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -writeToFile:atomically:encoding:error: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -writeToFile:atomically:encoding:error: instead")
 fun NSString.writeToFile_atomically(path: MemorySegment, useAuxiliaryFile: Boolean): Boolean {
     val sel = ObjCRuntime.sel("writeToFile:atomically:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, path, useAuxiliaryFile) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -writeToURL:atomically:encoding:error: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -writeToURL:atomically:encoding:error: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -writeToURL:atomically:encoding:error: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -writeToURL:atomically:encoding:error: instead")
 fun NSString.writeToURL_atomically(url: MemorySegment, atomically: Boolean): Boolean {
     val sel = ObjCRuntime.sel("writeToURL:atomically:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, atomically) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithContentsOfFile:encoding:error: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -initWithContentsOfFile:encoding:error: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithContentsOfFile:encoding:error: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithContentsOfFile:encoding:error: instead")
 fun NSString.initWithContentsOfFile(path: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfFile:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithContentsOfURL:encoding:error: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -initWithContentsOfURL:encoding:error: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithContentsOfURL:encoding:error: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithContentsOfURL:encoding:error: instead")
 fun NSString.initWithContentsOfURL(url: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfURL:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
 fun NSString.initWithCStringNoCopy_length_freeWhenDone(bytes: MemorySegment, length: Long, freeBuffer: Boolean): MemorySegment {
     val sel = ObjCRuntime.sel("initWithCStringNoCopy:length:freeWhenDone:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, bytes, length, freeBuffer) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
 fun NSString.initWithCString_length(bytes: MemorySegment, length: Long): MemorySegment {
     val sel = ObjCRuntime.sel("initWithCString:length:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, bytes, length) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initWithCString:encoding: instead")
 fun NSString.initWithCString(bytes: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithCString:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, bytes) as MemorySegment
@@ -787,6 +971,10 @@ fun NSString.getCharacters(buffer: MemorySegment): Unit {
 }
 
 // Class method: +[NSString stringWithContentsOfFile:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithContentsOfFile:encoding:error: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use +stringWithContentsOfFile:encoding:error: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithContentsOfFile:encoding:error: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithContentsOfFile:encoding:error: instead")
 fun NSString_stringWithContentsOfFile(path: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringWithContentsOfFile:")
     val cls = ObjCRuntime.getClass("NSString")
@@ -794,6 +982,10 @@ fun NSString_stringWithContentsOfFile(path: MemorySegment): MemorySegment {
 }
 
 // Class method: +[NSString stringWithContentsOfURL:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithContentsOfURL:encoding:error: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use +stringWithContentsOfURL:encoding:error: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithContentsOfURL:encoding:error: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithContentsOfURL:encoding:error: instead")
 fun NSString_stringWithContentsOfURL(url: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringWithContentsOfURL:")
     val cls = ObjCRuntime.getClass("NSString")
@@ -801,6 +993,10 @@ fun NSString_stringWithContentsOfURL(url: MemorySegment): MemorySegment {
 }
 
 // Class method: +[NSString stringWithCString:length:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithCString:encoding:")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use +stringWithCString:encoding:")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithCString:encoding:")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithCString:encoding:")
 fun NSString_stringWithCString_length(bytes: MemorySegment, length: Long): MemorySegment {
     val sel = ObjCRuntime.sel("stringWithCString:length:")
     val cls = ObjCRuntime.getClass("NSString")
@@ -808,6 +1004,10 @@ fun NSString_stringWithCString_length(bytes: MemorySegment, length: Long): Memor
 }
 
 // Class method: +[NSString stringWithCString:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithCString:encoding: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1, message = "Use +stringWithCString:encoding: instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithCString:encoding: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +stringWithCString:encoding: instead")
 fun NSString_stringWithCString(bytes: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringWithCString:")
     val cls = ObjCRuntime.getClass("NSString")
@@ -816,6 +1016,10 @@ fun NSString_stringWithCString(bytes: MemorySegment): MemorySegment {
 
 // ── Category: NSBundleExtensionMethods on NSString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.variantFittingPresentationWidth(width: Long): MemorySegment {
     val sel = ObjCRuntime.sel("variantFittingPresentationWidth:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, width) as MemorySegment
@@ -914,21 +1118,37 @@ fun NSString_pathWithComponents(components: MemorySegment): MemorySegment {
 
 // ── Category: NSURLUtilities on NSString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("stringByAddingPercentEncodingWithAllowedCharacters:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, allowedCharacters) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -stringByAddingPercentEncodingWithAllowedCharacters: instead, which always uses the recommended UTF-8 encoding, and which encodes for a specific URL component or subcomponent since each URL component or subcomponent has different rules for what characters are valid.")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use -stringByAddingPercentEncodingWithAllowedCharacters: instead, which always uses the recommended UTF-8 encoding, and which encodes for a specific URL component or subcomponent since each URL component or subcomponent has different rules for what characters are valid.")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -stringByAddingPercentEncodingWithAllowedCharacters: instead, which always uses the recommended UTF-8 encoding, and which encodes for a specific URL component or subcomponent since each URL component or subcomponent has different rules for what characters are valid.")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -stringByAddingPercentEncodingWithAllowedCharacters: instead, which always uses the recommended UTF-8 encoding, and which encodes for a specific URL component or subcomponent since each URL component or subcomponent has different rules for what characters are valid.")
 fun NSString.stringByAddingPercentEscapesUsingEncoding(enc: Long): MemorySegment {
     val sel = ObjCRuntime.sel("stringByAddingPercentEscapesUsingEncoding:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, enc) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -stringByRemovingPercentEncoding instead, which always uses the recommended UTF-8 encoding.")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "Use -stringByRemovingPercentEncoding instead, which always uses the recommended UTF-8 encoding.")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 9, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -stringByRemovingPercentEncoding instead, which always uses the recommended UTF-8 encoding.")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 2, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -stringByRemovingPercentEncoding instead, which always uses the recommended UTF-8 encoding.")
 fun NSString.stringByReplacingPercentEscapesUsingEncoding(enc: Long): MemorySegment {
     val sel = ObjCRuntime.sel("stringByReplacingPercentEscapesUsingEncoding:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, enc) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.stringByRemovingPercentEncoding(): MemorySegment {
     val sel = ObjCRuntime.sel("stringByRemovingPercentEncoding")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
@@ -937,11 +1157,19 @@ fun NSString.stringByRemovingPercentEncoding(): MemorySegment {
 // ── Category: NSLinguisticAnalysis on NSString ─────────────────────────────────────────
 
 /** @return NSArray<NSLinguisticTag> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API")
 fun NSString.linguisticTagsInRange_scheme_options_orthography_tokenRanges(range: NSRange, scheme: MemorySegment, options: NSLinguisticTaggerOptions, orthography: MemorySegment, tokenRanges: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("linguisticTagsInRange:scheme:options:orthography:tokenRanges:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), scheme, options.rawValue, orthography, tokenRanges) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1, message = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API")
 fun NSString.enumerateLinguisticTagsInRange_scheme_options_orthography_usingBlock(range: NSRange, scheme: MemorySegment, options: NSLinguisticTaggerOptions, orthography: MemorySegment, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateLinguisticTagsInRange:scheme:options:orthography:usingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout), scheme, options.rawValue, orthography, block)
@@ -951,16 +1179,31 @@ fun NSString.enumerateLinguisticTagsInRange_scheme_options_orthography_usingBloc
 
 // ── Category: NSStringDrawing on NSString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.sizeWithAttributes(attrs: MemorySegment): CGSize {
     val sel = ObjCRuntime.sel("sizeWithAttributes:")
     return CGSize(ObjCRuntime.msgSendStruct(CGSize.layout, this.ptr, sel, attrs))
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.drawAtPoint_withAttributes(point: CGPoint, attrs: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawAtPoint:withAttributes:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, CGPoint.layout), attrs)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.drawInRect_withAttributes(rect: CGRect, attrs: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawInRect:withAttributes:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, CGRect.layout), attrs)
@@ -968,11 +1211,21 @@ fun NSString.drawInRect_withAttributes(rect: CGRect, attrs: MemorySegment): Unit
 
 // ── Category: NSExtendedStringDrawing on NSString ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.drawWithRect_options_attributes_context(rect: CGRect, options: NSStringDrawingOptions, attributes: MemorySegment, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("drawWithRect:options:attributes:context:")
     ObjCRuntime.msgSend(null, this.ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, CGRect.layout), options.rawValue, attributes, context)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
 fun NSString.boundingRectWithSize_options_attributes_context(size: CGSize, options: NSStringDrawingOptions, attributes: MemorySegment, context: MemorySegment): CGRect {
     val sel = ObjCRuntime.sel("boundingRectWithSize:options:attributes:context:")
     return CGRect(ObjCRuntime.msgSendStruct(CGRect.layout, this.ptr, sel, ObjCRuntime.ObjCStructArg(size.segment, CGSize.layout), options.rawValue, attributes, context))

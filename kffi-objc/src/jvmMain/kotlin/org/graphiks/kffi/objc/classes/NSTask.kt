@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -19,6 +21,10 @@ open class NSTask(override val ptr: MemorySegment) : NSObject(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun launchAndReturnError(error: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("launchAndReturnError:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, error) as Boolean
@@ -45,10 +51,18 @@ open class NSTask(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property executableURL
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun executableURL(): MemorySegment {
         val sel = ObjCRuntime.sel("executableURL")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun setExecutableURL(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setExecutableURL:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -77,20 +91,38 @@ open class NSTask(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property currentDirectoryURL
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun currentDirectoryURL(): MemorySegment {
         val sel = ObjCRuntime.sel("currentDirectoryURL")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun setCurrentDirectoryURL(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setCurrentDirectoryURL:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property launchRequirementData
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 4, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", unavailable = true)
     open fun launchRequirementData(): MemorySegment {
         val sel = ObjCRuntime.sel("launchRequirementData")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 4, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
+    @PlatformAvailability(platform = "xros", unavailable = true)
     open fun setLaunchRequirementData(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setLaunchRequirementData:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -145,26 +177,46 @@ open class NSTask(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property terminationReason
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun terminationReason(): NSTaskTerminationReason {
         val sel = ObjCRuntime.sel("terminationReason")
         return NSTaskTerminationReason(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
 
     // @property terminationHandler
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun terminationHandler(): MemorySegment {
         val sel = ObjCRuntime.sel("terminationHandler")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun setTerminationHandler(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setTerminationHandler:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property qualityOfService
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun qualityOfService(): NSQualityOfService {
         val sel = ObjCRuntime.sel("qualityOfService")
         return NSQualityOfService(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setQualityOfService(value: NSQualityOfService) {
         val sel = ObjCRuntime.sel("setQualityOfService:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
@@ -180,6 +232,10 @@ fun NSTask.waitUntilExit(): Unit {
 }
 
 // Class method: +[NSTask launchedTaskWithExecutableURL:arguments:error:terminationHandler:]
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSTask_launchedTaskWithExecutableURL_arguments_error_terminationHandler(url: MemorySegment, arguments: MemorySegment, error: MemorySegment, terminationHandler: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("launchedTaskWithExecutableURL:arguments:error:terminationHandler:")
     val cls = ObjCRuntime.getClass("NSTask")
@@ -188,32 +244,56 @@ fun NSTask_launchedTaskWithExecutableURL_arguments_error_terminationHandler(url:
 
 // ── Category: NSDeprecated on NSTask ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSTask.launch(): Unit {
     val sel = ObjCRuntime.sel("launch")
     ObjCRuntime.msgSend(null, this.ptr, sel)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSTask.launchPath(): MemorySegment {
     val sel = ObjCRuntime.sel("launchPath")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSTask.setLaunchPath(launchPath: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setLaunchPath:")
     ObjCRuntime.msgSend(null, this.ptr, sel, launchPath)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSTask.currentDirectoryPath(): MemorySegment {
     val sel = ObjCRuntime.sel("currentDirectoryPath")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSTask.setCurrentDirectoryPath(currentDirectoryPath: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("setCurrentDirectoryPath:")
     ObjCRuntime.msgSend(null, this.ptr, sel, currentDirectoryPath)
 }
 
 // Class method: +[NSTask launchedTaskWithLaunchPath:arguments:]
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
 fun NSTask_launchedTaskWithLaunchPath_arguments(path: MemorySegment, arguments: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("launchedTaskWithLaunchPath:arguments:")
     val cls = ObjCRuntime.getClass("NSTask")

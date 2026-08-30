@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -115,6 +117,7 @@ fun NSArray.firstObjectCommonWithArray(otherArray: MemorySegment): MemorySegment
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, otherArray) as MemorySegment
 }
 
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use 'subarrayWithRange()' instead")
 fun NSArray.getObjects_range(objects: MemorySegment, range: NSRange): Unit {
     val sel = ObjCRuntime.sel("getObjects:range:")
     ObjCRuntime.msgSend(null, this.ptr, sel, objects, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout))
@@ -181,16 +184,22 @@ fun NSArray.subarrayWithRange(range: NSRange): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, ObjCRuntime.ObjCStructArg(range.segment, NSRange.layout)) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.writeToURL_error(url: MemorySegment, error: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("writeToURL:error:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, error) as Boolean
 }
 
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use enumerateObjectsUsingBlock: or a for loop instead")
 fun NSArray.makeObjectsPerformSelector(aSelector: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("makeObjectsPerformSelector:")
     ObjCRuntime.msgSend(null, this.ptr, sel, aSelector)
 }
 
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use enumerateObjectsUsingBlock: or a for loop instead")
 fun NSArray.makeObjectsPerformSelector_withObject(aSelector: MemorySegment, argument: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("makeObjectsPerformSelector:withObject:")
     ObjCRuntime.msgSend(null, this.ptr, sel, aSelector, argument)
@@ -202,68 +211,120 @@ fun NSArray.objectsAtIndexes(indexes: MemorySegment): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, indexes) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.objectAtIndexedSubscript(idx: Long): MemorySegment {
     val sel = ObjCRuntime.sel("objectAtIndexedSubscript:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, idx) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.enumerateObjectsUsingBlock(block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsUsingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, block)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.enumerateObjectsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsWithOptions:usingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, block)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.enumerateObjectsAtIndexes_options_usingBlock(s: MemorySegment, opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateObjectsAtIndexes:options:usingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, s, opts.rawValue, block)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.indexOfObjectPassingTest(predicate: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObjectPassingTest:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, predicate) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.indexOfObjectWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObjectWithOptions:passingTest:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, opts.rawValue, predicate) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.indexOfObjectAtIndexes_options_passingTest(s: MemorySegment, opts: NSEnumerationOptions, predicate: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObjectAtIndexes:options:passingTest:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, s, opts.rawValue, predicate) as Long
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.indexesOfObjectsPassingTest(predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("indexesOfObjectsPassingTest:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, predicate) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.indexesOfObjectsWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("indexesOfObjectsWithOptions:passingTest:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, predicate) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.indexesOfObjectsAtIndexes_options_passingTest(s: MemorySegment, opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("indexesOfObjectsAtIndexes:options:passingTest:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, s, opts.rawValue, predicate) as MemorySegment
 }
 
 /** @return NSArray<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.sortedArrayUsingComparator(cmptr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("sortedArrayUsingComparator:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, cmptr) as MemorySegment
 }
 
 /** @return NSArray<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.sortedArrayWithOptions_usingComparator(opts: NSSortOptions, cmptr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("sortedArrayWithOptions:usingComparator:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, cmptr) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.indexOfObject_inSortedRange_options_usingComparator(obj: MemorySegment, r: NSRange, opts: NSBinarySearchingOptions, cmp: MemorySegment): Long {
     val sel = ObjCRuntime.sel("indexOfObject:inSortedRange:options:usingComparator:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, this.ptr, sel, obj, ObjCRuntime.ObjCStructArg(r.segment, NSRange.layout), opts.rawValue, cmp) as Long
@@ -274,6 +335,10 @@ fun NSArray.description(): MemorySegment {
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.firstObject(): MemorySegment {
     val sel = ObjCRuntime.sel("firstObject")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel) as MemorySegment
@@ -307,6 +372,10 @@ fun NSArray.initWithArray_copyItems(array: MemorySegment, flag: Boolean): Memory
 }
 
 /** @return NSArray<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.initWithContentsOfURL_error(url: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfURL:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, error) as MemorySegment
@@ -348,6 +417,11 @@ fun NSArray_arrayWithArray(array: MemorySegment): MemorySegment {
 }
 
 // Class method: +[NSArray arrayWithContentsOfURL:error:]
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use initializer instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray_arrayWithContentsOfURL_error(url: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("arrayWithContentsOfURL:error:")
     val cls = ObjCRuntime.getClass("NSArray")
@@ -357,24 +431,44 @@ fun NSArray_arrayWithContentsOfURL_error(url: MemorySegment, error: MemorySegmen
 // ── Category: NSArrayDiffing on NSArray ─────────────────────────────────────────
 
 /** @return NSOrderedCollectionDifference<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "NSArray diffing methods are not available in Swift, use Collection.difference(from:) instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.differenceFromArray_withOptions_usingEquivalenceTest(other: MemorySegment, options: NSOrderedCollectionDifferenceCalculationOptions, block: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("differenceFromArray:withOptions:usingEquivalenceTest:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options.rawValue, block) as MemorySegment
 }
 
 /** @return NSOrderedCollectionDifference<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "NSArray diffing methods are not available in Swift, use Collection.difference(from:) instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.differenceFromArray_withOptions(other: MemorySegment, options: NSOrderedCollectionDifferenceCalculationOptions): MemorySegment {
     val sel = ObjCRuntime.sel("differenceFromArray:withOptions:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other, options.rawValue) as MemorySegment
 }
 
 /** @return NSOrderedCollectionDifference<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "NSArray diffing methods are not available in Swift, use Collection.difference(from:) instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.differenceFromArray(other: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("differenceFromArray:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, other) as MemorySegment
 }
 
 /** @return NSArray<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "NSArray diffing methods are not available in Swift, use Collection.difference(from:) instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.arrayByApplyingDifference(difference: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("arrayByApplyingDifference:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, difference) as MemorySegment
@@ -382,34 +476,59 @@ fun NSArray.arrayByApplyingDifference(difference: MemorySegment): MemorySegment 
 
 // ── Category: NSDeprecated on NSArray ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getObjects:range: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "Use -getObjects:range: instead")
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use 'as [AnyObject]' instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getObjects:range: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getObjects:range: instead")
 fun NSArray.getObjects(objects: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("getObjects:")
     ObjCRuntime.msgSend(null, this.ptr, sel, objects)
 }
 
 /** @return NSArray<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSArray.initWithContentsOfFile(path: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfFile:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path) as MemorySegment
 }
 
 /** @return NSArray<ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSArray.initWithContentsOfURL(url: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfURL:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSArray.writeToFile_atomically(path: MemorySegment, useAuxiliaryFile: Boolean): Boolean {
     val sel = ObjCRuntime.sel("writeToFile:atomically:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, path, useAuxiliaryFile) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSArray.writeToURL_atomically(url: MemorySegment, atomically: Boolean): Boolean {
     val sel = ObjCRuntime.sel("writeToURL:atomically:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, atomically) as Boolean
 }
 
 // Class method: +[NSArray arrayWithContentsOfFile:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSArray_arrayWithContentsOfFile(path: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("arrayWithContentsOfFile:")
     val cls = ObjCRuntime.getClass("NSArray")
@@ -417,6 +536,10 @@ fun NSArray_arrayWithContentsOfFile(path: MemorySegment): MemorySegment {
 }
 
 // Class method: +[NSArray arrayWithContentsOfURL:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSArray_arrayWithContentsOfURL(url: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("arrayWithContentsOfURL:")
     val cls = ObjCRuntime.getClass("NSArray")
@@ -440,6 +563,10 @@ fun NSArray.addObserver_toObjectsAtIndexes_forKeyPath_options_context(observer: 
     ObjCRuntime.msgSend(null, this.ptr, sel, observer, indexes, keyPath, options.rawValue, context)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSArray.removeObserver_fromObjectsAtIndexes_forKeyPath_context(observer: MemorySegment, indexes: MemorySegment, keyPath: MemorySegment, context: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("removeObserver:fromObjectsAtIndexes:forKeyPath:context:")
     ObjCRuntime.msgSend(null, this.ptr, sel, observer, indexes, keyPath, context)

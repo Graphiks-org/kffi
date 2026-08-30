@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -117,6 +119,10 @@ fun NSDictionary.objectsForKeys_notFoundMarker(keys: MemorySegment, marker: Memo
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, keys, marker) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.writeToURL_error(url: MemorySegment, error: MemorySegment): Boolean {
     val sel = ObjCRuntime.sel("writeToURL:error:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, error) as Boolean
@@ -128,45 +134,78 @@ fun NSDictionary.keysSortedByValueUsingSelector(comparator: MemorySegment): Memo
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, comparator) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 5, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use 'allKeys' and/or 'allValues' instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.getObjects_andKeys_count(objects: MemorySegment, keys: MemorySegment, count: Long): Unit {
     val sel = ObjCRuntime.sel("getObjects:andKeys:count:")
     ObjCRuntime.msgSend(null, this.ptr, sel, objects, keys, count)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.objectForKeyedSubscript(key: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("objectForKeyedSubscript:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, key) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.enumerateKeysAndObjectsUsingBlock(block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateKeysAndObjectsUsingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, block)
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.enumerateKeysAndObjectsWithOptions_usingBlock(opts: NSEnumerationOptions, block: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("enumerateKeysAndObjectsWithOptions:usingBlock:")
     ObjCRuntime.msgSend(null, this.ptr, sel, opts.rawValue, block)
 }
 
 /** @return NSArray<KeyType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.keysSortedByValueUsingComparator(cmptr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("keysSortedByValueUsingComparator:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, cmptr) as MemorySegment
 }
 
 /** @return NSArray<KeyType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.keysSortedByValueWithOptions_usingComparator(opts: NSSortOptions, cmptr: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("keysSortedByValueWithOptions:usingComparator:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, cmptr) as MemorySegment
 }
 
 /** @return NSSet<KeyType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.keysOfEntriesPassingTest(predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("keysOfEntriesPassingTest:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, predicate) as MemorySegment
 }
 
 /** @return NSSet<KeyType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.keysOfEntriesWithOptions_passingTest(opts: NSEnumerationOptions, predicate: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("keysOfEntriesWithOptions:passingTest:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, opts.rawValue, predicate) as MemorySegment
@@ -196,34 +235,59 @@ fun NSDictionary.descriptionInStringsFileFormat(): MemorySegment {
 
 // ── Category: NSDeprecated on NSDictionary ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getObjects:andKeys:count: instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 13, deprecatedSubminor = -1, message = "Use -getObjects:andKeys:count: instead")
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use 'allKeys' and/or 'allValues' instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 11, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getObjects:andKeys:count: instead")
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 4, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -getObjects:andKeys:count: instead")
 fun NSDictionary.getObjects_andKeys(objects: MemorySegment, keys: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("getObjects:andKeys:")
     ObjCRuntime.msgSend(null, this.ptr, sel, objects, keys)
 }
 
 /** @return NSDictionary<KeyType,ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSDictionary.initWithContentsOfFile(path: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfFile:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, path) as MemorySegment
 }
 
 /** @return NSDictionary<KeyType,ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSDictionary.initWithContentsOfURL(url: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfURL:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url) as MemorySegment
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSDictionary.writeToFile_atomically(path: MemorySegment, useAuxiliaryFile: Boolean): Boolean {
     val sel = ObjCRuntime.sel("writeToFile:atomically:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, path, useAuxiliaryFile) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSDictionary.writeToURL_atomically(url: MemorySegment, atomically: Boolean): Boolean {
     val sel = ObjCRuntime.sel("writeToURL:atomically:")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel, url, atomically) as Boolean
 }
 
 // Class method: +[NSDictionary dictionaryWithContentsOfFile:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSDictionary_dictionaryWithContentsOfFile(path: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dictionaryWithContentsOfFile:")
     val cls = ObjCRuntime.getClass("NSDictionary")
@@ -231,6 +295,10 @@ fun NSDictionary_dictionaryWithContentsOfFile(path: MemorySegment): MemorySegmen
 }
 
 // Class method: +[NSDictionary dictionaryWithContentsOfURL:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 100000, deprecatedMinor = -1, deprecatedSubminor = -1)
 fun NSDictionary_dictionaryWithContentsOfURL(url: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dictionaryWithContentsOfURL:")
     val cls = ObjCRuntime.getClass("NSDictionary")
@@ -260,6 +328,10 @@ fun NSDictionary.initWithObjects_forKeys(objects: MemorySegment, keys: MemorySeg
 }
 
 /** @return NSDictionary<NSString *,ObjectType> * */
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary.initWithContentsOfURL_error(url: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("initWithContentsOfURL:error:")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, this.ptr, sel, url, error) as MemorySegment
@@ -287,6 +359,7 @@ fun NSDictionary_dictionaryWithObjects_forKeys_count(objects: MemorySegment, key
 }
 
 // Class method: +[NSDictionary dictionaryWithObjectsAndKeys:]
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use dictionary literals instead")
 fun NSDictionary_dictionaryWithObjectsAndKeys(firstObject: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dictionaryWithObjectsAndKeys:")
     val cls = ObjCRuntime.getClass("NSDictionary")
@@ -308,6 +381,11 @@ fun NSDictionary_dictionaryWithObjects_forKeys(objects: MemorySegment, keys: Mem
 }
 
 // Class method: +[NSDictionary dictionaryWithContentsOfURL:error:]
+@PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+@PlatformAvailability(platform = "swift", unavailable = true, message = "Use initializer instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary_dictionaryWithContentsOfURL_error(url: MemorySegment, error: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("dictionaryWithContentsOfURL:error:")
     val cls = ObjCRuntime.getClass("NSDictionary")
@@ -317,6 +395,10 @@ fun NSDictionary_dictionaryWithContentsOfURL_error(url: MemorySegment, error: Me
 // ── Category: NSSharedKeySetDictionary on NSDictionary ─────────────────────────────────────────
 
 // Class method: +[NSDictionary sharedKeySetForKeys:]
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSDictionary_sharedKeySetForKeys(keys: MemorySegment): MemorySegment {
     val sel = ObjCRuntime.sel("sharedKeySetForKeys:")
     val cls = ObjCRuntime.getClass("NSDictionary")

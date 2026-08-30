@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -84,11 +86,19 @@ open class NSNumber(override val ptr: MemorySegment) : NSValue(ptr) {
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun initWithInteger(value: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithInteger:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun initWithUnsignedInteger(value: Long): MemorySegment {
         val sel = ObjCRuntime.sel("initWithUnsignedInteger:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, value) as MemorySegment
@@ -191,12 +201,20 @@ open class NSNumber(override val ptr: MemorySegment) : NSValue(ptr) {
     }
 
     // @property integerValue
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun integerValue(): Long {
         val sel = ObjCRuntime.sel("integerValue")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
 
     // @property unsignedIntegerValue
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun unsignedIntegerValue(): Long {
         val sel = ObjCRuntime.sel("unsignedIntegerValue")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
@@ -307,6 +325,10 @@ fun NSNumber_numberWithBool(value: Boolean): MemorySegment {
 }
 
 // Class method: +[NSNumber numberWithInteger:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSNumber_numberWithInteger(value: Long): MemorySegment {
     val sel = ObjCRuntime.sel("numberWithInteger:")
     val cls = ObjCRuntime.getClass("NSNumber")
@@ -314,6 +336,10 @@ fun NSNumber_numberWithInteger(value: Long): MemorySegment {
 }
 
 // Class method: +[NSNumber numberWithUnsignedInteger:]
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 fun NSNumber_numberWithUnsignedInteger(value: Long): MemorySegment {
     val sel = ObjCRuntime.sel("numberWithUnsignedInteger:")
     val cls = ObjCRuntime.getClass("NSNumber")

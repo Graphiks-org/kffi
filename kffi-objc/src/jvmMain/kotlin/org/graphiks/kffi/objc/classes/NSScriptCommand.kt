@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -117,20 +119,36 @@ open class NSScriptCommand(override val ptr: MemorySegment) : NSObject(ptr) {
     }
 
     // @property scriptErrorOffendingObjectDescriptor
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun scriptErrorOffendingObjectDescriptor(): MemorySegment {
         val sel = ObjCRuntime.sel("scriptErrorOffendingObjectDescriptor")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun setScriptErrorOffendingObjectDescriptor(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setScriptErrorOffendingObjectDescriptor:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property scriptErrorExpectedTypeDescriptor
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun scriptErrorExpectedTypeDescriptor(): MemorySegment {
         val sel = ObjCRuntime.sel("scriptErrorExpectedTypeDescriptor")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", unavailable = true)
+    @PlatformAvailability(platform = "watchos", unavailable = true)
     open fun setScriptErrorExpectedTypeDescriptor(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setScriptErrorExpectedTypeDescriptor:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

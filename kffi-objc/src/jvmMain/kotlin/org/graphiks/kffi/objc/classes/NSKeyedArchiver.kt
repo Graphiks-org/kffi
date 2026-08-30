@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -12,22 +14,38 @@ open class NSKeyedArchiver(override val ptr: MemorySegment) : NSCoder(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSKeyedArchiver") }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
         fun archivedDataWithRootObject_requiringSecureCoding_error(`object`: MemorySegment, requiresSecureCoding: Boolean, error: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("archivedDataWithRootObject:requiringSecureCoding:error:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, `object`, requiresSecureCoding, error) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: instead")
         fun archivedDataWithRootObject(rootObject: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("archivedDataWithRootObject:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, rootObject) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: and -writeToURL:options:error: instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: and -writeToURL:options:error: instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: and -writeToURL:options:error: instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: and -writeToURL:options:error: instead")
         fun archiveRootObject_toFile(rootObject: MemorySegment, path: MemorySegment): Boolean {
             val sel = ObjCRuntime.sel("archiveRootObject:toFile:")
             return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, _class, sel, rootObject, path) as Boolean
         }
 
         /** Convenience overload — accepts Kotlin [String] for NSString parameters. */
+        @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: and -writeToURL:options:error: instead")
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: and -writeToURL:options:error: instead")
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: and -writeToURL:options:error: instead")
+        @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use +archivedDataWithRootObject:requiringSecureCoding:error: and -writeToURL:options:error: instead")
         fun archiveRootObject_toFile(rootObject: MemorySegment, path: String): Boolean = archiveRootObject_toFile(rootObject, ObjCRuntime.newNSString(Arena.global(), path))
 
         fun setClassName_forClass(codedName: MemorySegment, cls: MemorySegment): Unit {
@@ -48,16 +66,28 @@ open class NSKeyedArchiver(override val ptr: MemorySegment) : NSCoder(ptr) {
 
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
     open fun initRequiringSecureCoding(requiresSecureCoding: Boolean): MemorySegment {
         val sel = ObjCRuntime.sel("initRequiringSecureCoding:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, requiresSecureCoding) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initRequiringSecureCoding: instead")
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -initRequiringSecureCoding: instead")
+    @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initRequiringSecureCoding: instead")
+    @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initRequiringSecureCoding: instead")
     open fun init(): MemorySegment {
         val sel = ObjCRuntime.sel("init")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initRequiringSecureCoding: instead")
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -initRequiringSecureCoding: instead")
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initRequiringSecureCoding: instead")
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 5, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use -initRequiringSecureCoding: instead")
     open fun initForWritingWithMutableData(`data`: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initForWritingWithMutableData:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, `data`) as MemorySegment
@@ -178,16 +208,28 @@ open class NSKeyedArchiver(override val ptr: MemorySegment) : NSCoder(ptr) {
     }
 
     // @property encodedData
+    @PlatformAvailability(platform = "ios", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 3, introducedMinor = 0, introducedSubminor = -1)
     open fun encodedData(): MemorySegment {
         val sel = ObjCRuntime.sel("encodedData")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property requiresSecureCoding
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun requiresSecureCoding(): Boolean {
         val sel = ObjCRuntime.sel("requiresSecureCoding")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun setRequiresSecureCoding(value: Boolean) {
         val sel = ObjCRuntime.sel("setRequiresSecureCoding:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

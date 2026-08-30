@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -15,6 +17,10 @@ open class NSNotification(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
     open fun initWithName_object_userInfo(name: MemorySegment, `object`: MemorySegment, userInfo: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("initWithName:object:userInfo:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, name, `object`, userInfo) as MemorySegment

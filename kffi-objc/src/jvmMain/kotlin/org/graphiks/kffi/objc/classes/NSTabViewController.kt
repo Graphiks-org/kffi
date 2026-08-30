@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,110 +11,132 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSViewController
  * Protocols: NSTabViewDelegate, NSToolbarDelegate
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
 open class NSTabViewController(override val ptr: MemorySegment) : NSViewController(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSTabViewController") }
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun addTabViewItem(tabViewItem: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("addTabViewItem:")
         ObjCRuntime.msgSend(null, ptr, sel, tabViewItem)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun insertTabViewItem_atIndex(tabViewItem: MemorySegment, index: Long): Unit {
         val sel = ObjCRuntime.sel("insertTabViewItem:atIndex:")
         ObjCRuntime.msgSend(null, ptr, sel, tabViewItem, index)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun removeTabViewItem(tabViewItem: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("removeTabViewItem:")
         ObjCRuntime.msgSend(null, ptr, sel, tabViewItem)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun tabViewItemForViewController(viewController: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("tabViewItemForViewController:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, viewController) as MemorySegment
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     override fun viewDidLoad(): Unit {
         val sel = ObjCRuntime.sel("viewDidLoad")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun tabView_willSelectTabViewItem(tabView: MemorySegment, tabViewItem: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("tabView:willSelectTabViewItem:")
         ObjCRuntime.msgSend(null, ptr, sel, tabView, tabViewItem)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun tabView_didSelectTabViewItem(tabView: MemorySegment, tabViewItem: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("tabView:didSelectTabViewItem:")
         ObjCRuntime.msgSend(null, ptr, sel, tabView, tabViewItem)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun tabView_shouldSelectTabViewItem(tabView: MemorySegment, tabViewItem: MemorySegment): Boolean {
         val sel = ObjCRuntime.sel("tabView:shouldSelectTabViewItem:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, tabView, tabViewItem) as Boolean
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun toolbar_itemForItemIdentifier_willBeInsertedIntoToolbar(toolbar: MemorySegment, itemIdentifier: MemorySegment, flag: Boolean): MemorySegment {
         val sel = ObjCRuntime.sel("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, toolbar, itemIdentifier, flag) as MemorySegment
     }
 
     /** @return NSArray<NSToolbarItemIdentifier> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun toolbarDefaultItemIdentifiers(toolbar: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("toolbarDefaultItemIdentifiers:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, toolbar) as MemorySegment
     }
 
     /** @return NSArray<NSToolbarItemIdentifier> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun toolbarAllowedItemIdentifiers(toolbar: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("toolbarAllowedItemIdentifiers:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, toolbar) as MemorySegment
     }
 
     /** @return NSArray<NSToolbarItemIdentifier> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun toolbarSelectableItemIdentifiers(toolbar: MemorySegment): MemorySegment {
         val sel = ObjCRuntime.sel("toolbarSelectableItemIdentifiers:")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel, toolbar) as MemorySegment
     }
 
     // @property tabStyle
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun tabStyle(): NSTabViewControllerTabStyle {
         val sel = ObjCRuntime.sel("tabStyle")
         return NSTabViewControllerTabStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTabStyle(value: NSTabViewControllerTabStyle) {
         val sel = ObjCRuntime.sel("setTabStyle:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property tabView
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun tabView(): MemorySegment {
         val sel = ObjCRuntime.sel("tabView")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTabView(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setTabView:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property transitionOptions
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun transitionOptions(): NSViewControllerTransitionOptions {
         val sel = ObjCRuntime.sel("transitionOptions")
         return NSViewControllerTransitionOptions(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTransitionOptions(value: NSViewControllerTransitionOptions) {
         val sel = ObjCRuntime.sel("setTransitionOptions:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property canPropagateSelectedChildViewControllerTitle
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun canPropagateSelectedChildViewControllerTitle(): Boolean {
         val sel = ObjCRuntime.sel("canPropagateSelectedChildViewControllerTitle")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setCanPropagateSelectedChildViewControllerTitle(value: Boolean) {
         val sel = ObjCRuntime.sel("setCanPropagateSelectedChildViewControllerTitle:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
@@ -120,20 +144,24 @@ open class NSTabViewController(override val ptr: MemorySegment) : NSViewControll
 
     // @property tabViewItems
     /** @return NSArray<__kindof NSTabViewItem *> * */
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun tabViewItems(): MemorySegment {
         val sel = ObjCRuntime.sel("tabViewItems")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setTabViewItems(value: MemorySegment) {
         val sel = ObjCRuntime.sel("setTabViewItems:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property selectedTabViewItemIndex
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun selectedTabViewItemIndex(): Long {
         val sel = ObjCRuntime.sel("selectedTabViewItemIndex")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setSelectedTabViewItemIndex(value: Long) {
         val sel = ObjCRuntime.sel("setSelectedTabViewItemIndex:")
         ObjCRuntime.msgSend(null, ptr, sel, value)

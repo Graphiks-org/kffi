@@ -1,3 +1,5 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc
 
 import java.lang.invoke.*
@@ -9,115 +11,140 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * Superclass: NSObject
  * Protocols: NSCopying, NSSecureCoding
  */
+@PlatformAvailability(platform = "ios", unavailable = true)
 open class NSBezierPath(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
         private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSBezierPath") }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun bezierPath(): MemorySegment {
             val sel = ObjCRuntime.sel("bezierPath")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun bezierPathWithRect(rect: NSRect): MemorySegment {
             val sel = ObjCRuntime.sel("bezierPathWithRect:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun bezierPathWithOvalInRect(rect: NSRect): MemorySegment {
             val sel = ObjCRuntime.sel("bezierPathWithOvalInRect:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout)) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
         fun bezierPathWithRoundedRect_xRadius_yRadius(rect: NSRect, xRadius: Double, yRadius: Double): MemorySegment {
             val sel = ObjCRuntime.sel("bezierPathWithRoundedRect:xRadius:yRadius:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), xRadius, yRadius) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
         fun bezierPathWithCGPath(cgPath: CGPathRef): MemorySegment {
             val sel = ObjCRuntime.sel("bezierPathWithCGPath:")
             return ObjCRuntime.msgSend(ValueLayout.ADDRESS, _class, sel, cgPath.segment) as MemorySegment
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun fillRect(rect: NSRect): Unit {
             val sel = ObjCRuntime.sel("fillRect:")
             ObjCRuntime.msgSend(null, _class, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun strokeRect(rect: NSRect): Unit {
             val sel = ObjCRuntime.sel("strokeRect:")
             ObjCRuntime.msgSend(null, _class, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun clipRect(rect: NSRect): Unit {
             val sel = ObjCRuntime.sel("clipRect:")
             ObjCRuntime.msgSend(null, _class, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun strokeLineFromPoint_toPoint(point1: NSPoint, point2: NSPoint): Unit {
             val sel = ObjCRuntime.sel("strokeLineFromPoint:toPoint:")
             ObjCRuntime.msgSend(null, _class, sel, ObjCRuntime.ObjCStructArg(point1.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(point2.segment, NSPoint.layout))
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun drawPackedGlyphs_atPoint(packedGlyphs: MemorySegment, point: NSPoint): Unit {
             val sel = ObjCRuntime.sel("drawPackedGlyphs:atPoint:")
             ObjCRuntime.msgSend(null, _class, sel, packedGlyphs, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout))
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultMiterLimit(): Double {
             val sel = ObjCRuntime.sel("defaultMiterLimit")
             return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, _class, sel) as Double
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun setDefaultMiterLimit(defaultMiterLimit: Double): Unit {
             val sel = ObjCRuntime.sel("setDefaultMiterLimit:")
             ObjCRuntime.msgSend(null, _class, sel, defaultMiterLimit)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultFlatness(): Double {
             val sel = ObjCRuntime.sel("defaultFlatness")
             return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, _class, sel) as Double
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun setDefaultFlatness(defaultFlatness: Double): Unit {
             val sel = ObjCRuntime.sel("setDefaultFlatness:")
             ObjCRuntime.msgSend(null, _class, sel, defaultFlatness)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultWindingRule(): NSWindingRule {
             val sel = ObjCRuntime.sel("defaultWindingRule")
             return NSWindingRule(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun setDefaultWindingRule(defaultWindingRule: NSWindingRule): Unit {
             val sel = ObjCRuntime.sel("setDefaultWindingRule:")
             ObjCRuntime.msgSend(null, _class, sel, defaultWindingRule.rawValue)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultLineCapStyle(): NSLineCapStyle {
             val sel = ObjCRuntime.sel("defaultLineCapStyle")
             return NSLineCapStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun setDefaultLineCapStyle(defaultLineCapStyle: NSLineCapStyle): Unit {
             val sel = ObjCRuntime.sel("setDefaultLineCapStyle:")
             ObjCRuntime.msgSend(null, _class, sel, defaultLineCapStyle.rawValue)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultLineJoinStyle(): NSLineJoinStyle {
             val sel = ObjCRuntime.sel("defaultLineJoinStyle")
             return NSLineJoinStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, _class, sel) as Long)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun setDefaultLineJoinStyle(defaultLineJoinStyle: NSLineJoinStyle): Unit {
             val sel = ObjCRuntime.sel("setDefaultLineJoinStyle:")
             ObjCRuntime.msgSend(null, _class, sel, defaultLineJoinStyle.rawValue)
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultLineWidth(): Double {
             val sel = ObjCRuntime.sel("defaultLineWidth")
             return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, _class, sel) as Double
         }
 
+        @PlatformAvailability(platform = "ios", unavailable = true)
         fun setDefaultLineWidth(defaultLineWidth: Double): Unit {
             val sel = ObjCRuntime.sel("setDefaultLineWidth:")
             ObjCRuntime.msgSend(null, _class, sel, defaultLineWidth)
@@ -125,268 +152,327 @@ open class NSBezierPath(override val ptr: MemorySegment) : NSObject(ptr) {
 
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun moveToPoint(point: NSPoint): Unit {
         val sel = ObjCRuntime.sel("moveToPoint:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun lineToPoint(point: NSPoint): Unit {
         val sel = ObjCRuntime.sel("lineToPoint:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun curveToPoint_controlPoint1_controlPoint2(endPoint: NSPoint, controlPoint1: NSPoint, controlPoint2: NSPoint): Unit {
         val sel = ObjCRuntime.sel("curveToPoint:controlPoint1:controlPoint2:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(endPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(controlPoint1.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(controlPoint2.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
     open fun curveToPoint_controlPoint(endPoint: NSPoint, controlPoint: NSPoint): Unit {
         val sel = ObjCRuntime.sel("curveToPoint:controlPoint:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(endPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(controlPoint.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun closePath(): Unit {
         val sel = ObjCRuntime.sel("closePath")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun removeAllPoints(): Unit {
         val sel = ObjCRuntime.sel("removeAllPoints")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun relativeMoveToPoint(point: NSPoint): Unit {
         val sel = ObjCRuntime.sel("relativeMoveToPoint:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun relativeLineToPoint(point: NSPoint): Unit {
         val sel = ObjCRuntime.sel("relativeLineToPoint:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun relativeCurveToPoint_controlPoint1_controlPoint2(endPoint: NSPoint, controlPoint1: NSPoint, controlPoint2: NSPoint): Unit {
         val sel = ObjCRuntime.sel("relativeCurveToPoint:controlPoint1:controlPoint2:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(endPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(controlPoint1.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(controlPoint2.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
     open fun relativeCurveToPoint_controlPoint(endPoint: NSPoint, controlPoint: NSPoint): Unit {
         val sel = ObjCRuntime.sel("relativeCurveToPoint:controlPoint:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(endPoint.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(controlPoint.segment, NSPoint.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun getLineDash_count_phase(pattern: MemorySegment, count: MemorySegment, phase: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("getLineDash:count:phase:")
         ObjCRuntime.msgSend(null, ptr, sel, pattern, count, phase)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setLineDash_count_phase(pattern: MemorySegment, count: Long, phase: Double): Unit {
         val sel = ObjCRuntime.sel("setLineDash:count:phase:")
         ObjCRuntime.msgSend(null, ptr, sel, pattern, count, phase)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun stroke(): Unit {
         val sel = ObjCRuntime.sel("stroke")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun fill(): Unit {
         val sel = ObjCRuntime.sel("fill")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun addClip(): Unit {
         val sel = ObjCRuntime.sel("addClip")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setClip(): Unit {
         val sel = ObjCRuntime.sel("setClip")
         ObjCRuntime.msgSend(null, ptr, sel)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun transformUsingAffineTransform(transform: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("transformUsingAffineTransform:")
         ObjCRuntime.msgSend(null, ptr, sel, transform)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun elementAtIndex_associatedPoints(index: Long, points: NSPointArray): NSBezierPathElement {
         val sel = ObjCRuntime.sel("elementAtIndex:associatedPoints:")
         return NSBezierPathElement(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, index, points.segment) as Long)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun elementAtIndex(index: Long): NSBezierPathElement {
         val sel = ObjCRuntime.sel("elementAtIndex:")
         return NSBezierPathElement(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, index) as Long)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setAssociatedPoints_atIndex(points: NSPointArray, index: Long): Unit {
         val sel = ObjCRuntime.sel("setAssociatedPoints:atIndex:")
         ObjCRuntime.msgSend(null, ptr, sel, points.segment, index)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun appendBezierPath(path: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("appendBezierPath:")
         ObjCRuntime.msgSend(null, ptr, sel, path)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun appendBezierPathWithRect(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("appendBezierPathWithRect:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun appendBezierPathWithPoints_count(points: NSPointArray, count: Long): Unit {
         val sel = ObjCRuntime.sel("appendBezierPathWithPoints:count:")
         ObjCRuntime.msgSend(null, ptr, sel, points.segment, count)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun appendBezierPathWithOvalInRect(rect: NSRect): Unit {
         val sel = ObjCRuntime.sel("appendBezierPathWithOvalInRect:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout))
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun appendBezierPathWithArcWithCenter_radius_startAngle_endAngle_clockwise(center: NSPoint, radius: Double, startAngle: Double, endAngle: Double, clockwise: Boolean): Unit {
         val sel = ObjCRuntime.sel("appendBezierPathWithArcWithCenter:radius:startAngle:endAngle:clockwise:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(center.segment, NSPoint.layout), radius, startAngle, endAngle, clockwise)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun appendBezierPathWithArcWithCenter_radius_startAngle_endAngle(center: NSPoint, radius: Double, startAngle: Double, endAngle: Double): Unit {
         val sel = ObjCRuntime.sel("appendBezierPathWithArcWithCenter:radius:startAngle:endAngle:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(center.segment, NSPoint.layout), radius, startAngle, endAngle)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun appendBezierPathWithArcFromPoint_toPoint_radius(point1: NSPoint, point2: NSPoint, radius: Double): Unit {
         val sel = ObjCRuntime.sel("appendBezierPathWithArcFromPoint:toPoint:radius:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(point1.segment, NSPoint.layout), ObjCRuntime.ObjCStructArg(point2.segment, NSPoint.layout), radius)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
     open fun appendBezierPathWithCGGlyph_inFont(glyph: Short, font: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("appendBezierPathWithCGGlyph:inFont:")
         ObjCRuntime.msgSend(null, ptr, sel, glyph, font)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
     open fun appendBezierPathWithCGGlyphs_count_inFont(glyphs: MemorySegment, count: Long, font: MemorySegment): Unit {
         val sel = ObjCRuntime.sel("appendBezierPathWithCGGlyphs:count:inFont:")
         ObjCRuntime.msgSend(null, ptr, sel, glyphs, count, font)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
     open fun appendBezierPathWithRoundedRect_xRadius_yRadius(rect: NSRect, xRadius: Double, yRadius: Double): Unit {
         val sel = ObjCRuntime.sel("appendBezierPathWithRoundedRect:xRadius:yRadius:")
         ObjCRuntime.msgSend(null, ptr, sel, ObjCRuntime.ObjCStructArg(rect.segment, NSRect.layout), xRadius, yRadius)
     }
 
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun containsPoint(point: NSPoint): Boolean {
         val sel = ObjCRuntime.sel("containsPoint:")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, ObjCRuntime.ObjCStructArg(point.segment, NSPoint.layout)) as Boolean
     }
 
     // @property CGPath
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
     open fun CGPath(): CGPathRef {
         val sel = ObjCRuntime.sel("CGPath")
         return CGPathRef(ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
     open fun setCGPath(value: CGPathRef) {
         val sel = ObjCRuntime.sel("setCGPath:")
         ObjCRuntime.msgSend(null, ptr, sel, value.segment)
     }
 
     // @property lineWidth
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun lineWidth(): Double {
         val sel = ObjCRuntime.sel("lineWidth")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setLineWidth(value: Double) {
         val sel = ObjCRuntime.sel("setLineWidth:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property lineCapStyle
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun lineCapStyle(): NSLineCapStyle {
         val sel = ObjCRuntime.sel("lineCapStyle")
         return NSLineCapStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setLineCapStyle(value: NSLineCapStyle) {
         val sel = ObjCRuntime.sel("setLineCapStyle:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property lineJoinStyle
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun lineJoinStyle(): NSLineJoinStyle {
         val sel = ObjCRuntime.sel("lineJoinStyle")
         return NSLineJoinStyle(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setLineJoinStyle(value: NSLineJoinStyle) {
         val sel = ObjCRuntime.sel("setLineJoinStyle:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property windingRule
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun windingRule(): NSWindingRule {
         val sel = ObjCRuntime.sel("windingRule")
         return NSWindingRule(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long)
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setWindingRule(value: NSWindingRule) {
         val sel = ObjCRuntime.sel("setWindingRule:")
         ObjCRuntime.msgSend(null, ptr, sel, value.rawValue)
     }
 
     // @property miterLimit
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun miterLimit(): Double {
         val sel = ObjCRuntime.sel("miterLimit")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setMiterLimit(value: Double) {
         val sel = ObjCRuntime.sel("setMiterLimit:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property flatness
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun flatness(): Double {
         val sel = ObjCRuntime.sel("flatness")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_DOUBLE, ptr, sel) as Double
     }
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun setFlatness(value: Double) {
         val sel = ObjCRuntime.sel("setFlatness:")
         ObjCRuntime.msgSend(null, ptr, sel, value)
     }
 
     // @property bezierPathByFlatteningPath
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun bezierPathByFlatteningPath(): MemorySegment {
         val sel = ObjCRuntime.sel("bezierPathByFlatteningPath")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property bezierPathByReversingPath
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun bezierPathByReversingPath(): MemorySegment {
         val sel = ObjCRuntime.sel("bezierPathByReversingPath")
         return ObjCRuntime.msgSend(ValueLayout.ADDRESS, ptr, sel) as MemorySegment
     }
 
     // @property empty
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun isEmpty(): Boolean {
         val sel = ObjCRuntime.sel("isEmpty")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
     }
 
     // @property currentPoint
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun currentPoint(): NSPoint {
         val sel = ObjCRuntime.sel("currentPoint")
         return NSPoint(ObjCRuntime.msgSendStruct(NSPoint.layout, ptr, sel))
     }
 
     // @property controlPointBounds
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun controlPointBounds(): NSRect {
         val sel = ObjCRuntime.sel("controlPointBounds")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property bounds
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun bounds(): NSRect {
         val sel = ObjCRuntime.sel("bounds")
         return NSRect(ObjCRuntime.msgSendStruct(NSRect.layout, ptr, sel))
     }
 
     // @property elementCount
+    @PlatformAvailability(platform = "ios", unavailable = true)
     open fun elementCount(): Long {
         val sel = ObjCRuntime.sel("elementCount")
         return ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel) as Long
@@ -423,26 +509,36 @@ fun NSBezierPath_supportsSecureCoding(): Boolean {
 
 // ── Category: NSBezierPathDeprecated on NSBezierPath ─────────────────────────────────────────
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSBezierPath.cachesBezierPath(): Boolean {
     val sel = ObjCRuntime.sel("cachesBezierPath")
     return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, this.ptr, sel) as Boolean
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 0, deprecatedSubminor = -1)
 fun NSBezierPath.setCachesBezierPath(flag: Boolean): Unit {
     val sel = ObjCRuntime.sel("setCachesBezierPath:")
     ObjCRuntime.msgSend(null, this.ptr, sel, flag)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -appendBezierPathWithCGGlyph:inFont: instead")
 fun NSBezierPath.appendBezierPathWithGlyph_inFont(glyph: Int, font: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("appendBezierPathWithGlyph:inFont:")
     ObjCRuntime.msgSend(null, this.ptr, sel, glyph, font)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -appendBezierPathWithCGGlyphs:count:inFont: instead")
 fun NSBezierPath.appendBezierPathWithGlyphs_count_inFont(glyphs: MemorySegment, count: Long, font: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("appendBezierPathWithGlyphs:count:inFont:")
     ObjCRuntime.msgSend(null, this.ptr, sel, glyphs, count, font)
 }
 
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Use -appendBezierPathWithCGGlyphs:count:inFont: instead")
 fun NSBezierPath.appendBezierPathWithPackedGlyphs(packedGlyphs: MemorySegment): Unit {
     val sel = ObjCRuntime.sel("appendBezierPathWithPackedGlyphs:")
     ObjCRuntime.msgSend(null, this.ptr, sel, packedGlyphs)
