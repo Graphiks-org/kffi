@@ -57,6 +57,47 @@ class ObjCManagedNSEventObservationTest {
     }
 
     @Test
+    fun flagsChangedDeliversKeyboardDetailsWithoutReadingTextOnlyProperties() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            methods = mapOf("flagsChanged:" to ObjCMethodSignatures.VoidObject),
+        )
+        var observed: NSEventObservation? = null
+        val instance = managedClass.createInstance {
+            onNSEvent("flagsChanged:") { observed = it }
+        }
+
+        try {
+            ObjCRuntime.autoreleasePool {
+                val event = NSEvent.keyEventWithType_location_modifierFlags_timestamp_windowNumber_context_characters_charactersIgnoringModifiers_isARepeat_keyCode(
+                    type = NSEventType.NSEventTypeFlagsChanged,
+                    location = NSPoint(x = 2.0, y = 6.0),
+                    flags = NSEventModifierFlags.NSEventModifierFlagShift,
+                    time = 1.0,
+                    wNum = 0L,
+                    unusedPassNil = MemorySegment.NULL,
+                    keys = "",
+                    ukeys = "",
+                    flag = false,
+                    code = 0x38,
+                )
+
+                send(instance, "flagsChanged:", event)
+            }
+
+            val keyboard = assertIs<NSEventObservation.Details.Keyboard>(requireNotNull(observed).details)
+            assertEquals(NSEventType.NSEventTypeFlagsChanged, observed.type)
+            assertEquals(56, keyboard.keyCode)
+            assertEquals("", keyboard.characters)
+            assertEquals("", keyboard.charactersIgnoringModifiers)
+            assertEquals(false, keyboard.isRepeat)
+        } finally {
+            instance.close()
+        }
+    }
+
+    @Test
     fun mouseDownDeliversOnlyPointerDataAndKeepsItUsableAfterTheCallbackReturns() {
         requireMacOS()
         val managedClass = ObjCManagedClass.registerOnce(

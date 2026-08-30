@@ -80,6 +80,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   GitHub Action.
 
 ### Fixed
+- Managed AppKit `NSEvent` observations now snapshot modifier-change events
+  without querying text-only properties.
 - Managed AppKit `NSEvent` observations now snapshot mouse enter and exit events as
   tracking-area data without querying button-only properties.
 - Managed AppKit `NSEvent` observations now preserve native pointer `deltaX` and `deltaY`

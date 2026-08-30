@@ -29,7 +29,12 @@ data class NSEventObservation(
         /** The event is neither a keyboard nor a pointer event covered by this observation. */
         data object None : Details
 
-        /** Keyboard data captured for key-down, key-up, and modifier-change events. */
+        /**
+         * Keyboard data captured for key-down, key-up, and modifier-change events.
+         *
+         * Modifier-change events only provide [keyCode]; their text fields are empty and
+         * [isRepeat] is false.
+         */
         data class Keyboard(
             val keyCode: Int,
             val characters: String,
@@ -67,12 +72,18 @@ data class NSEventObservation(
         private fun NSEvent.detailsFor(type: NSEventType): Details = when (type) {
             NSEventType.NSEventTypeKeyDown,
             NSEventType.NSEventTypeKeyUp,
-            NSEventType.NSEventTypeFlagsChanged,
             -> Details.Keyboard(
                 keyCode = keyCode().toInt() and 0xffff,
                 characters = charactersAsString(),
                 charactersIgnoringModifiers = charactersIgnoringModifiersAsString(),
                 isRepeat = isARepeat(),
+            )
+
+            NSEventType.NSEventTypeFlagsChanged -> Details.Keyboard(
+                keyCode = keyCode().toInt() and 0xffff,
+                characters = "",
+                charactersIgnoringModifiers = "",
+                isRepeat = false,
             )
 
             NSEventType.NSEventTypeLeftMouseDown,
