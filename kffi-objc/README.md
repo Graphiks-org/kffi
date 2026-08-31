@@ -148,6 +148,28 @@ if (capability.supportsMacOs13Baseline && capability.preflightScreenCaptureAcces
 loaded lazily only after the macOS 13 runtime guard; picker availability is strictly a macOS 14+
 capability flag and does not resolve or call picker classes on earlier releases.
 
+## ScreenCaptureKit frame leases
+
+The frame-delivery layer keeps `SCStream`, `CMSampleBuffer`, `CVPixelBuffer`, and `IOSurface`
+private to KFFI. When a higher-level capture flow delivers a `ScreenCaptureFrameLease`, it is valid
+only for the duration of that handler. Call `copyPlanes(maxBytes)` inside the handler to obtain
+bounded, Kotlin-owned `ByteArray` plane copies and their row/height metadata; no pointer or native
+surface can escape:
+
+```kotlin
+fun consume(frame: ScreenCaptureFrameLease) {
+    val planes = frame.copyPlanes(maxBytes = 8 * 1024 * 1024)
+    val pixels = planes.first().bytes
+    process(pixels)
+}
+```
+
+KFFI locks the underlying pixel buffer read-only, verifies the total padded plane size before it
+reads a base address, copies the bytes, and unlocks in `finally`. The lease closes automatically
+after the callback returns (and may also be closed explicitly); later calls to `copyPlanes` fail.
+Callback exceptions are contained, and closing an output first removes it from `SCStream`, then
+waits for deliveries already admitted before releasing its Objective-C receiver.
+
 ## GameController input observation
 
 The generated GameController surface includes controllers, physical-input profiles, typed

@@ -135,7 +135,8 @@ private object CoreGraphicsScreenCaptureControlPlaneNative : ScreenCaptureContro
     override fun preflightScreenCaptureAccess(): Boolean = CGPreflightScreenCaptureAccess()
 }
 
-private object ScreenCaptureKitFramework {
+/** Internal framework loader shared by passive capability checks and frame-delivery adapters. */
+internal object ScreenCaptureKitFramework {
     private val loaded: Unit by lazy {
         System.load("/System/Library/Frameworks/ScreenCaptureKit.framework/ScreenCaptureKit")
     }

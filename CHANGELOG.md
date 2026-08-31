@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- A callback-scoped, pointer-free ScreenCaptureKit frame lease that copies bounded CoreVideo
+  planes into detached Kotlin byte arrays, with read-only lock/unlock safety and quiescent output
+  teardown.
 - A passive macOS 13+ ScreenCaptureKit control plane with detached runtime capability data,
   non-prompting Screen Recording preflight, and macOS 14+ picker availability detection.
 - Generated CoreHaptics and targeted IOKit HID manager bindings, with pointer-free managed game

@@ -7,6 +7,123 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSImageNameTouchBarAudioOutputVolumeLowTemplate typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarAudioOutputVolumeLowTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarAudioOutputVolumeLowTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarAudioOutputVolumeLowTemplate").orElseThrow().reinterpret(NSImageNameTouchBarAudioOutputVolumeLowTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarAudioOutputVolumeLowTemplate_VH: VarHandle by lazy { NSImageNameTouchBarAudioOutputVolumeLowTemplate_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarAudioOutputVolumeLowTemplate: MemorySegment
+    get() = NSImageNameTouchBarAudioOutputVolumeLowTemplate_VH.get(NSImageNameTouchBarAudioOutputVolumeLowTemplate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarAudioOutputVolumeLowTemplate_VH.set(NSImageNameTouchBarAudioOutputVolumeLowTemplate_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSImageNameTouchBarAudioOutputVolumeMediumTemplate typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarAudioOutputVolumeMediumTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarAudioOutputVolumeMediumTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarAudioOutputVolumeMediumTemplate").orElseThrow().reinterpret(NSImageNameTouchBarAudioOutputVolumeMediumTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarAudioOutputVolumeMediumTemplate_VH: VarHandle by lazy { NSImageNameTouchBarAudioOutputVolumeMediumTemplate_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarAudioOutputVolumeMediumTemplate: MemorySegment
+    get() = NSImageNameTouchBarAudioOutputVolumeMediumTemplate_VH.get(NSImageNameTouchBarAudioOutputVolumeMediumTemplate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarAudioOutputVolumeMediumTemplate_VH.set(NSImageNameTouchBarAudioOutputVolumeMediumTemplate_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSImageNameTouchBarAudioOutputVolumeOffTemplate typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarAudioOutputVolumeOffTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarAudioOutputVolumeOffTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarAudioOutputVolumeOffTemplate").orElseThrow().reinterpret(NSImageNameTouchBarAudioOutputVolumeOffTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarAudioOutputVolumeOffTemplate_VH: VarHandle by lazy { NSImageNameTouchBarAudioOutputVolumeOffTemplate_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarAudioOutputVolumeOffTemplate: MemorySegment
+    get() = NSImageNameTouchBarAudioOutputVolumeOffTemplate_VH.get(NSImageNameTouchBarAudioOutputVolumeOffTemplate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarAudioOutputVolumeOffTemplate_VH.set(NSImageNameTouchBarAudioOutputVolumeOffTemplate_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSImageNameTouchBarBookmarksTemplate typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarBookmarksTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarBookmarksTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarBookmarksTemplate").orElseThrow().reinterpret(NSImageNameTouchBarBookmarksTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarBookmarksTemplate_VH: VarHandle by lazy { NSImageNameTouchBarBookmarksTemplate_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarBookmarksTemplate: MemorySegment
+    get() = NSImageNameTouchBarBookmarksTemplate_VH.get(NSImageNameTouchBarBookmarksTemplate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarBookmarksTemplate_VH.set(NSImageNameTouchBarBookmarksTemplate_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSImageNameTouchBarColorPickerFill typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarColorPickerFill_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarColorPickerFill_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarColorPickerFill").orElseThrow().reinterpret(NSImageNameTouchBarColorPickerFill_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarColorPickerFill_VH: VarHandle by lazy { NSImageNameTouchBarColorPickerFill_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarColorPickerFill: MemorySegment
+    get() = NSImageNameTouchBarColorPickerFill_VH.get(NSImageNameTouchBarColorPickerFill_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarColorPickerFill_VH.set(NSImageNameTouchBarColorPickerFill_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSImageNameTouchBarColorPickerFont typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarColorPickerFont_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarColorPickerFont_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarColorPickerFont").orElseThrow().reinterpret(NSImageNameTouchBarColorPickerFont_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarColorPickerFont_VH: VarHandle by lazy { NSImageNameTouchBarColorPickerFont_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarColorPickerFont: MemorySegment
+    get() = NSImageNameTouchBarColorPickerFont_VH.get(NSImageNameTouchBarColorPickerFont_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarColorPickerFont_VH.set(NSImageNameTouchBarColorPickerFont_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSImageNameTouchBarColorPickerStroke typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarColorPickerStroke_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarColorPickerStroke_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarColorPickerStroke").orElseThrow().reinterpret(NSImageNameTouchBarColorPickerStroke_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarColorPickerStroke_VH: VarHandle by lazy { NSImageNameTouchBarColorPickerStroke_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarColorPickerStroke: MemorySegment
+    get() = NSImageNameTouchBarColorPickerStroke_VH.get(NSImageNameTouchBarColorPickerStroke_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarColorPickerStroke_VH.set(NSImageNameTouchBarColorPickerStroke_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSImageNameTouchBarCommunicationAudioTemplate typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarCommunicationAudioTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarCommunicationAudioTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarCommunicationAudioTemplate").orElseThrow().reinterpret(NSImageNameTouchBarCommunicationAudioTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarCommunicationAudioTemplate_VH: VarHandle by lazy { NSImageNameTouchBarCommunicationAudioTemplate_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarCommunicationAudioTemplate: MemorySegment
+    get() = NSImageNameTouchBarCommunicationAudioTemplate_VH.get(NSImageNameTouchBarCommunicationAudioTemplate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarCommunicationAudioTemplate_VH.set(NSImageNameTouchBarCommunicationAudioTemplate_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSImageNameTouchBarCommunicationVideoTemplate typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarCommunicationVideoTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarCommunicationVideoTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarCommunicationVideoTemplate").orElseThrow().reinterpret(NSImageNameTouchBarCommunicationVideoTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarCommunicationVideoTemplate_VH: VarHandle by lazy { NSImageNameTouchBarCommunicationVideoTemplate_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarCommunicationVideoTemplate: MemorySegment
+    get() = NSImageNameTouchBarCommunicationVideoTemplate_VH.get(NSImageNameTouchBarCommunicationVideoTemplate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarCommunicationVideoTemplate_VH.set(NSImageNameTouchBarCommunicationVideoTemplate_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSImageNameTouchBarComposeTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarComposeTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -3944,105 +4061,3 @@ private val NSMacSimpleTextDocumentType_VH: VarHandle by lazy { NSMacSimpleTextD
 var NSMacSimpleTextDocumentType: MemorySegment
     get() = NSMacSimpleTextDocumentType_VH.get(NSMacSimpleTextDocumentType_SEGMENT, 0L) as MemorySegment
     set(value) = NSMacSimpleTextDocumentType_VH.set(NSMacSimpleTextDocumentType_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSDocFormatTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
- */
-private val NSDocFormatTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDocFormatTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDocFormatTextDocumentType").orElseThrow().reinterpret(NSDocFormatTextDocumentType_LAYOUT.byteSize()) }
-private val NSDocFormatTextDocumentType_VH: VarHandle by lazy { NSDocFormatTextDocumentType_LAYOUT.varHandle() }
-
-var NSDocFormatTextDocumentType: MemorySegment
-    get() = NSDocFormatTextDocumentType_VH.get(NSDocFormatTextDocumentType_SEGMENT, 0L) as MemorySegment
-    set(value) = NSDocFormatTextDocumentType_VH.set(NSDocFormatTextDocumentType_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSWordMLTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
- */
-private val NSWordMLTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWordMLTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWordMLTextDocumentType").orElseThrow().reinterpret(NSWordMLTextDocumentType_LAYOUT.byteSize()) }
-private val NSWordMLTextDocumentType_VH: VarHandle by lazy { NSWordMLTextDocumentType_LAYOUT.varHandle() }
-
-var NSWordMLTextDocumentType: MemorySegment
-    get() = NSWordMLTextDocumentType_VH.get(NSWordMLTextDocumentType_SEGMENT, 0L) as MemorySegment
-    set(value) = NSWordMLTextDocumentType_VH.set(NSWordMLTextDocumentType_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSWebArchiveTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
- */
-private val NSWebArchiveTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWebArchiveTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWebArchiveTextDocumentType").orElseThrow().reinterpret(NSWebArchiveTextDocumentType_LAYOUT.byteSize()) }
-private val NSWebArchiveTextDocumentType_VH: VarHandle by lazy { NSWebArchiveTextDocumentType_LAYOUT.varHandle() }
-
-var NSWebArchiveTextDocumentType: MemorySegment
-    get() = NSWebArchiveTextDocumentType_VH.get(NSWebArchiveTextDocumentType_SEGMENT, 0L) as MemorySegment
-    set(value) = NSWebArchiveTextDocumentType_VH.set(NSWebArchiveTextDocumentType_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSOfficeOpenXMLTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
- */
-private val NSOfficeOpenXMLTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSOfficeOpenXMLTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSOfficeOpenXMLTextDocumentType").orElseThrow().reinterpret(NSOfficeOpenXMLTextDocumentType_LAYOUT.byteSize()) }
-private val NSOfficeOpenXMLTextDocumentType_VH: VarHandle by lazy { NSOfficeOpenXMLTextDocumentType_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
-var NSOfficeOpenXMLTextDocumentType: MemorySegment
-    get() = NSOfficeOpenXMLTextDocumentType_VH.get(NSOfficeOpenXMLTextDocumentType_SEGMENT, 0L) as MemorySegment
-    set(value) = NSOfficeOpenXMLTextDocumentType_VH.set(NSOfficeOpenXMLTextDocumentType_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSOpenDocumentTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
- */
-private val NSOpenDocumentTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSOpenDocumentTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSOpenDocumentTextDocumentType").orElseThrow().reinterpret(NSOpenDocumentTextDocumentType_LAYOUT.byteSize()) }
-private val NSOpenDocumentTextDocumentType_VH: VarHandle by lazy { NSOpenDocumentTextDocumentType_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
-var NSOpenDocumentTextDocumentType: MemorySegment
-    get() = NSOpenDocumentTextDocumentType_VH.get(NSOpenDocumentTextDocumentType_SEGMENT, 0L) as MemorySegment
-    set(value) = NSOpenDocumentTextDocumentType_VH.set(NSOpenDocumentTextDocumentType_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSConvertedDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
- */
-private val NSConvertedDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSConvertedDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSConvertedDocumentAttribute").orElseThrow().reinterpret(NSConvertedDocumentAttribute_LAYOUT.byteSize()) }
-private val NSConvertedDocumentAttribute_VH: VarHandle by lazy { NSConvertedDocumentAttribute_LAYOUT.varHandle() }
-
-var NSConvertedDocumentAttribute: MemorySegment
-    get() = NSConvertedDocumentAttribute_VH.get(NSConvertedDocumentAttribute_SEGMENT, 0L) as MemorySegment
-    set(value) = NSConvertedDocumentAttribute_VH.set(NSConvertedDocumentAttribute_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSFileTypeDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
- */
-private val NSFileTypeDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileTypeDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSFileTypeDocumentAttribute").orElseThrow().reinterpret(NSFileTypeDocumentAttribute_LAYOUT.byteSize()) }
-private val NSFileTypeDocumentAttribute_VH: VarHandle by lazy { NSFileTypeDocumentAttribute_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
-var NSFileTypeDocumentAttribute: MemorySegment
-    get() = NSFileTypeDocumentAttribute_VH.get(NSFileTypeDocumentAttribute_SEGMENT, 0L) as MemorySegment
-    set(value) = NSFileTypeDocumentAttribute_VH.set(NSFileTypeDocumentAttribute_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSTitleDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
- */
-private val NSTitleDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTitleDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTitleDocumentAttribute").orElseThrow().reinterpret(NSTitleDocumentAttribute_LAYOUT.byteSize()) }
-private val NSTitleDocumentAttribute_VH: VarHandle by lazy { NSTitleDocumentAttribute_LAYOUT.varHandle() }
-
-var NSTitleDocumentAttribute: MemorySegment
-    get() = NSTitleDocumentAttribute_VH.get(NSTitleDocumentAttribute_SEGMENT, 0L) as MemorySegment
-    set(value) = NSTitleDocumentAttribute_VH.set(NSTitleDocumentAttribute_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSCompanyDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
- */
-private val NSCompanyDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSCompanyDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCompanyDocumentAttribute").orElseThrow().reinterpret(NSCompanyDocumentAttribute_LAYOUT.byteSize()) }
-private val NSCompanyDocumentAttribute_VH: VarHandle by lazy { NSCompanyDocumentAttribute_LAYOUT.varHandle() }
-
-var NSCompanyDocumentAttribute: MemorySegment
-    get() = NSCompanyDocumentAttribute_VH.get(NSCompanyDocumentAttribute_SEGMENT, 0L) as MemorySegment
-    set(value) = NSCompanyDocumentAttribute_VH.set(NSCompanyDocumentAttribute_SEGMENT, 0L, value)
