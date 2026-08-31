@@ -80,6 +80,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   GitHub Action.
 
 ### Fixed
+- Managed Objective-C classes now isolate their native method implementations and callback routes
+  across independent JVM classloaders.
 - Managed AppKit `NSEvent` observations now snapshot modifier-change events
   without querying text-only properties.
 - Managed AppKit `NSEvent` observations now snapshot mouse enter and exit events as

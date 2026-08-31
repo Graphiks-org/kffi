@@ -24,6 +24,7 @@ class ObjCManagedClass private constructor(
     companion object {
         private val registrationLock = Any()
         private val registeredClasses = mutableMapOf<StructuralKey, ObjCManagedClass>()
+        private val bridgeIdentity = BridgeIdentity(ObjCMethodDispatch.loaderGeneration)
 
         fun registerOnce(
             superclassName: String = "NSObject",
@@ -36,6 +37,7 @@ class ObjCManagedClass private constructor(
             require(methods.keys.none(String::isBlank)) { "Objective-C selector names must not be blank" }
 
             val key = StructuralKey(
+                bridge = bridgeIdentity,
                 superclassName = superclassName,
                 protocols = protocols.sorted(),
                 methods = methods.entries
@@ -75,24 +77,12 @@ class ObjCManagedClass private constructor(
             var registered = false
             try {
                 methods.entries.sortedBy { it.key }.forEach { (selector, signature) ->
-                    if (signature === ObjCMethodSignatures.Boolean) {
-                        val callback = ObjCSubclassing.booleanNoArgumentCallback { receiver, command ->
-                            ObjCManagedTrampolines.dispatchBooleanNoArgument(
-                                receiver.address(),
-                                command.address(),
-                            )
-                        }
-                        require(ObjCSubclassing.addBooleanNoArgumentMethod(allocated, selector, callback)) {
-                            "Objective-C runtime rejected selector '$selector' with encoding '${signature.typeEncoding}'"
-                        }
-                    } else {
-                        ObjCManagedRuntime.requireAddedMethod(
-                            nativeClass = allocated,
-                            selectorName = selector,
-                            implementation = MemorySegment.ofAddress(requireNotNull(signature.trampoline).rawValue),
-                            typeEncoding = signature.typeEncoding,
-                        )
-                    }
+                    ObjCManagedRuntime.requireAddedMethod(
+                        nativeClass = allocated,
+                        selectorName = selector,
+                        implementation = MemorySegment.ofAddress(signature.trampoline.rawValue),
+                        typeEncoding = signature.typeEncoding,
+                    )
                 }
                 key.protocols.forEach { protocol ->
                     ObjCManagedRuntime.requireAddedProtocol(allocated, protocol)
@@ -108,13 +98,17 @@ class ObjCManagedClass private constructor(
     }
 }
 
+private data class BridgeIdentity(val loaderGeneration: Long)
+
 private data class StructuralKey(
+    val bridge: BridgeIdentity,
     val superclassName: String,
     val protocols: List<String>,
     val methods: List<StructuralMethod>,
 ) {
     fun nativeClassName(): String {
         val descriptor = buildString {
+            appendPart(bridge.loaderGeneration.toString())
             appendPart(superclassName)
             protocols.forEach { protocol -> appendPart(protocol) }
             methods.forEach { method ->

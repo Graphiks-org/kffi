@@ -42,7 +42,7 @@ class ObjCManagedInstance private constructor(
                 trampoline = requireNotNull(ObjCMethodSignatures.Void.trampoline),
                 policy = CallbackPolicy.REPEATING,
                 onError = onError,
-                callback = ManagedObjCCallback(router),
+                callback = ManagedObjCCallback(),
             )
             val ownedReceiver = AtomicReference(MemorySegment.NULL)
             val nativeRoute = AtomicReference<AutoCloseable?>(null)
