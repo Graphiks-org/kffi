@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSColorPanel(override val ptr: MemorySegment) : NSPanel(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSColorPanel") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSColorPanel") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun dragColor_withEvent_fromView(color: MemorySegment, event: MemorySegment, sourceView: MemorySegment): Boolean {

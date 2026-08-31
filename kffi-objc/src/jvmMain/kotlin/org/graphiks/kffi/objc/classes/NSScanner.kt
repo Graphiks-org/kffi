@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSScanner(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSScanner") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSScanner") } }
 
     }
 

@@ -15,7 +15,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 open class NSCollectionLayoutSize(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionLayoutSize") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSCollectionLayoutSize") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun sizeWithWidthDimension_heightDimension(width: MemorySegment, height: MemorySegment): MemorySegment {

@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSViewAnimation(override val ptr: MemorySegment) : NSAnimation(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSViewAnimation") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSViewAnimation") } }
 
     }
 

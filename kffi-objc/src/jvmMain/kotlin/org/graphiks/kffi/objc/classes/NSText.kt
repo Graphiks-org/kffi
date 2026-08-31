@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSText(override val ptr: MemorySegment) : NSView(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSText") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSText") } }
 
     }
 

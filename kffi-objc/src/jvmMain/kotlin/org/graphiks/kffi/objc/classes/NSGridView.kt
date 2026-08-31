@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = -1)
 open class NSGridView(override val ptr: MemorySegment) : NSView(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSGridView") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSGridView") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun gridViewWithNumberOfColumns_rows(columnCount: Long, rowCount: Long): MemorySegment {

@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSDecimalNumberHandler(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDecimalNumberHandler") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSDecimalNumberHandler") } }
 
         fun decimalNumberHandlerWithRoundingMode_scale_raiseOnExactness_raiseOnOverflow_raiseOnUnderflow_raiseOnDivideByZero(roundingMode: NSRoundingMode, scale: Short, exact: Boolean, overflow: Boolean, underflow: Boolean, divideByZero: Boolean): MemorySegment {
             val sel = ObjCRuntime.sel("decimalNumberHandlerWithRoundingMode:scale:raiseOnExactness:raiseOnOverflow:raiseOnUnderflow:raiseOnDivideByZero:")

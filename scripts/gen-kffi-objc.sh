@@ -78,6 +78,7 @@ FRAMEWORKS=(
     GameController ModelIO SceneKit
     UniformTypeIdentifiers PDFKit QuickLook
 )
+CORE_GRAPHICS_LIBRARY="/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"
 INCLUDE_FRAMEWORK_ARGS=()
 for framework in "${FRAMEWORKS[@]}"; do
     INCLUDE_FRAMEWORK_ARGS+=(--include-framework "$framework")
@@ -89,6 +90,7 @@ mkdir -p "$STAGING"
 "$KEXTRACT" \
     --objc \
     --split-output \
+    --library ":$CORE_GRAPHICS_LIBRARY" \
     "${INCLUDE_FRAMEWORK_ARGS[@]}" \
     --output "$STAGING" \
     --target-package org.graphiks.kffi.objc \

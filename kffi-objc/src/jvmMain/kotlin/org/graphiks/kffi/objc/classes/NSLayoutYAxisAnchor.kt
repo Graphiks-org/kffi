@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
 open class NSLayoutYAxisAnchor(override val ptr: MemorySegment) : NSLayoutAnchor(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSLayoutYAxisAnchor") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSLayoutYAxisAnchor") } }
 
     }
 

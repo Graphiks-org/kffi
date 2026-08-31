@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSCreateCommand(override val ptr: MemorySegment) : NSScriptCommand(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCreateCommand") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSCreateCommand") } }
 
     }
 

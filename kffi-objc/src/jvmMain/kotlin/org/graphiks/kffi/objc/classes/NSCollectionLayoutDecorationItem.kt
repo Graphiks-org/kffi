@@ -15,7 +15,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 open class NSCollectionLayoutDecorationItem(override val ptr: MemorySegment) : NSCollectionLayoutItem(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionLayoutDecorationItem") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSCollectionLayoutDecorationItem") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun backgroundDecorationItemWithElementKind(elementKind: MemorySegment): MemorySegment {

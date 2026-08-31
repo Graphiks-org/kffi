@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSCIImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCIImageRep") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSCIImageRep") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun imageRepWithCIImage(image: MemorySegment): MemorySegment {

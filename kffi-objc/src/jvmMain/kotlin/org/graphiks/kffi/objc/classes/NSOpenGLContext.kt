@@ -15,7 +15,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Please use Metal or MetalKit.")
 open class NSOpenGLContext(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSOpenGLContext") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSOpenGLContext") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun clearCurrentContext(): Unit {

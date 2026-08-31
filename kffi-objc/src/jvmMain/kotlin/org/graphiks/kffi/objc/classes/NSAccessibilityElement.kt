@@ -15,7 +15,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
 open class NSAccessibilityElement(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSAccessibilityElement") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSAccessibilityElement") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun accessibilityElementWithRole_frame_label_parent(role: MemorySegment, frame: NSRect, label: MemorySegment, parent: MemorySegment): MemorySegment {

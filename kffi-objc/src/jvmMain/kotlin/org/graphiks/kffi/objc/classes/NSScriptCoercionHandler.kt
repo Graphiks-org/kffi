@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSScriptCoercionHandler(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSScriptCoercionHandler") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSScriptCoercionHandler") } }
 
         fun sharedCoercionHandler(): MemorySegment {
             val sel = ObjCRuntime.sel("sharedCoercionHandler")

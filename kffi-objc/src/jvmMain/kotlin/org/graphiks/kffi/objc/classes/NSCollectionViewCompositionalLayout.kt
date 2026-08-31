@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 open class NSCollectionViewCompositionalLayout(override val ptr: MemorySegment) : NSCollectionViewLayout(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionViewCompositionalLayout") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSCollectionViewCompositionalLayout") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         @PlatformAvailability(platform = "all", unavailable = true)

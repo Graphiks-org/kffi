@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSGraphicsContext(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSGraphicsContext") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSGraphicsContext") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun graphicsContextWithAttributes(attributes: MemorySegment): MemorySegment {

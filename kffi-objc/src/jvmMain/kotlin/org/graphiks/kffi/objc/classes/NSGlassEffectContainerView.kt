@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
 open class NSGlassEffectContainerView(override val ptr: MemorySegment) : NSView(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSGlassEffectContainerView") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSGlassEffectContainerView") } }
 
     }
 

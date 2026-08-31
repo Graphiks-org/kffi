@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSURLHandle(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSURLHandle") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSURLHandle") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 4, deprecatedSubminor = -1)

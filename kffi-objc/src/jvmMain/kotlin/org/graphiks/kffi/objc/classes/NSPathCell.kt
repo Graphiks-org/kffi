@@ -15,7 +15,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 open class NSPathCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSPathCell") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSPathCell") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun pathComponentCellClass(): MemorySegment {

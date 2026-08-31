@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSDate(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDate") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSDate") } }
 
     }
 

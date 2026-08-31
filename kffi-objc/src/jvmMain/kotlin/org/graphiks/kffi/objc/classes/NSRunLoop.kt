@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSRunLoop(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSRunLoop") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSRunLoop") } }
 
         fun currentRunLoop(): MemorySegment {
             val sel = ObjCRuntime.sel("currentRunLoop")

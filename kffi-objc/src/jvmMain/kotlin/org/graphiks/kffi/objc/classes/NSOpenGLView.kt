@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 14, deprecatedSubminor = -1, message = "Please use MTKView instead.")
 open class NSOpenGLView(override val ptr: MemorySegment) : NSView(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSOpenGLView") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSOpenGLView") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun defaultPixelFormat(): MemorySegment {

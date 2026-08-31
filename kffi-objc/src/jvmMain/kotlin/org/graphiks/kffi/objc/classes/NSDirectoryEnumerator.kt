@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSDirectoryEnumerator(override val ptr: MemorySegment) : NSEnumerator(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDirectoryEnumerator") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSDirectoryEnumerator") } }
 
     }
 

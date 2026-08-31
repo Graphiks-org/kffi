@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSPropertyListSerialization(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSPropertyListSerialization") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSPropertyListSerialization") } }
 
         fun propertyList_isValidForFormat(plist: MemorySegment, format: NSPropertyListFormat): Boolean {
             val sel = ObjCRuntime.sel("propertyList:isValidForFormat:")

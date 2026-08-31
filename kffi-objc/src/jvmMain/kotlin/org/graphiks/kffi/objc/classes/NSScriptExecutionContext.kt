@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSScriptExecutionContext(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSScriptExecutionContext") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSScriptExecutionContext") } }
 
         fun sharedScriptExecutionContext(): MemorySegment {
             val sel = ObjCRuntime.sel("sharedScriptExecutionContext")

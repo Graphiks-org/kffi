@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSMiddleSpecifier(override val ptr: MemorySegment) : NSScriptObjectSpecifier(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSMiddleSpecifier") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSMiddleSpecifier") } }
 
     }
 

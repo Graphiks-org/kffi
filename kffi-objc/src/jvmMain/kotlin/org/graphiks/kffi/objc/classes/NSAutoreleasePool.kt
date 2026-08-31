@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "all", unavailable = true, message = "not available in automatic reference counting mode")
 open class NSAutoreleasePool(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSAutoreleasePool") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSAutoreleasePool") } }
 
         @PlatformAvailability(platform = "all", unavailable = true, message = "not available in automatic reference counting mode")
         fun addObject(anObject: MemorySegment): Unit {

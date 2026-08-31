@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSNotificationQueue(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSNotificationQueue") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSNotificationQueue") } }
 
         fun defaultQueue(): MemorySegment {
             val sel = ObjCRuntime.sel("defaultQueue")

@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSWindow(override val ptr: MemorySegment) : NSResponder(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSWindow") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSWindow") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun frameRectForContentRect_styleMask(cRect: NSRect, style: NSWindowStyleMask): NSRect {

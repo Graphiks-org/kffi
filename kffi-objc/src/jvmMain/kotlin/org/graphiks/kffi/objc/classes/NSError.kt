@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSError(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSError") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSError") } }
 
         fun errorWithDomain_code_userInfo(domain: MemorySegment, code: Long, dict: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("errorWithDomain:code:userInfo:")

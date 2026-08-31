@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
 open class NSMutableFontCollection(override val ptr: MemorySegment) : NSFontCollection(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSMutableFontCollection") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSMutableFontCollection") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun fontCollectionWithDescriptors(queryDescriptors: MemorySegment): MemorySegment {

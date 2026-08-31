@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSATSTypesetter(override val ptr: MemorySegment) : NSTypesetter(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSATSTypesetter") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSATSTypesetter") } }
 
         fun sharedTypesetter(): MemorySegment {
             val sel = ObjCRuntime.sel("sharedTypesetter")

@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSWhoseSpecifier(override val ptr: MemorySegment) : NSScriptObjectSpecifier(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSWhoseSpecifier") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSWhoseSpecifier") } }
 
     }
 
