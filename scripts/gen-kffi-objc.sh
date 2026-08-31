@@ -75,7 +75,7 @@ PRESERVED_PACKAGE_PATHS=(managed appkit)
 FRAMEWORKS=(
     Foundation CoreFoundation AppKit CoreGraphics
     QuartzCore CoreImage Metal AVFoundation
-    CoreHaptics GameController ModelIO SceneKit
+    CoreHaptics GameController ModelIO SceneKit ScreenCaptureKit
     UniformTypeIdentifiers PDFKit QuickLook
 )
 NATIVE_LIBRARIES=(

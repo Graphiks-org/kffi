@@ -5,7 +5,7 @@ Function & Memory API (Panama FFM).
 
 The generated sources cover the Apple SDK frameworks selected by the generator:
 Foundation, CoreFoundation, AppKit, CoreGraphics, QuartzCore, CoreImage, Metal,
-AVFoundation, CoreHaptics, GameController, ModelIO, SceneKit,
+AVFoundation, CoreHaptics, GameController, ScreenCaptureKit, ModelIO, SceneKit,
 UniformTypeIdentifiers, PDFKit, and QuickLook. This includes the complete class
 and protocol surface visible through the SDK umbrella header, together with the
 required enums, options, types, categories, and runtime helpers. A targeted set
@@ -128,6 +128,25 @@ modify or suppress events. Closing removes the run-loop source, disables the tap
 handler admission, and releases CoreFoundation resources after any already-admitted callback has
 returned. The API never requests Input Monitoring permission; applications remain responsible for
 explaining and initiating any permission flow separately.
+
+## Passive ScreenCaptureKit control plane
+
+`ScreenCaptureControlPlanes.capability()` is the macOS 13+ readiness check for a future capture
+flow. It returns only detached Kotlin values: the current `MacOsVersion`, baseline availability,
+the result of the non-prompting `CGPreflightScreenCaptureAccess()` query, and whether the macOS 14+
+content-sharing picker API is available. It never calls `CGRequestScreenCaptureAccess`, enumerates
+`SCShareableContent`, starts an `SCStream`, invokes `SCScreenshotManager`, or displays a picker:
+
+```kotlin
+val capability = ScreenCaptureControlPlanes.capability()
+if (capability.supportsMacOs13Baseline && capability.preflightScreenCaptureAccess) {
+    // A later capture layer can be enabled without this check having requested permission.
+}
+```
+
+`ScreenCaptureSources.inspect()` exposes the same deliberately passive model. ScreenCaptureKit is
+loaded lazily only after the macOS 13 runtime guard; picker availability is strictly a macOS 14+
+capability flag and does not resolve or call picker classes on earlier releases.
 
 ## GameController input observation
 

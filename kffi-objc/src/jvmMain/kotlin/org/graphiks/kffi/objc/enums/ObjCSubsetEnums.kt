@@ -36856,6 +36856,30 @@ enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_M
 }
 
 /**
+ * NS_ENUM: {@snippet lang=c : enum SCShareableContentStyle}
+ */
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+@JvmInline
+value class SCShareableContentStyle(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+        val SCShareableContentStyleNone = SCShareableContentStyle(0L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+        val SCShareableContentStyleWindow = SCShareableContentStyle(1L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+        val SCShareableContentStyleDisplay = SCShareableContentStyle(2L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+        val SCShareableContentStyleApplication = SCShareableContentStyle(3L)
+    }
+
+}
+
+/**
  * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_0 196.4
  */
 fun kCFCoreFoundationVersionNumber10_0(): Double = 196.4
