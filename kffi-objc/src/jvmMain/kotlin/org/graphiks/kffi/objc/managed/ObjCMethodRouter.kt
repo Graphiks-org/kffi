@@ -11,11 +11,12 @@ import org.graphiks.kffi.CallbackRegistration
 import org.graphiks.kffi.CallbackRuntime
 import org.graphiks.kffi.CallbackType
 import org.graphiks.kffi.NativeAddress
+import org.graphiks.kffi.engine.JvmManagedObjCBridge
+import org.graphiks.kffi.engine.JvmManagedObjCRoute
 import org.graphiks.kffi.objc.NSEvent
 import org.graphiks.kffi.objc.NSObject
 import org.graphiks.kffi.objc.ObjCRuntime
 import java.lang.foreign.MemorySegment
-import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicReference
 
 /** Typed per-instance bindings for a registered managed Objective-C class. */
@@ -195,23 +196,40 @@ private class ULongObjectBinding(
     val handler: (NSObject) -> Long,
 ) : ObjCMethodBinding
 
-internal class ManagedObjCCallback(
-    val router: ObjCMethodRouter,
-) : Callback
+/** Admission marker; the quiescence-revoked native route owns the router and its handlers. */
+internal class ManagedObjCCallback : Callback
 
 internal object ObjCMethodDispatch {
+    val loaderGeneration: Long = JvmManagedObjCBridge.allocateLoaderGeneration()
+
     val callbackType = CallbackType<ManagedObjCCallback>(
-        canonicalId = "objc-managed-instance",
+        canonicalId = "objc-managed-instance-$loaderGeneration",
         hasRoutingUserdata = true,
     )
 
-    private data class NativeRoute(
+    internal data class NativeRoute(
         val token: NativeAddress,
         val router: ObjCMethodRouter,
         val onError: CallbackExceptionHandler,
-    )
+    ) : JvmManagedObjCRoute {
+        override fun dispatchVoidObject(self: Long, command: Long, argument: Long) {
+            ObjCManagedTrampolines.dispatchVoidObject(this, command, argument)
+        }
 
-    private val nativeRoutes = ConcurrentHashMap<Long, NativeRoute>()
+        override fun dispatchBooleanObject(self: Long, command: Long, argument: Long): Boolean =
+            ObjCManagedTrampolines.dispatchBooleanObject(this, command, argument)
+
+        override fun dispatchBoolean(self: Long, command: Long): Boolean =
+            ObjCManagedTrampolines.dispatchBooleanNoArgument(this, command)
+
+        override fun dispatchVoid(self: Long, command: Long) {
+            ObjCManagedTrampolines.dispatchVoid(this, command)
+        }
+
+        override fun dispatchULongObject(self: Long, command: Long, argument: Long): Long =
+            ObjCManagedTrampolines.dispatchULongObject(this, command, argument)
+    }
+
     private val beforeRouteLookupForTest = AtomicReference<(() -> Unit)?>(null)
     private val beforeCallbackAdmissionForTest = AtomicReference<(() -> Unit)?>(null)
 
@@ -225,82 +243,79 @@ internal object ObjCMethodDispatch {
             "Managed Objective-C callback registration did not allocate routing userdata"
         }
         val route = NativeRoute(token, router, onError)
-        check(nativeRoutes.putIfAbsent(receiver.address(), route) == null) {
-            "A managed Objective-C route already exists for receiver ${receiver.address()}"
-        }
-        return AutoCloseable { nativeRoutes.remove(receiver.address(), route) }
+        return JvmManagedObjCBridge.install(receiver.address(), route)
     }
 
     fun dispatchVoidObject(
         boundary: ObjCNativeBoundary<Unit>,
-        self: Long,
+        route: NativeRoute,
         command: Long,
         argument: Long,
     ) {
-        val route = acquireRoute(boundary, self) ?: return
+        acquireRoute(boundary, route)
         beforeCallbackAdmissionForTest.get()?.invoke()
-        CallbackRuntime.dispatchSafely(callbackType, route.token) { callback ->
-            callback.router.invokeVoidObject(command, argument)
+        CallbackRuntime.dispatchSafely(callbackType, route.token) {
+            route.router.invokeVoidObject(command, argument)
         }
     }
 
     fun dispatchBooleanObject(
         boundary: ObjCNativeBoundary<Boolean>,
-        self: Long,
+        route: NativeRoute,
         command: Long,
         argument: Long,
     ): Boolean {
-        val route = acquireRoute(boundary, self) ?: return boundary.fallback
+        acquireRoute(boundary, route)
         val fallback = route.router.booleanFallback(command)
         boundary.fallback = fallback
         beforeCallbackAdmissionForTest.get()?.invoke()
         var admitted = false
-        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) { callback ->
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) {
             admitted = true
-            callback.router.invokeBooleanObject(command, argument)
+            route.router.invokeBooleanObject(command, argument)
         }
         return if (admitted) result else ObjCMethodSignatures.BooleanObject.abiZero
     }
 
     fun dispatchBooleanNoArgument(
         boundary: ObjCNativeBoundary<Boolean>,
-        self: Long,
+        route: NativeRoute,
         command: Long,
     ): Boolean {
-        val route = acquireRoute(boundary, self) ?: return boundary.fallback
+        acquireRoute(boundary, route)
         val fallback = route.router.noArgumentBooleanFallback(command)
         boundary.fallback = fallback
         beforeCallbackAdmissionForTest.get()?.invoke()
         var admitted = false
-        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) { callback ->
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) {
             admitted = true
-            callback.router.invokeBoolean(command)
+            route.router.invokeBoolean(command)
         }
         return if (admitted) result else ObjCMethodSignatures.Boolean.abiZero
     }
 
-    fun dispatchVoid(boundary: ObjCNativeBoundary<Unit>, self: Long, command: Long) {
-        val route = acquireRoute(boundary, self) ?: return
+    fun dispatchVoid(boundary: ObjCNativeBoundary<Unit>, route: NativeRoute, command: Long) {
+        acquireRoute(boundary, route)
         beforeCallbackAdmissionForTest.get()?.invoke()
-        CallbackRuntime.dispatchSafely(callbackType, route.token) { callback ->
-            callback.router.invokeVoid(command)
+        CallbackRuntime.dispatchSafely(callbackType, route.token) {
+            route.router.invokeVoid(command)
         }
     }
 
     fun dispatchULongObject(
         boundary: ObjCNativeBoundary<Long>,
-        self: Long,
+        route: NativeRoute,
         command: Long,
         argument: Long,
     ): Long {
-        val route = acquireRoute(boundary, self) ?: return boundary.fallback
+        acquireRoute(boundary, route)
         val fallback = route.router.uLongFallback(command)
         boundary.fallback = fallback
         beforeCallbackAdmissionForTest.get()?.invoke()
         var admitted = false
-        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) { callback ->
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) {
             admitted = true
-            callback.router.invokeULongObject(command, argument)
+            route.router.invokeULongObject(command, argument)
         }
         return if (admitted) result else ObjCMethodSignatures.ULongObject.abiZero
     }
@@ -324,11 +339,9 @@ internal object ObjCMethodDispatch {
         }
     }
 
-    private fun <R> acquireRoute(boundary: ObjCNativeBoundary<R>, self: Long): NativeRoute? {
+    private fun <R> acquireRoute(boundary: ObjCNativeBoundary<R>, route: NativeRoute) {
         beforeRouteLookupForTest.get()?.invoke()
-        val route = nativeRoutes[self] ?: return null
         boundary.onError = route.onError
-        return route
     }
 
     private fun installTestHook(
