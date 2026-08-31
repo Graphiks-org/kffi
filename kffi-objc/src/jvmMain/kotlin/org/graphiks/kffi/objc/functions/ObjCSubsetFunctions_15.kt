@@ -7,6 +7,108 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSDocFormatTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
+ */
+private val NSDocFormatTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSDocFormatTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDocFormatTextDocumentType").orElseThrow().reinterpret(NSDocFormatTextDocumentType_LAYOUT.byteSize()) }
+private val NSDocFormatTextDocumentType_VH: VarHandle by lazy { NSDocFormatTextDocumentType_LAYOUT.varHandle() }
+
+var NSDocFormatTextDocumentType: MemorySegment
+    get() = NSDocFormatTextDocumentType_VH.get(NSDocFormatTextDocumentType_SEGMENT, 0L) as MemorySegment
+    set(value) = NSDocFormatTextDocumentType_VH.set(NSDocFormatTextDocumentType_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSWordMLTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
+ */
+private val NSWordMLTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWordMLTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWordMLTextDocumentType").orElseThrow().reinterpret(NSWordMLTextDocumentType_LAYOUT.byteSize()) }
+private val NSWordMLTextDocumentType_VH: VarHandle by lazy { NSWordMLTextDocumentType_LAYOUT.varHandle() }
+
+var NSWordMLTextDocumentType: MemorySegment
+    get() = NSWordMLTextDocumentType_VH.get(NSWordMLTextDocumentType_SEGMENT, 0L) as MemorySegment
+    set(value) = NSWordMLTextDocumentType_VH.set(NSWordMLTextDocumentType_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSWebArchiveTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
+ */
+private val NSWebArchiveTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSWebArchiveTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWebArchiveTextDocumentType").orElseThrow().reinterpret(NSWebArchiveTextDocumentType_LAYOUT.byteSize()) }
+private val NSWebArchiveTextDocumentType_VH: VarHandle by lazy { NSWebArchiveTextDocumentType_LAYOUT.varHandle() }
+
+var NSWebArchiveTextDocumentType: MemorySegment
+    get() = NSWebArchiveTextDocumentType_VH.get(NSWebArchiveTextDocumentType_SEGMENT, 0L) as MemorySegment
+    set(value) = NSWebArchiveTextDocumentType_VH.set(NSWebArchiveTextDocumentType_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSOfficeOpenXMLTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
+ */
+private val NSOfficeOpenXMLTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSOfficeOpenXMLTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSOfficeOpenXMLTextDocumentType").orElseThrow().reinterpret(NSOfficeOpenXMLTextDocumentType_LAYOUT.byteSize()) }
+private val NSOfficeOpenXMLTextDocumentType_VH: VarHandle by lazy { NSOfficeOpenXMLTextDocumentType_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+var NSOfficeOpenXMLTextDocumentType: MemorySegment
+    get() = NSOfficeOpenXMLTextDocumentType_VH.get(NSOfficeOpenXMLTextDocumentType_SEGMENT, 0L) as MemorySegment
+    set(value) = NSOfficeOpenXMLTextDocumentType_VH.set(NSOfficeOpenXMLTextDocumentType_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSOpenDocumentTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
+ */
+private val NSOpenDocumentTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSOpenDocumentTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSOpenDocumentTextDocumentType").orElseThrow().reinterpret(NSOpenDocumentTextDocumentType_LAYOUT.byteSize()) }
+private val NSOpenDocumentTextDocumentType_VH: VarHandle by lazy { NSOpenDocumentTextDocumentType_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+var NSOpenDocumentTextDocumentType: MemorySegment
+    get() = NSOpenDocumentTextDocumentType_VH.get(NSOpenDocumentTextDocumentType_SEGMENT, 0L) as MemorySegment
+    set(value) = NSOpenDocumentTextDocumentType_VH.set(NSOpenDocumentTextDocumentType_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSConvertedDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
+ */
+private val NSConvertedDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSConvertedDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSConvertedDocumentAttribute").orElseThrow().reinterpret(NSConvertedDocumentAttribute_LAYOUT.byteSize()) }
+private val NSConvertedDocumentAttribute_VH: VarHandle by lazy { NSConvertedDocumentAttribute_LAYOUT.varHandle() }
+
+var NSConvertedDocumentAttribute: MemorySegment
+    get() = NSConvertedDocumentAttribute_VH.get(NSConvertedDocumentAttribute_SEGMENT, 0L) as MemorySegment
+    set(value) = NSConvertedDocumentAttribute_VH.set(NSConvertedDocumentAttribute_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSFileTypeDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
+ */
+private val NSFileTypeDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSFileTypeDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSFileTypeDocumentAttribute").orElseThrow().reinterpret(NSFileTypeDocumentAttribute_LAYOUT.byteSize()) }
+private val NSFileTypeDocumentAttribute_VH: VarHandle by lazy { NSFileTypeDocumentAttribute_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+var NSFileTypeDocumentAttribute: MemorySegment
+    get() = NSFileTypeDocumentAttribute_VH.get(NSFileTypeDocumentAttribute_SEGMENT, 0L) as MemorySegment
+    set(value) = NSFileTypeDocumentAttribute_VH.set(NSFileTypeDocumentAttribute_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSTitleDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
+ */
+private val NSTitleDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSTitleDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTitleDocumentAttribute").orElseThrow().reinterpret(NSTitleDocumentAttribute_LAYOUT.byteSize()) }
+private val NSTitleDocumentAttribute_VH: VarHandle by lazy { NSTitleDocumentAttribute_LAYOUT.varHandle() }
+
+var NSTitleDocumentAttribute: MemorySegment
+    get() = NSTitleDocumentAttribute_VH.get(NSTitleDocumentAttribute_SEGMENT, 0L) as MemorySegment
+    set(value) = NSTitleDocumentAttribute_VH.set(NSTitleDocumentAttribute_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : NSCompanyDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
+ */
+private val NSCompanyDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSCompanyDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCompanyDocumentAttribute").orElseThrow().reinterpret(NSCompanyDocumentAttribute_LAYOUT.byteSize()) }
+private val NSCompanyDocumentAttribute_VH: VarHandle by lazy { NSCompanyDocumentAttribute_LAYOUT.varHandle() }
+
+var NSCompanyDocumentAttribute: MemorySegment
+    get() = NSCompanyDocumentAttribute_VH.get(NSCompanyDocumentAttribute_SEGMENT, 0L) as MemorySegment
+    set(value) = NSCompanyDocumentAttribute_VH.set(NSCompanyDocumentAttribute_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSCopyrightDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSCopyrightDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -4385,153 +4487,3 @@ fun GCExtendedGamepadSnapshotDataFromNSData(arg0: MemorySegment, arg1: MemorySeg
         throw AssertionError("should not reach here", ex)
     }
 }
-
-/**
- * {@snippet lang=c : NSDataFromGCExtendedGamepadSnapshotData typedef NSData = (Void)*((typedef GCExtendedGamepadSnapshotData = Declared(GCExtendedGamepadSnapshotData))*)
- */
-private val NSDataFromGCExtendedGamepadSnapshotData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSDataFromGCExtendedGamepadSnapshotData_ADDR: MemorySegment by lazy { LOOKUP.find("NSDataFromGCExtendedGamepadSnapshotData").orElseThrow() }
-private val NSDataFromGCExtendedGamepadSnapshotData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSDataFromGCExtendedGamepadSnapshotData_ADDR, NSDataFromGCExtendedGamepadSnapshotData_DESC) }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-fun NSDataFromGCExtendedGamepadSnapshotData(arg0: MemorySegment): MemorySegment {
-    try {
-        return NSDataFromGCExtendedGamepadSnapshotData_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : GCExtendedGamepadSnapShotDataV100FromNSData typedef BOOL = Bool((typedef GCExtendedGamepadSnapShotDataV100 = Declared(GCExtendedGamepadSnapShotDataV100))*,typedef NSData = (Void)*)
- */
-private val GCExtendedGamepadSnapShotDataV100FromNSData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val GCExtendedGamepadSnapShotDataV100FromNSData_ADDR: MemorySegment by lazy { LOOKUP.find("GCExtendedGamepadSnapShotDataV100FromNSData").orElseThrow() }
-private val GCExtendedGamepadSnapShotDataV100FromNSData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(GCExtendedGamepadSnapShotDataV100FromNSData_ADDR, GCExtendedGamepadSnapShotDataV100FromNSData_DESC) }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-fun GCExtendedGamepadSnapShotDataV100FromNSData(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return GCExtendedGamepadSnapShotDataV100FromNSData_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : NSDataFromGCExtendedGamepadSnapShotDataV100 typedef NSData = (Void)*((typedef GCExtendedGamepadSnapShotDataV100 = Declared(GCExtendedGamepadSnapShotDataV100))*)
- */
-private val NSDataFromGCExtendedGamepadSnapShotDataV100_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val NSDataFromGCExtendedGamepadSnapShotDataV100_ADDR: MemorySegment by lazy { LOOKUP.find("NSDataFromGCExtendedGamepadSnapShotDataV100").orElseThrow() }
-private val NSDataFromGCExtendedGamepadSnapShotDataV100_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSDataFromGCExtendedGamepadSnapShotDataV100_ADDR, NSDataFromGCExtendedGamepadSnapShotDataV100_DESC) }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-fun NSDataFromGCExtendedGamepadSnapShotDataV100(arg0: MemorySegment): MemorySegment {
-    try {
-        return NSDataFromGCExtendedGamepadSnapShotDataV100_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyA typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyA_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyA_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyA").orElseThrow().reinterpret(GCKeyCodeKeyA_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyA_VH: VarHandle by lazy { GCKeyCodeKeyA_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyA: Long
-    get() = GCKeyCodeKeyA_VH.get(GCKeyCodeKeyA_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyA_VH.set(GCKeyCodeKeyA_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyB typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyB_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyB_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyB").orElseThrow().reinterpret(GCKeyCodeKeyB_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyB_VH: VarHandle by lazy { GCKeyCodeKeyB_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyB: Long
-    get() = GCKeyCodeKeyB_VH.get(GCKeyCodeKeyB_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyB_VH.set(GCKeyCodeKeyB_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyC typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyC_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyC_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyC").orElseThrow().reinterpret(GCKeyCodeKeyC_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyC_VH: VarHandle by lazy { GCKeyCodeKeyC_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyC: Long
-    get() = GCKeyCodeKeyC_VH.get(GCKeyCodeKeyC_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyC_VH.set(GCKeyCodeKeyC_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyD typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyD_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyD_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyD").orElseThrow().reinterpret(GCKeyCodeKeyD_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyD_VH: VarHandle by lazy { GCKeyCodeKeyD_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyD: Long
-    get() = GCKeyCodeKeyD_VH.get(GCKeyCodeKeyD_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyD_VH.set(GCKeyCodeKeyD_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyE typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyE_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyE_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyE").orElseThrow().reinterpret(GCKeyCodeKeyE_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyE_VH: VarHandle by lazy { GCKeyCodeKeyE_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyE: Long
-    get() = GCKeyCodeKeyE_VH.get(GCKeyCodeKeyE_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyE_VH.set(GCKeyCodeKeyE_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyF typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyF_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyF_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyF").orElseThrow().reinterpret(GCKeyCodeKeyF_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyF_VH: VarHandle by lazy { GCKeyCodeKeyF_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyF: Long
-    get() = GCKeyCodeKeyF_VH.get(GCKeyCodeKeyF_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyF_VH.set(GCKeyCodeKeyF_SEGMENT, 0L, value)
