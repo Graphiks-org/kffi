@@ -92,6 +92,26 @@ class ScreenCaptureFrameLeaseTest {
     }
 
     @Test
+    fun aSecondDeliveryGetsANewLeaseAfterTheFirstLeaseHasClosed() {
+        val native = RecordingFrameOutputNative()
+        val received = mutableListOf<ScreenCaptureFrameLease>()
+        val output = ScreenCaptureFrameOutput.attach(native, received::add)
+
+        try {
+            native.emit(RecordingPixelBuffer(listOf(byteArrayOf(1)), listOf(1), listOf(1)))
+            native.emit(RecordingPixelBuffer(listOf(byteArrayOf(2)), listOf(1), listOf(1)))
+
+            assertEquals(2, received.size)
+            assertTrue(received[0].isClosed)
+            assertTrue(received[1].isClosed)
+            assertFailsWith<IllegalStateException> { received[0].copyPlanes(maxBytes = 1) }
+            assertFailsWith<IllegalStateException> { received[1].copyPlanes(maxBytes = 1) }
+        } finally {
+            output.close()
+        }
+    }
+
+    @Test
     fun deliveryClosesTheLeaseAfterTheHandlerAndContainsHandlerFailures() {
         val native = RecordingFrameOutputNative()
         lateinit var escaped: ScreenCaptureFrameLease
