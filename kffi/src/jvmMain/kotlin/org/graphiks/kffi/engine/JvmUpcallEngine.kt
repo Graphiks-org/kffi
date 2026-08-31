@@ -4,6 +4,7 @@ import org.graphiks.kffi.NativeAddress
 import java.lang.foreign.Arena
 import java.lang.foreign.FunctionDescriptor
 import java.lang.foreign.Linker
+import java.lang.foreign.MemoryLayout
 import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandles
 
@@ -28,9 +29,10 @@ import java.lang.invoke.MethodHandles
  * (unnamed modules and open packages); if kffi or a consumer moves to the
  * module path (a named module), access throws IllegalAccessException.
  *
- * Native-access note: callback shapes this engine cannot express (structs by
- * value, I8/I16/CHAR16 scalars, or multiple indirections) are emitted by
- * kextract through a direct FFM fallback
+ * Native-access note: the generic [allocateTrampoline] encoding cannot express
+ * structs by value, I8/I16/CHAR16 scalars, or multiple indirections. The finite
+ * Objective-C struct shapes below use closed descriptors; generated callbacks
+ * outside those shapes are emitted by kextract through a direct FFM fallback
  * (`KotlinCallbackJvmEmitter.emitFfmTrampoline`) that calls
  * `Linker.upcallStub`/`MethodHandles.lookup()` in generated code. This path
  * requires `--enable-native-access=ALL-UNNAMED` at launch; otherwise the JVM
@@ -58,10 +60,86 @@ object JvmUpcallEngine {
         } else {
             FunctionDescriptor.of(returnType.layout, *parameterTypes.map { it.layout }.toTypedArray())
         }
+        return allocateTrampoline(dispatcherClass, dispatchMethod, descriptor)
+    }
+
+    fun allocateObjCVoidObjectRangeTrampoline(
+        dispatcherClass: Class<*>,
+        dispatchMethod: String,
+    ): NativeAddress = allocateTrampoline(
+        dispatcherClass,
+        dispatchMethod,
+        FunctionDescriptor.ofVoid(pointer, pointer, pointer, objcRange),
+    )
+
+    fun allocateObjCVoidObjectRangeRangeTrampoline(
+        dispatcherClass: Class<*>,
+        dispatchMethod: String,
+    ): NativeAddress = allocateTrampoline(
+        dispatcherClass,
+        dispatchMethod,
+        FunctionDescriptor.ofVoid(pointer, pointer, pointer, objcRange, objcRange),
+    )
+
+    fun allocateObjCRangeTrampoline(
+        dispatcherClass: Class<*>,
+        dispatchMethod: String,
+    ): NativeAddress = allocateTrampoline(
+        dispatcherClass,
+        dispatchMethod,
+        FunctionDescriptor.of(objcRange, pointer, pointer),
+    )
+
+    fun allocateObjCObjectRangeOutRangeTrampoline(
+        dispatcherClass: Class<*>,
+        dispatchMethod: String,
+    ): NativeAddress = allocateTrampoline(
+        dispatcherClass,
+        dispatchMethod,
+        FunctionDescriptor.of(pointer, pointer, pointer, objcRange, pointer),
+    )
+
+    fun allocateObjCRectRangeOutRangeTrampoline(
+        dispatcherClass: Class<*>,
+        dispatchMethod: String,
+    ): NativeAddress = allocateTrampoline(
+        dispatcherClass,
+        dispatchMethod,
+        FunctionDescriptor.of(objcRect, pointer, pointer, objcRange, pointer),
+    )
+
+    fun allocateObjCULongPointTrampoline(
+        dispatcherClass: Class<*>,
+        dispatchMethod: String,
+    ): NativeAddress = allocateTrampoline(
+        dispatcherClass,
+        dispatchMethod,
+        FunctionDescriptor.of(ValueLayout.JAVA_LONG, pointer, pointer, objcPoint),
+    )
+
+    private fun allocateTrampoline(
+        dispatcherClass: Class<*>,
+        dispatchMethod: String,
+        descriptor: FunctionDescriptor,
+    ): NativeAddress {
         val methodHandle = MethodHandles.privateLookupIn(dispatcherClass, MethodHandles.lookup())
             .findStatic(dispatcherClass, dispatchMethod, descriptor.toMethodType())
         return NativeAddress(linker.upcallStub(methodHandle, descriptor, arena).address())
     }
+
+    private val pointer = ValueLayout.JAVA_LONG
+
+    private val objcRange = MemoryLayout.structLayout(
+        ValueLayout.JAVA_LONG,
+        ValueLayout.JAVA_LONG,
+    )
+
+    private val objcPoint = MemoryLayout.structLayout(
+        ValueLayout.JAVA_DOUBLE,
+        ValueLayout.JAVA_DOUBLE,
+    )
+
+    private val objcRect = MemoryLayout.structLayout(objcPoint, objcPoint)
 
     private enum class Carrier(val layout: ValueLayout) {
         I(ValueLayout.JAVA_INT),

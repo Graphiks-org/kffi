@@ -4,6 +4,16 @@ package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.NativeAddress
 import org.graphiks.kffi.engine.JvmManagedObjCBridge
+import org.graphiks.kffi.engine.JvmManagedObjCObjectRangeResult
+import org.graphiks.kffi.engine.JvmManagedObjCPoint
+import org.graphiks.kffi.engine.JvmManagedObjCRange
+import org.graphiks.kffi.engine.JvmManagedObjCRect
+import org.graphiks.kffi.engine.JvmManagedObjCRectRangeResult
+import org.graphiks.kffi.objc.NSObject
+import org.graphiks.kffi.objc.NSPoint
+import org.graphiks.kffi.objc.NSRange
+import org.graphiks.kffi.objc.NSRect
+import org.graphiks.kffi.objc.NSSize
 import org.graphiks.kffi.objc.ObjCRuntime
 
 /** One finite Objective-C method ABI shape supported by the managed bridge. */
@@ -48,6 +58,48 @@ object ObjCMethodSignatures {
         identity = "ulong-object",
         typeEncoding = "Q@:@",
         trampoline = JvmManagedObjCBridge.uLongObject,
+        abiZero = 0L,
+    )
+
+    val VoidObjectRange: ObjCMethodSignature<Unit> = ObjCMethodSignature(
+        identity = "void-object-range",
+        typeEncoding = "v@:@{_NSRange=QQ}",
+        trampoline = JvmManagedObjCBridge.voidObjectRange,
+        abiZero = Unit,
+    )
+
+    val VoidObjectRangeRange: ObjCMethodSignature<Unit> = ObjCMethodSignature(
+        identity = "void-object-range-range",
+        typeEncoding = "v@:@{_NSRange=QQ}{_NSRange=QQ}",
+        trampoline = JvmManagedObjCBridge.voidObjectRangeRange,
+        abiZero = Unit,
+    )
+
+    val Range: ObjCMethodSignature<NSRange> = ObjCMethodSignature(
+        identity = "range",
+        typeEncoding = "{_NSRange=QQ}@:",
+        trampoline = JvmManagedObjCBridge.range,
+        abiZero = NSRange(0L, 0L),
+    )
+
+    val ObjectRangeOutRange: ObjCMethodSignature<NSObject?> = ObjCMethodSignature(
+        identity = "object-range-out-range",
+        typeEncoding = "@@:{_NSRange=QQ}^{_NSRange=QQ}",
+        trampoline = JvmManagedObjCBridge.objectRangeOutRange,
+        abiZero = null,
+    )
+
+    val RectRangeOutRange: ObjCMethodSignature<NSRect> = ObjCMethodSignature(
+        identity = "rect-range-out-range",
+        typeEncoding = "{CGRect={CGPoint=dd}{CGSize=dd}}@:{_NSRange=QQ}^{_NSRange=QQ}",
+        trampoline = JvmManagedObjCBridge.rectRangeOutRange,
+        abiZero = NSRect(NSPoint(0.0, 0.0), NSSize(0.0, 0.0)),
+    )
+
+    val ULongPoint: ObjCMethodSignature<Long> = ObjCMethodSignature(
+        identity = "ulong-point",
+        typeEncoding = "Q@:{CGPoint=dd}",
+        trampoline = JvmManagedObjCBridge.uLongPoint,
         abiZero = 0L,
     )
 
@@ -147,4 +199,154 @@ internal object ObjCManagedTrampolines {
                 ?: ObjCMethodDispatch.containUnrouted(failure, 0L)
         }
     }
+
+    fun dispatchVoidObjectRange(
+        route: ObjCMethodDispatch.NativeRoute,
+        command: Long,
+        argument: Long,
+        range: JvmManagedObjCRange,
+    ) {
+        var boundary: ObjCNativeBoundary<Unit>? = null
+        try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(Unit)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchVoidObjectRange(
+                    installedBoundary,
+                    route,
+                    command,
+                    argument,
+                    range,
+                )
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, Unit)
+        }
+    }
+
+    fun dispatchVoidObjectRangeRange(
+        route: ObjCMethodDispatch.NativeRoute,
+        command: Long,
+        argument: Long,
+        firstRange: JvmManagedObjCRange,
+        secondRange: JvmManagedObjCRange,
+    ) {
+        var boundary: ObjCNativeBoundary<Unit>? = null
+        try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(Unit)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchVoidObjectRangeRange(
+                    installedBoundary,
+                    route,
+                    command,
+                    argument,
+                    firstRange,
+                    secondRange,
+                )
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, Unit)
+        }
+    }
+
+    fun dispatchRange(
+        route: ObjCMethodDispatch.NativeRoute,
+        command: Long,
+    ): JvmManagedObjCRange {
+        var boundary: ObjCNativeBoundary<NSRange>? = null
+        val result = try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(ObjCMethodSignatures.Range.abiZero)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchRange(installedBoundary, route, command)
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure)
+                ?: ObjCMethodDispatch.containUnrouted(failure, ObjCMethodSignatures.Range.abiZero)
+        }
+        return result.toBridgeRange()
+    }
+
+    fun dispatchObjectRangeOutRange(
+        route: ObjCMethodDispatch.NativeRoute,
+        command: Long,
+        range: JvmManagedObjCRange,
+    ): JvmManagedObjCObjectRangeResult {
+        val abiZero = ObjCObjectRangeResult(null, NSRange(0L, 0L))
+        var boundary: ObjCNativeBoundary<ObjCObjectRangeResult>? = null
+        val result = try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(abiZero)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchObjectRangeOutRange(
+                    installedBoundary,
+                    route,
+                    command,
+                    range,
+                )
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, abiZero)
+        }
+        return JvmManagedObjCObjectRangeResult(
+            value = result.value?.ptr?.address() ?: 0L,
+            actualRange = result.actualRange.toBridgeRange(),
+        )
+    }
+
+    fun dispatchRectRangeOutRange(
+        route: ObjCMethodDispatch.NativeRoute,
+        command: Long,
+        range: JvmManagedObjCRange,
+    ): JvmManagedObjCRectRangeResult {
+        val abiZero = ObjCRectRangeResult(
+            ObjCMethodSignatures.RectRangeOutRange.abiZero,
+            NSRange(0L, 0L),
+        )
+        var boundary: ObjCNativeBoundary<ObjCRectRangeResult>? = null
+        val result = try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(abiZero)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchRectRangeOutRange(
+                    installedBoundary,
+                    route,
+                    command,
+                    range,
+                )
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, abiZero)
+        }
+        return JvmManagedObjCRectRangeResult(
+            value = JvmManagedObjCRect(
+                x = result.value.origin.x,
+                y = result.value.origin.y,
+                width = result.value.size.width,
+                height = result.value.size.height,
+            ),
+            actualRange = result.actualRange.toBridgeRange(),
+        )
+    }
+
+    fun dispatchULongPoint(
+        route: ObjCMethodDispatch.NativeRoute,
+        command: Long,
+        point: JvmManagedObjCPoint,
+    ): Long {
+        var boundary: ObjCNativeBoundary<Long>? = null
+        return try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(ObjCMethodSignatures.ULongPoint.abiZero)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchULongPoint(installedBoundary, route, command, point)
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, 0L)
+        }
+    }
 }
+
+private fun NSRange.toBridgeRange(): JvmManagedObjCRange =
+    JvmManagedObjCRange(location = location, length = length)

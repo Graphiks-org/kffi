@@ -12,12 +12,31 @@ import org.graphiks.kffi.CallbackRuntime
 import org.graphiks.kffi.CallbackType
 import org.graphiks.kffi.NativeAddress
 import org.graphiks.kffi.engine.JvmManagedObjCBridge
+import org.graphiks.kffi.engine.JvmManagedObjCObjectRangeResult
+import org.graphiks.kffi.engine.JvmManagedObjCPoint
+import org.graphiks.kffi.engine.JvmManagedObjCRange
 import org.graphiks.kffi.engine.JvmManagedObjCRoute
+import org.graphiks.kffi.engine.JvmManagedObjCRectRangeResult
 import org.graphiks.kffi.objc.NSEvent
 import org.graphiks.kffi.objc.NSObject
+import org.graphiks.kffi.objc.NSPoint
+import org.graphiks.kffi.objc.NSRange
+import org.graphiks.kffi.objc.NSRect
 import org.graphiks.kffi.objc.ObjCRuntime
 import java.lang.foreign.MemorySegment
 import java.util.concurrent.atomic.AtomicReference
+
+/** Nominal object return plus the value to write to an Objective-C NSRange out parameter. */
+data class ObjCObjectRangeResult(
+    val value: NSObject?,
+    val actualRange: NSRange,
+)
+
+/** Nominal rect return plus the value to write to an Objective-C NSRange out parameter. */
+data class ObjCRectRangeResult(
+    val value: NSRect,
+    val actualRange: NSRange,
+)
 
 /** Typed per-instance bindings for a registered managed Objective-C class. */
 class ObjCMethodRouter internal constructor(
@@ -91,6 +110,64 @@ class ObjCMethodRouter internal constructor(
         )
     }
 
+    fun onVoidObjectRange(
+        selector: String,
+        handler: (NSObject, NSRange) -> Unit,
+    ) {
+        bind(selector, ObjCMethodSignatures.VoidObjectRange, VoidObjectRangeBinding(handler))
+    }
+
+    fun onVoidObjectRangeRange(
+        selector: String,
+        handler: (NSObject, NSRange, NSRange) -> Unit,
+    ) {
+        bind(
+            selector,
+            ObjCMethodSignatures.VoidObjectRangeRange,
+            VoidObjectRangeRangeBinding(handler),
+        )
+    }
+
+    fun onRange(
+        selector: String,
+        fallback: NSRange,
+        handler: () -> NSRange,
+    ) {
+        bind(selector, ObjCMethodSignatures.Range, RangeBinding(fallback, handler))
+    }
+
+    fun onObjectRangeOutRange(
+        selector: String,
+        fallback: ObjCObjectRangeResult,
+        handler: (NSRange) -> ObjCObjectRangeResult,
+    ) {
+        bind(
+            selector,
+            ObjCMethodSignatures.ObjectRangeOutRange,
+            ObjectRangeOutRangeBinding(fallback, handler),
+        )
+    }
+
+    fun onRectRangeOutRange(
+        selector: String,
+        fallback: ObjCRectRangeResult,
+        handler: (NSRange) -> ObjCRectRangeResult,
+    ) {
+        bind(
+            selector,
+            ObjCMethodSignatures.RectRangeOutRange,
+            RectRangeOutRangeBinding(fallback, handler),
+        )
+    }
+
+    fun onULongPoint(
+        selector: String,
+        fallback: Long,
+        handler: (NSPoint) -> Long,
+    ) {
+        bind(selector, ObjCMethodSignatures.ULongPoint, ULongPointBinding(fallback, handler))
+    }
+
     internal fun freeze() {
         val boundSelectors = bindings.keys
         val missing = declaredMethods.keys.filter { ObjCRuntime.sel(it).address() !in boundSelectors }
@@ -136,6 +213,66 @@ class ObjCMethodRouter internal constructor(
         return binding.handler(NSObject(segment(argument)))
     }
 
+    internal fun invokeVoidObjectRange(
+        command: Long,
+        argument: Long,
+        range: JvmManagedObjCRange,
+    ) {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? VoidObjectRangeBinding ?: return
+        binding.handler(NSObject(segment(argument)), range.toNSRange())
+    }
+
+    internal fun invokeVoidObjectRangeRange(
+        command: Long,
+        argument: Long,
+        firstRange: JvmManagedObjCRange,
+        secondRange: JvmManagedObjCRange,
+    ) {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? VoidObjectRangeRangeBinding ?: return
+        binding.handler(
+            NSObject(segment(argument)),
+            firstRange.toNSRange(),
+            secondRange.toNSRange(),
+        )
+    }
+
+    internal fun invokeRange(command: Long): NSRange {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? RangeBinding ?: return NSRange(0L, 0L)
+        return binding.handler()
+    }
+
+    internal fun invokeObjectRangeOutRange(
+        command: Long,
+        range: JvmManagedObjCRange,
+    ): ObjCObjectRangeResult {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? ObjectRangeOutRangeBinding
+            ?: return ObjCObjectRangeResult(null, NSRange(0L, 0L))
+        return binding.handler(range.toNSRange())
+    }
+
+    internal fun invokeRectRangeOutRange(
+        command: Long,
+        range: JvmManagedObjCRange,
+    ): ObjCRectRangeResult {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? RectRangeOutRangeBinding
+            ?: return ObjCRectRangeResult(
+                ObjCMethodSignatures.RectRangeOutRange.abiZero,
+                NSRange(0L, 0L),
+            )
+        return binding.handler(range.toNSRange())
+    }
+
+    internal fun invokeULongPoint(command: Long, point: JvmManagedObjCPoint): Long {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? ULongPointBinding ?: return 0L
+        return binding.handler(NSPoint(point.x, point.y))
+    }
+
     internal fun booleanFallback(command: Long): Boolean =
         (bindings[command] as? BooleanObjectBinding)?.fallback ?: false
 
@@ -144,6 +281,23 @@ class ObjCMethodRouter internal constructor(
 
     internal fun uLongFallback(command: Long): Long =
         (bindings[command] as? ULongObjectBinding)?.fallback ?: 0L
+
+    internal fun rangeFallback(command: Long): NSRange =
+        (bindings[command] as? RangeBinding)?.fallback ?: NSRange(0L, 0L)
+
+    internal fun objectRangeFallback(command: Long): ObjCObjectRangeResult =
+        (bindings[command] as? ObjectRangeOutRangeBinding)?.fallback
+            ?: ObjCObjectRangeResult(null, NSRange(0L, 0L))
+
+    internal fun rectRangeFallback(command: Long): ObjCRectRangeResult =
+        (bindings[command] as? RectRangeOutRangeBinding)?.fallback
+            ?: ObjCRectRangeResult(
+                ObjCMethodSignatures.RectRangeOutRange.abiZero,
+                NSRange(0L, 0L),
+            )
+
+    internal fun uLongPointFallback(command: Long): Long =
+        (bindings[command] as? ULongPointBinding)?.fallback ?: 0L
 
     private fun bind(
         selector: String,
@@ -196,6 +350,36 @@ private class ULongObjectBinding(
     val handler: (NSObject) -> Long,
 ) : ObjCMethodBinding
 
+private class VoidObjectRangeBinding(
+    val handler: (NSObject, NSRange) -> Unit,
+) : ObjCMethodBinding
+
+private class VoidObjectRangeRangeBinding(
+    val handler: (NSObject, NSRange, NSRange) -> Unit,
+) : ObjCMethodBinding
+
+private class RangeBinding(
+    val fallback: NSRange,
+    val handler: () -> NSRange,
+) : ObjCMethodBinding
+
+private class ObjectRangeOutRangeBinding(
+    val fallback: ObjCObjectRangeResult,
+    val handler: (NSRange) -> ObjCObjectRangeResult,
+) : ObjCMethodBinding
+
+private class RectRangeOutRangeBinding(
+    val fallback: ObjCRectRangeResult,
+    val handler: (NSRange) -> ObjCRectRangeResult,
+) : ObjCMethodBinding
+
+private class ULongPointBinding(
+    val fallback: Long,
+    val handler: (NSPoint) -> Long,
+) : ObjCMethodBinding
+
+private fun JvmManagedObjCRange.toNSRange(): NSRange = NSRange(location, length)
+
 /** Admission marker; the quiescence-revoked native route owns the router and its handlers. */
 internal class ManagedObjCCallback : Callback
 
@@ -228,6 +412,54 @@ internal object ObjCMethodDispatch {
 
         override fun dispatchULongObject(self: Long, command: Long, argument: Long): Long =
             ObjCManagedTrampolines.dispatchULongObject(this, command, argument)
+
+        override fun dispatchVoidObjectRange(
+            self: Long,
+            command: Long,
+            argument: Long,
+            range: JvmManagedObjCRange,
+        ) {
+            ObjCManagedTrampolines.dispatchVoidObjectRange(this, command, argument, range)
+        }
+
+        override fun dispatchVoidObjectRangeRange(
+            self: Long,
+            command: Long,
+            argument: Long,
+            firstRange: JvmManagedObjCRange,
+            secondRange: JvmManagedObjCRange,
+        ) {
+            ObjCManagedTrampolines.dispatchVoidObjectRangeRange(
+                this,
+                command,
+                argument,
+                firstRange,
+                secondRange,
+            )
+        }
+
+        override fun dispatchRange(self: Long, command: Long): JvmManagedObjCRange =
+            ObjCManagedTrampolines.dispatchRange(this, command)
+
+        override fun dispatchObjectRangeOutRange(
+            self: Long,
+            command: Long,
+            range: JvmManagedObjCRange,
+        ): JvmManagedObjCObjectRangeResult =
+            ObjCManagedTrampolines.dispatchObjectRangeOutRange(this, command, range)
+
+        override fun dispatchRectRangeOutRange(
+            self: Long,
+            command: Long,
+            range: JvmManagedObjCRange,
+        ): JvmManagedObjCRectRangeResult =
+            ObjCManagedTrampolines.dispatchRectRangeOutRange(this, command, range)
+
+        override fun dispatchULongPoint(
+            self: Long,
+            command: Long,
+            point: JvmManagedObjCPoint,
+        ): Long = ObjCManagedTrampolines.dispatchULongPoint(this, command, point)
     }
 
     private val beforeRouteLookupForTest = AtomicReference<(() -> Unit)?>(null)
@@ -318,6 +550,122 @@ internal object ObjCMethodDispatch {
             route.router.invokeULongObject(command, argument)
         }
         return if (admitted) result else ObjCMethodSignatures.ULongObject.abiZero
+    }
+
+    fun dispatchVoidObjectRange(
+        boundary: ObjCNativeBoundary<Unit>,
+        route: NativeRoute,
+        command: Long,
+        argument: Long,
+        range: JvmManagedObjCRange,
+    ) {
+        acquireRoute(boundary, route)
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        CallbackRuntime.dispatchSafely(callbackType, route.token) {
+            route.router.invokeVoidObjectRange(command, argument, range)
+        }
+    }
+
+    fun dispatchVoidObjectRangeRange(
+        boundary: ObjCNativeBoundary<Unit>,
+        route: NativeRoute,
+        command: Long,
+        argument: Long,
+        firstRange: JvmManagedObjCRange,
+        secondRange: JvmManagedObjCRange,
+    ) {
+        acquireRoute(boundary, route)
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        CallbackRuntime.dispatchSafely(callbackType, route.token) {
+            route.router.invokeVoidObjectRangeRange(
+                command,
+                argument,
+                firstRange,
+                secondRange,
+            )
+        }
+    }
+
+    fun dispatchRange(
+        boundary: ObjCNativeBoundary<NSRange>,
+        route: NativeRoute,
+        command: Long,
+    ): NSRange {
+        acquireRoute(boundary, route)
+        val fallback = route.router.rangeFallback(command)
+        boundary.fallback = fallback
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        var admitted = false
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) {
+            admitted = true
+            route.router.invokeRange(command)
+        }
+        return if (admitted) result else ObjCMethodSignatures.Range.abiZero
+    }
+
+    fun dispatchObjectRangeOutRange(
+        boundary: ObjCNativeBoundary<ObjCObjectRangeResult>,
+        route: NativeRoute,
+        command: Long,
+        range: JvmManagedObjCRange,
+    ): ObjCObjectRangeResult {
+        acquireRoute(boundary, route)
+        val fallback = route.router.objectRangeFallback(command)
+        boundary.fallback = fallback
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        var admitted = false
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) {
+            admitted = true
+            route.router.invokeObjectRangeOutRange(command, range)
+        }
+        return if (admitted) {
+            result
+        } else {
+            ObjCObjectRangeResult(ObjCMethodSignatures.ObjectRangeOutRange.abiZero, NSRange(0L, 0L))
+        }
+    }
+
+    fun dispatchRectRangeOutRange(
+        boundary: ObjCNativeBoundary<ObjCRectRangeResult>,
+        route: NativeRoute,
+        command: Long,
+        range: JvmManagedObjCRange,
+    ): ObjCRectRangeResult {
+        acquireRoute(boundary, route)
+        val fallback = route.router.rectRangeFallback(command)
+        boundary.fallback = fallback
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        var admitted = false
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) {
+            admitted = true
+            route.router.invokeRectRangeOutRange(command, range)
+        }
+        return if (admitted) {
+            result
+        } else {
+            ObjCRectRangeResult(
+                ObjCMethodSignatures.RectRangeOutRange.abiZero,
+                NSRange(0L, 0L),
+            )
+        }
+    }
+
+    fun dispatchULongPoint(
+        boundary: ObjCNativeBoundary<Long>,
+        route: NativeRoute,
+        command: Long,
+        point: JvmManagedObjCPoint,
+    ): Long {
+        acquireRoute(boundary, route)
+        val fallback = route.router.uLongPointFallback(command)
+        boundary.fallback = fallback
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        var admitted = false
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) {
+            admitted = true
+            route.router.invokeULongPoint(command, point)
+        }
+        return if (admitted) result else ObjCMethodSignatures.ULongPoint.abiZero
     }
 
     fun installBeforeRouteLookupForTest(action: () -> Unit): AutoCloseable =
