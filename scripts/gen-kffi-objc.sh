@@ -75,13 +75,41 @@ PRESERVED_PACKAGE_PATHS=(managed appkit)
 FRAMEWORKS=(
     Foundation CoreFoundation AppKit CoreGraphics
     QuartzCore CoreImage Metal AVFoundation
-    GameController ModelIO SceneKit
+    CoreHaptics GameController ModelIO SceneKit
     UniformTypeIdentifiers PDFKit QuickLook
 )
-CORE_GRAPHICS_LIBRARY="/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"
+NATIVE_LIBRARIES=(
+    "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"
+    "/System/Library/Frameworks/CoreHaptics.framework/CoreHaptics"
+    "/System/Library/Frameworks/GameController.framework/GameController"
+    "/System/Library/Frameworks/IOKit.framework/IOKit"
+)
 INCLUDE_FRAMEWORK_ARGS=()
 for framework in "${FRAMEWORKS[@]}"; do
     INCLUDE_FRAMEWORK_ARGS+=(--include-framework "$framework")
+done
+# IOHIDManager.h reaches legacy IOKit declarations that depend on excluded SDK types, so keep
+# generation narrowly scoped to the HID manager surface consumed by the managed adapter.
+IOKIT_FUNCTIONS=(
+    IOHIDManagerCreate
+    IOHIDManagerSetDeviceMatching
+    IOHIDManagerSetDispatchQueue
+    IOHIDManagerSetCancelHandler
+    IOHIDManagerActivate
+    IOHIDManagerCancel
+    IOHIDManagerRegisterDeviceMatchingCallback
+    IOHIDManagerRegisterDeviceRemovalCallback
+    IOHIDDeviceConformsTo
+    IOHIDDeviceGetService
+    IORegistryEntryGetRegistryEntryID
+)
+INCLUDE_FUNCTION_ARGS=()
+for function in "${IOKIT_FUNCTIONS[@]}"; do
+    INCLUDE_FUNCTION_ARGS+=(--include-function "$function")
+done
+LIBRARY_ARGS=()
+for library in "${NATIVE_LIBRARIES[@]}"; do
+    LIBRARY_ARGS+=(--library ":$library")
 done
 
 rm -rf -- "$STAGING"
@@ -90,8 +118,9 @@ mkdir -p "$STAGING"
 "$KEXTRACT" \
     --objc \
     --split-output \
-    --library ":$CORE_GRAPHICS_LIBRARY" \
+    "${LIBRARY_ARGS[@]}" \
     "${INCLUDE_FRAMEWORK_ARGS[@]}" \
+    "${INCLUDE_FUNCTION_ARGS[@]}" \
     --output "$STAGING" \
     --target-package org.graphiks.kffi.objc \
     --clang-arg "-F$SDK/System/Library/Frameworks" \

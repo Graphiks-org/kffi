@@ -13188,6 +13188,61 @@ typealias NSTextInputSourceIdentifier = MemorySegment
 typealias NSDataAssetName = MemorySegment
 
 /**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* CHHapticEventParameterID;}
+ */
+typealias CHHapticEventParameterID = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* CHHapticDynamicParameterID;}
+ */
+typealias CHHapticDynamicParameterID = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* CHHapticEventType;}
+ */
+typealias CHHapticEventType = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long CHHapticAudioResourceID;}
+ */
+typealias CHHapticAudioResourceID = Long
+
+/**
+ * {@snippet lang=c : typedef (Void)* CHHapticAdvancedPatternPlayerCompletionHandler;}
+ */
+typealias CHHapticAdvancedPatternPlayerCompletionHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* CHHapticCompletionHandler;}
+ */
+typealias CHHapticCompletionHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* CHHapticEngineFinishedHandler;}
+ */
+typealias CHHapticEngineFinishedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* CHHapticEngineStoppedHandler;}
+ */
+typealias CHHapticEngineStoppedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* CHHapticEngineResetHandler;}
+ */
+typealias CHHapticEngineResetHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* CHHapticAudioResourceKey;}
+ */
+typealias CHHapticAudioResourceKey = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* CHHapticPatternKey;}
+ */
+typealias CHHapticPatternKey = MemorySegment
+
+/**
  * {@snippet lang=c : STRUCT GCPoint2
  */
 @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
@@ -14595,3 +14650,92 @@ typealias IOHIDDeviceRef = _IOHIDDevicePointer
 @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
 typealias GCHapticsLocality = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef Int HRESULT;}
+ */
+typealias HRESULT = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int ULONG;}
+ */
+typealias ULONG = Int
+
+/**
+ * {@snippet lang=c : typedef (Void)* LPVOID;}
+ */
+typealias LPVOID = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef Declared(CFUUIDBytes) REFIID;}
+ */
+typealias REFIID = MemorySegment
+
+/**
+ * {@snippet lang=c : STRUCT IUnknownVTbl
+ */
+class IUnknownVTbl {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("_reserved"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("QueryInterface"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("AddRef"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("Release")
+        ).withByteAlignment(8L).withName("IUnknownVTbl")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val _reserved_VH: VarHandle = layout.varHandle(groupElement("_reserved"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _reserved(segment: MemorySegment): MemorySegment =
+        _reserved_VH.get(segment, 0L) as MemorySegment
+
+    fun _reserved(segment: MemorySegment, value: MemorySegment) =
+        _reserved_VH.set(segment, 0L, value)
+
+    val QueryInterface_VH: VarHandle = layout.varHandle(groupElement("QueryInterface"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun QueryInterface(segment: MemorySegment): MemorySegment =
+        QueryInterface_VH.get(segment, 0L) as MemorySegment
+
+    fun QueryInterface(segment: MemorySegment, value: MemorySegment) =
+        QueryInterface_VH.set(segment, 0L, value)
+
+    val AddRef_VH: VarHandle = layout.varHandle(groupElement("AddRef"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun AddRef(segment: MemorySegment): MemorySegment =
+        AddRef_VH.get(segment, 0L) as MemorySegment
+
+    fun AddRef(segment: MemorySegment, value: MemorySegment) =
+        AddRef_VH.set(segment, 0L, value)
+
+    val Release_VH: VarHandle = layout.varHandle(groupElement("Release"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun Release(segment: MemorySegment): MemorySegment =
+        Release_VH.get(segment, 0L) as MemorySegment
+
+    fun Release(segment: MemorySegment, value: MemorySegment) =
+        Release_VH.set(segment, 0L, value)
+} // End class

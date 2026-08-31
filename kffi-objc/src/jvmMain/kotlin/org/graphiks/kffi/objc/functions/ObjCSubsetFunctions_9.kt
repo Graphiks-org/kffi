@@ -7,6 +7,30 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : CGContextGetContentToneMappingInfo typedef CGContentToneMappingInfo = Declared(CGContentToneMappingInfo)(typedef CGContextRef = (Declared(CGContext))*)
+ */
+private val CGContextGetContentToneMappingInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(CGContentToneMappingInfo.layout, ValueLayout.ADDRESS)
+private val CGContextGetContentToneMappingInfo_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextGetContentToneMappingInfo").orElseThrow() }
+private val CGContextGetContentToneMappingInfo_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetContentToneMappingInfo_ADDR, CGContextGetContentToneMappingInfo_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+fun CGContextGetContentToneMappingInfo(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
+    try {
+        return CGContextGetContentToneMappingInfo_HANDLE.invokeExact(allocator, arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CGContextSetContentToneMappingInfo Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGContentToneMappingInfo = Declared(CGContentToneMappingInfo))
  */
 private val CGContextSetContentToneMappingInfo_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGContentToneMappingInfo.layout)
@@ -4221,16 +4245,3 @@ private val NSAccessibilityScrollToVisibleAction_VH: VarHandle by lazy { NSAcces
 var NSAccessibilityScrollToVisibleAction: MemorySegment
     get() = NSAccessibilityScrollToVisibleAction_VH.get(NSAccessibilityScrollToVisibleAction_SEGMENT, 0L) as MemorySegment
     set(value) = NSAccessibilityScrollToVisibleAction_VH.set(NSAccessibilityScrollToVisibleAction_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSAccessibilityShowAlternateUIAction typedef const NSAccessibilityActionName = (Void)*
- */
-private val NSAccessibilityShowAlternateUIAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityShowAlternateUIAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityShowAlternateUIAction").orElseThrow().reinterpret(NSAccessibilityShowAlternateUIAction_LAYOUT.byteSize()) }
-private val NSAccessibilityShowAlternateUIAction_VH: VarHandle by lazy { NSAccessibilityShowAlternateUIAction_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", unavailable = true)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
-var NSAccessibilityShowAlternateUIAction: MemorySegment
-    get() = NSAccessibilityShowAlternateUIAction_VH.get(NSAccessibilityShowAlternateUIAction_SEGMENT, 0L) as MemorySegment
-    set(value) = NSAccessibilityShowAlternateUIAction_VH.set(NSAccessibilityShowAlternateUIAction_SEGMENT, 0L, value)

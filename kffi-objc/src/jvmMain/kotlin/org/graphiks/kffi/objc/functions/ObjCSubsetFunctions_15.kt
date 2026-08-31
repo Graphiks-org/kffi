@@ -7,6 +7,17 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSCopyrightDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
+ */
+private val NSCopyrightDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSCopyrightDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCopyrightDocumentAttribute").orElseThrow().reinterpret(NSCopyrightDocumentAttribute_LAYOUT.byteSize()) }
+private val NSCopyrightDocumentAttribute_VH: VarHandle by lazy { NSCopyrightDocumentAttribute_LAYOUT.varHandle() }
+
+var NSCopyrightDocumentAttribute: MemorySegment
+    get() = NSCopyrightDocumentAttribute_VH.get(NSCopyrightDocumentAttribute_SEGMENT, 0L) as MemorySegment
+    set(value) = NSCopyrightDocumentAttribute_VH.set(NSCopyrightDocumentAttribute_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSSubjectDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSSubjectDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -2682,6 +2693,694 @@ var NSTextContentStorageUnsupportedAttributeAddedNotification: MemorySegment
     set(value) = NSTextContentStorageUnsupportedAttributeAddedNotification_VH.set(NSTextContentStorageUnsupportedAttributeAddedNotification_SEGMENT, 0L, value)
 
 /**
+ * {@snippet lang=c : CHHapticEventParameterIDHapticIntensity typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDHapticIntensity_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDHapticIntensity_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDHapticIntensity").orElseThrow().reinterpret(CHHapticEventParameterIDHapticIntensity_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDHapticIntensity_VH: VarHandle by lazy { CHHapticEventParameterIDHapticIntensity_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDHapticIntensity: MemorySegment
+    get() = CHHapticEventParameterIDHapticIntensity_VH.get(CHHapticEventParameterIDHapticIntensity_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDHapticIntensity_VH.set(CHHapticEventParameterIDHapticIntensity_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventParameterIDHapticSharpness typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDHapticSharpness_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDHapticSharpness_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDHapticSharpness").orElseThrow().reinterpret(CHHapticEventParameterIDHapticSharpness_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDHapticSharpness_VH: VarHandle by lazy { CHHapticEventParameterIDHapticSharpness_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDHapticSharpness: MemorySegment
+    get() = CHHapticEventParameterIDHapticSharpness_VH.get(CHHapticEventParameterIDHapticSharpness_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDHapticSharpness_VH.set(CHHapticEventParameterIDHapticSharpness_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventParameterIDAttackTime typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDAttackTime_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDAttackTime_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDAttackTime").orElseThrow().reinterpret(CHHapticEventParameterIDAttackTime_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDAttackTime_VH: VarHandle by lazy { CHHapticEventParameterIDAttackTime_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDAttackTime: MemorySegment
+    get() = CHHapticEventParameterIDAttackTime_VH.get(CHHapticEventParameterIDAttackTime_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDAttackTime_VH.set(CHHapticEventParameterIDAttackTime_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventParameterIDDecayTime typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDDecayTime_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDDecayTime_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDDecayTime").orElseThrow().reinterpret(CHHapticEventParameterIDDecayTime_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDDecayTime_VH: VarHandle by lazy { CHHapticEventParameterIDDecayTime_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDDecayTime: MemorySegment
+    get() = CHHapticEventParameterIDDecayTime_VH.get(CHHapticEventParameterIDDecayTime_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDDecayTime_VH.set(CHHapticEventParameterIDDecayTime_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventParameterIDReleaseTime typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDReleaseTime_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDReleaseTime_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDReleaseTime").orElseThrow().reinterpret(CHHapticEventParameterIDReleaseTime_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDReleaseTime_VH: VarHandle by lazy { CHHapticEventParameterIDReleaseTime_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDReleaseTime: MemorySegment
+    get() = CHHapticEventParameterIDReleaseTime_VH.get(CHHapticEventParameterIDReleaseTime_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDReleaseTime_VH.set(CHHapticEventParameterIDReleaseTime_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventParameterIDSustained typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDSustained_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDSustained_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDSustained").orElseThrow().reinterpret(CHHapticEventParameterIDSustained_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDSustained_VH: VarHandle by lazy { CHHapticEventParameterIDSustained_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDSustained: MemorySegment
+    get() = CHHapticEventParameterIDSustained_VH.get(CHHapticEventParameterIDSustained_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDSustained_VH.set(CHHapticEventParameterIDSustained_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventParameterIDAudioVolume typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDAudioVolume_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDAudioVolume_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDAudioVolume").orElseThrow().reinterpret(CHHapticEventParameterIDAudioVolume_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDAudioVolume_VH: VarHandle by lazy { CHHapticEventParameterIDAudioVolume_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDAudioVolume: MemorySegment
+    get() = CHHapticEventParameterIDAudioVolume_VH.get(CHHapticEventParameterIDAudioVolume_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDAudioVolume_VH.set(CHHapticEventParameterIDAudioVolume_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventParameterIDAudioPitch typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDAudioPitch_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDAudioPitch_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDAudioPitch").orElseThrow().reinterpret(CHHapticEventParameterIDAudioPitch_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDAudioPitch_VH: VarHandle by lazy { CHHapticEventParameterIDAudioPitch_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDAudioPitch: MemorySegment
+    get() = CHHapticEventParameterIDAudioPitch_VH.get(CHHapticEventParameterIDAudioPitch_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDAudioPitch_VH.set(CHHapticEventParameterIDAudioPitch_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventParameterIDAudioPan typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDAudioPan_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDAudioPan_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDAudioPan").orElseThrow().reinterpret(CHHapticEventParameterIDAudioPan_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDAudioPan_VH: VarHandle by lazy { CHHapticEventParameterIDAudioPan_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDAudioPan: MemorySegment
+    get() = CHHapticEventParameterIDAudioPan_VH.get(CHHapticEventParameterIDAudioPan_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDAudioPan_VH.set(CHHapticEventParameterIDAudioPan_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventParameterIDAudioBrightness typedef CHHapticEventParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticEventParameterIDAudioBrightness_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventParameterIDAudioBrightness_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventParameterIDAudioBrightness").orElseThrow().reinterpret(CHHapticEventParameterIDAudioBrightness_LAYOUT.byteSize()) }
+private val CHHapticEventParameterIDAudioBrightness_VH: VarHandle by lazy { CHHapticEventParameterIDAudioBrightness_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventParameterIDAudioBrightness: MemorySegment
+    get() = CHHapticEventParameterIDAudioBrightness_VH.get(CHHapticEventParameterIDAudioBrightness_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventParameterIDAudioBrightness_VH.set(CHHapticEventParameterIDAudioBrightness_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDHapticIntensityControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDHapticIntensityControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDHapticIntensityControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDHapticIntensityControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDHapticIntensityControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDHapticIntensityControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDHapticIntensityControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDHapticIntensityControl: MemorySegment
+    get() = CHHapticDynamicParameterIDHapticIntensityControl_VH.get(CHHapticDynamicParameterIDHapticIntensityControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDHapticIntensityControl_VH.set(CHHapticDynamicParameterIDHapticIntensityControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDHapticSharpnessControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDHapticSharpnessControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDHapticSharpnessControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDHapticSharpnessControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDHapticSharpnessControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDHapticSharpnessControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDHapticSharpnessControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDHapticSharpnessControl: MemorySegment
+    get() = CHHapticDynamicParameterIDHapticSharpnessControl_VH.get(CHHapticDynamicParameterIDHapticSharpnessControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDHapticSharpnessControl_VH.set(CHHapticDynamicParameterIDHapticSharpnessControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDHapticAttackTimeControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDHapticAttackTimeControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDHapticAttackTimeControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDHapticAttackTimeControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDHapticAttackTimeControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDHapticAttackTimeControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDHapticAttackTimeControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDHapticAttackTimeControl: MemorySegment
+    get() = CHHapticDynamicParameterIDHapticAttackTimeControl_VH.get(CHHapticDynamicParameterIDHapticAttackTimeControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDHapticAttackTimeControl_VH.set(CHHapticDynamicParameterIDHapticAttackTimeControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDHapticDecayTimeControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDHapticDecayTimeControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDHapticDecayTimeControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDHapticDecayTimeControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDHapticDecayTimeControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDHapticDecayTimeControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDHapticDecayTimeControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDHapticDecayTimeControl: MemorySegment
+    get() = CHHapticDynamicParameterIDHapticDecayTimeControl_VH.get(CHHapticDynamicParameterIDHapticDecayTimeControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDHapticDecayTimeControl_VH.set(CHHapticDynamicParameterIDHapticDecayTimeControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDHapticReleaseTimeControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDHapticReleaseTimeControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDHapticReleaseTimeControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDHapticReleaseTimeControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDHapticReleaseTimeControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDHapticReleaseTimeControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDHapticReleaseTimeControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDHapticReleaseTimeControl: MemorySegment
+    get() = CHHapticDynamicParameterIDHapticReleaseTimeControl_VH.get(CHHapticDynamicParameterIDHapticReleaseTimeControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDHapticReleaseTimeControl_VH.set(CHHapticDynamicParameterIDHapticReleaseTimeControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDAudioVolumeControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDAudioVolumeControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDAudioVolumeControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDAudioVolumeControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDAudioVolumeControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDAudioVolumeControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDAudioVolumeControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDAudioVolumeControl: MemorySegment
+    get() = CHHapticDynamicParameterIDAudioVolumeControl_VH.get(CHHapticDynamicParameterIDAudioVolumeControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDAudioVolumeControl_VH.set(CHHapticDynamicParameterIDAudioVolumeControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDAudioPanControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDAudioPanControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDAudioPanControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDAudioPanControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDAudioPanControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDAudioPanControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDAudioPanControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDAudioPanControl: MemorySegment
+    get() = CHHapticDynamicParameterIDAudioPanControl_VH.get(CHHapticDynamicParameterIDAudioPanControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDAudioPanControl_VH.set(CHHapticDynamicParameterIDAudioPanControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDAudioBrightnessControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDAudioBrightnessControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDAudioBrightnessControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDAudioBrightnessControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDAudioBrightnessControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDAudioBrightnessControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDAudioBrightnessControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDAudioBrightnessControl: MemorySegment
+    get() = CHHapticDynamicParameterIDAudioBrightnessControl_VH.get(CHHapticDynamicParameterIDAudioBrightnessControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDAudioBrightnessControl_VH.set(CHHapticDynamicParameterIDAudioBrightnessControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDAudioPitchControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDAudioPitchControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDAudioPitchControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDAudioPitchControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDAudioPitchControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDAudioPitchControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDAudioPitchControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDAudioPitchControl: MemorySegment
+    get() = CHHapticDynamicParameterIDAudioPitchControl_VH.get(CHHapticDynamicParameterIDAudioPitchControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDAudioPitchControl_VH.set(CHHapticDynamicParameterIDAudioPitchControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDAudioAttackTimeControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDAudioAttackTimeControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDAudioAttackTimeControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDAudioAttackTimeControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDAudioAttackTimeControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDAudioAttackTimeControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDAudioAttackTimeControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDAudioAttackTimeControl: MemorySegment
+    get() = CHHapticDynamicParameterIDAudioAttackTimeControl_VH.get(CHHapticDynamicParameterIDAudioAttackTimeControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDAudioAttackTimeControl_VH.set(CHHapticDynamicParameterIDAudioAttackTimeControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDAudioDecayTimeControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDAudioDecayTimeControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDAudioDecayTimeControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDAudioDecayTimeControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDAudioDecayTimeControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDAudioDecayTimeControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDAudioDecayTimeControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDAudioDecayTimeControl: MemorySegment
+    get() = CHHapticDynamicParameterIDAudioDecayTimeControl_VH.get(CHHapticDynamicParameterIDAudioDecayTimeControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDAudioDecayTimeControl_VH.set(CHHapticDynamicParameterIDAudioDecayTimeControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticDynamicParameterIDAudioReleaseTimeControl typedef CHHapticDynamicParameterID = typedef NSString = (Void)*
+ */
+private val CHHapticDynamicParameterIDAudioReleaseTimeControl_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticDynamicParameterIDAudioReleaseTimeControl_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticDynamicParameterIDAudioReleaseTimeControl").orElseThrow().reinterpret(CHHapticDynamicParameterIDAudioReleaseTimeControl_LAYOUT.byteSize()) }
+private val CHHapticDynamicParameterIDAudioReleaseTimeControl_VH: VarHandle by lazy { CHHapticDynamicParameterIDAudioReleaseTimeControl_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticDynamicParameterIDAudioReleaseTimeControl: MemorySegment
+    get() = CHHapticDynamicParameterIDAudioReleaseTimeControl_VH.get(CHHapticDynamicParameterIDAudioReleaseTimeControl_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticDynamicParameterIDAudioReleaseTimeControl_VH.set(CHHapticDynamicParameterIDAudioReleaseTimeControl_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventTypeHapticTransient typedef CHHapticEventType = typedef NSString = (Void)*
+ */
+private val CHHapticEventTypeHapticTransient_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventTypeHapticTransient_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventTypeHapticTransient").orElseThrow().reinterpret(CHHapticEventTypeHapticTransient_LAYOUT.byteSize()) }
+private val CHHapticEventTypeHapticTransient_VH: VarHandle by lazy { CHHapticEventTypeHapticTransient_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventTypeHapticTransient: MemorySegment
+    get() = CHHapticEventTypeHapticTransient_VH.get(CHHapticEventTypeHapticTransient_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventTypeHapticTransient_VH.set(CHHapticEventTypeHapticTransient_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventTypeHapticContinuous typedef CHHapticEventType = typedef NSString = (Void)*
+ */
+private val CHHapticEventTypeHapticContinuous_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventTypeHapticContinuous_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventTypeHapticContinuous").orElseThrow().reinterpret(CHHapticEventTypeHapticContinuous_LAYOUT.byteSize()) }
+private val CHHapticEventTypeHapticContinuous_VH: VarHandle by lazy { CHHapticEventTypeHapticContinuous_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventTypeHapticContinuous: MemorySegment
+    get() = CHHapticEventTypeHapticContinuous_VH.get(CHHapticEventTypeHapticContinuous_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventTypeHapticContinuous_VH.set(CHHapticEventTypeHapticContinuous_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventTypeAudioContinuous typedef CHHapticEventType = typedef NSString = (Void)*
+ */
+private val CHHapticEventTypeAudioContinuous_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventTypeAudioContinuous_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventTypeAudioContinuous").orElseThrow().reinterpret(CHHapticEventTypeAudioContinuous_LAYOUT.byteSize()) }
+private val CHHapticEventTypeAudioContinuous_VH: VarHandle by lazy { CHHapticEventTypeAudioContinuous_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventTypeAudioContinuous: MemorySegment
+    get() = CHHapticEventTypeAudioContinuous_VH.get(CHHapticEventTypeAudioContinuous_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventTypeAudioContinuous_VH.set(CHHapticEventTypeAudioContinuous_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticEventTypeAudioCustom typedef CHHapticEventType = typedef NSString = (Void)*
+ */
+private val CHHapticEventTypeAudioCustom_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticEventTypeAudioCustom_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticEventTypeAudioCustom").orElseThrow().reinterpret(CHHapticEventTypeAudioCustom_LAYOUT.byteSize()) }
+private val CHHapticEventTypeAudioCustom_VH: VarHandle by lazy { CHHapticEventTypeAudioCustom_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticEventTypeAudioCustom: MemorySegment
+    get() = CHHapticEventTypeAudioCustom_VH.get(CHHapticEventTypeAudioCustom_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticEventTypeAudioCustom_VH.set(CHHapticEventTypeAudioCustom_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticAudioResourceKeyUseVolumeEnvelope typedef CHHapticAudioResourceKey = typedef NSString = (Void)*
+ */
+private val CHHapticAudioResourceKeyUseVolumeEnvelope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticAudioResourceKeyUseVolumeEnvelope_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticAudioResourceKeyUseVolumeEnvelope").orElseThrow().reinterpret(CHHapticAudioResourceKeyUseVolumeEnvelope_LAYOUT.byteSize()) }
+private val CHHapticAudioResourceKeyUseVolumeEnvelope_VH: VarHandle by lazy { CHHapticAudioResourceKeyUseVolumeEnvelope_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticAudioResourceKeyUseVolumeEnvelope: MemorySegment
+    get() = CHHapticAudioResourceKeyUseVolumeEnvelope_VH.get(CHHapticAudioResourceKeyUseVolumeEnvelope_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticAudioResourceKeyUseVolumeEnvelope_VH.set(CHHapticAudioResourceKeyUseVolumeEnvelope_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticAudioResourceKeyLoopEnabled typedef CHHapticAudioResourceKey = typedef NSString = (Void)*
+ */
+private val CHHapticAudioResourceKeyLoopEnabled_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticAudioResourceKeyLoopEnabled_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticAudioResourceKeyLoopEnabled").orElseThrow().reinterpret(CHHapticAudioResourceKeyLoopEnabled_LAYOUT.byteSize()) }
+private val CHHapticAudioResourceKeyLoopEnabled_VH: VarHandle by lazy { CHHapticAudioResourceKeyLoopEnabled_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticAudioResourceKeyLoopEnabled: MemorySegment
+    get() = CHHapticAudioResourceKeyLoopEnabled_VH.get(CHHapticAudioResourceKeyLoopEnabled_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticAudioResourceKeyLoopEnabled_VH.set(CHHapticAudioResourceKeyLoopEnabled_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyVersion typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyVersion_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyVersion_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyVersion").orElseThrow().reinterpret(CHHapticPatternKeyVersion_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyVersion_VH: VarHandle by lazy { CHHapticPatternKeyVersion_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyVersion: MemorySegment
+    get() = CHHapticPatternKeyVersion_VH.get(CHHapticPatternKeyVersion_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyVersion_VH.set(CHHapticPatternKeyVersion_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyPattern typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyPattern_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyPattern_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyPattern").orElseThrow().reinterpret(CHHapticPatternKeyPattern_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyPattern_VH: VarHandle by lazy { CHHapticPatternKeyPattern_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyPattern: MemorySegment
+    get() = CHHapticPatternKeyPattern_VH.get(CHHapticPatternKeyPattern_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyPattern_VH.set(CHHapticPatternKeyPattern_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyEvent typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyEvent_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyEvent_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyEvent").orElseThrow().reinterpret(CHHapticPatternKeyEvent_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyEvent_VH: VarHandle by lazy { CHHapticPatternKeyEvent_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyEvent: MemorySegment
+    get() = CHHapticPatternKeyEvent_VH.get(CHHapticPatternKeyEvent_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyEvent_VH.set(CHHapticPatternKeyEvent_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyEventType typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyEventType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyEventType_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyEventType").orElseThrow().reinterpret(CHHapticPatternKeyEventType_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyEventType_VH: VarHandle by lazy { CHHapticPatternKeyEventType_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyEventType: MemorySegment
+    get() = CHHapticPatternKeyEventType_VH.get(CHHapticPatternKeyEventType_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyEventType_VH.set(CHHapticPatternKeyEventType_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyTime typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyTime_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyTime_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyTime").orElseThrow().reinterpret(CHHapticPatternKeyTime_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyTime_VH: VarHandle by lazy { CHHapticPatternKeyTime_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyTime: MemorySegment
+    get() = CHHapticPatternKeyTime_VH.get(CHHapticPatternKeyTime_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyTime_VH.set(CHHapticPatternKeyTime_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyEventDuration typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyEventDuration_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyEventDuration_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyEventDuration").orElseThrow().reinterpret(CHHapticPatternKeyEventDuration_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyEventDuration_VH: VarHandle by lazy { CHHapticPatternKeyEventDuration_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyEventDuration: MemorySegment
+    get() = CHHapticPatternKeyEventDuration_VH.get(CHHapticPatternKeyEventDuration_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyEventDuration_VH.set(CHHapticPatternKeyEventDuration_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyEventWaveformPath typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyEventWaveformPath_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyEventWaveformPath_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyEventWaveformPath").orElseThrow().reinterpret(CHHapticPatternKeyEventWaveformPath_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyEventWaveformPath_VH: VarHandle by lazy { CHHapticPatternKeyEventWaveformPath_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyEventWaveformPath: MemorySegment
+    get() = CHHapticPatternKeyEventWaveformPath_VH.get(CHHapticPatternKeyEventWaveformPath_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyEventWaveformPath_VH.set(CHHapticPatternKeyEventWaveformPath_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyEventParameters typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyEventParameters_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyEventParameters_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyEventParameters").orElseThrow().reinterpret(CHHapticPatternKeyEventParameters_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyEventParameters_VH: VarHandle by lazy { CHHapticPatternKeyEventParameters_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyEventParameters: MemorySegment
+    get() = CHHapticPatternKeyEventParameters_VH.get(CHHapticPatternKeyEventParameters_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyEventParameters_VH.set(CHHapticPatternKeyEventParameters_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyEventWaveformUseVolumeEnvelope typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyEventWaveformUseVolumeEnvelope_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyEventWaveformUseVolumeEnvelope_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyEventWaveformUseVolumeEnvelope").orElseThrow().reinterpret(CHHapticPatternKeyEventWaveformUseVolumeEnvelope_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyEventWaveformUseVolumeEnvelope_VH: VarHandle by lazy { CHHapticPatternKeyEventWaveformUseVolumeEnvelope_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyEventWaveformUseVolumeEnvelope: MemorySegment
+    get() = CHHapticPatternKeyEventWaveformUseVolumeEnvelope_VH.get(CHHapticPatternKeyEventWaveformUseVolumeEnvelope_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyEventWaveformUseVolumeEnvelope_VH.set(CHHapticPatternKeyEventWaveformUseVolumeEnvelope_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyEventWaveformLoopEnabled typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyEventWaveformLoopEnabled_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyEventWaveformLoopEnabled_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyEventWaveformLoopEnabled").orElseThrow().reinterpret(CHHapticPatternKeyEventWaveformLoopEnabled_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyEventWaveformLoopEnabled_VH: VarHandle by lazy { CHHapticPatternKeyEventWaveformLoopEnabled_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyEventWaveformLoopEnabled: MemorySegment
+    get() = CHHapticPatternKeyEventWaveformLoopEnabled_VH.get(CHHapticPatternKeyEventWaveformLoopEnabled_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyEventWaveformLoopEnabled_VH.set(CHHapticPatternKeyEventWaveformLoopEnabled_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyParameter typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyParameter_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyParameter_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyParameter").orElseThrow().reinterpret(CHHapticPatternKeyParameter_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyParameter_VH: VarHandle by lazy { CHHapticPatternKeyParameter_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyParameter: MemorySegment
+    get() = CHHapticPatternKeyParameter_VH.get(CHHapticPatternKeyParameter_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyParameter_VH.set(CHHapticPatternKeyParameter_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyParameterID typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyParameterID_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyParameterID_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyParameterID").orElseThrow().reinterpret(CHHapticPatternKeyParameterID_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyParameterID_VH: VarHandle by lazy { CHHapticPatternKeyParameterID_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyParameterID: MemorySegment
+    get() = CHHapticPatternKeyParameterID_VH.get(CHHapticPatternKeyParameterID_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyParameterID_VH.set(CHHapticPatternKeyParameterID_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyParameterValue typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyParameterValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyParameterValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyParameterValue").orElseThrow().reinterpret(CHHapticPatternKeyParameterValue_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyParameterValue_VH: VarHandle by lazy { CHHapticPatternKeyParameterValue_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyParameterValue: MemorySegment
+    get() = CHHapticPatternKeyParameterValue_VH.get(CHHapticPatternKeyParameterValue_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyParameterValue_VH.set(CHHapticPatternKeyParameterValue_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyParameterCurve typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyParameterCurve_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyParameterCurve_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyParameterCurve").orElseThrow().reinterpret(CHHapticPatternKeyParameterCurve_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyParameterCurve_VH: VarHandle by lazy { CHHapticPatternKeyParameterCurve_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyParameterCurve: MemorySegment
+    get() = CHHapticPatternKeyParameterCurve_VH.get(CHHapticPatternKeyParameterCurve_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyParameterCurve_VH.set(CHHapticPatternKeyParameterCurve_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : CHHapticPatternKeyParameterCurveControlPoints typedef CHHapticPatternKey = typedef NSString = (Void)*
+ */
+private val CHHapticPatternKeyParameterCurveControlPoints_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val CHHapticPatternKeyParameterCurveControlPoints_SEGMENT: MemorySegment by lazy { LOOKUP.find("CHHapticPatternKeyParameterCurveControlPoints").orElseThrow().reinterpret(CHHapticPatternKeyParameterCurveControlPoints_LAYOUT.byteSize()) }
+private val CHHapticPatternKeyParameterCurveControlPoints_VH: VarHandle by lazy { CHHapticPatternKeyParameterCurveControlPoints_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var CHHapticPatternKeyParameterCurveControlPoints: MemorySegment
+    get() = CHHapticPatternKeyParameterCurveControlPoints_VH.get(CHHapticPatternKeyParameterCurveControlPoints_SEGMENT, 0L) as MemorySegment
+    set(value) = CHHapticPatternKeyParameterCurveControlPoints_VH.set(CHHapticPatternKeyParameterCurveControlPoints_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : GCPoint2Zero typedef const GCPoint2 = Declared(GCPoint2)
  */
 @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
@@ -3836,619 +4535,3 @@ private val GCKeyCodeKeyF_VH: VarHandle by lazy { GCKeyCodeKeyF_LAYOUT.varHandle
 var GCKeyCodeKeyF: Long
     get() = GCKeyCodeKeyF_VH.get(GCKeyCodeKeyF_SEGMENT, 0L) as Long
     set(value) = GCKeyCodeKeyF_VH.set(GCKeyCodeKeyF_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyG typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyG_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyG_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyG").orElseThrow().reinterpret(GCKeyCodeKeyG_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyG_VH: VarHandle by lazy { GCKeyCodeKeyG_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyG: Long
-    get() = GCKeyCodeKeyG_VH.get(GCKeyCodeKeyG_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyG_VH.set(GCKeyCodeKeyG_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyH typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyH_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyH_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyH").orElseThrow().reinterpret(GCKeyCodeKeyH_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyH_VH: VarHandle by lazy { GCKeyCodeKeyH_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyH: Long
-    get() = GCKeyCodeKeyH_VH.get(GCKeyCodeKeyH_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyH_VH.set(GCKeyCodeKeyH_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyI typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyI_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyI_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyI").orElseThrow().reinterpret(GCKeyCodeKeyI_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyI_VH: VarHandle by lazy { GCKeyCodeKeyI_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyI: Long
-    get() = GCKeyCodeKeyI_VH.get(GCKeyCodeKeyI_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyI_VH.set(GCKeyCodeKeyI_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyJ typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyJ_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyJ_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyJ").orElseThrow().reinterpret(GCKeyCodeKeyJ_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyJ_VH: VarHandle by lazy { GCKeyCodeKeyJ_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyJ: Long
-    get() = GCKeyCodeKeyJ_VH.get(GCKeyCodeKeyJ_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyJ_VH.set(GCKeyCodeKeyJ_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyK typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyK_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyK_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyK").orElseThrow().reinterpret(GCKeyCodeKeyK_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyK_VH: VarHandle by lazy { GCKeyCodeKeyK_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyK: Long
-    get() = GCKeyCodeKeyK_VH.get(GCKeyCodeKeyK_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyK_VH.set(GCKeyCodeKeyK_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyL typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyL_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyL_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyL").orElseThrow().reinterpret(GCKeyCodeKeyL_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyL_VH: VarHandle by lazy { GCKeyCodeKeyL_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyL: Long
-    get() = GCKeyCodeKeyL_VH.get(GCKeyCodeKeyL_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyL_VH.set(GCKeyCodeKeyL_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyM typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyM_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyM_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyM").orElseThrow().reinterpret(GCKeyCodeKeyM_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyM_VH: VarHandle by lazy { GCKeyCodeKeyM_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyM: Long
-    get() = GCKeyCodeKeyM_VH.get(GCKeyCodeKeyM_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyM_VH.set(GCKeyCodeKeyM_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyN typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyN_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyN_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyN").orElseThrow().reinterpret(GCKeyCodeKeyN_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyN_VH: VarHandle by lazy { GCKeyCodeKeyN_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyN: Long
-    get() = GCKeyCodeKeyN_VH.get(GCKeyCodeKeyN_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyN_VH.set(GCKeyCodeKeyN_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyO typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyO_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyO_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyO").orElseThrow().reinterpret(GCKeyCodeKeyO_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyO_VH: VarHandle by lazy { GCKeyCodeKeyO_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyO: Long
-    get() = GCKeyCodeKeyO_VH.get(GCKeyCodeKeyO_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyO_VH.set(GCKeyCodeKeyO_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyP typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyP_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyP_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyP").orElseThrow().reinterpret(GCKeyCodeKeyP_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyP_VH: VarHandle by lazy { GCKeyCodeKeyP_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyP: Long
-    get() = GCKeyCodeKeyP_VH.get(GCKeyCodeKeyP_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyP_VH.set(GCKeyCodeKeyP_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyQ typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyQ_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyQ_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyQ").orElseThrow().reinterpret(GCKeyCodeKeyQ_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyQ_VH: VarHandle by lazy { GCKeyCodeKeyQ_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyQ: Long
-    get() = GCKeyCodeKeyQ_VH.get(GCKeyCodeKeyQ_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyQ_VH.set(GCKeyCodeKeyQ_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyR typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyR_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyR_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyR").orElseThrow().reinterpret(GCKeyCodeKeyR_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyR_VH: VarHandle by lazy { GCKeyCodeKeyR_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyR: Long
-    get() = GCKeyCodeKeyR_VH.get(GCKeyCodeKeyR_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyR_VH.set(GCKeyCodeKeyR_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyS typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyS_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyS_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyS").orElseThrow().reinterpret(GCKeyCodeKeyS_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyS_VH: VarHandle by lazy { GCKeyCodeKeyS_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyS: Long
-    get() = GCKeyCodeKeyS_VH.get(GCKeyCodeKeyS_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyS_VH.set(GCKeyCodeKeyS_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyT typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyT_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyT_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyT").orElseThrow().reinterpret(GCKeyCodeKeyT_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyT_VH: VarHandle by lazy { GCKeyCodeKeyT_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyT: Long
-    get() = GCKeyCodeKeyT_VH.get(GCKeyCodeKeyT_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyT_VH.set(GCKeyCodeKeyT_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyU typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyU_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyU_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyU").orElseThrow().reinterpret(GCKeyCodeKeyU_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyU_VH: VarHandle by lazy { GCKeyCodeKeyU_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyU: Long
-    get() = GCKeyCodeKeyU_VH.get(GCKeyCodeKeyU_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyU_VH.set(GCKeyCodeKeyU_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyV typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyV_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyV_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyV").orElseThrow().reinterpret(GCKeyCodeKeyV_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyV_VH: VarHandle by lazy { GCKeyCodeKeyV_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyV: Long
-    get() = GCKeyCodeKeyV_VH.get(GCKeyCodeKeyV_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyV_VH.set(GCKeyCodeKeyV_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyW typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyW_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyW_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyW").orElseThrow().reinterpret(GCKeyCodeKeyW_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyW_VH: VarHandle by lazy { GCKeyCodeKeyW_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyW: Long
-    get() = GCKeyCodeKeyW_VH.get(GCKeyCodeKeyW_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyW_VH.set(GCKeyCodeKeyW_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyX typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyX_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyX_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyX").orElseThrow().reinterpret(GCKeyCodeKeyX_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyX_VH: VarHandle by lazy { GCKeyCodeKeyX_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyX: Long
-    get() = GCKeyCodeKeyX_VH.get(GCKeyCodeKeyX_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyX_VH.set(GCKeyCodeKeyX_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyY typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyY_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyY_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyY").orElseThrow().reinterpret(GCKeyCodeKeyY_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyY_VH: VarHandle by lazy { GCKeyCodeKeyY_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyY: Long
-    get() = GCKeyCodeKeyY_VH.get(GCKeyCodeKeyY_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyY_VH.set(GCKeyCodeKeyY_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeKeyZ typedef const GCKeyCode = Long
- */
-private val GCKeyCodeKeyZ_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeKeyZ_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyZ").orElseThrow().reinterpret(GCKeyCodeKeyZ_LAYOUT.byteSize()) }
-private val GCKeyCodeKeyZ_VH: VarHandle by lazy { GCKeyCodeKeyZ_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeKeyZ: Long
-    get() = GCKeyCodeKeyZ_VH.get(GCKeyCodeKeyZ_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeKeyZ_VH.set(GCKeyCodeKeyZ_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeOne typedef const GCKeyCode = Long
- */
-private val GCKeyCodeOne_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeOne_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeOne").orElseThrow().reinterpret(GCKeyCodeOne_LAYOUT.byteSize()) }
-private val GCKeyCodeOne_VH: VarHandle by lazy { GCKeyCodeOne_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeOne: Long
-    get() = GCKeyCodeOne_VH.get(GCKeyCodeOne_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeOne_VH.set(GCKeyCodeOne_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeTwo typedef const GCKeyCode = Long
- */
-private val GCKeyCodeTwo_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeTwo_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeTwo").orElseThrow().reinterpret(GCKeyCodeTwo_LAYOUT.byteSize()) }
-private val GCKeyCodeTwo_VH: VarHandle by lazy { GCKeyCodeTwo_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeTwo: Long
-    get() = GCKeyCodeTwo_VH.get(GCKeyCodeTwo_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeTwo_VH.set(GCKeyCodeTwo_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeThree typedef const GCKeyCode = Long
- */
-private val GCKeyCodeThree_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeThree_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeThree").orElseThrow().reinterpret(GCKeyCodeThree_LAYOUT.byteSize()) }
-private val GCKeyCodeThree_VH: VarHandle by lazy { GCKeyCodeThree_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeThree: Long
-    get() = GCKeyCodeThree_VH.get(GCKeyCodeThree_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeThree_VH.set(GCKeyCodeThree_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeFour typedef const GCKeyCode = Long
- */
-private val GCKeyCodeFour_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeFour_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeFour").orElseThrow().reinterpret(GCKeyCodeFour_LAYOUT.byteSize()) }
-private val GCKeyCodeFour_VH: VarHandle by lazy { GCKeyCodeFour_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeFour: Long
-    get() = GCKeyCodeFour_VH.get(GCKeyCodeFour_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeFour_VH.set(GCKeyCodeFour_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeFive typedef const GCKeyCode = Long
- */
-private val GCKeyCodeFive_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeFive_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeFive").orElseThrow().reinterpret(GCKeyCodeFive_LAYOUT.byteSize()) }
-private val GCKeyCodeFive_VH: VarHandle by lazy { GCKeyCodeFive_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeFive: Long
-    get() = GCKeyCodeFive_VH.get(GCKeyCodeFive_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeFive_VH.set(GCKeyCodeFive_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeSix typedef const GCKeyCode = Long
- */
-private val GCKeyCodeSix_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeSix_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSix").orElseThrow().reinterpret(GCKeyCodeSix_LAYOUT.byteSize()) }
-private val GCKeyCodeSix_VH: VarHandle by lazy { GCKeyCodeSix_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeSix: Long
-    get() = GCKeyCodeSix_VH.get(GCKeyCodeSix_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeSix_VH.set(GCKeyCodeSix_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeSeven typedef const GCKeyCode = Long
- */
-private val GCKeyCodeSeven_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeSeven_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSeven").orElseThrow().reinterpret(GCKeyCodeSeven_LAYOUT.byteSize()) }
-private val GCKeyCodeSeven_VH: VarHandle by lazy { GCKeyCodeSeven_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeSeven: Long
-    get() = GCKeyCodeSeven_VH.get(GCKeyCodeSeven_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeSeven_VH.set(GCKeyCodeSeven_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeEight typedef const GCKeyCode = Long
- */
-private val GCKeyCodeEight_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeEight_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeEight").orElseThrow().reinterpret(GCKeyCodeEight_LAYOUT.byteSize()) }
-private val GCKeyCodeEight_VH: VarHandle by lazy { GCKeyCodeEight_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeEight: Long
-    get() = GCKeyCodeEight_VH.get(GCKeyCodeEight_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeEight_VH.set(GCKeyCodeEight_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeNine typedef const GCKeyCode = Long
- */
-private val GCKeyCodeNine_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeNine_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeNine").orElseThrow().reinterpret(GCKeyCodeNine_LAYOUT.byteSize()) }
-private val GCKeyCodeNine_VH: VarHandle by lazy { GCKeyCodeNine_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeNine: Long
-    get() = GCKeyCodeNine_VH.get(GCKeyCodeNine_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeNine_VH.set(GCKeyCodeNine_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeZero typedef const GCKeyCode = Long
- */
-private val GCKeyCodeZero_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeZero_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeZero").orElseThrow().reinterpret(GCKeyCodeZero_LAYOUT.byteSize()) }
-private val GCKeyCodeZero_VH: VarHandle by lazy { GCKeyCodeZero_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeZero: Long
-    get() = GCKeyCodeZero_VH.get(GCKeyCodeZero_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeZero_VH.set(GCKeyCodeZero_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeReturnOrEnter typedef const GCKeyCode = Long
- */
-private val GCKeyCodeReturnOrEnter_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeReturnOrEnter_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeReturnOrEnter").orElseThrow().reinterpret(GCKeyCodeReturnOrEnter_LAYOUT.byteSize()) }
-private val GCKeyCodeReturnOrEnter_VH: VarHandle by lazy { GCKeyCodeReturnOrEnter_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeReturnOrEnter: Long
-    get() = GCKeyCodeReturnOrEnter_VH.get(GCKeyCodeReturnOrEnter_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeReturnOrEnter_VH.set(GCKeyCodeReturnOrEnter_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeEscape typedef const GCKeyCode = Long
- */
-private val GCKeyCodeEscape_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeEscape_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeEscape").orElseThrow().reinterpret(GCKeyCodeEscape_LAYOUT.byteSize()) }
-private val GCKeyCodeEscape_VH: VarHandle by lazy { GCKeyCodeEscape_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeEscape: Long
-    get() = GCKeyCodeEscape_VH.get(GCKeyCodeEscape_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeEscape_VH.set(GCKeyCodeEscape_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeDeleteOrBackspace typedef const GCKeyCode = Long
- */
-private val GCKeyCodeDeleteOrBackspace_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeDeleteOrBackspace_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeDeleteOrBackspace").orElseThrow().reinterpret(GCKeyCodeDeleteOrBackspace_LAYOUT.byteSize()) }
-private val GCKeyCodeDeleteOrBackspace_VH: VarHandle by lazy { GCKeyCodeDeleteOrBackspace_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeDeleteOrBackspace: Long
-    get() = GCKeyCodeDeleteOrBackspace_VH.get(GCKeyCodeDeleteOrBackspace_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeDeleteOrBackspace_VH.set(GCKeyCodeDeleteOrBackspace_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeTab typedef const GCKeyCode = Long
- */
-private val GCKeyCodeTab_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeTab_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeTab").orElseThrow().reinterpret(GCKeyCodeTab_LAYOUT.byteSize()) }
-private val GCKeyCodeTab_VH: VarHandle by lazy { GCKeyCodeTab_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeTab: Long
-    get() = GCKeyCodeTab_VH.get(GCKeyCodeTab_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeTab_VH.set(GCKeyCodeTab_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeSpacebar typedef const GCKeyCode = Long
- */
-private val GCKeyCodeSpacebar_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeSpacebar_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSpacebar").orElseThrow().reinterpret(GCKeyCodeSpacebar_LAYOUT.byteSize()) }
-private val GCKeyCodeSpacebar_VH: VarHandle by lazy { GCKeyCodeSpacebar_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeSpacebar: Long
-    get() = GCKeyCodeSpacebar_VH.get(GCKeyCodeSpacebar_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeSpacebar_VH.set(GCKeyCodeSpacebar_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeHyphen typedef const GCKeyCode = Long
- */
-private val GCKeyCodeHyphen_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeHyphen_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeHyphen").orElseThrow().reinterpret(GCKeyCodeHyphen_LAYOUT.byteSize()) }
-private val GCKeyCodeHyphen_VH: VarHandle by lazy { GCKeyCodeHyphen_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeHyphen: Long
-    get() = GCKeyCodeHyphen_VH.get(GCKeyCodeHyphen_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeHyphen_VH.set(GCKeyCodeHyphen_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeEqualSign typedef const GCKeyCode = Long
- */
-private val GCKeyCodeEqualSign_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeEqualSign_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeEqualSign").orElseThrow().reinterpret(GCKeyCodeEqualSign_LAYOUT.byteSize()) }
-private val GCKeyCodeEqualSign_VH: VarHandle by lazy { GCKeyCodeEqualSign_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeEqualSign: Long
-    get() = GCKeyCodeEqualSign_VH.get(GCKeyCodeEqualSign_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeEqualSign_VH.set(GCKeyCodeEqualSign_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeOpenBracket typedef const GCKeyCode = Long
- */
-private val GCKeyCodeOpenBracket_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeOpenBracket_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeOpenBracket").orElseThrow().reinterpret(GCKeyCodeOpenBracket_LAYOUT.byteSize()) }
-private val GCKeyCodeOpenBracket_VH: VarHandle by lazy { GCKeyCodeOpenBracket_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeOpenBracket: Long
-    get() = GCKeyCodeOpenBracket_VH.get(GCKeyCodeOpenBracket_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeOpenBracket_VH.set(GCKeyCodeOpenBracket_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeCloseBracket typedef const GCKeyCode = Long
- */
-private val GCKeyCodeCloseBracket_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeCloseBracket_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeCloseBracket").orElseThrow().reinterpret(GCKeyCodeCloseBracket_LAYOUT.byteSize()) }
-private val GCKeyCodeCloseBracket_VH: VarHandle by lazy { GCKeyCodeCloseBracket_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeCloseBracket: Long
-    get() = GCKeyCodeCloseBracket_VH.get(GCKeyCodeCloseBracket_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeCloseBracket_VH.set(GCKeyCodeCloseBracket_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeBackslash typedef const GCKeyCode = Long
- */
-private val GCKeyCodeBackslash_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeBackslash_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeBackslash").orElseThrow().reinterpret(GCKeyCodeBackslash_LAYOUT.byteSize()) }
-private val GCKeyCodeBackslash_VH: VarHandle by lazy { GCKeyCodeBackslash_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeBackslash: Long
-    get() = GCKeyCodeBackslash_VH.get(GCKeyCodeBackslash_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeBackslash_VH.set(GCKeyCodeBackslash_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeNonUSPound typedef const GCKeyCode = Long
- */
-private val GCKeyCodeNonUSPound_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeNonUSPound_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeNonUSPound").orElseThrow().reinterpret(GCKeyCodeNonUSPound_LAYOUT.byteSize()) }
-private val GCKeyCodeNonUSPound_VH: VarHandle by lazy { GCKeyCodeNonUSPound_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeNonUSPound: Long
-    get() = GCKeyCodeNonUSPound_VH.get(GCKeyCodeNonUSPound_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeNonUSPound_VH.set(GCKeyCodeNonUSPound_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeSemicolon typedef const GCKeyCode = Long
- */
-private val GCKeyCodeSemicolon_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeSemicolon_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSemicolon").orElseThrow().reinterpret(GCKeyCodeSemicolon_LAYOUT.byteSize()) }
-private val GCKeyCodeSemicolon_VH: VarHandle by lazy { GCKeyCodeSemicolon_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeSemicolon: Long
-    get() = GCKeyCodeSemicolon_VH.get(GCKeyCodeSemicolon_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeSemicolon_VH.set(GCKeyCodeSemicolon_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeQuote typedef const GCKeyCode = Long
- */
-private val GCKeyCodeQuote_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeQuote_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeQuote").orElseThrow().reinterpret(GCKeyCodeQuote_LAYOUT.byteSize()) }
-private val GCKeyCodeQuote_VH: VarHandle by lazy { GCKeyCodeQuote_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeQuote: Long
-    get() = GCKeyCodeQuote_VH.get(GCKeyCodeQuote_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeQuote_VH.set(GCKeyCodeQuote_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCKeyCodeGraveAccentAndTilde typedef const GCKeyCode = Long
- */
-private val GCKeyCodeGraveAccentAndTilde_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
-private val GCKeyCodeGraveAccentAndTilde_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeGraveAccentAndTilde").orElseThrow().reinterpret(GCKeyCodeGraveAccentAndTilde_LAYOUT.byteSize()) }
-private val GCKeyCodeGraveAccentAndTilde_VH: VarHandle by lazy { GCKeyCodeGraveAccentAndTilde_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCKeyCodeGraveAccentAndTilde: Long
-    get() = GCKeyCodeGraveAccentAndTilde_VH.get(GCKeyCodeGraveAccentAndTilde_SEGMENT, 0L) as Long
-    set(value) = GCKeyCodeGraveAccentAndTilde_VH.set(GCKeyCodeGraveAccentAndTilde_SEGMENT, 0L, value)

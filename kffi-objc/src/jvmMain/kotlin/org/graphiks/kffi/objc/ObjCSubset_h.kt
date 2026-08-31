@@ -21,5 +21,8 @@ private object kextract_runtime {
 internal val LOOKUP: SymbolLookup = run {
     var lu: SymbolLookup = SymbolLookup.loaderLookup()
     lu = SymbolLookup.libraryLookup("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics", Arena.global()).or(lu)
+    lu = SymbolLookup.libraryLookup("/System/Library/Frameworks/CoreHaptics.framework/CoreHaptics", Arena.global()).or(lu)
+    lu = SymbolLookup.libraryLookup("/System/Library/Frameworks/GameController.framework/GameController", Arena.global()).or(lu)
+    lu = SymbolLookup.libraryLookup("/System/Library/Frameworks/IOKit.framework/IOKit", Arena.global()).or(lu)
     lu
 }

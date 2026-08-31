@@ -7,6 +7,18 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSColorListDidChangeNotification typedef NSNotificationName = typedef NSString = (Void)*
+ */
+private val NSColorListDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSColorListDidChangeNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSColorListDidChangeNotification").orElseThrow().reinterpret(NSColorListDidChangeNotification_LAYOUT.byteSize()) }
+private val NSColorListDidChangeNotification_VH: VarHandle by lazy { NSColorListDidChangeNotification_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+var NSColorListDidChangeNotification: MemorySegment
+    get() = NSColorListDidChangeNotification_VH.get(NSColorListDidChangeNotification_SEGMENT, 0L) as MemorySegment
+    set(value) = NSColorListDidChangeNotification_VH.set(NSColorListDidChangeNotification_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSSystemColorsDidChangeNotification typedef NSNotificationName = typedef NSString = (Void)*
  */
 private val NSSystemColorsDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -3881,16 +3893,3 @@ private val NSImageNameTouchBarCommunicationVideoTemplate_VH: VarHandle by lazy 
 var NSImageNameTouchBarCommunicationVideoTemplate: MemorySegment
     get() = NSImageNameTouchBarCommunicationVideoTemplate_VH.get(NSImageNameTouchBarCommunicationVideoTemplate_SEGMENT, 0L) as MemorySegment
     set(value) = NSImageNameTouchBarCommunicationVideoTemplate_VH.set(NSImageNameTouchBarCommunicationVideoTemplate_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarComposeTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarComposeTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarComposeTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarComposeTemplate").orElseThrow().reinterpret(NSImageNameTouchBarComposeTemplate_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarComposeTemplate_VH: VarHandle by lazy { NSImageNameTouchBarComposeTemplate_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarComposeTemplate: MemorySegment
-    get() = NSImageNameTouchBarComposeTemplate_VH.get(NSImageNameTouchBarComposeTemplate_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarComposeTemplate_VH.set(NSImageNameTouchBarComposeTemplate_SEGMENT, 0L, value)

@@ -952,6 +952,25 @@ var NSURLCredentialStorageRemoveSynchronizableCredentials: MemorySegment
     set(value) = NSURLCredentialStorageRemoveSynchronizableCredentials_VH.set(NSURLCredentialStorageRemoveSynchronizableCredentials_SEGMENT, 0L, value)
 
 /**
+ * {@snippet lang=c : IORegistryEntryGetRegistryEntryID typedef kern_return_t = Int(typedef io_registry_entry_t = UNSIGNED = Int,(typedef uint64_t = UNSIGNED = LongLong)*)
+ */
+private val IORegistryEntryGetRegistryEntryID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val IORegistryEntryGetRegistryEntryID_ADDR: MemorySegment by lazy { LOOKUP.find("IORegistryEntryGetRegistryEntryID").orElseThrow() }
+private val IORegistryEntryGetRegistryEntryID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(IORegistryEntryGetRegistryEntryID_ADDR, IORegistryEntryGetRegistryEntryID_DESC) }
+
+fun IORegistryEntryGetRegistryEntryID(arg0: Int, arg1: MemorySegment): Int {
+    try {
+        return IORegistryEntryGetRegistryEntryID_HANDLE.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : NSURLErrorDomain typedef const NSErrorDomain = (Void)*
  */
 private val NSURLErrorDomain_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -4426,18 +4445,3 @@ private val NSMetadataItemSubjectKey_VH: VarHandle by lazy { NSMetadataItemSubje
 var NSMetadataItemSubjectKey: MemorySegment
     get() = NSMetadataItemSubjectKey_VH.get(NSMetadataItemSubjectKey_SEGMENT, 0L) as MemorySegment
     set(value) = NSMetadataItemSubjectKey_VH.set(NSMetadataItemSubjectKey_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSMetadataItemThemeKey (Void)*
- */
-private val NSMetadataItemThemeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMetadataItemThemeKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSMetadataItemThemeKey").orElseThrow().reinterpret(NSMetadataItemThemeKey_LAYOUT.byteSize()) }
-private val NSMetadataItemThemeKey_VH: VarHandle by lazy { NSMetadataItemThemeKey_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", unavailable = true)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", unavailable = true)
-@PlatformAvailability(platform = "watchos", unavailable = true)
-var NSMetadataItemThemeKey: MemorySegment
-    get() = NSMetadataItemThemeKey_VH.get(NSMetadataItemThemeKey_SEGMENT, 0L) as MemorySegment
-    set(value) = NSMetadataItemThemeKey_VH.set(NSMetadataItemThemeKey_SEGMENT, 0L, value)
