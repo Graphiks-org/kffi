@@ -2680,3 +2680,1775 @@ private val NSTextContentStorageUnsupportedAttributeAddedNotification_VH: VarHan
 var NSTextContentStorageUnsupportedAttributeAddedNotification: MemorySegment
     get() = NSTextContentStorageUnsupportedAttributeAddedNotification_VH.get(NSTextContentStorageUnsupportedAttributeAddedNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSTextContentStorageUnsupportedAttributeAddedNotification_VH.set(NSTextContentStorageUnsupportedAttributeAddedNotification_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCPoint2Zero typedef const GCPoint2 = Declared(GCPoint2)
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+val GCPoint2Zero: MemorySegment = LOOKUP.find("GCPoint2Zero").orElseThrow()
+
+/**
+ * {@snippet lang=c : NSStringFromGCPoint2 typedef NSString = (Void)*(typedef GCPoint2 = Declared(GCPoint2))
+ */
+private val NSStringFromGCPoint2_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, GCPoint2.layout)
+private val NSStringFromGCPoint2_ADDR: MemorySegment by lazy { LOOKUP.find("NSStringFromGCPoint2").orElseThrow() }
+private val NSStringFromGCPoint2_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSStringFromGCPoint2_ADDR, NSStringFromGCPoint2_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+fun NSStringFromGCPoint2(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSStringFromGCPoint2_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+fun NSStringFromGCPoint2(arg0: GCPoint2): MemorySegment {
+    return NSStringFromGCPoint2(arg0.segment)
+}
+
+/**
+ * {@snippet lang=c : GCProductCategoryDualSense (Void)*
+ */
+private val GCProductCategoryDualSense_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryDualSense_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryDualSense").orElseThrow().reinterpret(GCProductCategoryDualSense_LAYOUT.byteSize()) }
+private val GCProductCategoryDualSense_VH: VarHandle by lazy { GCProductCategoryDualSense_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryDualSense: MemorySegment
+    get() = GCProductCategoryDualSense_VH.get(GCProductCategoryDualSense_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryDualSense_VH.set(GCProductCategoryDualSense_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryDualShock4 (Void)*
+ */
+private val GCProductCategoryDualShock4_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryDualShock4_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryDualShock4").orElseThrow().reinterpret(GCProductCategoryDualShock4_LAYOUT.byteSize()) }
+private val GCProductCategoryDualShock4_VH: VarHandle by lazy { GCProductCategoryDualShock4_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryDualShock4: MemorySegment
+    get() = GCProductCategoryDualShock4_VH.get(GCProductCategoryDualShock4_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryDualShock4_VH.set(GCProductCategoryDualShock4_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryMFi (Void)*
+ */
+private val GCProductCategoryMFi_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryMFi_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryMFi").orElseThrow().reinterpret(GCProductCategoryMFi_LAYOUT.byteSize()) }
+private val GCProductCategoryMFi_VH: VarHandle by lazy { GCProductCategoryMFi_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryMFi: MemorySegment
+    get() = GCProductCategoryMFi_VH.get(GCProductCategoryMFi_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryMFi_VH.set(GCProductCategoryMFi_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryXboxOne (Void)*
+ */
+private val GCProductCategoryXboxOne_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryXboxOne_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryXboxOne").orElseThrow().reinterpret(GCProductCategoryXboxOne_LAYOUT.byteSize()) }
+private val GCProductCategoryXboxOne_VH: VarHandle by lazy { GCProductCategoryXboxOne_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryXboxOne: MemorySegment
+    get() = GCProductCategoryXboxOne_VH.get(GCProductCategoryXboxOne_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryXboxOne_VH.set(GCProductCategoryXboxOne_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryHID (Void)*
+ */
+private val GCProductCategoryHID_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryHID_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryHID").orElseThrow().reinterpret(GCProductCategoryHID_LAYOUT.byteSize()) }
+private val GCProductCategoryHID_VH: VarHandle by lazy { GCProductCategoryHID_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryHID: MemorySegment
+    get() = GCProductCategoryHID_VH.get(GCProductCategoryHID_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryHID_VH.set(GCProductCategoryHID_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategorySpatialController (Void)*
+ */
+private val GCProductCategorySpatialController_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategorySpatialController_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategorySpatialController").orElseThrow().reinterpret(GCProductCategorySpatialController_LAYOUT.byteSize()) }
+private val GCProductCategorySpatialController_VH: VarHandle by lazy { GCProductCategorySpatialController_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategorySpatialController: MemorySegment
+    get() = GCProductCategorySpatialController_VH.get(GCProductCategorySpatialController_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategorySpatialController_VH.set(GCProductCategorySpatialController_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryArcadeStick (Void)*
+ */
+private val GCProductCategoryArcadeStick_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryArcadeStick_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryArcadeStick").orElseThrow().reinterpret(GCProductCategoryArcadeStick_LAYOUT.byteSize()) }
+private val GCProductCategoryArcadeStick_VH: VarHandle by lazy { GCProductCategoryArcadeStick_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryArcadeStick: MemorySegment
+    get() = GCProductCategoryArcadeStick_VH.get(GCProductCategoryArcadeStick_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryArcadeStick_VH.set(GCProductCategoryArcadeStick_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategorySiriRemote1stGen (Void)*
+ */
+private val GCProductCategorySiriRemote1stGen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategorySiriRemote1stGen_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategorySiriRemote1stGen").orElseThrow().reinterpret(GCProductCategorySiriRemote1stGen_LAYOUT.byteSize()) }
+private val GCProductCategorySiriRemote1stGen_VH: VarHandle by lazy { GCProductCategorySiriRemote1stGen_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategorySiriRemote1stGen: MemorySegment
+    get() = GCProductCategorySiriRemote1stGen_VH.get(GCProductCategorySiriRemote1stGen_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategorySiriRemote1stGen_VH.set(GCProductCategorySiriRemote1stGen_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategorySiriRemote2ndGen (Void)*
+ */
+private val GCProductCategorySiriRemote2ndGen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategorySiriRemote2ndGen_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategorySiriRemote2ndGen").orElseThrow().reinterpret(GCProductCategorySiriRemote2ndGen_LAYOUT.byteSize()) }
+private val GCProductCategorySiriRemote2ndGen_VH: VarHandle by lazy { GCProductCategorySiriRemote2ndGen_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategorySiriRemote2ndGen: MemorySegment
+    get() = GCProductCategorySiriRemote2ndGen_VH.get(GCProductCategorySiriRemote2ndGen_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategorySiriRemote2ndGen_VH.set(GCProductCategorySiriRemote2ndGen_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryControlCenterRemote (Void)*
+ */
+private val GCProductCategoryControlCenterRemote_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryControlCenterRemote_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryControlCenterRemote").orElseThrow().reinterpret(GCProductCategoryControlCenterRemote_LAYOUT.byteSize()) }
+private val GCProductCategoryControlCenterRemote_VH: VarHandle by lazy { GCProductCategoryControlCenterRemote_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryControlCenterRemote: MemorySegment
+    get() = GCProductCategoryControlCenterRemote_VH.get(GCProductCategoryControlCenterRemote_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryControlCenterRemote_VH.set(GCProductCategoryControlCenterRemote_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryUniversalElectronicsRemote (Void)*
+ */
+private val GCProductCategoryUniversalElectronicsRemote_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryUniversalElectronicsRemote_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryUniversalElectronicsRemote").orElseThrow().reinterpret(GCProductCategoryUniversalElectronicsRemote_LAYOUT.byteSize()) }
+private val GCProductCategoryUniversalElectronicsRemote_VH: VarHandle by lazy { GCProductCategoryUniversalElectronicsRemote_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryUniversalElectronicsRemote: MemorySegment
+    get() = GCProductCategoryUniversalElectronicsRemote_VH.get(GCProductCategoryUniversalElectronicsRemote_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryUniversalElectronicsRemote_VH.set(GCProductCategoryUniversalElectronicsRemote_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryCoalescedRemote (Void)*
+ */
+private val GCProductCategoryCoalescedRemote_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryCoalescedRemote_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryCoalescedRemote").orElseThrow().reinterpret(GCProductCategoryCoalescedRemote_LAYOUT.byteSize()) }
+private val GCProductCategoryCoalescedRemote_VH: VarHandle by lazy { GCProductCategoryCoalescedRemote_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryCoalescedRemote: MemorySegment
+    get() = GCProductCategoryCoalescedRemote_VH.get(GCProductCategoryCoalescedRemote_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryCoalescedRemote_VH.set(GCProductCategoryCoalescedRemote_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryMouse (Void)*
+ */
+private val GCProductCategoryMouse_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryMouse_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryMouse").orElseThrow().reinterpret(GCProductCategoryMouse_LAYOUT.byteSize()) }
+private val GCProductCategoryMouse_VH: VarHandle by lazy { GCProductCategoryMouse_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryMouse: MemorySegment
+    get() = GCProductCategoryMouse_VH.get(GCProductCategoryMouse_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryMouse_VH.set(GCProductCategoryMouse_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategoryKeyboard (Void)*
+ */
+private val GCProductCategoryKeyboard_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategoryKeyboard_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategoryKeyboard").orElseThrow().reinterpret(GCProductCategoryKeyboard_LAYOUT.byteSize()) }
+private val GCProductCategoryKeyboard_VH: VarHandle by lazy { GCProductCategoryKeyboard_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategoryKeyboard: MemorySegment
+    get() = GCProductCategoryKeyboard_VH.get(GCProductCategoryKeyboard_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategoryKeyboard_VH.set(GCProductCategoryKeyboard_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCProductCategorySpatialStylus (Void)*
+ */
+private val GCProductCategorySpatialStylus_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCProductCategorySpatialStylus_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCProductCategorySpatialStylus").orElseThrow().reinterpret(GCProductCategorySpatialStylus_LAYOUT.byteSize()) }
+private val GCProductCategorySpatialStylus_VH: VarHandle by lazy { GCProductCategorySpatialStylus_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", unavailable = true)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+var GCProductCategorySpatialStylus: MemorySegment
+    get() = GCProductCategorySpatialStylus_VH.get(GCProductCategorySpatialStylus_SEGMENT, 0L) as MemorySegment
+    set(value) = GCProductCategorySpatialStylus_VH.set(GCProductCategorySpatialStylus_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputButtonA typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputButtonA_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputButtonA_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputButtonA").orElseThrow().reinterpret(GCInputButtonA_LAYOUT.byteSize()) }
+private val GCInputButtonA_VH: VarHandle by lazy { GCInputButtonA_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputButtonA: MemorySegment
+    get() = GCInputButtonA_VH.get(GCInputButtonA_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputButtonA_VH.set(GCInputButtonA_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputButtonB typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputButtonB_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputButtonB_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputButtonB").orElseThrow().reinterpret(GCInputButtonB_LAYOUT.byteSize()) }
+private val GCInputButtonB_VH: VarHandle by lazy { GCInputButtonB_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputButtonB: MemorySegment
+    get() = GCInputButtonB_VH.get(GCInputButtonB_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputButtonB_VH.set(GCInputButtonB_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputButtonX typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputButtonX_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputButtonX_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputButtonX").orElseThrow().reinterpret(GCInputButtonX_LAYOUT.byteSize()) }
+private val GCInputButtonX_VH: VarHandle by lazy { GCInputButtonX_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputButtonX: MemorySegment
+    get() = GCInputButtonX_VH.get(GCInputButtonX_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputButtonX_VH.set(GCInputButtonX_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputButtonY typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputButtonY_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputButtonY_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputButtonY").orElseThrow().reinterpret(GCInputButtonY_LAYOUT.byteSize()) }
+private val GCInputButtonY_VH: VarHandle by lazy { GCInputButtonY_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputButtonY: MemorySegment
+    get() = GCInputButtonY_VH.get(GCInputButtonY_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputButtonY_VH.set(GCInputButtonY_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputDirectionPad typedef __strong GCInputDirectionPadName = (Void)*
+ */
+private val GCInputDirectionPad_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputDirectionPad_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputDirectionPad").orElseThrow().reinterpret(GCInputDirectionPad_LAYOUT.byteSize()) }
+private val GCInputDirectionPad_VH: VarHandle by lazy { GCInputDirectionPad_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputDirectionPad: MemorySegment
+    get() = GCInputDirectionPad_VH.get(GCInputDirectionPad_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputDirectionPad_VH.set(GCInputDirectionPad_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputThumbstick typedef __strong GCInputDirectionPadName = (Void)*
+ */
+private val GCInputThumbstick_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputThumbstick_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputThumbstick").orElseThrow().reinterpret(GCInputThumbstick_LAYOUT.byteSize()) }
+private val GCInputThumbstick_VH: VarHandle by lazy { GCInputThumbstick_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+var GCInputThumbstick: MemorySegment
+    get() = GCInputThumbstick_VH.get(GCInputThumbstick_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputThumbstick_VH.set(GCInputThumbstick_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputLeftThumbstick typedef __strong GCInputDirectionPadName = (Void)*
+ */
+private val GCInputLeftThumbstick_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputLeftThumbstick_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputLeftThumbstick").orElseThrow().reinterpret(GCInputLeftThumbstick_LAYOUT.byteSize()) }
+private val GCInputLeftThumbstick_VH: VarHandle by lazy { GCInputLeftThumbstick_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputLeftThumbstick: MemorySegment
+    get() = GCInputLeftThumbstick_VH.get(GCInputLeftThumbstick_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputLeftThumbstick_VH.set(GCInputLeftThumbstick_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputRightThumbstick typedef __strong GCInputDirectionPadName = (Void)*
+ */
+private val GCInputRightThumbstick_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputRightThumbstick_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputRightThumbstick").orElseThrow().reinterpret(GCInputRightThumbstick_LAYOUT.byteSize()) }
+private val GCInputRightThumbstick_VH: VarHandle by lazy { GCInputRightThumbstick_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputRightThumbstick: MemorySegment
+    get() = GCInputRightThumbstick_VH.get(GCInputRightThumbstick_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputRightThumbstick_VH.set(GCInputRightThumbstick_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputThumbstickButton typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputThumbstickButton_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputThumbstickButton_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputThumbstickButton").orElseThrow().reinterpret(GCInputThumbstickButton_LAYOUT.byteSize()) }
+private val GCInputThumbstickButton_VH: VarHandle by lazy { GCInputThumbstickButton_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+var GCInputThumbstickButton: MemorySegment
+    get() = GCInputThumbstickButton_VH.get(GCInputThumbstickButton_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputThumbstickButton_VH.set(GCInputThumbstickButton_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputLeftThumbstickButton typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputLeftThumbstickButton_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputLeftThumbstickButton_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputLeftThumbstickButton").orElseThrow().reinterpret(GCInputLeftThumbstickButton_LAYOUT.byteSize()) }
+private val GCInputLeftThumbstickButton_VH: VarHandle by lazy { GCInputLeftThumbstickButton_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputLeftThumbstickButton: MemorySegment
+    get() = GCInputLeftThumbstickButton_VH.get(GCInputLeftThumbstickButton_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputLeftThumbstickButton_VH.set(GCInputLeftThumbstickButton_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputRightThumbstickButton typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputRightThumbstickButton_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputRightThumbstickButton_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputRightThumbstickButton").orElseThrow().reinterpret(GCInputRightThumbstickButton_LAYOUT.byteSize()) }
+private val GCInputRightThumbstickButton_VH: VarHandle by lazy { GCInputRightThumbstickButton_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputRightThumbstickButton: MemorySegment
+    get() = GCInputRightThumbstickButton_VH.get(GCInputRightThumbstickButton_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputRightThumbstickButton_VH.set(GCInputRightThumbstickButton_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputGripButton typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputGripButton_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputGripButton_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputGripButton").orElseThrow().reinterpret(GCInputGripButton_LAYOUT.byteSize()) }
+private val GCInputGripButton_VH: VarHandle by lazy { GCInputGripButton_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+var GCInputGripButton: MemorySegment
+    get() = GCInputGripButton_VH.get(GCInputGripButton_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputGripButton_VH.set(GCInputGripButton_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputLeftShoulder typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputLeftShoulder_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputLeftShoulder_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputLeftShoulder").orElseThrow().reinterpret(GCInputLeftShoulder_LAYOUT.byteSize()) }
+private val GCInputLeftShoulder_VH: VarHandle by lazy { GCInputLeftShoulder_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputLeftShoulder: MemorySegment
+    get() = GCInputLeftShoulder_VH.get(GCInputLeftShoulder_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputLeftShoulder_VH.set(GCInputLeftShoulder_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputRightShoulder typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputRightShoulder_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputRightShoulder_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputRightShoulder").orElseThrow().reinterpret(GCInputRightShoulder_LAYOUT.byteSize()) }
+private val GCInputRightShoulder_VH: VarHandle by lazy { GCInputRightShoulder_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputRightShoulder: MemorySegment
+    get() = GCInputRightShoulder_VH.get(GCInputRightShoulder_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputRightShoulder_VH.set(GCInputRightShoulder_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputLeftBumper typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputLeftBumper_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputLeftBumper_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputLeftBumper").orElseThrow().reinterpret(GCInputLeftBumper_LAYOUT.byteSize()) }
+private val GCInputLeftBumper_VH: VarHandle by lazy { GCInputLeftBumper_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+var GCInputLeftBumper: MemorySegment
+    get() = GCInputLeftBumper_VH.get(GCInputLeftBumper_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputLeftBumper_VH.set(GCInputLeftBumper_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputRightBumper typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputRightBumper_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputRightBumper_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputRightBumper").orElseThrow().reinterpret(GCInputRightBumper_LAYOUT.byteSize()) }
+private val GCInputRightBumper_VH: VarHandle by lazy { GCInputRightBumper_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+var GCInputRightBumper: MemorySegment
+    get() = GCInputRightBumper_VH.get(GCInputRightBumper_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputRightBumper_VH.set(GCInputRightBumper_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputTrigger typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputTrigger_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputTrigger_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputTrigger").orElseThrow().reinterpret(GCInputTrigger_LAYOUT.byteSize()) }
+private val GCInputTrigger_VH: VarHandle by lazy { GCInputTrigger_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+var GCInputTrigger: MemorySegment
+    get() = GCInputTrigger_VH.get(GCInputTrigger_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputTrigger_VH.set(GCInputTrigger_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputLeftTrigger typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputLeftTrigger_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputLeftTrigger_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputLeftTrigger").orElseThrow().reinterpret(GCInputLeftTrigger_LAYOUT.byteSize()) }
+private val GCInputLeftTrigger_VH: VarHandle by lazy { GCInputLeftTrigger_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputLeftTrigger: MemorySegment
+    get() = GCInputLeftTrigger_VH.get(GCInputLeftTrigger_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputLeftTrigger_VH.set(GCInputLeftTrigger_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputRightTrigger typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputRightTrigger_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputRightTrigger_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputRightTrigger").orElseThrow().reinterpret(GCInputRightTrigger_LAYOUT.byteSize()) }
+private val GCInputRightTrigger_VH: VarHandle by lazy { GCInputRightTrigger_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputRightTrigger: MemorySegment
+    get() = GCInputRightTrigger_VH.get(GCInputRightTrigger_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputRightTrigger_VH.set(GCInputRightTrigger_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputLeftSideButton typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputLeftSideButton_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputLeftSideButton_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputLeftSideButton").orElseThrow().reinterpret(GCInputLeftSideButton_LAYOUT.byteSize()) }
+private val GCInputLeftSideButton_VH: VarHandle by lazy { GCInputLeftSideButton_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 4, introducedSubminor = -1)
+var GCInputLeftSideButton: MemorySegment
+    get() = GCInputLeftSideButton_VH.get(GCInputLeftSideButton_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputLeftSideButton_VH.set(GCInputLeftSideButton_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputRightSideButton typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputRightSideButton_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputRightSideButton_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputRightSideButton").orElseThrow().reinterpret(GCInputRightSideButton_LAYOUT.byteSize()) }
+private val GCInputRightSideButton_VH: VarHandle by lazy { GCInputRightSideButton_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 4, introducedSubminor = -1)
+var GCInputRightSideButton: MemorySegment
+    get() = GCInputRightSideButton_VH.get(GCInputRightSideButton_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputRightSideButton_VH.set(GCInputRightSideButton_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputBackLeftButton typedef GCInputButtonName = (Void)*(typedef NSInteger = Long)
+ */
+private val GCInputBackLeftButton_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val GCInputBackLeftButton_ADDR: MemorySegment by lazy { LOOKUP.find("GCInputBackLeftButton").orElseThrow() }
+private val GCInputBackLeftButton_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(GCInputBackLeftButton_ADDR, GCInputBackLeftButton_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+fun GCInputBackLeftButton(arg0: Long): MemorySegment {
+    try {
+        return GCInputBackLeftButton_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : GCInputBackRightButton typedef GCInputButtonName = (Void)*(typedef NSInteger = Long)
+ */
+private val GCInputBackRightButton_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val GCInputBackRightButton_ADDR: MemorySegment by lazy { LOOKUP.find("GCInputBackRightButton").orElseThrow() }
+private val GCInputBackRightButton_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(GCInputBackRightButton_ADDR, GCInputBackRightButton_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+fun GCInputBackRightButton(arg0: Long): MemorySegment {
+    try {
+        return GCInputBackRightButton_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : GCInputButtonHome typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputButtonHome_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputButtonHome_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputButtonHome").orElseThrow().reinterpret(GCInputButtonHome_LAYOUT.byteSize()) }
+private val GCInputButtonHome_VH: VarHandle by lazy { GCInputButtonHome_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputButtonHome: MemorySegment
+    get() = GCInputButtonHome_VH.get(GCInputButtonHome_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputButtonHome_VH.set(GCInputButtonHome_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputButtonMenu typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputButtonMenu_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputButtonMenu_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputButtonMenu").orElseThrow().reinterpret(GCInputButtonMenu_LAYOUT.byteSize()) }
+private val GCInputButtonMenu_VH: VarHandle by lazy { GCInputButtonMenu_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputButtonMenu: MemorySegment
+    get() = GCInputButtonMenu_VH.get(GCInputButtonMenu_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputButtonMenu_VH.set(GCInputButtonMenu_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputButtonOptions typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputButtonOptions_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputButtonOptions_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputButtonOptions").orElseThrow().reinterpret(GCInputButtonOptions_LAYOUT.byteSize()) }
+private val GCInputButtonOptions_VH: VarHandle by lazy { GCInputButtonOptions_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputButtonOptions: MemorySegment
+    get() = GCInputButtonOptions_VH.get(GCInputButtonOptions_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputButtonOptions_VH.set(GCInputButtonOptions_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputButtonShare typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputButtonShare_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputButtonShare_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputButtonShare").orElseThrow().reinterpret(GCInputButtonShare_LAYOUT.byteSize()) }
+private val GCInputButtonShare_VH: VarHandle by lazy { GCInputButtonShare_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+var GCInputButtonShare: MemorySegment
+    get() = GCInputButtonShare_VH.get(GCInputButtonShare_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputButtonShare_VH.set(GCInputButtonShare_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputXboxPaddleOne typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputXboxPaddleOne_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputXboxPaddleOne_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputXboxPaddleOne").orElseThrow().reinterpret(GCInputXboxPaddleOne_LAYOUT.byteSize()) }
+private val GCInputXboxPaddleOne_VH: VarHandle by lazy { GCInputXboxPaddleOne_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputXboxPaddleOne: MemorySegment
+    get() = GCInputXboxPaddleOne_VH.get(GCInputXboxPaddleOne_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputXboxPaddleOne_VH.set(GCInputXboxPaddleOne_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputXboxPaddleTwo typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputXboxPaddleTwo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputXboxPaddleTwo_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputXboxPaddleTwo").orElseThrow().reinterpret(GCInputXboxPaddleTwo_LAYOUT.byteSize()) }
+private val GCInputXboxPaddleTwo_VH: VarHandle by lazy { GCInputXboxPaddleTwo_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputXboxPaddleTwo: MemorySegment
+    get() = GCInputXboxPaddleTwo_VH.get(GCInputXboxPaddleTwo_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputXboxPaddleTwo_VH.set(GCInputXboxPaddleTwo_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputXboxPaddleThree typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputXboxPaddleThree_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputXboxPaddleThree_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputXboxPaddleThree").orElseThrow().reinterpret(GCInputXboxPaddleThree_LAYOUT.byteSize()) }
+private val GCInputXboxPaddleThree_VH: VarHandle by lazy { GCInputXboxPaddleThree_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputXboxPaddleThree: MemorySegment
+    get() = GCInputXboxPaddleThree_VH.get(GCInputXboxPaddleThree_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputXboxPaddleThree_VH.set(GCInputXboxPaddleThree_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputXboxPaddleFour typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputXboxPaddleFour_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputXboxPaddleFour_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputXboxPaddleFour").orElseThrow().reinterpret(GCInputXboxPaddleFour_LAYOUT.byteSize()) }
+private val GCInputXboxPaddleFour_VH: VarHandle by lazy { GCInputXboxPaddleFour_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputXboxPaddleFour: MemorySegment
+    get() = GCInputXboxPaddleFour_VH.get(GCInputXboxPaddleFour_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputXboxPaddleFour_VH.set(GCInputXboxPaddleFour_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputDualShockTouchpadOne typedef __strong GCInputDirectionPadName = (Void)*
+ */
+private val GCInputDualShockTouchpadOne_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputDualShockTouchpadOne_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputDualShockTouchpadOne").orElseThrow().reinterpret(GCInputDualShockTouchpadOne_LAYOUT.byteSize()) }
+private val GCInputDualShockTouchpadOne_VH: VarHandle by lazy { GCInputDualShockTouchpadOne_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputDualShockTouchpadOne: MemorySegment
+    get() = GCInputDualShockTouchpadOne_VH.get(GCInputDualShockTouchpadOne_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputDualShockTouchpadOne_VH.set(GCInputDualShockTouchpadOne_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputDualShockTouchpadTwo typedef __strong GCInputDirectionPadName = (Void)*
+ */
+private val GCInputDualShockTouchpadTwo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputDualShockTouchpadTwo_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputDualShockTouchpadTwo").orElseThrow().reinterpret(GCInputDualShockTouchpadTwo_LAYOUT.byteSize()) }
+private val GCInputDualShockTouchpadTwo_VH: VarHandle by lazy { GCInputDualShockTouchpadTwo_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputDualShockTouchpadTwo: MemorySegment
+    get() = GCInputDualShockTouchpadTwo_VH.get(GCInputDualShockTouchpadTwo_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputDualShockTouchpadTwo_VH.set(GCInputDualShockTouchpadTwo_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputDualShockTouchpadButton typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputDualShockTouchpadButton_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputDualShockTouchpadButton_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputDualShockTouchpadButton").orElseThrow().reinterpret(GCInputDualShockTouchpadButton_LAYOUT.byteSize()) }
+private val GCInputDualShockTouchpadButton_VH: VarHandle by lazy { GCInputDualShockTouchpadButton_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCInputDualShockTouchpadButton: MemorySegment
+    get() = GCInputDualShockTouchpadButton_VH.get(GCInputDualShockTouchpadButton_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputDualShockTouchpadButton_VH.set(GCInputDualShockTouchpadButton_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputSteeringWheel typedef __strong GCInputAxisName = (Void)*
+ */
+private val GCInputSteeringWheel_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputSteeringWheel_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputSteeringWheel").orElseThrow().reinterpret(GCInputSteeringWheel_LAYOUT.byteSize()) }
+private val GCInputSteeringWheel_VH: VarHandle by lazy { GCInputSteeringWheel_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+var GCInputSteeringWheel: MemorySegment
+    get() = GCInputSteeringWheel_VH.get(GCInputSteeringWheel_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputSteeringWheel_VH.set(GCInputSteeringWheel_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputShifter typedef __strong GCInputElementName = (Void)*
+ */
+private val GCInputShifter_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputShifter_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputShifter").orElseThrow().reinterpret(GCInputShifter_LAYOUT.byteSize()) }
+private val GCInputShifter_VH: VarHandle by lazy { GCInputShifter_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+var GCInputShifter: MemorySegment
+    get() = GCInputShifter_VH.get(GCInputShifter_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputShifter_VH.set(GCInputShifter_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputPedalAccelerator typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputPedalAccelerator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputPedalAccelerator_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputPedalAccelerator").orElseThrow().reinterpret(GCInputPedalAccelerator_LAYOUT.byteSize()) }
+private val GCInputPedalAccelerator_VH: VarHandle by lazy { GCInputPedalAccelerator_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+var GCInputPedalAccelerator: MemorySegment
+    get() = GCInputPedalAccelerator_VH.get(GCInputPedalAccelerator_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputPedalAccelerator_VH.set(GCInputPedalAccelerator_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputPedalBrake typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputPedalBrake_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputPedalBrake_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputPedalBrake").orElseThrow().reinterpret(GCInputPedalBrake_LAYOUT.byteSize()) }
+private val GCInputPedalBrake_VH: VarHandle by lazy { GCInputPedalBrake_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+var GCInputPedalBrake: MemorySegment
+    get() = GCInputPedalBrake_VH.get(GCInputPedalBrake_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputPedalBrake_VH.set(GCInputPedalBrake_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputPedalClutch typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputPedalClutch_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputPedalClutch_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputPedalClutch").orElseThrow().reinterpret(GCInputPedalClutch_LAYOUT.byteSize()) }
+private val GCInputPedalClutch_VH: VarHandle by lazy { GCInputPedalClutch_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+var GCInputPedalClutch: MemorySegment
+    get() = GCInputPedalClutch_VH.get(GCInputPedalClutch_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputPedalClutch_VH.set(GCInputPedalClutch_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputLeftPaddle typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputLeftPaddle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputLeftPaddle_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputLeftPaddle").orElseThrow().reinterpret(GCInputLeftPaddle_LAYOUT.byteSize()) }
+private val GCInputLeftPaddle_VH: VarHandle by lazy { GCInputLeftPaddle_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+var GCInputLeftPaddle: MemorySegment
+    get() = GCInputLeftPaddle_VH.get(GCInputLeftPaddle_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputLeftPaddle_VH.set(GCInputLeftPaddle_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputRightPaddle typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputRightPaddle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputRightPaddle_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputRightPaddle").orElseThrow().reinterpret(GCInputRightPaddle_LAYOUT.byteSize()) }
+private val GCInputRightPaddle_VH: VarHandle by lazy { GCInputRightPaddle_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+var GCInputRightPaddle: MemorySegment
+    get() = GCInputRightPaddle_VH.get(GCInputRightPaddle_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputRightPaddle_VH.set(GCInputRightPaddle_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputArcadeButtonName typedef GCInputButtonName = (Void)*(typedef NSInteger = Long,typedef NSInteger = Long)
+ */
+private val GCInputArcadeButtonName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
+private val GCInputArcadeButtonName_ADDR: MemorySegment by lazy { LOOKUP.find("GCInputArcadeButtonName").orElseThrow() }
+private val GCInputArcadeButtonName_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(GCInputArcadeButtonName_ADDR, GCInputArcadeButtonName_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+fun GCInputArcadeButtonName(arg0: Long, arg1: Long): MemorySegment {
+    try {
+        return GCInputArcadeButtonName_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : GCInputStylusTip typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputStylusTip_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputStylusTip_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputStylusTip").orElseThrow().reinterpret(GCInputStylusTip_LAYOUT.byteSize()) }
+private val GCInputStylusTip_VH: VarHandle by lazy { GCInputStylusTip_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", unavailable = true)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+var GCInputStylusTip: MemorySegment
+    get() = GCInputStylusTip_VH.get(GCInputStylusTip_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputStylusTip_VH.set(GCInputStylusTip_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputStylusPrimaryButton typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputStylusPrimaryButton_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputStylusPrimaryButton_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputStylusPrimaryButton").orElseThrow().reinterpret(GCInputStylusPrimaryButton_LAYOUT.byteSize()) }
+private val GCInputStylusPrimaryButton_VH: VarHandle by lazy { GCInputStylusPrimaryButton_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", unavailable = true)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+var GCInputStylusPrimaryButton: MemorySegment
+    get() = GCInputStylusPrimaryButton_VH.get(GCInputStylusPrimaryButton_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputStylusPrimaryButton_VH.set(GCInputStylusPrimaryButton_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCInputStylusSecondaryButton typedef __strong GCInputButtonName = (Void)*
+ */
+private val GCInputStylusSecondaryButton_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCInputStylusSecondaryButton_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCInputStylusSecondaryButton").orElseThrow().reinterpret(GCInputStylusSecondaryButton_LAYOUT.byteSize()) }
+private val GCInputStylusSecondaryButton_VH: VarHandle by lazy { GCInputStylusSecondaryButton_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", unavailable = true)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+var GCInputStylusSecondaryButton: MemorySegment
+    get() = GCInputStylusSecondaryButton_VH.get(GCInputStylusSecondaryButton_SEGMENT, 0L) as MemorySegment
+    set(value) = GCInputStylusSecondaryButton_VH.set(GCInputStylusSecondaryButton_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCGamepadSnapShotDataV100FromNSData typedef BOOL = Bool((typedef GCGamepadSnapShotDataV100 = Declared(GCGamepadSnapShotDataV100))*,typedef NSData = (Void)*)
+ */
+private val GCGamepadSnapShotDataV100FromNSData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val GCGamepadSnapShotDataV100FromNSData_ADDR: MemorySegment by lazy { LOOKUP.find("GCGamepadSnapShotDataV100FromNSData").orElseThrow() }
+private val GCGamepadSnapShotDataV100FromNSData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(GCGamepadSnapShotDataV100FromNSData_ADDR, GCGamepadSnapShotDataV100FromNSData_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use GCExtendedGamepad instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use GCExtendedGamepad instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use GCExtendedGamepad instead")
+fun GCGamepadSnapShotDataV100FromNSData(arg0: MemorySegment, arg1: MemorySegment): Boolean {
+    try {
+        return GCGamepadSnapShotDataV100FromNSData_HANDLE.invokeExact(arg0, arg1) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDataFromGCGamepadSnapShotDataV100 typedef NSData = (Void)*((typedef GCGamepadSnapShotDataV100 = Declared(GCGamepadSnapShotDataV100))*)
+ */
+private val NSDataFromGCGamepadSnapShotDataV100_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSDataFromGCGamepadSnapShotDataV100_ADDR: MemorySegment by lazy { LOOKUP.find("NSDataFromGCGamepadSnapShotDataV100").orElseThrow() }
+private val NSDataFromGCGamepadSnapShotDataV100_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSDataFromGCGamepadSnapShotDataV100_ADDR, NSDataFromGCGamepadSnapShotDataV100_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use GCExtendedGamepad instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use GCExtendedGamepad instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use GCExtendedGamepad instead")
+fun NSDataFromGCGamepadSnapShotDataV100(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSDataFromGCGamepadSnapShotDataV100_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : GCCurrentExtendedGamepadSnapshotDataVersion typedef const GCExtendedGamepadSnapshotDataVersion = Declared(GCExtendedGamepadSnapshotDataVersion)
+ */
+private val GCCurrentExtendedGamepadSnapshotDataVersion_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCCurrentExtendedGamepadSnapshotDataVersion_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCCurrentExtendedGamepadSnapshotDataVersion").orElseThrow().reinterpret(GCCurrentExtendedGamepadSnapshotDataVersion_LAYOUT.byteSize()) }
+private val GCCurrentExtendedGamepadSnapshotDataVersion_VH: VarHandle by lazy { GCCurrentExtendedGamepadSnapshotDataVersion_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+var GCCurrentExtendedGamepadSnapshotDataVersion: GCExtendedGamepadSnapshotDataVersion
+    get() = GCExtendedGamepadSnapshotDataVersion.fromValue(GCCurrentExtendedGamepadSnapshotDataVersion_VH.get(GCCurrentExtendedGamepadSnapshotDataVersion_SEGMENT, 0L) as Long)
+    set(value) = GCCurrentExtendedGamepadSnapshotDataVersion_VH.set(GCCurrentExtendedGamepadSnapshotDataVersion_SEGMENT, 0L, value.value)
+
+/**
+ * {@snippet lang=c : GCExtendedGamepadSnapshotDataFromNSData typedef BOOL = Bool((typedef GCExtendedGamepadSnapshotData = Declared(GCExtendedGamepadSnapshotData))*,typedef NSData = (Void)*)
+ */
+private val GCExtendedGamepadSnapshotDataFromNSData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val GCExtendedGamepadSnapshotDataFromNSData_ADDR: MemorySegment by lazy { LOOKUP.find("GCExtendedGamepadSnapshotDataFromNSData").orElseThrow() }
+private val GCExtendedGamepadSnapshotDataFromNSData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(GCExtendedGamepadSnapshotDataFromNSData_ADDR, GCExtendedGamepadSnapshotDataFromNSData_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+fun GCExtendedGamepadSnapshotDataFromNSData(arg0: MemorySegment, arg1: MemorySegment): Boolean {
+    try {
+        return GCExtendedGamepadSnapshotDataFromNSData_HANDLE.invokeExact(arg0, arg1) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDataFromGCExtendedGamepadSnapshotData typedef NSData = (Void)*((typedef GCExtendedGamepadSnapshotData = Declared(GCExtendedGamepadSnapshotData))*)
+ */
+private val NSDataFromGCExtendedGamepadSnapshotData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSDataFromGCExtendedGamepadSnapshotData_ADDR: MemorySegment by lazy { LOOKUP.find("NSDataFromGCExtendedGamepadSnapshotData").orElseThrow() }
+private val NSDataFromGCExtendedGamepadSnapshotData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSDataFromGCExtendedGamepadSnapshotData_ADDR, NSDataFromGCExtendedGamepadSnapshotData_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+fun NSDataFromGCExtendedGamepadSnapshotData(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSDataFromGCExtendedGamepadSnapshotData_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : GCExtendedGamepadSnapShotDataV100FromNSData typedef BOOL = Bool((typedef GCExtendedGamepadSnapShotDataV100 = Declared(GCExtendedGamepadSnapShotDataV100))*,typedef NSData = (Void)*)
+ */
+private val GCExtendedGamepadSnapShotDataV100FromNSData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val GCExtendedGamepadSnapShotDataV100FromNSData_ADDR: MemorySegment by lazy { LOOKUP.find("GCExtendedGamepadSnapShotDataV100FromNSData").orElseThrow() }
+private val GCExtendedGamepadSnapShotDataV100FromNSData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(GCExtendedGamepadSnapShotDataV100FromNSData_ADDR, GCExtendedGamepadSnapShotDataV100FromNSData_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+fun GCExtendedGamepadSnapShotDataV100FromNSData(arg0: MemorySegment, arg1: MemorySegment): Boolean {
+    try {
+        return GCExtendedGamepadSnapShotDataV100FromNSData_HANDLE.invokeExact(arg0, arg1) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : NSDataFromGCExtendedGamepadSnapShotDataV100 typedef NSData = (Void)*((typedef GCExtendedGamepadSnapShotDataV100 = Declared(GCExtendedGamepadSnapShotDataV100))*)
+ */
+private val NSDataFromGCExtendedGamepadSnapShotDataV100_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val NSDataFromGCExtendedGamepadSnapShotDataV100_ADDR: MemorySegment by lazy { LOOKUP.find("NSDataFromGCExtendedGamepadSnapShotDataV100").orElseThrow() }
+private val NSDataFromGCExtendedGamepadSnapShotDataV100_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(NSDataFromGCExtendedGamepadSnapShotDataV100_ADDR, NSDataFromGCExtendedGamepadSnapShotDataV100_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+fun NSDataFromGCExtendedGamepadSnapShotDataV100(arg0: MemorySegment): MemorySegment {
+    try {
+        return NSDataFromGCExtendedGamepadSnapShotDataV100_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyA typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyA_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyA_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyA").orElseThrow().reinterpret(GCKeyCodeKeyA_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyA_VH: VarHandle by lazy { GCKeyCodeKeyA_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyA: Long
+    get() = GCKeyCodeKeyA_VH.get(GCKeyCodeKeyA_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyA_VH.set(GCKeyCodeKeyA_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyB typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyB_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyB_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyB").orElseThrow().reinterpret(GCKeyCodeKeyB_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyB_VH: VarHandle by lazy { GCKeyCodeKeyB_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyB: Long
+    get() = GCKeyCodeKeyB_VH.get(GCKeyCodeKeyB_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyB_VH.set(GCKeyCodeKeyB_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyC typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyC_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyC_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyC").orElseThrow().reinterpret(GCKeyCodeKeyC_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyC_VH: VarHandle by lazy { GCKeyCodeKeyC_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyC: Long
+    get() = GCKeyCodeKeyC_VH.get(GCKeyCodeKeyC_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyC_VH.set(GCKeyCodeKeyC_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyD typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyD_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyD_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyD").orElseThrow().reinterpret(GCKeyCodeKeyD_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyD_VH: VarHandle by lazy { GCKeyCodeKeyD_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyD: Long
+    get() = GCKeyCodeKeyD_VH.get(GCKeyCodeKeyD_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyD_VH.set(GCKeyCodeKeyD_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyE typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyE_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyE_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyE").orElseThrow().reinterpret(GCKeyCodeKeyE_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyE_VH: VarHandle by lazy { GCKeyCodeKeyE_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyE: Long
+    get() = GCKeyCodeKeyE_VH.get(GCKeyCodeKeyE_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyE_VH.set(GCKeyCodeKeyE_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyF typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyF_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyF_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyF").orElseThrow().reinterpret(GCKeyCodeKeyF_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyF_VH: VarHandle by lazy { GCKeyCodeKeyF_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyF: Long
+    get() = GCKeyCodeKeyF_VH.get(GCKeyCodeKeyF_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyF_VH.set(GCKeyCodeKeyF_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyG typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyG_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyG_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyG").orElseThrow().reinterpret(GCKeyCodeKeyG_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyG_VH: VarHandle by lazy { GCKeyCodeKeyG_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyG: Long
+    get() = GCKeyCodeKeyG_VH.get(GCKeyCodeKeyG_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyG_VH.set(GCKeyCodeKeyG_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyH typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyH_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyH_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyH").orElseThrow().reinterpret(GCKeyCodeKeyH_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyH_VH: VarHandle by lazy { GCKeyCodeKeyH_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyH: Long
+    get() = GCKeyCodeKeyH_VH.get(GCKeyCodeKeyH_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyH_VH.set(GCKeyCodeKeyH_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyI typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyI_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyI_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyI").orElseThrow().reinterpret(GCKeyCodeKeyI_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyI_VH: VarHandle by lazy { GCKeyCodeKeyI_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyI: Long
+    get() = GCKeyCodeKeyI_VH.get(GCKeyCodeKeyI_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyI_VH.set(GCKeyCodeKeyI_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyJ typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyJ_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyJ_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyJ").orElseThrow().reinterpret(GCKeyCodeKeyJ_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyJ_VH: VarHandle by lazy { GCKeyCodeKeyJ_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyJ: Long
+    get() = GCKeyCodeKeyJ_VH.get(GCKeyCodeKeyJ_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyJ_VH.set(GCKeyCodeKeyJ_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyK typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyK_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyK_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyK").orElseThrow().reinterpret(GCKeyCodeKeyK_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyK_VH: VarHandle by lazy { GCKeyCodeKeyK_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyK: Long
+    get() = GCKeyCodeKeyK_VH.get(GCKeyCodeKeyK_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyK_VH.set(GCKeyCodeKeyK_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyL typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyL_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyL_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyL").orElseThrow().reinterpret(GCKeyCodeKeyL_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyL_VH: VarHandle by lazy { GCKeyCodeKeyL_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyL: Long
+    get() = GCKeyCodeKeyL_VH.get(GCKeyCodeKeyL_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyL_VH.set(GCKeyCodeKeyL_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyM typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyM_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyM_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyM").orElseThrow().reinterpret(GCKeyCodeKeyM_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyM_VH: VarHandle by lazy { GCKeyCodeKeyM_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyM: Long
+    get() = GCKeyCodeKeyM_VH.get(GCKeyCodeKeyM_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyM_VH.set(GCKeyCodeKeyM_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyN typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyN_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyN_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyN").orElseThrow().reinterpret(GCKeyCodeKeyN_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyN_VH: VarHandle by lazy { GCKeyCodeKeyN_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyN: Long
+    get() = GCKeyCodeKeyN_VH.get(GCKeyCodeKeyN_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyN_VH.set(GCKeyCodeKeyN_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyO typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyO_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyO_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyO").orElseThrow().reinterpret(GCKeyCodeKeyO_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyO_VH: VarHandle by lazy { GCKeyCodeKeyO_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyO: Long
+    get() = GCKeyCodeKeyO_VH.get(GCKeyCodeKeyO_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyO_VH.set(GCKeyCodeKeyO_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyP typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyP_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyP_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyP").orElseThrow().reinterpret(GCKeyCodeKeyP_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyP_VH: VarHandle by lazy { GCKeyCodeKeyP_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyP: Long
+    get() = GCKeyCodeKeyP_VH.get(GCKeyCodeKeyP_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyP_VH.set(GCKeyCodeKeyP_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyQ typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyQ_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyQ_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyQ").orElseThrow().reinterpret(GCKeyCodeKeyQ_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyQ_VH: VarHandle by lazy { GCKeyCodeKeyQ_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyQ: Long
+    get() = GCKeyCodeKeyQ_VH.get(GCKeyCodeKeyQ_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyQ_VH.set(GCKeyCodeKeyQ_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyR typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyR_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyR_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyR").orElseThrow().reinterpret(GCKeyCodeKeyR_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyR_VH: VarHandle by lazy { GCKeyCodeKeyR_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyR: Long
+    get() = GCKeyCodeKeyR_VH.get(GCKeyCodeKeyR_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyR_VH.set(GCKeyCodeKeyR_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyS typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyS_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyS_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyS").orElseThrow().reinterpret(GCKeyCodeKeyS_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyS_VH: VarHandle by lazy { GCKeyCodeKeyS_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyS: Long
+    get() = GCKeyCodeKeyS_VH.get(GCKeyCodeKeyS_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyS_VH.set(GCKeyCodeKeyS_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyT typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyT_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyT_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyT").orElseThrow().reinterpret(GCKeyCodeKeyT_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyT_VH: VarHandle by lazy { GCKeyCodeKeyT_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyT: Long
+    get() = GCKeyCodeKeyT_VH.get(GCKeyCodeKeyT_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyT_VH.set(GCKeyCodeKeyT_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyU typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyU_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyU_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyU").orElseThrow().reinterpret(GCKeyCodeKeyU_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyU_VH: VarHandle by lazy { GCKeyCodeKeyU_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyU: Long
+    get() = GCKeyCodeKeyU_VH.get(GCKeyCodeKeyU_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyU_VH.set(GCKeyCodeKeyU_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyV typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyV_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyV_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyV").orElseThrow().reinterpret(GCKeyCodeKeyV_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyV_VH: VarHandle by lazy { GCKeyCodeKeyV_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyV: Long
+    get() = GCKeyCodeKeyV_VH.get(GCKeyCodeKeyV_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyV_VH.set(GCKeyCodeKeyV_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyW typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyW_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyW_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyW").orElseThrow().reinterpret(GCKeyCodeKeyW_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyW_VH: VarHandle by lazy { GCKeyCodeKeyW_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyW: Long
+    get() = GCKeyCodeKeyW_VH.get(GCKeyCodeKeyW_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyW_VH.set(GCKeyCodeKeyW_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyX typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyX_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyX_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyX").orElseThrow().reinterpret(GCKeyCodeKeyX_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyX_VH: VarHandle by lazy { GCKeyCodeKeyX_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyX: Long
+    get() = GCKeyCodeKeyX_VH.get(GCKeyCodeKeyX_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyX_VH.set(GCKeyCodeKeyX_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyY typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyY_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyY_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyY").orElseThrow().reinterpret(GCKeyCodeKeyY_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyY_VH: VarHandle by lazy { GCKeyCodeKeyY_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyY: Long
+    get() = GCKeyCodeKeyY_VH.get(GCKeyCodeKeyY_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyY_VH.set(GCKeyCodeKeyY_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyZ typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyZ_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyZ_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyZ").orElseThrow().reinterpret(GCKeyCodeKeyZ_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyZ_VH: VarHandle by lazy { GCKeyCodeKeyZ_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyZ: Long
+    get() = GCKeyCodeKeyZ_VH.get(GCKeyCodeKeyZ_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyZ_VH.set(GCKeyCodeKeyZ_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeOne typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeOne_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeOne_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeOne").orElseThrow().reinterpret(GCKeyCodeOne_LAYOUT.byteSize()) }
+private val GCKeyCodeOne_VH: VarHandle by lazy { GCKeyCodeOne_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeOne: Long
+    get() = GCKeyCodeOne_VH.get(GCKeyCodeOne_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeOne_VH.set(GCKeyCodeOne_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeTwo typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeTwo_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeTwo_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeTwo").orElseThrow().reinterpret(GCKeyCodeTwo_LAYOUT.byteSize()) }
+private val GCKeyCodeTwo_VH: VarHandle by lazy { GCKeyCodeTwo_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeTwo: Long
+    get() = GCKeyCodeTwo_VH.get(GCKeyCodeTwo_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeTwo_VH.set(GCKeyCodeTwo_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeThree typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeThree_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeThree_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeThree").orElseThrow().reinterpret(GCKeyCodeThree_LAYOUT.byteSize()) }
+private val GCKeyCodeThree_VH: VarHandle by lazy { GCKeyCodeThree_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeThree: Long
+    get() = GCKeyCodeThree_VH.get(GCKeyCodeThree_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeThree_VH.set(GCKeyCodeThree_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeFour typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeFour_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeFour_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeFour").orElseThrow().reinterpret(GCKeyCodeFour_LAYOUT.byteSize()) }
+private val GCKeyCodeFour_VH: VarHandle by lazy { GCKeyCodeFour_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeFour: Long
+    get() = GCKeyCodeFour_VH.get(GCKeyCodeFour_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeFour_VH.set(GCKeyCodeFour_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeFive typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeFive_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeFive_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeFive").orElseThrow().reinterpret(GCKeyCodeFive_LAYOUT.byteSize()) }
+private val GCKeyCodeFive_VH: VarHandle by lazy { GCKeyCodeFive_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeFive: Long
+    get() = GCKeyCodeFive_VH.get(GCKeyCodeFive_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeFive_VH.set(GCKeyCodeFive_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeSix typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeSix_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeSix_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSix").orElseThrow().reinterpret(GCKeyCodeSix_LAYOUT.byteSize()) }
+private val GCKeyCodeSix_VH: VarHandle by lazy { GCKeyCodeSix_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeSix: Long
+    get() = GCKeyCodeSix_VH.get(GCKeyCodeSix_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeSix_VH.set(GCKeyCodeSix_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeSeven typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeSeven_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeSeven_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSeven").orElseThrow().reinterpret(GCKeyCodeSeven_LAYOUT.byteSize()) }
+private val GCKeyCodeSeven_VH: VarHandle by lazy { GCKeyCodeSeven_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeSeven: Long
+    get() = GCKeyCodeSeven_VH.get(GCKeyCodeSeven_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeSeven_VH.set(GCKeyCodeSeven_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeEight typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeEight_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeEight_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeEight").orElseThrow().reinterpret(GCKeyCodeEight_LAYOUT.byteSize()) }
+private val GCKeyCodeEight_VH: VarHandle by lazy { GCKeyCodeEight_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeEight: Long
+    get() = GCKeyCodeEight_VH.get(GCKeyCodeEight_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeEight_VH.set(GCKeyCodeEight_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeNine typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeNine_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeNine_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeNine").orElseThrow().reinterpret(GCKeyCodeNine_LAYOUT.byteSize()) }
+private val GCKeyCodeNine_VH: VarHandle by lazy { GCKeyCodeNine_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeNine: Long
+    get() = GCKeyCodeNine_VH.get(GCKeyCodeNine_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeNine_VH.set(GCKeyCodeNine_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeZero typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeZero_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeZero_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeZero").orElseThrow().reinterpret(GCKeyCodeZero_LAYOUT.byteSize()) }
+private val GCKeyCodeZero_VH: VarHandle by lazy { GCKeyCodeZero_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeZero: Long
+    get() = GCKeyCodeZero_VH.get(GCKeyCodeZero_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeZero_VH.set(GCKeyCodeZero_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeReturnOrEnter typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeReturnOrEnter_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeReturnOrEnter_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeReturnOrEnter").orElseThrow().reinterpret(GCKeyCodeReturnOrEnter_LAYOUT.byteSize()) }
+private val GCKeyCodeReturnOrEnter_VH: VarHandle by lazy { GCKeyCodeReturnOrEnter_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeReturnOrEnter: Long
+    get() = GCKeyCodeReturnOrEnter_VH.get(GCKeyCodeReturnOrEnter_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeReturnOrEnter_VH.set(GCKeyCodeReturnOrEnter_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeEscape typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeEscape_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeEscape_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeEscape").orElseThrow().reinterpret(GCKeyCodeEscape_LAYOUT.byteSize()) }
+private val GCKeyCodeEscape_VH: VarHandle by lazy { GCKeyCodeEscape_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeEscape: Long
+    get() = GCKeyCodeEscape_VH.get(GCKeyCodeEscape_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeEscape_VH.set(GCKeyCodeEscape_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeDeleteOrBackspace typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeDeleteOrBackspace_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeDeleteOrBackspace_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeDeleteOrBackspace").orElseThrow().reinterpret(GCKeyCodeDeleteOrBackspace_LAYOUT.byteSize()) }
+private val GCKeyCodeDeleteOrBackspace_VH: VarHandle by lazy { GCKeyCodeDeleteOrBackspace_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeDeleteOrBackspace: Long
+    get() = GCKeyCodeDeleteOrBackspace_VH.get(GCKeyCodeDeleteOrBackspace_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeDeleteOrBackspace_VH.set(GCKeyCodeDeleteOrBackspace_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeTab typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeTab_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeTab_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeTab").orElseThrow().reinterpret(GCKeyCodeTab_LAYOUT.byteSize()) }
+private val GCKeyCodeTab_VH: VarHandle by lazy { GCKeyCodeTab_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeTab: Long
+    get() = GCKeyCodeTab_VH.get(GCKeyCodeTab_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeTab_VH.set(GCKeyCodeTab_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeSpacebar typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeSpacebar_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeSpacebar_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSpacebar").orElseThrow().reinterpret(GCKeyCodeSpacebar_LAYOUT.byteSize()) }
+private val GCKeyCodeSpacebar_VH: VarHandle by lazy { GCKeyCodeSpacebar_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeSpacebar: Long
+    get() = GCKeyCodeSpacebar_VH.get(GCKeyCodeSpacebar_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeSpacebar_VH.set(GCKeyCodeSpacebar_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeHyphen typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeHyphen_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeHyphen_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeHyphen").orElseThrow().reinterpret(GCKeyCodeHyphen_LAYOUT.byteSize()) }
+private val GCKeyCodeHyphen_VH: VarHandle by lazy { GCKeyCodeHyphen_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeHyphen: Long
+    get() = GCKeyCodeHyphen_VH.get(GCKeyCodeHyphen_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeHyphen_VH.set(GCKeyCodeHyphen_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeEqualSign typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeEqualSign_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeEqualSign_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeEqualSign").orElseThrow().reinterpret(GCKeyCodeEqualSign_LAYOUT.byteSize()) }
+private val GCKeyCodeEqualSign_VH: VarHandle by lazy { GCKeyCodeEqualSign_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeEqualSign: Long
+    get() = GCKeyCodeEqualSign_VH.get(GCKeyCodeEqualSign_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeEqualSign_VH.set(GCKeyCodeEqualSign_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeOpenBracket typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeOpenBracket_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeOpenBracket_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeOpenBracket").orElseThrow().reinterpret(GCKeyCodeOpenBracket_LAYOUT.byteSize()) }
+private val GCKeyCodeOpenBracket_VH: VarHandle by lazy { GCKeyCodeOpenBracket_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeOpenBracket: Long
+    get() = GCKeyCodeOpenBracket_VH.get(GCKeyCodeOpenBracket_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeOpenBracket_VH.set(GCKeyCodeOpenBracket_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeCloseBracket typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeCloseBracket_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeCloseBracket_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeCloseBracket").orElseThrow().reinterpret(GCKeyCodeCloseBracket_LAYOUT.byteSize()) }
+private val GCKeyCodeCloseBracket_VH: VarHandle by lazy { GCKeyCodeCloseBracket_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeCloseBracket: Long
+    get() = GCKeyCodeCloseBracket_VH.get(GCKeyCodeCloseBracket_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeCloseBracket_VH.set(GCKeyCodeCloseBracket_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeBackslash typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeBackslash_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeBackslash_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeBackslash").orElseThrow().reinterpret(GCKeyCodeBackslash_LAYOUT.byteSize()) }
+private val GCKeyCodeBackslash_VH: VarHandle by lazy { GCKeyCodeBackslash_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeBackslash: Long
+    get() = GCKeyCodeBackslash_VH.get(GCKeyCodeBackslash_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeBackslash_VH.set(GCKeyCodeBackslash_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeNonUSPound typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeNonUSPound_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeNonUSPound_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeNonUSPound").orElseThrow().reinterpret(GCKeyCodeNonUSPound_LAYOUT.byteSize()) }
+private val GCKeyCodeNonUSPound_VH: VarHandle by lazy { GCKeyCodeNonUSPound_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeNonUSPound: Long
+    get() = GCKeyCodeNonUSPound_VH.get(GCKeyCodeNonUSPound_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeNonUSPound_VH.set(GCKeyCodeNonUSPound_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeSemicolon typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeSemicolon_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeSemicolon_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSemicolon").orElseThrow().reinterpret(GCKeyCodeSemicolon_LAYOUT.byteSize()) }
+private val GCKeyCodeSemicolon_VH: VarHandle by lazy { GCKeyCodeSemicolon_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeSemicolon: Long
+    get() = GCKeyCodeSemicolon_VH.get(GCKeyCodeSemicolon_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeSemicolon_VH.set(GCKeyCodeSemicolon_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeQuote typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeQuote_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeQuote_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeQuote").orElseThrow().reinterpret(GCKeyCodeQuote_LAYOUT.byteSize()) }
+private val GCKeyCodeQuote_VH: VarHandle by lazy { GCKeyCodeQuote_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeQuote: Long
+    get() = GCKeyCodeQuote_VH.get(GCKeyCodeQuote_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeQuote_VH.set(GCKeyCodeQuote_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeGraveAccentAndTilde typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeGraveAccentAndTilde_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeGraveAccentAndTilde_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeGraveAccentAndTilde").orElseThrow().reinterpret(GCKeyCodeGraveAccentAndTilde_LAYOUT.byteSize()) }
+private val GCKeyCodeGraveAccentAndTilde_VH: VarHandle by lazy { GCKeyCodeGraveAccentAndTilde_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeGraveAccentAndTilde: Long
+    get() = GCKeyCodeGraveAccentAndTilde_VH.get(GCKeyCodeGraveAccentAndTilde_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeGraveAccentAndTilde_VH.set(GCKeyCodeGraveAccentAndTilde_SEGMENT, 0L, value)

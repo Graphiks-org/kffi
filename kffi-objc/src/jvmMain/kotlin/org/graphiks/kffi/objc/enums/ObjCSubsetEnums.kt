@@ -35861,6 +35861,516 @@ value class NSWritingToolsCoordinatorTextAnimation(val rawValue: Long) {
 }
 
 /**
+ * NS_ENUM: {@snippet lang=c : enum GCDevicePhysicalInputElementChange}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class GCDevicePhysicalInputElementChange(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        val GCDevicePhysicalInputElementUnknownChange = GCDevicePhysicalInputElementChange(-1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        val GCDevicePhysicalInputElementNoChange = GCDevicePhysicalInputElementChange(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 16, introducedMinor = 0, introducedSubminor = -1)
+        val GCDevicePhysicalInputElementChanged = GCDevicePhysicalInputElementChange(1L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum GCDeviceBatteryState}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class GCDeviceBatteryState(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val GCDeviceBatteryStateUnknown = GCDeviceBatteryState(-1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val GCDeviceBatteryStateDischarging = GCDeviceBatteryState(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val GCDeviceBatteryStateCharging = GCDeviceBatteryState(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val GCDeviceBatteryStateFull = GCDeviceBatteryState(2L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum GCSystemGestureState}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class GCSystemGestureState(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val GCSystemGestureStateEnabled = GCSystemGestureState(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val GCSystemGestureStateAlwaysReceive = GCSystemGestureState(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val GCSystemGestureStateDisabled = GCSystemGestureState(2L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum GCTouchState}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class GCTouchState(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        val GCTouchStateUp = GCTouchState(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        val GCTouchStateDown = GCTouchState(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        val GCTouchStateMoving = GCTouchState(2L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/GameController.framework/Headers/GCDualSenseAdaptiveTrigger.h:12:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_GameController_framework_Headers_GCDualSenseAdaptiveTrigger_h_12_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 4, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 4, introducedSubminor = -1)
+    GCDualSenseAdaptiveTriggerDiscretePositionCount(10L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_GameController_framework_Headers_GCDualSenseAdaptiveTrigger_h_12_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_GameController_framework_Headers_GCDualSenseAdaptiveTrigger_h_12_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum GCDualSenseAdaptiveTriggerMode}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+@JvmInline
+value class GCDualSenseAdaptiveTriggerMode(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerModeOff = GCDualSenseAdaptiveTriggerMode(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerModeFeedback = GCDualSenseAdaptiveTriggerMode(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerModeWeapon = GCDualSenseAdaptiveTriggerMode(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerModeVibration = GCDualSenseAdaptiveTriggerMode(3L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 15, introducedMinor = 4, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 15, introducedMinor = 4, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerModeSlopeFeedback = GCDualSenseAdaptiveTriggerMode(4L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum GCDualSenseAdaptiveTriggerStatus}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+@JvmInline
+value class GCDualSenseAdaptiveTriggerStatus(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusUnknown = GCDualSenseAdaptiveTriggerStatus(-1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusFeedbackNoLoad = GCDualSenseAdaptiveTriggerStatus(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusFeedbackLoadApplied = GCDualSenseAdaptiveTriggerStatus(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusWeaponReady = GCDualSenseAdaptiveTriggerStatus(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusWeaponFiring = GCDualSenseAdaptiveTriggerStatus(3L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusWeaponFired = GCDualSenseAdaptiveTriggerStatus(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusVibrationNotVibrating = GCDualSenseAdaptiveTriggerStatus(5L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusVibrationIsVibrating = GCDualSenseAdaptiveTriggerStatus(6L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusSlopeFeedbackReady = GCDualSenseAdaptiveTriggerStatus(7L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusSlopeFeedbackApplyingLoad = GCDualSenseAdaptiveTriggerStatus(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 3, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 5, introducedSubminor = -1)
+        val GCDualSenseAdaptiveTriggerStatusSlopeFeedbackFinished = GCDualSenseAdaptiveTriggerStatus(9L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum GCExtendedGamepadSnapshotDataVersion}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+enum class GCExtendedGamepadSnapshotDataVersion(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+    @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+    GCExtendedGamepadSnapshotDataVersion1(256L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+    @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+    GCExtendedGamepadSnapshotDataVersion2(257L);
+
+    companion object {
+        fun fromValue(v: Long): GCExtendedGamepadSnapshotDataVersion = entries.firstOrNull { it.value == v }
+            ?: error("Unknown GCExtendedGamepadSnapshotDataVersion value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum GCMicroGamepadSnapshotDataVersion}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithMicroGamepad] method instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithMicroGamepad] method instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithMicroGamepad] method instead")
+enum class GCMicroGamepadSnapshotDataVersion(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithMicroGamepad] method instead")
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithMicroGamepad] method instead")
+    @PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithMicroGamepad] method instead")
+    GCMicroGamepadSnapshotDataVersion1(256L);
+
+    companion object {
+        fun fromValue(v: Long): GCMicroGamepadSnapshotDataVersion = entries.firstOrNull { it.value == v }
+            ?: error("Unknown GCMicroGamepadSnapshotDataVersion value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOHIDButtonModes}
+ */
+enum class IOHIDButtonModes(val value: Long) {
+    kIOHIDButtonMode_BothLeftClicks(0L), kIOHIDButtonMode_ReverseLeftRightClicks(1L), kIOHIDButtonMode_EnableRightClick(2L);
+
+    companion object {
+        fun fromValue(v: Long): IOHIDButtonModes = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOHIDButtonModes value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum evsioEVSIOSCSIndices}
+ */
+enum class evsioEVSIOSCSIndices(val value: Long) {
+    EVSIOSCS_X(0L), EVSIOSCS_Y(1L);
+
+    companion object {
+        fun fromValue(v: Long): evsioEVSIOSCSIndices = entries.firstOrNull { it.value == v }
+            ?: error("Unknown evsioEVSIOSCSIndices value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum evsioEVSIOCCSIndices}
+ */
+enum class evsioEVSIOCCSIndices(val value: Long) {
+    EVSIOCCS_X(0L), EVSIOCCS_Y(1L);
+
+    companion object {
+        fun fromValue(v: Long): evsioEVSIOCCSIndices = entries.firstOrNull { it.value == v }
+            ?: error("Unknown evsioEVSIOCCSIndices value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hidsystem/IOHIDParameter.h:328:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hidsystem_IOHIDParameter_h_328_1_(val value: Long) {
+    kIOHIDCapsLockState(1L), kIOHIDNumLockState(2L), kIOHIDActivityUserIdle(3L), kIOHIDActivityDisplayOn(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hidsystem_IOHIDParameter_h_328_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hidsystem_IOHIDParameter_h_328_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOHIDReportType}
+ */
+enum class IOHIDReportType(val value: Long) {
+    kIOHIDReportTypeInput(0L), kIOHIDReportTypeOutput(1L), kIOHIDReportTypeFeature(2L), kIOHIDReportTypeCount(3L);
+
+    companion object {
+        fun fromValue(v: Long): IOHIDReportType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOHIDReportType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOHIDElementCommitDirection}
+ */
+enum class IOHIDElementCommitDirection(val value: Long) {
+    kIOHIDElementCommitDirectionIn(0L), kIOHIDElementCommitDirectionOut(1L);
+
+    companion object {
+        fun fromValue(v: Long): IOHIDElementCommitDirection = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOHIDElementCommitDirection value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOHIDElementType}
+ */
+enum class IOHIDElementType(val value: Long) {
+    kIOHIDElementTypeInput_Misc(1L), kIOHIDElementTypeInput_Button(2L), kIOHIDElementTypeInput_Axis(3L), kIOHIDElementTypeInput_ScanCodes(4L), kIOHIDElementTypeInput_NULL(5L), kIOHIDElementTypeOutput(129L), kIOHIDElementTypeFeature(257L), kIOHIDElementTypeCollection(513L);
+
+    companion object {
+        fun fromValue(v: Long): IOHIDElementType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOHIDElementType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDDeviceTypes.h:131:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_131_1_(val value: Long) {
+    kIOHIDElementFlagsConstantMask(1L), kIOHIDElementFlagsVariableMask(2L), kIOHIDElementFlagsRelativeMask(4L), kIOHIDElementFlagsWrapMask(8L), kIOHIDElementFlagsNonLinearMask(16L), kIOHIDElementFlagsNoPreferredMask(32L), kIOHIDElementFlagsNullStateMask(64L), kIOHIDElementFlagsVolativeMask(128L), kIOHIDElementFlagsBufferedByteMask(256L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_131_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_131_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOHIDElementCollectionType}
+ */
+enum class IOHIDElementCollectionType(val value: Long) {
+    kIOHIDElementCollectionTypePhysical(0L), kIOHIDElementCollectionTypeApplication(1L), kIOHIDElementCollectionTypeLogical(2L), kIOHIDElementCollectionTypeReport(3L), kIOHIDElementCollectionTypeNamedArray(4L), kIOHIDElementCollectionTypeUsageSwitch(5L), kIOHIDElementCollectionTypeUsageModifier(6L);
+
+    companion object {
+        fun fromValue(v: Long): IOHIDElementCollectionType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOHIDElementCollectionType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDDeviceTypes.h:202:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_202_1_(val value: Long) {
+    kIOHIDValueScaleTypeCalibrated(0L), kIOHIDValueScaleTypePhysical(1L), kIOHIDValueScaleTypeExponent(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_202_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_202_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDDeviceTypes.h:222:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_222_1_(val value: Long) {
+    kIOHIDValueOptionsFlagRelativeSimple(1L), kIOHIDValueOptionsFlagPrevious(2L), kIOHIDValueOptionsUpdateElementValues(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_222_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_222_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDDeviceTypes.h:277:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_277_1_(val value: Long) {
+    kIOHIDReportOptionNotInterrupt(256L), kIOHIDReportOptionVariableSize(512L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_277_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDDeviceTypes_h_277_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum HIDReportCommandType}
+ */
+enum class HIDReportCommandType(val value: Long) {
+    kIOHIDReportCommandSetReport(0L), kIOHIDReportCommandGetReport(1L);
+
+    companion object {
+        fun fromValue(v: Long): HIDReportCommandType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown HIDReportCommandType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDKeys.h:239:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_239_1_(val value: Long) {
+    kIOHIDOptionsTypeNone(0L), kIOHIDOptionsTypeSeizeDevice(1L), kIOHIDOptionsTypeMaskPrivate(16711680L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_239_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_239_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDKeys.h:254:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_254_1_(val value: Long) {
+    kIOHIDQueueOptionsTypeNone(0L), kIOHIDQueueOptionsTypeEnqueueAll(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_254_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_254_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDKeys.h:268:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_268_1_(val value: Long) {
+    kIOHIDStandardTypeANSI(0L), kIOHIDStandardTypeISO(1L), kIOHIDStandardTypeJIS(2L), kIOHIDStandardTypeUnspecified(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_268_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_268_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDKeys.h:287:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_287_1_(val value: Long) {
+    kIOHIDKeyboardPhysicalLayoutTypeUnknown(0L), kIOHIDKeyboardPhysicalLayoutType101(1L), kIOHIDKeyboardPhysicalLayoutType103(2L), kIOHIDKeyboardPhysicalLayoutType102(3L), kIOHIDKeyboardPhysicalLayoutType104(4L), kIOHIDKeyboardPhysicalLayoutType106(5L), kIOHIDKeyboardPhysicalLayoutTypeVendor(6L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_287_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_287_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDKeys.h:479:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_479_1_(val value: Long) {
+    kIOHIDAccelerationAlgorithmTypeTable(0L), kIOHIDAccelerationAlgorithmTypeParametric(1L), kIOHIDAccelerationAlgorithmTypeDefault(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_479_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_IOKit_framework_Headers_hid_IOHIDKeys_h_479_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IOHIDTransactionDirectionType}
+ */
+enum class IOHIDTransactionDirectionType(val value: Long) {
+    kIOHIDTransactionDirectionTypeInput(0L), kIOHIDTransactionDirectionTypeOutput(1L);
+
+    companion object {
+        fun fromValue(v: Long): IOHIDTransactionDirectionType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IOHIDTransactionDirectionType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum GCControllerPlayerIndex}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class GCControllerPlayerIndex(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        val GCControllerPlayerIndexUnset = GCControllerPlayerIndex(-1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        val GCControllerPlayerIndex1 = GCControllerPlayerIndex(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        val GCControllerPlayerIndex2 = GCControllerPlayerIndex(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        val GCControllerPlayerIndex3 = GCControllerPlayerIndex(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        val GCControllerPlayerIndex4 = GCControllerPlayerIndex(3L)
+    }
+
+}
+
+/**
  * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_0 196.4
  */
 fun kCFCoreFoundationVersionNumber10_0(): Double = 196.4
@@ -36980,3 +37490,5 @@ fun kCGAnyInputEventType(): CGEventType = CGEventType.fromValue(4294967295L)
  * {@snippet lang=c : #define NSIMAGE_UNAVAILABLE_MACCATALYST 0
  */
 fun NSIMAGE_UNAVAILABLE_MACCATALYST(): Int = (0).toInt()
+
+// Skipped constant kIOHIDGCSyntheticDeviceKey: String value cannot be represented as MemorySegment

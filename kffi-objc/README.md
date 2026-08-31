@@ -126,3 +126,30 @@ modify or suppress events. Closing removes the run-loop source, disables the tap
 handler admission, and releases CoreFoundation resources after any already-admitted callback has
 returned. The API never requests Input Monitoring permission; applications remain responsible for
 explaining and initiating any permission flow separately.
+
+## GameController input observation
+
+The generated GameController surface includes controllers, physical-input profiles, typed
+elements, and connection/disconnection notification constants. Load the system framework before
+using its generated classes or exported constants:
+
+```kotlin
+System.load("/System/Library/Frameworks/GameController.framework/GameController")
+```
+
+On macOS 13 or later, `GCPhysicalInputProfile.observeValueChanges` installs a managed Objective-C
+block and returns an `AutoCloseable` owner:
+
+```kotlin
+profile.observeValueChanges { changedProfile, changedElement ->
+    // Both wrappers are borrowed for this handler invocation only.
+    consume(changedProfile, changedElement)
+}.use {
+    runApplicationLoop()
+}
+```
+
+Closing the owner first clears the profile's native `valueDidChangeHandler`, then revokes callback
+admission and releases the block after any already-admitted delivery returns. The generated
+`GCControllerDidConnectNotification` and `GCControllerDidDisconnectNotification` constants can be
+used with the existing managed `NSNotificationCenter.observe` adapter.
