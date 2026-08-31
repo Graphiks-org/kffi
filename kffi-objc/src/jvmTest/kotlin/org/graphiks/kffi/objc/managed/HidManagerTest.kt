@@ -72,6 +72,37 @@ class HidManagerTest {
     }
 
     @Test
+    fun closingOneManagerDoesNotLeakLifecycleDeliveryIntoTheNextManager() {
+        val firstFixture = HidManagerFixture()
+        val firstEvents = mutableListOf<HidDeviceEvent>()
+        val first = HidManager.create(firstFixture, HidDeviceLifecycleHandler(firstEvents::add))
+
+        firstFixture.emit(registryId = 61L, connected = true)
+        first.close()
+        firstFixture.completeCancellation()
+        firstFixture.emit(registryId = 62L, connected = true)
+
+        val secondFixture = HidManagerFixture()
+        val secondEvents = mutableListOf<HidDeviceEvent>()
+        val second = HidManager.create(secondFixture, HidDeviceLifecycleHandler(secondEvents::add))
+        try {
+            secondFixture.emit(registryId = 71L, connected = true)
+            second.close()
+            secondFixture.completeCancellation()
+
+            assertEquals(listOf(HidDeviceEvent(61L, true)), firstEvents)
+            assertEquals(listOf(HidDeviceEvent(71L, true)), secondEvents)
+            assertTrue(first.isQuiescent)
+            assertTrue(second.isQuiescent)
+            assertEquals(listOf("create", "cancel", "release"), firstFixture.calls)
+            assertEquals(listOf("create", "cancel", "release"), secondFixture.calls)
+        } finally {
+            first.close()
+            second.close()
+        }
+    }
+
+    @Test
     fun gamepadsAlreadySupportedByGameControllerAreNotDeliveredTwice() {
         val delivered = mutableListOf<Long>()
         val gameControllerDevices = mutableSetOf(20L)
