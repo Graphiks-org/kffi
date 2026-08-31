@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- A passive macOS 13+ ScreenCaptureKit control plane with detached runtime capability data,
+  non-prompting Screen Recording preflight, and macOS 14+ picker availability detection.
 - Generated CoreHaptics and targeted IOKit HID manager bindings, with pointer-free managed game
   controller haptics and quiescent, GameController-aware HID lifecycle ownership.
 - Generated GameController classes, input profiles, elements, and notification constants, plus

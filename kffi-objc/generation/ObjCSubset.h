@@ -2,3 +2,4 @@
 #import <CoreHaptics/CoreHaptics.h>
 #import <GameController/GameController.h>
 #import <IOKit/hid/IOHIDManager.h>
+#import <ScreenCaptureKit/SCShareableContent.h>
