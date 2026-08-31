@@ -5,10 +5,12 @@ Function & Memory API (Panama FFM).
 
 The generated sources cover the Apple SDK frameworks selected by the generator:
 Foundation, CoreFoundation, AppKit, CoreGraphics, QuartzCore, CoreImage, Metal,
-AVFoundation, GameController, ModelIO, SceneKit, UniformTypeIdentifiers, PDFKit,
-and QuickLook. This includes the complete class and protocol surface visible
-through the SDK umbrella header, together with the required enums, options,
-types, categories, and runtime helpers.
+AVFoundation, CoreHaptics, GameController, ModelIO, SceneKit,
+UniformTypeIdentifiers, PDFKit, and QuickLook. This includes the complete class
+and protocol surface visible through the SDK umbrella header, together with the
+required enums, options, types, categories, and runtime helpers. A targeted set
+of IOKit HID manager functions supports the managed HID adapter without pulling
+in unrelated legacy IOKit declarations.
 
 Sources are produced from the macOS SDK by `kextract` and are checked in so the
 module can compile on non-macOS hosts without running the generator.
@@ -153,3 +155,41 @@ Closing the owner first clears the profile's native `valueDidChangeHandler`, the
 admission and releases the block after any already-admitted delivery returns. The generated
 `GCControllerDidConnectNotification` and `GCControllerDidDisconnectNotification` constants can be
 used with the existing managed `NSNotificationCenter.observe` adapter.
+
+## GameController haptics
+
+`GameControllerHaptics` owns a CoreHaptics engine created for the controller's guaranteed default
+locality. Its public API exposes neither the engine pointer, native completion blocks, nor
+`NSError`; creation and startup failures are returned as Kotlin `Result` values, with
+`GameControllerHapticsException` carrying only a copied domain, code, and message:
+
+```kotlin
+val deviceHaptics = GCDeviceHaptics(controller.haptics())
+GameControllerHaptics.create(deviceHaptics).getOrThrow().use { haptics ->
+    haptics.start().getOrThrow()
+    runApplicationLoop()
+}
+```
+
+Closing the owner stops and releases the engine exactly once.
+
+## HID gamepad lifecycle
+
+`HidManager` observes gamepads through an IOKit dispatch queue and emits immutable registry-ID
+snapshots through the existing `HidDeviceLifecycleHandler`. Devices already supported by
+`GCController` are suppressed so one physical gamepad is not reported through both APIs:
+
+```kotlin
+val hid = HidManager.create { event ->
+    consumeRegistryId(event.registryId, event.connected)
+}
+try {
+    runApplicationLoop()
+} finally {
+    hid.close()
+}
+```
+
+`close()` cancels IOKit delivery before revoking callback admission. `isQuiescent` becomes true
+only after the native cancel handler has run, all admitted handlers have returned, and the HID
+manager plus dispatch queue have been released.

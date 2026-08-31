@@ -7,6 +7,19 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSAccessibilityShowAlternateUIAction typedef const NSAccessibilityActionName = (Void)*
+ */
+private val NSAccessibilityShowAlternateUIAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSAccessibilityShowAlternateUIAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityShowAlternateUIAction").orElseThrow().reinterpret(NSAccessibilityShowAlternateUIAction_LAYOUT.byteSize()) }
+private val NSAccessibilityShowAlternateUIAction_VH: VarHandle by lazy { NSAccessibilityShowAlternateUIAction_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+var NSAccessibilityShowAlternateUIAction: MemorySegment
+    get() = NSAccessibilityShowAlternateUIAction_VH.get(NSAccessibilityShowAlternateUIAction_SEGMENT, 0L) as MemorySegment
+    set(value) = NSAccessibilityShowAlternateUIAction_VH.set(NSAccessibilityShowAlternateUIAction_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSAccessibilityShowDefaultUIAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityShowDefaultUIAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -4229,25 +4242,4 @@ fun CGLayerGetSize(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegm
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
 fun CGLayerGetSizeTyped(allocator: SegmentAllocator, arg0: MemorySegment): CGSize {
     return CGSize(CGLayerGetSize(allocator, arg0))
-}
-
-/**
- * {@snippet lang=c : CGLayerGetContext typedef CGContextRef = (Declared(CGContext))*(typedef CGLayerRef = (Declared(CGLayer))*)
- */
-private val CGLayerGetContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGLayerGetContext_ADDR: MemorySegment by lazy { LOOKUP.find("CGLayerGetContext").orElseThrow() }
-private val CGLayerGetContext_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGLayerGetContext_ADDR, CGLayerGetContext_DESC) }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
-fun CGLayerGetContext(arg0: MemorySegment): MemorySegment {
-    try {
-        return CGLayerGetContext_HANDLE.invokeExact(arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
 }

@@ -7,6 +7,21 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSMetadataItemThemeKey (Void)*
+ */
+private val NSMetadataItemThemeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSMetadataItemThemeKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSMetadataItemThemeKey").orElseThrow().reinterpret(NSMetadataItemThemeKey_LAYOUT.byteSize()) }
+private val NSMetadataItemThemeKey_VH: VarHandle by lazy { NSMetadataItemThemeKey_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", unavailable = true)
+@PlatformAvailability(platform = "watchos", unavailable = true)
+var NSMetadataItemThemeKey: MemorySegment
+    get() = NSMetadataItemThemeKey_VH.get(NSMetadataItemThemeKey_SEGMENT, 0L) as MemorySegment
+    set(value) = NSMetadataItemThemeKey_VH.set(NSMetadataItemThemeKey_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSMetadataItemDescriptionKey (Void)*
  */
 private val NSMetadataItemDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -5333,16 +5348,3 @@ fun CGColorGetTypeID(): Long {
         throw AssertionError("should not reach here", ex)
     }
 }
-
-/**
- * {@snippet lang=c : kCGColorWhite typedef const CFStringRef = (Declared(__CFString))*
- */
-private val kCGColorWhite_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGColorWhite_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGColorWhite").orElseThrow().reinterpret(kCGColorWhite_LAYOUT.byteSize()) }
-private val kCGColorWhite_VH: VarHandle by lazy { kCGColorWhite_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
-var kCGColorWhite: MemorySegment
-    get() = kCGColorWhite_VH.get(kCGColorWhite_SEGMENT, 0L) as MemorySegment
-    set(value) = kCGColorWhite_VH.set(kCGColorWhite_SEGMENT, 0L, value)

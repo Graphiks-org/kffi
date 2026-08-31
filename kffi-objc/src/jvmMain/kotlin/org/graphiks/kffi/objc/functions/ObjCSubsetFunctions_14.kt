@@ -7,6 +7,19 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSImageNameTouchBarComposeTemplate typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarComposeTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarComposeTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarComposeTemplate").orElseThrow().reinterpret(NSImageNameTouchBarComposeTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarComposeTemplate_VH: VarHandle by lazy { NSImageNameTouchBarComposeTemplate_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarComposeTemplate: MemorySegment
+    get() = NSImageNameTouchBarComposeTemplate_VH.get(NSImageNameTouchBarComposeTemplate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarComposeTemplate_VH.set(NSImageNameTouchBarComposeTemplate_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSImageNameTouchBarDeleteTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarDeleteTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -4033,14 +4046,3 @@ private val NSCompanyDocumentAttribute_VH: VarHandle by lazy { NSCompanyDocument
 var NSCompanyDocumentAttribute: MemorySegment
     get() = NSCompanyDocumentAttribute_VH.get(NSCompanyDocumentAttribute_SEGMENT, 0L) as MemorySegment
     set(value) = NSCompanyDocumentAttribute_VH.set(NSCompanyDocumentAttribute_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSCopyrightDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
- */
-private val NSCopyrightDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSCopyrightDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCopyrightDocumentAttribute").orElseThrow().reinterpret(NSCopyrightDocumentAttribute_LAYOUT.byteSize()) }
-private val NSCopyrightDocumentAttribute_VH: VarHandle by lazy { NSCopyrightDocumentAttribute_LAYOUT.varHandle() }
-
-var NSCopyrightDocumentAttribute: MemorySegment
-    get() = NSCopyrightDocumentAttribute_VH.get(NSCopyrightDocumentAttribute_SEGMENT, 0L) as MemorySegment
-    set(value) = NSCopyrightDocumentAttribute_VH.set(NSCopyrightDocumentAttribute_SEGMENT, 0L, value)

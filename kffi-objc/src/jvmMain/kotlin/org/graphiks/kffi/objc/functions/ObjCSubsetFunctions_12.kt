@@ -7,6 +7,19 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSPasteboardTypeRTFD typedef const NSPasteboardType = (Void)*
+ */
+private val NSPasteboardTypeRTFD_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSPasteboardTypeRTFD_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPasteboardTypeRTFD").orElseThrow().reinterpret(NSPasteboardTypeRTFD_LAYOUT.byteSize()) }
+private val NSPasteboardTypeRTFD_VH: VarHandle by lazy { NSPasteboardTypeRTFD_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", unavailable = true)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+var NSPasteboardTypeRTFD: MemorySegment
+    get() = NSPasteboardTypeRTFD_VH.get(NSPasteboardTypeRTFD_SEGMENT, 0L) as MemorySegment
+    set(value) = NSPasteboardTypeRTFD_VH.set(NSPasteboardTypeRTFD_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSPasteboardTypeHTML typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypeHTML_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -3841,15 +3854,3 @@ private val NSApplicationDidChangeOcclusionStateNotification_VH: VarHandle by la
 var NSApplicationDidChangeOcclusionStateNotification: MemorySegment
     get() = NSApplicationDidChangeOcclusionStateNotification_VH.get(NSApplicationDidChangeOcclusionStateNotification_SEGMENT, 0L) as MemorySegment
     set(value) = NSApplicationDidChangeOcclusionStateNotification_VH.set(NSApplicationDidChangeOcclusionStateNotification_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSColorListDidChangeNotification typedef NSNotificationName = typedef NSString = (Void)*
- */
-private val NSColorListDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSColorListDidChangeNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSColorListDidChangeNotification").orElseThrow().reinterpret(NSColorListDidChangeNotification_LAYOUT.byteSize()) }
-private val NSColorListDidChangeNotification_VH: VarHandle by lazy { NSColorListDidChangeNotification_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", unavailable = true)
-var NSColorListDidChangeNotification: MemorySegment
-    get() = NSColorListDidChangeNotification_VH.get(NSColorListDidChangeNotification_SEGMENT, 0L) as MemorySegment
-    set(value) = NSColorListDidChangeNotification_VH.set(NSColorListDidChangeNotification_SEGMENT, 0L, value)

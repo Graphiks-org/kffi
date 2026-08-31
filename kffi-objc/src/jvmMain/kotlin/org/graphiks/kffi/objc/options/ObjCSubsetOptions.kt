@@ -5872,3 +5872,34 @@ value class GCPhysicalInputSourceDirection(val rawValue: Long) {
     operator fun plus(o: GCPhysicalInputSourceDirection) = GCPhysicalInputSourceDirection(rawValue or o.rawValue)
     operator fun contains(o: GCPhysicalInputSourceDirection) = (rawValue and o.rawValue) != 0L
 }
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum IOHIDTransactionOptions}
+ */
+@JvmInline
+value class IOHIDTransactionOptions(val rawValue: Long) {
+    companion object {
+        val kIOHIDTransactionOptionsNone = IOHIDTransactionOptions(0L)
+        val kIOHIDTransactionOptionsWeakDevice = IOHIDTransactionOptions(1L)
+    }
+
+    operator fun plus(o: IOHIDTransactionOptions) = IOHIDTransactionOptions(rawValue or o.rawValue)
+    operator fun contains(o: IOHIDTransactionOptions) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum IOHIDManagerOptions}
+ */
+@JvmInline
+value class IOHIDManagerOptions(val rawValue: Long) {
+    companion object {
+        val kIOHIDManagerOptionNone = IOHIDManagerOptions(0L)
+        val kIOHIDManagerOptionUsePersistentProperties = IOHIDManagerOptions(1L)
+        val kIOHIDManagerOptionDoNotLoadProperties = IOHIDManagerOptions(2L)
+        val kIOHIDManagerOptionDoNotSaveProperties = IOHIDManagerOptions(4L)
+        val kIOHIDManagerOptionIndependentDevices = IOHIDManagerOptions(8L)
+    }
+
+    operator fun plus(o: IOHIDManagerOptions) = IOHIDManagerOptions(rawValue or o.rawValue)
+    operator fun contains(o: IOHIDManagerOptions) = (rawValue and o.rawValue) != 0L
+}
