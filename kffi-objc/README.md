@@ -102,3 +102,27 @@ DispatchMemoryPressureSource { event ->
     runApplicationLoop()
 }
 ```
+
+### Listen-only CoreGraphics event taps
+
+`CGListenOnlyEventTap.preflight()` checks the current Input Monitoring permission without
+requesting access or displaying a system prompt. Install a tap only when it returns
+`EventTapPermissionState.Granted`:
+
+```kotlin
+val mask = 1L shl CGEventType.kCGEventMouseMoved.value.toInt()
+if (CGListenOnlyEventTap.preflight() == EventTapPermissionState.Granted) {
+    CGListenOnlyEventTap.install(mask) { event ->
+        // The event is borrowed only for this handler invocation.
+        observe(event)
+    }.use {
+        runApplicationLoop()
+    }
+}
+```
+
+The owner always creates a session-level `kCGEventTapOptionListenOnly` tap, so handlers cannot
+modify or suppress events. Closing removes the run-loop source, disables the tap, revokes future
+handler admission, and releases CoreFoundation resources after any already-admitted callback has
+returned. The API never requests Input Monitoring permission; applications remain responsible for
+explaining and initiating any permission flow separately.
