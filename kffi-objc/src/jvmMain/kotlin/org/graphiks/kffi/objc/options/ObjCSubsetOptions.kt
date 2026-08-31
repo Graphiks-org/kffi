@@ -5837,3 +5837,38 @@ value class NSTextLayoutManagerSegmentOptions(val rawValue: Long) {
     operator fun plus(o: NSTextLayoutManagerSegmentOptions) = NSTextLayoutManagerSegmentOptions(rawValue or o.rawValue)
     operator fun contains(o: NSTextLayoutManagerSegmentOptions) = (rawValue and o.rawValue) != 0L
 }
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum GCPhysicalInputSourceDirection}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class GCPhysicalInputSourceDirection(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        val GCPhysicalInputSourceDirectionNotApplicable = GCPhysicalInputSourceDirection(0L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        val GCPhysicalInputSourceDirectionUp = GCPhysicalInputSourceDirection(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        val GCPhysicalInputSourceDirectionRight = GCPhysicalInputSourceDirection(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        val GCPhysicalInputSourceDirectionDown = GCPhysicalInputSourceDirection(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+        val GCPhysicalInputSourceDirectionLeft = GCPhysicalInputSourceDirection(8L)
+    }
+
+    operator fun plus(o: GCPhysicalInputSourceDirection) = GCPhysicalInputSourceDirection(rawValue or o.rawValue)
+    operator fun contains(o: GCPhysicalInputSourceDirection) = (rawValue and o.rawValue) != 0L
+}

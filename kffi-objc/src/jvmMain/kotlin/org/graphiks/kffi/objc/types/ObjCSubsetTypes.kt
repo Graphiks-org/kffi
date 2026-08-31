@@ -13186,3 +13186,1412 @@ typealias NSTextInputSourceIdentifier = MemorySegment
 @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
 @PlatformAvailability(platform = "watchos", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
 typealias NSDataAssetName = MemorySegment
+
+/**
+ * {@snippet lang=c : STRUCT GCPoint2
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+class GCPoint2 internal constructor(internal val segment: MemorySegment) {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4L).withName("x"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4L).withName("y")
+        ).withByteAlignment(4L).withName("GCPoint2")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): GCPoint2 =
+            GCPoint2(allocator.allocate(layout))
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): GCPoint2Pointer =
+            GCPoint2Pointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
+
+        internal fun asSlice(array: MemorySegment, index: Long): GCPoint2 =
+            GCPoint2(array.asSlice(byteSize * index, byteSize))
+
+        internal fun reinterpret(addr: MemorySegment): GCPoint2 =
+            GCPoint2(addr.reinterpret(byteSize))
+
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): GCPoint2Pointer =
+            GCPoint2Pointer(addr.reinterpret(byteSize * elementCount))
+
+    } // End companion object
+
+    constructor(x: Float, y: Float) : this(Arena.ofAuto().allocate(layout)) {
+        x(x)
+        y(y)
+    }
+
+    private val x_VH: VarHandle = layout.varHandle(groupElement("x"))
+
+    fun x(): Float = x_VH.get(segment, 0L) as Float
+
+    fun x(value: Float) =
+        x_VH.set(segment, 0L, value)
+
+    var x: Float
+        get() = x()
+        set(value) = x(value)
+
+    private val y_VH: VarHandle = layout.varHandle(groupElement("y"))
+
+    fun y(): Float = y_VH.get(segment, 0L) as Float
+
+    fun y(value: Float) =
+        y_VH.set(segment, 0L, value)
+
+    var y: Float
+        get() = y()
+        set(value) = y(value)
+} // End class
+
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+class GCPoint2Pointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): GCPoint2 {
+        val offset = GCPoint2.byteSize * index
+        val bytes = GCPoint2.byteSize * (index + 1L)
+        return GCPoint2(segment.reinterpret(bytes).asSlice(offset, GCPoint2.byteSize))
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCInputElementName;}
+ */
+typealias GCInputElementName = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCInputButtonName;}
+ */
+typealias GCInputButtonName = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCInputAxisName;}
+ */
+typealias GCInputAxisName = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCInputSwitchName;}
+ */
+typealias GCInputSwitchName = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCInputDirectionPadName;}
+ */
+typealias GCInputDirectionPadName = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCControllerAxisValueChangedHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+typealias GCControllerAxisValueChangedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCControllerButtonValueChangedHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+typealias GCControllerButtonValueChangedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCControllerButtonTouchedChangedHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+typealias GCControllerButtonTouchedChangedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCControllerDirectionPadValueChangedHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+typealias GCControllerDirectionPadValueChangedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCControllerTouchpadHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+typealias GCControllerTouchpadHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : STRUCT GCDualSenseAdaptiveTriggerPositionalAmplitudes
+ */
+class GCDualSenseAdaptiveTriggerPositionalAmplitudes internal constructor(internal val segment: MemorySegment) {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(10, ValueLayout.JAVA_FLOAT).withByteAlignment(4L).withName("values")
+        ).withByteAlignment(4L).withName("GCDualSenseAdaptiveTriggerPositionalAmplitudes")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): GCDualSenseAdaptiveTriggerPositionalAmplitudes =
+            GCDualSenseAdaptiveTriggerPositionalAmplitudes(allocator.allocate(layout))
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): GCDualSenseAdaptiveTriggerPositionalAmplitudesPointer =
+            GCDualSenseAdaptiveTriggerPositionalAmplitudesPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
+
+        internal fun asSlice(array: MemorySegment, index: Long): GCDualSenseAdaptiveTriggerPositionalAmplitudes =
+            GCDualSenseAdaptiveTriggerPositionalAmplitudes(array.asSlice(byteSize * index, byteSize))
+
+        internal fun reinterpret(addr: MemorySegment): GCDualSenseAdaptiveTriggerPositionalAmplitudes =
+            GCDualSenseAdaptiveTriggerPositionalAmplitudes(addr.reinterpret(byteSize))
+
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): GCDualSenseAdaptiveTriggerPositionalAmplitudesPointer =
+            GCDualSenseAdaptiveTriggerPositionalAmplitudesPointer(addr.reinterpret(byteSize * elementCount))
+
+    } // End companion object
+
+    fun values(): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("values")), layout.select(groupElement("values")).byteSize())
+
+    fun values(value: MemorySegment) =
+        MemorySegment.copy(value, 0L, segment, layout.byteOffset(groupElement("values")), layout.select(groupElement("values")).byteSize())
+
+    var values: MemorySegment
+        get() = values()
+        set(value) = values(value)
+} // End class
+
+class GCDualSenseAdaptiveTriggerPositionalAmplitudesPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): GCDualSenseAdaptiveTriggerPositionalAmplitudes {
+        val offset = GCDualSenseAdaptiveTriggerPositionalAmplitudes.byteSize * index
+        val bytes = GCDualSenseAdaptiveTriggerPositionalAmplitudes.byteSize * (index + 1L)
+        return GCDualSenseAdaptiveTriggerPositionalAmplitudes(segment.reinterpret(bytes).asSlice(offset, GCDualSenseAdaptiveTriggerPositionalAmplitudes.byteSize))
+    }
+}
+
+/**
+ * {@snippet lang=c : STRUCT GCDualSenseAdaptiveTriggerPositionalResistiveStrengths
+ */
+class GCDualSenseAdaptiveTriggerPositionalResistiveStrengths internal constructor(internal val segment: MemorySegment) {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(10, ValueLayout.JAVA_FLOAT).withByteAlignment(4L).withName("values")
+        ).withByteAlignment(4L).withName("GCDualSenseAdaptiveTriggerPositionalResistiveStrengths")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): GCDualSenseAdaptiveTriggerPositionalResistiveStrengths =
+            GCDualSenseAdaptiveTriggerPositionalResistiveStrengths(allocator.allocate(layout))
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): GCDualSenseAdaptiveTriggerPositionalResistiveStrengthsPointer =
+            GCDualSenseAdaptiveTriggerPositionalResistiveStrengthsPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
+
+        internal fun asSlice(array: MemorySegment, index: Long): GCDualSenseAdaptiveTriggerPositionalResistiveStrengths =
+            GCDualSenseAdaptiveTriggerPositionalResistiveStrengths(array.asSlice(byteSize * index, byteSize))
+
+        internal fun reinterpret(addr: MemorySegment): GCDualSenseAdaptiveTriggerPositionalResistiveStrengths =
+            GCDualSenseAdaptiveTriggerPositionalResistiveStrengths(addr.reinterpret(byteSize))
+
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): GCDualSenseAdaptiveTriggerPositionalResistiveStrengthsPointer =
+            GCDualSenseAdaptiveTriggerPositionalResistiveStrengthsPointer(addr.reinterpret(byteSize * elementCount))
+
+    } // End companion object
+
+    fun values(): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("values")), layout.select(groupElement("values")).byteSize())
+
+    fun values(value: MemorySegment) =
+        MemorySegment.copy(value, 0L, segment, layout.byteOffset(groupElement("values")), layout.select(groupElement("values")).byteSize())
+
+    var values: MemorySegment
+        get() = values()
+        set(value) = values(value)
+} // End class
+
+class GCDualSenseAdaptiveTriggerPositionalResistiveStrengthsPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): GCDualSenseAdaptiveTriggerPositionalResistiveStrengths {
+        val offset = GCDualSenseAdaptiveTriggerPositionalResistiveStrengths.byteSize * index
+        val bytes = GCDualSenseAdaptiveTriggerPositionalResistiveStrengths.byteSize * (index + 1L)
+        return GCDualSenseAdaptiveTriggerPositionalResistiveStrengths(segment.reinterpret(bytes).asSlice(offset, GCDualSenseAdaptiveTriggerPositionalResistiveStrengths.byteSize))
+    }
+}
+
+/**
+ * {@snippet lang=c : STRUCT GCAcceleration
+ */
+class GCAcceleration internal constructor(internal val segment: MemorySegment) {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("x"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("y"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("z")
+        ).withByteAlignment(8L).withName("GCAcceleration")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): GCAcceleration =
+            GCAcceleration(allocator.allocate(layout))
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): GCAccelerationPointer =
+            GCAccelerationPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
+
+        internal fun asSlice(array: MemorySegment, index: Long): GCAcceleration =
+            GCAcceleration(array.asSlice(byteSize * index, byteSize))
+
+        internal fun reinterpret(addr: MemorySegment): GCAcceleration =
+            GCAcceleration(addr.reinterpret(byteSize))
+
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): GCAccelerationPointer =
+            GCAccelerationPointer(addr.reinterpret(byteSize * elementCount))
+
+    } // End companion object
+
+    constructor(x: Double, y: Double, z: Double) : this(Arena.ofAuto().allocate(layout)) {
+        x(x)
+        y(y)
+        z(z)
+    }
+
+    private val x_VH: VarHandle = layout.varHandle(groupElement("x"))
+
+    fun x(): Double = x_VH.get(segment, 0L) as Double
+
+    fun x(value: Double) =
+        x_VH.set(segment, 0L, value)
+
+    var x: Double
+        get() = x()
+        set(value) = x(value)
+
+    private val y_VH: VarHandle = layout.varHandle(groupElement("y"))
+
+    fun y(): Double = y_VH.get(segment, 0L) as Double
+
+    fun y(value: Double) =
+        y_VH.set(segment, 0L, value)
+
+    var y: Double
+        get() = y()
+        set(value) = y(value)
+
+    private val z_VH: VarHandle = layout.varHandle(groupElement("z"))
+
+    fun z(): Double = z_VH.get(segment, 0L) as Double
+
+    fun z(value: Double) =
+        z_VH.set(segment, 0L, value)
+
+    var z: Double
+        get() = z()
+        set(value) = z(value)
+} // End class
+
+class GCAccelerationPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): GCAcceleration {
+        val offset = GCAcceleration.byteSize * index
+        val bytes = GCAcceleration.byteSize * (index + 1L)
+        return GCAcceleration(segment.reinterpret(bytes).asSlice(offset, GCAcceleration.byteSize))
+    }
+}
+
+/**
+ * {@snippet lang=c : STRUCT GCRotationRate
+ */
+class GCRotationRate internal constructor(internal val segment: MemorySegment) {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("x"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("y"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("z")
+        ).withByteAlignment(8L).withName("GCRotationRate")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): GCRotationRate =
+            GCRotationRate(allocator.allocate(layout))
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): GCRotationRatePointer =
+            GCRotationRatePointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
+
+        internal fun asSlice(array: MemorySegment, index: Long): GCRotationRate =
+            GCRotationRate(array.asSlice(byteSize * index, byteSize))
+
+        internal fun reinterpret(addr: MemorySegment): GCRotationRate =
+            GCRotationRate(addr.reinterpret(byteSize))
+
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): GCRotationRatePointer =
+            GCRotationRatePointer(addr.reinterpret(byteSize * elementCount))
+
+    } // End companion object
+
+    constructor(x: Double, y: Double, z: Double) : this(Arena.ofAuto().allocate(layout)) {
+        x(x)
+        y(y)
+        z(z)
+    }
+
+    private val x_VH: VarHandle = layout.varHandle(groupElement("x"))
+
+    fun x(): Double = x_VH.get(segment, 0L) as Double
+
+    fun x(value: Double) =
+        x_VH.set(segment, 0L, value)
+
+    var x: Double
+        get() = x()
+        set(value) = x(value)
+
+    private val y_VH: VarHandle = layout.varHandle(groupElement("y"))
+
+    fun y(): Double = y_VH.get(segment, 0L) as Double
+
+    fun y(value: Double) =
+        y_VH.set(segment, 0L, value)
+
+    var y: Double
+        get() = y()
+        set(value) = y(value)
+
+    private val z_VH: VarHandle = layout.varHandle(groupElement("z"))
+
+    fun z(): Double = z_VH.get(segment, 0L) as Double
+
+    fun z(value: Double) =
+        z_VH.set(segment, 0L, value)
+
+    var z: Double
+        get() = z()
+        set(value) = z(value)
+} // End class
+
+class GCRotationRatePointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): GCRotationRate {
+        val offset = GCRotationRate.byteSize * index
+        val bytes = GCRotationRate.byteSize * (index + 1L)
+        return GCRotationRate(segment.reinterpret(bytes).asSlice(offset, GCRotationRate.byteSize))
+    }
+}
+
+/**
+ * {@snippet lang=c : STRUCT GCEulerAngles
+ */
+class GCEulerAngles {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8).withName("pitch"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8).withName("yaw"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8).withName("roll")
+        ).withByteAlignment(8L).withName("GCEulerAngles")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val pitch_VH: VarHandle = layout.varHandle(groupElement("pitch"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun pitch(segment: MemorySegment): Double =
+        pitch_VH.get(segment, 0L) as Double
+
+    fun pitch(segment: MemorySegment, value: Double) =
+        pitch_VH.set(segment, 0L, value)
+
+    val yaw_VH: VarHandle = layout.varHandle(groupElement("yaw"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun yaw(segment: MemorySegment): Double =
+        yaw_VH.get(segment, 0L) as Double
+
+    fun yaw(segment: MemorySegment, value: Double) =
+        yaw_VH.set(segment, 0L, value)
+
+    val roll_VH: VarHandle = layout.varHandle(groupElement("roll"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun roll(segment: MemorySegment): Double =
+        roll_VH.get(segment, 0L) as Double
+
+    fun roll(segment: MemorySegment, value: Double) =
+        roll_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT GCQuaternion
+ */
+class GCQuaternion internal constructor(internal val segment: MemorySegment) {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("x"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("y"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("z"),
+            ValueLayout.JAVA_DOUBLE.withByteAlignment(8L).withName("w")
+        ).withByteAlignment(8L).withName("GCQuaternion")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): GCQuaternion =
+            GCQuaternion(allocator.allocate(layout))
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): GCQuaternionPointer =
+            GCQuaternionPointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
+
+        internal fun asSlice(array: MemorySegment, index: Long): GCQuaternion =
+            GCQuaternion(array.asSlice(byteSize * index, byteSize))
+
+        internal fun reinterpret(addr: MemorySegment): GCQuaternion =
+            GCQuaternion(addr.reinterpret(byteSize))
+
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): GCQuaternionPointer =
+            GCQuaternionPointer(addr.reinterpret(byteSize * elementCount))
+
+    } // End companion object
+
+    constructor(x: Double, y: Double, z: Double, w: Double) : this(Arena.ofAuto().allocate(layout)) {
+        x(x)
+        y(y)
+        z(z)
+        w(w)
+    }
+
+    private val x_VH: VarHandle = layout.varHandle(groupElement("x"))
+
+    fun x(): Double = x_VH.get(segment, 0L) as Double
+
+    fun x(value: Double) =
+        x_VH.set(segment, 0L, value)
+
+    var x: Double
+        get() = x()
+        set(value) = x(value)
+
+    private val y_VH: VarHandle = layout.varHandle(groupElement("y"))
+
+    fun y(): Double = y_VH.get(segment, 0L) as Double
+
+    fun y(value: Double) =
+        y_VH.set(segment, 0L, value)
+
+    var y: Double
+        get() = y()
+        set(value) = y(value)
+
+    private val z_VH: VarHandle = layout.varHandle(groupElement("z"))
+
+    fun z(): Double = z_VH.get(segment, 0L) as Double
+
+    fun z(value: Double) =
+        z_VH.set(segment, 0L, value)
+
+    var z: Double
+        get() = z()
+        set(value) = z(value)
+
+    private val w_VH: VarHandle = layout.varHandle(groupElement("w"))
+
+    fun w(): Double = w_VH.get(segment, 0L) as Double
+
+    fun w(value: Double) =
+        w_VH.set(segment, 0L, value)
+
+    var w: Double
+        get() = w()
+        set(value) = w(value)
+} // End class
+
+class GCQuaternionPointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): GCQuaternion {
+        val offset = GCQuaternion.byteSize * index
+        val bytes = GCQuaternion.byteSize * (index + 1L)
+        return GCQuaternion(segment.reinterpret(bytes).asSlice(offset, GCQuaternion.byteSize))
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCMotionValueChangedHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 8, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+typealias GCMotionValueChangedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCGamepadValueChangedHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+typealias GCGamepadValueChangedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : STRUCT GCGamepadSnapShotDataV100
+ */
+class GCGamepadSnapShotDataV100 {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(1).withName("version"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(1).withName("size"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("dpadX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("dpadY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonA"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonB"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("leftShoulder"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("rightShoulder")
+        ).withByteAlignment(1L).withName("GCGamepadSnapShotDataV100")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val version_VH: VarHandle = layout.varHandle(groupElement("version"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun version(segment: MemorySegment): Short =
+        version_VH.get(segment, 0L) as Short
+
+    fun version(segment: MemorySegment, value: Short) =
+        version_VH.set(segment, 0L, value)
+
+    val size_VH: VarHandle = layout.varHandle(groupElement("size"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun size(segment: MemorySegment): Short =
+        size_VH.get(segment, 0L) as Short
+
+    fun size(segment: MemorySegment, value: Short) =
+        size_VH.set(segment, 0L, value)
+
+    val dpadX_VH: VarHandle = layout.varHandle(groupElement("dpadX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadX(segment: MemorySegment): Float =
+        dpadX_VH.get(segment, 0L) as Float
+
+    fun dpadX(segment: MemorySegment, value: Float) =
+        dpadX_VH.set(segment, 0L, value)
+
+    val dpadY_VH: VarHandle = layout.varHandle(groupElement("dpadY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadY(segment: MemorySegment): Float =
+        dpadY_VH.get(segment, 0L) as Float
+
+    fun dpadY(segment: MemorySegment, value: Float) =
+        dpadY_VH.set(segment, 0L, value)
+
+    val buttonA_VH: VarHandle = layout.varHandle(groupElement("buttonA"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonA(segment: MemorySegment): Float =
+        buttonA_VH.get(segment, 0L) as Float
+
+    fun buttonA(segment: MemorySegment, value: Float) =
+        buttonA_VH.set(segment, 0L, value)
+
+    val buttonB_VH: VarHandle = layout.varHandle(groupElement("buttonB"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonB(segment: MemorySegment): Float =
+        buttonB_VH.get(segment, 0L) as Float
+
+    fun buttonB(segment: MemorySegment, value: Float) =
+        buttonB_VH.set(segment, 0L, value)
+
+    val buttonX_VH: VarHandle = layout.varHandle(groupElement("buttonX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonX(segment: MemorySegment): Float =
+        buttonX_VH.get(segment, 0L) as Float
+
+    fun buttonX(segment: MemorySegment, value: Float) =
+        buttonX_VH.set(segment, 0L, value)
+
+    val buttonY_VH: VarHandle = layout.varHandle(groupElement("buttonY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonY(segment: MemorySegment): Float =
+        buttonY_VH.get(segment, 0L) as Float
+
+    fun buttonY(segment: MemorySegment, value: Float) =
+        buttonY_VH.set(segment, 0L, value)
+
+    val leftShoulder_VH: VarHandle = layout.varHandle(groupElement("leftShoulder"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun leftShoulder(segment: MemorySegment): Float =
+        leftShoulder_VH.get(segment, 0L) as Float
+
+    fun leftShoulder(segment: MemorySegment, value: Float) =
+        leftShoulder_VH.set(segment, 0L, value)
+
+    val rightShoulder_VH: VarHandle = layout.varHandle(groupElement("rightShoulder"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun rightShoulder(segment: MemorySegment): Float =
+        rightShoulder_VH.get(segment, 0L) as Float
+
+    fun rightShoulder(segment: MemorySegment, value: Float) =
+        rightShoulder_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCExtendedGamepadValueChangedHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+typealias GCExtendedGamepadValueChangedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : STRUCT GCExtendedGamepadSnapshotData
+ */
+class GCExtendedGamepadSnapshotData {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(1).withName("version"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(1).withName("size"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("dpadX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("dpadY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonA"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonB"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("leftShoulder"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("rightShoulder"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("leftThumbstickX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("leftThumbstickY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("rightThumbstickX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("rightThumbstickY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("leftTrigger"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("rightTrigger"),
+            ValueLayout.JAVA_BOOLEAN.withByteAlignment(1).withName("supportsClickableThumbsticks"),
+            ValueLayout.JAVA_BOOLEAN.withByteAlignment(1).withName("leftThumbstickButton"),
+            ValueLayout.JAVA_BOOLEAN.withByteAlignment(1).withName("rightThumbstickButton")
+        ).withByteAlignment(1L).withName("GCExtendedGamepadSnapshotData")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val version_VH: VarHandle = layout.varHandle(groupElement("version"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun version(segment: MemorySegment): Short =
+        version_VH.get(segment, 0L) as Short
+
+    fun version(segment: MemorySegment, value: Short) =
+        version_VH.set(segment, 0L, value)
+
+    val size_VH: VarHandle = layout.varHandle(groupElement("size"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun size(segment: MemorySegment): Short =
+        size_VH.get(segment, 0L) as Short
+
+    fun size(segment: MemorySegment, value: Short) =
+        size_VH.set(segment, 0L, value)
+
+    val dpadX_VH: VarHandle = layout.varHandle(groupElement("dpadX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadX(segment: MemorySegment): Float =
+        dpadX_VH.get(segment, 0L) as Float
+
+    fun dpadX(segment: MemorySegment, value: Float) =
+        dpadX_VH.set(segment, 0L, value)
+
+    val dpadY_VH: VarHandle = layout.varHandle(groupElement("dpadY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadY(segment: MemorySegment): Float =
+        dpadY_VH.get(segment, 0L) as Float
+
+    fun dpadY(segment: MemorySegment, value: Float) =
+        dpadY_VH.set(segment, 0L, value)
+
+    val buttonA_VH: VarHandle = layout.varHandle(groupElement("buttonA"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonA(segment: MemorySegment): Float =
+        buttonA_VH.get(segment, 0L) as Float
+
+    fun buttonA(segment: MemorySegment, value: Float) =
+        buttonA_VH.set(segment, 0L, value)
+
+    val buttonB_VH: VarHandle = layout.varHandle(groupElement("buttonB"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonB(segment: MemorySegment): Float =
+        buttonB_VH.get(segment, 0L) as Float
+
+    fun buttonB(segment: MemorySegment, value: Float) =
+        buttonB_VH.set(segment, 0L, value)
+
+    val buttonX_VH: VarHandle = layout.varHandle(groupElement("buttonX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonX(segment: MemorySegment): Float =
+        buttonX_VH.get(segment, 0L) as Float
+
+    fun buttonX(segment: MemorySegment, value: Float) =
+        buttonX_VH.set(segment, 0L, value)
+
+    val buttonY_VH: VarHandle = layout.varHandle(groupElement("buttonY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonY(segment: MemorySegment): Float =
+        buttonY_VH.get(segment, 0L) as Float
+
+    fun buttonY(segment: MemorySegment, value: Float) =
+        buttonY_VH.set(segment, 0L, value)
+
+    val leftShoulder_VH: VarHandle = layout.varHandle(groupElement("leftShoulder"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun leftShoulder(segment: MemorySegment): Float =
+        leftShoulder_VH.get(segment, 0L) as Float
+
+    fun leftShoulder(segment: MemorySegment, value: Float) =
+        leftShoulder_VH.set(segment, 0L, value)
+
+    val rightShoulder_VH: VarHandle = layout.varHandle(groupElement("rightShoulder"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun rightShoulder(segment: MemorySegment): Float =
+        rightShoulder_VH.get(segment, 0L) as Float
+
+    fun rightShoulder(segment: MemorySegment, value: Float) =
+        rightShoulder_VH.set(segment, 0L, value)
+
+    val leftThumbstickX_VH: VarHandle = layout.varHandle(groupElement("leftThumbstickX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun leftThumbstickX(segment: MemorySegment): Float =
+        leftThumbstickX_VH.get(segment, 0L) as Float
+
+    fun leftThumbstickX(segment: MemorySegment, value: Float) =
+        leftThumbstickX_VH.set(segment, 0L, value)
+
+    val leftThumbstickY_VH: VarHandle = layout.varHandle(groupElement("leftThumbstickY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun leftThumbstickY(segment: MemorySegment): Float =
+        leftThumbstickY_VH.get(segment, 0L) as Float
+
+    fun leftThumbstickY(segment: MemorySegment, value: Float) =
+        leftThumbstickY_VH.set(segment, 0L, value)
+
+    val rightThumbstickX_VH: VarHandle = layout.varHandle(groupElement("rightThumbstickX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun rightThumbstickX(segment: MemorySegment): Float =
+        rightThumbstickX_VH.get(segment, 0L) as Float
+
+    fun rightThumbstickX(segment: MemorySegment, value: Float) =
+        rightThumbstickX_VH.set(segment, 0L, value)
+
+    val rightThumbstickY_VH: VarHandle = layout.varHandle(groupElement("rightThumbstickY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun rightThumbstickY(segment: MemorySegment): Float =
+        rightThumbstickY_VH.get(segment, 0L) as Float
+
+    fun rightThumbstickY(segment: MemorySegment, value: Float) =
+        rightThumbstickY_VH.set(segment, 0L, value)
+
+    val leftTrigger_VH: VarHandle = layout.varHandle(groupElement("leftTrigger"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun leftTrigger(segment: MemorySegment): Float =
+        leftTrigger_VH.get(segment, 0L) as Float
+
+    fun leftTrigger(segment: MemorySegment, value: Float) =
+        leftTrigger_VH.set(segment, 0L, value)
+
+    val rightTrigger_VH: VarHandle = layout.varHandle(groupElement("rightTrigger"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun rightTrigger(segment: MemorySegment): Float =
+        rightTrigger_VH.get(segment, 0L) as Float
+
+    fun rightTrigger(segment: MemorySegment, value: Float) =
+        rightTrigger_VH.set(segment, 0L, value)
+
+    @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    val supportsClickableThumbsticks_VH: VarHandle = layout.varHandle(groupElement("supportsClickableThumbsticks"))
+
+    @Suppress("UNCHECKED_CAST")
+    @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    fun supportsClickableThumbsticks(segment: MemorySegment): Boolean =
+        supportsClickableThumbsticks_VH.get(segment, 0L) as Boolean
+
+    @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    fun supportsClickableThumbsticks(segment: MemorySegment, value: Boolean) =
+        supportsClickableThumbsticks_VH.set(segment, 0L, value)
+
+    @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    val leftThumbstickButton_VH: VarHandle = layout.varHandle(groupElement("leftThumbstickButton"))
+
+    @Suppress("UNCHECKED_CAST")
+    @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    fun leftThumbstickButton(segment: MemorySegment): Boolean =
+        leftThumbstickButton_VH.get(segment, 0L) as Boolean
+
+    @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    fun leftThumbstickButton(segment: MemorySegment, value: Boolean) =
+        leftThumbstickButton_VH.set(segment, 0L, value)
+
+    @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    val rightThumbstickButton_VH: VarHandle = layout.varHandle(groupElement("rightThumbstickButton"))
+
+    @Suppress("UNCHECKED_CAST")
+    @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    fun rightThumbstickButton(segment: MemorySegment): Boolean =
+        rightThumbstickButton_VH.get(segment, 0L) as Boolean
+
+    @PlatformAvailability(platform = "ios", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 14, introducedSubminor = 1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 12, introducedMinor = 1, introducedSubminor = -1)
+    fun rightThumbstickButton(segment: MemorySegment, value: Boolean) =
+        rightThumbstickButton_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT GCExtendedGamepadSnapShotDataV100
+ */
+class GCExtendedGamepadSnapShotDataV100 {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("version"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("size"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("dpadX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("dpadY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("buttonA"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("buttonB"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("buttonX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("buttonY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("leftShoulder"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("rightShoulder"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("leftThumbstickX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("leftThumbstickY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("rightThumbstickX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("rightThumbstickY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("leftTrigger"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(4).withName("rightTrigger")
+        ).withByteAlignment(4L).withName("GCExtendedGamepadSnapShotDataV100")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val version_VH: VarHandle = layout.varHandle(groupElement("version"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun version(segment: MemorySegment): Short =
+        version_VH.get(segment, 0L) as Short
+
+    fun version(segment: MemorySegment, value: Short) =
+        version_VH.set(segment, 0L, value)
+
+    val size_VH: VarHandle = layout.varHandle(groupElement("size"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun size(segment: MemorySegment): Short =
+        size_VH.get(segment, 0L) as Short
+
+    fun size(segment: MemorySegment, value: Short) =
+        size_VH.set(segment, 0L, value)
+
+    val dpadX_VH: VarHandle = layout.varHandle(groupElement("dpadX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadX(segment: MemorySegment): Float =
+        dpadX_VH.get(segment, 0L) as Float
+
+    fun dpadX(segment: MemorySegment, value: Float) =
+        dpadX_VH.set(segment, 0L, value)
+
+    val dpadY_VH: VarHandle = layout.varHandle(groupElement("dpadY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadY(segment: MemorySegment): Float =
+        dpadY_VH.get(segment, 0L) as Float
+
+    fun dpadY(segment: MemorySegment, value: Float) =
+        dpadY_VH.set(segment, 0L, value)
+
+    val buttonA_VH: VarHandle = layout.varHandle(groupElement("buttonA"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonA(segment: MemorySegment): Float =
+        buttonA_VH.get(segment, 0L) as Float
+
+    fun buttonA(segment: MemorySegment, value: Float) =
+        buttonA_VH.set(segment, 0L, value)
+
+    val buttonB_VH: VarHandle = layout.varHandle(groupElement("buttonB"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonB(segment: MemorySegment): Float =
+        buttonB_VH.get(segment, 0L) as Float
+
+    fun buttonB(segment: MemorySegment, value: Float) =
+        buttonB_VH.set(segment, 0L, value)
+
+    val buttonX_VH: VarHandle = layout.varHandle(groupElement("buttonX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonX(segment: MemorySegment): Float =
+        buttonX_VH.get(segment, 0L) as Float
+
+    fun buttonX(segment: MemorySegment, value: Float) =
+        buttonX_VH.set(segment, 0L, value)
+
+    val buttonY_VH: VarHandle = layout.varHandle(groupElement("buttonY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonY(segment: MemorySegment): Float =
+        buttonY_VH.get(segment, 0L) as Float
+
+    fun buttonY(segment: MemorySegment, value: Float) =
+        buttonY_VH.set(segment, 0L, value)
+
+    val leftShoulder_VH: VarHandle = layout.varHandle(groupElement("leftShoulder"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun leftShoulder(segment: MemorySegment): Float =
+        leftShoulder_VH.get(segment, 0L) as Float
+
+    fun leftShoulder(segment: MemorySegment, value: Float) =
+        leftShoulder_VH.set(segment, 0L, value)
+
+    val rightShoulder_VH: VarHandle = layout.varHandle(groupElement("rightShoulder"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun rightShoulder(segment: MemorySegment): Float =
+        rightShoulder_VH.get(segment, 0L) as Float
+
+    fun rightShoulder(segment: MemorySegment, value: Float) =
+        rightShoulder_VH.set(segment, 0L, value)
+
+    val leftThumbstickX_VH: VarHandle = layout.varHandle(groupElement("leftThumbstickX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun leftThumbstickX(segment: MemorySegment): Float =
+        leftThumbstickX_VH.get(segment, 0L) as Float
+
+    fun leftThumbstickX(segment: MemorySegment, value: Float) =
+        leftThumbstickX_VH.set(segment, 0L, value)
+
+    val leftThumbstickY_VH: VarHandle = layout.varHandle(groupElement("leftThumbstickY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun leftThumbstickY(segment: MemorySegment): Float =
+        leftThumbstickY_VH.get(segment, 0L) as Float
+
+    fun leftThumbstickY(segment: MemorySegment, value: Float) =
+        leftThumbstickY_VH.set(segment, 0L, value)
+
+    val rightThumbstickX_VH: VarHandle = layout.varHandle(groupElement("rightThumbstickX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun rightThumbstickX(segment: MemorySegment): Float =
+        rightThumbstickX_VH.get(segment, 0L) as Float
+
+    fun rightThumbstickX(segment: MemorySegment, value: Float) =
+        rightThumbstickX_VH.set(segment, 0L, value)
+
+    val rightThumbstickY_VH: VarHandle = layout.varHandle(groupElement("rightThumbstickY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun rightThumbstickY(segment: MemorySegment): Float =
+        rightThumbstickY_VH.get(segment, 0L) as Float
+
+    fun rightThumbstickY(segment: MemorySegment, value: Float) =
+        rightThumbstickY_VH.set(segment, 0L, value)
+
+    val leftTrigger_VH: VarHandle = layout.varHandle(groupElement("leftTrigger"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun leftTrigger(segment: MemorySegment): Float =
+        leftTrigger_VH.get(segment, 0L) as Float
+
+    fun leftTrigger(segment: MemorySegment, value: Float) =
+        leftTrigger_VH.set(segment, 0L, value)
+
+    val rightTrigger_VH: VarHandle = layout.varHandle(groupElement("rightTrigger"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun rightTrigger(segment: MemorySegment): Float =
+        rightTrigger_VH.get(segment, 0L) as Float
+
+    fun rightTrigger(segment: MemorySegment, value: Float) =
+        rightTrigger_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : typedef Long GCKeyCode;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+typealias GCKeyCode = Long
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCKeyboardValueChangedHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+typealias GCKeyboardValueChangedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCMouseMoved;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+typealias GCMouseMoved = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef (Void)* GCMicroGamepadValueChangedHandler;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+typealias GCMicroGamepadValueChangedHandler = MemorySegment
+
+/**
+ * {@snippet lang=c : STRUCT GCMicroGamepadSnapshotData
+ */
+class GCMicroGamepadSnapshotData {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(1).withName("version"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(1).withName("size"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("dpadX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("dpadY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonA"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonX")
+        ).withByteAlignment(1L).withName("GCMicroGamepadSnapshotData")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val version_VH: VarHandle = layout.varHandle(groupElement("version"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun version(segment: MemorySegment): Short =
+        version_VH.get(segment, 0L) as Short
+
+    fun version(segment: MemorySegment, value: Short) =
+        version_VH.set(segment, 0L, value)
+
+    val size_VH: VarHandle = layout.varHandle(groupElement("size"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun size(segment: MemorySegment): Short =
+        size_VH.get(segment, 0L) as Short
+
+    fun size(segment: MemorySegment, value: Short) =
+        size_VH.set(segment, 0L, value)
+
+    val dpadX_VH: VarHandle = layout.varHandle(groupElement("dpadX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadX(segment: MemorySegment): Float =
+        dpadX_VH.get(segment, 0L) as Float
+
+    fun dpadX(segment: MemorySegment, value: Float) =
+        dpadX_VH.set(segment, 0L, value)
+
+    val dpadY_VH: VarHandle = layout.varHandle(groupElement("dpadY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadY(segment: MemorySegment): Float =
+        dpadY_VH.get(segment, 0L) as Float
+
+    fun dpadY(segment: MemorySegment, value: Float) =
+        dpadY_VH.set(segment, 0L, value)
+
+    val buttonA_VH: VarHandle = layout.varHandle(groupElement("buttonA"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonA(segment: MemorySegment): Float =
+        buttonA_VH.get(segment, 0L) as Float
+
+    fun buttonA(segment: MemorySegment, value: Float) =
+        buttonA_VH.set(segment, 0L, value)
+
+    val buttonX_VH: VarHandle = layout.varHandle(groupElement("buttonX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonX(segment: MemorySegment): Float =
+        buttonX_VH.get(segment, 0L) as Float
+
+    fun buttonX(segment: MemorySegment, value: Float) =
+        buttonX_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT GCMicroGamepadSnapShotDataV100
+ */
+class GCMicroGamepadSnapShotDataV100 {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(1).withName("version"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(1).withName("size"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("dpadX"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("dpadY"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonA"),
+            ValueLayout.JAVA_FLOAT.withByteAlignment(1).withName("buttonX")
+        ).withByteAlignment(1L).withName("GCMicroGamepadSnapShotDataV100")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val version_VH: VarHandle = layout.varHandle(groupElement("version"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun version(segment: MemorySegment): Short =
+        version_VH.get(segment, 0L) as Short
+
+    fun version(segment: MemorySegment, value: Short) =
+        version_VH.set(segment, 0L, value)
+
+    val size_VH: VarHandle = layout.varHandle(groupElement("size"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun size(segment: MemorySegment): Short =
+        size_VH.get(segment, 0L) as Short
+
+    fun size(segment: MemorySegment, value: Short) =
+        size_VH.set(segment, 0L, value)
+
+    val dpadX_VH: VarHandle = layout.varHandle(groupElement("dpadX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadX(segment: MemorySegment): Float =
+        dpadX_VH.get(segment, 0L) as Float
+
+    fun dpadX(segment: MemorySegment, value: Float) =
+        dpadX_VH.set(segment, 0L, value)
+
+    val dpadY_VH: VarHandle = layout.varHandle(groupElement("dpadY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dpadY(segment: MemorySegment): Float =
+        dpadY_VH.get(segment, 0L) as Float
+
+    fun dpadY(segment: MemorySegment, value: Float) =
+        dpadY_VH.set(segment, 0L, value)
+
+    val buttonA_VH: VarHandle = layout.varHandle(groupElement("buttonA"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonA(segment: MemorySegment): Float =
+        buttonA_VH.get(segment, 0L) as Float
+
+    fun buttonA(segment: MemorySegment, value: Float) =
+        buttonA_VH.set(segment, 0L, value)
+
+    val buttonX_VH: VarHandle = layout.varHandle(groupElement("buttonX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun buttonX(segment: MemorySegment): Float =
+        buttonX_VH.get(segment, 0L) as Float
+
+    fun buttonX(segment: MemorySegment, value: Float) =
+        buttonX_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int IOMessage;}
+ */
+typealias IOMessage = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int IOHIDElementCookie;}
+ */
+typealias IOHIDElementCookie = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int IOHIDElementFlags;}
+ */
+typealias IOHIDElementFlags = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int IOHIDValueScaleType;}
+ */
+typealias IOHIDValueScaleType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int IOHIDValueOptions;}
+ */
+typealias IOHIDValueOptions = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int IOHIDOptionsType;}
+ */
+typealias IOHIDOptionsType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int IOHIDQueueOptionsType;}
+ */
+typealias IOHIDQueueOptionsType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int IOHIDStandardType;}
+ */
+typealias IOHIDStandardType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int IOHIDKeyboardPhysicalLayoutType;}
+ */
+typealias IOHIDKeyboardPhysicalLayoutType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Char IOHIDAccelerationAlgorithmType;}
+ */
+typealias IOHIDAccelerationAlgorithmType = Byte
+
+/**
+ * {@snippet lang=c : STRUCT __IOHIDDevice
+ */
+class _IOHIDDevicePointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(__IOHIDDevice))* IOHIDDeviceRef;}
+ */
+typealias IOHIDDeviceRef = _IOHIDDevicePointer
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* GCHapticsLocality;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+typealias GCHapticsLocality = MemorySegment
