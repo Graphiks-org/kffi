@@ -7,6 +7,19 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : kCGColorWhite typedef const CFStringRef = (Declared(__CFString))*
+ */
+private val kCGColorWhite_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val kCGColorWhite_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGColorWhite").orElseThrow().reinterpret(kCGColorWhite_LAYOUT.byteSize()) }
+private val kCGColorWhite_VH: VarHandle by lazy { kCGColorWhite_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+var kCGColorWhite: MemorySegment
+    get() = kCGColorWhite_VH.get(kCGColorWhite_SEGMENT, 0L) as MemorySegment
+    set(value) = kCGColorWhite_VH.set(kCGColorWhite_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : kCGColorBlack typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGColorBlack_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -6451,28 +6464,4 @@ fun CGContextDrawImageApplyingToneMapping(arg0: MemorySegment, arg1: MemorySegme
 @PlatformAvailability(platform = "watchos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
 fun CGContextDrawImageApplyingToneMapping(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegment, arg3: CGToneMapping, arg4: MemorySegment): Boolean {
     return CGContextDrawImageApplyingToneMapping(arg0, arg1.segment, arg2, arg3, arg4)
-}
-
-/**
- * {@snippet lang=c : CGContextGetContentToneMappingInfo typedef CGContentToneMappingInfo = Declared(CGContentToneMappingInfo)(typedef CGContextRef = (Declared(CGContext))*)
- */
-private val CGContextGetContentToneMappingInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(CGContentToneMappingInfo.layout, ValueLayout.ADDRESS)
-private val CGContextGetContentToneMappingInfo_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextGetContentToneMappingInfo").orElseThrow() }
-private val CGContextGetContentToneMappingInfo_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetContentToneMappingInfo_ADDR, CGContextGetContentToneMappingInfo_DESC) }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "watchos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "xros", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
-fun CGContextGetContentToneMappingInfo(allocator: SegmentAllocator, arg0: MemorySegment): MemorySegment {
-    try {
-        return CGContextGetContentToneMappingInfo_HANDLE.invokeExact(allocator, arg0) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
 }

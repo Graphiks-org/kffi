@@ -7,6 +7,27 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : CGLayerGetContext typedef CGContextRef = (Declared(CGContext))*(typedef CGLayerRef = (Declared(CGLayer))*)
+ */
+private val CGLayerGetContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CGLayerGetContext_ADDR: MemorySegment by lazy { LOOKUP.find("CGLayerGetContext").orElseThrow() }
+private val CGLayerGetContext_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGLayerGetContext_ADDR, CGLayerGetContext_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CGLayerGetContext(arg0: MemorySegment): MemorySegment {
+    try {
+        return CGLayerGetContext_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CGContextDrawLayerInRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CGLayerRef = (Declared(CGLayer))*)
  */
 private val CGContextDrawLayerInRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS)
@@ -5669,16 +5690,3 @@ private val NSPasteboardTypeRTF_VH: VarHandle by lazy { NSPasteboardTypeRTF_LAYO
 var NSPasteboardTypeRTF: MemorySegment
     get() = NSPasteboardTypeRTF_VH.get(NSPasteboardTypeRTF_SEGMENT, 0L) as MemorySegment
     set(value) = NSPasteboardTypeRTF_VH.set(NSPasteboardTypeRTF_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSPasteboardTypeRTFD typedef const NSPasteboardType = (Void)*
- */
-private val NSPasteboardTypeRTFD_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypeRTFD_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPasteboardTypeRTFD").orElseThrow().reinterpret(NSPasteboardTypeRTFD_LAYOUT.byteSize()) }
-private val NSPasteboardTypeRTFD_VH: VarHandle by lazy { NSPasteboardTypeRTFD_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", unavailable = true)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
-var NSPasteboardTypeRTFD: MemorySegment
-    get() = NSPasteboardTypeRTFD_VH.get(NSPasteboardTypeRTFD_SEGMENT, 0L) as MemorySegment
-    set(value) = NSPasteboardTypeRTFD_VH.set(NSPasteboardTypeRTFD_SEGMENT, 0L, value)

@@ -7,6 +7,622 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : GCKeyCodeKeyG typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyG_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyG_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyG").orElseThrow().reinterpret(GCKeyCodeKeyG_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyG_VH: VarHandle by lazy { GCKeyCodeKeyG_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyG: Long
+    get() = GCKeyCodeKeyG_VH.get(GCKeyCodeKeyG_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyG_VH.set(GCKeyCodeKeyG_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyH typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyH_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyH_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyH").orElseThrow().reinterpret(GCKeyCodeKeyH_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyH_VH: VarHandle by lazy { GCKeyCodeKeyH_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyH: Long
+    get() = GCKeyCodeKeyH_VH.get(GCKeyCodeKeyH_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyH_VH.set(GCKeyCodeKeyH_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyI typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyI_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyI_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyI").orElseThrow().reinterpret(GCKeyCodeKeyI_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyI_VH: VarHandle by lazy { GCKeyCodeKeyI_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyI: Long
+    get() = GCKeyCodeKeyI_VH.get(GCKeyCodeKeyI_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyI_VH.set(GCKeyCodeKeyI_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyJ typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyJ_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyJ_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyJ").orElseThrow().reinterpret(GCKeyCodeKeyJ_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyJ_VH: VarHandle by lazy { GCKeyCodeKeyJ_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyJ: Long
+    get() = GCKeyCodeKeyJ_VH.get(GCKeyCodeKeyJ_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyJ_VH.set(GCKeyCodeKeyJ_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyK typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyK_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyK_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyK").orElseThrow().reinterpret(GCKeyCodeKeyK_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyK_VH: VarHandle by lazy { GCKeyCodeKeyK_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyK: Long
+    get() = GCKeyCodeKeyK_VH.get(GCKeyCodeKeyK_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyK_VH.set(GCKeyCodeKeyK_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyL typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyL_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyL_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyL").orElseThrow().reinterpret(GCKeyCodeKeyL_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyL_VH: VarHandle by lazy { GCKeyCodeKeyL_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyL: Long
+    get() = GCKeyCodeKeyL_VH.get(GCKeyCodeKeyL_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyL_VH.set(GCKeyCodeKeyL_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyM typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyM_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyM_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyM").orElseThrow().reinterpret(GCKeyCodeKeyM_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyM_VH: VarHandle by lazy { GCKeyCodeKeyM_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyM: Long
+    get() = GCKeyCodeKeyM_VH.get(GCKeyCodeKeyM_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyM_VH.set(GCKeyCodeKeyM_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyN typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyN_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyN_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyN").orElseThrow().reinterpret(GCKeyCodeKeyN_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyN_VH: VarHandle by lazy { GCKeyCodeKeyN_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyN: Long
+    get() = GCKeyCodeKeyN_VH.get(GCKeyCodeKeyN_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyN_VH.set(GCKeyCodeKeyN_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyO typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyO_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyO_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyO").orElseThrow().reinterpret(GCKeyCodeKeyO_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyO_VH: VarHandle by lazy { GCKeyCodeKeyO_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyO: Long
+    get() = GCKeyCodeKeyO_VH.get(GCKeyCodeKeyO_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyO_VH.set(GCKeyCodeKeyO_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyP typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyP_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyP_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyP").orElseThrow().reinterpret(GCKeyCodeKeyP_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyP_VH: VarHandle by lazy { GCKeyCodeKeyP_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyP: Long
+    get() = GCKeyCodeKeyP_VH.get(GCKeyCodeKeyP_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyP_VH.set(GCKeyCodeKeyP_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyQ typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyQ_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyQ_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyQ").orElseThrow().reinterpret(GCKeyCodeKeyQ_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyQ_VH: VarHandle by lazy { GCKeyCodeKeyQ_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyQ: Long
+    get() = GCKeyCodeKeyQ_VH.get(GCKeyCodeKeyQ_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyQ_VH.set(GCKeyCodeKeyQ_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyR typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyR_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyR_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyR").orElseThrow().reinterpret(GCKeyCodeKeyR_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyR_VH: VarHandle by lazy { GCKeyCodeKeyR_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyR: Long
+    get() = GCKeyCodeKeyR_VH.get(GCKeyCodeKeyR_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyR_VH.set(GCKeyCodeKeyR_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyS typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyS_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyS_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyS").orElseThrow().reinterpret(GCKeyCodeKeyS_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyS_VH: VarHandle by lazy { GCKeyCodeKeyS_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyS: Long
+    get() = GCKeyCodeKeyS_VH.get(GCKeyCodeKeyS_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyS_VH.set(GCKeyCodeKeyS_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyT typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyT_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyT_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyT").orElseThrow().reinterpret(GCKeyCodeKeyT_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyT_VH: VarHandle by lazy { GCKeyCodeKeyT_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyT: Long
+    get() = GCKeyCodeKeyT_VH.get(GCKeyCodeKeyT_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyT_VH.set(GCKeyCodeKeyT_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyU typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyU_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyU_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyU").orElseThrow().reinterpret(GCKeyCodeKeyU_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyU_VH: VarHandle by lazy { GCKeyCodeKeyU_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyU: Long
+    get() = GCKeyCodeKeyU_VH.get(GCKeyCodeKeyU_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyU_VH.set(GCKeyCodeKeyU_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyV typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyV_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyV_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyV").orElseThrow().reinterpret(GCKeyCodeKeyV_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyV_VH: VarHandle by lazy { GCKeyCodeKeyV_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyV: Long
+    get() = GCKeyCodeKeyV_VH.get(GCKeyCodeKeyV_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyV_VH.set(GCKeyCodeKeyV_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyW typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyW_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyW_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyW").orElseThrow().reinterpret(GCKeyCodeKeyW_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyW_VH: VarHandle by lazy { GCKeyCodeKeyW_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyW: Long
+    get() = GCKeyCodeKeyW_VH.get(GCKeyCodeKeyW_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyW_VH.set(GCKeyCodeKeyW_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyX typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyX_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyX_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyX").orElseThrow().reinterpret(GCKeyCodeKeyX_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyX_VH: VarHandle by lazy { GCKeyCodeKeyX_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyX: Long
+    get() = GCKeyCodeKeyX_VH.get(GCKeyCodeKeyX_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyX_VH.set(GCKeyCodeKeyX_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyY typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyY_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyY_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyY").orElseThrow().reinterpret(GCKeyCodeKeyY_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyY_VH: VarHandle by lazy { GCKeyCodeKeyY_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyY: Long
+    get() = GCKeyCodeKeyY_VH.get(GCKeyCodeKeyY_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyY_VH.set(GCKeyCodeKeyY_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeKeyZ typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeKeyZ_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeKeyZ_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeKeyZ").orElseThrow().reinterpret(GCKeyCodeKeyZ_LAYOUT.byteSize()) }
+private val GCKeyCodeKeyZ_VH: VarHandle by lazy { GCKeyCodeKeyZ_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeKeyZ: Long
+    get() = GCKeyCodeKeyZ_VH.get(GCKeyCodeKeyZ_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeKeyZ_VH.set(GCKeyCodeKeyZ_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeOne typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeOne_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeOne_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeOne").orElseThrow().reinterpret(GCKeyCodeOne_LAYOUT.byteSize()) }
+private val GCKeyCodeOne_VH: VarHandle by lazy { GCKeyCodeOne_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeOne: Long
+    get() = GCKeyCodeOne_VH.get(GCKeyCodeOne_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeOne_VH.set(GCKeyCodeOne_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeTwo typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeTwo_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeTwo_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeTwo").orElseThrow().reinterpret(GCKeyCodeTwo_LAYOUT.byteSize()) }
+private val GCKeyCodeTwo_VH: VarHandle by lazy { GCKeyCodeTwo_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeTwo: Long
+    get() = GCKeyCodeTwo_VH.get(GCKeyCodeTwo_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeTwo_VH.set(GCKeyCodeTwo_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeThree typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeThree_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeThree_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeThree").orElseThrow().reinterpret(GCKeyCodeThree_LAYOUT.byteSize()) }
+private val GCKeyCodeThree_VH: VarHandle by lazy { GCKeyCodeThree_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeThree: Long
+    get() = GCKeyCodeThree_VH.get(GCKeyCodeThree_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeThree_VH.set(GCKeyCodeThree_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeFour typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeFour_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeFour_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeFour").orElseThrow().reinterpret(GCKeyCodeFour_LAYOUT.byteSize()) }
+private val GCKeyCodeFour_VH: VarHandle by lazy { GCKeyCodeFour_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeFour: Long
+    get() = GCKeyCodeFour_VH.get(GCKeyCodeFour_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeFour_VH.set(GCKeyCodeFour_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeFive typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeFive_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeFive_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeFive").orElseThrow().reinterpret(GCKeyCodeFive_LAYOUT.byteSize()) }
+private val GCKeyCodeFive_VH: VarHandle by lazy { GCKeyCodeFive_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeFive: Long
+    get() = GCKeyCodeFive_VH.get(GCKeyCodeFive_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeFive_VH.set(GCKeyCodeFive_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeSix typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeSix_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeSix_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSix").orElseThrow().reinterpret(GCKeyCodeSix_LAYOUT.byteSize()) }
+private val GCKeyCodeSix_VH: VarHandle by lazy { GCKeyCodeSix_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeSix: Long
+    get() = GCKeyCodeSix_VH.get(GCKeyCodeSix_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeSix_VH.set(GCKeyCodeSix_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeSeven typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeSeven_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeSeven_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSeven").orElseThrow().reinterpret(GCKeyCodeSeven_LAYOUT.byteSize()) }
+private val GCKeyCodeSeven_VH: VarHandle by lazy { GCKeyCodeSeven_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeSeven: Long
+    get() = GCKeyCodeSeven_VH.get(GCKeyCodeSeven_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeSeven_VH.set(GCKeyCodeSeven_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeEight typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeEight_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeEight_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeEight").orElseThrow().reinterpret(GCKeyCodeEight_LAYOUT.byteSize()) }
+private val GCKeyCodeEight_VH: VarHandle by lazy { GCKeyCodeEight_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeEight: Long
+    get() = GCKeyCodeEight_VH.get(GCKeyCodeEight_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeEight_VH.set(GCKeyCodeEight_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeNine typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeNine_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeNine_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeNine").orElseThrow().reinterpret(GCKeyCodeNine_LAYOUT.byteSize()) }
+private val GCKeyCodeNine_VH: VarHandle by lazy { GCKeyCodeNine_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeNine: Long
+    get() = GCKeyCodeNine_VH.get(GCKeyCodeNine_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeNine_VH.set(GCKeyCodeNine_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeZero typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeZero_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeZero_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeZero").orElseThrow().reinterpret(GCKeyCodeZero_LAYOUT.byteSize()) }
+private val GCKeyCodeZero_VH: VarHandle by lazy { GCKeyCodeZero_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeZero: Long
+    get() = GCKeyCodeZero_VH.get(GCKeyCodeZero_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeZero_VH.set(GCKeyCodeZero_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeReturnOrEnter typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeReturnOrEnter_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeReturnOrEnter_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeReturnOrEnter").orElseThrow().reinterpret(GCKeyCodeReturnOrEnter_LAYOUT.byteSize()) }
+private val GCKeyCodeReturnOrEnter_VH: VarHandle by lazy { GCKeyCodeReturnOrEnter_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeReturnOrEnter: Long
+    get() = GCKeyCodeReturnOrEnter_VH.get(GCKeyCodeReturnOrEnter_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeReturnOrEnter_VH.set(GCKeyCodeReturnOrEnter_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeEscape typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeEscape_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeEscape_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeEscape").orElseThrow().reinterpret(GCKeyCodeEscape_LAYOUT.byteSize()) }
+private val GCKeyCodeEscape_VH: VarHandle by lazy { GCKeyCodeEscape_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeEscape: Long
+    get() = GCKeyCodeEscape_VH.get(GCKeyCodeEscape_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeEscape_VH.set(GCKeyCodeEscape_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeDeleteOrBackspace typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeDeleteOrBackspace_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeDeleteOrBackspace_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeDeleteOrBackspace").orElseThrow().reinterpret(GCKeyCodeDeleteOrBackspace_LAYOUT.byteSize()) }
+private val GCKeyCodeDeleteOrBackspace_VH: VarHandle by lazy { GCKeyCodeDeleteOrBackspace_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeDeleteOrBackspace: Long
+    get() = GCKeyCodeDeleteOrBackspace_VH.get(GCKeyCodeDeleteOrBackspace_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeDeleteOrBackspace_VH.set(GCKeyCodeDeleteOrBackspace_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeTab typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeTab_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeTab_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeTab").orElseThrow().reinterpret(GCKeyCodeTab_LAYOUT.byteSize()) }
+private val GCKeyCodeTab_VH: VarHandle by lazy { GCKeyCodeTab_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeTab: Long
+    get() = GCKeyCodeTab_VH.get(GCKeyCodeTab_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeTab_VH.set(GCKeyCodeTab_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeSpacebar typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeSpacebar_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeSpacebar_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSpacebar").orElseThrow().reinterpret(GCKeyCodeSpacebar_LAYOUT.byteSize()) }
+private val GCKeyCodeSpacebar_VH: VarHandle by lazy { GCKeyCodeSpacebar_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeSpacebar: Long
+    get() = GCKeyCodeSpacebar_VH.get(GCKeyCodeSpacebar_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeSpacebar_VH.set(GCKeyCodeSpacebar_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeHyphen typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeHyphen_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeHyphen_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeHyphen").orElseThrow().reinterpret(GCKeyCodeHyphen_LAYOUT.byteSize()) }
+private val GCKeyCodeHyphen_VH: VarHandle by lazy { GCKeyCodeHyphen_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeHyphen: Long
+    get() = GCKeyCodeHyphen_VH.get(GCKeyCodeHyphen_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeHyphen_VH.set(GCKeyCodeHyphen_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeEqualSign typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeEqualSign_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeEqualSign_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeEqualSign").orElseThrow().reinterpret(GCKeyCodeEqualSign_LAYOUT.byteSize()) }
+private val GCKeyCodeEqualSign_VH: VarHandle by lazy { GCKeyCodeEqualSign_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeEqualSign: Long
+    get() = GCKeyCodeEqualSign_VH.get(GCKeyCodeEqualSign_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeEqualSign_VH.set(GCKeyCodeEqualSign_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeOpenBracket typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeOpenBracket_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeOpenBracket_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeOpenBracket").orElseThrow().reinterpret(GCKeyCodeOpenBracket_LAYOUT.byteSize()) }
+private val GCKeyCodeOpenBracket_VH: VarHandle by lazy { GCKeyCodeOpenBracket_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeOpenBracket: Long
+    get() = GCKeyCodeOpenBracket_VH.get(GCKeyCodeOpenBracket_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeOpenBracket_VH.set(GCKeyCodeOpenBracket_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeCloseBracket typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeCloseBracket_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeCloseBracket_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeCloseBracket").orElseThrow().reinterpret(GCKeyCodeCloseBracket_LAYOUT.byteSize()) }
+private val GCKeyCodeCloseBracket_VH: VarHandle by lazy { GCKeyCodeCloseBracket_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeCloseBracket: Long
+    get() = GCKeyCodeCloseBracket_VH.get(GCKeyCodeCloseBracket_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeCloseBracket_VH.set(GCKeyCodeCloseBracket_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeBackslash typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeBackslash_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeBackslash_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeBackslash").orElseThrow().reinterpret(GCKeyCodeBackslash_LAYOUT.byteSize()) }
+private val GCKeyCodeBackslash_VH: VarHandle by lazy { GCKeyCodeBackslash_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeBackslash: Long
+    get() = GCKeyCodeBackslash_VH.get(GCKeyCodeBackslash_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeBackslash_VH.set(GCKeyCodeBackslash_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeNonUSPound typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeNonUSPound_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeNonUSPound_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeNonUSPound").orElseThrow().reinterpret(GCKeyCodeNonUSPound_LAYOUT.byteSize()) }
+private val GCKeyCodeNonUSPound_VH: VarHandle by lazy { GCKeyCodeNonUSPound_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeNonUSPound: Long
+    get() = GCKeyCodeNonUSPound_VH.get(GCKeyCodeNonUSPound_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeNonUSPound_VH.set(GCKeyCodeNonUSPound_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeSemicolon typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeSemicolon_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeSemicolon_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeSemicolon").orElseThrow().reinterpret(GCKeyCodeSemicolon_LAYOUT.byteSize()) }
+private val GCKeyCodeSemicolon_VH: VarHandle by lazy { GCKeyCodeSemicolon_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeSemicolon: Long
+    get() = GCKeyCodeSemicolon_VH.get(GCKeyCodeSemicolon_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeSemicolon_VH.set(GCKeyCodeSemicolon_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeQuote typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeQuote_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeQuote_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeQuote").orElseThrow().reinterpret(GCKeyCodeQuote_LAYOUT.byteSize()) }
+private val GCKeyCodeQuote_VH: VarHandle by lazy { GCKeyCodeQuote_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeQuote: Long
+    get() = GCKeyCodeQuote_VH.get(GCKeyCodeQuote_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeQuote_VH.set(GCKeyCodeQuote_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : GCKeyCodeGraveAccentAndTilde typedef const GCKeyCode = Long
+ */
+private val GCKeyCodeGraveAccentAndTilde_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
+private val GCKeyCodeGraveAccentAndTilde_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCKeyCodeGraveAccentAndTilde").orElseThrow().reinterpret(GCKeyCodeGraveAccentAndTilde_LAYOUT.byteSize()) }
+private val GCKeyCodeGraveAccentAndTilde_VH: VarHandle by lazy { GCKeyCodeGraveAccentAndTilde_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCKeyCodeGraveAccentAndTilde: Long
+    get() = GCKeyCodeGraveAccentAndTilde_VH.get(GCKeyCodeGraveAccentAndTilde_SEGMENT, 0L) as Long
+    set(value) = GCKeyCodeGraveAccentAndTilde_VH.set(GCKeyCodeGraveAccentAndTilde_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : GCKeyCodeComma typedef const GCKeyCode = Long
  */
 private val GCKeyCodeComma_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_LONG }
@@ -3607,3 +4223,23 @@ private val GCHapticDurationInfinite_VH: VarHandle by lazy { GCHapticDurationInf
 var GCHapticDurationInfinite: Float
     get() = GCHapticDurationInfinite_VH.get(GCHapticDurationInfinite_SEGMENT, 0L) as Float
     set(value) = GCHapticDurationInfinite_VH.set(GCHapticDurationInfinite_SEGMENT, 0L, value)
+
+/**
+ * {@snippet lang=c : IOHIDDeviceGetService typedef io_service_t = UNSIGNED = Int(typedef IOHIDDeviceRef = (Declared(__IOHIDDevice))*)
+ */
+private val IOHIDDeviceGetService_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val IOHIDDeviceGetService_ADDR: MemorySegment by lazy { LOOKUP.find("IOHIDDeviceGetService").orElseThrow() }
+private val IOHIDDeviceGetService_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(IOHIDDeviceGetService_ADDR, IOHIDDeviceGetService_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
+fun IOHIDDeviceGetService(arg0: MemorySegment): Int {
+    try {
+        return IOHIDDeviceGetService_HANDLE.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
