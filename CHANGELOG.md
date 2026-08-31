@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Generated GameController classes, input profiles, elements, and notification constants, plus
+  managed physical-input value observation with clear-before-close block ownership.
 - A managed session-level CoreGraphics listen-only event tap with non-prompting permission
   preflight, borrowed event delivery, and quiescent CoreFoundation teardown.
 - Pointer-free CoreGraphics display snapshots, closeable display-mode owners, scoped display

@@ -216,3 +216,25 @@ fun NSValue_valueWithCATransform3D(t: CATransform3D): MemorySegment {
     val cls = ObjCRuntime.getClass("NSValue")
     return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(t.segment, CATransform3D.layout)) as MemorySegment
 }
+
+// ── Category: GCTypes on NSValue ─────────────────────────────────────────
+
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+fun NSValue.GCPoint2Value(): GCPoint2 {
+    val sel = ObjCRuntime.sel("GCPoint2Value")
+    return GCPoint2(ObjCRuntime.msgSendStruct(GCPoint2.layout, this.ptr, sel))
+}
+
+// Class method: +[NSValue valueWithGCPoint2:]
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 3, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 4, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 1, introducedSubminor = -1)
+fun NSValue_valueWithGCPoint2(point: GCPoint2): MemorySegment {
+    val sel = ObjCRuntime.sel("valueWithGCPoint2:")
+    val cls = ObjCRuntime.getClass("NSValue")
+    return ObjCRuntime.msgSend(ValueLayout.ADDRESS, cls, sel, ObjCRuntime.ObjCStructArg(point.segment, GCPoint2.layout)) as MemorySegment
+}
