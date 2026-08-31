@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
 open class NSToolbarItemGroup(override val ptr: MemorySegment) : NSToolbarItem(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSToolbarItemGroup") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSToolbarItemGroup") } }
 
         @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
         fun groupWithItemIdentifier_titles_selectionMode_labels_target_action(itemIdentifier: MemorySegment, titles: MemorySegment, selectionMode: NSToolbarItemGroupSelectionMode, labels: MemorySegment, target: MemorySegment, action: MemorySegment): MemorySegment {

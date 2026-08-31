@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSCell(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCell") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSCell") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun _bulletStringForString_bulletCharacter(string: MemorySegment, bulletChar: Short): MemorySegment {

@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSBrowserCell(override val ptr: MemorySegment) : NSCell(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSBrowserCell") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSBrowserCell") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun branchImage(): MemorySegment {

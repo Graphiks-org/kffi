@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "`NSEPSImageRep` instances cannot be created on macOS 14.0 and later")
 open class NSEPSImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSEPSImageRep") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSEPSImageRep") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun imageRepWithData(epsData: MemorySegment): MemorySegment {

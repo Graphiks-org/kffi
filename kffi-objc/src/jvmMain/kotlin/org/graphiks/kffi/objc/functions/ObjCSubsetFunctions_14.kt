@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * {@snippet lang=c : NSImageNameTouchBarDeleteTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarDeleteTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarDeleteTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarDeleteTemplate").orElseThrow().reinterpret(NSImageNameTouchBarDeleteTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarDeleteTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarDeleteTemplate").orElseThrow().reinterpret(NSImageNameTouchBarDeleteTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarDeleteTemplate_VH: VarHandle by lazy { NSImageNameTouchBarDeleteTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -23,7 +23,7 @@ var NSImageNameTouchBarDeleteTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarDownloadTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarDownloadTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarDownloadTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarDownloadTemplate").orElseThrow().reinterpret(NSImageNameTouchBarDownloadTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarDownloadTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarDownloadTemplate").orElseThrow().reinterpret(NSImageNameTouchBarDownloadTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarDownloadTemplate_VH: VarHandle by lazy { NSImageNameTouchBarDownloadTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -36,7 +36,7 @@ var NSImageNameTouchBarDownloadTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarEnterFullScreenTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarEnterFullScreenTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarEnterFullScreenTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarEnterFullScreenTemplate").orElseThrow().reinterpret(NSImageNameTouchBarEnterFullScreenTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarEnterFullScreenTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarEnterFullScreenTemplate").orElseThrow().reinterpret(NSImageNameTouchBarEnterFullScreenTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarEnterFullScreenTemplate_VH: VarHandle by lazy { NSImageNameTouchBarEnterFullScreenTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -49,7 +49,7 @@ var NSImageNameTouchBarEnterFullScreenTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarExitFullScreenTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarExitFullScreenTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarExitFullScreenTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarExitFullScreenTemplate").orElseThrow().reinterpret(NSImageNameTouchBarExitFullScreenTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarExitFullScreenTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarExitFullScreenTemplate").orElseThrow().reinterpret(NSImageNameTouchBarExitFullScreenTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarExitFullScreenTemplate_VH: VarHandle by lazy { NSImageNameTouchBarExitFullScreenTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -62,7 +62,7 @@ var NSImageNameTouchBarExitFullScreenTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarFastForwardTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarFastForwardTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarFastForwardTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarFastForwardTemplate").orElseThrow().reinterpret(NSImageNameTouchBarFastForwardTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarFastForwardTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarFastForwardTemplate").orElseThrow().reinterpret(NSImageNameTouchBarFastForwardTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarFastForwardTemplate_VH: VarHandle by lazy { NSImageNameTouchBarFastForwardTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -75,7 +75,7 @@ var NSImageNameTouchBarFastForwardTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarFolderCopyToTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarFolderCopyToTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarFolderCopyToTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarFolderCopyToTemplate").orElseThrow().reinterpret(NSImageNameTouchBarFolderCopyToTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarFolderCopyToTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarFolderCopyToTemplate").orElseThrow().reinterpret(NSImageNameTouchBarFolderCopyToTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarFolderCopyToTemplate_VH: VarHandle by lazy { NSImageNameTouchBarFolderCopyToTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -88,7 +88,7 @@ var NSImageNameTouchBarFolderCopyToTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarFolderMoveToTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarFolderMoveToTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarFolderMoveToTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarFolderMoveToTemplate").orElseThrow().reinterpret(NSImageNameTouchBarFolderMoveToTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarFolderMoveToTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarFolderMoveToTemplate").orElseThrow().reinterpret(NSImageNameTouchBarFolderMoveToTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarFolderMoveToTemplate_VH: VarHandle by lazy { NSImageNameTouchBarFolderMoveToTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -101,7 +101,7 @@ var NSImageNameTouchBarFolderMoveToTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarFolderTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarFolderTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarFolderTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarFolderTemplate").orElseThrow().reinterpret(NSImageNameTouchBarFolderTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarFolderTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarFolderTemplate").orElseThrow().reinterpret(NSImageNameTouchBarFolderTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarFolderTemplate_VH: VarHandle by lazy { NSImageNameTouchBarFolderTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -114,7 +114,7 @@ var NSImageNameTouchBarFolderTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarGetInfoTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarGetInfoTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGetInfoTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGetInfoTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGetInfoTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarGetInfoTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarGetInfoTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGetInfoTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarGetInfoTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGetInfoTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -127,7 +127,7 @@ var NSImageNameTouchBarGetInfoTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarGoBackTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarGoBackTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGoBackTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGoBackTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGoBackTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarGoBackTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarGoBackTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGoBackTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarGoBackTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGoBackTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -140,7 +140,7 @@ var NSImageNameTouchBarGoBackTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarGoDownTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarGoDownTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGoDownTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGoDownTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGoDownTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarGoDownTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarGoDownTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGoDownTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarGoDownTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGoDownTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -153,7 +153,7 @@ var NSImageNameTouchBarGoDownTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarGoForwardTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarGoForwardTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGoForwardTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGoForwardTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGoForwardTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarGoForwardTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarGoForwardTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGoForwardTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarGoForwardTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGoForwardTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -166,7 +166,7 @@ var NSImageNameTouchBarGoForwardTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarGoUpTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarGoUpTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarGoUpTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarGoUpTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGoUpTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarGoUpTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarGoUpTemplate").orElseThrow().reinterpret(NSImageNameTouchBarGoUpTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarGoUpTemplate_VH: VarHandle by lazy { NSImageNameTouchBarGoUpTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -179,7 +179,7 @@ var NSImageNameTouchBarGoUpTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarHistoryTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarHistoryTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarHistoryTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarHistoryTemplate").orElseThrow().reinterpret(NSImageNameTouchBarHistoryTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarHistoryTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarHistoryTemplate").orElseThrow().reinterpret(NSImageNameTouchBarHistoryTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarHistoryTemplate_VH: VarHandle by lazy { NSImageNameTouchBarHistoryTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -192,7 +192,7 @@ var NSImageNameTouchBarHistoryTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarIconViewTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarIconViewTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarIconViewTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarIconViewTemplate").orElseThrow().reinterpret(NSImageNameTouchBarIconViewTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarIconViewTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarIconViewTemplate").orElseThrow().reinterpret(NSImageNameTouchBarIconViewTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarIconViewTemplate_VH: VarHandle by lazy { NSImageNameTouchBarIconViewTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -205,7 +205,7 @@ var NSImageNameTouchBarIconViewTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarListViewTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarListViewTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarListViewTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarListViewTemplate").orElseThrow().reinterpret(NSImageNameTouchBarListViewTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarListViewTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarListViewTemplate").orElseThrow().reinterpret(NSImageNameTouchBarListViewTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarListViewTemplate_VH: VarHandle by lazy { NSImageNameTouchBarListViewTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -218,7 +218,7 @@ var NSImageNameTouchBarListViewTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarMailTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarMailTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarMailTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarMailTemplate").orElseThrow().reinterpret(NSImageNameTouchBarMailTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarMailTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarMailTemplate").orElseThrow().reinterpret(NSImageNameTouchBarMailTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarMailTemplate_VH: VarHandle by lazy { NSImageNameTouchBarMailTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -231,7 +231,7 @@ var NSImageNameTouchBarMailTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarNewFolderTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarNewFolderTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarNewFolderTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarNewFolderTemplate").orElseThrow().reinterpret(NSImageNameTouchBarNewFolderTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarNewFolderTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarNewFolderTemplate").orElseThrow().reinterpret(NSImageNameTouchBarNewFolderTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarNewFolderTemplate_VH: VarHandle by lazy { NSImageNameTouchBarNewFolderTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -244,7 +244,7 @@ var NSImageNameTouchBarNewFolderTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarNewMessageTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarNewMessageTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarNewMessageTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarNewMessageTemplate").orElseThrow().reinterpret(NSImageNameTouchBarNewMessageTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarNewMessageTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarNewMessageTemplate").orElseThrow().reinterpret(NSImageNameTouchBarNewMessageTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarNewMessageTemplate_VH: VarHandle by lazy { NSImageNameTouchBarNewMessageTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -257,7 +257,7 @@ var NSImageNameTouchBarNewMessageTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarOpenInBrowserTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarOpenInBrowserTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarOpenInBrowserTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarOpenInBrowserTemplate").orElseThrow().reinterpret(NSImageNameTouchBarOpenInBrowserTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarOpenInBrowserTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarOpenInBrowserTemplate").orElseThrow().reinterpret(NSImageNameTouchBarOpenInBrowserTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarOpenInBrowserTemplate_VH: VarHandle by lazy { NSImageNameTouchBarOpenInBrowserTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -270,7 +270,7 @@ var NSImageNameTouchBarOpenInBrowserTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarPauseTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarPauseTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarPauseTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarPauseTemplate").orElseThrow().reinterpret(NSImageNameTouchBarPauseTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarPauseTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarPauseTemplate").orElseThrow().reinterpret(NSImageNameTouchBarPauseTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarPauseTemplate_VH: VarHandle by lazy { NSImageNameTouchBarPauseTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -283,7 +283,7 @@ var NSImageNameTouchBarPauseTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarPlayPauseTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarPlayPauseTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarPlayPauseTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarPlayPauseTemplate").orElseThrow().reinterpret(NSImageNameTouchBarPlayPauseTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarPlayPauseTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarPlayPauseTemplate").orElseThrow().reinterpret(NSImageNameTouchBarPlayPauseTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarPlayPauseTemplate_VH: VarHandle by lazy { NSImageNameTouchBarPlayPauseTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -296,7 +296,7 @@ var NSImageNameTouchBarPlayPauseTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarPlayTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarPlayTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarPlayTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarPlayTemplate").orElseThrow().reinterpret(NSImageNameTouchBarPlayTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarPlayTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarPlayTemplate").orElseThrow().reinterpret(NSImageNameTouchBarPlayTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarPlayTemplate_VH: VarHandle by lazy { NSImageNameTouchBarPlayTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -309,7 +309,7 @@ var NSImageNameTouchBarPlayTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarQuickLookTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarQuickLookTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarQuickLookTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarQuickLookTemplate").orElseThrow().reinterpret(NSImageNameTouchBarQuickLookTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarQuickLookTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarQuickLookTemplate").orElseThrow().reinterpret(NSImageNameTouchBarQuickLookTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarQuickLookTemplate_VH: VarHandle by lazy { NSImageNameTouchBarQuickLookTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -322,7 +322,7 @@ var NSImageNameTouchBarQuickLookTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarRecordStartTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarRecordStartTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRecordStartTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRecordStartTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRecordStartTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarRecordStartTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarRecordStartTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRecordStartTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarRecordStartTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRecordStartTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -335,7 +335,7 @@ var NSImageNameTouchBarRecordStartTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarRecordStopTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarRecordStopTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRecordStopTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRecordStopTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRecordStopTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarRecordStopTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarRecordStopTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRecordStopTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarRecordStopTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRecordStopTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -348,7 +348,7 @@ var NSImageNameTouchBarRecordStopTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarRefreshTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarRefreshTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRefreshTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRefreshTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRefreshTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarRefreshTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarRefreshTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRefreshTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarRefreshTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRefreshTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -361,7 +361,7 @@ var NSImageNameTouchBarRefreshTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarRemoveTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarRemoveTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRemoveTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRemoveTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRemoveTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarRemoveTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarRemoveTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRemoveTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarRemoveTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRemoveTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -374,7 +374,7 @@ var NSImageNameTouchBarRemoveTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarRewindTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarRewindTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRewindTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRewindTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRewindTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarRewindTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarRewindTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRewindTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarRewindTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRewindTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -387,7 +387,7 @@ var NSImageNameTouchBarRewindTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarRotateLeftTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarRotateLeftTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRotateLeftTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRotateLeftTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRotateLeftTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarRotateLeftTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarRotateLeftTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRotateLeftTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarRotateLeftTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRotateLeftTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -400,7 +400,7 @@ var NSImageNameTouchBarRotateLeftTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarRotateRightTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarRotateRightTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarRotateRightTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarRotateRightTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRotateRightTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarRotateRightTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarRotateRightTemplate").orElseThrow().reinterpret(NSImageNameTouchBarRotateRightTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarRotateRightTemplate_VH: VarHandle by lazy { NSImageNameTouchBarRotateRightTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -413,7 +413,7 @@ var NSImageNameTouchBarRotateRightTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSearchTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSearchTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSearchTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSearchTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSearchTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSearchTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSearchTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSearchTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSearchTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSearchTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -426,7 +426,7 @@ var NSImageNameTouchBarSearchTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarShareTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarShareTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarShareTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarShareTemplate").orElseThrow().reinterpret(NSImageNameTouchBarShareTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarShareTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarShareTemplate").orElseThrow().reinterpret(NSImageNameTouchBarShareTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarShareTemplate_VH: VarHandle by lazy { NSImageNameTouchBarShareTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -439,7 +439,7 @@ var NSImageNameTouchBarShareTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSidebarTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSidebarTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSidebarTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSidebarTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSidebarTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSidebarTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSidebarTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSidebarTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSidebarTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSidebarTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -452,7 +452,7 @@ var NSImageNameTouchBarSidebarTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSkipAhead15SecondsTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSkipAhead15SecondsTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipAhead15SecondsTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipAhead15SecondsTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipAhead15SecondsTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSkipAhead15SecondsTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSkipAhead15SecondsTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipAhead15SecondsTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSkipAhead15SecondsTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipAhead15SecondsTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -465,7 +465,7 @@ var NSImageNameTouchBarSkipAhead15SecondsTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSkipAhead30SecondsTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSkipAhead30SecondsTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipAhead30SecondsTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipAhead30SecondsTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipAhead30SecondsTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSkipAhead30SecondsTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSkipAhead30SecondsTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipAhead30SecondsTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSkipAhead30SecondsTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipAhead30SecondsTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -478,7 +478,7 @@ var NSImageNameTouchBarSkipAhead30SecondsTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSkipAheadTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSkipAheadTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipAheadTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipAheadTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipAheadTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSkipAheadTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSkipAheadTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipAheadTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSkipAheadTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipAheadTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -491,7 +491,7 @@ var NSImageNameTouchBarSkipAheadTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSkipBack15SecondsTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSkipBack15SecondsTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipBack15SecondsTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipBack15SecondsTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipBack15SecondsTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSkipBack15SecondsTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSkipBack15SecondsTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipBack15SecondsTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSkipBack15SecondsTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipBack15SecondsTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -504,7 +504,7 @@ var NSImageNameTouchBarSkipBack15SecondsTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSkipBack30SecondsTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSkipBack30SecondsTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipBack30SecondsTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipBack30SecondsTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipBack30SecondsTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSkipBack30SecondsTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSkipBack30SecondsTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipBack30SecondsTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSkipBack30SecondsTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipBack30SecondsTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -517,7 +517,7 @@ var NSImageNameTouchBarSkipBack30SecondsTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSkipBackTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSkipBackTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipBackTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipBackTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipBackTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSkipBackTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSkipBackTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipBackTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSkipBackTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipBackTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -530,7 +530,7 @@ var NSImageNameTouchBarSkipBackTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSkipToEndTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSkipToEndTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipToEndTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipToEndTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipToEndTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSkipToEndTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSkipToEndTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipToEndTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSkipToEndTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipToEndTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -543,7 +543,7 @@ var NSImageNameTouchBarSkipToEndTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSkipToStartTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSkipToStartTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSkipToStartTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSkipToStartTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipToStartTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSkipToStartTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSkipToStartTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSkipToStartTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSkipToStartTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSkipToStartTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -556,7 +556,7 @@ var NSImageNameTouchBarSkipToStartTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarSlideshowTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarSlideshowTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarSlideshowTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarSlideshowTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSlideshowTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarSlideshowTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarSlideshowTemplate").orElseThrow().reinterpret(NSImageNameTouchBarSlideshowTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarSlideshowTemplate_VH: VarHandle by lazy { NSImageNameTouchBarSlideshowTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -569,7 +569,7 @@ var NSImageNameTouchBarSlideshowTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTagIconTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTagIconTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTagIconTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTagIconTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTagIconTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTagIconTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTagIconTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTagIconTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTagIconTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTagIconTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -582,7 +582,7 @@ var NSImageNameTouchBarTagIconTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextBoldTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextBoldTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextBoldTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextBoldTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextBoldTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextBoldTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextBoldTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextBoldTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextBoldTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextBoldTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -595,7 +595,7 @@ var NSImageNameTouchBarTextBoldTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextBoxTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextBoxTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextBoxTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextBoxTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextBoxTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextBoxTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextBoxTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextBoxTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextBoxTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextBoxTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -608,7 +608,7 @@ var NSImageNameTouchBarTextBoxTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextCenterAlignTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextCenterAlignTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextCenterAlignTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextCenterAlignTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextCenterAlignTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextCenterAlignTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextCenterAlignTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextCenterAlignTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextCenterAlignTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextCenterAlignTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -621,7 +621,7 @@ var NSImageNameTouchBarTextCenterAlignTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextItalicTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextItalicTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextItalicTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextItalicTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextItalicTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextItalicTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextItalicTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextItalicTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextItalicTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextItalicTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -634,7 +634,7 @@ var NSImageNameTouchBarTextItalicTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextJustifiedAlignTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextJustifiedAlignTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextJustifiedAlignTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextJustifiedAlignTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextJustifiedAlignTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextJustifiedAlignTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextJustifiedAlignTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextJustifiedAlignTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextJustifiedAlignTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextJustifiedAlignTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -647,7 +647,7 @@ var NSImageNameTouchBarTextJustifiedAlignTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextLeftAlignTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextLeftAlignTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextLeftAlignTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextLeftAlignTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextLeftAlignTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextLeftAlignTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextLeftAlignTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextLeftAlignTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextLeftAlignTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextLeftAlignTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -660,7 +660,7 @@ var NSImageNameTouchBarTextLeftAlignTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextListTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextListTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextListTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextListTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextListTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextListTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextListTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextListTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextListTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextListTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -673,7 +673,7 @@ var NSImageNameTouchBarTextListTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextRightAlignTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextRightAlignTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextRightAlignTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextRightAlignTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextRightAlignTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextRightAlignTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextRightAlignTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextRightAlignTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextRightAlignTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextRightAlignTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -686,7 +686,7 @@ var NSImageNameTouchBarTextRightAlignTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextStrikethroughTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextStrikethroughTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextStrikethroughTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextStrikethroughTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextStrikethroughTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextStrikethroughTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextStrikethroughTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextStrikethroughTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextStrikethroughTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextStrikethroughTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -699,7 +699,7 @@ var NSImageNameTouchBarTextStrikethroughTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarTextUnderlineTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarTextUnderlineTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarTextUnderlineTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarTextUnderlineTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextUnderlineTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarTextUnderlineTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarTextUnderlineTemplate").orElseThrow().reinterpret(NSImageNameTouchBarTextUnderlineTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarTextUnderlineTemplate_VH: VarHandle by lazy { NSImageNameTouchBarTextUnderlineTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -712,7 +712,7 @@ var NSImageNameTouchBarTextUnderlineTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarUserAddTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarUserAddTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarUserAddTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarUserAddTemplate").orElseThrow().reinterpret(NSImageNameTouchBarUserAddTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarUserAddTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarUserAddTemplate").orElseThrow().reinterpret(NSImageNameTouchBarUserAddTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarUserAddTemplate_VH: VarHandle by lazy { NSImageNameTouchBarUserAddTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -725,7 +725,7 @@ var NSImageNameTouchBarUserAddTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarUserGroupTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarUserGroupTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarUserGroupTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarUserGroupTemplate").orElseThrow().reinterpret(NSImageNameTouchBarUserGroupTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarUserGroupTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarUserGroupTemplate").orElseThrow().reinterpret(NSImageNameTouchBarUserGroupTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarUserGroupTemplate_VH: VarHandle by lazy { NSImageNameTouchBarUserGroupTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -738,7 +738,7 @@ var NSImageNameTouchBarUserGroupTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarUserTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarUserTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarUserTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarUserTemplate").orElseThrow().reinterpret(NSImageNameTouchBarUserTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarUserTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarUserTemplate").orElseThrow().reinterpret(NSImageNameTouchBarUserTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarUserTemplate_VH: VarHandle by lazy { NSImageNameTouchBarUserTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -751,7 +751,7 @@ var NSImageNameTouchBarUserTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarVolumeDownTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarVolumeDownTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarVolumeDownTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarVolumeDownTemplate").orElseThrow().reinterpret(NSImageNameTouchBarVolumeDownTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarVolumeDownTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarVolumeDownTemplate").orElseThrow().reinterpret(NSImageNameTouchBarVolumeDownTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarVolumeDownTemplate_VH: VarHandle by lazy { NSImageNameTouchBarVolumeDownTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -764,7 +764,7 @@ var NSImageNameTouchBarVolumeDownTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarVolumeUpTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarVolumeUpTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarVolumeUpTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarVolumeUpTemplate").orElseThrow().reinterpret(NSImageNameTouchBarVolumeUpTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarVolumeUpTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarVolumeUpTemplate").orElseThrow().reinterpret(NSImageNameTouchBarVolumeUpTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarVolumeUpTemplate_VH: VarHandle by lazy { NSImageNameTouchBarVolumeUpTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -777,7 +777,7 @@ var NSImageNameTouchBarVolumeUpTemplate: MemorySegment
  * {@snippet lang=c : NSImageNameTouchBarPlayheadTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarPlayheadTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarPlayheadTemplate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageNameTouchBarPlayheadTemplate").orElseThrow().reinterpret(NSImageNameTouchBarPlayheadTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarPlayheadTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarPlayheadTemplate").orElseThrow().reinterpret(NSImageNameTouchBarPlayheadTemplate_LAYOUT.byteSize()) }
 private val NSImageNameTouchBarPlayheadTemplate_VH: VarHandle by lazy { NSImageNameTouchBarPlayheadTemplate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -790,7 +790,7 @@ var NSImageNameTouchBarPlayheadTemplate: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameComposeEmail typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameComposeEmail_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameComposeEmail_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameComposeEmail").orElseThrow().reinterpret(NSSharingServiceNameComposeEmail_LAYOUT.byteSize()) }
+private val NSSharingServiceNameComposeEmail_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameComposeEmail").orElseThrow().reinterpret(NSSharingServiceNameComposeEmail_LAYOUT.byteSize()) }
 private val NSSharingServiceNameComposeEmail_VH: VarHandle by lazy { NSSharingServiceNameComposeEmail_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -803,7 +803,7 @@ var NSSharingServiceNameComposeEmail: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameComposeMessage typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameComposeMessage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameComposeMessage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameComposeMessage").orElseThrow().reinterpret(NSSharingServiceNameComposeMessage_LAYOUT.byteSize()) }
+private val NSSharingServiceNameComposeMessage_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameComposeMessage").orElseThrow().reinterpret(NSSharingServiceNameComposeMessage_LAYOUT.byteSize()) }
 private val NSSharingServiceNameComposeMessage_VH: VarHandle by lazy { NSSharingServiceNameComposeMessage_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -816,7 +816,7 @@ var NSSharingServiceNameComposeMessage: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameSendViaAirDrop typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameSendViaAirDrop_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameSendViaAirDrop_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameSendViaAirDrop").orElseThrow().reinterpret(NSSharingServiceNameSendViaAirDrop_LAYOUT.byteSize()) }
+private val NSSharingServiceNameSendViaAirDrop_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameSendViaAirDrop").orElseThrow().reinterpret(NSSharingServiceNameSendViaAirDrop_LAYOUT.byteSize()) }
 private val NSSharingServiceNameSendViaAirDrop_VH: VarHandle by lazy { NSSharingServiceNameSendViaAirDrop_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -829,7 +829,7 @@ var NSSharingServiceNameSendViaAirDrop: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameAddToSafariReadingList typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameAddToSafariReadingList_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameAddToSafariReadingList_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameAddToSafariReadingList").orElseThrow().reinterpret(NSSharingServiceNameAddToSafariReadingList_LAYOUT.byteSize()) }
+private val NSSharingServiceNameAddToSafariReadingList_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameAddToSafariReadingList").orElseThrow().reinterpret(NSSharingServiceNameAddToSafariReadingList_LAYOUT.byteSize()) }
 private val NSSharingServiceNameAddToSafariReadingList_VH: VarHandle by lazy { NSSharingServiceNameAddToSafariReadingList_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -842,7 +842,7 @@ var NSSharingServiceNameAddToSafariReadingList: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameAddToIPhoto typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameAddToIPhoto_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameAddToIPhoto_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameAddToIPhoto").orElseThrow().reinterpret(NSSharingServiceNameAddToIPhoto_LAYOUT.byteSize()) }
+private val NSSharingServiceNameAddToIPhoto_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameAddToIPhoto").orElseThrow().reinterpret(NSSharingServiceNameAddToIPhoto_LAYOUT.byteSize()) }
 private val NSSharingServiceNameAddToIPhoto_VH: VarHandle by lazy { NSSharingServiceNameAddToIPhoto_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -855,7 +855,7 @@ var NSSharingServiceNameAddToIPhoto: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameAddToAperture typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameAddToAperture_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameAddToAperture_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameAddToAperture").orElseThrow().reinterpret(NSSharingServiceNameAddToAperture_LAYOUT.byteSize()) }
+private val NSSharingServiceNameAddToAperture_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameAddToAperture").orElseThrow().reinterpret(NSSharingServiceNameAddToAperture_LAYOUT.byteSize()) }
 private val NSSharingServiceNameAddToAperture_VH: VarHandle by lazy { NSSharingServiceNameAddToAperture_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -868,7 +868,7 @@ var NSSharingServiceNameAddToAperture: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameUseAsDesktopPicture typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameUseAsDesktopPicture_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameUseAsDesktopPicture_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameUseAsDesktopPicture").orElseThrow().reinterpret(NSSharingServiceNameUseAsDesktopPicture_LAYOUT.byteSize()) }
+private val NSSharingServiceNameUseAsDesktopPicture_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameUseAsDesktopPicture").orElseThrow().reinterpret(NSSharingServiceNameUseAsDesktopPicture_LAYOUT.byteSize()) }
 private val NSSharingServiceNameUseAsDesktopPicture_VH: VarHandle by lazy { NSSharingServiceNameUseAsDesktopPicture_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -881,7 +881,7 @@ var NSSharingServiceNameUseAsDesktopPicture: MemorySegment
  * {@snippet lang=c : NSSharingServiceNamePostOnFacebook typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNamePostOnFacebook_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnFacebook_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnFacebook").orElseThrow().reinterpret(NSSharingServiceNamePostOnFacebook_LAYOUT.byteSize()) }
+private val NSSharingServiceNamePostOnFacebook_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNamePostOnFacebook").orElseThrow().reinterpret(NSSharingServiceNamePostOnFacebook_LAYOUT.byteSize()) }
 private val NSSharingServiceNamePostOnFacebook_VH: VarHandle by lazy { NSSharingServiceNamePostOnFacebook_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -894,7 +894,7 @@ var NSSharingServiceNamePostOnFacebook: MemorySegment
  * {@snippet lang=c : NSSharingServiceNamePostOnTwitter typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNamePostOnTwitter_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnTwitter_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnTwitter").orElseThrow().reinterpret(NSSharingServiceNamePostOnTwitter_LAYOUT.byteSize()) }
+private val NSSharingServiceNamePostOnTwitter_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNamePostOnTwitter").orElseThrow().reinterpret(NSSharingServiceNamePostOnTwitter_LAYOUT.byteSize()) }
 private val NSSharingServiceNamePostOnTwitter_VH: VarHandle by lazy { NSSharingServiceNamePostOnTwitter_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -907,7 +907,7 @@ var NSSharingServiceNamePostOnTwitter: MemorySegment
  * {@snippet lang=c : NSSharingServiceNamePostOnSinaWeibo typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNamePostOnSinaWeibo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnSinaWeibo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnSinaWeibo").orElseThrow().reinterpret(NSSharingServiceNamePostOnSinaWeibo_LAYOUT.byteSize()) }
+private val NSSharingServiceNamePostOnSinaWeibo_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNamePostOnSinaWeibo").orElseThrow().reinterpret(NSSharingServiceNamePostOnSinaWeibo_LAYOUT.byteSize()) }
 private val NSSharingServiceNamePostOnSinaWeibo_VH: VarHandle by lazy { NSSharingServiceNamePostOnSinaWeibo_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -920,7 +920,7 @@ var NSSharingServiceNamePostOnSinaWeibo: MemorySegment
  * {@snippet lang=c : NSSharingServiceNamePostOnTencentWeibo typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNamePostOnTencentWeibo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnTencentWeibo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnTencentWeibo").orElseThrow().reinterpret(NSSharingServiceNamePostOnTencentWeibo_LAYOUT.byteSize()) }
+private val NSSharingServiceNamePostOnTencentWeibo_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNamePostOnTencentWeibo").orElseThrow().reinterpret(NSSharingServiceNamePostOnTencentWeibo_LAYOUT.byteSize()) }
 private val NSSharingServiceNamePostOnTencentWeibo_VH: VarHandle by lazy { NSSharingServiceNamePostOnTencentWeibo_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -933,7 +933,7 @@ var NSSharingServiceNamePostOnTencentWeibo: MemorySegment
  * {@snippet lang=c : NSSharingServiceNamePostOnLinkedIn typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNamePostOnLinkedIn_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostOnLinkedIn_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostOnLinkedIn").orElseThrow().reinterpret(NSSharingServiceNamePostOnLinkedIn_LAYOUT.byteSize()) }
+private val NSSharingServiceNamePostOnLinkedIn_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNamePostOnLinkedIn").orElseThrow().reinterpret(NSSharingServiceNamePostOnLinkedIn_LAYOUT.byteSize()) }
 private val NSSharingServiceNamePostOnLinkedIn_VH: VarHandle by lazy { NSSharingServiceNamePostOnLinkedIn_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -946,7 +946,7 @@ var NSSharingServiceNamePostOnLinkedIn: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameUseAsTwitterProfileImage typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameUseAsTwitterProfileImage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameUseAsTwitterProfileImage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameUseAsTwitterProfileImage").orElseThrow().reinterpret(NSSharingServiceNameUseAsTwitterProfileImage_LAYOUT.byteSize()) }
+private val NSSharingServiceNameUseAsTwitterProfileImage_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameUseAsTwitterProfileImage").orElseThrow().reinterpret(NSSharingServiceNameUseAsTwitterProfileImage_LAYOUT.byteSize()) }
 private val NSSharingServiceNameUseAsTwitterProfileImage_VH: VarHandle by lazy { NSSharingServiceNameUseAsTwitterProfileImage_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -959,7 +959,7 @@ var NSSharingServiceNameUseAsTwitterProfileImage: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameUseAsFacebookProfileImage typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameUseAsFacebookProfileImage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameUseAsFacebookProfileImage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameUseAsFacebookProfileImage").orElseThrow().reinterpret(NSSharingServiceNameUseAsFacebookProfileImage_LAYOUT.byteSize()) }
+private val NSSharingServiceNameUseAsFacebookProfileImage_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameUseAsFacebookProfileImage").orElseThrow().reinterpret(NSSharingServiceNameUseAsFacebookProfileImage_LAYOUT.byteSize()) }
 private val NSSharingServiceNameUseAsFacebookProfileImage_VH: VarHandle by lazy { NSSharingServiceNameUseAsFacebookProfileImage_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -972,7 +972,7 @@ var NSSharingServiceNameUseAsFacebookProfileImage: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameUseAsLinkedInProfileImage typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameUseAsLinkedInProfileImage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameUseAsLinkedInProfileImage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameUseAsLinkedInProfileImage").orElseThrow().reinterpret(NSSharingServiceNameUseAsLinkedInProfileImage_LAYOUT.byteSize()) }
+private val NSSharingServiceNameUseAsLinkedInProfileImage_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameUseAsLinkedInProfileImage").orElseThrow().reinterpret(NSSharingServiceNameUseAsLinkedInProfileImage_LAYOUT.byteSize()) }
 private val NSSharingServiceNameUseAsLinkedInProfileImage_VH: VarHandle by lazy { NSSharingServiceNameUseAsLinkedInProfileImage_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -985,7 +985,7 @@ var NSSharingServiceNameUseAsLinkedInProfileImage: MemorySegment
  * {@snippet lang=c : NSSharingServiceNamePostImageOnFlickr typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNamePostImageOnFlickr_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostImageOnFlickr_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostImageOnFlickr").orElseThrow().reinterpret(NSSharingServiceNamePostImageOnFlickr_LAYOUT.byteSize()) }
+private val NSSharingServiceNamePostImageOnFlickr_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNamePostImageOnFlickr").orElseThrow().reinterpret(NSSharingServiceNamePostImageOnFlickr_LAYOUT.byteSize()) }
 private val NSSharingServiceNamePostImageOnFlickr_VH: VarHandle by lazy { NSSharingServiceNamePostImageOnFlickr_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -998,7 +998,7 @@ var NSSharingServiceNamePostImageOnFlickr: MemorySegment
  * {@snippet lang=c : NSSharingServiceNamePostVideoOnVimeo typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNamePostVideoOnVimeo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostVideoOnVimeo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostVideoOnVimeo").orElseThrow().reinterpret(NSSharingServiceNamePostVideoOnVimeo_LAYOUT.byteSize()) }
+private val NSSharingServiceNamePostVideoOnVimeo_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNamePostVideoOnVimeo").orElseThrow().reinterpret(NSSharingServiceNamePostVideoOnVimeo_LAYOUT.byteSize()) }
 private val NSSharingServiceNamePostVideoOnVimeo_VH: VarHandle by lazy { NSSharingServiceNamePostVideoOnVimeo_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1011,7 +1011,7 @@ var NSSharingServiceNamePostVideoOnVimeo: MemorySegment
  * {@snippet lang=c : NSSharingServiceNamePostVideoOnYouku typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNamePostVideoOnYouku_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostVideoOnYouku_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostVideoOnYouku").orElseThrow().reinterpret(NSSharingServiceNamePostVideoOnYouku_LAYOUT.byteSize()) }
+private val NSSharingServiceNamePostVideoOnYouku_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNamePostVideoOnYouku").orElseThrow().reinterpret(NSSharingServiceNamePostVideoOnYouku_LAYOUT.byteSize()) }
 private val NSSharingServiceNamePostVideoOnYouku_VH: VarHandle by lazy { NSSharingServiceNamePostVideoOnYouku_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1024,7 +1024,7 @@ var NSSharingServiceNamePostVideoOnYouku: MemorySegment
  * {@snippet lang=c : NSSharingServiceNamePostVideoOnTudou typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNamePostVideoOnTudou_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNamePostVideoOnTudou_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNamePostVideoOnTudou").orElseThrow().reinterpret(NSSharingServiceNamePostVideoOnTudou_LAYOUT.byteSize()) }
+private val NSSharingServiceNamePostVideoOnTudou_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNamePostVideoOnTudou").orElseThrow().reinterpret(NSSharingServiceNamePostVideoOnTudou_LAYOUT.byteSize()) }
 private val NSSharingServiceNamePostVideoOnTudou_VH: VarHandle by lazy { NSSharingServiceNamePostVideoOnTudou_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1037,7 +1037,7 @@ var NSSharingServiceNamePostVideoOnTudou: MemorySegment
  * {@snippet lang=c : NSSharingServiceNameCloudSharing typedef const NSSharingServiceName = (Void)*
  */
 private val NSSharingServiceNameCloudSharing_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSharingServiceNameCloudSharing_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSharingServiceNameCloudSharing").orElseThrow().reinterpret(NSSharingServiceNameCloudSharing_LAYOUT.byteSize()) }
+private val NSSharingServiceNameCloudSharing_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSharingServiceNameCloudSharing").orElseThrow().reinterpret(NSSharingServiceNameCloudSharing_LAYOUT.byteSize()) }
 private val NSSharingServiceNameCloudSharing_VH: VarHandle by lazy { NSSharingServiceNameCloudSharing_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1050,7 +1050,7 @@ var NSSharingServiceNameCloudSharing: MemorySegment
  * {@snippet lang=c : NSSliderAccessoryWidthDefault typedef const NSSliderAccessoryWidth = Double
  */
 private val NSSliderAccessoryWidthDefault_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSSliderAccessoryWidthDefault_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSliderAccessoryWidthDefault").orElseThrow().reinterpret(NSSliderAccessoryWidthDefault_LAYOUT.byteSize()) }
+private val NSSliderAccessoryWidthDefault_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSliderAccessoryWidthDefault").orElseThrow().reinterpret(NSSliderAccessoryWidthDefault_LAYOUT.byteSize()) }
 private val NSSliderAccessoryWidthDefault_VH: VarHandle by lazy { NSSliderAccessoryWidthDefault_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -1063,7 +1063,7 @@ var NSSliderAccessoryWidthDefault: Double
  * {@snippet lang=c : NSSliderAccessoryWidthWide typedef const NSSliderAccessoryWidth = Double
  */
 private val NSSliderAccessoryWidthWide_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSSliderAccessoryWidthWide_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSliderAccessoryWidthWide").orElseThrow().reinterpret(NSSliderAccessoryWidthWide_LAYOUT.byteSize()) }
+private val NSSliderAccessoryWidthWide_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSliderAccessoryWidthWide").orElseThrow().reinterpret(NSSliderAccessoryWidthWide_LAYOUT.byteSize()) }
 private val NSSliderAccessoryWidthWide_VH: VarHandle by lazy { NSSliderAccessoryWidthWide_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -1076,7 +1076,7 @@ var NSSliderAccessoryWidthWide: Double
  * {@snippet lang=c : NSVoiceName typedef const NSVoiceAttributeKey = (Void)*
  */
 private val NSVoiceName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceName").orElseThrow().reinterpret(NSVoiceName_LAYOUT.byteSize()) }
+private val NSVoiceName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceName").orElseThrow().reinterpret(NSVoiceName_LAYOUT.byteSize()) }
 private val NSVoiceName_VH: VarHandle by lazy { NSVoiceName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1089,7 +1089,7 @@ var NSVoiceName: MemorySegment
  * {@snippet lang=c : NSVoiceIdentifier typedef const NSVoiceAttributeKey = (Void)*
  */
 private val NSVoiceIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceIdentifier").orElseThrow().reinterpret(NSVoiceIdentifier_LAYOUT.byteSize()) }
+private val NSVoiceIdentifier_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceIdentifier").orElseThrow().reinterpret(NSVoiceIdentifier_LAYOUT.byteSize()) }
 private val NSVoiceIdentifier_VH: VarHandle by lazy { NSVoiceIdentifier_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1102,7 +1102,7 @@ var NSVoiceIdentifier: MemorySegment
  * {@snippet lang=c : NSVoiceAge typedef const NSVoiceAttributeKey = (Void)*
  */
 private val NSVoiceAge_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceAge_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceAge").orElseThrow().reinterpret(NSVoiceAge_LAYOUT.byteSize()) }
+private val NSVoiceAge_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceAge").orElseThrow().reinterpret(NSVoiceAge_LAYOUT.byteSize()) }
 private val NSVoiceAge_VH: VarHandle by lazy { NSVoiceAge_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1115,7 +1115,7 @@ var NSVoiceAge: MemorySegment
  * {@snippet lang=c : NSVoiceGender typedef const NSVoiceAttributeKey = (Void)*
  */
 private val NSVoiceGender_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGender_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGender").orElseThrow().reinterpret(NSVoiceGender_LAYOUT.byteSize()) }
+private val NSVoiceGender_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceGender").orElseThrow().reinterpret(NSVoiceGender_LAYOUT.byteSize()) }
 private val NSVoiceGender_VH: VarHandle by lazy { NSVoiceGender_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1128,7 +1128,7 @@ var NSVoiceGender: MemorySegment
  * {@snippet lang=c : NSVoiceDemoText typedef const NSVoiceAttributeKey = (Void)*
  */
 private val NSVoiceDemoText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceDemoText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceDemoText").orElseThrow().reinterpret(NSVoiceDemoText_LAYOUT.byteSize()) }
+private val NSVoiceDemoText_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceDemoText").orElseThrow().reinterpret(NSVoiceDemoText_LAYOUT.byteSize()) }
 private val NSVoiceDemoText_VH: VarHandle by lazy { NSVoiceDemoText_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1141,7 +1141,7 @@ var NSVoiceDemoText: MemorySegment
  * {@snippet lang=c : NSVoiceLocaleIdentifier typedef const NSVoiceAttributeKey = (Void)*
  */
 private val NSVoiceLocaleIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceLocaleIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceLocaleIdentifier").orElseThrow().reinterpret(NSVoiceLocaleIdentifier_LAYOUT.byteSize()) }
+private val NSVoiceLocaleIdentifier_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceLocaleIdentifier").orElseThrow().reinterpret(NSVoiceLocaleIdentifier_LAYOUT.byteSize()) }
 private val NSVoiceLocaleIdentifier_VH: VarHandle by lazy { NSVoiceLocaleIdentifier_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1154,7 +1154,7 @@ var NSVoiceLocaleIdentifier: MemorySegment
  * {@snippet lang=c : NSVoiceSupportedCharacters typedef const NSVoiceAttributeKey = (Void)*
  */
 private val NSVoiceSupportedCharacters_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceSupportedCharacters_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceSupportedCharacters").orElseThrow().reinterpret(NSVoiceSupportedCharacters_LAYOUT.byteSize()) }
+private val NSVoiceSupportedCharacters_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceSupportedCharacters").orElseThrow().reinterpret(NSVoiceSupportedCharacters_LAYOUT.byteSize()) }
 private val NSVoiceSupportedCharacters_VH: VarHandle by lazy { NSVoiceSupportedCharacters_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1167,7 +1167,7 @@ var NSVoiceSupportedCharacters: MemorySegment
  * {@snippet lang=c : NSVoiceIndividuallySpokenCharacters typedef const NSVoiceAttributeKey = (Void)*
  */
 private val NSVoiceIndividuallySpokenCharacters_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceIndividuallySpokenCharacters_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceIndividuallySpokenCharacters").orElseThrow().reinterpret(NSVoiceIndividuallySpokenCharacters_LAYOUT.byteSize()) }
+private val NSVoiceIndividuallySpokenCharacters_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceIndividuallySpokenCharacters").orElseThrow().reinterpret(NSVoiceIndividuallySpokenCharacters_LAYOUT.byteSize()) }
 private val NSVoiceIndividuallySpokenCharacters_VH: VarHandle by lazy { NSVoiceIndividuallySpokenCharacters_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1180,7 +1180,7 @@ var NSVoiceIndividuallySpokenCharacters: MemorySegment
  * {@snippet lang=c : NSSpeechDictionaryLocaleIdentifier typedef const NSSpeechDictionaryKey = (Void)*
  */
 private val NSSpeechDictionaryLocaleIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryLocaleIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryLocaleIdentifier").orElseThrow().reinterpret(NSSpeechDictionaryLocaleIdentifier_LAYOUT.byteSize()) }
+private val NSSpeechDictionaryLocaleIdentifier_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechDictionaryLocaleIdentifier").orElseThrow().reinterpret(NSSpeechDictionaryLocaleIdentifier_LAYOUT.byteSize()) }
 private val NSSpeechDictionaryLocaleIdentifier_VH: VarHandle by lazy { NSSpeechDictionaryLocaleIdentifier_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1193,7 +1193,7 @@ var NSSpeechDictionaryLocaleIdentifier: MemorySegment
  * {@snippet lang=c : NSSpeechDictionaryModificationDate typedef const NSSpeechDictionaryKey = (Void)*
  */
 private val NSSpeechDictionaryModificationDate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryModificationDate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryModificationDate").orElseThrow().reinterpret(NSSpeechDictionaryModificationDate_LAYOUT.byteSize()) }
+private val NSSpeechDictionaryModificationDate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechDictionaryModificationDate").orElseThrow().reinterpret(NSSpeechDictionaryModificationDate_LAYOUT.byteSize()) }
 private val NSSpeechDictionaryModificationDate_VH: VarHandle by lazy { NSSpeechDictionaryModificationDate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1206,7 +1206,7 @@ var NSSpeechDictionaryModificationDate: MemorySegment
  * {@snippet lang=c : NSSpeechDictionaryPronunciations typedef const NSSpeechDictionaryKey = (Void)*
  */
 private val NSSpeechDictionaryPronunciations_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryPronunciations_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryPronunciations").orElseThrow().reinterpret(NSSpeechDictionaryPronunciations_LAYOUT.byteSize()) }
+private val NSSpeechDictionaryPronunciations_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechDictionaryPronunciations").orElseThrow().reinterpret(NSSpeechDictionaryPronunciations_LAYOUT.byteSize()) }
 private val NSSpeechDictionaryPronunciations_VH: VarHandle by lazy { NSSpeechDictionaryPronunciations_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1219,7 +1219,7 @@ var NSSpeechDictionaryPronunciations: MemorySegment
  * {@snippet lang=c : NSSpeechDictionaryAbbreviations typedef const NSSpeechDictionaryKey = (Void)*
  */
 private val NSSpeechDictionaryAbbreviations_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryAbbreviations_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryAbbreviations").orElseThrow().reinterpret(NSSpeechDictionaryAbbreviations_LAYOUT.byteSize()) }
+private val NSSpeechDictionaryAbbreviations_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechDictionaryAbbreviations").orElseThrow().reinterpret(NSSpeechDictionaryAbbreviations_LAYOUT.byteSize()) }
 private val NSSpeechDictionaryAbbreviations_VH: VarHandle by lazy { NSSpeechDictionaryAbbreviations_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1232,7 +1232,7 @@ var NSSpeechDictionaryAbbreviations: MemorySegment
  * {@snippet lang=c : NSSpeechDictionaryEntrySpelling typedef const NSSpeechDictionaryKey = (Void)*
  */
 private val NSSpeechDictionaryEntrySpelling_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryEntrySpelling_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryEntrySpelling").orElseThrow().reinterpret(NSSpeechDictionaryEntrySpelling_LAYOUT.byteSize()) }
+private val NSSpeechDictionaryEntrySpelling_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechDictionaryEntrySpelling").orElseThrow().reinterpret(NSSpeechDictionaryEntrySpelling_LAYOUT.byteSize()) }
 private val NSSpeechDictionaryEntrySpelling_VH: VarHandle by lazy { NSSpeechDictionaryEntrySpelling_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1245,7 +1245,7 @@ var NSSpeechDictionaryEntrySpelling: MemorySegment
  * {@snippet lang=c : NSSpeechDictionaryEntryPhonemes typedef const NSSpeechDictionaryKey = (Void)*
  */
 private val NSSpeechDictionaryEntryPhonemes_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechDictionaryEntryPhonemes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechDictionaryEntryPhonemes").orElseThrow().reinterpret(NSSpeechDictionaryEntryPhonemes_LAYOUT.byteSize()) }
+private val NSSpeechDictionaryEntryPhonemes_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechDictionaryEntryPhonemes").orElseThrow().reinterpret(NSSpeechDictionaryEntryPhonemes_LAYOUT.byteSize()) }
 private val NSSpeechDictionaryEntryPhonemes_VH: VarHandle by lazy { NSSpeechDictionaryEntryPhonemes_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1258,7 +1258,7 @@ var NSSpeechDictionaryEntryPhonemes: MemorySegment
  * {@snippet lang=c : NSVoiceGenderNeuter typedef const NSVoiceGenderName = (Void)*
  */
 private val NSVoiceGenderNeuter_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGenderNeuter_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGenderNeuter").orElseThrow().reinterpret(NSVoiceGenderNeuter_LAYOUT.byteSize()) }
+private val NSVoiceGenderNeuter_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceGenderNeuter").orElseThrow().reinterpret(NSVoiceGenderNeuter_LAYOUT.byteSize()) }
 private val NSVoiceGenderNeuter_VH: VarHandle by lazy { NSVoiceGenderNeuter_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1271,7 +1271,7 @@ var NSVoiceGenderNeuter: MemorySegment
  * {@snippet lang=c : NSVoiceGenderMale typedef const NSVoiceGenderName = (Void)*
  */
 private val NSVoiceGenderMale_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGenderMale_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGenderMale").orElseThrow().reinterpret(NSVoiceGenderMale_LAYOUT.byteSize()) }
+private val NSVoiceGenderMale_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceGenderMale").orElseThrow().reinterpret(NSVoiceGenderMale_LAYOUT.byteSize()) }
 private val NSVoiceGenderMale_VH: VarHandle by lazy { NSVoiceGenderMale_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1284,7 +1284,7 @@ var NSVoiceGenderMale: MemorySegment
  * {@snippet lang=c : NSVoiceGenderFemale typedef const NSVoiceGenderName = (Void)*
  */
 private val NSVoiceGenderFemale_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGenderFemale_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGenderFemale").orElseThrow().reinterpret(NSVoiceGenderFemale_LAYOUT.byteSize()) }
+private val NSVoiceGenderFemale_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceGenderFemale").orElseThrow().reinterpret(NSVoiceGenderFemale_LAYOUT.byteSize()) }
 private val NSVoiceGenderFemale_VH: VarHandle by lazy { NSVoiceGenderFemale_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1297,7 +1297,7 @@ var NSVoiceGenderFemale: MemorySegment
  * {@snippet lang=c : NSVoiceGenderNeutral typedef const NSVoiceGenderName = (Void)*
  */
 private val NSVoiceGenderNeutral_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceGenderNeutral_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceGenderNeutral").orElseThrow().reinterpret(NSVoiceGenderNeutral_LAYOUT.byteSize()) }
+private val NSVoiceGenderNeutral_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceGenderNeutral").orElseThrow().reinterpret(NSVoiceGenderNeutral_LAYOUT.byteSize()) }
 private val NSVoiceGenderNeutral_VH: VarHandle by lazy { NSVoiceGenderNeutral_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1310,7 +1310,7 @@ var NSVoiceGenderNeutral: MemorySegment
  * {@snippet lang=c : NSSpeechStatusProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechStatusProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusProperty").orElseThrow().reinterpret(NSSpeechStatusProperty_LAYOUT.byteSize()) }
+private val NSSpeechStatusProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechStatusProperty").orElseThrow().reinterpret(NSSpeechStatusProperty_LAYOUT.byteSize()) }
 private val NSSpeechStatusProperty_VH: VarHandle by lazy { NSSpeechStatusProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1323,7 +1323,7 @@ var NSSpeechStatusProperty: MemorySegment
  * {@snippet lang=c : NSSpeechErrorsProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechErrorsProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorsProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorsProperty").orElseThrow().reinterpret(NSSpeechErrorsProperty_LAYOUT.byteSize()) }
+private val NSSpeechErrorsProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechErrorsProperty").orElseThrow().reinterpret(NSSpeechErrorsProperty_LAYOUT.byteSize()) }
 private val NSSpeechErrorsProperty_VH: VarHandle by lazy { NSSpeechErrorsProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1336,7 +1336,7 @@ var NSSpeechErrorsProperty: MemorySegment
  * {@snippet lang=c : NSSpeechInputModeProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechInputModeProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechInputModeProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechInputModeProperty").orElseThrow().reinterpret(NSSpeechInputModeProperty_LAYOUT.byteSize()) }
+private val NSSpeechInputModeProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechInputModeProperty").orElseThrow().reinterpret(NSSpeechInputModeProperty_LAYOUT.byteSize()) }
 private val NSSpeechInputModeProperty_VH: VarHandle by lazy { NSSpeechInputModeProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1349,7 +1349,7 @@ var NSSpeechInputModeProperty: MemorySegment
  * {@snippet lang=c : NSSpeechCharacterModeProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechCharacterModeProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCharacterModeProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCharacterModeProperty").orElseThrow().reinterpret(NSSpeechCharacterModeProperty_LAYOUT.byteSize()) }
+private val NSSpeechCharacterModeProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechCharacterModeProperty").orElseThrow().reinterpret(NSSpeechCharacterModeProperty_LAYOUT.byteSize()) }
 private val NSSpeechCharacterModeProperty_VH: VarHandle by lazy { NSSpeechCharacterModeProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1362,7 +1362,7 @@ var NSSpeechCharacterModeProperty: MemorySegment
  * {@snippet lang=c : NSSpeechNumberModeProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechNumberModeProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechNumberModeProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechNumberModeProperty").orElseThrow().reinterpret(NSSpeechNumberModeProperty_LAYOUT.byteSize()) }
+private val NSSpeechNumberModeProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechNumberModeProperty").orElseThrow().reinterpret(NSSpeechNumberModeProperty_LAYOUT.byteSize()) }
 private val NSSpeechNumberModeProperty_VH: VarHandle by lazy { NSSpeechNumberModeProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1375,7 +1375,7 @@ var NSSpeechNumberModeProperty: MemorySegment
  * {@snippet lang=c : NSSpeechRateProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechRateProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechRateProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechRateProperty").orElseThrow().reinterpret(NSSpeechRateProperty_LAYOUT.byteSize()) }
+private val NSSpeechRateProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechRateProperty").orElseThrow().reinterpret(NSSpeechRateProperty_LAYOUT.byteSize()) }
 private val NSSpeechRateProperty_VH: VarHandle by lazy { NSSpeechRateProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1388,7 +1388,7 @@ var NSSpeechRateProperty: MemorySegment
  * {@snippet lang=c : NSSpeechPitchBaseProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechPitchBaseProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPitchBaseProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPitchBaseProperty").orElseThrow().reinterpret(NSSpeechPitchBaseProperty_LAYOUT.byteSize()) }
+private val NSSpeechPitchBaseProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechPitchBaseProperty").orElseThrow().reinterpret(NSSpeechPitchBaseProperty_LAYOUT.byteSize()) }
 private val NSSpeechPitchBaseProperty_VH: VarHandle by lazy { NSSpeechPitchBaseProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1401,7 +1401,7 @@ var NSSpeechPitchBaseProperty: MemorySegment
  * {@snippet lang=c : NSSpeechPitchModProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechPitchModProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPitchModProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPitchModProperty").orElseThrow().reinterpret(NSSpeechPitchModProperty_LAYOUT.byteSize()) }
+private val NSSpeechPitchModProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechPitchModProperty").orElseThrow().reinterpret(NSSpeechPitchModProperty_LAYOUT.byteSize()) }
 private val NSSpeechPitchModProperty_VH: VarHandle by lazy { NSSpeechPitchModProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1414,7 +1414,7 @@ var NSSpeechPitchModProperty: MemorySegment
  * {@snippet lang=c : NSSpeechVolumeProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechVolumeProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechVolumeProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechVolumeProperty").orElseThrow().reinterpret(NSSpeechVolumeProperty_LAYOUT.byteSize()) }
+private val NSSpeechVolumeProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechVolumeProperty").orElseThrow().reinterpret(NSSpeechVolumeProperty_LAYOUT.byteSize()) }
 private val NSSpeechVolumeProperty_VH: VarHandle by lazy { NSSpeechVolumeProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1427,7 +1427,7 @@ var NSSpeechVolumeProperty: MemorySegment
  * {@snippet lang=c : NSSpeechSynthesizerInfoProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechSynthesizerInfoProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechSynthesizerInfoProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechSynthesizerInfoProperty").orElseThrow().reinterpret(NSSpeechSynthesizerInfoProperty_LAYOUT.byteSize()) }
+private val NSSpeechSynthesizerInfoProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechSynthesizerInfoProperty").orElseThrow().reinterpret(NSSpeechSynthesizerInfoProperty_LAYOUT.byteSize()) }
 private val NSSpeechSynthesizerInfoProperty_VH: VarHandle by lazy { NSSpeechSynthesizerInfoProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1440,7 +1440,7 @@ var NSSpeechSynthesizerInfoProperty: MemorySegment
  * {@snippet lang=c : NSSpeechRecentSyncProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechRecentSyncProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechRecentSyncProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechRecentSyncProperty").orElseThrow().reinterpret(NSSpeechRecentSyncProperty_LAYOUT.byteSize()) }
+private val NSSpeechRecentSyncProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechRecentSyncProperty").orElseThrow().reinterpret(NSSpeechRecentSyncProperty_LAYOUT.byteSize()) }
 private val NSSpeechRecentSyncProperty_VH: VarHandle by lazy { NSSpeechRecentSyncProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1453,7 +1453,7 @@ var NSSpeechRecentSyncProperty: MemorySegment
  * {@snippet lang=c : NSSpeechPhonemeSymbolsProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechPhonemeSymbolsProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeSymbolsProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeSymbolsProperty").orElseThrow().reinterpret(NSSpeechPhonemeSymbolsProperty_LAYOUT.byteSize()) }
+private val NSSpeechPhonemeSymbolsProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechPhonemeSymbolsProperty").orElseThrow().reinterpret(NSSpeechPhonemeSymbolsProperty_LAYOUT.byteSize()) }
 private val NSSpeechPhonemeSymbolsProperty_VH: VarHandle by lazy { NSSpeechPhonemeSymbolsProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1466,7 +1466,7 @@ var NSSpeechPhonemeSymbolsProperty: MemorySegment
  * {@snippet lang=c : NSSpeechCurrentVoiceProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechCurrentVoiceProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCurrentVoiceProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCurrentVoiceProperty").orElseThrow().reinterpret(NSSpeechCurrentVoiceProperty_LAYOUT.byteSize()) }
+private val NSSpeechCurrentVoiceProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechCurrentVoiceProperty").orElseThrow().reinterpret(NSSpeechCurrentVoiceProperty_LAYOUT.byteSize()) }
 private val NSSpeechCurrentVoiceProperty_VH: VarHandle by lazy { NSSpeechCurrentVoiceProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1479,7 +1479,7 @@ var NSSpeechCurrentVoiceProperty: MemorySegment
  * {@snippet lang=c : NSSpeechCommandDelimiterProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechCommandDelimiterProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCommandDelimiterProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCommandDelimiterProperty").orElseThrow().reinterpret(NSSpeechCommandDelimiterProperty_LAYOUT.byteSize()) }
+private val NSSpeechCommandDelimiterProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechCommandDelimiterProperty").orElseThrow().reinterpret(NSSpeechCommandDelimiterProperty_LAYOUT.byteSize()) }
 private val NSSpeechCommandDelimiterProperty_VH: VarHandle by lazy { NSSpeechCommandDelimiterProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1492,7 +1492,7 @@ var NSSpeechCommandDelimiterProperty: MemorySegment
  * {@snippet lang=c : NSSpeechResetProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechResetProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechResetProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechResetProperty").orElseThrow().reinterpret(NSSpeechResetProperty_LAYOUT.byteSize()) }
+private val NSSpeechResetProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechResetProperty").orElseThrow().reinterpret(NSSpeechResetProperty_LAYOUT.byteSize()) }
 private val NSSpeechResetProperty_VH: VarHandle by lazy { NSSpeechResetProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1505,7 +1505,7 @@ var NSSpeechResetProperty: MemorySegment
  * {@snippet lang=c : NSSpeechOutputToFileURLProperty typedef const NSSpeechPropertyKey = (Void)*
  */
 private val NSSpeechOutputToFileURLProperty_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechOutputToFileURLProperty_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechOutputToFileURLProperty").orElseThrow().reinterpret(NSSpeechOutputToFileURLProperty_LAYOUT.byteSize()) }
+private val NSSpeechOutputToFileURLProperty_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechOutputToFileURLProperty").orElseThrow().reinterpret(NSSpeechOutputToFileURLProperty_LAYOUT.byteSize()) }
 private val NSSpeechOutputToFileURLProperty_VH: VarHandle by lazy { NSSpeechOutputToFileURLProperty_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1518,7 +1518,7 @@ var NSSpeechOutputToFileURLProperty: MemorySegment
  * {@snippet lang=c : NSVoiceLanguage typedef const NSVoiceAttributeKey = (Void)*
  */
 private val NSVoiceLanguage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSVoiceLanguage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSVoiceLanguage").orElseThrow().reinterpret(NSVoiceLanguage_LAYOUT.byteSize()) }
+private val NSVoiceLanguage_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSVoiceLanguage").orElseThrow().reinterpret(NSVoiceLanguage_LAYOUT.byteSize()) }
 private val NSVoiceLanguage_VH: VarHandle by lazy { NSVoiceLanguage_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1531,7 +1531,7 @@ var NSVoiceLanguage: MemorySegment
  * {@snippet lang=c : NSSpeechModeText typedef const NSSpeechMode = (Void)*
  */
 private val NSSpeechModeText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechModeText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechModeText").orElseThrow().reinterpret(NSSpeechModeText_LAYOUT.byteSize()) }
+private val NSSpeechModeText_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechModeText").orElseThrow().reinterpret(NSSpeechModeText_LAYOUT.byteSize()) }
 private val NSSpeechModeText_VH: VarHandle by lazy { NSSpeechModeText_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1544,7 +1544,7 @@ var NSSpeechModeText: MemorySegment
  * {@snippet lang=c : NSSpeechModePhoneme typedef const NSSpeechMode = (Void)*
  */
 private val NSSpeechModePhoneme_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechModePhoneme_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechModePhoneme").orElseThrow().reinterpret(NSSpeechModePhoneme_LAYOUT.byteSize()) }
+private val NSSpeechModePhoneme_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechModePhoneme").orElseThrow().reinterpret(NSSpeechModePhoneme_LAYOUT.byteSize()) }
 private val NSSpeechModePhoneme_VH: VarHandle by lazy { NSSpeechModePhoneme_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1557,7 +1557,7 @@ var NSSpeechModePhoneme: MemorySegment
  * {@snippet lang=c : NSSpeechModeNormal typedef const NSSpeechMode = (Void)*
  */
 private val NSSpeechModeNormal_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechModeNormal_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechModeNormal").orElseThrow().reinterpret(NSSpeechModeNormal_LAYOUT.byteSize()) }
+private val NSSpeechModeNormal_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechModeNormal").orElseThrow().reinterpret(NSSpeechModeNormal_LAYOUT.byteSize()) }
 private val NSSpeechModeNormal_VH: VarHandle by lazy { NSSpeechModeNormal_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1570,7 +1570,7 @@ var NSSpeechModeNormal: MemorySegment
  * {@snippet lang=c : NSSpeechModeLiteral typedef const NSSpeechMode = (Void)*
  */
 private val NSSpeechModeLiteral_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechModeLiteral_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechModeLiteral").orElseThrow().reinterpret(NSSpeechModeLiteral_LAYOUT.byteSize()) }
+private val NSSpeechModeLiteral_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechModeLiteral").orElseThrow().reinterpret(NSSpeechModeLiteral_LAYOUT.byteSize()) }
 private val NSSpeechModeLiteral_VH: VarHandle by lazy { NSSpeechModeLiteral_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1583,7 +1583,7 @@ var NSSpeechModeLiteral: MemorySegment
  * {@snippet lang=c : NSSpeechStatusOutputBusy typedef const NSSpeechStatusKey = (Void)*
  */
 private val NSSpeechStatusOutputBusy_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusOutputBusy_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusOutputBusy").orElseThrow().reinterpret(NSSpeechStatusOutputBusy_LAYOUT.byteSize()) }
+private val NSSpeechStatusOutputBusy_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechStatusOutputBusy").orElseThrow().reinterpret(NSSpeechStatusOutputBusy_LAYOUT.byteSize()) }
 private val NSSpeechStatusOutputBusy_VH: VarHandle by lazy { NSSpeechStatusOutputBusy_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1596,7 +1596,7 @@ var NSSpeechStatusOutputBusy: MemorySegment
  * {@snippet lang=c : NSSpeechStatusOutputPaused typedef const NSSpeechStatusKey = (Void)*
  */
 private val NSSpeechStatusOutputPaused_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusOutputPaused_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusOutputPaused").orElseThrow().reinterpret(NSSpeechStatusOutputPaused_LAYOUT.byteSize()) }
+private val NSSpeechStatusOutputPaused_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechStatusOutputPaused").orElseThrow().reinterpret(NSSpeechStatusOutputPaused_LAYOUT.byteSize()) }
 private val NSSpeechStatusOutputPaused_VH: VarHandle by lazy { NSSpeechStatusOutputPaused_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1609,7 +1609,7 @@ var NSSpeechStatusOutputPaused: MemorySegment
  * {@snippet lang=c : NSSpeechStatusNumberOfCharactersLeft typedef const NSSpeechStatusKey = (Void)*
  */
 private val NSSpeechStatusNumberOfCharactersLeft_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusNumberOfCharactersLeft_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusNumberOfCharactersLeft").orElseThrow().reinterpret(NSSpeechStatusNumberOfCharactersLeft_LAYOUT.byteSize()) }
+private val NSSpeechStatusNumberOfCharactersLeft_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechStatusNumberOfCharactersLeft").orElseThrow().reinterpret(NSSpeechStatusNumberOfCharactersLeft_LAYOUT.byteSize()) }
 private val NSSpeechStatusNumberOfCharactersLeft_VH: VarHandle by lazy { NSSpeechStatusNumberOfCharactersLeft_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1622,7 +1622,7 @@ var NSSpeechStatusNumberOfCharactersLeft: MemorySegment
  * {@snippet lang=c : NSSpeechStatusPhonemeCode typedef const NSSpeechStatusKey = (Void)*
  */
 private val NSSpeechStatusPhonemeCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechStatusPhonemeCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechStatusPhonemeCode").orElseThrow().reinterpret(NSSpeechStatusPhonemeCode_LAYOUT.byteSize()) }
+private val NSSpeechStatusPhonemeCode_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechStatusPhonemeCode").orElseThrow().reinterpret(NSSpeechStatusPhonemeCode_LAYOUT.byteSize()) }
 private val NSSpeechStatusPhonemeCode_VH: VarHandle by lazy { NSSpeechStatusPhonemeCode_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1635,7 +1635,7 @@ var NSSpeechStatusPhonemeCode: MemorySegment
  * {@snippet lang=c : NSSpeechErrorCount typedef const NSSpeechErrorKey = (Void)*
  */
 private val NSSpeechErrorCount_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorCount_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorCount").orElseThrow().reinterpret(NSSpeechErrorCount_LAYOUT.byteSize()) }
+private val NSSpeechErrorCount_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechErrorCount").orElseThrow().reinterpret(NSSpeechErrorCount_LAYOUT.byteSize()) }
 private val NSSpeechErrorCount_VH: VarHandle by lazy { NSSpeechErrorCount_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1648,7 +1648,7 @@ var NSSpeechErrorCount: MemorySegment
  * {@snippet lang=c : NSSpeechErrorOldestCode typedef const NSSpeechErrorKey = (Void)*
  */
 private val NSSpeechErrorOldestCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorOldestCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorOldestCode").orElseThrow().reinterpret(NSSpeechErrorOldestCode_LAYOUT.byteSize()) }
+private val NSSpeechErrorOldestCode_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechErrorOldestCode").orElseThrow().reinterpret(NSSpeechErrorOldestCode_LAYOUT.byteSize()) }
 private val NSSpeechErrorOldestCode_VH: VarHandle by lazy { NSSpeechErrorOldestCode_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1661,7 +1661,7 @@ var NSSpeechErrorOldestCode: MemorySegment
  * {@snippet lang=c : NSSpeechErrorOldestCharacterOffset typedef const NSSpeechErrorKey = (Void)*
  */
 private val NSSpeechErrorOldestCharacterOffset_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorOldestCharacterOffset_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorOldestCharacterOffset").orElseThrow().reinterpret(NSSpeechErrorOldestCharacterOffset_LAYOUT.byteSize()) }
+private val NSSpeechErrorOldestCharacterOffset_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechErrorOldestCharacterOffset").orElseThrow().reinterpret(NSSpeechErrorOldestCharacterOffset_LAYOUT.byteSize()) }
 private val NSSpeechErrorOldestCharacterOffset_VH: VarHandle by lazy { NSSpeechErrorOldestCharacterOffset_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1674,7 +1674,7 @@ var NSSpeechErrorOldestCharacterOffset: MemorySegment
  * {@snippet lang=c : NSSpeechErrorNewestCode typedef const NSSpeechErrorKey = (Void)*
  */
 private val NSSpeechErrorNewestCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorNewestCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorNewestCode").orElseThrow().reinterpret(NSSpeechErrorNewestCode_LAYOUT.byteSize()) }
+private val NSSpeechErrorNewestCode_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechErrorNewestCode").orElseThrow().reinterpret(NSSpeechErrorNewestCode_LAYOUT.byteSize()) }
 private val NSSpeechErrorNewestCode_VH: VarHandle by lazy { NSSpeechErrorNewestCode_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1687,7 +1687,7 @@ var NSSpeechErrorNewestCode: MemorySegment
  * {@snippet lang=c : NSSpeechErrorNewestCharacterOffset typedef const NSSpeechErrorKey = (Void)*
  */
 private val NSSpeechErrorNewestCharacterOffset_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechErrorNewestCharacterOffset_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechErrorNewestCharacterOffset").orElseThrow().reinterpret(NSSpeechErrorNewestCharacterOffset_LAYOUT.byteSize()) }
+private val NSSpeechErrorNewestCharacterOffset_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechErrorNewestCharacterOffset").orElseThrow().reinterpret(NSSpeechErrorNewestCharacterOffset_LAYOUT.byteSize()) }
 private val NSSpeechErrorNewestCharacterOffset_VH: VarHandle by lazy { NSSpeechErrorNewestCharacterOffset_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1700,7 +1700,7 @@ var NSSpeechErrorNewestCharacterOffset: MemorySegment
  * {@snippet lang=c : NSSpeechSynthesizerInfoIdentifier typedef const NSSpeechSynthesizerInfoKey = (Void)*
  */
 private val NSSpeechSynthesizerInfoIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechSynthesizerInfoIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechSynthesizerInfoIdentifier").orElseThrow().reinterpret(NSSpeechSynthesizerInfoIdentifier_LAYOUT.byteSize()) }
+private val NSSpeechSynthesizerInfoIdentifier_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechSynthesizerInfoIdentifier").orElseThrow().reinterpret(NSSpeechSynthesizerInfoIdentifier_LAYOUT.byteSize()) }
 private val NSSpeechSynthesizerInfoIdentifier_VH: VarHandle by lazy { NSSpeechSynthesizerInfoIdentifier_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1713,7 +1713,7 @@ var NSSpeechSynthesizerInfoIdentifier: MemorySegment
  * {@snippet lang=c : NSSpeechSynthesizerInfoVersion typedef const NSSpeechSynthesizerInfoKey = (Void)*
  */
 private val NSSpeechSynthesizerInfoVersion_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechSynthesizerInfoVersion_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechSynthesizerInfoVersion").orElseThrow().reinterpret(NSSpeechSynthesizerInfoVersion_LAYOUT.byteSize()) }
+private val NSSpeechSynthesizerInfoVersion_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechSynthesizerInfoVersion").orElseThrow().reinterpret(NSSpeechSynthesizerInfoVersion_LAYOUT.byteSize()) }
 private val NSSpeechSynthesizerInfoVersion_VH: VarHandle by lazy { NSSpeechSynthesizerInfoVersion_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1726,7 +1726,7 @@ var NSSpeechSynthesizerInfoVersion: MemorySegment
  * {@snippet lang=c : NSSpeechPhonemeInfoOpcode typedef const NSSpeechPhonemeInfoKey = (Void)*
  */
 private val NSSpeechPhonemeInfoOpcode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoOpcode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoOpcode").orElseThrow().reinterpret(NSSpeechPhonemeInfoOpcode_LAYOUT.byteSize()) }
+private val NSSpeechPhonemeInfoOpcode_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechPhonemeInfoOpcode").orElseThrow().reinterpret(NSSpeechPhonemeInfoOpcode_LAYOUT.byteSize()) }
 private val NSSpeechPhonemeInfoOpcode_VH: VarHandle by lazy { NSSpeechPhonemeInfoOpcode_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1739,7 +1739,7 @@ var NSSpeechPhonemeInfoOpcode: MemorySegment
  * {@snippet lang=c : NSSpeechPhonemeInfoSymbol typedef const NSSpeechPhonemeInfoKey = (Void)*
  */
 private val NSSpeechPhonemeInfoSymbol_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoSymbol_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoSymbol").orElseThrow().reinterpret(NSSpeechPhonemeInfoSymbol_LAYOUT.byteSize()) }
+private val NSSpeechPhonemeInfoSymbol_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechPhonemeInfoSymbol").orElseThrow().reinterpret(NSSpeechPhonemeInfoSymbol_LAYOUT.byteSize()) }
 private val NSSpeechPhonemeInfoSymbol_VH: VarHandle by lazy { NSSpeechPhonemeInfoSymbol_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1752,7 +1752,7 @@ var NSSpeechPhonemeInfoSymbol: MemorySegment
  * {@snippet lang=c : NSSpeechPhonemeInfoExample typedef const NSSpeechPhonemeInfoKey = (Void)*
  */
 private val NSSpeechPhonemeInfoExample_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoExample_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoExample").orElseThrow().reinterpret(NSSpeechPhonemeInfoExample_LAYOUT.byteSize()) }
+private val NSSpeechPhonemeInfoExample_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechPhonemeInfoExample").orElseThrow().reinterpret(NSSpeechPhonemeInfoExample_LAYOUT.byteSize()) }
 private val NSSpeechPhonemeInfoExample_VH: VarHandle by lazy { NSSpeechPhonemeInfoExample_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1765,7 +1765,7 @@ var NSSpeechPhonemeInfoExample: MemorySegment
  * {@snippet lang=c : NSSpeechPhonemeInfoHiliteStart typedef const NSSpeechPhonemeInfoKey = (Void)*
  */
 private val NSSpeechPhonemeInfoHiliteStart_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoHiliteStart_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoHiliteStart").orElseThrow().reinterpret(NSSpeechPhonemeInfoHiliteStart_LAYOUT.byteSize()) }
+private val NSSpeechPhonemeInfoHiliteStart_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechPhonemeInfoHiliteStart").orElseThrow().reinterpret(NSSpeechPhonemeInfoHiliteStart_LAYOUT.byteSize()) }
 private val NSSpeechPhonemeInfoHiliteStart_VH: VarHandle by lazy { NSSpeechPhonemeInfoHiliteStart_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1778,7 +1778,7 @@ var NSSpeechPhonemeInfoHiliteStart: MemorySegment
  * {@snippet lang=c : NSSpeechPhonemeInfoHiliteEnd typedef const NSSpeechPhonemeInfoKey = (Void)*
  */
 private val NSSpeechPhonemeInfoHiliteEnd_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechPhonemeInfoHiliteEnd_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechPhonemeInfoHiliteEnd").orElseThrow().reinterpret(NSSpeechPhonemeInfoHiliteEnd_LAYOUT.byteSize()) }
+private val NSSpeechPhonemeInfoHiliteEnd_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechPhonemeInfoHiliteEnd").orElseThrow().reinterpret(NSSpeechPhonemeInfoHiliteEnd_LAYOUT.byteSize()) }
 private val NSSpeechPhonemeInfoHiliteEnd_VH: VarHandle by lazy { NSSpeechPhonemeInfoHiliteEnd_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1791,7 +1791,7 @@ var NSSpeechPhonemeInfoHiliteEnd: MemorySegment
  * {@snippet lang=c : NSSpeechCommandPrefix typedef const NSSpeechCommandDelimiterKey = (Void)*
  */
 private val NSSpeechCommandPrefix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCommandPrefix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCommandPrefix").orElseThrow().reinterpret(NSSpeechCommandPrefix_LAYOUT.byteSize()) }
+private val NSSpeechCommandPrefix_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechCommandPrefix").orElseThrow().reinterpret(NSSpeechCommandPrefix_LAYOUT.byteSize()) }
 private val NSSpeechCommandPrefix_VH: VarHandle by lazy { NSSpeechCommandPrefix_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1804,7 +1804,7 @@ var NSSpeechCommandPrefix: MemorySegment
  * {@snippet lang=c : NSSpeechCommandSuffix typedef const NSSpeechCommandDelimiterKey = (Void)*
  */
 private val NSSpeechCommandSuffix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpeechCommandSuffix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpeechCommandSuffix").orElseThrow().reinterpret(NSSpeechCommandSuffix_LAYOUT.byteSize()) }
+private val NSSpeechCommandSuffix_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpeechCommandSuffix").orElseThrow().reinterpret(NSSpeechCommandSuffix_LAYOUT.byteSize()) }
 private val NSSpeechCommandSuffix_VH: VarHandle by lazy { NSSpeechCommandSuffix_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1817,7 +1817,7 @@ var NSSpeechCommandSuffix: MemorySegment
  * {@snippet lang=c : NSTextCheckingOrthographyKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingOrthographyKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingOrthographyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingOrthographyKey").orElseThrow().reinterpret(NSTextCheckingOrthographyKey_LAYOUT.byteSize()) }
+private val NSTextCheckingOrthographyKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingOrthographyKey").orElseThrow().reinterpret(NSTextCheckingOrthographyKey_LAYOUT.byteSize()) }
 private val NSTextCheckingOrthographyKey_VH: VarHandle by lazy { NSTextCheckingOrthographyKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1830,7 +1830,7 @@ var NSTextCheckingOrthographyKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingQuotesKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingQuotesKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingQuotesKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingQuotesKey").orElseThrow().reinterpret(NSTextCheckingQuotesKey_LAYOUT.byteSize()) }
+private val NSTextCheckingQuotesKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingQuotesKey").orElseThrow().reinterpret(NSTextCheckingQuotesKey_LAYOUT.byteSize()) }
 private val NSTextCheckingQuotesKey_VH: VarHandle by lazy { NSTextCheckingQuotesKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1843,7 +1843,7 @@ var NSTextCheckingQuotesKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingReplacementsKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingReplacementsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingReplacementsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingReplacementsKey").orElseThrow().reinterpret(NSTextCheckingReplacementsKey_LAYOUT.byteSize()) }
+private val NSTextCheckingReplacementsKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingReplacementsKey").orElseThrow().reinterpret(NSTextCheckingReplacementsKey_LAYOUT.byteSize()) }
 private val NSTextCheckingReplacementsKey_VH: VarHandle by lazy { NSTextCheckingReplacementsKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1856,7 +1856,7 @@ var NSTextCheckingReplacementsKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingReferenceDateKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingReferenceDateKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingReferenceDateKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingReferenceDateKey").orElseThrow().reinterpret(NSTextCheckingReferenceDateKey_LAYOUT.byteSize()) }
+private val NSTextCheckingReferenceDateKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingReferenceDateKey").orElseThrow().reinterpret(NSTextCheckingReferenceDateKey_LAYOUT.byteSize()) }
 private val NSTextCheckingReferenceDateKey_VH: VarHandle by lazy { NSTextCheckingReferenceDateKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1869,7 +1869,7 @@ var NSTextCheckingReferenceDateKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingReferenceTimeZoneKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingReferenceTimeZoneKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingReferenceTimeZoneKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingReferenceTimeZoneKey").orElseThrow().reinterpret(NSTextCheckingReferenceTimeZoneKey_LAYOUT.byteSize()) }
+private val NSTextCheckingReferenceTimeZoneKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingReferenceTimeZoneKey").orElseThrow().reinterpret(NSTextCheckingReferenceTimeZoneKey_LAYOUT.byteSize()) }
 private val NSTextCheckingReferenceTimeZoneKey_VH: VarHandle by lazy { NSTextCheckingReferenceTimeZoneKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1882,7 +1882,7 @@ var NSTextCheckingReferenceTimeZoneKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingDocumentURLKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingDocumentURLKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingDocumentURLKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingDocumentURLKey").orElseThrow().reinterpret(NSTextCheckingDocumentURLKey_LAYOUT.byteSize()) }
+private val NSTextCheckingDocumentURLKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingDocumentURLKey").orElseThrow().reinterpret(NSTextCheckingDocumentURLKey_LAYOUT.byteSize()) }
 private val NSTextCheckingDocumentURLKey_VH: VarHandle by lazy { NSTextCheckingDocumentURLKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1895,7 +1895,7 @@ var NSTextCheckingDocumentURLKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingDocumentTitleKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingDocumentTitleKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingDocumentTitleKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingDocumentTitleKey").orElseThrow().reinterpret(NSTextCheckingDocumentTitleKey_LAYOUT.byteSize()) }
+private val NSTextCheckingDocumentTitleKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingDocumentTitleKey").orElseThrow().reinterpret(NSTextCheckingDocumentTitleKey_LAYOUT.byteSize()) }
 private val NSTextCheckingDocumentTitleKey_VH: VarHandle by lazy { NSTextCheckingDocumentTitleKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1908,7 +1908,7 @@ var NSTextCheckingDocumentTitleKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingDocumentAuthorKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingDocumentAuthorKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingDocumentAuthorKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingDocumentAuthorKey").orElseThrow().reinterpret(NSTextCheckingDocumentAuthorKey_LAYOUT.byteSize()) }
+private val NSTextCheckingDocumentAuthorKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingDocumentAuthorKey").orElseThrow().reinterpret(NSTextCheckingDocumentAuthorKey_LAYOUT.byteSize()) }
 private val NSTextCheckingDocumentAuthorKey_VH: VarHandle by lazy { NSTextCheckingDocumentAuthorKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1921,7 +1921,7 @@ var NSTextCheckingDocumentAuthorKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingRegularExpressionsKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingRegularExpressionsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingRegularExpressionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingRegularExpressionsKey").orElseThrow().reinterpret(NSTextCheckingRegularExpressionsKey_LAYOUT.byteSize()) }
+private val NSTextCheckingRegularExpressionsKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingRegularExpressionsKey").orElseThrow().reinterpret(NSTextCheckingRegularExpressionsKey_LAYOUT.byteSize()) }
 private val NSTextCheckingRegularExpressionsKey_VH: VarHandle by lazy { NSTextCheckingRegularExpressionsKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1934,7 +1934,7 @@ var NSTextCheckingRegularExpressionsKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingSelectedRangeKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingSelectedRangeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingSelectedRangeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingSelectedRangeKey").orElseThrow().reinterpret(NSTextCheckingSelectedRangeKey_LAYOUT.byteSize()) }
+private val NSTextCheckingSelectedRangeKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingSelectedRangeKey").orElseThrow().reinterpret(NSTextCheckingSelectedRangeKey_LAYOUT.byteSize()) }
 private val NSTextCheckingSelectedRangeKey_VH: VarHandle by lazy { NSTextCheckingSelectedRangeKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1947,7 +1947,7 @@ var NSTextCheckingSelectedRangeKey: MemorySegment
  * {@snippet lang=c : NSTextCheckingGenerateInlinePredictionsKey typedef NSTextCheckingOptionKey = typedef NSString = (Void)*
  */
 private val NSTextCheckingGenerateInlinePredictionsKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextCheckingGenerateInlinePredictionsKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextCheckingGenerateInlinePredictionsKey").orElseThrow().reinterpret(NSTextCheckingGenerateInlinePredictionsKey_LAYOUT.byteSize()) }
+private val NSTextCheckingGenerateInlinePredictionsKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextCheckingGenerateInlinePredictionsKey").orElseThrow().reinterpret(NSTextCheckingGenerateInlinePredictionsKey_LAYOUT.byteSize()) }
 private val NSTextCheckingGenerateInlinePredictionsKey_VH: VarHandle by lazy { NSTextCheckingGenerateInlinePredictionsKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1960,7 +1960,7 @@ var NSTextCheckingGenerateInlinePredictionsKey: MemorySegment
  * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification typedef const NSNotificationName = (Void)*
  */
 private val NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_LAYOUT.byteSize()) }
+private val NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_LAYOUT.byteSize()) }
 private val NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1973,7 +1973,7 @@ var NSSpellCheckerDidChangeAutomaticSpellingCorrectionNotification: MemorySegmen
  * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticTextReplacementNotification typedef const NSNotificationName = (Void)*
  */
 private val NSSpellCheckerDidChangeAutomaticTextReplacementNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticTextReplacementNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticTextReplacementNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticTextReplacementNotification_LAYOUT.byteSize()) }
+private val NSSpellCheckerDidChangeAutomaticTextReplacementNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpellCheckerDidChangeAutomaticTextReplacementNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticTextReplacementNotification_LAYOUT.byteSize()) }
 private val NSSpellCheckerDidChangeAutomaticTextReplacementNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticTextReplacementNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1986,7 +1986,7 @@ var NSSpellCheckerDidChangeAutomaticTextReplacementNotification: MemorySegment
  * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification typedef const NSNotificationName = (Void)*
  */
 private val NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_LAYOUT.byteSize()) }
+private val NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_LAYOUT.byteSize()) }
 private val NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1999,7 +1999,7 @@ var NSSpellCheckerDidChangeAutomaticQuoteSubstitutionNotification: MemorySegment
  * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification typedef const NSNotificationName = (Void)*
  */
 private val NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_LAYOUT.byteSize()) }
+private val NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_LAYOUT.byteSize()) }
 private val NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2012,7 +2012,7 @@ var NSSpellCheckerDidChangeAutomaticDashSubstitutionNotification: MemorySegment
  * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticCapitalizationNotification typedef const NSNotificationName = (Void)*
  */
 private val NSSpellCheckerDidChangeAutomaticCapitalizationNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticCapitalizationNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticCapitalizationNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticCapitalizationNotification_LAYOUT.byteSize()) }
+private val NSSpellCheckerDidChangeAutomaticCapitalizationNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpellCheckerDidChangeAutomaticCapitalizationNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticCapitalizationNotification_LAYOUT.byteSize()) }
 private val NSSpellCheckerDidChangeAutomaticCapitalizationNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticCapitalizationNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2025,7 +2025,7 @@ var NSSpellCheckerDidChangeAutomaticCapitalizationNotification: MemorySegment
  * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification typedef const NSNotificationName = (Void)*
  */
 private val NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_LAYOUT.byteSize()) }
+private val NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_LAYOUT.byteSize()) }
 private val NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2038,7 +2038,7 @@ var NSSpellCheckerDidChangeAutomaticPeriodSubstitutionNotification: MemorySegmen
  * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticTextCompletionNotification typedef const NSNotificationName = (Void)*
  */
 private val NSSpellCheckerDidChangeAutomaticTextCompletionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticTextCompletionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticTextCompletionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticTextCompletionNotification_LAYOUT.byteSize()) }
+private val NSSpellCheckerDidChangeAutomaticTextCompletionNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpellCheckerDidChangeAutomaticTextCompletionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticTextCompletionNotification_LAYOUT.byteSize()) }
 private val NSSpellCheckerDidChangeAutomaticTextCompletionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticTextCompletionNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2051,7 +2051,7 @@ var NSSpellCheckerDidChangeAutomaticTextCompletionNotification: MemorySegment
  * {@snippet lang=c : NSSpellCheckerDidChangeAutomaticInlinePredictionNotification typedef const NSNotificationName = (Void)*
  */
 private val NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellCheckerDidChangeAutomaticInlinePredictionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_LAYOUT.byteSize()) }
+private val NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpellCheckerDidChangeAutomaticInlinePredictionNotification").orElseThrow().reinterpret(NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_LAYOUT.byteSize()) }
 private val NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_VH: VarHandle by lazy { NSSpellCheckerDidChangeAutomaticInlinePredictionNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2064,7 +2064,7 @@ var NSSpellCheckerDidChangeAutomaticInlinePredictionNotification: MemorySegment
  * {@snippet lang=c : NSSplitViewWillResizeSubviewsNotification typedef NSNotificationName = typedef NSString = (Void)*
  */
 private val NSSplitViewWillResizeSubviewsNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSplitViewWillResizeSubviewsNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSplitViewWillResizeSubviewsNotification").orElseThrow().reinterpret(NSSplitViewWillResizeSubviewsNotification_LAYOUT.byteSize()) }
+private val NSSplitViewWillResizeSubviewsNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSplitViewWillResizeSubviewsNotification").orElseThrow().reinterpret(NSSplitViewWillResizeSubviewsNotification_LAYOUT.byteSize()) }
 private val NSSplitViewWillResizeSubviewsNotification_VH: VarHandle by lazy { NSSplitViewWillResizeSubviewsNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2076,7 +2076,7 @@ var NSSplitViewWillResizeSubviewsNotification: MemorySegment
  * {@snippet lang=c : NSSplitViewDidResizeSubviewsNotification typedef NSNotificationName = typedef NSString = (Void)*
  */
 private val NSSplitViewDidResizeSubviewsNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSplitViewDidResizeSubviewsNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSplitViewDidResizeSubviewsNotification").orElseThrow().reinterpret(NSSplitViewDidResizeSubviewsNotification_LAYOUT.byteSize()) }
+private val NSSplitViewDidResizeSubviewsNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSplitViewDidResizeSubviewsNotification").orElseThrow().reinterpret(NSSplitViewDidResizeSubviewsNotification_LAYOUT.byteSize()) }
 private val NSSplitViewDidResizeSubviewsNotification_VH: VarHandle by lazy { NSSplitViewDidResizeSubviewsNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2088,7 +2088,7 @@ var NSSplitViewDidResizeSubviewsNotification: MemorySegment
  * {@snippet lang=c : NSSplitViewItemUnspecifiedDimension typedef const CGFloat = Double
  */
 private val NSSplitViewItemUnspecifiedDimension_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSSplitViewItemUnspecifiedDimension_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSplitViewItemUnspecifiedDimension").orElseThrow().reinterpret(NSSplitViewItemUnspecifiedDimension_LAYOUT.byteSize()) }
+private val NSSplitViewItemUnspecifiedDimension_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSplitViewItemUnspecifiedDimension").orElseThrow().reinterpret(NSSplitViewItemUnspecifiedDimension_LAYOUT.byteSize()) }
 private val NSSplitViewItemUnspecifiedDimension_VH: VarHandle by lazy { NSSplitViewItemUnspecifiedDimension_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2101,7 +2101,7 @@ var NSSplitViewItemUnspecifiedDimension: Double
  * {@snippet lang=c : NSSplitViewControllerAutomaticDimension typedef const CGFloat = Double
  */
 private val NSSplitViewControllerAutomaticDimension_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSSplitViewControllerAutomaticDimension_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSplitViewControllerAutomaticDimension").orElseThrow().reinterpret(NSSplitViewControllerAutomaticDimension_LAYOUT.byteSize()) }
+private val NSSplitViewControllerAutomaticDimension_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSplitViewControllerAutomaticDimension").orElseThrow().reinterpret(NSSplitViewControllerAutomaticDimension_LAYOUT.byteSize()) }
 private val NSSplitViewControllerAutomaticDimension_VH: VarHandle by lazy { NSSplitViewControllerAutomaticDimension_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2114,7 +2114,7 @@ var NSSplitViewControllerAutomaticDimension: Double
  * {@snippet lang=c : NSPopUpButtonCellWillPopUpNotification typedef NSNotificationName = typedef NSString = (Void)*
  */
 private val NSPopUpButtonCellWillPopUpNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPopUpButtonCellWillPopUpNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopUpButtonCellWillPopUpNotification").orElseThrow().reinterpret(NSPopUpButtonCellWillPopUpNotification_LAYOUT.byteSize()) }
+private val NSPopUpButtonCellWillPopUpNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPopUpButtonCellWillPopUpNotification").orElseThrow().reinterpret(NSPopUpButtonCellWillPopUpNotification_LAYOUT.byteSize()) }
 private val NSPopUpButtonCellWillPopUpNotification_VH: VarHandle by lazy { NSPopUpButtonCellWillPopUpNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2126,7 +2126,7 @@ var NSPopUpButtonCellWillPopUpNotification: MemorySegment
  * {@snippet lang=c : NSPopUpButtonWillPopUpNotification typedef NSNotificationName = typedef NSString = (Void)*
  */
 private val NSPopUpButtonWillPopUpNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPopUpButtonWillPopUpNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPopUpButtonWillPopUpNotification").orElseThrow().reinterpret(NSPopUpButtonWillPopUpNotification_LAYOUT.byteSize()) }
+private val NSPopUpButtonWillPopUpNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPopUpButtonWillPopUpNotification").orElseThrow().reinterpret(NSPopUpButtonWillPopUpNotification_LAYOUT.byteSize()) }
 private val NSPopUpButtonWillPopUpNotification_VH: VarHandle by lazy { NSPopUpButtonWillPopUpNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2138,7 +2138,7 @@ var NSPopUpButtonWillPopUpNotification: MemorySegment
  * {@snippet lang=c : NSPrintOperationExistsException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSPrintOperationExistsException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintOperationExistsException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintOperationExistsException").orElseThrow().reinterpret(NSPrintOperationExistsException_LAYOUT.byteSize()) }
+private val NSPrintOperationExistsException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPrintOperationExistsException").orElseThrow().reinterpret(NSPrintOperationExistsException_LAYOUT.byteSize()) }
 private val NSPrintOperationExistsException_VH: VarHandle by lazy { NSPrintOperationExistsException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2150,7 +2150,7 @@ var NSPrintOperationExistsException: MemorySegment
  * {@snippet lang=c : NSPrintPhotoJobStyleHint typedef const NSPrintPanelJobStyleHint = (Void)*
  */
 private val NSPrintPhotoJobStyleHint_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintPhotoJobStyleHint_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintPhotoJobStyleHint").orElseThrow().reinterpret(NSPrintPhotoJobStyleHint_LAYOUT.byteSize()) }
+private val NSPrintPhotoJobStyleHint_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPrintPhotoJobStyleHint").orElseThrow().reinterpret(NSPrintPhotoJobStyleHint_LAYOUT.byteSize()) }
 private val NSPrintPhotoJobStyleHint_VH: VarHandle by lazy { NSPrintPhotoJobStyleHint_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2162,7 +2162,7 @@ var NSPrintPhotoJobStyleHint: MemorySegment
  * {@snippet lang=c : NSPrintAllPresetsJobStyleHint typedef const NSPrintPanelJobStyleHint = (Void)*
  */
 private val NSPrintAllPresetsJobStyleHint_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintAllPresetsJobStyleHint_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintAllPresetsJobStyleHint").orElseThrow().reinterpret(NSPrintAllPresetsJobStyleHint_LAYOUT.byteSize()) }
+private val NSPrintAllPresetsJobStyleHint_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPrintAllPresetsJobStyleHint").orElseThrow().reinterpret(NSPrintAllPresetsJobStyleHint_LAYOUT.byteSize()) }
 private val NSPrintAllPresetsJobStyleHint_VH: VarHandle by lazy { NSPrintAllPresetsJobStyleHint_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2175,7 +2175,7 @@ var NSPrintAllPresetsJobStyleHint: MemorySegment
  * {@snippet lang=c : NSPrintNoPresetsJobStyleHint typedef const NSPrintPanelJobStyleHint = (Void)*
  */
 private val NSPrintNoPresetsJobStyleHint_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintNoPresetsJobStyleHint_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintNoPresetsJobStyleHint").orElseThrow().reinterpret(NSPrintNoPresetsJobStyleHint_LAYOUT.byteSize()) }
+private val NSPrintNoPresetsJobStyleHint_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPrintNoPresetsJobStyleHint").orElseThrow().reinterpret(NSPrintNoPresetsJobStyleHint_LAYOUT.byteSize()) }
 private val NSPrintNoPresetsJobStyleHint_VH: VarHandle by lazy { NSPrintNoPresetsJobStyleHint_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2188,7 +2188,7 @@ var NSPrintNoPresetsJobStyleHint: MemorySegment
  * {@snippet lang=c : NSPrintPanelAccessorySummaryItemNameKey typedef const NSPrintPanelAccessorySummaryKey = (Void)*
  */
 private val NSPrintPanelAccessorySummaryItemNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintPanelAccessorySummaryItemNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintPanelAccessorySummaryItemNameKey").orElseThrow().reinterpret(NSPrintPanelAccessorySummaryItemNameKey_LAYOUT.byteSize()) }
+private val NSPrintPanelAccessorySummaryItemNameKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPrintPanelAccessorySummaryItemNameKey").orElseThrow().reinterpret(NSPrintPanelAccessorySummaryItemNameKey_LAYOUT.byteSize()) }
 private val NSPrintPanelAccessorySummaryItemNameKey_VH: VarHandle by lazy { NSPrintPanelAccessorySummaryItemNameKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2201,7 +2201,7 @@ var NSPrintPanelAccessorySummaryItemNameKey: MemorySegment
  * {@snippet lang=c : NSPrintPanelAccessorySummaryItemDescriptionKey typedef const NSPrintPanelAccessorySummaryKey = (Void)*
  */
 private val NSPrintPanelAccessorySummaryItemDescriptionKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintPanelAccessorySummaryItemDescriptionKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintPanelAccessorySummaryItemDescriptionKey").orElseThrow().reinterpret(NSPrintPanelAccessorySummaryItemDescriptionKey_LAYOUT.byteSize()) }
+private val NSPrintPanelAccessorySummaryItemDescriptionKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPrintPanelAccessorySummaryItemDescriptionKey").orElseThrow().reinterpret(NSPrintPanelAccessorySummaryItemDescriptionKey_LAYOUT.byteSize()) }
 private val NSPrintPanelAccessorySummaryItemDescriptionKey_VH: VarHandle by lazy { NSPrintPanelAccessorySummaryItemDescriptionKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2214,7 +2214,7 @@ var NSPrintPanelAccessorySummaryItemDescriptionKey: MemorySegment
  * {@snippet lang=c : NSScreenColorSpaceDidChangeNotification typedef const NSNotificationName = (Void)*
  */
 private val NSScreenColorSpaceDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScreenColorSpaceDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScreenColorSpaceDidChangeNotification").orElseThrow().reinterpret(NSScreenColorSpaceDidChangeNotification_LAYOUT.byteSize()) }
+private val NSScreenColorSpaceDidChangeNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSScreenColorSpaceDidChangeNotification").orElseThrow().reinterpret(NSScreenColorSpaceDidChangeNotification_LAYOUT.byteSize()) }
 private val NSScreenColorSpaceDidChangeNotification_VH: VarHandle by lazy { NSScreenColorSpaceDidChangeNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2227,7 +2227,7 @@ var NSScreenColorSpaceDidChangeNotification: MemorySegment
  * {@snippet lang=c : NSPreferredScrollerStyleDidChangeNotification typedef const NSNotificationName = (Void)*
  */
 private val NSPreferredScrollerStyleDidChangeNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPreferredScrollerStyleDidChangeNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPreferredScrollerStyleDidChangeNotification").orElseThrow().reinterpret(NSPreferredScrollerStyleDidChangeNotification_LAYOUT.byteSize()) }
+private val NSPreferredScrollerStyleDidChangeNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPreferredScrollerStyleDidChangeNotification").orElseThrow().reinterpret(NSPreferredScrollerStyleDidChangeNotification_LAYOUT.byteSize()) }
 private val NSPreferredScrollerStyleDidChangeNotification_VH: VarHandle by lazy { NSPreferredScrollerStyleDidChangeNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2240,7 +2240,7 @@ var NSPreferredScrollerStyleDidChangeNotification: MemorySegment
  * {@snippet lang=c : NSTextFinderCaseInsensitiveKey typedef const NSPasteboardTypeTextFinderOptionKey = (Void)*
  */
 private val NSTextFinderCaseInsensitiveKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextFinderCaseInsensitiveKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextFinderCaseInsensitiveKey").orElseThrow().reinterpret(NSTextFinderCaseInsensitiveKey_LAYOUT.byteSize()) }
+private val NSTextFinderCaseInsensitiveKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextFinderCaseInsensitiveKey").orElseThrow().reinterpret(NSTextFinderCaseInsensitiveKey_LAYOUT.byteSize()) }
 private val NSTextFinderCaseInsensitiveKey_VH: VarHandle by lazy { NSTextFinderCaseInsensitiveKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2253,7 +2253,7 @@ var NSTextFinderCaseInsensitiveKey: MemorySegment
  * {@snippet lang=c : NSTextFinderMatchingTypeKey typedef const NSPasteboardTypeTextFinderOptionKey = (Void)*
  */
 private val NSTextFinderMatchingTypeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextFinderMatchingTypeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextFinderMatchingTypeKey").orElseThrow().reinterpret(NSTextFinderMatchingTypeKey_LAYOUT.byteSize()) }
+private val NSTextFinderMatchingTypeKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextFinderMatchingTypeKey").orElseThrow().reinterpret(NSTextFinderMatchingTypeKey_LAYOUT.byteSize()) }
 private val NSTextFinderMatchingTypeKey_VH: VarHandle by lazy { NSTextFinderMatchingTypeKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2266,7 +2266,7 @@ var NSTextFinderMatchingTypeKey: MemorySegment
  * {@snippet lang=c : NSScrollViewWillStartLiveMagnifyNotification typedef const NSNotificationName = (Void)*
  */
 private val NSScrollViewWillStartLiveMagnifyNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewWillStartLiveMagnifyNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewWillStartLiveMagnifyNotification").orElseThrow().reinterpret(NSScrollViewWillStartLiveMagnifyNotification_LAYOUT.byteSize()) }
+private val NSScrollViewWillStartLiveMagnifyNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSScrollViewWillStartLiveMagnifyNotification").orElseThrow().reinterpret(NSScrollViewWillStartLiveMagnifyNotification_LAYOUT.byteSize()) }
 private val NSScrollViewWillStartLiveMagnifyNotification_VH: VarHandle by lazy { NSScrollViewWillStartLiveMagnifyNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2279,7 +2279,7 @@ var NSScrollViewWillStartLiveMagnifyNotification: MemorySegment
  * {@snippet lang=c : NSScrollViewDidEndLiveMagnifyNotification typedef const NSNotificationName = (Void)*
  */
 private val NSScrollViewDidEndLiveMagnifyNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewDidEndLiveMagnifyNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewDidEndLiveMagnifyNotification").orElseThrow().reinterpret(NSScrollViewDidEndLiveMagnifyNotification_LAYOUT.byteSize()) }
+private val NSScrollViewDidEndLiveMagnifyNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSScrollViewDidEndLiveMagnifyNotification").orElseThrow().reinterpret(NSScrollViewDidEndLiveMagnifyNotification_LAYOUT.byteSize()) }
 private val NSScrollViewDidEndLiveMagnifyNotification_VH: VarHandle by lazy { NSScrollViewDidEndLiveMagnifyNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2292,7 +2292,7 @@ var NSScrollViewDidEndLiveMagnifyNotification: MemorySegment
  * {@snippet lang=c : NSScrollViewWillStartLiveScrollNotification typedef const NSNotificationName = (Void)*
  */
 private val NSScrollViewWillStartLiveScrollNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewWillStartLiveScrollNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewWillStartLiveScrollNotification").orElseThrow().reinterpret(NSScrollViewWillStartLiveScrollNotification_LAYOUT.byteSize()) }
+private val NSScrollViewWillStartLiveScrollNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSScrollViewWillStartLiveScrollNotification").orElseThrow().reinterpret(NSScrollViewWillStartLiveScrollNotification_LAYOUT.byteSize()) }
 private val NSScrollViewWillStartLiveScrollNotification_VH: VarHandle by lazy { NSScrollViewWillStartLiveScrollNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2305,7 +2305,7 @@ var NSScrollViewWillStartLiveScrollNotification: MemorySegment
  * {@snippet lang=c : NSScrollViewDidLiveScrollNotification typedef const NSNotificationName = (Void)*
  */
 private val NSScrollViewDidLiveScrollNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewDidLiveScrollNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewDidLiveScrollNotification").orElseThrow().reinterpret(NSScrollViewDidLiveScrollNotification_LAYOUT.byteSize()) }
+private val NSScrollViewDidLiveScrollNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSScrollViewDidLiveScrollNotification").orElseThrow().reinterpret(NSScrollViewDidLiveScrollNotification_LAYOUT.byteSize()) }
 private val NSScrollViewDidLiveScrollNotification_VH: VarHandle by lazy { NSScrollViewDidLiveScrollNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2318,7 +2318,7 @@ var NSScrollViewDidLiveScrollNotification: MemorySegment
  * {@snippet lang=c : NSScrollViewDidEndLiveScrollNotification typedef const NSNotificationName = (Void)*
  */
 private val NSScrollViewDidEndLiveScrollNotification_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSScrollViewDidEndLiveScrollNotification_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSScrollViewDidEndLiveScrollNotification").orElseThrow().reinterpret(NSScrollViewDidEndLiveScrollNotification_LAYOUT.byteSize()) }
+private val NSScrollViewDidEndLiveScrollNotification_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSScrollViewDidEndLiveScrollNotification").orElseThrow().reinterpret(NSScrollViewDidEndLiveScrollNotification_LAYOUT.byteSize()) }
 private val NSScrollViewDidEndLiveScrollNotification_VH: VarHandle by lazy { NSScrollViewDidEndLiveScrollNotification_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2331,7 +2331,7 @@ var NSScrollViewDidEndLiveScrollNotification: MemorySegment
  * {@snippet lang=c : NSGridViewSizeForContent typedef const CGFloat = Double
  */
 private val NSGridViewSizeForContent_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_DOUBLE }
-private val NSGridViewSizeForContent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGridViewSizeForContent").orElseThrow().reinterpret(NSGridViewSizeForContent_LAYOUT.byteSize()) }
+private val NSGridViewSizeForContent_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSGridViewSizeForContent").orElseThrow().reinterpret(NSGridViewSizeForContent_LAYOUT.byteSize()) }
 private val NSGridViewSizeForContent_VH: VarHandle by lazy { NSGridViewSizeForContent_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2344,7 +2344,7 @@ var NSGridViewSizeForContent: Double
  * {@snippet lang=c : NSTextContentTypeUsername typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeUsername_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeUsername_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeUsername").orElseThrow().reinterpret(NSTextContentTypeUsername_LAYOUT.byteSize()) }
+private val NSTextContentTypeUsername_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeUsername").orElseThrow().reinterpret(NSTextContentTypeUsername_LAYOUT.byteSize()) }
 private val NSTextContentTypeUsername_VH: VarHandle by lazy { NSTextContentTypeUsername_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2357,7 +2357,7 @@ var NSTextContentTypeUsername: MemorySegment
  * {@snippet lang=c : NSTextContentTypePassword typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypePassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypePassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypePassword").orElseThrow().reinterpret(NSTextContentTypePassword_LAYOUT.byteSize()) }
+private val NSTextContentTypePassword_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypePassword").orElseThrow().reinterpret(NSTextContentTypePassword_LAYOUT.byteSize()) }
 private val NSTextContentTypePassword_VH: VarHandle by lazy { NSTextContentTypePassword_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2370,7 +2370,7 @@ var NSTextContentTypePassword: MemorySegment
  * {@snippet lang=c : NSTextContentTypeOneTimeCode typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeOneTimeCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeOneTimeCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeOneTimeCode").orElseThrow().reinterpret(NSTextContentTypeOneTimeCode_LAYOUT.byteSize()) }
+private val NSTextContentTypeOneTimeCode_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeOneTimeCode").orElseThrow().reinterpret(NSTextContentTypeOneTimeCode_LAYOUT.byteSize()) }
 private val NSTextContentTypeOneTimeCode_VH: VarHandle by lazy { NSTextContentTypeOneTimeCode_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2383,7 +2383,7 @@ var NSTextContentTypeOneTimeCode: MemorySegment
  * {@snippet lang=c : NSTextContentTypeNewPassword typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeNewPassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeNewPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeNewPassword").orElseThrow().reinterpret(NSTextContentTypeNewPassword_LAYOUT.byteSize()) }
+private val NSTextContentTypeNewPassword_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeNewPassword").orElseThrow().reinterpret(NSTextContentTypeNewPassword_LAYOUT.byteSize()) }
 private val NSTextContentTypeNewPassword_VH: VarHandle by lazy { NSTextContentTypeNewPassword_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2396,7 +2396,7 @@ var NSTextContentTypeNewPassword: MemorySegment
  * {@snippet lang=c : NSTextContentTypeName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeName").orElseThrow().reinterpret(NSTextContentTypeName_LAYOUT.byteSize()) }
+private val NSTextContentTypeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeName").orElseThrow().reinterpret(NSTextContentTypeName_LAYOUT.byteSize()) }
 private val NSTextContentTypeName_VH: VarHandle by lazy { NSTextContentTypeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2409,7 +2409,7 @@ var NSTextContentTypeName: MemorySegment
  * {@snippet lang=c : NSTextContentTypeNamePrefix typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeNamePrefix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeNamePrefix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeNamePrefix").orElseThrow().reinterpret(NSTextContentTypeNamePrefix_LAYOUT.byteSize()) }
+private val NSTextContentTypeNamePrefix_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeNamePrefix").orElseThrow().reinterpret(NSTextContentTypeNamePrefix_LAYOUT.byteSize()) }
 private val NSTextContentTypeNamePrefix_VH: VarHandle by lazy { NSTextContentTypeNamePrefix_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2422,7 +2422,7 @@ var NSTextContentTypeNamePrefix: MemorySegment
  * {@snippet lang=c : NSTextContentTypeGivenName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeGivenName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeGivenName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeGivenName").orElseThrow().reinterpret(NSTextContentTypeGivenName_LAYOUT.byteSize()) }
+private val NSTextContentTypeGivenName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeGivenName").orElseThrow().reinterpret(NSTextContentTypeGivenName_LAYOUT.byteSize()) }
 private val NSTextContentTypeGivenName_VH: VarHandle by lazy { NSTextContentTypeGivenName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2435,7 +2435,7 @@ var NSTextContentTypeGivenName: MemorySegment
  * {@snippet lang=c : NSTextContentTypeMiddleName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeMiddleName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeMiddleName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeMiddleName").orElseThrow().reinterpret(NSTextContentTypeMiddleName_LAYOUT.byteSize()) }
+private val NSTextContentTypeMiddleName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeMiddleName").orElseThrow().reinterpret(NSTextContentTypeMiddleName_LAYOUT.byteSize()) }
 private val NSTextContentTypeMiddleName_VH: VarHandle by lazy { NSTextContentTypeMiddleName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2448,7 +2448,7 @@ var NSTextContentTypeMiddleName: MemorySegment
  * {@snippet lang=c : NSTextContentTypeFamilyName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeFamilyName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeFamilyName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeFamilyName").orElseThrow().reinterpret(NSTextContentTypeFamilyName_LAYOUT.byteSize()) }
+private val NSTextContentTypeFamilyName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeFamilyName").orElseThrow().reinterpret(NSTextContentTypeFamilyName_LAYOUT.byteSize()) }
 private val NSTextContentTypeFamilyName_VH: VarHandle by lazy { NSTextContentTypeFamilyName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2461,7 +2461,7 @@ var NSTextContentTypeFamilyName: MemorySegment
  * {@snippet lang=c : NSTextContentTypeNameSuffix typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeNameSuffix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeNameSuffix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeNameSuffix").orElseThrow().reinterpret(NSTextContentTypeNameSuffix_LAYOUT.byteSize()) }
+private val NSTextContentTypeNameSuffix_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeNameSuffix").orElseThrow().reinterpret(NSTextContentTypeNameSuffix_LAYOUT.byteSize()) }
 private val NSTextContentTypeNameSuffix_VH: VarHandle by lazy { NSTextContentTypeNameSuffix_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2474,7 +2474,7 @@ var NSTextContentTypeNameSuffix: MemorySegment
  * {@snippet lang=c : NSTextContentTypeNickname typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeNickname_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeNickname_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeNickname").orElseThrow().reinterpret(NSTextContentTypeNickname_LAYOUT.byteSize()) }
+private val NSTextContentTypeNickname_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeNickname").orElseThrow().reinterpret(NSTextContentTypeNickname_LAYOUT.byteSize()) }
 private val NSTextContentTypeNickname_VH: VarHandle by lazy { NSTextContentTypeNickname_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2487,7 +2487,7 @@ var NSTextContentTypeNickname: MemorySegment
  * {@snippet lang=c : NSTextContentTypeJobTitle typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeJobTitle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeJobTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeJobTitle").orElseThrow().reinterpret(NSTextContentTypeJobTitle_LAYOUT.byteSize()) }
+private val NSTextContentTypeJobTitle_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeJobTitle").orElseThrow().reinterpret(NSTextContentTypeJobTitle_LAYOUT.byteSize()) }
 private val NSTextContentTypeJobTitle_VH: VarHandle by lazy { NSTextContentTypeJobTitle_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2500,7 +2500,7 @@ var NSTextContentTypeJobTitle: MemorySegment
  * {@snippet lang=c : NSTextContentTypeOrganizationName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeOrganizationName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeOrganizationName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeOrganizationName").orElseThrow().reinterpret(NSTextContentTypeOrganizationName_LAYOUT.byteSize()) }
+private val NSTextContentTypeOrganizationName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeOrganizationName").orElseThrow().reinterpret(NSTextContentTypeOrganizationName_LAYOUT.byteSize()) }
 private val NSTextContentTypeOrganizationName_VH: VarHandle by lazy { NSTextContentTypeOrganizationName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2513,7 +2513,7 @@ var NSTextContentTypeOrganizationName: MemorySegment
  * {@snippet lang=c : NSTextContentTypeLocation typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeLocation_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeLocation_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeLocation").orElseThrow().reinterpret(NSTextContentTypeLocation_LAYOUT.byteSize()) }
+private val NSTextContentTypeLocation_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeLocation").orElseThrow().reinterpret(NSTextContentTypeLocation_LAYOUT.byteSize()) }
 private val NSTextContentTypeLocation_VH: VarHandle by lazy { NSTextContentTypeLocation_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2526,7 +2526,7 @@ var NSTextContentTypeLocation: MemorySegment
  * {@snippet lang=c : NSTextContentTypeFullStreetAddress typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeFullStreetAddress_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeFullStreetAddress_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeFullStreetAddress").orElseThrow().reinterpret(NSTextContentTypeFullStreetAddress_LAYOUT.byteSize()) }
+private val NSTextContentTypeFullStreetAddress_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeFullStreetAddress").orElseThrow().reinterpret(NSTextContentTypeFullStreetAddress_LAYOUT.byteSize()) }
 private val NSTextContentTypeFullStreetAddress_VH: VarHandle by lazy { NSTextContentTypeFullStreetAddress_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2539,7 +2539,7 @@ var NSTextContentTypeFullStreetAddress: MemorySegment
  * {@snippet lang=c : NSTextContentTypeStreetAddressLine1 typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeStreetAddressLine1_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeStreetAddressLine1_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeStreetAddressLine1").orElseThrow().reinterpret(NSTextContentTypeStreetAddressLine1_LAYOUT.byteSize()) }
+private val NSTextContentTypeStreetAddressLine1_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeStreetAddressLine1").orElseThrow().reinterpret(NSTextContentTypeStreetAddressLine1_LAYOUT.byteSize()) }
 private val NSTextContentTypeStreetAddressLine1_VH: VarHandle by lazy { NSTextContentTypeStreetAddressLine1_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2552,7 +2552,7 @@ var NSTextContentTypeStreetAddressLine1: MemorySegment
  * {@snippet lang=c : NSTextContentTypeStreetAddressLine2 typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeStreetAddressLine2_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeStreetAddressLine2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeStreetAddressLine2").orElseThrow().reinterpret(NSTextContentTypeStreetAddressLine2_LAYOUT.byteSize()) }
+private val NSTextContentTypeStreetAddressLine2_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeStreetAddressLine2").orElseThrow().reinterpret(NSTextContentTypeStreetAddressLine2_LAYOUT.byteSize()) }
 private val NSTextContentTypeStreetAddressLine2_VH: VarHandle by lazy { NSTextContentTypeStreetAddressLine2_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2565,7 +2565,7 @@ var NSTextContentTypeStreetAddressLine2: MemorySegment
  * {@snippet lang=c : NSTextContentTypeAddressCity typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeAddressCity_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeAddressCity_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeAddressCity").orElseThrow().reinterpret(NSTextContentTypeAddressCity_LAYOUT.byteSize()) }
+private val NSTextContentTypeAddressCity_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeAddressCity").orElseThrow().reinterpret(NSTextContentTypeAddressCity_LAYOUT.byteSize()) }
 private val NSTextContentTypeAddressCity_VH: VarHandle by lazy { NSTextContentTypeAddressCity_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2578,7 +2578,7 @@ var NSTextContentTypeAddressCity: MemorySegment
  * {@snippet lang=c : NSTextContentTypeAddressState typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeAddressState_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeAddressState_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeAddressState").orElseThrow().reinterpret(NSTextContentTypeAddressState_LAYOUT.byteSize()) }
+private val NSTextContentTypeAddressState_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeAddressState").orElseThrow().reinterpret(NSTextContentTypeAddressState_LAYOUT.byteSize()) }
 private val NSTextContentTypeAddressState_VH: VarHandle by lazy { NSTextContentTypeAddressState_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2591,7 +2591,7 @@ var NSTextContentTypeAddressState: MemorySegment
  * {@snippet lang=c : NSTextContentTypeAddressCityAndState typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeAddressCityAndState_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeAddressCityAndState_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeAddressCityAndState").orElseThrow().reinterpret(NSTextContentTypeAddressCityAndState_LAYOUT.byteSize()) }
+private val NSTextContentTypeAddressCityAndState_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeAddressCityAndState").orElseThrow().reinterpret(NSTextContentTypeAddressCityAndState_LAYOUT.byteSize()) }
 private val NSTextContentTypeAddressCityAndState_VH: VarHandle by lazy { NSTextContentTypeAddressCityAndState_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2604,7 +2604,7 @@ var NSTextContentTypeAddressCityAndState: MemorySegment
  * {@snippet lang=c : NSTextContentTypeSublocality typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeSublocality_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeSublocality_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeSublocality").orElseThrow().reinterpret(NSTextContentTypeSublocality_LAYOUT.byteSize()) }
+private val NSTextContentTypeSublocality_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeSublocality").orElseThrow().reinterpret(NSTextContentTypeSublocality_LAYOUT.byteSize()) }
 private val NSTextContentTypeSublocality_VH: VarHandle by lazy { NSTextContentTypeSublocality_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2617,7 +2617,7 @@ var NSTextContentTypeSublocality: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCountryName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCountryName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCountryName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCountryName").orElseThrow().reinterpret(NSTextContentTypeCountryName_LAYOUT.byteSize()) }
+private val NSTextContentTypeCountryName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCountryName").orElseThrow().reinterpret(NSTextContentTypeCountryName_LAYOUT.byteSize()) }
 private val NSTextContentTypeCountryName_VH: VarHandle by lazy { NSTextContentTypeCountryName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2630,7 +2630,7 @@ var NSTextContentTypeCountryName: MemorySegment
  * {@snippet lang=c : NSTextContentTypePostalCode typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypePostalCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypePostalCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypePostalCode").orElseThrow().reinterpret(NSTextContentTypePostalCode_LAYOUT.byteSize()) }
+private val NSTextContentTypePostalCode_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypePostalCode").orElseThrow().reinterpret(NSTextContentTypePostalCode_LAYOUT.byteSize()) }
 private val NSTextContentTypePostalCode_VH: VarHandle by lazy { NSTextContentTypePostalCode_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2643,7 +2643,7 @@ var NSTextContentTypePostalCode: MemorySegment
  * {@snippet lang=c : NSTextContentTypeTelephoneNumber typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeTelephoneNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeTelephoneNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeTelephoneNumber").orElseThrow().reinterpret(NSTextContentTypeTelephoneNumber_LAYOUT.byteSize()) }
+private val NSTextContentTypeTelephoneNumber_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeTelephoneNumber").orElseThrow().reinterpret(NSTextContentTypeTelephoneNumber_LAYOUT.byteSize()) }
 private val NSTextContentTypeTelephoneNumber_VH: VarHandle by lazy { NSTextContentTypeTelephoneNumber_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2656,7 +2656,7 @@ var NSTextContentTypeTelephoneNumber: MemorySegment
  * {@snippet lang=c : NSTextContentTypeEmailAddress typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeEmailAddress_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeEmailAddress_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeEmailAddress").orElseThrow().reinterpret(NSTextContentTypeEmailAddress_LAYOUT.byteSize()) }
+private val NSTextContentTypeEmailAddress_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeEmailAddress").orElseThrow().reinterpret(NSTextContentTypeEmailAddress_LAYOUT.byteSize()) }
 private val NSTextContentTypeEmailAddress_VH: VarHandle by lazy { NSTextContentTypeEmailAddress_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2669,7 +2669,7 @@ var NSTextContentTypeEmailAddress: MemorySegment
  * {@snippet lang=c : NSTextContentTypeURL typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeURL_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeURL_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeURL").orElseThrow().reinterpret(NSTextContentTypeURL_LAYOUT.byteSize()) }
+private val NSTextContentTypeURL_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeURL").orElseThrow().reinterpret(NSTextContentTypeURL_LAYOUT.byteSize()) }
 private val NSTextContentTypeURL_VH: VarHandle by lazy { NSTextContentTypeURL_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2682,7 +2682,7 @@ var NSTextContentTypeURL: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardNumber typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardNumber").orElseThrow().reinterpret(NSTextContentTypeCreditCardNumber_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardNumber_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardNumber").orElseThrow().reinterpret(NSTextContentTypeCreditCardNumber_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardNumber_VH: VarHandle by lazy { NSTextContentTypeCreditCardNumber_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2695,7 +2695,7 @@ var NSTextContentTypeCreditCardNumber: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardName").orElseThrow().reinterpret(NSTextContentTypeCreditCardName_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardName").orElseThrow().reinterpret(NSTextContentTypeCreditCardName_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardName_VH: VarHandle by lazy { NSTextContentTypeCreditCardName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2708,7 +2708,7 @@ var NSTextContentTypeCreditCardName: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardGivenName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardGivenName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardGivenName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardGivenName").orElseThrow().reinterpret(NSTextContentTypeCreditCardGivenName_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardGivenName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardGivenName").orElseThrow().reinterpret(NSTextContentTypeCreditCardGivenName_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardGivenName_VH: VarHandle by lazy { NSTextContentTypeCreditCardGivenName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2721,7 +2721,7 @@ var NSTextContentTypeCreditCardGivenName: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardMiddleName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardMiddleName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardMiddleName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardMiddleName").orElseThrow().reinterpret(NSTextContentTypeCreditCardMiddleName_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardMiddleName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardMiddleName").orElseThrow().reinterpret(NSTextContentTypeCreditCardMiddleName_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardMiddleName_VH: VarHandle by lazy { NSTextContentTypeCreditCardMiddleName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2734,7 +2734,7 @@ var NSTextContentTypeCreditCardMiddleName: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardFamilyName typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardFamilyName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardFamilyName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardFamilyName").orElseThrow().reinterpret(NSTextContentTypeCreditCardFamilyName_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardFamilyName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardFamilyName").orElseThrow().reinterpret(NSTextContentTypeCreditCardFamilyName_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardFamilyName_VH: VarHandle by lazy { NSTextContentTypeCreditCardFamilyName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2747,7 +2747,7 @@ var NSTextContentTypeCreditCardFamilyName: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardSecurityCode typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardSecurityCode_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardSecurityCode_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardSecurityCode").orElseThrow().reinterpret(NSTextContentTypeCreditCardSecurityCode_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardSecurityCode_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardSecurityCode").orElseThrow().reinterpret(NSTextContentTypeCreditCardSecurityCode_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardSecurityCode_VH: VarHandle by lazy { NSTextContentTypeCreditCardSecurityCode_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2760,7 +2760,7 @@ var NSTextContentTypeCreditCardSecurityCode: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardExpiration typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardExpiration_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardExpiration_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardExpiration").orElseThrow().reinterpret(NSTextContentTypeCreditCardExpiration_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardExpiration_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardExpiration").orElseThrow().reinterpret(NSTextContentTypeCreditCardExpiration_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardExpiration_VH: VarHandle by lazy { NSTextContentTypeCreditCardExpiration_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2773,7 +2773,7 @@ var NSTextContentTypeCreditCardExpiration: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardExpirationMonth typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardExpirationMonth_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardExpirationMonth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardExpirationMonth").orElseThrow().reinterpret(NSTextContentTypeCreditCardExpirationMonth_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardExpirationMonth_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardExpirationMonth").orElseThrow().reinterpret(NSTextContentTypeCreditCardExpirationMonth_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardExpirationMonth_VH: VarHandle by lazy { NSTextContentTypeCreditCardExpirationMonth_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2786,7 +2786,7 @@ var NSTextContentTypeCreditCardExpirationMonth: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardExpirationYear typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardExpirationYear_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardExpirationYear_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardExpirationYear").orElseThrow().reinterpret(NSTextContentTypeCreditCardExpirationYear_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardExpirationYear_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardExpirationYear").orElseThrow().reinterpret(NSTextContentTypeCreditCardExpirationYear_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardExpirationYear_VH: VarHandle by lazy { NSTextContentTypeCreditCardExpirationYear_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2799,7 +2799,7 @@ var NSTextContentTypeCreditCardExpirationYear: MemorySegment
  * {@snippet lang=c : NSTextContentTypeCreditCardType typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeCreditCardType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeCreditCardType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeCreditCardType").orElseThrow().reinterpret(NSTextContentTypeCreditCardType_LAYOUT.byteSize()) }
+private val NSTextContentTypeCreditCardType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeCreditCardType").orElseThrow().reinterpret(NSTextContentTypeCreditCardType_LAYOUT.byteSize()) }
 private val NSTextContentTypeCreditCardType_VH: VarHandle by lazy { NSTextContentTypeCreditCardType_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2812,7 +2812,7 @@ var NSTextContentTypeCreditCardType: MemorySegment
  * {@snippet lang=c : NSTextContentTypeShipmentTrackingNumber typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeShipmentTrackingNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeShipmentTrackingNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeShipmentTrackingNumber").orElseThrow().reinterpret(NSTextContentTypeShipmentTrackingNumber_LAYOUT.byteSize()) }
+private val NSTextContentTypeShipmentTrackingNumber_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeShipmentTrackingNumber").orElseThrow().reinterpret(NSTextContentTypeShipmentTrackingNumber_LAYOUT.byteSize()) }
 private val NSTextContentTypeShipmentTrackingNumber_VH: VarHandle by lazy { NSTextContentTypeShipmentTrackingNumber_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2825,7 +2825,7 @@ var NSTextContentTypeShipmentTrackingNumber: MemorySegment
  * {@snippet lang=c : NSTextContentTypeFlightNumber typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeFlightNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeFlightNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeFlightNumber").orElseThrow().reinterpret(NSTextContentTypeFlightNumber_LAYOUT.byteSize()) }
+private val NSTextContentTypeFlightNumber_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeFlightNumber").orElseThrow().reinterpret(NSTextContentTypeFlightNumber_LAYOUT.byteSize()) }
 private val NSTextContentTypeFlightNumber_VH: VarHandle by lazy { NSTextContentTypeFlightNumber_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2838,7 +2838,7 @@ var NSTextContentTypeFlightNumber: MemorySegment
  * {@snippet lang=c : NSTextContentTypeDateTime typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeDateTime_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeDateTime_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeDateTime").orElseThrow().reinterpret(NSTextContentTypeDateTime_LAYOUT.byteSize()) }
+private val NSTextContentTypeDateTime_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeDateTime").orElseThrow().reinterpret(NSTextContentTypeDateTime_LAYOUT.byteSize()) }
 private val NSTextContentTypeDateTime_VH: VarHandle by lazy { NSTextContentTypeDateTime_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2851,7 +2851,7 @@ var NSTextContentTypeDateTime: MemorySegment
  * {@snippet lang=c : NSTextContentTypeBirthdate typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeBirthdate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeBirthdate_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeBirthdate").orElseThrow().reinterpret(NSTextContentTypeBirthdate_LAYOUT.byteSize()) }
+private val NSTextContentTypeBirthdate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeBirthdate").orElseThrow().reinterpret(NSTextContentTypeBirthdate_LAYOUT.byteSize()) }
 private val NSTextContentTypeBirthdate_VH: VarHandle by lazy { NSTextContentTypeBirthdate_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2864,7 +2864,7 @@ var NSTextContentTypeBirthdate: MemorySegment
  * {@snippet lang=c : NSTextContentTypeBirthdateDay typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeBirthdateDay_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeBirthdateDay_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeBirthdateDay").orElseThrow().reinterpret(NSTextContentTypeBirthdateDay_LAYOUT.byteSize()) }
+private val NSTextContentTypeBirthdateDay_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeBirthdateDay").orElseThrow().reinterpret(NSTextContentTypeBirthdateDay_LAYOUT.byteSize()) }
 private val NSTextContentTypeBirthdateDay_VH: VarHandle by lazy { NSTextContentTypeBirthdateDay_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2877,7 +2877,7 @@ var NSTextContentTypeBirthdateDay: MemorySegment
  * {@snippet lang=c : NSTextContentTypeBirthdateMonth typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeBirthdateMonth_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeBirthdateMonth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeBirthdateMonth").orElseThrow().reinterpret(NSTextContentTypeBirthdateMonth_LAYOUT.byteSize()) }
+private val NSTextContentTypeBirthdateMonth_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeBirthdateMonth").orElseThrow().reinterpret(NSTextContentTypeBirthdateMonth_LAYOUT.byteSize()) }
 private val NSTextContentTypeBirthdateMonth_VH: VarHandle by lazy { NSTextContentTypeBirthdateMonth_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2890,7 +2890,7 @@ var NSTextContentTypeBirthdateMonth: MemorySegment
  * {@snippet lang=c : NSTextContentTypeBirthdateYear typedef const NSTextContentType = (Void)*
  */
 private val NSTextContentTypeBirthdateYear_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextContentTypeBirthdateYear_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextContentTypeBirthdateYear").orElseThrow().reinterpret(NSTextContentTypeBirthdateYear_LAYOUT.byteSize()) }
+private val NSTextContentTypeBirthdateYear_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextContentTypeBirthdateYear").orElseThrow().reinterpret(NSTextContentTypeBirthdateYear_LAYOUT.byteSize()) }
 private val NSTextContentTypeBirthdateYear_VH: VarHandle by lazy { NSTextContentTypeBirthdateYear_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2903,7 +2903,7 @@ var NSTextContentTypeBirthdateYear: MemorySegment
  * {@snippet lang=c : NSFontAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSFontAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFontAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontAttributeName").orElseThrow().reinterpret(NSFontAttributeName_LAYOUT.byteSize()) }
+private val NSFontAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSFontAttributeName").orElseThrow().reinterpret(NSFontAttributeName_LAYOUT.byteSize()) }
 private val NSFontAttributeName_VH: VarHandle by lazy { NSFontAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -2919,7 +2919,7 @@ var NSFontAttributeName: MemorySegment
  * {@snippet lang=c : NSParagraphStyleAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSParagraphStyleAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSParagraphStyleAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSParagraphStyleAttributeName").orElseThrow().reinterpret(NSParagraphStyleAttributeName_LAYOUT.byteSize()) }
+private val NSParagraphStyleAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSParagraphStyleAttributeName").orElseThrow().reinterpret(NSParagraphStyleAttributeName_LAYOUT.byteSize()) }
 private val NSParagraphStyleAttributeName_VH: VarHandle by lazy { NSParagraphStyleAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -2935,7 +2935,7 @@ var NSParagraphStyleAttributeName: MemorySegment
  * {@snippet lang=c : NSForegroundColorAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSForegroundColorAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSForegroundColorAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSForegroundColorAttributeName").orElseThrow().reinterpret(NSForegroundColorAttributeName_LAYOUT.byteSize()) }
+private val NSForegroundColorAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSForegroundColorAttributeName").orElseThrow().reinterpret(NSForegroundColorAttributeName_LAYOUT.byteSize()) }
 private val NSForegroundColorAttributeName_VH: VarHandle by lazy { NSForegroundColorAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -2951,7 +2951,7 @@ var NSForegroundColorAttributeName: MemorySegment
  * {@snippet lang=c : NSBackgroundColorAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSBackgroundColorAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBackgroundColorAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBackgroundColorAttributeName").orElseThrow().reinterpret(NSBackgroundColorAttributeName_LAYOUT.byteSize()) }
+private val NSBackgroundColorAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBackgroundColorAttributeName").orElseThrow().reinterpret(NSBackgroundColorAttributeName_LAYOUT.byteSize()) }
 private val NSBackgroundColorAttributeName_VH: VarHandle by lazy { NSBackgroundColorAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -2967,7 +2967,7 @@ var NSBackgroundColorAttributeName: MemorySegment
  * {@snippet lang=c : NSLigatureAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSLigatureAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSLigatureAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSLigatureAttributeName").orElseThrow().reinterpret(NSLigatureAttributeName_LAYOUT.byteSize()) }
+private val NSLigatureAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSLigatureAttributeName").orElseThrow().reinterpret(NSLigatureAttributeName_LAYOUT.byteSize()) }
 private val NSLigatureAttributeName_VH: VarHandle by lazy { NSLigatureAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -2983,7 +2983,7 @@ var NSLigatureAttributeName: MemorySegment
  * {@snippet lang=c : NSKernAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSKernAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSKernAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSKernAttributeName").orElseThrow().reinterpret(NSKernAttributeName_LAYOUT.byteSize()) }
+private val NSKernAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSKernAttributeName").orElseThrow().reinterpret(NSKernAttributeName_LAYOUT.byteSize()) }
 private val NSKernAttributeName_VH: VarHandle by lazy { NSKernAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -2999,7 +2999,7 @@ var NSKernAttributeName: MemorySegment
  * {@snippet lang=c : NSTrackingAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSTrackingAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTrackingAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTrackingAttributeName").orElseThrow().reinterpret(NSTrackingAttributeName_LAYOUT.byteSize()) }
+private val NSTrackingAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTrackingAttributeName").orElseThrow().reinterpret(NSTrackingAttributeName_LAYOUT.byteSize()) }
 private val NSTrackingAttributeName_VH: VarHandle by lazy { NSTrackingAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -3015,7 +3015,7 @@ var NSTrackingAttributeName: MemorySegment
  * {@snippet lang=c : NSStrikethroughStyleAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSStrikethroughStyleAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSStrikethroughStyleAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStrikethroughStyleAttributeName").orElseThrow().reinterpret(NSStrikethroughStyleAttributeName_LAYOUT.byteSize()) }
+private val NSStrikethroughStyleAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSStrikethroughStyleAttributeName").orElseThrow().reinterpret(NSStrikethroughStyleAttributeName_LAYOUT.byteSize()) }
 private val NSStrikethroughStyleAttributeName_VH: VarHandle by lazy { NSStrikethroughStyleAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3031,7 +3031,7 @@ var NSStrikethroughStyleAttributeName: MemorySegment
  * {@snippet lang=c : NSUnderlineStyleAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSUnderlineStyleAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUnderlineStyleAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUnderlineStyleAttributeName").orElseThrow().reinterpret(NSUnderlineStyleAttributeName_LAYOUT.byteSize()) }
+private val NSUnderlineStyleAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSUnderlineStyleAttributeName").orElseThrow().reinterpret(NSUnderlineStyleAttributeName_LAYOUT.byteSize()) }
 private val NSUnderlineStyleAttributeName_VH: VarHandle by lazy { NSUnderlineStyleAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3047,7 +3047,7 @@ var NSUnderlineStyleAttributeName: MemorySegment
  * {@snippet lang=c : NSStrokeColorAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSStrokeColorAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSStrokeColorAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStrokeColorAttributeName").orElseThrow().reinterpret(NSStrokeColorAttributeName_LAYOUT.byteSize()) }
+private val NSStrokeColorAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSStrokeColorAttributeName").orElseThrow().reinterpret(NSStrokeColorAttributeName_LAYOUT.byteSize()) }
 private val NSStrokeColorAttributeName_VH: VarHandle by lazy { NSStrokeColorAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3063,7 +3063,7 @@ var NSStrokeColorAttributeName: MemorySegment
  * {@snippet lang=c : NSStrokeWidthAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSStrokeWidthAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSStrokeWidthAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStrokeWidthAttributeName").orElseThrow().reinterpret(NSStrokeWidthAttributeName_LAYOUT.byteSize()) }
+private val NSStrokeWidthAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSStrokeWidthAttributeName").orElseThrow().reinterpret(NSStrokeWidthAttributeName_LAYOUT.byteSize()) }
 private val NSStrokeWidthAttributeName_VH: VarHandle by lazy { NSStrokeWidthAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3079,7 +3079,7 @@ var NSStrokeWidthAttributeName: MemorySegment
  * {@snippet lang=c : NSShadowAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSShadowAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSShadowAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSShadowAttributeName").orElseThrow().reinterpret(NSShadowAttributeName_LAYOUT.byteSize()) }
+private val NSShadowAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSShadowAttributeName").orElseThrow().reinterpret(NSShadowAttributeName_LAYOUT.byteSize()) }
 private val NSShadowAttributeName_VH: VarHandle by lazy { NSShadowAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3095,7 +3095,7 @@ var NSShadowAttributeName: MemorySegment
  * {@snippet lang=c : NSTextEffectAttributeName typedef const NSAttributedStringKey = (Void)*
  */
 private val NSTextEffectAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextEffectAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextEffectAttributeName").orElseThrow().reinterpret(NSTextEffectAttributeName_LAYOUT.byteSize()) }
+private val NSTextEffectAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextEffectAttributeName").orElseThrow().reinterpret(NSTextEffectAttributeName_LAYOUT.byteSize()) }
 private val NSTextEffectAttributeName_VH: VarHandle by lazy { NSTextEffectAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3111,7 +3111,7 @@ var NSTextEffectAttributeName: MemorySegment
  * {@snippet lang=c : NSAttachmentAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSAttachmentAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAttachmentAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAttachmentAttributeName").orElseThrow().reinterpret(NSAttachmentAttributeName_LAYOUT.byteSize()) }
+private val NSAttachmentAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAttachmentAttributeName").orElseThrow().reinterpret(NSAttachmentAttributeName_LAYOUT.byteSize()) }
 private val NSAttachmentAttributeName_VH: VarHandle by lazy { NSAttachmentAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3127,7 +3127,7 @@ var NSAttachmentAttributeName: MemorySegment
  * {@snippet lang=c : NSLinkAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSLinkAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSLinkAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSLinkAttributeName").orElseThrow().reinterpret(NSLinkAttributeName_LAYOUT.byteSize()) }
+private val NSLinkAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSLinkAttributeName").orElseThrow().reinterpret(NSLinkAttributeName_LAYOUT.byteSize()) }
 private val NSLinkAttributeName_VH: VarHandle by lazy { NSLinkAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3143,7 +3143,7 @@ var NSLinkAttributeName: MemorySegment
  * {@snippet lang=c : NSBaselineOffsetAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSBaselineOffsetAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBaselineOffsetAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBaselineOffsetAttributeName").orElseThrow().reinterpret(NSBaselineOffsetAttributeName_LAYOUT.byteSize()) }
+private val NSBaselineOffsetAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBaselineOffsetAttributeName").orElseThrow().reinterpret(NSBaselineOffsetAttributeName_LAYOUT.byteSize()) }
 private val NSBaselineOffsetAttributeName_VH: VarHandle by lazy { NSBaselineOffsetAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3159,7 +3159,7 @@ var NSBaselineOffsetAttributeName: MemorySegment
  * {@snippet lang=c : NSUnderlineColorAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSUnderlineColorAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSUnderlineColorAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSUnderlineColorAttributeName").orElseThrow().reinterpret(NSUnderlineColorAttributeName_LAYOUT.byteSize()) }
+private val NSUnderlineColorAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSUnderlineColorAttributeName").orElseThrow().reinterpret(NSUnderlineColorAttributeName_LAYOUT.byteSize()) }
 private val NSUnderlineColorAttributeName_VH: VarHandle by lazy { NSUnderlineColorAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3175,7 +3175,7 @@ var NSUnderlineColorAttributeName: MemorySegment
  * {@snippet lang=c : NSStrikethroughColorAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSStrikethroughColorAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSStrikethroughColorAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSStrikethroughColorAttributeName").orElseThrow().reinterpret(NSStrikethroughColorAttributeName_LAYOUT.byteSize()) }
+private val NSStrikethroughColorAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSStrikethroughColorAttributeName").orElseThrow().reinterpret(NSStrikethroughColorAttributeName_LAYOUT.byteSize()) }
 private val NSStrikethroughColorAttributeName_VH: VarHandle by lazy { NSStrikethroughColorAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3191,7 +3191,7 @@ var NSStrikethroughColorAttributeName: MemorySegment
  * {@snippet lang=c : NSWritingDirectionAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSWritingDirectionAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWritingDirectionAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWritingDirectionAttributeName").orElseThrow().reinterpret(NSWritingDirectionAttributeName_LAYOUT.byteSize()) }
+private val NSWritingDirectionAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWritingDirectionAttributeName").orElseThrow().reinterpret(NSWritingDirectionAttributeName_LAYOUT.byteSize()) }
 private val NSWritingDirectionAttributeName_VH: VarHandle by lazy { NSWritingDirectionAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3207,7 +3207,7 @@ var NSWritingDirectionAttributeName: MemorySegment
  * {@snippet lang=c : NSTextHighlightStyleAttributeName typedef const NSAttributedStringKey = (Void)*
  */
 private val NSTextHighlightStyleAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextHighlightStyleAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextHighlightStyleAttributeName").orElseThrow().reinterpret(NSTextHighlightStyleAttributeName_LAYOUT.byteSize()) }
+private val NSTextHighlightStyleAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextHighlightStyleAttributeName").orElseThrow().reinterpret(NSTextHighlightStyleAttributeName_LAYOUT.byteSize()) }
 private val NSTextHighlightStyleAttributeName_VH: VarHandle by lazy { NSTextHighlightStyleAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3223,7 +3223,7 @@ var NSTextHighlightStyleAttributeName: MemorySegment
  * {@snippet lang=c : NSTextHighlightColorSchemeAttributeName typedef const NSAttributedStringKey = (Void)*
  */
 private val NSTextHighlightColorSchemeAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextHighlightColorSchemeAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextHighlightColorSchemeAttributeName").orElseThrow().reinterpret(NSTextHighlightColorSchemeAttributeName_LAYOUT.byteSize()) }
+private val NSTextHighlightColorSchemeAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextHighlightColorSchemeAttributeName").orElseThrow().reinterpret(NSTextHighlightColorSchemeAttributeName_LAYOUT.byteSize()) }
 private val NSTextHighlightColorSchemeAttributeName_VH: VarHandle by lazy { NSTextHighlightColorSchemeAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3239,7 +3239,7 @@ var NSTextHighlightColorSchemeAttributeName: MemorySegment
  * {@snippet lang=c : NSAdaptiveImageGlyphAttributeName typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAdaptiveImageGlyphAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAdaptiveImageGlyphAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAdaptiveImageGlyphAttributeName").orElseThrow().reinterpret(NSAdaptiveImageGlyphAttributeName_LAYOUT.byteSize()) }
+private val NSAdaptiveImageGlyphAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAdaptiveImageGlyphAttributeName").orElseThrow().reinterpret(NSAdaptiveImageGlyphAttributeName_LAYOUT.byteSize()) }
 private val NSAdaptiveImageGlyphAttributeName_VH: VarHandle by lazy { NSAdaptiveImageGlyphAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3255,7 +3255,7 @@ var NSAdaptiveImageGlyphAttributeName: MemorySegment
  * {@snippet lang=c : NSWritingToolsExclusionAttributeName typedef const NSAttributedStringKey = (Void)*
  */
 private val NSWritingToolsExclusionAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWritingToolsExclusionAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWritingToolsExclusionAttributeName").orElseThrow().reinterpret(NSWritingToolsExclusionAttributeName_LAYOUT.byteSize()) }
+private val NSWritingToolsExclusionAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWritingToolsExclusionAttributeName").orElseThrow().reinterpret(NSWritingToolsExclusionAttributeName_LAYOUT.byteSize()) }
 private val NSWritingToolsExclusionAttributeName_VH: VarHandle by lazy { NSWritingToolsExclusionAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
@@ -3271,7 +3271,7 @@ var NSWritingToolsExclusionAttributeName: MemorySegment
  * {@snippet lang=c : NSTextEffectLetterpressStyle typedef const NSTextEffectStyle = (Void)*
  */
 private val NSTextEffectLetterpressStyle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextEffectLetterpressStyle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextEffectLetterpressStyle").orElseThrow().reinterpret(NSTextEffectLetterpressStyle_LAYOUT.byteSize()) }
+private val NSTextEffectLetterpressStyle_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextEffectLetterpressStyle").orElseThrow().reinterpret(NSTextEffectLetterpressStyle_LAYOUT.byteSize()) }
 private val NSTextEffectLetterpressStyle_VH: VarHandle by lazy { NSTextEffectLetterpressStyle_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3287,7 +3287,7 @@ var NSTextEffectLetterpressStyle: MemorySegment
  * {@snippet lang=c : NSTextHighlightStyleDefault typedef const NSTextHighlightStyle = (Void)*
  */
 private val NSTextHighlightStyleDefault_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextHighlightStyleDefault_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextHighlightStyleDefault").orElseThrow().reinterpret(NSTextHighlightStyleDefault_LAYOUT.byteSize()) }
+private val NSTextHighlightStyleDefault_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextHighlightStyleDefault").orElseThrow().reinterpret(NSTextHighlightStyleDefault_LAYOUT.byteSize()) }
 private val NSTextHighlightStyleDefault_VH: VarHandle by lazy { NSTextHighlightStyleDefault_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3303,7 +3303,7 @@ var NSTextHighlightStyleDefault: MemorySegment
  * {@snippet lang=c : NSTextHighlightColorSchemeDefault typedef const NSTextHighlightColorScheme = (Void)*
  */
 private val NSTextHighlightColorSchemeDefault_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextHighlightColorSchemeDefault_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextHighlightColorSchemeDefault").orElseThrow().reinterpret(NSTextHighlightColorSchemeDefault_LAYOUT.byteSize()) }
+private val NSTextHighlightColorSchemeDefault_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextHighlightColorSchemeDefault").orElseThrow().reinterpret(NSTextHighlightColorSchemeDefault_LAYOUT.byteSize()) }
 private val NSTextHighlightColorSchemeDefault_VH: VarHandle by lazy { NSTextHighlightColorSchemeDefault_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3319,7 +3319,7 @@ var NSTextHighlightColorSchemeDefault: MemorySegment
  * {@snippet lang=c : NSTextHighlightColorSchemePurple typedef const NSTextHighlightColorScheme = (Void)*
  */
 private val NSTextHighlightColorSchemePurple_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextHighlightColorSchemePurple_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextHighlightColorSchemePurple").orElseThrow().reinterpret(NSTextHighlightColorSchemePurple_LAYOUT.byteSize()) }
+private val NSTextHighlightColorSchemePurple_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextHighlightColorSchemePurple").orElseThrow().reinterpret(NSTextHighlightColorSchemePurple_LAYOUT.byteSize()) }
 private val NSTextHighlightColorSchemePurple_VH: VarHandle by lazy { NSTextHighlightColorSchemePurple_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3335,7 +3335,7 @@ var NSTextHighlightColorSchemePurple: MemorySegment
  * {@snippet lang=c : NSTextHighlightColorSchemePink typedef const NSTextHighlightColorScheme = (Void)*
  */
 private val NSTextHighlightColorSchemePink_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextHighlightColorSchemePink_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextHighlightColorSchemePink").orElseThrow().reinterpret(NSTextHighlightColorSchemePink_LAYOUT.byteSize()) }
+private val NSTextHighlightColorSchemePink_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextHighlightColorSchemePink").orElseThrow().reinterpret(NSTextHighlightColorSchemePink_LAYOUT.byteSize()) }
 private val NSTextHighlightColorSchemePink_VH: VarHandle by lazy { NSTextHighlightColorSchemePink_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3351,7 +3351,7 @@ var NSTextHighlightColorSchemePink: MemorySegment
  * {@snippet lang=c : NSTextHighlightColorSchemeOrange typedef const NSTextHighlightColorScheme = (Void)*
  */
 private val NSTextHighlightColorSchemeOrange_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextHighlightColorSchemeOrange_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextHighlightColorSchemeOrange").orElseThrow().reinterpret(NSTextHighlightColorSchemeOrange_LAYOUT.byteSize()) }
+private val NSTextHighlightColorSchemeOrange_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextHighlightColorSchemeOrange").orElseThrow().reinterpret(NSTextHighlightColorSchemeOrange_LAYOUT.byteSize()) }
 private val NSTextHighlightColorSchemeOrange_VH: VarHandle by lazy { NSTextHighlightColorSchemeOrange_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3367,7 +3367,7 @@ var NSTextHighlightColorSchemeOrange: MemorySegment
  * {@snippet lang=c : NSTextHighlightColorSchemeMint typedef const NSTextHighlightColorScheme = (Void)*
  */
 private val NSTextHighlightColorSchemeMint_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextHighlightColorSchemeMint_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextHighlightColorSchemeMint").orElseThrow().reinterpret(NSTextHighlightColorSchemeMint_LAYOUT.byteSize()) }
+private val NSTextHighlightColorSchemeMint_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextHighlightColorSchemeMint").orElseThrow().reinterpret(NSTextHighlightColorSchemeMint_LAYOUT.byteSize()) }
 private val NSTextHighlightColorSchemeMint_VH: VarHandle by lazy { NSTextHighlightColorSchemeMint_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3383,7 +3383,7 @@ var NSTextHighlightColorSchemeMint: MemorySegment
  * {@snippet lang=c : NSTextHighlightColorSchemeBlue typedef const NSTextHighlightColorScheme = (Void)*
  */
 private val NSTextHighlightColorSchemeBlue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextHighlightColorSchemeBlue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextHighlightColorSchemeBlue").orElseThrow().reinterpret(NSTextHighlightColorSchemeBlue_LAYOUT.byteSize()) }
+private val NSTextHighlightColorSchemeBlue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextHighlightColorSchemeBlue").orElseThrow().reinterpret(NSTextHighlightColorSchemeBlue_LAYOUT.byteSize()) }
 private val NSTextHighlightColorSchemeBlue_VH: VarHandle by lazy { NSTextHighlightColorSchemeBlue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3399,7 +3399,7 @@ var NSTextHighlightColorSchemeBlue: MemorySegment
  * {@snippet lang=c : NSPlainTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSPlainTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPlainTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPlainTextDocumentType").orElseThrow().reinterpret(NSPlainTextDocumentType_LAYOUT.byteSize()) }
+private val NSPlainTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPlainTextDocumentType").orElseThrow().reinterpret(NSPlainTextDocumentType_LAYOUT.byteSize()) }
 private val NSPlainTextDocumentType_VH: VarHandle by lazy { NSPlainTextDocumentType_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3415,7 +3415,7 @@ var NSPlainTextDocumentType: MemorySegment
  * {@snippet lang=c : NSRTFTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSRTFTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSRTFTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRTFTextDocumentType").orElseThrow().reinterpret(NSRTFTextDocumentType_LAYOUT.byteSize()) }
+private val NSRTFTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSRTFTextDocumentType").orElseThrow().reinterpret(NSRTFTextDocumentType_LAYOUT.byteSize()) }
 private val NSRTFTextDocumentType_VH: VarHandle by lazy { NSRTFTextDocumentType_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3431,7 +3431,7 @@ var NSRTFTextDocumentType: MemorySegment
  * {@snippet lang=c : NSRTFDTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSRTFDTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSRTFDTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRTFDTextDocumentType").orElseThrow().reinterpret(NSRTFDTextDocumentType_LAYOUT.byteSize()) }
+private val NSRTFDTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSRTFDTextDocumentType").orElseThrow().reinterpret(NSRTFDTextDocumentType_LAYOUT.byteSize()) }
 private val NSRTFDTextDocumentType_VH: VarHandle by lazy { NSRTFDTextDocumentType_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3447,7 +3447,7 @@ var NSRTFDTextDocumentType: MemorySegment
  * {@snippet lang=c : NSHTMLTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSHTMLTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHTMLTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHTMLTextDocumentType").orElseThrow().reinterpret(NSHTMLTextDocumentType_LAYOUT.byteSize()) }
+private val NSHTMLTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSHTMLTextDocumentType").orElseThrow().reinterpret(NSHTMLTextDocumentType_LAYOUT.byteSize()) }
 private val NSHTMLTextDocumentType_VH: VarHandle by lazy { NSHTMLTextDocumentType_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3463,7 +3463,7 @@ var NSHTMLTextDocumentType: MemorySegment
  * {@snippet lang=c : NSTextLayoutSectionOrientation typedef NSTextLayoutSectionKey = typedef NSString = (Void)*
  */
 private val NSTextLayoutSectionOrientation_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextLayoutSectionOrientation_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextLayoutSectionOrientation").orElseThrow().reinterpret(NSTextLayoutSectionOrientation_LAYOUT.byteSize()) }
+private val NSTextLayoutSectionOrientation_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextLayoutSectionOrientation").orElseThrow().reinterpret(NSTextLayoutSectionOrientation_LAYOUT.byteSize()) }
 private val NSTextLayoutSectionOrientation_VH: VarHandle by lazy { NSTextLayoutSectionOrientation_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3479,7 +3479,7 @@ var NSTextLayoutSectionOrientation: MemorySegment
  * {@snippet lang=c : NSTextLayoutSectionRange typedef NSTextLayoutSectionKey = typedef NSString = (Void)*
  */
 private val NSTextLayoutSectionRange_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextLayoutSectionRange_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextLayoutSectionRange").orElseThrow().reinterpret(NSTextLayoutSectionRange_LAYOUT.byteSize()) }
+private val NSTextLayoutSectionRange_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextLayoutSectionRange").orElseThrow().reinterpret(NSTextLayoutSectionRange_LAYOUT.byteSize()) }
 private val NSTextLayoutSectionRange_VH: VarHandle by lazy { NSTextLayoutSectionRange_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3495,7 +3495,7 @@ var NSTextLayoutSectionRange: MemorySegment
  * {@snippet lang=c : NSDocumentTypeDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSDocumentTypeDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDocumentTypeDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDocumentTypeDocumentAttribute").orElseThrow().reinterpret(NSDocumentTypeDocumentAttribute_LAYOUT.byteSize()) }
+private val NSDocumentTypeDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDocumentTypeDocumentAttribute").orElseThrow().reinterpret(NSDocumentTypeDocumentAttribute_LAYOUT.byteSize()) }
 private val NSDocumentTypeDocumentAttribute_VH: VarHandle by lazy { NSDocumentTypeDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3511,7 +3511,7 @@ var NSDocumentTypeDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSCharacterEncodingDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSCharacterEncodingDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSCharacterEncodingDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCharacterEncodingDocumentAttribute").orElseThrow().reinterpret(NSCharacterEncodingDocumentAttribute_LAYOUT.byteSize()) }
+private val NSCharacterEncodingDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCharacterEncodingDocumentAttribute").orElseThrow().reinterpret(NSCharacterEncodingDocumentAttribute_LAYOUT.byteSize()) }
 private val NSCharacterEncodingDocumentAttribute_VH: VarHandle by lazy { NSCharacterEncodingDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3527,7 +3527,7 @@ var NSCharacterEncodingDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSDefaultAttributesDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSDefaultAttributesDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDefaultAttributesDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDefaultAttributesDocumentAttribute").orElseThrow().reinterpret(NSDefaultAttributesDocumentAttribute_LAYOUT.byteSize()) }
+private val NSDefaultAttributesDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDefaultAttributesDocumentAttribute").orElseThrow().reinterpret(NSDefaultAttributesDocumentAttribute_LAYOUT.byteSize()) }
 private val NSDefaultAttributesDocumentAttribute_VH: VarHandle by lazy { NSDefaultAttributesDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3543,7 +3543,7 @@ var NSDefaultAttributesDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSPaperSizeDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSPaperSizeDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPaperSizeDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPaperSizeDocumentAttribute").orElseThrow().reinterpret(NSPaperSizeDocumentAttribute_LAYOUT.byteSize()) }
+private val NSPaperSizeDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPaperSizeDocumentAttribute").orElseThrow().reinterpret(NSPaperSizeDocumentAttribute_LAYOUT.byteSize()) }
 private val NSPaperSizeDocumentAttribute_VH: VarHandle by lazy { NSPaperSizeDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3559,7 +3559,7 @@ var NSPaperSizeDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSViewSizeDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSViewSizeDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSViewSizeDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSViewSizeDocumentAttribute").orElseThrow().reinterpret(NSViewSizeDocumentAttribute_LAYOUT.byteSize()) }
+private val NSViewSizeDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSViewSizeDocumentAttribute").orElseThrow().reinterpret(NSViewSizeDocumentAttribute_LAYOUT.byteSize()) }
 private val NSViewSizeDocumentAttribute_VH: VarHandle by lazy { NSViewSizeDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3575,7 +3575,7 @@ var NSViewSizeDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSViewZoomDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSViewZoomDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSViewZoomDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSViewZoomDocumentAttribute").orElseThrow().reinterpret(NSViewZoomDocumentAttribute_LAYOUT.byteSize()) }
+private val NSViewZoomDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSViewZoomDocumentAttribute").orElseThrow().reinterpret(NSViewZoomDocumentAttribute_LAYOUT.byteSize()) }
 private val NSViewZoomDocumentAttribute_VH: VarHandle by lazy { NSViewZoomDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3591,7 +3591,7 @@ var NSViewZoomDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSViewModeDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSViewModeDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSViewModeDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSViewModeDocumentAttribute").orElseThrow().reinterpret(NSViewModeDocumentAttribute_LAYOUT.byteSize()) }
+private val NSViewModeDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSViewModeDocumentAttribute").orElseThrow().reinterpret(NSViewModeDocumentAttribute_LAYOUT.byteSize()) }
 private val NSViewModeDocumentAttribute_VH: VarHandle by lazy { NSViewModeDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3607,7 +3607,7 @@ var NSViewModeDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSDefaultFontExcludedDocumentAttribute typedef const NSAttributedStringDocumentAttributeKey = (Void)*
  */
 private val NSDefaultFontExcludedDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDefaultFontExcludedDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDefaultFontExcludedDocumentAttribute").orElseThrow().reinterpret(NSDefaultFontExcludedDocumentAttribute_LAYOUT.byteSize()) }
+private val NSDefaultFontExcludedDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDefaultFontExcludedDocumentAttribute").orElseThrow().reinterpret(NSDefaultFontExcludedDocumentAttribute_LAYOUT.byteSize()) }
 private val NSDefaultFontExcludedDocumentAttribute_VH: VarHandle by lazy { NSDefaultFontExcludedDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
@@ -3623,7 +3623,7 @@ var NSDefaultFontExcludedDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSReadOnlyDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSReadOnlyDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSReadOnlyDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSReadOnlyDocumentAttribute").orElseThrow().reinterpret(NSReadOnlyDocumentAttribute_LAYOUT.byteSize()) }
+private val NSReadOnlyDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSReadOnlyDocumentAttribute").orElseThrow().reinterpret(NSReadOnlyDocumentAttribute_LAYOUT.byteSize()) }
 private val NSReadOnlyDocumentAttribute_VH: VarHandle by lazy { NSReadOnlyDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3639,7 +3639,7 @@ var NSReadOnlyDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSBackgroundColorDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSBackgroundColorDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBackgroundColorDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBackgroundColorDocumentAttribute").orElseThrow().reinterpret(NSBackgroundColorDocumentAttribute_LAYOUT.byteSize()) }
+private val NSBackgroundColorDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBackgroundColorDocumentAttribute").orElseThrow().reinterpret(NSBackgroundColorDocumentAttribute_LAYOUT.byteSize()) }
 private val NSBackgroundColorDocumentAttribute_VH: VarHandle by lazy { NSBackgroundColorDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3655,7 +3655,7 @@ var NSBackgroundColorDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSHyphenationFactorDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSHyphenationFactorDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSHyphenationFactorDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSHyphenationFactorDocumentAttribute").orElseThrow().reinterpret(NSHyphenationFactorDocumentAttribute_LAYOUT.byteSize()) }
+private val NSHyphenationFactorDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSHyphenationFactorDocumentAttribute").orElseThrow().reinterpret(NSHyphenationFactorDocumentAttribute_LAYOUT.byteSize()) }
 private val NSHyphenationFactorDocumentAttribute_VH: VarHandle by lazy { NSHyphenationFactorDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3671,7 +3671,7 @@ var NSHyphenationFactorDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSDefaultTabIntervalDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSDefaultTabIntervalDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDefaultTabIntervalDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDefaultTabIntervalDocumentAttribute").orElseThrow().reinterpret(NSDefaultTabIntervalDocumentAttribute_LAYOUT.byteSize()) }
+private val NSDefaultTabIntervalDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDefaultTabIntervalDocumentAttribute").orElseThrow().reinterpret(NSDefaultTabIntervalDocumentAttribute_LAYOUT.byteSize()) }
 private val NSDefaultTabIntervalDocumentAttribute_VH: VarHandle by lazy { NSDefaultTabIntervalDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1)
@@ -3687,7 +3687,7 @@ var NSDefaultTabIntervalDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSTextLayoutSectionsAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSTextLayoutSectionsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextLayoutSectionsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextLayoutSectionsAttribute").orElseThrow().reinterpret(NSTextLayoutSectionsAttribute_LAYOUT.byteSize()) }
+private val NSTextLayoutSectionsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextLayoutSectionsAttribute").orElseThrow().reinterpret(NSTextLayoutSectionsAttribute_LAYOUT.byteSize()) }
 private val NSTextLayoutSectionsAttribute_VH: VarHandle by lazy { NSTextLayoutSectionsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3703,7 +3703,7 @@ var NSTextLayoutSectionsAttribute: MemorySegment
  * {@snippet lang=c : NSTextScalingDocumentAttribute typedef const NSAttributedStringDocumentAttributeKey = (Void)*
  */
 private val NSTextScalingDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextScalingDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextScalingDocumentAttribute").orElseThrow().reinterpret(NSTextScalingDocumentAttribute_LAYOUT.byteSize()) }
+private val NSTextScalingDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextScalingDocumentAttribute").orElseThrow().reinterpret(NSTextScalingDocumentAttribute_LAYOUT.byteSize()) }
 private val NSTextScalingDocumentAttribute_VH: VarHandle by lazy { NSTextScalingDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -3719,7 +3719,7 @@ var NSTextScalingDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSSourceTextScalingDocumentAttribute typedef const NSAttributedStringDocumentAttributeKey = (Void)*
  */
 private val NSSourceTextScalingDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSourceTextScalingDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSourceTextScalingDocumentAttribute").orElseThrow().reinterpret(NSSourceTextScalingDocumentAttribute_LAYOUT.byteSize()) }
+private val NSSourceTextScalingDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSourceTextScalingDocumentAttribute").orElseThrow().reinterpret(NSSourceTextScalingDocumentAttribute_LAYOUT.byteSize()) }
 private val NSSourceTextScalingDocumentAttribute_VH: VarHandle by lazy { NSSourceTextScalingDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -3735,7 +3735,7 @@ var NSSourceTextScalingDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSCocoaVersionDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSCocoaVersionDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSCocoaVersionDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCocoaVersionDocumentAttribute").orElseThrow().reinterpret(NSCocoaVersionDocumentAttribute_LAYOUT.byteSize()) }
+private val NSCocoaVersionDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCocoaVersionDocumentAttribute").orElseThrow().reinterpret(NSCocoaVersionDocumentAttribute_LAYOUT.byteSize()) }
 private val NSCocoaVersionDocumentAttribute_VH: VarHandle by lazy { NSCocoaVersionDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -3751,7 +3751,7 @@ var NSCocoaVersionDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSDocumentTypeDocumentOption typedef NSAttributedStringDocumentReadingOptionKey = typedef NSString = (Void)*
  */
 private val NSDocumentTypeDocumentOption_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDocumentTypeDocumentOption_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDocumentTypeDocumentOption").orElseThrow().reinterpret(NSDocumentTypeDocumentOption_LAYOUT.byteSize()) }
+private val NSDocumentTypeDocumentOption_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDocumentTypeDocumentOption").orElseThrow().reinterpret(NSDocumentTypeDocumentOption_LAYOUT.byteSize()) }
 private val NSDocumentTypeDocumentOption_VH: VarHandle by lazy { NSDocumentTypeDocumentOption_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3767,7 +3767,7 @@ var NSDocumentTypeDocumentOption: MemorySegment
  * {@snippet lang=c : NSDefaultAttributesDocumentOption typedef NSAttributedStringDocumentReadingOptionKey = typedef NSString = (Void)*
  */
 private val NSDefaultAttributesDocumentOption_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDefaultAttributesDocumentOption_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDefaultAttributesDocumentOption").orElseThrow().reinterpret(NSDefaultAttributesDocumentOption_LAYOUT.byteSize()) }
+private val NSDefaultAttributesDocumentOption_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDefaultAttributesDocumentOption").orElseThrow().reinterpret(NSDefaultAttributesDocumentOption_LAYOUT.byteSize()) }
 private val NSDefaultAttributesDocumentOption_VH: VarHandle by lazy { NSDefaultAttributesDocumentOption_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3783,7 +3783,7 @@ var NSDefaultAttributesDocumentOption: MemorySegment
  * {@snippet lang=c : NSCharacterEncodingDocumentOption typedef NSAttributedStringDocumentReadingOptionKey = typedef NSString = (Void)*
  */
 private val NSCharacterEncodingDocumentOption_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSCharacterEncodingDocumentOption_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCharacterEncodingDocumentOption").orElseThrow().reinterpret(NSCharacterEncodingDocumentOption_LAYOUT.byteSize()) }
+private val NSCharacterEncodingDocumentOption_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCharacterEncodingDocumentOption").orElseThrow().reinterpret(NSCharacterEncodingDocumentOption_LAYOUT.byteSize()) }
 private val NSCharacterEncodingDocumentOption_VH: VarHandle by lazy { NSCharacterEncodingDocumentOption_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
@@ -3799,7 +3799,7 @@ var NSCharacterEncodingDocumentOption: MemorySegment
  * {@snippet lang=c : NSTargetTextScalingDocumentOption typedef const NSAttributedStringDocumentReadingOptionKey = (Void)*
  */
 private val NSTargetTextScalingDocumentOption_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTargetTextScalingDocumentOption_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTargetTextScalingDocumentOption").orElseThrow().reinterpret(NSTargetTextScalingDocumentOption_LAYOUT.byteSize()) }
+private val NSTargetTextScalingDocumentOption_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTargetTextScalingDocumentOption").orElseThrow().reinterpret(NSTargetTextScalingDocumentOption_LAYOUT.byteSize()) }
 private val NSTargetTextScalingDocumentOption_VH: VarHandle by lazy { NSTargetTextScalingDocumentOption_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -3815,7 +3815,7 @@ var NSTargetTextScalingDocumentOption: MemorySegment
  * {@snippet lang=c : NSSourceTextScalingDocumentOption typedef const NSAttributedStringDocumentReadingOptionKey = (Void)*
  */
 private val NSSourceTextScalingDocumentOption_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSourceTextScalingDocumentOption_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSourceTextScalingDocumentOption").orElseThrow().reinterpret(NSSourceTextScalingDocumentOption_LAYOUT.byteSize()) }
+private val NSSourceTextScalingDocumentOption_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSourceTextScalingDocumentOption").orElseThrow().reinterpret(NSSourceTextScalingDocumentOption_LAYOUT.byteSize()) }
 private val NSSourceTextScalingDocumentOption_VH: VarHandle by lazy { NSSourceTextScalingDocumentOption_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -3831,7 +3831,7 @@ var NSSourceTextScalingDocumentOption: MemorySegment
  * {@snippet lang=c : NSTextKit1ListMarkerFormatDocumentOption typedef const NSAttributedStringDocumentReadingOptionKey = (Void)*
  */
 private val NSTextKit1ListMarkerFormatDocumentOption_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextKit1ListMarkerFormatDocumentOption_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextKit1ListMarkerFormatDocumentOption").orElseThrow().reinterpret(NSTextKit1ListMarkerFormatDocumentOption_LAYOUT.byteSize()) }
+private val NSTextKit1ListMarkerFormatDocumentOption_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextKit1ListMarkerFormatDocumentOption").orElseThrow().reinterpret(NSTextKit1ListMarkerFormatDocumentOption_LAYOUT.byteSize()) }
 private val NSTextKit1ListMarkerFormatDocumentOption_VH: VarHandle by lazy { NSTextKit1ListMarkerFormatDocumentOption_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 18, introducedMinor = 0, introducedSubminor = -1)
@@ -3847,7 +3847,7 @@ var NSTextKit1ListMarkerFormatDocumentOption: MemorySegment
  * {@snippet lang=c : NSCursorAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSCursorAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSCursorAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCursorAttributeName").orElseThrow().reinterpret(NSCursorAttributeName_LAYOUT.byteSize()) }
+private val NSCursorAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCursorAttributeName").orElseThrow().reinterpret(NSCursorAttributeName_LAYOUT.byteSize()) }
 private val NSCursorAttributeName_VH: VarHandle by lazy { NSCursorAttributeName_LAYOUT.varHandle() }
 
 var NSCursorAttributeName: MemorySegment
@@ -3858,7 +3858,7 @@ var NSCursorAttributeName: MemorySegment
  * {@snippet lang=c : NSToolTipAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSToolTipAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSToolTipAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSToolTipAttributeName").orElseThrow().reinterpret(NSToolTipAttributeName_LAYOUT.byteSize()) }
+private val NSToolTipAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSToolTipAttributeName").orElseThrow().reinterpret(NSToolTipAttributeName_LAYOUT.byteSize()) }
 private val NSToolTipAttributeName_VH: VarHandle by lazy { NSToolTipAttributeName_LAYOUT.varHandle() }
 
 var NSToolTipAttributeName: MemorySegment
@@ -3869,7 +3869,7 @@ var NSToolTipAttributeName: MemorySegment
  * {@snippet lang=c : NSMarkedClauseSegmentAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSMarkedClauseSegmentAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMarkedClauseSegmentAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMarkedClauseSegmentAttributeName").orElseThrow().reinterpret(NSMarkedClauseSegmentAttributeName_LAYOUT.byteSize()) }
+private val NSMarkedClauseSegmentAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSMarkedClauseSegmentAttributeName").orElseThrow().reinterpret(NSMarkedClauseSegmentAttributeName_LAYOUT.byteSize()) }
 private val NSMarkedClauseSegmentAttributeName_VH: VarHandle by lazy { NSMarkedClauseSegmentAttributeName_LAYOUT.varHandle() }
 
 var NSMarkedClauseSegmentAttributeName: MemorySegment
@@ -3880,7 +3880,7 @@ var NSMarkedClauseSegmentAttributeName: MemorySegment
  * {@snippet lang=c : NSTextAlternativesAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSTextAlternativesAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextAlternativesAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextAlternativesAttributeName").orElseThrow().reinterpret(NSTextAlternativesAttributeName_LAYOUT.byteSize()) }
+private val NSTextAlternativesAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextAlternativesAttributeName").orElseThrow().reinterpret(NSTextAlternativesAttributeName_LAYOUT.byteSize()) }
 private val NSTextAlternativesAttributeName_VH: VarHandle by lazy { NSTextAlternativesAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
@@ -3892,7 +3892,7 @@ var NSTextAlternativesAttributeName: MemorySegment
  * {@snippet lang=c : NSSpellingStateAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSSpellingStateAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSpellingStateAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSpellingStateAttributeName").orElseThrow().reinterpret(NSSpellingStateAttributeName_LAYOUT.byteSize()) }
+private val NSSpellingStateAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSpellingStateAttributeName").orElseThrow().reinterpret(NSSpellingStateAttributeName_LAYOUT.byteSize()) }
 private val NSSpellingStateAttributeName_VH: VarHandle by lazy { NSSpellingStateAttributeName_LAYOUT.varHandle() }
 
 var NSSpellingStateAttributeName: MemorySegment
@@ -3903,7 +3903,7 @@ var NSSpellingStateAttributeName: MemorySegment
  * {@snippet lang=c : NSSuperscriptAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSSuperscriptAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSSuperscriptAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSSuperscriptAttributeName").orElseThrow().reinterpret(NSSuperscriptAttributeName_LAYOUT.byteSize()) }
+private val NSSuperscriptAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSSuperscriptAttributeName").orElseThrow().reinterpret(NSSuperscriptAttributeName_LAYOUT.byteSize()) }
 private val NSSuperscriptAttributeName_VH: VarHandle by lazy { NSSuperscriptAttributeName_LAYOUT.varHandle() }
 
 var NSSuperscriptAttributeName: MemorySegment
@@ -3914,7 +3914,7 @@ var NSSuperscriptAttributeName: MemorySegment
  * {@snippet lang=c : NSGlyphInfoAttributeName typedef NSAttributedStringKey = typedef NSString = (Void)*
  */
 private val NSGlyphInfoAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSGlyphInfoAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGlyphInfoAttributeName").orElseThrow().reinterpret(NSGlyphInfoAttributeName_LAYOUT.byteSize()) }
+private val NSGlyphInfoAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSGlyphInfoAttributeName").orElseThrow().reinterpret(NSGlyphInfoAttributeName_LAYOUT.byteSize()) }
 private val NSGlyphInfoAttributeName_VH: VarHandle by lazy { NSGlyphInfoAttributeName_LAYOUT.varHandle() }
 
 var NSGlyphInfoAttributeName: MemorySegment
@@ -3925,7 +3925,7 @@ var NSGlyphInfoAttributeName: MemorySegment
  * {@snippet lang=c : NSMacSimpleTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSMacSimpleTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMacSimpleTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSMacSimpleTextDocumentType").orElseThrow().reinterpret(NSMacSimpleTextDocumentType_LAYOUT.byteSize()) }
+private val NSMacSimpleTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSMacSimpleTextDocumentType").orElseThrow().reinterpret(NSMacSimpleTextDocumentType_LAYOUT.byteSize()) }
 private val NSMacSimpleTextDocumentType_VH: VarHandle by lazy { NSMacSimpleTextDocumentType_LAYOUT.varHandle() }
 
 var NSMacSimpleTextDocumentType: MemorySegment
@@ -3936,7 +3936,7 @@ var NSMacSimpleTextDocumentType: MemorySegment
  * {@snippet lang=c : NSDocFormatTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSDocFormatTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDocFormatTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDocFormatTextDocumentType").orElseThrow().reinterpret(NSDocFormatTextDocumentType_LAYOUT.byteSize()) }
+private val NSDocFormatTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDocFormatTextDocumentType").orElseThrow().reinterpret(NSDocFormatTextDocumentType_LAYOUT.byteSize()) }
 private val NSDocFormatTextDocumentType_VH: VarHandle by lazy { NSDocFormatTextDocumentType_LAYOUT.varHandle() }
 
 var NSDocFormatTextDocumentType: MemorySegment
@@ -3947,7 +3947,7 @@ var NSDocFormatTextDocumentType: MemorySegment
  * {@snippet lang=c : NSWordMLTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSWordMLTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWordMLTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWordMLTextDocumentType").orElseThrow().reinterpret(NSWordMLTextDocumentType_LAYOUT.byteSize()) }
+private val NSWordMLTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWordMLTextDocumentType").orElseThrow().reinterpret(NSWordMLTextDocumentType_LAYOUT.byteSize()) }
 private val NSWordMLTextDocumentType_VH: VarHandle by lazy { NSWordMLTextDocumentType_LAYOUT.varHandle() }
 
 var NSWordMLTextDocumentType: MemorySegment
@@ -3958,7 +3958,7 @@ var NSWordMLTextDocumentType: MemorySegment
  * {@snippet lang=c : NSWebArchiveTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSWebArchiveTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWebArchiveTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWebArchiveTextDocumentType").orElseThrow().reinterpret(NSWebArchiveTextDocumentType_LAYOUT.byteSize()) }
+private val NSWebArchiveTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWebArchiveTextDocumentType").orElseThrow().reinterpret(NSWebArchiveTextDocumentType_LAYOUT.byteSize()) }
 private val NSWebArchiveTextDocumentType_VH: VarHandle by lazy { NSWebArchiveTextDocumentType_LAYOUT.varHandle() }
 
 var NSWebArchiveTextDocumentType: MemorySegment
@@ -3969,7 +3969,7 @@ var NSWebArchiveTextDocumentType: MemorySegment
  * {@snippet lang=c : NSOfficeOpenXMLTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSOfficeOpenXMLTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSOfficeOpenXMLTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSOfficeOpenXMLTextDocumentType").orElseThrow().reinterpret(NSOfficeOpenXMLTextDocumentType_LAYOUT.byteSize()) }
+private val NSOfficeOpenXMLTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSOfficeOpenXMLTextDocumentType").orElseThrow().reinterpret(NSOfficeOpenXMLTextDocumentType_LAYOUT.byteSize()) }
 private val NSOfficeOpenXMLTextDocumentType_VH: VarHandle by lazy { NSOfficeOpenXMLTextDocumentType_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3981,7 +3981,7 @@ var NSOfficeOpenXMLTextDocumentType: MemorySegment
  * {@snippet lang=c : NSOpenDocumentTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSOpenDocumentTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSOpenDocumentTextDocumentType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSOpenDocumentTextDocumentType").orElseThrow().reinterpret(NSOpenDocumentTextDocumentType_LAYOUT.byteSize()) }
+private val NSOpenDocumentTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSOpenDocumentTextDocumentType").orElseThrow().reinterpret(NSOpenDocumentTextDocumentType_LAYOUT.byteSize()) }
 private val NSOpenDocumentTextDocumentType_VH: VarHandle by lazy { NSOpenDocumentTextDocumentType_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3993,7 +3993,7 @@ var NSOpenDocumentTextDocumentType: MemorySegment
  * {@snippet lang=c : NSConvertedDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSConvertedDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSConvertedDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSConvertedDocumentAttribute").orElseThrow().reinterpret(NSConvertedDocumentAttribute_LAYOUT.byteSize()) }
+private val NSConvertedDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSConvertedDocumentAttribute").orElseThrow().reinterpret(NSConvertedDocumentAttribute_LAYOUT.byteSize()) }
 private val NSConvertedDocumentAttribute_VH: VarHandle by lazy { NSConvertedDocumentAttribute_LAYOUT.varHandle() }
 
 var NSConvertedDocumentAttribute: MemorySegment
@@ -4004,7 +4004,7 @@ var NSConvertedDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSFileTypeDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSFileTypeDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFileTypeDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFileTypeDocumentAttribute").orElseThrow().reinterpret(NSFileTypeDocumentAttribute_LAYOUT.byteSize()) }
+private val NSFileTypeDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSFileTypeDocumentAttribute").orElseThrow().reinterpret(NSFileTypeDocumentAttribute_LAYOUT.byteSize()) }
 private val NSFileTypeDocumentAttribute_VH: VarHandle by lazy { NSFileTypeDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -4016,7 +4016,7 @@ var NSFileTypeDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSTitleDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSTitleDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTitleDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTitleDocumentAttribute").orElseThrow().reinterpret(NSTitleDocumentAttribute_LAYOUT.byteSize()) }
+private val NSTitleDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTitleDocumentAttribute").orElseThrow().reinterpret(NSTitleDocumentAttribute_LAYOUT.byteSize()) }
 private val NSTitleDocumentAttribute_VH: VarHandle by lazy { NSTitleDocumentAttribute_LAYOUT.varHandle() }
 
 var NSTitleDocumentAttribute: MemorySegment
@@ -4027,7 +4027,7 @@ var NSTitleDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSCompanyDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSCompanyDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSCompanyDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCompanyDocumentAttribute").orElseThrow().reinterpret(NSCompanyDocumentAttribute_LAYOUT.byteSize()) }
+private val NSCompanyDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCompanyDocumentAttribute").orElseThrow().reinterpret(NSCompanyDocumentAttribute_LAYOUT.byteSize()) }
 private val NSCompanyDocumentAttribute_VH: VarHandle by lazy { NSCompanyDocumentAttribute_LAYOUT.varHandle() }
 
 var NSCompanyDocumentAttribute: MemorySegment
@@ -4038,7 +4038,7 @@ var NSCompanyDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSCopyrightDocumentAttribute typedef NSAttributedStringDocumentAttributeKey = typedef NSString = (Void)*
  */
 private val NSCopyrightDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSCopyrightDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSCopyrightDocumentAttribute").orElseThrow().reinterpret(NSCopyrightDocumentAttribute_LAYOUT.byteSize()) }
+private val NSCopyrightDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSCopyrightDocumentAttribute").orElseThrow().reinterpret(NSCopyrightDocumentAttribute_LAYOUT.byteSize()) }
 private val NSCopyrightDocumentAttribute_VH: VarHandle by lazy { NSCopyrightDocumentAttribute_LAYOUT.varHandle() }
 
 var NSCopyrightDocumentAttribute: MemorySegment

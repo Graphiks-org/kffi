@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSException(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSException") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSException") } }
 
         fun exceptionWithName_reason_userInfo(name: MemorySegment, reason: MemorySegment, userInfo: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("exceptionWithName:reason:userInfo:")

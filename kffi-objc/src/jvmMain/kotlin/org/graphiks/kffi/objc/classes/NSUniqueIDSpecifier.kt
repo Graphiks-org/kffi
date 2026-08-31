@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSUniqueIDSpecifier(override val ptr: MemorySegment) : NSScriptObjectSpecifier(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSUniqueIDSpecifier") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSUniqueIDSpecifier") } }
 
     }
 

@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
 open class NSStoryboardSegue(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSStoryboardSegue") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSStoryboardSegue") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun segueWithIdentifier_source_destination_performHandler(identifier: MemorySegment, sourceController: MemorySegment, destinationController: MemorySegment, performHandler: MemorySegment): MemorySegment {

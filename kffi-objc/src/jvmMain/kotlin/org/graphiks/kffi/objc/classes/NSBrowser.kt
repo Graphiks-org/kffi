@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSBrowser(override val ptr: MemorySegment) : NSControl(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSBrowser") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSBrowser") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun removeSavedColumnsWithAutosaveName(name: MemorySegment): Unit {

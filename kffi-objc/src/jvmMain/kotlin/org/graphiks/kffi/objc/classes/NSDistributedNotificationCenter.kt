@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSDistributedNotificationCenter(override val ptr: MemorySegment) : NSNotificationCenter(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDistributedNotificationCenter") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSDistributedNotificationCenter") } }
 
         fun notificationCenterForType(notificationCenterType: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("notificationCenterForType:")

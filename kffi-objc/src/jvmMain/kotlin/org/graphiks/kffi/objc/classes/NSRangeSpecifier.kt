@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSRangeSpecifier(override val ptr: MemorySegment) : NSScriptObjectSpecifier(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSRangeSpecifier") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSRangeSpecifier") } }
 
     }
 

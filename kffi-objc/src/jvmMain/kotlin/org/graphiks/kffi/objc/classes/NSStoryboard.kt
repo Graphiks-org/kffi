@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 10, introducedSubminor = -1)
 open class NSStoryboard(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSStoryboard") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSStoryboard") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun storyboardWithName_bundle(name: MemorySegment, storyboardBundleOrNil: MemorySegment): MemorySegment {

@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSAssertionHandler(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSAssertionHandler") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSAssertionHandler") } }
 
         fun currentHandler(): MemorySegment {
             val sel = ObjCRuntime.sel("currentHandler")

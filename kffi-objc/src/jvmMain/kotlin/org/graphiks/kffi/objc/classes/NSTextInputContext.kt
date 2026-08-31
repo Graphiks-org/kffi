@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
 open class NSTextInputContext(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSTextInputContext") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSTextInputContext") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun localizedNameForInputSource(inputSourceIdentifier: MemorySegment): MemorySegment {

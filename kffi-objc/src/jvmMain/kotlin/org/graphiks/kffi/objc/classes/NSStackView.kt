@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 open class NSStackView(override val ptr: MemorySegment) : NSView(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSStackView") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSStackView") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun stackViewWithViews(views: MemorySegment): MemorySegment {

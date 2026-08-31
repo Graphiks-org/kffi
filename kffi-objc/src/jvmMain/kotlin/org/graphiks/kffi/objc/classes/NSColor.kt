@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSColor(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSColor") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSColor") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun colorWithColorSpace_components_count(space: MemorySegment, components: MemorySegment, numberOfComponents: Long): MemorySegment {

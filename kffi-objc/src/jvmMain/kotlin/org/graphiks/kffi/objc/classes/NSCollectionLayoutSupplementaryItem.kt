@@ -15,7 +15,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 open class NSCollectionLayoutSupplementaryItem(override val ptr: MemorySegment) : NSCollectionLayoutItem(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionLayoutSupplementaryItem") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSCollectionLayoutSupplementaryItem") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun supplementaryItemWithLayoutSize_elementKind_containerAnchor(layoutSize: MemorySegment, elementKind: MemorySegment, containerAnchor: MemorySegment): MemorySegment {

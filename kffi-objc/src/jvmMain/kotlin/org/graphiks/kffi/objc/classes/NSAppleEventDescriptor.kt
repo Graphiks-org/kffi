@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSAppleEventDescriptor(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSAppleEventDescriptor") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSAppleEventDescriptor") } }
 
         fun nullDescriptor(): MemorySegment {
             val sel = ObjCRuntime.sel("nullDescriptor")

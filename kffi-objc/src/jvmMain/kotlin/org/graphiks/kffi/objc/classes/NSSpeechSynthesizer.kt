@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use AVSpeechSynthesizer in AVFoundation instead")
 open class NSSpeechSynthesizer(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSSpeechSynthesizer") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSSpeechSynthesizer") } }
 
         /** @return NSDictionary<NSVoiceAttributeKey,id> * */
         @PlatformAvailability(platform = "ios", unavailable = true)

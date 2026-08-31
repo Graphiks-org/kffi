@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "swift", unavailable = true, message = "NSInvocation and related APIs not available")
 open class NSMethodSignature(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSMethodSignature") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSMethodSignature") } }
 
         @PlatformAvailability(platform = "swift", unavailable = true, message = "NSInvocation and related APIs not available")
         fun signatureWithObjCTypes(types: MemorySegment): MemorySegment {

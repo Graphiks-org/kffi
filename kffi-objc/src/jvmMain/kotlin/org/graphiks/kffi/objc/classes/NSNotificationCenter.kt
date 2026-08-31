@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSNotificationCenter(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSNotificationCenter") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSNotificationCenter") } }
 
         fun defaultCenter(): MemorySegment {
             val sel = ObjCRuntime.sel("defaultCenter")

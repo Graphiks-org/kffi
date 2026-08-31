@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSTimer(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSTimer") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSTimer") } }
 
         fun timerWithTimeInterval_invocation_repeats(ti: Double, invocation: MemorySegment, yesOrNo: Boolean): MemorySegment {
             val sel = ObjCRuntime.sel("timerWithTimeInterval:invocation:repeats:")

@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSRulerView(override val ptr: MemorySegment) : NSView(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSRulerView") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSRulerView") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun registerUnitWithName_abbreviation_unitToPointsConversionFactor_stepUpCycle_stepDownCycle(unitName: MemorySegment, abbreviation: MemorySegment, conversionFactor: Double, stepUpCycle: MemorySegment, stepDownCycle: MemorySegment): Unit {

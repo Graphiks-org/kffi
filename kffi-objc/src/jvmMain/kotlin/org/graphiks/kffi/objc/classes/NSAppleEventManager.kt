@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSAppleEventManager(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSAppleEventManager") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSAppleEventManager") } }
 
         fun sharedAppleEventManager(): MemorySegment {
             val sel = ObjCRuntime.sel("sharedAppleEventManager")

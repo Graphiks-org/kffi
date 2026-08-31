@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSScriptClassDescription(override val ptr: MemorySegment) : NSClassDescription(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSScriptClassDescription") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSScriptClassDescription") } }
 
         fun classDescriptionForClass(aClass: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("classDescriptionForClass:")

@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSOpenPanel(override val ptr: MemorySegment) : NSSavePanel(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSOpenPanel") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSOpenPanel") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun openPanel(): MemorySegment {

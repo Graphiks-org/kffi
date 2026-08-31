@@ -3,6 +3,7 @@ package org.graphiks.kffi.objc
 import java.lang.foreign.MemorySegment
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class AppKitTypedBindingContractTest {
     @Test
@@ -30,6 +31,18 @@ class AppKitTypedBindingContractTest {
         assertEquals(3L, styleMask.rawValue)
         assertEquals(33_792L, eventMask.rawValue)
         assertEquals(1L, terminationReply.rawValue)
+    }
+
+    @Test
+    fun generatedCoreGraphicsWindowLevelsResolveOnMacOs() {
+        if (!System.getProperty("os.name").startsWith("Mac", ignoreCase = true)) return
+
+        val normal = CGWindowLevelForKey(CGWindowLevelKey.kCGNormalWindowLevelKey)
+        val floating = CGWindowLevelForKey(CGWindowLevelKey.kCGFloatingWindowLevelKey)
+        val modal = CGWindowLevelForKey(CGWindowLevelKey.kCGModalPanelWindowLevelKey)
+
+        assertTrue(normal < floating)
+        assertTrue(floating < modal)
     }
 
     @Suppress("UNUSED_VARIABLE")

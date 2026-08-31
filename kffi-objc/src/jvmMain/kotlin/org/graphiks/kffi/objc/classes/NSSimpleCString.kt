@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "swift", unavailable = true, message = "Use String or NSString instead.")
 open class NSSimpleCString(override val ptr: MemorySegment) : NSString(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSSimpleCString") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSSimpleCString") } }
 
     }
 

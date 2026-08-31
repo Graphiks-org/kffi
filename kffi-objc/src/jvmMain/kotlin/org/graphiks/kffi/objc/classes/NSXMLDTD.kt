@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSXMLDTD(override val ptr: MemorySegment) : NSXMLNode(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSXMLDTD") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSXMLDTD") } }
 
         fun predefinedEntityDeclarationForName(name: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("predefinedEntityDeclarationForName:")

@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * {@snippet lang=c : CGContextDrawLayerInRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CGLayerRef = (Declared(CGLayer))*)
  */
 private val CGContextDrawLayerInRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS)
-private val CGContextDrawLayerInRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawLayerInRect").orElseThrow() }
+private val CGContextDrawLayerInRect_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextDrawLayerInRect").orElseThrow() }
 private val CGContextDrawLayerInRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawLayerInRect_ADDR, CGContextDrawLayerInRect_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -37,7 +37,7 @@ fun CGContextDrawLayerInRect(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegm
  * {@snippet lang=c : CGContextDrawLayerAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint),typedef CGLayerRef = (Declared(CGLayer))*)
  */
 private val CGContextDrawLayerAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGPoint.layout, ValueLayout.ADDRESS)
-private val CGContextDrawLayerAtPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawLayerAtPoint").orElseThrow() }
+private val CGContextDrawLayerAtPoint_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextDrawLayerAtPoint").orElseThrow() }
 private val CGContextDrawLayerAtPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawLayerAtPoint_ADDR, CGContextDrawLayerAtPoint_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -64,7 +64,7 @@ fun CGContextDrawLayerAtPoint(arg0: MemorySegment, arg1: CGPoint, arg2: MemorySe
  * {@snippet lang=c : CGLayerGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CGLayerGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CGLayerGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGLayerGetTypeID").orElseThrow() }
+private val CGLayerGetTypeID_ADDR: MemorySegment by lazy { LOOKUP.find("CGLayerGetTypeID").orElseThrow() }
 private val CGLayerGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGLayerGetTypeID_ADDR, CGLayerGetTypeID_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -85,7 +85,7 @@ fun CGLayerGetTypeID(): Long {
  * {@snippet lang=c : CGPDFContentStreamCreateWithPage typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*(typedef CGPDFPageRef = (Declared(CGPDFPage))*)
  */
 private val CGPDFContentStreamCreateWithPage_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamCreateWithPage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContentStreamCreateWithPage").orElseThrow() }
+private val CGPDFContentStreamCreateWithPage_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContentStreamCreateWithPage").orElseThrow() }
 private val CGPDFContentStreamCreateWithPage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContentStreamCreateWithPage_ADDR, CGPDFContentStreamCreateWithPage_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -106,7 +106,7 @@ fun CGPDFContentStreamCreateWithPage(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGPDFContentStreamCreateWithStream typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*(typedef CGPDFStreamRef = (Declared(CGPDFStream))*,typedef CGPDFDictionaryRef = (Declared(CGPDFDictionary))*,typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*)
  */
 private val CGPDFContentStreamCreateWithStream_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamCreateWithStream_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContentStreamCreateWithStream").orElseThrow() }
+private val CGPDFContentStreamCreateWithStream_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContentStreamCreateWithStream").orElseThrow() }
 private val CGPDFContentStreamCreateWithStream_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContentStreamCreateWithStream_ADDR, CGPDFContentStreamCreateWithStream_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -127,7 +127,7 @@ fun CGPDFContentStreamCreateWithStream(arg0: MemorySegment, arg1: MemorySegment,
  * {@snippet lang=c : CGPDFContentStreamRetain typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*)
  */
 private val CGPDFContentStreamRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamRetain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContentStreamRetain").orElseThrow() }
+private val CGPDFContentStreamRetain_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContentStreamRetain").orElseThrow() }
 private val CGPDFContentStreamRetain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContentStreamRetain_ADDR, CGPDFContentStreamRetain_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -148,7 +148,7 @@ fun CGPDFContentStreamRetain(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGPDFContentStreamRelease Void(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*)
  */
 private val CGPDFContentStreamRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFContentStreamRelease_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContentStreamRelease").orElseThrow() }
+private val CGPDFContentStreamRelease_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContentStreamRelease").orElseThrow() }
 private val CGPDFContentStreamRelease_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContentStreamRelease_ADDR, CGPDFContentStreamRelease_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -169,7 +169,7 @@ fun CGPDFContentStreamRelease(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFContentStreamGetStreams typedef CFArrayRef = (Declared(__CFArray))*(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*)
  */
 private val CGPDFContentStreamGetStreams_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamGetStreams_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContentStreamGetStreams").orElseThrow() }
+private val CGPDFContentStreamGetStreams_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContentStreamGetStreams").orElseThrow() }
 private val CGPDFContentStreamGetStreams_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContentStreamGetStreams_ADDR, CGPDFContentStreamGetStreams_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -190,7 +190,7 @@ fun CGPDFContentStreamGetStreams(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGPDFContentStreamGetResource typedef CGPDFObjectRef = (Declared(CGPDFObject))*(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*,(Char)*,(Char)*)
  */
 private val CGPDFContentStreamGetResource_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContentStreamGetResource_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContentStreamGetResource").orElseThrow() }
+private val CGPDFContentStreamGetResource_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContentStreamGetResource").orElseThrow() }
 private val CGPDFContentStreamGetResource_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContentStreamGetResource_ADDR, CGPDFContentStreamGetResource_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -211,7 +211,7 @@ fun CGPDFContentStreamGetResource(arg0: MemorySegment, arg1: MemorySegment, arg2
  * {@snippet lang=c : CGPDFContextCreate typedef CGContextRef = (Declared(CGContext))*(typedef CGDataConsumerRef = (Declared(CGDataConsumer))*,(typedef CGRect = Declared(CGRect))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGPDFContextCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextCreate").orElseThrow() }
+private val CGPDFContextCreate_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextCreate").orElseThrow() }
 private val CGPDFContextCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextCreate_ADDR, CGPDFContextCreate_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -232,7 +232,7 @@ fun CGPDFContextCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySeg
  * {@snippet lang=c : CGPDFContextCreateWithURL typedef CGContextRef = (Declared(CGContext))*(typedef CFURLRef = (Declared(__CFURL))*,(typedef CGRect = Declared(CGRect))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGPDFContextCreateWithURL_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextCreateWithURL_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextCreateWithURL").orElseThrow() }
+private val CGPDFContextCreateWithURL_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextCreateWithURL").orElseThrow() }
 private val CGPDFContextCreateWithURL_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextCreateWithURL_ADDR, CGPDFContextCreateWithURL_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -253,7 +253,7 @@ fun CGPDFContextCreateWithURL(arg0: MemorySegment, arg1: MemorySegment, arg2: Me
  * {@snippet lang=c : CGPDFContextClose Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGPDFContextClose_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFContextClose_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextClose").orElseThrow() }
+private val CGPDFContextClose_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextClose").orElseThrow() }
 private val CGPDFContextClose_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextClose_ADDR, CGPDFContextClose_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -274,7 +274,7 @@ fun CGPDFContextClose(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFContextBeginPage Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGPDFContextBeginPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextBeginPage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextBeginPage").orElseThrow() }
+private val CGPDFContextBeginPage_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextBeginPage").orElseThrow() }
 private val CGPDFContextBeginPage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextBeginPage_ADDR, CGPDFContextBeginPage_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -295,7 +295,7 @@ fun CGPDFContextBeginPage(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFContextEndPage Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGPDFContextEndPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFContextEndPage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextEndPage").orElseThrow() }
+private val CGPDFContextEndPage_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextEndPage").orElseThrow() }
 private val CGPDFContextEndPage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextEndPage_ADDR, CGPDFContextEndPage_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -316,7 +316,7 @@ fun CGPDFContextEndPage(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFContextAddDocumentMetadata Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CGPDFContextAddDocumentMetadata_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextAddDocumentMetadata_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextAddDocumentMetadata").orElseThrow() }
+private val CGPDFContextAddDocumentMetadata_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextAddDocumentMetadata").orElseThrow() }
 private val CGPDFContextAddDocumentMetadata_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextAddDocumentMetadata_ADDR, CGPDFContextAddDocumentMetadata_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
@@ -337,7 +337,7 @@ fun CGPDFContextAddDocumentMetadata(arg0: MemorySegment, arg1: MemorySegment): U
  * {@snippet lang=c : CGPDFContextSetParentTree Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPDFDictionaryRef = (Declared(CGPDFDictionary))*)
  */
 private val CGPDFContextSetParentTree_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextSetParentTree_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextSetParentTree").orElseThrow() }
+private val CGPDFContextSetParentTree_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextSetParentTree").orElseThrow() }
 private val CGPDFContextSetParentTree_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextSetParentTree_ADDR, CGPDFContextSetParentTree_DESC) }
 
 fun CGPDFContextSetParentTree(arg0: MemorySegment, arg1: MemorySegment): Unit {
@@ -356,7 +356,7 @@ fun CGPDFContextSetParentTree(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFContextSetIDTree Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPDFDictionaryRef = (Declared(CGPDFDictionary))*)
  */
 private val CGPDFContextSetIDTree_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextSetIDTree_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextSetIDTree").orElseThrow() }
+private val CGPDFContextSetIDTree_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextSetIDTree").orElseThrow() }
 private val CGPDFContextSetIDTree_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextSetIDTree_ADDR, CGPDFContextSetIDTree_DESC) }
 
 fun CGPDFContextSetIDTree(arg0: MemorySegment, arg1: MemorySegment): Unit {
@@ -375,7 +375,7 @@ fun CGPDFContextSetIDTree(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFContextSetPageTagStructureTree Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGPDFContextSetPageTagStructureTree_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextSetPageTagStructureTree_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextSetPageTagStructureTree").orElseThrow() }
+private val CGPDFContextSetPageTagStructureTree_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextSetPageTagStructureTree").orElseThrow() }
 private val CGPDFContextSetPageTagStructureTree_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextSetPageTagStructureTree_ADDR, CGPDFContextSetPageTagStructureTree_DESC) }
 
 fun CGPDFContextSetPageTagStructureTree(arg0: MemorySegment, arg1: MemorySegment): Unit {
@@ -394,7 +394,7 @@ fun CGPDFContextSetPageTagStructureTree(arg0: MemorySegment, arg1: MemorySegment
  * {@snippet lang=c : CGPDFContextSetURLForRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFURLRef = (Declared(__CFURL))*,typedef CGRect = Declared(CGRect))
  */
 private val CGPDFContextSetURLForRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGRect.layout)
-private val CGPDFContextSetURLForRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextSetURLForRect").orElseThrow() }
+private val CGPDFContextSetURLForRect_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextSetURLForRect").orElseThrow() }
 private val CGPDFContextSetURLForRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextSetURLForRect_ADDR, CGPDFContextSetURLForRect_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -421,7 +421,7 @@ fun CGPDFContextSetURLForRect(arg0: MemorySegment, arg1: MemorySegment, arg2: CG
  * {@snippet lang=c : CGPDFContextAddDestinationAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFStringRef = (Declared(__CFString))*,typedef CGPoint = Declared(CGPoint))
  */
 private val CGPDFContextAddDestinationAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGPoint.layout)
-private val CGPDFContextAddDestinationAtPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextAddDestinationAtPoint").orElseThrow() }
+private val CGPDFContextAddDestinationAtPoint_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextAddDestinationAtPoint").orElseThrow() }
 private val CGPDFContextAddDestinationAtPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextAddDestinationAtPoint_ADDR, CGPDFContextAddDestinationAtPoint_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -448,7 +448,7 @@ fun CGPDFContextAddDestinationAtPoint(arg0: MemorySegment, arg1: MemorySegment, 
  * {@snippet lang=c : CGPDFContextSetDestinationForRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFStringRef = (Declared(__CFString))*,typedef CGRect = Declared(CGRect))
  */
 private val CGPDFContextSetDestinationForRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGRect.layout)
-private val CGPDFContextSetDestinationForRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextSetDestinationForRect").orElseThrow() }
+private val CGPDFContextSetDestinationForRect_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextSetDestinationForRect").orElseThrow() }
 private val CGPDFContextSetDestinationForRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextSetDestinationForRect_ADDR, CGPDFContextSetDestinationForRect_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -475,7 +475,7 @@ fun CGPDFContextSetDestinationForRect(arg0: MemorySegment, arg1: MemorySegment, 
  * {@snippet lang=c : kCGPDFContextMediaBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextMediaBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextMediaBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextMediaBox").orElseThrow().reinterpret(kCGPDFContextMediaBox_LAYOUT.byteSize()) }
+private val kCGPDFContextMediaBox_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextMediaBox").orElseThrow().reinterpret(kCGPDFContextMediaBox_LAYOUT.byteSize()) }
 private val kCGPDFContextMediaBox_VH: VarHandle by lazy { kCGPDFContextMediaBox_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -488,7 +488,7 @@ var kCGPDFContextMediaBox: MemorySegment
  * {@snippet lang=c : kCGPDFContextCropBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextCropBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCropBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCropBox").orElseThrow().reinterpret(kCGPDFContextCropBox_LAYOUT.byteSize()) }
+private val kCGPDFContextCropBox_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextCropBox").orElseThrow().reinterpret(kCGPDFContextCropBox_LAYOUT.byteSize()) }
 private val kCGPDFContextCropBox_VH: VarHandle by lazy { kCGPDFContextCropBox_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -501,7 +501,7 @@ var kCGPDFContextCropBox: MemorySegment
  * {@snippet lang=c : kCGPDFContextBleedBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextBleedBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextBleedBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextBleedBox").orElseThrow().reinterpret(kCGPDFContextBleedBox_LAYOUT.byteSize()) }
+private val kCGPDFContextBleedBox_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextBleedBox").orElseThrow().reinterpret(kCGPDFContextBleedBox_LAYOUT.byteSize()) }
 private val kCGPDFContextBleedBox_VH: VarHandle by lazy { kCGPDFContextBleedBox_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -514,7 +514,7 @@ var kCGPDFContextBleedBox: MemorySegment
  * {@snippet lang=c : kCGPDFContextTrimBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextTrimBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextTrimBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextTrimBox").orElseThrow().reinterpret(kCGPDFContextTrimBox_LAYOUT.byteSize()) }
+private val kCGPDFContextTrimBox_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextTrimBox").orElseThrow().reinterpret(kCGPDFContextTrimBox_LAYOUT.byteSize()) }
 private val kCGPDFContextTrimBox_VH: VarHandle by lazy { kCGPDFContextTrimBox_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -527,7 +527,7 @@ var kCGPDFContextTrimBox: MemorySegment
  * {@snippet lang=c : kCGPDFContextArtBox typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextArtBox_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextArtBox_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextArtBox").orElseThrow().reinterpret(kCGPDFContextArtBox_LAYOUT.byteSize()) }
+private val kCGPDFContextArtBox_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextArtBox").orElseThrow().reinterpret(kCGPDFContextArtBox_LAYOUT.byteSize()) }
 private val kCGPDFContextArtBox_VH: VarHandle by lazy { kCGPDFContextArtBox_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -540,7 +540,7 @@ var kCGPDFContextArtBox: MemorySegment
  * {@snippet lang=c : kCGPDFContextTitle typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextTitle_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextTitle_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextTitle").orElseThrow().reinterpret(kCGPDFContextTitle_LAYOUT.byteSize()) }
+private val kCGPDFContextTitle_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextTitle").orElseThrow().reinterpret(kCGPDFContextTitle_LAYOUT.byteSize()) }
 private val kCGPDFContextTitle_VH: VarHandle by lazy { kCGPDFContextTitle_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -553,7 +553,7 @@ var kCGPDFContextTitle: MemorySegment
  * {@snippet lang=c : kCGPDFContextAuthor typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextAuthor_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAuthor_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAuthor").orElseThrow().reinterpret(kCGPDFContextAuthor_LAYOUT.byteSize()) }
+private val kCGPDFContextAuthor_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextAuthor").orElseThrow().reinterpret(kCGPDFContextAuthor_LAYOUT.byteSize()) }
 private val kCGPDFContextAuthor_VH: VarHandle by lazy { kCGPDFContextAuthor_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -566,7 +566,7 @@ var kCGPDFContextAuthor: MemorySegment
  * {@snippet lang=c : kCGPDFContextSubject typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextSubject_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextSubject_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextSubject").orElseThrow().reinterpret(kCGPDFContextSubject_LAYOUT.byteSize()) }
+private val kCGPDFContextSubject_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextSubject").orElseThrow().reinterpret(kCGPDFContextSubject_LAYOUT.byteSize()) }
 private val kCGPDFContextSubject_VH: VarHandle by lazy { kCGPDFContextSubject_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -579,7 +579,7 @@ var kCGPDFContextSubject: MemorySegment
  * {@snippet lang=c : kCGPDFContextKeywords typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextKeywords_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextKeywords_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextKeywords").orElseThrow().reinterpret(kCGPDFContextKeywords_LAYOUT.byteSize()) }
+private val kCGPDFContextKeywords_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextKeywords").orElseThrow().reinterpret(kCGPDFContextKeywords_LAYOUT.byteSize()) }
 private val kCGPDFContextKeywords_VH: VarHandle by lazy { kCGPDFContextKeywords_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -592,7 +592,7 @@ var kCGPDFContextKeywords: MemorySegment
  * {@snippet lang=c : kCGPDFContextCreator typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextCreator_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCreator_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreator").orElseThrow().reinterpret(kCGPDFContextCreator_LAYOUT.byteSize()) }
+private val kCGPDFContextCreator_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextCreator").orElseThrow().reinterpret(kCGPDFContextCreator_LAYOUT.byteSize()) }
 private val kCGPDFContextCreator_VH: VarHandle by lazy { kCGPDFContextCreator_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -605,7 +605,7 @@ var kCGPDFContextCreator: MemorySegment
  * {@snippet lang=c : kCGPDFContextOwnerPassword typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextOwnerPassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextOwnerPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOwnerPassword").orElseThrow().reinterpret(kCGPDFContextOwnerPassword_LAYOUT.byteSize()) }
+private val kCGPDFContextOwnerPassword_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextOwnerPassword").orElseThrow().reinterpret(kCGPDFContextOwnerPassword_LAYOUT.byteSize()) }
 private val kCGPDFContextOwnerPassword_VH: VarHandle by lazy { kCGPDFContextOwnerPassword_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -618,7 +618,7 @@ var kCGPDFContextOwnerPassword: MemorySegment
  * {@snippet lang=c : kCGPDFContextUserPassword typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextUserPassword_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextUserPassword_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextUserPassword").orElseThrow().reinterpret(kCGPDFContextUserPassword_LAYOUT.byteSize()) }
+private val kCGPDFContextUserPassword_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextUserPassword").orElseThrow().reinterpret(kCGPDFContextUserPassword_LAYOUT.byteSize()) }
 private val kCGPDFContextUserPassword_VH: VarHandle by lazy { kCGPDFContextUserPassword_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -631,7 +631,7 @@ var kCGPDFContextUserPassword: MemorySegment
  * {@snippet lang=c : kCGPDFContextEncryptionKeyLength typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextEncryptionKeyLength_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextEncryptionKeyLength_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextEncryptionKeyLength").orElseThrow().reinterpret(kCGPDFContextEncryptionKeyLength_LAYOUT.byteSize()) }
+private val kCGPDFContextEncryptionKeyLength_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextEncryptionKeyLength").orElseThrow().reinterpret(kCGPDFContextEncryptionKeyLength_LAYOUT.byteSize()) }
 private val kCGPDFContextEncryptionKeyLength_VH: VarHandle by lazy { kCGPDFContextEncryptionKeyLength_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -644,7 +644,7 @@ var kCGPDFContextEncryptionKeyLength: MemorySegment
  * {@snippet lang=c : kCGPDFContextAllowsPrinting typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextAllowsPrinting_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAllowsPrinting_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAllowsPrinting").orElseThrow().reinterpret(kCGPDFContextAllowsPrinting_LAYOUT.byteSize()) }
+private val kCGPDFContextAllowsPrinting_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextAllowsPrinting").orElseThrow().reinterpret(kCGPDFContextAllowsPrinting_LAYOUT.byteSize()) }
 private val kCGPDFContextAllowsPrinting_VH: VarHandle by lazy { kCGPDFContextAllowsPrinting_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -657,7 +657,7 @@ var kCGPDFContextAllowsPrinting: MemorySegment
  * {@snippet lang=c : kCGPDFContextAllowsCopying typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextAllowsCopying_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAllowsCopying_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAllowsCopying").orElseThrow().reinterpret(kCGPDFContextAllowsCopying_LAYOUT.byteSize()) }
+private val kCGPDFContextAllowsCopying_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextAllowsCopying").orElseThrow().reinterpret(kCGPDFContextAllowsCopying_LAYOUT.byteSize()) }
 private val kCGPDFContextAllowsCopying_VH: VarHandle by lazy { kCGPDFContextAllowsCopying_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -670,7 +670,7 @@ var kCGPDFContextAllowsCopying: MemorySegment
  * {@snippet lang=c : kCGPDFContextOutputIntent typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextOutputIntent_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextOutputIntent_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOutputIntent").orElseThrow().reinterpret(kCGPDFContextOutputIntent_LAYOUT.byteSize()) }
+private val kCGPDFContextOutputIntent_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextOutputIntent").orElseThrow().reinterpret(kCGPDFContextOutputIntent_LAYOUT.byteSize()) }
 private val kCGPDFContextOutputIntent_VH: VarHandle by lazy { kCGPDFContextOutputIntent_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -683,7 +683,7 @@ var kCGPDFContextOutputIntent: MemorySegment
  * {@snippet lang=c : kCGPDFXOutputIntentSubtype typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXOutputIntentSubtype_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXOutputIntentSubtype_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputIntentSubtype").orElseThrow().reinterpret(kCGPDFXOutputIntentSubtype_LAYOUT.byteSize()) }
+private val kCGPDFXOutputIntentSubtype_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFXOutputIntentSubtype").orElseThrow().reinterpret(kCGPDFXOutputIntentSubtype_LAYOUT.byteSize()) }
 private val kCGPDFXOutputIntentSubtype_VH: VarHandle by lazy { kCGPDFXOutputIntentSubtype_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -696,7 +696,7 @@ var kCGPDFXOutputIntentSubtype: MemorySegment
  * {@snippet lang=c : kCGPDFXOutputConditionIdentifier typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXOutputConditionIdentifier_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXOutputConditionIdentifier_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputConditionIdentifier").orElseThrow().reinterpret(kCGPDFXOutputConditionIdentifier_LAYOUT.byteSize()) }
+private val kCGPDFXOutputConditionIdentifier_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFXOutputConditionIdentifier").orElseThrow().reinterpret(kCGPDFXOutputConditionIdentifier_LAYOUT.byteSize()) }
 private val kCGPDFXOutputConditionIdentifier_VH: VarHandle by lazy { kCGPDFXOutputConditionIdentifier_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -709,7 +709,7 @@ var kCGPDFXOutputConditionIdentifier: MemorySegment
  * {@snippet lang=c : kCGPDFXOutputCondition typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXOutputCondition_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXOutputCondition_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXOutputCondition").orElseThrow().reinterpret(kCGPDFXOutputCondition_LAYOUT.byteSize()) }
+private val kCGPDFXOutputCondition_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFXOutputCondition").orElseThrow().reinterpret(kCGPDFXOutputCondition_LAYOUT.byteSize()) }
 private val kCGPDFXOutputCondition_VH: VarHandle by lazy { kCGPDFXOutputCondition_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -722,7 +722,7 @@ var kCGPDFXOutputCondition: MemorySegment
  * {@snippet lang=c : kCGPDFXRegistryName typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXRegistryName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXRegistryName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXRegistryName").orElseThrow().reinterpret(kCGPDFXRegistryName_LAYOUT.byteSize()) }
+private val kCGPDFXRegistryName_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFXRegistryName").orElseThrow().reinterpret(kCGPDFXRegistryName_LAYOUT.byteSize()) }
 private val kCGPDFXRegistryName_VH: VarHandle by lazy { kCGPDFXRegistryName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -735,7 +735,7 @@ var kCGPDFXRegistryName: MemorySegment
  * {@snippet lang=c : kCGPDFXInfo typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXInfo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXInfo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXInfo").orElseThrow().reinterpret(kCGPDFXInfo_LAYOUT.byteSize()) }
+private val kCGPDFXInfo_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFXInfo").orElseThrow().reinterpret(kCGPDFXInfo_LAYOUT.byteSize()) }
 private val kCGPDFXInfo_VH: VarHandle by lazy { kCGPDFXInfo_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -748,7 +748,7 @@ var kCGPDFXInfo: MemorySegment
  * {@snippet lang=c : kCGPDFXDestinationOutputProfile typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFXDestinationOutputProfile_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFXDestinationOutputProfile_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFXDestinationOutputProfile").orElseThrow().reinterpret(kCGPDFXDestinationOutputProfile_LAYOUT.byteSize()) }
+private val kCGPDFXDestinationOutputProfile_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFXDestinationOutputProfile").orElseThrow().reinterpret(kCGPDFXDestinationOutputProfile_LAYOUT.byteSize()) }
 private val kCGPDFXDestinationOutputProfile_VH: VarHandle by lazy { kCGPDFXDestinationOutputProfile_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -761,7 +761,7 @@ var kCGPDFXDestinationOutputProfile: MemorySegment
  * {@snippet lang=c : kCGPDFContextOutputIntents typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextOutputIntents_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextOutputIntents_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextOutputIntents").orElseThrow().reinterpret(kCGPDFContextOutputIntents_LAYOUT.byteSize()) }
+private val kCGPDFContextOutputIntents_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextOutputIntents").orElseThrow().reinterpret(kCGPDFContextOutputIntents_LAYOUT.byteSize()) }
 private val kCGPDFContextOutputIntents_VH: VarHandle by lazy { kCGPDFContextOutputIntents_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -774,7 +774,7 @@ var kCGPDFContextOutputIntents: MemorySegment
  * {@snippet lang=c : kCGPDFContextAccessPermissions typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextAccessPermissions_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextAccessPermissions_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextAccessPermissions").orElseThrow().reinterpret(kCGPDFContextAccessPermissions_LAYOUT.byteSize()) }
+private val kCGPDFContextAccessPermissions_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextAccessPermissions").orElseThrow().reinterpret(kCGPDFContextAccessPermissions_LAYOUT.byteSize()) }
 private val kCGPDFContextAccessPermissions_VH: VarHandle by lazy { kCGPDFContextAccessPermissions_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
@@ -787,7 +787,7 @@ var kCGPDFContextAccessPermissions: MemorySegment
  * {@snippet lang=c : CGPDFContextSetOutline Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGPDFContextSetOutline_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFContextSetOutline_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextSetOutline").orElseThrow() }
+private val CGPDFContextSetOutline_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextSetOutline").orElseThrow() }
 private val CGPDFContextSetOutline_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextSetOutline_ADDR, CGPDFContextSetOutline_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
@@ -808,7 +808,7 @@ fun CGPDFContextSetOutline(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : kCGPDFContextCreateLinearizedPDF typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextCreateLinearizedPDF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCreateLinearizedPDF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreateLinearizedPDF").orElseThrow().reinterpret(kCGPDFContextCreateLinearizedPDF_LAYOUT.byteSize()) }
+private val kCGPDFContextCreateLinearizedPDF_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextCreateLinearizedPDF").orElseThrow().reinterpret(kCGPDFContextCreateLinearizedPDF_LAYOUT.byteSize()) }
 private val kCGPDFContextCreateLinearizedPDF_VH: VarHandle by lazy { kCGPDFContextCreateLinearizedPDF_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -821,7 +821,7 @@ var kCGPDFContextCreateLinearizedPDF: MemorySegment
  * {@snippet lang=c : kCGPDFContextCreatePDFA typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGPDFContextCreatePDFA_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFContextCreatePDFA_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFContextCreatePDFA").orElseThrow().reinterpret(kCGPDFContextCreatePDFA_LAYOUT.byteSize()) }
+private val kCGPDFContextCreatePDFA_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFContextCreatePDFA").orElseThrow().reinterpret(kCGPDFContextCreatePDFA_LAYOUT.byteSize()) }
 private val kCGPDFContextCreatePDFA_VH: VarHandle by lazy { kCGPDFContextCreatePDFA_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
@@ -834,7 +834,7 @@ var kCGPDFContextCreatePDFA: MemorySegment
  * {@snippet lang=c : CGPDFTagTypeGetName (Char)*(typedef CGPDFTagType = Declared(CGPDFTagType))
  */
 private val CGPDFTagTypeGetName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGPDFTagTypeGetName_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFTagTypeGetName").orElseThrow() }
+private val CGPDFTagTypeGetName_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFTagTypeGetName").orElseThrow() }
 private val CGPDFTagTypeGetName_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFTagTypeGetName_ADDR, CGPDFTagTypeGetName_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -855,7 +855,7 @@ fun CGPDFTagTypeGetName(arg0: CGPDFTagType): MemorySegment {
  * {@snippet lang=c : kCGPDFTagPropertyActualText typedef CGPDFTagProperty = (Declared(__CFString))*
  */
 private val kCGPDFTagPropertyActualText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyActualText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyActualText").orElseThrow().reinterpret(kCGPDFTagPropertyActualText_LAYOUT.byteSize()) }
+private val kCGPDFTagPropertyActualText_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFTagPropertyActualText").orElseThrow().reinterpret(kCGPDFTagPropertyActualText_LAYOUT.byteSize()) }
 private val kCGPDFTagPropertyActualText_VH: VarHandle by lazy { kCGPDFTagPropertyActualText_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -868,7 +868,7 @@ var kCGPDFTagPropertyActualText: MemorySegment
  * {@snippet lang=c : kCGPDFTagPropertyAlternativeText typedef CGPDFTagProperty = (Declared(__CFString))*
  */
 private val kCGPDFTagPropertyAlternativeText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyAlternativeText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyAlternativeText").orElseThrow().reinterpret(kCGPDFTagPropertyAlternativeText_LAYOUT.byteSize()) }
+private val kCGPDFTagPropertyAlternativeText_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFTagPropertyAlternativeText").orElseThrow().reinterpret(kCGPDFTagPropertyAlternativeText_LAYOUT.byteSize()) }
 private val kCGPDFTagPropertyAlternativeText_VH: VarHandle by lazy { kCGPDFTagPropertyAlternativeText_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -881,7 +881,7 @@ var kCGPDFTagPropertyAlternativeText: MemorySegment
  * {@snippet lang=c : kCGPDFTagPropertyTitleText typedef CGPDFTagProperty = (Declared(__CFString))*
  */
 private val kCGPDFTagPropertyTitleText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyTitleText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyTitleText").orElseThrow().reinterpret(kCGPDFTagPropertyTitleText_LAYOUT.byteSize()) }
+private val kCGPDFTagPropertyTitleText_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFTagPropertyTitleText").orElseThrow().reinterpret(kCGPDFTagPropertyTitleText_LAYOUT.byteSize()) }
 private val kCGPDFTagPropertyTitleText_VH: VarHandle by lazy { kCGPDFTagPropertyTitleText_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -894,7 +894,7 @@ var kCGPDFTagPropertyTitleText: MemorySegment
  * {@snippet lang=c : kCGPDFTagPropertyLanguageText typedef CGPDFTagProperty = (Declared(__CFString))*
  */
 private val kCGPDFTagPropertyLanguageText_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGPDFTagPropertyLanguageText_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGPDFTagPropertyLanguageText").orElseThrow().reinterpret(kCGPDFTagPropertyLanguageText_LAYOUT.byteSize()) }
+private val kCGPDFTagPropertyLanguageText_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGPDFTagPropertyLanguageText").orElseThrow().reinterpret(kCGPDFTagPropertyLanguageText_LAYOUT.byteSize()) }
 private val kCGPDFTagPropertyLanguageText_VH: VarHandle by lazy { kCGPDFTagPropertyLanguageText_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -907,7 +907,7 @@ var kCGPDFTagPropertyLanguageText: MemorySegment
  * {@snippet lang=c : CGPDFContextBeginTag Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPDFTagType = Declared(CGPDFTagType),typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGPDFContextBeginTag_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGPDFContextBeginTag_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextBeginTag").orElseThrow() }
+private val CGPDFContextBeginTag_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextBeginTag").orElseThrow() }
 private val CGPDFContextBeginTag_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextBeginTag_ADDR, CGPDFContextBeginTag_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -928,7 +928,7 @@ fun CGPDFContextBeginTag(arg0: MemorySegment, arg1: CGPDFTagType, arg2: MemorySe
  * {@snippet lang=c : CGPDFContextEndTag Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGPDFContextEndTag_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFContextEndTag_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFContextEndTag").orElseThrow() }
+private val CGPDFContextEndTag_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFContextEndTag").orElseThrow() }
 private val CGPDFContextEndTag_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFContextEndTag_ADDR, CGPDFContextEndTag_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
@@ -949,7 +949,7 @@ fun CGPDFContextEndTag(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFScannerCreate typedef CGPDFScannerRef = (Declared(CGPDFScanner))*(typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*,typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*,(Void)*)
  */
 private val CGPDFScannerCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerCreate").orElseThrow() }
+private val CGPDFScannerCreate_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerCreate").orElseThrow() }
 private val CGPDFScannerCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerCreate_ADDR, CGPDFScannerCreate_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -970,7 +970,7 @@ fun CGPDFScannerCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySeg
  * {@snippet lang=c : CGPDFScannerRetain typedef CGPDFScannerRef = (Declared(CGPDFScanner))*(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
  */
 private val CGPDFScannerRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerRetain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerRetain").orElseThrow() }
+private val CGPDFScannerRetain_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerRetain").orElseThrow() }
 private val CGPDFScannerRetain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerRetain_ADDR, CGPDFScannerRetain_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -991,7 +991,7 @@ fun CGPDFScannerRetain(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGPDFScannerRelease Void(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
  */
 private val CGPDFScannerRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFScannerRelease_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerRelease").orElseThrow() }
+private val CGPDFScannerRelease_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerRelease").orElseThrow() }
 private val CGPDFScannerRelease_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerRelease_ADDR, CGPDFScannerRelease_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1012,7 +1012,7 @@ fun CGPDFScannerRelease(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFScannerScan Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
  */
 private val CGPDFScannerScan_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
-private val CGPDFScannerScan_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerScan").orElseThrow() }
+private val CGPDFScannerScan_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerScan").orElseThrow() }
 private val CGPDFScannerScan_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerScan_ADDR, CGPDFScannerScan_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1033,7 +1033,7 @@ fun CGPDFScannerScan(arg0: MemorySegment): Boolean {
  * {@snippet lang=c : CGPDFScannerGetContentStream typedef CGPDFContentStreamRef = (Declared(CGPDFContentStream))*(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
  */
 private val CGPDFScannerGetContentStream_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerGetContentStream_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerGetContentStream").orElseThrow() }
+private val CGPDFScannerGetContentStream_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerGetContentStream").orElseThrow() }
 private val CGPDFScannerGetContentStream_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerGetContentStream_ADDR, CGPDFScannerGetContentStream_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1054,7 +1054,7 @@ fun CGPDFScannerGetContentStream(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGPDFScannerPopObject Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFObjectRef = (Declared(CGPDFObject))*)*)
  */
 private val CGPDFScannerPopObject_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopObject_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerPopObject").orElseThrow() }
+private val CGPDFScannerPopObject_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerPopObject").orElseThrow() }
 private val CGPDFScannerPopObject_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerPopObject_ADDR, CGPDFScannerPopObject_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1075,7 +1075,7 @@ fun CGPDFScannerPopObject(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : CGPDFScannerPopBoolean Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFBoolean = UNSIGNED = Char)*)
  */
 private val CGPDFScannerPopBoolean_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopBoolean_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerPopBoolean").orElseThrow() }
+private val CGPDFScannerPopBoolean_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerPopBoolean").orElseThrow() }
 private val CGPDFScannerPopBoolean_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerPopBoolean_ADDR, CGPDFScannerPopBoolean_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1096,7 +1096,7 @@ fun CGPDFScannerPopBoolean(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : CGPDFScannerPopInteger Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFInteger = Long)*)
  */
 private val CGPDFScannerPopInteger_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopInteger_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerPopInteger").orElseThrow() }
+private val CGPDFScannerPopInteger_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerPopInteger").orElseThrow() }
 private val CGPDFScannerPopInteger_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerPopInteger_ADDR, CGPDFScannerPopInteger_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1117,7 +1117,7 @@ fun CGPDFScannerPopInteger(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : CGPDFScannerPopNumber Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFReal = Double)*)
  */
 private val CGPDFScannerPopNumber_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopNumber_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerPopNumber").orElseThrow() }
+private val CGPDFScannerPopNumber_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerPopNumber").orElseThrow() }
 private val CGPDFScannerPopNumber_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerPopNumber_ADDR, CGPDFScannerPopNumber_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1138,7 +1138,7 @@ fun CGPDFScannerPopNumber(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : CGPDFScannerPopName Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,((Char)*)*)
  */
 private val CGPDFScannerPopName_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopName_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerPopName").orElseThrow() }
+private val CGPDFScannerPopName_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerPopName").orElseThrow() }
 private val CGPDFScannerPopName_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerPopName_ADDR, CGPDFScannerPopName_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1159,7 +1159,7 @@ fun CGPDFScannerPopName(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : CGPDFScannerPopString Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFStringRef = (Declared(CGPDFString))*)*)
  */
 private val CGPDFScannerPopString_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerPopString").orElseThrow() }
+private val CGPDFScannerPopString_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerPopString").orElseThrow() }
 private val CGPDFScannerPopString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerPopString_ADDR, CGPDFScannerPopString_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1180,7 +1180,7 @@ fun CGPDFScannerPopString(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : CGPDFScannerPopArray Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFArrayRef = (Declared(CGPDFArray))*)*)
  */
 private val CGPDFScannerPopArray_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopArray_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerPopArray").orElseThrow() }
+private val CGPDFScannerPopArray_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerPopArray").orElseThrow() }
 private val CGPDFScannerPopArray_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerPopArray_ADDR, CGPDFScannerPopArray_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1201,7 +1201,7 @@ fun CGPDFScannerPopArray(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : CGPDFScannerPopDictionary Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFDictionaryRef = (Declared(CGPDFDictionary))*)*)
  */
 private val CGPDFScannerPopDictionary_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopDictionary_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerPopDictionary").orElseThrow() }
+private val CGPDFScannerPopDictionary_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerPopDictionary").orElseThrow() }
 private val CGPDFScannerPopDictionary_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerPopDictionary_ADDR, CGPDFScannerPopDictionary_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1222,7 +1222,7 @@ fun CGPDFScannerPopDictionary(arg0: MemorySegment, arg1: MemorySegment): Boolean
  * {@snippet lang=c : CGPDFScannerPopStream Bool(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*,(typedef CGPDFStreamRef = (Declared(CGPDFStream))*)*)
  */
 private val CGPDFScannerPopStream_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFScannerPopStream_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerPopStream").orElseThrow() }
+private val CGPDFScannerPopStream_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerPopStream").orElseThrow() }
 private val CGPDFScannerPopStream_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerPopStream_ADDR, CGPDFScannerPopStream_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1243,7 +1243,7 @@ fun CGPDFScannerPopStream(arg0: MemorySegment, arg1: MemorySegment): Boolean {
  * {@snippet lang=c : CGPDFScannerStop Void(typedef CGPDFScannerRef = (Declared(CGPDFScanner))*)
  */
 private val CGPDFScannerStop_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFScannerStop_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFScannerStop").orElseThrow() }
+private val CGPDFScannerStop_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFScannerStop").orElseThrow() }
 private val CGPDFScannerStop_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFScannerStop_ADDR, CGPDFScannerStop_DESC) }
 
 fun CGPDFScannerStop(arg0: MemorySegment): Unit {
@@ -1262,7 +1262,7 @@ fun CGPDFScannerStop(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFOperatorTableCreate typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*()
  */
 private val CGPDFOperatorTableCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CGPDFOperatorTableCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFOperatorTableCreate").orElseThrow() }
+private val CGPDFOperatorTableCreate_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFOperatorTableCreate").orElseThrow() }
 private val CGPDFOperatorTableCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFOperatorTableCreate_ADDR, CGPDFOperatorTableCreate_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1283,7 +1283,7 @@ fun CGPDFOperatorTableCreate(): MemorySegment {
  * {@snippet lang=c : CGPDFOperatorTableRetain typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*(typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*)
  */
 private val CGPDFOperatorTableRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFOperatorTableRetain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFOperatorTableRetain").orElseThrow() }
+private val CGPDFOperatorTableRetain_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFOperatorTableRetain").orElseThrow() }
 private val CGPDFOperatorTableRetain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFOperatorTableRetain_ADDR, CGPDFOperatorTableRetain_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1304,7 +1304,7 @@ fun CGPDFOperatorTableRetain(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGPDFOperatorTableRelease Void(typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*)
  */
 private val CGPDFOperatorTableRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGPDFOperatorTableRelease_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFOperatorTableRelease").orElseThrow() }
+private val CGPDFOperatorTableRelease_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFOperatorTableRelease").orElseThrow() }
 private val CGPDFOperatorTableRelease_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFOperatorTableRelease_ADDR, CGPDFOperatorTableRelease_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1325,7 +1325,7 @@ fun CGPDFOperatorTableRelease(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGPDFOperatorTableSetCallback Void(typedef CGPDFOperatorTableRef = (Declared(CGPDFOperatorTable))*,(Char)*,typedef CGPDFOperatorCallback = (Void((Declared(CGPDFScanner))*,(Void)*))*)
  */
 private val CGPDFOperatorTableSetCallback_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPDFOperatorTableSetCallback_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPDFOperatorTableSetCallback").orElseThrow() }
+private val CGPDFOperatorTableSetCallback_ADDR: MemorySegment by lazy { LOOKUP.find("CGPDFOperatorTableSetCallback").orElseThrow() }
 private val CGPDFOperatorTableSetCallback_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPDFOperatorTableSetCallback_ADDR, CGPDFOperatorTableSetCallback_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1346,7 +1346,7 @@ fun CGPDFOperatorTableSetCallback(arg0: MemorySegment, arg1: MemorySegment, arg2
  * {@snippet lang=c : kCGWindowNumber typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowNumber_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowNumber_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowNumber").orElseThrow().reinterpret(kCGWindowNumber_LAYOUT.byteSize()) }
+private val kCGWindowNumber_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowNumber").orElseThrow().reinterpret(kCGWindowNumber_LAYOUT.byteSize()) }
 private val kCGWindowNumber_VH: VarHandle by lazy { kCGWindowNumber_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1358,7 +1358,7 @@ var kCGWindowNumber: MemorySegment
  * {@snippet lang=c : kCGWindowStoreType typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowStoreType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowStoreType_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowStoreType").orElseThrow().reinterpret(kCGWindowStoreType_LAYOUT.byteSize()) }
+private val kCGWindowStoreType_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowStoreType").orElseThrow().reinterpret(kCGWindowStoreType_LAYOUT.byteSize()) }
 private val kCGWindowStoreType_VH: VarHandle by lazy { kCGWindowStoreType_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1370,7 +1370,7 @@ var kCGWindowStoreType: MemorySegment
  * {@snippet lang=c : kCGWindowLayer typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowLayer_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowLayer_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowLayer").orElseThrow().reinterpret(kCGWindowLayer_LAYOUT.byteSize()) }
+private val kCGWindowLayer_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowLayer").orElseThrow().reinterpret(kCGWindowLayer_LAYOUT.byteSize()) }
 private val kCGWindowLayer_VH: VarHandle by lazy { kCGWindowLayer_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1382,7 +1382,7 @@ var kCGWindowLayer: MemorySegment
  * {@snippet lang=c : kCGWindowBounds typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowBounds_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowBounds_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowBounds").orElseThrow().reinterpret(kCGWindowBounds_LAYOUT.byteSize()) }
+private val kCGWindowBounds_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowBounds").orElseThrow().reinterpret(kCGWindowBounds_LAYOUT.byteSize()) }
 private val kCGWindowBounds_VH: VarHandle by lazy { kCGWindowBounds_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1394,7 +1394,7 @@ var kCGWindowBounds: MemorySegment
  * {@snippet lang=c : kCGWindowSharingState typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowSharingState_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowSharingState_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowSharingState").orElseThrow().reinterpret(kCGWindowSharingState_LAYOUT.byteSize()) }
+private val kCGWindowSharingState_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowSharingState").orElseThrow().reinterpret(kCGWindowSharingState_LAYOUT.byteSize()) }
 private val kCGWindowSharingState_VH: VarHandle by lazy { kCGWindowSharingState_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1406,7 +1406,7 @@ var kCGWindowSharingState: MemorySegment
  * {@snippet lang=c : kCGWindowAlpha typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowAlpha_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowAlpha_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowAlpha").orElseThrow().reinterpret(kCGWindowAlpha_LAYOUT.byteSize()) }
+private val kCGWindowAlpha_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowAlpha").orElseThrow().reinterpret(kCGWindowAlpha_LAYOUT.byteSize()) }
 private val kCGWindowAlpha_VH: VarHandle by lazy { kCGWindowAlpha_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1418,7 +1418,7 @@ var kCGWindowAlpha: MemorySegment
  * {@snippet lang=c : kCGWindowOwnerPID typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowOwnerPID_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowOwnerPID_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowOwnerPID").orElseThrow().reinterpret(kCGWindowOwnerPID_LAYOUT.byteSize()) }
+private val kCGWindowOwnerPID_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowOwnerPID").orElseThrow().reinterpret(kCGWindowOwnerPID_LAYOUT.byteSize()) }
 private val kCGWindowOwnerPID_VH: VarHandle by lazy { kCGWindowOwnerPID_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1430,7 +1430,7 @@ var kCGWindowOwnerPID: MemorySegment
  * {@snippet lang=c : kCGWindowMemoryUsage typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowMemoryUsage_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowMemoryUsage_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowMemoryUsage").orElseThrow().reinterpret(kCGWindowMemoryUsage_LAYOUT.byteSize()) }
+private val kCGWindowMemoryUsage_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowMemoryUsage").orElseThrow().reinterpret(kCGWindowMemoryUsage_LAYOUT.byteSize()) }
 private val kCGWindowMemoryUsage_VH: VarHandle by lazy { kCGWindowMemoryUsage_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1442,7 +1442,7 @@ var kCGWindowMemoryUsage: MemorySegment
  * {@snippet lang=c : kCGWindowWorkspace typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowWorkspace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowWorkspace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowWorkspace").orElseThrow().reinterpret(kCGWindowWorkspace_LAYOUT.byteSize()) }
+private val kCGWindowWorkspace_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowWorkspace").orElseThrow().reinterpret(kCGWindowWorkspace_LAYOUT.byteSize()) }
 private val kCGWindowWorkspace_VH: VarHandle by lazy { kCGWindowWorkspace_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "No longer supported")
@@ -1454,7 +1454,7 @@ var kCGWindowWorkspace: MemorySegment
  * {@snippet lang=c : kCGWindowOwnerName typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowOwnerName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowOwnerName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowOwnerName").orElseThrow().reinterpret(kCGWindowOwnerName_LAYOUT.byteSize()) }
+private val kCGWindowOwnerName_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowOwnerName").orElseThrow().reinterpret(kCGWindowOwnerName_LAYOUT.byteSize()) }
 private val kCGWindowOwnerName_VH: VarHandle by lazy { kCGWindowOwnerName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1466,7 +1466,7 @@ var kCGWindowOwnerName: MemorySegment
  * {@snippet lang=c : kCGWindowName typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowName").orElseThrow().reinterpret(kCGWindowName_LAYOUT.byteSize()) }
+private val kCGWindowName_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowName").orElseThrow().reinterpret(kCGWindowName_LAYOUT.byteSize()) }
 private val kCGWindowName_VH: VarHandle by lazy { kCGWindowName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1478,7 +1478,7 @@ var kCGWindowName: MemorySegment
  * {@snippet lang=c : kCGWindowIsOnscreen typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowIsOnscreen_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowIsOnscreen_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowIsOnscreen").orElseThrow().reinterpret(kCGWindowIsOnscreen_LAYOUT.byteSize()) }
+private val kCGWindowIsOnscreen_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowIsOnscreen").orElseThrow().reinterpret(kCGWindowIsOnscreen_LAYOUT.byteSize()) }
 private val kCGWindowIsOnscreen_VH: VarHandle by lazy { kCGWindowIsOnscreen_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1490,7 +1490,7 @@ var kCGWindowIsOnscreen: MemorySegment
  * {@snippet lang=c : kCGWindowBackingLocationVideoMemory typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGWindowBackingLocationVideoMemory_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGWindowBackingLocationVideoMemory_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGWindowBackingLocationVideoMemory").orElseThrow().reinterpret(kCGWindowBackingLocationVideoMemory_LAYOUT.byteSize()) }
+private val kCGWindowBackingLocationVideoMemory_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGWindowBackingLocationVideoMemory").orElseThrow().reinterpret(kCGWindowBackingLocationVideoMemory_LAYOUT.byteSize()) }
 private val kCGWindowBackingLocationVideoMemory_VH: VarHandle by lazy { kCGWindowBackingLocationVideoMemory_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1502,7 +1502,7 @@ var kCGWindowBackingLocationVideoMemory: MemorySegment
  * {@snippet lang=c : CGWindowListCopyWindowInfo typedef CFArrayRef = (Declared(__CFArray))*(typedef CGWindowListOption = Declared(CGWindowListOption),typedef CGWindowID = UNSIGNED = Int)
  */
 private val CGWindowListCopyWindowInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGWindowListCopyWindowInfo_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWindowListCopyWindowInfo").orElseThrow() }
+private val CGWindowListCopyWindowInfo_ADDR: MemorySegment by lazy { LOOKUP.find("CGWindowListCopyWindowInfo").orElseThrow() }
 private val CGWindowListCopyWindowInfo_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWindowListCopyWindowInfo_ADDR, CGWindowListCopyWindowInfo_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1522,7 +1522,7 @@ fun CGWindowListCopyWindowInfo(arg0: CGWindowListOption, arg1: Int): MemorySegme
  * {@snippet lang=c : CGWindowListCreate typedef CFArrayRef = (Declared(__CFArray))*(typedef CGWindowListOption = Declared(CGWindowListOption),typedef CGWindowID = UNSIGNED = Int)
  */
 private val CGWindowListCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGWindowListCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWindowListCreate").orElseThrow() }
+private val CGWindowListCreate_ADDR: MemorySegment by lazy { LOOKUP.find("CGWindowListCreate").orElseThrow() }
 private val CGWindowListCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWindowListCreate_ADDR, CGWindowListCreate_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1543,7 +1543,7 @@ fun CGWindowListCreate(arg0: CGWindowListOption, arg1: Int): MemorySegment {
  * {@snippet lang=c : CGWindowListCreateDescriptionFromArray typedef CFArrayRef = (Declared(__CFArray))*(typedef CFArrayRef = (Declared(__CFArray))*)
  */
 private val CGWindowListCreateDescriptionFromArray_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGWindowListCreateDescriptionFromArray_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWindowListCreateDescriptionFromArray").orElseThrow() }
+private val CGWindowListCreateDescriptionFromArray_ADDR: MemorySegment by lazy { LOOKUP.find("CGWindowListCreateDescriptionFromArray").orElseThrow() }
 private val CGWindowListCreateDescriptionFromArray_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWindowListCreateDescriptionFromArray_ADDR, CGWindowListCreateDescriptionFromArray_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -1563,7 +1563,7 @@ fun CGWindowListCreateDescriptionFromArray(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGWindowListCreateImage typedef CGImageRef = (Declared(CGImage))*(typedef CGRect = Declared(CGRect),typedef CGWindowListOption = Declared(CGWindowListOption),typedef CGWindowID = UNSIGNED = Int,typedef CGWindowImageOption = Declared(CGWindowImageOption))
  */
 private val CGWindowListCreateImage_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGWindowListCreateImage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWindowListCreateImage").orElseThrow() }
+private val CGWindowListCreateImage_ADDR: MemorySegment by lazy { LOOKUP.find("CGWindowListCreateImage").orElseThrow() }
 private val CGWindowListCreateImage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWindowListCreateImage_ADDR, CGWindowListCreateImage_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -1588,7 +1588,7 @@ fun CGWindowListCreateImage(arg0: CGRect, arg1: CGWindowListOption, arg2: Int, a
  * {@snippet lang=c : CGWindowListCreateImageFromArray typedef CGImageRef = (Declared(CGImage))*(typedef CGRect = Declared(CGRect),typedef CFArrayRef = (Declared(__CFArray))*,typedef CGWindowImageOption = Declared(CGWindowImageOption))
  */
 private val CGWindowListCreateImageFromArray_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGWindowListCreateImageFromArray_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWindowListCreateImageFromArray").orElseThrow() }
+private val CGWindowListCreateImageFromArray_ADDR: MemorySegment by lazy { LOOKUP.find("CGWindowListCreateImageFromArray").orElseThrow() }
 private val CGWindowListCreateImageFromArray_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWindowListCreateImageFromArray_ADDR, CGWindowListCreateImageFromArray_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -1613,7 +1613,7 @@ fun CGWindowListCreateImageFromArray(arg0: CGRect, arg1: MemorySegment, arg2: CG
  * {@snippet lang=c : CGPreflightScreenCaptureAccess Bool()
  */
 private val CGPreflightScreenCaptureAccess_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN)
-private val CGPreflightScreenCaptureAccess_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPreflightScreenCaptureAccess").orElseThrow() }
+private val CGPreflightScreenCaptureAccess_ADDR: MemorySegment by lazy { LOOKUP.find("CGPreflightScreenCaptureAccess").orElseThrow() }
 private val CGPreflightScreenCaptureAccess_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPreflightScreenCaptureAccess_ADDR, CGPreflightScreenCaptureAccess_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
@@ -1633,7 +1633,7 @@ fun CGPreflightScreenCaptureAccess(): Boolean {
  * {@snippet lang=c : CGRequestScreenCaptureAccess Bool()
  */
 private val CGRequestScreenCaptureAccess_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN)
-private val CGRequestScreenCaptureAccess_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRequestScreenCaptureAccess").orElseThrow() }
+private val CGRequestScreenCaptureAccess_ADDR: MemorySegment by lazy { LOOKUP.find("CGRequestScreenCaptureAccess").orElseThrow() }
 private val CGRequestScreenCaptureAccess_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRequestScreenCaptureAccess_ADDR, CGRequestScreenCaptureAccess_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
@@ -1653,7 +1653,7 @@ fun CGRequestScreenCaptureAccess(): Boolean {
  * {@snippet lang=c : CGWindowLevelForKey typedef CGWindowLevel = Int(typedef CGWindowLevelKey = Declared(CGWindowLevelKey))
  */
 private val CGWindowLevelForKey_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGWindowLevelForKey_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWindowLevelForKey").orElseThrow() }
+private val CGWindowLevelForKey_ADDR: MemorySegment by lazy { LOOKUP.find("CGWindowLevelForKey").orElseThrow() }
 private val CGWindowLevelForKey_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWindowLevelForKey_ADDR, CGWindowLevelForKey_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -1673,7 +1673,7 @@ fun CGWindowLevelForKey(arg0: CGWindowLevelKey): Int {
  * {@snippet lang=c : CGMainDisplayID typedef CGDirectDisplayID = UNSIGNED = Int()
  */
 private val CGMainDisplayID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
-private val CGMainDisplayID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGMainDisplayID").orElseThrow() }
+private val CGMainDisplayID_ADDR: MemorySegment by lazy { LOOKUP.find("CGMainDisplayID").orElseThrow() }
 private val CGMainDisplayID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGMainDisplayID_ADDR, CGMainDisplayID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -1693,7 +1693,7 @@ fun CGMainDisplayID(): Int {
  * {@snippet lang=c : CGGetDisplaysWithPoint typedef CGError = Declared(CGError)(typedef CGPoint = Declared(CGPoint),typedef uint32_t = UNSIGNED = Int,(typedef CGDirectDisplayID = UNSIGNED = Int)*,(typedef uint32_t = UNSIGNED = Int)*)
  */
 private val CGGetDisplaysWithPoint_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, CGPoint.layout, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetDisplaysWithPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGGetDisplaysWithPoint").orElseThrow() }
+private val CGGetDisplaysWithPoint_ADDR: MemorySegment by lazy { LOOKUP.find("CGGetDisplaysWithPoint").orElseThrow() }
 private val CGGetDisplaysWithPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGGetDisplaysWithPoint_ADDR, CGGetDisplaysWithPoint_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -1718,7 +1718,7 @@ fun CGGetDisplaysWithPoint(arg0: CGPoint, arg1: Int, arg2: MemorySegment, arg3: 
  * {@snippet lang=c : CGGetDisplaysWithRect typedef CGError = Declared(CGError)(typedef CGRect = Declared(CGRect),typedef uint32_t = UNSIGNED = Int,(typedef CGDirectDisplayID = UNSIGNED = Int)*,(typedef uint32_t = UNSIGNED = Int)*)
  */
 private val CGGetDisplaysWithRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, CGRect.layout, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetDisplaysWithRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGGetDisplaysWithRect").orElseThrow() }
+private val CGGetDisplaysWithRect_ADDR: MemorySegment by lazy { LOOKUP.find("CGGetDisplaysWithRect").orElseThrow() }
 private val CGGetDisplaysWithRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGGetDisplaysWithRect_ADDR, CGGetDisplaysWithRect_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -1743,7 +1743,7 @@ fun CGGetDisplaysWithRect(arg0: CGRect, arg1: Int, arg2: MemorySegment, arg3: Me
  * {@snippet lang=c : CGGetDisplaysWithOpenGLDisplayMask typedef CGError = Declared(CGError)(typedef CGOpenGLDisplayMask = UNSIGNED = Int,typedef uint32_t = UNSIGNED = Int,(typedef CGDirectDisplayID = UNSIGNED = Int)*,(typedef uint32_t = UNSIGNED = Int)*)
  */
 private val CGGetDisplaysWithOpenGLDisplayMask_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetDisplaysWithOpenGLDisplayMask_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGGetDisplaysWithOpenGLDisplayMask").orElseThrow() }
+private val CGGetDisplaysWithOpenGLDisplayMask_ADDR: MemorySegment by lazy { LOOKUP.find("CGGetDisplaysWithOpenGLDisplayMask").orElseThrow() }
 private val CGGetDisplaysWithOpenGLDisplayMask_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGGetDisplaysWithOpenGLDisplayMask_ADDR, CGGetDisplaysWithOpenGLDisplayMask_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -1763,7 +1763,7 @@ fun CGGetDisplaysWithOpenGLDisplayMask(arg0: Int, arg1: Int, arg2: MemorySegment
  * {@snippet lang=c : CGGetActiveDisplayList typedef CGError = Declared(CGError)(typedef uint32_t = UNSIGNED = Int,(typedef CGDirectDisplayID = UNSIGNED = Int)*,(typedef uint32_t = UNSIGNED = Int)*)
  */
 private val CGGetActiveDisplayList_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetActiveDisplayList_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGGetActiveDisplayList").orElseThrow() }
+private val CGGetActiveDisplayList_ADDR: MemorySegment by lazy { LOOKUP.find("CGGetActiveDisplayList").orElseThrow() }
 private val CGGetActiveDisplayList_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGGetActiveDisplayList_ADDR, CGGetActiveDisplayList_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -1783,7 +1783,7 @@ fun CGGetActiveDisplayList(arg0: Int, arg1: MemorySegment, arg2: MemorySegment):
  * {@snippet lang=c : CGGetOnlineDisplayList typedef CGError = Declared(CGError)(typedef uint32_t = UNSIGNED = Int,(typedef CGDirectDisplayID = UNSIGNED = Int)*,(typedef uint32_t = UNSIGNED = Int)*)
  */
 private val CGGetOnlineDisplayList_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetOnlineDisplayList_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGGetOnlineDisplayList").orElseThrow() }
+private val CGGetOnlineDisplayList_ADDR: MemorySegment by lazy { LOOKUP.find("CGGetOnlineDisplayList").orElseThrow() }
 private val CGGetOnlineDisplayList_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGGetOnlineDisplayList_ADDR, CGGetOnlineDisplayList_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -1803,7 +1803,7 @@ fun CGGetOnlineDisplayList(arg0: Int, arg1: MemorySegment, arg2: MemorySegment):
  * {@snippet lang=c : CGDisplayIDToOpenGLDisplayMask typedef CGOpenGLDisplayMask = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIDToOpenGLDisplayMask_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIDToOpenGLDisplayMask_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIDToOpenGLDisplayMask").orElseThrow() }
+private val CGDisplayIDToOpenGLDisplayMask_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIDToOpenGLDisplayMask").orElseThrow() }
 private val CGDisplayIDToOpenGLDisplayMask_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIDToOpenGLDisplayMask_ADDR, CGDisplayIDToOpenGLDisplayMask_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -1823,7 +1823,7 @@ fun CGDisplayIDToOpenGLDisplayMask(arg0: Int): Int {
  * {@snippet lang=c : CGOpenGLDisplayMaskToDisplayID typedef CGDirectDisplayID = UNSIGNED = Int(typedef CGOpenGLDisplayMask = UNSIGNED = Int)
  */
 private val CGOpenGLDisplayMaskToDisplayID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGOpenGLDisplayMaskToDisplayID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGOpenGLDisplayMaskToDisplayID").orElseThrow() }
+private val CGOpenGLDisplayMaskToDisplayID_ADDR: MemorySegment by lazy { LOOKUP.find("CGOpenGLDisplayMaskToDisplayID").orElseThrow() }
 private val CGOpenGLDisplayMaskToDisplayID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGOpenGLDisplayMaskToDisplayID_ADDR, CGOpenGLDisplayMaskToDisplayID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -1843,7 +1843,7 @@ fun CGOpenGLDisplayMaskToDisplayID(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayBounds typedef CGRect = Declared(CGRect)(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayBounds_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.JAVA_INT)
-private val CGDisplayBounds_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayBounds").orElseThrow() }
+private val CGDisplayBounds_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayBounds").orElseThrow() }
 private val CGDisplayBounds_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayBounds_ADDR, CGDisplayBounds_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -1868,7 +1868,7 @@ fun CGDisplayBoundsTyped(allocator: SegmentAllocator, arg0: Int): CGRect {
  * {@snippet lang=c : CGDisplayPixelsWide typedef size_t = UNSIGNED = Long(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayPixelsWide_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
-private val CGDisplayPixelsWide_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayPixelsWide").orElseThrow() }
+private val CGDisplayPixelsWide_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayPixelsWide").orElseThrow() }
 private val CGDisplayPixelsWide_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayPixelsWide_ADDR, CGDisplayPixelsWide_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -1888,7 +1888,7 @@ fun CGDisplayPixelsWide(arg0: Int): Long {
  * {@snippet lang=c : CGDisplayPixelsHigh typedef size_t = UNSIGNED = Long(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayPixelsHigh_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
-private val CGDisplayPixelsHigh_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayPixelsHigh").orElseThrow() }
+private val CGDisplayPixelsHigh_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayPixelsHigh").orElseThrow() }
 private val CGDisplayPixelsHigh_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayPixelsHigh_ADDR, CGDisplayPixelsHigh_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -1908,7 +1908,7 @@ fun CGDisplayPixelsHigh(arg0: Int): Long {
  * {@snippet lang=c : CGDisplayCopyAllDisplayModes typedef CFArrayRef = (Declared(__CFArray))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGDisplayCopyAllDisplayModes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplayCopyAllDisplayModes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayCopyAllDisplayModes").orElseThrow() }
+private val CGDisplayCopyAllDisplayModes_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayCopyAllDisplayModes").orElseThrow() }
 private val CGDisplayCopyAllDisplayModes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayCopyAllDisplayModes_ADDR, CGDisplayCopyAllDisplayModes_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -1928,7 +1928,7 @@ fun CGDisplayCopyAllDisplayModes(arg0: Int, arg1: MemorySegment): MemorySegment 
  * {@snippet lang=c : kCGDisplayShowDuplicateLowResolutionModes typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayShowDuplicateLowResolutionModes_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayShowDuplicateLowResolutionModes_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayShowDuplicateLowResolutionModes").orElseThrow().reinterpret(kCGDisplayShowDuplicateLowResolutionModes_LAYOUT.byteSize()) }
+private val kCGDisplayShowDuplicateLowResolutionModes_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayShowDuplicateLowResolutionModes").orElseThrow().reinterpret(kCGDisplayShowDuplicateLowResolutionModes_LAYOUT.byteSize()) }
 private val kCGDisplayShowDuplicateLowResolutionModes_VH: VarHandle by lazy { kCGDisplayShowDuplicateLowResolutionModes_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
@@ -1940,7 +1940,7 @@ var kCGDisplayShowDuplicateLowResolutionModes: MemorySegment
  * {@snippet lang=c : CGDisplayCopyDisplayMode typedef CGDisplayModeRef = (Declared(CGDisplayMode))*(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayCopyDisplayMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayCopyDisplayMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayCopyDisplayMode").orElseThrow() }
+private val CGDisplayCopyDisplayMode_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayCopyDisplayMode").orElseThrow() }
 private val CGDisplayCopyDisplayMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayCopyDisplayMode_ADDR, CGDisplayCopyDisplayMode_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -1960,7 +1960,7 @@ fun CGDisplayCopyDisplayMode(arg0: Int): MemorySegment {
  * {@snippet lang=c : CGDisplaySetDisplayMode typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,typedef CGDisplayModeRef = (Declared(CGDisplayMode))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGDisplaySetDisplayMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplaySetDisplayMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplaySetDisplayMode").orElseThrow() }
+private val CGDisplaySetDisplayMode_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplaySetDisplayMode").orElseThrow() }
 private val CGDisplaySetDisplayMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplaySetDisplayMode_ADDR, CGDisplaySetDisplayMode_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -1980,7 +1980,7 @@ fun CGDisplaySetDisplayMode(arg0: Int, arg1: MemorySegment, arg2: MemorySegment)
  * {@snippet lang=c : CGDisplayModeGetWidth typedef size_t = UNSIGNED = Long(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeGetWidth_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayModeGetWidth_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeGetWidth").orElseThrow() }
+private val CGDisplayModeGetWidth_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeGetWidth").orElseThrow() }
 private val CGDisplayModeGetWidth_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeGetWidth_ADDR, CGDisplayModeGetWidth_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2000,7 +2000,7 @@ fun CGDisplayModeGetWidth(arg0: MemorySegment): Long {
  * {@snippet lang=c : CGDisplayModeGetHeight typedef size_t = UNSIGNED = Long(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeGetHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayModeGetHeight_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeGetHeight").orElseThrow() }
+private val CGDisplayModeGetHeight_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeGetHeight").orElseThrow() }
 private val CGDisplayModeGetHeight_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeGetHeight_ADDR, CGDisplayModeGetHeight_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2020,7 +2020,7 @@ fun CGDisplayModeGetHeight(arg0: MemorySegment): Long {
  * {@snippet lang=c : CGDisplayModeCopyPixelEncoding typedef CFStringRef = (Declared(__CFString))*(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeCopyPixelEncoding_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayModeCopyPixelEncoding_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeCopyPixelEncoding").orElseThrow() }
+private val CGDisplayModeCopyPixelEncoding_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeCopyPixelEncoding").orElseThrow() }
 private val CGDisplayModeCopyPixelEncoding_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeCopyPixelEncoding_ADDR, CGDisplayModeCopyPixelEncoding_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 11, deprecatedSubminor = -1, message = "No longer supported")
@@ -2040,7 +2040,7 @@ fun CGDisplayModeCopyPixelEncoding(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGDisplayModeGetRefreshRate Double(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeGetRefreshRate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CGDisplayModeGetRefreshRate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeGetRefreshRate").orElseThrow() }
+private val CGDisplayModeGetRefreshRate_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeGetRefreshRate").orElseThrow() }
 private val CGDisplayModeGetRefreshRate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeGetRefreshRate_ADDR, CGDisplayModeGetRefreshRate_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2060,7 +2060,7 @@ fun CGDisplayModeGetRefreshRate(arg0: MemorySegment): Double {
  * {@snippet lang=c : CGDisplayModeGetIOFlags typedef uint32_t = UNSIGNED = Int(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeGetIOFlags_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplayModeGetIOFlags_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeGetIOFlags").orElseThrow() }
+private val CGDisplayModeGetIOFlags_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeGetIOFlags").orElseThrow() }
 private val CGDisplayModeGetIOFlags_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeGetIOFlags_ADDR, CGDisplayModeGetIOFlags_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2080,7 +2080,7 @@ fun CGDisplayModeGetIOFlags(arg0: MemorySegment): Int {
  * {@snippet lang=c : CGDisplayModeGetIODisplayModeID typedef int32_t = Int(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeGetIODisplayModeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplayModeGetIODisplayModeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeGetIODisplayModeID").orElseThrow() }
+private val CGDisplayModeGetIODisplayModeID_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeGetIODisplayModeID").orElseThrow() }
 private val CGDisplayModeGetIODisplayModeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeGetIODisplayModeID_ADDR, CGDisplayModeGetIODisplayModeID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2100,7 +2100,7 @@ fun CGDisplayModeGetIODisplayModeID(arg0: MemorySegment): Int {
  * {@snippet lang=c : CGDisplayModeIsUsableForDesktopGUI Bool(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeIsUsableForDesktopGUI_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
-private val CGDisplayModeIsUsableForDesktopGUI_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeIsUsableForDesktopGUI").orElseThrow() }
+private val CGDisplayModeIsUsableForDesktopGUI_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeIsUsableForDesktopGUI").orElseThrow() }
 private val CGDisplayModeIsUsableForDesktopGUI_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeIsUsableForDesktopGUI_ADDR, CGDisplayModeIsUsableForDesktopGUI_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2120,7 +2120,7 @@ fun CGDisplayModeIsUsableForDesktopGUI(arg0: MemorySegment): Boolean {
  * {@snippet lang=c : CGDisplayModeGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CGDisplayModeGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CGDisplayModeGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeGetTypeID").orElseThrow() }
+private val CGDisplayModeGetTypeID_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeGetTypeID").orElseThrow() }
 private val CGDisplayModeGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeGetTypeID_ADDR, CGDisplayModeGetTypeID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2140,7 +2140,7 @@ fun CGDisplayModeGetTypeID(): Long {
  * {@snippet lang=c : CGDisplayModeRetain typedef CGDisplayModeRef = (Declared(CGDisplayMode))*(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayModeRetain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeRetain").orElseThrow() }
+private val CGDisplayModeRetain_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeRetain").orElseThrow() }
 private val CGDisplayModeRetain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeRetain_ADDR, CGDisplayModeRetain_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2160,7 +2160,7 @@ fun CGDisplayModeRetain(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGDisplayModeRelease Void(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGDisplayModeRelease_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeRelease").orElseThrow() }
+private val CGDisplayModeRelease_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeRelease").orElseThrow() }
 private val CGDisplayModeRelease_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeRelease_ADDR, CGDisplayModeRelease_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2180,7 +2180,7 @@ fun CGDisplayModeRelease(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGDisplayModeGetPixelWidth typedef size_t = UNSIGNED = Long(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeGetPixelWidth_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayModeGetPixelWidth_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeGetPixelWidth").orElseThrow() }
+private val CGDisplayModeGetPixelWidth_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeGetPixelWidth").orElseThrow() }
 private val CGDisplayModeGetPixelWidth_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeGetPixelWidth_ADDR, CGDisplayModeGetPixelWidth_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
@@ -2200,7 +2200,7 @@ fun CGDisplayModeGetPixelWidth(arg0: MemorySegment): Long {
  * {@snippet lang=c : CGDisplayModeGetPixelHeight typedef size_t = UNSIGNED = Long(typedef CGDisplayModeRef = (Declared(CGDisplayMode))*)
  */
 private val CGDisplayModeGetPixelHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayModeGetPixelHeight_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModeGetPixelHeight").orElseThrow() }
+private val CGDisplayModeGetPixelHeight_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModeGetPixelHeight").orElseThrow() }
 private val CGDisplayModeGetPixelHeight_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModeGetPixelHeight_ADDR, CGDisplayModeGetPixelHeight_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
@@ -2220,7 +2220,7 @@ fun CGDisplayModeGetPixelHeight(arg0: MemorySegment): Long {
  * {@snippet lang=c : CGSetDisplayTransferByFormula typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,typedef CGGammaValue = Float,typedef CGGammaValue = Float,typedef CGGammaValue = Float,typedef CGGammaValue = Float,typedef CGGammaValue = Float,typedef CGGammaValue = Float,typedef CGGammaValue = Float,typedef CGGammaValue = Float,typedef CGGammaValue = Float)
  */
 private val CGSetDisplayTransferByFormula_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)
-private val CGSetDisplayTransferByFormula_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGSetDisplayTransferByFormula").orElseThrow() }
+private val CGSetDisplayTransferByFormula_ADDR: MemorySegment by lazy { LOOKUP.find("CGSetDisplayTransferByFormula").orElseThrow() }
 private val CGSetDisplayTransferByFormula_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGSetDisplayTransferByFormula_ADDR, CGSetDisplayTransferByFormula_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2240,7 +2240,7 @@ fun CGSetDisplayTransferByFormula(arg0: Int, arg1: Float, arg2: Float, arg3: Flo
  * {@snippet lang=c : CGGetDisplayTransferByFormula typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*)
  */
 private val CGGetDisplayTransferByFormula_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetDisplayTransferByFormula_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGGetDisplayTransferByFormula").orElseThrow() }
+private val CGGetDisplayTransferByFormula_ADDR: MemorySegment by lazy { LOOKUP.find("CGGetDisplayTransferByFormula").orElseThrow() }
 private val CGGetDisplayTransferByFormula_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGGetDisplayTransferByFormula_ADDR, CGGetDisplayTransferByFormula_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2260,7 +2260,7 @@ fun CGGetDisplayTransferByFormula(arg0: Int, arg1: MemorySegment, arg2: MemorySe
  * {@snippet lang=c : CGDisplayGammaTableCapacity typedef uint32_t = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayGammaTableCapacity_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayGammaTableCapacity_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayGammaTableCapacity").orElseThrow() }
+private val CGDisplayGammaTableCapacity_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayGammaTableCapacity").orElseThrow() }
 private val CGDisplayGammaTableCapacity_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayGammaTableCapacity_ADDR, CGDisplayGammaTableCapacity_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -2280,7 +2280,7 @@ fun CGDisplayGammaTableCapacity(arg0: Int): Int {
  * {@snippet lang=c : CGSetDisplayTransferByTable typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,typedef uint32_t = UNSIGNED = Int,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*)
  */
 private val CGSetDisplayTransferByTable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGSetDisplayTransferByTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGSetDisplayTransferByTable").orElseThrow() }
+private val CGSetDisplayTransferByTable_ADDR: MemorySegment by lazy { LOOKUP.find("CGSetDisplayTransferByTable").orElseThrow() }
 private val CGSetDisplayTransferByTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGSetDisplayTransferByTable_ADDR, CGSetDisplayTransferByTable_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2300,7 +2300,7 @@ fun CGSetDisplayTransferByTable(arg0: Int, arg1: Int, arg2: MemorySegment, arg3:
  * {@snippet lang=c : CGGetDisplayTransferByTable typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,typedef uint32_t = UNSIGNED = Int,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef CGGammaValue = Float)*,(typedef uint32_t = UNSIGNED = Int)*)
  */
 private val CGGetDisplayTransferByTable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetDisplayTransferByTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGGetDisplayTransferByTable").orElseThrow() }
+private val CGGetDisplayTransferByTable_ADDR: MemorySegment by lazy { LOOKUP.find("CGGetDisplayTransferByTable").orElseThrow() }
 private val CGGetDisplayTransferByTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGGetDisplayTransferByTable_ADDR, CGGetDisplayTransferByTable_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2320,7 +2320,7 @@ fun CGGetDisplayTransferByTable(arg0: Int, arg1: Int, arg2: MemorySegment, arg3:
  * {@snippet lang=c : CGSetDisplayTransferByByteTable typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,typedef uint32_t = UNSIGNED = Int,(typedef uint8_t = UNSIGNED = Char)*,(typedef uint8_t = UNSIGNED = Char)*,(typedef uint8_t = UNSIGNED = Char)*)
  */
 private val CGSetDisplayTransferByByteTable_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGSetDisplayTransferByByteTable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGSetDisplayTransferByByteTable").orElseThrow() }
+private val CGSetDisplayTransferByByteTable_ADDR: MemorySegment by lazy { LOOKUP.find("CGSetDisplayTransferByByteTable").orElseThrow() }
 private val CGSetDisplayTransferByByteTable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGSetDisplayTransferByByteTable_ADDR, CGSetDisplayTransferByByteTable_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2340,7 +2340,7 @@ fun CGSetDisplayTransferByByteTable(arg0: Int, arg1: Int, arg2: MemorySegment, a
  * {@snippet lang=c : CGDisplayRestoreColorSyncSettings Void()
  */
 private val CGDisplayRestoreColorSyncSettings_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid()
-private val CGDisplayRestoreColorSyncSettings_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayRestoreColorSyncSettings").orElseThrow() }
+private val CGDisplayRestoreColorSyncSettings_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayRestoreColorSyncSettings").orElseThrow() }
 private val CGDisplayRestoreColorSyncSettings_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayRestoreColorSyncSettings_ADDR, CGDisplayRestoreColorSyncSettings_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2360,7 +2360,7 @@ fun CGDisplayRestoreColorSyncSettings(): Unit {
  * {@snippet lang=c : CGDisplayIsCaptured typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsCaptured_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsCaptured_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsCaptured").orElseThrow() }
+private val CGDisplayIsCaptured_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsCaptured").orElseThrow() }
 private val CGDisplayIsCaptured_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsCaptured_ADDR, CGDisplayIsCaptured_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -2380,7 +2380,7 @@ fun CGDisplayIsCaptured(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayCapture typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayCapture_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayCapture_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayCapture").orElseThrow() }
+private val CGDisplayCapture_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayCapture").orElseThrow() }
 private val CGDisplayCapture_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayCapture_ADDR, CGDisplayCapture_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2400,7 +2400,7 @@ fun CGDisplayCapture(arg0: Int): CGError {
  * {@snippet lang=c : CGDisplayCaptureWithOptions typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,typedef CGCaptureOptions = Declared(CGCaptureOptions))
  */
 private val CGDisplayCaptureWithOptions_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayCaptureWithOptions_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayCaptureWithOptions").orElseThrow() }
+private val CGDisplayCaptureWithOptions_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayCaptureWithOptions").orElseThrow() }
 private val CGDisplayCaptureWithOptions_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayCaptureWithOptions_ADDR, CGDisplayCaptureWithOptions_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -2420,7 +2420,7 @@ fun CGDisplayCaptureWithOptions(arg0: Int, arg1: CGCaptureOptions): CGError {
  * {@snippet lang=c : CGDisplayRelease typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayRelease_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayRelease_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayRelease").orElseThrow() }
+private val CGDisplayRelease_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayRelease").orElseThrow() }
 private val CGDisplayRelease_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayRelease_ADDR, CGDisplayRelease_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2440,7 +2440,7 @@ fun CGDisplayRelease(arg0: Int): CGError {
  * {@snippet lang=c : CGCaptureAllDisplays typedef CGError = Declared(CGError)()
  */
 private val CGCaptureAllDisplays_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
-private val CGCaptureAllDisplays_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGCaptureAllDisplays").orElseThrow() }
+private val CGCaptureAllDisplays_ADDR: MemorySegment by lazy { LOOKUP.find("CGCaptureAllDisplays").orElseThrow() }
 private val CGCaptureAllDisplays_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGCaptureAllDisplays_ADDR, CGCaptureAllDisplays_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2460,7 +2460,7 @@ fun CGCaptureAllDisplays(): CGError {
  * {@snippet lang=c : CGCaptureAllDisplaysWithOptions typedef CGError = Declared(CGError)(typedef CGCaptureOptions = Declared(CGCaptureOptions))
  */
 private val CGCaptureAllDisplaysWithOptions_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGCaptureAllDisplaysWithOptions_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGCaptureAllDisplaysWithOptions").orElseThrow() }
+private val CGCaptureAllDisplaysWithOptions_ADDR: MemorySegment by lazy { LOOKUP.find("CGCaptureAllDisplaysWithOptions").orElseThrow() }
 private val CGCaptureAllDisplaysWithOptions_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGCaptureAllDisplaysWithOptions_ADDR, CGCaptureAllDisplaysWithOptions_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -2480,7 +2480,7 @@ fun CGCaptureAllDisplaysWithOptions(arg0: CGCaptureOptions): CGError {
  * {@snippet lang=c : CGReleaseAllDisplays typedef CGError = Declared(CGError)()
  */
 private val CGReleaseAllDisplays_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
-private val CGReleaseAllDisplays_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGReleaseAllDisplays").orElseThrow() }
+private val CGReleaseAllDisplays_ADDR: MemorySegment by lazy { LOOKUP.find("CGReleaseAllDisplays").orElseThrow() }
 private val CGReleaseAllDisplays_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGReleaseAllDisplays_ADDR, CGReleaseAllDisplays_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2500,7 +2500,7 @@ fun CGReleaseAllDisplays(): CGError {
  * {@snippet lang=c : CGShieldingWindowID typedef CGWindowID = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGShieldingWindowID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGShieldingWindowID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGShieldingWindowID").orElseThrow() }
+private val CGShieldingWindowID_ADDR: MemorySegment by lazy { LOOKUP.find("CGShieldingWindowID").orElseThrow() }
 private val CGShieldingWindowID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGShieldingWindowID_ADDR, CGShieldingWindowID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2520,7 +2520,7 @@ fun CGShieldingWindowID(arg0: Int): Int {
  * {@snippet lang=c : CGShieldingWindowLevel typedef CGWindowLevel = Int()
  */
 private val CGShieldingWindowLevel_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
-private val CGShieldingWindowLevel_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGShieldingWindowLevel").orElseThrow() }
+private val CGShieldingWindowLevel_ADDR: MemorySegment by lazy { LOOKUP.find("CGShieldingWindowLevel").orElseThrow() }
 private val CGShieldingWindowLevel_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGShieldingWindowLevel_ADDR, CGShieldingWindowLevel_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2540,7 +2540,7 @@ fun CGShieldingWindowLevel(): Int {
  * {@snippet lang=c : CGDisplayCreateImage typedef CGImageRef = (Declared(CGImage))*(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayCreateImage_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayCreateImage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayCreateImage").orElseThrow() }
+private val CGDisplayCreateImage_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayCreateImage").orElseThrow() }
 private val CGDisplayCreateImage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayCreateImage_ADDR, CGDisplayCreateImage_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 4, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -2560,7 +2560,7 @@ fun CGDisplayCreateImage(arg0: Int): MemorySegment {
  * {@snippet lang=c : CGDisplayCreateImageForRect typedef CGImageRef = (Declared(CGImage))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef CGRect = Declared(CGRect))
  */
 private val CGDisplayCreateImageForRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, CGRect.layout)
-private val CGDisplayCreateImageForRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayCreateImageForRect").orElseThrow() }
+private val CGDisplayCreateImageForRect_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayCreateImageForRect").orElseThrow() }
 private val CGDisplayCreateImageForRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayCreateImageForRect_ADDR, CGDisplayCreateImageForRect_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 4, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -2585,7 +2585,7 @@ fun CGDisplayCreateImageForRect(arg0: Int, arg1: CGRect): MemorySegment {
  * {@snippet lang=c : CGDisplayHideCursor typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayHideCursor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayHideCursor_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayHideCursor").orElseThrow() }
+private val CGDisplayHideCursor_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayHideCursor").orElseThrow() }
 private val CGDisplayHideCursor_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayHideCursor_ADDR, CGDisplayHideCursor_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2605,7 +2605,7 @@ fun CGDisplayHideCursor(arg0: Int): CGError {
  * {@snippet lang=c : CGDisplayShowCursor typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayShowCursor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayShowCursor_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayShowCursor").orElseThrow() }
+private val CGDisplayShowCursor_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayShowCursor").orElseThrow() }
 private val CGDisplayShowCursor_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayShowCursor_ADDR, CGDisplayShowCursor_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2625,7 +2625,7 @@ fun CGDisplayShowCursor(arg0: Int): CGError {
  * {@snippet lang=c : CGDisplayMoveCursorToPoint typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,typedef CGPoint = Declared(CGPoint))
  */
 private val CGDisplayMoveCursorToPoint_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, CGPoint.layout)
-private val CGDisplayMoveCursorToPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayMoveCursorToPoint").orElseThrow() }
+private val CGDisplayMoveCursorToPoint_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayMoveCursorToPoint").orElseThrow() }
 private val CGDisplayMoveCursorToPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayMoveCursorToPoint_ADDR, CGDisplayMoveCursorToPoint_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2650,7 +2650,7 @@ fun CGDisplayMoveCursorToPoint(arg0: Int, arg1: CGPoint): CGError {
  * {@snippet lang=c : CGGetLastMouseDelta Void((typedef int32_t = Int)*,(typedef int32_t = Int)*)
  */
 private val CGGetLastMouseDelta_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetLastMouseDelta_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGGetLastMouseDelta").orElseThrow() }
+private val CGGetLastMouseDelta_ADDR: MemorySegment by lazy { LOOKUP.find("CGGetLastMouseDelta").orElseThrow() }
 private val CGGetLastMouseDelta_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGGetLastMouseDelta_ADDR, CGGetLastMouseDelta_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2670,7 +2670,7 @@ fun CGGetLastMouseDelta(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGDisplayGetDrawingContext typedef CGContextRef = (Declared(CGContext))*(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayGetDrawingContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayGetDrawingContext_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayGetDrawingContext").orElseThrow() }
+private val CGDisplayGetDrawingContext_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayGetDrawingContext").orElseThrow() }
 private val CGDisplayGetDrawingContext_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayGetDrawingContext_ADDR, CGDisplayGetDrawingContext_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -2690,7 +2690,7 @@ fun CGDisplayGetDrawingContext(arg0: Int): MemorySegment {
  * {@snippet lang=c : CGDisplayAvailableModes typedef CFArrayRef = (Declared(__CFArray))*(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayAvailableModes_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayAvailableModes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayAvailableModes").orElseThrow() }
+private val CGDisplayAvailableModes_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayAvailableModes").orElseThrow() }
 private val CGDisplayAvailableModes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayAvailableModes_ADDR, CGDisplayAvailableModes_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -2710,7 +2710,7 @@ fun CGDisplayAvailableModes(arg0: Int): MemorySegment {
  * {@snippet lang=c : CGDisplayBestModeForParameters typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,(typedef boolean_t = Int)*)
  */
 private val CGDisplayBestModeForParameters_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayBestModeForParameters_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayBestModeForParameters").orElseThrow() }
+private val CGDisplayBestModeForParameters_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayBestModeForParameters").orElseThrow() }
 private val CGDisplayBestModeForParameters_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayBestModeForParameters_ADDR, CGDisplayBestModeForParameters_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -2730,7 +2730,7 @@ fun CGDisplayBestModeForParameters(arg0: Int, arg1: Long, arg2: Long, arg3: Long
  * {@snippet lang=c : CGDisplayBestModeForParametersAndRefreshRate typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef CGRefreshRate = Double,(typedef boolean_t = Int)*)
  */
 private val CGDisplayBestModeForParametersAndRefreshRate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CGDisplayBestModeForParametersAndRefreshRate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayBestModeForParametersAndRefreshRate").orElseThrow() }
+private val CGDisplayBestModeForParametersAndRefreshRate_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayBestModeForParametersAndRefreshRate").orElseThrow() }
 private val CGDisplayBestModeForParametersAndRefreshRate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayBestModeForParametersAndRefreshRate_ADDR, CGDisplayBestModeForParametersAndRefreshRate_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -2750,7 +2750,7 @@ fun CGDisplayBestModeForParametersAndRefreshRate(arg0: Int, arg1: Long, arg2: Lo
  * {@snippet lang=c : CGDisplayCurrentMode typedef CFDictionaryRef = (Declared(__CFDictionary))*(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayCurrentMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayCurrentMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayCurrentMode").orElseThrow() }
+private val CGDisplayCurrentMode_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayCurrentMode").orElseThrow() }
 private val CGDisplayCurrentMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayCurrentMode_ADDR, CGDisplayCurrentMode_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -2770,7 +2770,7 @@ fun CGDisplayCurrentMode(arg0: Int): MemorySegment {
  * {@snippet lang=c : CGDisplaySwitchToMode typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGDisplaySwitchToMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplaySwitchToMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplaySwitchToMode").orElseThrow() }
+private val CGDisplaySwitchToMode_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplaySwitchToMode").orElseThrow() }
 private val CGDisplaySwitchToMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplaySwitchToMode_ADDR, CGDisplaySwitchToMode_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -2790,7 +2790,7 @@ fun CGDisplaySwitchToMode(arg0: Int, arg1: MemorySegment): CGError {
  * {@snippet lang=c : CGBeginDisplayConfiguration typedef CGError = Declared(CGError)((typedef CGDisplayConfigRef = (Declared(_CGDisplayConfigRef))*)*)
  */
 private val CGBeginDisplayConfiguration_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGBeginDisplayConfiguration_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGBeginDisplayConfiguration").orElseThrow() }
+private val CGBeginDisplayConfiguration_ADDR: MemorySegment by lazy { LOOKUP.find("CGBeginDisplayConfiguration").orElseThrow() }
 private val CGBeginDisplayConfiguration_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGBeginDisplayConfiguration_ADDR, CGBeginDisplayConfiguration_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2810,7 +2810,7 @@ fun CGBeginDisplayConfiguration(arg0: MemorySegment): CGError {
  * {@snippet lang=c : CGConfigureDisplayOrigin typedef CGError = Declared(CGError)(typedef CGDisplayConfigRef = (Declared(_CGDisplayConfigRef))*,typedef CGDirectDisplayID = UNSIGNED = Int,typedef int32_t = Int,typedef int32_t = Int)
  */
 private val CGConfigureDisplayOrigin_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGConfigureDisplayOrigin_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGConfigureDisplayOrigin").orElseThrow() }
+private val CGConfigureDisplayOrigin_ADDR: MemorySegment by lazy { LOOKUP.find("CGConfigureDisplayOrigin").orElseThrow() }
 private val CGConfigureDisplayOrigin_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGConfigureDisplayOrigin_ADDR, CGConfigureDisplayOrigin_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2830,7 +2830,7 @@ fun CGConfigureDisplayOrigin(arg0: MemorySegment, arg1: Int, arg2: Int, arg3: In
  * {@snippet lang=c : CGConfigureDisplayWithDisplayMode typedef CGError = Declared(CGError)(typedef CGDisplayConfigRef = (Declared(_CGDisplayConfigRef))*,typedef CGDirectDisplayID = UNSIGNED = Int,typedef CGDisplayModeRef = (Declared(CGDisplayMode))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGConfigureDisplayWithDisplayMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGConfigureDisplayWithDisplayMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGConfigureDisplayWithDisplayMode").orElseThrow() }
+private val CGConfigureDisplayWithDisplayMode_ADDR: MemorySegment by lazy { LOOKUP.find("CGConfigureDisplayWithDisplayMode").orElseThrow() }
 private val CGConfigureDisplayWithDisplayMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGConfigureDisplayWithDisplayMode_ADDR, CGConfigureDisplayWithDisplayMode_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 6, introducedSubminor = -1)
@@ -2850,7 +2850,7 @@ fun CGConfigureDisplayWithDisplayMode(arg0: MemorySegment, arg1: Int, arg2: Memo
  * {@snippet lang=c : CGConfigureDisplayStereoOperation typedef CGError = Declared(CGError)(typedef CGDisplayConfigRef = (Declared(_CGDisplayConfigRef))*,typedef CGDirectDisplayID = UNSIGNED = Int,typedef boolean_t = Int,typedef boolean_t = Int)
  */
 private val CGConfigureDisplayStereoOperation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGConfigureDisplayStereoOperation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGConfigureDisplayStereoOperation").orElseThrow() }
+private val CGConfigureDisplayStereoOperation_ADDR: MemorySegment by lazy { LOOKUP.find("CGConfigureDisplayStereoOperation").orElseThrow() }
 private val CGConfigureDisplayStereoOperation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGConfigureDisplayStereoOperation_ADDR, CGConfigureDisplayStereoOperation_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -2870,7 +2870,7 @@ fun CGConfigureDisplayStereoOperation(arg0: MemorySegment, arg1: Int, arg2: Int,
  * {@snippet lang=c : CGConfigureDisplayMirrorOfDisplay typedef CGError = Declared(CGError)(typedef CGDisplayConfigRef = (Declared(_CGDisplayConfigRef))*,typedef CGDirectDisplayID = UNSIGNED = Int,typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGConfigureDisplayMirrorOfDisplay_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGConfigureDisplayMirrorOfDisplay_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGConfigureDisplayMirrorOfDisplay").orElseThrow() }
+private val CGConfigureDisplayMirrorOfDisplay_ADDR: MemorySegment by lazy { LOOKUP.find("CGConfigureDisplayMirrorOfDisplay").orElseThrow() }
 private val CGConfigureDisplayMirrorOfDisplay_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGConfigureDisplayMirrorOfDisplay_ADDR, CGConfigureDisplayMirrorOfDisplay_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -2890,7 +2890,7 @@ fun CGConfigureDisplayMirrorOfDisplay(arg0: MemorySegment, arg1: Int, arg2: Int)
  * {@snippet lang=c : CGCancelDisplayConfiguration typedef CGError = Declared(CGError)(typedef CGDisplayConfigRef = (Declared(_CGDisplayConfigRef))*)
  */
 private val CGCancelDisplayConfiguration_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGCancelDisplayConfiguration_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGCancelDisplayConfiguration").orElseThrow() }
+private val CGCancelDisplayConfiguration_ADDR: MemorySegment by lazy { LOOKUP.find("CGCancelDisplayConfiguration").orElseThrow() }
 private val CGCancelDisplayConfiguration_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGCancelDisplayConfiguration_ADDR, CGCancelDisplayConfiguration_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2910,7 +2910,7 @@ fun CGCancelDisplayConfiguration(arg0: MemorySegment): CGError {
  * {@snippet lang=c : CGCompleteDisplayConfiguration typedef CGError = Declared(CGError)(typedef CGDisplayConfigRef = (Declared(_CGDisplayConfigRef))*,typedef CGConfigureOption = Declared(CGConfigureOption))
  */
 private val CGCompleteDisplayConfiguration_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGCompleteDisplayConfiguration_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGCompleteDisplayConfiguration").orElseThrow() }
+private val CGCompleteDisplayConfiguration_ADDR: MemorySegment by lazy { LOOKUP.find("CGCompleteDisplayConfiguration").orElseThrow() }
 private val CGCompleteDisplayConfiguration_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGCompleteDisplayConfiguration_ADDR, CGCompleteDisplayConfiguration_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -2930,7 +2930,7 @@ fun CGCompleteDisplayConfiguration(arg0: MemorySegment, arg1: CGConfigureOption)
  * {@snippet lang=c : CGRestorePermanentDisplayConfiguration Void()
  */
 private val CGRestorePermanentDisplayConfiguration_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid()
-private val CGRestorePermanentDisplayConfiguration_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRestorePermanentDisplayConfiguration").orElseThrow() }
+private val CGRestorePermanentDisplayConfiguration_ADDR: MemorySegment by lazy { LOOKUP.find("CGRestorePermanentDisplayConfiguration").orElseThrow() }
 private val CGRestorePermanentDisplayConfiguration_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRestorePermanentDisplayConfiguration_ADDR, CGRestorePermanentDisplayConfiguration_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -2950,7 +2950,7 @@ fun CGRestorePermanentDisplayConfiguration(): Unit {
  * {@snippet lang=c : CGDisplayRegisterReconfigurationCallback typedef CGError = Declared(CGError)(typedef CGDisplayReconfigurationCallBack = (Void(UNSIGNED = Int,Declared(CGDisplayChangeSummaryFlags),(Void)*))*,(Void)*)
  */
 private val CGDisplayRegisterReconfigurationCallback_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayRegisterReconfigurationCallback_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayRegisterReconfigurationCallback").orElseThrow() }
+private val CGDisplayRegisterReconfigurationCallback_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayRegisterReconfigurationCallback").orElseThrow() }
 private val CGDisplayRegisterReconfigurationCallback_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayRegisterReconfigurationCallback_ADDR, CGDisplayRegisterReconfigurationCallback_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -2970,7 +2970,7 @@ fun CGDisplayRegisterReconfigurationCallback(arg0: MemorySegment, arg1: MemorySe
  * {@snippet lang=c : CGDisplayRemoveReconfigurationCallback typedef CGError = Declared(CGError)(typedef CGDisplayReconfigurationCallBack = (Void(UNSIGNED = Int,Declared(CGDisplayChangeSummaryFlags),(Void)*))*,(Void)*)
  */
 private val CGDisplayRemoveReconfigurationCallback_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayRemoveReconfigurationCallback_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayRemoveReconfigurationCallback").orElseThrow() }
+private val CGDisplayRemoveReconfigurationCallback_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayRemoveReconfigurationCallback").orElseThrow() }
 private val CGDisplayRemoveReconfigurationCallback_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayRemoveReconfigurationCallback_ADDR, CGDisplayRemoveReconfigurationCallback_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -2990,7 +2990,7 @@ fun CGDisplayRemoveReconfigurationCallback(arg0: MemorySegment, arg1: MemorySegm
  * {@snippet lang=c : CGDisplaySetStereoOperation typedef CGError = Declared(CGError)(typedef CGDirectDisplayID = UNSIGNED = Int,typedef boolean_t = Int,typedef boolean_t = Int,typedef CGConfigureOption = Declared(CGConfigureOption))
  */
 private val CGDisplaySetStereoOperation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplaySetStereoOperation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplaySetStereoOperation").orElseThrow() }
+private val CGDisplaySetStereoOperation_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplaySetStereoOperation").orElseThrow() }
 private val CGDisplaySetStereoOperation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplaySetStereoOperation_ADDR, CGDisplaySetStereoOperation_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -3010,7 +3010,7 @@ fun CGDisplaySetStereoOperation(arg0: Int, arg1: Int, arg2: Int, arg3: CGConfigu
  * {@snippet lang=c : CGDisplayIsActive typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsActive_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsActive_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsActive").orElseThrow() }
+private val CGDisplayIsActive_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsActive").orElseThrow() }
 private val CGDisplayIsActive_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsActive_ADDR, CGDisplayIsActive_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3030,7 +3030,7 @@ fun CGDisplayIsActive(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayIsAsleep typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsAsleep_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsAsleep_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsAsleep").orElseThrow() }
+private val CGDisplayIsAsleep_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsAsleep").orElseThrow() }
 private val CGDisplayIsAsleep_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsAsleep_ADDR, CGDisplayIsAsleep_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3050,7 +3050,7 @@ fun CGDisplayIsAsleep(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayIsOnline typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsOnline_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsOnline_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsOnline").orElseThrow() }
+private val CGDisplayIsOnline_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsOnline").orElseThrow() }
 private val CGDisplayIsOnline_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsOnline_ADDR, CGDisplayIsOnline_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3070,7 +3070,7 @@ fun CGDisplayIsOnline(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayIsMain typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsMain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsMain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsMain").orElseThrow() }
+private val CGDisplayIsMain_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsMain").orElseThrow() }
 private val CGDisplayIsMain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsMain_ADDR, CGDisplayIsMain_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3090,7 +3090,7 @@ fun CGDisplayIsMain(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayIsBuiltin typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsBuiltin_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsBuiltin_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsBuiltin").orElseThrow() }
+private val CGDisplayIsBuiltin_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsBuiltin").orElseThrow() }
 private val CGDisplayIsBuiltin_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsBuiltin_ADDR, CGDisplayIsBuiltin_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3110,7 +3110,7 @@ fun CGDisplayIsBuiltin(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayIsInMirrorSet typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsInMirrorSet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsInMirrorSet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsInMirrorSet").orElseThrow() }
+private val CGDisplayIsInMirrorSet_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsInMirrorSet").orElseThrow() }
 private val CGDisplayIsInMirrorSet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsInMirrorSet_ADDR, CGDisplayIsInMirrorSet_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3130,7 +3130,7 @@ fun CGDisplayIsInMirrorSet(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayIsAlwaysInMirrorSet typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsAlwaysInMirrorSet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsAlwaysInMirrorSet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsAlwaysInMirrorSet").orElseThrow() }
+private val CGDisplayIsAlwaysInMirrorSet_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsAlwaysInMirrorSet").orElseThrow() }
 private val CGDisplayIsAlwaysInMirrorSet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsAlwaysInMirrorSet_ADDR, CGDisplayIsAlwaysInMirrorSet_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3150,7 +3150,7 @@ fun CGDisplayIsAlwaysInMirrorSet(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayIsInHWMirrorSet typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsInHWMirrorSet_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsInHWMirrorSet_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsInHWMirrorSet").orElseThrow() }
+private val CGDisplayIsInHWMirrorSet_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsInHWMirrorSet").orElseThrow() }
 private val CGDisplayIsInHWMirrorSet_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsInHWMirrorSet_ADDR, CGDisplayIsInHWMirrorSet_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3170,7 +3170,7 @@ fun CGDisplayIsInHWMirrorSet(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayMirrorsDisplay typedef CGDirectDisplayID = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayMirrorsDisplay_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayMirrorsDisplay_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayMirrorsDisplay").orElseThrow() }
+private val CGDisplayMirrorsDisplay_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayMirrorsDisplay").orElseThrow() }
 private val CGDisplayMirrorsDisplay_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayMirrorsDisplay_ADDR, CGDisplayMirrorsDisplay_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3190,7 +3190,7 @@ fun CGDisplayMirrorsDisplay(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayUsesOpenGLAcceleration typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayUsesOpenGLAcceleration_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayUsesOpenGLAcceleration_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayUsesOpenGLAcceleration").orElseThrow() }
+private val CGDisplayUsesOpenGLAcceleration_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayUsesOpenGLAcceleration").orElseThrow() }
 private val CGDisplayUsesOpenGLAcceleration_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayUsesOpenGLAcceleration_ADDR, CGDisplayUsesOpenGLAcceleration_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3210,7 +3210,7 @@ fun CGDisplayUsesOpenGLAcceleration(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayIsStereo typedef boolean_t = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIsStereo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIsStereo_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIsStereo").orElseThrow() }
+private val CGDisplayIsStereo_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIsStereo").orElseThrow() }
 private val CGDisplayIsStereo_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIsStereo_ADDR, CGDisplayIsStereo_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -3230,7 +3230,7 @@ fun CGDisplayIsStereo(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayPrimaryDisplay typedef CGDirectDisplayID = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayPrimaryDisplay_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayPrimaryDisplay_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayPrimaryDisplay").orElseThrow() }
+private val CGDisplayPrimaryDisplay_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayPrimaryDisplay").orElseThrow() }
 private val CGDisplayPrimaryDisplay_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayPrimaryDisplay_ADDR, CGDisplayPrimaryDisplay_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3250,7 +3250,7 @@ fun CGDisplayPrimaryDisplay(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayUnitNumber typedef uint32_t = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayUnitNumber_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayUnitNumber_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayUnitNumber").orElseThrow() }
+private val CGDisplayUnitNumber_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayUnitNumber").orElseThrow() }
 private val CGDisplayUnitNumber_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayUnitNumber_ADDR, CGDisplayUnitNumber_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3270,7 +3270,7 @@ fun CGDisplayUnitNumber(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayVendorNumber typedef uint32_t = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayVendorNumber_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayVendorNumber_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayVendorNumber").orElseThrow() }
+private val CGDisplayVendorNumber_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayVendorNumber").orElseThrow() }
 private val CGDisplayVendorNumber_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayVendorNumber_ADDR, CGDisplayVendorNumber_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3290,7 +3290,7 @@ fun CGDisplayVendorNumber(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayModelNumber typedef uint32_t = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayModelNumber_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayModelNumber_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayModelNumber").orElseThrow() }
+private val CGDisplayModelNumber_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayModelNumber").orElseThrow() }
 private val CGDisplayModelNumber_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayModelNumber_ADDR, CGDisplayModelNumber_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3310,7 +3310,7 @@ fun CGDisplayModelNumber(arg0: Int): Int {
  * {@snippet lang=c : CGDisplaySerialNumber typedef uint32_t = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplaySerialNumber_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplaySerialNumber_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplaySerialNumber").orElseThrow() }
+private val CGDisplaySerialNumber_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplaySerialNumber").orElseThrow() }
 private val CGDisplaySerialNumber_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplaySerialNumber_ADDR, CGDisplaySerialNumber_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3330,7 +3330,7 @@ fun CGDisplaySerialNumber(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayIOServicePort typedef io_service_t = UNSIGNED = Int(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayIOServicePort_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGDisplayIOServicePort_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayIOServicePort").orElseThrow() }
+private val CGDisplayIOServicePort_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayIOServicePort").orElseThrow() }
 private val CGDisplayIOServicePort_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayIOServicePort_ADDR, CGDisplayIOServicePort_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -3350,7 +3350,7 @@ fun CGDisplayIOServicePort(arg0: Int): Int {
  * {@snippet lang=c : CGDisplayScreenSize typedef CGSize = Declared(CGSize)(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayScreenSize_DESC: FunctionDescriptor = FunctionDescriptor.of(CGSize.layout, ValueLayout.JAVA_INT)
-private val CGDisplayScreenSize_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayScreenSize").orElseThrow() }
+private val CGDisplayScreenSize_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayScreenSize").orElseThrow() }
 private val CGDisplayScreenSize_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayScreenSize_ADDR, CGDisplayScreenSize_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -3375,7 +3375,7 @@ fun CGDisplayScreenSizeTyped(allocator: SegmentAllocator, arg0: Int): CGSize {
  * {@snippet lang=c : CGDisplayRotation Double(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayRotation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT)
-private val CGDisplayRotation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayRotation").orElseThrow() }
+private val CGDisplayRotation_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayRotation").orElseThrow() }
 private val CGDisplayRotation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayRotation_ADDR, CGDisplayRotation_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3395,7 +3395,7 @@ fun CGDisplayRotation(arg0: Int): Double {
  * {@snippet lang=c : CGDisplayCopyColorSpace typedef CGColorSpaceRef = (Declared(CGColorSpace))*(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDisplayCopyColorSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDisplayCopyColorSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayCopyColorSpace").orElseThrow() }
+private val CGDisplayCopyColorSpace_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayCopyColorSpace").orElseThrow() }
 private val CGDisplayCopyColorSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayCopyColorSpace_ADDR, CGDisplayCopyColorSpace_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -3415,7 +3415,7 @@ fun CGDisplayCopyColorSpace(arg0: Int): MemorySegment {
  * {@snippet lang=c : CGConfigureDisplayMode typedef CGError = Declared(CGError)(typedef CGDisplayConfigRef = (Declared(_CGDisplayConfigRef))*,typedef CGDirectDisplayID = UNSIGNED = Int,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGConfigureDisplayMode_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGConfigureDisplayMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGConfigureDisplayMode").orElseThrow() }
+private val CGConfigureDisplayMode_ADDR: MemorySegment by lazy { LOOKUP.find("CGConfigureDisplayMode").orElseThrow() }
 private val CGConfigureDisplayMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGConfigureDisplayMode_ADDR, CGConfigureDisplayMode_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -3435,7 +3435,7 @@ fun CGConfigureDisplayMode(arg0: MemorySegment, arg1: Int, arg2: MemorySegment):
  * {@snippet lang=c : CGConfigureDisplayFadeEffect typedef CGError = Declared(CGError)(typedef CGDisplayConfigRef = (Declared(_CGDisplayConfigRef))*,typedef CGDisplayFadeInterval = Float,typedef CGDisplayFadeInterval = Float,Float,Float,Float)
  */
 private val CGConfigureDisplayFadeEffect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT)
-private val CGConfigureDisplayFadeEffect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGConfigureDisplayFadeEffect").orElseThrow() }
+private val CGConfigureDisplayFadeEffect_ADDR: MemorySegment by lazy { LOOKUP.find("CGConfigureDisplayFadeEffect").orElseThrow() }
 private val CGConfigureDisplayFadeEffect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGConfigureDisplayFadeEffect_ADDR, CGConfigureDisplayFadeEffect_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3455,7 +3455,7 @@ fun CGConfigureDisplayFadeEffect(arg0: MemorySegment, arg1: Float, arg2: Float, 
  * {@snippet lang=c : CGAcquireDisplayFadeReservation typedef CGError = Declared(CGError)(typedef CGDisplayReservationInterval = Float,(typedef CGDisplayFadeReservationToken = UNSIGNED = Int)*)
  */
 private val CGAcquireDisplayFadeReservation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS)
-private val CGAcquireDisplayFadeReservation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGAcquireDisplayFadeReservation").orElseThrow() }
+private val CGAcquireDisplayFadeReservation_ADDR: MemorySegment by lazy { LOOKUP.find("CGAcquireDisplayFadeReservation").orElseThrow() }
 private val CGAcquireDisplayFadeReservation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGAcquireDisplayFadeReservation_ADDR, CGAcquireDisplayFadeReservation_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3475,7 +3475,7 @@ fun CGAcquireDisplayFadeReservation(arg0: Float, arg1: MemorySegment): CGError {
  * {@snippet lang=c : CGReleaseDisplayFadeReservation typedef CGError = Declared(CGError)(typedef CGDisplayFadeReservationToken = UNSIGNED = Int)
  */
 private val CGReleaseDisplayFadeReservation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGReleaseDisplayFadeReservation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGReleaseDisplayFadeReservation").orElseThrow() }
+private val CGReleaseDisplayFadeReservation_ADDR: MemorySegment by lazy { LOOKUP.find("CGReleaseDisplayFadeReservation").orElseThrow() }
 private val CGReleaseDisplayFadeReservation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGReleaseDisplayFadeReservation_ADDR, CGReleaseDisplayFadeReservation_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3495,7 +3495,7 @@ fun CGReleaseDisplayFadeReservation(arg0: Int): CGError {
  * {@snippet lang=c : CGDisplayFade typedef CGError = Declared(CGError)(typedef CGDisplayFadeReservationToken = UNSIGNED = Int,typedef CGDisplayFadeInterval = Float,typedef CGDisplayBlendFraction = Float,typedef CGDisplayBlendFraction = Float,Float,Float,Float,typedef boolean_t = Int)
  */
 private val CGDisplayFade_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT)
-private val CGDisplayFade_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayFade").orElseThrow() }
+private val CGDisplayFade_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayFade").orElseThrow() }
 private val CGDisplayFade_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayFade_ADDR, CGDisplayFade_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1)
@@ -3515,7 +3515,7 @@ fun CGDisplayFade(arg0: Int, arg1: Float, arg2: Float, arg3: Float, arg4: Float,
  * {@snippet lang=c : CGDisplayFadeOperationInProgress typedef boolean_t = Int()
  */
 private val CGDisplayFadeOperationInProgress_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
-private val CGDisplayFadeOperationInProgress_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayFadeOperationInProgress").orElseThrow() }
+private val CGDisplayFadeOperationInProgress_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayFadeOperationInProgress").orElseThrow() }
 private val CGDisplayFadeOperationInProgress_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayFadeOperationInProgress_ADDR, CGDisplayFadeOperationInProgress_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 2, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -3535,7 +3535,7 @@ fun CGDisplayFadeOperationInProgress(): Int {
  * {@snippet lang=c : CGDisplayStreamUpdateGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CGDisplayStreamUpdateGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CGDisplayStreamUpdateGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamUpdateGetTypeID").orElseThrow() }
+private val CGDisplayStreamUpdateGetTypeID_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamUpdateGetTypeID").orElseThrow() }
 private val CGDisplayStreamUpdateGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamUpdateGetTypeID_ADDR, CGDisplayStreamUpdateGetTypeID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3555,7 +3555,7 @@ fun CGDisplayStreamUpdateGetTypeID(): Long {
  * {@snippet lang=c : CGDisplayStreamUpdateGetRects (typedef CGRect = Declared(CGRect))*(typedef CGDisplayStreamUpdateRef = (Declared(CGDisplayStreamUpdate))*,typedef CGDisplayStreamUpdateRectType = Declared(CGDisplayStreamUpdateRectType),(typedef size_t = UNSIGNED = Long)*)
  */
 private val CGDisplayStreamUpdateGetRects_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplayStreamUpdateGetRects_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamUpdateGetRects").orElseThrow() }
+private val CGDisplayStreamUpdateGetRects_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamUpdateGetRects").orElseThrow() }
 private val CGDisplayStreamUpdateGetRects_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamUpdateGetRects_ADDR, CGDisplayStreamUpdateGetRects_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3575,7 +3575,7 @@ fun CGDisplayStreamUpdateGetRects(arg0: MemorySegment, arg1: CGDisplayStreamUpda
  * {@snippet lang=c : CGDisplayStreamUpdateCreateMergedUpdate typedef CGDisplayStreamUpdateRef = (Declared(CGDisplayStreamUpdate))*(typedef CGDisplayStreamUpdateRef = (Declared(CGDisplayStreamUpdate))*,typedef CGDisplayStreamUpdateRef = (Declared(CGDisplayStreamUpdate))*)
  */
 private val CGDisplayStreamUpdateCreateMergedUpdate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayStreamUpdateCreateMergedUpdate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamUpdateCreateMergedUpdate").orElseThrow() }
+private val CGDisplayStreamUpdateCreateMergedUpdate_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamUpdateCreateMergedUpdate").orElseThrow() }
 private val CGDisplayStreamUpdateCreateMergedUpdate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamUpdateCreateMergedUpdate_ADDR, CGDisplayStreamUpdateCreateMergedUpdate_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3595,7 +3595,7 @@ fun CGDisplayStreamUpdateCreateMergedUpdate(arg0: MemorySegment, arg1: MemorySeg
  * {@snippet lang=c : CGDisplayStreamUpdateGetMovedRectsDelta Void(typedef CGDisplayStreamUpdateRef = (Declared(CGDisplayStreamUpdate))*,(typedef CGFloat = Double)*,(typedef CGFloat = Double)*)
  */
 private val CGDisplayStreamUpdateGetMovedRectsDelta_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayStreamUpdateGetMovedRectsDelta_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamUpdateGetMovedRectsDelta").orElseThrow() }
+private val CGDisplayStreamUpdateGetMovedRectsDelta_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamUpdateGetMovedRectsDelta").orElseThrow() }
 private val CGDisplayStreamUpdateGetMovedRectsDelta_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamUpdateGetMovedRectsDelta_ADDR, CGDisplayStreamUpdateGetMovedRectsDelta_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3615,7 +3615,7 @@ fun CGDisplayStreamUpdateGetMovedRectsDelta(arg0: MemorySegment, arg1: MemorySeg
  * {@snippet lang=c : CGDisplayStreamUpdateGetDropCount typedef size_t = UNSIGNED = Long(typedef CGDisplayStreamUpdateRef = (Declared(CGDisplayStreamUpdate))*)
  */
 private val CGDisplayStreamUpdateGetDropCount_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGDisplayStreamUpdateGetDropCount_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamUpdateGetDropCount").orElseThrow() }
+private val CGDisplayStreamUpdateGetDropCount_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamUpdateGetDropCount").orElseThrow() }
 private val CGDisplayStreamUpdateGetDropCount_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamUpdateGetDropCount_ADDR, CGDisplayStreamUpdateGetDropCount_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3635,7 +3635,7 @@ fun CGDisplayStreamUpdateGetDropCount(arg0: MemorySegment): Long {
  * {@snippet lang=c : kCGDisplayStreamSourceRect typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamSourceRect_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamSourceRect_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamSourceRect").orElseThrow().reinterpret(kCGDisplayStreamSourceRect_LAYOUT.byteSize()) }
+private val kCGDisplayStreamSourceRect_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamSourceRect").orElseThrow().reinterpret(kCGDisplayStreamSourceRect_LAYOUT.byteSize()) }
 private val kCGDisplayStreamSourceRect_VH: VarHandle by lazy { kCGDisplayStreamSourceRect_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3647,7 +3647,7 @@ var kCGDisplayStreamSourceRect: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamDestinationRect typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamDestinationRect_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamDestinationRect_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamDestinationRect").orElseThrow().reinterpret(kCGDisplayStreamDestinationRect_LAYOUT.byteSize()) }
+private val kCGDisplayStreamDestinationRect_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamDestinationRect").orElseThrow().reinterpret(kCGDisplayStreamDestinationRect_LAYOUT.byteSize()) }
 private val kCGDisplayStreamDestinationRect_VH: VarHandle by lazy { kCGDisplayStreamDestinationRect_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3659,7 +3659,7 @@ var kCGDisplayStreamDestinationRect: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamPreserveAspectRatio typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamPreserveAspectRatio_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamPreserveAspectRatio_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamPreserveAspectRatio").orElseThrow().reinterpret(kCGDisplayStreamPreserveAspectRatio_LAYOUT.byteSize()) }
+private val kCGDisplayStreamPreserveAspectRatio_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamPreserveAspectRatio").orElseThrow().reinterpret(kCGDisplayStreamPreserveAspectRatio_LAYOUT.byteSize()) }
 private val kCGDisplayStreamPreserveAspectRatio_VH: VarHandle by lazy { kCGDisplayStreamPreserveAspectRatio_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3671,7 +3671,7 @@ var kCGDisplayStreamPreserveAspectRatio: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamColorSpace typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamColorSpace_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamColorSpace_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamColorSpace").orElseThrow().reinterpret(kCGDisplayStreamColorSpace_LAYOUT.byteSize()) }
+private val kCGDisplayStreamColorSpace_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamColorSpace").orElseThrow().reinterpret(kCGDisplayStreamColorSpace_LAYOUT.byteSize()) }
 private val kCGDisplayStreamColorSpace_VH: VarHandle by lazy { kCGDisplayStreamColorSpace_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3683,7 +3683,7 @@ var kCGDisplayStreamColorSpace: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamMinimumFrameTime typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamMinimumFrameTime_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamMinimumFrameTime_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamMinimumFrameTime").orElseThrow().reinterpret(kCGDisplayStreamMinimumFrameTime_LAYOUT.byteSize()) }
+private val kCGDisplayStreamMinimumFrameTime_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamMinimumFrameTime").orElseThrow().reinterpret(kCGDisplayStreamMinimumFrameTime_LAYOUT.byteSize()) }
 private val kCGDisplayStreamMinimumFrameTime_VH: VarHandle by lazy { kCGDisplayStreamMinimumFrameTime_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3695,7 +3695,7 @@ var kCGDisplayStreamMinimumFrameTime: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamShowCursor typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamShowCursor_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamShowCursor_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamShowCursor").orElseThrow().reinterpret(kCGDisplayStreamShowCursor_LAYOUT.byteSize()) }
+private val kCGDisplayStreamShowCursor_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamShowCursor").orElseThrow().reinterpret(kCGDisplayStreamShowCursor_LAYOUT.byteSize()) }
 private val kCGDisplayStreamShowCursor_VH: VarHandle by lazy { kCGDisplayStreamShowCursor_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3707,7 +3707,7 @@ var kCGDisplayStreamShowCursor: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamQueueDepth typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamQueueDepth_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamQueueDepth_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamQueueDepth").orElseThrow().reinterpret(kCGDisplayStreamQueueDepth_LAYOUT.byteSize()) }
+private val kCGDisplayStreamQueueDepth_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamQueueDepth").orElseThrow().reinterpret(kCGDisplayStreamQueueDepth_LAYOUT.byteSize()) }
 private val kCGDisplayStreamQueueDepth_VH: VarHandle by lazy { kCGDisplayStreamQueueDepth_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3719,7 +3719,7 @@ var kCGDisplayStreamQueueDepth: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamYCbCrMatrix typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamYCbCrMatrix_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamYCbCrMatrix_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_LAYOUT.byteSize()) }
+private val kCGDisplayStreamYCbCrMatrix_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamYCbCrMatrix").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_LAYOUT.byteSize()) }
 private val kCGDisplayStreamYCbCrMatrix_VH: VarHandle by lazy { kCGDisplayStreamYCbCrMatrix_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3731,7 +3731,7 @@ var kCGDisplayStreamYCbCrMatrix: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamYCbCrMatrix_ITU_R_709_2 typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix_ITU_R_709_2").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_LAYOUT.byteSize()) }
+private val kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamYCbCrMatrix_ITU_R_709_2").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_LAYOUT.byteSize()) }
 private val kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_VH: VarHandle by lazy { kCGDisplayStreamYCbCrMatrix_ITU_R_709_2_LAYOUT.varHandle() }
 
 var kCGDisplayStreamYCbCrMatrix_ITU_R_709_2: MemorySegment
@@ -3742,7 +3742,7 @@ var kCGDisplayStreamYCbCrMatrix_ITU_R_709_2: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamYCbCrMatrix_ITU_R_601_4 typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix_ITU_R_601_4").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_LAYOUT.byteSize()) }
+private val kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamYCbCrMatrix_ITU_R_601_4").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_LAYOUT.byteSize()) }
 private val kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_VH: VarHandle by lazy { kCGDisplayStreamYCbCrMatrix_ITU_R_601_4_LAYOUT.varHandle() }
 
 var kCGDisplayStreamYCbCrMatrix_ITU_R_601_4: MemorySegment
@@ -3753,7 +3753,7 @@ var kCGDisplayStreamYCbCrMatrix_ITU_R_601_4: MemorySegment
  * {@snippet lang=c : kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995 typedef const CFStringRef = (Declared(__CFString))*
  */
 private val kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_LAYOUT.byteSize()) }
+private val kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_SEGMENT: MemorySegment by lazy { LOOKUP.find("kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995").orElseThrow().reinterpret(kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_LAYOUT.byteSize()) }
 private val kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_VH: VarHandle by lazy { kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995_LAYOUT.varHandle() }
 
 var kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995: MemorySegment
@@ -3764,7 +3764,7 @@ var kCGDisplayStreamYCbCrMatrix_SMPTE_240M_1995: MemorySegment
  * {@snippet lang=c : CGDisplayStreamGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CGDisplayStreamGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CGDisplayStreamGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamGetTypeID").orElseThrow() }
+private val CGDisplayStreamGetTypeID_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamGetTypeID").orElseThrow() }
 private val CGDisplayStreamGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamGetTypeID_ADDR, CGDisplayStreamGetTypeID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3784,7 +3784,7 @@ fun CGDisplayStreamGetTypeID(): Long {
  * {@snippet lang=c : CGDisplayStreamCreate typedef CGDisplayStreamRef = (Declared(CGDisplayStream))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef int32_t = Int,typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef CGDisplayStreamFrameAvailableHandler = (Void)*)
  */
 private val CGDisplayStreamCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayStreamCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamCreate").orElseThrow() }
+private val CGDisplayStreamCreate_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamCreate").orElseThrow() }
 private val CGDisplayStreamCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamCreate_ADDR, CGDisplayStreamCreate_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3804,7 +3804,7 @@ fun CGDisplayStreamCreate(arg0: Int, arg1: Long, arg2: Long, arg3: Int, arg4: Me
  * {@snippet lang=c : CGDisplayStreamCreateWithDispatchQueue typedef CGDisplayStreamRef = (Declared(CGDisplayStream))*(typedef CGDirectDisplayID = UNSIGNED = Int,typedef size_t = UNSIGNED = Long,typedef size_t = UNSIGNED = Long,typedef int32_t = Int,typedef CFDictionaryRef = (Declared(__CFDictionary))*,typedef dispatch_queue_t = (Void)*,typedef CGDisplayStreamFrameAvailableHandler = (Void)*)
  */
 private val CGDisplayStreamCreateWithDispatchQueue_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayStreamCreateWithDispatchQueue_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamCreateWithDispatchQueue").orElseThrow() }
+private val CGDisplayStreamCreateWithDispatchQueue_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamCreateWithDispatchQueue").orElseThrow() }
 private val CGDisplayStreamCreateWithDispatchQueue_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamCreateWithDispatchQueue_ADDR, CGDisplayStreamCreateWithDispatchQueue_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3824,7 +3824,7 @@ fun CGDisplayStreamCreateWithDispatchQueue(arg0: Int, arg1: Long, arg2: Long, ar
  * {@snippet lang=c : CGDisplayStreamStart typedef CGError = Declared(CGError)(typedef CGDisplayStreamRef = (Declared(CGDisplayStream))*)
  */
 private val CGDisplayStreamStart_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplayStreamStart_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamStart").orElseThrow() }
+private val CGDisplayStreamStart_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamStart").orElseThrow() }
 private val CGDisplayStreamStart_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamStart_ADDR, CGDisplayStreamStart_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3844,7 +3844,7 @@ fun CGDisplayStreamStart(arg0: MemorySegment): CGError {
  * {@snippet lang=c : CGDisplayStreamStop typedef CGError = Declared(CGError)(typedef CGDisplayStreamRef = (Declared(CGDisplayStream))*)
  */
 private val CGDisplayStreamStop_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGDisplayStreamStop_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamStop").orElseThrow() }
+private val CGDisplayStreamStop_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamStop").orElseThrow() }
 private val CGDisplayStreamStop_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamStop_ADDR, CGDisplayStreamStop_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3864,7 +3864,7 @@ fun CGDisplayStreamStop(arg0: MemorySegment): CGError {
  * {@snippet lang=c : CGDisplayStreamGetRunLoopSource typedef CFRunLoopSourceRef = (Declared(__CFRunLoopSource))*(typedef CGDisplayStreamRef = (Declared(CGDisplayStream))*)
  */
 private val CGDisplayStreamGetRunLoopSource_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGDisplayStreamGetRunLoopSource_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDisplayStreamGetRunLoopSource").orElseThrow() }
+private val CGDisplayStreamGetRunLoopSource_ADDR: MemorySegment by lazy { LOOKUP.find("CGDisplayStreamGetRunLoopSource").orElseThrow() }
 private val CGDisplayStreamGetRunLoopSource_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDisplayStreamGetRunLoopSource_ADDR, CGDisplayStreamGetRunLoopSource_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1, deprecated = true, deprecatedMajor = 14, deprecatedMinor = 0, deprecatedSubminor = -1, obsoletedMajor = 15, obsoletedMinor = 0, obsoletedSubminor = -1, message = "Please use ScreenCaptureKit instead.")
@@ -3884,7 +3884,7 @@ fun CGDisplayStreamGetRunLoopSource(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGRegisterScreenRefreshCallback typedef CGError = Declared(CGError)(typedef CGScreenRefreshCallback = (Void(UNSIGNED = Int,(Declared(CGRect))*,(Void)*))*,(Void)*)
  */
 private val CGRegisterScreenRefreshCallback_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGRegisterScreenRefreshCallback_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRegisterScreenRefreshCallback").orElseThrow() }
+private val CGRegisterScreenRefreshCallback_ADDR: MemorySegment by lazy { LOOKUP.find("CGRegisterScreenRefreshCallback").orElseThrow() }
 private val CGRegisterScreenRefreshCallback_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRegisterScreenRefreshCallback_ADDR, CGRegisterScreenRefreshCallback_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "No longer supported")
@@ -3904,7 +3904,7 @@ fun CGRegisterScreenRefreshCallback(arg0: MemorySegment, arg1: MemorySegment): C
  * {@snippet lang=c : CGUnregisterScreenRefreshCallback Void(typedef CGScreenRefreshCallback = (Void(UNSIGNED = Int,(Declared(CGRect))*,(Void)*))*,(Void)*)
  */
 private val CGUnregisterScreenRefreshCallback_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGUnregisterScreenRefreshCallback_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGUnregisterScreenRefreshCallback").orElseThrow() }
+private val CGUnregisterScreenRefreshCallback_ADDR: MemorySegment by lazy { LOOKUP.find("CGUnregisterScreenRefreshCallback").orElseThrow() }
 private val CGUnregisterScreenRefreshCallback_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGUnregisterScreenRefreshCallback_ADDR, CGUnregisterScreenRefreshCallback_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "No longer supported")
@@ -3924,7 +3924,7 @@ fun CGUnregisterScreenRefreshCallback(arg0: MemorySegment, arg1: MemorySegment):
  * {@snippet lang=c : CGWaitForScreenRefreshRects typedef CGError = Declared(CGError)(((typedef CGRect = Declared(CGRect))*)*,(typedef uint32_t = UNSIGNED = Int)*)
  */
 private val CGWaitForScreenRefreshRects_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGWaitForScreenRefreshRects_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWaitForScreenRefreshRects").orElseThrow() }
+private val CGWaitForScreenRefreshRects_ADDR: MemorySegment by lazy { LOOKUP.find("CGWaitForScreenRefreshRects").orElseThrow() }
 private val CGWaitForScreenRefreshRects_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWaitForScreenRefreshRects_ADDR, CGWaitForScreenRefreshRects_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "No longer supported")
@@ -3944,7 +3944,7 @@ fun CGWaitForScreenRefreshRects(arg0: MemorySegment, arg1: MemorySegment): CGErr
  * {@snippet lang=c : CGScreenRegisterMoveCallback typedef CGError = Declared(CGError)(typedef CGScreenUpdateMoveCallback = (Void(Declared(CGScreenUpdateMoveDelta),UNSIGNED = Long,(Declared(CGRect))*,(Void)*))*,(Void)*)
  */
 private val CGScreenRegisterMoveCallback_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGScreenRegisterMoveCallback_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGScreenRegisterMoveCallback").orElseThrow() }
+private val CGScreenRegisterMoveCallback_ADDR: MemorySegment by lazy { LOOKUP.find("CGScreenRegisterMoveCallback").orElseThrow() }
 private val CGScreenRegisterMoveCallback_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGScreenRegisterMoveCallback_ADDR, CGScreenRegisterMoveCallback_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "No longer supported")
@@ -3964,7 +3964,7 @@ fun CGScreenRegisterMoveCallback(arg0: MemorySegment, arg1: MemorySegment): CGEr
  * {@snippet lang=c : CGScreenUnregisterMoveCallback Void(typedef CGScreenUpdateMoveCallback = (Void(Declared(CGScreenUpdateMoveDelta),UNSIGNED = Long,(Declared(CGRect))*,(Void)*))*,(Void)*)
  */
 private val CGScreenUnregisterMoveCallback_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGScreenUnregisterMoveCallback_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGScreenUnregisterMoveCallback").orElseThrow() }
+private val CGScreenUnregisterMoveCallback_ADDR: MemorySegment by lazy { LOOKUP.find("CGScreenUnregisterMoveCallback").orElseThrow() }
 private val CGScreenUnregisterMoveCallback_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGScreenUnregisterMoveCallback_ADDR, CGScreenUnregisterMoveCallback_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "No longer supported")
@@ -3984,7 +3984,7 @@ fun CGScreenUnregisterMoveCallback(arg0: MemorySegment, arg1: MemorySegment): Un
  * {@snippet lang=c : CGWaitForScreenUpdateRects typedef CGError = Declared(CGError)(typedef CGScreenUpdateOperation = Declared(CGScreenUpdateOperation),(typedef CGScreenUpdateOperation = Declared(CGScreenUpdateOperation))*,((typedef CGRect = Declared(CGRect))*)*,(typedef size_t = UNSIGNED = Long)*,(typedef CGScreenUpdateMoveDelta = Declared(CGScreenUpdateMoveDelta))*)
  */
 private val CGWaitForScreenUpdateRects_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGWaitForScreenUpdateRects_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWaitForScreenUpdateRects").orElseThrow() }
+private val CGWaitForScreenUpdateRects_ADDR: MemorySegment by lazy { LOOKUP.find("CGWaitForScreenUpdateRects").orElseThrow() }
 private val CGWaitForScreenUpdateRects_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWaitForScreenUpdateRects_ADDR, CGWaitForScreenUpdateRects_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "No longer supported")
@@ -4004,7 +4004,7 @@ fun CGWaitForScreenUpdateRects(arg0: CGScreenUpdateOperation, arg1: MemorySegmen
  * {@snippet lang=c : CGReleaseScreenRefreshRects Void((typedef CGRect = Declared(CGRect))*)
  */
 private val CGReleaseScreenRefreshRects_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGReleaseScreenRefreshRects_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGReleaseScreenRefreshRects").orElseThrow() }
+private val CGReleaseScreenRefreshRects_ADDR: MemorySegment by lazy { LOOKUP.find("CGReleaseScreenRefreshRects").orElseThrow() }
 private val CGReleaseScreenRefreshRects_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGReleaseScreenRefreshRects_ADDR, CGReleaseScreenRefreshRects_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "No longer supported")
@@ -4024,7 +4024,7 @@ fun CGReleaseScreenRefreshRects(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGCursorIsVisible typedef boolean_t = Int()
  */
 private val CGCursorIsVisible_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
-private val CGCursorIsVisible_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGCursorIsVisible").orElseThrow() }
+private val CGCursorIsVisible_ADDR: MemorySegment by lazy { LOOKUP.find("CGCursorIsVisible").orElseThrow() }
 private val CGCursorIsVisible_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGCursorIsVisible_ADDR, CGCursorIsVisible_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -4044,7 +4044,7 @@ fun CGCursorIsVisible(): Int {
  * {@snippet lang=c : CGCursorIsDrawnInFramebuffer typedef boolean_t = Int()
  */
 private val CGCursorIsDrawnInFramebuffer_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
-private val CGCursorIsDrawnInFramebuffer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGCursorIsDrawnInFramebuffer").orElseThrow() }
+private val CGCursorIsDrawnInFramebuffer_ADDR: MemorySegment by lazy { LOOKUP.find("CGCursorIsDrawnInFramebuffer").orElseThrow() }
 private val CGCursorIsDrawnInFramebuffer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGCursorIsDrawnInFramebuffer_ADDR, CGCursorIsDrawnInFramebuffer_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 9, deprecatedSubminor = -1, message = "No longer supported")
@@ -4064,7 +4064,7 @@ fun CGCursorIsDrawnInFramebuffer(): Int {
  * {@snippet lang=c : CGWarpMouseCursorPosition typedef CGError = Declared(CGError)(typedef CGPoint = Declared(CGPoint))
  */
 private val CGWarpMouseCursorPosition_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, CGPoint.layout)
-private val CGWarpMouseCursorPosition_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWarpMouseCursorPosition").orElseThrow() }
+private val CGWarpMouseCursorPosition_ADDR: MemorySegment by lazy { LOOKUP.find("CGWarpMouseCursorPosition").orElseThrow() }
 private val CGWarpMouseCursorPosition_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWarpMouseCursorPosition_ADDR, CGWarpMouseCursorPosition_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -4089,7 +4089,7 @@ fun CGWarpMouseCursorPosition(arg0: CGPoint): CGError {
  * {@snippet lang=c : CGAssociateMouseAndMouseCursorPosition typedef CGError = Declared(CGError)(typedef boolean_t = Int)
  */
 private val CGAssociateMouseAndMouseCursorPosition_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGAssociateMouseAndMouseCursorPosition_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGAssociateMouseAndMouseCursorPosition").orElseThrow() }
+private val CGAssociateMouseAndMouseCursorPosition_ADDR: MemorySegment by lazy { LOOKUP.find("CGAssociateMouseAndMouseCursorPosition").orElseThrow() }
 private val CGAssociateMouseAndMouseCursorPosition_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGAssociateMouseAndMouseCursorPosition_ADDR, CGAssociateMouseAndMouseCursorPosition_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
@@ -4109,7 +4109,7 @@ fun CGAssociateMouseAndMouseCursorPosition(arg0: Int): CGError {
  * {@snippet lang=c : CGWindowServerCreateServerPort typedef CFMachPortRef = (Declared(__CFMachPort))*()
  */
 private val CGWindowServerCreateServerPort_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CGWindowServerCreateServerPort_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWindowServerCreateServerPort").orElseThrow() }
+private val CGWindowServerCreateServerPort_ADDR: MemorySegment by lazy { LOOKUP.find("CGWindowServerCreateServerPort").orElseThrow() }
 private val CGWindowServerCreateServerPort_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWindowServerCreateServerPort_ADDR, CGWindowServerCreateServerPort_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
@@ -4129,7 +4129,7 @@ fun CGWindowServerCreateServerPort(): MemorySegment {
  * {@snippet lang=c : CGEnableEventStateCombining typedef CGError = Declared(CGError)(typedef boolean_t = Int)
  */
 private val CGEnableEventStateCombining_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGEnableEventStateCombining_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEnableEventStateCombining").orElseThrow() }
+private val CGEnableEventStateCombining_ADDR: MemorySegment by lazy { LOOKUP.find("CGEnableEventStateCombining").orElseThrow() }
 private val CGEnableEventStateCombining_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEnableEventStateCombining_ADDR, CGEnableEventStateCombining_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -4149,7 +4149,7 @@ fun CGEnableEventStateCombining(arg0: Int): CGError {
  * {@snippet lang=c : CGInhibitLocalEvents typedef CGError = Declared(CGError)(typedef boolean_t = Int)
  */
 private val CGInhibitLocalEvents_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGInhibitLocalEvents_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGInhibitLocalEvents").orElseThrow() }
+private val CGInhibitLocalEvents_ADDR: MemorySegment by lazy { LOOKUP.find("CGInhibitLocalEvents").orElseThrow() }
 private val CGInhibitLocalEvents_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGInhibitLocalEvents_ADDR, CGInhibitLocalEvents_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -4169,7 +4169,7 @@ fun CGInhibitLocalEvents(arg0: Int): CGError {
  * {@snippet lang=c : CGPostMouseEvent typedef CGError = Declared(CGError)(typedef CGPoint = Declared(CGPoint),typedef boolean_t = Int,typedef CGButtonCount = UNSIGNED = Int,typedef boolean_t = Int)
  */
 private val CGPostMouseEvent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, CGPoint.layout, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGPostMouseEvent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPostMouseEvent").orElseThrow() }
+private val CGPostMouseEvent_ADDR: MemorySegment by lazy { LOOKUP.find("CGPostMouseEvent").orElseThrow() }
 private val CGPostMouseEvent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPostMouseEvent_ADDR, CGPostMouseEvent_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -4189,7 +4189,7 @@ fun CGPostMouseEvent(arg0: MemorySegment, arg1: Int, arg2: Int, arg3: Int): CGEr
  * {@snippet lang=c : CGPostScrollWheelEvent typedef CGError = Declared(CGError)(typedef CGWheelCount = UNSIGNED = Int,typedef int32_t = Int)
  */
 private val CGPostScrollWheelEvent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGPostScrollWheelEvent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPostScrollWheelEvent").orElseThrow() }
+private val CGPostScrollWheelEvent_ADDR: MemorySegment by lazy { LOOKUP.find("CGPostScrollWheelEvent").orElseThrow() }
 private val CGPostScrollWheelEvent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPostScrollWheelEvent_ADDR, CGPostScrollWheelEvent_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -4209,7 +4209,7 @@ fun CGPostScrollWheelEvent(arg0: Int, arg1: Int): CGError {
  * {@snippet lang=c : CGPostKeyboardEvent typedef CGError = Declared(CGError)(typedef CGCharCode = UNSIGNED = Short,typedef CGKeyCode = UNSIGNED = Short,typedef boolean_t = Int)
  */
 private val CGPostKeyboardEvent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_INT)
-private val CGPostKeyboardEvent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPostKeyboardEvent").orElseThrow() }
+private val CGPostKeyboardEvent_ADDR: MemorySegment by lazy { LOOKUP.find("CGPostKeyboardEvent").orElseThrow() }
 private val CGPostKeyboardEvent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPostKeyboardEvent_ADDR, CGPostKeyboardEvent_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -4229,7 +4229,7 @@ fun CGPostKeyboardEvent(arg0: Short, arg1: Short, arg2: Int): CGError {
  * {@snippet lang=c : CGSetLocalEventsFilterDuringSuppressionState typedef CGError = Declared(CGError)(typedef CGEventFilterMask = Declared(CGEventFilterMask),typedef CGEventSuppressionState = Declared(CGEventSuppressionState))
  */
 private val CGSetLocalEventsFilterDuringSuppressionState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGSetLocalEventsFilterDuringSuppressionState_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGSetLocalEventsFilterDuringSuppressionState").orElseThrow() }
+private val CGSetLocalEventsFilterDuringSuppressionState_ADDR: MemorySegment by lazy { LOOKUP.find("CGSetLocalEventsFilterDuringSuppressionState").orElseThrow() }
 private val CGSetLocalEventsFilterDuringSuppressionState_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGSetLocalEventsFilterDuringSuppressionState_ADDR, CGSetLocalEventsFilterDuringSuppressionState_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -4249,7 +4249,7 @@ fun CGSetLocalEventsFilterDuringSuppressionState(arg0: CGEventFilterMask, arg1: 
  * {@snippet lang=c : CGSetLocalEventsSuppressionInterval typedef CGError = Declared(CGError)(typedef CFTimeInterval = Double)
  */
 private val CGSetLocalEventsSuppressionInterval_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE)
-private val CGSetLocalEventsSuppressionInterval_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGSetLocalEventsSuppressionInterval").orElseThrow() }
+private val CGSetLocalEventsSuppressionInterval_ADDR: MemorySegment by lazy { LOOKUP.find("CGSetLocalEventsSuppressionInterval").orElseThrow() }
 private val CGSetLocalEventsSuppressionInterval_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGSetLocalEventsSuppressionInterval_ADDR, CGSetLocalEventsSuppressionInterval_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 6, deprecatedSubminor = -1, message = "No longer supported")
@@ -4269,7 +4269,7 @@ fun CGSetLocalEventsSuppressionInterval(arg0: Double): CGError {
  * {@snippet lang=c : CGWindowServerCFMachPort typedef CFMachPortRef = (Declared(__CFMachPort))*()
  */
 private val CGWindowServerCFMachPort_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CGWindowServerCFMachPort_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGWindowServerCFMachPort").orElseThrow() }
+private val CGWindowServerCFMachPort_ADDR: MemorySegment by lazy { LOOKUP.find("CGWindowServerCFMachPort").orElseThrow() }
 private val CGWindowServerCFMachPort_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGWindowServerCFMachPort_ADDR, CGWindowServerCFMachPort_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 1, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 8, deprecatedSubminor = -1, message = "No longer supported")
@@ -4289,7 +4289,7 @@ fun CGWindowServerCFMachPort(): MemorySegment {
  * {@snippet lang=c : CGEventGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CGEventGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CGEventGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventGetTypeID").orElseThrow() }
+private val CGEventGetTypeID_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventGetTypeID").orElseThrow() }
 private val CGEventGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventGetTypeID_ADDR, CGEventGetTypeID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4309,7 +4309,7 @@ fun CGEventGetTypeID(): Long {
  * {@snippet lang=c : CGEventCreate typedef CGEventRef = (Declared(__CGEvent))*(typedef CGEventSourceRef = (Declared(__CGEventSource))*)
  */
 private val CGEventCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventCreate").orElseThrow() }
+private val CGEventCreate_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventCreate").orElseThrow() }
 private val CGEventCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventCreate_ADDR, CGEventCreate_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4329,7 +4329,7 @@ fun CGEventCreate(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGEventCreateData typedef CFDataRef = (Declared(__CFData))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventCreateData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventCreateData_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventCreateData").orElseThrow() }
+private val CGEventCreateData_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventCreateData").orElseThrow() }
 private val CGEventCreateData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventCreateData_ADDR, CGEventCreateData_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4349,7 +4349,7 @@ fun CGEventCreateData(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGEventCreateFromData typedef CGEventRef = (Declared(__CGEvent))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef CFDataRef = (Declared(__CFData))*)
  */
 private val CGEventCreateFromData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventCreateFromData_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventCreateFromData").orElseThrow() }
+private val CGEventCreateFromData_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventCreateFromData").orElseThrow() }
 private val CGEventCreateFromData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventCreateFromData_ADDR, CGEventCreateFromData_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4369,7 +4369,7 @@ fun CGEventCreateFromData(arg0: MemorySegment, arg1: MemorySegment): MemorySegme
  * {@snippet lang=c : CGEventCreateMouseEvent typedef CGEventRef = (Declared(__CGEvent))*(typedef CGEventSourceRef = (Declared(__CGEventSource))*,typedef CGEventType = Declared(CGEventType),typedef CGPoint = Declared(CGPoint),typedef CGMouseButton = Declared(CGMouseButton))
  */
 private val CGEventCreateMouseEvent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, CGPoint.layout, ValueLayout.JAVA_INT)
-private val CGEventCreateMouseEvent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventCreateMouseEvent").orElseThrow() }
+private val CGEventCreateMouseEvent_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventCreateMouseEvent").orElseThrow() }
 private val CGEventCreateMouseEvent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventCreateMouseEvent_ADDR, CGEventCreateMouseEvent_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4394,7 +4394,7 @@ fun CGEventCreateMouseEvent(arg0: MemorySegment, arg1: CGEventType, arg2: CGPoin
  * {@snippet lang=c : CGEventCreateKeyboardEvent typedef CGEventRef = (Declared(__CGEvent))*(typedef CGEventSourceRef = (Declared(__CGEventSource))*,typedef CGKeyCode = UNSIGNED = Short,Bool)
  */
 private val CGEventCreateKeyboardEvent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_BOOLEAN)
-private val CGEventCreateKeyboardEvent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventCreateKeyboardEvent").orElseThrow() }
+private val CGEventCreateKeyboardEvent_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventCreateKeyboardEvent").orElseThrow() }
 private val CGEventCreateKeyboardEvent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventCreateKeyboardEvent_ADDR, CGEventCreateKeyboardEvent_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4414,7 +4414,7 @@ fun CGEventCreateKeyboardEvent(arg0: MemorySegment, arg1: Short, arg2: Boolean):
  * {@snippet lang=c : CGEventCreateScrollWheelEvent typedef CGEventRef = (Declared(__CGEvent))*(typedef CGEventSourceRef = (Declared(__CGEventSource))*,typedef CGScrollEventUnit = Declared(CGScrollEventUnit),typedef uint32_t = UNSIGNED = Int,typedef int32_t = Int)
  */
 private val CGEventCreateScrollWheelEvent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGEventCreateScrollWheelEvent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventCreateScrollWheelEvent").orElseThrow() }
+private val CGEventCreateScrollWheelEvent_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventCreateScrollWheelEvent").orElseThrow() }
 private val CGEventCreateScrollWheelEvent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventCreateScrollWheelEvent_ADDR, CGEventCreateScrollWheelEvent_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4434,7 +4434,7 @@ fun CGEventCreateScrollWheelEvent(arg0: MemorySegment, arg1: CGScrollEventUnit, 
  * {@snippet lang=c : CGEventCreateScrollWheelEvent2 typedef CGEventRef = (Declared(__CGEvent))*(typedef CGEventSourceRef = (Declared(__CGEventSource))*,typedef CGScrollEventUnit = Declared(CGScrollEventUnit),typedef uint32_t = UNSIGNED = Int,typedef int32_t = Int,typedef int32_t = Int,typedef int32_t = Int)
  */
 private val CGEventCreateScrollWheelEvent2_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGEventCreateScrollWheelEvent2_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventCreateScrollWheelEvent2").orElseThrow() }
+private val CGEventCreateScrollWheelEvent2_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventCreateScrollWheelEvent2").orElseThrow() }
 private val CGEventCreateScrollWheelEvent2_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventCreateScrollWheelEvent2_ADDR, CGEventCreateScrollWheelEvent2_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 13, introducedSubminor = -1)
@@ -4454,7 +4454,7 @@ fun CGEventCreateScrollWheelEvent2(arg0: MemorySegment, arg1: CGScrollEventUnit,
  * {@snippet lang=c : CGEventCreateCopy typedef CGEventRef = (Declared(__CGEvent))*(typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventCreateCopy_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventCreateCopy_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventCreateCopy").orElseThrow() }
+private val CGEventCreateCopy_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventCreateCopy").orElseThrow() }
 private val CGEventCreateCopy_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventCreateCopy_ADDR, CGEventCreateCopy_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4474,7 +4474,7 @@ fun CGEventCreateCopy(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGEventCreateSourceFromEvent typedef CGEventSourceRef = (Declared(__CGEventSource))*(typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventCreateSourceFromEvent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventCreateSourceFromEvent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventCreateSourceFromEvent").orElseThrow() }
+private val CGEventCreateSourceFromEvent_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventCreateSourceFromEvent").orElseThrow() }
 private val CGEventCreateSourceFromEvent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventCreateSourceFromEvent_ADDR, CGEventCreateSourceFromEvent_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4494,7 +4494,7 @@ fun CGEventCreateSourceFromEvent(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGEventSetSource Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGEventSourceRef = (Declared(__CGEventSource))*)
  */
 private val CGEventSetSource_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventSetSource_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSetSource").orElseThrow() }
+private val CGEventSetSource_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSetSource").orElseThrow() }
 private val CGEventSetSource_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSetSource_ADDR, CGEventSetSource_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4514,7 +4514,7 @@ fun CGEventSetSource(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGEventGetType typedef CGEventType = Declared(CGEventType)(typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventGetType_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGEventGetType_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventGetType").orElseThrow() }
+private val CGEventGetType_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventGetType").orElseThrow() }
 private val CGEventGetType_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventGetType_ADDR, CGEventGetType_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4534,7 +4534,7 @@ fun CGEventGetType(arg0: MemorySegment): CGEventType {
  * {@snippet lang=c : CGEventSetType Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGEventType = Declared(CGEventType))
  */
 private val CGEventSetType_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGEventSetType_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSetType").orElseThrow() }
+private val CGEventSetType_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSetType").orElseThrow() }
 private val CGEventSetType_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSetType_ADDR, CGEventSetType_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4554,7 +4554,7 @@ fun CGEventSetType(arg0: MemorySegment, arg1: CGEventType): Unit {
  * {@snippet lang=c : CGEventGetTimestamp typedef CGEventTimestamp = UNSIGNED = LongLong(typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventGetTimestamp_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGEventGetTimestamp_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventGetTimestamp").orElseThrow() }
+private val CGEventGetTimestamp_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventGetTimestamp").orElseThrow() }
 private val CGEventGetTimestamp_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventGetTimestamp_ADDR, CGEventGetTimestamp_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4574,7 +4574,7 @@ fun CGEventGetTimestamp(arg0: MemorySegment): Long {
  * {@snippet lang=c : CGEventSetTimestamp Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGEventTimestamp = UNSIGNED = LongLong)
  */
 private val CGEventSetTimestamp_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGEventSetTimestamp_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSetTimestamp").orElseThrow() }
+private val CGEventSetTimestamp_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSetTimestamp").orElseThrow() }
 private val CGEventSetTimestamp_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSetTimestamp_ADDR, CGEventSetTimestamp_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4594,7 +4594,7 @@ fun CGEventSetTimestamp(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CGEventGetLocation typedef CGPoint = Declared(CGPoint)(typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventGetLocation_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS)
-private val CGEventGetLocation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventGetLocation").orElseThrow() }
+private val CGEventGetLocation_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventGetLocation").orElseThrow() }
 private val CGEventGetLocation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventGetLocation_ADDR, CGEventGetLocation_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4619,7 +4619,7 @@ fun CGEventGetLocationTyped(allocator: SegmentAllocator, arg0: MemorySegment): C
  * {@snippet lang=c : CGEventGetUnflippedLocation typedef CGPoint = Declared(CGPoint)(typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventGetUnflippedLocation_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS)
-private val CGEventGetUnflippedLocation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventGetUnflippedLocation").orElseThrow() }
+private val CGEventGetUnflippedLocation_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventGetUnflippedLocation").orElseThrow() }
 private val CGEventGetUnflippedLocation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventGetUnflippedLocation_ADDR, CGEventGetUnflippedLocation_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -4644,7 +4644,7 @@ fun CGEventGetUnflippedLocationTyped(allocator: SegmentAllocator, arg0: MemorySe
  * {@snippet lang=c : CGEventSetLocation Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGPoint = Declared(CGPoint))
  */
 private val CGEventSetLocation_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGPoint.layout)
-private val CGEventSetLocation_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSetLocation").orElseThrow() }
+private val CGEventSetLocation_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSetLocation").orElseThrow() }
 private val CGEventSetLocation_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSetLocation_ADDR, CGEventSetLocation_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4669,7 +4669,7 @@ fun CGEventSetLocation(arg0: MemorySegment, arg1: CGPoint): Unit {
  * {@snippet lang=c : CGEventGetFlags typedef CGEventFlags = Declared(CGEventFlags)(typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventGetFlags_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGEventGetFlags_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventGetFlags").orElseThrow() }
+private val CGEventGetFlags_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventGetFlags").orElseThrow() }
 private val CGEventGetFlags_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventGetFlags_ADDR, CGEventGetFlags_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4689,7 +4689,7 @@ fun CGEventGetFlags(arg0: MemorySegment): CGEventFlags {
  * {@snippet lang=c : CGEventSetFlags Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGEventFlags = Declared(CGEventFlags))
  */
 private val CGEventSetFlags_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGEventSetFlags_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSetFlags").orElseThrow() }
+private val CGEventSetFlags_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSetFlags").orElseThrow() }
 private val CGEventSetFlags_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSetFlags_ADDR, CGEventSetFlags_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4709,7 +4709,7 @@ fun CGEventSetFlags(arg0: MemorySegment, arg1: CGEventFlags): Unit {
  * {@snippet lang=c : CGEventKeyboardGetUnicodeString Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef UniCharCount = UNSIGNED = Long,(typedef UniCharCount = UNSIGNED = Long)*,(typedef UniChar = UNSIGNED = Short)*)
  */
 private val CGEventKeyboardGetUnicodeString_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventKeyboardGetUnicodeString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventKeyboardGetUnicodeString").orElseThrow() }
+private val CGEventKeyboardGetUnicodeString_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventKeyboardGetUnicodeString").orElseThrow() }
 private val CGEventKeyboardGetUnicodeString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventKeyboardGetUnicodeString_ADDR, CGEventKeyboardGetUnicodeString_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4729,7 +4729,7 @@ fun CGEventKeyboardGetUnicodeString(arg0: MemorySegment, arg1: Long, arg2: Memor
  * {@snippet lang=c : CGEventKeyboardSetUnicodeString Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef UniCharCount = UNSIGNED = Long,(typedef UniChar = UNSIGNED = Short)*)
  */
 private val CGEventKeyboardSetUnicodeString_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGEventKeyboardSetUnicodeString_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventKeyboardSetUnicodeString").orElseThrow() }
+private val CGEventKeyboardSetUnicodeString_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventKeyboardSetUnicodeString").orElseThrow() }
 private val CGEventKeyboardSetUnicodeString_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventKeyboardSetUnicodeString_ADDR, CGEventKeyboardSetUnicodeString_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4749,7 +4749,7 @@ fun CGEventKeyboardSetUnicodeString(arg0: MemorySegment, arg1: Long, arg2: Memor
  * {@snippet lang=c : CGEventGetIntegerValueField typedef int64_t = LongLong(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGEventField = Declared(CGEventField))
  */
 private val CGEventGetIntegerValueField_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGEventGetIntegerValueField_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventGetIntegerValueField").orElseThrow() }
+private val CGEventGetIntegerValueField_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventGetIntegerValueField").orElseThrow() }
 private val CGEventGetIntegerValueField_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventGetIntegerValueField_ADDR, CGEventGetIntegerValueField_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4769,7 +4769,7 @@ fun CGEventGetIntegerValueField(arg0: MemorySegment, arg1: CGEventField): Long {
  * {@snippet lang=c : CGEventSetIntegerValueField Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGEventField = Declared(CGEventField),typedef int64_t = LongLong)
  */
 private val CGEventSetIntegerValueField_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)
-private val CGEventSetIntegerValueField_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSetIntegerValueField").orElseThrow() }
+private val CGEventSetIntegerValueField_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSetIntegerValueField").orElseThrow() }
 private val CGEventSetIntegerValueField_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSetIntegerValueField_ADDR, CGEventSetIntegerValueField_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4789,7 +4789,7 @@ fun CGEventSetIntegerValueField(arg0: MemorySegment, arg1: CGEventField, arg2: L
  * {@snippet lang=c : CGEventGetDoubleValueField Double(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGEventField = Declared(CGEventField))
  */
 private val CGEventGetDoubleValueField_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGEventGetDoubleValueField_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventGetDoubleValueField").orElseThrow() }
+private val CGEventGetDoubleValueField_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventGetDoubleValueField").orElseThrow() }
 private val CGEventGetDoubleValueField_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventGetDoubleValueField_ADDR, CGEventGetDoubleValueField_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4809,7 +4809,7 @@ fun CGEventGetDoubleValueField(arg0: MemorySegment, arg1: CGEventField): Double 
  * {@snippet lang=c : CGEventSetDoubleValueField Void(typedef CGEventRef = (Declared(__CGEvent))*,typedef CGEventField = Declared(CGEventField),Double)
  */
 private val CGEventSetDoubleValueField_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE)
-private val CGEventSetDoubleValueField_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSetDoubleValueField").orElseThrow() }
+private val CGEventSetDoubleValueField_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSetDoubleValueField").orElseThrow() }
 private val CGEventSetDoubleValueField_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSetDoubleValueField_ADDR, CGEventSetDoubleValueField_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4829,7 +4829,7 @@ fun CGEventSetDoubleValueField(arg0: MemorySegment, arg1: CGEventField, arg2: Do
  * {@snippet lang=c : CGEventTapCreate typedef CFMachPortRef = (Declared(__CFMachPort))*(typedef CGEventTapLocation = Declared(CGEventTapLocation),typedef CGEventTapPlacement = Declared(CGEventTapPlacement),typedef CGEventTapOptions = Declared(CGEventTapOptions),typedef CGEventMask = UNSIGNED = LongLong,typedef CGEventTapCallBack = ((Declared(__CGEvent))*((Declared(__CGEventTapProxy))*,Declared(CGEventType),(Declared(__CGEvent))*,(Void)*))*,(Void)*)
  */
 private val CGEventTapCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventTapCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventTapCreate").orElseThrow() }
+private val CGEventTapCreate_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventTapCreate").orElseThrow() }
 private val CGEventTapCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventTapCreate_ADDR, CGEventTapCreate_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4849,7 +4849,7 @@ fun CGEventTapCreate(arg0: CGEventTapLocation, arg1: CGEventTapPlacement, arg2: 
  * {@snippet lang=c : CGEventTapCreateForPSN typedef CFMachPortRef = (Declared(__CFMachPort))*((Void)*,typedef CGEventTapPlacement = Declared(CGEventTapPlacement),typedef CGEventTapOptions = Declared(CGEventTapOptions),typedef CGEventMask = UNSIGNED = LongLong,typedef CGEventTapCallBack = ((Declared(__CGEvent))*((Declared(__CGEventTapProxy))*,Declared(CGEventType),(Declared(__CGEvent))*,(Void)*))*,(Void)*)
  */
 private val CGEventTapCreateForPSN_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventTapCreateForPSN_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventTapCreateForPSN").orElseThrow() }
+private val CGEventTapCreateForPSN_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventTapCreateForPSN").orElseThrow() }
 private val CGEventTapCreateForPSN_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventTapCreateForPSN_ADDR, CGEventTapCreateForPSN_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4869,7 +4869,7 @@ fun CGEventTapCreateForPSN(arg0: MemorySegment, arg1: CGEventTapPlacement, arg2:
  * {@snippet lang=c : CGEventTapCreateForPid typedef CFMachPortRef = (Declared(__CFMachPort))*(typedef pid_t = Int,typedef CGEventTapPlacement = Declared(CGEventTapPlacement),typedef CGEventTapOptions = Declared(CGEventTapOptions),typedef CGEventMask = UNSIGNED = LongLong,typedef CGEventTapCallBack = ((Declared(__CGEvent))*((Declared(__CGEventTapProxy))*,Declared(CGEventType),(Declared(__CGEvent))*,(Void)*))*,(Void)*)
  */
 private val CGEventTapCreateForPid_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventTapCreateForPid_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventTapCreateForPid").orElseThrow() }
+private val CGEventTapCreateForPid_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventTapCreateForPid").orElseThrow() }
 private val CGEventTapCreateForPid_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventTapCreateForPid_ADDR, CGEventTapCreateForPid_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
@@ -4889,7 +4889,7 @@ fun CGEventTapCreateForPid(arg0: Int, arg1: CGEventTapPlacement, arg2: CGEventTa
  * {@snippet lang=c : CGEventTapEnable Void(typedef CFMachPortRef = (Declared(__CFMachPort))*,Bool)
  */
 private val CGEventTapEnable_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGEventTapEnable_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventTapEnable").orElseThrow() }
+private val CGEventTapEnable_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventTapEnable").orElseThrow() }
 private val CGEventTapEnable_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventTapEnable_ADDR, CGEventTapEnable_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4909,7 +4909,7 @@ fun CGEventTapEnable(arg0: MemorySegment, arg1: Boolean): Unit {
  * {@snippet lang=c : CGEventTapIsEnabled Bool(typedef CFMachPortRef = (Declared(__CFMachPort))*)
  */
 private val CGEventTapIsEnabled_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
-private val CGEventTapIsEnabled_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventTapIsEnabled").orElseThrow() }
+private val CGEventTapIsEnabled_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventTapIsEnabled").orElseThrow() }
 private val CGEventTapIsEnabled_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventTapIsEnabled_ADDR, CGEventTapIsEnabled_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4929,7 +4929,7 @@ fun CGEventTapIsEnabled(arg0: MemorySegment): Boolean {
  * {@snippet lang=c : CGEventTapPostEvent Void(typedef CGEventTapProxy = (Declared(__CGEventTapProxy))*,typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventTapPostEvent_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventTapPostEvent_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventTapPostEvent").orElseThrow() }
+private val CGEventTapPostEvent_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventTapPostEvent").orElseThrow() }
 private val CGEventTapPostEvent_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventTapPostEvent_ADDR, CGEventTapPostEvent_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4949,7 +4949,7 @@ fun CGEventTapPostEvent(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGEventPost Void(typedef CGEventTapLocation = Declared(CGEventTapLocation),typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventPost_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGEventPost_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventPost").orElseThrow() }
+private val CGEventPost_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventPost").orElseThrow() }
 private val CGEventPost_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventPost_ADDR, CGEventPost_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4969,7 +4969,7 @@ fun CGEventPost(arg0: CGEventTapLocation, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGEventPostToPSN Void((Void)*,typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventPostToPSN_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGEventPostToPSN_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventPostToPSN").orElseThrow() }
+private val CGEventPostToPSN_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventPostToPSN").orElseThrow() }
 private val CGEventPostToPSN_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventPostToPSN_ADDR, CGEventPostToPSN_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -4989,7 +4989,7 @@ fun CGEventPostToPSN(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGEventPostToPid Void(typedef pid_t = Int,typedef CGEventRef = (Declared(__CGEvent))*)
  */
 private val CGEventPostToPid_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGEventPostToPid_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventPostToPid").orElseThrow() }
+private val CGEventPostToPid_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventPostToPid").orElseThrow() }
 private val CGEventPostToPid_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventPostToPid_ADDR, CGEventPostToPid_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
@@ -5009,7 +5009,7 @@ fun CGEventPostToPid(arg0: Int, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGGetEventTapList typedef CGError = Declared(CGError)(typedef uint32_t = UNSIGNED = Int,(typedef CGEventTapInformation = Declared(__CGEventTapInformation))*,(typedef uint32_t = UNSIGNED = Int)*)
  */
 private val CGGetEventTapList_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGGetEventTapList_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGGetEventTapList").orElseThrow() }
+private val CGGetEventTapList_ADDR: MemorySegment by lazy { LOOKUP.find("CGGetEventTapList").orElseThrow() }
 private val CGGetEventTapList_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGGetEventTapList_ADDR, CGGetEventTapList_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5029,7 +5029,7 @@ fun CGGetEventTapList(arg0: Int, arg1: MemorySegment, arg2: MemorySegment): CGEr
  * {@snippet lang=c : CGPreflightListenEventAccess Bool()
  */
 private val CGPreflightListenEventAccess_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN)
-private val CGPreflightListenEventAccess_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPreflightListenEventAccess").orElseThrow() }
+private val CGPreflightListenEventAccess_ADDR: MemorySegment by lazy { LOOKUP.find("CGPreflightListenEventAccess").orElseThrow() }
 private val CGPreflightListenEventAccess_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPreflightListenEventAccess_ADDR, CGPreflightListenEventAccess_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
@@ -5049,7 +5049,7 @@ fun CGPreflightListenEventAccess(): Boolean {
  * {@snippet lang=c : CGRequestListenEventAccess Bool()
  */
 private val CGRequestListenEventAccess_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN)
-private val CGRequestListenEventAccess_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRequestListenEventAccess").orElseThrow() }
+private val CGRequestListenEventAccess_ADDR: MemorySegment by lazy { LOOKUP.find("CGRequestListenEventAccess").orElseThrow() }
 private val CGRequestListenEventAccess_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRequestListenEventAccess_ADDR, CGRequestListenEventAccess_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
@@ -5069,7 +5069,7 @@ fun CGRequestListenEventAccess(): Boolean {
  * {@snippet lang=c : CGPreflightPostEventAccess Bool()
  */
 private val CGPreflightPostEventAccess_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN)
-private val CGPreflightPostEventAccess_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPreflightPostEventAccess").orElseThrow() }
+private val CGPreflightPostEventAccess_ADDR: MemorySegment by lazy { LOOKUP.find("CGPreflightPostEventAccess").orElseThrow() }
 private val CGPreflightPostEventAccess_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPreflightPostEventAccess_ADDR, CGPreflightPostEventAccess_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
@@ -5089,7 +5089,7 @@ fun CGPreflightPostEventAccess(): Boolean {
  * {@snippet lang=c : CGRequestPostEventAccess Bool()
  */
 private val CGRequestPostEventAccess_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN)
-private val CGRequestPostEventAccess_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGRequestPostEventAccess").orElseThrow() }
+private val CGRequestPostEventAccess_ADDR: MemorySegment by lazy { LOOKUP.find("CGRequestPostEventAccess").orElseThrow() }
 private val CGRequestPostEventAccess_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGRequestPostEventAccess_ADDR, CGRequestPostEventAccess_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
@@ -5109,7 +5109,7 @@ fun CGRequestPostEventAccess(): Boolean {
  * {@snippet lang=c : CGEventSourceGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CGEventSourceGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CGEventSourceGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceGetTypeID").orElseThrow() }
+private val CGEventSourceGetTypeID_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceGetTypeID").orElseThrow() }
 private val CGEventSourceGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceGetTypeID_ADDR, CGEventSourceGetTypeID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5129,7 +5129,7 @@ fun CGEventSourceGetTypeID(): Long {
  * {@snippet lang=c : CGEventSourceCreate typedef CGEventSourceRef = (Declared(__CGEventSource))*(typedef CGEventSourceStateID = Declared(CGEventSourceStateID))
  */
 private val CGEventSourceCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGEventSourceCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceCreate").orElseThrow() }
+private val CGEventSourceCreate_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceCreate").orElseThrow() }
 private val CGEventSourceCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceCreate_ADDR, CGEventSourceCreate_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5149,7 +5149,7 @@ fun CGEventSourceCreate(arg0: CGEventSourceStateID): MemorySegment {
  * {@snippet lang=c : CGEventSourceGetKeyboardType typedef CGEventSourceKeyboardType = UNSIGNED = Int(typedef CGEventSourceRef = (Declared(__CGEventSource))*)
  */
 private val CGEventSourceGetKeyboardType_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGEventSourceGetKeyboardType_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceGetKeyboardType").orElseThrow() }
+private val CGEventSourceGetKeyboardType_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceGetKeyboardType").orElseThrow() }
 private val CGEventSourceGetKeyboardType_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceGetKeyboardType_ADDR, CGEventSourceGetKeyboardType_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5169,7 +5169,7 @@ fun CGEventSourceGetKeyboardType(arg0: MemorySegment): Int {
  * {@snippet lang=c : CGEventSourceSetKeyboardType Void(typedef CGEventSourceRef = (Declared(__CGEventSource))*,typedef CGEventSourceKeyboardType = UNSIGNED = Int)
  */
 private val CGEventSourceSetKeyboardType_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGEventSourceSetKeyboardType_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceSetKeyboardType").orElseThrow() }
+private val CGEventSourceSetKeyboardType_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceSetKeyboardType").orElseThrow() }
 private val CGEventSourceSetKeyboardType_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceSetKeyboardType_ADDR, CGEventSourceSetKeyboardType_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5189,7 +5189,7 @@ fun CGEventSourceSetKeyboardType(arg0: MemorySegment, arg1: Int): Unit {
  * {@snippet lang=c : CGEventSourceGetPixelsPerLine Double(typedef CGEventSourceRef = (Declared(__CGEventSource))*)
  */
 private val CGEventSourceGetPixelsPerLine_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CGEventSourceGetPixelsPerLine_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceGetPixelsPerLine").orElseThrow() }
+private val CGEventSourceGetPixelsPerLine_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceGetPixelsPerLine").orElseThrow() }
 private val CGEventSourceGetPixelsPerLine_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceGetPixelsPerLine_ADDR, CGEventSourceGetPixelsPerLine_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -5209,7 +5209,7 @@ fun CGEventSourceGetPixelsPerLine(arg0: MemorySegment): Double {
  * {@snippet lang=c : CGEventSourceSetPixelsPerLine Void(typedef CGEventSourceRef = (Declared(__CGEventSource))*,Double)
  */
 private val CGEventSourceSetPixelsPerLine_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CGEventSourceSetPixelsPerLine_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceSetPixelsPerLine").orElseThrow() }
+private val CGEventSourceSetPixelsPerLine_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceSetPixelsPerLine").orElseThrow() }
 private val CGEventSourceSetPixelsPerLine_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceSetPixelsPerLine_ADDR, CGEventSourceSetPixelsPerLine_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
@@ -5229,7 +5229,7 @@ fun CGEventSourceSetPixelsPerLine(arg0: MemorySegment, arg1: Double): Unit {
  * {@snippet lang=c : CGEventSourceGetSourceStateID typedef CGEventSourceStateID = Declared(CGEventSourceStateID)(typedef CGEventSourceRef = (Declared(__CGEventSource))*)
  */
 private val CGEventSourceGetSourceStateID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGEventSourceGetSourceStateID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceGetSourceStateID").orElseThrow() }
+private val CGEventSourceGetSourceStateID_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceGetSourceStateID").orElseThrow() }
 private val CGEventSourceGetSourceStateID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceGetSourceStateID_ADDR, CGEventSourceGetSourceStateID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5249,7 +5249,7 @@ fun CGEventSourceGetSourceStateID(arg0: MemorySegment): CGEventSourceStateID {
  * {@snippet lang=c : CGEventSourceButtonState Bool(typedef CGEventSourceStateID = Declared(CGEventSourceStateID),typedef CGMouseButton = Declared(CGMouseButton))
  */
 private val CGEventSourceButtonState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGEventSourceButtonState_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceButtonState").orElseThrow() }
+private val CGEventSourceButtonState_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceButtonState").orElseThrow() }
 private val CGEventSourceButtonState_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceButtonState_ADDR, CGEventSourceButtonState_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5269,7 +5269,7 @@ fun CGEventSourceButtonState(arg0: CGEventSourceStateID, arg1: CGMouseButton): B
  * {@snippet lang=c : CGEventSourceKeyState Bool(typedef CGEventSourceStateID = Declared(CGEventSourceStateID),typedef CGKeyCode = UNSIGNED = Short)
  */
 private val CGEventSourceKeyState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT)
-private val CGEventSourceKeyState_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceKeyState").orElseThrow() }
+private val CGEventSourceKeyState_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceKeyState").orElseThrow() }
 private val CGEventSourceKeyState_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceKeyState_ADDR, CGEventSourceKeyState_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5289,7 +5289,7 @@ fun CGEventSourceKeyState(arg0: CGEventSourceStateID, arg1: Short): Boolean {
  * {@snippet lang=c : CGEventSourceFlagsState typedef CGEventFlags = Declared(CGEventFlags)(typedef CGEventSourceStateID = Declared(CGEventSourceStateID))
  */
 private val CGEventSourceFlagsState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
-private val CGEventSourceFlagsState_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceFlagsState").orElseThrow() }
+private val CGEventSourceFlagsState_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceFlagsState").orElseThrow() }
 private val CGEventSourceFlagsState_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceFlagsState_ADDR, CGEventSourceFlagsState_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5309,7 +5309,7 @@ fun CGEventSourceFlagsState(arg0: CGEventSourceStateID): CGEventFlags {
  * {@snippet lang=c : CGEventSourceSecondsSinceLastEventType typedef CFTimeInterval = Double(typedef CGEventSourceStateID = Declared(CGEventSourceStateID),typedef CGEventType = Declared(CGEventType))
  */
 private val CGEventSourceSecondsSinceLastEventType_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGEventSourceSecondsSinceLastEventType_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceSecondsSinceLastEventType").orElseThrow() }
+private val CGEventSourceSecondsSinceLastEventType_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceSecondsSinceLastEventType").orElseThrow() }
 private val CGEventSourceSecondsSinceLastEventType_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceSecondsSinceLastEventType_ADDR, CGEventSourceSecondsSinceLastEventType_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5329,7 +5329,7 @@ fun CGEventSourceSecondsSinceLastEventType(arg0: CGEventSourceStateID, arg1: CGE
  * {@snippet lang=c : CGEventSourceCounterForEventType typedef uint32_t = UNSIGNED = Int(typedef CGEventSourceStateID = Declared(CGEventSourceStateID),typedef CGEventType = Declared(CGEventType))
  */
 private val CGEventSourceCounterForEventType_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGEventSourceCounterForEventType_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceCounterForEventType").orElseThrow() }
+private val CGEventSourceCounterForEventType_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceCounterForEventType").orElseThrow() }
 private val CGEventSourceCounterForEventType_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceCounterForEventType_ADDR, CGEventSourceCounterForEventType_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5349,7 +5349,7 @@ fun CGEventSourceCounterForEventType(arg0: CGEventSourceStateID, arg1: CGEventTy
  * {@snippet lang=c : CGEventSourceSetUserData Void(typedef CGEventSourceRef = (Declared(__CGEventSource))*,typedef int64_t = LongLong)
  */
 private val CGEventSourceSetUserData_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGEventSourceSetUserData_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceSetUserData").orElseThrow() }
+private val CGEventSourceSetUserData_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceSetUserData").orElseThrow() }
 private val CGEventSourceSetUserData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceSetUserData_ADDR, CGEventSourceSetUserData_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5369,7 +5369,7 @@ fun CGEventSourceSetUserData(arg0: MemorySegment, arg1: Long): Unit {
  * {@snippet lang=c : CGEventSourceGetUserData typedef int64_t = LongLong(typedef CGEventSourceRef = (Declared(__CGEventSource))*)
  */
 private val CGEventSourceGetUserData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
-private val CGEventSourceGetUserData_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceGetUserData").orElseThrow() }
+private val CGEventSourceGetUserData_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceGetUserData").orElseThrow() }
 private val CGEventSourceGetUserData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceGetUserData_ADDR, CGEventSourceGetUserData_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5389,7 +5389,7 @@ fun CGEventSourceGetUserData(arg0: MemorySegment): Long {
  * {@snippet lang=c : CGEventSourceSetLocalEventsFilterDuringSuppressionState Void(typedef CGEventSourceRef = (Declared(__CGEventSource))*,typedef CGEventFilterMask = Declared(CGEventFilterMask),typedef CGEventSuppressionState = Declared(CGEventSuppressionState))
  */
 private val CGEventSourceSetLocalEventsFilterDuringSuppressionState_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val CGEventSourceSetLocalEventsFilterDuringSuppressionState_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceSetLocalEventsFilterDuringSuppressionState").orElseThrow() }
+private val CGEventSourceSetLocalEventsFilterDuringSuppressionState_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceSetLocalEventsFilterDuringSuppressionState").orElseThrow() }
 private val CGEventSourceSetLocalEventsFilterDuringSuppressionState_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceSetLocalEventsFilterDuringSuppressionState_ADDR, CGEventSourceSetLocalEventsFilterDuringSuppressionState_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5409,7 +5409,7 @@ fun CGEventSourceSetLocalEventsFilterDuringSuppressionState(arg0: MemorySegment,
  * {@snippet lang=c : CGEventSourceGetLocalEventsFilterDuringSuppressionState typedef CGEventFilterMask = Declared(CGEventFilterMask)(typedef CGEventSourceRef = (Declared(__CGEventSource))*,typedef CGEventSuppressionState = Declared(CGEventSuppressionState))
  */
 private val CGEventSourceGetLocalEventsFilterDuringSuppressionState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGEventSourceGetLocalEventsFilterDuringSuppressionState_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceGetLocalEventsFilterDuringSuppressionState").orElseThrow() }
+private val CGEventSourceGetLocalEventsFilterDuringSuppressionState_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceGetLocalEventsFilterDuringSuppressionState").orElseThrow() }
 private val CGEventSourceGetLocalEventsFilterDuringSuppressionState_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceGetLocalEventsFilterDuringSuppressionState_ADDR, CGEventSourceGetLocalEventsFilterDuringSuppressionState_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5429,7 +5429,7 @@ fun CGEventSourceGetLocalEventsFilterDuringSuppressionState(arg0: MemorySegment,
  * {@snippet lang=c : CGEventSourceSetLocalEventsSuppressionInterval Void(typedef CGEventSourceRef = (Declared(__CGEventSource))*,typedef CFTimeInterval = Double)
  */
 private val CGEventSourceSetLocalEventsSuppressionInterval_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CGEventSourceSetLocalEventsSuppressionInterval_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceSetLocalEventsSuppressionInterval").orElseThrow() }
+private val CGEventSourceSetLocalEventsSuppressionInterval_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceSetLocalEventsSuppressionInterval").orElseThrow() }
 private val CGEventSourceSetLocalEventsSuppressionInterval_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceSetLocalEventsSuppressionInterval_ADDR, CGEventSourceSetLocalEventsSuppressionInterval_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5449,7 +5449,7 @@ fun CGEventSourceSetLocalEventsSuppressionInterval(arg0: MemorySegment, arg1: Do
  * {@snippet lang=c : CGEventSourceGetLocalEventsSuppressionInterval typedef CFTimeInterval = Double(typedef CGEventSourceRef = (Declared(__CGEventSource))*)
  */
 private val CGEventSourceGetLocalEventsSuppressionInterval_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CGEventSourceGetLocalEventsSuppressionInterval_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGEventSourceGetLocalEventsSuppressionInterval").orElseThrow() }
+private val CGEventSourceGetLocalEventsSuppressionInterval_ADDR: MemorySegment by lazy { LOOKUP.find("CGEventSourceGetLocalEventsSuppressionInterval").orElseThrow() }
 private val CGEventSourceGetLocalEventsSuppressionInterval_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGEventSourceGetLocalEventsSuppressionInterval_ADDR, CGEventSourceGetLocalEventsSuppressionInterval_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
@@ -5469,7 +5469,7 @@ fun CGEventSourceGetLocalEventsSuppressionInterval(arg0: MemorySegment): Double 
  * {@snippet lang=c : CGPSConverterCreate typedef CGPSConverterRef = (Declared(CGPSConverter))*((Void)*,(typedef CGPSConverterCallbacks = Declared(CGPSConverterCallbacks))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGPSConverterCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPSConverterCreate_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPSConverterCreate").orElseThrow() }
+private val CGPSConverterCreate_ADDR: MemorySegment by lazy { LOOKUP.find("CGPSConverterCreate").orElseThrow() }
 private val CGPSConverterCreate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPSConverterCreate_ADDR, CGPSConverterCreate_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -5489,7 +5489,7 @@ fun CGPSConverterCreate(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySe
  * {@snippet lang=c : CGPSConverterConvert Bool(typedef CGPSConverterRef = (Declared(CGPSConverter))*,typedef CGDataProviderRef = (Declared(CGDataProvider))*,typedef CGDataConsumerRef = (Declared(CGDataConsumer))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGPSConverterConvert_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGPSConverterConvert_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPSConverterConvert").orElseThrow() }
+private val CGPSConverterConvert_ADDR: MemorySegment by lazy { LOOKUP.find("CGPSConverterConvert").orElseThrow() }
 private val CGPSConverterConvert_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPSConverterConvert_ADDR, CGPSConverterConvert_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -5509,7 +5509,7 @@ fun CGPSConverterConvert(arg0: MemorySegment, arg1: MemorySegment, arg2: MemoryS
  * {@snippet lang=c : CGPSConverterAbort Bool(typedef CGPSConverterRef = (Declared(CGPSConverter))*)
  */
 private val CGPSConverterAbort_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
-private val CGPSConverterAbort_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPSConverterAbort").orElseThrow() }
+private val CGPSConverterAbort_ADDR: MemorySegment by lazy { LOOKUP.find("CGPSConverterAbort").orElseThrow() }
 private val CGPSConverterAbort_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPSConverterAbort_ADDR, CGPSConverterAbort_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -5529,7 +5529,7 @@ fun CGPSConverterAbort(arg0: MemorySegment): Boolean {
  * {@snippet lang=c : CGPSConverterIsConverting Bool(typedef CGPSConverterRef = (Declared(CGPSConverter))*)
  */
 private val CGPSConverterIsConverting_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS)
-private val CGPSConverterIsConverting_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPSConverterIsConverting").orElseThrow() }
+private val CGPSConverterIsConverting_ADDR: MemorySegment by lazy { LOOKUP.find("CGPSConverterIsConverting").orElseThrow() }
 private val CGPSConverterIsConverting_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPSConverterIsConverting_ADDR, CGPSConverterIsConverting_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -5549,7 +5549,7 @@ fun CGPSConverterIsConverting(arg0: MemorySegment): Boolean {
  * {@snippet lang=c : CGPSConverterGetTypeID typedef CFTypeID = UNSIGNED = Long()
  */
 private val CGPSConverterGetTypeID_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
-private val CGPSConverterGetTypeID_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGPSConverterGetTypeID").orElseThrow() }
+private val CGPSConverterGetTypeID_ADDR: MemorySegment by lazy { LOOKUP.find("CGPSConverterGetTypeID").orElseThrow() }
 private val CGPSConverterGetTypeID_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGPSConverterGetTypeID_ADDR, CGPSConverterGetTypeID_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -5569,7 +5569,7 @@ fun CGPSConverterGetTypeID(): Long {
  * {@snippet lang=c : CGSessionCopyCurrentDictionary typedef CFDictionaryRef = (Declared(__CFDictionary))*()
  */
 private val CGSessionCopyCurrentDictionary_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
-private val CGSessionCopyCurrentDictionary_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGSessionCopyCurrentDictionary").orElseThrow() }
+private val CGSessionCopyCurrentDictionary_ADDR: MemorySegment by lazy { LOOKUP.find("CGSessionCopyCurrentDictionary").orElseThrow() }
 private val CGSessionCopyCurrentDictionary_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGSessionCopyCurrentDictionary_ADDR, CGSessionCopyCurrentDictionary_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 3, introducedSubminor = -1)
@@ -5589,7 +5589,7 @@ fun CGSessionCopyCurrentDictionary(): MemorySegment {
  * {@snippet lang=c : CGDirectDisplayCopyCurrentMetalDevice (Void)*(typedef CGDirectDisplayID = UNSIGNED = Int)
  */
 private val CGDirectDisplayCopyCurrentMetalDevice_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGDirectDisplayCopyCurrentMetalDevice_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGDirectDisplayCopyCurrentMetalDevice").orElseThrow() }
+private val CGDirectDisplayCopyCurrentMetalDevice_ADDR: MemorySegment by lazy { LOOKUP.find("CGDirectDisplayCopyCurrentMetalDevice").orElseThrow() }
 private val CGDirectDisplayCopyCurrentMetalDevice_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGDirectDisplayCopyCurrentMetalDevice_ADDR, CGDirectDisplayCopyCurrentMetalDevice_DESC) }
 
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 11, introducedSubminor = -1)
@@ -5609,7 +5609,7 @@ fun CGDirectDisplayCopyCurrentMetalDevice(arg0: Int): MemorySegment {
  * {@snippet lang=c : NSPasteboardTypeString typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypeString_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypeString_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeString").orElseThrow().reinterpret(NSPasteboardTypeString_LAYOUT.byteSize()) }
+private val NSPasteboardTypeString_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPasteboardTypeString").orElseThrow().reinterpret(NSPasteboardTypeString_LAYOUT.byteSize()) }
 private val NSPasteboardTypeString_VH: VarHandle by lazy { NSPasteboardTypeString_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -5622,7 +5622,7 @@ var NSPasteboardTypeString: MemorySegment
  * {@snippet lang=c : NSPasteboardTypePDF typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypePDF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypePDF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypePDF").orElseThrow().reinterpret(NSPasteboardTypePDF_LAYOUT.byteSize()) }
+private val NSPasteboardTypePDF_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPasteboardTypePDF").orElseThrow().reinterpret(NSPasteboardTypePDF_LAYOUT.byteSize()) }
 private val NSPasteboardTypePDF_VH: VarHandle by lazy { NSPasteboardTypePDF_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -5635,7 +5635,7 @@ var NSPasteboardTypePDF: MemorySegment
  * {@snippet lang=c : NSPasteboardTypeTIFF typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypeTIFF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypeTIFF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeTIFF").orElseThrow().reinterpret(NSPasteboardTypeTIFF_LAYOUT.byteSize()) }
+private val NSPasteboardTypeTIFF_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPasteboardTypeTIFF").orElseThrow().reinterpret(NSPasteboardTypeTIFF_LAYOUT.byteSize()) }
 private val NSPasteboardTypeTIFF_VH: VarHandle by lazy { NSPasteboardTypeTIFF_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -5648,7 +5648,7 @@ var NSPasteboardTypeTIFF: MemorySegment
  * {@snippet lang=c : NSPasteboardTypePNG typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypePNG_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypePNG_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypePNG").orElseThrow().reinterpret(NSPasteboardTypePNG_LAYOUT.byteSize()) }
+private val NSPasteboardTypePNG_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPasteboardTypePNG").orElseThrow().reinterpret(NSPasteboardTypePNG_LAYOUT.byteSize()) }
 private val NSPasteboardTypePNG_VH: VarHandle by lazy { NSPasteboardTypePNG_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -5661,7 +5661,7 @@ var NSPasteboardTypePNG: MemorySegment
  * {@snippet lang=c : NSPasteboardTypeRTF typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypeRTF_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypeRTF_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeRTF").orElseThrow().reinterpret(NSPasteboardTypeRTF_LAYOUT.byteSize()) }
+private val NSPasteboardTypeRTF_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPasteboardTypeRTF").orElseThrow().reinterpret(NSPasteboardTypeRTF_LAYOUT.byteSize()) }
 private val NSPasteboardTypeRTF_VH: VarHandle by lazy { NSPasteboardTypeRTF_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -5674,7 +5674,7 @@ var NSPasteboardTypeRTF: MemorySegment
  * {@snippet lang=c : NSPasteboardTypeRTFD typedef const NSPasteboardType = (Void)*
  */
 private val NSPasteboardTypeRTFD_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardTypeRTFD_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardTypeRTFD").orElseThrow().reinterpret(NSPasteboardTypeRTFD_LAYOUT.byteSize()) }
+private val NSPasteboardTypeRTFD_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPasteboardTypeRTFD").orElseThrow().reinterpret(NSPasteboardTypeRTFD_LAYOUT.byteSize()) }
 private val NSPasteboardTypeRTFD_VH: VarHandle by lazy { NSPasteboardTypeRTFD_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)

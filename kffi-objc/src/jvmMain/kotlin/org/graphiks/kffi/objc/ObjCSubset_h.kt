@@ -17,3 +17,9 @@ private object kextract_runtime {
     val C_DOUBLE: ValueLayout = ValueLayout.JAVA_DOUBLE
     val C_POINTER: ValueLayout = ValueLayout.ADDRESS
 }
+
+internal val LOOKUP: SymbolLookup = run {
+    var lu: SymbolLookup = SymbolLookup.loaderLookup()
+    lu = SymbolLookup.libraryLookup("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics", Arena.global()).or(lu)
+    lu
+}

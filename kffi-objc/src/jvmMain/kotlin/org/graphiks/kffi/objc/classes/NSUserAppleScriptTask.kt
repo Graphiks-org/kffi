@@ -16,7 +16,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "watchos", unavailable = true)
 open class NSUserAppleScriptTask(override val ptr: MemorySegment) : NSUserScriptTask(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSUserAppleScriptTask") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSUserAppleScriptTask") } }
 
     }
 

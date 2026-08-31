@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSProxy(open val ptr: MemorySegment) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSProxy") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSProxy") } }
 
         fun alloc(): MemorySegment {
             val sel = ObjCRuntime.sel("alloc")

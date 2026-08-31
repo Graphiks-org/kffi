@@ -14,7 +14,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 9, introducedSubminor = -1)
 open class NSMediaLibraryBrowserController(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSMediaLibraryBrowserController") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSMediaLibraryBrowserController") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun sharedMediaLibraryBrowserController(): MemorySegment {

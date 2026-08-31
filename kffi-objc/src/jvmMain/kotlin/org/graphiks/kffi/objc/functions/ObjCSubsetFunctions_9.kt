@@ -10,7 +10,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  * {@snippet lang=c : CGContextSetContentToneMappingInfo Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGContentToneMappingInfo = Declared(CGContentToneMappingInfo))
  */
 private val CGContextSetContentToneMappingInfo_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGContentToneMappingInfo.layout)
-private val CGContextSetContentToneMappingInfo_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetContentToneMappingInfo").orElseThrow() }
+private val CGContextSetContentToneMappingInfo_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetContentToneMappingInfo").orElseThrow() }
 private val CGContextSetContentToneMappingInfo_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetContentToneMappingInfo_ADDR, CGContextSetContentToneMappingInfo_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
@@ -34,7 +34,7 @@ fun CGContextSetContentToneMappingInfo(arg0: MemorySegment, arg1: MemorySegment)
  * {@snippet lang=c : CGContextGetInterpolationQuality typedef CGInterpolationQuality = Declared(CGInterpolationQuality)(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextGetInterpolationQuality_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val CGContextGetInterpolationQuality_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextGetInterpolationQuality").orElseThrow() }
+private val CGContextGetInterpolationQuality_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextGetInterpolationQuality").orElseThrow() }
 private val CGContextGetInterpolationQuality_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetInterpolationQuality_ADDR, CGContextGetInterpolationQuality_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -55,7 +55,7 @@ fun CGContextGetInterpolationQuality(arg0: MemorySegment): CGInterpolationQualit
  * {@snippet lang=c : CGContextSetInterpolationQuality Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGInterpolationQuality = Declared(CGInterpolationQuality))
  */
 private val CGContextSetInterpolationQuality_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGContextSetInterpolationQuality_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetInterpolationQuality").orElseThrow() }
+private val CGContextSetInterpolationQuality_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetInterpolationQuality").orElseThrow() }
 private val CGContextSetInterpolationQuality_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetInterpolationQuality_ADDR, CGContextSetInterpolationQuality_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -76,7 +76,7 @@ fun CGContextSetInterpolationQuality(arg0: MemorySegment, arg1: CGInterpolationQ
  * {@snippet lang=c : CGContextSetShadowWithColor Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize),typedef CGFloat = Double,typedef CGColorRef = (Declared(CGColor))*)
  */
 private val CGContextSetShadowWithColor_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGSize.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS)
-private val CGContextSetShadowWithColor_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShadowWithColor").orElseThrow() }
+private val CGContextSetShadowWithColor_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetShadowWithColor").orElseThrow() }
 private val CGContextSetShadowWithColor_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShadowWithColor_ADDR, CGContextSetShadowWithColor_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -103,7 +103,7 @@ fun CGContextSetShadowWithColor(arg0: MemorySegment, arg1: CGSize, arg2: Double,
  * {@snippet lang=c : CGContextSetShadow Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize),typedef CGFloat = Double)
  */
 private val CGContextSetShadow_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGSize.layout, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetShadow_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShadow").orElseThrow() }
+private val CGContextSetShadow_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetShadow").orElseThrow() }
 private val CGContextSetShadow_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShadow_ADDR, CGContextSetShadow_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -130,7 +130,7 @@ fun CGContextSetShadow(arg0: MemorySegment, arg1: CGSize, arg2: Double): Unit {
  * {@snippet lang=c : CGContextDrawLinearGradient Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGGradientRef = (Declared(CGGradient))*,typedef CGPoint = Declared(CGPoint),typedef CGPoint = Declared(CGPoint),typedef CGGradientDrawingOptions = Declared(CGGradientDrawingOptions))
  */
 private val CGContextDrawLinearGradient_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGPoint.layout, CGPoint.layout, ValueLayout.JAVA_INT)
-private val CGContextDrawLinearGradient_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawLinearGradient").orElseThrow() }
+private val CGContextDrawLinearGradient_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextDrawLinearGradient").orElseThrow() }
 private val CGContextDrawLinearGradient_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawLinearGradient_ADDR, CGContextDrawLinearGradient_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -157,7 +157,7 @@ fun CGContextDrawLinearGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: 
  * {@snippet lang=c : CGContextDrawRadialGradient Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGGradientRef = (Declared(CGGradient))*,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double,typedef CGGradientDrawingOptions = Declared(CGGradientDrawingOptions))
  */
 private val CGContextDrawRadialGradient_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGPoint.layout, ValueLayout.JAVA_DOUBLE, CGPoint.layout, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT)
-private val CGContextDrawRadialGradient_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawRadialGradient").orElseThrow() }
+private val CGContextDrawRadialGradient_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextDrawRadialGradient").orElseThrow() }
 private val CGContextDrawRadialGradient_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawRadialGradient_ADDR, CGContextDrawRadialGradient_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -184,7 +184,7 @@ fun CGContextDrawRadialGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: 
  * {@snippet lang=c : CGContextDrawConicGradient Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGGradientRef = (Declared(CGGradient))*,typedef CGPoint = Declared(CGPoint),typedef CGFloat = Double)
  */
 private val CGContextDrawConicGradient_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CGPoint.layout, ValueLayout.JAVA_DOUBLE)
-private val CGContextDrawConicGradient_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawConicGradient").orElseThrow() }
+private val CGContextDrawConicGradient_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextDrawConicGradient").orElseThrow() }
 private val CGContextDrawConicGradient_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawConicGradient_ADDR, CGContextDrawConicGradient_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
@@ -211,7 +211,7 @@ fun CGContextDrawConicGradient(arg0: MemorySegment, arg1: MemorySegment, arg2: C
  * {@snippet lang=c : CGContextDrawShading Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGShadingRef = (Declared(CGShading))*)
  */
 private val CGContextDrawShading_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextDrawShading_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawShading").orElseThrow() }
+private val CGContextDrawShading_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextDrawShading").orElseThrow() }
 private val CGContextDrawShading_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawShading_ADDR, CGContextDrawShading_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -232,7 +232,7 @@ fun CGContextDrawShading(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSetCharacterSpacing Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double)
  */
 private val CGContextSetCharacterSpacing_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetCharacterSpacing_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetCharacterSpacing").orElseThrow() }
+private val CGContextSetCharacterSpacing_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetCharacterSpacing").orElseThrow() }
 private val CGContextSetCharacterSpacing_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetCharacterSpacing_ADDR, CGContextSetCharacterSpacing_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -253,7 +253,7 @@ fun CGContextSetCharacterSpacing(arg0: MemorySegment, arg1: Double): Unit {
  * {@snippet lang=c : CGContextSetTextPosition Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double)
  */
 private val CGContextSetTextPosition_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetTextPosition_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetTextPosition").orElseThrow() }
+private val CGContextSetTextPosition_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetTextPosition").orElseThrow() }
 private val CGContextSetTextPosition_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetTextPosition_ADDR, CGContextSetTextPosition_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -274,7 +274,7 @@ fun CGContextSetTextPosition(arg0: MemorySegment, arg1: Double, arg2: Double): U
  * {@snippet lang=c : CGContextGetTextPosition typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextGetTextPosition_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS)
-private val CGContextGetTextPosition_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextGetTextPosition").orElseThrow() }
+private val CGContextGetTextPosition_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextGetTextPosition").orElseThrow() }
 private val CGContextGetTextPosition_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetTextPosition_ADDR, CGContextGetTextPosition_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -301,7 +301,7 @@ fun CGContextGetTextPositionTyped(allocator: SegmentAllocator, arg0: MemorySegme
  * {@snippet lang=c : CGContextSetTextMatrix Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGAffineTransform = Declared(CGAffineTransform))
  */
 private val CGContextSetTextMatrix_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGAffineTransform.layout)
-private val CGContextSetTextMatrix_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetTextMatrix").orElseThrow() }
+private val CGContextSetTextMatrix_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetTextMatrix").orElseThrow() }
 private val CGContextSetTextMatrix_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetTextMatrix_ADDR, CGContextSetTextMatrix_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -328,7 +328,7 @@ fun CGContextSetTextMatrix(arg0: MemorySegment, arg1: CGAffineTransform): Unit {
  * {@snippet lang=c : CGContextGetTextMatrix typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextGetTextMatrix_DESC: FunctionDescriptor = FunctionDescriptor.of(CGAffineTransform.layout, ValueLayout.ADDRESS)
-private val CGContextGetTextMatrix_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextGetTextMatrix").orElseThrow() }
+private val CGContextGetTextMatrix_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextGetTextMatrix").orElseThrow() }
 private val CGContextGetTextMatrix_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetTextMatrix_ADDR, CGContextGetTextMatrix_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -355,7 +355,7 @@ fun CGContextGetTextMatrixTyped(allocator: SegmentAllocator, arg0: MemorySegment
  * {@snippet lang=c : CGContextSetTextDrawingMode Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGTextDrawingMode = Declared(CGTextDrawingMode))
  */
 private val CGContextSetTextDrawingMode_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGContextSetTextDrawingMode_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetTextDrawingMode").orElseThrow() }
+private val CGContextSetTextDrawingMode_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetTextDrawingMode").orElseThrow() }
 private val CGContextSetTextDrawingMode_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetTextDrawingMode_ADDR, CGContextSetTextDrawingMode_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -376,7 +376,7 @@ fun CGContextSetTextDrawingMode(arg0: MemorySegment, arg1: CGTextDrawingMode): U
  * {@snippet lang=c : CGContextSetFont Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFontRef = (Declared(CGFont))*)
  */
 private val CGContextSetFont_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextSetFont_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetFont").orElseThrow() }
+private val CGContextSetFont_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetFont").orElseThrow() }
 private val CGContextSetFont_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetFont_ADDR, CGContextSetFont_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -397,7 +397,7 @@ fun CGContextSetFont(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSetFontSize Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double)
  */
 private val CGContextSetFontSize_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE)
-private val CGContextSetFontSize_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetFontSize").orElseThrow() }
+private val CGContextSetFontSize_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetFontSize").orElseThrow() }
 private val CGContextSetFontSize_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetFontSize_ADDR, CGContextSetFontSize_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -418,7 +418,7 @@ fun CGContextSetFontSize(arg0: MemorySegment, arg1: Double): Unit {
  * {@snippet lang=c : CGContextShowGlyphsAtPositions Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGGlyph = UNSIGNED = Short)*,(typedef CGPoint = Declared(CGPoint))*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowGlyphsAtPositions_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphsAtPositions_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowGlyphsAtPositions").orElseThrow() }
+private val CGContextShowGlyphsAtPositions_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextShowGlyphsAtPositions").orElseThrow() }
 private val CGContextShowGlyphsAtPositions_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowGlyphsAtPositions_ADDR, CGContextShowGlyphsAtPositions_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -439,7 +439,7 @@ fun CGContextShowGlyphsAtPositions(arg0: MemorySegment, arg1: MemorySegment, arg
  * {@snippet lang=c : CGContextDrawPDFPage Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGPDFPageRef = (Declared(CGPDFPage))*)
  */
 private val CGContextDrawPDFPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextDrawPDFPage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawPDFPage").orElseThrow() }
+private val CGContextDrawPDFPage_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextDrawPDFPage").orElseThrow() }
 private val CGContextDrawPDFPage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawPDFPage_ADDR, CGContextDrawPDFPage_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -460,7 +460,7 @@ fun CGContextDrawPDFPage(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGContextBeginPage Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGRect = Declared(CGRect))*)
  */
 private val CGContextBeginPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextBeginPage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextBeginPage").orElseThrow() }
+private val CGContextBeginPage_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextBeginPage").orElseThrow() }
 private val CGContextBeginPage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextBeginPage_ADDR, CGContextBeginPage_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -481,7 +481,7 @@ fun CGContextBeginPage(arg0: MemorySegment, arg1: MemorySegment): Unit {
  * {@snippet lang=c : CGContextEndPage Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextEndPage_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextEndPage_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextEndPage").orElseThrow() }
+private val CGContextEndPage_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextEndPage").orElseThrow() }
 private val CGContextEndPage_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextEndPage_ADDR, CGContextEndPage_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -502,7 +502,7 @@ fun CGContextEndPage(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextRetain typedef CGContextRef = (Declared(CGContext))*(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextRetain_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextRetain_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextRetain").orElseThrow() }
+private val CGContextRetain_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextRetain").orElseThrow() }
 private val CGContextRetain_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextRetain_ADDR, CGContextRetain_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -523,7 +523,7 @@ fun CGContextRetain(arg0: MemorySegment): MemorySegment {
  * {@snippet lang=c : CGContextRelease Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextRelease_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextRelease_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextRelease").orElseThrow() }
+private val CGContextRelease_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextRelease").orElseThrow() }
 private val CGContextRelease_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextRelease_ADDR, CGContextRelease_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -544,7 +544,7 @@ fun CGContextRelease(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextFlush Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextFlush_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextFlush_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextFlush").orElseThrow() }
+private val CGContextFlush_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextFlush").orElseThrow() }
 private val CGContextFlush_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextFlush_ADDR, CGContextFlush_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -565,7 +565,7 @@ fun CGContextFlush(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSynchronize Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextSynchronize_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextSynchronize_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSynchronize").orElseThrow() }
+private val CGContextSynchronize_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSynchronize").orElseThrow() }
 private val CGContextSynchronize_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSynchronize_ADDR, CGContextSynchronize_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -586,7 +586,7 @@ fun CGContextSynchronize(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSynchronizeAttributes Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextSynchronizeAttributes_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextSynchronizeAttributes_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSynchronizeAttributes").orElseThrow() }
+private val CGContextSynchronizeAttributes_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSynchronizeAttributes").orElseThrow() }
 private val CGContextSynchronizeAttributes_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSynchronizeAttributes_ADDR, CGContextSynchronizeAttributes_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
@@ -607,7 +607,7 @@ fun CGContextSynchronizeAttributes(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextSetShouldAntialias Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetShouldAntialias_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldAntialias_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShouldAntialias").orElseThrow() }
+private val CGContextSetShouldAntialias_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetShouldAntialias").orElseThrow() }
 private val CGContextSetShouldAntialias_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShouldAntialias_ADDR, CGContextSetShouldAntialias_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -628,7 +628,7 @@ fun CGContextSetShouldAntialias(arg0: MemorySegment, arg1: Boolean): Unit {
  * {@snippet lang=c : CGContextSetAllowsAntialiasing Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetAllowsAntialiasing_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsAntialiasing_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetAllowsAntialiasing").orElseThrow() }
+private val CGContextSetAllowsAntialiasing_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetAllowsAntialiasing").orElseThrow() }
 private val CGContextSetAllowsAntialiasing_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetAllowsAntialiasing_ADDR, CGContextSetAllowsAntialiasing_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -649,7 +649,7 @@ fun CGContextSetAllowsAntialiasing(arg0: MemorySegment, arg1: Boolean): Unit {
  * {@snippet lang=c : CGContextSetShouldSmoothFonts Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetShouldSmoothFonts_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldSmoothFonts_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShouldSmoothFonts").orElseThrow() }
+private val CGContextSetShouldSmoothFonts_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetShouldSmoothFonts").orElseThrow() }
 private val CGContextSetShouldSmoothFonts_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShouldSmoothFonts_ADDR, CGContextSetShouldSmoothFonts_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -670,7 +670,7 @@ fun CGContextSetShouldSmoothFonts(arg0: MemorySegment, arg1: Boolean): Unit {
  * {@snippet lang=c : CGContextSetAllowsFontSmoothing Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetAllowsFontSmoothing_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsFontSmoothing_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSmoothing").orElseThrow() }
+private val CGContextSetAllowsFontSmoothing_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetAllowsFontSmoothing").orElseThrow() }
 private val CGContextSetAllowsFontSmoothing_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSmoothing_ADDR, CGContextSetAllowsFontSmoothing_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -691,7 +691,7 @@ fun CGContextSetAllowsFontSmoothing(arg0: MemorySegment, arg1: Boolean): Unit {
  * {@snippet lang=c : CGContextSetShouldSubpixelPositionFonts Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetShouldSubpixelPositionFonts_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldSubpixelPositionFonts_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShouldSubpixelPositionFonts").orElseThrow() }
+private val CGContextSetShouldSubpixelPositionFonts_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetShouldSubpixelPositionFonts").orElseThrow() }
 private val CGContextSetShouldSubpixelPositionFonts_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShouldSubpixelPositionFonts_ADDR, CGContextSetShouldSubpixelPositionFonts_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -712,7 +712,7 @@ fun CGContextSetShouldSubpixelPositionFonts(arg0: MemorySegment, arg1: Boolean):
  * {@snippet lang=c : CGContextSetAllowsFontSubpixelPositioning Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetAllowsFontSubpixelPositioning_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsFontSubpixelPositioning_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSubpixelPositioning").orElseThrow() }
+private val CGContextSetAllowsFontSubpixelPositioning_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetAllowsFontSubpixelPositioning").orElseThrow() }
 private val CGContextSetAllowsFontSubpixelPositioning_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSubpixelPositioning_ADDR, CGContextSetAllowsFontSubpixelPositioning_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -733,7 +733,7 @@ fun CGContextSetAllowsFontSubpixelPositioning(arg0: MemorySegment, arg1: Boolean
  * {@snippet lang=c : CGContextSetShouldSubpixelQuantizeFonts Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetShouldSubpixelQuantizeFonts_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetShouldSubpixelQuantizeFonts_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetShouldSubpixelQuantizeFonts").orElseThrow() }
+private val CGContextSetShouldSubpixelQuantizeFonts_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetShouldSubpixelQuantizeFonts").orElseThrow() }
 private val CGContextSetShouldSubpixelQuantizeFonts_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetShouldSubpixelQuantizeFonts_ADDR, CGContextSetShouldSubpixelQuantizeFonts_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -754,7 +754,7 @@ fun CGContextSetShouldSubpixelQuantizeFonts(arg0: MemorySegment, arg1: Boolean):
  * {@snippet lang=c : CGContextSetAllowsFontSubpixelQuantization Void(typedef CGContextRef = (Declared(CGContext))*,Bool)
  */
 private val CGContextSetAllowsFontSubpixelQuantization_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN)
-private val CGContextSetAllowsFontSubpixelQuantization_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSetAllowsFontSubpixelQuantization").orElseThrow() }
+private val CGContextSetAllowsFontSubpixelQuantization_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSetAllowsFontSubpixelQuantization").orElseThrow() }
 private val CGContextSetAllowsFontSubpixelQuantization_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSetAllowsFontSubpixelQuantization_ADDR, CGContextSetAllowsFontSubpixelQuantization_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -775,7 +775,7 @@ fun CGContextSetAllowsFontSubpixelQuantization(arg0: MemorySegment, arg1: Boolea
  * {@snippet lang=c : CGContextBeginTransparencyLayer Void(typedef CGContextRef = (Declared(CGContext))*,typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGContextBeginTransparencyLayer_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val CGContextBeginTransparencyLayer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextBeginTransparencyLayer").orElseThrow() }
+private val CGContextBeginTransparencyLayer_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextBeginTransparencyLayer").orElseThrow() }
 private val CGContextBeginTransparencyLayer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextBeginTransparencyLayer_ADDR, CGContextBeginTransparencyLayer_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -796,7 +796,7 @@ fun CGContextBeginTransparencyLayer(arg0: MemorySegment, arg1: MemorySegment): U
  * {@snippet lang=c : CGContextBeginTransparencyLayerWithRect Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CFDictionaryRef = (Declared(__CFDictionary))*)
  */
 private val CGContextBeginTransparencyLayerWithRect_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS)
-private val CGContextBeginTransparencyLayerWithRect_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextBeginTransparencyLayerWithRect").orElseThrow() }
+private val CGContextBeginTransparencyLayerWithRect_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextBeginTransparencyLayerWithRect").orElseThrow() }
 private val CGContextBeginTransparencyLayerWithRect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextBeginTransparencyLayerWithRect_ADDR, CGContextBeginTransparencyLayerWithRect_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -823,7 +823,7 @@ fun CGContextBeginTransparencyLayerWithRect(arg0: MemorySegment, arg1: CGRect, a
  * {@snippet lang=c : CGContextEndTransparencyLayer Void(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextEndTransparencyLayer_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
-private val CGContextEndTransparencyLayer_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextEndTransparencyLayer").orElseThrow() }
+private val CGContextEndTransparencyLayer_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextEndTransparencyLayer").orElseThrow() }
 private val CGContextEndTransparencyLayer_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextEndTransparencyLayer_ADDR, CGContextEndTransparencyLayer_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -844,7 +844,7 @@ fun CGContextEndTransparencyLayer(arg0: MemorySegment): Unit {
  * {@snippet lang=c : CGContextGetUserSpaceToDeviceSpaceTransform typedef CGAffineTransform = Declared(CGAffineTransform)(typedef CGContextRef = (Declared(CGContext))*)
  */
 private val CGContextGetUserSpaceToDeviceSpaceTransform_DESC: FunctionDescriptor = FunctionDescriptor.of(CGAffineTransform.layout, ValueLayout.ADDRESS)
-private val CGContextGetUserSpaceToDeviceSpaceTransform_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextGetUserSpaceToDeviceSpaceTransform").orElseThrow() }
+private val CGContextGetUserSpaceToDeviceSpaceTransform_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextGetUserSpaceToDeviceSpaceTransform").orElseThrow() }
 private val CGContextGetUserSpaceToDeviceSpaceTransform_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextGetUserSpaceToDeviceSpaceTransform_ADDR, CGContextGetUserSpaceToDeviceSpaceTransform_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -871,7 +871,7 @@ fun CGContextGetUserSpaceToDeviceSpaceTransformTyped(allocator: SegmentAllocator
  * {@snippet lang=c : CGContextConvertPointToDeviceSpace typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint))
  */
 private val CGContextConvertPointToDeviceSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS, CGPoint.layout)
-private val CGContextConvertPointToDeviceSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertPointToDeviceSpace").orElseThrow() }
+private val CGContextConvertPointToDeviceSpace_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextConvertPointToDeviceSpace").orElseThrow() }
 private val CGContextConvertPointToDeviceSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertPointToDeviceSpace_ADDR, CGContextConvertPointToDeviceSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -898,7 +898,7 @@ fun CGContextConvertPointToDeviceSpace(allocator: SegmentAllocator, arg0: Memory
  * {@snippet lang=c : CGContextConvertPointToUserSpace typedef CGPoint = Declared(CGPoint)(typedef CGContextRef = (Declared(CGContext))*,typedef CGPoint = Declared(CGPoint))
  */
 private val CGContextConvertPointToUserSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGPoint.layout, ValueLayout.ADDRESS, CGPoint.layout)
-private val CGContextConvertPointToUserSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertPointToUserSpace").orElseThrow() }
+private val CGContextConvertPointToUserSpace_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextConvertPointToUserSpace").orElseThrow() }
 private val CGContextConvertPointToUserSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertPointToUserSpace_ADDR, CGContextConvertPointToUserSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -925,7 +925,7 @@ fun CGContextConvertPointToUserSpace(allocator: SegmentAllocator, arg0: MemorySe
  * {@snippet lang=c : CGContextConvertSizeToDeviceSpace typedef CGSize = Declared(CGSize)(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize))
  */
 private val CGContextConvertSizeToDeviceSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGSize.layout, ValueLayout.ADDRESS, CGSize.layout)
-private val CGContextConvertSizeToDeviceSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertSizeToDeviceSpace").orElseThrow() }
+private val CGContextConvertSizeToDeviceSpace_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextConvertSizeToDeviceSpace").orElseThrow() }
 private val CGContextConvertSizeToDeviceSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertSizeToDeviceSpace_ADDR, CGContextConvertSizeToDeviceSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -952,7 +952,7 @@ fun CGContextConvertSizeToDeviceSpace(allocator: SegmentAllocator, arg0: MemoryS
  * {@snippet lang=c : CGContextConvertSizeToUserSpace typedef CGSize = Declared(CGSize)(typedef CGContextRef = (Declared(CGContext))*,typedef CGSize = Declared(CGSize))
  */
 private val CGContextConvertSizeToUserSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGSize.layout, ValueLayout.ADDRESS, CGSize.layout)
-private val CGContextConvertSizeToUserSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertSizeToUserSpace").orElseThrow() }
+private val CGContextConvertSizeToUserSpace_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextConvertSizeToUserSpace").orElseThrow() }
 private val CGContextConvertSizeToUserSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertSizeToUserSpace_ADDR, CGContextConvertSizeToUserSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -979,7 +979,7 @@ fun CGContextConvertSizeToUserSpace(allocator: SegmentAllocator, arg0: MemorySeg
  * {@snippet lang=c : CGContextConvertRectToDeviceSpace typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
  */
 private val CGContextConvertRectToDeviceSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.ADDRESS, CGRect.layout)
-private val CGContextConvertRectToDeviceSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertRectToDeviceSpace").orElseThrow() }
+private val CGContextConvertRectToDeviceSpace_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextConvertRectToDeviceSpace").orElseThrow() }
 private val CGContextConvertRectToDeviceSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertRectToDeviceSpace_ADDR, CGContextConvertRectToDeviceSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1006,7 +1006,7 @@ fun CGContextConvertRectToDeviceSpace(allocator: SegmentAllocator, arg0: MemoryS
  * {@snippet lang=c : CGContextConvertRectToUserSpace typedef CGRect = Declared(CGRect)(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect))
  */
 private val CGContextConvertRectToUserSpace_DESC: FunctionDescriptor = FunctionDescriptor.of(CGRect.layout, ValueLayout.ADDRESS, CGRect.layout)
-private val CGContextConvertRectToUserSpace_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextConvertRectToUserSpace").orElseThrow() }
+private val CGContextConvertRectToUserSpace_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextConvertRectToUserSpace").orElseThrow() }
 private val CGContextConvertRectToUserSpace_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextConvertRectToUserSpace_ADDR, CGContextConvertRectToUserSpace_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1)
@@ -1033,7 +1033,7 @@ fun CGContextConvertRectToUserSpace(allocator: SegmentAllocator, arg0: MemorySeg
  * {@snippet lang=c : CGContextSelectFont Void(typedef CGContextRef = (Declared(CGContext))*,(Char)*,typedef CGFloat = Double,typedef CGTextEncoding = Declared(CGTextEncoding))
  */
 private val CGContextSelectFont_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT)
-private val CGContextSelectFont_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextSelectFont").orElseThrow() }
+private val CGContextSelectFont_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextSelectFont").orElseThrow() }
 private val CGContextSelectFont_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextSelectFont_ADDR, CGContextSelectFont_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
@@ -1054,7 +1054,7 @@ fun CGContextSelectFont(arg0: MemorySegment, arg1: MemorySegment, arg2: Double, 
  * {@snippet lang=c : CGContextShowText Void(typedef CGContextRef = (Declared(CGContext))*,(Char)*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowText_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowText_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowText").orElseThrow() }
+private val CGContextShowText_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextShowText").orElseThrow() }
 private val CGContextShowText_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowText_ADDR, CGContextShowText_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
@@ -1075,7 +1075,7 @@ fun CGContextShowText(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): Uni
  * {@snippet lang=c : CGContextShowTextAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double,(Char)*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowTextAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowTextAtPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowTextAtPoint").orElseThrow() }
+private val CGContextShowTextAtPoint_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextShowTextAtPoint").orElseThrow() }
 private val CGContextShowTextAtPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowTextAtPoint_ADDR, CGContextShowTextAtPoint_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
@@ -1096,7 +1096,7 @@ fun CGContextShowTextAtPoint(arg0: MemorySegment, arg1: Double, arg2: Double, ar
  * {@snippet lang=c : CGContextShowGlyphs Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGGlyph = UNSIGNED = Short)*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowGlyphs_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphs_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowGlyphs").orElseThrow() }
+private val CGContextShowGlyphs_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextShowGlyphs").orElseThrow() }
 private val CGContextShowGlyphs_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowGlyphs_ADDR, CGContextShowGlyphs_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
@@ -1117,7 +1117,7 @@ fun CGContextShowGlyphs(arg0: MemorySegment, arg1: MemorySegment, arg2: Long): U
  * {@snippet lang=c : CGContextShowGlyphsAtPoint Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGFloat = Double,typedef CGFloat = Double,(typedef CGGlyph = UNSIGNED = Short)*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowGlyphsAtPoint_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphsAtPoint_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowGlyphsAtPoint").orElseThrow() }
+private val CGContextShowGlyphsAtPoint_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextShowGlyphsAtPoint").orElseThrow() }
 private val CGContextShowGlyphsAtPoint_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowGlyphsAtPoint_ADDR, CGContextShowGlyphsAtPoint_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
@@ -1138,7 +1138,7 @@ fun CGContextShowGlyphsAtPoint(arg0: MemorySegment, arg1: Double, arg2: Double, 
  * {@snippet lang=c : CGContextShowGlyphsWithAdvances Void(typedef CGContextRef = (Declared(CGContext))*,(typedef CGGlyph = UNSIGNED = Short)*,(typedef CGSize = Declared(CGSize))*,typedef size_t = UNSIGNED = Long)
  */
 private val CGContextShowGlyphsWithAdvances_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val CGContextShowGlyphsWithAdvances_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextShowGlyphsWithAdvances").orElseThrow() }
+private val CGContextShowGlyphsWithAdvances_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextShowGlyphsWithAdvances").orElseThrow() }
 private val CGContextShowGlyphsWithAdvances_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextShowGlyphsWithAdvances_ADDR, CGContextShowGlyphsWithAdvances_DESC) }
 
 @PlatformAvailability(platform = "ios", introducedMajor = 2, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 7, deprecatedMinor = 0, deprecatedSubminor = -1, message = "No longer supported")
@@ -1159,7 +1159,7 @@ fun CGContextShowGlyphsWithAdvances(arg0: MemorySegment, arg1: MemorySegment, ar
  * {@snippet lang=c : CGContextDrawPDFDocument Void(typedef CGContextRef = (Declared(CGContext))*,typedef CGRect = Declared(CGRect),typedef CGPDFDocumentRef = (Declared(CGPDFDocument))*,Int)
  */
 private val CGContextDrawPDFDocument_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CGRect.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val CGContextDrawPDFDocument_ADDR: MemorySegment by lazy { SymbolLookup.loaderLookup().find("CGContextDrawPDFDocument").orElseThrow() }
+private val CGContextDrawPDFDocument_ADDR: MemorySegment by lazy { LOOKUP.find("CGContextDrawPDFDocument").orElseThrow() }
 private val CGContextDrawPDFDocument_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CGContextDrawPDFDocument_ADDR, CGContextDrawPDFDocument_DESC) }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1190,7 +1190,7 @@ fun CGContextDrawPDFDocument(arg0: MemorySegment, arg1: CGRect, arg2: MemorySegm
  * {@snippet lang=c : NSGraphicsContextDestinationAttributeName typedef NSGraphicsContextAttributeKey = typedef NSString = (Void)*
  */
 private val NSGraphicsContextDestinationAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSGraphicsContextDestinationAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGraphicsContextDestinationAttributeName").orElseThrow().reinterpret(NSGraphicsContextDestinationAttributeName_LAYOUT.byteSize()) }
+private val NSGraphicsContextDestinationAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSGraphicsContextDestinationAttributeName").orElseThrow().reinterpret(NSGraphicsContextDestinationAttributeName_LAYOUT.byteSize()) }
 private val NSGraphicsContextDestinationAttributeName_VH: VarHandle by lazy { NSGraphicsContextDestinationAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1202,7 +1202,7 @@ var NSGraphicsContextDestinationAttributeName: MemorySegment
  * {@snippet lang=c : NSGraphicsContextRepresentationFormatAttributeName typedef NSGraphicsContextAttributeKey = typedef NSString = (Void)*
  */
 private val NSGraphicsContextRepresentationFormatAttributeName_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSGraphicsContextRepresentationFormatAttributeName_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGraphicsContextRepresentationFormatAttributeName").orElseThrow().reinterpret(NSGraphicsContextRepresentationFormatAttributeName_LAYOUT.byteSize()) }
+private val NSGraphicsContextRepresentationFormatAttributeName_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSGraphicsContextRepresentationFormatAttributeName").orElseThrow().reinterpret(NSGraphicsContextRepresentationFormatAttributeName_LAYOUT.byteSize()) }
 private val NSGraphicsContextRepresentationFormatAttributeName_VH: VarHandle by lazy { NSGraphicsContextRepresentationFormatAttributeName_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1214,7 +1214,7 @@ var NSGraphicsContextRepresentationFormatAttributeName: MemorySegment
  * {@snippet lang=c : NSGraphicsContextPSFormat typedef NSGraphicsContextRepresentationFormatName = typedef NSString = (Void)*
  */
 private val NSGraphicsContextPSFormat_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSGraphicsContextPSFormat_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGraphicsContextPSFormat").orElseThrow().reinterpret(NSGraphicsContextPSFormat_LAYOUT.byteSize()) }
+private val NSGraphicsContextPSFormat_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSGraphicsContextPSFormat").orElseThrow().reinterpret(NSGraphicsContextPSFormat_LAYOUT.byteSize()) }
 private val NSGraphicsContextPSFormat_VH: VarHandle by lazy { NSGraphicsContextPSFormat_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1226,7 +1226,7 @@ var NSGraphicsContextPSFormat: MemorySegment
  * {@snippet lang=c : NSGraphicsContextPDFFormat typedef NSGraphicsContextRepresentationFormatName = typedef NSString = (Void)*
  */
 private val NSGraphicsContextPDFFormat_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSGraphicsContextPDFFormat_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSGraphicsContextPDFFormat").orElseThrow().reinterpret(NSGraphicsContextPDFFormat_LAYOUT.byteSize()) }
+private val NSGraphicsContextPDFFormat_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSGraphicsContextPDFFormat").orElseThrow().reinterpret(NSGraphicsContextPDFFormat_LAYOUT.byteSize()) }
 private val NSGraphicsContextPDFFormat_VH: VarHandle by lazy { NSGraphicsContextPDFFormat_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1238,7 +1238,7 @@ var NSGraphicsContextPDFFormat: MemorySegment
  * {@snippet lang=c : NSTextLineTooLongException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSTextLineTooLongException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextLineTooLongException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextLineTooLongException").orElseThrow().reinterpret(NSTextLineTooLongException_LAYOUT.byteSize()) }
+private val NSTextLineTooLongException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextLineTooLongException").orElseThrow().reinterpret(NSTextLineTooLongException_LAYOUT.byteSize()) }
 private val NSTextLineTooLongException_VH: VarHandle by lazy { NSTextLineTooLongException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1250,7 +1250,7 @@ var NSTextLineTooLongException: MemorySegment
  * {@snippet lang=c : NSTextNoSelectionException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSTextNoSelectionException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextNoSelectionException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextNoSelectionException").orElseThrow().reinterpret(NSTextNoSelectionException_LAYOUT.byteSize()) }
+private val NSTextNoSelectionException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextNoSelectionException").orElseThrow().reinterpret(NSTextNoSelectionException_LAYOUT.byteSize()) }
 private val NSTextNoSelectionException_VH: VarHandle by lazy { NSTextNoSelectionException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1262,7 +1262,7 @@ var NSTextNoSelectionException: MemorySegment
  * {@snippet lang=c : NSWordTablesWriteException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSWordTablesWriteException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWordTablesWriteException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWordTablesWriteException").orElseThrow().reinterpret(NSWordTablesWriteException_LAYOUT.byteSize()) }
+private val NSWordTablesWriteException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWordTablesWriteException").orElseThrow().reinterpret(NSWordTablesWriteException_LAYOUT.byteSize()) }
 private val NSWordTablesWriteException_VH: VarHandle by lazy { NSWordTablesWriteException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1274,7 +1274,7 @@ var NSWordTablesWriteException: MemorySegment
  * {@snippet lang=c : NSWordTablesReadException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSWordTablesReadException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWordTablesReadException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWordTablesReadException").orElseThrow().reinterpret(NSWordTablesReadException_LAYOUT.byteSize()) }
+private val NSWordTablesReadException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWordTablesReadException").orElseThrow().reinterpret(NSWordTablesReadException_LAYOUT.byteSize()) }
 private val NSWordTablesReadException_VH: VarHandle by lazy { NSWordTablesReadException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1286,7 +1286,7 @@ var NSWordTablesReadException: MemorySegment
  * {@snippet lang=c : NSTextReadException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSTextReadException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextReadException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextReadException").orElseThrow().reinterpret(NSTextReadException_LAYOUT.byteSize()) }
+private val NSTextReadException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextReadException").orElseThrow().reinterpret(NSTextReadException_LAYOUT.byteSize()) }
 private val NSTextReadException_VH: VarHandle by lazy { NSTextReadException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1298,7 +1298,7 @@ var NSTextReadException: MemorySegment
  * {@snippet lang=c : NSTextWriteException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSTextWriteException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTextWriteException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTextWriteException").orElseThrow().reinterpret(NSTextWriteException_LAYOUT.byteSize()) }
+private val NSTextWriteException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTextWriteException").orElseThrow().reinterpret(NSTextWriteException_LAYOUT.byteSize()) }
 private val NSTextWriteException_VH: VarHandle by lazy { NSTextWriteException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1310,7 +1310,7 @@ var NSTextWriteException: MemorySegment
  * {@snippet lang=c : NSPasteboardCommunicationException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSPasteboardCommunicationException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPasteboardCommunicationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPasteboardCommunicationException").orElseThrow().reinterpret(NSPasteboardCommunicationException_LAYOUT.byteSize()) }
+private val NSPasteboardCommunicationException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPasteboardCommunicationException").orElseThrow().reinterpret(NSPasteboardCommunicationException_LAYOUT.byteSize()) }
 private val NSPasteboardCommunicationException_VH: VarHandle by lazy { NSPasteboardCommunicationException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1322,7 +1322,7 @@ var NSPasteboardCommunicationException: MemorySegment
  * {@snippet lang=c : NSPrintingCommunicationException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSPrintingCommunicationException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintingCommunicationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintingCommunicationException").orElseThrow().reinterpret(NSPrintingCommunicationException_LAYOUT.byteSize()) }
+private val NSPrintingCommunicationException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPrintingCommunicationException").orElseThrow().reinterpret(NSPrintingCommunicationException_LAYOUT.byteSize()) }
 private val NSPrintingCommunicationException_VH: VarHandle by lazy { NSPrintingCommunicationException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1334,7 +1334,7 @@ var NSPrintingCommunicationException: MemorySegment
  * {@snippet lang=c : NSAbortModalException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSAbortModalException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAbortModalException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAbortModalException").orElseThrow().reinterpret(NSAbortModalException_LAYOUT.byteSize()) }
+private val NSAbortModalException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAbortModalException").orElseThrow().reinterpret(NSAbortModalException_LAYOUT.byteSize()) }
 private val NSAbortModalException_VH: VarHandle by lazy { NSAbortModalException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1346,7 +1346,7 @@ var NSAbortModalException: MemorySegment
  * {@snippet lang=c : NSAbortPrintingException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSAbortPrintingException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAbortPrintingException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAbortPrintingException").orElseThrow().reinterpret(NSAbortPrintingException_LAYOUT.byteSize()) }
+private val NSAbortPrintingException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAbortPrintingException").orElseThrow().reinterpret(NSAbortPrintingException_LAYOUT.byteSize()) }
 private val NSAbortPrintingException_VH: VarHandle by lazy { NSAbortPrintingException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1358,7 +1358,7 @@ var NSAbortPrintingException: MemorySegment
  * {@snippet lang=c : NSIllegalSelectorException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSIllegalSelectorException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSIllegalSelectorException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSIllegalSelectorException").orElseThrow().reinterpret(NSIllegalSelectorException_LAYOUT.byteSize()) }
+private val NSIllegalSelectorException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSIllegalSelectorException").orElseThrow().reinterpret(NSIllegalSelectorException_LAYOUT.byteSize()) }
 private val NSIllegalSelectorException_VH: VarHandle by lazy { NSIllegalSelectorException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1370,7 +1370,7 @@ var NSIllegalSelectorException: MemorySegment
  * {@snippet lang=c : NSAppKitVirtualMemoryException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSAppKitVirtualMemoryException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAppKitVirtualMemoryException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAppKitVirtualMemoryException").orElseThrow().reinterpret(NSAppKitVirtualMemoryException_LAYOUT.byteSize()) }
+private val NSAppKitVirtualMemoryException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAppKitVirtualMemoryException").orElseThrow().reinterpret(NSAppKitVirtualMemoryException_LAYOUT.byteSize()) }
 private val NSAppKitVirtualMemoryException_VH: VarHandle by lazy { NSAppKitVirtualMemoryException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1382,7 +1382,7 @@ var NSAppKitVirtualMemoryException: MemorySegment
  * {@snippet lang=c : NSBadRTFDirectiveException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSBadRTFDirectiveException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadRTFDirectiveException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadRTFDirectiveException").orElseThrow().reinterpret(NSBadRTFDirectiveException_LAYOUT.byteSize()) }
+private val NSBadRTFDirectiveException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBadRTFDirectiveException").orElseThrow().reinterpret(NSBadRTFDirectiveException_LAYOUT.byteSize()) }
 private val NSBadRTFDirectiveException_VH: VarHandle by lazy { NSBadRTFDirectiveException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1394,7 +1394,7 @@ var NSBadRTFDirectiveException: MemorySegment
  * {@snippet lang=c : NSBadRTFFontTableException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSBadRTFFontTableException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadRTFFontTableException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadRTFFontTableException").orElseThrow().reinterpret(NSBadRTFFontTableException_LAYOUT.byteSize()) }
+private val NSBadRTFFontTableException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBadRTFFontTableException").orElseThrow().reinterpret(NSBadRTFFontTableException_LAYOUT.byteSize()) }
 private val NSBadRTFFontTableException_VH: VarHandle by lazy { NSBadRTFFontTableException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1406,7 +1406,7 @@ var NSBadRTFFontTableException: MemorySegment
  * {@snippet lang=c : NSBadRTFStyleSheetException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSBadRTFStyleSheetException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadRTFStyleSheetException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadRTFStyleSheetException").orElseThrow().reinterpret(NSBadRTFStyleSheetException_LAYOUT.byteSize()) }
+private val NSBadRTFStyleSheetException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBadRTFStyleSheetException").orElseThrow().reinterpret(NSBadRTFStyleSheetException_LAYOUT.byteSize()) }
 private val NSBadRTFStyleSheetException_VH: VarHandle by lazy { NSBadRTFStyleSheetException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1418,7 +1418,7 @@ var NSBadRTFStyleSheetException: MemorySegment
  * {@snippet lang=c : NSTypedStreamVersionException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSTypedStreamVersionException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTypedStreamVersionException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTypedStreamVersionException").orElseThrow().reinterpret(NSTypedStreamVersionException_LAYOUT.byteSize()) }
+private val NSTypedStreamVersionException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTypedStreamVersionException").orElseThrow().reinterpret(NSTypedStreamVersionException_LAYOUT.byteSize()) }
 private val NSTypedStreamVersionException_VH: VarHandle by lazy { NSTypedStreamVersionException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1430,7 +1430,7 @@ var NSTypedStreamVersionException: MemorySegment
  * {@snippet lang=c : NSTIFFException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSTIFFException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSTIFFException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSTIFFException").orElseThrow().reinterpret(NSTIFFException_LAYOUT.byteSize()) }
+private val NSTIFFException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSTIFFException").orElseThrow().reinterpret(NSTIFFException_LAYOUT.byteSize()) }
 private val NSTIFFException_VH: VarHandle by lazy { NSTIFFException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1442,7 +1442,7 @@ var NSTIFFException: MemorySegment
  * {@snippet lang=c : NSPrintPackageException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSPrintPackageException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPrintPackageException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPrintPackageException").orElseThrow().reinterpret(NSPrintPackageException_LAYOUT.byteSize()) }
+private val NSPrintPackageException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPrintPackageException").orElseThrow().reinterpret(NSPrintPackageException_LAYOUT.byteSize()) }
 private val NSPrintPackageException_VH: VarHandle by lazy { NSPrintPackageException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1454,7 +1454,7 @@ var NSPrintPackageException: MemorySegment
  * {@snippet lang=c : NSBadRTFColorTableException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSBadRTFColorTableException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadRTFColorTableException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadRTFColorTableException").orElseThrow().reinterpret(NSBadRTFColorTableException_LAYOUT.byteSize()) }
+private val NSBadRTFColorTableException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBadRTFColorTableException").orElseThrow().reinterpret(NSBadRTFColorTableException_LAYOUT.byteSize()) }
 private val NSBadRTFColorTableException_VH: VarHandle by lazy { NSBadRTFColorTableException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1466,7 +1466,7 @@ var NSBadRTFColorTableException: MemorySegment
  * {@snippet lang=c : NSDraggingException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSDraggingException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSDraggingException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSDraggingException").orElseThrow().reinterpret(NSDraggingException_LAYOUT.byteSize()) }
+private val NSDraggingException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSDraggingException").orElseThrow().reinterpret(NSDraggingException_LAYOUT.byteSize()) }
 private val NSDraggingException_VH: VarHandle by lazy { NSDraggingException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1478,7 +1478,7 @@ var NSDraggingException: MemorySegment
  * {@snippet lang=c : NSColorListIOException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSColorListIOException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSColorListIOException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSColorListIOException").orElseThrow().reinterpret(NSColorListIOException_LAYOUT.byteSize()) }
+private val NSColorListIOException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSColorListIOException").orElseThrow().reinterpret(NSColorListIOException_LAYOUT.byteSize()) }
 private val NSColorListIOException_VH: VarHandle by lazy { NSColorListIOException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1490,7 +1490,7 @@ var NSColorListIOException: MemorySegment
  * {@snippet lang=c : NSColorListNotEditableException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSColorListNotEditableException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSColorListNotEditableException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSColorListNotEditableException").orElseThrow().reinterpret(NSColorListNotEditableException_LAYOUT.byteSize()) }
+private val NSColorListNotEditableException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSColorListNotEditableException").orElseThrow().reinterpret(NSColorListNotEditableException_LAYOUT.byteSize()) }
 private val NSColorListNotEditableException_VH: VarHandle by lazy { NSColorListNotEditableException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1502,7 +1502,7 @@ var NSColorListNotEditableException: MemorySegment
  * {@snippet lang=c : NSBadBitmapParametersException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSBadBitmapParametersException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadBitmapParametersException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadBitmapParametersException").orElseThrow().reinterpret(NSBadBitmapParametersException_LAYOUT.byteSize()) }
+private val NSBadBitmapParametersException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBadBitmapParametersException").orElseThrow().reinterpret(NSBadBitmapParametersException_LAYOUT.byteSize()) }
 private val NSBadBitmapParametersException_VH: VarHandle by lazy { NSBadBitmapParametersException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1514,7 +1514,7 @@ var NSBadBitmapParametersException: MemorySegment
  * {@snippet lang=c : NSWindowServerCommunicationException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSWindowServerCommunicationException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSWindowServerCommunicationException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSWindowServerCommunicationException").orElseThrow().reinterpret(NSWindowServerCommunicationException_LAYOUT.byteSize()) }
+private val NSWindowServerCommunicationException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSWindowServerCommunicationException").orElseThrow().reinterpret(NSWindowServerCommunicationException_LAYOUT.byteSize()) }
 private val NSWindowServerCommunicationException_VH: VarHandle by lazy { NSWindowServerCommunicationException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1526,7 +1526,7 @@ var NSWindowServerCommunicationException: MemorySegment
  * {@snippet lang=c : NSFontUnavailableException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSFontUnavailableException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSFontUnavailableException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSFontUnavailableException").orElseThrow().reinterpret(NSFontUnavailableException_LAYOUT.byteSize()) }
+private val NSFontUnavailableException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSFontUnavailableException").orElseThrow().reinterpret(NSFontUnavailableException_LAYOUT.byteSize()) }
 private val NSFontUnavailableException_VH: VarHandle by lazy { NSFontUnavailableException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1538,7 +1538,7 @@ var NSFontUnavailableException: MemorySegment
  * {@snippet lang=c : NSPPDIncludeNotFoundException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSPPDIncludeNotFoundException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPPDIncludeNotFoundException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPPDIncludeNotFoundException").orElseThrow().reinterpret(NSPPDIncludeNotFoundException_LAYOUT.byteSize()) }
+private val NSPPDIncludeNotFoundException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPPDIncludeNotFoundException").orElseThrow().reinterpret(NSPPDIncludeNotFoundException_LAYOUT.byteSize()) }
 private val NSPPDIncludeNotFoundException_VH: VarHandle by lazy { NSPPDIncludeNotFoundException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1550,7 +1550,7 @@ var NSPPDIncludeNotFoundException: MemorySegment
  * {@snippet lang=c : NSPPDParseException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSPPDParseException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPPDParseException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPPDParseException").orElseThrow().reinterpret(NSPPDParseException_LAYOUT.byteSize()) }
+private val NSPPDParseException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPPDParseException").orElseThrow().reinterpret(NSPPDParseException_LAYOUT.byteSize()) }
 private val NSPPDParseException_VH: VarHandle by lazy { NSPPDParseException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1562,7 +1562,7 @@ var NSPPDParseException: MemorySegment
  * {@snippet lang=c : NSPPDIncludeStackOverflowException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSPPDIncludeStackOverflowException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPPDIncludeStackOverflowException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPPDIncludeStackOverflowException").orElseThrow().reinterpret(NSPPDIncludeStackOverflowException_LAYOUT.byteSize()) }
+private val NSPPDIncludeStackOverflowException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPPDIncludeStackOverflowException").orElseThrow().reinterpret(NSPPDIncludeStackOverflowException_LAYOUT.byteSize()) }
 private val NSPPDIncludeStackOverflowException_VH: VarHandle by lazy { NSPPDIncludeStackOverflowException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1574,7 +1574,7 @@ var NSPPDIncludeStackOverflowException: MemorySegment
  * {@snippet lang=c : NSPPDIncludeStackUnderflowException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSPPDIncludeStackUnderflowException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSPPDIncludeStackUnderflowException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSPPDIncludeStackUnderflowException").orElseThrow().reinterpret(NSPPDIncludeStackUnderflowException_LAYOUT.byteSize()) }
+private val NSPPDIncludeStackUnderflowException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSPPDIncludeStackUnderflowException").orElseThrow().reinterpret(NSPPDIncludeStackUnderflowException_LAYOUT.byteSize()) }
 private val NSPPDIncludeStackUnderflowException_VH: VarHandle by lazy { NSPPDIncludeStackUnderflowException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1586,7 +1586,7 @@ var NSPPDIncludeStackUnderflowException: MemorySegment
  * {@snippet lang=c : NSRTFPropertyStackOverflowException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSRTFPropertyStackOverflowException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSRTFPropertyStackOverflowException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSRTFPropertyStackOverflowException").orElseThrow().reinterpret(NSRTFPropertyStackOverflowException_LAYOUT.byteSize()) }
+private val NSRTFPropertyStackOverflowException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSRTFPropertyStackOverflowException").orElseThrow().reinterpret(NSRTFPropertyStackOverflowException_LAYOUT.byteSize()) }
 private val NSRTFPropertyStackOverflowException_VH: VarHandle by lazy { NSRTFPropertyStackOverflowException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1598,7 +1598,7 @@ var NSRTFPropertyStackOverflowException: MemorySegment
  * {@snippet lang=c : NSAppKitIgnoredException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSAppKitIgnoredException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAppKitIgnoredException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAppKitIgnoredException").orElseThrow().reinterpret(NSAppKitIgnoredException_LAYOUT.byteSize()) }
+private val NSAppKitIgnoredException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAppKitIgnoredException").orElseThrow().reinterpret(NSAppKitIgnoredException_LAYOUT.byteSize()) }
 private val NSAppKitIgnoredException_VH: VarHandle by lazy { NSAppKitIgnoredException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1610,7 +1610,7 @@ var NSAppKitIgnoredException: MemorySegment
  * {@snippet lang=c : NSBadComparisonException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSBadComparisonException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBadComparisonException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBadComparisonException").orElseThrow().reinterpret(NSBadComparisonException_LAYOUT.byteSize()) }
+private val NSBadComparisonException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBadComparisonException").orElseThrow().reinterpret(NSBadComparisonException_LAYOUT.byteSize()) }
 private val NSBadComparisonException_VH: VarHandle by lazy { NSBadComparisonException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1622,7 +1622,7 @@ var NSBadComparisonException: MemorySegment
  * {@snippet lang=c : NSImageCacheException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSImageCacheException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageCacheException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSImageCacheException").orElseThrow().reinterpret(NSImageCacheException_LAYOUT.byteSize()) }
+private val NSImageCacheException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageCacheException").orElseThrow().reinterpret(NSImageCacheException_LAYOUT.byteSize()) }
 private val NSImageCacheException_VH: VarHandle by lazy { NSImageCacheException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1634,7 +1634,7 @@ var NSImageCacheException: MemorySegment
  * {@snippet lang=c : NSNibLoadingException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSNibLoadingException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSNibLoadingException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSNibLoadingException").orElseThrow().reinterpret(NSNibLoadingException_LAYOUT.byteSize()) }
+private val NSNibLoadingException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSNibLoadingException").orElseThrow().reinterpret(NSNibLoadingException_LAYOUT.byteSize()) }
 private val NSNibLoadingException_VH: VarHandle by lazy { NSNibLoadingException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1646,7 +1646,7 @@ var NSNibLoadingException: MemorySegment
  * {@snippet lang=c : NSBrowserIllegalDelegateException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSBrowserIllegalDelegateException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSBrowserIllegalDelegateException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSBrowserIllegalDelegateException").orElseThrow().reinterpret(NSBrowserIllegalDelegateException_LAYOUT.byteSize()) }
+private val NSBrowserIllegalDelegateException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSBrowserIllegalDelegateException").orElseThrow().reinterpret(NSBrowserIllegalDelegateException_LAYOUT.byteSize()) }
 private val NSBrowserIllegalDelegateException_VH: VarHandle by lazy { NSBrowserIllegalDelegateException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1658,7 +1658,7 @@ var NSBrowserIllegalDelegateException: MemorySegment
  * {@snippet lang=c : NSAccessibilityException typedef NSExceptionName = typedef NSString = (Void)*
  */
 private val NSAccessibilityException_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityException_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityException").orElseThrow().reinterpret(NSAccessibilityException_LAYOUT.byteSize()) }
+private val NSAccessibilityException_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityException").orElseThrow().reinterpret(NSAccessibilityException_LAYOUT.byteSize()) }
 private val NSAccessibilityException_VH: VarHandle by lazy { NSAccessibilityException_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1671,7 +1671,7 @@ var NSAccessibilityException: MemorySegment
  * {@snippet lang=c : NSAccessibilityErrorCodeExceptionInfo (Void)*
  */
 private val NSAccessibilityErrorCodeExceptionInfo_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityErrorCodeExceptionInfo_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityErrorCodeExceptionInfo").orElseThrow().reinterpret(NSAccessibilityErrorCodeExceptionInfo_LAYOUT.byteSize()) }
+private val NSAccessibilityErrorCodeExceptionInfo_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityErrorCodeExceptionInfo").orElseThrow().reinterpret(NSAccessibilityErrorCodeExceptionInfo_LAYOUT.byteSize()) }
 private val NSAccessibilityErrorCodeExceptionInfo_VH: VarHandle by lazy { NSAccessibilityErrorCodeExceptionInfo_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1683,7 +1683,7 @@ var NSAccessibilityErrorCodeExceptionInfo: MemorySegment
  * {@snippet lang=c : NSAccessibilityRoleAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityRoleAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRoleAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRoleAttribute").orElseThrow().reinterpret(NSAccessibilityRoleAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRoleAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRoleAttribute").orElseThrow().reinterpret(NSAccessibilityRoleAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRoleAttribute_VH: VarHandle by lazy { NSAccessibilityRoleAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1695,7 +1695,7 @@ var NSAccessibilityRoleAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRoleDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityRoleDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRoleDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRoleDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityRoleDescriptionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRoleDescriptionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRoleDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityRoleDescriptionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRoleDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityRoleDescriptionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1707,7 +1707,7 @@ var NSAccessibilityRoleDescriptionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySubroleAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySubroleAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySubroleAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySubroleAttribute").orElseThrow().reinterpret(NSAccessibilitySubroleAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySubroleAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySubroleAttribute").orElseThrow().reinterpret(NSAccessibilitySubroleAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySubroleAttribute_VH: VarHandle by lazy { NSAccessibilitySubroleAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1719,7 +1719,7 @@ var NSAccessibilitySubroleAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityHelpAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityHelpAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHelpAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHelpAttribute").orElseThrow().reinterpret(NSAccessibilityHelpAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityHelpAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHelpAttribute").orElseThrow().reinterpret(NSAccessibilityHelpAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityHelpAttribute_VH: VarHandle by lazy { NSAccessibilityHelpAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1731,7 +1731,7 @@ var NSAccessibilityHelpAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityValueAttribute").orElseThrow().reinterpret(NSAccessibilityValueAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityValueAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityValueAttribute").orElseThrow().reinterpret(NSAccessibilityValueAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityValueAttribute_VH: VarHandle by lazy { NSAccessibilityValueAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1743,7 +1743,7 @@ var NSAccessibilityValueAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMinValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMinValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMinValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMinValueAttribute").orElseThrow().reinterpret(NSAccessibilityMinValueAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMinValueAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMinValueAttribute").orElseThrow().reinterpret(NSAccessibilityMinValueAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMinValueAttribute_VH: VarHandle by lazy { NSAccessibilityMinValueAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1755,7 +1755,7 @@ var NSAccessibilityMinValueAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMaxValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMaxValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMaxValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMaxValueAttribute").orElseThrow().reinterpret(NSAccessibilityMaxValueAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMaxValueAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMaxValueAttribute").orElseThrow().reinterpret(NSAccessibilityMaxValueAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMaxValueAttribute_VH: VarHandle by lazy { NSAccessibilityMaxValueAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1767,7 +1767,7 @@ var NSAccessibilityMaxValueAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityEnabledAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityEnabledAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityEnabledAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityEnabledAttribute").orElseThrow().reinterpret(NSAccessibilityEnabledAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityEnabledAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityEnabledAttribute").orElseThrow().reinterpret(NSAccessibilityEnabledAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityEnabledAttribute_VH: VarHandle by lazy { NSAccessibilityEnabledAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1779,7 +1779,7 @@ var NSAccessibilityEnabledAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityFocusedAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityFocusedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFocusedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFocusedAttribute").orElseThrow().reinterpret(NSAccessibilityFocusedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityFocusedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFocusedAttribute").orElseThrow().reinterpret(NSAccessibilityFocusedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityFocusedAttribute_VH: VarHandle by lazy { NSAccessibilityFocusedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1791,7 +1791,7 @@ var NSAccessibilityFocusedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityParentAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityParentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityParentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityParentAttribute").orElseThrow().reinterpret(NSAccessibilityParentAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityParentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityParentAttribute").orElseThrow().reinterpret(NSAccessibilityParentAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityParentAttribute_VH: VarHandle by lazy { NSAccessibilityParentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1803,7 +1803,7 @@ var NSAccessibilityParentAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityChildrenAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityChildrenAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityChildrenAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityChildrenAttribute").orElseThrow().reinterpret(NSAccessibilityChildrenAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityChildrenAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityChildrenAttribute").orElseThrow().reinterpret(NSAccessibilityChildrenAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityChildrenAttribute_VH: VarHandle by lazy { NSAccessibilityChildrenAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1815,7 +1815,7 @@ var NSAccessibilityChildrenAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityWindowAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityWindowAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityWindowAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWindowAttribute").orElseThrow().reinterpret(NSAccessibilityWindowAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityWindowAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityWindowAttribute").orElseThrow().reinterpret(NSAccessibilityWindowAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityWindowAttribute_VH: VarHandle by lazy { NSAccessibilityWindowAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1827,7 +1827,7 @@ var NSAccessibilityWindowAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityTopLevelUIElementAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityTopLevelUIElementAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTopLevelUIElementAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTopLevelUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityTopLevelUIElementAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityTopLevelUIElementAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityTopLevelUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityTopLevelUIElementAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityTopLevelUIElementAttribute_VH: VarHandle by lazy { NSAccessibilityTopLevelUIElementAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1839,7 +1839,7 @@ var NSAccessibilityTopLevelUIElementAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySelectedChildrenAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySelectedChildrenAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySelectedChildrenAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedChildrenAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedChildrenAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySelectedChildrenAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySelectedChildrenAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedChildrenAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySelectedChildrenAttribute_VH: VarHandle by lazy { NSAccessibilitySelectedChildrenAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1851,7 +1851,7 @@ var NSAccessibilitySelectedChildrenAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVisibleChildrenAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityVisibleChildrenAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVisibleChildrenAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVisibleChildrenAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleChildrenAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityVisibleChildrenAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVisibleChildrenAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleChildrenAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityVisibleChildrenAttribute_VH: VarHandle by lazy { NSAccessibilityVisibleChildrenAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1863,7 +1863,7 @@ var NSAccessibilityVisibleChildrenAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityPositionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityPositionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPositionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPositionAttribute").orElseThrow().reinterpret(NSAccessibilityPositionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityPositionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityPositionAttribute").orElseThrow().reinterpret(NSAccessibilityPositionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityPositionAttribute_VH: VarHandle by lazy { NSAccessibilityPositionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1875,7 +1875,7 @@ var NSAccessibilityPositionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySizeAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySizeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySizeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySizeAttribute").orElseThrow().reinterpret(NSAccessibilitySizeAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySizeAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySizeAttribute").orElseThrow().reinterpret(NSAccessibilitySizeAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySizeAttribute_VH: VarHandle by lazy { NSAccessibilitySizeAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1887,7 +1887,7 @@ var NSAccessibilitySizeAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityContentsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityContentsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityContentsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityContentsAttribute").orElseThrow().reinterpret(NSAccessibilityContentsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityContentsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityContentsAttribute").orElseThrow().reinterpret(NSAccessibilityContentsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityContentsAttribute_VH: VarHandle by lazy { NSAccessibilityContentsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1899,7 +1899,7 @@ var NSAccessibilityContentsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityTitleAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityTitleAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTitleAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTitleAttribute").orElseThrow().reinterpret(NSAccessibilityTitleAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityTitleAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityTitleAttribute").orElseThrow().reinterpret(NSAccessibilityTitleAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityTitleAttribute_VH: VarHandle by lazy { NSAccessibilityTitleAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1911,7 +1911,7 @@ var NSAccessibilityTitleAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityDescriptionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityDescriptionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityDescriptionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityDescriptionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1923,7 +1923,7 @@ var NSAccessibilityDescriptionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityShownMenuAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityShownMenuAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityShownMenuAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityShownMenuAttribute").orElseThrow().reinterpret(NSAccessibilityShownMenuAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityShownMenuAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityShownMenuAttribute").orElseThrow().reinterpret(NSAccessibilityShownMenuAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityShownMenuAttribute_VH: VarHandle by lazy { NSAccessibilityShownMenuAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1935,7 +1935,7 @@ var NSAccessibilityShownMenuAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityValueDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityValueDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityValueDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityValueDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityValueDescriptionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityValueDescriptionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityValueDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityValueDescriptionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityValueDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityValueDescriptionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1948,7 +1948,7 @@ var NSAccessibilityValueDescriptionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySharedFocusElementsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySharedFocusElementsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySharedFocusElementsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySharedFocusElementsAttribute").orElseThrow().reinterpret(NSAccessibilitySharedFocusElementsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySharedFocusElementsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySharedFocusElementsAttribute").orElseThrow().reinterpret(NSAccessibilitySharedFocusElementsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySharedFocusElementsAttribute_VH: VarHandle by lazy { NSAccessibilitySharedFocusElementsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1961,7 +1961,7 @@ var NSAccessibilitySharedFocusElementsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityPreviousContentsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityPreviousContentsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPreviousContentsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPreviousContentsAttribute").orElseThrow().reinterpret(NSAccessibilityPreviousContentsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityPreviousContentsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityPreviousContentsAttribute").orElseThrow().reinterpret(NSAccessibilityPreviousContentsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityPreviousContentsAttribute_VH: VarHandle by lazy { NSAccessibilityPreviousContentsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1973,7 +1973,7 @@ var NSAccessibilityPreviousContentsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityNextContentsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityNextContentsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityNextContentsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityNextContentsAttribute").orElseThrow().reinterpret(NSAccessibilityNextContentsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityNextContentsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityNextContentsAttribute").orElseThrow().reinterpret(NSAccessibilityNextContentsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityNextContentsAttribute_VH: VarHandle by lazy { NSAccessibilityNextContentsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1985,7 +1985,7 @@ var NSAccessibilityNextContentsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityHeaderAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityHeaderAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHeaderAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHeaderAttribute").orElseThrow().reinterpret(NSAccessibilityHeaderAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityHeaderAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHeaderAttribute").orElseThrow().reinterpret(NSAccessibilityHeaderAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityHeaderAttribute_VH: VarHandle by lazy { NSAccessibilityHeaderAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -1997,7 +1997,7 @@ var NSAccessibilityHeaderAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityEditedAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityEditedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityEditedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityEditedAttribute").orElseThrow().reinterpret(NSAccessibilityEditedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityEditedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityEditedAttribute").orElseThrow().reinterpret(NSAccessibilityEditedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityEditedAttribute_VH: VarHandle by lazy { NSAccessibilityEditedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2009,7 +2009,7 @@ var NSAccessibilityEditedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityTabsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityTabsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTabsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTabsAttribute").orElseThrow().reinterpret(NSAccessibilityTabsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityTabsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityTabsAttribute").orElseThrow().reinterpret(NSAccessibilityTabsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityTabsAttribute_VH: VarHandle by lazy { NSAccessibilityTabsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2021,7 +2021,7 @@ var NSAccessibilityTabsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityHorizontalScrollBarAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityHorizontalScrollBarAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHorizontalScrollBarAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHorizontalScrollBarAttribute").orElseThrow().reinterpret(NSAccessibilityHorizontalScrollBarAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityHorizontalScrollBarAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHorizontalScrollBarAttribute").orElseThrow().reinterpret(NSAccessibilityHorizontalScrollBarAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityHorizontalScrollBarAttribute_VH: VarHandle by lazy { NSAccessibilityHorizontalScrollBarAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2033,7 +2033,7 @@ var NSAccessibilityHorizontalScrollBarAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVerticalScrollBarAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityVerticalScrollBarAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVerticalScrollBarAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVerticalScrollBarAttribute").orElseThrow().reinterpret(NSAccessibilityVerticalScrollBarAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityVerticalScrollBarAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVerticalScrollBarAttribute").orElseThrow().reinterpret(NSAccessibilityVerticalScrollBarAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityVerticalScrollBarAttribute_VH: VarHandle by lazy { NSAccessibilityVerticalScrollBarAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2045,7 +2045,7 @@ var NSAccessibilityVerticalScrollBarAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityOverflowButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityOverflowButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityOverflowButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityOverflowButtonAttribute").orElseThrow().reinterpret(NSAccessibilityOverflowButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityOverflowButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityOverflowButtonAttribute").orElseThrow().reinterpret(NSAccessibilityOverflowButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityOverflowButtonAttribute_VH: VarHandle by lazy { NSAccessibilityOverflowButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2057,7 +2057,7 @@ var NSAccessibilityOverflowButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityIncrementButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityIncrementButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityIncrementButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityIncrementButtonAttribute").orElseThrow().reinterpret(NSAccessibilityIncrementButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityIncrementButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityIncrementButtonAttribute").orElseThrow().reinterpret(NSAccessibilityIncrementButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityIncrementButtonAttribute_VH: VarHandle by lazy { NSAccessibilityIncrementButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2069,7 +2069,7 @@ var NSAccessibilityIncrementButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityDecrementButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityDecrementButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDecrementButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDecrementButtonAttribute").orElseThrow().reinterpret(NSAccessibilityDecrementButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityDecrementButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDecrementButtonAttribute").orElseThrow().reinterpret(NSAccessibilityDecrementButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityDecrementButtonAttribute_VH: VarHandle by lazy { NSAccessibilityDecrementButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2081,7 +2081,7 @@ var NSAccessibilityDecrementButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityFilenameAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityFilenameAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFilenameAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFilenameAttribute").orElseThrow().reinterpret(NSAccessibilityFilenameAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityFilenameAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFilenameAttribute").orElseThrow().reinterpret(NSAccessibilityFilenameAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityFilenameAttribute_VH: VarHandle by lazy { NSAccessibilityFilenameAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2093,7 +2093,7 @@ var NSAccessibilityFilenameAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityExpandedAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityExpandedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityExpandedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityExpandedAttribute").orElseThrow().reinterpret(NSAccessibilityExpandedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityExpandedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityExpandedAttribute").orElseThrow().reinterpret(NSAccessibilityExpandedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityExpandedAttribute_VH: VarHandle by lazy { NSAccessibilityExpandedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2105,7 +2105,7 @@ var NSAccessibilityExpandedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySelectedAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySelectedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySelectedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySelectedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySelectedAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySelectedAttribute_VH: VarHandle by lazy { NSAccessibilitySelectedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2117,7 +2117,7 @@ var NSAccessibilitySelectedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySplittersAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySplittersAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySplittersAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySplittersAttribute").orElseThrow().reinterpret(NSAccessibilitySplittersAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySplittersAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySplittersAttribute").orElseThrow().reinterpret(NSAccessibilitySplittersAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySplittersAttribute_VH: VarHandle by lazy { NSAccessibilitySplittersAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2129,7 +2129,7 @@ var NSAccessibilitySplittersAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityDocumentAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityDocumentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDocumentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDocumentAttribute").orElseThrow().reinterpret(NSAccessibilityDocumentAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityDocumentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDocumentAttribute").orElseThrow().reinterpret(NSAccessibilityDocumentAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityDocumentAttribute_VH: VarHandle by lazy { NSAccessibilityDocumentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2141,7 +2141,7 @@ var NSAccessibilityDocumentAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityActivationPointAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityActivationPointAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityActivationPointAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityActivationPointAttribute").orElseThrow().reinterpret(NSAccessibilityActivationPointAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityActivationPointAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityActivationPointAttribute").orElseThrow().reinterpret(NSAccessibilityActivationPointAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityActivationPointAttribute_VH: VarHandle by lazy { NSAccessibilityActivationPointAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2153,7 +2153,7 @@ var NSAccessibilityActivationPointAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityURLAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityURLAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityURLAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityURLAttribute").orElseThrow().reinterpret(NSAccessibilityURLAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityURLAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityURLAttribute").orElseThrow().reinterpret(NSAccessibilityURLAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityURLAttribute_VH: VarHandle by lazy { NSAccessibilityURLAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2165,7 +2165,7 @@ var NSAccessibilityURLAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityIndexAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityIndexAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityIndexAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityIndexAttribute").orElseThrow().reinterpret(NSAccessibilityIndexAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityIndexAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityIndexAttribute").orElseThrow().reinterpret(NSAccessibilityIndexAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityIndexAttribute_VH: VarHandle by lazy { NSAccessibilityIndexAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2177,7 +2177,7 @@ var NSAccessibilityIndexAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRowCountAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityRowCountAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRowCountAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRowCountAttribute").orElseThrow().reinterpret(NSAccessibilityRowCountAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRowCountAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRowCountAttribute").orElseThrow().reinterpret(NSAccessibilityRowCountAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRowCountAttribute_VH: VarHandle by lazy { NSAccessibilityRowCountAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2190,7 +2190,7 @@ var NSAccessibilityRowCountAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityColumnCountAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityColumnCountAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityColumnCountAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityColumnCountAttribute").orElseThrow().reinterpret(NSAccessibilityColumnCountAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityColumnCountAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityColumnCountAttribute").orElseThrow().reinterpret(NSAccessibilityColumnCountAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityColumnCountAttribute_VH: VarHandle by lazy { NSAccessibilityColumnCountAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2203,7 +2203,7 @@ var NSAccessibilityColumnCountAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityOrderedByRowAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityOrderedByRowAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityOrderedByRowAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityOrderedByRowAttribute").orElseThrow().reinterpret(NSAccessibilityOrderedByRowAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityOrderedByRowAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityOrderedByRowAttribute").orElseThrow().reinterpret(NSAccessibilityOrderedByRowAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityOrderedByRowAttribute_VH: VarHandle by lazy { NSAccessibilityOrderedByRowAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2216,7 +2216,7 @@ var NSAccessibilityOrderedByRowAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityWarningValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityWarningValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityWarningValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWarningValueAttribute").orElseThrow().reinterpret(NSAccessibilityWarningValueAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityWarningValueAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityWarningValueAttribute").orElseThrow().reinterpret(NSAccessibilityWarningValueAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityWarningValueAttribute_VH: VarHandle by lazy { NSAccessibilityWarningValueAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2229,7 +2229,7 @@ var NSAccessibilityWarningValueAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityCriticalValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityCriticalValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityCriticalValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCriticalValueAttribute").orElseThrow().reinterpret(NSAccessibilityCriticalValueAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityCriticalValueAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityCriticalValueAttribute").orElseThrow().reinterpret(NSAccessibilityCriticalValueAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityCriticalValueAttribute_VH: VarHandle by lazy { NSAccessibilityCriticalValueAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2242,7 +2242,7 @@ var NSAccessibilityCriticalValueAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityPlaceholderValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityPlaceholderValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPlaceholderValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPlaceholderValueAttribute").orElseThrow().reinterpret(NSAccessibilityPlaceholderValueAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityPlaceholderValueAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityPlaceholderValueAttribute").orElseThrow().reinterpret(NSAccessibilityPlaceholderValueAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityPlaceholderValueAttribute_VH: VarHandle by lazy { NSAccessibilityPlaceholderValueAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2255,7 +2255,7 @@ var NSAccessibilityPlaceholderValueAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityContainsProtectedContentAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityContainsProtectedContentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityContainsProtectedContentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityContainsProtectedContentAttribute").orElseThrow().reinterpret(NSAccessibilityContainsProtectedContentAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityContainsProtectedContentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityContainsProtectedContentAttribute").orElseThrow().reinterpret(NSAccessibilityContainsProtectedContentAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityContainsProtectedContentAttribute_VH: VarHandle by lazy { NSAccessibilityContainsProtectedContentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2268,7 +2268,7 @@ var NSAccessibilityContainsProtectedContentAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityAlternateUIVisibleAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityAlternateUIVisibleAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAlternateUIVisibleAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAlternateUIVisibleAttribute").orElseThrow().reinterpret(NSAccessibilityAlternateUIVisibleAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityAlternateUIVisibleAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAlternateUIVisibleAttribute").orElseThrow().reinterpret(NSAccessibilityAlternateUIVisibleAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityAlternateUIVisibleAttribute_VH: VarHandle by lazy { NSAccessibilityAlternateUIVisibleAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2281,7 +2281,7 @@ var NSAccessibilityAlternateUIVisibleAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRequiredAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityRequiredAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRequiredAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRequiredAttribute").orElseThrow().reinterpret(NSAccessibilityRequiredAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRequiredAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRequiredAttribute").orElseThrow().reinterpret(NSAccessibilityRequiredAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRequiredAttribute_VH: VarHandle by lazy { NSAccessibilityRequiredAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2294,7 +2294,7 @@ var NSAccessibilityRequiredAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityAutoInteractableAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityAutoInteractableAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAutoInteractableAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAutoInteractableAttribute").orElseThrow().reinterpret(NSAccessibilityAutoInteractableAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityAutoInteractableAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAutoInteractableAttribute").orElseThrow().reinterpret(NSAccessibilityAutoInteractableAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityAutoInteractableAttribute_VH: VarHandle by lazy { NSAccessibilityAutoInteractableAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2306,7 +2306,7 @@ var NSAccessibilityAutoInteractableAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityDateTimeComponentsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityDateTimeComponentsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDateTimeComponentsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDateTimeComponentsAttribute").orElseThrow().reinterpret(NSAccessibilityDateTimeComponentsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityDateTimeComponentsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDateTimeComponentsAttribute").orElseThrow().reinterpret(NSAccessibilityDateTimeComponentsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityDateTimeComponentsAttribute_VH: VarHandle by lazy { NSAccessibilityDateTimeComponentsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2318,7 +2318,7 @@ var NSAccessibilityDateTimeComponentsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityEmbeddedImageDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityEmbeddedImageDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityEmbeddedImageDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityEmbeddedImageDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityEmbeddedImageDescriptionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityEmbeddedImageDescriptionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityEmbeddedImageDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityEmbeddedImageDescriptionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityEmbeddedImageDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityEmbeddedImageDescriptionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2331,7 +2331,7 @@ var NSAccessibilityEmbeddedImageDescriptionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityPathAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityPathAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPathAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPathAttribute").orElseThrow().reinterpret(NSAccessibilityPathAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityPathAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityPathAttribute").orElseThrow().reinterpret(NSAccessibilityPathAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityPathAttribute_VH: VarHandle by lazy { NSAccessibilityPathAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2344,7 +2344,7 @@ var NSAccessibilityPathAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityTextInputMarkedRangeAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityTextInputMarkedRangeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTextInputMarkedRangeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTextInputMarkedRangeAttribute").orElseThrow().reinterpret(NSAccessibilityTextInputMarkedRangeAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityTextInputMarkedRangeAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityTextInputMarkedRangeAttribute").orElseThrow().reinterpret(NSAccessibilityTextInputMarkedRangeAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityTextInputMarkedRangeAttribute_VH: VarHandle by lazy { NSAccessibilityTextInputMarkedRangeAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2357,7 +2357,7 @@ var NSAccessibilityTextInputMarkedRangeAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityBlockQuoteLevelAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityBlockQuoteLevelAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityBlockQuoteLevelAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityBlockQuoteLevelAttribute").orElseThrow().reinterpret(NSAccessibilityBlockQuoteLevelAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityBlockQuoteLevelAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityBlockQuoteLevelAttribute").orElseThrow().reinterpret(NSAccessibilityBlockQuoteLevelAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityBlockQuoteLevelAttribute_VH: VarHandle by lazy { NSAccessibilityBlockQuoteLevelAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2370,7 +2370,7 @@ var NSAccessibilityBlockQuoteLevelAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityHeadingLevelAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityHeadingLevelAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHeadingLevelAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHeadingLevelAttribute").orElseThrow().reinterpret(NSAccessibilityHeadingLevelAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityHeadingLevelAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHeadingLevelAttribute").orElseThrow().reinterpret(NSAccessibilityHeadingLevelAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityHeadingLevelAttribute_VH: VarHandle by lazy { NSAccessibilityHeadingLevelAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2383,7 +2383,7 @@ var NSAccessibilityHeadingLevelAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityLanguageAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityLanguageAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLanguageAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLanguageAttribute").orElseThrow().reinterpret(NSAccessibilityLanguageAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityLanguageAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLanguageAttribute").orElseThrow().reinterpret(NSAccessibilityLanguageAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityLanguageAttribute_VH: VarHandle by lazy { NSAccessibilityLanguageAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2396,7 +2396,7 @@ var NSAccessibilityLanguageAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVisitedAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityVisitedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVisitedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVisitedAttribute").orElseThrow().reinterpret(NSAccessibilityVisitedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityVisitedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVisitedAttribute").orElseThrow().reinterpret(NSAccessibilityVisitedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityVisitedAttribute_VH: VarHandle by lazy { NSAccessibilityVisitedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2409,7 +2409,7 @@ var NSAccessibilityVisitedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityTitleUIElementAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityTitleUIElementAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTitleUIElementAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTitleUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityTitleUIElementAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityTitleUIElementAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityTitleUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityTitleUIElementAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityTitleUIElementAttribute_VH: VarHandle by lazy { NSAccessibilityTitleUIElementAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2421,7 +2421,7 @@ var NSAccessibilityTitleUIElementAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityServesAsTitleForUIElementsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityServesAsTitleForUIElementsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityServesAsTitleForUIElementsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityServesAsTitleForUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityServesAsTitleForUIElementsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityServesAsTitleForUIElementsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityServesAsTitleForUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityServesAsTitleForUIElementsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityServesAsTitleForUIElementsAttribute_VH: VarHandle by lazy { NSAccessibilityServesAsTitleForUIElementsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2433,7 +2433,7 @@ var NSAccessibilityServesAsTitleForUIElementsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityLinkedUIElementsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityLinkedUIElementsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLinkedUIElementsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLinkedUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityLinkedUIElementsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityLinkedUIElementsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLinkedUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityLinkedUIElementsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityLinkedUIElementsAttribute_VH: VarHandle by lazy { NSAccessibilityLinkedUIElementsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2445,7 +2445,7 @@ var NSAccessibilityLinkedUIElementsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySelectedTextAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySelectedTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySelectedTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedTextAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySelectedTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySelectedTextAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySelectedTextAttribute_VH: VarHandle by lazy { NSAccessibilitySelectedTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2457,7 +2457,7 @@ var NSAccessibilitySelectedTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySelectedTextRangeAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySelectedTextRangeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySelectedTextRangeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedTextRangeAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedTextRangeAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySelectedTextRangeAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySelectedTextRangeAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedTextRangeAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySelectedTextRangeAttribute_VH: VarHandle by lazy { NSAccessibilitySelectedTextRangeAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2469,7 +2469,7 @@ var NSAccessibilitySelectedTextRangeAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityNumberOfCharactersAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityNumberOfCharactersAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityNumberOfCharactersAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityNumberOfCharactersAttribute").orElseThrow().reinterpret(NSAccessibilityNumberOfCharactersAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityNumberOfCharactersAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityNumberOfCharactersAttribute").orElseThrow().reinterpret(NSAccessibilityNumberOfCharactersAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityNumberOfCharactersAttribute_VH: VarHandle by lazy { NSAccessibilityNumberOfCharactersAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2481,7 +2481,7 @@ var NSAccessibilityNumberOfCharactersAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVisibleCharacterRangeAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityVisibleCharacterRangeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVisibleCharacterRangeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVisibleCharacterRangeAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleCharacterRangeAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityVisibleCharacterRangeAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVisibleCharacterRangeAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleCharacterRangeAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityVisibleCharacterRangeAttribute_VH: VarHandle by lazy { NSAccessibilityVisibleCharacterRangeAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2493,7 +2493,7 @@ var NSAccessibilityVisibleCharacterRangeAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySharedTextUIElementsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySharedTextUIElementsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySharedTextUIElementsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySharedTextUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilitySharedTextUIElementsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySharedTextUIElementsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySharedTextUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilitySharedTextUIElementsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySharedTextUIElementsAttribute_VH: VarHandle by lazy { NSAccessibilitySharedTextUIElementsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2505,7 +2505,7 @@ var NSAccessibilitySharedTextUIElementsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySharedCharacterRangeAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySharedCharacterRangeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySharedCharacterRangeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySharedCharacterRangeAttribute").orElseThrow().reinterpret(NSAccessibilitySharedCharacterRangeAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySharedCharacterRangeAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySharedCharacterRangeAttribute").orElseThrow().reinterpret(NSAccessibilitySharedCharacterRangeAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySharedCharacterRangeAttribute_VH: VarHandle by lazy { NSAccessibilitySharedCharacterRangeAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2517,7 +2517,7 @@ var NSAccessibilitySharedCharacterRangeAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityInsertionPointLineNumberAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityInsertionPointLineNumberAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityInsertionPointLineNumberAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityInsertionPointLineNumberAttribute").orElseThrow().reinterpret(NSAccessibilityInsertionPointLineNumberAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityInsertionPointLineNumberAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityInsertionPointLineNumberAttribute").orElseThrow().reinterpret(NSAccessibilityInsertionPointLineNumberAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityInsertionPointLineNumberAttribute_VH: VarHandle by lazy { NSAccessibilityInsertionPointLineNumberAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2529,7 +2529,7 @@ var NSAccessibilityInsertionPointLineNumberAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySelectedTextRangesAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySelectedTextRangesAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySelectedTextRangesAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedTextRangesAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedTextRangesAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySelectedTextRangesAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySelectedTextRangesAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedTextRangesAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySelectedTextRangesAttribute_VH: VarHandle by lazy { NSAccessibilitySelectedTextRangesAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2542,7 +2542,7 @@ var NSAccessibilitySelectedTextRangesAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityLineForIndexParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityLineForIndexParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLineForIndexParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLineForIndexParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityLineForIndexParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityLineForIndexParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLineForIndexParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityLineForIndexParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityLineForIndexParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityLineForIndexParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2554,7 +2554,7 @@ var NSAccessibilityLineForIndexParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRangeForLineParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityRangeForLineParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRangeForLineParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRangeForLineParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityRangeForLineParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRangeForLineParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRangeForLineParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityRangeForLineParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRangeForLineParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityRangeForLineParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2566,7 +2566,7 @@ var NSAccessibilityRangeForLineParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityStringForRangeParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityStringForRangeParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityStringForRangeParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityStringForRangeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityStringForRangeParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityStringForRangeParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityStringForRangeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityStringForRangeParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityStringForRangeParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityStringForRangeParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2578,7 +2578,7 @@ var NSAccessibilityStringForRangeParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRangeForPositionParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityRangeForPositionParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRangeForPositionParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRangeForPositionParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityRangeForPositionParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRangeForPositionParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRangeForPositionParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityRangeForPositionParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRangeForPositionParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityRangeForPositionParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2590,7 +2590,7 @@ var NSAccessibilityRangeForPositionParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRangeForIndexParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityRangeForIndexParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRangeForIndexParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRangeForIndexParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityRangeForIndexParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRangeForIndexParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRangeForIndexParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityRangeForIndexParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRangeForIndexParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityRangeForIndexParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2602,7 +2602,7 @@ var NSAccessibilityRangeForIndexParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityBoundsForRangeParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityBoundsForRangeParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityBoundsForRangeParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityBoundsForRangeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityBoundsForRangeParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityBoundsForRangeParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityBoundsForRangeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityBoundsForRangeParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityBoundsForRangeParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityBoundsForRangeParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2614,7 +2614,7 @@ var NSAccessibilityBoundsForRangeParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRTFForRangeParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityRTFForRangeParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRTFForRangeParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRTFForRangeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityRTFForRangeParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRTFForRangeParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRTFForRangeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityRTFForRangeParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRTFForRangeParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityRTFForRangeParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2626,7 +2626,7 @@ var NSAccessibilityRTFForRangeParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityStyleRangeForIndexParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityStyleRangeForIndexParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityStyleRangeForIndexParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityStyleRangeForIndexParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityStyleRangeForIndexParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityStyleRangeForIndexParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityStyleRangeForIndexParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityStyleRangeForIndexParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityStyleRangeForIndexParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityStyleRangeForIndexParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2638,7 +2638,7 @@ var NSAccessibilityStyleRangeForIndexParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityAttributedStringForRangeParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityAttributedStringForRangeParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAttributedStringForRangeParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAttributedStringForRangeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityAttributedStringForRangeParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityAttributedStringForRangeParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAttributedStringForRangeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityAttributedStringForRangeParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityAttributedStringForRangeParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityAttributedStringForRangeParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2650,7 +2650,7 @@ var NSAccessibilityAttributedStringForRangeParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityFontTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityFontTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFontTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFontTextAttribute").orElseThrow().reinterpret(NSAccessibilityFontTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityFontTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFontTextAttribute").orElseThrow().reinterpret(NSAccessibilityFontTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityFontTextAttribute_VH: VarHandle by lazy { NSAccessibilityFontTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2662,7 +2662,7 @@ var NSAccessibilityFontTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityForegroundColorTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityForegroundColorTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityForegroundColorTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityForegroundColorTextAttribute").orElseThrow().reinterpret(NSAccessibilityForegroundColorTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityForegroundColorTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityForegroundColorTextAttribute").orElseThrow().reinterpret(NSAccessibilityForegroundColorTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityForegroundColorTextAttribute_VH: VarHandle by lazy { NSAccessibilityForegroundColorTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2674,7 +2674,7 @@ var NSAccessibilityForegroundColorTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityBackgroundColorTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityBackgroundColorTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityBackgroundColorTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityBackgroundColorTextAttribute").orElseThrow().reinterpret(NSAccessibilityBackgroundColorTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityBackgroundColorTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityBackgroundColorTextAttribute").orElseThrow().reinterpret(NSAccessibilityBackgroundColorTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityBackgroundColorTextAttribute_VH: VarHandle by lazy { NSAccessibilityBackgroundColorTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2686,7 +2686,7 @@ var NSAccessibilityBackgroundColorTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityUnderlineColorTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityUnderlineColorTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityUnderlineColorTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnderlineColorTextAttribute").orElseThrow().reinterpret(NSAccessibilityUnderlineColorTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityUnderlineColorTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityUnderlineColorTextAttribute").orElseThrow().reinterpret(NSAccessibilityUnderlineColorTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityUnderlineColorTextAttribute_VH: VarHandle by lazy { NSAccessibilityUnderlineColorTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2698,7 +2698,7 @@ var NSAccessibilityUnderlineColorTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityStrikethroughColorTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityStrikethroughColorTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityStrikethroughColorTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityStrikethroughColorTextAttribute").orElseThrow().reinterpret(NSAccessibilityStrikethroughColorTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityStrikethroughColorTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityStrikethroughColorTextAttribute").orElseThrow().reinterpret(NSAccessibilityStrikethroughColorTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityStrikethroughColorTextAttribute_VH: VarHandle by lazy { NSAccessibilityStrikethroughColorTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2710,7 +2710,7 @@ var NSAccessibilityStrikethroughColorTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityUnderlineTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityUnderlineTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityUnderlineTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnderlineTextAttribute").orElseThrow().reinterpret(NSAccessibilityUnderlineTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityUnderlineTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityUnderlineTextAttribute").orElseThrow().reinterpret(NSAccessibilityUnderlineTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityUnderlineTextAttribute_VH: VarHandle by lazy { NSAccessibilityUnderlineTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2722,7 +2722,7 @@ var NSAccessibilityUnderlineTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySuperscriptTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilitySuperscriptTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySuperscriptTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySuperscriptTextAttribute").orElseThrow().reinterpret(NSAccessibilitySuperscriptTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySuperscriptTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySuperscriptTextAttribute").orElseThrow().reinterpret(NSAccessibilitySuperscriptTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySuperscriptTextAttribute_VH: VarHandle by lazy { NSAccessibilitySuperscriptTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2734,7 +2734,7 @@ var NSAccessibilitySuperscriptTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityStrikethroughTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityStrikethroughTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityStrikethroughTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityStrikethroughTextAttribute").orElseThrow().reinterpret(NSAccessibilityStrikethroughTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityStrikethroughTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityStrikethroughTextAttribute").orElseThrow().reinterpret(NSAccessibilityStrikethroughTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityStrikethroughTextAttribute_VH: VarHandle by lazy { NSAccessibilityStrikethroughTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2746,7 +2746,7 @@ var NSAccessibilityStrikethroughTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityShadowTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityShadowTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityShadowTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityShadowTextAttribute").orElseThrow().reinterpret(NSAccessibilityShadowTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityShadowTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityShadowTextAttribute").orElseThrow().reinterpret(NSAccessibilityShadowTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityShadowTextAttribute_VH: VarHandle by lazy { NSAccessibilityShadowTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2758,7 +2758,7 @@ var NSAccessibilityShadowTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityAttachmentTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityAttachmentTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAttachmentTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAttachmentTextAttribute").orElseThrow().reinterpret(NSAccessibilityAttachmentTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityAttachmentTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAttachmentTextAttribute").orElseThrow().reinterpret(NSAccessibilityAttachmentTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityAttachmentTextAttribute_VH: VarHandle by lazy { NSAccessibilityAttachmentTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2770,7 +2770,7 @@ var NSAccessibilityAttachmentTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityLinkTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityLinkTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLinkTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLinkTextAttribute").orElseThrow().reinterpret(NSAccessibilityLinkTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityLinkTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLinkTextAttribute").orElseThrow().reinterpret(NSAccessibilityLinkTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityLinkTextAttribute_VH: VarHandle by lazy { NSAccessibilityLinkTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2782,7 +2782,7 @@ var NSAccessibilityLinkTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityAutocorrectedTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityAutocorrectedTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAutocorrectedTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAutocorrectedTextAttribute").orElseThrow().reinterpret(NSAccessibilityAutocorrectedTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityAutocorrectedTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAutocorrectedTextAttribute").orElseThrow().reinterpret(NSAccessibilityAutocorrectedTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityAutocorrectedTextAttribute_VH: VarHandle by lazy { NSAccessibilityAutocorrectedTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2795,7 +2795,7 @@ var NSAccessibilityAutocorrectedTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityTextAlignmentAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityTextAlignmentAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTextAlignmentAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTextAlignmentAttribute").orElseThrow().reinterpret(NSAccessibilityTextAlignmentAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityTextAlignmentAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityTextAlignmentAttribute").orElseThrow().reinterpret(NSAccessibilityTextAlignmentAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityTextAlignmentAttribute_VH: VarHandle by lazy { NSAccessibilityTextAlignmentAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2808,7 +2808,7 @@ var NSAccessibilityTextAlignmentAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityFontBoldAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityFontBoldAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFontBoldAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFontBoldAttribute").orElseThrow().reinterpret(NSAccessibilityFontBoldAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityFontBoldAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFontBoldAttribute").orElseThrow().reinterpret(NSAccessibilityFontBoldAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityFontBoldAttribute_VH: VarHandle by lazy { NSAccessibilityFontBoldAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2821,7 +2821,7 @@ var NSAccessibilityFontBoldAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityFontItalicAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityFontItalicAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFontItalicAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFontItalicAttribute").orElseThrow().reinterpret(NSAccessibilityFontItalicAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityFontItalicAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFontItalicAttribute").orElseThrow().reinterpret(NSAccessibilityFontItalicAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityFontItalicAttribute_VH: VarHandle by lazy { NSAccessibilityFontItalicAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2834,7 +2834,7 @@ var NSAccessibilityFontItalicAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityChildrenInNavigationOrderAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityChildrenInNavigationOrderAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityChildrenInNavigationOrderAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityChildrenInNavigationOrderAttribute").orElseThrow().reinterpret(NSAccessibilityChildrenInNavigationOrderAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityChildrenInNavigationOrderAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityChildrenInNavigationOrderAttribute").orElseThrow().reinterpret(NSAccessibilityChildrenInNavigationOrderAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityChildrenInNavigationOrderAttribute_VH: VarHandle by lazy { NSAccessibilityChildrenInNavigationOrderAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2847,7 +2847,7 @@ var NSAccessibilityChildrenInNavigationOrderAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityIndexForChildUIElementAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityIndexForChildUIElementAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityIndexForChildUIElementAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityIndexForChildUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityIndexForChildUIElementAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityIndexForChildUIElementAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityIndexForChildUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityIndexForChildUIElementAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityIndexForChildUIElementAttribute_VH: VarHandle by lazy { NSAccessibilityIndexForChildUIElementAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2860,7 +2860,7 @@ var NSAccessibilityIndexForChildUIElementAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute").orElseThrow().reinterpret(NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute").orElseThrow().reinterpret(NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute_VH: VarHandle by lazy { NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2873,7 +2873,7 @@ var NSAccessibilityIndexForChildUIElementInNavigationOrderAttribute: MemorySegme
  * {@snippet lang=c : NSAccessibilityListItemPrefixTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityListItemPrefixTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityListItemPrefixTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityListItemPrefixTextAttribute").orElseThrow().reinterpret(NSAccessibilityListItemPrefixTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityListItemPrefixTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityListItemPrefixTextAttribute").orElseThrow().reinterpret(NSAccessibilityListItemPrefixTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityListItemPrefixTextAttribute_VH: VarHandle by lazy { NSAccessibilityListItemPrefixTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2886,7 +2886,7 @@ var NSAccessibilityListItemPrefixTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityListItemIndexTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityListItemIndexTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityListItemIndexTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityListItemIndexTextAttribute").orElseThrow().reinterpret(NSAccessibilityListItemIndexTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityListItemIndexTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityListItemIndexTextAttribute").orElseThrow().reinterpret(NSAccessibilityListItemIndexTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityListItemIndexTextAttribute_VH: VarHandle by lazy { NSAccessibilityListItemIndexTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2899,7 +2899,7 @@ var NSAccessibilityListItemIndexTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityListItemLevelTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityListItemLevelTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityListItemLevelTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityListItemLevelTextAttribute").orElseThrow().reinterpret(NSAccessibilityListItemLevelTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityListItemLevelTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityListItemLevelTextAttribute").orElseThrow().reinterpret(NSAccessibilityListItemLevelTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityListItemLevelTextAttribute_VH: VarHandle by lazy { NSAccessibilityListItemLevelTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2912,7 +2912,7 @@ var NSAccessibilityListItemLevelTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMisspelledTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityMisspelledTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMisspelledTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMisspelledTextAttribute").orElseThrow().reinterpret(NSAccessibilityMisspelledTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMisspelledTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMisspelledTextAttribute").orElseThrow().reinterpret(NSAccessibilityMisspelledTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMisspelledTextAttribute_VH: VarHandle by lazy { NSAccessibilityMisspelledTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2924,7 +2924,7 @@ var NSAccessibilityMisspelledTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMarkedMisspelledTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityMarkedMisspelledTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMarkedMisspelledTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMarkedMisspelledTextAttribute").orElseThrow().reinterpret(NSAccessibilityMarkedMisspelledTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMarkedMisspelledTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMarkedMisspelledTextAttribute").orElseThrow().reinterpret(NSAccessibilityMarkedMisspelledTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMarkedMisspelledTextAttribute_VH: VarHandle by lazy { NSAccessibilityMarkedMisspelledTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2937,7 +2937,7 @@ var NSAccessibilityMarkedMisspelledTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityLanguageTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityLanguageTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLanguageTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLanguageTextAttribute").orElseThrow().reinterpret(NSAccessibilityLanguageTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityLanguageTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLanguageTextAttribute").orElseThrow().reinterpret(NSAccessibilityLanguageTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityLanguageTextAttribute_VH: VarHandle by lazy { NSAccessibilityLanguageTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2950,7 +2950,7 @@ var NSAccessibilityLanguageTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityCustomTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityCustomTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityCustomTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCustomTextAttribute").orElseThrow().reinterpret(NSAccessibilityCustomTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityCustomTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityCustomTextAttribute").orElseThrow().reinterpret(NSAccessibilityCustomTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityCustomTextAttribute_VH: VarHandle by lazy { NSAccessibilityCustomTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2963,7 +2963,7 @@ var NSAccessibilityCustomTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityAnnotationTextAttribute typedef const NSAttributedStringKey = (Void)*
  */
 private val NSAccessibilityAnnotationTextAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAnnotationTextAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAnnotationTextAttribute").orElseThrow().reinterpret(NSAccessibilityAnnotationTextAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityAnnotationTextAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAnnotationTextAttribute").orElseThrow().reinterpret(NSAccessibilityAnnotationTextAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityAnnotationTextAttribute_VH: VarHandle by lazy { NSAccessibilityAnnotationTextAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2976,7 +2976,7 @@ var NSAccessibilityAnnotationTextAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityTextCompletionAttribute (Void)*
  */
 private val NSAccessibilityTextCompletionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTextCompletionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTextCompletionAttribute").orElseThrow().reinterpret(NSAccessibilityTextCompletionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityTextCompletionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityTextCompletionAttribute").orElseThrow().reinterpret(NSAccessibilityTextCompletionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityTextCompletionAttribute_VH: VarHandle by lazy { NSAccessibilityTextCompletionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -2989,7 +2989,7 @@ var NSAccessibilityTextCompletionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityAnnotationLabel typedef const NSAccessibilityAnnotationAttributeKey = (Void)*
  */
 private val NSAccessibilityAnnotationLabel_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAnnotationLabel_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAnnotationLabel").orElseThrow().reinterpret(NSAccessibilityAnnotationLabel_LAYOUT.byteSize()) }
+private val NSAccessibilityAnnotationLabel_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAnnotationLabel").orElseThrow().reinterpret(NSAccessibilityAnnotationLabel_LAYOUT.byteSize()) }
 private val NSAccessibilityAnnotationLabel_VH: VarHandle by lazy { NSAccessibilityAnnotationLabel_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3002,7 +3002,7 @@ var NSAccessibilityAnnotationLabel: MemorySegment
  * {@snippet lang=c : NSAccessibilityAnnotationElement typedef const NSAccessibilityAnnotationAttributeKey = (Void)*
  */
 private val NSAccessibilityAnnotationElement_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAnnotationElement_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAnnotationElement").orElseThrow().reinterpret(NSAccessibilityAnnotationElement_LAYOUT.byteSize()) }
+private val NSAccessibilityAnnotationElement_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAnnotationElement").orElseThrow().reinterpret(NSAccessibilityAnnotationElement_LAYOUT.byteSize()) }
 private val NSAccessibilityAnnotationElement_VH: VarHandle by lazy { NSAccessibilityAnnotationElement_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3015,7 +3015,7 @@ var NSAccessibilityAnnotationElement: MemorySegment
  * {@snippet lang=c : NSAccessibilityAnnotationLocation typedef const NSAccessibilityAnnotationAttributeKey = (Void)*
  */
 private val NSAccessibilityAnnotationLocation_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAnnotationLocation_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAnnotationLocation").orElseThrow().reinterpret(NSAccessibilityAnnotationLocation_LAYOUT.byteSize()) }
+private val NSAccessibilityAnnotationLocation_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAnnotationLocation").orElseThrow().reinterpret(NSAccessibilityAnnotationLocation_LAYOUT.byteSize()) }
 private val NSAccessibilityAnnotationLocation_VH: VarHandle by lazy { NSAccessibilityAnnotationLocation_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3028,7 +3028,7 @@ var NSAccessibilityAnnotationLocation: MemorySegment
  * {@snippet lang=c : NSAccessibilityFontNameKey typedef const NSAccessibilityFontAttributeKey = (Void)*
  */
 private val NSAccessibilityFontNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFontNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFontNameKey").orElseThrow().reinterpret(NSAccessibilityFontNameKey_LAYOUT.byteSize()) }
+private val NSAccessibilityFontNameKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFontNameKey").orElseThrow().reinterpret(NSAccessibilityFontNameKey_LAYOUT.byteSize()) }
 private val NSAccessibilityFontNameKey_VH: VarHandle by lazy { NSAccessibilityFontNameKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3040,7 +3040,7 @@ var NSAccessibilityFontNameKey: MemorySegment
  * {@snippet lang=c : NSAccessibilityFontFamilyKey typedef const NSAccessibilityFontAttributeKey = (Void)*
  */
 private val NSAccessibilityFontFamilyKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFontFamilyKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFontFamilyKey").orElseThrow().reinterpret(NSAccessibilityFontFamilyKey_LAYOUT.byteSize()) }
+private val NSAccessibilityFontFamilyKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFontFamilyKey").orElseThrow().reinterpret(NSAccessibilityFontFamilyKey_LAYOUT.byteSize()) }
 private val NSAccessibilityFontFamilyKey_VH: VarHandle by lazy { NSAccessibilityFontFamilyKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3052,7 +3052,7 @@ var NSAccessibilityFontFamilyKey: MemorySegment
  * {@snippet lang=c : NSAccessibilityVisibleNameKey typedef const NSAccessibilityFontAttributeKey = (Void)*
  */
 private val NSAccessibilityVisibleNameKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVisibleNameKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVisibleNameKey").orElseThrow().reinterpret(NSAccessibilityVisibleNameKey_LAYOUT.byteSize()) }
+private val NSAccessibilityVisibleNameKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVisibleNameKey").orElseThrow().reinterpret(NSAccessibilityVisibleNameKey_LAYOUT.byteSize()) }
 private val NSAccessibilityVisibleNameKey_VH: VarHandle by lazy { NSAccessibilityVisibleNameKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3064,7 +3064,7 @@ var NSAccessibilityVisibleNameKey: MemorySegment
  * {@snippet lang=c : NSAccessibilityFontSizeKey typedef const NSAccessibilityFontAttributeKey = (Void)*
  */
 private val NSAccessibilityFontSizeKey_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFontSizeKey_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFontSizeKey").orElseThrow().reinterpret(NSAccessibilityFontSizeKey_LAYOUT.byteSize()) }
+private val NSAccessibilityFontSizeKey_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFontSizeKey").orElseThrow().reinterpret(NSAccessibilityFontSizeKey_LAYOUT.byteSize()) }
 private val NSAccessibilityFontSizeKey_VH: VarHandle by lazy { NSAccessibilityFontSizeKey_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3076,7 +3076,7 @@ var NSAccessibilityFontSizeKey: MemorySegment
  * {@snippet lang=c : NSAccessibilityMainAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMainAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMainAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMainAttribute").orElseThrow().reinterpret(NSAccessibilityMainAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMainAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMainAttribute").orElseThrow().reinterpret(NSAccessibilityMainAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMainAttribute_VH: VarHandle by lazy { NSAccessibilityMainAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3088,7 +3088,7 @@ var NSAccessibilityMainAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMinimizedAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMinimizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMinimizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMinimizedAttribute").orElseThrow().reinterpret(NSAccessibilityMinimizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMinimizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMinimizedAttribute").orElseThrow().reinterpret(NSAccessibilityMinimizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMinimizedAttribute_VH: VarHandle by lazy { NSAccessibilityMinimizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3100,7 +3100,7 @@ var NSAccessibilityMinimizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityCloseButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityCloseButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityCloseButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCloseButtonAttribute").orElseThrow().reinterpret(NSAccessibilityCloseButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityCloseButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityCloseButtonAttribute").orElseThrow().reinterpret(NSAccessibilityCloseButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityCloseButtonAttribute_VH: VarHandle by lazy { NSAccessibilityCloseButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3112,7 +3112,7 @@ var NSAccessibilityCloseButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityZoomButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityZoomButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityZoomButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityZoomButtonAttribute").orElseThrow().reinterpret(NSAccessibilityZoomButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityZoomButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityZoomButtonAttribute").orElseThrow().reinterpret(NSAccessibilityZoomButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityZoomButtonAttribute_VH: VarHandle by lazy { NSAccessibilityZoomButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3124,7 +3124,7 @@ var NSAccessibilityZoomButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMinimizeButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMinimizeButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMinimizeButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMinimizeButtonAttribute").orElseThrow().reinterpret(NSAccessibilityMinimizeButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMinimizeButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMinimizeButtonAttribute").orElseThrow().reinterpret(NSAccessibilityMinimizeButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMinimizeButtonAttribute_VH: VarHandle by lazy { NSAccessibilityMinimizeButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3136,7 +3136,7 @@ var NSAccessibilityMinimizeButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityToolbarButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityToolbarButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityToolbarButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityToolbarButtonAttribute").orElseThrow().reinterpret(NSAccessibilityToolbarButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityToolbarButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityToolbarButtonAttribute").orElseThrow().reinterpret(NSAccessibilityToolbarButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityToolbarButtonAttribute_VH: VarHandle by lazy { NSAccessibilityToolbarButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3148,7 +3148,7 @@ var NSAccessibilityToolbarButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityProxyAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityProxyAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityProxyAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityProxyAttribute").orElseThrow().reinterpret(NSAccessibilityProxyAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityProxyAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityProxyAttribute").orElseThrow().reinterpret(NSAccessibilityProxyAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityProxyAttribute_VH: VarHandle by lazy { NSAccessibilityProxyAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3160,7 +3160,7 @@ var NSAccessibilityProxyAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityGrowAreaAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityGrowAreaAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityGrowAreaAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityGrowAreaAttribute").orElseThrow().reinterpret(NSAccessibilityGrowAreaAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityGrowAreaAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityGrowAreaAttribute").orElseThrow().reinterpret(NSAccessibilityGrowAreaAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityGrowAreaAttribute_VH: VarHandle by lazy { NSAccessibilityGrowAreaAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3172,7 +3172,7 @@ var NSAccessibilityGrowAreaAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityModalAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityModalAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityModalAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityModalAttribute").orElseThrow().reinterpret(NSAccessibilityModalAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityModalAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityModalAttribute").orElseThrow().reinterpret(NSAccessibilityModalAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityModalAttribute_VH: VarHandle by lazy { NSAccessibilityModalAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3184,7 +3184,7 @@ var NSAccessibilityModalAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityDefaultButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityDefaultButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDefaultButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDefaultButtonAttribute").orElseThrow().reinterpret(NSAccessibilityDefaultButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityDefaultButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDefaultButtonAttribute").orElseThrow().reinterpret(NSAccessibilityDefaultButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityDefaultButtonAttribute_VH: VarHandle by lazy { NSAccessibilityDefaultButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3196,7 +3196,7 @@ var NSAccessibilityDefaultButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityCancelButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityCancelButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityCancelButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCancelButtonAttribute").orElseThrow().reinterpret(NSAccessibilityCancelButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityCancelButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityCancelButtonAttribute").orElseThrow().reinterpret(NSAccessibilityCancelButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityCancelButtonAttribute_VH: VarHandle by lazy { NSAccessibilityCancelButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3208,7 +3208,7 @@ var NSAccessibilityCancelButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityFullScreenButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityFullScreenButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFullScreenButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFullScreenButtonAttribute").orElseThrow().reinterpret(NSAccessibilityFullScreenButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityFullScreenButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFullScreenButtonAttribute").orElseThrow().reinterpret(NSAccessibilityFullScreenButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityFullScreenButtonAttribute_VH: VarHandle by lazy { NSAccessibilityFullScreenButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3221,7 +3221,7 @@ var NSAccessibilityFullScreenButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMenuBarAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMenuBarAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMenuBarAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMenuBarAttribute").orElseThrow().reinterpret(NSAccessibilityMenuBarAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMenuBarAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMenuBarAttribute").orElseThrow().reinterpret(NSAccessibilityMenuBarAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMenuBarAttribute_VH: VarHandle by lazy { NSAccessibilityMenuBarAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3233,7 +3233,7 @@ var NSAccessibilityMenuBarAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityWindowsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityWindowsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityWindowsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityWindowsAttribute").orElseThrow().reinterpret(NSAccessibilityWindowsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityWindowsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityWindowsAttribute").orElseThrow().reinterpret(NSAccessibilityWindowsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityWindowsAttribute_VH: VarHandle by lazy { NSAccessibilityWindowsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3245,7 +3245,7 @@ var NSAccessibilityWindowsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityFrontmostAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityFrontmostAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFrontmostAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFrontmostAttribute").orElseThrow().reinterpret(NSAccessibilityFrontmostAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityFrontmostAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFrontmostAttribute").orElseThrow().reinterpret(NSAccessibilityFrontmostAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityFrontmostAttribute_VH: VarHandle by lazy { NSAccessibilityFrontmostAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3257,7 +3257,7 @@ var NSAccessibilityFrontmostAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityHiddenAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityHiddenAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHiddenAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHiddenAttribute").orElseThrow().reinterpret(NSAccessibilityHiddenAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityHiddenAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHiddenAttribute").orElseThrow().reinterpret(NSAccessibilityHiddenAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityHiddenAttribute_VH: VarHandle by lazy { NSAccessibilityHiddenAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3269,7 +3269,7 @@ var NSAccessibilityHiddenAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMainWindowAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMainWindowAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMainWindowAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMainWindowAttribute").orElseThrow().reinterpret(NSAccessibilityMainWindowAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMainWindowAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMainWindowAttribute").orElseThrow().reinterpret(NSAccessibilityMainWindowAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMainWindowAttribute_VH: VarHandle by lazy { NSAccessibilityMainWindowAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3281,7 +3281,7 @@ var NSAccessibilityMainWindowAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityFocusedWindowAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityFocusedWindowAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFocusedWindowAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFocusedWindowAttribute").orElseThrow().reinterpret(NSAccessibilityFocusedWindowAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityFocusedWindowAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFocusedWindowAttribute").orElseThrow().reinterpret(NSAccessibilityFocusedWindowAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityFocusedWindowAttribute_VH: VarHandle by lazy { NSAccessibilityFocusedWindowAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3293,7 +3293,7 @@ var NSAccessibilityFocusedWindowAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityFocusedUIElementAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityFocusedUIElementAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFocusedUIElementAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFocusedUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityFocusedUIElementAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityFocusedUIElementAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFocusedUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityFocusedUIElementAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityFocusedUIElementAttribute_VH: VarHandle by lazy { NSAccessibilityFocusedUIElementAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3305,7 +3305,7 @@ var NSAccessibilityFocusedUIElementAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityExtrasMenuBarAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityExtrasMenuBarAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityExtrasMenuBarAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityExtrasMenuBarAttribute").orElseThrow().reinterpret(NSAccessibilityExtrasMenuBarAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityExtrasMenuBarAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityExtrasMenuBarAttribute").orElseThrow().reinterpret(NSAccessibilityExtrasMenuBarAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityExtrasMenuBarAttribute_VH: VarHandle by lazy { NSAccessibilityExtrasMenuBarAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3318,7 +3318,7 @@ var NSAccessibilityExtrasMenuBarAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityOrientationAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityOrientationAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityOrientationAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityOrientationAttribute").orElseThrow().reinterpret(NSAccessibilityOrientationAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityOrientationAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityOrientationAttribute").orElseThrow().reinterpret(NSAccessibilityOrientationAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityOrientationAttribute_VH: VarHandle by lazy { NSAccessibilityOrientationAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3330,7 +3330,7 @@ var NSAccessibilityOrientationAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVerticalOrientationValue typedef const NSAccessibilityOrientationValue = (Void)*
  */
 private val NSAccessibilityVerticalOrientationValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVerticalOrientationValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVerticalOrientationValue").orElseThrow().reinterpret(NSAccessibilityVerticalOrientationValue_LAYOUT.byteSize()) }
+private val NSAccessibilityVerticalOrientationValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVerticalOrientationValue").orElseThrow().reinterpret(NSAccessibilityVerticalOrientationValue_LAYOUT.byteSize()) }
 private val NSAccessibilityVerticalOrientationValue_VH: VarHandle by lazy { NSAccessibilityVerticalOrientationValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3342,7 +3342,7 @@ var NSAccessibilityVerticalOrientationValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityHorizontalOrientationValue typedef const NSAccessibilityOrientationValue = (Void)*
  */
 private val NSAccessibilityHorizontalOrientationValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHorizontalOrientationValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHorizontalOrientationValue").orElseThrow().reinterpret(NSAccessibilityHorizontalOrientationValue_LAYOUT.byteSize()) }
+private val NSAccessibilityHorizontalOrientationValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHorizontalOrientationValue").orElseThrow().reinterpret(NSAccessibilityHorizontalOrientationValue_LAYOUT.byteSize()) }
 private val NSAccessibilityHorizontalOrientationValue_VH: VarHandle by lazy { NSAccessibilityHorizontalOrientationValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3354,7 +3354,7 @@ var NSAccessibilityHorizontalOrientationValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityUnknownOrientationValue typedef const NSAccessibilityOrientationValue = (Void)*
  */
 private val NSAccessibilityUnknownOrientationValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityUnknownOrientationValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnknownOrientationValue").orElseThrow().reinterpret(NSAccessibilityUnknownOrientationValue_LAYOUT.byteSize()) }
+private val NSAccessibilityUnknownOrientationValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityUnknownOrientationValue").orElseThrow().reinterpret(NSAccessibilityUnknownOrientationValue_LAYOUT.byteSize()) }
 private val NSAccessibilityUnknownOrientationValue_VH: VarHandle by lazy { NSAccessibilityUnknownOrientationValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3366,7 +3366,7 @@ var NSAccessibilityUnknownOrientationValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityColumnTitlesAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityColumnTitlesAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityColumnTitlesAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityColumnTitlesAttribute").orElseThrow().reinterpret(NSAccessibilityColumnTitlesAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityColumnTitlesAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityColumnTitlesAttribute").orElseThrow().reinterpret(NSAccessibilityColumnTitlesAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityColumnTitlesAttribute_VH: VarHandle by lazy { NSAccessibilityColumnTitlesAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3378,7 +3378,7 @@ var NSAccessibilityColumnTitlesAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySearchButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySearchButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySearchButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySearchButtonAttribute").orElseThrow().reinterpret(NSAccessibilitySearchButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySearchButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySearchButtonAttribute").orElseThrow().reinterpret(NSAccessibilitySearchButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySearchButtonAttribute_VH: VarHandle by lazy { NSAccessibilitySearchButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3390,7 +3390,7 @@ var NSAccessibilitySearchButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySearchMenuAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySearchMenuAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySearchMenuAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySearchMenuAttribute").orElseThrow().reinterpret(NSAccessibilitySearchMenuAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySearchMenuAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySearchMenuAttribute").orElseThrow().reinterpret(NSAccessibilitySearchMenuAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySearchMenuAttribute_VH: VarHandle by lazy { NSAccessibilitySearchMenuAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3402,7 +3402,7 @@ var NSAccessibilitySearchMenuAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityClearButtonAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityClearButtonAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityClearButtonAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityClearButtonAttribute").orElseThrow().reinterpret(NSAccessibilityClearButtonAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityClearButtonAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityClearButtonAttribute").orElseThrow().reinterpret(NSAccessibilityClearButtonAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityClearButtonAttribute_VH: VarHandle by lazy { NSAccessibilityClearButtonAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3414,7 +3414,7 @@ var NSAccessibilityClearButtonAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRowsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityRowsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRowsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRowsAttribute").orElseThrow().reinterpret(NSAccessibilityRowsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRowsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRowsAttribute").orElseThrow().reinterpret(NSAccessibilityRowsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRowsAttribute_VH: VarHandle by lazy { NSAccessibilityRowsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3426,7 +3426,7 @@ var NSAccessibilityRowsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVisibleRowsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityVisibleRowsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVisibleRowsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVisibleRowsAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleRowsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityVisibleRowsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVisibleRowsAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleRowsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityVisibleRowsAttribute_VH: VarHandle by lazy { NSAccessibilityVisibleRowsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3438,7 +3438,7 @@ var NSAccessibilityVisibleRowsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySelectedRowsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySelectedRowsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySelectedRowsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedRowsAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedRowsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySelectedRowsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySelectedRowsAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedRowsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySelectedRowsAttribute_VH: VarHandle by lazy { NSAccessibilitySelectedRowsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3450,7 +3450,7 @@ var NSAccessibilitySelectedRowsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityColumnsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityColumnsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityColumnsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityColumnsAttribute").orElseThrow().reinterpret(NSAccessibilityColumnsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityColumnsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityColumnsAttribute").orElseThrow().reinterpret(NSAccessibilityColumnsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityColumnsAttribute_VH: VarHandle by lazy { NSAccessibilityColumnsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3462,7 +3462,7 @@ var NSAccessibilityColumnsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVisibleColumnsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityVisibleColumnsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVisibleColumnsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVisibleColumnsAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleColumnsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityVisibleColumnsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVisibleColumnsAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleColumnsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityVisibleColumnsAttribute_VH: VarHandle by lazy { NSAccessibilityVisibleColumnsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3474,7 +3474,7 @@ var NSAccessibilityVisibleColumnsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySelectedColumnsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySelectedColumnsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySelectedColumnsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedColumnsAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedColumnsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySelectedColumnsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySelectedColumnsAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedColumnsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySelectedColumnsAttribute_VH: VarHandle by lazy { NSAccessibilitySelectedColumnsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3486,7 +3486,7 @@ var NSAccessibilitySelectedColumnsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySortDirectionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySortDirectionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySortDirectionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySortDirectionAttribute").orElseThrow().reinterpret(NSAccessibilitySortDirectionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySortDirectionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySortDirectionAttribute").orElseThrow().reinterpret(NSAccessibilitySortDirectionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySortDirectionAttribute_VH: VarHandle by lazy { NSAccessibilitySortDirectionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3498,7 +3498,7 @@ var NSAccessibilitySortDirectionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilitySelectedCellsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilitySelectedCellsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilitySelectedCellsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilitySelectedCellsAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedCellsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilitySelectedCellsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilitySelectedCellsAttribute").orElseThrow().reinterpret(NSAccessibilitySelectedCellsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilitySelectedCellsAttribute_VH: VarHandle by lazy { NSAccessibilitySelectedCellsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3511,7 +3511,7 @@ var NSAccessibilitySelectedCellsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVisibleCellsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityVisibleCellsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVisibleCellsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVisibleCellsAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleCellsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityVisibleCellsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVisibleCellsAttribute").orElseThrow().reinterpret(NSAccessibilityVisibleCellsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityVisibleCellsAttribute_VH: VarHandle by lazy { NSAccessibilityVisibleCellsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3524,7 +3524,7 @@ var NSAccessibilityVisibleCellsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRowHeaderUIElementsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityRowHeaderUIElementsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRowHeaderUIElementsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRowHeaderUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityRowHeaderUIElementsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRowHeaderUIElementsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRowHeaderUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityRowHeaderUIElementsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRowHeaderUIElementsAttribute_VH: VarHandle by lazy { NSAccessibilityRowHeaderUIElementsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3537,7 +3537,7 @@ var NSAccessibilityRowHeaderUIElementsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityColumnHeaderUIElementsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityColumnHeaderUIElementsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityColumnHeaderUIElementsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityColumnHeaderUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityColumnHeaderUIElementsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityColumnHeaderUIElementsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityColumnHeaderUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityColumnHeaderUIElementsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityColumnHeaderUIElementsAttribute_VH: VarHandle by lazy { NSAccessibilityColumnHeaderUIElementsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3550,7 +3550,7 @@ var NSAccessibilityColumnHeaderUIElementsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityCellForColumnAndRowParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityCellForColumnAndRowParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityCellForColumnAndRowParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCellForColumnAndRowParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityCellForColumnAndRowParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityCellForColumnAndRowParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityCellForColumnAndRowParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityCellForColumnAndRowParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityCellForColumnAndRowParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityCellForColumnAndRowParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3563,7 +3563,7 @@ var NSAccessibilityCellForColumnAndRowParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityRowIndexRangeAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityRowIndexRangeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRowIndexRangeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRowIndexRangeAttribute").orElseThrow().reinterpret(NSAccessibilityRowIndexRangeAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityRowIndexRangeAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRowIndexRangeAttribute").orElseThrow().reinterpret(NSAccessibilityRowIndexRangeAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityRowIndexRangeAttribute_VH: VarHandle by lazy { NSAccessibilityRowIndexRangeAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3576,7 +3576,7 @@ var NSAccessibilityRowIndexRangeAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityColumnIndexRangeAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityColumnIndexRangeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityColumnIndexRangeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityColumnIndexRangeAttribute").orElseThrow().reinterpret(NSAccessibilityColumnIndexRangeAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityColumnIndexRangeAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityColumnIndexRangeAttribute").orElseThrow().reinterpret(NSAccessibilityColumnIndexRangeAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityColumnIndexRangeAttribute_VH: VarHandle by lazy { NSAccessibilityColumnIndexRangeAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3589,7 +3589,7 @@ var NSAccessibilityColumnIndexRangeAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityHorizontalUnitsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityHorizontalUnitsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHorizontalUnitsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHorizontalUnitsAttribute").orElseThrow().reinterpret(NSAccessibilityHorizontalUnitsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityHorizontalUnitsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHorizontalUnitsAttribute").orElseThrow().reinterpret(NSAccessibilityHorizontalUnitsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityHorizontalUnitsAttribute_VH: VarHandle by lazy { NSAccessibilityHorizontalUnitsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3602,7 +3602,7 @@ var NSAccessibilityHorizontalUnitsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVerticalUnitsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityVerticalUnitsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVerticalUnitsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVerticalUnitsAttribute").orElseThrow().reinterpret(NSAccessibilityVerticalUnitsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityVerticalUnitsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVerticalUnitsAttribute").orElseThrow().reinterpret(NSAccessibilityVerticalUnitsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityVerticalUnitsAttribute_VH: VarHandle by lazy { NSAccessibilityVerticalUnitsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3615,7 +3615,7 @@ var NSAccessibilityVerticalUnitsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityHorizontalUnitDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityHorizontalUnitDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHorizontalUnitDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHorizontalUnitDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityHorizontalUnitDescriptionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityHorizontalUnitDescriptionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHorizontalUnitDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityHorizontalUnitDescriptionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityHorizontalUnitDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityHorizontalUnitDescriptionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3628,7 +3628,7 @@ var NSAccessibilityHorizontalUnitDescriptionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityVerticalUnitDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityVerticalUnitDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityVerticalUnitDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityVerticalUnitDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityVerticalUnitDescriptionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityVerticalUnitDescriptionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityVerticalUnitDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityVerticalUnitDescriptionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityVerticalUnitDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityVerticalUnitDescriptionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3641,7 +3641,7 @@ var NSAccessibilityVerticalUnitDescriptionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityLayoutPointForScreenPointParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityLayoutPointForScreenPointParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLayoutPointForScreenPointParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLayoutPointForScreenPointParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityLayoutPointForScreenPointParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityLayoutPointForScreenPointParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLayoutPointForScreenPointParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityLayoutPointForScreenPointParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityLayoutPointForScreenPointParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityLayoutPointForScreenPointParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3654,7 +3654,7 @@ var NSAccessibilityLayoutPointForScreenPointParameterizedAttribute: MemorySegmen
  * {@snippet lang=c : NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3667,7 +3667,7 @@ var NSAccessibilityLayoutSizeForScreenSizeParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityScreenPointForLayoutPointParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityScreenPointForLayoutPointParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityScreenPointForLayoutPointParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityScreenPointForLayoutPointParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityScreenPointForLayoutPointParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityScreenPointForLayoutPointParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityScreenPointForLayoutPointParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityScreenPointForLayoutPointParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityScreenPointForLayoutPointParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityScreenPointForLayoutPointParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3680,7 +3680,7 @@ var NSAccessibilityScreenPointForLayoutPointParameterizedAttribute: MemorySegmen
  * {@snippet lang=c : NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute typedef const NSAccessibilityParameterizedAttributeName = (Void)*
  */
 private val NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute").orElseThrow().reinterpret(NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute_VH: VarHandle by lazy { NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3693,7 +3693,7 @@ var NSAccessibilityScreenSizeForLayoutSizeParameterizedAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityHandlesAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityHandlesAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHandlesAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHandlesAttribute").orElseThrow().reinterpret(NSAccessibilityHandlesAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityHandlesAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHandlesAttribute").orElseThrow().reinterpret(NSAccessibilityHandlesAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityHandlesAttribute_VH: VarHandle by lazy { NSAccessibilityHandlesAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3706,7 +3706,7 @@ var NSAccessibilityHandlesAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityAscendingSortDirectionValue typedef const NSAccessibilitySortDirectionValue = (Void)*
  */
 private val NSAccessibilityAscendingSortDirectionValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAscendingSortDirectionValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAscendingSortDirectionValue").orElseThrow().reinterpret(NSAccessibilityAscendingSortDirectionValue_LAYOUT.byteSize()) }
+private val NSAccessibilityAscendingSortDirectionValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAscendingSortDirectionValue").orElseThrow().reinterpret(NSAccessibilityAscendingSortDirectionValue_LAYOUT.byteSize()) }
 private val NSAccessibilityAscendingSortDirectionValue_VH: VarHandle by lazy { NSAccessibilityAscendingSortDirectionValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3718,7 +3718,7 @@ var NSAccessibilityAscendingSortDirectionValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityDescendingSortDirectionValue typedef const NSAccessibilitySortDirectionValue = (Void)*
  */
 private val NSAccessibilityDescendingSortDirectionValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDescendingSortDirectionValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDescendingSortDirectionValue").orElseThrow().reinterpret(NSAccessibilityDescendingSortDirectionValue_LAYOUT.byteSize()) }
+private val NSAccessibilityDescendingSortDirectionValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDescendingSortDirectionValue").orElseThrow().reinterpret(NSAccessibilityDescendingSortDirectionValue_LAYOUT.byteSize()) }
 private val NSAccessibilityDescendingSortDirectionValue_VH: VarHandle by lazy { NSAccessibilityDescendingSortDirectionValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3730,7 +3730,7 @@ var NSAccessibilityDescendingSortDirectionValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityUnknownSortDirectionValue typedef const NSAccessibilitySortDirectionValue = (Void)*
  */
 private val NSAccessibilityUnknownSortDirectionValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityUnknownSortDirectionValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnknownSortDirectionValue").orElseThrow().reinterpret(NSAccessibilityUnknownSortDirectionValue_LAYOUT.byteSize()) }
+private val NSAccessibilityUnknownSortDirectionValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityUnknownSortDirectionValue").orElseThrow().reinterpret(NSAccessibilityUnknownSortDirectionValue_LAYOUT.byteSize()) }
 private val NSAccessibilityUnknownSortDirectionValue_VH: VarHandle by lazy { NSAccessibilityUnknownSortDirectionValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3742,7 +3742,7 @@ var NSAccessibilityUnknownSortDirectionValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityDisclosingAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityDisclosingAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDisclosingAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDisclosingAttribute").orElseThrow().reinterpret(NSAccessibilityDisclosingAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityDisclosingAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDisclosingAttribute").orElseThrow().reinterpret(NSAccessibilityDisclosingAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityDisclosingAttribute_VH: VarHandle by lazy { NSAccessibilityDisclosingAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3754,7 +3754,7 @@ var NSAccessibilityDisclosingAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityDisclosedRowsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityDisclosedRowsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDisclosedRowsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDisclosedRowsAttribute").orElseThrow().reinterpret(NSAccessibilityDisclosedRowsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityDisclosedRowsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDisclosedRowsAttribute").orElseThrow().reinterpret(NSAccessibilityDisclosedRowsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityDisclosedRowsAttribute_VH: VarHandle by lazy { NSAccessibilityDisclosedRowsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3766,7 +3766,7 @@ var NSAccessibilityDisclosedRowsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityDisclosedByRowAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityDisclosedByRowAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDisclosedByRowAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDisclosedByRowAttribute").orElseThrow().reinterpret(NSAccessibilityDisclosedByRowAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityDisclosedByRowAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDisclosedByRowAttribute").orElseThrow().reinterpret(NSAccessibilityDisclosedByRowAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityDisclosedByRowAttribute_VH: VarHandle by lazy { NSAccessibilityDisclosedByRowAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3778,7 +3778,7 @@ var NSAccessibilityDisclosedByRowAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityDisclosureLevelAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityDisclosureLevelAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDisclosureLevelAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDisclosureLevelAttribute").orElseThrow().reinterpret(NSAccessibilityDisclosureLevelAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityDisclosureLevelAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDisclosureLevelAttribute").orElseThrow().reinterpret(NSAccessibilityDisclosureLevelAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityDisclosureLevelAttribute_VH: VarHandle by lazy { NSAccessibilityDisclosureLevelAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3790,7 +3790,7 @@ var NSAccessibilityDisclosureLevelAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityAllowedValuesAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityAllowedValuesAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityAllowedValuesAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityAllowedValuesAttribute").orElseThrow().reinterpret(NSAccessibilityAllowedValuesAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityAllowedValuesAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityAllowedValuesAttribute").orElseThrow().reinterpret(NSAccessibilityAllowedValuesAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityAllowedValuesAttribute_VH: VarHandle by lazy { NSAccessibilityAllowedValuesAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3802,7 +3802,7 @@ var NSAccessibilityAllowedValuesAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityLabelUIElementsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityLabelUIElementsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLabelUIElementsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLabelUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityLabelUIElementsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityLabelUIElementsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLabelUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityLabelUIElementsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityLabelUIElementsAttribute_VH: VarHandle by lazy { NSAccessibilityLabelUIElementsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3814,7 +3814,7 @@ var NSAccessibilityLabelUIElementsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityLabelValueAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityLabelValueAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLabelValueAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLabelValueAttribute").orElseThrow().reinterpret(NSAccessibilityLabelValueAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityLabelValueAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLabelValueAttribute").orElseThrow().reinterpret(NSAccessibilityLabelValueAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityLabelValueAttribute_VH: VarHandle by lazy { NSAccessibilityLabelValueAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3826,7 +3826,7 @@ var NSAccessibilityLabelValueAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMatteHoleAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMatteHoleAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMatteHoleAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMatteHoleAttribute").orElseThrow().reinterpret(NSAccessibilityMatteHoleAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMatteHoleAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMatteHoleAttribute").orElseThrow().reinterpret(NSAccessibilityMatteHoleAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMatteHoleAttribute_VH: VarHandle by lazy { NSAccessibilityMatteHoleAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3839,7 +3839,7 @@ var NSAccessibilityMatteHoleAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMatteContentUIElementAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMatteContentUIElementAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMatteContentUIElementAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMatteContentUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityMatteContentUIElementAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMatteContentUIElementAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMatteContentUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityMatteContentUIElementAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMatteContentUIElementAttribute_VH: VarHandle by lazy { NSAccessibilityMatteContentUIElementAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3852,7 +3852,7 @@ var NSAccessibilityMatteContentUIElementAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMarkerUIElementsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMarkerUIElementsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMarkerUIElementsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMarkerUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerUIElementsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMarkerUIElementsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMarkerUIElementsAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerUIElementsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMarkerUIElementsAttribute_VH: VarHandle by lazy { NSAccessibilityMarkerUIElementsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3864,7 +3864,7 @@ var NSAccessibilityMarkerUIElementsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMarkerValuesAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMarkerValuesAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMarkerValuesAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMarkerValuesAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerValuesAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMarkerValuesAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMarkerValuesAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerValuesAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMarkerValuesAttribute_VH: VarHandle by lazy { NSAccessibilityMarkerValuesAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3876,7 +3876,7 @@ var NSAccessibilityMarkerValuesAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMarkerGroupUIElementAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMarkerGroupUIElementAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMarkerGroupUIElementAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMarkerGroupUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerGroupUIElementAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMarkerGroupUIElementAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMarkerGroupUIElementAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerGroupUIElementAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMarkerGroupUIElementAttribute_VH: VarHandle by lazy { NSAccessibilityMarkerGroupUIElementAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3888,7 +3888,7 @@ var NSAccessibilityMarkerGroupUIElementAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityUnitsAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityUnitsAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityUnitsAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnitsAttribute").orElseThrow().reinterpret(NSAccessibilityUnitsAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityUnitsAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityUnitsAttribute").orElseThrow().reinterpret(NSAccessibilityUnitsAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityUnitsAttribute_VH: VarHandle by lazy { NSAccessibilityUnitsAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3900,7 +3900,7 @@ var NSAccessibilityUnitsAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityUnitDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityUnitDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityUnitDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnitDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityUnitDescriptionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityUnitDescriptionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityUnitDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityUnitDescriptionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityUnitDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityUnitDescriptionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3912,7 +3912,7 @@ var NSAccessibilityUnitDescriptionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMarkerTypeAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMarkerTypeAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMarkerTypeAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMarkerTypeAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerTypeAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMarkerTypeAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMarkerTypeAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerTypeAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMarkerTypeAttribute_VH: VarHandle by lazy { NSAccessibilityMarkerTypeAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3924,7 +3924,7 @@ var NSAccessibilityMarkerTypeAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityMarkerTypeDescriptionAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityMarkerTypeDescriptionAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityMarkerTypeDescriptionAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityMarkerTypeDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerTypeDescriptionAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityMarkerTypeDescriptionAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityMarkerTypeDescriptionAttribute").orElseThrow().reinterpret(NSAccessibilityMarkerTypeDescriptionAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityMarkerTypeDescriptionAttribute_VH: VarHandle by lazy { NSAccessibilityMarkerTypeDescriptionAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3936,7 +3936,7 @@ var NSAccessibilityMarkerTypeDescriptionAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityIdentifierAttribute typedef const NSAccessibilityAttributeName = (Void)*
  */
 private val NSAccessibilityIdentifierAttribute_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityIdentifierAttribute_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityIdentifierAttribute").orElseThrow().reinterpret(NSAccessibilityIdentifierAttribute_LAYOUT.byteSize()) }
+private val NSAccessibilityIdentifierAttribute_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityIdentifierAttribute").orElseThrow().reinterpret(NSAccessibilityIdentifierAttribute_LAYOUT.byteSize()) }
 private val NSAccessibilityIdentifierAttribute_VH: VarHandle by lazy { NSAccessibilityIdentifierAttribute_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3949,7 +3949,7 @@ var NSAccessibilityIdentifierAttribute: MemorySegment
  * {@snippet lang=c : NSAccessibilityLeftTabStopMarkerTypeValue typedef const NSAccessibilityRulerMarkerTypeValue = (Void)*
  */
 private val NSAccessibilityLeftTabStopMarkerTypeValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityLeftTabStopMarkerTypeValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityLeftTabStopMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityLeftTabStopMarkerTypeValue_LAYOUT.byteSize()) }
+private val NSAccessibilityLeftTabStopMarkerTypeValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityLeftTabStopMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityLeftTabStopMarkerTypeValue_LAYOUT.byteSize()) }
 private val NSAccessibilityLeftTabStopMarkerTypeValue_VH: VarHandle by lazy { NSAccessibilityLeftTabStopMarkerTypeValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3961,7 +3961,7 @@ var NSAccessibilityLeftTabStopMarkerTypeValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityRightTabStopMarkerTypeValue typedef const NSAccessibilityRulerMarkerTypeValue = (Void)*
  */
 private val NSAccessibilityRightTabStopMarkerTypeValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRightTabStopMarkerTypeValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRightTabStopMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityRightTabStopMarkerTypeValue_LAYOUT.byteSize()) }
+private val NSAccessibilityRightTabStopMarkerTypeValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRightTabStopMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityRightTabStopMarkerTypeValue_LAYOUT.byteSize()) }
 private val NSAccessibilityRightTabStopMarkerTypeValue_VH: VarHandle by lazy { NSAccessibilityRightTabStopMarkerTypeValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3973,7 +3973,7 @@ var NSAccessibilityRightTabStopMarkerTypeValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityCenterTabStopMarkerTypeValue typedef const NSAccessibilityRulerMarkerTypeValue = (Void)*
  */
 private val NSAccessibilityCenterTabStopMarkerTypeValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityCenterTabStopMarkerTypeValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCenterTabStopMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityCenterTabStopMarkerTypeValue_LAYOUT.byteSize()) }
+private val NSAccessibilityCenterTabStopMarkerTypeValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityCenterTabStopMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityCenterTabStopMarkerTypeValue_LAYOUT.byteSize()) }
 private val NSAccessibilityCenterTabStopMarkerTypeValue_VH: VarHandle by lazy { NSAccessibilityCenterTabStopMarkerTypeValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3985,7 +3985,7 @@ var NSAccessibilityCenterTabStopMarkerTypeValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityDecimalTabStopMarkerTypeValue typedef const NSAccessibilityRulerMarkerTypeValue = (Void)*
  */
 private val NSAccessibilityDecimalTabStopMarkerTypeValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDecimalTabStopMarkerTypeValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDecimalTabStopMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityDecimalTabStopMarkerTypeValue_LAYOUT.byteSize()) }
+private val NSAccessibilityDecimalTabStopMarkerTypeValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDecimalTabStopMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityDecimalTabStopMarkerTypeValue_LAYOUT.byteSize()) }
 private val NSAccessibilityDecimalTabStopMarkerTypeValue_VH: VarHandle by lazy { NSAccessibilityDecimalTabStopMarkerTypeValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -3997,7 +3997,7 @@ var NSAccessibilityDecimalTabStopMarkerTypeValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityHeadIndentMarkerTypeValue typedef const NSAccessibilityRulerMarkerTypeValue = (Void)*
  */
 private val NSAccessibilityHeadIndentMarkerTypeValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityHeadIndentMarkerTypeValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityHeadIndentMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityHeadIndentMarkerTypeValue_LAYOUT.byteSize()) }
+private val NSAccessibilityHeadIndentMarkerTypeValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityHeadIndentMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityHeadIndentMarkerTypeValue_LAYOUT.byteSize()) }
 private val NSAccessibilityHeadIndentMarkerTypeValue_VH: VarHandle by lazy { NSAccessibilityHeadIndentMarkerTypeValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4009,7 +4009,7 @@ var NSAccessibilityHeadIndentMarkerTypeValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityTailIndentMarkerTypeValue typedef const NSAccessibilityRulerMarkerTypeValue = (Void)*
  */
 private val NSAccessibilityTailIndentMarkerTypeValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityTailIndentMarkerTypeValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityTailIndentMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityTailIndentMarkerTypeValue_LAYOUT.byteSize()) }
+private val NSAccessibilityTailIndentMarkerTypeValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityTailIndentMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityTailIndentMarkerTypeValue_LAYOUT.byteSize()) }
 private val NSAccessibilityTailIndentMarkerTypeValue_VH: VarHandle by lazy { NSAccessibilityTailIndentMarkerTypeValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4021,7 +4021,7 @@ var NSAccessibilityTailIndentMarkerTypeValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityFirstLineIndentMarkerTypeValue typedef const NSAccessibilityRulerMarkerTypeValue = (Void)*
  */
 private val NSAccessibilityFirstLineIndentMarkerTypeValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityFirstLineIndentMarkerTypeValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityFirstLineIndentMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityFirstLineIndentMarkerTypeValue_LAYOUT.byteSize()) }
+private val NSAccessibilityFirstLineIndentMarkerTypeValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityFirstLineIndentMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityFirstLineIndentMarkerTypeValue_LAYOUT.byteSize()) }
 private val NSAccessibilityFirstLineIndentMarkerTypeValue_VH: VarHandle by lazy { NSAccessibilityFirstLineIndentMarkerTypeValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4033,7 +4033,7 @@ var NSAccessibilityFirstLineIndentMarkerTypeValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityUnknownMarkerTypeValue typedef const NSAccessibilityRulerMarkerTypeValue = (Void)*
  */
 private val NSAccessibilityUnknownMarkerTypeValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityUnknownMarkerTypeValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnknownMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityUnknownMarkerTypeValue_LAYOUT.byteSize()) }
+private val NSAccessibilityUnknownMarkerTypeValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityUnknownMarkerTypeValue").orElseThrow().reinterpret(NSAccessibilityUnknownMarkerTypeValue_LAYOUT.byteSize()) }
 private val NSAccessibilityUnknownMarkerTypeValue_VH: VarHandle by lazy { NSAccessibilityUnknownMarkerTypeValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4045,7 +4045,7 @@ var NSAccessibilityUnknownMarkerTypeValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityInchesUnitValue typedef const NSAccessibilityRulerUnitValue = (Void)*
  */
 private val NSAccessibilityInchesUnitValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityInchesUnitValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityInchesUnitValue").orElseThrow().reinterpret(NSAccessibilityInchesUnitValue_LAYOUT.byteSize()) }
+private val NSAccessibilityInchesUnitValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityInchesUnitValue").orElseThrow().reinterpret(NSAccessibilityInchesUnitValue_LAYOUT.byteSize()) }
 private val NSAccessibilityInchesUnitValue_VH: VarHandle by lazy { NSAccessibilityInchesUnitValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4057,7 +4057,7 @@ var NSAccessibilityInchesUnitValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityCentimetersUnitValue typedef const NSAccessibilityRulerUnitValue = (Void)*
  */
 private val NSAccessibilityCentimetersUnitValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityCentimetersUnitValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCentimetersUnitValue").orElseThrow().reinterpret(NSAccessibilityCentimetersUnitValue_LAYOUT.byteSize()) }
+private val NSAccessibilityCentimetersUnitValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityCentimetersUnitValue").orElseThrow().reinterpret(NSAccessibilityCentimetersUnitValue_LAYOUT.byteSize()) }
 private val NSAccessibilityCentimetersUnitValue_VH: VarHandle by lazy { NSAccessibilityCentimetersUnitValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4069,7 +4069,7 @@ var NSAccessibilityCentimetersUnitValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityPointsUnitValue typedef const NSAccessibilityRulerUnitValue = (Void)*
  */
 private val NSAccessibilityPointsUnitValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPointsUnitValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPointsUnitValue").orElseThrow().reinterpret(NSAccessibilityPointsUnitValue_LAYOUT.byteSize()) }
+private val NSAccessibilityPointsUnitValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityPointsUnitValue").orElseThrow().reinterpret(NSAccessibilityPointsUnitValue_LAYOUT.byteSize()) }
 private val NSAccessibilityPointsUnitValue_VH: VarHandle by lazy { NSAccessibilityPointsUnitValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4081,7 +4081,7 @@ var NSAccessibilityPointsUnitValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityPicasUnitValue typedef const NSAccessibilityRulerUnitValue = (Void)*
  */
 private val NSAccessibilityPicasUnitValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPicasUnitValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPicasUnitValue").orElseThrow().reinterpret(NSAccessibilityPicasUnitValue_LAYOUT.byteSize()) }
+private val NSAccessibilityPicasUnitValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityPicasUnitValue").orElseThrow().reinterpret(NSAccessibilityPicasUnitValue_LAYOUT.byteSize()) }
 private val NSAccessibilityPicasUnitValue_VH: VarHandle by lazy { NSAccessibilityPicasUnitValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4093,7 +4093,7 @@ var NSAccessibilityPicasUnitValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityUnknownUnitValue typedef const NSAccessibilityRulerUnitValue = (Void)*
  */
 private val NSAccessibilityUnknownUnitValue_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityUnknownUnitValue_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityUnknownUnitValue").orElseThrow().reinterpret(NSAccessibilityUnknownUnitValue_LAYOUT.byteSize()) }
+private val NSAccessibilityUnknownUnitValue_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityUnknownUnitValue").orElseThrow().reinterpret(NSAccessibilityUnknownUnitValue_LAYOUT.byteSize()) }
 private val NSAccessibilityUnknownUnitValue_VH: VarHandle by lazy { NSAccessibilityUnknownUnitValue_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4105,7 +4105,7 @@ var NSAccessibilityUnknownUnitValue: MemorySegment
  * {@snippet lang=c : NSAccessibilityPressAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityPressAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPressAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPressAction").orElseThrow().reinterpret(NSAccessibilityPressAction_LAYOUT.byteSize()) }
+private val NSAccessibilityPressAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityPressAction").orElseThrow().reinterpret(NSAccessibilityPressAction_LAYOUT.byteSize()) }
 private val NSAccessibilityPressAction_VH: VarHandle by lazy { NSAccessibilityPressAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4117,7 +4117,7 @@ var NSAccessibilityPressAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityIncrementAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityIncrementAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityIncrementAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityIncrementAction").orElseThrow().reinterpret(NSAccessibilityIncrementAction_LAYOUT.byteSize()) }
+private val NSAccessibilityIncrementAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityIncrementAction").orElseThrow().reinterpret(NSAccessibilityIncrementAction_LAYOUT.byteSize()) }
 private val NSAccessibilityIncrementAction_VH: VarHandle by lazy { NSAccessibilityIncrementAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4129,7 +4129,7 @@ var NSAccessibilityIncrementAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityDecrementAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityDecrementAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDecrementAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDecrementAction").orElseThrow().reinterpret(NSAccessibilityDecrementAction_LAYOUT.byteSize()) }
+private val NSAccessibilityDecrementAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDecrementAction").orElseThrow().reinterpret(NSAccessibilityDecrementAction_LAYOUT.byteSize()) }
 private val NSAccessibilityDecrementAction_VH: VarHandle by lazy { NSAccessibilityDecrementAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4141,7 +4141,7 @@ var NSAccessibilityDecrementAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityConfirmAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityConfirmAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityConfirmAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityConfirmAction").orElseThrow().reinterpret(NSAccessibilityConfirmAction_LAYOUT.byteSize()) }
+private val NSAccessibilityConfirmAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityConfirmAction").orElseThrow().reinterpret(NSAccessibilityConfirmAction_LAYOUT.byteSize()) }
 private val NSAccessibilityConfirmAction_VH: VarHandle by lazy { NSAccessibilityConfirmAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4153,7 +4153,7 @@ var NSAccessibilityConfirmAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityPickAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityPickAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityPickAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityPickAction").orElseThrow().reinterpret(NSAccessibilityPickAction_LAYOUT.byteSize()) }
+private val NSAccessibilityPickAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityPickAction").orElseThrow().reinterpret(NSAccessibilityPickAction_LAYOUT.byteSize()) }
 private val NSAccessibilityPickAction_VH: VarHandle by lazy { NSAccessibilityPickAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4165,7 +4165,7 @@ var NSAccessibilityPickAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityCancelAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityCancelAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityCancelAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityCancelAction").orElseThrow().reinterpret(NSAccessibilityCancelAction_LAYOUT.byteSize()) }
+private val NSAccessibilityCancelAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityCancelAction").orElseThrow().reinterpret(NSAccessibilityCancelAction_LAYOUT.byteSize()) }
 private val NSAccessibilityCancelAction_VH: VarHandle by lazy { NSAccessibilityCancelAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4177,7 +4177,7 @@ var NSAccessibilityCancelAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityRaiseAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityRaiseAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityRaiseAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityRaiseAction").orElseThrow().reinterpret(NSAccessibilityRaiseAction_LAYOUT.byteSize()) }
+private val NSAccessibilityRaiseAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityRaiseAction").orElseThrow().reinterpret(NSAccessibilityRaiseAction_LAYOUT.byteSize()) }
 private val NSAccessibilityRaiseAction_VH: VarHandle by lazy { NSAccessibilityRaiseAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4189,7 +4189,7 @@ var NSAccessibilityRaiseAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityShowMenuAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityShowMenuAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityShowMenuAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityShowMenuAction").orElseThrow().reinterpret(NSAccessibilityShowMenuAction_LAYOUT.byteSize()) }
+private val NSAccessibilityShowMenuAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityShowMenuAction").orElseThrow().reinterpret(NSAccessibilityShowMenuAction_LAYOUT.byteSize()) }
 private val NSAccessibilityShowMenuAction_VH: VarHandle by lazy { NSAccessibilityShowMenuAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4201,7 +4201,7 @@ var NSAccessibilityShowMenuAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityDeleteAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityDeleteAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityDeleteAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityDeleteAction").orElseThrow().reinterpret(NSAccessibilityDeleteAction_LAYOUT.byteSize()) }
+private val NSAccessibilityDeleteAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityDeleteAction").orElseThrow().reinterpret(NSAccessibilityDeleteAction_LAYOUT.byteSize()) }
 private val NSAccessibilityDeleteAction_VH: VarHandle by lazy { NSAccessibilityDeleteAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4213,7 +4213,7 @@ var NSAccessibilityDeleteAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityScrollToVisibleAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityScrollToVisibleAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityScrollToVisibleAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityScrollToVisibleAction").orElseThrow().reinterpret(NSAccessibilityScrollToVisibleAction_LAYOUT.byteSize()) }
+private val NSAccessibilityScrollToVisibleAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityScrollToVisibleAction").orElseThrow().reinterpret(NSAccessibilityScrollToVisibleAction_LAYOUT.byteSize()) }
 private val NSAccessibilityScrollToVisibleAction_VH: VarHandle by lazy { NSAccessibilityScrollToVisibleAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)
@@ -4226,7 +4226,7 @@ var NSAccessibilityScrollToVisibleAction: MemorySegment
  * {@snippet lang=c : NSAccessibilityShowAlternateUIAction typedef const NSAccessibilityActionName = (Void)*
  */
 private val NSAccessibilityShowAlternateUIAction_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSAccessibilityShowAlternateUIAction_SEGMENT: MemorySegment by lazy { SymbolLookup.loaderLookup().find("NSAccessibilityShowAlternateUIAction").orElseThrow().reinterpret(NSAccessibilityShowAlternateUIAction_LAYOUT.byteSize()) }
+private val NSAccessibilityShowAlternateUIAction_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSAccessibilityShowAlternateUIAction").orElseThrow().reinterpret(NSAccessibilityShowAlternateUIAction_LAYOUT.byteSize()) }
 private val NSAccessibilityShowAlternateUIAction_VH: VarHandle by lazy { NSAccessibilityShowAlternateUIAction_LAYOUT.varHandle() }
 
 @PlatformAvailability(platform = "ios", unavailable = true)

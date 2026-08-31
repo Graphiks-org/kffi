@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSBundle(override val ptr: MemorySegment) : NSObject(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSBundle") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSBundle") } }
 
         fun bundleWithPath(path: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("bundleWithPath:")

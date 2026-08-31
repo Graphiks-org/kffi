@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSSliderCell(override val ptr: MemorySegment) : NSActionCell(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSSliderCell") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSSliderCell") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun prefersTrackingUntilMouseUp(): Boolean {

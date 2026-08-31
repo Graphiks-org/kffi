@@ -15,7 +15,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1)
 open class NSCollectionLayoutBoundarySupplementaryItem(override val ptr: MemorySegment) : NSCollectionLayoutSupplementaryItem(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSCollectionLayoutBoundarySupplementaryItem") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSCollectionLayoutBoundarySupplementaryItem") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun boundarySupplementaryItemWithLayoutSize_elementKind_alignment(layoutSize: MemorySegment, elementKind: MemorySegment, alignment: NSRectAlignment): MemorySegment {

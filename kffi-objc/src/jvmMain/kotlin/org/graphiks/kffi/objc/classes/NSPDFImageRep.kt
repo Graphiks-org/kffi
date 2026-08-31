@@ -13,7 +13,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "ios", unavailable = true)
 open class NSPDFImageRep(override val ptr: MemorySegment) : NSImageRep(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSPDFImageRep") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSPDFImageRep") } }
 
         @PlatformAvailability(platform = "ios", unavailable = true)
         fun imageRepWithData(pdfData: MemorySegment): MemorySegment {

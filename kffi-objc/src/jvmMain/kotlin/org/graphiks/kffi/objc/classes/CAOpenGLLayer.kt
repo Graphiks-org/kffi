@@ -18,7 +18,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
 @PlatformAvailability(platform = "xros", unavailable = true)
 open class CAOpenGLLayer(override val ptr: MemorySegment) : CALayer(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("CAOpenGLLayer") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("CAOpenGLLayer") } }
 
     }
 

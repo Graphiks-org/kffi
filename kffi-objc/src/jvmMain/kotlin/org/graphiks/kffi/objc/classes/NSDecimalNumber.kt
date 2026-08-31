@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSDecimalNumber(override val ptr: MemorySegment) : NSNumber(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSDecimalNumber") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSDecimalNumber") } }
 
         fun decimalNumberWithMantissa_exponent_isNegative(mantissa: Long, exponent: Short, flag: Boolean): MemorySegment {
             val sel = ObjCRuntime.sel("decimalNumberWithMantissa:exponent:isNegative:")

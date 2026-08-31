@@ -12,7 +12,7 @@ import java.lang.foreign.MemoryLayout.PathElement.*
  */
 open class NSXMLDocument(override val ptr: MemorySegment) : NSXMLNode(ptr) {
     companion object {
-        private val _class: MemorySegment by lazy { ObjCRuntime.getClass("NSXMLDocument") }
+        private val _class: MemorySegment by lazy { LOOKUP.let { ObjCRuntime.getClass("NSXMLDocument") } }
 
         fun replacementClassForClass(cls: MemorySegment): MemorySegment {
             val sel = ObjCRuntime.sel("replacementClassForClass:")
